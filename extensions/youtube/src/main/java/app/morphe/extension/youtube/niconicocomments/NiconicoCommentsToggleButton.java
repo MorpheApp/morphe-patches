@@ -26,6 +26,7 @@ import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
@@ -47,6 +48,7 @@ public final class NiconicoCommentsToggleButton {
     private static LegacyPlayerControlButton legacy;
 
     private static WeakReference<ImageView> overlayButtonRef = new WeakReference<>(null);
+    private static WeakReference<SheetBottomDialog.SlideDialog> quickSettingsRef = new WeakReference<>(null);
 
     private NiconicoCommentsToggleButton() {
     }
@@ -132,6 +134,13 @@ public final class NiconicoCommentsToggleButton {
         }
     }
 
+    static void dismissQuickSettings() {
+        SheetBottomDialog.SlideDialog dialog = quickSettingsRef.get();
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
+    }
+
     private static String getIconBaseName() {
         return Settings.NICONICO_COMMENTS_SHOWN.get()
                 ? "morphe_niconico_comments_button_on"
@@ -140,7 +149,8 @@ public final class NiconicoCommentsToggleButton {
 
     /**
      * Shows the font size, opacity, travel duration, display area and max length sliders.
-     * Changes apply immediately.
+     * Changes apply immediately. In portrait with separate settings, the font size, travel duration
+     * and display area sliders change the portrait values.
      */
     private static void showQuickSettings(Context context) {
         try {
@@ -154,12 +164,18 @@ public final class NiconicoCommentsToggleButton {
             contentLayout.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
             contentLayout.addView(SheetBottomDialog.createTitle(context,
                     str("morphe_niconico_comments_screen_title"), foregroundColor));
+            final boolean portrait = NiconicoCommentsController.usesPortraitSettings();
+            IntegerSetting fontSize = NiconicoCommentsController.getFontSizeSetting();
+            IntegerSetting travelDuration = NiconicoCommentsController.getTravelDurationSetting();
+            IntegerSetting displayArea = NiconicoCommentsController.getDisplayAreaSetting();
             contentLayout.addView(SheetBottomDialog.createSliderRow(context,
-                    str("morphe_niconico_comments_font_size_title"),
-                    Settings.NICONICO_COMMENTS_FONT_SIZE,
+                    str(portrait
+                            ? "morphe_niconico_comments_portrait_font_size_title"
+                            : "morphe_niconico_comments_font_size_title"),
+                    fontSize,
                     foregroundColor,
                     value -> {
-                        Settings.NICONICO_COMMENTS_FONT_SIZE.save(value);
+                        fontSize.save(value);
                         NiconicoCommentsController.updateViewState();
                     }));
             contentLayout.addView(SheetBottomDialog.createSliderRow(context,
@@ -171,19 +187,23 @@ public final class NiconicoCommentsToggleButton {
                         NiconicoCommentsController.updateViewState();
                     }));
             contentLayout.addView(SheetBottomDialog.createSliderRow(context,
-                    str("morphe_niconico_comments_travel_duration_title"),
-                    Settings.NICONICO_COMMENTS_TRAVEL_DURATION,
+                    str(portrait
+                            ? "morphe_niconico_comments_portrait_travel_duration_title"
+                            : "morphe_niconico_comments_travel_duration_title"),
+                    travelDuration,
                     foregroundColor,
                     value -> {
-                        Settings.NICONICO_COMMENTS_TRAVEL_DURATION.save(value);
+                        travelDuration.save(value);
                         NiconicoCommentsController.updateViewState();
                     }));
             contentLayout.addView(SheetBottomDialog.createSliderRow(context,
-                    str("morphe_niconico_comments_display_area_title"),
-                    Settings.NICONICO_COMMENTS_DISPLAY_AREA,
+                    str(portrait
+                            ? "morphe_niconico_comments_portrait_display_area_title"
+                            : "morphe_niconico_comments_display_area_title"),
+                    displayArea,
                     foregroundColor,
                     value -> {
-                        Settings.NICONICO_COMMENTS_DISPLAY_AREA.save(value);
+                        displayArea.save(value);
                         NiconicoCommentsController.updateViewState();
                     }));
             contentLayout.addView(SheetBottomDialog.createSliderRow(context,
@@ -204,10 +224,10 @@ public final class NiconicoCommentsToggleButton {
             Button resetButton = CustomDialog.createButton(context, dialog,
                     str("morphe_settings_reset"),
                     () -> {
-                        Settings.NICONICO_COMMENTS_FONT_SIZE.resetToDefault();
+                        fontSize.resetToDefault();
                         Settings.NICONICO_COMMENTS_OPACITY.resetToDefault();
-                        Settings.NICONICO_COMMENTS_TRAVEL_DURATION.resetToDefault();
-                        Settings.NICONICO_COMMENTS_DISPLAY_AREA.resetToDefault();
+                        travelDuration.resetToDefault();
+                        displayArea.resetToDefault();
                         Settings.NICONICO_COMMENTS_MAX_LENGTH.resetToDefault();
                         NiconicoCommentsController.updateViewState();
                         // Reopen so the sliders show the default values.
@@ -219,6 +239,7 @@ public final class NiconicoCommentsToggleButton {
             resetParams.topMargin = Dim.dp16;
             contentLayout.addView(resetButton, resetParams);
 
+            quickSettingsRef = new WeakReference<>(dialog);
             dialog.show();
         } catch (Exception ex) {
             Logger.printException(() -> "showQuickSettings failure", ex);

@@ -794,6 +794,17 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Dokunarak sardırmayı etkinleştir</string>
   <string name="morphe_tap_to_seek_summary">Sardırma çubuğunda sürüklemek yerine herhangi bir yere dokunarak oraya atlayın</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Özel zaman çubuğu tutamacı</string>
+  <string name="morphe_custom_seekbar_thumb_title">Özel zaman çubuğu tutamacını etkinleştir</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Zaman çubuğu tutamacını özel bir resim veya animasyonlu GIF ile değiştirin</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Tutamacın resmi</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Cihaz depolamasından bir resim veya animasyonlu GIF seçin</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Seçilen dosya desteklenen bir resim değil</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Özel zaman çubuğu tutamacı resmi bulunamadı</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Tutamaç boyutu</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Zaman çubuğuna sığdır</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Orijinal boyut</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Sola kaydırma hareketi</string>
   <string name="morphe_swipe_right_zone_title">Sağa kaydırma hareketi</string>
@@ -1014,7 +1025,7 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_navigation_bar_glass_size_height">Yükseklik</string>
   <string name="morphe_navigation_bar_glass_size_width">Maksimum genişlik</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Düğme boşluğu</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Gösterilen düğmeler: %2$s üzerinden %1$s</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Gösterilen düğmeler: %2$s düğmeden %1$s tanesi</string>
   <string name="morphe_toolbar_screen_title">Araç Çubuğu</string>
   <string name="morphe_toolbar_screen_summary">Araç çubuğunda hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_toolbar_chat_button_title">Sohbet düğmesini gizle</string>
@@ -1724,8 +1735,8 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_series_tracker_episode_order">Bölüm sıralaması</string>
   <string name="morphe_series_tracker_playlist_order">Çalma listesi sırası</string>
   <string name="morphe_series_tracker_reverse_order">Çalma listesi sırasını tersine çevir</string>
-  <string name="morphe_series_tracker_view_count">%s görüntüleme</string>
-  <string name="morphe_series_tracker_view_count_one">%s görünüm</string>
+  <string name="morphe_series_tracker_view_count">%s görüntülenme</string>
+  <string name="morphe_series_tracker_view_count_one">%s görüntülenme</string>
   <string name="morphe_series_tracker_completion_title">Bölümleri izlendi olarak işaretle</string>
   <string name="morphe_series_tracker_completion_summary">En az %1$s%% izlendiğinde ve en fazla 90 saniye kaldığında veya %2$s saniye kaldığında</string>
   <string name="morphe_series_tracker_completion_explanation">Belirlenen eşiklerden herhangi birine ulaşıldığında, bölüm otomatik olarak izlenmiş olarak işaretlenir. Yüzde kuralı ayrıca bölümün bitimine en fazla 90 saniye kalmış olmasını gerektirir; böylece uzun bölümlerin son kısımları atlanmamış olur. Kalan süre kuralı, bir dakikadan uzun videolar için geçerlidir; devre dışı bırakmak için bu değeri 0 olarak ayarlayın. Yapılan değişiklikler, bundan sonraki izleme ilerlemesi güncellemeleri için geçerli olacaktır. Manuel olarak yapılan \"izlendi/izlenmedi\" seçimleri korunur</string>
@@ -1773,6 +1784,8 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_niconico_comments_travel_duration_summary">Yorumların ekranı geçmesi için geçen saniye sayısı. Düşük değerler daha hızlı hareket eder</string>
   <string name="morphe_niconico_comments_display_area_title">Görüntüleme alanı</string>
   <string name="morphe_niconico_comments_display_area_summary">Yorumların, oynatıcının üst kısmından itibaren ne kadar alan kaplayacağı. Daha düşük değerler, videonun alt kısmının temiz kalmasını sağlar</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Üst üste binecek yorumları gizle</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Ekran alanı dolu olduğunda, diğer yorumlarla üst üste binmek yerine yeni yorumlar gizlenir</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimum yorum uzunluğu</string>
   <string name="morphe_niconico_comments_max_length_summary">Bunu aşan karakter sayısına sahip yorumları gizler. Her emoji bir karakter olarak sayılır</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sınırsız</string>
@@ -1787,7 +1800,7 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_niconico_comments_timed_comments_title">Zamanlanmış yorumları göster</string>
   <string name="morphe_niconico_comments_timed_comments_summary">Sohbeti olmayan videolarda, 1:23 gibi bir zaman içeren üst yorumlar o zamanda gösterilir</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Zamanlanmış yorumları sohbet tekrarıyla göster</string>
-  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Canlı yayın ve Premiere tekrarlarında, zamanlanmış yorumlar da sohbetle birlikte gösterilir</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Canlı yayın ve İlk gösterim tekrarlarında, zamanlanmış yorumlar da sohbetle birlikte gösterilir</string>
   <string name="morphe_live_chat_translate_screen_title">Canlı sohbet çevirisi</string>
   <string name="morphe_live_chat_translate_screen_summary">Canlı sohbeti ve sohbet tekrar mesajlarını çevir</string>
   <string name="morphe_live_chat_translate_title">Canlı sohbeti çevir</string>

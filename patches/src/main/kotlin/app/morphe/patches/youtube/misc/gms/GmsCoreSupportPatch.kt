@@ -10,9 +10,9 @@
 
 package app.morphe.patches.youtube.misc.gms
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patches.shared.PrimeMethodFingerprint
-import app.morphe.patches.shared.misc.gms.GnpRegistrationTargetFingerprint
-import app.morphe.patches.shared.misc.gms.GnpRegistrationTargetSuspendFingerprint
+import app.morphe.patches.shared.misc.gms.EXTENSION_CLASS
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportResourcePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -34,8 +34,24 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     extensionPatch = sharedExtensionPatch,
     gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch,
-    gnpRegistrationTargetFingerprint = {
-        if (is_21_45_or_greater) GnpRegistrationTargetSuspendFingerprint else GnpRegistrationTargetFingerprint
+    useLegacyGnpFingerprint = { !is_21_45_or_greater },
+    executeBlock = {
+        // GmsCore allows the capabilities it can not look up, which makes every account a supervised account.
+        AccountHasCapabilitiesFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static/range { p2 .. p2 }, $EXTENSION_CLASS->denySupervisedAccountCapability([Ljava/lang/String;)Z
+                move-result v0
+                if-eqz v0, :ask_gms_core
+                # Same result as Google Play services for accounts without the capability.
+                const/4 v0, 0x2
+                invoke-static { v0 }, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+                move-result-object v0
+                return-object v0
+                :ask_gms_core
+                nop
+            """
+        )
     }
 ) {
     dependsOn(

@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Միացնել հպումով փնտրելը</string>
   <string name="morphe_tap_to_seek_summary">Սեղմեք փնտրողի ցանկացած հատվածում՝ տվյալ դիրքին անցնելու համար, փոխարենը քաշելու</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Սահիչի հատուկ կոճակ</string>
+  <string name="morphe_custom_seekbar_thumb_title">Միացնել seekbar-ի հատուկ կոճակը</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Փոխարինել seekbar-ի կոճակը հատուկ պատկերով կամ անիմացիոն GIF-ով</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Կոճակի պատկերը</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Ընտրել պատկեր կամ անիմացիոն GIF սարքի հիշողությունից</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Ընտրված ֆայլը աջակցվող պատկեր չէ</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Custom seekbar-ի թամբի պատկերը չի գտնվել</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Թամբի չափսը</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Համապատասխանեցնել seekbar-ին</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Բնօրինակ չափսը</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Ձախ սվայփ ժեստ</string>
   <string name="morphe_swipe_right_zone_title">Աջ սվայփ ժեստ</string>
@@ -1771,6 +1782,8 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_niconico_comments_travel_duration_summary">Քանի վայրկյան է պահանջվում մեկնաբանություններին անցնել էկրանով: Ավելի ցածր արժեքները շարժվում են ավելի արագ</string>
   <string name="morphe_niconico_comments_display_area_title">Ցուցադրման տարածք</string>
   <string name="morphe_niconico_comments_display_area_summary">Թե ինչքան մաս է զբաղեցնում հայտարարությունների հատվածը վերևից սկսած: Ավելի փոքր արժեքները թույլ են տալիս պահպանել տեսանյութի ստորին մասը մաքուր</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Թաքցնել մեկնաբանությունները, որոնք կհամընկնեն</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Երբ ցուցադրման տարածին լցված է, նոր մեկնաբանությունները թաքցվում են՝ այլ մեկնաբանությունների վրա չզ疊վելու համար</string>
   <string name="morphe_niconico_comments_max_length_title">Մեկնաբանության առավելագույն երկարությունը</string>
   <string name="morphe_niconico_comments_max_length_summary">Թաքցնում է այն մեկնաբանությունները, որոնք ունեն այսքանից ավելի նիշեր: Յուրաքանչյուր էմոջին հաշվարկվում է որպես մեկ նիշ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Առանց սահմանափակման</string>

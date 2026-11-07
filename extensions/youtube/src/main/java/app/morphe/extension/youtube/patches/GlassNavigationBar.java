@@ -190,6 +190,11 @@ public final class GlassNavigationBar {
     public static volatile int lastContentWidth;
     public static volatile int lastContentHeight;
     public static volatile int lastBaseHeight;
+    /**
+     * The width the app gives each button at least, such as on tablets, where the app gives the buttons
+     * a minimum width and centers them, instead of sharing the width of the bar between them.
+     */
+    public static volatile int lastMinButtonWidth;
 
     /**
      * The buttons of the last bar, also the buttons hidden because they do not fit, so the preview in the settings
@@ -551,8 +556,14 @@ public final class GlassNavigationBar {
                         final int contentWidth = buttons.isEmpty() ? 0 : contentWidths[buttons.size() / 2];
 
                         if (contentWidth > 0 && contentBottom > contentTop) {
+                            // The buttons are never narrower than the app allows, or they are wider than
+                            // the capsule, which then cuts the first and the last button.
+                            int minButtonWidth = 0;
+                            for (View button : buttons) {
+                                minButtonWidth = Math.max(minButtonWidth, button.getMinimumWidth());
+                            }
                             final int[] layout = getButtonsLayout(pivotBar.getWidth(), buttons.size(),
-                                    contentWidth, WIDTH_PERCENT, BUTTON_SPACING);
+                                    contentWidth, minButtonWidth, WIDTH_PERCENT, BUTTON_SPACING);
                             final int shown = layout[0];
 
                             // The buttons that do not fit are hidden from the end, but never the selected one.
@@ -604,6 +615,7 @@ public final class GlassNavigationBar {
                             }
 
                             lastContentWidth = contentWidth;
+                            lastMinButtonWidth = minButtonWidth;
                             lastContentHeight = contentHeight;
                             lastBaseHeight = baseHeight;
                             List<WeakReference<View>> seenButtons = lastButtons;
@@ -654,16 +666,19 @@ public final class GlassNavigationBar {
      * @param buttons      The number of buttons.
      * @param contentWidth The usual width of the content of the buttons (the icon or the label), the median,
      *                     so a long label that the app cuts does not make every button wider.
+     * @param appMinWidth  The width the app gives each button at least, see {@link #lastMinButtonWidth}.
      * @param widthPercent The most width of the capsule, in percent of the width of the bar.
      * @param spacing      The room between the content of two buttons.
      * @return The number of buttons shown, and the width of each button.
      */
-    public static int[] getButtonsLayout(int barWidth, int buttons, int contentWidth, int widthPercent, int spacing) {
+    public static int[] getButtonsLayout(int barWidth, int buttons, int contentWidth, int appMinWidth,
+                                         int widthPercent, int spacing) {
         final int maxWidth = Math.max(0, (barWidth - 2 * GlassDrawable.MARGIN_HORIZONTAL) * widthPercent / 100);
-        final int minButtonWidth = Math.max(MIN_BUTTON_WIDTH, contentWidth + MIN_BUTTON_SPACING);
+        final int minWidth = Math.max(MIN_BUTTON_WIDTH, appMinWidth);
+        final int minButtonWidth = Math.max(minWidth, contentWidth + MIN_BUTTON_SPACING);
         final int shown = Math.max(1, Math.min(buttons, maxWidth / minButtonWidth));
-        // With less room, the buttons share the most width of the capsule.
-        final int buttonWidth = Math.min(Math.max(MIN_BUTTON_WIDTH, contentWidth + spacing), maxWidth / shown);
+        // With less room, the buttons share the most width of the capsule, but never less than the app allows.
+        final int buttonWidth = Math.min(Math.max(minWidth, contentWidth + spacing), maxWidth / shown);
         return new int[]{shown, buttonWidth};
     }
 
@@ -973,8 +988,21 @@ public final class GlassNavigationBar {
                 // buttons or gesture handle. The capsule holds the whole height of the buttons
                 // and reaches only slightly into that room, so it floats above the gesture handle.
                 final int bottomRoom = host.getPaddingBottom();
-                final float bottom = bounds.bottom - bottomRoom
+                float bottom = bounds.bottom - bottomRoom
                         + Math.max(0, Math.min(bottomRoom - FLOATING_ROOM, MAX_MARGIN_BOTTOM));
+                // Some accounts lay the slim status bar ("No connection", "You're incognito") out over the room
+                // below the buttons, and it is drawn over the bar. The capsule then does not reach into the room
+                // the slim status bar covers, or its edge is cut. The bar's own translation is left out,
+                // so the capsule keeps its size while the bar is moved behind the slim status bar to hide it.
+                View slimStatusBar = host.getParent() instanceof ViewGroup container
+                        ? container.findViewById(NavigationBarPatch.SLIM_STATUS_BAR)
+                        : null;
+                if (slimStatusBar != null && slimStatusBar.getParent() == host.getParent()
+                        && slimStatusBar.getVisibility() == View.VISIBLE) {
+                    final float slimStatusBarTop = bounds.top + slimStatusBar.getTop()
+                            + slimStatusBar.getTranslationY() - host.getTop();
+                    bottom = Math.min(bottom, Math.max(bounds.bottom - bottomRoom, slimStatusBarTop));
+                }
                 // The capsule ends at the edges of the buttons. The narrow buttons don't fill the bar,
                 // and are in the middle of it.
                 float left = bounds.left + host.getPaddingLeft();

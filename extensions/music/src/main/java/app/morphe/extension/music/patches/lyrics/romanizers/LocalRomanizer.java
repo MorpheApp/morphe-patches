@@ -74,7 +74,7 @@ public final class LocalRomanizer {
             script = Script.JAPANESE;
         }
         if (script == null || script == Script.OTHER) return null;
-        final String reading = readAs(syllable, script, false, line).text().trim();
+        final String reading = readAs(syllable, script, RimeDictStore.isActive(), line).text().trim();
         return reading.isEmpty() || reading.equals(syllable) ? null : reading;
     }
 

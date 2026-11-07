@@ -48,6 +48,8 @@ import app.morphe.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
 import app.morphe.extension.youtube.patches.ChangePipActionsPatch.PipAction;
 import app.morphe.extension.youtube.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.youtube.patches.ClassicSubscriptionsLayoutPatch;
+import app.morphe.extension.youtube.patches.CustomSeekbarThumbPatch.ThumbScaleType;
+import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch;
 import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch.VideoCodec;
 import app.morphe.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
 import app.morphe.extension.youtube.patches.FeedCardLayoutPatch.FeedCardLayout;
@@ -118,7 +120,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting ADVANCED_VIDEO_QUALITY_MENU = new BooleanSetting("morphe_advanced_video_quality_menu", TRUE);
     public static final BooleanSetting DISABLE_HDR_VIDEO = new BooleanSetting("morphe_disable_hdr_video", FALSE);
     public static final BooleanSetting FORCE_HDR_VIDEO = new BooleanSetting("morphe_force_hdr_video", FALSE, true, "morphe_force_hdr_video_user_dialog_message", parentNot(DISABLE_HDR_VIDEO));
-    public static final EnumSetting<VideoCodec> VIDEO_CODEC = new EnumSetting<>("morphe_video_codec", VideoCodec.DEFAULT, true, "morphe_video_codec_user_dialog_message");
+    public static final EnumSetting<VideoCodec> VIDEO_CODEC = new EnumSetting<>("morphe_video_codec", DisableVideoCodecsPatch.getDefaultVideoCodec(), true, "morphe_video_codec_user_dialog_message");
     public static final BooleanSetting HIDE_PREMIUM_VIDEO_QUALITY = new BooleanSetting("morphe_hide_premium_video_quality", TRUE, true);
     public static final BooleanSetting VIDEO_QUALITY_PRIORITIZE = new BooleanSetting("morphe_video_quality_prioritize", TRUE, true, "morphe_video_quality_prioritize_dialog");
     public static final IntegerSetting VIDEO_QUALITY_DEFAULT_WIFI = new IntegerSetting("morphe_video_quality_default_wifi", -2);
@@ -600,6 +602,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_QUALITY_HEADER = new BooleanSetting("morphe_hide_player_flyout_quality_header", FALSE, true, new HideQualityFlyoutMenuHeaderFooterAvailability());
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_WATCH_IN_VR = new BooleanSetting("morphe_hide_player_flyout_watch_in_vr", FALSE, parentNot(HIDE_SETTINGS_BUTTON));
 
+    // On-the-go
+    public static final BooleanSetting ON_THE_GO = new BooleanSetting("morphe_on_the_go", TRUE);
+
     // Picture-in-picture actions
     public static final EnumSetting<PipAction> PIP_ACTION_LEFT = new EnumSetting<>("morphe_pip_action_left", PipAction.DEFAULT);
     public static final EnumSetting<PipAction> PIP_ACTION_CENTER = new EnumSetting<>("morphe_pip_action_center", PipAction.DEFAULT);
@@ -742,6 +747,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SLIDE_TO_SEEK = new BooleanSetting("morphe_slide_to_seek", FALSE, true);
     public static final BooleanSetting TAP_TO_SEEK = new BooleanSetting("morphe_tap_to_seek", FALSE);
     public static final BooleanSetting THUMBNAIL_PREVIEW = new BooleanSetting("morphe_seekbar_thumbnail_preview", TRUE);
+    public static final BooleanSetting CUSTOM_SEEKBAR_THUMB = new BooleanSetting("morphe_custom_seekbar_thumb", FALSE);
+    public static final StringSetting CUSTOM_SEEKBAR_THUMB_FILE = new StringSetting("morphe_custom_seekbar_thumb_file", "", parent(CUSTOM_SEEKBAR_THUMB));
+    public static final EnumSetting<ThumbScaleType> CUSTOM_SEEKBAR_THUMB_SCALE_TYPE = new EnumSetting<>("morphe_custom_seekbar_thumb_scale_type", ThumbScaleType.FIT_SEEKBAR, parent(CUSTOM_SEEKBAR_THUMB));
 
     // Snackbar
     public static final BooleanSetting HIDE_SNACKBAR = new BooleanSetting("morphe_hide_snackbar", FALSE, true);
@@ -804,6 +812,12 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting NICONICO_COMMENTS_OPACITY = new IntegerSetting("morphe_niconico_comments_opacity", 100, parent(NICONICO_COMMENTS));
     public static final IntegerSetting NICONICO_COMMENTS_TRAVEL_DURATION = new IntegerSetting("morphe_niconico_comments_travel_duration", 7, parent(NICONICO_COMMENTS));
     public static final IntegerSetting NICONICO_COMMENTS_DISPLAY_AREA = new IntegerSetting("morphe_niconico_comments_display_area", 100, parent(NICONICO_COMMENTS));
+    public static final BooleanSetting NICONICO_COMMENTS_PORTRAIT = new BooleanSetting("morphe_niconico_comments_portrait", TRUE, parent(NICONICO_COMMENTS));
+    public static final BooleanSetting NICONICO_COMMENTS_SEPARATE_PORTRAIT = new BooleanSetting("morphe_niconico_comments_separate_portrait", FALSE, parentsAll(NICONICO_COMMENTS, NICONICO_COMMENTS_PORTRAIT));
+    public static final IntegerSetting NICONICO_COMMENTS_PORTRAIT_FONT_SIZE = new IntegerSetting("morphe_niconico_comments_portrait_font_size", 20, parentsAll(NICONICO_COMMENTS, NICONICO_COMMENTS_PORTRAIT, NICONICO_COMMENTS_SEPARATE_PORTRAIT));
+    public static final IntegerSetting NICONICO_COMMENTS_PORTRAIT_TRAVEL_DURATION = new IntegerSetting("morphe_niconico_comments_portrait_travel_duration", 7, parentsAll(NICONICO_COMMENTS, NICONICO_COMMENTS_PORTRAIT, NICONICO_COMMENTS_SEPARATE_PORTRAIT));
+    public static final IntegerSetting NICONICO_COMMENTS_PORTRAIT_DISPLAY_AREA = new IntegerSetting("morphe_niconico_comments_portrait_display_area", 100, parentsAll(NICONICO_COMMENTS, NICONICO_COMMENTS_PORTRAIT, NICONICO_COMMENTS_SEPARATE_PORTRAIT));
+    public static final BooleanSetting NICONICO_COMMENTS_HIDE_CROWDED = new BooleanSetting("morphe_niconico_comments_hide_crowded", FALSE, parent(NICONICO_COMMENTS));
     /** Max comment length slider value that shows all comments. */
     public static final int NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT = 100;
     public static final IntegerSetting NICONICO_COMMENTS_MAX_LENGTH = new IntegerSetting("morphe_niconico_comments_max_length", NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT, parent(NICONICO_COMMENTS));
@@ -987,6 +1001,7 @@ public class Settings extends SharedYouTubeSettings {
     private static final StringSetting  DEPRECATED_SB_CATEGORY_UNSUBMITTED = new StringSetting("sb_unsubmitted", SKIP_AUTOMATICALLY.morpheKeyValue, false, false);
     private static final StringSetting  DEPRECATED_SB_CATEGORY_UNSUBMITTED_COLOR = new StringSetting("sb_unsubmitted_color", "#FFFFFFFF", false, false);
     private static final BooleanSetting DEPRECATED_LOCAL_QUEUE = new BooleanSetting("morphe_local_queue", FALSE);
+    private static final BooleanSetting DEPRECATED_QUEUE_OVERRIDE_FLYOUT_MENU = new BooleanSetting("morphe_queue_override_flyout_menu", TRUE);
     private static final BooleanSetting DEPRECATED_DISABLE_TRANSLUCENT_STATUS_BAR = new BooleanSetting("morphe_disable_translucent_status_bar", FALSE);
     private static final BooleanSetting DEPRECATED_DISABLE_TRANSLUCENT_NAVIGATION_BAR_LIGHT = new BooleanSetting("morphe_disable_translucent_navigation_bar_light", FALSE);
     private static final BooleanSetting DEPRECATED_DISABLE_TRANSLUCENT_NAVIGATION_BAR_DARK = new BooleanSetting("morphe_disable_translucent_navigation_bar_dark", FALSE);
@@ -1112,6 +1127,15 @@ public class Settings extends SharedYouTubeSettings {
         if (DEPRECATED_LOCAL_QUEUE.get()) {
             QUEUE_TYPE.save(QueueType.LOCAL);
             DEPRECATED_LOCAL_QUEUE.resetToDefault();
+        }
+
+        // "Override feed flyout queue button" was a switch of the Morphe queue. Turned off,
+        // the stock queue buttons kept YouTube's queue, which is now the Default queue type.
+        if (!DEPRECATED_QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
+            if (QUEUE_TYPE.get() == QueueType.MORPHE) {
+                QUEUE_TYPE.save(QueueType.DEFAULT);
+            }
+            DEPRECATED_QUEUE_OVERRIDE_FLYOUT_MENU.resetToDefault();
         }
 
         // The positions of the Search, Watch later and Settings buttons were indexes in the list of
@@ -1378,6 +1402,12 @@ public class Settings extends SharedYouTubeSettings {
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_TRAVEL_DURATION,
                 3, 15, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_DISPLAY_AREA,
+                10, 100, 10, "%"));
+        SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_PORTRAIT_FONT_SIZE,
+                12, 40, 1, "sp"));
+        SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_PORTRAIT_TRAVEL_DURATION,
+                3, 15, 1, "s"));
+        SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_PORTRAIT_DISPLAY_AREA,
                 10, 100, 10, "%"));
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_MAX_LENGTH,
                 10, NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT, 10, "", 1,

@@ -793,6 +793,17 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">መንካትን ለመፈለግ ያብሩ</string>
   <string name="morphe_tap_to_seek_summary">ከማስeret ይልቅ ወደዚያ ቦታ ለመዝለል በ ፍለጋ አሞልያው ላይ የትም ቦታ ይጫኑ</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">ብጁ የseekbar thumb</string>
+  <string name="morphe_custom_seekbar_thumb_title">ብጁ የseekbar thumbን አግብር</string>
+  <string name="morphe_custom_seekbar_thumb_summary">የseekbar thumbን በብጁ ምስል ወይም በanimated GIF ይተኩ</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">የThumb ምስል</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">ከመሣሪያው ማከማቻ ምስል ወይም animated GIF ይምረጡ</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">የተመረጠው ፋይል የሚደገፍ ምስል አይደለም</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">የተበየነ የሲክባር ታም ምስል አልተገኘም</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">የታም መጠን</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">ከሲክባር ጋር ያስማማ</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">ኦሪጅናል መጠን</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">ወደ ግራ የመጥረግ ምልክት</string>
   <string name="morphe_swipe_right_zone_title">ወደ ቀኝ የመጥረግ ምልክት</string>
@@ -1771,6 +1782,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">አስተያየቶች ስክሪኑን ለማቋረጥ የሚወስዱት ሰከንዶች። አነስተኛ እሴቶች በፍጥነት ይንቀሳቀሳሉ</string>
   <string name="morphe_niconico_comments_display_area_title">የማሳያ ቦታ</string>
   <string name="morphe_niconico_comments_display_area_summary">ከላይ ጀምሮ አስተያየቶቹ ምን ያህል የቪዲዮ ማጫወቻውን እንደሚጠቀሙ ይወስናል። ዝቅተኛ እሴቶች የቪዲዮውን የታችኛውን ክፍል ክፍት ያደርጋሉ</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">የሚደራረቡ አስተያየቶችን ደብቅ</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">የማሳያ ቦታው ሲሞላ፣ አዳዲስ አስተያየቶች ከሌሎች አስተያየቶች ጋር ከመደራረብ ይልቅ ይደበቃሉ</string>
   <string name="morphe_niconico_comments_max_length_title">የአስተያየት ከፍተኛ ርዝመት</string>
   <string name="morphe_niconico_comments_max_length_summary">ከዚህ የበለጠ ቁምፊዎች ያላቸውን አስተያየቶች ይደብቃል። እያንዳንዱ ኢሞጂ እንደ አንድ ቁምፊ ይቆጠራል</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ገደብ የለም</string>

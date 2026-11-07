@@ -7,7 +7,6 @@
 
 package app.morphe.patches.youtube.interaction.feedactions
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
@@ -20,9 +19,7 @@ import app.morphe.patches.youtube.misc.feedcards.feedVideoCardsHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FeedVideoActionsPatch;"
@@ -55,18 +52,9 @@ val feedVideoActionsPatch = patch(
             SwitchPreference("morphe_feed_watch_later_button", summary = true),
         )
 
-        // Feed videos are Litho components and have no views of their own,
-        // so the root host of each video is found when it is laid out
-        // and the Watch later button is drawn on its overlay.
-        FeedComponentHostLayoutFingerprint.method.apply {
-            findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
-                addInstruction(
-                    index,
-                    "invoke-static { p0 }, $EXTENSION_CLASS->" +
-                            "onComponentHostLayout(Lcom/facebook/litho/ComponentHost;)V"
-                )
-            }
-        }
+        // The root host of each video is found by the layout hook of feedVideoCardsHookPatch,
+        // which gives every laid out card to the extension with FeedVideoCardsPatch.onCardLaidOut,
+        // so no layout hook of this patch is needed.
 
         // The touches of the root host decide the long press and the Watch later button.
         // When the extension handles the touch, it is not given to the children.

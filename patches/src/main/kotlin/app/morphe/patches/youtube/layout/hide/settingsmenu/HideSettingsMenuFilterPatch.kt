@@ -7,21 +7,18 @@
 
 package app.morphe.patches.youtube.layout.hide.settingsmenu
 
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settingsmenu.HIDE_MATCHING_METHOD
 import app.morphe.patches.shared.misc.settingsmenu.SETTINGS_MENU_FILTER_CLASS
 import app.morphe.patches.shared.misc.settingsmenu.injectHideMatchingHelper
 import app.morphe.patches.shared.misc.settingsmenu.injectSettingsMenuFilterHook
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.fix.preference.addPreferenceScreenHook
+import app.morphe.patches.youtube.misc.fix.preference.preferenceScreenHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.addInstructionsAtControlFlowLabel
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/SettingsMenuFilterPatch;"
@@ -33,7 +30,8 @@ val hideSettingsMenuFilterPatch = patch(
 ) {
     dependsOn(
         settingsPatch,
-        sharedExtensionPatch
+        sharedExtensionPatch,
+        preferenceScreenHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -52,42 +50,22 @@ val hideSettingsMenuFilterPatch = patch(
         injectSettingsMenuFilterHook(EXTENSION_CLASS)
         injectHideMatchingHelper()
 
-        // Reuse the method's own getPreferenceScreen call; fragmentRegister is dead after it.
-        PreferenceScreenSyntheticFingerprint.let {
-            it.method.apply {
-                val getPreferenceScreenIndex = it.instructionMatches[1].index
-                val fragmentRegister =
-                    getInstruction<FiveRegisterInstruction>(getPreferenceScreenIndex).registerC
-                val getPreferenceScreenReference =
-                    getInstruction<ReferenceInstruction>(getPreferenceScreenIndex).reference
+        addPreferenceScreenHook(2) { screenRegister, (needlesRegister, nullRegister) ->
+            """
+                invoke-static { }, $EXTENSION_CLASS->getNeedles()[Ljava/lang/String;
+                move-result-object v$needlesRegister
+                if-eqz v$needlesRegister, :ignore
 
-                val insertIndex = it.instructionMatches.last().index
-                val screenRegister = findFreeRegister(insertIndex, fragmentRegister)
-                val nullRegister = findFreeRegister(insertIndex, fragmentRegister, screenRegister)
+                invoke-static { }, $SETTINGS_MENU_FILTER_CLASS->beginCapture()V
 
-                addInstructionsAtControlFlowLabel(
-                    insertIndex,
-                    """
-                        invoke-virtual { v$fragmentRegister }, $getPreferenceScreenReference
-                        move-result-object v$screenRegister
-                        if-eqz v$screenRegister, :ignore
+                const/4 v$nullRegister, 0x0
+                invoke-virtual { v$screenRegister, v$needlesRegister, v$nullRegister }, $HIDE_MATCHING_METHOD
 
-                        invoke-static { }, $EXTENSION_CLASS->getNeedles()[Ljava/lang/String;
-                        move-result-object v$fragmentRegister
-                        if-eqz v$fragmentRegister, :ignore
+                invoke-static { }, $SETTINGS_MENU_FILTER_CLASS->endCapture()V
 
-                        invoke-static { }, $SETTINGS_MENU_FILTER_CLASS->beginCapture()V
-
-                        const/4 v$nullRegister, 0x0
-                        invoke-virtual { v$screenRegister, v$fragmentRegister, v$nullRegister }, $HIDE_MATCHING_METHOD
-
-                        invoke-static { }, $SETTINGS_MENU_FILTER_CLASS->endCapture()V
-
-                        :ignore
-                        nop
-                    """
-                )
-            }
+                :ignore
+                nop
+            """
         }
     }
 }

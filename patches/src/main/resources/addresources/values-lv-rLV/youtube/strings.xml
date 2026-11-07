@@ -793,6 +793,17 @@ Lai to labotu, ieslēdziet \"Viltot video straumes\" un mainiet \"Privāto klien
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Iespējot pieskārumu meklēšanai</string>
   <string name="morphe_tap_to_seek_summary">Nospiediet jebkurā vietā meklēšanas joslā, lai pārejiet uz šo pozīciju, nevis velkot to</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Sairvestības rādītāja pielaikots pogas elements</string>
+  <string name="morphe_custom_seekbar_thumb_title">Kārtot pielaikotu sairvestības rādītāja pogas elementu</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Aiznomāt sairvestības rādītāja pogas elementu ar pielaikotu attēlu vai animētu GIF failu</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Pogas elementa attēls</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Atlasiet attēlu vai animētu GIF failu no ierīces atmiņas</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Atlasītais fails nav atbalstīts attēls</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Pielaikotais sairvestības rādītāja pogas elementa attēls neatrodīts</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Pogas elementa izmērs</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Saskaņot ar sairvestības rādītāju</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Oriģinālais izmērs</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Slaucības žests pa kreisi</string>
   <string name="morphe_swipe_right_zone_title">Slaucības žests pa labi</string>
@@ -1770,6 +1781,8 @@ Automātiskā ierakstīšana ir neobligāta. Tā tiek apturēta inkognito režī
   <string name="morphe_niconico_comments_travel_duration_summary">Cik sekundes komentāriem vajag, lai šķērsotu ekrānu. Mazākas vērtības nozīmē ātrāku kustību</string>
   <string name="morphe_niconico_comments_display_area_title">Rādīšanas zona</string>
   <string name="morphe_niconico_comments_display_area_summary">Cik lielu s 인수tāspeleriera daļu no augšas izmanto komentāri. Zemākas vērtības atstāj video apakšdaļu tukšu</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Slēpt komentārus, kas pārklājtos</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Ja attēlošanas zona ir pilna, jaunie komentāri tiek slēpti, lai tie nepārklājtu citus komentārus</string>
   <string name="morphe_niconico_comments_max_length_title">Komentāra maksimālais garums</string>
   <string name="morphe_niconico_comments_max_length_summary">Slēpj komentārus, kamēr rakstzīmju skaits pārsniedz šo vērtību. Katrs emoji tiek skaitīts kā viens rakstzīme</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez ierobežojuma</string>

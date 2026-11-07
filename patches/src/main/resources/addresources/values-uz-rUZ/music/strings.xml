@@ -702,7 +702,7 @@ Talab qilinadigan cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_show_section_title">Bo\'lim teglarini ko\'rsatish</string>
   <string name="morphe_music_lyrics_show_section_summary">Matnning har bir yangi bo\'limini kichik teglar bilan belgilang, masalan, Kuplet yoki Naqorat</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Nusxalash tugmasini ko‘rsatish</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Asl matnni oddiy matn sifatida nusxalash uchun bosing; xom matn manba faylini Yuklab olishlar papkasiga saqlash uchun uzoq bosib turing</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Asl matnni oddiy matn sifatida nusxalash uchun bosing; xom matn manba faylini va konvertatsiya qilingan TTML faylini Yuklab olishlar papkasiga saqlash uchun uzoq bosing</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Tarjima tugmasini ko‘rsatish</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Tarjimani yoqish yoki o\'chirish uchun bosing; faqat tarjima uchun uzoq bosib turing. Yoqilgan tarjima provayderlaridan ko\'rsatilgan tartibda foydalaniladi</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Romanizatsiya yoki Transliteratsiya tugmasini ko\'rsatish</string>
@@ -718,7 +718,7 @@ Talab qilinadigan cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Xitoy va kanton belgilari (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Xitoy so\'zlari (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grek, slavyan kirill (jumladan rus, ukrain, bolgar, serb, belarus, makedon tillari), gruzin, arman, ivrit, arab, amhar va suryaniy transliteratsiyasi (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s o\'qilmoqda: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">O\'qilmoqda %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Yangilash tugmasini ko¢rsatish</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Keyingi matn nomzodiga o\'tish uchun bosing; qo\'shiq nomi va ijrochi bo\'yicha matnni qidirish uchun uzoq bosib turing</string>
   <string name="morphe_music_lyrics_search_dialog_title">Matnlarni qidirish</string>
@@ -727,6 +727,7 @@ Talab qilinadigan cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_search_empty">Qo\"shiq nomi va ijrochini kiriting</string>
   <string name="morphe_music_lyrics_search_no_providers">Yoqilgan provayderlarning hech biri boshqa qo\"shiqlarni qidira olmaydi</string>
   <string name="morphe_music_lyrics_saved">Saqlandi</string>
+  <string name="morphe_music_lyrics_written_by">Yozuvchi: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Sinxronizatsiya qilingan so¢zlarni yoki bo¢g­inlarni belgilash</string>
   <string name="morphe_music_lyrics_word_sync_summary">Mavjud bo\'lganda, so\'zma-so\'z matnlarga ustunlik bering. Matnlar so\'z vaqti ma\'lumotlarini o\'z ichiga olgan bo\'lsa, musiqaga mos ravishda har bir so\'z yoki bo\'g\'inni belgilaydi</string>
   <string name="morphe_music_lyrics_line_scale_title">Faol boēlmagan qatorlarni kichraytirish</string>
@@ -742,7 +743,7 @@ Talab qilinadigan cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Dinamik fonni animatsiya qilish</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Ijro davomida fonni harakatlantirish va agar YouTube Music mikrofon ruxsatiga ega bo\'lsa, uni musiqa bilan pulsatsiya qilish. Batareyani kamroq sarflash uchun statik fon rejimiga o\'tkazing</string>
   <string name="morphe_music_lyrics_mediasession_title">Blokirovka ekranida MediaSession matnlarini ko\'rsatish</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Bloklash ekrani, Android Auto va Bluetooth-da joriy satrni ko\'rsatadi. Android 11 yoki undan yangiroq versiya talab qilinadi</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Bloklash ekrani, Android Auto va Bluetooth-da joriy satrni ko\'rsatadi</string>
   <string name="morphe_music_lyrics_miniplayer_title">Miniplayer matnlarini ko\'rsatish</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Miniplayerda joriy satrni ko\'rsatadi, trek subtitle qismiga ko\'chirilgan</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Qo\"shiq nomi/ijrochi formati</string>
@@ -779,6 +780,8 @@ Ikkala chegaraga ham ta'sir qiladi. 1.75 da to'rtta to'liq kenglikdagi belgi 7 g
   <string name="morphe_music_lyrics_force_capitalize_summary">Matnning har bir qatorining birinchi harfini katta qiladi</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Oxirgi tinish belgilarini olib tashlash</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Lyrics qatorlari oxiridagi nuqta, vergul, ikki nuqta va nuqta-vergullarni olib tashlaydi. So\'roq belgilari, undov belgilari, ko\'p nuqtalar, qo\'shtirnoqlar va qavslar saqlab qolinadi</string>
+  <string name="morphe_music_lyrics_han_form_title">Xitoy shaklini o\'zgartirish</string>
+  <string name="morphe_music_lyrics_han_form_summary">Yoqilganda, matnlarni soddalashtirilgan va an\'anaviy yozuvlar orasida o\'zgartirish uchun tarjima maqsadli tilingizga amal qiladi</string>
   <string name="morphe_music_lyrics_text_size_title">Matn hajmi</string>
   <string name="morphe_music_lyrics_text_size_summary">Lirikalar matnining hajmi</string>
   <string name="morphe_music_lyrics_offset_ms_title">Global vaqt siljishi</string>
@@ -794,6 +797,7 @@ Ikkala chegaraga ham ta'sir qiladi. 1.75 da to'rtta to'liq kenglikdagi belgi 7 g
   <string name="morphe_music_lyrics_translated_by_ai">%s tomonidan tarjima qilingan</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s tomonidan romanizatsiya qilingan</string>
   <string name="morphe_music_lyrics_romanized_by_local">%s tomonidan romanizatsiya qilingan</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s bilan)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Rime tomonidan romanizatsiya qilingan (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Tarjima qilindi</string>
@@ -809,6 +813,8 @@ Ikkala chegaraga ham ta'sir qiladi. 1.75 da to'rtta to'liq kenglikdagi belgi 7 g
   <string name="morphe_romanize_language_DEFAULT">Avtomatik</string>
   <string name="morphe_music_lyrics_romanizing">Romanizatsiya qilinmoqda…</string>
   <string name="morphe_music_lyrics_romanize_failed">Matnni romanizatsiya qilib bo\'lmadi</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Yo\'q</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Ruby maqsadi</string>
   <string name="morphe_music_lyrics_translate_only">Faqat tarjima qilingan</string>
   <string name="morphe_music_lyrics_romanize_only">Faqat romanizatsiya qilingan</string>
   <string name="morphe_music_lyrics_dual_only">Dual rejim</string>
@@ -839,7 +845,7 @@ Matnlar Morphe bilan bog\"liq bo\"lmagan, u tomonidan homiylik qilinmagan yoki t
   <string name="morphe_music_lyrics_hide_info_title">Mualliflik qatorini yashirish</string>
   <string name="morphe_music_lyrics_hide_info_summary">Matn ostida ko\'rsatilgan mualliflik qatorini yashirish</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Tarjima va romanizatsiyani almashtirish</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Matn ostidagi tarjima va romanizatsiyaning ko\'rinish tartibini o\'zgartiradi</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Tarjimani matnning yuqorisiga ko\'chiradi; o\'qish va romanizatsiya pastda qoladi</string>
   <string name="morphe_music_lyrics_force_center_title">Matnlarni har doim markazga tekislash</string>
   <string name="morphe_music_lyrics_force_center_summary">YOQILGAN bo\"lganda har bir qator markazga joylashtiriladi va manba tekislanishi, shu jumladan dueti tomonlari e\'tiborsiz qoldiriladi; O\"CHIRILGAN bo\"lganda matnning asl tekislanishi saqlanib qoladi</string>
   <string name="morphe_music_lyrics_providers_keep_one">Kamida bitta provayder yoqilgan bo\"lishi kerak</string>
@@ -847,14 +853,7 @@ Matnlar Morphe bilan bog\"liq bo\"lmagan, u tomonidan homiylik qilinmagan yoki t
   <string name="morphe_music_lyrics_romanization_provider_title">Romanizatsiya yoki transliteratsiya</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Oflayn lug\"at</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime so\"zlar ro\"yxati</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Oflayn lug\'at</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Ruby skripti</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Ruby tugmasini ko\'rsatish</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Matn ustidagi ruby o\'qishlarini yoqish/o\'chirish uchun bosing; hiragana va katakana o\'rtasida almashish uchun uzoq bosib turing. Faollashtirilgan ruby provayderlaridan ro\'yxatdagi tartibda foydalanadi</string>
-  <string name="morphe_music_lyrics_ruby_generating">Ruby yaratilmoqda…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU transliteratori</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Bo\"limlarni AI yordamida aniqlash</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Faqat provayder Naqarot yoki Kuplet kabi bo\'lim belgilarini yubormagan va ularni OpenAI bilan mos keladigan modelingiz aniqlagan holatlarda ishlatiladi. Qatorni tahrirlash uning promptini ham ochadi</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL manzili (masalan, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -877,6 +876,7 @@ Matnlar Morphe bilan bog\"liq bo\"lmagan, u tomonidan homiylik qilinmagan yoki t
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Modelni tanlang</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Modellarni yuklab bo\'lmadi. API kalitini yoki ulanishni tekshiring.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Promt</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby prompti (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Asosiy URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Xizmat presetlari</string>

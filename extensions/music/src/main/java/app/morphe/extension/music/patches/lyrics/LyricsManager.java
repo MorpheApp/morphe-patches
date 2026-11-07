@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletionService;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorCompletionService;
@@ -46,7 +47,6 @@ import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
 import app.morphe.extension.music.patches.lyrics.model.MiniLyricsFormatter;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.TrackVersion;
-import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
 import app.morphe.extension.music.patches.lyrics.requests.LrcRedProvider;
@@ -56,6 +56,7 @@ import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.patches.lyrics.storage.TrackOffsetStore;
 import app.morphe.extension.music.patches.lyrics.ui.LyricsPanelInstaller;
+import app.morphe.extension.music.patches.lyrics.utils.CharactersConverter;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -80,6 +81,10 @@ public final class LyricsManager {
     private static final long SEEK_THRESHOLD_MS = 1000;
     /** A longer frame gap, such as after the app was in the background, is not extrapolated over. */
     private static final long MAX_FRAME_STEP_MS = 100;
+    /** Shorter tracks are too short for where the lyrics end to say anything. */
+    private static final int MIN_CUT_OFF_CHECK_SECONDS = 60;
+    /** Lyrics ending before 15% of the track are taken as cut off. */
+    private static final long MIN_COMPLETE_MS_PER_SECOND = 150;
     private static final int FIRST_PAINT_HOLD_MS = 800;
     private final ExecutorService lookupExecutor = Executors.newFixedThreadPool(8);
     private final ExecutorService fetchExecutor = Executors.newFixedThreadPool(16);
@@ -211,6 +216,7 @@ public final class LyricsManager {
     private String unconfirmedVideoId;
     private int rebindingGeneration;
     private boolean staleLyricsDropped;
+
     private LyricsManager() {
         VideoInformation.addVideoIdListener(videoId -> reloadCurrentTrack());
         LyricsPanelInstaller.registerSettingsListener();
@@ -1991,15 +1997,15 @@ public final class LyricsManager {
                                    Set<String> failedSet, AtomicBoolean threadFailed) {
         attempted.add(provider.name());
         try {
-            LyricsProvider.FetchResult fr = provider.fetch(vq.track());
-            if (fr == null || fr.lyrics() == null || fr.lyrics() == Lyrics.NOT_FOUND) {
+            LyricsProvider.FetchResult fr = fetchWithRetry(provider, vq);
+            if (fr == null) {
                 return null;
             }
             withResults.add(provider.name());
             TrackInfo query = vq.track();
             return new ProviderFetch(fr.lyrics(), fr.matchScore(query), fr.isHighMatch(query),
                     fr.isBlind(), vq.penalty());
-        } catch (InterruptedException | java.util.concurrent.CancellationException ex) {
+        } catch (InterruptedException | CancellationException ex) {
             Thread.currentThread().interrupt();
             return null;
         } catch (Exception ex) {
@@ -2011,6 +2017,48 @@ public final class LyricsManager {
             threadFailed.set(true);
             return null;
         }
+    }
+
+    /**
+     * A result that stops far short of the track was most likely cut off in transit, so it is asked
+     * for once more. A failed fetch is not: most failures are a provider that is down or refusing
+     * the request, and the lookup already moves on to the next provider.
+     */
+    @Nullable
+    private static LyricsProvider.FetchResult fetchWithRetry(LyricsProvider provider,
+                                                             VariantQuery vq) throws Exception {
+        final LyricsProvider.FetchResult result = provider.fetch(vq.track());
+        if (!hasLyrics(result)) {
+            return null;
+        }
+        if (!isCutOff(result.lyrics(), vq.track())) {
+            return result;
+        }
+        try {
+            final LyricsProvider.FetchResult retry = provider.fetch(vq.track());
+            return hasLyrics(retry) ? retry : result;
+        } catch (InterruptedException | CancellationException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Provider retry failed: " + provider.name(), ex);
+            return result;
+        }
+    }
+
+    private static boolean hasLyrics(@Nullable LyricsProvider.FetchResult result) {
+        return result != null && result.lyrics() != null && result.lyrics() != Lyrics.NOT_FOUND;
+    }
+
+    /** Whether synced lyrics of a track of known length end before the track is barely started. */
+    private static boolean isCutOff(Lyrics lyrics, TrackInfo track) {
+        if (track.durationSeconds() < MIN_CUT_OFF_CHECK_SECONDS) {
+            return false;
+        }
+        long lastEndMs = 0;
+        for (LyricsLine line : lyrics.lines()) {
+            lastEndMs = Math.max(lastEndMs, line.endTimeMs());
+        }
+        return lastEndMs > 0 && lastEndMs < track.durationSeconds() * MIN_COMPLETE_MS_PER_SECOND;
     }
 
     private void publishFromLookup(int id, Lyrics lyrics) {
@@ -2216,8 +2264,9 @@ public final class LyricsManager {
                             Lyrics.fixAnomalousWordTimestamps(lyrics.lines())),
                     lyrics.providerName(), true, lyrics.romanization(),
                     lyrics.translations(), lyrics.romanizations(),
-                    lyrics.songwriters(), lyrics.rawFormat(),
-                    lyrics.formatType(), lyrics.sourceUrl(), lyrics.about());
+                    lyrics.songwriters(), lyrics.credits(), lyrics.rawFormat(),
+                    lyrics.formatType(), lyrics.sourceUrl(), lyrics.about(),
+                    lyrics.agentNames());
         }
         return lyrics;
     }

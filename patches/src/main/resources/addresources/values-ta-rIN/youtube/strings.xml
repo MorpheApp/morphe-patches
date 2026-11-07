@@ -189,6 +189,17 @@ Second \"item\" text"</string>
   <string name="morphe_slide_to_seek_summary">2x வேகத்தில் இயக்குவதற்குப் பதிலாக, ஸ்லைடு செய்து தேடுவதற்கு வீடியோவை அழுத்திப் பிடிக்கவும்</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_summary">இழுப்பதற்குப் பதிலாக அந்த இடத்திற்கு நேரடியாகச் செல்ல சீக் பாரில் எங்காவது தட்டவும்</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">தனிப்பயன் சீக் பார் தம்ப்</string>
+  <string name="morphe_custom_seekbar_thumb_title">தனிப்பயன் சீக் பார் தம்ப்பை இயக்கு</string>
+  <string name="morphe_custom_seekbar_thumb_summary">சீக் பார் தம்ப்பை ஒரு தனிப்பயன் படம் அல்லது அனிமேட்டட் GIF கொண்டு மாற்றவும்</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">தம்ப் படம்</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">சாதன சேமிப்பகத்திலிருந்து ஒரு படம் அல்லது அனிமேட்டட் GIF-ஐத் தேர்ந்தெடுக்கவும்</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">தேர்ந்தெடுக்கப்பட்ட கோப்பு ஆதரவு பெற்ற படம் அல்ல</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">தனிப்பயன் seekbar thumb படம் காணப்படவில்லை</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Thumb அளவு</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Seekbar-க்கு பொருத்தமாக மாற்றவும்</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">அசல் அளவு</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_seek_title">தேடுவதற்கு ஸ்வைப் செய்யவும்</string>
   <string name="morphe_swipe_seek_summary">சீக் பாரை நகர்த்த முழுத்திரை பிளேயரில் இடது அல்லது வலதுபுறமாக ஸ்வைப் செய்யவும், பிறகு சீக் செய்ய அதை விடுவிக்கவும்</string>
@@ -398,6 +409,8 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
   <string name="morphe_niconico_comments_display_area_title">காட்சிப் பகுதி</string>
   <string name="morphe_niconico_comments_display_area_summary">பிளேயரின் மேல் பகுதியிலிருந்து, கருத்துகள் எவ்வளவு இடத்தை எடுத்துக்கொள்ள வேண்டும் என்பதைக் குறிக்கிறது. குறைந்த மதிப்புகள் வீடியோவின் கீழ் பகுதியைத் தெளிவாக வைத்திருக்கும்</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">ஒன்றின் மேல் ஒன்று வரும் கருத்துகளை மறைக்கவும்</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">காட்சிப் பகுதி முழுமையாக இருக்கும்போது, மற்ற கருத்துகளின் மேல் படிவதற்குப் பதிலாக புதிய கருத்துகள் மறைக்கப்படும்</string>
   <string name="morphe_niconico_comments_max_refresh_rate_title">அதிகபட்ச புதுப்பிப்பு விகிதம்</string>
   <string name="morphe_niconico_comments_max_refresh_rate_summary">கருத்துக்கள் நகரும்போது பயன்படுத்தப்படும் மிக உயர்ந்த திரை புதுப்பிப்பு விகிதம். குறைந்த மதிப்புகள் குறைந்த பேட்டரியைப் பயன்படுத்தும்</string>
   <string name="morphe_niconico_comments_live_streams_title">நேரடி ஒளிபரப்புகளில் காட்டு</string>

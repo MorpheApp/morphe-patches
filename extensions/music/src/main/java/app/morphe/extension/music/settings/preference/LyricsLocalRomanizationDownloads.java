@@ -204,7 +204,10 @@ public final class LyricsLocalRomanizationDownloads {
         if (picked[PINYIN] && !PinyinDictStore.isComplete()) {
             return false;
         }
-        return !picked[CLDR] || CldrTransformsStore.isReady();
+        if (picked[CLDR] && !CldrTransformsStore.isReady()) {
+            return false;
+        }
+        return true;
     }
 
     /** Whether a fetch the user asked for is running and not finished yet. */

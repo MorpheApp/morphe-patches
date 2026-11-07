@@ -794,6 +794,17 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">タップによるシークを有効化</string>
   <string name="morphe_tap_to_seek_summary">シークバーをタップすると、ドラッグせずにその位置にジャンプします</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">カスタムシークバーつまみ</string>
+  <string name="morphe_custom_seekbar_thumb_title">カスタムシークバーつまみを有効にする</string>
+  <string name="morphe_custom_seekbar_thumb_summary">シークバーのつまみをカスタム画像またはアニメーションGIFに置き換えます</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">つまみの画像</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">デバイスのストレージから画像またはアニメーションGIFを選択してください</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">選択されたファイルはサポートされている画像ではありません</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">カスタムシークバーつまみの画像が見つかりません</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">つまみのサイズ</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">シークバーに合わせる</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">元のサイズ</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">左側縦スワイプ ジェスチャー</string>
   <string name="morphe_swipe_right_zone_title">右側縦スワイプ ジェスチャー</string>
@@ -1772,6 +1783,8 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_niconico_comments_travel_duration_summary">ニコニコ風コメントが表示されてから画面を横切って消えるまでの時間 (秒)。この値を小さくすると、コメントの移動速度が速くなります</string>
   <string name="morphe_niconico_comments_display_area_title">表示エリア</string>
   <string name="morphe_niconico_comments_display_area_summary">プレーヤーの上端からどの程度の範囲までコメントを使用するかを指定します。値を小さくすると、ビデオの下部をクリアに保つことができます</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">重なり合うコメントを非表示にする</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">表示領域がいっぱいになったとき、他のコメントと重なる代わりに新しいコメントを非表示にします</string>
   <string name="morphe_niconico_comments_max_length_title">コメントの文字数制限</string>
   <string name="morphe_niconico_comments_max_length_summary">この値より文字数が多いニコニコ風コメントを非表示にします。絵文字はそれぞれ 1 文字としてカウントされます</string>
   <string name="morphe_niconico_comments_max_length_no_limit">制限なし</string>

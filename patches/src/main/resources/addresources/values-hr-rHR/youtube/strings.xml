@@ -783,6 +783,17 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Omogu tapanje za pretraživanje</string>
   <string name="morphe_tap_to_seek_summary">Dodirnite bilo gdje na traci za pomicanje kako biste preskočili na tu poziciju umjesto povlačenja</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Prilagođeni pomaknice pokazivač</string>
+  <string name="morphe_custom_seekbar_thumb_title">Omogući prilagođeni pomaknice pokazivač</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Zamijenite pokazivač pomaknice prilagođenom slikom ili animiranim GIF-om</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Slika pokazivača</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Odaberite sliku ili animirani GIF iz memorije uređaja</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Odabrana datoteka nije podržana slika</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Slika za custom seekbar thumb nije pronađena</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Veličina thumba</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Prilagodi seekbaru</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Originalna veličina</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gesta povlačenja ulijevo</string>
   <string name="morphe_swipe_right_zone_title">Gesta povlačenja udesno</string>
@@ -1753,6 +1764,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">Koliko sekundi komentarima treba da pređu ekran. Manje vrijednosti znače brže kretanje</string>
   <string name="morphe_niconico_comments_display_area_title">Područje prikaza</string>
   <string name="morphe_niconico_comments_display_area_summary">Koji dio playera, od vrha, komentari zauzimaju. Niže vrijednosti ostavljaju donji dio videa čistim</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Sakrij komentare koji bi se preklopili</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Kada je područje prikaza puno, novi komentari se skrivaju umjesto da se preklapaju s drugim komentarima</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimalna duljina komentara</string>
   <string name="morphe_niconico_comments_max_length_summary">Skriva komentare s više znakova od navedenog. Svaki emoji računa se kao jedan znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez ograničenja</string>

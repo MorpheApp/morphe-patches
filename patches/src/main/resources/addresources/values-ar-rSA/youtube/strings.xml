@@ -797,6 +797,17 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">تمكين النقر للتمرير</string>
   <string name="morphe_tap_to_seek_summary">النقر في أي مكان على شريط التقدم للانتقال إلى ذلك الموضع بدلًا من السحب</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">مقبض شريط البحث المخصص</string>
+  <string name="morphe_custom_seekbar_thumb_title">تمكين مقبض شريط البحث المخصص</string>
+  <string name="morphe_custom_seekbar_thumb_summary">استبدل مقبض شريط البحث بصورة مخصصة أو صورة GIF متحركة</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">صورة المقبض</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">اختر صورة أو صورة GIF متحركة من ذاكرة تخزين الجهاز</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">الملف المحدد ليس صورة مدعومة</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">صورة مقبض شريط التمرير المخصصة غير موجودة</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">حجم المقبض</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">ملاءمة شريط التمرير</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">الحجم الأصلي</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">إيماءة التمرير لليسار</string>
   <string name="morphe_swipe_right_zone_title">إيماءة التمرير لليمين</string>
@@ -1775,6 +1786,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">عدد الثواني التي تستغرقها التعليقات لعبور الشاشة. القيم الأقل تجعلها تتحرك بشكل أسرع</string>
   <string name="morphe_niconico_comments_display_area_title">مساحة العرض</string>
   <string name="morphe_niconico_comments_display_area_summary">كم من مساحة مشغل الفيديو تستخدمه التعليقات من الأعلى. القيم الأقل تحافظ على وضوح الجزء السفلي من الفيديو</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">إخفاء التعليقات التي قد تتداخل</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">عندما تكون منطقة العرض ممتلئة، يتم إخفاء التعليقات الجديدة بدلاً من تداخلها مع التعليقات الأخرى</string>
   <string name="morphe_niconico_comments_max_length_title">أقصى طول للتعليق</string>
   <string name="morphe_niconico_comments_max_length_summary">يخفي التعليقات التي تحتوي على عدد أحرف أكثر من هذا الحد. يتم احتساب كل رمز تعبيري كحرف واحد</string>
   <string name="morphe_niconico_comments_max_length_no_limit">بلا حدود</string>

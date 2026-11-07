@@ -793,6 +793,17 @@ Para corrigir isso, ative 'Falsificar streams de vídeo' e altere o 'Cliente pad
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Ativar toque para voltar / avançar</string>
   <string name="morphe_tap_to_seek_summary">Toque em qualquer lugar da barra de progresso para pular para aquela posição em vez de arrastar</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Indicador personalizado da barra de progresso</string>
+  <string name="morphe_custom_seekbar_thumb_title">Ativar indicador personalizado da barra de progresso</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Substitua o indicador da barra de progresso por uma imagem personalizada ou um GIF animado</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Imagem do indicador</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Selecione uma imagem ou GIF animado do armazenamento do dispositivo</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">O arquivo selecionado não é uma imagem suportada</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Imagem do indicador personalizado da barra de progresso não encontrada</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Tamanho do indicador</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Ajustar à barra de progresso</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Tamanho original</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gesto de deslizar para a esquerda</string>
   <string name="morphe_swipe_right_zone_title">Gesto de deslizar para a direita</string>
@@ -1770,6 +1781,8 @@ A gravação automática é opcional. Ela é interrompida no modo anônimo ou qu
   <string name="morphe_niconico_comments_travel_duration_summary">Quantos segundos os comentários levam para atravessar a tela. Valores menores movem mais rápido</string>
   <string name="morphe_niconico_comments_display_area_title">Área de exibição</string>
   <string name="morphe_niconico_comments_display_area_summary">Quanto do player, a partir do topo, os comentários utilizam. Valores menores mantêm a parte inferior do vídeo limpa</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Ocultar comentários que se sobreporiam</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Quando a área de exibição estiver cheia, novos comentários serão ocultados em vez de se sobreporem a outros comentários</string>
   <string name="morphe_niconico_comments_max_length_title">Comprimento máximo de comentário</string>
   <string name="morphe_niconico_comments_max_length_summary">Oculta comentários com mais caracteres do que este. Cada emoji conta como um caractere</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sem limite</string>

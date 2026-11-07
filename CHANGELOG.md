@@ -1,3 +1,38 @@
+## [2.2.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v2.1.0...v2.2.0-dev.1) (2026-11-07)
+
+### ✨ New Features
+
+* **Reddit:** Add `High quality avatars` patch ([#4477](https://github.com/MorpheApp/morphe-patches/issues/4477)) ([1f00c87](https://github.com/MorpheApp/morphe-patches/commit/1f00c87d284c19d962371943637e85770a12b8e7))
+* **YouTube - Niconico comments:** Keep comments from running into each other ([#4497](https://github.com/MorpheApp/morphe-patches/issues/4497)) ([cf20941](https://github.com/MorpheApp/morphe-patches/commit/cf209419a0d34d528e31919c7e5c2d55c7da2f95))
+* **YouTube Music - Third-party lyrics:** ttml, ruby, romanization enhancement ([#4439](https://github.com/MorpheApp/morphe-patches/issues/4439)) ([c7c8bb7](https://github.com/MorpheApp/morphe-patches/commit/c7c8bb728cfc43dfa9abaeb572f878fb7a2099af))
+* **YouTube:** Add "Custom seekbar thumb" setting ([#4494](https://github.com/MorpheApp/morphe-patches/issues/4494)) ([abcc9b1](https://github.com/MorpheApp/morphe-patches/commit/abcc9b18e4c6bb0d4d398a261ca8336d25cf5eb6))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Add to queue:** Turning off "Override feed flyout queue button" is lost after it was replaced by "Play next in queue type" ([fb5cf05](https://github.com/MorpheApp/morphe-patches/commit/fb5cf051f0dce6bf7751e3f57faa0a7d912b1d00))
+* **YouTube - Ask flyout menu:** Select suggestions with negative IDs ([#4496](https://github.com/MorpheApp/morphe-patches/issues/4496)) ([cd29774](https://github.com/MorpheApp/morphe-patches/commit/cd29774fcaddf138038dfc1137c4c5526d223b8a))
+* **YouTube - Disable double tap actions:** Two-finger double tap seeks instead of skipping chapters on 21.11+ ([bf91aa5](https://github.com/MorpheApp/morphe-patches/commit/bf91aa5a39b243b3fff31eba1c6b11201b1ea8fb))
+* **YouTube - GmsCore support:** Every account gets the bedtime, break and Shorts feed limit reminders of a supervised account ([4011b15](https://github.com/MorpheApp/morphe-patches/commit/4011b15b9c4c461c9971cf1896e205bb60bae1fa))
+* **YouTube - Hide layout components:** "Hide channel bar" leaves an empty bordered box in the fullscreen engagement panel ([dd40ae2](https://github.com/MorpheApp/morphe-patches/commit/dd40ae2b8762e95958443f02d1a2bf797811648a))
+* **YouTube - Hide player flyout menu components:** "Additional settings", "Ambient mode", "Stable volume" and "Listen with YouTube Music" items are not hidden when their icon has no name in the buffer ([0031ac6](https://github.com/MorpheApp/morphe-patches/commit/0031ac6e6d2bb2619967f2f88ab9060cffd840db))
+* **YouTube - Morphe snackbar:** Reduced snackbar queue timeout to 3 seconds ([75ce67c](https://github.com/MorpheApp/morphe-patches/commit/75ce67c4151066f6441410e5bf8e4b9a9094ace5))
+* **YouTube - Navigation bar:** "Hide Microphone button" does not hide the microphone of the Home search bar ([a184951](https://github.com/MorpheApp/morphe-patches/commit/a184951b4377a5182eb3dd26a34c5c23e1aade86))
+* **YouTube - Navigation bar:** Glass navigation bar cuts the first and the last button on tablets, where the buttons have a minimum width ([88d4844](https://github.com/MorpheApp/morphe-patches/commit/88d4844e7886d27e0d2c3719c8f61589ca81a7a1))
+* **YouTube - Navigation bar:** Incognito and connection status bar covers the bottom edge of the glass navigation bar ([711afdd](https://github.com/MorpheApp/morphe-patches/commit/711afdd57087ab18724dda359b554f8c7a56f124))
+* **YouTube - Niconico comments:** Chat status messages are shown as comments ([#4499](https://github.com/MorpheApp/morphe-patches/issues/4499)) ([241100c](https://github.com/MorpheApp/morphe-patches/commit/241100c448e4f9a2397137967fcf81bbe43e647e))
+* **YouTube - Open system share sheet:** Playing video enters picture-in-picture when the share sheet opens, and Mixes are shared with a link that does not open ([59e9e83](https://github.com/MorpheApp/morphe-patches/commit/59e9e831d4e74d185cd1f2d74fdf5b6b68f814a0))
+* **YouTube - Return YouTube Dislike:** Feed thumbnail like count is missing on cards with the thumbnail beside the texts, such as the search results on tablets ([0a1a178](https://github.com/MorpheApp/morphe-patches/commit/0a1a1786224293b1a70e0db06df90093668dea06))
+* **YouTube - Return YouTube Dislike:** Feed thumbnail like count is missing on the cards of grid rows, such as the channel pages and the feed on tablets ([3e24ded](https://github.com/MorpheApp/morphe-patches/commit/3e24ded40baddb084bcd81822102bdb57eff723a))
+* **YouTube - Return YouTube Dislike:** Feed thumbnail like count is missing on the small thumbnails of list rows, such as the channel videos on phones ([342c1a9](https://github.com/MorpheApp/morphe-patches/commit/342c1a9c57e2c7f2033155c5bbd4f53c23ac74d2))
+* **YouTube - Seekbar:** Full screen seek preview does not cover the sides of a video zoomed to fill the screen ([4e83c67](https://github.com/MorpheApp/morphe-patches/commit/4e83c6722ff069dcf594453111ad63e7c0b617e4))
+* **YouTube - Settings:** App crashes when opening the settings on 21.45, which reuses the registers the settings hooks read the fragment from ([61be996](https://github.com/MorpheApp/morphe-patches/commit/61be99601a35f6282b85923e878debd207de9108))
+* **YouTube Music - Downloads:** Match the renamed page header of older versions ([#4503](https://github.com/MorpheApp/morphe-patches/issues/4503)) ([1822fd7](https://github.com/MorpheApp/morphe-patches/commit/1822fd74e931d604b5085b4ed1932ddd1498c691))
+* **YouTube:** The second feature flag that hides the navigation bar while the keyboard is open is not turned off, so pages keep its wrong padding ([2a01da0](https://github.com/MorpheApp/morphe-patches/commit/2a01da0ab5a6099a6c6d1f9995e826532cd36f6e))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.45.51` ([bd5baed](https://github.com/MorpheApp/morphe-patches/commit/bd5baedb2ca4321d7752f7a3f6894515af459321))
+
 ## [2.1.0](https://github.com/MorpheApp/morphe-patches/compare/v2.0.0...v2.1.0) (2026-11-06)
 
 ### ✨ New Features

@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">فعال‌کردن ضربه برای جست‌وجو</string>
   <string name="morphe_tap_to_seek_summary">برای پرش به آن موقعیت، به جای کشیدن، روی هر جای نوار جست‌وجو ضربه بزنید</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">شست سفارشی نوار جست‌وجو</string>
+  <string name="morphe_custom_seekbar_thumb_title">فعال‌کردن شست سفارشی نوار جست‌وجو</string>
+  <string name="morphe_custom_seekbar_thumb_summary">جایگزینی شست نوار جست‌وجو با یک تصویر سفارشی یا GIF متحرک</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">تصویر شست</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">انتخاب یک تصویر یا GIF متحرک از حافظه دستگاه</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">فایل انتخاب‌شده یک تصویر پشتیبانی‌شده نیست</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">تصویر شست سفارشی نوار جست‌وجو پیدا نشد</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">اندازهٔ شست</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">مناسب با نوار جست‌وجو</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">اندازهٔ اصلی</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">حرکت کشیدن به چپ</string>
   <string name="morphe_swipe_right_zone_title">حرکت کشیدن به راست</string>
@@ -1769,6 +1780,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">تعداد ثانیه‌هایی که نظرات برای عبور از صفحه نیاز دارند. مقادیر کمتر، سرعت را بیشتر می‌کنند</string>
   <string name="morphe_niconico_comments_display_area_title">ناحیه نمایش</string>
   <string name="morphe_niconico_comments_display_area_summary">چه مقدار از پخش‌کننده، از بالا، توسط دیدگاه‌ها اشغال شود. مقادیر کمتر، قسمت پایین ویدیو را خلوت نگه می‌دارند</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">مخفی‌کردن نظراتی که هم‌پوشانی دارند</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">هنگامی که ناحیه نمایش پر باشد، نظرات جدید به‌جای هم‌پوشانی با سایر نظرات، مخفی می‌شوند</string>
   <string name="morphe_niconico_comments_max_length_title">حداکثر طول نظر</string>
   <string name="morphe_niconico_comments_max_length_summary">نظراتی که کاراکترهای بیشتری از این مقدار دارند را مخفی می‌کند. هر ایموجی به عنوان یک کاراکتر در نظر گرفته می‌شود</string>
   <string name="morphe_niconico_comments_max_length_no_limit">بدون محدودیت</string>

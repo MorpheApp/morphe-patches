@@ -1158,6 +1158,26 @@ public final class LayoutComponentsFilter extends Filter {
 
     /**
      * Injection point.
+     *
+     * @return If every element in a box of the fullscreen engagement panel was filtered,
+     *         so the empty box with its rounded border is collapsed, such as with "Hide channel bar".
+     */
+    public static boolean isEngagementPanelBoxEmpty(ViewGroup box) {
+        final int count = box.getChildCount();
+        if (count == 0) {
+            return false;
+        }
+        for (int i = 0; i < count; i++) {
+            View child = box.getChildAt(i);
+            if (child.getVisibility() != View.GONE && child.getMeasuredHeight() > 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Injection point.
      */
     public static boolean hideFloatingMicrophoneButton(final boolean original) {
         return original || Settings.HIDE_FLOATING_MICROPHONE_BUTTON.get();

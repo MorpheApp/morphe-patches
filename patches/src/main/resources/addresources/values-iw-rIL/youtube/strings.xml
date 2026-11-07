@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">הפעל הקשה כדי לדלג</string>
   <string name="morphe_tap_to_seek_summary">הקש בכל מקום בסרגל ההתקדמות כדי לקפוץ למיקום זה במקום לגרור</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">סמן סרגל דילוג מותאם אישית</string>
+  <string name="morphe_custom_seekbar_thumb_title">הפעל סמן סרגל דילוג מותאם אישית</string>
+  <string name="morphe_custom_seekbar_thumb_summary">החלף את סמן סרגל הדילוג בתמונה מותאמת אישית או ב-GIF מונפש</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">תמונת סמן</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">בחר תמונה או GIF מונפש מאחסון המכשיר</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">הקובץ שנבחר אינו תמונה נתמכת</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">תמונת סמן סרגל דילוג מותאמת אישית לא נמצאה</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">גודל סמן</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">התאם לסרגל דילוג</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">גודל מקורי</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">מחוות החלקה שמאלה</string>
   <string name="morphe_swipe_right_zone_title">מחוות החלקה ימינה</string>
@@ -1769,6 +1780,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">כמה שניות לוקח לתגובות לחצות את המסך. ערכים נמוכים יותר נעים מהר יותר</string>
   <string name="morphe_niconico_comments_display_area_title">אזור תצוגה</string>
   <string name="morphe_niconico_comments_display_area_summary">כמה מהנגן, מהחלק העליון, התגובות יתפסו. ערכים נמוכים יותר ישאירו את החלק התחתון של הווידאו נקי</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">הסתר תגובות שעלולות להחפיף</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">כאשר אזור התצוגה מלא, תגובות חדשות מוסתרות במקום להחפיף לתגובות אחרות</string>
   <string name="morphe_niconico_comments_max_length_title">אורך תגובה מקסימלי</string>
   <string name="morphe_niconico_comments_max_length_summary">מסתיר תגובות עם יותר תווים מזה. כל אימוג\'י נחשב כתו אחד</string>
   <string name="morphe_niconico_comments_max_length_no_limit">ללא הגבלה</string>

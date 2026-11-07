@@ -700,7 +700,7 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_show_section_title">सेक्शन टॅग दाखवा</string>
   <string name="morphe_music_lyrics_show_section_summary">गीतिकांमधील प्रत्येक नवीन सेक्शनला Verse किंवा Chorus सारख्या लहान टॅगने लेबल करा</string>
   <string name="morphe_music_lyrics_show_copy_button_title">कॉपी बटण दाखवा</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">मूळ लिरिक्स प्लेन टेक्स्ट म्हणून कॉपी करण्यासाठी टॅप करा; रॉ लिरिक्स सोर्स फाईल डाउनलोड्समध्ये सेव्ह करण्यासाठी दीर्घकाळ दाबा</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">मूळ लिरिक्स प्लेन टेक्स्ट म्हणून कॉपी करण्यासाठी टॅप करा; रॉ लिरिक्स सोर्स फाईल आणि कन्व्हर्ट केलेली TTML फाईल डाउनलोड्समध्ये सेव्ह करण्यासाठी लाँग-प्रेस करा</string>
   <string name="morphe_music_lyrics_show_translate_button_title">भाषांतर बटण दाखवा</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">अनुवाद सुरू किंवा बंद करण्यासाठी टॅप करा; फक्त अनुवादासाठी दीर्घ-दाबून ठेवा. यासाठी सक्षम केलेल्या अनुवाद प्रदात्यांचा त्यांच्या सूचीमधील क्रमाप्रमाणे वापर केला जातो</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">रोमनाइझ किंवा लिप्यंतरण बटण दाखवा</string>
@@ -716,7 +716,7 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">चिनी आणि कॅन्टोनीज अक्षरे (UniDict, ~८ MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">चिनी शब्द (pinyin-pro, ~१७ MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">ग्रीक, स्लाव्हिक सिरिलिक (रशियन, युक्रेनियन, बल्गेरियन, सर्बियन, बेलारुशियन, मॅसेडोनियन समाविष्ट), जॉर्जियन, आर्मेनियन, हिब्रू, अरबी, अम्हारिक आणि सिरियाक लिप्यंतरण (CLDR, ~०.५ MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s वाचत आहे: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">वाचत आहे %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">रिफ्रेश बटण दाखवा</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">पुढील लिरिक्स उमेदवाराकडे जाण्यासाठी टॅप करा; गाण्याचे शीर्षक आणि कलाकाराद्वारे लिरिक्स शोधण्यासाठी दीर्घकाळ दाबा</string>
   <string name="morphe_music_lyrics_search_dialog_title">गीत शोधा</string>
@@ -725,6 +725,7 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_search_empty">गाण्याचे शीर्षक आणि कलाकार प्रविष्ट करा</string>
   <string name="morphe_music_lyrics_search_no_providers">सक्षम केलेल्यापैकी कोणताही प्रदाता इतर गाणी शोधू शकत नाही</string>
   <string name="morphe_music_lyrics_saved">जतन केले</string>
+  <string name="morphe_music_lyrics_written_by">लेखक: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">सिंक केलेले शब्द किंवा शब्दांश हायलाइट करा</string>
   <string name="morphe_music_lyrics_word_sync_summary">शब्द-दर-शब्द लिरिक्स उपलब्ध असल्यास त्यांना प्राधान्य द्या. लिरिक्समध्ये शब्दांच्या वेळेची माहिती असल्यास, संगीताच्या तालात प्रत्येक शब्द किंवा अक्षराला हायलाइट करा</string>
   <string name="morphe_music_lyrics_line_scale_title">निष्क्रिय ओळी आकुंचित करा</string>
@@ -740,7 +741,7 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_dynamic_background_animated_title">डायनॅमिक बॅकग्राउंड ॲनिमेट करा</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">प्ले होत असताना बॅकग्राउंड हलवा, आणि जर YouTube Music कडे मायक्रोफोनची परवानगी असेल तर त्याला संगीतानुसार पल्स करा. बॅटरीची बचत करणाऱ्या स्थिर बॅकग्राउंडसाठी हे बंद करा</string>
   <string name="morphe_music_lyrics_mediasession_title">लॉक स्क्रीनवर MediaSession लिरिक्स दाखवा</string>
-  <string name="morphe_music_lyrics_mediasession_summary">लॉक स्क्रीन, Android Auto आणि ब्लूटूथवर सध्याची ओळ दर्शवते. यासाठी Android ११ किंवा नवीन आवृत्ती आवश्यक आहे</string>
+  <string name="morphe_music_lyrics_mediasession_summary">लॉक स्क्रीन, Android Auto आणि ब्लूटूथवर सध्याची ओळ दर्शवते</string>
   <string name="morphe_music_lyrics_miniplayer_title">मिनीप्लेअर लिरिक्स दाखवा</string>
   <string name="morphe_music_lyrics_miniplayer_summary">मिनीप्लेयरमध्ये सध्याची ओळ दर्शवते, ज्यामध्ये ट्रॅक उपशीर्षकावर हलवला जातो</string>
   <string name="morphe_music_lyrics_mini_track_format_title">गाण्याचे शीर्षक/कलाकार स्वरूप</string>
@@ -777,6 +778,8 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_force_capitalize_summary">गीतांच्या प्रत्येक ओळीचे पहिले अक्षर कॅपिटलाइज करते</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">शेवटची विरामचिन्हे काढून टाका</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">गीतांच्या ओळींच्या शेवटी असलेले पूर्णविराम, स्वल्पविराम, कोलन आणि सेमीकोलन काढून टाकते. प्रश्नचिन्ह, उद्गारवाचक चिन्ह, दीर्घविराम, अवतरण चिन्हे आणि कंस तसेच ठेवले जातात</string>
+  <string name="morphe_music_lyrics_han_form_title">चिनी फॉर्म रूपांतरण</string>
+  <string name="morphe_music_lyrics_han_form_summary">चालू असताना, गाण्याचे बोल सुलभ आणि पारंपारिक लेखनात रूपांतरित करण्यासाठी तुमच्या भाषांतराच्या लक्ष्य भाषेचे अनुसरण करते</string>
   <string name="morphe_music_lyrics_text_size_title">टेक्स्ट आकार</string>
   <string name="morphe_music_lyrics_text_size_summary">लिरिक्स टेक्स्टचा आकार</string>
   <string name="morphe_music_lyrics_offset_ms_title">ग्लोबल टाइमिंग ऑफसेट</string>
@@ -792,6 +795,7 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_translated_by_ai">%s द्वारे अनुवादित</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s द्वारे रोमनलिपिमध्ये रूपांतरित</string>
   <string name="morphe_music_lyrics_romanized_by_local">%s द्वारे रोमनलाइज्ड</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s सह)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Rime द्वारे रोमनलिपीत रूपांतरित (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">अनुवादित</string>
@@ -807,6 +811,8 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_romanize_language_DEFAULT">स्वयंचलित</string>
   <string name="morphe_music_lyrics_romanizing">रोमनाइझिंग…</string>
   <string name="morphe_music_lyrics_romanize_failed">गीतांचे रोमनाइझेशन होऊ शकले नाही</string>
+  <string name="morphe_music_lyrics_romanize_language_none">काहीही नाही</string>
+  <string name="morphe_music_lyrics_ruby_language_title">रुबी लक्ष्य</string>
   <string name="morphe_music_lyrics_translate_only">केवळ अनुवादित</string>
   <string name="morphe_music_lyrics_romanize_only">केवळ रोमनलिपि</string>
   <string name="morphe_music_lyrics_dual_only">ड्युअल मोड</string>
@@ -837,7 +843,7 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_hide_info_title">क्रेडिट लाईन लपवा</string>
   <string name="morphe_music_lyrics_hide_info_summary">गीतांच्या खाली दिसणारी क्रेडिट लाईन लपवा</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">अनुवाद आणि रोमनाइझेशनची अदलाबदल करा</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">लिरिक्सच्या खाली ट्रान्सलेशन आणि रोमानिझेशनचा डिस्प्ले ऑर्डर बदला</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">भाषांतर ओळींच्या वर हलवते; वाचन आणि रोमनकरण खाली राहते</string>
   <string name="morphe_music_lyrics_force_center_title">नेहमी गीतांना मध्यभागी ठेवा</string>
   <string name="morphe_music_lyrics_force_center_summary">ON केल्यास प्रत्येक ओळ मध्यभागी येते आणि सोर्स अलाइनमेंट दुर्लक्षित केली जाते, ज्यामध्ये ड्युएट साइड्सचा समावेश आहे; OFF केल्यास गीतांसाठी विचारलेली अलाइनमेंट कायम राहते</string>
   <string name="morphe_music_lyrics_providers_keep_one">किमान एक प्रोव्हायडर चालू असणे आवश्यक आहे</string>
@@ -845,14 +851,7 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_romanization_provider_title">रोमनायझेशन किंवा लिप्यंतरण</string>
   <string name="morphe_music_lyrics_romanization_provider_local">ऑफलाइन डिक्शनरी</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime शब्दसूची</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">रूबी</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">ऑफलाइन डिक्शनरी</string>
-  <string name="morphe_music_lyrics_ruby_style_title">रूबी स्क्रिप्ट</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">हिरागाना (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">काताकाना (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">रूबी बटण दाखवा</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">गीतांच्या वर रूबी रीडिंग टॉगल करण्यासाठी टॅप करा; हिरागाना आणि काताकाना दरम्यान स्विच करण्यासाठी लाँग-प्रेस करा. सक्षम रूबी प्रोव्हायडर्सचा त्यांच्या सूचीबद्ध क्रमाने वापर केला जातो</string>
-  <string name="morphe_music_lyrics_ruby_generating">रूबी तयार होत आहे…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU ट्रान्सलिटरेटर</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI सह विभाग ओळखा</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">जेव्हा प्रदाता Chorus किंवा Verse सारखे कोणतेही विभाग लेबल पाठवत नाही, तेव्हाच याचा वापर केला जातो, जे तुमचे OpenAI-सुसंगत मॉडेल नंतर शोधते. ओळ संपादित केल्यावर त्याचा प्रॉम्प्ट देखील उघडतो</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API एंडपॉइंट URL (उदा. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">मॉडेल निवडा</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">मॉडेल्स मिळवण्यात अयशस्वी. API की किंवा कनेक्शन तपासा.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">प्रॉम्प्ट</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">रुबी प्रॉम्प्ट (काना)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">मॉडेल</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">बेस URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">सर्व्हिस प्रीसेट्स</string>

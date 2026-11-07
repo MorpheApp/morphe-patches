@@ -80,6 +80,7 @@ public final class LockScreenLyrics {
             ticker.schedule();
         }
     };
+
     private LockScreenLyrics() {
     }
 
@@ -202,7 +203,7 @@ public final class LockScreenLyrics {
         }
 
         session.setMetadata(metadata);
-        LyricNotificationRefresh.refresh(session, newTitle,
+        LyricsNotificationRefresh.refresh(session, newTitle,
                 metadata.getString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE));
         lastPushedTitle = newTitle;
         lastPushedArtist = artist;
@@ -254,7 +255,7 @@ public final class LockScreenLyrics {
             session.setMetadata(original);
             String title = original.getString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE);
             String text = original.getString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE);
-            LyricNotificationRefresh.refresh(session,
+            LyricsNotificationRefresh.refresh(session,
                     title != null ? title : original.getString(MediaMetadata.METADATA_KEY_TITLE),
                     text != null ? text : original.getString(MediaMetadata.METADATA_KEY_ARTIST));
             nudgePlaybackState(session);

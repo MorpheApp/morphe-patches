@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">启用点按进度条</string>
   <string name="morphe_tap_to_seek_summary">点击进度条任意位置即可跳转到该位置，而无需拖动</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">自定义进度条滑块</string>
+  <string name="morphe_custom_seekbar_thumb_title">启用自定义进度条滑块</string>
+  <string name="morphe_custom_seekbar_thumb_summary">将进度条滑块替换为自定义图像或动画 GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">滑块图像</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">从设备存储中选择图像或动画 GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">所选文件不是支持的图像</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">未找到自定义进度条滑块图像</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">滑块大小</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">适应进度条</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">原始大小</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">左侧滑动手势</string>
   <string name="morphe_swipe_right_zone_title">右侧滑动手势</string>
@@ -1771,6 +1782,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">评论横跨屏幕所需的时间（秒）。值越低移动速度越快</string>
   <string name="morphe_niconico_comments_display_area_title">显示区域</string>
   <string name="morphe_niconico_comments_display_area_summary">评论占用播放器顶部开始的区域大小。数值越低，视频底部留白越多</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">隐藏重叠的评论</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">当显示区域已满时，新评论将被隐藏，而不会覆盖其他评论</string>
   <string name="morphe_niconico_comments_max_length_title">最大评论长度</string>
   <string name="morphe_niconico_comments_max_length_summary">隐藏字符数超过此限制的评论。每个表情符号计为一个字符</string>
   <string name="morphe_niconico_comments_max_length_no_limit">无限制</string>

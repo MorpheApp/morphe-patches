@@ -700,7 +700,7 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_show_section_title">Näytä osiotunnisteet</string>
   <string name="morphe_music_lyrics_show_section_summary">Merkitse jokainen uusi sanoituksen osio pienellä tunnisteella, kuten Säkeistö tai Kertosäe</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Näytä kopioi -painike</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Napauta kopioidaksesi alkuperäiset sanat tekstimuodossa; Paina pitkää tallentaaksesi raaka-sanat-lähdetiedoston Lataukset-kansioon</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Napauta kopioidaksesi alkuperäiset sanat tavallisena tekstinä; paina pitkään tallentaaksesi raaka lyrics-lähdetiedoston ja muunnetun TTML-tiedoston Lataukset-kansioon</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Näytä käännä -painike</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Napauta käynnistääksesi tai lopettaaksesi käännöksen; paina pitkään käynnistääksesi vain käännöksen. Käyttää aktivoidut käännösprovidereit niiden listatussa järjestyksessä</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Näytä Romanisoi tai Transkriboi -painike</string>
@@ -716,7 +716,7 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Kiina ja kantoni (UniDict, n. 8 Mt)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kiinan sanat (pinyin-pro, n. 17 Mt)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Kreikka, slaavilaiset kyrilliset (myös venäjä, ukrainaksi, bulgariksi, serbiaksi, belorussiksi, makedoniksi), georgia, armenia, heprea, arabia, amhara ja syrian transkriptio (CLDR, n. 0,5 Mt)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Luetaan %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Luetaan %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Näytä Päivitä-painike</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Napauta vaihtaaksesi seuraavaan sanojen ehdokkaaseen; Paina pitkänä hakeaksesi sanoja kappaleen nimen ja artistin mukaan</string>
   <string name="morphe_music_lyrics_search_dialog_title">Hae sanoituksia</string>
@@ -725,6 +725,7 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_search_empty">Anna kappaleen nimi ja artisti</string>
   <string name="morphe_music_lyrics_search_no_providers">Mikään käytössä olevista palveluntarjoajista ei voi hakea muita kappaleita</string>
   <string name="morphe_music_lyrics_saved">Tallennettu</string>
+  <string name="morphe_music_lyrics_written_by">Kirjoittanut: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Korosta synkronoidut sanat tai tavut</string>
   <string name="morphe_music_lyrics_word_sync_summary">Priorisoi sana sanalta -lyriikat, kun ne ovat saatavilla. Kun lyriikoissa on sanan ajoitus, korostaa jokaisen sanan tai tavun musiikin tahdissa</string>
   <string name="morphe_music_lyrics_line_scale_title">Supista eiaktiiviset rivit</string>
@@ -740,7 +741,7 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Animoi dynaaminen tausta</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Liikuta taustaa toiston aikana ja sykkii sitä musiikin tahdissa, jos YouTube Musicilla on mikrofonilupa. Kytke pois päältä käyttääksesi staattista taustaa, joka kuluttaa vähemmän akkua</string>
   <string name="morphe_music_lyrics_mediasession_title">Näytä MediaSession-lyriikat lukitusnäytöllä</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Näyttää nykyisen rivin lukitusnäytöllä, Android Autolla ja Bluetoothilla. Vaatii Android 11:n tai uudemman</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Näyttää nykyisen rivin lukitusnäytöllä, Android Autossa ja Bluetoothissa</string>
   <string name="morphe_music_lyrics_miniplayer_title">Näytä minisoittimen lyriikat</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Näyttää nykyisen rivin mini-soittimessa, jossa kappale siirretty tekstitykseen</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Kappaleen nimi/artisti-muoto</string>
@@ -777,6 +778,8 @@ Koskee molempia rajoja. Arvolla 1,75 neljä täyslevyistä merkkiä lasketaan se
   <string name="morphe_music_lyrics_force_capitalize_summary">Kirjoittaa jokaisen lyriikkarivin ensimmäisen kirjaimen suurella</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Poista loppuvälimerkit</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Poistaa pisteet, pilkut, kaksoispisteet ja puolipisteet lyriikkarivien lopusta. Kysymysmerkit, huutomerkit, kolme pistettä, lainausmerkit ja sulkeet säilytetään</string>
+  <string name="morphe_music_lyrics_han_form_title">Kiinalaisen kirjoitusmuodon muunnos</string>
+  <string name="morphe_music_lyrics_han_form_summary">Kun käytössä, seuraa käännöksen kohdekieltä muuntaakseen sanoitukset yksinkertaistetun ja perinteisen kirjoitusasun välillä</string>
   <string name="morphe_music_lyrics_text_size_title">Tekstin koko</string>
   <string name="morphe_music_lyrics_text_size_summary">Sanoitusten tekstin koko</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globaali ajoitussiirtymä</string>
@@ -792,6 +795,7 @@ Koskee molempia rajoja. Arvolla 1,75 neljä täyslevyistä merkkiä lasketaan se
   <string name="morphe_music_lyrics_translated_by_ai">Kääntänyt %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Latinisoinut %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Latinisoitu tekijän %s toimesta</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (yhdessä %2$s kanssa)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Romanisoitu Rimen toimesta (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Käännetty</string>
@@ -807,6 +811,8 @@ Koskee molempia rajoja. Arvolla 1,75 neljä täyslevyistä merkkiä lasketaan se
   <string name="morphe_romanize_language_DEFAULT">Automaattinen</string>
   <string name="morphe_music_lyrics_romanizing">Romanisoidaan…</string>
   <string name="morphe_music_lyrics_romanize_failed">Lyriikoiden romanisointi epäonnistui</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Ei mitään</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Rubyn kohdekieli</string>
   <string name="morphe_music_lyrics_translate_only">Vain käännös</string>
   <string name="morphe_music_lyrics_romanize_only">Vain romanisoituna</string>
   <string name="morphe_music_lyrics_dual_only">Kaksoismoodi</string>
@@ -837,7 +843,7 @@ Laulutekstit tulevat kolmannen osapuolen palveluista, jotka eivät ole Morphen a
   <string name="morphe_music_lyrics_hide_info_title">Piilota tekijätietorivi</string>
   <string name="morphe_music_lyrics_hide_info_summary">Piilota lyriikoiden alla näkyvä tekijätietorivi</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Vaihda käännöksen ja romanisoinnin paikkaa</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Vaihtaa käännöksen ja romanisoinnin näyttöjärjestyksen sanoitusten alapuolella</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Siirtää käännöksen sanoitusten yläpuolelle; lukutapa ja romanisointi pysyvät alapuolella</string>
   <string name="morphe_music_lyrics_force_center_title">Aseta sanoitukset aina keskelle</string>
   <string name="morphe_music_lyrics_force_center_summary">ON asettaa jokaisen rivin keskelle ja sivuuttaa alkuperäisen tasauksen, mukaan lukien dueton puolet; OFF pitää sanoituksen pyytämän tasauksen</string>
   <string name="morphe_music_lyrics_providers_keep_one">Vähintään yhden providenin tulee olla aktiivisena</string>
@@ -845,14 +851,7 @@ Laulutekstit tulevat kolmannen osapuolen palveluista, jotka eivät ole Morphen a
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisointi tai transkriptio</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Offline-sanasto</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime-sanaluettelo</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby-merkinnät</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Offline-sanakirja</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Ruby-teksti</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Näytä Ruby -painike</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Napauta vaihtaaksesi ruby-lukutavat sanoitusten yläpuolelle; pidä painettuna vaihtaaksesi hiraganan ja katakanan välillä. Käyttää aktivoituja ruby-palvelimia listattuna järjestyksenä</string>
-  <string name="morphe_music_lyrics_ruby_generating">Luodaan ruby-tekstiä…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU-translitteraattori</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Tunnista osiot tekoälyn avulla</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Käytetään vain silloin, kun provider ei sisällä osiotarroja, kuten Refraani tai Särje, jotka sitten avoimet AI-yhteensopivat mallit tunnistavat. Rivin muokkaaminen avaa myös sen promptin</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-päätepisteen URL (esim. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ Laulutekstit tulevat kolmannen osapuolen palveluista, jotka eivät ole Morphen a
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Valitse malli</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Mallien haku epäonnistui. Tarkista API-avain tai yhteys.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Rubyn kehotus (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Malli</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Perus-URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Palvelun esiasetukset</string>

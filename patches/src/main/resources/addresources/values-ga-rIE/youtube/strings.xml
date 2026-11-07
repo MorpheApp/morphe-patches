@@ -793,6 +793,17 @@ Chun é seo a shocrú, cuir 'Spoof video streams' ar siúl agus athraigh an 'Cli
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Cumasaigh tapáil chun cuardach a dhéanamh</string>
   <string name="morphe_tap_to_seek_summary">Tapáil aon áit ar an barra cuardaigh chun léim go dtí an suíomh sin in ionad é a tharraingt</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Meór barra cuardaigh saincheaptha</string>
+  <string name="morphe_custom_seekbar_thumb_title">Cumasaigh meór barra cuardaigh saincheaptha</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Athghlais meór an bhara cuardaigh le híomháire saincheaptha nó GIF animate</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Íomháire meóir</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Roghnaigh íomháire nó GIF animate ó stóráil an ghuíre</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Ní íomháire tacaite an comhad roghnaithe</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Ní bhfuingeacha íomháire meóir barra cuardaigh saincheaptha</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Méid an meóir</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Feir leis an barra cuardaigh</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Méid bunaidh</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gotha svaidhpeála ar chlé</string>
   <string name="morphe_swipe_right_zone_title">Gotha svaidhpeála ar dheis</string>
@@ -1771,6 +1782,8 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_niconico_comments_travel_duration_summary">Cé mhéad soicind a thógann sé ar thráchtanna an scáileán a thrasnú. Bogann luachanna níos ísle níos tapúla.</string>
   <string name="morphe_niconico_comments_display_area_title">Limistéar taispeána</string>
   <string name="morphe_niconico_comments_display_area_summary">An méid den imreoir, ón mbarr anuas, a úsáideann na tráchtanna. Fágann luachanna níos ísle an chuid íochtarach den fhíseán saor.</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Falaigh tráchtanna a churfadh thar a chéile</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Nuair a bhíonn an limistéir taispeána lán, falaítear tráchtanna nua in ionad iad a chur thar tráchtanna eile</string>
   <string name="morphe_niconico_comments_max_length_title">Uasfhad tráchtaireachta</string>
   <string name="morphe_niconico_comments_max_length_summary">Folaíonn sé tuairimí a bhfuil níos mó carachtar iontu ná an méid seo. Áirítear gach emoji mar charachtar amháin</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Gan teorainn</string>

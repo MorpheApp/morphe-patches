@@ -17,8 +17,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.utils.CharactersConverter;
 
 /**
  * Drops provider credit blocks and lines matching {@link LyricsFilterDefaults#LYRICS_TEXT_FILTER}.
@@ -119,25 +119,26 @@ public final class LyricsFilter {
         Map<String, List<LyricsLine>> translations = filterAlignedMap(lyrics.translations(), kept);
         Map<String, List<LyricsLine>> romanizations = filterAlignedMap(lyrics.romanizations(), kept);
 
-        List<String> songwriters = new ArrayList<>();
+        List<String> credits = new ArrayList<>();
         for (String cl : creditLines) {
-            if (!songwriters.contains(cl)) {
-                songwriters.add(cl);
+            if (!credits.contains(cl)) {
+                credits.add(cl);
             }
         }
-        List<String> existingSongwriters = lyrics.songwriters();
-        if (existingSongwriters != null) {
-            for (String sw : existingSongwriters) {
-                if (!songwriters.contains(sw)) {
-                    songwriters.add(sw);
+        List<String> existingCredits = lyrics.credits();
+        if (existingCredits != null) {
+            for (String c : existingCredits) {
+                if (!credits.contains(c)) {
+                    credits.add(c);
                 }
             }
         }
 
         return new Lyrics(filteredLines, lyrics.providerName(), lyrics.synced(),
                 romanization, translations, romanizations,
-                songwriters, lyrics.rawFormat(), lyrics.formatType(), lyrics.sourceUrl(),
-                lyrics.about());
+                lyrics.songwriters(), credits.isEmpty() ? null : credits,
+                lyrics.rawFormat(), lyrics.formatType(), lyrics.sourceUrl(),
+                lyrics.about(), lyrics.agentNames());
     }
 
     private static List<LyricsLine> filterAlignedList(List<LyricsLine> aligned, boolean[] kept) {
@@ -456,7 +457,8 @@ public final class LyricsFilter {
                 filterAlignedList(lyrics.romanization(), kept),
                 filterAlignedMap(lyrics.translations(), kept),
                 filterAlignedMap(lyrics.romanizations(), kept),
-                lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(),
-                lyrics.sourceUrl(), lyrics.about());
+                lyrics.songwriters(), lyrics.credits(), lyrics.rawFormat(),
+                lyrics.formatType(), lyrics.sourceUrl(), lyrics.about(),
+                lyrics.agentNames());
     }
 }

@@ -700,7 +700,7 @@ Kuki zinazohitajika: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_section_title">Onyesha lebo za sehemu</string>
   <string name="morphe_music_lyrics_show_section_summary">Weka lebo katika kila sehemu mpya ya mashairi kwa lebo ndogo, kama vile Verse au Chorus</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Onyesha kitufe cha Kunakili</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Gusa ili kunakili mashairi ya awali kama maandishi ya kawaida; bonyeza kwa muda mrefu ili kuhifadhi faili ya chanzo cha mashairi ghafi kwenye Pakua</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Gusa ili kunakili mashairi ya asili kama maandishi ya kawaida; bonyeza kwa muda mrefu ili kuhifadhi faili ya chanzo cha mashairi na faili ya TTML iliyobadilishwa kwenye Pakiza</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Onyesha kitufe cha Kutafsiri</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Gusa ili kubadilisha tafsiri; bonyeza kwa muda mrefu kwa tafsiri pekee. Hutumia watoa huduma wa tafsiri walio wezesha kwa utaratibu ulioorodheshwa</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Onyesha kitufe cha Romanize au Transliterate</string>
@@ -716,7 +716,7 @@ Kuki zinazohitajika: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Wahusika wa Kichina na Kikantoni (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Maneno ya Kichina (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Utafsiri wa Kigiriki, Kislaviki ya Cyrillic (ikiwemo Kirusi, Kiukraine, Kibulgari, Kiserbia, Kibelarusi, Kimakedonia), Kijorjia, Kiarmeania, Kiebrania, Kiarabu, Kiamhari na Kisiriyaki (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Inasoma %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Inasoma %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Onyesha kitufe cha Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Gusa ili kubadilisha kwenda kwa mshindani mwingine wa mashairi; bonyeza kwa muda mrefu ili kutafuta mashairi kwa kichwa cha wimbo na msanii</string>
   <string name="morphe_music_lyrics_search_dialog_title">Tafuta mashairi</string>
@@ -725,6 +725,7 @@ Kuki zinazohitajika: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_search_empty">Ingiza kichwa cha wimbo na msanii</string>
   <string name="morphe_music_lyrics_search_no_providers">Hakuna mtoa huduma aliyewezeshwa anayeweza kutafuta nyimbo zingine</string>
   <string name="morphe_music_lyrics_saved">Imehifadhiwa</string>
+  <string name="morphe_music_lyrics_written_by">Imeandikwa na: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Angazia maneno au silabi zilizooanishwa</string>
   <string name="morphe_music_lyrics_word_sync_summary">Toa kipaumbele kwa mashairi ya neno-kwa-neno yanapopatikana. Mashairi yanapokuwa na muda wa neno, yanangazia kila neno au silabi kulingana na wakati wa muziki</string>
   <string name="morphe_music_lyrics_line_scale_title">Punguza mistari isiyo hai</string>
@@ -740,7 +741,7 @@ Kuki zinazohitajika: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Anisha mandhari inayobadilika</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Sogeza mandhari wakati wa kucheza, na kuifanya itikise kulingana na muziki ikiwa YouTube Music ina ruhusa ya maikrofoni. Zima kwa ajili ya mandhari tuli inayotumia betri kidogo</string>
   <string name="morphe_music_lyrics_mediasession_title">Onyesha Mashairi ya MediaSession kwenye skrini ya kufunga</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Inaonyesha mstari wa sasa kwenye skrini ya kufunga, Android Auto na Bluetooth. Inahitaji Android 11 au mpya zaidi</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Inaonyesha mstari wa sasa kwenye kioo cha kufunga, Android Auto na Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">Onyesha Mashairi ya Miniplayer</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Inaonyesha mstari wa sasa katika miniplayer, huku wimbo ukihamishiwa kwenye kichwa kidogo</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Muundo wa kichwa cha wimbo/msanii</string>
@@ -777,6 +778,8 @@ Inatumika kwa mipaka yote miwili. Katika 1.75, herufi nne pana zinahesabiwa kama
   <string name="morphe_music_lyrics_force_capitalize_summary">Inaanza na herufi kubwa kila mstari wa mashairi</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Ondoa alama za uakifishaji za mwisho</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Huondoa nukta, koma, koloni na nukta mkato mwishoni mwa mistari ya mashairi. Alama za kuuliza, alama za mshangao, nukta tatu, alama za nukuu na mabano hubaki</string>
+  <string name="morphe_music_lyrics_han_form_title">Ubadilishaji wa mfumo wa Kichina</string>
+  <string name="morphe_music_lyrics_han_form_summary">Ikiwashwa, inafuata lugha yako lengwa ya tafsiri ili kubadilisha mashairi kati ya uandishi Rahisi na wa Kawaida</string>
   <string name="morphe_music_lyrics_text_size_title">Ukubwa wa maandishi</string>
   <string name="morphe_music_lyrics_text_size_summary">Ukubwa wa maandishi ya mashairi</string>
   <string name="morphe_music_lyrics_offset_ms_title">Offset ya muda ya kimataifa</string>
@@ -792,6 +795,7 @@ Inatumika kwa mipaka yote miwili. Katika 1.75, herufi nne pana zinahesabiwa kama
   <string name="morphe_music_lyrics_translated_by_ai">Imetafsiriwa na %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Imeromanishwa na %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Imeandikwa kwa herufi za Kilatini na %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (pamoja na %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Imeromanizwa na Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Imetafsiriwa</string>
@@ -807,6 +811,8 @@ Inatumika kwa mipaka yote miwili. Katika 1.75, herufi nne pana zinahesabiwa kama
   <string name="morphe_romanize_language_DEFAULT">Kiotomatiki</string>
   <string name="morphe_music_lyrics_romanizing">Inaandikwa kwa herufi za Kilatini…</string>
   <string name="morphe_music_lyrics_romanize_failed">Imeshindikana kuandika mashairi kwa herufi za Kilatini</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Hakuna</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Lengo la Ruby</string>
   <string name="morphe_music_lyrics_translate_only">Imetafsiriwa pekee</string>
   <string name="morphe_music_lyrics_romanize_only">Iliyoandikwa kwa herufi za Kilatini pekee</string>
   <string name="morphe_music_lyrics_dual_only">Hali pacha</string>
@@ -837,7 +843,7 @@ Mashairi yanatoka kwa huduma za upande wa tatu ambazo hazihusiani, hazifadhiliwi
   <string name="morphe_music_lyrics_hide_info_title">Ficha mstari wa sifa</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ficha mstari wa sifa unaoonekana chini ya mashairi</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Badilisha nafasi ya tafsiri na uandishi wa kimatamshi</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Inabadilisha mpangilio wa onyesho wa tafsiri na uromanizashoni chini ya mashairi</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Inahamisha tafsiri juu ya mashairi; usomaji na uromanizaji vinabaki chini</string>
   <string name="morphe_music_lyrics_force_center_title">Kaa katikati ya mashairi kila wakati</string>
   <string name="morphe_music_lyrics_force_center_summary">ON huweka kila mstari katikati na kupuuza mpangilio wa chanzo, ikiwa ni pamoja na pande za dueti; OFF hubaki na mpangilio ambao mashairi yanahitaji</string>
   <string name="morphe_music_lyrics_providers_keep_one">Angalau mtoa huduma mmoja lazima abaki akiwa amewashwa</string>
@@ -845,14 +851,7 @@ Mashairi yanatoka kwa huduma za upande wa tatu ambazo hazihusiani, hazifadhiliwi
   <string name="morphe_music_lyrics_romanization_provider_title">Romanization au uandishi wa kifonetiki</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Kamusi ya Nje ya Mtandao</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Orodha ya Maneno ya Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Kamusi ya Offline</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Muswada wa Ruby</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Onyesha kitufe cha Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Gusa ili kubadili usomaji wa ruby juu ya mashairi; bonyeza kwa muda mrefu ili kubadili kati ya hiragana na katakana. Hutumia watoa ruby walioidhinishwa kwa utaratibu wao ulioorodheshwa</string>
-  <string name="morphe_music_lyrics_ruby_generating">Inatengeneza ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">Kigeuzi cha ICU</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Gundua sehemu kwa AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Hutumika tu wakati mtoa huduma hatumi lebo za sehemu kama vile Chorus au Verse, ambazo kisha model yako inayooana na OpenAI huzigundua. Kuhariri mstari pia hufungua prompt yake</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ya endpoint ya API (mfano https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ Mashairi yanatoka kwa huduma za upande wa tatu ambazo hazihusiani, hazifadhiliwi
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Chagua Mfano</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Imeshindwa kuchukua mifano. Angalia ufunguo wa API au muunganisho.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Maelekezo</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Prompt ya Ruby (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Mfano</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL ya Msingi</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Preset za huduma</string>

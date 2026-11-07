@@ -700,7 +700,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_show_section_title">სექციების ტეგების ჩვენება</string>
   <string name="morphe_music_lyrics_show_section_summary">ტექსტის თითოეულ ახალ სექციას მონიშნეთ პატარა ტეგით, მაგალითად: კუპლეტი ან გუნდი</string>
   <string name="morphe_music_lyrics_show_copy_button_title">კოპირების ღილაკის ჩვენება</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">შეეხეთ ორიგინალი ტექსტის ჩვეულებრივ ტექსტად დასაკოპირებლად; გრძლად დააჭირეთ ტექსტის საწყის ფაილს ჩამოტვირთვებში შესანახად</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">დააჭირეთ ორიგინალი ტექსტის დასაკოპირებლად ჩვეულებრივი ტექსტის სახით; გრძელვადიანი დაჭერით შეინახეთ ტექსტის წყაროს ფაილი და კონვერტირებული TTML ფაილი ჩამოტვირთვების საქაღალდეში</string>
   <string name="morphe_music_lyrics_show_translate_button_title">თარგმნის ღილაკის ჩვენება</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">დააჭირეთ თარგმანის ჩასართავად; გრძელვად დააჭირეთ მხოლოდ თარგმანის სანახავად. გამოიყენება ჩართული თარგმანის პროვაიდერები მითითებული თანმიმდევრობით</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">რომაიზაციის ან ტრანსლიტერაციის ღილაკის ჩვენება</string>
@@ -716,7 +716,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">ჩინური და კანტონური სიმბოლოები (UniDict, ~8 მბ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">ჩინური სიტყვები (pinyin-pro, ~17 მბ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">ბერძნული, სლავური კირილიცის (მათ შორის რუსული, უკრაინული, ბულგარული, სერბული, ბელორუსული, მაკედონური), ქართული, სომხური, ებრაული, არაბული, ამჰარული და სირიული ტრანსლიტერაცია (CLDR, ~0.5 მბ)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">კითხვა %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">კითხვა %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">განახლების ღილაკის ჩვენება</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">დააჭირეთ შემდეგი ტექსტის ვარიანტისთვის; გრძელვად დააჭირეთ ტექსტის მოსაძებნად სიმღერის სათაურისა და შემსრულებლის მიხედვით</string>
   <string name="morphe_music_lyrics_search_dialog_title">ტექსტების ძიება</string>
@@ -725,6 +725,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_search_empty">შეიყვანეთ სიმღერის სათაური და მომღერალი</string>
   <string name="morphe_music_lyrics_search_no_providers">აქტივურ პროვაიდერებს არ შეუძლიათ სხვა სიმღერების ძიება</string>
   <string name="morphe_music_lyrics_saved">შენახულია</string>
+  <string name="morphe_music_lyrics_written_by">დაწერა: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">სინქრონიზებული სიტყვების ან მარცვლების გამოკვეთა</string>
   <string name="morphe_music_lyrics_word_sync_summary">უპირატესობა მიენიჭება სიტყვა-სიტყვა ტექსტს, როდესაც ის ხელმისაწვდომია. როდესაც ტექსტს აქვს სიტყვების ტაიმინგი, მუსიკის ტემპთან სინქრონულად გამოიკვეთება თითოეული სიტყვა ან მარცვა</string>
   <string name="morphe_music_lyrics_line_scale_title">ინაქტიური ხაზების შეკუმშვა</string>
@@ -740,7 +741,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_dynamic_background_animated_title">დინამიკური ფონის ანიმაცია</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">გადააადგილეთ ფონი დაკვრისას და დაამთხვიეთ იგი მუსიკას, თუ YouTube Music-ს აქვს მიკროფონის უფლება. გამორთეთ სტატიკური ფონისთვის, რომელიც ნაკლებ ელემენტს მოიხმარს</string>
   <string name="morphe_music_lyrics_mediasession_title">აჩვენე MediaSession-ის ტექსტები ჩაკეტილ ეკრანზე</string>
-  <string name="morphe_music_lyrics_mediasession_summary">აჩვენებს მიმდინარე ხაზს ბლოკირების ეკრანზე, Android Auto-სა და Bluetooth-ზე. საჭიროა Android 11 ან უფრო ახალი ვერსია</string>
+  <string name="morphe_music_lyrics_mediasession_summary">აჩვენებს მიმდინარე სტრიქონს ჩაკეტილი ეკრანის, Android Auto-ს და Bluetooth-ის რეჟიმში</string>
   <string name="morphe_music_lyrics_miniplayer_title">აჩვენე მინი-პლეიერის ტექსტები</string>
   <string name="morphe_music_lyrics_miniplayer_summary">აჩვენებს მიმდინარე ხაზს მინი-პლეიერში, ხოლო ტრეკი გადატანილია ქვესათაურში</string>
   <string name="morphe_music_lyrics_mini_track_format_title">სიმღერის სათაურის/შემსრულებლის ფორმატი</string>
@@ -777,6 +778,8 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_force_capitalize_summary">ტექსტის თითოეული ხაზის პირველი ასოს ხდის დიდს</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">ბოლო სასვენი ნიშნების მოცილება</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">შესაბამისად აქრობს წერტილებს, მძიმეებს, ორწერტილებსა და წერტილ-მძიმეებს ტექსტის ხაზების ბოლოს. კითხვის ნიშნები, ძახილის ნიშნები, მრავალწერტილები, ბრჭყალები და ფრჩხილები რჩება</string>
+  <string name="morphe_music_lyrics_han_form_title">ჩინური ფორმის კონვერტაცია</string>
+  <string name="morphe_music_lyrics_han_form_summary">ჩართვის შემთხვევაში, მიჰყვება თქვენს სამიზნე თარგმანის ენას, რათა ლირიკა გაკონვერტირდეს გამარტივებულ და ტრადიციულ ჩ写法-ს შორის</string>
   <string name="morphe_music_lyrics_text_size_title">ტექსტის ზომა</string>
   <string name="morphe_music_lyrics_text_size_summary">სათytuላო ტექსტის ზომა</string>
   <string name="morphe_music_lyrics_offset_ms_title">გლობალური დროის зміწევა</string>
@@ -792,6 +795,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_translated_by_ai">თარგმნილია %s-ის მიერ</string>
   <string name="morphe_music_lyrics_romanized_by_ai">რომანიზირებულია %s-ის მიერ</string>
   <string name="morphe_music_lyrics_romanized_by_local">რომანიზებულია %s-ის მიერ</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s-ით)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">რომანიზებულია Rime-ის მიერ (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">თარგმნილია</string>
@@ -807,6 +811,8 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_romanize_language_DEFAULT">ავტომატური</string>
   <string name="morphe_music_lyrics_romanizing">რომანიზება...</string>
   <string name="morphe_music_lyrics_romanize_failed">ტექსტის რომანიზება ვერ მოხერხდა</string>
+  <string name="morphe_music_lyrics_romanize_language_none">არცერთი</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Ruby-ს სამიზნე ენა</string>
   <string name="morphe_music_lyrics_translate_only">მხოლოდ თარგმნილი</string>
   <string name="morphe_music_lyrics_romanize_only">მხოლოდ რომანიზებული</string>
   <string name="morphe_music_lyrics_dual_only">ორმაგი რეჟიმი</string>
@@ -837,7 +843,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_hide_info_title">მფლობელის ხაზის დამალვა</string>
   <string name="morphe_music_lyrics_hide_info_summary">დამალეთ ტექსტის ქვემოთ მოცემული მფლობელის ხაზი</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">თარგმანისა და რომანიზაციის ადგილების შეცვლა</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ცვლის თარგმანისა და რომანიზაციის ჩვენების თანმიმდევრობას ტექსტის ქვემოთ</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ათავსებს თარგმანს ლირიკის ზემოთ; წაკითხვა და რომანიზაცია რჩება ქვემოთ</string>
   <string name="morphe_music_lyrics_force_center_title">ტექსტის მუდმივად ცენტრირება</string>
   <string name="morphe_music_lyrics_force_center_summary">ON განათავსებს ყველა ხაზს ცენტრში და უგულებელყოფს წყაროს გასმას, დუეტის მხარეების ჩათვლით; OFF ინარჩუნებს ტექსტისთვის განსაზღვრულ გასმას</string>
   <string name="morphe_music_lyrics_providers_keep_one">მინიმუმ ერთი პროვაიდერი უნდა დარჩეს ჩართული</string>
@@ -845,14 +851,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_romanization_provider_title">რომანიზაცია ან ტრანსლიტერაცია</string>
   <string name="morphe_music_lyrics_romanization_provider_local">ოფლაინ ლექსიკონი</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime-ის სიტყვების სია</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">ოფლაინ ლექსიკონი</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Ruby სკრიპტი</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">ჰირაღანა (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">კატაკანა (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Ruby-ს ჩვენების ღილაკი</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">დააჭირეთ ტექსტის ზემოთ ruby ჩანაწერების ჩასართავად/მოსაშორებლად; გრძელი დაჭერით გადაირთვეთ ჰირაღანასა და კატაკანას შორის. გამოიყენება ჩართული ruby პროვაიდერები მითითებული თანმიმდევრობით</string>
-  <string name="morphe_music_lyrics_ruby_generating">ruby-ს გენერირება…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU ტრანსლიტერატორი</string>
   <string name="morphe_music_lyrics_use_ai_section_title">სექციების აღმოჩენა AI-ით</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">გამოიყენება მხოლოდ მაშინ, როდესაც პროვაიდერი არ გზავნის სექციების მარკირებებს, როგორიცაა Chorus ან Verse, რასაც შემდეგ თქვენი OpenAI-ს თავსებადი მოდელი აღმოაჩენს. სტრიქონის რედაქტირება ასევე ხსნის მის პრომპტს</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint-ის URL (მაგ. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">აირჩიეთ მოდელი</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">მოდელების ჩატვირთვა ვერ მოხერხდა. შეამოწმეთ API გასაღები ან კავშირი.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">პრომპტი</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby-ს მოთხოვნა (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">მოდელი</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">ბაზისური URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">სერვისის წინასწარგანსაზღვრული პარამეტრები</string>

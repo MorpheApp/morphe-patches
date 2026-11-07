@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package app.morphe.extension.youtube.innertube.onthego;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+option java_outer_classname = "OnTheGoOuterClass";
+
+// Bytes of an item of the video player flyout menu (overflow_menu_item.eml).
+message MenuItemElement {
+    ElementType type = 1;
+}
+
+message ElementType {
+    ComponentType componentType = 168777401;
+}
+
+message ComponentType {
+    ElementModel model = 5;
+}
+
+message ElementModel {
+    MenuItemModel menuItemModel = 407694004;
+}
+
+message MenuItemModel {
+    // Shown below the title, such as 'Premium' for features that need YouTube Premium.
+    string subtitle = 25;
+}

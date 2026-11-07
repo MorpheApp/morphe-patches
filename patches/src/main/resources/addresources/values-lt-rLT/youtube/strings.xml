@@ -793,6 +793,17 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Įjungti perėjimą bakstelint</string>
   <string name="morphe_tap_to_seek_summary">Bakstelėkite bet kur per windingo juostą, kad šokutumėte į tą vietą, vietoj vilkimo</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Specialus ieškimo juostos žymeklis</string>
+  <string name="morphe_custom_seekbar_thumb_title">Įjungti specialų ieškimo juostos žymeklį</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Pakeiskite ieškimo juostos žymeklį specialiu vaizdu arba animuotu GIF failu</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Žymeklio vaizdas</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Pasirinkite vaizdą arba animuotą GIF failą iš įrenginio atminties</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Pasirinktas failas nėra palaikomas vaizdas</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Specialus ieškimo juostos žymeklio vaizdas nerastas</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Žymeklio dydis</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Pritaikyti prie ieškimo juostos</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Originalus dydis</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Braukimo į kairę gestas</string>
   <string name="morphe_swipe_right_zone_title">Braukimo į dešinę gestas</string>
@@ -1769,6 +1780,8 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_niconico_comments_travel_duration_summary">Kiek sekundžių komentarams reikia, kad perekryžtų ekraną. Mažesni reikšmės juda greičiau</string>
   <string name="morphe_niconico_comments_display_area_title">Rodymo zona</string>
   <string name="morphe_niconico_comments_display_area_summary">Kiek procentų plejerio nuo viršaus užima komentarai. Mažesnės reikšmės palieka video apatinę dalį tuščią</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Slėpti komentarus, kurie sutaptų</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Kai rodymo srutis pilna, nauji komentarai yra slenjami, kad neprieistų prie kitų komentarų</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimalus komentarų ilgis</string>
   <string name="morphe_niconico_comments_max_length_summary">Paslepia komentarus, kuriuose yra daugiau simbolių nei nustatyta. Kiekvienas emoji skaičiuojamas kaip vienas simbolis</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Be apribojimų</string>

@@ -793,6 +793,17 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Aktifkan ketuk untuk mencari</string>
   <string name="morphe_tap_to_seek_summary">Ketuk di mana saja pada bilah geser untuk melompat ke posisi tersebut alih-alih menyeretnya</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Thumb seekbar khusus</string>
+  <string name="morphe_custom_seekbar_thumb_title">Aktifkan thumb seekbar khusus</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Ganti thumb seekbar dengan gambar khusus atau GIF animasi</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Gambar thumb</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Pilih gambar atau GIF animasi dari penyimpanan perangkat</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Berkas yang dipilih bukan gambar yang didukung</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Gambar thumb seekbar khusus tidak ditemukan</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Ukuran thumb</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Sesuaikan seekbar</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Ukuran asli</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gerakan mengusap ke kiri</string>
   <string name="morphe_swipe_right_zone_title">Gerakan mengusap ke kanan</string>
@@ -1770,6 +1781,8 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_niconico_comments_travel_duration_summary">Berapa detik yang dibutuhkan komentar untuk melintasi layar. Nilai yang lebih rendah bergerak lebih cepat</string>
   <string name="morphe_niconico_comments_display_area_title">Area tampilan</string>
   <string name="morphe_niconico_comments_display_area_summary">Seberapa besar bagian pemutar, dari atas, yang digunakan oleh komentar. Nilai yang lebih rendah menjaga bagian bawah video tetap bersih</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Sembunyikan komentar yang akan tumpang tindih</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Saat area tampilan penuh, komentar baru akan disembunyikan daripada menimpa komentar lain</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimal panjang komentar</string>
   <string name="morphe_niconico_comments_max_length_summary">Menyembunyikan komentar yang jumlah karakternya melebihi batas ini. Setiap emoji dihitung sebagai satu karakter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Tanpa batas</string>

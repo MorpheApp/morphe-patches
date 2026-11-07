@@ -793,6 +793,17 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Activer la navigation par appui</string>
   <string name="morphe_tap_to_seek_summary">Appuyez n\'importe où sur la barre de progression pour accéder directement à cette position au lieu de glisser</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Curseur personnalisé de la barre de progression</string>
+  <string name="morphe_custom_seekbar_thumb_title">Activer le curseur personnalisé de la barre de progression</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Remplacer le curseur de la barre de progression par une image personnalisée ou un GIF animé</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Image du curseur</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Sélectionner une image ou un GIF animé depuis le stockage de l\'appareil</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Le fichier sélectionné n\'est pas une image prise en charge</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Image du curseur de la barre de progression personnalisée non trouvée</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Taille du curseur</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Ajuster à la barre de progression</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Taille d\'origine</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Geste de balayage vers la gauche</string>
   <string name="morphe_swipe_right_zone_title">Geste de balayage vers la droite</string>
@@ -1772,6 +1783,8 @@ L'enregistrement automatique est facultatif. Il s'arrête en navigation privée 
   <string name="morphe_niconico_comments_travel_duration_summary">Combien de secondes les commentaires mettent à traverser l\'écran. Des valeurs plus faibles les font défiler plus rapidement</string>
   <string name="morphe_niconico_comments_display_area_title">Zones d\'affichage</string>
   <string name="morphe_niconico_comments_display_area_summary">La partie du lecteur vidéo, à partir du haut, utilisée par les commentaires. Des valeurs plus faibles laissent la partie inférieure de la vidéo dégagée</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Masquer les commentaires qui se chevaucheraient</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Lorsque la zone d\'affichage est pleine, les nouveaux commentaires sont masqués au lieu de chevaucher les autres commentaires</string>
   <string name="morphe_niconico_comments_max_length_title">Longueur maximale des commentaires</string>
   <string name="morphe_niconico_comments_max_length_summary">Masque les commentaires contenant plus de caractères que cette limite. Chaque emoji compte pour un caractère</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Aucune limite</string>

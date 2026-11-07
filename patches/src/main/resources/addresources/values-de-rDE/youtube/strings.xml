@@ -794,6 +794,17 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Tippen zum Suchen aktivieren</string>
   <string name="morphe_tap_to_seek_summary">Tippen Sie an eine beliebige Stelle des Fortschrittsbalkens, um an diese Position zu springen, anstatt ihn zu ziehen</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Benutzerdefinierter Seekbar-Regler</string>
+  <string name="morphe_custom_seekbar_thumb_title">Benutzerdefinierten Seekbar-Regler aktivieren</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Ersetzt den Seekbar-Regler durch ein benutzerdefiniertes Bild oder ein animiertes GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Regler-Bild</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Wählen Sie ein Bild oder ein animiertes GIF aus dem Gerätespeicher aus</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Die ausgewählte Datei ist kein unterstütztes Bild</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Benutzerdefiniertes Seekbar-Regler-Bild nicht gefunden</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Regler-Größe</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">An Seekbar anpassen</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Originalgröße</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Wischgeste nach links</string>
   <string name="morphe_swipe_right_zone_title">Wischgeste nach rechts</string>
@@ -1770,6 +1781,8 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder b
   <string name="morphe_niconico_comments_travel_duration_summary">Wie viele Sekunden die Kommentare benötigen, um den Bildschirm zu überqueren. Niedrigere Werte bewegen sich schneller</string>
   <string name="morphe_niconico_comments_display_area_title">Anzeigebereich</string>
   <string name="morphe_niconico_comments_display_area_summary">Wie viel des Players, von oben aus, die Kommentare nutzen. Niedrigere Werte halten den unteren Teil des Videos frei</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Überlappende Kommentare ausblenden</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Wenn der Anzeigebereich voll ist, werden neue Kommentare ausgeblendet, anstatt andere Kommentare zu überlagern</string>
   <string name="morphe_niconico_comments_max_length_title">Maximale Kommentarlänge</string>
   <string name="morphe_niconico_comments_max_length_summary">Blendet Kommentare aus, die mehr Zeichen als diese Anzahl enthalten. Jedes Emoji zählt als ein Zeichen</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Keine Begrenzung</string>

@@ -793,6 +793,17 @@ Ili kurekebisha hili, washa 'Ghadhabu ya utiririko wa video' na ubadilishe 'Klij
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Washa kugusa ili kutafuta</string>
   <string name="morphe_tap_to_seek_summary">Gusa popote kwenye bar ya utafutaji ili kuruka hadi nafasi hiyo badala ya kuburuta</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Kishale cha seekbar cha kistaili</string>
+  <string name="morphe_custom_seekbar_thumb_title">Washa kishale cha seekbar cha kistaili</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Badilisha kishale cha seekbar kwa picha ya kistaili au GIF inayocheza</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Picha ya kishale</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Chagua picha au GIF inayocheza kutoka kwenye hifadhi ya kifaa</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Faili iliyochaguliwa si picha inayokubalika</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Picha ya kishale cha seekbar cha kistaili hajakutana</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Ukubwa wa kishale</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Vikaa kwenye seekbar</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Ukubwa wa asili</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Ishara ya kutelezesha kushoto</string>
   <string name="morphe_swipe_right_zone_title">Ishara ya kutelezesha kulia</string>
@@ -1770,6 +1781,8 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_niconico_comments_travel_duration_summary">Sekunde ngapi maoni yanachukua kuvuka skrini. Thamani ndogo husonga haraka zaidi</string>
   <string name="morphe_niconico_comments_display_area_title">Eneo la onyesho</string>
   <string name="morphe_niconico_comments_display_area_summary">Kiasi cha kidhibiti cha kucheza, kuanzia juu, ambacho maoni yanatumia. Thamani ndogo huacha sehemu ya chini ya video ikiwa wazi</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Ficha maoni ambayo yangepingana</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Eneo la onyesho linapokuwa limejaa, maoni mapya hufichwa badala ya kupingana na maoni mengine</string>
   <string name="morphe_niconico_comments_max_length_title">Urefu wa juu wa maoni</string>
   <string name="morphe_niconico_comments_max_length_summary">Huficha maoni yenye herufi nyingi kuliko hizi. Kila emoji huhesabiwa kama herufi moja</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Hakuna kikomo</string>

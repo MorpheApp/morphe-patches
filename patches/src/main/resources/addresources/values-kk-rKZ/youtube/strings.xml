@@ -793,6 +793,17 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Тігу үшін түртуді қосу</string>
   <string name="morphe_tap_to_seek_summary">Сырғытудың орнына, сол позицияға секіру үшін іздеу жолағының кез келген жерін басыңыз</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Custom seekbar ползунының белгісі</string>
+  <string name="morphe_custom_seekbar_thumb_title">Custom seekbar ползуны белгісін қосу</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Seekbar ползуны белгісін жеке кескінмен немесе анимацияланған GIF-пен алмастырыңыз</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Белгі кескіні</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Құрылғы жадынан кескін немесе анимацияланған GIF таңдаңыз</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Таңдалған файл қолдау көрсетілмейтін кескін</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Custom seekbar ползуны белгісінің кескіні табылмады</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Белгі өлшемі</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Seekbar-ға сәйкестендіру</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Түпнұсқа өлшемі</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Солға сырпыру қимылы</string>
   <string name="morphe_swipe_right_zone_title">Оңға сырпыру қимылы</string>
@@ -1770,6 +1781,8 @@ AV1-мен бейнеойнату кезінде секірулер болуы �
   <string name="morphe_niconico_comments_travel_duration_summary">Пікірлердің экранды кесіп өтуіне кететін секундтар саны. Төменгі мәндер жылдамырақ қозғалады</string>
   <string name="morphe_niconico_comments_display_area_title">Көрсету аймағы</string>
   <string name="morphe_niconico_comments_display_area_summary">Пікірлердің плеердің жоғарғы жағынан қаншалықты бөлігін қолданатыны. Төменгі мәндер бейнебаянның төменгі бөлігін бос қалдырады</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Қабаттасатын пікірлерді жасыру</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Көрсетілім аймағы толғанда, жаңа пікірлер басқа пікірлермен қабаттасатын орнына жасырылады</string>
   <string name="morphe_niconico_comments_max_length_title">Пікірдің максималды ұзындығы</string>
   <string name="morphe_niconico_comments_max_length_summary">Таңдалған санынан көп таңбасы бар пікірлерді жасырады. Әр эмодзи бір таңба ретінде есептеледі</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Шектеу жоқ</string>

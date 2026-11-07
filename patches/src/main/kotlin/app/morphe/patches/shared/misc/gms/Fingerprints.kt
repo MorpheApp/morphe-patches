@@ -32,7 +32,7 @@ internal object GnpRegistrationTargetFingerprint : Fingerprint(
 )
 
 /**
- * YouTube 21.45+ reads the Android ID in another class.
+ * YouTube 21.45+ and YT Music 9.45+ read the Android ID in another class.
  */
 internal object GnpRegistrationTargetSuspendFingerprint : Fingerprint(
     name = "invokeSuspend",

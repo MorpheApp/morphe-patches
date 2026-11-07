@@ -47,3 +47,14 @@ internal object GmsDeviceComplianceCheckFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Asks GmsCore if the account has a capability, such as being a supervised account.
+ */
+internal object AccountHasCapabilitiesFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Integer;",
+    parameters = listOf("Landroid/accounts/Account;", "[Ljava/lang/String;"),
+    filters = listOf(
+        string("This call can involve network request. It is unsafe to call from main thread.")
+    )
+)

@@ -788,6 +788,17 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Sekib o\'tish uchun teginishni yoqish</string>
   <string name="morphe_tap_to_seek_summary">Suriish o\"rniga, o\"sha pozitsiyaga o\"tish uchun seekbarning istalgan joyiga bosing</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Maxsus seekbar belgisi</string>
+  <string name="morphe_custom_seekbar_thumb_title">Maxsus seekbar belgisini yoqish</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Seekbar belgisini maxsus rasm yoki animatsion GIF bilan almashtiring</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Belgi rasmi</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Qurilma xotirasidan rasm yoki animatsion GIF tanlang</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Tanlangan fayl qo\'llab-quvvatlanmaydigan rasm</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Maxsus seekbar belgisi rasmi topilmadi</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Belgi hajmi</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Seekbarga moslash</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Asl hajmi</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Chapga surish jesti</string>
   <string name="morphe_swipe_right_zone_title">O\'ngga surish jesti</string>
@@ -1761,6 +1772,8 @@ Avtomatik yozib olish ixtiyoriy. U inkognito rejimida yoki akkaunt o'zgarganda t
   <string name="morphe_niconico_comments_travel_duration_summary">Izohlarning ekran bo\'ylab o\'tishi uchun necha soniya kerakligi. Kichikroq qiymatlar tezroq harakatlanishini ta\'minlaydi</string>
   <string name="morphe_niconico_comments_display_area_title">Ko\'rsatish sohasi</string>
   <string name="morphe_niconico_comments_display_area_summary">Izohlar pleyerning yuqori qismidan qancha joy egallashini belgilaydi. Kichikroq qiymatlar videoning pastki qismini bo\'sh holda saqlaydi</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Ustma-ust tushadigan izohlarni yashirish</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Ekran sohasi to\'lganda, yangi izohlar boshqa izohlar ustiga tushmasligi uchun yashiriladi</string>
   <string name="morphe_niconico_comments_max_length_title">Izohning maksimal uzunligi</string>
   <string name="morphe_niconico_comments_max_length_summary">Ushbu miqdordan ko\'p belgiga ega bo\'lgan izohlarni yashiradi. Har bir emoji bitta belgi hisoblanadi</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Cheklov yo\'q</string>

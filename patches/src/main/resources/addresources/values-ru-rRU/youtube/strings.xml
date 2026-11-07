@@ -795,6 +795,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Включить перемотку нажатием</string>
   <string name="morphe_tap_to_seek_summary">Нажмите в любом месте полосы прокрутки, чтобы мгновенно перейти к этому моменту вместо перетаскивания</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Кастомный ползунок полосы прогресса</string>
+  <string name="morphe_custom_seekbar_thumb_title">Включить кастомный ползунок полосы прогресса</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Замените ползунок полосы прогресса на кастомное изображение или анимированный GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Изображение ползунка</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Выберите изображение или анимированный GIF из памяти устройства</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Выбранный файл не является поддерживаемым изображением</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Изображение кастомного ползунка полосы прогресса не найдено</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Размер ползунка</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">По размеру полосы прогресса</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Оригинальный размер</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Жест смахивания влево</string>
   <string name="morphe_swipe_right_zone_title">Жест смахивания вправо</string>
@@ -1743,6 +1754,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_backup_restore">Восстановить резервную копию</string>
   <string name="morphe_series_tracker_backup_preview">Добавлено %1$s сериалов. Уже имеющиеся в вашей библиотеке %2$s сериала сохранены. Существующий прогресс видео сохраняется</string>
   <string name="morphe_series_tracker_backup_saved">Резервная копия сериалов сохранена</string>
+  <string name="morphe_series_tracker_backup_restored">Восстановлено серий: %s</string>
   <string name="morphe_series_tracker_error_backup_invalid">Этот файл не является поддерживаемой резервной копией сериала или слишком велик. Ваша библиотека не изменена</string>
   <string name="morphe_series_tracker_error_backup_write">Не удалось сохранить резервную копию. Попробуйте другое расположение</string>
   <string name="morphe_series_tracker_removed">Сериалы удалены</string>
@@ -1770,6 +1782,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">Сколько секунд комментарии пересекают экран. Чем меньше значение, тем быстрее движение</string>
   <string name="morphe_niconico_comments_display_area_title">Область отображения</string>
   <string name="morphe_niconico_comments_display_area_summary">Какую часть плеера сверху используют комментарии. Более низкие значения оставляют нижнюю часть видео свободной</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Скрывать перекрывающие комментарии</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Когда область отображения заполнена, новые комментарии скрываются, чтобы не перекрывать другие комментарии</string>
   <string name="morphe_niconico_comments_max_length_title">Максимальная длина комментария</string>
   <string name="morphe_niconico_comments_max_length_summary">Скрывает комментарии, длина которых превышает это значение. Каждый эмодзи считается за один символ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без ограничений</string>

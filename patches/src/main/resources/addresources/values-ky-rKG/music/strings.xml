@@ -700,7 +700,7 @@ Steps:
   <string name="morphe_music_lyrics_show_section_title">Бөлүм тегдерин көрсөтүү</string>
   <string name="morphe_music_lyrics_show_section_summary">Лириканын ар бир жаңы бөлүмүн Verse же Chorus сыяктуу кичинекей тег менен белгилөө</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Көчүрүү баскычын көрсөтүү</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Түп нускадагы ыр сөздөрүн жөнөкөй текст катары көчүрүү үчүн басыңыз; шире файлды «Жүктүүлөр» папкасына сактоо үчүн узак басыңыз</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Текстти жөнөкөй форматта көчүрүү үчүн басыңыз; түп нуска файлды жана айландырылган TTML файлын «Жүктүрүүлөр» папкасына сактоо үчүн узак басыңыз</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Котормо баскычын көрсөтүү</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Котормону күйгүзүү/өчүрүү үчүн басыңыз; котормону гана көрсөтүү үчүн узак басыңыз. Иштетилген котормо sağlayıcıлары тизмеленген тартипте колдонулат</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Романизация же Транслитерация баскычын көрсөтүү</string>
@@ -716,7 +716,7 @@ Steps:
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Кытай жана кантон белгилери (UniDict, ~8 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Кытай сөздөрү (pinyin-pro, ~17 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Грек, славян кириллицасы (анын ичинде орус, украин, болгар, серб, белорус, македон тилдери), грузин, армян, иврит, араб, амхара жана сирияк транслитерациясы (CLDR, ~0.5 МБ)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s окулууда: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Окулууда %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Жаңыртуу баскычын көрсөтүү</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Кийинки ыр варианттарына өтүү үчүн басыңыз; ырдын аталышы жана artisti боюнча издөө үчүн узак басыңыз</string>
   <string name="morphe_music_lyrics_search_dialog_title">Сөздөрдү издөө</string>
@@ -725,6 +725,7 @@ Steps:
   <string name="morphe_music_lyrics_search_empty">Ырдын аталышын жана artistiнин атын жазыңыз</string>
   <string name="morphe_music_lyrics_search_no_providers">Иштетилген провайдерлердин эч бири башка ырларды издей албайт</string>
   <string name="morphe_music_lyrics_saved">Сакталды</string>
+  <string name="morphe_music_lyrics_written_by">Жазган: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Синхрондолгон сөздөрдү же муунду белгилөө</string>
   <string name="morphe_music_lyrics_word_sync_summary">Мүмкүн болгон учурда сөз сайын берилген тексттерге артыкчылык бериңиз. Тексттерде сөздөрдүн убактысы көрсөтүлгөн учурда, ар бир сөз же муун музыка менен бирге белгиленет</string>
   <string name="morphe_music_lyrics_line_scale_title">Активдүү эмес саптарды кичирейтүү</string>
@@ -740,7 +741,7 @@ Steps:
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Динамикалык фонду анимациялоо</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Оynятылып жатканда фонду кыймылдаткыла жана эгер YouTube Music микрофонго уруксат алган болсо, аны музыка менен пульсациялагыла. Батареяны аз сарптоо үчүн тынч фонду колдонуп, аны өчүрүңүз</string>
   <string name="morphe_music_lyrics_mediasession_title">Бөгөттүү экранда MediaSession текстинин сөздөрүн көрсөтүү</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Учурдагы сапты кулпулоо экранында, Android Auto жана Bluetooth\'та көрсөтөт. Android 11 же андан жаңыраак версиясы талап кылынат</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Бү🔒ккөндөгү экранда, Android Auto жана Bluetooth-та учурдагы сапты көрсөтөт</string>
   <string name="morphe_music_lyrics_miniplayer_title">Миниплеердин сөздөрүн көрсөтүү</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Учурдагы сапты миниплеерде көрсөтөт, ал эми трек субтитрге жылдырылат</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Ырдын аталышынын/аткаруучусунун форматы</string>
@@ -777,6 +778,8 @@ Steps:
   <string name="morphe_music_lyrics_force_capitalize_summary">Лириканын ар бир сабынын биринчи тамгасын чоң тамга менен жазат</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Аягындагы пунктуация белгилерин алып салуу</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Лрика саптарынын аягындагы чекиттерди, үтүрлөрдү, эки чекиттерди жана сызыкчаларды алып салат. Суроо белгилери, удилуу белгилери, көп чекиттер, тырмакчалар жана кашаалар сакталат</string>
+  <string name="morphe_music_lyrics_han_form_title">Кытай формасын конвертациялоо</string>
+  <string name="morphe_music_lyrics_han_form_summary">Күйгүзүлгөндө, ырлардын тексти жөнөкөй жана традициялык жазуулардын ортосунда которуу үчүн сиздин котормонун максаттуу тилиңизге ылайыкталат</string>
   <string name="morphe_music_lyrics_text_size_title">Тексттин өлчөмү</string>
   <string name="morphe_music_lyrics_text_size_summary">Тексттин өлчөмү</string>
   <string name="morphe_music_lyrics_offset_ms_title">Жалпы убакыттык оффсет</string>
@@ -792,6 +795,7 @@ Steps:
   <string name="morphe_music_lyrics_translated_by_ai">%s тарабынан которулган</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s тарабынан романизацияланган</string>
   <string name="morphe_music_lyrics_romanized_by_local">Романизациялоону %s жасаган</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s менен)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Rime тарабынан романизацияланган (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Которулган</string>
@@ -807,6 +811,8 @@ Steps:
   <string name="morphe_romanize_language_DEFAULT">Өзүнөн өзү</string>
   <string name="morphe_music_lyrics_romanizing">Романизацияланууда…</string>
   <string name="morphe_music_lyrics_romanize_failed">Текстти романизациялоо мүмкүн болгон жок</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Эч бири</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Ruby максаты</string>
   <string name="morphe_music_lyrics_translate_only">Котормосу гана</string>
   <string name="morphe_music_lyrics_romanize_only">Тек гана романизация</string>
   <string name="morphe_music_lyrics_dual_only">Кош режим</string>
@@ -837,7 +843,7 @@ Steps:
   <string name="morphe_music_lyrics_hide_info_title">Кредиттик сапты жашыруу</string>
   <string name="morphe_music_lyrics_hide_info_summary">Тексттин төмөнүндө көрсөтүлгөн кредиттик сапты жашыруу</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Котормо менен романизацияны алмаштыруу</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Лориканын төмөндөгү котормосунун жана романизациясынын көрсөтүлүш тартибин алмаштырат</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Котормону ырлардын текстинен жогоруга жылдырат; окуу жана рим将在изация төмөн калат</string>
   <string name="morphe_music_lyrics_force_center_title">Текстти дайыма борборго жайгаштыруу</string>
   <string name="morphe_music_lyrics_force_center_summary">КҮЙГҮЗҮЛГАН болсо, ар бир сап ортодо жайгашат жана булактын тегилөөсү, анын ичинде дуэт тараптары эске алынбайт; ӨЧҮРҮЛГӨН болсо, ырдын текстинде көрсөтүлгөн тегилөө сакталат</string>
   <string name="morphe_music_lyrics_providers_keep_one">Кеминде бир камсыздоочу күйгүзүлгөн болушу керек</string>
@@ -845,14 +851,7 @@ Steps:
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация же транслитерация</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Оффлайн сөздүк</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime сөздөр тизмеси</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Руби</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн сөздүк</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Ruby скрипти</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Ruby баскычын көрсөтүү</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Тексттин үстүндөгү ruby окууларын күйгүзүү/өчүрүү үчүн басыңыз; хирагана жана катакананын ортосунда которуу үчүн узак басыңыз. Тизмеленген тартипте иштетилген ruby провайдерлерин колдонот</string>
-  <string name="morphe_music_lyrics_ruby_generating">Ruby жасалууда…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU Транслитератору</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Бөлүмдөрдү AI жардамы менен аныктоо</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Провайдер Кайырма же Куплет сыяктуу бөлүмдөрдүн белгилерин жөнөтпөгөн учурда гана колдонулат, аларды сиздин OpenAI-га шайкеш моделиңиз аныктайт. Сапты түзөтүү анын промптын да ачат</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (мисалы, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ Steps:
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Моделди тандаңыз</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Моделдерди алуу мүмкүн болгон жок. API ачкычын же байланышты текшериңиз.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Промпт</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby суроосу (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Модель</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Негизги URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Кызматтын алдын ала орнотулган жөндөөлөрү</string>

@@ -793,6 +793,17 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">ভিডিওর নির্দিষ্ট অংশে যেতে ট্যাপ করা সক্রিয় করুন</string>
   <string name="morphe_tap_to_seek_summary">ড্র্যাগ করার পরিবর্তে সরাসরি নির্দিষ্ট অবস্থানে যেতে সিকবারের যেকোনো জায়গায় ট্যাপ করুন</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">কাস্টম সিকবার থাম্ব</string>
+  <string name="morphe_custom_seekbar_thumb_title">কাস্টম সিকবার থাম্ব সক্রিয় করুন</string>
+  <string name="morphe_custom_seekbar_thumb_summary">সিকবার থাম্বটি একটি কাস্টম ইমেজ বা অ্যানিমেটেড GIF দিয়ে প্রতিস্থাপন করুন</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">থাম্ব ইমেজ</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">ডিভাইস স্টোরেজ থেকে একটি ইমেজ বা অ্যানিমেটেড GIF নির্বাচন করুন</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">নির্বাচিত ফাইলটি সমর্থিত ইমেজ নয়</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">কাস্টম সিকবার থাম্ব ইমেজ পাওয়া যায়নি</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">থাম্ব আকার</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">সিকবারের সাথে ফিট করুন</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">মূল আকার</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Left swipe gesture</string>
   <string name="morphe_swipe_right_zone_title">Right swipe gesture</string>
@@ -1771,6 +1782,8 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_niconico_comments_travel_duration_summary">মন্তব্যগুলো স্ক্রিন পার করতে কত সেকেন্ড সময় নেবে। কম মান হলে দ্রুত মুভ করবে</string>
   <string name="morphe_niconico_comments_display_area_title">প্রদর্শন এলাকা</string>
   <string name="morphe_niconico_comments_display_area_summary">প্লেয়ারের উপরের অংশ থেকে কমেন্টগুলো কতটা জায়গা ব্যবহার করবে। কম মান ভিডিওর নিচের অংশটি পরিষ্কার রাখে</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">ওভারল্যাপ হতে পারে এমন কমেন্টগুলো হাইড করুন</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">যখন ডিসপ্লে এরিয়া পূর্ণ হয়ে যায়, তখন অন্যান্য কমেন্টের উপর ওভারল্যাপ করার পরিবর্তে নতুন কমেন্টগুলো হাইড করা হয়</string>
   <string name="morphe_niconico_comments_max_length_title">কমেন্টের সর্বোচ্চ দৈর্ঘ্য</string>
   <string name="morphe_niconico_comments_max_length_summary">এর থেকে বেশি ক্যারেক্টারের কমেন্টগুলো হাইড করে। প্রতিটি ইমোজি একটি ক্যারেক্টার হিসেবে গণ্য হবে</string>
   <string name="morphe_niconico_comments_max_length_no_limit">কোনো সীমা নেই</string>

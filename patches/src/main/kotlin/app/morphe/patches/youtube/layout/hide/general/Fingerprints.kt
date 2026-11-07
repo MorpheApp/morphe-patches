@@ -852,3 +852,13 @@ internal object ShowControlsOnRelatedPanelDragFingerprint : Fingerprint(
         opcode(Opcode.RETURN_VOID, MatchAfterImmediately())
     )
 )
+
+/**
+ * Rounded box of an element in the fullscreen engagement panel, such as the channel bar.
+ */
+internal object MetadataHighlightsColumnMeasureFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/player/overlay/fullscreenengagement/layout/MetadataHighlightsColumnLinearLayout;",
+    name = "onMeasure",
+    returnType = "V",
+    parameters = listOf("I", "I")
+)

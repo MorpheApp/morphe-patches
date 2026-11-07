@@ -27,6 +27,17 @@ internal object IncognitoSearchPaddingFeatureFlagFingerprint : Fingerprint(
 )
 
 /**
+ * Read together with [IncognitoSearchPaddingFeatureFlagFingerprint] wherever the app reads that flag,
+ * and does the same: the navigation bar is hidden while the keyboard is open, and the pages leave out
+ * the height of the navigation bar meanwhile, which leaves wrong padding in some pages, such as the search.
+ */
+internal object KeyboardHidesNavigationBarFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45794752L)
+    )
+)
+
+/**
  * Sets the bottom margin of the layout that holds the page and the navigation bar.
  * With the keyboard open and a text field focused, the margin is the keyboard height,
  * otherwise the bottom of the window insets.

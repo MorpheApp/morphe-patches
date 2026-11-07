@@ -793,6 +793,17 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Bật chạm để tua</string>
   <string name="morphe_tap_to_seek_summary">Nhấn vào bất kỳ đâu trên thanh tua để nhảy đến vị trí đó thay vì kéo</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Tùy chỉnh nút kéo thanh tiến trình</string>
+  <string name="morphe_custom_seekbar_thumb_title">Bật tùy chỉnh nút kéo thanh tiến trình</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Thay thế nút kéo thanh tiến trình bằng hình ảnh tùy chỉnh hoặc GIF động</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Hình ảnh nút kéo</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Chọn một hình ảnh hoặc GIF động từ bộ nhớ thiết bị</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Tệp đã chọn không phải là hình ảnh được hỗ trợ</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Không tìm thấy hình ảnh nút kéo thanh tiến trình tùy chỉnh</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Kích thước nút kéo</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Vừa với thanh tiến trình</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Kích thước gốc</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Cử chỉ vuốt bên trái</string>
   <string name="morphe_swipe_right_zone_title">Cử chỉ vuốt bên phải</string>
@@ -1771,6 +1782,8 @@ Tự động ghi là tùy chọn. Nó dừng lại khi ở chế độ ẩn danh
   <string name="morphe_niconico_comments_travel_duration_summary">Số giây mà các bình luận cần để đi hết màn hình. Giá trị càng thấp thì di chuyển càng nhanh</string>
   <string name="morphe_niconico_comments_display_area_title">Khu vực hiển thị</string>
   <string name="morphe_niconico_comments_display_area_summary">Phần bình luận sẽ chiếm bao nhiêu diện tích trình phát tính từ trên xuống. Giá trị thấp hơn sẽ giữ cho phần dưới của video được thông thoáng</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Ẩn các bình luận bị chồng lấp</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Khi khu vực hiển thị đầy, các bình luận mới sẽ bị ẩn thay vì chồng lên các bình luận khác</string>
   <string name="morphe_niconico_comments_max_length_title">Độ dài bình luận tối đa</string>
   <string name="morphe_niconico_comments_max_length_summary">Ẩn các bình luận có nhiều ký tự hơn giá trị này. Mỗi emoji được tính là một ký tự</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Không giới hạn</string>

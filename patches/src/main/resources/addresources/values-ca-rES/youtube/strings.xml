@@ -793,6 +793,17 @@ Per solucionar-ho, activa 'Spoof video streams' i canvia el 'Client per defecte'
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Activa tocar per recercar</string>
   <string name="morphe_tap_to_seek_summary">Toqueu qualsevol punt de la barra de cerca per saltar a aquesta posició en lloc d\'arrossegar</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Indicador de barra de recerca personalitzat</string>
+  <string name="morphe_custom_seekbar_thumb_title">Habilitar l\'indicador de barra de recerca personalitzat</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Substitueix l\'indicador de la barra de recerca per una imatge personalitzada o un GIF animat</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Imatge de l\'indicador</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Selecciona una imatge o un GIF animat de l\'emmagatzematge del dispositiu</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">El fitxer seleccionat no és una imatge compatible</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">No s\'ha trobat la imatge personalitzada del marcador de la barra de cerca</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Mida del marcador</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Ajustar a la barra de cerca</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Mida original</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gest d\'arrosgament a l\'esquerra</string>
   <string name="morphe_swipe_right_zone_title">Gest d\'arrosgament a la dreta</string>
@@ -1771,6 +1782,8 @@ El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el 
   <string name="morphe_niconico_comments_travel_duration_summary">Quants segons triguen els comentaris a creuar la pantalla. Els valors més baixos es mouen més ràpid</string>
   <string name="morphe_niconico_comments_display_area_title">Àrea de visualització</string>
   <string name="morphe_niconico_comments_display_area_summary">Quina part del reproductor, des de dalt, utilitzen els comentaris. Els valors més baixos mantenen neta la part inferior del vídeo</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Ocultar comentaris que es solaparien</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Quan l\'àrea de visualització està plena, els nous comentaris s\'oculten en lloc de solapar-se amb altres comentaris</string>
   <string name="morphe_niconico_comments_max_length_title">Longitud màxima del comentari</string>
   <string name="morphe_niconico_comments_max_length_summary">Amaga els comentaris que tinguin més caràcters que aquest. Cada emoji compta com a un caràcter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sense límit</string>

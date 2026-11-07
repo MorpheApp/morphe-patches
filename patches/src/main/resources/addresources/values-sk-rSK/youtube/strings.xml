@@ -793,6 +793,17 @@ Ak to chcete vyriešiť, zapnite 'Spoofovať video streamy' a zmeňte 'Predvolen
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Povoliť posúvanie na zmenu zvuku</string>
   <string name="morphe_tap_to_seek_summary">Ťuknite kamkoľvek na posúvaciu lištu, aby ste preskokli na danú pozíciu namiesto ťahania</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Vlastný ukazovateľ priebehu</string>
+  <string name="morphe_custom_seekbar_thumb_title">Povoliť vlastný ukazovateľ priebehu</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Nahraďte ukazovateľ priebehu vlastným obrázkom alebo animovaným GIF-om</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Obrázok ukazovateľa</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Vyberte obrázok alebo animovaný GIF z úložiska zariadenia</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Vybraný súbor nie je podporovaný obrázok</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Obrázok vlastného ukazovateľa priebehu nebol nájdený</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Veľkosť ukazovateľa</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Prispôsobiť ukazovateľu priebehu</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Pôvodná veľkosť</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gesto potiahnutia vľavo</string>
   <string name="morphe_swipe_right_zone_title">Gesto potiahnutia vpravo</string>
@@ -1741,6 +1752,7 @@ Automatické zaznamenávanie je voliteľné. Zastaví sa v režime inkognito ale
   <string name="morphe_series_tracker_backup_restore">Obnoviť zálohu</string>
   <string name="morphe_series_tracker_backup_preview">Pridať %1$s série. %2$s sérií už vo vašej knižnici zostávajú. Existujúci postup videa zostáva</string>
   <string name="morphe_series_tracker_backup_saved">Záloha seriálov uložená</string>
+  <string name="morphe_series_tracker_backup_restored">Obnovených %s seriálov</string>
   <string name="morphe_series_tracker_error_backup_invalid">Tento súbor nieje podporovanou zálohou série alebo je príliš veľký. Vaša knižnica bola zmenená</string>
   <string name="morphe_series_tracker_error_backup_write">Nepodarilo sa uložiť zálohu. Skúste iné umiestnenie</string>
   <string name="morphe_series_tracker_removed">Seriály odstránené</string>
@@ -1768,6 +1780,8 @@ Automatické zaznamenávanie je voliteľné. Zastaví sa v režime inkognito ale
   <string name="morphe_niconico_comments_travel_duration_summary">Koľko sekúnd trvá, kým komentáre prejdú cez obrazovku. Nižšie hodnoty znamenajú rýchlejší pohyb</string>
   <string name="morphe_niconico_comments_display_area_title">Oblasť zobrazenia</string>
   <string name="morphe_niconico_comments_display_area_summary">Koľko priestoru prehrávača od horného okraja využívajú komentáre. Nižšie hodnoty ponechávajú spodnú časť videa čistú</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Skryť prekrývajúce sa komentáre</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Keď je zobraziacou plocha plná, nové komentáre sa skryjú namiesto toho, aby prekrývali iné komentáre</string>
   <string name="morphe_niconico_comments_max_length_title">Maximálna dĺžka komentára</string>
   <string name="morphe_niconico_comments_max_length_summary">Skryje komentáre s väčším počtom znakov, ako je uvedené. Každý emoji sa počíta ako jeden znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez obmedzenia</string>

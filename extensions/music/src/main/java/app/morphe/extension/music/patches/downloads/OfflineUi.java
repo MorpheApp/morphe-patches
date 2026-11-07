@@ -41,6 +41,7 @@ import java.util.function.Consumer;
 
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.misc.MediaTime;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 
@@ -376,13 +377,9 @@ final class OfflineUi {
         return Color.argb(alpha, Color.red(color), Color.green(color), Color.blue(color));
     }
 
-    static String formatDuration(int seconds) {
-        if (seconds <= 0) return "";
-        if (seconds < 3600) {
-            return String.format(Locale.ROOT, "%d:%02d", seconds / 60, seconds % 60);
-        }
-        return String.format(Locale.ROOT, "%d:%02d:%02d",
-                seconds / 3600, (seconds % 3600) / 60, seconds % 60);
+    private static String formatDuration(int seconds) {
+        // Unknown durations are not shown.
+        return seconds <= 0 ? "" : MediaTime.format(seconds * 1000L);
     }
 
     static String formatSize(long bytes) {

@@ -793,6 +793,17 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Товшиж хайх функцийг идэвхжүүлэх</string>
   <string name="morphe_tap_to_seek_summary">Чирэхгийн оронд гүйлгэж хайх хэсгийн хаана ч дарснаар тухайн хэсэг рүү шилжинэ</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Seekbar-ын thumbnails-ийг загварчлах</string>
+  <string name="morphe_custom_seekbar_thumb_title">Seekbar-ын thumbnails-ийг загварчлахыг идэвхлэх</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Seekbar-ын thumb-ийг өөрийн зураг эсвэл хөдөлгөөнт GIF-ээр солих</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Thumb зураг</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Төхөжлөлийн санах ойгоос зураг эсвэл хөдөлгөөнт GIF сонгох</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Сонгосон файл нь дэмжигдэхгүй зураг байна</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Seekbar-ын thumb-ийг загварчилсан зураг олдсонгүй</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Thumb-ий хэмжээ</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Seekbar-т тааруулах</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Эх alkuу хэмжээ</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Зүүн тийш гүйлгэх дохио</string>
   <string name="morphe_swipe_right_zone_title">Баруун тийш гүйлгэх дохио</string>
@@ -1770,6 +1781,8 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_niconico_comments_travel_duration_summary">Сэтгэгдэл дэлгэцийг огтлохыг хэдэн секунд болгохыг заана. Бага утга нь илүү хурдан хөдөлнө</string>
   <string name="morphe_niconico_comments_display_area_title">Дэлгэцлэх талбай</string>
   <string name="morphe_niconico_comments_display_area_summary">Тоглуулагчийн дээрээс хэдэн хувийг сэтгэгдэл ашиглахыг заана. Бага утга нь видеоны доод хэсгийг цэвэрхэн байлгах болно</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Давхцаж гарч буй сэтгэгдлүүдийг нуух</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Дэлгэц дүүрэх үед шинэ сэтгэгдэл нь бусдартай давхцахын оронд нуугдана</string>
   <string name="morphe_niconico_comments_max_length_title">Сэтгэгдлийн дээд урт</string>
   <string name="morphe_niconico_comments_max_length_summary">Үүнээс илүү тэмдэгттэй сэтгэгдлүүдийг нуух. Эможи бүрийг нэг тэмдэгт гэж тооцно</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Хязгаарлахгүй</string>

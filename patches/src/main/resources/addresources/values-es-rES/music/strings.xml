@@ -700,7 +700,7 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_show_section_title">Mostrar etiquetas de sección</string>
   <string name="morphe_music_lyrics_show_section_summary">Etiqueta cada nueva sección de la letra con una pequeña etiqueta, como «Verso» o «Estribillo»</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Mostrar botón Copiar</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Pulsa para copiar la letra original como texto sin formato; mantén pulsado para guardar el archivo fuente de la letra sin formato en Descargas</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Pulsa para copiar la letra original como texto sin formato; mantén pulsado para guardar el archivo fuente de la letra sin formato y un archivo TTML convertido en Descargas</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Mostrar botón Traducir</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Toca para alternar la traducción; mantén pulsado solo para traducción. Utiliza los proveedores de traducción habilitados en su orden indicado</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Mostrar botón de romanización o transliteración</string>
@@ -716,7 +716,7 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Caracteres chinos y cantoneses (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Palabras chinas (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteración de griego, cirílico eslavo (incl. ruso, ucraniano, búlgaro, serbio, bielorruso, macedonio), georgiano, armenio, hebreo, árabe, amhara y siríaco (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Leyendo %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Leyendo %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostrar botón Actualizar</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Toca para cambiar a la siguiente letra candidata; mantén pulsado para buscar letras por título de canción y artista</string>
   <string name="morphe_music_lyrics_search_dialog_title">Buscar letras</string>
@@ -725,6 +725,7 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_search_empty">Introduce un título de canción y un artista</string>
   <string name="morphe_music_lyrics_search_no_providers">Ninguno de los proveedores activados puede buscar otras canciones</string>
   <string name="morphe_music_lyrics_saved">Guardado</string>
+  <string name="morphe_music_lyrics_written_by">Escrito por: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Resaltar palabras o sílabas sincronizadas</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioriza las letras palabra por palabra cuando estén disponibles. Cuando las letras incluyen tiempos por palabra, resalta cada palabra o sílaba al ritmo de la música</string>
   <string name="morphe_music_lyrics_line_scale_title">Reducir líneas inactivas</string>
@@ -740,7 +741,7 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Animar fondo dinámico</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Mueve el fondo durante la reproducción y haz que pulse con la música si YouTube Music tiene el permiso del micrófono. Desactívalo para tener un fondo estático que consuma menos batería</string>
   <string name="morphe_music_lyrics_mediasession_title">Mostrar letras de MediaSession en la pantalla de bloqueo</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Muestra la línea actual en la pantalla de bloqueo, Android Auto y Bluetooth. Requiere Android 11 o posterior</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Muestra la línea actual en la pantalla de bloqueo, Android Auto y Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">Mostrar letras en el reproductor en miniatura</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Muestra la línea actual en el reproductor reducido, con la pista movida al subtítulo</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Formato de título de canción/artista</string>
@@ -777,6 +778,8 @@ Se aplica a ambos límites. A 1.75, cuatro caracteres de ancho completo cuentan 
   <string name="morphe_music_lyrics_force_capitalize_summary">Pone en mayúscula la primera letra de cada línea de la letra</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Eliminar puntuación final</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Elimina puntos, comas, dos puntos y puntos y coma al final de las líneas de la letra. Se mantienen los signos de interrogación, de exclamación, puntos suspensivos, comillas y paréntesis</string>
+  <string name="morphe_music_lyrics_han_form_title">Conversión de forma china</string>
+  <string name="morphe_music_lyrics_han_form_summary">Cuando está activado, sigue el idioma de destino de la traducción para convertir las letras entre la escritura simplificada y tradicional</string>
   <string name="morphe_music_lyrics_text_size_title">Tamaño del texto</string>
   <string name="morphe_music_lyrics_text_size_summary">Tamaño del texto de las letras</string>
   <string name="morphe_music_lyrics_offset_ms_title">Desfase de tiempo global</string>
@@ -792,6 +795,7 @@ Se aplica a ambos límites. A 1.75, cuatro caracteres de ancho completo cuentan 
   <string name="morphe_music_lyrics_translated_by_ai">Traducido por %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizado por %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romanizado por %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (con %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Romanizado por Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Traducido</string>
@@ -807,6 +811,8 @@ Se aplica a ambos límites. A 1.75, cuatro caracteres de ancho completo cuentan 
   <string name="morphe_romanize_language_DEFAULT">Automático</string>
   <string name="morphe_music_lyrics_romanizing">Romanizando…</string>
   <string name="morphe_music_lyrics_romanize_failed">No se pudieron romanizar las letras</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Nada</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Destino de Ruby</string>
   <string name="morphe_music_lyrics_translate_only">Solo traducción</string>
   <string name="morphe_music_lyrics_romanize_only">Solo romanización</string>
   <string name="morphe_music_lyrics_dual_only">Modo dual</string>
@@ -837,7 +843,7 @@ Las letras provienen de servicios de terceros que no están afiliados, patrocina
   <string name="morphe_music_lyrics_hide_info_title">Ocultar línea de créditos</string>
   <string name="morphe_music_lyrics_hide_info_summary">Oculta la línea de créditos que se muestra debajo de las letras</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Intercambiar traducción y romanización</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Intercambia el orden de visualización de la traducción y la romanización debajo de la letra</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Mueve la traducción arriba de las letras; la lectura y la romanización permanecen debajo</string>
   <string name="morphe_music_lyrics_force_center_title">Centrar siempre las letras</string>
   <string name="morphe_music_lyrics_force_center_summary">ON coloca todas las líneas en el centro e ignora la alineación original, incluidos los lados del dúo; OFF mantiene la alineación que piden las letras</string>
   <string name="morphe_music_lyrics_providers_keep_one">Debe haber al menos un proveedor activado</string>
@@ -845,14 +851,7 @@ Las letras provienen de servicios de terceros que no están afiliados, patrocina
   <string name="morphe_music_lyrics_romanization_provider_title">Romanización o transliteración</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Diccionario sin conexión</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Lista de palabras Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Diccionario offline</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Script de Ruby</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Mostrar botón de Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Pulsa para activar o desactivar las lecturas ruby sobre la letra; mantén pulsado para cambiar entre hiragana y katakana. Utiliza los proveedores de ruby activados en el orden en que aparecen en la lista</string>
-  <string name="morphe_music_lyrics_ruby_generating">Generando ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">Transliterador ICU</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Detectar secciones con IA</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Solo se utiliza cuando el proveedor no envía etiquetas de sección, como «Estribillo» o «Verso», que tu modelo compatible con OpenAI detecta a continuación. Editar la fila también abre su prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL del extremo de la API (por ej. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ Las letras provienen de servicios de terceros que no están afiliados, patrocina
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Seleccionar un modelo</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Error al obtener los modelos. Comprueba la clave API o la conexión.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Indicación</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Indicador de Ruby (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Modelo</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL base</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Ajustes predeterminados del servicio</string>

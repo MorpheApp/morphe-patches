@@ -696,7 +696,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_show_section_title">Прикажи ознаке секција</string>
   <string name="morphe_music_lyrics_show_section_summary">Обележите сваку нову секцију текста песме малом ознаком, као што су Строфа или Рефрен</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Прикажи дугме за копирање</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Додирните да копирате оригинални текст као обичан текст; дуго притисните да сачувате изворни фајл текста у Превознике</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Додирните да копирате оригиналне стихове као обичан текст; дуго притисните да сачувате изворни фајл стихова и конвертовани TTML фајл у Downloads</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Прикажи дугме за превод</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Притисните да бисте укључили/искључили превод; дуго притисните само за превод. Користи омогућене провајдере преводиоца у редоследу како су наведени</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Прикажи дугме за романизацију или транслитерацију</string>
@@ -712,7 +712,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Кинески и кантонски знакови (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Кинеске речи (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Грчки, словенски кирилични (укљ. руски, украјински, бугарски, српски, белоруски, македонски), грузијски, Јерменски, Хебрејски, Арапски, Амхарски и Сиријски транслитерација (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Читање %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Читање %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Прикажите дугме за освежавање</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Додирните да преbacи на следећег кандидата текста; дуго притисните да претражујете текст по наслову и извођачу</string>
   <string name="morphe_music_lyrics_search_dialog_title">Претрага текстова</string>
@@ -721,6 +721,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_search_empty">Унесите наслов песме и извођача</string>
   <string name="morphe_music_lyrics_search_no_providers">Ниједан од омогућених провајдера не може да претражује друге песме</string>
   <string name="morphe_music_lyrics_saved">Сачувано</string>
+  <string name="morphe_music_lyrics_written_by">Написао: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Истакни синхронизоване речи или слогове.</string>
   <string name="morphe_music_lyrics_word_sync_summary">Дај предност текстовима реч по реч када су доступни. Када текстови носе време, истакните сваку реч или слог у складу са музиком.</string>
   <string name="morphe_music_lyrics_line_scale_title">Скупите неактивне линије</string>
@@ -736,7 +737,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Анимирај динамичку позадину</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Померај позадину током репродукције и пулсирај је у складу са музиком ако YouTube Music има дозволу за приступ микрофону. Искључи за статичну позадину која троши мање батерије</string>
   <string name="morphe_music_lyrics_mediasession_title">Прикажите MediaSession текстове на закључаном екрану</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Приказује текућу линију на закључаном екрану, Android Auto и Bluetooth. Потребан је Android 11 или новији</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Приказује тренутну линију на zaključном екрану, Android Auto-у и Bluetooth-у</string>
   <string name="morphe_music_lyrics_miniplayer_title">Прикажи текстове у миниплејеру.</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Приказује текућу линију у мини играчу, са стазом премештеном у потпис</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Формат наслова песме/уметника</string>
@@ -773,6 +774,8 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_force_capitalize_summary">Поставља прво слово сваке линије текста песме као велико</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Уклони интерпункцију на крају</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Уклања тачке, зарезе, две тачке и тачка-зарезе на крају линија текста песме. Упитни знаци, узвици, три тачке, наводници и заграде се задржавају</string>
+  <string name="morphe_music_lyrics_han_form_title">Конверзија кинеског облика</string>
+  <string name="morphe_music_lyrics_han_form_summary">Када је укључено, прати ваш циљни језик превода да конвертује тек Stowe из поједностављеног у традиционално писмо</string>
   <string name="morphe_music_lyrics_text_size_title">Величина текста</string>
   <string name="morphe_music_lyrics_text_size_summary">Величина текста текстова песама</string>
   <string name="morphe_music_lyrics_offset_ms_title">Глобални временски померај</string>
@@ -788,6 +791,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_translated_by_ai">Превод: %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Романизација: %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Романизовао/ла %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (са %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Романизовано од стране Рима (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Преведено</string>
@@ -803,6 +807,8 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_romanize_language_DEFAULT">Аутоматски</string>
   <string name="morphe_music_lyrics_romanizing">Романизација…</string>
   <string name="morphe_music_lyrics_romanize_failed">Није могуће романизовати текст.</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Нема</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Ruby циљни језик</string>
   <string name="morphe_music_lyrics_translate_only">Само превод</string>
   <string name="morphe_music_lyrics_romanize_only">Само романизовано</string>
   <string name="morphe_music_lyrics_dual_only">Дупли режим</string>
@@ -833,7 +839,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_hide_info_title">Сакриј линију са заслугама</string>
   <string name="morphe_music_lyrics_hide_info_summary">Сакриј линију са заслугама приказану испод текстова.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Замени превод и романизацију.</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Мења редослед приказа превода и романизације испод текста песме</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Помера превод изнад текста песме; читање и романизација остају испод</string>
   <string name="morphe_music_lyrics_force_center_title">Увек центрирај текст песама</string>
   <string name="morphe_music_lyrics_force_center_summary">УКЉУЧЕНО ставља сваку линију у сред и игнорише поравнање извора, укљ. стране дуэта; ИСКЉУЧЕНО задржава поравнање које текст песама тражи</string>
   <string name="morphe_music_lyrics_providers_keep_one">Мора остати укључен најмање један провајдер</string>
@@ -841,14 +847,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_romanization_provider_title">Романизација или транслитерација</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Офлајн речник</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Списак речи Рима</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Руби</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Офлајн речник</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Ruby скрипта</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хирагана (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Prikaži Ruby dugme</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Dodirnite da biste uključili/isključili ruby čitanja iznad teksta pesme; zadržite pritisak za prebacivanje između hiragane i katakane. Koriste се омогућени ruby провајдери у њиховом наведеном редоследу</string>
-  <string name="morphe_music_lyrics_ruby_generating">Генерисање ruby-ја…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU транслитератор</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Откриј секције помоћу AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Користи се само када провајдер не испоручује ознаке секција као што су Припеви или Стихови, које онда открива ваш модел компатибилан са OpenAI. Уређивање реда отвара и његов позив</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL крајње тачке API-ја (нпр. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -871,6 +870,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Изаберите модел</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Неуспешно преузимање модела. Проверите API кључ или повезивање.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Позив</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby упутство (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Модел</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Базни URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Пресети за услугу</string>

@@ -793,6 +793,17 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Włącz przewijanie dotknięciem</string>
   <string name="morphe_tap_to_seek_summary">Dotknij dowolnego miejsca na pasku postępu, aby przeskoczyć do wybranego momentu, zamiast przeciągać suwak</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Własny suwak paska postępu</string>
+  <string name="morphe_custom_seekbar_thumb_title">Włącz własny suwak paska postępu</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Zastąp suwak paska postępu własnym obrazem lub animowanym GIF-em</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Obraz suwaka</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Wybierz obraz lub animowany GIF z pamięci urządzenia</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Wybrany plik nie jest obsługiwanym obrazem</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Nie znaleziono obrazu własnego suwaka paska postępu</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Rozmiar suwaka</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Dopasuj do paska postępu</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Oryginalny rozmiar</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gest przesunięcia w lewo</string>
   <string name="morphe_swipe_right_zone_title">Gest przesunięcia w prawo</string>
@@ -1770,6 +1781,8 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_niconico_comments_travel_duration_summary">Liczba sekund potrzebna komentarzom na pokonanie ekranu. Mniejsze wartości oznaczają szybszy ruch</string>
   <string name="morphe_niconico_comments_display_area_title">Obszar wyświetlania</string>
   <string name="morphe_niconico_comments_display_area_summary">Określa, jaką część odtwarzacza (licząc od góry) zajmują komentarze. Niższe wartości pozostawiają dolną część filmu odsłoniętą</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Ukrywaj nakładające się komentarze</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Gdy obszar wyświetlania jest pełny, nowe komentarze są ukrywane, aby nie nakładały się na inne komentarze</string>
   <string name="morphe_niconico_comments_max_length_title">Maksymalna długość komentarza</string>
   <string name="morphe_niconico_comments_max_length_summary">Ukrywa komentarze przekraczające podaną liczbę znaków. Każda emotka liczy się jako jeden znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez limitu</string>
@@ -1783,8 +1796,8 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_niconico_comments_ended_premieres_summary">Powtórka czatu z zakończonych premier</string>
   <string name="morphe_niconico_comments_timed_comments_title">Pokaż komentarze ze znacznikami czasu</string>
   <string name="morphe_niconico_comments_timed_comments_summary">W filmach bez czatu najpopularniejsze komentarze zawierające czas, np. 1:23, są wyświetlane w tym właśnie momencie</string>
-  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Pokaż komentarze zsynchronizowane z czasem podczas powtórki czatu</string>
-  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">W przypadku powtórek transmisji na żywo i premier, komentarze zsynchronizowane z czasem są wyświetlane wraz z czatem</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Pokaż komentarze ze znacznikami czasu razem z powtórką czatu</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">W powtórkach transmisji na żywo i premier komentarze ze znacznikami czasu są wyświetlane razem z czatem</string>
   <string name="morphe_live_chat_translate_screen_title">Tłumaczenie czatu na żywo</string>
   <string name="morphe_live_chat_translate_screen_summary">Tłumacz wiadomości na czacie na żywo oraz w powtórce czatu</string>
   <string name="morphe_live_chat_translate_title">Tłumacz czat na żywo</string>

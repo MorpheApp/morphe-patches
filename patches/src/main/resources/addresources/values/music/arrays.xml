@@ -187,6 +187,8 @@
         <item>हिन्दी</item>
         <item>Հայերեն</item>
         <item>日本語</item>
+        <item>日本語（平仮名）</item>
+        <item>日本語（片仮名）</item>
         <item>ქართული</item>
         <item>Қазақ тілі</item>
         <item>ಕನ್ನಡ</item>
@@ -244,6 +246,8 @@
         <item>HI</item>
         <item>HY</item>
         <item>JA</item>
+        <item>ja-Hira</item>
+        <item>ja-Kana</item>
         <item>KA</item>
         <item>KK</item>
         <item>KN</item>
@@ -292,14 +296,6 @@
         <item>CANTONESE</item>
         <item>PINYIN</item>
         <item>NONE</item>
-    </string-array>
-    <string-array name="morphe_music_lyrics_ruby_style_entries">
-        <item>@string/morphe_music_lyrics_ruby_style_entry_hiragana</item>
-        <item>@string/morphe_music_lyrics_ruby_style_entry_katakana</item>
-    </string-array>
-    <string-array name="morphe_music_lyrics_ruby_style_entry_values">
-        <item>HIRAGANA</item>
-        <item>KATAKANA</item>
     </string-array>
 
 </resources>

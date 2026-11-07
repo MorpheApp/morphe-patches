@@ -793,6 +793,17 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Πάτημα για αναζήτηση στη γραμμή προόδου</string>
   <string name="morphe_tap_to_seek_summary">Πατήστε οπουδήποτε στη μπάρα προόδου για να μεταπηδήσετε σε εκείνη τη θέση αντί να την σύρετε</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Προσαρμοσμένος δείκτης γραμμής προόδου</string>
+  <string name="morphe_custom_seekbar_thumb_title">Ενεργοποίηση προσαρμοσμένου δείκτη γραμμής προόδου</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Αντικατάσταση του δείκτη της γραμμής προόδου με μια προσαρμοσμένη εικόνα ή ένα κινούμενο GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Εικόνα δείκτη</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Επιλέξτε μια εικόνα ή ένα κινούμενο GIF από την αποθήκη της συσκευής</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Το επιλεγμένο αρχείο δεν είναι υποστηριζόμενη εικόνα</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Η προσαρμοσμένη εικόνα του δείκτη της γραμμής προόδου δεν βρέθηκε</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Μέγεθος δείκτη</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Προσαρμογή στη γραμμή προόδου</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Πρωτότυπο μέγεθος</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Κίνηση σάρωσης προς τα αριστερά</string>
   <string name="morphe_swipe_right_zone_title">Κίνηση σάρωσης προς τα δεξιά</string>
@@ -1769,6 +1780,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">Πόσα δευτερόλεπτα χρειάζονται τα σχόλια για να διασχίσουν την οθόνη. Χαμηλότερες τιμές κινούνται ταχύτερα</string>
   <string name="morphe_niconico_comments_display_area_title">Περιοχή εμφάνισης</string>
   <string name="morphe_niconico_comments_display_area_summary">Πόσο μέρος του προγράμματος αναπαραγωγής, από πάνω, χρησιμοποιούν τα σχόλια. Χαμηλότερες τιμές διατηρούν το κάτω μέρος του βίντεο καθαρό</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Απόκρυψη σχολίων που θα επικαλύπτονταν</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Όταν η περιοχή προβολής είναι πλήρης, τα νέα σχόλια αποκρύπτονται αντί να επικαλύπτουν άλλα σχόλια</string>
   <string name="morphe_niconico_comments_max_length_title">Μέγιστο μήκος σχολίου</string>
   <string name="morphe_niconico_comments_max_length_summary">Αποκρύπτει σχόλια με περισσότερους χαρακτήρες από αυτόν. Κάθε emoji μετράται ως ένας χαρακτήρας</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Χωρίς όριο</string>

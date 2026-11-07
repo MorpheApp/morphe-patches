@@ -793,6 +793,17 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Ota etsintä napauttamalla käyttöön</string>
   <string name="morphe_tap_to_seek_summary">Napauta mitä tahansa kohtaa kelauspalkissa hypätäksesi kyseiseen kohtaan vetämisen sijaan</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Mukautettu etenemispalkin liukusäädin</string>
+  <string name="morphe_custom_seekbar_thumb_title">Ota mukautettu etenemispalkin liukusäädin käyttöön</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Korvaa etenemispalkin liukusäädin mukautetulla kuvalla tai animoidulla GIF-tiedostolla</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Liukusäätimen kuva</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Valitse kuva tai animoitu GIF-tiedosto laitteen tallennustilasta</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Valittu tiedosto ei ole tuettu kuvatyyppi</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Mukitun etenemispalkin ohjaimen kuvaa ei löytynyt</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Ohjaimen koko</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Sovuta etenemispalkkiin</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Alkuperäinen koko</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Vasen pyyhkäisy</string>
   <string name="morphe_swipe_right_zone_title">Oikea pyyhkäisy</string>
@@ -1771,6 +1782,8 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_niconico_comments_travel_duration_summary">Kuinka monta sekuntia kommenttien kulkeminen näytön yli kestää. Pienemmät arvot liikkuvat nopeammin</string>
   <string name="morphe_niconico_comments_display_area_title">Näyttöalue</string>
   <string name="morphe_niconico_comments_display_area_summary">Kuinka suuren osan soittimesta kommentit käyttävät yläreunasta alkaen. Pienemmät arvot pitävät videon alaosan tyhjänä</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Piilota päällekkäiset kommentit</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Kun näyttöalue on täynnä, uudet kommentit piilotetaan muiden kommentien päällekkäisyyden sijaan</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimit kommentin pituus</string>
   <string name="morphe_niconico_comments_max_length_summary">Piilottaa kommentit, jotka ovat tämän merkkimäärän pidempiä. Jokainen emojimerkki lasketaan yhdeksi merkiksi</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Ei rajoitusta</string>

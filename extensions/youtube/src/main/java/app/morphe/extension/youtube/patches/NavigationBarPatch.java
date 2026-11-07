@@ -539,9 +539,9 @@ public final class NavigationBarPatch {
 
     /**
      * The bar shown below the navigation bar when the connection is lost or comes back
-     * ("No connection", "Back online").
+     * ("No connection", "Back online"), and in incognito mode.
      */
-    private static final int SLIM_STATUS_BAR = ResourceUtils.getIdentifier(
+    static final int SLIM_STATUS_BAR = ResourceUtils.getIdentifier(
             ResourceType.ID, "slim_status_bar");
 
     static final int PIVOT_BAR = ResourceUtils.getIdentifier(
@@ -620,12 +620,18 @@ public final class NavigationBarPatch {
                 try {
                     View slimStatusBar = view.findViewById(SLIM_STATUS_BAR);
                     final boolean shown = slimStatusBar != null && slimStatusBar.getVisibility() == View.VISIBLE;
+
+                    // The capsule of the glass navigation bar follows the slim status bar, see GlassDrawable.draw(),
+                    // which moves without changing the navigation bar.
+                    View navigationBar = view.findViewById(PIVOT_BAR);
+                    if (GlassNavigationBar.isEnabled() && navigationBar != null) {
+                        navigationBar.invalidate();
+                    }
+
                     if (shown == slimStatusBarShown) return;
                     slimStatusBarShown = shown;
 
-                    if (translucentNavigationBarForced
-                            && view.findViewById(PIVOT_BAR) instanceof PivotBarAccess access) {
-                        View navigationBar = (View) access;
+                    if (translucentNavigationBarForced && navigationBar instanceof PivotBarAccess access) {
                         final int room = systemButtonsRoom;
                         view.post(() -> {
                             final int navigationBarRoom = GlassNavigationBar.getFloatingRoom(

@@ -10,6 +10,9 @@
 
 package app.morphe.extension.shared.patches.components;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BooleanSetting;
@@ -73,6 +76,17 @@ public class ByteArrayFilterGroup extends FilterGroup<byte[]> {
      */
     public ByteArrayFilterGroup(BooleanSetting setting, String... filters) {
         super(setting, ByteTrieSearch.convertStringsToBytes(filters));
+    }
+
+    /**
+     * Same as {@link #ByteArrayFilterGroup(BooleanSetting, String...)},
+     * plus byte patterns that are not text, such as Protobuf field keys.
+     */
+    public ByteArrayFilterGroup(BooleanSetting setting, String[] strings, byte[]... bytes) {
+        super(setting, Stream.concat(
+                Arrays.stream(ByteTrieSearch.convertStringsToBytes(strings)),
+                Arrays.stream(bytes)
+        ).toArray(byte[][]::new));
     }
 
     private synchronized void buildSkipTables() {

@@ -793,6 +793,17 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">टैप को सक्षम करें</string>
   <string name="morphe_tap_to_seek_summary">ड्रैग करने के बजाय उस स्थिति पर जाने के लिए सीकबार पर कहीं भी टैप करें</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">कस्टम सीकबार थंब</string>
+  <string name="morphe_custom_seekbar_thumb_title">कस्टम सीकबार थंब सक्षम करें</string>
+  <string name="morphe_custom_seekbar_thumb_summary">सीकबार थंब को कस्टम इमेज या एनिमेटेड GIF से बदलें</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">थंब इमेज</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">डिवाइस स्टोरेज से एक इमेज या एनिमेटेड GIF चुनें</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">चुनी गई फ़ाइल समर्थित इमेज नहीं है</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">कस्टम सीकबार थंब इमेज नहीं मिली</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">थंब आकार</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">सीकबार में फिट करें</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">ओरिजिनल आकार</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">बाएं स्वाइप जेस्चर</string>
   <string name="morphe_swipe_right_zone_title">दाएं स्वाइप जेस्चर</string>
@@ -1770,6 +1781,8 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_niconico_comments_travel_duration_summary">कमेंट्स को स्क्रीन पार करने में कितने सेकंड लगते हैं। कम वैल्यू तेज़ी से चलती हैं</string>
   <string name="morphe_niconico_comments_display_area_title">डिस्प्ले एरिया</string>
   <string name="morphe_niconico_comments_display_area_summary">प्लेयर के ऊपरी हिस्से से टिप्पणियाँ कितनी जगह का उपयोग करती हैं। कम मान वीडियो के निचले हिस्से को साफ़ रखते हैं</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">उन कमेंट्स को छिपाएं जो ओवरलैप हो सकते हैं</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">जब डिस्प्ले एरिया पूरा भर जाता है, तो अन्य कमेंट्स के ऊपर ओवरलैप होने के बजाय नए कमेंट्स छिपा दिए जाते हैं</string>
   <string name="morphe_niconico_comments_max_length_title">कमेंट की अधिकतम लंबाई</string>
   <string name="morphe_niconico_comments_max_length_summary">इससे अधिक वर्णों वाले कमेंट छुपाएं। प्रत्येक इमोजी को एक वर्ण माना जाएगा</string>
   <string name="morphe_niconico_comments_max_length_no_limit">कोई सीमा नहीं</string>

@@ -793,6 +793,17 @@ Para solucionar isto, actíva 'Spoof video streams' e cambia o 'Cliente predefin
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Activar tocar para buscar</string>
   <string name="morphe_tap_to_seek_summary">Toca en calquera punto da barra de progreso para saltar a esa posición en lugar de arrastrar</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_category_title">Sestador de barra de busca personalizado</string>
+  <string name="morphe_custom_seekbar_thumb_title">Activar sestador de barra de busca personalizado</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Substituir o sestador da barra de busca por unha imaxe personalizada ou un GIF animado</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Imaxe do sestador</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Seleccionar unha imaxe ou un GIF animado do almacenamento do dispositivo</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">O ficheiro seleccionado non é unha imaxe compatible</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Non se atopou a imaxe do sestador de barra de busca personalizada</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Tamaño do sestador</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Axaustar á barra de busca</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Tamaño orixinal</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Xesto de deslizar á esquerda</string>
   <string name="morphe_swipe_right_zone_title">Xesto de deslizar á dereita</string>
@@ -1771,6 +1782,8 @@ A gravación automática é opcional. Detense en modo incógnito ou cando cambie
   <string name="morphe_niconico_comments_travel_duration_summary">Cantidade de segundos que tardan os comentarios en atravesar a pantalla. Os valores máis baixos móvense máis rápido</string>
   <string name="morphe_niconico_comments_display_area_title">Área de amosar</string>
   <string name="morphe_niconico_comments_display_area_summary">Kanto do reproductor, desde arriba, usan os comentarios. Os valores máis baixos manteñen limpa a parte inferior do vídeo</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Ocultar comentarios que se solaparían</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Cando a área de visualización está chea, os novos comentarios ocúltanse en lugar de solaparse con outros comentarios</string>
   <string name="morphe_niconico_comments_max_length_title">Lonxitude máxima do comentario</string>
   <string name="morphe_niconico_comments_max_length_summary">Oculta os comentarios con máis caracteres que este. Cada emoji conta como un carácter</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Sen límite</string>

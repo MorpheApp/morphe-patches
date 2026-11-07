@@ -700,7 +700,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_section_title">پیشاندانی تاگی بەشەکان</string>
   <string name="morphe_music_lyrics_show_section_summary">تاگی بچووک بخە سەر هەر بەشێکی نوێی تێکستی گۆرانییەکان، وەک Verse یان Chorus</string>
   <string name="morphe_music_lyrics_show_copy_button_title">نیشاندانی دوگمەی کۆپی</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">دابگرە بۆ کۆپیکردنی تێکستی ڕەسەنی گۆرانییەکە وەک تێکستی سادە؛ بۆ ماوەیەک دایبگرە بۆ پاشکەوتکردنی فایلەکەی سەرچاوەی تێکستەکە لە Downloads</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">کلیک بکە بۆ کۆپیکردنی تێکستی بنکە ڕەسەنەکەی گۆرانییەکە وەک دەقێکی سادە؛ پەستانی درێژ بکە بۆ پاشکەوتکردنی فایلی سەرچاوەی خاوی تێکستی گۆرانییەکە و فایلی گۆڕدراوی TTML بۆ بەشی داگرتنیان (Downloads)</string>
   <string name="morphe_music_lyrics_show_translate_button_title">نیشاندانی دوگمەی وەرگێڕان</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">کلیک بکە بۆ گۆڕینی وەرگێڕان؛ فشارێکی درێژ بدە تەنها بۆ وەرگێڕان. ئەو دابینکەرانی وەرگێڕانەی چالاککراون بەپێی ڕیزبەندییەکەیان بەکاردەهێنێت</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">پیشاندانی دوگمەی ڕۆمانایز یان گۆڕینی نووسین</string>
@@ -716,7 +716,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">پیتەکانی چینی و کانتۆنی (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">وشەکانی چینی (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">گۆڕینی نووسینی گریس، سلاڤیک سیریلیک (لە ڕووسیا، ئۆکراین، بولگاریا، سەربیا، بەلارووس، مەسیدۆنیا), جۆرجیا، ئەرمەنستان، عیبری، عەرەبی، ئەمهاریک و سریانی (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">خوێندنەوەی %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">خوێندنەوەی %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">نیشاندانی دوگمەی نوێکردنەوە</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">کلیک بکە بۆ گۆڕین بۆ کاندیدی داهاتووی تێکست؛ پەستانی درێژ بکە بۆ گەڕان بەدوای تێکستدا بەپێی ناوی گۆرانی و هونەرمەند</string>
   <string name="morphe_music_lyrics_search_dialog_title">گەڕانی تێکستەکانی گۆرانی</string>
@@ -725,6 +725,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_empty">ناونیشانی گۆرانی و هونەرمەندێک بنووسە</string>
   <string name="morphe_music_lyrics_search_no_providers">هیچ کام لە دابینکەرە چالاککراوەکان ناتوانن گەڕان بۆ گۆرانییەکانی تر بکەن</string>
   <string name="morphe_music_lyrics_saved">پاشکەوتکراو</string>
+  <string name="morphe_music_lyrics_written_by">نووسراوە لەلایەن: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">دیاریکردنی وشە یان syllable-ە هاوکاتکراوەکان</string>
   <string name="morphe_music_lyrics_word_sync_summary">پێشینەدان بە تێکستی وشە بە وشە کاتێک بەردەست بێت. کاتێک تێکستەکە کاتی وشەکانی تێدابێت، هەر وشە یان syllable-ێک لەگەڵ کاتی مۆسیقاکەدا دیاری دەکات</string>
   <string name="morphe_music_lyrics_line_scale_title">کەمکردنەوەی هێڵە ناچالاکەکان</string>
@@ -740,7 +741,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_title">ئنیمەیشن بۆ پاشخانی داینامیکی</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">پاشخانەکە بجوڵێنە لە کاتی لێدانی گۆرانییەکە، و لەگەڵ مۆسیقاکە لێی بدە</string>
   <string name="morphe_music_lyrics_mediasession_title">پیشاندانی تێکستی MediaSession لە شاشەی قفڵکراو</string>
-  <string name="morphe_music_lyrics_mediasession_summary">دێڕی ئێستا لە شاشەی قفڵ، Android Auto و Bluetooth پیشان دەدات. پێویستی بە Android 11 یان نوێترە</string>
+  <string name="morphe_music_lyrics_mediasession_summary">دێڕی ئێستا لە شاشەی قفڵ، Android Auto و Bluetooth پیشان دەدات</string>
   <string name="morphe_music_lyrics_miniplayer_title">پیشاندانی تێکستی مینیپڵەیەر</string>
   <string name="morphe_music_lyrics_miniplayer_summary">هێڵی ئێستا لە پلییەرە بچووکەکەدا پیشان دەدات، لەگەڵ گواستنەوەی تڕاکەکە بۆ ژێرنووسەکە</string>
   <string name="morphe_music_lyrics_mini_track_format_title">فۆرماتی ناونیشانی گۆرانی/هونەرمەند</string>
@@ -777,6 +778,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">پیتێکی یەکەمی هەر دێڕێکی تێکست بە پیتی گەورە دەنووسێت</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">لابردنی نیشانەکانی کۆتایی ڕستە</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">خاڵ، کۆما، دووخاڵ و نیوخاڵ لە کۆتایی دێڕەکانی تێکستەکە لادەبات. نیشانەی پرسیار، نیشانەی سەرسوڕمان، سێ خاڵ، نیشانەی کوتاس و کەوانەکان دەمێننەوە</string>
+  <string name="morphe_music_lyrics_han_form_title">گۆڕینی شێوازی چینی</string>
+  <string name="morphe_music_lyrics_han_form_summary">کاتێک چالاک بێت، شوێن زمانی ئامانجەکەت دەگرێت بۆ گۆڕینی لیریکەکان لە نێوان نووسینی سادەکراو و تەقلیدی</string>
   <string name="morphe_music_lyrics_text_size_title">قەباره‌ی تێکست</string>
   <string name="morphe_music_lyrics_text_size_summary">قەباره‌ی تێکستی گۆرانییەکان</string>
   <string name="morphe_music_lyrics_offset_ms_title">گۆڕانی کاتی گشتی</string>
@@ -792,6 +795,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_ai">وەرگێڕدراوە لەلایەن %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">ڕۆمانای کردراوە لەلایەن %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">ڕۆمانیزەکراوە لەلایەن %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (لەگەڵ %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">ڕۆمانیزە کراوە لەلایەن Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">وەرگێڕدراوە</string>
@@ -807,6 +811,8 @@ Second \"item\" text"</string>
   <string name="morphe_romanize_language_DEFAULT">خۆکار</string>
   <string name="morphe_music_lyrics_romanizing">ڕۆمانیزە دەکرێت…</string>
   <string name="morphe_music_lyrics_romanize_failed">نەتوانرا تێکستی گۆرانییەکە ڕۆمانیزە بکرێت</string>
+  <string name="morphe_music_lyrics_romanize_language_none">هیچ</string>
+  <string name="morphe_music_lyrics_ruby_language_title">ئامانجی Ruby</string>
   <string name="morphe_music_lyrics_translate_only">تەنها وەرگێڕدراو</string>
   <string name="morphe_music_lyrics_romanize_only">تەنها ڕۆمانایز</string>
   <string name="morphe_music_lyrics_dual_only">مۆدی دوولایەنە</string>
@@ -837,7 +843,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">شاردنەوەی هێڵی ناسنامە</string>
   <string name="morphe_music_lyrics_hide_info_summary">شاردنەوەی هێڵی ناسنامەی کە لە خوار تێکستی گۆرانییەکەدا پیشان دەدرێت</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">گۆڕینی شوێنی وەرگێڕان و ڕۆمانیزە</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ڕیزبەندی نمایشکردنی وەرگێڕان و ڕۆمانایزەسیۆن لە خوار تێکستی گۆرانییەکە بگۆڕە</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">وەرگێڕانەکە دەباتە سەرەوەی لیریکەکان؛ خوێندن و ڕۆمانیزەーション لە خوارەوە دەمێننەوە</string>
   <string name="morphe_music_lyrics_force_center_title">هەمیشە تێکستەکان لە ناوەنددا بن</string>
   <string name="morphe_music_lyrics_force_center_summary">چالاککردن (ON) هەموو دێڕێک دەخاتە ناوەڕاست و ڕێکخستنی سەرچاوەکە پشتگوێ دەخات، لەوانەش لایەکانی دوێت؛ ناچالاککردن (OFF) ئەو ڕێکخستنە دەهێڵێتەوە کە تێکستەکە داوای دەکات</string>
   <string name="morphe_music_lyrics_providers_keep_one">دەبێت لانی کەم یەک دابینکەر چالاک بێت</string>
@@ -845,14 +851,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">رۆمانایزکردن یان گۆڕینی نووسین</string>
   <string name="morphe_music_lyrics_romanization_provider_local">فەرھەنگی ئۆفلاین</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">لیستی وشەی Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">ڕۆوبی</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">فەرھەنگەکەی ئۆفلاین</string>
-  <string name="morphe_music_lyrics_ruby_style_title">سکریپتى Ruby</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">پیشاندانی دوگمەی Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">کلیک بکە بۆ گۆڕینی خوێندنەوەکانی ruby لەسەر تێکستەکانی گۆرانی؛ پەستانی درێژ بکە بۆ گۆڕین لە نێوان hiragana و katakana. بەکارهێنانی دابینکەرانی ruby کە چالاک کراون بەپێی ڕیزبەندییەکەیان</string>
-  <string name="morphe_music_lyrics_ruby_generating">دروستکردنی ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">وەرگێڕەری ICU</string>
   <string name="morphe_music_lyrics_use_ai_section_title">دیاریکردنی بەشەکان بە AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">تەنها کاتێک بەکاردێت کە دابینکەر هیچ نیشانەیەک بۆ بەشەکان ناردووبێت وەک کۆرس یان وەرس، کە دواتر مۆدێلی OpenAI-compatible تۆ دەیانناسێنێت. دەستکاریکردنی ڕێگەکە پرۆمپتەکەی دەکاتەوە</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">ناونیشانی URLی API endpoint (بۆ نموونە https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +874,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">مۆدێلێک هەڵبژێرە</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">کێشەیەک لە هێنانی مۆدێلەکاندا ڕوویدا. تکایە کلیلی API یان پەیوەندی ئینتەرنێتەکە بپشکنە.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">پرۆمپت</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">پڕۆمپتی Ruby (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">مۆدێل</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">ناونیشانی بنەڕەتی (Base URL)</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">پێشسەتەکانی خزمەتگوزاری</string>

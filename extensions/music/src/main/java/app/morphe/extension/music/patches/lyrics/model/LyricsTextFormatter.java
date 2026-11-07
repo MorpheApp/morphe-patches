@@ -9,12 +9,29 @@ package app.morphe.extension.music.patches.lyrics.model;
 
 import java.util.Locale;
 
+import app.morphe.extension.music.patches.lyrics.utils.CharactersConverter;
+
 /** Final, display-only lyric cleanup, including an old-to-new UTF-16 offset map. */
 public final class LyricsTextFormatter {
+    /** Han-form direction: none, or follow the translation target language. */
+    public static final int HAN_NONE = 0;
+    /** Shapes a Han character Traditional. */
+    public static final int HAN_TRADITIONAL = 1;
+    /** Shapes a Han character Simplified. */
+    public static final int HAN_SIMPLIFIED = -1;
+
     private LyricsTextFormatter() {
     }
 
     public static Result format(String input, boolean capitalize, boolean strip) {
+        return format(input, capitalize, strip, HAN_NONE);
+    }
+
+    /**
+     * Shaping of the final display text. {@code hanMode} converts each Han code point between the
+     * two writing systems as the last step, so the returned offset table still maps the original.
+     */
+    public static Result format(String input, boolean capitalize, boolean strip, int hanMode) {
         final String text = input == null ? "" : input;
         final boolean[] remove = new boolean[text.length()];
         if (strip) {
@@ -44,7 +61,11 @@ public final class LyricsTextFormatter {
             final int end = at + Character.charCount(cp);
             for (int i = at; i < end; i++) offsets[i] = out.length();
             if (!remove[at]) {
-                final String own = text.substring(at, end);
+                final String own = hanMode == HAN_NONE || !isHan(cp)
+                        ? text.substring(at, end)
+                        : hanMode == HAN_TRADITIONAL
+                          ? CharactersConverter.toTraditional(text.substring(at, end))
+                          : CharactersConverter.toSimplified(text.substring(at, end));
                 if (capitalize && firstCased && (Character.isLowerCase(cp)
                         || Character.isUpperCase(cp) || Character.isTitleCase(cp))) {
                     out.append(own.toUpperCase(Locale.ROOT));
@@ -58,6 +79,10 @@ public final class LyricsTextFormatter {
             at = end;
         }
         return new Result(out.toString(), offsets);
+    }
+
+    private static boolean isHan(int cp) {
+        return Character.UnicodeScript.of(cp) == Character.UnicodeScript.HAN;
     }
 
     /**
