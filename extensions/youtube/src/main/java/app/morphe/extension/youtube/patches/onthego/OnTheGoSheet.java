@@ -21,6 +21,8 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -42,6 +44,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
+import java.util.Arrays;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -148,6 +151,7 @@ final class OnTheGoSheet {
     private void create() {
         Context context = activity;
         SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog.createMainLayout(context, null);
+        fillScreenEdges(mainLayout);
 
         ScrollView scrollView = SheetBottomDialog.createCappedScrollView(context, MAX_HEIGHT_PERCENT);
         LinearLayout content = new LinearLayout(context);
@@ -288,6 +292,23 @@ final class OnTheGoSheet {
         dialog.show();
         update();
         handler.postDelayed(updater, UPDATE_INTERVAL_MILLISECONDS);
+    }
+
+    /**
+     * Removes the side and bottom margins of the sheet, so it fills the width and bottom of the screen.
+     * Only the top corners are rounded.
+     */
+    private static void fillScreenEdges(LinearLayout mainLayout) {
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mainLayout.getLayoutParams();
+        params.setMargins(0, 0, 0, 0);
+        mainLayout.setLayoutParams(params);
+
+        float[] corners = Dim.roundedCorners(12);
+        // Bottom right and bottom left corners.
+        Arrays.fill(corners, 4, 8, 0);
+        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(corners, null, null));
+        background.getPaint().setColor(ThemeUtils.getDialogBackgroundColor());
+        mainLayout.setBackground(background);
     }
 
     private ImageView createControl(String drawableName, String descriptionName, int size,
