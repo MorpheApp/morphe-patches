@@ -809,6 +809,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting NICONICO_COMMENTS_OPACITY = new IntegerSetting("morphe_niconico_comments_opacity", 100, parent(NICONICO_COMMENTS));
     public static final IntegerSetting NICONICO_COMMENTS_TRAVEL_DURATION = new IntegerSetting("morphe_niconico_comments_travel_duration", 7, parent(NICONICO_COMMENTS));
     public static final IntegerSetting NICONICO_COMMENTS_DISPLAY_AREA = new IntegerSetting("morphe_niconico_comments_display_area", 100, parent(NICONICO_COMMENTS));
+    public static final BooleanSetting NICONICO_COMMENTS_PORTRAIT = new BooleanSetting("morphe_niconico_comments_portrait", TRUE, parent(NICONICO_COMMENTS));
+    public static final BooleanSetting NICONICO_COMMENTS_SEPARATE_PORTRAIT = new BooleanSetting("morphe_niconico_comments_separate_portrait", FALSE, parentsAll(NICONICO_COMMENTS, NICONICO_COMMENTS_PORTRAIT));
+    public static final IntegerSetting NICONICO_COMMENTS_PORTRAIT_FONT_SIZE = new IntegerSetting("morphe_niconico_comments_portrait_font_size", 20, parentsAll(NICONICO_COMMENTS, NICONICO_COMMENTS_PORTRAIT, NICONICO_COMMENTS_SEPARATE_PORTRAIT));
+    public static final IntegerSetting NICONICO_COMMENTS_PORTRAIT_TRAVEL_DURATION = new IntegerSetting("morphe_niconico_comments_portrait_travel_duration", 7, parentsAll(NICONICO_COMMENTS, NICONICO_COMMENTS_PORTRAIT, NICONICO_COMMENTS_SEPARATE_PORTRAIT));
+    public static final IntegerSetting NICONICO_COMMENTS_PORTRAIT_DISPLAY_AREA = new IntegerSetting("morphe_niconico_comments_portrait_display_area", 100, parentsAll(NICONICO_COMMENTS, NICONICO_COMMENTS_PORTRAIT, NICONICO_COMMENTS_SEPARATE_PORTRAIT));
     public static final BooleanSetting NICONICO_COMMENTS_HIDE_CROWDED = new BooleanSetting("morphe_niconico_comments_hide_crowded", FALSE, parent(NICONICO_COMMENTS));
     /** Max comment length slider value that shows all comments. */
     public static final int NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT = 100;
@@ -1394,6 +1399,12 @@ public class Settings extends SharedYouTubeSettings {
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_TRAVEL_DURATION,
                 3, 15, 1, "s"));
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_DISPLAY_AREA,
+                10, 100, 10, "%"));
+        SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_PORTRAIT_FONT_SIZE,
+                12, 40, 1, "sp"));
+        SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_PORTRAIT_TRAVEL_DURATION,
+                3, 15, 1, "s"));
+        SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_PORTRAIT_DISPLAY_AREA,
                 10, 100, 10, "%"));
         SeekBarPreference.register(new SeekBarConfig(NICONICO_COMMENTS_MAX_LENGTH,
                 10, NICONICO_COMMENTS_MAX_LENGTH_NO_LIMIT, 10, "", 1,
