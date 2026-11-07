@@ -49,6 +49,7 @@ import app.morphe.extension.youtube.patches.ChangePipActionsPatch.PipAction;
 import app.morphe.extension.youtube.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.youtube.patches.ClassicSubscriptionsLayoutPatch;
 import app.morphe.extension.youtube.patches.CustomSeekbarThumbPatch.ThumbScaleType;
+import app.morphe.extension.youtube.patches.CustomSeekbarThumbPatch.ThumbType;
 import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch;
 import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch.VideoCodec;
 import app.morphe.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
@@ -748,6 +749,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting TAP_TO_SEEK = new BooleanSetting("morphe_tap_to_seek", FALSE);
     public static final BooleanSetting THUMBNAIL_PREVIEW = new BooleanSetting("morphe_seekbar_thumbnail_preview", TRUE);
     public static final BooleanSetting CUSTOM_SEEKBAR_THUMB = new BooleanSetting("morphe_custom_seekbar_thumb", FALSE);
+    public static final EnumSetting<ThumbType> CUSTOM_SEEKBAR_THUMB_TYPE = new EnumSetting<>("morphe_custom_seekbar_thumb_type", ThumbType.PLAY_ARROW, parent(CUSTOM_SEEKBAR_THUMB));
     public static final StringSetting CUSTOM_SEEKBAR_THUMB_FILE = new StringSetting("morphe_custom_seekbar_thumb_file", "", parent(CUSTOM_SEEKBAR_THUMB));
     public static final EnumSetting<ThumbScaleType> CUSTOM_SEEKBAR_THUMB_SCALE_TYPE = new EnumSetting<>("morphe_custom_seekbar_thumb_scale_type", ThumbScaleType.FIT_SEEKBAR, parent(CUSTOM_SEEKBAR_THUMB));
 
