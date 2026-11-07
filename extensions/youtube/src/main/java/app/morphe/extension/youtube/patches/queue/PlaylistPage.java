@@ -19,7 +19,8 @@ import java.util.List;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 
 /** An authenticated native watch window; advertised totals can include hidden videos. */
-public record PlaylistPage(List<Row> rows, int selectedIndex, int totalCount) {
+public record PlaylistPage(List<Row> rows, int selectedIndex, int totalCount,
+                           @Nullable PlaylistQueueRenderer.Item unavailableVideosMessage) {
     /** Stable account identity only. No credentials or native objects are retained. */
     public record Account(String id, boolean incognito) {}
 
@@ -105,9 +106,13 @@ public record PlaylistPage(List<Row> rows, int selectedIndex, int totalCount) {
         if (rows.isEmpty()) {
             throw new InvalidPanel("empty-page", "panel rows " + panel.getItemsCount());
         }
+        // YouTube appends a messageRenderer after the playable rows when videos
+        // are hidden. Keep the native row opaque, including its localized text.
+        var lastItem = panel.getItems(panel.getItemsCount() - 1);
+        var unavailableVideosMessage = !lastItem.hasVideo() && lastItem.hasMessageRenderer() ? lastItem : null;
         // This response cannot prove the current playable selection or EOF, but
         // its independently validated source rows may still extend a loaded gap.
-        return new PlaylistPage(rows, unavailableSelected ? -1 : selected, panel.getVideoCount());
+        return new PlaylistPage(rows, unavailableSelected ? -1 : selected, panel.getVideoCount(), unavailableVideosMessage);
     }
 
     @Nullable

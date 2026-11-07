@@ -3563,6 +3563,10 @@ public final class NativePlaylistQueuePatch {
             panel.addItems(PlaylistQueueRenderer.Item.newBuilder().setVideo(video));
         }
 
+        var unavailableVideosMessage = source.unavailableVideosMessage();
+        if (unavailableVideosMessage != null) {
+            panel.addItems(unavailableVideosMessage);
+        }
         return panel.build().toByteArray();
     }
 }

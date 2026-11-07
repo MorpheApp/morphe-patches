@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+
 public class PlaylistQueuePagingTest {
     private static String id(int index) {
         return String.format(Locale.ROOT, "%011d", index);
@@ -33,7 +35,7 @@ public class PlaylistQueuePagingTest {
             var anchor = new PlaylistPage.Anchor("WL", id(index), index, "entry" + index, "", ByteString.EMPTY);
             rows.add(new PlaylistPage.Row(new PlaylistQueue.Entry(id(index), metadata.title()), metadata, anchor));
         }
-        return new PlaylistPage(rows, 0, total);
+        return new PlaylistPage(rows, 0, total, null);
     }
 
     private static PlaylistQueue queue() {
@@ -81,6 +83,44 @@ public class PlaylistQueuePagingTest {
                 extended.entries().stream().map(PlaylistQueue.Entry::videoId).toList());
         assertThrows(IllegalArgumentException.class, () -> removed.appendPage(page(5, 3, 4), true));
         assertEquals(2, removed.entries().size());
+    }
+
+    @Test
+    public void hiddenVideosKeepTheNativeTotalAndShowTheirFooterOnlyAfterTheSourceEnds() {
+        var footer = PlaylistQueueRenderer.Item.newBuilder()
+                .setMessageRenderer(ByteString.copyFromUtf8("native localized message")).build();
+        var window = page(4, 0, 1, 2);
+        var first = new PlaylistPage(window.rows(), 0, 4, footer);
+        var before = PlaylistQueue.fromPage(first,
+                new PlaylistQueue.Source("WL", new PlaylistPage.Account("account", false)));
+        assertNull(before.unavailableVideosMessage());
+
+        var completed = before.playLast("abcdefghijk").appendPage(page(4, 2), true);
+        assertNull(completed.source());
+        assertEquals(5, completed.totalCount());
+        assertEquals(4, completed.entries().size());
+        assertSame(footer, completed.unavailableVideosMessage());
+        assertEquals("abcdefghijk", completed.entries().get(3).videoId());
+
+        var edited = completed.remove(1).move(1, 0).select(1).withRepeatMode(PlaylistQueue.REPEAT_ALL).shuffle();
+        assertEquals(4, edited.totalCount());
+        assertEquals(3, edited.entries().size());
+        assertSame(footer, edited.unavailableVideosMessage());
+        assertNull(new PlaylistQueue("abcdefghijk", "Fresh queue").unavailableVideosMessage());
+    }
+
+    @Test
+    public void appendingAnotherSourceRetainsTheFooterUntilItsNewTailFinishes() {
+        var footer = PlaylistQueueRenderer.Item.newBuilder()
+                .setMessageRenderer(ByteString.copyFromUtf8("native localized message")).build();
+        var window = page(4, 0, 1, 2);
+        var completed = PlaylistQueue.fromPage(new PlaylistPage(window.rows(), 0, 4, footer), null);
+        var pending = completed.addPlaylist(queue(), true);
+        assertNull(pending.unavailableVideosMessage());
+        var finished = pending.appendPage(page(5, 2, 3, 4), true);
+        assertEquals(9, finished.totalCount());
+        assertEquals(8, finished.entries().size());
+        assertSame(footer, finished.unavailableVideosMessage());
     }
 
     @Test

@@ -7,10 +7,16 @@
 
 package app.morphe.extension.youtube.patches.queue;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThrows;
 
+import com.google.protobuf.ByteString;
+
 import org.junit.Test;
+
+import java.util.Base64;
 
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 
@@ -40,6 +46,23 @@ public class PlaylistPageTest {
                 new PlaylistQueue.Source("WL", new PlaylistPage.Account("account", false)));
         assertEquals(0, queue.selectedIndex());
         assertEquals("abcdefghijk", queue.currentEntry().videoId());
+    }
+
+    @Test
+    public void nativeFooterRetainsItsLocalizedPayloadWithoutBecomingPlayable() throws Exception {
+        // Captured native messageRenderer with tracking removed; text and style are unchanged.
+        var message = ByteString.copyFrom(Base64.getDecoder().decode(
+                "MinqrfSCAyMKIQofCh1VbmF2YWlsYWJsZSB2aWRlb3MgYXJlIGhpZGRlbkICCAI="));
+        var footer = PlaylistQueueRenderer.Item.newBuilder().setMessageRenderer(message).build();
+        var panel = PlaylistQueueRenderer.Panel.newBuilder().setPlaylistId("WL").setVideoCount(2)
+                .addItems(PlaylistQueueRenderer.Item.newBuilder().setVideo(video("WL", "abcdefghijk", 0)))
+                .addItems(footer).build();
+        var page = PlaylistPage.readPanel(panel, "WL");
+
+        assertEquals(1, page.rows().size());
+        assertEquals(2, page.totalCount());
+        assertFalse(page.unavailableVideosMessage().hasVideo());
+        assertArrayEquals(footer.toByteArray(), page.unavailableVideosMessage().toByteArray());
     }
 
     @Test

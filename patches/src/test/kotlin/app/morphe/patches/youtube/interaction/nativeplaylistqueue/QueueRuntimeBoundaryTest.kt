@@ -183,6 +183,10 @@ class QueueRuntimeBoundaryTest {
     fun `rebuilt queue rows retain native theme palettes and text captures do not erase them`() =
         withFixture("nativeRowPalettes")
 
+    @Test
+    fun `merged playlists share one native footer without changing playable positions`() =
+        withFixture("hiddenVideosFooter")
+
     // NativePlaylistQueuePatch depends on Android settings, scheduling and UI classes.
     // Isolate those boundaries while executing its actual compiled coordinator.
     private fun withFixture(scenario: String) {
@@ -659,6 +663,27 @@ class QueueRuntimeBoundaryTest {
                         require(!panel.getItems(1).getVideo().hasLightColorPalette()
                             && !panel.getItems(1).getVideo().hasDarkColorPalette(),
                             "A row without native colors must retain the native theme fallback");
+                    }
+                    public static void hiddenVideosFooter() throws Exception {
+                        var message = PlaylistQueueRenderer.Item.newBuilder().setMessageRenderer(
+                            com.google.protobuf.ByteString.copyFrom(java.util.Base64.getDecoder().decode(
+                                "MinqrfSCAyMKIQofCh1VbmF2YWlsYWJsZSB2aWRlb3MgYXJlIGhpZGRlbkICCAI="))).build();
+                        var nativePanel = ordinaryWindow("WL").toBuilder().setVideoCount(4).addItems(message).build();
+                        var page = PlaylistPage.readPanel(nativePanel, "WL");
+                        var queue = PlaylistQueue.fromPage(page, null).select(2).playLast("ZZZZZZZZZZZ")
+                            .addPlaylist(PlaylistQueue.fromPage(page, null), true)
+                            .addPlaylist(new PlaylistQueue("YYYYYYYYYYY", "No hidden videos"), true);
+                        var renderer = owner.getDeclaredMethod("renderer", PlaylistQueue.class);
+                        renderer.setAccessible(true);
+                        var panel = PlaylistQueueRenderer.Panel.parseFrom((byte[]) renderer.invoke(null, queue));
+                        require(panel.getVideoCount() == 10 && queue.entries().size() == 8, "Hidden total must remain native");
+                        require(panel.getSelectedIndex() == 2 && panel.getLocalSelectedIndex() == 2,
+                            "Footer must not shift the playing position");
+                        require(panel.getItemsCount() == 9 && panel.getItems(7).getVideo().getVideoId().equals("YYYYYYYYYYY"),
+                            "Appended videos must precede the message");
+                        require(panel.getItems(8).equals(message) && !panel.getItems(8).hasVideo()
+                            && panel.getItemsList().stream().filter(item -> item.hasMessageRenderer()).count() == 1,
+                            "Native footer payload must survive rendering without becoming playable");
                     }
                     public static void metadataLocale() throws Exception {
                         var previous = Locale.getDefault();
