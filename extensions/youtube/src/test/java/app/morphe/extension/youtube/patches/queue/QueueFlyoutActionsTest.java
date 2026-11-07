@@ -11,6 +11,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import com.google.protobuf.CodedOutputStream;
 
@@ -23,6 +24,24 @@ import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuIt
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuRenderer;
 
 public class QueueFlyoutActionsTest {
+    @Test
+    public void playlistNextAndLastKeepTheirOwnCollectionTargetAfterSerialization() throws Exception {
+        for (String playlist : java.util.List.of("PL-public", "PL-private", "WL", "LL", "RD-mix")) {
+            var completed = QueueFlyoutActions.completeMenu(MenuRenderer.getDefaultInstance(), true,
+                    "Next", "Last", playlist);
+            assertEquals(2, completed.getItemsCount());
+            var rebound = MenuRenderer.parseFrom(completed.toByteArray());
+            assertEquals(playlist, rebound.getItems(0).getMenuConditionalServiceItemRenderer()
+                    .getServiceEndpoint().getQueuePlaylistId());
+            assertEquals(playlist, rebound.getItems(1).getMenuConditionalServiceItemRenderer()
+                    .getServiceEndpoint().getQueuePlaylistId());
+            assertEquals(YTIconType.QUEUE_PLAY_NEXT, rebound.getItems(0)
+                    .getMenuConditionalServiceItemRenderer().getIcon().getYtIconType());
+            assertEquals(YTIconType.QUEUE_PLAY_LAST, rebound.getItems(1)
+                    .getMenuConditionalServiceItemRenderer().getIcon().getYtIconType());
+        }
+    }
+
     // Write the native conditional wire shape independently of our schema.
     // Using ordinary service builders here previously missed the real feed format.
     private static MenuItem conditional(int icon, int visibility) throws Exception {
@@ -156,6 +175,13 @@ public class QueueFlyoutActionsTest {
                 active.getItems(1).getMenuConditionalServiceItemRenderer().getIcon().getYtIconType());
         assertEquals(original.getItems(0).getMenuConditionalServiceItemRenderer().getServiceEndpoint(),
                 active.getItems(1).getMenuConditionalServiceItemRenderer().getServiceEndpoint());
+    }
+
+    @Test public void unresolvedCollectionCannotBeMistakenForItsThumbnailVideo() throws Exception {
+        var collection = PlaylistCardSource.fromElement(new byte[0], true);
+        assertTrue(collection.playlist());
+        assertEquals("", collection.playlistId());
+        assertFalse(PlaylistCardSource.fromElement(new byte[0], false).playlist());
     }
 
 }

@@ -17,7 +17,7 @@ message Panel {
     optional int32 video_count = 6;
     optional Menu menu = 26;
     // Native counters add selected_index - local_selected_index to the row position.
-    // A local queue contains the complete playlist, without a paginated prefix.
+    // Local playback indexes loaded rows; video_count can retain the source total for display.
     optional int32 local_selected_index = 27;
 }
 
@@ -71,6 +71,8 @@ message MenuConditionalNavigationItem {
 
 message Item {
     optional Video video = 51779701;
+    // Native non-playable footer. Preserve its server-localized text and style.
+    optional bytes message_renderer = 58508690;
 }
 
 message Video {
@@ -80,6 +82,7 @@ message Video {
     optional Text length_text = 4;
     optional bool selected = 6;
     optional NavigationEndpoint navigation_endpoint = 7;
+    optional Text unplayable_text = 9;
     optional string video_id = 10;
     // Native per-row overflow actions are supplied only for local queue rows.
     optional Menu menu = 19;
@@ -87,6 +90,8 @@ message Video {
     optional MainAppStyle main_app_style = 27;
     optional Text video_info = 31;
     repeated RatingAction action_buttons = 32;
+    optional ColorPalette light_color_palette = 34;
+    optional ColorPalette dark_color_palette = 35;
     // Local rows deliberately omit playlistSetVideoId (26) and edit params (37).
     // Native drag presentation works without authorizing an account-playlist edit.
     optional bool can_reorder = 36;
@@ -166,8 +171,19 @@ message TextRun {
     optional string text = 1;
 }
 
+// Colors supplied by YouTube; the native row handles theme, selection and contrast.
+message ColorPalette {
+    optional uint32 section2_color = 2;
+    optional uint32 primary_title_color = 5;
+    optional uint32 secondary_title_color = 6;
+    // Background read by the native selected playlist row.
+    optional uint32 section4_color = 10;
+}
+
 message Thumbnails {
     repeated Thumbnail images = 1;
+    optional ColorPalette light_color_palette = 13;
+    optional ColorPalette dark_color_palette = 14;
 }
 
 message Thumbnail {
@@ -177,7 +193,10 @@ message Thumbnail {
 }
 
 message NavigationEndpoint {
+    optional bytes click_tracking_params = 2;
     optional WatchEndpoint watch_endpoint = 48687757;
+    optional WatchPlaylistEndpoint watch_playlist_endpoint = 52666186;
+    optional AlternateWatchEndpoint alternate_watch_endpoint = 57703777;
     optional HideEnclosingAction hide_enclosing_action = 77297742;
     optional CreatePlaylistDialogEndpoint create_playlist_dialog_endpoint = 85650004;
     optional AddToPlaylistEndpoint add_to_playlist_endpoint = 69487224;
@@ -197,6 +216,17 @@ message NavigationEndpoint {
     // Local dialog capabilities, retained by native protobuf copies.
     optional string queue_mix_choice_token = 500000003;
     optional bool queue_mix_add = 500000004;
+    // Collection menu actions retain their own target across native menu copies.
+    optional string queue_playlist_id = 500000005;
+    optional ShareEntityServiceEndpoint legacy_share_entity_endpoint = 90650344;
+}
+
+// Native playlist-position navigation can omit a video ID, including at a
+// hidden/unavailable tail. Follow its original index and params without guessing IDs.
+message WatchPlaylistEndpoint {
+    optional string playlist_id = 1;
+    optional int32 index = 2;
+    optional string params = 4;
 }
 
 // Native confirmation renderer consumed by YouTube's shared dialog presenter.
@@ -263,6 +293,7 @@ message ShareEntityServiceEndpoint {
 
 message ShareEntity {
     optional string video_id = 1;
+    optional string playlist_id = 2;
 }
 
 message GetDownloadActionCommand {
@@ -282,7 +313,32 @@ message WatchEndpoint {
     optional string video_id = 1;
     optional string playlist_id = 2;
     optional uint32 index = 3;
+    optional string params = 5;
     optional string playlist_set_video_id = 13;
+}
+
+// Native compact playlist commands use the same first three fields.
+message AlternateWatchEndpoint {
+    optional string video_id = 1;
+    optional string playlist_id = 2;
+    optional uint32 index = 3;
+}
+
+// The default (non-shuffle, non-repeat) native navigation set. These are the
+// manual Next targets, not recommendations or autoplay suggestions.
+message PlaylistNavigation {
+    optional NavigationEndpoint next = 3;
+    optional PlaylistNavigationTarget next_target = 6;
+}
+
+message PlaylistNavigationTarget {
+    optional PlaylistNavigationCommand watch = 84996305;
+    optional PlaylistNavigationCommand autoplay = 111631903;
+    optional PlaylistNavigationCommand continuation = 114177671;
+}
+
+message PlaylistNavigationCommand {
+    optional NavigationEndpoint command = 1;
 }
 
 message HideEnclosingAction {
