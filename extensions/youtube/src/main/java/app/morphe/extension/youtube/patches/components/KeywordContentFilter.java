@@ -28,6 +28,7 @@ import androidx.annotation.Nullable;
 
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -37,10 +38,12 @@ import app.morphe.extension.shared.TrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferHideStatsTracker;
 import app.morphe.extension.shared.patches.components.BufferPhraseFilter;
+import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -72,6 +75,24 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
      * Only applies when not using whole word syntax.
      */
     private static final int MINIMUM_KEYWORD_LENGTH = 3;
+
+    /**
+     * View model of a comment. It has the comment entity (1), whose properties (2) have the text and the author,
+     * and the entity with the texts of the comment section (2), such as "Replies made with AI".
+     * The buffer also has the menu, the buttons and the ids of the comment.
+     */
+    private static final int COMMENT_VIEW_MODEL_FIELD = 203234692;
+    private static final int[] COMMENT_PROPERTIES_PATH = {1, 2};
+    private static final int COMMENT_CONTENT_FIELD = 3;
+    private static final int COMMENT_AUTHOR_FIELD = 11;
+
+    /**
+     * Protobuf field key of {@link #COMMENT_VIEW_MODEL_FIELD}.
+     */
+    private final ByteArrayFilterGroup commentViewModel = new ByteArrayFilterGroup(
+            null,
+            new byte[]{(byte) 0xA2, (byte) 0xD8, (byte) 0xA3, (byte) 0x87, 0x06}
+    );
 
     private final StringFilterGroup commentsFilter = new StringFilterGroup(
             Settings.HIDE_KEYWORD_CONTENT_COMMENTS,
@@ -268,6 +289,33 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
         if (search == null) return null;
         MutableReference<String> matchRef = new MutableReference<>();
         if (!search.matches(buffer, matchRef)) return null;
+
+        if (matchedGroup == commentsFilter) {
+            // The texts of the comment section are in the buffer of every comment, so a keyword such as
+            // "AI" hid every comment (https://github.com/MorpheApp/morphe-patches/issues/2026).
+            // Only the text and the author in the view model of the comment are searched.
+            // The other parts of a comment, such as its badges and buttons, have no view model
+            // and no texts of their own.
+            if (!commentViewModel.check(buffer).isFiltered()) return null;
+            List<ProtoNode> message = ProtoNode.parse(buffer);
+            if (message == null) return null;
+
+            StringBuilder commentTexts = new StringBuilder();
+            for (ProtoNode viewModel : ProtoNode.findMessages(message, COMMENT_VIEW_MODEL_FIELD)) {
+                List<ProtoNode> comment = ProtoNode.message(viewModel.children, COMMENT_PROPERTIES_PATH);
+                for (String text : ProtoNode.texts(ProtoNode.message(comment, COMMENT_CONTENT_FIELD))) {
+                    commentTexts.append(text).append('\n');
+                }
+                ProtoNode author = ProtoNode.field(comment, COMMENT_AUTHOR_FIELD);
+                if (author != null && author.isText()) {
+                    commentTexts.append(author.getText()).append('\n');
+                }
+            }
+            if (!search.matches(commentTexts.toString().getBytes(StandardCharsets.UTF_8), matchRef)) {
+                return null;
+            }
+        }
+
         recordHide(matchedGroup, buffer, contextInterface);
         return matchRef.value;
     }
