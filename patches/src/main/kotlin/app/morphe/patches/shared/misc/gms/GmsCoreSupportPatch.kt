@@ -59,8 +59,8 @@ internal const val GMS_CORE_VENDOR_GROUP_ID = "app.revanced"
  * @param earlyReturnFingerprints The fingerprints of methods that need to be returned early.
  * @param mainActivityOnCreateFingerprint The fingerprint of the main activity onCreate method.
  * @param extensionPatch The patch responsible for the extension.
- * @param gnpRegistrationTargetFingerprint The fingerprint of the method that builds the GNP
- * registration target, resolved when the patch runs so that it can depend on the app version.
+ * @param useLegacyGnpFingerprint If the app builds the GNP registration target in the legacy method.
+ * Resolved when the patch runs so that it can depend on the app version.
  * @param executeBlock The additional execution block of the patch.
  * @param block The additional block to build the patch.
  */
@@ -72,7 +72,7 @@ fun gmsCoreSupportPatch(
     mainActivityOnCreateFingerprint: Fingerprint,
     extensionPatch: Patch,
     gmsCoreSupportResourcePatchFactory: () -> Patch,
-    gnpRegistrationTargetFingerprint: () -> Fingerprint = { GnpRegistrationTargetFingerprint },
+    useLegacyGnpFingerprint: () -> Boolean,
     executeBlock: () -> Unit = {},
     block: PatchDefinition.() -> Unit = {},
 ) = patch(
@@ -209,7 +209,12 @@ fun gmsCoreSupportPatch(
         )
 
         // GNP expects the original Google package even when the installed app is renamed.
-        gnpRegistrationTargetFingerprint().let { match ->
+        val gnpFingerprint = if (useLegacyGnpFingerprint()) {
+            GnpRegistrationTargetFingerprint
+        } else {
+            GnpRegistrationTargetSuspendFingerprint
+        }
+        gnpFingerprint.let { match ->
             val result = match.instructionMatches[1]
             match.method.replaceInstruction(
                 result.index,

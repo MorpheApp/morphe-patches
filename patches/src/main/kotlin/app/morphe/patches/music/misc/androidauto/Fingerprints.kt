@@ -439,7 +439,11 @@ internal fun requestSuccessCallbackFingerprint(requestBaseType: String) = Finger
     returnType = "V",
     parameters = listOf("Lcom/google/protobuf/MessageLite;"),
     filters = listOf(
-        methodCall(parameters = emptyList(), returnType = "V"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf(),
+            returnType = "V"
+        ),
         methodCall(
             opcode = Opcode.INVOKE_INTERFACE,
             parameters = listOf("Ljava/lang/Object;"),

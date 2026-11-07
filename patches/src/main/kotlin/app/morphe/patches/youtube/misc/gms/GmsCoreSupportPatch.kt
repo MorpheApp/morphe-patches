@@ -13,8 +13,6 @@ package app.morphe.patches.youtube.misc.gms
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patches.shared.PrimeMethodFingerprint
 import app.morphe.patches.shared.misc.gms.EXTENSION_CLASS
-import app.morphe.patches.shared.misc.gms.GnpRegistrationTargetFingerprint
-import app.morphe.patches.shared.misc.gms.GnpRegistrationTargetSuspendFingerprint
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportPatch
 import app.morphe.patches.shared.misc.gms.gmsCoreSupportResourcePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -36,9 +34,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     extensionPatch = sharedExtensionPatch,
     gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch,
-    gnpRegistrationTargetFingerprint = {
-        if (is_21_45_or_greater) GnpRegistrationTargetSuspendFingerprint else GnpRegistrationTargetFingerprint
-    },
+    useLegacyGnpFingerprint = { !is_21_45_or_greater },
     executeBlock = {
         // GmsCore allows the capabilities it can not look up, which makes every account a supervised account.
         AccountHasCapabilitiesFingerprint.method.addInstructionsWithLabels(

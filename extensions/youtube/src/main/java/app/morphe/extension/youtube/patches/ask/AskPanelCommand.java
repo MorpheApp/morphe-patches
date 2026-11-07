@@ -177,12 +177,13 @@ final class AskPanelCommand {
         @Nullable
         final String summarizeToken;
         /**
-         * Identifies the summarize suggestion in the command that its tap runs, or -1 if unknown.
+         * Identifies the summarize suggestion in the command that its tap runs, or null if unknown.
          */
-        final long summarizeSelectionId;
+        @Nullable
+        final Long summarizeSelectionId;
 
         Panel(byte[] command, @Nullable String welcomeToken, @Nullable String summarizeToken,
-              long summarizeSelectionId) {
+              @Nullable Long summarizeSelectionId) {
             this.command = command;
             this.welcomeToken = welcomeToken;
             this.summarizeToken = summarizeToken;
@@ -333,7 +334,7 @@ final class AskPanelCommand {
             panel = summarizeOnly;
         }
         String[] tokens = new String[2];
-        long[] summarizeSelectionId = {-1};
+        Long[] summarizeSelectionId = new Long[1];
         findTokens(panel, 0, tokens, summarizeSelectionId);
 
         ProtoWriter replacingPanel = new ProtoWriter();
@@ -412,7 +413,7 @@ final class AskPanelCommand {
 
     private static boolean hasSummarizeSuggestion(byte[] panel) {
         String[] tokens = new String[2];
-        findTokens(panel, 0, tokens, new long[]{-1});
+        findTokens(panel, 0, tokens, new Long[1]);
         return tokens[1] != null;
     }
 
@@ -447,7 +448,7 @@ final class AskPanelCommand {
      * @param tokens The welcome token and the summarize token, as they are found.
      * @param summarizeSelectionId The selection id of the summarize suggestion, as it is found.
      */
-    private static void findTokens(byte[] message, int depth, String[] tokens, long[] summarizeSelectionId) {
+    private static void findTokens(byte[] message, int depth, String[] tokens, Long[] summarizeSelectionId) {
         if (depth > MAX_MESSAGE_DEPTH) {
             return;
         }

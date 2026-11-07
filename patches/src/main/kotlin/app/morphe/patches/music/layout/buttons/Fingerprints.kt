@@ -104,6 +104,7 @@ internal object TopBarMenuItemImageViewFingerprint : Fingerprint(
  * a view with the same id as a different class, so the cast tells the Library button apart.
  */
 internal object LibraryNewButtonFingerprint : Fingerprint(
+    name = "onCreateView",
     filters = listOf(
         resourceLiteral(ResourceType.ID, "floating_action_button"),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
