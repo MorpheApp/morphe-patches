@@ -139,3 +139,14 @@ internal object SpeedmasterIndicatorChipFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Handles a received push notification. The second parameter is the PushNotificationSupportedRenderers proto.
+ */
+internal object PushNotificationReceivedFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Landroid/content/Context;", "L"),
+    filters = listOf(
+        string("Exception processing push notif renderer.")
+    )
+)
