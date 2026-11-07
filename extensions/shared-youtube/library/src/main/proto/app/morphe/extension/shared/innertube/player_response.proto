@@ -71,6 +71,11 @@ message Format {
   optional string mimeType = 5;
   optional string url = 2;
   optional string signatureCipher = 48;
+  // Used by the quick download menu to show the size of each quality.
+  optional int32 width = 7;
+  optional int32 height = 8;
+  optional int32 fps = 25;
+  optional string qualityLabel = 26;
 }
 
 message PlayerConfig {
