@@ -17,6 +17,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.Typeface;
+import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
@@ -28,6 +29,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -50,8 +52,10 @@ import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.youtube.patches.CustomSeekbarThumbPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.playback.speed.CustomPlaybackSpeedPatch;
+import app.morphe.extension.youtube.patches.theme.SeekbarColorPatch;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.VideoState;
@@ -94,6 +98,9 @@ final class OnTheGoSheet {
      * The panel is made to be used without scrolling, so it can be taller than other sheets.
      */
     private static final int MAX_HEIGHT_PERCENT = 90;
+    /**
+     * Color of the time bar, if no custom seekbar color is used.
+     */
     private static final int TIME_BAR_COLOR = 0xFFFF0033;
     private static final float MUTED_TEXT_ALPHA = 0.62f;
     private static final float BUTTON_BACKGROUND_ALPHA = 0.12f;
@@ -118,6 +125,11 @@ final class OnTheGoSheet {
     @Nullable
     private VideoState shownState;
     private boolean userSeeking;
+    /**
+     * Custom seekbar thumb of the time bar, or null if the default thumb is used.
+     */
+    @Nullable
+    private Drawable customThumb;
 
     private final Runnable updater = new Runnable() {
         @Override
@@ -191,9 +203,14 @@ final class OnTheGoSheet {
         content.addView(timeView, matchWidth(0, Dim.dp4));
 
         timeBar = new SeekBar(context);
-        ColorStateList timeBarColor = ColorStateList.valueOf(TIME_BAR_COLOR);
+        ColorStateList timeBarColor = ColorStateList.valueOf(getTimeBarColor());
         timeBar.setProgressTintList(timeBarColor);
-        timeBar.setThumbTintList(timeBarColor);
+        customThumb = CustomSeekbarThumbPatch.createSeekBarThumb();
+        if (customThumb != null) {
+            timeBar.setThumb(customThumb);
+        } else {
+            timeBar.setThumbTintList(timeBarColor);
+        }
         timeBar.setProgressBackgroundTintList(ColorStateList.valueOf(mutedColor));
         timeBar.setPadding(0, Dim.dp8, 0, Dim.dp8);
         timeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -220,10 +237,10 @@ final class OnTheGoSheet {
         LinearLayout controls = new LinearLayout(context);
         controls.setOrientation(LinearLayout.HORIZONTAL);
         controls.setGravity(Gravity.CENTER_VERTICAL);
-        controls.addView(createControl("quantum_ic_skip_previous_white_24", "accessibility_previous",
-                Dim.dp48, v -> clickPlayerButton("player_control_previous_button")), controlParams());
-        controls.addView(createControl("quantum_ic_replay_10_white_24", "accessibility_rewind",
-                Dim.dp48, v -> VideoInformation.seekToRelative(-SEEK_LENGTH_MILLISECONDS)), controlParams());
+        addControl(controls, createControl("quantum_ic_skip_previous_white_24", "accessibility_previous",
+                Dim.dp48, v -> clickPlayerButton("player_control_previous_button")));
+        addControl(controls, createControl("quantum_ic_replay_10_white_24", "accessibility_rewind",
+                Dim.dp48, v -> VideoInformation.seekToRelative(-SEEK_LENGTH_MILLISECONDS)));
         playPauseButton = createControl("quantum_ic_play_arrow_white_36", "accessibility_play",
                 Dim.dp(80), v -> clickPlayerButton("player_control_play_pause_replay_button"));
         GradientDrawable playPauseBackground = new GradientDrawable();
@@ -231,11 +248,11 @@ final class OnTheGoSheet {
         playPauseBackground.setColor(buttonBackgroundColor);
         playPauseButton.setBackground(new RippleDrawable(
                 ColorStateList.valueOf(buttonBackgroundColor), playPauseBackground, null));
-        controls.addView(playPauseButton, controlParams());
-        controls.addView(createControl("quantum_ic_forward_10_white_24", "accessibility_fast_forward",
-                Dim.dp48, v -> VideoInformation.seekToRelative(SEEK_LENGTH_MILLISECONDS)), controlParams());
-        controls.addView(createControl("quantum_ic_skip_next_white_24", "accessibility_next",
-                Dim.dp48, v -> clickPlayerButton("player_control_next_button")), controlParams());
+        addControl(controls, playPauseButton);
+        addControl(controls, createControl("quantum_ic_forward_10_white_24", "accessibility_fast_forward",
+                Dim.dp48, v -> VideoInformation.seekToRelative(SEEK_LENGTH_MILLISECONDS)));
+        addControl(controls, createControl("quantum_ic_skip_next_white_24", "accessibility_next",
+                Dim.dp48, v -> clickPlayerButton("player_control_next_button")));
         content.addView(controls, matchWidth(0, Dim.dp24));
 
         speedButton = new TextView(context);
@@ -260,6 +277,9 @@ final class OnTheGoSheet {
         current = new WeakReference<>(this);
         PipDismissHelper.dismissOnPip(dialog, () -> {
             handler.removeCallbacks(updater);
+            if (customThumb instanceof Animatable animatable) {
+                animatable.stop();
+            }
             if (current != null && current.get() == this) {
                 current = null;
             }
@@ -272,12 +292,21 @@ final class OnTheGoSheet {
 
     private ImageView createControl(String drawableName, String descriptionName, int size,
                                     View.OnClickListener listener) {
-        ImageView button = new ImageView(activity);
+        ImageView button = new ImageView(activity) {
+            @Override
+            protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+                // Always square, so the round background is a circle.
+                // Made smaller if the row is too narrow for the size.
+                int side = size;
+                if (MeasureSpec.getMode(widthMeasureSpec) != MeasureSpec.UNSPECIFIED) {
+                    side = Math.min(side, MeasureSpec.getSize(widthMeasureSpec));
+                }
+                setMeasuredDimension(side, side);
+            }
+        };
         button.setScaleType(ImageView.ScaleType.CENTER);
         setIcon(button, drawableName, descriptionName);
         button.setImageTintList(ColorStateList.valueOf(foregroundColor));
-        button.setMinimumWidth(size);
-        button.setMinimumHeight(size);
         GradientDrawable mask = new GradientDrawable();
         mask.setShape(GradientDrawable.OVAL);
         mask.setColor(Color.WHITE);
@@ -294,11 +323,27 @@ final class OnTheGoSheet {
         button.setContentDescription(str(descriptionName));
     }
 
-    private static LinearLayout.LayoutParams controlParams() {
+    /**
+     * Adds a control centered in an equal share of the row width.
+     * The control is not stretched to the share, so it keeps its size.
+     */
+    private static void addControl(LinearLayout controls, View control) {
+        FrameLayout cell = new FrameLayout(controls.getContext());
+        cell.addView(control, new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
-        params.gravity = Gravity.CENTER;
-        return params;
+        params.gravity = Gravity.CENTER_VERTICAL;
+        controls.addView(cell, params);
+    }
+
+    /**
+     * @return The custom seekbar color, if the seekbar color patch is included and the color is used.
+     */
+    private static int getTimeBarColor() {
+        return SeekbarColorPatch.isPatchIncluded() && SeekbarColorPatch.isCustomSeekbarColorEnabled()
+                ? SeekbarColorPatch.getSeekbarColor()
+                : TIME_BAR_COLOR;
     }
 
     private static LinearLayout.LayoutParams matchWidth(int topMargin, int bottomMargin) {

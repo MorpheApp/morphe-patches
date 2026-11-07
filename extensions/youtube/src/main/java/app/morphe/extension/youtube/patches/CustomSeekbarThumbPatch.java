@@ -13,8 +13,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.ImageDecoder;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
+import android.graphics.Rect;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -67,6 +70,11 @@ public final class CustomSeekbarThumbPatch {
      * and follows the radius as the seekbar animates.
      */
     private static final float FIT_SEEKBAR_HEIGHT_TO_RADIUS = 4;
+    /**
+     * Thumb height in other seekbars, if the thumb fits the seekbar.
+     * Same as the height in the player seekbar while the player controls are shown.
+     */
+    private static final int FIT_SEEKBAR_HEIGHT_DP = 24;
 
     /**
      * Must be a strong reference, because a drawable only keeps a weak reference to its callback.
@@ -109,6 +117,138 @@ public final class CustomSeekbarThumbPatch {
     private static String loadedFileName;
 
     private CustomSeekbarThumbPatch() {}
+
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
+    /**
+     * For seekbars of Morphe, such as in the On-the-go panel.
+     * Each call loads a new drawable, as a drawable can only be in one view.
+     * An animated image is started, and must be stopped when it is not used anymore.
+     *
+     * @return The custom thumb with the size it has in the player seekbar,
+     *         or null if no custom thumb is used.
+     */
+    @Nullable
+    public static Drawable createSeekBarThumb() {
+        try {
+            if (!isPatchIncluded() || !Settings.CUSTOM_SEEKBAR_THUMB.get()
+                    || Settings.CUSTOM_SEEKBAR_THUMB_FILE.get().isEmpty()) {
+                return null;
+            }
+
+            File file = getThumbFile(Utils.getContext());
+            if (!file.isFile()) {
+                // The player seekbar shows a message and resets the setting.
+                Logger.printDebug(() -> "Custom seekbar thumb file not found");
+                return null;
+            }
+
+            Drawable thumb = decodeThumb(file);
+            if (thumb == null) {
+                return null;
+            }
+
+            float scale = 1;
+            if (Settings.CUSTOM_SEEKBAR_THUMB_SCALE_TYPE.get() == ThumbScaleType.FIT_SEEKBAR) {
+                scale = (float) Dim.dp(FIT_SEEKBAR_HEIGHT_DP) / thumb.getIntrinsicHeight();
+            }
+            scale = Math.min(scale, (float) Dim.dp(MAX_THUMB_SIZE_DP)
+                    / Math.max(thumb.getIntrinsicWidth(), thumb.getIntrinsicHeight()));
+
+            ScaledThumbDrawable scaledThumb = new ScaledThumbDrawable(thumb, scale);
+            scaledThumb.start();
+            return scaledThumb;
+        } catch (Exception ex) {
+            Logger.printException(() -> "createSeekBarThumb failure", ex);
+            return null;
+        }
+    }
+
+    /**
+     * Draws a thumb scaled, using the canvas because AnimatedImageDrawable ignores the drawable bounds.
+     */
+    private static final class ScaledThumbDrawable extends Drawable implements Drawable.Callback, Animatable {
+        private final Drawable thumb;
+        private final float scale;
+
+        ScaledThumbDrawable(Drawable thumb, float scale) {
+            this.thumb = thumb;
+            this.scale = scale;
+            thumb.setBounds(0, 0, thumb.getIntrinsicWidth(), thumb.getIntrinsicHeight());
+            thumb.setCallback(this);
+        }
+
+        @Override
+        public int getIntrinsicWidth() {
+            return Math.max(1, Math.round(thumb.getIntrinsicWidth() * scale));
+        }
+
+        @Override
+        public int getIntrinsicHeight() {
+            return Math.max(1, Math.round(thumb.getIntrinsicHeight() * scale));
+        }
+
+        @Override
+        public void draw(@NonNull Canvas canvas) {
+            Rect bounds = getBounds();
+            final int saveCount = canvas.save();
+            canvas.translate(bounds.left, bounds.top);
+            canvas.scale(scale, scale);
+            thumb.draw(canvas);
+            canvas.restoreToCount(saveCount);
+        }
+
+        @Override
+        public void setAlpha(int alpha) {
+            thumb.setAlpha(alpha);
+        }
+
+        @Override
+        public void setColorFilter(@Nullable ColorFilter colorFilter) {
+            thumb.setColorFilter(colorFilter);
+        }
+
+        @Override
+        public int getOpacity() {
+            return PixelFormat.TRANSLUCENT;
+        }
+
+        @Override
+        public void invalidateDrawable(@NonNull Drawable who) {
+            invalidateSelf();
+        }
+
+        @Override
+        public void scheduleDrawable(@NonNull Drawable who, @NonNull Runnable what, long when) {
+            scheduleSelf(what, when);
+        }
+
+        @Override
+        public void unscheduleDrawable(@NonNull Drawable who, @NonNull Runnable what) {
+            unscheduleSelf(what);
+        }
+
+        @Override
+        public void start() {
+            if (thumb instanceof Animatable animatable) {
+                animatable.start();
+            }
+        }
+
+        @Override
+        public void stop() {
+            if (thumb instanceof Animatable animatable) {
+                animatable.stop();
+            }
+        }
+
+        @Override
+        public boolean isRunning() {
+            return thumb instanceof Animatable animatable && animatable.isRunning();
+        }
+    }
 
     /**
      * Injection point.
