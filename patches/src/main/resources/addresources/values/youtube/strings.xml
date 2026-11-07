@@ -537,6 +537,14 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_post_translate_failed">Could not translate the post</string>
     <string name="morphe_post_translate_same_language">The post is already in the translation language</string>
 
+    <!-- interaction.onthego.onTheGoPatch -->
+    <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_on_the_go_title">Enable Morphe on-the-go</string>
+    <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_on_the_go_summary">Player flyout \'on-the-go\' opens Morphe custom player controls</string>
+    <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_on_the_go_panel_title">On-the-go</string>
+
     <!-- interaction.ask.askFlyoutMenuPatch -->
     <string name="morphe_ask_summarize_flyout_menu_title">Add Ask item to flyout menu</string>
     <string name="morphe_ask_summarize_flyout_menu_summary">Adds a video summarize item to the feed flyout menu</string>

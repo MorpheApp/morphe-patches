@@ -25,6 +25,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -42,6 +43,8 @@ val seekbarColorPatch = patch(
     )
 
     execute {
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
+
         fun MutableMethod.addColorChangeInstructions(index: Int) {
             insertLiteralOverride(
                 index,

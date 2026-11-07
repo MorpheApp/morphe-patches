@@ -47,8 +47,8 @@ import java.util.Map;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.regex.Pattern;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -68,6 +68,7 @@ import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoDelayPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter;
+import app.morphe.extension.youtube.patches.onthego.OnTheGoPatch;
 import app.morphe.extension.youtube.patches.playback.speed.ShortsPlaybackSpeedFlyoutPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
 import app.morphe.extension.youtube.settings.Settings;
@@ -469,6 +470,9 @@ public final class FlyoutUtils {
             return;
         }
         FeedVideoActionsPatch.onFlyoutCreated();
+        if (OnTheGoPatch.isPatchIncluded()) {
+            OnTheGoPatch.onFlyoutCreated();
+        }
         flyoutDialog = dialog;
 
         Window window = dialog.getWindow();
@@ -485,6 +489,9 @@ public final class FlyoutUtils {
             return;
         }
         FeedVideoActionsPatch.onFlyoutCreated();
+        if (OnTheGoPatch.isPatchIncluded()) {
+            OnTheGoPatch.onFlyoutCreated();
+        }
         flyoutPopupWindow = popupWindow;
 
         // The app can set the content view after this call, in the same method that shows the popup.
@@ -710,6 +717,11 @@ public final class FlyoutUtils {
                     nextButtonIndex,
                     allButtonsVideoId
             );
+        }
+
+        // Only added to the video player menu, if the menu has no On-the-go item.
+        if (OnTheGoPatch.isPatchIncluded()) {
+            nextButtonIndex = OnTheGoPatch.addFlyoutButton(flyoutPanel, nextButtonIndex);
         }
 
         if (VideoDelayPatch.isPatchIncluded()) {

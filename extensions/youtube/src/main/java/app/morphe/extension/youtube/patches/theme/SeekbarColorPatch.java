@@ -109,6 +109,10 @@ public final class SeekbarColorPatch {
         return SEEKBAR_CUSTOM_COLOR_ENABLED;
     }
 
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
     /**
      * Injection point.
      */
