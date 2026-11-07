@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.patches.announcements;
+package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
@@ -47,13 +47,13 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Shows a dialog on app startup when a newer Morphe Patches release includes YouTube changes.
+ * Shows a dialog on app startup when a newer Morphe Patches release includes changes for the patched app.
  * Releases that only change other apps are ignored.
  */
 @SuppressWarnings("unused")
@@ -112,18 +112,31 @@ public final class PatchesUpdateNoticePatch {
     private static final Pattern VERSION = Pattern.compile("^v?(\\d+)\\.(\\d+)\\.(\\d+)(?:-dev\\.(\\d+))?$");
 
     /**
-     * Matches YouTube entries of the release notes, including the entries shared with
-     * YouTube Music, but not YouTube Music only entries.
-     * Group 1 is the patch name (if any), group 2 is the change text.
+     * Release note entries with a semantic release scope, such as "* **YouTube - Patch name:** Change text".
+     * Group 1 is the scope, group 2 is the change text.
      */
-    private static final Pattern YOUTUBE_ENTRY = Pattern.compile(
-            "^\\* \\*\\*YouTube(?: / YouTube Music)?(?: - ([^:*]+))?:\\*\\* (.+)$");
+    private static final Pattern SCOPED_ENTRY = Pattern.compile("^\\* \\*\\*([^*]+?):\\*\\* (.+)$");
+    /**
+     * Separates the app and the patch name of a scope, such as "YouTube Music - Patch name".
+     */
+    private static final String SCOPE_PATCH_SEPARATOR = " - ";
+    /**
+     * Separates the apps of a scope shared by several apps, such as "YouTube / YouTube Music".
+     */
+    private static final Pattern SCOPE_APP_SEPARATOR = Pattern.compile("\\s*[/&,]\\s*");
     private static final Pattern COMMIT_LINK = Pattern.compile("/commit/([0-9a-f]+)\\)");
     private static final Pattern MARKDOWN_LINKS = Pattern.compile("\\s*\\(\\[[^\\]]*\\]\\([^)]*\\)\\)");
 
     private static volatile boolean checkedThisSession;
 
     private PatchesUpdateNoticePatch() {
+    }
+
+    /**
+     * @return The app name used in the scopes of the release notes, such as "YouTube Music".
+     */
+    private static String getChangelogScope() {
+        return ""; // Value is replaced during patching.
     }
 
     private static final class UpdateInfo {
@@ -148,7 +161,7 @@ public final class PatchesUpdateNoticePatch {
      */
     public static void showNoticeIfNeeded(Activity activity) {
         try {
-            final UpdateNoticeType noticeType = Settings.PATCHES_UPDATE_NOTICE.get();
+            final UpdateNoticeType noticeType = SharedSettings.PATCHES_UPDATE_NOTICE.get();
             if (noticeType == UpdateNoticeType.OFF || checkedThisSession) return;
             checkedThisSession = true;
 
@@ -160,7 +173,7 @@ public final class PatchesUpdateNoticePatch {
                     UpdateInfo info = fetchUpdateInfo(installedVersion, includeDevReleases);
                     if (info == null) return;
 
-                    if (info.latestVersion.equals(Settings.PATCHES_UPDATE_NOTICE_DISMISSED_VERSION.get())) {
+                    if (info.latestVersion.equals(SharedSettings.PATCHES_UPDATE_NOTICE_DISMISSED_VERSION.get())) {
                         Logger.printDebug(() -> "Patches update " + info.latestVersion + " was dismissed");
                         return;
                     }
@@ -176,8 +189,8 @@ public final class PatchesUpdateNoticePatch {
     }
 
     /**
-     * @return The YouTube changes of all releases newer than the installed patches,
-     *         or null if there is no newer release with YouTube changes.
+     * @return The app changes of all releases newer than the installed patches,
+     *         or null if there is no newer release with changes for the app.
      */
     @Nullable
     private static UpdateInfo fetchUpdateInfo(String installedVersion, boolean includeDevReleases) throws IOException {
@@ -219,6 +232,8 @@ public final class PatchesUpdateNoticePatch {
     @Nullable
     private static UpdateInfo parseChangelog(BufferedReader reader, String installedVersion,
                                              int[] installed, boolean includeDevReleases) throws IOException {
+        final String appScope = getChangelogScope();
+
         // Changes by commit, so a change listed by both a stable and a dev release is used once.
         Map<String, String> features = new LinkedHashMap<>();
         Map<String, String> fixes = new LinkedHashMap<>();
@@ -266,10 +281,19 @@ public final class PatchesUpdateNoticePatch {
                 continue;
             }
 
-            Matcher entry = YOUTUBE_ENTRY.matcher(line);
+            Matcher entry = SCOPED_ENTRY.matcher(line);
             if (!entry.matches()) continue;
 
-            String patchName = entry.group(1);
+            //noinspection ConstantConditions
+            String scope = entry.group(1);
+            String patchName = null;
+            final int patchSeparator = scope.indexOf(SCOPE_PATCH_SEPARATOR);
+            if (patchSeparator >= 0) {
+                patchName = scope.substring(patchSeparator + SCOPE_PATCH_SEPARATOR.length());
+                scope = scope.substring(0, patchSeparator);
+            }
+            if (!isAppScope(scope, appScope)) continue;
+
             //noinspection ConstantConditions
             String text = MARKDOWN_LINKS.matcher(entry.group(2)).replaceAll("")
                     .replace("`", "")
@@ -300,10 +324,21 @@ public final class PatchesUpdateNoticePatch {
         addChanges(info.other, other, installedChanges);
 
         if (info.changeCount() == 0) {
-            Logger.printDebug(() -> "No newer patches with YouTube changes. Installed: " + installedVersion);
+            Logger.printDebug(() -> "No newer patches with " + appScope + " changes. Installed: " + installedVersion);
             return null;
         }
         return info;
+    }
+
+    /**
+     * @return If the apps of a scope include the app, such as "YouTube" in "YouTube / YouTube Music".
+     *         Scopes of patches that are not specific to an app, such as "Settings", do not match.
+     */
+    private static boolean isAppScope(String scope, String appScope) {
+        for (String app : SCOPE_APP_SEPARATOR.split(scope.trim())) {
+            if (app.equals(appScope)) return true;
+        }
+        return false;
     }
 
     private static void addChanges(List<String> list, Map<String, String> changes, Set<String> installedChanges) {
@@ -357,7 +392,7 @@ public final class PatchesUpdateNoticePatch {
                     () -> openManager(activity), // OK button action.
                     null, // No cancel button.
                     str("morphe_patches_update_notice_dialog_dismiss"), // Neutral button text.
-                    () -> Settings.PATCHES_UPDATE_NOTICE_DISMISSED_VERSION.save(info.latestVersion),
+                    () -> SharedSettings.PATCHES_UPDATE_NOTICE_DISMISSED_VERSION.save(info.latestVersion),
                     true // Dismiss dialog on Neutral button click.
             );
 

@@ -30,6 +30,7 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
+import app.morphe.patches.shared.misc.announcements.patchesUpdateNoticePatch
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.patches.shared.misc.initialization.initializationPatch
 import app.morphe.patches.shared.misc.settings.MORPHE_SETTINGS_INTENT
@@ -142,6 +143,10 @@ val settingsPatch = patch(
             mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint,
             recommendedAppVersion = COMPATIBILITY_YOUTUBE_MUSIC.targets.first { !it.isExperimental }.version!!
         ),
+        patchesUpdateNoticePatch(
+            mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint,
+            changelogScope = "YouTube Music"
+        ),
         initializationPatch(
             extensionPatch = sharedExtensionPatch
         )
@@ -186,6 +191,7 @@ val settingsPatch = patch(
                 key = "morphe_language",
                 tag = "app.morphe.extension.shared.settings.preference.SortedListPreference"
             ),
+            ListPreference("morphe_patches_update_notice"),
             NonInteractivePreference(
                 key = "morphe_music_app_language",
                 summaryKey = null,
