@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches/issues/4174
+ * https://github.com/MorpheApp/morphe-patches/pull/4178
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -29,14 +29,16 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -56,15 +58,19 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class PatchesUpdateNoticePatch {
 
-    private static final String RELEASES_URL =
-            "https://api.github.com/repos/MorpheApp/morphe-patches/releases?per_page=30";
+    /**
+     * Raw file urls have no rate limit, unlike the GitHub API.
+     * The main branch changelog lists the stable releases, the dev branch changelog also the dev releases.
+     */
+    private static final String STABLE_CHANGELOG_URL =
+            "https://raw.githubusercontent.com/MorpheApp/morphe-patches/main/CHANGELOG.md";
+    private static final String DEV_CHANGELOG_URL =
+            "https://raw.githubusercontent.com/MorpheApp/morphe-patches/dev/CHANGELOG.md";
     private static final String MANAGER_PACKAGE = "app.morphe.manager";
     private static final String WEBSITE_URL = "https://morphe.software";
 
-    /**
-     * Minimum time between two checks, to stay well below the GitHub API rate limit.
-     */
-    private static final long CHECK_INTERVAL_MS = 60 * 60 * 1000; // 1 hour.
+    private static final int CONNECT_TIMEOUT_MS = 5000;
+    private static final int READ_TIMEOUT_MS = 10000;
 
     /**
      * Maximum number of changes listed in the dialog.
@@ -72,19 +78,34 @@ public final class PatchesUpdateNoticePatch {
     private static final int MAX_LISTED_CHANGES = 6;
 
     /**
-     * Text size of the dialog message, in sp.
+     * Text size of the {@link CustomDialog} message, in sp.
      */
     private static final float MESSAGE_TEXT_SIZE_SP = 16;
     private static final float HEADING_TEXT_SCALE = 1.15f;
+    private static final float HEADING_GAP_TEXT_SCALE = 0.4f;
     private static final float MORE_TEXT_SCALE = 0.9f;
-    private static final String BULLET = "\u2022 ";
+    private static final int RULE_ALPHA = 0x33;
+    private static final String BULLET = "• ";
 
     /**
-     * Matches YouTube entries of the release notes, but not YouTube Music entries.
+     * Release headers, such as "## [2.1.0](url) (date)", "# [1.28.0-dev.3](url) (date)" and "# 1.0.0 (date)".
+     * Group 1 is the version.
+     */
+    private static final Pattern RELEASE_HEADER = Pattern.compile("^#{1,2} \\[?([^\\]\\s]+)");
+
+    /**
+     * Group 1 to 3 are the version numbers, group 4 is the dev release number (if any).
+     */
+    private static final Pattern VERSION = Pattern.compile("^v?(\\d+)\\.(\\d+)\\.(\\d+)(?:-dev\\.(\\d+))?$");
+
+    /**
+     * Matches YouTube entries of the release notes, including the entries shared with
+     * YouTube Music, but not YouTube Music only entries.
      * Group 1 is the patch name (if any), group 2 is the change text.
      */
     private static final Pattern YOUTUBE_ENTRY = Pattern.compile(
-            "^\\* \\*\\*YouTube(?! Music)(?: - ([^:*]+))?:\\*\\* (.+)$");
+            "^\\* \\*\\*YouTube(?: / YouTube Music)?(?: - ([^:*]+))?:\\*\\* (.+)$");
+    private static final Pattern COMMIT_LINK = Pattern.compile("/commit/([0-9a-f]+)\\)");
     private static final Pattern MARKDOWN_LINKS = Pattern.compile("\\s*\\(\\[[^\\]]*\\]\\([^)]*\\)\\)");
 
     private static volatile boolean checkedThisSession;
@@ -94,12 +115,14 @@ public final class PatchesUpdateNoticePatch {
 
     private static final class UpdateInfo {
         final String latestVersion;
+        final String installedVersion;
         final List<String> features = new ArrayList<>();
         final List<String> fixes = new ArrayList<>();
         final List<String> other = new ArrayList<>();
 
-        UpdateInfo(String latestVersion) {
+        UpdateInfo(String latestVersion, String installedVersion) {
             this.latestVersion = latestVersion;
+            this.installedVersion = installedVersion;
         }
 
         int changeCount() {
@@ -115,32 +138,21 @@ public final class PatchesUpdateNoticePatch {
             if (!Settings.PATCHES_UPDATE_NOTICE.get() || checkedThisSession) return;
             checkedThisSession = true;
 
-            final String installedVersion = stripVersionPrefix(Utils.getPatchesReleaseVersion());
+            final String installedVersion = Utils.getPatchesReleaseVersion();
             // Dev releases can be published several times a day, so they are only included if enabled.
             final boolean includeDevReleases = Settings.PATCHES_UPDATE_NOTICE_DEV_RELEASES.get();
-            final long now = System.currentTimeMillis();
-            // Check again right away if different patches are installed or the dev releases setting was changed.
-            final boolean checkDue = !isCacheCurrent(installedVersion, includeDevReleases)
-                    || now - Settings.PATCHES_UPDATE_NOTICE_LAST_CHECK_MS.get() >= CHECK_INTERVAL_MS;
-            final boolean canFetch = checkDue && Utils.isNetworkConnected();
-
-            if (!canFetch) {
-                // Show the last found update again until it is installed or dismissed.
-                UpdateInfo cached = loadCachedUpdate(installedVersion, includeDevReleases);
-                if (cached != null) {
-                    // Post, so the dialog is shown after the activity is created.
-                    Utils.runOnMainThread(() -> showIfNotDismissed(activity, cached));
-                }
-                return;
-            }
 
             Utils.runOnBackgroundThread(() -> {
                 try {
                     UpdateInfo info = fetchUpdateInfo(installedVersion, includeDevReleases);
-                    Settings.PATCHES_UPDATE_NOTICE_LAST_CHECK_MS.save(System.currentTimeMillis());
-                    saveCachedUpdate(installedVersion, includeDevReleases, info);
+                    if (info == null) return;
 
-                    Utils.runOnMainThread(() -> showIfNotDismissed(activity, info));
+                    if (info.latestVersion.equals(Settings.PATCHES_UPDATE_NOTICE_DISMISSED_VERSION.get())) {
+                        Logger.printDebug(() -> "Patches update " + info.latestVersion + " was dismissed");
+                        return;
+                    }
+
+                    Utils.runOnMainThread(() -> showDialog(activity, info));
                 } catch (Exception ex) {
                     Logger.printInfo(() -> "Failed to check for patches updates", ex);
                 }
@@ -150,153 +162,102 @@ public final class PatchesUpdateNoticePatch {
         }
     }
 
-    private static void showIfNotDismissed(Activity activity, @Nullable UpdateInfo info) {
-        if (info == null) return;
-
-        if (info.latestVersion.equals(Settings.PATCHES_UPDATE_NOTICE_DISMISSED_VERSION.get())) {
-            Logger.printDebug(() -> "Patches update " + info.latestVersion + " was dismissed");
-            return;
-        }
-
-        showDialog(activity, info);
-    }
-
-    private static void saveCachedUpdate(String installedVersion, boolean includeDevReleases, @Nullable UpdateInfo info) {
-        try {
-            JSONObject json = new JSONObject();
-            json.put("installed", installedVersion);
-            json.put("dev", includeDevReleases);
-            if (info == null) {
-                // Nothing to show, but remember for which patches and setting this was checked.
-                Settings.PATCHES_UPDATE_NOTICE_CACHE.save(json.toString());
-                return;
-            }
-
-            json.put("latest", info.latestVersion);
-            json.put("features", new JSONArray(info.features));
-            json.put("fixes", new JSONArray(info.fixes));
-            json.put("other", new JSONArray(info.other));
-            Settings.PATCHES_UPDATE_NOTICE_CACHE.save(json.toString());
-        } catch (Exception ex) {
-            Logger.printException(() -> "Failed to save patches update cache", ex);
-        }
-    }
-
-    @Nullable
-    private static JSONObject loadCache(String installedVersion, boolean includeDevReleases) {
-        try {
-            String cache = Settings.PATCHES_UPDATE_NOTICE_CACHE.get();
-            if (cache.isEmpty()) return null;
-
-            JSONObject json = new JSONObject(cache);
-            // The cache is outdated once different patches are installed or the dev releases setting is changed.
-            if (!installedVersion.equals(json.optString("installed"))
-                    || includeDevReleases != json.optBoolean("dev")) {
-                return null;
-            }
-            return json;
-        } catch (Exception ex) {
-            Logger.printException(() -> "Failed to load patches update cache", ex);
-            return null;
-        }
-    }
-
-    private static boolean isCacheCurrent(String installedVersion, boolean includeDevReleases) {
-        return loadCache(installedVersion, includeDevReleases) != null;
-    }
-
-    @Nullable
-    private static UpdateInfo loadCachedUpdate(String installedVersion, boolean includeDevReleases) {
-        try {
-            JSONObject json = loadCache(installedVersion, includeDevReleases);
-            if (json == null || !json.has("latest")) return null;
-
-            UpdateInfo info = new UpdateInfo(json.getString("latest"));
-            addAll(info.features, json.optJSONArray("features"));
-            addAll(info.fixes, json.optJSONArray("fixes"));
-            addAll(info.other, json.optJSONArray("other"));
-            return info.changeCount() == 0 ? null : info;
-        } catch (Exception ex) {
-            Logger.printException(() -> "Failed to load patches update cache", ex);
-            return null;
-        }
-    }
-
-    private static void addAll(List<String> list, @Nullable JSONArray array) {
-        if (array == null) return;
-        for (int i = 0, length = array.length(); i < length; i++) {
-            list.add(array.optString(i));
-        }
-    }
-
     /**
      * @return The YouTube changes of all releases newer than the installed patches,
      *         or null if there is no newer release with YouTube changes.
      */
     @Nullable
-    private static UpdateInfo fetchUpdateInfo(String installedVersion, boolean includeDevReleases) throws Exception {
-        HttpURLConnection connection = Requester.openConnection(RELEASES_URL);
-        connection.setConnectTimeout(5000);
-        connection.setReadTimeout(10000);
-        connection.setRequestProperty("Accept", "application/vnd.github+json");
-        Logger.printDebug(() -> "Fetching patches releases from: " + connection.getURL());
-
-        final int responseCode = connection.getResponseCode();
-        if (responseCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
-            connection.disconnect();
-            // Keep the cached result, and try again on the next app launch.
-            throw new IOException("Failed to get patches releases. Response code: " + responseCode);
-        }
-
-        JSONArray releases = Requester.parseJSONArrayAndDisconnect(connection);
-        UpdateInfo info = null;
-        Set<String> seen = new LinkedHashSet<>();
-
-        // Releases are listed newest first.
-        for (int i = 0, length = releases.length(); i < length; i++) {
-            JSONObject release = releases.getJSONObject(i);
-            if (release.optBoolean("draft")) continue;
-            if (release.optBoolean("prerelease") && !includeDevReleases) continue;
-
-            String version = stripVersionPrefix(release.optString("tag_name"));
-            if (compareVersions(version, installedVersion) <= 0) break;
-
-            if (info == null) {
-                info = new UpdateInfo(version);
-            }
-            parseYouTubeChanges(release.optString("body"), info, seen);
-        }
-
-        if (info == null || info.changeCount() == 0) {
-            Logger.printDebug(() -> "No newer patches with YouTube changes. Installed: " + installedVersion);
+    private static UpdateInfo fetchUpdateInfo(String installedVersion, boolean includeDevReleases) throws IOException {
+        final int[] installed = parseVersion(installedVersion);
+        if (installed == null) {
+            Logger.printDebug(() -> "Unknown installed patches version: " + installedVersion);
             return null;
         }
 
-        return info;
+        HttpURLConnection connection = Requester.openConnection(
+                includeDevReleases ? DEV_CHANGELOG_URL : STABLE_CHANGELOG_URL);
+        try {
+            connection.setConnectTimeout(CONNECT_TIMEOUT_MS);
+            connection.setReadTimeout(READ_TIMEOUT_MS);
+            Logger.printDebug(() -> "Fetching patches changelog from: " + connection.getURL());
+
+            final int responseCode = connection.getResponseCode();
+            if (responseCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                throw new IOException("Failed to get patches changelog. Response code: " + responseCode);
+            }
+
+            // The changelog is large, but only its start is read.
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(
+                    connection.getInputStream(), StandardCharsets.UTF_8))) {
+                return parseChangelog(reader, installedVersion, installed, includeDevReleases);
+            }
+        } finally {
+            connection.disconnect();
+        }
     }
 
-    private static void parseYouTubeChanges(String body, UpdateInfo info, Set<String> seen) {
-        List<String> section = info.other;
+    /**
+     * Releases are listed newest first. The changes of the newer releases are read
+     * until the stable release the installed patches are based on.
+     * <p>
+     * A stable release lists again all changes of its dev releases. So if dev patches are installed,
+     * the changes of the installed and older dev releases are read too, and are not shown.
+     */
+    @Nullable
+    private static UpdateInfo parseChangelog(BufferedReader reader, String installedVersion,
+                                             int[] installed, boolean includeDevReleases) throws IOException {
+        // Changes by commit, so a change listed by both a stable and a dev release is used once.
+        Map<String, String> features = new LinkedHashMap<>();
+        Map<String, String> fixes = new LinkedHashMap<>();
+        Map<String, String> other = new LinkedHashMap<>();
+        Set<String> installedChanges = new HashSet<>();
 
-        for (String rawLine : body.split("\\r?\\n")) {
-            String line = rawLine.trim();
+        String latestVersion = null;
+        boolean skipRelease = true;
+        boolean installedRelease = false;
+        Map<String, String> section = other;
 
-            if (line.startsWith("### ")) {
-                if (line.contains("Features")) {
-                    section = info.features;
-                } else if (line.contains("Bug Fixes")) {
-                    section = info.fixes;
-                } else {
-                    section = info.other;
+        String line;
+        while ((line = reader.readLine()) != null) {
+            Matcher header = RELEASE_HEADER.matcher(line);
+            if (header.find()) {
+                final int[] version = parseVersion(header.group(1));
+                section = other;
+                skipRelease = version == null;
+                if (version == null) continue;
+
+                final boolean stable = isStable(version);
+                final int comparison = compareVersions(version, installed);
+                if (stable && comparison <= 0) break;
+
+                installedRelease = comparison <= 0;
+                if (!installedRelease && latestVersion == null) {
+                    // Dev releases newer than the latest stable release are not shown if not enabled.
+                    skipRelease = !stable && !includeDevReleases;
+                    if (!skipRelease) latestVersion = header.group(1);
                 }
                 continue;
             }
 
-            Matcher matcher = YOUTUBE_ENTRY.matcher(line);
-            if (!matcher.matches()) continue;
+            if (skipRelease) continue;
+            line = line.trim();
 
-            String patchName = matcher.group(1);
-            String text = MARKDOWN_LINKS.matcher(matcher.group(2)).replaceAll("")
+            if (line.startsWith("### ")) {
+                if (line.contains("Features")) {
+                    section = features;
+                } else if (line.contains("Bug Fixes")) {
+                    section = fixes;
+                } else {
+                    section = other;
+                }
+                continue;
+            }
+
+            Matcher entry = YOUTUBE_ENTRY.matcher(line);
+            if (!entry.matches()) continue;
+
+            String patchName = entry.group(1);
+            String text = MARKDOWN_LINKS.matcher(entry.group(2)).replaceAll("")
                     .replace("`", "")
                     .trim();
             if (text.isEmpty()) continue;
@@ -304,9 +265,37 @@ public final class PatchesUpdateNoticePatch {
             String change = patchName == null
                     ? text
                     : patchName.trim() + ": " + text;
+            Matcher commit = COMMIT_LINK.matcher(line);
+            String key = commit.find() ? commit.group(1) : change;
 
-            if (seen.add(change)) {
-                section.add(change);
+            if (installedRelease) {
+                installedChanges.add(key);
+            } else {
+                section.putIfAbsent(key, change);
+            }
+        }
+
+        if (latestVersion == null) {
+            Logger.printDebug(() -> "No newer patches. Installed: " + installedVersion);
+            return null;
+        }
+
+        UpdateInfo info = new UpdateInfo(latestVersion, installedVersion);
+        addChanges(info.features, features, installedChanges);
+        addChanges(info.fixes, fixes, installedChanges);
+        addChanges(info.other, other, installedChanges);
+
+        if (info.changeCount() == 0) {
+            Logger.printDebug(() -> "No newer patches with YouTube changes. Installed: " + installedVersion);
+            return null;
+        }
+        return info;
+    }
+
+    private static void addChanges(List<String> list, Map<String, String> changes, Set<String> installedChanges) {
+        for (Map.Entry<String, String> change : changes.entrySet()) {
+            if (!installedChanges.contains(change.getKey())) {
+                list.add(change.getValue());
             }
         }
     }
@@ -318,7 +307,7 @@ public final class PatchesUpdateNoticePatch {
             SpannableStringBuilder message = new SpannableStringBuilder(Html.fromHtml(
                     str("morphe_patches_update_notice_dialog_message",
                             TextUtils.htmlEncode(info.latestVersion),
-                            TextUtils.htmlEncode(stripVersionPrefix(Utils.getPatchesReleaseVersion()))),
+                            TextUtils.htmlEncode(info.installedVersion)),
                     Html.FROM_HTML_MODE_LEGACY));
 
             // Wrapped lines of a change start under its text, not under the bullet.
@@ -326,7 +315,7 @@ public final class PatchesUpdateNoticePatch {
             bulletPaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, MESSAGE_TEXT_SIZE_SP,
                     activity.getResources().getDisplayMetrics()));
             final int bulletIndent = Math.round(bulletPaint.measureText(BULLET));
-            final int ruleColor = (ThemeUtils.getAppForegroundColor() & 0x00FFFFFF) | 0x33000000;
+            final int ruleColor = (ThemeUtils.getAppForegroundColor() & 0x00FFFFFF) | (RULE_ALPHA << 24);
 
             int remaining = MAX_LISTED_CHANGES;
             remaining = appendSection(message, str("morphe_patches_update_notice_dialog_features"),
@@ -383,7 +372,7 @@ public final class PatchesUpdateNoticePatch {
         // A short gap between the rule and the changes.
         final int gapStart = message.length();
         message.append("\n ");
-        message.setSpan(new RelativeSizeSpan(0.4f), gapStart, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        message.setSpan(new RelativeSizeSpan(HEADING_GAP_TEXT_SCALE), gapStart, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         for (String change : changes) {
             if (remaining <= 0) break;
@@ -428,8 +417,7 @@ public final class PatchesUpdateNoticePatch {
             final Paint.Style oldStyle = paint.getStyle();
             paint.setColor(color);
             paint.setStyle(Paint.Style.FILL);
-            final float height = Math.max(1, Dim.dp(1));
-            canvas.drawRect(left, bottom - height, right, bottom, paint);
+            canvas.drawRect(left, bottom - Dim.dp1, right, bottom, paint);
             paint.setColor(oldColor);
             paint.setStyle(oldStyle);
         }
@@ -450,47 +438,34 @@ public final class PatchesUpdateNoticePatch {
         Utils.openLink(WEBSITE_URL);
     }
 
-    private static String stripVersionPrefix(String version) {
-        return version.startsWith("v") ? version.substring(1) : version;
-    }
-
     /**
-     * Compares versions such as 1.49.0, 1.49.0-dev.7 and 2.0.0-dev.1.
-     * A release is newer than any dev release of the same version.
+     * @return The major, minor, patch and dev release numbers of versions such as 2.1.0 and 2.2.0-dev.1,
+     *         or null if the version has a different format.
+     *         Stable releases use {@link Integer#MAX_VALUE} as the dev release number,
+     *         so a stable release is newer than its dev releases.
      */
-    static int compareVersions(String a, String b) {
-        String[] aParts = a.split("-", 2);
-        String[] bParts = b.split("-", 2);
+    @Nullable
+    static int[] parseVersion(String version) {
+        Matcher matcher = VERSION.matcher(version);
+        if (!matcher.matches()) return null;
 
-        int result = compareNumbers(aParts[0], bParts[0]);
-        if (result != 0) return result;
-
-        final boolean aIsRelease = aParts.length == 1;
-        final boolean bIsRelease = bParts.length == 1;
-        if (aIsRelease || bIsRelease) {
-            return Boolean.compare(aIsRelease, bIsRelease);
-        }
-
-        return compareNumbers(aParts[1].replaceAll("[^0-9.]", ""), bParts[1].replaceAll("[^0-9.]", ""));
+        String devNumber = matcher.group(4);
+        return new int[]{
+                Integer.parseInt(matcher.group(1)),
+                Integer.parseInt(matcher.group(2)),
+                Integer.parseInt(matcher.group(3)),
+                devNumber == null ? Integer.MAX_VALUE : Integer.parseInt(devNumber)
+        };
     }
 
-    private static int compareNumbers(String a, String b) {
-        String[] aNumbers = a.split("\\.");
-        String[] bNumbers = b.split("\\.");
+    private static boolean isStable(int[] version) {
+        return version[3] == Integer.MAX_VALUE;
+    }
 
-        for (int i = 0, length = Math.max(aNumbers.length, bNumbers.length); i < length; i++) {
-            final int aNumber = i < aNumbers.length ? parseIntOrZero(aNumbers[i]) : 0;
-            final int bNumber = i < bNumbers.length ? parseIntOrZero(bNumbers[i]) : 0;
-            if (aNumber != bNumber) return Integer.compare(aNumber, bNumber);
+    static int compareVersions(int[] a, int[] b) {
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != b[i]) return Integer.compare(a[i], b[i]);
         }
         return 0;
-    }
-
-    private static int parseIntOrZero(String value) {
-        try {
-            return Integer.parseInt(value);
-        } catch (NumberFormatException ex) {
-            return 0;
-        }
     }
 }

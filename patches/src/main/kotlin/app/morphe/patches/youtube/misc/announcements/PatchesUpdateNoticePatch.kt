@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches/issues/4174
+ * https://github.com/MorpheApp/morphe-patches/pull/4178
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -8,8 +8,8 @@
 package app.morphe.patches.youtube.misc.announcements
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -22,24 +22,18 @@ private const val EXTENSION_CLASS =
 
 private const val MANAGER_PACKAGE = "app.morphe.manager"
 
-private val patchesUpdateNoticeResourcePatch = resourcePatch {
+private val patchesUpdateNoticeResourcePatch = patch {
     execute {
         // Allows the "Update" button to open Morphe Manager on Android 11+.
-        document("AndroidManifest.xml").use { document ->
-            val queries = document.getElementsByTagName("queries").item(0)
-                ?: document.createElement("queries").also { document.documentElement.appendChild(it) }
-
-            queries.appendChild(
-                document.createElement("package").apply {
-                    setAttribute("android:name", MANAGER_PACKAGE)
-                }
-            )
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            val queries = manifest.elements("queries").firstOrNull() ?: manifest.root.appendChild("queries")
+            queries.appendChild("package") { setAttribute("android:name", MANAGER_PACKAGE) }
         }
     }
 }
 
 @Suppress("unused")
-val patchesUpdateNoticePatch = bytecodePatch(
+val patchesUpdateNoticePatch = patch(
     name = "Patches update notice",
     description = "Adds an option to show a notice on app startup when new patches with YouTube changes are available.",
 ) {
@@ -55,8 +49,8 @@ val patchesUpdateNoticePatch = bytecodePatch(
             // Kept together, so the dev releases option is shown right under the notice option.
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference("morphe_patches_update_notice", summary = true),
-                SwitchPreference("morphe_patches_update_notice_dev_releases", summary = true),
-            ),
+                SwitchPreference("morphe_patches_update_notice_dev_releases", summary = true)
+            )
         )
 
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
