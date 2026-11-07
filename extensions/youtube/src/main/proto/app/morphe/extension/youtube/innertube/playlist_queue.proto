@@ -71,6 +71,8 @@ message MenuConditionalNavigationItem {
 
 message Item {
     optional Video video = 51779701;
+    // Native non-playable footer. Preserve its server-localized text and style.
+    optional bytes message_renderer = 58508690;
 }
 
 message Video {

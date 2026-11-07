@@ -14,6 +14,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+
 /** Immutable playlist presentation; selection and repeat mirror the native playback queue. */
 public final class PlaylistQueue {
     // YouTube's native repeat observer uses off=0, all=1, one=2.
@@ -46,24 +48,28 @@ public final class PlaylistQueue {
     @Nullable
     private final Source source;
     private final int totalCount;
+    @Nullable
+    private final PlaylistQueueRenderer.Item unavailableVideosMessage;
 
     public PlaylistQueue(String playingVideoId, String playingTitle) {
         selectedIndex = 0;
         repeatMode = REPEAT_OFF;
         source = null;
         totalCount = 1;
+        unavailableVideosMessage = null;
         requireVideoId(playingVideoId);
         entries = List.of(new Entry(playingVideoId,
                 playingTitle == null || playingTitle.isEmpty() ? playingVideoId : playingTitle));
     }
 
     private PlaylistQueue(List<Entry> entries, int selectedIndex, int repeatMode,
-                          @Nullable Source source, int totalCount) {
+                          @Nullable Source source, int totalCount, @Nullable PlaylistQueueRenderer.Item unavailableVideosMessage) {
         this.entries = List.copyOf(entries);
         this.selectedIndex = selectedIndex;
         this.repeatMode = repeatMode;
         this.source = source;
         this.totalCount = Math.max(entries.size(), totalCount);
+        this.unavailableVideosMessage = unavailableVideosMessage;
     }
 
     /** A null source retains an already accepted finite Mix without generating more pages. */
@@ -76,7 +82,7 @@ public final class PlaylistQueue {
         return new PlaylistQueue(entries, 0, REPEAT_OFF, complete ? null
                 : new Source(source.playlistId(), source.account(), page.rows().get(page.rows().size() - 1).anchor(),
                         entries.size(), source.origin()),
-                page.totalCount());
+                page.totalCount(), page.unavailableVideosMessage());
     }
 
     /** A Mix is a complete generated batch; preserve duplicate occurrences and native display data. */
@@ -89,7 +95,7 @@ public final class PlaylistQueue {
             requireVideoId(video.videoId());
             entries.add(new Entry(video.videoId(), video.title(), video));
         }
-        return new PlaylistQueue(entries, 0, REPEAT_OFF, null, entries.size());
+        return new PlaylistQueue(entries, 0, REPEAT_OFF, null, entries.size(), null);
     }
 
     PlaylistQueue appendPage(PlaylistPage page, boolean end) {
@@ -109,7 +115,8 @@ public final class PlaylistQueue {
         return new PlaylistQueue(updated, selection, repeatMode, end ? null
                 : new Source(source.playlistId(), source.account(), page.rows().get(page.rows().size() - 1).anchor(),
                         boundary, source.origin()),
-                totalCount);
+                totalCount, page.unavailableVideosMessage() == null
+                        ? unavailableVideosMessage : page.unavailableVideosMessage());
     }
 
     @Nullable
@@ -119,6 +126,12 @@ public final class PlaylistQueue {
 
     int totalCount() {
         return totalCount;
+    }
+
+    /** Hidden rows explain the retained total only after pagination has finished. */
+    @Nullable
+    PlaylistQueueRenderer.Item unavailableVideosMessage() {
+        return source == null && totalCount > entries.size() ? unavailableVideosMessage : null;
     }
 
     public List<Entry> entries() {
@@ -141,14 +154,14 @@ public final class PlaylistQueue {
         if (mode < REPEAT_OFF || mode > REPEAT_ONE) {
             throw new IllegalArgumentException("Invalid repeat mode");
         }
-        return mode == repeatMode ? this : new PlaylistQueue(entries, selectedIndex, mode, source, totalCount);
+        return mode == repeatMode ? this : new PlaylistQueue(entries, selectedIndex, mode, source, totalCount, unavailableVideosMessage);
     }
 
     public PlaylistQueue select(int index) {
         if (index < 0 || index >= entries.size()) {
             throw new IndexOutOfBoundsException("Index out of range: " + index);
         }
-        return new PlaylistQueue(entries, index, repeatMode, source, totalCount);
+        return new PlaylistQueue(entries, index, repeatMode, source, totalCount, unavailableVideosMessage);
     }
 
     public PlaylistQueue playNext(String videoId) {
@@ -157,14 +170,14 @@ public final class PlaylistQueue {
         updated.add(selectedIndex + 1, new Entry(videoId, videoId));
         Source following = source != null && selectedIndex + 1 <= source.boundary()
                 ? source.moveBoundary(source.boundary() + 1) : source;
-        return new PlaylistQueue(updated, selectedIndex, repeatMode, following, totalCount + 1);
+        return new PlaylistQueue(updated, selectedIndex, repeatMode, following, totalCount + 1, unavailableVideosMessage);
     }
 
     public PlaylistQueue playLast(String videoId) {
         requireVideoId(videoId);
         var updated = new ArrayList<>(entries);
         updated.add(new Entry(videoId, videoId));
-        return new PlaylistQueue(updated, selectedIndex, repeatMode, source, totalCount + 1);
+        return new PlaylistQueue(updated, selectedIndex, repeatMode, source, totalCount + 1, unavailableVideosMessage);
     }
 
     /** Insert a fetched playlist without replacing current playback or its edited entries. */
@@ -181,7 +194,9 @@ public final class PlaylistQueue {
         } else if (!playLast && source != null && position <= source.boundary()) {
             following = source.moveBoundary(source.boundary() + incoming.entries.size());
         }
-        return new PlaylistQueue(updated, selectedIndex, repeatMode, following, totalCount + incoming.totalCount);
+        // One native footer covers the queue even when several source playlists hide videos.
+        return new PlaylistQueue(updated, selectedIndex, repeatMode, following, totalCount + incoming.totalCount,
+                incoming.unavailableVideosMessage == null ? unavailableVideosMessage : incoming.unavailableVideosMessage);
     }
 
     /** Insert after the playing entry when an outside video becomes the active watch video. */
@@ -201,7 +216,7 @@ public final class PlaylistQueue {
         Source following = source != null && index < source.boundary()
                 ? source.moveBoundary(source.boundary() - 1) : source;
         return new PlaylistQueue(updated, selectedIndex - (index < selectedIndex ? 1 : 0), repeatMode,
-                following, totalCount - 1);
+                following, totalCount - 1, unavailableVideosMessage);
     }
 
     /** Move an entry with the native adapter's remove-then-insert semantics. */
@@ -232,7 +247,7 @@ public final class PlaylistQueue {
             int boundary = source.boundary() - (from < source.boundary() ? 1 : 0);
             following = source.moveBoundary(boundary + (to < source.boundary() ? 1 : 0));
         }
-        return new PlaylistQueue(updated, selection, repeatMode, following, totalCount);
+        return new PlaylistQueue(updated, selection, repeatMode, following, totalCount, unavailableVideosMessage);
     }
 
     /** Shuffle is a command: the displayed order also becomes the playback order. */
@@ -246,7 +261,7 @@ public final class PlaylistQueue {
         // Use the same framework shuffler as YouTube's mutable playback queue.
         Collections.shuffle(updated);
         updated.add(0, playing);
-        return new PlaylistQueue(updated, 0, repeatMode, source, totalCount);
+        return new PlaylistQueue(updated, 0, repeatMode, source, totalCount, unavailableVideosMessage);
     }
 
     public static boolean isVideoId(String videoId) {
