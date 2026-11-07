@@ -238,6 +238,20 @@ If you want the most trouble free experience, then &lt;b>uninstall&lt;/b> this a
     <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
     <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
 
+    <!-- misc.announcements.patchesUpdateNoticePatch -->
+    <string name="morphe_patches_update_notice_title">Show in-app notification for patch updates</string>
+    <string name="morphe_patches_update_notice_entry_off">Off</string>
+    <string name="morphe_patches_update_notice_entry_stable">Stable releases</string>
+    <string name="morphe_patches_update_notice_entry_dev">Stable and dev releases</string>
+    <string name="morphe_patches_update_notice_dialog_title">New patches available</string>
+    <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b>%1$s&lt;/b> (current: %2$s)</string>
+    <string name="morphe_patches_update_notice_dialog_features">✨ New features</string>
+    <string name="morphe_patches_update_notice_dialog_fixes">🐛 Bug fixes</string>
+    <string name="morphe_patches_update_notice_dialog_other">🚀 Other changes</string>
+    <string name="morphe_patches_update_notice_dialog_more">…and %d more</string>
+    <string name="morphe_patches_update_notice_dialog_update">Update</string>
+    <string name="morphe_patches_update_notice_dialog_dismiss">Dismiss</string>
+
     <!-- misc.crashlog.crashLogPatch -->
     <string name="morphe_crash_log_saved_documents">Crash log saved to user documents: %s</string>
     <string name="morphe_crash_log_saved">Crash log saved: %s</string>
