@@ -47,6 +47,7 @@ import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Player settings menu item to choose how many times the app loops the current video.
+ * In a playlist, the choice is remembered for the video in that playlist.
  */
 @SuppressWarnings("unused")
 public class LoopCountFlyoutButton {
@@ -78,9 +79,10 @@ public class LoopCountFlyoutButton {
             if (videoId.isEmpty() || context == null) {
                 return nextButtonIndex;
             }
-            final int loopCount = LoopCountPatch.getLoopCount(videoId);
+            final String playlistId = VideoInformation.getPlaylistId();
+            final int loopCount = LoopCountPatch.getLoopCount(playlistId, videoId);
 
-            LoopCountStepper stepper = new LoopCountStepper(context, videoId, loopCount);
+            LoopCountStepper stepper = new LoopCountStepper(context, playlistId, videoId, loopCount);
             final boolean enabled = stepper.isEnabled();
             shownStepperRef = new WeakReference<>(stepper);
 
@@ -127,7 +129,7 @@ public class LoopCountFlyoutButton {
                 return;
             }
             Logger.printDebug(() -> "Showing the loop count of the next video: " + videoId);
-            stepper.setVideo(videoId);
+            stepper.setVideo(VideoInformation.getPlaylistId(), videoId);
         } catch (Exception ex) {
             Logger.printException(() -> "onPlayerStatusChanged failure", ex);
         }
@@ -164,11 +166,13 @@ public class LoopCountFlyoutButton {
         private final TextView valueView;
         private final View increaseButton;
 
+        private String playlistId;
         private String videoId;
         private boolean enabled;
         private int loopCount;
 
-        LoopCountStepper(Context context, String videoId, int loopCount) {
+        LoopCountStepper(Context context, String playlistId, String videoId, int loopCount) {
+            this.playlistId = playlistId;
             this.videoId = videoId;
             this.loopCount = loopCount;
             this.enabled = isEnabled();
@@ -251,7 +255,7 @@ public class LoopCountFlyoutButton {
 
         private void setLoopCount(int count) {
             loopCount = count;
-            LoopCountPatch.setLoopCount(videoId, count);
+            LoopCountPatch.setLoopCount(playlistId, videoId, count);
             updateEnabled();
             updateViews();
         }
@@ -267,9 +271,10 @@ public class LoopCountFlyoutButton {
         /**
          * Shows the loop count of another video.
          */
-        void setVideo(String videoId) {
+        void setVideo(String playlistId, String videoId) {
+            this.playlistId = playlistId;
             this.videoId = videoId;
-            loopCount = LoopCountPatch.getLoopCount(videoId);
+            loopCount = LoopCountPatch.getLoopCount(playlistId, videoId);
             updateEnabled();
             updateViews();
         }
