@@ -390,6 +390,22 @@ public class LoopCountPatch {
     }
 
     /**
+     * @return How many videos of playlists have a saved loop count.
+     */
+    public static synchronized int getSavedLoopCountsSize() {
+        return getSavedLoopCounts().size();
+    }
+
+    /**
+     * Removes the saved loop count of every video of every playlist.
+     */
+    public static synchronized void clearSavedLoopCounts() {
+        getSavedLoopCounts().clear();
+        Settings.LOOP_COUNT_PLAYLIST_COUNTS.resetToDefault();
+        Logger.printDebug(() -> "Saved loop counts cleared");
+    }
+
+    /**
      * @return If the loop count of a video is saved, so it applies again every time the playlist plays the video.
      */
     private static boolean isLoopCountSaved(String playlistId) {

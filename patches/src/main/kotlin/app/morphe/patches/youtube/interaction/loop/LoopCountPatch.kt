@@ -14,8 +14,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.patch.classDefByOrNull
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.addBridgeMethod
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.layout.playlistautoplay.NativeNavigationStateFingerprint
@@ -54,10 +55,21 @@ val loopCountPatch = patch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            // Keeps the setting of the saved loop counts below the loop count setting it depends on.
-            noTitleUnsortedPreferenceCategory(
-                SwitchPreference("morphe_loop_count", summary = true),
-                SwitchPreference("morphe_loop_count_playlists", summary = true)
+            // A screen of its own, so the loop count settings are not sorted between the loop video settings.
+            PreferenceScreenPreference(
+                key = "morphe_loop_count_screen",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_loop_count", summary = true),
+                    SwitchPreference("morphe_loop_count_playlists", summary = true),
+                    NonInteractivePreference(
+                        key = "morphe_loop_count_clear",
+                        // Set by the preference, with the number of saved loop counts.
+                        summaryKey = null,
+                        tag = "app.morphe.extension.youtube.settings.preference.LoopCountClearPreference",
+                        selectable = true
+                    )
+                )
             )
         )
 
