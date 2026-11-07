@@ -27,6 +27,7 @@ import android.util.Pair;
 import android.util.TypedValue;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.BufferedReader;
@@ -57,6 +58,18 @@ import app.morphe.extension.youtube.settings.Settings;
  */
 @SuppressWarnings("unused")
 public final class PatchesUpdateNoticePatch {
+
+    public enum UpdateNoticeType {
+        OFF,
+        /**
+         * Stable releases only.
+         */
+        STABLE,
+        /**
+         * Stable and dev releases. Dev releases can be published several times a day.
+         */
+        DEV
+    }
 
     /**
      * Raw file urls have no rate limit, unlike the GitHub API.
@@ -135,12 +148,12 @@ public final class PatchesUpdateNoticePatch {
      */
     public static void showNoticeIfNeeded(Activity activity) {
         try {
-            if (!Settings.PATCHES_UPDATE_NOTICE.get() || checkedThisSession) return;
+            final UpdateNoticeType noticeType = Settings.PATCHES_UPDATE_NOTICE.get();
+            if (noticeType == UpdateNoticeType.OFF || checkedThisSession) return;
             checkedThisSession = true;
 
             final String installedVersion = Utils.getPatchesReleaseVersion();
-            // Dev releases can be published several times a day, so they are only included if enabled.
-            final boolean includeDevReleases = Settings.PATCHES_UPDATE_NOTICE_DEV_RELEASES.get();
+            final boolean includeDevReleases = noticeType == UpdateNoticeType.DEV;
 
             Utils.runOnBackgroundThread(() -> {
                 try {
@@ -257,6 +270,7 @@ public final class PatchesUpdateNoticePatch {
             if (!entry.matches()) continue;
 
             String patchName = entry.group(1);
+            //noinspection ConstantConditions
             String text = MARKDOWN_LINKS.matcher(entry.group(2)).replaceAll("")
                     .replace("`", "")
                     .trim();
@@ -411,7 +425,7 @@ public final class PatchesUpdateNoticePatch {
 
         @Override
         public void drawBackground(Canvas canvas, Paint paint, int left, int right, int top,
-                                   int baseline, int bottom, CharSequence text, int start, int end,
+                                   int baseline, int bottom, @NonNull CharSequence text, int start, int end,
                                    int lineNumber) {
             final int oldColor = paint.getColor();
             final Paint.Style oldStyle = paint.getStyle();
@@ -450,6 +464,7 @@ public final class PatchesUpdateNoticePatch {
         if (!matcher.matches()) return null;
 
         String devNumber = matcher.group(4);
+        //noinspection ConstantConditions
         return new int[]{
                 Integer.parseInt(matcher.group(1)),
                 Integer.parseInt(matcher.group(2)),
@@ -463,7 +478,7 @@ public final class PatchesUpdateNoticePatch {
     }
 
     static int compareVersions(int[] a, int[] b) {
-        for (int i = 0; i < a.length; i++) {
+        for (int i = 0, length = a.length; i < length; i++) {
             if (a[i] != b[i]) return Integer.compare(a[i], b[i]);
         }
         return 0;

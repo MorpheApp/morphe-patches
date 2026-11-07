@@ -80,6 +80,7 @@ import app.morphe.extension.youtube.patches.PlaybackInFeedsPatch;
 import app.morphe.extension.youtube.patches.RestoreOldVideoActionBarPatch.VideoActionBarLayout;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.WideSearchBarPatch.SearchbarType;
+import app.morphe.extension.youtube.patches.announcements.PatchesUpdateNoticePatch.UpdateNoticeType;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.ExpandableCardStyle;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.PostButtonsLayout;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideAmbientModeFlyoutMenuAvailability;
@@ -758,8 +759,7 @@ public class Settings extends SharedYouTubeSettings {
     // Miscellaneous
     public static final BooleanSetting ANNOUNCEMENTS = new BooleanSetting("morphe_announcements", TRUE);
     public static final IntegerSetting ANNOUNCEMENT_LAST_ID = new IntegerSetting("morphe_announcement_last_id", -1, false, false);
-    public static final BooleanSetting PATCHES_UPDATE_NOTICE = new BooleanSetting("morphe_patches_update_notice", FALSE);
-    public static final BooleanSetting PATCHES_UPDATE_NOTICE_DEV_RELEASES = new BooleanSetting("morphe_patches_update_notice_dev_releases", FALSE, parent(PATCHES_UPDATE_NOTICE));
+    public static final EnumSetting<UpdateNoticeType> PATCHES_UPDATE_NOTICE = new EnumSetting<>("morphe_patches_update_notice", UpdateNoticeType.OFF);
     public static final StringSetting PATCHES_UPDATE_NOTICE_DISMISSED_VERSION = new StringSetting("morphe_patches_update_notice_dismissed_version", "", false, false);
     public static final BooleanSetting BACK_BUTTON_ALWAYS_EXITS_FEED = new BooleanSetting("morphe_back_button_always_exits_feed", TRUE, true);
     public static final BooleanSetting DISABLE_SCROLLING_SPEED = new BooleanSetting("morphe_disable_scrolling_speed_limit", TRUE, true);
