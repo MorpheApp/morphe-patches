@@ -170,7 +170,7 @@ public final class CustomSeekbarThumbPatch {
                 }
                 File file = getThumbFile(context);
                 if (file.isFile()) {
-                    thumb = decodeThumb(file);
+                    thumb = decodeThumb(context, file);
                 }
             }
 
@@ -178,12 +178,18 @@ public final class CustomSeekbarThumbPatch {
                 return null;
             }
 
+            int width = thumb.getIntrinsicWidth();
+            int height = thumb.getIntrinsicHeight();
+            if (width <= 0 || height <= 0) {
+                return null;
+            }
+
             float scale = 1;
             if (Settings.CUSTOM_SEEKBAR_THUMB_SCALE_TYPE.get() == ThumbScaleType.FIT_SEEKBAR) {
-                scale = (float) Dim.dp(FIT_SEEKBAR_HEIGHT_DP) / thumb.getIntrinsicHeight();
+                scale = (float) Dim.dp(FIT_SEEKBAR_HEIGHT_DP) / height;
             }
             scale = Math.min(scale, (float) Dim.dp(MAX_THUMB_SIZE_DP)
-                    / Math.max(thumb.getIntrinsicWidth(), thumb.getIntrinsicHeight()));
+                    / Math.max(width, height));
 
             ScaledThumbDrawable scaledThumb = new ScaledThumbDrawable(thumb, scale);
             scaledThumb.start();
@@ -320,6 +326,9 @@ public final class CustomSeekbarThumbPatch {
     private static void drawThumb(Canvas canvas, Drawable thumb, float cx, float cy, float radius) {
         final int width = thumb.getIntrinsicWidth();
         final int height = thumb.getIntrinsicHeight();
+        if (width <= 0 || height <= 0) {
+            return;
+        }
 
         float scale = 1;
         if (Settings.CUSTOM_SEEKBAR_THUMB_SCALE_TYPE.get() == ThumbScaleType.FIT_SEEKBAR) {
@@ -381,10 +390,10 @@ public final class CustomSeekbarThumbPatch {
                         return decodeThumb(context, resId);
                     } catch (Exception ex) {
                         Logger.printException(() -> "Failed to decode preset thumb: " + resName, ex);
-                        return null;
                     }
                 }
             }
+            return null;
         }
 
         File file = getThumbFile(context);
@@ -399,7 +408,7 @@ public final class CustomSeekbarThumbPatch {
         }
 
         try {
-            return decodeThumb(file);
+            return decodeThumb(context, file);
         } catch (Exception ex) {
             Logger.printException(() -> "loadThumbDrawable failure", ex);
             return null;
@@ -424,7 +433,7 @@ public final class CustomSeekbarThumbPatch {
      * @return The decoded image, or null if the file is not a supported image.
      */
     @Nullable
-    private static Drawable decodeThumb(File file) throws IOException {
+    private static Drawable decodeThumb(Context context, File file) throws IOException {
         final int maxSize = Dim.dp(MAX_THUMB_SIZE_DP);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -447,6 +456,9 @@ public final class CustomSeekbarThumbPatch {
         BitmapFactory.decodeFile(file.getPath(), options);
 
         final int largestSide = Math.max(options.outWidth, options.outHeight);
+        if (largestSide <= 0) {
+            return null;
+        }
         options.inSampleSize = 1;
         while (largestSide / (options.inSampleSize * 2) >= maxSize) {
             options.inSampleSize *= 2;
@@ -454,7 +466,7 @@ public final class CustomSeekbarThumbPatch {
         options.inJustDecodeBounds = false;
 
         Bitmap bitmap = BitmapFactory.decodeFile(file.getPath(), options);
-        return bitmap == null ? null : new BitmapDrawable(null, bitmap);
+        return bitmap == null ? null : new BitmapDrawable(context.getResources(), bitmap);
     }
 
     @Nullable
@@ -481,6 +493,9 @@ public final class CustomSeekbarThumbPatch {
         BitmapFactory.decodeResource(context.getResources(), resId, options);
 
         final int largestSide = Math.max(options.outWidth, options.outHeight);
+        if (largestSide <= 0) {
+            return null;
+        }
         options.inSampleSize = 1;
         while (largestSide / (options.inSampleSize * 2) >= maxSize) {
             options.inSampleSize *= 2;
@@ -488,7 +503,7 @@ public final class CustomSeekbarThumbPatch {
         options.inJustDecodeBounds = false;
 
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), resId, options);
-        return bitmap == null ? null : new BitmapDrawable(null, bitmap);
+        return bitmap == null ? null : new BitmapDrawable(context.getResources(), bitmap);
     }
 
     private static File getThumbFile(Context context) {
@@ -510,16 +525,17 @@ public final class CustomSeekbarThumbPatch {
                 Files.copy(in, tempFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             }
 
-            if (decodeThumb(tempFile) == null) {
+            Drawable decoded = decodeThumb(context, tempFile);
+            if (decoded == null) {
                 Logger.printDebug(() -> "Picked file is not an image: " + uri);
                 return false;
             }
+            if (decoded instanceof Animatable animatable) {
+                animatable.stop();
+            }
 
             File thumbFile = getThumbFile(context);
-            if (!tempFile.renameTo(thumbFile)) {
-                Logger.printException(() -> "Could not save thumb file: " + thumbFile);
-                return false;
-            }
+            Files.move(tempFile.toPath(), thumbFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             return true;
         } catch (IOException ex) {
             // ImageDecoder throws an IOException if the file is not an image.
