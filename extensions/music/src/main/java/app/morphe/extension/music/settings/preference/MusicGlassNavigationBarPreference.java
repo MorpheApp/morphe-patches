@@ -12,7 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import app.morphe.extension.music.patches.GlassNavigationBarPatch;
+import app.morphe.extension.music.patches.MusicGlassNavigationBar;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.preference.GlassNavigationBarSizePreference;
@@ -22,7 +22,7 @@ import app.morphe.extension.shared.settings.preference.GlassNavigationBarSizePre
  * with a preview of the bar that follows the sliders.
  */
 @SuppressWarnings("unused")
-public class GlassNavigationBarPreference extends GlassNavigationBarSizePreference {
+public class MusicGlassNavigationBarPreference extends GlassNavigationBarSizePreference {
 
     private static final IntegerSetting[] SETTINGS = {
             Settings.NAVIGATION_BAR_GLASS_HEIGHT,
@@ -36,7 +36,7 @@ public class GlassNavigationBarPreference extends GlassNavigationBarSizePreferen
             "morphe_music_navigation_bar_glass_size_button_spacing"
     };
 
-    public GlassNavigationBarPreference(Context context, AttributeSet attrs) {
+    public MusicGlassNavigationBarPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -57,14 +57,14 @@ public class GlassNavigationBarPreference extends GlassNavigationBarSizePreferen
 
     @Override
     protected int getHorizontalMargin() {
-        return GlassNavigationBarPatch.MARGIN_HORIZONTAL;
+        return MusicGlassNavigationBar.MARGIN_HORIZONTAL;
     }
 
     @Override
     protected PreviewButtons getButtons() {
         // The icons, the labels and the selected button of the last glass navigation bar.
         PreviewButtons buttons = PreviewButtons.fromLastBar(
-                GlassNavigationBarPatch.BUTTON_ICON, GlassNavigationBarPatch.BUTTON_LABEL);
+                MusicGlassNavigationBar.BUTTON_ICON, MusicGlassNavigationBar.BUTTON_LABEL);
         if (!buttons.isEmpty()) return buttons;
 
         // The usual buttons, if no navigation bar with the glass was shown yet.

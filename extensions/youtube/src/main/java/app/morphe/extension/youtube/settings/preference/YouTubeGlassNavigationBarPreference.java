@@ -15,8 +15,8 @@ import java.util.Map;
 
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.preference.GlassNavigationBarSizePreference;
-import app.morphe.extension.youtube.patches.GlassNavigationBar;
 import app.morphe.extension.youtube.patches.NavigationBarPatch;
+import app.morphe.extension.youtube.patches.YouTubeGlassNavigationBar;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -24,7 +24,7 @@ import app.morphe.extension.youtube.settings.Settings;
  * with a preview of the bar that follows the sliders.
  */
 @SuppressWarnings("unused")
-public class GlassNavigationBarPreference extends GlassNavigationBarSizePreference {
+public class YouTubeGlassNavigationBarPreference extends GlassNavigationBarSizePreference {
 
     private static final IntegerSetting[] SETTINGS = {
             Settings.NAVIGATION_BAR_GLASS_HEIGHT,
@@ -38,7 +38,7 @@ public class GlassNavigationBarPreference extends GlassNavigationBarSizePreferen
             "morphe_navigation_bar_glass_size_button_spacing"
     };
 
-    public GlassNavigationBarPreference(Context context, AttributeSet attrs) {
+    public YouTubeGlassNavigationBarPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -58,10 +58,15 @@ public class GlassNavigationBarPreference extends GlassNavigationBarSizePreferen
     }
 
     @Override
+    protected int getHorizontalMargin() {
+        return YouTubeGlassNavigationBar.MARGIN_HORIZONTAL;
+    }
+
+    @Override
     protected PreviewButtons getButtons() {
         // The icons, the labels and the selected button of the last glass navigation bar,
         // as the bar shows them, such as without labels.
-        PreviewButtons buttons = PreviewButtons.fromLastBar(GlassNavigationBar.BUTTON_ICON, GlassNavigationBar.BUTTON_LABEL);
+        PreviewButtons buttons = PreviewButtons.fromLastBar(YouTubeGlassNavigationBar.BUTTON_ICON, YouTubeGlassNavigationBar.BUTTON_LABEL);
         if (!buttons.isEmpty()) return buttons;
 
         // The buttons of the last navigation bar, or all the buttons seen if none was shown yet.

@@ -30,11 +30,6 @@ import app.morphe.extension.shared.ui.Dim;
 public final class GlassNavigationBarLayout {
 
     /**
-     * The least room between the ends of the capsule and the edges of the screen.
-     */
-    public static final int MARGIN_HORIZONTAL = Dim.dp12;
-
-    /**
      * The least width of a button, the size of a touch target.
      */
     private static final int MIN_BUTTON_WIDTH = Dim.dp48;
@@ -100,16 +95,8 @@ public final class GlassNavigationBarLayout {
      * @param appMinWidth  The width the app gives each button at least, see {@link #lastMinButtonWidth}.
      * @param widthPercent The most width of the capsule, in percent of the width of the bar.
      * @param spacing      The room between the content of two buttons.
+     * @param margin       The least room between the ends of the capsule and the edges of the screen.
      * @return The number of buttons shown, and the width of each button.
-     */
-    public static int[] getButtonsLayout(int barWidth, int buttons, int contentWidth, int appMinWidth,
-                                         int widthPercent, int spacing) {
-        return getButtonsLayout(barWidth, buttons, contentWidth, appMinWidth, widthPercent, spacing, MARGIN_HORIZONTAL);
-    }
-
-    /**
-     * @param margin The least room between the ends of the capsule and the edges of the screen.
-     * @see #getButtonsLayout(int, int, int, int, int, int)
      */
     public static int[] getButtonsLayout(int barWidth, int buttons, int contentWidth, int appMinWidth,
                                          int widthPercent, int spacing, int margin) {

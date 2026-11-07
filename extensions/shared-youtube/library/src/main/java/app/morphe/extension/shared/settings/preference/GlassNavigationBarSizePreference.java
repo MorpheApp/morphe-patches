@@ -134,9 +134,7 @@ public abstract class GlassNavigationBarSizePreference extends Preference {
     /**
      * @return The least room between the ends of the capsule and the edges of the screen.
      */
-    protected int getHorizontalMargin() {
-        return GlassNavigationBarLayout.MARGIN_HORIZONTAL;
-    }
+    protected abstract int getHorizontalMargin();
 
     @Override
     protected void onClick() {

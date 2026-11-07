@@ -91,15 +91,11 @@ internal object WatchWhileLayoutOnMeasureFingerprint : Fingerprint(
 )
 
 /**
- * The feature flag of the floating miniplayer, a rounded card with room on its sides and below it.
- */
-internal const val FLOATING_MINIPLAYER_FEATURE_FLAG = 45823962L
-
-/**
- * Matches every method that reads the feature flag of the floating miniplayer.
+ * Matches every method that reads the feature flag of the floating miniplayer,
+ * a rounded card with room on its sides and below it. 9.39+
  */
 internal object FloatingMiniplayerFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
-        literal(FLOATING_MINIPLAYER_FEATURE_FLAG)
+        literal(45823962L)
     )
 )

@@ -49,7 +49,7 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
  * The bar keeps its height and vertical layout, and everything outside the capsule is left transparent.
  */
 @SuppressWarnings("unused")
-public final class GlassNavigationBar {
+public final class YouTubeGlassNavigationBar {
 
     private static final int PIVOT_BAR = NavigationBarPatch.PIVOT_BAR;
 
@@ -104,6 +104,12 @@ public final class GlassNavigationBar {
      * so the capsule floats above the bottom of the screen.
      */
     private static final int FLOATING_ROOM = Dim.dp10;
+
+    /**
+     * The least room between the ends of the capsule and the edges of the screen.
+     * Also used by the preview in the settings.
+     */
+    public static final int MARGIN_HORIZONTAL = Dim.dp12;
 
     /**
      * The most alpha of the tint the app draws over its blurred background.
@@ -468,7 +474,8 @@ public final class GlassNavigationBar {
 
                         if (buttons.isValid()) {
                             final int[] layout = GlassNavigationBarLayout.getButtonsLayout(pivotBar.getWidth(),
-                                    buttons.views.size(), contentWidth, buttons.minWidth, WIDTH_PERCENT, BUTTON_SPACING);
+                                    buttons.views.size(), contentWidth, buttons.minWidth, WIDTH_PERCENT, BUTTON_SPACING,
+                                    MARGIN_HORIZONTAL);
                             final int shown = layout[0];
 
                             // The buttons that do not fit are hidden from the end, but never the selected one.
@@ -497,7 +504,7 @@ public final class GlassNavigationBar {
                                 layoutChanged = true;
                             }
 
-                            final int horizontalPadding = Math.max(GlassNavigationBarLayout.MARGIN_HORIZONTAL,
+                            final int horizontalPadding = Math.max(MARGIN_HORIZONTAL,
                                     (pivotBar.getWidth() - shown * layout[1]) / 2);
                             if (pivotBar.getPaddingLeft() != horizontalPadding || pivotBar.getPaddingRight() != horizontalPadding
                                     || pivotBar.getPaddingTop() != paddingTop) {
@@ -598,7 +605,7 @@ public final class GlassNavigationBar {
         @Nullable
         @Override
         public View getSelectedTabView() {
-            return GlassNavigationBar.getSelectedTabView();
+            return YouTubeGlassNavigationBar.getSelectedTabView();
         }
 
         @Override
@@ -608,6 +615,6 @@ public final class GlassNavigationBar {
         }
     }
 
-    private GlassNavigationBar() {
+    private YouTubeGlassNavigationBar() {
     }
 }

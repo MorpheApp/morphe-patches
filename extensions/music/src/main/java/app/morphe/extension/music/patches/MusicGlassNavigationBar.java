@@ -1,18 +1,19 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4542
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.RecordingCanvas;
@@ -62,11 +63,13 @@ import app.morphe.extension.shared.ui.glass.GlassNavigationBarLayout;
  * down to the bottom of the screen, behind the bar, and the lists at the bottom of the page get room
  * below their last item, so it can still be scrolled above the bar. The player is laid out from the top
  * of the miniplayer to the bottom of the screen, so it is cut at the top of the bar, and the background
- * of the miniplayer ends there. The page behind the capsule is blurred on Android 12 and later, and the
- * floating miniplayer of the app is used, with the same room on its sides as the capsule and the page.
+ * of the miniplayer ends there. The page behind the capsule is blurred on Android 14 and later, like the
+ * blur of the YouTube navigation bar, and is covered by the background of the page before that.
+ * The floating miniplayer of the app (9.39+) is used, with the same room on its sides as the capsule
+ * and the page.
  */
 @SuppressWarnings("unused")
-public final class GlassNavigationBarPatch {
+public final class MusicGlassNavigationBar {
 
     private static final int PIVOT_BAR = ResourceUtils.getIdentifier(ResourceType.ID, "pivot_bar");
 
@@ -133,7 +136,7 @@ public final class GlassNavigationBarPatch {
     public static final int MARGIN_HORIZONTAL = Dim.dp(16);
 
     /**
-     * How much the page behind the capsule is blurred, on Android 12 and later.
+     * How much the page behind the capsule is blurred, on Android 14 and later.
      */
     private static final float BLUR_RADIUS = Dim.dp(20);
 
@@ -175,20 +178,9 @@ public final class GlassNavigationBarPatch {
     }
 
     /**
-     * How much smaller the page is drawn for the blur without render effects, before Android 12.
-     */
-    private static final int SOFTWARE_BLUR_DOWNSCALE = 8;
-
-    /**
-     * If drawing the page for the blur without render effects failed, such as with an image the
-     * page draws with the hardware only, so the glass is only tinted.
-     */
-    private static volatile boolean softwareBlurFailed;
-
-    /**
      * If the glass is drawn, so the page is laid out behind the bar.
      */
-    private static volatile boolean glassActive;
+    private static boolean glassActive;
 
     /**
      * The view the pages are in, laid out behind the bar.
@@ -227,7 +219,7 @@ public final class GlassNavigationBarPatch {
      */
     private static final int MAX_LIST_DEPTH = 12;
 
-    private GlassNavigationBarPatch() {
+    private MusicGlassNavigationBar() {
     }
 
     /**
@@ -454,12 +446,12 @@ public final class GlassNavigationBarPatch {
         }
 
         @Override
-        public void setColorFilter(@Nullable android.graphics.ColorFilter colorFilter) {
+        public void setColorFilter(@Nullable ColorFilter colorFilter) {
         }
 
         @Override
         public int getOpacity() {
-            return android.graphics.PixelFormat.TRANSLUCENT;
+            return PixelFormat.TRANSLUCENT;
         }
     }
 
@@ -567,48 +559,6 @@ public final class GlassNavigationBarPatch {
         View scrim = pivotBar.getRootView().findViewById(MINIPLAYER_SCRIM);
         if (scrim != null && scrim.getVisibility() == View.VISIBLE) {
             scrim.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    /**
-     * Blurs the pixels of an image with three passes of a box blur, which looks close to a gaussian blur.
-     */
-    private static void boxBlur(int[] pixels, int[] scratch, int width, int height, int radius) {
-        for (int pass = 0; pass < 3; pass++) {
-            boxBlurLines(pixels, scratch, width, height, radius, true);
-            boxBlurLines(scratch, pixels, width, height, radius, false);
-        }
-    }
-
-    /**
-     * Blurs every row (or every column) of the source into the destination.
-     */
-    private static void boxBlurLines(int[] source, int[] destination, int width, int height,
-                                     int radius, boolean rows) {
-        final int lines = rows ? height : width;
-        final int length = rows ? width : height;
-        final int step = rows ? 1 : width;
-        final int window = 2 * radius + 1;
-        for (int line = 0; line < lines; line++) {
-            final int start = rows ? line * width : line;
-            int a = 0, r = 0, g = 0, b = 0;
-            for (int i = -radius; i <= radius; i++) {
-                final int pixel = source[start + Math.max(0, Math.min(length - 1, i)) * step];
-                a += pixel >>> 24;
-                r += (pixel >> 16) & 0xFF;
-                g += (pixel >> 8) & 0xFF;
-                b += pixel & 0xFF;
-            }
-            for (int i = 0; i < length; i++) {
-                destination[start + i * step] = ((a / window) << 24) | ((r / window) << 16)
-                        | ((g / window) << 8) | (b / window);
-                final int out = source[start + Math.max(0, i - radius) * step];
-                final int in = source[start + Math.min(length - 1, i + radius + 1) * step];
-                a += (in >>> 24) - (out >>> 24);
-                r += ((in >> 16) & 0xFF) - ((out >> 16) & 0xFF);
-                g += ((in >> 8) & 0xFF) - ((out >> 8) & 0xFF);
-                b += (in & 0xFF) - (out & 0xFF);
-            }
         }
     }
 
@@ -889,7 +839,9 @@ public final class GlassNavigationBarPatch {
         private final int[] sourceLocation = new int[2];
 
         /**
-         * Draws the page behind the capsule blurred, on Android 12 and later with hardware acceleration.
+         * Draws the page behind the capsule blurred, on Android 14 and later with hardware acceleration.
+         * Like the blur of the YouTube navigation bar, it is left out on Android 12 and 13, where a blur
+         * render effect redrawn while the player moves can crash the app.
          * The layout the page and the player are in is recorded again into a blurred render node, which
          * only refers to the drawings of the views, so it is fast.
          */
@@ -899,88 +851,19 @@ public final class GlassNavigationBarPatch {
             if (!glassActive || content == null
                     || !(content.getParent() instanceof View source) || source.getWidth() <= 0) return;
 
-            final int width = pivotBar.getWidth();
-            final int height = pivotBar.getHeight();
-            if (width <= 0 || height <= 0) return;
-
             // The page has no background of its own, the layout it is in has. The blurred page is drawn
             // over that background, or the blurred text would be mostly clear and the sharp text would show.
             final int background = getPageBackgroundColor(source);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && canvas.isHardwareAccelerated()) {
-                if (!loggedBlur) {
-                    loggedBlur = true;
-                    Logger.printDebug(() -> "Glass navigation bar blur: render effect");
-                }
-                drawBlurredRenderNode(canvas, source, width, height, background);
-            } else if (!softwareBlurFailed) {
-                if (!loggedBlur) {
-                    loggedBlur = true;
-                    Logger.printDebug(() -> "Glass navigation bar blur: software");
-                }
-                drawBlurredBitmap(canvas, source, width, height, background);
-            }
-        }
-
-        private boolean loggedBlur;
-
-        @Nullable
-        private Bitmap blurBitmap;
-        @Nullable
-        private Canvas blurCanvas;
-        private int[] blurPixels;
-        private int[] blurScratch;
-        private final Rect blurDestination = new Rect();
-        private final Paint blurPaint = new Paint(Paint.FILTER_BITMAP_FLAG);
-
-        {
-            blurPaint.setColorFilter(new ColorMatrixColorFilter(FROSTED_GLASS_COLORS));
-        }
-
-        /**
-         * Draws the page behind the bar smaller into an image, blurs it and draws it scaled back up,
-         * before Android 12, which has no render effects.
-         */
-        private void drawBlurredBitmap(Canvas canvas, View source, int width, int height, int background) {
-            final int bitmapWidth = Math.max(1, width / SOFTWARE_BLUR_DOWNSCALE);
-            final int bitmapHeight = Math.max(1, height / SOFTWARE_BLUR_DOWNSCALE);
-            Bitmap bitmap = blurBitmap;
-            if (bitmap == null || bitmap.getWidth() != bitmapWidth || bitmap.getHeight() != bitmapHeight) {
-                bitmap = Bitmap.createBitmap(bitmapWidth, bitmapHeight, Bitmap.Config.ARGB_8888);
-                blurBitmap = bitmap;
-                blurCanvas = new Canvas(bitmap);
-                blurPixels = new int[bitmapWidth * bitmapHeight];
-                blurScratch = new int[bitmapWidth * bitmapHeight];
-            }
-
-            pivotBar.getLocationInWindow(barLocation);
-            source.getLocationInWindow(sourceLocation);
-            bitmap.eraseColor(background);
-            Canvas bitmapCanvas = blurCanvas;
-            final int saveCount = bitmapCanvas.save();
-            try {
-                bitmapCanvas.scale(bitmapWidth / (float) width, bitmapHeight / (float) height);
-                bitmapCanvas.translate(sourceLocation[0] - barLocation[0], sourceLocation[1] - barLocation[1]);
-                source.draw(bitmapCanvas);
-            } catch (Exception ex) {
-                // Such as an image the page draws with the hardware only.
-                Logger.printException(() -> "Glass navigation bar software blur failure", ex);
-                softwareBlurFailed = true;
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE || !canvas.isHardwareAccelerated()) {
+                // Without the blur, the sharp page would show through the clear glass.
+                canvas.drawColor(background);
                 return;
-            } finally {
-                bitmapCanvas.restoreToCount(saveCount);
             }
 
-            bitmap.getPixels(blurPixels, 0, bitmapWidth, 0, 0, bitmapWidth, bitmapHeight);
-            boxBlur(blurPixels, blurScratch, bitmapWidth, bitmapHeight,
-                    Math.max(1, Math.round(BLUR_RADIUS / SOFTWARE_BLUR_DOWNSCALE / 2)));
-            bitmap.setPixels(blurPixels, 0, bitmapWidth, 0, 0, bitmapWidth, bitmapHeight);
-
-            blurDestination.set(0, 0, width, height);
-            canvas.drawBitmap(bitmap, null, blurDestination, blurPaint);
-        }
-
-        private void drawBlurredRenderNode(Canvas canvas, View source, int width, int height, int background) {
+            final int width = pivotBar.getWidth();
+            final int height = pivotBar.getHeight();
+            if (width <= 0 || height <= 0) return;
 
             RenderNode node;
             if (blurNode instanceof RenderNode existing) {

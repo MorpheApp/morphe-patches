@@ -191,7 +191,7 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static void navigationTabCreated(NavigationBar.NavigationButton button, View tabView) {
-        GlassNavigationBar.navigationTabCreated(button, tabView);
+        YouTubeGlassNavigationBar.navigationTabCreated(button, tabView);
 
         if (button == NavigationBar.NavigationButton.NOTIFICATIONS) {
             notificationsTabCreated = true;
@@ -255,7 +255,7 @@ public final class NavigationBarPatch {
      * The glass navigation bar sets the width of the buttons itself, from their content and spacing.
      */
     public static boolean enableNarrowNavigationButton(boolean original) {
-        return (NARROW_NAVIGATION_BUTTONS && !GlassNavigationBar.isEnabled()) || original;
+        return (NARROW_NAVIGATION_BUTTONS && !YouTubeGlassNavigationBar.isEnabled()) || original;
     }
 
     /**
@@ -532,9 +532,9 @@ public final class NavigationBarPatch {
             }
 
             padding = setSlimStatusBarRoom(navigationBar, padding);
-            padding = GlassNavigationBar.getFloatingRoom(navigationBar, padding);
+            padding = YouTubeGlassNavigationBar.getFloatingRoom(navigationBar, padding);
             // The value is also stored as the room the bar adds to its height.
-            GlassNavigationBar.setAppRoom(padding);
+            YouTubeGlassNavigationBar.setAppRoom(padding);
         } catch (Exception ex) {
             Logger.printException(() -> "getNavigationBarBottomPadding failure", ex);
         }
@@ -628,7 +628,7 @@ public final class NavigationBarPatch {
                     // The capsule of the glass navigation bar follows the slim status bar, see GlassDrawable.draw(),
                     // which moves without changing the navigation bar.
                     View navigationBar = view.findViewById(PIVOT_BAR);
-                    if (GlassNavigationBar.isEnabled() && navigationBar != null) {
+                    if (YouTubeGlassNavigationBar.isEnabled() && navigationBar != null) {
                         navigationBar.invalidate();
                     }
 
@@ -638,10 +638,10 @@ public final class NavigationBarPatch {
                     if (translucentNavigationBarForced && navigationBar instanceof PivotBarAccess access) {
                         final int room = systemButtonsRoom;
                         view.post(() -> {
-                            final int navigationBarRoom = GlassNavigationBar.getFloatingRoom(
+                            final int navigationBarRoom = YouTubeGlassNavigationBar.getFloatingRoom(
                                     navigationBar, setSlimStatusBarRoom(navigationBar, room));
                             access.patch_setSystemButtonsRoom(navigationBarRoom);
-                            GlassNavigationBar.setAppRoom(navigationBarRoom);
+                            YouTubeGlassNavigationBar.setAppRoom(navigationBarRoom);
                             navigationBar.setPadding(navigationBar.getPaddingLeft(), navigationBar.getPaddingTop(),
                                     navigationBar.getPaddingRight(), navigationBarRoom);
                         });
@@ -748,7 +748,7 @@ public final class NavigationBarPatch {
      * Called whenever the navigation bar is measured.
      */
     public static int getNavigationBarHeightMeasureSpec(View navigationBar, int heightMeasureSpec) {
-        return GlassNavigationBar.getHeightMeasureSpec(navigationBar, heightMeasureSpec);
+        return YouTubeGlassNavigationBar.getHeightMeasureSpec(navigationBar, heightMeasureSpec);
     }
 
     /**
@@ -757,7 +757,7 @@ public final class NavigationBarPatch {
      * Called whenever the vertical translation of the navigation bar is set.
      */
     public static float getNavigationBarTranslationY(View navigationBar, float translationY) {
-        return GlassNavigationBar.getTranslationY(navigationBar, translationY);
+        return YouTubeGlassNavigationBar.getTranslationY(navigationBar, translationY);
     }
 
     /**
@@ -768,7 +768,7 @@ public final class NavigationBarPatch {
      * @param bottom The bottom padding, the room below the buttons.
      */
     public static int getNavigationBarPadding(View navigationBar, int bottom) {
-        return GlassNavigationBar.getFloatingRoom(navigationBar, bottom);
+        return YouTubeGlassNavigationBar.getFloatingRoom(navigationBar, bottom);
     }
 
     /**
@@ -777,7 +777,7 @@ public final class NavigationBarPatch {
      * Called when the app makes the tint paint drawn over the blurred background of the navigation bar.
      */
     public static void setNavigationBarBlurTint(Paint tint) {
-        GlassNavigationBar.lightenBlurTint(tint);
+        YouTubeGlassNavigationBar.lightenBlurTint(tint);
     }
 
     /**
@@ -786,10 +786,10 @@ public final class NavigationBarPatch {
      * @param bottomBarContainer The container of the navigation bar.
      */
     public static void setNavigationBarGlass(View bottomBarContainer) {
-        if (!GlassNavigationBar.isEnabled()) return;
+        if (!YouTubeGlassNavigationBar.isEnabled()) return;
 
         try {
-            GlassNavigationBar.apply(bottomBarContainer);
+            YouTubeGlassNavigationBar.apply(bottomBarContainer);
         } catch (Exception ex) {
             Logger.printException(() -> "setNavigationBarGlass failure", ex);
         }
