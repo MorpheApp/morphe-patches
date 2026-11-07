@@ -31,6 +31,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -404,13 +405,15 @@ public final class FeedVideoCardsPatch {
             if (thumbnailCounts.isEmpty()) {
                 return bytes;
             }
-            String videoId = null;
+            // Video id -> its texts.
+            Map<String, List<ProtoNode>> videoTextNodes = new LinkedHashMap<>();
             if (thumbnailCounts.size() == 1) {
-                videoId = thumbnailCounts.keySet().iterator().next();
+                videoTextNodes.put(thumbnailCounts.keySet().iterator().next(), textNodes);
             } else if (thumbnailCounts.size() == 2 && identifier != null
                     && identifier.startsWith("video_lockup") && !identifier.contains("shelf")) {
                 // A video with an attachment that shows another thumbnail, such as the song
                 // of a music video. The video shows its thumbnail in more sizes.
+                String videoId = null;
                 int best = 0;
                 for (Map.Entry<String, Integer> entry : thumbnailCounts.entrySet()) {
                     if (entry.getValue() > best) {
@@ -418,33 +421,82 @@ public final class FeedVideoCardsPatch {
                         videoId = entry.getKey();
                     }
                 }
-            }
-            if (videoId == null) {
-                // A shelf or another element of many videos.
-                return bytes;
-            }
-
-            boolean live = false;
-            for (ProtoNode node : textNodes) {
-                if (LIVE_ICON_PATTERN.matcher(node.getText()).matches()) {
-                    live = true;
-                    break;
+                videoTextNodes.put(videoId, textNodes);
+            } else {
+                // An element of many videos, such as a row of a grid or a shelf, which keeps the texts
+                // of each video in a message with the thumbnails of only that video.
+                // Message -> the video of all thumbnails inside it, or AMBIGUOUS.
+                Map<ProtoNode, String> messageVideoIds = new IdentityHashMap<>();
+                for (ProtoNode node : textNodes) {
+                    String text = node.getText();
+                    if (!text.contains("/vi")) {
+                        continue;
+                    }
+                    Matcher matcher = THUMBNAIL_VIDEO_ID_PATTERN.matcher(text);
+                    if (!matcher.find()) {
+                        continue;
+                    }
+                    String thumbnailVideoId = matcher.group(1);
+                    // A message that has this video already was set by another thumbnail of the video,
+                    // with the messages around it. A message of another video becomes AMBIGUOUS,
+                    // and so do the messages around it.
+                    boolean mixed = false;
+                    for (ProtoNode message = node.getParent(); message != null; message = message.getParent()) {
+                        String previous = messageVideoIds.get(message);
+                        if (previous == null) {
+                            messageVideoIds.put(message, mixed ? AMBIGUOUS : thumbnailVideoId);
+                        } else if (previous.equals(AMBIGUOUS)) {
+                            break;
+                        } else if (!previous.equals(thumbnailVideoId)) {
+                            messageVideoIds.put(message, AMBIGUOUS);
+                            mixed = true;
+                        } else if (mixed) {
+                            messageVideoIds.put(message, AMBIGUOUS);
+                        } else {
+                            break;
+                        }
+                    }
+                }
+                // A text belongs to the video of the smallest message around it with thumbnails.
+                // Texts of the whole element, such as the title of a shelf, belong to no video.
+                for (ProtoNode node : textNodes) {
+                    for (ProtoNode message = node.getParent(); message != null; message = message.getParent()) {
+                        String messageVideoId = messageVideoIds.get(message);
+                        if (messageVideoId != null) {
+                            if (!messageVideoId.equals(AMBIGUOUS)) {
+                                videoTextNodes.computeIfAbsent(messageVideoId, id -> new ArrayList<>()).add(node);
+                            }
+                            break;
+                        }
+                    }
                 }
             }
-            synchronized (liveVideoIds) {
-                if (live) {
-                    liveVideoIds.put(videoId, Boolean.TRUE);
-                } else {
-                    // The live stream ended.
-                    liveVideoIds.remove(videoId);
-                }
-            }
 
-            for (ProtoNode node : textNodes) {
-                addVideoText(videoId, node.getText());
-            }
-            if (!live) {
-                FeedViewCountPatch.onVideoElementLoaded(videoId, textNodes);
+            for (Map.Entry<String, List<ProtoNode>> entry : videoTextNodes.entrySet()) {
+                final String videoId = entry.getKey();
+                final List<ProtoNode> videoNodes = entry.getValue();
+                boolean live = false;
+                for (ProtoNode node : videoNodes) {
+                    if (LIVE_ICON_PATTERN.matcher(node.getText()).matches()) {
+                        live = true;
+                        break;
+                    }
+                }
+                synchronized (liveVideoIds) {
+                    if (live) {
+                        liveVideoIds.put(videoId, Boolean.TRUE);
+                    } else {
+                        // The live stream ended.
+                        liveVideoIds.remove(videoId);
+                    }
+                }
+
+                for (ProtoNode node : videoNodes) {
+                    addVideoText(videoId, node.getText());
+                }
+                if (!live) {
+                    FeedViewCountPatch.onVideoElementLoaded(videoId, videoNodes);
+                }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onElementLoaded failure", ex);
@@ -825,7 +877,15 @@ public final class FeedVideoCardsPatch {
     @Nullable
     public static String findVideoId(ComponentHost root) {
         // The badge of a card with the thumbnail beside the texts is on the host of the thumbnail.
-        ComponentHost thumbnail = isVideoShaped(root) ? root : findSideThumbnail(root);
+        return findVideoId(root, isVideoShaped(root) ? root : findSideThumbnail(root));
+    }
+
+    /**
+     * @param thumbnail The host that what is drawn on the thumbnail of the card is drawn on,
+     *                  or null if the card is not shaped like a video card.
+     */
+    @Nullable
+    private static String findVideoId(ComponentHost root, @Nullable ComponentHost thumbnail) {
         if (thumbnail == null || hasHorizontalList(root)) {
             return null;
         }
@@ -1098,9 +1158,28 @@ public final class FeedVideoCardsPatch {
                         // A thumbnail beside the texts can show its duration after the texts are shown.
                         retry |= videoId == null || PLAYLIST.equals(videoId);
                     } else {
-                        for (int i = 0, count = root.getChildCount(); i < count; i++) {
-                            if (root.getChildAt(i) instanceof ComponentHost child
-                                    && child.getVisibility() == View.VISIBLE && isVideoShaped(child)) {
+                        // The cards of a row can be inside hosts around all of them, such as in the tabs of a channel.
+                        ComponentHost row = root;
+                        for (int depth = 1; depth < MAX_THUMBNAIL_SEARCH_DEPTH; depth++) {
+                            ComponentHost single = null;
+                            int hosts = 0;
+                            for (int i = 0, count = row.getChildCount(); i < count; i++) {
+                                if (row.getChildAt(i) instanceof ComponentHost child
+                                        && child.getVisibility() == View.VISIBLE) {
+                                    single = child;
+                                    hosts++;
+                                }
+                            }
+                            if (hosts != 1) {
+                                break;
+                            }
+                            row = single;
+                        }
+                        for (int i = 0, count = row.getChildCount(); i < count; i++) {
+                            // The cards of a row of many columns, such as in the tabs of a channel on large tablets,
+                            // can be narrower than a full width card, so only their shape is checked.
+                            if (row.getChildAt(i) instanceof ComponentHost child
+                                    && child.getVisibility() == View.VISIBLE && isVideoShaped(child, 0)) {
                                 cards.add(child);
                             }
                         }
@@ -1108,7 +1187,7 @@ public final class FeedVideoCardsPatch {
                             cards.clear();
                         }
                         for (ComponentHost card : cards) {
-                            String cardId = findVideoId(card);
+                            String cardId = findVideoId(card, card);
                             cardIds.add(cardId);
                             retry |= NOT_READY.equals(cardId) || cardId == null
                                     || (PLAYLIST.equals(cardId)
