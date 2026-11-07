@@ -55,13 +55,21 @@ public final class OnTheGoFilter extends Filter {
             "yt_outline_experimental_headset_"
     );
 
-    private final StringFilterGroup menuItem = new StringFilterGroup(
+    /**
+     * Premium upsell parameters of the On-the-go item of an account without Premium.
+     * 21.x has no icon names in the buffer, but these parameters are only of this item.
+     */
+    @SuppressWarnings("SpellCheckingInspection")
+    private final ByteArrayFilterGroup onTheGoUpsell = new ByteArrayFilterGroup(
             null,
-            "overflow_menu_item.e"
+            "igkCCA8%3D"
     );
 
     public OnTheGoFilter() {
-        addPathCallbacks(menuItem);
+        addPathCallbacks(new StringFilterGroup(
+                null,
+                "overflow_menu_item.e"
+        ));
     }
 
     /**
@@ -100,7 +108,8 @@ public final class OnTheGoFilter extends Filter {
         if (qualityItem.check(buffer).isFiltered()) {
             playerMenuVisible = true;
         }
-        if (Utils.endsWith(path, ICON_PATH_END) && onTheGoIcon.check(buffer).isFiltered()) {
+        if ((Utils.endsWith(path, ICON_PATH_END) && onTheGoIcon.check(buffer).isFiltered())
+                || onTheGoUpsell.check(buffer).isFiltered()) {
             playerMenuHasOnTheGo = true;
         }
 
