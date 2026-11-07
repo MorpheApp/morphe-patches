@@ -14,6 +14,7 @@ package app.morphe.extension.youtube.niconicocomments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -215,6 +216,12 @@ final class NiconicoCommentsOverlayView extends View {
         schedule.clear();
         neededEmojiUrls.clear();
         invalidate();
+    }
+
+    @Override
+    protected void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        NiconicoCommentsController.onConfigurationChanged(newConfig);
     }
 
     @Override

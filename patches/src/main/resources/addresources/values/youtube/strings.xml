@@ -1943,6 +1943,9 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_screen_title">Niconico comments</string>
     <string name="morphe_niconico_comments_screen_summary">Show live chat and chat replay as comments that scroll across the video</string>
     <string name="morphe_niconico_comments_summary">Shows an overlay button in the video player. Tap to show or hide the comments, tap and hold for quick settings</string>
+    <string name="morphe_niconico_comments_appearance_title">Appearance</string>
+    <string name="morphe_niconico_comments_portrait_category_title">Portrait</string>
+    <string name="morphe_niconico_comments_videos_title">Videos</string>
     <string name="morphe_niconico_comments_font_size_title">Comment font size</string>
     <string name="morphe_niconico_comments_font_size_summary">Text size of the comments (12-40 sp)</string>
     <string name="morphe_niconico_comments_opacity_title">Comment opacity</string>
@@ -1951,6 +1954,16 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_travel_duration_summary">How many seconds comments take to cross the screen. Lower values move faster</string>
     <string name="morphe_niconico_comments_display_area_title">Display area</string>
     <string name="morphe_niconico_comments_display_area_summary">How much of the player, from the top, the comments use. Lower values keep the lower part of the video clear</string>
+    <string name="morphe_niconico_comments_portrait_title">Show in portrait</string>
+    <string name="morphe_niconico_comments_portrait_summary">Show the comments when the screen is in portrait. Turn off to show them only in landscape</string>
+    <string name="morphe_niconico_comments_separate_portrait_title">Separate settings for portrait</string>
+    <string name="morphe_niconico_comments_separate_portrait_summary">Use a different font size, travel duration and display area in portrait. When turned on, they start from the current values</string>
+    <string name="morphe_niconico_comments_portrait_font_size_title">Comment font size in portrait</string>
+    <string name="morphe_niconico_comments_portrait_font_size_summary">Text size of the comments in portrait (12-40 sp)</string>
+    <string name="morphe_niconico_comments_portrait_travel_duration_title">Travel duration in portrait</string>
+    <string name="morphe_niconico_comments_portrait_travel_duration_summary">How many seconds comments take to cross the screen in portrait</string>
+    <string name="morphe_niconico_comments_portrait_display_area_title">Display area in portrait</string>
+    <string name="morphe_niconico_comments_portrait_display_area_summary">How much of the player, from the top, the comments use in portrait</string>
     <string name="morphe_niconico_comments_hide_crowded_title">Hide comments that would overlap</string>
     <string name="morphe_niconico_comments_hide_crowded_summary">When the display area is full, new comments are hidden instead of overlapping other comments</string>
     <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
