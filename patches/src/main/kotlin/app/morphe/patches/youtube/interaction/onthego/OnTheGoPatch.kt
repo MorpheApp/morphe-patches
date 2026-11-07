@@ -30,10 +30,9 @@ private const val EXTENSION_FILTER = "Lapp/morphe/extension/youtube/patches/onth
 
 @Suppress("unused")
 val onTheGoPatch = patch(
-    name = "Player on-the-go",
+    name = "On-the-go player",
     description = "Adds an option to open a panel with large playback controls " +
-            "from the On-the-go item of the video player menu, " +
-            "and adds the item to the menu if the menu does not have it.",
+            "from the On-the-go item of the video player menu."
 ) {
     dependsOn(
         sharedExtensionPatch,
