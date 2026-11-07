@@ -56,6 +56,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting SWAP_POST_VOTE_COMMENT_BUTTONS = new BooleanSetting("morphe_swap_post_vote_comment_buttons", FALSE, true);
 
     // Miscellaneous
+    public static final BooleanSetting PROFILE_ARCHIVE = new BooleanSetting("morphe_profile_archive", FALSE);
     public static final StringSetting DOWNLOAD_FOLDER = new StringSetting("morphe_download_folder", "");
     public static final StringSetting DOWNLOAD_PATH_PATTERN = new StringSetting("morphe_download_path_pattern", "");
     /**

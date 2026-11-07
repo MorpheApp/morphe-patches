@@ -20,6 +20,7 @@ import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.RedgifsAudioPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
 import app.morphe.extension.reddit.patches.VersionCheckPatch;
+import app.morphe.extension.reddit.patches.archive.ProfileArchivePatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.reddit.settings.preference.DownloadLocationPreference;
@@ -41,6 +42,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
     @Override
     public boolean getSettingsStatus() {
         return AppIconPatch.isPatchIncluded() ||
+                ProfileArchivePatch.isPatchIncluded() ||
                 DownloadLocationPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
@@ -50,6 +52,9 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
     @Override
     public void addPreferences(Context context) {
+        if (ProfileArchivePatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(context, Settings.PROFILE_ARCHIVE));
+        }
         MorpheAboutPreference.showVancedAsPastContributor(false);
         Preference about = new MorpheAboutPreference(context);
         about.setTitle(str("morphe_about_title"));
