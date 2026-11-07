@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.patches;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapRegionDecoder;
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.Point;
@@ -135,6 +136,38 @@ public class SeekbarThumbnailPreviewPatch {
         }
 
         fineScrubbingPreviewBitmap = bitmap;
+    }
+
+    /**
+     * Injection point.
+     * The app cuts each storyboard frame at its column and row times the frame size of the
+     * storyboard spec, and 1 pixel smaller. The frames of the storyboard image can be larger
+     * (spec 159x90, image frames 160x90), so every frame after the first one of a row also shows
+     * the side of the frame before it, by 1 more pixel per column.
+     * Cut the frame with the frame size of the image instead.
+     */
+    public static void fixStoryboardFrameRect(Rect frame, BitmapRegionDecoder decoder) {
+        try {
+            final int specWidth = frame.width() + 1;
+            final int specHeight = frame.height() + 1;
+            // The last image of a storyboard can have fewer columns and rows.
+            final int columns = Math.round((float) decoder.getWidth() / specWidth);
+            final int rows = Math.round((float) decoder.getHeight() / specHeight);
+            if (columns <= 0 || rows <= 0) return;
+
+            final float frameWidth = (float) decoder.getWidth() / columns;
+            final float frameHeight = (float) decoder.getHeight() / rows;
+            final int column = Math.round((float) frame.left / specWidth);
+            final int row = Math.round((float) frame.top / specHeight);
+            frame.set(
+                    Math.round(column * frameWidth),
+                    Math.round(row * frameHeight),
+                    Math.round((column + 1) * frameWidth),
+                    Math.round((row + 1) * frameHeight)
+            );
+        } catch (Exception ex) {
+            Logger.printException(() -> "fixStoryboardFrameRect failure", ex);
+        }
     }
 
     /**

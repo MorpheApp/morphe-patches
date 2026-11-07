@@ -26,6 +26,8 @@ import app.morphe.patcher.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -88,6 +90,22 @@ val seekbarThumbnailPreviewPatch = patch(
             "invoke-static { p1 }, $EXTENSION_CLASS->" +
                     "setFineScrubbingPreviewBitmap(Landroid/graphics/Bitmap;)V"
         )
+
+        // The app cuts storyboard frames with the frame size of the storyboard spec,
+        // which can be smaller than the frames of the storyboard image.
+        StoryboardFrameRegionFingerprint.let {
+            it.method.apply {
+                val rectIndex = it.instructionMatches[1].index
+                val rectRegister = it.instructionMatches[1].getInstruction<OneRegisterInstruction>().registerA
+                val decoderRegister = it.instructionMatches[2].getInstruction<FiveRegisterInstruction>().registerC
+
+                addInstruction(
+                    rectIndex + 1,
+                    "invoke-static { v$rectRegister, v$decoderRegister }, $EXTENSION_CLASS->" +
+                            "fixStoryboardFrameRect(Landroid/graphics/Rect;Landroid/graphics/BitmapRegionDecoder;)V"
+                )
+            }
+        }
 
         SeekbarOnDrawFingerprint.method.addInstruction(
             0,
