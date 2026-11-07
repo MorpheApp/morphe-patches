@@ -24,6 +24,11 @@ public final class RecoverySection {
     public String key() { return RecoveryPatch.key(original); }
     RecoverySection classicPart(int part) { return new RecoverySection(original, element, converter, target, true, part); }
     public void render(Object scope, Object composer, int flags) {
+        if (NativeProfileSection.suppressed(composer)) {
+            RecoveryPatch.observe(null, composer, manual);
+            RecoveryPatch.render(original, scope, composer, 0);
+            return;
+        }
         RecoveryPatch.observe(target, composer, manual);
         // Classic cards also have a child restart hook. Give it a presentation owned
         // by this section, so a shared profile model cannot change the feed policy.

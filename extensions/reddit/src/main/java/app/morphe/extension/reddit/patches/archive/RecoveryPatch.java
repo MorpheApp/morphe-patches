@@ -67,7 +67,8 @@ public final class RecoveryPatch {
         try {
             ProfileArchivePatch.readState(ENABLED_STATE);
             Object remembered = ProfileArchivePatch.remembered(composer);
-            if (target == null || target.id == null || !enabled()) {
+            if (target == null || target.id == null || !enabled() || NativeProfileSection.suppressed(composer)) {
+                if (remembered instanceof RecoveryBinding) ((RecoveryBinding) remembered).onForgotten();
                 ProfileArchivePatch.remember(composer, null);
                 return;
             }
@@ -86,6 +87,10 @@ public final class RecoveryPatch {
     public static Object recover(Object model, Object composer) {
         Object original;
         synchronized (ORIGINALS) { original = ORIGINALS.getOrDefault(model, model); }
+        if (NativeProfileSection.suppressed(composer)) {
+            observe(null, composer);
+            return original;
+        }
         RecoveryTarget target = describe(original);
         boolean manual;
         synchronized (MANUAL_MODELS) { manual = Boolean.TRUE.equals(MANUAL_MODELS.getOrDefault(original, false)); }
@@ -97,6 +102,10 @@ public final class RecoveryPatch {
     public static Object recoverProfile(Object section, Object model, Object composer) {
         Object original;
         synchronized (ORIGINALS) { original = ORIGINALS.getOrDefault(model, model); }
+        if (NativeProfileSection.suppressed(composer)) {
+            observe(null, composer);
+            return original;
+        }
         RecoveryTarget target = profileTarget(section, original);
         observe(target, composer);
         Object result = project(original, target);

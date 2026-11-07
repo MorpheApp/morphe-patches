@@ -107,8 +107,9 @@ public final class ArchiveController {
         scheduleEnrichment();
     }
     private boolean current() { return remembered && Settings.PROFILE_ARCHIVE.get()
-            && (profile == null || !profile.flairFiltered && profile.generation == profileGeneration); }
+            && (profile == null || profile.archiveAllowed() && !profile.flairFiltered && profile.generation == profileGeneration); }
     private boolean active() { return current() && visible; }
+    boolean belongsTo(ArchiveProfileContext context) { return profile == context; }
 
     static void invalidate(ArchiveProfileContext profile) {
         MAIN.post(() -> {

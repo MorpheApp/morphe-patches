@@ -39,6 +39,7 @@ internal fun installNativeArchiveTheme(composerInterface: String) = with(context
     )
     val local = host.instructionMatches[1].getFieldAccessed()
     val consume = host.instructionMatches[2].getMethodCalled()
+    installNativeProfileScope(composerInterface, consume)
     val neutralField = host.instructionMatches[4].getFieldAccessed()
 
     // R8 formats these values before appending the labels. Match the ordered getter

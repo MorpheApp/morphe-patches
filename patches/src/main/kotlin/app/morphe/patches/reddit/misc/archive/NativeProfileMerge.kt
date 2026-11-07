@@ -172,14 +172,24 @@ internal fun installProfileMerge(sectionInterface: String, sectionContent: Metho
             iget-object v1, v1, $username
             const/4 v2, $index
             iget-object v3, p0, $session
-            invoke-interface { v3 }, Lcom/reddit/session/Session;->getUsername()Ljava/lang/String;
-            move-result-object v3
-            invoke-static { v0, v1, v2, v3 }, $ARCHIVE_CLASS->bind(Ljava/lang/Object;Ljava/lang/String;ZLjava/lang/String;)V
+            invoke-static { v0, v1, v2, v3 }, $ARCHIVE_CLASS->bindSession(Ljava/lang/Object;Ljava/lang/String;ZLjava/lang/Object;)V
             return-void
             :profile${index + 1}
         """
     }
     replaceArchiveBridge("bindHost", 5, profileBodies.joinToString("\n") + "\n:done\nreturn-void")
+    replaceArchiveBridge("sessionUsername", 2, """
+        check-cast p0, Lcom/reddit/session/Session;
+        invoke-interface { p0 }, Lcom/reddit/session/Session;->isLoggedIn()Z
+        move-result v0
+        if-eqz v0, :unknown
+        invoke-interface { p0 }, Lcom/reddit/session/Session;->getUsername()Ljava/lang/String;
+        move-result-object p0
+        return-object p0
+        :unknown
+        const/4 p0, 0x0
+        return-object p0
+    """)
 
     val requestModel = model("FeedPageParams(key=")
     val refreshFlag = constructorFields(classDefBy(requestModel.definingClass).methods.single { it.name == "<init>" && it.parameterTypes.size == 8 })[4]

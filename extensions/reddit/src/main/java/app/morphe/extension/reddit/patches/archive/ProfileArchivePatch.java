@@ -3,6 +3,7 @@ package app.morphe.extension.reddit.patches.archive;
 import android.content.Context;
 import android.view.View;
 import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.reddit.utils.RedditAccounts;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +41,7 @@ public final class ProfileArchivePatch {
     public static void captureStatus(Object element) { throw new UnsupportedOperationException(); }
     public static void capturePost(Object element) { throw new UnsupportedOperationException(); }
     public static void bindHost(Object profile) { throw new UnsupportedOperationException(); }
+    private static String sessionUsername(Object session) { throw new UnsupportedOperationException(); }
     public static void captureRequest(Object source, Object request) { throw new UnsupportedOperationException(); }
     private static void bindSortHost(Object host) { throw new UnsupportedOperationException(); }
     private static Object copyVisible(Object original, int index, String key) { throw new UnsupportedOperationException(); }
@@ -59,34 +61,57 @@ public final class ProfileArchivePatch {
                             Object composer) { throw new UnsupportedOperationException(); }
 
     public static synchronized void bind(Object host, String username, boolean comments, String owner) {
-        String normalized = ArchiveEligibility.username(username, comments ? "VISITOR_COMMENT" : "VISITOR_POST", true, false, true);
-        if (normalized == null || normalized.equalsIgnoreCase(owner)) return;
+        String normalized = ArchiveEligibility.normalize(username);
+        owner = ArchiveEligibility.normalize(owner);
         ArchiveProfileContext previous = PROFILES.get(host);
-        if (previous == null || !previous.username.equalsIgnoreCase(normalized) || previous.comments != comments)
-            PROFILES.put(host, new ArchiveProfileContext(host, normalized, comments));
-        if (!comments) bindSortHost(host);
+        if (previous != null && normalized != null && previous.username.equalsIgnoreCase(normalized)
+                && previous.comments == comments && (previous.owner == null ? owner == null : previous.owner.equalsIgnoreCase(owner))) return;
+        if (previous != null) {
+            previous.active = false; previous.generation++; ArchiveController.invalidate(previous);
+            PROFILES.remove(host);
+        }
+        if (normalized == null) return;
+        ArchiveProfileContext profile = new ArchiveProfileContext(host, normalized, comments, owner);
+        PROFILES.put(host, profile);
+        if (!comments && profile.archiveAllowed()) bindSortHost(host);
+    }
+    public static synchronized void bindSession(Object host, String username, boolean comments, Object session) {
+        bind(host, username, comments, session == null ? null : sessionUsername(session));
+        ArchiveProfileContext profile = PROFILES.get(host);
+        if (profile != null) profile.session = new java.lang.ref.WeakReference<>(session);
+    }
+    static synchronized ArchiveProfileContext profile(Object host) {
+        ArchiveProfileContext profile = PROFILES.get(host);
+        Object session = profile == null || profile.session == null ? null : profile.session.get();
+        if (session != null) {
+            bindSession(host, profile.username, profile.comments, session);
+            profile = PROFILES.get(host);
+        }
+        return profile;
     }
     public static synchronized void bindSort(Object host, Object provider, String name) {
         ArchiveProfileContext profile = PROFILES.get(host);
-        if (profile == null || profile.sortProvider != null) return;
+        if (profile == null || !profile.archiveAllowed() || profile.sortProvider != null) return;
         profile.sortProvider = new java.lang.ref.WeakReference<>(provider); profile.sortName = name;
         profile.sortOverride = newSort();
     }
     public static synchronized Object sort(Object provider, Object original) {
-        if (Settings.PROFILE_ARCHIVE.get()) for (ArchiveProfileContext profile : PROFILES.values())
-            if (profile.sortProvider != null && profile.sortProvider.get() == provider && profile.sortOverride != null)
-                return profile.sortOverride;
+        if (Settings.PROFILE_ARCHIVE.get()) for (ArchiveProfileContext bound : new ArrayList<>(PROFILES.values())) {
+            if (bound.sortProvider == null || bound.sortProvider.get() != provider) continue;
+            ArchiveProfileContext profile = profile(bound.host.get());
+            if (profile != null && profile.archiveAllowed() && profile.sortOverride != null) return profile.sortOverride;
+        }
         return original;
     }
     public static synchronized void savedSort(String name, Object sort) {
-        for (ArchiveProfileContext profile : PROFILES.values()) if (name != null && name.equals(profile.sortName)) {
+        for (ArchiveProfileContext profile : PROFILES.values()) if (profile.archiveAllowed() && name != null && name.equals(profile.sortName)) {
             profile.sortOverride = sort; profile.generation++;
             ArchiveController.invalidate(profile);
         }
     }
     static synchronized void selectNew(Object host) {
-        ArchiveProfileContext profile = PROFILES.get(host);
-        if (profile == null) return;
+        ArchiveProfileContext profile = profile(host);
+        if (profile == null || !profile.archiveAllowed()) return;
         profile.sortOverride = newSort(); profile.generation++; ArchiveController.invalidate(profile); refreshHost(host);
     }
     public static String stableKey(Object section, boolean includeIndex) {
@@ -113,7 +138,7 @@ public final class ProfileArchivePatch {
     }
     public static synchronized void request(String username, boolean comments, String flair, boolean refresh, Object request) {
         for (ArchiveProfileContext profile : PROFILES.values()) {
-            if (profile.comments != comments || !profile.username.equalsIgnoreCase(username)) continue;
+            if (!profile.archiveAllowed() || profile.comments != comments || !profile.username.equalsIgnoreCase(username)) continue;
             boolean filtered = flair != null && !flair.isEmpty();
             if (profile.flairFiltered != filtered || refresh && profile.lastRequest != request) {
                 profile.generation++; ArchiveController.invalidate(profile);
@@ -190,8 +215,18 @@ public final class ProfileArchivePatch {
             // Consume the same remember slot in every branch. Clearing it explicitly
             // disposes an archive session when this feed becomes ordinary/ineligible.
             Object previous = remembered(composer);
-            ArchiveProfileContext profile;
-            synchronized (ProfileArchivePatch.class) { profile = PROFILES.get(host); }
+            ArchiveProfileContext screen = NativeProfileSection.context(composer);
+            if (screen != null && !screen.archiveAllowed()) {
+                if (previous instanceof ArchiveController) ((ArchiveController) previous).onForgotten();
+                remember(composer, null);
+                return nativeProfile(feed, screen);
+            }
+            ArchiveProfileContext profile = profile(host);
+            if (profile != null && profile.ownProfile) {
+                if (previous instanceof ArchiveController) ((ArchiveController) previous).onForgotten();
+                remember(composer, null);
+                return nativeProfile(feed, profile);
+            }
             if (profile != null && Settings.PROFILE_ARCHIVE.get() && !profile.flairFiltered)
                 feed = normalizeFeed(feed, host);
             List<?> original = feed == null ? null : feedSections(feed);
@@ -205,6 +240,7 @@ public final class ProfileArchivePatch {
                 if (eligible) {
                     String identity = ArchiveSnapshot.prefix(profile.username, profile.comments) + profile.generation;
                     ArchiveController controller = previous instanceof ArchiveController
+                            && ((ArchiveController) previous).belongsTo(profile)
                             && ((ArchiveController) previous).sessionIdentity.equals(identity)
                             ? (ArchiveController) previous : new ArchiveController(profile, identity);
                     if (controller != previous) remember(composer, controller);
@@ -218,6 +254,15 @@ public final class ProfileArchivePatch {
                 Object model = sectionModel(original.get(i));
                 if (model == null) continue;
                 String tab = feedType(model).name();
+                String name = ArchiveEligibility.normalize(profileName(model));
+                String owner = profile == null ? RedditAccounts.getActive() : profile.owner;
+                boolean ownerTab = "OWNER_POST".equals(tab) || "OWNER_COMMENT".equals(tab);
+                boolean profileTab = ownerTab || "VISITOR_POST".equals(tab) || "VISITOR_COMMENT".equals(tab);
+                if (name != null && profileTab && (ownerTab || ArchiveEligibility.ownProfile(name, owner))) {
+                    if (previous instanceof ArchiveController) ((ArchiveController) previous).onForgotten();
+                    remember(composer, null);
+                    return nativeProfile(feed, new ArchiveProfileContext(host, name, tab.endsWith("COMMENT"), name));
+                }
                 String username = ArchiveEligibility.username(profileName(model), tab, isFiltered(model),
                         isFlairFiltered(model), Settings.PROFILE_ARCHIVE.get());
                 if (username == null) continue;
@@ -225,7 +270,8 @@ public final class ProfileArchivePatch {
                 String key = ArchiveSnapshot.prefix(username, comments);
                 String identity = profile == null ? key : key + profile.generation;
                 ArchiveController controller;
-                if (previous instanceof ArchiveController && ((ArchiveController) previous).sessionIdentity.equals(identity)) {
+                if (previous instanceof ArchiveController && ((ArchiveController) previous).belongsTo(profile)
+                        && ((ArchiveController) previous).sessionIdentity.equals(identity)) {
                     controller = (ArchiveController) previous;
                 } else {
                     controller = profile == null ? new ArchiveController(username, comments) : new ArchiveController(profile, identity);
@@ -242,6 +288,14 @@ public final class ProfileArchivePatch {
             remember(composer, null);
             return feed;
         } finally { end(composer); }
+    }
+
+    private static Object nativeProfile(Object feed, ArchiveProfileContext profile) {
+        List<?> sections = feed == null ? null : feedSections(feed);
+        if (sections == null) return feed;
+        ArrayList<Object> nativeSections = new ArrayList<>(sections.size());
+        for (Object section : sections) nativeSections.add(new NativeProfileSection(section, profile));
+        return copyFeed(feed, immutableList(nativeSections));
     }
 
     /** Uses the host's actual visible-item events, never precomposed row attachment. */
