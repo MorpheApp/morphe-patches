@@ -229,6 +229,19 @@ Second \"item\" text"</string>
 ຖ້າທ່ານຕ້ອງການປະສົບການທີ່ບໍ່ມີບັນຫາ, ກະລຸນາ &lt;b&gt;ຖອນການຕິດຕັ້ງ&lt;/b&gt; ອັນນີ້ ແລະ ຕິດຕັ້ງແອັບເວີຊັນທີ່ແນະນຳຂອງ ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ ຂ້ອຍຕ້ອງການແບບທົດລອງ</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ ຂ້ອຍຕ້ອງການແບບສະຖຽນ</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">ສະແດງການແຈ້ງເຕືອນພາຍໃນແອັບສຳລັບການອັບເດດ patch</string>
+  <string name="morphe_patches_update_notice_entry_off">ປິດ</string>
+  <string name="morphe_patches_update_notice_entry_stable">ເວີຊັນທີ່ສະຖຽນ</string>
+  <string name="morphe_patches_update_notice_entry_dev">ເວີຊັນທີ່ສະຖຽນ ແລະ ເວີຊັນພັດທະນາ</string>
+  <string name="morphe_patches_update_notice_dialog_title">ມີແພັດຊ໌ໃໝ່ໃຫ້ອັບເດດ</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (ປັດຈຸບັນ: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ ຄຸນສົມບັດໃໝ່</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 ແກ້ໄຂຂໍ້ຜິດພາດ</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 ການປ່ຽນແປງອື່ນໆ</string>
+  <string name="morphe_patches_update_notice_dialog_more">…ແລະ ອີກ %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">ອັບເດດ</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">ປິດ</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">ບັນທຶກປຶ້ມບັນທຶກການຂັດຂ້ອງໄວ້ໃນເອກະສານຂອງຜູ້ໃຊ້: %s</string>
   <string name="morphe_crash_log_saved">ບັນທຶກປຶ້ມບັນທຶກການຂັດຂ້ອງແລ້ວ: %s</string>

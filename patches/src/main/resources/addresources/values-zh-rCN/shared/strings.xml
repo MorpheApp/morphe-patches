@@ -229,6 +229,19 @@ Second \"item\" text"</string>
 如果您想要最无忧无虑的体验，请&lt;b&gt;卸载&lt;/b&gt;此应用，并更新 ✅ &lt;b&gt;%2$s&lt;/b&gt;的推荐应用版本。"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我想要实验</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我想要稳定</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">显示补丁更新的应用内通知</string>
+  <string name="morphe_patches_update_notice_entry_off">关闭</string>
+  <string name="morphe_patches_update_notice_entry_stable">稳定版本</string>
+  <string name="morphe_patches_update_notice_entry_dev">稳定版和开发版</string>
+  <string name="morphe_patches_update_notice_dialog_title">有可用新补丁</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe 补丁 &lt;b&gt;%1$s&lt;/b&gt; (当前版本: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ 新功能</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 错误修复</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 其他变更</string>
+  <string name="morphe_patches_update_notice_dialog_more">…以及更多 %s 项</string>
+  <string name="morphe_patches_update_notice_dialog_update">更新</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">忽略</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">崩溃日志已保存到用户文档：%s</string>
   <string name="morphe_crash_log_saved">崩溃日志已保存：%s</string>

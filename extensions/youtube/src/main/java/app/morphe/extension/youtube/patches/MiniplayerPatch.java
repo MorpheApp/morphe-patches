@@ -222,25 +222,10 @@ public final class MiniplayerPatch {
         }
     }
 
-    public static final class MiniplayerHorizontalDragPlaybackAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return isDraggableMiniplayer()
-                    && !Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP.get()
-                    && !Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG.get();
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(
-                    Settings.MINIPLAYER_TYPE,
-                    Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP,
-                    Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG
-            );
-        }
-    }
-
-    public static final class MiniplayerHorizontalRepositioningAvailability implements Setting.Availability {
+    /**
+     * Horizontal drag playback and horizontal repositioning both need the horizontal drag.
+     */
+    public static final class MiniplayerHorizontalDragOptionsAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
             return isDraggableMiniplayer()

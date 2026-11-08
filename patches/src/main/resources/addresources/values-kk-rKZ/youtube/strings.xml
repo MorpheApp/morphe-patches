@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">Іздеу нәтижелерін кілт сөздер бойынша жасыру</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Жазылымдардағы бейнелерді кілт сөздер бойынша жасыру</string>
   <string name="morphe_hide_keyword_content_phrases_title">Жасырылатын кілт сөздер</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Жасыру керек түйін сөздерді және тіркестерді жаңа жолдармен бөліп енгізіңіз
+  <string name="morphe_hide_keyword_content_phrases_summary">"Жасыру қажеті бар кілт сөздер мен тіркестерді жаңа жолдармен бөліп енгізіңіз
 
-Түйін сөздер видео тақырыптарында немесе арна атауларында көрсетілетін кез келген мәтін болуы мүмкін
+Кілт сөздер бейнебаян тақырыптарында немесе арна атауларында көрсетілетін кез келген мәтін болуы мүмкін"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Басты бет / Жазылымдар / Іздеу / Пікірлер бөлімдерінде кілт сөз тіркестеріне сәйкес келетін мазмұнды жасыру үшін сүзгі қойылған
 
-Ортасында бас әріптері бар сөздер дәл сәйкес келуі тиіс (мысалы, iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Басты бет / Жазылымдар / Іздеу / Тігілмелерде кілт сөз тіркестеріне сәйкес келетін мазмұнды жасыру үшін сүзгі қойылған
-
-Шектеулері:
-• Shorts бейнелерін арна атауы бойынша жасыру мүмкін емес
-• Кейбір интерфейс компоненттері жасырылмауы мүмкін
-• Кілт сөзді іздегенде нәтижелер көрсетілмеуі мүмкін"</string>
+Шектеулер:
+• Кейбір Shorts арна атауы бойынша жасырылмауы мүмкін
+• Кейбір интерфейс компоненттері жасырылмауы мүмкін"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Сөздерді толық сәйкестендіру</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Кілт сөзді/фразаны қос тырнақшаға алу видео тақырыптары мен арна атауларының ішінара сәйкес келуін болдырмайды&lt;br&gt;&lt;br&gt;Мысалы,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; келесі видеоны жасырады: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;бірақ мынаны жасырмайды: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Кілт сөзді қолдану мүмкін емес: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Кілт сөзді қолдану үшін тырнақша қосыңыз: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Кілт сөзде қайшылықты декларациялар бар: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Кілт сөз тым қысқа, тырнақшалар қажет: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Кілт сөз барлық бейнелерді жасырады: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">Аударылуда…</string>
   <string name="morphe_post_translate_failed">Жазбаны аудару мүмкін болмады</string>
   <string name="morphe_post_translate_same_language">Жазба redan аударма тілінде жазылған</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Morphe-ні жолда қосыңыз</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Плеердің «жолда» мәзірі Morphe-нің жеке плеер басқару элементтерін ашады</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Жолда</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Жалпы мәзірге Сұрау элементін қосу</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Лентаның жалпы мәзіріне бейнені жинақтау элементін қосады</string>
@@ -794,7 +794,6 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_tap_to_seek_title">Тігу үшін түртуді қосу</string>
   <string name="morphe_tap_to_seek_summary">Сырғытудың орнына, сол позицияға секіру үшін іздеу жолағының кез келген жерін басыңыз</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Custom seekbar ползунының белгісі</string>
   <string name="morphe_custom_seekbar_thumb_title">Custom seekbar ползуны белгісін қосу</string>
   <string name="morphe_custom_seekbar_thumb_summary">Seekbar ползуны белгісін жеке кескінмен немесе анимацияланған GIF-пен алмастырыңыз</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Белгі кескіні</string>
@@ -1773,6 +1772,9 @@ AV1-мен бейнеойнату кезінде секірулер болуы �
   <string name="morphe_niconico_comments_screen_title">Niconico пікірлері</string>
   <string name="morphe_niconico_comments_screen_summary">Тікелей чат пен чат қайталануын бейнебаян бойымен жылжитын пікірлер ретінде көрсету</string>
   <string name="morphe_niconico_comments_summary">Бейнеойнатқышта қабат батырмасын көрсетеді. Пікірлерді көрсету немесе жасыру үшін түртіңіз, жылдам параметрлер үшін басып тұрыңыз</string>
+  <string name="morphe_niconico_comments_appearance_title">Сыртқы түрі</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Портрет</string>
+  <string name="morphe_niconico_comments_video_types_title">Бейне түрлері</string>
   <string name="morphe_niconico_comments_font_size_title">Пікір қаріп өлшемі</string>
   <string name="morphe_niconico_comments_font_size_summary">Пікірлер мәтінінің өлшемі (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Пікір мөлдірлігі</string>
@@ -1781,6 +1783,16 @@ AV1-мен бейнеойнату кезінде секірулер болуы �
   <string name="morphe_niconico_comments_travel_duration_summary">Пікірлердің экранды кесіп өтуіне кететін секундтар саны. Төменгі мәндер жылдамырақ қозғалады</string>
   <string name="morphe_niconico_comments_display_area_title">Көрсету аймағы</string>
   <string name="morphe_niconico_comments_display_area_summary">Пікірлердің плеердің жоғарғы жағынан қаншалықты бөлігін қолданатыны. Төменгі мәндер бейнебаянның төменгі бөлігін бос қалдырады</string>
+  <string name="morphe_niconico_comments_portrait_title">Портрет режимінде көрсету</string>
+  <string name="morphe_niconico_comments_portrait_summary">Экран портрет режимінде болғанда пікірлерді көрсету. Тек ландшафт режимінде көрсету үшін өшіріңіз</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Портрет режимі үшін бөлек баптаулар</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Портрет режимінде басқа қаріп өлшемін, қозғалыс ұзақтығын және көрсету аймағын қолданыңыз. Қосылған кезде, олар ағымдағы мәндерден басталады</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Портрет режиміндегі пікір қаріпінің өлшемі</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Портрет режиміндегі пікірлер мәтінінің өлшемі (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Портрет режиміндегі қозғалыс ұзақтығы</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Портрет режимінде пікірлердің экранды кесіп өтуіне қанша секунд кетеді</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Портрет режиміндегі көрсетілім аймағы</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Портрет режимінде пікірлер плеердің жоғарғы жағынан бастап қанша бөлігін қолданады</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Қабаттасатын пікірлерді жасыру</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Көрсетілім аймағы толғанда, жаңа пікірлер басқа пікірлермен қабаттасатын орнына жасырылады</string>
   <string name="morphe_niconico_comments_max_length_title">Пікірдің максималды ұзындығы</string>
@@ -1798,6 +1810,8 @@ AV1-мен бейнеойнату кезінде секірулер болуы �
   <string name="morphe_niconico_comments_timed_comments_summary">Чат жоқ бейнебаяндарда, 1:23 сияқты уақыты көрсетілген жоғарғы пікірлер сол уақытта көрсетіледі</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Уақытты пікірлерді чат қайталануымен көрсету</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Тікелей эфирлер мен Премьералардың қайталануында уақытты пікірлер чатпен бірге көрсетіледі</string>
+  <string name="morphe_niconico_comments_all_settings">Барлық параметрлер</string>
+  <string name="morphe_niconico_comments_reset_title">Осы параметрлерді sı resetting жасау керек пе?</string>
   <string name="morphe_live_chat_translate_screen_title">Тікелей чат аудармасы</string>
   <string name="morphe_live_chat_translate_screen_summary">Тікелей чат пен тікелей чат қайталау хабарламаларын аудару</string>
   <string name="morphe_live_chat_translate_title">Тікелей чатты аудару</string>

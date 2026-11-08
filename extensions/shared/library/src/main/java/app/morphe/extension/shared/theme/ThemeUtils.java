@@ -154,7 +154,13 @@ public class ThemeUtils {
             return Utils.isDarkModeEnabled() ? getThemeLightColor() : getThemeDarkColor();
         }
 
-        return isBrightColor(getAppBackgroundColor()) ? Color.BLACK : Color.WHITE;
+        // Dark text is the readable one on a bright background.
+        // Rec. 601 luma, which weights a channel the way the eye responds to it.
+        final int background = getAppBackgroundColor();
+        final int luma = (299 * Color.red(background)
+                + 587 * Color.green(background)
+                + 114 * Color.blue(background)) / 1000;
+        return luma >= 128 ? Color.BLACK : Color.WHITE;
     }
 
     /**
@@ -163,18 +169,6 @@ public class ThemeUtils {
      */
     public static void setChangeForegroundColor(boolean enabled) {
         changeForegroundColor = enabled;
-    }
-
-    /**
-     * @return If a color is bright enough that dark text is the readable one on it.
-     */
-    private static boolean isBrightColor(@ColorInt int color) {
-        // Rec. 601 luma, which weights a channel the way the eye responds to it.
-        final int luma = (299 * Color.red(color)
-                + 587 * Color.green(color)
-                + 114 * Color.blue(color)) / 1000;
-
-        return luma >= 128;
     }
 
     @ColorInt

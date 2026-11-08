@@ -490,6 +490,23 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">დამალეთ ღილაკი „განახლება“</string>
   <string name="morphe_music_hide_navigation_bar_title">ნავიგაციის პანელის დამალვა</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ნავიგაციის ღილაკების წარწერების დამალვა</string>
+  <string name="morphe_music_navigation_bar_glass_title">გლას ნავიგაციის პანელის ჩართვა</string>
+  <string name="morphe_music_navigation_bar_glass_summary">აჩვენებს ნავიგაციის პანელს როგორც მცურავ, მომრგვალებულ, ნახევრად გამჭვირვალე კაფსულას</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">შუშის andროფერის სიმკვრივე</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">დაარეგულირეთ შუშის ნავიგაციის პანელის გამჭვირვალობის დონე (0 არის გამჭვირვალე, 100 არის andროფერი)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">მსუბუქი შუშა</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">შეფერივა შუშის ნავიგაციის პანელი თეთრად და არა მუქად, უფრო მსუბუქი და სუფთა ეფექტისთვის</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">შუშის ნავიგაციის პანელის ზომა</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">დაარეგულირეთ შუშის ნავიგაციის პანელის სიმაღლე, სიგანე და ღილაკებს შორის ინტერვალი, წინასწარი ნახვათით. ღილაკები, რომლებიც არ ეტევა ეკრანის სიგანეში, மறைებულია</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">სიმაღლე</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">მაქსიმალური სიგანე</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">ღილაკებს შორის ინტერვალი</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">ნაჩვენები ღილაკები: %1$s %2$s-დან</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">მთავარი</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">ნიმუშები</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">კვლევა</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">ბიბლიოთეკა</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">არ ხართ ავტორიზებული. კონფიგურაციისთვის დააჭირეთ</string>
   <string name="morphe_music_scrobbling_log_out">გამოვლა</string>
@@ -716,7 +733,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">ჩინური და კანტონური სიმბოლოები (UniDict, ~8 მბ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">ჩინური სიტყვები (pinyin-pro, ~17 მბ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">ბერძნული, სლავური კირილიცის (მათ შორის რუსული, უკრაინული, ბულგარული, სერბული, ბელორუსული, მაკედონური), ქართული, სომხური, ებრაული, არაბული, ამჰარული და სირიული ტრანსლიტერაცია (CLDR, ~0.5 მბ)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">კითხვა %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">კითხულვა %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">განახლების ღილაკის ჩვენება</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">დააჭირეთ შემდეგი ტექსტის ვარიანტისთვის; გრძელვად დააჭირეთ ტექსტის მოსაძებნად სიმღერის სათაურისა და შემსრულებლის მიხედვით</string>
   <string name="morphe_music_lyrics_search_dialog_title">ტექსტების ძიება</string>

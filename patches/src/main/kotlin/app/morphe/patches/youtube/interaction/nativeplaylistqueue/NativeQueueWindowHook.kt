@@ -9,7 +9,6 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
-import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -59,15 +58,16 @@ internal fun installNativeQueueWindow(
 
     // This native check retains backend restrictions (including co-watch), but
     // does not require a previous/next entry in the separate history window.
-    val availability = playlistServiceCanNavigateFingerprint(backend.definingClass, requestType).method
-    val result = availability.findFreeRegister(0, availability.p0Register, availability.p0Register + 1)
+    // Index 0: no local register is written yet, so v0 is free if the method has local registers.
+    var availability = playlistServiceCanNavigateFingerprint(backend.definingClass, requestType).method
+    if (availability.p0Register == 0) availability = availability.cloneParameters()
     availability.addInstructionsAtControlFlowLabel(
         0,
         """
             invoke-static/range {p0 .. p1}, $EXTENSION_CLASS->nativeQueueNavigationAvailability(${DIRECT_NAVIGATOR_INTERFACE}Ljava/lang/Object;)I
-            move-result v$result
-            if-ltz v$result, :native_window
-            return v$result
+            move-result v0
+            if-ltz v0, :native_window
+            return v0
 
             :native_window
             nop

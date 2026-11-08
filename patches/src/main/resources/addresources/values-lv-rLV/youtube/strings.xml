@@ -319,25 +319,18 @@ Izmaiņas ietver:
   <string name="morphe_hide_keyword_content_search_title">Slēpt meklēšanas rezultātus pēc atslēgvārdiem</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Slēpt Pierakstīšanos video pēc atslēgvārdiem</string>
   <string name="morphe_hide_keyword_content_phrases_title">Atslēgvārdi, kas jāslēpj</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
   <string name="morphe_hide_keyword_content_phrases_summary">"Ievadiet atslēgvārdus un frāzes, kuras vēlaties slēpt, atdalot tās ar jaunām rindām
 
-Atslēgvārdi var būt jebkurš teksts, kas redzams video nosaukumos vai kanālu nosaukumos
-
-Vārdiem ar lielajām burvām vidū jābūt precīzi saskaņotiem (piemēram, iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Sākums / Abonētie / Meklēt / Komentāri tiek filtrēti, lai slēptu saturu, kas atbilst atslēgvārdu frāzēm
+Atslēgvārdi var būt jebkurš teksts, kas parādās video nosaukumos vai kanālu nosaukumos"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Sākums / Pierakstīšanās / Meklēšana / Komentāri tiek filtrēti, lai slēptu saturu, kas atbilst atslēgvārdu frāzēm
 
 ierobežojumi:
-• Shorts nav iespējams slēpt pēc kanāla nosaukuma
-• Daži UI komponenti var nebūt slēpti
-• Meklējot atslēgvārdu, rezultāti var nebūt"</string>
+• Dažus Shorts nav iespējams slēpt pēc kanāla nosaukuma
+• Daži UI komponenti var netikt slēpti"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Skaidrot tikai veselus vārdus</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Atstarojot atslēgvārdu/frāzi ar dubultajām quotation markām, tiks novērstas video nosaukumu un kanālu nosaukumu daļējas sakritmes&lt;br&gt;&lt;br&gt;Piemēram,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; slēps video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;bet neslēps: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Nevar izmantot atslēgvārdu: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Pievienojiet quotation markas, lai izmantotu atslēgvārdu: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Atslēgvārdam ir pretrunīgas deklarācijas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Atslēgvārds ir pārāk īss un tam nepieciešamas quotation markas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Atslēgvārds slēps visus video: %s</string>
@@ -500,6 +493,13 @@ Ziņojumi ir publiski un tiek pārskatīti pirms kanāla pievienošanas saraksta
   <string name="morphe_post_translate_started">Tulkošana…</string>
   <string name="morphe_post_translate_failed">Neizdevās tulkot ierakstu</string>
   <string name="morphe_post_translate_same_language">Ieraksts jau ir tulkošanas valodā</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Aktivizēt Morphe ceļā</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Spēlētāja izvēlne \"ceļā\" atver Morphe pielagotos spēlētāja vadības elementus</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Ceļā</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Pievienot \"Ask\" vienumu izlaidnotifiera izvēlnei</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Pievieno video kopsav𝟐uma vienumu plūsmas izlaidnotifiera izvēlnei</string>
@@ -794,7 +794,6 @@ Lai to labotu, ieslēdziet \"Viltot video straumes\" un mainiet \"Privāto klien
   <string name="morphe_tap_to_seek_title">Iespējot pieskārumu meklēšanai</string>
   <string name="morphe_tap_to_seek_summary">Nospiediet jebkurā vietā meklēšanas joslā, lai pārejiet uz šo pozīciju, nevis velkot to</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Sairvestības rādītāja pielaikots pogas elements</string>
   <string name="morphe_custom_seekbar_thumb_title">Kārtot pielaikotu sairvestības rādītāja pogas elementu</string>
   <string name="morphe_custom_seekbar_thumb_summary">Aiznomāt sairvestības rādītāja pogas elementu ar pielaikotu attēlu vai animētu GIF failu</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Pogas elementa attēls</string>
@@ -1773,6 +1772,9 @@ Automātiskā ierakstīšana ir neobligāta. Tā tiek apturēta inkognito režī
   <string name="morphe_niconico_comments_screen_title">Niconico komentāri</string>
   <string name="morphe_niconico_comments_screen_summary">Rādīt tiešo tērzēšanu un tērzēšanas atkārtošanos kā komentārus, kas skrolē pāri video</string>
   <string name="morphe_niconico_comments_summary">Rāda pārklājuma pogu video plejerī. Pieskarieties, lai rādītu vai slēptu komentārus, vai pieturiet, lai piekļūtu ātriem iestatījumiem</string>
+  <string name="morphe_niconico_comments_appearance_title">Izskats</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portrets</string>
+  <string name="morphe_niconico_comments_video_types_title">Video veidi</string>
   <string name="morphe_niconico_comments_font_size_title">Komentāru šrifta lielums</string>
   <string name="morphe_niconico_comments_font_size_summary">Komentāru teksta lielums (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Komentāru caurspīdums</string>
@@ -1781,6 +1783,16 @@ Automātiskā ierakstīšana ir neobligāta. Tā tiek apturēta inkognito režī
   <string name="morphe_niconico_comments_travel_duration_summary">Cik sekundes komentāriem vajag, lai šķērsotu ekrānu. Mazākas vērtības nozīmē ātrāku kustību</string>
   <string name="morphe_niconico_comments_display_area_title">Rādīšanas zona</string>
   <string name="morphe_niconico_comments_display_area_summary">Cik lielu s 인수tāspeleriera daļu no augšas izmanto komentāri. Zemākas vērtības atstāj video apakšdaļu tukšu</string>
+  <string name="morphe_niconico_comments_portrait_title">Rādīt portreta režīmā</string>
+  <string name="morphe_niconico_comments_portrait_summary">Rādīt komentārus, kad ekrāns ir portreta režīmā. Izslēdziet, lai tos rādītu tikai ainavas režīmā</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Atsevišķi iestatījumi portreta režīmam</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Izmantot citu fonta izmēru, pārvietošanās ilgumu un rādīšanas zonu portreta režīmā. Kad šī opcija ir ieslēgta, tās sākumā tiek izmantotas pašreizējās vērtības</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Komentāru fonta izmērs portreta režīmā</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Komentāru teksta izmērs portreta režīmā (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Pārvietošanās ilgums portreta režīmā</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Cik sekundēm komentāriem jājieņem, lai šķērsotu ekrānu portreta režīmā</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Rādīšanas EBR portreta režīmā</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Cik lielu sasaistītāja daļu no augšas komentāri izmanto portreta režīmā</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Slēpt komentārus, kas pārklājtos</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Ja attēlošanas zona ir pilna, jaunie komentāri tiek slēpti, lai tie nepārklājtu citus komentārus</string>
   <string name="morphe_niconico_comments_max_length_title">Komentāra maksimālais garums</string>
@@ -1798,6 +1810,8 @@ Automātiskā ierakstīšana ir neobligāta. Tā tiek apturēta inkognito režī
   <string name="morphe_niconico_comments_timed_comments_summary">Video bez tērzēšanas rādīs augstāk vērtētos komentārus, kuriem ir norādīts laiks, piemēram, 1:23, attiecīgajā laikpunktā</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Rādīt laikotos komentārus kopā ar tērzēšanas atkārtošanu</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Tiešraides un pirmieru atkārtošanās laikā laikotie komentāri tiek rādīti arī kopā ar tērzēšanu</string>
+  <string name="morphe_niconico_comments_all_settings">Visi iestatījumi</string>
+  <string name="morphe_niconico_comments_reset_title">Atiestatīt šos iestatījumus?</string>
   <string name="morphe_live_chat_translate_screen_title">Tiešās čata tulkošana</string>
   <string name="morphe_live_chat_translate_screen_summary">Tulkot tiešā čata un tiešā čata atkārtošanas ziņojumus</string>
   <string name="morphe_live_chat_translate_title">Tulkot tiešo čatu</string>

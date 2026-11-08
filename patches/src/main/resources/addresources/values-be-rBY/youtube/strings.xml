@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">Схаваць вынікі пошуку па ключавых словах</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Схаваць відэа ў Падпісках па ключавых словах</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ключавыя словы для схавання</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Увядзіце ключавыя словы і фразы для схавання, аддзеленыя новымі радкамі
+  <string name="morphe_hide_keyword_content_phrases_summary">"Увядзіце ключавыя словы і фразы для скравання, аддзеленыя новымі радками
 
-Ключавыя словы могуць быць любым тэкстам, які паказваецца ў назвах відэа або каналаў
-
-Словы з вялікімі літарамі ў сярэдзіне павінны супадаць дакладна (напрыклад, iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Галоўная / Падпіскі / Пошук / Каментары фільтруюцца, каб схаваць кантэнт, які адпавядае ключавым фразам
+Ключавыя словы могуць быць любым тэкстам, які wyświetляецца ў назвах відэа або каналаў"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Галоўная / Падпіскі / Пошук / Каментары фільтруюцца, каб скраваць кантэнт, які адпавядае ключавым фразам
 
 Абмежаванні:
-• Shorts нельга схаваць па назве канала
-• некаторыя кампаненты інтэрфейса могуць застацца бачнымі
-• пошук па ключавым слове можа не даць вынікаў"</string>
+• Некаторыя Shorts нельга скраваць па назве канала
+• Некаторыя кампаненты інтэрфейса могуць не скраваць"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Супадаць з цэлымі словамі</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Выніканне ключавога слова/фразы ў двойных лапках прадухіліць частковыя супаданні ў назвах відэа і каналаў&lt;br&gt;&lt;br&gt;Напрыклад,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; схавае відэа: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;але не схавае: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Нельга выкарыстаць ключавое слова: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Дадайце лапкі, каб выкарыстаць ключавое слова: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключавое слова мае супярэчлівыя дэкларацыі: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключавое слова занадта кароткае і патрабуе лапак: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключавое слова скрое ўсе відэа: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">Пераклад...</string>
   <string name="morphe_post_translate_failed">Не ўдалося перакласці паст</string>
   <string name="morphe_post_translate_same_language">Паст ужо напрымаўленыя мовай перакладу</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Уключаць Morphe у дарозе</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Выпадаючае меню плеера «у дарозе» адкрывае кастомныя элементы кіравання плеерам Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">У дарозе</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Дадаць пункт «Спытаць» у выпадаючае меню</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Дадае пункт «Сціснуць відэа» у выпадаюе меню стужкі</string>
@@ -794,7 +794,6 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Уключаць партак для перамоткі</string>
   <string name="morphe_tap_to_seek_summary">Націсніце ў любым месцы палосы пракруткі, каб скакаць да гэтай пазіцыі замест перацягвання</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Кастомны бегунок seekbar</string>
   <string name="morphe_custom_seekbar_thumb_title">Уключыць кастомны бегунок seekbar</string>
   <string name="morphe_custom_seekbar_thumb_summary">Замяніць бегунок seekbar кастомным выявам або анімаваным GIF</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Выява бегунка</string>
@@ -1774,6 +1773,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Каментары Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Паказваць жывы чат і запіс чата ў выглядзе каментароў, якія пракручваюцца па відэа</string>
   <string name="morphe_niconico_comments_summary">Паказвае кнопку паверх відэаплеера. Націсніце, каб паказаць або схаваць каментары, ці націсніце і ўтрымайце для хуткіх налад</string>
+  <string name="morphe_niconico_comments_appearance_title">Выгляд</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Портратны рэжым</string>
+  <string name="morphe_niconico_comments_video_types_title">Тыпы відэа</string>
   <string name="morphe_niconico_comments_font_size_title">Памер шрыфта каментарыяў</string>
   <string name="morphe_niconico_comments_font_size_summary">Памер тэксту каментарыяў (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Прадпразорнасць каментараў</string>
@@ -1782,6 +1784,16 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">Колькі секунды патрабуюцца каментарам, каб перасячціць экран. Меншыя значэнні робяць рух хутчэйшым</string>
   <string name="morphe_niconico_comments_display_area_title">Вобласць адлюстравання</string>
   <string name="morphe_niconico_comments_display_area_summary">Якую частку плеера, пачынаючы з верхняга краю, займаюць каментарыі. Меншыя значэнні пакідаюць ніжнюю частку відэа вольнай</string>
+  <string name="morphe_niconico_comments_portrait_title">Паказваць у portrait-рэжыме</string>
+  <string name="morphe_niconico_comments_portrait_summary">Паказваць каментары, калі экран знаходзіцца ў portrait-рэжыме. Выключыце, каб паказваць іх толькі ў landscape-рэжыме</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Асобныя налады для portrait-рэжыму</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Выкарыстоўваць іншы памер шрыфта, працягласць руху і вобласць адлюстравання ў portrait-рэжыме. Пры ўключэнні яны пачынаюць працаваць з бягучымі значаннямі</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Памер шрыфта каментараў у portrait-рэжыме</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Памер тэксту каментараў у portrait-рэжыме (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Працягласць руху ў portrait-рэжыме</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Колькі секунд каментары трацяць на тое, каб прайсці праз экран у партатратным рэжыме</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Вобласць адлюстравання ў партатратным рэжыме</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Якую частку плеера, пачынаючы зверху, займаюць каментары ў партатратным рэжыме</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Схаваць каментары, якія накладваюцца адзін на аднога</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Калі вобласць адлюстроўвання запоўнена, новыя каментары схаваны замест таго, каб накладвацца на іншыя каментары</string>
   <string name="morphe_niconico_comments_max_length_title">Максимальная даўжыня каментара</string>
@@ -1799,6 +1811,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_timed_comments_summary">У відэа без чата верхнія каментары, якія ўтрымліваюць час, напрыклад 1:23, паказваюцца ў гэты момант</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Паказваць часовыя каментары з паўторам чата</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">У паўторах прамых трансляцый і прэм\'ераў часовыя каментары таксама паказваюцца разам з чатам</string>
+  <string name="morphe_niconico_comments_all_settings">Усе налады</string>
+  <string name="morphe_niconico_comments_reset_title">Скінуць гэтыя налады?</string>
   <string name="morphe_live_chat_translate_screen_title">Пераклад жывога чата</string>
   <string name="morphe_live_chat_translate_screen_summary">Перакладаць паведамленні жывога чата і паўтораў жывога чата</string>
   <string name="morphe_live_chat_translate_title">Перакласці жывы чат</string>

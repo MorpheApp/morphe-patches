@@ -136,13 +136,6 @@ public class OAuth2Requester {
         }
     }
 
-    private static boolean isAccessTokenDataAvailable() {
-        synchronized (OAuth2Requester.class) {
-            AccessTokenData accessTokenDataData = lastFetchedAccessTokenData;
-            return accessTokenDataData != null && !accessTokenDataData.isExpired();
-        }
-    }
-
     /**
      * Check the validity of the access token before the video starts.
      * Blocking call, and must be made off the main thread.
@@ -159,7 +152,8 @@ public class OAuth2Requester {
             }
 
             // Access token has not expired, do nothing.
-            if (isAccessTokenDataAvailable()) {
+            AccessTokenData accessTokenData = lastFetchedAccessTokenData;
+            if (accessTokenData != null && !accessTokenData.isExpired()) {
                 return authorization;
             }
 

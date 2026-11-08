@@ -320,25 +320,18 @@ Folgende Änderungen sind enthalten:
   <string name="morphe_hide_keyword_content_search_title">Suchergebnisse nach Stichwörtern ausblenden</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Videos im Abo-Tab nach Stichwörtern ausblenden</string>
   <string name="morphe_hide_keyword_content_phrases_title">Zu versteckende Stichwörter</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Gib Schlüsselwörter und Phrasen ein, die du ausblenden möchtest, getrennt durch neue Zeilen
+  <string name="morphe_hide_keyword_content_phrases_summary">"Geben Sie Stichworte und Phrasen zum Ausblenden ein, getrennt durch Zeilenumbrüche
 
-Schlüsselwörter können beliebige Texte sein, die in Videotiteln oder Kanalnamen angezeigt werden
-
-Wörter mit Großbuchstaben in der Mitte müssen exakt übereinstimmen (z. B. iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Die Startseite / Abonnements / Suche / Kommentare werden gefiltert, um Inhalte auszublenden, die mit den Filtern übereinstimmen
+Stichworte können beliebige Texte sein, die in Videotiteln oder Kanalnamen angezeigt werden"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Startseite / Abonnements / Suche / Kommentare werden gefiltert, um Inhalte auszublenden, die mit Stichwortphrasen übereinstimmen
 
 Einschränkungen:
-• Shorts können nicht nach Kanalnamen ausgeblendet werden
-• Einige UI-Komponenten lassen sich möglicherweise nicht ausblenden
-• Die Suche nach einem Stichwort liefert möglicherweise keine Ergebnisse"</string>
+• Einige Shorts können nicht nach Kanalnamen ausgeblendet werden
+• Einige UI-Komponenten lassen sich möglicherweise nicht ausblenden"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Ganze Wörter abgleichen</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Durch das Umschließen eines Stichwortes / einer Wortgruppe mit doppelten Anführungszeichen werden unvollständige Übereinstimmungen bei Videotiteln und Kanalnamen verhindert&lt;br&gt;&lt;br&gt;Beispielsweise wird &lt;br&gt;&lt;b&gt;\"ki\"&lt;/b&gt; das folgende Video ausblenden: &lt;b&gt;Wie KI funktioniert&lt;/b&gt;&lt;br&gt;, aber nicht: &lt;b&gt;Wie lebten die  Wikinger?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Kann Schlüsselwort nicht verwenden: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Füge Anführungszeichen hinzu, um als Stichwort zu verwenden: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Schlüsselwort hat widersprüchliche Erklärungen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Stichwort ist zu kurz und benötigt Anführungszeichen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Stichwort wird alle Videos ausblenden: %s</string>
@@ -501,6 +494,13 @@ Meldungen sind öffentlich und werden überprüft, bevor ein Kanal zu einer List
   <string name="morphe_post_translate_started">Übersetze...</string>
   <string name="morphe_post_translate_failed">Beitrag konnte nicht übersetzt werden</string>
   <string name="morphe_post_translate_same_language">Der Beitrag ist bereits in der richtigen Sprache</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Morphe für unterwegs aktivieren</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Player-Flyout „Unterwegs“ öffnet die benutzerdefinierten Player-Steuerungen von Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Unterwegs</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ask-Element zum Flyoutmenü hinzufügen</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Fügt einen Artikel zur Zusammenfassung von Videos im Feed-Flyoutmenü hinzu</string>
@@ -795,7 +795,6 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_tap_to_seek_title">Tippen zum Suchen aktivieren</string>
   <string name="morphe_tap_to_seek_summary">Tippen Sie an eine beliebige Stelle des Fortschrittsbalkens, um an diese Position zu springen, anstatt ihn zu ziehen</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Benutzerdefinierter Seekbar-Regler</string>
   <string name="morphe_custom_seekbar_thumb_title">Benutzerdefinierten Seekbar-Regler aktivieren</string>
   <string name="morphe_custom_seekbar_thumb_summary">Ersetzt den Seekbar-Regler durch ein benutzerdefiniertes Bild oder ein animiertes GIF</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Regler-Bild</string>
@@ -1773,6 +1772,9 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder b
   <string name="morphe_niconico_comments_screen_title">Niconico-Kommentare</string>
   <string name="morphe_niconico_comments_screen_summary">Zeigt den Live-Chat und die Chat-Wiederholung als Kommentare an, die über das Video scrollen</string>
   <string name="morphe_niconico_comments_summary">Zeigt eine Overlay-Schaltfläche im Videoplayer an. Tippen, um die Kommentare ein- oder auszublenden; gedrückt halten für Schnelleinstellungen</string>
+  <string name="morphe_niconico_comments_appearance_title">Darstellung</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Hochformat</string>
+  <string name="morphe_niconico_comments_video_types_title">Videotypen</string>
   <string name="morphe_niconico_comments_font_size_title">Schriftgröße der Kommentare</string>
   <string name="morphe_niconico_comments_font_size_summary">Textgröße der Kommentare (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Deckkraft der Kommentare</string>
@@ -1781,6 +1783,16 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder b
   <string name="morphe_niconico_comments_travel_duration_summary">Wie viele Sekunden die Kommentare benötigen, um den Bildschirm zu überqueren. Niedrigere Werte bewegen sich schneller</string>
   <string name="morphe_niconico_comments_display_area_title">Anzeigebereich</string>
   <string name="morphe_niconico_comments_display_area_summary">Wie viel des Players, von oben aus, die Kommentare nutzen. Niedrigere Werte halten den unteren Teil des Videos frei</string>
+  <string name="morphe_niconico_comments_portrait_title">Im Hochformat anzeigen</string>
+  <string name="morphe_niconico_comments_portrait_summary">Kommentare anzeigen, wenn der Bildschirm im Hochformat ist. Deaktivieren, um sie nur im Querformat anzuzeigen</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Separate Einstellungen für Hochformat</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Im Hochformat eine andere Schriftgröße, Laufzeit und einen anderen Anzeigebereich verwenden. Wenn diese Option aktiviert ist, starten sie mit den aktuellen Werten</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Schriftgröße der Kommentare im Hochformat</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Textgröße der Kommentare im Hochformat (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Laufzeit im Hochformat</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Wie viele Sekunden die Kommentare im Porträtmodus benötigen, um den Bildschirm zu überqueren</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Anzeigebereich im Porträtmodus</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Wie viel vom Player, von oben gesehen, die Kommentare im Porträtmodus nutzen</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Überlappende Kommentare ausblenden</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Wenn der Anzeigebereich voll ist, werden neue Kommentare ausgeblendet, anstatt andere Kommentare zu überlagern</string>
   <string name="morphe_niconico_comments_max_length_title">Maximale Kommentarlänge</string>
@@ -1798,6 +1810,8 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder b
   <string name="morphe_niconico_comments_timed_comments_summary">Bei Videos ohne Chat werden Top-Kommentare, die eine Zeitangabe wie 1:23 enthalten, zu diesem Zeitpunkt angezeigt</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Zeitgestempelte Kommentare mit Chat-Wiedergabe anzeigen</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Bei Wiedergaben von Live-Streams und Premieren werden zeitgestempelte Kommentare ebenfalls mit dem Chat angezeigt</string>
+  <string name="morphe_niconico_comments_all_settings">Alle Einstellungen</string>
+  <string name="morphe_niconico_comments_reset_title">Diese Einstellungen zurücksetzen?</string>
   <string name="morphe_live_chat_translate_screen_title">Live-Chat-Übersetzung</string>
   <string name="morphe_live_chat_translate_screen_summary">Live-Chat- und Live-Chat-Wiedergabenachrichten übersetzen</string>
   <string name="morphe_live_chat_translate_title">Live-Chat übersetzen</string>

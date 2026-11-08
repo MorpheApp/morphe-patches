@@ -229,6 +229,19 @@ Jei akumuliatoriaus optimizavimo nustatymai nebus pakeisti, galite susidurti su:
 Jei norite kuo sklandesnės patirties, &lt;b&gt;pašalinkite&lt;/b&gt; šią versiją ir įdiekite pataisas rekomenduojamai programėlės versijai ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Noriu eksperimentinio</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Noriu stabilaus</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Rodyti programėlės pranešimą apie pataisymų atnaujinimus</string>
+  <string name="morphe_patches_update_notice_entry_off">Išjungta</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabilios versijos</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabilios ir eksperimentinės versijos</string>
+  <string name="morphe_patches_update_notice_dialog_title">Prieinama naujų pataisų</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe pataisos &lt;b&gt;%1$s&lt;/b&gt; (dabartinės: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Naujos funkcijos</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Klaidų ištaisymai</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Kiti pakeitimai</string>
+  <string name="morphe_patches_update_notice_dialog_more">…ir dar %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Naujinti</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Atmesti</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Klaidos žurnalas išsaugotas vartotojo dokumentuose: %s</string>
   <string name="morphe_crash_log_saved">Klaidos žurnalas išsaugotas: %s</string>

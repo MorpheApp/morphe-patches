@@ -319,22 +319,18 @@ O'zgarishlar quyidagilarni o'z ichiga oladi:
   <string name="morphe_hide_keyword_content_search_title">Qidiruv natijalarini kalit so\'zlar bo\'yicha yashirish</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Obunachilar sahifasidagi videolarni kalit so\'zlar bo\'yicha yashirish</string>
   <string name="morphe_hide_keyword_content_phrases_title">Yashirish uchun kalit so\'zlar</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Yashirish uchun kalit so'zlar va iboralarni kiriting, yangi qatorlar bilan ajrating
+  <string name="morphe_hide_keyword_content_phrases_summary">"Yashirish uchun kalit so'zlar va iboralarni yangi qatorlar bilan ajratgan holda kiriting
 
-Kalit so'zlar video sarlavhalarida yoki kanal nomlarida ko'rsatilgan har qanday matn bo'lishi mumkin
+Kalit so'zlar video sarlavhalari yoki kanal nomlarida ko'rinadigan har qanday matn bo'lishi mumkin"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Bosh sahifa / Obunalar / Qidiruv / Izohlar bo'limlarida kalit so'zli iboralarga mos keladigan kontentni yashirish uchun filtrlar qo'llaniladi
 
-O'rtasida katta harflar bo'lgan so'zlar aniq mos kelishi kerak (masalan, iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Cheklovlar:
-• Shorts ulash vaqtini ko'rsatishi mumkin
-• Avtomatik tartib ishlamasligi mumkin"</string>
+Cheklovlar:
+• Ba'zi Shorts videolarni kanal nomi bo'yicha yashirib bo'lmaydi
+• Ba'zi UI komponentlari yashirilmasligi mumkin"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Butun so\'zlarni moslashtirish</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Kalit so\'z/iborani duble tirnoqqa olganingiz videolarning nomlari va kanallarning nomlariga qisman mos kelishini oldini oladi&lt;br&gt;&lt;br&gt;Misol uchun,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; videoni yashiradi: &lt;b&gt;AI qanday ishlaydi?&lt;/b&gt;&lt;br&gt;lekin yashirmaydi: &lt;b&gt;Adolatli foydalanish nimani anglatadi?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Kalit so\'z ishlatilmaydi: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Kalit so\'zni ishlatish uchun dublikatsiyalash belgilarini qo\'shing: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Kalit so\'zlar bir-biriga zid: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kalit so\'z juda qisqa va dublikatsiyalash belgilarini talab qiladi: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kalit so\'z barcha videolarni yashiradi: %s</string>
@@ -497,6 +493,13 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_post_translate_started">Tarjima qilinmoqda…</string>
   <string name="morphe_post_translate_failed">Postni tarjima qilib bo\'lmadi</string>
   <string name="morphe_post_translate_same_language">Post allaqachon tarjima tilida</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Morphe\'ni yo\'l-yo\'lakay ishlatishni yoqing</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Pleerning \'yo\'l-yo\'lakay\' menyusi Morphe\'ning maxsus pleer boshqaruvlarini ochadi</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Yo\'l-yo\'lakay</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Yoyilma menyuga \"So\'rash\" elementini qo\'shish</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Lenta yoyilma menyusiga videoni umumlashtirish elementini qo\'shadi</string>
@@ -789,7 +792,6 @@ Buni tuzatish uchun \"Video oqimlarini soxtalashtirish\" funksiyasini yoqing va 
   <string name="morphe_tap_to_seek_title">Sekib o\'tish uchun teginishni yoqish</string>
   <string name="morphe_tap_to_seek_summary">Suriish o\"rniga, o\"sha pozitsiyaga o\"tish uchun seekbarning istalgan joyiga bosing</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Maxsus seekbar belgisi</string>
   <string name="morphe_custom_seekbar_thumb_title">Maxsus seekbar belgisini yoqish</string>
   <string name="morphe_custom_seekbar_thumb_summary">Seekbar belgisini maxsus rasm yoki animatsion GIF bilan almashtiring</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Belgi rasmi</string>
@@ -1764,6 +1766,9 @@ Avtomatik yozib olish ixtiyoriy. U inkognito rejimida yoki akkaunt o'zgarganda t
   <string name="morphe_niconico_comments_screen_title">Niconico izohlari</string>
   <string name="morphe_niconico_comments_screen_summary">Jonli chat va chat takrorini video bo\"yicha harakatlanuvchi izohlar ko\"rinishida ko\"rsatish</string>
   <string name="morphe_niconico_comments_summary">Video pleyerda ustki tugmani ko\"rsatadi. Izohlarni ko\"rsatish yoki yashirish uchun bosing, tezkor sozlamalar uchun esa bosib turing</string>
+  <string name="morphe_niconico_comments_appearance_title">Tashqi ko\'rinish</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portret</string>
+  <string name="morphe_niconico_comments_video_types_title">Video turlari</string>
   <string name="morphe_niconico_comments_font_size_title">Izohlar shrifti o\"lchami</string>
   <string name="morphe_niconico_comments_font_size_summary">Izohlarning matn o\"lchami (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Izohlar shaffofligi</string>
@@ -1772,6 +1777,16 @@ Avtomatik yozib olish ixtiyoriy. U inkognito rejimida yoki akkaunt o'zgarganda t
   <string name="morphe_niconico_comments_travel_duration_summary">Izohlarning ekran bo\'ylab o\'tishi uchun necha soniya kerakligi. Kichikroq qiymatlar tezroq harakatlanishini ta\'minlaydi</string>
   <string name="morphe_niconico_comments_display_area_title">Ko\'rsatish sohasi</string>
   <string name="morphe_niconico_comments_display_area_summary">Izohlar pleyerning yuqori qismidan qancha joy egallashini belgilaydi. Kichikroq qiymatlar videoning pastki qismini bo\'sh holda saqlaydi</string>
+  <string name="morphe_niconico_comments_portrait_title">Portret rejimida ko\'rsatish</string>
+  <string name="morphe_niconico_comments_portrait_summary">Ekran portret rejimida bo\'lganda izohlarni ko\'rsatish. Faqat landshaft rejimida ko\'rsatish uchun o\'chiring</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Portret uchun alohida sozlamalar</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Portret rejimida boshqa shrift o\'lchami, harakat davomiyligi va ko\'rsatish maydonidan foydalaning. Yoqilganda, ular joriy qiymatlardan boshlanadi</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Portret rejimida izohlar shrifti o\'lchami</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Portret rejimida izohlarning matn o\'lchami (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Portret rejimida harakat davomiyligi</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Portret rejimida izohlarning ekranni kesib o\'tishi uchun necha soniya kerakligi</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Portret rejimida ko\'rsatish sohasi</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Portret rejimida izohlar pleerning yuqori qismidan qancha joyni egallashi</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Ustma-ust tushadigan izohlarni yashirish</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Ekran sohasi to\'lganda, yangi izohlar boshqa izohlar ustiga tushmasligi uchun yashiriladi</string>
   <string name="morphe_niconico_comments_max_length_title">Izohning maksimal uzunligi</string>
@@ -1789,6 +1804,8 @@ Avtomatik yozib olish ixtiyoriy. U inkognito rejimida yoki akkaunt o'zgarganda t
   <string name="morphe_niconico_comments_timed_comments_summary">Chati bo\'lmagan videolarda, 1:23 kabi vaqtni o\'z ichiga olgan eng yaxshi izohlar aynan o\'sha vaqtda ko\'rsatiladi</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Vaqtga bog\'langan izohlarni chat takrorlari bilan ko\'rsatish</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Jonli efirlar va Premyerlar takrorlarida vaqtga bog\'langan izohlar chat bilan birga ko\'rsatiladi</string>
+  <string name="morphe_niconico_comments_all_settings">Barcha sozlamalar</string>
+  <string name="morphe_niconico_comments_reset_title">Ushbu sozlamalarni tiklashni xohlaysizmi?</string>
   <string name="morphe_live_chat_translate_screen_title">Jonli chat tarjimasi</string>
   <string name="morphe_live_chat_translate_screen_summary">Jonli chat va jonli chat takrorlari xabarlarini tarjima qilish</string>
   <string name="morphe_live_chat_translate_title">Jonli chatni tarjima qilish</string>

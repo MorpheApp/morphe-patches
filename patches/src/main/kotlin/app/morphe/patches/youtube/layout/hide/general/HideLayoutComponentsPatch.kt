@@ -18,6 +18,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
@@ -91,6 +93,8 @@ import app.morphe.patches.shared.misc.litho.filter.EXTENSION_CLASS as LITHO_FILT
 
 private const val LAYOUT_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter;"
+private const val EXTENSION_FLYOUT_MENU_ITEM_INTERFACE =
+    "Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter\$FlyoutMenuItem;"
 private const val DESCRIPTION_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/DescriptionComponentsFilter;"
 private const val EXPLORE_MENU_FILTER =
@@ -990,6 +994,75 @@ val hideLayoutComponentsPatch = patch(
                     index + 1,
                     "invoke-static { v${targetInstruction.registerC}, v${targetInstruction.registerD} }, " +
                             "$LAYOUT_COMPONENTS_FILTER->hideFlyoutMenu(Landroid/widget/TextView;Ljava/lang/CharSequence;)V"
+                )
+            }
+        }
+
+        // The list popup menu ignores the zero height of a hidden item and only keeps its text hidden,
+        // so the filtered items are left out of the items of the popup menus instead.
+        // The items of the menu are filtered after they are resolved, as an item of the menu,
+        // such as a conditional item, can be replaced by another item.
+        val menuItemTitleMethod = ContextualMenuItemBuilderFingerprint.instructionMatches.first().methodReference
+
+        MenuItemListBuilderFingerprint.let {
+            it.method.apply {
+                val menuItemType = it.instructionMatches[4].getInstruction<ReferenceInstruction>().reference.toString()
+                if (menuItemTitleMethod.parameterTypes.first().toString() != menuItemType) {
+                    throw PatchException("Unexpected menu item title method: $menuItemTitleMethod")
+                }
+
+                mutableClassDefBy(menuItemType).apply {
+                    interfaces.add(EXTENSION_FLYOUT_MENU_ITEM_INTERFACE)
+                    methods.add(
+                        ImmutableMethod(
+                            type,
+                            "patch_getFlyoutMenuItemTitle",
+                            listOf(),
+                            "Ljava/lang/CharSequence;",
+                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                            null,
+                            null,
+                            MutableMethodImplementation(2),
+                        ).toMutable().apply {
+                            addInstructions(
+                                0,
+                                """
+                                    invoke-static { p0 }, $menuItemTitleMethod
+                                    move-result-object v0
+                                    return-object v0
+                                """
+                            )
+                        }
+                    )
+                }
+
+                val addItemsIndex = it.instructionMatches.last().index
+                val itemsRegister = getInstruction<FiveRegisterInstruction>(addItemsIndex).registerD
+
+                addInstructions(
+                    addItemsIndex,
+                    """
+                        invoke-static/range { v$itemsRegister .. v$itemsRegister }, $LAYOUT_COMPONENTS_FILTER->hideFlyoutMenuItems(Ljava/lang/Iterable;)Ljava/lang/Iterable;
+                        move-result-object v$itemsRegister
+                    """
+                )
+            }
+        }
+
+        ActionBarMenuBuilderFingerprint.let {
+            it.method.apply {
+                val addIndex = it.instructionMatches.last().index
+                val addInstruction = getInstruction<FiveRegisterInstruction>(addIndex)
+                val insertIndex = if (getInstruction(addIndex + 1).opcode == Opcode.MOVE_RESULT_OBJECT) {
+                    addIndex + 2
+                } else {
+                    addIndex + 1
+                }
+
+                addInstruction(
+                    insertIndex,
+                    "invoke-static { v${addInstruction.registerC}, v${addInstruction.registerE}, v${addInstruction.registerG} }, " +
+                            "$LAYOUT_COMPONENTS_FILTER->hideFlyoutMenu(Landroid/view/Menu;ILjava/lang/CharSequence;)V"
                 )
             }
         }

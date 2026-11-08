@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">Скриј резултати од пребарување со клучни зборови</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Скриј видеа од претплатите со клучни зборови</string>
   <string name="morphe_hide_keyword_content_phrases_title">Клучни зборови за скривање</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Внесете клучни зборови и фрази за криење, одделени со нови редови
+  <string name="morphe_hide_keyword_content_phrases_summary">"Внесете клучни зборови и фрази за криење, одделЕНИ со нови редови
 
-Клучните зборови можат да бидат било каков текст прикажан во насловите на видеата или имињата на каналите
-
-Зборовите со големи букви во средината мора точно да се совпаѓаат (на пр. iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Почетна / Претплати / Пребарување / Коментарите се филтрирани за да се сокрие содржината што одговара на клучните фрази
+Клучните зборови можат да бидат било каков текст прикажан во насловите на видеата или имињата на каналите"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Почетна / Претплати / Пребарување / Коментари се филтрирани за да се сокрие содржината што одговара на клучните фрази
 
 Ограничувања:
-• Shorts не можат да се сокријат според името на каналот
-• Некои UI компоненти можеби нема да се сокријат
-• Пребарувањето за клучна збор може да не покаже резултати"</string>
+• Некои Shorts не можат да се сокријат според името на каналот
+• Некои UI компоненти можеби нема да се сокријат"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Оптимизација на целосно зборот</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Окружувањето на клучна реч/фраза со двојни наводници ќе спречи делумни совпаѓања на наслови на видеа и имиња на канали&lt;br&gt;&lt;br&gt;На пример,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ќе го скрие видеото: &lt;b&gt;Како работи AI?&lt;/b&gt;&lt;br&gt;но нема да го скрие: &lt;b&gt;Што значи фер употреба?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Не може да се употреби клучна реч: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Додај наводници за да ја употребиш клучната реч: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Клучната реч има конфликтни декларации: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Клучната реч е премногу кратка и бара наводници: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Клучната реч ќе скрие сите видеа: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">Преведување…</string>
   <string name="morphe_post_translate_failed">Не успеа преводот на објавата</string>
   <string name="morphe_post_translate_same_language">Објавата веќе е на јазикот за превод</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Овозможете Morphe во движење</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Flyout-от на плеерот „во движење“ ги отвора прилагодените контроли на Morphe плеерот</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Во движење</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Додај ставка „Прашај“ во менито</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Додава ставка за резиме на видео во менито на фидот</string>
@@ -792,7 +792,6 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Овозможете допир за премотување</string>
   <string name="morphe_tap_to_seek_summary">Допрете било каде на лентата за пребарување за да скокнете на таа позиција наместо да влечете</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Прилагоден показач на лентата за потрага</string>
   <string name="morphe_custom_seekbar_thumb_title">Овозможи прилагоден показач на лентата за потрага</string>
   <string name="morphe_custom_seekbar_thumb_summary">Замени го показачот на лентата за потрага со прилагодена слика или анимиран GIF</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Слика за показачот</string>
@@ -1772,6 +1771,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Niconico коментари</string>
   <string name="morphe_niconico_comments_screen_summary">Прикажи го живиот чет и повторувањето на четтото како коментари што се движат низ видеото</string>
   <string name="morphe_niconico_comments_summary">Прикажува копче прекривање во видео плеерот. Допрете за да ги прикажете или сокриете коментарите, допрете и задржете за брзи поставки</string>
+  <string name="morphe_niconico_comments_appearance_title">Изглед</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Портрет</string>
+  <string name="morphe_niconico_comments_video_types_title">Типови видеа</string>
   <string name="morphe_niconico_comments_font_size_title">Големина на фонтот на коментарите</string>
   <string name="morphe_niconico_comments_font_size_summary">Големина на текстот на коментарите (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Проѕирност на коментарите</string>
@@ -1780,6 +1782,16 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">Колку секунди им треба на коментарите за да го поминат екранот. Помалите вредности се движат побрзо</string>
   <string name="morphe_niconico_comments_display_area_title">Област за прикажување</string>
   <string name="morphe_niconico_comments_display_area_summary">Колку од плеерот, од врвот, користат коментарите. Пониските вредности го одржуваат долниот дел од видеото чист</string>
+  <string name="morphe_niconico_comments_portrait_title">Прикажи во портрет</string>
+  <string name="morphe_niconico_comments_portrait_summary">Прикажи ги коментарите кога екранот е во портрет. Исклучи за да ги прикажуваш само во пејзаж</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Посебни поставки за портрет</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Користи различна големина на фонтот, времетраење на движењето и област за прикажување во портрет. Кога е вклучено, тие започнуваат од моменталните вредности</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Големина на фонтот на коментарите во портрет</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Големина на текстот на коментарите во портрет (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Времетраење на движењето во портрет</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Колку секунди им треба на коментарите за да го преминат екранот во портретна ориентација</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Област за прикажување во портретна ориентација</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Колку од плеерот, од горе, користат коментарите во портретна ориентација</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Скриј ги коментарите што би се преклопиле</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Кога областа за прикажување е полна, новите коментари се кријат наместо да се преклопат со другите коментари</string>
   <string name="morphe_niconico_comments_max_length_title">Максимална должина на коментарот</string>
@@ -1797,6 +1809,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_timed_comments_summary">Кај видеата без чет, врвните коментари што содержат време како 1:23 се прикажуваат во тоа време</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Прикажи временски коментари со повторување на четот</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">При повторувањата на живи стримови и Премиери, временските коментари се прикажуваат и со чатот</string>
+  <string name="morphe_niconico_comments_all_settings">Сите поставки</string>
+  <string name="morphe_niconico_comments_reset_title">Да ли сакате да ги ресетирате овие поставки?</string>
   <string name="morphe_live_chat_translate_screen_title">Превод на разговор во живо</string>
   <string name="morphe_live_chat_translate_screen_summary">Преведи пораки од чет во живо и репродукција на чет во живо</string>
   <string name="morphe_live_chat_translate_title">Преведи чет во живо</string>

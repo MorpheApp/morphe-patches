@@ -319,25 +319,18 @@ Muutoksiin kuuluvat:
   <string name="morphe_hide_keyword_content_search_title">Piilota hakutuloksia avainsanojen mukaan</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Piilota Tilaukset-videoita avainsanojen mukaan</string>
   <string name="morphe_hide_keyword_content_phrases_title">Piilotettavat avainsanat</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Piilotettavat avainsanat ja lauseet, eroteltuna rivinvaihdoilla
+  <string name="morphe_hide_keyword_content_phrases_summary">"Syötä piilotettavat avainsanat ja ilmaukset rivinvaihdolla erotettuna
 
-Avainsanat voivat olla kanavien nimiä tai mitä tahansa videoiden otsikoissa näkyvää tekstiä
-
-Sanat, joiden keskellä on isoja kirjaimia, on kirjoitettava täsmälleen samassa muodossa (esim. iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Etusivu- / Tilaukset- / Haku- / Kommentit-näkymistä on suodatettu pois sisältö, joka vastaa avainsanoja.
+Avainsanoina voi olla mikä tahansa teksti, joka näkyy videoiden otsikoissa tai kanavien nimissä"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Etusivu / Tilaukset / Haku / Kommentit suodatetaan niin, että avainsanoja vastaava sisältö piilotetaan
 
 Rajoitukset:
-• Shorts-videoita ei voi piilottaa kanavan nimen perusteella.
-• Kaikkia käyttöliittymän osia ei välttämättä voida piilottaa.
-• Avainsanalla hakeminen saattaa johtaa tyhjiin hakutuloksiin."</string>
+• Joitakin Shorts-videoita ei voida piilottaa kanavan nimen perusteella
+• Joitakin käyttöliittymän osia ei välttämättä voida piilottaa"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Koko sanan pitää täsmätä</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Avainsanan tai lauseen ympäröiminen lainausmerkeillä estää osittaiset osumat videoiden otsikoissa ja kanavien nimissä&lt;br&gt;&lt;br&gt;Esimerkiksi,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;  piilottaa videon: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;mutta ei piilota videota: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Avainsanaa ei voi käyttää: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Lisää lainausmerkit käyttääksesi avainsanaa: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Avainsanalla on ristiriitaisia määrityksiä: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Avainsana on liian lyhyt ja vaatii lainausmerkkejä: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Avainsana piilottaa kaikki videot: %s</string>
@@ -500,6 +493,13 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_post_translate_started">Käännetään…</string>
   <string name="morphe_post_translate_failed">Julkaisua ei voitu kääntää</string>
   <string name="morphe_post_translate_same_language">Julkaisu on jo käännöskielellä</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Ota Morphe käyttöön liikkeellä ollessa</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Soittimen \'Liikkumalla\' -valikko avaa Morphen mukautetut soittimen ohjaimet</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Liikkumalla</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Lisää \"Kysy\"-kohde ponnahdusvalikkoon</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Lisää videon tiivistäminen-sivunne kohteen syötteen ponnahdusvalikossa</string>
@@ -794,7 +794,6 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
   <string name="morphe_tap_to_seek_title">Ota etsintä napauttamalla käyttöön</string>
   <string name="morphe_tap_to_seek_summary">Napauta mitä tahansa kohtaa kelauspalkissa hypätäksesi kyseiseen kohtaan vetämisen sijaan</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Mukautettu etenemispalkin liukusäädin</string>
   <string name="morphe_custom_seekbar_thumb_title">Ota mukautettu etenemispalkin liukusäädin käyttöön</string>
   <string name="morphe_custom_seekbar_thumb_summary">Korvaa etenemispalkin liukusäädin mukautetulla kuvalla tai animoidulla GIF-tiedostolla</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Liukusäätimen kuva</string>
@@ -1774,6 +1773,9 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_niconico_comments_screen_title">Niconico-kommentit</string>
   <string name="morphe_niconico_comments_screen_summary">Näytä live-chat ja chatin toisto kommenteina, jotka rullaavat videon yli</string>
   <string name="morphe_niconico_comments_summary">Näyttää peittopainikkeen videosoittimessa. Napauta näyttääksesi tai piilottaaksesi kommentit, napauta ja pidä painettuna pika-asetuksia varten</string>
+  <string name="morphe_niconico_comments_appearance_title">Ulkoasu</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Pysty</string>
+  <string name="morphe_niconico_comments_video_types_title">Videotyypit</string>
   <string name="morphe_niconico_comments_font_size_title">Kommenttien kirjasinkoko</string>
   <string name="morphe_niconico_comments_font_size_summary">Kommenttien tekstikoko (12–40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Kommenttien läpinäkyvyys</string>
@@ -1782,6 +1784,16 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_niconico_comments_travel_duration_summary">Kuinka monta sekuntia kommenttien kulkeminen näytön yli kestää. Pienemmät arvot liikkuvat nopeammin</string>
   <string name="morphe_niconico_comments_display_area_title">Näyttöalue</string>
   <string name="morphe_niconico_comments_display_area_summary">Kuinka suuren osan soittimesta kommentit käyttävät yläreunasta alkaen. Pienemmät arvot pitävät videon alaosan tyhjänä</string>
+  <string name="morphe_niconico_comments_portrait_title">Näytä pystytilassa</string>
+  <string name="morphe_niconico_comments_portrait_summary">Näytä kommentit, kun näyttö on pystytilassa. Kytke pois näyttääksesi ne vain vaakatilassa</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Erilliset asetukset pystytilaan</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Käytä eri fonttikokoa, liukuaikaa ja näyttöaluetta pystytilassa. Kun tämä on päällä, ne alkavat nykyisistä arvoista</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Kommenttien fonttikoko pystytilassa</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Kommenttien tekstikoko pystytilassa (12–40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Liukuaika pystytilassa</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Kuinka monta sekuntia kommenttien kulkeminen näytön poikki kestää pystyasennossa</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Näyttöalue pystyasennossa</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Kuinka suuren osan soittimesta kommentit käyttävät yläreunasta laskettuna pystyasennossa</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Piilota päällekkäiset kommentit</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Kun näyttöalue on täynnä, uudet kommentit piilotetaan muiden kommentien päällekkäisyyden sijaan</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimit kommentin pituus</string>
@@ -1799,6 +1811,8 @@ Automaattinen tallennus on valinnaista. Se pysähtyy incognito-tilissä tai tili
   <string name="morphe_niconico_comments_timed_comments_summary">Videoilla, joissa ei ole chattia, kommentit, jotka sisältävät ajan, kuten 1:23, näytetään kyseisenä ajanhetkenä</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Näytä ajoitetut kommentit chat-toiston kanssa</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Suorien lähetysten ja ensi-esitysten toistoissa ajoitetut kommentit näytetään myös chatin kanssa</string>
+  <string name="morphe_niconico_comments_all_settings">Kaikki asetukset</string>
+  <string name="morphe_niconico_comments_reset_title">Nollataanko nämä asetukset?</string>
   <string name="morphe_live_chat_translate_screen_title">Live-chatin kääntäminen</string>
   <string name="morphe_live_chat_translate_screen_summary">Käännä live-chatin ja live-chatin toiston viestit</string>
   <string name="morphe_live_chat_translate_title">Käännä live-chat</string>

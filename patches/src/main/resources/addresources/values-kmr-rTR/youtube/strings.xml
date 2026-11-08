@@ -319,25 +319,18 @@ Guherînle ev in:
   <string name="morphe_hide_keyword_content_search_title">Encamên lêgerînê bi şêwaziyan veşêre</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Vîdyoyên tabeya aboneyan bi şêwaziyan veşêre</string>
   <string name="morphe_hide_keyword_content_phrases_title">Şêwaziyên veşerê</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Peyvên sereke û hevokan ji bo veşartinê binivîse, bi xetên nû ji hev veqetandî
+  <string name="morphe_hide_keyword_content_phrases_summary">"Kliyan û peyvên wekî keyword binivîse da ku wan veşêrî bikî, bi rêxên nû ve cudakirin
 
-Peyvên sereke dikarin her nivîsinek bin ku di navên vîdyoyan an navên kanalan de tê dîtin
+Keyword dikarin her nivîseke ku di nav navên vîdyoyan yan jî navên kanalan de hebe bin"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Sêrutin / Abonament / Lêgerîn / Koment hatine filtrekirin da ku naveroka ku li gorî peyvên keywordan e veşêrî bibe
 
-Peyvên ku tîpên mezin di navîn de hene divê tam li hev bikin (bo nimûne, iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Serê malê / Abonayî / Lêgerîn / Şîrovet bi peyvên sereke fêltirêkirin da ku naveroka ku bi hev re tê peyvên sereke veşêre
-
-Sînorkirin:
-• Kurtevîdan bi navê kanalenê nayê veşartin
-• Hinek pêkhateyên UI neyê veşartin
-• Lêgerîna peyvek sereke dibe ku encamên tune nîşan bide"</string>
+Sînor:
+• Hin Shorts nayên veşêrtin bi navê kanalê
+• Hin pêşenavên UI dibe ku neyên veşêrtin"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Hevokan tevbidin</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Nêçirandin şêwaziyê/ji aşîqê bi pêlên dobel ve, pêvajo bibe ku ne hemî sêwirên navan û kanalê tên neseranden&lt;br&gt;&lt;br&gt;Bo nimûne,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; vîdyoya: &lt;b&gt;Ka AI kî wa dîtin?&lt;/b&gt; veşêre&lt;br&gt;lê &lt;b&gt;Ferqa ku fermanskeriya çekebeweşana raya çawa dîtin?&lt;/b&gt; neserandin.</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Nêçiraniya şêwazî: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Bo ku şêwaziyê bikar anîn, pêl belav daî: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Şêwazî dlya îqdi is ihtilafî dajan: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Şêwazî xeçk di, wan pêl dahiya: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Şêwazî hemû vîdyoyên veşêre: %s</string>
@@ -500,6 +493,13 @@ Rapor giştî ne û berî ku kanal bikeve lîsteyê tên kontrolkirin. Jêbirin 
   <string name="morphe_post_translate_started">Wergerandine...</string>
   <string name="morphe_post_translate_failed">Post nehat wergerandin</string>
   <string name="morphe_post_translate_same_language">Post jixwe bi zimanê wergerandine</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Morphe li ser rê çalak bike</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Flyout-a player-î ya \'li ser rê\' kontrolên player-a taybet a Morphe vedike</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Li ser rê</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Karekê Askê lê menuyê flyout zêde bike</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Karekê kurteya vîdyoyê lê menuyê flyout ê feed zêde dike</string>
@@ -794,7 +794,6 @@ Ji bo çareserkirina vê, 'Spozîkirina streaming-ên vîdyoyê' vekirin û 'Kl�
   <string name="morphe_tap_to_seek_title">Kilika lêkirinê veşêre</string>
   <string name="morphe_tap_to_seek_summary">Li her derê ya seekbarê bitikîne da ku li şûna xişandinê, tu rasterast herî wê pozîsyonê</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Tîrêya seekbar a taybet</string>
   <string name="morphe_custom_seekbar_thumb_title">Tîrêya seekbar a taybet etkin bike</string>
   <string name="morphe_custom_seekbar_thumb_summary">Tîrêya seekbar bi wêneyekî taybet an GIFekî animated biguherîne</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Wêneyê tîrêyê</string>
@@ -1775,6 +1774,9 @@ Tomarkirina otomatîk di moda incognito de, gava nasnameya hesabê tune be, yan 
   <string name="morphe_niconico_comments_screen_title">Komentên Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Chat-a zindî û replay-a chat-ê wekî komentên ku li ser vîdyoyê diherikin nîşan bide</string>
   <string name="morphe_niconico_comments_summary">Bişkozekê li ser dîtina vîdyoyê nîşan dide. Ji bo nîşandan an veşartina komentan lê bitikîne, ji bo mîhengên bilez lê bitikîne û bihêle</string>
+  <string name="morphe_niconico_comments_appearance_title">Dexîyarên xuya bûnê</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portre</string>
+  <string name="morphe_niconico_comments_video_types_title">Tîpên vîdyoyê</string>
   <string name="morphe_niconico_comments_font_size_title">Mezinahiya fonta komentê</string>
   <string name="morphe_niconico_comments_font_size_summary">Mezinahiya nivîsa komentan (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Opasîtiya komentê</string>
@@ -1783,6 +1785,16 @@ Tomarkirina otomatîk di moda incognito de, gava nasnameya hesabê tune be, yan 
   <string name="morphe_niconico_comments_travel_duration_summary">Çend saniye tên girtin da ku komentaran ekranê derbas bikin. Nirxên kêm zûtir diçin</string>
   <string name="morphe_niconico_comments_display_area_title">Qada nîşandanê</string>
   <string name="morphe_niconico_comments_display_area_summary">Ka çend ji playerê, ji jor ve, şîroveyên wê bikar tîne. Nirxên kêm beşê jêrîn a vîdyoyê paqij dihilatin</string>
+  <string name="morphe_niconico_comments_portrait_title">Di portaît de nîşan bide</string>
+  <string name="morphe_niconico_comments_portrait_summary">Dema ekran di stana stûnî de be, komentaran nîşan bide. Ji bo ku tenê di stana radest de nîşan bide, vê veguherîne</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Mîhengên jiyeve ji bo stana stûnî</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Di stana stûnî de mezinahiya fontê, dirêjhiya rêwîtiyê û qada nîşandanê ya cuda bikar bîne. Dema were vekirin, ew ji nirxên niha dest pê dikin</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Mezinahiya fonta komentaran di stana stûnî de</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Mezinahiya nivîsa komentaran di stana stûnî de (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Dirêjhiya rêwîtiyê di stana stûnî de</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Çend saniye dê binerin da ku koment di moda portreyê de ekrana biparên</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Qada nîşandanê di moda portreyê de</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Di moda portreyê de, koment ji serîyê playerê heta kîjan xalê bikar tînin</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Komentên ku li ser hev dikevin veşêre</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Gava qendaxa nîşandan tijî dibe, komentên nû li şûma ku li ser komentên din bikevin, tên veşartin</string>
   <string name="morphe_niconico_comments_max_length_title">Dirêjiya herî zêde ya komentan</string>
@@ -1800,6 +1812,8 @@ Tomarkirina otomatîk di moda incognito de, gava nasnameya hesabê tune be, yan 
   <string name="morphe_niconico_comments_timed_comments_summary">Li ser vîdyoyan ku chatê nîn e, komentên sereke yên ku wextekî mîna 1:23 tê de heye, di wê demê de tên nîşandan</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Komentên demdar bi replay-ê chatê nîşan bide</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Di replay-ên streamên zind û Premiereyan de, komentên demdar bi chatê re tên nîşandan</string>
+  <string name="morphe_niconico_comments_all_settings">Hemû mîheng</string>
+  <string name="morphe_niconico_comments_reset_title">Van mîhengan bikişîne serî?</string>
   <string name="morphe_live_chat_translate_screen_title">Wergera chatê ya zindî</string>
   <string name="morphe_live_chat_translate_screen_summary">Namên chatê ya zindî û namên replayê ya chatê ya zindî wergerîne</string>
   <string name="morphe_live_chat_translate_title">Wergera chatê ya zindî</string>

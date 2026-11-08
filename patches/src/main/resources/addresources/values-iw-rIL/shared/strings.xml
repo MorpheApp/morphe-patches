@@ -229,6 +229,19 @@ Second \"item\" text"</string>
 אם אתה רוצה את החוויה הנטולת הבעיות ביותר, אז &lt;b&gt;הסר התקנה&lt;/b&gt; של זה ותקן את גרסת האפליקציה המומלצת ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ אני רוצה ניסיונית</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ אני רוצה יציבה</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">הצג התראה בתוך האפליקציה עבור עדכוני תיקון</string>
+  <string name="morphe_patches_update_notice_entry_off">כבוי</string>
+  <string name="morphe_patches_update_notice_entry_stable">גרסאות יציבות</string>
+  <string name="morphe_patches_update_notice_entry_dev">גרסאות יציבות וגרסאות פיתוח</string>
+  <string name="morphe_patches_update_notice_dialog_title">תיקונים חדשים זמינים</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (נוכחי: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ תכונות חדשות</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 תיקוני באגים</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 שינויים אחרים</string>
+  <string name="morphe_patches_update_notice_dialog_more">…ועוד %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">עדכון</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">דחה</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">יומן קריסה נשמר למסמכי המשתמש: %s</string>
   <string name="morphe_crash_log_saved">יומן קריסה נשמר: %s</string>

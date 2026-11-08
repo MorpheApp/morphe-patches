@@ -489,6 +489,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">הסתר כפתור שדרוג</string>
   <string name="morphe_music_hide_navigation_bar_title">הסתר סרגל ניווט</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">הסתר תוויות לחצני ניווט</string>
+  <string name="morphe_music_navigation_bar_glass_title">הפעל שורת ניווט מזכוכית</string>
+  <string name="morphe_music_navigation_bar_glass_summary">מציג את סרגל הניווט כקפסולה שקופה, מעוגלת וצפה</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">אטימות הזכוכית</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">התאם את רמת השקיפות של סרגל הניווט מזכוכית (0 הוא שקוף, 100 הוא אטום)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">זכוכית בהירה</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">צובע את סרגל הניווט מזכוכית בלבן במקום כהה, למראה זכוכית בהירה וצלולה יותר</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">גודל סרגל הניווט מזכוכית</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">התאם את הגובה, הרוחב ואת המרווח בין הכפתורים של סרגל הניווט מזכוכית, עם תצוגה מקדימה. כפתורים שאינם נכנסים ברוחב המסך מוסתרים</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">גובה</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">רוחב מקסימלי</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">מרווח בין כפתורים</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">כפתורים מוצגים: %1$s מתוך %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">בית</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">דגימות</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">מה חדש</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">ספרייה</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">לא מחובר. הקש להגדרה</string>
   <string name="morphe_music_scrobbling_log_out">התנתק</string>
@@ -712,7 +729,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">תווים סיניים וקנטונזיים (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">מילים סיניות (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">יוונית, סלאביים קיריליים (כולל רוסי, אוקראיני, בולגרי, סרבי, בלארוסי, מקדוני), גיאורגי, ארמני, עברי, ערבית, אמארית וסורית האברה (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">קריאה של %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">קריאת %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">הצג את כפתור הרענון</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">לחץ כדי לעבור למועמד השירים הבא; לחיצה ארוכה לחפש שיריות לפי שם השיר ואמן</string>
   <string name="morphe_music_lyrics_search_dialog_title">חפש מילים</string>

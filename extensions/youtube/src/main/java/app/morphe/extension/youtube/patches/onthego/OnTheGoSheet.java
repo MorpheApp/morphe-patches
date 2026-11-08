@@ -207,7 +207,11 @@ final class OnTheGoSheet {
         content.addView(timeView, matchWidth(0, Dim.dp4));
 
         timeBar = new SeekBar(context);
-        ColorStateList timeBarColor = ColorStateList.valueOf(getTimeBarColor());
+        // The custom seekbar color, if the seekbar color patch is included and the color is used.
+        ColorStateList timeBarColor = ColorStateList.valueOf(
+                SeekbarColorPatch.isPatchIncluded() && SeekbarColorPatch.isCustomSeekbarColorEnabled()
+                        ? SeekbarColorPatch.getSeekbarColor()
+                        : TIME_BAR_COLOR);
         timeBar.setProgressTintList(timeBarColor);
         customThumb = CustomSeekbarThumbPatch.createSeekBarThumb();
         if (customThumb != null) {
@@ -356,15 +360,6 @@ final class OnTheGoSheet {
                 0, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
         params.gravity = Gravity.CENTER_VERTICAL;
         controls.addView(cell, params);
-    }
-
-    /**
-     * @return The custom seekbar color, if the seekbar color patch is included and the color is used.
-     */
-    private static int getTimeBarColor() {
-        return SeekbarColorPatch.isPatchIncluded() && SeekbarColorPatch.isCustomSeekbarColorEnabled()
-                ? SeekbarColorPatch.getSeekbarColor()
-                : TIME_BAR_COLOR;
     }
 
     private static LinearLayout.LayoutParams matchWidth(int topMargin, int bottomMargin) {

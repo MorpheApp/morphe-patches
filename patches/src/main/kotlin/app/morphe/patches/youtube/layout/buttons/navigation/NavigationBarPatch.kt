@@ -19,11 +19,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.resourceXml
-import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.booleanOption
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.util.addFreeRegisters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getFreeRegisterProvider
@@ -266,7 +266,7 @@ val navigationBarPatch = patch(
                 key = "morphe_navigation_bar_glass_height",
                 titleKey = "morphe_navigation_bar_glass_size_title",
                 summaryKey = "morphe_navigation_bar_glass_size_summary",
-                tag = "app.morphe.extension.youtube.settings.preference.GlassNavigationBarPreference",
+                tag = "app.morphe.extension.youtube.settings.preference.YouTubeGlassNavigationBarPreference",
                 selectable = true
             )
         )
@@ -339,8 +339,8 @@ val navigationBarPatch = patch(
         // so the fixes do nothing if the flags are left to the account, as with the default navigation bar style.
 
         // The blurred background of the translucent navigation bar is drawn only if the canvas is
-        // hardware accelerated. The transparent and opaque styles leave it out, as it can crash
-        // the app on Android 12 and 13.
+        // hardware accelerated. It's always left out on Android 12 and 13, where it can crash the app
+        // while the player moves, and the transparent and opaque styles always leave it out.
         NavigationBarBlurDrawFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches[1].index

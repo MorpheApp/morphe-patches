@@ -28,7 +28,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.text.Normalizer;
 import java.util.IdentityHashMap;
-import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
@@ -815,6 +814,10 @@ public final class LyricsPanelInstaller {
 
     private static boolean computeOtherPanelForeground() {
         if (isInTab(panelReference.get())) {
+            return false;
+        }
+        // The current panel reference is tracked by identity and does not change across locales.
+        if (isCurrentPanelLyrics()) {
             return false;
         }
         if (nonLyricsPanelActive) {

@@ -229,6 +229,19 @@ Se non se cambian as optimizacións da batería, poderías experimentar:
 Se queres a experiencia sen problemas, &lt;b&gt;desinstala&lt;/b&gt; esta e instala a versión recomendada da app de ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quero a experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quero a estable</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Amosar notificación na aplicación para actualizacións de parches</string>
+  <string name="morphe_patches_update_notice_entry_off">Apagado</string>
+  <string name="morphe_patches_update_notice_entry_stable">Lanzamentos estables</string>
+  <string name="morphe_patches_update_notice_entry_dev">Lanzamentos estables e de desenvolvemento</string>
+  <string name="morphe_patches_update_notice_dialog_title">Hai novos parches dispoñibles</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (actual: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Novas funcións</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Correccións de erros</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Outros cambios</string>
+  <string name="morphe_patches_update_notice_dialog_more">…e %s máis</string>
+  <string name="morphe_patches_update_notice_dialog_update">Actualizar</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Descartar</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Rexo do erro gardado nos documentos do usuario: %s</string>
   <string name="morphe_crash_log_saved">Rexo do erro gardado: %s</string>

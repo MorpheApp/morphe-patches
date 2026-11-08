@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">Хайлтын үр дүнг түлхүүр үгээр нуух</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Бүртгэлтэй видеог түлхүүр үгээр нуух</string>
   <string name="morphe_hide_keyword_content_phrases_title">Нуух түлхүүр үгнүүд</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
   <string name="morphe_hide_keyword_content_phrases_summary">"Нуух түлхүүр үг болон хэллэгийг шинэ мөрөөр тусгаарлан оруулна уу
 
-Түлхүүр үг нь бичлэгийн гарчиг эсвэл сувгийн нэрэнд харагдах ямар ч текст байж болно
-
-Дундаа том үсэгтэй үгнүүд нь яг таг тохирхautoconfigure (жишээ нь: iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Нүүр / Бүрийн төлбөр / Хайлт / Сэтгэгдэл хэсгүүдэд түлхүүр үгтэй тохирсон контентыг нуух шүүлтүүр ажиллана
+Түлхүүр үг нь видеоны гарчиг эсвэл сувгийн нэрэнд харагдах дурын текст байж болно"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Нүүр / Бүртгэл / Хайлт / Сэтгэгдэл хэсгүүдэд түлхүүр хэллэгтэй таарч буй контентыг нуух шүүлтүүр хэрэглэгдэнэ
 
 Хязгаарлалт:
-• Shorts-ийг сувгийн нэрээр нуух боломжгүй
-• Зарим UI бүрэлдэхүүн хэсгүүд нуугдахгүй байж болно
-• Түлхүүр үгээр хайх үед илэрцгүй байж болно"</string>
+• Зарим Shorts-ыг сувгийн нэрээр нуух боломжгүй
+• Зарим UI бүрэлдэхүүн хэсгүүд нуугдахгүй байж болно"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Бүрэн үгээр хайх</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Түлхүүр үг/хэллэгийг давхар хашилтаар хүрээлбэл видеоны гарчиг болон сувгийн нэрс дээрх хэсэгчилсэн тохирлуудыг сэргийлнэ&lt;br&gt;&lt;br&gt;Жишээлбэл,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; гэвэл: &lt;b&gt;How does AI work?&lt;/b&gt; видеог нуух болно,&lt;br&gt;харин: &lt;b&gt;What does fair use mean?&lt;/b&gt; гэснийг нуухгүй</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Түлхүүр үгийг ашиглах боломжгүй: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Түлхүүр үгийг ашиглахын тулд хашилт нэмнэ үү: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Түлхүүр үг зөрчилтэй тодорхойлолттой байна: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Түлхүүр үг хэтэрхий богино тул хашилт шаардлагатай: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Түлхүүр үг бүх видеог нуух болно: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">Орчуулж байна…</string>
   <string name="morphe_post_translate_failed">Постыг орчуулж чадсангүй</string>
   <string name="morphe_post_translate_same_language">Пост аль хэдийн орчуулга хэл дээр байна</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Morphe-ийг явдал бүрд идэвхжүүлэх</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Тоглуулагчийн \'явдал бүрд\' цонх нь Morphe-ийн тоглуулагчийн тусгай удирдлагыг нээнэ</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Явдал бүрд</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Дэлгэрэнгүй цэсэнд Асуух хэсгийг нэмэх</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Фидийн дэлгэрэнгүй цэсэнд видеог нэгтгэн дүгнэх хэсгийг нэмнэ</string>
@@ -794,7 +794,6 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_tap_to_seek_title">Товшиж хайх функцийг идэвхжүүлэх</string>
   <string name="morphe_tap_to_seek_summary">Чирэхгийн оронд гүйлгэж хайх хэсгийн хаана ч дарснаар тухайн хэсэг рүү шилжинэ</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Seekbar-ын thumbnails-ийг загварчлах</string>
   <string name="morphe_custom_seekbar_thumb_title">Seekbar-ын thumbnails-ийг загварчлахыг идэвхлэх</string>
   <string name="morphe_custom_seekbar_thumb_summary">Seekbar-ын thumb-ийг өөрийн зураг эсвэл хөдөлгөөнт GIF-ээр солих</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Thumb зураг</string>
@@ -1773,6 +1772,9 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_niconico_comments_screen_title">Niconico сэтгэгдэл</string>
   <string name="morphe_niconico_comments_screen_summary">Шууд чат болон чатын давталтыг видео дээр гүйдэг сэтгэгдэл хэлбэрээр харуулах</string>
   <string name="morphe_niconico_comments_summary">Видео тоглуулагч дээр давхарлуулсан товчлуур харуулна. Сэтгэгдлийг харуулах эсвэл нуухын тулд товшилно, хурдан тохиргоо руу орохын тулд татаж барьна</string>
+  <string name="morphe_niconico_comments_appearance_title">Гадаад төрх</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Босоо</string>
+  <string name="morphe_niconico_comments_video_types_title">Видео төрлүүд</string>
   <string name="morphe_niconico_comments_font_size_title">Сэтгэгдлийн үсгийн хэмжээ</string>
   <string name="morphe_niconico_comments_font_size_summary">Сэтгэгдлийн текстийн хэмжээ (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Сэтгэгдлийн тунгалаг байдал</string>
@@ -1781,6 +1783,16 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_niconico_comments_travel_duration_summary">Сэтгэгдэл дэлгэцийг огтлохыг хэдэн секунд болгохыг заана. Бага утга нь илүү хурдан хөдөлнө</string>
   <string name="morphe_niconico_comments_display_area_title">Дэлгэцлэх талбай</string>
   <string name="morphe_niconico_comments_display_area_summary">Тоглуулагчийн дээрээс хэдэн хувийг сэтгэгдэл ашиглахыг заана. Бага утга нь видеоны доод хэсгийг цэвэрхэн байлгах болно</string>
+  <string name="morphe_niconico_comments_portrait_title">Босоо горимд харуулах</string>
+  <string name="morphe_niconico_comments_portrait_summary">Дэлгэц босоо горимд байх үед сэтгэгдлүүдийг харуулна. Зөвхөн хэвтээ горимд харуулахын тулд үүнийг унтраана уу</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Босоо горимын тусдаа тохиргоо</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Босоо горимд өөр фонтын хэмжээ, гүйлгэх хугацаа болон харуулах талбайг ашиглана. Идэвхжүүлсэн тохиолдолд тэдгээр нь одоогийн утгаас эхэлнэ</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Босоо горимын сэтгэгдлийн фонтын хэмжээ</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Босоо горимд сэтгэгдлийн текстийн хэмжээ (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Босоо горимын гүйлгэх хугацаа</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Босоо горимт сэтгэгдэл дэлгэцийг хэдэн секундэд туулж өнгөрөх вэ</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Босоо горимын харуулах хэсэг</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Босоо горимт сэтгэгдэл нь тоглуулагчийн дээрээс хэдэн хувийг эзлэх вэ</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Давхцаж гарч буй сэтгэгдлүүдийг нуух</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Дэлгэц дүүрэх үед шинэ сэтгэгдэл нь бусдартай давхцахын оронд нуугдана</string>
   <string name="morphe_niconico_comments_max_length_title">Сэтгэгдлийн дээд урт</string>
@@ -1798,6 +1810,8 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_niconico_comments_timed_comments_summary">Чатгүй видеонууд дээр 1:23 гэх мэт цаг хугацааг агуулсан шилдэг сэтгэгдлүүдийг тухайн хугацаанд нь харуулна</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Чатны давталтын үеэр хугацаагаар тохируулсан сэтгэгдлийг харуулах</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Шууд дамжуулалт болон Нэвтрүүлгэтийн давталтын үеэр хугацаагаар тохируулсан сэтгэгдлүүд чаттай хамт харагдана</string>
+  <string name="morphe_niconico_comments_all_settings">Бүх тохиргоо</string>
+  <string name="morphe_niconico_comments_reset_title">Эдгээр тохиргоог шинэчлэх үү?</string>
   <string name="morphe_live_chat_translate_screen_title">Шууд чатын орчуулга</string>
   <string name="morphe_live_chat_translate_screen_summary">Шууд чат болон шууд чатын давтлага дээрх зурвасуудыг орчуулах</string>
   <string name="morphe_live_chat_translate_title">Шууд чатыг орчуулах</string>

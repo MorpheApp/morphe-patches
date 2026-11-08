@@ -9,7 +9,7 @@ import app.morphe.extension.shared.spoof.ClientType;
 public class SpoofVideoStreamsPatch {
 
     private static final List<ClientType> AVAILABLE_CLIENTS = List.of(
-            ClientType.TV_SIMPLY,
+            ClientType.TV_SABR,
             ClientType.VISIONOS_1_02,
             ClientType.ANDROID_MUSIC_NO_SDK,
             ClientType.ANDROID_MUSIC_REEL

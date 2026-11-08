@@ -9,7 +9,8 @@ package app.morphe.patches.youtube.interaction.shorts
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.shortsautoplay.ReelEnumConstructorFingerprint
@@ -115,16 +116,15 @@ val skipLiveShortsPatch = patch(
             .match(reelPlaybackRepeat.originalMethod)
             .instructionMatches.first().fieldReference
 
-        reelPlaybackRepeat.method.apply {
-            val register = findFreeRegister(0)
-
-            addInstructions(
-                0,
-                """
-                    iget-object v$register, p0, $reelPlayerField
-                    invoke-static { v$register }, $EXTENSION_CLASS->setReelSequenceController($EXTENSION_CONTROLLER_INTERFACE)V
-                """
-            )
-        }
+        // Index 0: no local register is written yet, so v0 is free if the method has local registers.
+        var repeatMethod = reelPlaybackRepeat.method
+        if (repeatMethod.p0Register == 0) repeatMethod = repeatMethod.cloneParameters()
+        repeatMethod.addInstructions(
+            0,
+            """
+                iget-object v0, p0, $reelPlayerField
+                invoke-static { v0 }, $EXTENSION_CLASS->setReelSequenceController($EXTENSION_CONTROLLER_INTERFACE)V
+            """
+        )
     }
 }

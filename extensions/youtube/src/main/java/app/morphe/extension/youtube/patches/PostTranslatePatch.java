@@ -197,14 +197,6 @@ public final class PostTranslatePatch {
     }
 
     /**
-     * @return If the text is a short text with a number, such as the date of the post
-     *         or the count of its likes, which is shown in the language of the app.
-     */
-    private static boolean isMetadataText(String text) {
-        return text.length() <= MAX_METADATA_LENGTH && DIGIT_PATTERN.matcher(text).find();
-    }
-
-    /**
      * @return The start of a text cut off with an ellipsis, such as a long post text
      *         followed by Read more, or null if the text is not cut off.
      */
@@ -547,7 +539,10 @@ public final class PostTranslatePatch {
                     continue;
                 }
                 original = findPostText(text);
-                if (original == null || isMetadataText(original)) {
+                // A short text with a number, such as the date of the post or the count of its likes,
+                // is shown in the language of the app.
+                if (original == null || (original.length() <= MAX_METADATA_LENGTH
+                        && DIGIT_PATTERN.matcher(original).find())) {
                     continue;
                 }
                 key = normalize(original);

@@ -144,11 +144,6 @@ public final class ReturnYouTubeDislikeButtons {
         return oldBarCountPaint;
     }
 
-    private static int oldBarWidthOf(String count) {
-        return oldBarCountStartMargin + OLD_BAR_COUNT_END_MARGIN
-                + (int) Math.ceil(oldBarCountPaint().measureText(count));
-    }
-
     /**
      * The count of the segmented button is drawn by the layout engine and not by the text view
      * beside it, so its color cannot be changed. YouTube uses the color of that view, while
@@ -220,8 +215,9 @@ public final class ReturnYouTubeDislikeButtons {
             // Litho cannot be asked to lay out again, so a count that is not fetched by now gets
             // room for the widest one that can be shown.
             String dislikes = videoData.getFormattedDislikes();
-            final int margin = oldBarWidthOf(dislikes != null ? dislikes
-                    : SharedYouTubeSettings.RYD_DISLIKE_PERCENTAGE.get() ? "88.8%" : "8.8M");
+            final int margin = oldBarCountStartMargin + OLD_BAR_COUNT_END_MARGIN
+                    + (int) Math.ceil(oldBarCountPaint().measureText(dislikes != null ? dislikes
+                    : SharedYouTubeSettings.RYD_DISLIKE_PERCENTAGE.get() ? "88.8%" : "8.8M"));
             YogaNative.jni_YGNodeStyleSetMarginJNI(nodePointer,
                     Utils.isRightToLeftLocale() ? YOGA_EDGE_LEFT : YOGA_EDGE_RIGHT, margin);
             Logger.printDebug(() -> "Giving the dislike button a margin of " + margin);
@@ -661,14 +657,6 @@ public final class ReturnYouTubeDislikeButtons {
             paint.setTypeface(COUNT_TYPEFACE);
         }
 
-        /**
-         * @return If the count goes beside the icon, which only the dislike button of the old
-         *         action bar has room for. Every other button is square.
-         */
-        private boolean drawsBeside() {
-            return !isLike && hasOwnLabel() && host.getWidth() > host.getHeight();
-        }
-
         void setButton(String label, boolean isLike) {
             this.label = label;
             this.isLike = isLike;
@@ -773,7 +761,9 @@ public final class ReturnYouTubeDislikeButtons {
             if (current == null) {
                 current = "";
             }
-            final boolean beside = drawsBeside();
+            // The count goes beside the icon, which only the dislike button of the old
+            // action bar has room for. Every other button is square.
+            final boolean beside = !isLike && hasOwnLabel() && host.getWidth() > host.getHeight();
             if (!isLike && !beside && !likeButtonSearched && host.getWidth() > 0) {
                 likeButtonSearched = true;
                 // Not while drawing, since this adds to the overlay of another view.

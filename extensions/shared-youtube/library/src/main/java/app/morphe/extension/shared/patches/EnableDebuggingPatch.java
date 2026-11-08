@@ -153,15 +153,6 @@ public final class EnableDebuggingPatch {
     }
 
     /**
-     * Bootstrap store flag ids are packed bit field locations, and never overlap server flag ids.
-     *
-     * @return The size of the flag value in bits, from bits 16-29 of the id.
-     */
-    private static int getBootstrapFlagBitSize(int flag) {
-        return (flag >>> 16) & 0x3FFF;
-    }
-
-    /**
      * Injection point.
      */
     public static long isBootstrapFeatureFlagEnabled(long value, int flag) {
@@ -172,7 +163,9 @@ public final class EnableDebuggingPatch {
                 return 0;
             }
 
-            if (getBootstrapFlagBitSize(flag) == 1) {
+            // Bootstrap store flag ids are packed bit field locations, and never overlap server flag ids.
+            // Bits 16-29 of the id are the size of the flag value in bits.
+            if (((flag >>> 16) & 0x3FFF) == 1) {
                 if (override != null) {
                     return 1;
                 }

@@ -175,7 +175,7 @@ Les changements incluent :
   <string name="morphe_hide_subscribers_community_guidelines_title">Masquer le règlement de la communauté</string>
   <string name="morphe_hide_sync_button_title">Masquer le bouton \'Synchroniser avec la vidéo\'</string>
   <string name="morphe_hide_tap_and_hold_gradient_title">Masquer le dégradé en appuyant longuement</string>
-  <string name="morphe_hide_tap_and_hold_gradient_summary">Masque le dégradé des commandes du lecteur lorsque vous faites glisser votre doigt tout en maintenant la pression pour accélérer</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">Masque le dégradé des contrôles du lecteur lorsque vous faites glisser votre doigt tout en maintenant la pression pour accélérer</string>
   <string name="morphe_hide_timed_reactions_title">Masquer les réactions en temps réel</string>
   <string name="morphe_hide_timed_reactions_summary">Masque la fonctionnalité permettant aux utilisateurs de réagir avec des émojis dans la section des commentaires et le chat en direct</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -319,25 +319,18 @@ Les changements incluent :
   <string name="morphe_hide_keyword_content_search_title">Masquer les résultats de recherche par mot-clé</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Masquer les vidéos de \'Abonnements\' par mots-clés</string>
   <string name="morphe_hide_keyword_content_phrases_title">Mots-clés à masquer</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Entrez des mots-clés et expressions à masquer, séparés par des sauts de ligne
+  <string name="morphe_hide_keyword_content_phrases_summary">"Entrez les mots-clés et les expressions à masquer, séparés par des sauts de ligne
 
-Les mots-clés peuvent être n'importe quel texte affiché dans les titres des vidéos ou les noms des chaînes
+Les mots-clés peuvent être n'importe quel texte apparaissant dans les titres des vidéos ou les noms des chaînes"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Accueil / Abonnements / Recherche / Les commentaires sont filtrés pour masquer le contenu correspondant aux expressions-clés
 
-Les mots contenant des lettres majuscules au milieu doivent correspondre exactement (par ex. : iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Accueil / Abonnements / Recherche / Les commentaires sont filtrés pour masquer le contenu correspondant à des expressions-clés
-
-Limitations :
-• Les Shorts ne peuvent pas être masqués par le nom de la chaîne
-• Certains composants de l'interface peuvent ne pas être masqués
-• La recherche d'un mot-clé peut n'afficher aucun résultat"</string>
+Limitations : 
+• Certains Shorts ne peuvent pas être masqués par nom de chaîne
+• Certains composants de l'interface peuvent ne pas être masqués"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Correspondance aux mots entiers</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Mettre un mot-clé ou une expression entre guillemets permet d\'éviter les correspondances partielles avec le titre des vidéos et les noms de chaîne&lt;br&gt;&lt;br&gt;Par exemple,&lt;br&gt;&lt;b&gt;\"ia\"&lt;/b&gt; masquera la vidéo : &lt;b&gt;Comment fonctionnent les IA ?&lt;/b&gt;&lt;br&gt;mais ne masquera pas : &lt;b&gt;Quelles études pour devenir commercial ?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Impossible d\'utiliser ce mot-clé : %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Ajoutez des guillemets pour utiliser : %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Le mot-clé présente des déclarations conflictuelles : %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Le mot-clé est trop court et nécessite des guillemets : %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ce mot-clé va masquer toutes les vidéos : %s</string>
@@ -500,6 +493,13 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_post_translate_started">Traduction…</string>
   <string name="morphe_post_translate_failed">Impossible de traduire le post</string>
   <string name="morphe_post_translate_same_language">Le post est déjà dans la langue de traduction</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Activer Morphe en déplacement</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Le menu déroulant \'En déplacement\' ouvre les contrôles personnalisés du lecteur Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">En déplacement</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ajouter l\'élément \'Posez une question\' au menu déroulant</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Ajoute un élément de résumé vidéo au menu déroulant du flux</string>
@@ -794,15 +794,14 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_tap_to_seek_title">Activer la navigation par appui</string>
   <string name="morphe_tap_to_seek_summary">Appuyez n\'importe où sur la barre de progression pour accéder directement à cette position au lieu de glisser</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Curseur personnalisé de la barre de progression</string>
   <string name="morphe_custom_seekbar_thumb_title">Activer le curseur personnalisé de la barre de progression</string>
-  <string name="morphe_custom_seekbar_thumb_summary">Remplacer le curseur de la barre de progression par une image personnalisée ou un GIF animé</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Remplace le curseur de la barre de progression par une image personnalisée ou un GIF animé</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Image du curseur</string>
   <string name="morphe_custom_seekbar_thumb_file_summary">Sélectionner une image ou un GIF animé depuis le stockage de l\'appareil</string>
-  <string name="morphe_custom_seekbar_thumb_file_invalid">Le fichier sélectionné n\'est pas une image prise en charge</string>
-  <string name="morphe_custom_seekbar_thumb_file_not_found">Image du curseur de la barre de progression personnalisée non trouvée</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Le fichier sélectionné n\'est pas un format d\'image pris en charge</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Image personnalisée du curseur de la barre de progression introuvable</string>
   <string name="morphe_custom_seekbar_thumb_scale_type_title">Taille du curseur</string>
-  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Ajuster à la barre de progression</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Adapter la barre de progression</string>
   <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Taille d\'origine</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Geste de balayage vers la gauche</string>
@@ -1087,8 +1086,8 @@ Pour afficher le menu 'Piste audio', changez 'Falsifier les flux vidéo' et sél
   <string name="morphe_hide_cast_button_summary">Masque le bouton \'Caster\' dans le lecteur vidéo et la barre d\'outils</string>
   <string name="morphe_hide_collapse_button_title">Masquer le bouton \'Réduire\'</string>
   <string name="morphe_hide_fullscreen_button_title">Masquer le bouton \'Plein écran\'</string>
-  <string name="morphe_hide_player_control_buttons_background_title">Masquer l\'arrière-plan des commandes du lecteur</string>
-  <string name="morphe_hide_player_control_buttons_background_summary">Masque l\'assombrissement entourant les commandes du lecteur vidéo</string>
+  <string name="morphe_hide_player_control_buttons_background_title">Masquer l\'arrière-plan des contrôles du lecteur</string>
+  <string name="morphe_hide_player_control_buttons_background_summary">Masque l\'assombrissement entourant les contrôles du lecteur vidéo</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Opacité de l\'arrière-plan des boutons de contrôle</string>
   <string name="morphe_player_control_buttons_background_opacity_summary">Ajustez l\'opacité de l\'arrière-plan derrière les boutons de contrôle du lecteur et la barre de temps (0 est invisible, 100 est opaque)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Masquer les boutons \'Précédent\' &amp; \'Suivant\'</string>
@@ -1455,7 +1454,7 @@ Les vidéos sont recherchées à l'aide d'un court préfixe de l'identifiant vid
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Restaurer l\'ancien style de bouton du lecteur</string>
-  <string name="morphe_restore_old_player_buttons_summary">Rétablit les commandes épaisses du lecteur vidéo dans leur ancien style visuel, plus fin</string>
+  <string name="morphe_restore_old_player_buttons_summary">Rétablit les contrôles épaisses du lecteur vidéo dans leur ancien style visuel, plus fin</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Falsifier les dimensions de l\'appareil</string>
   <string name="morphe_spoof_device_dimensions_summary">L\'activation de cette option peut débloquer des qualités vidéo plus élevées</string>
@@ -1673,7 +1672,7 @@ La lecture de vidéos en AV1 peut présenter des saccades ou des pertes d'images
   <string name="morphe_series_tracker_ui_more_options">Plus d\'options</string>
   <string name="morphe_series_tracker_record_consent">"Enregistrez uniquement la progression de vos séries et vidéos enregistrées. 
 
-Cette bibliothèque est stockée sur cet appareil et partagée entre les comptes YouTube. Les commandes YouTube permettant de suspendre ou d'effacer l'historique ne la modifient pas. Pour l'effacer : Séries → Plus → Effacer toute la progression locale.
+Cette bibliothèque est stockée sur cet appareil et partagée entre les comptes YouTube. Les contrôles YouTube permettant de suspendre ou d'effacer l'historique ne la modifient pas. Pour l'effacer : Séries → Plus → Effacer toute la progression locale.
 
 L'enregistrement automatique s'arrête en navigation privée, lorsque l'identité du compte n'est pas disponible ou lorsque vous passez à un autre compte. Réactivez le suivi pour l'utiliser avec ce compte"</string>
   <string name="morphe_series_tracker_identity_unavailable">Le suivi ne peut pas être activé en navigation privée ou tant que YouTube n\'a pas chargé l\'état du compte actuel. Revenez à l\'accueil et réessayez. Aucune connexion à un compte n\'est nécessaire</string>
@@ -1702,7 +1701,7 @@ L'enregistrement automatique s'arrête en navigation privée, lorsque l'identit�
   <string name="morphe_series_tracker_new_episode">1 nouvel épisode</string>
   <string name="morphe_series_tracker_new_episodes">%s nouveaux épisodes</string>
   <string name="morphe_series_tracker_record_short">Enregistrer la progression sur cet appareil</string>
-  <string name="morphe_series_tracker_follow_consent">"Vos séries et votre progression restent sur cet appareil, partagées entre les comptes YouTube. Les commandes de gestion de l'historique YouTube ne les modifient pas. Effacez la progression depuis le menu 'Séries'.
+  <string name="morphe_series_tracker_follow_consent">"Vos séries et votre progression restent sur cet appareil, partagées entre les comptes YouTube. Les contrôles de gestion de l'historique YouTube ne les modifient pas. Effacez la progression depuis le menu 'Séries'.
 
 L'enregistrement automatique est facultatif. Il s'arrête en navigation privée ou lors d'un changement de compte"</string>
   <string name="morphe_series_tracker_follow_unavailable">Impossible de charger les épisodes. Vous pouvez enregistrer un lien vers la playlist</string>
@@ -1775,6 +1774,9 @@ L'enregistrement automatique est facultatif. Il s'arrête en navigation privée 
   <string name="morphe_niconico_comments_screen_title">Commentaires Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Afficher le chat en direct et le replay du chat sous forme de commentaires qui défilent sur la vidéo</string>
   <string name="morphe_niconico_comments_summary">Affiche un bouton en superposition dans le lecteur vidéo. Appuyez pour afficher ou masquer les commentaires, ou maintenez-le enfoncé pour accéder rapidement aux paramètres.</string>
+  <string name="morphe_niconico_comments_appearance_title">Apparence</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portrait</string>
+  <string name="morphe_niconico_comments_video_types_title">Types de vidéo</string>
   <string name="morphe_niconico_comments_font_size_title">Taille de la police des commentaires</string>
   <string name="morphe_niconico_comments_font_size_summary">Taille du texte des commentaires (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Opacité des commentaires</string>
@@ -1783,7 +1785,17 @@ L'enregistrement automatique est facultatif. Il s'arrête en navigation privée 
   <string name="morphe_niconico_comments_travel_duration_summary">Combien de secondes les commentaires mettent à traverser l\'écran. Des valeurs plus faibles les font défiler plus rapidement</string>
   <string name="morphe_niconico_comments_display_area_title">Zones d\'affichage</string>
   <string name="morphe_niconico_comments_display_area_summary">La partie du lecteur vidéo, à partir du haut, utilisée par les commentaires. Des valeurs plus faibles laissent la partie inférieure de la vidéo dégagée</string>
-  <string name="morphe_niconico_comments_hide_crowded_title">Masquer les commentaires qui se chevaucheraient</string>
+  <string name="morphe_niconico_comments_portrait_title">Afficher en mode portrait</string>
+  <string name="morphe_niconico_comments_portrait_summary">Afficher les commentaires lorsque l\'écran est en mode portrait. Désactivez pour les afficher uniquement en mode paysage</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Paramètres distincts pour le mode portrait</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Utiliser une taille de police, une durée de défilement et une zone d\'affichage différentes en mode portrait. Lorsque activée, les valeurs actuelles sont utilisées comme valeurs de départ</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Taille de police des commentaires en mode portrait</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Taille du texte des commentaires en mode portrait (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Durée du trajet en mode portrait</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Combien de secondes les commentaires mettent à traverser l\'écran en mode portrait</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Zone d\'affichage en mode portrait</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">La partie du lecteur vidéo, à partir du haut, utilisée par les commentaires en mode portrait</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Masquer les commentaires qui se chevauchent</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Lorsque la zone d\'affichage est pleine, les nouveaux commentaires sont masqués au lieu de chevaucher les autres commentaires</string>
   <string name="morphe_niconico_comments_max_length_title">Longueur maximale des commentaires</string>
   <string name="morphe_niconico_comments_max_length_summary">Masque les commentaires contenant plus de caractères que cette limite. Chaque emoji compte pour un caractère</string>
@@ -1800,6 +1812,8 @@ L'enregistrement automatique est facultatif. Il s'arrête en navigation privée 
   <string name="morphe_niconico_comments_timed_comments_summary">Sur les vidéos sans chat, les commentaires les plus populaires contenant un horodatage comme 1:23 s\'affichent au moment indiqué</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Afficher les commentaires horodatés avec le replay du chat</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Lors de la rediffusion des diffusions en direct et des Premières, les commentaires horodatés sont également affichés avec le chat</string>
+  <string name="morphe_niconico_comments_all_settings">Tous les paramètres</string>
+  <string name="morphe_niconico_comments_reset_title">Réinitialiser ces paramètres ?</string>
   <string name="morphe_live_chat_translate_screen_title">Traduction du chat en direct</string>
   <string name="morphe_live_chat_translate_screen_summary">Traduire les messages du chat en direct et les messages du replay du chat en direct</string>
   <string name="morphe_live_chat_translate_title">Traduire le chat en direct</string>

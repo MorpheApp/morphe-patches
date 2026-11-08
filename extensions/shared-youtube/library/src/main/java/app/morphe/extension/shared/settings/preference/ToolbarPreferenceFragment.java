@@ -30,6 +30,8 @@ import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 
+import java.lang.reflect.Method;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
@@ -167,6 +169,23 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
             }
         }
         return null;
+    }
+
+    /**
+     * Clicks a preference as if its row was tapped. A nested PreferenceScreen opens its screen.
+     *
+     * @param preference The preference to click.
+     * @param rootScreen The main screen of the fragment that holds the preference.
+     */
+    @SuppressWarnings("all")
+    public static void performClick(Preference preference, PreferenceScreen rootScreen) {
+        try {
+            Method m = Preference.class.getDeclaredMethod("performClick", PreferenceScreen.class);
+            m.setAccessible(true);
+            m.invoke(preference, rootScreen);
+        } catch (Exception e) {
+            Logger.printException(() -> "Failed to invoke performClick()", e);
+        }
     }
 
     /**

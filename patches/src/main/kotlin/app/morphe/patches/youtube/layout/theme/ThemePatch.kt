@@ -472,32 +472,12 @@ val themePatch = baseThemePatch(
 
         // Color of the new content indicator of the pivot bar, which is red in the app and does
         // not go with a Material You color.
-        PivotBarNewContentDotFingerprint.let {
-            it.method.apply {
-                // Both the dot of a tab and the count next to it, and the count is hooked
-                // first so the index of the dot is still valid.
-
-                arrayOf(
-                    it.instructionMatches.last().index,
-                    it.instructionMatches[2].index
-                ).forEach { checkCastIndex ->
-                    val stubRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
-
-                    addInstruction(
-                        checkCastIndex + 1,
-                        "invoke-static { v$stubRegister }, $THEME_COLOR_EXTENSION_CLASS" +
-                                "->onNewContentIndicator(Landroid/view/ViewStub;)V"
-                    )
-                }
-            }
-        }
-
         // The notification button of the top bar has an indicator of its own, which is created
         // by a different class than the one of the pivot bar.
-        TopBarNewContentCountFingerprint.let {
+        listOf(PivotBarNewContentDotFingerprint, TopBarNewContentCountFingerprint).forEach {
             it.method.apply {
-                // Both the count of the button and the dot shown without one, and the dot is
-                // hooked first so the index of the count is still valid.
+                // Both the dot and the count of the indicator. The last match is hooked first,
+                // so the index of the other one is still valid.
 
                 arrayOf(
                     it.instructionMatches.last().index,

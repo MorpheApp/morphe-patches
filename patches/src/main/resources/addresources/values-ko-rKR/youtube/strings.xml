@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">검색 결과에서 키워드 필터 활성화하기</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">구독 탭에서 키워드 필터 활성화하기</string>
   <string name="morphe_hide_keyword_content_phrases_title">키워드 필터</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"필터링할 키워드 및 구문을 줄바꿈으로 구분하여 설정하세요
+  <string name="morphe_hide_keyword_content_phrases_summary">"숨기려는 키워드와 문구를 줄바꿈으로 구분하어 설정하세요
 
-필터링 키워드는 채널 이름 또는 동영상 제목에 표시되는 모든 텍스트가 될 수 있습니다
-
-대문자가 있는 단어는 대소문자를 함께 정확히 입력해야 합니다 (예: iPhone, TikTok, LeBlanc)"</string>
+키워드는 동영상 제목이나 채널 이름에 표시되는 모든 텍스트일 수 있습니다"</string>
   <string name="morphe_hide_keyword_content_about_summary">"홈 / 구독 / 검색 결과 / 댓글 섹션에서 키워드 구문과 일치하는 콘텐츠가 필터링되어 숨겨집니다
 
 제한 사항:
-• 채널 이름으로 Shorts는 숨길 수 없습니다
-• 일부 UI 구성 요소는 숨겨지지 않을 수 있습니다
-• 필터링 키워드를 검색하면 검색 결과가 표시되지 않을 수 있습니다"</string>
+• 채널 이름으로 일부 Shorts는 숨길 수 없습니다
+• 일부 UI 구성 요소는 숨겨지지 않을 수 있습니다"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">전체 단어 일치시키기</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">필터링할 키워드 및 구문을 큰따옴표로 묶으면 동영상 제목과 채널 이름이 부분적으로 일치하지 않도록 방지할 수 있습니다&lt;br&gt;&lt;br&gt;예를 들어&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;는 다음 동영상을 숨김: &lt;b&gt;AI 커리어 완벽 가이드&lt;/b&gt;&lt;br&gt;하지만 다음 동영상을 숨기지 못함: &lt;b&gt;생성형AI가 바꿔놓은 세계&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">키워드를 사용할 수 없습니다: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">키워드를 사용하려면 따옴표를 추가하세요: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">키워드에 충돌하는 선언이 있습니다: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">키워드가 너무 짧아서 따옴표가 필요합니다: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">키워드가 모든 동영상을 숨길 것입니다: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">번역하는 중…</string>
   <string name="morphe_post_translate_failed">게시물을 번역할 수 없습니다</string>
   <string name="morphe_post_translate_same_language">게시물은 이미 번역하려는 언어로 작성되어 있습니다</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Morphe 이동 중 모드 활성화하기</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">플레이어 \'이동 중 모드\' 메뉴로 Morphe 사용자 정의 플레이어 컨트롤을 실행합니다</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">이동 중 모드</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">메뉴 구성요소에 \'질문하기\' 항목 추가하기</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">피드 메뉴 구성요소에 동영상을 요약할 수 있는 \'질문하기\' 항목을 추가합니다</string>
@@ -796,7 +796,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_tap_to_seek_title">재생바 터치 조작 활성화하기</string>
   <string name="morphe_tap_to_seek_summary">드래그 대신 재생바의 아무 곳이나 탭하여 해당 위치로 이동할 수 있습니다</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">사용자 정의 재생바 핸들</string>
   <string name="morphe_custom_seekbar_thumb_title">사용자 정의 재생바 핸들 활성화하기</string>
   <string name="morphe_custom_seekbar_thumb_summary">시크바 핸들을 사용자 정의 이미지 또는 애니메이션 GIF로 교체합니다</string>
   <string name="morphe_custom_seekbar_thumb_file_title">핸들 이미지</string>
@@ -1775,6 +1774,9 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_niconico_comments_screen_title">Niconico 댓글</string>
   <string name="morphe_niconico_comments_screen_summary">실시간 채팅과 채팅 다시보기를 동영상 위로 흘러가는 댓글로 표시합니다</string>
   <string name="morphe_niconico_comments_summary">동영상 플레이어에 오버레이 버튼을 표시합니다. 버튼을 탭하면 댓글을 표시하거나 숨길 수 있으며, 길게 탭하면 빠른 설정을 열 수 있습니다</string>
+  <string name="morphe_niconico_comments_appearance_title">디자인</string>
+  <string name="morphe_niconico_comments_portrait_category_title">세로 모드</string>
+  <string name="morphe_niconico_comments_video_types_title">동영상 유형</string>
   <string name="morphe_niconico_comments_font_size_title">댓글 글꼴 크기</string>
   <string name="morphe_niconico_comments_font_size_summary">댓글 텍스트 크기 (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">댓글 불투명도</string>
@@ -1783,6 +1785,16 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_niconico_comments_travel_duration_summary">댓글이 화면을 가로지르는 데 걸리는 시간을 설정할 수 있습니다 (초). 값이 낮을수록 댓글이 더 빠르게 이동합니다.</string>
   <string name="morphe_niconico_comments_display_area_title">표시 영역</string>
   <string name="morphe_niconico_comments_display_area_summary">댓글이 화면 상단부터 플레이어의 어느 정도 영역을 차지할지 설정할 수 있습니다. 값을 낮출수록 동영상 화면의 아래쪽 영역이 더 넓게 확보됩니다</string>
+  <string name="morphe_niconico_comments_portrait_title">세로 모드에서 표시하기</string>
+  <string name="morphe_niconico_comments_portrait_summary">화면이 세로 모드일 때 댓글을 표시합니다. 이 기능을 비활성화하면 가로 모드에서만 댓글이 표시됩니다</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">세로 모드 전용 설정</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">세로 모드에서 별도의 글꼴 크기, 이동 시간 및 표시 영역을 설정할 수 있습니다. 기능을 활성화하면 현재 설정값이 기본값으로 적용됩니다</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">세로 모드 댓글 글꼴 크기</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">세로 모드에서 표시되는 댓글의 글자 크기를 설정할 수 있습니다 (12~40sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">세로 모드 댓글 이동 시간</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">세로 모드에서 댓글이 화면을 가로질러 이동하는 데 걸리는 시간을 설정할 수 있습니다 (초)</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">세로 모드 댓글 표시 영역</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">세로 모드에서 화면 상단을 기준으로 댓글이 차지하는 플레이어 영역의 비율을 설정할 수 있습니다</string>
   <string name="morphe_niconico_comments_hide_crowded_title">겹치는 댓글 숨기기</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">화면 표시 영역이 가득 차는 경우에 새 댓글이 다른 댓글과 겹쳐 표시되지 않고 숨겨집니다</string>
   <string name="morphe_niconico_comments_max_length_title">댓글 최대 길이</string>
@@ -1800,6 +1812,8 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_niconico_comments_timed_comments_summary">채팅이 없는 동영상에서 1:23과 같이 특정 재생 시간을 포함한 인기 댓글은 해당 시간에 맞춰 표시합니다</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">채팅 재생과 함께 시간 설정 댓글 표시</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">라이브 스트림 및 최초 공개의 재생 시 시간 설정 댓글이 채팅과 함께 표시됩니다</string>
+  <string name="morphe_niconico_comments_all_settings">모든 설정</string>
+  <string name="morphe_niconico_comments_reset_title">이 설정을 초기화하시겠습니까?</string>
   <string name="morphe_live_chat_translate_screen_title">실시간 채팅 번역</string>
   <string name="morphe_live_chat_translate_screen_summary">실시간 채팅과 실시간 채팅 다시보기 메시지를 번역할 수 있습니다</string>
   <string name="morphe_live_chat_translate_title">실시간 채팅 번역하기</string>

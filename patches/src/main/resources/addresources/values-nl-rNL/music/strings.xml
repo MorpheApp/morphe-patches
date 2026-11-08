@@ -490,6 +490,23 @@ SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Verberg de knop \"Upgraden\"</string>
   <string name="morphe_music_hide_navigation_bar_title">Navigatiebalk verbergen</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Labels van navigatieknoppen verbergen</string>
+  <string name="morphe_music_navigation_bar_glass_title">Glazen navigatiebalk inschakelen</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Toont de navigatiebalk als een zwevende, afgeronde, doorschijnende capsule</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Dekking van het glas</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Pas het transparantieniveau van de glazen navigatiebalk aan (0 is transparant, 100 is ondoorzichtig)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Licht glas</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Kleurt de glazen navigatiebalk wit in plaats van donker, voor een lichter en helderder glas</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Grootte glazen navigatiebalk</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Pas de hoogte, breedte en knopafstand van de glazen navigatiebalk aan, inclusief een voorbeeld. Knoppen die niet binnen de schermbreedte passen, worden verborgen</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Hoogte</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Maximale breedte</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Knopafstand</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Getoonde knoppen: %1$s van %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Home</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Samples</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Verkennen</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Bibliotheek</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Niet ingelogd. Tik om te configureren</string>
   <string name="morphe_music_scrobbling_log_out">Afmelden</string>
@@ -716,7 +733,7 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Chinese en Cantonese karakters (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Chinese woorden (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grieks, Slavisch Cyrillisch (inclusief Russisch, Oekraïens, Bulgaars, Servisch, Wit-Russisch, Macedonisch), Georgisch, Armeens, Hebreeuws, Arabisch, Amharsiërs en Syrisch transliteratie (CLDR, ~0,5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Lezen %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Lezen van %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Vernieuwknop weergeven</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tik om over te schakelen naar de volgende songtekstkandidaat; lang drukken om songteksten te zoeken op titel en artiest</string>
   <string name="morphe_music_lyrics_search_dialog_title">Zoek songteksten</string>

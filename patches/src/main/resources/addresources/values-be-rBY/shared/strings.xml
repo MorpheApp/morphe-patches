@@ -229,6 +229,19 @@ Second \"item\" text"</string>
 Калі вы жадаеце максімальна стабільнай працы, тады &lt;b&gt;выдаліце&lt;/b&gt; гэтую версію і ўсталюйце рэкамендаваную версію праграмы ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Я хачу эксперыментальную версію</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Я хачу стабільную версію</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Паказваць паведамленні аб абнаўленнях патчаў у праграме</string>
+  <string name="morphe_patches_update_notice_entry_off">Выкл.</string>
+  <string name="morphe_patches_update_notice_entry_stable">Стабільныя рэлізы</string>
+  <string name="morphe_patches_update_notice_entry_dev">Стабільныя і распрацоўчыя версіі</string>
+  <string name="morphe_patches_update_notice_dialog_title">Даступныя новыя патчы</string>
+  <string name="morphe_patches_update_notice_dialog_message">Патчы Morphe &lt;b&gt;%1$s&lt;/b&gt; ( бягучыя: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Новыя функцыі</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Выпраўленне памылак</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Іншыя змены</string>
+  <string name="morphe_patches_update_notice_dialog_more">…і яшчэ %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Абнавіць</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Адхіліць</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Журнал паломкі захаваны ў дакументы карыстальніка: %s</string>
   <string name="morphe_crash_log_saved">Журнал паломкі захаваны: %s</string>

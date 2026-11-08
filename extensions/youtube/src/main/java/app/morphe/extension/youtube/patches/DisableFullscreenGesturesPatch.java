@@ -144,7 +144,9 @@ public class DisableFullscreenGesturesPatch {
         if (!Settings.RESTORE_PINCH_TO_ZOOM.get()) {
             pinchScale = MIN_PINCH_SCALE;
         }
-        if (fullscreenScaleOwnsTransform()) {
+        FullscreenVideoScalePatch.VideoScaleMode mode = Settings.FULLSCREEN_VIDEO_SCALE.get();
+        if (mode == FullscreenVideoScalePatch.VideoScaleMode.STRETCH
+                || mode == FullscreenVideoScalePatch.VideoScaleMode.ZOOM) {
             pinchOwningView = false;
             detachPreDraw();
             FullscreenVideoScalePatch.applyScale();
@@ -167,12 +169,6 @@ public class DisableFullscreenGesturesPatch {
         disableClipping(view);
         applyScaleToViewAndSurfaces(view, pinchScale);
         attachPreDraw(view);
-    }
-
-    private static boolean fullscreenScaleOwnsTransform() {
-        FullscreenVideoScalePatch.VideoScaleMode mode = Settings.FULLSCREEN_VIDEO_SCALE.get();
-        return mode == FullscreenVideoScalePatch.VideoScaleMode.STRETCH
-                || mode == FullscreenVideoScalePatch.VideoScaleMode.ZOOM;
     }
 
     private static void applyScaleToViewAndSurfaces(View view, float scale) {

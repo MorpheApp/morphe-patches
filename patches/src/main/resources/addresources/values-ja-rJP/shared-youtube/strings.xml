@@ -116,7 +116,7 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
   <string name="morphe_spoof_video_streams_client_type_title">デフォルトのクライアント</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR (ログイン)</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR にログインしていません。ログインするには、ここをタップしてください</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VRでは別途サインインが必要です。こちらをタップして続行してください</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">現在、Android VR にログインしています</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">この機能を使用するには、[デフォルトのクライアント] を Android VR に変更してください</string>

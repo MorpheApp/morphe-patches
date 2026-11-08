@@ -319,25 +319,18 @@ Perubahan mencakup:
   <string name="morphe_hide_keyword_content_search_title">Sembunyikan hasil pencarian berdasarkan kata kunci</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Sembunyikan video subscription dengan kata kunci</string>
   <string name="morphe_hide_keyword_content_phrases_title">Kata kunci yang ingin disembunyikan</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Masukkan kata kunci dan frasa yang akan disembunyikan, dipisahkan dengan baris baru
+  <string name="morphe_hide_keyword_content_phrases_summary">"Masukkan kata kunci dan frasa untuk disembunyikan, dipisahkan dengan baris baru
 
-Kata kunci dapat berupa teks apa pun yang muncul dalam judul video atau nama saluran
-
-Kata-kata yang mengandung huruf besar di tengah harus sama persis (misalnya, iPhone, TikTok, LeBlanc)"</string>
+Kata kunci dapat berupa teks apa pun yang ditampilkan dalam judul video atau nama channel"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Beranda / Subscription / Pencarian / Komentar disaring untuk menyembunyikan konten yang cocok dengan frasa kata kunci
 
 Batasan:
-• Shorts tidak dapat disembunyikan berdasarkan nama channel
-• Beberapa komponen UI mungkin tidak disembunyikan
-• Pencarian kata kunci mungkin tidak menampilkan hasil"</string>
+• Beberapa Shorts tidak dapat disembunyikan berdasarkan nama channel
+• Beberapa komponen UI mungkin tidak disembunyikan"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Cocokkan seluruh kata</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Melingkupi kata kunci/frasa dengan tanda kutip ganda akan mencegah pencocokan sebagian judul video dan nama saluran&lt;br&gt;&lt;br&gt;Misalnya,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; akan menyembunyikan video: &lt;b&gt;Bagaimana cara kerja AI?&lt;/b&gt;&lt;br&gt;tetapi tidak akan menyembunyikan: &lt;b&gt;Apa yang dimaksud dengan Jakarta Fair?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Tidak dapat menggunakan kata kunci: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Tambahkan tanda kutip untuk menggunakan kata kunci: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Kata kunci punya keterangan yang berkonflik: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kata kunci terlalu pendek dan butuh tanda kutip: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kata kunci akan menyembunyikan semua video: %s</string>
@@ -500,6 +493,13 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_post_translate_started">Menerjemahkan…</string>
   <string name="morphe_post_translate_failed">Tidak dapat menerjemahkan postingan</string>
   <string name="morphe_post_translate_same_language">Postingan sudah dalam bahasa terjemahan</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Aktifkan Morphe saat bepergian</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Flyout pemutar \'Sambil jalan\' membuka kontrol pemutar kustom Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Sambil jalan</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Tambahkan item Tanya ke menu flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Menambahkan item ringkasan video ke menu flyout feed</string>
@@ -794,7 +794,6 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_tap_to_seek_title">Aktifkan ketuk untuk mencari</string>
   <string name="morphe_tap_to_seek_summary">Ketuk di mana saja pada bilah geser untuk melompat ke posisi tersebut alih-alih menyeretnya</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Thumb seekbar khusus</string>
   <string name="morphe_custom_seekbar_thumb_title">Aktifkan thumb seekbar khusus</string>
   <string name="morphe_custom_seekbar_thumb_summary">Ganti thumb seekbar dengan gambar khusus atau GIF animasi</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Gambar thumb</string>
@@ -1773,6 +1772,9 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_niconico_comments_screen_title">Komentar Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Tampilkan live chat dan putar ulang chat sebagai komentar yang bergulir di sepanjang video</string>
   <string name="morphe_niconico_comments_summary">Menampilkan tombol hamparan di pemutar video. Ketuk untuk menampilkan atau menyembunyikan komentar, ketuk dan tahan untuk setelan cepat</string>
+  <string name="morphe_niconico_comments_appearance_title">Tampilan</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Potret</string>
+  <string name="morphe_niconico_comments_video_types_title">Tipe video</string>
   <string name="morphe_niconico_comments_font_size_title">Ukuran font komentar</string>
   <string name="morphe_niconico_comments_font_size_summary">Ukuran teks komentar (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Opasitas komentar</string>
@@ -1781,6 +1783,16 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_niconico_comments_travel_duration_summary">Berapa detik yang dibutuhkan komentar untuk melintasi layar. Nilai yang lebih rendah bergerak lebih cepat</string>
   <string name="morphe_niconico_comments_display_area_title">Area tampilan</string>
   <string name="morphe_niconico_comments_display_area_summary">Seberapa besar bagian pemutar, dari atas, yang digunakan oleh komentar. Nilai yang lebih rendah menjaga bagian bawah video tetap bersih</string>
+  <string name="morphe_niconico_comments_portrait_title">Tampilkan dalam potret</string>
+  <string name="morphe_niconico_comments_portrait_summary">Tampilkan komentar saat layar dalam mode potret. Matikan untuk menampilkannya hanya dalam mode lanskap</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Pengaturan terpisah untuk potret</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Gunakan ukuran font, durasi perjalanan, dan area tampilan yang berbeda dalam mode potret. Saat diaktifkan, pengaturan akan dimulai dari nilai saat ini</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Ukuran font komentar dalam potret</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Ukuran teks komentar dalam mode potret (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Durasi perjalanan dalam potret</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Berapa detik waktu yang dibutuhkan komentar untuk melintasi layar dalam mode potret</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Area tampilan dalam mode potret</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Seberapa banyak bagian pemutar, dari atas, yang digunakan komentar dalam mode potret</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Sembunyikan komentar yang akan tumpang tindih</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Saat area tampilan penuh, komentar baru akan disembunyikan daripada menimpa komentar lain</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimal panjang komentar</string>
@@ -1798,6 +1810,8 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_niconico_comments_timed_comments_summary">Pada video tanpa chat, komentar teratas yang mengandung waktu seperti 1:23 akan ditampilkan pada waktu tersebut</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Tampilkan komentar terjadwal dengan putar ulang obrolan</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Pada putar ulang siaran langsung dan Premiere, komentar terjadwal juga ditampilkan bersama obrolan</string>
+  <string name="morphe_niconico_comments_all_settings">Semua setelan</string>
+  <string name="morphe_niconico_comments_reset_title">Atur ulang setelan ini?</string>
   <string name="morphe_live_chat_translate_screen_title">Terjemahan live chat</string>
   <string name="morphe_live_chat_translate_screen_summary">Terjemahkan pesan live chat dan rekaman live chat</string>
   <string name="morphe_live_chat_translate_title">Terjemahkan live chat</string>

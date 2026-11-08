@@ -27,11 +27,6 @@ public class ChaptersHookPatch {
     private static boolean heatMapPeakPoint = false;
 
     @Nullable
-    public static TimelineMarker[] getChapterMarkers() {
-        return chapterMarkers;
-    }
-
-    @Nullable
     public static CharSequence getChapterTitleAtTime(long currentMillis) {
         TimelineMarker[] markers = chapterMarkers;
         if (markers != null) {

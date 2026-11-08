@@ -229,6 +229,19 @@ Pil optimizasyonu değiştirilmezse şu durumlarla karşılaşabilirsiniz:
 En sorunsuz deneyimi istiyorsanız, bunu &lt;b&gt;kaldırın&lt;/b&gt; ve önerilen ✅ &lt;b&gt;%2$s&lt;/b&gt; sürümünü yamalayın"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Deneysel istiyorum</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Stabil istiyorum</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Yama güncellemeleri için uygulama içi bildirim göster</string>
+  <string name="morphe_patches_update_notice_entry_off">Kapalı</string>
+  <string name="morphe_patches_update_notice_entry_stable">Kararlı sürümler</string>
+  <string name="morphe_patches_update_notice_entry_dev">Kararlı ve geliştirme sürümleri</string>
+  <string name="morphe_patches_update_notice_dialog_title">Yeni yamalar mevcut</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Yamaları &lt;b&gt;%1$s&lt;/b&gt; (mevcut: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Yeni özellikler</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Hata düzeltmeleri</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Diğer değişiklikler</string>
+  <string name="morphe_patches_update_notice_dialog_more">…ve %s daha</string>
+  <string name="morphe_patches_update_notice_dialog_update">Güncelle</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Yok say</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Çökme günlüğü kullanıcı belgelerine kaydedildi: %s</string>
   <string name="morphe_crash_log_saved">Çökme günlüğü kaydedildi: %s</string>

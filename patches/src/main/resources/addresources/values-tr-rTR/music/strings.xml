@@ -490,6 +490,23 @@ SABR oynatma (video akışlarını taklit etme kapalı)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Yükselt düğmesini gizle</string>
   <string name="morphe_music_hide_navigation_bar_title">Gezinme çubuğunu gizle</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Gezinme düğmeleri etiketlerini gizle</string>
+  <string name="morphe_music_navigation_bar_glass_title">Cam gezinme çubuğunu etkinleştir</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Gezinme çubuğunu yüzen, yuvarlak, yarı saydam bir kapsül olarak gösterir</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Cam opaklığı</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Cam gezinme çubuğunun şeffaflık düzeyini ayarlayın (0 şeffaf, 100 opak)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Açık renkli cam</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Daha açık ve net bir cam için, cam gezinme çubuğunu koyu yerine beyaza boyar</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Cam gezinme çubuğu boyutu</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Cam gezinme çubuğunun yüksekliğini, genişliğini ve düğme aralığını bir önizleme ile ayarlayın. Ekran genişliğine sığmayan düğmeler gizlenir</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Yükseklik</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Maksimum genişlik</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Düğme aralığı</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Gösterilen düğmeler: %2$s düğmeden %1$s tanesi</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Ana Sayfa</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Örnekler</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Keşfet</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Kitaplık</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Oturum açılmadı. Yapılandırmak için dokunun</string>
   <string name="morphe_music_scrobbling_log_out">Oturumu Kapat</string>
@@ -716,7 +733,7 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Çince ve Kantonca karakterler (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Çince kelimeler (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Yunan, Slav Kiril alfabesi (Rusça, Ukraynaca, Bulgarca, Sırpça, Beyaz Rusça, Makedonca dahil), Gürcü, Ermeni, İbranice, Arapça, Amharca ve Süryanice transkripsiyon (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s okunuyor: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s okunuyor: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Yenile düğmesini göster</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Sonraki şarkı sözleri adayına geçmek için dokunun, şarkı sözlerini şarkı başlığı ve sanatçı ile aramak için basılı tutun</string>
   <string name="morphe_music_lyrics_search_dialog_title">Şarkı sözü ara</string>

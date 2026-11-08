@@ -229,6 +229,19 @@ Wird die Akkuoptimierung nicht geändert, kann es zu folgenden Problemen kommen:
 Wenn Sie die problemloseste Erfahrung wünschen, dann &lt;b&gt;deinstallieren&lt;/b&gt; Sie diese und patchen Sie die empfohlene App-Version ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ich möchte experimentell</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ich möchte stabil</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">In-App-Benachrichtigung für Patch-Updates anzeigen</string>
+  <string name="morphe_patches_update_notice_entry_off">Deaktiviert</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabile Versionen</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabile und Dev-Versionen</string>
+  <string name="morphe_patches_update_notice_dialog_title">Neue Patches verfügbar</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (aktuell: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Neue Funktionen</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Fehlerbehebungen</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Andere Änderungen</string>
+  <string name="morphe_patches_update_notice_dialog_more">…und %s weitere</string>
+  <string name="morphe_patches_update_notice_dialog_update">Update</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Verwerfen</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Absturzprotokoll in Benutzerdokumenten gespeichert: %s</string>
   <string name="morphe_crash_log_saved">Absturzprotokoll gespeichert: %s</string>

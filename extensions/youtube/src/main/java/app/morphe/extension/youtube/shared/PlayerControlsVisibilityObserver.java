@@ -57,18 +57,12 @@ public final class PlayerControlsVisibilityObserver {
     }
 
     /**
-     * is the {@link #controlButtonView} set to a valid reference of a view?
-     */
-    private boolean isAttached() {
-        View view = controlButtonView.get();
-        return view != null && view.getParent() != null;
-    }
-
-    /**
      * find and attach the player_control_play_pause_replay_button_touch_area view if needed
      */
     private void maybeAttach() {
-        if (isAttached()) return;
+        // The controlButtonView is already set to a valid reference of a view.
+        View attached = controlButtonView.get();
+        if (attached != null && attached.getParent() != null) return;
 
         // find parent, then player_control_play_pause_replay_button_touch_area view
         // this is needed because there may be two views where id=R.id.player_control_play_pause_replay_button_touch_area

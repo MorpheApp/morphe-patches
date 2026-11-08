@@ -227,6 +227,19 @@ Pokud se optimalizace baterie nezmění, můžete zaznamenat:
 Pokud chcete mít co nejméně problémů, &lt;b&gt;odinstalujte&lt;/b&gt; tuto aplikaci a aktualizujte doporučenou verzi aplikace ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chci experimentální</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chci stabilní</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Zobrazovat oznámení v aplikaci o aktualizacích oprav</string>
+  <string name="morphe_patches_update_notice_entry_off">Vypnuto</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabilní verze</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabilní a vývojové verze</string>
+  <string name="morphe_patches_update_notice_dialog_title">K dispozici jsou nové záplaty</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (aktuální: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nové funkce</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Opravy chyb</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Ostatní změny</string>
+  <string name="morphe_patches_update_notice_dialog_more">…a dalších %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Aktualizovat</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Zrušit</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Záznam o pádu byl uložen do uživatelských dokumentů: %s</string>
   <string name="morphe_crash_log_saved">Záznam o pádu uložen: %s</string>

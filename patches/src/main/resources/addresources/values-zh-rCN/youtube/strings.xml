@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">过滤搜索结果</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">过滤订阅视频</string>
   <string name="morphe_hide_keyword_content_phrases_title">要隐藏的关键字</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"输入要隐藏的关键词和短语，换行隔开
+  <string name="morphe_hide_keyword_content_phrases_summary">"输入要隐藏的关键词和短语，用换行符分隔
 
-关键词可以是视频标题或频道名称中显示的任何文本
-
-中间带有大写字母的单词必须完全匹配大小写（例如：iPhone、TikTok、LeBlanc）"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"首页/订阅/搜索/评论会过滤掉与关键词短语匹配的内容
+关键词可以是视频标题或频道名称中显示的任何文本"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"首页 / 订阅 / 搜索 / 评论将经过过滤，以隐藏与关键词短语匹配的内容
 
 限制：
-• Shorts 无法通过频道名称隐藏
-• 某些 UI 组件可能不会隐藏
-• 搜索关键词可能没有结果"</string>
+• 部分 Shorts 无法通过频道名称隐藏
+• 某些 UI 组件可能不会隐藏"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">匹配整个词语</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">使用带双引号的关键字/短语来防止过滤掉只有部分匹配的视频标题和频道名称&lt;br&gt;&lt;br&gt;例如，&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; 将隐藏视频： &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;但不会隐藏： &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">无法使用关键词：%s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">添加引号以使用关键词：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">关键词存在冲突声明：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">关键词过短，需要加上引号：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">关键词将隐藏所有影片：%s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">正在翻译……</string>
   <string name="morphe_post_translate_failed">无法翻译该帖子</string>
   <string name="morphe_post_translate_same_language">该帖子已经是翻译目标语言</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">启用随处可用 Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">播放器飞出菜单的“随身播放”可打开 Morphe 自定义播放控制</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">随身播放</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">将Ask项目添加到弹出菜单</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">在动态推送弹出菜单中添加视频摘要项目</string>
@@ -794,7 +794,6 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">启用点按进度条</string>
   <string name="morphe_tap_to_seek_summary">点击进度条任意位置即可跳转到该位置，而无需拖动</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">自定义进度条滑块</string>
   <string name="morphe_custom_seekbar_thumb_title">启用自定义进度条滑块</string>
   <string name="morphe_custom_seekbar_thumb_summary">将进度条滑块替换为自定义图像或动画 GIF</string>
   <string name="morphe_custom_seekbar_thumb_file_title">滑块图像</string>
@@ -1774,6 +1773,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Niconico 弹幕</string>
   <string name="morphe_niconico_comments_screen_summary">将实时聊天和聊天回放以在视频上滚动弹幕的形式显示</string>
   <string name="morphe_niconico_comments_summary">在视频播放器中显示一个叠加按钮。点击以显示或隐藏弹幕，长按进入快速设置</string>
+  <string name="morphe_niconico_comments_appearance_title">外观</string>
+  <string name="morphe_niconico_comments_portrait_category_title">纵向显示</string>
+  <string name="morphe_niconico_comments_video_types_title">视频类型</string>
   <string name="morphe_niconico_comments_font_size_title">弹幕字体大小</string>
   <string name="morphe_niconico_comments_font_size_summary">弹幕的文本大小 (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">弹幕不透明度</string>
@@ -1782,6 +1784,16 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">评论横跨屏幕所需的时间（秒）。值越低移动速度越快</string>
   <string name="morphe_niconico_comments_display_area_title">显示区域</string>
   <string name="morphe_niconico_comments_display_area_summary">评论占用播放器顶部开始的区域大小。数值越低，视频底部留白越多</string>
+  <string name="morphe_niconico_comments_portrait_title">在纵向模式下显示</string>
+  <string name="morphe_niconico_comments_portrait_summary">屏幕在纵向模式时显示评论。关闭则仅在横向模式下显示</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">纵向模式独立设置</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">在纵向模式下使用不同的字体大小、滚动时长和显示区域。开启后，将从当前值开始设置</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">纵向模式下的评论字体大小</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">纵向模式下评论的文本大小 (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">纵向模式下的滚动时长</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">在纵向模式下评论横跨屏幕所需的时间（秒）</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">纵向模式下的显示区域</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">在纵向模式下，评论从播放器顶部开始占据的区域范围</string>
   <string name="morphe_niconico_comments_hide_crowded_title">隐藏重叠的评论</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">当显示区域已满时，新评论将被隐藏，而不会覆盖其他评论</string>
   <string name="morphe_niconico_comments_max_length_title">最大评论长度</string>
@@ -1799,6 +1811,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_timed_comments_summary">在没有聊天内容的视频中，包含 1:23 等时间戳的热门评论将在相应时间显示</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">在聊天回放中显示定时评论</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">在直播回放和首播回放中，定时评论将与聊天内容一起显示</string>
+  <string name="morphe_niconico_comments_all_settings">所有设置</string>
+  <string name="morphe_niconico_comments_reset_title">重置这些设置？</string>
   <string name="morphe_live_chat_translate_screen_title">实时聊天翻译</string>
   <string name="morphe_live_chat_translate_screen_summary">翻译实时聊天和实时聊天回放消息</string>
   <string name="morphe_live_chat_translate_title">翻译实时聊天</string>

@@ -229,6 +229,19 @@ Tapnite gumba Nadaljuj in dovolite spremembe optimizacij"</string>
 Če želite najbolj brezhibno izkušnjo, potem &lt;b&gt;odinstalirajte&lt;/b&gt; to in posodobite priporočeno različico aplikacije ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Želim eksperimentalno</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Želim stabilno</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Prikaži obvestilo v aplikaciji za posodobitve popravkov</string>
+  <string name="morphe_patches_update_notice_entry_off">Izklopljeno</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabilne različice</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabilne in razvojne različice</string>
+  <string name="morphe_patches_update_notice_dialog_title">Na voljo so nove posodobitve</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (trenutno: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nove funkcije</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Popravki napak</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Druge spremembe</string>
+  <string name="morphe_patches_update_notice_dialog_more">…in še %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Posodobi</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Zapri</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Dnevnik zrušitve shranjen v uporabniške dokumente: %s</string>
   <string name="morphe_crash_log_saved">Dnevnik zrušitve shranjen: %s</string>

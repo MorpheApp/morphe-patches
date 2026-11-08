@@ -216,7 +216,7 @@ public class SwipeControlsHostActivity extends Activity {
         config = new SwipeControlsConfigurationProvider();
         keys = new VolumeKeysController(this);
         audio = createAudioController();
-        screen = createScreenController();
+        screen = config.isBrightnessControlEnabled() ? new ScreenBrightnessController(this) : null;
 
         // create overlay
         overlay = new SwipeControlsOverlayLayout(this, config);
@@ -234,7 +234,9 @@ public class SwipeControlsHostActivity extends Activity {
         });
 
         // create the gesture controller
-        gesture = createGestureController();
+        gesture = config.shouldEnablePressToSwipe()
+                ? new PressToSwipeController(this)
+                : new ClassicSwipeController(this);
 
         // listen for changes in the player type
         playerTypeObserver = this::onPlayerTypeChanged;
@@ -317,25 +319,6 @@ public class SwipeControlsHostActivity extends Activity {
         }
         AudioVolumeController controller = new AudioVolumeController(this);
         return controller.isAvailable() ? controller : null;
-    }
-
-    /**
-     * Creates the screen brightness controller instance.
-     */
-    @Nullable
-    private ScreenBrightnessController createScreenController() {
-        return config.isBrightnessControlEnabled()
-                ? new ScreenBrightnessController(this)
-                : null;
-    }
-
-    /**
-     * Creates the gesture controller based on settings.
-     */
-    private GestureController createGestureController() {
-        return config.shouldEnablePressToSwipe()
-                ? new PressToSwipeController(this)
-                : new ClassicSwipeController(this);
     }
 
     /**

@@ -228,6 +228,19 @@ Second \"item\" text"</string>
 ئەگەر تؤیترین توشی هەر كێشەیەك نةبوونى، ئەوا &lt;b&gt;راكړه‌تەر&lt;/b&gt; و بؤ وერსۆنى مسه‌تەبی &lt;b&gt;%2$s&lt;/b&gt;✅ په‌چۆكه"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ تاقیکاری دەمەوێت</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ جێگیر دەمەوێت</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">ئاگادارکەرەوەی ناو ئەپڵیکەیشن بۆ نوێکردنەوەکانی پاتچ پیشان بدە</string>
+  <string name="morphe_patches_update_notice_entry_off">کوژاوە</string>
+  <string name="morphe_patches_update_notice_entry_stable">بۆشانی جێگیرەکان</string>
+  <string name="morphe_patches_update_notice_entry_dev">بۆشاندنەکانی جێگیر و گەشەپێدەر</string>
+  <string name="morphe_patches_update_notice_dialog_title">پینەی نوێ بەردەستە</string>
+  <string name="morphe_patches_update_notice_dialog_message">پاتچەکانی Morphe &lt;b&gt;%1$s&lt;/b&gt; (ئێستا: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ تایبەتمەندییەکانی نوێ</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 چاککردنی کەلەکەکان</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 گۆڕانکارییەکانی تر</string>
+  <string name="morphe_patches_update_notice_dialog_more">…و %s زیاتر</string>
+  <string name="morphe_patches_update_notice_dialog_update">نوێکردنەوە</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">داخستن</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">لۆگی هەرستە بڕاوە بۆ بەڵگەنامەکانی بەکارهێنەر: %s</string>
   <string name="morphe_crash_log_saved">لۆگی هەرستە بڕاوە: %s</string>

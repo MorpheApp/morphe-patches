@@ -309,25 +309,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">Sakrij pretrage pomoću ključnim riječima</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Sakrij videozapise na tablici Pretplatezene pomoću ključnim riječima</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ključne riječi za skrivenje</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Unesite ključne riječi i fraze za skrivanje, odvojene novim redovima
+  <string name="morphe_hide_keyword_content_phrases_summary">"Unesite ključne riječi i fraze koje želite sakriti, odvojene novim redovima
 
-Ključne riječi mogu biti bilo koji tekst prikazan u nazivima videozapisa ili nazivima kanala
-
-Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Početna / Pretplate / Pretraživanje / Komentari su filtrirani kako bi se sakrio sadržaj koji odgovara ključnim frazama
+Ključne riječi mogu biti bilo koji tekst koji se prikazuje u naslovima videozapisa ili nazivima kanala"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Početna / Pretplatnici / Pretraživanje / Komentari filtriraju se kako bi se sakrio sadržaj koji odgovara ključnim frazama
 
 Ograničenja:
-• Shorts se ne mogu sakriti po nazivu kanala
-• Neke UI komponente možda neće biti skrivene
-• Pretraživanje ključne riječi može rezultirati bez rezultata"</string>
+• Neki Shorts nisu mogući sakriti prema nazivu kanala
+• Neke UI komponente možda neće biti skrivene"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Pokupljati cijeli ključ/frazu</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Stavljanje ključne riječi/fraze u dvostruke navodnike spriječit će djelomična podudaranja naslova videozapisa i naziva kanala&lt;br&gt;&lt;br&gt;Na primjer,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; sakrit će videozapis: &lt;b&gt;Kako funkcionira umjetna inteligencija?&lt;/b&gt;&lt;br&gt;ali neće sakriti: &lt;b&gt;Što znači poštena upotreba?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Ne možete koristiti ključ: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Dodajte navlake za koristiti ključ: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Kljjuč ima proturke izjave: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kljjuč je prekrato kratak i mora imati navlake: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kljjuč će skriveni sve videozapise: %s</string>
@@ -490,6 +483,13 @@ Prijave su javne i pregledavaju se prije nego što se kanal doda na popis. Uklan
   <string name="morphe_post_translate_started">Prevođenje…</string>
   <string name="morphe_post_translate_failed">Objava se nije mogla prevesti</string>
   <string name="morphe_post_translate_same_language">Objava je već na jeziku za prijevod</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Omogući Morphe u hodu</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Izbornik igrača \"u hodu\" otvara Morphe prilagođene kontrole igrača</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">U hodu</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Dodaj stavku Aska u izbornik flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje stavku za sažetak videa u izbornik flyout naloga</string>
@@ -784,7 +784,6 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <string name="morphe_tap_to_seek_title">Omogu tapanje za pretraživanje</string>
   <string name="morphe_tap_to_seek_summary">Dodirnite bilo gdje na traci za pomicanje kako biste preskočili na tu poziciju umjesto povlačenja</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Prilagođeni pomaknice pokazivač</string>
   <string name="morphe_custom_seekbar_thumb_title">Omogući prilagođeni pomaknice pokazivač</string>
   <string name="morphe_custom_seekbar_thumb_summary">Zamijenite pokazivač pomaknice prilagođenom slikom ili animiranim GIF-om</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Slika pokazivača</string>
@@ -1756,6 +1755,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Niconico komentari</string>
   <string name="morphe_niconico_comments_screen_summary">Prikaži izravni chat i ponovnicu chata kao komentare koji klize preko videa</string>
   <string name="morphe_niconico_comments_summary">Prikazuje gumb preko video playera. Dodirnite za prikaz ili skrivanje komentara, pritišćite i držite za brze postavke</string>
+  <string name="morphe_niconico_comments_appearance_title">Izgled</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portret</string>
+  <string name="morphe_niconico_comments_video_types_title">Vrste videa</string>
   <string name="morphe_niconico_comments_font_size_title">Veličina fonta komentara</string>
   <string name="morphe_niconico_comments_font_size_summary">Veličina teksta komentara (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Neprozirnost komentara</string>
@@ -1764,6 +1766,16 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">Koliko sekundi komentarima treba da pređu ekran. Manje vrijednosti znače brže kretanje</string>
   <string name="morphe_niconico_comments_display_area_title">Područje prikaza</string>
   <string name="morphe_niconico_comments_display_area_summary">Koji dio playera, od vrha, komentari zauzimaju. Niže vrijednosti ostavljaju donji dio videa čistim</string>
+  <string name="morphe_niconico_comments_portrait_title">Prikaži u portretnom načinu</string>
+  <string name="morphe_niconico_comments_portrait_summary">Prikaži komentare kada je zaslon u portretnom načinu. Isključi kako bi se prikazivali samo u landscape načinu</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Zasebne postavke za portretni način</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Koristi različitu veličinu fonta, trajanje putovanja i područje prikaza u portretnom načinu. Kada je uključeno, započinju s trenutnim vrijednostima</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Veličina fonta komentara u portretnom načinu</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Veličina teksta komentara u portretnom načinu (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Trajanje putovanja u portretnom načinu</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Koliko sekundi komentarima treba da pređu ekran u portretnom načinu rada</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Područje prikaza u portretnom načinu rada</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Koji dio playera, od vrha, komentari koriste u portretnom načinu rada</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Sakrij komentare koji bi se preklopili</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Kada je područje prikaza puno, novi komentari se skrivaju umjesto da se preklapaju s drugim komentarima</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimalna duljina komentara</string>
@@ -1781,6 +1793,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_timed_comments_summary">Na videozapisima bez chata, vrhunski komentari koji sadrže vrijeme kao što je 1:23 prikazuju se u tom trenutku</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Prikaži vremenski označene komentare uz ponovnu reprodukciju chata</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Pri ponovnim reprodukcijama prijenosa uživo i premijera, vremenski označeni komentari također se prikazuju uz chat</string>
+  <string name="morphe_niconico_comments_all_settings">Sve postavke</string>
+  <string name="morphe_niconico_comments_reset_title">Ponoviti ove postavke?</string>
   <string name="morphe_live_chat_translate_screen_title">Prijevod chata uživo</string>
   <string name="morphe_live_chat_translate_screen_summary">Prevedi poruke chata uživo i ponovnice chata uživo</string>
   <string name="morphe_live_chat_translate_title">Prevedi chat uživo</string>

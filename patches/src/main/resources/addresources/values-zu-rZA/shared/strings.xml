@@ -229,6 +229,19 @@ Uma ukuthuthukiswa kwebhathri kungashintshwa ungase uhlangabezane nalokhu:
 Uma ufuna uhlelo olungenazo izinkinga, &lt;b&gt;susa&lt;/b&gt; lolu bese ufaka inguqulo ethulekile ekhuthazwayo ka ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ngifuna ezisayizama</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ngifuna ezizinzile</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Khombisa isaziso ohlelweni ngokubuyekezwa kwe-patch</string>
+  <string name="morphe_patches_update_notice_entry_off">Thwaliswe</string>
+  <string name="morphe_patches_update_notice_entry_stable">Izikhala ezizinzile</string>
+  <string name="morphe_patches_update_notice_entry_dev">Izikhala ezizinzile nezothuthukiso</string>
+  <string name="morphe_patches_update_notice_dialog_title">Kukhona ama-patch amasha</string>
+  <string name="morphe_patches_update_notice_dialog_message">Ama-Patch e-Morphe &lt;b&gt;%1$s&lt;/b&gt; (amanje: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Izici ezintsha</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Ukulungiswa kwamaphutha</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Ezinye izinguquko</string>
+  <string name="morphe_patches_update_notice_dialog_more">…nokunye okungaba ngu %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Vuselela</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Valela</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">I-log yokuphuka igcinwe emaqondeni omsebenzisi: %s</string>
   <string name="morphe_crash_log_saved">I-log yokuphuka igcinwe: %s</string>

@@ -221,6 +221,19 @@ Nếu bạn vẫn chưa tắt tối ưu hóa pin, một số lỗi có thể x�
 Nếu bạn muốn có trải nghiệm ổn định và ít lỗi, thì hãy &lt;b&gt;gỡ cài đặt&lt;/b&gt; phiên bản này và  vá phiên bản đề xuất là &lt;b&gt;%2$s&lt;/b&gt; ✅"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Tôi muốn thử</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Thôi ổn định vậy</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Hiển thị thông báo trong ứng dụng cho các bản cập nhật vá lỗi</string>
+  <string name="morphe_patches_update_notice_entry_off">Tắt</string>
+  <string name="morphe_patches_update_notice_entry_stable">Các bản phát hành ổn định</string>
+  <string name="morphe_patches_update_notice_entry_dev">Các bản phát hành ổn định và dev</string>
+  <string name="morphe_patches_update_notice_dialog_title">Đã có bản vá mới</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (hiện tại: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Tính năng mới</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Sửa lỗi</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Các thay đổi khác</string>
+  <string name="morphe_patches_update_notice_dialog_more">…và %s mục khác</string>
+  <string name="morphe_patches_update_notice_dialog_update">Cập nhật</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Kệ</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Đã lưu nhật ký sự cố vào tài liệu người dùng: %s</string>
   <string name="morphe_crash_log_saved">Đã lưu nhật ký sự cố: %s</string>

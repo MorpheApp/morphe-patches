@@ -490,6 +490,23 @@ SABR spilun (slökkt á spoofun myndbandsstrauma)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Fela uppfærsluhnappinn</string>
   <string name="morphe_music_hide_navigation_bar_title">Fela stjórnband</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Fela lýsingar stjórnbandshnappa</string>
+  <string name="morphe_music_navigation_bar_glass_title">Virkja glerstigaðan stýristika</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Sýnir eigumreglustikuna sem flotandi, lögða og gjágæga capsule</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Gjágæga gegnsæi</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Stillir gegnsæi gjágægu eigumreglustikunnar (0 er gegnsætt, 100 er ógegnsætt)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Ljós gler</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Litar gjágægu eigumreglustikuna í hvítum lit í stað dökkum fyrir ljósléttari og heiðari útlit</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Stærð gjágægu eigumreglustikunnar</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Stillir hæð, breidd og fjarlægð milli hnappa á gjágægu eigumreglustikunni með forsýni. Hnappar sem passa ekki innan breiddar skjásins eru faldir</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Hæð</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Hámarkabreidd</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Fjarlægð milli hnappa</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Sýndir hnappar: %1$s af %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Rás</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Sýnishlutar</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Kanna</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Bókasafn</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Ekki innskráður. Ýttu hér til að stilla</string>
   <string name="morphe_music_scrobbling_log_out">Rýma</string>
@@ -716,7 +733,7 @@ Nauðsynlegar vafrakökur: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Kínverskir og Kantónsku stafir (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kínverskir orð (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Gríska, Slavneska kýrillískt (þ.á.m. rússneska, úkraínska, bulgaríska, serbneska, hvíta-rússneska, makedónska), georgíska, armenska, hebreska, arabíska, amhara og sýríska rómanisering (CLDR, ~0,5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Les %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Les %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Settu inn gildar vafrakökur til að leyfa YouTube-tengingu.</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ýttuðu til að skipta yfir í næstu lagatextamöguleika; haltu lengi til að leita að lagatexta eftir lagi og listamanni</string>
   <string name="morphe_music_lyrics_search_dialog_title">Leita að texta</string>

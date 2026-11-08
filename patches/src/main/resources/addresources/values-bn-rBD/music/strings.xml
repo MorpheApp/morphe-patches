@@ -490,6 +490,23 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">আপগ্রেড বোতামটি লুকান</string>
   <string name="morphe_music_hide_navigation_bar_title">নেভিগেশন বার লুকান</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">নেভিগেশন বোতামের লেবেলগুলি লুকান</string>
+  <string name="morphe_music_navigation_bar_glass_title">গ্লাস নেভিগেশন বার সক্ষম করুন</string>
+  <string name="morphe_music_navigation_bar_glass_summary">নেভিগেশন বারটিকে একটি ফ্লোটিং, রাউন্ডেড, ট্রান্সলুসেন্ট ক্যাপসুল হিসেবে দেখায়</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">গ্লাস অপাসিটি</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">গ্লাস নেভিগেশন বারের স্বচ্ছতার স্তর সামঞ্জস্য করুন (০ মানে স্বচ্ছ, ১০০ মানে অস্বচ্ছ)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">লাইট গ্লাস</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">একটি হালকা এবং স্বচ্ছ গ্লাসের জন্য গ্লাস নেভিগেশন বারটিকে ডার্কের পরিবর্তে সাদা রঙ করে</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">গ্লাস নেভিগেশন বারের আকার</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">একটি প্রিভিউ-এর সাথে গ্লাস নেভিগেশন বারের উচ্চতা, প্রস্থ এবং বাটনের স্পেসিং সামঞ্জস্য করুন। স্ক্রিনের প্রস্থে যে বাটনগুলো ধরে না সেগুলো লুকানো থাকে</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">উচ্চতা</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">সর্বোচ্চ প্রস্থ</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">বাটন স্পেসিং</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">প্রদর্শিত বোতাম: %2$s-এর মধ্যে %1$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">হোম</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">স্যাম্পল</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">ঘুরে দেখুন</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">লাইব্রেরি</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">লগ ইন করা হয়নি। কনফিগার করতে ট্যাপ করুন</string>
   <string name="morphe_music_scrobbling_log_out">লগ আউট করুন</string>
@@ -711,7 +728,7 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">চীনা এবং ক্যান্টোনিজ অক্ষর (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">চীনা শব্দ (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">গ্রিক, স্লাভিক সাইরিলিক (রাশিয়ান, ইউক্রেনিয়ান, বলগেরিয়ান, সার্বিয়ান, বেলারুশিয়ান, ম্যাসেডোনিয়ান সহ), জর্জিয়ান, আর্মেনিয়ান, হিব্রু, আরবি, আমহারিক এবং সিরিয়াক ট্রান্সলিটারেশন (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">পড়া হচ্ছে %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">পাঠ করা হচ্ছে %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">রিফ্রেশ বোতাম দেখান</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">পরবর্তী লিরিক্স প্রার্থীতে পরিবর্তন করতে ট্যাপ করুন; গানের নাম এবং শিল্পী দিয়ে লিরিক্স খুঁজতে দীর্ঘক্ষণ চাপুন</string>
   <string name="morphe_music_lyrics_search_dialog_title">গানের কথা অনুসন্ধান</string>

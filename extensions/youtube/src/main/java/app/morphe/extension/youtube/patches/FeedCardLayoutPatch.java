@@ -400,6 +400,11 @@ public class FeedCardLayoutPatch {
      */
     private static final long TEMPLATE_LOOKUP_INTERVAL_MILLIS = 10_000;
     /**
+     * Time before the cache is looked up again while no version of a template is known,
+     * or while the version that is used was not found by the last lookup.
+     */
+    private static final long TEMPLATE_CONFIRM_INTERVAL_MILLIS = 1000;
+    /**
      * Minimum time between the checks of the elements of a template, after the template is taken from an element.
      */
     private static final long TEMPLATE_CHECK_INTERVAL_MILLIS = 60_000;
@@ -524,7 +529,13 @@ public class FeedCardLayoutPatch {
          * Whether the uri and the fields were taken from an element.
          */
         private volatile boolean fromElement;
+        /**
+         * Whether the last lookup did not find the version of the uri in the cache,
+         * which is replaced only if the next lookup does not find it either.
+         */
+        private volatile boolean missingInCache;
         private volatile long cacheLookupTime;
+        private volatile long synchronousLookupTime;
         private long checkTime;
 
         VideoTemplate(String name, int modelField, int themeField, int capabilitiesField) {
@@ -539,16 +550,28 @@ public class FeedCardLayoutPatch {
         String getUri() {
             // The app drops the older versions of the templates from its cache, also while it runs,
             // and the elements of a template version that is no longer cached are not shown.
-            // So the version taken from the cache is looked up again once in a while.
-            // The version of an element is the one the server sends now, and is kept.
+            // So the version is looked up again once in a while, also the version of an element,
+            // which is the one the server sends now, and is kept while the app has it.
+            // Until a version is found, the cache is looked up more often, as the elements that are
+            // converted meanwhile keep the layout of the server.
             final long now = System.currentTimeMillis();
-            if (!fromElement && now - cacheLookupTime > TEMPLATE_LOOKUP_INTERVAL_MILLIS) {
+            if (now - cacheLookupTime > (uri == null || missingInCache
+                    ? TEMPLATE_CONFIRM_INTERVAL_MILLIS
+                    : TEMPLATE_LOOKUP_INTERVAL_MILLIS)) {
+                // The element that is converted now gets the uri of a lookup on its thread,
+                // at most as often as before a version is found.
+                final boolean synchronous = uri == null
+                        && now - synchronousLookupTime > TEMPLATE_LOOKUP_INTERVAL_MILLIS;
+                if (synchronous) {
+                    synchronousLookupTime = now;
+                }
                 cacheLookupTime = now;
                 // The uri of a template includes the hash of its version, so it's taken from the template
                 // cache of the app, which has the templates the app received. The last cached version
                 // of the template is used, or none if the template is not cached.
                 Runnable lookup = () -> {
-                    String cached = null;
+                    // The cached versions of the template, from the oldest to the newest.
+                    List<String> cached = new ArrayList<>();
                     try {
                         File metadata = new File(Utils.getContext().getFilesDir(), "ElementsResourceCacheMetadata");
                         if (metadata.isFile()) {
@@ -569,7 +592,7 @@ public class FeedCardLayoutPatch {
                                             == WireFormat.WIRETYPE_LENGTH_DELIMITED) {
                                         String key = entry.readString();
                                         if (isTemplate(key, name)) {
-                                            cached = key;
+                                            cached.add(key);
                                         }
                                     } else {
                                         entry.skipField(entryTag);
@@ -581,21 +604,41 @@ public class FeedCardLayoutPatch {
                         // The app rewrites the cache while it runs, so the file can be read while it's
                         // incomplete. The uri found before is kept, and the cache is read again soon.
                         Logger.printDebug(() -> "Template cache is being written", ex);
-                        cacheLookupTime = System.currentTimeMillis() - TEMPLATE_LOOKUP_INTERVAL_MILLIS + 1000;
+                        cacheLookupTime = System.currentTimeMillis() - TEMPLATE_LOOKUP_INTERVAL_MILLIS
+                                + TEMPLATE_CONFIRM_INTERVAL_MILLIS;
                         return;
                     } catch (Exception ex) {
                         Logger.printException(() -> "getUri failure", ex);
                         return;
                     }
                     // An element of the template can be seen while the cache is read.
-                    if (!fromElement && !Objects.equals(uri, cached)) {
-                        String found = cached;
-                        Logger.printDebug(() -> "Cached template: " + found);
-                        uri = cached;
+                    synchronized (this) {
+                        String current = uri;
+                        // The app rewrites the cache in the same file while it runs, so a file that is read
+                        // while it's rewritten can end before the template without an error. Without the uri,
+                        // the elements would keep the layout of the server, so a version that is not found
+                        // is replaced only if the next lookup does not find it either.
+                        if (current != null && !cached.contains(current) && !missingInCache) {
+                            missingInCache = true;
+                            Logger.printDebug(() -> "Template not found in the cache: " + current);
+                            return;
+                        }
+                        missingInCache = false;
+
+                        String newest = cached.isEmpty() ? null : cached.get(cached.size() - 1);
+                        // The version of an element is kept while it's cached, and while no version is cached,
+                        // as the app can use it before it's written to the cache.
+                        if (fromElement
+                                ? newest == null || cached.contains(current)
+                                : Objects.equals(current, newest)) {
+                            return;
+                        }
+                        Logger.printDebug(() -> "Cached template: " + newest);
+                        uri = newest;
+                        fromElement = false;
                     }
                 };
-                // The first lookup gives the uri to the element that is converted now.
-                if (uri == null) {
+                if (synchronous) {
                     lookup.run();
                 } else {
                     Utils.runOnBackgroundThread(lookup);
@@ -667,8 +710,12 @@ public class FeedCardLayoutPatch {
                             Logger.printDebug(() -> "Template of an element: " + elementUri + " theme field: "
                                     + template.themeField + " capabilities field: " + template.capabilitiesField);
                         }
-                        template.uri = elementUri;
-                        template.fromElement = true;
+                        // A lookup of the cache can replace the uri at the same time.
+                        synchronized (template) {
+                            template.uri = elementUri;
+                            template.fromElement = true;
+                            template.missingInCache = false;
+                        }
                     }
                 }
                 return bytes;
@@ -1948,15 +1995,6 @@ public class FeedCardLayoutPatch {
         }
     }
 
-    /**
-     * @return The header of the Shorts shelf, which is the Shorts shelf header or another shelf header
-     *         above the Shorts, or null if the item above the Shorts is not a shelf header.
-     */
-    @Nullable
-    private static View getShortsShelfHeader(@Nullable View above) {
-        return above != null && (isShelfHeader(above) || isVideoShelfHeader(above)) ? above : null;
-    }
-
     private static boolean isVideoShelfRow(View item) {
         return hasLabelMarker(item, VIDEO_SHELF_ROW_LABEL_MARKER, 0);
     }
@@ -1973,7 +2011,9 @@ public class FeedCardLayoutPatch {
      */
     private static void drawShortsShelfCard(RecyclerView list, @Nullable View above, View firstRow,
                                             @Nullable Canvas canvas) {
-        View header = getShortsShelfHeader(above);
+        // The Shorts shelf header or another shelf header above the Shorts,
+        // or null if the item above the Shorts is not a shelf header.
+        View header = above != null && (isShelfHeader(above) || isVideoShelfHeader(above)) ? above : null;
         // The rows of Shorts are the list items below the header, which can be scrolled out of the list.
         List<View> rows = new ArrayList<>();
         View item = firstRow;

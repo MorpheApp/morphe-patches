@@ -156,6 +156,22 @@ Second \"item\" text"</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_navigation_bar_glass_title">கிளாஸ் நேவிகேஷன் பாரை இயக்கவும்</string>
+  <string name="morphe_music_navigation_bar_glass_summary">வழிசெலுத்தல் பட்டையை மிதக்கும், உருண்டையான, ஒளிபுகும் கேப்சூலாகக் காட்டுகிறது</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">கிளாஸ் ஒளிபுகும் தன்மை</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">கிளாஸ் வழிசெலுத்தல் பட்டையின் வெளிப்படைத்தன்மை அளவை சரிசெய்யவும் (0 என்பது வெளிப்படையானது, 100 என்பது ஒளிபுகாதது)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">லேட் கிளாஸ்</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">லேசான மற்றும் தெளிவான கிளாஸுக்காக, கிளாஸ் வழிசெலுத்தல் பட்டையை இருண்ட நிறத்திற்குப் பதிலாக வெள்ளை நிறத்தில் மாற்றுகிறது</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">கிளாஸ் வழிசெலுத்தல் பட்டை அளவு</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">கிளாஸ் வழிசெலுத்தல் பட்டையின் உயரம், அகலம் மற்றும் பொத்தானுகளின் இடைவெளியை முன்னோட்டத்துடன் சரிசெய்யவும். திரையின் அகலத்தில் பொருந்தாத பொத்தான்கள் மறைக்கப்படும்</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">உயரம்</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">அதிகபட்ச அகலம்</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">பொத்தான்களின் இடைவெளி</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">முகப்பு</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">மாதிரிகள்</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">ஆராயுங்கள்</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">நூலகம்</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbled' must be kept untranslated -->
@@ -261,7 +277,6 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">சீன மற்றும் காண்டனீஸ் எழுத்துக்கள் (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">சீன வார்த்தைகள் (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">கிரேக்க, ஸ்லாவிக் சிரிலிக் (ரஷ்யன், உக்ரேனியன், பல்கேரியன், செர்பியன், பெலாரூசியன், மாகிடோனியன் உட்பட), ஜார்ஜியன், அர்மேனியன், ஹீப்ரு, அரபு, அம்ஹாரிக் மற்றும் சிரியாக் ஒலிபெயர்ப்பு (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">வாசிக்கப்படுகிறது %1$s: %2$d%%</string>
   <string name="morphe_music_lyrics_written_by">எழுதியவர்: %s</string>
   <string name="morphe_music_lyrics_line_scale_title">செயலில் இல்லாத வரிகளைக் குறுக்கவும்</string>
   <string name="morphe_music_lyrics_line_scale_summary">தற்போது பாடப்படாத ஒவ்வொரு வரியையும் சற்று சிறியதாக வரைந்து, அதே சமயம் மங்கலாகக் காட்டும்</string>

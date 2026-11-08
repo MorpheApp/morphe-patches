@@ -18,7 +18,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Build;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +32,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.apps.youtube.app.application.Shell_SettingsActivity;
-import com.google.android.gms.common.api.GoogleApiActivity;
 import com.google.protobuf.ExtensionRegistryLite;
 import com.google.protobuf.MessageLite;
 
@@ -55,7 +53,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
@@ -84,6 +81,7 @@ import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.shared.NavigationBar;
 
 @SuppressWarnings("unused")
@@ -191,7 +189,7 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static void navigationTabCreated(NavigationBar.NavigationButton button, View tabView) {
-        GlassNavigationBar.navigationTabCreated(button, tabView);
+        YouTubeGlassNavigationBar.navigationTabCreated(button, tabView);
 
         if (button == NavigationBar.NavigationButton.NOTIFICATIONS) {
             notificationsTabCreated = true;
@@ -255,7 +253,7 @@ public final class NavigationBarPatch {
      * The glass navigation bar sets the width of the buttons itself, from their content and spacing.
      */
     public static boolean enableNarrowNavigationButton(boolean original) {
-        return (NARROW_NAVIGATION_BUTTONS && !GlassNavigationBar.isEnabled()) || original;
+        return (NARROW_NAVIGATION_BUTTONS && !YouTubeGlassNavigationBar.isEnabled()) || original;
     }
 
     /**
@@ -489,11 +487,15 @@ public final class NavigationBarPatch {
      * the player moves, such as when it is slowly dragged down to the miniplayer
      * (<a href="https://github.com/MorpheApp/morphe-patches/pull/3684#issuecomment-6322984709">...</a>).
      * With {@link NavigationBarStyle#TRANSPARENT} and {@link NavigationBarStyle#OPAQUE} the copy
-     * is not drawn, so the bar keeps its translucent color, without the blur.
+     * is not drawn either, so the bar keeps its translucent color, without the blur.
      *
      * @param hardwareAccelerated If the canvas is hardware accelerated, which the blur is drawn for.
      */
     public static boolean useNavigationBarBlur(boolean hardwareAccelerated) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            return false;
+        }
+
         return hardwareAccelerated && !(translucentNavigationBarBackgroundForced
                 && (NAVIGATION_BAR_STYLE == NavigationBarStyle.TRANSPARENT
                 || NAVIGATION_BAR_STYLE == NavigationBarStyle.OPAQUE));
@@ -528,9 +530,9 @@ public final class NavigationBarPatch {
             }
 
             padding = setSlimStatusBarRoom(navigationBar, padding);
-            padding = GlassNavigationBar.getFloatingRoom(navigationBar, padding);
+            padding = YouTubeGlassNavigationBar.getFloatingRoom(navigationBar, padding);
             // The value is also stored as the room the bar adds to its height.
-            GlassNavigationBar.setAppRoom(padding);
+            YouTubeGlassNavigationBar.setAppRoom(padding);
         } catch (Exception ex) {
             Logger.printException(() -> "getNavigationBarBottomPadding failure", ex);
         }
@@ -624,7 +626,7 @@ public final class NavigationBarPatch {
                     // The capsule of the glass navigation bar follows the slim status bar, see GlassDrawable.draw(),
                     // which moves without changing the navigation bar.
                     View navigationBar = view.findViewById(PIVOT_BAR);
-                    if (GlassNavigationBar.isEnabled() && navigationBar != null) {
+                    if (YouTubeGlassNavigationBar.isEnabled() && navigationBar != null) {
                         navigationBar.invalidate();
                     }
 
@@ -634,10 +636,10 @@ public final class NavigationBarPatch {
                     if (translucentNavigationBarForced && navigationBar instanceof PivotBarAccess access) {
                         final int room = systemButtonsRoom;
                         view.post(() -> {
-                            final int navigationBarRoom = GlassNavigationBar.getFloatingRoom(
+                            final int navigationBarRoom = YouTubeGlassNavigationBar.getFloatingRoom(
                                     navigationBar, setSlimStatusBarRoom(navigationBar, room));
                             access.patch_setSystemButtonsRoom(navigationBarRoom);
-                            GlassNavigationBar.setAppRoom(navigationBarRoom);
+                            YouTubeGlassNavigationBar.setAppRoom(navigationBarRoom);
                             navigationBar.setPadding(navigationBar.getPaddingLeft(), navigationBar.getPaddingTop(),
                                     navigationBar.getPaddingRight(), navigationBarRoom);
                         });
@@ -744,7 +746,7 @@ public final class NavigationBarPatch {
      * Called whenever the navigation bar is measured.
      */
     public static int getNavigationBarHeightMeasureSpec(View navigationBar, int heightMeasureSpec) {
-        return GlassNavigationBar.getHeightMeasureSpec(navigationBar, heightMeasureSpec);
+        return YouTubeGlassNavigationBar.getHeightMeasureSpec(navigationBar, heightMeasureSpec);
     }
 
     /**
@@ -753,7 +755,7 @@ public final class NavigationBarPatch {
      * Called whenever the vertical translation of the navigation bar is set.
      */
     public static float getNavigationBarTranslationY(View navigationBar, float translationY) {
-        return GlassNavigationBar.getTranslationY(navigationBar, translationY);
+        return YouTubeGlassNavigationBar.getTranslationY(navigationBar, translationY);
     }
 
     /**
@@ -764,7 +766,7 @@ public final class NavigationBarPatch {
      * @param bottom The bottom padding, the room below the buttons.
      */
     public static int getNavigationBarPadding(View navigationBar, int bottom) {
-        return GlassNavigationBar.getFloatingRoom(navigationBar, bottom);
+        return YouTubeGlassNavigationBar.getFloatingRoom(navigationBar, bottom);
     }
 
     /**
@@ -773,7 +775,7 @@ public final class NavigationBarPatch {
      * Called when the app makes the tint paint drawn over the blurred background of the navigation bar.
      */
     public static void setNavigationBarBlurTint(Paint tint) {
-        GlassNavigationBar.lightenBlurTint(tint);
+        YouTubeGlassNavigationBar.lightenBlurTint(tint);
     }
 
     /**
@@ -782,10 +784,10 @@ public final class NavigationBarPatch {
      * @param bottomBarContainer The container of the navigation bar.
      */
     public static void setNavigationBarGlass(View bottomBarContainer) {
-        if (!GlassNavigationBar.isEnabled()) return;
+        if (!YouTubeGlassNavigationBar.isEnabled()) return;
 
         try {
-            GlassNavigationBar.apply(bottomBarContainer);
+            YouTubeGlassNavigationBar.apply(bottomBarContainer);
         } catch (Exception ex) {
             Logger.printException(() -> "setNavigationBarGlass failure", ex);
         }
@@ -1543,22 +1545,6 @@ public final class NavigationBarPatch {
     }
 
     private static void openMorpheSettings(View view) {
-        Activity activity = Utils.getActivity();
-        Context context = activity != null ? activity : view.getContext();
-
-        try {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.setData(Uri.parse(BaseActivityHook.MORPHE_SETTINGS_INTENT));
-            intent.setPackage(context.getPackageName());
-            intent.setClass(context, GoogleApiActivity.class);
-
-            if (activity == null) {
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            }
-
-            context.startActivity(intent);
-        } catch (Exception e) {
-            Logger.printException(() -> "Failed to open Morphe settings", e);
-        }
+        YouTubeActivityHook.openSettings(view.getContext(), null);
     }
 }

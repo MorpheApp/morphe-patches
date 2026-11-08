@@ -319,25 +319,18 @@ Pakeitimai apima:
   <string name="morphe_hide_keyword_content_search_title">Slėpti paieškos rezultatus pagal raktinius žodžius</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Slėpti prenumeratų vaizdo įrašus pagal raktinius žodžius</string>
   <string name="morphe_hide_keyword_content_phrases_title">Raktiniai žodžiai slėpimui</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Įveskite raktinius žodžius ir frazes, kuriuos norite paslėpti, atskirtus naujomis eilutėmis
+  <string name="morphe_hide_keyword_content_phrases_summary">"Įveskite raktinius žodžius ir frazes, kurias norite paslėpti, atskirdami jas naujomis eilutėmis
 
-Raktiniai žodžiai gali būti bet koks tekstas, rodomas vaizdo įrašų pavadinimuose arba kanalų pavadinimuose
-
-Žodžiai su didžiosiomis raidėmis žodžio viduryje turi tiksliai sutapti (pvz., iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Pagrindinis puslapis / Prenumeratos / Paieška / Komentarai filtruojami, kad būtų paslėptas turinys, atitinkantis raktinių žodžių frazes
+Raktiniai žodžiai gali būti bet koks tekstas, rodomas vaizdo įrašų pavadinimuose arba kanalų pavadinimuose"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Pradžia / Prenumeratos / Paieška / Komentarai yra filtruojami, kad būtų paslėptas turinys, atitinkantis raktines frazes
 
 Apribojimai:
-• „Shorts“ negalima paslėpti pagal kanalo pavadinimą
-• Kai kurie vartotojo sąsajos komponentai gali nebūti paslėpti
-• Ieškant raktažodžio gali nebūti rezultatų"</string>
+• kai kurių Shorts nepavyksta paslėpti pagal kanalų pavadinimą
+• kai kurie vartotojo sąsajos komponentai gali būti nepaslėpti"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Atitikti ištisus žodžius</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Apsupę raktinį žodį / frazę dvigubomis kabutėmis išvengsite dalinių vaizdo įrašų pavadinimų ir kanalų pavadinimų atitikimų&lt;br&gt;&lt;br&gt;Pavyzdžiui,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; paslėps vaizdo įrašą: &lt;b&gt;Kaip veikia dirbtinis intelektas?&lt;/b&gt;&lt;br&gt;bet nepaslėps: &lt;b&gt;Ką reiškia sąžiningas naudojimas?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Negalima naudoti raktinio žodžio: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Įtraukite kabutes, kad galėtumėte naudoti raktinį žodį: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Raktinis žodis turi prieštaringas deklaracijas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Raktinis žodis per trumpas ir reikalauja kabučių: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Raktinis žodis paslėps visus vaizdo įrašus: %s</string>
@@ -500,6 +493,13 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_post_translate_started">Vertinama…</string>
   <string name="morphe_post_translate_failed">Nepavyko išversti įrašo</string>
   <string name="morphe_post_translate_same_language">Įrašas jau yra vertimo kalba</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Įjungti \"Morphe\" keliaujant</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Leidėjo išskleidžiamasis meniu „keliaujant“ atidaro specialius „Morphe“ leidėjo valdymo elementus</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Keliaujant</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Pridėti „Ask“ elementą į iškylančiąjį meniu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Pridėti vaizdo įrašo apibendrinimo elementą į feed\'o iškylančiąjį meniu</string>
@@ -794,7 +794,6 @@ Norėdami tai ištaisyti, įjunkite „Maskuoti vaizdo įrašų srautus“ ir pa
   <string name="morphe_tap_to_seek_title">Įjungti perėjimą bakstelint</string>
   <string name="morphe_tap_to_seek_summary">Bakstelėkite bet kur per windingo juostą, kad šokutumėte į tą vietą, vietoj vilkimo</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Specialus ieškimo juostos žymeklis</string>
   <string name="morphe_custom_seekbar_thumb_title">Įjungti specialų ieškimo juostos žymeklį</string>
   <string name="morphe_custom_seekbar_thumb_summary">Pakeiskite ieškimo juostos žymeklį specialiu vaizdu arba animuotu GIF failu</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Žymeklio vaizdas</string>
@@ -1772,6 +1771,9 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_niconico_comments_screen_title">Niconico komentarai</string>
   <string name="morphe_niconico_comments_screen_summary">Rodyti gyvą pokalbį ir pokalbių atkūrimą kaip komentarus, kurie rieda per vaizdo įrašą</string>
   <string name="morphe_niconico_comments_summary">Vaizdo įrašo spusteleklio ekrane rodo mygtuką. Bakstelėkite, kad parodytumėte arba paslėptumėte komentarus, arba bakstelėkite ir laikykite greitiesiems nustatymams</string>
+  <string name="morphe_niconico_comments_appearance_title">Išvaizda</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portretinis režimas</string>
+  <string name="morphe_niconico_comments_video_types_title">Vaizdo įrašų tipai</string>
   <string name="morphe_niconico_comments_font_size_title">Komentarų šrifto dydis</string>
   <string name="morphe_niconico_comments_font_size_summary">Komentarų teksto dydis (12–40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Komentarų skaidrumas</string>
@@ -1780,6 +1782,16 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_niconico_comments_travel_duration_summary">Kiek sekundžių komentarams reikia, kad perekryžtų ekraną. Mažesni reikšmės juda greičiau</string>
   <string name="morphe_niconico_comments_display_area_title">Rodymo zona</string>
   <string name="morphe_niconico_comments_display_area_summary">Kiek procentų plejerio nuo viršaus užima komentarai. Mažesnės reikšmės palieka video apatinę dalį tuščią</string>
+  <string name="morphe_niconico_comments_portrait_title">Rodyti portretiniame režime</string>
+  <string name="morphe_niconico_comments_portrait_summary">Rodyti komentarus, kai ekranas yra portretiniame režime. Išjunkite, kad jie būtų rodomi tik horizontaliame režime</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Atskiri nustatymai portretiniam režimui</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Naudoti kitą šrifto dydį, teksto trukmę ir rodymo vietą portretiniame režime. Įjungus, jie prasideda nuo dabartinių reikšmių</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Komentarų šrifto dydis portretiniame režime</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Komentarų teksto dydis portretiniame režime (12–40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Keliavimo trukmė portretiniame režime</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Keliuose sekundėse komentarai perkryžia ekraną portretiniame režime</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Rodymo zona portretiniame režime</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Kokia plejerio dalis nuo viršaus yra naudojama komentarams portretiniame režime</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Slėpti komentarus, kurie sutaptų</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Kai rodymo srutis pilna, nauji komentarai yra slenjami, kad neprieistų prie kitų komentarų</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimalus komentarų ilgis</string>
@@ -1797,6 +1809,8 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_niconico_comments_timed_comments_summary">Vaizdo įrašuose be pokalbių viršutiniai komentarai, kuriuose nurodytas laikas, pvz., 1:23, rodomi tame konkrečiame laike</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Rodyti laiko komentarus su pokalbių atkartojimu</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Tiesioginių transliucijų ir pirmųjų pasirodymų atkartojimuose laiko komentarai taip pat rodomi kartu su pokalbiu</string>
+  <string name="morphe_niconico_comments_all_settings">Visi nustatymai</string>
+  <string name="morphe_niconico_comments_reset_title">Atstatyti šiuos nustatymus?</string>
   <string name="morphe_live_chat_translate_screen_title">Gyvo čato vertimas</string>
   <string name="morphe_live_chat_translate_screen_summary">Vertinkite gyvo čato ir gyvo čato atkūrimo žinutes</string>
   <string name="morphe_live_chat_translate_title">Vertinti gyvą čatą</string>

@@ -229,6 +229,19 @@ Kui aku optimeerimist ei muudeta, võib esineda järgmist:
 Kui soovite võimalikult tõrgetemat kogemust, siis &lt;b&gt;eemaldage&lt;/b&gt; see ja paigaldage soovitatud rakenduse versioon ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Soovin eksperimentaalset</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Soovin stabiilset</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Kuva rakenduses teavitus uuenduste kohta</string>
+  <string name="morphe_patches_update_notice_entry_off">Väljas</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabiilsed versioonid</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabiilsed ja arendusversioonid</string>
+  <string name="morphe_patches_update_notice_dialog_title">Saadaval on uued parandused</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (praegune: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Uued funktsioonid</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Veaparandused</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Muud muudatused</string>
+  <string name="morphe_patches_update_notice_dialog_more">…ja veel %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Uuenda</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Sulge</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Crash-log salvestati kasutaja dokumentidesse: %s</string>
   <string name="morphe_crash_log_saved">Crash-log salvestatud: %s</string>
