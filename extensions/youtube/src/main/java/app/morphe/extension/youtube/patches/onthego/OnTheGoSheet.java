@@ -107,6 +107,7 @@ final class OnTheGoSheet {
     private static final int TIME_BAR_COLOR = 0xFFFF0033;
     private static final float MUTED_TEXT_ALPHA = 0.62f;
     private static final float BUTTON_BACKGROUND_ALPHA = 0.12f;
+    private static final int CONTENT_SIDE_PADDING = Dim.dp20;
 
     private final Activity activity;
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -156,7 +157,9 @@ final class OnTheGoSheet {
         ScrollView scrollView = SheetBottomDialog.createCappedScrollView(context, MAX_HEIGHT_PERCENT);
         LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
-        content.setPadding(Dim.dp20, Dim.dp8, Dim.dp20, Dim.dp20);
+        content.setPadding(CONTENT_SIDE_PADDING, Dim.dp8, CONTENT_SIDE_PADDING, Dim.dp20);
+        // The time bar extends into the side padding.
+        content.setClipToPadding(false);
         scrollView.addView(content);
         mainLayout.addView(scrollView);
 
@@ -220,7 +223,10 @@ final class OnTheGoSheet {
             timeBar.setThumbTintList(timeBarColor);
         }
         timeBar.setProgressBackgroundTintList(ColorStateList.valueOf(mutedColor));
-        timeBar.setPadding(0, Dim.dp8, 0, Dim.dp8);
+        // The thumb extends past the ends of the bar by the thumb offset, so the side padding
+        // must be at least that, or the thumb is cut off at the start and end of the video.
+        final int thumbOffset = timeBar.getThumbOffset();
+        timeBar.setPadding(thumbOffset, Dim.dp8, thumbOffset, Dim.dp8);
         timeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar bar, int progress, boolean fromUser) {
@@ -240,7 +246,12 @@ final class OnTheGoSheet {
                 VideoInformation.seekTo(bar.getProgress());
             }
         });
-        content.addView(timeBar, matchWidth(0, Dim.dp16));
+        // Move the padding into the side padding of the panel, so the bar lines up with the text.
+        LinearLayout.LayoutParams timeBarParams = matchWidth(0, Dim.dp16);
+        final int timeBarMargin = -Math.min(thumbOffset, CONTENT_SIDE_PADDING);
+        timeBarParams.leftMargin = timeBarMargin;
+        timeBarParams.rightMargin = timeBarMargin;
+        content.addView(timeBar, timeBarParams);
 
         LinearLayout controls = new LinearLayout(context);
         controls.setOrientation(LinearLayout.HORIZONTAL);
