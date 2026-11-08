@@ -377,6 +377,20 @@ internal object CronetDataSourceReadBufferFingerprint : Fingerprint(
 )
 
 /**
+ * Exception of a response with an HTTP error status. For a server error, the app requests
+ * the stream again from a fallback host.
+ */
+internal object InvalidResponseCodeExceptionFingerprint : Fingerprint(
+    name = "<init>",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("I", "Ljava/io/IOException;", "Ljava/util/Map;", "L"),
+    filters = listOf(
+        string("Response code: ")
+    )
+)
+
+/**
  * Exception that pauses a transfer for a task of a higher priority.
  * A saved video continues from the last byte it got, after it is paused.
  */
