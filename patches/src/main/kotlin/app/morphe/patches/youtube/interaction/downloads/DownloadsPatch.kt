@@ -147,6 +147,7 @@ val downloadsPatch = patch(
     execute {
         initializeTopControl(EXTENSION_BUTTON)
 
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
         setExtensionIsPatchIncluded(EXTENSION_SHORTS_DOWNLOAD_BUTTON)
         setExtensionIsPatchIncluded(EXTENSION_EXPORT_DOWNLOAD_BUTTON)
 

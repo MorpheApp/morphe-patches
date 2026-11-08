@@ -64,10 +64,15 @@ import app.morphe.extension.shared.misc.MediaTime;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.CustomSeekbarThumbPatch;
+import app.morphe.extension.youtube.patches.DownloadsPatch;
+import app.morphe.extension.youtube.patches.LocalQueuePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.playback.speed.CustomPlaybackSpeedPatch;
 import app.morphe.extension.youtube.patches.theme.SeekbarColorPatch;
+import app.morphe.extension.youtube.patches.utils.LocalQueueSheet;
+import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.VideoState;
 
@@ -202,6 +207,10 @@ final class OnTheGoSheet {
         // The panel is part of the activity, so it would be shown in the Picture-in-Picture window.
         if (type == PlayerType.WATCH_WHILE_PICTURE_IN_PICTURE) {
             removePanel();
+        } else if (!type.isMaximizedOrFullscreen()) {
+            // The player is swiped down to the miniplayer, or is closed.
+            Logger.printDebug(() -> "Closing the On-the-go panel, player type: " + type);
+            dismiss();
         }
     };
 
@@ -425,12 +434,25 @@ final class OnTheGoSheet {
         LinearLayout actions = new LinearLayout(context);
         actions.setOrientation(LinearLayout.HORIZONTAL);
         actions.setGravity(Gravity.CENTER_VERTICAL);
+        // Download and Queue are only shown if the patches of these features are included.
+        if (DownloadsPatch.canDownloadWithoutAppButton()) {
+            ImageView downloadButton = createIconButton(Dim.dp48, Dim.dp12, v -> downloadVideo());
+            setIcon(downloadButton, "morphe_on_the_go_download",
+                    "yt_outline_experimental_download_vd_theme_24", "yt_outline_download_black_24");
+            addCell(actions, downloadButton);
+        }
         audioModeButton = createIconButton(Dim.dp48, Dim.dp12, v -> setAudioMode(!audioMode));
         addCell(actions, audioModeButton);
         View speedButton = createSpeedButton();
         speedButton.setOnClickListener(v ->
                 CustomPlaybackSpeedPatch.showModernCustomPlaybackSpeedDialog(activity));
         addCell(actions, speedButton);
+        if (AddToQueuePatch.isCustomQueueEnabled()) {
+            ImageView queueButton = createIconButton(Dim.dp48, Dim.dp12, v -> openQueue());
+            setIcon(queueButton, "morphe_on_the_go_queue",
+                    "yt_outline_experimental_queue_vd_theme_24", "yt_outline_list_view_black_24");
+            addCell(actions, queueButton);
+        }
         body.addView(actions, matchWidth(0, 0));
 
 
@@ -690,6 +712,38 @@ final class OnTheGoSheet {
         } else {
             setIcon(audioModeButton, "morphe_on_the_go_audio_mode",
                     "yt_outline_experimental_headset_vd_theme_24", "quantum_ic_headset_white_24");
+        }
+    }
+
+    /**
+     * Downloads the video with the download mode of the downloads patch.
+     */
+    private void downloadVideo() {
+        try {
+            String videoId = VideoInformation.getVideoId();
+            if (videoId.isEmpty()) {
+                Logger.printDebug(() -> "Cannot download, no video id");
+                return;
+            }
+            DownloadsPatch.downloadVideoWithoutAppButton(videoId);
+        } catch (Exception ex) {
+            Logger.printException(() -> "downloadVideo failure", ex);
+        }
+    }
+
+    /**
+     * Opens the queue of the queue type of the add to queue patch.
+     * The local queue is shown, and the Morphe queue shows its menu for the video.
+     */
+    private void openQueue() {
+        try {
+            if (LocalQueuePatch.isEnabled()) {
+                LocalQueueSheet.show(activity);
+            } else {
+                PlaylistPatch.prepareDialogBuilder(activity, VideoInformation.getVideoId());
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "openQueue failure", ex);
         }
     }
 

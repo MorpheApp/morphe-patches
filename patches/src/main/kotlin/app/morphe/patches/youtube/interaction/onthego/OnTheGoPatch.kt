@@ -11,9 +11,7 @@ package app.morphe.patches.youtube.interaction.onthego
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
@@ -33,8 +31,6 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -141,11 +137,9 @@ val onTheGoPatch = patch(
         // The seek buttons of the panel use the double tap to seek length of the app settings.
         SeekLengthConstructorFingerprint.let {
             it.method.apply {
-                val durationType = getInstruction(it.instructionMatches[1].index)
-                    .getReference<MethodReference>()!!.definingClass
+                val durationType = it.instructionMatches[1].methodReference.definingClass
+                val seekLengthField = it.instructionMatches.last().fieldReference
                 val fieldIndex = it.instructionMatches.last().index
-                val seekLengthField = getInstruction(fieldIndex)
-                    .getReference<FieldReference>()!!
 
                 addInstruction(
                     fieldIndex + 1,
