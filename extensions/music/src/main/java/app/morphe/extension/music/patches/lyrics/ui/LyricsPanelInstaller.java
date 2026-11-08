@@ -247,9 +247,12 @@ public final class LyricsPanelInstaller {
                 Object knownNonLyrics = nonLyricsPanelReference.get();
                 if (panel == knownLyrics) {
                     nonLyricsPanelActive = false;
-                } else if (knownLyrics != null || panel == knownNonLyrics) {
+                } else if (panel == knownNonLyrics) {
+                    // Only a panel already identified as non-lyrics by positive evidence
+                    // (comment components, a non-lyrics heading) stays non-lyrics. An unknown
+                    // new instance is no longer guessed to be non-lyrics, because the app
+                    // builds a fresh lyrics panel instance now and then.
                     nonLyricsPanelActive = true;
-                    nonLyricsPanelReference = new WeakReference<>(panel);
                     installPending = false;
                 } else {
                     nonLyricsPanelActive = false;
@@ -381,22 +384,28 @@ public final class LyricsPanelInstaller {
 
     private static final int DETECT_RETRY_MAX = 3;
     private static final long DETECT_RETRY_DELAY_MS = 150;
+    private static final long DETECT_RETRY_MIN_INTERVAL_MS = 1000;
     private static volatile boolean detectRetryPending;
+    private static volatile long lastDetectRetryUptimeMs;
 
     /**
-     * Re-runs detection shortly after, for when the heading was not attached yet.
+     * Re-checks shortly after, for when the panel heading was not attached yet at build time.
+     * Positive evidence only: it acts when the heading says lyrics, never otherwise. Throttled
+     * so background component updates (for example while comments are open) stay cheap.
      */
     private static void scheduleDetectRetry(int attempt) {
         if (attempt > DETECT_RETRY_MAX || detectRetryPending) {
             return;
         }
+        final long now = SystemClock.uptimeMillis();
+        if (attempt == 1 && now - lastDetectRetryUptimeMs < DETECT_RETRY_MIN_INTERVAL_MS) {
+            return;
+        }
+        lastDetectRetryUptimeMs = now;
         detectRetryPending = true;
         Utils.runOnMainThreadDelayed(() -> {
             detectRetryPending = false;
             try {
-                if (!nonLyricsPanelActive) {
-                    return;
-                }
                 Activity activity = Utils.getActivity();
                 TextView title = activity != null
                         ? findForegroundTitle(activity.getWindow().getDecorView())
@@ -407,7 +416,7 @@ public final class LyricsPanelInstaller {
                 }
                 if (isLyricsTitle(title) && !isKnownNonLyricsTitle(title)) {
                     Logger.printDebug(() -> "Lyrics detect retry " + attempt + ": heading is lyrics");
-                    onLyricsPanelDetected(true);
+                    onLyricsPanelDetected(false);
                 }
             } catch (Exception ex) {
                 Logger.printException(() -> "scheduleDetectRetry failure", ex);
@@ -447,6 +456,7 @@ public final class LyricsPanelInstaller {
             if (!isBackgroundUpdate || knownLyrics == null) {
                 lyricsPanelReference = new WeakReference<>(panel);
             } else if (panel != knownLyrics) {
+                scheduleDetectRetry(1);
                 return;
             }
         }
