@@ -68,8 +68,41 @@ public final class OnTheGoPatch {
     @Nullable
     private static volatile byte[] upsellRequest;
 
+    /**
+     * On-the-go state of the app. While it is active, the media controls of the lock screen
+     * and notification have seek back and seek forward buttons.
+     */
+    public interface OnTheGoState {
+        // Method is added during patching.
+        void patch_setOnTheGoActive(boolean active);
+    }
+
+    /**
+     * On-the-go state of the app, or null if the app version has no On-the-go media controls.
+     */
+    @Nullable
+    private static volatile OnTheGoState onTheGoState;
+
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setOnTheGoState(OnTheGoState state) {
+        onTheGoState = state;
+    }
+
+    /**
+     * Turns the On-the-go media controls of the app on or off.
+     */
+    static void setOnTheGoActive(boolean active) {
+        OnTheGoState state = onTheGoState;
+        if (state != null) {
+            Logger.printDebug(() -> "Setting On-the-go media controls active: " + active);
+            state.patch_setOnTheGoActive(active);
+        }
     }
 
     /**

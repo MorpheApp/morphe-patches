@@ -295,6 +295,11 @@ final class OnTheGoSheet {
         dialog = SheetBottomDialog.createSlideDialog(context, mainLayout, DIALOG_ANIMATION_DURATION_MILLISECONDS);
         current = new WeakReference<>(this);
         PipDismissHelper.dismissOnPip(dialog, () -> {
+            try {
+                OnTheGoPatch.setOnTheGoActive(false);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not turn off On-the-go media controls", ex);
+            }
             handler.removeCallbacks(updater);
             if (customThumb instanceof Animatable animatable) {
                 animatable.stop();
@@ -305,6 +310,7 @@ final class OnTheGoSheet {
         });
 
         dialog.show();
+        OnTheGoPatch.setOnTheGoActive(true);
         update();
         handler.postDelayed(updater, UPDATE_INTERVAL_MILLISECONDS);
     }

@@ -1,14 +1,18 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/4511
+ * https://github.com/MorpheApp/morphe-patches/pull/4570
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.patches.youtube.interaction.onthego
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -17,25 +21,36 @@ import app.morphe.patches.youtube.misc.commandrouter.CommandRouterExecuteCommand
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.setExtensionIsPatchIncluded
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/onthego/OnTheGoPatch;"
 
 private const val EXTENSION_FILTER = "Lapp/morphe/extension/youtube/patches/onthego/OnTheGoFilter;"
 
+private const val EXTENSION_STATE_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/onthego/OnTheGoPatch$OnTheGoState;"
+
 @Suppress("unused")
 val onTheGoPatch = patch(
     name = "On-the-go player",
     description = "Adds an option to open a panel with large playback controls " +
-            "from the On-the-go item of the video player menu."
+            "from the On-the-go item of the video player menu. " +
+            "While the panel is open, the lock screen media controls have seek buttons."
 ) {
     dependsOn(
         sharedExtensionPatch,
+        versionCheckPatch,
         settingsPatch,
         elementProtoParserHookPatch,
         videoInformationPatch,
@@ -72,5 +87,48 @@ val onTheGoPatch = patch(
                 nop
             """
         )
+
+        if (!is_21_05_or_greater) {
+            // Older versions have no On-the-go media session actions.
+            return@execute
+        }
+
+        // While On-the-go is active, the media controls of the lock screen and notification
+        // have seek back and seek forward buttons. The Morphe panel turns this on while it is open.
+        val stateClass = OnTheGoSkipToNextActionConstructorFingerprint.method.parameterTypes.first().toString()
+
+        getOnTheGoStateConstructorFingerprint(stateClass).let {
+            it.method.addInstruction(
+                it.instructionMatches.first().index + 1,
+                "invoke-static { p0 }, $EXTENSION_CLASS->setOnTheGoState($EXTENSION_STATE_INTERFACE)V"
+            )
+        }
+
+        getOnTheGoStateSetterFingerprint(stateClass).let {
+            it.classDef.apply {
+                interfaces.add(EXTENSION_STATE_INTERFACE)
+
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_setOnTheGoActive",
+                        listOf(ImmutableMethodParameter("Z", null, null)),
+                        "V",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(2),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                invoke-virtual { p0, p1 }, ${it.method}
+                                return-void
+                            """
+                        )
+                    }
+                )
+            }
+        }
     }
 }
