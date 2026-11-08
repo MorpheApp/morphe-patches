@@ -23,7 +23,10 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.text.Normalizer;
+import java.util.IdentityHashMap;
 import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
@@ -274,7 +277,8 @@ public final class LyricsPanelInstaller {
             Logger.printDebug(() -> "Engagement panel: "
                     + (panel == null ? "none" : panel.getClass().getName())
                     + (isLyricsPanel ? " (lyrics)" : "")
-                    + " nonLyricsActive=" + nonLyricsPanelActive);
+                    + " nonLyricsActive=" + nonLyricsPanelActive
+                    + (panel == null ? "" : " fields: " + describePanel(panel)));
 
             updateKeepScreenOn(isLyricsPanel);
 
@@ -294,6 +298,51 @@ public final class LyricsPanelInstaller {
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Could not track the engagement panel", ex);
+        }
+    }
+
+    /**
+     * Debug only (runs inside the log lambda, so never when logging is off): lists the text
+     * fields of the engagement panel object, to find out which one tells lyrics from comments.
+     */
+    private static String describePanel(Object panel) {
+        StringBuilder sb = new StringBuilder();
+        try {
+            collectPanelText(panel, "", 0, sb, new IdentityHashMap<>());
+        } catch (Throwable ignored) {
+        }
+        return sb.toString();
+    }
+
+    private static void collectPanelText(Object obj, String prefix, int depth,
+                                         StringBuilder sb, IdentityHashMap<Object, Boolean> seen) {
+        if (obj == null || depth > 2 || sb.length() > 1500 || seen.put(obj, Boolean.TRUE) != null) {
+            return;
+        }
+        for (Class<?> c = obj.getClass(); c != null && c != Object.class; c = c.getSuperclass()) {
+            for (Field field : c.getDeclaredFields()) {
+                try {
+                    if (Modifier.isStatic(field.getModifiers()) || field.getType().isPrimitive()) {
+                        continue;
+                    }
+                    field.setAccessible(true);
+                    Object value = field.get(obj);
+                    if (value instanceof CharSequence) {
+                        String text = value.toString();
+                        if (!text.isEmpty() && text.length() < 100) {
+                            sb.append(prefix).append(field.getName()).append('=').append(text).append("; ");
+                        }
+                    } else if (value != null && depth < 2) {
+                        // Obfuscated app classes have no package, which keeps this out of the
+                        // framework and collection objects.
+                        String name = value.getClass().getName();
+                        if (name.indexOf('.') < 0) {
+                            collectPanelText(value, prefix + field.getName() + ".", depth + 1, sb, seen);
+                        }
+                    }
+                } catch (Throwable ignored) {
+                }
+            }
         }
     }
 
