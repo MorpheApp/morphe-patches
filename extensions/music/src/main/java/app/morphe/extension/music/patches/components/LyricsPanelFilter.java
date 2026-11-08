@@ -28,20 +28,24 @@ public final class LyricsPanelFilter extends Filter {
             "timed_lyrics"
     );
 
-    private final StringFilterGroup nonLyricsPanelGroup = new StringFilterGroup(
+    private final StringFilterGroup nonLyricsIdentifierGroup = new StringFilterGroup(
             null,
             "comment_thread",
             "comment_composer",
             "comment_filter",
             "comments_header",
             "comments_simplebox",
-            "community_guidelines",
+            "community_guidelines"
+    );
+
+    private final StringFilterGroup nonLyricsPathGroup = new StringFilterGroup(
+            null,
             "|comment."
     );
 
     public LyricsPanelFilter() {
-        addIdentifierCallbacks(timedLyricsGroup, nonLyricsPanelGroup);
-        addPathCallbacks(nonLyricsPanelGroup);
+        addIdentifierCallbacks(timedLyricsGroup, nonLyricsIdentifierGroup);
+        addPathCallbacks(nonLyricsPathGroup);
     }
 
     @Override
@@ -54,7 +58,7 @@ public final class LyricsPanelFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (matchedGroup == nonLyricsPanelGroup) {
+        if (matchedGroup == nonLyricsIdentifierGroup || matchedGroup == nonLyricsPathGroup) {
             LyricsPanelInstaller.onNonLyricsPanelDetected();
         } else {
             String pathStr = path != null ? path.toString() : "";

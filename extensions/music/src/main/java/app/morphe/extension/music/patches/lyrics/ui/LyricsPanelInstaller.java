@@ -79,6 +79,8 @@ public final class LyricsPanelInstaller {
     private static WeakReference<Object> nonLyricsPanelReference = new WeakReference<>(null);
     /** True while a non-lyrics engagement panel (e.g. comments) is active in the shared container. */
     private static volatile boolean nonLyricsPanelActive;
+    /** True while a background UI thread check to dismiss or identify non-lyrics panel is queued. */
+    private static volatile boolean nonLyricsDismissPending;
     /** Foreground heading text observed on a non-lyrics engagement panel (e.g. "Comments" / "Yorumlar"). */
     @Nullable
     private static volatile String knownNonLyricsTitle;
@@ -324,6 +326,7 @@ public final class LyricsPanelInstaller {
      */
     public static void onNonLyricsPanelDetected() {
         try {
+            final boolean wasActive = nonLyricsPanelActive;
             nonLyricsPanelActive = true;
             installPending = false;
             Object current = currentPanelReference.get();
@@ -331,20 +334,31 @@ public final class LyricsPanelInstaller {
                 nonLyricsPanelReference = new WeakReference<>(current);
             }
             updateKeepScreenOn(false);
+            if (wasActive && knownNonLyricsTitle != null) {
+                return;
+            }
+            if (nonLyricsDismissPending) {
+                return;
+            }
+            nonLyricsDismissPending = true;
             Utils.runOnMainThreadNowOrLater(() -> {
-                Activity activity = Utils.getActivity();
-                if (activity != null) {
-                    TextView title = findForegroundTitle(activity.getWindow().getDecorView());
-                    if (title != null && !isLyricsTitle(title)) {
-                        CharSequence text = title.getText();
-                        if (text != null && text.length() > 0) {
-                            knownNonLyricsTitle = text.toString();
+                try {
+                    Activity activity = Utils.getActivity();
+                    if (activity != null) {
+                        TextView title = findForegroundTitle(activity.getWindow().getDecorView());
+                        if (title != null && !isLyricsTitle(title)) {
+                            CharSequence text = title.getText();
+                            if (text != null && text.length() > 0) {
+                                knownNonLyricsTitle = text.toString();
+                            }
                         }
                     }
-                }
-                LyricsPanelView panelView = panelReference.get();
-                if (panelView != null && !isInTab(panelView)) {
-                    panelView.dismissForOtherPanel();
+                    LyricsPanelView panelView = panelReference.get();
+                    if (panelView != null && !isInTab(panelView)) {
+                        panelView.dismissForOtherPanel();
+                    }
+                } finally {
+                    nonLyricsDismissPending = false;
                 }
             });
         } catch (Exception ex) {
