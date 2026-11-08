@@ -206,7 +206,9 @@ public final class LithoFilterPatch {
             LithoFilterParameters parameter = new LithoFilterParameters(
                     contextInterface, identifier, pathBuilder, accessibility,
                     buffer, new BufferAsciiStrings(buffer));
-            Logger.printDebug(() -> "Searching " + parameter);
+            if (SharedYouTubeSettings.DEBUG_PROTOBUFFER.get()) {
+                Logger.printDebug(() -> "Searching " + parameter);
+            }
 
             if (identifierSearchTree.matches(identifier, parameter)
                     || pathSearchTree.matches(pathBuilder, parameter)) {

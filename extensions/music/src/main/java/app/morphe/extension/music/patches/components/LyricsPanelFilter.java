@@ -67,15 +67,10 @@ public final class LyricsPanelFilter extends Filter {
 
     /**
      * Returns true when Litho is updating an existing timed_lyrics component in the background
-     * as playback advances (via {@code componentDidUpdate}), rather than building the panel for
+     * while another panel (such as comments) is active, rather than building the panel for
      * the first time when opened by the user.
      */
     private static boolean isBackgroundComponentUpdate() {
-        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
-            if ("componentDidUpdate".equals(element.getMethodName())) {
-                return true;
-            }
-        }
-        return false;
+        return LyricsPanelInstaller.isOtherPanelForeground();
     }
 }

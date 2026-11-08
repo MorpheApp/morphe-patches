@@ -64,22 +64,35 @@ public final class WordReadingTable implements AutoCloseable {
 
     /** Null when the file is missing, oversized, or is not a table this build can read. */
     public static WordReadingTable open(Path file, byte[] magic) {
+        if (file == null || !Files.isRegularFile(file)) {
+            return null;
+        }
         try {
             long size = Files.size(file);
-            if (size < HEADER_BYTES || size > MAX_FILE_BYTES) return null;
+            if (size < HEADER_BYTES || size > MAX_FILE_BYTES) {
+                Logger.printDebug(() -> "Reading table has invalid size " + size + ": " + file);
+                return null;
+            }
 
             try (RandomAccessFile handle = new RandomAccessFile(file.toFile(), "r");
                  FileChannel channel = handle.getChannel()) {
                 MappedByteBuffer mapped = channel.map(FileChannel.MapMode.READ_ONLY, 0, size);
                 mapped.order(ByteOrder.LITTLE_ENDIAN);
                 for (int i = 0; i < magic.length; i++) {
-                    if (mapped.get(MAGIC_OFFSET + i) != magic[i]) return null;
+                    if (mapped.get(MAGIC_OFFSET + i) != magic[i]) {
+                        Logger.printDebug(() -> "Reading table has invalid magic: " + file);
+                        return null;
+                    }
                 }
                 int slots = mapped.getInt(SLOT_COUNT_OFFSET);
-                if (slots <= 0 || slots > MAX_SLOT_COUNT || Integer.bitCount(slots) != 1)
+                if (slots <= 0 || slots > MAX_SLOT_COUNT || Integer.bitCount(slots) != 1) {
+                    Logger.printDebug(() -> "Reading table has invalid slot count " + slots + ": " + file);
                     return null;
+                }
                 return new WordReadingTable(mapped, slots);
             }
+        } catch (java.nio.file.NoSuchFileException ignored) {
+            return null;
         } catch (IOException ex) {
             Logger.printDebug(() -> "Could not open the reading table " + file, ex);
             return null;
