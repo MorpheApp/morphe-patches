@@ -52,7 +52,7 @@ public enum VideoState {
         if (state == null) {
             Logger.printException(() -> "Unknown VideoState encountered: " + enumName);
         } else if (currentVideoState != state) {
-            Logger.printDebug(() -> "VideoState changed to: " + state);
+            Logger.traceState("VideoState", state);
             currentVideoState = state;
             onChange.invoke(state);
         }

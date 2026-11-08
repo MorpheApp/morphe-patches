@@ -337,6 +337,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     // Apply 'Setting <- Preference', unless during importing when it needs to be 'Setting -> Preference'.
                     // Updating here can cause a recursive call back into this same method.
                     updatePreference(pref, setting, true, settingImportInProgress);
+                    // Changed settings are a common cause of bugs that the reporter can't reproduce later.
+                    Logger.traceSettingChange(setting);
                     // Update any other preference availability that may now be different.
                     updateUIAvailability();
                     updatingPreference = false;
@@ -917,10 +919,20 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         private final Context context;
         private String query = "";
 
-        LogAdapter(Context context, Collection<String> logs) {
+        /**
+         * Number of lines of the debug report before the logs, which are exported even when they are many.
+         */
+        private final int reportSize;
+        private int filteredReportSize;
+
+        LogAdapter(Context context, List<String> report, Collection<String> logs) {
             this.context = context;
-            this.allLogs = new ArrayList<>(logs);
+            this.reportSize = report.size();
+            this.allLogs = new ArrayList<>(reportSize + logs.size());
+            allLogs.addAll(report);
+            allLogs.addAll(logs);
             this.filteredLogs = new ArrayList<>(this.allLogs);
+            this.filteredReportSize = reportSize;
         }
 
         void filter(String q) {
@@ -928,25 +940,32 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             filteredLogs.clear();
             if (query.isEmpty()) {
                 filteredLogs.addAll(allLogs);
+                filteredReportSize = reportSize;
             } else {
-                for (String log : allLogs) {
+                filteredReportSize = 0;
+                for (int i = 0, size = allLogs.size(); i < size; i++) {
+                    String log = allLogs.get(i);
                     if (log.toLowerCase(Locale.ROOT).contains(query)) {
                         filteredLogs.add(log);
+                        if (i < reportSize) filteredReportSize++;
                     }
                 }
             }
             notifyDataSetChanged();
         }
 
+        /**
+         * Clears the logs, and keeps the report.
+         */
         void clearLogs() {
-            allLogs.clear();
-            filteredLogs.clear();
-            notifyDataSetChanged();
+            allLogs.subList(reportSize, allLogs.size()).clear();
+            filter(query);
         }
 
         /**
-         * @return Only the logs matching the current search filter, capped at
+         * @return Only the lines matching the current search filter, capped at
          *         {@link Logger#CLIPBOARD_MAX_LENGTH} to respect Android's Binder transaction limit.
+         *         The report lines are kept, and the oldest logs are left out.
          */
         @NonNull
         String getFilteredLogsString() {
@@ -955,8 +974,17 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             }
 
             int totalChars = 0;
+            int reportEnd = 0;
+            for (; reportEnd < filteredReportSize; reportEnd++) {
+                int entryLength = filteredLogs.get(reportEnd).length() + 1;
+                if (totalChars + entryLength > Logger.CLIPBOARD_MAX_LENGTH / 2) {
+                    break;
+                }
+                totalChars += entryLength;
+            }
+
             int startIndex = filteredLogs.size() - 1;
-            for (; startIndex >= 0; startIndex--) {
+            for (; startIndex >= filteredReportSize; startIndex--) {
                 int entryLength = filteredLogs.get(startIndex).length() + 1;
                 if (totalChars + entryLength > Logger.CLIPBOARD_MAX_LENGTH) {
                     break;
@@ -964,12 +992,15 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                 totalChars += entryLength;
             }
 
-            boolean truncated = startIndex >= 0;
-            int actualStart = truncated ? startIndex + 1 : 0;
+            boolean truncated = reportEnd < filteredReportSize || startIndex >= filteredReportSize;
+            int actualStart = startIndex + 1;
 
             StringBuilder sb = new StringBuilder(totalChars + 64);
+            for (int i = 0; i < reportEnd; i++) {
+                sb.append(filteredLogs.get(i)).append('\n');
+            }
             if (truncated) {
-                sb.append("... [Truncated older logs to fit clipboard limit] ...\n");
+                sb.append("... [Truncated older lines to fit clipboard limit] ...\n");
             }
             for (int i = actualStart, size = filteredLogs.size(); i < size; i++) {
                 if (i > actualStart) sb.append('\n');
@@ -1028,14 +1059,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                 return;
             }
 
-            if (Logger.getLogBuffer().isEmpty()) {
-                Utils.showToastShort(str("morphe_debug_logs_none_found"));
-                Logger.clearLogBufferData();
-                return;
-            }
-
             ListView logViewer = new ListView(context);
-            LogAdapter logAdapter = new LogAdapter(context, Logger.getLogBuffer());
+            // The report is never empty, and it has the timeline recorded while debug logging was off.
+            LogAdapter logAdapter = new LogAdapter(context, Logger.buildReport(context), Logger.getLogBuffer());
             logViewer.setAdapter(logAdapter);
             logViewer.setDividerHeight(0);
             logViewer.setPadding(0, Dim.dp4, 0, Dim.dp4);

@@ -91,7 +91,7 @@ public enum PlayerType {
 
     private static void setCurrent(PlayerType type) {
         if (currentPlayerType != type) {
-            Logger.printDebug(() -> "Changed to: " + type);
+            Logger.traceState("PlayerType", type);
 
             currentPlayerType = type;
             onChange.invoke(type);

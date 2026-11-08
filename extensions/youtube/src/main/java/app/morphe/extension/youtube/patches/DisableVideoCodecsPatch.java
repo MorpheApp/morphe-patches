@@ -199,13 +199,17 @@ public class DisableVideoCodecsPatch {
      * Injection point.
      */
     public static boolean allowVP9() {
-        return getVideoCodec() != VideoCodec.AVC;
+        final boolean allowed = getVideoCodec() != VideoCodec.AVC;
+        Logger.traceState("DisableVideoCodecsPatch.allowVP9", allowed);
+        return allowed;
     }
 
     /**
      * Injection point.
      */
     public static boolean allowCodec(String mimeType) {
-        return !(getVideoCodec() == VideoCodec.VP9 && MIMETYPE_VIDEO_AV1.equals(mimeType));
+        final boolean allowed = !(getVideoCodec() == VideoCodec.VP9 && MIMETYPE_VIDEO_AV1.equals(mimeType));
+        Logger.traceState("DisableVideoCodecsPatch.allowCodec " + mimeType, allowed);
+        return allowed;
     }
 }

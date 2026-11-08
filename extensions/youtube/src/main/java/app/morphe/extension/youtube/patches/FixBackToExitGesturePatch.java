@@ -78,10 +78,8 @@ public class FixBackToExitGesturePatch {
      * Override back button scrolling to the top of the home/subscription feed.
      */
     public static boolean allowBackButtonToScrollToTopOfFeed(boolean original) {
-        if (BACK_BUTTON_ALWAYS_EXITS_FEED) {
-            return false;
-        }
-        return original;
+        return Logger.traceOverride("FixBackToExitGesturePatch.allowBackButtonToScrollToTopOfFeed", original,
+                !BACK_BUTTON_ALWAYS_EXITS_FEED && original);
     }
 
     /**

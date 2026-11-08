@@ -662,10 +662,8 @@ public class SeekbarThumbnailPreviewPatch {
      * Injection point.
      */
     public static boolean disableShortsSeekbarThumbnails(boolean original) {
-        if (Settings.THUMBNAIL_PREVIEW.get()) {
-            return false;
-        }
-        return original;
+        return Logger.traceOverride("SeekbarThumbnailPreviewPatch.disableShortsSeekbarThumbnails", original,
+                !Settings.THUMBNAIL_PREVIEW.get() && original);
     }
 
     /**

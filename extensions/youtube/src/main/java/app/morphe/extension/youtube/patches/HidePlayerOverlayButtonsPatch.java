@@ -86,11 +86,8 @@ public final class HidePlayerOverlayButtonsPatch {
      * Injection point.
      */
     public static boolean hideCastButton(boolean original) {
-        if (Settings.HIDE_CAST_BUTTON.get()) {
-            return false;
-        }
-
-        return original;
+        return Logger.traceOverride("HidePlayerOverlayButtonsPatch.hideCastButton", original,
+                !Settings.HIDE_CAST_BUTTON.get() && original);
     }
 
     /**

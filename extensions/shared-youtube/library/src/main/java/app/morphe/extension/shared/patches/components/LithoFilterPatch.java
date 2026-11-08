@@ -95,10 +95,8 @@ public final class LithoFilterPatch {
             }
             builder.append(" Path: ");
             builder.append(path);
-            if (SharedYouTubeSettings.DEBUG_PROTOBUFFER.get()) {
-                builder.append(" BufferStrings: ");
-                builder.append(asciiStrings().getStrings());
-            }
+            builder.append(" BufferStrings: ");
+            builder.append(asciiStrings().getStrings());
 
             return builder.toString();
         }

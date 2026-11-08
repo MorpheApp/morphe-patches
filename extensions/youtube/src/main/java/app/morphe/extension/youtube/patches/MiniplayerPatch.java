@@ -325,9 +325,10 @@ public final class MiniplayerPatch {
      * effectively disabling the miniplayer.
      */
     public static boolean getMiniplayerOnCloseHandler(boolean original) {
-        return CURRENT_TYPE == DEFAULT
-                ? original
-                : CURRENT_TYPE == DISABLED;
+        return Logger.traceOverride("MiniplayerPatch.getMiniplayerOnCloseHandler", original,
+                CURRENT_TYPE == DEFAULT
+                        ? original
+                        : CURRENT_TYPE == DISABLED);
     }
 
     /**
@@ -335,18 +336,20 @@ public final class MiniplayerPatch {
      */
     public static boolean getLegacyTabletMiniplayerOverride(boolean original) {
         Boolean isTablet = CURRENT_TYPE.legacyTabletOverride;
-        return isTablet == null
-                ? original
-                : isTablet;
+        return Logger.traceOverride("MiniplayerPatch.getLegacyTabletMiniplayerOverride", original,
+                isTablet == null
+                        ? original
+                        : isTablet);
     }
 
     /**
      * Injection point.
      */
     public static boolean getModernMiniplayerOverride(boolean original) {
-        return CURRENT_TYPE == DEFAULT
-                ? original
-                : CURRENT_TYPE.isModern();
+        return Logger.traceOverride("MiniplayerPatch.getModernMiniplayerOverride", original,
+                CURRENT_TYPE == DEFAULT
+                        ? original
+                        : CURRENT_TYPE.isModern());
     }
 
     /**
@@ -356,13 +359,15 @@ public final class MiniplayerPatch {
         if (CURRENT_TYPE == MINIMAL) {
             // In newer app targets the minimal player can show the wrong icon if modern 4 is allowed.
             // Forcing to modern 1 seems to work.
-            return Objects.requireNonNull(MODERN_1.modernPlayerType);
+            return Logger.traceOverride("MiniplayerPatch.getModernMiniplayerOverrideType", original,
+                    Objects.requireNonNull(MODERN_1.modernPlayerType));
         }
 
         Integer modernValue = CURRENT_TYPE.modernPlayerType;
-        return modernValue == null
-                ? original
-                : modernValue;
+        return Logger.traceOverride("MiniplayerPatch.getModernMiniplayerOverrideType", original,
+                modernValue == null
+                        ? original
+                        : modernValue);
     }
 
     /**
@@ -383,10 +388,11 @@ public final class MiniplayerPatch {
      */
     public static boolean getModernFeatureFlagsActiveOverride(boolean original) {
         if (CURRENT_TYPE == DEFAULT) {
-            return original;
+            return Logger.traceOverride("MiniplayerPatch.getModernFeatureFlagsActiveOverride", original, original);
         }
 
-        return CURRENT_TYPE.isModern();
+        return Logger.traceOverride("MiniplayerPatch.getModernFeatureFlagsActiveOverride", original,
+                CURRENT_TYPE.isModern());
     }
 
     /**
@@ -394,10 +400,11 @@ public final class MiniplayerPatch {
      */
     public static boolean getMiniplayerDoubleTapAction(boolean original) {
         if (CURRENT_TYPE == DEFAULT) {
-            return original;
+            return Logger.traceOverride("MiniplayerPatch.getMiniplayerDoubleTapAction", original, original);
         }
 
-        return DOUBLE_TAP_ACTION_ENABLED;
+        return Logger.traceOverride("MiniplayerPatch.getMiniplayerDoubleTapAction", original,
+                DOUBLE_TAP_ACTION_ENABLED);
     }
 
     /**
@@ -405,10 +412,10 @@ public final class MiniplayerPatch {
      */
     public static boolean getMiniplayerDragAndDrop(boolean original) {
         if (CURRENT_TYPE == DEFAULT) {
-            return original;
+            return Logger.traceOverride("MiniplayerPatch.getMiniplayerDragAndDrop", original, original);
         }
 
-        return DRAG_AND_DROP_ENABLED;
+        return Logger.traceOverride("MiniplayerPatch.getMiniplayerDragAndDrop", original, DRAG_AND_DROP_ENABLED);
     }
 
     /**
@@ -423,10 +430,10 @@ public final class MiniplayerPatch {
      */
     public static boolean getRoundedCorners(boolean original) {
         if (CURRENT_TYPE == DEFAULT) {
-            return original;
+            return Logger.traceOverride("MiniplayerPatch.getRoundedCorners", original, original);
         }
 
-        return MINIPLAYER_ROUNDED_CORNERS_ENABLED;
+        return Logger.traceOverride("MiniplayerPatch.getRoundedCorners", original, MINIPLAYER_ROUNDED_CORNERS_ENABLED);
     }
 
     /**
@@ -448,10 +455,10 @@ public final class MiniplayerPatch {
      */
     public static boolean getHorizontalDrag(boolean original) {
         if (CURRENT_TYPE == DEFAULT) {
-            return original;
+            return Logger.traceOverride("MiniplayerPatch.getHorizontalDrag", original, original);
         }
 
-        return MINIPLAYER_HORIZONTAL_DRAG_ENABLED;
+        return Logger.traceOverride("MiniplayerPatch.getHorizontalDrag", original, MINIPLAYER_HORIZONTAL_DRAG_ENABLED);
     }
 
     /**
@@ -552,11 +559,8 @@ public final class MiniplayerPatch {
     public static boolean getMaximizeAnimation(boolean original) {
         // This must be forced on if horizontal drag is enabled,
         // otherwise the UI has visual glitches when maximizing the miniplayer.
-        if (MINIPLAYER_HORIZONTAL_DRAG_ENABLED) {
-            return true;
-        }
-
-        return original;
+        return Logger.traceOverride("MiniplayerPatch.getMaximizeAnimation", original,
+                MINIPLAYER_HORIZONTAL_DRAG_ENABLED || original);
     }
 
     /**
@@ -603,11 +607,10 @@ public final class MiniplayerPatch {
      * Injection point.
      */
     public static int getMiniplayerDefaultSize(int original) {
-        if (CURRENT_TYPE.isModern()) {
-            return MINIPLAYER_SIZE;
-        }
-
-        return original;
+        return Logger.traceOverride("MiniplayerPatch.getMiniplayerDefaultSize", original,
+                CURRENT_TYPE.isModern()
+                        ? MINIPLAYER_SIZE
+                        : original);
     }
 
     /**
@@ -617,10 +620,10 @@ public final class MiniplayerPatch {
         if (CURRENT_TYPE == MINIMAL) {
             // Minimal player does not have the correct pause/play icon (it's too large).
             // Use the non-bold icons instead.
-            return false;
+            return Logger.traceOverride("MiniplayerPatch.allowBoldIcons", original, false);
         }
 
-        return original;
+        return Logger.traceOverride("MiniplayerPatch.allowBoldIcons", original, original);
     }
 
     /**

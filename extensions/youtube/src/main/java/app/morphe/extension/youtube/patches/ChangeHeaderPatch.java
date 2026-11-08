@@ -97,7 +97,8 @@ public class ChangeHeaderPatch {
      * Injection point.
      */
     public static int getHeaderAttributeId(int original) {
-        return Objects.requireNonNullElse(Settings.HEADER_LOGO.get().getAttributeId(), original);
+        return Logger.traceOverride("ChangeHeaderPatch.getHeaderAttributeId", original,
+                Objects.requireNonNullElse(Settings.HEADER_LOGO.get().getAttributeId(), original));
     }
 
     public static Drawable getDrawable(Drawable original) {

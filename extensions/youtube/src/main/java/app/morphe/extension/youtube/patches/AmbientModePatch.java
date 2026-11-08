@@ -3,6 +3,7 @@ package app.morphe.extension.youtube.patches;
 import android.os.PowerManager;
 
 import app.morphe.extension.youtube.ambientlight.AmbientLightController;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -25,7 +26,8 @@ public final class AmbientModePatch {
      * Disable Ambient mode.
      */
     public static boolean disableAmbientMode(boolean original) {
-        return !Settings.DISABLE_AMBIENT_MODE.get() && !AmbientLightController.replacesAmbientMode() && original;
+        return Logger.traceOverride("AmbientModePatch.disableAmbientMode", original,
+                !Settings.DISABLE_AMBIENT_MODE.get() && !AmbientLightController.replacesAmbientMode() && original);
     }
 
     /**

@@ -195,7 +195,7 @@ public final class HideStatusBarPatch {
             if (edgeToEdgeTopBarUsed == null) {
                 edgeToEdgeTopBarUsed = original;
             }
-            return original;
+            return Logger.traceOverride("HideStatusBarPatch.useEdgeToEdgeTopBar", original, original);
         }
 
         Boolean value = edgeToEdgeTopBar;
@@ -215,7 +215,7 @@ public final class HideStatusBarPatch {
         if (edgeToEdgeTopBarUsed == null) {
             edgeToEdgeTopBarUsed = value;
         }
-        return value;
+        return Logger.traceOverride("HideStatusBarPatch.useEdgeToEdgeTopBar", original, value);
     }
 
     /**
@@ -229,14 +229,14 @@ public final class HideStatusBarPatch {
      */
     public static boolean useStatusBarScrollColor(boolean original) {
         if (!FIX_STATUS_BAR_LAYOUT) {
-            return original;
+            return Logger.traceOverride("HideStatusBarPatch.useStatusBarScrollColor", original, original);
         }
 
         Boolean edgeToEdge = edgeToEdgeTopBar;
         if (edgeToEdge == null) {
             edgeToEdge = !EDGE_TO_EDGE_TOP_BAR_TURNED_OFF;
         }
-        return original && edgeToEdge;
+        return Logger.traceOverride("HideStatusBarPatch.useStatusBarScrollColor", original, original && edgeToEdge);
     }
 
     /**

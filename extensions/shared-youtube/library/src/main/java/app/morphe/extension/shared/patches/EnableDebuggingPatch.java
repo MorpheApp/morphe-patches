@@ -14,6 +14,15 @@ package app.morphe.extension.shared.patches;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
+import android.app.ActivityManager;
+import android.app.ApplicationExitInfo;
+import android.content.Context;
+import android.os.Build;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -26,6 +35,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.FeatureFlagsBisect;
@@ -49,6 +59,60 @@ public final class EnableDebuggingPatch {
 
     static {
         FeatureFlagsBisect.handleAppStartup();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // Why the previous processes ended, such as a crash, an ANR or a kill in the background,
+            // which the app can't log itself.
+            Logger.addReportSection(() -> {
+                Context context = Utils.getContext();
+                String packageName = context.getPackageName();
+                StringBuilder builder = new StringBuilder("=== Last process exits ===");
+                int count = 0;
+                for (ApplicationExitInfo exit : context.getSystemService(ActivityManager.class)
+                        .getHistoricalProcessExitReasons(packageName, 0, 20)) {
+                    // The WebView processes of the app are listed too.
+                    if (!exit.getProcessName().startsWith(packageName) || count++ >= 5) continue;
+
+                    builder.append('\n').append(exit);
+                    // The system keeps the thread dump of an ANR. The main thread shows what blocked the app.
+                    if (exit.getReason() == ApplicationExitInfo.REASON_ANR) {
+                        try (InputStream trace = exit.getTraceInputStream()) {
+                            if (trace == null) continue;
+                            BufferedReader reader = new BufferedReader(
+                                    new InputStreamReader(trace, StandardCharsets.UTF_8));
+                            boolean mainThread = false;
+                            int lines = 0;
+                            for (String line; (line = reader.readLine()) != null && lines < 60; ) {
+                                if (line.startsWith("\"main\"")) mainThread = true;
+                                else if (mainThread && line.isEmpty()) break;
+                                if (mainThread) {
+                                    builder.append("\n  ").append(line);
+                                    lines++;
+                                }
+                            }
+                        } catch (Exception ex) {
+                            Logger.printDebug(() -> "Could not read the ANR trace", ex);
+                        }
+                    }
+                }
+                return builder.toString();
+            });
+        }
+        if (LOG_FEATURE_FLAGS) {
+            Logger.addReportSection(() -> {
+                List<Long> enabled = new ArrayList<>();
+                for (Map.Entry<Long, Boolean> entry : featureFlags.entrySet()) {
+                    if (entry.getValue()) enabled.add(entry.getKey());
+                }
+                Collections.sort(enabled);
+                return "=== " + enabled.size() + " of " + featureFlags.size()
+                        + " feature flags read since the app started are enabled"
+                        + " (number flags only when they differ from their default) ===\n"
+                        + serializeFlags(enabled, ' ')
+                        + (OVERRIDDEN_FEATURE_FLAGS.isEmpty() ? "" : "\nOverridden by the flag manager: "
+                        + OVERRIDDEN_FEATURE_FLAGS);
+            });
+        }
     }
 
     private static Map<Long, Boolean> loadOverriddenFlags() {

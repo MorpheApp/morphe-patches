@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import android.os.SystemClock;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -36,17 +37,17 @@ public class AutoCaptionsPatch {
 
         // 'Always show' overrides a manual caption-off, including after the guard window.
         if (style == AutoCaptionsStyle.BOTH_ENABLED) {
-            return false;
+            return Logger.traceOverride("AutoCaptionsPatch.disableAutoCaptions", original, false);
         }
 
         // After the guard window (150ms), respect the user's manual CC button toggle.
         if (SystemClock.uptimeMillis() >= captionGuardUntil.get()) {
-            return original;
+            return Logger.traceOverride("AutoCaptionsPatch.disableAutoCaptions", original, original);
         }
 
         // During the initial video load window, force captions on or off based on setting.
         boolean wantCaptions = style == AutoCaptionsStyle.WITH_VOLUME_ONLY;
-        return !wantCaptions;
+        return Logger.traceOverride("AutoCaptionsPatch.disableAutoCaptions", original, !wantCaptions);
     }
 
     /**
@@ -59,7 +60,8 @@ public class AutoCaptionsPatch {
     public static boolean disableMuteAutoCaptions(boolean original) {
         AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
 
-        return style == AutoCaptionsStyle.BOTH_ENABLED || style == AutoCaptionsStyle.WITHOUT_VOLUME_ONLY;
+        return Logger.traceOverride("AutoCaptionsPatch.disableMuteAutoCaptions", original,
+                style == AutoCaptionsStyle.BOTH_ENABLED || style == AutoCaptionsStyle.WITHOUT_VOLUME_ONLY);
     }
 
     /**

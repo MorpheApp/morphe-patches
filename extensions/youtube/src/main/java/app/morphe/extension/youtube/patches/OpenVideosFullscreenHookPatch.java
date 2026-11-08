@@ -94,18 +94,24 @@ public class OpenVideosFullscreenHookPatch {
      * Returns negated value.
      */
     public static boolean doNotOpenVideoFullscreenPortrait(boolean original) {
-        if (keepCurrentVideoMinimized()) return true;
+        if (keepCurrentVideoMinimized()) {
+            return Logger.traceOverride("OpenVideosFullscreenHookPatch.doNotOpenVideoFullscreenPortrait", original,
+                    true);
+        }
         Boolean openFullscreen = openNextVideoFullscreen;
         if (openFullscreen != null) {
             openNextVideoFullscreen = null;
-            return !openFullscreen;
+            return Logger.traceOverride("OpenVideosFullscreenHookPatch.doNotOpenVideoFullscreenPortrait", original,
+                    !openFullscreen);
         }
 
         if (!isPatchIncluded()) {
-            return original;
+            return Logger.traceOverride("OpenVideosFullscreenHookPatch.doNotOpenVideoFullscreenPortrait", original,
+                    original);
         }
 
-        return Settings.OPEN_VIDEOS_FULLSCREEN.get() != OpenFullscreenMode.PORTRAIT;
+        return Logger.traceOverride("OpenVideosFullscreenHookPatch.doNotOpenVideoFullscreenPortrait", original,
+                Settings.OPEN_VIDEOS_FULLSCREEN.get() != OpenFullscreenMode.PORTRAIT);
     }
 
     private static boolean shouldEnterFullscreen;

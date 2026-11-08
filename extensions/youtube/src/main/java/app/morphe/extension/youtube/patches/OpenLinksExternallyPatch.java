@@ -1,5 +1,6 @@
 package app.morphe.extension.youtube.patches;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -11,8 +12,9 @@ public class OpenLinksExternallyPatch {
      * @return The intent to open links with. Empty means the link will be opened with the default browser.
      */
     public static String getIntent(String originalIntent) {
-        if (Settings.EXTERNAL_BROWSER.get()) return "";
-
-        return originalIntent;
+        return Logger.traceOverride("OpenLinksExternallyPatch.getIntent", originalIntent,
+                Settings.EXTERNAL_BROWSER.get()
+                        ? ""
+                        : originalIntent);
     }
 }

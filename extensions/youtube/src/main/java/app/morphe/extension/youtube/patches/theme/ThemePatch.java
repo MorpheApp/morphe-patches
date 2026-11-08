@@ -96,15 +96,16 @@ public class ThemePatch extends BaseThemePatch {
      * Injection point.
      */
     public static boolean gradientLoadingScreenEnabled(boolean original) {
-        return Settings.GRADIENT_LOADING_SCREEN.get();
+        return Logger.traceOverride("ThemePatch.gradientLoadingScreenEnabled", original,
+                Settings.GRADIENT_LOADING_SCREEN.get());
     }
 
     /**
      * Injection point.
      */
     public static boolean useLotteLaunchSplashScreen(boolean original) {
-        Logger.printDebug(() -> "Lottie splash screen flag: " + original);
-        return true; // Force lottie animation view.
+        // Force lottie animation view.
+        return Logger.traceOverride("ThemePatch.useLotteLaunchSplashScreen", original, true);
     }
 
     /**
@@ -412,7 +413,7 @@ public class ThemePatch extends BaseThemePatch {
             Logger.printException(() -> "useRiveSplashScreen failure", ex);
         }
 
-        return isRiveSplashScreenEnabled();
+        return Logger.traceOverride("ThemePatch.useRiveSplashScreen", original, isRiveSplashScreenEnabled());
     }
 
     /**
@@ -433,7 +434,8 @@ public class ThemePatch extends BaseThemePatch {
      * of the light or the dark theme.
      */
     public static boolean useRiveGlowSplashScreen(boolean original) {
-        return useRiveSplashScreen(original) && isRiveGlowStyle();
+        return Logger.traceOverride("ThemePatch.useRiveGlowSplashScreen", original,
+                useRiveSplashScreen(original) && isRiveGlowStyle());
     }
 
     /**
@@ -651,12 +653,13 @@ public class ThemePatch extends BaseThemePatch {
     public static long getSplashScreenTimeout(long original) {
         try {
             if (isRiveSplashScreenEnabled()) {
-                return Math.max(original, RIVE_SPLASH_SCREEN_TIMEOUT_MILLISECONDS + getRiveSplashScreenDuration());
+                return Logger.traceOverride("ThemePatch.getSplashScreenTimeout", original,
+                        Math.max(original, RIVE_SPLASH_SCREEN_TIMEOUT_MILLISECONDS + getRiveSplashScreenDuration()));
             }
         } catch (Exception ex) {
             Logger.printException(() -> "getSplashScreenTimeout failure", ex);
         }
-        return original;
+        return Logger.traceOverride("ThemePatch.getSplashScreenTimeout", original, original);
     }
 
     /**
@@ -979,7 +982,8 @@ public class ThemePatch extends BaseThemePatch {
      * Injection point.
      */
     public static boolean showSplashScreen(boolean original) {
-        return SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() != SplashScreenAnimationStyle.DISABLED && original;
+        return Logger.traceOverride("ThemePatch.showSplashScreen", original,
+                SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get() != SplashScreenAnimationStyle.DISABLED && original);
     }
 
     /**
@@ -999,7 +1003,7 @@ public class ThemePatch extends BaseThemePatch {
         SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_STYLE.get();
 
         if (style == SplashScreenAnimationStyle.DISABLED) {
-            return original;
+            return Logger.traceOverride("ThemePatch.getLoadingScreenType", original, original);
         }
 
         final int replacement = style.style;
@@ -1008,7 +1012,7 @@ public class ThemePatch extends BaseThemePatch {
                     + SplashScreenAnimationStyle.styleFromOrdinal(original) + " to: " + style);
         }
 
-        return replacement;
+        return Logger.traceOverride("ThemePatch.getLoadingScreenType", original, replacement);
     }
 
     /**

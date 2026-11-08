@@ -157,7 +157,8 @@ public class CustomPlaybackSpeedPatch {
      * Called before {@link #getTapAndHoldSpeed()}
      */
     public static boolean disableTapAndHoldSpeed(boolean original) {
-        return !DISABLE_TAP_AND_HOLD_SPEED && original;
+        return Logger.traceOverride("CustomPlaybackSpeedPatch.disableTapAndHoldSpeed", original,
+                !DISABLE_TAP_AND_HOLD_SPEED && original);
     }
 
     /**
@@ -180,7 +181,8 @@ public class CustomPlaybackSpeedPatch {
      * With audio offload the device hardware decodes the audio, and usually does not support changing the pitch.
      */
     public static boolean disableAudioOffload(boolean original) {
-        return original && !Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get();
+        return Logger.traceOverride("CustomPlaybackSpeedPatch.disableAudioOffload", original,
+                original && !Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get());
     }
 
     /**

@@ -671,7 +671,7 @@ public class StreamingDataRequest {
     private static StreamData fetch(String videoId, Map<String, String> playerHeaders,
                                     boolean includeVideoDetails, ClientType[] clientOrder, boolean isDownload) {
         if (!Utils.isNetworkConnected()) {
-            Logger.printDebug(() -> "Network not connected, skipping stream fetch for: " + videoId);
+            Logger.traceEvent("SpoofVideoStreams", videoId + ": network not connected, streams not fetched");
             return null;
         }
 
@@ -706,6 +706,15 @@ public class StreamingDataRequest {
                 HttpURLConnection fallBackConnection =
                         send(clientType, videoId, authorization, showErrorToast, includeVideoDetails);
                 streamingData = buildPlayerResponseBuffer(clientType, fallBackConnection, videoId);
+            }
+
+            if (streamingData == null) {
+                Logger.traceEvent("SpoofVideoStreams", videoId + ": " + clientType + " gave no playable streams"
+                        + (isDownload ? " (download)" : ""));
+            } else {
+                Logger.traceEvent("SpoofVideoStreams", videoId + ": streams from " + clientType
+                        + (isDownload ? " (download)" : "") + " after "
+                        + (System.currentTimeMillis() - fetchStartTime) + " ms");
             }
 
             if (streamingData != null) {

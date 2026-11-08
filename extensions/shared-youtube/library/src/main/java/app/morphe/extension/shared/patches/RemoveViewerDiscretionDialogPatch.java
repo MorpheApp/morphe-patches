@@ -7,6 +7,7 @@
 
 package app.morphe.extension.shared.patches;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings("unused")
@@ -16,9 +17,7 @@ public class RemoveViewerDiscretionDialogPatch {
      * Injection point.
      */
     public static boolean hideViewDiscretionDialog(boolean originalValue) {
-        if (SharedYouTubeSettings.REMOVE_VIEWER_DISCRETION_DIALOG.get()) {
-            return true;
-        }
-        return originalValue;
+        return Logger.traceOverride("RemoveViewerDiscretionDialogPatch.hideViewDiscretionDialog", originalValue,
+                SharedYouTubeSettings.REMOVE_VIEWER_DISCRETION_DIALOG.get() || originalValue);
     }
 }

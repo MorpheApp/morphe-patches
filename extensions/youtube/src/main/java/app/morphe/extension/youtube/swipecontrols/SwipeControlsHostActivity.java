@@ -372,6 +372,7 @@ public class SwipeControlsHostActivity extends Activity {
      */
     public static boolean allowSwipeChangeVideo(boolean original) {
         // Feature can cause crashing if forced in newer targets.
-        return !VersionCheckPatch.IS_20_27_OR_GREATER && Settings.SWIPE_CHANGE_VIDEO.get();
+        return Logger.traceOverride("SwipeControlsHostActivity.allowSwipeChangeVideo", original,
+                !VersionCheckPatch.IS_20_27_OR_GREATER && Settings.SWIPE_CHANGE_VIDEO.get());
     }
 }

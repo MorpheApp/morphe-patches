@@ -117,7 +117,8 @@ public final class SeekbarColorPatch {
      * Injection point.
      */
     public static boolean showWatchHistoryProgressDrawable(boolean original) {
-        return !HIDE_SEEKBAR_THUMBNAIL_ENABLED && original;
+        return Logger.traceOverride("SeekbarColorPatch.showWatchHistoryProgressDrawable", original,
+                !HIDE_SEEKBAR_THUMBNAIL_ENABLED && original);
     }
 
     /**

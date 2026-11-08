@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.patches;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -16,9 +17,7 @@ public class DisableScrollSpeedLimitPatch {
      * Injection point.
      */
     public static boolean disableSpeedScrolling(boolean original) {
-        if (Settings.DISABLE_SCROLLING_SPEED.get()) {
-            return false;
-        }
-        return original;
+        return Logger.traceOverride("DisableScrollSpeedLimitPatch.disableSpeedScrolling", original,
+                !Settings.DISABLE_SCROLLING_SPEED.get() && original);
     }
 }

@@ -27,7 +27,8 @@ public class WideSearchBarLegacyPatch {
      * Injection point.
      */
     public static boolean enableWideSearchbar(boolean original) {
-        return WIDE_SEARCHBAR_ENABLED || original;
+        return Logger.traceOverride("WideSearchBarLegacyPatch.enableWideSearchbar", original,
+                WIDE_SEARCHBAR_ENABLED || original);
     }
 
     /**

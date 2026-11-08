@@ -102,10 +102,8 @@ public class ForceOriginalAudioPatch {
      * Injection point.
      */
     public static boolean ignoreDefaultAudioStream(boolean original) {
-        if (FORCE_ORIGINAL_AUDIO) {
-            return false;
-        }
-        return original;
+        return Logger.traceOverride("ForceOriginalAudioPatch.ignoreDefaultAudioStream", original,
+                !FORCE_ORIGINAL_AUDIO && original);
     }
 
     /**

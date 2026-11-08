@@ -102,6 +102,7 @@ public final class NavigationBar {
                 }
                 if (view == searchBarResultsRef.get()) {
                     isSearchBarAttached = true;
+                    Logger.traceState("SearchBarShown", true);
                 }
             }
 
@@ -114,6 +115,7 @@ public final class NavigationBar {
                 if (view == searchBarResultsRef.get()) {
                     // View#isShown() is still true while the detach listeners are called.
                     isSearchBarAttached = false;
+                    Logger.traceState("SearchBarShown", false);
                 }
             }
         });
@@ -510,7 +512,9 @@ public final class NavigationBar {
                 goingBackNavigationButton = null;
                 goingBackCancelled = false;
 
-                Logger.printDebug(() -> "Changed to navigation button: " + button);
+                Logger.traceState("NavigationButton", openedFromNavigationButton == null
+                        ? button
+                        : button + " (opened from " + openedFromNavigationButton + ")");
                 notifyNavigationButtonChangedListeners(button);
             }
         } catch (Exception ex) {
@@ -522,7 +526,7 @@ public final class NavigationBar {
      * Injection point.
      */
     public static void onBackPressed() {
-        Logger.printDebug(() -> "Back button pressed");
+        Logger.traceEvent("Navigation", "Back button pressed");
         createNavButtonLatch();
         setGoingBackNavigationButton();
         setSearchBarClosingIfShown();
@@ -534,7 +538,7 @@ public final class NavigationBar {
      * Predictive back gesture, which does not call {@link #onBackPressed()}.
      */
     public static void onBackInvoked() {
-        Logger.printDebug(() -> "Back invoked");
+        Logger.traceEvent("Navigation", "Predictive back invoked");
         setGoingBackNavigationButton();
         setSearchBarClosingIfShown();
     }

@@ -59,7 +59,7 @@ public enum PlayerControlsVisibility {
 
     private static void setCurrent(PlayerControlsVisibility type) {
         if (currentPlayerControlsVisibility != type) {
-            Logger.printDebug(() -> "Changed to: " + type);
+            Logger.traceState("PlayerControlsVisibility", type);
 
             currentPlayerControlsVisibility = type;
             onChange.invoke(type);
