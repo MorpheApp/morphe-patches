@@ -11,7 +11,9 @@ package app.morphe.patches.youtube.interaction.onthego
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
@@ -31,6 +33,8 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -40,6 +44,9 @@ private const val EXTENSION_FILTER = "Lapp/morphe/extension/youtube/patches/onth
 
 private const val EXTENSION_STATE_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/onthego/OnTheGoPatch$OnTheGoState;"
+
+private const val EXTENSION_SEEK_LENGTH_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/onthego/OnTheGoPatch$SeekLength;"
 
 @Suppress("unused")
 val onTheGoPatch = patch(
@@ -128,6 +135,50 @@ val onTheGoPatch = patch(
                         )
                     }
                 )
+            }
+        }
+
+        // The seek buttons of the panel use the double tap to seek length of the app settings.
+        SeekLengthConstructorFingerprint.let {
+            it.method.apply {
+                val durationType = getInstruction(it.instructionMatches[1].index)
+                    .getReference<MethodReference>()!!.definingClass
+                val fieldIndex = it.instructionMatches.last().index
+                val seekLengthField = getInstruction(fieldIndex)
+                    .getReference<FieldReference>()!!
+
+                addInstruction(
+                    fieldIndex + 1,
+                    "invoke-static { p0 }, $EXTENSION_CLASS->setSeekLength($EXTENSION_SEEK_LENGTH_INTERFACE)V"
+                )
+
+                it.classDef.apply {
+                    interfaces.add(EXTENSION_SEEK_LENGTH_INTERFACE)
+
+                    methods.add(
+                        ImmutableMethod(
+                            type,
+                            "patch_getSeekLengthMilliseconds",
+                            listOf(),
+                            "J",
+                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                            null,
+                            null,
+                            MutableMethodImplementation(3),
+                        ).toMutable().apply {
+                            addInstructions(
+                                0,
+                                """
+                                    iget-object v0, p0, $seekLengthField
+                                    check-cast v0, $durationType
+                                    invoke-virtual { v0 }, $durationType->toMillis()J
+                                    move-result-wide v0
+                                    return-wide v0
+                                """
+                            )
+                        }
+                    )
+                }
             }
         }
     }

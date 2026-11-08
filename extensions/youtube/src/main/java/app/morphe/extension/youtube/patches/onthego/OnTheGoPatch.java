@@ -83,6 +83,22 @@ public final class OnTheGoPatch {
     @Nullable
     private static volatile OnTheGoState onTheGoState;
 
+    /**
+     * Seek length of the app, which is the double tap to seek length of the app settings.
+     */
+    public interface SeekLength {
+        // Method is added during patching.
+        long patch_getSeekLengthMilliseconds();
+    }
+
+    /**
+     * Seek length of the app versions that have no seek length class.
+     */
+    private static final long DEFAULT_SEEK_LENGTH_MILLISECONDS = 10_000;
+
+    @Nullable
+    private static volatile SeekLength seekLength;
+
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -92,6 +108,31 @@ public final class OnTheGoPatch {
      */
     public static void setOnTheGoState(OnTheGoState state) {
         onTheGoState = state;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setSeekLength(SeekLength length) {
+        seekLength = length;
+    }
+
+    /**
+     * @return The seek length of the app settings.
+     */
+    static long getSeekLengthMilliseconds() {
+        SeekLength length = seekLength;
+        if (length != null) {
+            try {
+                final long milliseconds = length.patch_getSeekLengthMilliseconds();
+                if (milliseconds > 0) {
+                    return milliseconds;
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "getSeekLengthMilliseconds failure", ex);
+            }
+        }
+        return DEFAULT_SEEK_LENGTH_MILLISECONDS;
     }
 
     /**

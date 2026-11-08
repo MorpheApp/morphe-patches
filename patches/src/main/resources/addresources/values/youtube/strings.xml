@@ -537,6 +537,8 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_on_the_go_summary">Player flyout \'on-the-go\' opens Morphe custom player controls</string>
     <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_on_the_go_panel_title">On-the-go</string>
+    <string name="morphe_on_the_go_audio_mode">Switch to audio mode</string>
+    <string name="morphe_on_the_go_video_mode">Switch to video mode</string>
 
     <!-- interaction.ask.askFlyoutMenuPatch -->
     <string name="morphe_ask_summarize_flyout_menu_title">Add Ask item to flyout menu</string>
