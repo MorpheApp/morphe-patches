@@ -139,16 +139,15 @@ val addToQueuePatch = patch(
                 // The class also handles other kinds of menu items, with another type of data.
                 it.method.addInstructionsWithLabels(
                     0,
-                    (if (is_21_15_or_greater) {
-                        """
-                            iget-object v0, p0, $enumMethodParameterClassReference
-                            check-cast v0, $enumMethodParameterClassName
-                        """ + getReplaceOnItemClickPatch("v0", "v0", "native_playlist_item")
-                    } else "") + """
+                    """
                         iget-object v0, p0, $enumMethodParameterClassReference
                         instance-of v1, v0, $enumMethodParameterClassName
                         if-eqz v1, :block_item_click
                         check-cast v0, $enumMethodParameterClassName
+                    """ + (if (is_21_15_or_greater) {
+                        // Preserve the checked item for the native icon conversion below.
+                        getReplaceOnItemClickPatch("v0", "v1", "native_playlist_item")
+                    } else "") + """
                         invoke-static { v0 }, $getCharSequenceReference
                         move-result-object v0
                         iget v0, v0, $enumIntField
