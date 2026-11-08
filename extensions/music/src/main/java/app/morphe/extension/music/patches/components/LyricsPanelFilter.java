@@ -30,14 +30,17 @@ public final class LyricsPanelFilter extends Filter {
 
     private final StringFilterGroup nonLyricsPanelGroup = new StringFilterGroup(
             null,
+            "comment_thread",
             "comment_composer",
-            "comment_filter_context",
+            "comment_filter",
+            "comments_header",
+            "comments_simplebox",
             "community_guidelines",
             "|comment."
     );
 
     public LyricsPanelFilter() {
-        addIdentifierCallbacks(timedLyricsGroup);
+        addIdentifierCallbacks(timedLyricsGroup, nonLyricsPanelGroup);
         addPathCallbacks(nonLyricsPanelGroup);
     }
 
@@ -54,7 +57,24 @@ public final class LyricsPanelFilter extends Filter {
         if (matchedGroup == nonLyricsPanelGroup) {
             LyricsPanelInstaller.onNonLyricsPanelDetected();
         } else {
-            LyricsPanelInstaller.onLyricsPanelDetected();
+            String pathStr = path != null ? path.toString() : "";
+            if (!pathStr.contains("|CollectionType|CellType|")) {
+                LyricsPanelInstaller.onLyricsPanelDetected(isBackgroundComponentUpdate());
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns true when Litho is updating an existing timed_lyrics component in the background
+     * as playback advances (via {@code componentDidUpdate}), rather than building the panel for
+     * the first time when opened by the user.
+     */
+    private static boolean isBackgroundComponentUpdate() {
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            if ("componentDidUpdate".equals(element.getMethodName())) {
+                return true;
+            }
         }
         return false;
     }
