@@ -85,6 +85,8 @@ public final class LayoutComponentsFilter extends Filter {
      */
     private static final String COMMUNITY_PAGE_BROWSE_ID = "FEcommunity_page";
 
+    private static final String POST_DETAIL_BROWSE_ID = "FEpost_detail";
+
     /**
      * Browse id of the page that is shown, or empty for the search feed.
      * Also used by {@link HorizontalShelvesFilter}.
@@ -674,7 +676,8 @@ public final class LayoutComponentsFilter extends Filter {
             // The watch page, with its related videos, comments and other panels, covers the page
             // below it, also when the video is opened from the community page
             // (https://github.com/MorpheApp/morphe-patches/issues/4170).
-            if (COMMUNITY_PAGE_BROWSE_ID.equals(browseId) && !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+            if ((COMMUNITY_PAGE_BROWSE_ID.equals(browseId) || POST_DETAIL_BROWSE_ID.equals(browseId))
+                    && !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
                 return false;
             }
 
