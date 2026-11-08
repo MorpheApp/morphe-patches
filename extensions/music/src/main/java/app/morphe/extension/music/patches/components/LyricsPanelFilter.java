@@ -8,6 +8,7 @@
 package app.morphe.extension.music.patches.components;
 
 import app.morphe.extension.music.patches.lyrics.ui.LyricsPanelInstaller;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
@@ -19,6 +20,11 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
  * <p>Nothing is hidden here. The filter is only used as a signal, because the
  * timed lyrics component is the earliest reliable indication that the panel the
  * user opened is the lyrics one.
+ *
+ * <p>The old path based check ("|CollectionType|CellType|") was removed. Some songs
+ * (for example Turkish tracks) render every lyric line with that path, so the check
+ * suppressed real lyrics openings. Background updates are now separated only by
+ * {@link LyricsPanelInstaller#isOtherPanelForeground()}.
  */
 @SuppressWarnings("unused")
 public final class LyricsPanelFilter extends Filter {
@@ -28,24 +34,20 @@ public final class LyricsPanelFilter extends Filter {
             "timed_lyrics"
     );
 
-    private final StringFilterGroup nonLyricsIdentifierGroup = new StringFilterGroup(
+    private final StringFilterGroup nonLyricsPanelGroup = new StringFilterGroup(
             null,
             "comment_thread",
             "comment_composer",
             "comment_filter",
             "comments_header",
             "comments_simplebox",
-            "community_guidelines"
-    );
-
-    private final StringFilterGroup nonLyricsPathGroup = new StringFilterGroup(
-            null,
+            "community_guidelines",
             "|comment."
     );
 
     public LyricsPanelFilter() {
-        addIdentifierCallbacks(timedLyricsGroup, nonLyricsIdentifierGroup);
-        addPathCallbacks(nonLyricsPathGroup);
+        addIdentifierCallbacks(timedLyricsGroup, nonLyricsPanelGroup);
+        addPathCallbacks(nonLyricsPanelGroup);
     }
 
     @Override
@@ -58,10 +60,15 @@ public final class LyricsPanelFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (matchedGroup == nonLyricsIdentifierGroup || matchedGroup == nonLyricsPathGroup) {
+        if (matchedGroup == nonLyricsPanelGroup) {
+            log("NON_LYRICS id=" + identifier + " otherForeground="
+                    + safeOtherPanelForeground());
             LyricsPanelInstaller.onNonLyricsPanelDetected();
         } else {
-            LyricsPanelInstaller.onLyricsPanelDetected(isBackgroundComponentUpdate());
+            boolean background = isBackgroundComponentUpdate();
+            log("LYRICS id=" + identifier + " background=" + background
+                    + " path=" + shorten(path));
+            LyricsPanelInstaller.onLyricsPanelDetected(background);
         }
         return false;
     }
@@ -73,5 +80,23 @@ public final class LyricsPanelFilter extends Filter {
      */
     private static boolean isBackgroundComponentUpdate() {
         return LyricsPanelInstaller.isOtherPanelForeground();
+    }
+
+    private static boolean safeOtherPanelForeground() {
+        try {
+            return LyricsPanelInstaller.isOtherPanelForeground();
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    private static String shorten(CharSequence path) {
+        if (path == null) return "null";
+        String s = path.toString();
+        return s.length() > 160 ? "..." + s.substring(s.length() - 160) : s;
+    }
+
+    private static void log(String message) {
+        Logger.printDebug(() -> "LyricsPanelFilter: " + message);
     }
 }
