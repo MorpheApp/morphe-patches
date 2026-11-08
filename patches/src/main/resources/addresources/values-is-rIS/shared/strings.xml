@@ -229,6 +229,19 @@ Ef rafhlöðu bjargráðningar eru ekki breytt þá gætir þú upplifað:
 Ef þú vilt mest áreynslulausa reynslu, smelltu á &lt;b&gt;afnemma&lt;/b&gt; þetta og tákna mæltu app útgáfu af ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ég vil tilrauna</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ég vil stabilt</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Sýna tilkynningar í forritinu fyrir uppfærslur á vártum</string>
+  <string name="morphe_patches_update_notice_entry_off">Slökkt</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stöðugar útgáfur</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stöðugar og þróunarútgáfur</string>
+  <string name="morphe_patches_update_notice_dialog_title">Nýjar lagaingar í boði</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (núverandi: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nýjar eiginleikar</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Lagranir á villum</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Aðrar breytingar</string>
+  <string name="morphe_patches_update_notice_dialog_more">…og %s fleiri</string>
+  <string name="morphe_patches_update_notice_dialog_update">Uppfæra</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Loka</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Hrunannáll vistaður í skjöl notanda: %s</string>
   <string name="morphe_crash_log_saved">Hrunannáll vistaður: %s</string>

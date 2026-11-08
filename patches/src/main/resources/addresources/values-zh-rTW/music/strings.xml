@@ -490,6 +490,23 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">隱藏「升級」按鈕</string>
   <string name="morphe_music_hide_navigation_bar_title">隱藏導覽列</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">隱藏導覽列按鈕標籤</string>
+  <string name="morphe_music_navigation_bar_glass_title">啟用玻璃效果導覽列</string>
+  <string name="morphe_music_navigation_bar_glass_summary">將導覽列顯示為浮動、圓角且半透明的膠囊形狀</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">玻璃效果的不透明度</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">調整玻璃效果導覽列的透明程度 (0 為完全透明，100 為完全不透明)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">淺色玻璃</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">將玻璃導覽列染成白色而非深色，使玻璃效果更輕盈、更清晰</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">玻璃導覽列尺寸</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">調整玻璃導覽列的高度、寬度和按鈕間距，並提供預覽。超出螢幕寬度的按鈕將被隱藏</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">高度</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">最大寬度</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">按鈕間距</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">顯示按鈕：%1$s / %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">首頁</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">樣本</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">探索</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">媒體庫</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">未登入。點擊以設定</string>
   <string name="morphe_music_scrobbling_log_out">登出</string>
@@ -716,7 +733,7 @@ SABR 播放（影片串流模擬已關閉）"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">中文和粵文字符（UniDict，約 8 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">漢語詞彙（pinyin-pro，約 17 MB）</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">希臘語、斯拉夫語西里爾字母（包括俄語、烏克蘭語、保加利亞語、塞爾維亞語、白俄羅斯語、馬其頓語）、格魯吉亞語、亞美尼亞語、希伯來語、阿拉伯語、阿姆哈拉語和敘利亞語轉寫（CLDR，約 0.5 MB）</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">讀取中 %1$s：%2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">正在讀取 %1$s：%2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">顯示重新整理按鈕</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">輕觸切換至下一個歌詞候選項目；長按依歌曲標題及藝人搜尋歌詞</string>
   <string name="morphe_music_lyrics_search_dialog_title">搜尋歌詞</string>

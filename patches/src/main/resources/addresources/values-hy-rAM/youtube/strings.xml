@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">Թաքցնել որոնման արդյունքները ըստ բանալի բառերի</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Թաքցնել Բաժանորդագրությունների տեսանյութերը ըստ բանալի բառերի</string>
   <string name="morphe_hide_keyword_content_phrases_title">Թաքցնելու բանալի բառերը</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Մուտքագրեք թաքցնելու համար նախատեսված բանալի բառեր և արտահայտություններ՝ բաժանված նոր տողերով
+  <string name="morphe_hide_keyword_content_phrases_summary">"Մուտքագրեք թաքցնելու բանալի բառերը և արտահայտությունները՝ բաժանված նոր տողերով
 
-Բանալի բառերը կարող են լինել ցանկացած տեքստ, որը ցուցադրվում է տեսանյութերի վերնագրերում կամ ալիքների անվանումներում
-
-Միջինում մեծատառեր ունեցող բառերը պետք է համընկնեն ճշգրիտ (օրինակ՝ iPhone, TikTok, LeBlanc)"</string>
+Բանալի բառերը կարող են լինել ցանկացած տեքստ, որը ցուցադրվում է տեսանյութերի վերնագրերում կամ ալիքների անվանումներում"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Գլխավոր / Բաժանորդագրություններ / Որոնում / Մեկնաբանությունները զտվում են՝ թաքցնելու համար բանալի արտահայտություններին համապատասխանող բովանդակությունը
 
-Սահմանափակումներ.
-• Shorts-երը հնարավոր չէ թաքցնել ալիքի անվանամբ
-• Որոշ UI բաղադրիչներ կարող են չթաքնվել
-• Բանալի բառով որոնումը կարող է չտալ արդյունքներ"</string>
+Սահմանափակումներ
+• Որոշ Shorts-եր չեն կարող թաքցվել ալիքի անվան միջոցով
+• Որոշ UI բաղադրիչներ կարող են չթաքցվել"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Համընկնություն ամբողջական բառերի հետ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Բանալի բառը/արտահայտությունը չակերտներով շրջելը կկանխի տեսանյութերի վերնագրերի և ալիքների անվանումների մասնակի համընկնումները&lt;br&gt;&lt;br&gt;Օրինակ՝&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;-ը կթաքցնի տեսանյութը՝ &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;բայց չի թաքցնի՝ &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Չի կարելի օգտագործել բանալի բառը՝ %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Ավելացրեք չակերտներ՝ %s բանալի բառն օգտագործելու համար</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Բանալի բառն ունի հակասող հայտարարություններ՝ %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Բանալի բառը չափազանց կարճ է և պահանջում է չակերտներ՝ %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Բանալի բառը կթաքցնի բոլոր տեսանյութերը՝ %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">Թարգմանվում է…</string>
   <string name="morphe_post_translate_failed">Չհաջողվեց թարգմանել գրառումը</string>
   <string name="morphe_post_translate_same_language">Գրառնն արդեն թարգմանության լեզվով է</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Միացրեք Morphe-ը ընթացքում</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Նվագարկիչի «ընթացքում» վահանակը բացում է Morphe-ի նվագարկիչի հատուկ կառավարման գործիքները</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Ընթացքում</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ավելացնել «Հարցրու» տարրը լողացող մենյուում</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Ավելացնում է տեսանյութի ամփոփման տարրը ленտայի լողացող մենյուում</string>
@@ -794,7 +794,6 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Միացնել հպումով փնտրելը</string>
   <string name="morphe_tap_to_seek_summary">Սեղմեք փնտրողի ցանկացած հատվածում՝ տվյալ դիրքին անցնելու համար, փոխարենը քաշելու</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Սահիչի հատուկ կոճակ</string>
   <string name="morphe_custom_seekbar_thumb_title">Միացնել seekbar-ի հատուկ կոճակը</string>
   <string name="morphe_custom_seekbar_thumb_summary">Փոխարինել seekbar-ի կոճակը հատուկ պատկերով կամ անիմացիոն GIF-ով</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Կոճակի պատկերը</string>
@@ -1774,6 +1773,9 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_niconico_comments_screen_title">Niconico-ի մեկնաբանություններ</string>
   <string name="morphe_niconico_comments_screen_summary">Ցուցադրել ուղիղ չատը և չատի կրկնությունը որպես մեկնաբանություններ, որոնք սահում են տեսանյութի վրայով</string>
   <string name="morphe_niconico_comments_summary">Ցուցադրում է վերապատկերված կոճակ տեսանյութի նվագարկիչում: Հպեք՝ մեկնաբանությունները ցուցադրելու կամ թաքցնելու համար, սեղմեք և պահեք՝ արագ կարգավորումների համար</string>
+  <string name="morphe_niconico_comments_appearance_title">Արտաքին տեսք</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Դիմանկար</string>
+  <string name="morphe_niconico_comments_video_types_title">Տեսանյութերի տեսակներ</string>
   <string name="morphe_niconico_comments_font_size_title">Մեկնաբանության տառատեսակի չափսը</string>
   <string name="morphe_niconico_comments_font_size_summary">Մեկնաբանությունների տեքստի չափսը (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Մեկնաբանության թափանցիկությունը</string>
@@ -1782,6 +1784,16 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_niconico_comments_travel_duration_summary">Քանի վայրկյան է պահանջվում մեկնաբանություններին անցնել էկրանով: Ավելի ցածր արժեքները շարժվում են ավելի արագ</string>
   <string name="morphe_niconico_comments_display_area_title">Ցուցադրման տարածք</string>
   <string name="morphe_niconico_comments_display_area_summary">Թե ինչքան մաս է զբաղեցնում հայտարարությունների հատվածը վերևից սկսած: Ավելի փոքր արժեքները թույլ են տալիս պահպանել տեսանյութի ստորին մասը մաքուր</string>
+  <string name="morphe_niconico_comments_portrait_title">Ցուցադրել դիվերտիզիոն ռեժիմում</string>
+  <string name="morphe_niconico_comments_portrait_summary">Ցուցադրել մեկնաբանությունները, երբ էկրանը դիվերտիզիոն ռեժիմում է: Անջատեք դրանք միայն լանդշաֆտային ռեժիմում ցուցադրելու համար</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Առանձին կարգավորումներ դիվերտիզիոն ռեժիմի համար</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Օգտագործել տարբեր տառատեսակի չափս, տևողություն և ցուցադրման հատված դիվերտիզիոն ռեժիմում: Միացնելիս դրանք սկսվում են ընթացիկ արժեքներից</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Մեկնաբանության տառատեսակի չափսը դիվերտիզիոն ռեժիմում</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Մեկնաբանությունների տեքստի չափսը դիվերտիզիոն ռեժիմում (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Տևողությունը դիվերտիզիոն ռեժիմում</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Քանի վայրկյան են մեկնաբանությունները ծախսում էկրանն անցնելու համար դիվերտիսմենտ ռեժիմում</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Ցուցադրման տարածքը դիվերտիսմենտի ռեժիմում</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Թե որքան մաս է զբաղեցնում մեկնաբանությունների տարածքը նվագարկիչի վերևի մասից դիվերտիսմենտի ռեժիմում</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Թաքցնել մեկնաբանությունները, որոնք կհամընկնեն</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Երբ ցուցադրման տարածին լցված է, նոր մեկնաբանությունները թաքցվում են՝ այլ մեկնաբանությունների վրա չզ疊վելու համար</string>
   <string name="morphe_niconico_comments_max_length_title">Մեկնաբանության առավելագույն երկարությունը</string>
@@ -1799,6 +1811,8 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_niconico_comments_timed_comments_summary">Առանց չատի տեսանյութերի դեպքում, ժամանակ ներառող լավագույն մեկնաբանությունները, օրինակ՝ 1:23, ցուցադրվում են հենց այդ ժամանակահատվածում</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Ցուցադրել ժամանակավոր մեկնաբանությունները չատի վերկերկրումով</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Ուղիղ հեռավարարումների և Premiere-ների վերկերկրումների ժամանակ ժամանակավոր մեկնաբանությունները ցուցադրվում են նաև չատի հետ</string>
+  <string name="morphe_niconico_comments_all_settings">Բոլոր կարգավորումները</string>
+  <string name="morphe_niconico_comments_reset_title">Վերակուղարկել այս կարգավորումները՞</string>
   <string name="morphe_live_chat_translate_screen_title">Ուղիղ միացման չաթի թարգմանություն</string>
   <string name="morphe_live_chat_translate_screen_summary">Թարգմանել ուղիղ միացման չաթի և չաթի կրկնաթափման հաղորդագրությունները</string>
   <string name="morphe_live_chat_translate_title">Թարգմանել ուղիղ միացման չաթը</string>

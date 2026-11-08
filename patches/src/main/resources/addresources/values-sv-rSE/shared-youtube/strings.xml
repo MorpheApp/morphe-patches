@@ -116,7 +116,7 @@ Gör %2$s till standardklient?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standardklient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logga in i Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Inte inloggad i Android VR. Tryck här för att logga in</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR kräver en separat inloggning. Tryck här för att fortsätta</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">För närvarande inloggad i Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Om du vill använda den här funktionen ändrar du \"Standardklient\" till Android VR</string>

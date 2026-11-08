@@ -116,7 +116,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_client_type_title">默认客户端</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR 登录</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">未登录 Android VR。点击此处登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR 需要单独登录。点击此处继续</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">当前已登录 Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">要使用此功能，请将“默认客户端”更改为Android VR</string>

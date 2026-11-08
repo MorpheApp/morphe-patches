@@ -229,6 +229,19 @@ MicroG үшін батареяны оңтайландыруды өшіру ба�
 Егер сізге ең тұрақты жұмыс керек болса, онда мұны &lt;b&gt;жойыңыз&lt;/b&gt; және ✅ &lt;b&gt;%2$s&lt;/b&gt; ұсынылған нұсқасын орнатыңыз"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Маған эксперименталдық нұсқа керек</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Маған тұрақты нұсқа керек</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Патч жаңартулары туралы қолданба ішіндегі хабарламаны көрсету</string>
+  <string name="morphe_patches_update_notice_entry_off">Өшіру</string>
+  <string name="morphe_patches_update_notice_entry_stable">Тұрақты нұсқалар</string>
+  <string name="morphe_patches_update_notice_entry_dev">Тұрақты және әзірлеу нұсқалары</string>
+  <string name="morphe_patches_update_notice_dialog_title">Жаңа патчтар қолжетімді</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe патчтары &lt;b&gt;%1$s&lt;/b&gt; (ағымдағы: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Жаңа мүмкіндіктер</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Қателерді түзету</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Басқа өзгерістер</string>
+  <string name="morphe_patches_update_notice_dialog_more">…және тағы %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Жаңарту</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Жабу</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Қателік журналы пайдаланушы құжаттарына сақталды: %s</string>
   <string name="morphe_crash_log_saved">Қателік журналы сақталды: %s</string>

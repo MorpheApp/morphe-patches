@@ -229,6 +229,19 @@ Second \"item\" text"</string>
 Εάν θέλετε μια εμπειρία χωρίς σφάλματα, τότε &lt;b&gt; απεγκαταστήστε την &lt;/b&gt; και τροποποιήσετε την συνιστώμενη έκδοση της εφαρμογής ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Θέλω πειραματική έκδοση</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Θέλω σταθερή έκδοση</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Εμφάνιση ειδοποίησης εντός της εφαρμογής για ενημερώσεις διορθώσεων</string>
+  <string name="morphe_patches_update_notice_entry_off">Ανενεργό</string>
+  <string name="morphe_patches_update_notice_entry_stable">Σταθερές εκδόσεις</string>
+  <string name="morphe_patches_update_notice_entry_dev">Σταθερές και αναπτυξιακές εκδόσεις</string>
+  <string name="morphe_patches_update_notice_dialog_title">Νέες διαθέσιμες τροποποιήσεις</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (τρέχουσα: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Νέα χαρακτηριστικά</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Διορθώσεις σφαλμάτων</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Άλλες αλλαγές</string>
+  <string name="morphe_patches_update_notice_dialog_more">…και %s περισσότερα</string>
+  <string name="morphe_patches_update_notice_dialog_update">Ενημέρωση</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Παράλειψη</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Το αρχείο καταγραφής σφαλμάτων αποθηκεύτηκε στα έγγραφα του χρήστη: %s</string>
   <string name="morphe_crash_log_saved">Το αρχείο καταγραφής σφαλμάτων αποθηκεύτηκε: %s</string>

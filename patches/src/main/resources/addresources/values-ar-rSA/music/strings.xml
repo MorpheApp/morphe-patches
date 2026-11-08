@@ -490,6 +490,23 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">إخفاء زر الترقية</string>
   <string name="morphe_music_hide_navigation_bar_title">إخفاء شريط التنقل</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">إخفاء تسميات أزرار التنقل</string>
+  <string name="morphe_music_navigation_bar_glass_title">تمكين شريط التنقل الزجاجي</string>
+  <string name="morphe_music_navigation_bar_glass_summary">يعرض شريط التنقل ككبسولة عائمة ومستديرة وشبه شفافة</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">شفافية الزجاج</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">ضبط مستوى الشفافية لشريط التنقل الزجاجي (0 شفاف، 100 معتم)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">زجاج فاتح</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">يصبغ شريط التنقل الزجاجي باللون الأبيض بدلاً من الداكن، للحصول على زجاج أكثر فاتحاً وصفاءً</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">حجم شريط التنقل الزجاجي</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">ضبط ارتفاع, عرض وتباعد أزرار شريط التنقل الزجاجي، مع المعاينة. يتم إخفاء الأزرار التي لا تتناسب مع عرض الشاشة</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">الارتفاع</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">أقصى عرض</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">تباعد الزر</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">الأزرار المعروضة: %1$s من %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">الصفحة الرئيسية</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">عينات</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">استكشف</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">المكتبة</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">تسجيل خروج. اضغط للتكوين</string>
   <string name="morphe_music_scrobbling_log_out">تسجيل خروج</string>
@@ -711,7 +728,7 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">الأحرف الصينية والكانتونية (UniDict، ~8 ميغابايت)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">الكلمات الصينية (pinyin-pro، ~17 ميغابايت)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">النقل الحرفي للغات اليونانية والسلافية السييريانية (بما في ذلك الروسية والأوكرانية والبلغارية والصربية والبيلاروسية والمقدونية)، والجورجية والأرمنية والعبرية والعربية والعفرية والسريانية (CLDR، ~0.5 ميغابايت)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">جارٍ تحميل %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">جارٍ تحميل %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">إظهار زر التحديث</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">انقر للتبديل إلى مرشح الكلمات التالي؛ اضغط مطولاً للبحث عن الكلمات بعنوان الأغنية والفنان</string>
   <string name="morphe_music_lyrics_search_dialog_title">البحث عن الكلمات</string>

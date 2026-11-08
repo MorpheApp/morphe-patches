@@ -116,7 +116,7 @@ Postavi %2$s kao zadani klijent?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standardni klijent</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava u Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nije prijavljeni u Android VR. Pritisnite ovdje za prijavu</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR zahtijeva zasebnu prijavu. Dodirnite ovdje za nastavak</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Trenutačno prijavljeni u Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Da bi koristili ovu značajku, promijenite \"Standardni klijent\" u Android VR</string>

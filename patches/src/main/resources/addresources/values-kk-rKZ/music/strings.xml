@@ -490,6 +490,23 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Жаңарту түймесін жасыру</string>
   <string name="morphe_music_hide_navigation_bar_title">Навигациялық панельді жасыру</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Навигациялық батырмалардың таңбаларын жасыру</string>
+  <string name="morphe_music_navigation_bar_glass_title">Шыны навигациялық панелін қосу</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Навигациялық панельді дөңгелек, жартылай мөлдір капсула ретінде көрсетеді</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Шынақтың мөлдірлігі</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Шынақты навигациялық панельдің мөлдірлік деңгейін реттеңіз (0 — мөлдір, 100 — мөлдір емес)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Ашық шынақ</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Шынақты навигациялық панельді күңірткір емес, ақ түске бояйды, бұл шынақтың ашығырақ және анығырақ болуын қамтамасыз етеді</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Шынақты навигациялық панельдің өлшемі</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Шынақты навигациялық панельдің биіктігін, енін және батырмалар арасындағы қашықтықты алдын ала қарау мүмкіндігімен реттеңіз. Экран еніне сыймайтын батырмалар жасырылады</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Биіктігі</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Максималды ені</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Батырмалар арасындағы қашықтық</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Көрсетілген батырмалар: %1$s / %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Басты бет</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Үлгілер</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Зерттеу</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Кітапхана</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Жүйеге кірілмеген. Баптау үшін басыңыз</string>
   <string name="morphe_music_scrobbling_log_out">Шығу</string>
@@ -716,7 +733,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Қытай және кантондық таңбалар (UniDict, ~8 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Қытай сөздері (pinyin-pro, ~17 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Грек, славян кириллицасы (соның ішінде орыс, украин, болгар, серб, белорус, македон тілдері), грузин, армян, иврит, араб, амхара және сирияк транслитерациясы (CLDR, ~0.5 МБ)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Оқылуы %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s оқылуда: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Жаңарту түймесін көрсету</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Келесі мәтін нұсқасына ауысу үшін түртіңіз; ән атауы мен орындаушы бойынша мәтінді іздеу үшін ұзақ басыңыз</string>
   <string name="morphe_music_lyrics_search_dialog_title">Мәтіндерді іздеу</string>

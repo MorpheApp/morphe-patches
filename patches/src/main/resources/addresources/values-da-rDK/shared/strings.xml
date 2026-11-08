@@ -229,6 +229,19 @@ Hvis batterioptimeringer ikke ændres, kan du opleve:
 Hvis du ønsker den mest problemfrie oplevelse, så &lt;b&gt;afinstaller&lt;/b&gt; denne og opdater den anbefalede app-version af ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jeg vil have eksperimentel</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jeg vil have stabil</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Vis meddelelse i appen om patch-opdateringer</string>
+  <string name="morphe_patches_update_notice_entry_off">Fra</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabile udgivelser</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabile og dev-udgivelser</string>
+  <string name="morphe_patches_update_notice_dialog_title">Nye patches tilgængelige</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (nuværende: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nye funktioner</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Fejlrettelser</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Andre ændringer</string>
+  <string name="morphe_patches_update_notice_dialog_more">…og %s flere</string>
+  <string name="morphe_patches_update_notice_dialog_update">Opdater</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Luk</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Crash-log gemt i brugerdokumenter: %s</string>
   <string name="morphe_crash_log_saved">Crash-log gemt: %s</string>

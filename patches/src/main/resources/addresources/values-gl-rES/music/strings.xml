@@ -490,6 +490,23 @@ Reprodución SABR (simulación de fluxos de vídeo desactivada)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ocultar botón Premium</string>
   <string name="morphe_music_hide_navigation_bar_title">Ocultar barra de navegación</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ocultar etiquetas dos botóns de navegación</string>
+  <string name="morphe_music_navigation_bar_glass_title">Activar a barra de navegación de vidro</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Mostra a barra de navegación como unha cápsula flotante, arredondeada e translúcida</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Opacidade do vidro</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Axusta o nivel de transparencia da barra de navegación de vidro (0 é transparente, 100 é opaco)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Vidro claro</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Tinta a barra de navegación de vidro de branco en lugar de escuro, para un vidro máis claro e nítido</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Tamaño da barra de navegación de vidro</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Axusta a altura, a largura e o espaciado dos botóns da barra de navegación de vidro, cunha vista previa. Os botóns que non caben na largura da pantalla ocultanse</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Altura</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Largura máxima</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Espaciado dos botóns</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Botoas amosadas: %1$s de %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Inicio</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Mostras</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Explorar</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Biblioteca</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Non iniciou sesión. Toca para configurar</string>
   <string name="morphe_music_scrobbling_log_out">Cerrar sesión</string>
@@ -716,7 +733,7 @@ Cookies necesarias: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Caracteres chinesos e cantoneses (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Palabras chinesas (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteración de grego, cirílico eslavo (incl. ruso, ucraíno, búlgaro, serbio, bielorruso, macedonio), xeorgiano, armenio, hebreo, árabe, amhárico e siríaco (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Lendo %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Lendo %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostrar botón de Actualizar</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Toca para cambiar ao seguinte candidato de letras; mantén premido para buscar letras polo título da canción e o artista</string>
   <string name="morphe_music_lyrics_search_dialog_title">Buscar letras</string>

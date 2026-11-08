@@ -229,6 +229,19 @@ MicroG に対するバッテリー最適化を無効にしても、バッテリ�
 できるだけ問題の少ない環境を希望する場合は、このアプリを &lt;b&gt;アンインストール&lt;/b&gt; して推奨アプリ バージョンである ✅ &lt;b&gt;%2$s&lt;/b&gt; にパッチを適用してください。"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 実験版にします</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 安定版にします</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">パッチ更新のアプリ内通知を表示する</string>
+  <string name="morphe_patches_update_notice_entry_off">オフ</string>
+  <string name="morphe_patches_update_notice_entry_stable">安定版リリース</string>
+  <string name="morphe_patches_update_notice_entry_dev">安定版および開発版リリース</string>
+  <string name="morphe_patches_update_notice_dialog_title">利用可能な新しいパッチがあります</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (現在: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ 新機能</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 バグ修正</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 その他の変更</string>
+  <string name="morphe_patches_update_notice_dialog_more">…他 %s 件</string>
+  <string name="morphe_patches_update_notice_dialog_update">アップデート</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">閉じる</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">クラッシュログを Documents フォルダに保存しました: %s</string>
   <string name="morphe_crash_log_saved">クラッシュログを保存しました: %s</string>

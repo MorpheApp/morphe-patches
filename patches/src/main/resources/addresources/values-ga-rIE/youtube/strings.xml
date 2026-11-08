@@ -319,25 +319,18 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_keyword_content_search_title">Folaigh torthaí cuardaigh de réir eochairfhocail</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Folaigh físeáin Síntiúis de réir eochairfhocail</string>
   <string name="morphe_hide_keyword_content_phrases_title">Eochairfhocail le cur i bhfolach</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Cuir isteach eochairfhocail agus frásaí le cur i bhfolach, scartha le línte nua
+  <string name="morphe_hide_keyword_content_phrases_summary">"Cuir i isteach eochairfhocail agus frásaí le cur i bhfolach, scaipthe le líneacha nua
 
-Is féidir le heochairfhocail a bheith in aon téacs a thaispeántar i dteidil físeáin nó in ainmneacha cainéal
-
-Ní mór focail a bhfuil litreacha móra sa lár acu a bheith díreach mar a chéile (e.g., iPhone, TikTok, LeBlanc)"</string>
+Is féidir le eochairfhocail a bheith mar aon téacs ar leitht in airdeacha físeán nó ainmneacha cainéil"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Baile / Síntiúis / Cuardaigh / Déantar tráchtanna a scagadh chun ábhar a mheaitseálann frásaí eochairfhocail a cheilt
 
 Teorainneacha:
-• Ní féidir gearrscannáin a cheilt de réir ainm an chainéil
-• Seans nach mbeidh roinnt comhpháirteanna den Chomhéadan Úsáideora i bhfolach
-• Seans nach dtaispeánfar aon torthaí nuair a chuardaítear eochairfhocal"</string>
+• Ní féidir roinnt Shorts a cheilt de réir ainm an chainéil
+• Seans nach mbeidh roinnt comhpháirteanna den Chomhéadan Úsáideora i bhfolach"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Meaitseáil focail iomlána</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Má bhaineann tú eochairfhocal/frása le comharthaí athfhriotail dhúbailte, cuirfear cosc ​​ar mheaitseáil pháirteach de theidil físeáin agus ainmneacha cainéal&lt;br&gt;&lt;br&gt;Mar shampla,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ceilteoidh sé an físeán: &lt;b&gt;Conas a oibríonn AI?&lt;/b&gt;&lt;br&gt;ach ní cheiltfidh sé: &lt;b&gt;Cad is brí le hainm féinig?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Ní féidir eochairfhocal a úsáid: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Cuir luachana leis chun an eochairfhocal a úsáid: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Tá dearbhuithe contrártha ag an eochairfhocal: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Tá an eochairfhocal ró-ghearr agus tá comharthaí athfhriotail ag teastáil: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Folóidh an eochairfhocal na físeáin go léir: %s</string>
@@ -500,6 +493,13 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_post_translate_started">Ag aistriú…</string>
   <string name="morphe_post_translate_failed">Ní féidir an post a aistriú</string>
   <string name="morphe_post_translate_same_language">Tá an postáil sa teanga aistriúcháin cheana féin.</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Cuir Morphe ar an bpróiseas \"ar an mbóthar\"</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Osclaíonn flyout antseallóra \"ar an mbóthar\" rialaithe custom seallóra Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Ar an mbóthar</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Cuir an mhír Fiafraigh leis an roghchlár aníos</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Cuireann sé mír achoimrithe físe leis an roghchlár aníos sa bhfotha</string>
@@ -562,7 +562,7 @@ Fillteán easpórtála: %s"</string>
   <string name="morphe_export_download_folder_missing">Níorbh fhéidir an fillteán onnmhairithe %s a aimsiú</string>
   <string name="morphe_export_download_flyout_title">Easpórtáil chuig gléas</string>
   <string name="morphe_export_download_started">Ag easpórtáil físeáin</string>
-  <string name="morphe_export_download_progress">Ag easpórtáil físeáin: %s%%</string>
+  <string name="morphe_export_download_progress">Ag easpórtáil físeán: %s%%</string>
   <string name="morphe_export_download_notification_channel">Easpórtálacha físeáin</string>
   <string name="morphe_export_download_saved">Físeán easpórtáilte chuig %s</string>
   <string name="morphe_export_download_failed">Níorbh fhéidir an físeán a easpórtáil</string>
@@ -794,15 +794,14 @@ Chun é seo a shocrú, cuir 'Spoof video streams' ar siúl agus athraigh an 'Cli
   <string name="morphe_tap_to_seek_title">Cumasaigh tapáil chun cuardach a dhéanamh</string>
   <string name="morphe_tap_to_seek_summary">Tapáil aon áit ar an barra cuardaigh chun léim go dtí an suíomh sin in ionad é a tharraingt</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Meór barra cuardaigh saincheaptha</string>
-  <string name="morphe_custom_seekbar_thumb_title">Cumasaigh meór barra cuardaigh saincheaptha</string>
-  <string name="morphe_custom_seekbar_thumb_summary">Athghlais meór an bhara cuardaigh le híomháire saincheaptha nó GIF animate</string>
-  <string name="morphe_custom_seekbar_thumb_file_title">Íomháire meóir</string>
-  <string name="morphe_custom_seekbar_thumb_file_summary">Roghnaigh íomháire nó GIF animate ó stóráil an ghuíre</string>
-  <string name="morphe_custom_seekbar_thumb_file_invalid">Ní íomháire tacaite an comhad roghnaithe</string>
-  <string name="morphe_custom_seekbar_thumb_file_not_found">Ní bhfuingeacha íomháire meóir barra cuardaigh saincheaptha</string>
-  <string name="morphe_custom_seekbar_thumb_scale_type_title">Méid an meóir</string>
-  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Feir leis an barra cuardaigh</string>
+  <string name="morphe_custom_seekbar_thumb_title">Cumasaigh cnaipe saincheaptha ar an mbarra cuardaigh</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Cuir íomhá shaincheaptha nó GIF beoite in áit an chnaipe ar an mbarra cuardaigh</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Íomhá mhionsamhlacháin</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Roghnaigh íomhá nó GIF beoite ó stór an ghléis</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Ní íomhá a fhaigheann tacaíocht é an comhad roghnaithe</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Níor aimsíodh íomhá shaincheaptha do mharcóir an bharra cuardaigh</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Méid ordóige</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Feistigh an barra cuardaigh</string>
   <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Méid bunaidh</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gotha svaidhpeála ar chlé</string>
@@ -1678,7 +1677,7 @@ Stopann an taifeadadh uathoibríoch i mód incognito, nuair nach bhfuil sonraí 
   <string name="morphe_series_tracker_identity_unavailable">Ní féidir rianú a chumasú i mód incognito, ná sula mbeidh staid reatha an chuntais luchtaithe ag YouTube. Téigh ar ais go dtí an Baile agus bain triail as arís. Ní gá síniú isteach.</string>
   <string name="morphe_series_tracker_enable">Cumasaigh rianú áitiúil</string>
   <string name="morphe_series_tracker_tracking_paused">Tá taifeadadh dul chun cinn as</string>
-  <string name="morphe_series_tracker_resume_at">Athosaigh ag %s</string>
+  <string name="morphe_series_tracker_resume_at">Atosaigh ag %s</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s eipeasóid féachtha</string>
   <string name="morphe_series_tracker_episode_position">Eipeasóid %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">Eipeasóidí %1$s-%2$s de %3$s</string>
@@ -1774,6 +1773,9 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_niconico_comments_screen_title">Tuairimí Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Taispeáin comhrá beo agus athsheinm comhrá mar thuairimí a scrollaíonn trasna an fhíseáin</string>
   <string name="morphe_niconico_comments_summary">Taispeánann sé cnaipe forleagtha sa seinnteoir físeáin. Beartaigh chun na tuairimí a thaispeáint nó a cheilt; beartaigh agus coinnigh chun rochtain a fháil ar shocruithe tapa</string>
+  <string name="morphe_niconico_comments_appearance_title">Dealramh</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portráid</string>
+  <string name="morphe_niconico_comments_video_types_title">Cineálai físeáin</string>
   <string name="morphe_niconico_comments_font_size_title">Méid cló an tráchtaireachta</string>
   <string name="morphe_niconico_comments_font_size_summary">Méid téacs na dtuairimí (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Teimhneacht an tráchtaireachta</string>
@@ -1782,8 +1784,18 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_niconico_comments_travel_duration_summary">Cé mhéad soicind a thógann sé ar thráchtanna an scáileán a thrasnú. Bogann luachanna níos ísle níos tapúla.</string>
   <string name="morphe_niconico_comments_display_area_title">Limistéar taispeána</string>
   <string name="morphe_niconico_comments_display_area_summary">An méid den imreoir, ón mbarr anuas, a úsáideann na tráchtanna. Fágann luachanna níos ísle an chuid íochtarach den fhíseán saor.</string>
-  <string name="morphe_niconico_comments_hide_crowded_title">Falaigh tráchtanna a churfadh thar a chéile</string>
-  <string name="morphe_niconico_comments_hide_crowded_summary">Nuair a bhíonn an limistéir taispeána lán, falaítear tráchtanna nua in ionad iad a chur thar tráchtanna eile</string>
+  <string name="morphe_niconico_comments_portrait_title">Taispeáin i bportráid</string>
+  <string name="morphe_niconico_comments_portrait_summary">Taispeáin na tuairimí nuair a bhíonn an scáileán i bportráid. Múch go taiseanfaidh siad i lanseapach amháin</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Socruithe arleith do phortráid</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Úsáid méid fonta, own turaise agus réimse taispeána difriúil i bportráid. Nuair a chuirtear orthu, tosaíonn siad ó na luachanna reatha</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Méid fonta tuairimí i bportráid</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Méid téacs na dtuairimí i bportráid (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Duration taistil i bportráid</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Cé mhéad soicind a thógann sé ar thráchtanna an scáileán a thrasnú i bportráid</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Limcroí taispeisealaigh i bportráid</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Cé mhéad den imirleoir, ónn barr, a úsáideann na tráchtanna i bportráid</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Folaigh tuairimí a fhorluífeadh a chéile</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Nuair a bhíonn an limistéar taispeána lán, cuirtear tuairimí nua i bhfolach in áit iad a bheith ag forluí ar thuairimí eile.</string>
   <string name="morphe_niconico_comments_max_length_title">Uasfhad tráchtaireachta</string>
   <string name="morphe_niconico_comments_max_length_summary">Folaíonn sé tuairimí a bhfuil níos mó carachtar iontu ná an méid seo. Áirítear gach emoji mar charachtar amháin</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Gan teorainn</string>
@@ -1795,10 +1807,12 @@ Tá taifeadadh uathoibríoch roghnach. Stopann sé i mód incognito nó nuair a 
   <string name="morphe_niconico_comments_live_premieres_summary">Céadléirithe agus iad ag seinm</string>
   <string name="morphe_niconico_comments_ended_premieres_title">Taispeáin ar Chéadtaibhithe críochnaithe</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Athsheinm comhrá de thaispeántais chéaduaire atá críochnaithe</string>
-  <string name="morphe_niconico_comments_timed_comments_title">Taispeáin tráchtanna aimsí</string>
-  <string name="morphe_niconico_comments_timed_comments_summary">Ar fhíseáin gan comhrá, taispeánfar tráchtanna barr a bhfuil am ann, cosúil le 1:23, ag an am sin</string>
-  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Taispean commenting timed le athseomhain chat</string>
-  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Ar athseomhain sruthanna beatha agus Príomhseomhain, taispeaintear commenting timed leis an chat freisin</string>
+  <string name="morphe_niconico_comments_timed_comments_title">Taispeáin tráchtanna amaithe</string>
+  <string name="morphe_niconico_comments_timed_comments_summary">I gcás físeáin nach bhfuil comhrá acu, taispeántar na príomhthráchtanna ina bhfuil am, mar shampla 1:23, ag an am sin.</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Taispeáin tuairimí am-shocraithe le hathsheinm comhrá</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Ar athchraoltaí de shruthanna beo agus de chéadchraoltaí, taispeántar tuairimí uainithe leis an gcomhrá freisin.</string>
+  <string name="morphe_niconico_comments_all_settings">Gach socruithe</string>
+  <string name="morphe_niconico_comments_reset_title">Atá tú ag iarraidh na socruithe seo a athshocrú?</string>
   <string name="morphe_live_chat_translate_screen_title">Aistriúchán comhrá beo</string>
   <string name="morphe_live_chat_translate_screen_summary">Aistrigh teachtaireachtaí comhrá beo agus athsheinm comhrá beo</string>
   <string name="morphe_live_chat_translate_title">Aistrigh comhrá beo</string>

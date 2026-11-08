@@ -319,25 +319,18 @@ Wijzigingen zijn:
   <string name="morphe_hide_keyword_content_search_title">Zoekresultaten verbergen door keywords</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Abonnementsvideo\'s verbergen door keywords</string>
   <string name="morphe_hide_keyword_content_phrases_title">Keywords om te verbergen</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
   <string name="morphe_hide_keyword_content_phrases_summary">"Voer trefwoorden en zinnen in om te verbergen, gescheiden door nieuwe regels
 
-Trefwoorden kunnen elke tekst zijn die in videotitels of kanaalnamen wordt weergegeven
-
-Woorden met hoofdletters in het midden moeten exact overeenkomen (bijv. iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Startpagina / Abonnementen / Zoeken / Reacties worden gefilterd om inhoud te verbergen die overeenkomt met trefwoordzinnen
+Trefwoorden kunnen elke tekst zijn die wordt getoond in videotitels of kanaalnamen"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Home / Abonnementen / Zoeken / Reacties worden gefilterd om inhoud te verbergen die overeenkomt met trefwoordzinnen
 
 Beperkingen:
-• Shorts kunnen niet worden verborgen op kanaalnaam
-• Sommige UI-componenten zijn mogelijk niet verborgen
-• Zoeken naar een trefwoord kan geen resultaten opleveren"</string>
+• Sommige Shorts kunnen niet worden verborgen op kanaalnaam
+• Sommige UI-componenten zijn mogelijk niet verborgen"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Match hele woorden</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Omkeren van een trefwoord/zin met dubbele aanhalingstekens zal voorkomen dat deel-matches van videotitels en kanaalnamen&lt;br&gt;&lt;br&gt;Bijvoorbeeld,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; verbergt de video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;maar zal deze niet verbergen: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Keyword kan niet worden gebruikt: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Voeg aanhalingstekens toe om keyword te gebruiken: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Keyword heeft tegenstrijdige verklaringen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Keyword is te kort en vereist aanhalingstekens: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Keyword verbergt alle video\'s: %s</string>
@@ -500,6 +493,13 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_post_translate_started">Vertalen...</string>
   <string name="morphe_post_translate_failed">Het bericht kon niet worden vertaald</string>
   <string name="morphe_post_translate_same_language">Het bericht is al in de vertalingstaal</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Schakel Morphe onderweg in</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Speler-fly-out \'Onderweg\' opent aangepaste bedieningselementen van de Morphe-speler</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Onderweg</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ask-item aan uitklapmenu toevoegen</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Videofatsummarisatie-item toevoegen aan het feed-uitklapmenu</string>
@@ -794,7 +794,6 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_tap_to_seek_title">Tikken om te zoeken inschakelen</string>
   <string name="morphe_tap_to_seek_summary">Tik overal op de zoekbalk om naar die positie te springen in plaats van te slepen</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Aangepaste knop van de zoekbalk</string>
   <string name="morphe_custom_seekbar_thumb_title">Aangepaste knop van de zoekbalk inschakelen</string>
   <string name="morphe_custom_seekbar_thumb_summary">Vervang de knop van de zoekbalk door een aangepaste afbeelding of geanimeerde GIF</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Afbeelding van de knop</string>
@@ -1770,6 +1769,9 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_niconico_comments_screen_title">Niconico-reacties</string>
   <string name="morphe_niconico_comments_screen_summary">Toon livechat en chat-replays als reacties die over de video scrollen</string>
   <string name="morphe_niconico_comments_summary">Toont een overlay-knop in de videospeler. Tik om de reacties te tonen of te verbergen, houd ingedrukt voor snelle instellingen</string>
+  <string name="morphe_niconico_comments_appearance_title">Uiterlijk</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portret</string>
+  <string name="morphe_niconico_comments_video_types_title">Videotypen</string>
   <string name="morphe_niconico_comments_font_size_title">Lettertypegrootte reacties</string>
   <string name="morphe_niconico_comments_font_size_summary">Tekstgrootte van de reacties (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Opaciteit reacties</string>
@@ -1778,6 +1780,16 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_niconico_comments_travel_duration_summary">Hoeveel seconden reacties erover doen om het scherm te kruisen. Lagere waarden bewegen sneller</string>
   <string name="morphe_niconico_comments_display_area_title">Weergavegebied</string>
   <string name="morphe_niconico_comments_display_area_summary">Hoeveel van de speler, vanaf de bovenkant, de reacties gebruiken. Lagere waarden houden het onderste deel van de video vrij</string>
+  <string name="morphe_niconico_comments_portrait_title">Tonen in portretmodus</string>
+  <string name="morphe_niconico_comments_portrait_summary">Toon de reacties wanneer het scherm in portretmodus staat. Zet dit uit om ze alleen in landschapsmodus te tonen</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Afzonderlijke instellingen voor portretmodus</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Gebruik een ander lettertypeformaat, reisduur en weergavegebied in portretmodus. Wanneer dit is ingeschakeld, beginnen ze bij de huidige waarden</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Lettertypeformaat reacties in portretmodus</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Tekstgrootte van de reacties in portretmodus (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Reisduur in portretmodus</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Hoeveel seconden commentaren erover doen om het scherm te doorkruisen in portretmodus</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Weergavegebied in portretmodus</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Welk deel van de speler, vanaf de bovenkant, de commentaren gebruiken in portretmodus</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Verberg reacties die zouden overlappen</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Wanneer het weergavegebied vol is, worden nieuwe reacties verborgen in plaats van andere reacties te overlappen</string>
   <string name="morphe_niconico_comments_max_length_title">Maximale commentlengte</string>
@@ -1795,6 +1807,8 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_niconico_comments_timed_comments_summary">Bij video\'s zonder chat worden topreacties die een tijdstip bevatten, zoals 1:23, op dat moment getoond</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Toon tijdgebonden reacties bij chat-terugspoeling</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Bij terugspoelingen van livestreams en premières worden tijdgebonden reacties ook samen met de chat getoond</string>
+  <string name="morphe_niconico_comments_all_settings">Alle instellingen</string>
+  <string name="morphe_niconico_comments_reset_title">Deze instellingen resetten?</string>
   <string name="morphe_live_chat_translate_screen_title">Vertaling livechat</string>
   <string name="morphe_live_chat_translate_screen_summary">Vertaal livechat- en livechat-replayberichten</string>
   <string name="morphe_live_chat_translate_title">Livechat vertalen</string>

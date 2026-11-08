@@ -490,6 +490,23 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Itago ang Upgrade button</string>
   <string name="morphe_music_hide_navigation_bar_title">Itago ang navigation bar</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Itago ang mga tatak ng navigation button</string>
+  <string name="morphe_music_navigation_bar_glass_title">I-enable ang glass navigation bar</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Ipinapakita ang navigation bar bilang isang floating, rounded, at translucent na capsule</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Opasidad ng salamin</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">I-adjust ang transparency level ng glass navigation bar (0 ay transparent, 100 ay opaque)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Maliwanag na salamin</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Kinukulayan ang glass navigation bar ng puti sa halip na madilim, para sa mas maliwanag at mas malinaw na glass</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Sukat ng glass navigation bar</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">I-adjust ang taas, lapad, at ang pagitan ng mga button ng glass navigation bar, na may preview. Ang mga button na hindi kasya sa lapad ng screen ay itatago</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Taas</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Maximum na lapad</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Pagitan ng mga button</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Mga button na ipinapakita: %1$s sa %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Bahay</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Mga sample</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Mag-explore</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Aklat</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Hindi naka-log in. I-tap para i-configure</string>
   <string name="morphe_music_scrobbling_log_out">Mag-sign out</string>
@@ -711,7 +728,7 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Mga character na Chinese at Cantonese (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Mga salitang Chinese (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliteration para sa Greek, Slavic Cyrillic (kasama ang Russian, Ukrainian, Bulgarian, Serbian, Belarusian, Macedonian), Georgian, Armenian, Hebrew, Arabic, Amharic at Syriac (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Binabasa ang %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Binabasa ang %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Ipakita ang button na Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Pindutin para lumipat sa susunod na lyrics candidate; long-press para maghanap ng lyrics gamit ang pamagat ng kanta at artist</string>
   <string name="morphe_music_lyrics_search_dialog_title">Maghanap ng lyrics</string>

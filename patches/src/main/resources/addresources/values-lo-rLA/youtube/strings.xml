@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">ເຊື່ອງຜົນການຄົ້ນຫາດ້ວຍຄຳຄົ້ນຫາ</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">ເຊື່ອງວິດີໂອໃນການຕິດຕາມດ້ວຍຄຳຄົ້ນຫາ</string>
   <string name="morphe_hide_keyword_content_phrases_title">ຄຳຄົ້ນຫາທີ່ຈະເຊື່ອງ</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"ປ້ອນຄຳສຳຄັນ ແລະ ວະລີທີ່ຕ້ອງການເຊື່ອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່
+  <string name="morphe_hide_keyword_content_phrases_summary">"ປ້ອນຄຳຄົ້ນຫາ ແລະ ວະລີທີ່ຕ້ອງການເຊື່ອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່
 
-ຄຳສຳຄັນສາມາດເປັນຂໍ້ຄວາມໃດກໍ່ໄດ້ທີ່ສະແດງໃນຫົວຂໍ້ວິດີໂອ ຫຼື ຊື່ຊ່ອງ
-
-ຄຳທີ່ມີຕົວອັກສອນໃຫຍ່ຢູ່ທາງກາງຕ້ອງຂຽນໃຫ້ຖືກຕ້ອງທັງໝົດ (ຕົວຢ່າງ: iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"ໜ້າຫຼັກ / ການຕິດຕາມ / ການຄົ້ນຫາ / ຄຳຄິດເຫັນຖືກກັ່ນຕອງເພື່ອເຊື່ອງເນື້ອຫາທີ່ກົງກັບວະລີຄີເວີດ
+ຄຳຄົ້ນຫາສາມາດເປັນຂໍ້ຄວາມໃດກໍ່ໄດ້ທີ່ສະແດງໃນຊື່ວິດີໂອ ຫຼື ຊື່ຊ່ອງ"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"ໜ້າຫຼັກ / ການຕິດຕາມ / ຄົ້ນຫາ / ຄຳຄິດເຫັນ ຈະຖືກກັ່ນຕອງເພື່ອເຊື່ອງເນື້ອຫາທີ່ກົງກັບວະລີຄຳຄົ້ນຫາ
 
 ຂໍ້ຈຳກັດ:
-• Shorts ບໍ່ສາມາດເຊື່ອງໄດ້ດ້ວຍຊື່ຊ່ອງ
-• ບາງສ່ວນປະກອບຂອງ UI ອາດຈະບໍ່ຖືກເຊື່ອງ
-• ການຄົ້ນຫາຄີເວີດອາດຈະບໍ່ພົບຜົນລັດ"</string>
+• Shorts ບາງອັນບໍ່ສາມາດເຊື່ອງໄດ້ດ້ວຍຊື່ຊ່ອງ
+• ອົງປະກອບ UI ບາງຢ່າງອາດຈະບໍ່ຖືກເຊື່ອງ"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">ຈັບຄູ່ຄຳສັບທັງໝົດ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">ການໃສ່ເຄື່ອງໝາຍຄຳເວົ້າຄູ່ລ້ອມຮອບຄຳສັບ/ວະລີ ຈະປ້ອງກັນການຈັບຄູ່ບາງສ່ວນຂອງຊື່ວິດີໂອ ແລະ ຊື່ຊ່ອງ&lt;br&gt;&lt;br&gt;ຕົວຢ່າງ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ຈະເຊື່ອງວິດີໂອ: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ແຕ່ຈະບໍ່ເຊື່ອງ: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">ບໍ່ສາມາດໃຊ້ຄຳສັບ: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">ກະລຸນາໃສ່ເຄື່ອງໝາຍຄຳເວົ້າເພື່ອໃຊ້ຄຳສັບ: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">ຄຳສັບມີການປະກາດທີ່ຂັດແຍ່ງກັນ: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">ຄຳສັບສັ້ນເກີນໄປ ແລະ ຕ້ອງໃສ່ເຄື່ອງໝາຍຄຳເວົ້າ: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">ຄຳຄົ້ນຫາຈະເຊື່ອງທຸກວິດີໂອ: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">ກຳລັງແປ...</string>
   <string name="morphe_post_translate_failed">ບໍ່ສາມາດແປໂພສໄດ້</string>
   <string name="morphe_post_translate_same_language">ໂພສນີ້ຢູ່ໃນພາສາທີ່ຕ້ອງການແປຢູ່ແລ້ວ</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">ເປີດໃຊ້ Morphe ໃນລະຫວ່າງການເດີນທາງ</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">ເມນູ \'ໃນລະຫວ່າງການເດີນທາງ\' ຂອງເຄື່ອງຫຼິ້ນຈະເປີດການຄວບຄຸມເຄື່ອງຫຼິ້ນທີ່ປັບແຕ່ງຂອງ Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">ໃນລະຫວ່າງການເດີນທາງ</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">ເພີ່ມລາຍການ Ask ໄປยังເມນູ flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">ເພີ່ມລາຍການສະຫຼຸບວິດີໂອໄປยังເມນູ flyout ຂອງ feed</string>
@@ -794,7 +794,6 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">ເປີດໃຊ້ງານການແຕະເພື່ອຊອກຫາ</string>
   <string name="morphe_tap_to_seek_summary">ແຕະບ່ອນໃດກໍໄດ້ໃນແຖບເລື່ອນ ເພື່ອຂ້າມໄປຫາຕຳແໜ່ງນັ້ນ ແທນທີ່ຈະລາກ</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">ປຸ່ມເລື່ອນ seekbar ແບບກຳນົດເອງ</string>
   <string name="morphe_custom_seekbar_thumb_title">ເປີດໃຊ້ງານປຸ່ມເລື່ອນ seekbar ແບບກຳນົດເອງ</string>
   <string name="morphe_custom_seekbar_thumb_summary">ປ່ຽນປຸ່ມເລື່ອນ seekbar ດ້ວຍຮູບພາບກຳນົດເອງ ຫຼື GIF ທີ່ເຄື່ອນໄຫວໄດ້</string>
   <string name="morphe_custom_seekbar_thumb_file_title">ຮູບພາບປຸ່ມເລື່ອນ</string>
@@ -1774,6 +1773,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">ຄຳຄິດເຫັນແບບ Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">ສະແດງແຊັດສົດ ແລະ ການຫຼິ້ນແຊັດຄືນໃໝ່ເປັນຄຳຄິດເຫັນທີ່ເລື່ອນຜ່ານວິດີໂອ</string>
   <string name="morphe_niconico_comments_summary">ສະແດງປຸ່ມຊ້ອນທັບໃນເຄື່ອງຫຼິ້ນວິດີໂອ. ແຕະເພື່ອສະແດງ ຫຼື ຊ່ອນຄຳຄິດເຫັນ, ແຕະຄ້າງໄວ້ສຳລັບການຕັ້ງຄ່າແບບດ່ວນ</string>
+  <string name="morphe_niconico_comments_appearance_title">ຮູບລັກສະນະ</string>
+  <string name="morphe_niconico_comments_portrait_category_title">ແນວຕັ້ງ</string>
+  <string name="morphe_niconico_comments_video_types_title">ປະເພດວິດີໂອ</string>
   <string name="morphe_niconico_comments_font_size_title">ຂະໜາດຕົວອັກສອນຂອງຄຳຄິດເຫັນ</string>
   <string name="morphe_niconico_comments_font_size_summary">ຂະໜາດຕົວອັກສອນຂອງຄຳຄິດເຫັນ (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">ຄວາມໂປ່ງໃສຂອງຄຳຄິດເຫັນ</string>
@@ -1782,6 +1784,16 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">ຈຳນວນວິນາທີທີ່ຄຳຄິດເຫັນໃຊ້ໃນການເລື່ອນຜ່ານໜ້າຈໍ. ຄ່າທີ່ຕ່ຳກວ່າຈະເຄື່ອນທີ່ໄວຂຶ້ນ</string>
   <string name="morphe_niconico_comments_display_area_title">ພື້ນທີ່ສະແດງຜົນ</string>
   <string name="morphe_niconico_comments_display_area_summary">ຄອມເມັ້ນຈະໃຊ້ພື້ນທີ່ຂອງເຄື່ອງຫຼິ້ນຫຼາຍປານໃດ ໂດຍນັບຈາກດ້ານເທິງ. ຄ່າທີ່ຕ່ຳກວ່າຈະເຮັດໃຫ້ສ່ວນລຸ່ມຂອງວິດີໂອວ່າງ</string>
+  <string name="morphe_niconico_comments_portrait_title">ສະແດງໃນແນວຕັ້ງ</string>
+  <string name="morphe_niconico_comments_portrait_summary">ສະແດງຄຳຄິດເຫັນເມື່ອໜ້າຈໍຢູ່ໃນແນວຕັ້ງ. ປິດເພື່ອສະແດງພວກມັນໃນແນວນອນເທົ່ານັ້ນ</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">ແຍກການຕັ້ງຄ່າສຳລັບແນວຕັ້ງ</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">ໃຊ້ຂະໜາດຕົວອັກສອນ, ໄລຍະເວລາເຄື່ອນທີ່ ແລະ ພື້ນທີ່ສະແດງຜົນທີ່ແຕກຕ່າງກັນໃນແນວຕັ້ງ. ເມື່ອເປີດໃຊ້ງານ, ພວກມັນຈະເລີ່ມຈາກຄ່າປັດຈຸບັນ</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">ຂະໜາດຕົວອັກສອນຂອງຄຳຄິດເຫັນໃນແນວຕັ້ງ</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">ຂະໜາດຕົວອັກສອນຂອງຄຳຄິດເຫັນໃນແນວຕັ້ງ (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">ໄລຍະເວລາເຄື່ອນທີ່ໃນແນວຕັ້ງ</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">ຈຳນວນວິນາທີທີ່ຄຳເຫັນໃຊ້ໃນການເຄື່ອນທີ່ຜ່ານໜ້າຈໍໃນແນວຕັ້ງ</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">ພື້ນທີ່ສະແດງຜົນໃນແນວຕັ້ງ</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">ຄຳເຫັນໃຊ້ພື້ນທີ່ຂອງເຄື່ອງຫຼິ້ນຫຼາຍປານໃດ ໂດຍເລີ່ມຈາກດ້ານເທິງໃນແນວຕັ້ງ</string>
   <string name="morphe_niconico_comments_hide_crowded_title">ເຊື່ອງຄຳເຫັນທີ່ທັບຊ້ອນກັນ</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">ເມື່ອພື້ນທີ່ສະແດງຜົນເຕັມ, ຄຳເຫັນໃໝ່ຈະຖືກເຊື່ອງໄວ້ ແທນທີ່ຈະໄປທັບຊ້ອນກັບຄຳເຫັນອື່ນໆ</string>
   <string name="morphe_niconico_comments_max_length_title">ຄວາມຍາວສູງສຸດຂອງຄຳຄິດເຫັນ</string>
@@ -1799,6 +1811,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_timed_comments_summary">ສຳລັບວິດີໂອທີ່ບໍ່ມີແຊັດ, ຄຳເຫັນຍອດນິຍົມທີ່ມີເວລາ ເຊັ່ນ 1:23 ຈະຖືກສະແດງໃນເວລານັ້ນ</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">ສະແດງຄຳເຫັນຕາມເວລາພ້ອມກັບການສາຍຊ້ຳຂອງແຊັດ</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">ໃນການສາຍຊ້ຳຂອງການຖ່າຍທອດສົດ ແລະ ວິດີໂອ Premiere, ຄຳເຫັນຕາມເວລາຈະຖືກສະແດງພ້ອມກັບແຊັດ</string>
+  <string name="morphe_niconico_comments_all_settings">ການຕັ້ງຄ່າທັງໝົດ</string>
+  <string name="morphe_niconico_comments_reset_title">ຣີເຊັດການຕັ້ງຄ່ານີ້ບໍ?</string>
   <string name="morphe_live_chat_translate_screen_title">ການແປແຊັດສົດ</string>
   <string name="morphe_live_chat_translate_screen_summary">ແປຂໍ້ຄວາມແຊັດສົດ ແລະ ຂໍ້ຄວາມຫຼິ້ນຊ້ຳຂອງແຊັດສົດ</string>
   <string name="morphe_live_chat_translate_title">ແປແຊັດສົດ</string>

@@ -229,6 +229,19 @@ Ja akumulatora optimizācijas netiek mainītas, iespējams, varat novērot:
 Ja vēlaties pēc iespējas stabilāku pieredzi, tad &lt;b&gt;deinstalējiet&lt;/b&gt; šo versiju un instalējiet iesakāmo lietotnes versiju ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Es vēlos eksperimentālo versiju</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Es vēlos stabilo versiju</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Rādīt lietotnes paziņojumu par patcha atjauninājumiem</string>
+  <string name="morphe_patches_update_notice_entry_off">Izslēgts</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabili izlaidumi</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabili un izstrādes izlaidumi</string>
+  <string name="morphe_patches_update_notice_dialog_title">Pieejami jauni labojumi</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe labojumi &lt;b&gt;%1$s&lt;/b&gt; (pašlaik: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Jaunas funkcijas</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Kļūdu labojumi</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Citi mainījumi</string>
+  <string name="morphe_patches_update_notice_dialog_more">…un vēl %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Atjaunināt</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Aizvērt</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Avārijas žurnāls saglabāts lietotāja dokumentos: %s</string>
   <string name="morphe_crash_log_saved">Avārijas žurnāls saglabāts: %s</string>

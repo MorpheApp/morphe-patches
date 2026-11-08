@@ -319,25 +319,18 @@ Perubahan termasuk:
   <string name="morphe_hide_keyword_content_search_title">Sorokkan keputusan carian mengikut kata kunci</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Sorokkan video Langganan mengikut kata kunci</string>
   <string name="morphe_hide_keyword_content_phrases_title">Kata kunci untuk disorokkan</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Masukkan kata kunci dan frasa untuk disorokkan, dipisahkan oleh baris baharu
+  <string name="morphe_hide_keyword_content_phrases_summary">"Masukkan kata kunci dan frasa untuk disembunyikan, dipisahkan oleh baris baharu
 
-Kata kunci boleh jadi sebarang teks yang dipaparkan dalam tajuk video atau nama saluran
-
-Perkataan dengan huruf besar di tengah mestilah sepadan dengan tepat (contohnya iPhone, TikTok, LeBlanc)"</string>
+Kata kunci boleh jadi sebarang teks yang dipaparkan dalam tajuk video atau nama saluran"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Laman Utama / Langganan / Carian / Komen ditapis untuk menyembunyikan kandungan yang sepadan dengan frasa kata kunci
 
 Had:
-• Shorts tidak boleh disembunyikan melalui nama saluran
-• Sesetengah komponen UI mungkin tidak disembunyikan
-• Mencari kata kunci mungkin tidak menunjukkan sebarang hasil"</string>
+• Sesetengah Shorts tidak boleh disembunyikan melalui nama saluran
+• Sesetengah komponen UI mungkin tidak disembunyikan"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Padankan keseluruhan perkataan</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Mengelilingi kata kunci/frasa dengan tanda petik dua akan mengelakkan padanan separa tajuk video dan nama saluran&lt;br&gt;&lt;br&gt;Sebagai contoh,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; akan menyembunyikan video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;tetapi tidak akan menyembunyikan: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Tidak boleh menggunakan kata kunci: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Tambah tanda petik untuk menggunakan kata kunci: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Kata kunci mempunyai pengisytiharan yang bercanggah: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kata kunci terlalu pendek dan memerlukan tanda petik: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kata kunci akan menyembunyikan semua video: %s</string>
@@ -500,6 +493,13 @@ Laporan adalah awam dan disemak sebelum saluran ditambah ke senarai. Penyingkira
   <string name="morphe_post_translate_started">Menterjemah…</string>
   <string name="morphe_post_translate_failed">Tidak dapat menterjemah hantaran tersebut</string>
   <string name="morphe_post_translate_same_language">Hantaran tersebut sudah berada dalam bahasa terjemahan</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Dayakan Morphe semasa dalam perjalanan</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Flyout pemain \'semasa dalam perjalanan\' membuka kawalan pemain tersuai Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Semasa dalam perjalanan</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Tambah item Tanya ke menu flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Menambah item ringkasan video ke menu flyout feed</string>
@@ -794,7 +794,6 @@ Untuk membetulkannya, hidupkan 'Spoof video streams' dan tukar 'Klien lalai' kep
   <string name="morphe_tap_to_seek_title">Dayakan ketik untuk cari</string>
   <string name="morphe_tap_to_seek_summary">Ketik di mana-mana sahaja pada bar carian untuk melompat ke kedudukan tersebut berbanding menyeret</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Kekunci seekbar tersuai</string>
   <string name="morphe_custom_seekbar_thumb_title">Dayakan kekunci seekbar tersuai</string>
   <string name="morphe_custom_seekbar_thumb_summary">Gantikan kekunci seekbar dengan imej tersuai atau GIF animasi</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Imej kekunci</string>
@@ -1774,6 +1773,9 @@ Rakaman automatik adalah pilihan. Ia terhenti dalam mod inkognito atau apabila a
   <string name="morphe_niconico_comments_screen_title">Komen Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Tunjukkan sembang langsung dan ulangan sembang sebagai komen yang skrol merentasi video</string>
   <string name="morphe_niconico_comments_summary">Menunjukkan butang tindanan dalam pemain video. Ketik untuk menunjukkan atau menyembunyikan komen, ketik dan tahan untuk tetapan pantas</string>
+  <string name="morphe_niconico_comments_appearance_title">Penampilan</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Potret</string>
+  <string name="morphe_niconico_comments_video_types_title">Jenis video</string>
   <string name="morphe_niconico_comments_font_size_title">Saiz fon komen</string>
   <string name="morphe_niconico_comments_font_size_summary">Saiz teks komen (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Kelegapan komen</string>
@@ -1782,6 +1784,16 @@ Rakaman automatik adalah pilihan. Ia terhenti dalam mod inkognito atau apabila a
   <string name="morphe_niconico_comments_travel_duration_summary">Berapa saat yang diambil oleh komen untuk melintasi skrin. Nilai yang lebih rendah bergerak lebih pantas</string>
   <string name="morphe_niconico_comments_display_area_title">Kawasan paparan</string>
   <string name="morphe_niconico_comments_display_area_summary">Berapa banyak bahagian pemain, dari atas, yang digunakan oleh komen. Nilai yang lebih rendah memastikan bahagian bawah video kekal jelas</string>
+  <string name="morphe_niconico_comments_portrait_title">Tunjukkan dalam potret</string>
+  <string name="morphe_niconico_comments_portrait_summary">Tunjukkan komen apabila skrin dalam mod potret. Matikan untuk menunjukkannya dalam mod landskap sahaja</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Tetapan berasingan untuk potret</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Gunakan saiz fon, tempoh perjalanan dan kawasan paparan yang berbeza dalam mod potret. Apabila dihidupkan, ia bermula daripada nilai semasa</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Saiz fon komen dalam potret</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Saiz teks komen dalam potret (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Tempoh perjalanan dalam potret</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Berapa saat komen mengambil masa untuk melintasi skrin dalam mod potret</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Kawasan paparan dalam mod potret</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Berapa banyak bahagian pemain, dari atas, yang digunakan oleh komen dalam mod potret</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Sembunyikan komen yang akan bertindih</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Apabila kawasan paparan penuh, komen baharu akan disembunyikan daripada bertindih dengan komen lain</string>
   <string name="morphe_niconico_comments_max_length_title">Panjang komen maksimum</string>
@@ -1799,6 +1811,8 @@ Rakaman automatik adalah pilihan. Ia terhenti dalam mod inkognito atau apabila a
   <string name="morphe_niconico_comments_timed_comments_summary">Pada video tanpa sembang, komen teratas yang mengandungi masa seperti 1:23 akan dipaparkan pada masa tersebut</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Tunjukkan komen bertimer dengan ulangan sembang</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Pada ulangan penstriman langsung dan Premiere, komen bertimer juga ditunjukkan bersama sembang</string>
+  <string name="morphe_niconico_comments_all_settings">Semua tetapan</string>
+  <string name="morphe_niconico_comments_reset_title">Set semula tetapan ini?</string>
   <string name="morphe_live_chat_translate_screen_title">Terjemahan sembang langsung</string>
   <string name="morphe_live_chat_translate_screen_summary">Terjemahkan mesej sembang langsung dan ulangan sembang langsung</string>
   <string name="morphe_live_chat_translate_title">Terjemahkan sembang langsung</string>

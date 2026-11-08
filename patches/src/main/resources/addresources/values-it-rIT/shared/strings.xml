@@ -229,6 +229,19 @@ Se le ottimizzazioni della batteria non vengono modificate, potrebbero verificar
 Se desideri un'esperienza più stabile, allora &lt;b&gt;disinstalla&lt;/b&gt; questa versione e passa ad una consigliata ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Voglio la versione sperimentale</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Voglio la versione stabile</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Mostra notifica in-app per gli aggiornamenti delle patch</string>
+  <string name="morphe_patches_update_notice_entry_off">Spento</string>
+  <string name="morphe_patches_update_notice_entry_stable">Versioni stabili</string>
+  <string name="morphe_patches_update_notice_entry_dev">Versioni stabili e dev</string>
+  <string name="morphe_patches_update_notice_dialog_title">Nuove patch disponibili</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (attuale: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nuove funzionalità</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Correzioni di bug</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Altri cambiamenti</string>
+  <string name="morphe_patches_update_notice_dialog_more">...e altri %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Aggiorna</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Chiudi</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Registro degli arresti anomali salvato nei documenti utente: %s</string>
   <string name="morphe_crash_log_saved">Registro degli arresti anomali salvato: %s</string>

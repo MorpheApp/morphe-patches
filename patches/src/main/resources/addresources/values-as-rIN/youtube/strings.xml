@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">কিৱৰ্ডৰ দ্বাৰা সন্ধানৰ ফলাফলসমূহ লুকুৱাওক</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">কিৱৰ্ডৰ দ্বাৰা চাবস্ক্ৰিপশ্বন ভিডিঅ\'সমূহ লুকুৱাওক</string>
   <string name="morphe_hide_keyword_content_phrases_title">লুকুৱাব লগা কিৱৰ্ডসমূহ</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"লুকাবলৈ কি-ৱৰ্ড আৰু ফ্ৰেজবোৰ লিখক, যিবোৰ নতুন লাইনৰ দ্বাৰা পৃথক কৰা হৈছে
+  <string name="morphe_hide_keyword_content_phrases_summary">"লুকাই ৰাখিবলগীয়া কীৱৰ্ড আৰু শব্দাংশবোৰ নতুন লাইনৰ দ্বাৰা পৃথক কৰি লিখক
 
-কি-ৱৰ্ডবোৰ ভিডিঅ’ৰ শিৰোনাম বা চেনেলৰ নামত দেখুৱাব পৰা যিকোনো পাঠ হ'ব পাৰে
+কীৱৰ্ডবোৰ ভিডিঅ'ৰ শিৰোনাম বা চেনেলৰ নামত দেখা যিকোনো পাঠ হ'ব পাৰে"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"কিৱৰ্ড শব্দাংশৰ সৈতে মিল থকা সমলবোৰ লুকাই ৰাখিবলৈ Home / Subscriptions / Search / Comments ফিল্টাৰ কৰা হয়
 
-মাজত ডাঙৰ আখৰ থকা শব্দবোৰ সঠিকভাৱে মিল থাকিব লাগিব (যেনে, iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"হোম / চাবস্ক্ৰিপচন / চাৰ্চ / মন্তব্যবোৰত কিৱৰ্ড ফ্ৰেজৰ সৈতে মিল থকা সমলবোৰ লুকুৱাবলৈ ফিল্টাৰ কৰা হৈছে
-
-সীমাবদ্ধতাসমূহ:
-• Shorts চেনেলৰ নামৰ দ্বাৰা লুকুৱাব নোৱাৰি
-• কিছুমান UI কম্পোনেন্ট লুকুৱাব নোৱাৰিব পাৰে
-• কোনো এটা কিৱৰ্ডৰ বাবে চাৰ্চ কৰিলে কোনো ফলাফল নোমাব পাৰে"</string>
+সীমাবদ্ধতা:
+• কিছুমান Shorts চেনেলৰ নামৰ দ্বাৰা লুকাই ৰাখিব নোৱাৰি
+• কিছুমান UI উপাদান লুকাই নাথাকিব পাৰে"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">সম্পূৰ্ণ শব্দৰ সৈতে মিল খাওক</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">এটা কীৱৰ্ড/বাক্যক ডাবল-ক’টৰ মাজত ৰাখিলে ভিডিঅ’ৰ শিৰোনাম আৰু চেনেলৰ নামৰ আংশিক মিলবোৰ ৰোধ কৰিব&lt;br&gt;&lt;br&gt;উদাহৰণস্বৰূপে,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; এই ভিডিঅ’টো লুকাব: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;কিন্তু এইটো লুকুৱাব নোৱাৰে: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">কীৱৰ্ডটো ব্যৱহাৰ কৰিব নোৱাৰি: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">কীৱৰ্ডটো ব্যৱহাৰ কৰিবলৈ ক’ট যোগ কৰক: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">কীৱৰ্ডটোৰ সংঘাতময় ঘোষণা আছে: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">কীৱৰ্ডটো অতি চুটি আৰু ইয়াত ক’টৰ প্ৰয়োজন: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">কিৱৰ্ডটোৱে সকলো ভিডিঅ\' লুকুৱাই পেলাব: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">অনুবাদ কৰা হৈছে…</string>
   <string name="morphe_post_translate_failed">পোষ্টটো অনুবাদ কৰিব নোৱাৰিল</string>
   <string name="morphe_post_translate_same_language">পোষ্টটো ইতিমধ্যে অনুবাদৰ ভাষাতে আছে</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">On-the-go ত Morphe সক্ৰিয় কৰক</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">প্লেয়াৰৰ flyout \'on-the-go\' ই Morphe ৰ কাস্টম প্লেয়াৰ কন্ট্ৰলবোৰ মুকলি কৰে</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">যাত্ৰাৰ সময়ত</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">ফ্লাইআউট মেনুলৈ Ask আইটেম যোগ কৰক</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">ফিড ফ্লাইআউট মেনুলৈ এটা ভিডিঅ\' সামৰিপণ আইটেম যোগ কৰে</string>
@@ -794,7 +794,6 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_tap_to_seek_title">ট্যাপ কৰি বিচাৰক সক্ৰিয় কৰক</string>
   <string name="morphe_tap_to_seek_summary">ড্ৰেগ কৰাৰ পৰিৱৰ্তে সেই স্থানলৈ যাবলৈ ছিকবাৰৰ যিকোনো ঠাইতে টেপ কৰক</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">কাষ্টম seekbar thumb</string>
   <string name="morphe_custom_seekbar_thumb_title">কাষ্টম seekbar thumb সক্ৰিয় কৰক</string>
   <string name="morphe_custom_seekbar_thumb_summary">Seekbar thumb টো এটা কাষ্টম ছবি বা এনিমেটেড GIF ৰ সৈতে সলনি কৰক</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Thumb ছবি</string>
@@ -1774,6 +1773,9 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_niconico_comments_screen_title">Niconico মন্তব্যসমূহ</string>
   <string name="morphe_niconico_comments_screen_summary">লাইভ চেট আৰু চেট ৰিপ্লেকক ভিডিঅ\'ৰ ওপৰেৰে গৈ থকা মন্তব্য হিচাপে দেখুৱাওক</string>
   <string name="morphe_niconico_comments_summary">ভিডিঅ\' প্লেয়াৰত এটা অভাৰলে বটൺ দেখুৱায়। মন্তব্যসমূহ দেখুৱাবলৈ বা লুকুৱাবলৈ ট্যাপ কৰক, দ্ৰুত ছেটিংছৰ বাবে ট্যাপ কৰি ধৰি ৰাখক</string>
+  <string name="morphe_niconico_comments_appearance_title">প্ৰকাশ</string>
+  <string name="morphe_niconico_comments_portrait_category_title">পোৰ্ট্ৰেইট</string>
+  <string name="morphe_niconico_comments_video_types_title">ভিডিঅ\'ৰ প্ৰকাৰ</string>
   <string name="morphe_niconico_comments_font_size_title">মন্তব্যৰ ফণ্টৰ আকাৰ</string>
   <string name="morphe_niconico_comments_font_size_summary">মন্তব্যৰ পাঠৰ আকাৰ (১২-৪০ sp)</string>
   <string name="morphe_niconico_comments_opacity_title">মন্তব্যৰ অপাচিটি</string>
@@ -1782,6 +1784,16 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_niconico_comments_travel_duration_summary">মন্তব্যসমূহে স্ক্ৰীনখন পাৰ হ’বলৈ কিমান ছেকেণ্ড সময় লয়। কম মানৰ বাবে অধিক দ্ৰুতগতিত চলে</string>
   <string name="morphe_niconico_comments_display_area_title">প্ৰদৰ্শন এলেকা</string>
   <string name="morphe_niconico_comments_display_area_summary">প্লেয়াৰৰ ওপৰৰ পৰা মন্তব্যসমূহে কিমান অংশ ব্যৱহাৰ কৰিব। কম মানৰ বাবে ভিডিঅ\'ৰ তলৰ অংশটো খালী থাকে</string>
+  <string name="morphe_niconico_comments_portrait_title">পৰ্ট্ৰেইটত দেখুৱাওক</string>
+  <string name="morphe_niconico_comments_portrait_summary">স্ক্ৰীণটো পৰ্ট্ৰেইটত থাকিলে কমেন্টবোৰ দেখুৱাওক। কেৱল লেণ্ডস্কেপত দেখুৱাবলৈ ইয়াক বন্ধ কৰক</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">পৰ্ট্ৰেইটৰ বাবে পৃথক ছেটিংছ</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">পৰ্ট্ৰেইটত ভিন্ন ফণ্টৰ আকাৰ, যাত্ৰাৰ সময় আৰু প্ৰদৰ্শন ক্ষেত্ৰ ব্যৱহাৰ কৰক। এইটো অন কৰিলে, বৰ্তমানৰ মানসমূহৰ পৰা আৰম্ভ হ\'ব</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">পৰ্ট্ৰেইটত কমেন্টৰ ফণ্টৰ আকাৰ</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">পৰ্ট্ৰেইটত কমেন্টৰ টেক্সটৰ আকাৰ (১২-৪০ sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">পৰ্ট্ৰেইটত যাত্ৰাৰ সময়</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">পৰ্ট্ৰেইটত মন্তব্যবোৰে স্ক্ৰীণটো পাৰ কৰিবলৈ কিমান ছেকেণ্ড সময় লয়</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">পৰ্ট্ৰেইটত প্ৰদৰ্শন অঞ্চল</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">পৰ্ট্ৰেইটত প্লেয়াৰটোৰ ওপৰৰ পৰা মন্তব্যবোৰে কিমান অংশ ব্যৱহাৰ কৰে</string>
   <string name="morphe_niconico_comments_hide_crowded_title">একে ওপৰত পৰিব পৰা মন্তব্যসমূহৰ ক্ষেত্ৰত সেইবোৰ লুকুৱাই থওক</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">যেতিয়া প্ৰদৰ্শনৰ ঠাই সম্পূৰ্ণ হয়, অন্য মন্তব্যৰ ওপৰত পৰাৰ পৰিৱৰ্তে নতুন মন্তব্যবোৰ লুকুৱাই থোৱা হয়</string>
   <string name="morphe_niconico_comments_max_length_title">মন্তব্যৰ সৰ্বোচ্চ দৈৰ্ঘ্য</string>
@@ -1799,6 +1811,8 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকেত্ বাধ�
   <string name="morphe_niconico_comments_timed_comments_summary">চ্যাট নথকা ভিডিঅ’ৰ ক্ষেত্ৰত, ১:২৩ ৰ দৰে সময় উল্লেখ থকা শীৰ্ষ মন্তব্যসমূহ সেই সময়ত দেখুওৱা হয়</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">চ্যাট ৰিপ্লেৰ সৈতে সময়নিৰ্দিষ্ট মন্তব্যসমূহ দেখুৱাওক</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">লাইভ ষ্ট্ৰীম আৰু প্ৰিমিয়াৰৰ ৰিপ্লেত, চেটৰ সৈতে সময়নিৰ্দিষ্ট মন্তব্যসমূহো দেখুওৱা হয়</string>
+  <string name="morphe_niconico_comments_all_settings">সকলো ছেটিংছ</string>
+  <string name="morphe_niconico_comments_reset_title">এই ছেটিংছসমূহ ৰিছেট কৰিবনে?</string>
   <string name="morphe_live_chat_translate_screen_title">লাইভ চেট অনুবাদ</string>
   <string name="morphe_live_chat_translate_screen_summary">লাইভ চেট আৰু লাইভ চেট ৰিপ্লে মেছেজসমূহ অনুবাদ কৰক</string>
   <string name="morphe_live_chat_translate_title">লাইভ চেট অনুবাদ কৰক</string>

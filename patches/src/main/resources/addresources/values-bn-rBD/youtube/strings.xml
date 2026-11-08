@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">কীওয়ার্ড ব্যবহার করে অনুসন্ধান ফলাফল লুকান</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">কীওয়ার্ড ব্যবহার করে সাবস্ক্রিপশন ভিডিও লুকান</string>
   <string name="morphe_hide_keyword_content_phrases_title">লুকানোর জন্য কীওয়ার্ড</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"নতুন লাইন দ্বারা পৃথক করা লুকানোর জন্য কিওয়ার্ড এবং বাক্যাংশ লিখুন
+  <string name="morphe_hide_keyword_content_phrases_summary">"লুকানোর জন্য কিওয়ার্ড এবং শব্দগুচ্ছ লিখুন, নিউ লাইন দিয়ে আলাদা করে
 
-কিওয়ার্ড ভিডিও শিরোনাম বা চ্যানেলের নামে দেখানো যেকোনো পাঠ্য হতে পারে
+কিওয়ার্ড ভিডিওর শিরোনাম বা চ্যানেলের নামে প্রদর্শিত যেকোনো টেক্সট হতে পারে"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"হোম / সাবস্ক্রিপশন / সার্চ / কমেন্টগুলো ফিল্টার করা হয়েছে যাতে কীওয়ার্ড ফ্রেজের সাথে মেলে এমন কন্টেন্ট হাইড করা থাকে
 
-মাঝখানে বড় হাতের অক্ষর সম্বলিত শব্দগুলো হুবহু মিলতে হবে (যেমন: iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"হোম / সাবস্ক্রিপশন / সার্চ / মন্তব্যগুলো এমনভাবে ফিল্টার করা হয়েছে যেন কিওয়ার্ড ফ্রেজের সাথে মিলে যাওয়া কনটেন্ট হাইড করা যায়
-
-সীমাবদ্ধতাসমূহ:
-• চ্যানেলের নাম দিয়ে শর্টস (Shorts) হাইড করা যাবে না
-• কিছু ইউজার ইন্টারফেস (UI) উপাদান হয়তো হাইড করা সম্ভব নাও হতে পারে
-• কোনো কিওয়ার্ড লিখে সার্চ করলে কোনো ফলাফল নাও দেখাতে পারে"</string>
+সীমাবদ্ধতা:
+• কিছু শর্টস চ্যানেলের নাম দিয়ে হাইড করা যায় না
+• কিছু UI কম্পোনেন্ট হাইড নাও হতে পারে"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">সম্পূর্ণ শব্দ মেলাও</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">ডাবল কোটের মধ্যে একটি কীওয়ার্ড/ফ্রেজ রাখলে ভিডিও শিরোনাম এবং চ্যানেলের নামের আংশিক মিল সনাক্ত করা বন্ধ হয়ে যাবে&lt;br&gt;&lt;br&gt;উদাহরণস্বরূপ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ভিডিওটি লুকিয়ে দেবে: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;কিন্তু লুকিয়ে দেবে না: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">কিওয়ার্ড ব্যবহার করা যাবে না: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">কিওয়ার্ড ব্যবহার করার জন্য উদ্ধৃতি যোগ করুন: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">কিওয়ার্ডের দ্বন্দ্বপূর্ণ ঘোষণা আছে: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">কিওয়ার্ড খুব ছোট এবং উদ্ধৃতি প্রয়োজন: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">কিওয়ার্ড সমস্ত ভিডিও লুকিয়ে রাখবে: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">অনুবাদ করা হচ্ছে…</string>
   <string name="morphe_post_translate_failed">পোস্টটি অনুবাদ করা সম্ভব হয়নি</string>
   <string name="morphe_post_translate_same_language">পোস্টটি ইতিমধ্যেই অনুবাদের ভাষায় রয়েছে</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">চলন্ত অবস্থায় Morphe চালু করুন</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">প্লেয়ার ফ্লাইআউট \'চলন্ত অবস্থায়\' Morphe-এর কাস্টম প্লেয়ার কন্ট্রোল খোলে</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">চলন্ত অবস্থায়</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">ফ্লাইআউট মেনুতে \'Ask\' আইটেম যোগ করুন</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">ফিড ফ্লাইআউট মেনুতে ভিডিও সামারাইজ আইটেম যোগ করা হয়</string>
@@ -794,7 +794,6 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_tap_to_seek_title">ভিডিওর নির্দিষ্ট অংশে যেতে ট্যাপ করা সক্রিয় করুন</string>
   <string name="morphe_tap_to_seek_summary">ড্র্যাগ করার পরিবর্তে সরাসরি নির্দিষ্ট অবস্থানে যেতে সিকবারের যেকোনো জায়গায় ট্যাপ করুন</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">কাস্টম সিকবার থাম্ব</string>
   <string name="morphe_custom_seekbar_thumb_title">কাস্টম সিকবার থাম্ব সক্রিয় করুন</string>
   <string name="morphe_custom_seekbar_thumb_summary">সিকবার থাম্বটি একটি কাস্টম ইমেজ বা অ্যানিমেটেড GIF দিয়ে প্রতিস্থাপন করুন</string>
   <string name="morphe_custom_seekbar_thumb_file_title">থাম্ব ইমেজ</string>
@@ -1774,6 +1773,9 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_niconico_comments_screen_title">Niconico মন্তব্য</string>
   <string name="morphe_niconico_comments_screen_summary">লাইভ চ্যাট এবং চ্যাট রিপ্লে-কে ভিডিওর ওপর দিয়ে স্ক্রোল করা মন্তব্য হিসেবে দেখান</string>
   <string name="morphe_niconico_comments_summary">ভিডিও প্লেয়ারে একটি ওভারলে বোতাম দেখায়। মন্তব্য দেখাতে বা লুকাতে ট্যাপ করুন, দ্রুত সেটিংসের জন্য ট্যাপ করে ধরে রাখুন</string>
+  <string name="morphe_niconico_comments_appearance_title">রূপ</string>
+  <string name="morphe_niconico_comments_portrait_category_title">লম্বালম্বি রাখুন</string>
+  <string name="morphe_niconico_comments_video_types_title">ভিডিওর ধরন</string>
   <string name="morphe_niconico_comments_font_size_title">মন্তব্যের ফন্ট সাইজ</string>
   <string name="morphe_niconico_comments_font_size_summary">মন্তব্যের টেক্সটের আকার (১২-৪০ sp)</string>
   <string name="morphe_niconico_comments_opacity_title">মন্তব্যের অপাসিটি</string>
@@ -1782,6 +1784,16 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_niconico_comments_travel_duration_summary">মন্তব্যগুলো স্ক্রিন পার করতে কত সেকেন্ড সময় নেবে। কম মান হলে দ্রুত মুভ করবে</string>
   <string name="morphe_niconico_comments_display_area_title">প্রদর্শন এলাকা</string>
   <string name="morphe_niconico_comments_display_area_summary">প্লেয়ারের উপরের অংশ থেকে কমেন্টগুলো কতটা জায়গা ব্যবহার করবে। কম মান ভিডিওর নিচের অংশটি পরিষ্কার রাখে</string>
+  <string name="morphe_niconico_comments_portrait_title">পোর্ট্রেট মোডে দেখান</string>
+  <string name="morphe_niconico_comments_portrait_summary">স্ক্রিন যখন পোর্ট্রেট মোডে থাকে তখন মন্তব্যগুলো দেখান। শুধুমাত্র ল্যান্ডস্কেপ মোডে দেখাতে এটি বন্ধ করুন</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">পোর্ট্রেট মোডের জন্য আলাদা সেটিংস</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">পোর্ট্রেট মোডে ভিন্ন ফন্ট সাইজ, ট্রাভেল ডিউরেশন এবং ডিসপ্লে এরিয়া ব্যবহার করুন। এটি চালু করলে, বর্তমান মানগুলো থেকে শুরু হবে</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">পোর্ট্রেট মোডে মন্তব্যের ফন্ট সাইজ</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">পোর্ট্রেট মোডে মন্তব্যের টেক্সট সাইজ (১২-৪০ sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">পোর্ট্রেট মোডে ট্রাভেল ডিউরেশন</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">পোর্ট্রেট মোডে স্ক্রিন অতিক্রম করতে কমেন্টগুলোর কত সেকেন্ড সময় লাগবে</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">পোর্ট্রেট মোডে প্রদর্শনী এলাকা</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">পোর্ট্রেট মোডে প্লেয়ারের উপর থেকে কতটুকু অংশ কমেন্টগুলো ব্যবহার করবে</string>
   <string name="morphe_niconico_comments_hide_crowded_title">ওভারল্যাপ হতে পারে এমন কমেন্টগুলো হাইড করুন</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">যখন ডিসপ্লে এরিয়া পূর্ণ হয়ে যায়, তখন অন্যান্য কমেন্টের উপর ওভারল্যাপ করার পরিবর্তে নতুন কমেন্টগুলো হাইড করা হয়</string>
   <string name="morphe_niconico_comments_max_length_title">কমেন্টের সর্বোচ্চ দৈর্ঘ্য</string>
@@ -1799,6 +1811,8 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_niconico_comments_timed_comments_summary">চ্যাট নেই এমন ভিডিওতে, যে সমস্ত শীর্ষ মন্তব্যে ১:২৩ এর মতো সময় উল্লেখ থাকে, সেগুলো সেই সময়ে দেখানো হয়</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">চ্যাট রিপ্লে-র সাথে টাইমড কমেন্টগুলি দেখান</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">লাইভ স্ট্রিম এবং প্রিমিয়ারের রিপ্লে-তে, চ্যাটের সাথে টাইমড কমেন্টগুলিও দেখানো হয়</string>
+  <string name="morphe_niconico_comments_all_settings">সব সেটিংস</string>
+  <string name="morphe_niconico_comments_reset_title">এই সেটিংসগুলো রিসেট করবেন?</string>
   <string name="morphe_live_chat_translate_screen_title">লাইভ চ্যাট অনুবাদ</string>
   <string name="morphe_live_chat_translate_screen_summary">লাইভ চ্যাট এবং লাইভ চ্যাট রিপ্লে মেসেজ অনুবাদ করুন</string>
   <string name="morphe_live_chat_translate_title">লাইভ চ্যাট অনুবাদ করুন</string>

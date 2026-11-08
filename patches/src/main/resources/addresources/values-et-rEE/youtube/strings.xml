@@ -319,25 +319,18 @@ Muudatused hõlmavad:
   <string name="morphe_hide_keyword_content_search_title">Peida otsingutulemusi märksõnade põhjal</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Peida Tellimuste videoid märksõnade põhjal</string>
   <string name="morphe_hide_keyword_content_phrases_title">Peidetavad märksõnad</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Sisestage peidetavaks soovitud märksõnad ja fraasid, eraldades need uue rea abil
+  <string name="morphe_hide_keyword_content_phrases_summary">"Sisestage peidetavad märksõnad ja fraasid, eraldades need uue rea abil
 
-Märksõnad võivad olla suvaline tekst, mis kuvatakse videote pealkirjades või kanalite nimedes
-
-Sõnad, mille keskel on suurad tähed, peavad ülespaisema täpselt (nt iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Avaleht / Tellimused / Otsing / Kommentaarid on filtreeritud, et peita sisu, mis vastab märksõnadele
+Märksõnad võivad olla suvaline tekst, mis kuvatakse videote pealkirjades või kanalite nimedes"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Avaleht / Tellimused / Otsing / Kommentaarid on filtreeritud, et peita sisu, mis vastab märksõnafraasidele
 
 Piirangud:
-• Shorts-videoid ei saa peita kanali nime järgi
-• Mõned kasutajaliidese komponendid ei pruugi peidata
-• Märksõna otsing ei pruugi tulemusi anda"</string>
+• Mõned Shorts-videod ei saa peita kanali nime järgi
+• Mõned kasutajaliidese komponendid ei pruugi peidata"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Vasta täissõnadele</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Märksõna või fraasi jutumärkidesse panemine takistab osaliste vastete leidmist videote pealkirjades ja kanalite nimedes&lt;br&gt;&lt;br&gt;Näiteks,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; peidab video: &lt;b&gt;Kuidas tehisintellekt töötab?&lt;/b&gt;&lt;br&gt;kuid ei peida video: &lt;b&gt;Mida tähendab õiglane kasutamine?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Märksõna ei saa kasutada: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Märksõna kasutamiseks lisa tsitaadimärgid: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Märksõnal on vastupidised deklaratsioonid: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Märksõna on liiga lühike ja vajab tsitaadimärke: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Märksõna peidab kõik videod: %s</string>
@@ -500,6 +493,13 @@ Teated on avalikud ja neid ülevaadatakse enne kanali nimekirja lisamist. Eemald
   <string name="morphe_post_translate_started">Tõlgimine...</string>
   <string name="morphe_post_translate_failed">Postitust ei õnnestunud tõlkida</string>
   <string name="morphe_post_translate_same_language">Postitus on juba tõlke keeles</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Aktiveeri Morphe liikumise ajal</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Mängija kiirevaade \"Liigutades\" avab Morphe kohandatud mängija juhtimised</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Liigutades</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Lisa \"Küsige\" üksus hüpikmenüüsse</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Lisab video kokkuvõtte üksuse voo hüpikmenüüsse</string>
@@ -794,7 +794,6 @@ Selle parandamiseks lülita sisse \"Videovoogude imiteerimine\" ja muuda \"Vaiki
   <string name="morphe_tap_to_seek_title">Luba puudutusega otsing</string>
   <string name="morphe_tap_to_seek_summary">Puuduta kerimisribal suvalist kohta, et liikuda otse sellesse asukohta lohistamise asemel</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Kohandatud otsimisriba nupp</string>
   <string name="morphe_custom_seekbar_thumb_title">Luba kohandatud otsimisriba nupp</string>
   <string name="morphe_custom_seekbar_thumb_summary">Asenda otsimisriba nupp kohandatud pildiga või animeeritud GIF-failiga</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Nupu pilt</string>
@@ -1774,6 +1773,9 @@ Automaatne salvestamine on valikuline. See peatub inkognito režiimis või konto
   <string name="morphe_niconico_comments_screen_title">Niconico kommentärid</string>
   <string name="morphe_niconico_comments_screen_summary">Kuva otsevestlust ja vestluse taasesitust videol liikuvate kommentaaridena</string>
   <string name="morphe_niconico_comments_summary">Kuvab videopleieris katendinupp. Puuduta kommentaaride kuvamiseks või peitmiseks, kiirseadete avamiseks vajuta ja hoia all</string>
+  <string name="morphe_niconico_comments_appearance_title">Välimus</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portree</string>
+  <string name="morphe_niconico_comments_video_types_title">Video tüübid</string>
   <string name="morphe_niconico_comments_font_size_title">Kommentaari teksti suurus</string>
   <string name="morphe_niconico_comments_font_size_summary">Kommentäride teksti suurus (12–40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Kommentaari läbipaistvus</string>
@@ -1782,6 +1784,16 @@ Automaatne salvestamine on valikuline. See peatub inkognito režiimis või konto
   <string name="morphe_niconico_comments_travel_duration_summary">Kui palju sekundeid kuluvad kommentaaridel ekraani läbimiseks. Madalamad väärtused liiguvad kiiremini</string>
   <string name="morphe_niconico_comments_display_area_title">Kuvaala</string>
   <string name="morphe_niconico_comments_display_area_summary">Kui palju pleieri ülaosast allas kommentaarid katavad. Madalamad väärtused jätsivad video alumise osa puhtaks</string>
+  <string name="morphe_niconico_comments_portrait_title">Kuva portreerežiimis</string>
+  <string name="morphe_niconico_comments_portrait_summary">Kuva kommentaare, kui ekraan on portreeorientatsioonis. Lülita välja, et neid kuvataks ainult maastikurežiimis</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Eraldatud seaded portreerežiimile</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Kasuta portreerežiimis erinevat ownisti suurust, kestust ja kuvamistalu. Kui see on sisse lülitatud, alustatakse praegustest väärtustest</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Kommentaaride ownisti suurus portreerežiimis</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Kommentaaride teksti suurus portreierežiimis (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Liikumise kestus portreierežiimis</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Kui palju sekundeid kuluvad kommentaaridel ekraani läbimiseks portreierežiimis</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Kuvaala portreierežiimis</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Kui palju mängijast, alates ülaosast, kasutavad kommentaarid portreierežiimis</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Peida kommenteid, mis oleksid overlappingud</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Kui kuvamisala on täis, peidatakse uued kommentärid selle asemel, et need teiste kommentaaridega overlappinguks läheksid</string>
   <string name="morphe_niconico_comments_max_length_title">Kommendi maksimaalne pikkus</string>
@@ -1799,6 +1811,8 @@ Automaatne salvestamine on valikuline. See peatub inkognito režiimis või konto
   <string name="morphe_niconico_comments_timed_comments_summary">Videote puhul, millel puudub vestlus, kuvatakse kommentaarid, mis sisaldavad kellaaega nt 1:23, vastaval ajal</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Näita ajastatud kommentaare koos vestluse taastuletusega</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Otussageduste ja esilinnauste taastuletuste puhul on ajastatud kommentärid nähtavad koos vestlusega</string>
+  <string name="morphe_niconico_comments_all_settings">Kõik seaded</string>
+  <string name="morphe_niconico_comments_reset_title">Lähtestada need seaded?</string>
   <string name="morphe_live_chat_translate_screen_title">Live-chat\'i tõlginne</string>
   <string name="morphe_live_chat_translate_screen_summary">Tõlgi live-chat\'i ja live-chat\'i korduse sõnumeid</string>
   <string name="morphe_live_chat_translate_title">Tõlgi live-chat\'i</string>

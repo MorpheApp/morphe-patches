@@ -319,25 +319,18 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_keyword_content_search_title">Itago ang mga resulta ng paghahanap sa pamamagitan ng mga keyword</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Itago ang mga video sa Mga Subscription sa pamamagitan ng mga keyword</string>
   <string name="morphe_hide_keyword_content_phrases_title">Mga Keyword na itatago</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Ilagay ang mga keyword at pariralang itatago, na pinaghihiwalay ng mga bagong linya
+  <string name="morphe_hide_keyword_content_phrases_summary">"Maglagay ng mga keyword at parirala na itatago, na pinaghihiwalay ng mga bagong linya
 
-Ang mga keyword ay maaaring anumang teksto na ipinapakita sa mga pamagat ng video o mga pangalan ng channel
-
-Ang mga salita na may malalaking titik sa gitna ay dapat tumugma nang eksakto (hal., iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Bahay / Mga Subscription / Paghahanap / Ang mga komento ay nasala upang itago ang nilalamang tumutugma sa mga parirala ng keyword
+Ang mga keyword ay maaaring anumang teksto na ipinapakita sa mga pamagat ng video o mga pangalan ng channel"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Ang Home / Subscriptions / Search / Comments ay fini-filter upang itago ang nilalaman na tumutugma sa mga parirala ng keyword
 
 Mga Limitasyon:
-• Hindi maitatago ang Shorts sa pamamagitan ng pangalan ng channel
-• Maaaring hindi maitago ang ilang bahagi ng UI
-• Ang paghahanap para sa isang keyword ay maaaring walang resulta"</string>
+• Ang ilang Shorts ay hindi maitatago sa pamamagitan ng pangalan ng channel
+• Maaaring hindi maitago ang ilang bahagi ng UI"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Itugma ang buong salita</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Mapipigilan ang mga bahagyang pagtutugma ng mga pamagat ng video at pangalan ng channel kung pinapaligiran ang isang keyword/parirala na may dobleng panipi&lt;br&gt;&lt;br&gt;Halimbawa, ang&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ay magtatago ng video: &lt;b&gt;Paano gumagana ang AI?&lt;/b&gt;&lt;br&gt;ngunit hindi magtatago:&lt;b&gt;Ano ang ibig sabihin ng patas na paggamit?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Hindi maaaring gumamit ng keyword: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Idagdag ang mga panipi upang magamit ang keyword: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">May magkasalungat na deklarasyon ang keyword: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Masyadong maikli at kailangan ng mga panipi ang keyword: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Itatago lahat ng mga video ang keyword: %s</string>
@@ -500,6 +493,13 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_post_translate_started">Isinasalin…</string>
   <string name="morphe_post_translate_failed">Hindi maisalin ang post</string>
   <string name="morphe_post_translate_same_language">Ang post ay nasa wika na ng pagsasalin</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">I-enable ang Morphe on-the-go</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Ang player flyout na \'on-the-go\' ay nagbubukas ng mga custom player control ng Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Habang nasa biyahe</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Idagdag ang Ask item sa flyout menu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Idinadagdag ang video summarize item sa feed flyout menu</string>
@@ -794,7 +794,6 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_tap_to_seek_title">I-enable ang tap to seek</string>
   <string name="morphe_tap_to_seek_summary">I-tap ang kahit saan sa seekbar upang tumalon sa posisyong iyon sa halip na i-drag</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Custom seekbar thumb</string>
   <string name="morphe_custom_seekbar_thumb_title">I-enable ang custom seekbar thumb</string>
   <string name="morphe_custom_seekbar_thumb_summary">Palitan ang seekbar thumb ng isang custom image o animated GIF</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Larawan ng thumb</string>
@@ -1772,6 +1771,9 @@ Optional ang automatic recording. Itinatigil ito sa incognito o kapag nabagyo an
   <string name="morphe_niconico_comments_screen_title">Mga komento ng Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Ipakita ang live chat at chat replay bilang mga komentong gumugulong sa video</string>
   <string name="morphe_niconico_comments_summary">Nagpapakita ng isang overlay button sa video player. I-tap para ipakita o itago ang mga komento, i-tap at i-hold para sa mabilis na settings</string>
+  <string name="morphe_niconico_comments_appearance_title">Hitsura</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portrait</string>
+  <string name="morphe_niconico_comments_video_types_title">Mga uri ng video</string>
   <string name="morphe_niconico_comments_font_size_title">Laki ng font ng komento</string>
   <string name="morphe_niconico_comments_font_size_summary">Laki ng teksto ng mga komento (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Opacity ng komento</string>
@@ -1780,6 +1782,16 @@ Optional ang automatic recording. Itinatigil ito sa incognito o kapag nabagyo an
   <string name="morphe_niconico_comments_travel_duration_summary">Ilang segundo ang ginugugol ng mga komento para tawirin ang screen. Ang mas mababang value ay mas mabilis gumalaw</string>
   <string name="morphe_niconico_comments_display_area_title">Area ng pagpapakita</string>
   <string name="morphe_niconico_comments_display_area_summary">Gaano kalaki ng player, mula sa itaas, ang gagamitin ng mga komento. Pinapanatili ng mas mababang value na malinis ang ibabang bahagi ng video</string>
+  <string name="morphe_niconico_comments_portrait_title">Ipakita sa portrait</string>
+  <string name="morphe_niconico_comments_portrait_summary">Ipakita ang mga komento kapag ang screen ay nasa portrait. Patayin upang ipakita lamang ang mga ito sa landscape</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Hiwalay na mga setting para sa portrait</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Gumamit ng ibang laki ng font, tagal ng pagbiyahe at display area sa portrait. Kapag naka-on, magsisimula ang mga ito mula sa kasalukuyang mga value</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Laki ng font ng komento sa portrait</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Laki ng text ng mga komento sa portrait (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Tagal ng pagbiyahe sa portrait</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Ilang segundo bago tumawid ang mga komento sa screen sa portrait</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Area ng display sa portrait</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Gaano kalaking bahagi ng player, mula sa itaas, ang ginagamit ng mga komento sa portrait</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Itago ang mga comment na magpapatong-patong</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Kapag puno na ang display area, itatago ang mga bagong comment sa halip na magpatong sa iba pang mga comment</string>
   <string name="morphe_niconico_comments_max_length_title">Maximum na haba ng komento</string>
@@ -1797,6 +1809,8 @@ Optional ang automatic recording. Itinatigil ito sa incognito o kapag nabagyo an
   <string name="morphe_niconico_comments_timed_comments_summary">Sa mga video na walang chat, ang mga top comment na may oras gaya ng 1:23 ay ipapakita sa oras na iyon</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Ipakita ang mga timed comment kasama ang chat replay</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Sa mga replay ng live stream at Premiere, ang mga timed comment ay ipinapakita rin kasama ng chat</string>
+  <string name="morphe_niconico_comments_all_settings">Lahat ng mga pagpipilian</string>
+  <string name="morphe_niconico_comments_reset_title">I-reset ang mga pagpipiliang ito?</string>
   <string name="morphe_live_chat_translate_screen_title">Pagsasalin ng live chat</string>
   <string name="morphe_live_chat_translate_screen_summary">Isalin ang mga mensahe ng live chat at live chat replay</string>
   <string name="morphe_live_chat_translate_title">Isalin ang live chat</string>

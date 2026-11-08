@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">ซ่อนผลลัพธ์การค้นหาตามคำสำคัญ</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">ซ่อนวิดีโอการติดตามตามคำสำคัญ</string>
   <string name="morphe_hide_keyword_content_phrases_title">คำสำคัญที่จะซ่อน</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"ป้อนคำหลักและวลีที่จะซ่อน โดยแยกด้วยบรรทัดใหม่
+  <string name="morphe_hide_keyword_content_phrases_summary">"ป้อนคำสำคัญและวลีที่ต้องการซ่อน โดยแยกด้วยการขึ้นบรรทัดใหม่
 
-คำหลักสามารถเป็นข้อความใดๆ ที่แสดงในชื่อวิดีโอหรือชื่อช่อง
-
-คำที่มีตัวพิมพ์ใหญ่อยู่ตรงกลางต้องตรงตามตัวพิมพ์ใหญ่เล็ก (เช่น iPhone, TikTok, LeBlanc)"</string>
+คำสำคัญสามารถเป็นข้อความใดก็ได้ที่แสดงในชื่อวิดีโอหรือชื่อช่อง"</string>
   <string name="morphe_hide_keyword_content_about_summary">"หน้าแรก / การติดตาม / การค้นหา / ความคิดเห็น จะถูกกรองเพื่อซ่อนเนื้อหาที่ตรงกับวลีคำสำคัญ
 
 ข้อจำกัด:
-• Shorts ไม่สามารถซ่อนได้ตามชื่อช่อง
-• บางส่วนของส่วนประกอบ UI อาจไม่ถูกซ่อน
-• การค้นหาคำหลักอาจไม่แสดงผลลัพธ์"</string>
+• Shorts บางส่วนไม่สามารถซ่อนได้ตามชื่อช่อง
+• บางส่วนของส่วนประกอบ UI อาจไม่ถูกซ่อน"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">จับคู่ทั้งคำ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">การล้อมรอบคีย์เวิร์ด/วลีด้วยเครื่องหมายคำพูดคู่จะป้องกันการจับคู่บางส่วนของชื่อวิดีโอและชื่อช่อง&lt;br&gt;&lt;br&gt;ตัวอย่างเช่น&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; จะซ่อนวิดีโอ: &lt;b&gt;AI ทำงานอย่างไร?&lt;/b&gt;&lt;br&gt;แต่จะไม่ซ่อน: &lt;b&gt;Fair use แปลว่าอะไร?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">ไม่สามารถใช้คำสำคัญ: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">เพิ่มเครื่องหมายคำพูดเพื่อใช้คำสำคัญ: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">คำสำคัญมีการประกาศที่ขัดแย้งกัน: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">คำสำคัญสั้นเกินไปและต้องใช้เครื่องหมายคำพูด: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">คำสำคัญจะซ่อนวิดีโอทั้งหมด: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">กำลังแปล...</string>
   <string name="morphe_post_translate_failed">ไม่สามารถแปลโพสต์ได้</string>
   <string name="morphe_post_translate_same_language">โพสต์นี้เป็นภาษาที่ใช้ในการแปลอยู่แล้ว</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">เปิดใช้งาน Morphe แบบพกพา</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">เมนูแบบพับ \'แบบพกพา\' ของเครื่องเล่นจะเปิดการควบคุมเครื่องเล่นที่กำหนดเองของ Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">แบบพกพา</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">เพิ่มรายการถามไปยังเมนูแบบเลื่อนออก</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">เพิ่มรายการสรุปวิดีโอไปยังเมนูแบบเลื่อนออกของฟีด</string>
@@ -794,7 +794,6 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">เปิดใช้งานแตะเพื่อค้นหา</string>
   <string name="morphe_tap_to_seek_summary">แตะที่ใดก็ได้บนแถบเลื่อนเพื่อข้ามไปยังตำแหน่งนั้นแทนการลาก</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">ปุ่มเลื่อน seekbar แบบกำหนดเอง</string>
   <string name="morphe_custom_seekbar_thumb_title">เปิดใช้งานปุ่มเลื่อน seekbar แบบกำหนดเอง</string>
   <string name="morphe_custom_seekbar_thumb_summary">แทนที่ปุ่มเลื่อน seekbar ด้วยรูปภาพแบบกำหนดเองหรือ GIF เคลื่อนไหว</string>
   <string name="morphe_custom_seekbar_thumb_file_title">รูปภาพปุ่มเลื่อน</string>
@@ -1774,6 +1773,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">ความคิดเห็นแบบ Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">แสดงแชทสดและแชทรีเพลย์เป็นความคิดเห็นที่เลื่อนผ่านวิดีโอ</string>
   <string name="morphe_niconico_comments_summary">แสดงปุ่มโอเวอร์เลย์ในเครื่องเล่นวิดีโอ แตะเพื่อแสดงหรือซ่อนความคิดเห็น แตะค้างไว้เพื่อเข้าสู่การตั้งค่าด่วน</string>
+  <string name="morphe_niconico_comments_appearance_title">หน้าตา</string>
+  <string name="morphe_niconico_comments_portrait_category_title">แนวตั้ง</string>
+  <string name="morphe_niconico_comments_video_types_title">ประเภทวิดีโอ</string>
   <string name="morphe_niconico_comments_font_size_title">ขนาดตัวอักษรของความคิดเห็น</string>
   <string name="morphe_niconico_comments_font_size_summary">ขนาดข้อความของความคิดเห็น (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">ความโปร่งใสของความคิดเห็น</string>
@@ -1782,6 +1784,16 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">จำนวนวินาทีที่ความคิดเห็นใช้ในการเลื่อนผ่านหน้าจอ ค่าที่น้อยกว่าจะเคลื่อนที่เร็วกว่า</string>
   <string name="morphe_niconico_comments_display_area_title">พื้นที่แสดงผล</string>
   <string name="morphe_niconico_comments_display_area_summary">ความกว้างของพื้นที่แสดงความคิดเห็นโดยวัดจากด้านบนของโปรแกรมเล่น ยิ่งค่าน้อย ส่วนล่างของวิดีโอจะยิ่งว่างมากขึ้น</string>
+  <string name="morphe_niconico_comments_portrait_title">แสดงในแนวตั้ง</string>
+  <string name="morphe_niconico_comments_portrait_summary">แสดงความคิดเห็นเมื่อหน้าจออยู่ในแนวตั้ง ปิดเพื่อแสดงเฉพาะในแนวนอน</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">ตั้งค่าแยกสำหรับแนวตั้ง</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">ใช้ขนาดตัวอักษร ระยะเวลาการเคลื่อนที่ และพื้นที่แสดงผลที่แตกต่างกันในแนวตั้ง เมื่อเปิดใช้งาน ค่าเหล่านี้จะเริ่มจากค่าปัจจุบัน</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">ขนาดตัวอักษรความคิดเห็นในแนวตั้ง</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">ขนาดข้อความของความคิดเห็นในแนวตั้ง (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">ระยะเวลาการเคลื่อนที่ในแนวตั้ง</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">จำนวนวินาทีที่คอมเมนต์ใช้ในการเคลื่อนที่ผ่านหน้าจอในแนวตั้ง</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">พื้นที่แสดงผลในแนวตั้ง</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">คอมเมนต์ใช้พื้นที่ส่วนไหนของเครื่องเล่นจากด้านบนในแนวตั้ง</string>
   <string name="morphe_niconico_comments_hide_crowded_title">ซ่อนความคิดเห็นที่ซ้อนทับกัน</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">เมื่อพื้นที่แสดงผลเต็ม ความคิดเห็นใหม่จะถูกซ่อนไว้แทนที่จะไปซ้อนทับกับความคิดเห็นอื่น</string>
   <string name="morphe_niconico_comments_max_length_title">ความยาวคอมเมนต์สูงสุด</string>
@@ -1799,6 +1811,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_timed_comments_summary">สำหรับวิดีโอที่ไม่มีแชท ความคิดเห็นยอดนิยมที่มีการระบุเวลา เช่น 1:23 จะถูกแสดงขึ้นมา ณ เวลานั้น</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">แสดงความคิดเห็นตามเวลาพร้อมกับการเล่นแชทซ้ำ</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">ในการเล่นซ้ำของสตรีมสดและ Premiere จะมีการแสดงความคิดเห็นตามเวลาพร้อมกับแชทด้วย</string>
+  <string name="morphe_niconico_comments_all_settings">การตั้งค่าทั้งหมด</string>
+  <string name="morphe_niconico_comments_reset_title">รีเซ็ตการตั้งค่าเหล่านี้หรือไม่?</string>
   <string name="morphe_live_chat_translate_screen_title">การแปลแชทสด</string>
   <string name="morphe_live_chat_translate_screen_summary">แปลข้อความแชทสดและข้อความรีเพลย์แชทสด</string>
   <string name="morphe_live_chat_translate_title">แปลแชทสด</string>

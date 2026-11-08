@@ -116,7 +116,7 @@ Définir %2$s comme client par défaut ?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client par défaut</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Connexion à Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Non connecté à Android VR. Appuyez pour vous connecter</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR nécessite une connexion distincte. Appuyez ici pour continuer</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Actuellement connecté à Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pour utiliser cette fonctionnalité, définissez \'Client par défaut\' sur \'Android VR\'</string>
@@ -151,14 +151,14 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_oauth2_toast_reset">Déconnexion de Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Jeton de connexion à VR invalide, veuillez réessayer la connexion à VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Contrôles des médias de notification</string>
-  <string name="morphe_notification_media_screen_summary">Personnalisez les commandes de lecture affichées sur votre écran de verrouillage et le panneau de notifications</string>
+  <string name="morphe_notification_media_screen_title">Contrôles des notifications multimédias</string>
+  <string name="morphe_notification_media_screen_summary">Personnalisez les contrôles de lecture affichés sur votre écran de verrouillage et dans le panneau de notifications</string>
   <string name="morphe_hide_notification_media_prev_next_title">Masquer les boutons \'Précédent\' &amp; \'Suivant\'</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Masque les boutons \'Précédent\' et \'Suivant\' dans la notification multimédia, sur l\'écran de verrouillage et les commandes du casque</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Masque les boutons \'Précédent\' et \'Suivant\' dans la notification multimédia, sur l\'écran de verrouillage et les contrôles du casque</string>
   <string name="morphe_disable_notification_media_seekbar_title">Désactiver la barre de progression</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Empêche le déplacement de la barre de progression sur l\'écran de verrouillage et le panneau de notifications</string>
   <string name="morphe_seek_notification_media_prev_next_title">Naviguer avec les boutons \'Précédent\' &amp; \'Suivant\'</string>
-  <string name="morphe_seek_notification_media_prev_next_summary">Change les commandes des notifications multimédias, de l\'écran de verrouillage et du casque pour avancer ou reculer dans la vidéo au lieu de passer d\'une vidéo à l’autre</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Change les contrôles des notifications multimédias, de l\'écran de verrouillage et du casque pour avancer ou reculer dans la vidéo au lieu de passer d\'une vidéo à l’autre</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Durée du retour en arrière</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Secondes de retour en arrière avec le bouton \'Précédent\'</string>
   <string name="morphe_seek_notification_media_fast_forward_length_title">Durée de l\'avance rapide</string>

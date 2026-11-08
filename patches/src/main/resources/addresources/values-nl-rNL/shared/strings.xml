@@ -229,6 +229,19 @@ Als batterijoptimalisaties niet worden gewijzigd, kunt u het volgende ervaren:
 Als u de meest probleemloze ervaring wilt, &lt;b&gt;verwijder&lt;/b&gt; dit dan en patch de aanbevolen app-versie van ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ik wil experimenteel</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ik wil stabiel</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Toon in-app melding voor patch-updates</string>
+  <string name="morphe_patches_update_notice_entry_off">Uit</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabiele versies</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabiele en dev-versies</string>
+  <string name="morphe_patches_update_notice_dialog_title">Nieuwe patches beschikbaar</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (huidige: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nieuwe functies</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Bugfixes</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Andere wijzigingen</string>
+  <string name="morphe_patches_update_notice_dialog_more">…en nog %s meer</string>
+  <string name="morphe_patches_update_notice_dialog_update">Bijwerken</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Afwijzen</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Crashlog opgeslagen in gebruikersdocumenten: %s</string>
   <string name="morphe_crash_log_saved">Crashlog opgeslagen: %s</string>

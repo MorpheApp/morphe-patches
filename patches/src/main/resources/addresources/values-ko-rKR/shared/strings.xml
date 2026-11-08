@@ -225,6 +225,19 @@ MicroG 앱 배터리 최적화를 비활성화(제한 없음)하더라도, 배�
   <string name="morphe_experimental_app_version_dialog_message">"실험 앱 버전 ⚠️ &lt;b&gt;%1$s&lt;/b&gt; ⚠️ 을 사용 중입니다.&lt;br/&gt;&lt;br/&gt;🔧 이 앱 버전에 맞게 패치를 최적화하는 과정에 있으므로, 예상되지 않은 동작이나 알 수 없는 버그가 발생할 수 있습니다.&lt;br/&gt;&lt;br/&gt;안정적으로 앱을 사용하기를 원한다면, &lt;b&gt;이 앱을 제거&lt;/b&gt;하고 권장 앱 버전 ✅ &lt;b&gt;%2$s&lt;/b&gt; ✅ 으로 패치하세요."</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 실험 버전을 사용하겠습니다</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 안정 버전을 사용하겠습니다</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">패치 업데이트에 대한 인앱 알림 표시</string>
+  <string name="morphe_patches_update_notice_entry_off">사용 안함</string>
+  <string name="morphe_patches_update_notice_entry_stable">안정 버전 릴리스</string>
+  <string name="morphe_patches_update_notice_entry_dev">안정 및 개발 버전 릴리스</string>
+  <string name="morphe_patches_update_notice_dialog_title">새 패치 사용 가능</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (현재: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ 새로운 기능</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 버그 수정</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 기타 변경 사항</string>
+  <string name="morphe_patches_update_notice_dialog_more">…및 %s개 더</string>
+  <string name="morphe_patches_update_notice_dialog_update">업데이트</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">닫기</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">충돌 로그가 사용자 문서에 저장됨: %s</string>
   <string name="morphe_crash_log_saved">충돌 로그가 저장됨: %s</string>

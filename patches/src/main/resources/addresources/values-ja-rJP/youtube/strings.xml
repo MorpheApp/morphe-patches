@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">検索結果の動画をキーワードで除外</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">登録チャンネルの動画をキーワードで除外</string>
   <string name="morphe_hide_keyword_content_phrases_title">キーワード</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"除外するためのキーワードとなる単語やフレーズを改行区切りで入力してください
+  <string name="morphe_hide_keyword_content_phrases_summary">"非表示にするキーワードやフレーズを、改行で区切って入力してください
 
-キーワードには、除外したい動画のチャンネル名もしくはタイトルの一部を指定することができます
-
-単語の途中に大文字が含まれる場合は、大文字のまま入力する必要があります (例: iPhone、TikTok、LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"キーワードに合致する動画を、ホーム / 登録チャンネル / 検索結果から除外します。コメント欄では、キーワードに合致するコメントを除外します
+キーワードは、動画のタイトルやチャンネル名に表示される任意のテキストを指定できます"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"ホーム / 登録チャンネル / 検索 / コメントでは、キーワードに合致するコンテンツを非表示にするようフィルタリングされます
 
 制限事項:
-• ショート動画はチャンネル名の合致では除外できない
-• 一部の UI コンポーネントが残る場合がある
-• キーワードで検索したとき、結果が表示されない場合がある"</string>
+• 一部のショートはチャンネル名で非表示にできません
+• 一部の UI コンポーネントは非表示にならない場合があります"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">単語全体で合致</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">キーワードを二重引用符で囲むことで、動画のタイトルやチャンネル名に含まれる単語の一部分とキーワードが合致しないようにできます&lt;br&gt;&lt;br&gt;例えば、&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;は、次の動画を除外します: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;しかし、次の動画は除外しません: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">使用できないキーワード: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">二重引用符が必要なキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">矛盾する宣言があるキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">短すぎて引用符が必要なキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">全動画を除外するキーワード: %s</string>
@@ -501,6 +494,13 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_post_translate_started">翻訳中…</string>
   <string name="morphe_post_translate_failed">投稿を翻訳できませんでした</string>
   <string name="morphe_post_translate_same_language">投稿はすでに翻訳先の言語で記述されています</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">外出先で Morphe を有効にする</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">プレーヤーのフライアウトにある「外出先で」を選択すると、Morphe のカスタムプレーヤーコントロールが開きます</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">外出先で</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">「動画を要約して」をフライアウト メニューに追加</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">「この動画について質問する」欄を、欄内の「動画を要約して」がタップされた状態で開く項目を、フィードのフライアウト メニューに追加します</string>
@@ -795,7 +795,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_tap_to_seek_title">タップによるシークを有効化</string>
   <string name="morphe_tap_to_seek_summary">シークバーをタップすると、ドラッグせずにその位置にジャンプします</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">カスタムシークバーつまみ</string>
   <string name="morphe_custom_seekbar_thumb_title">カスタムシークバーつまみを有効にする</string>
   <string name="morphe_custom_seekbar_thumb_summary">シークバーのつまみをカスタム画像またはアニメーションGIFに置き換えます</string>
   <string name="morphe_custom_seekbar_thumb_file_title">つまみの画像</string>
@@ -1775,6 +1774,9 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_niconico_comments_screen_title">ニコニコ風のコメント表示</string>
   <string name="morphe_niconico_comments_screen_summary">ライブ配信と配信のアーカイブのチャットを、映像を横切って流れるニコニコ風コメントとして表示します</string>
   <string name="morphe_niconico_comments_summary">プレーヤー オーバーレイにボタンを表示します。タップするとニコニコ風コメントの表示 / 非表示を切り替えます。長押しすると簡易設定メニューを表示します</string>
+  <string name="morphe_niconico_comments_appearance_title">外観</string>
+  <string name="morphe_niconico_comments_portrait_category_title">縦画面</string>
+  <string name="morphe_niconico_comments_video_types_title">ビデオタイプ</string>
   <string name="morphe_niconico_comments_font_size_title">コメントの大きさ</string>
   <string name="morphe_niconico_comments_font_size_summary">ニコニコ風コメントのフォントサイズ (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">コメントの濃さ</string>
@@ -1783,6 +1785,16 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_niconico_comments_travel_duration_summary">ニコニコ風コメントが表示されてから画面を横切って消えるまでの時間 (秒)。この値を小さくすると、コメントの移動速度が速くなります</string>
   <string name="morphe_niconico_comments_display_area_title">表示エリア</string>
   <string name="morphe_niconico_comments_display_area_summary">プレーヤーの上端からどの程度の範囲までコメントを使用するかを指定します。値を小さくすると、ビデオの下部をクリアに保つことができます</string>
+  <string name="morphe_niconico_comments_portrait_title">ポートレートで表示</string>
+  <string name="morphe_niconico_comments_portrait_summary">画面がポートレートのときにコメントを表示します。オフにするとランドスケープのときのみ表示されます</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">ポートレート用に個別の設定を行う</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">ポートレートで異なるフォントサイズ、移動時間、表示領域を使用します。オンにすると、現在の値から設定が開始されます</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">ポートレート時のコメントフォントサイズ</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">ポートレート時のコメントのテキストサイズ (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">ポートレート時の移動時間</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">ポートレートのとき、コメントが画面を横切るのにかかる時間（秒）</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">縦向きの表示エリア</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">縦向きのとき、プレイヤーの上端からどの範囲までコメントを表示するか</string>
   <string name="morphe_niconico_comments_hide_crowded_title">重なり合うコメントを非表示にする</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">表示領域がいっぱいになったとき、他のコメントと重なる代わりに新しいコメントを非表示にします</string>
   <string name="morphe_niconico_comments_max_length_title">コメントの文字数制限</string>
@@ -1800,6 +1812,8 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_niconico_comments_timed_comments_summary">チャットのない動画では、「1:23」のように時間が含まれている上位コメントが、その時間に表示されます</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">チャットのリプレイでタイムスタンプ付きコメントを表示</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">ライブ配信やプレミア公開のリプレイでは、タイムスタンプ付きコメントもチャットと共に表示されます</string>
+  <string name="morphe_niconico_comments_all_settings">すべての設定</string>
+  <string name="morphe_niconico_comments_reset_title">これらの設定をリセットしますか？</string>
   <string name="morphe_live_chat_translate_screen_title">ライブチャット翻訳</string>
   <string name="morphe_live_chat_translate_screen_summary">ライブチャットとライブチャットのリプレイメッセージを翻訳します</string>
   <string name="morphe_live_chat_translate_title">ライブチャットを翻訳</string>

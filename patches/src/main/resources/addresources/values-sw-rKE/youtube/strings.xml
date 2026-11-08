@@ -319,25 +319,18 @@ Mabadiliko ni pamoja na:
   <string name="morphe_hide_keyword_content_search_title">Ficha matokeo ya utafutaji kwa maneno muhimu</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ficha video za Usajili kwa maneno muhimu</string>
   <string name="morphe_hide_keyword_content_phrases_title">Maneno muhimu ya kuficha</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Ingiza maneno muhimu na virai vya kuficha, vitenganishwe kwa mistari mipya
+  <string name="morphe_hide_keyword_content_phrases_summary">"Ingiza maneno muhimu na mafungu ya maneno ya kuficha, yakitenganishwa na mistari mipya
 
-Maneno muhimu yanaweza kuwa maandishi yoyote yanayoonekana katika vichwa vya video au majina ya chaneli
-
-Maneno yenye herufi kubwa katikati lazima yalingane sawasawa (mfano, iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Nyumbani / Usajili / Tafuta / Maoni yanachujwa ili kuficha maudhui yanayofanana na virai vya maneno muhimu
+Maneno muhimu yanaweza kuwa maandishi yoyote yanayoonekana katika vichwa vya video au majina ya chaneli"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Nyumbani / Usajili / Tafuta / Maoni huchujwa ili kuficha maudhui yanayoendana na mafungu ya maneno muhimu
 
 Vikwazo:
-• Shorts haziwezi kufichwa kwa jina la chaneli
-• Baadhi ya vipengele vya UI vinaweza kutofichwa
-• Kutafuta neno muhimu kunaweza kutoa matokeo sifuri"</string>
+• Baadhi ya Shorts haziwezi kufichwa kwa jina la chaneli
+• Baadhi ya vipengele vya UI huenda visifichwe"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Linganisha maneno kamili</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Kuzunguka neno kuu/kirai kwa alama za nukuu mbili kutazuia ulinganifu wa sehemu ya vichwa vya video na majina ya chaneli&lt;br&gt;&lt;br&gt;Kwa mfano,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; itaficha video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;lakini haitaficha: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Huwezi kutumia neno kuu: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Ongeza alama za nukuu ili kutumia neno kuu: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Neno kuu lina matamko yanayopingana: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Neno kuu ni fupi mno na linahitaji alama za nukuu: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Neno muhimu litaficha video zote: %s</string>
@@ -500,6 +493,13 @@ Ripoti ni za hadhara na hupitiwa kabla ya chaneli kuongezwa kwenye orodha. Kuond
   <string name="morphe_post_translate_started">Inatafsiri…</string>
   <string name="morphe_post_translate_failed">Hukuweza kutafsiri chapisho</string>
   <string name="morphe_post_translate_same_language">Chapisho tayari lipo katika lugha ya tafsiri</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Washa Morphe ukiwa njiani</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Flyout ya kicheza video ya \'ukiwa njiani\' hufungua vidhibiti vya kicheza video vya Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Ukiwa njiani</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ongeza kipengele cha Uliza kwenye menyu ya flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Huongeza kipengele cha muhtasari wa video kwenye menyu ya flyout ya feed</string>
@@ -794,7 +794,6 @@ Ili kurekebisha hili, washa 'Ghadhabu ya utiririko wa video' na ubadilishe 'Klij
   <string name="morphe_tap_to_seek_title">Washa kugusa ili kutafuta</string>
   <string name="morphe_tap_to_seek_summary">Gusa popote kwenye bar ya utafutaji ili kuruka hadi nafasi hiyo badala ya kuburuta</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Kishale cha seekbar cha kistaili</string>
   <string name="morphe_custom_seekbar_thumb_title">Washa kishale cha seekbar cha kistaili</string>
   <string name="morphe_custom_seekbar_thumb_summary">Badilisha kishale cha seekbar kwa picha ya kistaili au GIF inayocheza</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Picha ya kishale</string>
@@ -1773,6 +1772,9 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_niconico_comments_screen_title">Maoni ya Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Onyesha soga ya moja kwa moja na marudio ya soga kama maoni yanayopita kwenye video</string>
   <string name="morphe_niconico_comments_summary">Inaonyesha kitufe cha juu katika kicheza video. Gusa ili kuonyesha au kuficha maoni, gusa na ushikilie kwa mipangilio ya haraka</string>
+  <string name="morphe_niconico_comments_appearance_title">Muonekano</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Wima</string>
+  <string name="morphe_niconico_comments_video_types_title">Aina za video</string>
   <string name="morphe_niconico_comments_font_size_title">Ukubwa wa herufi za maoni</string>
   <string name="morphe_niconico_comments_font_size_summary">Ukubwa wa maandishi ya maoni (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Uwazi wa maoni</string>
@@ -1781,6 +1783,16 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_niconico_comments_travel_duration_summary">Sekunde ngapi maoni yanachukua kuvuka skrini. Thamani ndogo husonga haraka zaidi</string>
   <string name="morphe_niconico_comments_display_area_title">Eneo la onyesho</string>
   <string name="morphe_niconico_comments_display_area_summary">Kiasi cha kidhibiti cha kucheza, kuanzia juu, ambacho maoni yanatumia. Thamani ndogo huacha sehemu ya chini ya video ikiwa wazi</string>
+  <string name="morphe_niconico_comments_portrait_title">Onyesha katika hali ya wima</string>
+  <string name="morphe_niconico_comments_portrait_summary">Onyesha maoni wakati skrini ikiwa katika hali ya wima. Zima ili yaonyeshwe katika hali ya mlalo pekee</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Mipangilio tofauti ya hali ya wima</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Tumia ukubwa wa fonti, muda wa safari na eneo la onyesho tofauti katika hali ya wima. Inapowashwa, huanzia kwenye thamani za sasa</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Ukubwa wa fonti ya maoni katika hali ya wima</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Ukubwa wa maandishi ya maoni katika hali ya wima (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Muda wa safari katika hali ya wima</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Idadi ya sekunde ambazo maoni huchukua kuvuka skrini katika hali ya wima</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Eneo la onyesho katika hali ya wima</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Kiasi cha kicheza, kuanzia juu, ambacho maoni hutumia katika hali ya wima</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Ficha maoni ambayo yangepingana</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Eneo la onyesho linapokuwa limejaa, maoni mapya hufichwa badala ya kupingana na maoni mengine</string>
   <string name="morphe_niconico_comments_max_length_title">Urefu wa juu wa maoni</string>
@@ -1798,6 +1810,8 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_niconico_comments_timed_comments_summary">Kwenye video zisizo na soga, maoni ya juu yenye muda kama 1:23 huonyeshwa wakati huo</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Onyesha maoni ya muda na urudishaji wa soga</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Katika urudishaji wa mirutubisho ya moja kwa moja na Premieres, maoni ya muda pia huonyeshwa pamoja na soga</string>
+  <string name="morphe_niconico_comments_all_settings">Mipangilio yote</string>
+  <string name="morphe_niconico_comments_reset_title">Je, urudishe mipangilio hii?</string>
   <string name="morphe_live_chat_translate_screen_title">Tafsiri ya soga ya moja kwa moja</string>
   <string name="morphe_live_chat_translate_screen_summary">Tafsiri ujumbe wa soga ya moja kwa moja na urejeshaji wa soga ya moja kwa moja</string>
   <string name="morphe_live_chat_translate_title">Tafsiri soga ya moja kwa moja</string>

@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">Приховати відео в пошуку</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Приховати відео в підписках</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ключові слова, які потрібно приховати</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Введіть ключові слова та фрази, які потрібно приховати, кожне з нового рядка
+  <string name="morphe_hide_keyword_content_phrases_summary">"Введіть ключові слова та фрази для приховування, розділяючи їх новими рядками
 
-Ключові слова можуть бути будь-яким текстом із назв відео або назв каналів
-
-Слова з великими літерами всередині потрібно вводити точно (наприклад, iPhone, TikTok, Івано-Франківськ)"</string>
+Ключовими словами може бути будь-який текст, що відображається в назвах відео або назвах каналів"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Головна / Підписки / Пошук / Коментарі фільтруються, щоб приховати вміст, який відповідає ключовим фразам
 
 Обмеження:
-• Shorts неможливо приховати за назвою каналу
-• Деякі компоненти інтерфейсу можуть не приховуватися
-• Пошук за ключовим словом може не показувати результатів"</string>
+• Деякі Shorts неможливо приховати за назвою каналу
+• Деякі компоненти інтерфейсу можуть не приховуватися"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Лише цілі слова</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Взяття ключового слова/фрази в подвійні лапки запобігатиме частковим збігам назв відео та каналів&lt;br&gt;&lt;br&gt;Наприклад,&lt;br&gt;&lt;b&gt;\"ші\"&lt;/b&gt; приховає відео: &lt;b&gt;Як працює ШІ (штучний інтелект)?&lt;/b&gt;&lt;br&gt;але не приховає: &lt;b&gt;Що означає цифра шість?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Неможливо використати: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Додайте лапки, щоб використовувати: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключове слово має конфліктні оголошення: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключове слово занадто коротке і потребує лапок: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключове слово приховає всі відео: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">Переклад…</string>
   <string name="morphe_post_translate_failed">Не вдалося перекласти допис</string>
   <string name="morphe_post_translate_same_language">Допис уже написано мовою перекладу</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Увімкнути Morphe у режимі \"на ходу\"</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Спливаюче вікно плеєра \"на ходу\" відкриває кастомні елементи керування Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">На ходу</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Додати пункт \"Запитати\" у спливне меню</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Додає пункт підсумовування відео до спливного меню стрічки</string>
@@ -794,7 +794,6 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Увімкнути перемотування дотиком</string>
   <string name="morphe_tap_to_seek_summary">Натисніть будь-де на смузі відтворення, щоб перейти до цієї позиції замість перетягування</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Користувацький повзунок смуги перемотування</string>
   <string name="morphe_custom_seekbar_thumb_title">Увімкнути власний повзунок смуги перемотування</string>
   <string name="morphe_custom_seekbar_thumb_summary">Замініть повзунок смуги перемотування на власне зображення або анімований GIF</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Зображення повзунка</string>
@@ -1773,6 +1772,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Коментарі Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Показувати живий чат і повтор чату як коментарі, що прокручуються по відео</string>
   <string name="morphe_niconico_comments_summary">Показує кнопку у відеоплеєрі. Натисніть, щоб показувати або приховувати коментарі, утримуйте для швидких налаштувань</string>
+  <string name="morphe_niconico_comments_appearance_title">Вигляд</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Портретний</string>
+  <string name="morphe_niconico_comments_video_types_title">Типи відео</string>
   <string name="morphe_niconico_comments_font_size_title">Розмір шрифту коментарів</string>
   <string name="morphe_niconico_comments_font_size_summary">Розмір тексту коментарів (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Прозорість коментарів</string>
@@ -1781,6 +1783,16 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">За скільки секунд коментарі перетинають екран. Менші значення означають швидший рух</string>
   <string name="morphe_niconico_comments_display_area_title">Область відображення</string>
   <string name="morphe_niconico_comments_display_area_summary">Яку частину плеєра від верхнього краю використовують коментарі. Менші значення залишають нижню частину відео вільною</string>
+  <string name="morphe_niconico_comments_portrait_title">Показувати в портретному режимі</string>
+  <string name="morphe_niconico_comments_portrait_summary">Показувати коментарі, коли екран перебуває в портретній орієнтації. Вимкніть, щоб показувати їх лише в альбомній</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Окремі налаштування для портретної орієнтації</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Використовувати інший розмір шрифту, тривалість руху та область відображення в портретній орієнтації. Якщо цю опцію увімкнено, значення встановлюються з поточних</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Розмір шрифту коментарів у портретній орієнтації</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Розмір тексту коментарів у портретній орієнтації (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Тривалість переміщення в портретному режимі</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">За скільки секунд коментарі перетинають екран у портретному режимі</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Область відображення в портретному режимі</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Яку частину плеєра, починаючи зверху, займають коментарі в портретному режимі</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Приховати коментарі, що перекривають одне одного</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Коли область відображення заповнена, нові коментарі приховуються замість того, щоб перекривати інші коментарі</string>
   <string name="morphe_niconico_comments_max_length_title">Максимальна довжина коментаря</string>
@@ -1798,6 +1810,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_timed_comments_summary">У відео без чату найпопулярніші коментарі, що містять час, наприклад 1:23, показуються в цей момент</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Показувати коментарі з позначками часу разом із повтором чату</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Під час повторів прямих трансляцій і прем\'єр коментарі з позначками часу також показуються разом із чатом</string>
+  <string name="morphe_niconico_comments_all_settings">Усі налаштування</string>
+  <string name="morphe_niconico_comments_reset_title">Скинути ці налаштування?</string>
   <string name="morphe_live_chat_translate_screen_title">Переклад живого чату</string>
   <string name="morphe_live_chat_translate_screen_summary">Перекладати повідомлення живого чату та повтору чату</string>
   <string name="morphe_live_chat_translate_title">Перекладати живий чат</string>

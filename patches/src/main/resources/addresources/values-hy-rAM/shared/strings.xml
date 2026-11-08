@@ -229,6 +229,19 @@ MicroG-ի համար մարտկոցի օպտիմիզացիայի անջատու�
 Եթե ցանկանում եք առավել անխափան փորձառություն, ապա &lt;b&gt;ջնջեք&lt;/b&gt; սա և տեղադրեք ✅ &lt;b&gt;%2$s&lt;/b&gt; հավելվածի երաշխավորված տարբերակը"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ես ուզում եմ փորձարարականը</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ես ուզում եմ կայունը</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Ցուցադրել հավելվածի ներսում ծանուցում թարմացումների մասին</string>
+  <string name="morphe_patches_update_notice_entry_off">Անջատված</string>
+  <string name="morphe_patches_update_notice_entry_stable">Կայուն թողարկումներ</string>
+  <string name="morphe_patches_update_notice_entry_dev">Կայուն և փորձնական թողարկումներ</string>
+  <string name="morphe_patches_update_notice_dialog_title">Հասանելի են նոր թարմացումներ</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (ընթացիկ՝ %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Նոր հնարավորություններ</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Սխալների ուղղումներ</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Այլ փոփոխություններ</string>
+  <string name="morphe_patches_update_notice_dialog_more">…և ևս %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Թարմացնել</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Փակել</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Ավարհման մատյանը պահպանվել է օգտատիրոջ փաստաթղթերում՝ %s</string>
   <string name="morphe_crash_log_saved">Ավարհման մատյանը պահպանված է՝ %s</string>

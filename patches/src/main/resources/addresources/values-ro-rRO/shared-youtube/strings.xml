@@ -116,7 +116,7 @@ Faci din %2$s clientul implicit?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client implicit</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Autentificare Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nu te-ai autentificat la Android VR. Apasă aici pentru a te autentifica</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR necesită o autentificare separată. Apasă aici pentru a continua</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Ești autentificat actualmente la Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pentru a utiliza această funcție, schimbă \'Default client\' în Android VR</string>

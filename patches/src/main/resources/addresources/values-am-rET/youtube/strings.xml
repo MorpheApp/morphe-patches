@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">የፍለጋ ውጤቶችን በቁልፍ ቃላት ደብቅ</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">የደንበኝነት ምዝገባ ቪዲዮዎችን በቁልፍ ቃላት ደብቅ</string>
   <string name="morphe_hide_keyword_content_phrases_title">ሊደበቁ የሚፈልጉ ቁልፍ ቃላት</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"ሊደበቁ የሚፈልጓቸውን ቁልፍ ቃላት እና ሀረጎች በአዲስ መስመሮች በመለየት ያስገቡ
+  <string name="morphe_hide_keyword_content_phrases_summary">"ሊደበቁ የሚፈልጓቸውን ቁልፍ ቃላት እና ሐረጎች በአዲስ መስመር በመለየት ያስገቡ
 
-ቁልፍ ቃላት በቪዲዮ ርዕሶች ወይም በቻናል ስሞች ውስጥ የሚታዩ ማናቸውም ጽሁፎች ሊሆኑ ይችላሉ
+ቁልፍ ቃላት በቪዲዮ ርዕሶች ወይም በቻናል ስሞች ውስጥ የሚታዩ ማናቸውም ጽሁፎች ሊሆኑ ይችላሉ"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"የመጀመሪያ ገጽ / የደንበኝነት ምዝገባዎች / ፍለጋ / አስተያየቶች ከቁልፍ ቃላት ሐረጎች ጋር የሚመሳሰሉ ይዘቶችን ለመደበቅ ተጣርተዋል
 
-በመሃላቸው የካፒታል ፊደላት ያሉባቸው ቃላት በትክክል መመሳሰል አለባቸው (ለምሳሌ iPhone፣ TikTok፣ LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"መነሻ / የደንበኝነት ምዝገባዎች / ፍለጋ / አስተያየቶች ከቁልፍ ሐረጎች ጋር የሚመሳሰሉ ይዘቶችን ለመደበቅ ተጣርተው ቀርበዋል
-
-ገደቦች:
-• Shorts በቻናል ስም ሊደበቁ አይችሉም
-• አንዳንድ የUI ክፍሎች ላይደበቁ ይችላሉ
-• ቁልፍ ቃላትን መፈለግ ምንም ውጤት ላይያሳይ ይችላል"</string>
+ገደቦች፦
+• አንዳንድ Shorts በቻናል ስም ሊደበቁ አይችሉም
+• አንዳንድ የUI አካላት ላይደበቁ ይችላሉ"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">ሙሉ ቃላትን አዛምድ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">ቁልፍ ቃላትን/ሐረጎችን በድርብ ጥቅስ ውስጥ ማጠር የቪዲዮ ርዕሶችን እና የቻናል ስሞችን በከፊል ማዛመድን ይከላከላል&lt;br&gt;&lt;br&gt;ለምሳሌ፣&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; የሚለውን ቪዲዮ ይደብቃል፡ &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ነገር ግን ይህንን አይደብቅም፡ &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">ቁልፍ ቃሉን መጠቀም አይቻልም፡ %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">ቁልፍ ቃሉን ለመጠቀም ጥቅሶችን ያክሉ፡ %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">ቁልፍ ቃሉ የሚጋጩ መግለጫዎች አሉት፡ %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">ቁልፍ ቃሉ በጣም አጭር ነው እና ጥቅሶችን ይፈልጋል፡ %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">ቁልፍ ቃሉ ሁሉንም ቪዲዮዎች ይደብቃል: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">በመተርጎም ላይ…</string>
   <string name="morphe_post_translate_failed">ጽሑፉን መተርጎም አልተቻለም</string>
   <string name="morphe_post_translate_same_language">ጽሑፉ ቀድሞውኑ በትረጉም ቋንቋው ውስጥ ነው</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Morphe በጉዞ ላይ ያግብሩት</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">የቪዲዮ ማጫወቻው \'በጉዞ ላይ\' የMorphe የ tùycustom ማጫወቻ ቁጥጥሮችን ይከፍታል</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">በጉዞ ላይ</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">\'ጠይቅ\' የሚለውን ንጥል ወደ ዝርዝር ሜኑ አክል</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">የቪዲዮ ማጠቃለያ ንጥልን ወደ ፊድ ዝርዝር ሜኑ ይጨምራል</string>
@@ -794,7 +794,6 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_tap_to_seek_title">መንካትን ለመፈለግ ያብሩ</string>
   <string name="morphe_tap_to_seek_summary">ከማስeret ይልቅ ወደዚያ ቦታ ለመዝለል በ ፍለጋ አሞልያው ላይ የትም ቦታ ይጫኑ</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">ብጁ የseekbar thumb</string>
   <string name="morphe_custom_seekbar_thumb_title">ብጁ የseekbar thumbን አግብር</string>
   <string name="morphe_custom_seekbar_thumb_summary">የseekbar thumbን በብጁ ምስል ወይም በanimated GIF ይተኩ</string>
   <string name="morphe_custom_seekbar_thumb_file_title">የThumb ምስል</string>
@@ -1774,6 +1773,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">የNiconico አስተያየቶች</string>
   <string name="morphe_niconico_comments_screen_summary">የቀጥታ ውይይት እና የውይይት መልሶ ማጫወቻዎችን በቪዲዮው ላይ ተንሸራታች አስተያየቶች አድርጎ ያሳያል</string>
   <string name="morphe_niconico_comments_summary">በቪዲዮ ማጫወቻው ላይ የተደራራቢ ቁልፍ ያሳያል። አስተያየቶቹን ለማሳየት ወይም ለመደበቅ ይጫኑ፣ ለፈጣን ቅንብሮች ደግሞ ተጭነው ይያዙ</string>
+  <string name="morphe_niconico_comments_appearance_title">ገጽታ</string>
+  <string name="morphe_niconico_comments_portrait_category_title">ቁመት</string>
+  <string name="morphe_niconico_comments_video_types_title">የቪዲዮ አይነቶች</string>
   <string name="morphe_niconico_comments_font_size_title">የአስተያየት የፊደል መጠን</string>
   <string name="morphe_niconico_comments_font_size_summary">የአስተያየቶች የጽሑፍ መጠን (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">የአስተያየት ግልጽነት</string>
@@ -1782,6 +1784,16 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">አስተያየቶች ስክሪኑን ለማቋረጥ የሚወስዱት ሰከንዶች። አነስተኛ እሴቶች በፍጥነት ይንቀሳቀሳሉ</string>
   <string name="morphe_niconico_comments_display_area_title">የማሳያ ቦታ</string>
   <string name="morphe_niconico_comments_display_area_summary">ከላይ ጀምሮ አስተያየቶቹ ምን ያህል የቪዲዮ ማጫወቻውን እንደሚጠቀሙ ይወስናል። ዝቅተኛ እሴቶች የቪዲዮውን የታችኛውን ክፍል ክፍት ያደርጋሉ</string>
+  <string name="morphe_niconico_comments_portrait_title">በቁመት አቀማመጥ አሳይ</string>
+  <string name="morphe_niconico_comments_portrait_summary">ስክሪኑ በቁመት አቀማመጥ ላይ ሲሆን አስተያየቶችን አሳይ። በጎን አቀማመጥ ላይ ብቻ ለማሳየት ያጥፉት</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">ለቁመት አቀማመጥ የተለየ ቅንብር</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">በቁመት አቀማመጥ የተለየ የጽሁፍ መጠን፣ የጉዞ ቆይታ እና የማሳያ ቦታ ይጠቀሙ። ሲበራ፣ አሁን ካሉ እሴቶች ይጀምራሉ</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">በቁመት አቀማመጥ የአስተያየቶች የጽሁፍ መጠን</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">በቁመት አቀማመጥ የአስተያየቶች የጽሁፍ መጠን (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">በቁመት አቀማመጥ የጉዞ ቆይታ</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">አስተያየቶች በቁመታዊ አቀማመጥ ስክሪኑን ለማቋረጥ ስንት ሰከንዶች እንደሚወስዱ ይወስኑ</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">በቁመታዊ አቀማመጥ የማሳያ ቦታ</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">በቁመታዊ አቀማመጥ አስተያየቶች ከላይ ጀምሮ የቪዲዮ ተጫዋቹን ምን ያህል እንደሚጠቀሙ ይወስኑ</string>
   <string name="morphe_niconico_comments_hide_crowded_title">የሚደራረቡ አስተያየቶችን ደብቅ</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">የማሳያ ቦታው ሲሞላ፣ አዳዲስ አስተያየቶች ከሌሎች አስተያየቶች ጋር ከመደራረብ ይልቅ ይደበቃሉ</string>
   <string name="morphe_niconico_comments_max_length_title">የአስተያየት ከፍተኛ ርዝመት</string>
@@ -1799,6 +1811,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_timed_comments_summary">ውይይት በሌለባቸው ቪዲዮዎች ላይ፣ እንደ 1:23 ያለ የጊዜ ምልክት ያላቸው ከፍተኛ አስተያየቶች በዚያ የጊዜ ወቅት ይታያሉ</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">የተወሰነ ጊዜ ያላቸውን አስተያየቶች ከንግግር መልሶ ማጫወት ጋር አሳይ</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">በቀጥታ ስርጭቶች እና በፕሪሚየር መልሶ ማጫወቶች ላይ፣ የተወሰነ ጊዜ ያላቸው አስተያየቶች ከንግግሩ ጋር አብረው ይታያሉ</string>
+  <string name="morphe_niconico_comments_all_settings">ሁሉም ቅንብሮች</string>
+  <string name="morphe_niconico_comments_reset_title">እነዚህን ቅንብሮች እንደገና ማስተካከል ይፈልጋሉ?</string>
   <string name="morphe_live_chat_translate_screen_title">የቀጥታ የውይይት ትርጉም</string>
   <string name="morphe_live_chat_translate_screen_summary">የቀጥታ የውይይት እና የቀጥታ የውይይት መልሶ ማጫወቻ መልዕክቶችን ተርጉም</string>
   <string name="morphe_live_chat_translate_title">የቀጥታ ውይይትን ተርጉም</string>

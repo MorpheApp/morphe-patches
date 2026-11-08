@@ -229,6 +229,19 @@ Ha nem módosítják az akkumulátor-optimalizálást, akkor előfordulhat:
 A legkényelmesebb élmény érdekében &lt;b&gt;eltávolítsa&lt;/b&gt; ezt, és javítsa a ✅ &lt;b&gt;%2$s&lt;/b&gt; ajánlott alkalmazás verzióját."</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Szeretném kísérleti</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Szeretném stabil</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Alkalmazáson belüli értesítés megjelenítése a javítófrissítésekről</string>
+  <string name="morphe_patches_update_notice_entry_off">Ki</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabil kiadások</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabil és fejlesztői kiadások</string>
+  <string name="morphe_patches_update_notice_dialog_title">Új módosítások érhetők el</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (jelenleg: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Új funkciók</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Hibajavítások</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Egyéb változtatások</string>
+  <string name="morphe_patches_update_notice_dialog_more">…és további %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Frissítés</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Elvetés</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Összeomlási napló mentve a felhasználói dokumentumok közé: %s</string>
   <string name="morphe_crash_log_saved">Összeomlási napló mentve: %s</string>

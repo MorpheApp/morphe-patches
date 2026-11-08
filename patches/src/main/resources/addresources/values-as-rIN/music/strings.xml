@@ -490,6 +490,23 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">আপগ্ৰেড বুটামত লুকুৱাই থোৱক</string>
   <string name="morphe_music_hide_navigation_bar_title">নেভিগেচন বাৰ লুকুওক</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">নেভিগেচন বুটামৰ লেবেলবোৰ লুকুওক</string>
+  <string name="morphe_music_navigation_bar_glass_title">গ্লাছ নেভিগেচন বাৰ সক্ৰিয় কৰক</string>
+  <string name="morphe_music_navigation_bar_glass_summary">নেভিগেচন বাৰটোক এটা ফ্লোটিং, গোলাকৃতি, স্বচ্ছ কেপচুল হিচাপে দেখুৱায়</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">গ্লাছ অপাসিটি</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">গ্লাছ নেভিগেচন বাৰৰ স্বচ্ছতাৰ স্তৰটো মিলাই লওক (০ মানে স্বচ্ছ, ১০০ মানে অপেক বা অস্বচ্ছ)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">লাইট গ্লাছ</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">এটা পাতল আৰু অধিক স্পষ্ট গ্লাছৰ বাবে গ্লাছ নেভিগেচন বাৰটোক ক’লাৰ পৰিৱৰ্তে বগা কৰি দিয়ে</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">গ্লাছ নেভিগেচন বাৰৰ আকাৰ</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">এটা প্ৰিভিউৰ সৈতে গ্লাছ নেভিগেচন বাৰৰ উচ্চতা, বহলতা আৰু বুটামৰ ব্যৱধান মিলাই লওক। স্ক্ৰীনৰ বহলতাৰ সৈতে খাপ নোখোৱা বুটামবোৰ লুকাই থাকে</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">উচ্চতা</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">সৰ্বাধিক বহলতা</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">বাটনৰ স্পেচিং</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">দেখুৱা বাটন: %2$s ৰ মধ্যে %1$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">হোম</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">চেম্পলছ</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">এক্সপ্লোৰ</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">লাইব্ৰেৰী</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">লগ ইন কৰা নাই। কনফিগাৰ কৰিবলৈ টেপ কৰক</string>
   <string name="morphe_music_scrobbling_log_out">লগ আউট কৰক</string>
@@ -716,7 +733,7 @@ Rime Wordlist এ পঢ়িবলগীয়া তালিকা কেই
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">চাইনীজ আৰু কেণ্টনিজ চৰিত্ৰ (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">চাইনীজ শব্দ (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">গ্ৰীক, স্লাভিক চিৰিলিক (ৰুছিয়ান, ইউক্ৰেইনীয়, বুলগাৰিয়ান, ছাৰ্বিয়ান, বেলৰুছিয়ান, মেচিডোনিয়ান অন্তৰ্ভুক্ত), জৰ্জিয়ান, আৰ্মেনিয়ান, হিব্ৰু, আৰবী, আমহাৰিক আৰু চিৰিয়াক লিপ্যন্তৰ (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">পঢ়ি থকা হৈছে %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">পঢ়ি আছে %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Refresh বুটামটো দেখুৱাওক</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">পিছৰ লিৰিক কেণ্ডিডেটলৈ যাবলৈ টেপ কৰক; গানৰ শিৰোনাম আৰু শিল্পীৰ দ্বাৰা লিৰিক বিচাৰিবলৈ লং-প্ৰেছ কৰক</string>
   <string name="morphe_music_lyrics_search_dialog_title">গীতৰ কথা খোজো</string>

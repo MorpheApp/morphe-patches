@@ -319,25 +319,18 @@ Endringer inkluderer:
   <string name="morphe_hide_keyword_content_search_title">Skjul søkeresultater etter nøkkelord</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Skjul videoer fra abonnementer etter nøkkelord</string>
   <string name="morphe_hide_keyword_content_phrases_title">Nøkkelord som skal skjules</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Skriv inn nøkkelord og fraser du vil skjule, atskilt med nye linjer
+  <string name="morphe_hide_keyword_content_phrases_summary">"Skriv inn nøkkelord og fraser som skal skjules, adskilt med nye linjer
 
-Nøkkelord kan være hvilken som helst tekst som vises i videotitler eller kanalnavn
-
-Ord med store bokstaver i midten må samsvare nøyaktig (f.eks. iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Hjem / Abonnementer / Søk / Kommentarer er filtrert for å skjule innhold som samsvarer med nøkkelordfraser
+Nøkkelord kan være hvilken som helst tekst som vises i videotitler eller kanalnavn"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Hjem / Abonnementer / Søk / Kommentarer blir filtrert for å skjule innhold som samsvarer med nøkkelordfraser
 
 Begrensninger:
-• Shorts kan ikke skjules etter kanalnavn
-• Noen UI-komponenter kan ikke skjules
-• Søk etter et nøkkelord kan vise ingen resultater"</string>
+• Enkelte Shorts kan ikke skjules etter kanalnavn
+• Enkelte brukergrensesnittkomponenter kan hende ikke blir skjult"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Match hele ord</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Å omslutte et nøkkelord/en frase med doble anførselstegn vil hindre delvise treff i videotitler og kanalnavn&lt;br&gt;&lt;br&gt;For eksempel,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; vil skjule videoen: &lt;b&gt;Hvordan fungerer AI?&lt;/b&gt;&lt;br&gt;men vil ikke skjule: &lt;b&gt;Hva betyr fair use?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Kan ikke bruke nøkkelord: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Legg til anførselstegn for å bruke nøkkelord: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Nøkkelord har motstridende deklarasjoner: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Nøkkelordet er for kort og krever anførselstegn: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Nøkkelordet vil skjule alle videoer: %s</string>
@@ -500,6 +493,13 @@ Rapporter er offentlige og blir gjennomgått før en kanal legges til en liste. 
   <string name="morphe_post_translate_started">Oversetter…</string>
   <string name="morphe_post_translate_failed">Kunne ikke oversette innlegget</string>
   <string name="morphe_post_translate_same_language">Innlegget er allerede på oversettelsesspråket</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Aktiver Morphe på farten</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Avspillerens utvidelsesmeny \'på farten\' åpner Morphes egendefinerte avspillerkontroller</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">På farten</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Legg til Ask-objekt i uttrekksmenyen</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Legger til et videooppsummeringsobjekt i strømmens uttrekksmeny</string>
@@ -794,7 +794,6 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_tap_to_seek_title">Aktiver trykk for å søke</string>
   <string name="morphe_tap_to_seek_summary">Trykk hvor som helst på fremdriftslinjen for å hoppe til den posisjonen i stedet for å dra</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Egendefinert søkelinje-indikator</string>
   <string name="morphe_custom_seekbar_thumb_title">Aktiver egendefinert søkelinje-indikator</string>
   <string name="morphe_custom_seekbar_thumb_summary">Erstatt søkelinje-indikatoren med et egendefinert bilde eller animert GIF</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Bilde av indikator</string>
@@ -1774,6 +1773,9 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_niconico_comments_screen_title">Niconico-kommentarer</string>
   <string name="morphe_niconico_comments_screen_summary">Vis live-chat og chat-avspilling som kommentarer som ruller over videoen</string>
   <string name="morphe_niconico_comments_summary">Viser en overlay-knapp i videospilleren. Trykk for å vise eller skjule kommentarer, trykk og hold for hurtiginnstillinger</string>
+  <string name="morphe_niconico_comments_appearance_title">Utseende</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portrett</string>
+  <string name="morphe_niconico_comments_video_types_title">Videotyper</string>
   <string name="morphe_niconico_comments_font_size_title">Skriftstørrelse for kommentarer</string>
   <string name="morphe_niconico_comments_font_size_summary">Tekststørrelse på kommentarene (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Kommentarenes gjennomsiktighet</string>
@@ -1782,6 +1784,16 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_niconico_comments_travel_duration_summary">Hvor mange sekunder kommentarene bruker på å krysse skjermen. Lavere verdier beveger seg raskere</string>
   <string name="morphe_niconico_comments_display_area_title">Visningsområde</string>
   <string name="morphe_niconico_comments_display_area_summary">Hvor mye av spilleren, fra toppen, kommentarene skal bruke. Lavere verdier holder den nedre delen av videoen klar</string>
+  <string name="morphe_niconico_comments_portrait_title">Vis i portrett</string>
+  <string name="morphe_niconico_comments_portrait_summary">Vis kommentarer når skjermen er i portrettmodus. Slå av for å bare vise dem i landskapsmodus</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Separate innstillinger for portrett</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Bruk en annen skriftstørrelse, reisetid og visningsområde i portrettmodus. Når dette er slått på, starter de fra gjeldende verdier</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Skriftstørrelse for kommentarer i portrett</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Tekststørrelse for kommentarer i portrett (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Reisetid i portrett</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Hvor mange sekunder kommentarer bruker på å krysse skjermen i portrettmodus</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Visningsområde i portrettmodus</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Hvor mye av spilleren, fra toppen, kommentarene bruker i portrettmodus</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Skjul kommentarer som ville overlappet</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Når visningsområdet er fullt, blir nye kommentarer skjult i stedet for å overlappe andre kommentarer</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimal kommentarlengde</string>
@@ -1799,6 +1811,8 @@ Automatisk opptak er valgfritt. Det stoppes i inkognito-modus eller når kontoen
   <string name="morphe_niconico_comments_timed_comments_summary">På videoer uten chat vises toppkommentarer som inneholder et tidspunkt, som 1:23, på det tidspunktet</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Vis tidsstemplede kommentarer med chat-avspilling</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Ved avspilling av livestreams og premierer vises tidsstemplede kommentarer også sammen med chatten</string>
+  <string name="morphe_niconico_comments_all_settings">Alle innstillinger</string>
+  <string name="morphe_niconico_comments_reset_title">Nullstill disse innstillingene?</string>
   <string name="morphe_live_chat_translate_screen_title">Oversettelse av live-chat</string>
   <string name="morphe_live_chat_translate_screen_summary">Oversett meldinger fra live-chat og avspilling av live-chat</string>
   <string name="morphe_live_chat_translate_title">Oversett live-chat</string>

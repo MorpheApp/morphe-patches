@@ -176,6 +176,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_name_hint">Nome playlist</string>
   <string name="morphe_music_downloads_playlist_name_empty">Il nome della playlist non può essere vuoto</string>
   <string name="morphe_music_downloads_playlist_save_failed">Impossibile salvare la playlist</string>
+  <string name="morphe_music_downloads_playlist_track_count">%s brani</string>
   <string name="morphe_music_downloads_playlist_track_count_one">1 brano</string>
   <string name="morphe_music_downloads_playlist_no_tracks">Nessun brano in questa playlist</string>
   <string name="morphe_music_downloads_playlist_play">Riproduci playlist</string>
@@ -488,6 +489,23 @@ Riproduzione SABR (simulazione dei flussi video disattivata)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Nascondi il pulsante Aggiorna</string>
   <string name="morphe_music_hide_navigation_bar_title">Nascondi la barra di navigazione</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Nascondi le etichette dei pulsanti di navigazione</string>
+  <string name="morphe_music_navigation_bar_glass_title">Abilita barra di navigazione glass</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Mostra la barra di navigazione come una capsula fluttuante, arrotondata e traslucida</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Opacità del vetro</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Regola il livello di trasparenza della barra di navigazione in vetro (0 è trasparente, 100 è opaco)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Vetro chiaro</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Tinge la barra di navigazione in vetro di bianco invece che di scuro, per un vetro più leggero e chiaro</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Dimensioni della barra di navigazione in vetro</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Regola l\'altezza, la larghezza e la spaziatura dei pulsanti della barra di navigazione in vetro, con un\'anteprima. I pulsanti che non rientrano nella larghezza dello schermo vengono nascosti</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Altezza</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Larghezza massima</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Spaziatura pulsanti</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Pulsanti visualizzati: %1$s di %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Home</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Campioni</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Esplora</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Libreria</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Non effettuato l\'accesso. Tocca per configurare</string>
   <string name="morphe_music_scrobbling_log_out">Esci</string>
@@ -572,8 +590,11 @@ Per garantire che lo scrobbling sia sincronizzato durante la riproduzione in bac
   <string name="morphe_music_soundproof_sheet_percent_human">%s%% umano</string>
   <string name="morphe_music_soundproof_sheet_one_vote">1 voto</string>
   <!-- Total number of votes, always more than one. Example: 44 votes -->
+  <string name="morphe_music_soundproof_sheet_votes">%s voti</string>
   <!-- Number of votes saying the artist is human. Example: 3 human -->
+  <string name="morphe_music_soundproof_sheet_human_votes">%s umani</string>
   <!-- Number of votes saying the artist is AI. Example: 41 AI -->
+  <string name="morphe_music_soundproof_sheet_ai_votes">%s IA</string>
   <string name="morphe_music_soundproof_sheet_no_votes_title">Nessun voto per questo artista al momento</string>
   <string name="morphe_music_soundproof_sheet_unavailable_title">Database SoundProof non ancora disponibile</string>
   <string name="morphe_music_soundproof_sheet_unavailable_summary">Viene scaricato in background. Nessuna traccia verrà saltata finché non sarà disponibile.</string>
@@ -706,7 +727,7 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Caratteri cinesi e cantonesi (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Parole cinesi (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Traslitterazione greca, slava cirillica (incl. russo, ucraino, bulgaro, serbo, bielorusso, macedone), georgiana, armena, ebraica, araba, amarica e siriaca (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Lettura di %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Lettura di %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostra il pulsante Aggiorna</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tocca per passare al candidato di testo successivo; tieni premuto per cercare i testi per titolo del brano e artista</string>
   <string name="morphe_music_lyrics_search_dialog_title">Cerca testi</string>

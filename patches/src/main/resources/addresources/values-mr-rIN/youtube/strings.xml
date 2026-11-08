@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">कीवर्डद्वारे शोध परिणाम लपवा</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">कीवर्डद्वारे सबस्क्रिप्शन व्हिडिओ लपवा</string>
   <string name="morphe_hide_keyword_content_phrases_title">लपवण्यासाठी कीवर्ड</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"लपवण्यासाठी कीवर्ड आणि वाक्ये प्रविष्ट करा, नवीन ओळींनी विभक्त केलेले
+  <string name="morphe_hide_keyword_content_phrases_summary">"लपवण्यासाठी कीवर्ड्स आणि वाक्यांश प्रविष्ट करा, जे नवीन ओळींनी वेगळे केलेले असतील
 
-कीवर्ड व्हिडिओ शीर्षकांमध्ये किंवा चॅनेल नावांमध्ये दर्शविलेला कोणताही मजकूर असू शकतो
-
-मध्यभागी अप्परकेस अक्षरे असलेले शब्द अगदी जुळले पाहिजेत (उदा., iPhone, TikTok, LeBlanc)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"कीवर्ड वाक्यांश जुळणारे साहित्य लपवण्यासाठी होम / सबस्क्रिप्शन्स / सर्च / कमेंट्स फिल्टर केले जातात
+कीवर्ड्स हे व्हिडिओ शीर्षक किंवा चॅनेल नावांमध्ये दिसणारे कोणतेही मजकूर असू शकतात"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"होम / सबस्क्रिप्शन / सर्च / कमेंट्स मधून कीवर्ड वाक्यांशेशी जुळणारे कंटेंट लपवण्यासाठी फिल्टर केले जातात
 
 मर्यादा:
-• Shorts चॅनेलच्या नावावरून लपवता येत नाहीत
-• काही UI घटक कदाचित लपवले जाणार नाहीत
-• कीवर्ड शोधल्यास कदाचित कोणतेही निकाल दिसणार नाहीत"</string>
+• काही Shorts चॅनेल नावाद्वारे लपवता येत नाहीत
+• काही UI घटक कदाचित लपवले जाणार नाहीत"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">संपूर्ण शब्द जुळवा</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">कीवर्ड/वाक्यांशला दुहेरी अवतरणांमध्ये टाकल्यास व्हिडिओ शीर्षक आणि चॅनेल नावांचे आंशिक जुळण टाळता येईल&lt;br&gt;&lt;br&gt;उदाहरणार्थ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; व्हिडिओ लपवेल: &lt;b&gt;AI कसे कार्य करते?&lt;/b&gt;&lt;br&gt;पण लपवणार नाही: &lt;b&gt; fair use चा अर्थ काय आहे?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">कीवर्ड वापरता येत नाही: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">कीवर्ड वापरण्यासाठी अवतरण वापरा: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">कीवर्डची विरोधाभासी घोषणा आहे: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">कीवर्ड खूप लहान आहे आणि अवतरण आवश्यक आहेत: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">कीवर्ड सर्व व्हिडिओ लपवेल: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">भाषांतरित होत आहे…</string>
   <string name="morphe_post_translate_failed">पोस्टचे भाषांतर होऊ शकले नाही</string>
   <string name="morphe_post_translate_same_language">पोस्ट आधीच भाषांतरण भाषेत आहे</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">ऑन-द-गो वर Morphe सक्षम करा</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">प्लेयर फ्लायआउट \'ऑन-द-गो\' Morphe चे सानुकूल प्लेयर कंट्रोल्स उघडते</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">ऑन-द-गो</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">फ्लाईआउट मेनूमध्ये \'Ask\' आयटम जोडा</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">फीड फ्लाईआउट मेनूमध्ये व्हिडिओ सारांश आयटम जोडते</string>
@@ -794,7 +794,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_tap_to_seek_title">टॅप टू सीक सक्षम करा</string>
   <string name="morphe_tap_to_seek_summary">ड्रॅग करण्याऐवजी त्या पोझिशनवर जाण्यासाठी सीकबारवर कुठेही टॅप करा</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">कस्टम सीकबार थम्ब</string>
   <string name="morphe_custom_seekbar_thumb_title">कस्टम सीकबार थम्ब सक्षम करा</string>
   <string name="morphe_custom_seekbar_thumb_summary">सीकबार थम्बला कस्टम इमेज किंवा अ‍ॅनिमेटेड GIF ने बदला</string>
   <string name="morphe_custom_seekbar_thumb_file_title">थम्ब इमेज</string>
@@ -1774,6 +1773,9 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_niconico_comments_screen_title">Niconico टिप्पण्या</string>
   <string name="morphe_niconico_comments_screen_summary">लाईव्ह चॅट आणि चॅट रिप्ले व्हिडिओवरून स्क्रोल होणाऱ्या टिप्पण्या म्हणून दाखवा</string>
   <string name="morphe_niconico_comments_summary">व्हिडिओ प्लेयरमध्ये एक ओव्हरले बटण दाखवते. टिप्पण्या दाखवण्यासाठी किंवा लपवण्यासाठी टॅप करा, क्विक सेटिंग्ससाठी टॅप करून धरा</string>
+  <string name="morphe_niconico_comments_appearance_title">देखावा</string>
+  <string name="morphe_niconico_comments_portrait_category_title">पोर्ट्रेट</string>
+  <string name="morphe_niconico_comments_video_types_title">व्हिडिओ प्रकार</string>
   <string name="morphe_niconico_comments_font_size_title">टिप्पणी फॉन्ट आकार</string>
   <string name="morphe_niconico_comments_font_size_summary">टिप्पण्यांचा मजकूर आकार (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">टिप्पणी अपारदर्शकता</string>
@@ -1782,7 +1784,17 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_niconico_comments_travel_duration_summary">टिप्पण्यांना स्क्रीन ओलांडण्यासाठी किती सेकंद लागतात. कमी मूल्ये अधिक वेगाने हलतात</string>
   <string name="morphe_niconico_comments_display_area_title">प्रदर्शन क्षेत्र</string>
   <string name="morphe_niconico_comments_display_area_summary">प्लेयरच्या वरच्या भागापासून कमेंट्स किती जागा वापरतात. कमी मूल्ये व्हिडिओचा खालचा भाग मोकळा ठेवतात</string>
-  <string name="morphe_niconico_comments_hide_crowded_title">ओव्हरलॅप होणाऱ्या कमेंट्स लपा</string>
+  <string name="morphe_niconico_comments_portrait_title">पोर्ट्रेटमध्ये दाखवा</string>
+  <string name="morphe_niconico_comments_portrait_summary">स्क्रीन पोर्ट्रेट मोडमध्ये असताना कमेंट्स दाखवा. केवळ लँडस्केपमध्ये दाखवण्यासाठी हे बंद करा</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">पोर्ट्रेटसाठी स्वतंत्र सेटिंग्ज</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">पोर्ट्रेट मोडमध्ये वेगळा फॉन्ट आकार, प्रवासाचा कालावधी आणि डिस्प्ले एरिया वापरा. चालू केल्यावर, ते सध्याच्या मूल्यांपासून सुरू होतील</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">पोर्ट्रेटमधील कमेंट फॉन्ट आकार</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">पोर्ट्रेटमधील कमेंट्सचा मजकूर आकार (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">पोर्ट्रेटमधील प्रवासाचा कालावधी</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">पोर्ट्रेट मोडमध्ये कमेंट्सना स्क्रीन पार करण्यासाठी किती सेकंद लागतात</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">पोर्ट्रेटमधील डिस्प्ले एरिया</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">पोर्ट्रेट मोडमध्ये, वरून प्लेअरचा किती भाग कमेंट्ससाठी वापरला जावा</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">ओव्हरलॅप होणाऱ्या कमेंट्स लपवा</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">जेव्हा डिस्प्ले एरिया पूर्ण भरलेला असतो, तेव्हा इतर कमेंट्सवर ओव्हरलॅप होण्याऐवजी नवीन कमेंट्स लपवल्या जातात</string>
   <string name="morphe_niconico_comments_max_length_title">कमेंटची कमाल लांबी</string>
   <string name="morphe_niconico_comments_max_length_summary">यापेक्षा जास्त अक्षरे असलेल्या कमेंट्स लपवते. प्रत्येक इमोजी एक अक्षर मानला जातो</string>
@@ -1799,6 +1811,8 @@ AV1 सह व्हिडिओ प्लेबॅक अडखळू शकत
   <string name="morphe_niconico_comments_timed_comments_summary">चॅट नसलेल्या व्हिडिओंसाठी, 1:23 सारखी वेळ असलेल्या टॉप कमेंट्स त्या विशिष्ट वेळी दाखवल्या जातात</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">चॅट रिप्लेसह वेळेनुसार कमेंट्स दाखवा</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">लाईव्ह स्ट्रीम आणि प्रीमियरच्या रिप्लेमध्ये, वेळेनुसार कमेंट्स चॅटसोबत दाखवल्या जातात</string>
+  <string name="morphe_niconico_comments_all_settings">सर्व सेटिंग्ज</string>
+  <string name="morphe_niconico_comments_reset_title">या सेटिंग्ज रीसेट करायच्या आहेत का?</string>
   <string name="morphe_live_chat_translate_screen_title">लाईव्ह चॅट भाषांतर</string>
   <string name="morphe_live_chat_translate_screen_summary">लाईव्ह चॅट आणि लाईव्ह चॅट रिप्ले संदेशांचे भाषांतर करा</string>
   <string name="morphe_live_chat_translate_title">लाईव्ह चॅटचे भाषांतर करा</string>

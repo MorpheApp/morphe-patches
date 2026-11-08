@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">پنهان‌کردن نتایج جست‌وجو بر اساس کلمه‌های کلیدی</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">پنهان‌کردن ویدئوهای اشتراک‌ها بر اساس کلمه‌های کلیدی</string>
   <string name="morphe_hide_keyword_content_phrases_title">کلمه‌های کلیدی برای پنهان‌کردن</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"کلمه‌ها و عبارت‌هایی را که باید پنهان شوند، هرکدام در خطی جدا وارد کنید
+  <string name="morphe_hide_keyword_content_phrases_summary">"کلمات و عبارت‌های کلیدی مورد نظر برای پنهان‌سازی را وارد کنید و آن‌ها را با خط جدید از هم جدا کنید
 
-کلمه‌ها می‌توانند هر متنی باشند که در عنوان ویدئو یا نام کانال نمایش داده می‌شود
-
-کلمه‌هایی که در میانه حروف بزرگ دارند باید دقیقاً مطابقت کنند (مثلاً iPhone، TikTok، LeBlanc)"</string>
+کلمات کلیدی می‌توانند هر متنی باشند که در عناوین ویدیوها یا نام کانال‌ها نمایش داده می‌شود"</string>
   <string name="morphe_hide_keyword_content_about_summary">"خانه / اشتراک‌ها / جست‌وجو / دیدگاه‌ها فیلتر می‌شوند تا محتوای منطبق با عبارت‌های کلیدی پنهان شود
 
 محدودیت‌ها:
-• Shorts را نمی‌توان بر اساس نام کانال پنهان کرد
-• ممکن است بعضی مؤلفه‌های رابط کاربری پنهان نشوند
-• جست‌وجوی یک کلمهٔ کلیدی ممکن است نتیجه‌ای نشان ندهد"</string>
+• برخی Shorts را نمی‌توان بر اساس نام کانال پنهان کرد
+• ممکن است بعضی مؤلفه‌های رابط کاربری پنهان نشوند"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">مطابقت با کلمه‌های کامل</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">قرار دادن کلمه یا عبارت کلیدی درون گیومهٔ دوتایی، از مطابقت جزئی با عنوان ویدئو و نام کانال جلوگیری می‌کند&lt;br&gt;&lt;br&gt;برای مثال،&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ویدئوی &lt;b&gt;هوش مصنوعی چگونه کار می‌کند؟&lt;/b&gt; را پنهان می‌کند&lt;br&gt;اما این مورد را پنهان نمی‌کند: &lt;b&gt;منظور از استفادهٔ منصفانه چیست؟&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">استفاده از کلمهٔ کلیدی ممکن نیست: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">برای استفاده از کلمهٔ کلیدی، گیومه اضافه کنید: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">کلمهٔ کلیدی اعلان‌های متناقض دارد: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">کلمهٔ کلیدی خیلی کوتاه است و به گیومه نیاز دارد: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">کلمهٔ کلیدی همهٔ ویدئوها را پنهان می‌کند: %s</string>
@@ -500,6 +493,13 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">در حال ترجمه…</string>
   <string name="morphe_post_translate_failed">ترجمهٔ پست ممکن نشد</string>
   <string name="morphe_post_translate_same_language">پست در حال حاضر به زبان ترجمه است</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">فعال‌سازی Morphe در حالت در حال حرکت</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">بخش flyout پخش‌کننده در حالت \"در حال حرکت\"، کنترل‌های سفارشی پخش‌کننده Morphe را باز می‌کند</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">در حال حرکت</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">افزودن آیتم Ask به منوی پرواز</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">افزودن آیتم خلاصه‌سازی ویدیو به منوی پرواز فید</string>
@@ -794,7 +794,6 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">فعال‌کردن ضربه برای جست‌وجو</string>
   <string name="morphe_tap_to_seek_summary">برای پرش به آن موقعیت، به جای کشیدن، روی هر جای نوار جست‌وجو ضربه بزنید</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">شست سفارشی نوار جست‌وجو</string>
   <string name="morphe_custom_seekbar_thumb_title">فعال‌کردن شست سفارشی نوار جست‌وجو</string>
   <string name="morphe_custom_seekbar_thumb_summary">جایگزینی شست نوار جست‌وجو با یک تصویر سفارشی یا GIF متحرک</string>
   <string name="morphe_custom_seekbar_thumb_file_title">تصویر شست</string>
@@ -1698,6 +1697,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_undo">بازگردانی</string>
   <string name="morphe_series_tracker_enable_short">فعال‌کردن</string>
   <string name="morphe_series_tracker_new_episode">۱ قسمت جدید</string>
+  <string name="morphe_series_tracker_new_episodes">‫%s قسمت جدید</string>
   <string name="morphe_series_tracker_record_short">تنها پیشرفت روی این دستگاه ثبت شود</string>
   <string name="morphe_series_tracker_follow_consent">"مجموعه‌ها و پیشرفت شما روی این دستگاه می‌مانند و بین حساب‌های YouTube به اشتراک گذاشته می‌شوند. کنترل‌های تاریخچه YouTube آن‌ها را تغییر نمی‌دهند. پیشرفت را از منوی Series پاک کنید.
 
@@ -1772,6 +1772,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">دیدگاه‌های Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">نمایش چت زنده و بازپخش چت به صورت دیدگاه‌هایی که روی ویدیو حرکت می‌کنند</string>
   <string name="morphe_niconico_comments_summary">یک دکمه روی پخش‌کننده ویدیو نمایش می‌دهد. برای نمایش یا پنهان کردن دیدگاه‌ها ضربه بزنید و برای تنظیمات سریع لمس کرده و نگه دارید</string>
+  <string name="morphe_niconico_comments_appearance_title">ظاهر</string>
+  <string name="morphe_niconico_comments_portrait_category_title">عمودی</string>
+  <string name="morphe_niconico_comments_video_types_title">انواع ویدیو</string>
   <string name="morphe_niconico_comments_font_size_title">اندازه فونت دیدگاه‌ها</string>
   <string name="morphe_niconico_comments_font_size_summary">اندازه متن دیدگاه‌ها (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">شفافیت دیدگاه‌ها</string>
@@ -1780,6 +1783,16 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">تعداد ثانیه‌هایی که نظرات برای عبور از صفحه نیاز دارند. مقادیر کمتر، سرعت را بیشتر می‌کنند</string>
   <string name="morphe_niconico_comments_display_area_title">ناحیه نمایش</string>
   <string name="morphe_niconico_comments_display_area_summary">چه مقدار از پخش‌کننده، از بالا، توسط دیدگاه‌ها اشغال شود. مقادیر کمتر، قسمت پایین ویدیو را خلوت نگه می‌دارند</string>
+  <string name="morphe_niconico_comments_portrait_title">نمایش در حالت عمودی</string>
+  <string name="morphe_niconico_comments_portrait_summary">نمایش نظرات زمانی که صفحه در حالت عمودی است. برای نمایش آن‌ها فقط در حالت افقی، این گزینه را خاموش کنید</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">تنظیمات مجزا برای حالت عمودی</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">استفاده از اندازه فونت، مدت زمان پیمایش و ناحیه نمایش متفاوت در حالت عمودی. هنگام فعال‌سازی، این مقادیر از مقادیر فعلی شروع می‌شوند</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">اندازه فونت نظرات در حالت عمودی</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">اندازه متن نظرات در حالت عمودی (۱۲-۴۰ sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">مدت زمان پیمایش در حالت عمودی</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">تعداد ثانیه‌هایی که نظرات برای عبور از صفحه در حالت عمودی نیاز دارند</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">ناحیه نمایش در حالت عمودی</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">میزان استفاده نظرات از پخش‌کننده در حالت عمودی، از سمت بالا</string>
   <string name="morphe_niconico_comments_hide_crowded_title">مخفی‌کردن نظراتی که هم‌پوشانی دارند</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">هنگامی که ناحیه نمایش پر باشد، نظرات جدید به‌جای هم‌پوشانی با سایر نظرات، مخفی می‌شوند</string>
   <string name="morphe_niconico_comments_max_length_title">حداکثر طول نظر</string>
@@ -1797,6 +1810,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_timed_comments_summary">در ویدیوهای بدون چت، نظرات برتری که حاوی زمانی مانند 1:23 هستند، در همان زمان نمایش داده می‌شوند</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">نمایش نظرات زمان‌بندی شده با بازپخش چت</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">در بازپخش‌های پخش زنده و پیش‌مرگ‌ها، نظرات زمان‌بندی شده همچنین همراه با چت نمایش داده می‌شوند</string>
+  <string name="morphe_niconico_comments_all_settings">همه تنظیمات</string>
+  <string name="morphe_niconico_comments_reset_title">این تنظیمات بازنشانی شوند؟</string>
   <string name="morphe_live_chat_translate_screen_title">ترجمهٔ چت زنده</string>
   <string name="morphe_live_chat_translate_screen_summary">ترجمهٔ پیام‌های چت زنده و بازپخش چت زنده</string>
   <string name="morphe_live_chat_translate_title">ترجمهٔ چت زنده</string>
