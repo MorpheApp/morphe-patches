@@ -18,7 +18,7 @@ public class ScriptUtils {
         Context context = Utils.getContext();
         if (context == null) {
             throw new ScriptLoaderError(
-                    formatError(errorMsg, "Context isn't available"),
+                    errorMsg != null ? errorMsg + ": Context isn't available" : "Context isn't available",
                     null
             );
         }
@@ -36,9 +36,5 @@ public class ScriptUtils {
             sb.append(loadScript(filename, errorMsg));
         }
         return sb.toString();
-    }
-
-    public static String formatError(String firstMsg, String secondMsg) {
-        return (firstMsg != null) ? firstMsg + ": " + secondMsg : secondMsg;
     }
 }

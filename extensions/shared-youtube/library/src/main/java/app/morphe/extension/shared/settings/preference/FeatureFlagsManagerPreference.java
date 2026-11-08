@@ -17,7 +17,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.preference.Preference;
 import android.text.InputType;
@@ -420,19 +419,6 @@ public class FeatureFlagsManagerPreference extends Preference {
                     ? ThemeUtils.getOkButtonBackgroundColor()
                     : ThemeUtils.getEditTextBackground()));
         }
-    }
-
-    /**
-     * The icons use a theme attribute for their color, which is only resolved if the drawable
-     * is loaded with a theme, and the app theme can differ from the dialog theme.
-     */
-    private Drawable createSearchBoxIcon(Context context, int drawableResId) {
-        Drawable icon = context.getDrawable(drawableResId);
-        //noinspection DataFlowIssue
-        icon.setBounds(0, 0, Dim.dp20, Dim.dp20);
-        icon.setTint(ThemeUtils.getAppForegroundColor());
-
-        return icon;
     }
 
     /**

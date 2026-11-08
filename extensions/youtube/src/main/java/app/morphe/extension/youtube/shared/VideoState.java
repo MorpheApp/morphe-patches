@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.patches.VideoInformation;
 
 /**
  * VideoState playback state.
@@ -27,9 +26,6 @@ public enum VideoState {
     PAUSED,
     RECOVERABLE_ERROR,
     UNRECOVERABLE_ERROR,
-    /**
-     * @see VideoInformation#isAtEndOfVideo()
-     */
     ENDED;
 
     private static final Map<String, VideoState> nameToVideoState;

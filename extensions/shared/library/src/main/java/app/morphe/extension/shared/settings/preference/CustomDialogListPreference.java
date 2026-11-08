@@ -57,38 +57,11 @@ public class CustomDialogListPreference extends ListPreference {
     public static final int DRAWABLE_CHECKMARK_BOLD = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_custom_checkmark_bold");
 
-    private String staticSummary = null;
     private CharSequence[] highlightedEntriesForDialog = null;
     @Nullable
     private Set<String> newEntryValues;
     @ColorInt
     private int newEntryColor;
-
-    /**
-     * Set a static summary that will not be overwritten by value changes.
-     */
-    public void setStaticSummary(String summary) {
-        this.staticSummary = summary;
-    }
-
-    /**
-     * Returns the static summary if set, otherwise null.
-     */
-    @Nullable
-    public String getStaticSummary() {
-        return staticSummary;
-    }
-
-    /**
-     * Always return static summary if set.
-     */
-    @Override
-    public CharSequence getSummary() {
-        if (staticSummary != null) {
-            return staticSummary;
-        }
-        return super.getSummary();
-    }
 
     /**
      * Sets highlighted entries for display in the dialog.
@@ -375,11 +348,9 @@ public class CustomDialogListPreference extends ListPreference {
                         setValue(selectedValue);
 
                         // Update summaries from the original entries (without highlighting).
-                        if (staticSummary == null) {
-                            CharSequence[] originalEntries = getEntries();
-                            if (originalEntries != null && position < originalEntries.length) {
-                                setSummary(originalEntries[position]);
-                            }
+                        CharSequence[] originalEntries = getEntries();
+                        if (originalEntries != null && position < originalEntries.length) {
+                            setSummary(originalEntries[position]);
                         }
                     }
                 }

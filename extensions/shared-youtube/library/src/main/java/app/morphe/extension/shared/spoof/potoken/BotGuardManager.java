@@ -100,7 +100,8 @@ public final class BotGuardManager {
      */
     @Nullable
     public static synchronized String getChallengeData() {
-        if (isChallengeDataNotExpired()) {
+        if (Utils.isNotEmpty(challengeData)
+                && SystemClock.elapsedRealtime() - challengeFetchedTime < CHALLENGE_DATA_EXPIRATION_MS) {
             return challengeData;
         }
         // Previously fetched data is expired and must not be used,
@@ -280,11 +281,6 @@ public final class BotGuardManager {
         }
 
         return null;
-    }
-
-    private static boolean isChallengeDataNotExpired() {
-        return Utils.isNotEmpty(challengeData) && SystemClock.elapsedRealtime()
-                - challengeFetchedTime < CHALLENGE_DATA_EXPIRATION_MS;
     }
 
     /**

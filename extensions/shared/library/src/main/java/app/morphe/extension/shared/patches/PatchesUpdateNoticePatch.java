@@ -254,7 +254,7 @@ public final class PatchesUpdateNoticePatch {
                 skipRelease = version == null;
                 if (version == null) continue;
 
-                final boolean stable = isStable(version);
+                final boolean stable = version[3] == Integer.MAX_VALUE;
                 final int comparison = compareVersions(version, installed);
                 if (stable && comparison <= 0) break;
 
@@ -506,10 +506,6 @@ public final class PatchesUpdateNoticePatch {
                 Integer.parseInt(matcher.group(3)),
                 devNumber == null ? Integer.MAX_VALUE : Integer.parseInt(devNumber)
         };
-    }
-
-    private static boolean isStable(int[] version) {
-        return version[3] == Integer.MAX_VALUE;
     }
 
     static int compareVersions(int[] a, int[] b) {

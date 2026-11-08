@@ -388,8 +388,9 @@ public class RestoreOldVideoActionBarPatch {
         byte[] sectionBytes;
         try {
             sectionBytes = section.toByteArray();
-        } catch (IllegalStateException ex) {
-            // A section that 'Hide related videos' changed in place, which cannot be serialized.
+        } catch (RuntimeException ex) {
+            // A section that 'Hide related videos' changed in place after its serialized size was saved.
+            // Depending on the change, this throws an IllegalStateException or a RuntimeException.
             return null;
         }
 

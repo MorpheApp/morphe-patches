@@ -1995,15 +1995,6 @@ public class FeedCardLayoutPatch {
         }
     }
 
-    /**
-     * @return The header of the Shorts shelf, which is the Shorts shelf header or another shelf header
-     *         above the Shorts, or null if the item above the Shorts is not a shelf header.
-     */
-    @Nullable
-    private static View getShortsShelfHeader(@Nullable View above) {
-        return above != null && (isShelfHeader(above) || isVideoShelfHeader(above)) ? above : null;
-    }
-
     private static boolean isVideoShelfRow(View item) {
         return hasLabelMarker(item, VIDEO_SHELF_ROW_LABEL_MARKER, 0);
     }
@@ -2020,7 +2011,9 @@ public class FeedCardLayoutPatch {
      */
     private static void drawShortsShelfCard(RecyclerView list, @Nullable View above, View firstRow,
                                             @Nullable Canvas canvas) {
-        View header = getShortsShelfHeader(above);
+        // The Shorts shelf header or another shelf header above the Shorts,
+        // or null if the item above the Shorts is not a shelf header.
+        View header = above != null && (isShelfHeader(above) || isVideoShelfHeader(above)) ? above : null;
         // The rows of Shorts are the list items below the header, which can be scrolled out of the list.
         List<View> rows = new ArrayList<>();
         View item = firstRow;

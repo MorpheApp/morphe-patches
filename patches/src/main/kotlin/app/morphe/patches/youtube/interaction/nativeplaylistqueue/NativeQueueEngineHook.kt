@@ -11,8 +11,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
-import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
@@ -334,18 +334,18 @@ internal fun installNativeQueueEngine(
         )
     }
 
-    val receiveRegister = receiveMethod.findFreeRegister(0)
+    // Index 0 of the cloned method: no local register is written yet, so v0 is free.
     receiveMethod.addInstructionsWithLabels(
         0,
         """
             invoke-virtual/range {p0 .. p1}, $wrapperType->patch_ignorePlaylistResponse($responseType)Z
-            move-result v$receiveRegister
-            if-eqz v$receiveRegister, :current_response
+            move-result v0
+            if-eqz v0, :current_response
             return-void
 
             :current_response
-            iget-boolean v$receiveRegister, p0, $localFlag
-            if-eqz v$receiveRegister, :server_queue
+            iget-boolean v0, p0, $localFlag
+            if-eqz v0, :server_queue
             iput-object p1, p0, $response
             return-void
 
@@ -365,14 +365,14 @@ internal fun installNativeQueueEngine(
     mutableClassDefBy(wrapperType).fields.add(savedAutoplay)
 
     var autoplayMethod = autoplay.method
+    // Index 0: no local register is written yet, so v0 is free if the method has local registers.
     if (autoplayMethod.implementation!!.registerCount <= 2) autoplayMethod = autoplayMethod.cloneParameters()
-    val autoplayRegister = autoplayMethod.findFreeRegister(0)
     autoplayMethod.addInstructionsWithLabels(
         0,
         """
             iput-object p1, p0, $savedAutoplay
-            iget-boolean v$autoplayRegister, p0, $localFlag
-            if-eqz v$autoplayRegister, :server_autoplay
+            iget-boolean v0, p0, $localFlag
+            if-eqz v0, :server_autoplay
             return-void
 
             :server_autoplay
@@ -502,13 +502,15 @@ internal fun installNativeQueueEngine(
     )
 
     val wrapperDispose = nativeQueueWrapperDisposeFingerprint(nativeNavigator, queueDispose.name)
-    val disposeRegister = wrapperDispose.method.findFreeRegister(0)
-    wrapperDispose.method.addInstructionsWithLabels(
+    // Index 0: no local register is written yet, so v0 is free if the method has local registers.
+    var disposeMethod = wrapperDispose.method
+    if (disposeMethod.p0Register == 0) disposeMethod = disposeMethod.cloneParameters()
+    disposeMethod.addInstructionsWithLabels(
         0,
         """
-            const/4 v$disposeRegister, 0x0
-            iput-boolean v$disposeRegister, p0, $localFlag
-            iput-object v$disposeRegister, p0, $savedAutoplay
+            const/4 v0, 0x0
+            iput-boolean v0, p0, $localFlag
+            iput-object v0, p0, $savedAutoplay
         """
     )
 
@@ -531,17 +533,17 @@ internal fun installNativeQueueEngine(
     )
 
     // Only one native local is needed: the request result occupies it after the flag check.
+    // Index 0 of the cloned method: no local register is written yet, so v0 is free.
     val insertMethod = localLoad.method.cloneParameters()
-    val insertRegister = insertMethod.findFreeRegister(0)
     val loadParameters = localLoad.originalMethod.parameterTypes.joinToString("")
     insertMethod.addInstructionsWithLabels(
         0,
         """
-            iget-boolean v$insertRegister, p0, $localItemsFlag
-            if-eqz v$insertRegister, :account_insert
+            iget-boolean v0, p0, $localItemsFlag
+            if-eqz v0, :account_insert
             invoke-virtual {p0, p1, p2}, $mutableType->patch_localJump($loadParameters)$requestType
-            move-result-object v$insertRegister
-            return-object v$insertRegister
+            move-result-object v0
+            return-object v0
 
             :account_insert
             nop
