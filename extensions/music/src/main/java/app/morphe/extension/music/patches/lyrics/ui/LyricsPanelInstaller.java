@@ -14,6 +14,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.SystemClock;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -238,6 +239,7 @@ public final class LyricsPanelInstaller {
     @SuppressWarnings("unused")
     public static void onEngagementPanelChanged(@Nullable Object panel) {
         try {
+            invalidateOtherPanelCache();
             currentPanelReference = new WeakReference<>(panel);
             if (panel == null) {
                 nonLyricsPanelActive = false;
@@ -247,6 +249,15 @@ public final class LyricsPanelInstaller {
                 Object knownNonLyrics = nonLyricsPanelReference.get();
                 if (panel == knownLyrics) {
                     nonLyricsPanelActive = false;
+                } else if (isLyricsRequestedRecently()) {
+                    // The user just tapped the lyrics button, so this new panel is the lyrics one.
+                    // The tap is used up by this panel, so it cannot claim a later one.
+                    lyricsButtonTapUptimeMs = 0;
+                    nonLyricsPanelActive = false;
+                    lyricsPanelReference = new WeakReference<>(panel);
+                    if (panel == knownNonLyrics) {
+                        nonLyricsPanelReference = new WeakReference<>(null);
+                    }
                 } else if (panel == knownNonLyrics) {
                     // Only a panel already identified as non-lyrics by positive evidence
                     // (comment components, a non-lyrics heading) stays non-lyrics. An unknown
@@ -342,6 +353,7 @@ public final class LyricsPanelInstaller {
      */
     public static void onNonLyricsPanelDetected() {
         try {
+            invalidateOtherPanelCache();
             final boolean wasActive = nonLyricsPanelActive;
             nonLyricsPanelActive = true;
             installPending = false;
@@ -380,6 +392,27 @@ public final class LyricsPanelInstaller {
         } catch (Exception ex) {
             Logger.printException(() -> "onNonLyricsPanelDetected failure", ex);
         }
+    }
+
+    /** How long after a tap on the lyrics button a new panel counts as the lyrics panel. */
+    private static final long LYRICS_TAP_WINDOW_MS = 1000;
+    private static volatile long lyricsButtonTapUptimeMs;
+
+    /**
+     * Observes taps on the lyrics button without consuming them. A tap is positive evidence of
+     * what the user asked for, which is more reliable than guessing from the panel instance.
+     */
+    private static final View.OnTouchListener LYRICS_BUTTON_TOUCH_LISTENER = (v, event) -> {
+        if (event.getActionMasked() == MotionEvent.ACTION_UP) {
+            lyricsButtonTapUptimeMs = SystemClock.uptimeMillis();
+            invalidateOtherPanelCache();
+        }
+        return false;
+    };
+
+    private static boolean isLyricsRequestedRecently() {
+        final long tap = lyricsButtonTapUptimeMs;
+        return tap != 0 && SystemClock.uptimeMillis() - tap < LYRICS_TAP_WINDOW_MS;
     }
 
     private static final int DETECT_RETRY_MAX = 3;
@@ -444,7 +477,7 @@ public final class LyricsPanelInstaller {
                 final boolean lyricsHeading = title != null && isLyricsTitle(title)
                         && !isKnownNonLyricsTitle(title);
                 final boolean freshBuildNoHeading = title == null && !isBackgroundUpdate;
-                if (!lyricsHeading && !freshBuildNoHeading) {
+                if (!lyricsHeading && !freshBuildNoHeading && !isLyricsRequestedRecently()) {
                     return;
                 }
                 nonLyricsPanelReference = new WeakReference<>(null);
@@ -587,6 +620,7 @@ public final class LyricsPanelInstaller {
                     || !isLyricsTabSelected(tabbedView)) {
                 return;
             }
+            invalidateOtherPanelCache();
             // Lyrics are in a tab, so an engagement panel tagged before this is not the lyrics one.
             lyricsPanelReference.clear();
             // The page of the previous tab fills the view until the pager starts to scroll,
@@ -738,7 +772,36 @@ public final class LyricsPanelInstaller {
         return isLyricsTitle(title);
     }
 
+    private static final long OTHER_PANEL_CACHE_MS = 150;
+    private static volatile boolean otherPanelCacheValid;
+    private static volatile boolean otherPanelCacheValue;
+    private static volatile long otherPanelCacheUptimeMs;
+
+    private static void invalidateOtherPanelCache() {
+        otherPanelCacheValid = false;
+    }
+
+    /**
+     * Whether a non-lyrics panel (such as comments) is in the foreground. Called from the litho
+     * filter for every timed lyrics component, so it avoids walking the view tree each time:
+     * a recent tap on the lyrics button answers it directly, and other answers are reused briefly.
+     */
     public static boolean isOtherPanelForeground() {
+        if (isLyricsRequestedRecently()) {
+            return false;
+        }
+        final long now = SystemClock.uptimeMillis();
+        if (otherPanelCacheValid && now - otherPanelCacheUptimeMs < OTHER_PANEL_CACHE_MS) {
+            return otherPanelCacheValue;
+        }
+        final boolean value = computeOtherPanelForeground();
+        otherPanelCacheValue = value;
+        otherPanelCacheUptimeMs = now;
+        otherPanelCacheValid = true;
+        return value;
+    }
+
+    private static boolean computeOtherPanelForeground() {
         if (isInTab(panelReference.get())) {
             return false;
         }
@@ -1040,6 +1103,7 @@ public final class LyricsPanelInstaller {
                 view.setEnabled(true);
                 view.setClickable(true);
                 view.setAlpha(1.0f);
+                view.setOnTouchListener(LYRICS_BUTTON_TOUCH_LISTENER);
                 Logger.printDebug(() -> "Enabling lyrics button: " + view.getClass().getSimpleName()
                         + " content description: '" + desc + "'");
                 matched = true;
