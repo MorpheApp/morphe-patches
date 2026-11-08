@@ -33,7 +33,7 @@ import app.morphe.extension.shared.Logger;
  *   20  the offset the records start at
  *   24  how many bytes of records there are
  *   32  slots: one int per slot, the offset of a record plus one, or zero when the slot is empty
- *   ..  records: surface length, surface bytes, reading length, reading bytes
+ *       records: surface length, surface bytes, reading length, reading bytes
  * </pre>
  */
 public final class WordReadingTable implements AutoCloseable {

@@ -161,7 +161,7 @@ public final class RomanizationDict {
             }
         }
 
-        /** Lets go, because holding the listener past the build would keep its page alive. */
+        /** Let's go, because holding the listener past the build would keep its page alive. */
         void detach() {
             to = null;
             fileName = null;
