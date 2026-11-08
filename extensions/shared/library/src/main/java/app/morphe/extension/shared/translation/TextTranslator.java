@@ -150,6 +150,7 @@ public final class TextTranslator {
             case "in" -> "id";
             case "iw" -> "he";
             case "ji" -> "yi";
+            case "kmr" -> "ku";
             default -> language;
         };
     }

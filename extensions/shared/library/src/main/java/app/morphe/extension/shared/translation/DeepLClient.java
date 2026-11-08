@@ -102,6 +102,12 @@ public final class DeepLClient {
         if (clean.equals("IN") || clean.equals("ID")) {
             return "ID";
         }
+        if (clean.equals("IW") || clean.equals("HE")) {
+            return "HE";
+        }
+        if (clean.equals("JI") || clean.equals("YI")) {
+            return "YI";
+        }
         if (clean.equals("NO")) {
             return "NB";
         }

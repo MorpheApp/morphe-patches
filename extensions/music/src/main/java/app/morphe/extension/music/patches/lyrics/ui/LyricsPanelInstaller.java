@@ -22,6 +22,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.text.Normalizer;
 import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
@@ -461,7 +462,7 @@ public final class LyricsPanelInstaller {
 
     private static boolean hasSelectedTitle(View view, String title) {
         if (view instanceof TextView text) {
-            return text.isSelected() && title.equalsIgnoreCase(text.getText().toString());
+            return text.isSelected() && isSameTitle(title, text.getText());
         }
         if (view instanceof ViewGroup group) {
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
@@ -545,6 +546,10 @@ public final class LyricsPanelInstaller {
         if (isInTab(panelReference.get())) {
             return false;
         }
+        // The current panel reference is tracked by identity and does not change across locales.
+        if (isCurrentPanelLyrics()) {
+            return false;
+        }
         Activity activity = Utils.getActivity();
         if (activity == null) {
             return false;
@@ -593,8 +598,51 @@ public final class LyricsPanelInstaller {
             return false;
         }
         String expectedTitle = lyricsTitle(title.getContext());
-        return expectedTitle != null
-                && expectedTitle.equalsIgnoreCase(String.valueOf(title.getText()));
+        if (isSameTitle(expectedTitle, title.getText())) {
+            return true;
+        }
+        // Fall back to application-level context title if different from the view context
+        String appTitle = lyricsTitle(null);
+        return appTitle != null && isSameTitle(appTitle, title.getText());
+    }
+
+    /**
+     * Normalizes title text for locale-independent comparison across different cases,
+     * accents/diacritics (e.g. Greek tonos Στίχοι vs ΣΤΙΧΟΙ), and dotted/dotless I
+     * in Turkish/Azerbaijani.
+     */
+    public static String normalizeTitle(@Nullable CharSequence text) {
+        if (text == null) {
+            return "";
+        }
+        String s = text.toString().trim();
+        if (s.isEmpty()) {
+            return "";
+        }
+        // Normalize Turkish/Azerbaijani dotted/dotless I before generic decomposition
+        s = s.replace('İ', 'I').replace('ı', 'i');
+        String decomposed = Normalizer.normalize(s, Normalizer.Form.NFD);
+        StringBuilder sb = new StringBuilder(decomposed.length());
+        for (int i = 0; i < decomposed.length(); i++) {
+            char c = decomposed.charAt(i);
+            int type = Character.getType(c);
+            if (type != Character.NON_SPACING_MARK && type != Character.COMBINING_SPACING_MARK && type != Character.ENCLOSING_MARK) {
+                sb.append(Character.toLowerCase(c));
+            }
+        }
+        return sb.toString().trim();
+    }
+
+    public static boolean isSameTitle(@Nullable CharSequence a, @Nullable CharSequence b) {
+        if (a == null || b == null) {
+            return false;
+        }
+        if (a.equals(b)) {
+            return true;
+        }
+        String normA = normalizeTitle(a);
+        String normB = normalizeTitle(b);
+        return !normA.isEmpty() && normA.equals(normB);
     }
 
     /**
@@ -745,7 +793,8 @@ public final class LyricsPanelInstaller {
         Utils.runOnMainThreadDelayed(() -> {
             boolean scheduledNext = false;
             try {
-                boolean matched = enableLyricsButtonPass(root, title, title.toLowerCase(Locale.ROOT));
+                final String normTitle = normalizeTitle(title);
+                boolean matched = enableLyricsButtonPass(root, title, normTitle);
                 if (!matched && step + 1 < ENABLE_BUTTON_DELAYS_MS.length) {
                     scheduleEnableButtonPass(root, title, step + 1);
                     scheduledNext = true;
@@ -760,7 +809,7 @@ public final class LyricsPanelInstaller {
         }, delay);
     }
 
-    private static boolean enableLyricsButtonPass(View view, String title, String titleLower) {
+    private static boolean enableLyricsButtonPass(View view, String title, String normTitle) {
         if (view.getVisibility() != View.VISIBLE) {
             return false;
         }
@@ -768,10 +817,10 @@ public final class LyricsPanelInstaller {
         CharSequence description = view.getContentDescription();
         if (description != null) {
             String desc = description.toString();
-            String descLower = desc.toLowerCase(Locale.ROOT);
-            final boolean matches = title.equalsIgnoreCase(desc)
-                    || descLower.contains(titleLower)
-                    || descLower.contains("lyric");
+            String normDesc = normalizeTitle(desc);
+            final boolean matches = isSameTitle(title, desc)
+                    || (!normTitle.isEmpty() && (normDesc.contains(normTitle) || normTitle.contains(normDesc)))
+                    || normDesc.contains("lyric");
             if (matches) {
                 view.setEnabled(true);
                 view.setClickable(true);
@@ -783,7 +832,7 @@ public final class LyricsPanelInstaller {
         }
         if (view instanceof ViewGroup group) {
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                if (enableLyricsButtonPass(group.getChildAt(i), title, titleLower)) {
+                if (enableLyricsButtonPass(group.getChildAt(i), title, normTitle)) {
                     matched = true;
                 }
             }
