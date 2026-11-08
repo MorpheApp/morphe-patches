@@ -91,8 +91,6 @@ public final class WordReadingTable implements AutoCloseable {
                 }
                 return new WordReadingTable(mapped, slots);
             }
-        } catch (java.nio.file.NoSuchFileException ignored) {
-            return null;
         } catch (IOException ex) {
             Logger.printDebug(() -> "Could not open the reading table " + file, ex);
             return null;

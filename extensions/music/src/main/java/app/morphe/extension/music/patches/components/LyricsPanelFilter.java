@@ -18,22 +18,18 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
  *
  * <p>Nothing is hidden here. The filter is only used as a signal, because the
  * timed lyrics component is the earliest reliable indication that the panel the
- * user opened is the lyrics one.
- *
- * <p>The old path based check ("|CollectionType|CellType|") was removed. Some songs
- * (for example Turkish tracks) render every lyric line with that path, so the check
- * suppressed real lyrics openings. Background updates are now separated only by
- * {@link LyricsPanelInstaller#isOtherPanelForeground()}.
+ * user opened is the lyrics one. Comments being built say the opposite, which is
+ * used for panels the app gives no identifier.
  */
 @SuppressWarnings("unused")
 public final class LyricsPanelFilter extends Filter {
 
-    private final StringFilterGroup timedLyricsGroup = new StringFilterGroup(
+    private final StringFilterGroup timedLyrics = new StringFilterGroup(
             null,
             "timed_lyrics"
     );
 
-    private final StringFilterGroup nonLyricsPanelGroup = new StringFilterGroup(
+    private final StringFilterGroup comments = new StringFilterGroup(
             null,
             "comment_thread",
             "comment_composer",
@@ -45,8 +41,8 @@ public final class LyricsPanelFilter extends Filter {
     );
 
     public LyricsPanelFilter() {
-        addIdentifierCallbacks(timedLyricsGroup, nonLyricsPanelGroup);
-        addPathCallbacks(nonLyricsPanelGroup);
+        addIdentifierCallbacks(timedLyrics, comments);
+        addPathCallbacks(comments);
     }
 
     @Override
@@ -59,20 +55,11 @@ public final class LyricsPanelFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        if (matchedGroup == nonLyricsPanelGroup) {
-            LyricsPanelInstaller.onNonLyricsPanelDetected();
+        if (matchedGroup == comments) {
+            LyricsPanelInstaller.onOtherPanelDetected();
         } else {
-            LyricsPanelInstaller.onLyricsPanelDetected(isBackgroundComponentUpdate());
+            LyricsPanelInstaller.onLyricsPanelDetected();
         }
         return false;
-    }
-
-    /**
-     * Returns true when Litho is updating an existing timed_lyrics component in the background
-     * while another panel (such as comments) is active, rather than building the panel for
-     * the first time when opened by the user.
-     */
-    private static boolean isBackgroundComponentUpdate() {
-        return LyricsPanelInstaller.isOtherPanelForeground();
     }
 }

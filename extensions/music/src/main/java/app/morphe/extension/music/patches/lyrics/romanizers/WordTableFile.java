@@ -7,19 +7,10 @@
 
 package app.morphe.extension.music.patches.lyrics.romanizers;
 
-import android.content.Context;
-import android.content.res.AssetManager;
-
 import androidx.annotation.Nullable;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 
 /** A {@link WordReadingTable} in the dictionary directory, opened on first use and kept open. */
 final class WordTableFile {
@@ -57,80 +48,14 @@ final class WordTableFile {
         if (open != null) return open;
 
         File file = file();
-        if (file == null) return null;
-
-        if (!file.isFile()) {
-            unpackFromAssetsIfPresent(file);
-        }
-
-        if (!file.isFile()) {
-            return null;
-        }
-
-        if (file.length() < WordReadingTable.HEADER_BYTES) {
-            Logger.printDebug(() -> "Reading table file is truncated or empty, ignoring: " + file);
-            return null;
-        }
+        // Not built yet, such as when the dictionary was never downloaded.
+        if (file == null || !file.isFile()) return null;
 
         open = WordReadingTable.open(file.toPath(), magic);
         if (open != null) {
             table = open;
         }
         return open;
-    }
-
-    private void unpackFromAssetsIfPresent(File target) {
-        if (target == null || target.isFile()) {
-            return;
-        }
-        Context context = Utils.getContext();
-        if (context == null) {
-            return;
-        }
-        AssetManager assets = context.getAssets();
-        if (assets == null) {
-            return;
-        }
-        unpackFromAssets(assets, name, target);
-    }
-
-    static boolean unpackFromAssets(AssetManager assets, String name, File target) {
-        if (assets == null || target == null || name == null) {
-            return false;
-        }
-        String[] possiblePaths = new String[]{
-                "morphe_lyrics/romandict/" + name,
-                "romandict/" + name,
-                name
-        };
-        for (String assetPath : possiblePaths) {
-            try (InputStream in = assets.open(assetPath)) {
-                File parent = target.getParentFile();
-                if (parent != null && !parent.exists() && !parent.mkdirs()) {
-                    return false;
-                }
-                File unpacking = new File(target.getPath() + ".unpacking");
-                try (OutputStream out = new FileOutputStream(unpacking)) {
-                    byte[] buffer = new byte[1 << 16];
-                    int read;
-                    while ((read = in.read(buffer)) != -1) {
-                        out.write(buffer, 0, read);
-                    }
-                    out.flush();
-                }
-                if (unpacking.length() >= WordReadingTable.HEADER_BYTES) {
-                    RomanizationDict.commit(unpacking, target);
-                    Logger.printDebug(() -> "Extracted dictionary from assets: " + assetPath + " -> " + target);
-                    return true;
-                } else {
-                    //noinspection ResultOfMethodCallIgnored
-                    unpacking.delete();
-                }
-            } catch (IOException ignored) {
-                // Not present under this path in assets, try next
-            }
-        }
-        return false;
     }
 
     /** Drops the cached table so a later open re-reads from disk, or finds nothing. */
