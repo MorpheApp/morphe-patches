@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
-package app.morphe.extension.youtube.settings.preference;
+package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
@@ -34,43 +34,107 @@ import androidx.annotation.NonNull;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.IntegerSetting;
-import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.youtube.patches.GlassNavigationBar;
-import app.morphe.extension.youtube.patches.NavigationBarPatch;
-import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.shared.ui.glass.GlassNavigationBarLayout;
 
 /**
  * Sets the height, the width and the button spacing of the glass navigation bar,
- * with a preview of the bar that follows the sliders.
+ * with a preview of the bar that follows the sliders. Shared by the apps, which give the settings,
+ * the strings and the buttons.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public class GlassNavigationBarPreference extends Preference {
+public abstract class GlassNavigationBarSizePreference extends Preference {
 
-    private static final IntegerSetting[] SETTINGS = {
-            Settings.NAVIGATION_BAR_GLASS_HEIGHT,
-            Settings.NAVIGATION_BAR_GLASS_WIDTH,
-            Settings.NAVIGATION_BAR_GLASS_BUTTON_SPACING
-    };
-
-    private static final String[] TITLES = {
-            "morphe_navigation_bar_glass_size_height",
-            "morphe_navigation_bar_glass_size_width",
-            "morphe_navigation_bar_glass_size_button_spacing"
-    };
-
-    public GlassNavigationBarPreference(Context context, AttributeSet attrs) {
+    public GlassNavigationBarSizePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
+
+    /**
+     * @return The settings of the height, the width and the button spacing, in that order.
+     */
+    protected abstract IntegerSetting[] getSizeSettings();
+
+    /**
+     * @return The keys of the titles of the height, the width and the button spacing sliders.
+     */
+    protected abstract String[] getSizeTitleKeys();
+
+    /**
+     * @return The key of the text that shows how many buttons fit, with the shown and the total count.
+     */
+    protected abstract String getButtonsShownKey();
+
+    /**
+     * @return The buttons of the last navigation bar, or of all the buttons seen if none was shown yet.
+     */
+    protected abstract PreviewButtons getButtons();
+
+    /**
+     * The icons, the labels and the selected button of the navigation bar, for the preview.
+     */
+    public static final class PreviewButtons {
+        final List<String> labels = new ArrayList<>();
+        /**
+         * The icons of the buttons, null for a button without a recorded icon.
+         */
+        final List<Picture> icons = new ArrayList<>();
+        int selected;
+        boolean showLabels;
+
+        public boolean isEmpty() {
+            return labels.isEmpty();
+        }
+
+        /**
+         * Adds a button without an icon, such as a button seen before the bar was shown.
+         */
+        public void add(String label) {
+            labels.add(label);
+            icons.add(null);
+        }
+
+        public void setShowLabels(boolean showLabels) {
+            this.showLabels = showLabels;
+        }
+
+        /**
+         * @return The icons, the labels and the selected button of the last glass navigation bar,
+         *         as the bar shows them, such as without labels.
+         */
+        public static PreviewButtons fromLastBar(int iconId, int labelId) {
+            PreviewButtons buttons = new PreviewButtons();
+            for (WeakReference<View> reference : GlassNavigationBarLayout.lastButtons) {
+                if (!(reference.get() instanceof ViewGroup button)) continue;
+
+                View icon = iconId == 0 ? null : button.findViewById(iconId);
+                Picture picture = null;
+                if (icon != null && icon.getWidth() > 0 && icon.getHeight() > 0) {
+                    // Recorded, not drawn to a bitmap, so the hardware bitmaps of the icons (the account avatar) work.
+                    picture = new Picture();
+                    icon.draw(picture.beginRecording(icon.getWidth(), icon.getHeight()));
+                    picture.endRecording();
+                }
+                View label = labelId == 0 ? null : button.findViewById(labelId);
+                if (button.isSelected()) buttons.selected = buttons.labels.size();
+                if (label instanceof TextView text && text.getVisibility() == View.VISIBLE) buttons.showLabels = true;
+                buttons.labels.add(label instanceof TextView text ? text.getText().toString() : "");
+                buttons.icons.add(picture);
+            }
+            return buttons;
+        }
+    }
+
+    /**
+     * @return The least room between the ends of the capsule and the edges of the screen.
+     */
+    protected abstract int getHorizontalMargin();
 
     @Override
     protected void onClick() {
@@ -80,57 +144,22 @@ public class GlassNavigationBarPreference extends Preference {
         context.getTheme().resolveAttribute(android.R.attr.colorAccent, accent, true);
         final int accentColor = accent.data;
 
-        // The icons, the labels and the selected button of the last glass navigation bar,
-        // as the bar shows them, such as without labels.
-        List<String> labels = new ArrayList<>();
-        List<Picture> icons = new ArrayList<>();
-        int selected = 0;
-        boolean showLabels = false;
-        for (WeakReference<View> reference : GlassNavigationBar.lastButtons) {
-            if (!(reference.get() instanceof ViewGroup button)) continue;
+        final IntegerSetting[] settings = getSizeSettings();
+        final String[] titleKeys = getSizeTitleKeys();
+        PreviewButtons previewButtons = getButtons();
+        List<String> labels = previewButtons.labels;
 
-            View icon = GlassNavigationBar.BUTTON_ICON == 0 ? null : button.findViewById(GlassNavigationBar.BUTTON_ICON);
-            Picture picture = null;
-            if (icon != null && icon.getWidth() > 0 && icon.getHeight() > 0) {
-                // Recorded, not drawn to a bitmap, so the hardware bitmaps of the icons (the account avatar) work.
-                picture = new Picture();
-                icon.draw(picture.beginRecording(icon.getWidth(), icon.getHeight()));
-                picture.endRecording();
-            }
-            View label = GlassNavigationBar.BUTTON_LABEL == 0 ? null : button.findViewById(GlassNavigationBar.BUTTON_LABEL);
-            if (button.isSelected()) selected = labels.size();
-            if (label instanceof TextView text && text.getVisibility() == View.VISIBLE) showLabels = true;
-            labels.add(label instanceof TextView text ? text.getText().toString() : "");
-            icons.add(picture);
-        }
-        // The buttons of the last navigation bar, or all the buttons seen if none was shown yet.
-        if (labels.isEmpty()) {
-            Map<String, String> discoveredButtons;
-            synchronized (NavigationBarPatch.discoveredNavigationButtons) {
-                discoveredButtons = new LinkedHashMap<>(NavigationBarPatch.discoveredNavigationButtons);
-            }
-            for (String id : NavigationBarPatch.navigationButtons.isEmpty()
-                    ? discoveredButtons.keySet() : NavigationBarPatch.navigationButtons) {
-                String label = discoveredButtons.get(id);
-                if (label != null) {
-                    labels.add(label);
-                    icons.add(null);
-                }
-            }
-            showLabels = !Settings.HIDE_NAVIGATION_BUTTON_LABELS.get();
-        }
-
-        final int[] pending = new int[SETTINGS.length];
-        PreviewView preview = new PreviewView(context, labels, icons, selected, showLabels, pending);
+        final int[] pending = new int[settings.length];
+        PreviewView preview = new PreviewView(context, previewButtons, pending, getHorizontalMargin());
         TextView shownButtons = new TextView(context);
         shownButtons.setGravity(Gravity.CENTER);
         shownButtons.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         final int screenWidth = context.getResources().getDisplayMetrics().widthPixels;
         Runnable update = () -> {
             preview.invalidate();
-            shownButtons.setText(str("morphe_navigation_bar_glass_size_buttons_shown",
-                    GlassNavigationBar.getButtonsLayout(screenWidth, labels.size(), preview.getContentWidth(),
-                            GlassNavigationBar.lastMinButtonWidth, pending[1], Dim.dp(pending[2]))[0],
+            shownButtons.setText(str(getButtonsShownKey(),
+                    GlassNavigationBarLayout.getButtonsLayout(screenWidth, labels.size(), preview.getContentWidth(),
+                            GlassNavigationBarLayout.lastMinButtonWidth, pending[1], Dim.dp(pending[2]), getHorizontalMargin())[0],
                     labels.size()));
         };
 
@@ -144,18 +173,18 @@ public class GlassNavigationBarPreference extends Preference {
         shownParams.bottomMargin = Dim.dp8;
         content.addView(shownButtons, shownParams);
 
-        SeekBar[] seekBars = new SeekBar[SETTINGS.length];
-        for (int i = 0; i < SETTINGS.length; i++) {
+        SeekBar[] seekBars = new SeekBar[settings.length];
+        for (int i = 0; i < settings.length; i++) {
             final int index = i;
-            SeekBarConfig config = SeekBarPreference.configFor(SETTINGS[i]);
-            pending[i] = SeekBarPreference.clampToRange(SETTINGS[i]);
+            SeekBarConfig config = SeekBarPreference.configFor(settings[i]);
+            pending[i] = SeekBarPreference.clampToRange(settings[i]);
 
             TextView title = new TextView(context);
             title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
             TextView value = new TextView(context);
             value.setTextColor(accentColor);
             value.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-            title.setText(str(TITLES[i]));
+            title.setText(str(titleKeys[i]));
             value.setText(SeekBarPreference.formatLabel(pending[i], config));
 
             LinearLayout titleRow = new LinearLayout(context);
@@ -196,16 +225,16 @@ public class GlassNavigationBarPreference extends Preference {
                 null,
                 null,
                 () -> {
-                    for (int i = 0; i < SETTINGS.length; i++) {
-                        SETTINGS[i].save(pending[i]);
+                    for (int i = 0; i < settings.length; i++) {
+                        settings[i].save(pending[i]);
                     }
                 },
                 () -> {},
                 str("morphe_settings_reset"),
                 () -> {
-                    for (int i = 0; i < SETTINGS.length; i++) {
+                    for (int i = 0; i < settings.length; i++) {
                         seekBars[i].setProgress(SeekBarPreference.valueToProgress(
-                                SeekBarPreference.configFor(SETTINGS[i]), SETTINGS[i].defaultValue));
+                                SeekBarPreference.configFor(settings[i]), settings[i].defaultValue));
                     }
                 },
                 false
@@ -218,7 +247,7 @@ public class GlassNavigationBarPreference extends Preference {
 
     /**
      * The bottom of the screen with the glass navigation bar, scaled to the width of the preview.
-     * The buttons are laid out as in the navigation bar, see {@link GlassNavigationBar}.
+     * The buttons are laid out as in the navigation bar, see {@link GlassNavigationBarLayout}.
      */
     private static final class PreviewView extends View {
         private static final int ICON_SIZE = Dim.dp24;
@@ -240,14 +269,19 @@ public class GlassNavigationBarPreference extends Preference {
         private final TextPaint labelPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         private final RectF rect = new RectF();
 
-        PreviewView(Context context, List<String> labels, List<Picture> icons, int selected, boolean showLabels,
-                    int[] values) {
+        /**
+         * The least room between the ends of the capsule and the edges of the screen.
+         */
+        private final int margin;
+
+        PreviewView(Context context, PreviewButtons buttons, int[] values, int margin) {
             super(context);
-            this.labels = labels;
-            this.icons = icons;
-            this.selected = selected;
-            this.showLabels = showLabels;
+            this.labels = buttons.labels;
+            this.icons = buttons.icons;
+            this.selected = buttons.selected;
+            this.showLabels = buttons.showLabels;
             this.values = values;
+            this.margin = margin;
             labelPaint.setTextAlign(Paint.Align.CENTER);
             labelPaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, LABEL_SIZE_SP,
                     context.getResources().getDisplayMetrics()));
@@ -257,7 +291,7 @@ public class GlassNavigationBarPreference extends Preference {
          * The content width of the buttons, as measured in the navigation bar, or of the widest label.
          */
         int getContentWidth() {
-            int width = GlassNavigationBar.lastContentWidth;
+            int width = GlassNavigationBarLayout.lastContentWidth;
             if (width > 0) return width;
 
             width = ICON_SIZE;
@@ -296,15 +330,15 @@ public class GlassNavigationBarPreference extends Preference {
             // The layout of the navigation bar.
             final int buttons = Math.max(1, labels.size());
             final int contentWidth = getContentWidth();
-            final int contentHeight = GlassNavigationBar.lastContentHeight > 0
-                    ? GlassNavigationBar.lastContentHeight
+            final int contentHeight = GlassNavigationBarLayout.lastContentHeight > 0
+                    ? GlassNavigationBarLayout.lastContentHeight
                     : ICON_SIZE + (showLabels ? Dim.dp4 + Math.round(labelPaint.getTextSize() * 1.25f) : 0);
-            final int baseHeight = GlassNavigationBar.lastBaseHeight > 0 ? GlassNavigationBar.lastBaseHeight : Dim.dp48;
-            final int[] layout = GlassNavigationBar.getButtonsLayout(screenWidth, buttons, contentWidth,
-                    GlassNavigationBar.lastMinButtonWidth, values[1], Dim.dp(values[2]));
+            final int baseHeight = GlassNavigationBarLayout.lastBaseHeight > 0 ? GlassNavigationBarLayout.lastBaseHeight : Dim.dp48;
+            final int[] layout = GlassNavigationBarLayout.getButtonsLayout(screenWidth, buttons, contentWidth,
+                    GlassNavigationBarLayout.lastMinButtonWidth, values[1], Dim.dp(values[2]), margin);
             final int shownButtons = layout[0];
             final float buttonWidth = layout[1] * scale;
-            final float capsuleHeight = GlassNavigationBar.getCapsuleHeight(baseHeight, contentHeight, values[0]) * scale;
+            final float capsuleHeight = GlassNavigationBarLayout.getCapsuleHeight(baseHeight, contentHeight, values[0]) * scale;
             final float capsuleWidth = shownButtons * buttonWidth;
             final float left = (width - capsuleWidth) / 2;
             final float bottom = height - Dim.dp10 * scale;
