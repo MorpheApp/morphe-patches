@@ -31,6 +31,13 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.PathInterpolator;
 import android.widget.TextView;
 
+import android.graphics.RenderEffect;
+import android.os.Build;
+import android.os.SystemClock;
+import androidx.annotation.NonNull;
+import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.ui.SpringEasing.LyricsSpring;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -96,6 +103,7 @@ final class LyricsLineView extends TextView {
         super.setText(text, type);
         wordTimings = Collections.emptyList();
         positionMs = Long.MIN_VALUE;
+        lastDrawnClockPos = Long.MIN_VALUE;
         allSung = false;
         cachedLayout = null;
         cachedText = null;
@@ -127,6 +135,42 @@ final class LyricsLineView extends TextView {
     float fadeTargetAlpha = 1f;
     boolean activeLine;
     ValueAnimator fadeAnimator;
+    private static final TimeInterpolator TRANSITION_INTERPOLATOR =
+            new PathInterpolator(0.25f, 0.1f, 0.25f, 1.0f);
+    private static final int LINE_VISIBILITY_MS = 300;
+
+    private boolean lineLookInitialized = false;
+    private float lookFromAlpha = 1f;
+    private float lookToAlpha = 1f;
+    float lookCurAlpha = 1f;
+    private float lookFromUnsungAlpha = LyricsColors.UNSUNG_ALPHA;
+    private float lookToUnsungAlpha = LyricsColors.UNSUNG_ALPHA;
+    float lookCurUnsungAlpha = LyricsColors.UNSUNG_ALPHA;
+    private float lookFromTransAlpha = LyricsColors.ACTIVE_TRANSLATION_ALPHA;
+    private float lookToTransAlpha = LyricsColors.ACTIVE_TRANSLATION_ALPHA;
+    float lookCurTransAlpha = LyricsColors.ACTIVE_TRANSLATION_ALPHA;
+    private float lookFromReadingAlpha = LyricsColors.ACTIVE_READING_ALPHA;
+    private float lookToReadingAlpha = LyricsColors.ACTIVE_READING_ALPHA;
+    float lookCurReadingAlpha = LyricsColors.ACTIVE_READING_ALPHA;
+    private float lookFromScale = 1f;
+    private float lookToScale = 1f;
+    float lookCurScale = 1f;
+    @Nullable
+    private ValueAnimator lineLookAnimator;
+
+    @Nullable
+    private LyricsScrollEngine scrollEngine;
+    public void setScrollEngine(@Nullable LyricsScrollEngine engine) {
+        this.scrollEngine = engine;
+    }
+    private final LyricsScrollEngine.LyricsItemFlip mainVocalFlip = new LyricsScrollEngine.LyricsItemFlip();
+    private final LyricsScrollEngine.LyricsItemFlip translationFlip = new LyricsScrollEngine.LyricsItemFlip();
+    private float translationFlipOffsetY = 0f;
+
+    private RenderEffect currentRenderEffect;
+    private float currentBlurRadius = 0f;
+    @Nullable
+    private ValueAnimator blurAnimator;
 
     float contentReveal = 1f;
     float transReveal = 1f;
@@ -147,6 +191,33 @@ final class LyricsLineView extends TextView {
     private float secondaryFraction = 1f;
     private boolean secondaryExpanded = true;
     private int secondaryFullHeight;
+    private boolean secondaryLayoutVisible = true;
+    private boolean secondaryAnimatingExit = false;
+    private int lastSecondaryReportedH = -1;
+    private int committedSecondaryLayoutH = 0;
+    private long lastDrawnClockPos = Long.MIN_VALUE;
+
+    int getPendingLayoutDelta() {
+        if (!isSecondary) {
+            return 0;
+        }
+        int fullH = secondaryFullHeight > 0 ? secondaryFullHeight : getMeasuredHeight();
+        int spacingPx = Dim.dp(4);
+        int targetH = secondaryLayoutVisible ? (fullH > 0 ? fullH + spacingPx : Dim.dp(32)) : 0;
+        return targetH - committedSecondaryLayoutH;
+    }
+
+    void resetClockPos() {
+        this.lastDrawnClockPos = Long.MIN_VALUE;
+    }
+
+    private long getLiveClockPositionMs() {
+        try {
+            return LyricsManager.getInstance().getPositionMs();
+        } catch (Throwable t) {
+            return this.positionMs;
+        }
+    }
     @Nullable
     private ValueAnimator secondaryAnimator;
 
@@ -190,108 +261,615 @@ final class LyricsLineView extends TextView {
         return isCentered;
     }
 
-    /** The gap to the lead line, on whichever side of it this background vocal sits. */
-    private void updateSecondaryMargin(int marginPx) {
-        if (getLayoutParams() instanceof ViewGroup.MarginLayoutParams params) {
-            params.topMargin = bgBeforeMain ? 0 : marginPx;
-            params.bottomMargin = bgBeforeMain ? marginPx : 0;
+
+    boolean hasWordTimings() {
+        if (wordTimings == null || wordTimings.isEmpty()) {
+            return false;
         }
+        for (int i = 0; i < wordTimings.size(); i++) {
+            LyricsSpanBuilder.WordTiming wt = wordTimings.get(i);
+            if (wt != null && wt.startMs() != LyricsLine.NO_TIME && wt.endMs() != LyricsLine.NO_TIME
+                    && wt.endMs() >= wt.startMs()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    long getLastWordEndMs() {
+        if (wordTimings == null || wordTimings.isEmpty()) {
+            return LyricsLine.NO_TIME;
+        }
+        long maxEnd = LyricsLine.NO_TIME;
+        for (int i = 0; i < wordTimings.size(); i++) {
+            long e = wordTimings.get(i).endMs();
+            if (e != LyricsLine.NO_TIME) {
+                maxEnd = (maxEnd == LyricsLine.NO_TIME) ? e : Math.max(maxEnd, e);
+            }
+        }
+        return maxEnd;
+    }
+
+    private float computeLinePivotX(int w) {
+        if (isCentered) {
+            return w * 0.5f;
+        }
+        return isRightAligned ? w - getPaddingRight() : getPaddingLeft();
+    }
+
+    private float computeSecondaryPivotY() {
+        float h = getHeight() > 0 ? (float) getHeight() : (float) secondaryFullHeight;
+        return bgBeforeMain ? h : 0f;
     }
 
     /**
-     * Opens or closes a background vocal. A closed one is gone from the layout, so its lead line
-     * takes only its own room until the vocal is sung.
-     *
-     * @param instant Skips the animation, for a row that was only just built.
+     * Secondary vocals slide down from behind the main vocal (or slide up from behind when bgBeforeMain).
+     */
+    private float computeSecondarySlideMaxY() {
+        float em = getTextSize() > 0f ? getTextSize() : Dim.dp(20);
+        return (bgBeforeMain ? 1f : -1f) * em * 1.35f;
+    }
+
+    private void updateSecondaryLayoutMargins(int fullH) {
+        if (!isSecondary) return;
+        ViewGroup.LayoutParams rawLp = getLayoutParams();
+        if (!(rawLp instanceof ViewGroup.MarginLayoutParams mlp)) return;
+        int spacingPx = Dim.dp(4);
+        int topM;
+        int bottomM;
+        if (secondaryLayoutVisible) {
+            topM = bgBeforeMain ? 0 : spacingPx;
+            bottomM = bgBeforeMain ? spacingPx : 0;
+        } else if (secondaryAnimatingExit && fullH > 0) {
+            if (bgBeforeMain) {
+                topM = 0;
+                bottomM = -fullH;
+            } else {
+                topM = spacingPx;
+                bottomM = -(fullH + spacingPx);
+            }
+        } else {
+            topM = 0;
+            bottomM = 0;
+        }
+        if (mlp.topMargin != topM || mlp.bottomMargin != bottomM) {
+            mlp.topMargin = topM;
+            mlp.bottomMargin = bottomM;
+        }
+    }
+
+    void setSecondaryExpandFraction(float fraction) {
+        float clamped = Math.max(0f, Math.min(1f, fraction));
+        this.secondaryFraction = clamped;
+        boolean shouldShowLayout = clamped > 0.001f;
+        this.secondaryExpanded = shouldShowLayout;
+        if (!shouldShowLayout && this.lastSecondaryReportedH < 0) {
+            this.lastSecondaryReportedH = 0;
+        }
+        this.secondaryAnimatingExit = false;
+        float revealScale = 0.85f + 0.15f * clamped;
+        float slideY = computeSecondarySlideMaxY() * (1f - clamped);
+        setPivotX(computeLinePivotX(getWidth()));
+        setPivotY(computeSecondaryPivotY());
+        setScaleX(revealScale);
+        setScaleY(revealScale);
+        setTranslationY(slideY);
+        setAlpha(shouldShowLayout ? LyricsColors.ACTIVE_BG_ALPHA : 0f);
+        setVisibility(shouldShowLayout ? View.VISIBLE : View.GONE);
+        if (this.secondaryLayoutVisible != shouldShowLayout) {
+            this.secondaryLayoutVisible = shouldShowLayout;
+            updateSecondaryLayoutMargins(secondaryFullHeight);
+            requestLayout();
+        }
+        invalidate();
+    }
+
+    void animateSecondaryExpansion(boolean expand) {
+        animateSecondaryExpansion(expand, false);
+    }
+
+    /**
+     * Opens or closes a background vocal using spring easing and negative-margin exit collapse
+     * while reporting the layout shift once to LyricsScrollEngine so sibling/following lines
+     * glide via FLIP without per-frame requestLayout() thrashing.
      */
     void animateSecondaryExpansion(boolean expand, boolean instant) {
         if (!Settings.LYRICS_SPLIT_BACKGROUND.get()) {
             return;
         }
-        // Called on every highlight tick, so one already on its way there is left to finish.
-        if (!instant && expand == secondaryExpanded
-                && (secondaryAnimator != null || secondaryFraction == (expand ? 1f : 0f))) {
+        if (instant) {
+            if (secondaryAnimator != null) {
+                ValueAnimator running = secondaryAnimator;
+                secondaryAnimator = null;
+                running.cancel();
+            }
+            setSecondaryExpandFraction(expand ? 1f : 0f);
             return;
         }
-        // Cleared first, or the cancelled animator's end listener settles the old target.
-        ValueAnimator running = secondaryAnimator;
-        secondaryAnimator = null;
-        if (running != null) {
+        float target = expand ? 1f : 0f;
+        if (Math.abs(secondaryFraction - target) < 0.001f
+                && secondaryLayoutVisible == expand
+                && secondaryAnimator == null) {
+            if (!expand) {
+                secondaryAnimatingExit = false;
+                if (getVisibility() != View.GONE) {
+                    setVisibility(View.GONE);
+                }
+                setAlpha(0f);
+                setTranslationY(computeSecondarySlideMaxY());
+            } else {
+                if (getVisibility() != View.VISIBLE) {
+                    setVisibility(View.VISIBLE);
+                }
+                setAlpha(LyricsColors.ACTIVE_BG_ALPHA);
+                setScaleX(1f);
+                setScaleY(1f);
+                setTranslationY(0f);
+            }
+            return;
+        }
+        if (secondaryAnimator != null && secondaryLayoutVisible == expand) {
+            return;
+        }
+        if (secondaryAnimator != null) {
+            ValueAnimator running = secondaryAnimator;
+            secondaryAnimator = null;
             running.cancel();
         }
+
         secondaryExpanded = expand;
-        if (instant) {
-            settleSecondary(expand);
+        setPivotX(computeLinePivotX(getWidth()));
+        setPivotY(computeSecondaryPivotY());
+        float baseDuration = (scrollEngine != null)
+                ? Math.max(1f, (float) scrollEngine.getScrollDurationMs())
+                : (float) SECONDARY_EXPAND_MILLISECONDS;
+
+        if (expand) {
+            secondaryLayoutVisible = true;
+            secondaryAnimatingExit = false;
+            updateSecondaryLayoutMargins(secondaryFullHeight);
+            if (getVisibility() != View.VISIBLE) {
+                setVisibility(View.VISIBLE);
+            }
+            requestLayout();
+
+            LyricsSpring spring = new LyricsSpring(baseDuration);
+            long inScaleMs = Math.max(1L, Math.round(spring.totalMs));
+            long inAlphaMs = Math.max(300L, Math.min(450L, Math.round(baseDuration * 0.95f)));
+            final float startProgress = secondaryFraction;
+            final float startAlpha = getAlpha();
+
+            ValueAnimator animator = ValueAnimator.ofFloat(0f, (float) inScaleMs);
+            animator.setDuration(inScaleMs);
+            animator.setInterpolator(new LinearInterpolator());
+            animator.addUpdateListener(animation -> {
+                float tMs = (Float) animation.getAnimatedValue();
+                float scaleProgress = startProgress + (1f - startProgress) * spring.value(tMs);
+                secondaryFraction = Math.max(0f, Math.min(1f, scaleProgress));
+                float scale = Math.max(0f, 0.85f + 0.15f * scaleProgress);
+                float slideY = computeSecondarySlideMaxY() * (1f - scaleProgress);
+                setPivotX(computeLinePivotX(getWidth()));
+                setPivotY(computeSecondaryPivotY());
+                setScaleX(scale);
+                setScaleY(scale);
+                setTranslationY(slideY);
+
+                float alphaFrac = Math.max(0f, Math.min(1f, tMs / (float) inAlphaMs));
+                float easedAlpha = LyricsViewSupport.LINEAR_OUT_SLOW_IN.getInterpolation(alphaFrac);
+                setAlpha(startAlpha + (LyricsColors.ACTIVE_BG_ALPHA - startAlpha) * easedAlpha);
+                invalidate();
+            });
+            animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    if (secondaryAnimator == animation) {
+                        secondaryAnimator = null;
+                        secondaryFraction = 1f;
+                        setAlpha(LyricsColors.ACTIVE_BG_ALPHA);
+                        setScaleX(1f);
+                        setScaleY(1f);
+                        setTranslationY(0f);
+                        invalidate();
+                    }
+                }
+            });
+            secondaryAnimator = animator;
+            animator.start();
+        } else {
+            secondaryLayoutVisible = false;
+            secondaryAnimatingExit = true;
+            if (getVisibility() != View.VISIBLE) {
+                setVisibility(View.VISIBLE);
+            }
+            updateSecondaryLayoutMargins(secondaryFullHeight);
+            requestLayout();
+
+            long outMs = Math.max(260L, Math.min(360L, Math.round(baseDuration * 0.8f)));
+            final float startProgress = Math.max(0.05f, secondaryFraction);
+            final float startAlpha = Math.max(0.05f, getAlpha());
+
+            ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
+            animator.setDuration(outMs);
+            animator.setInterpolator(LyricsViewSupport.FAST_OUT_SLOW_IN);
+            animator.addUpdateListener(animation -> {
+                float f = (Float) animation.getAnimatedValue();
+                float val = startProgress * (1f - f);
+                secondaryFraction = val;
+                float scale = Math.max(0f, 0.85f + 0.15f * val);
+                float slideY = computeSecondarySlideMaxY() * (1f - val);
+                setPivotX(computeLinePivotX(getWidth()));
+                setPivotY(computeSecondaryPivotY());
+                setScaleX(scale);
+                setScaleY(scale);
+                setTranslationY(slideY);
+                setAlpha(startAlpha * (1f - f));
+                invalidate();
+            });
+            animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    if (secondaryAnimator == animation) {
+                        secondaryAnimator = null;
+                        secondaryAnimatingExit = false;
+                        secondaryFraction = 0f;
+                        setTranslationY(computeSecondarySlideMaxY());
+                        setVisibility(View.GONE);
+                        setAlpha(0f);
+                        updateSecondaryLayoutMargins(0);
+                        requestLayout();
+                        invalidate();
+                    }
+                }
+            });
+            secondaryAnimator = animator;
+            animator.start();
+        }
+    }
+
+    /**
+     * Updates line alpha (distance-based 0.35 / 0.28 / 0.20 / 0.14 / 0.10, or 0.60 when browsing)
+     * and scale (1.0 / 0.97 / 0.93 / 0.90 / 0.85) with staggered transitions
+     * (750ms + staggerDelayMs for alpha, 800ms + staggerDelayMs * 2 for scale).
+     */
+    public void updateLineLook(
+            boolean isActive,
+            int distance,
+            long staggerDelayMs,
+            boolean isAutoScrollEnabled,
+            boolean isLrcSynced,
+            boolean instant) {
+        final boolean focusSpotlightOn = Settings.LYRICS_FOCUS_SPOTLIGHT.get();
+        final float targetFocusedAlpha = !isAutoScrollEnabled ? 0.60f : (focusSpotlightOn ? 0.35f : LyricsPanelView.INACTIVE_LINE_ALPHA);
+        final float targetInactiveAlpha;
+        if (!isAutoScrollEnabled) {
+            targetInactiveAlpha = 0.60f;
+        } else if (isLrcSynced) {
+            if (!focusSpotlightOn) {
+                targetInactiveAlpha = LyricsPanelView.INACTIVE_LINE_ALPHA;
+            } else if (distance == 0) {
+                targetInactiveAlpha = targetFocusedAlpha;
+            } else if (distance == 1) {
+                targetInactiveAlpha = 0.28f;
+            } else if (distance == 2) {
+                targetInactiveAlpha = 0.20f;
+            } else if (distance == 3) {
+                targetInactiveAlpha = 0.14f;
+            } else {
+                targetInactiveAlpha = 0.10f;
+            }
+        } else {
+            targetInactiveAlpha = 1.0f;
+        }
+
+        final float targetAlpha = isActive ? 1.0f : targetInactiveAlpha;
+        final float targetUnsungAlpha = isActive
+                ? ((Settings.LYRICS_WORD_SYNC.get() && hasWordTimings())
+                    ? (focusSpotlightOn ? targetFocusedAlpha : LyricsColors.UNSUNG_ALPHA)
+                    : 1.0f)
+                : targetInactiveAlpha;
+        final float targetTransAlpha = (!isLrcSynced || isActive)
+                ? LyricsColors.ACTIVE_TRANSLATION_ALPHA
+                : (!isAutoScrollEnabled ? 0.60f : targetInactiveAlpha);
+        final float targetReadingAlpha = (!isLrcSynced || isActive)
+                ? LyricsColors.ACTIVE_READING_ALPHA
+                : (!isAutoScrollEnabled ? 0.60f : targetInactiveAlpha);
+
+        final boolean scaleEnabled = Settings.LYRICS_LINE_SCALE.get();
+        final float targetScale;
+        if (isActive || !isAutoScrollEnabled || !scaleEnabled) {
+            targetScale = 1.0f;
+        } else if (!focusSpotlightOn) {
+            targetScale = LyricsViewSupport.INACTIVE_LINE_SCALE;
+        } else if (isLrcSynced) {
+            if (distance == 0 || distance == 1) {
+                targetScale = 0.97f;
+            } else if (distance == 2 || distance == 3) {
+                targetScale = 0.93f;
+            } else if (distance == 4) {
+                targetScale = 0.90f;
+            } else {
+                targetScale = 0.85f;
+            }
+        } else {
+            targetScale = 1.0f;
+        }
+
+        final boolean wasActive = this.activeLine;
+        this.activeLine = isActive;
+        if (!isActive) {
+            this.lastDrawnClockPos = Long.MIN_VALUE;
+        }
+        if (instant || !lineLookInitialized) {
+            lineLookInitialized = true;
+            if (lineLookAnimator != null) {
+                lineLookAnimator.cancel();
+                lineLookAnimator = null;
+            }
+            if (fadeAnimator != null) {
+                fadeAnimator.cancel();
+                fadeAnimator = null;
+            }
+            lookFromAlpha = lookToAlpha = lookCurAlpha = targetAlpha;
+            lookFromUnsungAlpha = lookToUnsungAlpha = lookCurUnsungAlpha = targetUnsungAlpha;
+            lookFromTransAlpha = lookToTransAlpha = lookCurTransAlpha = targetTransAlpha;
+            lookFromReadingAlpha = lookToReadingAlpha = lookCurReadingAlpha = targetReadingAlpha;
+            lookFromScale = lookToScale = lookCurScale = targetScale;
+            lineAlpha = lookCurAlpha;
+            lineScale = lookCurScale;
+            fadeTargetAlpha = targetAlpha;
+            applyCurrentLineLookToView();
             return;
         }
 
-        setVisibility(View.VISIBLE);
-        final float startFraction = secondaryFraction;
-        final float startAlpha = getAlpha();
-        ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
-        if (expand) {
-            animator.setDuration(SECONDARY_EXPAND_MILLISECONDS);
-            animator.setInterpolator(new LinearInterpolator());
-        } else {
-            animator.setDuration(SECONDARY_COLLAPSE_MILLISECONDS);
-            animator.setInterpolator(LyricsViewSupport.FAST_OUT_SLOW_IN);
+
+        if (Math.abs(lookToAlpha - targetAlpha) < 0.001f
+                && Math.abs(lookToUnsungAlpha - targetUnsungAlpha) < 0.001f
+                && Math.abs(lookToTransAlpha - targetTransAlpha) < 0.001f
+                && Math.abs(lookToReadingAlpha - targetReadingAlpha) < 0.001f
+                && Math.abs(lookToScale - targetScale) < 0.001f) {
+            return;
         }
-        animator.addUpdateListener(animation -> {
-            final float progress = (float) animation.getAnimatedValue();
-            final float alpha;
-            if (expand) {
-                secondaryFraction = startFraction + (1f - startFraction)
-                        * SECONDARY_EXPAND_EASING.getInterpolation(progress);
-                final float fade = Math.min(1f, progress * SECONDARY_EXPAND_MILLISECONDS
-                        / (float) SECONDARY_FADE_IN_MILLISECONDS);
-                alpha = startAlpha + (LyricsColors.ACTIVE_BG_ALPHA - startAlpha)
-                        * LyricsViewSupport.LINEAR_OUT_SLOW_IN.getInterpolation(fade);
-            } else {
-                secondaryFraction = startFraction * (1f - progress);
-                alpha = startAlpha * (1f - progress);
-            }
-            applySecondaryFrame(alpha);
+
+        if (lineLookAnimator != null) {
+            lineLookAnimator.cancel();
+            lineLookAnimator = null;
+        }
+        if (fadeAnimator != null) {
+            fadeAnimator.cancel();
+            fadeAnimator = null;
+        }
+
+        lookFromAlpha = lookCurAlpha;
+        lookFromUnsungAlpha = lookCurUnsungAlpha;
+        lookFromTransAlpha = lookCurTransAlpha;
+        lookFromReadingAlpha = lookCurReadingAlpha;
+        lookFromScale = lookCurScale;
+
+        lookToAlpha = targetAlpha;
+        lookToUnsungAlpha = targetUnsungAlpha;
+        lookToTransAlpha = targetTransAlpha;
+        lookToReadingAlpha = targetReadingAlpha;
+        lookToScale = targetScale;
+        fadeTargetAlpha = targetAlpha;
+
+        final boolean springScrollOn = Settings.LYRICS_SPRING_SCROLL.get();
+        final int baseAlphaMs = springScrollOn ? 550 : 350;
+        final int baseScaleMs = springScrollOn ? 700 : 350;
+        final int alphaMs = Math.max(1, (int) (baseAlphaMs + staggerDelayMs));
+        final int scaleMs = Math.max(1, (int) (baseScaleMs + staggerDelayMs * 2L));
+        final int totalMs = Math.max(Math.max(alphaMs, scaleMs), LINE_VISIBILITY_MS);
+
+        lineLookAnimator = ValueAnimator.ofFloat(0f, (float) totalMs);
+        lineLookAnimator.setDuration(totalMs);
+        lineLookAnimator.setInterpolator(new LinearInterpolator());
+        lineLookAnimator.addUpdateListener(anim -> {
+            float clockMs = (Float) anim.getAnimatedValue();
+            float fAlpha = TRANSITION_INTERPOLATOR.getInterpolation(
+                    Math.max(0f, Math.min(1f, clockMs / alphaMs)));
+            float fScale = TRANSITION_INTERPOLATOR.getInterpolation(
+                    Math.max(0f, Math.min(1f, clockMs / scaleMs)));
+
+            lookCurAlpha = lookFromAlpha + (lookToAlpha - lookFromAlpha) * fAlpha;
+            lookCurUnsungAlpha = lookFromUnsungAlpha + (lookToUnsungAlpha - lookFromUnsungAlpha) * fAlpha;
+            lookCurTransAlpha = lookFromTransAlpha + (lookToTransAlpha - lookFromTransAlpha) * fAlpha;
+            lookCurReadingAlpha = lookFromReadingAlpha + (lookToReadingAlpha - lookFromReadingAlpha) * fAlpha;
+            lookCurScale = lookFromScale + (lookToScale - lookFromScale) * fScale;
+            lineAlpha = lookCurAlpha;
+            lineScale = lookCurScale;
+
+            applyCurrentLineLookToView();
         });
-        animator.addListener(new AnimatorListenerAdapter() {
+        lineLookAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                if (secondaryAnimator == animation) {
-                    secondaryAnimator = null;
-                    settleSecondary(expand);
+                if (lineLookAnimator == animation) {
+                    lineLookAnimator = null;
+                    lookCurAlpha = lookToAlpha;
+                    lookCurUnsungAlpha = lookToUnsungAlpha;
+                    lookCurTransAlpha = lookToTransAlpha;
+                    lookCurReadingAlpha = lookToReadingAlpha;
+                    lookCurScale = lookToScale;
+                    lineAlpha = lookCurAlpha;
+                    lineScale = lookCurScale;
+                    applyCurrentLineLookToView();
                 }
             }
         });
-        secondaryAnimator = animator;
-        animator.start();
+        lineLookAnimator.start();
     }
 
-    /** Grows out of the lead line's side while it opens, and shrinks back into it. */
-    private void applySecondaryFrame(float alpha) {
-        final int fullHeight = secondaryFullHeight > 0 ? secondaryFullHeight : getHeight();
-        final float scale = SECONDARY_CLOSED_SCALE + (1f - SECONDARY_CLOSED_SCALE) * secondaryFraction;
-        setPivotX(isCentered ? getWidth() * 0.5f : isRightAligned ? getWidth() : 0f);
-        setPivotY(bgBeforeMain ? fullHeight : 0f);
-        setScaleX(scale);
-        setScaleY(scale);
-        final float slide = Math.min(Dim.dp(18), Math.max(Dim.dp8, fullHeight * 0.35f));
-        setTranslationY((bgBeforeMain ? 1f : -1f) * (1f - secondaryFraction) * slide);
-        setAlpha(alpha);
-        updateSecondaryMargin(Math.round(Dim.dp4 * secondaryFraction));
-        requestLayout();
+    private void applyCurrentLineLookToView() {
+        if (!isSecondary) {
+            if (getWidth() > 0 && getHeight() > 0) {
+                setPivotX(computeLinePivotX(getWidth()));
+                setPivotY(getHeight() * 0.5f);
+            }
+            setScaleX(lookCurScale);
+            setScaleY(lookCurScale);
+            if (getAlpha() != 1.0f) {
+                setAlpha(1.0f);
+            }
+        }
         invalidate();
     }
 
-    private void settleSecondary(boolean expanded) {
-        secondaryFraction = expanded ? 1f : 0f;
-        final float scale = expanded ? 1f : SECONDARY_CLOSED_SCALE;
-        setScaleX(scale);
-        setScaleY(scale);
-        setTranslationY(0f);
-        setAlpha(expanded ? LyricsColors.ACTIVE_BG_ALPHA : 0f);
-        updateSecondaryMargin(expanded ? Dim.dp4 : 0);
-        setVisibility(expanded ? View.VISIBLE : View.GONE);
-        requestLayout();
-        invalidate();
+    public void cancelScaleAnimation() {
+        if (lineLookAnimator != null) {
+            lineLookAnimator.cancel();
+            lineLookAnimator = null;
+        }
+        if (fadeAnimator != null) {
+            fadeAnimator.cancel();
+            fadeAnimator = null;
+        }
+        if (blurAnimator != null) {
+            blurAnimator.cancel();
+            blurAnimator = null;
+        }
+    }
+
+    public void setRenderEffectCompat(@Nullable RenderEffect effect) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (this.currentRenderEffect == effect) {
+                return;
+            }
+            this.currentRenderEffect = effect;
+            super.setRenderEffect(effect);
+        }
+    }
+
+    public void animateBlur(float targetRadius, long duration) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            return;
+        }
+        if (blurAnimator != null) {
+            blurAnimator.cancel();
+            blurAnimator = null;
+        }
+        if (Math.abs(currentBlurRadius - targetRadius) < 0.1f) {
+            setBlurRadius(targetRadius);
+            return;
+        }
+        blurAnimator = ValueAnimator.ofFloat(currentBlurRadius, targetRadius);
+        blurAnimator.setDuration(duration);
+        blurAnimator.setInterpolator(TRANSITION_INTERPOLATOR);
+        blurAnimator.addUpdateListener(anim -> {
+            float r = (Float) anim.getAnimatedValue();
+            setBlurRadius(r);
+        });
+        blurAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                blurAnimator = null;
+                setBlurRadius(targetRadius);
+            }
+        });
+        blurAnimator.start();
+    }
+
+    public void setBlurRadius(float radius) {
+        this.currentBlurRadius = radius;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (radius < 0.5f) {
+                setRenderEffectCompat(null);
+            } else {
+                setRenderEffectCompat(LyricsPanelView.getCachedBlurEffect(radius));
+            }
+        }
+    }
+
+    public void resetInnerFlips() {
+        mainVocalFlip.reset(Float.NaN);
+        translationFlip.reset(Float.NaN);
+        translationFlipOffsetY = 0f;
+        if (!isSecondary) {
+            setTranslationY(0f);
+        }
+    }
+
+    private float resolveTranslationBlockTopY() {
+        SyllableRomanCache syl = syllableCache;
+        if (showSyllableRomanization && syl != null && syl.transLayout != null) {
+            return (float) syl.transTopY;
+        }
+        Layout layout = getLayout();
+        if (layout != null && transStart >= 0 && transEnd > transStart && transStart < layout.getText().length()) {
+            int transLine = layout.getLineForOffset(transStart);
+            return (float) layout.getLineTop(transLine);
+        }
+        return Float.NaN;
+    }
+
+    public boolean syncInnerFlip(
+            @NonNull LyricsScrollEngine engine,
+            int rowIndex,
+            boolean enabled,
+            float now) {
+        boolean active = false;
+        if (!isSecondary) {
+            engine.onInnerPlaced(mainVocalFlip, rowIndex, (float) getTop(), enabled);
+            float mainTransY = enabled ? mainVocalFlip.translation(now) : 0f;
+            setTranslationY(mainTransY);
+            if (mainVocalFlip.hasActiveLayers(now)) {
+                active = true;
+            }
+            float transTop = resolveTranslationBlockTopY();
+            if (!Float.isNaN(transTop)) {
+                engine.onInnerPlaced(translationFlip, rowIndex, transTop, enabled);
+                translationFlipOffsetY = enabled ? translationFlip.translation(now) : 0f;
+                boolean transActive = translationFlip.hasActiveLayers(now);
+                if (transActive || Math.abs(translationFlipOffsetY) > 0.1f) {
+                    invalidate();
+                }
+                active = active || transActive;
+            } else {
+                translationFlip.reset(Float.NaN);
+                translationFlipOffsetY = 0f;
+            }
+        }
+        return active;
+    }
+
+    public boolean updateInnerFlipTranslation(float now) {
+        boolean active = false;
+        if (!isSecondary) {
+            float mainTransY = mainVocalFlip.translation(now);
+            if (Math.abs(mainTransY - getTranslationY()) > 0.1f) {
+                setTranslationY(mainTransY);
+            }
+            if (mainVocalFlip.hasActiveLayers(now)) {
+                active = true;
+            }
+            float newTransOffset = translationFlip.translation(now);
+            boolean transActive = translationFlip.hasActiveLayers(now);
+            if (Math.abs(newTransOffset - translationFlipOffsetY) > 0.1f || transActive) {
+                translationFlipOffsetY = newTransOffset;
+                invalidate();
+            }
+            if (transActive) {
+                active = true;
+            }
+        }
+        return active;
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        cancelScaleAnimation();
+        cancelRevealAnimators();
+        if (blurAnimator != null) {
+            blurAnimator.cancel();
+            blurAnimator = null;
+        }
+        if (secondaryAnimator != null) {
+            secondaryAnimator.cancel();
+            secondaryAnimator = null;
+        }
+        if (fadeAnimator != null) {
+            fadeAnimator.cancel();
+            fadeAnimator = null;
+        }
     }
 
     @Override
@@ -299,10 +877,10 @@ final class LyricsLineView extends TextView {
         super.onSizeChanged(w, h, oldw, oldh);
         if (isSecondary) {
             final int pivotH = secondaryFullHeight > 0 ? secondaryFullHeight : h;
-            setPivotX(isCentered ? w * 0.5f : isRightAligned ? w : 0f);
+            setPivotX(computeLinePivotX(w));
             setPivotY(bgBeforeMain ? pivotH : 0f);
         } else {
-            setPivotX(isRightAligned ? w - getPaddingRight() : getPaddingLeft());
+            setPivotX(computeLinePivotX(w));
             setPivotY(h * 0.5f);
         }
     }
@@ -593,6 +1171,10 @@ final class LyricsLineView extends TextView {
         final boolean structuralChange = this.wordTimings != timings
                 || this.originalTextStart != origStart
                 || this.unsungColor != unsungCol;
+        if (posMs == Long.MIN_VALUE
+                || (this.positionMs != Long.MIN_VALUE && (posMs < this.positionMs - 400L || posMs > this.positionMs + 1000L))) {
+            this.lastDrawnClockPos = Long.MIN_VALUE;
+        }
         this.wordTimings = timings != null ? timings : Collections.emptyList();
         this.positionMs = posMs;
         this.allSung = sung;
@@ -832,18 +1414,25 @@ final class LyricsLineView extends TextView {
         }
 
         final float contentNow = contentReveal;
-        final int mainAlpha = Math.round(((unsungColor != 0 && !wordTimings.isEmpty() && sweepEnabled)
-                ? LyricsColors.UNSUNG_ALPHA * 255f : baseTextAlpha) * lineAlpha * contentNow);
-        final float secondaryBaseAlpha = activeLine
-                ? LyricsColors.ACTIVE_TRANSLATION_ALPHA * 255f
-                : Color.alpha(LyricsColors.secondaryTextColor());
-        final int secondaryAlpha = Math.round(lineAlpha * secondaryBaseAlpha * contentNow);
-        final float readingBaseAlpha = activeLine
-                ? (perWordReading && Settings.LYRICS_WORD_SYNC.get() && sweepEnabled
-                   ? LyricsColors.UNSUNG_ALPHA * 255f
-                   : LyricsColors.ACTIVE_READING_ALPHA * 255f)
-                : Color.alpha(LyricsColors.secondaryTextColor());
-        final int romaAlpha = Math.round(lineAlpha * readingBaseAlpha * contentNow);
+        final float transShift = translationFlipOffsetY;
+        final boolean hasTransShift = Math.abs(transShift) > 0.05f;
+
+        final boolean hasWordSweep = unsungColor != 0 && !wordTimings.isEmpty() && sweepEnabled && !allSung && (activeLine || lineLookAnimator != null);
+        final float effectiveMain = lineLookInitialized
+                ? (hasWordSweep ? lookCurUnsungAlpha : lookCurAlpha)
+                : (((unsungColor != 0 && !wordTimings.isEmpty() && sweepEnabled) ? LyricsColors.UNSUNG_ALPHA : (baseTextAlpha / 255f)) * lineAlpha);
+        final int mainAlpha = Math.max(0, Math.min(255, Math.round(255f * effectiveMain * contentNow)));
+        final float effectiveTrans = lineLookInitialized
+                ? lookCurTransAlpha
+                : (lineAlpha * (activeLine ? LyricsColors.ACTIVE_TRANSLATION_ALPHA : LyricsColors.UNSUNG_ALPHA));
+        final int transAlpha = Math.max(0, Math.min(255, Math.round(255f * effectiveTrans * contentNow * transReveal)));
+        final float effectiveReading = lineLookInitialized
+                ? ((Settings.LYRICS_WORD_SYNC.get() && hasWordSweep) ? lookCurUnsungAlpha : lookCurReadingAlpha)
+                : (lineAlpha * (activeLine
+                ? (Settings.LYRICS_WORD_SYNC.get() && hasWordSweep
+                ? LyricsColors.UNSUNG_ALPHA : LyricsColors.ACTIVE_READING_ALPHA)
+                : LyricsColors.UNSUNG_ALPHA));
+        final int romaAlpha = Math.max(0, Math.min(255, Math.round(255f * effectiveReading * contentNow * romaReveal)));
 
         boolean[] secondaryLine = new boolean[lineCount];
         markSecondaryLines(layout, transStart, transEnd, secondaryLine);
@@ -860,9 +1449,16 @@ final class LyricsLineView extends TextView {
         final int textLength = layout.getText().length();
         final boolean onlySecondaryRegion = transStart == 0 && transEnd == textLength
                 || romaStart == 0 && romaEnd == textLength;
-
         if (!hasSecondary || onlySecondaryRegion) {
+            final boolean isTransRun = (transStart >= 0 && transStart == 0 && transEnd == textLength);
+            if (hasTransShift && isTransRun) {
+                canvas.save();
+                canvas.translate(0f, transShift);
+            }
             drawTextRun(canvas, layout, 0, lineCount - 1, mainAlpha, 0);
+            if (hasTransShift && isTransRun) {
+                canvas.restore();
+            }
             return true;
         }
 
@@ -883,8 +1479,18 @@ final class LyricsLineView extends TextView {
                     // exactly when the reading's range is the one present.
                     final boolean runHoldsWords = smallRunHoldsWords ? isRoma == (romaFirst >= 0) : isRoma;
                     final float reveal = isRoma ? romaReveal : transReveal;
-                    drawTextRun(canvas, layout, runStart, runLast,
-                            Math.round((runHoldsWords ? romaAlpha : secondaryAlpha) * reveal), 0);
+                final int transFirst = rangeLine(layout, transStart, transEnd, true);
+                final int transLast = rangeLine(layout, transStart, transEnd, false);
+                final boolean isTrans = (transStart >= 0 && transFirst >= 0 && runStart >= transFirst && runLast <= transLast);
+                if (hasTransShift && isTrans) {
+                    canvas.save();
+                    canvas.translate(0f, transShift);
+                }
+                drawTextRun(canvas, layout, runStart, runLast,
+                        Math.round((runHoldsWords ? romaAlpha : transAlpha) * reveal), 0);
+                if (hasTransShift && isTrans) {
+                    canvas.restore();
+                }
                 } else {
                     drawTextRun(canvas, layout, runStart, runLast, mainAlpha, 0);
                 }
@@ -926,9 +1532,31 @@ final class LyricsLineView extends TextView {
             }
         }
         secondaryFullHeight = getMeasuredHeight();
-        if (isSecondary && secondaryFraction < 0.999f) {
-            setMeasuredDimension(getMeasuredWidth(),
-                    Math.max(1, Math.round(secondaryFullHeight * secondaryFraction)));
+        if (isSecondary) {
+            int fullH = secondaryFullHeight;
+            int spacingPx = Dim.dp(4);
+            int netReportedH = secondaryLayoutVisible ? (fullH + spacingPx) : 0;
+            if (lastSecondaryReportedH >= 0 && lastSecondaryReportedH != netReportedH && scrollEngine != null) {
+                scrollEngine.recordLayoutShift(this, netReportedH - lastSecondaryReportedH);
+            }
+            lastSecondaryReportedH = netReportedH;
+        }
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        if (isSecondary) {
+            int fullH = secondaryFullHeight > 0 ? secondaryFullHeight : getMeasuredHeight();
+            int spacingPx = Dim.dp(4);
+            int netReportedH = secondaryLayoutVisible ? (fullH + spacingPx) : 0;
+            if (getVisibility() == View.GONE) {
+                netReportedH = 0;
+            }
+            if (lastSecondaryReportedH >= 0 && lastSecondaryReportedH != netReportedH && scrollEngine != null) {
+                scrollEngine.recordLayoutShift(this, netReportedH - lastSecondaryReportedH);
+            }
+            lastSecondaryReportedH = netReportedH;
         }
     }
 
@@ -954,8 +1582,10 @@ final class LyricsLineView extends TextView {
         }
         try {
             if (contentReveal <= 0f
-                    || (!sweepEnabled && !allSung && !activeLine)
-                    || (wordTimings.isEmpty() && !allSung)) {
+                    || unsungColor == 0
+                    || !hasWordTimings()
+                    || (allSung && baseDrawn)
+                    || (!activeLine && lineLookAnimator == null)) {
                 return;
             }
 
@@ -995,7 +1625,10 @@ final class LyricsLineView extends TextView {
                 }
             }
 
-            for (int i = 0; i < cachedWordCount; i++) {
+        final long currentPos = (this.positionMs != Long.MIN_VALUE && sweepEnabled && !allSung && activeLine)
+                ? getLiveClockPositionMs()
+                : this.positionMs;
+        for (int i = 0; i < cachedWordCount; i++) {
                 LyricsSpanBuilder.WordTiming timing = wordTimings.get(i);
                 final int s = timing.start() + origStart;
                 final int e = Math.min(timing.end() + origStart, text.length());
@@ -1011,14 +1644,14 @@ final class LyricsLineView extends TextView {
                 float progress;
                 if (allSung) {
                     progress = 1f;
-                } else if (positionMs >= timing.endMs()) {
-                    progress = 1f;
-                } else if (positionMs <= timing.startMs()) {
-                    progress = 0f;
-                } else {
-                    progress = (float) (positionMs - timing.startMs())
-                            / (float) (timing.endMs() - timing.startMs());
-                }
+            } else if (currentPos >= timing.endMs()) {
+                progress = 1f;
+            } else if (currentPos <= timing.startMs()) {
+                progress = 0f;
+            } else {
+                progress = (float) (currentPos - timing.startMs())
+                        / (float) (timing.endMs() - timing.startMs());
+            }
                 // A word still to come counts as unsung, so this has to sit ahead of the continue
                 // below or the line looks finished from its first word.
                 allWordsDone = allWordsDone && progress >= 1f;
@@ -1114,8 +1747,17 @@ final class LyricsLineView extends TextView {
 
             // Smallness follows the run beside it, never the words it holds: a dual line hands those to the
             // reading wherever the swap puts it, so a main run without them is still the main run.
-            final int lyricColor = LyricsColors.lineTextColor() | 0xFF000000;
-            final int readingColor = (activeLine ? lyricColor : LyricsColors.secondaryTextColor()) | 0xFF000000;
+            final float sungMainAlphaFactor = lineLookInitialized ? lookCurAlpha : lineAlpha;
+            final float sungReadingAlphaFactor = lineLookInitialized
+                    ? lookCurReadingAlpha
+                    : (lineAlpha * (activeLine ? LyricsColors.ACTIVE_READING_ALPHA
+                       : (Color.alpha(LyricsColors.secondaryTextColor()) / 255f)));
+            final int sungMainAlpha = Math.max(0, Math.min(255, Math.round(255f * sungMainAlphaFactor)));
+            final int sungReadingAlpha = Math.max(0, Math.min(255, Math.round(255f * sungReadingAlphaFactor)));
+            final int baseRgb = (LyricsColors.lineTextColor() | 0xFF000000) & 0x00FFFFFF;
+            final int readRgb = baseRgb;
+            final int lyricColor = baseRgb | (sungMainAlpha << 24);
+            final int readingColor = readRgb | (sungReadingAlpha << 24);
             // A main run holding none of the line's words has no word to light it, so it would sit in
             // the unsung colour for the whole line and then jump white at the last word. Drawn while the
             // line is active instead, and kept once the words are past so it does not fall back.
@@ -2235,19 +2877,23 @@ final class LyricsLineView extends TextView {
 
         // The unsung colours, as drawBaseText picks them. Without a real sweep (synthesized
         // plain-text timings), the main text is not being karaoke-swept, so it stays bright.
-        final boolean dimMain = unsungColor != 0 && !wordTimings.isEmpty() && sweepEnabled;
-        final int mainUnsungAlpha = Math.round((dimMain
-                ? LyricsColors.UNSUNG_ALPHA * 255f : baseTextAlpha) * lineAlpha * contentNow);
-        final float secondaryBaseAlpha = activeLine
-                ? LyricsColors.ACTIVE_TRANSLATION_ALPHA * 255f
-                : Color.alpha(LyricsColors.secondaryTextColor());
-        final int transAlpha = Math.round(lineAlpha * secondaryBaseAlpha * contentNow * transReveal);
-        final float readingBaseAlpha = activeLine
-                ? (Settings.LYRICS_WORD_SYNC.get() && unsungColor != 0 && !wordTimings.isEmpty() && sweepEnabled
-                   ? LyricsColors.UNSUNG_ALPHA * 255f
-                   : LyricsColors.ACTIVE_READING_ALPHA * 255f)
-                : Color.alpha(LyricsColors.secondaryTextColor());
-        final int romaUnsungAlpha = Math.round(lineAlpha * readingBaseAlpha * contentNow * romaReveal);
+        final boolean hasWordSweep = (unsungColor != 0 && !wordTimings.isEmpty() && sweepEnabled) && !allSung && (activeLine || lineLookAnimator != null);
+        final float effectiveMainUnsung = lineLookInitialized
+                ? (hasWordSweep ? lookCurUnsungAlpha : lookCurAlpha)
+                : (((unsungColor != 0 && !wordTimings.isEmpty() && sweepEnabled) ? LyricsColors.UNSUNG_ALPHA : (baseTextAlpha / 255f)) * lineAlpha);
+        final int mainUnsungAlpha = Math.max(0, Math.min(255, Math.round(255f * effectiveMainUnsung * contentNow)));
+        final float effectiveTrans = lineLookInitialized
+                ? lookCurTransAlpha
+                : (lineAlpha * (activeLine ? LyricsColors.ACTIVE_TRANSLATION_ALPHA : LyricsColors.UNSUNG_ALPHA));
+        final int transAlpha = Math.max(0, Math.min(255, Math.round(255f * effectiveTrans * contentNow * transReveal)));
+        final float effectiveReading = lineLookInitialized
+                ? ((Settings.LYRICS_WORD_SYNC.get() && hasWordSweep) ? lookCurUnsungAlpha : lookCurReadingAlpha)
+                : (lineAlpha * (activeLine
+                ? (Settings.LYRICS_WORD_SYNC.get() && hasWordSweep
+                ? LyricsColors.UNSUNG_ALPHA : LyricsColors.ACTIVE_READING_ALPHA)
+                : LyricsColors.UNSUNG_ALPHA));
+        final int romaUnsungAlpha = Math.max(0, Math.min(255, Math.round(255f * effectiveReading * contentNow * romaReveal)));
+        final int rubyUnsungAlpha = Math.max(0, Math.min(255, Math.round(255f * effectiveReading * contentNow * romaReveal)));
 
         final int baseMainRgb = (getCurrentTextColor() | 0xFF000000) & 0x00FFFFFF;
         final int readingRgb = (activeLine
@@ -2278,7 +2924,6 @@ final class LyricsLineView extends TextView {
         if (romaReveal > 0f && romaUnsungAlpha > 0) {
             drawUnsungReadings(canvas, cache.romanLines, originX, mainY, romaUnsungColor);
         }
-        final int rubyUnsungAlpha = Math.round(lineAlpha * readingBaseAlpha * contentNow);
         if (rubyUnsungAlpha > 0) {
             drawUnsungReadings(canvas, cache.rubyLines, originX, mainY,
                     readingRgb | (Math.max(0, Math.min(255, rubyUnsungAlpha)) << 24));
@@ -2289,13 +2934,14 @@ final class LyricsLineView extends TextView {
             tp.setShader(null);
             tp.setColor(transColor);
             canvas.save();
-            canvas.translate(originX, originY + cache.transTopY);
+            canvas.translate(originX, originY + cache.transTopY + translationFlipOffsetY);
             cache.transLayout.draw(canvas);
             canvas.restore();
         }
 
-        // The sweep, as onDraw runs it.
-        if ((!sweepEnabled && !allSung && !activeLine) || (wordTimings.isEmpty() && !allSung)) {
+        // The sweep, as onDraw runs it. When allSung is true or not active, the base pass above already drew
+        // the entire line and readings at lookCurAlpha / lookCurReadingAlpha.
+        if (!hasWordSweep || (!activeLine && lineLookAnimator == null)) {
             return;
         }
 
@@ -2310,17 +2956,20 @@ final class LyricsLineView extends TextView {
         float[] sylProgress = cache.sylProgressScratch;
         int firstSungLine = -1;
 
+        final long currentSyllablePos = (this.positionMs != Long.MIN_VALUE && hasWordSweep && activeLine)
+                ? getLiveClockPositionMs()
+                : this.positionMs;
         for (int i = 0; i < sylCount; i++) {
             LyricsSpanBuilder.WordTiming timing = alignedSyllables.get(i).syllable();
             final float progress;
             if (allSung) {
                 progress = 1f;
-            } else if (positionMs >= timing.endMs()) {
+            } else if (currentSyllablePos >= timing.endMs()) {
                 progress = 1f;
-            } else if (positionMs <= timing.startMs()) {
+            } else if (currentSyllablePos <= timing.startMs()) {
                 progress = 0f;
             } else {
-                progress = (float) (positionMs - timing.startMs())
+                progress = (float) (currentSyllablePos - timing.startMs())
                         / (float) (timing.endMs() - timing.startMs());
             }
             sylProgress[i] = progress;
@@ -2355,9 +3004,10 @@ final class LyricsLineView extends TextView {
             }
         }
 
-        final int mainSungAlpha = Math.round(255f * contentNow);
+        final float sungMainFactor = (lineLookInitialized && !isSecondary) ? lookCurAlpha : lineAlpha;
+        final int mainSungAlpha = Math.max(0, Math.min(255, Math.round(255f * sungMainFactor * contentNow)));
         final int mainSungColor = (LyricsColors.lineTextColor() & 0x00FFFFFF)
-                | (Math.max(0, Math.min(255, mainSungAlpha)) << 24);
+                | (mainSungAlpha << 24);
 
         // Each lyric line is lit up to its furthest sung edge.
         for (int idx = 0; idx < clusters.size(); idx++) {
@@ -2389,16 +3039,20 @@ final class LyricsLineView extends TextView {
         }
 
         // Each reading is lit as far as its own syllable is sung.
-        final int sungReadingAlpha = Math.round(lineAlpha * LyricsColors.ACTIVE_READING_ALPHA * 255f * contentNow);
+        final float sungReadFactor = (lineLookInitialized && !isSecondary)
+                ? lookCurReadingAlpha
+                : (lineAlpha * LyricsColors.ACTIVE_READING_ALPHA);
+        final int sungReadingAlpha = Math.round(sungReadFactor * 255f * contentNow);
         if (romaReveal > 0f) {
             final int romaSungAlpha = Math.round(sungReadingAlpha * romaReveal);
+            final int rubySungAlpha = Math.round(sungReadingAlpha * romaReveal);
             drawSungReadings(canvas, cache.romanLines, originX, mainY,
                     readingRgb | (Math.max(0, Math.min(255, romaSungAlpha)) << 24),
                     sylProgress, sylCount, allSung);
+            drawSungReadings(canvas, cache.rubyLines, originX, mainY,
+                    readingRgb | (Math.max(0, Math.min(255, rubySungAlpha)) << 24),
+                    sylProgress, sylCount, allSung);
         }
-        drawSungReadings(canvas, cache.rubyLines, originX, mainY,
-                readingRgb | (Math.max(0, Math.min(255, sungReadingAlpha)) << 24),
-                sylProgress, sylCount, allSung);
     }
 
     private static void drawUnsungReadings(Canvas canvas, RomanLineStatics[] lines,

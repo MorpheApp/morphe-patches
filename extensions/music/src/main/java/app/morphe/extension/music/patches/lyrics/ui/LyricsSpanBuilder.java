@@ -801,25 +801,30 @@ public final class LyricsSpanBuilder {
         }
         return closed;
     }
+    /**
+     * A one-word line is swept by character across its word's span, but only when it has one: a
+     * line timed only as a whole lights in one go like every other such line in the song.
+     */
+    private static boolean hasTimedWord(LyricsLine line) {
+        List<Word> words = line.words();
+        return words.size() > 1
+                || (words.size() == 1 && words.get(0).endMs() > words.get(0).startMs());
+    }
+
 
     static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index,
                                                boolean splitWordlessLine) {
         LyricsLine line = lines.get(index);
         String lineText = displayLineText(line);
         // A lone word with furigana stays whole, so its reading sits over all of it.
-        if (!hasAnyRuby(line) && countWords(lineText) == 1 && line.hasWordTimings()) {
-            long rangeStart = line.startTimeMs();
-            if (rangeStart < 0 && line.hasWords()) {
-                rangeStart = line.words().get(0).startMs();
-            }
-            long rangeEnd = line.endTimeMs();
+        if (!hasAnyRuby(line) && countWords(lineText) == 1 && line.words().size() == 1 && hasTimedWord(line)) {
+            Word singleWord = line.words().get(0);
+            long rangeStart = singleWord.startMs() >= 0 ? singleWord.startMs() : line.startTimeMs();
+            long rangeEnd = singleWord.endMs() > rangeStart ? singleWord.endMs() : line.endTimeMs();
             if (rangeEnd <= rangeStart) {
                 rangeEnd = index + 1 < lines.size()
                         ? lines.get(index + 1).startTimeMs()
                         : LyricsLine.NO_TIME;
-            }
-            if (rangeEnd <= rangeStart && line.hasWords()) {
-                rangeEnd = line.words().get(line.words().size() - 1).endMs();
             }
             if (rangeStart >= 0 && rangeEnd > rangeStart) {
                 List<WordTiming> synthesized =
@@ -952,7 +957,7 @@ public final class LyricsSpanBuilder {
             final long clusterEnd = i + 1 == clusterCount
                     ? endMs
                     : startMs + (endMs - startMs) * (i + 1) / clusterCount;
-            timings.add(new WordTiming(boundaries[i], boundaries[i + 1], clusterStart, clusterEnd, null, false, true));
+            timings.add(new WordTiming(boundaries[i], boundaries[i + 1], clusterStart, clusterEnd, null, false, false));
         }
         return timings;
     }
@@ -1020,7 +1025,8 @@ public final class LyricsSpanBuilder {
 
     /** The line's own word timings, with any text they leave out lit along with its neighbours. */
     private static List<WordTiming> computeWordTimingsFromWords(LyricsLine line) {
-        if (!line.hasWordTimings() && !hasAnyRuby(line)) {
+        final boolean hasRealTimings = line.hasWordTimings();
+        if (!hasRealTimings && !hasAnyRuby(line)) {
             return Collections.emptyList();
         }
 
@@ -1049,6 +1055,9 @@ public final class LyricsSpanBuilder {
                 rawRom = LyricsBracketSplitter.stripAllBrackets(rawRom);
             }
 
+            final long wStart = hasRealTimings ? word.startMs() : LyricsLine.NO_TIME;
+            final long wEnd = hasRealTimings ? word.endMs() : LyricsLine.NO_TIME;
+
             // A timing covering several words is shared out between them by length.
             if (trimmed.indexOf(' ') >= 0) {
                 String[] parts = trimmed.split("\\s+");
@@ -1059,8 +1068,8 @@ public final class LyricsSpanBuilder {
                     totalChars += p.length();
                 }
                 totalChars = Math.max(1, totalChars);
-                final long totalDur = Math.max(1L, word.endMs() - word.startMs());
-                long curStartMs = word.startMs();
+                final long totalDur = Math.max(1L, wEnd - wStart);
+                long curStartMs = wStart;
 
                 for (int pi = 0; pi < parts.length; pi++) {
                     String part = parts[pi];
@@ -1069,30 +1078,45 @@ public final class LyricsSpanBuilder {
                     }
                     final boolean isLast = (pi == parts.length - 1);
                     final long partDur = (totalDur * part.length()) / totalChars;
-                    final long partEndMs = isLast
-                            ? Math.max(curStartMs + 1L, word.endMs())
-                            : curStartMs + Math.max(1L, partDur);
+                    final long partEndMs = !hasRealTimings ? LyricsLine.NO_TIME
+                            : (isLast ? Math.max(curStartMs + 1L, wEnd) : curStartMs + Math.max(1L, partDur));
                     String partRom = (romParts != null && romParts.length == parts.length)
                             ? romParts[pi] : null;
                     offset = appendMatchedWordTiming(
                             timings, text, textLength, offset, part, wordToken(part),
-                            curStartMs, partEndMs, partRom, !isLast || wordTrailingSpace, word.ruby(), averaged);
+                            hasRealTimings ? curStartMs : LyricsLine.NO_TIME, partEndMs,
+                            partRom, !isLast || wordTrailingSpace, word.ruby(), averaged);
                     curStartMs = partEndMs;
                 }
             } else {
                 offset = appendMatchedWordTiming(
                         timings, text, textLength, offset, trimmed, wordToken(trimmed),
-                        word.startMs(), word.endMs(), rawRom, wordTrailingSpace, word.ruby(), averaged);
+                        wStart, wEnd, rawRom, wordTrailingSpace, word.ruby(), averaged);
             }
         }
 
         // Text after the last timed word, such as closing punctuation, is lit after it.
-        if (offset < textLength && !timings.isEmpty()) {
+        if (hasRealTimings && offset < textLength && !timings.isEmpty()) {
             fillUntimedGap(timings, text, textLength, offset, textLength,
                     timings.get(timings.size() - 1).endMs(),
                     Math.max(line.endTimeMs(), timings.get(timings.size() - 1).endMs() + 200L));
         }
 
+        // Clamp overlapping consecutive word timings so earlier words do not
+        // bleed past the start of the following word.
+        if (hasRealTimings && timings.size() > 1) {
+            for (int i = 1; i < timings.size(); i++) {
+                WordTiming prev = timings.get(i - 1);
+                WordTiming curr = timings.get(i);
+                if (prev.startMs() != LyricsLine.NO_TIME && curr.startMs() != LyricsLine.NO_TIME
+                        && curr.start() >= prev.end() && curr.startMs() < prev.endMs()) {
+                    long clampedEnd = Math.max(prev.startMs() + 1L, curr.startMs());
+                    timings.set(i - 1, new WordTiming(
+                            prev.start(), prev.end(), prev.startMs(), clampedEnd,
+                            prev.romaji(), prev.hasTrailingSpace(), prev.ruby(), prev.averaged()));
+                }
+            }
+        }
         return timings;
     }
 
@@ -1136,20 +1160,48 @@ public final class LyricsSpanBuilder {
     }
 
     /** {@return the hit, or -1 when it is not there or only within a longer word} */
-    private static int usableHit(String text, int textLength, int offset, String token) {
-        int start = findToken(text, offset, token);
-        if (start < 0) {
+    private static int usableHit(String text, int textLength, int offset, String token,
+                                 boolean wordTrailingSpace) {
+        int firstStart = findToken(text, offset, token);
+        if (firstStart < 0) {
             return -1;
         }
-        final int[] hit = wordHit(text, textLength, start, token);
-        final int wordStart = hit[0];
-        final int wordEnd = hit[2];
-        if (wordEnd > wordStart
-                && ((wordStart > 0 && isWordContinuation(text.charAt(wordStart - 1)))
-                || (wordEnd < textLength && isWordContinuation(text.charAt(wordEnd))))) {
-            return -1;
+        int nextCharOffset = Math.max(0, offset);
+        while (nextCharOffset < textLength && isSurroundingMark(text.charAt(nextCharOffset))) {
+            nextCharOffset++;
         }
-        return start;
+        // If the token sits right at the current cursor (or after leading whitespace/marks),
+        // it is the next sequential word or syllable in the line and is always valid.
+        if (firstStart <= nextCharOffset) {
+            return firstStart;
+        }
+        int searchFrom = offset;
+        int firstWordStartCandidate = -1;
+        while (searchFrom < textLength) {
+            int start = findToken(text, searchFrom, token);
+            if (start < 0) {
+                break;
+            }
+            final int[] hit = wordHit(text, textLength, start, token);
+            final int wordStart = hit[0];
+            final int wordEnd = hit[2];
+            if (wordEnd <= wordStart) {
+                return start;
+            }
+            final boolean prevCont = wordStart > 0 && isWordContinuation(text.charAt(wordStart - 1));
+            final boolean nextCont = wordEnd < textLength && isWordContinuation(text.charAt(wordEnd));
+            if (!prevCont && !nextCont) {
+                return start;
+            }
+            if (!prevCont && firstWordStartCandidate < 0) {
+                firstWordStartCandidate = start;
+            }
+            searchFrom = start + 1;
+        }
+        if (!wordTrailingSpace && firstWordStartCandidate >= 0) {
+            return firstWordStartCandidate;
+        }
+        return -1;
     }
 
     private static int appendMatchedWordTiming(
@@ -1166,23 +1218,24 @@ public final class LyricsSpanBuilder {
             @Nullable String ruby,
             boolean averaged) {
         // The drawn line may hold the word's marks elsewhere, hence the bare word to fall back on.
-        int start = usableHit(text, textLength, offset, token);
+        int start = usableHit(text, textLength, offset, token, wordTrailingSpace);
         String matched = token;
         if (start < 0 && !token.equals(bareToken)) {
-            start = usableHit(text, textLength, offset, bareToken);
+            start = usableHit(text, textLength, offset, bareToken, wordTrailingSpace);
             matched = bareToken;
         }
         if (start < 0) {
-            // Left where it was, so the words after an unmatched one can still be found.
+            // Left where it was, so words after an unmatched one can still be found.
             return offset;
         }
         final int[] hit = wordHit(text, textLength, start, matched);
         final int wordStart = hit[0];
         final int spanEnd = hit[1];
         final int wordEnd = hit[2];
-        final long timedStart = startMs;
-        final long timedEnd = Math.max(endMs, startMs + 1L);
-        if (start > offset) {
+        final boolean hasTiming = startMs != LyricsLine.NO_TIME && endMs != LyricsLine.NO_TIME;
+        final long timedStart = hasTiming ? startMs : LyricsLine.NO_TIME;
+        final long timedEnd = hasTiming ? Math.max(endMs, startMs + 1L) : LyricsLine.NO_TIME;
+        if (hasTiming && start > offset) {
             final long gapStartMs = timings.isEmpty()
                     ? Math.max(0L, timedStart - 150L)
                     : timings.get(timings.size() - 1).endMs();
@@ -1191,17 +1244,17 @@ public final class LyricsSpanBuilder {
         if (spanEnd <= start) {
             return offset;
         }
-        if (start < wordStart) {
+        if (hasTiming && start < wordStart) {
             appendMarksTiming(timings, text, textLength, start, wordStart, timedStart, averaged);
         }
         if (wordEnd > wordStart) {
             final boolean trailSpace = wordTrailingSpace
                     || (wordEnd < textLength && Character.isWhitespace(text.charAt(wordEnd)));
             timings.add(new WordTiming(wordStart, wordEnd, timedStart, timedEnd, rom, trailSpace, ruby, averaged));
-        } else {
+        } else if (hasTiming) {
             appendMarksTiming(timings, text, textLength, wordStart, spanEnd, timedStart, averaged);
         }
-        if (wordEnd < spanEnd) {
+        if (hasTiming && wordEnd < spanEnd) {
             appendMarksTiming(timings, text, textLength, wordEnd, spanEnd, timedEnd, averaged);
         }
         return spanEnd;

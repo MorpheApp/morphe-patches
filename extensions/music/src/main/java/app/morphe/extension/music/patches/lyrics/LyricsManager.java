@@ -152,20 +152,16 @@ public final class LyricsManager {
     private volatile String dialogPreviewVideoId;
 
     private volatile State state = State.IDLE;
+    private long positionMs;
+    private long positionUpdatedAtUptimeMs;
+    private long smoothPositionMs = 0L;
+    private long lastSmoothFrameUptimeMs = 0L;
+    private long lastSampledPlaybackPosMs = -1L;
     private long lastVideoTimeSample = -1;
+    private long lastPlaybackSampleUptimeMs;
     private float playbackSpeed = 1f;
     private boolean playing;
-    // The position is sampled a few times a second, and estimated in between on every frame
-    // so the highlight moves smoothly. The estimate only ever moves forward while playing.
-    private long lastSamplePosition = -1;
-    private long lastSampleTimeMs;
-    private long lastCorrectedSampleTimeMs;
-    private long lastFrameTimeUptimeMs = -1;
-    private double estimate;
-    private long smoothPosition;
-    private boolean frameCallbackScheduled;
-    /** Frames are only followed while something reads the position, such as an open lyrics panel. */
-    private boolean positionReadSinceFrame;
+    private static final long PLAYBACK_STALE_MS = 500L;
     private int temporaryOffsetMs = 0;
     private volatile boolean phase2Done;
     /**
@@ -182,7 +178,6 @@ public final class LyricsManager {
     private volatile String searchQueryTitle;
     @Nullable
     private volatile String searchQueryArtist;
-    private final Choreographer.FrameCallback frameCallback = this::onFrame;
     /**
      * Fingerprint the remembered lyric had before it was written to disk. Writing drops the raw
      * text the fingerprint was taken from, so this is what tells a later lookup that the lyric
@@ -280,70 +275,38 @@ public final class LyricsManager {
         }
     }
 
-    private void onFrame(long frameTimeNanos) {
-        frameCallbackScheduled = false;
-        final long videoTime = VideoInformation.getVideoTime();
-        if (videoTime >= 0 && videoTime != lastVideoTimeSample) {
-            updateSample(videoTime, SystemClock.uptimeMillis());
+    /**
+     * Advances playback position smoothly during active playback.
+     */
+    public static long advanceSmoothPlaybackPosition(
+            long lastAnchorPositionMs,
+            long elapsedRealtimeDeltaMs,
+            boolean isPlaying,
+            float playbackSpeed,
+            long durationMs) {
+        if (!isPlaying || elapsedRealtimeDeltaMs <= 0L) {
+            return Math.max(0L, lastAnchorPositionMs);
         }
-
-        if (!playing || lastSamplePosition < 0 || !positionReadSinceFrame) {
-            lastFrameTimeUptimeMs = -1;
-            return;
+        long clampedElapsed = Math.max(0L, Math.min(500L, elapsedRealtimeDeltaMs));
+        double advanced = lastAnchorPositionMs + clampedElapsed * Math.max(0.1f, playbackSpeed);
+        if (durationMs > 0L) {
+            return Math.max(0L, Math.min(durationMs, Math.round(advanced)));
         }
-        positionReadSinceFrame = false;
-
-        final long frameTimeMs = frameTimeNanos / 1_000_000L;
-        final float speed = Math.max(0.1f, playbackSpeed);
-        if (lastFrameTimeUptimeMs == -1) {
-            // Starting or resuming: carry the last sample forward by the time since it was taken.
-            lastFrameTimeUptimeMs = frameTimeMs;
-            estimate = Math.max(estimate, lastSamplePosition
-                    + (SystemClock.uptimeMillis() - lastSampleTimeMs) * speed);
-        }
-        final long stepMs = Math.max(0, Math.min(MAX_FRAME_STEP_MS, frameTimeMs - lastFrameTimeUptimeMs));
-        lastFrameTimeUptimeMs = frameTimeMs;
-        estimate += stepMs * speed;
-
-        // A new sample pulls a lagging estimate towards it, harder the further behind it is.
-        if (lastSampleTimeMs != lastCorrectedSampleTimeMs) {
-            lastCorrectedSampleTimeMs = lastSampleTimeMs;
-            final double error = lastSamplePosition - estimate;
-            if (Math.abs(error) > SEEK_THRESHOLD_MS) {
-                estimate = lastSamplePosition;
-            } else if (error > 500) {
-                estimate += error * 0.8;
-            } else if (error > 100) {
-                estimate += error * 0.5;
-            } else if (error > 0) {
-                estimate += error * 0.3;
-            }
-        }
-
-        estimate = Math.max(estimate, smoothPosition);
-        smoothPosition = Math.round(estimate);
-        ensureFrameCallback();
+        return Math.max(0L, Math.round(advanced));
     }
 
-    private void ensureFrameCallback() {
-        if (!playing || frameCallbackScheduled) {
-            return;
-        }
-        if (Looper.myLooper() == Looper.getMainLooper()) {
-            Choreographer.getInstance().postFrameCallback(frameCallback);
-            frameCallbackScheduled = true;
+    public static long correctSmoothEstimate(long currentSmoothMs, long reportedPositionMs) {
+        double error = (double) reportedPositionMs - (double) currentSmoothMs;
+        double absError = Math.abs(error);
+        double corrected;
+        if (absError > 150.0) {
+            corrected = currentSmoothMs + error;
+        } else if (absError > 30.0) {
+            corrected = currentSmoothMs + error * 0.85;
         } else {
-            Utils.runOnMainThread(this::ensureFrameCallback);
+            corrected = currentSmoothMs + error * 0.5;
         }
-    }
-
-    private void stopFrameCallback() {
-        frameCallbackScheduled = false;
-        if (Looper.myLooper() == Looper.getMainLooper()) {
-            Choreographer.getInstance().removeFrameCallback(frameCallback);
-        } else {
-            Utils.runOnMainThread(this::stopFrameCallback);
-        }
+        return Math.max(0L, Math.round(corrected));
     }
 
     /**
@@ -420,31 +383,20 @@ public final class LyricsManager {
     }
 
     private void resetPosition() {
-        stopFrameCallback();
-        lastVideoTimeSample = -1;
-        lastSamplePosition = -1;
-        lastSampleTimeMs = 0;
-        lastCorrectedSampleTimeMs = 0;
-        lastFrameTimeUptimeMs = -1;
-        estimate = 0;
-        smoothPosition = 0;
-    }
-
-    private void updateSample(long newPosition, long now) {
-        final long prevSample = lastSamplePosition;
-        lastSamplePosition = newPosition;
-        lastSampleTimeMs = now;
-        lastVideoTimeSample = newPosition;
-        if (prevSample < 0 || Math.abs(newPosition - prevSample) > SEEK_THRESHOLD_MS) {
-            estimate = newPosition;
-            smoothPosition = newPosition;
-        }
+        long now = SystemClock.uptimeMillis();
+        positionMs = 0;
+        positionUpdatedAtUptimeMs = 0;
+        smoothPositionMs = 0L;
+        lastSmoothFrameUptimeMs = now;
+        lastSampledPlaybackPosMs = -1L;
+        lastVideoTimeSample = -1L;
+        lastPlaybackSampleUptimeMs = 0;
     }
 
     /**
      * Current playback position on the released-audio timeline: while the segment switch
-     * is on, time the sponsor block segments have already passed is removed first, then
-     * the user configured offset and the temporary offset are applied.
+     * is on, the time of sponsor block segments already passed is removed first, then the
+     * user-configured offset and any temporary offset are applied.
      */
     public long getPositionMs() {
         return SkipSegments.contentMs(computeExpectedPositionMs(), syncSegs())
@@ -457,23 +409,39 @@ public final class LyricsManager {
 
     private long computeExpectedPositionMs() {
         final long now = SystemClock.uptimeMillis();
+        final long elapsedDelta = (lastSmoothFrameUptimeMs > 0L) ? Math.max(0L, now - lastSmoothFrameUptimeMs) : 0L;
+        final TrackInfo track = currentTrack;
+        final long durationMs = (track != null && track.durationSeconds() > 0)
+                ? track.durationSeconds() * 1000L : 0L;
+        smoothPositionMs = advanceSmoothPlaybackPosition(
+                smoothPositionMs, elapsedDelta, playing, playbackSpeed, durationMs);
+        lastSmoothFrameUptimeMs = now;
+        positionMs = smoothPositionMs;
+        positionUpdatedAtUptimeMs = now;
+
         final long videoTime = VideoInformation.getVideoTime();
-
         if (videoTime >= 0 && videoTime != lastVideoTimeSample) {
-            updateSample(videoTime, now);
-        }
+            lastVideoTimeSample = videoTime;
 
-        if (!playing || lastSamplePosition < 0) {
-            if (lastSamplePosition >= 0) {
-                smoothPosition = lastSamplePosition;
-                estimate = lastSamplePosition;
+            final boolean isInitial = (lastPlaybackSampleUptimeMs == 0 || (positionMs == 0 && smoothPositionMs == 0));
+            final boolean isBackwardSeek = (smoothPositionMs > 0 && videoTime < smoothPositionMs - 500L);
+            final boolean isForwardSeek = (videoTime > smoothPositionMs + 1000L);
+            final boolean isStaleDrift = (Math.abs(videoTime - smoothPositionMs) > 1000L
+                    && (now - lastPlaybackSampleUptimeMs > PLAYBACK_STALE_MS));
+
+            if (isInitial || isBackwardSeek || isForwardSeek || isStaleDrift
+                    || (!playing && Math.abs(videoTime - smoothPositionMs) > 600L)) {
+                smoothPositionMs = videoTime;
+                positionMs = videoTime;
+                positionUpdatedAtUptimeMs = now;
+            } else if (playing && videoTime > smoothPositionMs + 50L) {
+                smoothPositionMs = correctSmoothEstimate(smoothPositionMs, videoTime);
+                positionMs = smoothPositionMs;
+                positionUpdatedAtUptimeMs = now;
             }
-            return Math.max(0, lastSamplePosition);
         }
 
-        positionReadSinceFrame = true;
-        ensureFrameCallback();
-        return Math.max(0, smoothPosition);
+        return Math.max(0L, smoothPositionMs);
     }
 
     public int getTemporaryOffsetMs() {
@@ -482,7 +450,6 @@ public final class LyricsManager {
 
     public void setTemporaryOffsetMs(int ms) {
         temporaryOffsetMs = ms;
-        lastFrameTimeUptimeMs = -1;
     }
 
     /** Called from the panel when the track is about to change or to go away, not per drag frame. */
@@ -762,28 +729,59 @@ public final class LyricsManager {
             return;
         }
 
-        playing = playbackState.getState() == PlaybackState.STATE_PLAYING;
+        final int state = playbackState.getState();
+        final boolean isPausedOrStopped = (state == PlaybackState.STATE_PAUSED
+                || state == PlaybackState.STATE_STOPPED
+                || state == PlaybackState.STATE_NONE
+                || state == PlaybackState.STATE_ERROR);
+        final boolean wasPlaying = playing;
+        final boolean nowPlaying = !isPausedOrStopped;
+        final long now = SystemClock.uptimeMillis();
+        if (wasPlaying && lastSmoothFrameUptimeMs > 0L) {
+            final TrackInfo track = currentTrack;
+            final long durationMs = (track != null && track.durationSeconds() > 0)
+                    ? track.durationSeconds() * 1000L : 0L;
+            smoothPositionMs = advanceSmoothPlaybackPosition(
+                    smoothPositionMs, Math.max(0L, now - lastSmoothFrameUptimeMs), true, playbackSpeed, durationMs);
+        }
+        lastSmoothFrameUptimeMs = now;
+        playing = nowPlaying;
 
         final long newPosition = playbackState.getPosition();
         if (newPosition >= 0) {
-            updateSample(newPosition, SystemClock.uptimeMillis());
+            boolean stateJustToggled = (wasPlaying != nowPlaying);
+            final long currentVideoTime = VideoInformation.getVideoTime();
+            boolean isStaleZero = (newPosition == 0 && currentVideoTime > 1000L);
+            if (!isStaleZero) {
+                if (lastSampledPlaybackPosMs < 0L || Math.abs(newPosition - smoothPositionMs) > 1200L) {
+                    smoothPositionMs = newPosition;
+                } else if (stateJustToggled) {
+                    // when just pause or play, dont trust coarse rounded PlaybackState sample
+                    // keep extrapolated ms position so it dont look jumping back or lag when play again
+                } else if (!nowPlaying) {
+                    if (newPosition != lastSampledPlaybackPosMs) {
+                        smoothPositionMs = newPosition;
+                    }
+                } else if (newPosition != lastSampledPlaybackPosMs) {
+                    // Only blend forward when VideoInformation is active so a stale coarse
+                    // PlaybackState sample cannot pull smoothPositionMs backward mid-word.
+                    if (currentVideoTime < 0 || newPosition > smoothPositionMs) {
+                        smoothPositionMs = correctSmoothEstimate(smoothPositionMs, newPosition);
+                    }
+                }
+                lastSampledPlaybackPosMs = newPosition;
+                positionMs = smoothPositionMs;
+                positionUpdatedAtUptimeMs = now;
+                lastPlaybackSampleUptimeMs = now;
+            }
+        } else {
+            positionMs = smoothPositionMs;
+            positionUpdatedAtUptimeMs = now;
         }
 
         final float speed = playbackState.getPlaybackSpeed();
-        // A paused state reports speed zero, which would freeze the extrapolation even
-        // after playback resumes, so only positive speeds are kept.
         if (speed > 0) {
             playbackSpeed = speed;
-        }
-
-        if (playing) {
-            lastFrameTimeUptimeMs = -1;
-        } else {
-            stopFrameCallback();
-            if (lastSamplePosition >= 0) {
-                smoothPosition = lastSamplePosition;
-                estimate = lastSamplePosition;
-            }
         }
         ensureLoadedForCurrentVideo();
     }
@@ -1062,6 +1060,13 @@ public final class LyricsManager {
         final String storedFingerprint = preference.fingerprint();
         if (!LyricsMatch.isValidLyrics(raw, track)) {
             Logger.printInfo(() -> "LyricsPref skipped: filters keep out the remembered lyric");
+            return false;
+        }
+        if (Settings.LYRICS_WORD_SYNC.get()
+                && LyricsRequests.syncRank(raw) < 2
+                && queryTitle == null
+                && queue.isEmpty()) {
+            Logger.printInfo(() -> "LyricsPref skipped: stale auto-saved line-synced lyric while word sync is enabled");
             return false;
         }
         if (id != requestId.get()) {
@@ -1519,14 +1524,21 @@ public final class LyricsManager {
             publishFromLookup(id, Lyrics.NOT_FOUND);
             return;
         }
-
+        final boolean wantWordSync = Settings.LYRICS_WORD_SYNC.get();
         int notFoundCached = 0;
+        Lyrics cachedFallback = null;
         for (LyricsProvider provider : providers) {
             Lyrics cached = LyricsCache.get(track, provider.name(), preferenceVideoId);
             if (cached != null && cached != Lyrics.NOT_FOUND) {
-                publishFromLookup(id, cached);
-                if (!suppressed) {
-                    return;
+                if (!wantWordSync || LyricsRequests.syncRank(cached) == 2) {
+                    publishFromLookup(id, cached);
+                    if (!suppressed) {
+                        return;
+                    }
+                    continue;
+                }
+                if (cachedFallback == null) {
+                    cachedFallback = cached;
                 }
                 continue;
             }
@@ -1536,12 +1548,20 @@ public final class LyricsManager {
             }
         }
         if (queryTrack == null && notFoundCached >= providers.size()) {
-            publishFromLookup(id, Lyrics.NOT_FOUND);
+            if (cachedFallback != null) {
+                publishFromLookup(id, cachedFallback);
+            } else {
+                publishFromLookup(id, Lyrics.NOT_FOUND);
+            }
             return;
         }
 
         if (!Utils.isNetworkConnected()) {
-            setErrorStateIfCurrent(id);
+            if (cachedFallback != null) {
+                publishFromLookup(id, cachedFallback);
+            } else {
+                setErrorStateIfCurrent(id);
+            }
             return;
         }
 
@@ -1557,7 +1577,7 @@ public final class LyricsManager {
         LookupResult fetchResult = fetchFromProviders(id, tiers.original(), tiers.derived(),
                 failed, providers, false);
         if (id != requestId.get()) return;
-        result = fetchResult.best;
+        result = fetchResult.best != null ? fetchResult.best : cachedFallback;
 
         boolean validResult = LyricsMatch.isValidLyrics(result, track);
         if (validResult) {

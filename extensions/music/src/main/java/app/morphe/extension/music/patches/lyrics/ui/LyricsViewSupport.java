@@ -257,7 +257,7 @@ final class LyricsViewSupport {
         if (w > 0) {
             final boolean isEnd = view.isRightAligned()
                     || (view.getGravity() & Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.END;
-            view.setPivotX(isEnd ? w - view.getPaddingRight() : view.getPaddingLeft());
+            view.setPivotX(view.isCentered() ? w / 2f : (isEnd ? w - view.getPaddingRight() : view.getPaddingLeft()));
         }
         if (h > 0) {
             view.setPivotY(h * 0.5f);
