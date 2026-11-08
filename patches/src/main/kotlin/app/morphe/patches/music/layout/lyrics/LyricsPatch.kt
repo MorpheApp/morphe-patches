@@ -9,7 +9,9 @@
 package app.morphe.patches.music.layout.lyrics
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -39,7 +41,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPatch;"
-private const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/lyrics/ui/LyricsPanelInstaller;"
+internal const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/lyrics/ui/LyricsPanelInstaller;"
 private const val LOCKSCREEN_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/LockScreenLyrics;"
 private const val MINIPLAYER_LYRICS_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/MiniplayerLyrics;"
 
@@ -270,8 +272,8 @@ val lyricsPatch = patch(
         // the app itself put in the container is what tells them apart. Panels with a
         // heading do not need this, so a miss here leaves the rest of the patch working.
         val log = Logger.getLogger(this::class.java.name)
-        runCatching {
-            EngagementPanelControllerFingerprint.classDef.apply {
+        val engagementPanelType = runCatching {
+            EngagementPanelControllerFingerprint.classDef.run {
                 val controllerType = type
 
                 // Only instance fields the controller reassigns can hold the panel it shows,
@@ -308,11 +310,47 @@ val lyricsPatch = patch(
                             "$PANEL_INSTALLER_CLASS->onEngagementPanelChanged(Ljava/lang/Object;)V"
                     )
                 }
+
+                panelType
             }
         }.onFailure {
             log.warning(
                 "Engagement panel controller not found, a lyrics panel shown without a " +
                     "heading will not be used: ${it.message}"
+            )
+        }.getOrNull()
+
+        // The panel identifier says which panel this is in any language, and with or without
+        // a heading. The app reads it with a static helper taking the panel renderer, and the
+        // panel hands out its renderer through the only method of the panel type that takes
+        // nothing and returns that type.
+        if (engagementPanelType != null) {
+            val identifierHelper = PanelIdentifierFingerprint.instructionMatches.first().methodReference
+            val rendererType = identifierHelper.parameterTypes.single().toString()
+            val panelClass = classDefBy(engagementPanelType)
+            val rendererGetter = panelClass.methods.single { method ->
+                method.parameterTypes.isEmpty() && method.returnType == rendererType
+            }
+            val invokeGetter = if (AccessFlags.INTERFACE.isSet(panelClass.accessFlags)) {
+                "invoke-interface"
+            } else {
+                "invoke-virtual"
+            }
+
+            GetPanelIdentifierFingerprint.method.addInstructionsWithLabels(
+                0,
+                """
+                    check-cast p0, $engagementPanelType
+                    $invokeGetter { p0 }, $rendererGetter
+                    move-result-object p0
+                    if-eqz p0, :no_renderer
+                    invoke-static { p0 }, $identifierHelper
+                    move-result-object p0
+                    return-object p0
+                    :no_renderer
+                    const/4 p0, 0x0
+                    return-object p0
+                """
             )
         }
 

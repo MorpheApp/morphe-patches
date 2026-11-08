@@ -1122,10 +1122,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
 
         if (cachedOtherPanelOpen) {
-            if (getParent() instanceof ViewGroup parent) {
-                parent.removeView(this);
-            }
-            setVisibility(GONE);
+            dismissForOtherPanel();
             return;
         }
 
@@ -1158,6 +1155,14 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             sibling.setVisibility(GONE);
             hiddenSiblings.add(sibling);
         }
+    }
+
+    void dismissForOtherPanel() {
+        restoreHiddenSiblings();
+        if (getParent() instanceof ViewGroup parent) {
+            parent.removeView(this);
+        }
+        setVisibility(GONE);
     }
 
     /**

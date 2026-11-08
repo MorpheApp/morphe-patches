@@ -23,7 +23,6 @@ import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.text.Normalizer;
-import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
@@ -72,9 +71,14 @@ public final class LyricsPanelInstaller {
     private static boolean installPending;
     private static WeakReference<LyricsPanelView> panelReference = new WeakReference<>(null);
     /** Panel the app currently has in the engagement panel container. */
-    private static WeakReference<Object> currentPanelReference = new WeakReference<>(null);
+    private static volatile WeakReference<Object> currentPanelReference = new WeakReference<>(null);
+    /** Identifier of the current panel, or null when it has none or it could not be read. */
+    @Nullable
+    private static volatile String currentPanelIdentifier;
     /** Panel the lyrics were last built into, kept to recognize it when it comes back. */
-    private static WeakReference<Object> lyricsPanelReference = new WeakReference<>(null);
+    private static volatile WeakReference<Object> lyricsPanelReference = new WeakReference<>(null);
+    /** Panel last found to be another one, such as the comments. */
+    private static volatile WeakReference<Object> otherPanelReference = new WeakReference<>(null);
     private static final SharedPreferences.OnSharedPreferenceChangeListener SETTINGS_LISTENER =
             (prefs, key) -> {
                 if (key == null || !key.startsWith("morphe_music_lyrics")) {
@@ -197,9 +201,7 @@ public final class LyricsPanelInstaller {
         if (panelView == null) {
             return;
         }
-        if (panelView.getParent() instanceof ViewGroup parent) {
-            parent.removeView(panelView);
-        }
+        panelView.dismissForOtherPanel();
         panelReference.clear();
     }
 
@@ -220,26 +222,58 @@ public final class LyricsPanelInstaller {
     }
 
     /**
+     * Part of the identifier the app gives the lyrics engagement panel, which is
+     * "music_watch_lyrics_panel". The other panels, such as "music-comment-panel", lack it.
+     */
+    private static final String LYRICS_PANEL_IDENTIFIER_PART = "lyrics";
+
+    /**
+     * Method is modified during patching to read the identifier through the app's own helper.
+     *
+     * @return Identifier of the panel, or null when it has none or the patch did not find the helper.
+     */
+    @Nullable
+    private static String getPanelIdentifier(Object panel) {
+        return null;
+    }
+
+    /**
      * Injection point.
      *
-     * <p>Some accounts get the panel without a heading, and then the app's own bookkeeping
-     * is the only thing that tells the lyrics panel from the other panels that share the
-     * same container.
+     * <p>All engagement panels share one container, and some accounts get them without a
+     * heading, so the panel the app itself put in the container is what tells them apart.
+     * Its identifier answers that in any language. Without one, the panel is recognized by
+     * what was built into it, see {@link #onLyricsPanelDetected()} and
+     * {@link #onOtherPanelDetected()}.
      *
      * @param panel Panel put in the engagement panel container, or null when it was given up.
      */
     @SuppressWarnings("unused")
     public static void onEngagementPanelChanged(@Nullable Object panel) {
         try {
+            final String identifier = panel == null ? null : getPanelIdentifier(panel);
+            if (identifier != null) {
+                if (identifier.contains(LYRICS_PANEL_IDENTIFIER_PART)) {
+                    markLyricsPanel(panel);
+                } else {
+                    markOtherPanel(panel);
+                }
+            }
+            currentPanelIdentifier = identifier;
             currentPanelReference = new WeakReference<>(panel);
 
             final boolean isLyricsPanel = isCurrentPanelLyrics();
             Logger.printDebug(() -> "Engagement panel: "
                     + (panel == null ? "none" : panel.getClass().getName())
+                    + (identifier == null ? "" : " identifier: " + identifier)
                     + (isLyricsPanel ? " (lyrics)" : ""));
 
+            if (!isLyricsPanel) {
+                installPending = false;
+            }
             updateKeepScreenOn(isLyricsPanel);
 
+            // Takes the panel out of the container when another panel took it over.
             LyricsPanelView panelView = panelReference.get();
             if (panelView != null) {
                 panelView.syncOverlay();
@@ -255,8 +289,23 @@ public final class LyricsPanelInstaller {
         }
     }
 
+    private static void markLyricsPanel(Object panel) {
+        lyricsPanelReference = new WeakReference<>(panel);
+        if (otherPanelReference.get() == panel) {
+            otherPanelReference.clear();
+        }
+    }
+
+    private static void markOtherPanel(Object panel) {
+        otherPanelReference = new WeakReference<>(panel);
+        if (lyricsPanelReference.get() == panel) {
+            lyricsPanelReference.clear();
+        }
+    }
+
     /**
-     * Called by the litho filter when the lyrics panel is being built.
+     * Called by the litho filter when the timed lyrics component is built, and when lyrics
+     * are loaded or turned on.
      */
     public static void onLyricsPanelDetected() {
         try {
@@ -267,13 +316,45 @@ public final class LyricsPanelInstaller {
         }
     }
 
+    /**
+     * Called by the litho filter when comments are built. Only needed for a panel without an
+     * identifier, so that the timed lyrics updates that keep coming while the comments are
+     * open do not claim the comments panel as the lyrics one.
+     */
+    public static void onOtherPanelDetected() {
+        try {
+            Object panel = currentPanelReference.get();
+            if (panel == null || currentPanelIdentifier != null
+                    || panel == otherPanelReference.get()) {
+                return;
+            }
+            markOtherPanel(panel);
+            installPending = false;
+            Logger.printDebug(() -> "Engagement panel is not the lyrics one: "
+                    + panel.getClass().getName());
+
+            updateKeepScreenOn(false);
+            LyricsPanelView panelView = panelReference.get();
+            if (panelView != null) {
+                Utils.runOnMainThreadNowOrLater(panelView::syncOverlay);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onOtherPanelDetected failure", ex);
+        }
+    }
+
     private static void detectLyricsPanel() {
-        // Whichever panel holds the container during the lyrics build is the lyrics panel,
-        // which keeps this working without knowing what the app calls it. Not so with lyrics in
-        // a tab, where the build happens behind whichever panel is open, such as the comments.
+        // Not so with lyrics in a tab, where the build happens behind whichever panel is open.
         Object panel = currentPanelReference.get();
-        if (panel != null && !isInTab(panelReference.get())) {
-            lyricsPanelReference = new WeakReference<>(panel);
+        if (panel != null && panel != lyricsPanelReference.get()
+                && !isInTab(panelReference.get())) {
+            // The timed lyrics are also updated while another panel is open over the lyrics.
+            if (currentPanelIdentifier != null || panel == otherPanelReference.get()) {
+                return;
+            }
+            // With nothing else to go by, whichever panel holds the container during the
+            // lyrics build is the lyrics panel.
+            markLyricsPanel(panel);
         }
 
         updateKeepScreenOn(true);
@@ -519,47 +600,21 @@ public final class LyricsPanelInstaller {
     }
 
     /**
-     * All engagement panels are built into the same content container, so the heading
-     * is what tells the lyrics panel from the comments or the live chat one. A panel
-     * shown without a heading falls back to the panel the app itself put there.
-     *
-     * @return Whether the engagement panel currently on screen is the lyrics panel.
+     * @return Whether the lyrics panel or the lyrics tab is the one on screen.
      */
     public static boolean isLyricsPanelOpen() {
-        if (isInTab(panelReference.get())) {
-            return true;
-        }
-        // Asked first because it is answered by identity, which does not move with the language;
-        // the heading is read only when there is no panel to go by.
-        if (isCurrentPanelLyrics()) {
-            return true;
-        }
-        Activity activity = Utils.getActivity();
-        if (activity == null) {
-            return false;
-        }
-        TextView title = findForegroundTitle(activity.getWindow().getDecorView());
-        return isLyricsTitle(title);
+        return isInTab(panelReference.get()) || isCurrentPanelLyrics();
     }
 
+    /**
+     * Answered by identity only, which keeps it cheap enough for the frequent overlay checks.
+     *
+     * @return Whether another engagement panel, such as the comments, holds the container.
+     */
     public static boolean isOtherPanelForeground() {
-        if (isInTab(panelReference.get())) {
-            return false;
-        }
-        // The current panel reference is tracked by identity and does not change across locales.
-        if (isCurrentPanelLyrics()) {
-            return false;
-        }
-        Activity activity = Utils.getActivity();
-        if (activity == null) {
-            return false;
-        }
-        TextView title = findForegroundTitle(activity.getWindow().getDecorView());
-        if (title != null) {
-            return !isLyricsTitle(title);
-        }
-        Object current = currentPanelReference.get();
-        return current != null && !isCurrentPanelLyrics();
+        return !isInTab(panelReference.get())
+                && currentPanelReference.get() != null
+                && !isCurrentPanelLyrics();
     }
 
     /**
@@ -568,18 +623,17 @@ public final class LyricsPanelInstaller {
      */
     @Nullable
     private static ViewGroup findLyricsPanelContent(View root) {
-        TextView title = findVisibleTitle(root);
-        if (isLyricsTitle(title)) {
-            // Heading and content share a panel, so the container comes from the heading's
-            // own panel rather than a global lookup.
-            return findPanelContent(title);
-        }
-
-        // A heading that did not match says nothing about which panel this is, so it must not end
-        // the search: the app's own bookkeeping still says which panel it put in the container,
-        // and that answer is by identity rather than by text, so it holds in any language.
         if (!isCurrentPanelLyrics()) {
             return null;
+        }
+        // Heading and content share a panel, so the container comes from the heading's own
+        // panel when there is one, rather than from a global lookup.
+        TextView title = findForegroundTitle(root);
+        if (title != null) {
+            ViewGroup content = findPanelContent(title);
+            if (content != null) {
+                return content;
+            }
         }
         return findForegroundPanelContent(root);
     }
@@ -591,19 +645,6 @@ public final class LyricsPanelInstaller {
             return null;
         }
         return findForegroundView(root, panelContentId, new Rect(), ViewGroup.class);
-    }
-
-    private static boolean isLyricsTitle(@Nullable TextView title) {
-        if (title == null) {
-            return false;
-        }
-        String expectedTitle = lyricsTitle(title.getContext());
-        if (isSameTitle(expectedTitle, title.getText())) {
-            return true;
-        }
-        // Fall back to application-level context title if different from the view context
-        String appTitle = lyricsTitle(null);
-        return appTitle != null && isSameTitle(appTitle, title.getText());
     }
 
     /**
@@ -666,37 +707,6 @@ public final class LyricsPanelInstaller {
     }
 
     @Nullable
-    private static TextView findVisibleTitle(View root) {
-        final int titleId = ResourceUtils.getIdentifier(ResourceType.ID, PANEL_TITLE_ID);
-        if (titleId == 0) {
-            Logger.printException(() -> "App is missing " + PANEL_TITLE_ID);
-            return null;
-        }
-        return findVisibleTitle(root, titleId);
-    }
-
-    @Nullable
-    private static TextView findVisibleTitle(View view, int titleId) {
-        if (view.getVisibility() != View.VISIBLE) {
-            return null;
-        }
-
-        if (view.getId() == titleId && view instanceof TextView title) {
-            return title;
-        }
-
-        if (view instanceof ViewGroup group) {
-            for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                TextView found = findVisibleTitle(group.getChildAt(i), titleId);
-                if (found != null) {
-                    return found;
-                }
-            }
-        }
-        return null;
-    }
-
-    @Nullable
     private static TextView findForegroundTitle(View root) {
         final int titleId = ResourceUtils.getIdentifier(ResourceType.ID, PANEL_TITLE_ID);
         if (titleId == 0) {
@@ -738,14 +748,11 @@ public final class LyricsPanelInstaller {
      * leave a stale answer behind.
      */
     @Nullable
-    private static String lyricsTitle(@Nullable Context context) {
+    private static String lyricsTitle(Context context) {
         final int id = ResourceUtils.getStringIdentifier(LYRICS_TITLE_RESOURCE);
         if (id == 0) {
             Logger.printException(() -> "App is missing: " + LYRICS_TITLE_RESOURCE);
             return null;
-        }
-        if (context == null) {
-            return ResourceUtils.getString(LYRICS_TITLE_RESOURCE);
         }
         try {
             return context.getResources().getString(id);
