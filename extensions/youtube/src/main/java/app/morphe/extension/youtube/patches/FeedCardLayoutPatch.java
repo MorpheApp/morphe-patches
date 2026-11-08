@@ -323,6 +323,11 @@ public class FeedCardLayoutPatch {
      * Comments panel of the watch page. Newer clients use the first id.
      */
     private static final String[] COMMENTS_PANEL_IDS = {"comment-item-section", "engagement-panel-comments-section"};
+    /**
+     * Start of the ids of the replies panels that the comments open, such as 'FEcomment_watch_replies_panel'.
+     */
+    private static final String COMMENT_REPLIES_PANEL_ID_PREFIX = "FEcomment";
+    private static final String ENGAGEMENT_PANEL_SURFACE_UNKNOWN = "ENGAGEMENT_PANEL_SURFACE_UNKNOWN";
 
     /**
      * Invisible characters at the end of the accessibility labels of the cards and of their comment button.
@@ -2509,6 +2514,34 @@ public class FeedCardLayoutPatch {
             Logger.printException(() -> "openCommentsPanel failure", ex);
         }
         return false;
+    }
+
+    /**
+     * Injection point.
+     * The commands of the comments, such as the command that opens the replies, show their panel without a surface,
+     * and the app shows a panel without a surface with the panels of the watch page, which is not open.
+     *
+     * @return If the panel can be shown over the feed, when the feed shows the comments panel.
+     */
+    public static boolean isPanelWithoutSurface(@Nullable Enum<?> surface) {
+        return ACTION_BUTTONS && surface != null && ENGAGEMENT_PANEL_SURFACE_UNKNOWN.equals(surface.name())
+                && !PlayerType.getCurrent().isMaximizedOrFullscreen();
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param shownPanelId The panel that is shown over the feed, if any.
+     * @return If the panel without a surface is shown over the feed, with the comments panel that the cards opened.
+     */
+    public static boolean showPanelOverFeed(@Nullable String shownPanelId) {
+        if (shownPanelId == null || !(Utils.equalsAny(shownPanelId, COMMENTS_PANEL_IDS)
+                || shownPanelId.startsWith(COMMENT_REPLIES_PANEL_ID_PREFIX))) {
+            return false;
+        }
+
+        Logger.printDebug(() -> "Showing the panel over the feed, above: " + shownPanelId);
+        return true;
     }
 
     /**
