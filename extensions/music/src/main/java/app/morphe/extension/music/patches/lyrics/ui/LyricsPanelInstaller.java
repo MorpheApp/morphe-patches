@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
@@ -84,9 +85,11 @@ public final class LyricsPanelInstaller {
     /** True while a non-lyrics engagement panel (e.g. comments) is active in the shared container. */
     private static volatile boolean nonLyricsPanelActive;
     /** True while a background UI thread check to dismiss or identify non-lyrics panel is queued. */
+    @SuppressWarnings("unused")
     private static volatile boolean nonLyricsDismissPending;
     /** Foreground heading text observed on a non-lyrics engagement panel (e.g. "Comments" / "Yorumlar"). */
     @Nullable
+    @SuppressWarnings("unused")
     private static volatile String knownNonLyricsTitle;
     private static final SharedPreferences.OnSharedPreferenceChangeListener SETTINGS_LISTENER =
             (prefs, key) -> {
@@ -230,6 +233,40 @@ public final class LyricsPanelInstaller {
         });
     }
 
+    /** Panel endpoint identifier substring for YouTube Music's lyrics engagement panel. */
+    private static final String LYRICS_PANEL_IDENTIFIER = "music_watch_lyrics_panel";
+
+    /** Panel endpoint identifier substring for YouTube Music's comment engagement panel. */
+    private static final String COMMENT_PANEL_IDENTIFIER = "music-comment-panel";
+
+    /**
+     * Determines whether the given engagement panel is the lyrics panel or a non-lyrics
+     * panel (such as comments) by inspecting its endpoint identifier fields via reflection.
+     *
+     * @return {@link Boolean#TRUE} if lyrics, {@link Boolean#FALSE} if non-lyrics, or {@code null} if unknown.
+     */
+    @Nullable
+    private static Boolean classifyEngagementPanel(@Nullable Object panel) {
+        if (panel == null) {
+            return null;
+        }
+        return classifyEngagementPanel(panel, describePanel(panel));
+    }
+
+    @Nullable
+    private static Boolean classifyEngagementPanel(@Nullable Object panel, @NonNull String description) {
+        if (panel == null) {
+            return null;
+        }
+        if (description.contains(LYRICS_PANEL_IDENTIFIER)) {
+            return Boolean.TRUE;
+        }
+        if (description.contains(COMMENT_PANEL_IDENTIFIER) || description.contains("comment-panel")) {
+            return Boolean.FALSE;
+        }
+        return null;
+    }
+
     /**
      * Injection point.
      *
@@ -244,32 +281,48 @@ public final class LyricsPanelInstaller {
         try {
             invalidateOtherPanelCache();
             currentPanelReference = new WeakReference<>(panel);
+            final String panelDescription = panel != null ? describePanel(panel) : "";
             if (panel == null) {
                 nonLyricsPanelActive = false;
                 installPending = false;
             } else {
-                Object knownLyrics = lyricsPanelReference.get();
-                Object knownNonLyrics = nonLyricsPanelReference.get();
-                if (panel == knownLyrics) {
-                    nonLyricsPanelActive = false;
-                } else if (isLyricsRequestedRecently()) {
-                    // The user just tapped the lyrics button, so this new panel is the lyrics one.
-                    // The tap is used up by this panel, so it cannot claim a later one.
-                    lyricsButtonTapUptimeMs = 0;
+                Boolean classification = classifyEngagementPanel(panel, panelDescription);
+                if (Boolean.TRUE.equals(classification)) {
                     nonLyricsPanelActive = false;
                     lyricsPanelReference = new WeakReference<>(panel);
-                    if (panel == knownNonLyrics) {
+                    if (panel == nonLyricsPanelReference.get()) {
                         nonLyricsPanelReference = new WeakReference<>(null);
                     }
-                } else if (panel == knownNonLyrics) {
-                    // Only a panel already identified as non-lyrics by positive evidence
-                    // (comment components, a non-lyrics heading) stays non-lyrics. An unknown
-                    // new instance is no longer guessed to be non-lyrics, because the app
-                    // builds a fresh lyrics panel instance now and then.
+                } else if (Boolean.FALSE.equals(classification)) {
                     nonLyricsPanelActive = true;
                     installPending = false;
+                    nonLyricsPanelReference = new WeakReference<>(panel);
+                    if (panel == lyricsPanelReference.get()) {
+                        lyricsPanelReference = new WeakReference<>(null);
+                    }
                 } else {
-                    nonLyricsPanelActive = false;
+                    Object knownLyrics = lyricsPanelReference.get();
+                    Object knownNonLyrics = nonLyricsPanelReference.get();
+                    if (panel == knownLyrics) {
+                        nonLyricsPanelActive = false;
+                    } else if (isLyricsRequestedRecently()) {
+                        // The user just tapped the lyrics button, so this new panel is the lyrics one.
+                        // The tap is used up by this panel, so it cannot claim a later one.
+                        lyricsButtonTapUptimeMs = 0;
+                        nonLyricsPanelActive = false;
+                        lyricsPanelReference = new WeakReference<>(panel);
+                        if (panel == knownNonLyrics) {
+                            nonLyricsPanelReference = new WeakReference<>(null);
+                        }
+                    } else if (panel == knownNonLyrics) {
+                        nonLyricsPanelActive = true;
+                        installPending = false;
+                    } else {
+                        // Any unknown panel is treated as non-lyrics
+                        nonLyricsPanelActive = true;
+                        installPending = false;
+                        nonLyricsPanelReference = new WeakReference<>(panel);
+                    }
                 }
             }
 
@@ -278,7 +331,7 @@ public final class LyricsPanelInstaller {
                     + (panel == null ? "none" : panel.getClass().getName())
                     + (isLyricsPanel ? " (lyrics)" : "")
                     + " nonLyricsActive=" + nonLyricsPanelActive
-                    + (panel == null ? "" : " fields: " + describePanel(panel)));
+                    + (panel == null ? "" : " fields: " + panelDescription));
 
             updateKeepScreenOn(isLyricsPanel);
 
@@ -361,32 +414,8 @@ public final class LyricsPanelInstaller {
      */
     public static void onLyricsPanelDetected(boolean isBackgroundUpdate) {
         try {
-            if (isBackgroundUpdate) {
-                if (nonLyricsPanelActive) {
-                    Activity activity = Utils.getActivity();
-                    TextView title = activity != null
-                            ? findForegroundTitle(activity.getWindow().getDecorView())
-                            : null;
-                    if (title != null && isLyricsTitle(title) && !isKnownNonLyricsTitle(title)) {
-                        nonLyricsPanelActive = false;
-                        // The heading says lyrics, so a panel that was guessed to be a
-                        // non-lyrics one by identity was a new lyrics panel instance.
-                        Object current = currentPanelReference.get();
-                        if (current != null && current == nonLyricsPanelReference.get()) {
-                            nonLyricsPanelReference = new WeakReference<>(null);
-                            lyricsPanelReference = new WeakReference<>(current);
-                            Logger.printDebug(() -> "Lyrics detect: reclassified panel as lyrics by title");
-                        }
-                    } else {
-                        if (title == null) {
-                            // Panel views are not attached yet right after the build.
-                            scheduleDetectRetry(1);
-                        }
-                        return;
-                    }
-                }
-            } else {
-                nonLyricsPanelActive = false;
+            if (nonLyricsPanelActive) {
+                return;
             }
             detectLyricsPanel(isBackgroundUpdate);
         } catch (Exception ex) {
@@ -403,7 +432,6 @@ public final class LyricsPanelInstaller {
     public static void onNonLyricsPanelDetected() {
         try {
             invalidateOtherPanelCache();
-            final boolean wasActive = nonLyricsPanelActive;
             nonLyricsPanelActive = true;
             installPending = false;
             Object current = currentPanelReference.get();
@@ -411,33 +439,10 @@ public final class LyricsPanelInstaller {
                 nonLyricsPanelReference = new WeakReference<>(current);
             }
             updateKeepScreenOn(false);
-            if (wasActive && knownNonLyricsTitle != null) {
-                return;
+            LyricsPanelView panelView = panelReference.get();
+            if (panelView != null && !isInTab(panelView)) {
+                Utils.runOnMainThreadNowOrLater(panelView::dismissForOtherPanel);
             }
-            if (nonLyricsDismissPending) {
-                return;
-            }
-            nonLyricsDismissPending = true;
-            Utils.runOnMainThreadNowOrLater(() -> {
-                try {
-                    Activity activity = Utils.getActivity();
-                    if (activity != null) {
-                        TextView title = findForegroundTitle(activity.getWindow().getDecorView());
-                        if (title != null && !isLyricsTitle(title)) {
-                            CharSequence text = title.getText();
-                            if (text != null && text.length() > 0) {
-                                knownNonLyricsTitle = text.toString();
-                            }
-                        }
-                    }
-                    LyricsPanelView panelView = panelReference.get();
-                    if (panelView != null && !isInTab(panelView)) {
-                        panelView.dismissForOtherPanel();
-                    }
-                } finally {
-                    nonLyricsDismissPending = false;
-                }
-            });
         } catch (Exception ex) {
             Logger.printException(() -> "onNonLyricsPanelDetected failure", ex);
         }
@@ -475,6 +480,7 @@ public final class LyricsPanelInstaller {
      * Positive evidence only: it acts when the heading says lyrics, never otherwise. Throttled
      * so background component updates (for example while comments are open) stay cheap.
      */
+    @SuppressWarnings("unused")
     private static void scheduleDetectRetry(int attempt) {
         if (attempt > DETECT_RETRY_MAX || detectRetryPending) {
             return;
@@ -510,37 +516,9 @@ public final class LyricsPanelInstaller {
         if (nonLyricsPanelActive) {
             return;
         }
-        // Whichever panel holds the container during the initial lyrics build is the lyrics panel,
-        // which keeps this working without knowing what the app calls it. Not so with lyrics in
-        // a tab, where the build happens behind whichever panel is open, such as the comments.
         Object panel = currentPanelReference.get();
         if (panel != null && !isInTab(panelReference.get())) {
-            if (panel == nonLyricsPanelReference.get()) {
-                // The panel may have been guessed to be a non-lyrics one only because it was a
-                // new instance (identity tracking). Trust positive evidence over the guess:
-                // a lyrics heading, or a fresh build with no heading attached yet.
-                Activity activity = Utils.getActivity();
-                TextView title = activity != null
-                        ? findForegroundTitle(activity.getWindow().getDecorView())
-                        : null;
-                final boolean lyricsHeading = title != null && isLyricsTitle(title)
-                        && !isKnownNonLyricsTitle(title);
-                final boolean freshBuildNoHeading = title == null && !isBackgroundUpdate;
-                if (!lyricsHeading && !freshBuildNoHeading && !isLyricsRequestedRecently()) {
-                    return;
-                }
-                nonLyricsPanelReference = new WeakReference<>(null);
-                lyricsPanelReference = new WeakReference<>(panel);
-                Logger.printDebug(() -> "Lyrics panel reclassified (was guessed non-lyrics), heading="
-                        + lyricsHeading);
-            }
-            Object knownLyrics = lyricsPanelReference.get();
-            if (!isBackgroundUpdate || knownLyrics == null) {
-                lyricsPanelReference = new WeakReference<>(panel);
-            } else if (panel != knownLyrics) {
-                scheduleDetectRetry(1);
-                return;
-            }
+            lyricsPanelReference = new WeakReference<>(panel);
         }
 
         updateKeepScreenOn(true);
@@ -803,22 +781,7 @@ public final class LyricsPanelInstaller {
         if (isInTab(panelReference.get())) {
             return true;
         }
-        if (nonLyricsPanelActive) {
-            return false;
-        }
-        Activity activity = Utils.getActivity();
-        TextView title = activity != null
-                ? findForegroundTitle(activity.getWindow().getDecorView())
-                : null;
-        if (isKnownNonLyricsTitle(title)) {
-            return false;
-        }
-        // Asked first because it is answered by identity, which does not move with the language;
-        // the heading is read only when there is no panel to go by.
-        if (isCurrentPanelLyrics()) {
-            return true;
-        }
-        return isLyricsTitle(title);
+        return isCurrentPanelLyrics();
     }
 
     private static final long OTHER_PANEL_CACHE_MS = 150;
@@ -857,22 +820,10 @@ public final class LyricsPanelInstaller {
         if (nonLyricsPanelActive) {
             return true;
         }
-        Activity activity = Utils.getActivity();
-        TextView title = activity != null
-                ? findForegroundTitle(activity.getWindow().getDecorView())
-                : null;
-        if (isKnownNonLyricsTitle(title)) {
-            return true;
-        }
-        // The current panel reference is tracked by identity and does not change across locales.
         if (isCurrentPanelLyrics()) {
             return false;
         }
-        if (title != null) {
-            return !isLyricsTitle(title);
-        }
-        Object current = currentPanelReference.get();
-        return current != null && !isCurrentPanelLyrics();
+        return currentPanelReference.get() != null;
     }
 
     /**
@@ -881,27 +832,18 @@ public final class LyricsPanelInstaller {
      */
     @Nullable
     private static ViewGroup findLyricsPanelContent(View root) {
-        if (nonLyricsPanelActive) {
+        if (nonLyricsPanelActive || !isCurrentPanelLyrics()) {
             return null;
         }
         TextView title = findForegroundTitle(root);
         if (title == null) {
             title = findVisibleTitle(root);
         }
-        if (isKnownNonLyricsTitle(title)) {
-            return null;
-        }
-        if (isLyricsTitle(title)) {
-            // Heading and content share a panel, so the container comes from the heading's
-            // own panel rather than a global lookup.
-            return findPanelContent(title);
-        }
-
-        // A heading that did not match says nothing about which panel this is, so it must not end
-        // the search: the app's own bookkeeping still says which panel it put in the container,
-        // and that answer is by identity rather than by text, so it holds in any language.
-        if (!isCurrentPanelLyrics()) {
-            return null;
+        if (title != null) {
+            ViewGroup content = findPanelContent(title);
+            if (content != null) {
+                return content;
+            }
         }
         return findForegroundPanelContent(root);
     }
@@ -915,11 +857,13 @@ public final class LyricsPanelInstaller {
         return findForegroundView(root, panelContentId, new Rect(), ViewGroup.class);
     }
 
+    @SuppressWarnings("unused")
     private static boolean isKnownNonLyricsTitle(@Nullable TextView title) {
         String nonLyrics = knownNonLyricsTitle;
         return title != null && nonLyrics != null && isSameTitle(nonLyrics, title.getText());
     }
 
+    @SuppressWarnings("unused")
     private static boolean isLyricsTitle(@Nullable TextView title) {
         if (title == null) {
             return false;
