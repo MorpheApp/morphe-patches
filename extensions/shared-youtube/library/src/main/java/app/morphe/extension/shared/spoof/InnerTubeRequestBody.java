@@ -37,7 +37,11 @@ final class InnerTubeRequestBody {
      */
     @Nullable
     static String readVideoId(byte[] body, boolean holdsPlayerRequest) throws IOException {
-        byte[] message = isGzip(body) ? decompress(body) : body;
+        // The app compresses some request bodies, and then sends them with a gzip content encoding header.
+        byte[] message = body.length > 1
+                && (body[0] & 0xFF) == GZIP_MAGIC_FIRST_BYTE
+                && (body[1] & 0xFF) == GZIP_MAGIC_SECOND_BYTE
+                ? decompress(body) : body;
         if (holdsPlayerRequest) {
             message = SabrRequestBody.readMessageField(message, PLAYER_REQUEST_FIELD);
             if (message == null) {
@@ -46,15 +50,6 @@ final class InnerTubeRequestBody {
         }
         byte[] videoId = SabrRequestBody.readMessageField(message, VIDEO_ID_FIELD);
         return videoId == null ? null : new String(videoId, StandardCharsets.UTF_8);
-    }
-
-    /**
-     * The app compresses some request bodies, and then sends them with a gzip content encoding header.
-     */
-    private static boolean isGzip(byte[] body) {
-        return body.length > 1
-                && (body[0] & 0xFF) == GZIP_MAGIC_FIRST_BYTE
-                && (body[1] & 0xFF) == GZIP_MAGIC_SECOND_BYTE;
     }
 
     private static byte[] decompress(byte[] body) throws IOException {

@@ -655,7 +655,8 @@ public final class InAppDownloadsPatch {
         OfflineStreamingData.Builder builder = streamingData.toBuilder();
         for (int i = 0, count = builder.getAdaptiveFormatsCount(); i < count; i++) {
             OfflineStreamFormat format = builder.getAdaptiveFormats(i);
-            if (isSavableMimeType(format.getMimeType())) {
+            String mimeType = format.getMimeType();
+            if (!mimeType.isEmpty() && !mimeType.startsWith(UNSAVABLE_AUDIO_MIME_TYPE_PREFIX)) {
                 builder.setAdaptiveFormats(i, format.toBuilder().setOfflineEligible(true));
             }
         }
@@ -670,9 +671,5 @@ public final class InAppDownloadsPatch {
             tracklist.setCaptionTracks(i, track.toBuilder().setBaseUrl(baseUrl));
         }
         return captions.toBuilder().setPlayerCaptionsTracklistRenderer(tracklist).build();
-    }
-
-    private static boolean isSavableMimeType(String mimeType) {
-        return !mimeType.isEmpty() && !mimeType.startsWith(UNSAVABLE_AUDIO_MIME_TYPE_PREFIX);
     }
 }

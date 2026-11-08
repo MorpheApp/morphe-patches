@@ -89,9 +89,6 @@ public class ColorPickerPreference extends EditTextPreference {
     /** Dialog color picker view. */
     protected ColorPickerView dialogColorPickerView;
 
-    /** Listener for color changes. */
-    protected OnColorChangeListener colorChangeListener;
-
     /** Whether the opacity slider is enabled. */
     private boolean opacitySliderEnabled = false;
 
@@ -127,20 +124,6 @@ public class ColorPickerPreference extends EditTextPreference {
         }
         color = color & 0x00FFFFFF; // Mask to strip alpha.
         return String.format("#%06X", color);
-    }
-
-    /**
-     * Interface for notifying color changes.
-     */
-    public interface OnColorChangeListener {
-        void onColorChanged(String key, int newColor);
-    }
-
-    /**
-     * Sets the listener for color changes.
-     */
-    public void setOnColorChangeListener(OnColorChangeListener listener) {
-        this.colorChangeListener = listener;
     }
 
     /**
@@ -202,11 +185,6 @@ public class ColorPickerPreference extends EditTextPreference {
             }
             updateDialogColorDot();
             updateWidgetColorDot();
-
-            // Notify the listener about the color change.
-            if (colorChangeListener != null) {
-                colorChangeListener.onColorChanged(getKey(), currentColor);
-            }
         } catch (IllegalArgumentException ex) {
             // This code is reached if the user pastes settings JSON with an invalid color
             // since this preference is updated with the new setting text.

@@ -114,6 +114,12 @@ public final class FeedVideoCardsPatch {
      */
     private static final int MAX_RETRIES = 3;
     private static final long RETRY_DELAY_MS = 500;
+    /**
+     * Delays of the checks after the first retries, while the card is shown. What the card needs can be found
+     * later without a layout of the card, such as the texts of its element, which can be parsed after the card
+     * is laid out, or a title that replaces the title of its video.
+     */
+    private static final long[] LATE_RETRY_DELAYS_MS = {2000, 5000, 10_000};
     /** Time between checks of the cards that are partly shown, while the list scrolls. */
     private static final long SCROLL_CHECK_DELAY_MS = 50;
 
@@ -1027,6 +1033,11 @@ public final class FeedVideoCardsPatch {
     private static final Map<ComponentHost, Integer> retries = new WeakHashMap<>();
     /** Cards that are checked again after a delay. Used only on the main thread. */
     private static final Map<ComponentHost, Boolean> pendingRetries = new WeakHashMap<>();
+    /**
+     * Cards that are checked again after a longer delay, see {@link #LATE_RETRY_DELAYS_MS}.
+     * Used only on the main thread.
+     */
+    private static final Map<ComponentHost, Boolean> pendingLateRetries = new WeakHashMap<>();
 
     /**
      * Root hosts that are checked again when the list scrolls. Litho mounts only the part of a card
@@ -1094,17 +1105,40 @@ public final class FeedVideoCardsPatch {
 
     /**
      * Checks the card again a little later, such as when what is drawn on it was not found yet,
-     * and when the list scrolls while the card is partly shown.
+     * and when the list scrolls while the card is partly shown. After the first retries, the card
+     * is checked a few more times with longer delays while it's shown.
      * Must be called on the main thread.
      *
-     * @return If the card is checked again.
+     * @return If the card is checked again soon, or when the list scrolls.
      */
     public static boolean scheduleRetry(ComponentHost root) {
         final boolean partlyShown = scheduleScrollCheck(root);
 
+        // Every patch that draws on the card can ask for a retry when the card is checked,
+        // and the card is checked again once for all of them.
+        if (pendingRetries.containsKey(root)) {
+            return true;
+        }
         Integer count = retries.get(root);
         final int attempt = count == null ? 0 : count;
+        if (attempt >= MAX_RETRIES + LATE_RETRY_DELAYS_MS.length) {
+            return partlyShown;
+        }
         if (attempt >= MAX_RETRIES) {
+            // A late retry of an earlier layout of the card can still be pending.
+            if (pendingLateRetries.containsKey(root)) {
+                return partlyShown;
+            }
+            retries.put(root, attempt + 1);
+            // Not a pending retry, so what is drawn while the card is checked again soon is not kept
+            // for as long.
+            pendingLateRetries.put(root, Boolean.TRUE);
+            root.postDelayed(() -> {
+                pendingLateRetries.remove(root);
+                if (root.isShown()) {
+                    scheduleUpdate(root);
+                }
+            }, LATE_RETRY_DELAYS_MS[attempt - MAX_RETRIES]);
             return partlyShown;
         }
         retries.put(root, attempt + 1);

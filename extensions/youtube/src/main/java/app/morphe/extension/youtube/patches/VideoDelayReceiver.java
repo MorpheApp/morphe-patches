@@ -40,6 +40,8 @@ public class VideoDelayReceiver extends BroadcastReceiver {
                 Utils.setContext(context.getApplicationContext());
             }
 
+            // Bundle.get() is the only getter that reads both an integer and a string extra.
+            @SuppressWarnings("deprecation")
             Object extra = intent.getExtras() == null ? null : intent.getExtras().get(EXTRA_DELAY_MS);
             if (extra == null) {
                 Logger.printInfo(() -> "Ignoring video delay broadcast without " + EXTRA_DELAY_MS);

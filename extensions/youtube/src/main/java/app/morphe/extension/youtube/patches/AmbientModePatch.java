@@ -28,13 +28,6 @@ public final class AmbientModePatch {
     }
 
     /**
-     * Disable Ambient mode logic when entering fullscreen.
-     */
-    public static boolean disableAmbientModeInFullscreen() {
-        return !Settings.DISABLE_FULLSCREEN_AMBIENT_MODE.get();
-    }
-
-    /**
      * Injection point for fullscreen background color.
      */
     public static int getFullScreenBackgroundColor(int originalColor) {

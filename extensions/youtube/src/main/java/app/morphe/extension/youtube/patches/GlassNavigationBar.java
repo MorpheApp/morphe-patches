@@ -58,9 +58,10 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
  * Draws the bottom navigation bar as a floating, rounded, translucent capsule.
  * <p>
  * No extra copy of the content behind the bar is made. If the app draws its own blurred background
- * (the translucent navigation bar style, Android 12 and later), that background is kept and clipped
- * to the capsule. The frosted look otherwise comes from a tinted fill, a soft gradient, a gradient
- * edge and a shadow, all drawn by one drawable that is set as the background of the navigation bar.
+ * (the translucent navigation bar style, Android 12 and later, blurred only from Android 14), that
+ * background is kept and clipped to the capsule. The frosted look otherwise comes from a tinted fill,
+ * a soft gradient, a gradient edge and a shadow, all drawn by one drawable that is set as the
+ * background of the navigation bar.
  * The bar keeps its height and vertical layout, and everything outside the capsule is left transparent.
  */
 @SuppressWarnings("unused")

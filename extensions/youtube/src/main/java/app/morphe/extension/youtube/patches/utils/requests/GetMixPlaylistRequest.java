@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
@@ -38,8 +39,8 @@ public class GetMixPlaylistRequest {
 
     private static final long MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 10 * 1000; // 10 seconds
 
-    private static final Map<String, GetMixPlaylistRequest> cache =
-            Utils.createSizeRestrictedMap(30);
+    private static final Map<String, GetMixPlaylistRequest> cache = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(30));
 
     public final String videoId;
     private final Future<Boolean> future;

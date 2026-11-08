@@ -373,12 +373,6 @@ public class VoiceOverTranslationPatch {
         }
     }
 
-    /** @return true when VoT is enabled, the session is on, and a transcript is loaded. */
-    public static boolean isTranslationActive() {
-        Utils.verifyOnMainThread();
-        return Settings.VOT_ENABLED.get() && sessionEnabled && !segments.isEmpty();
-    }
-
     /** @return Per-session enabled flag (toggleable via the player button) - not the global setting. */
     public static boolean isSessionEnabled() {
         return sessionEnabled;

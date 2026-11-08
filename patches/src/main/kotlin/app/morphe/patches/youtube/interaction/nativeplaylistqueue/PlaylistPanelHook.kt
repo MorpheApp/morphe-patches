@@ -235,7 +235,7 @@ internal fun installPlaylistPanel() {
 
     // Preserve every native rejection before this assignment. In particular, a stale model
     // must not claim the current controller or overwrite our local insertion state.
-    val acceptMethod = accept.method.cloneParameters().apply {
+    accept.method.cloneParameters().apply {
         // Cloning adjusts match indexes.
         val storeIndex = accept.instructionMatches.last().index + numberOfParameterRegistersLogical
         val p0Register = p0Register

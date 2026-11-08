@@ -34,7 +34,6 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.Event;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
-import app.morphe.extension.youtube.shared.VideoState;
 
 /**
  * Hooking class for the current playing video.
@@ -944,23 +943,17 @@ public final class VideoInformation {
     }
 
     /**
-     * @return The current non casting player time. Value is zero if casting.
-     */
-    private static long getPlayerVideoTime() {
-        PlaybackController controller = getPlayerVideo().playerControllerRef.get();
-        return controller != null
-                ? controller.patch_getVideoTime()
-                : -1;
-    }
-
-    /**
      * Playback time of the current video playing. Includes Shorts.
      * If casting then the time is always rounded down to the nearest whole second.
      *
      * @return The time of the video in milliseconds, or -1 if not the player is not available.
      */
     public static long getVideoTime() {
-        final long playerTime = getPlayerVideoTime();
+        // The current non casting player time. Value is zero if casting.
+        PlaybackController playerController = getPlayerVideo().playerControllerRef.get();
+        final long playerTime = playerController != null
+                ? playerController.patch_getVideoTime()
+                : -1;
         // If time is zero, then playback may be casting.
         if (playerTime > 0) {
             return playerTime;
@@ -974,22 +967,6 @@ public final class VideoInformation {
         return mdxTime >= 0
                 ? mdxTime
                 : playerTime;
-    }
-
-    /**
-     * If video is playing in the background with no video visible,
-     * this always returns false (even if the video is actually at the end).
-     * <p>
-     * This is equivalent to checking for {@link VideoState#ENDED},
-     * but can give a more up-to-date result for code calling from some hooks.
-     *
-     * @return If the playback is at the end of the video.
-     * @see VideoState
-     */
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    public static boolean isAtEndOfVideo() {
-        final long videoLength = getVideoLength();
-        return getVideoTime() >= videoLength && videoLength > 0;
     }
 
     /**

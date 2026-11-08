@@ -206,71 +206,62 @@ public class PlaylistPatch {
         Utils.runOnBackgroundThread(() -> {
             synchronized (lastVideoIds) {
                 if (currentPlaylistId.isEmpty()) {
-                    CreatePlaylistRequest.fetchRequestIfNeeded(currentVideoId, AuthUtils.getRequestHeader());
-                    CreatePlaylistRequest request = CreatePlaylistRequest.getRequestForVideoId(currentVideoId);
-                    if (request != null) {
-                        Pair<String, String> playlistIds = request.getPlaylistId();
-                        if (playlistIds != null) {
-                            String createdPlaylistId = playlistIds.first;
-                            String setVideoId = playlistIds.second;
-                            if (createdPlaylistId != null && setVideoId != null) {
-                                playlistId = createdPlaylistId;
-                                if (Settings.QUEUE_RESTORE.get()) {
-                                    Settings.QUEUE_PLAYLIST_ID.save(createdPlaylistId);
-                                }
-                                lastVideoIds.putIfAbsent(currentVideoId, setVideoId);
-                                showSnackbar(fetchSucceededCreate);
-                                Logger.printDebug(() -> "Queue created, playlistId: "
-                                        + createdPlaylistId + ", setVideoId: " + setVideoId);
-                                if (openPlaylist) {
-                                    openQueue(context, currentVideoId, openVideo, reload);
-                                }
-                                return;
+                    Pair<String, String> playlistIds = CreatePlaylistRequest.fetchRequestIfNeeded(
+                            currentVideoId, AuthUtils.getRequestHeader()).getPlaylistId();
+                    if (playlistIds != null) {
+                        String createdPlaylistId = playlistIds.first;
+                        String setVideoId = playlistIds.second;
+                        if (createdPlaylistId != null && setVideoId != null) {
+                            playlistId = createdPlaylistId;
+                            if (Settings.QUEUE_RESTORE.get()) {
+                                Settings.QUEUE_PLAYLIST_ID.save(createdPlaylistId);
                             }
+                            lastVideoIds.putIfAbsent(currentVideoId, setVideoId);
+                            showSnackbar(fetchSucceededCreate);
+                            Logger.printDebug(() -> "Queue created, playlistId: "
+                                    + createdPlaylistId + ", setVideoId: " + setVideoId);
+                            if (openPlaylist) {
+                                openQueue(context, currentVideoId, openVideo, reload);
+                            }
+                            return;
                         }
                     }
                     showSnackbar(fetchFailedCreate);
                 } else {
                     String setVideoId = lastVideoIds.get(currentVideoId);
-                    EditPlaylistRequest.fetchRequestIfNeeded(currentVideoId, currentPlaylistId,
-                            setVideoId, AuthUtils.getRequestHeader());
-                    EditPlaylistRequest request = EditPlaylistRequest.getRequestForVideoId(currentVideoId);
-                    if (request != null) {
-                        String fetchedSetVideoId = request.getResult();
-                        Logger.printDebug(() -> "fetchedSetVideoId: " + fetchedSetVideoId);
-                        if (remove) {
-                            if ("".equals(fetchedSetVideoId)) {
-                                lastVideoIds.remove(currentVideoId, setVideoId);
-                                EditPlaylistRequest.clearVideoId(currentVideoId);
-                                showSnackbar(fetchSucceededRemove);
-                                if (openPlaylist) {
-                                    openQueue(context, currentVideoId, openVideo, reload);
-                                }
-                                return;
-                            }
-                            showSnackbar(fetchFailedRemove);
-                        } else {
-                            if (fetchedSetVideoId == null || fetchedSetVideoId.isEmpty()) {
-                                Logger.printDebug(() -> "Playlist not available fetchedSetVideoId: "
-                                        + fetchedSetVideoId);
-                                if (!retry) {
-                                    // Already retried, give up.
-                                    showSnackbar(fetchFailedAdd);
-                                    return;
-                                }
-                                // Clear saved playlist and try again.
-                                playlistId = Settings.QUEUE_PLAYLIST_ID.resetToDefault();
-                                fetchQueue(context, false, openPlaylist, openVideo, reload, false);
-                                return;
-                            }
-
-                            lastVideoIds.putIfAbsent(currentVideoId, fetchedSetVideoId);
-                            EditPlaylistRequest.clearVideoId(currentVideoId);
-                            Logger.printDebug(() -> "Video added, setVideoId: " + fetchedSetVideoId);
-                            showSnackbar(fetchSucceededAdd);
+                    String fetchedSetVideoId = EditPlaylistRequest.fetchRequestIfNeeded(currentVideoId,
+                            currentPlaylistId, setVideoId, AuthUtils.getRequestHeader()).getResult();
+                    Logger.printDebug(() -> "fetchedSetVideoId: " + fetchedSetVideoId);
+                    if (remove) {
+                        if ("".equals(fetchedSetVideoId)) {
+                            lastVideoIds.remove(currentVideoId, setVideoId);
+                            showSnackbar(fetchSucceededRemove);
                             if (openPlaylist) {
                                 openQueue(context, currentVideoId, openVideo, reload);
                             }
+                            return;
+                        }
+                        showSnackbar(fetchFailedRemove);
+                    } else {
+                        if (fetchedSetVideoId == null || fetchedSetVideoId.isEmpty()) {
+                            Logger.printDebug(() -> "Playlist not available fetchedSetVideoId: "
+                                    + fetchedSetVideoId);
+                            if (!retry) {
+                                // Already retried, give up.
+                                showSnackbar(fetchFailedAdd);
+                                return;
+                            }
+                            // Clear saved playlist and try again.
+                            playlistId = Settings.QUEUE_PLAYLIST_ID.resetToDefault();
+                            fetchQueue(context, false, openPlaylist, openVideo, reload, false);
+                            return;
+                        }
+
+                        lastVideoIds.putIfAbsent(currentVideoId, fetchedSetVideoId);
+                        Logger.printDebug(() -> "Video added, setVideoId: " + fetchedSetVideoId);
+                        showSnackbar(fetchSucceededAdd);
+                        if (openPlaylist) {
+                            openQueue(context, currentVideoId, openVideo, reload);
                         }
                     }
                 }
@@ -348,14 +339,10 @@ public class PlaylistPatch {
             }
             SavePlaylistRequest request = SavePlaylistRequest.fetchRequestIfNeeded(
                     playlistId, libraryId, AuthUtils.getRequestHeader());
-            if (request == null) {
-                return;
-            }
             Utils.runOnBackgroundThread(() -> {
                 Boolean result = request.getResult();
                 if (Boolean.TRUE.equals(result)) {
                     showSnackbar(String.format(fetchSucceededSave, libraryTitle));
-                    SavePlaylistRequest.clear();
                     return;
                 }
                 showSnackbar(fetchFailedSave);

@@ -68,17 +68,10 @@ public class GetPlaylistsRequest {
     }
 
     public static GetPlaylistsRequest fetchRequestIfNeeded(String playlistId, Map<String, String> requestHeader) {
-        cache.computeIfAbsent(
+        return cache.computeIfAbsent(
                 Objects.requireNonNull(playlistId),
                 k -> new GetPlaylistsRequest(playlistId, requestHeader)
         );
-        return cache.get(playlistId);
-    }
-
-    @SuppressWarnings("unused")
-    @Nullable
-    public static GetPlaylistsRequest getRequestForPlaylistId(String playlistId) {
-        return cache.get(playlistId);
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {

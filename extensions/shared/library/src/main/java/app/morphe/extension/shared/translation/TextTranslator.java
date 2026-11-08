@@ -351,7 +351,9 @@ public final class TextTranslator {
                 return send(text, url, romanize, parser);
             } catch (TranslationHttpException ex) {
                 lastFailure = ex;
-                if (!isRetryable(ex.statusCode)) break;
+                // Only these errors can go away when the request is sent again.
+                final int code = ex.statusCode;
+                if (code != 403 && code != 404 && code != 429 && (code < 500 || code > 599)) break;
             } catch (IOException ex) {
                 lastFailure = ex;
             }
@@ -466,9 +468,5 @@ public final class TextTranslator {
             return lines;
         }
         return Arrays.asList(romanized.split("\n", -1));
-    }
-
-    private static boolean isRetryable(int code) {
-        return code == 403 || code == 404 || code == 429 || (code >= 500 && code <= 599);
     }
 }

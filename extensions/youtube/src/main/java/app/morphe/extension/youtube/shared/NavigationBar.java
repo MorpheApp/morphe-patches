@@ -71,13 +71,6 @@ public final class NavigationBar {
         onNavigationButtonChangedListeners.add(listener);
     }
 
-    /**
-     * Unregisters a listener from being notified when the navigation button changes.
-     */
-    public static void removeOnNavigationButtonChangedListener(OnNavigationButtonChangedListener listener) {
-        onNavigationButtonChangedListeners.remove(listener);
-    }
-
     private static void notifyNavigationButtonChangedListeners(@Nullable NavigationButton button) {
         for (OnNavigationButtonChangedListener listener : onNavigationButtonChangedListeners) {
             listener.onNavigationButtonChanged(button);

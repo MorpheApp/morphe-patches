@@ -176,4 +176,16 @@
         <item>ZH</item>
         <item>ZU</item>
     </string-array>
+
+    <!-- misc.announcements.patchesUpdateNoticePatch -->
+    <string-array name="morphe_patches_update_notice_entries">
+        <item>@string/morphe_patches_update_notice_entry_off</item>
+        <item>@string/morphe_patches_update_notice_entry_stable</item>
+        <item>@string/morphe_patches_update_notice_entry_dev</item>
+    </string-array>
+    <string-array name="morphe_patches_update_notice_entry_values" translatable="false">
+        <item>OFF</item>
+        <item>STABLE</item>
+        <item>DEV</item>
+    </string-array>
 </resources>

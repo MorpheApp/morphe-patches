@@ -337,10 +337,6 @@ public final class FeedVideoActionsPatch {
         return Math.round(dp * view.getResources().getDisplayMetrics().density);
     }
 
-    private static boolean isRootHost(ComponentHost host) {
-        return !(host.getParent() instanceof ComponentHost);
-    }
-
     @Nullable
     private static ComponentHost findRootHost(View view) {
         ComponentHost root = null;
@@ -754,7 +750,7 @@ public final class FeedVideoActionsPatch {
      * @return If the touch was handled and must not be given to the children.
      */
     public static boolean onComponentHostTouch(ComponentHost host, MotionEvent event) {
-        if (!ENABLED || dispatchingCancel || !isRootHost(host)) {
+        if (!ENABLED || dispatchingCancel || host.getParent() instanceof ComponentHost) {
             return false;
         }
         try {

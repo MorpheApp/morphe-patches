@@ -59,6 +59,18 @@ public final class FeedEngagementCountsPatch {
 
     /** Longest wait for a fetch, which is done off the main thread. */
     private static final long FETCH_TIMEOUT_MS = 10_000;
+    /**
+     * Waits for a fetch that is still running, such as while the API answers slowly.
+     * The fetch keeps running after a wait, and the counts are shown once it completes.
+     */
+    private static final int MAX_FETCH_WAITS = 3;
+    /**
+     * Time before a failed fetch is tried again while its card is shown.
+     * Return YouTube Dislike keeps a failed fetch for 3 minutes, and gives it again until then.
+     */
+    private static final long FAILED_FETCH_RETRY_DELAY_MS = 3 * 60 * 1000 + 1000;
+    /** Tries of a fetch that failed, before it waits for the next layout of the card. */
+    private static final int MAX_FAILED_FETCH_RETRIES = 3;
     /** Time between checks of a card that is not visible yet. */
     private static final long HIDDEN_RETRY_DELAY_MS = 400;
     /** Checks of a card that is not visible, before its fetch waits for the next layout. */
@@ -201,6 +213,12 @@ public final class FeedEngagementCountsPatch {
         @Nullable
         private Runnable pendingFetch;
         private boolean fetching;
+        /**
+         * Fetch that is tried again after it failed. Not shown as loading, as it waits for minutes.
+         */
+        @Nullable
+        private Runnable failedFetchRetry;
+        private int failedFetchRetries;
         private int alpha = 255;
         @Nullable
         private ValueAnimator fadeIn;
@@ -256,6 +274,7 @@ public final class FeedEngagementCountsPatch {
                 likeFraction = -1;
                 fetching = false;
                 durationHostWidth = -1;
+                failedFetchRetries = 0;
                 cancelPendingFetch();
                 endFadeIn();
             }
@@ -282,7 +301,7 @@ public final class FeedEngagementCountsPatch {
                 return;
             }
             if (host.isShown()) {
-                fetch(host, fetchVideoId);
+                fetch(host, fetchVideoId, 0);
                 return;
             }
             // The app is not visible yet, such as while it returns from the background.
@@ -305,13 +324,21 @@ public final class FeedEngagementCountsPatch {
                 handler.removeCallbacks(pendingFetch);
                 pendingFetch = null;
             }
+            if (failedFetchRetry != null) {
+                handler.removeCallbacks(failedFetchRetry);
+                failedFetchRetry = null;
+            }
         }
 
-        private void fetch(ComponentHost host, String fetchVideoId) {
+        /**
+         * @param wait The number of waits for the same fetch before this one, see {@link #MAX_FETCH_WAITS}.
+         */
+        private void fetch(ComponentHost host, String fetchVideoId, int wait) {
             fetching = true;
             ReturnYouTubeDislike fetch = ReturnYouTubeDislike.getFetchForVideoId(fetchVideoId);
             Utils.runOnBackgroundThread(() -> {
                 RYDVoteData data = fetch.getFetchData(FETCH_TIMEOUT_MS);
+                final boolean completed = fetch.fetchCompleted();
                 Utils.runOnMainThread(() -> {
                     try {
                         // The card may show another video now.
@@ -322,6 +349,25 @@ public final class FeedEngagementCountsPatch {
                         if (data != null) {
                             setData(data);
                             startFadeIn();
+                        } else if (!completed && wait + 1 < MAX_FETCH_WAITS && host.isAttachedToWindow()) {
+                            // The fetch is still running, and the loading spinner is shown until it completes.
+                            fetch(host, fetchVideoId, wait + 1);
+                            return;
+                        } else if (failedFetchRetry == null && failedFetchRetries < MAX_FAILED_FETCH_RETRIES
+                                && host.isAttachedToWindow()) {
+                            // The fetch failed, such as without a connection or while the API limits the requests.
+                            // The card is not laid out again while it's shown, so the fetch is tried again later.
+                            // A layout of the card meanwhile gets the same failed fetch, and keeps this retry.
+                            failedFetchRetries++;
+                            Runnable retry = () -> {
+                                failedFetchRetry = null;
+                                if (fetchVideoId.equals(videoId) && host.isAttachedToWindow() && !hasContent()) {
+                                    requestFetch(host, fetchVideoId, 0);
+                                    place(host);
+                                }
+                            };
+                            failedFetchRetry = retry;
+                            handler.postDelayed(retry, FAILED_FETCH_RETRY_DELAY_MS);
                         }
                         // The counts replace the loading spinner, or the badge is removed if the fetch failed.
                         place(host);

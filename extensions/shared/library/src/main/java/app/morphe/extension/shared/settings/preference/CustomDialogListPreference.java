@@ -10,6 +10,8 @@
 
 package app.morphe.extension.shared.settings.preference;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ import java.util.function.IntConsumer;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
@@ -54,38 +57,11 @@ public class CustomDialogListPreference extends ListPreference {
     public static final int DRAWABLE_CHECKMARK_BOLD = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_custom_checkmark_bold");
 
-    private String staticSummary = null;
     private CharSequence[] highlightedEntriesForDialog = null;
     @Nullable
     private Set<String> newEntryValues;
     @ColorInt
     private int newEntryColor;
-
-    /**
-     * Set a static summary that will not be overwritten by value changes.
-     */
-    public void setStaticSummary(String summary) {
-        this.staticSummary = summary;
-    }
-
-    /**
-     * Returns the static summary if set, otherwise null.
-     */
-    @Nullable
-    public String getStaticSummary() {
-        return staticSummary;
-    }
-
-    /**
-     * Always return static summary if set.
-     */
-    @Override
-    public CharSequence getSummary() {
-        if (staticSummary != null) {
-            return staticSummary;
-        }
-        return super.getSummary();
-    }
 
     /**
      * Sets highlighted entries for display in the dialog.
@@ -256,6 +232,19 @@ public class CustomDialogListPreference extends ListPreference {
     }
 
     /**
+     * Uses the title and entry arrays declared for the setting key.
+     */
+    public CustomDialogListPreference(Context context, Setting<?> setting) {
+        this(context);
+
+        String key = setting.key;
+        setKey(key);
+        setTitle(str(key + "_title"));
+        setEntries(ResourceUtils.getStringArray(key + "_entries"));
+        setEntryValues(ResourceUtils.getStringArray(key + "_entry_values"));
+    }
+
+    /**
      * Opens the selection dialog, as if the preference row itself was tapped.
      * Allows another preference to present this list on its behalf.
      */
@@ -359,11 +348,9 @@ public class CustomDialogListPreference extends ListPreference {
                         setValue(selectedValue);
 
                         // Update summaries from the original entries (without highlighting).
-                        if (staticSummary == null) {
-                            CharSequence[] originalEntries = getEntries();
-                            if (originalEntries != null && position < originalEntries.length) {
-                                setSummary(originalEntries[position]);
-                            }
+                        CharSequence[] originalEntries = getEntries();
+                        if (originalEntries != null && position < originalEntries.length) {
+                            setSummary(originalEntries[position]);
                         }
                     }
                 }

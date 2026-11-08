@@ -79,6 +79,15 @@ public final class NativePlaylistQueuePatch {
     private static final Map<String, QueueRatingActions> ratingActions =
             Collections.synchronizedMap(Utils.createSizeRestrictedMap(50));
 
+    /**
+     * The last watch next responses that were read, compared by identity. The app parses a response it
+     * keeps again, after 'Hide related videos' and the 'Classic Two-Rows' action bar changed it in place.
+     * The serialized size of the response saved by the first read is then wrong, so it cannot be serialized.
+     * Synchronized on itself.
+     */
+    private static final WeakReference<?>[] readWatchNextResponses = new WeakReference<?>[8];
+    private static int readWatchNextResponseIndex;
+
     /** Implemented on the native playlist controller during patching. */
     public interface PlaylistController {
         String patch_getVideoId();
@@ -309,8 +318,27 @@ public final class NativePlaylistQueuePatch {
         if (response == null) {
             return;
         }
+        synchronized (readWatchNextResponses) {
+            for (WeakReference<?> reference : readWatchNextResponses) {
+                if (reference != null && reference.get() == response) {
+                    return;
+                }
+            }
+            readWatchNextResponses[readWatchNextResponseIndex] = new WeakReference<>(response);
+            readWatchNextResponseIndex = (readWatchNextResponseIndex + 1) % readWatchNextResponses.length;
+        }
+
+        byte[] bytes;
         try {
-            var results = SingleColumnWatchNextResults.parseFrom(response.toByteArray());
+            bytes = response.toByteArray();
+        } catch (RuntimeException ex) {
+            // A response read before, which is no longer in the array of read responses.
+            Logger.printDebug(() -> "Watch next response was changed in place and cannot be serialized", ex);
+            return;
+        }
+
+        try {
+            var results = SingleColumnWatchNextResults.parseFrom(bytes);
             for (var section : results.getPrimaryResults().getSecondaryResults().getSecondaryContentsList()) {
                 if (!section.hasSlimVideoMetadataSectionRenderer()) {
                     continue;

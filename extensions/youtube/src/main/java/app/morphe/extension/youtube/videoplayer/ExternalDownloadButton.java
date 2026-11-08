@@ -93,10 +93,6 @@ public class ExternalDownloadButton {
         return Settings.EXTERNAL_DOWNLOADER_OVERLAY_BUTTON.get();
     }
 
-    private static String getVideoUrl(String videoId) {
-        return "https://youtu.be/" + videoId;
-    }
-
     /**
      * @return If a tap on a download button opens the quick download menu.
      */
@@ -122,16 +118,11 @@ public class ExternalDownloadButton {
     private static void launchDownloader(@Nullable Context context, String videoId,
                                          @Nullable String quickDownloadType, @Nullable Bundle quickExtras) {
         if (ExternalDownloaderPreference.launchExternalDownloader(
-                videoId, context, getVideoUrl(videoId), quickDownloadType, quickExtras)
+                videoId, context, "https://youtu.be/" + videoId, quickDownloadType, quickExtras)
                 && Settings.EXTERNAL_DOWNLOADER_MARK_WATCHED.get()
-                && !isOpenInPlayer(videoId)) {
+                && (PlayerType.getCurrent().isNoneOrHidden() || !videoId.equals(VideoInformation.getVideoId()))) {
             MarkWatchedRequest.markWatched(videoId);
         }
-    }
-
-    private static boolean isOpenInPlayer(String videoId) {
-        return !PlayerType.getCurrent().isNoneOrHidden()
-                && videoId.equals(VideoInformation.getVideoId());
     }
 
     private static void openDownloader(Context context) {
