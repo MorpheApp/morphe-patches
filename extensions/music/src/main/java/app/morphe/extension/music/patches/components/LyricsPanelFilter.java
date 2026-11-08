@@ -61,10 +61,7 @@ public final class LyricsPanelFilter extends Filter {
         if (matchedGroup == nonLyricsIdentifierGroup || matchedGroup == nonLyricsPathGroup) {
             LyricsPanelInstaller.onNonLyricsPanelDetected();
         } else {
-            String pathStr = path != null ? path.toString() : "";
-            if (!pathStr.contains("|CollectionType|CellType|")) {
-                LyricsPanelInstaller.onLyricsPanelDetected(isBackgroundComponentUpdate());
-            }
+            LyricsPanelInstaller.onLyricsPanelDetected(isBackgroundComponentUpdate());
         }
         return false;
     }
