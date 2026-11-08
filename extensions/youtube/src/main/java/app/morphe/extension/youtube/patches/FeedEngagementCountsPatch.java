@@ -116,8 +116,11 @@ public final class FeedEngagementCountsPatch {
 
     private static final Handler handler = new Handler(Looper.getMainLooper());
 
-    /** Root hosts that show the counts of a video. Used only on the main thread. */
-    private static final Map<ComponentHost, CountsBadge> badges = new WeakHashMap<>();
+    /**
+     * Hosts that show the counts of a video: the hosts of the cards, or the thumbnails of the videos
+     * that are not drawn by Litho. Used only on the main thread.
+     */
+    private static final Map<View, CountsBadge> badges = new WeakHashMap<>();
 
     @Nullable
     private static Drawable likeIcon;
@@ -155,16 +158,22 @@ public final class FeedEngagementCountsPatch {
     }
 
     /**
-     * Called by {@link FeedVideoCardsPatch} on the main thread after a root host is laid out.
+     * Called by {@link FeedVideoCardsPatch} on the main thread after a card or a thumbnail is laid out.
      *
+     * @param host    The root host of the card, a card inside it, or the thumbnail of a video
+     *                that is not drawn by Litho.
      * @param videoId The video of the card, or null if the host is not a video card
      *                or its video is not known.
+     * @param frame   Where the thumbnail and its duration are, or null to find them on the card.
+     *                Must be set for a host that is not a Litho card.
      */
-    public static void onCardLaidOut(ComponentHost host, @Nullable String videoId) {
+    public static void onCardLaidOut(View host, @Nullable String videoId,
+                                     @Nullable FeedViewCountPatch.ThumbnailFrame frame) {
         if (!ENABLED) {
             return;
         }
-        if (videoId != null && (FeedVideoCardsPatch.isInDialog(host) || FeedVideoCardsPatch.isLiveCard(host))) {
+        if (videoId != null && host instanceof ComponentHost componentHost
+                && (FeedVideoCardsPatch.isInDialog(componentHost) || FeedVideoCardsPatch.isLiveCard(componentHost))) {
             videoId = null;
         }
         CountsBadge badge = badges.get(host);
@@ -175,7 +184,8 @@ public final class FeedEngagementCountsPatch {
             // While the card is laid out again, its video can be not found for a moment.
             // The card still shows the same video if it was not detached, and the badge is
             // kept until the card is checked again, so it does not blink.
-            if (badge.confirmed && badge.hasContent() && FeedVideoCardsPatch.isRetryPending(host)) {
+            if (badge.confirmed && badge.hasContent() && host instanceof ComponentHost componentHost
+                    && FeedVideoCardsPatch.isRetryPending(componentHost)) {
                 return;
             }
             badge.detach(host);
@@ -186,6 +196,7 @@ public final class FeedEngagementCountsPatch {
             badge = new CountsBadge(host);
             badges.put(host, badge);
         }
+        badge.frame = frame;
         badge.bind(host, videoId);
     }
 
@@ -200,7 +211,10 @@ public final class FeedEngagementCountsPatch {
         private final Paint spinnerPaint;
         private final RectF rect = new RectF();
         private final float density;
-        private final WeakReference<ComponentHost> hostRef;
+        private final WeakReference<View> hostRef;
+        /** Where the thumbnail and its duration are, or null to find them on the card. */
+        @Nullable
+        private FeedViewCountPatch.ThumbnailFrame frame;
 
         @Nullable
         private String videoId;
@@ -241,7 +255,7 @@ public final class FeedEngagementCountsPatch {
         /** If the badge is the compact single row, see {@link #COMPACT_HEIGHT_DP}. */
         private boolean compact;
 
-        CountsBadge(ComponentHost host) {
+        CountsBadge(View host) {
             hostRef = new WeakReference<>(host);
             host.addOnAttachStateChangeListener(this);
             density = host.getResources().getDisplayMetrics().density;
@@ -265,7 +279,7 @@ public final class FeedEngagementCountsPatch {
             return Math.round(dp * density);
         }
 
-        void bind(ComponentHost host, String newVideoId) {
+        void bind(View host, String newVideoId) {
             confirmed = true;
             if (!newVideoId.equals(videoId)) {
                 videoId = newVideoId;
@@ -296,7 +310,7 @@ public final class FeedEngagementCountsPatch {
         /**
          * Fetches the video now, or once the card is visible.
          */
-        private void requestFetch(ComponentHost host, String fetchVideoId, int attempt) {
+        private void requestFetch(View host, String fetchVideoId, int attempt) {
             if (pendingFetch != null || fetching) {
                 return;
             }
@@ -333,7 +347,7 @@ public final class FeedEngagementCountsPatch {
         /**
          * @param wait The number of waits for the same fetch before this one, see {@link #MAX_FETCH_WAITS}.
          */
-        private void fetch(ComponentHost host, String fetchVideoId, int wait) {
+        private void fetch(View host, String fetchVideoId, int wait) {
             fetching = true;
             ReturnYouTubeDislike fetch = ReturnYouTubeDislike.getFetchForVideoId(fetchVideoId);
             Utils.runOnBackgroundThread(() -> {
@@ -429,7 +443,7 @@ public final class FeedEngagementCountsPatch {
         /**
          * Places the badge on the side of the duration of the thumbnail, just above it.
          */
-        void place(ComponentHost host) {
+        void place(View host) {
             final boolean loading = isLoading();
             if (!hasContent() && !loading) {
                 // The fetch failed, or it waits for the next layout of the card.
@@ -466,7 +480,13 @@ public final class FeedEngagementCountsPatch {
             // Cards of some layouts show the thumbnail inset from their edges, such as the shelves
             // of a channel, or below other content, such as the video of a channel post.
             // So the badge is placed from the duration badge, or else from the thumbnail.
-            FeedViewCountPatch.ThumbnailFrame frame = FeedViewCountPatch.findThumbnailFrame(host);
+            FeedViewCountPatch.ThumbnailFrame frame = this.frame != null || !(host instanceof ComponentHost componentHost)
+                    ? this.frame
+                    : FeedViewCountPatch.findThumbnailFrame(componentHost);
+            if (frame == null) {
+                removeFromOverlay(host);
+                return;
+            }
             final Rect duration = frame.duration;
             final Rect thumbnail = frame.thumbnail;
             // In right to left languages the duration badge is at the left, so the badge is too.
@@ -507,7 +527,9 @@ public final class FeedEngagementCountsPatch {
                 thumbnailTop = thumbnail.top;
             } else {
                 edge = rtl ? px(RIGHT_MARGIN_DP) : host.getWidth() - px(RIGHT_MARGIN_DP);
-                bottom = FeedVideoCardsPatch.getThumbnailBottom(host) - px(ABOVE_DURATION_DP);
+                bottom = (host instanceof ComponentHost componentHost
+                        ? FeedVideoCardsPatch.getThumbnailBottom(componentHost)
+                        : host.getHeight()) - px(ABOVE_DURATION_DP);
                 thumbnailTop = 0;
             }
             compact = bottom - height < thumbnailTop + px(MARGIN_DP);
@@ -555,7 +577,7 @@ public final class FeedEngagementCountsPatch {
             invalidateSelf();
         }
 
-        void detach(ComponentHost host) {
+        void detach(View host) {
             host.removeOnAttachStateChangeListener(this);
             cancelPendingFetch();
             endFadeIn();
@@ -566,7 +588,12 @@ public final class FeedEngagementCountsPatch {
         public void onViewAttachedToWindow(@NonNull View view) {
             try {
                 // A card that shows the same video may not be laid out again.
-                FeedVideoCardsPatch.requestUpdate((ComponentHost) view);
+                if (view instanceof ComponentHost host) {
+                    FeedVideoCardsPatch.requestUpdate(host);
+                } else if (videoId != null) {
+                    // A thumbnail that is not drawn by Litho is bound again when it shows another video.
+                    bind(view, videoId);
+                }
             } catch (Exception ex) {
                 Logger.printException(() -> "onViewAttachedToWindow failure", ex);
             }
@@ -579,7 +606,7 @@ public final class FeedEngagementCountsPatch {
             endFadeIn();
         }
 
-        private void removeFromOverlay(ComponentHost host) {
+        private void removeFromOverlay(View host) {
             if (added) {
                 host.getOverlay().remove(this);
                 added = false;
@@ -592,8 +619,7 @@ public final class FeedEngagementCountsPatch {
             if (!confirmed || (!hasContent() && !loading)) {
                 return;
             }
-            ComponentHost host = hostRef.get();
-            if (host != null && FeedVideoCardsPatch.isCardPlayingInline(host)) {
+            if (hostRef.get() instanceof ComponentHost host && FeedVideoCardsPatch.isCardPlayingInline(host)) {
                 // The inline player shows its own buttons over the thumbnail.
                 return;
             }

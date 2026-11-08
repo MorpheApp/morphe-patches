@@ -28,6 +28,7 @@ import com.facebook.litho.ComponentHost;
 import com.facebook.litho.TextContent;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -41,6 +42,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.FeedEngagementCountsPatch;
 import app.morphe.extension.youtube.patches.FeedVideoActionsPatch;
@@ -209,6 +211,48 @@ public final class FeedVideoCardsPatch {
      * Used only on the main thread.
      */
     private static final Map<ComponentHost, List<ComponentHost>> innerCards = new WeakHashMap<>();
+
+    /** Shorts that are kept. */
+    private static final int MAX_SHORTS = 500;
+
+    /**
+     * Shorts, by video id, found by their elements. The cards of Shorts have no duration on their thumbnail,
+     * so they are known by their video. Oldest videos are removed first.
+     */
+    @GuardedBy("itself")
+    private static final Map<String, Boolean> shortsVideoIds = Utils
+            .createSizeRestrictedMap(MAX_SHORTS, true);
+
+    /**
+     * Text of a Short in its element, followed by its video id, such as 'shorts-shelf-item-abcdefghijk'.
+     * Also in the elements of many videos, such as a row of the Shorts grid of a channel.
+     */
+    private static final String SHORTS_ITEM_PREFIX = "shorts-shelf-item-";
+
+    /**
+     * A card of a Short is a vertical thumbnail with the title of the Short on it,
+     * from 2:3 in the grids up to 9:16 in the shelves.
+     */
+    private static final float MIN_SHORTS_HEIGHT_OF_WIDTH = 1.3f;
+    private static final float MAX_SHORTS_HEIGHT_OF_WIDTH = 1.9f;
+    private static final int MIN_SHORTS_WIDTH_DP = 100;
+    /**
+     * Space between the title on the thumbnail of a Short and the row above it, where the badges are drawn,
+     * which is the row of the duration on the thumbnails of videos.
+     */
+    private static final int SHORTS_TITLE_GAP_DP = 4;
+    /** Height of the row above the title, the same as the duration badge, and its margin from the edges. */
+    private static final int SHORTS_ROW_HEIGHT_DP = 20;
+    private static final int SHORTS_ROW_MARGIN_DP = 8;
+
+    /** Cards of Shorts, which show the badges above their title. Used only on the main thread. */
+    private static final Set<ComponentHost> shortsCards = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
+     * Thumbnail of a compact video, which is not drawn by Litho, such as a video of the watch history,
+     * -> its video. Used only on the main thread.
+     */
+    private static final Map<View, String> compactVideoIds = new WeakHashMap<>();
 
     static {
         if (ENABLED) {
@@ -503,8 +547,21 @@ public final class FeedVideoCardsPatch {
                 for (ProtoNode node : videoNodes) {
                     addVideoText(videoId, node.getText());
                 }
+                boolean isShort = false;
+                for (ProtoNode node : videoNodes) {
+                    String text = node.getText();
+                    if (text.startsWith(SHORTS_ITEM_PREFIX) && text.endsWith(videoId)) {
+                        isShort = true;
+                        break;
+                    }
+                }
+                if (isShort) {
+                    synchronized (shortsVideoIds) {
+                        shortsVideoIds.put(videoId, Boolean.TRUE);
+                    }
+                }
                 if (!live) {
-                    FeedViewCountPatch.onVideoElementLoaded(videoId, videoNodes);
+                    FeedViewCountPatch.onVideoElementLoaded(videoId, videoNodes, isShort);
                 }
             }
         } catch (Exception ex) {
@@ -1232,6 +1289,99 @@ public final class FeedVideoCardsPatch {
                         }
                     }
                 }
+                // The cards of Shorts have no duration on their thumbnail, so they look like a mix.
+                // A grid row of Shorts is shaped like a full width card, and a shelf has a root host for each Short.
+                List<FeedViewCountPatch.ThumbnailFrame> shortsFrames = new ArrayList<>();
+                if (cards.isEmpty() && (videoId == null || PLAYLIST.equals(videoId)) && !hasHorizontalList(root)) {
+                    final float density = root.getResources().getDisplayMetrics().density;
+                    // Host -> its depth. A card is the smallest host shaped like the card of a Short,
+                    // as the column of a grid around it can be shaped like it too, with a margin around the card.
+                    // The hosts inside a card are not searched.
+                    ArrayDeque<ComponentHost> hosts = new ArrayDeque<>();
+                    Map<ComponentHost, Integer> depths = new IdentityHashMap<>();
+                    hosts.add(root);
+                    depths.put(root, 1);
+                    while (!hosts.isEmpty()) {
+                        ComponentHost card = hosts.poll();
+                        final int depth = depths.get(card);
+                        final int width = card.getWidth();
+                        boolean isCard = width >= MIN_SHORTS_WIDTH_DP * density
+                                && card.getHeight() >= width * MIN_SHORTS_HEIGHT_OF_WIDTH
+                                && card.getHeight() <= width * MAX_SHORTS_HEIGHT_OF_WIDTH;
+                        List<ComponentHost> children = new ArrayList<>();
+                        for (int i = 0, count = card.getChildCount(); depth < MAX_THUMBNAIL_SEARCH_DEPTH && i < count; i++) {
+                            if (card.getChildAt(i) instanceof ComponentHost child && child.getVisibility() == View.VISIBLE) {
+                                children.add(child);
+                                final int childWidth = child.getWidth();
+                                // A host inside the card as large as the card is a part of the card.
+                                if (childWidth < width && childWidth >= MIN_SHORTS_WIDTH_DP * density
+                                        && child.getHeight() >= childWidth * MIN_SHORTS_HEIGHT_OF_WIDTH
+                                        && child.getHeight() <= childWidth * MAX_SHORTS_HEIGHT_OF_WIDTH) {
+                                    isCard = false;
+                                }
+                            }
+                        }
+                        if (!isCard) {
+                            for (ComponentHost child : children) {
+                                hosts.add(child);
+                                depths.put(child, depth + 1);
+                            }
+                            continue;
+                        }
+                        String cardId = findVideoIdByDescription(card);
+                        final boolean isShort;
+                        synchronized (shortsVideoIds) {
+                            isShort = cardId != null && shortsVideoIds.containsKey(cardId);
+                        }
+                        if (!isShort) {
+                            continue;
+                        }
+
+                        // The badges are drawn above the title on the thumbnail, in the row of the duration
+                        // on the thumbnails of videos: the view count at the start, and the like count
+                        // at the end, above the row. The title is the highest text in the bottom half.
+                        int titleTop = Integer.MAX_VALUE;
+                        Rect textRect = new Rect();
+                        ArrayDeque<ComponentHost> textHosts = new ArrayDeque<>();
+                        textHosts.add(card);
+                        while (!textHosts.isEmpty()) {
+                            ComponentHost host = textHosts.poll();
+                            TextContent textContent = host.getTextContent();
+                            if (textContent != null && !textContent.getTextItems().isEmpty()) {
+                                textRect.set(0, 0, host.getWidth(), host.getHeight());
+                                if (host != card) {
+                                    card.offsetDescendantRectToMyCoords(host, textRect);
+                                }
+                                if (textRect.top >= card.getHeight() / 2) {
+                                    titleTop = Math.min(titleTop, textRect.top);
+                                }
+                            }
+                            for (int i = 0, count = host.getChildCount(); i < count; i++) {
+                                if (host.getChildAt(i) instanceof ComponentHost child
+                                        && child.getVisibility() == View.VISIBLE) {
+                                    textHosts.add(child);
+                                }
+                            }
+                        }
+                        FeedViewCountPatch.ThumbnailFrame frame = null;
+                        if (titleTop == Integer.MAX_VALUE) {
+                            // The title is not drawn yet.
+                            cardId = NOT_READY;
+                            retry = true;
+                        } else {
+                            // The row above the title, as the duration badge at the end of the row.
+                            final int rowBottom = titleTop - Math.round(SHORTS_TITLE_GAP_DP * density);
+                            final int rowTop = rowBottom - Math.round(SHORTS_ROW_HEIGHT_DP * density);
+                            final int margin = Math.round(SHORTS_ROW_MARGIN_DP * density);
+                            final int edge = FeedViewCountPatch.isRtl(card) ? margin : width - margin;
+                            frame = new FeedViewCountPatch.ThumbnailFrame(new Rect(edge, rowTop, edge, rowBottom),
+                                    new Rect(0, 0, width, card.getHeight()));
+                        }
+                        cards.add(card);
+                        cardIds.add(cardId);
+                        shortsFrames.add(frame);
+                    }
+                }
                 if (retry) {
                     scheduleRetry(root);
                 } else {
@@ -1256,7 +1406,10 @@ public final class FeedVideoCardsPatch {
                         // which draws on it.
                         if (!cards.contains(previous) && findRootHost(previous) == root) {
                             cardVideoIds.remove(previous);
-                            FeedEngagementCountsPatch.onCardLaidOut(previous, null);
+                            FeedEngagementCountsPatch.onCardLaidOut(previous, null, null);
+                            if (shortsCards.remove(previous)) {
+                                FeedViewCountPatch.onCardLaidOut(previous, null, null);
+                            }
                         }
                     }
                 }
@@ -1271,11 +1424,24 @@ public final class FeedVideoCardsPatch {
                     } else {
                         cardVideoIds.put(card, cardId);
                     }
-                    FeedEngagementCountsPatch.onCardLaidOut(card, PLAYLIST.equals(cardId) ? null : cardId);
+                    FeedViewCountPatch.ThumbnailFrame shortsFrame = i < shortsFrames.size() ? shortsFrames.get(i) : null;
+                    if (shortsFrame != null) {
+                        shortsCards.add(card);
+                        FeedEngagementCountsPatch.onCardLaidOut(card, cardId, shortsFrame);
+                        FeedViewCountPatch.onCardLaidOut(card, cardId, shortsFrame);
+                        continue;
+                    }
+                    if (shortsCards.remove(card)) {
+                        FeedViewCountPatch.onCardLaidOut(card, null, null);
+                    }
+                    FeedEngagementCountsPatch.onCardLaidOut(card, PLAYLIST.equals(cardId) ? null : cardId, null);
                 }
                 final String fullWidthCardVideoId = cards.isEmpty() ? cardVideoId : null;
-                FeedEngagementCountsPatch.onCardLaidOut(root, fullWidthCardVideoId);
-                FeedViewCountPatch.onCardLaidOut(root, fullWidthCardVideoId);
+                // The root host of a Short of a shelf is the card of the Short.
+                if (!cards.contains(root)) {
+                    FeedEngagementCountsPatch.onCardLaidOut(root, fullWidthCardVideoId, null);
+                    FeedViewCountPatch.onCardLaidOut(root, fullWidthCardVideoId, null);
+                }
                 FeedVideoActionsPatch.onCardLaidOut(root, fullWidthCardVideoId);
                 PostImageDownloadPatch.onRootLaidOut(root);
                 PostTranslatePatch.onRootLaidOut(root);
@@ -1284,6 +1450,54 @@ public final class FeedVideoCardsPatch {
             Logger.printException(() -> "updateRoots failure", ex);
         }
     };
+
+    /**
+     * Injection point.
+     * Called when a compact video is bound, such as a video of the watch history, which is not drawn by Litho.
+     * The like count is drawn on its thumbnail, the same as on the thumbnails beside the texts of the Litho lists.
+     */
+    public static void onCompactVideoBound(TextView titleView, @Nullable String videoId) {
+        if (!FeedEngagementCountsPatch.ENABLED) {
+            return;
+        }
+        try {
+            final int thumbnailId = ResourceUtils.getIdIdentifier("thumbnail_layout");
+            View thumbnail = null;
+            ViewParent parent = titleView.getParent();
+            for (int depth = 0; depth < MAX_THUMBNAIL_SEARCH_DEPTH && thumbnail == null
+                    && parent instanceof ViewGroup group; depth++) {
+                thumbnail = group.findViewById(thumbnailId);
+                parent = group.getParent();
+            }
+            if (!(thumbnail instanceof ViewGroup)) {
+                return;
+            }
+            if (!compactVideoIds.containsKey(thumbnail)) {
+                // The duration is set after the title, and is placed when the thumbnail is laid out.
+                thumbnail.addOnLayoutChangeListener((view, left, top, right, bottom,
+                                                     oldLeft, oldTop, oldRight, oldBottom) -> updateCompactVideo(view));
+            }
+            compactVideoIds.put(thumbnail, videoId);
+            updateCompactVideo(thumbnail);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onCompactVideoBound failure", ex);
+        }
+    }
+
+    private static void updateCompactVideo(View thumbnail) {
+        if (thumbnail.getWidth() == 0) {
+            return;
+        }
+        Rect duration = null;
+        View durationView = thumbnail.findViewById(ResourceUtils.getIdIdentifier("duration"));
+        if (durationView != null && durationView.getVisibility() == View.VISIBLE && durationView.getWidth() > 0) {
+            duration = new Rect(0, 0, durationView.getWidth(), durationView.getHeight());
+            ((ViewGroup) thumbnail).offsetDescendantRectToMyCoords(durationView, duration);
+        }
+        FeedEngagementCountsPatch.onCardLaidOut(thumbnail, compactVideoIds.get(thumbnail),
+                new FeedViewCountPatch.ThumbnailFrame(duration,
+                        new Rect(0, 0, thumbnail.getWidth(), thumbnail.getHeight())));
+    }
 
     /**
      * Injection point.
