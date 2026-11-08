@@ -18,6 +18,7 @@ import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.youtube.interaction.nativeplaylistqueue.EXTENSION_CLASS as NATIVE_QUEUE_EXTENSION_CLASS
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.nativePlaylistQueuePatch
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHook
@@ -120,9 +121,10 @@ val addToQueuePatch = patch(
             fun getReplaceOnItemClickPatch(
                 targetInstructionRegister: String,
                 freeRegister: String,
+                method: String = "replaceOnItemClick",
                 continuation: String = "block_item_click"
             ): String = """
-                invoke-static { $targetInstructionRegister }, $EXTENSION_CLASS->replaceOnItemClick(Ljava/lang/Object;)Z
+                invoke-static { $targetInstructionRegister }, $EXTENSION_CLASS->$method(Ljava/lang/Object;)Z
                 move-result $freeRegister
                 if-eqz $freeRegister, :$continuation
                 return-void
@@ -146,7 +148,7 @@ val addToQueuePatch = patch(
                         check-cast v0, $enumMethodParameterClassName
                     """ + (if (is_21_15_or_greater) {
                         // Preserve the checked item for the native icon conversion below.
-                        getReplaceOnItemClickPatch("v0", "v1", "native_playlist_item")
+                        getReplaceOnItemClickPatch("v0", "v1", "replacePlaylistItemClick", "native_playlist_item")
                     } else "") + """
                         invoke-static { v0 }, $getCharSequenceReference
                         move-result-object v0
@@ -180,13 +182,14 @@ val addToQueuePatch = patch(
             name = "onUserLeaveHint",
             returnType = "V",
             parameters = listOf()
-        ).method.addInstructions(
-            0,
-            """
-                invoke-static { }, $EXTENSION_LOCAL_QUEUE_CLASS->onUserLeaveHint()V
-                invoke-static { }, Lapp/morphe/extension/youtube/patches/queue/NativePlaylistQueuePatch;->onUserLeaveHint()V
-            """
-        )
+        ).method.apply {
+            addInstruction(0, "invoke-static { }, $EXTENSION_LOCAL_QUEUE_CLASS->onUserLeaveHint()V")
+            if (is_21_15_or_greater) {
+                // The native queue cancels its pending playlist page loads when leaving the app,
+                // unless a Next/Previous is waiting on them during background playback.
+                addInstruction(0, "invoke-static { }, $NATIVE_QUEUE_EXTENSION_CLASS->onUserLeaveHint()V")
+            }
+        }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }

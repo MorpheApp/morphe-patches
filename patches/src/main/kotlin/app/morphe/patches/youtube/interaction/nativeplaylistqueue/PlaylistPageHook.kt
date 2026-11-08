@@ -7,27 +7,21 @@
 
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.classDefBy
-import app.morphe.patcher.patch.classDefByOrNull
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patches.youtube.misc.contexthook.NextEndpointParentFingerprint
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
-import app.morphe.patches.youtube.video.series.AccountIdentityFingerprint
-import app.morphe.patches.youtube.video.series.IdentityFieldGetterFingerprint
-import app.morphe.patches.youtube.video.series.IdentityInterfaceMethodFingerprint
 import app.morphe.patches.youtube.video.series.NativeBaseRequestDescriptionFingerprint
 import app.morphe.patches.youtube.video.series.NativeRequestIdentityFingerprint
 import app.morphe.patches.youtube.video.series.NativeRequestStringSetterFingerprint
-import app.morphe.patches.youtube.video.series.SignedOutIdentityFingerprint
-import app.morphe.patches.youtube.video.series.SignedOutIncognitoFingerprint
+import app.morphe.patches.youtube.video.series.resolveNativeAccountContract
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val PAGES = "$EXTENSION_PACKAGE/PlaylistPages;"
 private const val SOURCE = "$EXTENSION_PACKAGE/PlaylistPages\$Source;"
@@ -51,18 +45,17 @@ internal fun installPlaylistPages() {
         .instructionMatches[3].fieldReference
     check(entryId != playlist) { "Native playlist entry ID must be distinct from playlist ID" }
 
-    val panelType = PlaylistModelDescriptionFingerprint.originalMethod
-        .findFieldFromToString(", playlistPanel=").type
-    val blocking = playlistPageServiceFingerprint(requestType) { type ->
-        classDefByOrNull(type)?.fields?.any { it.type == panelType } == true
-    }.originalMethod
-    val responseType = blocking.returnType
+    // The same watch response model the native queue engine receives.
+    val receive = NativeQueueReceiveFingerprint
+    val responseType = receive.originalMethod.parameterTypes.single().toString()
+    val responsePanel = receive.instructionMatches[1].fieldReference
+    val blocking = playlistPageServiceFingerprint(requestType, responseType).originalMethod
     val responseConstructor = nativeQueueResponseConstructorFingerprint(responseType).originalMethod
     val rawResponse = responseConstructor.parameterTypes.single().toString()
-    val responsePanel = classDefBy(responseType).fields.single { it.type == panelType }
     val navigationType = PlaylistModelDescriptionFingerprint.originalMethod
         .findFieldFromToString(", navigationSets=").type
-    val responseNavigation = classDefBy(responseType).fields.single { it.type == navigationType }
+    val responseNavigation = nativeQueueResponseNavigationFingerprint(responseType, navigationType)
+        .instructionMatches.single().fieldReference
     // The wrapper, when present, invokes this selector with all four flags off.
     val defaultNavigation = playlistPageNavigationSelectorFingerprint(navigationType).originalMethod
     val selectNavigation = """
@@ -97,23 +90,8 @@ internal fun installPlaylistPages() {
     }
 
     // Reuse the account identity contract also used by Series tracker privacy.
-    // Matching that contract does not select or install the Series tracker patch.
-    val identity = AccountIdentityFingerprint.originalClassDef
-    fun getters(field: FieldReference): List<Method> = IdentityFieldGetterFingerprint(field).matchAll(identity)
-        .map { it.originalMethod }.filter { method ->
-            identity.interfaces.any { type ->
-                classDefByOrNull(type)?.let { IdentityInterfaceMethodFingerprint(method).matchOrNull(it) } != null
-            }
-        }
-    val diagnostic = AccountIdentityFingerprint.originalMethod
-    val idGetter = getters(diagnostic.findFieldFromToString("AccountIdentity{getId=")).single()
-    val signedOut = SignedOutIdentityFingerprint.originalClassDef
-    val incognitoGetter = getters(diagnostic.findFieldFromToString(", isIncognito=")).single {
-        SignedOutIncognitoFingerprint(it).matchOrNull(signedOut) != null
-    }
-    val accountType = identity.interfaces.single { type ->
-        classDefByOrNull(type)?.let { IdentityInterfaceMethodFingerprint(idGetter).matchOrNull(it) } != null
-    }
+    val account = resolveNativeAccountContract()
+    val accountType = account.type
     val requestIdentity = NativeRequestIdentityFingerprint(accountType).originalMethod
 
     service.interfaces.add(SOURCE)
@@ -126,10 +104,10 @@ internal fun installPlaylistPages() {
             invoke-virtual {p1}, $requestIdentity
             move-result-object v0
             if-eqz v0, :unknown
-            invoke-interface {v0}, $accountType->${idGetter.name}()Ljava/lang/String;
+            invoke-interface {v0}, $accountType->${account.id}
             move-result-object v1
             if-eqz v1, :unknown
-            invoke-interface {v0}, $accountType->${incognitoGetter.name}()Z
+            invoke-interface {v0}, $accountType->${account.incognito}
             move-result v2
             new-instance v3, $ACCOUNT
             invoke-direct {v3, v1, v2}, $ACCOUNT-><init>(Ljava/lang/String;Z)V
@@ -215,9 +193,8 @@ internal fun installPlaylistPages() {
         )
     }
     service.methods.single { AccessFlags.CONSTRUCTOR.isSet(it.accessFlags) }.apply {
-        implementation!!.instructions.withIndex().filter { it.value.opcode == Opcode.RETURN_VOID }
-            .map { it.index }.reversed().forEach { position ->
-                addInstruction(position, "invoke-static/range {p0 .. p0}, $PAGES->attach($SOURCE)V")
-            }
+        findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+            addInstructionsAtControlFlowLabel(index, "invoke-static/range {p0 .. p0}, $PAGES->attach($SOURCE)V")
+        }
     }
 }

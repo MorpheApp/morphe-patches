@@ -21,6 +21,8 @@ import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 
 /** Read-only access to YouTube's authenticated watch-page service, without player callbacks. */
 public final class PlaylistPages {
+    private static final long REQUEST_TIMEOUT_SECONDS = 15;
+
     private PlaylistPages() {
     }
 
@@ -134,7 +136,7 @@ public final class PlaylistPages {
         }
         Object response;
         try {
-            response = future.get(15, TimeUnit.SECONDS);
+            response = future.get(REQUEST_TIMEOUT_SECONDS, TimeUnit.SECONDS);
         } finally {
             // A timed-out request must not retain its callback indefinitely.
             if (!future.isDone()) {

@@ -63,7 +63,7 @@ public final class NativePlaylistQueuePatch {
     private static final String SAVE_VIDEO_IDS_ARGUMENT = "app.morphe.native_playlist_queue.save_video_ids";
     private static final String ENDPOINT_TAG_KEY = "com.google.android.libraries.youtube.innertube.endpoint.tag";
     private static final String SENDER_VIEW_KEY = "com.google.android.libraries.youtube.rendering.elements.sender_view";
-    private static final String MIX_PLAYLIST_ID_PREFIX = "RD";
+    static final String MIX_PLAYLIST_ID_PREFIX = "RD";
     private static final int UNDO_DURATION_MILLISECONDS = 5_000;
     private static final int ACCESSIBLE_UNDO_DURATION_MILLISECONDS = 20_000;
 
@@ -257,6 +257,35 @@ public final class NativePlaylistQueuePatch {
     private static boolean publishing;
     private static boolean observingPlayer;
 
+    // Main-thread-owned source-page worker, separate from an incoming playlist addition.
+    @Nullable
+    private static Future<?> playlistRequest;
+    @Nullable
+    private static Object playlistRequestToken;
+    private record PlaylistWindow(PlaylistQueue.Entry playing) {}
+    @Nullable
+    private static PlaylistQueue.Entry playlistWindowEntry;
+    private record PlaylistConversion(WeakReference<PlaylistController> controller, WeakReference<NativePlayback> playback,
+                                      WeakReference<Object> model, String videoId, String playlistId,
+                                      @Nullable Map<String, String> headers) {}
+    private record PlaylistNavigation(WeakReference<PlaylistNavigator> navigator, Object request,
+                                      PlaylistQueue.Entry playing, Object origin,
+                                      WeakReference<NativePlayback> playback) {}
+    @Nullable
+    private static PlaylistNavigation playlistNavigation;
+    private enum PlaylistOperation { SHUFFLE, SAVE }
+    @Nullable
+    private static PlaylistOperation playlistOperation;
+    private static WeakReference<LoadingView> playlistLoadingView = new WeakReference<>(null);
+
+    // Incoming Next can fetch independently while the queue's source continues paging.
+    private record PlaylistAddition(boolean playLast, WeakReference<NativePlayback> playback,
+                                    @Nullable PlaylistQueue.Source source) {}
+    @Nullable
+    private static PlaylistAddition playlistAddition;
+    @Nullable
+    private static Future<?> playlistAdditionRequest;
+
     // SharedPreferences holds listeners weakly. Retain ours for the installed patch's lifetime.
     private static final SharedPreferences.OnSharedPreferenceChangeListener QUEUE_SETTING_LISTENER =
             (preferences, key) -> {
@@ -267,7 +296,7 @@ public final class NativePlaylistQueuePatch {
                             if (!AddToQueuePatch.isNativeQueueEnabled()) {
                                 releaseNativeQueue();
                             } else if (Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.key.equals(key)) {
-                                if (NativePlaylistQueuePatch.playlistRequestToken instanceof PlaylistWindow) {
+                                if (playlistRequestToken instanceof PlaylistWindow) {
                                     cancelPlaylistRequest();
                                 }
                                 playlistWindowEntry = null;
@@ -328,35 +357,6 @@ public final class NativePlaylistQueuePatch {
     private static final Set<NotificationControls> notificationControls = Collections.newSetFromMap(new WeakHashMap<>());
 
     private NativePlaylistQueuePatch() {}
-
-    // Main-thread-owned source-page worker, separate from an incoming playlist addition.
-    @Nullable
-    private static Future<?> playlistRequest;
-    @Nullable
-    private static Object playlistRequestToken;
-    private record PlaylistWindow(PlaylistQueue.Entry playing) {}
-    @Nullable
-    private static PlaylistQueue.Entry playlistWindowEntry;
-    private record PlaylistConversion(WeakReference<PlaylistController> controller, WeakReference<NativePlayback> playback,
-                                      WeakReference<Object> model, String videoId, String playlistId,
-                                      @Nullable Map<String, String> headers) {}
-    private record PlaylistNavigation(WeakReference<PlaylistNavigator> navigator, Object request,
-                                      PlaylistQueue.Entry playing, Object origin,
-                                      WeakReference<NativePlayback> playback) {}
-    @Nullable
-    private static PlaylistNavigation playlistNavigation;
-    private enum PlaylistOperation { SHUFFLE, SAVE }
-    @Nullable
-    private static PlaylistOperation playlistOperation;
-    private static WeakReference<LoadingView> playlistLoadingView = new WeakReference<>(null);
-
-    // Incoming Next can fetch independently while the queue's source continues paging.
-    private record PlaylistAddition(boolean playLast, WeakReference<NativePlayback> playback,
-                                    @Nullable PlaylistQueue.Source source) {}
-    @Nullable
-    private static PlaylistAddition playlistAddition;
-    @Nullable
-    private static Future<?> playlistAdditionRequest;
 
     public static boolean canQueuePlaylist() {
         if (!AddToQueuePatch.isNativeQueueEnabled()) {
@@ -539,7 +539,7 @@ public final class NativePlaylistQueuePatch {
             PlaylistPages.Source owner = PlaylistPages.current();
             PlaylistPage.Account account = owner == null ? null : owner.patch_getPlaylistAccount();
             PlaylistQueue snapshot = queue;
-            if ((!mix || playLast && snapshot.source() != null) && account == null) {
+            if (snapshot == null || (!mix || playLast && snapshot.source() != null) && account == null) {
                 Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
                 return;
             }
@@ -788,6 +788,9 @@ public final class NativePlaylistQueuePatch {
         PlaylistPages.Source owner = PlaylistPages.current();
         PlaylistQueue.Source source = queue.source();
         if (owner == null || source == null) {
+            // Same outcome as a failed request: never leave a deferred navigation waiting.
+            playlistNavigation = null;
+            Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
             return;
         }
         Object token = new Object();
@@ -3259,8 +3262,7 @@ public final class NativePlaylistQueuePatch {
      */
     @Nullable
     private static View getMixTapSender(PlaylistQueueRenderer.WatchEndpoint watch, Map<?, ?> context) {
-        if (!PlaylistQueue.isVideoId(watch.getVideoId()) || !watch.getPlaylistId().startsWith(MIX_PLAYLIST_ID_PREFIX)
-                || watch.hasIndex() || !watch.getPlaylistSetVideoId().isEmpty()) {
+        if (!PlaylistCardSource.isMixStart(watch)) {
             return null;
         }
 

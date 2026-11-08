@@ -15,6 +15,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
 import app.morphe.extension.shared.Logger;
@@ -143,38 +144,45 @@ public final class QueueFlyoutActions {
      * Capture from the selected source before native menu binding resets shared flyout state.
      */
     public static PlaylistCardSource.Selection playlistSource(@Nullable Object source, @Nullable View sender) {
-        if (!NativePlaylistQueuePatch.canQueuePlaylist()) {
-            return new PlaylistCardSource.Selection("", false);
-        }
-        boolean collection = sender != null && FeedVideoCardsPatch.isPlaylistTap(sender);
+        boolean collection = false;
         try {
+            if (!NativePlaylistQueuePatch.canQueuePlaylist()) {
+                return new PlaylistCardSource.Selection("", false);
+            }
+            collection = sender != null && FeedVideoCardsPatch.isPlaylistTap(sender);
             if (collection) {
-                var mounted = PlaylistCardSource.fromView(sender);
-                if (mounted != null) {
-                    return mounted;
+                try {
+                    var mounted = PlaylistCardSource.fromView(sender);
+                    if (mounted != null) {
+                        return mounted;
+                    }
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Could not read mounted playlist command", ex);
                 }
             }
+            if (source instanceof FlyoutUtils.FlyoutMenuVideoIdInterface) {
+                return new PlaylistCardSource.Selection("", collection);
+            }
+            byte[] bytes = source instanceof FlyoutUtils.ProtocolBufferFieldInterface buffer ? buffer.patch_getBuffer()
+                    : source instanceof MessageLite message ? message.toByteArray() : null;
+            if (bytes == null) {
+                return new PlaylistCardSource.Selection("", collection);
+            }
+            try {
+                return PlaylistCardSource.fromElement(bytes, collection);
+            } catch (InvalidProtocolBufferException ex) {
+                // Legacy/native menu tags can contain their renderer rather than Element.
+                Logger.printDebug(() -> "Flyout source is not an Element", ex);
+                String id = collection ? PlaylistCardSource.fromNavigation(bytes) : "";
+                return new PlaylistCardSource.Selection(id, collection);
+            }
         } catch (Exception ex) {
-            Logger.printException(() -> "Could not read mounted playlist command", ex);
-        }
-        if (source instanceof FlyoutUtils.FlyoutMenuVideoIdInterface) {
+            Logger.printException(() -> "playlistSource failure", ex);
             return new PlaylistCardSource.Selection("", collection);
-        }
-        byte[] bytes = source instanceof FlyoutUtils.ProtocolBufferFieldInterface buffer ? buffer.patch_getBuffer()
-                : source instanceof MessageLite message ? message.toByteArray() : null;
-        if (bytes == null) {
-            return new PlaylistCardSource.Selection("", collection);
-        }
-        try {
-            return PlaylistCardSource.fromElement(bytes, collection);
-        } catch (com.google.protobuf.InvalidProtocolBufferException ex) {
-            // Legacy/native menu tags can contain their renderer rather than Element.
-            String id = collection ? PlaylistCardSource.fromNavigation(bytes) : "";
-            return new PlaylistCardSource.Selection(id, collection);
         }
     }
 
-    static String playlistIdFromMenu(MenuRenderer menu) throws com.google.protobuf.InvalidProtocolBufferException {
+    static String playlistIdFromMenu(MenuRenderer menu) throws InvalidProtocolBufferException {
         String found = "";
         for (MenuItem item : menu.getItemsList()) {
             var command = endpoint(item);

@@ -1505,13 +1505,9 @@ internal fun playlistPagePreparationFingerprint(
     )
 )
 
-internal fun playlistPageServiceFingerprint(
-    requestType: String,
-    isResponse: (String) -> Boolean
-) = Fingerprint(
+internal fun playlistPageServiceFingerprint(requestType: String, responseType: String) = Fingerprint(
     parameters = listOf(requestType),
-    returnType = "L",
-    custom = { method, _ -> isResponse(method.returnType) }
+    returnType = responseType
 )
 
 /** 21.44 resolves the watch request factory through a provider instead of a direct field. */

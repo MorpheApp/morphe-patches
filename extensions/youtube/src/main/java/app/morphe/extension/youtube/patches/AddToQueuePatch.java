@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.google.protobuf.MessageLite;
+
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
@@ -302,13 +304,18 @@ public final class AddToQueuePatch {
 
     /**
      * Injection point.
+     * 21.15 and newer. Runs a native playlist menu row bound to its own playlist.
+     */
+    public static boolean replacePlaylistItemClick(Object item) {
+        return item instanceof MessageLite message && QueueFlyoutActions.onPlaylistQueueItemClick(message);
+    }
+
+    /**
+     * Injection point.
      * 21.04 and older.
      */
     public static boolean replaceOnItemClick(Object object) {
         try {
-            if (object instanceof com.google.protobuf.MessageLite item) {
-                return QueueFlyoutActions.onPlaylistQueueItemClick(item);
-            }
             if (!isCustomQueueEnabled() && !isNativeQueueEnabled()) {
                 return false;
             }

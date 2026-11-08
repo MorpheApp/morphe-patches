@@ -58,9 +58,10 @@ public final class PlaylistCardSource {
     }
 
     /** A generated Mix start, rather than a position in an already playing list. */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     static boolean isMixStart(PlaylistQueueRenderer.WatchEndpoint watch) {
         return PlaylistQueue.isVideoId(watch.getVideoId())
-                && watch.getPlaylistId().startsWith("RD")
+                && watch.getPlaylistId().startsWith(NativePlaylistQueuePatch.MIX_PLAYLIST_ID_PREFIX)
                 && !watch.hasIndex() && watch.getPlaylistSetVideoId().isEmpty();
     }
 
@@ -214,7 +215,7 @@ public final class PlaylistCardSource {
                     videoId = pair[1];
                 }
                 case "list" -> {
-                    if (!playlistId.isEmpty() || pair.length != 2 || !pair[1].startsWith("RD") || !isPlaylistId(pair[1])) {
+                    if (!playlistId.isEmpty() || pair.length != 2 || !pair[1].startsWith(NativePlaylistQueuePatch.MIX_PLAYLIST_ID_PREFIX) || !isPlaylistId(pair[1])) {
                         return "";
                     }
                     playlistId = pair[1];
