@@ -8,7 +8,6 @@
 package app.morphe.extension.music.patches.components;
 
 import app.morphe.extension.music.patches.lyrics.ui.LyricsPanelInstaller;
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
@@ -61,14 +60,9 @@ public final class LyricsPanelFilter extends Filter {
                               FilterContentType contentType,
                               int contentIndex) {
         if (matchedGroup == nonLyricsPanelGroup) {
-            log("NON_LYRICS id=" + identifier + " otherForeground="
-                    + safeOtherPanelForeground());
             LyricsPanelInstaller.onNonLyricsPanelDetected();
         } else {
-            boolean background = isBackgroundComponentUpdate();
-            log("LYRICS id=" + identifier + " background=" + background
-                    + " path=" + shorten(path));
-            LyricsPanelInstaller.onLyricsPanelDetected(background);
+            LyricsPanelInstaller.onLyricsPanelDetected(isBackgroundComponentUpdate());
         }
         return false;
     }
@@ -80,23 +74,5 @@ public final class LyricsPanelFilter extends Filter {
      */
     private static boolean isBackgroundComponentUpdate() {
         return LyricsPanelInstaller.isOtherPanelForeground();
-    }
-
-    private static boolean safeOtherPanelForeground() {
-        try {
-            return LyricsPanelInstaller.isOtherPanelForeground();
-        } catch (Exception ex) {
-            return false;
-        }
-    }
-
-    private static String shorten(CharSequence path) {
-        if (path == null) return "null";
-        String s = path.toString();
-        return s.length() > 160 ? "..." + s.substring(s.length() - 160) : s;
-    }
-
-    private static void log(String message) {
-        Logger.printDebug(() -> "LyricsPanelFilter: " + message);
     }
 }
