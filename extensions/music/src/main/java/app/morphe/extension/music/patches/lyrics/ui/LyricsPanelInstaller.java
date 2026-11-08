@@ -259,7 +259,8 @@ public final class LyricsPanelInstaller {
             final boolean isLyricsPanel = isCurrentPanelLyrics();
             Logger.printDebug(() -> "Engagement panel: "
                     + (panel == null ? "none" : panel.getClass().getName())
-                    + (isLyricsPanel ? " (lyrics)" : ""));
+                    + (isLyricsPanel ? " (lyrics)" : "")
+                    + " nonLyricsActive=" + nonLyricsPanelActive);
 
             updateKeepScreenOn(isLyricsPanel);
 
@@ -305,7 +306,21 @@ public final class LyricsPanelInstaller {
                             : null;
                     if (title != null && isLyricsTitle(title) && !isKnownNonLyricsTitle(title)) {
                         nonLyricsPanelActive = false;
+                        // The heading says lyrics, so a panel that was guessed to be a
+                        // non-lyrics one by identity was a new lyrics panel instance.
+                        Object current = currentPanelReference.get();
+                        if (current != null && current == nonLyricsPanelReference.get()) {
+                            nonLyricsPanelReference = new WeakReference<>(null);
+                            lyricsPanelReference = new WeakReference<>(current);
+                            Logger.printDebug(() -> "Lyrics detect: reclassified panel as lyrics by title");
+                        }
                     } else {
+                        if (title == null) {
+                            // Panel views are not attached yet right after the build.
+                            scheduleDetectRetry(1);
+                        }
+                        Logger.printDebug(() -> "Lyrics detect skipped: non-lyrics panel active, title="
+                                + (title == null ? "null" : title.getText()));
                         return;
                     }
                 }
@@ -366,8 +381,45 @@ public final class LyricsPanelInstaller {
         }
     }
 
+    private static final int DETECT_RETRY_MAX = 3;
+    private static final long DETECT_RETRY_DELAY_MS = 150;
+    private static volatile boolean detectRetryPending;
+
+    /**
+     * Re-runs detection shortly after, for when the heading was not attached yet.
+     */
+    private static void scheduleDetectRetry(int attempt) {
+        if (attempt > DETECT_RETRY_MAX || detectRetryPending) {
+            return;
+        }
+        detectRetryPending = true;
+        Utils.runOnMainThreadDelayed(() -> {
+            detectRetryPending = false;
+            try {
+                if (!nonLyricsPanelActive) {
+                    return;
+                }
+                Activity activity = Utils.getActivity();
+                TextView title = activity != null
+                        ? findForegroundTitle(activity.getWindow().getDecorView())
+                        : null;
+                if (title == null) {
+                    scheduleDetectRetry(attempt + 1);
+                    return;
+                }
+                if (isLyricsTitle(title) && !isKnownNonLyricsTitle(title)) {
+                    Logger.printDebug(() -> "Lyrics detect retry " + attempt + ": heading is lyrics");
+                    onLyricsPanelDetected(true);
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "scheduleDetectRetry failure", ex);
+            }
+        }, DETECT_RETRY_DELAY_MS);
+    }
+
     private static void detectLyricsPanel(boolean isBackgroundUpdate) {
         if (nonLyricsPanelActive) {
+            Logger.printDebug(() -> "Lyrics detect skipped: nonLyricsPanelActive");
             return;
         }
         // Whichever panel holds the container during the initial lyrics build is the lyrics panel,
@@ -376,12 +428,14 @@ public final class LyricsPanelInstaller {
         Object panel = currentPanelReference.get();
         if (panel != null && !isInTab(panelReference.get())) {
             if (panel == nonLyricsPanelReference.get()) {
+                Logger.printDebug(() -> "Lyrics detect skipped: panel is the known non-lyrics panel");
                 return;
             }
             Object knownLyrics = lyricsPanelReference.get();
             if (!isBackgroundUpdate || knownLyrics == null) {
                 lyricsPanelReference = new WeakReference<>(panel);
             } else if (panel != knownLyrics) {
+                Logger.printDebug(() -> "Lyrics detect skipped: background update on a different panel");
                 return;
             }
         }
@@ -393,9 +447,11 @@ public final class LyricsPanelInstaller {
         }
 
         if (installPending) {
+            Logger.printDebug(() -> "Lyrics detect skipped: install already pending");
             return;
         }
 
+        Logger.printDebug(() -> "Lyrics detect: scheduling install, background=" + isBackgroundUpdate);
         installPending = true;
         // With lyrics loaded the panel can cover the next frame, which keeps the built-in
         // lyrics from showing first; otherwise the app is given time to attach its views.
