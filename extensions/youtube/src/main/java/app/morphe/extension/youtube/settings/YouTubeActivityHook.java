@@ -12,13 +12,19 @@ package app.morphe.extension.youtube.settings;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.preference.PreferenceFragment;
 import android.view.View;
 import android.widget.Toolbar;
 
+import androidx.annotation.Nullable;
+
 import com.google.android.gms.common.api.GoogleApiActivity;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
@@ -36,6 +42,11 @@ import app.morphe.extension.youtube.settings.search.YouTubeSearchViewController;
  */
 @SuppressWarnings({"deprecation", "RedundantSuppression"})
 public class YouTubeActivityHook extends BaseActivityHook {
+
+    /**
+     * Intent extra with the key of the settings screen to open.
+     */
+    public static final String EXTRA_SCREEN_KEY = "morphe_settings_screen_key";
 
     public static final boolean USE_BOLD_ICONS = (VersionCheckPatch.IS_21_36_OR_GREATER ||
             (Settings.SETTINGS_INITIALIZED.get() && VersionCheckPatch.IS_20_31_OR_GREATER))
@@ -60,6 +71,33 @@ public class YouTubeActivityHook extends BaseActivityHook {
     @SuppressWarnings("unused")
     public static void initialize(Activity parentActivity) {
         BaseActivityHook.initialize(new YouTubeActivityHook(), parentActivity);
+    }
+
+    /**
+     * Opens the Morphe settings.
+     *
+     * @param fallbackContext Used if no activity is in the foreground.
+     * @param screenKey       Preference key of the screen to open, or null for the main screen.
+     */
+    public static void openSettings(Context fallbackContext, @Nullable String screenKey) {
+        Activity activity = Utils.getActivity();
+        Context context = activity != null ? activity : fallbackContext;
+
+        try {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.setData(Uri.parse(MORPHE_SETTINGS_INTENT));
+            intent.setPackage(context.getPackageName());
+            intent.setClass(context, GoogleApiActivity.class);
+            intent.putExtra(EXTRA_SCREEN_KEY, screenKey);
+
+            if (activity == null) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            }
+
+            context.startActivity(intent);
+        } catch (Exception e) {
+            Logger.printException(() -> "Failed to open Morphe settings", e);
+        }
     }
 
     /**

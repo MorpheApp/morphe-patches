@@ -18,7 +18,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Build;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +32,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.apps.youtube.app.application.Shell_SettingsActivity;
-import com.google.android.gms.common.api.GoogleApiActivity;
 import com.google.protobuf.ExtensionRegistryLite;
 import com.google.protobuf.MessageLite;
 
@@ -55,7 +53,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
@@ -84,6 +81,7 @@ import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.shared.NavigationBar;
 
 @SuppressWarnings("unused")
@@ -1547,22 +1545,6 @@ public final class NavigationBarPatch {
     }
 
     private static void openMorpheSettings(View view) {
-        Activity activity = Utils.getActivity();
-        Context context = activity != null ? activity : view.getContext();
-
-        try {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.setData(Uri.parse(BaseActivityHook.MORPHE_SETTINGS_INTENT));
-            intent.setPackage(context.getPackageName());
-            intent.setClass(context, GoogleApiActivity.class);
-
-            if (activity == null) {
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            }
-
-            context.startActivity(intent);
-        } catch (Exception e) {
-            Logger.printException(() -> "Failed to open Morphe settings", e);
-        }
+        YouTubeActivityHook.openSettings(view.getContext(), null);
     }
 }
