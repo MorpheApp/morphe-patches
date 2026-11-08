@@ -78,7 +78,6 @@ private val youTubeColorNamesDark = {
     THEME_DEFAULT_COLOR_NAMES_DARK + if (is_21_06_or_greater)
         setOf(
 //            "yt_ref_color_constants_default_baseline_black_black0",
-            "yt_ref_color_constants_default_baseline_black_black1",
 //            "yt_ref_color_constants_default_baseline_black_black2",
             "yt_ref_color_constants_default_baseline_black_black3",
 //            "yt_ref_color_constants_default_baseline_black_black4",
@@ -91,7 +90,6 @@ private val youTubeColorNamesDark = {
             "yt_sys_color_baseline_light_static_black",
             // 21.43+ names of 'black3', 'black1' and the menu background.
             "yt_ref_color_constants_default_grey5",
-            "yt_ref_color_constants_default_grey20",
             "yt_sys_color_baseline_dark_default_menu_background",
             // The mainstage color theme of 21.43+, which the app applies over the default one.
             "yt_ref_color_constants_colors_mainstage_grey5",
