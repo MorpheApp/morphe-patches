@@ -409,7 +409,7 @@ internal fun spoofVideoStreamsPatch(
             val remainingBytesField = it.instructionMatches.last().fieldReference
             val pauseExceptionType = PriorityTooLowExceptionFingerprint.method.definingClass
             val serverErrorExceptionConstructor = InvalidResponseCodeExceptionFingerprint.method
-            val dataSpecType = it.instructionMatches[1].methodReference!!.parameterTypes[1]
+            val dataSpecType = it.instructionMatches[1].methodReference.parameterTypes[1]
             val dataSpecField = it.classDef.fields.first { field -> field.type == dataSpecType }
 
             val helperMethod = ImmutableMethod(

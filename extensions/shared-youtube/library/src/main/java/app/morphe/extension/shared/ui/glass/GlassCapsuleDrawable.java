@@ -41,6 +41,7 @@ import app.morphe.extension.shared.ui.Dim;
  * which is set as the background of the navigation bar. Everything outside the capsule is left transparent.
  * The selected button has a rounded indicator, which moves to the next selected button.
  */
+@SuppressWarnings("deprecation")
 public final class GlassCapsuleDrawable extends Drawable {
 
     /**
@@ -249,12 +250,12 @@ public final class GlassCapsuleDrawable extends Drawable {
     }
 
     @ColorInt
-    private static int blend(@ColorInt int from, @ColorInt int to, float fraction) {
+    private static int blend(@ColorInt int from, float fraction) {
         final float inverse = 1 - fraction;
         return Color.rgb(
-                Math.round(Color.red(from) * inverse + Color.red(to) * fraction),
-                Math.round(Color.green(from) * inverse + Color.green(to) * fraction),
-                Math.round(Color.blue(from) * inverse + Color.blue(to) * fraction)
+                Math.round(Color.red(from) * inverse + Color.red(Color.WHITE) * fraction),
+                Math.round(Color.green(from) * inverse + Color.green(Color.WHITE) * fraction),
+                Math.round(Color.blue(from) * inverse + Color.blue(Color.WHITE) * fraction)
         );
     }
 
@@ -285,7 +286,7 @@ public final class GlassCapsuleDrawable extends Drawable {
                 final int background = ThemeUtils.getAppBackgroundColor();
                 fillColor = lightTint
                         ? withAlpha(Color.WHITE, scaledAlpha(0.30f))
-                        : withAlpha(blend(background, Color.WHITE, 0.14f), scaledAlpha(0.50f));
+                        : withAlpha(blend(background, 0.14f), scaledAlpha(0.50f));
                 sheenTopColor = withAlpha(Color.WHITE, lightTint ? 0.16f : 0.10f);
                 strokeTopColor = withAlpha(Color.WHITE, 0.30f);
                 strokeBottomColor = withAlpha(Color.WHITE, 0.06f);
@@ -297,7 +298,7 @@ public final class GlassCapsuleDrawable extends Drawable {
             }
             default -> {
                 final int background = ThemeUtils.getAppBackgroundColor();
-                fillColor = withAlpha(blend(background, Color.WHITE, 0.6f), scaledAlpha(0.50f));
+                fillColor = withAlpha(blend(background, 0.6f), scaledAlpha(0.50f));
                 sheenTopColor = withAlpha(Color.WHITE, 0.35f);
                 strokeTopColor = withAlpha(Color.WHITE, 0.95f);
                 strokeBottomColor = withAlpha(Color.BLACK, 0.07f);

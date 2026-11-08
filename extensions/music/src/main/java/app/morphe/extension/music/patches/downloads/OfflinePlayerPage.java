@@ -109,7 +109,7 @@ final class OfflinePlayerPage {
     private ImageButton menuButton;
     private TextView titleView;
     private TextView artistView;
-    private SeekBar seekBar;
+    private final SeekBar seekBar;
     private TextView currentTimeView;
     private TextView totalTimeView;
     private ImageButton previousButton;
@@ -289,6 +289,7 @@ final class OfflinePlayerPage {
 
         // Square and placed at the top, so a cover taller than the space only loses its bottom.
         artwork = new ImageView(activity) {
+            @SuppressWarnings("SuspiciousNameCombination")
             @Override
             protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
                 super.onMeasure(widthMeasureSpec, widthMeasureSpec);
@@ -668,6 +669,7 @@ final class OfflinePlayerPage {
             this.queueRow = queueRow;
         }
 
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouch(View row, MotionEvent event) {
             switch (event.getActionMasked()) {

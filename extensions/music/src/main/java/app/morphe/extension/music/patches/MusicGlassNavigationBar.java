@@ -35,6 +35,7 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.WeakHashMap;
 
@@ -68,7 +69,7 @@ import app.morphe.extension.shared.ui.glass.GlassNavigationBarLayout;
  * The floating miniplayer of the app (9.39+) is used, with the same room on its sides as the capsule
  * and the page.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "deprecation"})
 public final class MusicGlassNavigationBar {
 
     private static final int PIVOT_BAR = ResourceUtils.getIdentifier(ResourceType.ID, "pivot_bar");
@@ -160,7 +161,7 @@ public final class MusicGlassNavigationBar {
 
     /**
      * The colors of the blurred page are made more vivid and slightly brighter, which looks like frosted
-     * glass. A blur alone makes the colors dull and grey.
+     * glass. A blur alone makes the colors dull and gray.
      */
     private static final ColorMatrix FROSTED_GLASS_COLORS = createFrostedGlassColors();
 
@@ -257,7 +258,7 @@ public final class MusicGlassNavigationBar {
     /**
      * Injection point.
      * <p>
-     * Called when the view the pages are in is given its height, which ends at the top of the bar.
+     * Called when the view, the pages are in, is given its height, which ends at the top of the bar.
      *
      * @param content The view the pages are in.
      * @param height  The height of the view, without the height of the bar.
@@ -291,7 +292,7 @@ public final class MusicGlassNavigationBar {
 
     /**
      * The page is laid out down to the bottom of the screen from the first time it is laid out, also before
-     * the glass is drawn, so its height does not change afterwards. Some pages only read their height once,
+     * the glass is drawn, so its height does not change afterward. Some pages only read their height once,
      * such as Samples for the size of the video.
      *
      * @return How much of the page is behind the bar, the height of the bar if it is shown.
@@ -383,7 +384,7 @@ public final class MusicGlassNavigationBar {
             // and ends below them, so the shade is continued below them, behind the bar.
             setBottomRoom(view, room, true, false);
             final int shadeHeight = bottomRoom.containsKey(view) ? view.getPaddingBottom()
-                    - bottomRoom.get(view)[0] : 0;
+                    - Objects.requireNonNull(bottomRoom.get(view))[0] : 0;
             if (view.getBackground() instanceof BottomShadeDrawable shade) {
                 shade.setHeight(shadeHeight);
             } else if (shadeHeight > 0 && view.getBackground() == null) {
