@@ -23,11 +23,22 @@ import app.morphe.extension.shared.patches.components.StringFilterGroup;
 @SuppressWarnings("unused")
 public final class LyricsPanelFilter extends Filter {
 
+    private final StringFilterGroup timedLyricsGroup = new StringFilterGroup(
+            null,
+            "timed_lyrics"
+    );
+
+    private final StringFilterGroup nonLyricsPanelGroup = new StringFilterGroup(
+            null,
+            "comment_composer",
+            "comment_filter_context",
+            "community_guidelines",
+            "|comment."
+    );
+
     public LyricsPanelFilter() {
-        addIdentifierCallbacks(new StringFilterGroup(
-                null,
-                "timed_lyrics"
-        ));
+        addIdentifierCallbacks(timedLyricsGroup);
+        addPathCallbacks(nonLyricsPanelGroup);
     }
 
     @Override
@@ -40,7 +51,11 @@ public final class LyricsPanelFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
-        LyricsPanelInstaller.onLyricsPanelDetected();
+        if (matchedGroup == nonLyricsPanelGroup) {
+            LyricsPanelInstaller.onNonLyricsPanelDetected();
+        } else {
+            LyricsPanelInstaller.onLyricsPanelDetected();
+        }
         return false;
     }
 }
