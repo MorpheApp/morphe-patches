@@ -9,11 +9,13 @@ package app.morphe.extension.youtube.patches;
 
 import android.graphics.Rect;
 import android.view.GestureDetector;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.facebook.litho.ComponentHost;
@@ -22,8 +24,6 @@ import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -47,14 +47,20 @@ public final class PlaylistPatch {
         MessageLite patch_parsePlaylistEditResponse(byte[] bytes);
     }
 
-    // Used only on the UI thread. Neither the detectors nor their callbacks retain a row.
-    private static final Map<ComponentHost, RowLongPress> longPresses = new WeakHashMap<>();
-    private static boolean dispatchingCancel;
+    /**
+     * Prefix of the browse id of a playlist page, followed by the playlist id.
+     */
+    private static final String PLAYLIST_BROWSE_ID_PREFIX = "VL";
 
     /**
      * Width of a widened drag handle and of its touch area.
      */
     private static final int DRAG_HANDLE_WIDTH_DIP = 32;
+
+    /**
+     * Width of the menu button at the end of a row.
+     */
+    private static final int MENU_BUTTON_WIDTH_DIP = 48;
 
     private static final int DRAG_HANDLE_CONTAINER_ID = ResourceUtils.getIdentifier(
             ResourceType.ID, "drag_handle_container");
@@ -63,6 +69,17 @@ public final class PlaylistPatch {
             ResourceType.STRING, "accessibility_drag_handle");
 
     private static volatile boolean playlistShown;
+
+    /**
+     * Long press of the row that is touched now. Used only on the main thread.
+     */
+    @Nullable
+    private static RowLongPress rowLongPress;
+
+    /**
+     * If a cancel event is given to the children of a row, which the touch hook must ignore.
+     */
+    private static boolean dispatchingCancel;
 
     /**
      * Touch delegate of a row host that gives the touches of the drag handle area to the handle.
@@ -80,7 +97,8 @@ public final class PlaylistPatch {
      * Injection point.
      */
     public static void setBrowseId(@Nullable String browseId) {
-        playlistShown = browseId != null && browseId.startsWith("VL") && browseId.length() > 2;
+        playlistShown = browseId != null && browseId.startsWith(PLAYLIST_BROWSE_ID_PREFIX)
+                && browseId.length() > PLAYLIST_BROWSE_ID_PREFIX.length();
     }
 
     /**
@@ -107,7 +125,6 @@ public final class PlaylistPatch {
      */
     @Nullable
     private static View findDragHandle(ViewGroup host) {
-        if (DRAG_HANDLE_DESCRIPTION_ID == 0) return null;
         String description = host.getResources().getString(DRAG_HANDLE_DESCRIPTION_ID);
         for (int i = 0, count = host.getChildCount(); i < count; i++) {
             View child = host.getChildAt(i);
@@ -155,7 +172,9 @@ public final class PlaylistPatch {
      */
     public static void onComponentHostLayout(ComponentHost host) {
         try {
-            if (isWideDragHandlesActive()) {
+            if (!Settings.PLAYLIST_WIDE_DRAG_HANDLES.get()) return;
+
+            if (isPlaylistShown()) {
                 // Litho mounts the views of the host after it is laid out.
                 host.post(() -> updateDragHandleTouchDelegate(host));
             } else {
@@ -210,93 +229,144 @@ public final class PlaylistPatch {
         }
     }
 
-    /** Observe row touches without stealing taps or scrolls from the native children. */
+    /**
+     * Injection point.
+     * Called by ComponentHost.dispatchTouchEvent(). Touching and holding a row of an editable
+     * playlist drags it with its drag handle, so the new order is saved like a drag of the handle.
+     *
+     * @return If the touch was handled and must not be given to the children.
+     */
     public static boolean onComponentHostTouch(ComponentHost host, MotionEvent event) {
-        if (dispatchingCancel) return false;
+        if (dispatchingCancel || !Settings.PLAYLIST_LONG_PRESS_DRAG.get()) return false;
         try {
-            RowLongPress gesture = longPresses.get(host);
-            int action = event.getActionMasked();
+            final int action = event.getActionMasked();
             if (action == MotionEvent.ACTION_DOWN) {
-                longPresses.remove(host);
-                if (!Settings.PLAYLIST_LONG_PRESS_DRAG.get() || !isPlaylistShown()) return false;
-                View handle = findDragHandle(host);
-                if (handle == null) return false;
-                // Leave the native handle and action menu to their own listeners.
-                float x = host.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL
-                        ? host.getWidth() - event.getX() : event.getX();
-                if (x < dipToPixels(host, DRAG_HANDLE_WIDTH_DIP)
-                        || x > host.getWidth() - dipToPixels(host, 48)) return false;
-                gesture = new RowLongPress(host, handle);
-                longPresses.put(host, gesture);
+                onRowTouchDown(host, event);
             }
-            if (gesture == null) return false;
-            boolean consumed = gesture.dragging;
-            if (consumed) gesture.forwardTouch(event);
-            gesture.detector.onTouchEvent(event);
+
+            RowLongPress longPress = rowLongPress;
+            if (longPress == null || longPress.hostRef.get() != host) return false;
+
             if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL) {
-                longPresses.remove(host);
+                rowLongPress = null;
             }
-            return consumed || gesture.dragging;
+            if (longPress.dragging) {
+                longPress.forwardToHandle(event);
+                return true;
+            }
+            longPress.detector.onTouchEvent(event);
+            return false;
         } catch (Exception ex) {
-            longPresses.remove(host);
+            rowLongPress = null;
             Logger.printException(() -> "onComponentHostTouch failure", ex);
             return false;
         }
     }
 
+    private static void onRowTouchDown(ComponentHost host, MotionEvent event) {
+        // A row that was recycled during a touch may not have seen the end of that touch.
+        if (rowLongPress != null && rowLongPress.hostRef.get() == host) {
+            rowLongPress = null;
+        }
+        if (!isPlaylistShown()) return;
+
+        View handle = findDragHandle(host);
+        if (handle == null) return;
+
+        // The drag handle and the menu button keep their own touches.
+        final int hostWidth = host.getWidth();
+        final float x = host.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL
+                ? hostWidth - event.getX()
+                : event.getX();
+        if (x < dipToPixels(host, DRAG_HANDLE_WIDTH_DIP)
+                || x > hostWidth - dipToPixels(host, MENU_BUTTON_WIDTH_DIP)) {
+            return;
+        }
+
+        rowLongPress = new RowLongPress(host, handle);
+    }
+
+    /**
+     * Long press of a row, which then gives the touch to the drag handle of the row.
+     * Does not keep the views of the row, which can be recycled during the touch.
+     */
     private static final class RowLongPress extends GestureDetector.SimpleOnGestureListener {
-        final WeakReference<ComponentHost> hostRef;
-        final WeakReference<View> handleRef;
-        final GestureDetector detector;
-        final int[] location = new int[2];
-        boolean dragging;
+        private final WeakReference<ComponentHost> hostRef;
+        private final WeakReference<View> handleRef;
+        private final GestureDetector detector;
+        private final int[] downLocation = new int[2];
+        private final int[] currentLocation = new int[2];
+        private boolean dragging;
 
         RowLongPress(ComponentHost host, View handle) {
             hostRef = new WeakReference<>(host);
             handleRef = new WeakReference<>(handle);
-            host.getLocationOnScreen(location);
+            host.getLocationOnScreen(downLocation);
             detector = new GestureDetector(host.getContext().getApplicationContext(), this);
         }
 
         @Override
-        public boolean onDown(MotionEvent event) {
-            return true;
-        }
-
-        @Override
-        public void onLongPress(MotionEvent event) {
-            ComponentHost host = hostRef.get();
-            View handle = handleRef.get();
-            if (host == null || handle == null || !host.isAttachedToWindow()
-                    || !Settings.PLAYLIST_LONG_PRESS_DRAG.get() || !isPlaylistShown()
-                    || longPresses.get(host) != this || findDragHandle(host) != handle) return;
-            int[] current = new int[2];
-            host.getLocationOnScreen(current);
-            if (current[0] != location[0] || current[1] != location[1]) return;
-            MotionEvent copy = MotionEvent.obtain(event);
+        public void onLongPress(@NonNull MotionEvent event) {
             try {
-                // Cancel the original row tap before starting the native handle's saved drag.
-                dispatchingCancel = true;
-                copy.setAction(MotionEvent.ACTION_CANCEL);
-                host.dispatchTouchEvent(copy);
-                dispatchingCancel = false;
+                ComponentHost host = hostRef.get();
+                View handle = handleRef.get();
+                if (rowLongPress != this || host == null || handle == null
+                        || !host.isAttachedToWindow() || !isPlaylistShown()
+                        || findDragHandle(host) != handle) {
+                    return;
+                }
+                // The list can still move without new touch events, such as after a fling.
+                host.getLocationOnScreen(currentLocation);
+                if (currentLocation[0] != downLocation[0] || currentLocation[1] != downLocation[1]) {
+                    return;
+                }
 
-                copy.setLocation(handle.getWidth() / 2f, handle.getHeight() / 2f);
-                copy.setAction(MotionEvent.ACTION_DOWN);
-                // Use the handle's actual command, which installs the native drop/save callbacks.
-                dragging = handle.dispatchTouchEvent(copy);
+                cancelChildrenTouch(host, event);
+                host.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+
+                // The rest of the touch goes to the handle, even if the handle
+                // does not use the down event, so lifting the finger stops the drag.
+                dragging = true;
+                MotionEvent down = MotionEvent.obtain(event);
+                try {
+                    down.setAction(MotionEvent.ACTION_DOWN);
+                    dispatchToHandleCenter(handle, down);
+                } finally {
+                    down.recycle();
+                }
             } catch (Exception ex) {
-                dragging = false;
-                Logger.printException(() -> "Could not start native playlist drag", ex);
-            } finally {
-                dispatchingCancel = false;
-                copy.recycle();
+                Logger.printException(() -> "onLongPress failure", ex);
             }
         }
 
-        void forwardTouch(MotionEvent event) {
+        /**
+         * Removes the pressed state of the children, and their own pending clicks.
+         */
+        private static void cancelChildrenTouch(ComponentHost host, MotionEvent event) {
+            MotionEvent cancel = MotionEvent.obtain(event);
+            dispatchingCancel = true;
+            try {
+                cancel.setAction(MotionEvent.ACTION_CANCEL);
+                host.dispatchTouchEvent(cancel);
+            } finally {
+                dispatchingCancel = false;
+                cancel.recycle();
+            }
+        }
+
+        void forwardToHandle(MotionEvent event) {
             View handle = handleRef.get();
-            if (handle == null) return;
+            if (handle != null) {
+                dispatchToHandleCenter(handle, event);
+            }
+        }
+
+        /**
+         * The handle starts the drag a moment after the touch starts, unless the touch moves
+         * or ends first. The drag itself follows the finger in the list, so the handle always
+         * gets the touch at its center.
+         */
+        private static void dispatchToHandleCenter(View handle, MotionEvent event) {
             MotionEvent copy = MotionEvent.obtain(event);
             try {
                 copy.setLocation(handle.getWidth() / 2f, handle.getHeight() / 2f);

@@ -59,18 +59,13 @@ val playlistPatch = patch(
             SwitchPreference("morphe_playlist_wide_drag_handles", summary = true),
             SwitchPreference("morphe_playlist_hide_removal_snackbar", summary = true),
         )
-        if (is_21_05_or_greater) {
-            PreferenceScreen.FEED.addPreferences(
-                SwitchPreference("morphe_playlist_long_press_drag", summary = true),
-            )
-        }
 
         addBrowseIdHook("$EXTENSION_CLASS->setBrowseId(Ljava/lang/String;)V")
         addSearchResultsHook("$EXTENSION_CLASS->clearBrowseId()V")
 
         // region Wide drag handles.
 
-        // The original code reuses the view register later in the constructor.
+        // Drag handles of regular views. The original code reuses the view register.
         DragHandleTouchListenerFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->onDragHandleCreated(Landroid/view/View;)V"
@@ -80,15 +75,6 @@ val playlistPatch = patch(
         // the row host forwards the touches of a wider area to the handle.
         // Before 21.05, ComponentHost does not override onInterceptTouchEvent().
         if (is_21_05_or_greater) {
-            FeedComponentHostTouchFingerprint.method.addInstructionsWithLabels(0,
-                """
-                    invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostTouch(Lcom/facebook/litho/ComponentHost;Landroid/view/MotionEvent;)Z
-                    move-result v0
-                    if-eqz v0, :original
-                    return v0
-                    :original
-                    nop
-                """)
             FeedComponentHostLayoutFingerprint.method.apply {
                 findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
                     addInstructionsAtControlFlowLabel(
@@ -102,6 +88,28 @@ val playlistPatch = patch(
                 0,
                 """
                     invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostInterceptTouch(Lcom/facebook/litho/ComponentHost;Landroid/view/MotionEvent;)Z
+                    move-result v0
+                    if-eqz v0, :original
+                    return v0
+                    :original
+                    nop
+                """
+            )
+        }
+
+        // endregion
+
+        // region Long press to reorder.
+
+        if (is_21_05_or_greater) {
+            PreferenceScreen.FEED.addPreferences(
+                SwitchPreference("morphe_playlist_long_press_drag", summary = true),
+            )
+
+            FeedComponentHostTouchFingerprint.method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostTouch(Lcom/facebook/litho/ComponentHost;Landroid/view/MotionEvent;)Z
                     move-result v0
                     if-eqz v0, :original
                     return v0
