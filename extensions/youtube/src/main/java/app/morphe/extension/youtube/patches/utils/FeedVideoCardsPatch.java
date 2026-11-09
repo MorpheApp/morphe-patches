@@ -915,7 +915,7 @@ public final class FeedVideoCardsPatch {
 
     /**
      * Smallest thumbnail beside the texts, such as of the rows of a list on phones,
-     * which fits the compact like count next to the duration.
+     * which fits the compact like count at the top of the thumbnail.
      */
     private static final int MIN_SIDE_THUMBNAIL_WIDTH_DP = 120;
 

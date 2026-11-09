@@ -41,7 +41,7 @@ import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Shows the like count and the like ratio of feed videos at the right side of their thumbnails.
+ * Shows the like count and the like ratio of feed videos at the top left corner of their thumbnails.
  * Part of the Return YouTube Dislike patch.
  * <p>
  * Feed videos do not include their like count, so it's fetched from the Return YouTube Dislike API,
@@ -76,11 +76,9 @@ public final class FeedEngagementCountsPatch {
     /** Checks of a card that is not visible, before its fetch waits for the next layout. */
     private static final int MAX_HIDDEN_RETRIES = 10;
 
-    /** Top margin of a thumbnail that is too small to fit the badge above the duration. */
-    private static final int MARGIN_DP = 10;
     /**
-     * Same as the duration badge and the Watch later button, so their right edges line up.
-     * In right to left languages it's the left margin, the same as the duration badge.
+     * Space between the duration badge and the right edge of the thumbnail, or its left edge
+     * in right to left languages, used if the duration badge is not found.
      */
     private static final int RIGHT_MARGIN_DP = 8;
     /** Space between the badge and the duration badge below it. */
@@ -99,7 +97,7 @@ public final class FeedEngagementCountsPatch {
     private static final float RATIO_TEXT_SP = 10f;
 
     /**
-     * The compact badge is a single row as tall as the duration badge, on its side, used on thumbnails
+     * The compact badge is a single row as tall as the duration badge, used on thumbnails
      * too small to fit the badge above the duration, such as of the rows of a list on phones.
      */
     private static final int COMPACT_HEIGHT_DP = 20;
@@ -247,9 +245,11 @@ public final class FeedEngagementCountsPatch {
          * is not always found, such as when the host of the whole thumbnail draws it, and the
          * place found from the thumbnail can differ, so the badge would move.
          */
-        private int durationEdge;
         private int durationBottom;
         private int durationThumbnailTop;
+        private int durationThumbnailLeft;
+        private int durationThumbnailRight;
+        private int durationMargin;
         /** Width of the card when the place was found, or -1 if it is not known. */
         private int durationHostWidth = -1;
         /** If the badge is the compact single row, see {@link #COMPACT_HEIGHT_DP}. */
@@ -441,7 +441,7 @@ public final class FeedEngagementCountsPatch {
         }
 
         /**
-         * Places the badge on the side of the duration of the thumbnail, just above it.
+         * Places the badge at the top left corner of the thumbnail.
          */
         void place(View host) {
             final boolean loading = isLoading();
@@ -489,53 +489,75 @@ public final class FeedEngagementCountsPatch {
             }
             final Rect duration = frame.duration;
             final Rect thumbnail = frame.thumbnail;
-            // In right to left languages the duration badge is at the left, so the badge is too.
+            // In right to left languages the duration badge is at the left.
             final boolean rtl = FeedViewCountPatch.isRtl(host);
-            // The right edge of the badge, or its left edge in right to left languages.
-            final int edge;
+            // The top of the duration badge, or of the row it would be in.
             final int bottom;
             final int thumbnailTop;
+            final int thumbnailLeft;
+            final int thumbnailRight;
+            // Space between the duration badge and the edges of the thumbnail.
+            final int margin;
             if (duration != null) {
-                edge = rtl ? duration.left : duration.right;
                 bottom = duration.top - px(DURATION_GAP_DP);
                 if (thumbnail != null && thumbnail.top < duration.top) {
                     thumbnailTop = thumbnail.top;
+                    thumbnailLeft = thumbnail.left;
+                    thumbnailRight = thumbnail.right;
+                    margin = Math.max(0, rtl ? duration.left - thumbnail.left : thumbnail.right - duration.right);
                 } else {
                     // Thumbnails are centered on the card, and at least 16:9.
                     final int thumbnailWidth;
                     if (rtl) {
-                        final int thumbnailLeft = duration.left - px(RIGHT_MARGIN_DP);
+                        thumbnailLeft = duration.left - px(RIGHT_MARGIN_DP);
                         thumbnailWidth = host.getWidth() - thumbnailLeft - Math.max(0, thumbnailLeft);
+                        thumbnailRight = thumbnailLeft + thumbnailWidth;
                     } else {
-                        final int thumbnailRight = duration.right + px(RIGHT_MARGIN_DP);
+                        thumbnailRight = duration.right + px(RIGHT_MARGIN_DP);
                         thumbnailWidth = thumbnailRight - Math.max(0, host.getWidth() - thumbnailRight);
+                        thumbnailLeft = thumbnailRight - thumbnailWidth;
                     }
                     thumbnailTop = duration.bottom + px(RIGHT_MARGIN_DP)
                             - Math.round(thumbnailWidth * FeedVideoCardsPatch.THUMBNAIL_RATIO);
+                    margin = px(RIGHT_MARGIN_DP);
                 }
-                durationEdge = edge;
                 durationBottom = bottom;
                 durationThumbnailTop = thumbnailTop;
+                durationThumbnailLeft = thumbnailLeft;
+                durationThumbnailRight = thumbnailRight;
+                durationMargin = margin;
                 durationHostWidth = host.getWidth();
             } else if (durationHostWidth == host.getWidth()) {
-                edge = durationEdge;
                 bottom = durationBottom;
                 thumbnailTop = durationThumbnailTop;
+                thumbnailLeft = durationThumbnailLeft;
+                thumbnailRight = durationThumbnailRight;
+                margin = durationMargin;
             } else if (thumbnail != null) {
-                edge = rtl ? thumbnail.left + px(RIGHT_MARGIN_DP) : thumbnail.right - px(RIGHT_MARGIN_DP);
                 bottom = thumbnail.bottom - px(ABOVE_DURATION_DP);
                 thumbnailTop = thumbnail.top;
+                thumbnailLeft = thumbnail.left;
+                thumbnailRight = thumbnail.right;
+                margin = px(RIGHT_MARGIN_DP);
             } else {
-                edge = rtl ? px(RIGHT_MARGIN_DP) : host.getWidth() - px(RIGHT_MARGIN_DP);
                 bottom = (host instanceof ComponentHost componentHost
                         ? FeedVideoCardsPatch.getThumbnailBottom(componentHost)
                         : host.getHeight()) - px(ABOVE_DURATION_DP);
                 thumbnailTop = 0;
+                thumbnailLeft = 0;
+                thumbnailRight = host.getWidth();
+                margin = px(RIGHT_MARGIN_DP);
             }
-            compact = bottom - height < thumbnailTop + px(MARGIN_DP);
+            // The top left corner of the thumbnail, as far from the edges as the duration badge.
+            // Video cards have the Watch later button at the top right in any language. Cards of Shorts
+            // have their menu at the top right, or at the top left in right to left languages,
+            // so their badge is at the top right then, as is the badge of the thumbnails of compact videos.
+            final boolean atRight = rtl && this.frame != null;
+            final int top = thumbnailTop + margin;
+            // The badge does not overlap the row of the duration badge, which can also have the view count.
+            compact = top + height > bottom;
             if (compact) {
-                // The badge does not fit above the duration, so it is on the side of the duration,
-                // in the same row, or in the other bottom corner of the thumbnail if the duration is not known.
+                // The badge does not fit above the row of the duration, so it's a single row.
                 float compactWidth = 0;
                 if (countText != null || (loading && LIKE_COUNT)) {
                     compactWidth += px(COMPACT_ICON_DP) + gap;
@@ -553,21 +575,10 @@ public final class FeedEngagementCountsPatch {
                 final int compactPadding = px(COMPACT_PADDING_DP);
                 final int rowWidth = Math.round(compactWidth) + compactPadding * 2;
                 final int rowHeight = px(COMPACT_HEIGHT_DP);
-                final int rowBottom = duration != null
-                        ? duration.bottom
-                        : bottom + px(ABOVE_DURATION_DP) - px(RIGHT_MARGIN_DP);
-                final int rowLeft;
-                if (duration != null) {
-                    rowLeft = rtl ? duration.right + px(DURATION_GAP_DP) : duration.left - px(DURATION_GAP_DP) - rowWidth;
-                } else {
-                    final int thumbnailLeft = thumbnail != null ? thumbnail.left : 0;
-                    final int thumbnailRight = thumbnail != null ? thumbnail.right : host.getWidth();
-                    rowLeft = rtl ? thumbnailRight - px(RIGHT_MARGIN_DP) - rowWidth : thumbnailLeft + px(RIGHT_MARGIN_DP);
-                }
-                setBounds(rowLeft, rowBottom - rowHeight, rowLeft + rowWidth, rowBottom);
+                final int rowLeft = atRight ? thumbnailRight - margin - rowWidth : thumbnailLeft + margin;
+                setBounds(rowLeft, top, rowLeft + rowWidth, top + rowHeight);
             } else {
-                final int top = Math.max(thumbnailTop + px(MARGIN_DP), bottom - height);
-                final int left = rtl ? edge : edge - width;
+                final int left = atRight ? thumbnailRight - margin - width : thumbnailLeft + margin;
                 setBounds(left, top, left + width, top + height);
             }
             if (!added) {
