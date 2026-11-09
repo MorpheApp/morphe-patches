@@ -22,19 +22,26 @@ import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
+import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.sponsorblock.ControlsOverlayFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_03_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_12_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.patches.youtube.video.information.videoTimeHook
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -53,6 +60,9 @@ import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AmbientModePatch;"
+
+private const val EXTENSION_AMBIENT_LIGHT_CLASS =
+    "Lapp/morphe/extension/youtube/ambientlight/AmbientLightController;"
 
 /**
  * `disableAmbientMode(true)` returns true if ambient mode is not disabled in the Morphe settings.
@@ -79,13 +89,16 @@ private const val DEFAULT_CINEMATIC_CONTAINER_RENDERER =
 @Suppress("unused")
 val ambientModePatch = patch(
     name = "Ambient mode",
-    description = "Forces Ambient mode on and adds options to bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen.",
+    description = "Adds Enhanced Ambient mode and options to force Ambient mode on, bypass its power saving restrictions, and disable it entirely or in fullscreen.",
 ) {
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,
         versionCheckPatch,
         fixProtoLibraryPatch,
+        playerTypeHookPatch,
+        videoInformationPatch,
+        lithoColorHookPatch { is_21_30_or_greater },
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -99,9 +112,28 @@ val ambientModePatch = patch(
                     SwitchPreference("morphe_bypass_ambient_mode_restrictions", summary = true),
                     SwitchPreference("morphe_disable_ambient_mode"),
                     SwitchPreference("morphe_disable_fullscreen_ambient_mode"),
+                    SwitchPreference("morphe_ambient_light", summary = true),
+                    SwitchPreference("morphe_ambient_light_readable_text", summary = true),
                 )
             )
         )
+
+        //
+        // Ambient light.
+        //
+        lithoDrawableColorHook("$EXTENSION_AMBIENT_LIGHT_CLASS->getLithoColor(Landroid/graphics/drawable/Drawable;I)I")
+        videoTimeHook(EXTENSION_AMBIENT_LIGHT_CLASS, "setVideoTime")
+        ControlsOverlayFingerprint.let {
+            it.clearMatch() // Shared fingerprint that other patches may have changed.
+            it.method.apply {
+                val checkCastIndex = it.instructionMatches.last().index
+                val register = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+                addInstructions(
+                    checkCastIndex + 1,
+                    "invoke-static { v$register }, $EXTENSION_AMBIENT_LIGHT_CLASS->initialize(Landroid/view/ViewGroup;)V"
+                )
+            }
+        }
 
         //
         // Bypass ambient mode restrictions.
