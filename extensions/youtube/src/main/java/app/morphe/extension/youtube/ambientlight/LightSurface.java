@@ -7,19 +7,22 @@
 
 package app.morphe.extension.youtube.ambientlight;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
-import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 /**
  * A surface underneath the window that shows the light. A light frame only replaces this
  * buffer, so the app window is not redrawn.
  */
+@SuppressLint("ViewConstructor")
 final class LightSurface extends SurfaceView implements SurfaceHolder.Callback {
     private final Runnable onReady;
     private volatile boolean ready;
@@ -35,16 +38,18 @@ final class LightSurface extends SurfaceView implements SurfaceHolder.Callback {
     /**
      * Draws the part of the light that this surface covers. The GPU scales the small light up
      * and dithers it, which is what keeps a dark gradient free of steps.
-     * Must be called from the light's worker thread.
+     * Must be called from the light's worker thread. The holder lock keeps the main thread
+     * from destroying the surface while it is drawn.
      *
      * @return False if there is no buffer yet.
      */
     boolean draw(Paint lightPaint, int left, int top, float scaleX, float scaleY,
                  int gridWidth, int gridHeight, int pageColor, int coverColor) {
-        Surface surface = getHolder().getSurface();
-        if (!ready || !surface.isValid()) return false;
+        if (!ready) return false;
 
-        Canvas canvas = surface.lockHardwareCanvas();
+        SurfaceHolder holder = getHolder();
+        Canvas canvas = holder.lockHardwareCanvas();
+        if (canvas == null) return false;
         try {
             canvas.drawColor(pageColor);
             canvas.translate(-left, -top);
@@ -53,22 +58,22 @@ final class LightSurface extends SurfaceView implements SurfaceHolder.Callback {
             if (coverColor >>> 24 != 0) canvas.drawColor(coverColor);
             return true;
         } finally {
-            surface.unlockCanvasAndPost(canvas);
+            holder.unlockCanvasAndPost(canvas);
         }
     }
 
     @Override
-    public void surfaceCreated(SurfaceHolder holder) {
+    public void surfaceCreated(@NonNull SurfaceHolder holder) {
         ready = true;
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
         onReady.run();
     }
 
     @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
+    public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
         ready = false;
     }
 }

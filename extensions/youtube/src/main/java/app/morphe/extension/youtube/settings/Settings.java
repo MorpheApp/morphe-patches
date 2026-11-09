@@ -425,12 +425,12 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting QUICK_ACTIONS_TOP_MARGIN = new IntegerSetting("morphe_quick_actions_top_margin", 0, true);
 
     // Ambient mode
-    public static final BooleanSetting AMBIENT_LIGHT = new BooleanSetting("morphe_ambient_light", FALSE, true,
+    public static final BooleanSetting ENHANCED_AMBIENT_MODE = new BooleanSetting("morphe_enhanced_ambient_mode", FALSE, true,
             () -> Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q);
-    public static final BooleanSetting DISABLE_AMBIENT_MODE = new BooleanSetting("morphe_disable_ambient_mode", FALSE, true, parentNot(AMBIENT_LIGHT));
-    public static final BooleanSetting BYPASS_AMBIENT_MODE_RESTRICTIONS = new BooleanSetting("morphe_bypass_ambient_mode_restrictions", FALSE, false, parentsAll(parentNot(AMBIENT_LIGHT), parentNot(DISABLE_AMBIENT_MODE)));
-    public static final BooleanSetting DISABLE_FULLSCREEN_AMBIENT_MODE = new BooleanSetting("morphe_disable_fullscreen_ambient_mode", FALSE, true, parentsAll(parentNot(AMBIENT_LIGHT), parentNot(DISABLE_AMBIENT_MODE)));
-    public static final BooleanSetting AMBIENT_LIGHT_READABLE_TEXT = new BooleanSetting("morphe_ambient_light_readable_text", FALSE, parent(AMBIENT_LIGHT));
+    public static final BooleanSetting ENHANCED_AMBIENT_MODE_READABLE_TEXT = new BooleanSetting("morphe_enhanced_ambient_mode_readable_text", FALSE, parent(ENHANCED_AMBIENT_MODE));
+    public static final BooleanSetting DISABLE_AMBIENT_MODE = new BooleanSetting("morphe_disable_ambient_mode", FALSE, true, parentNot(ENHANCED_AMBIENT_MODE));
+    public static final BooleanSetting BYPASS_AMBIENT_MODE_RESTRICTIONS = new BooleanSetting("morphe_bypass_ambient_mode_restrictions", FALSE, false, parentNot(DISABLE_AMBIENT_MODE));
+    public static final BooleanSetting DISABLE_FULLSCREEN_AMBIENT_MODE = new BooleanSetting("morphe_disable_fullscreen_ambient_mode", FALSE, true, parentsAll(parentNot(ENHANCED_AMBIENT_MODE), parentNot(DISABLE_AMBIENT_MODE)));
 
     // Captions
     public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);

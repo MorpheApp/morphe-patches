@@ -49,6 +49,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.AmbientModePatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -64,7 +65,7 @@ public final class AmbientLightController {
     }
 
     // Half float bitmaps are linear before Android 10, and the light is encoded for extended sRGB.
-    private static final boolean ENABLED = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && Settings.AMBIENT_LIGHT.get();
+    private static final boolean ENABLED = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && Settings.ENHANCED_AMBIENT_MODE.get();
 
     private static final int PICTURE_WIDTH = 48;
     private static final int PICTURE_HEIGHT = 27;
@@ -196,6 +197,8 @@ public final class AmbientLightController {
     private static final List<LightSurface> pageSurfaces = new ArrayList<>();
     private static final List<LightSurface> playerSurfaces = new ArrayList<>();
 
+    /** The Ambient mode toggle of the player flyout menu, which turns the light off too. */
+    private static volatile boolean ambientModeToggle = true;
     private static volatile boolean seeThrough;
     private static volatile int buttonMaxWidth;
     private static volatile int buttonMaxHeight;
@@ -211,9 +214,10 @@ public final class AmbientLightController {
     @Nullable
     private static volatile Layout layout;
 
+    /** Created on first use, as the hooks load this class even if the light is off. */
+    @Nullable
+    private static Bitmap readback;
     // Used only on the worker thread.
-    private static final Bitmap readback = Bitmap.createBitmap(
-            READBACK_WIDTH, READBACK_HEIGHT, Bitmap.Config.ARGB_8888, false);
     private static final int[] readbackPixels = new int[READBACK_WIDTH * READBACK_HEIGHT];
     private static final int[] pictureColors = new int[PICTURE_WIDTH * PICTURE_HEIGHT];
     private static final int[] near = new int[PICTURE_WIDTH * PICTURE_HEIGHT];
@@ -290,6 +294,16 @@ public final class AmbientLightController {
     }
 
     /**
+     * Injection point. Called when the app resumes and whenever the toggle changes.
+     */
+    public static void setAmbientModeToggle(@Nullable Boolean enabled) {
+        if (!ENABLED || enabled == null || enabled == ambientModeToggle) return;
+
+        ambientModeToggle = enabled;
+        mainHandler.post(AmbientLightController::onStateChanged);
+    }
+
+    /**
      * Injection point.
      */
     public static int getLithoColor(Drawable drawable, int color) {
@@ -323,10 +337,11 @@ public final class AmbientLightController {
     private static void update() {
         try {
             PlayerType type = PlayerType.getCurrent();
-            final boolean saving = ((PowerManager) Utils.getContext().getSystemService(Context.POWER_SERVICE))
-                    .isPowerSaveMode();
+            // Battery saver turns the light off like Ambient mode, unless that restriction is bypassed.
+            final boolean on = ambientModeToggle && !AmbientModePatch.bypassAmbientModeRestrictions(
+                    (PowerManager) Utils.getContext().getSystemService(Context.POWER_SERVICE));
             // The page content can be built before the light shows, and must be see-through already.
-            final boolean watching = !saving && (type == PlayerType.WATCH_WHILE_MAXIMIZED
+            final boolean watching = on && (type == PlayerType.WATCH_WHILE_MAXIMIZED
                     || type == PlayerType.WATCH_WHILE_FULLSCREEN
                     || type == PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN);
             if (watching && !seeThrough) {
@@ -338,7 +353,7 @@ public final class AmbientLightController {
             }
             seeThrough = watching;
 
-            if (saving) {
+            if (!on) {
                 stop();
             } else if (type == PlayerType.WATCH_WHILE_MAXIMIZED || type == PlayerType.WATCH_WHILE_FULLSCREEN) {
                 if (!active && !start() && retries++ < MAX_RETRIES) scheduleUpdate();
@@ -362,6 +377,9 @@ public final class AmbientLightController {
         View page = findWatchPage(root, video);
         if (page == null || !(root instanceof FrameLayout)) return false;
 
+        if (readback == null) {
+            readback = Bitmap.createBitmap(READBACK_WIDTH, READBACK_HEIGHT, Bitmap.Config.ARGB_8888, false);
+        }
         pageRef = new WeakReference<>(page);
         rootRef = new WeakReference<>(root);
         active = true;
@@ -395,6 +413,16 @@ public final class AmbientLightController {
         dimmed = false;
         strength = FULL_STRENGTH;
         SeeThroughPage.restore();
+        // The next video must not start from the black bars and colors of this one.
+        if (worker != null) worker.post(AmbientLightController::resetPicture);
+    }
+
+    /**
+     * Worker thread.
+     */
+    private static void resetPicture() {
+        drawnLayout = null;
+        resetSmoothing = true;
     }
 
     /**
@@ -588,14 +616,15 @@ public final class AmbientLightController {
             return;
         }
 
+        Bitmap bitmap = readback;
         captureInFlight = true;
         if (video instanceof SurfaceView) {
             // Before Android 14 the request blocks until the copy is finished.
-            worker().post(() -> copySurface((SurfaceView) video, current));
+            worker().post(() -> copySurface((SurfaceView) video, bitmap, current));
         } else {
-            ((TextureView) video).getBitmap(readback);
+            ((TextureView) video).getBitmap(bitmap);
             worker().post(() -> {
-                process(current);
+                process(bitmap, current);
                 captureInFlight = false;
             });
         }
@@ -604,16 +633,16 @@ public final class AmbientLightController {
     /**
      * Worker thread.
      */
-    private static void copySurface(SurfaceView video, Layout current) {
+    private static void copySurface(SurfaceView video, Bitmap bitmap, Layout current) {
         try {
             if (!video.getHolder().getSurface().isValid()) {
                 onCaptureFailed();
                 return;
             }
-            PixelCopy.request(video, readback, result -> {
+            PixelCopy.request(video, bitmap, result -> {
                 if (result == PixelCopy.SUCCESS) {
                     captureFailures = 0;
-                    process(current);
+                    process(bitmap, current);
                 } else {
                     captureFailures++;
                 }
@@ -641,9 +670,9 @@ public final class AmbientLightController {
     /**
      * Worker thread.
      */
-    private static void process(Layout current) {
+    private static void process(Bitmap bitmap, Layout current) {
         try {
-            readback.getPixels(readbackPixels, 0, READBACK_WIDTH, 0, 0, READBACK_WIDTH, READBACK_HEIGHT);
+            bitmap.getPixels(readbackPixels, 0, READBACK_WIDTH, 0, 0, READBACK_WIDTH, READBACK_HEIGHT);
             updateBars();
             AmbientLightMath.downsample(readbackPixels, READBACK_WIDTH, readbackBounds,
                     pictureColors, PICTURE_WIDTH, PICTURE_HEIGHT);
@@ -684,7 +713,7 @@ public final class AmbientLightController {
             float[] gridVideo = {current.video[0] * toGridX, current.video[1] * toGridY,
                     current.video[2] * toGridX, current.video[3] * toGridY};
             AmbientLightMath.soften(light, lightSoft, lightScratch, width, height, gridVideo, pageLinear);
-            wantedCover = Settings.AMBIENT_LIGHT_READABLE_TEXT.get()
+            wantedCover = Settings.ENHANCED_AMBIENT_MODE_READABLE_TEXT.get()
                     ? AmbientLightMath.readabilityCover(light, width, height,
                     current.video[3] * height / current.windowHeight, AmbientLightMath.luma(pageColor) < 128)
                     : 0f;

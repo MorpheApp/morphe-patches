@@ -1188,10 +1188,10 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_bypass_ambient_mode_restrictions_summary">Allows Ambient mode to stay active in battery saver mode</string>
     <string name="morphe_disable_ambient_mode_title">Disable Ambient mode</string>
     <string name="morphe_disable_fullscreen_ambient_mode_title">Disable Ambient mode in fullscreen</string>
-    <string name="morphe_ambient_light_title">Enhanced Ambient mode</string>
-    <string name="morphe_ambient_light_summary">Lights the whole watch page and black bars with the video, in place of Ambient mode</string>
-    <string name="morphe_ambient_light_readable_text_title">Keep text readable</string>
-    <string name="morphe_ambient_light_readable_text_summary">Dims the light on bright videos so the text on the page stays readable</string>
+    <string name="morphe_enhanced_ambient_mode_title">Enhanced Ambient mode</string>
+    <string name="morphe_enhanced_ambient_mode_summary">Lights the whole watch page and black bars with the video, in place of Ambient mode</string>
+    <string name="morphe_enhanced_ambient_mode_readable_text_title">Keep text readable</string>
+    <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dims the light on bright videos so the text on the page stays readable</string>
 
     <!-- layout.hide.infocards.hideInfocardsPatch -->
     <string name="morphe_hide_info_cards_title">Hide info cards</string>
