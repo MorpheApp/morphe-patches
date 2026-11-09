@@ -299,14 +299,41 @@ public class StreamingDataRequest {
         return videoId;
     }
 
+    public interface FetchGate {
+        /**
+         * Runs off the main thread before a video's streams are fetched for playback,
+         * can block to delay the start.
+         */
+        void beforeFetch(String videoId);
+    }
+
+    @Nullable
+    private static volatile FetchGate fetchGate;
+
+    public static void setFetchGate(@Nullable FetchGate gate) {
+        fetchGate = gate;
+    }
+
+    private static void passFetchGate(String videoId) {
+        FetchGate gate = fetchGate;
+        if (gate == null) return;
+        try {
+            gate.beforeFetch(videoId);
+        } catch (Exception ex) {
+            Logger.printException(() -> "passFetchGate failure", ex);
+        }
+    }
+
     private StreamingDataRequest(String videoId, Map<String, String> playerHeaders,
                                  boolean includeVideoDetails, ClientType[] clientOrder, boolean isDownload) {
         this.videoId = videoId;
         this.authorization = playerHeaders.get(AUTHORIZATION_HEADER);
         this.clientOrder = clientOrder;
-        this.future = Utils.submitOnBackgroundThread(
-                () -> fetch(resolveVideoIdToFetch(videoId), playerHeaders, includeVideoDetails,
-                        clientOrder, isDownload));
+        this.future = Utils.submitOnBackgroundThread(() -> {
+            if (!isDownload) passFetchGate(videoId);
+            return fetch(resolveVideoIdToFetch(videoId), playerHeaders, includeVideoDetails,
+                    clientOrder, isDownload);
+        });
     }
 
     /**

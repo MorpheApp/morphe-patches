@@ -167,6 +167,25 @@ public final class PlaylistRequest {
         return albumSongs[playlistIndex];
     }
 
+    /**
+     * Waits for the album to be fetched. Must not be called from the main thread.
+     *
+     * @return The album tracks, or an empty array if the album could not be fetched in time.
+     */
+    @NonNull
+    public Song[] awaitSongs(long timeoutMilliseconds) {
+        try {
+            if (!fetchCompleted.await(timeoutMilliseconds, TimeUnit.MILLISECONDS)) {
+                return NO_SONGS;
+            }
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+            return NO_SONGS;
+        }
+        Song[] albumSongs = songs;
+        return albumSongs == null ? NO_SONGS : albumSongs;
+    }
+
     @NonNull
     private static Song[] fetch(@NonNull String videoId, @NonNull String playlistId) {
         for (int attempt = 1; ; attempt++) {
