@@ -50,6 +50,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.AmbientModePatch;
+import app.morphe.extension.youtube.patches.FeedCardLayoutPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -307,7 +308,8 @@ public final class AmbientLightController {
      * Injection point.
      */
     public static int getLithoColor(Drawable drawable, int color) {
-        if (!seeThrough) return color;
+        // The cards of the feed card layout stay opaque, as their content has its own opaque backgrounds.
+        if (!seeThrough || FeedCardLayoutPatch.cardBackgrounds.containsKey(drawable)) return color;
 
         try {
             final int replacement = AmbientLightMath.seeThroughColor(color, pageColor);

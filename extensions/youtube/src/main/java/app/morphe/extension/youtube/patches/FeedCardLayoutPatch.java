@@ -503,6 +503,11 @@ public class FeedCardLayoutPatch {
      */
     private static final Map<Drawable, Boolean> unmountedItemBackgrounds = new WeakHashMap<>();
     /**
+     * Litho backgrounds of the cards. They keep their color on the see-through watch page of the
+     * Enhanced Ambient mode, which otherwise turns them translucent where nothing else covers them.
+     */
+    public static final Map<Drawable, Boolean> cardBackgrounds = new WeakHashMap<>();
+    /**
      * Edges of the last Shorts shelf card, for the header of a shelf whose Shorts are not in the list yet.
      */
     private static int shortsCardLeft;
@@ -1487,11 +1492,14 @@ public class FeedCardLayoutPatch {
                 }
 
                 if (inCard) {
+                    cardBackgrounds.put(drawable, Boolean.TRUE);
                     // The theme patch changes only some exact colors, such as the background of the cards.
                     // The lowest bit of blue is not visible.
                     return color ^ 1;
                 }
             }
+            // The drawables are recycled for other elements.
+            cardBackgrounds.remove(drawable);
         } catch (Exception ex) {
             Logger.printException(() -> "getCardColor failure", ex);
         }

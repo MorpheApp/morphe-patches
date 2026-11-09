@@ -11,14 +11,17 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
@@ -44,6 +47,9 @@ final class SeeThroughPage {
             "statusBarBackground", "navigationBarBackground"
     };
     private static final int MAX_DEPTH = 48;
+    /** Holds the list of the watch page and the headers that stick to its top, such as the filter chips. */
+    private static final int STICKY_HEADER_CONTAINER_ID =
+            ResourceUtils.getIdentifier(ResourceType.ID, "sticky_header_container");
 
     private static final class Saved {
         final Drawable drawable;
@@ -60,6 +66,9 @@ final class SeeThroughPage {
     private static View host;
     @Nullable
     private static Drawable hostBackground;
+    private static WeakReference<ViewGroup> stickyHeaderContainerRef = new WeakReference<>(null);
+    private static WeakReference<View> clippedListRef = new WeakReference<>(null);
+    private static final Rect listClipBounds = new Rect();
 
     /**
      * Clears the page around {@code player}. Run again when the page has changed.
@@ -73,6 +82,11 @@ final class SeeThroughPage {
         }
         cleared.keySet().removeIf(view -> !view.isAttachedToWindow());
         clearBackgrounds(page, player, page.getWidth() / 3, pageColor, 0);
+
+        if (STICKY_HEADER_CONTAINER_ID != 0 && page.findViewById(STICKY_HEADER_CONTAINER_ID) instanceof ViewGroup container
+                && stickyHeaderContainerRef.get() != container) {
+            stickyHeaderContainerRef = new WeakReference<>(container);
+        }
 
         for (ViewParent parent = page.getParent(); parent instanceof View; parent = parent.getParent()) {
             clear((View) parent);
@@ -94,6 +108,60 @@ final class SeeThroughPage {
                 drawable.setAlpha(0);
             }
         }
+        // The headers that stick to the top of the list, such as the filter chips, are see-through too,
+        // so the list is not drawn below them.
+        ViewGroup container = stickyHeaderContainerRef.get();
+        if (container == null || !container.isAttachedToWindow()) {
+            setListClip(null, 0);
+            return;
+        }
+
+        View list = null;
+        for (int i = 0; i < container.getChildCount(); i++) {
+            View child = container.getChildAt(i);
+            if (child instanceof RecyclerView) {
+                list = child;
+                break;
+            }
+        }
+        if (list == null) {
+            setListClip(null, 0);
+            return;
+        }
+
+        final float listTop = list.getY();
+        float headersBottom = listTop;
+        for (int i = 0; i < container.getChildCount(); i++) {
+            View header = container.getChildAt(i);
+            if (header == list || header.getVisibility() != View.VISIBLE || header.getHeight() == 0) continue;
+            final float top = header.getY();
+            // Only a header that sticks to the top covers the list. A header that scrolls
+            // with the list is drawn over its own empty item.
+            if (top <= listTop + 1 && top + header.getHeight() > headersBottom) {
+                headersBottom = top + header.getHeight();
+            }
+        }
+        setListClip(list, (int) (headersBottom - listTop));
+    }
+
+    /**
+     * Runs for every frame, so nothing is allocated while the clip stays the same.
+     */
+    private static void setListClip(@Nullable View list, int top) {
+        View clippedList = clippedListRef.get();
+        if (clippedList != null && (clippedList != list || top <= 0)) {
+            clippedList.setClipBounds(null);
+            clippedListRef = new WeakReference<>(null);
+        }
+        if (list == null || top <= 0) return;
+
+        if (!list.getClipBounds(listClipBounds) || listClipBounds.top != top
+                || listClipBounds.right != list.getWidth() || listClipBounds.bottom != list.getHeight()) {
+            list.setClipBounds(new Rect(0, top, list.getWidth(), list.getHeight()));
+        }
+        if (clippedList != list) {
+            clippedListRef = new WeakReference<>(list);
+        }
     }
 
     static void restore() {
@@ -102,6 +170,8 @@ final class SeeThroughPage {
             entry.getKey().invalidate();
         }
         cleared.clear();
+        setListClip(null, 0);
+        stickyHeaderContainerRef = new WeakReference<>(null);
         if (host != null) {
             host.setBackground(hostBackground);
             host = null;
