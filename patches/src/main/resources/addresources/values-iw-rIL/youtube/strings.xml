@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">תפריט הצפה של נגן \'בדרכים\' פותח את בקרות הנגן המותאמות של Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">בדרכים</string>
+  <string name="morphe_on_the_go_audio_mode">עבור למצב שמע</string>
+  <string name="morphe_on_the_go_video_mode">עבור למצב וידאו</string>
+  <string name="morphe_on_the_go_download">הורדה</string>
+  <string name="morphe_on_the_go_queue">תור</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">הוספת פריט שאל לתפריט קיבול</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">מוסיף פריט סיכום וידאו לתפריט קיבול הזרם</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">פתח תור</string>
   <string name="morphe_queue_manager_save_queue">שמור תור לרשימת השמעה</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">טעינת דפי תור בגלילה</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">טוען סרטוני פלייליסט נוספים בעת גלילה לקראת סוף התור</string>
   <string name="morphe_native_playlist_queue_saved">רשימת ניגונים נשמרה</string>
   <string name="morphe_native_playlist_queue_saved_to">נשמר ל%s</string>
   <string name="morphe_native_playlist_queue_clear">נקה תור</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">מאפשר למצב סביבה להישאר פעיל במצב חיסכון בסוללה</string>
   <string name="morphe_disable_ambient_mode_title">הסתר תאורת אווירה</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">השבת תאורת אווירה במסך מלא</string>
+  <string name="morphe_enhanced_ambient_mode_title">מצב תאורת אווירה משופר</string>
+  <string name="morphe_enhanced_ambient_mode_summary">מאיר את כל דף הצפייה ואת הפסים השחורים באמצעות הסרטון, במקום מצב תאורת אווירה</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">שמירה על קריאות הטקסט</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">מעמעם את התאורה בסרטונים בהירים כדי שהטקסט בדף יישאר קריא</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">הסתר כרטיסי מידע</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

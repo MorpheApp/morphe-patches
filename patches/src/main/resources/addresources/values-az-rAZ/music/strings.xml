@@ -491,8 +491,11 @@ Onlar bir-bir yüklənir, uzun müddət çəkə bilər və təxminən %3$s boş 
   <string name="morphe_music_hide_navigation_bar_title">Fəaliyyət cizgisin gizlət</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Fəaliyyət düyməsi etiketlərini gizlət</string>
   <string name="morphe_music_navigation_bar_glass_title">Şüşə fəaliyyət cərgəsini aktivləşdir</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Fəaliyyət zolağını üzən, yuvarlaq, yarımşəffaf kapsul kimi göstərir</string>
   <string name="morphe_music_navigation_bar_glass_opacity_title">Şüşə tutqunluğu</string>
   <string name="morphe_music_navigation_bar_glass_opacity_summary">Şüşə fəaliyyət cərgəsinin şəffaflıq dərəcəsini tənzimlə (0 şəffaf, 100 qeyri-şəffaf)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">İşıqlı şüşə</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Daha açıq və şəffaf şüşə üçün şüşə fəaliyyət zolağını qara əvəzinə ağa boyayır</string>
   <string name="morphe_music_navigation_bar_glass_size_title">Şüşə fəaliyyət zolağının ölçüsü</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">Şüşə fəaliyyət zolağının hündürlüyünü, enini və düymə boşluğunu önizləmə ilə tənzimlə. Ekranın eninə uyuşmayan düymələr gizlədilir</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Hündürlük</string>
@@ -501,6 +504,7 @@ Onlar bir-bir yüklənir, uzun müddət çəkə bilər və təxminən %3$s boş 
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Göstərilən düymələr: %2$s ədəddən %1$s \'si</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Əsas səhifə</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Nümunələr</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Kəşf et</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Kitabxana</string>
   <!-- interaction.scrobbling.scrobblingPatch -->

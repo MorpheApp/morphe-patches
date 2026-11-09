@@ -500,6 +500,10 @@ Prijave su javne i pregledaju se pre nego što kanal bude dodat na listu. Uklanj
   <string name="morphe_on_the_go_summary">Player flyout \'u hodu\' otvara prilagođene kontrole Morphe plejera</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">U hodu</string>
+  <string name="morphe_on_the_go_audio_mode">Prebacite na audio režim</string>
+  <string name="morphe_on_the_go_video_mode">Prebacite na video režim</string>
+  <string name="morphe_on_the_go_download">Preuzmi</string>
+  <string name="morphe_on_the_go_queue">Red</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Dodajte stavku Ask u flyout meni</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje stavku za brzo pregledavanje videa u feed flyout meniju</string>
@@ -751,6 +755,8 @@ Napomena: Možda neće raditi na direktnim prenosima"</string>
   <string name="morphe_queue_manager_open_queue">Otvori red</string>
   <string name="morphe_queue_manager_save_queue">Sačuvaj red u listu za reprodukciju</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Učitaj stranice reda čekanja prilikom skrolovanja</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Učitava više video snimaka iz plejliste kada se skroluje blizu kraja reda čekanja</string>
   <string name="morphe_native_playlist_queue_saved">Lista za reprodukciju je sačuvana</string>
   <string name="morphe_native_playlist_queue_saved_to">Sačuvano u %s</string>
   <string name="morphe_native_playlist_queue_clear">Obriši red čekanja</string>
@@ -1101,6 +1107,10 @@ Da biste prikazali meni 'Audio Track', promenite 'Spoofovanje video tokova' na b
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Dozvoljava ambijentalnom režimu da ostane aktivan u režimu uštede baterije</string>
   <string name="morphe_disable_ambient_mode_title">Onemogući režim ambientnog mod-a</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Onemogući „Ambijentalni režim” u režimu preko celog ekrana</string>
+  <string name="morphe_enhanced_ambient_mode_title">Unapređeni ambijentalni režim</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Osvetljava celu stranicu za gledanje i crne trake video snimkom, umesto ambijentalnog režima</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Održavaj tekst čitljivim</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Prigušuje svetlost kod svetlih video snimaka kako bi tekst na stranici ostao čitljiv</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Sakrij kartice sa informacijama</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

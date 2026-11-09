@@ -491,11 +491,11 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_hide_navigation_bar_title">Ukryj pasek nawigacji</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ukryj etykiety przycisków nawigacji</string>
   <string name="morphe_music_navigation_bar_glass_title">Włącz szklany pasek nawigacji</string>
-  <string name="morphe_music_navigation_bar_glass_summary">Wyświetla pasek nawigacji jako pływającą, zaokrągloną, półprzezroczystą kapsułkę</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Wyświetla pasek nawigacji jako pływającą, zaokrągloną, półprzezroczystą kapsułę</string>
   <string name="morphe_music_navigation_bar_glass_opacity_title">Krycie szkła</string>
   <string name="morphe_music_navigation_bar_glass_opacity_summary">Dostosuj poziom krycia szklanego paska nawigacji (0 to pełna przezroczystość, 100 to brak przezroczystości)</string>
   <string name="morphe_music_navigation_bar_glass_light_title">Jasne szkło</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Zmienia kolor szklanego paska nawigacji na biały zamiast ciemnego, aby uzyskać jaśniejszy i bardziej przejrzysty efekt szkła</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Nadaje szklanemu paskowi nawigacji biały odcień zamiast ciemnego, co zapewnia efekt jaśniejszego i bardziej przejrzystego szkła</string>
   <string name="morphe_music_navigation_bar_glass_size_title">Rozmiar szklanego paska nawigacji</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">Dostosuj wysokość, szerokość oraz odstępy między przyciskami szklanego paska nawigacji z podglądem na żywo. Przyciski, które nie mieszczą się na szerokości ekranu, są ukrywane</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Wysokość</string>
@@ -503,8 +503,8 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Odstęp między przyciskami</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Widoczne przyciski: %1$s z %2$s</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
-  <string name="morphe_music_navigation_bar_glass_preview_home">Strona główna</string>
-  <string name="morphe_music_navigation_bar_glass_preview_samples">Próbki</string>
+  <string name="morphe_music_navigation_bar_glass_preview_home">Główna</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Sample</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Odkrywaj</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Biblioteka</string>
   <!-- interaction.scrobbling.scrobblingPatch -->

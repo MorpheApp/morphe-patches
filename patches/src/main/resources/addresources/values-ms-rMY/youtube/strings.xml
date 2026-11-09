@@ -500,6 +500,10 @@ Laporan adalah awam dan disemak sebelum saluran ditambah ke senarai. Penyingkira
   <string name="morphe_on_the_go_summary">Flyout pemain \'semasa dalam perjalanan\' membuka kawalan pemain tersuai Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Semasa dalam perjalanan</string>
+  <string name="morphe_on_the_go_audio_mode">Tukar ke mod audio</string>
+  <string name="morphe_on_the_go_video_mode">Tukar ke mod video</string>
+  <string name="morphe_on_the_go_download">Muat turun</string>
+  <string name="morphe_on_the_go_queue">Giliran</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Tambah item Tanya ke menu flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Menambah item ringkasan video ke menu flyout feed</string>
@@ -751,6 +755,8 @@ Info: Mungkin tidak berfungsi pada strim langsung"</string>
   <string name="morphe_queue_manager_open_queue">Buka giliran</string>
   <string name="morphe_queue_manager_save_queue">Simpan giliran ke senarai main</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Muat halaman giliran semasa skrol</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Memuatkan lebih banyak video senarai main apabila skrol menghampiri hujung giliran</string>
   <string name="morphe_native_playlist_queue_saved">Senarai main disimpan</string>
   <string name="morphe_native_playlist_queue_saved_to">Disimpan ke %s</string>
   <string name="morphe_native_playlist_queue_clear">Kosongkan baris gilir</string>
@@ -1101,6 +1107,10 @@ Untuk memaparkan menu 'Audio Track', tukar 'Spoof video streams' kepada mana-man
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Membenarkan mod Ambien kekal aktif dalam mod penjimat bateri</string>
   <string name="morphe_disable_ambient_mode_title">Nyahaktifkan mod Ambient</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Nyahaktifkan mod Ambien dalam skrin penuh</string>
+  <string name="morphe_enhanced_ambient_mode_title">Mod Ambien yang dipertingkatkan</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Menerangi keseluruhan halaman tontonan dan bar hitam dengan video, bagi menggantikan mod Ambien</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Kekalkan teks boleh dibaca</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Memalapkan cahaya pada video yang terang supaya teks pada halaman tetap boleh dibaca</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Sorokkan kad info</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

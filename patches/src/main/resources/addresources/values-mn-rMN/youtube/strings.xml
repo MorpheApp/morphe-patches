@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">Тоглуулагчийн \'явдал бүрд\' цонх нь Morphe-ийн тоглуулагчийн тусгай удирдлагыг нээнэ</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Явдал бүрд</string>
+  <string name="morphe_on_the_go_audio_mode">Аудио горим руу шилжих</string>
+  <string name="morphe_on_the_go_video_mode">Видео горим руу шилжих</string>
+  <string name="morphe_on_the_go_download">Татах</string>
+  <string name="morphe_on_the_go_queue">Дараалал</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Дэлгэрэнгүй цэсэнд Асуух хэсгийг нэмэх</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Фидийн дэлгэрэнгүй цэсэнд видеог нэгтгэн дүгнэх хэсгийг нэмнэ</string>
@@ -751,6 +755,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_queue_manager_open_queue">Дарааллыг нээх</string>
   <string name="morphe_queue_manager_save_queue">Дарааллыг тоглолтын жагсаалтад хадгалах</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Гүйлгэх үед дарааллын хуудсуудыг ачаалах</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Дарааллын төгсгөлд дөхөх үед тоглолтын жагсаалтын илүү олон видеог ачаална</string>
   <string name="morphe_native_playlist_queue_saved">Жагсаалт хадгалагдлаа</string>
   <string name="morphe_native_playlist_queue_saved_to">%s хэсэгт хадгалагдлаа</string>
   <string name="morphe_native_playlist_queue_clear">Дарааллыг цэвэрлэх</string>
@@ -1101,6 +1107,10 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Батерей хэмнэх горимд Ambient горимыг идэвхтэй байлгах боломжийг олгоно</string>
   <string name="morphe_disable_ambient_mode_title">Ambient горимыг идэвхгүй болгох</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Бүрэн дэлгэц дээрх Ambient горимыг идэвхгүй болгох</string>
+  <string name="morphe_enhanced_ambient_mode_title">Сайжруулсан Ambient горим</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Ambient горимын оронд видеог ашиглан үзлэлтийн хуудас болон хар хэсгүүдийг бүхэлд нь гэрэлтүүлнэ</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Текстийг уншигдахуйц байлгах</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Гэрэлтэй видео дээр гэрлийг бүдгэрүүлж, хуудас дээрх текстийг уншигдахуйц байлгана</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Мэдээллийн картуудыг нуух</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

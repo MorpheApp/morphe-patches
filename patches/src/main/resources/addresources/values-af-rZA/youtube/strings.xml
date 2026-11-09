@@ -500,6 +500,10 @@ Verslae is openbaar en word nagegaan voordat 'n kanaal by 'n lys gevoeg word. Ve
   <string name="morphe_on_the_go_summary">Speler-uitklapmenu \"onderweg\" maak Morphe se pasgemaakte spelerkontroles oop</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Onderweg</string>
+  <string name="morphe_on_the_go_audio_mode">Skakel oor na oudio-modus</string>
+  <string name="morphe_on_the_go_video_mode">Skakel oor na video-modus</string>
+  <string name="morphe_on_the_go_download">Aflaai</string>
+  <string name="morphe_on_the_go_queue">Waglys</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Voeg Ask-item by vlieëmenu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Voeg \'n video-opvattingsitem by die voervaartuig-vlieëmenu</string>
@@ -751,6 +755,8 @@ Info: Werk moontlik nie op regstreekse uitsendings nie"</string>
   <string name="morphe_queue_manager_open_queue">Maak waglys oop</string>
   <string name="morphe_queue_manager_save_queue">Stoor waglys na spyskaart</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Laai toubladsy\'s tydens blaai</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Laai meer speellys-video\'s wanneer daar naby die einde van die tou geblaai word</string>
   <string name="morphe_native_playlist_queue_saved">Afspellys gestoor</string>
   <string name="morphe_native_playlist_queue_saved_to">Gestoor na %s</string>
   <string name="morphe_native_playlist_queue_clear">Maak wagtelys skoon</string>
@@ -1101,6 +1107,10 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Laat Ambient-modus aktief bly in batterybesparingsmodus</string>
   <string name="morphe_disable_ambient_mode_title">Deaktiveer Omgewingsmodus</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Deaktiveer omgewingsmodus in volskerm</string>
+  <string name="morphe_enhanced_ambient_mode_title">Verbeterde Ambient-modus</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Verlig die hele kykbladsy en swart Stroke met die video, in plaas van Ambient-modus</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Hou teks leesbaar</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dim die lig op helder video\'s sodat die teks op die bladsy leesbaar bly</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Wegspring infokaarte</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

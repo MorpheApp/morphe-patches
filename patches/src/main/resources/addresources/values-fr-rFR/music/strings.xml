@@ -495,7 +495,7 @@ Lecture SABR (Falsifier les flux vidéo désactivés)"</string>
   <string name="morphe_music_navigation_bar_glass_opacity_title">Opacité du verre</string>
   <string name="morphe_music_navigation_bar_glass_opacity_summary">Ajustez le niveau de transparence de la barre de navigation en verre (0 est transparent, 100 est opaque)</string>
   <string name="morphe_music_navigation_bar_glass_light_title">Verre clair</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Teinte la barre de navigation en verre en blanc au lieu de sombre, pour un verre plus léger et plus clair</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Teinte la barre de navigation en verre en blanc plutôt qu\'en sombre, pour un verre plus clair et lumineux</string>
   <string name="morphe_music_navigation_bar_glass_size_title">Taille de la barre de navigation en verre</string>
   <string name="morphe_music_navigation_bar_glass_size_summary">Ajustez la hauteur, la largeur et l\'espacement des boutons de la barre de navigation en verre, avec un aperçu. Les boutons qui ne tiennent pas dans la largeur de l\'écran sont masqués</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Hauteur</string>
@@ -504,7 +504,7 @@ Lecture SABR (Falsifier les flux vidéo désactivés)"</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Boutons affichés : %1$s sur %2$s</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Accueil</string>
-  <string name="morphe_music_navigation_bar_glass_preview_samples">Échantillons</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Samples</string>
   <string name="morphe_music_navigation_bar_glass_preview_explore">Explorer</string>
   <string name="morphe_music_navigation_bar_glass_preview_library">Bibliothèque</string>
   <!-- interaction.scrobbling.scrobblingPatch -->

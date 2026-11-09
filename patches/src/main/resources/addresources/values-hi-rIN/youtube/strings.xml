@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">प्लेयर फ्लाईआउट \'चलते-फिरते\' Morphe कस्टम प्लेयर कंट्रोल खोलता है</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">चलते-फिरते</string>
+  <string name="morphe_on_the_go_audio_mode">ऑडियो मोड पर स्विच करें</string>
+  <string name="morphe_on_the_go_video_mode">वीडियो मोड पर स्विच करें</string>
+  <string name="morphe_on_the_go_download">डाउनलोड करें</string>
+  <string name="morphe_on_the_go_queue">कतार</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ask आइटम को फ्लाउट मेनू में जोड़ें</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">फीड फ्लाउट मेनू में वीडियो सारांश आइटम जोड़ता है</string>
@@ -751,6 +755,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_queue_manager_open_queue">क्यू खोलें</string>
   <string name="morphe_queue_manager_save_queue">प्लेलिस्ट में क्यू सहेजें</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">स्क्रॉल करने पर कतार के पेज लोड करें</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">कतार के अंत के पास स्क्रॉल करने पर और अधिक प्लेलिस्ट वीडियो लोड करता है</string>
   <string name="morphe_native_playlist_queue_saved">प्लेलिस्ट सहेजा गया</string>
   <string name="morphe_native_playlist_queue_saved_to">%s में सहेजा गया</string>
   <string name="morphe_native_playlist_queue_clear">कतार खाली करें</string>
@@ -1101,6 +1107,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_bypass_ambient_mode_restrictions_summary">एम्बिएंट मोड को बैटरी सेवर मोड में सक्रिय रहने की अनुमति देता है</string>
   <string name="morphe_disable_ambient_mode_title">अंबरेंट मोड को डिसेबल करें</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">फुलस्क्रीन में एम्बिएंट मोड अक्षम करें</string>
+  <string name="morphe_enhanced_ambient_mode_title">बेहतर एम्बिएंट मोड</string>
+  <string name="morphe_enhanced_ambient_mode_summary">एम्बिएंट मोड के स्थान पर, पूरे वॉच पेज और ब्लैक बार को वीडियो के साथ रोशन करता है</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">टेक्स्ट को पढ़ने योग्य रखें</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">चमकदार वीडियो पर रोशनी को कम करता है ताकि पेज पर टेक्स्ट पढ़ने योग्य रहे</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">इन्फो कार्ड्स को छुपाएं</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

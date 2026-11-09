@@ -134,6 +134,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">பிளேயர் flyout \'பயணத்தின் போது\' Morphe-ன் தனிப்பயன் பிளேயர் கட்டுப்பாடுகளைத் திறக்கிறது</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">பயணத்தின் போது</string>
+  <string name="morphe_on_the_go_audio_mode">ஆடியோ பயன்முறைக்கு மாறவும்</string>
+  <string name="morphe_on_the_go_video_mode">வீடியோ பயன்முறைக்கு மாறவும்</string>
+  <string name="morphe_on_the_go_download">பதிவிறக்கவும்</string>
+  <string name="morphe_on_the_go_queue">வரிசை</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <!-- 'Summarize the video' should be translated using the same localized wording YouTube displays for the suggestion of the Ask panel. -->
@@ -192,6 +196,8 @@ Second \"item\" text"</string>
   <!-- 'Play next in queue' should be translated using the same localized wording YouTube displays the feed flyout item. -->
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">ஸ்க்ரோல் செய்யும்போது வரிசை பக்கங்களை ஏற்றவும்</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">வரிசையின் முடிவை நெருங்கி ஸ்க்ரோல் செய்யும்போது கூடுதல் பிளேலிஸ்ட் வீடியோக்களை ஏற்றும்</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <!-- interaction.seekbar.liveStreamDVRPatch -->
@@ -311,6 +317,10 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_hide_cast_button_summary">வீடியோ பிளேயர் மற்றும் டூல்பாரில் உள்ள காஸ்ட் (Cast) பொத்தானை மறைக்கிறது</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <!-- layout.hide.ambientmode.ambientModePatch -->
+  <string name="morphe_enhanced_ambient_mode_title">மேம்படுத்தப்பட்ட ஆம்பியண்ட் பயன்முறை</string>
+  <string name="morphe_enhanced_ambient_mode_summary">ஆம்பியண்ட் பயன்முறைக்கு பதிலாக, வீடியோவுடன் முழு வாட்ச் பக்கத்தையும் மற்றும் கருப்புப் பட்டைகளையும் ஒளிரச் செய்யும்</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">உரையை வாசிக்கக்கூடியதாக வைத்திருங்கள்</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">பிரகாசமான வீடியோக்களில் ஒளியைக் குறைப்பதன் மூலம் பக்கத்தில் உள்ள உரை வாசிக்கக்கூடியதாக இருக்கும்</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <!-- layout.hide.seekbar.hideSeekbarPatch -->

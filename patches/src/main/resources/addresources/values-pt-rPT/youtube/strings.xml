@@ -500,6 +500,10 @@ As denúncias são públicas e são analisadas antes de um canal ser adicionado 
   <string name="morphe_on_the_go_summary">O flyout do player \"Em qualquer lugar\" abre os controles personalizados do player Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Em qualquer lugar</string>
+  <string name="morphe_on_the_go_audio_mode">Mudar para o modo de áudio</string>
+  <string name="morphe_on_the_go_video_mode">Mudar para o modo de vídeo</string>
+  <string name="morphe_on_the_go_download">Transferir</string>
+  <string name="morphe_on_the_go_queue">Fila</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Adicionar item Perguntar ao menu suspenso</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Adiciona um item de resumo de vídeo ao menu suspenso do feed</string>
@@ -751,6 +755,8 @@ Informação: Pode não funcionar em transmissões ao vivo"</string>
   <string name="morphe_queue_manager_open_queue">Abrir fila</string>
   <string name="morphe_queue_manager_save_queue">Salvar fila para playlist</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Carregar páginas da fila ao rolar</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Carrega mais vídeos da playlist ao rolar próximo ao fim da fila</string>
   <string name="morphe_native_playlist_queue_saved">Lista de reprodução guardada</string>
   <string name="morphe_native_playlist_queue_saved_to">Guardado em %s</string>
   <string name="morphe_native_playlist_queue_clear">Limpar fila</string>
@@ -1101,6 +1107,10 @@ Para mostrar o menu 'Faixa de áudio', altera 'Falsificar fluxos de vídeo' para
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Permite que o Modo ambiente permaneça ativo no modo de economia de bateria</string>
   <string name="morphe_disable_ambient_mode_title">Desativar modo ambiente</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Desabilitar modo ambiente em tela cheia</string>
+  <string name="morphe_enhanced_ambient_mode_title">Modo ambiente aprimorado</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Ilumina toda a página de exibição e as barras pretas com o vídeo, em vez do Modo ambiente</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Manter o texto legível</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Suaviza a luz em vídeos brilhantes para que o texto na página permaneça legível</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Esconder cartões de informação</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

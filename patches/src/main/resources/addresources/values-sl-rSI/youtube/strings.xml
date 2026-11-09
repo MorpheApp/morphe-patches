@@ -500,6 +500,10 @@ Prijave so javne in so pregledane, preden je kanal dodan na seznam. Odstranitev 
   <string name="morphe_on_the_go_summary">Flyout predvajalnika \"v poti\" odpre Morphe prilagojene kontrole predvajalnika</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">V poti</string>
+  <string name="morphe_on_the_go_audio_mode">Preklopi v način predvajanja zvoka</string>
+  <string name="morphe_on_the_go_video_mode">Preklopi v način predvajanja videa</string>
+  <string name="morphe_on_the_go_download">Prenesi</string>
+  <string name="morphe_on_the_go_queue">Vrsta</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Dodaj element Zastavi v meni za hitro klicanje</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">V meni za hitro klicanje glavnega toka dodajte element za povzetek videa</string>
@@ -751,6 +755,8 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_queue_manager_open_queue">Odpri vrsto</string>
   <string name="morphe_queue_manager_save_queue">Shrani vrsto v predvajalni seznam</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Naloži strani vrste pri pomikanju</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Naloži več videoposnetkov s seznama predvajanja pri pomikanju blizu konca vrste</string>
   <string name="morphe_native_playlist_queue_saved">Seznam predvajanja je bil shranjen</string>
   <string name="morphe_native_playlist_queue_saved_to">Shranjeno v %s</string>
   <string name="morphe_native_playlist_queue_clear">Počisti čakalno vrsto</string>
@@ -1101,6 +1107,10 @@ Za prikaz menija 'Audio Track' spremenite 'Spoofanje video tokov' v katerega kol
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Omogoči ambientnemu načinu, da ostane aktiven v načinu varčevanja z baterijo</string>
   <string name="morphe_disable_ambient_mode_title">Onemogoči način Ambient</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Onemogočite način Ambient v polnem zaslonu</string>
+  <string name="morphe_enhanced_ambient_mode_title">Izboljšan okoljski način</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Namesto okoljskega načina osvetli celotno stran s posnetkom in črne robove z videoposnetkom</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Ohrani berljivost besedila</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Zniža svetlost pri svetlih videoposnetkih, da ostane besedilo na strani berljivo</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Skrijte infokartice</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

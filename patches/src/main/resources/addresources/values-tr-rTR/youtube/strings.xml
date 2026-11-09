@@ -501,6 +501,10 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_on_the_go_summary">Oynatıcı açılır menüsündeki \'Hareket halinde\' Morphe özel oynatıcı kontrollerini açar</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Hareket halinde</string>
+  <string name="morphe_on_the_go_audio_mode">Ses moduna geç</string>
+  <string name="morphe_on_the_go_video_mode">Video moduna geç</string>
+  <string name="morphe_on_the_go_download">İndir</string>
+  <string name="morphe_on_the_go_queue">Sıra</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Soru ögesini açılır menüye ekle</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Akış açılır menüsüne bir video özetlendirme ögesi ekler</string>
@@ -705,9 +709,9 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_queue_type_entry_2">Yerel sıra</string>
   <string name="morphe_queue_type_entry_3">Morphe sırası</string>
   <string name="morphe_queue_type_entry_4">İstemci taraflı Morphe sırası</string>
-  <string name="morphe_queue_add_flyout_menu_title">Akış açılır menüsüne kuyruk menü öğesi ekle</string>
+  <string name="morphe_queue_add_flyout_menu_title">Akış açılır menüsüne sıra öğesi ekle</string>
   <string name="morphe_queue_add_flyout_menu_summary">Ek bir açılır menü öğesi ekler. \"Kuyruğa ekle\" gösterilmiyorsa bunu etkinleştirin.</string>
-  <string name="morphe_local_queue_sheet_title">Kuyruk</string>
+  <string name="morphe_local_queue_sheet_title">Sıra</string>
   <string name="morphe_local_queue_open">Kuyruk (%s)</string>
   <string name="morphe_local_queue_clear">Tümünü temizle</string>
   <string name="morphe_local_queue_empty">Sırada hiçbir şey yok</string>
@@ -752,6 +756,8 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_queue_manager_open_queue">Sırayı aç</string>
   <string name="morphe_queue_manager_save_queue">Sırayı oynatma listesine kaydet</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Sıra sayfalarını kaydırırken yükle</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Sıranın sonuna doğru kaydırılırken daha fazla oynatma listesi videosu yükler</string>
   <string name="morphe_native_playlist_queue_saved">Oynatma listesi kaydedildi</string>
   <string name="morphe_native_playlist_queue_saved_to">%s\'ye kaydedildi</string>
   <string name="morphe_native_playlist_queue_clear">Sırayı temizle</string>
@@ -1102,6 +1108,10 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Pil tasarrufu modunda Ambiyans modunun aktif kalmasına izin verir</string>
   <string name="morphe_disable_ambient_mode_title">Ambiyans modu\'nu devre dışı bırak</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Ambiyans modu\'nu tam ekranda devre dışı bırak</string>
+  <string name="morphe_enhanced_ambient_mode_title">Geliştirilmiş Ambiyans modu</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Videoyla birlikte bütün izleme sayfasının ve siyah çubukları aydınlatır, Ambiyans modunun yerini alır</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Metni okunabilir tut</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Parlak videolarda sayfadaki metnin okunabilir kalması için ışığı kısar</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Bilgi kartlarını gizle</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

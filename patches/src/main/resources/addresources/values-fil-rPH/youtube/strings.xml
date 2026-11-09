@@ -500,6 +500,10 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_on_the_go_summary">Ang player flyout na \'on-the-go\' ay nagbubukas ng mga custom player control ng Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Habang nasa biyahe</string>
+  <string name="morphe_on_the_go_audio_mode">Lumipat sa audio mode</string>
+  <string name="morphe_on_the_go_video_mode">Lumipat sa video mode</string>
+  <string name="morphe_on_the_go_download">I-download</string>
+  <string name="morphe_on_the_go_queue">Pila</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Idagdag ang Ask item sa flyout menu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Idinadagdag ang video summarize item sa feed flyout menu</string>
@@ -751,6 +755,8 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_queue_manager_open_queue">Buksan ang queue</string>
   <string name="morphe_queue_manager_save_queue">I-save ang queue sa playlist</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">I-load ang mga page ng queue kapag nag-i-scroll</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Naglo-load ng higit pang mga video ng playlist kapag nag-i-scroll malapit sa dulo ng queue</string>
   <string name="morphe_native_playlist_queue_saved">Nai-save ang Playlist</string>
   <string name="morphe_native_playlist_queue_saved_to">Na-save sa %s</string>
   <string name="morphe_native_playlist_queue_clear">Linisin ang pila</string>
@@ -1099,6 +1105,10 @@ Para ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gene
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Pinapayagan ang Ambient mode na manatiling aktibo sa battery saver mode</string>
   <string name="morphe_disable_ambient_mode_title">I-disable ang Ambient mode</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">I-disable ang ambient mode sa fullscreen</string>
+  <string name="morphe_enhanced_ambient_mode_title">Pinahusay na Ambient mode</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Nililiwanagan ang buong watch page at ang mga black bar kasabay ng video, bilang kapalit ng Ambient mode</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Panatilihing nababasa ang text</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Pinapahina ang liwanag sa mga maliwanag na video para manatiling nababasa ang text sa page</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Itago ang mga card ng impormasyon</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

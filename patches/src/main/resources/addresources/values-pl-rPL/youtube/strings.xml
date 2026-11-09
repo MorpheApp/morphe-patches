@@ -500,6 +500,10 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_on_the_go_summary">Pozycja \"Tryb mobilny\" w menu odtwarzacza otwiera własne elementy sterujące odtwarzacza Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Tryb mobilny</string>
+  <string name="morphe_on_the_go_audio_mode">Przełącz na tryb dźwięku</string>
+  <string name="morphe_on_the_go_video_mode">Przełącz na tryb filmu</string>
+  <string name="morphe_on_the_go_download">Pobierz</string>
+  <string name="morphe_on_the_go_queue">Kolejka</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Dodaj opcję \"Zapytaj\" do menu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje opcję podsumowania filmu do menu na liście</string>
@@ -751,6 +755,8 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_queue_manager_open_queue">Otwórz kolejkę</string>
   <string name="morphe_queue_manager_save_queue">Zapisz kolejkę na playliście</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Wczytuj strony kolejki podczas przewijania</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Wczytuje więcej filmów z playlisty podczas przewijania w pobliżu końca kolejki</string>
   <string name="morphe_native_playlist_queue_saved">Zapisano playlistę</string>
   <string name="morphe_native_playlist_queue_saved_to">Zapisano w %s</string>
   <string name="morphe_native_playlist_queue_clear">Wyczyść kolejkę</string>
@@ -1101,6 +1107,10 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Umożliwia działanie oświetlenia kinowego w trybie oszczędzania baterii</string>
   <string name="morphe_disable_ambient_mode_title">Wyłącz oświetlenie kinowe</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Wyłącz oświetlenie kinowe w trybie pełnoekranowym</string>
+  <string name="morphe_enhanced_ambient_mode_title">Ulepszony tryb oświetlenia kinowego</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Podświetla całą stronę odtwarzania oraz czarne pasy kolorami z filmu, zastępując standardowy tryb oświetlenia kinowego</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Zachowaj czytelność tekstu</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Przyciemnia podświetlenie przy jasnych filmach, aby tekst na stronie pozostał czytelny</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ukryj karty informacyjne</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

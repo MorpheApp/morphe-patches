@@ -490,6 +490,10 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_on_the_go_summary">Leikjaspilari \'í flugu\' opnar sérsniðnar stýringar Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Í flugu</string>
+  <string name="morphe_on_the_go_audio_mode">Skipta yfir í hljóðtilstillingu</string>
+  <string name="morphe_on_the_go_video_mode">Skipta yfir í myndvégatillstillingu</string>
+  <string name="morphe_on_the_go_download">Sækja niður</string>
+  <string name="morphe_on_the_go_queue">Röð</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Bæta Ask hlut í útflytvalmynd</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Bætir myndbandssamantektarefni í færiborðsútflytvalynduna</string>
@@ -739,6 +743,8 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <string name="morphe_queue_manager_open_queue">Opna biðlista</string>
   <string name="morphe_queue_manager_save_queue">Vista biðlista í spilalista</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Hlaða síðum raðarinnar við skrolling</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Hlaðar fleiri myndböndum í spilunalista þegar skrollað er nálægt enda raðarinnar</string>
   <string name="morphe_native_playlist_queue_saved">Ljóðlisti vistaður</string>
   <string name="morphe_native_playlist_queue_saved_to">Vistað í %s</string>
   <string name="morphe_native_playlist_queue_clear">Hreinsa biðröð</string>
@@ -1087,6 +1093,10 @@ Til að fá aðgang að Stillingum, virkjaðu stillingahnappinn í gegnum Almenn
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Gerir Umhverfislíkam kleift að vera virkur í rafskortunum</string>
   <string name="morphe_disable_ambient_mode_title">Gerðu Umhverfisstilling óvirkt</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Gerðu umhverfisstillu óvirka í fullskjá</string>
+  <string name="morphe_enhanced_ambient_mode_title">Uppbætt Ambient-stilling</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Lýsir upp allri horfunsíðunni og svörtum ramma með litum myndbandsins í stað Ambient-stillingar</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Halda texta læsilegum</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dimmar ljósið á björtum myndböndum svo textinn á síðunni haldi sér læsilegum</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Fela upplýsingakort</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

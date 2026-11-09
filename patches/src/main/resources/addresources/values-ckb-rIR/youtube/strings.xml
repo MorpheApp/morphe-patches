@@ -501,6 +501,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">بەرکەوتنی \'لە ڕێگادە\'ی پلەیەرەکە کۆنترۆڵە تایبەتەکانی پلەیەری Morphe دەکاتەوە</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">لە ڕێگادە</string>
+  <string name="morphe_on_the_go_audio_mode">گۆڕین بۆ شێوازی دەنگ</string>
+  <string name="morphe_on_the_go_video_mode">گۆڕین بۆ شێوازی ڤیدیۆ</string>
+  <string name="morphe_on_the_go_download">دابەزاندن</string>
+  <string name="morphe_on_the_go_queue">ڕیز</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">بەنem­کەری Ask زیاد بکە بۆ مێنیو­ی flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">بەنem­کەری کورتکردنەوەی ڤیدیۆ زیاد دەکات بۆ مێنیو­ی flyout­ی فیدەکە</string>
@@ -752,6 +756,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">کێوەکە بکەرەوە</string>
   <string name="morphe_queue_manager_save_queue">پاشکەوتکردنی کێوەکە بۆ لیستێکی प्लेइंग</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">بارکردنی لاپەڕەکانی ڕیزبەندی لەکاتی سکرۆڵکردن</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">زیاتر لە ڤیدیۆکانی لیستەکە باردەکات کاتێک سکرۆڵ دەکەیت بەرەو کۆتایی ڕیزبەندییەکە</string>
   <string name="morphe_native_playlist_queue_saved">لیستی پەخشکردنەکە پاشکەوت کرا</string>
   <string name="morphe_native_playlist_queue_saved_to">پاشکەوت کرا بۆ %s</string>
   <string name="morphe_native_playlist_queue_clear">پاککردنەوەی ڕیزبەندی</string>
@@ -1102,6 +1108,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">ڕێگە دەدات شێوازی Ambient چالاک بمێنێت لە کاتی شێوازی پاشکەوتکردنی باتریدا</string>
   <string name="morphe_disable_ambient_mode_title">بەکارنەهێنانی شێوازی Ambient</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">بێکارکردنی شێوازی Ambient لە شاشەی تەواو</string>
+  <string name="morphe_enhanced_ambient_mode_title">مۆدی Ambient-ی باشترکراو</string>
+  <string name="morphe_enhanced_ambient_mode_summary">تەواوی لاپەڕەی بینین و شریتە ڕەشەکان بە ڕەنگی ڤیدیۆکەوە ڕوون دەکاتەوە، لە جیاتی مۆدی Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">تێکستی readable بهێڵەوە</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">ڕووناکیی ڤیدیۆکانی گەش کەمدەکاتەوە بۆ ئەوەی تێکستەکانی لاپەڕەکە بە ڕوونی بخوێندرێن</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">كارتەکانی زانین باش بكة</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

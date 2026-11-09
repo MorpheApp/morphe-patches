@@ -500,6 +500,10 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_on_the_go_summary">Leidėjo išskleidžiamasis meniu „keliaujant“ atidaro specialius „Morphe“ leidėjo valdymo elementus</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Keliaujant</string>
+  <string name="morphe_on_the_go_audio_mode">Pereiti į audio režimą</string>
+  <string name="morphe_on_the_go_video_mode">Pereiti į video režimą</string>
+  <string name="morphe_on_the_go_download">Atsisiųsti</string>
+  <string name="morphe_on_the_go_queue">Kylė</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Pridėti „Ask“ elementą į iškylančiąjį meniu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Pridėti vaizdo įrašo apibendrinimo elementą į feed\'o iškylančiąjį meniu</string>
@@ -751,6 +755,8 @@ Informacija: gali neveikti tiesioginių transliacijų atveju"</string>
   <string name="morphe_queue_manager_open_queue">Atidaryti eilę</string>
   <string name="morphe_queue_manager_save_queue">Išsaugoti eilę grojaraštyje</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Krauti eilės puslapius ritinant</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Krauna daugiau grožio vaizdo įrašų, kai ritinate prie eilės pabaigos</string>
   <string name="morphe_native_playlist_queue_saved">Grojaraštis išsaugotas</string>
   <string name="morphe_native_playlist_queue_saved_to">Išsaugota %s</string>
   <string name="morphe_native_playlist_queue_clear">Valyti eilę</string>
@@ -1101,6 +1107,10 @@ Kad būtų rodomas meniu „Garso takelis“, parinktyje „Maskuoti vaizdo įra
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Leidžia aplinkos režimui likti aktyviam baterijos taupymo režimu</string>
   <string name="morphe_disable_ambient_mode_title">Išjungti aplinkos režimą</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Išjungti aplinkos režimą visame ekrane</string>
+  <string name="morphe_enhanced_ambient_mode_title">Pat stipendizuotas aplinkos režimas</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Apšviečia visą peržiūros puslapį ir juostas vaizdo įrašo spalvomis vietoj aplinkos režimo</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Išlaikyti teksto įskaitomumą</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Pridimsta šviesą ryškiuose vaizdo įrašuose, kad puslapio tekstas išliktų įskaitomas</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Slėpti informacijos korteles</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1698,6 +1708,7 @@ Automatinis įrašymas sustabdomas slaptojo režimo metu, kai neprieinama paskyr
   <string name="morphe_series_tracker_undo">Anuliuoti</string>
   <string name="morphe_series_tracker_enable_short">Įjungti</string>
   <string name="morphe_series_tracker_new_episode">1 naujas epizodas</string>
+  <string name="morphe_series_tracker_new_episodes">%s nauji epizodai</string>
   <string name="morphe_series_tracker_record_short">Fiksuoti eiga šiame įrenginyje</string>
   <string name="morphe_series_tracker_follow_consent">"Jūsų serijos ir progresas lieka šiame įrenginyje, bendrinami tarp YouTube paskyrų. YouTube istorijos valdymo priemonės to nekeičia. Progresą išvalykite iš Paslaugos meniu.
 
@@ -1731,6 +1742,7 @@ Automatinis įrašymas yra neprivalomas. Jis sustabdomas slaptojo režimo metu a
   <string name="morphe_series_tracker_episode_order">Epizodų tvarka</string>
   <string name="morphe_series_tracker_playlist_order">Grojaraščio tvarka</string>
   <string name="morphe_series_tracker_reverse_order">Grįžti grojaraščio tvarką</string>
+  <string name="morphe_series_tracker_view_count">%s peržiūros</string>
   <string name="morphe_series_tracker_view_count_one">%s peržiūra</string>
   <string name="morphe_series_tracker_completion_title">Pažymėti epizodus peržiūrėtais</string>
   <string name="morphe_series_tracker_completion_summary">Mažiausiai %1$s%% peržiūrėta, likus ne daugiau kaip 90 sekundžių, arba liko %2$s sekundžių</string>

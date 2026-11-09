@@ -500,6 +500,10 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_on_the_go_summary">Speler-fly-out \'Onderweg\' opent aangepaste bedieningselementen van de Morphe-speler</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Onderweg</string>
+  <string name="morphe_on_the_go_audio_mode">Schakel over naar audiomodus</string>
+  <string name="morphe_on_the_go_video_mode">Schakel over naar videomodus</string>
+  <string name="morphe_on_the_go_download">Download</string>
+  <string name="morphe_on_the_go_queue">Wachtrij</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ask-item aan uitklapmenu toevoegen</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Videofatsummarisatie-item toevoegen aan het feed-uitklapmenu</string>
@@ -751,6 +755,8 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_queue_manager_open_queue">Open wachtrij</string>
   <string name="morphe_queue_manager_save_queue">Wachtrij opslaan naar afspeellijst</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Wachtrijpagina\'s laden bij scrollen</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Laadt meer video\'s uit de afspeellijst wanneer je naar het einde van de wachtrij scrollt</string>
   <string name="morphe_native_playlist_queue_saved">Afspelplaylist opgeslagen</string>
   <string name="morphe_native_playlist_queue_saved_to">Opgeslagen in %s</string>
   <string name="morphe_native_playlist_queue_clear">Wachtrij wissen</string>
@@ -1099,6 +1105,10 @@ Om het 'Audio Track'-menu weer te geven, wijzig 'Spoof video streams' naar elke 
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Hiermee kan de omgevingsmodus actief blijven in de energiebesparingsmodus</string>
   <string name="morphe_disable_ambient_mode_title">Omgevingsmodus uitschakelen</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Schakel de ambientmodus in volledig scherm uit</string>
+  <string name="morphe_enhanced_ambient_mode_title">Verbeterde sfeervolle modus</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Verlicht de hele videopagina en de zwarte balken met de video, in plaats van de sfeervolle modus</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Tekst leesbaar houden</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dimt het licht bij heldere video\'s zodat de tekst op de pagina leesbaar blijft</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Verberg infokaarten</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

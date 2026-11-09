@@ -321,12 +321,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ключові слова, які потрібно приховати</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Введіть ключові слова та фрази для приховування, розділяючи їх новими рядками
 
-Ключовими словами може бути будь-який текст, що відображається в назвах відео або назвах каналів"</string>
+Ключовими словами може бути будь-який текст, що показується в назвах відео або назвах каналів"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Головна / Підписки / Пошук / Коментарі фільтруються, щоб приховати вміст, який відповідає ключовим фразам
 
 Обмеження:
 • Деякі Shorts неможливо приховати за назвою каналу
-• Деякі компоненти інтерфейсу можуть не приховуватися"</string>
+• Деякі елементи інтерфейсу можуть не приховуватися"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Лише цілі слова</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Взяття ключового слова/фрази в подвійні лапки запобігатиме частковим збігам назв відео та каналів&lt;br&gt;&lt;br&gt;Наприклад,&lt;br&gt;&lt;b&gt;\"ші\"&lt;/b&gt; приховає відео: &lt;b&gt;Як працює ШІ (штучний інтелект)?&lt;/b&gt;&lt;br&gt;але не приховає: &lt;b&gt;Що означає цифра шість?&lt;/b&gt;</string>
@@ -495,11 +495,15 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_same_language">Допис уже написано мовою перекладу</string>
   <!-- interaction.onthego.onTheGoPatch -->
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_title">Увімкнути Morphe у режимі \"на ходу\"</string>
+  <string name="morphe_on_the_go_title">Увімкнути режим \"У дорозі\" від Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_summary">Спливаюче вікно плеєра \"на ходу\" відкриває кастомні елементи керування Morphe</string>
+  <string name="morphe_on_the_go_summary">Пункт \"У дорозі\" у спливному меню плеєра відкриває власні елементи керування плеєром Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_panel_title">На ходу</string>
+  <string name="morphe_on_the_go_panel_title">У дорозі</string>
+  <string name="morphe_on_the_go_audio_mode">Перейти в режим аудіо</string>
+  <string name="morphe_on_the_go_video_mode">Перейти в режим відео</string>
+  <string name="morphe_on_the_go_download">Завантажити</string>
+  <string name="morphe_on_the_go_queue">Черга</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Додати пункт \"Запитати\" у спливне меню</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Додає пункт підсумовування відео до спливного меню стрічки</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Відкрити чергу</string>
   <string name="morphe_queue_manager_save_queue">Зберегти чергу як список відтворення</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Завантажувати сторінки черги під час прокручування</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Завантажує більше відео зі списку відтворення, коли ви прокручуєте чергу ближче до кінця</string>
   <string name="morphe_native_playlist_queue_saved">Список відтворення збережено</string>
   <string name="morphe_native_playlist_queue_saved_to">Збережено до %s</string>
   <string name="morphe_native_playlist_queue_clear">Очистити чергу</string>
@@ -794,15 +800,15 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Увімкнути перемотування дотиком</string>
   <string name="morphe_tap_to_seek_summary">Натисніть будь-де на смузі відтворення, щоб перейти до цієї позиції замість перетягування</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_title">Увімкнути власний повзунок смуги перемотування</string>
-  <string name="morphe_custom_seekbar_thumb_summary">Замініть повзунок смуги перемотування на власне зображення або анімований GIF</string>
-  <string name="morphe_custom_seekbar_thumb_file_title">Зображення повзунка</string>
-  <string name="morphe_custom_seekbar_thumb_file_summary">Виберіть зображення або анімований GIF із пам\'яті пристрою</string>
+  <string name="morphe_custom_seekbar_thumb_title">Увімкнути власний бігунок смуги відтворення</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Замінює бігунок смуги відтворення власним зображенням або анімованим GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Зображення бігунка</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Виберіть зображення або анімований GIF у сховищі пристрою</string>
   <string name="morphe_custom_seekbar_thumb_file_invalid">Вибраний файл не є підтримуваним зображенням</string>
-  <string name="morphe_custom_seekbar_thumb_file_not_found">Зображення користувацького повзунка смуги перемотування не знайдено</string>
-  <string name="morphe_custom_seekbar_thumb_scale_type_title">Розмір повзунка</string>
-  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Підігнати під смугу перемотування</string>
-  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Оригінальний розмір</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Зображення власного бігунка смуги відтворення не знайдено</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Розмір бігунка</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Підігнати під смугу відтворення</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Початковий розмір</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Жест свайпом ліворуч</string>
   <string name="morphe_swipe_right_zone_title">Жест свайпом праворуч</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Дозволяє кінематографічному режиму працювати навіть у режимі економії енергії</string>
   <string name="morphe_disable_ambient_mode_title">Вимкнути \"Кінематографічне освітлення\"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Вимкнути \"Кінематографічне освітлення\" для повноекранного режиму</string>
+  <string name="morphe_enhanced_ambient_mode_title">Покращене кінематографічне освітлення</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Підсвічує всю сторінку перегляду та чорні смуги кольорами відео замість кінематографічного освітлення</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Зберігати читабельність тексту</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Приглушує підсвічування на яскравих відео, щоб текст на сторінці залишався читабельним</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Приховати підказки</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1773,7 +1783,7 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_summary">Показувати живий чат і повтор чату як коментарі, що прокручуються по відео</string>
   <string name="morphe_niconico_comments_summary">Показує кнопку у відеоплеєрі. Натисніть, щоб показувати або приховувати коментарі, утримуйте для швидких налаштувань</string>
   <string name="morphe_niconico_comments_appearance_title">Вигляд</string>
-  <string name="morphe_niconico_comments_portrait_category_title">Портретний</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Портретна орієнтація</string>
   <string name="morphe_niconico_comments_video_types_title">Типи відео</string>
   <string name="morphe_niconico_comments_font_size_title">Розмір шрифту коментарів</string>
   <string name="morphe_niconico_comments_font_size_summary">Розмір тексту коментарів (12-40 sp)</string>
@@ -1783,18 +1793,18 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">За скільки секунд коментарі перетинають екран. Менші значення означають швидший рух</string>
   <string name="morphe_niconico_comments_display_area_title">Область відображення</string>
   <string name="morphe_niconico_comments_display_area_summary">Яку частину плеєра від верхнього краю використовують коментарі. Менші значення залишають нижню частину відео вільною</string>
-  <string name="morphe_niconico_comments_portrait_title">Показувати в портретному режимі</string>
-  <string name="morphe_niconico_comments_portrait_summary">Показувати коментарі, коли екран перебуває в портретній орієнтації. Вимкніть, щоб показувати їх лише в альбомній</string>
+  <string name="morphe_niconico_comments_portrait_title">Показувати в портретній орієнтації</string>
+  <string name="morphe_niconico_comments_portrait_summary">Показувати коментарі, коли екран у портретній орієнтації. Вимкніть, щоб показувати їх лише в альбомній</string>
   <string name="morphe_niconico_comments_separate_portrait_title">Окремі налаштування для портретної орієнтації</string>
-  <string name="morphe_niconico_comments_separate_portrait_summary">Використовувати інший розмір шрифту, тривалість руху та область відображення в портретній орієнтації. Якщо цю опцію увімкнено, значення встановлюються з поточних</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Використовувати інший розмір шрифту, тривалість руху та область відображення в портретній орієнтації. Після ввімкнення вони беруть початкові значення з поточних</string>
   <string name="morphe_niconico_comments_portrait_font_size_title">Розмір шрифту коментарів у портретній орієнтації</string>
   <string name="morphe_niconico_comments_portrait_font_size_summary">Розмір тексту коментарів у портретній орієнтації (12-40 sp)</string>
-  <string name="morphe_niconico_comments_portrait_travel_duration_title">Тривалість переміщення в портретному режимі</string>
-  <string name="morphe_niconico_comments_portrait_travel_duration_summary">За скільки секунд коментарі перетинають екран у портретному режимі</string>
-  <string name="morphe_niconico_comments_portrait_display_area_title">Область відображення в портретному режимі</string>
-  <string name="morphe_niconico_comments_portrait_display_area_summary">Яку частину плеєра, починаючи зверху, займають коментарі в портретному режимі</string>
-  <string name="morphe_niconico_comments_hide_crowded_title">Приховати коментарі, що перекривають одне одного</string>
-  <string name="morphe_niconico_comments_hide_crowded_summary">Коли область відображення заповнена, нові коментарі приховуються замість того, щоб перекривати інші коментарі</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Тривалість руху в портретній орієнтації</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">За скільки секунд коментарі перетинають екран у портретній орієнтації</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Область відображення в портретній орієнтації</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Яку частину плеєра від верхнього краю займають коментарі в портретній орієнтації</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Приховати коментарі, які перекривалися б</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Коли область відображення заповнена, нові коментарі приховуються замість того, щоб перекривати інші</string>
   <string name="morphe_niconico_comments_max_length_title">Максимальна довжина коментаря</string>
   <string name="morphe_niconico_comments_max_length_summary">Приховує коментарі з більшою кількістю символів, ніж це значення. Кожне емодзі враховується як один символ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без обмежень</string>

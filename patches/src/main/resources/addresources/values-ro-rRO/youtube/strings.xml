@@ -500,6 +500,10 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_on_the_go_summary">Flyout-ul de redare „În deplasare” deschide controalele personalizate ale playerului Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">În deplasare</string>
+  <string name="morphe_on_the_go_audio_mode">Trecere la modul audio</string>
+  <string name="morphe_on_the_go_video_mode">Trecere la modul video</string>
+  <string name="morphe_on_the_go_download">Descărcare</string>
+  <string name="morphe_on_the_go_queue">Coadă</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Adăugarea elementului Ask la meniul flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Adaugă un element de sumarizare video în meniul flyout al șirului de alimentare</string>
@@ -751,6 +755,8 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_queue_manager_open_queue">Deschide coada</string>
   <string name="morphe_queue_manager_save_queue">Salvează coada în playlist</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Încarcă paginile cozii la defilare</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Încarcă mai multe videoclipuri din listă atunci când defilezi aproape de sfârșitul cozii</string>
   <string name="morphe_native_playlist_queue_saved">Playlist salvat</string>
   <string name="morphe_native_playlist_queue_saved_to">Salvat în %s</string>
   <string name="morphe_native_playlist_queue_clear">Golește coada</string>
@@ -1101,6 +1107,10 @@ Pentru a afișa meniul 'Audio Track', schimbă 'Spoof video streams' în orice c
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Permite modului Ambient să rămână activ în modul de economisire a bateriei</string>
   <string name="morphe_disable_ambient_mode_title">Dezactivează modul ambient</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Dezactivați modul Ambient în ecran complet</string>
+  <string name="morphe_enhanced_ambient_mode_title">Mod Ambient îmbunătățit</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Iluminează întreaga pagină de vizionare și barele negre cu videoclipul, în locul modului Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Menține textul lizibil</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Reduce luminozitatea videoclipurilor luminoase pentru ca textul de pe pagină să rămână lizibil</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ascunde cardurile cu informații</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

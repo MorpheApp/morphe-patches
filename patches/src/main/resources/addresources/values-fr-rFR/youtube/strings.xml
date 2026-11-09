@@ -500,6 +500,10 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_on_the_go_summary">Le menu déroulant \'En déplacement\' ouvre les contrôles personnalisés du lecteur Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">En déplacement</string>
+  <string name="morphe_on_the_go_audio_mode">Passer en mode audio</string>
+  <string name="morphe_on_the_go_video_mode">Passer en mode vidéo</string>
+  <string name="morphe_on_the_go_download">Télécharger</string>
+  <string name="morphe_on_the_go_queue">File d\'attente</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ajouter l\'élément \'Posez une question\' au menu déroulant</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Ajoute un élément de résumé vidéo au menu déroulant du flux</string>
@@ -751,6 +755,8 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_queue_manager_open_queue">Ouvrir la file d\'attente</string>
   <string name="morphe_queue_manager_save_queue">Enregistrer la file d\'attente dans une playlist</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Charger les pages de la file d\'attente lors du défilement</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Charge davantage de vidéos de la playlist lorsque vous faites défiler jusqu\'à la fin de la file d\'attente</string>
   <string name="morphe_native_playlist_queue_saved">Playlist enregistrée</string>
   <string name="morphe_native_playlist_queue_saved_to">Enregistrée dans %s</string>
   <string name="morphe_native_playlist_queue_clear">Vider la file d\'attente</string>
@@ -1101,6 +1107,10 @@ Pour afficher le menu 'Piste audio', changez 'Falsifier les flux vidéo' et sél
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Permet au mode Ambiant de rester actif en mode économie d\'énergie</string>
   <string name="morphe_disable_ambient_mode_title">Désactiver le mode Ambiant</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Désactiver le mode Ambiant en plein écran</string>
+  <string name="morphe_enhanced_ambient_mode_title">Mode Ambiant amélioré</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Illumine toute la page de lecture ainsi que les bandes noires autour de la vidéo, à la place du mode Ambiant</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Garder le texte lisible</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Atténue la luminosité des vidéos très lumineuses afin que le texte de la page reste lisible</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Masquer les fiches info</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

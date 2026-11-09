@@ -500,6 +500,10 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <string name="morphe_on_the_go_summary">Spelarens flytmeny \"På språng\" öppnar Morphes anpassade spelarkontroller</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">På språng</string>
+  <string name="morphe_on_the_go_audio_mode">Byt till ljudläge</string>
+  <string name="morphe_on_the_go_video_mode">Byt till videoläge</string>
+  <string name="morphe_on_the_go_download">Ladda ned</string>
+  <string name="morphe_on_the_go_queue">Kö</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Lägg till Ask-objekt i flygutmatningsmenyn</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Lägger till ett objekt för sammanfattning av video i flödesflygutmatningsmenyn</string>
@@ -751,6 +755,8 @@ Information: Kanske inte fungerar i livestreamar"</string>
   <string name="morphe_queue_manager_open_queue">Öppna kön</string>
   <string name="morphe_queue_manager_save_queue">Spara kön till spellista</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Ladda kösidor vid skrollning</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Laddar fler videor från spellistan när du skrollar nära slutet av kön</string>
   <string name="morphe_native_playlist_queue_saved">Spellista sparad</string>
   <string name="morphe_native_playlist_queue_saved_to">Sparad till %s</string>
   <string name="morphe_native_playlist_queue_clear">Rensa kö</string>
@@ -1101,6 +1107,10 @@ För att visa menyn 'Ljudspår', ändra 'Förfalska videostreamar' till valfri k
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Tillåter att ambientljus förblir aktivt i batterisparläget</string>
   <string name="morphe_disable_ambient_mode_title">Inaktivera Ambientljus</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Inaktivera Ambientljus i helskärm</string>
+  <string name="morphe_enhanced_ambient_mode_title">Förbättrat Ambientljus</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Lyser upp hela visningssidan och svarta fält med videon, istället för Ambientljus</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Behåll texten läsbar</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dämpar ljuset på ljusa videor så att texten på sidan förblir läsbar</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Dölj infokort</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

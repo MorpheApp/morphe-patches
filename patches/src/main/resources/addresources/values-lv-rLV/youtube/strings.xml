@@ -500,6 +500,10 @@ Ziņojumi ir publiski un tiek pārskatīti pirms kanāla pievienošanas saraksta
   <string name="morphe_on_the_go_summary">Spēlētāja izvēlne \"ceļā\" atver Morphe pielagotos spēlētāja vadības elementus</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Ceļā</string>
+  <string name="morphe_on_the_go_audio_mode">Pārejiet uz audio režīmu</string>
+  <string name="morphe_on_the_go_video_mode">Pārejiet uz video režīmu</string>
+  <string name="morphe_on_the_go_download">Lejupielādēt</string>
+  <string name="morphe_on_the_go_queue">Karta</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Pievienot \"Ask\" vienumu izlaidnotifiera izvēlnei</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Pievieno video kopsav𝟐uma vienumu plūsmas izlaidnotifiera izvēlnei</string>
@@ -751,6 +755,8 @@ Info: Var nedarboties tiešraidēs"</string>
   <string name="morphe_queue_manager_open_queue">Atvērt rindu</string>
   <string name="morphe_queue_manager_save_queue">Saglabāt rindu sarakstā</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Ielādēt rindas lapas ritinot</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Ielādē vairāk saraksta video, ritinot tuvu rindas beigām</string>
   <string name="morphe_native_playlist_queue_saved">Atskaņošanas saraksts saglabāts</string>
   <string name="morphe_native_playlist_queue_saved_to">Saglabāts %s</string>
   <string name="morphe_native_playlist_queue_clear">Notīrīt rindu</string>
@@ -1101,6 +1107,10 @@ Lai rādītu izvēlni 'Audio Track', mainiet 'Spoof video streams' uz jebkura kl
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Ļauj Ambient režīmam palikt aktīvam akumulatora taupīšanas režīmā</string>
   <string name="morphe_disable_ambient_mode_title">Atslēgt Ambient režīmu</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Atslēgt videorežīmu pilnā ekrāna režīmā</string>
+  <string name="morphe_enhanced_ambient_mode_title">Uzlabots Ambient režīms</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Apgaismo visu skatīšanas lapu un melnās joslas ar video, Ambient režīma vietā</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Sagatavot tekstu lasīšanai</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dimdimo gaismu gaišos video, lai teksts lapā paliktu lasāms</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Slēpt info kartes</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

@@ -500,6 +500,10 @@ Izibiko zivulekile futhi zibuyekezwa ngaphambi kokuba ishネル yengeke ohlwini.
   <string name="morphe_on_the_go_summary">I-Player flyout \'endle\' ivula izilawuli ze-player zikaMorphe ezikhashethiwe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Endle</string>
+  <string name="morphe_on_the_go_audio_mode">Shintshela emodini yomsindo</string>
+  <string name="morphe_on_the_go_video_mode">Shintshela emodini yevidiyo</string>
+  <string name="morphe_on_the_go_download">Landa</string>
+  <string name="morphe_on_the_go_queue">Umugqa</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Yenge item ye-Ask emenyu ye-flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Yenge item yokufingqa ividiyo emenyu ye-flyout ye-feed</string>
@@ -751,6 +755,8 @@ Ulwazi: Kungase kungasebenzi kuma-live streams"</string>
   <string name="morphe_queue_manager_open_queue">Vula uhlelwu</string>
   <string name="morphe_queue_manager_save_queue">Gcina umsTextChanged ku-playlist</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Loadinga amakhasi omugqa lapho uskrolila</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Loadinga amanye amavidiyo ohlukaniso lapho uskrolila eduze kokuphela komugqa</string>
   <string name="morphe_native_playlist_queue_saved">Uhlu lwezingoma lolondile</string>
   <string name="morphe_native_playlist_queue_saved_to">Kugcinwe ku-%s</string>
   <string name="morphe_native_playlist_queue_clear">Sula umsindo</string>
@@ -1101,6 +1107,10 @@ Ukuze ubonise imenyu ye-'Audio Track', shintsha 'Spoof video streams' kube yikla
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Kuvumela i-Ambient mode ukuba ihlale isebenza ngenkathi kusebenzisa i-battery saver mode</string>
   <string name="morphe_disable_ambient_mode_title">Khise i-Ambient mode</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Vimba i-Ambient mode ekukhipheni isikrini sigcwele</string>
+  <string name="morphe_enhanced_ambient_mode_title">Imodi ye-Ambient ethuthukisiwe</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Khanyisa ikhasi lonke lokubuka kanye nemigqa emnyama ngevidiyo, esikhundleni se-Ambient mode</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Gcina umbhalo ufundeka</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Cishisela ukukhanya kumavidiyo akhanyayo ukuze umbhalo ekhasini uhlale ufundeka</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Fihla amakhadi wolwazi</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

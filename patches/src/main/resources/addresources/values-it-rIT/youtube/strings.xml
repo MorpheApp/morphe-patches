@@ -500,6 +500,10 @@ Le segnalazioni sono pubbliche e vengono esaminate prima che un canale venga agg
   <string name="morphe_on_the_go_summary">Il flyout del lettore \"in movimento\" apre i controlli personalizzati del lettore Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">In movimento</string>
+  <string name="morphe_on_the_go_audio_mode">Passa alla modalità audio</string>
+  <string name="morphe_on_the_go_video_mode">Passa alla modalità video</string>
+  <string name="morphe_on_the_go_download">Scarica</string>
+  <string name="morphe_on_the_go_queue">Coda</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Aggiungi elemento Chiedi al menu a discesa</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Aggiunge un elemento di sintesi video al menu a discesa del feed</string>
@@ -751,6 +755,8 @@ Avviso: Potrebbe non funzionare sui video in diretta"</string>
   <string name="morphe_queue_manager_open_queue">Apri coda</string>
   <string name="morphe_queue_manager_save_queue">Salva coda nella playlist</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Carica le pagine della coda durante lo scorrimento</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Carica altri video della playlist quando lo scorrimento si avvicina alla fine della coda</string>
   <string name="morphe_native_playlist_queue_saved">Playlist salvata</string>
   <string name="morphe_native_playlist_queue_saved_to">Salvato in %s</string>
   <string name="morphe_native_playlist_queue_clear">Svuota coda</string>
@@ -1101,6 +1107,10 @@ Per mostrare il menu 'Audio Track', cambia 'Falsificazione dei flussi video' in 
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Consente alla modalità Ambient di rimanere attiva in modalità risparmio energetico</string>
   <string name="morphe_disable_ambient_mode_title">Disabilita la modalità Ambient</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Disattiva la modalità Ambient a schermo intero</string>
+  <string name="morphe_enhanced_ambient_mode_title">Modalità Ambient avanzata</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Illumina l\'intera pagina di riproduzione e le barre nere con il video, al posto della modalità Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantieni il testo leggibile</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Attenua la luce nei video luminosi affinché il testo sulla pagina rimanga leggibile</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Nascondi schede informative</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

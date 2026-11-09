@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">Выпадаючае меню плеера «у дарозе» адкрывае кастомныя элементы кіравання плеерам Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">У дарозе</string>
+  <string name="morphe_on_the_go_audio_mode">Пераключыцца ў аўдыярэжым</string>
+  <string name="morphe_on_the_go_video_mode">Пераключыцца ў відэарэжым</string>
+  <string name="morphe_on_the_go_download">Спампаваць</string>
+  <string name="morphe_on_the_go_queue">Чэрга</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Дадаць пункт «Спытаць» у выпадаючае меню</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Дадае пункт «Сціснуць відэа» у выпадаюе меню стужкі</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Адкрыць чаргу</string>
   <string name="morphe_queue_manager_save_queue">Захаваць чаргу ў плейліст</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Загружаць старонкі чаргі пры пракручванні</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Загружае больш відэа з плэйліста пры пракручванні да канца чаргі</string>
   <string name="morphe_native_playlist_queue_saved">Плэйліст захаваны</string>
   <string name="morphe_native_playlist_queue_saved_to">Захавана ў %s</string>
   <string name="morphe_native_playlist_queue_clear">Ачысціць чаргу</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Дазваляе рэжыму Ambient заставацца актыўным у рэжыме эканоміі зарада</string>
   <string name="morphe_disable_ambient_mode_title">Адключаць атмасферны рэжым</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Адключаць рэжым Ambient у паўнаэкранным рэжыме</string>
+  <string name="morphe_enhanced_ambient_mode_title">Палепшаны рэжым Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Падсвечвае ўсю старонку прагляду і чорныя палосы колерам відэа замест рэжыму Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Забеспечыць чытальнасць тэксту</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Зменшвае яркасць святла на яркіх відэа, каб тэкст на старонцы заставаўся чытальным</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Схаваць інфармацыйныя карткі</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

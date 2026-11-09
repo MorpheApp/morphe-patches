@@ -111,7 +111,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_choose_playback">Nerede oynatılacağını seç</string>
   <string name="morphe_music_jam_move_host_here">Host\'u buraya taşı</string>
   <string name="morphe_music_jam_seek_not_ready">Şarkı, aramaya hazır hale gelmedi</string>
-  <string name="morphe_music_jam_queue_changed_gesture">Kuyruk değişti; hareketi tekrar deneyin</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Sıra değişti, hareketi tekrar deneyin</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Başlık logosu</string>
@@ -411,7 +411,7 @@ SABR oynatma (video akışlarını taklit etme kapalı)"</string>
   <string name="morphe_music_hide_radio_button_title">\'Radyoyu başlat\' düğmesini gizle</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Açılır menü</string>
-  <string name="morphe_music_hide_flyout_menu_components_screen_summary">Oyuncuda ve kuyrukta görünen bileşenleri seçin</string>
+  <string name="morphe_music_hide_flyout_menu_components_screen_summary">Oynatıcı ve sıra açılır menülerinde hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">3 sütunlu bileşeni gizle</string>
   <string name="morphe_music_hide_flyout_menu_like_dislike_title">Beğenme ve Beğenmeme düğmelerini gizle</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">\'Zevk eşleşmesi\' menüsünü gizle</string>

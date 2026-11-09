@@ -500,6 +500,10 @@ Els informes són públics i es revisen abans d'afegir un canal a una llista. L'
   <string name="morphe_on_the_go_summary">El desplegable del reproductor \"a on sigui\" obre els controls personalitzats del reproductor de Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">A on sigui</string>
+  <string name="morphe_on_the_go_audio_mode">Passa al mode d\'àudio</string>
+  <string name="morphe_on_the_go_video_mode">Passa al mode de vídeo</string>
+  <string name="morphe_on_the_go_download">Descarrega</string>
+  <string name="morphe_on_the_go_queue">Cua</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Afegeix l\'element Pregunta al menú desplegable</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Afegeix un element de resum de vídeo al menú desplegable del feed</string>
@@ -751,6 +755,8 @@ Info: Potser no funcioni en les retransmissions en directe"</string>
   <string name="morphe_queue_manager_open_queue">Obre la cua</string>
   <string name="morphe_queue_manager_save_queue">Desa la cua a la llista de reproducció</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Carregar pàgines de la cua en fer scroll</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Carrega més vídeos de la llista de reproducció quan es fa scroll a prop del final de la cua</string>
   <string name="morphe_native_playlist_queue_saved">Llista de reproducció des guarded</string>
   <string name="morphe_native_playlist_queue_saved_to">Desguardat a %s</string>
   <string name="morphe_native_playlist_queue_clear">Neteja la cua</string>
@@ -1101,6 +1107,10 @@ Per mostrar el menú 'Audio Track', canvia 'Spoof video streams' a qualsevol cli
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Permet que el mode Ambient es mantingui actiu en el mode d\'estalvi de bateria</string>
   <string name="morphe_disable_ambient_mode_title">Desactivar el mode ambient</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Desactivar el mode Ambient a pantalla completa</string>
+  <string name="morphe_enhanced_ambient_mode_title">Mode Ambient millorat</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Il·lumina tota la pàgina de visionat i les barres negres amb el vídeo, en lloc del mode Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantenir el text llegible</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Atenueix la llum en els vídeos lluminosos perquè el text de la pàgina segueixi sent llegible</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ocultar les targetes d\'informació</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

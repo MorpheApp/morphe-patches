@@ -500,6 +500,10 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_on_the_go_summary">A lejátszó „utazás közben” felugró ablakában megnyílnak a Morphe egyedi lejátszási vezérlői</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Utazás közben</string>
+  <string name="morphe_on_the_go_audio_mode">Váltás audio módra</string>
+  <string name="morphe_on_the_go_video_mode">Váltás videó módra</string>
+  <string name="morphe_on_the_go_download">Letöltés</string>
+  <string name="morphe_on_the_go_queue">Sor</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ask elem hozzáadása a kizúgó menühez</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Video-összefoglaló elem hozzáadása az adatfolyam kizúgó menüjéhez</string>
@@ -751,6 +755,8 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <string name="morphe_queue_manager_open_queue">Sor megnyitása</string>
   <string name="morphe_queue_manager_save_queue">A sor mentése lejálistához</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Soroldalak betöltése görgetéskor</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Több lejátszási lista videót tölt be, amikor a sor végéhez közeledik a görgetés során</string>
   <string name="morphe_native_playlist_queue_saved">Lejátszási lista mentve</string>
   <string name="morphe_native_playlist_queue_saved_to">Mentve ide: %s</string>
   <string name="morphe_native_playlist_queue_clear">Sor törlése</string>
@@ -1101,6 +1107,10 @@ Az 'Audio Track' menü megjelenítéséhez állítsa a 'Videóstream-ek megtéve
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Lehetővé teszi, hogy az Ambient mód aktív maradjon az akkumulátortakarékos módban</string>
   <string name="morphe_disable_ambient_mode_title">Mozifilmes világítás letiltása</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Ambient mód letiltása teljes képernyős módban</string>
+  <string name="morphe_enhanced_ambient_mode_title">Fejlesztett Mozifilmes világítás</string>
+  <string name="morphe_enhanced_ambient_mode_summary">A Mozifilmes világítás helyett a videó színei világítják meg az egész megtekintési oldalt és a fekete sávokat</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">A szöveg olvashatósága megőrzése</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Csökkenti a fényt a világos videóknál, hogy az oldalon lévő szöveg olvasható maradjon</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Infó kártyák elrejtése</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

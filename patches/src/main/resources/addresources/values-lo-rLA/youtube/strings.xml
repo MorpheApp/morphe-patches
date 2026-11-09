@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">ເມນູ \'ໃນລະຫວ່າງການເດີນທາງ\' ຂອງເຄື່ອງຫຼິ້ນຈະເປີດການຄວບຄຸມເຄື່ອງຫຼິ້ນທີ່ປັບແຕ່ງຂອງ Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">ໃນລະຫວ່າງການເດີນທາງ</string>
+  <string name="morphe_on_the_go_audio_mode">ປ່ຽນເປັນໂໝດສຽງ</string>
+  <string name="morphe_on_the_go_video_mode">ປ່ຽນເປັນໂໝດວິດີໂອ</string>
+  <string name="morphe_on_the_go_download">ດາວໂຫຼດ</string>
+  <string name="morphe_on_the_go_queue">ຄິວ</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">ເພີ່ມລາຍການ Ask ໄປยังເມນູ flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">ເພີ່ມລາຍການສະຫຼຸບວິດີໂອໄປยังເມນູ flyout ຂອງ feed</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">ເປີດຄິວ</string>
   <string name="morphe_queue_manager_save_queue">ບັນທຶກຄິວໄວ້ໃນລາຍການຫຼິ້ນ</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">ໂຫຼດໜ້າລໍ列ຄິວໃນຂະນະທີ່ເລື່ອນ</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">ໂຫຼດວິດີໂອໃນລາຍການຫຼິ້ນເພີ່ມເຕີມ ເມື່ອເລື່ອນໄປໃກ້ຈະໝົດຄິວ</string>
   <string name="morphe_native_playlist_queue_saved">ບັນທຶກລາຍການຫຼິ້ນແລ້ວ</string>
   <string name="morphe_native_playlist_queue_saved_to">ບັນທຶກໄວ້ໃນ %s</string>
   <string name="morphe_native_playlist_queue_clear">ລ້າງຄິວ</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">ອະນຸຍາດໃຫ້ໂໝດ Ambient ຍັງຄົງເຮັດວຽກໃນໂໝດປະຢັດແບັດເຕີຣີ</string>
   <string name="morphe_disable_ambient_mode_title">ປິດການນຳໃຊ້ໂໝດ Ambient</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">ປິດໂໝດ Ambient ໃນໜ້າຈໍເຕັມ</string>
+  <string name="morphe_enhanced_ambient_mode_title">ໂໝດ Ambient ທີ່ປັບປຸງໃໝ່</string>
+  <string name="morphe_enhanced_ambient_mode_summary">ເຮັດໃຫ້ໜ້າເບິ່ງວິດີໂອທັງໝົດ ແລະ ແຖບສີດຳມີແສງຕາມວິດີໂອ ເພື່ອໃຊ້ແທນໂໝດ Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">ຮັກສາໃຫ້ຂໍ້ຄວາມອ່ານໄດ້ງ່າຍ</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">ຫຼຸດແສງໃນວິດີໂອທີ່ມີຄວາມສະຫວ່າງຫຼາຍ ເພື່ອໃຫ້ຂໍ້ຄວາມໃນໜ້າຍັງຄົງອ່ານໄດ້ງ່າຍ</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">ເຊື່ອງບັດຂໍ້ມູນ</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">播放器飞出菜单的“随身播放”可打开 Morphe 自定义播放控制</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">随身播放</string>
+  <string name="morphe_on_the_go_audio_mode">切换到音频模式</string>
+  <string name="morphe_on_the_go_video_mode">切换到视频模式</string>
+  <string name="morphe_on_the_go_download">下载</string>
+  <string name="morphe_on_the_go_queue">队列</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">将Ask项目添加到弹出菜单</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">在动态推送弹出菜单中添加视频摘要项目</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">打开队列</string>
   <string name="morphe_queue_manager_save_queue">将队列保存到播放列表</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">滚动时加载队列页面</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">在滚动到队列末尾附近时加载更多播放列表视频</string>
   <string name="morphe_native_playlist_queue_saved">播放列表已保存</string>
   <string name="morphe_native_playlist_queue_saved_to">已保存至 %s</string>
   <string name="morphe_native_playlist_queue_clear">清除队列</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">允许环境模式在省电模式下保持活动状态</string>
   <string name="morphe_disable_ambient_mode_title">禁用氛围模式</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">在全屏时禁用氛围模式</string>
+  <string name="morphe_enhanced_ambient_mode_title">增强型氛围模式</string>
+  <string name="morphe_enhanced_ambient_mode_summary">用视频颜色照亮整个观看页面和黑边，以替代氛围模式</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">保持文本可读</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">调暗亮色视频的光照，使页面上的文本保持可读</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">隐藏信息卡片</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">Flyout-от на плеерот „во движење“ ги отвора прилагодените контроли на Morphe плеерот</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Во движење</string>
+  <string name="morphe_on_the_go_audio_mode">Префрли во аудио режим</string>
+  <string name="morphe_on_the_go_video_mode">Префрли во видео режим</string>
+  <string name="morphe_on_the_go_download">Преземи</string>
+  <string name="morphe_on_the_go_queue">Ред</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Додај ставка „Прашај“ во менито</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Додава ставка за резиме на видео во менито на фидот</string>
@@ -749,6 +753,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Отвори го редот</string>
   <string name="morphe_queue_manager_save_queue">Зачувај го редот во плејлиста</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Вчитувај страници од редот при скролање</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Вчитува повеќе видеа од плејлистата кога скролате близу крајот на редот</string>
   <string name="morphe_native_playlist_queue_saved">Плејлистата е зачувана</string>
   <string name="morphe_native_playlist_queue_saved_to">Зачувано во %s</string>
   <string name="morphe_native_playlist_queue_clear">Исчисти ред</string>
@@ -1099,6 +1105,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Овозможува режимот Ambient да остане активен во режимот на заштеда на батерија</string>
   <string name="morphe_disable_ambient_mode_title">Исклучете Ambient режим</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Оневозможете режим на околина во цел екран</string>
+  <string name="morphe_enhanced_ambient_mode_title">Подобрен Ambient режим</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Го осветлува целиот дел за гледање и црните ленти со видеото, наместо Ambient режимот</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Зачувај ја читливоста на текстот</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Го намалува осветлувањето кај светлите видеа за текстот на страницата да остане читлив</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Скриј информативни картички</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

@@ -500,6 +500,10 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_on_the_go_summary">Vyskakovacie okno prehrávača \"v pohybe\" otvorí vlastné ovládacie prvky prehrávača Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">V pohybe</string>
+  <string name="morphe_on_the_go_audio_mode">Prepnúť do audio režimu</string>
+  <string name="morphe_on_the_go_video_mode">Prepnúť do video režimu</string>
+  <string name="morphe_on_the_go_download">Stiahnuť</string>
+  <string name="morphe_on_the_go_queue">Fronta</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Pridať položku Opýtať sa do rozbaľovacieho menu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Pridá položku na zhrnutie videa do rozbaľovacieho menu predplatného</string>
@@ -751,6 +755,8 @@ Poznámka: Možno nebude fungovať na živých prenosoch"</string>
   <string name="morphe_queue_manager_open_queue">Otvoriť frontu</string>
   <string name="morphe_queue_manager_save_queue">Uložiť frontu do zoznamu skladieb</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Načítavaj stránky fronty pri skrolovaní</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Načítava viac videí z zoznamu ጠ 재생 pri skrolovaní blízko konca fronty</string>
   <string name="morphe_native_playlist_queue_saved">Playlist uložený</string>
   <string name="morphe_native_playlist_queue_saved_to">Uložené do %s</string>
   <string name="morphe_native_playlist_queue_clear">Vyčistiť radu</string>
@@ -1101,6 +1107,10 @@ Ak chcete zobraziť menu 'Audio Track', zmeňte 'Spoofovanie video streamov' na 
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Režimu okolitého prostredia umožňuje zostať aktívny v režime úspory batérie</string>
   <string name="morphe_disable_ambient_mode_title">Zakázať režim okolitého prostredia</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Zakázať režim Ambient na celú obrazovku</string>
+  <string name="morphe_enhanced_ambient_mode_title">Vylepšený ambientný režim</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Osvetli celý stránku sledovania a čierne pruhy farbami videa namiesto ambientného režimu</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Udržať text čitateľný</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Pri jasných videách stmavuje svetlo, aby text na stránke zostal čitateľný</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Skryť informačné karty</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

@@ -495,11 +495,15 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <string name="morphe_post_translate_same_language">Postingan sudah dalam bahasa terjemahan</string>
   <!-- interaction.onthego.onTheGoPatch -->
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_title">Aktifkan Morphe saat bepergian</string>
+  <string name="morphe_on_the_go_title">Aktifkan mode perjalanan Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_summary">Flyout pemutar \'Sambil jalan\' membuka kontrol pemutar kustom Morphe</string>
+  <string name="morphe_on_the_go_summary">Flyout pemutar \'mode perjalanan\' membuka kontrol pemutar kustom Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_panel_title">Sambil jalan</string>
+  <string name="morphe_on_the_go_panel_title">Mode perjalanan</string>
+  <string name="morphe_on_the_go_audio_mode">Beralih ke mode audio</string>
+  <string name="morphe_on_the_go_video_mode">Beralih ke mode video</string>
+  <string name="morphe_on_the_go_download">Download</string>
+  <string name="morphe_on_the_go_queue">Antrean</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Tambahkan item Tanya ke menu flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Menambahkan item ringkasan video ke menu flyout feed</string>
@@ -751,6 +755,8 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_queue_manager_open_queue">Buka antrean</string>
   <string name="morphe_queue_manager_save_queue">Simpan antrean ke daftar putar</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Muat halaman antrean saat menggulir</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Memuat lebih banyak video daftar putar saat menggulir mendekati akhir antrean</string>
   <string name="morphe_native_playlist_queue_saved">Daftar Putar disimpan</string>
   <string name="morphe_native_playlist_queue_saved_to">Disimpan ke %s</string>
   <string name="morphe_native_playlist_queue_clear">Hapus antrean</string>
@@ -1060,7 +1066,7 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_loop_video_title">Sembunyikan menu \'Putar ulang video\'</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_on_the_go_title">Sembunyikan menu \'Mode perjalanan\'</string>
+  <string name="morphe_hide_player_flyout_on_the_go_title">Sembunyikan menu \'Mode mendengarkan\'</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Sembunyikan menu Kualitas</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Sembunyikan menu footer Kualitas</string>
@@ -1101,6 +1107,10 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Mengizinkan Mode pencahayaan sinematik tetap aktif saat mode hemat baterai diaktifkan</string>
   <string name="morphe_disable_ambient_mode_title">Nonaktifkan Mode pencahayaan sinematik</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Nonaktifkan Mode pencahayaan sinematik dalam layar penuh</string>
+  <string name="morphe_enhanced_ambient_mode_title">Mode pencahayaan sinematik yang ditingkatkan</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Menerangi seluruh halaman tontonan dan bilah hitam dengan video, sebagai pengganti Mode pencahayaan sinematik</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Jaga agar teks tetap terbaca</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Meredupkan cahaya pada video terang agar teks di halaman tetap terbaca</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Sembunyikan kartu info</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

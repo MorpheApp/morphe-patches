@@ -500,6 +500,10 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <string name="morphe_on_the_go_summary">Trình phát flyout \'Khi đang di chuyển\' mở các điều khiển trình phát tùy chỉnh của Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Khi đang di chuyển</string>
+  <string name="morphe_on_the_go_audio_mode">Chuyển sang chế độ âm thanh</string>
+  <string name="morphe_on_the_go_video_mode">Chuyển sang chế độ video</string>
+  <string name="morphe_on_the_go_download">Tải về</string>
+  <string name="morphe_on_the_go_queue">Hàng chờ</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Thêm mục Hỏi vào menu bay ra</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Thêm mục tóm tắt video vào menu bay ra của nguồn cấp dữ liệu</string>
@@ -751,6 +755,8 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_queue_manager_open_queue">Mở hàng chờ</string>
   <string name="morphe_queue_manager_save_queue">Lưu hàng chờ vào danh sách phát</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Tải các trang trong hàng đợi khi cuộn</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Tải thêm các video trong danh sách phát khi cuộn gần đến cuối hàng đợi</string>
   <string name="morphe_native_playlist_queue_saved">Danh sách phát đã lưu</string>
   <string name="morphe_native_playlist_queue_saved_to">Đã lưu vào %s</string>
   <string name="morphe_native_playlist_queue_clear">Xóa hàng đợi</string>
@@ -1101,6 +1107,10 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Cho phép Chế độ môi trường xung quanh hoạt động trong chế độ tiết kiệm pin</string>
   <string name="morphe_disable_ambient_mode_title">Tắt chế độ môi trường xung quanh</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Tắt Chế độ môi trường khi toàn màn hình</string>
+  <string name="morphe_enhanced_ambient_mode_title">Chế độ môi trường xung quanh nâng cao</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Chiếu sáng toàn bộ trang xem và các thanh đen theo video, thay thế cho Chế độ môi trường xung quanh</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Giữ cho văn bản dễ đọc</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Giảm độ sáng của các video sáng để văn bản trên trang vẫn dễ đọc</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ẩn thẻ thông tin</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

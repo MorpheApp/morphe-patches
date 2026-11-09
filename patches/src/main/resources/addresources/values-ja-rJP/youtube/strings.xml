@@ -501,6 +501,10 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_on_the_go_summary">プレーヤーのフライアウトにある「外出先で」を選択すると、Morphe のカスタムプレーヤーコントロールが開きます</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">外出先で</string>
+  <string name="morphe_on_the_go_audio_mode">オーディオモードに切り替える</string>
+  <string name="morphe_on_the_go_video_mode">ビデオモードに切り替える</string>
+  <string name="morphe_on_the_go_download">ダウンロード</string>
+  <string name="morphe_on_the_go_queue">キュー</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">「動画を要約して」をフライアウト メニューに追加</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">「この動画について質問する」欄を、欄内の「動画を要約して」がタップされた状態で開く項目を、フィードのフライアウト メニューに追加します</string>
@@ -752,6 +756,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_queue_manager_open_queue">キューを開く</string>
   <string name="morphe_queue_manager_save_queue">キューをプレイリストとして保存</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">スクロール時にキューのページを読み込む</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">キューの末尾付近までスクロールすると、プレイリストの動画をさらに読み込みます</string>
   <string name="morphe_native_playlist_queue_saved">プレイリストが保存されました</string>
   <string name="morphe_native_playlist_queue_saved_to">%s に保存済み</string>
   <string name="morphe_native_playlist_queue_clear">キューをクリア</string>
@@ -1102,6 +1108,10 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_bypass_ambient_mode_restrictions_summary">バッテリー セーバー (省電力モード) 中でもアンビエント モードを有効にします</string>
   <string name="morphe_disable_ambient_mode_title">アンビエント モードを無効化</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">全画面表示中のアンビエント モードを無効化</string>
+  <string name="morphe_enhanced_ambient_mode_title">強化版アンビエント モード</string>
+  <string name="morphe_enhanced_ambient_mode_summary">アンビエント モードの代わりに、動画に合わせて再生ページ全体と黒いバーを照らします</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">テキストの可読性を維持</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">明るい動画の光を抑え、ページ上のテキストが読みやすい状態を維持します</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">プレーヤー画面の情報カードを非表示</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

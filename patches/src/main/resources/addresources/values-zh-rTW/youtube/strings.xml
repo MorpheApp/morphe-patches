@@ -325,8 +325,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_about_summary">"「首頁 / 訂閱 / 搜尋 / 留言」將會篩選內容，以隱藏符合關鍵字詞組的內容
 
 限制：
-• 部分 Shorts 無法依頻道名稱隱藏
-• 部分 UI 元件可能無法隱藏"</string>
+• 部份 Shorts 無法依頻道名稱隱藏
+• 部份 UI 組件可能無法隱藏"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">比對整個字詞</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">將關鍵字或詞組用雙引號括起來，可以防止影片標題和頻道名稱的部份相符&lt;br&gt;&lt;br&gt;例如：&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; 會隱藏影片：&lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;但不會隱藏：&lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">播放器彈出式「隨時隨地」會開啟 Morphe 自定義播放控制項</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">隨時隨地</string>
+  <string name="morphe_on_the_go_audio_mode">切換至音訊模式</string>
+  <string name="morphe_on_the_go_video_mode">切換至視訊模式</string>
+  <string name="morphe_on_the_go_download">下載</string>
+  <string name="morphe_on_the_go_queue">佇列</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">在彈出式選單中加入「Ask」項目</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">在資訊流彈出式選單中加入影片摘要項目</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">開啟佇列</string>
   <string name="morphe_queue_manager_save_queue">將佇列儲存至播放列表</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">捲動時載入隊列頁面</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">在捲動至隊列末端附近時，載入更多播放清單影片</string>
   <string name="morphe_native_playlist_queue_saved">已儲存播放清單</string>
   <string name="morphe_native_playlist_queue_saved_to">已儲存在 %s</string>
   <string name="morphe_native_playlist_queue_clear">清除佇列</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">允許微光模式在省電模式中保持作用</string>
   <string name="morphe_disable_ambient_mode_title">停用微光效果</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">在全螢幕狀態下停用微光效果</string>
+  <string name="morphe_enhanced_ambient_mode_title">增強型微光效果</string>
+  <string name="morphe_enhanced_ambient_mode_summary">使用影片色彩照亮整個觀看頁面及黑邊，以取代微光效果</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">保持文字可讀性</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">調低明亮影片的亮度，使頁面上的文字保持可讀</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">隱藏資訊卡</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

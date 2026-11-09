@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">تفتح قائمة \'أثناء التنقل\' في المشغل عناصر التحكم المخصصة لمشغل Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">أثناء التنقل</string>
+  <string name="morphe_on_the_go_audio_mode">التبديل إلى الوضع الصوتي</string>
+  <string name="morphe_on_the_go_video_mode">التبديل إلى وضع الفيديو</string>
+  <string name="morphe_on_the_go_download">تنزيل</string>
+  <string name="morphe_on_the_go_queue">قائمة المحتوى التالي</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">إضافة عنصر اسأل إلى القائمة المنبثقة</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">إضافة عنصر تلخيص الفيديو إلى قائمة الخلاصة المنبثقة</string>
@@ -755,6 +759,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_queue_manager_open_queue">فتح قائمة المحتوى التالي</string>
   <string name="morphe_queue_manager_save_queue">حفظ قائمة المحتوى التالي إلى قائمة تشغيل</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">تحميل صفحات قائمة المحتوى التالي عند التمرير</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">يقوم بتحميل المزيد من الفيديوهات في القائمة عند الاقتراب من نهاية المحتوى التالي</string>
   <string name="morphe_native_playlist_queue_saved">تم حفظ قائمة التشغيل</string>
   <string name="morphe_native_playlist_queue_saved_to">تم الحفظ إلى %s</string>
   <string name="morphe_native_playlist_queue_clear">مسح قائمة المحتوى التالي</string>
@@ -1105,6 +1111,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_bypass_ambient_mode_restrictions_summary">يسمح لوضع الإضاءة السينمائية بالبقاء نشطًا في وضع توفير الطاقة</string>
   <string name="morphe_disable_ambient_mode_title">تعطيل وضع الإضاءة السينمائية</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">تعطيل وضع الإضاءة السينمائية في ملء الشاشة</string>
+  <string name="morphe_enhanced_ambient_mode_title">وضع الإضاءة السينمائية المُحسّن</string>
+  <string name="morphe_enhanced_ambient_mode_summary">يضيء صفحة المشاهدة بالكامل والأشرطة السوداء بما يتناسب مع الفيديو، بدلًا من وضع الإضاءة السينمائية</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">الحفاظ على وضوح النص</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">يخفف الإضاءة في الفيديوهات الساطعة بحيث يظل النص الموجود على الصفحة واضحًا للقراءة</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">إخفاء بطاقات المعلومات</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

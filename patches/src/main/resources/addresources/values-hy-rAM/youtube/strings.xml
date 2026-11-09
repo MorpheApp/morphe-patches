@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">Նվագարկիչի «ընթացքում» վահանակը բացում է Morphe-ի նվագարկիչի հատուկ կառավարման գործիքները</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Ընթացքում</string>
+  <string name="morphe_on_the_go_audio_mode">Անցնել աուդիո ռեժիմի</string>
+  <string name="morphe_on_the_go_video_mode">Անցնել վիդեո ռեժիմի</string>
+  <string name="morphe_on_the_go_download">Ներբեռնել</string>
+  <string name="morphe_on_the_go_queue">Հերթ</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ավելացնել «Հարցրու» տարրը լողացող մենյուում</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Ավելացնում է տեսանյութի ամփոփման տարրը ленտայի լողացող մենյուում</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Բացել հերթը</string>
   <string name="morphe_queue_manager_save_queue">Պահպանել հերթը նվագացուցակում</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Բեռնել հերթի էջերը թերթելիս</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Բեռնում է ավելի շատ նվագացուցակի տեսանյութեր, երբ թերթում եք հերթի վերջի մոտ</string>
   <string name="morphe_native_playlist_queue_saved">Պլեյլիստը պահպանված է</string>
   <string name="morphe_native_playlist_queue_saved_to">Պահպանվեց %s-ում</string>
   <string name="morphe_native_playlist_queue_clear">Մաքրել հերթը</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Թույլ է տալիս Ambient ռեժիմին մնալ ակտիվ մարտկոցի խնայողության ռեժիմում</string>
   <string name="morphe_disable_ambient_mode_title">Անջատել Ambient ռեժիմը</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Անջատել Ambient ռեժիմը լրիվ էկրանի ժամանակ</string>
+  <string name="morphe_enhanced_ambient_mode_title">Լուսավորության բարելավված ռեժիմ</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Լուսավորում է դիտման ողջ էջը և սև զողերը տեսանյութի գույներով՝ փոխարինելով Ambient ռեժիմին</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Պահպանել տեքստի ընթեռնելիությունը</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Մարում է լույսը պայծառ տեսանյութերի դեպքում, որպեսզի էջի տեքստը մնա ընթեռնելի</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Թաքցնել տեղեկատվական քարտերը</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

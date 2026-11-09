@@ -500,6 +500,10 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <string name="morphe_on_the_go_summary">Плеердин «жолдо» терезеси Morphe\'нин кастомдуу плеер башкарууларын ачат</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Жолдо</string>
+  <string name="morphe_on_the_go_audio_mode">Аудио режимине өтүү</string>
+  <string name="morphe_on_the_go_video_mode">Видео режимине өтүү</string>
+  <string name="morphe_on_the_go_download">Жүктөө</string>
+  <string name="morphe_on_the_go_queue">Кезек</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Суроо пунктун тез менюга кошуу</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Лентанын тез менюсуна видеону кыскача баяндоо пунктун кошот</string>
@@ -751,6 +755,8 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_queue_manager_open_queue">Кезекти ачуу</string>
   <string name="morphe_queue_manager_save_queue">Кезекти плейлистке сактоо</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Скролл учурунда кезектин беттерин жүктөө</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Кезектин аягына жакын скролл кылганда плейлисттин видеолорун көбүрөөк жүктөйт</string>
   <string name="morphe_native_playlist_queue_saved">Плейлист сакталды</string>
   <string name="morphe_native_playlist_queue_saved_to">%s жерге сакталды</string>
   <string name="morphe_native_playlist_queue_clear">Кезекти тазалоо</string>
@@ -1101,6 +1107,10 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Ambient режимге батареяны үнөмдөө режиминде активдүү калууга мүмкүнчүлүк берет</string>
   <string name="morphe_disable_ambient_mode_title">Ambient режимин өчүрүү</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Толук экранда Ambient режимин өчүрүү</string>
+  <string name="morphe_enhanced_ambient_mode_title">Жақшыртылган Ambient режими</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Ambient режиминин ордуна бүткүл көрүү бетин жана кара тилкелерди видео менен жарыктандырат</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Текстти окула турган кылып сактоо</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Жарык видеолордогу жарыкты азайтып, беттеги тексттин окула турган болушун камсыздайт</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Маалымат карталарын жашыруу</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

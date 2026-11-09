@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">პლეერის „მოგზაურობისას“ მენიუ ხსნის Morphe-ის პლეერის მორგებულ მართვებს</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">მოგზაურობისას</string>
+  <string name="morphe_on_the_go_audio_mode">გადართეთ აუდიო რეჟიმზე</string>
+  <string name="morphe_on_the_go_video_mode">გადართეთ ვიდეო რეჟიმზე</string>
+  <string name="morphe_on_the_go_download">ჩამოტვირთვა</string>
+  <string name="morphe_on_the_go_queue">რიგი</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ask-ის ელემენტის დამატება ჩამოსაშლელ მენიუში</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">ამატებს ვიდეოს შეჯამების ელემენტს ფიდის გასაშლელ მენიუში</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">გახსენით რიგი</string>
   <string name="morphe_queue_manager_save_queue">შეინახეთ რიგი ფლეილისტში</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">რიგის გვერდების ჩატვირთვა სქროლვისას</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">ჩატვირთავს პლეილისტის მეტ ვიდეოს, როდესაც სქროლვას რიგის ბოლოსთან მიახლოებთ</string>
   <string name="morphe_native_playlist_queue_saved">ფლეილისტი შენახულია</string>
   <string name="morphe_native_playlist_queue_saved_to">შენახულია %s-ში</string>
   <string name="morphe_native_playlist_queue_clear">სრილით გაწმენდა</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">საშვები Ambient რეჟიმს საშუალებას აძლევს დარჩეს აქტიური ელემენტის დაზოგვის რეჟიმში</string>
   <string name="morphe_disable_ambient_mode_title">Ambient რეჟიმის გამორთვა</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Ambient რეჟიმის გამორთვა სრული ეკრანის დროს</string>
+  <string name="morphe_enhanced_ambient_mode_title">გაუმჯობესებული Ambient რეჟიმი</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Ambient რეჟიმის ნაცვლად, ვიდეოს ფერებში განანათებს მთელ გვერდსა და შავ ზოლებს</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">ტექსტის წაკითხვადი დატოვება</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">აკორრიფებს განათებას კაშკაშა ვიდეოების დროს, რათა გვერდზე ტექსტი წაკითხვადი დარჩეს</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">ინფორმაციული ბარათების დამალვა</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

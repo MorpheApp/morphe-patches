@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">플레이어 \'이동 중 모드\' 메뉴로 Morphe 사용자 정의 플레이어 컨트롤을 실행합니다</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">이동 중 모드</string>
+  <string name="morphe_on_the_go_audio_mode">오디오 모드로 전환</string>
+  <string name="morphe_on_the_go_video_mode">비디오 모드로 전환</string>
+  <string name="morphe_on_the_go_download">오프라인 저장</string>
+  <string name="morphe_on_the_go_queue">현재 재생목록</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">메뉴 구성요소에 \'질문하기\' 항목 추가하기</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">피드 메뉴 구성요소에 동영상을 요약할 수 있는 \'질문하기\' 항목을 추가합니다</string>
@@ -753,6 +757,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_queue_manager_open_queue">현재 재생목록 열기</string>
   <string name="morphe_queue_manager_save_queue">현재 재생목록을 재생목록에 저장</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">스크롤 시 대기열 페이지 로드</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">대기열 끝부분 근처로 스크롤할 때 재생목록 동영상을 더 많이 로드합니다</string>
   <string name="morphe_native_playlist_queue_saved">현재 재생목록이 저장되었습니다</string>
   <string name="morphe_native_playlist_queue_saved_to">%s에 저장되었습니다</string>
   <string name="morphe_native_playlist_queue_clear">현재 재생목록 지우기</string>
@@ -1103,6 +1109,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_bypass_ambient_mode_restrictions_summary">배터리 절약 모드에서 앰비언트 모드가 계속 활성화되도록 허용합니다</string>
   <string name="morphe_disable_ambient_mode_title">앰비언트 모드 비활성화하기</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">전체 화면 앰비언트 모드 비활성화하기</string>
+  <string name="morphe_enhanced_ambient_mode_title">향상된 앰비언트 모드</string>
+  <string name="morphe_enhanced_ambient_mode_summary">앰비언트 모드 대신 동영상에 맞춰 시청 페이지 전체와 검은색 바에 조명을 비춥니다</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">텍스트 가독성 유지</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">밝은 동영상의 조명을 낮춰 페이지의 텍스트 가독성을 유지합니다</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">정보 카드 숨기기</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

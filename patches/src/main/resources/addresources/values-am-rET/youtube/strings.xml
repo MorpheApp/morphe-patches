@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">የቪዲዮ ማጫወቻው \'በጉዞ ላይ\' የMorphe የ tùycustom ማጫወቻ ቁጥጥሮችን ይከፍታል</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">በጉዞ ላይ</string>
+  <string name="morphe_on_the_go_audio_mode">ወደ ኦዲዮ ሞድ ይቀይሩ</string>
+  <string name="morphe_on_the_go_video_mode">ወደ ቪዲዮ ሞድ ይቀይሩ</string>
+  <string name="morphe_on_the_go_download">አውርድ</string>
+  <string name="morphe_on_the_go_queue">ተራ</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">\'ጠይቅ\' የሚለውን ንጥል ወደ ዝርዝር ሜኑ አክል</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">የቪዲዮ ማጠቃለያ ንጥልን ወደ ፊድ ዝርዝር ሜኑ ይጨምራል</string>
@@ -751,6 +755,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_queue_manager_open_queue">ተርታውን ይክፈቱ</string>
   <string name="morphe_queue_manager_save_queue">ተረኛውን ወደ ስብስብ ማስቀመጥ</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">ሲተሽከረከሩ የ очередь ገጾችን ያጫን</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">የ очередь መጨረሻ አካባቢ ሲሽከረከሩ ተጨማሪ የplaylist ቪዲዮዎችን ያጫናል</string>
   <string name="morphe_native_playlist_queue_saved">የመጫኛ ዝርዝር ተቀምጧል</string>
   <string name="morphe_native_playlist_queue_saved_to">በ%s ተቀምጧል</string>
   <string name="morphe_native_playlist_queue_clear">ተራውን አጽዳ</string>
@@ -1101,6 +1107,10 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Ambient mode በባትሪ ቆጣቢ ሁነታ ውስጥ ንቁ ሆኖ እንዲቆይ ይፈቅዳል</string>
   <string name="morphe_disable_ambient_mode_title">Ambient modeን አጥፋ</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">በሙሉ ስክሪን ላይ Ambient ሞድን አቋርጥ</string>
+  <string name="morphe_enhanced_ambient_mode_title">የተሻሻለ Ambient ሞድ</string>
+  <string name="morphe_enhanced_ambient_mode_summary">በ Ambient ሞድ ፋንታ ሙሉውን የዕይታ ገጽ እና ጥቁር አጥሮችን በቪዲዮው ቀለም ያበራል</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">ጽሁፉን ለማንበብ እንዲመች አድርግ</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">በብሩህ ቪዲዮዎች ላይ ብርሃኑን ያደበዝዛል እና በገጹ ላይ ያለው ጽሁፍ ለማንበብ እንዲመች ያደርጋል</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">የመረጃ ካርዶችን ደብቅ</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

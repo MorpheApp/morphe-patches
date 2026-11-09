@@ -500,6 +500,10 @@ Ripoti ni za hadhara na hupitiwa kabla ya chaneli kuongezwa kwenye orodha. Kuond
   <string name="morphe_on_the_go_summary">Flyout ya kicheza video ya \'ukiwa njiani\' hufungua vidhibiti vya kicheza video vya Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Ukiwa njiani</string>
+  <string name="morphe_on_the_go_audio_mode">Badili kwenda mfumo wa sauti</string>
+  <string name="morphe_on_the_go_video_mode">Badili kwenda mfumo wa video</string>
+  <string name="morphe_on_the_go_download">Pakua</string>
+  <string name="morphe_on_the_go_queue">Foleni</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Ongeza kipengele cha Uliza kwenye menyu ya flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Huongeza kipengele cha muhtasari wa video kwenye menyu ya flyout ya feed</string>
@@ -751,6 +755,8 @@ Info: Inaweza isifanye kazi kwenye mirutubisho ya moja kwa moja"</string>
   <string name="morphe_queue_manager_open_queue">Fungua foleni</string>
   <string name="morphe_queue_manager_save_queue">Hifadhi foleni kwenye orodha ya nyimbo</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Pakia kurasa za foleni wakati wa kusogeza</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Hupakia video zaidi za orodha ya uchaguzi unaposogeza kuelekea mwishoni mwa foleni</string>
   <string name="morphe_native_playlist_queue_saved">Orodha ya nyimbo imehifadhiwa</string>
   <string name="morphe_native_playlist_queue_saved_to">Imehifadhiwa kwenye %s</string>
   <string name="morphe_native_playlist_queue_clear">Safisha foleni</string>
@@ -1101,6 +1107,10 @@ Ili kuonyesha menyu ya 'Audio Track', badilisha 'Spoof video streams' kuwa mteja
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Inaruhusu hali ya Ambient kuendelea kuwa hai katika hali ya kuokoa betri</string>
   <string name="morphe_disable_ambient_mode_title">Zima Hali ya Ambient</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Zima hali ya Ambient kwenye skrini nzima</string>
+  <string name="morphe_enhanced_ambient_mode_title">Hali ya Ambient iliyoboreshwa</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Huangaza ukurasa mzima wa kutazama na mipasuo myeusi kwa rangi ya video, badala ya Hali ya Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Weka maandishi yaweze kusomeka</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Hupunguza mwanga kwenye video zinazong\'aa ili maandishi kwenye ukurasa yaendelee kusomeka</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ficha kadi za maelezo</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

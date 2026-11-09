@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">Изскачащият прозорец на плейъра „в движение“ отваря персонализираните контроли на плейъра на Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">В движение</string>
+  <string name="morphe_on_the_go_audio_mode">Превключи в аудио режим</string>
+  <string name="morphe_on_the_go_video_mode">Превключи в видео режим</string>
+  <string name="morphe_on_the_go_download">Изтегляне</string>
+  <string name="morphe_on_the_go_queue">Опашка</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Добавяне на елемент Ask в изплъзгащото се меню</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Добавяне на елемент за обобщение на видео към изплъзгащото се меню на емисията</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Отваряне на опашката</string>
   <string name="morphe_queue_manager_save_queue">Запазване на опашката в плейлист</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Зареждане на страници от опашката при скролване</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Зарежда още видеоклипове от плейлиста при скролване близо до края на опашката</string>
   <string name="morphe_native_playlist_queue_saved">Плейлистът е запазен</string>
   <string name="morphe_native_playlist_queue_saved_to">Запазено в %s</string>
   <string name="morphe_native_playlist_queue_clear">Изчистване на опашката</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Позволява на режим на околната среда да остане активен в режим на пестене на батерия</string>
   <string name="morphe_disable_ambient_mode_title">Изключете режима Ambient</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Дублирането на видеа се показва</string>
+  <string name="morphe_enhanced_ambient_mode_title">Подобен Ambient режим</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Осветява цялата страница за гледане и черните ленти с цветовете на видеото, вместо стандартния Ambient режим</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Поддържане на четимостта на текста</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Затъмнява светлината при ярки видеоклипове, за да остане текстът на страницата четим</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Дублирането на видеа се показва</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

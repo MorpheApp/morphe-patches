@@ -500,6 +500,10 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_on_the_go_summary">Pleerning \'yo\'l-yo\'lakay\' menyusi Morphe\'ning maxsus pleer boshqaruvlarini ochadi</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Yo\'l-yo\'lakay</string>
+  <string name="morphe_on_the_go_audio_mode">Audio rejimiga o\'tish</string>
+  <string name="morphe_on_the_go_video_mode">Video rejimiga o\'tish</string>
+  <string name="morphe_on_the_go_download">Yuklab olish</string>
+  <string name="morphe_on_the_go_queue">Navbat</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Yoyilma menyuga \"So\'rash\" elementini qo\'shish</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Lenta yoyilma menyusiga videoni umumlashtirish elementini qo\'shadi</string>
@@ -749,6 +753,8 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <string name="morphe_queue_manager_open_queue">Navbatni pleylistga saqlash</string>
   <string name="morphe_queue_manager_save_queue">Snackbar ni yashirish</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Yuzaga chiqqanda navbat sahifalarini yuklash</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Navbat oxiriga yaqinlashganda pleylist videolarini ko\'proq yuklaydi</string>
   <string name="morphe_native_playlist_queue_saved">Pleylist saqlandi</string>
   <string name="morphe_native_playlist_queue_saved_to">%s ga saqlandi</string>
   <string name="morphe_native_playlist_queue_clear">Navbatni tozalash</string>
@@ -1099,6 +1105,10 @@ Sozlamalarga kirish uchun, General $\rightarrow$ Toolbar $\rightarrow$ Show Sett
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Video progress barining ikkilamchi rangini sozlang</string>
   <string name="morphe_disable_ambient_mode_title">Ambient rejimini o\'chirish</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Ambient rejimini to\'liq ekran rejimida o\'chirish</string>
+  <string name="morphe_enhanced_ambient_mode_title">Kengaytirilgan Ambient rejimi</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Ambient rejimi o\'rniga butun tomosha sahifasini va qora panellarni video bilan yoritadi</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Matn o\'qilishini saqlab qolish</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Yorqin videolarda yorug\'likni pasaytiradi, shunda sahifadagi matn o\'qilishi oson bo\'ladi</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ma\'lumot kartalarini yashirish</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

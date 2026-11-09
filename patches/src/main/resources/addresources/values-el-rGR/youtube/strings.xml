@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">Το αναδυόμενο παράθυρο του παίκτη \"εν κινήσει\" ανοίγει τους προσαρμοσμένους χειριστήρια αναπαραγωγής του Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Εν κινήσει</string>
+  <string name="morphe_on_the_go_audio_mode">Μεταключение σε λειτουργία ήχου</string>
+  <string name="morphe_on_the_go_video_mode">Μεταключение σε λειτουργία βίντεο</string>
+  <string name="morphe_on_the_go_download">Λήψη</string>
+  <string name="morphe_on_the_go_queue">Ουρά αναμονής</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Προσθήκη στοιχείου Ask στο μενού flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Προσθέτει στοιχείο σύνοψης βίντεο στο μενού flyout της ροής</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Άνοιγμα ουράς</string>
   <string name="morphe_queue_manager_save_queue">Αποθήκευση ουράς σε λίστα αναπαραγωγής</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Φόρτωση σελίδων ουράς κατά την κύλιση</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Φορτώνει περισσότερα βίντεο λίστας αναπαραγωγής όταν κάνετε κύλιση κοντά στο τέλος της ουράς</string>
   <string name="morphe_native_playlist_queue_saved">Η λίστα αναπαραγωγής αποθηκεύτηκε</string>
   <string name="morphe_native_playlist_queue_saved_to">Αποθηκεύτηκε στο %s</string>
   <string name="morphe_native_playlist_queue_clear">Εκκαθάριση ουράς</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Επιτρέπει στη λειτουργία περιβάλλοντος να παραμένει ενεργή στη λειτουργία εξοικονόμησης μπαταρίας</string>
   <string name="morphe_disable_ambient_mode_title">Απενεργοποίηση λειτουργίας περιβάλλοντος</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Απενεργοποίηση λειτουργίας περιβάλλοντος σε πλήρη οθόνη</string>
+  <string name="morphe_enhanced_ambient_mode_title">Βελτιωμένη λειτουργία περιβάλλοντος</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Φωτίζει ολόκληρη τη σελίδα προβολής και τις μαύρες μπάρες με το βίντεο, αντί για τη Λειτουργία περιβάλλοντος</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Διατήρηση αναγνώσιμου κειμένου</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Μειώνει τη φωτεινότητα σε φωτεινά βίντεο ώστε το κείμενο στη σελίδα να παραμένει αναγνώσιμο</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Κάρτες πληροφοριών</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

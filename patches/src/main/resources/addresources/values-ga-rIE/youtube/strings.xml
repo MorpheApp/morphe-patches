@@ -500,6 +500,10 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_on_the_go_summary">Osclaíonn flyout antseallóra \"ar an mbóthar\" rialaithe custom seallóra Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Ar an mbóthar</string>
+  <string name="morphe_on_the_go_audio_mode">Athraigh go mód fuaime</string>
+  <string name="morphe_on_the_go_video_mode">Athraigh go mód físe</string>
+  <string name="morphe_on_the_go_download">Íoslódáil</string>
+  <string name="morphe_on_the_go_queue">Scuaine</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Cuir an mhír Fiafraigh leis an roghchlár aníos</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Cuireann sé mír achoimrithe físe leis an roghchlár aníos sa bhfotha</string>
@@ -751,6 +755,8 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo"</string>
   <string name="morphe_queue_manager_open_queue">Oscail an scuaine</string>
   <string name="morphe_queue_manager_save_queue">Sábháil an scuaine chuig an seinmliosta</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Lodaigh leathanaigh na queue nuair a滚动tear</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Lodaíonn níos mó físeáin liosta pleanála nuair a滚动tear in aice le deireadh na queue</string>
   <string name="morphe_native_playlist_queue_saved">Seinnliosta sábháilte</string>
   <string name="morphe_native_playlist_queue_saved_to">Sábháilte chuig %s</string>
   <string name="morphe_native_playlist_queue_clear">Glan an scuaine</string>
@@ -1101,6 +1107,10 @@ Chun an roghchlár ‘Audio Track’ a thaispeáint, athraigh ‘Spoof video str
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Ligeann sé don mhodh Comhthimpeallach fanacht gníomhach i mód sábhála ceallraí</string>
   <string name="morphe_disable_ambient_mode_title">Díchumasaigh mód comhthimpeallach</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Díchumasaigh mód comhthimpeallach i lánscáileán</string>
+  <string name="morphe_enhanced_ambient_mode_title">Modh Comhthimpeallach Feabhsaithe</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Lligeann sé an leathanach féachana ar fad agus na barraí dubha a bheith soilseithe leis an bhfíseán, in ionad Modh Comhthimpeallach</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Coinnigh an téacs léighfear</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Laghraíonn sé an solas ar fhíseáin shoilleire ionas gon leanfaidh an téacs ar an leathanach a bheith léighfear</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Folaigh cártaí eolais</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

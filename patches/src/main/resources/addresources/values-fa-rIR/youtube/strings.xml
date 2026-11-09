@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">بخش flyout پخش‌کننده در حالت \"در حال حرکت\"، کنترل‌های سفارشی پخش‌کننده Morphe را باز می‌کند</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">در حال حرکت</string>
+  <string name="morphe_on_the_go_audio_mode">تغییر به حالت صوتی</string>
+  <string name="morphe_on_the_go_video_mode">تغییر به حالت ویدئویی</string>
+  <string name="morphe_on_the_go_download">دانلود</string>
+  <string name="morphe_on_the_go_queue">صف انتظار</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">افزودن آیتم Ask به منوی پرواز</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">افزودن آیتم خلاصه‌سازی ویدیو به منوی پرواز فید</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">بازکردن صف</string>
   <string name="morphe_queue_manager_save_queue">ذخیرهٔ صف در فهرست پخش</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">بارگذاری صفحات صف هنگام اسکرول</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">هنگام اسکرول به نزدیکی انتهای صف، ویدیوهای بیشتری از لیست پخش بارگذاری می‌شود</string>
   <string name="morphe_native_playlist_queue_saved">لیست پخش ذخیره شد</string>
   <string name="morphe_native_playlist_queue_saved_to">ذخیره شده در %s</string>
   <string name="morphe_native_playlist_queue_clear">پاک کردن صف</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">اجازه می‌دهد حالت محیطی در حالت صرفه‌جویی باتری فعال بماند</string>
   <string name="morphe_disable_ambient_mode_title">غیرفعال‌کردن حالت محیطی</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">غیرفعال‌کردن حالت محیطی در تمام‌صفحه</string>
+  <string name="morphe_enhanced_ambient_mode_title">حالت محیطی پیشرفته</string>
+  <string name="morphe_enhanced_ambient_mode_summary">به جای حالت محیطی، تمام صفحه تماشا و نوارهای سیاه را با رنگ ویدیو روشن می‌کند</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">خوانا نگه داشتن متن</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">شدت نور در ویدیوهای روشن را کاهش می‌دهد تا متن‌های صفحه خوانا باقی بمانند</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">پنهان‌کردن کارت‌های اطلاعاتی</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

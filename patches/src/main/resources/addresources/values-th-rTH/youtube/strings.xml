@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">เมนูแบบพับ \'แบบพกพา\' ของเครื่องเล่นจะเปิดการควบคุมเครื่องเล่นที่กำหนดเองของ Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">แบบพกพา</string>
+  <string name="morphe_on_the_go_audio_mode">เปลี่ยนเป็นโหมดเสียง</string>
+  <string name="morphe_on_the_go_video_mode">เปลี่ยนเป็นโหมดวิดีโอ</string>
+  <string name="morphe_on_the_go_download">ดาวน์โหลด</string>
+  <string name="morphe_on_the_go_queue">คิว</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">เพิ่มรายการถามไปยังเมนูแบบเลื่อนออก</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">เพิ่มรายการสรุปวิดีโอไปยังเมนูแบบเลื่อนออกของฟีด</string>
@@ -751,6 +755,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">เปิดคิว</string>
   <string name="morphe_queue_manager_save_queue">บันทึกคิวไปยังเพลย์ลิสต์</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">โหลดหน้าคิวเมื่อเลื่อน</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">โหลดวิดีโอในเพลย์ลิสต์เพิ่มเติมเมื่อเลื่อนไปใกล้ส่วนท้ายของคิว</string>
   <string name="morphe_native_playlist_queue_saved">บันทึกเพลย์ลิสต์แล้ว</string>
   <string name="morphe_native_playlist_queue_saved_to">บันทึกไปยัง %s</string>
   <string name="morphe_native_playlist_queue_clear">ล้างคิว</string>
@@ -1101,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">อนุญาตให้โหมดแอมเบียนท์ยังคงทำงานอยู่ในโหมดประหยัดพลังงาน</string>
   <string name="morphe_disable_ambient_mode_title">ปิดใช้งานโหมดแอมเบียนท์</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">ปิดใช้งานโหมดแอมเบียนท์ในโหมดเต็มหน้าจอ</string>
+  <string name="morphe_enhanced_ambient_mode_title">โหมดแอมเบียนท์แบบปรับปรุง</string>
+  <string name="morphe_enhanced_ambient_mode_summary">ทำให้หน้าการรับชมและแถบสีดำทั้งหมดสว่างขึ้นตามวิดีโอ แทนที่โหมดแอมเบียนท์</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">รักษาข้อความให้อ่านออก</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">ลดแสงสว่างในวิดีโอที่สว่างเกินไปเพื่อให้ข้อความบนหน้ายังคงอ่านออก</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">ซ่อนการ์ดข้อมูล</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

@@ -500,6 +500,10 @@ Rapporter er offentlige og blir gjennomgått før en kanal legges til en liste. 
   <string name="morphe_on_the_go_summary">Avspillerens utvidelsesmeny \'på farten\' åpner Morphes egendefinerte avspillerkontroller</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">På farten</string>
+  <string name="morphe_on_the_go_audio_mode">Bytt til lydmodus</string>
+  <string name="morphe_on_the_go_video_mode">Bytt til videomodus</string>
+  <string name="morphe_on_the_go_download">Last ned</string>
+  <string name="morphe_on_the_go_queue">Kø</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Legg til Ask-objekt i uttrekksmenyen</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Legger til et videooppsummeringsobjekt i strømmens uttrekksmeny</string>
@@ -751,6 +755,8 @@ Info: Fungerer kanskje ikke på direktesendinger"</string>
   <string name="morphe_queue_manager_open_queue">Åpne køen</string>
   <string name="morphe_queue_manager_save_queue">Lagre køen til spillelisten</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Last inn køsider ved rulling</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Laster inn flere spillelistevideoer når du ruller mot slutten av køen</string>
   <string name="morphe_native_playlist_queue_saved">Spilleliste lagret</string>
   <string name="morphe_native_playlist_queue_saved_to">Lagret til %s</string>
   <string name="morphe_native_playlist_queue_clear">Tøm køen</string>
@@ -1101,6 +1107,10 @@ For å vise 'Audio Track'-menyen, endre 'Forfalsk videostrømmer' til en hvilken
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Lar omgivelsesmodus fortsette å være aktiv i batterisparingsmodus</string>
   <string name="morphe_disable_ambient_mode_title">Deaktiver omgivelsesmodus</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Deaktiver omgivelsesmodus i fullskjerm</string>
+  <string name="morphe_enhanced_ambient_mode_title">Forbedret omgivelsesmodus</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Lyser opp hele se-siden og svarte felt med videoen, i stedet for omgivelsesmodus</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Hold tekst lesbar</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Demper lyset på lyse videoer slik at teksten på siden forblir lesbar</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Skjul infokort</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

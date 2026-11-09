@@ -500,6 +500,10 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_on_the_go_summary">Soittimen \'Liikkumalla\' -valikko avaa Morphen mukautetut soittimen ohjaimet</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Liikkumalla</string>
+  <string name="morphe_on_the_go_audio_mode">Vaihda äänitilaan</string>
+  <string name="morphe_on_the_go_video_mode">Vaihda videotilaan</string>
+  <string name="morphe_on_the_go_download">Lataa</string>
+  <string name="morphe_on_the_go_queue">Jono</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Lisää \"Kysy\"-kohde ponnahdusvalikkoon</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Lisää videon tiivistäminen-sivunne kohteen syötteen ponnahdusvalikossa</string>
@@ -751,6 +755,8 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_queue_manager_open_queue">Avaa jono</string>
   <string name="morphe_queue_manager_save_queue">Tallenna jono soittolistalle</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Lataa jonosivuja vierittäessä</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Lataa lisää soittolistan videoita, kun vierität jonon loppupuolelle</string>
   <string name="morphe_native_playlist_queue_saved">Soittolista tallennettu</string>
   <string name="morphe_native_playlist_queue_saved_to">Tallennettu kohteeseen %s</string>
   <string name="morphe_native_playlist_queue_clear">Tyhjennä jono</string>
@@ -1101,6 +1107,10 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Mahdollistaa Ambient-tilan pysymisen aktiivisena virransäästötilassa</string>
   <string name="morphe_disable_ambient_mode_title">Poista Elokuvatila käytöstä</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Poista Elokuvatila käytöstä kokoruututilassa</string>
+  <string name="morphe_enhanced_ambient_mode_title">Parannettu Elokuvatila</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Valaisee koko katselusivun ja mustat palkit videon mukaan Elokuvatilan sijaan</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Pidä teksti luettavana</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Hämmentää valoa kirkkaissa videoissa, jotta sivun teksti pysyy luettavana</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Piilota infokortit</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

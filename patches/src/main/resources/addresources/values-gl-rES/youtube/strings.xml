@@ -500,6 +500,10 @@ Os reportes son públicos e revísanse antes de que unha canle sexa engadida a u
   <string name="morphe_on_the_go_summary">O menú desplegable do reproductor \'sobre a marcha\' abre os controls do reproductor personalizados de Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Sobre a marcha</string>
+  <string name="morphe_on_the_go_audio_mode">Cambiar ao modo de audio</string>
+  <string name="morphe_on_the_go_video_mode">Cambiar ao modo de vídeo</string>
+  <string name="morphe_on_the_go_download">Descargar</string>
+  <string name="morphe_on_the_go_queue">Cola</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Engadir o elemento Preguntar ao menú desplegable</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Engade un elemento de resumir vídeo ao menú desplegable do feed</string>
@@ -751,6 +755,8 @@ Info: Pode que non funcione en transmisións en directo"</string>
   <string name="morphe_queue_manager_open_queue">Abrir cola</string>
   <string name="morphe_queue_manager_save_queue">Gardar a cola na lista de reprodución</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Cargar páxinas da cola ao desplazar</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Carga máis vídeos da lista de reprodución ao desplazar cara ao final da cola</string>
   <string name="morphe_native_playlist_queue_saved">Lista de reprodución gardada</string>
   <string name="morphe_native_playlist_queue_saved_to">Gardado en %s</string>
   <string name="morphe_native_playlist_queue_clear">Limpar cola</string>
@@ -1101,6 +1107,10 @@ Para amosar o menú 'Audio Track', cambie 'Spoof video streams' por calquera cli
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Permite que o modo Ambiente permaneza activo no modo de aforro de batería</string>
   <string name="morphe_disable_ambient_mode_title">Desactivar o modo ambiente</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Desactivar o modo ambiente en pantalla completa</string>
+  <string name="morphe_enhanced_ambient_mode_title">Modo Ambiente mellorado</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Ilumina toda a páxina de visionado e as barras negras co vídeo, en lugar do modo Ambiente</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantener o texto lexible</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Atenúa a luz en vídeos brillantes para que o texto da páxina siga sendo lexible</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Agochar tarxetas de información</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

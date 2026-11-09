@@ -500,6 +500,10 @@ Teated on avalikud ja neid ülevaadatakse enne kanali nimekirja lisamist. Eemald
   <string name="morphe_on_the_go_summary">Mängija kiirevaade \"Liigutades\" avab Morphe kohandatud mängija juhtimised</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Liigutades</string>
+  <string name="morphe_on_the_go_audio_mode">Lülita helirežiimi</string>
+  <string name="morphe_on_the_go_video_mode">Lülita videorežiimi</string>
+  <string name="morphe_on_the_go_download">Laadi alla</string>
+  <string name="morphe_on_the_go_queue">Köö</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Lisa \"Küsige\" üksus hüpikmenüüsse</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Lisab video kokkuvõtte üksuse voo hüpikmenüüsse</string>
@@ -751,6 +755,8 @@ Info: Ei pruugi töötada võttesaadete puhul"</string>
   <string name="morphe_queue_manager_open_queue">Ava järjekord</string>
   <string name="morphe_queue_manager_save_queue">Salvesta järjekord loendisse</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Laadi järjekorra lehti kerkimisel</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Laab plaalist rohkem videoid, kui kerid järjekorra lõpu lähedis</string>
   <string name="morphe_native_playlist_queue_saved">Loend on salvestatud</string>
   <string name="morphe_native_playlist_queue_saved_to">Salvestatud loendisse %s</string>
   <string name="morphe_native_playlist_queue_clear">Tühjenda järjekord</string>
@@ -1101,6 +1107,10 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvalise
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Llubab Ambient-režiimil jääda aktiivseks akusäästurežiimis</string>
   <string name="morphe_disable_ambient_mode_title">Keela Ümbritsev režiim</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Keela Ambient-režiim täisekraanil</string>
+  <string name="morphe_enhanced_ambient_mode_title">Uuendatud Ümbritsev režiim</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Valgustab kogu vaatamislehte ja musti ribasid koos videoga, asendades Ümbritseva režiimi</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Hoidke tekst loetavana</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Hääldab hele videote valgust, et lehel olev tekst püsiks loetavana</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Peida infokaardid</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

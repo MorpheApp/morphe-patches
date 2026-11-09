@@ -501,6 +501,10 @@ Txostenak publikoak dira eta kanal bat zerrendara gehitu aurretik berrikusi egit
   <string name="morphe_on_the_go_summary">Player flyout \'bidean\' aukerak Morphe-ren player kontrol pertsonalizatuak irekitzen ditu</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Bidean</string>
+  <string name="morphe_on_the_go_audio_mode">Pasatu audio modura</string>
+  <string name="morphe_on_the_go_video_mode">Pasatu bideo modura</string>
+  <string name="morphe_on_the_go_download">Deskargatu</string>
+  <string name="morphe_on_the_go_queue">Herrena</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Galdetu elementua gehitu menu zabagarria</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Bideoaren laburpen elementu bat gehitzen du feed-eko menu zabagarrian</string>
@@ -752,6 +756,8 @@ Informazioa: Agian ez funtzionatzen duen zuzeneko emanbisteetan"</string>
   <string name="morphe_queue_manager_open_queue">Ireki herrena</string>
   <string name="morphe_queue_manager_save_queue">Gorde herrena zerrendan</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Karga egin herren orrialdeak scroll egitean</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Playlisteko bideo gehiago kargatzen ditu herren amaierara hurbiltzean scroll egitean</string>
   <string name="morphe_native_playlist_queue_saved">Playlista gorde da</string>
   <string name="morphe_native_playlist_queue_saved_to">%s-n gorde da</string>
   <string name="morphe_native_playlist_queue_clear">Hutsi herrenidea</string>
@@ -1102,6 +1108,10 @@ Konfiguraziora sartzeko, aktibatu Konfigurazio botoia Orokorra → Barra nagusia
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Ambient moduak bateria-aurrekitzaile moduan aktibo mantentzea ahalbidetzen du</string>
   <string name="morphe_disable_ambient_mode_title">Desaktibu Ambient moda</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Desaktibu Ambient modua pantaila osoan</string>
+  <string name="morphe_enhanced_ambient_mode_title">Ambient modu hobetua</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Ikusi-orrialde osoa eta barra beltzak bideoarekin argitzen ditu, Ambient moduko ordez</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantendu testua irakurgarria</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Bideo argi等etan argia gutxitzen du orrialdeko testua irakurgarri izaten jarraitzeko</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ezkutatu informazio-txartelak</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

@@ -500,6 +500,10 @@ Second \"item\" text"</string>
   <string name="morphe_on_the_go_summary">Выезжающая панель плеера «На ходу» открывает пользовательские элементы управления плеером Morphe</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">На ходу</string>
+  <string name="morphe_on_the_go_audio_mode">Переключиться в аудиорежим</string>
+  <string name="morphe_on_the_go_video_mode">Переключиться в видеорежим</string>
+  <string name="morphe_on_the_go_download">Скачать</string>
+  <string name="morphe_on_the_go_queue">Очередь</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Добавить Ask в меню</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Добавляет элемент сводки видео в меню ленты</string>
@@ -753,6 +757,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Открыть очередь</string>
   <string name="morphe_queue_manager_save_queue">Сохранить очередь в плейлист</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Загружать страницы очереди при прокрутке</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Загружает больше видео из плейлиста при прокрутке почти до конца очереди</string>
   <string name="morphe_native_playlist_queue_saved">Плейлист сохранён</string>
   <string name="morphe_native_playlist_queue_saved_to">Сохранено в %s</string>
   <string name="morphe_native_playlist_queue_clear">Очистить очередь</string>
@@ -1103,6 +1109,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Разрешить режиму Ambient оставаться активным в режиме экономии заряда батареи</string>
   <string name="morphe_disable_ambient_mode_title">Отключить режим \"Фоновая подсветка\"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Отключить фоновую подсветку</string>
+  <string name="morphe_enhanced_ambient_mode_title">Улучшенный режим фоновой подсветки</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Подсвечивает всю страницу просмотра и черные полосы в цвет видео вместо обычного режима фоновой подсветки</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Сохранять читаемость текста</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Приглушает свет на ярких видео, чтобы текст на странице оставался читаемым</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Скрыть всплывающие подсказки</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->

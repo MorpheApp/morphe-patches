@@ -500,6 +500,10 @@ Rapor giştî ne û berî ku kanal bikeve lîsteyê tên kontrolkirin. Jêbirin 
   <string name="morphe_on_the_go_summary">Flyout-a player-î ya \'li ser rê\' kontrolên player-a taybet a Morphe vedike</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Li ser rê</string>
+  <string name="morphe_on_the_go_audio_mode">Biguherîne ser moda deng</string>
+  <string name="morphe_on_the_go_video_mode">Biguherîne ser moda vîdyoyê</string>
+  <string name="morphe_on_the_go_download">Daxine</string>
+  <string name="morphe_on_the_go_queue">Req,</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Karekê Askê lê menuyê flyout zêde bike</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Karekê kurteya vîdyoyê lê menuyê flyout ê feed zêde dike</string>
@@ -751,6 +755,8 @@ Info: May not work on live streams"</string>
   <string name="morphe_queue_manager_open_queue">Lîsteyê vekirin</string>
   <string name="morphe_queue_manager_save_queue">Lîsteyê li lîsteyê parastin</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Rûpelên rêza li ser scroll barkirin</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Dema ku hûn nêzî dawiya rêzê scroll dikin, vîdyoyên playlistê yên din barkirîne</string>
   <string name="morphe_native_playlist_queue_saved">Playlist hat parastin</string>
   <string name="morphe_native_playlist_queue_saved_to">Hat parastin di %s de</string>
   <string name="morphe_native_playlist_queue_clear">Rêzê paqij bike</string>
@@ -1101,6 +1107,10 @@ Ji bo nîşandana menûya 'Audio Track', 'Spoof video streams' biguherîne her c
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Îzin dayîna Moda Ambiyansê di moda parastina batêriyê de bidomîne</string>
   <string name="morphe_disable_ambient_mode_title">Moda ambientê qûldar bike.</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Modeka ambient li ser ekranê asteng bike</string>
+  <string name="morphe_enhanced_ambient_mode_title">Moda Ambient a pêşkeftî</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Li şûna moda Ambient, hemû rûpela temaşe û şirîtên reş bi vîdyoyê ronî dike</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Têkst xwendinê hêsan bihêle</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Ronahiya vîdyoyên ronî kêm dike da ku têksta li ser rûpelê xwendinê hêsan be</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ketekên agahdariyê veşêre</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
