@@ -227,7 +227,7 @@ public final class FeedVideoCardsPatch {
      * Text of a Short in its element, followed by its video id, such as 'shorts-shelf-item-abcdefghijk'.
      * Also in the elements of many videos, such as a row of the Shorts grid of a channel.
      */
-    private static final String SHORTS_ITEM_PREFIX = "shorts-shelf-item-";
+    public static final String SHORTS_ITEM_PREFIX = "shorts-shelf-item-";
 
     /**
      * A card of a Short is a vertical thumbnail with the title of the Short on it,

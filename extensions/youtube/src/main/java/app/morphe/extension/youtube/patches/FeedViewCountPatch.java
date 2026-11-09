@@ -175,6 +175,15 @@ public final class FeedViewCountPatch {
      */
     private static final int SHORTS_METADATA_FIELD = 218178449;
 
+    /** Field of the commands of an element, such as what a tap opens. */
+    private static final int COMMAND_FIELD = 169495254;
+
+    /**
+     * Characters that can be between the characters of a view count in one text and not in another,
+     * such as the spaces of "4,8 Mln" and the marks of the text direction of right to left languages.
+     */
+    private static final String VIEW_COUNT_GAP = "[\\s\\p{Z}\\p{Cf}]*";
+
     /**
      * Video id -> shortened view count of the element of a Short. The cards of Shorts do not show their view count.
      * Oldest videos are removed first.
@@ -653,16 +662,63 @@ public final class FeedViewCountPatch {
         try {
             if (isShort) {
                 // The cards of Shorts do not show their view count, which is in the metadata of the element.
+                String viewCount = null;
                 for (ProtoNode node : textNodes) {
                     if (node.pathEndsWith(SHORTS_METADATA_FIELD, 2, 1, 1)) {
-                        String viewCount = node.getText().trim();
-                        if (NUMBER_PATTERN.matcher(viewCount).find()) {
-                            synchronized (shortsViewCounts) {
-                                shortsViewCounts.put(videoId, viewCount);
-                            }
-                        }
+                        viewCount = node.getText().trim();
+                        break;
+                    }
+                }
+                if (viewCount == null || !NUMBER_PATTERN.matcher(viewCount).find()) {
+                    return;
+                }
+                // Some cards show it below the title, such as the Shorts of the search results.
+                // They have no badge, decided now, as the texts of a card that enters the list
+                // are drawn after its thumbnail, so the badge would be shown and then removed.
+                // The view count is found in any language: the spaces and the marks of the text
+                // direction between its characters can differ, and it must not be part of
+                // a longer number or word of Latin letters, such as of a URL.
+                StringBuilder regex = new StringBuilder("(?<![A-Za-z\\p{Nd}])");
+                final int start = regex.length();
+                viewCount.codePoints().forEach(codePoint -> {
+                    if (Character.isWhitespace(codePoint) || Character.isSpaceChar(codePoint)
+                            || Character.getType(codePoint) == Character.FORMAT) {
                         return;
                     }
+                    if (regex.length() > start) {
+                        regex.append(VIEW_COUNT_GAP);
+                    }
+                    regex.append(Pattern.quote(new String(Character.toChars(codePoint))));
+                });
+                regex.append("(?![A-Za-z\\p{Nd}])");
+                Pattern countPattern = Pattern.compile(regex.toString());
+                ProtoNode shortItem = null;
+                for (ProtoNode node : textNodes) {
+                    if (node.getText().startsWith(FeedVideoCardsPatch.SHORTS_ITEM_PREFIX)) {
+                        shortItem = node.getParent();
+                        break;
+                    }
+                }
+                nodes:
+                for (ProtoNode node : textNodes) {
+                    String text = node.getText();
+                    // The texts of the Short itself are not drawn, such as its accessibility label,
+                    // which has the view count in some languages.
+                    if (text.length() > MAX_SUBTITLE_LENGTH || node.getParent() == shortItem) {
+                        continue;
+                    }
+                    for (ProtoNode parent = node.getParent(); parent != null; parent = parent.getParent()) {
+                        final int field = parent.getFieldNumber();
+                        if (field == SHORTS_METADATA_FIELD || field == COMMAND_FIELD) {
+                            continue nodes;
+                        }
+                    }
+                    if (countPattern.matcher(text).find()) {
+                        return;
+                    }
+                }
+                synchronized (shortsViewCounts) {
+                    shortsViewCounts.put(videoId, viewCount);
                 }
                 return;
             }
