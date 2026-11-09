@@ -12,6 +12,8 @@ package app.morphe.patches.youtube.interaction.downloads
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -41,28 +43,27 @@ internal object YouTubeOfflineVideoEndpointFingerprint : Fingerprint(
     )
 )
 
-/** Finds the native function that converts Downloads progress to a card start time. */
-internal object OfflineDownloadCardPositionFingerprint : Fingerprint(
-    parameters = listOf("J", "J"),
-    returnType = "F",
+/** Builds a Downloads card's play command using its saved position. */
+internal object OfflineDownloadCardCommandFingerprint : Fingerprint(
     filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_STATIC, parameters = listOf("J", "J"), returnType = "F"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        string(DOWNLOADS_PLAYLIST_ID, location = MatchAfterImmediately()),
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
-            definingClass = "this",
-            parameters = listOf("J", "J"),
-            returnType = "I"
+            parameters = listOf("Ljava/lang/String;", "Ljava/lang/String;", "I", "F"),
+            returnType = "L",
+            location = MatchAfterWithin(2)
         ),
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            definingClass = "this",
-            parameters = listOf("J", "J", "I"),
-            returnType = "Z",
-            location = MatchAfterImmediately()
-        ),
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
-        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
-        opcode(Opcode.LONG_TO_FLOAT, location = MatchAfterImmediately())
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately())
+    )
+)
+
+internal fun offlineDownloadPlaylistIdFingerprint(videoIdGetter: MethodReference) = Fingerprint(
+    filters = listOf(
+        methodCall(videoIdGetter),
+        methodCall(returnType = "Ljava/lang/String;", parameters = emptyList())
     )
 )
 
@@ -76,31 +77,67 @@ internal fun offlineDownloadLoadFingerprint(modelType: String, descriptorType: S
     )
 )
 
-internal fun offlineDownloadPlayerFingerprint(refreshMethod: MethodReference, modelType: String) = Fingerprint(
-    definingClass = refreshMethod.definingClass,
-    name = refreshMethod.name,
-    parameters = refreshMethod.parameterTypes.map { it.toString() },
+internal fun offlineDownloadPlayerFingerprint(contextType: String, modelType: String) = Fingerprint(
     filters = listOf(
-        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = refreshMethod.parameterTypes.first().toString()),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = contextType),
         methodCall(
             opcode = Opcode.INVOKE_INTERFACE,
-            parameters = listOf(),
+            parameters = emptyList(),
             returnType = modelType,
             location = MatchAfterImmediately()
         )
     )
 )
 
-internal fun offlineDownloadPositionApplyFingerprint(
-    refreshMethod: MethodReference,
-    playerType: String
-) = Fingerprint(
-    definingClass = refreshMethod.definingClass,
-    name = refreshMethod.name,
-    parameters = refreshMethod.parameterTypes.map { it.toString() },
+internal fun offlineDownloadPositionApplyFingerprint(playerType: String) = Fingerprint(
     filters = listOf(
         methodCall(opcode = Opcode.INVOKE_STATIC, parameters = listOf(playerType, "J"), returnType = "V"),
         methodCall(definingClass = "this", parameters = listOf("Z", "I", playerType), returnType = "V")
+    )
+)
+
+internal fun offlinePlaybackWorkerFingerprint(descriptorType: String) = Fingerprint(
+    parameters = listOf(descriptorType, "L"),
+    returnType = "V",
+    filters = listOf(
+        // The worker returns immediately after delivering a successful response.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+            returnType = "V"
+        ),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately()),
+        string("Unplayable Video")
+    )
+)
+
+internal object OfflinePlaybackWorkerReceiverFingerprint : Fingerprint(
+    filters = listOf(
+        opcode(Opcode.MOVE_OBJECT_FROM16, location = MatchFirst())
+    )
+)
+
+internal fun offlinePlaybackRowFingerprint(workerType: String) = Fingerprint(
+    definingClass = workerType,
+    parameters = listOf("Ljava/lang/String;"),
+    returnType = "L",
+    filters = listOf(
+        methodCall(
+            smali = "Lcom/google/common/util/concurrent/ListenableFuture;->get(JLjava/util/concurrent/TimeUnit;)Ljava/lang/Object;",
+            opcode = Opcode.INVOKE_INTERFACE
+        )
+    )
+)
+
+/** YouTube copies the position from the Downloads row into its type 76 playback record. */
+internal fun offlineDownloadPositionCopyFingerprint(rowType: String) = Fingerprint(
+    parameters = listOf(rowType),
+    returnType = $$"Lj$/util/Optional;",
+    filters = listOf(
+        literal(76),
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = listOf("Ljava/lang/String;"), returnType = "V"),
+        fieldAccess(opcode = Opcode.IGET_WIDE, definingClass = rowType, location = MatchAfterImmediately()),
+        methodCall("Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;", location = MatchAfterImmediately())
     )
 )
 

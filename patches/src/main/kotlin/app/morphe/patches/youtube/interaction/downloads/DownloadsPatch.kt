@@ -186,9 +186,6 @@ val downloadsPatch = patch(
 
         // region In-app downloads.
 
-        hookOfflineDownloadPositionSource()
-
-
         // Save the video instead of asking the server for the download action, which answers with the Premium upsell.
         ResolveCommandFingerprint.method.apply {
             val commandType = parameterTypes.first().toString()
@@ -281,9 +278,7 @@ val downloadsPatch = patch(
                 fromBytesMethod.definingClass,
                 playerResponseType
             ).method
-            val offlineStateType = UpdateOfflineVideoPolicyFingerprint.matchAll().first().method.parameterTypes[2]
-            val offlineStateField = classDefBy(playerResponseType).fields.single { it.type == offlineStateType }
-            hookOfflineDownloadResume(playerResponseModelType, playerResponseGetter, offlineStateField)
+            hookOfflineDownloadResume(playerResponseModelType, fromBytesMethod.definingClass)
 
             val helperMethod = ImmutableMethod(
                 it.classDef.type,

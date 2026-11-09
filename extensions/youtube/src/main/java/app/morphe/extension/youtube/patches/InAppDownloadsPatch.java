@@ -412,6 +412,27 @@ public final class InAppDownloadsPatch {
                 .build();
     }
 
+    /** Implemented by YouTube's offline playback worker during patching. */
+    public interface OfflinePlaybackWorker {
+        void patch_storeDownloadStartTime(@NonNull Object descriptor, @Nullable Object playerResponse) throws Exception;
+    }
+
+    /** Injection point. */
+    public static void storeDownloadStartTime(@NonNull OfflinePlaybackWorker worker,
+                                              @NonNull Object descriptor,
+                                              @Nullable Object playerResponse) {
+        if (Settings.DOWNLOAD_MODE.get() != DownloadMode.IN_APP) {
+            return;
+        }
+        try {
+            worker.patch_storeDownloadStartTime(descriptor, playerResponse);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        } catch (Exception ex) {
+            Logger.printException(() -> "storeDownloadStartTime failure", ex);
+        }
+    }
+
     /**
      * Injection point.
      * <p>
