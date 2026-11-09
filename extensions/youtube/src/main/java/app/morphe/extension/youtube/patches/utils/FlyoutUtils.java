@@ -426,6 +426,11 @@ public final class FlyoutUtils {
         }
     }
 
+    /** Uses the existing Shorts card markers, and requires a current source buffer. */
+    public static boolean isShortsFeedMenu() {
+        return isShortFlyout && flyoutBuffer != null && !ShortsPlayerState.isOpen();
+    }
+
     public static String getFlyoutPlaylistId() {
         return flyoutPlaylistId;
     }
@@ -1422,6 +1427,13 @@ public final class FlyoutUtils {
      * Injection point.
      */
     public static void extractFlyoutIdFromObject(@Nullable Object bufferObject) {
+        byte[] flyoutBuffer = bufferObject instanceof ProtocolBufferFieldInterface bufferInterface
+                && !(bufferObject instanceof FlyoutMenuVideoIdInterface)
+                ? bufferInterface.patch_getBuffer()
+                : null;
+        FlyoutUtils.flyoutBuffer = flyoutBuffer;
+        // Classify this source before the queue inspects the card. Shorts, like playlists, have no duration badge.
+        isShortFlyout = flyoutBuffer != null && byteIndexesOf(flyoutBuffer, SHORTS_VIDEO_ELEMENT_BYTES).size() == 1;
         if (AddToQueuePatch.isPatchIncluded() && AddToQueuePatch.isNativeQueueEnabled()) {
             nativeQueuePlaylistSource = QueueFlyoutActions.playlistSource(bufferObject, senderViewRef.get());
         }
@@ -1435,15 +1447,10 @@ public final class FlyoutUtils {
                 // An empty typed ID must clear the previous menu's video as well.
                 flyoutVideoId = videoId;
                 flyoutPlaylistId = "";
-                isShortFlyout = false;
             }
             return;
         }
 
-        byte[] flyoutBuffer = bufferObject instanceof ProtocolBufferFieldInterface bufferInterface
-                ? bufferInterface.patch_getBuffer()
-                : null;
-        FlyoutUtils.flyoutBuffer = flyoutBuffer;
         if (flyoutBuffer == null) {
             return;
         }
@@ -1457,10 +1464,6 @@ public final class FlyoutUtils {
                 !horizontalShelfHistoryBytesIndexes.isEmpty() &&
                         horizontalShelfHistoryBytesIndexes.size() == HORIZONTAL_SHELF_HISTORY_BYTES.size() &&
                         horizontalShelfHistoryBytesIndexes.get(0) <= 30;
-
-        // Check if Shorts flyout is triggered only in the feed or on channels.
-        List<Integer> shortsVideoElementsBytesIndexes = byteIndexesOf(flyoutBuffer, SHORTS_VIDEO_ELEMENT_BYTES);
-        isShortFlyout = shortsVideoElementsBytesIndexes.size() == 1;
 
         setFlyoutPlaylistId(flyoutBuffer);
 

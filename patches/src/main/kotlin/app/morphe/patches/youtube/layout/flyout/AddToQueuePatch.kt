@@ -79,7 +79,8 @@ val addToQueuePatch = patch(
                     )
                 },
                 SwitchPreference("morphe_queue_add_flyout_menu", summary = true),
-                SwitchPreference("morphe_native_queue_fetch_on_scroll", summary = true)
+                SwitchPreference("morphe_native_queue_fetch_on_scroll", summary = true),
+                SwitchPreference("morphe_native_queue_shorts_menu", summary = true)
             )
         )
 

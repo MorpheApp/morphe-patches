@@ -67,7 +67,7 @@ public class PlaylistCardSourceTest {
         assertTrue(source.playlist());
         assertEquals(MIX, source.playlistId());
         var menu = QueueFlyoutActions.completeMenu(PlaylistQueueRenderer.MenuRenderer.getDefaultInstance(),
-                true, "Next", "Last", source.playlistId());
+                true, "Next", "Last", source.playlistId(), false);
         for (var item : menu.getItemsList()) {
             assertEquals(MIX, item.getMenuConditionalServiceItemRenderer().getServiceEndpoint().getQueuePlaylistId());
         }

@@ -27,6 +27,7 @@ import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuRe
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
+import app.morphe.extension.youtube.settings.Settings;
 
 /** Adjusts native menu data before YouTube filters and binds its rows. */
 public final class QueueFlyoutActions {
@@ -60,7 +61,8 @@ public final class QueueFlyoutActions {
             FlyoutUtils.setNativeQueuePlaylistId(playlistId);
             MenuRenderer completed = completeMenu(menu,
                     !playlistId.isEmpty() || NativePlaylistQueuePatch.canShowFlyoutLast(),
-                    str("morphe_native_playlist_queue_next"), str("morphe_native_playlist_queue_last"), playlistId);
+                    str("morphe_native_playlist_queue_next"), str("morphe_native_playlist_queue_last"), playlistId,
+                    playlistId.isEmpty() && Settings.NATIVE_QUEUE_SHORTS_MENU.get() && FlyoutUtils.isShortsFeedMenu());
             if (completed == menu) {
                 return original;
             }
@@ -78,11 +80,11 @@ public final class QueueFlyoutActions {
     }
 
     static MenuRenderer completeMenu(MenuRenderer menu, boolean allowLast, String nextLabel, String lastLabel) {
-        return completeMenu(menu, allowLast, nextLabel, lastLabel, "");
+        return completeMenu(menu, allowLast, nextLabel, lastLabel, "", false);
     }
 
     static MenuRenderer completeMenu(MenuRenderer menu, boolean allowLast, String nextLabel, String lastLabel,
-                                     String playlistId) {
+                                     String playlistId, boolean addMissing) {
         MenuItem next = null;
         MenuItem last = null;
         for (MenuItem item : menu.getItemsList()) {
@@ -97,7 +99,7 @@ public final class QueueFlyoutActions {
             }
         }
 
-        if (next == null && last == null && !PlaylistCardSource.isPlaylistId(playlistId)) {
+        if (next == null && last == null && !PlaylistCardSource.isPlaylistId(playlistId) && !addMissing) {
             return menu;
         }
         next = prepareLocalItem(next == null ? queueItem(YTIconType.QUEUE_PLAY_NEXT, nextLabel) : next);
@@ -146,7 +148,7 @@ public final class QueueFlyoutActions {
     public static PlaylistCardSource.Selection playlistSource(@Nullable Object source, @Nullable View sender) {
         boolean collection = false;
         try {
-            if (!NativePlaylistQueuePatch.canQueuePlaylist()) {
+            if (FlyoutUtils.isShortsFeedMenu() || !NativePlaylistQueuePatch.canQueuePlaylist()) {
                 return new PlaylistCardSource.Selection("", false);
             }
             collection = sender != null && FeedVideoCardsPatch.isPlaylistTap(sender);
