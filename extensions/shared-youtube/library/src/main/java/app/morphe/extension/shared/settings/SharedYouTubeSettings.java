@@ -21,6 +21,7 @@ import app.morphe.extension.shared.patches.PoTokenProviderPatch.PoTokenProviderA
 import app.morphe.extension.shared.patches.SkipSilencePatch.MinimumPause;
 import app.morphe.extension.shared.patches.SplashAnimationPatch;
 import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
+import app.morphe.extension.shared.patches.components.LithoFilterPatch.LithoLogging;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference.ExternalDownloaderAvailability;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
@@ -92,11 +93,11 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final StringSetting CUSTOM_BRANDING_ICON_PATCHED = new StringSetting("morphe_custom_branding_icon_patched", "", false, false);
 
     // Miscellaneous
-    public static final BooleanSetting DEBUG_PROTOBUFFER = new BooleanSetting("morphe_debug_protobuffer", FALSE, false, "morphe_debug_protobuffer_user_dialog_message", parent(DEBUG));
-    public static final BooleanSetting DEBUG_SPANNABLE = new BooleanSetting("morphe_debug_spannable", FALSE, parent(DEBUG));
-    public static final StringSetting DISABLED_FEATURE_FLAGS = new StringSetting("morphe_disabled_feature_flags", "", true, parent(DEBUG));
-    public static final StringSetting FORCED_FEATURE_FLAGS = new StringSetting("morphe_forced_feature_flags", "", true, parent(DEBUG));
-    public static final StringSetting FEATURE_FLAGS_BISECT = new StringSetting("morphe_feature_flags_bisect", "", false, false, null, parent(DEBUG));
+    public static final EnumSetting<LithoLogging> DEBUG_LITHO = new EnumSetting<>("morphe_debug_litho", LithoLogging.DISABLED, false, "morphe_debug_litho_user_dialog_message", parentNot(DEBUG_LEVEL, DebugLevel.DISABLED));
+    public static final BooleanSetting DEBUG_SPANNABLE = new BooleanSetting("morphe_debug_spannable", FALSE, parentNot(DEBUG_LEVEL, DebugLevel.DISABLED));
+    public static final StringSetting DISABLED_FEATURE_FLAGS = new StringSetting("morphe_disabled_feature_flags", "", true, parentNot(DEBUG_LEVEL, DebugLevel.DISABLED));
+    public static final StringSetting FORCED_FEATURE_FLAGS = new StringSetting("morphe_forced_feature_flags", "", true, parentNot(DEBUG_LEVEL, DebugLevel.DISABLED));
+    public static final StringSetting FEATURE_FLAGS_BISECT = new StringSetting("morphe_feature_flags_bisect", "", false, false, null, parentNot(DEBUG_LEVEL, DebugLevel.DISABLED));
     public static final BooleanSetting DISABLE_QUIC_PROTOCOL = new BooleanSetting("morphe_disable_quic_protocol", FALSE, true);
     public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
     public static final BooleanSetting REPLACE_MUSIC_LINKS_WITH_YOUTUBE = new BooleanSetting("morphe_replace_music_with_youtube", FALSE);
@@ -148,6 +149,7 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     // Migration
     private static final BooleanSetting DEPRECATED_SANITIZE_URL_QUERY = new BooleanSetting("morphe_sanitize_url_query", TRUE);
+    private static final BooleanSetting DEPRECATED_DEBUG_PROTOBUFFER = new BooleanSetting("morphe_debug_protobuffer", FALSE, false, false);
     private static final EnumSetting<SplashScreenAnimationStyle> DEPRECATED_SPLASH_SCREEN_ANIMATION_STYLE = new EnumSetting<>("morphe_splash_screen_animation_style", SplashScreenAnimationStyle.FPS_60_ONE_SECOND);
 
     static {
@@ -156,6 +158,10 @@ public class SharedYouTubeSettings extends BaseSettings {
 
         // TODO: Eventually remove these migrations
         migrateOldSettingToNew(DEPRECATED_SANITIZE_URL_QUERY, SANITIZE_SHARING_LINKS);
+        if (DEPRECATED_DEBUG_PROTOBUFFER.get()) {
+            DEBUG_LITHO.save(LithoLogging.PATH_AND_BUFFER);
+            DEPRECATED_DEBUG_PROTOBUFFER.resetToDefault();
+        }
 
         // The styles of the original animation used to play the Morphe animation of an icon that has
         // one, and now always play the original animation. The Morphe styles play the Morphe animation.

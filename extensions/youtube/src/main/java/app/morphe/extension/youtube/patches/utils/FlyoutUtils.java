@@ -56,6 +56,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
+import app.morphe.extension.shared.patches.components.LithoFilterPatch.LithoLogging;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
@@ -1333,7 +1334,7 @@ public final class FlyoutUtils {
             return;
         }
 
-        if (Settings.DEBUG_PROTOBUFFER.get()) {
+        if (Settings.DEBUG_LITHO.get() == LithoLogging.PATH_AND_BUFFER) {
             Logger.printDebug(() -> "Flyout buffer: " + new BufferAsciiStrings(flyoutBuffer).getStrings());
         }
 

@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import java.util.Arrays;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.settings.BaseSettings;
 
 @SuppressWarnings("unused")
 public class ChaptersHookPatch {
@@ -62,9 +61,9 @@ public class ChaptersHookPatch {
             return;
         }
 
-        if (BaseSettings.DEBUG.get() && !Arrays.equals(markers, chapterMarkers)) {
-            Logger.printDebug(() -> "TimelineMarkers: " + Arrays.toString(markers));
-        }
+        Logger.printDebug(() -> Arrays.equals(markers, chapterMarkers)
+                ? null
+                : "TimelineMarkers: " + Arrays.toString(markers));
         chapterMarkers = markers;
     }
 

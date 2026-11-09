@@ -178,4 +178,15 @@
         <item>DARK_RED</item>
         <item>CUSTOM</item>
     </string-array>
+    <!-- misc.debugging.enableDebuggingPatch -->
+    <string-array name="morphe_debug_litho_entries">
+        <item>@string/morphe_debug_litho_entry_disabled</item>
+        <item>@string/morphe_debug_litho_entry_path</item>
+        <item>@string/morphe_debug_litho_entry_path_and_buffer</item>
+    </string-array>
+    <string-array name="morphe_debug_litho_entry_values">
+        <item>DISABLED</item>
+        <item>PATH</item>
+        <item>PATH_AND_BUFFER</item>
+    </string-array>
 </resources>

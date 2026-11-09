@@ -8,7 +8,6 @@
 package app.morphe.extension.youtube.patches.voiceovertranslation;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.settings.BaseSettings.DEBUG;
 import static app.morphe.extension.youtube.patches.voiceovertranslation.TranscriptTranslator.TRANSLATION_SERVICE_MY_MEMORY;
 import static app.morphe.extension.youtube.patches.voiceovertranslation.TranscriptTranslator.TRANSLATION_SERVICE_OPENROUTER;
 
@@ -1059,7 +1058,7 @@ public class VoiceOverTranslationPatch {
     }
 
     static void logError(Logger.LogMessage message, @Nullable Exception ex) {
-        if (DEBUG.get()) Logger.printException(message, ex);
+        if (Logger.isDebugEnabled()) Logger.printException(message, ex);
         else Logger.printInfo(message, ex);
     }
 }

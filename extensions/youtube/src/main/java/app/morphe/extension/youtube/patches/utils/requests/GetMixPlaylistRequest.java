@@ -26,7 +26,6 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.settings.BaseSettings;
 
 public class GetMixPlaylistRequest {
     /**
@@ -57,10 +56,9 @@ public class GetMixPlaylistRequest {
             final long maxWaitTime = Utils.isCurrentlyOnMainThread()
                     ? MAX_MILLISECONDS_TO_BLOCK_UI_WAITING_FOR_FETCH
                     : MAX_MILLISECONDS_TO_WAIT_FOR_FETCH;
-            if (BaseSettings.DEBUG.get() && !future.isDone()) {
-                Logger.printDebug(() -> "Waiting until fetch is complete: " + videoId
-                        + " maxWait: " + maxWaitTime);
-            }
+            Logger.printDebug(() -> future.isDone()
+                    ? null
+                    : "Waiting until fetch is complete: " + videoId + " maxWait: " + maxWaitTime);
             return future.get(maxWaitTime, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getResult timed out: " + videoId, ex);

@@ -21,11 +21,25 @@ import java.util.List;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings("unused")
 public final class LithoFilterPatch {
+
+    /**
+     * What {@link SharedYouTubeSettings#DEBUG_LITHO} logs of each Litho component.
+     */
+    public enum LithoLogging {
+        DISABLED,
+        /**
+         * Identifier, accessibility and path.
+         */
+        PATH,
+        /**
+         * Identifier, accessibility, path and the strings of the buffer.
+         */
+        PATH_AND_BUFFER
+    }
 
     /**
      * Simple wrapper to pass the litho parameters through the prefix search,
@@ -95,7 +109,7 @@ public final class LithoFilterPatch {
             }
             builder.append(" Path: ");
             builder.append(path);
-            if (SharedYouTubeSettings.DEBUG_PROTOBUFFER.get()) {
+            if (SharedYouTubeSettings.DEBUG_LITHO.get() == LithoLogging.PATH_AND_BUFFER) {
                 builder.append(" BufferStrings: ");
                 builder.append(asciiStrings().getStrings());
             }
@@ -205,7 +219,7 @@ public final class LithoFilterPatch {
                                         parameters.buffer, parameters.asciiStrings(),
                                         group, type, matchedStartIndex);
 
-                                if (isFiltered && BaseSettings.DEBUG.get()) {
+                                if (isFiltered) {
                                     Logger.printDebug(() -> type == Filter.FilterContentType.IDENTIFIER
                                             ? filterSimpleName + " filtered identifier: " + parameters.identifier
                                             : filterSimpleName + " filtered path: " + parameters.path);
@@ -242,7 +256,7 @@ public final class LithoFilterPatch {
             LithoFilterParameters parameter = new LithoFilterParameters(
                     contextInterface, identifier, pathBuilder,
                     accessibilityId, accessibilityText, buffer);
-            if (SharedYouTubeSettings.DEBUG_PROTOBUFFER.get()) {
+            if (SharedYouTubeSettings.DEBUG_LITHO.get() != LithoLogging.DISABLED) {
                 Logger.printDebug(() -> "Searching " + parameter);
             }
 

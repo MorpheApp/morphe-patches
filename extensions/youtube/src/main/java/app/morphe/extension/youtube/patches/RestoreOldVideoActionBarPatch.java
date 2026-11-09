@@ -436,6 +436,7 @@ public class RestoreOldVideoActionBarPatch {
         } catch (RuntimeException ex) {
             // A section that 'Hide related videos' changed in place after its serialized size was saved.
             // Depending on the change, this throws an IllegalStateException or a RuntimeException.
+            Logger.printDebug(() -> "Two rows not applied, the section changed in place", ex);
             return null;
         }
 
@@ -763,6 +764,9 @@ public class RestoreOldVideoActionBarPatch {
      */
     public static boolean useMediaSessionFeatureFlag(boolean original) {
         if (FIX_VIDEO_ACTION_BAR) {
+            if (original) {
+                Logger.printVerbose(() -> "useMediaSessionFeatureFlag turned off");
+            }
             return false;
         }
         return original;
