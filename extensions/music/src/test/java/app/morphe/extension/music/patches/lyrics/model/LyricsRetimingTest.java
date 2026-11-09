@@ -20,7 +20,7 @@ public class LyricsRetimingTest {
         Word w2 = new Word(1500, 2450, "Down", null, false);
         LyricsLine line = new LyricsLine(1000, 2000, "Up Down", List.of(w1, w2));
 
-        List<LyricsRetiming.RetimedEntry> retimed = LyricsRetiming.retimeLyrics(List.of(line), null);
+        List<LyricsRetiming.RetimedEntry> retimed = LyricsRetiming.retimeLyrics(List.of(line), null, null);
         Assert.assertEquals(1, retimed.size());
 
         LyricsRetiming.RetimedEntry entry = retimed.get(0);
@@ -36,7 +36,7 @@ public class LyricsRetimingTest {
         LyricsLine line1 = new LyricsLine(20000, 22700, "Up 심해", List.of(w1, w2));
         LyricsLine line2 = new LyricsLine(22700, 25000, "다음 가사", List.of());
 
-        List<LyricsRetiming.RetimedEntry> retimed = LyricsRetiming.retimeLyrics(List.of(line1, line2), null);
+        List<LyricsRetiming.RetimedEntry> retimed = LyricsRetiming.retimeLyrics(List.of(line1, line2), null, null);
         long[] maxEnd = LyricsRetiming.buildAdjustedEndMaxByIndex(retimed);
 
         long lookahead = 190L;
@@ -61,7 +61,7 @@ public class LyricsRetimingTest {
         LyricsLine line1 = new LyricsLine(20000, 22700, "Up 심해", List.of(w1, w2));
         LyricsLine line2 = new LyricsLine(22700, 25000, "다음 가사", List.of());
 
-        List<LyricsRetiming.RetimedEntry> retimed = LyricsRetiming.retimeLyrics(List.of(line1, line2), null);
+        List<LyricsRetiming.RetimedEntry> retimed = LyricsRetiming.retimeLyrics(List.of(line1, line2), null, null);
         long[] maxEnd = LyricsRetiming.buildAdjustedEndMaxByIndex(retimed);
 
         // at 22600ms, line 0 is active and line 1 has not started
@@ -81,7 +81,7 @@ public class LyricsRetimingTest {
         LyricsLine line1 = new LyricsLine(10000, 16000, "First singer", List.of());
         LyricsLine line2 = new LyricsLine(12000, 18000, "Second singer", List.of());
 
-        List<LyricsRetiming.RetimedEntry> retimed = LyricsRetiming.retimeLyrics(List.of(line1, line2), null);
+        List<LyricsRetiming.RetimedEntry> retimed = LyricsRetiming.retimeLyrics(List.of(line1, line2), null, null);
         long[] maxEnd = LyricsRetiming.buildAdjustedEndMaxByIndex(retimed);
 
         // At 14000ms, both lines are active
@@ -111,7 +111,7 @@ public class LyricsRetimingTest {
         LyricsLine l2 = new LyricsLine(5000, 7100, "Line 2", List.of());
         LyricsLine l3 = new LyricsLine(7000, 9000, "Line 3", List.of());
 
-        List<LyricsRetiming.RetimedEntry> retimed = LyricsRetiming.retimeLyrics(List.of(l0, l1, l2, l3), null);
+        List<LyricsRetiming.RetimedEntry> retimed = LyricsRetiming.retimeLyrics(List.of(l0, l1, l2, l3), null, null);
         long[] maxEnd = LyricsRetiming.buildAdjustedEndMaxByIndex(retimed);
 
         int lastPrimary = -1;
@@ -122,5 +122,17 @@ public class LyricsRetimingTest {
             Assert.assertEquals("Primary line must advance at " + times[i] + "ms", i, primary);
             lastPrimary = primary;
         }
+    }
+
+    @Test
+    public void testEstimatedEndOfLineWithoutEnd() {
+        LyricsLine line = new LyricsLine(1000, "Short", List.of());
+        // A close next line ends this one.
+        Assert.assertEquals(9000, LyricsRetiming.estimateEndMs(line, 9000));
+        // After a long pause the line is held a few seconds, and ends before the pause.
+        Assert.assertEquals(6000, LyricsRetiming.estimateEndMs(line, 30000));
+        Assert.assertEquals(5500, LyricsRetiming.estimateEndMs(line, 12500));
+        // The last line is held a few seconds.
+        Assert.assertEquals(6000, LyricsRetiming.estimateEndMs(line, LyricsLine.NO_TIME));
     }
 }

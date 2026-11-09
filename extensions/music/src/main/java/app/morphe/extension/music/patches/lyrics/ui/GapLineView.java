@@ -9,56 +9,53 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
-import android.view.animation.PathInterpolator;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
-import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.ui.Dim;
 
-class GapLineView extends View {
-    public record GapInterval(
+/**
+ * Three dots in the place of the next line during a long instrumental break, which fill up one
+ * after another as the break runs out. Open, it takes a row of its own in the lyrics.
+ */
+final class GapLineView extends View {
+    /**
+     * @param endMs            When the dots are full and start to close.
+     * @param nextStartMs      When the line after the break starts.
+     * @param beforeLineIndex  The line the break comes before.
+     */
+    record GapInterval(
             long startMs,
             long endMs,
             long nextStartMs,
-            boolean isDuet,
             int beforeLineIndex,
             boolean isRightAligned,
             boolean isCentered,
-            boolean isRtl,
-            int horizontalInsetPx) {
+            boolean isRtl) {
     }
 
-    public static final long LYRICS_GAP_MIN_MS = 7000L;
-    public static final long LYRICS_GAP_START_LAG_MS = 310L;
-    public static final long LYRICS_GAP_END_LEAD_MS = 800L;
-    public static final long GAP_SHOW_DELAY_MS = 300L;
-    public static final int GAP_FADE_MS = 200;
-    public static final long GAP_HIDE_FADE_DELAY_MS = 500L;
-    public static final int GAP_ENDED_MS = 800;
-    public static final long GAP_CLOSE_MS = 850L;
-
+    /** The dots show up this long after the line before the break ends. */
+    static final long LYRICS_GAP_START_LAG_MS = 310L;
+    private static final long GAP_SHOW_DELAY_MS = 300L;
+    private static final int GAP_FADE_MS = 200;
+    private static final long GAP_HIDE_FADE_DELAY_MS = 500L;
+    private static final int GAP_ENDED_MS = 800;
+    private static final long GAP_CLOSE_MS = 850L;
+    /** How long before the next line the dots start to close. */
     static final long GAP_EXIT_DURATION_MS = GAP_ENDED_MS;
-    private static final Interpolator GAP_EASE = new PathInterpolator(0.25f, 0.1f, 0.25f, 1.0f);
+
+    private static final TimeInterpolator GAP_EASE = LyricsViewSupport.EASE;
     private static final float INTERVAL_DOT_RADIUS_DP = 5.0f;
     private static final float INTERVAL_DOT_GAP_DP = 8.0f;
     private static final int INTERVAL_SECONDARY_ALPHA = 0x55;
@@ -75,105 +72,19 @@ class GapLineView extends View {
     private boolean isExiting = false;
     private float groupScale = 0f;
     private float groupAlpha = 0f;
+    @Nullable
     private ValueAnimator expandAnimator;
+    @Nullable
     private ValueAnimator exitAnimator;
     private final Paint dotPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-    @NonNull
-    public static Map<Integer, long[]> lyricsLineGaps(@Nullable List<LyricsLine> lines) {
-        if (lines == null || lines.isEmpty()) {
-            return Collections.emptyMap();
-        }
-        Map<Integer, long[]> gaps = new LinkedHashMap<>();
-        long firstTime = lines.get(0).startTimeMs();
-        if (firstTime >= LYRICS_GAP_MIN_MS) {
-            gaps.put(-1, new long[]{0L, firstTime - LYRICS_GAP_END_LEAD_MS});
-        }
-        for (int i = 0; i < lines.size() - 1; i++) {
-            LyricsLine current = lines.get(i);
-            LyricsLine next = lines.get(i + 1);
-            long currentEnd = current.endTimeMs();
-            if (!current.words().isEmpty()) {
-                Word lastW = current.words().get(current.words().size() - 1);
-                if (lastW.endMs() != LyricsLine.NO_TIME) {
-                    currentEnd = (currentEnd != LyricsLine.NO_TIME)
-                            ? Math.max(currentEnd, lastW.endMs())
-                            : lastW.endMs();
-                }
-            }
-            if (currentEnd == LyricsLine.NO_TIME || currentEnd <= 0L) {
-                currentEnd = current.startTimeMs();
-            }
-            long gap = next.startTimeMs() - currentEnd;
-            if (gap >= LYRICS_GAP_MIN_MS) {
-                gaps.put(i, new long[]{
-                        currentEnd + LYRICS_GAP_START_LAG_MS,
-                        next.startTimeMs() - LYRICS_GAP_END_LEAD_MS
-                });
-            }
-        }
-        return gaps;
-    }
-
-    public GapLineView(Context context, GapInterval interval) {
+    GapLineView(Context context, GapInterval interval) {
         super(context);
         this.interval = interval;
-        dotPaint.setStyle(Paint.Style.FILL);
-        setVisibility(View.VISIBLE);
     }
 
-    public void setScrollEngine(@Nullable LyricsScrollEngine engine) {
+    void setScrollEngine(@Nullable LyricsScrollEngine engine) {
         this.scrollEngine = engine;
-    }
-
-    private float currentBlurRadius = 0f;
-    @Nullable
-    private ValueAnimator blurAnimator;
-
-    public void setRenderEffectCompat(@Nullable android.graphics.RenderEffect effect) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            super.setRenderEffect(effect);
-        }
-    }
-
-    public void animateBlur(float targetRadius, long duration) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-            return;
-        }
-        if (blurAnimator != null) {
-            blurAnimator.cancel();
-            blurAnimator = null;
-        }
-        if (Math.abs(currentBlurRadius - targetRadius) < 0.1f) {
-            setBlurRadius(targetRadius);
-            return;
-        }
-        blurAnimator = ValueAnimator.ofFloat(currentBlurRadius, targetRadius);
-        blurAnimator.setDuration(duration);
-        blurAnimator.setInterpolator(GAP_EASE);
-        blurAnimator.addUpdateListener(anim -> {
-            float r = (Float) anim.getAnimatedValue();
-            setBlurRadius(r);
-        });
-        blurAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                blurAnimator = null;
-                setBlurRadius(targetRadius);
-            }
-        });
-        blurAnimator.start();
-    }
-
-    public void setBlurRadius(float radius) {
-        this.currentBlurRadius = radius;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (radius < 0.5f) {
-                setRenderEffectCompat(null);
-            } else {
-                setRenderEffectCompat(LyricsPanelView.getCachedBlurEffect(radius));
-            }
-        }
     }
 
     @Override
@@ -182,12 +93,8 @@ class GapLineView extends View {
         destroy();
     }
 
-    public GapInterval getInterval() {
+    GapInterval getInterval() {
         return interval;
-    }
-
-    public boolean isGapActive() {
-        return isActive || isOpen || (exitAnimator != null && exitAnimator.isRunning());
     }
 
     /**
@@ -195,37 +102,16 @@ class GapLineView extends View {
      * applied by a layout pass. Used when computing scroll targets in the same frame a
      * gap opens or collapses.
      */
-    public int getPendingLayoutDelta() {
+    int getPendingLayoutDelta() {
         return lastReportedLayoutH - committedLayoutH;
     }
 
-    public void updateState(long currentPos, boolean active, boolean instant) {
-        if (!instant) {
-            updateState(currentPos, active);
-            return;
-        }
-        if (expandAnimator != null) {
-            expandAnimator.cancel();
-            expandAnimator = null;
-        }
-        if (exitAnimator != null) {
-            exitAnimator.cancel();
-            exitAnimator = null;
-        }
-        if (active) {
-            isActive = true;
-            isOpen = true;
-            isExiting = false;
-            groupScale = 1.0f;
-            groupAlpha = 1.0f;
-            updateLayoutState();
-            invalidate();
-        } else {
-            resetImmediate();
-        }
+    /** Closes the dots at once. */
+    void hide() {
+        resetImmediate();
     }
 
-    public void updateState(long currentPos, boolean active) {
+    void updateState(long currentPos, boolean active) {
         if (active) {
             if (exitAnimator != null && exitAnimator.isRunning()) {
                 exitAnimator.cancel();
@@ -264,7 +150,7 @@ class GapLineView extends View {
      * Animates entrance for active gap line indicator:
      * - Layout opens immediately
      * - Scale snaps to 1.0f
-     * - Alpha waits GAP_SHOW_DELAY_MS (300ms) then fades 0f -> 1f over GAP_FADE_MS (200ms) with GAP_EASE
+     * - Alpha waits GAP_SHOW_DELAY_MS then fades in over GAP_FADE_MS with GAP_EASE
      */
     private void startExpandAnimation() {
         if (expandAnimator != null) expandAnimator.cancel();
@@ -420,10 +306,9 @@ class GapLineView extends View {
         }
     }
 
-    public void destroy() {
+    void destroy() {
         if (expandAnimator != null) expandAnimator.cancel();
         if (exitAnimator != null) exitAnimator.cancel();
-        if (blurAnimator != null) blurAnimator.cancel();
     }
 
     @Override
@@ -476,8 +361,7 @@ class GapLineView extends View {
         final float step = 2f * r + gapPx;
         final float totalWidth = 2f * step + 2f * r;
 
-        final float baseInset = Math.max(Dim.dp(3f), LyricsViewSupport.sectionDotInset(getContext()));
-        final float textMargin = baseInset + interval.horizontalInsetPx();
+        final float textMargin = Math.max(Dim.dp(3f), LyricsViewSupport.sectionDotInset(getContext()));
         final float startX;
         if (interval.isCentered()) {
             startX = (getWidth() - totalWidth) / 2f;

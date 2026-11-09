@@ -801,23 +801,16 @@ public final class LyricsSpanBuilder {
         }
         return closed;
     }
-    /**
-     * A one-word line is swept by character across its word's span, but only when it has one: a
-     * line timed only as a whole lights in one go like every other such line in the song.
-     */
-    private static boolean hasTimedWord(LyricsLine line) {
-        List<Word> words = line.words();
-        return words.size() > 1
-                || (words.size() == 1 && words.get(0).endMs() > words.get(0).startMs());
-    }
-
 
     static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index,
                                                boolean splitWordlessLine) {
         LyricsLine line = lines.get(index);
         String lineText = displayLineText(line);
-        // A lone word with furigana stays whole, so its reading sits over all of it.
-        if (!hasAnyRuby(line) && countWords(lineText) == 1 && line.words().size() == 1 && hasTimedWord(line)) {
+        // A lone word with furigana stays whole, so its reading sits over all of it. Any other
+        // lone word is swept by character across its own span, but only when it has one: a
+        // line timed only as a whole lights in one go like every other such line in the song.
+        if (!hasAnyRuby(line) && countWords(lineText) == 1 && line.words().size() == 1
+                && line.words().get(0).endMs() > line.words().get(0).startMs()) {
             Word singleWord = line.words().get(0);
             long rangeStart = singleWord.startMs() >= 0 ? singleWord.startMs() : line.startTimeMs();
             long rangeEnd = singleWord.endMs() > rangeStart ? singleWord.endMs() : line.endTimeMs();

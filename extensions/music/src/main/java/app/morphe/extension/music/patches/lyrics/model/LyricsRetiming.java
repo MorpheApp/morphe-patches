@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics.model;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -15,17 +14,30 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * When each line counts as sung for the highlight and the scroll: overlapping lines are grouped
+ * so they stay lit together, and a line keeps its highlight into the pause after it.
+ */
 public final class LyricsRetiming {
-    public static final long RETIMING_OVERLAP_THRESHOLD_MS = 250L;
-    public static final long RETIMING_GAP_THRESHOLD_MS = 1L;
-    public static final long RETIMING_MAX_EXTENSION_MS = 1300L;
+    /** Lines overlapping by more than this are sung together. */
+    private static final long RETIMING_OVERLAP_THRESHOLD_MS = 250L;
+    private static final long RETIMING_GAP_THRESHOLD_MS = 1L;
+    /** How far at most a line's highlight reaches into the pause after it. */
+    private static final long RETIMING_MAX_EXTENSION_MS = 1300L;
+    /** How far the highlight of the last line reaches past its end. */
+    private static final long LAST_LINE_EXTENSION_MS = 600L;
+
+    /** A pause of this length after a line with no end means the line ended before the pause. */
+    public static final long LONG_PAUSE_MS = 7000L;
+    /** A line with no end and no long pause after it is taken to last until the next line. */
+    public static final long ASSUMED_LINE_END_MAX_GAP_MS = LONG_PAUSE_MS + 4000L;
+    private static final long MIN_VOCAL_HOLD_MS = 5000L;
+    private static final long VOCAL_HOLD_PER_CHAR_MS = 180L;
 
     public static final long SCROLL_LOOK_AHEAD_MIN_MS = 350L;
     public static final long SCROLL_LOOK_AHEAD_MAX_MS = 500L;
-    public static final long SCROLL_ANIMATION_MAX_DURATION_MS = 450L;
-    public static final float SCROLL_DELAY_INCREMENT_RATIO = 0.1f;
-    public static final float SCROLL_DELAY_INCREMENT_RELAX_RATIO = 0.05f;
-    public static final float RELAX_SCROLL_DURATION_MULTIPLIER = 1.5f;
+    private static final long SCROLL_ANIMATION_MAX_DURATION_MS = 450L;
+    private static final float SCROLL_DELAY_INCREMENT_RATIO = 0.1f;
     public static final long HIGHLIGHT_LOOK_AHEAD_MS = 190L;
 
     public static final class RetimedEntry {
@@ -35,10 +47,6 @@ public final class LyricsRetiming {
         public final long adjustedEndTimeMs;
         public final boolean isSecondary;
 
-        public RetimedEntry(LyricsLine line, long startMs, long actualEndTimeMs, long adjustedEndTimeMs) {
-            this(line, startMs, actualEndTimeMs, adjustedEndTimeMs, line != null && line.isBG());
-        }
-
         public RetimedEntry(LyricsLine line, long startMs, long actualEndTimeMs, long adjustedEndTimeMs, boolean isSecondary) {
             this.line = line;
             this.startMs = startMs;
@@ -46,35 +54,39 @@ public final class LyricsRetiming {
             this.adjustedEndTimeMs = adjustedEndTimeMs;
             this.isSecondary = isSecondary;
         }
-    }
 
+        public long effectiveEndMs() {
+            return Math.max(actualEndTimeMs, adjustedEndTimeMs);
+        }
+    }
 
     private LyricsRetiming() {
     }
 
     public static long calculateScrollDuration(long scrollLookAheadMs) {
-        return calculateScrollDuration(scrollLookAheadMs, false);
+        return Math.min(SCROLL_ANIMATION_MAX_DURATION_MS, Math.max(1L, scrollLookAheadMs));
     }
 
-    public static long calculateScrollDuration(long scrollLookAheadMs, boolean isRelaxMode) {
-        long base = Math.min(SCROLL_ANIMATION_MAX_DURATION_MS, Math.max(1L, scrollLookAheadMs));
-        return isRelaxMode ? Math.round(base * RELAX_SCROLL_DURATION_MULTIPLIER) : base;
+    /** {@return how much later each further line starts moving in a scroll of this duration} */
+    public static float calculateScrollDelayIncrement(long scrollDurationMs) {
+        return scrollDurationMs * SCROLL_DELAY_INCREMENT_RATIO;
     }
 
-    public static float calculateScrollDelayIncrementFloat(long scrollDurationMs) {
-        return calculateScrollDelayIncrementFloat(scrollDurationMs, false);
-    }
-
-    public static float calculateScrollDelayIncrementFloat(long scrollDurationMs, boolean isRelaxMode) {
-        return scrollDurationMs * (isRelaxMode ? SCROLL_DELAY_INCREMENT_RELAX_RATIO : SCROLL_DELAY_INCREMENT_RATIO);
-    }
-
-    public static long calculateScrollDelayIncrement(long scrollDurationMs) {
-        return calculateScrollDelayIncrement(scrollDurationMs, false);
-    }
-
-    public static long calculateScrollDelayIncrement(long scrollDurationMs, boolean isRelaxMode) {
-        return Math.round(calculateScrollDelayIncrementFloat(scrollDurationMs, isRelaxMode));
+    /**
+     * {@return where a line with no end of its own is taken to end, given where the next
+     * line starts}
+     */
+    public static long estimateEndMs(LyricsLine line, long nextStartMs) {
+        final long startMs = line.startTimeMs();
+        final long vocalHold = Math.max(MIN_VOCAL_HOLD_MS,
+                (line.text() != null ? line.text().length() : 10) * VOCAL_HOLD_PER_CHAR_MS);
+        if (nextStartMs == LyricsLine.NO_TIME) {
+            return startMs + vocalHold;
+        }
+        if (nextStartMs - startMs < ASSUMED_LINE_END_MAX_GAP_MS) {
+            return nextStartMs;
+        }
+        return Math.min(startMs + vocalHold, nextStartMs - LONG_PAUSE_MS);
     }
 
     public static long[] buildAdjustedEndMaxByIndex(@Nullable List<RetimedEntry> retimedLyrics) {
@@ -86,8 +98,7 @@ public final class LyricsRetiming {
         long currentMax = Long.MIN_VALUE;
         for (int i = 0; i < size; i++) {
             RetimedEntry r = retimedLyrics.get(i);
-            long effectiveEnd = Math.max(r.actualEndTimeMs, r.adjustedEndTimeMs);
-            currentMax = Math.max(currentMax, effectiveEnd);
+            currentMax = Math.max(currentMax, r.effectiveEndMs());
             maxEnd[i] = currentMax;
         }
         return maxEnd;
@@ -113,7 +124,6 @@ public final class LyricsRetiming {
         return result;
     }
 
-    @NonNull
     public static List<Integer> findActiveRetimedLineIndices(
             @Nullable List<RetimedEntry> retimedLyrics,
             @Nullable long[] adjustedEndMaxByIndex,
@@ -131,9 +141,7 @@ public final class LyricsRetiming {
         int index = lastStartedIndex;
         while (index >= 0 && index < adjustedEndMaxByIndex.length
                 && adjustedEndMaxByIndex[index] + endToleranceMs >= positionMs) {
-            RetimedEntry retimed = retimedLyrics.get(index);
-            long effectiveEnd = Math.max(retimed.actualEndTimeMs, retimed.adjustedEndTimeMs);
-            if (positionMs <= effectiveEnd + endToleranceMs) {
+            if (positionMs <= retimedLyrics.get(index).effectiveEndMs() + endToleranceMs) {
                 activeIndices.add(index);
             }
             index--;
@@ -144,7 +152,7 @@ public final class LyricsRetiming {
     }
 
     private static boolean areConsecutiveMainLines(
-            @NonNull List<RetimedEntry> retimedLyrics,
+            List<RetimedEntry> retimedLyrics,
             int prevIdx,
             int currIdx) {
         if (currIdx <= prevIdx) return false;
@@ -169,9 +177,7 @@ public final class LyricsRetiming {
         int primaryIndex = (activeIndices != null && !activeIndices.isEmpty())
                 ? activeIndices.get(activeIndices.size() - 1) : -1;
         if (primaryIndex != -1) {
-            RetimedEntry pRetimed = retimedLyrics.get(primaryIndex);
-            long effectiveEnd = Math.max(pRetimed.actualEndTimeMs, pRetimed.adjustedEndTimeMs);
-            if (positionMs > effectiveEnd + 10L) {
+            if (positionMs > retimedLyrics.get(primaryIndex).effectiveEndMs() + 10L) {
                 primaryIndex = -1;
             }
         }
@@ -214,14 +220,11 @@ public final class LyricsRetiming {
         }
     }
 
-    @NonNull
-    public static List<RetimedEntry> retimeLyrics(
-            @Nullable List<LyricsLine> lyrics,
-            @Nullable Set<Integer> gapAfterIndex) {
-        return retimeLyrics(lyrics, gapAfterIndex, null);
-    }
-
-    @NonNull
+    /**
+     * @param gapAfterIndex   Lines followed by a pause that shows its own indicator, which the
+     *                        highlight of the line then does not reach into.
+     * @param isSecondaryLine Lines that are background vocals of the main line before them.
+     */
     public static List<RetimedEntry> retimeLyrics(
             @Nullable List<LyricsLine> lyrics,
             @Nullable Set<Integer> gapAfterIndex,
@@ -241,18 +244,7 @@ public final class LyricsRetiming {
             secFlags[i] = (isSecondaryLine != null && i < isSecondaryLine.length && isSecondaryLine[i])
                     || e.isBG();
             startMs[i] = e.startTimeMs();
-            long end = LyricsLine.NO_TIME;
-            if (!e.words().isEmpty()) {
-                Word lastWord = e.words().get(e.words().size() - 1);
-                if (lastWord.endMs() != LyricsLine.NO_TIME) {
-                    end = lastWord.endMs();
-                }
-            }
-            if (end == LyricsLine.NO_TIME) {
-                end = e.endTimeMs();
-            } else if (e.endTimeMs() != LyricsLine.NO_TIME) {
-                end = Math.max(end, e.endTimeMs());
-            }
+            long end = e.sungEndMs();
             if (end == LyricsLine.NO_TIME) {
                 long nextDiffStart = LyricsLine.NO_TIME;
                 for (int j = i + 1; j < len; j++) {
@@ -261,17 +253,7 @@ public final class LyricsRetiming {
                         break;
                     }
                 }
-                if (nextDiffStart != LyricsLine.NO_TIME) {
-                    long gap = nextDiffStart - startMs[i];
-                    if (gap < 11000L) {
-                        end = nextDiffStart;
-                    } else {
-                        long vocalHold = Math.max(5000L, (e.text() != null ? e.text().length() : 10) * 180L);
-                        end = Math.min(startMs[i] + vocalHold, nextDiffStart - 7000L);
-                    }
-                } else {
-                    end = startMs[i] + Math.max(5000L, (e.text() != null ? e.text().length() : 10) * 180L);
-                }
+                end = estimateEndMs(e, nextDiffStart);
             }
             originalEndMs[i] = end;
             newEndMs[i] = end;
@@ -314,7 +296,7 @@ public final class LyricsRetiming {
                     clusterFinalEnd += Math.min(RETIMING_MAX_EXTENSION_MS, gap);
                 }
             } else {
-                clusterFinalEnd += 600L;
+                clusterFinalEnd += LAST_LINE_EXTENSION_MS;
             }
 
             for (int j = i; j <= clusterEnd; j++) {
@@ -326,7 +308,7 @@ public final class LyricsRetiming {
                 for (int s = j + 1; s <= clusterEnd && secFlags[s]; s++) {
                     jEffEnd = Math.max(jEffEnd, originalEndMs[s]);
                 }
-                Long cutoff = null;
+                long cutoff = Long.MIN_VALUE;
                 long prevEffEnd = jEffEnd;
                 for (int k = j + 1; k <= clusterEnd; k++) {
                     if (secFlags[k]) {
@@ -344,7 +326,7 @@ public final class LyricsRetiming {
                     }
                     prevEffEnd = kEffEnd;
                 }
-                newEndMs[j] = (cutoff != null) ? cutoff : clusterFinalEnd;
+                newEndMs[j] = cutoff != Long.MIN_VALUE ? cutoff : clusterFinalEnd;
             }
 
             i = clusterEnd + 1;
