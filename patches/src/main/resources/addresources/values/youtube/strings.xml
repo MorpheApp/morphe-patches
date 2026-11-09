@@ -1293,7 +1293,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_disable_playlist_autoplay_summary">Prevents playlists from automatically advancing to the next video</string>
 
     <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-    <string name="morphe_disable_continue_watching_prompt_title">Disable \'Continue watching?\' prompt</string>
+    <string name="morphe_continue_watching_prompt_title">\'Continue watching?\' prompt</string>
+    <string name="morphe_continue_watching_prompt_entry_1">Default</string>
+    <string name="morphe_continue_watching_prompt_entry_2">Disabled</string>
+    <string name="morphe_continue_watching_prompt_entry_3">Disabled, always show the autoplay countdown</string>
 
     <!-- layout.player.fullscreen.exitFullscreenPatch -->
     <string name="morphe_exit_fullscreen_title">Exit fullscreen mode on video end</string>
