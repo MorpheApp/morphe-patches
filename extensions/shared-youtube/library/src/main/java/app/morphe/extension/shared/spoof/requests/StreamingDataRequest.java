@@ -102,6 +102,35 @@ public class StreamingDataRequest {
         return orderToUse;
     }
 
+    /**
+     * Prepares what a fetch of each client waits for, so the first videos do not wait for it:
+     * the JavaScript engine, the access token of a client the user signed in to, and the visitor id.
+     * The clients after the first one are prepared as well, because a video that the first client
+     * cannot play waits for the next client.
+     */
+    public static void prepareClients() {
+        ClientType[] clientOrder = clientOrderToUse;
+        // The engine starts on its own thread, and the requests below do not delay it.
+        for (ClientType client : clientOrder) {
+            if (client.requireJS && !skipClient(client)) {
+                JavaScriptManager.warmUpInBackground();
+                break;
+            }
+        }
+
+        for (ClientType client : clientOrder) {
+            if (skipClient(client)) {
+                continue;
+            }
+            // Without an access token, the client is skipped.
+            if (client.supportsOAuth2 && client.requireLogin
+                    && !Utils.isNotEmpty(OAuth2Requester.getAndUpdateAccessTokenIfNeeded())) {
+                continue;
+            }
+            VisitorIdRequester.getVisitorId(client);
+        }
+    }
+
     private static final String AUTHORIZATION_HEADER = "Authorization"; // Available only to logged-in users.
     private static final String API_FORMAT_VERSION_HEADER = "X-GOOG-API-FORMAT-VERSION";
     private static final String VISITOR_ID_HEADER = "X-Goog-Visitor-Id";
