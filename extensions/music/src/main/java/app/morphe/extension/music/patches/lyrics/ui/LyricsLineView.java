@@ -1947,9 +1947,9 @@ final class LyricsLineView extends TextView {
 
         // Each lyric line makes room under it for its readings and above wrapped lines for furigana.
         final boolean hasRoman = !romanClusters.isEmpty();
-        final float lineRomanExtraHeight = hasRoman ? (fontSizePx * 1.05f) : 0f;
+        final float lineRomanExtraHeight = hasRoman ? (fontSizePx * 0.70f) : 0f;
         final float lineExtraHeight = lineRomanExtraHeight + (lineCount > 1 ? lineRubyExtraHeight : 0f);
-        final int bottomMargin = hasRoman ? Math.round(fontSizePx * 0.25f) : 0;
+        final int bottomMargin = hasRoman ? Math.round(fontSizePx * 0.08f) : 0;
         final int extraRomanHeightPx = Math.round(
                 (hasRoman ? lineCount * lineRomanExtraHeight : 0f)
                         + Math.max(0, lineCount - 1) * lineRubyExtraHeight) + bottomMargin;
@@ -2669,9 +2669,8 @@ final class LyricsLineView extends TextView {
                         ? romanStartShift[c.wordIndex()] : 0f;
                 drawX[i] = gx - lineStart + lineLeft + shift;
             }
-            final float baseLineBottom = li < lineBottoms.length
-                    ? lineBottoms[li] : (lineBaselines[li] + fontSizePx * 0.25f);
-            final float y = baseLineBottom + li * lineExtraHeight + fontSizePx * 0.08f;
+            final float baseline = li < lineBaselines.length ? lineBaselines[li] : 0f;
+            final float y = baseline + fontSizePx * 0.12f + li * lineExtraHeight;
             lines[li] = new RomanLineStatics(cs, drawX, y);
         }
         return lines;

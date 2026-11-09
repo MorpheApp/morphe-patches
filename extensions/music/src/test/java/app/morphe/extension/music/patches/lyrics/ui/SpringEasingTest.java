@@ -84,4 +84,34 @@ public class SpringEasingTest {
         Assert.assertEquals(1, upStagger.steps(4));
         Assert.assertEquals(3, upStagger.steps(2));
     }
+
+    @Test
+    public void testUsableHitWordAndSyllableTokens() {
+        String text = "Everything every day";
+        // Whole word "every" must match the standalone word at index 11, not inside "Everything"
+        int hitWord = LyricsSpanBuilder.usableHit(text, text.length(), 0, "every", true);
+        Assert.assertEquals(11, hitWord);
+
+        // Syllable tokens of "Everything" must match sequentially even without word boundaries
+        int hitSyl1 = LyricsSpanBuilder.usableHit(text, text.length(), 0, "Every", false);
+        Assert.assertEquals(0, hitSyl1);
+        int hitSyl2 = LyricsSpanBuilder.usableHit(text, text.length(), 5, "thing", true);
+        Assert.assertEquals(5, hitSyl2);
+    }
+
+    @Test
+    public void testSkipNewlines() {
+        String singleLf = "hello\nworld";
+        Assert.assertEquals(6, LyricsSpanBuilder.skipNewlines(singleLf, 5));
+        Assert.assertEquals(0, LyricsSpanBuilder.skipNewlines(singleLf, 0));
+
+        String multiLf = "line1\n\nline2";
+        Assert.assertEquals(7, LyricsSpanBuilder.skipNewlines(multiLf, 5));
+
+        String crLf = "line1\r\nline2";
+        Assert.assertEquals(7, LyricsSpanBuilder.skipNewlines(crLf, 5));
+
+        String trailingLf = "line1\n";
+        Assert.assertEquals(6, LyricsSpanBuilder.skipNewlines(trailingLf, 5));
+    }
 }

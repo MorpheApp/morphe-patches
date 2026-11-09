@@ -148,9 +148,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     private static final float BUTTON_TEXT_SIZE_SP = 14;
 
-    static final float SECTION_DOT_SIZE_FACTOR = 0.36f;
-    static final float SECTION_DOT_GAP_FACTOR = 0.22f;
-
     private static final long SECTION_TAG_FADE_IN_MILLIS = 250;
 
     // Derived from the lyrics text size, so the pill and dots keep their proportions together.
@@ -281,29 +278,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
      * Views are {@code null} where the line has no agent label, indexing alongside {@link #lineViews}.
      */
     private final List<TextView> agentTags = new ArrayList<>();
-
-    /**
-     * The row of three dots that stands in for a section label over a long silence, one per
-     * section label, indexing alongside {@link #sectionTags}. Entries are {@code null} where the
-     * line has no label, and every row starts hidden.
-     */
-    private final List<LinearLayout> sectionDots = new ArrayList<>();
-
-    /**
-     * The slot a line without a section label opens up for the dots to play in, one per line that
-     * has no label but is preceded by a long silence, indexing alongside {@link #lineViews}. It is
-     * zero-height until its gap calls for it. Entries are {@code null} elsewhere.
-     */
-    private final List<FrameLayout> sectionDotSlots = new ArrayList<>();
-
-    /** The height a section label takes, so a slot can open up to match one. */
-    private int sectionTagHeightPx;
-
-    /** The silences long enough to play the dots, as measured on the lines currently built. */
-    private List<SectionDotsMotion.Gap> sectionDotsGaps = List.of();
-
-    /** Line index of the label whose dots are being driven right now, or -1 when none are. */
-    private int activeSectionDotsIndex = -1;
 
     private final List<List<LyricsSpanBuilder.WordTiming>> lineWordSpans = new ArrayList<>();
     private final List<Integer> lineOriginalStarts = new ArrayList<>();
@@ -749,15 +723,14 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 && y >= (v.getTop() - extraPadding) && y <= (v.getBottom() + extraPadding);
     }
 
-    /** Touches on the buttons are theirs alone, and never start a scroll or an offset drag. */
-    private boolean isTouchOnButtons(MotionEvent event) {
-        return isTouchInsideView(jumpToCurrentView, event, Dim.dp16)
-                || isTouchInsideView(buttonRow, event, Dim.dp8);
+    /** Touches on the jump button are its alone, and never start a scroll or an offset drag. */
+    private boolean isTouchOnJumpButton(MotionEvent event) {
+        return isTouchInsideView(jumpToCurrentView, event, Dim.dp16);
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        if (!isTouchOnButtons(event)) {
+        if (!isTouchOnJumpButton(event)) {
             trackScrollDrag(event);
         }
         return super.dispatchTouchEvent(event);
@@ -810,7 +783,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        if (isTouchOnButtons(event)) {
+        if (isTouchOnJumpButton(event)) {
             return false;
         }
         handleOffsetGesture(event);
@@ -819,7 +792,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (isOffsetAdjusting && !isTouchOnButtons(event)) {
+        if (isOffsetAdjusting) {
             handleOffsetGesture(event);
             return true;
         }
@@ -1003,7 +976,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             lastOverlayIndex = -1;
             lastScrollTarget = -1;
             lastLivePosMs = 0L;
-            resetSectionDots();
             seekPending = true;
             userScrollUntilUptimeMs = 0;
             isBrowsing = false;
@@ -1138,28 +1110,20 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         List<LyricsLine> newLines = newLyrics.lines();
         if (lineRows.size() != newLines.size() || lineViews.size() != newLines.size()
                 || sectionTags.size() != newLines.size()
-                || agentTags.size() != newLines.size()
-                || sectionDots.size() != newLines.size()
-                || sectionDotSlots.size() != newLines.size()) {
+                || agentTags.size() != newLines.size()) {
             return false;
         }
 
-        // Agent tags share the tagRow with section tags; rebuilding the tagRow structure
-        // in place is not safe, so fall back to a full rebuild when any agent tag exists.
         for (TextView agentTag : agentTags) {
             if (agentTag != null) {
                 return false;
             }
         }
 
-        // Any label dimmed by a gap is put back, since the gaps driving it are replaced below.
-        resetSectionDots();
-
         Context context = getContext();
         String previousLeadSongPart = null;
         for (int i = 0; i < newLines.size(); i++) {
             LyricsLine line = newLines.get(i);
-            // The same rule buildLyrics applies, which it has to stay in step with.
             String songPart = line.songPart();
             final boolean opensSection = !line.isBG()
                     && songPart != null && !songPart.isEmpty()
@@ -1169,76 +1133,33 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             }
 
             TextView builtTag = sectionTags.get(i);
-            FrameLayout builtSlot = sectionDotSlots.get(i);
             if (opensSection && builtTag != null) {
                 builtTag.setText(songPart);
                 continue;
             }
             if (opensSection) {
-                // The label takes over the slot that was standing in for it.
-                if (builtSlot != null) {
-                    asRow(lineRows.get(i)).removeView(builtSlot);
-                    sectionDotSlots.set(i, null);
-                    sectionDots.set(i, null);
-                }
                 TextView tag = createSectionTag(context, songPart);
-                LinearLayout dotsRow = createSectionDots(context);
                 boolean isRight = i < lineViews.size()
                         && (lineViews.get(i).getGravity() & Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.END;
                 FrameLayout tagRow = new FrameLayout(context);
                 tagRow.addView(tag, tagLayoutParams(isRight));
-                tagRow.addView(dotsRow, dotsLayoutParams(context, isRight));
                 asRow(lineRows.get(i)).addView(tagRow, 0, slotLayoutParams());
                 sectionTags.set(i, tag);
-                sectionDots.set(i, dotsRow);
                 tagRow.setAlpha(0f);
                 tagRow.animate().alpha(1f).setDuration(SECTION_TAG_FADE_IN_MILLIS).start();
             } else if (builtTag != null) {
-                // Losing a label: drop the row it was built with, then let the slot below take its
-                // turn if a silence still calls for one.
                 asRow(lineRows.get(i)).removeViewAt(0);
                 sectionTags.set(i, null);
-                sectionDots.set(i, null);
             }
         }
-
         lyrics = newLyrics;
         lastBuiltLyrics = newLyrics;
-        List<SectionDotsMotion.Gap> newGaps = SectionDotsMotion.computeGaps(newLines);
-        sectionDotsGaps = newGaps;
-        ensureDotsSlotsExist(context, newGaps);
         return true;
     }
 
-    /**
-     * Gives a slot to every line a gap points at that has no label to stand in for it, so a silence
-     * that starts showing up after the rows were built still has somewhere to play.
-     */
-    @SuppressWarnings("ConstantValue")
-    private void ensureDotsSlotsExist(Context context, List<SectionDotsMotion.Gap> gaps) {
-        for (SectionDotsMotion.Gap gap : gaps) {
-            final int index = gap.tagLineIndex();
-            if (index < 0 || index >= sectionDotSlots.size()
-                    || sectionTags.get(index) != null || agentTags.get(index) != null
-                    || sectionDotSlots.get(index) != null) {
-                continue;
-            }
-            ViewGroup existingRow = asRow(lineRows.get(index));
-            if (existingRow == null) {
-                continue;
-            }
-            LinearLayout dotsRow = createSectionDots(context);
-            boolean isRight = index < lineViews.size()
-                    && (lineViews.get(index).getGravity() & Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.END;
-            FrameLayout slot = new FrameLayout(context);
-            slot.addView(dotsRow, dotsLayoutParams(context, isRight));
-            FrameLayout.LayoutParams params = slotLayoutParams();
-            params.height = 0;
-            params.topMargin = 0;
-            existingRow.addView(slot, 0, params);
-            sectionDotSlots.set(index, slot);
-            sectionDots.set(index, dotsRow);
-        }
+    @NonNull
+    private static ViewGroup asRow(View row) {
+        return (ViewGroup) row;
     }
 
     /** Hides the built-in content along with showing this panel, so the two texts never overlap. */
@@ -1675,15 +1596,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         builtOnlyMode = onlySnap;
         String previousLeadSongPart = null;
         String previousLeadAgentId = null;
-        // Needed up front: a line without a label only gets a slot if a silence calls for one.
-        List<SectionDotsMotion.Gap> builtGaps = SectionDotsMotion.computeGaps(newLyrics.lines());
-        boolean[] gapAnchors = new boolean[newLyrics.lines().size()];
-        for (SectionDotsMotion.Gap gap : builtGaps) {
-            final int anchor = gap.tagLineIndex();
-            if (anchor >= 0 && anchor < gapAnchors.length) {
-                gapAnchors[anchor] = true;
-            }
-        }
         final int lineTotalCount = newLyrics.lines().size();
         final boolean[] isSecFlags = secondaryLineFlags(newLyrics.lines());
         final boolean[] lineRightAligned = rightAlignedLines(newLyrics.lines(), isSecFlags);
@@ -1918,8 +1830,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 lineRows.add(currentParentRow);
                 sectionTags.add(null);
                 agentTags.add(null);
-                sectionDots.add(null);
-                sectionDotSlots.add(null);
                 lineUnsungSpans.add(null);
                 lineIsBackground.add(true);
                 continue;
@@ -1964,35 +1874,17 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     ? agentNames.get(agentId) : null;
             TextView agentTag = createSectionTag(context, agentName);
 
-            LinearLayout sectionDotsRow = null;
-            FrameLayout sectionDotSlot = null;
             if (sectionTag != null || agentTag != null) {
                 FrameLayout tagRow = new FrameLayout(context);
                 FrameLayout.LayoutParams tagRowParams = slotLayoutParams();
                 tagRowParams.topMargin = (Settings.LYRICS_SHOW_SECTION.get() && i > 0) ? Dim.dp24 : 0;
                 if (sectionTag != null) {
-                    sectionDotsRow = createSectionDots(context);
                     tagRow.addView(sectionTag, tagLayoutParams(isRightAligned));
-                    tagRow.addView(sectionDotsRow, dotsLayoutParams(context, isRightAligned));
-                    TextView measuredTag = sectionTag;
-                    measuredTag.post(() -> {
-                        if (measuredTag.getHeight() > 0) {
-                            sectionTagHeightPx = measuredTag.getHeight();
-                        }
-                    });
                 }
                 if (agentTag != null) {
                     tagRow.addView(agentTag, tagLayoutParams(!isRightAligned));
                 }
                 lineRow.addView(tagRow, tagRowParams);
-            } else if (i < gapAnchors.length && gapAnchors[i]) {
-                sectionDotsRow = createSectionDots(context);
-                sectionDotSlot = new FrameLayout(context);
-                sectionDotSlot.addView(sectionDotsRow, dotsLayoutParams(context, isRightAligned));
-                FrameLayout.LayoutParams slotParams = slotLayoutParams();
-                slotParams.height = 0;
-                slotParams.topMargin = 0;
-                lineRow.addView(sectionDotSlot, slotParams);
             }
 
             LinearLayout.LayoutParams lineViewParams = new LinearLayout.LayoutParams(
@@ -2009,13 +1901,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             lineRows.add(lineRow);
             sectionTags.add(sectionTag);
             agentTags.add(agentTag);
-            sectionDots.add(sectionDotsRow);
-            sectionDotSlots.add(sectionDotSlot);
             lineUnsungSpans.add(null);
             lineIsBackground.add(false);
         }
 
-        sectionDotsGaps = builtGaps;
         initialBuildComplete = true;
 
         LINE_BUILDER_EXECUTOR.execute(() -> {
@@ -2138,10 +2027,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                             final int leading = LyricsViewSupport.leadingRegionSize(layout,
                                     view.transStart, view.transEnd)
                                     + LyricsViewSupport.leadingRegionSize(layout, view.romaStart, view.romaEnd);
-                            final int trailing = LyricsViewSupport.trailingRegionSize(layout,
-                                    view.transStart, view.transEnd)
-                                    + LyricsViewSupport.trailingRegionSize(layout, view.romaStart, view.romaEnd)
-                                    + view.syllableRomanizationExtraHeight();
+                            // The real growth is the whole height delta: it also carries what
+                            // chooseHeight does to the main line's descent, which the region-only
+                            // sizes never see. Sizing `trailing` from the remainder keeps
+                            // leading + trailing equal to the measured change, so the scroll
+                            // anchor compensates the exact amount the content moved.
+                            final int trailing = Math.max(0, newH - oldH - leading);
                             resizes.add(new RowResize(i, lineRows.get(i), tv, oldH, newH,
                                     leading, trailing));
                         }
@@ -4164,14 +4055,18 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 continue;
             }
             // A row whose region starts lower keeps the rows above it, so it shifts instead.
-            final int freedLayoutH = LyricsViewSupport.trailingRegionSize(layout, start, end);
-            final int targetH = freedLayoutH + tv.getPaddingTop() + tv.getPaddingBottom()
+            final int freedLayoutH = start == 0
+                    ? LyricsViewSupport.leadingRegionSize(layout, start, end)
+                    : LyricsViewSupport.trailingRegionSize(layout, start, end);
+            final int targetLayoutH = layout.getHeight() - freedLayoutH;
+            final int targetH = targetLayoutH + tv.getPaddingTop() + tv.getPaddingBottom()
                     + LyricsViewSupport.rowHeightOutsideText(row, tv);
-            if (targetH <= 0 || targetH >= oldH - 1) {
+            if (freedLayoutH <= 0 || targetH <= 0 || targetH >= oldH - 1) {
                 continue;
             }
-            resizes.add(new RowResize(i, row, tv, oldH, targetH,
-                    start == 0 ? oldH - targetH : 0, 0));
+            final int leading = start == 0 ? oldH - targetH : 0;
+            final int trailing = start == 0 ? 0 : oldH - targetH;
+            resizes.add(new RowResize(i, row, tv, oldH, targetH, leading, trailing));
         }
         if (!resizes.isEmpty()) {
             startRowHeightAnimation(resizes, false, onEnd);
@@ -4595,10 +4490,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         lineRows.clear();
         sectionTags.clear();
         agentTags.clear();
-        sectionDots.clear();
-        sectionDotSlots.clear();
-        sectionDotsGaps = List.of();
-        activeSectionDotsIndex = -1;
         lineWordSpans.clear();
         lineOriginalStarts.clear();
         lineUnsungSpans.clear();
@@ -4846,23 +4737,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
             final boolean springScrollOn = Settings.LYRICS_SPRING_SCROLL.get();
             final boolean gapDotsOn = Settings.LYRICS_GAP_DOTS.get();
-            if (!gapDotsOn) {
-                for (GapLineView gv : gapLineViews) {
-                    gv.updateState(pos, false);
-                }
-                updateSectionDots(pos);
-            } else {
-                resetSectionDots();
-            }
-
             GapInterval activeGi = getActiveGapInterval(pos);
             final boolean inGapBreak = (activeGi != null && pos < activeGi.endMs());
-
-            if (gapDotsOn) {
-                for (GapLineView gv : gapLineViews) {
-                    boolean shouldBeActive = (activeGi != null && gv.getInterval() == activeGi && pos < activeGi.endMs());
-                    gv.updateState(pos, shouldBeActive);
-                }
+            for (GapLineView gv : gapLineViews) {
+                boolean shouldBeActive = gapDotsOn && inGapBreak && gv.getInterval() == activeGi;
+                gv.updateState(pos, shouldBeActive);
             }
 
             final int refIdx = Math.max(0, leadLineIndex(primaryActiveIndex >= 0
@@ -5222,164 +5101,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
      * into the middle of a gap simply lands on that gap's frame and a dropped tick cannot leave the
      * label or the dots stranded.
      */
-    private void updateSectionDots(long positionMs) {
-        List<SectionDotsMotion.Gap> gaps = sectionDotsGaps;
-        if (gaps.isEmpty() || onlyMode != OnlyMode.NONE
-                || !Settings.LYRICS_SHOW_SECTION.get()) {
-            resetSectionDots();
-            return;
-        }
-        SectionDotsMotion.Gap gap = null;
-        for (SectionDotsMotion.Gap candidate : gaps) {
-            if (positionMs >= candidate.gapStartMs() && positionMs < candidate.gapEndMs()) {
-                gap = candidate;
-                break;
-            }
-        }
-        if (gap == null) {
-            resetSectionDots();
-            return;
-        }
-        final int index = gap.tagLineIndex();
-        if (index < 0 || index >= sectionTags.size() || index >= sectionDots.size()
-                || index >= sectionDotSlots.size()) {
-            // The gaps are measured on the lines these lists were built from, so this cannot
-            // normally happen; a label left half-swapped would be worse than no motion.
-            resetSectionDots();
-            return;
-        }
-        if (activeSectionDotsIndex != index) {
-            resetSectionDots();
-            activeSectionDotsIndex = index;
-        }
-        applySectionDotsState(SectionDotsMotion.stateAt(
-                gap.gapStartMs(), gap.gapEndMs(), positionMs), index);
-    }
-
-    @NonNull
-    private static ViewGroup asRow(View row) {
-        return (ViewGroup) row;
-    }
-
-    /** Puts one label and its dot row where {@code state} says they belong. */
-    private void applySectionDotsState(SectionDotsMotion.State state, int index) {
-        TextView tag = sectionTags.get(index);
-        if (tag != null) {
-            tag.setAlpha(state.pillAlpha());
-        }
-        FrameLayout slot = index < sectionDotSlots.size() ? sectionDotSlots.get(index) : null;
-        if (slot != null) {
-            // A line with no label gives the dots its space by opening up rather than by handing
-            // over a label, so the space is driven from the same curve the fade is.
-            applySectionSlotHeight(slot, Math.round(state.expand() * targetSectionSlotHeight()),
-                    Math.round(state.expand() * Dim.dp24));
-        }
-        LinearLayout dotsRow = sectionDots.get(index);
-        if (dotsRow == null) {
-            return;
-        }
-        dotsRow.setVisibility(state.dotsVisible() ? VISIBLE : GONE);
-        if (!state.dotsVisible()) {
-            return;
-        }
-        dotsRow.setAlpha(state.groupAlpha());
-        float[] dotAlpha = state.dotAlpha();
-        for (int i = 0; i < dotsRow.getChildCount() && i < dotAlpha.length; i++) {
-            dotsRow.getChildAt(i).setAlpha(dotAlpha[i]);
-        }
-    }
-
-    private void applySectionSlotMargin(int lineIndex, int marginPx) {
-        if (lineIndex < 0 || lineIndex >= lineRows.size()) {
-            return;
-        }
-        View row = lineRows.get(lineIndex);
-        if (!(row instanceof ViewGroup group) || group.getChildCount() == 0) {
-            return;
-        }
-        View slot = group.getChildAt(0);
-        if (!(slot instanceof FrameLayout)) {
-            return;
-        }
-        ViewGroup.MarginLayoutParams params =
-                (ViewGroup.MarginLayoutParams) slot.getLayoutParams();
-        if (params == null || params.topMargin == marginPx) {
-            return;
-        }
-        params.topMargin = marginPx;
-        slot.setLayoutParams(params);
-    }
-
-    /** Sets a slot's height, asking for a layout only when it actually moved. */
-    private void applySectionSlotHeight(FrameLayout slot, int heightPx, int marginPx) {
-        ViewGroup.MarginLayoutParams params =
-                (ViewGroup.MarginLayoutParams) slot.getLayoutParams();
-        if (params == null
-                || (params.height == heightPx && params.topMargin == marginPx)) {
-            return;
-        }
-        params.height = heightPx;
-        params.topMargin = marginPx;
-        slot.setLayoutParams(params);
-    }
-
-    /** Restores the label and hides the dots of whichever line was animating. */
-    private void resetSectionDots() {
-        final int index = activeSectionDotsIndex;
-        if (index < 0) {
-            return;
-        }
-        activeSectionDotsIndex = -1;
-        if (index < sectionTags.size()) {
-            TextView tag = sectionTags.get(index);
-            if (tag != null) {
-                tag.setAlpha(1f);
-            }
-        }
-        if (index < sectionDotSlots.size()) {
-            FrameLayout slot = sectionDotSlots.get(index);
-            if (slot != null) {
-                applySectionSlotHeight(slot, 0, 0);
-            }
-        }
-        if (index < sectionDots.size()) {
-            LinearLayout dotsRow = sectionDots.get(index);
-            if (dotsRow != null) {
-                dotsRow.setVisibility(GONE);
-                dotsRow.setAlpha(1f);
-            }
-        }
-    }
-
-    /**
-     * The row of dots that stands in for a section label over a silence: three white discs in the
-     * label's own material, so the swap reads as one shape opening into another.
-     *
-     * @return The row, hidden until a gap drives it.
-     */
-    @NonNull
-    private static LinearLayout createSectionDots(Context context) {
-        LinearLayout row = new LinearLayout(context);
-        row.setOrientation(LinearLayout.HORIZONTAL);
-        row.setGravity(Gravity.CENTER_VERTICAL);
-        row.setVisibility(GONE);
-        final int size = LyricsViewSupport.scaledPixels(context, SECTION_DOT_SIZE_FACTOR);
-        final int gap = LyricsViewSupport.scaledPixels(context, SECTION_DOT_GAP_FACTOR);
-        for (int i = 0; i < SectionDotsMotion.DOT_COUNT; i++) {
-            View dot = new View(context);
-            GradientDrawable disc = new GradientDrawable();
-            disc.setShape(GradientDrawable.OVAL);
-            disc.setColor(Color.WHITE);
-            dot.setBackground(disc);
-            LinearLayout.LayoutParams dotParams = new LinearLayout.LayoutParams(size, size);
-            if (i > 0) {
-                dotParams.setMarginStart(gap);
-            }
-            row.addView(dot, dotParams);
-        }
-        return row;
-    }
-
     private void scrollAnchorIntoView(int anchor, boolean lineChanged) {
         if (anchor < 0 || anchor >= lineRows.size() || scrollView.getHeight() <= 0) {
             return;
@@ -5627,18 +5348,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     /** The row sits near the line's edge, unlike the pill whose padding holds its text further in. */
-    private static FrameLayout.LayoutParams dotsLayoutParams(@NonNull Context context, boolean isRightAligned) {
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.WRAP_CONTENT,
-                FrameLayout.LayoutParams.WRAP_CONTENT,
-                (isRightAligned ? Gravity.END : Gravity.START) | Gravity.CENTER_VERTICAL);
-        if (isRightAligned) {
-            params.rightMargin = LyricsViewSupport.sectionDotInset(context);
-        } else {
-            params.leftMargin = LyricsViewSupport.sectionDotInset(context);
-        }
-        return params;
-    }
 
     /**
      * How the label or slot is placed in its line: wrapped to what it holds, and set off the line
@@ -5650,23 +5359,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 FrameLayout.LayoutParams.WRAP_CONTENT);
         params.topMargin = Dim.dp24;
         return params;
-    }
-
-    /**
-     * The height a slot opens to, taken from a label once one has been measured and otherwise
-     * worked out from the label's own text size and padding.
-     */
-    private int targetSectionSlotHeight() {
-        if (sectionTagHeightPx > 0) {
-            return sectionTagHeightPx;
-        }
-        final float textPx = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
-                LyricsViewSupport.sectionTagTextSizeSp(), getResources().getDisplayMetrics());
-        Paint metricsPaint = new Paint();
-        metricsPaint.setTextSize(textPx);
-        Paint.FontMetrics fontMetrics = metricsPaint.getFontMetrics();
-        final int textHeight = Math.round(fontMetrics.descent - fontMetrics.ascent);
-        return Math.max(0, textHeight + Dim.dp4 * 2);
     }
 
     /**
@@ -5710,7 +5402,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         try {
             // A label caught mid-swap would otherwise come back without its opacity, and dots
             // belonging to a hidden label would keep breathing.
-            resetSectionDots();
             final boolean showing = visibility == VISIBLE;
             for (int i = 0; i < sectionTags.size(); i++) {
                 TextView tag = sectionTags.get(i);
@@ -5721,7 +5412,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 if (tag.getVisibility() != visibility) {
                     tag.setVisibility(visibility);
                 }
-                applySectionSlotMargin(i, showing ? Dim.dp24 : 0);
             }
             for (int i = 0; i < agentTags.size(); i++) {
                 TextView tag = agentTags.get(i);
@@ -5884,10 +5574,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     public void applyGapDotsSetting() {
-        final boolean useNewGapDots = Settings.LYRICS_GAP_DOTS.get();
-        if (useNewGapDots) {
-            resetSectionDots();
-        } else {
+        final boolean gapDotsOn = Settings.LYRICS_GAP_DOTS.get();
+        if (!gapDotsOn) {
             for (GapLineView gv : gapLineViews) {
                 gv.hide();
             }
@@ -5932,28 +5620,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                         SECTION_TAG_PADDING_VERTICAL_FACTOR);
                 tag.setPadding(insetH, insetV, insetH, insetV);
             }
-        }
-        for (LinearLayout dotsRow : sectionDots) {
-            LyricsViewSupport.applySectionDotSize(dotsRow);
-            if (dotsRow != null) {
-                ViewGroup.LayoutParams params = dotsRow.getLayoutParams();
-                if (params instanceof FrameLayout.LayoutParams frameParams) {
-                    frameParams.leftMargin = LyricsViewSupport.sectionDotInset(dotsRow.getContext());
-                    dotsRow.setLayoutParams(frameParams);
-                }
-            }
-        }
-        sectionTagHeightPx = 0;
-        for (TextView tag : sectionTags) {
-            if (tag == null || tag.getVisibility() != VISIBLE) {
-                continue;
-            }
-            TextView measuredTag = tag;
-            measuredTag.post(() -> {
-                if (measuredTag.getHeight() > 0) {
-                    sectionTagHeightPx = measuredTag.getHeight();
-                }
-            });
         }
     }
 

@@ -129,28 +129,6 @@ final class LyricsViewSupport {
         return total;
     }
 
-    static void applySectionDotSize(@Nullable LinearLayout row) {
-        if (row == null) {
-            return;
-        }
-        final int size = scaledPixels(row.getContext(), LyricsPanelView.SECTION_DOT_SIZE_FACTOR);
-        final int gap = scaledPixels(row.getContext(), LyricsPanelView.SECTION_DOT_GAP_FACTOR);
-        for (int i = 0; i < row.getChildCount(); i++) {
-            View dot = row.getChildAt(i);
-            if (dot == null) {
-                continue;
-            }
-            LinearLayout.LayoutParams params =
-                    (LinearLayout.LayoutParams) dot.getLayoutParams();
-            if (params == null) {
-                continue;
-            }
-            params.width = size;
-            params.height = size;
-            params.setMarginStart(i == 0 ? 0 : gap);
-            dot.setLayoutParams(params);
-        }
-    }
 
     /**
      * The words the karaoke pass paints for one line.
