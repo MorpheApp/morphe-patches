@@ -423,7 +423,11 @@ public final class NavigationBarPatch {
      * empty band is left between the two bars (<a href="https://github.com/MorpheApp/morphe-patches/issues/2300">...</a>).
      */
     public static boolean useFixedBottomBarRoom(boolean original) {
-        return original && !translucentNavigationBarForced;
+        if (original && translucentNavigationBarForced) {
+            Logger.printVerbose(() -> "useFixedBottomBarRoom turned off");
+            return false;
+        }
+        return original;
     }
 
     /**
@@ -449,6 +453,9 @@ public final class NavigationBarPatch {
         }
 
         translucentNavigationBarBackgroundForced = translucent;
+        if (translucent != original) {
+            Logger.printVerbose(() -> "useTranslucentNavigationBarBackground: " + translucent + " (app: " + original + ")");
+        }
         return translucent;
     }
 
@@ -461,7 +468,11 @@ public final class NavigationBarPatch {
      * and this flag would replace the blurred background with a translucent color, so it is left to the account.
      */
     public static boolean useTranslucentNavigationBarStyle(boolean original) {
-        return original || (PAGES_BEHIND_GLASS_NAVIGATION_BAR && Build.VERSION.SDK_INT < Build.VERSION_CODES.S);
+        if (!original && PAGES_BEHIND_GLASS_NAVIGATION_BAR && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            Logger.printVerbose(() -> "useTranslucentNavigationBarStyle turned on");
+            return true;
+        }
+        return original;
     }
 
     /**
@@ -1410,7 +1421,9 @@ public final class NavigationBarPatch {
 
                         return originalButtons.toBuilder().setButtonRenderer(renderer.build()).build().toByteArray();
                     }
-                } catch (Exception ignored) {
+                } catch (Exception ex) {
+                    // Another button of the list can still be copied.
+                    Logger.printDebug(() -> "Could not copy a toolbar button for the settings button", ex);
                 }
             }
         } catch (Exception e) {

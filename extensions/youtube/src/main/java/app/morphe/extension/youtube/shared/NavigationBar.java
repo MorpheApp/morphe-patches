@@ -101,6 +101,7 @@ public final class NavigationBar {
                 }
                 if (view == searchBarResultsRef.get()) {
                     isSearchBarAttached = true;
+                    Logger.printVerbose(() -> "Search bar shown");
                 }
             }
 
@@ -113,6 +114,7 @@ public final class NavigationBar {
                 if (view == searchBarResultsRef.get()) {
                     // View#isShown() is still true while the detach listeners are called.
                     isSearchBarAttached = false;
+                    Logger.printVerbose(() -> "Search bar hidden");
                 }
             }
         });

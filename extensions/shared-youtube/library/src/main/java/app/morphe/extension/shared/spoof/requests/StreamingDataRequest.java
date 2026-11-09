@@ -708,6 +708,12 @@ public class StreamingDataRequest {
                 streamingData = buildPlayerResponseBuffer(clientType, fallBackConnection, videoId);
             }
 
+            final ClientType resultClientType = clientType;
+            final boolean hasStreams = streamingData != null;
+            Logger.printVerbose(() -> videoId + ": " + (hasStreams
+                    ? "streams from " + resultClientType + " after " + (System.currentTimeMillis() - fetchStartTime) + "ms"
+                    : resultClientType + " gave no playable streams") + (isDownload ? " (download)" : ""));
+
             if (streamingData != null) {
                 // Stats for nerds and the SABR choice describe what is playing,
                 // so the client is set when the streams are given to the player, and not here.

@@ -344,9 +344,15 @@ public final class MiniplayerPatch {
      * Injection point.
      */
     public static boolean getModernMiniplayerOverride(boolean original) {
-        return CURRENT_TYPE == DEFAULT
-                ? original
-                : CURRENT_TYPE.isModern();
+        if (CURRENT_TYPE == DEFAULT) {
+            return original;
+        }
+
+        final boolean modern = CURRENT_TYPE.isModern();
+        if (modern != original) {
+            Logger.printVerbose(() -> "getModernMiniplayerOverride: " + modern + " (app: " + original + ")");
+        }
+        return modern;
     }
 
     /**
@@ -360,9 +366,14 @@ public final class MiniplayerPatch {
         }
 
         Integer modernValue = CURRENT_TYPE.modernPlayerType;
-        return modernValue == null
-                ? original
-                : modernValue;
+        if (modernValue == null) {
+            return original;
+        }
+
+        if (modernValue != original) {
+            Logger.printVerbose(() -> "getModernMiniplayerOverrideType: " + modernValue + " (app: " + original + ")");
+        }
+        return modernValue;
     }
 
     /**
@@ -386,7 +397,11 @@ public final class MiniplayerPatch {
             return original;
         }
 
-        return CURRENT_TYPE.isModern();
+        final boolean modern = CURRENT_TYPE.isModern();
+        if (modern != original) {
+            Logger.printVerbose(() -> "getModernFeatureFlagsActiveOverride: " + modern + " (app: " + original + ")");
+        }
+        return modern;
     }
 
     /**
