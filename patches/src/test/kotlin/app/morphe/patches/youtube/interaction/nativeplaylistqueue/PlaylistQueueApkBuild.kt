@@ -39,6 +39,7 @@ import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionB
 import app.morphe.patches.youtube.misc.medianotification.mediaNotificationControlsPatchYouTube
 import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
 import app.morphe.patches.youtube.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.youtube.video.quality.rememberVideoQualityPatch
 import app.morphe.patches.youtube.video.series.seriesTrackerPatch
@@ -111,6 +112,7 @@ fun main(arguments: Array<String>) {
             verifyNativeFullscreenActions(dexDir, mode != "unselected")
             verifyNativeQueueUndo(dexDir, mode != "unselected")
             verifyNativeMixTap(dexDir, mode != "unselected")
+            verifyNativePlaylistPaging(dexDir, mode != "unselected")
         }
     }
     // Disable only when isolating a known upstream validation failure; normal
@@ -129,6 +131,98 @@ fun main(arguments: Array<String>) {
         arguments.getOrNull(2)?.let { result.applyTo(File(it)) }
         println("$mode: APK patched and SDK DEX/resource verification completed: $workspace")
     }
+}
+
+/** Check the emitted native request, scroll branch and intent replay contracts. */
+private fun verifyNativePlaylistPaging(directory: File, selected: Boolean) {
+    val classes = directory.listFiles()!!.filter { it.extension == "dex" }.flatMap { file ->
+        file.inputStream().buffered().use { DexBackedDexFile.fromInputStream(Opcodes.getDefault(), it).classes.toList() }
+    }
+    val extension = EXTENSION_CLASS.removeSuffix(";")
+    val queuePackage = extension.substringBeforeLast('/')
+    fun implementors(type: String) = classes.filter { type in it.interfaces }
+    val sources = implementors("$queuePackage/PlaylistPages\$Source;")
+    val owners = implementors("$extension\$PagingOwner;")
+    val navigators = implementors("$extension\$PlaylistNavigator;")
+    val frames = implementors("$extension\$LoadingView;")
+    val actions = implementors("$queuePackage/PlaylistCardSource\$TapActions;")
+    val commands = implementors("$queuePackage/PlaylistCardSource\$TapCommand;")
+    if (!selected) {
+        check(listOf(sources, owners, navigators, frames, actions, commands).all { it.isEmpty() }) {
+            "Playlist paging bridges must not be installed when Native queue is unselected"
+        }
+        return
+    }
+    check(actions.size == 1 && commands.size == 1 && sources.size == 1 && owners.size == 1 && frames.size == 1)
+    fun calls(code: List<Instruction>) = code.mapIndexedNotNull { index, instruction ->
+        ((instruction as? ReferenceInstruction)?.reference as? MethodReference)?.let { index to it }
+    }
+    val source = sources.single()
+    val request = source.methods.single { it.name == "patch_requestPlaylistPage" }.implementation!!.instructions.toList()
+    val transport = calls(request).single { it.second.returnType == "Lcom/google/common/util/concurrent/ListenableFuture;" }
+    check(request[transport.first + 1].opcode == Opcode.MOVE_RESULT_OBJECT &&
+            request[transport.first + 2].opcode == Opcode.RETURN_OBJECT &&
+            (request[transport.first + 1] as OneRegisterInstruction).registerA ==
+            (request[transport.first + 2] as OneRegisterInstruction).registerA) {
+        "Return the actual native transport Future for cancellation, without a callback-holder substitute"
+    }
+    check(calls(request).none { it.second.definingClass == EXTENSION_CLASS }) {
+        "Read-only page requests must not publish watch responses or player transitions"
+    }
+    val owner = owners.single()
+    val list = owner.methods.single { it.name == "patch_getPlaylistList" }.implementation!!.instructions
+        .mapNotNull { (it as? ReferenceInstruction)?.reference as? FieldReference }.single()
+    val hooks = classes.filter { !it.type.startsWith("Lapp/morphe/") }.flatMap { it.methods }.mapNotNull { method ->
+        val code = method.implementation?.instructions?.toList() ?: return@mapNotNull null
+        val hook = calls(code).singleOrNull { it.second.definingClass == EXTENSION_CLASS &&
+                it.second.name == "onNativePlaylistScroll" }?.first ?: return@mapNotNull null
+        val read = code[hook - 1]
+        check(read.opcode == Opcode.IGET_OBJECT && ((read as ReferenceInstruction).reference as FieldReference).type == list.type)
+        check((read as TwoRegisterInstruction).registerA == (code[hook] as RegisterRangeInstruction).startRegister) {
+            "Pass the exact native list owner from the scrolling controller"
+        }
+        val predicate = calls(code.take(hook)).last { it.second.returnType == "Z" &&
+                it.second.parameterTypes == listOf("Landroid/support/v7/widget/RecyclerView;") }.first
+        val branch = code[predicate + 2]
+        check(code[predicate + 1].opcode == Opcode.MOVE_RESULT && branch.opcode == Opcode.IF_EQZ)
+        val branchAddress = code.take(predicate + 2).sumOf { it.codeUnits }
+        val target = branchAddress + (branch as OffsetInstruction).codeOffset
+        check(target > code.take(hook).sumOf { it.codeUnits }) {
+            "The native near-end predicate must skip the injected request callback when false"
+        }
+        method
+    }
+    check(hooks.size == 1) { "Expected one native scroll trigger" }
+    check(navigators.size >= 2) { "Both service and direct native navigation paths need paging deferral" }
+    for (navigator in navigators) {
+        val replay = navigator.methods.single { it.name == "patch_resumePlaylistNavigation" }
+            .implementation!!.instructions.toList()
+        check(replay.size == 3 && replay[0].opcode == Opcode.CHECK_CAST && replay[2].opcode == Opcode.RETURN_VOID)
+        val native = (replay[1] as ReferenceInstruction).reference as MethodReference
+        val dispatch = navigator.methods.single { it.name == native.name && it.parameterTypes == native.parameterTypes }
+            .implementation!!.instructions.toList()
+        val hook = calls(dispatch).single { it.second.definingClass == EXTENSION_CLASS &&
+                it.second.name == "deferPlaylistNavigation" }.first
+        check(dispatch[hook + 1].opcode == Opcode.MOVE_RESULT && dispatch[hook + 2].opcode == Opcode.IF_EQZ &&
+                dispatch[hook + 3].opcode == Opcode.RETURN_VOID) {
+            "Defer before a native target is committed and replay the original native dispatch method"
+        }
+        val invoke = replay[1] as FiveRegisterInstruction
+        check(invoke.registerD == invoke.registerC + 1) { "Replay must pass the same request parameter" }
+    }
+    val frame = frames.single()
+    val loading = frame.methods.single { it.name == "patch_setPlaylistLoading" }.implementation!!.instructions.toList()
+    check(calls(loading).single().second.definingClass == frame.type &&
+            loading.filterIsInstance<NarrowLiteralInstruction>().map { it.narrowLiteral } == listOf(1, 2)) {
+        "Use the native loading frame's progress/content states"
+    }
+    val boundary = classes.flatMap { it.methods }.count { method ->
+        method.name != "patch_isPlaylistBoundary" && method.implementation?.instructions?.any {
+            ((it as? ReferenceInstruction)?.reference as? MethodReference)?.name == "patch_isPlaylistBoundary"
+        } == true
+    }
+    check(boundary == 3) { "Descriptor, commit and availability must all respect unloaded rows" }
+    println("Native authenticated Future, stock scroll branch, loading frame and original-intent replay verified")
 }
 
 /** The dialog must consume navigation before context hooks invalidate the playing queue. */
@@ -887,13 +981,15 @@ private fun verifyNativeQueueUndo(directory: File, selected: Boolean) {
                     listOf("Landroid/view/MotionEvent;", "Landroid/view/MotionEvent;", "F", "F") ||
                     method.returnType == "V" && method.parameterTypes == listOf("Landroid/view/MotionEvent;", "F", "F")
         }
-        if (fling.name != "onFling") {
+        if (!is_21_44_or_greater && fling.name != "onFling") {
             check(nativeMethods.count { method -> method.name == "onFling" &&
                     method.implementation?.instructions?.any {
                         (it as? ReferenceInstruction)?.reference?.toString() == fling.toString()
                     } == true } == 1) { "Legacy accepted-dismiss helper must belong to the native fling callback" }
         }
-        val touch = closeHandlers.single { it.returnType == "Z" &&
+        val touch = if (is_21_44_or_greater) closeHandlers.single {
+            it.returnType == "V" && it.parameterTypes.isEmpty() && it.definingClass == fling.definingClass
+        } else closeHandlers.single { it.returnType == "Z" &&
                 it.parameterTypes == listOf("Landroid/view/View;", "Landroid/view/MotionEvent;") }
         for ((gesture, expectedCalls) in listOf(fling to if (is_21_32_or_greater) 1 else 2, touch to 1)) {
             val instructions = gesture.implementation!!.instructions.toList()
@@ -907,7 +1003,9 @@ private fun verifyNativeQueueUndo(directory: File, selected: Boolean) {
                     captures.all { instructions[it].opcode == Opcode.INVOKE_STATIC &&
                             (instructions[it] as FiveRegisterInstruction).registerCount == 0 } &&
                     dismissCalls.all { instructions[it].opcode == Opcode.INVOKE_VIRTUAL &&
-                            instructions[it + 1].opcode in if (gesture.returnType == "V") setOf(Opcode.RETURN_VOID)
+                            instructions[it + 1].opcode in if (gesture == touch && is_21_44_or_greater)
+                                setOf(Opcode.GOTO, Opcode.GOTO_16, Opcode.GOTO_32)
+                            else if (gesture.returnType == "V") setOf(Opcode.RETURN_VOID)
                             else if (gesture == fling && is_21_32_or_greater) setOf(Opcode.RETURN)
                             else setOf(Opcode.GOTO, Opcode.GOTO_16, Opcode.GOTO_32) }) {
                 "Accepted gesture dismissals must each capture Undo and keep their original continuation"

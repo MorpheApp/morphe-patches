@@ -17,10 +17,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.youtube.innertube.queue.QueueCardRenderer;
+import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.ColorPalette;
 
-/** Server-formatted display text for a native playlist row. */
+/** Server-supplied display data for a native playlist row. */
 record VideoMetadata(String videoId, String title, String channelName, String videoInfo, String duration,
-                     boolean fullByline, boolean panelMetadata) {
+                     boolean fullByline, boolean panelMetadata,
+                     @Nullable ColorPalette lightColorPalette, @Nullable ColorPalette darkColorPalette) {
+    VideoMetadata(String videoId, String title, String channelName, String videoInfo, String duration,
+                  boolean fullByline, boolean panelMetadata) {
+        this(videoId, title, channelName, videoInfo, duration, fullByline, panelMetadata, null, null);
+    }
+
     VideoMetadata(String videoId, String title, String channelName, String videoInfo, String duration, boolean fullByline) {
         this(videoId, title, channelName, videoInfo, duration, fullByline, false);
     }
@@ -35,6 +43,56 @@ record VideoMetadata(String videoId, String title, String channelName, String vi
 
     private static final String WATCH_URL_PREFIX = "https://www.youtube.com/watch?v=";
     private static final String METADATA_SEPARATOR = " · ";
+    private static final long MAX_COLOR_VALUE = 0xFFFFFFFFL;
+
+    static VideoMetadata fromPanelVideo(PlaylistQueueRenderer.Video video) {
+        return new VideoMetadata(video.getVideoId(), panelText(video.getTitle()),
+                panelText(video.getShortBylineText()), panelText(video.getVideoInfo()),
+                panelText(video.getLengthText()), false, true,
+                // Match the native row's preference for thumbnail palettes over row palettes.
+                hasRequiredColors(video.getThumbnails().getLightColorPalette()) ? video.getThumbnails().getLightColorPalette()
+                        : hasRequiredColors(video.getLightColorPalette()) ? video.getLightColorPalette() : null,
+                hasRequiredColors(video.getThumbnails().getDarkColorPalette()) ? video.getThumbnails().getDarkColorPalette()
+                        : hasRequiredColors(video.getDarkColorPalette()) ? video.getDarkColorPalette() : null);
+    }
+
+    /** Mix responses use JSON instead of the native page protobuf. */
+    @Nullable
+    static ColorPalette colorPalette(@Nullable JSONObject palette) {
+        if (palette == null) {
+            return null;
+        }
+        final long background = palette.optLong("section4Color", -1);
+        final long primaryTitle = palette.optLong("primaryTitleColor", -1);
+        final long secondaryTitle = palette.optLong("secondaryTitleColor", -1);
+        if (background < 0 || background > MAX_COLOR_VALUE
+                || primaryTitle < 0 || primaryTitle > MAX_COLOR_VALUE
+                || secondaryTitle < 0 || secondaryTitle > MAX_COLOR_VALUE) {
+            return null;
+        }
+        var result = ColorPalette.newBuilder().setSection4Color((int) background)
+                .setPrimaryTitleColor((int) primaryTitle).setSecondaryTitleColor((int) secondaryTitle);
+        final long section2 = palette.optLong("section2Color", -1);
+        if (section2 >= 0 && section2 <= MAX_COLOR_VALUE) {
+            result.setSection2Color((int) section2);
+        }
+        return result.build();
+    }
+
+    private static boolean hasRequiredColors(ColorPalette palette) {
+        return palette.hasSection4Color() && palette.hasPrimaryTitleColor() && palette.hasSecondaryTitleColor();
+    }
+
+    private static String panelText(PlaylistQueueRenderer.Text text) {
+        if (text.hasSimpleText()) {
+            return text.getSimpleText();
+        }
+        StringBuilder value = new StringBuilder();
+        for (var run : text.getRunsList()) {
+            value.append(run.getText());
+        }
+        return value.toString();
+    }
 
     @Nullable
     static VideoMetadata fromElement(byte[] bytes) throws InvalidProtocolBufferException {
@@ -80,8 +138,21 @@ record VideoMetadata(String videoId, String title, String channelName, String vi
         }
 
         VideoMetadata result = new VideoMetadata(videoId, title, "", String.join("\n", rows),
-                video.getThumbnail().getTimestampText(), false);
+                video.getThumbnail().getTimestampText(), false, false,
+                fromCardPalette(card.getLightThemePalette()), fromCardPalette(card.getDarkThemePalette()));
         return result.withChannelLabel(video.getAvatar().getAccessibilityText(), card.getAccessibilityText());
+    }
+
+    @Nullable
+    private static ColorPalette fromCardPalette(QueueCardRenderer.ThemePalette palette) {
+        if (!palette.hasBaseBackground() || !palette.hasTextPrimary()) {
+            return null;
+        }
+        // Cards provide one contrasting text color. Preserve it for both labels;
+        // the native playlist binder still controls theme, selection and alpha.
+        return ColorPalette.newBuilder().setSection2Color(palette.getBaseBackground())
+                .setSection4Color(palette.getBaseBackground())
+                .setPrimaryTitleColor(palette.getTextPrimary()).setSecondaryTitleColor(palette.getTextPrimary()).build();
     }
 
     /** Native search cards provide the full byline, including collaborating channels. */
@@ -163,25 +234,40 @@ record VideoMetadata(String videoId, String title, String channelName, String vi
     }
 
     VideoMetadata withCapture(VideoMetadata captured) {
+        captured = captured.withPaletteFallback(this);
         if (!fullByline) {
             return captured.withChannelName(channelName);
         }
 
         // Later feed/player captures must not downgrade an authoritative byline.
         return new VideoMetadata(videoId, captured.title().equals(videoId) ? title : captured.title(),
-                channelName, videoInfo, captured.duration().isEmpty() ? duration : captured.duration(), true);
+                channelName, videoInfo, captured.duration().isEmpty() ? duration : captured.duration(), true, false,
+                captured.lightColorPalette(), captured.darkColorPalette());
     }
 
     VideoMetadata withLookup(VideoMetadata fetched) {
         if (fullByline && !fetched.fullByline()) {
             return this;
         }
+        fetched = fetched.withPaletteFallback(this);
 
         // Preserve captured titles and their title-patch processing, but prefer
         // the lookup's native long byline over an uploader-only fallback.
         return new VideoMetadata(videoId, title.equals(videoId) ? fetched.title() : title,
                 fetched.channelName(), fetched.videoInfo(),
-                fetched.duration().isEmpty() ? duration : fetched.duration(), fetched.fullByline());
+                fetched.duration().isEmpty() ? duration : fetched.duration(), fetched.fullByline(), false,
+                fetched.lightColorPalette(), fetched.darkColorPalette());
+    }
+
+    /** A text-only lookup or capture must not discard colors already supplied by YouTube. */
+    private VideoMetadata withPaletteFallback(VideoMetadata previous) {
+        if ((lightColorPalette != null || previous.lightColorPalette() == null)
+                && (darkColorPalette != null || previous.darkColorPalette() == null)) {
+            return this;
+        }
+        return new VideoMetadata(videoId, title, channelName, videoInfo, duration, fullByline, panelMetadata,
+                lightColorPalette == null ? previous.lightColorPalette() : lightColorPalette,
+                darkColorPalette == null ? previous.darkColorPalette() : darkColorPalette);
     }
 
     private VideoMetadata withChannelLabel(String avatarLabel, String description) {
@@ -215,7 +301,7 @@ record VideoMetadata(String videoId, String title, String channelName, String vi
             return this;
         }
         if (videoInfo.isEmpty() || videoInfo.equals(name)) {
-            return new VideoMetadata(videoId, title, name, "", duration, false, panelMetadata);
+            return new VideoMetadata(videoId, title, name, "", duration, false, panelMetadata, lightColorPalette, darkColorPalette);
         }
 
         // Cards may combine the channel, views and age into one text. Split only an
@@ -223,7 +309,8 @@ record VideoMetadata(String videoId, String title, String channelName, String vi
         for (String separator : List.of(METADATA_SEPARATOR, "\n")) {
             String prefix = name + separator;
             if (videoInfo.startsWith(prefix)) {
-                return new VideoMetadata(videoId, title, name, videoInfo.substring(prefix.length()), duration, false, panelMetadata);
+                return new VideoMetadata(videoId, title, name, videoInfo.substring(prefix.length()), duration, false, panelMetadata,
+                        lightColorPalette, darkColorPalette);
             }
         }
 

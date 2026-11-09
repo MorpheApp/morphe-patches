@@ -7,10 +7,14 @@
 
 package app.morphe.extension.youtube.patches.queue;
 
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
+
+import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 
 /** Immutable playlist presentation; selection and repeat mirror the native playback queue. */
 public final class PlaylistQueue {
@@ -21,24 +25,130 @@ public final class PlaylistQueue {
 
     private static final Pattern VIDEO_ID = Pattern.compile("[A-Za-z0-9_-]{11}");
 
-    public record Entry(String videoId, String title) {}
+    /** Original source occurrence, independent of edits to the local queue order. */
+    record SourcePosition(PlaylistPage.Anchor anchor, Object origin) {}
+
+    public record Entry(String videoId, String title, @Nullable VideoMetadata metadata,
+                        @Nullable SourcePosition sourcePosition) {
+        public Entry(String videoId, String title, @Nullable VideoMetadata metadata) {
+            this(videoId, title, metadata, null);
+        }
+
+        public Entry(String videoId, String title) {
+            this(videoId, title, null);
+        }
+    }
+
+    record Source(String playlistId, PlaylistPage.Account account, @Nullable PlaylistPage.Anchor anchor,
+                  int boundary, Object origin) {
+        Source(String playlistId, PlaylistPage.Account account) {
+            this(playlistId, account, null, 0, new Object());
+        }
+
+        Source moveBoundary(int boundary) {
+            return new Source(playlistId, account, anchor, boundary, origin);
+        }
+    }
 
     private final List<Entry> entries;
     private final int selectedIndex;
     private final int repeatMode;
+    @Nullable
+    private final Source source;
+    private final int totalCount;
+    @Nullable
+    private final PlaylistQueueRenderer.Item unavailableVideosMessage;
 
     public PlaylistQueue(String playingVideoId, String playingTitle) {
         selectedIndex = 0;
         repeatMode = REPEAT_OFF;
+        source = null;
+        totalCount = 1;
+        unavailableVideosMessage = null;
         requireVideoId(playingVideoId);
         entries = List.of(new Entry(playingVideoId,
                 playingTitle == null || playingTitle.isEmpty() ? playingVideoId : playingTitle));
     }
 
-    private PlaylistQueue(List<Entry> entries, int selectedIndex, int repeatMode) {
+    private PlaylistQueue(List<Entry> entries, int selectedIndex, int repeatMode,
+                          @Nullable Source source, int totalCount, @Nullable PlaylistQueueRenderer.Item unavailableVideosMessage) {
         this.entries = List.copyOf(entries);
         this.selectedIndex = selectedIndex;
         this.repeatMode = repeatMode;
+        this.source = source;
+        this.totalCount = Math.max(entries.size(), totalCount);
+        this.unavailableVideosMessage = unavailableVideosMessage;
+    }
+
+    /** A null source retains an already accepted finite Mix without generating more pages. */
+    static PlaylistQueue fromPage(PlaylistPage page, @Nullable Source source) {
+        List<Entry> entries = new ArrayList<>();
+        for (var row : page.rows()) {
+            entries.add(new Entry(row.entry().videoId(), row.entry().title(), row.metadata(),
+                    source == null ? null : new SourcePosition(row.anchor(), source.origin())));
+        }
+        final boolean complete = source == null || page.rows().get(0).anchor().index() == 0 && page.totalCount() == entries.size();
+        return new PlaylistQueue(entries, 0, REPEAT_OFF, complete ? null
+                : new Source(source.playlistId(), source.account(), page.rows().get(page.rows().size() - 1).anchor(),
+                        entries.size(), source.origin()),
+                page.totalCount(), page.unavailableVideosMessage());
+    }
+
+    /** A Mix is a complete generated batch; preserve duplicate occurrences and native display data. */
+    static PlaylistQueue fromMetadata(List<VideoMetadata> videos) {
+        if (videos.isEmpty()) {
+            throw new IllegalArgumentException("Playlist has no playable videos");
+        }
+        List<Entry> entries = new ArrayList<>();
+        for (var video : videos) {
+            requireVideoId(video.videoId());
+            entries.add(new Entry(video.videoId(), video.title(), video));
+        }
+        return new PlaylistQueue(entries, 0, REPEAT_OFF, null, entries.size(), null);
+    }
+
+    PlaylistQueue appendPage(PlaylistPage page, boolean end) {
+        if (source == null || source.anchor() == null) {
+            throw new IllegalStateException("Queue has no pending playlist page");
+        }
+        int anchor = page.find(source.anchor());
+        if (anchor < 0 || anchor + 1 == page.rows().size() && !end) {
+            throw new IllegalArgumentException("Playlist page did not advance from its requested occurrence");
+        }
+        List<Entry> updated = new ArrayList<>(entries);
+        int boundary = source.boundary();
+        for (var row : page.rows().subList(anchor + 1, page.rows().size())) {
+            updated.add(boundary++, new Entry(row.entry().videoId(), row.entry().title(), row.metadata(),
+                    new SourcePosition(row.anchor(), source.origin())));
+        }
+        int selection = selectedIndex >= source.boundary() ? selectedIndex + boundary - source.boundary() : selectedIndex;
+        return new PlaylistQueue(updated, selection, repeatMode, end ? null
+                : new Source(source.playlistId(), source.account(), page.rows().get(page.rows().size() - 1).anchor(),
+                        boundary, source.origin()),
+                totalCount, page.unavailableVideosMessage() == null
+                        ? unavailableVideosMessage : page.unavailableVideosMessage());
+    }
+
+    @Nullable
+    Source source() {
+        return source;
+    }
+
+    /** Only the unfinished source can extend its window during playback. */
+    @Nullable
+    PlaylistPage.Anchor playbackAnchor() {
+        var position = currentEntry().sourcePosition();
+        return source != null && position != null && position.origin() == source.origin() ? position.anchor() : null;
+    }
+
+    int totalCount() {
+        return totalCount;
+    }
+
+    /** Hidden rows explain the retained total only after pagination has finished. */
+    @Nullable
+    PlaylistQueueRenderer.Item unavailableVideosMessage() {
+        return source == null && totalCount > entries.size() ? unavailableVideosMessage : null;
     }
 
     public List<Entry> entries() {
@@ -61,39 +171,49 @@ public final class PlaylistQueue {
         if (mode < REPEAT_OFF || mode > REPEAT_ONE) {
             throw new IllegalArgumentException("Invalid repeat mode");
         }
-        return mode == repeatMode ? this : new PlaylistQueue(entries, selectedIndex, mode);
+        return mode == repeatMode ? this : new PlaylistQueue(entries, selectedIndex, mode, source, totalCount, unavailableVideosMessage);
     }
 
     public PlaylistQueue select(int index) {
         if (index < 0 || index >= entries.size()) {
             throw new IndexOutOfBoundsException("Index out of range: " + index);
         }
-        return new PlaylistQueue(entries, index, repeatMode);
+        return new PlaylistQueue(entries, index, repeatMode, source, totalCount, unavailableVideosMessage);
     }
 
     public PlaylistQueue playNext(String videoId) {
         requireVideoId(videoId);
         var updated = new ArrayList<>(entries);
         updated.add(selectedIndex + 1, new Entry(videoId, videoId));
-        return new PlaylistQueue(updated, selectedIndex, repeatMode);
+        Source following = source != null && selectedIndex + 1 <= source.boundary()
+                ? source.moveBoundary(source.boundary() + 1) : source;
+        return new PlaylistQueue(updated, selectedIndex, repeatMode, following, totalCount + 1, unavailableVideosMessage);
     }
 
     public PlaylistQueue playLast(String videoId) {
         requireVideoId(videoId);
         var updated = new ArrayList<>(entries);
         updated.add(new Entry(videoId, videoId));
-        return new PlaylistQueue(updated, selectedIndex, repeatMode);
+        return new PlaylistQueue(updated, selectedIndex, repeatMode, source, totalCount + 1, unavailableVideosMessage);
     }
 
-    /** Append a fetched Mix batch atomically, retaining duplicate occurrences and selection. */
-    PlaylistQueue append(List<Entry> additions) {
-        var updated = new ArrayList<>(entries);
-        for (Entry entry : additions) {
-            requireVideoId(entry.videoId());
-            updated.add(entry);
+    /** Insert a fetched playlist without replacing current playback or its edited entries. */
+    PlaylistQueue addPlaylist(PlaylistQueue incoming, boolean playLast) {
+        if (incoming.source != null && (!playLast || source != null)) {
+            throw new IllegalStateException("Only one unfinished playlist can own pagination");
         }
-
-        return new PlaylistQueue(updated, selectedIndex, repeatMode);
+        final int position = playLast ? entries.size() : selectedIndex + 1;
+        var updated = new ArrayList<>(entries);
+        updated.addAll(position, incoming.entries);
+        Source following = source;
+        if (incoming.source != null) {
+            following = incoming.source.moveBoundary(position + incoming.source.boundary());
+        } else if (!playLast && source != null && position <= source.boundary()) {
+            following = source.moveBoundary(source.boundary() + incoming.entries.size());
+        }
+        // One native footer covers the queue even when several source playlists hide videos.
+        return new PlaylistQueue(updated, selectedIndex, repeatMode, following, totalCount + incoming.totalCount,
+                incoming.unavailableVideosMessage == null ? unavailableVideosMessage : incoming.unavailableVideosMessage);
     }
 
     /** Insert after the playing entry when an outside video becomes the active watch video. */
@@ -110,7 +230,10 @@ public final class PlaylistQueue {
         }
         var updated = new ArrayList<>(entries);
         updated.remove(index);
-        return new PlaylistQueue(updated, selectedIndex - (index < selectedIndex ? 1 : 0), repeatMode);
+        Source following = source != null && index < source.boundary()
+                ? source.moveBoundary(source.boundary() - 1) : source;
+        return new PlaylistQueue(updated, selectedIndex - (index < selectedIndex ? 1 : 0), repeatMode,
+                following, totalCount - 1, unavailableVideosMessage);
     }
 
     /** Move an entry with the native adapter's remove-then-insert semantics. */
@@ -136,7 +259,12 @@ public final class PlaylistQueue {
         } else if (from > selection && to <= selection) {
             selection++;
         }
-        return new PlaylistQueue(updated, selection, repeatMode);
+        Source following = source;
+        if (source != null) {
+            int boundary = source.boundary() - (from < source.boundary() ? 1 : 0);
+            following = source.moveBoundary(boundary + (to < source.boundary() ? 1 : 0));
+        }
+        return new PlaylistQueue(updated, selection, repeatMode, following, totalCount, unavailableVideosMessage);
     }
 
     /** Shuffle is a command: the displayed order also becomes the playback order. */
@@ -150,7 +278,7 @@ public final class PlaylistQueue {
         // Use the same framework shuffler as YouTube's mutable playback queue.
         Collections.shuffle(updated);
         updated.add(0, playing);
-        return new PlaylistQueue(updated, 0, repeatMode);
+        return new PlaylistQueue(updated, 0, repeatMode, source, totalCount, unavailableVideosMessage);
     }
 
     public static boolean isVideoId(String videoId) {
