@@ -7,11 +7,13 @@
 
 package app.morphe.extension.youtube.patches;
 
-import app.morphe.extension.youtube.settings.Settings;
+import androidx.annotation.Nullable;
+
 import com.google.protobuf.MessageLite;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SecondaryContents;
+import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class HideRelatedVideosPatch {
@@ -34,8 +36,12 @@ public class HideRelatedVideosPatch {
      * Injection point.
      */
     public static boolean isRelatedItems(MessageLite messageLite) {
+        byte[] bytes = serializeSection(messageLite);
+        if (bytes == null) {
+            return false;
+        }
         try {
-            var secondaryContents = SecondaryContents.parseFrom(messageLite.toByteArray());
+            var secondaryContents = SecondaryContents.parseFrom(bytes);
             if (secondaryContents.hasItemSectionRenderer()) {
                 String sectionIdentifier = secondaryContents.getItemSectionRenderer().getSectionIdentifier();
 
@@ -59,8 +65,12 @@ public class HideRelatedVideosPatch {
      * Injection point.
      */
     public static boolean isShelfRenderer(MessageLite messageLite) {
+        byte[] bytes = serializeSection(messageLite);
+        if (bytes == null) {
+            return false;
+        }
         try {
-            var secondaryContents = SecondaryContents.parseFrom(messageLite.toByteArray());
+            var secondaryContents = SecondaryContents.parseFrom(bytes);
             boolean hasShelfRenderer = secondaryContents.hasShelfRenderer();
             if (hasShelfRenderer) {
                 // ShelfRenderer is only on tablets, and ShelfRenderer is always related items.
@@ -73,6 +83,22 @@ public class HideRelatedVideosPatch {
         }
 
         return false;
+    }
+
+    /**
+     * @return The bytes of the section, or null if this patch already hid it.
+     *         The app can build the watch page again from a response it keeps, and a section
+     *         hidden in place keeps the serialized size saved before, so it cannot be serialized.
+     *         A hidden section is left as it is.
+     */
+    @Nullable
+    private static byte[] serializeSection(MessageLite section) {
+        try {
+            return section.toByteArray();
+        } catch (RuntimeException ex) {
+            Logger.printDebug(() -> "Section was already hidden and cannot be serialized", ex);
+            return null;
+        }
     }
 
     /**

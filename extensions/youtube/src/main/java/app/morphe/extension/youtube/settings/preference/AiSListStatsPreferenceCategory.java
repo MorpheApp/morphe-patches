@@ -168,17 +168,13 @@ public class AiSListStatsPreferenceCategory extends PreferenceCategory {
         if (cache != null && !cache.isBlank()) {
             return nf.format(countHandles(cache));
         }
-        if (anyToggleEnabled()) {
+        if (Settings.HIDE_AISLIST_BLOCKLIST_HOME.get()
+                || Settings.HIDE_AISLIST_BLOCKLIST_SEARCH.get()
+                || Settings.HIDE_AISLIST_WARNLIST_HOME.get()
+                || Settings.HIDE_AISLIST_WARNLIST_SEARCH.get()) {
             return str("morphe_hide_aislist_stats_channels_loading_summary");
         }
         return str("morphe_hide_aislist_stats_channels_disabled_summary");
-    }
-
-    private static boolean anyToggleEnabled() {
-        return Settings.HIDE_AISLIST_BLOCKLIST_HOME.get()
-                || Settings.HIDE_AISLIST_BLOCKLIST_SEARCH.get()
-                || Settings.HIDE_AISLIST_WARNLIST_HOME.get()
-                || Settings.HIDE_AISLIST_WARNLIST_SEARCH.get();
     }
 
     private void showResetDialog(String title, Runnable onConfirm) {

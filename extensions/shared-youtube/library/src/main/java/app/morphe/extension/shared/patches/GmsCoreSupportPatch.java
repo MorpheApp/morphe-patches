@@ -125,14 +125,18 @@ public class GmsCoreSupportPatch {
     }
 
     /**
-     * Account capabilities of child and supervised accounts, as Base32 of "303-cap" and "1242-cap".
-     * GmsCore allows the capabilities it can not look up, so every account got the defaults of a
-     * supervised account, such as the bedtime, break and Shorts feed limit reminders turned on.
+     * Account capabilities of child, supervised and teen accounts, as Base32 of "303-cap", "1242-cap",
+     * "1786-cap" and "322-cap". GmsCore allows the capabilities it can not look up, so every account got
+     * the defaults of a supervised or teen account, such as the bedtime, break and Shorts feed limit
+     * reminders turned on, which are set again for each account that is used for the first time,
+     * such as after switching account or clearing the app data.
      * Google Play services denies them for other accounts.
      */
     private static final List<String> SUPERVISED_ACCOUNT_CAPABILITIES = List.of(
             "gmydglldmfya",
-            "gezdimrnmnqxa"
+            "gezdimrnmnqxa",
+            "ge3tqnrnmnqxa",
+            "gmzdelldmfya"
     );
 
     /**

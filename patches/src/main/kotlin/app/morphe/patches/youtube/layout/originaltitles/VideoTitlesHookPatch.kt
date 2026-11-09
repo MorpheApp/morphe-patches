@@ -98,36 +98,7 @@ internal val videoTitlesHookPatch = patch(
         }
 
         // Compact videos do not use Litho, such as the videos of the watch history.
-        CompactVideoBindFingerprint.let {
-            it.method.apply {
-                val rendererMatch = it.instructionMatches.first()
-                val rendererRegister = rendererMatch.getInstruction<OneRegisterInstruction>().registerA
-                val rendererType = rendererMatch.instruction.getReference<TypeReference>()!!.type
-                // Video id is the only string of the renderer.
-                val videoIdField = classDefBy(rendererType).instanceFields.single { field ->
-                    field.type == "Ljava/lang/String;"
-                }
-
-                val titleSetterMatch = it.instructionMatches.last()
-                val titleSetter = titleSetterMatch.getMethodCalled()
-                val titleViewField = compactVideoTitleSetterFingerprint(titleSetter.definingClass, titleSetter.name)
-                    .instructionMatches.first().fieldReference
-
-                val insertIndex = titleSetterMatch.index + 1
-                val presenterRegister = titleSetterMatch.getInstruction<FiveRegisterInstruction>().registerC
-                val titleViewRegister = findFreeRegister(insertIndex, rendererRegister, presenterRegister)
-                val videoIdRegister = findFreeRegister(insertIndex, rendererRegister, presenterRegister, titleViewRegister)
-
-                addInstructions(
-                    insertIndex,
-                    """
-                        iget-object v$titleViewRegister, v$presenterRegister, $titleViewField
-                        iget-object v$videoIdRegister, v$rendererRegister, $videoIdField
-                        invoke-static { v$titleViewRegister, v$videoIdRegister }, $EXTENSION_CLASS->restoreOriginalTitle(Landroid/widget/TextView;Ljava/lang/String;)V
-                    """
-                )
-            }
-        }
+        hookCompactVideoTitle("$EXTENSION_CLASS->restoreOriginalTitle")
 
         // The suggested video at the end of a video in fullscreen does not use Litho.
         SuggestedVideoEndScreenBindFingerprint.let {
@@ -208,6 +179,47 @@ internal val videoTitlesHookPatch = patch(
                     "invoke-static { v$register }, $EXTENSION_CLASS->restoreKnownTitles(Landroid/widget/TextView;)V"
                 )
             }
+        }
+    }
+}
+
+/**
+ * Calls the extension method with the title view and the video id, after the title of a compact video is set.
+ * Compact videos do not use Litho, such as the videos of the watch history.
+ * Other patches can hook the same method, so its instructions are matched again.
+ *
+ * @param extensionMethod The class and name of a method with a TextView and a String parameter.
+ */
+internal fun hookCompactVideoTitle(extensionMethod: String) {
+    CompactVideoBindFingerprint.let {
+        it.clearMatch()
+        it.method.apply {
+            val rendererMatch = it.instructionMatches.first()
+            val rendererRegister = rendererMatch.getInstruction<OneRegisterInstruction>().registerA
+            val rendererType = rendererMatch.instruction.getReference<TypeReference>()!!.type
+            // Video id is the only string of the renderer.
+            val videoIdField = classDefBy(rendererType).instanceFields.single { field ->
+                field.type == "Ljava/lang/String;"
+            }
+
+            val titleSetterMatch = it.instructionMatches.last()
+            val titleSetter = titleSetterMatch.getMethodCalled()
+            val titleViewField = compactVideoTitleSetterFingerprint(titleSetter.definingClass, titleSetter.name)
+                .instructionMatches.first().fieldReference
+
+            val insertIndex = titleSetterMatch.index + 1
+            val presenterRegister = titleSetterMatch.getInstruction<FiveRegisterInstruction>().registerC
+            val titleViewRegister = findFreeRegister(insertIndex, rendererRegister, presenterRegister)
+            val videoIdRegister = findFreeRegister(insertIndex, rendererRegister, presenterRegister, titleViewRegister)
+
+            addInstructions(
+                insertIndex,
+                """
+                    iget-object v$titleViewRegister, v$presenterRegister, $titleViewField
+                    iget-object v$videoIdRegister, v$rendererRegister, $videoIdField
+                    invoke-static { v$titleViewRegister, v$videoIdRegister }, $extensionMethod(Landroid/widget/TextView;Ljava/lang/String;)V
+                """
+            )
         }
     }
 }

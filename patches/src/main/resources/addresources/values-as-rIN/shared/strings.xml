@@ -229,6 +229,19 @@ MicroG-ৰ বাবে ব্যাটাৰী অপ্টিমাইজে�
 যদি আপুনি সমস্যাৰাহিত অভিজ্ঞতা বিচাৰে, তেন্তে ইয়াক &lt;b&gt;আনইনষ্টল&lt;/b&gt; কৰক আৰু ✅ &lt;b&gt;%2$s&lt;/b&gt; ৰ পৰিচিত এপ সংস্কৰণটো পেচ কৰক"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ মই এক্সপৰিমেণ্টেল বিচাৰো</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ মই ষ্টেবল বিচাৰো</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">পেচ আপডেটৰ বাবে ইন-এপ নোটিফিকেচন দেখুৱাওক</string>
+  <string name="morphe_patches_update_notice_entry_off">বন্ধ</string>
+  <string name="morphe_patches_update_notice_entry_stable">ষ্টেবল ৰিলিজসমূহ</string>
+  <string name="morphe_patches_update_notice_entry_dev">ষ্টেবল আৰু ডেভ ৰিলিজসমূহ</string>
+  <string name="morphe_patches_update_notice_dialog_title">নতুন পেচসমূহ উপলব্ধ</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (বৰ্তমান: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ নতুন বৈশিষ্ট্যসমূহ</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 বাগ ফিক্সসমূহ</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 অন্যান্য পৰিৱৰ্তনসমূহ</string>
+  <string name="morphe_patches_update_notice_dialog_more">…আৰু %s জন</string>
+  <string name="morphe_patches_update_notice_dialog_update">আপডেট কৰক</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">বাতিল কৰক</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">ক্ৰাশ লগ ব্যৱহাৰকাৰীৰ নথি পত্ৰত সংৰক্ষণ কৰা হৈছে: %s</string>
   <string name="morphe_crash_log_saved">ক্ৰাশ লগ সংৰক্ষণ কৰা হৈছে: %s</string>

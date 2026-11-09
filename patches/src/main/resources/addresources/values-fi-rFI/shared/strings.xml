@@ -229,6 +229,19 @@ Jos akun optimointeja ei muuteta, voit kokea:
 Jos haluat mahdollisimman toimintavarman kokemuksen, &lt;b&gt;poista&lt;/b&gt; tämä asennus ja muokkaa suositeltu sovellusversio: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Haluan kokeellisen</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Haluan vakaan</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Näytä sovelluksen sisäinen ilmoitus päivityspaketista</string>
+  <string name="morphe_patches_update_notice_entry_off">Pois</string>
+  <string name="morphe_patches_update_notice_entry_stable">Vakaat julkaisut</string>
+  <string name="morphe_patches_update_notice_entry_dev">Vakaat ja kehitysversio-julkaisut</string>
+  <string name="morphe_patches_update_notice_dialog_title">Uusia lisäosia saatavilla</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (nykyinen: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Uudet ominaisuudet</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Virhekorjaukset</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Muut muutokset</string>
+  <string name="morphe_patches_update_notice_dialog_more">…ja %s muuta</string>
+  <string name="morphe_patches_update_notice_dialog_update">Päivitä</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Hylkää</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Kaatumisloki tallennettu käyttäjän asiakirjoihin: %s</string>
   <string name="morphe_crash_log_saved">Kaatumisloki tallennettu: %s</string>

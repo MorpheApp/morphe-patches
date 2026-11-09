@@ -229,6 +229,19 @@ MicroG-ისთვის ელემენტის ოპტიმიზა�
 თუ გსურთ მაქსიმალურად შეუფერხებელი მუშაობა, მაშინ &lt;b&gt;წაშალეთ&lt;/b&gt; ეს ვერსია და დააინსტალირეთ რეკომენდებული სტაბილური ვერსია ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ მსურს ექსპერიმენტული</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ მსურს სტაბილური</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">აპლიკაციაში შეტყობინების ჩვენება პატჩების განახლებების შესახებ</string>
+  <string name="morphe_patches_update_notice_entry_off">გამორთული</string>
+  <string name="morphe_patches_update_notice_entry_stable">სტაბილური ვერსიები</string>
+  <string name="morphe_patches_update_notice_entry_dev">სტაბილური და დეველოპერსიები</string>
+  <string name="morphe_patches_update_notice_dialog_title">ხელმისაწვდომია ახალი პატჩები</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (მიმდინარე: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ ახალი ფუნქციები</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 შეცდომების გამოსწორება</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 სხვა ცვლილებები</string>
+  <string name="morphe_patches_update_notice_dialog_more">…და კიდევ %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">განახლება</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">გათიშვა</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">ავარიის ჩანაწერი შენახულია მომხმარებლის დოკუმენტებში: %s</string>
   <string name="morphe_crash_log_saved">ავარიის ჩანაწერი შენახულია: %s</string>

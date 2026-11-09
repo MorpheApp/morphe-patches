@@ -56,6 +56,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
+import app.morphe.extension.shared.patches.components.LithoFilterPatch.LithoLogging;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
@@ -70,6 +71,8 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter;
 import app.morphe.extension.youtube.patches.onthego.OnTheGoPatch;
 import app.morphe.extension.youtube.patches.playback.speed.ShortsPlaybackSpeedFlyoutPatch;
+import app.morphe.extension.youtube.patches.queue.PlaylistCardSource;
+import app.morphe.extension.youtube.patches.queue.QueueFlyoutActions;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
@@ -395,6 +398,24 @@ public final class FlyoutUtils {
         return flyoutVideoId;
     }
 
+    @Nullable
+    private static PlaylistCardSource.Selection nativeQueuePlaylistSource;
+
+    public static String getNativeQueuePlaylistId() {
+        return nativeQueuePlaylistSource == null ? "" : nativeQueuePlaylistSource.playlistId();
+    }
+
+    public static boolean isNativeQueuePlaylistMenu() {
+        return nativeQueuePlaylistSource != null && nativeQueuePlaylistSource.playlist();
+    }
+
+    public static void setNativeQueuePlaylistId(String playlistId) {
+        if (AddToQueuePatch.isPatchIncluded() && AddToQueuePatch.isNativeQueueEnabled()) {
+            nativeQueuePlaylistSource = new PlaylistCardSource.Selection(playlistId,
+                    !playlistId.isEmpty() || isNativeQueuePlaylistMenu());
+        }
+    }
+
     public static String getFlyoutPlaylistId() {
         return flyoutPlaylistId;
     }
@@ -564,6 +585,7 @@ public final class FlyoutUtils {
         currentButtonIndex = 0;
         flyoutVideoId = "";
         flyoutPlaylistId = "";
+        nativeQueuePlaylistSource = null;
         flyoutBuffer = null;
         if (flyoutChannelIdRequest != null) {
             // The buttons waiting for the channel are gone with the menu.
@@ -1286,6 +1308,9 @@ public final class FlyoutUtils {
      * Injection point.
      */
     public static void extractFlyoutIdFromObject(@Nullable Object bufferObject) {
+        if (AddToQueuePatch.isPatchIncluded() && AddToQueuePatch.isNativeQueueEnabled()) {
+            nativeQueuePlaylistSource = QueueFlyoutActions.playlistSource(bufferObject, senderViewRef.get());
+        }
         Logger.printDebug(() -> "Flyout buffer class: " + ((bufferObject == null)
                 ? null : bufferObject.getClass()));
 
@@ -1309,7 +1334,7 @@ public final class FlyoutUtils {
             return;
         }
 
-        if (Settings.DEBUG_PROTOBUFFER.get()) {
+        if (Settings.DEBUG_LITHO.get() == LithoLogging.PATH_AND_BUFFER) {
             Logger.printDebug(() -> "Flyout buffer: " + new BufferAsciiStrings(flyoutBuffer).getStrings());
         }
 

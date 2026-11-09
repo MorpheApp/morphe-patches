@@ -490,6 +490,23 @@ Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ficha kitufe cha Boresha</string>
   <string name="morphe_music_hide_navigation_bar_title">Ficha upau wa urambazaji</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ficha lebo za vitufe vya urambazaji</string>
+  <string name="morphe_music_navigation_bar_glass_title">Washa upau wa urambazaji wa kioo</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Inaonyesha chujio la usafirishaji kama kapsuli inayoelea, yenye ncha za mviringo na inayopitisha mwanga</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Uvui wa kioo</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Rekebisha kiwango cha uwazi cha chujio la usafirishaji la kioo (0 ni wazi, 100 ni nene)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Kioo chepesi</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Inabadilisha rangi ya chujio la usafirishaji la kioo kuwa nyeupe badala ya giza, kwa ajili ya kioo chepesi na angavu zaidi</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Ukubwa wa chujio la usafirishaji la kioo</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Rekebisha urefu, upana na nafasi ya vitufe vya chujio la usafirishaji la kioo, ukiwa na onyesho la awali. Vitufe visivyoendana na upana wa skrini hujificha</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Urefu</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Upana wa juu</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Nafasi ya vitufe</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Vitufe vinavyoonekana: %1$s kati ya %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Nyumbani</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Sampuli</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Gundua</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Maktaba</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Hujaingia. Gusa ili kusanidi</string>
   <string name="morphe_music_scrobbling_log_out">Toka</string>
@@ -716,7 +733,7 @@ Kuki zinazohitajika: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Wahusika wa Kichina na Kikantoni (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Maneno ya Kichina (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Utafsiri wa Kigiriki, Kislaviki ya Cyrillic (ikiwemo Kirusi, Kiukraine, Kibulgari, Kiserbia, Kibelarusi, Kimakedonia), Kijorjia, Kiarmeania, Kiebrania, Kiarabu, Kiamhari na Kisiriyaki (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Inasoma %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Inasoma %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Onyesha kitufe cha Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Gusa ili kubadilisha kwenda kwa mshindani mwingine wa mashairi; bonyeza kwa muda mrefu ili kutafuta mashairi kwa kichwa cha wimbo na msanii</string>
   <string name="morphe_music_lyrics_search_dialog_title">Tafuta mashairi</string>

@@ -229,6 +229,19 @@ Si no es canvien les optimitzacions de la bateria, és possible que experimenteu
 Si vols l'experiència amb menys problemes, &lt;b&gt;desinstal·la&lt;/b&gt; aquesta i instal·la la versió recomanada de ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Vull l\'experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Vull la versió estable</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Mostrar notificació a l\'aplicació per a actualitzacions de mosaics</string>
+  <string name="morphe_patches_update_notice_entry_off">Desactivat</string>
+  <string name="morphe_patches_update_notice_entry_stable">Versions estables</string>
+  <string name="morphe_patches_update_notice_entry_dev">Versions estables i de desenvolupament</string>
+  <string name="morphe_patches_update_notice_dialog_title">Hi ha nous pegats disponibles</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (actual: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Noves funcions</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Correccions d\'errors</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Altres canvis</string>
+  <string name="morphe_patches_update_notice_dialog_more">…i %s més</string>
+  <string name="morphe_patches_update_notice_dialog_update">Actualitzar</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Descartar</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Registre d\'errors desat als documents de l\'usuari: %s</string>
   <string name="morphe_crash_log_saved">Registre d\'errors desat: %s</string>

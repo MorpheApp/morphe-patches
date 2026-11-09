@@ -169,7 +169,7 @@ public final class JavaScriptManager {
     }
 
     private static void handleDebugToast(String message) {
-        if (BaseSettings.DEBUG.get() && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
+        if (Logger.isDebugEnabled() && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
             Utils.showToastShort(message);
         } else {
             Logger.printInfo(() -> message);
@@ -334,9 +334,9 @@ public final class JavaScriptManager {
 
         try {
             Logger.printDebug(() -> "Starting download of: " + url);
-            if (BaseSettings.DEBUG.get() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: downloadUrl() called on main thread!");
-            }
+            Logger.printExceptionIfDebug(() -> Utils.isCurrentlyOnMainThread()
+                    ? "Debug: downloadUrl() called on main thread!"
+                    : null);
 
             final long start = System.currentTimeMillis();
             final int connectionTimeoutMillis = 5000;
@@ -365,7 +365,7 @@ public final class JavaScriptManager {
             Logger.printInfo(() -> "Could not download URL: " + url, ex);
         }
 
-        if (BaseSettings.DEBUG.get()) {
+        if (Logger.isDebugEnabled()) {
             Utils.showToastLong("Could not download URL: " + url);
         }
 

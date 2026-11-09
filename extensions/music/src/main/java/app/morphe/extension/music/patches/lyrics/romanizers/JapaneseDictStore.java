@@ -93,7 +93,7 @@ public final class JapaneseDictStore {
 
         WORKER.execute(() -> {
             try {
-                build(CHANNEL);
+                build();
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Japanese dictionary build failed", ex);
                 CHANNEL.onFailed();
@@ -110,11 +110,12 @@ public final class JapaneseDictStore {
         return TABLE.open();
     }
 
-    private static void build(RomanizationDict.Listener listener) throws IOException {
+    private static void build() throws IOException {
         File directory = RomanizationDict.directory();
         if (directory == null) throw new IOException("no cache directory");
 
         File target = TABLE.file();
+        assert target != null;
         File built = new File(target.getPath() + ".building");
         //noinspection ResultOfMethodCallIgnored
         built.delete();
@@ -124,16 +125,16 @@ public final class JapaneseDictStore {
             File archive = new File(directory, source);
             if (!archive.isFile()) {
                 RomanizationDict.download(BASE_URL + VERSION + "/" + source, archive,
-                        displayName(source), listener);
+                        displayName(source), (RomanizationDict.Listener) JapaneseDictStore.CHANNEL);
             }
-            addSource(builder, archive, listener);
+            addSource(builder, archive, (RomanizationDict.Listener) JapaneseDictStore.CHANNEL);
             //noinspection ResultOfMethodCallIgnored
             archive.delete();
         }
         builder.finish(Integer.parseInt(VERSION));
 
         RomanizationDict.commit(built, target);
-        listener.onReady(builder.size());
+        JapaneseDictStore.CHANNEL.onReady(builder.size());
     }
 
     private static void addSource(WordReadingTable.Builder builder, File archive,

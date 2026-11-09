@@ -490,6 +490,23 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Сайжруулах товчийг нуух</string>
   <string name="morphe_music_hide_navigation_bar_title">Навигацийн хэсгийг нуух</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Навигацийн товчлуурын шошгыг нуух</string>
+  <string name="morphe_music_navigation_bar_glass_title">Шилэн навигацийн цуврайг идэвхжүүлэх</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Навигацийн панелийг х तैरэх, бөөрөнхий, хагас тунгалаг капсул хэлбэрээр харуулна</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Шилэн бүрхүүлийн бүрхэг байдал</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Шилэн навигацийн панелийн тунгалаг байдлыг тохируулна (0 нь тунгалаг, 100 нь бүрхэг)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Цайвар шилэн бүрхүүл</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Шилэн навигацийн панелийг илүү цайвар, тод харагдуулахын тулд бараан өнгөний оронд цагаан өнгөөр будна</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Шилэн навигацийн панелийн хэмжээ</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Шилэн навигацийн панелийн өндөр, өргөн болон товчлууруудын зайг урьдчилан харах боломжтойгоор тохируулна. Дэлгэцийн өргөн дэхээс давсан товчлуурууд нуугдана</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Өндөр</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Хамгийн их өргөн</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Товчлууруудын зай</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Харагдах товчлуур: %1$s / %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Нүүр</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Дээжүүд</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Харах</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Сан</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Нэвтрээгүй байна. Тохируулахын тулд дарна уу</string>
   <string name="morphe_music_scrobbling_log_out">Гарах</string>
@@ -716,7 +733,7 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Хятад болон Кантон ханз (UniDict, ~8 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Хятад үгс (pinyin-pro, ~17 МБ)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Грек, Славын кирилл (Орос, Украин, Болгар, Серб, Белорус, Македон хэлүүд багтсан), Георги, Армен, Еврэй, Араб, Амхара болон Сириак галиг (CLDR, ~0.5 МБ)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s уншиж байна: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">%1$s-ыг уншиж байна: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Refresh товчийг харуулах</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Дараагийн дууны үг рүү шилжихэд товшино; дууны нэр болон уран бүтээгчээр хайхын тулд удаан дарна</string>
   <string name="morphe_music_lyrics_search_dialog_title">Дууны үг хайх</string>

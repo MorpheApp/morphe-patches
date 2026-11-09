@@ -490,6 +490,23 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Butona Nûvekirinê veşêrin</string>
   <string name="morphe_music_hide_navigation_bar_title">Barê navigasyonê veşêre</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Etîketên barê navigasyonê veşêre</string>
+  <string name="morphe_music_navigation_bar_glass_title">Şirîta navîgasyonê ya şûşeyî aktîf bike</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Şirîta navbareyê wekî kapsûlekî şefaf,leli ûleliya şefaf nîşan dide</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Rengdariya şefafiyeyê</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Astê şefafiya şirîta navbareyê ya şefaf biguherîne (0 şefaf e, 100 tariye)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Şefafiya ronahî</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Şirîta navbareyê ya şefaf li şûma tariyê spî dike, ji bo şefafiyeke ronaktir û zelaltir</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Qebareya şirîta navbareyê ya şefaf</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Bilindî, tevahiyale û kevnehiya butonên şirîta navbareyê ya şefaf bi pêşborderkê biguherîne. Butonên ku li tevahiyaleya ekranê nanijin veşartî ne</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Bilindî</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Tevahiyala herî mezin</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Kevnehiya butonan</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Butonên nîşan dirî: %1$s ji %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Malper</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Nimûneyên muzîkê</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Sêyara</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Pirtûkxane</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Ne têkeve. Têke da ku konfîg bike</string>
   <string name="morphe_music_scrobbling_log_out">Derkeve</string>
@@ -716,7 +733,7 @@ Kukiyên pêwîst: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Karakterên Çînî û Kantonî (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Peyvên Çînî (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliterasyona Yewnanî, Slavî Kirîlî (bi Rusî, Ukrayînî, Bulgarî, Serbî, Belarusî, Makedonî), Gurcî, Ermenî, Îbranî, Erebî, Amharî û Suryanî (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Xwendina %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Xwendina %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Bişkoja Nûkirinê nîşan bide</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ji bo guhartina berhevê gotinên din bitapîne; ji bo lêgerîna gotinan bi navê stran û hunermend dirêj bitapîne</string>
   <string name="morphe_music_lyrics_search_dialog_title">Gotinên stranê bigere</string>

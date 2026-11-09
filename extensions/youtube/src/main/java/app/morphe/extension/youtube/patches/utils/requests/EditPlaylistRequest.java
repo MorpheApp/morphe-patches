@@ -15,7 +15,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
-import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
@@ -26,13 +25,9 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.settings.BaseSettings;
 
 public class EditPlaylistRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
-
-    public static final Map<String, EditPlaylistRequest> cache = Collections.synchronizedMap(
-            Utils.createSizeRestrictedMap(50));
 
     private final Future<String> future;
 
@@ -48,9 +43,9 @@ public class EditPlaylistRequest {
     @Nullable
     public String getResult() {
         try {
-            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: Blocking main thread");
-            }
+            Logger.printExceptionIfDebug(() -> !future.isDone() && Utils.isCurrentlyOnMainThread()
+                    ? "Debug: Blocking main thread"
+                    : null);
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getResult timed out", ex);
@@ -63,29 +58,13 @@ public class EditPlaylistRequest {
         return null;
     }
 
-    public static void clear() {
-        cache.clear();
-    }
-
-    public static void clearVideoId(String videoId) {
-        cache.remove(videoId);
-    }
-
-    public static void fetchRequestIfNeeded(
+    public static EditPlaylistRequest fetchRequestIfNeeded(
             String videoId,
             String playlistId,
             @Nullable String setVideoId,
             Map<String, String> requestHeader
     ) {
-        cache.computeIfAbsent(
-                Objects.requireNonNull(videoId),
-                k -> new EditPlaylistRequest(k, playlistId, setVideoId, requestHeader)
-        );
-    }
-
-    @Nullable
-    public static EditPlaylistRequest getRequestForVideoId(String videoId) {
-        return cache.get(videoId);
+        return new EditPlaylistRequest(Objects.requireNonNull(videoId), playlistId, setVideoId, requestHeader);
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {

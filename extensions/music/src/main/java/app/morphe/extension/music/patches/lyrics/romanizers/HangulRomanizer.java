@@ -101,6 +101,7 @@ public final class HangulRomanizer {
         return (c - FIRST) / (MEDIAL_COUNT * CODA_COUNT) == SILENT;
     }
 
+    @SuppressWarnings("ConstantValue")
     private static boolean decompose(char c, int[] out) {
         if (c < FIRST || c > LAST) return false;
         int index = c - FIRST;

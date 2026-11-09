@@ -229,6 +229,19 @@ Mura n-athraítear na hoptamuithe ceallraí, d’fhéadfadh na nithe seo a leana
 Más mian leat an taithí is saoire, ansin &lt;b&gt;díshuiteáil&lt;/b&gt; seo agus paisteáil an leagan molta den aip de ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ba mhaith liom turgnamhach</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ba mhaith liom cobhsaíocht</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Taispeáin fógra in-app do nuashonruithe patch</string>
+  <string name="morphe_patches_update_notice_entry_off">As</string>
+  <string name="morphe_patches_update_notice_entry_stable">Eisiúintí cobhsaia</string>
+  <string name="morphe_patches_update_notice_entry_dev">Eisiúintí chobhsaia agus forbaireachta</string>
+  <string name="morphe_patches_update_notice_dialog_title">Paistí nua ar fáil</string>
+  <string name="morphe_patches_update_notice_dialog_message">Patcheanna Morphe &lt;b&gt;%1$s&lt;/b&gt; (reatha: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Gnéithe nua</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Ceartúí buganna</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Athruithe eile</string>
+  <string name="morphe_patches_update_notice_dialog_more">…agus %s eile</string>
+  <string name="morphe_patches_update_notice_dialog_update">NuashonrúNuashonrú</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Diúltaigh</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Log tuairteála sábháilte i ndoiciméid an úsáideora: %s</string>
   <string name="morphe_crash_log_saved">Log tuairteála sábháilte: %s</string>

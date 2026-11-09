@@ -14,6 +14,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.shared.EngagementPanelControllerFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -89,3 +90,36 @@ internal object ElementItemConstructorFingerprint : Fingerprint(
     )
 )
 
+
+/**
+ * Returns the engagement panel controller of a surface: the controller of the watch page,
+ * or the controller of the feed, search and Shorts, which shows its panels over the feed.
+ * The fourth match reads the provider of the controller of the feed.
+ */
+internal object EngagementPanelControllerOfSurfaceFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "contains",
+            parameters = listOf("Ljava/lang/Object;"),
+            returnType = "Z"
+        ),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        methodCall(opcode = Opcode.INVOKE_INTERFACE, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Id of the panel that the engagement panel controller shows, or null.
+ */
+internal object EngagementPanelControllerShownPanelIdFingerprint : Fingerprint(
+    classFingerprint = EngagementPanelControllerFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf()
+)

@@ -323,7 +323,11 @@ final class AskPanelCommand {
         // A panel built again unchanged keeps its key, so the app shows its chat as it was.
         if (!Arrays.equals(panel, lastBuiltPanel)) {
             lastBuiltPanel = panel;
-            lastSelectionEntityKey = newSelectionEntityKey();
+            // A selection entity key of its own, as long as the key in the template,
+            // so the tokens that hold it keep their length.
+            String number = Integer.toString(++selectionEntityCount);
+            lastSelectionEntityKey = SELECTION_ENTITY_KEY.substring(
+                    0, SELECTION_ENTITY_KEY.length() - number.length()) + number;
         }
         panel = bytes(retarget(latin1(panel), SELECTION_ENTITY_KEY, lastSelectionEntityKey, 0, new int[1]));
 
@@ -355,15 +359,6 @@ final class AskPanelCommand {
         ProtoWriter command = new ProtoWriter();
         command.writeLengthDelimited(SHOW_ENGAGEMENT_PANEL_ENDPOINT_FIELD, endpoint.toByteArray());
         return new Panel(command.toByteArray(), tokens[0], tokens[1], summarizeSelectionId[0]);
-    }
-
-    /**
-     * @return A selection entity key of its own, as long as the key in the template,
-     *         so the tokens that hold it keep their length.
-     */
-    private static String newSelectionEntityKey() {
-        String number = Integer.toString(++selectionEntityCount);
-        return SELECTION_ENTITY_KEY.substring(0, SELECTION_ENTITY_KEY.length() - number.length()) + number;
     }
 
     /**

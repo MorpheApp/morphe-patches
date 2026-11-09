@@ -229,6 +229,19 @@ Ger optimîzasyonên bateriyê neyhatin guherandin, dê we kêfa:
 Ger hûn ezmûnek bêkêmasî dixwazin, &lt;b&gt;veguherînin&lt;/b&gt; evê û pêşçavaniya versiyona ku hat pêşniyar kirin ✅ &lt;b&gt;%2$s&lt;/b&gt; bişîne "</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ez versiyona lêgerînî dixwazim</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ez versiyona pêşbaz dixwazim</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Agahdariya di nav aplikasyonê de ji bo nûkirinên patchê nîşan bide</string>
+  <string name="morphe_patches_update_notice_entry_off">Dabe</string>
+  <string name="morphe_patches_update_notice_entry_stable">Berhemên îstehkir</string>
+  <string name="morphe_patches_update_notice_entry_dev">Berhemên îstehkir û geşepêdanê</string>
+  <string name="morphe_patches_update_notice_dialog_title">Patchên nû hene</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (niha: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Taybetmendiyên nû</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Çareseriyên bugan</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Guherînên din</string>
+  <string name="morphe_patches_update_notice_dialog_more">…û %s din</string>
+  <string name="morphe_patches_update_notice_dialog_update">Nûkirin</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Paqij bike</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Loga têkçûyînê li belgeyên bikarhêner hat save kirin: %s</string>
   <string name="morphe_crash_log_saved">Loga têkçûyînê hat save kirin: %s</string>

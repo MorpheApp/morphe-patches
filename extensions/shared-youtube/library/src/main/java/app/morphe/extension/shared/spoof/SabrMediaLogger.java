@@ -35,7 +35,6 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.settings.BaseSettings;
 
 /**
  * Debug logging of SABR media requests and responses while spoofing.
@@ -68,7 +67,7 @@ final class SabrMediaLogger {
     }
 
     static boolean isEnabled() {
-        return BaseSettings.DEBUG.get();
+        return Logger.isDebugEnabled();
     }
 
     /**

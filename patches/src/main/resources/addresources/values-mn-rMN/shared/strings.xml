@@ -229,6 +229,19 @@ MicroG-ийн батерейны оновчлолыг идэвхгүй болг�
 Хэрэв та хамгийн найдвартай туршлагыг хүсэж байгаа бол үүнийг &lt;b&gt;устгаад&lt;/b&gt;, зөвлөсөн ✅ &lt;b&gt;%2$s&lt;/b&gt; хувилбарыг суулгана уу"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Би туршилтын хувилбарыг хүсэж байна</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Би тогтвортой хувилбарыг хүсэж байна</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Нэвчүүлгийн шинэчлэлтийн мэдэгдлийг апп дотор харуулах</string>
+  <string name="morphe_patches_update_notice_entry_off">Унтраах</string>
+  <string name="morphe_patches_update_notice_entry_stable">Тогтвортой хувилбарууд</string>
+  <string name="morphe_patches_update_notice_entry_dev">Тогтвортой болон хөгжүүлэлтийн хувилбарууд</string>
+  <string name="morphe_patches_update_notice_dialog_title">Шинэ патчууд бэлэн боллоо</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (одоогийн: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Шинэ боломжууд</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Алдааны засварууд</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Бусад өөрчлөлтүүд</string>
+  <string name="morphe_patches_update_notice_dialog_more">…ба өдөр %s нэмэгдэх</string>
+  <string name="morphe_patches_update_notice_dialog_update">Шинэчлэх</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Хаах</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Системийн алдааны лог хэрэглэгчийн баримт бичигт хадгалагдлаа: %s</string>
   <string name="morphe_crash_log_saved">Системийн алдааны лог хадгалагдлаа: %s</string>

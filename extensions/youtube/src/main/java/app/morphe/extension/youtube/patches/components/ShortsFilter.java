@@ -33,7 +33,6 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.patches.components.StringFilterGroupList;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.patches.LayoutReloadObserverPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -662,16 +661,15 @@ public final class ShortsFilter extends Filter {
      * @return The decision.
      */
     private static boolean logDecision(CharSequence component, boolean hide, String reason) {
-        if (BaseSettings.DEBUG.get()) {
+        Logger.printDebug(() -> {
             String message = "Shorts " + (hide ? "hidden" : "shown") + " (" + reason + ") player: "
                     + PlayerType.getCurrent() + " search bar: " + NavigationBar.isSearchBarActive()
                     + " component: " + component;
             // The same element is filtered again on every layout, which would fill the log.
-            if (!message.equals(lastDecisionLog)) {
-                lastDecisionLog = message;
-                Logger.printDebug(() -> message);
-            }
-        }
+            if (message.equals(lastDecisionLog)) return null;
+            lastDecisionLog = message;
+            return message;
+        });
         return hide;
     }
 

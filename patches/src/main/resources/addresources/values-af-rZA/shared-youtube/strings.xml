@@ -116,7 +116,7 @@ Maak %2$s die verstekkliënt?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standaard kliënt</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR aanteken</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nie by Android VR aangeteken nie. Tik hier om aan te teken</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR vereis \'n aparte teken-in. Tik hier om voort te gaan</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Tans by Android VR aangeteken</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Om hierdie funksie te gebruik, verander \'Standaard kliënt\' na Android VR</string>

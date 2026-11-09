@@ -1122,10 +1122,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
 
         if (cachedOtherPanelOpen) {
-            if (getParent() instanceof ViewGroup parent) {
-                parent.removeView(this);
-            }
-            setVisibility(GONE);
+            dismissForOtherPanel();
             return;
         }
 
@@ -1160,6 +1157,14 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
     }
 
+    void dismissForOtherPanel() {
+        restoreHiddenSiblings();
+        if (getParent() instanceof ViewGroup parent) {
+            parent.removeView(this);
+        }
+        setVisibility(GONE);
+    }
+
     /**
      * Shows the built-in views this panel hid, and only those, so that views the app
      * hides on its own and the content of a panel that took the container over are
@@ -1184,9 +1189,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         try {
             buildLyrics(newLyrics);
         } catch (Throwable ex) {
-            if (Settings.DEBUG.get()) {
-                Logger.printException(() -> "Debug: buildLyrics failure", ex);
-            }
+            Logger.printExceptionIfDebug(() -> "Debug: buildLyrics failure", ex);
         }
     }
 

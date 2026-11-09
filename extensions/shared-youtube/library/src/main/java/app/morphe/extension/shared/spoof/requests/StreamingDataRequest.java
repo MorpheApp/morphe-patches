@@ -402,7 +402,7 @@ public class StreamingDataRequest {
 
     private static void handleDebugToast(String toastMessage,
                                          ClientType clientType) {
-        if (BaseSettings.DEBUG.get() && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
+        if (Logger.isDebugEnabled() && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
             Utils.showToastShort(String.format(toastMessage, clientType));
         }
     }
@@ -675,7 +675,7 @@ public class StreamingDataRequest {
             return null;
         }
 
-        final boolean debugEnabled = BaseSettings.DEBUG.get();
+        final boolean debugEnabled = Logger.isDebugEnabled();
         final long fetchStartTime = System.currentTimeMillis();
         String authorization = playerHeaders.get(AUTHORIZATION_HEADER);
 
@@ -707,6 +707,12 @@ public class StreamingDataRequest {
                         send(clientType, videoId, authorization, showErrorToast, includeVideoDetails);
                 streamingData = buildPlayerResponseBuffer(clientType, fallBackConnection, videoId);
             }
+
+            final ClientType resultClientType = clientType;
+            final boolean hasStreams = streamingData != null;
+            Logger.printVerbose(() -> videoId + ": " + (hasStreams
+                    ? "streams from " + resultClientType + " after " + (System.currentTimeMillis() - fetchStartTime) + "ms"
+                    : resultClientType + " gave no playable streams") + (isDownload ? " (download)" : ""));
 
             if (streamingData != null) {
                 // Stats for nerds and the SABR choice describe what is playing,
@@ -755,9 +761,9 @@ public class StreamingDataRequest {
             // This is not a concern, since the fetch will always be finished
             // and never block the main thread.
             // But if debugging, then still verify this is the situation.
-            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: Blocking main thread");
-            }
+            Logger.printExceptionIfDebug(() -> !future.isDone() && Utils.isCurrentlyOnMainThread()
+                    ? "Debug: Blocking main thread"
+                    : null);
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getStream timed out", ex);

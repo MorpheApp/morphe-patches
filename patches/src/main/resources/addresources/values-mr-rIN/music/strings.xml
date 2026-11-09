@@ -490,6 +490,23 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">अपग्रेड बटण लपवा</string>
   <string name="morphe_music_hide_navigation_bar_title">नेव्हिगेशन बार लपवा</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">नेव्हिगेशन बटण लेबले लपवा</string>
+  <string name="morphe_music_navigation_bar_glass_title">ग्लास नेव्हिगेशन बार सक्षम करा</string>
+  <string name="morphe_music_navigation_bar_glass_summary">नेव्हिगेशन बार एका फ्लोटिंग, गोलाकार, अर्धपारदर्शक कॅप्सूलप्रमाणे दर्शवते</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">ग्लास ओपॅसिटी</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">ग्लास नेव्हिगेशन बारची पारदर्शकता पातळी समायोजित करा (0 म्हणजे पारदर्शक, 100 म्हणजे अपारदर्शक)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">लाईट ग्लास</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">अधिक हलक्या आणि स्पष्ट ग्लाससाठी, ग्लास नेव्हिगेशन बारला गडद ऐवजी पांढरा रंग देते</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">ग्लास नेव्हिगेशन बारचा आकार</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">ग्लास नेव्हिगेशन बारची उंची, रुंदी आणि बटणांमधील अंतर प्रिव्ह्यूसह समायोजित करा. स्क्रीनच्या रुंदीत न बसणारी बटणे लपवली जातात</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">उंची</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">जास्तीत जास्त रुंदी</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">बटणांमधील अंतर</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">दर्शविलेले बटणे: %2$s पैकी %1$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">होम</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">सॅम्पल्स</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">एक्सप्लोर</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">लायब्ररी</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">लॉग इन केलेले नाही. कॉन्फिगर करण्यासाठी टॅप करा</string>
   <string name="morphe_music_scrobbling_log_out">लॉग आउट करा</string>
@@ -716,7 +733,7 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">चिनी आणि कॅन्टोनीज अक्षरे (UniDict, ~८ MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">चिनी शब्द (pinyin-pro, ~१७ MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">ग्रीक, स्लाव्हिक सिरिलिक (रशियन, युक्रेनियन, बल्गेरियन, सर्बियन, बेलारुशियन, मॅसेडोनियन समाविष्ट), जॉर्जियन, आर्मेनियन, हिब्रू, अरबी, अम्हारिक आणि सिरियाक लिप्यंतरण (CLDR, ~०.५ MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">वाचत आहे %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">वाचन %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">रिफ्रेश बटण दाखवा</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">पुढील लिरिक्स उमेदवाराकडे जाण्यासाठी टॅप करा; गाण्याचे शीर्षक आणि कलाकाराद्वारे लिरिक्स शोधण्यासाठी दीर्घकाळ दाबा</string>
   <string name="morphe_music_lyrics_search_dialog_title">गीत शोधा</string>

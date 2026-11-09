@@ -472,6 +472,43 @@ internal object ContextualMenuItemBuilderOnClickFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Lists the items of a menu for the popup menus.
+ */
+internal object MenuItemListBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("L", "Ljava/lang/Object;", "L", "L"),
+    filters = listOf(
+        methodCall(smali = "Ljava/util/List;->iterator()Ljava/util/Iterator;"),
+        methodCall(smali = "Ljava/util/Iterator;->hasNext()Z"),
+        methodCall(smali = "Ljava/util/Iterator;->next()Ljava/lang/Object;"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L", "Ljava/lang/Object;", "L", "L"),
+            returnType = "L",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        methodCall(parameters = listOf("Ljava/lang/Iterable;"), location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Adds the items of the toolbar menu, such as the overflow menu of a playlist page.
+ */
+internal object ActionBarMenuBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "V",
+    filters = listOf(
+        methodCall(smali = "Landroid/util/SparseArray;->size()I"),
+        methodCall(smali = "Landroid/view/MenuInflater;->inflate(ILandroid/view/Menu;)V"),
+        methodCall(smali = "Landroid/view/Menu;->add(IIILjava/lang/CharSequence;)Landroid/view/MenuItem;")
+    )
+)
+
 // 21.25+
 internal object ChannelTabBuilderFingerprint : Fingerprint(
     isStatic = false,

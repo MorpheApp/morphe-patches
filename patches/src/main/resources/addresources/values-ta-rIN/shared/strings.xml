@@ -41,5 +41,18 @@ Second \"item\" text"</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">பேட்ச் அப்டேட்களுக்கான ஆப்-உட்புற அறிவிப்பைக் காட்டு</string>
+  <string name="morphe_patches_update_notice_entry_off">அணைக்கப்பட்டது</string>
+  <string name="morphe_patches_update_notice_entry_stable">நிலையான வெளியீடுகள்</string>
+  <string name="morphe_patches_update_notice_entry_dev">நிலையான மற்றும் மேம்பாட்டு வெளியீடுகள்</string>
+  <string name="morphe_patches_update_notice_dialog_title">புதிய பேட்ச்கள் கிடைக்கின்றன</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (தற்போதைய பதிப்பு: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ புதிய அம்சங்கள்</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 பிழை திருத்தங்கள்</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 இதர மாற்றங்கள்</string>
+  <string name="morphe_patches_update_notice_dialog_more">…மற்றும் மேலும் %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">புதுப்பிப்பு</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">தள்ளுபடி செய்</string>
   <!-- misc.crashlog.crashLogPatch -->
 </resources>

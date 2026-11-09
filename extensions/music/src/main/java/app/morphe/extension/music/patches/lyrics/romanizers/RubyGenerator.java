@@ -116,6 +116,7 @@ public final class RubyGenerator {
     }
 
     /** Ruby language asks for dictionary readings, not automatic or none. */
+    @SuppressWarnings({"ConstantValue", "unused"})
     public static boolean hasManualRubyLanguage() {
         final String lang = Settings.LYRICS_RUBY_LANGUAGE.get();
         if (lang == null || lang.isEmpty()) return false;
@@ -383,6 +384,7 @@ public final class RubyGenerator {
      * Characters the character tables do not cover are skipped, so a word that is only partly
      * covered still shows the reading of the characters that are covered.
      */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Nullable
     private static String characterReading(String text, Function<Character, String> reader) {
         StringBuilder out = new StringBuilder();
@@ -724,7 +726,7 @@ public final class RubyGenerator {
         return RubyStyle.HIRAGANA;
     }
 
-    /** Whether the ruby language is one the shipped Japanese dictionary reads. */
+    /** Whether the ruby language is the one the shipped Japanese dictionary reads. */
     public static boolean isJapaneseRubyLanguage(String language) {
         return "ja".equalsIgnoreCase(language)
                 || "ja-Hira".equalsIgnoreCase(language)

@@ -489,6 +489,23 @@ Přehrávání SABR (předstírání video streamů je vypnuté)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Skrýt tlačítko Upgrade</string>
   <string name="morphe_music_hide_navigation_bar_title">Skrýt navigační panel</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Skrýt štítky navigačních tlačítek</string>
+  <string name="morphe_music_navigation_bar_glass_title">Povolit skleněný navigační panel</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Zobrazuje navigační lištu jako plovoucí, zaoblenou, poloprůhlednou kapsli</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Neprůhlednost skla</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Upravte úroveň průhlednosti skleněné navigační lišty (0 je průhledné, 100 je neprůhledné)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Světlé sklo</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Zabarví skleněnou navigační lištu bílou místo tmavé, pro lehčí a čistší vzhled skla</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Velikost skleněné navigační lišty</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Upravte výšku, šířku a rozestupy tlačítek skleněné navigační lišty s náhledem. Tlačítka, která se nevejdou do šířky obrazovky, jsou skryta</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Výška</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Maximální šířka</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Mezera mezi tlačítky</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Zobrazitelná tlačítka: %1$s z %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Domů</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Vzorky</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Prozkoumat</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Knihovna</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Není přihlášen. Klepnutím nakonfigurujete</string>
   <string name="morphe_music_scrobbling_log_out">Odhlásit se</string>
@@ -713,7 +730,7 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Čínské a kantonské znaky (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Čínská slova (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Řecká, slovanská cyrilice (včetně ruštiny, ukrajinštiny, bulharštiny, srbštiny, běloruštiny, makedonštiny), gruzínština, arménština, hebrejština, arabština, amharština a syrská transkripce (CLDR, ~0,5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Čtení %1$s: %2$d %%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Čtení %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Zobrazit tlačítko Obnovit</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Klepnutím přepněte na další kandidáta textu; dlouhým stiskem hledejte text podle názvu písně a interpreta</string>
   <string name="morphe_music_lyrics_search_dialog_title">Vyhledat text písně</string>

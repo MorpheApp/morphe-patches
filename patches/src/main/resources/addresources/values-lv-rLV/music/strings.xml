@@ -490,6 +490,23 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Slēpt pogu Uzlabot</string>
   <string name="morphe_music_hide_navigation_bar_title">Slēpt navigācijas joslu</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Slēpt navigācijas pogu etiķetes</string>
+  <string name="morphe_music_navigation_bar_glass_title">Ienablekt stklaina navigācijas joslu</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Rāda navigācijas joslu kā pel floating, noapaļotas, puscaurspīdīgas kapsulas</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Stikla caurspīdums</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Regulē stikla navigācijas joslas caurspīduma līmeni (0 ir caurspīdīgs, 100 ir necaurspīdīgs)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Gaisšs stikls</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Sēroja stikla navigācijas joslu baltā, nevis tumšā krāsā, lai stikls būtu gaišāks un skaidrāks</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Stikla navigācijas joslas izmērs</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Regulē stikla navigācijas joslas augstumu, platumu un pogu atstātumu ar priekšskatu. Pogas, kas neiekļaujas ekrāna platumā, tiek slēptas</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Augstums</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Maksimālais platums</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Pogu atstājums</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Rādītas pogas: %1$s no %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Sākums</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Paraugi</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Izpētīt</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Bibliotēka</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Nav pieslēdzies. Pieskarieties, lai konfigurētu</string>
   <string name="morphe_music_scrobbling_log_out">Iziet</string>
@@ -716,7 +733,7 @@ Obligātās cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Ķīnas un kantonešu rakstzīmes (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Ķīnas vārdi (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grieķu, slāvu kirillu (tostad krievu, ukraiņu, bulgāru, serbu, baltkrievu, maķedoniešu), gruzīnu, armēņu, ebreju, arābu, amharu un siru transliterācija (CLDR, ~0,5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Laso %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Lasa %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Rādīt atjaunināšanas pogu</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Kliediet, lai pārslēgtos uz nākamo dziesmu teksta variantu; aizturiet, lai meklētu dziesmu tekstu pēc dziesmas nosaukuma un izpildītāja</string>
   <string name="morphe_music_lyrics_search_dialog_title">Meklēt dziesmu tekstu</string>

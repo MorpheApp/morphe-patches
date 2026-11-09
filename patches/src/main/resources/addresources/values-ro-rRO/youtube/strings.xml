@@ -319,25 +319,18 @@ Modificările includ:
   <string name="morphe_hide_keyword_content_search_title">Ascunde rezultatele căutării după cuvinte cheie</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ascunde abonarea videoclipurilor după cuvintele-cheie</string>
   <string name="morphe_hide_keyword_content_phrases_title">Cuvinte cheie de ascuns</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Introduceți cuvinte cheie și expresii de ascuns, separate prin linii noi
+  <string name="morphe_hide_keyword_content_phrases_summary">"Introduceți cuvinte-cheie și expresii de ascuns, separate prin linii noi
 
-Cuvintele cheie pot fi orice text afișat în titlurile videoclipurilor sau numele canalelor
-
-Cuvintele cu litere mari în mijloc trebuie să se potrivească exact (de exemplu, iPhone, TikTok, LeBlanc)"</string>
+Cuvintele-cheie pot fi orice text afișat în titlurile videoclipurilor sau în numele canalelor"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Pagina de pornire / Abonamente / Căutare / Comentariile sunt filtrate pentru a ascunde conținutul care corespunde unor expresii formate din cuvinte-cheie
 
 Limitări:
-• Shorturile nu pot fi ascunse după numele canalului
-• Este posibil ca anumite componente ale interfeței utilizatorului să nu fie ascunse
-• Căutarea unui cuvânt-cheie poate să nu afișeze rezultate"</string>
+• Anumite Shorts nu pot fi ascunse după numele canalului
+• Este posibil ca anumite componente ale interfeței utilizatorului să nu fie ascunse"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Potrivește cuvinte întregi</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Înconjurarea unui cuvânt cheie/frază cu ghilimele va împiedica potrivirile parțiale ale titlurilor videoclipurilor și numelor de canale&lt;br&gt;&lt;br&gt;De exemplu,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; va ascunde videoclipul: &lt;b&gt;Cum funcționează AI?&lt;/b&gt;&lt;br&gt;dar nu va ascunde: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Nu se poate folosi cuvântul-cheie: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Adaugă ghilimele pentru a utiliza cuvântul-cheie: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Cuvântul-cheie are declarații contradictorii: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Cuvântul-cheie este prea scurt și necesită ghilimele: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Cuvântul-cheie va ascunde toate videoclipurile: %s</string>
@@ -500,6 +493,17 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_post_translate_started">Se traduce…</string>
   <string name="morphe_post_translate_failed">Postarea nu a putut fi tradusă</string>
   <string name="morphe_post_translate_same_language">Postarea este deja în limba de traducere</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Activați Morphe în mișcare</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Flyout-ul de redare „În deplasare” deschide controalele personalizate ale playerului Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">În deplasare</string>
+  <string name="morphe_on_the_go_audio_mode">Trecere la modul audio</string>
+  <string name="morphe_on_the_go_video_mode">Trecere la modul video</string>
+  <string name="morphe_on_the_go_download">Descărcare</string>
+  <string name="morphe_on_the_go_queue">Coadă</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Adăugarea elementului Ask la meniul flyout</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Adaugă un element de sumarizare video în meniul flyout al șirului de alimentare</string>
@@ -751,6 +755,8 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_queue_manager_open_queue">Deschide coada</string>
   <string name="morphe_queue_manager_save_queue">Salvează coada în playlist</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Încarcă paginile cozii la defilare</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Încarcă mai multe videoclipuri din listă atunci când defilezi aproape de sfârșitul cozii</string>
   <string name="morphe_native_playlist_queue_saved">Playlist salvat</string>
   <string name="morphe_native_playlist_queue_saved_to">Salvat în %s</string>
   <string name="morphe_native_playlist_queue_clear">Golește coada</string>
@@ -794,7 +800,6 @@ Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul
   <string name="morphe_tap_to_seek_title">Activează atingerea pentru a căuta</string>
   <string name="morphe_tap_to_seek_summary">Atingeți oriunde pe bara de progres pentru a sări la acea poziție în loc de glisare</string>
   <!-- interaction.seekbar.customSeekbarThumbPatch -->
-  <string name="morphe_custom_seekbar_thumb_category_title">Indicator personalizat al barei de căutare</string>
   <string name="morphe_custom_seekbar_thumb_title">Activează indicatorul personalizat al barei de căutare</string>
   <string name="morphe_custom_seekbar_thumb_summary">Înlocuiește indicatorul barei de căutare cu o imagine personalizată sau un GIF animat</string>
   <string name="morphe_custom_seekbar_thumb_file_title">Imagine indicator</string>
@@ -1102,6 +1107,10 @@ Pentru a afișa meniul 'Audio Track', schimbă 'Spoof video streams' în orice c
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Permite modului Ambient să rămână activ în modul de economisire a bateriei</string>
   <string name="morphe_disable_ambient_mode_title">Dezactivează modul ambient</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Dezactivați modul Ambient în ecran complet</string>
+  <string name="morphe_enhanced_ambient_mode_title">Mod Ambient îmbunătățit</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Iluminează întreaga pagină de vizionare și barele negre cu videoclipul, în locul modului Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Menține textul lizibil</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Reduce luminozitatea videoclipurilor luminoase pentru ca textul de pe pagină să rămână lizibil</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ascunde cardurile cu informații</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1774,6 +1783,9 @@ Această bibliotecă este stocată pe acest dispozitiv și partajată între con
   <string name="morphe_niconico_comments_screen_title">Comentarii Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Afișează chat-ul live și redarea chat-ului sub formă de comentarii care defilează pe ecranul videoclipului</string>
   <string name="morphe_niconico_comments_summary">Afișează un buton de suprapunere în playerul video. Apasă pentru a afișa sau ascunde comentariile, apasă și menține pentru setări rapide</string>
+  <string name="morphe_niconico_comments_appearance_title">Aspect</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portret</string>
+  <string name="morphe_niconico_comments_video_types_title">Tipuri de videoclipuri</string>
   <string name="morphe_niconico_comments_font_size_title">Dimensiunea fontului comentariilor</string>
   <string name="morphe_niconico_comments_font_size_summary">Dimensiunea textului comentariilor (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Opacitatea comentariilor</string>
@@ -1782,6 +1794,16 @@ Această bibliotecă este stocată pe acest dispozitiv și partajată între con
   <string name="morphe_niconico_comments_travel_duration_summary">Câte secunde durează ca comentariile să traverseze ecranul. Valorile mai mici se deplasează mai rapid</string>
   <string name="morphe_niconico_comments_display_area_title">Zona de afișare</string>
   <string name="morphe_niconico_comments_display_area_summary">Cât din player, începând de sus, este utilizat pentru comentarii. Valorile mai mici mențin partea de jos a videoclipului liberă</string>
+  <string name="morphe_niconico_comments_portrait_title">Afișare în portret</string>
+  <string name="morphe_niconico_comments_portrait_summary">Afișează comentariile când ecranul este în portret. Dezactivează pentru a le afișa doar în peisaj</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Setări separate pentru portret</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Utilizați o dimensiune a fontului, o durată de deplasare și o zonă de afișare diferite în portret. Când este activată, acestea încep de la valorile actuale</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Dimensiunea fontului comentariilor în portret</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Dimensiunea textului comentariilor în portret (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Durata de deplasare în portret</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Câte secunde durează traversarea ecranului de către comentarii în modul portret</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Zona de afișare în modul portret</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Ce parte a playerului, începând de sus, este utilizată de comentarii în modul portret</string>
   <string name="morphe_niconico_comments_hide_crowded_title">Ascunde comentariile care s-ar suprapune</string>
   <string name="morphe_niconico_comments_hide_crowded_summary">Când zona de afișare este plină, noile comentarii sunt ascunse în loc să se suprapună peste alte comentarii</string>
   <string name="morphe_niconico_comments_max_length_title">Lungimea maximă a comentariului</string>
@@ -1799,6 +1821,8 @@ Această bibliotecă este stocată pe acest dispozitiv și partajată între con
   <string name="morphe_niconico_comments_timed_comments_summary">La videoclipurile fără chat, comentariile de top care conțin o oră, cum ar fi 1:23, sunt afișate la acel moment</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Afișează comentariile temporizate cu redarea chat-ului</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">La redările fluxurilor live și Premiere-uri, comentariile temporizate sunt afișate împreună cu chat-ul</string>
+  <string name="morphe_niconico_comments_all_settings">Toate setările</string>
+  <string name="morphe_niconico_comments_reset_title">Resetezi aceste setări?</string>
   <string name="morphe_live_chat_translate_screen_title">Traducere chat live</string>
   <string name="morphe_live_chat_translate_screen_summary">Traduce mesajele din chat-ul live și mesajele de redare a chat-ului live</string>
   <string name="morphe_live_chat_translate_title">Traducere chat live</string>

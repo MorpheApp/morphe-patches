@@ -490,6 +490,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">ເຊື່ອງປຸ່ມອັບເກຣດ</string>
   <string name="morphe_music_hide_navigation_bar_title">ເຊື່ອງແຖບນຳທາງ</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ເຊື່ອງປ້າຍຊື່ປຸ່ມນຳທາງ</string>
+  <string name="morphe_music_navigation_bar_glass_title">ເປີດໃຊ້ແຖບນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_music_navigation_bar_glass_summary">ສະແດງແຖບການນຳທາງເປັນແຄັບຊູນໂປ່ງແສງ, ມົນ ແລະ ລອຍຕົວ</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">ຄວາມທຶບຂອງແກ້ວ</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">ປັບລະດັບຄວາມໂປ່ງໃສຂອງແຖບການນຳທາງແບບແກ້ວ (0 ແມ່ນໂປ່ງໃສ, 100 ແມ່ນທຶບ)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">ແກ້ວສີແຈ້ງ</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">ປ່ຽນສີແຖບການນຳທາງແບບແກ້ວເປັນສີຂາວແທນສີເຂັ້ມ ເພື່ອໃຫ້ແກ້ວເບິ່ງສີແຈ້ງ ແລະ ໃສຂຶ້ນ</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">ຂະໜາດແຖບການນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">ປັບຄວາມສູງ, ຄວາມກວ້າງ ແລະ ໄລຍະຫ່າງຂອງປຸ່ມຂອງແຖບການນຳທາງແບບແກ້ວ ພ້ອມກັບການ xem ຕົວຢ່າງ. ປຸ່ມທີ່ບໍ່ພໍກັບຄວາມກວ້າງຂອງໜ້າຈໍຈະຖືກເຊື່ອງໄວ້</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">ຄວາມສູງ</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">ຄວາມກວ້າງສູງສຸດ</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">ໄລຍະຫ່າງຂອງປຸ່ມ</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">ປຸ່ມທີ່ສະແດງ: %1$s ຈາກ %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">ໜ້າຫຼັກ</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">ຕົວຢ່າງ</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">ສຳຫຼວດ</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">ຄັງເພງ</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">ຍັງບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ. ແຕະເພື່ອຕັ້ງຄ່າ</string>
   <string name="morphe_music_scrobbling_log_out">ອອກຈາກລະບົບ</string>
@@ -716,7 +733,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">ຕົວອັກສອນຈີນ ແລະ ກວາງຕຸ້ງ (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">ຄຳສັບພາສາຈີນ (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">ການທັບສັບພາສາກຣີກ, ສະລາວິກ ຊີຣິລລິກ (ລວມທັງ ຣັດເຊຍ, ຢູເຄຣນ, ບູນກາຣີ, ເຊີບີບີອາ, ເບລາຣູສ, ມາເຊໂດເນຍ), 喬ージຍາ, ອາກເມນຍາ, ເຮບຣູ, ອາຣັບ, ອຳဟာຣິກ ແລະ ຊີຣີອັກ (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">ກຳລັງອ່ານ %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">ກໍາລັງອ່ານ %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">ສະແດງປຸ່ມ Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">ແຕະເພື່ອປ່ຽນໄປຫາເນື້ອເພງອື່ນທີ່ເປັນໄປໄດ້; ແຕະຄ້າງໄວ້ເພື່ອຄົ້ນຫາເນື້ອເພງຕາມຊື່ເພງ ແລະ ສິລະປິນ</string>
   <string name="morphe_music_lyrics_search_dialog_title">ຄົ້ນຫາເນື້ອເພງ</string>

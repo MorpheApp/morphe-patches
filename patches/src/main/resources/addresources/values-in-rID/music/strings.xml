@@ -490,6 +490,23 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Sembunyikan tombol Upgrade</string>
   <string name="morphe_music_hide_navigation_bar_title">Sembunyikan bilah navigasi</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Sembunyikan label tombol navigasi</string>
+  <string name="morphe_music_navigation_bar_glass_title">Aktifkan bilah navigasi glass</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Menampilkan bilah navigasi sebagai kapsul transparan, bulat, dan mengapung</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Opasitas kaca</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Sesuaikan level transparansi bilah navigasi kaca (0 adalah transparan, 100 adalah solid)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Kaca terang</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Memberi warna putih pada bilah navigasi kaca, bukan gelap, untuk kaca yang lebih terang dan jernih</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Ukuran bilah navigasi kaca</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Sesuaikan tinggi, lebar, dan jarak antar tombol bilah navigasi kaca, dengan pratinjau. Tombol yang tidak muat dalam lebar layar akan disembunyikan</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Tinggi</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Lebar maksimum</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Jarak antar tombol</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Tombol yang ditampilkan: %1$s dari %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Beranda</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Sampel</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Jelajahi</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Koleksi</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Belum masuk. Ketuk untuk mengonfigurasi</string>
   <string name="morphe_music_scrobbling_log_out">Keluar</string>
@@ -716,7 +733,7 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Karakter Tionghoa dan Kantonis (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Kata Tionghoa (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">Transliterasi Yunani, Slavia Cyrillic (termasuk Rusia, Ukraina, Bulgaria, Serbia, Belarusia, Makedonia), Georgia, Armenia, Ibrani, Arab, Amharik, dan Syria (CLDR, ~0,5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">Membaca %1$s: %2$d%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">Membaca %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Tampilkan tombol Segarkan</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ketuk untuk beralih ke kandidat lirik berikutnya; tekan lama untuk mencari lirik berdasarkan judul lagu dan artis</string>
   <string name="morphe_music_lyrics_search_dialog_title">Cari lirik</string>

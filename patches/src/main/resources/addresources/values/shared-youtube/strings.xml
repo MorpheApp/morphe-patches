@@ -126,7 +126,7 @@ Make %2$s the default client?"</string>
     <string name="morphe_spoof_video_streams_client_type_title">Default client</string>
     <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR sign in</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Not signed in to Android VR. Tap here to sign in</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR requires a separate sign-in. Tap here to continue</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Currently signed into Android VR</string>
     <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
     <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">To use this feature, change \'Default client\' to Android VR</string>
@@ -228,13 +228,15 @@ To sign in, press continue below"</string>
     <string name="morphe_replace_links_with_shortener_summary">Forces videos to use the shortened youtu.be URL format</string>
 
     <!-- misc.debugging.enableDebuggingPatch -->
-    <string name="morphe_debug_protobuffer_title">Debug log protocol buffer</string>
-    <string name="morphe_debug_protobuffer_summary">Adds additional logging information for developers to identify app components</string>
-    <string name="morphe_debug_protobuffer_user_dialog_message">"Enabling this setting will log additional layout data, including on-screen text for some UI components.
+    <string name="morphe_debug_litho_title">Litho logging</string>
+    <string name="morphe_debug_litho_entry_disabled">Disabled</string>
+    <string name="morphe_debug_litho_entry_path">Path</string>
+    <string name="morphe_debug_litho_entry_path_and_buffer">Path and buffer</string>
+    <string name="morphe_debug_litho_user_dialog_message">"Litho logging logs the layout components of the app, including on-screen text for some UI components.
 
 This can help identify components when creating custom filters.
 
-However, enabling this will also log some user data such as your IP address"</string>
+However, this will also log some user data such as your IP address"</string>
 
     <!-- Custom filter -->
     <string name="morphe_custom_filter_screen_title">Custom filter</string>

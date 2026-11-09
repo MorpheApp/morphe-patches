@@ -10,13 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.returnyoutubedislike.requests.ReturnYouTubeDislikeAPI;
 
 @SuppressWarnings({"unused", "deprecation"})
 public class ReturnYouTubeDislikeDebugStatsPreferenceCategory extends PreferenceCategory {
 
-    private static final boolean SHOW_RYD_DEBUG_STATS = BaseSettings.DEBUG.get();
+    private static final boolean SHOW_RYD_DEBUG_STATS = Logger.isDebugEnabled();
 
     private static String createSummaryText(int value, String summaryStringZeroKey, String summaryStringOneOrMoreKey) {
         if (value == 0) {

@@ -229,6 +229,19 @@ Ako se optimizacije baterije ne promijene, može doći do sljedećeg:
 Ako želite iskustvo bez najviše problema, tada &lt;b&gt;deinstalirajte&lt;/b&gt; ovo i instalirajte preporučenu verziju aplikacije ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Želim eksperimentalno</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Želim stabilno</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Prikaži obavijest u aplikaciji za ažuriranja zakrpa</string>
+  <string name="morphe_patches_update_notice_entry_off">Isključeno</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabilna izdanja</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabilna i dev izdanja</string>
+  <string name="morphe_patches_update_notice_dialog_title">Dostupne su nove zakrpe</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe zakrpe &lt;b&gt;%1$s&lt;/b&gt; (trenutno: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nove funkcije</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Ispravke grešaka</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Ostale promjene</string>
+  <string name="morphe_patches_update_notice_dialog_more">…i još %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Ažuriraj</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Zatvori</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Zapis o padu aplikacije je sačuvan u korisničkim dokumentima: %s</string>
   <string name="morphe_crash_log_saved">Zapis o padu aplikacije je sačuvan: %s</string>

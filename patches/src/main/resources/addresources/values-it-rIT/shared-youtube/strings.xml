@@ -116,7 +116,7 @@ Vuoi rendere %2$s il client predefinito?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client predefinito</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Accesso con Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Non hai eseguito l\'accesso con Android VR. Premi qui per accedere</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR richiede un accesso separato. Tocca qui per continuare</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hai eseguito l\'accesso con Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Per utilizzare questa funzione, rendi Android VR il client predefinito</string>

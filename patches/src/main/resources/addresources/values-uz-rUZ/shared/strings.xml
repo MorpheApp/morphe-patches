@@ -229,6 +229,19 @@ Agar batareya optimallashtiruvlari o'zgartirilmasa, quyidagilar yuz berishi mumk
 Agar siz eng muammosiz tajribani xohlasangiz, unda buni &lt;b&gt;o'chirib tashlang&lt;/b&gt; va ✅ &lt;b&gt;%2$s&lt;/b&gt; tavsiya etilgan ilova versiyasini patch qiling"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Menga eksperimental versiya kerak</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Menga barqaror versiya kerak</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Patch yangilanishlari uchun ilova ichida bildirishnomani ko\'rsatish</string>
+  <string name="morphe_patches_update_notice_entry_off">O\'chiq</string>
+  <string name="morphe_patches_update_notice_entry_stable">Barqaror versiyalar</string>
+  <string name="morphe_patches_update_notice_entry_dev">Barqaror va ishchi versiyalar</string>
+  <string name="morphe_patches_update_notice_dialog_title">Yangi patchlar mavjud</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (hozirgi: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Yangi imkoniyatlar</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Xatoliklar tuzatildi</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Boshqa o\'zgarishlar</string>
+  <string name="morphe_patches_update_notice_dialog_more">…yana %s ta</string>
+  <string name="morphe_patches_update_notice_dialog_update">Yangilash</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Yopish</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Xatolik logi foydalanuvchi hujjatlariga saqlandi: %s</string>
   <string name="morphe_crash_log_saved">Xatolik logi saqlandi: %s</string>

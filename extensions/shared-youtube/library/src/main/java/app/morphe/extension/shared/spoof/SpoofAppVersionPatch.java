@@ -15,10 +15,6 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 @SuppressWarnings("unused")
 public class SpoofAppVersionPatch {
 
-    public static String getDefaultTarget() {
-        return "";
-    }
-
     public static final boolean SPOOF_APP_VERSION_ENABLED = SharedYouTubeSettings.SPOOF_APP_VERSION.get();
     public static final String SPOOF_APP_VERSION_TARGET = SharedYouTubeSettings.SPOOF_APP_VERSION_TARGET.get();
 

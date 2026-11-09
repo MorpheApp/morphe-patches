@@ -12,10 +12,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.youtube.interaction.nativeplaylistqueue.EXTENSION_CLASS as NATIVE_QUEUE_EXTENSION_CLASS
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.nativePlaylistQueuePatch
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHook
@@ -32,6 +35,8 @@ import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
 import app.morphe.patches.youtube.video.information.playerStatusOverrideHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.setExtensionIsPatchIncluded
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -73,7 +78,8 @@ val addToQueuePatch = patch(
                         entryValuesKey = "morphe_queue_type_legacy_entry_values"
                     )
                 },
-                SwitchPreference("morphe_queue_add_flyout_menu", summary = true)
+                SwitchPreference("morphe_queue_add_flyout_menu", summary = true),
+                SwitchPreference("morphe_native_queue_fetch_on_scroll", summary = true)
             )
         )
 
@@ -88,24 +94,41 @@ val addToQueuePatch = patch(
 
             mainFingerprint.method.apply {
                 val runnableRegister = getInstruction<TwoRegisterInstruction>(runnableIndex).registerA
-                addInstructions(
-                    runnableIndex,
+                val replacement = if (is_21_15_or_greater) {
+                    // The original item register may now hold its Runnable. Reload
+                    // the same source from the factory parameter instead of guessing its lifetime.
+                    check(AccessFlags.STATIC.isSet(accessFlags)) { "Queue item factory must be static" }
+                    val itemType = (getCharSequenceReference as MethodReference).parameterTypes.single().toString()
+                    val ownerType = parameterTypes.single().toString()
+                    val itemField = classDefBy(ownerType).fields.single { it.type == itemType }
+                    val itemRegister = findFreeRegister(runnableIndex, runnableRegister)
+                    check(itemRegister <= 15) { "Queue item reload requires a low scratch register" }
                     """
-                        invoke-static { v$runnableRegister }, $EXTENSION_CLASS->replaceButtonRunnable(Ljava/lang/Runnable;)Ljava/lang/Runnable;
+                        move-object/from16 v$itemRegister, p0
+                        iget-object v$itemRegister, v$itemRegister, $itemField
+                        invoke-static {v$runnableRegister, v$itemRegister}, $EXTENSION_CLASS->replaceButtonRunnable(Ljava/lang/Runnable;Ljava/lang/Object;)Ljava/lang/Runnable;
                         move-result-object v$runnableRegister
                     """
-                )
+                } else {
+                    """
+                        invoke-static {v$runnableRegister}, $EXTENSION_CLASS->replaceButtonRunnable(Ljava/lang/Runnable;)Ljava/lang/Runnable;
+                        move-result-object v$runnableRegister
+                    """
+                }
+                addInstructions(runnableIndex, replacement)
             }
 
             fun getReplaceOnItemClickPatch(
                 targetInstructionRegister: String,
-                freeRegister: String
+                freeRegister: String,
+                method: String = "replaceOnItemClick",
+                continuation: String = "block_item_click"
             ): String = """
-                invoke-static { $targetInstructionRegister }, $EXTENSION_CLASS->replaceOnItemClick(Ljava/lang/Object;)Z
+                invoke-static { $targetInstructionRegister }, $EXTENSION_CLASS->$method(Ljava/lang/Object;)Z
                 move-result $freeRegister
-                if-eqz $freeRegister, :block_item_click
+                if-eqz $freeRegister, :$continuation
                 return-void
-                :block_item_click
+                :$continuation
                 nop
             """
 
@@ -123,6 +146,10 @@ val addToQueuePatch = patch(
                         instance-of v1, v0, $enumMethodParameterClassName
                         if-eqz v1, :block_item_click
                         check-cast v0, $enumMethodParameterClassName
+                    """ + (if (is_21_15_or_greater) {
+                        // Preserve the checked item for the native icon conversion below.
+                        getReplaceOnItemClickPatch("v0", "v1", "replacePlaylistItemClick", "native_playlist_item")
+                    } else "") + """
                         invoke-static { v0 }, $getCharSequenceReference
                         move-result-object v0
                         iget v0, v0, $enumIntField
@@ -155,10 +182,14 @@ val addToQueuePatch = patch(
             name = "onUserLeaveHint",
             returnType = "V",
             parameters = listOf()
-        ).method.addInstruction(
-            0,
-            "invoke-static { }, $EXTENSION_LOCAL_QUEUE_CLASS->onUserLeaveHint()V"
-        )
+        ).method.apply {
+            addInstruction(0, "invoke-static { }, $EXTENSION_LOCAL_QUEUE_CLASS->onUserLeaveHint()V")
+            if (is_21_15_or_greater) {
+                // The native queue cancels its pending playlist page loads when leaving the app,
+                // unless a Next/Previous is waiting on them during background playback.
+                addInstruction(0, "invoke-static { }, $NATIVE_QUEUE_EXTENSION_CLASS->onUserLeaveHint()V")
+            }
+        }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }

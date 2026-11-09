@@ -230,24 +230,10 @@ public class Requester {
 
     /**
      * Parse the {@link HttpURLConnection}, and closes the underlying InputStream.
-     * This does not close the url connection. If further requests to this host are unlikely
-     * in the near future, then instead use {@link #parseJSONArrayAndDisconnect(HttpURLConnection)}.
+     * This does not close the url connection.
      */
     public static JSONArray parseJSONArray(HttpURLConnection connection) throws JSONException, IOException  {
         return new JSONArray(parseString(connection));
-    }
-
-    /**
-     * Parse the {@link HttpURLConnection}, close the underlying InputStream, and disconnect.
-     * <p>
-     * <b>Should only be used if other requests to the server in the near future are unlikely</b>
-     *
-     * @see #parseJSONArray(HttpURLConnection)
-     */
-    public static JSONArray parseJSONArrayAndDisconnect(HttpURLConnection connection) throws JSONException, IOException  {
-        JSONArray array = parseJSONArray(connection);
-        connection.disconnect();
-        return array;
     }
 
 }
