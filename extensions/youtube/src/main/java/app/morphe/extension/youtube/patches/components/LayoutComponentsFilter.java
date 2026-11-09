@@ -1575,6 +1575,13 @@ public final class LayoutComponentsFilter extends Filter {
             return false;
         }
 
+        // A page without tabs is blank. The last tab is kept, as 21.44+ also shows
+        // the Home feed as a page with a single "Home" tab.
+        List<?> tabs = channelTabs;
+        if (tabs != null && tabs.size() <= 1) {
+            return false;
+        }
+
         for (String filter : channelTabFilterStrings) {
             if (channelTabText.equalsIgnoreCase(filter)) {
                 return true;
