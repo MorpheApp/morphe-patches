@@ -68,8 +68,82 @@ public final class OnTheGoPatch {
     @Nullable
     private static volatile byte[] upsellRequest;
 
+    /**
+     * On-the-go state of the app. While it is active, the media controls of the lock screen
+     * and notification have seek back and seek forward buttons.
+     */
+    public interface OnTheGoState {
+        // Method is added during patching.
+        void patch_setOnTheGoActive(boolean active);
+    }
+
+    /**
+     * On-the-go state of the app, or null if the app version has no On-the-go media controls.
+     */
+    @Nullable
+    private static volatile OnTheGoState onTheGoState;
+
+    /**
+     * Seek length of the app, which is the double tap to seek length of the app settings.
+     */
+    public interface SeekLength {
+        // Method is added during patching.
+        long patch_getSeekLengthMilliseconds();
+    }
+
+    /**
+     * Seek length of the app versions that have no seek length class.
+     */
+    private static final long DEFAULT_SEEK_LENGTH_MILLISECONDS = 10_000;
+
+    @Nullable
+    private static volatile SeekLength seekLength;
+
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setOnTheGoState(OnTheGoState state) {
+        onTheGoState = state;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setSeekLength(SeekLength length) {
+        seekLength = length;
+    }
+
+    /**
+     * @return The seek length of the app settings.
+     */
+    static long getSeekLengthMilliseconds() {
+        SeekLength length = seekLength;
+        if (length != null) {
+            try {
+                final long milliseconds = length.patch_getSeekLengthMilliseconds();
+                if (milliseconds > 0) {
+                    return milliseconds;
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "getSeekLengthMilliseconds failure", ex);
+            }
+        }
+        return DEFAULT_SEEK_LENGTH_MILLISECONDS;
+    }
+
+    /**
+     * Turns the On-the-go media controls of the app on or off.
+     */
+    static void setOnTheGoActive(boolean active) {
+        OnTheGoState state = onTheGoState;
+        if (state != null) {
+            Logger.printDebug(() -> "Setting On-the-go media controls active: " + active);
+            state.patch_setOnTheGoActive(active);
+        }
     }
 
     /**

@@ -25,6 +25,22 @@ public final class DownloadsPatch {
      */
     private static final int OFFLINE_PLAYLIST_ACTION_ADD_ORDINAL = 1;
 
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
+    /**
+     * @return If the downloads patch is included and videos are downloaded in-app
+     *         or with an external downloader, so a Download button can be added.
+     */
+    public static boolean canDownloadWithoutAppButton() {
+        if (!isPatchIncluded()) {
+            return false;
+        }
+        DownloadMode mode = Settings.DOWNLOAD_MODE.get();
+        return mode == DownloadMode.IN_APP || mode == DownloadMode.EXTERNAL;
+    }
+
     /**
      * Injection point.
      * <p>
