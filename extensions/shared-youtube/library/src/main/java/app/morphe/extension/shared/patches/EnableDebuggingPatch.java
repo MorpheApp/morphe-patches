@@ -14,6 +14,17 @@ package app.morphe.extension.shared.patches;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
+import android.app.ActivityManager;
+import android.app.ApplicationExitInfo;
+import android.content.Context;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -26,6 +37,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.FeatureFlagsBisect;
 
@@ -48,6 +60,60 @@ public final class EnableDebuggingPatch {
 
     static {
         FeatureFlagsBisect.handleAppStartup();
+
+        if (LOG_FEATURE_FLAGS && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            Utils.runOnBackgroundThread(EnableDebuggingPatch::logProcessExits);
+        }
+    }
+
+    /**
+     * Logs why the previous processes ended, such as a crash, an ANR or a kill in the background,
+     * which the app cannot log itself.
+     */
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    private static void logProcessExits() {
+        try {
+            Context context = Utils.getContext();
+            String packageName = context.getPackageName();
+            StringBuilder builder = new StringBuilder("Last process exits:");
+            int count = 0;
+            for (ApplicationExitInfo exit : context.getSystemService(ActivityManager.class)
+                    .getHistoricalProcessExitReasons(packageName, 0, 20)) {
+                // The WebView processes of the app are listed too.
+                if (!exit.getProcessName().startsWith(packageName)) continue;
+                if (count++ >= 5) break;
+
+                builder.append('\n').append(exit);
+                // The system keeps the thread dump of an ANR. The main thread shows what blocked the app.
+                if (exit.getReason() == ApplicationExitInfo.REASON_ANR) {
+                    appendAnrMainThread(builder, exit);
+                }
+            }
+            Logger.printDebug(builder::toString);
+        } catch (Exception ex) {
+            Logger.printException(() -> "logProcessExits failure", ex);
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    private static void appendAnrMainThread(StringBuilder builder, ApplicationExitInfo exit) {
+        try (InputStream trace = exit.getTraceInputStream()) {
+            if (trace == null) return;
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(trace, StandardCharsets.UTF_8));
+            boolean mainThread = false;
+            int lines = 0;
+            for (String line; (line = reader.readLine()) != null && lines < 60; ) {
+                if (line.startsWith("\"main\"")) mainThread = true;
+                else if (mainThread && line.isEmpty()) break;
+                if (mainThread) {
+                    builder.append("\n  ").append(line);
+                    lines++;
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read the ANR trace", ex);
+        }
     }
 
     private static Map<Long, Boolean> loadOverriddenFlags() {
