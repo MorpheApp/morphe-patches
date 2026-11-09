@@ -1238,19 +1238,19 @@
 
     <!-- interaction.seekbar.customSeekbarThumbPatch -->
     <string-array name="morphe_custom_seekbar_thumb_type_entries">
-        <item>@string/morphe_custom_seekbar_thumb_type_entry_play_arrow</item>
+        <item>@string/morphe_custom_seekbar_thumb_type_entry_infinity_logo</item>
+        <item>@string/morphe_custom_seekbar_thumb_type_entry_m_animated</item>
+        <item>@string/morphe_custom_seekbar_thumb_type_entry_m_static</item>
         <item>@string/morphe_custom_seekbar_thumb_type_entry_wave</item>
-        <item>@string/morphe_custom_seekbar_thumb_type_entry_dragon</item>
         <item>@string/morphe_custom_seekbar_thumb_type_entry_dna</item>
-        <item>@string/morphe_custom_seekbar_thumb_type_entry_manta_ray</item>
         <item>@string/morphe_custom_seekbar_thumb_type_entry_custom</item>
     </string-array>
     <string-array name="morphe_custom_seekbar_thumb_type_entry_values" translatable="false">
-        <item>PLAY_ARROW</item>
+        <item>INFINITY_LOGO</item>
+        <item>M_ANIMATED</item>
+        <item>M_STATIC</item>
         <item>WAVE</item>
-        <item>DRAGON</item>
         <item>DNA</item>
-        <item>MANTA_RAY</item>
         <item>CUSTOM</item>
     </string-array>
 
