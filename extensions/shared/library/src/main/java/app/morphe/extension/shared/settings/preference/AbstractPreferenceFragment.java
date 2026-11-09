@@ -469,10 +469,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
                 if (setting != null) {
                     updatePreference(pref, setting, syncSettingValue, applySettingToPreference);
-                } else if (Logger.isDebugEnabled() && (pref instanceof SwitchPreference
-                        || pref instanceof EditTextPreference || pref instanceof ListPreference)) {
+                } else if (pref instanceof SwitchPreference
+                        || pref instanceof EditTextPreference || pref instanceof ListPreference) {
                     // Probably a typo in the patches preference declaration.
-                    Logger.printException(() -> "Preference key has no setting: " + key);
+                    Logger.printExceptionIfDebug(() -> "Preference key has no setting: " + key);
                 }
             }
         }

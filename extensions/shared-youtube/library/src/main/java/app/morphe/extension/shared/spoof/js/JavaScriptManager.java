@@ -334,9 +334,9 @@ public final class JavaScriptManager {
 
         try {
             Logger.printDebug(() -> "Starting download of: " + url);
-            if (Logger.isDebugEnabled() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: downloadUrl() called on main thread!");
-            }
+            Logger.printExceptionIfDebug(() -> Utils.isCurrentlyOnMainThread()
+                    ? "Debug: downloadUrl() called on main thread!"
+                    : null);
 
             final long start = System.currentTimeMillis();
             final int connectionTimeoutMillis = 5000;
