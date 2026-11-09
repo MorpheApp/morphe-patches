@@ -43,6 +43,7 @@ val customSeekbarThumbPatch = patch(
             "customseekbarthumb",
             ResourceGroup(
                 "raw",
+                "morphe_custom_seekbar_thumb_play_arrow.gif",
                 "morphe_custom_seekbar_thumb_infinity_logo.webp",
                 "morphe_custom_seekbar_thumb_m_animated.webp",
                 "morphe_custom_seekbar_thumb_m_static.webp",

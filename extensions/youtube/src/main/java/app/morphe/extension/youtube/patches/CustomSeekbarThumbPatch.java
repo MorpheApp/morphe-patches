@@ -52,6 +52,7 @@ import app.morphe.extension.youtube.settings.Settings;
 public final class CustomSeekbarThumbPatch {
 
     public enum ThumbType {
+        PLAY_ARROW,
         INFINITY_LOGO,
         M_ANIMATED,
         M_STATIC,
@@ -409,6 +410,7 @@ public final class CustomSeekbarThumbPatch {
     @Nullable
     private static String getPresetResourceName(ThumbType type) {
         return switch (type) {
+            case PLAY_ARROW -> "morphe_custom_seekbar_thumb_play_arrow";
             case INFINITY_LOGO -> "morphe_custom_seekbar_thumb_infinity_logo";
             case M_ANIMATED -> "morphe_custom_seekbar_thumb_m_animated";
             case M_STATIC -> "morphe_custom_seekbar_thumb_m_static";
