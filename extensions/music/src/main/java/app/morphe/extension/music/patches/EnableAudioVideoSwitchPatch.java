@@ -402,7 +402,8 @@ public final class EnableAudioVideoSwitchPatch {
                 best = item;
             }
         }
-        String resolved = best == null ? null : best.videoId;
+        // Partial match is usually a different song, better to do nothing.
+        String resolved = best == null || bestScore < 1.0d ? null : best.videoId;
         final double resolvedScore = bestScore;
         Logger.printDebug(() -> "audio/video switch: " + currentId + " (" + resolvedType
                 + ") -> " + resolved + " score: " + resolvedScore);

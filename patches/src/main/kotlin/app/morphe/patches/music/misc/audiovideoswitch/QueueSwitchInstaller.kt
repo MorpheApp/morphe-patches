@@ -9,12 +9,14 @@ package app.morphe.patches.music.misc.audiovideoswitch
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.getMutableMethod
+import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patches.music.interaction.jam.addBridge
 import app.morphe.patches.music.interaction.jam.addReferenceGetter
 import app.morphe.patches.music.interaction.jam.decode
 import app.morphe.patches.music.interaction.jam.installNativeAccessor
 import app.morphe.patches.music.interaction.jam.invokeKind
+import app.morphe.util.cloneMutable
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -104,13 +106,22 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
 }
 
 private fun installAudioVideoSwitchCapture(queue: AudioVideoQueueAbi) {
-    queue.constructor.cloneParameters().apply {
-        findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
-            addInstructions(
-                index,
-                "invoke-static/range {p0 .. p0}, " +
-                    "$EXTENSION_CLASS->capture($ACCESS)V",
-            )
-        }
+    // The clone has to replace the original or it does nothing. p0 can get reassigned in the
+    // constructor so keep it in its own register, same as Jam.
+    val original = queue.constructor.getMutableMethod()
+    val preservedThisRegister = requireNotNull(original.implementation).registerCount
+    val constructor =
+        original.cloneMutable(additionalRegisters = original.numberOfParameterRegisters + 1)
+    mutableClassDefBy(original.definingClass).methods.apply {
+        remove(original)
+        add(constructor)
+    }
+    constructor.addInstructions(0, "move-object/from16 v$preservedThisRegister, p0")
+    constructor.findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+        constructor.addInstructions(
+            index,
+            "invoke-static/range {v$preservedThisRegister .. v$preservedThisRegister}, " +
+                "$EXTENSION_CLASS->capture($ACCESS)V",
+        )
     }
 }
