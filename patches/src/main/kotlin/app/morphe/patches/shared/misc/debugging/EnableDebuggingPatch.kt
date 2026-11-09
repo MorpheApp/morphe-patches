@@ -84,7 +84,6 @@ internal fun enableDebuggingPatch(
 
         preferences.addAll(
             listOf(
-                SwitchPreference("morphe_debug_stacktrace", summary = true),
                 SwitchPreference("morphe_debug_toast_on_error"),
                 NonInteractivePreference(
                     "morphe_debug_export_logs",

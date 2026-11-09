@@ -93,11 +93,11 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final StringSetting CUSTOM_BRANDING_ICON_PATCHED = new StringSetting("morphe_custom_branding_icon_patched", "", false, false);
 
     // Miscellaneous
-    public static final EnumSetting<LithoLogging> DEBUG_LITHO = new EnumSetting<>("morphe_debug_litho", LithoLogging.DISABLED, false, "morphe_debug_litho_user_dialog_message", DEBUG_ENABLED_AVAILABILITY);
-    public static final BooleanSetting DEBUG_SPANNABLE = new BooleanSetting("morphe_debug_spannable", FALSE, DEBUG_ENABLED_AVAILABILITY);
-    public static final StringSetting DISABLED_FEATURE_FLAGS = new StringSetting("morphe_disabled_feature_flags", "", true, DEBUG_ENABLED_AVAILABILITY);
-    public static final StringSetting FORCED_FEATURE_FLAGS = new StringSetting("morphe_forced_feature_flags", "", true, DEBUG_ENABLED_AVAILABILITY);
-    public static final StringSetting FEATURE_FLAGS_BISECT = new StringSetting("morphe_feature_flags_bisect", "", false, false, null, DEBUG_ENABLED_AVAILABILITY);
+    public static final EnumSetting<LithoLogging> DEBUG_LITHO = new EnumSetting<>("morphe_debug_litho", LithoLogging.DISABLED, false, "morphe_debug_litho_user_dialog_message", parentNot(DEBUG_LEVEL, DebugLevel.DISABLED));
+    public static final BooleanSetting DEBUG_SPANNABLE = new BooleanSetting("morphe_debug_spannable", FALSE, parentNot(DEBUG_LEVEL, DebugLevel.DISABLED));
+    public static final StringSetting DISABLED_FEATURE_FLAGS = new StringSetting("morphe_disabled_feature_flags", "", true, parentNot(DEBUG_LEVEL, DebugLevel.DISABLED));
+    public static final StringSetting FORCED_FEATURE_FLAGS = new StringSetting("morphe_forced_feature_flags", "", true, parentNot(DEBUG_LEVEL, DebugLevel.DISABLED));
+    public static final StringSetting FEATURE_FLAGS_BISECT = new StringSetting("morphe_feature_flags_bisect", "", false, false, null, parentNot(DEBUG_LEVEL, DebugLevel.DISABLED));
     public static final BooleanSetting DISABLE_QUIC_PROTOCOL = new BooleanSetting("morphe_disable_quic_protocol", FALSE, true);
     public static final BooleanSetting SANITIZE_SHARING_LINKS = new BooleanSetting("morphe_sanitize_sharing_links", TRUE);
     public static final BooleanSetting REPLACE_MUSIC_LINKS_WITH_YOUTUBE = new BooleanSetting("morphe_replace_music_with_youtube", FALSE);
