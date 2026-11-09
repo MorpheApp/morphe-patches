@@ -1,3 +1,9 @@
+## [2.2.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v2.2.0-dev.3...v2.2.0-dev.4) (2026-11-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube:** App crash when patching `21.28.208` ([bdeda41](https://github.com/MorpheApp/morphe-patches/commit/bdeda410c0337d8043e03b8fa67c0881dabd30d1))
+
 ## [2.2.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v2.2.0-dev.2...v2.2.0-dev.3) (2026-11-09)
 
 ### ✨ New Features
