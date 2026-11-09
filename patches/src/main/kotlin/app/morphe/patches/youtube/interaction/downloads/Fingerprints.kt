@@ -19,8 +19,10 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.video.information.ChannelInformationFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object YouTubeOfflineVideoEndpointFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -35,6 +37,95 @@ internal object YouTubeOfflineVideoEndpointFingerprint : Fingerprint(
         anyInstruction(
             string("Unsupported Offline Video Action: "), // 21.14 and lower
             string("Unsupported Offline Video Action: %s") // 21.15+
+        )
+    )
+)
+
+/** Finds the native function that converts Downloads progress to a card start time. */
+internal object OfflineDownloadCardPositionFingerprint : Fingerprint(
+    parameters = listOf("J", "J"),
+    returnType = "F",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            definingClass = "this",
+            parameters = listOf("J", "J"),
+            returnType = "I"
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            definingClass = "this",
+            parameters = listOf("J", "J", "I"),
+            returnType = "Z",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        opcode(Opcode.LONG_TO_FLOAT, location = MatchAfterImmediately())
+    )
+)
+
+internal fun offlineDownloadLoadFingerprint(modelType: String, descriptorType: String) = Fingerprint(
+    classFingerprint = ChannelInformationFingerprint,
+    parameters = listOf(modelType, descriptorType),
+    returnType = "V",
+    filters = listOf(
+        methodCall(definingClass = "this", parameters = listOf("L", descriptorType), returnType = "V"),
+        string("loadVideo() called on LocalDirector in wrong state")
+    )
+)
+
+internal fun offlineDownloadPlayerFingerprint(refreshMethod: MethodReference, modelType: String) = Fingerprint(
+    definingClass = refreshMethod.definingClass,
+    name = refreshMethod.name,
+    parameters = refreshMethod.parameterTypes.map { it.toString() },
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = refreshMethod.parameterTypes.first().toString()),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf(),
+            returnType = modelType,
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+internal fun offlineDownloadPositionApplyFingerprint(
+    refreshMethod: MethodReference,
+    playerType: String
+) = Fingerprint(
+    definingClass = refreshMethod.definingClass,
+    name = refreshMethod.name,
+    parameters = refreshMethod.parameterTypes.map { it.toString() },
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_STATIC, parameters = listOf(playerType, "J"), returnType = "V"),
+        methodCall(definingClass = "this", parameters = listOf("Z", "I", playerType), returnType = "V")
+    )
+)
+
+internal fun offlineDownloadDurationFingerprint(modelImplementation: String) = Fingerprint(
+    definingClass = modelImplementation,
+    parameters = listOf(),
+    returnType = "J",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            definingClass = "Ljava/util/concurrent/TimeUnit;",
+            name = "SECONDS"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "this",
+            parameters = listOf(),
+            returnType = "I",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.INT_TO_LONG, location = MatchAfterImmediately()),
+        methodCall(
+            "Ljava/util/concurrent/TimeUnit;->toMillis(J)J",
+            location = MatchAfterImmediately()
         )
     )
 )

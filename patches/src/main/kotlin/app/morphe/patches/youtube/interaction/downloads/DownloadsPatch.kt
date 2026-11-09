@@ -35,6 +35,7 @@ import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -139,7 +140,8 @@ val downloadsPatch = patch(
         fixProtoLibraryPatch,
         elementProtoParserHookPatch,
         flyoutPatch,
-        commandRouterHookPatch
+        commandRouterHookPatch,
+        versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -183,6 +185,9 @@ val downloadsPatch = patch(
         hookElement("$EXTENSION_IN_APP_DOWNLOADS_CLASS->addPlaylistDownloadButton")
 
         // region In-app downloads.
+
+        hookOfflineDownloadPositionSource()
+
 
         // Save the video instead of asking the server for the download action, which answers with the Premium upsell.
         ResolveCommandFingerprint.method.apply {
@@ -276,6 +281,9 @@ val downloadsPatch = patch(
                 fromBytesMethod.definingClass,
                 playerResponseType
             ).method
+            val offlineStateType = UpdateOfflineVideoPolicyFingerprint.matchAll().first().method.parameterTypes[2]
+            val offlineStateField = classDefBy(playerResponseType).fields.single { it.type == offlineStateType }
+            hookOfflineDownloadResume(playerResponseModelType, playerResponseGetter, offlineStateField)
 
             val helperMethod = ImmutableMethod(
                 it.classDef.type,
