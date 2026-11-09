@@ -722,9 +722,12 @@ public final class VideoInformation {
             final long videoLength = getVideoLength();
 
             // Prevent issues such as play/ pause button or autoplay not working.
-            final long adjustedSeekTime = Math.min(seekTime, videoLength - 250);
+            // The video length is rounded to whole seconds, so the stream can end up to half a second
+            // before it. A seek closer to the end can land on the last frame, and the video never ends:
+            // the player keeps the pause button instead of the replay button and autoplay does not start.
+            final long adjustedSeekTime = Math.min(seekTime, videoLength - 1000);
             if (videoTime <= seekTime && videoTime >= adjustedSeekTime) {
-                // Both the current video time and the seekTo are in the last 250ms of the video.
+                // Both the current video time and the seekTo are in the last second of the video.
                 // Ignore this seek call, otherwise if a video ends with multiple closely timed segments
                 // then seeking here can create an infinite loop of skip attempts.
                 Logger.printDebug(() -> "Ignoring seekTo call as video playback is almost finished. "
