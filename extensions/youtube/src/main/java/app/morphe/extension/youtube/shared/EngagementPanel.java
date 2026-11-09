@@ -27,7 +27,7 @@ public final class EngagementPanel {
                     String panelToRemove = engagementPanelIds.pollLast();
 
                     if (panelToRemove != null) {
-                        Logger.traceEvent("EngagementPanel", "Closed: " + panelToRemove);
+                        Logger.printDebug(() -> "EngagementPanel closed: " + panelToRemove);
                         if (panelToRemove.equals(panelId)) {
                             break;
                         }
@@ -43,7 +43,7 @@ public final class EngagementPanel {
     public static void open(@Nullable String panelId) {
         if (Utils.isNotEmpty(panelId)) {
             engagementPanelIds.addLast(panelId);
-            Logger.traceEvent("EngagementPanel", "Opened: " + panelId);
+            Logger.printDebug(() -> "EngagementPanel open: " + panelId);
         }
     }
 

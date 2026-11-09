@@ -292,7 +292,6 @@ public final class ClassicSubscriptionsLayoutPatch {
      * Navigation bar used before the guide response is loaded.
      */
     public static boolean hideOfflineSubscriptionsButton(boolean original) {
-        return Logger.traceOverride("ClassicSubscriptionsLayoutPatch.hideOfflineSubscriptionsButton", original,
-                !DISABLE_TOOLBAR_NAVIGATION_TABS && original);
+        return !DISABLE_TOOLBAR_NAVIGATION_TABS && original;
     }
 }

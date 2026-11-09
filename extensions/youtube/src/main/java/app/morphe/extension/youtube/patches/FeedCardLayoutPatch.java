@@ -622,8 +622,7 @@ public class FeedCardLayoutPatch {
                     } catch (InvalidProtocolBufferException ex) {
                         // The app rewrites the cache while it runs, so the file can be read while it's
                         // incomplete. The uri found before is kept, and the cache is read again soon.
-                        Logger.traceEvent("FeedCardLayoutPatch", "Template cache of " + name
-                                + " read while it's written: " + ex.getMessage());
+                        Logger.printDebug(() -> "Template cache is being written", ex);
                         cacheLookupTime = System.currentTimeMillis() - TEMPLATE_LOOKUP_INTERVAL_MILLIS
                                 + TEMPLATE_CONFIRM_INTERVAL_MILLIS;
                         return;
@@ -640,8 +639,7 @@ public class FeedCardLayoutPatch {
                         // is replaced only if the next lookup does not find it either.
                         if (current != null && !cached.contains(current) && !missingInCache) {
                             missingInCache = true;
-                            Logger.traceEvent("FeedCardLayoutPatch", "Template not found in the cache, kept until"
-                                    + " the next lookup: " + current);
+                            Logger.printDebug(() -> "Template not found in the cache: " + current);
                             return;
                         }
                         missingInCache = false;
@@ -654,7 +652,7 @@ public class FeedCardLayoutPatch {
                                 : Objects.equals(current, newest)) {
                             return;
                         }
-                        Logger.traceState("FeedCardLayoutPatch template " + name, newest + " (from the cache)");
+                        Logger.printDebug(() -> "Cached template: " + newest);
                         uri = newest;
                         fromElement = false;
                     }
@@ -728,9 +726,8 @@ public class FeedCardLayoutPatch {
                         }
 
                         if (!elementUri.equals(template.uri)) {
-                            Logger.traceState("FeedCardLayoutPatch template " + template.name, elementUri
-                                    + " (from an element), theme field: " + template.themeField
-                                    + ", capabilities field: " + template.capabilitiesField);
+                            Logger.printDebug(() -> "Template of an element: " + elementUri + " theme field: "
+                                    + template.themeField + " capabilities field: " + template.capabilitiesField);
                         }
                         // A lookup of the cache can replace the uri at the same time.
                         synchronized (template) {

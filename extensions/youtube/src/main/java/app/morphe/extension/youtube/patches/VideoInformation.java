@@ -301,7 +301,7 @@ public final class VideoInformation {
      */
     public static void initialize(PlaybackController playerController) {
         try {
-            Logger.traceEvent("Player", "New player controller" + (ShortsPlayerState.isOpen() ? " (Shorts)" : ""));
+            Logger.printDebug(() -> "newVideoStarted");
 
             WeakReference<PlaybackController> playerControllerRef =
                     new WeakReference<>(Objects.requireNonNull(playerController));
@@ -468,7 +468,7 @@ public final class VideoInformation {
             playerVideo.playlistId = playerResponsePlaylistId;
         }
         if (!playerVideo.videoId.equals(newlyLoadedVideoId)) {
-            Logger.traceState("VideoId", newlyLoadedVideoId);
+            Logger.printDebug(() -> "New video ID: " + newlyLoadedVideoId);
             playerVideo.videoId = newlyLoadedVideoId;
             LocalQueuePatch.onVideoChanged();
             onVideoIdChange.invoke(newlyLoadedVideoId);
@@ -484,7 +484,7 @@ public final class VideoInformation {
         if (!isShort || isShortAndOpeningOrPlaying) {
             if (videoIdIsShort != isShort) {
                 videoIdIsShort = isShort;
-                Logger.traceState("VideoIsShort", isShort);
+                Logger.printDebug(() -> "videoIdIsShort: " + isShort);
             }
         }
         return signature; // Return the original value since we are observing and not modifying.
@@ -531,7 +531,7 @@ public final class VideoInformation {
         }
 
         playbackSpeed = speed;
-        Logger.traceState("PlaybackSpeed", speed);
+        Logger.printDebug(() -> "Video speed updated: " + playbackSpeed);
         playbackSpeedFormattedString = formatSpeedStringX(speed);
         Utils.runOnMainThreadNowOrLater(() -> onPlaybackSpeedChange.invoke(speed));
         if (isPlaybackAudioPitchLinked() || (isPatchIncluded() && !isPlaybackAudioPitchEnabled())) {
@@ -905,7 +905,7 @@ public final class VideoInformation {
             return;
         }
 
-        Logger.traceState("LiveStream", nowLive);
+        Logger.printDebug(() -> "isLiveStream: " + nowLive);
         RememberPlaybackSpeedPatch.onLiveStreamChanged(nowLive);
         SkipLiveShortsPatch.onLiveStreamChanged(nowLive);
     }
@@ -1144,7 +1144,7 @@ public final class VideoInformation {
     private static void setCurrentQuality(@Nullable VideoQualityInterface quality) {
         Utils.verifyOnMainThread();
         if (currentQuality != quality) {
-            Logger.traceState("VideoQuality", quality == null ? null : quality.patch_getQualityName());
+            Logger.printDebug(() -> "Current quality changed to: " + quality);
             currentQuality = quality;
             onQualityChange.invoke(quality);
         }

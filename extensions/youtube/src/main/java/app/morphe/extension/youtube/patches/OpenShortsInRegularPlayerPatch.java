@@ -21,8 +21,12 @@ public class OpenShortsInRegularPlayerPatch {
      * Injection point.
      */
     public static boolean overrideBackPressToExit(boolean original) {
-        return Logger.traceOverride("OpenShortsInRegularPlayerPatch.overrideBackPressToExit", original,
-                !overrideBackPressToExit && original);
+        if (overrideBackPressToExit) {
+            Logger.printDebug(() -> "Overriding back press to exit activity");
+            return false;
+        }
+
+        return original;
     }
 
     /**

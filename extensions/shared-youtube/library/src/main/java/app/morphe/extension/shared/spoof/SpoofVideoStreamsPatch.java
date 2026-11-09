@@ -253,8 +253,10 @@ public class SpoofVideoStreamsPatch {
      * Only invoked when playing a live stream on an Apple client.
      */
     public static boolean fixHLSCurrentTime(boolean original) {
-        return Logger.traceOverride("SpoofVideoStreamsPatch.fixHLSCurrentTime", original,
-                !SPOOF_VIDEO_STREAMS && original);
+        if (SPOOF_VIDEO_STREAMS) {
+            return false;
+        }
+        return original;
     }
 
     /**
@@ -283,8 +285,14 @@ public class SpoofVideoStreamsPatch {
      * Turns off a feature flag that interferes with video playback.
      */
     public static boolean usePlaybackStartFeatureFlag(boolean original) {
-        return Logger.traceOverride("SpoofVideoStreamsPatch.usePlaybackStartFeatureFlag", original,
-                !SPOOF_VIDEO_STREAMS && original);
+        if (original) {
+            Logger.printDebug(() -> "usePlaybackStartFeatureFlag is set on");
+        }
+
+        if (SPOOF_VIDEO_STREAMS) {
+            return false;
+        }
+        return original;
     }
 
     /**
@@ -292,8 +300,14 @@ public class SpoofVideoStreamsPatch {
      * Turns off a feature flag that interferes with video playback.
      */
     public static boolean useReelItemWatchResponseFeatureFlag(boolean original) {
-        return Logger.traceOverride("SpoofVideoStreamsPatch.useReelItemWatchResponseFeatureFlag", original,
-                !SPOOF_VIDEO_STREAMS && original);
+        if (original) {
+            Logger.printDebug(() -> "useReelItemWatchResponse is set on");
+        }
+
+        if (SPOOF_VIDEO_STREAMS) {
+            return false;
+        }
+        return original;
     }
 
     /**
@@ -301,8 +315,14 @@ public class SpoofVideoStreamsPatch {
      * Turns off a feature flag that interferes with video playback.
      */
     public static boolean useMediaSessionFeatureFlag(boolean original) {
-        return Logger.traceOverride("SpoofVideoStreamsPatch.useMediaSessionFeatureFlag", original,
-                !SPOOF_VIDEO_STREAMS && original);
+        if (original) {
+            Logger.printDebug(() -> "useMediaSessionFeatureFlag is set on");
+        }
+
+        if (SPOOF_VIDEO_STREAMS) {
+            return false;
+        }
+        return original;
     }
 
     /**

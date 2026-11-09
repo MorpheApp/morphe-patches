@@ -154,25 +154,25 @@ public class BackgroundPlaybackPatch {
      * Injection point.
      */
     public static boolean enableFeatureFlag(boolean original) {
-        return Logger.traceOverride("BackgroundPlaybackPatch.enableFeatureFlag", original,
-                REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS || original);
+        if (REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS) return true;
+        return original;
     }
 
     /**
      * Injection point.
      */
     public static boolean disableFeatureFlag(boolean original) {
-        return Logger.traceOverride("BackgroundPlaybackPatch.disableFeatureFlag", original,
-                !REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS && original);
+        if (REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS) return false;
+        return original;
     }
 
     /**
      * Injection point.
      */
     public static boolean isBackgroundPlaybackAllowed(boolean original) {
-        if (!REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS || original) {
-            return Logger.traceOverride("BackgroundPlaybackPatch.isBackgroundPlaybackAllowed", original, original);
-        }
+        if (!REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS) return original;
+
+        if (original) return true;
 
         // Steps to verify most edge cases (with Shorts background playback set to off):
         // 1. Open a regular video
@@ -186,36 +186,32 @@ public class BackgroundPlaybackPatch {
         // 8. Resume playing the regular video
         // 9. Minimize the app (PiP should appear)
         if (ShortsPlayerState.isOpen()) {
-            return Logger.traceOverride("BackgroundPlaybackPatch.isBackgroundPlaybackAllowed", original, false);
+            return false;
         }
 
         // Check if the video player is opened and it's not playing in the feed.
         PlayerType current = PlayerType.getCurrent();
-        return Logger.traceOverride("BackgroundPlaybackPatch.isBackgroundPlaybackAllowed", original,
-                !current.isNoneOrHidden() && current != PlayerType.INLINE_MINIMAL);
+        return !current.isNoneOrHidden() && current != PlayerType.INLINE_MINIMAL;
     }
 
     /**
      * Injection point.
      */
     public static boolean isBackgroundShortsPlaybackAllowed(boolean original) {
-        return Logger.traceOverride("BackgroundPlaybackPatch.isBackgroundShortsPlaybackAllowed", original,
-                REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS_SHORTS);
+        return REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS_SHORTS;
     }
 
     /**
      * Injection point.
      */
     public static boolean isAutomaticForegroundPlaybackAllowed(boolean original) {
-        return Logger.traceOverride("BackgroundPlaybackPatch.isAutomaticForegroundPlaybackAllowed", original,
-                original && !REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS);
+        return original && !REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS;
     }
 
     /**
      * Injection point.
      */
     public static boolean isAutomaticPlaybackPauseInFlyout(boolean original) {
-        return Logger.traceOverride("BackgroundPlaybackPatch.isAutomaticPlaybackPauseInFlyout", original,
-                original && !REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS);
+        return original && !REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS;
     }
 }

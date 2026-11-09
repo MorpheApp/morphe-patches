@@ -170,8 +170,7 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
                 // Declare a global function
                 runJS(commonStdin, true);
             } catch (Exception e) {
-                // The challenges run the script again.
-                Logger.printDebug(() -> "JavaScript warm up failure", e);
+                // ignore warmup errors
             }
         }
     }

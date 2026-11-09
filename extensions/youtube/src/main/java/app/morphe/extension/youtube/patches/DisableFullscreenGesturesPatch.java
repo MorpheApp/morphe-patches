@@ -49,7 +49,7 @@ public class DisableFullscreenGesturesPatch {
      * Injection point. Pre-21.36 zoom-flag override.
      */
     public static boolean disableBrokenFullscreenZoomFlag(boolean original) {
-        return Logger.traceOverride("DisableFullscreenGesturesPatch.disableBrokenFullscreenZoomFlag", original, false);
+        return false;
     }
 
     private static boolean disableZoomGesture() {
@@ -126,8 +126,7 @@ public class DisableFullscreenGesturesPatch {
      * Injection point. Shorts pinch-to-zoom flags.
      */
     public static boolean enableShortsZoomGesture(boolean original) {
-        return Logger.traceOverride("DisableFullscreenGesturesPatch.enableShortsZoomGesture", original,
-                !Settings.DISABLE_FULLSCREEN_ZOOM_GESTURE.get());
+        return !Settings.DISABLE_FULLSCREEN_ZOOM_GESTURE.get();
     }
 
     /**

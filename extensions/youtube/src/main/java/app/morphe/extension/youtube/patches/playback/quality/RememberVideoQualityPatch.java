@@ -696,8 +696,7 @@ public class RememberVideoQualityPatch {
      * @return If the initial video quality is used as a fixed quality.
      */
     public static boolean useInitialVideoQuality(boolean original) {
-        return Logger.traceOverride("RememberVideoQualityPatch.useInitialVideoQuality", original,
-                original || isDefaultQualitySet());
+        return original || isDefaultQualitySet();
     }
 
     /**
@@ -730,8 +729,7 @@ public class RememberVideoQualityPatch {
      */
     public static boolean useSelectedQualityFormats(boolean original) {
         final String videoId = VideoInformation.getVideoId();
-        return Logger.traceOverride("RememberVideoQualityPatch.useSelectedQualityFormats", original,
-                ShortsPlayerState.isOpen() && !videoId.isEmpty() && videoId.equals(shortsSelectedQualityVideoId));
+        return ShortsPlayerState.isOpen() && !videoId.isEmpty() && videoId.equals(shortsSelectedQualityVideoId);
     }
 
     /**
@@ -748,18 +746,16 @@ public class RememberVideoQualityPatch {
     public static boolean clearVideoBufferOnQualityChange(boolean original) {
         final String videoId = clearVideoBufferVideoId;
         if (videoId.isEmpty()) {
-            return Logger.traceOverride("RememberVideoQualityPatch.clearVideoBufferOnQualityChange", original,
-                    original);
+            return original;
         }
 
         clearVideoBufferVideoId = "";
         // Not cleared if another video started before the player set the selected quality.
         if (original || clearVideoBufferTimeUs < 0 || !videoId.equals(VideoInformation.getVideoId())) {
             clearVideoBufferTimeUs = -1;
-            return Logger.traceOverride("RememberVideoQualityPatch.clearVideoBufferOnQualityChange", original,
-                    original);
+            return original;
         }
-        return Logger.traceOverride("RememberVideoQualityPatch.clearVideoBufferOnQualityChange", original, true);
+        return true;
     }
 
     /**

@@ -15,7 +15,6 @@ import androidx.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -73,7 +72,7 @@ public class ChangeFormFactorPatch {
      */
     public static int getUniversalFormFactor(int original) {
         if (FORM_FACTOR_TYPE == null) {
-            return Logger.traceOverride("ChangeFormFactorPatch.getUniversalFormFactor", original, original);
+            return original;
         }
 
         if (IS_BROKEN_FORM_FACTOR
@@ -89,12 +88,11 @@ public class ChangeFormFactorPatch {
                     || NavigationBar.NavigationButton.getSelectedNavigationButton() ==
                     NavigationBar.NavigationButton.LIBRARY) {
                 // The form factor most similar to AUTOMOTIVE is LARGE, so it is replaced with LARGE.
-                return Logger.traceOverride("ChangeFormFactorPatch.getUniversalFormFactor", original,
-                        Optional.ofNullable(FormFactor.LARGE.formFactorType).orElse(original));
+                return Optional.ofNullable(FormFactor.LARGE.formFactorType).orElse(original);
             }
         }
 
-        return Logger.traceOverride("ChangeFormFactorPatch.getUniversalFormFactor", original, FORM_FACTOR_TYPE);
+        return FORM_FACTOR_TYPE;
     }
 
     /**
@@ -118,10 +116,9 @@ public class ChangeFormFactorPatch {
     public static int replaceBrokenFormFactor(int original) {
         if (IS_BROKEN_FORM_FACTOR) {
             // The form factor most similar to AUTOMOTIVE is LARGE, so it is replaced with LARGE.
-            return Logger.traceOverride("ChangeFormFactorPatch.replaceBrokenFormFactor", original,
-                    Optional.ofNullable(FormFactor.LARGE.formFactorType).orElse(original));
+            return Optional.ofNullable(FormFactor.LARGE.formFactorType).orElse(original);
         } else {
-            return Logger.traceOverride("ChangeFormFactorPatch.replaceBrokenFormFactor", original, original);
+            return original;
         }
     }
 

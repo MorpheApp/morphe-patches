@@ -9,8 +9,6 @@ package app.morphe.extension.youtube.patches.spoof;
 
 import static app.morphe.extension.shared.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
 
-import app.morphe.extension.shared.Logger;
-
 @SuppressWarnings("unused")
 public class SpoofAppVersionPatch {
 
@@ -21,8 +19,7 @@ public class SpoofAppVersionPatch {
      * Used on YouTube 20.31 ~ 21.04.
      */
     public static boolean disableShortsBoldIcons(boolean original) {
-        return Logger.traceOverride("SpoofAppVersionPatch.disableShortsBoldIcons", original,
-                !DISABLE_BOLD_ICONS && original);
+        return !DISABLE_BOLD_ICONS && original;
     }
 
     /**
@@ -32,9 +29,8 @@ public class SpoofAppVersionPatch {
      * Called from the '/reel/create_reel_items', '/reel/reel_item_watch', and '/reel/reel_watch_sequence' endpoints.
      */
     public static String getShortsAppVersionOverride(String version) {
-        return Logger.traceOverride("SpoofAppVersionPatch.getShortsAppVersionOverride", version,
-                DISABLE_BOLD_ICONS
-                        ? "20.30.40" // Oldest version that supports new Shorts overlay endpoint response.
-                        : version);
+        return DISABLE_BOLD_ICONS
+                ? "20.30.40" // Oldest version that supports new Shorts overlay endpoint response.
+                : version;
     }
 }

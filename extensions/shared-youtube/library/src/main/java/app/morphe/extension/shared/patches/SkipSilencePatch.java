@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 
 import java.nio.ByteBuffer;
 
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
@@ -77,24 +76,21 @@ public final class SkipSilencePatch {
      * Injection point.
      */
     public static boolean isSkipSilenceEnabled(boolean original) {
-        return Logger.traceOverride("SkipSilencePatch.isSkipSilenceEnabled", original,
-                SharedYouTubeSettings.SKIP_SILENCE.get() || original);
+        return SharedYouTubeSettings.SKIP_SILENCE.get() || original;
     }
 
     /**
      * Injection point.
      */
     public static long minimumSilenceDurationUs(long original) {
-        return Logger.traceOverride("SkipSilencePatch.minimumSilenceDurationUs", original,
-                Math.max(original, SharedYouTubeSettings.SKIP_SILENCE_MINIMUM_PAUSE.get().durationUs));
+        return Math.max(original, SharedYouTubeSettings.SKIP_SILENCE_MINIMUM_PAUSE.get().durationUs);
     }
 
     /**
      * Injection point.
      */
     public static float silenceRetentionRatio(float original) {
-        return Logger.traceOverride("SkipSilencePatch.silenceRetentionRatio", original,
-                Math.max(original, SILENCE_RETENTION_RATIO));
+        return Math.max(original, SILENCE_RETENTION_RATIO);
     }
 
     /**

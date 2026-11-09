@@ -17,7 +17,7 @@ public final class ShortsPlayerState {
     public static void setOpen(boolean isOpen) {
         if (open != isOpen) {
             open = isOpen;
-            Logger.traceState("ShortsPlayerOpen", isOpen);
+            Logger.printDebug(() -> "ShortsPlayerState open changed to: " + isOpen);
             onChange.invoke(isOpen);
         }
     }

@@ -68,7 +68,10 @@ public class LegacyPlayerControlsPatch {
      * Injection point.
      */
     public static boolean forcePlayerSeekbar(boolean original) {
-        return Logger.traceOverride("LegacyPlayerControlsPatch.forcePlayerSeekbar", original, true);
+        if (!original) {
+            Logger.printDebug(() -> "Player seekbar feature flag is off");
+        }
+        return true;
     }
 
     /**
@@ -81,7 +84,7 @@ public class LegacyPlayerControlsPatch {
      */
     public static boolean disableNewPlayerOverlays(boolean original) {
         newPlayerOverlaysOriginal = original;
-        return Logger.traceOverride("LegacyPlayerControlsPatch.disableNewPlayerOverlays", original, false);
+        return false;
     }
 
     /**
@@ -103,7 +106,7 @@ public class LegacyPlayerControlsPatch {
         if (original) {
             elevatedPlayerTurnedOff = true;
         }
-        return Logger.traceOverride("LegacyPlayerControlsPatch.useElevatedPlayer", original, false);
+        return false;
     }
 
     /**
@@ -218,14 +221,17 @@ public class LegacyPlayerControlsPatch {
      * Injection point.
      */
     public static boolean usePlayerBottomControlsExploderLayout(boolean original) {
-        return Logger.traceOverride("LegacyPlayerControlsPatch.usePlayerBottomControlsExploderLayout", original,
-                !RESTORE_OLD_PLAYER_BUTTONS);
+        return !RESTORE_OLD_PLAYER_BUTTONS;
     }
 
     /**
      * Injection point.
      */
     public static boolean useModernPlayerTopControls(boolean original) {
-        return Logger.traceOverride("LegacyPlayerControlsPatch.useModernPlayerTopControls", original, false);
+        if (original) {
+            Logger.printDebug(() -> "useModernPlayerTopControls is set on");
+        }
+
+        return false;
     }
 }

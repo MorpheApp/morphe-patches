@@ -244,8 +244,7 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static boolean useAnimatedNavigationButtons(boolean original) {
-        return Logger.traceOverride("NavigationBarPatch.useAnimatedNavigationButtons", original,
-                Settings.NAVIGATION_BAR_ANIMATIONS.get());
+        return Settings.NAVIGATION_BAR_ANIMATIONS.get();
     }
 
     /**
@@ -254,8 +253,7 @@ public final class NavigationBarPatch {
      * The glass navigation bar sets the width of the buttons itself, from their content and spacing.
      */
     public static boolean enableNarrowNavigationButton(boolean original) {
-        return Logger.traceOverride("NavigationBarPatch.enableNarrowNavigationButton", original,
-                (NARROW_NAVIGATION_BUTTONS && !YouTubeGlassNavigationBar.isEnabled()) || original);
+        return (NARROW_NAVIGATION_BUTTONS && !YouTubeGlassNavigationBar.isEnabled()) || original;
     }
 
     /**
@@ -364,7 +362,7 @@ public final class NavigationBarPatch {
         }
         translucentNavigationBarForced = NAVIGATION_BAR_STYLE != NavigationBarStyle.DEFAULT && translucent;
         navigationBarCoversSystemButtons = translucent;
-        return Logger.traceOverride("NavigationBarPatch.useTranslucentNavigationBar", original, translucent);
+        return translucent;
     }
 
     /**
@@ -399,7 +397,7 @@ public final class NavigationBarPatch {
         if (firstRead) {
             Logger.printDebug(() -> "Feed behind navigation bar: " + feedBehind + " (account: " + original + ")");
         }
-        return Logger.traceOverride("NavigationBarPatch.useFeedBehindNavigationBar", original, feedBehind);
+        return feedBehind;
     }
 
     /**
@@ -425,8 +423,7 @@ public final class NavigationBarPatch {
      * empty band is left between the two bars (<a href="https://github.com/MorpheApp/morphe-patches/issues/2300">...</a>).
      */
     public static boolean useFixedBottomBarRoom(boolean original) {
-        return Logger.traceOverride("NavigationBarPatch.useFixedBottomBarRoom", original,
-                original && !translucentNavigationBarForced);
+        return original && !translucentNavigationBarForced;
     }
 
     /**
@@ -440,7 +437,7 @@ public final class NavigationBarPatch {
      */
     public static boolean useTranslucentNavigationBarBackground(boolean original) {
         if (NAVIGATION_BAR_STYLE == NavigationBarStyle.DEFAULT) {
-            return Logger.traceOverride("NavigationBarPatch.useTranslucentNavigationBarBackground", original, original);
+            return original;
         }
 
         final boolean translucent;
@@ -452,7 +449,7 @@ public final class NavigationBarPatch {
         }
 
         translucentNavigationBarBackgroundForced = translucent;
-        return Logger.traceOverride("NavigationBarPatch.useTranslucentNavigationBarBackground", original, translucent);
+        return translucent;
     }
 
     /**
@@ -464,8 +461,7 @@ public final class NavigationBarPatch {
      * and this flag would replace the blurred background with a translucent color, so it is left to the account.
      */
     public static boolean useTranslucentNavigationBarStyle(boolean original) {
-        return Logger.traceOverride("NavigationBarPatch.useTranslucentNavigationBarStyle", original,
-                original || (PAGES_BEHIND_GLASS_NAVIGATION_BAR && Build.VERSION.SDK_INT < Build.VERSION_CODES.S));
+        return original || (PAGES_BEHIND_GLASS_NAVIGATION_BAR && Build.VERSION.SDK_INT < Build.VERSION_CODES.S);
     }
 
     /**
@@ -725,10 +721,7 @@ public final class NavigationBarPatch {
      * @param original The room the Shorts player reserves below itself for the navigation bar.
      */
     public static int getShortsPlayerBottomRoom(int original) {
-        return Logger.traceOverride("NavigationBarPatch.getShortsPlayerBottomRoom", original,
-                SETS_SHORTS_PLAYER_BOTTOM_ROOM
-                        ? 0
-                        : original);
+        return SETS_SHORTS_PLAYER_BOTTOM_ROOM ? 0 : original;
     }
 
     /**
@@ -1417,9 +1410,7 @@ public final class NavigationBarPatch {
 
                         return originalButtons.toBuilder().setButtonRenderer(renderer.build()).build().toByteArray();
                     }
-                } catch (Exception ex) {
-                    // Another button of the list can still be copied.
-                    Logger.printDebug(() -> "Could not copy a toolbar button for the settings button", ex);
+                } catch (Exception ignored) {
                 }
             }
         } catch (Exception e) {

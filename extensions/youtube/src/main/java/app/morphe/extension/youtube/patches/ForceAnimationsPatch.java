@@ -94,7 +94,6 @@ public final class ForceAnimationsPatch {
      * use their animations without asking for the animation decision.
      */
     public static boolean useAnimationDecision(boolean original) {
-        return Logger.traceOverride("ForceAnimationsPatch.useAnimationDecision", original,
-                original || Settings.FORCE_ANIMATIONS.get() != AnimationsMode.DEFAULT);
+        return original || Settings.FORCE_ANIMATIONS.get() != AnimationsMode.DEFAULT;
     }
 }

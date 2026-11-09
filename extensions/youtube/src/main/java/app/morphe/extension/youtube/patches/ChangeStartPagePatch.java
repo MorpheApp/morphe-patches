@@ -98,8 +98,7 @@ public final class ChangeStartPagePatch extends BaseChangeStartPagePatch {
     private static final int GUIDE_MILESTONE_NOT_HOMEPAGE = 1;
 
     public static String overrideBrowseId(@NonNull String original) {
-        return Logger.traceOverride("ChangeStartPagePatch.overrideBrowseId", original,
-                processBrowseId(original, TRUE.equals(START_PAGE.isBrowseId), START_PAGE.id, START_PAGE.id));
+        return processBrowseId(original, TRUE.equals(START_PAGE.isBrowseId), START_PAGE.id, START_PAGE.id);
     }
 
     /**
@@ -111,10 +110,7 @@ public final class ChangeStartPagePatch extends BaseChangeStartPagePatch {
      * buttons for about 20 seconds, or until the homepage is opened.
      */
     public static int overrideGuideMilestone(int original) {
-        return Logger.traceOverride("ChangeStartPagePatch.overrideGuideMilestone", original,
-                TRUE.equals(START_PAGE.isBrowseId)
-                        ? GUIDE_MILESTONE_NOT_HOMEPAGE
-                        : original);
+        return TRUE.equals(START_PAGE.isBrowseId) ? GUIDE_MILESTONE_NOT_HOMEPAGE : original;
     }
 
     public static void overrideIntentAction(@NonNull Intent intent) {

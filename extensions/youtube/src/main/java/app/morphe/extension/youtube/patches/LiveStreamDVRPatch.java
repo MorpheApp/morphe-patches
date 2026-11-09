@@ -1,6 +1,5 @@
 package app.morphe.extension.youtube.patches;
 
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -21,8 +20,7 @@ public class LiveStreamDVRPatch {
      * Injection point.
      */
     public static boolean enableLiveStreamDVR(boolean original) {
-        return Logger.traceOverride("LiveStreamDVRPatch.enableLiveStreamDVR", original,
-                original || Settings.LIVE_STREAM_DVR.get());
+        return original || Settings.LIVE_STREAM_DVR.get();
     }
 
 }
