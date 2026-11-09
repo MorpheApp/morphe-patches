@@ -7,7 +7,7 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.debugging.enableDebuggingPatch
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 
 @Suppress("unused")
 val enableDebuggingPatch = enableDebuggingPatch(
@@ -27,5 +27,5 @@ val enableDebuggingPatch = enableDebuggingPatch(
     hookDoubleFeatureFlag = { true },
     hookHotFeatureFlags = { is_9_37_or_greater },
     preferenceScreen = PreferenceScreen.MISC,
-    additionalDebugPreferences = listOf(SwitchPreference("morphe_debug_protobuffer", summary = true))
+    additionalDebugPreferences = listOf(ListPreference("morphe_debug_litho"))
 )

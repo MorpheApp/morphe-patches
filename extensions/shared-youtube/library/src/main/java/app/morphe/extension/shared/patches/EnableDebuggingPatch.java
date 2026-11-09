@@ -26,7 +26,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.FeatureFlagsBisect;
 
@@ -39,7 +38,7 @@ public final class EnableDebuggingPatch {
      * while the app is running then failing to restart
      * resulting in an incomplete log.
      */
-    private static final boolean LOG_FEATURE_FLAGS = BaseSettings.DEBUG.get();
+    private static final boolean LOG_FEATURE_FLAGS = Logger.isDebugEnabled();
 
     private static final Map<Long, Boolean> OVERRIDDEN_FEATURE_FLAGS = loadOverriddenFlags();
 
@@ -90,7 +89,7 @@ public final class EnableDebuggingPatch {
             }
             // Always add flag but only log if flag is enabled.
             if (featureFlags.putIfAbsent(flagObj, value) == null && value) {
-                Logger.printDebug(() -> "boolean feature is enabled: " + flag);
+                Logger.printVerbose(() -> "boolean feature is enabled: " + flag);
             }
         }
 
@@ -108,7 +107,7 @@ public final class EnableDebuggingPatch {
             }
             if (featureFlags.putIfAbsent(flagObj, TRUE) == null) {
                 // Align the log outputs to make post-processing easier.
-                Logger.printDebug(() -> " double feature is enabled: " + flag
+                Logger.printVerbose(() -> " double feature is enabled: " + flag
                         + " value: " + value + (defaultValue == 0 ? "" : " default: " + defaultValue));
             }
         }
@@ -126,7 +125,7 @@ public final class EnableDebuggingPatch {
                 return defaultValue;
             }
             if (featureFlags.putIfAbsent(flagObj, TRUE) == null) {
-                Logger.printDebug(() -> "   long feature is enabled: " + flag
+                Logger.printVerbose(() -> "   long feature is enabled: " + flag
                         + " value: " + value + (defaultValue == 0 ? "" : " default: " + defaultValue));
             }
         }
@@ -144,7 +143,7 @@ public final class EnableDebuggingPatch {
                 return defaultValue;
             }
             if (featureFlags.putIfAbsent(flagObj, TRUE) == null) {
-                Logger.printDebug(() -> " string feature is enabled: " + flag
+                Logger.printVerbose(() -> " string feature is enabled: " + flag
                         + " value: " + value + (defaultValue.isEmpty() ? "" : " default: " + defaultValue));
             }
         }
@@ -170,10 +169,10 @@ public final class EnableDebuggingPatch {
                     return 1;
                 }
                 if (featureFlags.putIfAbsent(flagObj, value != 0) == null && value != 0) {
-                    Logger.printDebug(() -> "boolean feature is enabled: " + flag);
+                    Logger.printVerbose(() -> "boolean feature is enabled: " + flag);
                 }
             } else if (value != 0 && featureFlags.putIfAbsent(flagObj, TRUE) == null) {
-                Logger.printDebug(() -> "   long feature is enabled: " + flag + " value: " + value);
+                Logger.printVerbose(() -> "   long feature is enabled: " + flag + " value: " + value);
             }
         }
 

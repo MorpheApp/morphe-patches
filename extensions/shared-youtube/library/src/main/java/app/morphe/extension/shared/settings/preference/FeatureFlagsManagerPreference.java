@@ -58,7 +58,6 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.EnableDebuggingPatch;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -193,7 +192,7 @@ public class FeatureFlagsManagerPreference extends Preference {
      * Shows the main dialog for managing feature flags.
      */
     private void showFlagsManagerDialog() {
-        if (!BaseSettings.DEBUG.get()) {
+        if (!Logger.isDebugEnabled()) {
             Utils.showToastShort(str("morphe_debug_logs_disabled"));
             return;
         }

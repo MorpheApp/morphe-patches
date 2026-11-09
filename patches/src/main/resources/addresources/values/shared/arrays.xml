@@ -188,4 +188,15 @@
         <item>STABLE</item>
         <item>DEV</item>
     </string-array>
+    <!-- misc.debugging.enableDebuggingPatch -->
+    <string-array name="morphe_debug_level_entries">
+        <item>@string/morphe_debug_level_entry_disabled</item>
+        <item>@string/morphe_debug_level_entry_debug</item>
+        <item>@string/morphe_debug_level_entry_verbose</item>
+    </string-array>
+    <string-array name="morphe_debug_level_entry_values">
+        <item>DISABLED</item>
+        <item>DEBUG</item>
+        <item>VERBOSE</item>
+    </string-array>
 </resources>

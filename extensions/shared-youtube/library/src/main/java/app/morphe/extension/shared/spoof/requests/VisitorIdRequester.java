@@ -224,7 +224,7 @@ public final class VisitorIdRequester {
                 return response.getJSONObject("responseContext").getString("visitorData");
             }
 
-            if (BaseSettings.DEBUG.get()) {
+            if (Logger.isDebugEnabled()) {
                 String responseMessage = connection.getResponseMessage();
                 Logger.LogMessage logMessage = () -> "Debug: Unexpected visitorId response code: "
                         + responseCode + " message: " + responseMessage + " client: " + clientType;
@@ -238,7 +238,7 @@ public final class VisitorIdRequester {
             connection.disconnect();
         } catch (SocketTimeoutException ex) {
             Logger.LogMessage message = () -> "Debug: Fetch visitor data timeout";
-            if (BaseSettings.DEBUG.get()) {
+            if (Logger.isDebugEnabled()) {
                 Logger.printException(message, ex);
             } else {
                 Logger.printInfo(message, ex);
@@ -246,7 +246,7 @@ public final class VisitorIdRequester {
         } catch (IOException ex) {
             // A slow or broken connection, which is not an error of the patch.
             Logger.LogMessage message = () -> "Failed to fetch visitor data";
-            if (BaseSettings.DEBUG.get()) {
+            if (Logger.isDebugEnabled()) {
                 Logger.printException(message, ex);
             } else {
                 Logger.printInfo(message, ex);

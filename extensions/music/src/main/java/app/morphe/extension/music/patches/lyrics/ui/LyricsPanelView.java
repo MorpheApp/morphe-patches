@@ -1189,7 +1189,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         try {
             buildLyrics(newLyrics);
         } catch (Throwable ex) {
-            if (Settings.DEBUG.get()) {
+            if (Logger.isDebugEnabled()) {
                 Logger.printException(() -> "Debug: buildLyrics failure", ex);
             }
         }

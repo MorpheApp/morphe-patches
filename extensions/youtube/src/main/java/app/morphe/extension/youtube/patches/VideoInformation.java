@@ -978,7 +978,7 @@ public final class VideoInformation {
 
         if (currentPlaybackSpeedMenuInterface == null) {
             Logger.LogMessage logMessage = () -> "Debug: Cannot change playback speed, menu interface is null";
-            if (Settings.DEBUG.get()) {
+            if (Logger.isDebugEnabled()) {
                 Logger.printException(logMessage);
             } else {
                 Logger.printDebug(logMessage);
@@ -1024,7 +1024,7 @@ public final class VideoInformation {
             Logger.printDebug(() -> "Video playbackParameters changed, speed: " + speed + " pitch: " + pitch);
         } else {
             Logger.LogMessage logMessage = () -> "Debug: Cannot change speed parameters, menu interface is null";
-            if (Settings.DEBUG.get()) {
+            if (Logger.isDebugEnabled()) {
                 Logger.printException(logMessage);
             } else {
                 Logger.printDebug(logMessage);

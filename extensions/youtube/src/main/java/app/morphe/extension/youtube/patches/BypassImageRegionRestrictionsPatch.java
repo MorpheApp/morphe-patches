@@ -30,9 +30,9 @@ public final class BypassImageRegionRestrictionsPatch {
                 String replacement = YOUTUBE_STATIC_IMAGE_DOMAIN_PATTERN
                         .matcher(originalURL).replaceFirst(REPLACEMENT_IMAGE_DOMAIN);
 
-                if (Settings.DEBUG.get() && !replacement.equals(originalURL)) {
-                    Logger.printDebug(() -> "Replaced: '" + originalURL + "' with: '" + replacement + "'");
-                }
+                Logger.printDebug(() -> replacement.equals(originalURL)
+                        ? null
+                        : "Replaced: '" + originalURL + "' with: '" + replacement + "'");
 
                 return replacement;
             }

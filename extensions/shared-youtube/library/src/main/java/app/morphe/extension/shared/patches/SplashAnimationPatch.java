@@ -28,7 +28,6 @@ import java.util.Scanner;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.theme.ThemeUtils;
 
@@ -236,7 +235,7 @@ public class SplashAnimationPatch {
         for (Map.Entry<String, String> entry : replacements.entrySet()) {
             final String original = entry.getKey();
 
-            if (BaseSettings.DEBUG.get() && !json.contains(original)) {
+            if (Logger.isDebugEnabled() && !json.contains(original)) {
                 Logger.printException(() -> "Could not replace splash animation color: " + original);
             }
 

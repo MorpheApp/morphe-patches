@@ -26,7 +26,6 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.settings.BaseSettings;
 
 @SuppressWarnings("unused")
 public class ChannelIdRequest {
@@ -79,9 +78,9 @@ public class ChannelIdRequest {
     @Nullable
     public Pair<String, String> getChannelInfo() {
         try {
-            if (BaseSettings.DEBUG.get() && !fetchIsDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printDebug(() -> "Debug: Blocking main thread");
-            }
+            Logger.printDebug(() -> !fetchIsDone() && Utils.isCurrentlyOnMainThread()
+                    ? "Debug: Blocking main thread"
+                    : null);
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getChannelId timed out", ex);

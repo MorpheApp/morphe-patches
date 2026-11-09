@@ -173,7 +173,7 @@ public final class ClassicSubscriptionsLayoutPatch {
     private static PivotBarItemRenderer getPivotBarItemRenderer(Object pivotBarItem) {
         try {
             if (!(pivotBarItem instanceof PivotBarItemInterface renderInterface)) {
-                if (Settings.DEBUG.get()) {
+                if (Logger.isDebugEnabled()) {
                     Logger.printException(() -> "Debug: Unknown pivot bar class: " + pivotBarItem.getClass());
                 }
             } else {

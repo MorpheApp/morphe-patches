@@ -101,10 +101,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             ));
         }
 
-        addPreference(new BooleanSettingPreference(
-                context,
-                BaseSettings.DEBUG
-        ));
+        addPreference(new CustomDialogListPreference(context, BaseSettings.DEBUG_LEVEL));
 
         // Include original privacy policy link that was changed to open Morphe settings.
         if (VersionCheckPatch.is_2026_25_or_greater) {

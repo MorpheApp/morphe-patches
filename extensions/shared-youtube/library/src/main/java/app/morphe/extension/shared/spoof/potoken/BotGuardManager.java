@@ -38,7 +38,6 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 public final class BotGuardManager {
 
@@ -309,7 +308,7 @@ public final class BotGuardManager {
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
-        if (SharedYouTubeSettings.DEBUG.get()) {
+        if (Logger.isDebugEnabled()) {
             Utils.showToastShort(toastMessage);
         }
         Logger.printInfo(() -> toastMessage, ex);

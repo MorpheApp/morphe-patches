@@ -29,7 +29,6 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.settings.BaseSettings;
 
 public class CreatePlaylistRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
@@ -43,7 +42,7 @@ public class CreatePlaylistRequest {
     @Nullable
     public Pair<String, String> getPlaylistId() {
         try {
-            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
+            if (Logger.isDebugEnabled() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
                 Logger.printException(() -> "Debug: Blocking main thread");
             }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);

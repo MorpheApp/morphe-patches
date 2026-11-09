@@ -50,7 +50,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.shared.translation.TextTranslator;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -580,15 +579,19 @@ public final class PostTranslatePatch {
             }
         }
 
-        if (BaseSettings.DEBUG.get()) {
+        final PostText chosen = best;
+        Logger.printDebug(() -> {
+            StringBuilder builder = new StringBuilder();
             for (PostText candidate : candidates) {
-                final boolean isBest = candidate == best;
-                Logger.printDebug(() -> (isBest ? "Post text: " : "Other post text: ")
-                        + candidate.shown().bounds() + " drawable: " + (candidate.shown().drawable() != null)
-                        + " text: "
-                        + candidate.original().substring(0, Math.min(40, candidate.original().length())));
+                if (builder.length() > 0) builder.append('\n');
+                builder.append(candidate == chosen ? "Post text: " : "Other post text: ")
+                        .append(candidate.shown().bounds())
+                        .append(" drawable: ").append(candidate.shown().drawable() != null)
+                        .append(" text: ")
+                        .append(candidate.original(), 0, Math.min(40, candidate.original().length()));
             }
-        }
+            return builder.toString();
+        });
         return best;
     }
 

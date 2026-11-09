@@ -402,7 +402,7 @@ public class StreamingDataRequest {
 
     private static void handleDebugToast(String toastMessage,
                                          ClientType clientType) {
-        if (BaseSettings.DEBUG.get() && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
+        if (Logger.isDebugEnabled() && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
             Utils.showToastShort(String.format(toastMessage, clientType));
         }
     }
@@ -675,7 +675,7 @@ public class StreamingDataRequest {
             return null;
         }
 
-        final boolean debugEnabled = BaseSettings.DEBUG.get();
+        final boolean debugEnabled = Logger.isDebugEnabled();
         final long fetchStartTime = System.currentTimeMillis();
         String authorization = playerHeaders.get(AUTHORIZATION_HEADER);
 
@@ -755,7 +755,7 @@ public class StreamingDataRequest {
             // This is not a concern, since the fetch will always be finished
             // and never block the main thread.
             // But if debugging, then still verify this is the situation.
-            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
+            if (Logger.isDebugEnabled() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
                 Logger.printException(() -> "Debug: Blocking main thread");
             }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
