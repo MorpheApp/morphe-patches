@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val PAGING_OWNER = "$EXTENSION_PACKAGE/NativePlaylistQueuePatch\$PagingOwner;"
@@ -39,6 +40,8 @@ internal fun installPlaylistPaging() {
 
     val frame = classDefBy(listType).fields.single { it.type == PLAYLIST_LOADING_FRAME }
     val state = PlaylistLoadingStateFingerprint.originalMethod
+    // The state setter is private in some app versions, and a private method cannot be called with invoke-virtual.
+    val stateOpcode = if (AccessFlags.PRIVATE.isSet(state.accessFlags)) "invoke-direct" else "invoke-virtual"
     controller.addBridgeMethod(
         "patch_getPlaylistLoadingView",
         emptyList(),
@@ -66,7 +69,7 @@ internal fun installPlaylistPaging() {
                 const/4 v0, $CONTENT_STATE
 
                 :set
-                invoke-virtual {p0, v0}, $state
+                $stateOpcode {p0, v0}, $state
                 return-void
             """
         )
