@@ -24,29 +24,32 @@ import app.morphe.extension.youtube.innertube.PlaylistEdit.PlaylistEditActionTyp
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.AddToToastAction;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.NavigationEndpoint;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.QueueSaveEditResponse;
-import app.morphe.extension.youtube.patches.WatchLaterPatch.RemovalSnackbar;
+import app.morphe.extension.youtube.patches.PlaylistPatch.RemovalSnackbar;
 
-public class WatchLaterPatchTest {
+public class PlaylistPatchTest {
     private static PlaylistEditAction action(PlaylistEditActionType type) {
         return PlaylistEditAction.newBuilder().setAction(type).build();
     }
 
     @Test
-    public void onlyWatchLaterRemovalsQualify() throws Exception {
+    public void removalsFromAllPlaylistsQualify() throws Exception {
         var remove = action(PlaylistEditActionType.ACTION_REMOVE_VIDEO);
         var removeById = action(PlaylistEditActionType.ACTION_REMOVE_VIDEO_BY_VIDEO_ID);
         var add = action(PlaylistEditActionType.ACTION_ADD_VIDEO);
-        assertTrue(RemovalSnackbar.isWatchLaterRemoval("WL", List.of(remove)));
-        assertTrue(RemovalSnackbar.isWatchLaterRemoval("WL", List.of(removeById)));
-        assertTrue(RemovalSnackbar.isWatchLaterRemoval("WL", List.of(remove, removeById)));
-        assertFalse(RemovalSnackbar.isWatchLaterRemoval("other", List.of(remove)));
-        assertFalse(RemovalSnackbar.isWatchLaterRemoval(null, List.of(remove)));
-        assertFalse(RemovalSnackbar.isWatchLaterRemoval("WL", List.of()));
-        assertFalse(RemovalSnackbar.isWatchLaterRemoval("WL", List.of(add)));
-        assertFalse(RemovalSnackbar.isWatchLaterRemoval("WL", List.of(remove, add)));
-        assertFalse(RemovalSnackbar.isWatchLaterRemoval("WL", List.of(
+        assertTrue(RemovalSnackbar.isPlaylistRemoval("WL", List.of(remove)));
+        assertTrue(RemovalSnackbar.isPlaylistRemoval("WL", List.of(removeById)));
+        assertTrue(RemovalSnackbar.isPlaylistRemoval("WL", List.of(remove, removeById)));
+        assertTrue(RemovalSnackbar.isPlaylistRemoval("PLother", List.of(remove)));
+        assertTrue(RemovalSnackbar.isPlaylistRemoval("PLother", List.of(removeById)));
+        assertTrue(RemovalSnackbar.isPlaylistRemoval("LL", List.of(remove)));
+        assertFalse(RemovalSnackbar.isPlaylistRemoval(null, List.of(remove)));
+        assertFalse(RemovalSnackbar.isPlaylistRemoval("", List.of(remove)));
+        assertFalse(RemovalSnackbar.isPlaylistRemoval("WL", List.of()));
+        assertFalse(RemovalSnackbar.isPlaylistRemoval("PLother", List.of(add)));
+        assertFalse(RemovalSnackbar.isPlaylistRemoval("PLother", List.of(remove, add)));
+        assertFalse(RemovalSnackbar.isPlaylistRemoval("PLother", List.of(
                 PlaylistEditAction.newBuilder().setActionValue(3).build())));
-        assertFalse(RemovalSnackbar.isWatchLaterRemoval("WL", List.of(PlaylistEditAction.getDefaultInstance())));
+        assertFalse(RemovalSnackbar.isPlaylistRemoval("WL", List.of(PlaylistEditAction.getDefaultInstance())));
     }
 
     @Test
@@ -54,7 +57,7 @@ public class WatchLaterPatchTest {
         // Unknown endpoint bytes become an invalid UTF-8 string in PlaylistEditAction.
         var malformed = NavigationEndpoint.parseFrom(new byte[]{0x12, 0x01, (byte) 0xFF});
         assertThrows(InvalidProtocolBufferException.class,
-                () -> RemovalSnackbar.isWatchLaterRemoval("WL", List.of(malformed)));
+                () -> RemovalSnackbar.isPlaylistRemoval("PLother", List.of(malformed)));
     }
 
     private static QueueSaveEditResponse response(int status) {

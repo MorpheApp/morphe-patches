@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
-package app.morphe.patches.youtube.interaction.watchlater
+package app.morphe.patches.youtube.interaction.playlist
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -14,6 +14,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.interaction.feedactions.FeedComponentHostLayoutFingerprint
+import app.morphe.patches.youtube.interaction.feedactions.FeedComponentHostTouchFingerprint
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.QueueSaveEditErrorFingerprint
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.parseProtoInstructions
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.queueSaveEditSuccessFingerprint
@@ -31,20 +32,20 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/WatchLaterPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/PlaylistPatch;"
 private const val PLAYLIST_EDIT_CALLBACK_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/WatchLaterPatch\$PlaylistEditCallback;"
+    "Lapp/morphe/extension/youtube/patches/PlaylistPatch\$PlaylistEditCallback;"
 
 @Suppress("unused")
-val watchLaterPatch = patch(
-    name = "Watch later improvements",
-    description = "Adds options to widen the drag handles of the Watch later videos " +
-            "and to hide the snackbar shown after removing a video.",
+val playlistPatch = patch(
+    name = "Playlist improvements",
+    description = "Adds options to widen playlist drag handles, reorder videos by long press, " +
+            "and hide removal confirmations.",
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        // Finds if the Watch later playlist is shown.
+        // Finds if a playlist page is shown.
         browseIdHookPatch,
         // Finds if the player covers the playlist.
         playerTypeHookPatch,
@@ -55,16 +56,21 @@ val watchLaterPatch = patch(
 
     execute {
         PreferenceScreen.FEED.addPreferences(
-            SwitchPreference("morphe_watch_later_wide_drag_handles", summary = true),
-            SwitchPreference("morphe_watch_later_hide_removal_snackbar", summary = true),
+            SwitchPreference("morphe_playlist_wide_drag_handles", summary = true),
+            SwitchPreference("morphe_playlist_hide_removal_snackbar", summary = true),
         )
+        if (is_21_05_or_greater) {
+            PreferenceScreen.FEED.addPreferences(
+                SwitchPreference("morphe_playlist_long_press_drag", summary = true),
+            )
+        }
 
         addBrowseIdHook("$EXTENSION_CLASS->setBrowseId(Ljava/lang/String;)V")
         addSearchResultsHook("$EXTENSION_CLASS->clearBrowseId()V")
 
         // region Wide drag handles.
 
-        // Drag handles of regular views. The original code reuses the view register.
+        // The original code reuses the view register later in the constructor.
         DragHandleTouchListenerFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->onDragHandleCreated(Landroid/view/View;)V"
@@ -74,6 +80,15 @@ val watchLaterPatch = patch(
         // the row host forwards the touches of a wider area to the handle.
         // Before 21.05, ComponentHost does not override onInterceptTouchEvent().
         if (is_21_05_or_greater) {
+            FeedComponentHostTouchFingerprint.method.addInstructionsWithLabels(0,
+                """
+                    invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostTouch(Lcom/facebook/litho/ComponentHost;Landroid/view/MotionEvent;)Z
+                    move-result v0
+                    if-eqz v0, :original
+                    return v0
+                    :original
+                    nop
+                """)
             FeedComponentHostLayoutFingerprint.method.apply {
                 findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
                     addInstructionsAtControlFlowLabel(

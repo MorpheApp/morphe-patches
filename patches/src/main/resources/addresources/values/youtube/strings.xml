@@ -678,11 +678,13 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_vot_mymemory_quota_message_with_email">You\'ve used today\'s MyMemory translation quota (50,000 characters). Switch to a different translation service or try again tomorrow</string>
     <string name="morphe_vot_mymemory_error">MyMemory translation failed (status %s)</string>
 
-    <!-- interaction.watchlater.watchLaterPatch -->
-    <string name="morphe_watch_later_wide_drag_handles_title">Widen Watch later drag handles</string>
-    <string name="morphe_watch_later_wide_drag_handles_summary">The drag handles of the Watch later videos are easier to grab</string>
-    <string name="morphe_watch_later_hide_removal_snackbar_title">Hide Watch later removal snackbar</string>
-    <string name="morphe_watch_later_hide_removal_snackbar_summary">The confirmation is not shown after a video is removed from Watch later</string>
+    <!-- interaction.playlist.playlistPatch -->
+    <string name="morphe_playlist_wide_drag_handles_title">Widen playlist drag handles</string>
+    <string name="morphe_playlist_wide_drag_handles_summary">Playlist drag handles are easier to grab</string>
+    <string name="morphe_playlist_hide_removal_snackbar_title">Hide playlist removal snackbar</string>
+    <string name="morphe_playlist_hide_removal_snackbar_summary">Hide the confirmation after removing a video from any playlist</string>
+    <string name="morphe_playlist_long_press_drag_title">Long press to reorder playlist videos</string>
+    <string name="morphe_playlist_long_press_drag_summary">Touch and hold an editable playlist video to drag it into a new position</string>
 
     <!-- interaction.loop.loopVideoPatch -->
     <string name="morphe_loop_video_title">Enable loop video</string>
