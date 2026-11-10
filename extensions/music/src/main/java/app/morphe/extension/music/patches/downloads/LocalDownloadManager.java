@@ -17,6 +17,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Environment;
 
 import androidx.annotation.Nullable;
@@ -161,10 +162,26 @@ public final class LocalDownloadManager {
         });
     }
 
-    static boolean isDownloaded(String videoId) {
+    public static boolean isDownloaded(String videoId) {
         File directory = getDownloadDirectory();
         return new File(directory, videoId + ".webm").isFile()
                 || new File(directory, videoId + ".m4a").isFile();
+    }
+
+    @Nullable
+    public static File getSongFile(String videoId) {
+        File directory = getDownloadDirectory();
+        File webm = new File(directory, videoId + ".webm");
+        if (webm.isFile()) return webm;
+        File m4a = new File(directory, videoId + ".m4a");
+        if (m4a.isFile()) return m4a;
+        return null;
+    }
+
+    @Nullable
+    public static Uri getSongUri(String videoId) {
+        File file = getSongFile(videoId);
+        return file != null ? Uri.fromFile(file) : null;
     }
 
     static File getDownloadDirectory() {
