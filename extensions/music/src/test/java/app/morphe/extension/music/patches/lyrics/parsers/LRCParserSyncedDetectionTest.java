@@ -109,7 +109,7 @@ public class LRCParserSyncedDetectionTest {
      * LRC metadata tags (title, artist, etc.) without any timestamped content lines.
      */
     @Test public void metadataOnlyWithoutTimestampsIsNotSynced() {
-        String lrc = "[ti:Song Title]\n[ar:Artist Name]\n[al:Album]\n";
+        String lrc = "[ti:Song Title]\n[ar:Artist Name]\n[al:Album]\n[by:Uploader]\n";
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lrc);
 
@@ -128,7 +128,7 @@ public class LRCParserSyncedDetectionTest {
      * LRC with a mix of metadata and timestamped lines.
      */
     @Test public void metadataPlusTimestampedLinesIsSynced() {
-        String lrc = "[ti:Song Title]\n[ar:Artist]\n"
+        String lrc = "[ti:Song Title]\n[ar:Artist]\n[by:Uploader]\n"
                 + "[00:05.00]First lyric line\n"
                 + "[00:08.50]Second lyric line\n";
 
