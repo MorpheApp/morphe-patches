@@ -130,15 +130,11 @@ public final class PlayerOrientationPatch {
             if (!isOrientationLocked) {
                 isOrientationLocked = true;
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
-                showToast(ResourceUtils.getString(
-                        "morphe_player_orientation_toast_locked",
-                        "Orientation locked"));
+                showToast(ResourceUtils.getString("morphe_player_orientation_toast_locked"));
             } else {
                 isOrientationLocked = false;
                 activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
-                showToast(ResourceUtils.getString(
-                        "morphe_player_orientation_toast_unlocked",
-                        "Orientation unlocked"));
+                showToast(ResourceUtils.getString("morphe_player_orientation_toast_unlocked"));
             }
             return true;
         } catch (Exception ex) {
