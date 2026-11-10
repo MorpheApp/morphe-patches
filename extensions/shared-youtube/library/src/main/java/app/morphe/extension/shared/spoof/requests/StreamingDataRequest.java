@@ -118,13 +118,20 @@ public class StreamingDataRequest {
             }
         }
 
+        // Without a network, the fetch of a video gets the token and the visitor ids.
+        if (!Utils.isNetworkConnected()) {
+            return;
+        }
+
         for (ClientType client : clientOrder) {
             if (skipClient(client)) {
                 continue;
             }
             // Without an access token, the client is skipped.
+            // A connection error is not shown here, because the network may not be ready yet
+            // when the app starts, and the fetch of a video gets the token again.
             if (client.supportsOAuth2 && client.requireLogin
-                    && !Utils.isNotEmpty(OAuth2Requester.getAndUpdateAccessTokenIfNeeded())) {
+                    && !Utils.isNotEmpty(OAuth2Requester.getAndUpdateAccessTokenIfNeeded(false))) {
                 continue;
             }
             VisitorIdRequester.getVisitorId(client);
@@ -474,7 +481,7 @@ public class StreamingDataRequest {
             // If oauth2 login is supported and the user is logged in via oauth2 flow, the header is set:
             // ANDROID_VR (ANDROID_XR).
             else if (clientType.supportsOAuth2 && clientType.requireLogin) {
-                String oauth2Authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
+                String oauth2Authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded(true);
                 if (Utils.isNotEmpty(oauth2Authorization)) {
                     authHeadersOverrides = true;
                     connection.setRequestProperty(AUTHORIZATION_HEADER, oauth2Authorization);
