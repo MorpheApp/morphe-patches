@@ -44,6 +44,8 @@ import java.nio.ShortBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -108,6 +110,8 @@ public final class AmbientLightController {
     private static final long RESTORE_DURATION_MS = 1_600;
     private static final long RESTORE_DELAY_MS = 3_000;
     private static final long FADE_STEP_MS = 33;
+    /** A window that opens over the watch page may lay out its content after it takes the focus. */
+    private static final long OTHER_WINDOW_RECHECK_MS = 500;
     /** Share of the way to the wanted cover for each capture, so that scene cuts do not pump. */
     private static final float COVER_EASING = 0.25f;
     private static final float COVER_SETTLED = 0.004f;
@@ -258,6 +262,20 @@ public final class AmbientLightController {
 
     private static final Runnable restoreLight = () -> setDimmed(false);
     private static final Runnable fadeStep = AmbientLightController::stepFade;
+    private static final Runnable recheckOtherWindows = AmbientLightController::recheckOtherWindows;
+    private static final ViewTreeObserver.OnWindowFocusChangeListener focusListener = hasFocus -> {
+        if (hasFocus) return;
+        recheckOtherWindows();
+        mainHandler.postDelayed(recheckOtherWindows, OTHER_WINDOW_RECHECK_MS);
+    };
+
+    /**
+     * Drawables that keep their color until they are seen in the window of the watch page.
+     * Main thread.
+     */
+    private static final Map<Drawable, Boolean> pendingDrawables = new WeakHashMap<>();
+    /** Drawables the light shows through. Main thread. */
+    private static final Map<Drawable, Boolean> seeThroughDrawables = new WeakHashMap<>();
 
     /**
      * Injection point.
@@ -310,18 +328,25 @@ public final class AmbientLightController {
     public static int getLithoColor(Drawable drawable, int color) {
         // The cards of the feed card layout stay opaque, as their content has its own opaque backgrounds.
         if (!seeThrough || FeedCardLayoutPatch.cardBackgrounds.containsKey(drawable)) return color;
-        // Another window of the app, such as the comment box that opens with the keyboard,
-        // takes the focus from the watch page. It has no light behind it, so it keeps its colors.
-        View root = rootRef.get();
-        if (root == null || !root.hasWindowFocus()) return color;
 
         try {
             final int replacement = AmbientLightMath.seeThroughColor(color, pageColor);
             Rect bounds = drawable.getBounds();
-            if (replacement == 0 && bounds.width() < buttonMaxWidth && bounds.height() < buttonMaxHeight) {
+            if (replacement == color
+                    || (replacement == 0 && bounds.width() < buttonMaxWidth && bounds.height() < buttonMaxHeight)) {
                 return color;
             }
-            return replacement;
+            // A color is often chosen before its drawable is on screen, and only the window of the
+            // watch page has the light behind it. Another window, such as the comment box that
+            // opens with the keyboard, would show its own background through the drawable.
+            View host = hostOf(drawable);
+            if (host != null && host.getRootView() == rootRef.get()) {
+                seeThroughDrawables.put(drawable, Boolean.TRUE);
+                return replacement;
+            }
+
+            pendingDrawables.put(drawable, Boolean.TRUE);
+            return color;
         } catch (Exception ex) {
             Logger.printException(() -> "getLithoColor failure", ex);
             return color;
@@ -393,6 +418,7 @@ public final class AmbientLightController {
         pageCleared = false;
         root.getViewTreeObserver().addOnPreDrawListener(preDrawListener);
         root.getViewTreeObserver().addOnScrollChangedListener(scrollListener);
+        root.getViewTreeObserver().addOnWindowFocusChangeListener(focusListener);
         View touchWatcher = new TouchWatcher(root.getContext());
         ((ViewGroup) root).addView(touchWatcher);
         touchWatcherRef = new WeakReference<>(touchWatcher);
@@ -410,12 +436,14 @@ public final class AmbientLightController {
         if (root != null) {
             root.getViewTreeObserver().removeOnPreDrawListener(preDrawListener);
             root.getViewTreeObserver().removeOnScrollChangedListener(scrollListener);
+            root.getViewTreeObserver().removeOnWindowFocusChangeListener(focusListener);
             ((ViewGroup) root).removeView(touchWatcherRef.get());
         }
         removeSurfaces(pageSurfaces, 0);
         removeSurfaces(playerSurfaces, 0);
         mainHandler.removeCallbacks(restoreLight);
         mainHandler.removeCallbacks(fadeStep);
+        mainHandler.removeCallbacks(recheckOtherWindows);
         dimmed = false;
         strength = FULL_STRENGTH;
         SeeThroughPage.restore();
@@ -437,6 +465,7 @@ public final class AmbientLightController {
     private static void onPreDraw() {
         try {
             if (!active) return;
+            showPendingDrawables();
             updateLayout();
             if (!pageCleared) return;
 
@@ -449,6 +478,62 @@ public final class AmbientLightController {
         } catch (Exception ex) {
             Logger.printException(() -> "onPreDraw failure", ex);
         }
+    }
+
+    @Nullable
+    private static View hostOf(Drawable drawable) {
+        Drawable.Callback callback = drawable.getCallback();
+        while (callback instanceof Drawable) {
+            callback = ((Drawable) callback).getCallback();
+        }
+        return callback instanceof View ? (View) callback : null;
+    }
+
+    /**
+     * Lets the light show through the waiting drawables that are now in the window of the
+     * watch page. This runs before the page draws, so the old color is not shown.
+     */
+    private static void showPendingDrawables() {
+        if (pendingDrawables.isEmpty()) return;
+        View root = rootRef.get();
+        List<Drawable> shown = new ArrayList<>();
+        for (Drawable drawable : new ArrayList<>(pendingDrawables.keySet())) {
+            View host = hostOf(drawable);
+            if (host == null) continue;
+            pendingDrawables.remove(drawable);
+            if (host.getRootView() == root) shown.add(drawable);
+        }
+        for (Drawable drawable : shown) {
+            chooseColorAgain(drawable);
+        }
+    }
+
+    /**
+     * Litho reuses drawables, also in another window of the app such as the comment box, and
+     * a reused drawable keeps its color when its bounds stay the same. Such a window takes the
+     * focus from the watch page, so the drawables the light shows through are checked then.
+     */
+    private static void recheckOtherWindows() {
+        View root = rootRef.get();
+        List<Drawable> moved = new ArrayList<>();
+        for (Drawable drawable : seeThroughDrawables.keySet()) {
+            View host = hostOf(drawable);
+            if (host != null && host.getRootView() != root) moved.add(drawable);
+        }
+        for (Drawable drawable : moved) {
+            seeThroughDrawables.remove(drawable);
+            chooseColorAgain(drawable);
+        }
+    }
+
+    /**
+     * The color of a drawable is chosen when its bounds change.
+     */
+    private static void chooseColorAgain(Drawable drawable) {
+        Rect bounds = new Rect(drawable.getBounds());
+        drawable.setBounds(0, 0, 0, 0);
+        drawable.setBounds(bounds);
+        drawable.invalidateSelf();
     }
 
     private static void clearPage() {
