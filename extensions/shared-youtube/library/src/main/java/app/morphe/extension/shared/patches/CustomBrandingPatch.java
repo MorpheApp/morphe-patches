@@ -431,7 +431,7 @@ public class CustomBrandingPatch {
         // Custom branding is excluded from the app.
         return userProvidedCustomIcon()
                 ? BrandingTheme.CUSTOM
-                : BrandingTheme.BLACK;
+                : BrandingTheme.ORIGINAL;
     }
 
     /**
