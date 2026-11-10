@@ -18,6 +18,7 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Locale;
@@ -232,11 +233,29 @@ public class SpoofVideoStreamsPatch {
         offlineResponseResolver = resolver;
     }
 
+    private record OfflineCheck(WeakReference<Object> playerProto, boolean offline) {}
+
+    /**
+     * Last checked player response and its result. The app can create the player response model
+     * twice from the same player response. Checking serializes the player response, which caches
+     * its size, and patch_setStreamingData then sets the player config of that same response.
+     * Serializing it again fails because the cached size no longer matches.
+     */
+    @Nullable
+    private static volatile OfflineCheck lastOfflineCheck;
+
     private static boolean isOfflinePlayerResponse(@NonNull String videoId, @Nullable Object playerProto) {
         try {
             OfflineResponseResolver resolver = offlineResponseResolver;
             if (resolver != null) {
-                return resolver.isOffline(videoId, playerProto);
+                OfflineCheck lastCheck = lastOfflineCheck;
+                if (playerProto != null && lastCheck != null && lastCheck.playerProto().get() == playerProto) {
+                    return lastCheck.offline();
+                }
+
+                final boolean offline = resolver.isOffline(videoId, playerProto);
+                lastOfflineCheck = new OfflineCheck(new WeakReference<>(playerProto), offline);
+                return offline;
             }
         } catch (Exception ex) {
             Logger.printException(() -> "isOfflinePlayerResponse failure", ex);
