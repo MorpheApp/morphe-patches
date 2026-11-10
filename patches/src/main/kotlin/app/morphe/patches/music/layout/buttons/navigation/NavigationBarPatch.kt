@@ -5,7 +5,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
+import app.morphe.patches.music.layout.miniplayer.miniplayerColorHookPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.mediasession.addSetMetadataHook
+import app.morphe.patches.music.misc.mediasession.mediaSessionHookPatch
 import app.morphe.patches.music.misc.playservice.is_9_39_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -25,11 +28,12 @@ private const val EXTENSION_GLASS_CLASS = "Lapp/morphe/extension/music/patches/M
 @Suppress("unused")
 val navigationBarPatch = patch(
     name = "Navigation bar",
-    description = "Adds options to hide navigation bar, labels and buttons, and to show the navigation bar as glass."
+    description = "Adds options to hide navigation bar, labels and buttons, and to show the navigation bar and miniplayer as glass."
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        miniplayerColorHookPatch,
         patch {
             dependsOn(versionCheckPatch)
 
@@ -42,8 +46,8 @@ val navigationBarPatch = patch(
                     }
                 }
 
-                // The floating miniplayer, used with the glass navigation bar, gets the same room on its sides
-                // as the pages and the capsule. The attribute is only read by the floating miniplayer.
+                // The floating miniplayer, used with the glass navigation bar and miniplayer, gets the same room
+                // on its sides as the pages and the capsule. The attribute is only read by the floating miniplayer.
                 if (is_9_39_or_greater) {
                     listOf(
                         "res/layout/watch_while_layout.xml",
@@ -76,13 +80,16 @@ val navigationBarPatch = patch(
                     SwitchPreference("morphe_music_hide_navigation_bar_upgrade_button"),
                     SwitchPreference("morphe_music_hide_navigation_bar"),
                     SwitchPreference("morphe_music_hide_navigation_bar_labels"),
+                    // Glass Navigation Bar section (Independent)
                     SwitchPreference("morphe_music_navigation_bar_glass", summary = true),
                     NonInteractivePreference(
-                        key = "morphe_music_navigation_bar_glass_opacity",
-                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
+                        key = "morphe_music_navigation_bar_glass_blur",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true
                     ),
                     SwitchPreference("morphe_music_navigation_bar_glass_light", summary = true),
-                    // Height, width and button spacing, with a preview.
+                    SwitchPreference("morphe_music_navigation_bar_glass_album_tint", summary = true),
+                    SwitchPreference("morphe_music_navigation_bar_glass_hide_indicator", summary = true),
                     NonInteractivePreference(
                         key = "morphe_music_navigation_bar_glass_height",
                         titleKey = "morphe_music_navigation_bar_glass_size_title",
@@ -92,6 +99,26 @@ val navigationBarPatch = patch(
                     ),
                 )
             )
+        )
+
+        PreferenceScreen.addMiniplayerPreferences(
+            SwitchPreference("morphe_music_miniplayer_glass", summary = true),
+            NonInteractivePreference(
+                key = "morphe_music_miniplayer_glass_blur",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                selectable = true
+            ),
+            SwitchPreference("morphe_music_miniplayer_glass_light", summary = true),
+            SwitchPreference("morphe_music_miniplayer_glass_album_tint", summary = true),
+            SwitchPreference("morphe_music_miniplayer_glass_spinning_artwork", summary = true),
+            SwitchPreference("morphe_music_miniplayer_glass_hide_progress_bar", summary = true),
+            NonInteractivePreference(
+                key = "morphe_music_miniplayer_glass_corner_radius",
+                titleKey = "morphe_music_miniplayer_glass_style_title",
+                summaryKey = "morphe_music_miniplayer_glass_style_summary",
+                tag = "app.morphe.extension.music.settings.preference.MusicGlassNavigationBarPreference",
+                selectable = true
+            ),
         )
 
         TabLayoutTextFingerprint.let {
@@ -110,7 +137,6 @@ val navigationBarPatch = patch(
                     """
                 )
 
-
                 // Set navigation enum and hide navigation buttons.
                 val enumIndex = it.instructionMatches[7].index
                 val enumRegister = getInstruction<OneRegisterInstruction>(enumIndex).registerA
@@ -119,7 +145,6 @@ val navigationBarPatch = patch(
                     enumIndex + 1,
                     "invoke-static { v$enumRegister }, $EXTENSION_CLASS->setLastAppNavigationEnum(Ljava/lang/Enum;)V"
                 )
-
 
                 // Hide navigation labels.
                 val labelIndex = it.instructionMatches[3].index
@@ -133,7 +158,7 @@ val navigationBarPatch = patch(
             }
         }
 
-        // The glass navigation bar uses the floating miniplayer of the app.
+        // The glass navigation bar and miniplayer use the floating miniplayer of the app.
         if (is_9_39_or_greater) {
             FloatingMiniplayerFeatureFlagFingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(

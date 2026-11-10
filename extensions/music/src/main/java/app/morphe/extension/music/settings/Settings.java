@@ -73,11 +73,25 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_NAVIGATION_BAR_UPGRADE_BUTTON = new BooleanSetting("morphe_music_hide_navigation_bar_upgrade_button", TRUE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting HIDE_NAVIGATION_BAR_LABEL = new BooleanSetting("morphe_music_hide_navigation_bar_labels", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting NAVIGATION_BAR_GLASS = new BooleanSetting("morphe_music_navigation_bar_glass", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
-    public static final IntegerSetting NAVIGATION_BAR_GLASS_OPACITY = new IntegerSetting("morphe_music_navigation_bar_glass_opacity", 20, true, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
-    public static final BooleanSetting NAVIGATION_BAR_GLASS_LIGHT = new BooleanSetting("morphe_music_navigation_bar_glass_light", FALSE, true, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
-    public static final IntegerSetting NAVIGATION_BAR_GLASS_HEIGHT = new IntegerSetting("morphe_music_navigation_bar_glass_height", 100, true, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
-    public static final IntegerSetting NAVIGATION_BAR_GLASS_WIDTH = new IntegerSetting("morphe_music_navigation_bar_glass_width", 100, true, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
-    public static final IntegerSetting NAVIGATION_BAR_GLASS_BUTTON_SPACING = new IntegerSetting("morphe_music_navigation_bar_glass_button_spacing", 48, true, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
+    public static final IntegerSetting NAVIGATION_BAR_GLASS_OPACITY = new IntegerSetting("morphe_music_navigation_bar_glass_opacity", 20, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
+    public static final IntegerSetting NAVIGATION_BAR_GLASS_BLUR = new IntegerSetting("morphe_music_navigation_bar_glass_blur", 20, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
+    public static final IntegerSetting NAVIGATION_BAR_GLASS_RIM = new IntegerSetting("morphe_music_navigation_bar_glass_rim", 50, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
+    public static final BooleanSetting NAVIGATION_BAR_GLASS_LIGHT = new BooleanSetting("morphe_music_navigation_bar_glass_light", FALSE, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
+    public static final BooleanSetting NAVIGATION_BAR_GLASS_ALBUM_TINT = new BooleanSetting("morphe_music_navigation_bar_glass_album_tint", FALSE, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
+    public static final BooleanSetting NAVIGATION_BAR_GLASS_HIDE_INDICATOR = new BooleanSetting("morphe_music_navigation_bar_glass_hide_indicator", FALSE, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
+    public static final IntegerSetting NAVIGATION_BAR_GLASS_HEIGHT = new IntegerSetting("morphe_music_navigation_bar_glass_height", 100, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
+    public static final IntegerSetting NAVIGATION_BAR_GLASS_WIDTH = new IntegerSetting("morphe_music_navigation_bar_glass_width", 100, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
+    public static final IntegerSetting NAVIGATION_BAR_GLASS_BUTTON_SPACING = new IntegerSetting("morphe_music_navigation_bar_glass_button_spacing", 48, false, parentsAll(parent(NAVIGATION_BAR_GLASS), parentNot(HIDE_NAVIGATION_BAR)));
+    public static final BooleanSetting MINIPLAYER_GLASS = new BooleanSetting("morphe_music_miniplayer_glass", FALSE, true);
+    public static final IntegerSetting MINIPLAYER_GLASS_OPACITY = new IntegerSetting("morphe_music_miniplayer_glass_opacity", 25, false, parent(MINIPLAYER_GLASS));
+    public static final IntegerSetting MINIPLAYER_GLASS_BLUR = new IntegerSetting("morphe_music_miniplayer_glass_blur", 20, false, parent(MINIPLAYER_GLASS));
+    public static final IntegerSetting MINIPLAYER_GLASS_RIM = new IntegerSetting("morphe_music_miniplayer_glass_rim", 50, false, parent(MINIPLAYER_GLASS));
+    public static final BooleanSetting MINIPLAYER_GLASS_LIGHT = new BooleanSetting("morphe_music_miniplayer_glass_light", FALSE, false, parent(MINIPLAYER_GLASS));
+    public static final BooleanSetting MINIPLAYER_GLASS_ALBUM_TINT = new BooleanSetting("morphe_music_miniplayer_glass_album_tint", TRUE, false, parent(MINIPLAYER_GLASS));
+    public static final BooleanSetting MINIPLAYER_GLASS_SPINNING_ARTWORK = new BooleanSetting("morphe_music_miniplayer_glass_spinning_artwork", FALSE, false, parent(MINIPLAYER_GLASS));
+    public static final BooleanSetting MINIPLAYER_GLASS_HIDE_PROGRESS_BAR = new BooleanSetting("morphe_music_miniplayer_glass_hide_progress_bar", FALSE, false, parent(MINIPLAYER_GLASS));
+    public static final IntegerSetting MINIPLAYER_GLASS_CORNER_RADIUS = new IntegerSetting("morphe_music_miniplayer_glass_corner_radius", 18, false, parent(MINIPLAYER_GLASS));
+    public static final IntegerSetting MINIPLAYER_GLASS_ARTWORK_PADDING = new IntegerSetting("morphe_music_miniplayer_glass_artwork_padding", 7, false, parent(MINIPLAYER_GLASS));
     public static final EnumSetting<HeaderLogo> HEADER_LOGO = new EnumSetting<>("morphe_header_logo", HeaderLogo.DEFAULT, true);
 
     // Custom filter
@@ -89,7 +103,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting SETTINGS_MENU_FILTER_DISCOVERED = new StringSetting("morphe_music_settings_menu_filter_discovered", "", true, false);
 
     // Player
-    public static final BooleanSetting CHANGE_MINIPLAYER_COLOR = new BooleanSetting("morphe_music_change_miniplayer_color", FALSE, true);
+    public static final BooleanSetting CHANGE_MINIPLAYER_COLOR = new BooleanSetting("morphe_music_change_miniplayer_color", FALSE, true, parentNot(MINIPLAYER_GLASS));
     public static final BooleanSetting CHANGE_NAVIGATION_BAR_COLOR = new BooleanSetting("morphe_music_change_navigation_bar_color", FALSE, true, parentsAll(parent(CHANGE_MINIPLAYER_COLOR), parentNot(NAVIGATION_BAR_GLASS)));
     public static final BooleanSetting DISABLE_DISLIKE_REDIRECTION = new BooleanSetting("morphe_music_disable_dislike_redirection", FALSE, true);
     public static final BooleanSetting ENABLE_FORCED_MINIPLAYER = new BooleanSetting("morphe_music_enable_forced_miniplayer", FALSE, true);
@@ -398,12 +412,26 @@ public class Settings extends SharedYouTubeSettings {
                 1, 50, 1, ""));
         SeekBarPreference.register(new SeekBarConfig(NAVIGATION_BAR_GLASS_OPACITY,
                 0, 100, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(NAVIGATION_BAR_GLASS_BLUR,
+                0, 40, 1, "dp"));
+        SeekBarPreference.register(new SeekBarConfig(NAVIGATION_BAR_GLASS_RIM,
+                0, 100, 5, "%"));
         SeekBarPreference.register(new SeekBarConfig(NAVIGATION_BAR_GLASS_HEIGHT,
                 60, 160, 5, "%"));
         SeekBarPreference.register(new SeekBarConfig(NAVIGATION_BAR_GLASS_WIDTH,
                 50, 100, 5, "%"));
         SeekBarPreference.register(new SeekBarConfig(NAVIGATION_BAR_GLASS_BUTTON_SPACING,
                 8, 96, 4, "dp"));
+        SeekBarPreference.register(new SeekBarConfig(MINIPLAYER_GLASS_OPACITY,
+                0, 100, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(MINIPLAYER_GLASS_BLUR,
+                0, 40, 1, "dp"));
+        SeekBarPreference.register(new SeekBarConfig(MINIPLAYER_GLASS_RIM,
+                0, 100, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(MINIPLAYER_GLASS_CORNER_RADIUS,
+                8, 32, 1, "dp"));
+        SeekBarPreference.register(new SeekBarConfig(MINIPLAYER_GLASS_ARTWORK_PADDING,
+                4, 14, 1, "dp"));
         SeekBarPreference.register(new SeekBarConfig(LYRICS_TEXT_SIZE,
                 18, 36, 2, "sp"));
         SeekBarPreference.register(new SeekBarConfig(LYRICS_OFFSET_MS,

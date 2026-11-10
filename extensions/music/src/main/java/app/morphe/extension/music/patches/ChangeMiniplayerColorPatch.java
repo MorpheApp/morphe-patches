@@ -19,30 +19,53 @@ public class ChangeMiniplayerColorPatch {
 
     @Nullable
     private static volatile Integer lastMiniplayerColor;
-
+    @Nullable
+    private static volatile Integer defaultMiniplayerColor;
     private static volatile WeakReference<View> navigationBarRef = new WeakReference<>(null);
-
     @Nullable
     private static volatile Integer defaultNavigationBarColor;
-
     private static volatile long dismissWindowUntilMs;
 
     /**
      * Injection point.
      */
     public static boolean changeMiniplayerColor() {
-        return Settings.CHANGE_MINIPLAYER_COLOR.get();
+        return Settings.CHANGE_MINIPLAYER_COLOR.get()
+                || Settings.MINIPLAYER_GLASS.get()
+                || Settings.NAVIGATION_BAR_GLASS.get();
     }
 
     /**
-     * Injection point. Stores the color applied to the miniplayer and, if the setting is enabled,
-     * forwards it to the navigation bar so both surfaces update together instead of waiting for a UI relayout.
+     * Injection point. Records the initial miniplayer/player-page color in the constructor.
+     * Always preserve full alpha because YouTube Music uses this color field for the expanded
+     * player page (song/lyrics/queue screen) as well.
      */
-    public static void setLastMiniplayerColor(int color) {
-        if (SystemClock.uptimeMillis() < dismissWindowUntilMs) return;
+    public static int overrideInitialMiniplayerColor(int color) {
+        defaultMiniplayerColor = color;
+        return color;
+    }
 
-        lastMiniplayerColor = color;
-        if (Settings.CHANGE_NAVIGATION_BAR_COLOR.get()) postNavigationBarColor(color);
+    /**
+     * Injection point. Stores the dominant color extracted for the player and notifies the
+     * glass miniplayer / navigation bar. Always returns an opaque color so the expanded
+     * full-screen player page never becomes transparent.
+     */
+    public static int setLastMiniplayerColor(int color) {
+        if (SystemClock.uptimeMillis() >= dismissWindowUntilMs) {
+            lastMiniplayerColor = color;
+            if (matchNavigationBarEnabled()) postNavigationBarColor(color);
+            MusicGlassNavigationBar.onMiniplayerColorChanged();
+        }
+        if (Settings.CHANGE_MINIPLAYER_COLOR.get() && !Settings.MINIPLAYER_GLASS.get()) {
+            return color;
+        }
+        final Integer fallback = defaultMiniplayerColor;
+        return fallback != null ? fallback : color;
+    }
+
+    @Nullable
+    public static Integer getLastMiniplayerColor() {
+        return lastMiniplayerColor;
     }
 
     /**
@@ -57,6 +80,10 @@ public class ChangeMiniplayerColorPatch {
      * Injection point. Overrides the nav bar background color at draw time.
      */
     public static int overrideNavigationBarColor(int defaultColor) {
+        // When glass navigation bar is active, clear solid background color so the translucent capsule renders cleanly.
+        if (Settings.NAVIGATION_BAR_GLASS.get()) {
+            return defaultColor & 0x00FFFFFF;
+        }
         final Integer color = lastMiniplayerColor;
         if (color != null && matchNavigationBarEnabled()) {
             return color;
@@ -73,6 +100,7 @@ public class ChangeMiniplayerColorPatch {
         dismissWindowUntilMs = SystemClock.uptimeMillis() + DISMISS_WINDOW_MS;
         final Integer defaultColor = defaultNavigationBarColor;
         if (defaultColor != null) postNavigationBarColor(defaultColor);
+        MusicGlassNavigationBar.onMiniplayerColorChanged();
     }
 
     private static void postNavigationBarColor(int color) {
@@ -83,6 +111,7 @@ public class ChangeMiniplayerColorPatch {
 
     private static boolean matchNavigationBarEnabled() {
         return Settings.CHANGE_MINIPLAYER_COLOR.get()
-                && Settings.CHANGE_NAVIGATION_BAR_COLOR.get();
+                && Settings.CHANGE_NAVIGATION_BAR_COLOR.get()
+                && !Settings.NAVIGATION_BAR_GLASS.get();
     }
 }

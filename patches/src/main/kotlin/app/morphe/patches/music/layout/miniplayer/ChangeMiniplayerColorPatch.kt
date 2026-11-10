@@ -26,31 +26,20 @@ import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ChangeMiniplayerColorPatch;"
 
-@Suppress("unused")
-val changeMiniplayerColorPatch = patch(
-    name = "Change miniplayer color",
-    description = "Adds an option to change the miniplayer background color to match the fullscreen player."
-) {
+internal val miniplayerColorHookPatch = patch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
     )
 
-    compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
-
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_music_change_miniplayer_color", summary = true),
-            SwitchPreference("morphe_music_change_navigation_bar_color", summary = true)
-        )
-
         if (is_9_32_or_greater) {
             SwitchToggleColorFingerprint.let {
                 val colorMathPlayerFieldReference = it.instructionMatches.last().fieldReference
-
                 val colorMathPlayerIGetReference = it.instructionMatches[4]
                     .fieldReference
 
@@ -62,12 +51,22 @@ val changeMiniplayerColorPatch = patch(
                 )
                 val colorMathPlayerIPutReference = MiniPlayerConstructorFingerprint.method
                     .getInstruction<ReferenceInstruction>(iPutIndex).reference
+                val initialColorRegister = MiniPlayerConstructorFingerprint.method
+                    .getInstruction<TwoRegisterInstruction>(iPutIndex).registerA
+
+                MiniPlayerConstructorFingerprint.method.addInstructions(
+                    iPutIndex,
+                    """
+                        invoke-static { v$initialColorRegister }, $EXTENSION_CLASS->overrideInitialMiniplayerColor(I)I
+                        move-result v$initialColorRegister
+                    """
+                )
 
                 SwitchToggleColorParentFingerprint.method.apply {
                     val insertIndex = 0
                     val freeRegister = findFreeRegister(insertIndex)
 
-                    // Publish the resolved color so the navigation bar can reuse it.
+                    // Publish the resolved color so the navigation bar and glass miniplayer can reuse it.
                     addInstructionsWithLabels(
                         insertIndex,
                         """
@@ -78,7 +77,8 @@ val changeMiniplayerColorPatch = patch(
                             iget-object v$freeRegister, p1, $colorMathPlayerFieldReference
                             check-cast v$freeRegister, ${colorMathPlayerIGetReference.definingClass}
                             iget v$freeRegister, v$freeRegister, $colorMathPlayerIGetReference
-                            invoke-static { v$freeRegister }, $EXTENSION_CLASS->setLastMiniplayerColor(I)V
+                            invoke-static { v$freeRegister }, $EXTENSION_CLASS->setLastMiniplayerColor(I)I
+                            move-result v$freeRegister
                             iput v$freeRegister, p0, $colorMathPlayerIPutReference
                             :off
                             nop
@@ -90,7 +90,6 @@ val changeMiniplayerColorPatch = patch(
             SwitchToggleColorLegacyFingerprint.let {
                 val colorMathPlayerInvokeVirtualReference = it.instructionMatches.last()
                     .getInstruction<ReferenceInstruction>().reference
-
                 val colorMathPlayerIGetReference = it.instructionMatches[4]
                     .fieldReference
 
@@ -102,12 +101,22 @@ val changeMiniplayerColorPatch = patch(
                 )
                 val colorMathPlayerIPutReference = MiniPlayerConstructorFingerprint.method
                     .getInstruction<ReferenceInstruction>(iPutIndex).reference
+                val initialColorRegister = MiniPlayerConstructorFingerprint.method
+                    .getInstruction<TwoRegisterInstruction>(iPutIndex).registerA
+
+                MiniPlayerConstructorFingerprint.method.addInstructions(
+                    iPutIndex,
+                    """
+                        invoke-static { v$initialColorRegister }, $EXTENSION_CLASS->overrideInitialMiniplayerColor(I)I
+                        move-result v$initialColorRegister
+                    """
+                )
 
                 SwitchToggleColorParentFingerprint.method.apply {
                     val insertIndex = 0
                     val freeRegister = findFreeRegister(insertIndex)
 
-                    // Publish the resolved color so the navigation bar can reuse it.
+                    // Publish the resolved color so the navigation bar and glass miniplayer can reuse it.
                     addInstructionsWithLabels(
                         insertIndex,
                         """
@@ -119,7 +128,8 @@ val changeMiniplayerColorPatch = patch(
                             move-result-object v$freeRegister
                             check-cast v$freeRegister, ${colorMathPlayerIGetReference.definingClass}
                             iget v$freeRegister, v$freeRegister, $colorMathPlayerIGetReference
-                            invoke-static { v$freeRegister }, $EXTENSION_CLASS->setLastMiniplayerColor(I)V
+                            invoke-static { v$freeRegister }, $EXTENSION_CLASS->setLastMiniplayerColor(I)I
+                            move-result v$freeRegister
                             iput v$freeRegister, p0, $colorMathPlayerIPutReference
                             :off
                             nop
@@ -158,6 +168,23 @@ val changeMiniplayerColorPatch = patch(
         watchWhileDismissedFingerprint(musicActivityPeerClass).method.addInstructions(
             0,
             "invoke-static { }, $EXTENSION_CLASS->onMiniplayerDismissed()V"
+        )
+    }
+}
+
+@Suppress("unused")
+val changeMiniplayerColorPatch = patch(
+    name = "Change miniplayer color",
+    description = "Adds an option to change the miniplayer background color to match the fullscreen player."
+) {
+    dependsOn(miniplayerColorHookPatch)
+
+    compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
+
+    execute {
+        PreferenceScreen.addMiniplayerPreferences(
+            SwitchPreference("morphe_music_change_miniplayer_color", summary = true),
+            SwitchPreference("morphe_music_change_navigation_bar_color", summary = true)
         )
     }
 }
