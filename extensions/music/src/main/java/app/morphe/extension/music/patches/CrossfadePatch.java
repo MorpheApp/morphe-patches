@@ -13,6 +13,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.media.AudioDeviceInfo;
 import android.media.AudioManager;
@@ -276,6 +277,21 @@ public class CrossfadePatch {
      */
     public static Runnable filterAnalyticsRelease(Runnable runnable) {
         return suppressCwhU ? NO_OP_RUNNABLE : runnable;
+    }
+
+    private static final List<Intent> heldAudioEffectSessionCloses = new ArrayList<>();
+
+    /**
+     * Injection point. The app closes the audio effect session of the old player as soon as
+     * the new player reports its own, which detaches equalizers from a track that still fades out.
+     */
+    public static void closeAudioEffectSession(Context context, Intent intent) {
+        if (crossfadeInProgress) {
+            // Copied, the app reuses the intent.
+            heldAudioEffectSessionCloses.add(new Intent(intent));
+        } else {
+            context.sendBroadcast(intent);
+        }
     }
 
     /**
@@ -1517,6 +1533,10 @@ public class CrossfadePatch {
         outgoingFadePreStarted = false;
         outgoingAwaitingLoad = null;
         currentFadeInVolume = 0.0f;
+        for (Intent intent : heldAudioEffectSessionCloses) {
+            Utils.getContext().sendBroadcast(intent);
+        }
+        heldAudioEffectSessionCloses.clear();
     }
 
     private static void animateCrossfade(final ExoPlayerAccess inPlayer, final long durationOverrideMs) {
