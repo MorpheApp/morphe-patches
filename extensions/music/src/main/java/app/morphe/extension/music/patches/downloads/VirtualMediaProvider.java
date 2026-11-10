@@ -105,10 +105,11 @@ public final class VirtualMediaProvider {
             Logger.printException(() -> "VirtualMediaProvider: Real MediaStore query failed", ex);
         }
 
-        if (realCursor != null && realCursor.getCount() > 0) {
+        final Cursor finalRealCursor = realCursor;
+        if (finalRealCursor != null && finalRealCursor.getCount() > 0) {
             Logger.printDebug(() -> "VirtualMediaProvider: Merging " + virtualCursor.getCount()
-                    + " virtual downloads with " + realCursor.getCount() + " device tracks");
-            return new MergeCursor(new Cursor[]{ virtualCursor, realCursor });
+                    + " virtual downloads with " + finalRealCursor.getCount() + " device tracks");
+            return new MergeCursor(new Cursor[]{ virtualCursor, finalRealCursor });
         }
 
         if (realCursor != null) {
