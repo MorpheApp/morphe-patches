@@ -1673,6 +1673,11 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <!-- video.speed.button.playbackSpeedButtonPatch -->
     <string name="morphe_playback_speed_dialog_button_title">Show Playback speed button</string>
     <string name="morphe_playback_speed_dialog_button_summary">Tap and hold to reset speed to default</string>
+    <string name="morphe_playback_speed_button_cycle_title">Tap Playback speed button to cycle speeds</string>
+    <string name="morphe_playback_speed_button_cycle_summary">Tap goes to the next speed in the list. Tap and hold opens the speed menu</string>
+    <string name="morphe_playback_speed_button_cycle_speeds_title">Playback speed button cycle</string>
+    <string name="morphe_playback_speed_button_cycle_speeds_summary">Speeds a tap cycles through, separated by commas. From the last speed the next tap goes to the first</string>
+    <string name="morphe_playback_speed_button_cycle_speeds_invalid">Invalid speed cycle list, reset to default</string>
 
     <!-- video.quality.button.videoQualityDialogButtonPatch -->
     <string name="morphe_video_quality_dialog_button_title">Show Quality button</string>
