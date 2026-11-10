@@ -76,6 +76,17 @@ public final class NativeDownloadsView {
     private static WeakReference<View> hiddenEmptyStateView = new WeakReference<>(null);
     private static ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener;
     private static volatile boolean isOfflineScreenExplicitlyActive = false;
+    private static volatile boolean isSavedListenerRegistered = false;
+
+    private static String normalize(@Nullable CharSequence text) {
+        if (text == null) return "";
+        return text.toString()
+                .replace("İ", "i")
+                .replace("I", "i")
+                .replace("ı", "i")
+                .toLowerCase(Locale.ROOT)
+                .trim();
+    }
 
     private NativeDownloadsView() {}
 
@@ -176,6 +187,7 @@ public final class NativeDownloadsView {
         hostLayout.setBackgroundColor(BG_COLOR);
 
         ListView listView = new ListView(activity);
+        listView.setId(android.R.id.list);
         listView.setDivider(null);
         listView.setDividerHeight(0);
         listView.setBackgroundColor(BG_COLOR);
@@ -197,11 +209,15 @@ public final class NativeDownloadsView {
         loadTracks(activity, adapter);
 
         // Auto-refresh when a new download completes
-        LocalDownloadManager.addSavedListener(() -> {
-            if (isOfflineScreenExplicitlyActive || isOfflineChipSelected(decor)) {
-                loadTracks(activity, adapter);
-            }
-        });
+        if (!isSavedListenerRegistered) {
+            isSavedListenerRegistered = true;
+            LocalDownloadManager.addSavedListener(() -> {
+                Activity act = attachedActivity.get();
+                if (act != null && !act.isFinishing()) {
+                    loadTracks(act, adapter);
+                }
+            });
+        }
 
         Logger.printDebug(() -> "NativeDownloadsView: attached successfully with native styling");
     }
@@ -262,8 +278,9 @@ public final class NativeDownloadsView {
             if (child instanceof TextView tv) {
                 CharSequence text = tv.getText();
                 if (text != null && text.length() > 0) {
-                    String str = text.toString().trim().toLowerCase(Locale.ROOT);
-                    if (str.equals("indirilenler") || str.equals("downloads")) {
+                    String str = normalize(text);
+                    if (str.equals("indirilenler") || str.equals("downloads")
+                            || str.contains("ndirilenler")) {
                         return tv;
                     }
                 }
@@ -293,10 +310,11 @@ public final class NativeDownloadsView {
             if (child instanceof TextView tv) {
                 CharSequence text = tv.getText();
                 if (text != null && text.length() > 0) {
-                    String str = text.toString().toLowerCase(Locale.ROOT);
-                    if (str.contains("burada gösterilir") || str.contains("appear here")
-                            || str.contains("shown here") || str.contains("gösterilir")
-                            || (str.contains("indirilen") && str.contains("podcast"))
+                    String str = normalize(text);
+                    if (str.contains("burada gösterilir") || str.contains("burada gosterilir")
+                            || str.contains("appear here") || str.contains("shown here")
+                            || str.contains("gösterilir") || str.contains("gosterilir")
+                            || (str.contains("ndirilen") && str.contains("podcast"))
                             || (str.contains("download") && str.contains("podcast"))) {
                         ViewParent parent = tv.getParent();
                         if (parent instanceof ViewGroup emptyGroup) {
