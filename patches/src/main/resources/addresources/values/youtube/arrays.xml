@@ -655,6 +655,18 @@
         <item>PORTRAIT_LANDSCAPE</item>
     </string-array>
 
+    <!-- layout.player.orientation.playerOrientationPatch -->
+    <string-array name="morphe_player_orientation_entries">
+        <item>@string/morphe_player_orientation_entry_free</item>
+        <item>@string/morphe_player_orientation_entry_system</item>
+        <item>@string/morphe_player_orientation_entry_default</item>
+    </string-array>
+    <string-array name="morphe_player_orientation_entry_values">
+        <item>FREE</item>
+        <item>SYSTEM</item>
+        <item>DEFAULT</item>
+    </string-array>
+
     <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
     <string-array name="morphe_playback_in_feeds_entries">
         <item>@string/morphe_playback_in_feeds_entry_always_on</item>
