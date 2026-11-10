@@ -35,6 +35,7 @@ public final class NativeDownloadsInterceptor {
      * Registers the media stream interceptor into ExoPlayer via SpoofVideoStreamsPatch.
      */
     public static void initialize() {
+        LocalStreamServer.start();
         SpoofVideoStreamsPatch.setStreamUriInterceptor(NativeDownloadsInterceptor::interceptMediaUri);
     }
 
@@ -75,10 +76,10 @@ public final class NativeDownloadsInterceptor {
 
     /**
      * Injection point for media playback data source / player URL requests.
-     * If the video ID exists in local downloads, reroutes playback to the local file URI.
+     * If the video ID exists in local downloads, reroutes playback to the local stream URI.
      *
      * @param videoId The video/song ID requested for playback.
-     * @return Local file URI if downloaded, or null to proceed with Google streaming.
+     * @return Local stream URI if downloaded, or null to proceed with Google streaming.
      */
     @Nullable
     public static Uri getLocalSongUriIfAvailable(String videoId) {
@@ -87,10 +88,10 @@ public final class NativeDownloadsInterceptor {
         }
 
         if (DownloadedMark.isDownloaded(videoId)) {
-            Uri localUri = LocalDownloadManager.getSongUri(videoId);
-            if (localUri != null) {
-                Logger.printDebug(() -> "NativeDownloadsInterceptor: Rerouted " + videoId + " to local playback: " + localUri);
-                return localUri;
+            Uri localStreamUri = LocalStreamServer.getStreamUri(videoId);
+            if (localStreamUri != null) {
+                Logger.printDebug(() -> "NativeDownloadsInterceptor: Rerouted " + videoId + " to localhost streaming: " + localStreamUri);
+                return localStreamUri;
             }
         }
 
@@ -99,14 +100,50 @@ public final class NativeDownloadsInterceptor {
 
     /**
      * Injection point for ExoPlayer media URI resolution.
-     * Offline playback is handled natively via {@link OfflinePlaybackService}.
-     * ExoPlayer HttpDataSource requires http/https, so we pass through remote streaming URIs safely.
+     * Intercepts streaming URIs for downloaded tracks and streams them directly from localhost,
+     * maintaining 100% compatibility with YouTube Music's native player (ExoPlayer).
      *
      * @param originalUri The remote streaming URI from YouTube servers.
-     * @return Original URI.
+     * @return Localhost HTTP streaming URI if downloaded, otherwise the original URI.
      */
     @Nullable
     public static Uri interceptMediaUri(@Nullable Uri originalUri) {
+        if (!isNativeDownloadsActive() || originalUri == null) {
+            return originalUri;
+        }
+
+        // 1. Try checking VideoInformation current video ID
+        String currentVideoId = VideoInformation.getVideoId();
+        if (currentVideoId != null && !currentVideoId.isEmpty() && DownloadedMark.isDownloaded(currentVideoId)) {
+            Uri streamUri = LocalStreamServer.getStreamUri(currentVideoId);
+            if (streamUri != null) {
+                Logger.printDebug(() -> "NativeDownloadsInterceptor: Intercepted playback for " + currentVideoId + ", streaming locally");
+                return streamUri;
+            }
+        }
+
+        // 2. Try extracting video ID from videoplayback URL query parameters (id or docid)
+        try {
+            String queryId = originalUri.getQueryParameter("id");
+            if (queryId != null && !queryId.isEmpty() && DownloadedMark.isDownloaded(queryId)) {
+                Uri streamUri = LocalStreamServer.getStreamUri(queryId);
+                if (streamUri != null) {
+                    Logger.printDebug(() -> "NativeDownloadsInterceptor: Intercepted playback for query id " + queryId);
+                    return streamUri;
+                }
+            }
+
+            String docId = originalUri.getQueryParameter("docid");
+            if (docId != null && !docId.isEmpty() && DownloadedMark.isDownloaded(docId)) {
+                Uri streamUri = LocalStreamServer.getStreamUri(docId);
+                if (streamUri != null) {
+                    Logger.printDebug(() -> "NativeDownloadsInterceptor: Intercepted playback for docId " + docId);
+                    return streamUri;
+                }
+            }
+        } catch (Exception ignored) {
+        }
+
         return originalUri;
     }
 }

@@ -125,33 +125,17 @@ public final class NativeDownloadsView {
 
     /**
      * Activates native downloads view for the current activity.
+     * Deprecated: Native sideloaded tracks redirection is used instead of custom overlays.
      */
     public static void show(@Nullable Activity activity) {
-        if (activity == null) {
-            activity = Utils.getActivity();
-        }
-        if (activity == null) return;
-
-        isOfflineScreenExplicitlyActive = true;
-        attachedActivity = new WeakReference<>(activity);
-
-        final Activity act = activity;
-        Utils.runOnMainThreadNowOrLater(() -> {
-            setupGlobalLayoutWatcher(act);
-            attachOrUpdate(act);
-        });
+        // Disabled: Native sideloaded tracks view is used instead of custom view overlays.
     }
 
     /**
      * Hides the native downloads view when switching away from the offline screen.
      */
     public static void hide() {
-        isOfflineScreenExplicitlyActive = false;
-        Utils.runOnMainThreadNowOrLater(() -> {
-            removeInjectedView();
-            restoreEmptyState();
-            Logger.printDebug(() -> "NativeDownloadsView: hidden");
-        });
+        // Disabled.
     }
 
     /**

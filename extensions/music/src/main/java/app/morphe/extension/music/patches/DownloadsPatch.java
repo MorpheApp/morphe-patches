@@ -221,6 +221,21 @@ public final class DownloadsPatch {
                 videoId, Utils.getActivity(), "https://music.youtube.com/watch?v=" + videoId);
     }
 
+    private static void openNativeSideloadedTracks() {
+        Activity activity = Utils.getActivity();
+        if (activity == null) return;
+
+        Utils.runOnMainThreadNowOrLater(() -> {
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://music.youtube.com/browse/FEmusic_library_sideloaded_tracks"));
+                intent.setPackage(activity.getPackageName());
+                activity.startActivity(intent);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Failed to navigate to sideloaded tracks", ex);
+            }
+        });
+    }
+
     /**
      * Determines if the clicked view is inside a Dialog/BottomSheet by comparing
      * its Window root to the main Activity's Window root.
@@ -448,11 +463,9 @@ public final class DownloadsPatch {
 
             if (inAppDownloads()) {
                 if (OFFLINE_BROWSE_COMMAND.check(commandBytes).isFiltered()) {
-                    Logger.printDebug(() -> "Offline browse command intercepted; attaching native downloads view");
-                    NativeDownloadsView.show(Utils.getActivity());
-                    return false;
-                } else if (!insideDialog) {
-                    NativeDownloadsView.hide();
+                    Logger.printDebug(() -> "Offline browse command intercepted; redirecting to native sideloaded tracks");
+                    openNativeSideloadedTracks();
+                    return true;
                 }
             }
 

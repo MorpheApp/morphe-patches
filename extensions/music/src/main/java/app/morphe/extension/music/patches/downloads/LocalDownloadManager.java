@@ -163,18 +163,37 @@ public final class LocalDownloadManager {
     }
 
     public static boolean isDownloaded(String videoId) {
-        File directory = getDownloadDirectory();
-        return new File(directory, videoId + ".webm").isFile()
-                || new File(directory, videoId + ".m4a").isFile();
+        return getSongFile(videoId) != null;
     }
 
     @Nullable
     public static File getSongFile(String videoId) {
-        File directory = getDownloadDirectory();
-        File webm = new File(directory, videoId + ".webm");
-        if (webm.isFile()) return webm;
-        File m4a = new File(directory, videoId + ".m4a");
-        if (m4a.isFile()) return m4a;
+        if (videoId == null || videoId.isEmpty()) return null;
+
+        String[] extensions = {".m4a", ".webm", ".opus", ".mp3"};
+
+        // 1. Check private internal data directory
+        File internalDir = getDownloadDirectory();
+        for (String ext : extensions) {
+            File f = new File(internalDir, videoId + ext);
+            if (f.isFile() && f.length() > 0) return f;
+        }
+
+        // 2. Check legacy external storage directory (for existing downloads)
+        try {
+            Context context = Utils.getContext();
+            if (context != null) {
+                File legacyDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_MUSIC), "Morphe");
+                if (legacyDir.isDirectory()) {
+                    for (String ext : extensions) {
+                        File f = new File(legacyDir, videoId + ext);
+                        if (f.isFile() && f.length() > 0) return f;
+                    }
+                }
+            }
+        } catch (Exception ignored) {
+        }
+
         return null;
     }
 
@@ -185,7 +204,16 @@ public final class LocalDownloadManager {
     }
 
     static File getDownloadDirectory() {
-        return new File(Utils.getContext().getExternalFilesDir(Environment.DIRECTORY_MUSIC), "Morphe");
+        Context context = Utils.getContext();
+        File dir = new File(context.getFilesDir(), "downloads");
+        if (!dir.exists()) {
+            dir.mkdirs();
+            try {
+                new File(dir, ".nomedia").createNewFile();
+            } catch (Exception ignored) {
+            }
+        }
+        return dir;
     }
 
     /**
