@@ -310,6 +310,10 @@ public final class AmbientLightController {
     public static int getLithoColor(Drawable drawable, int color) {
         // The cards of the feed card layout stay opaque, as their content has its own opaque backgrounds.
         if (!seeThrough || FeedCardLayoutPatch.cardBackgrounds.containsKey(drawable)) return color;
+        // Another window of the app, such as the comment box that opens with the keyboard,
+        // takes the focus from the watch page. It has no light behind it, so it keeps its colors.
+        View root = rootRef.get();
+        if (root == null || !root.hasWindowFocus()) return color;
 
         try {
             final int replacement = AmbientLightMath.seeThroughColor(color, pageColor);
