@@ -23,8 +23,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import app.morphe.extension.shared.Logger;
@@ -90,6 +92,12 @@ public final class CustomFontPatch {
     private static volatile Typeface baseTypeface;
 
     private static final Map<Integer, Typeface> typefaceCache = new ConcurrentHashMap<>();
+
+    /**
+     * Font families of the system before they are replaced, or null if the custom font is not used.
+     */
+    @Nullable
+    private static volatile Set<String> systemFamilies;
 
     /**
      * @return If this patch was included during patching.
@@ -239,6 +247,8 @@ public final class CustomFontPatch {
                 Logger.printInfo(() -> "System font map is null");
                 return;
             }
+
+            systemFamilies = new HashSet<>(map.keySet());
 
             Map<String, Typeface> replacements = new HashMap<>();
             for (int i = 0; i < SYSTEM_FAMILY_NAMES.length; i++) {
@@ -486,5 +496,60 @@ public final class CustomFontPatch {
             Logger.printException(() -> "getCustomTypeface failure", ex);
             return null;
         }
+    }
+
+    /**
+     * @return The custom font with the weight, or the original typeface if the custom font is not used.
+     */
+    private static Typeface getCustomOrOriginalTypeface(Typeface original, int weight) {
+        Typeface base = baseTypeface;
+        return base != null ? createCustomTypeface(base, weight, false) : original;
+    }
+
+    /**
+     * Injection point.
+     * Replaces the reads of {@link Typeface#DEFAULT}, as the field is final and cannot be replaced.
+     * Text without a font of its own uses it, such as some texts of the lists.
+     */
+    public static Typeface getDefaultTypeface() {
+        return getCustomOrOriginalTypeface(Typeface.DEFAULT, DEFAULT_WEIGHT);
+    }
+
+    /**
+     * Injection point.
+     * Replaces the reads of {@link Typeface#DEFAULT_BOLD}, as the field is final and cannot be replaced.
+     */
+    public static Typeface getDefaultBoldTypeface() {
+        return getCustomOrOriginalTypeface(Typeface.DEFAULT_BOLD, BOLD_WEIGHT);
+    }
+
+    /**
+     * Injection point.
+     * Replaces the reads of {@link Typeface#SANS_SERIF}, as the field is final and cannot be replaced.
+     */
+    public static Typeface getSansSerifTypeface() {
+        return getCustomOrOriginalTypeface(Typeface.SANS_SERIF, DEFAULT_WEIGHT);
+    }
+
+    /**
+     * Injection point.
+     * Replaces {@link Typeface#create(String, int)}. The system uses its default typeface
+     * for a font family that it does not have, such as sans-serif-regular, which is not the custom font.
+     */
+    public static Typeface createTypeface(@Nullable String family, int style) {
+        try {
+            Set<String> families = systemFamilies;
+            if (baseTypeface != null && families != null && (family == null || !families.contains(family))) {
+                Typeface typeface = getTypeface(family == null
+                        ? DEFAULT_WEIGHT
+                        : weightFromName(family.toLowerCase(Locale.ENGLISH)), style, false);
+                if (typeface != null) {
+                    return typeface;
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "createTypeface failure", ex);
+        }
+        return Typeface.create(family, style);
     }
 }

@@ -270,6 +270,8 @@ public final class FeedEngagementCountsPatch {
 
             ratioPaint.setColor(TEXT_COLOR);
             ratioPaint.setTextAlign(Paint.Align.CENTER);
+            // Also the custom font of the Custom font patch, which a paint without a typeface does not use.
+            ratioPaint.setTypeface(Typeface.DEFAULT);
             ratioPaint.setTextSize(RATIO_TEXT_SP * scaledDensity);
 
             spinnerPaint = FeedVideoCardsPatch.createSpinnerPaint(density, TEXT_COLOR);
