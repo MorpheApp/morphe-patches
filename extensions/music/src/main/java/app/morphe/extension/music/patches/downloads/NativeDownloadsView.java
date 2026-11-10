@@ -344,6 +344,7 @@ public final class NativeDownloadsView {
     public static void playTrack(@NonNull Context context, @NonNull OfflineTrack track,
                                  @Nullable List<OfflineTrack> allTracks, int position) {
         try {
+            NativeDownloadsInterceptor.notifyTrackPlaybackRequested(track.videoId());
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://music.youtube.com/watch?v=" + track.videoId()));
             intent.setPackage(context.getPackageName());
             context.startActivity(intent);

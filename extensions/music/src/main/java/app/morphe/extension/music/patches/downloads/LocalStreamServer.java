@@ -32,7 +32,7 @@ import app.morphe.extension.shared.Logger;
  */
 public final class LocalStreamServer {
 
-    private static final Pattern REQUEST_PATTERN = Pattern.compile("^GET\\s+/stream\\?id=([A-Za-z0-9_-]+)\\s+HTTP/1\\.[01]", Pattern.CASE_INSENSITIVE);
+    private static final Pattern REQUEST_PATTERN = Pattern.compile("^(?:GET|HEAD)\\s+/stream\\?id=([A-Za-z0-9_-]+)[^\\s]*\\s+HTTP/1\\.[01]", Pattern.CASE_INSENSITIVE);
     private static final Pattern RANGE_PATTERN = Pattern.compile("Range:\\s*bytes=(\\d+)-(\\d*)", Pattern.CASE_INSENSITIVE);
 
     private static volatile ServerSocket serverSocket;
@@ -171,6 +171,12 @@ public final class LocalStreamServer {
             responseHeaders.append("Connection: close\r\n\r\n");
 
             out.write(responseHeaders.toString().getBytes(StandardCharsets.US_ASCII));
+
+            boolean isHead = lines[0].regionMatches(true, 0, "HEAD", 0, 4);
+            if (isHead) {
+                out.flush();
+                return;
+            }
 
             // Stream file bytes
             try (RandomAccessFile raf = new RandomAccessFile(songFile, "r")) {

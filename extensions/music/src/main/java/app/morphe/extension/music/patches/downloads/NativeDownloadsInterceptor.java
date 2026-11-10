@@ -25,6 +25,12 @@ public final class NativeDownloadsInterceptor {
     private static final String BROWSE_URL_PATH = "youtubei/v1/browse";
     private static final String OFFLINE_BROWSE_ID = "FEmusic_offline";
 
+    private static volatile String lastRequestedTrackId = null;
+
+    public static void notifyTrackPlaybackRequested(@Nullable String videoId) {
+        lastRequestedTrackId = videoId;
+    }
+
     static {
         initialize();
     }
@@ -43,7 +49,8 @@ public final class NativeDownloadsInterceptor {
      * Checks if in-app native downloads mode is active.
      */
     public static boolean isNativeDownloadsActive() {
-        return Settings.DOWNLOAD_MODE.get() == DownloadMode.IN_APP;
+        return Settings.DOWNLOAD_MODE.get() != DownloadMode.DEFAULT
+                || Settings.EXTERNAL_DOWNLOADER_MENU.get();
     }
 
     /**
@@ -112,7 +119,17 @@ public final class NativeDownloadsInterceptor {
             return originalUri;
         }
 
-        // 1. Try checking VideoInformation current video ID
+        // 1. Try checking lastRequestedTrackId if set and downloaded
+        String pendingId = lastRequestedTrackId;
+        if (pendingId != null && !pendingId.isEmpty() && DownloadedMark.isDownloaded(pendingId)) {
+            Uri streamUri = LocalStreamServer.getStreamUri(pendingId);
+            if (streamUri != null) {
+                Logger.printDebug(() -> "NativeDownloadsInterceptor: Intercepted playback for requested " + pendingId + ", streaming locally");
+                return streamUri;
+            }
+        }
+
+        // 2. Try checking VideoInformation current video ID
         String currentVideoId = VideoInformation.getVideoId();
         if (currentVideoId != null && !currentVideoId.isEmpty() && DownloadedMark.isDownloaded(currentVideoId)) {
             Uri streamUri = LocalStreamServer.getStreamUri(currentVideoId);
@@ -122,7 +139,7 @@ public final class NativeDownloadsInterceptor {
             }
         }
 
-        // 2. Try extracting video ID from videoplayback URL query parameters (id or docid)
+        // 3. Try extracting video ID from videoplayback URL query parameters (id or docid)
         try {
             String queryId = originalUri.getQueryParameter("id");
             if (queryId != null && !queryId.isEmpty() && DownloadedMark.isDownloaded(queryId)) {

@@ -141,7 +141,7 @@ public final class DownloadsPatch {
             if (DownloadedMark.isEnabled() && DownloadedMarkFilter.isDownloadedSongDetails(path)) {
                 return DownloadedMark.addTo(original);
             }
-            if (inAppDownloads()) {
+            if (isCustomDownloadsActive()) {
                 String str = original.toString().toLowerCase(Locale.ROOT);
                 if (str.contains("burada gösterilir") || str.contains("appear here")
                         || (str.contains("indirilen") && str.contains("podcast"))
@@ -198,6 +198,11 @@ public final class DownloadsPatch {
      * can replace it in the other modes too.
      */
     public static boolean isFlyoutMenuOverridden() {
+        return Settings.DOWNLOAD_MODE.get() != DownloadMode.DEFAULT
+                || Settings.EXTERNAL_DOWNLOADER_MENU.get();
+    }
+
+    public static boolean isCustomDownloadsActive() {
         return Settings.DOWNLOAD_MODE.get() != DownloadMode.DEFAULT
                 || Settings.EXTERNAL_DOWNLOADER_MENU.get();
     }
@@ -446,7 +451,7 @@ public final class DownloadsPatch {
                         : PlaylistPageFilter.getPagePlaylistId());
             }
 
-            if (inAppDownloads()) {
+            if (isCustomDownloadsActive()) {
                 if (OFFLINE_BROWSE_COMMAND.check(commandBytes).isFiltered()) {
                     Logger.printDebug(() -> "Offline browse command intercepted; attaching native downloads view");
                     NativeDownloadsView.show(Utils.getActivity());
