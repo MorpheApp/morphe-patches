@@ -90,22 +90,9 @@ public final class DownloadsPatch {
     private static volatile long lastMainPlayerDownloadTime;
     /** When the player button was last left to the app, because only menus are overridden. */
     private static volatile long lastStockPlayerButtonTime;
-    /** Browse id of the stock offline tab, which redirects to native sideloaded tracks when custom downloads are active. */
+    /** Browse id of the stock offline tab, which the local catalogue replaces. */
     private static final ByteArrayFilterGroup OFFLINE_BROWSE_COMMAND =
             new ByteArrayFilterGroup(null, "FEmusic_offline");
-    private static final ByteArrayFilterGroup SIDELOADED_BROWSE_COMMAND =
-            new ByteArrayFilterGroup(null, "FEmusic_library_sideloaded_tracks");
-    private static volatile boolean redirectedFromOffline = false;
-    private static volatile long redirectedFromOfflineTime = 0;
-
-    public static boolean isRedirectedFromOffline() {
-        if (!redirectedFromOffline) return false;
-        if (System.currentTimeMillis() - redirectedFromOfflineTime > 60_000) {
-            redirectedFromOffline = false;
-            return false;
-        }
-        return true;
-    }
     /**
      * Menu Download action of accounts offered Premium, which opens the Premium sheet
      * and has no video ID.
@@ -154,12 +141,12 @@ public final class DownloadsPatch {
             if (DownloadedMark.isEnabled() && DownloadedMarkFilter.isDownloadedSongDetails(path)) {
                 return DownloadedMark.addTo(original);
             }
-            if (isRedirectedFromOffline()) {
-                String str = original.toString().trim().toLowerCase(Locale.ROOT);
-                if (str.equals("cihaz dosyaları") || str.equals("cihaz dosyalari")
-                        || str.equals("device files") || str.equals("device file")) {
-                    String title = ResourceUtils.getString("morphe_music_downloads_screen_title");
-                    return (title != null && !title.isBlank()) ? title : "İndirilenler";
+            if (inAppDownloads()) {
+                String str = original.toString().toLowerCase(Locale.ROOT);
+                if (str.contains("burada gösterilir") || str.contains("appear here")
+                        || (str.contains("indirilen") && str.contains("podcast"))
+                        || (str.contains("download") && str.contains("podcast"))) {
+                    NativeDownloadsView.show(Utils.getActivity());
                 }
             }
         } catch (Exception ex) {
@@ -232,28 +219,6 @@ public final class DownloadsPatch {
 
         ExternalDownloaderPreference.launchExternalDownloader(
                 videoId, Utils.getActivity(), "https://music.youtube.com/watch?v=" + videoId);
-    }
-
-    public static boolean isExternalDownloaderActive() {
-        return Settings.DOWNLOAD_MODE.get() == DownloadMode.EXTERNAL
-                || Settings.EXTERNAL_DOWNLOADER_MENU.get()
-                || Settings.DOWNLOAD_MODE.get() == DownloadMode.IN_APP;
-    }
-
-    private static void openNativeSideloadedTracks() {
-        Activity activity = Utils.getActivity();
-        if (activity == null) return;
-
-        Utils.runOnMainThreadNowOrLater(() -> {
-            try {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://music.youtube.com/browse/FEmusic_library_sideloaded_tracks"));
-                intent.setPackage(activity.getPackageName());
-                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                activity.startActivity(intent);
-            } catch (Exception ex) {
-                Logger.printException(() -> "Failed to navigate to sideloaded tracks", ex);
-            }
-        });
     }
 
     /**
@@ -481,15 +446,13 @@ public final class DownloadsPatch {
                         : PlaylistPageFilter.getPagePlaylistId());
             }
 
-            if (isExternalDownloaderActive()) {
+            if (inAppDownloads()) {
                 if (OFFLINE_BROWSE_COMMAND.check(commandBytes).isFiltered()) {
-                    Logger.printDebug(() -> "Offline browse command intercepted; redirecting to native sideloaded tracks with Downloads title");
-                    redirectedFromOffline = true;
-                    redirectedFromOfflineTime = System.currentTimeMillis();
-                    openNativeSideloadedTracks();
-                    return true;
-                } else if (!insideDialog && !SIDELOADED_BROWSE_COMMAND.check(commandBytes).isFiltered()) {
-                    redirectedFromOffline = false;
+                    Logger.printDebug(() -> "Offline browse command intercepted; attaching native downloads view");
+                    NativeDownloadsView.show(Utils.getActivity());
+                    return false;
+                } else if (!insideDialog) {
+                    NativeDownloadsView.hide();
                 }
             }
 
