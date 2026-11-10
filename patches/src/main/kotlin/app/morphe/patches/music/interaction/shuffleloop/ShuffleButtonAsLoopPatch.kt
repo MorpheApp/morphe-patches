@@ -10,10 +10,9 @@ package app.morphe.patches.music.interaction.shuffleloop
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.misc.settings.PreferenceScreen
+import app.morphe.patches.music.misc.medianotification.mediaNotificationControlsPatchMusic
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ShuffleButtonAsLoopPatch;"
 
@@ -26,15 +25,14 @@ val shuffleButtonAsLoopPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        // The option is added to the notification media controls screen,
+        // which this patch declares.
+        mediaNotificationControlsPatchMusic,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_music_shuffle_button_as_loop", summary = true)
-        )
-
         // The shuffle and loop actions are custom actions of the media session that the system UI
         // shows as media control buttons. Only a limited number of them fit in the media controls,
         // and the shuffle action is listed before the loop action, so the loop button is never
