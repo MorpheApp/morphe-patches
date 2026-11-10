@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/4338
+ * https://github.com/MorpheApp/morphe-patches/pull/4621
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -33,12 +34,12 @@ import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
- * Draws a navigation bar or floating miniplayer as a floating, rounded, translucent capsule, shared by the apps.
+ * Draws a navigation bar or a miniplayer as a floating, rounded, translucent capsule, shared by the apps.
  * <p>
  * No extra copy of the content behind the bar is made. If the app draws its own blurred background,
  * that background is kept and clipped to the capsule. The frosted look otherwise comes from a tinted fill,
  * a soft gradient, a rim lit from outside, a dark line inside it and a shadow, all drawn by this drawable,
- * which is set as the background of the navigation bar or miniplayer. Everything outside the capsule is left transparent.
+ * which is set as the background of the navigation bar. Everything outside the capsule is left transparent.
  * The selected button has a rounded indicator, which moves to the next selected button.
  */
 @SuppressWarnings("deprecation")
@@ -78,25 +79,10 @@ public final class GlassCapsuleDrawable extends Drawable {
         }
 
         /**
-         * @return The corner radius of the capsule/card. Defaults to pill shape (height / 2).
+         * @return The corner radius of the capsule, by default half its height.
          */
         default float getCornerRadius(RectF capsule) {
-            return capsule.height() / 2f;
-        }
-
-        /**
-         * @return A custom color to tint the glass with (e.g. from album art), or 0 for theme default.
-         */
-        @ColorInt
-        default int getCustomTintColor() {
-            return 0;
-        }
-
-        /**
-         * @return Scale factor for the border/rim glow intensity (1f is default, 0f is frameless, 2f is double).
-         */
-        default float getRimScale() {
-            return 1f;
+            return capsule.height() / 2;
         }
     }
 
@@ -106,10 +92,11 @@ public final class GlassCapsuleDrawable extends Drawable {
     private static final int STYLE_DARK_PLAYER = 2;
 
     private static final int SHADOW_LAYERS = 3;
+
     private static final long INDICATOR_ANIMATION_MILLISECONDS = 200;
+
     private static final int INDICATOR_INSET = Dim.dp4;
     private static final int INDICATOR_MAX_WIDTH = Dim.dp(96);
-
     private static final float STROKE_WIDTH = Dim.dp1;
     /**
      * The rim of the capsule, lit from outside, and the dark line inside it, which give the glass its thickness.
@@ -122,6 +109,7 @@ public final class GlassCapsuleDrawable extends Drawable {
      */
     private final View view;
     private final Host host;
+
     /**
      * How opaque the glass is: 1 keeps the default alphas, 0 is fully clear, 2 doubles them.
      */
@@ -131,6 +119,17 @@ public final class GlassCapsuleDrawable extends Drawable {
      * If the glass is tinted white with the dark theme.
      */
     private boolean lightTint;
+
+    /**
+     * How bright the rim is: 1 keeps the default alphas, 0 draws no rim, 2 doubles them.
+     */
+    private float rimScale;
+
+    /**
+     * The color the glass is tinted with, such as of the album art, or 0 for the colors of the theme.
+     */
+    @ColorInt
+    private int tintColor;
 
     private final Paint shadowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint fillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -171,12 +170,9 @@ public final class GlassCapsuleDrawable extends Drawable {
             unscheduleSelf(what);
         }
     };
-
     private final RectF scratch = new RectF();
+
     private int style = STYLE_UNKNOWN;
-    private int lastCustomTint;
-    private float lastRimScale = Float.NaN;
-    private float lastCornerRadius = Float.NaN;
     private int shadowAlpha;
     @ColorInt
     private int sheenTopColor;
@@ -191,6 +187,7 @@ public final class GlassCapsuleDrawable extends Drawable {
     private int rimEndColor;
     @ColorInt
     private int rimMiddleColor;
+
     /**
      * The edges of the capsule the gradients were made for.
      */
@@ -198,6 +195,7 @@ public final class GlassCapsuleDrawable extends Drawable {
     private float shaderBottom = Float.NaN;
     private float shaderLeft = Float.NaN;
     private float shaderRight = Float.NaN;
+
     @ColorInt
     private int fillColor;
     /**
@@ -209,6 +207,7 @@ public final class GlassCapsuleDrawable extends Drawable {
     private float animationFromLeft;
     private float animationFromRight;
     private boolean animationFromValid;
+
     /**
      * The horizontal edges of the selected tab indicator in the last frame.
      */
@@ -229,23 +228,29 @@ public final class GlassCapsuleDrawable extends Drawable {
      *                  instead of with a lighter shade of the background.
      */
     public GlassCapsuleDrawable(View view, Host host, float opacityScale, boolean lightTint) {
+        this(view, host, opacityScale, lightTint, 1);
+    }
+
+    /**
+     * @param rimScale How bright the rim is: 1 keeps the default alphas, 0 draws no rim, 2 doubles them.
+     */
+    public GlassCapsuleDrawable(View view, Host host, float opacityScale, boolean lightTint, float rimScale) {
         this.view = view;
         this.host = host;
         this.opacityScale = opacityScale;
         this.lightTint = lightTint;
+        this.rimScale = rimScale;
 
         fillPaint.setStyle(Paint.Style.FILL);
         sheenPaint.setStyle(Paint.Style.FILL);
         shadowPaint.setStyle(Paint.Style.FILL);
         shadowPaint.setColor(Color.BLACK);
-
         strokePaint.setStyle(Paint.Style.STROKE);
         strokePaint.setStrokeWidth(STROKE_WIDTH);
         rimPaint.setStyle(Paint.Style.STROKE);
         rimPaint.setStrokeWidth(RIM_WIDTH);
         bevelPaint.setStyle(Paint.Style.STROKE);
         bevelPaint.setStrokeWidth(BEVEL_WIDTH);
-
         indicatorPaint.setStyle(Paint.Style.FILL);
 
         indicatorAnimator.setDuration(INDICATOR_ANIMATION_MILLISECONDS);
@@ -268,8 +273,7 @@ public final class GlassCapsuleDrawable extends Drawable {
 
     @ColorInt
     private static int withAlpha(@ColorInt int color, float alpha) {
-        final float clamped = Math.max(0f, Math.min(1f, alpha));
-        return (color & 0x00FFFFFF) | (Math.round(clamped * 255) << 24);
+        return (color & 0x00FFFFFF) | (Math.round(Math.max(0, Math.min(1, alpha)) * 255) << 24);
     }
 
     @ColorInt
@@ -283,113 +287,114 @@ public final class GlassCapsuleDrawable extends Drawable {
     }
 
     /**
-     * Normalizes an album art color so that dark or muted palette shades still produce a rich,
-     * unmistakable frosted glass tint.
+     * Makes a color vivid and bright enough to tint the glass, so a dark or dull color of an album art
+     * still gives a clear tint.
      */
     @ColorInt
-    public static int normalizeTintColor(@ColorInt int color) {
-        if (color == 0) return 0;
+    public static int toTintColor(@ColorInt int color) {
         float[] hsv = new float[3];
         Color.colorToHSV(color, hsv);
         if (hsv[1] > 0.06f) {
             hsv[1] = Math.max(0.48f, Math.min(0.88f, hsv[1] * 1.3f));
             hsv[2] = Math.max(0.58f, Math.min(0.88f, hsv[2] * 1.4f));
         } else {
+            // Gray stays gray.
             hsv[2] = Math.max(0.50f, Math.min(0.80f, hsv[2]));
         }
         return Color.HSVToColor(hsv);
     }
 
-    public void invalidateStyle() {
+    /**
+     * Changes how opaque the glass is, if it is tinted white and how bright the rim is,
+     * such as after the settings changed.
+     */
+    public void setStyle(float opacityScale, boolean lightTint, float rimScale) {
+        if (this.opacityScale == opacityScale && this.lightTint == lightTint && this.rimScale == rimScale) return;
+        this.opacityScale = opacityScale;
+        this.lightTint = lightTint;
+        this.rimScale = rimScale;
         style = STYLE_UNKNOWN;
-        lastCustomTint = 0;
-        lastRimScale = Float.NaN;
-        lastCornerRadius = Float.NaN;
-        shaderTop = Float.NaN;
-        updateStyle();
-        invalidateSelf();
-    }
-
-    public void updateStyle(float newOpacityScale, boolean newLightTint) {
-        if (opacityScale != newOpacityScale || lightTint != newLightTint) {
-            opacityScale = newOpacityScale;
-            lightTint = newLightTint;
-            style = STYLE_UNKNOWN;
-        }
         updateStyle();
     }
 
     /**
-     * Updates the colors if the theme changed, the custom tint changed, or the bar moved over or away from a dark player.
+     * Tints the glass with a color, such as of the album art.
+     *
+     * @param color The color, made vivid with {@link #toTintColor(int)}, or 0 for the colors of the theme.
+     */
+    public void setTintColor(@ColorInt int color) {
+        final int newTint = color == 0 ? 0 : toTintColor(color);
+        if (newTint == tintColor) return;
+        tintColor = newTint;
+        style = STYLE_UNKNOWN;
+        updateStyle();
+    }
+
+    /**
+     * Updates the colors if the theme changed or the bar moved over or away from a dark player.
      */
     public void updateStyle() {
         final int newStyle = host.isOverDarkPlayer()
                 ? STYLE_DARK_PLAYER
                 : Utils.isDarkModeEnabled() ? STYLE_DARK : STYLE_LIGHT;
-        final int customTint = host.getCustomTintColor();
-        final float rimScale = host.getRimScale();
-        if (newStyle == style && customTint == lastCustomTint && rimScale == lastRimScale) return;
+        if (newStyle == style) return;
         style = newStyle;
-        lastCustomTint = customTint;
-        lastRimScale = rimScale;
 
-        if (customTint != 0) {
-            final int vividTint = normalizeTintColor(customTint);
-            final int tintBase = lightTint ? blend(vividTint, 0.55f) : vividTint;
-            final float baseAlpha = lightTint ? 0.44f : 0.54f;
-            fillColor = withAlpha(tintBase, scaledAlpha(baseAlpha));
-            // Wrap sheenTopColor alpha in scaledAlpha so low opacity settings remove foggy clouds completely.
-            sheenTopColor = withAlpha(blend(vividTint, lightTint ? 0.75f : 0.45f), scaledAlpha(lightTint ? 0.28f : 0.18f));
-            strokeTopColor = withAlpha(blend(vividTint, 0.70f), 0.40f * rimScale);
-            strokeBottomColor = withAlpha(vividTint, 0.12f * rimScale);
-            rimEndColor = withAlpha(blend(vividTint, 0.80f), 0.60f * rimScale);
-            rimMiddleColor = withAlpha(blend(vividTint, 0.50f), 0.18f * rimScale);
+        if (tintColor != 0) {
+            // The tint is drawn over the blurred background of the app as well.
+            final int base = lightTint ? blend(tintColor, 0.55f) : tintColor;
+            fillColor = withAlpha(base, scaledAlpha(lightTint ? 0.44f : 0.54f));
+            sheenTopColor = withAlpha(blend(tintColor, lightTint ? 0.75f : 0.45f), lightTint ? 0.28f : 0.18f);
+            strokeTopColor = withAlpha(blend(tintColor, 0.70f), 0.40f * rimScale);
+            strokeBottomColor = withAlpha(tintColor, 0.12f * rimScale);
+            rimEndColor = withAlpha(blend(tintColor, 0.80f), 0.60f * rimScale);
+            rimMiddleColor = withAlpha(blend(tintColor, 0.50f), 0.18f * rimScale);
             bevelPaint.setColor(withAlpha(Color.BLACK, (lightTint ? 0.18f : 0.30f) * rimScale));
-            indicatorPaint.setColor(withAlpha(blend(vividTint, lightTint ? 0.65f : 0.35f), 0.30f));
+            indicatorPaint.setColor(withAlpha(blend(tintColor, lightTint ? 0.65f : 0.35f), 0.30f));
             shadowAlpha = Math.round(0.14f * 255);
-        } else {
-            switch (newStyle) {
-                case STYLE_DARK_PLAYER -> {
-                    // The player is always dark, whatever the app theme.
-                    fillColor = withAlpha(Color.BLACK, scaledAlpha(0.45f));
-                    sheenTopColor = withAlpha(Color.WHITE, scaledAlpha(0.06f));
-                    strokeTopColor = withAlpha(Color.WHITE, 0.20f * rimScale);
-                    strokeBottomColor = withAlpha(Color.WHITE, 0.05f * rimScale);
-                    rimEndColor = withAlpha(Color.WHITE, 0.45f * rimScale);
-                    rimMiddleColor = withAlpha(Color.WHITE, 0.10f * rimScale);
-                    bevelPaint.setColor(withAlpha(Color.BLACK, 0.35f * rimScale));
-                    indicatorPaint.setColor(withAlpha(Color.WHITE, 0.15f));
-                    shadowAlpha = Math.round(0.10f * 255);
-                }
-                case STYLE_DARK -> {
-                    final int background = ThemeUtils.getAppBackgroundColor();
-                    fillColor = lightTint
-                            ? withAlpha(Color.WHITE, scaledAlpha(0.30f))
-                            : withAlpha(blend(background, 0.14f), scaledAlpha(0.50f));
-                    sheenTopColor = withAlpha(Color.WHITE, scaledAlpha(lightTint ? 0.16f : 0.10f));
-                    strokeTopColor = withAlpha(Color.WHITE, 0.30f * rimScale);
-                    strokeBottomColor = withAlpha(Color.WHITE, 0.06f * rimScale);
-                    rimEndColor = withAlpha(Color.WHITE, 0.50f * rimScale);
-                    rimMiddleColor = withAlpha(Color.WHITE, 0.12f * rimScale);
-                    bevelPaint.setColor(withAlpha(Color.BLACK, 0.35f * rimScale));
-                    indicatorPaint.setColor(withAlpha(Color.WHITE, 0.15f));
-                    shadowAlpha = Math.round(0.10f * 255);
-                }
-                default -> {
-                    final int background = ThemeUtils.getAppBackgroundColor();
-                    fillColor = withAlpha(blend(background, 0.6f), scaledAlpha(0.50f));
-                    sheenTopColor = withAlpha(Color.WHITE, scaledAlpha(0.35f));
-                    strokeTopColor = withAlpha(Color.WHITE, 0.95f * rimScale);
-                    strokeBottomColor = withAlpha(Color.BLACK, 0.07f * rimScale);
-                    rimEndColor = withAlpha(Color.WHITE, 0.95f * rimScale);
-                    rimMiddleColor = withAlpha(Color.WHITE, 0.50f * rimScale);
-                    bevelPaint.setColor(withAlpha(Color.BLACK, 0.08f * rimScale));
-                    indicatorPaint.setColor(withAlpha(Color.BLACK, 0.08f));
-                    shadowAlpha = Math.round(0.05f * 255);
-                }
+        } else switch (newStyle) {
+            case STYLE_DARK_PLAYER -> {
+                // The player is always dark, whatever the app theme.
+                fillColor = withAlpha(Color.BLACK, scaledAlpha(0.45f));
+                sheenTopColor = withAlpha(Color.WHITE, 0.06f);
+                strokeTopColor = withAlpha(Color.WHITE, 0.20f * rimScale);
+                strokeBottomColor = withAlpha(Color.WHITE, 0.05f * rimScale);
+                rimEndColor = withAlpha(Color.WHITE, 0.45f * rimScale);
+                rimMiddleColor = withAlpha(Color.WHITE, 0.10f * rimScale);
+                bevelPaint.setColor(withAlpha(Color.BLACK, 0.35f * rimScale));
+                indicatorPaint.setColor(withAlpha(Color.WHITE, 0.15f));
+                shadowAlpha = Math.round(0.10f * 255);
+            }
+            case STYLE_DARK -> {
+                final int background = ThemeUtils.getAppBackgroundColor();
+                fillColor = lightTint
+                        ? withAlpha(Color.WHITE, scaledAlpha(0.30f))
+                        : withAlpha(blend(background, 0.14f), scaledAlpha(0.50f));
+                sheenTopColor = withAlpha(Color.WHITE, lightTint ? 0.16f : 0.10f);
+                strokeTopColor = withAlpha(Color.WHITE, 0.30f * rimScale);
+                strokeBottomColor = withAlpha(Color.WHITE, 0.06f * rimScale);
+                rimEndColor = withAlpha(Color.WHITE, 0.50f * rimScale);
+                rimMiddleColor = withAlpha(Color.WHITE, 0.12f * rimScale);
+                bevelPaint.setColor(withAlpha(Color.BLACK, 0.35f * rimScale));
+                indicatorPaint.setColor(withAlpha(Color.WHITE, 0.15f));
+                shadowAlpha = Math.round(0.10f * 255);
+            }
+            default -> {
+                final int background = ThemeUtils.getAppBackgroundColor();
+                fillColor = withAlpha(blend(background, 0.6f), scaledAlpha(0.50f));
+                sheenTopColor = withAlpha(Color.WHITE, 0.35f);
+                strokeTopColor = withAlpha(Color.WHITE, 0.95f * rimScale);
+                strokeBottomColor = withAlpha(Color.BLACK, 0.07f * rimScale);
+                rimEndColor = withAlpha(Color.WHITE, 0.95f * rimScale);
+                rimMiddleColor = withAlpha(Color.WHITE, 0.50f * rimScale);
+                bevelPaint.setColor(withAlpha(Color.BLACK, 0.08f * rimScale));
+                indicatorPaint.setColor(withAlpha(Color.BLACK, 0.08f));
+                shadowAlpha = Math.round(0.05f * 255);
             }
         }
-        fillPaint.setColor((fillOverBlur && lastCustomTint == 0) ? Color.TRANSPARENT : fillColor);
+
+        updateFillPaint();
+
         // The gradients are made again with the new colors.
         shaderTop = Float.NaN;
         invalidateSelf();
@@ -402,6 +407,7 @@ public final class GlassCapsuleDrawable extends Drawable {
         if (appBackground != null && appBackground != background) {
             appBackground.setCallback(null);
         }
+
         // A plain color or an opaque background is the solid bar of the app, such as in
         // the Shorts player, and is left out so the capsule stays translucent.
         appBackground = background == null || appBackgroundFailed
@@ -431,6 +437,7 @@ public final class GlassCapsuleDrawable extends Drawable {
         animationFromValid = lastIndicatorValid;
         animationFromLeft = lastIndicatorLeft;
         animationFromRight = lastIndicatorRight;
+
         indicatorAnimator.cancel();
         if (animationFromValid) {
             indicatorAnimator.start();
@@ -439,16 +446,15 @@ public final class GlassCapsuleDrawable extends Drawable {
         }
     }
 
-    private void updateShaders(float radius) {
+    private void updateShaders() {
         if (capsule.top == shaderTop && capsule.bottom == shaderBottom
-                && capsule.left == shaderLeft && capsule.right == shaderRight
-                && radius == lastCornerRadius) return;
+                && capsule.left == shaderLeft && capsule.right == shaderRight) return;
         shaderTop = capsule.top;
         shaderBottom = capsule.bottom;
         shaderLeft = capsule.left;
         shaderRight = capsule.right;
-        lastCornerRadius = radius;
 
+        final float radius = host.getCornerRadius(capsule);
         capsulePath.reset();
         capsulePath.addRoundRect(capsule, radius, radius, Path.Direction.CW);
 
@@ -463,6 +469,11 @@ public final class GlassCapsuleDrawable extends Drawable {
                 new float[]{0, end, 1 - end, 1}, Shader.TileMode.CLAMP));
     }
 
+    private void updateFillPaint() {
+        // The blurred background of the app is already tinted, unless the glass has a tint of its own.
+        fillPaint.setColor(fillOverBlur && tintColor == 0 ? Color.TRANSPARENT : fillColor);
+    }
+
     @Override
     public void draw(@NonNull Canvas canvas) {
         try {
@@ -470,7 +481,7 @@ public final class GlassCapsuleDrawable extends Drawable {
             if (capsule.width() <= 0 || capsule.height() <= 0) return;
 
             final float radius = host.getCornerRadius(capsule);
-            updateShaders(radius);
+            updateShaders();
 
             // The dark player can end above the navigation bar, so the background of the window
             // would show around the capsule, which is white with the light theme.
@@ -492,7 +503,7 @@ public final class GlassCapsuleDrawable extends Drawable {
             final boolean overBlur = appBackground != null && style != STYLE_DARK_PLAYER;
             if (overBlur != fillOverBlur) {
                 fillOverBlur = overBlur;
-                fillPaint.setColor((overBlur && lastCustomTint == 0) ? Color.TRANSPARENT : fillColor);
+                updateFillPaint();
             }
             if (overBlur) {
                 // The blurred background of the app, only inside the capsule.
@@ -522,22 +533,24 @@ public final class GlassCapsuleDrawable extends Drawable {
                 canvas.drawRoundRect(capsule, radius, radius, fillPaint);
             }
             canvas.drawRoundRect(capsule, radius, radius, sheenPaint);
+
             drawIndicator(canvas);
 
-            if (lastRimScale > 0f) {
-                // The dark line inside the rim.
-                scratch.set(capsule);
-                scratch.inset(RIM_WIDTH + BEVEL_WIDTH / 2, RIM_WIDTH + BEVEL_WIDTH / 2);
-                final float bevelRadius = Math.max(0, radius - (RIM_WIDTH + BEVEL_WIDTH / 2));
-                canvas.drawRoundRect(scratch, bevelRadius, bevelRadius, bevelPaint);
+            if (rimScale <= 0) return;
 
-                // The rim lit from outside, brighter at the top.
-                scratch.set(capsule);
-                scratch.inset(RIM_WIDTH / 2, RIM_WIDTH / 2);
-                final float rimRadius = Math.max(0, radius - RIM_WIDTH / 2);
-                canvas.drawRoundRect(scratch, rimRadius, rimRadius, rimPaint);
-                canvas.drawRoundRect(scratch, rimRadius, rimRadius, strokePaint);
-            }
+            // The dark line inside the rim, with corners that follow the capsule.
+            final float bevelInset = RIM_WIDTH + BEVEL_WIDTH / 2;
+            scratch.set(capsule);
+            scratch.inset(bevelInset, bevelInset);
+            final float bevelRadius = Math.max(0, radius - bevelInset);
+            canvas.drawRoundRect(scratch, bevelRadius, bevelRadius, bevelPaint);
+
+            // The rim lit from outside, brighter at the top.
+            scratch.set(capsule);
+            scratch.inset(RIM_WIDTH / 2, RIM_WIDTH / 2);
+            final float rimRadius = Math.max(0, radius - RIM_WIDTH / 2);
+            canvas.drawRoundRect(scratch, rimRadius, rimRadius, rimPaint);
+            canvas.drawRoundRect(scratch, rimRadius, rimRadius, strokePaint);
         } catch (Exception ex) {
             Logger.printException(() -> "Glass navigation bar draw failure", ex);
         }
@@ -545,6 +558,7 @@ public final class GlassCapsuleDrawable extends Drawable {
 
     private void drawIndicator(Canvas canvas) {
         lastIndicatorValid = false;
+
         View tab = host.getSelectedTabView();
         if (tab == null || tab.getVisibility() != View.VISIBLE || tab.getWidth() <= 0) return;
 
@@ -554,7 +568,6 @@ public final class GlassCapsuleDrawable extends Drawable {
 
         final float minLeft = capsule.left + INDICATOR_INSET;
         final float maxRight = capsule.right - INDICATOR_INSET;
-
         float targetLeft = tabLeft + INDICATOR_INSET;
         float targetRight = tabLeft + tab.getWidth() - INDICATOR_INSET;
         if (targetRight - targetLeft > INDICATOR_MAX_WIDTH) {

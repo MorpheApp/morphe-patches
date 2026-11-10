@@ -18,16 +18,13 @@ import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.preference.GlassNavigationBarSizePreference;
 
 /**
- * Configures either the glass navigation bar (height, width, button spacing, opacity, border glow)
- * or the glass miniplayer (corner radius, artwork padding, border glow, opacity),
- * each with its own independent live preview dialog.
+ * Sets the height, the width, the button spacing, the opacity and the rim brightness of the glass navigation bar,
+ * with a preview of the bar that follows the sliders.
  */
-@SuppressWarnings({"unused", "deprecation"})
+@SuppressWarnings("unused")
 public class MusicGlassNavigationBarPreference extends GlassNavigationBarSizePreference {
 
-    private static final String MINIPLAYER_KEY = "morphe_music_miniplayer_glass_corner_radius";
-
-    private static final IntegerSetting[] NAV_BAR_SETTINGS = {
+    private static final IntegerSetting[] SETTINGS = {
             Settings.NAVIGATION_BAR_GLASS_HEIGHT,
             Settings.NAVIGATION_BAR_GLASS_WIDTH,
             Settings.NAVIGATION_BAR_GLASS_BUTTON_SPACING,
@@ -35,7 +32,7 @@ public class MusicGlassNavigationBarPreference extends GlassNavigationBarSizePre
             Settings.NAVIGATION_BAR_GLASS_RIM
     };
 
-    private static final String[] NAV_BAR_TITLES = {
+    private static final String[] TITLES = {
             "morphe_music_navigation_bar_glass_size_height",
             "morphe_music_navigation_bar_glass_size_width",
             "morphe_music_navigation_bar_glass_size_button_spacing",
@@ -43,37 +40,21 @@ public class MusicGlassNavigationBarPreference extends GlassNavigationBarSizePre
             "morphe_music_navigation_bar_glass_rim_title"
     };
 
-    private static final IntegerSetting[] MINIPLAYER_SETTINGS = {
-            Settings.MINIPLAYER_GLASS_CORNER_RADIUS,
-            Settings.MINIPLAYER_GLASS_ARTWORK_PADDING,
-            Settings.MINIPLAYER_GLASS_RIM,
-            Settings.MINIPLAYER_GLASS_OPACITY
-    };
-
-    private static final String[] MINIPLAYER_TITLES = {
-            "morphe_music_miniplayer_glass_corner_radius_label",
-            "morphe_music_miniplayer_glass_artwork_padding_label",
-            "morphe_music_miniplayer_glass_rim_title",
-            "morphe_music_miniplayer_glass_opacity_title"
-    };
+    private static final int INDEX_OPACITY = 3;
+    private static final int INDEX_RIM = 4;
 
     public MusicGlassNavigationBarPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
-    protected boolean isMiniplayerMode() {
-        return MINIPLAYER_KEY.equals(getKey());
+    protected IntegerSetting[] getSettings() {
+        return SETTINGS;
     }
 
     @Override
-    protected IntegerSetting[] getSizeSettings() {
-        return isMiniplayerMode() ? MINIPLAYER_SETTINGS : NAV_BAR_SETTINGS;
-    }
-
-    @Override
-    protected String[] getSizeTitleKeys() {
-        return isMiniplayerMode() ? MINIPLAYER_TITLES : NAV_BAR_TITLES;
+    protected String[] getTitleKeys() {
+        return TITLES;
     }
 
     @Override
@@ -87,34 +68,28 @@ public class MusicGlassNavigationBarPreference extends GlassNavigationBarSizePre
     }
 
     @Override
-    protected int getPreviewTintColor() {
-        final boolean useAlbumTint = isMiniplayerMode()
-                ? Settings.MINIPLAYER_GLASS_ALBUM_TINT.get()
-                : Settings.NAVIGATION_BAR_GLASS_ALBUM_TINT.get();
-        if (useAlbumTint) {
-            int resolved = MusicGlassNavigationBar.getResolvedAlbumColor();
-            return resolved != 0 ? resolved : 0xFF7B3B5E;
-        }
-        return 0;
+    protected float getOpacityScale(int[] values) {
+        return values[INDEX_OPACITY] / 50f;
     }
 
     @Override
-    protected boolean isLightGlass() {
-        return isMiniplayerMode()
-                ? Settings.MINIPLAYER_GLASS_LIGHT.get()
-                : Settings.NAVIGATION_BAR_GLASS_LIGHT.get();
+    protected float getRimScale(int[] values) {
+        return values[INDEX_RIM] / 50f;
     }
 
     @Override
-    protected boolean isSecondaryElementHidden() {
-        return isMiniplayerMode()
-                ? Settings.MINIPLAYER_GLASS_HIDE_PROGRESS_BAR.get()
-                : Settings.NAVIGATION_BAR_GLASS_HIDE_INDICATOR.get();
+    protected boolean isLightTint() {
+        return Settings.NAVIGATION_BAR_GLASS_LIGHT.get();
     }
 
     @Override
-    protected boolean isCircularArtwork() {
-        return isMiniplayerMode() && Settings.MINIPLAYER_GLASS_SPINNING_ARTWORK.get();
+    protected int getTintColor() {
+        return Settings.NAVIGATION_BAR_GLASS_ALBUM_TINT.get() ? MusicGlassNavigationBar.getAlbumColor() : 0;
+    }
+
+    @Override
+    protected boolean isIndicatorShown() {
+        return !Settings.NAVIGATION_BAR_GLASS_HIDE_INDICATOR.get();
     }
 
     @Override

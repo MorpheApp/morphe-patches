@@ -43,12 +43,12 @@ public class YouTubeGlassNavigationBarPreference extends GlassNavigationBarSizeP
     }
 
     @Override
-    protected IntegerSetting[] getSizeSettings() {
+    protected IntegerSetting[] getSettings() {
         return SETTINGS;
     }
 
     @Override
-    protected String[] getSizeTitleKeys() {
+    protected String[] getTitleKeys() {
         return TITLES;
     }
 

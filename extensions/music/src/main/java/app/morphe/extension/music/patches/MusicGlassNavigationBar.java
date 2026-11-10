@@ -7,35 +7,21 @@
 
 package app.morphe.extension.music.patches;
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.Outline;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
-import android.graphics.RecordingCanvas;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.RenderEffect;
-import android.graphics.RenderNode;
-import android.graphics.Shader;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.AudioManager;
 import android.os.Build;
-import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewOutlineProvider;
 import android.view.ViewParent;
 import android.view.ViewTreeObserver;
 import android.view.WindowInsets;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,14 +37,16 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.glass.GlassBackdrop;
 import app.morphe.extension.shared.ui.glass.GlassCapsuleDrawable;
 import app.morphe.extension.shared.ui.glass.GlassNavigationBarLayout;
 
 /**
- * Draws the bottom navigation bar and floating miniplayer of YouTube Music as floating, rounded, translucent capsules,
+ * Draws the bottom navigation bar of YouTube Music as a floating, rounded, translucent capsule,
  * the same way as the glass navigation bar of YouTube ({@link GlassCapsuleDrawable}).
  * <p>
  * The navigation bar is a tab layout at the bottom of the screen. The miniplayer is laid out right
@@ -72,7 +60,7 @@ import app.morphe.extension.shared.ui.glass.GlassNavigationBarLayout;
  * down to the bottom of the screen, behind the bar, and the lists at the bottom of the page get room
  * below their last item, so it can still be scrolled above the bar. The player is laid out from the top
  * of the miniplayer to the bottom of the screen, so it is cut at the top of the bar, and the background
- * of the miniplayer ends there. The page behind the capsule is blurred on Android 12 and later, like the
+ * of the miniplayer ends there. The page behind the capsule is blurred on Android 14 and later, like the
  * blur of the YouTube navigation bar, and is covered by the background of the page before that.
  * The floating miniplayer of the app (9.39+) is used, with the same room on its sides as the capsule
  * and the page.
@@ -88,22 +76,75 @@ public final class MusicGlassNavigationBar {
     public static final int BUTTON_ICON = ResourceUtils.getIdentifier(ResourceType.ID, "icon");
     public static final int BUTTON_LABEL = ResourceUtils.getIdentifier(ResourceType.ID, "text1");
 
-    private static final int PLAYER_PAGE = ResourceUtils.getIdentifier(ResourceType.ID, "player_page");
-    private static final int MINI_PLAYER = ResourceUtils.getIdentifier(ResourceType.ID, "mini_player");
-
-    /**
-     * The gradient the app draws behind the floating miniplayer, across the whole width of the screen.
-     */
-    private static final int MINIPLAYER_SCRIM = ResourceUtils.getIdentifier(ResourceType.ID, "mini_player_scrim");
-
-    private static final boolean NAV_BAR_ENABLED = Settings.NAVIGATION_BAR_GLASS.get()
+    private static final boolean ENABLED = Settings.NAVIGATION_BAR_GLASS.get()
             && !Settings.HIDE_NAVIGATION_BAR.get()
             && PIVOT_BAR != 0;
 
-    private static final boolean MINIPLAYER_ENABLED = Settings.MINIPLAYER_GLASS.get()
-            && MINI_PLAYER != 0;
+    /**
+     * How opaque the glass is, from the opacity slider. At 50 the default alphas of the glass are kept,
+     * and every alpha is scaled by it: 0 is fully clear, 100 doubles them. The slider is at 20 by default,
+     * so the blurred page shows clearly through the glass.
+     * <p>
+     * The style and the size are read again when the app comes back from the settings, see {@link #readSettings()}.
+     */
+    private static float opacityScale;
 
-    private static final boolean ENABLED = NAV_BAR_ENABLED || MINIPLAYER_ENABLED;
+    /**
+     * How bright the rim is, from the slider: 50 keeps the default alphas, 0 draws no rim.
+     */
+    private static float rimScale;
+
+    /**
+     * How much the page behind the capsule is blurred, on Android 14 and later. 0 covers the page.
+     */
+    private static float blurRadius;
+
+    /**
+     * If the glass is tinted white, a lighter and clearer glass.
+     */
+    private static boolean lightTint;
+
+    /**
+     * If the glass is tinted with the color of the album art.
+     */
+    private static boolean albumTint;
+
+    /**
+     * If the selected button has a rounded indicator.
+     */
+    private static boolean indicatorShown;
+
+    /**
+     * Height of the capsule, in percent of the height of the buttons the app lays out,
+     * or of the height their content needs, if it needs more.
+     */
+    private static int heightPercent;
+
+    /**
+     * The most width of the capsule, in percent of the width of the bar.
+     */
+    private static int widthPercent;
+
+    /**
+     * Room between the content (icon and label) of two buttons.
+     */
+    private static int buttonSpacing;
+
+    static {
+        readSettings();
+    }
+
+    private static void readSettings() {
+        opacityScale = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_OPACITY) / 50f;
+        rimScale = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_RIM) / 50f;
+        blurRadius = Dim.dp(SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_BLUR));
+        lightTint = Settings.NAVIGATION_BAR_GLASS_LIGHT.get();
+        albumTint = Settings.NAVIGATION_BAR_GLASS_ALBUM_TINT.get();
+        indicatorShown = !Settings.NAVIGATION_BAR_GLASS_HIDE_INDICATOR.get();
+        heightPercent = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_HEIGHT);
+        widthPercent = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_WIDTH);
+        buttonSpacing = Dim.dp(SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_BUTTON_SPACING));
+    }
 
     /**
      * The least room between the bottom of the capsule and the bottom of the screen,
@@ -130,107 +171,29 @@ public final class MusicGlassNavigationBar {
     public static final int MARGIN_HORIZONTAL = Dim.dp(16);
 
     /**
-     * Minimum right padding inside the miniplayer so the right-most transport button (Next)
-     * never touches or overflows the curved right glass border.
-     */
-    private static final int MINIPLAYER_RIGHT_BUTTON_PADDING = Dim.dp(10);
-
-    private static final Rect EMPTY_CLIP_RECT = new Rect(0, 0, 0, 0);
-
-    /**
      * Buttons hidden because they do not fit in the width of the bar, shown again when they fit,
      * such as after a rotation.
      */
     private static final Set<View> hiddenButtons = Collections.newSetFromMap(new WeakHashMap<>());
 
     /**
-     * The navigation bar the glass was last applied to, and its drawable.
+     * The navigation bar the glass was last applied to.
      */
     private static WeakReference<View> currentPivotBar = new WeakReference<>(null);
-    private static WeakReference<GlassCapsuleDrawable> currentNavBarGlass = new WeakReference<>(null);
+    private static WeakReference<GlassCapsuleDrawable> currentGlass = new WeakReference<>(null);
 
     /**
-     * The miniplayer view the glass was last applied to, and its drawable.
+     * If the page is being recorded for a blurred backdrop. The page can hold the glass that is
+     * recording it, such as the glass miniplayer, which then draws no backdrop of its own.
      */
-    private static WeakReference<View> currentMiniplayer = new WeakReference<>(null);
-    private static WeakReference<GlassCapsuleDrawable> currentMiniplayerGlass = new WeakReference<>(null);
-    private static boolean miniplayerLookupPosted;
+    private static boolean recordingBackdrop;
 
-    private static WeakReference<ImageView> styledArtworkView = new WeakReference<>(null);
-
-    /** Original clipping and background states for artwork ancestor containers. */
-    private static final Map<ViewGroup, ArtworkAncestorState> artworkClipStates = new WeakHashMap<>();
-
-    /** Sibling views inside the compact artwork wrapper temporarily hidden while in miniplayer mode. */
-    private static final Map<View, Float> hiddenArtworkSiblings = new WeakHashMap<>();
-
-    /** Progress/time bar views modified while collapsed in the miniplayer. */
-    private static final Set<View> styledProgressBars = Collections.newSetFromMap(new WeakHashMap<>());
-
-    private static final class ArtworkAncestorState {
-        final boolean clipChildren;
-        final boolean clipToPadding;
-        final boolean clipToOutline;
-        final boolean willNotDraw;
-
-        ArtworkAncestorState(ViewGroup vg) {
-            this.clipChildren = vg.getClipChildren();
-            this.clipToPadding = vg.getClipToPadding();
-            this.clipToOutline = vg.getClipToOutline();
-            this.willNotDraw = vg.willNotDraw();
-        }
-
-        void restore(ViewGroup vg) {
-            vg.setClipChildren(clipChildren);
-            vg.setClipToPadding(clipToPadding);
-            vg.setClipToOutline(clipToOutline);
-            vg.setWillNotDraw(willNotDraw);
-            Drawable bg = vg.getBackground();
-            if (bg != null && !(bg instanceof GlassCapsuleDrawable)) {
-                bg.setAlpha(255);
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                Drawable fg = vg.getForeground();
-                if (fg != null) {
-                    fg.setAlpha(255);
-                }
-            }
-        }
-    }
-
-    private static int lastNavBarSettingsHash;
-    private static int lastMiniplayerSettingsHash;
+    private static final int PLAYER_PAGE = ResourceUtils.getIdentifier(ResourceType.ID, "player_page");
 
     /**
-     * Cached playback state for spinning vinyl artwork animation.
+     * The gradient the app draws behind the floating miniplayer, across the whole width of the screen.
      */
-    private static long lastAudioCheckTimeMs;
-    private static boolean cachedMusicPlaying;
-    private static long lastSpinFrameTimeMs;
-
-    /**
-     * Prevents nested RenderNode recording when both navigation bar and miniplayer glass are active.
-     */
-    private static boolean inBackdropDraw;
-
-    /**
-     * The colors of the blurred page are made more vivid and slightly brighter, which looks like frosted
-     * glass. A blur alone makes the colors dull and gray.
-     */
-    private static final ColorMatrix FROSTED_GLASS_COLORS = createFrostedGlassColors();
-
-    private static ColorMatrix createFrostedGlassColors() {
-        ColorMatrix colors = new ColorMatrix();
-        colors.setSaturation(1.5f);
-        final float brightness = 15;
-        colors.postConcat(new ColorMatrix(new float[]{
-                1, 0, 0, 0, brightness,
-                0, 1, 0, 0, brightness,
-                0, 0, 1, 0, brightness,
-                0, 0, 0, 1, 0
-        }));
-        return colors;
-    }
+    private static final int MINIPLAYER_SCRIM = ResourceUtils.getIdentifier(ResourceType.ID, "mini_player_scrim");
 
     /**
      * If the glass is drawn, so the page is laid out behind the bar.
@@ -277,133 +240,45 @@ public final class MusicGlassNavigationBar {
     private MusicGlassNavigationBar() {
     }
 
-    private static float getNavBarOpacityScale() {
-        return SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_OPACITY) / 50f;
-    }
-
-    private static float getNavBarBlurRadiusPx() {
-        return Dim.dp(SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_BLUR));
-    }
-
-    private static float getNavBarRimScale() {
-        return SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_RIM) / 50f;
-    }
-
-    private static boolean isNavBarLightTint() {
-        return Settings.NAVIGATION_BAR_GLASS_LIGHT.get();
-    }
-
-    private static int getHeightPercent() {
-        return SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_HEIGHT);
-    }
-
-    private static int getWidthPercent() {
-        return SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_WIDTH);
-    }
-
-    private static int getButtonSpacing() {
-        return Dim.dp(SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_BUTTON_SPACING));
-    }
-
-    private static float getMiniplayerOpacityScale() {
-        return SeekBarPreference.clampToRange(Settings.MINIPLAYER_GLASS_OPACITY) / 50f;
-    }
-
-    private static float getMiniplayerBlurRadiusPx() {
-        return Dim.dp(SeekBarPreference.clampToRange(Settings.MINIPLAYER_GLASS_BLUR));
-    }
-
-    private static float getMiniplayerRimScale() {
-        return SeekBarPreference.clampToRange(Settings.MINIPLAYER_GLASS_RIM) / 50f;
-    }
-
-    private static boolean isMiniplayerLightTint() {
-        return Settings.MINIPLAYER_GLASS_LIGHT.get();
-    }
-
-    private static int getMiniplayerCornerRadiusPx() {
-        return Dim.dp(SeekBarPreference.clampToRange(Settings.MINIPLAYER_GLASS_CORNER_RADIUS));
-    }
-
-    private static int getMiniplayerArtworkPaddingPx() {
-        return Dim.dp(SeekBarPreference.clampToRange(Settings.MINIPLAYER_GLASS_ARTWORK_PADDING));
-    }
-
-    /**
-     * Returns the dominant album art color captured by {@link ChangeMiniplayerColorPatch}.
-     */
-    public static int getResolvedAlbumColor() {
-        Integer hookColor = ChangeMiniplayerColorPatch.getLastMiniplayerColor();
-        return hookColor != null ? hookColor : 0;
-    }
-
-    private static int computeNavBarSettingsHash() {
-        return Objects.hash(
-                Settings.NAVIGATION_BAR_GLASS_OPACITY.get(),
-                Settings.NAVIGATION_BAR_GLASS_BLUR.get(),
-                Settings.NAVIGATION_BAR_GLASS_RIM.get(),
-                Settings.NAVIGATION_BAR_GLASS_LIGHT.get(),
-                Settings.NAVIGATION_BAR_GLASS_ALBUM_TINT.get(),
-                Settings.NAVIGATION_BAR_GLASS_HIDE_INDICATOR.get(),
-                Settings.NAVIGATION_BAR_GLASS_HEIGHT.get(),
-                Settings.NAVIGATION_BAR_GLASS_WIDTH.get(),
-                Settings.NAVIGATION_BAR_GLASS_BUTTON_SPACING.get(),
-                getResolvedAlbumColor()
-        );
-    }
-
-    private static int computeMiniplayerSettingsHash() {
-        return Objects.hash(
-                Settings.MINIPLAYER_GLASS_OPACITY.get(),
-                Settings.MINIPLAYER_GLASS_BLUR.get(),
-                Settings.MINIPLAYER_GLASS_RIM.get(),
-                Settings.MINIPLAYER_GLASS_LIGHT.get(),
-                Settings.MINIPLAYER_GLASS_ALBUM_TINT.get(),
-                Settings.MINIPLAYER_GLASS_SPINNING_ARTWORK.get(),
-                Settings.MINIPLAYER_GLASS_HIDE_PROGRESS_BAR.get(),
-                Settings.MINIPLAYER_GLASS_CORNER_RADIUS.get(),
-                Settings.MINIPLAYER_GLASS_ARTWORK_PADDING.get(),
-                getResolvedAlbumColor()
-        );
-    }
-
     /**
      * Injection point.
      * <p>
      * The floating miniplayer of the app, a rounded card with room on its sides and below it,
-     * is used with the glass navigation bar and glass miniplayer.
+     * is used with the glass navigation bar and the glass miniplayer.
      */
     public static boolean useFloatingMiniplayer(boolean original) {
-        return ENABLED || original;
+        return ENABLED || MusicGlassMiniplayer.ENABLED || original;
     }
 
     /**
-     * Called when the dominant color of the current song's album art changes or the miniplayer is dismissed.
+     * @return If the glass navigation bar is drawn, and the page is laid out behind it.
      */
-    public static void onMiniplayerColorChanged() {
-        if (!ENABLED) return;
+    static boolean isGlassActive() {
+        return glassActive;
+    }
 
-
-        View miniplayer = currentMiniplayer.get();
-        GlassCapsuleDrawable miniGlass = currentMiniplayerGlass.get();
-        if (miniplayer != null && miniGlass != null) {
-            miniplayer.post(() -> {
-                miniGlass.updateStyle(getMiniplayerOpacityScale(), isMiniplayerLightTint());
-                miniGlass.invalidateStyle();
-                miniplayer.invalidate();
-            });
-        }
-
-        View pivotBar = currentPivotBar.get();
-        GlassCapsuleDrawable navGlass = currentNavBarGlass.get();
-        if (pivotBar != null && navGlass != null) {
-            pivotBar.post(() -> {
-                navGlass.updateStyle(getNavBarOpacityScale(), isNavBarLightTint());
-                navGlass.invalidateStyle();
-                pivotBar.invalidate();
-            });
+    /**
+     * Called when the color of the album art changes, or the player is closed.
+     */
+    public static void onAlbumColorChanged() {
+        GlassCapsuleDrawable glass = currentGlass.get();
+        if (glass != null) {
+            Utils.runOnMainThread(() -> glass.setTintColor(getTintColor()));
         }
     }
+
+    private static int getTintColor() {
+        return albumTint ? getAlbumColor() : 0;
+    }
+
+    /**
+     * @return The color of the album art of the song that plays, or 0 if none.
+     */
+    public static int getAlbumColor() {
+        Integer color = ChangeMiniplayerColorPatch.getLastMiniplayerColor();
+        return color == null ? 0 : color;
+    }
+
 
     /**
      * Injection point.
@@ -413,18 +288,16 @@ public final class MusicGlassNavigationBar {
      * @param tabView The view of the button.
      */
     public static void navigationTabCreated(View tabView) {
-        if (!ENABLED) return;
+        if (!ENABLED && !MusicGlassMiniplayer.ENABLED) return;
 
         try {
             if (tabView.getParent() instanceof ViewGroup tabs
                     && tabs.getParent() instanceof ViewGroup pivotBar
                     && pivotBar.getId() == PIVOT_BAR) {
-                if (NAV_BAR_ENABLED) {
+                if (ENABLED) {
                     apply(pivotBar);
                 }
-                if (MINIPLAYER_ENABLED) {
-                    scheduleMiniplayerLookup(pivotBar);
-                }
+                MusicGlassMiniplayer.findMiniplayer(pivotBar);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "navigationTabCreated failure", ex);
@@ -441,50 +314,61 @@ public final class MusicGlassNavigationBar {
      * @return The height of the view, down to the bottom of the screen if the glass is drawn.
      */
     public static int getContentHeight(View content, int height) {
-        if (!ENABLED) return height;
+        if (!ENABLED && !MusicGlassMiniplayer.ENABLED) return height;
 
         try {
             if (currentContent.get() != content) {
                 currentContent = new WeakReference<>(content);
-                if (NAV_BAR_ENABLED) {
-                    watchContent(content);
-                }
+                if (ENABLED) watchContent(content);
             }
-            if (MINIPLAYER_ENABLED) {
-                scheduleMiniplayerLookup(content);
-            }
-            if (!NAV_BAR_ENABLED || !glassActive || isKeyboardShown(content)) return height;
-            final int room = getContentRoom();
-            if (room > 0) return height + room;
+            // The glass miniplayer only blurs the page, which is not laid out behind it.
+            if (!ENABLED) return height;
+
+            final int room = getContentRoom(content);
+            // The keyboard covers the bottom of the page, and the app ends the page above it.
+            if (room <= 0 || isKeyboardShown(content)) return height;
+            return height + room;
         } catch (Exception ex) {
             Logger.printException(() -> "getContentHeight failure", ex);
+            return height;
         }
-        return height;
     }
 
     /**
-     * @return The height of the navigation bar, which the page is extended by to reach the bottom of the screen.
+     * @return How much of the page is behind the bar.
      */
     private static int getContentRoom() {
-        View pivotBar = currentPivotBar.get();
-        if (pivotBar == null || pivotBar.getVisibility() != View.VISIBLE) return 0;
-        return pivotBar.getHeight();
+        return getContentRoom(currentContent.get());
     }
 
-    @SuppressWarnings("deprecation")
-    private static boolean isKeyboardShown(View view) {
-        WindowInsets insets = view.getRootWindowInsets();
-        if (insets == null) return false;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            return insets.isVisible(WindowInsets.Type.ime());
+    /**
+     * The page is laid out down to the bottom of the screen from the first time it is laid out, also before
+     * the glass is drawn, so its height does not change afterward. Some pages only read their height once,
+     * such as Samples for the size of the video.
+     *
+     * @return How much of the page is behind the bar, the height of the bar if it is shown.
+     */
+    private static int getContentRoom(@Nullable View content) {
+        View pivotBar = currentPivotBar.get();
+        if (pivotBar == null && content != null && PIVOT_BAR != 0) {
+            pivotBar = content.getRootView().findViewById(PIVOT_BAR);
         }
-        return insets.getSystemWindowInsetBottom() > view.getRootView().getHeight() / 4;
+        if (pivotBar == null || pivotBar.getVisibility() != View.VISIBLE) return 0;
+        return pivotBar.getMeasuredHeight();
+    }
+
+    private static boolean isKeyboardShown(View view) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return false;
+        WindowInsets insets = view.getRootWindowInsets();
+        return insets != null && insets.isVisible(WindowInsets.Type.ime());
     }
 
     private static void setGlassActive(boolean active) {
         if (glassActive == active) return;
         glassActive = active;
-        Logger.printDebug(() -> "Glass navigation bar active: " + active);
+        Logger.printDebug(() -> "Glass navigation bar page behind the bar: " + active);
+
+        // The page is laid out again with or without the room behind the bar.
         View content = currentContent.get();
         if (content != null) {
             content.post(content::requestLayout);
@@ -538,12 +422,17 @@ public final class MusicGlassNavigationBar {
 
     private static void updateListPadding(ViewGroup content, View view, int room, int depth) {
         if (view.getVisibility() == View.GONE) return;
+
         final int id = view.getId();
         if (id != View.NO_ID && id == FLOATING_ACTION_BUTTON) {
+            // The floating button at the bottom of the page, such as New in the library,
+            // is laid out above the miniplayer with its bottom margin.
             setBottomRoom(view, room, true, true);
             return;
         }
         if (id != View.NO_ID && id == OVERLAY_ELEMENTS_CONTAINER) {
+            // The title and the buttons at the bottom of a video of Samples. Their layer shades the video
+            // and ends below them, so the shade is continued below them, behind the bar.
             setBottomRoom(view, room, true, false);
             final int shadeHeight = bottomRoom.containsKey(view) ? view.getPaddingBottom()
                     - Objects.requireNonNull(bottomRoom.get(view))[0] : 0;
@@ -554,15 +443,21 @@ public final class MusicGlassNavigationBar {
             }
             return;
         }
+
         if (view != content && isList(view)) {
+            // Only the lists that end at the bottom of the page and draw into their padding,
+            // as the app makes them for the room of the miniplayer.
             final boolean atBottom = getBottomIn(view, content) >= content.getHeight() - Dim.dp2
                     && view.getHeight() > content.getHeight() / 3;
             final ViewGroup list = (ViewGroup) view;
+            // A list of items as tall as the page, such as the videos of Samples, pages through them.
+            // Its items are looked into instead, as the room is left inside each item.
             View first = list.getChildCount() > 0 ? list.getChildAt(0) : null;
             final boolean pager = first != null && first.getHeight() >= view.getHeight() * 9 / 10;
             setBottomRoom(view, room, atBottom && !pager && !list.getClipToPadding(), false);
             if (!pager || depth >= MAX_LIST_DEPTH) return;
         }
+
         if (depth >= MAX_LIST_DEPTH || !(view instanceof ViewGroup group)) return;
         for (int i = 0, count = group.getChildCount(); i < count; i++) {
             updateListPadding(content, group.getChildAt(i), room, depth + 1);
@@ -574,7 +469,6 @@ public final class MusicGlassNavigationBar {
      * of a video of Samples draws over the video.
      */
     private static final class BottomShadeDrawable extends Drawable {
-
         private static final int SHADE_COLOR = 0x66000000;
 
         private final Paint paint = new Paint();
@@ -615,6 +509,10 @@ public final class MusicGlassNavigationBar {
 
     /**
      * Adds the room behind the bar to the bottom padding or the bottom margin of a view, or takes it away.
+     * The padding or the margin the app gave the view is kept, also if the app sets it again.
+     *
+     * @param applies If the view gets the room.
+     * @param margin  If the room is added to the bottom margin instead of the bottom padding.
      */
     private static void setBottomRoom(View view, int room, boolean applies, boolean margin) {
         ViewGroup.MarginLayoutParams params = null;
@@ -623,14 +521,17 @@ public final class MusicGlassNavigationBar {
             params = marginParams;
         }
         final int current = margin ? params.bottomMargin : view.getPaddingBottom();
+
         int[] state = bottomRoom.get(view);
         if (state == null) {
             if (!applies || room <= 0) return;
             state = new int[]{current, current};
             bottomRoom.put(view, state);
         } else if (current != state[1]) {
+            // The app set the padding or the margin again.
             state[0] = current;
         }
+
         final int target = state[0] + (applies ? room : 0);
         state[1] = target;
         if (current == target) return;
@@ -642,6 +543,9 @@ public final class MusicGlassNavigationBar {
         }
     }
 
+    /**
+     * @return The bottom of the view in the coordinates of the ancestor.
+     */
     private static int getBottomIn(View view, View ancestor) {
         int top = 0;
         View current = view;
@@ -666,40 +570,25 @@ public final class MusicGlassNavigationBar {
             if (playerPage == null) return;
             currentPlayerPage = new WeakReference<>(playerPage);
         }
+
         int[] location = new int[2];
         pivotBar.getLocationInWindow(location);
         final int barTop = location[1];
         playerPage.getLocationInWindow(location);
-        int bottom = barTop - location[1];
-        if (MINIPLAYER_ENABLED) {
-            View miniplayer = currentMiniplayer.get();
-            if (miniplayer != null && miniplayer.getVisibility() == View.VISIBLE
-                    && miniplayer.getAlpha() > 0.9f && isMiniplayerAtBottom(miniplayer)) {
-                bottom = Math.min(bottom, miniplayer.getBottom());
-            }
-        }
+        // The glass miniplayer is a card with room below it, where the page shows as well.
+        final int bottom = Math.min(barTop - location[1], MusicGlassMiniplayer.getCollapsedBottom(playerPage));
+
         if (bottom >= playerPage.getHeight() || pivotBar.getVisibility() != View.VISIBLE) {
             if (playerPage.getClipBounds() != null) playerPage.setClipBounds(null);
             return;
         }
+
         final int clipBottom = Math.max(0, bottom);
         Rect current = playerPage.getClipBounds();
         if (current == null || current.bottom != clipBottom || current.right != playerPage.getWidth()) {
             playerClip.set(0, 0, playerPage.getWidth(), clipBottom);
             playerPage.setClipBounds(playerClip);
         }
-    }
-
-    /**
-     * @return True when the miniplayer is in its collapsed bottom bar position, false when pinned
-     *         at the top of the expanded player (e.g. while Lyrics or Comments sheets are open).
-     */
-    private static boolean isMiniplayerAtBottom(View miniplayer) {
-        View rootView = miniplayer.getRootView();
-        if (rootView == null || rootView.getHeight() <= 0) return true;
-        int[] loc = new int[2];
-        miniplayer.getLocationInWindow(loc);
-        return loc[1] > rootView.getHeight() / 2;
     }
 
     /**
@@ -718,21 +607,25 @@ public final class MusicGlassNavigationBar {
      * The floating miniplayer is a card with room around it, so the gradient the app draws behind it,
      * across the whole width of the screen, is hidden.
      */
-    private static void hideMiniplayerScrim(View anchor) {
+    private static void hideMiniplayerScrim(View pivotBar) {
         if (MINIPLAYER_SCRIM == 0) return;
-        View rootView = anchor.getRootView();
-        if (rootView == null) return;
-        View scrim = rootView.findViewById(MINIPLAYER_SCRIM);
+        View scrim = pivotBar.getRootView().findViewById(MINIPLAYER_SCRIM);
         if (scrim != null && scrim.getVisibility() == View.VISIBLE) {
             scrim.setVisibility(View.INVISIBLE);
         }
     }
 
+    /**
+     * @return The parent of the buttons, or null if the bar has none.
+     */
     @Nullable
     private static ViewGroup getTabs(ViewGroup pivotBar) {
         return pivotBar.getChildCount() > 0 && pivotBar.getChildAt(0) instanceof ViewGroup tabs ? tabs : null;
     }
 
+    /**
+     * @return The selected button, or null if none is selected.
+     */
     @Nullable
     private static View getSelectedTab(@Nullable ViewGroup tabs) {
         if (tabs == null) return null;
@@ -743,6 +636,9 @@ public final class MusicGlassNavigationBar {
         return null;
     }
 
+    /**
+     * @return If the bar holds buttons, unlike the empty bar the app shows on some pages, such as the onboarding.
+     */
     private static boolean hasButtons(@Nullable ViewGroup tabs) {
         if (tabs == null || tabs.getVisibility() != View.VISIBLE) return false;
         for (int i = 0, count = tabs.getChildCount(); i < count; i++) {
@@ -752,6 +648,9 @@ public final class MusicGlassNavigationBar {
         return false;
     }
 
+    /**
+     * @return The room for the system navigation buttons or the gesture handle at the bottom of the screen.
+     */
     @SuppressWarnings("deprecation")
     private static int getSystemBottomRoom(View view) {
         WindowInsets insets = view.getRootWindowInsets();
@@ -762,6 +661,10 @@ public final class MusicGlassNavigationBar {
         return insets.getSystemWindowInsetBottom();
     }
 
+    /**
+     * @return The room between the bottom of the bar and the bottom of the window,
+     *         without the translation the app animates the bar with.
+     */
     private static int getRoomBelow(View pivotBar) {
         int[] location = new int[2];
         pivotBar.getLocationInWindow(location);
@@ -774,56 +677,62 @@ public final class MusicGlassNavigationBar {
         currentPivotBar = new WeakReference<>(pivotBar);
 
         CapsuleHost capsuleHost = new CapsuleHost(pivotBar);
-        GlassCapsuleDrawable glass = new GlassCapsuleDrawable(pivotBar, capsuleHost, getNavBarOpacityScale(), isNavBarLightTint());
-        currentNavBarGlass = new WeakReference<>(glass);
+        GlassCapsuleDrawable glass = new GlassCapsuleDrawable(pivotBar, capsuleHost, opacityScale, lightTint, rimScale);
+        glass.setTintColor(getTintColor());
+        currentGlass = new WeakReference<>(glass);
+
+        // The background and the padding the app gave the navigation bar and its buttons,
+        // put back if the bar holds no buttons or is not a horizontal bar at the bottom.
         Drawable[] appBackground = {pivotBar.getBackground()};
         int[] appBarPadding = {pivotBar.getPaddingTop(), pivotBar.getPaddingBottom()};
         int[] appTabsPadding = {-1, -1};
         boolean[] logged = {false, false};
         int[] skippedFrames = {0};
         View[] lastSelected = {null};
+        // The position of the bar and of the player in the last frame.
         float[] lastPositions = {Float.NaN, Float.NaN};
 
+        // The page behind the capsule is blurred, so the glass is drawn again when the page scrolls.
         pivotBar.getViewTreeObserver().addOnScrollChangedListener(() -> {
             if (glassActive && currentPivotBar.get() == pivotBar && pivotBar.getBackground() == glass) {
                 pivotBar.invalidate();
             }
         });
 
+        // The settings may have changed while the app was in the background or showed the settings.
         pivotBar.getViewTreeObserver().addOnWindowFocusChangeListener(hasFocus -> {
-            if (hasFocus && currentPivotBar.get() == pivotBar) {
-                capsuleHost.lastBlurRadius = -1f;
-                glass.updateStyle(getNavBarOpacityScale(), isNavBarLightTint());
-                glass.invalidateStyle();
-                pivotBar.requestLayout();
-                pivotBar.invalidate();
-            }
+            if (!hasFocus || currentPivotBar.get() != pivotBar) return;
+            readSettings();
+            glass.setStyle(opacityScale, lightTint, rimScale);
+            glass.setTintColor(getTintColor());
+            pivotBar.requestLayout();
         });
 
+        // The app hands the navigation bar its own background again, such as when the miniplayer
+        // color changes, so the glass is put back whenever that happens.
         pivotBar.getViewTreeObserver().addOnPreDrawListener(() -> {
             boolean layoutChanged = false;
             try {
                 if (currentPivotBar.get() != pivotBar) return true;
+
                 Drawable background = pivotBar.getBackground();
                 ViewGroup tabs = getTabs(pivotBar);
                 if (GlassNavigationBarLayout.isHorizontalBottomBar(pivotBar) && hasButtons(tabs)) {
                     if (background != glass) {
                         appBackground[0] = background;
                         pivotBar.setBackground(glass);
+                        // Set after the bar let go of its old background.
+                        glass.setAppBackground(background);
                         if (!logged[0]) {
                             logged[0] = true;
-                            Logger.printDebug(() -> "Glass navigation bar applied, height: " + pivotBar.getHeight());
+                            Logger.printDebug(() -> "Glass navigation bar applied, height: " + pivotBar.getHeight()
+                                    + " padding: " + pivotBar.getPaddingTop() + "/" + pivotBar.getPaddingBottom()
+                                    + " buttons height: " + tabs.getHeight()
+                                    + " room below: " + getRoomBelow(pivotBar)
+                                    + " system room: " + getSystemBottomRoom(pivotBar));
                         }
                     }
-                    glass.updateStyle(getNavBarOpacityScale(), isNavBarLightTint());
-
-                    final int navHash = computeNavBarSettingsHash();
-                    if (navHash != lastNavBarSettingsHash) {
-                        lastNavBarSettingsHash = navHash;
-                        capsuleHost.lastBlurRadius = -1f;
-                        glass.invalidateStyle();
-                        pivotBar.invalidate();
-                    }
+                    glass.updateStyle();
                     setGlassActive(true);
 
                     View selected = getSelectedTab(tabs);
@@ -842,21 +751,25 @@ public final class MusicGlassNavigationBar {
                         }
                     }
 
-                    if (laidOutButton != null) {
-                        final int count = buttons.views.size();
-                        final int[] layout = GlassNavigationBarLayout.getButtonsLayout(
-                                pivotBar.getWidth(), count, buttons.contentWidth, buttons.minWidth,
-                                getWidthPercent(), getButtonSpacing(), MARGIN_HORIZONTAL);
+                    if (buttons.isValid() && laidOutButton != null) {
+                        // The width of the buttons comes from their content, and the buttons that do not fit
+                        // in the width of the bar are hidden from the end, but never the selected one.
+                        final int[] layout = GlassNavigationBarLayout.getButtonsLayout(pivotBar.getWidth(),
+                                buttons.views.size(), buttons.contentWidth, buttons.minWidth, widthPercent, buttonSpacing,
+                                MARGIN_HORIZONTAL);
                         final int shown = layout[0];
-                        if (!logged[1]) {
-                            logged[1] = true;
-                            Logger.printDebug(() -> "Glass navigation bar buttons: " + shown + "/" + count
-                                    + " button width: " + layout[1]);
-                        }
                         if (GlassNavigationBarLayout.fitButtons(buttons.views, shown, selected, hiddenButtons)) {
                             layoutChanged = true;
                         }
+                        if (buttons.views.size() > shown && !logged[1]) {
+                            logged[1] = true;
+                            Logger.printDebug(() -> "Glass navigation bar buttons shown: " + shown
+                                    + " of " + buttons.views.size());
+                        }
 
+                        // The buttons share the width between the padding of their parent, so the capsule
+                        // is as wide as the buttons, and the indicator of the first and the last button
+                        // has the same room from the ends of the capsule as from its top and bottom.
                         final int horizontalPadding = Math.max(MARGIN_HORIZONTAL,
                                 (pivotBar.getWidth() - shown * layout[1]) / 2);
                         if (tabs.getPaddingLeft() != horizontalPadding || tabs.getPaddingRight() != horizontalPadding) {
@@ -871,16 +784,20 @@ public final class MusicGlassNavigationBar {
                             layoutChanged = true;
                         }
 
+                        // The content is in the middle of the capsule, with some room above the capsule,
+                        // below the miniplayer, and the capsule floats above the bottom of the screen.
+                        // The height of the bar follows from its padding.
                         final int buttonsHeight = tabs.getHeight();
                         final int contentHeight = buttons.contentHeight();
                         final int contentTop = laidOutButton.getTop() + buttons.contentTop;
                         final int capsuleHeight = GlassNavigationBarLayout.getCapsuleHeight(
-                                buttonsHeight, contentHeight, getHeightPercent());
+                                buttonsHeight, contentHeight, heightPercent);
                         final int capsuleTopInButtons = contentTop - (capsuleHeight - contentHeight) / 2;
                         final int paddingTop = Math.max(0, TOP_ROOM - capsuleTopInButtons);
                         final int capsuleTop = paddingTop + capsuleTopInButtons;
                         final int capsuleBottom = capsuleTop + capsuleHeight;
 
+                        // The room needed between the bottom of the capsule and the bottom of the screen.
                         final int neededRoom = Math.max(FLOATING_ROOM,
                                 getSystemBottomRoom(pivotBar) - MAX_SYSTEM_ROOM_OVERLAP);
                         final int roomBelowButtons = paddingTop + buttonsHeight - capsuleBottom;
@@ -891,6 +808,9 @@ public final class MusicGlassNavigationBar {
                                 tabs.getRight() - horizontalPadding, capsuleBottom);
 
                         if (pivotBar.getPaddingTop() != paddingTop || pivotBar.getPaddingBottom() != paddingBottom) {
+                            Logger.printDebug(() -> "Glass navigation bar padding: " + paddingTop + "/" + paddingBottom
+                                    + " capsule height: " + capsuleHeight + " buttons height: " + buttonsHeight
+                                    + " room below bar: " + roomBelowBar);
                             pivotBar.setPadding(pivotBar.getPaddingLeft(), paddingTop,
                                     pivotBar.getPaddingRight(), paddingBottom);
                             layoutChanged = true;
@@ -905,6 +825,8 @@ public final class MusicGlassNavigationBar {
                     clipPlayer(pivotBar);
                     hideMiniplayerScrim(pivotBar);
 
+                    // The blurred page is drawn again while the bar or the player moves, such as when the
+                    // player is opened or closed, or the glass keeps the blurred player behind it.
                     View playerPage = currentPlayerPage.get();
                     final float barPosition = pivotBar.getTranslationY();
                     final float playerPosition = playerPage == null ? 0 : playerPage.getTop() + playerPage.getTranslationY();
@@ -930,6 +852,9 @@ public final class MusicGlassNavigationBar {
             } catch (Exception ex) {
                 Logger.printException(() -> "Glass navigation bar pre draw failure", ex);
             }
+
+            // The frame is drawn again after the new layout, instead of once with the old one.
+            // Only a few frames in a row are skipped, so the bar can never stop drawing.
             if (layoutChanged && skippedFrames[0] < 2) {
                 skippedFrames[0]++;
                 return false;
@@ -940,580 +865,11 @@ public final class MusicGlassNavigationBar {
     }
 
     /**
-     * Schedules a single lookup on the UI thread to attach the glass drawable to the miniplayer view
-     * once the layout has finished inflating.
-     */
-    private static void scheduleMiniplayerLookup(View anchor) {
-        View existing = currentMiniplayer.get();
-        if (existing != null && existing.isAttachedToWindow()) return;
-        if (miniplayerLookupPosted) return;
-        miniplayerLookupPosted = true;
-        anchor.post(() -> {
-            miniplayerLookupPosted = false;
-            try {
-                View rootView = anchor.getRootView();
-                if (rootView == null) return;
-                View miniplayer = rootView.findViewById(MINI_PLAYER);
-                if (miniplayer != null) {
-                    applyMiniplayer(miniplayer);
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "scheduleMiniplayerLookup failure", ex);
-            }
-        });
-    }
-
-    /**
-     * Resets any custom scale, translation, rotation, and outline clipping applied to the miniplayer
-     * artwork view and its ancestors when the player expands to full screen.
-     */
-    private static void resetStyledArtworkView() {
-        ImageView prev = styledArtworkView.get();
-        styledArtworkView = new WeakReference<>(null);
-        lastSpinFrameTimeMs = 0L;
-
-        if (prev != null) {
-            if (prev.getScaleX() != 1f || prev.getScaleY() != 1f) {
-                prev.setScaleX(1f);
-                prev.setScaleY(1f);
-            }
-            if (prev.getTranslationX() != 0f) {
-                prev.setTranslationX(0f);
-            }
-            if (prev.getTranslationY() != 0f) {
-                prev.setTranslationY(0f);
-            }
-            if (prev.getRotation() != 0f) {
-                prev.setRotation(0f);
-            }
-            if (prev.getOutlineProvider() instanceof ArtworkOutlineProvider) {
-                prev.setClipToOutline(false);
-            }
-            if (prev.getBackground() != null) {
-                prev.getBackground().setAlpha(255);
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && prev.getForeground() != null) {
-                prev.getForeground().setAlpha(255);
-            }
-        }
-        restoreArtworkClipping();
-        restoreProgressBars();
-    }
-
-    private static void restoreArtworkClipping() {
-        for (Map.Entry<ViewGroup, ArtworkAncestorState> entry : artworkClipStates.entrySet()) {
-            ViewGroup group = entry.getKey();
-            ArtworkAncestorState state = entry.getValue();
-            if (group != null && state != null) {
-                state.restore(group);
-            }
-        }
-        artworkClipStates.clear();
-
-        for (Map.Entry<View, Float> entry : hiddenArtworkSiblings.entrySet()) {
-            View sibling = entry.getKey();
-            Float alpha = entry.getValue();
-            if (sibling != null && alpha != null) {
-                sibling.setAlpha(alpha);
-            }
-        }
-        hiddenArtworkSiblings.clear();
-    }
-
-    private static void restoreProgressBars() {
-        for (View bar : styledProgressBars) {
-            if (bar != null) {
-                if (bar.getAlpha() != 1f) {
-                    bar.setAlpha(1f);
-                }
-                if (bar.getClipBounds() != null) {
-                    bar.setClipBounds(null);
-                }
-            }
-        }
-        styledProgressBars.clear();
-    }
-
-    /**
-     * Checks whether {@code candidate} is currently positioned in the left artwork slot of {@code miniplayer}.
-     */
-    private static boolean isViewInMiniplayerArtworkSlot(View miniplayer, int[] miniLoc, ImageView candidate) {
-        if (!candidate.isShown() || candidate.getWidth() <= 0 || candidate.getHeight() <= 0) return false;
-        final int miniW = miniplayer.getWidth();
-        final int miniH = miniplayer.getHeight();
-        if (miniW <= 0 || miniH <= 0) return false;
-
-        View stopRoot = currentPlayerPage.get();
-        if (stopRoot == null) stopRoot = miniplayer.getRootView();
-
-        float parentScaleX = 1f;
-        float parentScaleY = 1f;
-        for (ViewParent p = candidate.getParent(); p instanceof View v && v != stopRoot; p = v.getParent()) {
-            parentScaleX *= v.getScaleX();
-            parentScaleY *= v.getScaleY();
-        }
-
-        final float baseVisualW = candidate.getWidth() * parentScaleX;
-        final float baseVisualH = candidate.getHeight() * parentScaleY;
-        if (baseVisualW < Dim.dp(20) || baseVisualH < Dim.dp(20) || baseVisualH > miniH + Dim.dp(24)) {
-            return false;
-        }
-
-        int[] artLoc = new int[2];
-        candidate.getLocationInWindow(artLoc);
-        final float currentVisualW = baseVisualW * candidate.getScaleX();
-        final float currentVisualH = baseVisualH * candidate.getScaleY();
-        final float centerX = artLoc[0] + currentVisualW / 2f;
-        final float centerY = artLoc[1] + currentVisualH / 2f;
-
-        return centerX >= miniLoc[0] - Dim.dp(12)
-                && centerX < miniLoc[0] + miniW * 0.45f
-                && centerY >= miniLoc[1] - Dim.dp(16)
-                && centerY <= miniLoc[1] + miniH + Dim.dp(16);
-    }
-
-    /**
-     * Locates the album artwork {@link ImageView} associated with the miniplayer, checking inside
-     * {@code miniplayer} first and falling back to {@code player_page}.
-     */
-    @Nullable
-    private static ImageView findActiveMiniplayerArtworkView(View miniplayer, int[] miniLoc) {
-        ImageView inMini = searchArtworkViewInTree(miniplayer, miniLoc, miniplayer, 0);
-        if (inMini != null) return inMini;
-
-        View playerPage = currentPlayerPage.get();
-        if (playerPage != null && playerPage != miniplayer) {
-            return searchArtworkViewInTree(miniplayer, miniLoc, playerPage, 0);
-        }
-        return null;
-    }
-
-    @Nullable
-    private static ImageView searchArtworkViewInTree(View miniplayer, int[] miniLoc, View current, int depth) {
-        if (depth > 8 || current.getVisibility() != View.VISIBLE) return null;
-        if (current instanceof ImageView imageView) {
-            return isViewInMiniplayerArtworkSlot(miniplayer, miniLoc, imageView) ? imageView : null;
-        }
-        if (current instanceof ViewGroup group) {
-            for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                ImageView found = searchArtworkViewInTree(miniplayer, miniLoc, group.getChildAt(i), depth + 1);
-                if (found != null) return found;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Checks whether audio playback is currently active, throttled to every 250ms.
-     */
-    private static boolean isMusicPlaying(Context context) {
-        final long now = SystemClock.uptimeMillis();
-        if (now - lastAudioCheckTimeMs > 250L) {
-            lastAudioCheckTimeMs = now;
-            try {
-                AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-                cachedMusicPlaying = am != null && am.isMusicActive();
-            } catch (Exception ignored) {
-                cachedMusicPlaying = false;
-            }
-        }
-        return cachedMusicPlaying;
-    }
-
-    /**
-     * Updates the miniplayer's album artwork (fitting it inside the glass capsule with configurable
-     * padding, concentric rounded or circular vinyl corners, spinning animation when playing, and
-     * dominant color extraction) and configures right-side transport button padding.
-     */
-    private static void styleMiniplayerChildren(View miniplayer, int horizontalInset) {
-        final int[] miniLoc = new int[2];
-        miniplayer.getLocationInWindow(miniLoc);
-        final int miniW = miniplayer.getWidth();
-        final int miniH = miniplayer.getHeight();
-        if (miniW <= 0 || miniH <= 0) return;
-
-        // Shift right-side transport buttons slightly inward so the Next button never touches or
-        // overflows the curved right border of the glass capsule.
-        final float buttonShiftX = -(horizontalInset + Dim.dp(8));
-        if (miniplayer instanceof ViewGroup rootGroup) {
-            for (int i = 0, count = rootGroup.getChildCount(); i < count; i++) {
-                View child = rootGroup.getChildAt(i);
-                if (child instanceof ViewGroup && child.getBackground() != null
-                        && !(child.getBackground() instanceof GlassCapsuleDrawable)) {
-                    child.getBackground().mutate().setAlpha(0);
-                }
-                if (child instanceof ImageView && child.isClickable() && child.getLeft() > miniW / 2) {
-                    if (Math.abs(child.getTranslationX() - buttonShiftX) > 0.5f) {
-                        child.setTranslationX(buttonShiftX);
-                    }
-                }
-            }
-        }
-
-        if (miniplayer.getAlpha() < 0.75f) {
-            resetStyledArtworkView();
-            return;
-        }
-
-        ImageView artworkView = findActiveMiniplayerArtworkView(miniplayer, miniLoc);
-        if (artworkView == null) {
-            resetStyledArtworkView();
-            return;
-        }
-
-        ImageView prevStyled = styledArtworkView.get();
-        if (prevStyled != null && prevStyled != artworkView) {
-            resetStyledArtworkView();
-        }
-        styledArtworkView = new WeakReference<>(artworkView);
-
-        // Clear any background/foreground on the artwork view itself so dark corners never show behind the outline.
-        if (artworkView.getBackground() != null) {
-            artworkView.getBackground().mutate().setAlpha(0);
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && artworkView.getForeground() != null) {
-            artworkView.getForeground().mutate().setAlpha(0);
-        }
-
-        final int artW = artworkView.getWidth();
-        final int artH = artworkView.getHeight();
-        if (artW <= 0 || artH <= 0) return;
-
-        View playerPage = currentPlayerPage.get();
-        View stopRoot = playerPage != null ? playerPage : miniplayer.getRootView();
-        float parentScaleX = 1f;
-        float parentScaleY = 1f;
-        for (ViewParent p = artworkView.getParent(); p instanceof View v && v != stopRoot; p = v.getParent()) {
-            parentScaleX *= v.getScaleX();
-            parentScaleY *= v.getScaleY();
-        }
-
-        // Disable outline/child clipping and clear opaque black backdrops on all ancestor containers
-        // between artworkView and miniplayer/playerPage so the translated or spinning artwork is
-        // never sliced by a parent rounded-square outline or backed by a black box.
-        View childOnArtworkPath = artworkView;
-        float runningScaleX = parentScaleX;
-        for (ViewParent p = artworkView.getParent(); p instanceof ViewGroup vg; p = vg.getParent()) {
-            if (vg == miniplayer || vg == playerPage || vg == stopRoot) break;
-
-            artworkClipStates.computeIfAbsent(vg, ArtworkAncestorState::new);
-            vg.setClipChildren(false);
-            vg.setClipToPadding(false);
-            vg.setClipToOutline(false);
-
-            Drawable bg = vg.getBackground();
-            if (bg != null && !(bg instanceof GlassCapsuleDrawable)) {
-                bg.mutate().setAlpha(0);
-            }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && vg.getForeground() != null) {
-                vg.getForeground().mutate().setAlpha(0);
-            }
-
-            final float vgVisualW = vg.getWidth() * runningScaleX;
-            if (vgVisualW > 0 && vgVisualW < miniW * 0.55f) {
-                vg.setWillNotDraw(true);
-                for (int i = 0, count = vg.getChildCount(); i < count; i++) {
-                    View sibling = vg.getChildAt(i);
-                    if (sibling != childOnArtworkPath && sibling.getVisibility() == View.VISIBLE) {
-                        hiddenArtworkSiblings.putIfAbsent(sibling, sibling.getAlpha());
-                        sibling.setAlpha(0f);
-                    }
-                }
-            }
-            if (vg.getScaleX() != 0f) {
-                runningScaleX /= vg.getScaleX();
-            }
-            childOnArtworkPath = vg;
-        }
-
-        final float baseVisualH = artH * parentScaleY;
-        final int paddingPx = getMiniplayerArtworkPaddingPx();
-        final int targetVisualH = Math.max(Dim.dp(24), miniH - 2 * paddingPx);
-        final float desiredScale = Math.min(1f, targetVisualH / Math.max(1f, baseVisualH));
-
-        // Center pivot explicitly before scaling and rotating.
-        artworkView.setPivotX(artW / 2f);
-        artworkView.setPivotY(artH / 2f);
-        if (Math.abs(artworkView.getScaleX() - desiredScale) > 0.005f) {
-            artworkView.setScaleX(desiredScale);
-            artworkView.setScaleY(desiredScale);
-        }
-
-        int[] artLoc = new int[2];
-        artworkView.getLocationInWindow(artLoc);
-        final float untranslatedVisualLeft = artLoc[0] - artworkView.getTranslationX() * parentScaleX;
-
-        // Inset artwork accounting for both user padding and capsule corner curve.
-        final int cornerSafeInset = Math.max(paddingPx, Math.round(getMiniplayerCornerRadiusPx() * 0.35f));
-        final float desiredVisualLeft = miniLoc[0] + horizontalInset + cornerSafeInset;
-        final float neededTranslationX = Math.max(0f,
-                (desiredVisualLeft - untranslatedVisualLeft) / Math.max(0.05f, parentScaleX));
-        if (Math.abs(artworkView.getTranslationX() - neededTranslationX) > 0.5f) {
-            artworkView.setTranslationX(neededTranslationX);
-        }
-
-        final boolean spinning = Settings.MINIPLAYER_GLASS_SPINNING_ARTWORK.get();
-        final float totalScale = Math.max(0.05f, parentScaleY * desiredScale);
-        final float autoArtworkRadiusPx = Math.max(Dim.dp(6), getMiniplayerCornerRadiusPx() - paddingPx);
-        final float localRadius = spinning
-                ? Math.min(artW, artH) / 2f
-                : Math.min(Math.min(artW, artH) / 2f, autoArtworkRadiusPx / totalScale);
-
-        if (!(artworkView.getOutlineProvider() instanceof ArtworkOutlineProvider provider)
-                || Math.abs(provider.radius - localRadius) > 0.5f
-                || !artworkView.getClipToOutline()) {
-            artworkView.setOutlineProvider(new ArtworkOutlineProvider(localRadius));
-            artworkView.setClipToOutline(true);
-            artworkView.invalidateOutline();
-        }
-
-        updateArtworkRotation(artworkView, miniplayer);
-    }
-
-    private static void updateArtworkRotation(@Nullable ImageView artworkView, View miniplayer) {
-        if (artworkView == null) return;
-        if (Settings.MINIPLAYER_GLASS_SPINNING_ARTWORK.get()) {
-            final long now = SystemClock.uptimeMillis();
-            if (isMusicPlaying(miniplayer.getContext())) {
-                final long dt = lastSpinFrameTimeMs == 0L ? 16L : Math.min(50L, now - lastSpinFrameTimeMs);
-                lastSpinFrameTimeMs = now;
-                artworkView.setRotation((artworkView.getRotation() + dt * 0.036f) % 360f);
-                miniplayer.postInvalidateOnAnimation();
-            } else {
-                lastSpinFrameTimeMs = 0L;
-            }
-        } else if (artworkView.getRotation() != 0f) {
-            lastSpinFrameTimeMs = 0L;
-            artworkView.setRotation(0f);
-        }
-    }
-
-    private static final class ArtworkOutlineProvider extends ViewOutlineProvider {
-        final float radius;
-
-        ArtworkOutlineProvider(float radius) {
-            this.radius = radius;
-        }
-
-        @Override
-        public void getOutline(View view, Outline outline) {
-            final int w = view.getWidth();
-            final int h = view.getHeight();
-            if (w <= 0 || h <= 0) return;
-            final int size = Math.min(w, h);
-            final int left = (w - size) / 2;
-            final int top = (h - size) / 2;
-            final float effectiveRadius = Math.min(radius, size / 2f);
-            outline.setRoundRect(left, top, left + size, top + size, effectiveRadius);
-        }
-    }
-
-    /**
-     * Hides or clips any {@link ProgressBar} or custom time bar attached to the bottom of the
-     * miniplayer so it never bleeds past the rounded glass capsule corners or stays visible when hidden.
-     */
-    private static void styleProgressBars(View view, View miniplayer, int[] miniLoc, int horizontalInsetPx, int depth) {
-        if (depth > 6 || view == null) return;
-        final int miniW = miniplayer.getWidth();
-        final int miniH = miniplayer.getHeight();
-        if (miniW <= 0 || miniH <= 0) return;
-
-        final String simpleName = view.getClass().getSimpleName();
-        final boolean isNamedProgress = view instanceof ProgressBar
-                || simpleName.contains("TimeBar")
-                || simpleName.contains("ProgressBar");
-        final boolean isLeafBottomBar = !(view instanceof ViewGroup)
-                && !(view instanceof ImageView)
-                && !(view instanceof TextView)
-                && view.getHeight() > 0 && view.getHeight() <= Dim.dp(28)
-                && view.getWidth() >= miniW / 2;
-
-        if (isNamedProgress || isLeafBottomBar) {
-            int[] loc = new int[2];
-            view.getLocationInWindow(loc);
-            final int viewBottom = loc[1] + view.getHeight();
-            final int miniBottom = miniLoc[1] + miniH;
-            final boolean attachedToMini = view.getParent() == miniplayer
-                    || (viewBottom >= miniBottom - Dim.dp(20) && loc[1] <= miniBottom + Dim.dp(12));
-            if (attachedToMini) {
-                styledProgressBars.add(view);
-                final boolean hide = Settings.MINIPLAYER_GLASS_HIDE_PROGRESS_BAR.get()
-                        && miniplayer.getVisibility() == View.VISIBLE
-                        && miniplayer.getAlpha() > 0.5f;
-                if (hide) {
-                    view.setAlpha(0f);
-                    view.setClipBounds(EMPTY_CLIP_RECT);
-                } else {
-                    view.setAlpha(1f);
-                    final int clipLeft = Math.min(horizontalInsetPx, view.getWidth() / 2);
-                    final int clipRight = Math.max(clipLeft, view.getWidth() - horizontalInsetPx);
-                    Rect currentClip = view.getClipBounds();
-                    if (currentClip == null
-                            || currentClip.left != clipLeft
-                            || currentClip.right != clipRight
-                            || currentClip.bottom != view.getHeight()) {
-                        view.setClipBounds(new Rect(clipLeft, 0, clipRight, view.getHeight()));
-                    }
-                }
-                return;
-            }
-        }
-        if (view instanceof ViewGroup group) {
-            for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                styleProgressBars(group.getChildAt(i), miniplayer, miniLoc, horizontalInsetPx, depth + 1);
-            }
-        }
-    }
-
-    private static void applyMiniplayer(View miniplayer) {
-        if (miniplayer == currentMiniplayer.get()) return;
-        resetStyledArtworkView();
-        currentMiniplayer = new WeakReference<>(miniplayer);
-
-        MiniplayerHost host = new MiniplayerHost(miniplayer);
-        GlassCapsuleDrawable glass = new GlassCapsuleDrawable(
-                miniplayer, host, getMiniplayerOpacityScale(), isMiniplayerLightTint());
-        currentMiniplayerGlass = new WeakReference<>(glass);
-        miniplayer.setBackground(glass);
-        hideMiniplayerScrim(miniplayer);
-
-        float[] lastPlayerPosition = {Float.NaN};
-        int[] lastStyleGeometry = {-1, -1, -1, -1, -1};
-        int[] lastContainerMode = {-1};
-        int[] miniLoc = new int[2];
-
-        miniplayer.getViewTreeObserver().addOnScrollChangedListener(() -> {
-            if (currentMiniplayer.get() == miniplayer
-                    && miniplayer.getVisibility() == View.VISIBLE
-                    && miniplayer.getBackground() == glass) {
-                miniplayer.invalidate();
-            }
-        });
-
-        miniplayer.getViewTreeObserver().addOnWindowFocusChangeListener(hasFocus -> {
-            if (hasFocus && currentMiniplayer.get() == miniplayer) {
-                host.lastBlurRadius = -1f;
-                glass.updateStyle(getMiniplayerOpacityScale(), isMiniplayerLightTint());
-                glass.invalidateStyle();
-                miniplayer.requestLayout();
-                miniplayer.invalidate();
-            }
-        });
-
-        miniplayer.getViewTreeObserver().addOnPreDrawListener(() -> {
-            try {
-                if (currentMiniplayer.get() != miniplayer) return true;
-                final boolean visible = miniplayer.getVisibility() == View.VISIBLE && miniplayer.getAlpha() > 0.01f;
-                final boolean atBottom = isMiniplayerAtBottom(miniplayer);
-                final int collapsedParentAlpha = (visible && atBottom)
-                        ? Math.round((1f - Math.min(1f, miniplayer.getAlpha())) * 255f)
-                        : 255;
-
-                // When the miniplayer is collapsed at the bottom, fade out the solid player container
-                // background so the browse page behind it shows around the rounded capsule corners.
-                // As soon as the player starts expanding or is in full-screen mode, restore alpha to 255
-                // so the full-screen song/lyrics/queue interface is always completely opaque.
-                for (ViewParent p = miniplayer.getParent(); p instanceof View parent; p = parent.getParent()) {
-                    final boolean isPlayerPage = parent.getId() == PLAYER_PAGE;
-                    Drawable parentBg = parent.getBackground();
-                    if (parentBg != null && parentBg != glass) {
-                        parentBg.mutate().setAlpha(collapsedParentAlpha);
-                    }
-                    if (isPlayerPage) {
-                        currentPlayerPage = new WeakReference<>(parent);
-                        if (!NAV_BAR_ENABLED) {
-                            if (visible && atBottom && miniplayer.getAlpha() > 0.9f) {
-                                final int clipBottom = miniplayer.getBottom();
-                                Rect current = parent.getClipBounds();
-                                if (current == null || current.bottom != clipBottom || current.right != parent.getWidth()) {
-                                    playerClip.set(0, 0, parent.getWidth(), clipBottom);
-                                    parent.setClipBounds(playerClip);
-                                }
-                            } else if (parent.getClipBounds() != null) {
-                                parent.setClipBounds(null);
-                            }
-                        }
-                        break;
-                    }
-                }
-
-                final int containerMode = atBottom ? 1 : 0;
-                if (!visible || lastContainerMode[0] != containerMode) {
-                    resetStyledArtworkView();
-                    lastContainerMode[0] = containerMode;
-                    if (!visible) {
-                        lastStyleGeometry[0] = -1;
-                        return true;
-                    }
-                }
-                if (miniplayer.getBackground() != glass) {
-                    miniplayer.setBackground(glass);
-                }
-
-                final int miniHash = computeMiniplayerSettingsHash();
-                if (miniHash != lastMiniplayerSettingsHash) {
-                    lastMiniplayerSettingsHash = miniHash;
-                    host.lastBlurRadius = -1f;
-                    glass.updateStyle(getMiniplayerOpacityScale(), isMiniplayerLightTint());
-                    glass.invalidateStyle();
-                    miniplayer.invalidate();
-                }
-
-                final int horizontalInset = host.getHorizontalInset();
-                miniplayer.getLocationInWindow(miniLoc);
-                final int progressInsetPx = horizontalInset + getMiniplayerCornerRadiusPx();
-                styleProgressBars(miniplayer, miniplayer, miniLoc, progressInsetPx, 0);
-                View playerPage = currentPlayerPage.get();
-                if (playerPage != null && playerPage != miniplayer) {
-                    styleProgressBars(playerPage, miniplayer, miniLoc, progressInsetPx, 0);
-                }
-
-                ImageView artworkView = styledArtworkView.get();
-                final boolean artworkNeedsLookup = artworkView == null || !artworkView.isShown()
-                        || artworkView.getWidth() <= 0 || artworkView.getHeight() <= 0;
-                final boolean geometryChanged = lastStyleGeometry[0] != miniplayer.getWidth()
-                        || lastStyleGeometry[1] != miniplayer.getHeight()
-                        || lastStyleGeometry[2] != horizontalInset
-                        || lastStyleGeometry[3] != miniHash
-                        || lastStyleGeometry[4] != containerMode;
-                if (geometryChanged || artworkNeedsLookup) {
-                    lastStyleGeometry[0] = miniplayer.getWidth();
-                    lastStyleGeometry[1] = miniplayer.getHeight();
-                    lastStyleGeometry[2] = horizontalInset;
-                    lastStyleGeometry[3] = miniHash;
-                    lastStyleGeometry[4] = containerMode;
-                    styleMiniplayerChildren(miniplayer, horizontalInset);
-                    artworkView = styledArtworkView.get();
-                }
-                updateArtworkRotation(artworkView, miniplayer);
-                hideMiniplayerScrim(miniplayer);
-
-                final float playerPosition = playerPage == null
-                        ? miniplayer.getTranslationY()
-                        : playerPage.getTop() + playerPage.getTranslationY();
-                if (playerPosition != lastPlayerPosition[0]) {
-                    lastPlayerPosition[0] = playerPosition;
-                    miniplayer.invalidate();
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "Glass miniplayer pre draw failure", ex);
-            }
-            return true;
-        });
-    }
-
-    /**
-     * Host for the bottom navigation bar capsule.
+     * Where the capsule is drawn in the navigation bar, set when the bar is laid out.
      */
     private static final class CapsuleHost implements GlassCapsuleDrawable.Host {
-
         private final ViewGroup pivotBar;
         private final Rect capsule = new Rect();
-        @Nullable
-        private Object blurNode;
-        private float lastBlurRadius = -1f;
-        private final int[] barLocation = new int[2];
-        private final int[] sourceLocation = new int[2];
 
         CapsuleHost(ViewGroup pivotBar) {
             this.pivotBar = pivotBar;
@@ -1535,137 +891,57 @@ public final class MusicGlassNavigationBar {
         @Nullable
         @Override
         public View getSelectedTabView() {
-            if (Settings.NAVIGATION_BAR_GLASS_HIDE_INDICATOR.get()) {
-                return null;
-            }
-            return getSelectedTab(getTabs(pivotBar));
+            return indicatorShown ? getSelectedTab(getTabs(pivotBar)) : null;
         }
 
-        @Override
-        public float getRimScale() {
-            return getNavBarRimScale();
-        }
-
-        @Override
-        public int getCustomTintColor() {
-            if (Settings.NAVIGATION_BAR_GLASS_ALBUM_TINT.get()) {
-                return getResolvedAlbumColor();
-            }
-            return 0;
-        }
+        @Nullable
+        private GlassBackdrop backdrop;
 
         @Override
         public void drawBackdrop(Canvas canvas) {
-            View content = currentContent.get();
-            if (!glassActive || content == null
-                    || !(content.getParent() instanceof View source) || source.getWidth() <= 0) return;
-            blurNode = drawBlurredBackdrop(canvas, pivotBar, source, getNavBarBlurRadiusPx(),
-                    blurNode, lastBlurRadius, barLocation, sourceLocation, "GlassNavigationBar");
-            lastBlurRadius = getNavBarBlurRadiusPx();
+            if (glassActive) {
+                backdrop = drawPageBehind(canvas, pivotBar, blurRadius, backdrop, "GlassNavigationBar");
+            }
         }
     }
 
     /**
-     * Host for the floating glass miniplayer capsule.
+     * Draws the page behind a glass view blurred ({@link GlassBackdrop}), on Android 14 and later with hardware
+     * acceleration. Like the blur of the YouTube navigation bar, it is left out on Android 12 and 13, where a blur
+     * render effect redrawn while the player moves can crash the app. Without the blur, the page is covered by
+     * its background, or the sharp page would show through the clear glass.
+     *
+     * @param backdrop The backdrop this returned for the last frame, or null.
+     * @return The backdrop to pass for the next frame.
      */
-    private static final class MiniplayerHost implements GlassCapsuleDrawable.Host {
-        private final View miniplayer;
-        @Nullable
-        private Object blurNode;
-        private float lastBlurRadius = -1f;
-        private final int[] miniplayerLocation = new int[2];
-        private final int[] contentLocation = new int[2];
-
-        MiniplayerHost(View miniplayer) {
-            this.miniplayer = miniplayer;
-        }
-
-        int getHorizontalInset() {
-            View rootView = miniplayer.getRootView();
-            final boolean fullWidth = rootView != null
-                    && rootView.getWidth() - miniplayer.getWidth() < MARGIN_HORIZONTAL;
-            return fullWidth ? MARGIN_HORIZONTAL : 0;
-        }
-
-        @Override
-        public void getCapsule(Rect bounds, RectF out) {
-            final int horizontalInset = getHorizontalInset();
-            out.set(bounds.left + horizontalInset, bounds.top,
-                    bounds.right - horizontalInset, bounds.bottom);
-        }
-
-        @Nullable
-        @Override
-        public View getSelectedTabView() {
-            return null;
-        }
-
-        @Override
-        public float getCornerRadius(RectF capsule) {
-            return Math.min(getMiniplayerCornerRadiusPx(), capsule.height() / 2f);
-        }
-
-        @Override
-        public float getRimScale() {
-            return getMiniplayerRimScale();
-        }
-
-        @Override
-        public int getCustomTintColor() {
-            return Settings.MINIPLAYER_GLASS_ALBUM_TINT.get() ? getResolvedAlbumColor() : 0;
-        }
-
-        @Override
-        public void drawBackdrop(Canvas canvas) {
-            if (!isMiniplayerAtBottom(miniplayer)) return;
-            View content = currentContent.get();
-            if (content == null || content.getWidth() <= 0 || content.getHeight() <= 0) return;
-            blurNode = drawBlurredBackdrop(canvas, miniplayer, content, getMiniplayerBlurRadiusPx(),
-                    blurNode, lastBlurRadius, miniplayerLocation, contentLocation, "GlassMiniplayer");
-            lastBlurRadius = getMiniplayerBlurRadiusPx();
-        }
-    }
-
     @Nullable
-    private static Object drawBlurredBackdrop(
-            Canvas canvas, View target, View source, float blurRadius,
-            @Nullable Object existingNode, float lastRadius,
-            int[] targetLoc, int[] sourceLoc, String nodeName) {
-        if (inBackdropDraw || blurRadius <= 0f
-                || Build.VERSION.SDK_INT < Build.VERSION_CODES.S
-                || !canvas.isHardwareAccelerated()) {
-            return existingNode;
-        }
-        final int width = target.getWidth();
-        final int height = target.getHeight();
-        if (width <= 0 || height <= 0) return existingNode;
+    static GlassBackdrop drawPageBehind(Canvas canvas, View target, float blurRadius,
+                                        @Nullable GlassBackdrop backdrop, String name) {
+        View content = currentContent.get();
+        if (recordingBackdrop || content == null
+                || !(content.getParent() instanceof View source) || source.getWidth() <= 0) return backdrop;
 
+        // The page has no background of its own, the layout it is in has. The blurred page is drawn
+        // over that background, or the blurred text would be mostly clear and the sharp text would show.
         final int background = getPageBackgroundColor(source);
-        try {
-            RenderNode node = existingNode instanceof RenderNode r ? r : new RenderNode(nodeName);
-            if (blurRadius != lastRadius) {
-                node.setRenderEffect(RenderEffect.createChainEffect(
-                        RenderEffect.createColorFilterEffect(new ColorMatrixColorFilter(FROSTED_GLASS_COLORS)),
-                        RenderEffect.createBlurEffect(blurRadius, blurRadius, Shader.TileMode.CLAMP)));
-            }
-            target.getLocationInWindow(targetLoc);
-            source.getLocationInWindow(sourceLoc);
-            node.setPosition(0, 0, width, height);
-            RecordingCanvas recording = node.beginRecording(width, height);
-            inBackdropDraw = true;
-            try {
-                recording.drawColor(background);
-                recording.translate(sourceLoc[0] - targetLoc[0], sourceLoc[1] - targetLoc[1]);
-                source.draw(recording);
-            } finally {
-                inBackdropDraw = false;
-                node.endRecording();
-            }
-            canvas.drawRenderNode(node);
-            return node;
-        } catch (Throwable t) {
-            Logger.printException(() -> nodeName + " backdrop draw failure", t);
-            return existingNode;
+
+        if (blurRadius <= 0 || Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+                || !canvas.isHardwareAccelerated()) {
+            canvas.drawColor(background);
+            return backdrop;
         }
+
+        if (backdrop == null) {
+            backdrop = new GlassBackdrop(name, blurRadius);
+        } else {
+            backdrop.setBlurRadius(blurRadius);
+        }
+        recordingBackdrop = true;
+        try {
+            backdrop.draw(canvas, target, source, background);
+        } finally {
+            recordingBackdrop = false;
+        }
+        return backdrop;
     }
 }
