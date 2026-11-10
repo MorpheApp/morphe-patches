@@ -18,6 +18,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.registersUsed
@@ -105,6 +106,28 @@ val hideAdsPatch = patch(
                     move-result v0
                     if-eqz v0, :show_video_ads
                     return-void
+                    :show_video_ads
+                    nop
+                """
+            )
+        }
+
+        // The player defers the start of playback until the player bytes ad slot is
+        // scheduled. The hooks above stop the slot from ever being scheduled, so the
+        // deferral is never released and the video never starts. Skip the deferral.
+        // Older targets such as 20.26 do not defer playback and lack this method.
+        PlayerBytesAdSchedulingFingerprint.methodOrNull?.apply {
+            val freeRegister = findFreeRegister(0)
+
+            addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->hideVideoAds()Z
+                    move-result v$freeRegister
+                    if-eqz v$freeRegister, :show_video_ads
+                    invoke-static { }, Lj$/util/Optional;->empty()Lj$/util/Optional;
+                    move-result-object v$freeRegister
+                    return-object v$freeRegister
                     :show_video_ads
                     nop
                 """
