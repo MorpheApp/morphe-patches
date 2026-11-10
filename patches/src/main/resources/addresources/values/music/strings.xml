@@ -943,4 +943,10 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disable bold icons</string>
     <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Restore Player Up next, Lyrics, and Related tabs</string>
+
+    <!-- downloads.deviceFilesSource -->
+    <string name="morphe_music_sideloaded_source_title">Device files source</string>
+    <string name="morphe_music_sideloaded_source_entry_both">Both (Blended)</string>
+    <string name="morphe_music_sideloaded_source_entry_device_only">Only device files</string>
+    <string name="morphe_music_sideloaded_source_entry_downloads_only">Only downloaded files</string>
 </resources>

@@ -34,6 +34,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import app.morphe.extension.music.patches.DownloadsPatch;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
@@ -148,7 +149,27 @@ public final class VirtualMediaProvider {
             return virtualCursor;
         }
 
-        // Dual Device Files Architecture: Attempt to query real device files as well
+        DeviceFilesSource source = Settings.SIDELOADED_SOURCE.get();
+
+        // 1. DEVICE_ONLY mode: only query real MediaStore
+        if (source == DeviceFilesSource.DEVICE_ONLY) {
+            virtualCursor.close();
+            try {
+                return resolver.query(uri, projection, selection, selectionArgs, sortOrder);
+            } catch (Exception ex) {
+                Logger.printException(() -> "VirtualMediaProvider: Real MediaStore query failed in DEVICE_ONLY mode", ex);
+                return buildVirtualCursor(projection, -1L);
+            }
+        }
+
+        // 2. DOWNLOADS_ONLY mode: return virtual downloads only
+        if (source == DeviceFilesSource.DOWNLOADS_ONLY) {
+            Logger.printDebug(() -> "VirtualMediaProvider: Serving " + virtualCursor.getCount()
+                    + " virtual downloads only (DOWNLOADS_ONLY mode)");
+            return virtualCursor;
+        }
+
+        // 3. BOTH mode (Dual Device Files Architecture): Attempt to query real device files as well
         Cursor realCursor = null;
         try {
             realCursor = resolver.query(uri, projection, selection, selectionArgs, sortOrder);
@@ -340,6 +361,23 @@ public final class VirtualMediaProvider {
     }
 
     /**
+     * Intercepts ContentResolver.getType calls for MIME type resolution (ExoPlayer media sniff & Glide).
+     */
+    @Nullable
+    public static String getType(ContentResolver resolver, Uri uri) {
+        if (uri == null) return null;
+
+        File targetFile = resolveVirtualFile(uri);
+        if (targetFile != null && targetFile.isFile()) {
+            String mime = getMimeType(targetFile.getName());
+            Logger.printDebug(() -> "VirtualMediaProvider: Serving virtual MIME type " + mime + " for: " + uri);
+            return mime;
+        }
+
+        return resolver.getType(uri);
+    }
+
+    /**
      * Intercepts ContentResolver.openInputStream calls for Glide artwork loading.
      */
     @Nullable
@@ -374,7 +412,7 @@ public final class VirtualMediaProvider {
         if (targetFile != null && targetFile.isFile()) {
             Logger.printDebug(() -> "VirtualMediaProvider: Serving virtual typed AFD for: " + uri);
             ParcelFileDescriptor pfd = ParcelFileDescriptor.open(targetFile, ParcelFileDescriptor.MODE_READ_ONLY);
-            return new AssetFileDescriptor(pfd, 0, targetFile.length());
+            return new AssetFileDescriptor(pfd, 0, AssetFileDescriptor.UNKNOWN_LENGTH);
         }
 
         return resolver.openTypedAssetFileDescriptor(uri, mimeTypeFilter, opts);
@@ -411,7 +449,7 @@ public final class VirtualMediaProvider {
         if (targetFile != null && targetFile.isFile()) {
             Logger.printDebug(() -> "VirtualMediaProvider: Serving virtual AFD for: " + uri);
             ParcelFileDescriptor pfd = ParcelFileDescriptor.open(targetFile, ParcelFileDescriptor.MODE_READ_ONLY);
-            return new AssetFileDescriptor(pfd, 0, targetFile.length());
+            return new AssetFileDescriptor(pfd, 0, AssetFileDescriptor.UNKNOWN_LENGTH);
         }
 
         return resolver.openAssetFileDescriptor(uri, mode);
@@ -600,6 +638,12 @@ public final class VirtualMediaProvider {
         if (name.endsWith(".m4a")) return "audio/mp4";
         if (name.endsWith(".webm") || name.endsWith(".opus")) return "audio/webm";
         if (name.endsWith(".mp3")) return "audio/mpeg";
+        if (name.endsWith(".flac")) return "audio/flac";
+        if (name.endsWith(".wav")) return "audio/wav";
+        if (name.endsWith(".ogg")) return "audio/ogg";
+        if (name.endsWith(".jpg") || name.endsWith(".jpeg")) return "image/jpeg";
+        if (name.endsWith(".png")) return "image/png";
+        if (name.endsWith(".webp")) return "image/webp";
         return "audio/*";
     }
 }

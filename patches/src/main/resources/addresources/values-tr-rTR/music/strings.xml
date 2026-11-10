@@ -888,4 +888,10 @@ Her iki sınır için de geçerlidir. 1,75 değerinde, dört tam genişlikteki k
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Kalın simgeleri devre dışı bırak</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Çalardaki Sıradaki, Şarkı Sözleri ve İlgili sekmelerini geri yükle</string>
+
+  <!-- downloads.deviceFilesSource -->
+  <string name="morphe_music_sideloaded_source_title">Cihaz dosyaları kaynağı</string>
+  <string name="morphe_music_sideloaded_source_entry_both">İkisi birlikte</string>
+  <string name="morphe_music_sideloaded_source_entry_device_only">Sadece cihazdaki dosyalar</string>
+  <string name="morphe_music_sideloaded_source_entry_downloads_only">Sadece indirilen dosyalar</string>
 </resources>

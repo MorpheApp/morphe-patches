@@ -15,6 +15,7 @@ import app.morphe.extension.music.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.music.patches.CrossfadePatch.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadePatch.FadeCurve;
 import app.morphe.extension.music.patches.PlaylistTrackTapPatch.TapAction;
+import app.morphe.extension.music.patches.downloads.DeviceFilesSource;
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.patches.lyrics.derive.ProcessingProviders;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
@@ -111,6 +112,7 @@ public class Settings extends SharedYouTubeSettings {
     // Downloads
     public static final StringSetting DOWNLOADS_SORT = new StringSetting("morphe_music_downloads_sort", "ARTIST", false, false);
     public static final BooleanSetting DOWNLOADS_MARK = new BooleanSetting("morphe_music_downloads_mark", TRUE, DOWNLOAD_MODE.availability(DownloadMode.IN_APP));
+    public static final EnumSetting<DeviceFilesSource> SIDELOADED_SOURCE = new EnumSetting<>("morphe_music_sideloaded_source", DeviceFilesSource.BOTH, true);
 
     // Action buttons
     public static final BooleanSetting HIDE_ACTION_BAR = new BooleanSetting("morphe_music_hide_action_bar", FALSE, true);

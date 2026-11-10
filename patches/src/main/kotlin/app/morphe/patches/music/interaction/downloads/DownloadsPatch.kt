@@ -67,6 +67,7 @@ private val downloadsResourcePatch = patch {
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     ListPreference("morphe_download_mode"),
+                    ListPreference("morphe_music_sideloaded_source"),
                     SwitchPreference("morphe_music_downloads_mark", summary = true),
                     SwitchPreference("morphe_external_downloader_menu", summary = true),
                     TextPreference(
@@ -306,6 +307,12 @@ val downloadsPatch = patch(
         replaceContentResolverCall(
             "openAssetFileDescriptor(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/content/res/AssetFileDescriptor;",
             "openAssetFileDescriptor(Landroid/content/ContentResolver;Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/content/res/AssetFileDescriptor;"
+        )
+
+        // Virtualize ContentResolver getType for MIME type resolution (ExoPlayer media sniff & Glide)
+        replaceContentResolverCall(
+            "getType(Landroid/net/Uri;)Ljava/lang/String;",
+            "getType(Landroid/content/ContentResolver;Landroid/net/Uri;)Ljava/lang/String;"
         )
 
         // Virtualize ContentResolver openInputStream for Glide artwork loading
