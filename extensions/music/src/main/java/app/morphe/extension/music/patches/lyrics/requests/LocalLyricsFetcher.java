@@ -813,13 +813,9 @@ public final class LocalLyricsFetcher {
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(raw);
         if (!result.lines.isEmpty()) {
-            boolean synced = false;
-            for (LyricsLine line : result.lines) {
-                if (line.hasWords()) {
-                    synced = true;
-                    break;
-                }
-            }
+            // LRC line timestamps synchronize whole lines; word-level
+            // (karaoke) timestamps are not required for synchronized lyrics.
+            final boolean synced = !result.lines.isEmpty();
             return new Lyrics(result.lines, "Local", synced, null, null, null,
                     null, result.creditLines.isEmpty() ? null : result.creditLines,
                     raw, "lrc", null, null, null);
