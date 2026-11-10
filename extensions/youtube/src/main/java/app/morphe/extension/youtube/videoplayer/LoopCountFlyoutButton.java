@@ -15,7 +15,6 @@ import static app.morphe.extension.youtube.patches.LoopCountPatch.MIN_LOOP_COUNT
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
@@ -83,19 +82,18 @@ public class LoopCountFlyoutButton {
             final int loopCount = LoopCountPatch.getLoopCount(playlistId, videoId);
 
             LoopCountStepper stepper = new LoopCountStepper(context, playlistId, videoId, loopCount);
-            final boolean enabled = stepper.isEnabled();
             shownStepperRef = new WeakReference<>(stepper);
 
             return FlyoutUtils.addFlyoutButton(
                     flyoutPanel,
-                    getDrawable(context, Utils.appIsUsingBoldIcons()
+                    ResourceUtils.getDrawable(Utils.appIsUsingBoldIcons()
                             ? "yt_outline_experimental_hashtag_vd_theme_24"
                             : "yt_outline_hashtag_black_24"),
                     str("morphe_loop_count_flyout_name"),
                     v -> stepper.showInputDialog(),
                     nextButtonIndex,
                     stepper.view,
-                    enabled
+                    stepper.enabled
             );
         } catch (Exception ex) {
             Logger.printException(() -> "addFlyoutButton failure", ex);
@@ -107,8 +105,9 @@ public class LoopCountFlyoutButton {
      * Called when the app turns its loop video on or off, which can happen while the menu is open.
      */
     public static void onLoopVideoChanged() {
-        if (isShown()) {
-            shownStepperRef.get().updateEnabled();
+        LoopCountStepper stepper = getShownStepper();
+        if (stepper != null) {
+            stepper.updateEnabled();
         }
     }
 
@@ -119,8 +118,8 @@ public class LoopCountFlyoutButton {
      */
     public static void onPlayerStatusChanged() {
         try {
-            LoopCountStepper stepper = shownStepperRef.get();
-            if (stepper == null || !stepper.view.isAttachedToWindow()) {
+            LoopCountStepper stepper = getShownStepper();
+            if (stepper == null) {
                 return;
             }
 
@@ -139,17 +138,16 @@ public class LoopCountFlyoutButton {
      * @return If a menu that is open shows the loop count.
      */
     public static boolean isShown() {
-        LoopCountStepper stepper = shownStepperRef.get();
-        return stepper != null && stepper.view.isAttachedToWindow();
+        return getShownStepper() != null;
     }
 
     /**
-     * @return The drawable of the app, or null if this app version does not have it.
+     * @return The menu item of a menu that is open, or null if no open menu shows the loop count.
      */
     @Nullable
-    private static Drawable getDrawable(Context context, String name) {
-        final int id = ResourceUtils.getDrawableIdentifier(name);
-        return id == 0 ? null : context.getDrawable(id);
+    private static LoopCountStepper getShownStepper() {
+        LoopCountStepper stepper = shownStepperRef.get();
+        return stepper != null && stepper.view.isAttachedToWindow() ? stepper : null;
     }
 
     private static String formatLoopCount(int loopCount) {
@@ -168,6 +166,7 @@ public class LoopCountFlyoutButton {
 
         private String playlistId;
         private String videoId;
+        /** If the loop count can be changed. */
         private boolean enabled;
         private int loopCount;
 
@@ -212,29 +211,16 @@ public class LoopCountFlyoutButton {
             updateViews();
         }
 
-        private static View createArrowButton(Context context, int color, boolean increase) {
-            View button;
-
-            // The left arrow is the right arrow mirrored.
-            Drawable arrow = getDrawable(context, Utils.appIsUsingBoldIcons()
+        private static ImageView createArrowButton(Context context, int color, boolean increase) {
+            ImageView button = new ImageView(context);
+            button.setImageDrawable(ResourceUtils.getDrawable(Utils.appIsUsingBoldIcons()
                     ? "yt_outline_experimental_chevron_right_vd_theme_24"
-                    : "yt_outline_chevron_right_black_24");
-            if (arrow != null) {
-                ImageView imageView = new ImageView(context);
-                imageView.setImageDrawable(arrow);
-                imageView.setImageTintList(ColorStateList.valueOf(color));
-                imageView.setScaleType(ImageView.ScaleType.CENTER);
-                if (!increase) {
-                    imageView.setScaleX(-1);
-                }
-                button = imageView;
-            } else {
-                TextView textView = new TextView(context);
-                textView.setText(increase ? "›" : "‹");
-                textView.setTextColor(color);
-                textView.setTextSize(24);
-                textView.setGravity(Gravity.CENTER);
-                button = textView;
+                    : "yt_outline_chevron_right_black_24"));
+            button.setImageTintList(ColorStateList.valueOf(color));
+            button.setScaleType(ImageView.ScaleType.CENTER);
+            if (!increase) {
+                // The left arrow is the right arrow mirrored.
+                button.setScaleX(-1);
             }
 
             final int size = Dim.dp(40);

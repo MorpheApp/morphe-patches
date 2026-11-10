@@ -86,3 +86,31 @@ internal object BottomSheetMenuCloseFingerprint : Fingerprint(
         )
     )
 )
+
+/**
+ * Method of the navigator interface that sets the repeat mode.
+ * The navigator interface is the only one with an abstract method that plays a video with the
+ * same parameters as the navigation request has after its intent.
+ *
+ * @param videoParameters Parameters of the navigation request constructor after the intent.
+ */
+internal fun navigatorSetRepeatModeFingerprint(videoParameters: List<String>) = Fingerprint(
+    classFingerprint = Fingerprint(
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.ABSTRACT),
+        returnType = "V",
+        parameters = videoParameters
+    ),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.ABSTRACT),
+    returnType = "V",
+    parameters = listOf("I")
+)
+
+/**
+ * Checks if a navigator can navigate. The player checks this when the video starts,
+ * long before the navigator plays another video.
+ */
+internal fun navigatorCanNavigateFingerprint(requestType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(requestType)
+)

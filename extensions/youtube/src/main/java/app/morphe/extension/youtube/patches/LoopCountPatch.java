@@ -38,6 +38,13 @@ public class LoopCountPatch {
         void patch_setNavigatorRepeatMode(int repeatMode);
     }
 
+    /**
+     * Bottom sheet menu of the app.
+     */
+    public interface BottomSheetMenu {
+        void patch_closeMenu();
+    }
+
     /** Repeat modes of the app. */
     private static final int REPEAT_MODE_OFF = 0;
     private static final int REPEAT_MODE_VIDEO = 2;
@@ -112,13 +119,9 @@ public class LoopCountPatch {
      */
     public static void setRepeatMode(int mode) {
         // The app updates its navigation state when the playback or the repeat mode changes.
-        updateRepeatMode(mode);
-    }
-
-    private static void updateRepeatMode(int mode) {
         final boolean loopVideoChanged = (repeatMode == REPEAT_MODE_VIDEO) != (mode == REPEAT_MODE_VIDEO);
         repeatMode = mode;
-        if (loopVideoChanged) {
+        if (loopVideoChanged && Settings.LOOP_COUNT.get()) {
             loopVideoChangeTime = SystemClock.uptimeMillis();
             // The menu stays open when the loop video item is tapped, and shows the change.
             Utils.runOnMainThreadNowOrLater(LoopCountFlyoutButton::onLoopVideoChanged);
@@ -151,11 +154,10 @@ public class LoopCountPatch {
      * The loop video item can turn the loop video on or off before or after the app closes the menu,
      * so the menu closes a moment later, unless the loop video changed.
      *
-     * @param menu            Menu that the app closes.
-     * @param closeMethodName Method of the menu that closes it.
+     * @param menu Menu that the app closes.
      * @return If the menu closes now.
      */
-    public static boolean closeMenu(Object menu, String closeMethodName) {
+    public static boolean closeMenu(BottomSheetMenu menu) {
         try {
             if (closingMenu || !Settings.LOOP_COUNT.get() || !LoopCountFlyoutButton.isShown()) {
                 return true;
@@ -178,7 +180,7 @@ public class LoopCountPatch {
 
                 closingMenu = true;
                 try {
-                    menu.getClass().getMethod(closeMethodName).invoke(menu);
+                    menu.patch_closeMenu();
                 } catch (Exception ex) {
                     Logger.printException(() -> "Could not close the menu", ex);
                 } finally {
@@ -203,6 +205,10 @@ public class LoopCountPatch {
      * Injection point.
      */
     public static void setNavigator(Navigator navigator) {
+        if (!Settings.LOOP_COUNT.get()) {
+            return;
+        }
+
         if (navigatorRef.get() != navigator) {
             navigatorRef = new WeakReference<>(navigator);
             Logger.printDebug(() -> "Navigator: " + navigator.getClass().getName());
@@ -231,7 +237,7 @@ public class LoopCountPatch {
 
         Logger.printDebug(() -> "Setting repeat mode: " + mode);
         navigator.patch_setNavigatorRepeatMode(mode);
-        updateRepeatMode(mode);
+        setRepeatMode(mode);
         // That patch reads the repeat mode to keep the loop when it stops the playlist from playing the next video,
         // and the app updates it only after this navigation.
         DisablePlaylistAutoplayPatch.setRepeatMode(mode);
@@ -261,11 +267,17 @@ public class LoopCountPatch {
     public static synchronized void onPlayerStatus(Enum<?> playerStatus) {
         try {
             loopCountReached = false;
+            if (!Settings.LOOP_COUNT.get()) {
+                // Turned off, the loop video of the app plays the video without a limit.
+                videoEnded = false;
+                countedVideoId = "";
+                return;
+            }
 
-            final boolean ended = playerStatus != null && "ENDED".equals(playerStatus.name());
+            final String statusName = playerStatus == null ? "" : playerStatus.name();
+            final boolean ended = "ENDED".equals(statusName);
             final boolean wasEnded = videoEnded;
             videoEnded = ended;
-            final String statusName = playerStatus == null ? "" : playerStatus.name();
             if (ended && !wasEnded) {
                 onVideoEnded();
             } else if ("PLAYBACK_PENDING".equals(statusName) && !ShortsPlayerState.isOpen()) {
@@ -288,7 +300,7 @@ public class LoopCountPatch {
      * so a saved loop count turns it on again when the video starts to play.
      */
     private static void onVideoPlaying() {
-        if (!Settings.LOOP_COUNT.get() || Settings.LOOP_VIDEO.get() || ShortsPlayerState.isOpen()) {
+        if (Settings.LOOP_VIDEO.get() || ShortsPlayerState.isOpen()) {
             return;
         }
 
@@ -312,8 +324,8 @@ public class LoopCountPatch {
      * Counts the play of the video that ended, before the app or another patch plays it again.
      */
     private static void onVideoEnded() {
-        if (!Settings.LOOP_COUNT.get() || ShortsPlayerState.isOpen()) {
-            // Turned off, the loop video of the app plays the video without a limit.
+        if (ShortsPlayerState.isOpen()) {
+            // The loop count does not apply to Shorts.
             countedVideoId = "";
             return;
         }

@@ -48,7 +48,6 @@ public class LoopCountClearPreference extends Preference {
     private void init() {
         // The loop counts are saved by their own setting, so this preference saves nothing.
         setPersistent(false);
-        setSelectable(true);
         updateSummary();
     }
 
@@ -63,10 +62,6 @@ public class LoopCountClearPreference extends Preference {
 
     @Override
     protected void onClick() {
-        if (!isEnabled()) {
-            return;
-        }
-
         try {
             CustomDialog.create(getContext(),
                     str("morphe_loop_count_clear_dialog_title"),
