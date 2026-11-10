@@ -116,6 +116,32 @@ public enum ClientType {
             "Android VR Downgraded"
     ),
     /**
+     * Same as {@code ANDROID_VR_SABR} but uses the latest app version.
+     * The server can send another player config to a newer app version,
+     * so it is experimental and the version of {@code ANDROID_VR_SABR} is not updated.
+     */
+    ANDROID_VR_EXPERIMENTAL(
+            ANDROID_VR_SABR.id,
+            ANDROID_VR_SABR.clientName,
+            ANDROID_VR_SABR.packageName,
+            ANDROID_VR_SABR.deviceMake,
+            ANDROID_VR_SABR.deviceModel,
+            ANDROID_VR_SABR.osName,
+            ANDROID_VR_SABR.osVersion,
+            ANDROID_VR_SABR.androidSdkVersion,
+            ANDROID_VR_SABR.buildID,
+            "1.91.10",
+            ANDROID_VR_SABR.clientPlatform,
+            ANDROID_VR_SABR.canLogin,
+            ANDROID_VR_SABR.requireLogin,
+            ANDROID_VR_SABR.supportsMultiAudioTracks,
+            ANDROID_VR_SABR.supportsOAuth2,
+            ANDROID_VR_SABR.supportsVRImmersiveMode,
+            ANDROID_VR_SABR.requireSABR,
+            ANDROID_VR_SABR.usePlayerEndpoint,
+            "Android VR Experimental"
+    ),
+    /**
      * Same as {@code ANDROID_VR_SABR} but supports AV1 codec.
      */
     ANDROID_XR_SABR(
