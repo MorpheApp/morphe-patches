@@ -24,25 +24,25 @@ Second \"item\" text"</string>
   <string name="morphe_sb_square_layout_title">Sebenzisa uhlelo oluyisikwele</string>
   <string name="morphe_sb_square_layout_summary">Usebenzisa amakhona ane-square kuma-button kanye nokulawula kuka-SponsorBlock</string>
   <string name="morphe_sb_compact_skip_button_title">Sebenzisa inkinobho yeSkip encane</string>
-  <string name="morphe_sb_compact_skip_button_summary">Yinciphisa ububanzi benkinobho yeSkip ukuze kongeze isikhala</string>
+  <string name="morphe_sb_compact_skip_button_summary">Yinciphisa ububanzi benkinobho yeSkip ukuze kulondoloze isikhala</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Fihla inkinobho ye-Skip ngokuzenzakalelayo</string>
-  <string name="morphe_sb_auto_hide_skip_button_summary">Ifihla inkinobho ye-Skip emva kwezizakunde ezimbalwa esikhundleni sokuyishiya ibonakala isikhathi sonke sendlela</string>
+  <string name="morphe_sb_auto_hide_skip_button_summary">Ifihla inkinobho ye-Skip emva kwemizuzwana embalwa esikhundleni sokuyishiya ibonakala isikhathi sonke sesegmenti</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Isikhathi senkinobho ye-Skip</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Khetha ukuthi inkinobho ye-Skip ihlale ibonakala isikhathi esingakanani</string>
   <string name="morphe_sb_toast_on_skip_title">Khombisa isaziso se-skip</string>
-  <string name="morphe_sb_toast_on_skip_summary">Ikhombisa isaziso lapho indlela isukiwe ngokuzenzakalelayo</string>
+  <string name="morphe_sb_toast_on_skip_summary">Ikhombisa isaziso lapho isegmenti idlulwa ngokuzenzakalelayo</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Isikhathi sesaziso se-skip</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Khetha ukuthi isaziso sokukhansela ihlale ibonakala isikhathi esingakanani</string>
-  <string name="morphe_sb_duration_1s">1 second</string>
-  <string name="morphe_sb_duration_2s">2 seconds</string>
-  <string name="morphe_sb_duration_3s">izimiseko ezingu-3</string>
-  <string name="morphe_sb_duration_4s">izimiseko ezingu-4</string>
-  <string name="morphe_sb_duration_5s">izimiseko ezingu-5</string>
-  <string name="morphe_sb_duration_6s">izimiseko ezingu-6</string>
-  <string name="morphe_sb_duration_7s">izimiseko ezingu-7</string>
-  <string name="morphe_sb_duration_8s">izimiseko ezingu-8</string>
-  <string name="morphe_sb_duration_9s">izimiseko ezingu-9</string>
-  <string name="morphe_sb_duration_10s">izimiseko ezingu-10</string>
+  <string name="morphe_sb_duration_1s">1 isekhondi</string>
+  <string name="morphe_sb_duration_2s">2 amasekhondi</string>
+  <string name="morphe_sb_duration_3s">imizuzwana engu-3</string>
+  <string name="morphe_sb_duration_4s">imizuzwana engu-4</string>
+  <string name="morphe_sb_duration_5s">imizuzwana engu-5</string>
+  <string name="morphe_sb_duration_6s">imizuzwana engu-6</string>
+  <string name="morphe_sb_duration_7s">imizuzwana engu-7</string>
+  <string name="morphe_sb_duration_8s">imizuzwana engu-8</string>
+  <string name="morphe_sb_duration_9s">imizuzwana engu-9</string>
+  <string name="morphe_sb_duration_10s">imizuzwana engu-10</string>
   <string name="morphe_sb_video_length_without_segments_title">Khombisa ubude bwevidiyo ngaphandle kwezingxenye</string>
   <string name="morphe_sb_video_length_without_segments_summary">Kukhipha zonke izingxenye ekubeni kube yisikhathi sonke sevidiyo ekhonjiswe ku-seekbar</string>
   <string name="morphe_sb_create_segment_category_title">Ukudala izingxenye ezintsha</string>
@@ -89,9 +89,9 @@ Lokhu kufaka i-user ID yakho eyimfihlo. Qiniseka ukuthi uyihlanganyela ngokuhlak
   <string name="morphe_sb_settings_import_successful">Izilungiselelo zenziwe ngempumelelo</string>
   <string name="morphe_sb_settings_import_failed">Kuhleleke ukungenisa: %s</string>
   <string name="morphe_sb_settings_export_failed">Sihlulekile ukukhipha: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Izilungiselelo zakho zinye i-SponsorBlock user ID eyimfihlo.
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Izilungiselelo zakho ziqukethe i-SponsorBlock user ID eyimfihlo.
 
-I-user ID yakho ifana nephasiwedi, futhi akufanele yabelane nakanye"</string>
+I-user ID yakho ifana nephasiwedi, futhi akufanele yabelwane nanoma ubani"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Ungakukhombisi futhi</string>
   <string name="morphe_sb_diff_segments_title">Shintsha ukuziphatha kwe-segment</string>
   <string name="morphe_sb_segments_sponsor">Isifofolo</string>
@@ -106,7 +106,7 @@ I-user ID yakho ifana nephasiwedi, futhi akufanele yabelane nakanye"</string>
   <string name="morphe_sb_segments_intro_summary">Isikhala esingenalo okuqukethwe kwangempela. Kungaba ukumisa, ifreyimu engashintshi, noma i-animation ephindaphindayo. Akufaki izinguquko ezinezululwane</string>
   <string name="morphe_sb_segments_outro">Amakhadi okuphela / Amacredits</string>
   <string name="morphe_sb_segments_outro_summary">Amacredits noma lapho amakhadi okuphela e-YouTube evela. Akulona isiphetho esinezululwane</string>
-  <string name="morphe_sb_segments_hook">Isikhangiso / Izibingelelo</string>
+  <string name="morphe_sb_segments_hook">Ukuvula / Izibingelelo</string>
   <string name="morphe_sb_segments_hook_summary">Ama-trailer axoxwe eveidiyweni ezayo, izibingelelo nokuvalelisa. Akufaki izahluko ezengeza okuqukethwe okwezinhlangothi</string>
   <string name="morphe_sb_segments_preview">Ukubuka / Ukubuyekeza</string>
   <string name="morphe_sb_segments_preview_summary">Iqoqo lama-clip akhombisa okuzayo noma okwenzekile kuvidiyo noma kwezinye izividiyo ze-series, lapho yonke imininingwane iphindwe kwenye indawo</string>
@@ -120,7 +120,7 @@ I-user ID yakho ifana nephasiwedi, futhi akufanele yabelane nakanye"</string>
   <string name="morphe_sb_skip_button_selfpromo">Skip-a promo</string>
   <string name="morphe_sb_skip_button_interaction">Dlula ukuxhumana</string>
   <string name="morphe_sb_skip_button_highlight">Giya kwi-highlight</string>
-  <string name="morphe_sb_skip_button_intro_beginning">Yishaye isingeniso</string>
+  <string name="morphe_sb_skip_button_intro_beginning">Giya ku-highlight</string>
   <string name="morphe_sb_skip_button_intro_middle">Skipha isikhala saphakathi</string>
   <string name="morphe_sb_skip_button_intro_end">Skipha isikhala saphakathi</string>
   <string name="morphe_sb_skip_button_outro">Skipha isiphetho</string>
@@ -230,7 +230,7 @@ Uma ungathumeli ukugqamisa, thinta ukukhansela bese umarkha indawo yesibili"</st
   <string name="morphe_sb_stats_saved_second_format">%s izimizuzwana</string>
   <string name="morphe_sb_color_opacity_label">Ukucaca:</string>
   <string name="morphe_sb_color_dot_label">Umbala:</string>
-  <string name="morphe_sb_about_api_summary">"I-SponsorBlock iyidatha-bezi yama-segment evidiyo eqoqwwe ngumphakathi, efana nabaxhasi, izingeniso, iziphetho kanye nezikhumbuzo zokubhalisa. Ama-segment ahambiselwa futhi avotelwe ngumphakasti, kanti idatha-bezi ivulekile futhi imahhala ukuyilanda
+  <string name="morphe_sb_about_api_summary">"I-SponsorBlock iyidatha-bezi yama-segment evidiyo eqoqwe ngumphakathi, efana nabaxhasi, izingeniso, iziphetho kanye nezikhumbuzo zokubhalisa. Ama-segment ahambiselwa futhi avotelwe ngumphakathi, kanti idatha-bezi ivulekile futhi imahhala ukuyilanda
 
 I-ID yevidiyo oyibukayo ithunyelwa ku-SponsorBlock API ukuze uthole ama-segment ayo"</string>
 </resources>

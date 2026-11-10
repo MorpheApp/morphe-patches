@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_info_title">बद्दल</string>
   <string name="morphe_settings_search_no_results_title">\'%s\' साठी कोणतेही परिणाम आढळले नाहीत</string>
   <string name="morphe_settings_search_no_results_summary">दुसरा कीवर्ड वापरून पहा</string>
-  <string name="morphe_settings_search_recent_searches">नवीनतम शोध</string>
+  <string name="morphe_settings_search_recent_searches">अलीकडील शोध</string>
   <string name="morphe_settings_search_remove_message">शोध इतिहासमधून काढायचे आहे?</string>
   <string name="morphe_settings_search_remove">शोध इतिहासातून काढून टाका</string>
   <string name="morphe_settings_search_clear_history">शोध इतिहास साफ करा</string>
@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">डीबगिंग</string>
   <string name="morphe_debug_screen_summary">प्रगत विकासक पर्याय आणि निदान लॉग कॉन्फिगर करा</string>
-  <string name="morphe_debug_title">डीबग लॉगिंग सक्षम करा</string>
-  <string name="morphe_debug_stacktrace_title">डीबग लॉग स्टॅक ट्रेस</string>
-  <string name="morphe_debug_stacktrace_summary">त्रुटी ओळखण्यात मदत करण्यासाठी डीबग लॉगमध्ये स्टॅक ट्रेस समाविष्ट करते</string>
+  <string name="morphe_debug_level_title">डीबग लॉगिंग</string>
+  <string name="morphe_debug_level_entry_disabled">बंद</string>
+  <string name="morphe_debug_level_entry_debug">डीबग</string>
+  <string name="morphe_debug_level_entry_verbose">व्हर्बोस</string>
   <string name="morphe_debug_toast_on_error_title">Morphe त्रुटीवर टोस्ट दर्शवा</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"एरर टोस्ट बंद केल्यामुळे सर्व Morphe एरर नोटिफिकेशन्स लपवले जातील.
 

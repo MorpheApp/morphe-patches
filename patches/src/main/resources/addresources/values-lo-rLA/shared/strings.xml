@@ -32,7 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">ຣີເຊັດການຕັ້ງຄ່າ Morphe ເປັນຄ່າເລີ່ມຕົ້ນ</string>
   <string name="morphe_settings_import_success">ນຳເຂົ້າການຕັ້ງຄ່າ %s ແລ້ວ</string>
   <string name="morphe_settings_import_failure_parse">ການນຳເຂົ້າລົ້ມເຫຼວ: %s</string>
-  <string name="morphe_settings_navigate_up">ຍ້ອນກັບໄປ</string>
+  <string name="morphe_settings_navigate_up">ໄປຂັ້ນເທິງ</string>
   <string name="morphe_settings_search_hint">ຄົ້ນຫາການຕັ້ງຄ່າ</string>
   <string name="morphe_settings_screen_info_title">ກ່ຽວກັບ</string>
   <string name="morphe_settings_search_no_results_title">ບໍ່ພົບຜົນລັດສຳລັບ \'%s\'</string>
@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ການກວດສອບຂໍ້ຜິດພາດ</string>
   <string name="morphe_debug_screen_summary">ກຳນົດຄ່າຕົວເລືອກນັກພັດທະນາຂັ້ນສູງ ແລະ ບັນທຶກການວິນິດໄສ</string>
-  <string name="morphe_debug_title">ເປີດການບັນທຶກ debug</string>
-  <string name="morphe_debug_stacktrace_title">ລາຍລະອຽດ stack trace ຂອງບັນທຶກການດີບັກ</string>
-  <string name="morphe_debug_stacktrace_summary">ລວມ stack traces ໃນບັນທຶກ debug ເພື່ອຊ່ວຍໃນການລະບຸຂໍ້ຜິດພາດ</string>
+  <string name="morphe_debug_level_title">ການບັນທຶກຂໍ້ມູນ Debug</string>
+  <string name="morphe_debug_level_entry_disabled">ປິດໃຊ້ງານ</string>
+  <string name="morphe_debug_level_entry_debug">ດີບັກ</string>
+  <string name="morphe_debug_level_entry_verbose">ລະອຽດ</string>
   <string name="morphe_debug_toast_on_error_title">ສະແດງການແຈ້ງເຕືອນແບບ popup ເມື່ອເກີດຂໍ້ຜິດພາດໃນ Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"ການປິດການແຈ້ງເຕືອນຂໍ້ຜິດພາດແບບ toast ຈະເຊື່ອງທຸກການແຈ້ງເຕືອນຂໍ້ຜິດພາດຂອງ Morphe.
 
@@ -137,7 +138,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">ລຶບອອກ</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">ບັນທຶກການຕັ້ງຄ່າ Feature flags ແລ້ວ</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">ຣີເຊັດ Feature flags ແລ້ວ</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">ຄັດລອກ Feature flags ໄປยังຄລິບບອດແລ້ວ</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">ຄັດລອກ Feature flags ໄປຍັງຄລິບບອດແລ້ວ</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">ເລີ່ມແອັບໃໝ່ເພື່ອໃຊ້ການຕັ້ງຄ່ານີ້</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">ສົ່ງອອກ ແລະ ນຳເຂົ້າ</string>
   <string name="morphe_debug_feature_flags_manager_import_success">ນຳເຂົ້າ feature flags %s ສຳເລັດແລ້ວ</string>
@@ -205,7 +206,7 @@ Second \"item\" text"</string>
 
 ແຕະປຸ່ມດຳເນີນການຕໍ່ ແລະ ອະນຸຍາດໃຫ້ມີການປ່ຽນແປງການປັບປຸງ"</string>
   <string name="gms_core_dialog_continue_text">ດຳເນີນການຕໍ່</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">ສະແດງບ່ອນໂต้ຕອບການປັບປຸງແບັດເຕີຣີຂອງ MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">ສະແດງກ່ອງໂຕ້ຕອບການປັບປຸງແບັດເຕີຣີຂອງ MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"ການປິດການນຳໃຊ້ອັນນີ້ ຈະຊ່ອນການແຈ້ງເຕືອນການປັບປຸງແບັດເຕີຣີຂອງ MicroG.
 
 ຫາກບໍ່ມີການປ່ຽນແປງການປັບປຸງແບັດເຕີຣີ, ທ່ານອາດຈະພົບກັບ:
@@ -243,6 +244,6 @@ Second \"item\" text"</string>
   <string name="morphe_patches_update_notice_dialog_update">ອັບເດດ</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">ປິດ</string>
   <!-- misc.crashlog.crashLogPatch -->
-  <string name="morphe_crash_log_saved_documents">ບັນທຶກປຶ້ມບັນທຶກການຂັດຂ້ອງໄວ້ໃນເອກະສານຂອງຜູ້ໃຊ້: %s</string>
-  <string name="morphe_crash_log_saved">ບັນທຶກປຶ້ມບັນທຶກການຂັດຂ້ອງແລ້ວ: %s</string>
+  <string name="morphe_crash_log_saved_documents">ບັນທຶກລາຍງານການຂັດຂ້ອງໄວ້ໃນເອກະສານຂອງຜູ້ໃຊ້: %s</string>
+  <string name="morphe_crash_log_saved">ບັນທຶກລາຍງານການຂັດຂ້ອງແລ້ວ: %s</string>
 </resources>

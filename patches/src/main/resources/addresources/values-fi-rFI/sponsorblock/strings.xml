@@ -22,7 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_title">Näytä äänestyspainike</string>
   <string name="morphe_sb_voting_button_summary">Lisää painike segmenttien arvioimiseksi ylös- tai alaspäin</string>
   <string name="morphe_sb_square_layout_title">Käytä nelikulmaista asettelua</string>
-  <string name="morphe_sb_square_layout_summary">Käyttää SponsorBlock-painikkeiden ja -hallintojen neliömäisiä kulmia</string>
+  <string name="morphe_sb_square_layout_summary">Käyttää neliömäisiä kulmia SponsorBlock-painikkeissa ja -säätimissä</string>
   <string name="morphe_sb_compact_skip_button_title">Käytä kompaktia ohita-painiketta</string>
   <string name="morphe_sb_compact_skip_button_summary">Pienentää Ohita-painikkeen leveyttä tilan säästämiseksi</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Piilota ohita-painike automaattisesti</string>
@@ -97,7 +97,7 @@ Käyttäjä ID on kuin salasana, ja sitä ei saa koskaan jakaa"</string>
   <string name="morphe_sb_segments_selfpromo">Maksamaton/Itsensä mainostus</string>
   <string name="morphe_sb_segments_selfpromo_summary">Samankaltainen \"Sponsorin\" kanssa, mutta maksamattomalle tai itsensä mainostukselle. Tämä sisältää osioita kauppatavarasta, lahjoituksista tai tietoa siitä, kenen kanssa he ovat tehneet yhteistyötä</string>
   <string name="morphe_sb_segments_interaction">Vuorovaikutusmuistutus (tilaaminen)</string>
-  <string name="morphe_sb_segments_interaction_summary">Lyhyt muistutus tykätä, tilata tai seurata sisällön keskellä. Jos se on pitkä tai koskee jotain tiettyä asiaa, tulisi se merkitä mielummin itsensä mainostamiseksi</string>
+  <string name="morphe_sb_segments_interaction_summary">Lyhyt muistutus tykätä, tilata tai seurata sisällön keskellä. Jos se on pitkä tai koskee jotain tiettyä asiaa, se tulisi mieluummin merkitä itsensä mainostukseksi</string>
   <string name="morphe_sb_segments_highlight">Kohokohta</string>
   <string name="morphe_sb_segments_highlight_summary">Se osa videota, jota useimmat ihmiset etsivät</string>
   <string name="morphe_sb_segments_intro">Tauko/Introanimaatio</string>
@@ -107,7 +107,7 @@ Käyttäjä ID on kuin salasana, ja sitä ei saa koskaan jakaa"</string>
   <string name="morphe_sb_segments_hook">Koukku / Tervehdykset</string>
   <string name="morphe_sb_segments_hook_summary">Kertovat trailerit tulevasta videosta, tervehdykset ja hyvästelyt. Ei sisällä osioita, jotka lisäävät lisäsisältöä</string>
   <string name="morphe_sb_segments_preview">Esikatselu / Kertaus</string>
-  <string name="morphe_sb_segments_preview_summary">Kokoelma leikkeitä, jotka osoittavat, mitä on tulossa tai mitä tapahtui videossa tai muissa sarjan videoissa,  joiden kaikki informaatio toistuu muualla</string>
+  <string name="morphe_sb_segments_preview_summary">Kokoelma leikkeitä, jotka näyttävät, mitä on tulossa tai mitä tapahtui videossa tai saman sarjan muissa videoissa, joiden kaikki tiedot toistuvat muualla</string>
   <string name="morphe_sb_segments_filler">Toissijaiset kohtaukset / Vitsit</string>
   <string name="morphe_sb_segments_filler_summary">Epäolennaiset kohtaukset tai vitsit, joita ei tarvita videon pääsisällön ymmärtämiseen. Ei sisällä osioita, jotka tarjoavat kontekstia tai taustatietoja</string>
   <string name="morphe_sb_segments_nomusic">Musiikki: Musiikiton osa</string>
@@ -153,7 +153,7 @@ Käyttäjä ID on kuin salasana, ja sitä ei saa koskaan jakaa"</string>
   <string name="morphe_sb_submit_failed_invalid">Osiota ei voitu lähettää: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock on tilapäisesti poissa käytöstä</string>
   <string name="morphe_sb_submit_failed_unknown_error">Osiota ei voitu lähettää (tila: %1$s %2$s)</string>
-  <string name="morphe_sb_submit_failed_rate_limit">Segmenttiä ei voida lähettää. Nopeuden rajoitus (liian monta samalta käyttäjältä tai IP-osoitteesta)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Segmenttiä ei voi lähettää. Nopeusrajoitus (liian monta pyyntöä samalta käyttäjältä tai IP-osoitteelta)</string>
   <string name="morphe_sb_submit_failed_forbidden">Osiota ei voi lähettää: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Ei voida lähettää segmenttiä.
 On jo olemassa"</string>
@@ -165,8 +165,8 @@ On jo olemassa"</string>
   <string name="morphe_sb_vote_failed_timeout">Osiota ei voitu äänestää (API aikakatkaistu)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Osiota ei voitu äänestää (tila: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Osiota ei voitu äänestää: %s</string>
-  <string name="morphe_sb_vote_upvote">Ylä-ääni</string>
-  <string name="morphe_sb_vote_downvote">Alaääni</string>
+  <string name="morphe_sb_vote_upvote">Kannata</string>
+  <string name="morphe_sb_vote_downvote">Vastusta</string>
   <string name="morphe_sb_vote_category">Muuta kategoriaa</string>
   <string name="morphe_sb_vote_no_segments">Äänestettäviä osioita ei ole</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
@@ -226,7 +226,7 @@ Jos et lähetä korostusta, napauta Peruuta ja merkitse toinen sijainti"</string
   <string name="morphe_sb_stats_saved_hour_format">%1$s tuntia %2$s minuuttia</string>
   <string name="morphe_sb_stats_saved_minute_format">%1$s minuuttia %2$s sekuntia</string>
   <string name="morphe_sb_stats_saved_second_format">%s sekuntia</string>
-  <string name="morphe_sb_color_opacity_label">Läpikuultamattomuus:</string>
+  <string name="morphe_sb_color_opacity_label">Peittävyys:</string>
   <string name="morphe_sb_color_dot_label">Väri:</string>
   <string name="morphe_sb_about_api_summary">"SponsorBlock on joukkoistettu tietokanta videosegmenteistä, kuten sponsoreista, introista, outroista ja tilausmuistutuksista. Segmentit lähetetään ja niistä äänestetään yhteisön toimesta, ja tietokanta on avoin ja ilmainen ladattavaksi
 

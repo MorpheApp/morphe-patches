@@ -18,7 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit құпиялылық саясаты</string>
   <string name="morphe_google_signin_not_available_toast">Google-мен кіру қолжетімді емес. Кіру үшін электронды поштаны қолданыңыз</string>
-  <string name="morphe_app_downgrade_dialog_title">Нұсқаны төмендету қолдауланбайды</string>
+  <string name="morphe_app_downgrade_dialog_title">Нұсқаны төмендетуге қолдау көрсетілмейді</string>
   <string name="morphe_app_downgrade_dialog_message">"Бұл Reddit орнатылымы &lt;b&gt;%1$s&lt;/b&gt; нұсқасынан &lt;b&gt;%2$s&lt;/b&gt; нұсқасына дейін төмендетілді
 &lt;br/&gt;&lt;br/&gt;
 Жаңа нұсқаның қолданба деректері ескі нұсқалармен жұмыс істемейді және қолданба дұрыс жұмыс істемеуі мүмкін.
@@ -32,10 +32,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_answers_button_title">Жауаптар батырмасын жасыру</string>
   <string name="morphe_hide_chat_button_title">Чат батырмасын жасыру</string>
   <string name="morphe_hide_create_button_title">Жасау батырмасын жасыру</string>
-  <string name="morphe_hide_discover_button_title">Табыстыру немесе Қауымдастықтар батырмасын жасыру</string>
+  <string name="morphe_hide_discover_button_title">Зерттеу немесе Қауымдастықтар батырмасын жасыру</string>
   <string name="morphe_hide_games_button_title">Ойындар батырмасын жасыру</string>
-  <string name="morphe_screen_sidebar_title">Жантырақ панель</string>
-  <string name="morphe_hide_recently_visited_shelf_title">Соңғы зиярат етілген сөресін жасыру</string>
+  <string name="morphe_screen_sidebar_title">Бүйір панелі</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Жақында қаралған сөресін жасыру</string>
   <string name="morphe_hide_games_on_reddit_shelf_title">Reddit-тегі ойындар сөресін жасыру</string>
   <string name="morphe_hide_reddit_pro_shelf_title">Reddit Pro сөресін жасыру</string>
   <string name="morphe_hide_about_shelf_title">Туралы сөресін жасыру</string>
@@ -45,24 +45,24 @@ Second \"item\" text"</string>
   <string name="morphe_copy_text_summary">Жазбалар мен пікірлердегі мәтінді таңдауға және көшіруге мүмкіндік береді. Пікірлерді жинақтау функциясын өшіреді</string>
   <string name="morphe_copy_text_user_dialog_message">\"Мәтінді көшіру\" қосулы болғанда пікірлерді жинақтау жұмыс істемейтін болады</string>
   <string name="morphe_custom_font_title">Жеке шрифт</string>
-  <string name="morphe_custom_font_summary">Төмендегі жол бойынша TTF немесе OTF қаріп файлын жүктеңіз. Бұл параметрді қосу «Force system font» функциясын өшіреді</string>
-  <string name="morphe_custom_font_file_path_title">Құнды шрифт файлы</string>
+  <string name="morphe_custom_font_summary">Төмендегі жол бойынша TTF немесе OTF қаріп файлын жүктеңіз. Бұл параметрді қосу «Жүйелік қаріпті мәжбүрлеу» функциясын өшіреді</string>
+  <string name="morphe_custom_font_file_path_title">Жеке қаріп файлы</string>
   <string name="morphe_custom_font_file_path_summary">TTF немесе OTF қаріп файлын таңдау үшін түртіңіз</string>
   <string name="morphe_custom_font_selected_font">Таңдалған қаріп - %s</string>
   <string name="morphe_custom_font_pick_file_first">Алдымен жеке қаріп файлын таңдаңыз</string>
-  <string name="morphe_custom_font_invalid_file">Тыныш, .ttf немесе .otf қаріп файлын таңдаңыз</string>
+  <string name="morphe_custom_font_invalid_file">Тек .ttf немесе .otf қаріп файлын таңдаңыз</string>
   <string name="morphe_custom_font_failed_to_load">Жеке қаріпті жүктеу сәтсіз аяқталды. Басқа файлды таңдаңыз</string>
   <string name="morphe_disable_modern_home_title">Заманауи басты бет UI-ін өшіру</string>
   <string name="morphe_disable_screenshot_popup_title">Скриншот терезесін өшіру</string>
   <string name="morphe_disable_screenshot_popup_summary">Скриншот жасағанда пайда болатын терезені өшіреді</string>
   <string name="morphe_force_system_font_title">Жүйелік қаріпті мәжбүрлеу</string>
-  <string name="morphe_force_system_font_summary">Reddit Sans немесе Roboto орнына құрылғы жүйесінің қаріпін қолданыңыз. Бұл параметрді қосу «Custom font» функциясын өшіреді</string>
+  <string name="morphe_force_system_font_summary">Reddit Sans немесе Roboto орнына құрылғы жүйесінің қаріпін қолданыңыз. Бұл параметрді қосу «Жеке қаріп» функциясын өшіреді</string>
   <string name="morphe_hide_ask_button_title">Сұрау түймесін жасыру</string>
   <string name="morphe_hide_ask_button_summary">Іздеу жолағындағы Сұрау түймесін жасырады</string>
   <string name="morphe_hide_communities_shelf_title">Қауымдастықтар сөресін жасыру</string>
   <string name="morphe_hide_communities_shelf_summary">Subreddit-тердегі байланысты немесе ұсынылған қауымдастықтар сөресін жасырады</string>
   <string name="morphe_hide_trending_shelves_title">Трендтегі сөрелерді жасыру</string>
-  <string name="morphe_hide_trending_shelves_summary">Таغذір және іздеу ұсыныстарынан Трендтегі сөрелерді жасырады</string>
+  <string name="morphe_hide_trending_shelves_summary">Лента және іздеу ұсыныстарынан Трендтегі сөрелерді жасырады</string>
   <string name="morphe_remove_notification_dialog_title">Хабарлама ұсынысы диалогын жою</string>
   <string name="morphe_remove_notification_dialog_summary">Subreddit-ке кірген кезде хабарлама ұсынысы диалогын автоматты түрде жабады</string>
   <string name="morphe_high_quality_avatars_title">Жоғары сапалы аватарлар</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_title">Бөлісу сілтемелерін тазалау</string>
   <string name="morphe_sanitize_sharing_links_summary">Бөлісілген сілтемелерден бақылау сұраныс параметрлерін алып тастайды</string>
   <string name="morphe_open_links_directly_title">Сілтемелерді тікелей ашу</string>
-  <string name="morphe_open_links_directly_summary">Сыртқы сілтемелерді ашқанда қайта жобалау URL-мекенжайларын аттап өтеді</string>
+  <string name="morphe_open_links_directly_summary">Сыртқы сілтемелерді ашқанда қайта бағыттау URL-мекенжайларын аттап өтеді</string>
   <string name="morphe_full_width_feed_media_title">Лента медиафайлдарының толық ені</string>
   <string name="morphe_full_width_feed_media_summary">Лентада және жазба мәліметтерінде суреттер мен видеоларды бүйірлік жиексіз және дөңгеленген бұрыштарсыз, толық енімен көрсетеді</string>
   <string name="morphe_media_viewer_fade_title">Медиа қарағыштың күңгірттеу күші</string>
@@ -130,7 +130,7 @@ Second \"item\" text"</string>
   <string name="morphe_download_location_account_logged_out">%s (кіріс жасалмаған)</string>
   <string name="morphe_download_location_account_anonymous">Анонимді (кіріс жасалмаған немесе инкогнито)</string>
   <string name="morphe_hide_media_viewer_overlay_title">Медиа қарағыштың қабатын жасыру</string>
-  <string name="morphe_hide_media_viewer_overlay_summary">Кескінді немесе бейнені ашқанда тақырыпты, батырмаларды және бейне басқару элементтерін жасырады. Оларды көрсету үшін медиафайлды түктіңіз</string>
+  <string name="morphe_hide_media_viewer_overlay_summary">Кескінді немесе бейнені ашқанда тақырыпты, батырмаларды және бейне басқару элементтерін жасырады. Оларды көрсету үшін медиафайлды түртіңіз</string>
   <string name="morphe_hide_join_conversation_button_title">\"Әңгімені қараңыз\" батырмасын жасыру</string>
   <string name="morphe_hide_join_conversation_button_summary">Медиа қарағыштың төменгі жағындағы \"Әңгімені көру\" батырмасын жасырады</string>
   <string name="morphe_media_viewer_black_background_title">Медиа қарағыштың қара түсті фоны</string>
@@ -141,6 +141,6 @@ Second \"item\" text"</string>
   <string name="morphe_remember_collapsed_comments_summary">Жинақталған пікірлер жазбаны қайта ашқанда жинақталған күйінде қалады</string>
   <string name="morphe_app_icon_title">Қолданба белгішесі</string>
   <string name="morphe_app_icon_choose_title">Қолданба белгішесін таңдаңыз</string>
-  <string name="morphe_app_icon_default">Әдепті</string>
+  <string name="morphe_app_icon_default">Әдепкі</string>
   <string name="morphe_app_icon_unknown">Белгісіз</string>
 </resources>

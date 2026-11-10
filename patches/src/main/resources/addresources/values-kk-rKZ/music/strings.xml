@@ -25,7 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_android_auto_uploaded_albums">Жүктелген альбомдар</string>
   <string name="morphe_music_android_auto_uploaded_artists">Жүктелген артистер</string>
   <!-- app.morphe.patches.music.interaction.jam -->
-  <string name="morphe_music_jam_update_host_controls">Кезбеу және қайта бастау функцияларын қолдану үшін хосттың Джем патчын жаңартыңыз</string>
+  <string name="morphe_music_jam_update_host_controls">Кідірту және жалғастыру функцияларын қолдану үшін хосттың Джем патчын жаңартыңыз</string>
   <string name="morphe_music_jam_probe_title">Jam кезегін бөлісу</string>
   <string name="morphe_music_jam_probe_summary">Жақындағы Джемді бастаңыз немесе қосылыңыз және оның кезегін Джем қабаты арқылы өңдеңіз</string>
   <string name="morphe_music_jam_enabled_title">Jam кезегін бөлісуді қосу</string>
@@ -90,8 +90,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_end_jam">Джемді аяқтау</string>
   <string name="morphe_music_jam_participant_help">Музыканы хост қосады. YouTube Music кезекке әндерді тікелей қосыңыз, жылжытыңыз немесе жойыңыз</string>
   <string name="morphe_music_jam_joining_help">Екі құрылғыны да жақын ұстаңыз. Біз хостты іздеп жатқанда әрекетті тоқтата аласыз</string>
-  <string name="morphe_music_jam_cancel_joining">Қосылуды 취кіру</string>
-  <string name="morphe_music_jam_leave_jam">Джемді meninggalkan</string>
+  <string name="morphe_music_jam_cancel_joining">Қосылуды болдырмау</string>
+  <string name="morphe_music_jam_leave_jam">Джемнен шығу</string>
   <string name="morphe_music_jam_start_jam">Jam бастау</string>
   <string name="morphe_music_jam_setup_layer">Jam қабатын баптау</string>
   <string name="morphe_music_jam_manage">Басқару</string>
@@ -101,7 +101,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_song_options_unavailable">Ән параметрлері қолжетімді емес; қайта көріңіз</string>
   <string name="morphe_music_jam_song_options_failed">Ән параметрлерін ашу мүмкін болмады</string>
   <string name="morphe_music_jam_no_browser">Jam қабатын жүктеу үшін браузер қолжетімді емес</string>
-  <string name="morphe_music_jam_waiting_host_queue">Хост кезекін күту</string>
+  <string name="morphe_music_jam_waiting_host_queue">Хост кезегін күтуде</string>
   <string name="morphe_music_jam_open_song_first">Алдымен YouTube Music-те әнді ашыңыз</string>
   <string name="morphe_music_jam_play_on_host">Хост құрылғысында ойнату</string>
   <string name="morphe_music_jam_quit_and_play">Джемді тоқтатып, жергілікті түрде ойнату</string>
@@ -115,7 +115,7 @@ Second \"item\" text"</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Тақырып логотипі</string>
-  <string name="morphe_header_logo_entry_1">Әдепті</string>
+  <string name="morphe_header_logo_entry_1">Әдепкі</string>
   <string name="morphe_header_logo_entry_3">Жеке</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Альбомның аудио тректерін ойнату</string>
@@ -149,10 +149,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_play_pause">Ойнату немесе кідірту</string>
   <string name="morphe_music_downloads_previous">Алдыңғы</string>
   <string name="morphe_music_downloads_next">Келесі</string>
-  <string name="morphe_music_downloads_pause">Кезектету</string>
+  <string name="morphe_music_downloads_pause">Кідірту</string>
   <string name="morphe_music_downloads_shuffle">Араластыру</string>
   <string name="morphe_music_downloads_repeat">Қайталау</string>
-  <string name="morphe_music_downloads_minimize">Жығу</string>
+  <string name="morphe_music_downloads_minimize">Кішірейту</string>
   <string name="morphe_music_downloads_close">Жабу</string>
   <string name="morphe_music_downloads_delete">Өшіру</string>
   <string name="morphe_music_downloads_delete_track">Жүктелгенді өшіру</string>
@@ -200,7 +200,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_already_saved">Жүктелді</string>
   <string name="morphe_music_downloads_started">Жүктеу басталды</string>
   <string name="morphe_music_downloads_starting">Жүктеу басталуда…</string>
-  <string name="morphe_music_downloads_progress">Жүктелуі %s%%</string>
+  <string name="morphe_music_downloads_progress">Жүктелуде %s%%</string>
   <string name="morphe_music_downloads_complete">Жүктеу аяқталды</string>
   <string name="morphe_music_downloads_failed">Жүктеу сәтсіз аяқталды</string>
   <string name="morphe_music_downloads_playlist_download_title">Плейлистті жүктеу</string>
@@ -212,17 +212,17 @@ Second \"item\" text"</string>
 
 Олар кезекпен жүктеледі, бұл көп уақыт алуы мүмкін және шамамен %3$s бос орын қажет"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Жүктеу</string>
-  <string name="morphe_music_downloads_playlist_download_progress">%2$s тректің %1$s-шісі жүктелуде</string>
+  <string name="morphe_music_downloads_playlist_download_progress">%1$s / %2$s трек жүктелуде</string>
   <string name="morphe_music_downloads_playlist_download_complete">%s жүктелді</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s жүктелді, %2$s жүктелмеді</string>
   <string name="morphe_music_downloads_playlist_download_already_running">Плейлистті жүктеу процесі жүріп жатыр</string>
   <string name="morphe_music_downloads_playlist_download_needs_account">Сіздің аккаунтыңыз әлі белгісіз. Сәлден кейін қайта көріңіз</string>
   <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s тізілді, бәрі жүктелді</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Плейлисттің тек бір бөлігі ғана тізілді. Қалғанын алу үшін кейінірек қайта Жүктеу батырмасын басыңыз</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Плейлисттің тек бір бөлігі ғана тізілді. Қалғанын алу үшін кейінірек «Жүктеу» батырмасын қайта басыңыз</string>
   <string name="morphe_music_downloads_playlist_download_started">%s фондық режимде жүктелуде</string>
   <string name="morphe_music_downloads_playlist_download_no_network">Желілік байланыс жоқ</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">Желі күтілуде…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">%2$s-тің %1$s бөлігінен кейін тоқтатылды. Жалғастыру үшін қайта Жүктеу батырмасын басыңыз</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s-тің %1$s-і өңделгеннен кейін тоқтатылды. Жалғастыру үшін «Жүктеу» батырмасын қайта басыңыз</string>
   <string name="morphe_music_downloads_mark_title">Жүктелген әндерді белгілеу</string>
   <string name="morphe_music_downloads_mark_summary">Жүктелген әндердің плейлисттердегі, альбомдардағы және іздеу нәтижелеріндегі мәліметтерінің алдында белгі көрсетіледі</string>
   <!-- misc.settings.settingsPatch -->
@@ -308,7 +308,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_sabr_toast">SABR ойнату кезінде Crossfade өшірулі</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Трансляция кезінде Crossfade өшірулі</string>
   <string name="morphe_music_crossfade_about_how_title">Жұмыс істеу принципі</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Crossfade бір әннің соңын келесі әннің басымен сіз таңдаған ұзақтық пен қисықтықты қолданып överläp етеді
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade бір әннің соңын келесі әннің басымен сіз таңдаған ұзақтық пен қисықтықты қолданып қабаттастырады
 
 Ол автоматты түрде ауыстыру кезінде және қолмен өткізіп жібергенде жұмыс істейді, әрқайсысының өз ауыстырып қосу батырмасы бар. Автоматты түрде ауыстыру кезінде араласу ән аяқталуына бірнеше секунд қалғанда басталады"</string>
   <string name="morphe_music_crossfade_about_quirks_title">Шектеулер</string>
@@ -414,7 +414,7 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Плеер мен кезектің ашылатын мәзірлерінде қай компоненттер көрсетілетінін таңдаңыз</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">3 бағанды компонентті жасыру</string>
   <string name="morphe_music_hide_flyout_menu_like_dislike_title">\"Ұнатылған\" және \"Ұнамаған\" батырмаларын жасыру</string>
-  <string name="morphe_music_hide_flyout_menu_taste_match_title">\'Табиғат сәйкестігі\' мәзірін жасыру</string>
+  <string name="morphe_music_hide_flyout_menu_taste_match_title">\'Талғам сәйкестігі\' мәзірін жасыру</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">\"Кейінірек тыңдау\" тізіміне қосу\" мәзірін жасыру</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">\"Кезекке қосу\" мәзірін жасыру</string>
   <string name="morphe_music_hide_flyout_menu_captions_title">Субтитрлер мәзірін жасыру</string>
@@ -448,7 +448,7 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">\"Ән авторларын қарау\" мәзірін жасыру</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Бастапқы бет</string>
-  <string name="morphe_change_start_page_entry_default">Әдепті</string>
+  <string name="morphe_change_start_page_entry_default">Әдепкі</string>
   <string name="morphe_change_start_page_entry_charts">Кестелер</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">Кейінірек тыңдау үшін эпизодтар</string>
   <string name="morphe_change_start_page_entry_explore">Зерттеу</string>
@@ -459,18 +459,18 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_change_start_page_entry_search">Іздеу</string>
   <string name="morphe_change_start_page_entry_subscriptions">Жазылымдар</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
-  <string name="morphe_music_force_portrait_orientation_title">Портретті бағдарламалауды мәжбүрлеу</string>
-  <string name="morphe_music_force_portrait_orientation_summary">Құрылғы бұрылған кезде қолданбаны портрет бағдарламасында сақтайды</string>
+  <string name="morphe_music_force_portrait_orientation_title">Портрет бағытын мәжбүрлеу</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Құрылғы бұрылған кезде қолданбаны портрет бағытында сақтайды</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Миниплеер түсін өзгерту</string>
   <string name="morphe_music_change_miniplayer_color_summary">Миниплеер түсін толық экранды плеер түсімен сәйкестендіреді</string>
   <string name="morphe_music_change_navigation_bar_color_title">Навигациялық жолақтың түсін өзгерту</string>
   <string name="morphe_music_change_navigation_bar_color_summary">Навигациялық жолақтың түсін толық экранды плеерге сәйкестендіреді</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
-  <string name="morphe_music_miniplayer_next_button_title">Кішіткі плеерде \"Келесі\" түймесін көрсету</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Кішіткі плеерде \"Алдыңғы» түймесін көрсету</string>
+  <string name="morphe_music_miniplayer_next_button_title">Миниплеерде «Келесі» түймесін көрсету</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Миниплеерде «Алдыңғы» түймесін көрсету</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
-  <string name="morphe_music_enable_forced_miniplayer_title">Кішіткі плеерді мәжбүрлеп қосуды فعال ету</string>
+  <string name="morphe_music_enable_forced_miniplayer_title">Мәжбүрлі миниплеерді қосу</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Жаңа трек басталғанда плеердің автоматты түрде толық экранды режимге ауысуын болдырмайды</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Миниплеерді сырғытып жабуды қосу</string>
@@ -516,7 +516,7 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_scrobbling_now_playing_title">\"Қазір ойнатылып жатыр\" мәртебесін жіберу</string>
   <string name="morphe_music_scrobbling_min_song_duration_title">Әннің минималды ұзақтығы</string>
   <!-- 'scrobbled' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_min_song_duration_summary">Бұл уақыттан қысқа әндер scrobbled болмайды</string>
+  <string name="morphe_music_scrobbling_min_song_duration_summary">Бұл уақыттан қысқа әндер scrobble жасалмайды</string>
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_percent_title">Scrobble кідірісінің пайызы</string>
   <!-- 'scrobble' must be kept untranslated -->
@@ -536,7 +536,7 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_listenbrainz_token_status_valid">Жарамды токен! Пайдаланушы: %s</string>
   <string name="morphe_music_listenbrainz_token_status_invalid">Жарамсыз токен: %s</string>
   <string name="morphe_music_listenbrainz_token_status_invalid_unknown">белгісіз</string>
-  <string name="morphe_music_listenbrainz_token_status_failed">Кіріктіру сәтсіз аяқталды: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_failed">Тексеру сәтсіз аяқталды: %s</string>
   <string name="morphe_music_listenbrainz_token_toast_cleared">Токен жойылды</string>
   <string name="morphe_music_listenbrainz_token_toast_saved">Токен сақталды</string>
   <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Ескерту: Сақталған токен жарамсыз!</string>
@@ -558,7 +558,7 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_scrobbling_metadata_cleanup_title">Метадеректерді тазалау</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Scrobbling алдында тақырыптардан, орындаушылардан және альбомдардан жиі кездесетін артық мәліметтерді (мысалы, \"Official Video\", \"Remaster\", \"Live\") автоматты түрде тазалау</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Custom regex тазалауы</string>
-  <string name="morphe_music_scrobbling_custom_regex_summary">Ән тақырыптарынан, орындаушылардан немесе альбомдардан қосымша мәтінді алып тастау үшін жеке тұрақты өрнекті енгізіңіз. Мысалы: (?i)\\s*\\((clean|explicit)\)</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">Ән тақырыптарынан, орындаушылардан немесе альбомдардан қосымша мәтінді алып тастау үшін жеке тұрақты өрнекті енгізіңіз. Мысалы: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Тақырыптан орындаушыны және тректі талдау</string>
   <string name="morphe_music_scrobbling_parse_title_summary">Видео тақырыбынан орындаушы мен трек атауын \" - \" бөлгіші арқылы бөліп алыңыз. Бұл арна атауы орындаушы ретінде қолданылуы мүмкін қайта жүктелген контент үшін пайдалы</string>
   <string name="morphe_music_scrobbling_guess_album_title">Жетіспейтін альбомды толтыру</string>
@@ -620,7 +620,7 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_lyrics_section_sync_title">Синхрондау</string>
   <string name="morphe_music_lyrics_section_panel_title">Панель</string>
   <string name="morphe_music_lyrics_source_all_disabled">Барлық провайдерлер өшірілді - кірістірілген мәтіндер және ішкі мәтіндер</string>
-  <string name="morphe_music_lyrics_source_reset_title">Провайдерлер ретін sıфрлау?</string>
+  <string name="morphe_music_lyrics_source_reset_title">Провайдерлер ретін қалпына келтіру?</string>
   <string name="morphe_music_lyrics_source_reset_message">Провайдерлерді әдепкі басымдық ретіне қайтару</string>
   <string name="morphe_music_lyrics_rime_dict_title">Rime сөздер тізімі</string>
   <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist үшін UniDict де қажет: Офлайн сөздік провайдерінде \"Chinese and Cantonese characters (UniDict)\" белгісін қойып, жүктеудің аяқталуын күтіңіз. Ол болмаса, таңбаларды оқитын тізім ешқандай оқылым бермейді.
@@ -657,7 +657,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_rime_dict_ready">Сөздер тізімі дайын</string>
   <string name="morphe_music_lyrics_rime_dict_ready_toast">Сөз тізімдері дайын (%s жазба)</string>
   <string name="morphe_music_lyrics_rime_dict_building">Сөз тізімін оқу: %s%%</string>
-  <string name="morphe_music_lyrics_rime_dict_failed">Сөздер тізімін жүктеу сәтсіз аяқталды - қайта försöну үшін «Сақтау» түймесін қайта басыңыз</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Сөздер тізімін жүктеу сәтсіз аяқталды - қайталау үшін «Сақтау» түймесін қайта басыңыз</string>
   <string name="morphe_music_lyrics_clear_cache_title">Сақталған мәтіндерді тазалау</string>
   <string name="morphe_music_lyrics_clear_cache_summary">Осы құрылғыда сақталған %s МБ мәтіндерді жойыңыз</string>
   <string name="morphe_music_lyrics_clear_cache_done">%s МБ тазартылды</string>
@@ -704,7 +704,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_youtube_cookies_dialog_instruction">"YouTube-дан субтитрлер мен уақыт мәтіндерін сұрату үшін YouTube cookie-лерін қойыңыз.
 
 Қадамдары:
-1. Браузерде youtube.com сайтына кіріп, авторизациядан өтің
+1. Браузерде youtube.com сайтына кіріп, авторизациядан өтіңіз
 2. DevTools (F12) → Application → Cookies → youtube.com бөлімін ашыңыз
 3. Толық cookie жолын көшіріңіз (нүктелі үтірмен бөлінген key=value жұптары)
 
@@ -833,7 +833,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_translate_only">Тек аударылған</string>
   <string name="morphe_music_lyrics_romanize_only">Тек романизация</string>
   <string name="morphe_music_lyrics_dual_only">Қос режим</string>
-  <string name="morphe_music_lyrics_copied">Жалпақшаға көшірілді</string>
+  <string name="morphe_music_lyrics_copied">Буферге көшірілді</string>
   <string name="morphe_music_lyrics_refreshing">Жаңартылуда</string>
   <string name="morphe_music_lyrics_refreshed">Жаңартылды</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API кілті</string>
@@ -863,7 +863,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Аударманы мәтіннен жоғары жылжытады; оқу және романизация төменде қалады</string>
   <string name="morphe_music_lyrics_force_center_title">Мәтінді әрдайым ортаға қою</string>
   <string name="morphe_music_lyrics_force_center_summary">ҚОСЫЛДЫ күйінде әр жол ортаға қойылады және бастапқы тегістеу (соның ішінде дуэт жақтары) ескерілмейді; ӨШІРІЛДІ күйінде мәтінде көрсетілген тегістеу сақталады</string>
-  <string name="morphe_music_lyrics_providers_keep_one">Кеміnde бір провайдер қосулы болуы керек</string>
+  <string name="morphe_music_lyrics_providers_keep_one">Кемінде бір провайдер қосулы болуы керек</string>
   <string name="morphe_music_lyrics_translation_provider_title">Аударма</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Романизация немесе транслитерация</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Офлайн сөздік</string>
@@ -876,7 +876,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Плейсхолдерлер: {task}, {language}, {title}, {artist}, {count}, {lines}. Белгісіз плейсхолдерлер жазылған күйінде қалдырылады</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Промпт сақталды</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Нұсқау сақталды, бірақ AI endpoint әлі қолжетімді емес. Алдымен оны AI баптаулары бөлімінде баптаңыз</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Промпт sıғыртылды</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Промпт қалпына келтірілді</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Аударма &amp; романизация баптаулары сақталды</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Баптаулар әдепті мәнге қайтарылды</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Базалық URL http:// немесе https:// басталуы керек</string>
@@ -904,5 +904,5 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Аутентификация кілті (Free немесе Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Қалың белгілерді өшіру</string>
-  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Плеердің \"Келесі\", \"Мәтіндер» және «Ұқсас» қойындыларын қалпына келтіру</string>
+  <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Плеердің «Келесі», «Мәтіндер» және «Ұқсас» қойындыларын қалпына келтіру</string>
 </resources>

@@ -55,7 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_title">Downloads</string>
   <string name="morphe_download_mode_title">Downloadmodus</string>
   <string name="morphe_download_mode_entry_default">Standaard</string>
-  <string name="morphe_download_mode_entry_in_app">Downloaden in-app</string>
+  <string name="morphe_download_mode_entry_in_app">Downloaden in de app</string>
   <string name="morphe_download_mode_entry_external">Externe downloader</string>
   <string name="morphe_external_downloader_name_title">Downloader pakketnaam</string>
   <string name="morphe_external_downloader_name_summary">Pakketnaam van uw geïnstalleerde externe download-app</string>
@@ -89,7 +89,7 @@ Deze instelling wijzigt het pictogram niet op de volgende locaties:
 • Android Auto-pictogram
 
 Om het pictogram overal te wijzigen, moet je opnieuw patchen en de patchoptie 'App-pictogram' aanpassen."</string>
-  <string name="morphe_custom_branding_notification_icon_title">Meldingen</string>
+  <string name="morphe_custom_branding_notification_icon_title">Meldingspictogram</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Match app-icoon</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -99,9 +99,9 @@ Om het pictogram overal te wijzigen, moet je opnieuw patchen en de patchoptie 'A
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Videostreams spoofen</string>
   <string name="morphe_spoof_video_streams_screen_summary">Spoof de client-videostreams om afspeelproblemen te voorkomen</string>
-  <string name="morphe_spoof_video_streams_summary">"Lost problemen met het afspelen voor de meeste gebruikers op door een compatibele videostream aan te vragen.
+  <string name="morphe_spoof_video_streams_summary">"Lost afspeelproblemen voor de meeste gebruikers op door een compatibele videostream aan te vragen.
 
-Als u een YouTube Premium-gebruiker bent, is deze instelling mogelijk niet vereist."</string>
+Als je YouTube Premium-gebruiker bent, is deze instelling mogelijk niet nodig."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Kon geen client-streams opvragen</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_client_failing_dialog_title">Standaardclient werkt niet</string>
@@ -119,7 +119,7 @@ Wil je %2$s als standaardclient instellen?"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR vereist een apart aanmeldingsproces. Tik hier om door te gaan</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Momenteel ingelogd bij Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Voor gebruik van deze functie, verander \'Standaard client\' naar Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Om deze functie te gebruiken, wijzig \'Standaard client\' naar Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Inloggen in Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Inloggen bij Android VR kan speelproblemen voor sommige gebruikers oplossen
 
@@ -127,15 +127,21 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Afmelden</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructies</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activatienummer: %s\n\n1. Tik 'Open website' hieronder om de 'Apparaat verbinden' website te openen\n2. Plak vanuit het klembord het hierboven weergegeven activatienummer\n3. Log in bij Google als gevraagd. Als je meerdere accounts hebt, selecteer dan dit YouTube-account\n4. Tik 'YouTube VR toestaan' in\n5. Ga terug naar deze app na bereiking van het bericht 'Apparaat verbonden'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Mislukt het verstrekken van een activatienummer</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Mislukt het verstrekken van een verifikasiëringstoken</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activatienummer: %s
+
+1. Tik 'Open website' hieronder om de 'Apparaat verbinden'-website te openen
+2. Plak vanuit het klembord (of typ) het hierboven getoonde activatienummer
+3. Log in bij Google als gevraagd. Als je meerdere accounts hebt, kies dan dit YouTube-account
+4. Tik 'YouTube VR toestaan' in
+5. Ga terug naar deze app na het bericht 'Apparaat verbonden'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Kon geen activatiecode aanmaken</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Kon geen authenticatietoken verkrijgen</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Succesvol ingelogd</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authenticatie is opgeslagen
 
-• Uw Morphe-instellingen kunnen Android VR-authenticatie niet importeren/uitvoeren
-• Als deze app ongebruikt is gedurende 6 maanden, dan zal Google deze authenticatie verwijderen
-• U moet opnieuw inloggen als u uw Google-wachtwoord wijzigt of deze apparaat deregistreert bij uw Google-instellingen"</string>
+• Je Morphe-instellingen importeren of exporteren de Android VR-authenticatie niet
+• Als deze app 6 maanden niet wordt gebruikt, verwijdert Google deze authenticatie
+• Je moet opnieuw inloggen als je je Google-wachtwoord wijzigt of dit apparaat verwijdert uit je Google-instellingen"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is tijdelijk niet beschikbaar (API heeft time-out)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR inloggen is verlopen, probeer het nog eens</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 is tijdelijk niet beschikbaar (status %s)</string>
@@ -159,7 +165,7 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
   <string name="morphe_seek_notification_media_fast_forward_length_summary">Seconden om vooruit te spoelen met de volgende knop</string>
   <string name="morphe_seek_notification_media_length_invalid">De zoeklengte moet tussen 1 en %s seconden liggen. Standaardwaarde wordt gebruikt</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
-  <string name="morphe_disable_quic_protocol_title">Uitschakelen van het QUIC-protocol</string>
+  <string name="morphe_disable_quic_protocol_title">QUIC-protocol uitschakelen</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC-audio uitschakelen</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -172,9 +178,9 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Alleen pauzes van ten minste deze lengte worden ingekort. Gaat in wanneer de volgende video start</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Netwerkproxy</string>
-  <string name="morphe_proxy_screen_summary">Route ondersteunde netwerkverzoeken via een proxy</string>
+  <string name="morphe_proxy_screen_summary">Stuur ondersteunde netwerkverzoeken via een proxy</string>
   <string name="morphe_proxy_enabled_title">Proxy inschakelen</string>
-  <string name="morphe_proxy_enabled_summary">Routes ondersteunde netwerkverzoeken via een geconfigureerde HTTP of HTTPS proxy</string>
+  <string name="morphe_proxy_enabled_summary">Stuurt ondersteunde netwerkverzoeken via een geconfigureerde HTTP- of HTTPS-proxy</string>
   <string name="morphe_proxy_host_title">Proxy host</string>
   <string name="morphe_proxy_host_summary">Hostname of IP-adres van de proxy server</string>
   <string name="morphe_proxy_port_title">Proxy poort</string>
@@ -182,7 +188,7 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
   <string name="morphe_proxy_https_title">Gebruik HTTPS proxy</string>
   <string name="morphe_proxy_https_summary">Gebruik HTTPS om verbinding te maken met de proxy server in plaats van HTTP</string>
   <string name="morphe_proxy_auth_enabled_title">Proxy authenticatie</string>
-  <string name="morphe_proxy_auth_enabled_summary">Verzendt Basic authenticatie met proxy verzoeken</string>
+  <string name="morphe_proxy_auth_enabled_summary">Stuurt Basic-authenticatie mee met proxyverzoeken</string>
   <string name="morphe_proxy_auth_username_title">Proxy gebruikersnaam</string>
   <string name="morphe_proxy_auth_username_summary">Gebruikersnaam voor Basic proxy authenticatie</string>
   <string name="morphe_proxy_auth_password_title">Proxy wachtwoord</string>
@@ -202,17 +208,19 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
   <string name="morphe_replace_links_with_shortener_title">Deelkoppelingen wijzigen naar youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Dwingt video\'s om het verkorte youtu.be URL-formaat te gebruiken</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Debuglogprotocolbuffer</string>
-  <string name="morphe_debug_protobuffer_summary">Voegt extra logboekinformatie toe voor ontwikkelaars om app-componenten te identificeren</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Als u deze instelling inschakelt, worden extra lay-outgegevens geregistreerd, waaronder tekst op het scherm voor sommige UI-componenten.
+  <string name="morphe_debug_litho_title">Litho-logboek</string>
+  <string name="morphe_debug_litho_entry_disabled">Uitgeschakeld</string>
+  <string name="morphe_debug_litho_entry_path">Pad</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Pad en buffer</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho-logging registreert de lay-outcomponenten van de app, inclusief tekst op het scherm voor sommige UI-componenten.
 
 Dit kan helpen bij het identificeren van componenten bij het maken van aangepaste filters.
 
-Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP-adres, vastgelegd"</string>
+Er worden echter ook bepaalde gebruikersgegevens, zoals uw IP-adres, vastgelegd"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Aangepaste filter</string>
-  <string name="morphe_custom_filter_screen_summary">Configureer aangepaste filters om elk component te verbergen</string>
-  <string name="morphe_custom_filter_title">Aangepaste filter inschakelen</string>
+  <string name="morphe_custom_filter_screen_summary">Stel aangepaste filters in om elk component te verbergen</string>
+  <string name="morphe_custom_filter_title">Aangepast filter inschakelen</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lijst met component pad builder strings om te filteren, gescheiden door nieuwe regels</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ongeldige aangepaste filter: %s</string>
@@ -234,7 +242,7 @@ Als je een YouTube Premium-gebruiker bent, is deze instelling mogelijk niet nodi
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_unavailable_summary">"Verhelpt afspeelproblemen met behulp van een externe PoToken-minter (Experimenteel)
 
-Om deze functie te gebruiken, zet 'Spoof videostreams' uit. ','maxLength':null,"</string>
+Om deze functie te gebruiken, zet 'Spoof videostreams' uit."</string>
   <string name="morphe_external_potoken_provider_user_dialog_message">Als het niet werkt, forceer dan het sluiten van MicroG</string>
   <string name="morphe_external_potoken_provider_settings_summary">Open de PoToken-instellingen</string>
   <string name="morphe_external_potoken_provider_about_summary">"Deze functie is momenteel in ontwikkeling en werkt mogelijk niet
@@ -301,13 +309,13 @@ De ID van de video die je bekijkt wordt naar de Return YouTube Dislike API gestu
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">API-responstijd, laatste media</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">\"Dislikes\" zijn tijdelijk niet beschikbaar - Client API-snelheidslimiet is van kracht</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API-ophalen stemmen, aantal oproepen</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Geen netwerko oproepen gedaan</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Geen netwerkoproepen gedaan</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s netwerkoproepen uitgevoerd</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API-ophalen stemmen, aantal time-outs</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Geen netwerkoproepen zijn vastgelopen</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s netwerkoproepen time-out</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Client snelheidslimieten van de API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Geen client snelheidslimieten aangetroffen</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client rate limit encountered %s times</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client-snelheidslimiet %s keer bereikt</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milliseconden</string>
 </resources>

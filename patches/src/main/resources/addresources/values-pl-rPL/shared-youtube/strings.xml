@@ -207,9 +207,11 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_replace_links_with_shortener_title">Zmień linki udostępniania na youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Wymusza używanie skróconych linków youtu.be dla filmów</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Logi debugowania buforów protokołu</string>
-  <string name="morphe_debug_protobuffer_summary">Dodaje szczegółowe informacje do logów, aby ułatwić programistom identyfikację elementów aplikacji</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Włączenie tej opcji spowoduje rejestrowanie dodatkowych danych układu, w tym tekst wyświetlany na ekranie dla niektórych elementów interfejsu.
+  <string name="morphe_debug_litho_title">Logowanie Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Wyłączone</string>
+  <string name="morphe_debug_litho_entry_path">Ścieżka</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Ścieżka i bufor</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Rejestrowanie Litho zapisuje w dzienniku komponenty układu aplikacji, w tym tekst wyświetlany na ekranie dla niektórych elementów interfejsu.
 
 Może to pomóc w identyfikacji elementów podczas tworzenia własnych filtrów.
 

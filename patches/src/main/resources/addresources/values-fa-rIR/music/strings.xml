@@ -152,7 +152,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_pause">مکث</string>
   <string name="morphe_music_downloads_shuffle">پخش تصادفی</string>
   <string name="morphe_music_downloads_repeat">تکرار</string>
-  <string name="morphe_music_downloads_minimize">بستن</string>
+  <string name="morphe_music_downloads_minimize">کوچک کردن</string>
   <string name="morphe_music_downloads_close">بستن</string>
   <string name="morphe_music_downloads_delete">حذف</string>
   <string name="morphe_music_downloads_delete_track">حذف دانلود</string>
@@ -218,11 +218,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_download_already_running">دانلود لیست پخش هم‌اکنون در حال اجراست</string>
   <string name="morphe_music_downloads_playlist_download_needs_account">حساب کاربری شما هنوز شناسایی نشده است. لحظاتی دیگر دوباره تلاش کنید</string>
   <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s مورد فهرست شد، همه قبلاً دانلود شده‌اند</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">تنها بخشی از لیست پخش فهرست شد. برای دریافت بقیه، بعداً دوباره روی دانلود ضرب کنید</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">تنها بخشی از لیست پخش فهرست شد. برای دریافت بقیه، بعداً دوباره دانلود را لمس کنید</string>
   <string name="morphe_music_downloads_playlist_download_started">در حال دانلود %s در پس‌زمینه</string>
   <string name="morphe_music_downloads_playlist_download_no_network">عدم اتصال به شبکه</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">در انتظار شبکه…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">پس از %1$s از %2$s متوقف شد. برای ادامه دوباره روی دانلود ضرب کنید</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">پس از %1$s از %2$s متوقف شد. برای ادامه دوباره دانلود را لمس کنید</string>
   <string name="morphe_music_downloads_mark_title">علامت‌گذاری آهنگ‌های دانلود شده</string>
   <string name="morphe_music_downloads_mark_summary">آهنگ‌هایی که قبلاً دانلود شده‌اند، در لیست‌های پخش، آلبوم‌ها و نتایج جستجو، پیش از جزئیات خود یک علامت نمایش می‌دهند</string>
   <!-- misc.settings.settingsPatch -->
@@ -373,7 +373,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_filter_all">همه فهرست‌های پخش</string>
   <string name="morphe_music_playlist_tags_filter_visible">برچسب‌های قابل مشاهده</string>
   <string name="morphe_music_playlist_tags_manage">مدیریت</string>
-  <string name="morphe_music_playlist_tags_none">هنوز برچسبی وجود ندارد. برای ایجاد برچسب، روی یک فهرست پخش فشار طولانی دهید و «برچسب‌ها» را انتخاب کنید</string>
+  <string name="morphe_music_playlist_tags_none">هنوز برچسبی وجود ندارد. برای ایجاد برچسب، روی یک فهرست پخش ضربه بزنید و نگه دارید و «برچسب‌ها» را انتخاب کنید</string>
   <string name="morphe_music_playlist_tags_section_tags">برچسب‌ها</string>
   <string name="morphe_music_playlist_tags_section_playlists">فهرست‌های پخش</string>
   <string name="morphe_music_playlist_tags_no_playlists">یک بار کتابخانه را باز کنید تا فهرست‌های پخش شما در اینجا ظاهر شوند</string>
@@ -460,7 +460,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_subscriptions">عضویت‌ها</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">اجبار جهت عمودی</string>
-  <string name="morphe_music_force_portrait_orientation_summary">برنامه را هنگام چرخش دستگاه در جهت عمودی نگه می‌دارد</string>
+  <string name="morphe_music_force_portrait_orientation_summary">پنهان‌کردن متن ترانه‌های پخش‌نشده</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">تغییر رنگ مینی‌پخش‌کننده</string>
   <string name="morphe_music_change_miniplayer_color_summary">رنگ مینی‌پخش‌کننده را با پخش‌کنندهٔ تمام‌صفحه هماهنگ می‌کند</string>
@@ -573,7 +573,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_show_button_title">نمایش دکمهٔ SoundProof</string>
   <string name="morphe_music_soundproof_show_button_summary">نمایش دکمه‌ای در نوار بالای پخش‌کننده برای مشاهده و ثبت آرای جامعه برای هنرمند فعلی</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">رد کردن هنرمندان AI</string>
-  <string name="morphe_music_soundproof_skip_ai_artists_summary">به‌طور خودکار آهنگ‌هایی را که هنرمند آن‌ها به آستانه هوش مصنوعی زیر می‌رسد، رد می‌کند</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">آهنگ‌های هنرمندانی را که به آستانه تشخیص رسیده‌اند، به‌طور خودکار رد می‌کند</string>
   <string name="morphe_music_soundproof_toast_on_skip_title">نمایش اعلان ردکردن</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">وقتی آهنگی به‌طور خودکار رد شود، اعلانی نمایش می‌دهد</string>
   <string name="morphe_music_soundproof_threshold_title">آستانه تشخیص</string>
@@ -607,9 +607,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_soundproof_sheet_live_failed">اتصال به SoundProof برقرار نشد. آرا از دیتابیس روزانه هستند و رای‌گیری در دسترس نیست.</string>
   <string name="morphe_music_soundproof_vote_failed_toast">رای‌گیری SoundProof با خطا مواجه شد</string>
   <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
-  <string name="morphe_music_soundproof_about_summary">"داده‌های هنرمند از SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) تامین شده و هر روز یک بار دانلود می‌شوند. حالت Skipping هیچ اطلاعاتی درباره آنچه پخش می‌کنید ارسال نمی‌کند. باز کردن صفحه SoundProof نام هنرمند فعلی را به سرور SoundProof ارسال می‌کند تا آرا به‌روز نمایش داده شوند و امکان رای دادن فراهم شود. سرور رای‌دهندگان را از طریق آدرس IP تشخیص می‌دهد، بنابراین رای شما ممکن است در شبکه‌های دیگر متفاوت نمایش داده شود.
+  <string name="morphe_music_soundproof_about_summary">"داده‌های هنرمند از SoundProof-Dumps (github.com/NuclearBlox/SoundProof-Dumps) تامین می‌شوند و هر روز یک بار دانلود می‌شوند. رد کردن آهنگ هیچ اطلاعاتی درباره آنچه پخش می‌کنید ارسال نمی‌کند. باز کردن صفحه SoundProof نام هنرمند فعلی را به سرور SoundProof ارسال می‌کند تا آرای به‌روز نمایش داده شوند و امکان رای دادن فراهم شود. سرور رای‌دهندگان را از طریق آدرس IP تشخیص می‌دهد، بنابراین رای شما ممکن است در شبکه‌های دیگر متفاوت نمایش داده شود.
 
-این دیتابیس تحت مجوز ODC Open Database License (ODbL) است. ورودی‌های Soul Over AI توسط xoundbyte تحت مجوز CC BY 4.0 هستند. این بخش وابسته به SoundProof یا Soul Proof AI نیست و توسط آن‌ها تایید نشده است."</string>
+این دیتابیس تحت مجوز ODC Open Database License (ODbL) است. ورودی‌های Soul Over AI توسط xoundbyte تحت مجوز CC BY 4.0 هستند. این برنامه با SoundProof یا Soul Over AI وابستگی ندارد و توسط آن‌ها تایید نشده است."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">استفاده از متن آهنگ شخص ثالث</string>
   <string name="morphe_music_lyrics_enabled_summary">متن آهنگ را از سرویس شخص ثالث نشان می‌دهد و اگر چیزی پیدا نشود به متن داخلی برمی‌گردد</string>
@@ -653,7 +653,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_dict_duplicate">%s از قبل دارای جدول کلمات است</string>
   <string name="morphe_music_lyrics_rime_dict_reserved">%s توسط رومنایزر داخلی خوانده می‌شود و نمی‌تواند لیست کلمات دریافت کند</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">استفاده نشده: این زبان از قبل خوانش خود را دارد، بنابراین برای حذف آن تیک آن را بردارید</string>
-  <string name="morphe_music_lyrics_rime_dict_added">%s اضافه شد - آن را تیک بزنید و روی ذخیره ضرب کنید تا دانلود شود</string>
+  <string name="morphe_music_lyrics_rime_dict_added">%s اضافه شد - آن را تیک بزنید و روی ذخیره ضربه بزنید تا دانلود شود</string>
   <string name="morphe_music_lyrics_rime_dict_ready">لیست‌های کلمات آماده هستند</string>
   <string name="morphe_music_lyrics_rime_dict_ready_toast">لیست‌های کلمات آماده است (%s ورودی)</string>
   <string name="morphe_music_lyrics_rime_dict_building">در حال خواندن لیست کلمات: %s%%</string>
@@ -858,7 +858,7 @@ Second \"item\" text"</string>
 ترانه‌ها از سرویس‌های شخص ثالث دریافت می‌شوند که هیچ ارتباط، حامی بودن یا تأییدی با Morphe ندارند. هر سرویس به همان شکلی که هست استفاده می‌شود: ترانه‌ها، دسترس‌پذیری و مجوز آن‌ها متعلق به آن سرویس‌ها و دارندگان مجوزشان است و استفاده از آن‌ها ممکن است مشروط به شرایط خدمات آن‌ها باشد. آنچه به یک سرویس فعال فرستاده می‌شود فقط جستجوی درخواستی شماست - عنوان، خواننده و در مواردی که سرویس نیاز دارد، شناسه ویدیو. پایانه AI اختیاری و تبدیل سریع LRC تنها پس از پیکربندی آن‌ها اجرا می‌شوند و متن ترانه یا URL ویدیوی ترک را دریافت می‌کنند."</string>
   <string name="morphe_music_lyrics_source_advice_summary">فقط ارائه‌دهندگانی که استفاده می‌کنید را فعال کنید یا پیش‌فرض را حفظ کنید - درخواست‌های مداوم می‌تواند سایت‌های متن آهنگ جامعه کوچک را دچار اشکال کند</string>
   <string name="morphe_music_lyrics_hide_info_title">پنهان‌کردن خط اعتبار</string>
-  <string name="morphe_music_lyrics_hide_info_summary">پنهان‌کردن خط اعتبار نمایش‌داده‌شده در پایین متن ترانه</string>
+  <string name="morphe_music_lyrics_hide_info_summary">پنهان‌کردن متن ترانه‌های پخش‌نشده</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">جابجایی ترجمه و لاتین‌نویسی</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">ترجمه را به بالای متن ترانه منتقل می‌کند؛ خوانش و رومی‌سازی در پایین باقی می‌مانند</string>
   <string name="morphe_music_lyrics_force_center_title">همیشه مرکز ترانه‌ها</string>

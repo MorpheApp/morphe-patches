@@ -344,7 +344,7 @@ Kısıtlamalar:
   <string name="morphe_hide_stats_hidden_24h_title">Son 24 saatte gizlenen videolar</string>
   <string name="morphe_hide_stats_hidden_all_title">Tüm zamanlarda gizlenen videolar</string>
   <string name="morphe_hide_stats_hidden_24h_reset_title">Son 24 saat sayacını sıfırla?</string>
-  <string name="morphe_hide_stats_hidden_all_reset_title">Tüm zamanlayıcıyı sıfırla?</string>
+  <string name="morphe_hide_stats_hidden_all_reset_title">Tüm zamanlar sayacını sıfırla?</string>
   <string name="morphe_hide_aislist_screen_title">Yapay zeka kanalı filtresi</string>
   <string name="morphe_hide_aislist_screen_summary">AiSList topluluğu tarafından yapay zeka tarafından oluşturulan içerik olarak işaretlenen kanallardan videoları gizle</string>
   <string name="morphe_hide_aislist_blocklist_category_title">Engelleme Listesi: Yüksek güven</string>
@@ -448,7 +448,7 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_channel_search_sort_least_viewed">En az izlenen</string>
   <string name="morphe_channel_search_sort_newest">En yeni</string>
   <string name="morphe_channel_search_sort_oldest">En eski</string>
-  <string name="morphe_channel_search_sort_shortest">En kısa Short</string>
+  <string name="morphe_channel_search_sort_shortest">En kısa</string>
   <string name="morphe_channel_search_sort_longest">En uzun</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Bağlantı panoya kopyalandı</string>
@@ -625,11 +625,13 @@ API anahtarınız asla paylaşılmamalıdır. Ona erişimi olan herkes OpenRoute
   <string name="morphe_vot_mymemory_quota_message_no_email">Bugünün ücretsiz MyMemory çeviri kotasını (5.000 karakter) kullandınız. Günlük limiti 50.000 karaktere çıkarmak için ayarlarınızda bir MyMemory e-postası ekleyin veya farklı bir çeviri hizmetine geçin</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Bugünün MyMemory çeviri kotasını (50.000 karakter) kullandınız. Farklı bir çeviri hizmetine geçin veya yarın tekrar deneyin</string>
   <string name="morphe_vot_mymemory_error">MyMemory çevirisi başarısız oldu (durum %s)</string>
-  <!-- interaction.watchlater.watchLaterPatch -->
-  <string name="morphe_watch_later_wide_drag_handles_title">Daha sonra izle sürükleme tutamaçlarını genişlet</string>
-  <string name="morphe_watch_later_wide_drag_handles_summary">Daha sonra izle videolarının sürükleme tutamaçlarını tutması daha kolaydır</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">Daha sonra izle\'den kaldırma snackbarını gizle</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_summary">Daha sonra izle\'den bir video kaldırıldığında onay bildirimi gösterilmez</string>
+  <!-- interaction.playlist.playlistPatch -->
+  <string name="morphe_playlist_wide_drag_handles_title">Oynatma listesi sürükleme tutamaçlarını genişlet</string>
+  <string name="morphe_playlist_wide_drag_handles_summary">Oynatma listesi sürükleme tutamaçları daha kolay tutulabilir</string>
+  <string name="morphe_playlist_hide_removal_snackbar_title">Oynatma listesi kaldırma bildirimini gizle</string>
+  <string name="morphe_playlist_hide_removal_snackbar_summary">Oynatma listesinden bir video kaldırıldığında onay gösterilmez</string>
+  <string name="morphe_playlist_long_press_drag_title">Oynatma listesi videolarını sıralamak için basılı tut</string>
+  <string name="morphe_playlist_long_press_drag_summary">Oynatma listenizin bir videosunu yeni bir yere sürüklemek için dokunun ve basılı tutun</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Videoyu döngüye almayı etkinleştir</string>
   <string name="morphe_do_not_remember_loop_video_title">Döngü videosunu hatırlama</string>
@@ -729,7 +731,7 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Açılır menüde reklam beyaz listesi</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Bu videonun kanalında reklamların oynatılmasına izin veren bir açılır menü öğesi ekler.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Bu özellik için PotHelper kullanmanız veya \"Video akışlarını kandırma\" seçeneğini TV veya Android VR girişi olarak ayarlamanız gerekebilir</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Bu özellik için PotHelper kullanmanız veya \"Video akışlarını taklit et\" seçeneğini TV veya Android VR girişi olarak ayarlamanız gerekebilir</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Açılır menüde hız beyaz listesi</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Bu videonun kanalını her zaman 1.0x hızda oynatan bir açılır menü öğesi ekler.</string>
   <string name="morphe_queue_manager_check_failed_auth">Giriş yapılmadı</string>
@@ -956,7 +958,7 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_caption_cookies_summary">Zamanlı Metin API\'si (Altyazı Veri API\'si) isteklerinde ayarlanacak çerezler</string>
   <string name="morphe_get_caption_cookies_title">Altyazı çerezlerini al</string>
   <string name="morphe_get_caption_cookies_summary">Çerezleri almak için buraya tıklayın</string>
-  <string name="morphe_get_caption_cookies_failed">Çerezleri almak için başarısız oldu</string>
+  <string name="morphe_get_caption_cookies_failed">Çerezler alınamadı</string>
   <string name="morphe_get_caption_cookies_duplicate">Çerezler zaten var</string>
   <string name="morphe_get_caption_cookies_success">Çerezler başarıyla güncellendi</string>
   <!-- layout.captions.transcriptPatch -->
@@ -1194,7 +1196,10 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_disable_playlist_autoplay_title">Çalma listelerinin otomatik olarak sonraki videoya geçmesini engeller</string>
   <string name="morphe_disable_playlist_autoplay_summary">Çalma listelerinin otomatik olarak bir sonraki videoya geçmesini engeller</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-  <string name="morphe_disable_continue_watching_prompt_title">‘İzlemeye devam etmek istiyor musun?’ istemini devre dışı bırak</string>
+  <string name="morphe_continue_watching_prompt_title">\'İzlemeye devam edilsin mi?\' istemi</string>
+  <string name="morphe_continue_watching_prompt_entry_1">Varsayılan</string>
+  <string name="morphe_continue_watching_prompt_entry_2">Devre dışı</string>
+  <string name="morphe_continue_watching_prompt_entry_3">Devre dışı, otomatik oynatma geri sayımını her zaman göster</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Video bittiğinde tam ekran modundan çıkar</string>
   <string name="morphe_exit_fullscreen_entry_1">Devre dışı</string>
@@ -1468,7 +1473,7 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Cihaz boyutlarını taklit et</string>
   <string name="morphe_spoof_device_dimensions_summary">Bunu etkinleştirmek daha yüksek video kalitelerini açabilir</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Bunu etkinleştirmek video oynatma takılmaları, daha kötü pil ömrü, ve bilinmeyen yan etkiler yaşamanıza sebep olabilir</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">Bunu etkinleştirmek video oynatma takılmaları, daha kötü pil ömrü ve bilinmeyen yan etkiler yaşamanıza sebep olabilir</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Titreşimli geri bildirim</string>
   <string name="morphe_disable_haptic_feedback_summary">Hangi etkileşimlerin cihaz titreşimini tetikleyeceğini seçin</string>
@@ -1606,7 +1611,7 @@ AVC (H.264)
 AV1 ile video oynatma takılabilir veya kare atlayabilir"</string>
   <string name="morphe_spoof_video_streams_about_title">Taklit yan etkileri</string>
   <string name="morphe_spoof_video_streams_about_failure">• Oynatma 1. dakikada başarısız olabilir</string>
-  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Ses Parçası menüsü eksik</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Ses Parçası\' menüsü eksik</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodeği yok</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersif modu mevcut değil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit ses mevcut değil</string>
@@ -1690,7 +1695,7 @@ Gizli moddayken, hesap kimliği kullanılamadığında veya farklı bir hesaba g
   <string name="morphe_series_tracker_enable">Yerel izlemeyi etkinleştir</string>
   <string name="morphe_series_tracker_tracking_paused">İlerleme kaydı kapalı</string>
   <string name="morphe_series_tracker_resume_at">%s noktasından devam et</string>
-  <string name="morphe_series_tracker_watched_count">%1$s / %2$s bölümler izlendi</string>
+  <string name="morphe_series_tracker_watched_count">%1$s / %2$s bölüm izlendi</string>
   <string name="morphe_series_tracker_episode_position">Bölüm %1$s · %2$s</string>
   <string name="morphe_series_tracker_episode_range">%3$s dizisinin %1$s-%2$s bölümleri</string>
   <string name="morphe_series_tracker_catalog_unavailable">Bölümleri yüklemeyi denemek için sayfayı yenileyin. Gizli oynatma listeleri hesap erişimi gerektirir; bunların yer imleri yine de YouTube\'da açılır</string>

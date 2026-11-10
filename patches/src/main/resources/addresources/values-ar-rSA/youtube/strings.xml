@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
   <string name="morphe_hide_unavailable_videos_hidden_banner_title">إخفاء لافتة \'يتم إخفاء الفيديوهات غير المتوفّرة\'</string>
   <string name="morphe_hide_unavailable_videos_hidden_banner_summary">يخفي لافتة \'يتم إخفاء الفيديوهات غير المتوفّرة\' في قوائم التشغيل</string>
-  <string name="morphe_hide_upload_time_title">إخفاء وقت التحميل</string>
+  <string name="morphe_hide_upload_time_title">إخفاء وقت الرفع</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"القيود:
 • قد تظل أرفف Shorts، صفحات القناة، ونتائج البحث تُظهر أوقات التحميل
@@ -287,7 +287,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_dislike_button_title">إخفاء زر لم يعجبني</string>
   <string name="morphe_hide_comments_emoji_button_title">إخفاء زر الإيموجي</string>
   <string name="morphe_hide_comments_filter_bar_options_title">إخفاء خيارات شريط التصفية</string>
-  <string name="morphe_hide_comments_filter_bar_options_summary">يخفي جميع خيارات فرز التعليقات باستثناء ‘الأهم‘ و ‘أحدث التعليقات‘</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">يخفي جميع خيارات شريط التصفية باستثناء \'الأهم\' و\'الأحدث\'</string>
   <string name="morphe_hide_comments_gif_button_title">إخفاء زر GIF</string>
   <string name="morphe_hide_comments_gifs_and_images_title">إخفاء GIFs والصور</string>
   <string name="morphe_hide_comments_gifs_and_images_summary">يخفي الصور والمتحركة GIF المرفقة بالتعليقات والردود</string>
@@ -416,7 +416,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_merchandise_banners_title">إخفاء لافتات البضائع</string>
   <string name="morphe_hide_paid_promotion_labels_title">إخفاء علامات يتضمن إعلانًا ترويجيًا مدفوعًا</string>
   <string name="morphe_hide_player_popup_ads_title">إخفاء إعلانات المشغل المنبثقة</string>
-  <string name="morphe_hide_self_sponsor_ads_title">إخفاء بطاقات الرعاية الذاتية</string>
+  <string name="morphe_hide_self_sponsor_ads_title">إخفاء بطاقات الترويج الذاتي</string>
   <string name="morphe_hide_shopping_links_title">إخفاء روابط التسوق</string>
   <string name="morphe_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
   <string name="morphe_hide_youtube_premium_promotions_title">إخفاء عروض ترقية YouTube Premium</string>
@@ -430,7 +430,7 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channels_header">القنوات المدرجة في القائمة المسموح بها</string>
   <string name="morphe_channel_whitelist_empty">لا توجد قنوات في القائمة المسموح بها</string>
   <string name="morphe_channel_whitelist_channel_added">تمت إضافة القناة إلى القائمة المسموح بها</string>
-  <string name="morphe_channel_whitelist_channel_removed">تم إزالة القناة من القائمة المسموح بها</string>
+  <string name="morphe_channel_whitelist_channel_removed">تمت إزالة القناة من القائمة المسموح بها</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">البحث داخل القناة</string>
@@ -544,7 +544,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_overlay_button_summary">يعرض زرًا في مشغل الفيديو يفتح أداة التنزيل الخارجية الخاصة بك</string>
   <string name="morphe_external_downloader_quick_menu_title">تنزيل سريع عند النقر</string>
   <string name="morphe_external_downloader_quick_menu_summary">تنبيهات للتنزيل في الخلفية. اضغط مع الاستمرار لفتح أداة التنزيل. يعمل مع YTDLnis و YTindir</string>
-  <string name="morphe_external_downloader_mark_watched_title">تحديد التنزيلات كـ تمت مشاهدتها</string>
+  <string name="morphe_external_downloader_mark_watched_title">تحديد التنزيلات كمُشاهدة</string>
   <string name="morphe_external_downloader_mark_watched_summary">تتم إضافة الفيديوهات التي تم تنزيلها باستخدام أداة تنزيل خارجية إلى سجل مشاهدات YouTube الخاص بك</string>
   <string name="morphe_external_downloader_quick_video_quality">Full HD (1080p)</string>
   <string name="morphe_external_downloader_quick_audio_quality">متوسط (192 kbps)</string>
@@ -577,7 +577,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_enabled_summary">يعرض زر متراكب في مشغّل الفيديو. انقر لتشغيل أو إيقاف الترجمة، واضغط مع الاستمرار للوصول إلى الإعدادات السريعة.</string>
   <string name="morphe_vot_caption_language_title">اللغة</string>
   <string name="morphe_vot_translation_service_title">مزوّد الترجمة</string>
-  <string name="morphe_vot_original_audio_volume_title">مستوى صوت الصوت الأصلي</string>
+  <string name="morphe_vot_original_audio_volume_title">مستوى الصوت الأصلي</string>
   <string name="morphe_vot_original_audio_volume_summary">مستوى صوت الصوت الأصلي في YouTube أثناء نطق الترجمة</string>
   <string name="morphe_vot_translation_volume_title">مستوى صوت الترجمة</string>
   <string name="morphe_vot_translation_volume_summary">مستوى صوت الترجمة المدبلجة</string>
@@ -627,11 +627,13 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_vot_mymemory_quota_message_no_email">لقد استخدمت حصة الترجمة المجانية اليومية لـ MyMemory (5000 حرف). أضف بريدًا إلكترونيًا لـ MyMemory في الإعدادات لرفع الحد اليومي إلى 50000 حرف، أو قم بالتبديل إلى خدمة ترجمة مختلفة</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">لقد استخدمت حصة ترجمة MyMemory اليومية (50000 حرف). قم بالتبديل إلى خدمة ترجمة مختلفة أو حاول مرة أخرى غدًا</string>
   <string name="morphe_vot_mymemory_error">فشلت ترجمة MyMemory (الحالة %s)</string>
-  <!-- interaction.watchlater.watchLaterPatch -->
-  <string name="morphe_watch_later_wide_drag_handles_title">توسيع مقابض سحب المشاهدة لاحقًا</string>
-  <string name="morphe_watch_later_wide_drag_handles_summary">مقابض السحب لفيديوهات المشاهدة لاحقًا أسهل في الإمساك بها</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">إخفاء شريط تنبيه إزالة المشاهدة لاحقًا</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_summary">لا يظهر التأكيد بعد إزالة الفيديو من المشاهدة لاحقًا</string>
+  <!-- interaction.playlist.playlistPatch -->
+  <string name="morphe_playlist_wide_drag_handles_title">توسيع مقابض سحب قائمة التشغيل</string>
+  <string name="morphe_playlist_wide_drag_handles_summary">أصبحت مقابض سحب قائمة التشغيل أسهل في الإمساك</string>
+  <string name="morphe_playlist_hide_removal_snackbar_title">إخفاء شريط تنبيه إزالة قائمة التشغيل</string>
+  <string name="morphe_playlist_hide_removal_snackbar_summary">لا يظهر التأكيد بعد إزالة فيديو من قائمة التشغيل</string>
+  <string name="morphe_playlist_long_press_drag_title">الضغط مطولًا لإعادة ترتيب الفيديوهات في قائمة التشغيل</string>
+  <string name="morphe_playlist_long_press_drag_summary">المس واستمر في الضغط على فيديو من قائمة التشغيل الخاصة بك لسحبه إلى موضع جديد</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">تمكين تكرار الفيديو</string>
   <string name="morphe_do_not_remember_loop_video_title">لا تتذكر حالة تكرار الفيديو</string>
@@ -735,7 +737,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">قد تتطلب هذه الميزة استخدام PotHelper أو تغيير \'Spoof Video Streams\' إلى TV أو تسجيل الدخول عبر Android VR</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">القائمة المسموح بها للسرعة في القائمة المنبثقة</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">يضيف عنصرًا في القائمة المنبثقة يُشغّل قناة ذلك الفيديو دائمًا بسرعة 1.0x</string>
-  <string name="morphe_queue_manager_check_failed_auth">تسجيل الدخول غير ممكن</string>
+  <string name="morphe_queue_manager_check_failed_auth">لم يتم تسجيل الدخول</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">لا يوجد معرّف قائمة تشغيل</string>
   <string name="morphe_queue_manager_check_failed_queue">قائمة المحتوى التالي فارغة</string>
   <string name="morphe_queue_manager_check_failed_video_id">لا يوجد معرّف فيديو</string>
@@ -830,7 +832,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_ignore_when_locked_title">تجاهل التمرير عند القفل</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
   <string name="morphe_swipe_ignore_when_locked_summary">يتم تجاهل إيماءات التمرير أثناء قفل المشغل باستخدام \'قفل الشاشة\'</string>
-  <string name="morphe_swipe_press_to_engage_title">تمكين الضغط لتمرير الإيماءة</string>
+  <string name="morphe_swipe_press_to_engage_title">تمكين إيماءة الضغط ثم التمرير</string>
   <string name="morphe_swipe_press_to_engage_summary">يتطلب الضغط مع الاستمرار قبل التعرف على إيماءة التمرير</string>
   <string name="morphe_swipe_haptic_feedback_title">الاهتزاز عند الضغط</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">حفظ واستعادة السطوع</string>
@@ -1118,7 +1120,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">إخفاء بطاقات المعلومات</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
-  <string name="morphe_disable_rolling_number_animations_title">تعطيل عدد مرات المشاهدة والإعجابات في الوقت الفعلي</string>
+  <string name="morphe_disable_rolling_number_animations_title">تعطيل حركة الأرقام المتدحرجة</string>
   <string name="morphe_disable_rolling_number_animations_summary">يوقف عرض التغيُّر الفوري في أعداد المشاهدات والإعجابات</string>
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">إخفاء شريط تقدم مشغل الفيديو</string>
@@ -1197,7 +1199,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_disable_playlist_autoplay_title">تعطيل تشغيل قوائم التشغيل تلقائيًا</string>
   <string name="morphe_disable_playlist_autoplay_summary">يمنع قوائم التشغيل من الانتقال التلقائي إلى الفيديو التالي</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-  <string name="morphe_disable_continue_watching_prompt_title">تعطيل الرسالة المنبثقة \'متابعة المشاهدة؟\'</string>
+  <string name="morphe_continue_watching_prompt_title">الرسالة المنبثقة \'متابعة المشاهدة؟\'</string>
+  <string name="morphe_continue_watching_prompt_entry_1">الوضع الافتراضي</string>
+  <string name="morphe_continue_watching_prompt_entry_2">معطّل</string>
+  <string name="morphe_continue_watching_prompt_entry_3">تم التعطيل، عرض العد التنازلي للتشغيل التلقائي دائمًا</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">الخروج من وضع ملء الشاشة عند انتهاء الفيديو</string>
   <string name="morphe_exit_fullscreen_entry_1">معطل</string>
@@ -1349,7 +1354,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_docked_title">المشغل المصغر المثبت</string>
   <string name="morphe_miniplayer_docked_summary">يربط المشغل المصغر بشريط التنقل وجوانب الشاشة، بدلًا من جعله يطفو فوقهما</string>
   <string name="morphe_miniplayer_type_entry_0">معطّل</string>
-  <string name="morphe_miniplayer_type_entry_1">إفتراضي</string>
+  <string name="morphe_miniplayer_type_entry_1">الافتراضي</string>
   <string name="morphe_miniplayer_type_entry_2">بسيط</string>
   <string name="morphe_miniplayer_type_entry_3">بسيط 2</string>
   <string name="morphe_miniplayer_type_entry_4">الجهاز اللوحي</string>
@@ -1414,7 +1419,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_seekbar_custom_color_accent_summary">تعيين اللون الثانوي لشريط تقدم الفيديو</string>
   <string name="morphe_seekbar_custom_color_invalid">لون شريط التقدم غير صالح</string>
   <!-- layout.branding.customBrandingPatch -->
-  <string name="morphe_custom_branding_icon_entry_8">الأصلية تماثلية</string>
+  <string name="morphe_custom_branding_icon_entry_8">التماثلي الأصلي</string>
   <string name="morphe_custom_branding_icon_entry_9">الأصلية كعكة</string>
   <string name="morphe_custom_branding_icon_entry_10">الأصلية معدن</string>
   <!-- layout.branding.header.changeHeaderPatch -->
@@ -1430,11 +1435,11 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- "DeArrow" must be kept untranslated. -->
   <string name="morphe_dearrow_titles_title">عناوين DeArrow</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_titles_home_title">علامة التبويب الصفحة الرئيسية</string>
+  <string name="morphe_dearrow_titles_home_title">علامة تبويب الصفحة الرئيسية</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_dearrow_titles_subscription_title">علامة تبويب الاشتراكات</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_titles_library_title">علامة التبويب أنت</string>
+  <string name="morphe_dearrow_titles_library_title">علامة تبويب أنت</string>
   <string name="morphe_dearrow_titles_player_title">قوائم تشغيل المشغل &amp; الاقتراحات</string>
   <string name="morphe_dearrow_titles_search_title">نتائج البحث</string>
   <string name="morphe_dearrow_titles_icon_title">عرض أيقونة DeArrow</string>
@@ -1531,7 +1536,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">قائمة سرعة التشغيل المخصصة</string>
   <string name="morphe_restore_old_speed_menu_title">استعادة قائمة سرعة التشغيل القديمة</string>
-  <string name="morphe_custom_playback_speeds_title">سرعة التشغيل المخصصة</string>
+  <string name="morphe_custom_playback_speeds_title">سرعات التشغيل المخصصة</string>
   <string name="morphe_custom_playback_speeds_summary">أدخل خيار سرعة التشغيل المفضل لديك</string>
   <string name="morphe_custom_playback_speeds_invalid">يجب أن تكون سرعات التشغيل المخصصة أقل من %s</string>
   <string name="morphe_custom_playback_speeds_parse_exception">سرعات التشغيل المخصصة غير صالحة</string>
@@ -1707,7 +1712,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_continue">استمرار</string>
   <string name="morphe_series_tracker_start_here">ابدأ هنا</string>
   <string name="morphe_series_tracker_start_saved">تم حفظ نقطة البداية</string>
-  <string name="morphe_series_tracker_watched_to_here">شاهد حتى هنا</string>
+  <string name="morphe_series_tracker_watched_to_here">تمت المشاهدة حتى هنا</string>
   <string name="morphe_series_tracker_marked">تم وضع الحلقات كـ تمت مشاهدتها</string>
   <string name="morphe_series_tracker_undo">تراجع</string>
   <string name="morphe_series_tracker_enable_short">تمكين</string>
@@ -1767,7 +1772,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_backup_restore">استعادة النسخة الاحتياطية</string>
   <string name="morphe_series_tracker_backup_preview">إضافة %1$s سلسلة. تم الاحتفاظ بـ %2$s سلسلة موجودة بالفعل في مكتبتك. يتم الاحتفاظ بتقدم الفيديو الموجود</string>
   <string name="morphe_series_tracker_backup_saved">تم حفظ النسخة الاحتياطية للسلسلة</string>
-  <string name="morphe_series_tracker_backup_restored">تم استعادة %s سلسلة</string>
+  <string name="morphe_series_tracker_backup_restored">تمت استعادة %s سلسلة</string>
   <string name="morphe_series_tracker_error_backup_invalid">هذا الملف ليس نسخة احتياطية لسلسلة مدعومة، أو أنه كبير جدًا. لم تتغير مكتبتك</string>
   <string name="morphe_series_tracker_error_backup_write">تعذّر حفظ النسخة الاحتياطية. جرّب موقعًا آخر</string>
   <string name="morphe_series_tracker_removed">تمت إزالة السلسلة</string>
@@ -1779,7 +1784,7 @@ AVC (H.264)
   <string name="morphe_series_tracker_playback_boundary">لا توجد حلقات أخرى في هذا الاتجاه</string>
   <string name="morphe_series_tracker_continue_series">استمرار %s</string>
   <string name="morphe_series_tracker_search_series">البحث في السلسلات</string>
-  <string name="morphe_series_tracker_clear_search">مسح سجل البحث</string>
+  <string name="morphe_series_tracker_clear_search">مسح البحث</string>
   <string name="morphe_series_tracker_no_search_results">لم يتم العثور على سلسلات</string>
   <string name="morphe_series_tracker_untitled_episode">حلقة بدون عنوان</string>
   <string name="morphe_series_tracker_unavailable_episode">حلقة غير متاحة</string>

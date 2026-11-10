@@ -94,7 +94,7 @@ Simvolu hər yerdə dəyişdirmək üçün təkrar yamaqlayın və 'Tətbiq simv
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe oynat</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirişi</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Baxış tarixçəniz saxlanılmır.&lt;br&gt;&lt;br&gt;Bu çox güman ki, DNS reklam əngəlləyici və ya şəbəkə proksisinə görədir.&lt;br&gt;&lt;br&gt;Bunu düzəltmək üçün s.youtube.com-u&lt;/b&gt; &lt;b&gt;ağ siyahıya salın və ya bütün DNS əngəlləyiciləri və proksiləri bağlayın</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Baxış tarixçəniz saxlanılmır.&lt;br&gt;&lt;br&gt;Bu çox güman ki, DNS reklam əngəlləyici və ya şəbəkə proksisinə görədir.&lt;br&gt;&lt;br&gt;Bunu düzəltmək üçün &lt;b&gt;s.youtube.com&lt;/b&gt; ünvanını ağ siyahıya salın və ya bütün DNS əngəlləyiciləri və proksiləri bağlayın</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Təkrar göstərmə</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Video yayımların saxtalaşdır</string>
@@ -155,8 +155,8 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_notification_media_screen_summary">Kilid ekranınızda və bildiriş lövhənizdə görünən oynatma nəzarətçilərini fərdiləşdirin</string>
   <string name="morphe_hide_notification_media_prev_next_title">Əvvəlki &amp; Növbəti düymələrini gizlət</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Media bildirişlərində, kilid ekranında və qulaqlıq idarəetmələrində Əvvəlki və Növbəti düyməsini gizlədir</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Çevirmə cizgisin qapat</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Kilid ekranında və bildiriş panelində çevirmə cizgisinin sürüklənməsinə mane olur</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Axtarış çubuğunu qapat</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Kilid ekranında və bildiriş panelində axtarış çubuğunun sürüklənməsinə mane olur</string>
   <string name="morphe_seek_notification_media_prev_next_title">Əvvəlki &amp; Növbəti düymələri ilə çevirmə</string>
   <string name="morphe_seek_notification_media_prev_next_summary">Media bildirişi, kilid ekranı və qulaqlıq idarəetməsini videoları dəyişmək əvəzinə çevirmək üçün dəyişir</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Geri çevirmə uzunluğu</string>
@@ -208,13 +208,15 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_replace_links_with_shortener_title">Paylaşma keçidlərini youtu.be-yə dəyişdir</string>
   <string name="morphe_replace_links_with_shortener_summary">Videoları qısaldılan youtu.be URL formatın istifadə etməyə zorlayır</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Bufer protokol sazlanma jurnalı</string>
-  <string name="morphe_debug_protobuffer_summary">Tətbiq elementlərin təyin etmək məqsədilə tərtibatçılar üçün əlavə giriş məlumatları əlavə edir</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Bu seçimi aktivləşdirmə bəzi UI quruluşları üçün ekran mətni də olmaqla əlavə tərtibat bazasını daxil edəcək.
+  <string name="morphe_debug_litho_title">Litho qeydəalma</string>
+  <string name="morphe_debug_litho_entry_disabled">Qapalıdı</string>
+  <string name="morphe_debug_litho_entry_path">Yol</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Yol və bufer</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho qeydəalma tətbiqin tərtibat elementlərini, o cümlədən bəzi UI elementlərində ekrandakı mətni qeydə alır.
 
-Bu, xüsusi filtrlər yaradarkən quruluşları müəyyən etməyə kömək edə bilər.
+​Bu, xüsusi filtrlər yaradarkən elementləri müəyyən etməyə kömək edə bilər.
 
-Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlumatın da daxil edəcək"</string>
+​Lakin bu, həm də IP ünvanınız kimi bəzi şəxsi məlumatlarınızı qeydə alacaq"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Fərdi filtr</string>
   <string name="morphe_custom_filter_screen_summary">Hər hansı elementi gizlətmək üçün fərdi filtrləri tənzimlə</string>

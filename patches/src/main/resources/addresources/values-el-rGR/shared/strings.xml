@@ -83,7 +83,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">Ιστότοπος</string>
   <string name="morphe_settings_about_links_donate">Δωρεά</string>
   <string name="morphe_settings_about_links_translations">Μεταφράσεις</string>
-  <string name="morphe_settings_about_links_credits">Αναγνωρίσεις</string>
+  <string name="morphe_settings_about_links_credits">Πιστώσεις</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Ενημερωμένο</string>
   <string name="morphe_settings_about_links_dev_header_update_available">Διαθέσιμη ενημέρωση</string>
   <string name="morphe_settings_about_contributors_current">Τρέχουσα ανάπτυξη</string>
@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Εντοπισμός σφαλμάτων</string>
   <string name="morphe_debug_screen_summary">Ρύθμιση προχωρημένων επιλογών προγραμματιστή και αρχείων καταγραφής διαγνωστικών στοιχείων</string>
-  <string name="morphe_debug_title">Ενεργοποίηση καταγραφής εντοπισμού σφαλμάτων</string>
-  <string name="morphe_debug_stacktrace_title">Αρχείο καταγραφής εντοπισμού σφαλμάτων ίχνους στοίβας</string>
-  <string name="morphe_debug_stacktrace_summary">Περιλαμβάνει ίχνη στοίβας στα αρχεία καταγραφής εντοπισμού σφαλμάτων για να βοηθήσει στον εντοπισμό σφαλμάτων</string>
+  <string name="morphe_debug_level_title">Καταγραφή εντοπισμού σφαλμάτων</string>
+  <string name="morphe_debug_level_entry_disabled">Απενεργοποιημένο</string>
+  <string name="morphe_debug_level_entry_debug">Εντοπισμός σφαλμάτων</string>
+  <string name="morphe_debug_level_entry_verbose">Λεπτομερής</string>
   <string name="morphe_debug_toast_on_error_title">Εμφάνιση μηνυμάτων σφαλμάτων του Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Η απενεργοποίηση των μηνυμάτων σφαλμάτων κρύβει όλες τις ειδοποιήσεις σφαλμάτων που αφορούν το Morphe.
 
@@ -117,7 +118,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων εκκαθαρίστηκαν</string>
   <string name="morphe_debug_feature_flags_manager_title">Διαχειριστής λειτουργιών σημαιών</string>
   <string name="morphe_debug_feature_flags_manager_summary">Διαχείριση των boolean λειτουργιών σημαιών</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Αναζήτηση λειτουργιών σημαιών</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Αναζήτηση σημαιών λειτουργίας</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_inactive">Ανενεργό (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
@@ -135,9 +136,9 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Αναγκαστική ενεργοποίηση</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Αποκλεισμός</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Αφαίρεση</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Οι λειτουργίες σημαιών αποθηκεύτηκαν</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Οι λειτουργίες σημαιών επαναφέρθηκαν</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Οι λειτουργίες σημαιών αντιγράφηκαν στο πρόχειρο</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Οι σημαίες λειτουργίας αποθηκεύτηκαν</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Οι σημαίες λειτουργίας επαναφέρθηκαν</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Οι σημαίες λειτουργίας αντιγράφηκαν στο πρόχειρο</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Επανεκκινήστε την εφαρμογή για να χρησιμοποιήσετε αυτήν τη ρύθμιση</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Εξαγωγή και εισαγωγή</string>
   <string name="morphe_debug_feature_flags_manager_import_success">Εισήχθησαν %s σημαίες λειτουργίας</string>
@@ -152,7 +153,7 @@ Second \"item\" text"</string>
 Το ήμισυ των %s σημαιών είναι αποκλεισμένο, και μετά από κάθε επανεκκίνηση αναφέρετε αν η συμπεριφορά εξακολουθεί να υπάρχει.
 
 Αναπαράγετε τη συμπεριφορά μία φορά πριν ξεκινήσετε, διαφορετικά σημαίες που η εφαρμογή δεν έχει ζητήσει ακόμα λείπουν από την αναζήτηση."</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Αρχή</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Έναρξη</string>
   <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Δεν υπάρχουν σημαίες λειτουργίας για αναζήτηση.
 
 Μόνο σημαίες που η εφαρμογή έχει χρησιμοποιήσει και δεν είναι επί του παρόντος εξαναγκασμένες μπορούν να χρησιμοποιηθούν σε δυαδική αναζήτηση."</string>
@@ -186,7 +187,7 @@ Second \"item\" text"</string>
 Παρακαλούμε ενημερώστε το MicroG στην τελευταία έκδοση v%2$s"</string>
   <string name="gms_core_dialog_update_text">Ενημέρωση</string>
   <string name="gms_core_dialog_ignore_text">Αγνόηση</string>
-  <string name="gms_core_dialog_conflict_message">"Το εγκατεστημένο MicroG δεν නිර්ισσεται από το Morphe:
+  <string name="gms_core_dialog_conflict_message">"Το εγκατεστημένο MicroG δεν συνιστάται από το Morphe:
 
 %s
 
@@ -205,7 +206,7 @@ Second \"item\" text"</string>
 
 Πατήστε το κουμπί \"Συνέχεια\" και επιτρέψτε τις αλλαγές βελτιστοποίησης"</string>
   <string name="gms_core_dialog_continue_text">Συνέχεια</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Εμφανίζεται ο διάλογος βελτιστοποίησης μπαταρίας του MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Εμφάνιση διαλόγου βελτιστοποίησης μπαταρίας του MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Απενεργοποιώντας αυτό, θα αποκρυφτεί η προτροπή βελτιστοποίησης μπαταρίας MicroG.
 
 Εάν οι βελτιστοποιήσεις μπαταρίας δεν αλλάξουν, ενδέχεται να αντιμετωπίσετε:
@@ -219,14 +220,14 @@ Second \"item\" text"</string>
   <string name="morphe_link_handling_step1_message">Ανοίξτε τις ρυθμίσεις της αρχικής εφαρμογής και απενεργοποιήστε όλους τους συνδέσμους τομέα</string>
   <string name="morphe_link_handling_step2_title">Βήμα 2: Ενεργοποίηση συνδέσμων τροποποιημένης εφαρμογής</string>
   <string name="morphe_link_handling_step2_message">Ανοίξτε τις ρυθμίσεις της τροποποιημένης εφαρμογής και ενεργοποιήστε όλους τους συνδέσμους τομέα</string>
-  <string name="morphe_link_handling_open">Εξειδικευμένες ρυθμίσεις</string>
+  <string name="morphe_link_handling_open">Άνοιγμα ρυθμίσεων</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Πειραματική Ειδοποίηση 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Χρησιμοποιείτε μια πειραματική έκδοση της εφαρμογής ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
-🔧 Περιμένετε αρρυθμία στην συμπεριφορά της εφαρμογής ή ακαθόριστα σφάλματα καθώς προσαρμόζουμε τις τροποποιήσεις για αυτήν την έκδοση της εφαρμογής.
+🔧 Περιμένετε περίεργη συμπεριφορά της εφαρμογής ή άγνωστα σφάλματα καθώς προσαρμόζουμε τις τροποποιήσεις για αυτήν την έκδοση της εφαρμογής.
 &lt;br/&gt;&lt;br/&gt;
-Εάν θέλετε μια εμπειρία χωρίς σφάλματα, τότε &lt;b&gt; απεγκαταστήστε την &lt;/b&gt; και τροποποιήσετε την συνιστώμενη έκδοση της εφαρμογής ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Εάν θέλετε μια εμπειρία χωρίς προβλήματα, τότε &lt;b&gt;απεγκαταστήστε&lt;/b&gt; αυτή την έκδοση και εφαρμόστε τη συνιστώμενη έκδοση της εφαρμογής ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Θέλω πειραματική έκδοση</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Θέλω σταθερή έκδοση</string>
   <!-- misc.announcements.patchesUpdateNoticePatch -->

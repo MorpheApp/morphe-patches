@@ -71,9 +71,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_name_entry_5">Обичај</string>
   <string name="morphe_custom_branding_icon_title">Иконица апликације</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригинална</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe сен</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe црна</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe тамно</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe светл</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe светло</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_5">Морфе плеј светло</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
@@ -102,7 +102,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_summary">"Решава проблеме са репродукцијом за већину корисника захтевајући компатибилан видео стрим
 
 Ако сте корисник YouTube Premium-а, ова поставка вам можда неће бити потребна."</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">Не можемо да узмемо било који поток клијента</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Није могуће преузети ниједан клијентски видео стрим</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_client_failing_dialog_title">Подразумевани клијент не ради</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s није радио неколико пута заредом, али %2$s јесте.
@@ -112,41 +112,41 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Искључивање овог подешавања може изазвати проблеме са репродукцијом</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Пokusajte да укључите: Нагласи поток видеа > Пријава на Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Покушајте да укључите: Лажирани видео стримови &gt; Пријава на Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Подразумевани клијент</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Најава на Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR zahteva посебну пријаву. Додирните овде да наставите</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Профилисан на Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Да бисте користили овај филтри претपоставите \'Подразу Meadow\' на Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Да бисте користили ову функцију, промените „Подразумевани клијент“ на Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Најавите се на Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijavljivanje na Android VR može popraviti problema sa reprodukcijom za neke korisnike
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Пријављивање на Android VR може да реши проблеме са репродукцијом за неке кориснике
 
-Da bi se prijavili, pritisnite nastavak ispod"</string>
+Да бисте се пријавили, притисните „Настави“ испод"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Одјави</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкције</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Активациони код: %s
 
-1. Кликните на 'Отвори веб страницу' испод за отварање веб приступача 'Прикључи приступао'
-2. Уставите са клипборда (или пропишите) активациони код изнад
-3. Пријавите се на Google ако је упито. Ако имате више налога, изaberите овај YouTube налог
-4. Кликните на 'Дозволи приступ YouTube VR'
-5. Вратите се у ово апликацију након пролaska поруке 'Уређај је прикључен'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Неуспешно је издат активациони код</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Неуспешно је издат дозволни пречкод</string>
+1. Кликните на „Отвори веб-сајт“ испод да отворите страницу „Повежите уређај“
+2. Залепите (или откуцајте) активациони код изнад
+3. Пријавите се на Google ако се то затражи. Ако имате више налога, изаберите овај YouTube налог
+4. Кликните на „Дозволи приступ YouTube VR“
+5. Вратите се у ову апликацију након што се појави порука „Уређај је повезан“"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Није успело издавање активационог кода</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Није успело издавање токена за ауторизацију</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Успешно пријављен</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Дозвола снимања
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Ауторизација је сачувана
 
-• Ваша Морфе подешења неће увозити/извозити дозволу за приступ Android VR
-• Након што ово апликације није коришћена за 6 месецих, Google ће уbrisati ову дозвolu
-• Мораћete се поново пријавити ако изmenите лозинку Google или ако деактивirateте овај уређај из наставних Google"</string>
+• Ваша Morphe подешавања неће увозити/извозити ауторизацију за Android VR
+• Ако се ова апликација не користи 6 месеци, Google ће уклонити ту ауторизацију
+• Мораћете поново да се пријавите ако промените Google лозинку или уклоните овај уређај из Google подешавања"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 привремено није доступан (API је истекао)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Prijavljivanje na Android VR je isteklo, pokušajte ponovo da se prijavite na VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Пријава на Android VR је истекла, покушајте поново да се пријавите на VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 је привремено недоступан (статус %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 привремено није доступан</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Ne mogu se prijaviti na VR, web autentikacija nije odobrena</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Не могу да се пријавим на VR, веб аутентификација није одобрена</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може се ући у VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Одјављен са Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Неважећи токен за улаз у VR, покушајте поново да уђете у VR</string>
@@ -165,7 +165,7 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_seek_notification_media_fast_forward_length_summary">Секунди за напредовање са дугметом Следеће</string>
   <string name="morphe_seek_notification_media_length_invalid">Дужина претраге мора бити између 1 и %s секунди. Користи се подразумевана</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
-  <string name="morphe_disable_quic_protocol_title">Oнемогући протокол QUIC</string>
+  <string name="morphe_disable_quic_protocol_title">Онемогући QUIC протокол</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Онемогућити аудио ДРЦ</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
@@ -189,11 +189,11 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_proxy_https_summary">Користи ХТТПС за повезивање на прокси сервер уместо ХТТП</string>
   <string name="morphe_proxy_auth_enabled_title">Прокси аутентификација</string>
   <string name="morphe_proxy_auth_enabled_summary">Слање основне аутентификације са прокси захтевима</string>
-  <string name="morphe_proxy_auth_username_title">Ваше корисничко име</string>
+  <string name="morphe_proxy_auth_username_title">Прокси корисничко име</string>
   <string name="morphe_proxy_auth_username_summary">Корисничко име за основну прокси аутентификацију</string>
-  <string name="morphe_proxy_auth_password_title">Прокси корисничко име</string>
+  <string name="morphe_proxy_auth_password_title">Прокси лозинка</string>
   <string name="morphe_proxy_auth_password_summary">Лозинка за основну прокси аутентификацију</string>
-  <string name="morphe_proxy_allow_direct_fallback_title">Омогући директан пад</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Дозволи директну резервну везу</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Повезивање директно ако прокси не успе</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Сакриј огласе преко целог екрана</string>
@@ -206,15 +206,17 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_replace_music_with_youtube_title">Промени линкове за дељење на youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Замењује music.youtube.com са youtube.com у дељеним линковима</string>
   <string name="morphe_replace_links_with_shortener_title">Промени линкове за дељење на youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Форсира видео записе да користе скраћену URL формулу youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Форсира видео записе да користе скраћени URL формат youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Протоколски бафер за евидентирање</string>
-  <string name="morphe_debug_protobuffer_summary">Додаје додатне информације за евидентирање за програмере како би се идентификовали делови апликације</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Омогућавањем ове опције ће се евидентирати додатни подаци о изгледу, укључујући текст на екрану за неке компоненте корисничког интерфејса.
+  <string name="morphe_debug_litho_title">Litho евидентирање</string>
+  <string name="morphe_debug_litho_entry_disabled">Онемогућен</string>
+  <string name="morphe_debug_litho_entry_path">Путања</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Путања и бафер</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho забележник евидентира компоненте изгледа апликације, укључујући текст на екрану за неке компоненте корисничког интерфејса.
 
 Ово може помоћи у идентификацији компоненти приликом прављења прилагођених филтера.
 
-Међутим, омогућавање овога ће такође евидентирати неке корисничке податке, као што је ваша IP адреса"</string>
+Међутим, ово ће такође евидентирати неке корисничке податке, као што је ваша IP адреса"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Прилагођени филтер</string>
   <string name="morphe_custom_filter_screen_summary">Конфигуришите прилагођене филтере да бисте сакрили било коју компоненту</string>
@@ -241,7 +243,7 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_external_potoken_provider_unavailable_summary">"Исправља проблеме са репродукцијом користећи спољни PoToken минтер (експериментално)
 
 Да бисте користили ову функцију, искључите „Спуфинг видео стримова”"</string>
-  <string name="morphe_external_potoken_provider_user_dialog_message">Отворите подешавања PotHelper</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Ако не ради, покушајте да принудно затворите MicroG</string>
   <string name="morphe_external_potoken_provider_settings_summary">Отвори PotHelper подешавања</string>
   <string name="morphe_external_potoken_provider_about_summary">"Ова функција је тренутно у развоју и можда неће радити
 
@@ -293,12 +295,12 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_ryd_dislike_percentage_title">Прикажи несвиђања као проценат</string>
   <string name="morphe_ryd_dislike_percentage_summary">Приказује несвиђања као проценат свиђања уместо броја</string>
   <string name="morphe_ryd_estimated_like_title">Прикажи процењени број свиђања</string>
-  <string name="morphe_ryd_estimated_like_summary">Приказује процењену прегледаност на видео снимцима на којем је креатор искључио прегледаност</string>
+  <string name="morphe_ryd_estimated_like_summary">Приказује процењени број свиђања на видео снимцима на којима је креатор искључио свиђања</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Приказуј упозорења о грешци у вези са повезивањем</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Приказује обавештење када је сервер Return YouTube Dislike недоступан</string>
-  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike vraća broj dislajkova koji je YouTube sakrio 2021. Brojevi dolaze iz podataka arhiviranih pre uklanjanja i procenjeni su za novije video snimke na osnovu glasova korisnika, pa su približni i ažuriraju se svakih nekoliko dana.
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike враћа број несвиђања које је YouTube сакрио 2021. године. Бројеви потичу из података архивираних пре уклањања, а за новије видео снимке процењени су на основу гласова корисника, па су приближни и ажурирају се сваких неколико дана
 
-ID video snimka koji gledate šalje se Return YouTube Dislike API-ju, a vaši lajkovi i dislajkovi se šalju anonimno kako bi se poboljšale procene.}],"</string>
+ID видео снимка који гледате шаље се Return YouTube Dislike API-ју, а ваша свиђања и несвиђања се анонимно шаљу да би се процене побољшале"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Статистика Return YouTube Dislike API-ја за овај уређај</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Време одговора API-ја, просек</string>

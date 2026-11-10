@@ -24,7 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Түстү калыбына келтир</string>
   <string name="morphe_settings_color_invalid">Туура эмес түс</string>
   <string name="morphe_settings_restart_title">Кайра жүктөө талап кылынат</string>
-  <string name="morphe_settings_restart_dialog_message">Бул өзгөртүүлөр күчүнө кириши үчүн колдонмону кайра başlatыңыз</string>
+  <string name="morphe_settings_restart_dialog_message">Бул өзгөртүүлөр күчүнө кириши үчүн колдонмону кайра иштетиңиз</string>
   <string name="morphe_settings_restart">Кайра жүктөө</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Импорт</string>
@@ -58,13 +58,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_name_entry_4">Морфинг убактысы</string>
   <string name="morphe_settings_name_custom_item">Ыйыкталган</string>
   <string name="morphe_settings_name_custom_item_hint">Атын киргизиңиз</string>
-  <string name="morphe_settings_name_empty_warning">Аты бош болбошу керек</string>
+  <string name="morphe_settings_name_empty_warning">Аты бош болбоосу керек</string>
   <string name="morphe_show_menu_icons_title">Morphe жөндөөлөрүнүн белгилерин көрсөтүү</string>
   <string name="morphe_settings_menu_copy_path">Көчүрүлдү: %s</string>
   <string name="morphe_language_title">Morphe тили</string>
   <string name="morphe_language_user_dialog_message">"Кээ бир тилдер үчүн котормолор жок болушу мүмкүн же толук эмес.
 
-Жаңы тилдерди которуу же mevcut котормолорду жакшыртуу үчүн morphe.software/translate сайтына кириңиз"</string>
+Жаңы тилдерди которуу же учурдагы котормолорду жакшыртуу үчүн morphe.software/translate сайтына кириңиз"</string>
   <string name="morphe_language_DEFAULT">Тиркеменин тили</string>
   <string name="morphe_pref_import_export_title">Импорт / Экспорт</string>
   <string name="morphe_pref_import_export_summary">Morphe жөндөөлөрүн импорттоо / экспорттоо</string>
@@ -95,11 +95,12 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_licenses">Лицензиялык эскертүүлөр</string>
   <string name="morphe_settings_about_licenses_loading">Жүктөлүүдө…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_screen_title">Дебаггинг</string>
-  <string name="morphe_debug_screen_summary">Кеңейтилген разработчик опцияларын жана диагностикалык логдорду конфигурациялоо</string>
-  <string name="morphe_debug_title">Отладка логдорун күйгүзүү</string>
-  <string name="morphe_debug_stacktrace_title">Ката издөө журналынын стек изи</string>
-  <string name="morphe_debug_stacktrace_summary">Каталарды аныктоого жардам берүү үчүн отладка логдоруна стек трассаларын кошуу</string>
+  <string name="morphe_debug_screen_title">Мүчүлүштүктөрдү оңдоо</string>
+  <string name="morphe_debug_screen_summary">Кеңейтилген иштеп чыгуучу опцияларын жана диагностикалык журналдарды конфигурациялоо</string>
+  <string name="morphe_debug_level_title">Каталарды издөө логдору</string>
+  <string name="morphe_debug_level_entry_disabled">Иштен чыгарылган</string>
+  <string name="morphe_debug_level_entry_debug">Катаны издөө</string>
+  <string name="morphe_debug_level_entry_verbose">Толук маалымат</string>
   <string name="morphe_debug_toast_on_error_title">Morphe катасы болгондо билдирүүнү көрсөтүү</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Каталык билдирүүлөрүн өчүрүү бардык Morphe каталык билдирүүлөрүн жашырат.
 
@@ -108,12 +109,12 @@ Second \"item\" text"</string>
   <string name="morphe_debug_export_logs_summary">Morphe ката издөө журналдарын экспорттоо</string>
   <string name="morphe_debug_export_logs_success">Ката издөө журналдары ийгиликтүү экспорттолду</string>
   <string name="morphe_debug_export_logs_failed">Ката издөө журналдарын экспорттоо мүмкүн болбоду</string>
-  <string name="morphe_debug_logs_search_hint">Отладка логдорун издөө…</string>
+  <string name="morphe_debug_logs_search_hint">Мүчүлүштүктөрдү оңдоо журналдарын издөө…</string>
   <string name="morphe_debug_export_logs_clear">Тазалоо</string>
-  <string name="morphe_debug_logs_disabled">Дебаг логирование өчүрүлгөн</string>
+  <string name="morphe_debug_logs_disabled">Мүчүлүштүктөрдү оңдоо журналдары өчүрүлгөн</string>
   <string name="morphe_debug_logs_none_found">Ката издөө журналдары табылган жок</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Дебаг логдору көчүрүлдү</string>
-  <string name="morphe_debug_logs_failed_to_export">Дебаг логдорун экспорттоо мүмкүн болгон жок: %s</string>
+  <string name="morphe_debug_logs_failed_to_export">Мүчүлүштүктөрдү оңдоо журналдарын экспорттоо мүмкүн болгон жок: %s</string>
   <string name="morphe_debug_logs_clear_toast">Дебаг логдору тазаланды</string>
   <string name="morphe_debug_feature_flags_manager_title">Функциялардын белгилерин башкаруучу</string>
   <string name="morphe_debug_feature_flags_manager_summary">Булево функциялардын белгилерин башкаруу</string>
@@ -125,7 +126,7 @@ Second \"item\" text"</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Блоктолгон (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
-  <string name="morphe_debug_feature_flags_manager_filter_forced">Мөجبүрлөнгөн (%s)</string>
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Мажбурланган (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">Авто</string>
   <!-- Keep short, shown as a badge and as a button. -->
@@ -137,7 +138,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Өчүрүү</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Функциялардын белгилери сакталды</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Функциялардын белгилери кайтарылды</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Функциялардын белгилери алмаштыруу буферine көчүрүлдү</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Функциялардын белгилери алмаштыруу буферине көчүрүлдү</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Бул жөндөөнү колдонуу үчүн тиркемени кайра иштетиңиз</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Экспорттоо жана импорттоо</string>
   <string name="morphe_debug_feature_flags_manager_import_success">%s функциясынын белгилери импорттолду</string>

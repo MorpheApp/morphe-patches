@@ -157,7 +157,7 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Döljer knapparna Föregående och Nästa i medieaviseringen, på låsskärmen och för hörlursstyrning</string>
   <string name="morphe_disable_notification_media_seekbar_title">Inaktivera sökfältet</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Förhindrar att sökreglaget kan dras på låsskärmen och i aviseringspanelen</string>
-  <string name="morphe_seek_notification_media_prev_next_title">Sök med <b>föregående &amp; nästa</b>-knappar</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Sök med föregående &amp; nästa-knappar</string>
   <string name="morphe_seek_notification_media_prev_next_summary">Ändrar kontrollerna för meddelandeanvisning, låsskärm och hörlurar så att de söker istället för att byta videor</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Återinspelningslängd</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Antal sekunder för återinspelningsåtgärd med föregående-knapp</string>
@@ -193,7 +193,7 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_proxy_auth_username_summary">Användarnamn för grundläggande proxyautentisering</string>
   <string name="morphe_proxy_auth_password_title">Proxylösenord</string>
   <string name="morphe_proxy_auth_password_summary">Lösenord för grundläggande proxyautentisering</string>
-  <string name="morphe_proxy_allow_direct_fallback_title">Tillåt direkt reserv</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Tillåt direkt reservanslutning</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Anslut direkt om proxyn misslyckas</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Dölj helskärmsannonser</string>
@@ -208,13 +208,15 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_replace_links_with_shortener_title">Ändra delningslänkar till youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Tvingar videor att använda det förkortade webbadressformatet youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Debug-logg för protokollbuffert</string>
-  <string name="morphe_debug_protobuffer_summary">Lägger till ytterligare loggningsinformation för utvecklare för att identifiera appkomponenter</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Om du aktiverar den här inställningen loggas ytterligare layoutdata, inklusive text på skärmen för vissa komponenter i användargränssnittet.
+  <string name="morphe_debug_litho_title">Litho-loggning</string>
+  <string name="morphe_debug_litho_entry_disabled">Inaktiverad</string>
+  <string name="morphe_debug_litho_entry_path">Sökväg</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Sökväg och buffert</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho-loggning loggar appens layoutkomponenter, inklusive text på skärmen för vissa UI-komponenter.
 
 Detta kan hjälpa till att identifiera komponenter när du skapar anpassade filter.
 
-Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress, att loggas"</string>
+Detta kommer dock även att logga vissa användardata, till exempel din IP-adress"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Anpassat filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurera anpassade filter för att dölja valfri komponent</string>

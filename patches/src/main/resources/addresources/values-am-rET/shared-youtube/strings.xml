@@ -27,15 +27,15 @@ Second \"item\" text"</string>
   <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_new_indicator_days_title">አዳዲስ ቅንብሮችን አድምቆ አሳይ</string>
   <string name="morphe_settings_new_indicator_days_summary">በማሻሻያ የተጨመሩ ቅንብሮች እና አማራጮች አጠገብ ነጥብ የሚታይባቸው የቀናት ብዛት</string>
-  <string name="morphe_settings_new_indicator_days_off">ጠፍ</string>
+  <string name="morphe_settings_new_indicator_days_off">ጠፍቷል</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">ቅንብሩን ለማጠናቀቅ እንደገና ያስነሱ</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">የመተግበሪያ ስም</string>
   <!-- layout.theme.baseThemePatch -->
   <string name="morphe_theme_color_dark_title">የጨለማ ጭብጥ ዳራ</string>
-  <string name="morphe_theme_color_dark_entry_2">ጥቁር እና ጥቁር</string>
-  <string name="morphe_theme_color_dark_entry_3">Material You (ጥቁር እና ጥቁር)</string>
+  <string name="morphe_theme_color_dark_entry_2">ንጹህ ጥቁር</string>
+  <string name="morphe_theme_color_dark_entry_3">Material You (ንጹህ ጥቁር)</string>
   <string name="morphe_theme_color_dark_entry_9">ክላሲክ YouTube</string>
   <string name="morphe_theme_color_dark_entry_10">ጥቁር ሮዝ</string>
   <string name="morphe_theme_color_dark_entry_11">ጥቁር ሰማያዊ</string>
@@ -43,14 +43,14 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_entry_13">ጥቁር ቢጫ</string>
   <string name="morphe_theme_color_dark_entry_14">ጥቁር ብርቱካናማ</string>
   <string name="morphe_theme_color_dark_entry_15">ጥቁር ቀይ</string>
-  <string name="morphe_theme_color_dark_custom_title">የተቀየረ ጥቁር ዳራ</string>
+  <string name="morphe_theme_color_dark_custom_title">ብጁ ጥቁር ዳራ</string>
   <string name="morphe_theme_color_dark_custom_summary">የጥቁር ጭብጥ ዳራ ቀለም ያዘጋጁ</string>
-  <string name="morphe_theme_color_entry_1">የመተግበሪያው ነባር</string>
+  <string name="morphe_theme_color_entry_1">የመተግበሪያው ነባሪ</string>
   <string name="morphe_theme_color_entry_4">Material You (ገለልተኛ)</string>
   <string name="morphe_theme_color_entry_5">Material You (ዋነኛው)</string>
   <string name="morphe_theme_color_entry_6">Material You (ሁለተኛው)</string>
   <string name="morphe_theme_color_entry_7">Material You (ሶስተኛው)</string>
-  <string name="morphe_theme_color_custom_entry">የተቀየረ</string>
+  <string name="morphe_theme_color_custom_entry">ብጁ</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">የሚወርዱ ፋይሎች</string>
   <string name="morphe_download_mode_title">የማውረጃ ዘዴ</string>
@@ -69,7 +69,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_empty_warning">የጥቅል ስም ባዶ ሊሆን አይችልም</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">ብጁ</string>
-  <string name="morphe_custom_branding_icon_title">የመተግበሪያ ስርጭት ምልክት</string>
+  <string name="morphe_custom_branding_icon_title">የመተግበሪያ ምልክት</string>
   <string name="morphe_custom_branding_icon_entry_1">ኦሪጅናል</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe ጥቁር</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe ጥቁር ሰማያዊ</string>
@@ -79,10 +79,10 @@ Second \"item\" text"</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_6">Morphe play black</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_7">ልዩ</string>
+  <string name="morphe_custom_branding_icon_entry_7">ብጁ</string>
   <string name="morphe_custom_branding_icon_user_dialog_message">"ይህ በመተግበሪያ ማስጀምሪያዎ ላይ የሚታየውን ምልክት ይቀይራል።
 
-ይህ ቅንብራዊ በነዚህ ቦታዎች ላይ ያለውን ምልክት አይቀይርም፦
+ይህ ቅንብር በእነዚህ ቦታዎች ላይ ያለውን ምልክት አይቀይርም፦
 • የመሣሪያው ሲስተም ቅንብሮች መተግበሪያ ዝርዝር
 • የተወሰኑ የፑሽ ማሳወቂያዎች
 • 'በ... ክፈት' መተግበሪያ መራጭ
@@ -94,7 +94,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">የMorphe ማሳሰቢያ</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">የተመለከቱት ታሪክ እየተቀመጠ አይደለም።&lt;br&gt;&lt;br&gt;ይህ höchst likely በDNS ማስታወቂያ தடுላጊ ወይም በኔትወርክ ፕሮክሲ ምክንያት የሆነ ሊሆን ይችላል።&lt;br&gt;&lt;br&gt;ይህንን ለማስተካከል &lt;b&gt;s.youtube.com&lt;/b&gt;ን በነጭ ዝርዝር ውስጥ ያስገቡ ወይም ሁሉንም የDNS தடுላጊዎች እና ፕሮክሲዎች ያጥፉ</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">የተመለከቱት ታሪክ እየተቀመጠ አይደለም።&lt;br&gt;&lt;br&gt;ይህ በአብዛኛው በDNS ማስታወቂያ ማገጃ ወይም በኔትወርክ ፕሮክሲ ምክንያት የሚከሰት ነው።&lt;br&gt;&lt;br&gt;ይህንን ለማስተካከል &lt;b&gt;s.youtube.com&lt;/b&gt;ን በነጭ ዝርዝር ውስጥ ያስገቡ ወይም ሁሉንም የDNS ማገጃዎች እና ፕሮክሲዎች ያጥፉ</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">እንደገና አታሳይ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">የቪዲዮ ስትሪሞችን አስመስል</string>
@@ -129,14 +129,14 @@ Second \"item\" text"</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"የማግበሪያ ኮድ፦ %s
 
-1. 'ድረ-ገጹን ክፈት' የሚለውን ከታች በመንካት 'መሣሪያን አገናኝ' የሚለውን ድረ-ገጽ ክፈት
-2. ከላይ የሚታየውን የማግበሪያ ኮድ ከክሊፕቦርድ ኮፒ አድርገህ አጋጥመው (ወይም ጻፈው)
-3. ከተጠየቅህ በGoogle ውስጥ ግባ። ብዙ አካውንቶች ካሉህ ይህንን የYouTube አካውንት ምረጥ
-4. 'ለYouTube VR ፍቃድ ስጥ' የሚለውን ንካ
-5. 'መሣሪያው ተገናኝቷል' የሚለው መልዕክት ሲመጣ ወደዚህ መተግበሪያ ተመለስ"</string>
+1. 'ድረ-ገጹን ክፈት' የሚለውን ከታች በመጫን 'መሣሪያን አገናኝ' የሚለውን ድረ-ገጽ ይክፈቱ
+2. ከላይ የሚታየውን የማግበሪያ ኮድ ከክሊፕቦርድ ለጥፈው (ወይም በእጅ ይጻፉት)
+3. ከተጠየቁ ወደ Google ይግቡ። ብዙ አካውንቶች ካሉዎት ይህንን የYouTube አካውንት ይምረጡ
+4. 'YouTube VR መዳረሻን ፍቀድ' የሚለውን ይጫኑ
+5. 'መሣሪያው ተገናኝቷል' የሚለው መልዕክት ሲመጣ ወደዚህ መተግበሪያ ይመለሱ"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">የማግበሪያ ኮድ ለመስጠት አልተቻለም</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">የማረጋገጫ டோክን ለመስጠት አልተቻለም</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">በስኬት ተገብቷል</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">የማረጋገጫ ቶከን ለመስጠት አልተቻለም</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">በተሳካ ሁኔታ ገብተዋል</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"ማረጋገጫ ተቀምጧል
 
 • የMorphe ቅንብሮች የAndroid VR ማረጋገጫን ወደ ውስጥ አያስገቡም/ወደ ውጭ አይልኩም
@@ -144,7 +144,7 @@ Second \"item\" text"</string>
 • የGoogle የይለፍ ቃልዎን ከቀየሩ ወይም ይህን መሣሪያ ከGoogle ቅንብሮችዎ ካስወገዱ እንደገና መግባት ይኖርብዎታል"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ለጊዜው ዝግጁ አይደለም (የAPI ጊዜው አልፏል)</string>
   <string name="morphe_oauth2_connection_failure_status_400">የAndroid VR መግቢያ ጊዜ አልፏል፣ እባክዎ በድጋሚ ወደ VR ለመግባት ይሞክሩ</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 ለጊዜው አይتوለበልም (ሁኔታ %s)</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 ለጊዜው አይገኝም (ሁኔታ %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 ለጊዜው ዝግጁ አይደለም</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">ወደ VR መግባት አይቻልም፣ የድረ-ገጽ ማረጋገጫ አልተፈቀደም</string>
   <string name="morphe_oauth2_connection_failure_auth_error">ወደ VR መግባት አይቻልም፡ %s</string>
@@ -152,9 +152,9 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_toast_invalid">የ VR መግቢያ ማረጋገጫ ትክክል አይደለም፣ እባክዎ በድጋሚ ወደ VR ለመግባት ይሞክሩ</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">የማሳወቂያ ሚዲያ መቆጣጠሪያዎች</string>
-  <string name="morphe_notification_media_screen_summary">በመቆለፊያ ስክሪንዎ እና በማሳወቂያ ፓነልዎ ላይ የሚታዩትን የplayback መቆጣጠሪያዎች ያሻሽሉ</string>
-  <string name="morphe_hide_notification_media_prev_next_title">የቀደመውን እና የሚቀጥለውን බොተኖች ደብቅ</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">በሚዲያ ማሳወቂያ፣ በመቆለፊያ ስክሪን እና በহেድፎን መቆጣጠሪያዎች ውስጥ የቀደመ እና የሚቀጥል බොተኖችን ይደብቃል</string>
+  <string name="morphe_notification_media_screen_summary">በመቆለፊያ ስክሪንዎ እና በማሳወቂያ ፓነልዎ ላይ የሚታዩትን የመልሶ ማጫወት መቆጣጠሪያዎች ያብጁ</string>
+  <string name="morphe_hide_notification_media_prev_next_title">የቀደመውን እና የሚቀጥለውን ቁልፎች ደብቅ</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">በሚዲያ ማሳወቂያ፣ በመቆለፊያ ስክሪን እና በጆሮ ማዳመጫ መቆጣጠሪያዎች ውስጥ የቀደመውን እና የሚቀጥለውን ቁልፎች ይደብቃል</string>
   <string name="morphe_disable_notification_media_seekbar_title">Seekbarን አግድ</string>
   <string name="morphe_disable_notification_media_seekbar_summary">በመቆለፊያ ስክሪን እና በማሳወቂያ ፓነል ላይ seekbarን እንዳይሳብ ይከላከላል</string>
   <string name="morphe_seek_notification_media_prev_next_title">በቀድሞ እና በሚቀጥሉት ቁልፎች ፈልግ</string>
@@ -170,17 +170,17 @@ Second \"item\" text"</string>
   <string name="morphe_disable_drc_audio_title">የ DRC ኦዲዮን አጥፋ</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">ኦሪጅናል የድምፅ ቋንቋን አስገድድ</string>
-  <string name="morphe_force_original_audio_summary">በተተካ የድምፅ ስሪት ፋንታ ሁልጊዜ የቪዲዮውን ዋና የድምፅ ትራክ ያጫውታል</string>
+  <string name="morphe_force_original_audio_summary">በተተረጎመው የድምፅ ስሪት ፋንታ ሁልጊዜ የቪዲዮውን ዋና የድምፅ ትራክ ያጫውታል</string>
   <!-- misc.audio.silence.skipSilencePatch -->
   <string name="morphe_skip_silence_title">ዝምታን ዝለል</string>
   <string name="morphe_skip_silence_summary">በቪዲዮ ኦዲዮ ውስጥ ያሉ ዝምታዎችን በራስ-ሰር ይዘላል</string>
   <string name="morphe_skip_silence_minimum_pause_title">አነስተኛ የዝምታ ርዝመት</string>
-  <string name="morphe_skip_silence_minimum_pause_summary">ቢያንስ ይህ ያህል የሚረዝሙ ዝምታዎች ብቻ አጥሮ ይቀነሳሉ። በሚቀጥለው ቪዲዮ ሲጀምር ተፈጻሚ ይሆናል</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">ቢያንስ ይህ ያህል የሚረዝሙ ዝምታዎች ብቻ ይቀነሳሉ። በሚቀጥለው ቪዲዮ ሲጀምር ተፈጻሚ ይሆናል</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">የኔትወርክ ፕሮክሲ</string>
   <string name="morphe_proxy_screen_summary">የተደገፉ የኔትወርክ ጥያቄዎችን በፕሮክሲ በኩል አሳልፍ</string>
   <string name="morphe_proxy_enabled_title">ፕሮክሲን አብራ</string>
-  <string name="morphe_proxy_enabled_summary">የተደገፉ የኔትወርክ ጥያቄዎችን በተ yapıጠረ የ HTTP ወይም HTTPS ፕሮክሲ በኩል ያሳልፋል</string>
+  <string name="morphe_proxy_enabled_summary">የተደገፉ የኔትወርክ ጥያቄዎችን በተዋቀረው የ HTTP ወይም HTTPS ፕሮክሲ በኩል ያሳልፋል</string>
   <string name="morphe_proxy_host_title">የፕሮክሲ ሆስት</string>
   <string name="morphe_proxy_host_summary">የፕሮክሲ ሰርቨሩ የሆስት ስም ወይም የ IP አድራሻ</string>
   <string name="morphe_proxy_port_title">የፕሮክሲ ፖርት</string>
@@ -193,28 +193,30 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_auth_username_summary">ለመሰረታዊ የፕሮክሲ ማረጋገጫ የሚሆን የተጠቃሚ ስም</string>
   <string name="morphe_proxy_auth_password_title">የፕሮክሲ የይለፍ ቃል</string>
   <string name="morphe_proxy_auth_password_summary">ለመሰረታዊ የፕሮክሲ ማረጋገጫ የሚሆን የይለፍ ቃል</string>
-  <string name="morphe_proxy_allow_direct_fallback_title">ቀጥታ ተመላላሽ ይፍቀዱ</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">ቀጥታ ግንኙነትን ፍቀድ</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">ፕሮክሲው ካልሰራ በቀጥታ ይገናኙ</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">ሙሉ ስክሪን ማስታወቂያዎችን ደብቅ</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">ይህንን ባህሪ ለመጠቀም፣ \'Spoof video streams\'ን ከ \'Android Studio\' እና \'Android VR Downgraded\' ውጭ ወደማንኛውም ክላያ змінюት</string>
+  <string name="morphe_force_original_audio_not_available">ይህንን ባህሪ ለመጠቀም፣ \'Spoof video streams\'ን ከ \'Android Studio\' እና \'Android VR Downgraded\' በስተቀር ወደማንኛውም ደንበኛ ይቀይሩ</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">የማጋሪያ ሊንኮችን አጥራ</string>
   <string name="morphe_sanitize_sharing_links_summary">ከሚጋሩ ሊንኮች ላይ የክትትል ጥያቄ ፓራሜትሮችን ያስወግዳል</string>
-  <string name="morphe_replace_music_with_youtube_title">የမျှare ሊንኮችን ወደ youtube.com ይቀይሩ</string>
+  <string name="morphe_replace_music_with_youtube_title">የማጋሪያ ሊንኮችን ወደ youtube.com ይቀይሩ</string>
   <string name="morphe_replace_music_with_youtube_summary">በተጋሩ ሊንኮች ውስጥ music.youtube.comን በ youtube.com ይተካል</string>
   <string name="morphe_replace_links_with_shortener_title">የማጋሪያ ሊንኮችን ወደ youtu.be ቀይር</string>
   <string name="morphe_replace_links_with_shortener_summary">ቪዲዮዎች አጭር የሆነውን youtu.be URL ፎርማትን እንዲጠቀሙ ያስገድዳል</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">የዲበግ ሎግ ፕሮቶኮል በፈር</string>
-  <string name="morphe_debug_protobuffer_summary">ልማቶች የ приложение አካላትን እንዲለዩ ተጨማሪ የሎግ መረጃዎችን ይጨምራል</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"ይህንን ቅንብር ማብራት ለአንዳንድ የUI ክፍሎች በስክሪኑ ላይ የሚታዩ ጽሑፎችን ጨምሮ ተጨማሪ የሌይአውት መረጃዎችን ይመዘግባል።
+  <string name="morphe_debug_litho_title">የLitho ሎጊንግ</string>
+  <string name="morphe_debug_litho_entry_disabled">ተዘግቷል</string>
+  <string name="morphe_debug_litho_entry_path">መንገድ</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">መንገድ እና በፈር</string>
+  <string name="morphe_debug_litho_user_dialog_message">"የሊቶ መዝገብ አንዳንድ የዩአይ አካላትን ስክሪን ላይ የሚታዩ ጽሁፎችን ጨምሮ የ приложениеውን የሌይአውት አካላት ይመዘግባል።
 
-ይህ ልዩ ማጣሪያዎችን በሚፈጥሩበት ጊዜ ክፍሎችን ለመለየት ይረዳል።
+ይህ የራስዎን ማጣሪያዎች ሲፈጥሩ አካላትን ለመለየት ይረዳል
 
-ነገር ግን፣ ይህንን ማብራት እንደ IP አድራሻዎ ያሉ አንዳንድ የተጠቃሚ መረጃዎችንም ይመዘግባል"</string>
+ነገር ግን፣ ይህ እንደ አይፒ አድራሻዎ ያሉ አንዳንድ የተጠቃሚ መረጃዎችንም ይመዘግባል"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">ብጁ ማጣሪያ</string>
   <string name="morphe_custom_filter_screen_summary">ማንኛውንም አካል ለመደበቅ ብጁ ማጣሪያዎችን ያዋቅሩ</string>
@@ -228,14 +230,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_menu_filter_picker_empty">ዝርዝሩን ለመሙላት መደበኛውን የአፕሊኬሽን ቅንብሮች ስክሪን አንድ ጊዜ ይክፈቱ</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">የተመልካች ጥንቃቄ የውይይት ሳጥንን አስወግድ</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">ይህ የዕድሜ ገደብን አይሻገፍም። ዝም ብሎ በራሱ ይቀበለዋል</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">ይህ የዕድሜ ገደብን አያልፍም። በቀላሉ በራሱ ይቀበለዋል</string>
   <!-- misc.potoken.poTokenProviderPatch -->
   <string name="morphe_potoken_provider_screen_title">PoToken አቅራቢ</string>
   <string name="morphe_potoken_provider_screen_summary">የማጫወት ችግሮችን ለመከላከል PoToken አቅራቢን ያዋቅሩ</string>
   <string name="morphe_external_potoken_provider_title">የውጭ PoToken አቅራቢ</string>
-  <string name="morphe_external_potoken_provider_summary">"የውጭ PoToken minter በመጠቀም የቪዲዮ ማጫወቻ ችግሮችን ይቀርፋል (ሙከራ)
+  <string name="morphe_external_potoken_provider_summary">"የውጭ PoToken minter በመጠቀም የቪዲዮ ማጫወቻ ችግሮችን ያስተካክላል (ሙከራ)
 
-የYouTube Premium ተጠቃሚ ከሆኑ ይህ ቅንብር ላይያስፈልግ ይችላል"</string>
+የYouTube Premium ተጠቃሚ ከሆኑ ይህ ቅንብር ላያስፈልግ ይችላል"</string>
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_unavailable_summary">"የውጫዊ PoToken minter በመጠቀም የቪዲዮ ማጫወቻ ችግሮችን ያስተካክላል (ሙከራ)
@@ -250,7 +252,7 @@ PotHelperን ለማውረድ እዚህ ይንኩ"</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_expired_dialog_message">"በዚህ የPotHelper ስሪት ውስጥ የተካተተው ቶከን ከአሁን በኋላ አይሰራም
 
-የቪዲዮ ስርጭቶችን ለማስተካከል 'ቪዲዮ ስርጭቶችን አስመሰል' የሚለውን አብሩ"</string>
+የማጫወት ችግሩን ለማስተካከል 'የቪዲዮ ስትሪሞችን አስመስል' የሚለውን ያብሩ"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">አብራ</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">የመተግበሪያውን ስሪት አስመስል</string>
@@ -265,7 +267,7 @@ PotHelperን ለማውረድ እዚህ ይንኩ"</string>
   <string name="morphe_app_refresh_rate_title">የመተግበሪያ ማደሻ ፍጥነት</string>
   <string name="morphe_app_refresh_rate_default">መደበኛ</string>
   <string name="morphe_app_refresh_rate_fps">%s FPS</string>
-  <string name="morphe_app_refresh_rate_type_title">የማደሻ ፍጥነትን ጫንፍ</string>
+  <string name="morphe_app_refresh_rate_type_title">የማደሻ ፍጥነትን ይሽሩ</string>
   <string name="morphe_app_refresh_rate_type_entry_1">ሁልጊዜ</string>
   <string name="morphe_app_refresh_rate_type_entry_2">በቁመታዊ ማጫወቻ ጊዜ</string>
   <string name="morphe_app_refresh_rate_type_entry_3">የሙሉ ስክሪን ማጫወቻ</string>
@@ -274,21 +276,21 @@ PotHelperን ለማውረድ እዚህ ይንኩ"</string>
   <string name="morphe_custom_font_type_title">ፎንት</string>
   <string name="morphe_custom_font_type_entry_default">መደበኛ</string>
   <string name="morphe_custom_font_type_entry_system">የመሳሪያው ሲስተም ፎንት</string>
-  <string name="morphe_custom_font_type_entry_custom">የተበየለ የፎንት ፋይል</string>
-  <string name="morphe_custom_font_file_title">የተበየለ የፎንት ፋይል</string>
+  <string name="morphe_custom_font_type_entry_custom">ብጁ የፎንት ፋይል</string>
+  <string name="morphe_custom_font_file_title">ብጁ የፎንት ፋይል</string>
   <string name="morphe_custom_font_file_summary">የTTF ወይም OTF ፎንት ፋይል ይምረጡ</string>
   <string name="morphe_custom_font_file_invalid">የተመረጠው ፋይል TTF ወይም OTF የፎንት ዓይነት አይደለም</string>
-  <string name="morphe_custom_font_failed_to_load">ልዩ ፎንቱን መጫን አልተቻለም እና ተዘግቷል</string>
+  <string name="morphe_custom_font_failed_to_load">ብጁ ፎንቱን መጫን አልተቻለም እና ተዘግቷል</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_ryd_failure_connection_timeout">አልወደዱም ለጊዜው አይገኙም (API ጊዜው አልፎበታል)</string>
-  <string name="morphe_ryd_failure_connection_status_code">አልወደዱም አይገኙም (ሁኔታ %s)</string>
+  <string name="morphe_ryd_failure_connection_timeout">አለመውደዶች ለጊዜው አይገኙም (API ጊዜው አልፎበታል)</string>
+  <string name="morphe_ryd_failure_connection_status_code">አለመውደዶች አይገኙም (ሁኔታ %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">አለመውደዶች አይገኙም (የደንበኛ API ገደብ)</string>
   <string name="morphe_ryd_failure_generic">አለመውደዶች አይገኙም (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">በባለቤቱ ተደብቋል</string>
-  <string name="morphe_ryd_accessibility_dislike_count">ይህንን ቪዲዮ ከ%s ሌሎች ሰዎች ጋር አላስወደዱትም</string>
-  <string name="morphe_ryd_accessibility_dislike_percentage">ይህንን ቪዲዮ አላስወደዱትም፣ %s የድምጽ ምርጫዎች አልወደዱም</string>
+  <string name="morphe_ryd_accessibility_dislike_count">ይህንን ቪዲዮ ከ%s ሌሎች ሰዎች ጋር አልወደዱትም</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">ይህንን ቪዲዮ አልወደዱትም፣ ከድምጾች %s የሚሆኑት አለመውደዶች ናቸው</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislikeን አግብር</string>
   <string name="morphe_ryd_dislike_percentage_title">አለመውደዶችን በፐርሰንት አሳይ</string>
   <string name="morphe_ryd_dislike_percentage_summary">አለመውደዶችን ከቁጥር ይልቅ ከላይኮች አንጻር በፐርሰንት ያሳያል</string>
@@ -296,7 +298,7 @@ PotHelperን ለማውረድ እዚህ ይንኩ"</string>
   <string name="morphe_ryd_estimated_like_summary">ፈጣሪው ላይኮችን ባጠፋባቸው ቪዲዮዎች ላይ የተገመተ የላይክ ብዛት ያሳያል</string>
   <string name="morphe_ryd_toast_on_connection_error_title">የግንኙነት ስህተት ማስጠንቀቂያዎችን አሳይ</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">የ Return YouTube Dislike ሰርቨር በማይገኝበት ጊዜ ማሳወቂያ ያሳያል</string>
-  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike ዩቲዩብ በ 2021 የደበቃቸውን የ싫ት ብዛቶች ይመልሳል። ብዛቶቹ ከመወገዳቸው በፊት ከተቀመጠው መረጃ የተገኙ ሲሆን ለአዳዲስ ቪዲዮዎች ደግሞ ከተጠቃሚዎች ድምፅ የተሰሉ ግምቶች ናቸው፤ ስለዚህ ግምታዊ ናቸው እና በየጥቂት ቀናቱ ይዘመናሉ
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike ዩቲዩብ በ 2021 የደበቃቸውን የአለመውደዶች ብዛት ይመልሳል። ብዛቶቹ ከመወገዳቸው በፊት ከተቀመጠው መረጃ የተገኙ ሲሆን ለአዳዲስ ቪዲዮዎች ደግሞ ከተጠቃሚዎች ድምፅ የተሰሉ ግምቶች ናቸው፤ ስለዚህ ግምታዊ ናቸው እና በየጥቂት ቀናት ይዘመናሉ
 
 የሚመለከቱት የቪዲዮ መለያ ወደ Return YouTube Dislike API ይላካል፣ እንዲሁም ግምቶቹን ለማሻሻል የእርስዎ ምርጫዎች በስም ሳይገለጹ ይላካሉ"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
@@ -304,7 +306,7 @@ PotHelperን ለማውረድ እዚህ ይንኩ"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">የ API ምላሽ ጊዜ፣ አማካይ</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">የ API ምላሽ ጊዜ፣ አነስተኛ</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">የ API ምላሽ ጊዜ፣ ከፍተኛ</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">የAPI ምላሽ ጊዜ፣ የመጨረሻው ሚዲያ</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">የAPI ምላሽ ጊዜ፣ የመጨረሻው ጥሪ</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">አልወደዱም ለጊዜው አይገኙም - የClient API ፍጥነት ገደብ ተጥሏል</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">የAPI ድምጾችን ማምጫ፣ የጥሪዎች ብዛት</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">ምንም የኔትወርክ ጥሪዎች አልተደረጉም</string>

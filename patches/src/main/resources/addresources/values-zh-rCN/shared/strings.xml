@@ -97,13 +97,14 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">调试</string>
   <string name="morphe_debug_screen_summary">配置高级开发者选项和诊断日志</string>
-  <string name="morphe_debug_title">启用调试日志</string>
-  <string name="morphe_debug_stacktrace_title">调试日志堆栈跟踪标题</string>
-  <string name="morphe_debug_stacktrace_summary">调试日志包含堆栈跟踪，有助于识别错误</string>
+  <string name="morphe_debug_level_title">调试日志</string>
+  <string name="morphe_debug_level_entry_disabled">已禁用</string>
+  <string name="morphe_debug_level_entry_debug">调试</string>
+  <string name="morphe_debug_level_entry_verbose">详细</string>
   <string name="morphe_debug_toast_on_error_title">在发生 Morphe 错误时显示 Toast</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"关闭错误提示会隐藏所有 Morphe 错误通知。
 
-您将不会收到任何意外事件的"</string>
+您将不会收到任何意外事件的通知"</string>
   <string name="morphe_debug_export_logs_title">导出调试日志</string>
   <string name="morphe_debug_export_logs_summary">导出Morphe调试日志</string>
   <string name="morphe_debug_export_logs_success">调试日志导出成功</string>
@@ -115,7 +116,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_copied_to_clipboard">调试日志已复制</string>
   <string name="morphe_debug_logs_failed_to_export">导出调试日志失败：%s</string>
   <string name="morphe_debug_logs_clear_toast">调试日志已清除</string>
-  <string name="morphe_debug_feature_flags_manager_title">功能标志 Manager</string>
+  <string name="morphe_debug_feature_flags_manager_title">功能标志管理器</string>
   <string name="morphe_debug_feature_flags_manager_summary">管理布尔功能标志</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">搜索功能标志…</string>
   <!-- Keep short, four of these are shown in one row. -->
@@ -219,7 +220,7 @@ Second \"item\" text"</string>
   <string name="morphe_link_handling_step1_message">打开原始应用的设置并禁用所有域名链接</string>
   <string name="morphe_link_handling_step2_title">步骤 2：启用修补的应用链接</string>
   <string name="morphe_link_handling_step2_message">打开修补应用的设置并启用所有域名链接</string>
-  <string name="morphe_link_handling_open">导入 设置</string>
+  <string name="morphe_link_handling_open">打开设置</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 实验性提示 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"您正在使用⚠️ &lt;b&gt;%1$s&lt;/b&gt;的实验性应用版本。

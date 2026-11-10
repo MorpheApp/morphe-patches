@@ -97,9 +97,10 @@ Om du vill översätta till nya språk eller förbättra befintliga översättni
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Felsökning</string>
   <string name="morphe_debug_screen_summary">Konfigurera avancerade utvecklaralternativ och diagnostikloggar</string>
-  <string name="morphe_debug_title">Aktivera felsökningsloggning</string>
-  <string name="morphe_debug_stacktrace_title">Stackspårning i felsökningsloggar</string>
-  <string name="morphe_debug_stacktrace_summary">Inkluderar stackspårning i felsökningsloggarna för att underlätta identifieringen av fel</string>
+  <string name="morphe_debug_level_title">Felsökningsloggning</string>
+  <string name="morphe_debug_level_entry_disabled">Inaktiverad</string>
+  <string name="morphe_debug_level_entry_debug">Felsökning</string>
+  <string name="morphe_debug_level_entry_verbose">Detaljerad</string>
   <string name="morphe_debug_toast_on_error_title">Visa ett popup-meddelande om det uppstår fel med Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Om du stänger av popup-felmeddelanden döljs alla Morphe-felmeddelanden.
 

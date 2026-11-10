@@ -23,7 +23,7 @@ Second \"item\" text"</string>
 &lt;br/&gt;&lt;br/&gt;
 App-Daten einer neueren Version funktionieren nicht mit älteren Versionen, und die App funktioniert möglicherweise nicht korrekt.
 &lt;br/&gt;&lt;br/&gt;
-Um eine ältere Version zu verwenden, müssen Sie Reddit &lt;b&gt;deinstallieren&lt;/b&gt; und dann die ältere Version installieren."</string>
+Um eine ältere Version zu verwenden, musst du Reddit &lt;b&gt;deinstallieren&lt;/b&gt; und dann die ältere Version installieren."</string>
   <string name="morphe_app_downgrade_dialog_open_app_info">App-Info öffnen</string>
   <string name="morphe_screen_ads_title">Anzeigen</string>
   <string name="morphe_hide_post_ads_title">Feed-Anzeigen ausblenden</string>
@@ -44,25 +44,25 @@ Um eine ältere Version zu verwenden, müssen Sie Reddit &lt;b&gt;deinstallieren
   <string name="morphe_copy_text_title">Text kopieren</string>
   <string name="morphe_copy_text_summary">Ermöglicht das Auswählen und Kopieren von Text in Beiträgen und Kommentaren. Deaktiviert das Einklappen von Kommentaren</string>
   <string name="morphe_copy_text_user_dialog_message">Das Einklappen von Kommentaren funktioniert nicht mehr, wenn Text kopieren aktiviert ist</string>
-  <string name="morphe_custom_font_title">Benutzerspezifische Schrift</string>
-  <string name="morphe_custom_font_summary">Laden Sie eine benutzerdefinierte TTF- oder OTF-Schriftdatei vom folgenden Pfad. Durch Aktivieren dieser Option wird auch die Option \"Standardschriftart erzwingen\" deaktiviert.</string>
-  <string name="morphe_custom_font_file_path_title">Benutzerspezifische Schriftdatei</string>
-  <string name="morphe_custom_font_file_path_summary">Tippe, um eine TTF- oder OTF-Schriftschriftdatei auszuwählen</string>
+  <string name="morphe_custom_font_title">Benutzerdefinierte Schriftart</string>
+  <string name="morphe_custom_font_summary">Lade eine benutzerdefinierte TTF- oder OTF-Schriftdatei vom folgenden Pfad. Durch Aktivieren dieser Option wird auch \"Systemschrift erzwingen\" deaktiviert.</string>
+  <string name="morphe_custom_font_file_path_title">Benutzerdefinierte Schriftdatei</string>
+  <string name="morphe_custom_font_file_path_summary">Tippe, um eine TTF- oder OTF-Schriftdatei auszuwählen</string>
   <string name="morphe_custom_font_selected_font">Ausgewählte Schriftart – %s</string>
-  <string name="morphe_custom_font_pick_file_first">Wählen Sie zuerst eine benutzerdefinierte Schriftdatei aus.</string>
-  <string name="morphe_custom_font_invalid_file">Bitte wählen Sie eine .ttf- oder .otf-Schriftdatei aus.</string>
-  <string name="morphe_custom_font_failed_to_load">Fehler beim Laden der benutzerdefinierten Schriftart. Bitte wählen Sie eine andere Datei.</string>
+  <string name="morphe_custom_font_pick_file_first">Wähle zuerst eine benutzerdefinierte Schriftdatei aus.</string>
+  <string name="morphe_custom_font_invalid_file">Bitte wähle eine .ttf- oder .otf-Schriftdatei aus.</string>
+  <string name="morphe_custom_font_failed_to_load">Fehler beim Laden der benutzerdefinierten Schriftart. Wähle eine andere Datei.</string>
   <string name="morphe_disable_modern_home_title">Modernes \"Home\" deaktivieren</string>
   <string name="morphe_disable_screenshot_popup_title">Screenshot-Pop-up deaktivieren</string>
   <string name="morphe_disable_screenshot_popup_summary">Deaktiviert das Pop-up bei einem Screenshot</string>
   <string name="morphe_force_system_font_title">Systemschrift erzwingen</string>
-  <string name="morphe_force_system_font_summary">Verwenden Sie die Standardschriftart des Geräts anstelle von Reddit Sans oder Roboto. Durch Aktivieren dieser Option wird auch die benutzerdefinierte Schriftart deaktiviert.</string>
+  <string name="morphe_force_system_font_summary">Verwende die Systemschriftart des Geräts anstelle von Reddit Sans oder Roboto. Durch Aktivieren dieser Option wird auch die benutzerdefinierte Schriftart deaktiviert.</string>
   <string name="morphe_hide_ask_button_title">Frage-Button ausblenden</string>
   <string name="morphe_hide_ask_button_summary">Blendet den Frage-Button in der Suchleiste aus</string>
   <string name="morphe_hide_communities_shelf_title">Communities-Bereich ausblenden</string>
   <string name="morphe_hide_communities_shelf_summary">Blendet die Bereiche der zugehörigen oder vorgeschlagenen Communities in Subreddits aus</string>
   <string name="morphe_hide_trending_shelves_title">\"Im Trend\"-Bereich ausblenden</string>
-  <string name="morphe_hide_trending_shelves_summary">Verbirgt die Trending-Regale aus dem Feed und den Suchvorschlägen</string>
+  <string name="morphe_hide_trending_shelves_summary">Blendet die Im-Trend-Bereiche im Feed und in den Suchvorschlägen aus</string>
   <string name="morphe_remove_notification_dialog_title">Benachrichtigungs-Vorschlagsdialog entfernen</string>
   <string name="morphe_remove_notification_dialog_summary">Entfernt den Benachrichtigungsvorschlagsdialog automatisch beim Besuch eines Subreddits</string>
   <string name="morphe_high_quality_avatars_title">Hochwertige Avatare</string>
@@ -70,7 +70,7 @@ Um eine ältere Version zu verwenden, müssen Sie Reddit &lt;b&gt;deinstallieren
   <string name="morphe_show_flairs_in_home_feed_title">Flairs im Home-Feed anzeigen</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Zeigt Post-Flair-Badges im Home-Feed an</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Einige Feed-Einträge zeigen möglicherweise keinen Flair</string>
-  <string name="morphe_show_view_count_title">Anzahl der Aufrufe anzeigen</string>
+  <string name="morphe_show_view_count_title">Aufrufanzahl bei Beiträgen anzeigen</string>
   <string name="morphe_show_view_count_summary">Einschränkung: Nur verfügbar, wenn die API-Antwort die Anzahl der Aufrufe enthält</string>
   <string name="morphe_flip_post_action_bar_title">Aktionsleiste der Beiträge umkehren</string>
   <string name="morphe_flip_post_action_bar_summary">Verschiebt die Abstimmungs- und Kommentarschaltflächen von Beiträgen auf die rechte Seite und die Crosspost- und Teilen-Schaltflächen auf die linke Seite</string>
@@ -94,7 +94,7 @@ Um eine ältere Version zu verwenden, müssen Sie Reddit &lt;b&gt;deinstallieren
   <string name="morphe_feed_media_max_height_title">Maximale Höhe von Feed-Medien</string>
   <string name="morphe_feed_media_max_height_summary">Maximale Höhe von Bildern, Videos und Galerien im Feed, als Vielfaches ihrer Breite. Höhere Medien werden beschnitten. 1,33 ist der Standardwert von Reddit</string>
   <string name="morphe_redgifs_audio_title">Redgifs mit Audio abspielen</string>
-  <string name="morphe_redgifs_audio_summary">Spielt das Original-Redgifs-Video anstelle von Reddit-Kopie ab, die oft kein Audio hat</string>
+  <string name="morphe_redgifs_audio_summary">Spielt das Original-Redgifs-Video anstelle der Reddit-Kopie ab, die oft kein Audio hat</string>
   <string name="morphe_redgifs_hd_title">Redgifs HD-Qualität</string>
   <string name="morphe_redgifs_hd_summary">Spielt das Redgifs-Video in HD-Qualität ab. HD-Videos sind größer und können zum Laden pausieren</string>
   <string name="morphe_download_location_title">Download-Ordner</string>
@@ -103,8 +103,8 @@ Um eine ältere Version zu verwenden, müssen Sie Reddit &lt;b&gt;deinstallieren
   <string name="morphe_download_location_summary_folder">Ordner: %s</string>
   <string name="morphe_download_location_summary_pattern">Dateiname: %s</string>
   <string name="morphe_download_location_pattern_default">Standard-Namensgebung von Reddit</string>
-  <string name="morphe_download_location_uses_all_summary">Verwendet \</string>
-  <string name="morphe_download_location_own_title">Eigener Standort verwenden</string>
+  <string name="morphe_download_location_uses_all_summary">Verwendet \"Alle Konten\"</string>
+  <string name="morphe_download_location_own_title">Eigenen Speicherort verwenden</string>
   <string name="morphe_download_location_folder_title">Speichern in</string>
   <string name="morphe_download_location_folder_default">Standardordner von Reddit</string>
   <string name="morphe_download_location_folder_default_short">Standard</string>
@@ -114,7 +114,7 @@ Um eine ältere Version zu verwenden, müssen Sie Reddit &lt;b&gt;deinstallieren
   <string name="morphe_download_location_no_picker">Auf diesem Gerät ist kein Ordnerauswahlprogramm verfügbar</string>
   <string name="morphe_download_location_pattern_title">Dateiname</string>
   <string name="morphe_download_location_pattern_hint">Dateiname nach Reddit-Vorlage</string>
-  <string name="morphe_download_location_pattern_help">Tippen Sie auf ein Token, um es einzufügen. Ein / erstellt einen Unterordner. Unbekannte Werte werden zu „unknown“</string>
+  <string name="morphe_download_location_pattern_help">Tippe auf ein Token, um es einzufügen. Ein / erstellt einen Unterordner. Unbekannte Werte werden zu „unknown“</string>
   <string name="morphe_download_location_example_images">Bilder: %s</string>
   <string name="morphe_download_location_example_videos">Videos: %s</string>
   <string name="morphe_download_location_save">Speichern</string>
@@ -122,7 +122,7 @@ Um eine ältere Version zu verwenden, müssen Sie Reddit &lt;b&gt;deinstallieren
   <string name="morphe_download_location_delete">Löschen</string>
   <string name="morphe_download_location_reset_confirm">Den Speicherort für alle Downloads auf den Standard von Reddit zurücksetzen?</string>
   <string name="morphe_download_location_delete_confirm">Den Speicherort für %s löschen?</string>
-  <string name="morphe_download_location_save_failed">Konnte nicht am heruntergeladenen Speicherort speichern. Stattdessen im Standardordner von Reddit gespeichert</string>
+  <string name="morphe_download_location_save_failed">Speichern am Download-Speicherort nicht möglich. Stattdessen im Standardordner von Reddit gespeichert</string>
   <string name="morphe_download_location_folder_unavailable">Der Download-Ordner ist nicht mehr verfügbar. Stattdessen im Standardordner von Reddit gespeichert</string>
   <string name="morphe_download_location_video_failed">Das heruntergeladene Video konnte nicht gespeichert werden</string>
   <string name="morphe_download_location_invalid_folder">Dieser Ordner kann nicht für Downloads verwendet werden</string>
@@ -136,10 +136,10 @@ Um eine ältere Version zu verwenden, müssen Sie Reddit &lt;b&gt;deinstallieren
   <string name="morphe_media_viewer_black_background_title">Schwarzer Hintergrund im Medienbetrachter</string>
   <string name="morphe_media_viewer_black_background_summary">Verwendet im Medienbetrachter hinter Bildern und Videos einen schwarzen Hintergrund anstelle der Hintergrundfarbe des Designs</string>
   <string name="morphe_open_links_externally_title">Links extern öffnen</string>
-  <string name="morphe_open_links_externally_summary">Öffnet Links in Ihrem Browser anstatt im In-App-Browser</string>
+  <string name="morphe_open_links_externally_summary">Öffnet Links in deinem Browser anstatt im In-App-Browser</string>
   <string name="morphe_remember_collapsed_comments_title">Eingeklappte Kommentare merken</string>
   <string name="morphe_remember_collapsed_comments_summary">Kommentare, die du einklappst, bleiben eingeklappt, wenn du den Beitrag wieder öffnest</string>
-  <string name="morphe_app_icon_title">App-Icon</string>
+  <string name="morphe_app_icon_title">App-Symbol</string>
   <string name="morphe_app_icon_choose_title">App-Symbol auswählen</string>
   <string name="morphe_app_icon_default">Standard</string>
   <string name="morphe_app_icon_unknown">Unbekannt</string>

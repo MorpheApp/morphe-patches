@@ -49,7 +49,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_create_new_segment_title">Zobraziť tlačidlo \'Vytvoriť nový segment\'</string>
   <string name="morphe_sb_create_new_segment_summary">Pridá tlačidlo do prehrávača videa, ktoré vám umožní odoslať nové segmenty SponsorBlock</string>
   <string name="morphe_sb_create_new_segment_step_title">Krok úpravy času</string>
-  <string name="morphe_sb_create_new_segment_step_summary">Množstvo posunu v milisekundách pre tlačidlá úpravy času (v milisekundách)</string>
+  <string name="morphe_sb_create_new_segment_step_summary">Množstvo posunu tlačidiel úpravy času (v milisekundách)</string>
   <string name="morphe_sb_create_new_segment_step_invalid">Hodnota musí byť kladné číslo</string>
   <string name="morphe_sb_guidelines_title">Pokyny na odosielanie</string>
   <string name="morphe_sb_guidelines_summary">Pokyny obsahujú pravidlá a tipy na vytváranie nových segmentov</string>
@@ -67,7 +67,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_min_segment_duration_title">Minimálna dĺžka segmentu</string>
   <string name="morphe_sb_min_segment_duration_summary">Segmenty kratšie ako táto hodnota (v sekundách) sa nezobrazia ani nepreskočia</string>
   <string name="morphe_sb_min_segment_duration_invalid">Neplatný časový interval</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Vaše súkromné ​​ID používateľa</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Vaše súkromné ID používateľa</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">ID by ste mali držať v súkromí. Je to ako heslo a nemali by ste ho s nikým zdieľať. Pokiaľ ho niekto má, môže sa za vás vydávať</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Súkromné ID používateľa musí mať minimálne 30 znakov</string>
   <string name="morphe_sb_api_url_title">Zmeniť URL API</string>
@@ -232,5 +232,5 @@ Ak neodosielate zvýraznenie, klepnite na Zrušiť a označte druhú polohu"</st
   <string name="morphe_sb_color_dot_label">Farba:</string>
   <string name="morphe_sb_about_api_summary">"SponsorBlock je crowdsourcovaná databáza video segmentov, ako sú sponzorské časti, úvody, závery a pripomienky na odber. Segmenty pridávajú a hlasujú o nich členovia komunity a databáza je otvorená a voľne na stiahnutie
 
-ID videa, ktoré sledujete, sa posiela do API SponsorBlock, aby sa získali jeho segmenty. Ay yo drugi delet this"</string>
+ID videa, ktoré sledujete, sa posiela do API SponsorBlock, aby sa získali jeho segmenty."</string>
 </resources>

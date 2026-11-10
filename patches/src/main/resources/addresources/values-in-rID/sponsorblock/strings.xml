@@ -65,7 +65,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_track_skip_count_title">Aktifkan pelacakan melewati hitungan</string>
   <string name="morphe_sb_track_skip_count_summary">Mengirim jumlah lewati ke papan peringkat SponsorBlock untuk melacak berapa banyak waktu yang disimpan</string>
   <string name="morphe_sb_min_segment_duration_title">Durasi minimum segmen</string>
-  <string name="morphe_sb_min_segment_duration_summary">Segmen yang lebih pendek pada dari nilai ini (dalam detik) tidak akan ditampilkan atau dilewati</string>
+  <string name="morphe_sb_min_segment_duration_summary">Segmen yang lebih pendek dari nilai ini (dalam detik) tidak akan ditampilkan atau dilewati</string>
   <string name="morphe_sb_min_segment_duration_invalid">Durasi waktu tidak sah</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_title">ID pengguna pribadi Anda</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Ini harus dijaga kerahasiaannya. Seperti kata sandi dan tidak disarankan untuk dibagikan dengan siapa pun. Jika seseorang mendapatkan ini, mereka dapat menyamar sebagai Anda</string>
@@ -197,7 +197,7 @@ Siap mengirim?"</string>
   <string name="morphe_sb_new_segment_mark_locations_first">Tandai lokasi terlebih dahulu di bilah waktu</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Pratinjau segmen, dan pastikan segmen dilewati dengan lancar</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Ubah waktu segmen secara manual</string>
-  <string name="morphe_sb_new_segment_edit_by_hand_content">Apakah Anda ingin menubah waktu awal atau akhir segmen?</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">Apakah Anda ingin mengubah waktu awal atau akhir segmen?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Waktu yang diberikan tidak sah</string>
   <string name="morphe_sb_new_segment_highlight_title">Kirim sorotan</string>
   <string name="morphe_sb_new_segment_highlight_content">"Apakah waktu sorotan sudah benar?

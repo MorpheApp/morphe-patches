@@ -40,7 +40,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_wifi_title">Bật Wi-Fi?</string>
   <string name="morphe_music_jam_wifi_message">Bật Wi-Fi, sau đó thử bắt đầu hoặc tham gia Jam lần nữa</string>
   <string name="morphe_music_jam_wifi_settings">Mở cài đặt Wi-Fi</string>
-  <string name="morphe_music_jam_cancel">Thôi</string>
+  <string name="morphe_music_jam_cancel">Hủy</string>
   <string name="morphe_music_jam_use_package">Sử dụng gói</string>
   <string name="morphe_music_jam_invalid_package">Nhập tên gói Android hợp lệ</string>
   <string name="morphe_music_jam_package_saved">Đã lưu gói. Thiết lập Jam Layer để kết nối</string>
@@ -128,7 +128,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Tải xuống video nhạc, podcast hoặc bài hát bằng các ứng dụng tải xuống của bên thứ ba</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Sử dụng trình tải xuống bên ngoài cho menu Tải xuống</string>
-  <string name="morphe_external_downloader_menu_summary">Tùy chọn Tải xuống trong các menu sẽ mở trình tải xuống bên ngoài của bạn thay vì</string>
+  <string name="morphe_external_downloader_menu_summary">Tùy chọn Tải xuống trong các menu sẽ mở trình tải xuống bên ngoài của bạn thay thế</string>
   <string name="morphe_music_downloads_screen_title">Tải xuống</string>
   <string name="morphe_music_downloads_empty">"Không có bản tải xuống
 Các bài hát đã tải sẽ xuất hiện ở đây"</string>
@@ -560,7 +560,7 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Dọn sạch bằng regex tùy chỉnh</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Nhập regex tùy chỉnh để loại bỏ văn bản không cần thiết khỏi tiêu đề bài hát, nghệ sĩ hoặc đĩa nhạc. Ví dụ: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Phân tích tên nghệ sĩ và bài hát từ tiêu đề</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Tự động nhận diện tên nghệ sĩ và bài hát từ tiêu đề video thông qua dấu \" - \". Tính năng này hữu ích với các các video đăng lại khi tên kênh trùng với tên nghệ sĩ</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Tự động nhận diện tên nghệ sĩ và bài hát từ tiêu đề video thông qua dấu \" - \". Tính năng này hữu ích với các video đăng lại khi tên kênh trùng với tên nghệ sĩ</string>
   <string name="morphe_music_scrobbling_guess_album_title">Điền vào album còn thiếu</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Khi bản nhạc không có album, hãy tra cứu trên Last.fm để scrobble của bạn được hoàn tất</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -691,7 +691,7 @@ Các bước:
 2. Mở DevTools → Application → Cookies → deezer.com
 3. Sao chép giá trị của \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: đã lưu arl</string>
-  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl không hợp lệ — vui lòng thử lại</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: đã xóa arl</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl không hợp lệ - vui lòng kiểm tra và thử lại</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Chỉ thêm token để sử dụng tài khoản của riêng bạn. Token phải lấy từ ứng dụng Musixmatch Android: các token sao chép từ musixmatch.com thuộc về trình khách máy tính để bàn đã ngừng hoạt động và API sẽ từ chối chúng.</string>
@@ -709,7 +709,7 @@ Các bước:
 3. Sao chép toàn bộ chuỗi cookie (các cặp khóa=giá trị phân tách bằng dấu chấm phẩy)
 
 Cookie bắt buộc: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
-  <string name="morphe_music_youtube_cookies_toast_saved">cookie không hợp lệ — vui lòng thử lại</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: đã lưu cookie</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: đã xóa cookie</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookies không hợp lệ - vui lòng kiểm tra và thử lại</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Chạm và giữ một dòng</string>
@@ -842,7 +842,7 @@ Chia định dạng bản nhạc đã điền thành các khung hình xoay vòng
   <string name="morphe_music_lyrics_transcribe_key_saved">Đã lưu khóa API QuickLRC</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC không chấp nhận khóa đó</string>
   <string name="morphe_music_lyrics_transcribe_key_cleared">Đã xóa khóa API QuickLRC</string>
-  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC thêm thời gian cho những lời bài hát chưa có, hoặc chuyển ngữ chúng từ bài hát, với chi phí là tín dụng. Với khóa được thiết lập, các bài hát không có lời sẽ cung cấp chức năng chuyển ngữ và hộp thoại tìm kiếm có thêm nút căn chỉnh</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC thêm thời gian cho những lời bài hát chưa có, hoặc chép lời chúng từ bài hát, với chi phí là tín dụng. Với khóa được thiết lập, các bài hát không có lời sẽ cung cấp chức năng chép lời và hộp thoại tìm kiếm có thêm nút căn chỉnh</string>
   <string name="morphe_music_lyrics_transcribe_align">Yêu cầu căn chỉnh QuickLRC</string>
   <string name="morphe_music_lyrics_transcribe_aligning">Đang căn chỉnh</string>
   <string name="morphe_music_lyrics_transcribe_apply_align">Áp dụng căn chỉnh</string>
@@ -850,7 +850,7 @@ Chia định dạng bản nhạc đã điền thành các khung hình xoay vòng
   <string name="morphe_music_lyrics_transcribe_working">Đang ghi âm</string>
   <string name="morphe_music_lyrics_transcribe_cancelled">Đã hủy ghi âm</string>
   <string name="morphe_music_lyrics_transcribe_local_unsupported">Chỉ các bài hát phát từ YouTube mới có thể ghi âm</string>
-  <string name="morphe_music_lyrics_transcribe_no_text">Không có lời bài hát để căn chỉnh - đang chuyển ngữ thay thế</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Không có lời bài hát để căn chỉnh - đang chép lời thay thế</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC không thể xử lý bài hát này</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">Tín dụng QuickLRC đã hết cho bài hát này</string>
   <string name="morphe_music_lyrics_about_summary">"Lời bài hát được khớp theo tiêu đề và nghệ sĩ, metadata bất thường có thể không tìm thấy gì hoặc phiên bản sai. Sử dụng làm mới để chuyển đổi phiên bản. Các nhà cung cấp đánh dấu * yêu cầu token. Không phải lúc nào tất cả các nhà cung cấp được bật cũng được yêu cầu theo thứ tự của bạn, nhưng phản hồi dựa trên tốc độ của họ.

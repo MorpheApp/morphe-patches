@@ -24,7 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset_color">Nulstil farve</string>
   <string name="morphe_settings_color_invalid">Ugyldig farve</string>
   <string name="morphe_settings_restart_title">Genstart kræves</string>
-  <string name="morphe_settings_restart_dialog_message">Genstart appen for at denne ændring træder i kraft</string>
+  <string name="morphe_settings_restart_dialog_message">Genstart appen, for at ændringen træder i kraft</string>
   <string name="morphe_settings_restart">Genstart</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importer</string>
@@ -97,9 +97,10 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Fejlfinding</string>
   <string name="morphe_debug_screen_summary">Konfigurer avancerede udviklerindstillinger og diagnostiklogs</string>
-  <string name="morphe_debug_title">Aktivér fejlfindingslogning</string>
-  <string name="morphe_debug_stacktrace_title">Fejlfindingslogge inkluderer stakspor</string>
-  <string name="morphe_debug_stacktrace_summary">Inkluderer stack traces i fejlfindingslogs for at hjælpe med at identificere fejl</string>
+  <string name="morphe_debug_level_title">Fejlfindingslogning</string>
+  <string name="morphe_debug_level_entry_disabled">Deaktiveret</string>
+  <string name="morphe_debug_level_entry_debug">Fejlfinding</string>
+  <string name="morphe_debug_level_entry_verbose">Detaljeret</string>
   <string name="morphe_debug_toast_on_error_title">Vis toastbesked ved Morphe-fejl</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Hvis du deaktiverer fejl-toasts, skjules alle Morphe-fejlmeddelelser.
 
@@ -221,12 +222,12 @@ Hvis batterioptimeringer ikke ændres, kan du opleve:
   <string name="morphe_link_handling_step2_message">Åbn indstillingerne for den patched app og aktiver alle domænelinks</string>
   <string name="morphe_link_handling_open">Åbn indstillinger</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentel Advarsel 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentel advarsel 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Du bruger en eksperimentel app-version af ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 🔧 Forvent mærkelige app-adfærd eller uidentificerede fejl, mens vi finjusterer rettelserne til denne app-version.
 &lt;br/&gt;&lt;br/&gt;
-Hvis du ønsker den mest problemfrie oplevelse, så &lt;b&gt;afinstaller&lt;/b&gt; denne og opdater den anbefalede app-version af ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Hvis du ønsker den mest problemfrie oplevelse, så &lt;b&gt;afinstaller&lt;/b&gt; denne og patch den anbefalede app-version af ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jeg vil have eksperimentel</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jeg vil have stabil</string>
   <!-- misc.announcements.patchesUpdateNoticePatch -->

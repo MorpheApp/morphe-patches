@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Скрывает кнопку «Пропустить» через несколько секунд, вместо того чтобы отображать ее на протяжении всего сегмента</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Длительность показа кнопки пропуска</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Установите, как долго кнопка пропуска остается видимой</string>
-  <string name="morphe_sb_toast_on_skip_title">Показывать уведомление об отмене пропуска</string>
+  <string name="morphe_sb_toast_on_skip_title">Показывать уведомление о пропуске</string>
   <string name="morphe_sb_toast_on_skip_summary">Отображает уведомление, когда сегмент пропускается автоматически</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Длительность всплывающего уведомления при пропуске</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Установите, как долго остается видимым уведомление об отмене</string>
@@ -155,7 +155,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_submit_failed_invalid">Невозможно отправить сегмент: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock временно не работает</string>
   <string name="morphe_sb_submit_failed_unknown_error">Невозможно отправить сегмент (статус: %1$s %2$s)</string>
-  <string name="morphe_sb_submit_failed_rate_limit">Невозможно отправить сегмент. Частота ограничена (слишком много от одного пользователя или IP)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Невозможно отправить сегмент. Превышен лимит запросов (слишком много от одного пользователя или IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Невозможно отправить сегмент: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Невозможно отправить сегмент.
 Уже существует"</string>

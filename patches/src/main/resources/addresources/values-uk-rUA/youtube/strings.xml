@@ -300,7 +300,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Приховує спливні підказки біля панелі вводу чату, наприклад повідомлення про чат лише для підписників</string>
   <string name="morphe_hide_comments_menu_button_title">Приховати кнопку \"Меню\"</string>
   <string name="morphe_hide_comments_menu_button_summary">Приховує кнопку меню з трьома крапками для кожного коментаря</string>
-  <string name="morphe_hide_comments_preview_comment_title">Приховати прев\'ю коментар</string>
+  <string name="morphe_hide_comments_preview_comment_title">Приховати попередній коментар</string>
   <string name="morphe_hide_comments_preview_comment_summary">Приховує попередній перегляд коментаря під відео до повного відкриття секції коментарів</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Коментар приховано Morphe</string>
   <string name="morphe_minimal_comments_button_title">Увімкнути мінімалістичну кнопку коментарів</string>
@@ -624,11 +624,13 @@ Second \"item\" text"</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Ви використали сьогоднішню безплатну квоту перекладу MyMemory (5 000 символів). Додайте електронну пошту MyMemory в налаштуваннях, щоб збільшити денний ліміт до 50 000 символів, або виберіть інший сервіс перекладу</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Ви використали сьогоднішню квоту перекладу MyMemory (50 000 символів). Виберіть інший сервіс перекладу або спробуйте знову завтра</string>
   <string name="morphe_vot_mymemory_error">Переклад через MyMemory не вдався (статус %s)</string>
-  <!-- interaction.watchlater.watchLaterPatch -->
-  <string name="morphe_watch_later_wide_drag_handles_title">Розширити маркери перетягування в \"Дивитися пізніше\"</string>
-  <string name="morphe_watch_later_wide_drag_handles_summary">За маркери перетягування відео в \"Дивитися пізніше\" легше вхопитися</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">Приховати повідомлення про видалення з \"Дивитися пізніше\"</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_summary">Підтвердження не показується після видалення відео з \"Дивитися пізніше\"</string>
+  <!-- interaction.playlist.playlistPatch -->
+  <string name="morphe_playlist_wide_drag_handles_title">Розширити маркери перетягування в плейлистах</string>
+  <string name="morphe_playlist_wide_drag_handles_summary">Маркери перетягування в плейлистах стало легше захвачувати</string>
+  <string name="morphe_playlist_hide_removal_snackbar_title">Приховати повідомлення про видалення з плейлиста</string>
+  <string name="morphe_playlist_hide_removal_snackbar_summary">Підтвердження не показується після видалення відео з плейлиста</string>
+  <string name="morphe_playlist_long_press_drag_title">Довго натискайте, щоб змінити порядок відео у плейлисті</string>
+  <string name="morphe_playlist_long_press_drag_summary">Натисніть і утримуйте відео у вашому плейлисті, щоб перетягнути його на нову позицію</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Увімкнути повторення відео</string>
   <string name="morphe_do_not_remember_loop_video_title">Не запам\'ятовувати повтор відео</string>
@@ -1192,7 +1194,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_playlist_autoplay_title">Вимкнути автовідтворення списку відтворення</string>
   <string name="morphe_disable_playlist_autoplay_summary">Запобігає автоматичному переходу списку відтворення до наступного відео</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-  <string name="morphe_disable_continue_watching_prompt_title">Вимкнути запит \"Продовжити перегляд?\"</string>
+  <string name="morphe_continue_watching_prompt_title">Запит \"Продовжити перегляд\"</string>
+  <string name="morphe_continue_watching_prompt_entry_1">Типові</string>
+  <string name="morphe_continue_watching_prompt_entry_2">Вимкнена</string>
+  <string name="morphe_continue_watching_prompt_entry_3">Вимкнено, завжди показувати відлік автовідтворення</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Вийти з повноекранного режиму в кінці відео</string>
   <string name="morphe_exit_fullscreen_entry_1">Вимкнено</string>
@@ -1534,7 +1539,7 @@ Second \"item\" text"</string>
   <string name="morphe_speed_tap_and_hold_title">Швидкість відтворення при натисненні та утримувані</string>
   <string name="morphe_speed_tap_and_hold_summary">Встановлює множник швидкості при натисканні та утриманні екрана, встановіть 0 для вимкнення</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
-  <string name="morphe_remember_playback_speed_last_selected_title">Запам’ятати швидкість відтворення</string>
+  <string name="morphe_remember_playback_speed_last_selected_title">Запам’ятовувати швидкість відтворення</string>
   <string name="morphe_remember_playback_speed_last_selected_summary">Застосовує вибраний рівень якості до всіх наступних Shorts</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Сповіщення про зміну швидкості</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Показує сповіщення при збереженні нової типової швидкості відтворення</string>
@@ -1610,7 +1615,7 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_end_early">• Відтворення може завершитися на 1 секунду раніше</string>
   <string name="morphe_spoof_video_streams_about_js">• Якщо деобфускація не вдається, відтворення може завершитися невдачею</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
-  <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Примусово оригінальна мова звукової доріжки\" недоступна</string>
+  <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Функція \"Примусово оригінальна мова звукової доріжки\" недоступна</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Потрібен вхід в Android VR</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Якість може бути обмежена до 720p</string>
