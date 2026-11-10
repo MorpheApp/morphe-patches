@@ -256,16 +256,15 @@ val downloadsPatch = patch(
             }
         }
 
-        // Virtualize MediaStore ContentResolver.query
+        // Virtualize MediaStore ContentResolver.query (5-parameter overload)
         val contentResolverQueryFilter = methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
             smali = "Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;"
         )
 
         Fingerprint(
             filters = listOf(contentResolverQueryFilter),
             custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/") }
-        ).matchAllMethodIndicesForEach { index ->
+        ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
             val instruction = getInstruction(index)
             val invokeString = if (instruction is RegisterRangeInstruction) {
                 "invoke-static/range { v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1} }"
@@ -279,16 +278,37 @@ val downloadsPatch = patch(
             )
         }
 
+        // Virtualize MediaStore ContentResolver.query (6-parameter overload with CancellationSignal)
+        val contentResolverQuerySignalFilter = methodCall(
+            smali = "Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/database/Cursor;"
+        )
+
+        Fingerprint(
+            filters = listOf(contentResolverQuerySignalFilter),
+            custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/") }
+        ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
+            val instruction = getInstruction(index)
+            val invokeString = if (instruction is RegisterRangeInstruction) {
+                "invoke-static/range { v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1} }"
+            } else {
+                "invoke-static { ${fiveRegisters(index)} }"
+            }
+
+            replaceInstruction(
+                index,
+                "$invokeString, $VIRTUAL_MEDIA_PROVIDER->query(Landroid/content/ContentResolver;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/database/Cursor;"
+            )
+        }
+
         // Virtualize ContentResolver.openAssetFileDescriptor for direct ExoPlayer playback
         val openAssetFileDescriptorFilter = methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
             smali = "Landroid/content/ContentResolver;->openAssetFileDescriptor(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;"
         )
 
         Fingerprint(
             filters = listOf(openAssetFileDescriptorFilter),
             custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/") }
-        ).matchAllMethodIndicesForEach { index ->
+        ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
             val instruction = getInstruction(index)
             val invokeString = if (instruction is RegisterRangeInstruction) {
                 "invoke-static/range { v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1} }"
