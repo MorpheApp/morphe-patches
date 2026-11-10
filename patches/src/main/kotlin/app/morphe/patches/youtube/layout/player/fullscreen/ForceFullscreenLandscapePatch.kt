@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.layout.player.fullscreen
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.player.orientation.playerOrientationPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -29,7 +30,8 @@ val forceFullscreenLandscapePatch = patch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        playerTypeHookPatch
+        playerTypeHookPatch,
+        playerOrientationPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
