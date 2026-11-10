@@ -50,6 +50,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_06_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -394,7 +395,23 @@ val themePatch = baseThemePatch(
                 styleColorNamesDark = youTubeStyleNamesDark,
                 styleColorNamesLight = youTubeStyleNamesLight,
                 // The theme of the launcher activity, which the system draws the splash with.
-                splashScreenThemeParent = "@style/Theme.YouTube.Home"
+                splashScreenThemeParent = "@style/Theme.YouTube.Home",
+                splashScreenIcons = {
+                    buildMap {
+                        put("original", if (is_21_45_or_greater) "ic_launcher" else "ringo2_ic_launcher")
+                        put("black", "morphe_launcher_black")
+                        put("dark", "morphe_launcher_dark")
+                        put("light", "morphe_launcher_light")
+                        put("play", "morphe_launcher_play")
+                        put("play_black", "morphe_launcher_play_black")
+                        put("custom", "morphe_launcher_custom")
+                        if (is_21_41_or_greater) {
+                            put("youtube_icon1", "ic_launcher_icon1")
+                            put("youtube_icon2", "ic_launcher_icon2")
+                            put("youtube_icon3", "ic_launcher_icon3")
+                        }
+                    }
+                }
             ),
             themeResourcePatch
         )

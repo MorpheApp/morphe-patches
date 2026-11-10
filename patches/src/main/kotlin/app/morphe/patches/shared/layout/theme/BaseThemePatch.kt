@@ -557,7 +557,8 @@ internal fun baseThemeResourcePatch(
     styleColorNamesDark: (() -> Map<String, Set<String>>) = { STYLE_DEFAULT_COLOR_NAMES_DARK },
     styleColorNamesLight: (() -> Map<String, Set<String>>) = { STYLE_DEFAULT_COLOR_NAMES_LIGHT },
     includeLightColor: Boolean = false,
-    splashScreenThemeParent: String? = null
+    splashScreenThemeParent: String? = null,
+    splashScreenIcons: (() -> Map<String, String>) = { emptyMap() }
 ) = patch {
     execute {
         val colorFiles = colorFiles()
@@ -637,7 +638,7 @@ internal fun baseThemeResourcePatch(
 
         // An app without a launcher theme keeps the splash screen it draws itself.
         if (splashScreenThemeParent != null) {
-            addSplashScreenThemes(splashScreenThemeParent, includeLightColor)
+            addSplashScreenThemes(splashScreenThemeParent, includeLightColor, splashScreenIcons())
         }
     }
 }
@@ -735,12 +736,14 @@ private fun replaceColors(
  */
 private fun addSplashScreenThemes(
     parentStyle: String,
-    includeLightColor: Boolean
+    includeLightColor: Boolean,
+    splashScreenIcons: Map<String, String> = emptyMap()
 ) {
     resourceXml("res/values/styles.xml", copy = false).use { styles ->
         fun addTheme(index: Int, color: String) {
+            val baseThemeName = "$SPLASH_THEME_NAME$index"
             styles.root.appendChild("style") {
-                setAttribute("name", "$SPLASH_THEME_NAME$index")
+                setAttribute("name", baseThemeName)
                 setAttribute("parent", parentStyle)
 
                 // The first is used since Android 12, and the second by everything the app draws
@@ -752,6 +755,17 @@ private fun addSplashScreenThemes(
                     appendChild("item") {
                         setAttribute("name", name)
                         text = color
+                    }
+                }
+            }
+
+            splashScreenIcons.forEach { (iconStyle, iconMipmap) ->
+                styles.root.appendChild("style") {
+                    setAttribute("name", "${SPLASH_THEME_NAME}${iconStyle}_$index")
+                    setAttribute("parent", baseThemeName)
+                    appendChild("item") {
+                        setAttribute("name", "android:windowSplashScreenAnimatedIcon")
+                        text = "@mipmap/$iconMipmap"
                     }
                 }
             }

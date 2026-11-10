@@ -65,7 +65,7 @@ private const val ORIGINAL_USER_ICON_STYLE_NAME = "original"
 private const val CUSTOM_USER_ICON_STYLE_NAME = "custom"
 
 // The icon the app uses when no icon style was selected.
-private const val DEFAULT_ICON_STYLE_NAME = "black"
+private const val DEFAULT_ICON_STYLE_NAME = ORIGINAL_USER_ICON_STYLE_NAME
 
 // Derived from the bundled styles so a new style cannot be missing here.
 private val iconStyleValues = buildMap {
@@ -218,7 +218,7 @@ internal fun baseCustomBrandingPatch(
         description = """
             The app icon to use, including the notification icon.
 
-            'Automatic' uses the custom icon if one is provided, and otherwise 'Black'.
+            'Automatic' uses the custom icon if one is provided, and otherwise 'Original'.
             Select 'Original' to keep the icon of the unpatched app.
 
             The icon can be changed later in the app settings, but only for the launcher.
@@ -241,7 +241,7 @@ internal fun baseCustomBrandingPatch(
 
                 mainActivityOnCreateFingerprint.method.addInstruction(
                     0,
-                    "invoke-static { }, $EXTENSION_CLASS->setBranding()V"
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setBranding(Landroid/app/Activity;)V"
                 )
 
                 NumberOfPresetAppNamesExtensionFingerprint.method.returnEarly(numberOfPresetAppNames)
@@ -476,11 +476,7 @@ internal fun baseCustomBrandingPatch(
                             // Use custom name everywhere.
                             customName!!
                         } else {
-                            // The YT application name can appear in some places alongside the system
-                            // YouTube app, such as the settings app list and in the "open with" file picker.
-                            // Because the YouTube app cannot be completely uninstalled and only disabled,
-                            // use a custom name for this situation to disambiguate which app is which.
-                            "@string/morphe_custom_branding_name_entry_2"
+                            originalAppName
                         }
                     )
                 }
@@ -591,6 +587,27 @@ internal fun baseCustomBrandingPatch(
                 val targetFile = resourceFile("res/${file.parentFile.name}/${file.name}", false)
                 targetFile.parentFile.mkdirs()
                 file.copyTo(targetFile, overwrite = true)
+            }
+        }
+
+        resourceXml("res/values/styles.xml", copy = false).use { styles ->
+            fun addSplashIconStyle(styleName: String, iconMipmap: String) {
+                styles.root.appendChild("style") {
+                    setAttribute("name", "morphe_splash_icon_$styleName")
+                    appendChild("item") {
+                        setAttribute("name", "android:windowSplashScreenAnimatedIcon")
+                        text = "@mipmap/$iconMipmap"
+                    }
+                }
+            }
+
+            addSplashIconStyle(ORIGINAL_USER_ICON_STYLE_NAME, originalLauncherIconName())
+            addSplashIconStyle(CUSTOM_USER_ICON_STYLE_NAME, "$LAUNCHER_RESOURCE_NAME_PREFIX$CUSTOM_USER_ICON_STYLE_NAME")
+            iconStyleNames.forEach { style ->
+                addSplashIconStyle(style, "$LAUNCHER_RESOURCE_NAME_PREFIX$style")
+            }
+            appLauncherIconNames().forEach { (style, mipmap) ->
+                addSplashIconStyle(style, mipmap)
             }
         }
 

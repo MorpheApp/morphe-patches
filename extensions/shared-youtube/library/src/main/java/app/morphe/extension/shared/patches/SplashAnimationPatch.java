@@ -132,11 +132,12 @@ public class SplashAnimationPatch {
     }
 
     /**
-     * The default style, which is the Morphe glow animation if the app has the Rive animations.
+     * The default style, which is the original app glow animation if the app has the Rive animations,
+     * or the unbranded 60fps Lottie animation.
      */
     public static SplashScreenAnimationStyle getDefaultStyle() {
         return isRiveIncluded()
-                ? SplashScreenAnimationStyle.RIVE_GLOW_MORPHE
+                ? SplashScreenAnimationStyle.RIVE_GLOW
                 : getDefaultLottieStyle();
     }
 
@@ -144,9 +145,7 @@ public class SplashAnimationPatch {
      * The default style that is not a Rive animation.
      */
     public static SplashScreenAnimationStyle getDefaultLottieStyle() {
-        return CustomBrandingPatch.isPatchIncluded()
-                ? SplashScreenAnimationStyle.MORPHE_COLOR
-                : SplashScreenAnimationStyle.FPS_60_ONE_SECOND;
+        return SplashScreenAnimationStyle.FPS_60_ONE_SECOND;
     }
 
     public static boolean isMonochrome() {

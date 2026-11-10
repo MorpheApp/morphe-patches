@@ -40,6 +40,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.CustomBrandingPatch;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
@@ -503,12 +504,20 @@ public class ThemeColorPatch {
             splashScreenThemeApplied = true;
 
             final int index = splashScreenThemeIndex(isDarkTheme());
-            final int themeId = ResourceUtils.getIdentifier(
-                    ResourceType.STYLE, SPLASH_THEME_NAME + index);
+            final String iconStyle = CustomBrandingPatch.getLauncherIconStyleName();
+            int resolvedThemeId = ResourceUtils.getIdentifier(
+                    ResourceType.STYLE, SPLASH_THEME_NAME + iconStyle + "_" + index);
+            if (resolvedThemeId == 0) {
+                resolvedThemeId = ResourceUtils.getIdentifier(
+                        ResourceType.STYLE, SPLASH_THEME_NAME + index);
+            }
+            final int themeId = resolvedThemeId;
 
-            Logger.printDebug(() -> "Splash screen theme: " + SPLASH_THEME_NAME + index
+            Logger.printDebug(() -> "Splash screen theme: " + SPLASH_THEME_NAME + iconStyle + "_" + index
                     + " id: " + themeId);
-            activity.getSplashScreen().setSplashScreenTheme(themeId);
+            if (themeId != 0) {
+                activity.getSplashScreen().setSplashScreenTheme(themeId);
+            }
             SharedYouTubeSettings.THEME_LAST_SPLASH_SCREEN_INDEX.save(index);
         } catch (Exception ex) {
             Logger.printException(() -> "setSplashScreenTheme failure", ex);

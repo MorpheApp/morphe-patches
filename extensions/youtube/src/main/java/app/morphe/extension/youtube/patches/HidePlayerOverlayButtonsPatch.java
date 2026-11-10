@@ -186,6 +186,7 @@ public final class HidePlayerOverlayButtonsPatch {
      * Injection point.
      */
     public static ImageView hideFullscreenButton(ImageView imageView) {
+        PlayerOrientationPatch.initializeButton(imageView);
         if (!HIDE_FULLSCREEN_BUTTON_ENABLED) {
             return imageView;
         }

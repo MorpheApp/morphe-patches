@@ -84,7 +84,18 @@ val themePatch = baseThemePatch(
             baseThemeResourcePatch(
                 colorNamesDark = musicColorNamesDark,
                 // The theme of the launcher activity, which the system draws the splash with.
-                splashScreenThemeParent = "@style/Theme.YouTubeMusic.Home"
+                splashScreenThemeParent = "@style/Theme.YouTubeMusic.Home",
+                splashScreenIcons = {
+                    mapOf(
+                        "original" to "ic_launcher_release",
+                        "black" to "morphe_launcher_black",
+                        "dark" to "morphe_launcher_dark",
+                        "light" to "morphe_launcher_light",
+                        "play" to "morphe_launcher_play",
+                        "play_black" to "morphe_launcher_play_black",
+                        "custom" to "morphe_launcher_custom"
+                    )
+                }
             ),
             headerFadeResourcePatch
         )
