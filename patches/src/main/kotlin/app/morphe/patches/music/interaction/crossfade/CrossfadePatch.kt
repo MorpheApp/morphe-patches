@@ -813,6 +813,12 @@ val crossfadePatch = patch(
         coordinatorClass.addFieldGetter("patch_getSharedState", sharedStateFieldRef)
         coordinatorClass.addFieldGetter("patch_getSharedCallback", sharedCallbackFieldRef)
         coordinatorClass.addFieldGetter("patch_getVideoSurface", videoSurfaceField)
+        val playerVolumeField = PlayerVolumeFingerprint.instructionMatches.last()
+            .getInstruction<ReferenceInstruction>().getReference<FieldReference>()!!
+        coordinatorClass.addBridge(
+            "patch_getVolume", emptyList(), "F", 2,
+            "iget v0, p0, $playerVolumeField\nreturn v0"
+        )
 
         // A coordinator setter that also moves its listeners to the new player is preferred
         // over a raw field write. None of the supported 9.x versions has one.
