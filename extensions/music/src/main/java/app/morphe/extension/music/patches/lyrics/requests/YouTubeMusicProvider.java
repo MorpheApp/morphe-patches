@@ -15,14 +15,12 @@ import org.json.JSONObject;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.innertube.utils.AuthUtils;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class YouTubeMusicProvider implements LyricsProvider {
@@ -50,7 +48,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
             body.put("playlistId", "RDAMVM" + videoId);
 
             final HttpURLConnection conn = postInnertube(NEXT_URL, body.toString(),
-                    WEB_REMIX_VERSION, true);
+                    WEB_REMIX_VERSION);
             try {
                 final int code = conn.getResponseCode();
                 if (code != 200) {
@@ -295,8 +293,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
     }
 
     private static HttpURLConnection postInnertube(String url, String jsonBody,
-                                                   String clientVersion,
-                                                   boolean sendAuth) throws Exception {
+                                                   String clientVersion) throws Exception {
         final HttpURLConnection conn = Requester.openConnection(url);
         conn.setRequestMethod("POST");
         conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
@@ -308,15 +305,6 @@ public final class YouTubeMusicProvider implements LyricsProvider {
         conn.setRequestProperty("Cookie", "SOCS=CAI");
         conn.setRequestProperty("Origin", "https://music.youtube.com");
         conn.setDoOutput(true);
-
-        if (sendAuth) {
-            for (Map.Entry<String, String> entry :
-                    AuthUtils.getRequestHeader().entrySet()) {
-                if (!entry.getValue().isEmpty()) {
-                    conn.setRequestProperty(entry.getKey(), entry.getValue());
-                }
-            }
-        }
 
         final byte[] bytes = jsonBody.getBytes(java.nio.charset.StandardCharsets.UTF_8);
         conn.setFixedLengthStreamingMode(bytes.length);
@@ -375,7 +363,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
             body.put("browseId", browseId);
 
             final HttpURLConnection conn = postInnertube(BROWSE_URL, body.toString(),
-                    clientVersion, false);
+                    clientVersion);
             try {
                 final int code = conn.getResponseCode();
                 if (code != 200) {
