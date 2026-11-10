@@ -36,6 +36,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.AndroidMedialibConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.ExoPlayerConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.MediaCommonConfig;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayabilityStatus;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerConfig;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerGestureConfig;
@@ -666,32 +669,90 @@ public class StreamingDataRequest {
     }
 
     /**
-     * The player config of the client replaces the whole player config of the app, and it does not
-     * tell how the video is played inline. The app player config does, such as for a muted preview in the feed.
+     * The player config of the client replaces the whole player config of the app.
+     * It does not tell how the video is played inline, such as a muted preview in the feed,
+     * and it buffers as the player of the client app does, which can start a video later
+     * (such as after 2.5 seconds of media, instead of 1.6 seconds with the app player config).
      *
-     * @return The player config with how the app player config plays the video inline.
+     * @return The player config with how the app player config plays the video inline and buffers it.
      */
-    public static byte[] addInlinePlayback(byte[] playerConfig, byte[] appPlayerConfig) {
+    public static byte[] addAppPlayerConfig(byte[] playerConfig, byte[] appPlayerConfig) {
         try {
             PlayerConfig appConfig = PlayerConfig.parseFrom(appPlayerConfig);
-            final boolean muteOnStart = appConfig.getAudioConfig().getMuteOnStart();
-            final boolean hasInlinePlaybackConfig = appConfig.hasInlinePlaybackConfig();
-            if (!muteOnStart && !hasInlinePlaybackConfig) {
-                return playerConfig;
-            }
-            Logger.printDebug(() -> "Adding inline playback of the app player config, muteOnStart: "
-                    + muteOnStart + ", inlinePlaybackConfig: " + hasInlinePlaybackConfig);
-
             PlayerConfig.Builder builder = PlayerConfig.parseFrom(playerConfig).toBuilder();
-            if (muteOnStart) {
+
+            if (appConfig.getAudioConfig().getMuteOnStart()) {
                 builder.setAudioConfig(builder.getAudioConfig().toBuilder().setMuteOnStart(true));
             }
-            if (hasInlinePlaybackConfig) {
+            if (appConfig.hasInlinePlaybackConfig()) {
                 builder.setInlinePlaybackConfig(appConfig.getInlinePlaybackConfig());
             }
+
+            // Only the buffering fields are copied, the other fields of the client config are kept.
+            if (builder.hasExoPlayerConfig()) {
+                ExoPlayerConfig appExoConfig = appConfig.getExoPlayerConfig();
+                ExoPlayerConfig.Builder exoConfig = builder.getExoPlayerConfig().toBuilder();
+                if (appExoConfig.hasLowWatermarkMs()) {
+                    exoConfig.setLowWatermarkMs(appExoConfig.getLowWatermarkMs());
+                }
+                if (appExoConfig.hasHighWatermarkMs()) {
+                    exoConfig.setHighWatermarkMs(appExoConfig.getHighWatermarkMs());
+                }
+                if (appExoConfig.hasMinDurationForPlaybackStartMs()) {
+                    exoConfig.setMinDurationForPlaybackStartMs(appExoConfig.getMinDurationForPlaybackStartMs());
+                }
+                if (appExoConfig.hasMinDurationForPlaybackRestartMs()) {
+                    exoConfig.setMinDurationForPlaybackRestartMs(appExoConfig.getMinDurationForPlaybackRestartMs());
+                }
+                if (appExoConfig.hasUsePredictedBuffer()) {
+                    exoConfig.setUsePredictedBuffer(appExoConfig.getUsePredictedBuffer());
+                }
+                if (appExoConfig.hasMaxReadAheadMediaTimeMs()) {
+                    exoConfig.setMaxReadAheadMediaTimeMs(appExoConfig.getMaxReadAheadMediaTimeMs());
+                }
+                if (appExoConfig.hasUseMediaTimeCappedLoadControl()) {
+                    exoConfig.setUseMediaTimeCappedLoadControl(appExoConfig.getUseMediaTimeCappedLoadControl());
+                }
+                builder.setExoPlayerConfig(exoConfig);
+            }
+
+            if (builder.hasAndroidMedialibConfig()) {
+                AndroidMedialibConfig appMedialibConfig = appConfig.getAndroidMedialibConfig();
+                AndroidMedialibConfig.Builder medialibConfig = builder.getAndroidMedialibConfig().toBuilder();
+                if (appMedialibConfig.hasEnablePrerollPrebuffer()) {
+                    medialibConfig.setEnablePrerollPrebuffer(appMedialibConfig.getEnablePrerollPrebuffer());
+                }
+                if (appMedialibConfig.hasPrebufferOptimizeForViewportSize()) {
+                    medialibConfig.setPrebufferOptimizeForViewportSize(appMedialibConfig.getPrebufferOptimizeForViewportSize());
+                }
+                builder.setAndroidMedialibConfig(medialibConfig);
+            }
+
+            // The media uStreamer request config of the client is kept, it belongs to the streams of the client.
+            if (builder.hasMediaCommonConfig()) {
+                MediaCommonConfig appMediaConfig = appConfig.getMediaCommonConfig();
+                MediaCommonConfig.Builder mediaConfig = builder.getMediaCommonConfig().toBuilder();
+                if (appMediaConfig.hasDynamicReadaheadConfig()) {
+                    mediaConfig.setDynamicReadaheadConfig(appMediaConfig.getDynamicReadaheadConfig());
+                }
+                if (appMediaConfig.hasServerPlaybackStartConfig()) {
+                    mediaConfig.setServerPlaybackStartConfig(appMediaConfig.getServerPlaybackStartConfig());
+                }
+                if (appMediaConfig.getMediaCacheConfig().hasCacheLoadPolicy()) {
+                    mediaConfig.setMediaCacheConfig(mediaConfig.getMediaCacheConfig().toBuilder()
+                            .setCacheLoadPolicy(appMediaConfig.getMediaCacheConfig().getCacheLoadPolicy()));
+                }
+                builder.setMediaCommonConfig(mediaConfig);
+            }
+
+            // When the next video is prefetched, which waits for the current video to be buffered.
+            if (appConfig.hasTaskCoordinatorConfig()) {
+                builder.setTaskCoordinatorConfig(appConfig.getTaskCoordinatorConfig());
+            }
+
             return builder.build().toByteArray();
         } catch (InvalidProtocolBufferException ex) {
-            Logger.printException(() -> "addInlinePlayback failure", ex);
+            Logger.printException(() -> "addAppPlayerConfig failure", ex);
             return playerConfig;
         }
     }
