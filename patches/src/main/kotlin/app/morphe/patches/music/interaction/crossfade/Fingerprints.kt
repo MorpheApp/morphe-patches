@@ -103,3 +103,21 @@ internal object SleepTimerStateFingerprint : Fingerprint(
     name = "<clinit>",
     strings = listOf("INACTIVE", "ACTIVE_TIMER", "ACTIVE_END_OF_TRACK")
 )
+
+internal object AudioEffectSessionFingerprint : Fingerprint(
+    name = "<init>",
+    strings = listOf(
+        "android.media.action.OPEN_AUDIO_EFFECT_CONTROL_SESSION",
+        "android.media.action.CLOSE_AUDIO_EFFECT_CONTROL_SESSION"
+    )
+)
+
+internal object CloseAudioEffectSessionFingerprint : Fingerprint(
+    classFingerprint = AudioEffectSessionFingerprint,
+    returnType = "V",
+    parameters = listOf("I"),
+    filters = listOf(
+        string("android.media.extra.AUDIO_SESSION"),
+        methodCall(smali = "Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V")
+    )
+)
