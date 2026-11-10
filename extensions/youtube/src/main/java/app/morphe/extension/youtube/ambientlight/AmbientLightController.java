@@ -483,7 +483,12 @@ public final class AmbientLightController {
         final int top = location[1];
         final int right = left + player.getWidth();
         final int bottom = top + player.getHeight();
+        // While the page scrolls, the player gets shorter and crops the video, which keeps its size.
         int[] videoBounds = videoInWindow(video);
+        videoBounds[0] = Math.max(videoBounds[0], left);
+        videoBounds[1] = Math.max(videoBounds[1], top);
+        videoBounds[2] = Math.min(videoBounds[2], right);
+        videoBounds[3] = Math.min(videoBounds[3], bottom);
 
         // This runs for every frame the app draws, and the answer rarely changes.
         int[] geometry = {left, top, right, bottom, videoBounds[0], videoBounds[1], videoBounds[2], videoBounds[3],
