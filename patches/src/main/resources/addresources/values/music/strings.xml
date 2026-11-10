@@ -539,7 +539,7 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_navigation_bar_glass_opacity_title">Opacity</string>
     <string name="morphe_music_navigation_bar_glass_rim_title">Rim brightness</string>
     <string name="morphe_music_navigation_bar_glass_blur_title">Glass blur</string>
-    <string name="morphe_music_navigation_bar_glass_blur_summary">How much the page behind the glass navigation bar is blurred (Android 14 and later). At 0, or before Android 14, the page is covered</string>
+    <string name="morphe_music_navigation_bar_glass_blur_summary">How much the page behind the glass navigation bar is blurred (Android 14 and later). At 0 the page shows through sharp, and before Android 14 the page is covered</string>
     <string name="morphe_music_navigation_bar_glass_light_title">Light glass</string>
     <string name="morphe_music_navigation_bar_glass_light_summary">Tints the glass navigation bar white instead of dark, for a lighter and clearer glass</string>
     <string name="morphe_music_navigation_bar_glass_album_tint_title">Album art tint</string>
@@ -557,7 +557,7 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_miniplayer_glass_rim_title">Rim brightness</string>
     <string name="morphe_music_miniplayer_glass_opacity_title">Opacity</string>
     <string name="morphe_music_miniplayer_glass_blur_title">Glass blur</string>
-    <string name="morphe_music_miniplayer_glass_blur_summary">How much the page behind the glass miniplayer is blurred (Android 14 and later). At 0, or before Android 14, the page is covered</string>
+    <string name="morphe_music_miniplayer_glass_blur_summary">How much the page behind the glass miniplayer is blurred (Android 14 and later). At 0 the page shows through sharp, and before Android 14 the page is covered</string>
     <string name="morphe_music_miniplayer_glass_light_title">Light glass</string>
     <string name="morphe_music_miniplayer_glass_light_summary">Tints the glass miniplayer white instead of dark, for a lighter and clearer glass</string>
     <string name="morphe_music_miniplayer_glass_album_tint_title">Album art tint</string>

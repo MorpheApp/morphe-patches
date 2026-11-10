@@ -95,7 +95,8 @@ public final class MusicGlassNavigationBar {
     private static float rimScale;
 
     /**
-     * How much the page behind the capsule is blurred, on Android 14 and later. 0 covers the page.
+     * How much the page behind the capsule is blurred, on Android 14 and later. 0 shows the page sharp
+     * through the glass.
      */
     private static float blurRadius;
 
@@ -909,7 +910,8 @@ public final class MusicGlassNavigationBar {
      * Draws the page behind a glass view blurred ({@link GlassBackdrop}), on Android 14 and later with hardware
      * acceleration. Like the blur of the YouTube navigation bar, it is left out on Android 12 and 13, where a blur
      * render effect redrawn while the player moves can crash the app. Without the blur, the page is covered by
-     * its background, or the sharp page would show through the clear glass.
+     * its background, or the sharp page would show through the clear glass. A blur radius of 0 instead draws
+     * nothing, so the page shows sharp through the glass.
      *
      * @param backdrop The backdrop this returned for the last frame, or null.
      * @return The backdrop to pass for the next frame.
@@ -917,6 +919,8 @@ public final class MusicGlassNavigationBar {
     @Nullable
     static GlassBackdrop drawPageBehind(Canvas canvas, View target, float blurRadius,
                                         @Nullable GlassBackdrop backdrop, String name) {
+        if (blurRadius <= 0) return backdrop;
+
         View content = currentContent.get();
         if (recordingBackdrop || content == null
                 || !(content.getParent() instanceof View source) || source.getWidth() <= 0) return backdrop;
@@ -925,7 +929,7 @@ public final class MusicGlassNavigationBar {
         // over that background, or the blurred text would be mostly clear and the sharp text would show.
         final int background = getPageBackgroundColor(source);
 
-        if (blurRadius <= 0 || Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE
                 || !canvas.isHardwareAccelerated()) {
             canvas.drawColor(background);
             return backdrop;
