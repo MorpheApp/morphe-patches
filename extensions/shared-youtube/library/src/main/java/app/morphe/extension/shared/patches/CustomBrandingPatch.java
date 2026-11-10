@@ -672,7 +672,6 @@ public class CustomBrandingPatch {
                 SharedYouTubeSettings.CUSTOM_BRANDING_ICON.save(getDefaultIconStyle());
             }
 
-            Context context = Utils.getContext();
             PackageManager pm = context.getPackageManager();
             String packageName = context.getPackageName();
 
