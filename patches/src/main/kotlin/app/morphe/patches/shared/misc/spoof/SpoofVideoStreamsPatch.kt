@@ -26,6 +26,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
@@ -409,6 +410,39 @@ internal fun spoofVideoStreamsPatch(
             val remainingBytesField = it.instructionMatches.last().fieldReference
             val pauseExceptionType = PriorityTooLowExceptionFingerprint.method.definingClass
             val serverErrorExceptionConstructor = InvalidResponseCodeExceptionFingerprint.method
+
+            val proceedOrThrowMethod = Fingerprint(
+                returnType = "V",
+                parameters = listOf("I"),
+                filters = listOf(
+                    methodCall(
+                        opcode = Opcode.INVOKE_DIRECT,
+                        definingClass = pauseExceptionType,
+                        name = "<init>",
+                        parameters = listOf("I", "I"),
+                        returnType = "V"
+                    )
+                )
+            ).method
+
+            Fingerprint(
+                returnType = "J",
+                parameters = listOf("L"),
+                filters = listOf(
+                    methodCall(
+                        opcode = Opcode.INVOKE_VIRTUAL,
+                        definingClass = proceedOrThrowMethod.definingClass,
+                        name = proceedOrThrowMethod.name,
+                        parameters = listOf("I"),
+                        returnType = "V"
+                    )
+                )
+            ).let { open ->
+                open.method.addInstruction(
+                    open.instructionMatches.first().index + 1,
+                    "invoke-static { }, $EXTENSION_CLASS->onPriorityDataSourceOpen()V"
+                )
+            }
             val dataSpecType = it.instructionMatches[1].methodReference.parameterTypes[1]
             val dataSpecField = it.classDef.fields.first { field -> field.type == dataSpecType }
 

@@ -89,6 +89,11 @@ public class SpoofVideoStreamsPatch {
     private static final long MAX_STREAM_RANGE_LENGTH = 10 * 1024 * 1024;
 
     /**
+     * If the next network request built on the thread is opened through a priority data source.
+     */
+    private static final ThreadLocal<Boolean> priorityDataSourceOpenOnThread = ThreadLocal.withInitial(() -> false);
+
+    /**
      * If the last request built on the thread is of a shortened stream range.
      */
     private static final ThreadLocal<Boolean> streamRangeLimitedOnThread = ThreadLocal.withInitial(() -> false);
@@ -650,20 +655,39 @@ public class SpoofVideoStreamsPatch {
      * @param url Url of the request.
      * @return The url to request.
      */
+    /**
+     * Injection point.
+     * Called when a priority data source opens a stream, after checking task priority.
+     */
+    public static void onPriorityDataSourceOpen() {
+        priorityDataSourceOpenOnThread.set(true);
+    }
+
     @Nullable
     public static String limitPlainStreamRange(@Nullable String url) {
         try {
+            final boolean isPriorityDataSource = priorityDataSourceOpenOnThread.get();
+            priorityDataSourceOpenOnThread.set(false);
+            if (url == null || !isPlainStreamRequest(url)) {
+                return url;
+            }
+
             // A request is built and read on the same thread.
             streamRangeLimitedOnThread.set(false);
             StreamResponse response = streamResponseOnThread.get();
             response.checkFirstPart = false;
             response.sabrError = false;
-            if (url == null || !isPlainStreamRequest(url)) {
-                return url;
-            }
 
             Uri uri = Uri.parse(url);
             response.checkFirstPart = "1".equals(uri.getQueryParameter("ump"));
+            // Only saved videos wrap their data source in PriorityDataSource and catch
+            // PriorityTooLowException to continue from the last byte. Live ExoPlayer playback
+            // does not use PriorityDataSource and treats PriorityTooLowException as a fatal
+            // chunk load error.
+            if (!isPriorityDataSource) {
+                return url;
+            }
+
             String range = uri.getQueryParameter("range");
             if (range == null) {
                 return url;
