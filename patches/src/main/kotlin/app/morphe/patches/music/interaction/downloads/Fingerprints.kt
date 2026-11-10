@@ -138,3 +138,23 @@ internal object MusicOfflineVideoEndpointFingerprint : Fingerprint(
         )
     )
 )
+
+internal object SideloadedPermissionCheckFingerprint : Fingerprint(
+    returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
+    strings = listOf("android.permission.READ_EXTERNAL_STORAGE"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "I",
+            parameters = listOf("Landroid/content/Context;", "Ljava/lang/String;")
+        )
+    )
+)
+
+internal object BrowseControllerOfflineBrowseFingerprint : Fingerprint(
+    returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
+    strings = listOf(
+        "FEmusic_offline",
+        "FEmusic_library_sideloaded_tracks"
+    )
+)

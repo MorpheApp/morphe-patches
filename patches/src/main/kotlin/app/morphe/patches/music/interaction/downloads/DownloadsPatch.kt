@@ -7,13 +7,18 @@
 
 package app.morphe.patches.music.interaction.downloads
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.fiveRegisters
 import app.morphe.patcher.util.registersUsed
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import app.morphe.patches.music.misc.auth.authHookPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -101,6 +106,8 @@ private val downloadsResourcePatch = patch {
 }
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/DownloadsPatch;"
+private const val VIRTUAL_MEDIA_PROVIDER =
+    "Lapp/morphe/extension/music/patches/downloads/VirtualMediaProvider;"
 private const val SONG_MENU_FILTER = "Lapp/morphe/extension/music/patches/components/SongMenuFilter;"
 private const val PLAYLIST_PAGE_FILTER =
     "Lapp/morphe/extension/music/patches/components/PlaylistPageFilter;"
@@ -243,6 +250,88 @@ val downloadsPatch = patch(
                         """
                     )
                 }
+            }
+        }
+
+        // Virtualize MediaStore ContentResolver.query
+        val contentResolverQueryFilter = methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;"
+        )
+
+        Fingerprint(
+            filters = listOf(contentResolverQueryFilter),
+            custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/") }
+        ).matchAllMethodIndicesForEach { index ->
+            val instruction = getInstruction(index)
+            val invokeString = if (instruction is RegisterRangeInstruction) {
+                "invoke-static/range { v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1} }"
+            } else {
+                "invoke-static { ${fiveRegisters(index)} }"
+            }
+
+            replaceInstruction(
+                index,
+                "$invokeString, $VIRTUAL_MEDIA_PROVIDER->query(Landroid/content/ContentResolver;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;"
+            )
+        }
+
+        // Virtualize ContentResolver.openAssetFileDescriptor for direct ExoPlayer playback
+        val openAssetFileDescriptorFilter = methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/content/ContentResolver;->openAssetFileDescriptor(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;"
+        )
+
+        Fingerprint(
+            filters = listOf(openAssetFileDescriptorFilter),
+            custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/") }
+        ).matchAllMethodIndicesForEach { index ->
+            val instruction = getInstruction(index)
+            val invokeString = if (instruction is RegisterRangeInstruction) {
+                "invoke-static/range { v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1} }"
+            } else {
+                "invoke-static { ${fiveRegisters(index)} }"
+            }
+
+            replaceInstruction(
+                index,
+                "$invokeString, $VIRTUAL_MEDIA_PROVIDER->openAssetFileDescriptor(Landroid/content/ContentResolver;Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;"
+            )
+        }
+
+        // Bypass storage permissions in sideloaded tracks loader
+        SideloadedPermissionCheckFingerprint.let {
+            it.method.apply {
+                val checkCall = it.instructionMatches.first()
+                val index = checkCall.index
+                val instruction = getInstruction(index)
+                if (instruction is RegisterRangeInstruction) {
+                    replaceInstruction(
+                        index,
+                        "invoke-static/range { v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1} }, $VIRTUAL_MEDIA_PROVIDER->checkPermission(Landroid/content/Context;Ljava/lang/String;)I"
+                    )
+                } else {
+                    replaceInstruction(
+                        index,
+                        "invoke-static { ${fiveRegisters(index)} }, $VIRTUAL_MEDIA_PROVIDER->checkPermission(Landroid/content/Context;Ljava/lang/String;)I"
+                    )
+                }
+            }
+        }
+
+        // Redirect FEmusic_offline browseId to FEmusic_library_sideloaded_tracks in BrowseController
+        BrowseControllerOfflineBrowseFingerprint.let {
+            val constructor = it.classDef.methods.first { method ->
+                method.name == "<init>" && method.parameterTypes.size == 3
+            }
+            constructor.apply {
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        invoke-static { p2 }, $VIRTUAL_MEDIA_PROVIDER->redirectBrowseId(Ljava/lang/String;)Ljava/lang/String;
+                        move-result-object p2
+                    """
+                )
             }
         }
     }

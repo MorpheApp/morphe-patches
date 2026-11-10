@@ -27,8 +27,8 @@ import app.morphe.extension.music.patches.components.SongMenuFilter;
 import app.morphe.extension.music.patches.downloads.DownloadedMark;
 import app.morphe.extension.music.patches.downloads.LocalDownloadManager;
 import app.morphe.extension.music.patches.downloads.NativeDownloadsInterceptor;
-import app.morphe.extension.music.patches.downloads.NativeDownloadsView;
 import app.morphe.extension.music.patches.downloads.PlaylistDownloader;
+import app.morphe.extension.music.patches.downloads.VirtualMediaProvider;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -141,14 +141,7 @@ public final class DownloadsPatch {
             if (DownloadedMark.isEnabled() && DownloadedMarkFilter.isDownloadedSongDetails(path)) {
                 return DownloadedMark.addTo(original);
             }
-            if (isCustomDownloadsActive()) {
-                String str = original.toString().toLowerCase(Locale.ROOT);
-                if (str.contains("burada gösterilir") || str.contains("appear here")
-                        || (str.contains("indirilen") && str.contains("podcast"))
-                        || (str.contains("download") && str.contains("podcast"))) {
-                    NativeDownloadsView.show(Utils.getActivity());
-                }
-            }
+
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
         }
@@ -453,11 +446,8 @@ public final class DownloadsPatch {
 
             if (isCustomDownloadsActive()) {
                 if (OFFLINE_BROWSE_COMMAND.check(commandBytes).isFiltered()) {
-                    Logger.printDebug(() -> "Offline browse command intercepted; attaching native downloads view");
-                    NativeDownloadsView.show(Utils.getActivity());
+                    Logger.printDebug(() -> "Offline browse command intercepted; routing to native sideloaded tracks");
                     return false;
-                } else if (!insideDialog) {
-                    NativeDownloadsView.hide();
                 }
             }
 
