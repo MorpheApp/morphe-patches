@@ -40,6 +40,9 @@ import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.requests.LrcRedProvider;
+import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.patches.scrobbling.ScrobbleManager;
 import app.morphe.extension.music.patches.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.music.settings.Settings;
@@ -270,6 +273,7 @@ public final class LocalDownloadManager {
             // Before the audio file gets its final name, since the downloads screen reads each
             // track once and would otherwise keep listing it without its title and cover.
             OfflineTrack.save(directory, videoId, title, artist, album, duration, artwork);
+            fetchAndSaveOfflineLyrics(directory, videoId, title, artist, duration);
 
             if (destination.exists() && !destination.delete()) {
                 throw new IllegalStateException("Could not replace audio file");
@@ -298,6 +302,28 @@ public final class LocalDownloadManager {
         } finally {
             ACTIVE_DOWNLOADS.remove(videoId);
         }
+    }
+
+    private static void fetchAndSaveOfflineLyrics(File directory, String videoId, String title,
+                                                 String artist, int duration) {
+        Utils.submitOnBackgroundThread(() -> {
+            try {
+                TrackInfo trackInfo = new TrackInfo(title, artist, "", duration, videoId);
+                LrcRedProvider lrcProvider = new LrcRedProvider();
+                LyricsProvider.FetchResult result = lrcProvider.fetch(trackInfo);
+                if (result != null && result.lyrics() != null && result.lyrics().raw() != null) {
+                    String rawLyrics = result.lyrics().raw();
+                    if (!rawLyrics.isBlank()) {
+                        File lrcFile = new File(directory, videoId + ".lrc");
+                        OfflineStorage.writeText(lrcFile, rawLyrics);
+                        Logger.printDebug(() -> "Saved offline synced lyrics for " + videoId);
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not fetch offline lyrics for " + videoId, ex);
+            }
+            return null;
+        });
     }
 
     private record ResolvedStream(Format format, VideoDetails details) {
