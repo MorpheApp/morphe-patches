@@ -99,47 +99,14 @@ public final class NativeDownloadsInterceptor {
 
     /**
      * Injection point for ExoPlayer media URI resolution.
-     * If the requested stream belongs to a downloaded song, redirects to the local file URI,
-     * bypassing Google servers entirely.
+     * Offline playback is handled natively via {@link OfflinePlaybackService}.
+     * ExoPlayer HttpDataSource requires http/https, so we pass through remote streaming URIs safely.
      *
      * @param originalUri The remote streaming URI from YouTube servers.
-     * @return Local file URI if downloaded, otherwise the original URI.
+     * @return Original URI.
      */
     @Nullable
     public static Uri interceptMediaUri(@Nullable Uri originalUri) {
-        if (!isNativeDownloadsActive() || originalUri == null) {
-            return originalUri;
-        }
-
-        // 1. Try checking VideoInformation current video ID
-        String currentVideoId = VideoInformation.getVideoId();
-        if (currentVideoId != null && !currentVideoId.isEmpty()) {
-            Uri localUri = getLocalSongUriIfAvailable(currentVideoId);
-            if (localUri != null) {
-                return localUri;
-            }
-        }
-
-        // 2. Try extracting video ID from videoplayback URL query parameters (id or docid)
-        try {
-            String queryId = originalUri.getQueryParameter("id");
-            if (queryId != null && !queryId.isEmpty()) {
-                Uri localUri = getLocalSongUriIfAvailable(queryId);
-                if (localUri != null) {
-                    return localUri;
-                }
-            }
-
-            String docId = originalUri.getQueryParameter("docid");
-            if (docId != null && !docId.isEmpty()) {
-                Uri localUri = getLocalSongUriIfAvailable(docId);
-                if (localUri != null) {
-                    return localUri;
-                }
-            }
-        } catch (Exception ignored) {
-        }
-
         return originalUri;
     }
 }

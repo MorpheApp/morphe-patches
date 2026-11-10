@@ -8,7 +8,6 @@ package app.morphe.extension.music.patches.downloads;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,7 +19,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -35,6 +33,7 @@ import android.view.ViewParent;
 import android.view.ViewTreeObserver;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -77,6 +76,40 @@ public final class NativeDownloadsView {
     private static ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener;
     private static volatile boolean isOfflineScreenExplicitlyActive = false;
     private static volatile boolean isSavedListenerRegistered = false;
+
+    private static final class MiniPlayerHolder {
+        final View root;
+        final View progressBar;
+        final ImageView thumbnail;
+        final TextView title;
+        final TextView artist;
+        final ImageButton playPauseBtn;
+        volatile String currentTrackPath = "";
+
+        MiniPlayerHolder(View root, View progressBar, ImageView thumbnail,
+                         TextView title, TextView artist, ImageButton playPauseBtn) {
+            this.root = root;
+            this.progressBar = progressBar;
+            this.thumbnail = thumbnail;
+            this.title = title;
+            this.artist = artist;
+            this.playPauseBtn = playPauseBtn;
+        }
+    }
+
+    private static WeakReference<MiniPlayerHolder> currentMiniPlayer = new WeakReference<>(null);
+    private static volatile boolean isPlaybackListenerRegistered = false;
+
+    private static final OfflinePlaybackService.PlaybackListener playbackListener =
+            (path, title, playing, position, duration) ->
+                    mainHandler.post(() -> updateMiniPlayerState(path, title, playing, position, duration));
+
+    private static void ensurePlaybackListener() {
+        if (!isPlaybackListenerRegistered) {
+            isPlaybackListenerRegistered = true;
+            OfflinePlaybackService.addListener(playbackListener);
+        }
+    }
 
     private static String normalize(@Nullable CharSequence text) {
         if (text == null) return "";
@@ -193,12 +226,21 @@ public final class NativeDownloadsView {
         listView.setBackgroundColor(BG_COLOR);
         listView.setVerticalScrollBarEnabled(false);
         listView.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
+        listView.setClipToPadding(false);
+        listView.setPadding(0, 0, 0, dp(activity, 68));
 
         DownloadsAdapter adapter = new DownloadsAdapter(activity, new ArrayList<>());
         listView.setAdapter(adapter);
 
         hostLayout.addView(listView, new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+
+        View miniPlayer = createMiniPlayer(activity);
+        FrameLayout.LayoutParams miniParams = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                Gravity.BOTTOM);
+        hostLayout.addView(miniPlayer, miniParams);
 
         container.addView(hostLayout, new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -231,6 +273,7 @@ public final class NativeDownloadsView {
             }
             currentInjectedView.clear();
         }
+        currentMiniPlayer.clear();
     }
 
     private static void restoreEmptyState() {
@@ -335,23 +378,197 @@ public final class NativeDownloadsView {
     }
 
     /**
-     * Plays a downloaded track locally via YouTube Music's native player.
-     * Prevents external web session re-initialization.
+     * Plays a downloaded track offline via Morphe's OfflinePlaybackService.
+     * Uses Android's native MediaPlayer to read directly from local storage,
+     * requiring zero network requests and ensuring 100% offline playback.
      */
-    public static void playTrack(@NonNull Context context, @NonNull OfflineTrack track) {
+    public static void playTrack(@NonNull Context context, @NonNull OfflineTrack track,
+                                 @Nullable List<OfflineTrack> allTracks, int position) {
         try {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://music.youtube.com/watch?v=" + track.videoId()));
-            intent.setClassName(context.getPackageName(), "com.google.android.apps.youtube.music.activities.MusicActivity");
-            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.putExtra("playback_offline", true);
-            intent.putExtra("offline", true);
-            if (!(context instanceof Activity)) {
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            List<String> queuePaths = new ArrayList<>();
+            int queueIndex = 0;
+            if (allTracks != null && !allTracks.isEmpty()) {
+                for (OfflineTrack t : allTracks) {
+                    if (t.audioFile() != null && t.audioFile().isFile()) {
+                        queuePaths.add(t.audioFile().getAbsolutePath());
+                    }
+                }
+                if (track.audioFile() != null) {
+                    String currentPath = track.audioFile().getAbsolutePath();
+                    queueIndex = Math.max(0, queuePaths.indexOf(currentPath));
+                }
+            } else if (track.audioFile() != null && track.audioFile().isFile()) {
+                queuePaths.add(track.audioFile().getAbsolutePath());
             }
-            context.startActivity(intent);
-            Logger.printDebug(() -> "NativeDownloadsView: started native playback for " + track.videoId());
+
+            if (queuePaths.isEmpty()) {
+                Logger.printException(() -> "playTrack: audioFile does not exist for " + track.videoId());
+                return;
+            }
+
+            final int finalQueueIndex = queueIndex;
+            OfflinePlaybackService.play(context, track, queuePaths, finalQueueIndex);
+            Logger.printDebug(() -> "NativeDownloadsView: started local playback for " + track.videoId()
+                    + " (queue: " + queuePaths.size() + ", index: " + finalQueueIndex + ")");
         } catch (Exception ex) {
             Logger.printException(() -> "playTrack failure", ex);
+        }
+    }
+
+    public static void playTrack(@NonNull Context context, @NonNull OfflineTrack track) {
+        playTrack(context, track, null, 0);
+    }
+
+    private static View createMiniPlayer(Activity activity) {
+        OfflineUi ui = new OfflineUi(activity);
+
+        LinearLayout miniContainer = new LinearLayout(activity);
+        miniContainer.setOrientation(LinearLayout.VERTICAL);
+        miniContainer.setBackgroundColor(0xFF212121);
+        miniContainer.setClickable(true);
+        miniContainer.setVisibility(View.GONE);
+
+        // Thin progress indicator bar at the top (2dp)
+        View progressBar = new View(activity);
+        progressBar.setBackgroundColor(Color.WHITE);
+        progressBar.setScaleX(0f);
+        progressBar.setPivotX(0f);
+        miniContainer.addView(progressBar, new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, dp(activity, 2)));
+
+        // Main content row (56dp height)
+        LinearLayout contentRow = new LinearLayout(activity);
+        contentRow.setOrientation(LinearLayout.HORIZONTAL);
+        contentRow.setGravity(Gravity.CENTER_VERTICAL);
+        contentRow.setPadding(dp(activity, 12), 0, dp(activity, 8), 0);
+
+        // Ripple background on content row
+        contentRow.setBackground(new RippleDrawable(
+                ColorStateList.valueOf(0x22FFFFFF),
+                null,
+                new ColorDrawable(Color.WHITE)));
+
+        // Thumbnail (40x40dp, rounded corners)
+        ImageView thumb = new ImageView(activity);
+        thumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        final int cornerPx = dp(activity, CORNER_RADIUS_DP);
+        thumb.setOutlineProvider(new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View view, Outline outline) {
+                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), cornerPx);
+            }
+        });
+        thumb.setClipToOutline(true);
+        thumb.setImageResource(android.R.drawable.ic_media_play);
+        LinearLayout.LayoutParams thumbParams = new LinearLayout.LayoutParams(dp(activity, 40), dp(activity, 40));
+        thumbParams.setMarginEnd(dp(activity, 12));
+        contentRow.addView(thumb, thumbParams);
+
+        // Title & artist column
+        LinearLayout textCol = new LinearLayout(activity);
+        textCol.setOrientation(LinearLayout.VERTICAL);
+        textCol.setGravity(Gravity.CENTER_VERTICAL);
+
+        TextView title = new TextView(activity);
+        title.setTextColor(Color.WHITE);
+        title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        title.setTypeface(Typeface.create("sans-serif-medium", Typeface.BOLD));
+        title.setSingleLine(true);
+        title.setEllipsize(TextUtils.TruncateAt.END);
+        textCol.addView(title);
+
+        TextView artist = new TextView(activity);
+        artist.setTextColor(Color.parseColor("#AAAAAA"));
+        artist.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        artist.setTypeface(Typeface.create("sans-serif", Typeface.NORMAL));
+        artist.setSingleLine(true);
+        artist.setEllipsize(TextUtils.TruncateAt.END);
+        textCol.addView(artist);
+
+        contentRow.addView(textCol, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+
+        // Previous button
+        ImageButton prevBtn = ui.icon("yt_fill_experimental_skip_previous_vd_theme_24", "Previous");
+        prevBtn.setOnClickListener(v -> OfflinePlaybackService.skipPrevious(activity));
+        contentRow.addView(prevBtn, new LinearLayout.LayoutParams(dp(activity, 40), dp(activity, 40)));
+
+        // Play/Pause button
+        ImageButton playPauseBtn = ui.icon("yt_fill_experimental_play_vd_theme_24", "Play/Pause");
+        playPauseBtn.setOnClickListener(v -> OfflinePlaybackService.toggle(activity));
+        contentRow.addView(playPauseBtn, new LinearLayout.LayoutParams(dp(activity, 44), dp(activity, 44)));
+
+        // Next button
+        ImageButton nextBtn = ui.icon("yt_fill_experimental_skip_next_vd_theme_24", "Next");
+        nextBtn.setOnClickListener(v -> OfflinePlaybackService.skipNext(activity));
+        contentRow.addView(nextBtn, new LinearLayout.LayoutParams(dp(activity, 40), dp(activity, 40)));
+
+        miniContainer.addView(contentRow, new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, dp(activity, 56)));
+
+        MiniPlayerHolder holder = new MiniPlayerHolder(miniContainer, progressBar, thumb, title, artist, playPauseBtn);
+        miniContainer.setTag(holder);
+        currentMiniPlayer = new WeakReference<>(holder);
+
+        ensurePlaybackListener();
+        return miniContainer;
+    }
+
+    private static void updateMiniPlayerState(String path, String title, boolean playing,
+                                              int position, int duration) {
+        MiniPlayerHolder holder = currentMiniPlayer.get();
+        if (holder == null || !holder.root.isAttachedToWindow()) return;
+
+        if (path == null || path.isEmpty() || title == null || title.isEmpty()) {
+            holder.root.setVisibility(View.GONE);
+            return;
+        }
+
+        holder.root.setVisibility(View.VISIBLE);
+        holder.title.setText(title);
+
+        Drawable playPauseDrawable = ResourceUtils.getDrawable(playing
+                ? "yt_fill_experimental_pause_vd_theme_24"
+                : "yt_fill_experimental_play_vd_theme_24");
+        if (playPauseDrawable != null) {
+            holder.playPauseBtn.setImageDrawable(playPauseDrawable);
+        } else {
+            holder.playPauseBtn.setImageResource(playing
+                    ? android.R.drawable.ic_media_pause
+                    : android.R.drawable.ic_media_play);
+        }
+
+        if (duration > 0) {
+            float progress = Math.min(1.0f, Math.max(0.0f, (float) position / duration));
+            holder.progressBar.setScaleX(progress);
+        } else {
+            holder.progressBar.setScaleX(0f);
+        }
+
+        if (!path.equals(holder.currentTrackPath)) {
+            holder.currentTrackPath = path;
+            Utils.submitOnBackgroundThread(() -> {
+                File audioFile = new File(path);
+                OfflineTrack t = OfflineTrack.load(audioFile);
+                String artistName = t.displayArtist();
+                Bitmap bmp = null;
+                File artFile = t.artworkFile();
+                if (artFile != null && artFile.isFile()) {
+                    bmp = BitmapFactory.decodeFile(artFile.getAbsolutePath());
+                }
+                final Bitmap finalBmp = bmp;
+                mainHandler.post(() -> {
+                    MiniPlayerHolder cur = currentMiniPlayer.get();
+                    if (cur != null && path.equals(cur.currentTrackPath)) {
+                        cur.artist.setText(artistName);
+                        if (finalBmp != null) {
+                            cur.thumbnail.setImageBitmap(finalBmp);
+                        } else {
+                            cur.thumbnail.setImageResource(android.R.drawable.ic_media_play);
+                        }
+                    }
+                });
+                return null;
+            });
         }
     }
 
@@ -494,7 +711,7 @@ public final class NativeDownloadsView {
 
             loadThumbnail(track, holder.thumbnail);
 
-            convertView.setOnClickListener(v -> playTrack(context, track));
+            convertView.setOnClickListener(v -> playTrack(context, track, tracks, position));
 
             holder.menuButton.setOnClickListener(v -> {
                 Context popupContext = new ContextThemeWrapper(context, android.R.style.Theme_DeviceDefault);
@@ -504,7 +721,7 @@ public final class NativeDownloadsView {
                 popup.setOnMenuItemClickListener(item -> {
                     String itemTitle = item.getTitle().toString();
                     if ("Play".equals(itemTitle)) {
-                        playTrack(context, track);
+                        playTrack(context, track, tracks, position);
                     } else if ("Delete download".equals(itemTitle)) {
                         deleteTrack(track);
                     }
@@ -520,8 +737,10 @@ public final class NativeDownloadsView {
             Utils.submitOnBackgroundThread(() -> {
                 if (track.audioFile() != null) track.audioFile().delete();
                 if (track.artworkFile() != null) track.artworkFile().delete();
-                File json = new File(track.audioFile().getParentFile(), track.videoId() + ".json");
-                if (json.isFile()) json.delete();
+                if (track.audioFile() != null && track.audioFile().getParentFile() != null) {
+                    File json = new File(track.audioFile().getParentFile(), track.videoId() + ".json");
+                    if (json.isFile()) json.delete();
+                }
 
                 OfflineCatalogue.clear();
                 loadTracks(Utils.getActivity(), this);
