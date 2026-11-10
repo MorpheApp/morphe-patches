@@ -18,6 +18,7 @@ import android.provider.MediaStore;
 import androidx.annotation.Nullable;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -104,7 +105,7 @@ public final class LocalLyricsFetcher {
                     }
                 }
             }
-        } catch (Throwable ex) {
+        } catch (Exception ex) {
             Logger.printDebug(() -> "Could not read companion lyrics", ex);
         }
         return null;

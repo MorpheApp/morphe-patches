@@ -308,12 +308,19 @@ public final class LocalDownloadManager {
                                                  String artist, int duration) {
         Utils.submitOnBackgroundThread(() -> {
             try {
-                TrackInfo trackInfo = new TrackInfo(title, artist, "", duration, videoId);
+                TrackInfo trackInfo = new TrackInfo(title, artist, "", duration);
                 LrcRedProvider lrcProvider = new LrcRedProvider();
                 LyricsProvider.FetchResult result = lrcProvider.fetch(trackInfo);
-                if (result != null && result.lyrics() != null && result.lyrics().raw() != null) {
-                    String rawLyrics = result.lyrics().raw();
-                    if (!rawLyrics.isBlank()) {
+                if (result != null && result.lyrics() != null) {
+                    String rawLyrics = result.lyrics().rawFormat();
+                    if ((rawLyrics == null || rawLyrics.isBlank()) && result.lyrics().lines() != null && !result.lyrics().lines().isEmpty()) {
+                        StringBuilder sb = new StringBuilder();
+                        for (app.morphe.extension.music.patches.lyrics.model.LyricsLine line : result.lyrics().lines()) {
+                            sb.append('[').append(app.morphe.extension.music.patches.lyrics.parsers.LRCParser.formatCentiseconds(line.startTimeMs())).append(']').append(line.text()).append('\n');
+                        }
+                        rawLyrics = sb.toString();
+                    }
+                    if (rawLyrics != null && !rawLyrics.isBlank()) {
                         File lrcFile = new File(directory, videoId + ".lrc");
                         OfflineStorage.writeText(lrcFile, rawLyrics);
                         Logger.printDebug(() -> "Saved offline synced lyrics for " + videoId);
