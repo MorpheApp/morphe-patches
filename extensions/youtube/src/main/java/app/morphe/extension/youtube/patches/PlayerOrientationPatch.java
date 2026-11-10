@@ -7,6 +7,7 @@
 package app.morphe.extension.youtube.patches;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.view.MotionEvent;
@@ -36,9 +37,9 @@ public final class PlayerOrientationPatch {
     private static volatile boolean isOrientationLocked = false;
     private static WeakReference<View> lastAttachedButton = new WeakReference<>(null);
 
-    static {
-        try {
-            Setting.preferences.preferences.registerOnSharedPreferenceChangeListener((prefs, key) -> {
+    // Must be a strong reference, SharedPreferences holds listeners weakly.
+    private static final SharedPreferences.OnSharedPreferenceChangeListener PREFERENCE_LISTENER =
+            (prefs, key) -> {
                 if ("morphe_player_orientation".equals(key)) {
                     isOrientationLocked = false;
                     Activity activity = Utils.getActivity();
@@ -46,7 +47,15 @@ public final class PlayerOrientationPatch {
                         applyOrientation(activity, PlayerType.getCurrent());
                     }
                 }
-            });
+            };
+    private static boolean preferenceListenerRegistered = false;
+
+    private static void ensureListenerRegistered() {
+        try {
+            if (!preferenceListenerRegistered && Setting.preferences != null && Setting.preferences.preferences != null) {
+                Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(PREFERENCE_LISTENER);
+                preferenceListenerRegistered = true;
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "Error registering orientation preference listener", ex);
         }
@@ -59,6 +68,7 @@ public final class PlayerOrientationPatch {
      * Called when the fullscreen button is bound.
      */
     public static void initializeButton(@Nullable View fullscreenButton) {
+        ensureListenerRegistered();
         if (fullscreenButton == null) return;
         if (lastAttachedButton.get() == fullscreenButton) return;
         lastAttachedButton = new WeakReference<>(fullscreenButton);
@@ -142,6 +152,7 @@ public final class PlayerOrientationPatch {
      */
     public static void onPlayerTypeChanged(@Nullable Enum<?> playerType) {
         try {
+            ensureListenerRegistered();
             if (playerType == null) return;
 
             String name = playerType.name();
