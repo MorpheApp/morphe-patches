@@ -645,46 +645,45 @@ public class SpoofVideoStreamsPatch {
     /**
      * Injection point.
      * <p>
+     * Called when a priority data source opens the data source it wraps, which builds its request on the same thread.
+     * Only saved videos are transferred through a priority data source.
+     */
+    public static void onPriorityDataSourceOpen() {
+        priorityDataSourceOpenOnThread.set(true);
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * Called for every network request the app makes, when the request is built.
      * Saving a video requests the rest of a stream with a single range, but the server sends a large range
      * at about playback speed. The range is shortened, and {@link #isLimitedStreamRangeFinished(long)}
      * makes the app request the following range after this one ends.
+     * Only ranges opened by {@link #onPriorityDataSourceOpen()} are shortened. Playback takes the pause
+     * of a transfer as an error of the stream.
      * Ranges without an end are left as they are, because the app reads those until the stream ends.
      * The first part of the response is checked by {@link #onStreamResponseRead(ByteBuffer)}.
      *
      * @param url Url of the request.
      * @return The url to request.
      */
-    /**
-     * Injection point.
-     * Called when a priority data source opens a stream, after checking task priority.
-     */
-    public static void onPriorityDataSourceOpen() {
-        priorityDataSourceOpenOnThread.set(true);
-    }
-
     @Nullable
     public static String limitPlainStreamRange(@Nullable String url) {
         try {
-            final boolean isPriorityDataSource = priorityDataSourceOpenOnThread.get();
+            // A request is built and read on the same thread.
+            final boolean priorityDataSource = Boolean.TRUE.equals(priorityDataSourceOpenOnThread.get());
             priorityDataSourceOpenOnThread.set(false);
+            streamRangeLimitedOnThread.set(false);
+            StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
+            response.checkFirstPart = false;
+            response.sabrError = false;
             if (url == null || !isPlainStreamRequest(url)) {
                 return url;
             }
 
-            // A request is built and read on the same thread.
-            streamRangeLimitedOnThread.set(false);
-            StreamResponse response = streamResponseOnThread.get();
-            response.checkFirstPart = false;
-            response.sabrError = false;
-
             Uri uri = Uri.parse(url);
             response.checkFirstPart = "1".equals(uri.getQueryParameter("ump"));
-            // Only saved videos wrap their data source in PriorityDataSource and catch
-            // PriorityTooLowException to continue from the last byte. Live ExoPlayer playback
-            // does not use PriorityDataSource and treats PriorityTooLowException as a fatal
-            // chunk load error.
-            if (!isPriorityDataSource) {
+            if (!priorityDataSource) {
                 return url;
             }
 
@@ -734,7 +733,7 @@ public class SpoofVideoStreamsPatch {
      * @return If the response of a shortened range has ended, and the rest of the range must be requested.
      */
     public static boolean isLimitedStreamRangeFinished(long remainingBytes) {
-        if (remainingBytes != 0 || !streamRangeLimitedOnThread.get()) {
+        if (remainingBytes != 0 || !Boolean.TRUE.equals(streamRangeLimitedOnThread.get())) {
             return false;
         }
 
@@ -748,7 +747,7 @@ public class SpoofVideoStreamsPatch {
      * Called before the response of a network request is read into the buffer.
      */
     public static void onStreamResponseReadStart(ByteBuffer buffer) {
-        StreamResponse response = streamResponseOnThread.get();
+        StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
         if (response.checkFirstPart) {
             response.readStart = buffer.position();
         }
@@ -762,7 +761,7 @@ public class SpoofVideoStreamsPatch {
      * away, over and over, which freezes playback.
      */
     public static void onStreamResponseRead(ByteBuffer buffer) {
-        StreamResponse response = streamResponseOnThread.get();
+        StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
         if (!response.checkFirstPart || buffer.position() <= response.readStart) {
             return;
         }
@@ -782,7 +781,7 @@ public class SpoofVideoStreamsPatch {
      *         The app then requests the range again from a fallback host.
      */
     public static boolean isStreamSabrErrorResponse() {
-        StreamResponse response = streamResponseOnThread.get();
+        StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
         if (!response.sabrError) {
             return false;
         }

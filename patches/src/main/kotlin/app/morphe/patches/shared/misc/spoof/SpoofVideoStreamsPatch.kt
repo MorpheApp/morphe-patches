@@ -26,7 +26,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
@@ -397,6 +396,16 @@ internal fun spoofVideoStreamsPatch(
             )
         }
 
+        // Only the ranges of saved videos are shortened. A saved video is transferred through a priority
+        // data source, which continues from the last byte it got after the transfer is paused. Playback
+        // takes the pause as an error of the stream.
+        PriorityDataSourceOpenFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.last().index,
+                "invoke-static { }, $EXTENSION_CLASS->onPriorityDataSourceOpen()V"
+            )
+        }
+
         // A response with a shortened range ends before the requested range does. The app takes that
         // as the end of the stream, and a saved video would end there. Instead, the transfer is paused
         // like for a task of a higher priority, and the saved video continues from the last byte it got.
@@ -410,39 +419,6 @@ internal fun spoofVideoStreamsPatch(
             val remainingBytesField = it.instructionMatches.last().fieldReference
             val pauseExceptionType = PriorityTooLowExceptionFingerprint.method.definingClass
             val serverErrorExceptionConstructor = InvalidResponseCodeExceptionFingerprint.method
-
-            val proceedOrThrowMethod = Fingerprint(
-                returnType = "V",
-                parameters = listOf("I"),
-                filters = listOf(
-                    methodCall(
-                        opcode = Opcode.INVOKE_DIRECT,
-                        definingClass = pauseExceptionType,
-                        name = "<init>",
-                        parameters = listOf("I", "I"),
-                        returnType = "V"
-                    )
-                )
-            ).method
-
-            Fingerprint(
-                returnType = "J",
-                parameters = listOf("L"),
-                filters = listOf(
-                    methodCall(
-                        opcode = Opcode.INVOKE_VIRTUAL,
-                        definingClass = proceedOrThrowMethod.definingClass,
-                        name = proceedOrThrowMethod.name,
-                        parameters = listOf("I"),
-                        returnType = "V"
-                    )
-                )
-            ).let { open ->
-                open.method.addInstruction(
-                    open.instructionMatches.first().index + 1,
-                    "invoke-static { }, $EXTENSION_CLASS->onPriorityDataSourceOpen()V"
-                )
-            }
             val dataSpecType = it.instructionMatches[1].methodReference.parameterTypes[1]
             val dataSpecField = it.classDef.fields.first { field -> field.type == dataSpecType }
 
