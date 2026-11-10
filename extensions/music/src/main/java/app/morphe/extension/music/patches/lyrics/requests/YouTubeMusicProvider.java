@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,29 +41,23 @@ public final class YouTubeMusicProvider implements LyricsProvider {
     private static final String INNERTUBE_USER_AGENT = LyricsRequests.CHROME_DESKTOP_USER_AGENT;
 
     @Nullable
-    private static String fetchLyricsBrowseId(String videoId) {
-        try {
-            JSONObject body = new JSONObject();
-            body.put("context", buildContext("WEB_REMIX", WEB_REMIX_VERSION));
-            body.put("videoId", videoId);
-            body.put("playlistId", "RDAMVM" + videoId);
+    private static String fetchLyricsBrowseId(String videoId) throws Exception {
+        JSONObject body = new JSONObject();
+        body.put("context", buildContext("WEB_REMIX", WEB_REMIX_VERSION));
+        body.put("videoId", videoId);
+        body.put("playlistId", "RDAMVM" + videoId);
 
-            final HttpURLConnection conn = postInnertube(NEXT_URL, body.toString(),
-                    WEB_REMIX_VERSION);
-            try {
-                final int code = conn.getResponseCode();
-                if (code != 200) {
-                    LyricsRequests.logFailure("YTMusic", conn);
-                    return null;
-                }
-                JSONObject response = Requester.parseJSONObject(conn);
-                return extractLyricsBrowseId(response);
-            } finally {
-                conn.disconnect();
+        final HttpURLConnection conn = postInnertube(NEXT_URL, body.toString(),
+                WEB_REMIX_VERSION);
+        try {
+            final int code = conn.getResponseCode();
+            if (code != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                throw new IOException("YTMusic /next returned HTTP " + code);
             }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not fetch YTMusic browse ID", ex);
-            return null;
+            JSONObject response = Requester.parseJSONObject(conn);
+            return extractLyricsBrowseId(response);
+        } finally {
+            conn.disconnect();
         }
     }
 
@@ -324,7 +319,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
     public FetchResult fetch(TrackInfo track) throws Exception {
         final String videoId = VideoInformation.getVideoId();
         if (videoId.isEmpty()) {
-            return null;
+            throw new IOException("YTMusic lyrics lookup requires a video ID");
         }
 
         final String browseId = fetchLyricsBrowseId(videoId);
