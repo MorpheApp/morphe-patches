@@ -47,6 +47,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
         body.put("videoId", videoId);
         body.put("playlistId", "RDAMVM" + videoId);
 
+        // WEB_REMIX rejects the Android account headers captured by Downloads.
         final HttpURLConnection conn = postInnertube(NEXT_URL, body.toString(),
                 WEB_REMIX_VERSION);
         try {
@@ -319,6 +320,8 @@ public final class YouTubeMusicProvider implements LyricsProvider {
     public FetchResult fetch(TrackInfo track) throws Exception {
         final String videoId = VideoInformation.getVideoId();
         if (videoId.isEmpty()) {
+            // Metadata can start a lookup before the video ID hook runs.
+            // Throw so LyricsManager does not cache this attempt as "no lyrics".
             throw new IOException("YTMusic lyrics lookup requires a video ID");
         }
 
