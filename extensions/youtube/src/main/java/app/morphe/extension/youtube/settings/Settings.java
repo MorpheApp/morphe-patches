@@ -42,6 +42,7 @@ import app.morphe.extension.youtube.patches.AddToQueuePatch.NativeQueueAvailabil
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NotLocalQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.QueueType;
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
+import app.morphe.extension.youtube.patches.AutoplayRule;
 import app.morphe.extension.youtube.patches.BackgroundPlaybackPatch.AutoPauseOnLockMode;
 import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.FormFactor;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
@@ -295,6 +296,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_ZOOM = new BooleanSetting("morphe_disable_haptic_feedback_zoom", FALSE);
     public static final BooleanSetting DISABLE_PLAYER_POPUP_PANELS = new BooleanSetting("morphe_disable_player_popup_panels", FALSE);
     public static final BooleanSetting DISABLE_PLAYLIST_AUTOPLAY = new BooleanSetting("morphe_disable_playlist_autoplay", FALSE);
+    public static final BooleanSetting AUTOPLAY_CONTROL = new BooleanSetting("morphe_autoplay_control", FALSE, true);
+    public static final EnumSetting<AutoplayRule.Mode> AUTOPLAY_MODE = new EnumSetting<>("morphe_autoplay_mode", AutoplayRule.Mode.AUTO, parent(AUTOPLAY_CONTROL));
+    public static final IntegerSetting AUTOPLAY_MIX_STOP_AFTER = new IntegerSetting("morphe_autoplay_mix_stop_after", 10, parent(AUTOPLAY_CONTROL));
     public static final EnumSetting<ContinueWatchingPromptMode> CONTINUE_WATCHING_PROMPT = new EnumSetting<>("morphe_continue_watching_prompt", ContinueWatchingPromptMode.DEFAULT);
     public static final BooleanSetting DISABLE_FULLSCREEN_PULLED_UP_GESTURE = new BooleanSetting("morphe_disable_fullscreen_pulled_up_gesture", FALSE);
     public static final BooleanSetting DISABLE_FULLSCREEN_SLIDING_GESTURE = new BooleanSetting("morphe_disable_fullscreen_sliding_down_gesture", FALSE);
