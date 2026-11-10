@@ -85,7 +85,6 @@ public final class DownloadsPatch {
     private static volatile long lastMainPlayerDownloadTime;
     /** When the player button was last left to the app, because only menus are overridden. */
     private static volatile long lastStockPlayerButtonTime;
-    private static volatile long lastLocalDownloadsOpenTime;
     /** Browse id of the stock offline tab, which the local catalogue replaces. */
     private static final ByteArrayFilterGroup OFFLINE_BROWSE_COMMAND =
             new ByteArrayFilterGroup(null, "FEmusic_offline");
@@ -207,24 +206,6 @@ public final class DownloadsPatch {
 
         ExternalDownloaderPreference.launchExternalDownloader(
                 videoId, Utils.getActivity(), "https://music.youtube.com/watch?v=" + videoId);
-    }
-
-    private static void openLocalDownloads() {
-        Activity activity = Utils.getActivity();
-        if (activity == null) return;
-
-        // A single tap on the offline chip resolves its command twice, which would otherwise
-        // stack a second copy of the screen on top of the first.
-        final long now = System.currentTimeMillis();
-        if (now - lastLocalDownloadsOpenTime < IGNORE_DOUBLE_CLICK_DURATION_MS) return;
-        lastLocalDownloadsOpenTime = now;
-        Logger.printDebug(() -> "Offline tab opened, showing the local downloads");
-
-        Intent intent = new Intent();
-        intent.setClassName(activity, "com.google.android.gms.common.api.GoogleApiActivity");
-        intent.setPackage(activity.getPackageName());
-        intent.setData(Uri.parse(BaseActivityHook.MORPHE_DOWNLOADS_INTENT));
-        activity.startActivity(intent);
     }
 
     /**
@@ -454,10 +435,9 @@ public final class DownloadsPatch {
 
             if (inAppDownloads()) {
                 if (OFFLINE_BROWSE_COMMAND.check(commandBytes).isFiltered()) {
-                    Utils.runOnMainThreadNowOrLater(DownloadsPatch::openLocalDownloads);
-                    // The local screen is opened on top of the stock one rather than in place of
-                    // it. Consuming the command instead leaves the app with a navigation it never
-                    // finished, which it replays on the next start and cancels again.
+                    // Do not launch the external GoogleApiActivity overlay layer anymore.
+                    // Allow YouTube Music to proceed directly with its native offline browse page.
+                    Logger.printDebug(() -> "Offline browse command intercepted; suppressing external overlay");
                     return false;
                 }
             }
