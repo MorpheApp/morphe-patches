@@ -43,6 +43,7 @@ import java.lang.ref.WeakReference;
 import java.nio.ShortBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -110,8 +111,6 @@ public final class AmbientLightController {
     private static final long RESTORE_DURATION_MS = 1_600;
     private static final long RESTORE_DELAY_MS = 3_000;
     private static final long FADE_STEP_MS = 33;
-    /** A window that opens over the watch page may lay out its content after it takes the focus. */
-    private static final long OTHER_WINDOW_RECHECK_MS = 500;
     /** Share of the way to the wanted cover for each capture, so that scene cuts do not pump. */
     private static final float COVER_EASING = 0.25f;
     private static final float COVER_SETTLED = 0.004f;
@@ -262,15 +261,9 @@ public final class AmbientLightController {
 
     private static final Runnable restoreLight = () -> setDimmed(false);
     private static final Runnable fadeStep = AmbientLightController::stepFade;
-    private static final Runnable recheckOtherWindows = AmbientLightController::recheckOtherWindows;
-    private static final ViewTreeObserver.OnWindowFocusChangeListener focusListener = hasFocus -> {
-        if (hasFocus) return;
-        recheckOtherWindows();
-        mainHandler.postDelayed(recheckOtherWindows, OTHER_WINDOW_RECHECK_MS);
-    };
 
     /**
-     * Drawables that keep their color until they are seen in the window of the watch page.
+     * Drawables that keep their color until they are mounted in the window of the watch page.
      * Main thread.
      */
     private static final Map<Drawable, Boolean> pendingDrawables = new WeakHashMap<>();
@@ -341,10 +334,12 @@ public final class AmbientLightController {
             // opens with the keyboard, would show its own background through the drawable.
             View host = hostOf(drawable);
             if (host != null && host.getRootView() == rootRef.get()) {
+                pendingDrawables.remove(drawable);
                 seeThroughDrawables.put(drawable, Boolean.TRUE);
                 return replacement;
             }
 
+            seeThroughDrawables.remove(drawable);
             pendingDrawables.put(drawable, Boolean.TRUE);
             return color;
         } catch (Exception ex) {
@@ -416,9 +411,9 @@ public final class AmbientLightController {
         active = true;
         settled = false;
         pageCleared = false;
-        root.getViewTreeObserver().addOnPreDrawListener(preDrawListener);
-        root.getViewTreeObserver().addOnScrollChangedListener(scrollListener);
-        root.getViewTreeObserver().addOnWindowFocusChangeListener(focusListener);
+        ViewTreeObserver viewTreeObserver = root.getViewTreeObserver();
+        viewTreeObserver.addOnPreDrawListener(preDrawListener);
+        viewTreeObserver.addOnScrollChangedListener(scrollListener);
         View touchWatcher = new TouchWatcher(root.getContext());
         ((ViewGroup) root).addView(touchWatcher);
         touchWatcherRef = new WeakReference<>(touchWatcher);
@@ -434,16 +429,15 @@ public final class AmbientLightController {
 
         View root = rootRef.get();
         if (root != null) {
-            root.getViewTreeObserver().removeOnPreDrawListener(preDrawListener);
-            root.getViewTreeObserver().removeOnScrollChangedListener(scrollListener);
-            root.getViewTreeObserver().removeOnWindowFocusChangeListener(focusListener);
+            ViewTreeObserver viewTreeObserver = root.getViewTreeObserver();
+            viewTreeObserver.removeOnPreDrawListener(preDrawListener);
+            viewTreeObserver.removeOnScrollChangedListener(scrollListener);
             ((ViewGroup) root).removeView(touchWatcherRef.get());
         }
         removeSurfaces(pageSurfaces, 0);
         removeSurfaces(playerSurfaces, 0);
         mainHandler.removeCallbacks(restoreLight);
         mainHandler.removeCallbacks(fadeStep);
-        mainHandler.removeCallbacks(recheckOtherWindows);
         dimmed = false;
         strength = FULL_STRENGTH;
         SeeThroughPage.restore();
@@ -465,7 +459,7 @@ public final class AmbientLightController {
     private static void onPreDraw() {
         try {
             if (!active) return;
-            showPendingDrawables();
+            updateDrawables();
             updateLayout();
             if (!pageCleared) return;
 
@@ -483,45 +477,42 @@ public final class AmbientLightController {
     @Nullable
     private static View hostOf(Drawable drawable) {
         Drawable.Callback callback = drawable.getCallback();
-        while (callback instanceof Drawable) {
-            callback = ((Drawable) callback).getCallback();
+        while (callback instanceof Drawable drawableCallback) {
+            callback = drawableCallback.getCallback();
         }
-        return callback instanceof View ? (View) callback : null;
+        return callback instanceof View view ? view : null;
     }
 
     /**
-     * Lets the light show through the waiting drawables that are now in the window of the
-     * watch page. This runs before the page draws, so the old color is not shown.
+     * Litho mounts a drawable again, also in another window of the app such as the comment box,
+     * and keeps its color when its bounds stay the same. This runs before the watch page draws,
+     * so a drawable shows the light only while it is in the window of the watch page.
      */
-    private static void showPendingDrawables() {
-        if (pendingDrawables.isEmpty()) return;
+    private static void updateDrawables() {
+        if (seeThroughDrawables.isEmpty() && pendingDrawables.isEmpty()) return;
         View root = rootRef.get();
-        List<Drawable> shown = new ArrayList<>();
-        for (Drawable drawable : new ArrayList<>(pendingDrawables.keySet())) {
+        List<Drawable> changed = new ArrayList<>();
+
+        // Drawables that left the watch page get their own color back, and wait to be mounted again.
+        for (Iterator<Drawable> iterator = seeThroughDrawables.keySet().iterator(); iterator.hasNext(); ) {
+            Drawable drawable = iterator.next();
+            View host = hostOf(drawable);
+            if (host == null || host.getRootView() != root) {
+                iterator.remove();
+                changed.add(drawable);
+            }
+        }
+        // Drawables that are mounted in another window keep their own color.
+        for (Iterator<Drawable> iterator = pendingDrawables.keySet().iterator(); iterator.hasNext(); ) {
+            Drawable drawable = iterator.next();
             View host = hostOf(drawable);
             if (host == null) continue;
-            pendingDrawables.remove(drawable);
-            if (host.getRootView() == root) shown.add(drawable);
+            iterator.remove();
+            if (host.getRootView() == root) changed.add(drawable);
         }
-        for (Drawable drawable : shown) {
-            chooseColorAgain(drawable);
-        }
-    }
 
-    /**
-     * Litho reuses drawables, also in another window of the app such as the comment box, and
-     * a reused drawable keeps its color when its bounds stay the same. Such a window takes the
-     * focus from the watch page, so the drawables the light shows through are checked then.
-     */
-    private static void recheckOtherWindows() {
-        View root = rootRef.get();
-        List<Drawable> moved = new ArrayList<>();
-        for (Drawable drawable : seeThroughDrawables.keySet()) {
-            View host = hostOf(drawable);
-            if (host != null && host.getRootView() != root) moved.add(drawable);
-        }
-        for (Drawable drawable : moved) {
-            seeThroughDrawables.remove(drawable);
+        // This calls getLithoColor, which adds the drawables to the maps again.
+        for (Drawable drawable : changed) {
             chooseColorAgain(drawable);
         }
     }
@@ -540,8 +531,8 @@ public final class AmbientLightController {
         View page = pageRef.get();
         View video = videoRef.get();
         ViewGroup player = playerRef.get();
-        if (page instanceof ViewGroup && video != null && player != null) {
-            View branch = childContaining((ViewGroup) page, video);
+        if (page instanceof ViewGroup pageViewGroup && video != null && player != null) {
+            View branch = childContaining(pageViewGroup, video);
             SeeThroughPage.apply(page, branch == null ? player : branch, pageColor);
         }
     }
@@ -622,7 +613,8 @@ public final class AmbientLightController {
                                       boolean aboveVideo, List<int[]> rects, List<Region> regions) {
         int[] parentLocation = new int[2];
         parent.getLocationInWindow(parentLocation);
-        for (int i = 0; i < rects.size(); i++) {
+
+        for (int i = 0, size = rects.size(); i < size; i++) {
             int[] rect = rects.get(i);
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                     rect[2] - rect[0], rect[3] - rect[1], Gravity.TOP | Gravity.START);
