@@ -7,21 +7,36 @@
 package app.morphe.extension.music.patches.downloads;
 
 import android.net.Uri;
+
 import androidx.annotation.Nullable;
+
 import app.morphe.extension.music.settings.Settings;
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.music.shared.VideoInformation;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 /**
  * Intercepts YouTube Music's offline browse network requests and playback data source requests
  * to serve local downloaded songs without hitting Google servers.
  */
 public final class NativeDownloadsInterceptor {
+
     private static final String BROWSE_URL_PATH = "youtubei/v1/browse";
     private static final String OFFLINE_BROWSE_ID = "FEmusic_offline";
 
+    static {
+        initialize();
+    }
+
     private NativeDownloadsInterceptor() {}
+
+    /**
+     * Registers the media stream interceptor into ExoPlayer via SpoofVideoStreamsPatch.
+     */
+    public static void initialize() {
+        SpoofVideoStreamsPatch.setStreamUriInterceptor(NativeDownloadsInterceptor::interceptMediaUri);
+    }
 
     /**
      * Checks if in-app native downloads mode is active.
@@ -54,6 +69,7 @@ public final class NativeDownloadsInterceptor {
                 }
             }
         }
+
         return false;
     }
 
@@ -69,6 +85,7 @@ public final class NativeDownloadsInterceptor {
         if (!isNativeDownloadsActive() || videoId == null || videoId.isEmpty()) {
             return null;
         }
+
         if (DownloadedMark.isDownloaded(videoId)) {
             Uri localUri = LocalDownloadManager.getSongUri(videoId);
             if (localUri != null) {
@@ -76,6 +93,7 @@ public final class NativeDownloadsInterceptor {
                 return localUri;
             }
         }
+
         return null;
     }
 
@@ -111,6 +129,7 @@ public final class NativeDownloadsInterceptor {
                     return localUri;
                 }
             }
+
             String docId = originalUri.getQueryParameter("docid");
             if (docId != null && !docId.isEmpty()) {
                 Uri localUri = getLocalSongUriIfAvailable(docId);

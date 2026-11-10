@@ -329,6 +329,9 @@ internal fun spoofVideoStreamsPatch(
                     # Field $httpBodyField: Post data.
                     move-object v0, p0  # method has over 15 registers and must copy p0 to a lower register.
                     iget-object v1, v0, $urlField
+                    invoke-static { v1 }, $EXTENSION_CLASS->overrideStreamUri(Landroid/net/Uri;)Landroid/net/Uri;
+                    move-result-object v1
+                    iput-object v1, v0, $urlField
                     iget v2, v0, $httpMethodField
                     iget-object v3, v0, $httpBodyField
                     invoke-static { v1, v2, v3 }, $EXTENSION_CLASS->removeVideoPlaybackPostBody(Landroid/net/Uri;I[B)[B

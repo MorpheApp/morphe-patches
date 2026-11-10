@@ -26,6 +26,8 @@ import app.morphe.extension.music.patches.components.PlaylistPageFilter;
 import app.morphe.extension.music.patches.components.SongMenuFilter;
 import app.morphe.extension.music.patches.downloads.DownloadedMark;
 import app.morphe.extension.music.patches.downloads.LocalDownloadManager;
+import app.morphe.extension.music.patches.downloads.NativeDownloadsInterceptor;
+import app.morphe.extension.music.patches.downloads.NativeDownloadsView;
 import app.morphe.extension.music.patches.downloads.PlaylistDownloader;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
@@ -40,6 +42,9 @@ import app.morphe.extension.shared.settings.preference.ExternalDownloaderPrefere
 
 @SuppressWarnings("unused")
 public final class DownloadsPatch {
+    static {
+        NativeDownloadsInterceptor.initialize();
+    }
 
     /**
      * Interface to use obfuscated fields.
@@ -135,6 +140,14 @@ public final class DownloadsPatch {
 
             if (DownloadedMark.isEnabled() && DownloadedMarkFilter.isDownloadedSongDetails(path)) {
                 return DownloadedMark.addTo(original);
+            }
+            if (inAppDownloads()) {
+                String str = original.toString().toLowerCase(Locale.ROOT);
+                if (str.contains("burada gösterilir") || str.contains("appear here")
+                        || (str.contains("indirilen") && str.contains("podcast"))
+                        || (str.contains("download") && str.contains("podcast"))) {
+                    NativeDownloadsView.show(Utils.getActivity());
+                }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
@@ -435,10 +448,11 @@ public final class DownloadsPatch {
 
             if (inAppDownloads()) {
                 if (OFFLINE_BROWSE_COMMAND.check(commandBytes).isFiltered()) {
-                    // Do not launch the external GoogleApiActivity overlay layer anymore.
-                    // Allow YouTube Music to proceed directly with its native offline browse page.
-                    Logger.printDebug(() -> "Offline browse command intercepted; suppressing external overlay");
+                    Logger.printDebug(() -> "Offline browse command intercepted; attaching native downloads view");
+                    NativeDownloadsView.show(Utils.getActivity());
                     return false;
+                } else if (!insideDialog) {
+                    NativeDownloadsView.hide();
                 }
             }
 
