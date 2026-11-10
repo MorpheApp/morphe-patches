@@ -40,12 +40,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
@@ -53,6 +51,7 @@ import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.settings.preference.NewIndicatorSpan;
 import app.morphe.extension.shared.settings.preference.NewSettingsIndicator;
+import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 import app.morphe.extension.shared.settings.preference.URLLinkPreference;
 import app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
@@ -635,18 +634,8 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
         notifyDataSetChanged();
     }
 
-    /**
-     * Handles preference click actions by invoking the preference's performClick method via reflection.
-     */
-    @SuppressWarnings("all")
     private void handlePreferenceClick(Preference preference) {
-        try {
-            Method m = Preference.class.getDeclaredMethod("performClick", PreferenceScreen.class);
-            m.setAccessible(true);
-            m.invoke(preference, fragment.getPreferenceScreenForSearch());
-        } catch (Exception e) {
-            Logger.printException(() -> "Failed to invoke performClick()", e);
-        }
+        ToolbarPreferenceFragment.performClick(preference, fragment.getPreferenceScreenForSearch());
     }
 
     /**

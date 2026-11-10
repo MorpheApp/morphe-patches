@@ -65,6 +65,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Ги крие полиците со трендови од фидот и предлозите за пребарување</string>
   <string name="morphe_remove_notification_dialog_title">Уклони дијалог за предлози за известувања</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматски го отфрла дијалогот за предлози за известувања кога се посетува под-reddit</string>
+  <string name="morphe_high_quality_avatars_title">Аватари со висок квалитет</string>
+  <string name="morphe_high_quality_avatars_summary">Прикажува кориснички аватари во полна резолуција</string>
   <string name="morphe_show_flairs_in_home_feed_title">Прикажи ознаки во почетниот фид</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Прикажува ознаки за објавите во почетниот фид</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Некои ставки во фидот можеби нема да прикажат ознака</string>
@@ -80,7 +82,7 @@ Second \"item\" text"</string>
   <string name="morphe_about_title">За</string>
   <string name="morphe_about_summary">Верзија на patch и официјални линкови</string>
   <string name="morphe_sanitize_sharing_links_title">Дезинфицирај линкови за споделување</string>
-  <string name="morphe_sanitize_sharing_links_summary">Ги отстранува параметрите за прашање за проследување од споделени линкови</string>
+  <string name="morphe_sanitize_sharing_links_summary">Ги отстранува параметрите за следење од споделените линкови</string>
   <string name="morphe_open_links_directly_title">Отвори линкови директно</string>
   <string name="morphe_open_links_directly_summary">Ги заобиколува URL-адресите за пренасочување при отворање на надворешни линкови</string>
   <string name="morphe_full_width_feed_media_title">Медиуми во фидот со цела ширина</string>

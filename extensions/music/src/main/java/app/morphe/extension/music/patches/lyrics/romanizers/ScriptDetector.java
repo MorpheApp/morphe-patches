@@ -195,7 +195,7 @@ public final class ScriptDetector {
     }
 
     /** Hangul syllables, jamo and compatibility jamo, which is every way Korean is spelled. */
-    static boolean isAnyHangul(char c) {
+    public static boolean isAnyHangul(char c) {
         return isHangul(c) || (c >= 0x1100 && c <= 0x11FF) || (c >= 0x3130 && c <= 0x318F);
     }
 
@@ -203,7 +203,7 @@ public final class ScriptDetector {
         return (c >= 0x3041 && c <= 0x3096) || c == 0x309D || c == 0x309E;
     }
 
-    static boolean isGreek(char c) {
+    public static boolean isGreek(char c) {
         return (c >= 0x0370 && c <= 0x03FF) || (c >= 0x1F00 && c <= 0x1FFF);
     }
 
@@ -211,15 +211,15 @@ public final class ScriptDetector {
         return (c >= 0x0400 && c <= 0x04FF) || (c >= 0x0500 && c <= 0x052F);
     }
 
-    static boolean isGeorgian(char c) {
+    public static boolean isGeorgian(char c) {
         return (c >= 0x10A0 && c <= 0x10FF) || (c >= 0x1C90 && c <= 0x1CBF);
     }
 
-    static boolean isArmenian(char c) {
+    public static boolean isArmenian(char c) {
         return c >= 0x0530 && c <= 0x058F;
     }
 
-    static boolean isHebrew(char c) {
+    public static boolean isHebrew(char c) {
         return c >= 0x0590 && c <= 0x05FF;
     }
 
@@ -242,7 +242,7 @@ public final class ScriptDetector {
         return c >= 0x0700 && c <= 0x074F;
     }
 
-    static boolean isLatin(char c) {
+    public static boolean isLatin(char c) {
         return (c >= 0x0041 && c <= 0x005A)
                 || (c >= 0x0061 && c <= 0x007A)
                 || (c >= 0x00C0 && c <= 0x024F)
@@ -252,7 +252,7 @@ public final class ScriptDetector {
                 || (c >= 0xFF41 && c <= 0xFF5A);
     }
 
-    static boolean isThai(char c) {
+    public static boolean isThai(char c) {
         return c >= 0x0E00 && c <= 0x0E7F;
     }
 

@@ -162,15 +162,6 @@ public final class FeedVideoActionsPatch {
     /** Root hosts that currently show a video. Used only on the main thread. */
     private static final Map<ComponentHost, VideoCard> cards = new WeakHashMap<>();
 
-    /**
-     * Root hosts with a layout change, which are checked once the layout pass is done.
-     * The root host is a LithoView, which may not call the layout method of its super class,
-     * so the layout of any host schedules its root host.
-     */
-    private static final Map<ComponentHost, Boolean> rootsToUpdate = new WeakHashMap<>();
-    private static boolean rootsUpdateScheduled;
-    private static final Runnable updateRootsRunnable = FeedVideoActionsPatch::updateRoots;
-
     private static WeakReference<ComponentHost> gestureHostRef = new WeakReference<>(null);
     private static int gestureMode = GESTURE_NONE;
     private static float downX, downY;
@@ -344,10 +335,6 @@ public final class FeedVideoActionsPatch {
 
     private static int dp(View view, int dp) {
         return Math.round(dp * view.getResources().getDisplayMetrics().density);
-    }
-
-    private static boolean isRootHost(ComponentHost host) {
-        return !(host.getParent() instanceof ComponentHost);
     }
 
     @Nullable
@@ -735,26 +722,12 @@ public final class FeedVideoActionsPatch {
         return card;
     }
 
-    private static void updateRoots() {
-        rootsUpdateScheduled = false;
-        try {
-            ComponentHost[] roots = rootsToUpdate.keySet().toArray(new ComponentHost[0]);
-            rootsToUpdate.clear();
-            for (ComponentHost root : roots) {
-                if (root != null && root.isAttachedToWindow() && isRootHost(root)) {
-                    updateCard(root);
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "updateRoots failure", ex);
-        }
-    }
-
     /**
-     * Called when {@link FeedVideoCardsPatch} checks a card, which it also does again while
-     * the list scrolls and the card is partly shown. Litho mounts only the part of a card that
-     * is shown, so the menu button of a card that enters from the top of the list may not be
-     * found when it is laid out, and the card may not be laid out again once it is shown.
+     * Called when {@link FeedVideoCardsPatch} checks a card, which happens after a host is
+     * laid out, and again while the list scrolls and the card is partly shown. Litho mounts
+     * only the part of a card that is shown, so the menu button of a card that enters from
+     * the top of the list may not be found when it is laid out, and the card may not be laid
+     * out again once it is shown.
      *
      * @param videoId The video of the card, or null if the card is not a known video.
      */
@@ -773,34 +746,11 @@ public final class FeedVideoActionsPatch {
 
     /**
      * Injection point.
-     * Called after a host has laid out its children.
-     */
-    public static void onComponentHostLayout(ComponentHost host) {
-        if (!ENABLED) {
-            return;
-        }
-        try {
-            ComponentHost root = findRootHost(host);
-            if (root == null) {
-                return;
-            }
-            rootsToUpdate.put(root, Boolean.TRUE);
-            if (!rootsUpdateScheduled) {
-                rootsUpdateScheduled = true;
-                handler.post(updateRootsRunnable);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "onComponentHostLayout failure", ex);
-        }
-    }
-
-    /**
-     * Injection point.
      *
      * @return If the touch was handled and must not be given to the children.
      */
     public static boolean onComponentHostTouch(ComponentHost host, MotionEvent event) {
-        if (!ENABLED || dispatchingCancel || !isRootHost(host)) {
+        if (!ENABLED || dispatchingCancel || host.getParent() instanceof ComponentHost) {
             return false;
         }
         try {

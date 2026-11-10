@@ -46,10 +46,11 @@ import app.morphe.extension.shared.ResourceUtils;
  * of {@link Settings#LYRICS_RIME_CUSTOM_DICTS}.
  *
  * <p>Only Cantonese ships. Every other word list is added by the user, who supplies its URL
- * and therefore judges its licence and freshness; the patch never bundles a list whose terms
+ * and therefore judges its license and freshness; the patch never bundles a list whose terms
  * it cannot vouch for. Downloaded rather than shipped, because the patch can only merge XML
  * resources and because a word list goes stale as soon as the source moves on.
  */
+@SuppressWarnings("ConstantValue")
 public final class RimeDictStore {
 
     /** The character table a word table falls back to for the characters a word does not cover. */
@@ -84,7 +85,6 @@ public final class RimeDictStore {
                             + "259f0e48bba840c3a2e0d117539e96937f3d89bc/jyut6ping3.words.dict.yaml",
                     "cantonese_words.yaml",
                     "cantonese_words_259f0e48bba840c3a2e0d117539e96937f3d89bc.bin",
-                    "cantonese_words.NOTICE.txt",
                     "粤语",
                     new byte[]{'M', 'C', 'Y', 'W', '0', '0', '0', '1'},
                     1 << 20, CHAR_SOURCE_CANTONESE, false));
@@ -210,8 +210,6 @@ public final class RimeDictStore {
             return;
         }
         //noinspection ResultOfMethodCallIgnored
-        new File(directory, lang.noticeName).delete();
-        //noinspection ResultOfMethodCallIgnored
         new File(directory, lang.tableName).delete();
         //noinspection ResultOfMethodCallIgnored
         new File(directory, lang.archive).delete();
@@ -235,14 +233,11 @@ public final class RimeDictStore {
     public static String reading(char c) {
         RimeLang lang = lang();
         if (lang == null) return null;
-        switch (lang.charSource) {
-            case CHAR_SOURCE_CANTONESE:
-                return UniDictStore.cantoneseReading(c);
-            case CHAR_SOURCE_PINYIN:
-                return UniDictStore.pinyinReading(c);
-            default:
-                return null;
-        }
+        return switch (lang.charSource) {
+            case CHAR_SOURCE_CANTONESE -> UniDictStore.cantoneseReading(c);
+            case CHAR_SOURCE_PINYIN -> UniDictStore.pinyinReading(c);
+            default -> null;
+        };
     }
 
     /** Null leaves the line to be read a character at a time. */
@@ -250,6 +245,36 @@ public final class RimeDictStore {
     public static WordReadingTable word() {
         RimeLang lang = lang();
         return lang == null ? null : table(lang).open();
+    }
+
+    /** Word table of a language by code, for the language picked for ruby, not for romanization. */
+    @Nullable
+    public static WordReadingTable word(String code) {
+        RimeLang lang = langForCode(code);
+        return lang == null ? null : table(lang).open();
+    }
+
+    public static boolean isReady(String code) {
+        RimeLang lang = langForCode(code);
+        return lang != null && characterTablesReady(lang) && table(lang).open() != null;
+    }
+
+    @Nullable
+    public static String reading(char c, String code) {
+        RimeLang lang = langForCode(code);
+        if (lang == null) return null;
+        return switch (lang.charSource) {
+            case CHAR_SOURCE_CANTONESE -> UniDictStore.cantoneseReading(c);
+            case CHAR_SOURCE_PINYIN -> UniDictStore.pinyinReading(c);
+            default -> null;
+        };
+    }
+
+    @Nullable
+    private static RimeLang langForCode(String code) {
+        if (code == null) return null;
+        final String subtag = code.toLowerCase(Locale.ROOT).split("-", 2)[0];
+        return langs().get(subtag);
     }
 
     /** Starts a fetch if the table is not loaded. Safe to call whenever the setting is on. */
@@ -296,7 +321,7 @@ public final class RimeDictStore {
      * rather than only the table of the chosen language. Progress goes through the same listener
      * a single fetch uses, but only the end of the last table reports ready.
      *
-     * <p>A fetch already on its way is not cancelled: the worker is single threaded, so this
+     * <p>A fetch already on its way is not canceled: the worker is single threaded, so this
      * batch waits behind it and reattaches its listener when its turn comes.
      */
     public static void ensureSelected(RomanizationDict.Listener listener) {
@@ -348,24 +373,6 @@ public final class RimeDictStore {
         return lang == null ? null : lang.dictionaryName;
     }
 
-    /**
-     * Every notice, one per added list, so the about screen credits everything downloaded
-     * even when the current language is another.
-     */
-    @Nullable
-    public static String allNotices() {
-        File directory = RomanizationDict.directory();
-        if (directory == null) return null;
-        StringBuilder text = new StringBuilder();
-        for (RimeLang lang : langs().values()) {
-            String part = RomanizationDict.readNotice(directory, lang.noticeName);
-            if (part == null) continue;
-            if (text.length() > 0) text.append("\n\n");
-            text.append(part);
-        }
-        return text.length() > 0 ? text.toString() : null;
-    }
-
     /** The languages the user added, for the settings row, in the order they were added. */
     public static List<String> customLanguages() {
         List<String> codes = new ArrayList<>();
@@ -387,6 +394,7 @@ public final class RimeDictStore {
     }
 
     /** Records whether a built-in table is ticked, so it is fetched only when asked for. */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     public static void setBuiltinSelected(String code, boolean selected) {
         final String stored = Settings.LYRICS_RIME_BUILTIN_SELECTED.get();
         final StringBuilder kept = new StringBuilder();
@@ -595,7 +603,6 @@ public final class RimeDictStore {
         // would keep, so a list past this size is not fetched at all.
         table.build(directory, lang.url, lang.archive, RimeDictStore::addWords, listener,
                 lang.custom ? MAX_SOURCE_BYTES : Long.MAX_VALUE);
-        RomanizationDict.writeNotice(directory, lang.noticeName, noticeText(lang));
         WordReadingTable built = table.open();
         listener.onReady(built == null ? 0 : built.size());
     }
@@ -693,37 +700,10 @@ public final class RimeDictStore {
         listener.onBuilding(100);
     }
 
-    private static String noticeText(RimeLang lang) {
-        if (!lang.custom) {
-            return "Rime " + lang.code + " word readings\n"
-                    + lang.url + "\n\n"
-                    + "From https://github.com/rime/rime-cantonese\n\n"
-                    + "Licence: Creative Commons Attribution 4.0 International (CC BY 4.0)\n"
-                    + "https://creativecommons.org/licenses/by/4.0/legalcode\n\n"
-                    + "Creator: CanCLID, the Cantonese Linguistics Infrastructure Development Group\n"
-                    + "https://github.com/CanCLID/rime-cantonese-upstream\n\n"
-                    + "The work is provided as-is and the contributors make no warranties of any kind\n"
-                    + "concerning it.\n\n"
-                    + "What is stored here is the Jyutping reading of each word, taken from\n"
-                    + "jyut6ping3.words.dict.yaml in the file above.\n";
-        }
-        return "Rime " + lang.code + " word readings\n"
-                + lang.url + "\n\n"
-                + "Added by the user, who chose this word list and supplies it from that address.\n"
-                + "Its licence, provenance and correctness are the user's to confirm; nothing\n"
-                + "about it is bundled with or endorsed by this patch.\n\n"
-                + "What is stored here is the reading of each word, in the form the list gives it.\n";
-    }
-
     /** The table of the language, or a new one named by the row. */
     private static WordTableFile table(RimeLang lang) {
         synchronized (TABLES) {
-            WordTableFile table = TABLES.get(lang.code);
-            if (table == null) {
-                table = new WordTableFile(lang.tableName, lang.magic, lang.slotCount);
-                TABLES.put(lang.code, table);
-            }
-            return table;
+            return TABLES.computeIfAbsent(lang.code, k -> new WordTableFile(lang.tableName, lang.magic, lang.slotCount));
         }
     }
 
@@ -807,7 +787,7 @@ public final class RimeDictStore {
             if (seen) continue;
 
             parsed.add(new RimeLang(code, url, archiveName(code, url),
-                    tableName(code, url), noticeName(code), label, magicFor(code),
+                    tableName(code, url), label, magicFor(code),
                     1 << 20, parseCharSource(parts[3]), true));
         }
         return parsed;
@@ -884,10 +864,6 @@ public final class RimeDictStore {
         return "rime_" + code + "_" + Integer.toHexString(url.hashCode()) + ".bin";
     }
 
-    private static String noticeName(String code) {
-        return "rime_" + code + ".NOTICE.txt";
-    }
-
     /**
      * Eight bytes naming the table's writer; a table built for another language or address
      * would not match and is rebuilt.
@@ -902,21 +878,17 @@ public final class RimeDictStore {
     }
 
     private static int parseCharSource(String value) {
-        switch (value.trim().toUpperCase(Locale.ROOT)) {
-            case "CANTONESE":
-                return CHAR_SOURCE_CANTONESE;
-            case "PINYIN":
-                return CHAR_SOURCE_PINYIN;
-            case "NONE":
-                return CHAR_SOURCE_NONE;
-            default:
-                return CHAR_SOURCE_AUTO;
-        }
+        return switch (value.trim().toUpperCase(Locale.ROOT)) {
+            case "CANTONESE" -> CHAR_SOURCE_CANTONESE;
+            case "PINYIN" -> CHAR_SOURCE_PINYIN;
+            case "NONE" -> CHAR_SOURCE_NONE;
+            default -> CHAR_SOURCE_AUTO;
+        };
     }
 
     /** One language's word table: where it is fetched from and what it is stored as. */
     private record RimeLang(String code, String url, String archive, String tableName,
-                            String noticeName, String dictionaryName, byte[] magic, int slotCount,
+                            String dictionaryName, byte[] magic, int slotCount,
                             int charSource, boolean custom) {
     }
 

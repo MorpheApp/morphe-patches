@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">اشکال‌زدایی</string>
   <string name="morphe_debug_screen_summary">گزینه‌های پیشرفتهٔ توسعه‌دهنده و گزارش‌های تشخیصی را پیکربندی کنید</string>
-  <string name="morphe_debug_title">فعال‌کردن ثبت گزارش اشکال‌زدایی</string>
-  <string name="morphe_debug_stacktrace_title">ردپای پشتهٔ گزارش اشکال‌زدایی</string>
-  <string name="morphe_debug_stacktrace_summary">ردپاهای پشته را در گزارش‌های اشکال‌زدایی قرار می‌دهد تا به شناسایی خطاها کمک کند</string>
+  <string name="morphe_debug_level_title">ثبت وقایع اشکال‌زدایی</string>
+  <string name="morphe_debug_level_entry_disabled">غیرفعال</string>
+  <string name="morphe_debug_level_entry_debug">اشکال‌زدایی</string>
+  <string name="morphe_debug_level_entry_verbose">با جزئیات</string>
   <string name="morphe_debug_toast_on_error_title">نمایش پیام کوتاه هنگام خطای Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"خاموش‌کردن پیام‌های کوتاه خطا، همهٔ اعلان‌های خطای Morphe را پنهان می‌کند.
 
@@ -229,6 +230,19 @@ Second \"item\" text"</string>
 اگر تجربه‌ای بدون دردسر می‌خواهید، این نسخه را &lt;b&gt;حذف کنید&lt;/b&gt; و نسخهٔ پیشنهادی برنامهٔ ✅ &lt;b&gt;%2$s&lt;/b&gt; را پچ کنید"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ نسخهٔ آزمایشی را می‌خواهم</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ نسخهٔ پایدار را می‌خواهم</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">نمایش اعلان درون‌برنامه‌ای برای به‌روزرسانی‌های پچ</string>
+  <string name="morphe_patches_update_notice_entry_off">خاموش</string>
+  <string name="morphe_patches_update_notice_entry_stable">نسخه‌های پایدار</string>
+  <string name="morphe_patches_update_notice_entry_dev">نسخه‌های پایدار و توسعه‌دهنده</string>
+  <string name="morphe_patches_update_notice_dialog_title">پچ‌های جدید در دسترس‌اند</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (فعلی: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ ویژگی‌های جدید</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 رفع باگ‌ها</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 سایر تغییرات</string>
+  <string name="morphe_patches_update_notice_dialog_more">…و %s مورد دیگر</string>
+  <string name="morphe_patches_update_notice_dialog_update">به‌روزرسانی</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">بستن</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">گزارش خطا در اسناد کاربر ذخیره شد: %s</string>
   <string name="morphe_crash_log_saved">گزارش خطا ذخیره شد: %s</string>

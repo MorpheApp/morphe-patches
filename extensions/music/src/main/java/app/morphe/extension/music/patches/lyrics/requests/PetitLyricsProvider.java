@@ -68,13 +68,27 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return SOURCE_URL_PREFIX + lyricsId.trim();
     }
 
-    private static List<String> creditLinesOf(Song song) {
-        List<String> credits = new ArrayList<>(4);
-        addCredit(credits, "Artist", song.artist);
-        addCredit(credits, "Album", song.album);
-        addCredit(credits, "Writer", song.writer);
+    /** Composer is a credit line, not a songwriter name. */
+    private static List<String> creditsOf(Song song) {
+        List<String> credits = new ArrayList<>(1);
         addCredit(credits, "Composer", song.composer);
         return credits;
+    }
+
+    /** Writer names from the API are actual songwriters, not credit lines. */
+    @Nullable
+    private static List<String> songwritersOf(Song song) {
+        if (song.writer == null) {
+            return null;
+        }
+        List<String> names = new ArrayList<>();
+        for (String name : song.writer.split("\\s*,\\s*")) {
+            String trimmed = name.trim();
+            if (!trimmed.isEmpty()) {
+                names.add(trimmed);
+            }
+        }
+        return names.isEmpty() ? null : names;
     }
 
     private static void addCredit(List<String> credits, String label, @Nullable String value) {
@@ -774,14 +788,21 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
         sorted = gated;
 
-        if (stash.creditLines == null) {
+        if (stash.creditLines == null || stash.songwriters == null) {
             for (Song song : sorted) {
-                List<String> credits = creditLinesOf(song);
-                if (!credits.isEmpty()) {
-                    stash.creditLines = credits;
-                    if (stash.sourceLyricsId == null) {
-                        stash.sourceLyricsId = song.lyricsId;
+                if (stash.creditLines == null) {
+                    List<String> credits = creditsOf(song);
+                    if (!credits.isEmpty()) {
+                        stash.creditLines = credits;
+                        if (stash.sourceLyricsId == null) {
+                            stash.sourceLyricsId = song.lyricsId;
+                        }
                     }
+                }
+                if (stash.songwriters == null) {
+                    stash.songwriters = songwritersOf(song);
+                }
+                if (stash.creditLines != null && stash.songwriters != null) {
                     break;
                 }
             }
@@ -892,8 +913,8 @@ public final class PetitLyricsProvider implements LyricsProvider {
                 ? stash.wsyRaw
                 : null;
         return new Lyrics(stash.wordLines, name(), true, null, null, null,
-                stash.creditLines,
-                wsyRaw, wsyRaw != null ? "wsy" : null, sourceUrl(stash.sourceLyricsId));
+                stash.songwriters, stash.creditLines,
+                wsyRaw, wsyRaw != null ? "wsy" : null, sourceUrl(stash.sourceLyricsId), null, null);
     }
 
     @Nullable
@@ -912,8 +933,8 @@ public final class PetitLyricsProvider implements LyricsProvider {
             return null;
         }
         String lrc = buildLrc(lines);
-        return new Lyrics(lines, name(), true, null, null, null, stash.creditLines,
-                lrc, "lrc", sourceUrl(stash.sourceLyricsId));
+        return new Lyrics(lines, name(), true, null, null, null, stash.songwriters, stash.creditLines,
+                lrc, "lrc", sourceUrl(stash.sourceLyricsId), null, null);
     }
 
     @Nullable
@@ -927,15 +948,15 @@ public final class PetitLyricsProvider implements LyricsProvider {
             List<String> credits = mergeCredits(stash.creditLines, lrc.creditLines);
             assert credits != null;
             return new Lyrics(lrc.lines, name(), true, null, null, null,
-                    credits.isEmpty() ? null : credits,
-                    text, "lrc", sourceUrl(stash.sourceLyricsId));
+                    stash.songwriters, credits.isEmpty() ? null : credits,
+                    text, "lrc", sourceUrl(stash.sourceLyricsId), null, null);
         }
         List<LyricsLine> plain = LRCParser.parsePlain(text);
         if (plain.isEmpty()) {
             return null;
         }
-        return new Lyrics(plain, name(), false, null, null, null, stash.creditLines,
-                text, "txt", sourceUrl(stash.sourceLyricsId));
+        return new Lyrics(plain, name(), false, null, null, null, stash.songwriters, stash.creditLines,
+                text, "txt", sourceUrl(stash.sourceLyricsId), null, null);
     }
 
     @Nullable
@@ -991,6 +1012,8 @@ public final class PetitLyricsProvider implements LyricsProvider {
         boolean plainRequested;
         @Nullable
         List<String> creditLines;
+        @Nullable
+        List<String> songwriters;
         @Nullable
         String sourceLyricsId;
         @Nullable

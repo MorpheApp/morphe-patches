@@ -241,7 +241,8 @@ final class YouTubeChatSource implements Runnable {
                 consecutiveFailures = 0;
                 // The shown comments still fit when playback only ran past the loaded chat.
                 if (seeked || beforeWindow) {
-                    clearSeenIds();
+                    seenIds.clear();
+                    seenIdOrder.clear();
                     timedComments.reset();
                     listener.onReplayReset(videoId);
                 }
@@ -770,11 +771,6 @@ final class YouTubeChatSource implements Runnable {
         return result;
     }
 
-    private void clearSeenIds() {
-        seenIds.clear();
-        seenIdOrder.clear();
-    }
-
     static JSONObject parseYoutubeConfig(String html) throws JSONException {
         JSONObject result = new JSONObject();
         int searchIndex = 0;
@@ -1119,9 +1115,7 @@ final class YouTubeChatSource implements Runnable {
         if (renderer == null) {
             renderer = item.optJSONObject("liveChatMembershipItemRenderer");
         }
-        if (renderer == null) {
-            renderer = item.optJSONObject("liveChatViewerEngagementMessageRenderer");
-        }
+        // Chat status messages, such as "Welcome to live chat!", are not comments.
         return renderer;
     }
 

@@ -129,23 +129,6 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
         return builder.toString();
     }
 
-    private static boolean hasMultipleWords(String value) {
-        boolean inWord = false;
-        int wordCount = 0;
-        for (int i = 0; i < value.length(); i++) {
-            if (Character.isWhitespace(value.charAt(i))) {
-                inWord = false;
-            } else if (!inWord) {
-                inWord = true;
-                wordCount++;
-                if (wordCount > 1) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     public boolean hasWords() {
         return !words.isEmpty();
     }
@@ -172,11 +155,22 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
             if (single.endMs() <= single.startMs()) {
                 return false;
             }
-            // A span repeating the whole line is line timing; one over some words is still word timing.
-            return !hasMultipleWords(text)
-                    || !compactText(single.text()).equalsIgnoreCase(compactText(text));
+            if (compactText(single.text()).equalsIgnoreCase(compactText(text))) {
+                // Same text: word sync only when the word carries its own span, not the line's.
+                return single.startMs() != startTimeMs || single.endMs() != endTimeMs;
+            }
+            // Different text: the word covers only part of the line, so it is word sync.
+            return true;
         }
-        return true;
+        for (Word word : words) {
+            if (word.endMs() <= word.startMs()) {
+                continue;
+            }
+            if (word.startMs() != startTimeMs || word.endMs() != endTimeMs) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @NonNull

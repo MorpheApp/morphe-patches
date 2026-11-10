@@ -19,10 +19,10 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.TextTrim;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.utils.TextTrim;
 import app.morphe.extension.shared.Logger;
 
 /**
@@ -30,7 +30,11 @@ import app.morphe.extension.shared.Logger;
  */
 public final class LRCParser {
 
-    public static final Set<String> CREDIT_META_KEYS = Set.of("ti", "ar", "al", "au");
+    /**
+     * LRC tags that are true credit lines (uploader/submitter). The metadata tags ti/ar/al are not
+     * credits: they repeat the track, and stay in the raw format.
+     */
+    public static final Set<String> CREDIT_META_KEYS = Set.of("au", "by");
     public static final Pattern LRC_META = Pattern.compile("^\\[(\\w+):([^]]*)]$");
     /** Runs of whitespace inside a heading, collapsed so {@code [Pre - Chorus]} reads as one phrase. */
     private static final Pattern HEADING_SPACES = Pattern.compile("\\s+");
@@ -40,11 +44,11 @@ public final class LRCParser {
     private static final Pattern SPEAKER_TAG_PATTERN =
             Pattern.compile("^(bg|v\\d+|[FMD]|duet|male|female)$", Pattern.CASE_INSENSITIVE);
     /** A gap shorter than this is sung through, so the line lasts until the next one starts. */
-    private static final long HELD_GAP_MS = 11_000;
-    private static final long MIN_HOLD_MS = 5000;
+    private static final long HELD_GAP_MS = 15_000;
+    private static final long MIN_HOLD_MS = 10000;
     private static final long HOLD_PER_CHAR_MS = 180;
     /** How long before the next line a long instrumental gap is shown as such. */
-    private static final long GAP_LEAD_IN_MS = 7000;
+    private static final long GAP_LEAD_IN_MS = 2000;
     /** {@code '1'} where the line text puts a space after that word, {@code '0'} where it does not. */
     private static final char SEPARATED = '1';
 

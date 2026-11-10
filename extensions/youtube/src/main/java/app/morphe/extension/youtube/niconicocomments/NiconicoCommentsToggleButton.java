@@ -26,12 +26,14 @@ import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 import app.morphe.extension.youtube.videoplayer.PlayerIcons;
@@ -47,6 +49,7 @@ public final class NiconicoCommentsToggleButton {
     private static LegacyPlayerControlButton legacy;
 
     private static WeakReference<ImageView> overlayButtonRef = new WeakReference<>(null);
+    private static WeakReference<SheetBottomDialog.SlideDialog> quickSettingsRef = new WeakReference<>(null);
 
     private NiconicoCommentsToggleButton() {
     }
@@ -132,6 +135,13 @@ public final class NiconicoCommentsToggleButton {
         }
     }
 
+    static void dismissQuickSettings() {
+        SheetBottomDialog.SlideDialog dialog = quickSettingsRef.get();
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+        }
+    }
+
     private static String getIconBaseName() {
         return Settings.NICONICO_COMMENTS_SHOWN.get()
                 ? "morphe_niconico_comments_button_on"
@@ -140,7 +150,8 @@ public final class NiconicoCommentsToggleButton {
 
     /**
      * Shows the font size, opacity, travel duration, display area and max length sliders.
-     * Changes apply immediately.
+     * Changes apply immediately. In portrait with separate settings, the font size, travel duration
+     * and display area sliders change the portrait values.
      */
     private static void showQuickSettings(Context context) {
         try {
@@ -154,12 +165,18 @@ public final class NiconicoCommentsToggleButton {
             contentLayout.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
             contentLayout.addView(SheetBottomDialog.createTitle(context,
                     str("morphe_niconico_comments_screen_title"), foregroundColor));
+            final boolean portrait = NiconicoCommentsController.usesPortraitSettings();
+            IntegerSetting fontSize = NiconicoCommentsController.getFontSizeSetting();
+            IntegerSetting travelDuration = NiconicoCommentsController.getTravelDurationSetting();
+            IntegerSetting displayArea = NiconicoCommentsController.getDisplayAreaSetting();
             contentLayout.addView(SheetBottomDialog.createSliderRow(context,
-                    str("morphe_niconico_comments_font_size_title"),
-                    Settings.NICONICO_COMMENTS_FONT_SIZE,
+                    str(portrait
+                            ? "morphe_niconico_comments_portrait_font_size_title"
+                            : "morphe_niconico_comments_font_size_title"),
+                    fontSize,
                     foregroundColor,
                     value -> {
-                        Settings.NICONICO_COMMENTS_FONT_SIZE.save(value);
+                        fontSize.save(value);
                         NiconicoCommentsController.updateViewState();
                     }));
             contentLayout.addView(SheetBottomDialog.createSliderRow(context,
@@ -171,19 +188,23 @@ public final class NiconicoCommentsToggleButton {
                         NiconicoCommentsController.updateViewState();
                     }));
             contentLayout.addView(SheetBottomDialog.createSliderRow(context,
-                    str("morphe_niconico_comments_travel_duration_title"),
-                    Settings.NICONICO_COMMENTS_TRAVEL_DURATION,
+                    str(portrait
+                            ? "morphe_niconico_comments_portrait_travel_duration_title"
+                            : "morphe_niconico_comments_travel_duration_title"),
+                    travelDuration,
                     foregroundColor,
                     value -> {
-                        Settings.NICONICO_COMMENTS_TRAVEL_DURATION.save(value);
+                        travelDuration.save(value);
                         NiconicoCommentsController.updateViewState();
                     }));
             contentLayout.addView(SheetBottomDialog.createSliderRow(context,
-                    str("morphe_niconico_comments_display_area_title"),
-                    Settings.NICONICO_COMMENTS_DISPLAY_AREA,
+                    str(portrait
+                            ? "morphe_niconico_comments_portrait_display_area_title"
+                            : "morphe_niconico_comments_display_area_title"),
+                    displayArea,
                     foregroundColor,
                     value -> {
-                        Settings.NICONICO_COMMENTS_DISPLAY_AREA.save(value);
+                        displayArea.save(value);
                         NiconicoCommentsController.updateViewState();
                     }));
             contentLayout.addView(SheetBottomDialog.createSliderRow(context,
@@ -201,24 +222,37 @@ public final class NiconicoCommentsToggleButton {
                     context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
             PipDismissHelper.dismissOnPip(dialog);
 
-            Button resetButton = CustomDialog.createButton(context, dialog,
-                    str("morphe_settings_reset"),
+            Button settingsButton = CustomDialog.createButton(context, dialog,
+                    str("morphe_niconico_comments_all_settings"),
                     () -> {
-                        Settings.NICONICO_COMMENTS_FONT_SIZE.resetToDefault();
-                        Settings.NICONICO_COMMENTS_OPACITY.resetToDefault();
-                        Settings.NICONICO_COMMENTS_TRAVEL_DURATION.resetToDefault();
-                        Settings.NICONICO_COMMENTS_DISPLAY_AREA.resetToDefault();
-                        Settings.NICONICO_COMMENTS_MAX_LENGTH.resetToDefault();
-                        NiconicoCommentsController.updateViewState();
-                        // Reopen so the sliders show the default values.
-                        showQuickSettings(context);
+                        // A second tap while the sheet slides away would open the settings twice.
+                        if (quickSettingsRef.get() == dialog) {
+                            quickSettingsRef = new WeakReference<>(null);
+                            YouTubeActivityHook.openSettings(context, "morphe_niconico_comments_screen");
+                        }
                     },
                     false, true);
-            LinearLayout.LayoutParams resetParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp36);
-            resetParams.topMargin = Dim.dp16;
-            contentLayout.addView(resetButton, resetParams);
+            Button resetButton = CustomDialog.createButton(context, null,
+                    str("morphe_settings_reset"),
+                    () -> CustomDialog.create(context,
+                            str("morphe_niconico_comments_reset_title"),
+                            null, null, null,
+                            () -> {
+                                fontSize.resetToDefault();
+                                Settings.NICONICO_COMMENTS_OPACITY.resetToDefault();
+                                travelDuration.resetToDefault();
+                                displayArea.resetToDefault();
+                                Settings.NICONICO_COMMENTS_MAX_LENGTH.resetToDefault();
+                                NiconicoCommentsController.updateViewState();
+                                // Reopen so the sliders show the default values.
+                                showQuickSettings(context);
+                                dialog.dismiss();
+                            },
+                            () -> {}, null, null, true).first.show(),
+                    false, false);
+            contentLayout.addView(CustomDialog.createButtonRow(context, settingsButton, resetButton));
 
+            quickSettingsRef = new WeakReference<>(dialog);
             dialog.show();
         } catch (Exception ex) {
             Logger.printException(() -> "showQuickSettings failure", ex);

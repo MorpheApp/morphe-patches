@@ -40,7 +40,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_wifi_title">Bật Wi-Fi?</string>
   <string name="morphe_music_jam_wifi_message">Bật Wi-Fi, sau đó thử bắt đầu hoặc tham gia Jam lần nữa</string>
   <string name="morphe_music_jam_wifi_settings">Mở cài đặt Wi-Fi</string>
-  <string name="morphe_music_jam_cancel">Thôi</string>
+  <string name="morphe_music_jam_cancel">Hủy</string>
   <string name="morphe_music_jam_use_package">Sử dụng gói</string>
   <string name="morphe_music_jam_invalid_package">Nhập tên gói Android hợp lệ</string>
   <string name="morphe_music_jam_package_saved">Đã lưu gói. Thiết lập Jam Layer để kết nối</string>
@@ -128,7 +128,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_screen_summary">Tải xuống video nhạc, podcast hoặc bài hát bằng các ứng dụng tải xuống của bên thứ ba</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Sử dụng trình tải xuống bên ngoài cho menu Tải xuống</string>
-  <string name="morphe_external_downloader_menu_summary">Tùy chọn Tải xuống trong các menu sẽ mở trình tải xuống bên ngoài của bạn thay vì</string>
+  <string name="morphe_external_downloader_menu_summary">Tùy chọn Tải xuống trong các menu sẽ mở trình tải xuống bên ngoài của bạn thay thế</string>
   <string name="morphe_music_downloads_screen_title">Tải xuống</string>
   <string name="morphe_music_downloads_empty">"Không có bản tải xuống
 Các bài hát đã tải sẽ xuất hiện ở đây"</string>
@@ -490,6 +490,23 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Ẩn nút Nâng cấp</string>
   <string name="morphe_music_hide_navigation_bar_title">Ẩn thanh điều hướng</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ẩn tên nút điều hướng</string>
+  <string name="morphe_music_navigation_bar_glass_title">Bật thanh điều hướng dạng kính</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Hiển thị thanh điều hướng dưới dạng một viên nang mờ, bo góc và nổi</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Độ mờ của kính</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Điều chỉnh độ trong suốt của thanh điều hướng kính (0 là trong suốt, 100 là mờ)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Kính sáng</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Nhuộm trắng thanh điều hướng kính thay vì màu tối để có hiệu ứng kính sáng và rõ hơn</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Kích thước thanh điều hướng kính</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Điều chỉnh chiều cao, chiều rộng và khoảng cách nút của thanh điều hướng kính cùng với bản xem trước. Các nút không vừa với chiều rộng màn hình sẽ bị ẩn</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Chiều cao</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Chiều rộng tối đa</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Khoảng cách nút</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Các nút hiển thị: %1$s trên %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Trang chủ</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Mẫu</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Khám phá</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Thư viện</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Chưa đăng nhập. Chạm để cấu hình</string>
   <string name="morphe_music_scrobbling_log_out">Đăng xuất</string>
@@ -543,7 +560,7 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Dọn sạch bằng regex tùy chỉnh</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Nhập regex tùy chỉnh để loại bỏ văn bản không cần thiết khỏi tiêu đề bài hát, nghệ sĩ hoặc đĩa nhạc. Ví dụ: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Phân tích tên nghệ sĩ và bài hát từ tiêu đề</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Tự động nhận diện tên nghệ sĩ và bài hát từ tiêu đề video thông qua dấu \" - \". Tính năng này hữu ích với các các video đăng lại khi tên kênh trùng với tên nghệ sĩ</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Tự động nhận diện tên nghệ sĩ và bài hát từ tiêu đề video thông qua dấu \" - \". Tính năng này hữu ích với các video đăng lại khi tên kênh trùng với tên nghệ sĩ</string>
   <string name="morphe_music_scrobbling_guess_album_title">Điền vào album còn thiếu</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Khi bản nhạc không có album, hãy tra cứu trên Last.fm để scrobble của bạn được hoàn tất</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -674,7 +691,7 @@ Các bước:
 2. Mở DevTools → Application → Cookies → deezer.com
 3. Sao chép giá trị của \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: đã lưu arl</string>
-  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl không hợp lệ — vui lòng thử lại</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: đã xóa arl</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl không hợp lệ - vui lòng kiểm tra và thử lại</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Chỉ thêm token để sử dụng tài khoản của riêng bạn. Token phải lấy từ ứng dụng Musixmatch Android: các token sao chép từ musixmatch.com thuộc về trình khách máy tính để bàn đã ngừng hoạt động và API sẽ từ chối chúng.</string>
@@ -692,7 +709,7 @@ Các bước:
 3. Sao chép toàn bộ chuỗi cookie (các cặp khóa=giá trị phân tách bằng dấu chấm phẩy)
 
 Cookie bắt buộc: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
-  <string name="morphe_music_youtube_cookies_toast_saved">cookie không hợp lệ — vui lòng thử lại</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: đã lưu cookie</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: đã xóa cookie</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookies không hợp lệ - vui lòng kiểm tra và thử lại</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Chạm và giữ một dòng</string>
@@ -700,7 +717,7 @@ Cookie bắt buộc: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_section_title">Hiển thị thẻ phân đoạn</string>
   <string name="morphe_music_lyrics_show_section_summary">Gắn thẻ nhỏ cho mỗi phân đoạn mới của lời bài hát, chẳng hạn như Phiên khúc hoặc Điệp khúc</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Hiện nút Sao chép lời nhạc</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Chạm để sao chép lời gốc dưới dạng văn bản thô; nhấn giữ để lưu tệp nguồn lời thô vào thư mục Downloads</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Nhấn để sao chép lời bài hát gốc dưới dạng văn bản thuần túy; nhấn giữ để lưu tệp nguồn lời bài hát thô và tệp TTML đã chuyển đổi vào Thư mục Tải xuống</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Hiện nút Dịch lời nhạc</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Nhấn để chuyển đổi dịch thuật; nhấn giữ lâu chỉ để dịch. Sử dụng các nhà cung cấp dịch thuật đã bật theo thứ tự liệt kê</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Hiển thị nút Latinh hóa hoặc phiên âm</string>
@@ -725,6 +742,7 @@ Cookie bắt buộc: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_search_empty">Nhập tên bài hát và nghệ sĩ</string>
   <string name="morphe_music_lyrics_search_no_providers">Không có nhà cung cấp nào được bật có thể tìm kiếm các bài hát khác</string>
   <string name="morphe_music_lyrics_saved">Đã lưu</string>
+  <string name="morphe_music_lyrics_written_by">Viết bởi: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Đánh dấu các từ hoặc âm tiết đồng bộ</string>
   <string name="morphe_music_lyrics_word_sync_summary">Ưu tiên lời bài hát từng từ khi có sẵn. Khi lời bài hát có thời gian cho từng từ, đánh dấu từng từ hoặc âm tiết theo nhạc</string>
   <string name="morphe_music_lyrics_line_scale_title">Thu nhỏ các dòng không hoạt động</string>
@@ -740,7 +758,7 @@ Cookie bắt buộc: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Hoạt ảnh nền động</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Di chuyển nền khi đang phát, và nhấp nháy theo nhạc nếu YouTube Music có quyền truy cập micrô. Tắt để sử dụng nền tĩnh giúp tiết kiệm pin hơn</string>
   <string name="morphe_music_lyrics_mediasession_title">Hiển thị Lời bài hát MediaSession trên màn hình khóa</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Hiển thị dòng hiện tại trên màn hình khóa, Android Auto và Bluetooth. Yêu cầu Android 11 trở lên</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Hiển thị dòng hiện tại trên màn hình khóa, Android Auto và Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">Hiển thị Lời bài hát trong Miniplayer</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Hiển thị dòng hiện tại trong trình phát nhỏ, với tiêu đề bài hát được chuyển xuống phần phụ đề</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Định dạng tiêu đề bài hát/nghệ sĩ</string>
@@ -777,6 +795,8 @@ Chia định dạng bản nhạc đã điền thành các khung hình xoay vòng
   <string name="morphe_music_lyrics_force_capitalize_summary">Viết hoa chữ cái đầu của mỗi dòng lời bài hát</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Xóa dấu câu ở cuối</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Xóa dấu chấm, dấu phẩy, dấu hai chấm và dấu chấm phẩy ở cuối các dòng lời bài hát. Dấu hỏi, dấu chấm than, dấu ba chấm, dấu ngoặc kép và dấu ngoặc đơn được giữ nguyên</string>
+  <string name="morphe_music_lyrics_han_form_title">Chuyển đổi hình thức tiếng Trung</string>
+  <string name="morphe_music_lyrics_han_form_summary">Khi bật, sẽ tuân theo ngôn ngữ đích dịch thuật của bạn để chuyển đổi lời bài hát giữa chữ Giản thể và Phồn thể</string>
   <string name="morphe_music_lyrics_text_size_title">Cỡ chữ</string>
   <string name="morphe_music_lyrics_text_size_summary">Kích thước chữ của lời bài hát</string>
   <string name="morphe_music_lyrics_offset_ms_title">Độ lệch thời gian toàn cục</string>
@@ -792,6 +812,7 @@ Chia định dạng bản nhạc đã điền thành các khung hình xoay vòng
   <string name="morphe_music_lyrics_translated_by_ai">Dịch bởi %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Phiên âm bởi %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Latin hóa bởi %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (với %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Latinh hóa bởi Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Đã dịch</string>
@@ -807,6 +828,8 @@ Chia định dạng bản nhạc đã điền thành các khung hình xoay vòng
   <string name="morphe_romanize_language_DEFAULT">Tự động</string>
   <string name="morphe_music_lyrics_romanizing">Đang chuyển tự…</string>
   <string name="morphe_music_lyrics_romanize_failed">Không thể chuyển tự lời bài hát</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Không</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Ngôn ngữ Ruby đích</string>
   <string name="morphe_music_lyrics_translate_only">Chỉ bản dịch</string>
   <string name="morphe_music_lyrics_romanize_only">Chỉ phiên âm</string>
   <string name="morphe_music_lyrics_dual_only">Chế độ kép</string>
@@ -819,7 +842,7 @@ Chia định dạng bản nhạc đã điền thành các khung hình xoay vòng
   <string name="morphe_music_lyrics_transcribe_key_saved">Đã lưu khóa API QuickLRC</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC không chấp nhận khóa đó</string>
   <string name="morphe_music_lyrics_transcribe_key_cleared">Đã xóa khóa API QuickLRC</string>
-  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC thêm thời gian cho những lời bài hát chưa có, hoặc chuyển ngữ chúng từ bài hát, với chi phí là tín dụng. Với khóa được thiết lập, các bài hát không có lời sẽ cung cấp chức năng chuyển ngữ và hộp thoại tìm kiếm có thêm nút căn chỉnh</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC thêm thời gian cho những lời bài hát chưa có, hoặc chép lời chúng từ bài hát, với chi phí là tín dụng. Với khóa được thiết lập, các bài hát không có lời sẽ cung cấp chức năng chép lời và hộp thoại tìm kiếm có thêm nút căn chỉnh</string>
   <string name="morphe_music_lyrics_transcribe_align">Yêu cầu căn chỉnh QuickLRC</string>
   <string name="morphe_music_lyrics_transcribe_aligning">Đang căn chỉnh</string>
   <string name="morphe_music_lyrics_transcribe_apply_align">Áp dụng căn chỉnh</string>
@@ -827,7 +850,7 @@ Chia định dạng bản nhạc đã điền thành các khung hình xoay vòng
   <string name="morphe_music_lyrics_transcribe_working">Đang ghi âm</string>
   <string name="morphe_music_lyrics_transcribe_cancelled">Đã hủy ghi âm</string>
   <string name="morphe_music_lyrics_transcribe_local_unsupported">Chỉ các bài hát phát từ YouTube mới có thể ghi âm</string>
-  <string name="morphe_music_lyrics_transcribe_no_text">Không có lời bài hát để căn chỉnh - đang chuyển ngữ thay thế</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Không có lời bài hát để căn chỉnh - đang chép lời thay thế</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC không thể xử lý bài hát này</string>
   <string name="morphe_music_lyrics_transcribe_out_of_credits">Tín dụng QuickLRC đã hết cho bài hát này</string>
   <string name="morphe_music_lyrics_about_summary">"Lời bài hát được khớp theo tiêu đề và nghệ sĩ, metadata bất thường có thể không tìm thấy gì hoặc phiên bản sai. Sử dụng làm mới để chuyển đổi phiên bản. Các nhà cung cấp đánh dấu * yêu cầu token. Không phải lúc nào tất cả các nhà cung cấp được bật cũng được yêu cầu theo thứ tự của bạn, nhưng phản hồi dựa trên tốc độ của họ.
@@ -837,7 +860,7 @@ Lời bài hát đến từ các dịch vụ bên thứ ba không liên quan, t�
   <string name="morphe_music_lyrics_hide_info_title">Ẩn dòng ghi công</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ẩn dòng ghi công hiển thị bên dưới lời bài hát</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Hoán đổi bản dịch và chuyển tự</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Hoán đổi thứ tự hiển thị của bản dịch và phiên âm bên dưới lời bài hát</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Di chuyển bản dịch lên trên lời bài hát; phần phiên âm và La-tinh hóa vẫn ở bên dưới</string>
   <string name="morphe_music_lyrics_force_center_title">Luôn căn giữa lời bài hát</string>
   <string name="morphe_music_lyrics_force_center_summary">BẬT đặt mọi dòng ở giữa và bỏ qua sự căn chỉnh của nguồn, bao gồm cả hai bên song ca; TẮT giữ nguyên sự căn chỉnh mà lời bài hát yêu cầu</string>
   <string name="morphe_music_lyrics_providers_keep_one">Ít nhất một nhà cung cấp phải được bật</string>
@@ -845,14 +868,7 @@ Lời bài hát đến từ các dịch vụ bên thứ ba không liên quan, t�
   <string name="morphe_music_lyrics_romanization_provider_title">Latinh hóa hoặc phiên âm</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Từ điển ngoại tuyến</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Danh sách từ Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Từ điển ngoại tuyến</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Kịch bản Ruby</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Hiện nút Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Nhấn để bật/tắt cách đọc ruby trên lời nhạc; nhấn giữ để chuyển đổi giữa hiragana và katakana. Sử dụng các nhà cung cấp ruby đã bật theo thứ tự được liệt kê</string>
-  <string name="morphe_music_lyrics_ruby_generating">Đang tạo ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">Bộ chuyển tự ICU</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Phát hiện phần bằng AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Chỉ được sử dụng khi nhà cung cấp không gửi nhãn phần như Chorus hoặc Verse, do mô hình tương thích OpenAI của bạn phát hiện. Chỉnh sửa hàng cũng sẽ mở lời nhắc của nó</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL điểm cuối API (ví dụ: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +891,7 @@ Lời bài hát đến từ các dịch vụ bên thứ ba không liên quan, t�
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Chọn một mô hình</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Tải các mô hình thất bại. Hãy kiểm tra khóa API hoặc kết nối.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Lời nhắc</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Gợi ý Ruby (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Mẫu</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">URL cơ sở</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Thiết lập sẵn của dịch vụ</string>

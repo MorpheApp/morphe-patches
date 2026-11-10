@@ -76,10 +76,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file_failed">सेटिंग्स एक्सपोर्ट नहीं हो सकीं</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">आप Morphe Patches का लेटेस्ट वर्ज़न &lt;i&gt;%s&lt;/i&gt; इस्तेमाल कर रहे हैं</string>
-  <string name="morphe_settings_about_links_body_version_outdated">आप Morphe Patches संस्करण &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;अपडेट उपलब्ध है: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;अपडेट करने के लिए, इस ऐप को पुनपटच करें</string>
+  <string name="morphe_settings_about_links_body_version_outdated">आप Morphe Patches संस्करण &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;अपडेट उपलब्ध है: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;अपडेट करने के लिए, इस ऐप को पुनः पैच करें</string>
   <string name="morphe_settings_about_links_dev_header">नोट</string>
   <string name="morphe_settings_about_links_dev_body">यह संस्करण एक प्री-रीलिज़ संस्करण है और आप अप्रत्याशित समस्याओं का अनुभव कर सकते हैं</string>
-  <string name="morphe_settings_about_links_header">ოფიციალური ლინკები</string>
+  <string name="morphe_settings_about_links_header">आधिकारिक लिंक</string>
   <string name="morphe_settings_about_links_website">वेबसाइट</string>
   <string name="morphe_settings_about_links_donate">दान करें</string>
   <string name="morphe_settings_about_links_translations">ट्रांसलेशन्स</string>
@@ -95,11 +95,12 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_licenses">लाइसेंस सूचनाएँ</string>
   <string name="morphe_settings_about_licenses_loading">लोड हो रहा है...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_screen_title">디버깅</string>
+  <string name="morphe_debug_screen_title">डिबगिंग</string>
   <string name="morphe_debug_screen_summary">उन्नत डेवलपर विकल्पों और नैदानिक लॉग को कॉन्फ़िगर करें</string>
-  <string name="morphe_debug_title">डीबग लॉगिंग सक्षम करें</string>
-  <string name="morphe_debug_stacktrace_title">डिबग लॉग स्टैक ट्रेस</string>
-  <string name="morphe_debug_stacktrace_summary">त्रुटियों की पहचान करने में मदद करने के लिए डीबग लॉग में स्टैक ट्रेस शामिल हैं</string>
+  <string name="morphe_debug_level_title">डीबग लॉगिंग</string>
+  <string name="morphe_debug_level_entry_disabled">बंद किया गया</string>
+  <string name="morphe_debug_level_entry_debug">डीबग</string>
+  <string name="morphe_debug_level_entry_verbose">वर्बोस</string>
   <string name="morphe_debug_toast_on_error_title">Morphe त्रुटि पर टोस्ट दिखाएं</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"चुकी हुई गलती टोस्ट से Morphe की सभी त्रुटि सूचनाएं छिप जाती हैं।
 
@@ -229,6 +230,19 @@ MicroG के लिए बैटरी ऑप्टिमाइजेशन क
 यदि आप सबसे परेशानी मुक्त अनुभव चाहते हैं, तो इस ऐप को &lt;b&gt;अनइंस्टॉल&lt;/b&gt; कर दें और ✅ &lt;b&gt;%2$s&lt;/b&gt; के अनुशंसित ऐप संस्करण को पैच करें।"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ मुझे प्रायोगिक चाहिए</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ मुझे स्थिर चाहिए</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">पैच अपडेट के लिए इन-ऐप नोटिफिकेशन दिखाएं</string>
+  <string name="morphe_patches_update_notice_entry_off">बंद</string>
+  <string name="morphe_patches_update_notice_entry_stable">स्थिर रिलीज़</string>
+  <string name="morphe_patches_update_notice_entry_dev">स्थिर और देव रिलीज़</string>
+  <string name="morphe_patches_update_notice_dialog_title">नए पैच उपलब्ध हैं</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe पैच &lt;b&gt;%1$s&lt;/b&gt; (वर्तमान: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ नई सुविधाएँ</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 बग फिक्स</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 अन्य परिवर्तन</string>
+  <string name="morphe_patches_update_notice_dialog_more">…और %s और</string>
+  <string name="morphe_patches_update_notice_dialog_update">अपडेट</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">खारिज करें</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">क्रैश लॉग दस्तावेज़ों फ़ोल्डर में सेव हुआ: %s</string>
   <string name="morphe_crash_log_saved">क्रैश लॉग सेव हुआ: %s</string>

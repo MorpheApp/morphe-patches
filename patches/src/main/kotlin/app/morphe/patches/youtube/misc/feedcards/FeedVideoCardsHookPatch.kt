@@ -12,6 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.litho.relayout.COMPONENT_HOST_CLASS
 import app.morphe.patches.shared.misc.proto.hookElement
+import app.morphe.patches.youtube.layout.originaltitles.hookCompactVideoTitle
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
@@ -70,5 +71,8 @@ internal val feedVideoCardsHookPatch = patch(
                 )
             }
         }
+
+        // Compact videos are not drawn by Litho, such as the videos of the watch history.
+        hookCompactVideoTitle("$EXTENSION_CLASS->onCompactVideoBound")
     }
 }

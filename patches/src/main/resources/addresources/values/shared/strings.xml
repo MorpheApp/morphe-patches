@@ -100,9 +100,10 @@ To translate new languages or improve the existing translations, visit morphe.so
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_screen_title">Debugging</string>
     <string name="morphe_debug_screen_summary">Configure advanced developer options and diagnostic logs</string>
-    <string name="morphe_debug_title">Enable debug logging</string>
-    <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
-    <string name="morphe_debug_stacktrace_summary">Includes stack traces in debug logs to help identify errors</string>
+    <string name="morphe_debug_level_title">Debug logging</string>
+    <string name="morphe_debug_level_entry_disabled">Disabled</string>
+    <string name="morphe_debug_level_entry_debug">Debug</string>
+    <string name="morphe_debug_level_entry_verbose">Verbose</string>
     <string name="morphe_debug_toast_on_error_title">Show toast on Morphe error</string>
     <string name="morphe_debug_toast_on_error_user_dialog_message">"Turning off error toasts hides all Morphe error notifications.
 
@@ -237,6 +238,20 @@ If battery optimizations are not changed then you may experience:
 If you want the most trouble free experience, then &lt;b>uninstall&lt;/b> this and patch the recommended app version of ✅ &lt;b>%2$s&lt;/b>"</string>
     <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
     <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
+
+    <!-- misc.announcements.patchesUpdateNoticePatch -->
+    <string name="morphe_patches_update_notice_title">Show in-app notification for patch updates</string>
+    <string name="morphe_patches_update_notice_entry_off">Off</string>
+    <string name="morphe_patches_update_notice_entry_stable">Stable releases</string>
+    <string name="morphe_patches_update_notice_entry_dev">Stable and dev releases</string>
+    <string name="morphe_patches_update_notice_dialog_title">New patches available</string>
+    <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b>%1$s&lt;/b> (current: %2$s)</string>
+    <string name="morphe_patches_update_notice_dialog_features">✨ New features</string>
+    <string name="morphe_patches_update_notice_dialog_fixes">🐛 Bug fixes</string>
+    <string name="morphe_patches_update_notice_dialog_other">🚀 Other changes</string>
+    <string name="morphe_patches_update_notice_dialog_more">…and %s more</string>
+    <string name="morphe_patches_update_notice_dialog_update">Update</string>
+    <string name="morphe_patches_update_notice_dialog_dismiss">Dismiss</string>
 
     <!-- misc.crashlog.crashLogPatch -->
     <string name="morphe_crash_log_saved_documents">Crash log saved to user documents: %s</string>

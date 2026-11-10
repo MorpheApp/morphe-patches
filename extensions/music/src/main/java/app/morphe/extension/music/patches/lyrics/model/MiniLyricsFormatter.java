@@ -187,7 +187,8 @@ public final class MiniLyricsFormatter {
             frames.add(frame);
             return;
         }
-        final List<Chunk> halves = chunks(new LyricsLine(0, frame), -1, limit, false, false, fullWidthMultiplier);
+        final List<Chunk> halves = chunks(new LyricsLine(0, frame), -1, limit, false, false,
+                fullWidthMultiplier, LyricsTextFormatter.HAN_NONE);
         if (halves.size() < 2) {
             frames.add(frame);
             return;
@@ -370,7 +371,8 @@ public final class MiniLyricsFormatter {
      */
     public static List<Chunk> chunks(LyricsLine line, long intervalEndMs, int limit,
                                      boolean capitalize, boolean strip) {
-        return chunks(line, intervalEndMs, limit, capitalize, strip, 1);
+        return chunks(line, intervalEndMs, limit, capitalize, strip, 1,
+                LyricsTextFormatter.HAN_NONE);
     }
 
     /**
@@ -378,8 +380,10 @@ public final class MiniLyricsFormatter {
      * without spaces that is split gets an ellipsis at the split.
      */
     public static List<Chunk> chunks(LyricsLine line, long intervalEndMs, int limit,
-                                     boolean capitalize, boolean strip, double fullWidthMultiplier) {
-        final LyricsTextFormatter.Result cleaned = LyricsTextFormatter.format(line.text(), false, strip);
+                                     boolean capitalize, boolean strip, double fullWidthMultiplier,
+                                     int hanMode) {
+        final LyricsTextFormatter.Result cleaned =
+                LyricsTextFormatter.format(line.text(), false, strip, hanMode);
         final String text = cleaned.text();
         if (limit <= 0 || width(text, fullWidthMultiplier) <= limit) {
             return List.of(new Chunk(LyricsTextFormatter.format(text, capitalize, false).text(),

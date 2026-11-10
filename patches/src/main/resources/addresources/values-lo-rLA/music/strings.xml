@@ -125,7 +125,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_audio_video_switch_title">ເປີດໃຊ້ການສະຫຼັບສຽງ/ວິດີໂອ</string>
   <string name="morphe_music_enable_audio_video_switch_summary">ລອງປ່ຽນເວີຊັນຂອງແທຣັກສຽງ ແລະ ມິວສິກວິດີໂອທາງການ</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_summary">ດາວໂຫຼດວິດີໂອເພງ, ພອດຄਾਸ, ຫຼື ເພງ ດ້ວຍແອັບດາວໂຫຼດຂອງບຸກຄົນທີສາມ</string>
+  <string name="morphe_external_downloader_screen_summary">ດາວໂຫຼດວິດີໂອເພງ, ພອດແຄສ, ຫຼື ເພງ ດ້ວຍແອັບດາວໂຫຼດຂອງບຸກຄົນທີສາມ</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">ໃຊ້ໂປຣແກຣມດາວໂຫຼດພາຍນອກສຳລັບເມນູ ດາວໂຫຼດ</string>
   <string name="morphe_external_downloader_menu_summary">ຕົວເລືອກ ດາວໂຫຼດ ຂອງເມນູຈະເປີດໂປຣແກຣມດາວໂຫຼດພາຍນອກຂອງທ່ານແທນ</string>
@@ -175,7 +175,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_add">ເພີ່ມໃນລາຍການຫຼິ້ນ</string>
   <string name="morphe_music_downloads_playlist_added">ເພີ່ມໃນ %s ແລ້ວ</string>
   <string name="morphe_music_downloads_playlist_name_hint">ຊື່ລາຍການຫຼິ້ນ</string>
-  <string name="morphe_music_downloads_playlist_name_empty">ຊື່ລາຍການຫຼິ້ນບໍ່ສາມາດປະຫວ່າງໄດ້</string>
+  <string name="morphe_music_downloads_playlist_name_empty">ຊື່ລາຍການຫຼິ້ນຫ້າມວ່າງເປົ່າ</string>
   <string name="morphe_music_downloads_playlist_save_failed">ບໍ່ສາມາດບັນທຶກລາຍການຫຼິ້ນໄດ້</string>
   <string name="morphe_music_downloads_playlist_track_count">%s ເພງ</string>
   <string name="morphe_music_downloads_playlist_track_count_one">1 ເພງ</string>
@@ -193,7 +193,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_drag_track">ລາກເພື່ອຈັດລຳດັບໃໝ່</string>
   <string name="morphe_music_downloads_playlist_reorder_hint">%s • ລາກທີ່ປຸ່ມຈັດການເພື່ອຈັດລຳດັບໃໝ່</string>
   <string name="morphe_music_downloads_playlist_reorder_done">ສຳເລັດ</string>
-  <string name="morphe_music_downloads_notification_channel">ດາວໂຫລດສຽງ</string>
+  <string name="morphe_music_downloads_notification_channel">ດາວໂຫຼດສຽງ</string>
   <string name="morphe_music_downloads_playback_channel">ການຫຼິ້ນແບບອອຟລາຍ</string>
   <string name="morphe_music_downloads_unknown_track">ບໍ່ສາມາດລະບຸເພງທີ່ຈະດາວໂຫຼດໄດ້</string>
   <string name="morphe_music_downloads_already_running">ກຳລັງດາວໂຫຼດຢູ່</string>
@@ -203,12 +203,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_progress">ກຳລັງດາວໂຫຼດ %s%%</string>
   <string name="morphe_music_downloads_complete">ດາວໂຫຼດສຳເລັດແລ້ວ</string>
   <string name="morphe_music_downloads_failed">ດາວໂຫຼດຫຼົ້ມເຫຼວ</string>
-  <string name="morphe_music_downloads_playlist_download_title">ດາວໂຫຼດເພລລິສ</string>
-  <string name="morphe_music_downloads_playlist_download_listing">ກຳລັງລາຍຊື່ເພງ…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">ລາຍຊື່ %s ແລ້ວ…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">ບໍ່ສາມາດລາຍຊື່ເພງຂອງເພລລິສໄດ້</string>
+  <string name="morphe_music_downloads_playlist_download_title">ດາວໂຫຼດລາຍການເພງ</string>
+  <string name="morphe_music_downloads_playlist_download_listing">ກຳລັງດຶງລາຍຊື່ເພງ…</string>
+  <string name="morphe_music_downloads_playlist_download_listed">ໄດ້ລາຍຊື່ %s ແລ້ວ…</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">ບໍ່ສາມາດດຶງລາຍຊື່ເພງຂອງລາຍການເພງນີ້ໄດ້</string>
   <string name="morphe_music_downloads_playlist_download_all_saved">ດາວໂຫຼດແລ້ວ: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"ມີ %1$s ໃນເພລລິສນີ້, %2$s ຍັງບໍ່ທັນໄດ້ດາວໂຫຼດ.
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"ມີ %1$s ໃນລາຍການເພງນີ້, %2$s ຍັງບໍ່ທັນໄດ້ດາວໂຫຼດ.
 
 ພວກມັນຈະຖືກດາວໂຫຼດເທື່ອລະເພງ, ເຊິ່ງອາດຈະໃຊ້ເວລາດົນ ແລະ ຕ້ອງການພື້ນທີ່ຫວ່າງປະມານ %3$s"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">ດາວໂຫຼດ</string>
@@ -347,9 +347,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_track_tap_added_to_queue">ເພີ່ມລົງໃນຄິວແລ້ວ</string>
   <!-- layout.playlisttags.playlistTagsPatch -->
   <string name="morphe_music_playlist_tags_screen_title">ແທັກຂອງລາຍການເພງ</string>
-  <string name="morphe_music_playlist_tags_screen_summary">ຕິດແທັກລາຍການເພງ ແລະ ກັ່ນกรອງຄັງເພງດ້ວຍແທັກ</string>
+  <string name="morphe_music_playlist_tags_screen_summary">ຕິດແທັກລາຍການເພງ ແລະ ກັ່ນກອງຄັງເພງດ້ວຍແທັກ</string>
   <string name="morphe_music_playlist_tags_title">ເປີດໃຊ້ງານແທັກຂອງລາຍການເພງ</string>
-  <string name="morphe_music_playlist_tags_summary">ເພີ່ມລາຍການແທັກເຂົ້າໃນເມນູຂອງລາຍການເພງ, ແລະ ປຸ່ມກັ່ນกรອງແທັກ ຖັດຈາກປຸ່ມຈັດລຽງຂອງຄັງເພງ</string>
+  <string name="morphe_music_playlist_tags_summary">ເພີ່ມລາຍການແທັກເຂົ້າໃນເມນູຂອງລາຍການເພງ, ແລະ ປຸ່ມກັ່ນກອງແທັກ ຖັດຈາກປຸ່ມຈັດລຽງຂອງຄັງເພງ</string>
   <string name="morphe_music_playlist_tags_manage_title">ຈັດການແທັກຂອງລາຍການເພງ</string>
   <string name="morphe_music_playlist_tags_manage_summary">ສ້າງ, ປ່ຽນຊື່ ແລະ ລຶບແທັກ, ແລະ ຕິດແທັກໃຫ້ກັບລາຍການເພງທີ່ປະກົດໃນຄັງເພງຂອງທ່ານ</string>
   <!-- Title of the row added to the menu of a playlist. -->
@@ -368,7 +368,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_playlist_tags_playlist_count">%s ລາຍການເພງ</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_tag_exists">ມີແທັກຊື່ %s ຢູ່ແລ້ວ</string>
-  <string name="morphe_music_playlist_tags_filter_title">ກັ່ນกรອງດ້ວຍແທັກ</string>
+  <string name="morphe_music_playlist_tags_filter_title">ກັ່ນກອງດ້ວຍແທັກ</string>
   <string name="morphe_music_playlist_tags_filter_show_only">ສະແດງສະເພາະ</string>
   <string name="morphe_music_playlist_tags_filter_all">ທຸກລາຍການເພງ</string>
   <string name="morphe_music_playlist_tags_filter_visible">ແທັກທີ່ເຫັນໄດ້</string>
@@ -427,7 +427,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_flyout_menu_go_to_artist_title">ເຊື່ອງເມນູ \'ໄປທີ່ສິລະປິນ\'</string>
   <string name="morphe_music_hide_flyout_menu_go_to_episode_title">ເຊື່ອງເມນູ \'ໄປຫາຕອນ\'</string>
   <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">ເຊື່ອງເມນູ \'ໄປຫາພອດແຄສ\'</string>
-  <string name="morphe_music_hide_flyout_menu_help_title">ເຊື່ອງເມນູช่วยเหลือ</string>
+  <string name="morphe_music_hide_flyout_menu_help_title">ເຊື່ອງເມນູຊ່ວຍເຫຼືອ</string>
   <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">ເຊື່ອງເມນູ \'ໝາຍຕອນວ່າຫຼິ້ນແລ້ວ\'</string>
   <string name="morphe_music_hide_flyout_menu_not_interested_title">ເຊື່ອງເມນູ \'ບໍ່ສົນໃຈ\'</string>
   <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">ເຊື່ອງເມນູ \'ປັກໝຸດໄວ້ໃນໝາຍເລກດ່ວນ\'</string>
@@ -474,7 +474,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">ປ້ອງກັນບໍ່ໃຫ້ຕົວຫຼິ້ນຂະຫຍາຍເປັນແບບເຕັມຈໍໂດຍອັດຕະໂນມັດ ເມື່ອເລີ່ມຫຼິ້ນແທຣັກໃໝ່</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">ເປີດໃຊ້ງານການປັດເພື່ອປິດເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍ</string>
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">ອະນຸຍາດໃຫ້ປິດ miniplayer ໂດຍການປ້ອນລົງ</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">ອະນຸຍາດໃຫ້ປິດ miniplayer ໂດຍການປັດລົງ</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">ແຖບນຳທາງ</string>
   <string name="morphe_music_navigation_bar_screen_summary">ເລືອກປຸ່ມທີ່ຈະໃຫ້ປະກົດໃນແຖບນຳທາງດ້ານລຸ່ມ</string>
@@ -490,6 +490,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">ເຊື່ອງປຸ່ມອັບເກຣດ</string>
   <string name="morphe_music_hide_navigation_bar_title">ເຊື່ອງແຖບນຳທາງ</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ເຊື່ອງປ້າຍຊື່ປຸ່ມນຳທາງ</string>
+  <string name="morphe_music_navigation_bar_glass_title">ເປີດໃຊ້ແຖບນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_music_navigation_bar_glass_summary">ສະແດງແຖບການນຳທາງເປັນແຄັບຊູນໂປ່ງແສງ, ມົນ ແລະ ລອຍຕົວ</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">ຄວາມທຶບຂອງແກ້ວ</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">ປັບລະດັບຄວາມໂປ່ງໃສຂອງແຖບການນຳທາງແບບແກ້ວ (0 ແມ່ນໂປ່ງໃສ, 100 ແມ່ນທຶບ)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">ແກ້ວສີແຈ້ງ</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">ປ່ຽນສີແຖບການນຳທາງແບບແກ້ວເປັນສີຂາວແທນສີເຂັ້ມ ເພື່ອໃຫ້ແກ້ວເບິ່ງສີແຈ້ງ ແລະ ໃສຂຶ້ນ</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">ຂະໜາດແຖບການນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">ປັບຄວາມສູງ, ຄວາມກວ້າງ ແລະ ໄລຍະຫ່າງຂອງປຸ່ມຂອງແຖບການນຳທາງແບບແກ້ວ ພ້ອມກັບການ xem ຕົວຢ່າງ. ປຸ່ມທີ່ບໍ່ພໍກັບຄວາມກວ້າງຂອງໜ້າຈໍຈະຖືກເຊື່ອງໄວ້</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">ຄວາມສູງ</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">ຄວາມກວ້າງສູງສຸດ</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">ໄລຍະຫ່າງຂອງປຸ່ມ</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">ປຸ່ມທີ່ສະແດງ: %1$s ຈາກ %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">ໜ້າຫຼັກ</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">ຕົວຢ່າງ</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">ສຳຫຼວດ</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">ຄັງເພງ</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">ຍັງບໍ່ໄດ້ເຂົ້າສູ່ລະບົບ. ແຕະເພື່ອຕັ້ງຄ່າ</string>
   <string name="morphe_music_scrobbling_log_out">ອອກຈາກລະບົບ</string>
@@ -700,7 +717,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_section_title">ສະແດງແທັກສ່ວນ</string>
   <string name="morphe_music_lyrics_show_section_summary">ຕິດປ້າຍແທັກນ້ອຍໆໃຫ້ແຕ່ລະສ່ວນໃໝ່ຂອງເນື້ອເພງ ເຊັ່ນ: Verse ຫຼື Chorus</string>
   <string name="morphe_music_lyrics_show_copy_button_title">ສະແດງປຸ່ມຄັດລອກ</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">ແຕະເພື່ອຄັດລອກເນື້ອເພງຕົ້ນສະບັບເປັນຂໍ້ຄວາມທຳມະດາ; ກົດຄ້າງໄວ້ເພື່ອບັນທຶກໄຟລ໌ແຫຼ່ງເນື້ອເພງດິບລົງໃນ Downloads</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">ແຕະເພື່ອຄັດລອກເນື້ອເພງຕົ້ນສະບັບເປັນຂໍ້ຄວາມທຳມະດາ; ກົດຄ້າງໄວ້ເພື່ອບັນທຶກໄຟລ໌ແຫຼ່ງເນື້ອເພງດິບ ແລະ ໄຟລ໌ TTML ທີ່ຖືກປ່ຽນແປງໄປຍັງ Downloads</string>
   <string name="morphe_music_lyrics_show_translate_button_title">ສະແດງປຸ່ມແປ</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">ແຕະເພື່ອສະຫຼັບການແປ; ກົດຄ້າງໄວ້ເພື່ອໃຫ້ສະແດງສະເພາະການແປ. ໃຊ້ຜູ້ໃຫ້ບໍລິການແປພາສາທີ່ເປີດໃຊ້ງານຕາມລໍາດັບທີ່ລະບຸໄວ້</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">ສະແດງປຸ່ມ Romanize ຫຼື Transliterate</string>
@@ -715,8 +732,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">ພາສາຢີ່ປຸ່ນ (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">ຕົວອັກສອນຈີນ ແລະ ກວາງຕຸ້ງ (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">ຄຳສັບພາສາຈີນ (pinyin-pro, ~17 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_cldr">ການທັບສັບພາສາກຣີກ, ສະລາວິກ ຊີຣິລລິກ (ລວມທັງ ຣັດເຊຍ, ຢູເຄຣນ, ບູນກາຣີ, ເຊີບີບີອາ, ເບລາຣູສ, ມາເຊໂດເນຍ), 喬ージຍາ, ອາກເມນຍາ, ເຮບຣູ, ອາຣັບ, ອຳဟာຣິກ ແລະ ຊີຣີອັກ (CLDR, ~0.5 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_building">ກຳລັງອ່ານ %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">ການທັບສັບພາສາກຣີກ, ສະລາວິກ ຊີຣິລລິກ (ລວມທັງ ຣັດເຊຍ, ຢູເຄຣນ, ບູນກາຣີ, ເຊີບີບີອາ, ເບລາຣູສ, ມາເຊໂດເນຍ), ຈໍເຈຍ, ອາກເມນຍາ, ເຮບຣູ, ອາຣັບ, ອາມຮາຣິກ ແລະ ຊີຣີແອກ (CLDR, ~0.5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_building">ກໍາລັງອ່ານ %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">ສະແດງປຸ່ມ Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">ແຕະເພື່ອປ່ຽນໄປຫາເນື້ອເພງອື່ນທີ່ເປັນໄປໄດ້; ແຕະຄ້າງໄວ້ເພື່ອຄົ້ນຫາເນື້ອເພງຕາມຊື່ເພງ ແລະ ສິລະປິນ</string>
   <string name="morphe_music_lyrics_search_dialog_title">ຄົ້ນຫາເນື້ອເພງ</string>
@@ -725,6 +742,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_empty">ປ້ອນຊື່ເພງ ແລະ ສິລະປິນ</string>
   <string name="morphe_music_lyrics_search_no_providers">ບໍ່ມີຜູ້ໃຫ້ບໍລິການທີ່ເປີດໃຊ້ງານໃດສາມາດຄົ້ນຫາເພງອື່ນໄດ້</string>
   <string name="morphe_music_lyrics_saved">ບັນທຶກແລ້ວ</string>
+  <string name="morphe_music_lyrics_written_by">ຂຽນໂດຍ: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">ເນັ້ນຄຳສັບ ຫຼື ພະຍາງທີ່ຊິງຄ໌ແລ້ວ</string>
   <string name="morphe_music_lyrics_word_sync_summary">ໃຫ້ບຸລິມະສິດແກ່ເນື້ອເພງແບບຄຳຕໍ່ຄຳເມື່ອມີໃຫ້. ເມື່ອເນື້ອເພງມີການກຳນົດເວລາຂອງຄຳສັບ, ມັນຈະເນັ້ນແຕ່ລະຄຳ ຫຼື ພະຍາງໃຫ້ຕົງກັບຈັງຫວະເພງ</string>
   <string name="morphe_music_lyrics_line_scale_title">ຫຍໍ້ແຖວທີ່ບໍ່ໄດ້ໃຊ້ງານ</string>
@@ -740,7 +758,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_title">ເຮັດໃຫ້ພື້ນຫຼັງແບບໄດນາມິກເຄື່ອນໄຫວ</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">ເຄື່ອນໄຫວພື້ນຫຼັງໃນຂະນະທີ່ກຳລັງຫຼິ້ນ, ແລະ ໃຫ້ມັນເຕັ້ນຕາມຈັງຫວະເພງ ຖ້າ YouTube Music ໄດ້ຮັບອະນຸຍາດໃຫ້ໃຊ້ໄມໂຄຣໂຟນ. ປິດເພື່ອໃຊ້ພື້ນຫຼັງແບບນິ່ງ ເຊິ່ງຈະຊ່ວຍປະຢັດແບັດເຕີຣີຫຼາຍຂຶ້ນ</string>
   <string name="morphe_music_lyrics_mediasession_title">ສະແດງເນື້ອເພງ MediaSession ຢູ່ໃນໜ້າຈໍລັອກ</string>
-  <string name="morphe_music_lyrics_mediasession_summary">ສະແດງແຖວປັດຈຸບັນໃນໜ້າຈໍລັອກ, Android Auto ແລະ Bluetooth. ຕ້ອງໃຊ້ Android 11 ຫຼື ໃໝ່ກວ່ານັ້ນ</string>
+  <string name="morphe_music_lyrics_mediasession_summary">ສະແດງແຖວປັດຈຸບັນໃນໜ້າຈໍລັອກ, Android Auto ແລະ Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">ສະແດງເນື້ອເພງໃນ Miniplayer</string>
   <string name="morphe_music_lyrics_miniplayer_summary">ສະແດງແຖວປັດຈຸບັນໃນເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍ, ໂດຍຍ້າຍຊື່ເພງໄປໄວ້ທີ່ຄຳບັນຍາຍຍ່ອຍ</string>
   <string name="morphe_music_lyrics_mini_track_format_title">ຮູບແບບຊື່ເພງ/ສິລະປິນ</string>
@@ -777,6 +795,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">ປ່ຽນຕົວອັກສອນທຳອິດຂອງແຕ່ລະແຖວເນື້ອເພງໃຫ້ເປັນຕົວພິມໃຫຍ່</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">ລຶບເຄື່ອງໝາຍວັກຕອນທ້າຍປະໂຫຍກ</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">ລຶບຈຸດ, ຈຸດຈຸດ, ຈຸດສອງຈຸດ ແລະ ຈຸດຈຸດເຄິ່ງ ທີ່ຢູ່ທ້າຍແຖວເນື້ອເພງ. ສ່ວນເຄື່ອງໝາຍຄຳຖາມ, ເຄື່ອງໝາຍຕົກໃຈ, ຈຸດສາມຈຸດ, ເຄື່ອງໝາຍຄຳເວົ້າ ແລະ ວົງເລັບ ຈະຍັງຄົງໄວ້</string>
+  <string name="morphe_music_lyrics_han_form_title">ການປ່ຽນຮູບແບບຕົວອັກສອນຈີນ</string>
+  <string name="morphe_music_lyrics_han_form_summary">ເມື່ອເປີດໃຊ້, ຈະປະຕິບັດຕາມພາສາເປົ້າໝາຍການແປຂອງທ່ານ ເພື່ອປ່ຽນເນື້ອເພງລະຫວ່າງຕົວອັກສອນຈີນແບບປະລິມັດ ແລະ ແບບດັ້ງເດີມ</string>
   <string name="morphe_music_lyrics_text_size_title">ຂະໜາດຕົວອັກສອນ</string>
   <string name="morphe_music_lyrics_text_size_summary">ຂະໜາດຂອງຕົວອັກສອນເນື້ອເພງ</string>
   <string name="morphe_music_lyrics_offset_ms_title">ການຊົດເຊີຍເວລາທົ່ວໂລກ</string>
@@ -790,8 +810,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_google">ແປໂດຍ Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">ຖອດສຽງເປັນອັກສອນໂຣມັນໂດຍ Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">ແປໂດຍ %s</string>
-  <string name="morphe_music_lyrics_romanized_by_ai">ທຳນອງອັກສອນໂລມັນໂດຍ %s</string>
-  <string name="morphe_music_lyrics_romanized_by_local">ຖອດລະຫັດເປັນອັກສອນໂຣມັນໂດຍ %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">ຖອດສຽງເປັນອັກສອນໂຣມັນໂດຍ %s</string>
+  <string name="morphe_music_lyrics_romanized_by_local">ຖອດສຽງເປັນອັກສອນໂຣມັນໂດຍ %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (ພ້ອມກັບ %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">ຖອດເປັນອັກສອນໂຣມັນໂດຍ Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">ແປແລ້ວ</string>
@@ -807,8 +828,10 @@ Second \"item\" text"</string>
   <string name="morphe_romanize_language_DEFAULT">ອັດຕະໂນມັດ</string>
   <string name="morphe_music_lyrics_romanizing">ກຳລັງຖອດສຽງເປັນອັກສອນໂຣມັນ…</string>
   <string name="morphe_music_lyrics_romanize_failed">ບໍ່ສາມາດຖອດສຽງເນື້ອເພງເປັນອັກສອນໂຣມັນໄດ້</string>
+  <string name="morphe_music_lyrics_romanize_language_none">ບໍ່ມີ</string>
+  <string name="morphe_music_lyrics_ruby_language_title">ເປົ້າໝາຍ Ruby</string>
   <string name="morphe_music_lyrics_translate_only">ແປເທົ່ານັ້ນ</string>
-  <string name="morphe_music_lyrics_romanize_only">ທຳນອງອັກສອນໂຣມັນເທົ່ານັ້ນ</string>
+  <string name="morphe_music_lyrics_romanize_only">ຖອດສຽງເປັນອັກສອນໂຣມັນເທົ່ານັ້ນ</string>
   <string name="morphe_music_lyrics_dual_only">ໂໝດຄູ່</string>
   <string name="morphe_music_lyrics_copied">ຄັດລອກໄປທີ່ຄລິບບອດແລ້ວ</string>
   <string name="morphe_music_lyrics_refreshing">ກຳລັງຣີເຟຣຊ</string>
@@ -837,26 +860,19 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">ເຊື່ອງແຖວໃຫ້ເຄຣດິດ</string>
   <string name="morphe_music_lyrics_hide_info_summary">ເຊື່ອງແຖວໃຫ້ເຄຣດິດທີ່ສະແດງຢູ່ລຸ່ມເນື້ອເພງ</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">ສະຫຼັບການແປ ແລະ ການຖອດສຽງ</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">ສະຫຼັບລຳດັບການສະແດງຂອງຄຳແປ ແລະ ການຖອດສຽງໂຣມັນ ຢູ່ລຸ່ມເນື້ອເພງ</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ຍ້າຍການແປໄປໄວ້ເໜືອນເນື້ອເພງ; ການອ່ານ ແລະ ການທັບສັບຈະຍັງຄົງຢູ່ດ້ານລຸ່ມ</string>
   <string name="morphe_music_lyrics_force_center_title">ໃຫ້ເນື້ອເພງຢູ່ເຄິ່ງກາງສະເໝີ</string>
-  <string name="morphe_music_lyrics_force_center_summary">ເປີດ ຈະວາງທຸກແຖວໄວ້ເຄິ່ງກາງ ແລະ ບໍ່ສົນໃຈການຈັດວາງຂອງແຫຼ່ງທີ່ມາ, ລວມທັງດ້ານຂອງ duet; ပິດ ຈະຮັກສາການຈັດວາງຕາມທີ່ເນື້ອເພງກຳນົດໄວ້</string>
+  <string name="morphe_music_lyrics_force_center_summary">ເປີດ ຈະວາງທຸກແຖວໄວ້ເຄິ່ງກາງ ແລະ ບໍ່ສົນໃຈການຈັດວາງຂອງແຫຼ່ງທີ່ມາ, ລວມທັງດ້ານຂອງ duet; ປິດ ຈະຮັກສາການຈັດວາງຕາມທີ່ເນື້ອເພງກຳນົດໄວ້</string>
   <string name="morphe_music_lyrics_providers_keep_one">ຕ້ອງມີຜູ້ໃຫ້ບໍລິການຢ່າງໜ້ອຍໜຶ່ງລາຍທີ່ເປີດໄວ້</string>
   <string name="morphe_music_lyrics_translation_provider_title">ການແປ</string>
   <string name="morphe_music_lyrics_romanization_provider_title">ການຖອດສຽງເປັນອັກສອນໂຣມັນ ຫຼື ການທັບສັບ</string>
   <string name="morphe_music_lyrics_romanization_provider_local">ວັດຈະນານຸກົມອອຟລາຍ</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">ລາຍການຄຳສັບ Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">ວັດຈະນານຸກົມອອຟລາຍ</string>
-  <string name="morphe_music_lyrics_ruby_style_title">ສະຄຣິບ Ruby</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">ປຸ່ມສະແດງ Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">ແຕະເພື່ອປ່ຽນການສະແດງການອ່ານ ruby ເທິງເນື້ອເພງ; ກົດຄ້າງໄວ້ເພື່ອປ່ຽນລະຫວ່າງ hiragana ແລະ katakana. ໃຊ້ຜູ້ໃຫ້ບໍລິການ ruby ທີ່ເປີດໃຊ້ງານຕາມລຳດັບທີ່ລະບຸໄວ້</string>
-  <string name="morphe_music_lyrics_ruby_generating">ກຳລັງສ້າງ ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU Transliterator</string>
   <string name="morphe_music_lyrics_use_ai_section_title">ກວດຫາພາກສ່ວນດ້ວຍ AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">ໃຊ້ສະເພາະໃນກໍລະນີທີ່ຜູ້ໃຫ້ບໍລິການບໍ່ໄດ້ສົ່ງປ້າຍກຳກັບພາກສ່ວນ ເຊັ່ນ Chorus ຫຼື Verse, ເຊິ່ງໂມເດລທີ່ເຂົ້າກັນໄດ້ກັບ OpenAI ຂອງທ່ານຈະກວດຫາໃຫ້. ການແກ້ໄຂແຖວນີ້ຍັງຈະເປີດ prompt ຂອງມັນນຳອີກ</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ຂອງ API endpoint (ຕົວຢ່າງ https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">ແມັອບແບບພຣອມພ໌</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_title">ແມ່ແບບພຣອມພ໌</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ຕົວໝາຍບ່ອນວ່າງ: {task}, {language}, {title}, {artist}, {count}, {lines}. ຕົວທີ່ບໍ່ຮູ້ຈັກຈະຖືກປະໄວ້ຕາມທີ່ພິມ</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">ບັນທຶກພຣອມພ໌ແລ້ວ</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">ບັນທຶກ Prompt ແລ້ວ, ແຕ່ endpoint ຂອງ AI ຍັງບໍ່ທັນສາມາດນຳໃຊ້ໄດ້. ກະລຸນາຕັ້ງຄ່າໃນ AI Settings ກ່ອນ</string>
@@ -875,6 +891,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">ເລືອກໂມເດລ</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">ດຶງຂໍ້ມູນໂມເດລບໍ່ສຳເລັດ. ກະລຸນາກວດສອບ API key ຫຼື ການເຊື່ອມຕໍ່.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">ຄຳສັ່ງ (Prompt)</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby Prompt (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">ໂມເດລ</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">ການຕັ້ງຄ່າລ່ວງໜ້າຂອງບໍລິການ</string>

@@ -81,7 +81,7 @@ For å oversette nye språk eller forbedre de eksisterende oversettelsene, besø
   <string name="morphe_settings_about_links_dev_body">Denne versjonen er en forhåndsutgivelse, og du kan oppleve uventede problemer</string>
   <string name="morphe_settings_about_links_header">Offisielle lenker</string>
   <string name="morphe_settings_about_links_website">Nettsted</string>
-  <string name="morphe_settings_about_links_donate">Doner</string>
+  <string name="morphe_settings_about_links_donate">Støtt</string>
   <string name="morphe_settings_about_links_translations">Oversettelser</string>
   <string name="morphe_settings_about_links_credits">Kreditter</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Oppdatert</string>
@@ -97,9 +97,10 @@ For å oversette nye språk eller forbedre de eksisterende oversettelsene, besø
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Feilsøking</string>
   <string name="morphe_debug_screen_summary">Konfigurer avanserte utvikleralternativer og diagnostikklogger</string>
-  <string name="morphe_debug_title">Aktiver feilsøkingslogging</string>
-  <string name="morphe_debug_stacktrace_title">Feilsøkingslogg stakkspor</string>
-  <string name="morphe_debug_stacktrace_summary">Inkluderer stakksporing i feilsøkingslogger for å hjelpe med å identifisere feil</string>
+  <string name="morphe_debug_level_title">Feilsøkingslogging</string>
+  <string name="morphe_debug_level_entry_disabled">Deaktivert</string>
+  <string name="morphe_debug_level_entry_debug">Feilsøking</string>
+  <string name="morphe_debug_level_entry_verbose">Detaljert</string>
   <string name="morphe_debug_toast_on_error_title">Vis toast ved Morphe-feil</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Å deaktivere feil-varsler skjuler alle Morphe-feilvarsler.
 
@@ -229,6 +230,19 @@ Hvis batterioptimaliseringer ikke endres, kan du oppleve:
 Hvis du vil ha den mest problemfrie opplevelsen, må du &lt;b&gt;avinstallere&lt;/b&gt; denne og patche den anbefalte appversjonen av ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jeg vil ha eksperimentell</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jeg vil ha stabil</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Vis varsel i appen for oppdatering av patcher</string>
+  <string name="morphe_patches_update_notice_entry_off">Av</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabile utgivelser</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabile og dev-utgivelser</string>
+  <string name="morphe_patches_update_notice_dialog_title">Nye patcher tilgjengelig</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (nåværende: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nye funksjoner</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Feilrettinger</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Andre endringer</string>
+  <string name="morphe_patches_update_notice_dialog_more">…og %s flere</string>
+  <string name="morphe_patches_update_notice_dialog_update">Oppdater</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Avvis</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Krasjlogg lagret i brukerdokumenter: %s</string>
   <string name="morphe_crash_log_saved">Krasjlogg lagret: %s</string>

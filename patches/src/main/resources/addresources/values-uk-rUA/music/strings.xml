@@ -140,7 +140,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_sort_title">Сортувати за назвою</string>
   <string name="morphe_music_downloads_sort_size">Сортувати  за розміром</string>
   <string name="morphe_music_downloads_delete_all">Видалити всі завантаження</string>
-  <string name="morphe_music_downloads_delete_all_title">Видалити всi завантаження?</string>
+  <string name="morphe_music_downloads_delete_all_title">Видалити всі завантаження?</string>
   <string name="morphe_music_downloads_delete_all_message">Усі завантажені треки буде видалено з цього пристрою</string>
   <string name="morphe_music_downloads_all_deleted">Завантаження видалено</string>
   <string name="morphe_music_downloads_nothing_found">Нічого не знайдено</string>
@@ -490,6 +490,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Приховати кнопку \"Підписка\"</string>
   <string name="morphe_music_hide_navigation_bar_title">Приховати панель навігації</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Приховати підписи кнопок навігації</string>
+  <string name="morphe_music_navigation_bar_glass_title">Увімкнути скляну панель навігації</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Показує панель навігації як плаваючу закруглену напівпрозору капсулу</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Непрозорість скла</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Налаштовує рівень прозорості скляної панелі навігації (0 - прозора, 100 - непрозора)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Світле скло</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Робить скляну панель навігації білою замість темної, щоб скло було світлішим і прозорішим</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Розмір скляної панелі навігації</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Налаштуйте висоту, ширину та відступ між кнопками скляної панелі навігації з попереднім переглядом. Кнопки, які не вміщуються в ширину екрана, приховуються</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Висота</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Максимальна ширина</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Відступ між кнопками</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Показано кнопок: %1$s із %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Головна</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Семпли</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Навігація</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Бібліотека</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Не авторизовано. Натисніть, щоб налаштувати</string>
   <string name="morphe_music_scrobbling_log_out">Вийти</string>
@@ -662,7 +679,7 @@ Second \"item\" text"</string>
 1. Увійдіть на open.spotify.com
 2. Відкрийте DevTools → Application → Cookies → open.spotify.com
 3. Скопіюйте значення \"sp_dc\""</string>
-  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc збережено.</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc збережено</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc очищено</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: недійсний sp_dc - перевірте і спробуйте ще раз</string>
   <string name="morphe_music_apple_token_optional_hint">Токен Apple Music необов\'язковий. Без нього як резервний варіант буде використано Lyrically</string>
@@ -700,7 +717,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_section_title">Показувати теги розділів</string>
   <string name="morphe_music_lyrics_show_section_summary">Позначати кожен новий розділ тексту пісні невеликим тегом, наприклад \"Куплет\" або \"Приспів\"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Показувати кнопку \"Копіювати\"</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Натисніть, щоб скопіювати оригінальний текст пісні як звичайний текст; натисніть і утримуйте, щоб зберегти файл вихідного тексту пісні у \"Завантаження\"</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Натисніть, щоб скопіювати оригінальний текст пісні як звичайний текст; натисніть і утримуйте, щоб зберегти вихідний файл тексту пісні та конвертований файл TTML у теку \"Завантаження\"</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Показувати кнопку \"Перекласти\"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Натисніть, щоб перемкнути переклад; натисніть і утримуйте, щоб показувати лише переклад. Використовує увімкнених постачальників перекладу в порядку, вказаному у списку</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Показувати кнопку романізації або транслітерації</string>
@@ -725,6 +742,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_empty">Введіть назву пісні та виконавця</string>
   <string name="morphe_music_lyrics_search_no_providers">Жоден з увімкнених постачальників не може шукати інші пісні</string>
   <string name="morphe_music_lyrics_saved">Збережено</string>
+  <string name="morphe_music_lyrics_written_by">Автор: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Підсвічувати синхронізовані слова або склади</string>
   <string name="morphe_music_lyrics_word_sync_summary">Надавати пріоритет тексту пісні по словах, коли доступно. Якщо текст пісні містить синхронізацію по словах, підсвічує кожне слово або склад у такт музиці</string>
   <string name="morphe_music_lyrics_line_scale_title">Зменшувати неактивні рядки</string>
@@ -740,7 +758,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Анімувати динамічний фон</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Рухати фон під час відтворення та пульсувати в такт музиці, якщо YouTube Music має дозвіл на мікрофон. Вимкніть для статичного фону, який менше споживає заряд батареї</string>
   <string name="morphe_music_lyrics_mediasession_title">Показувати текст пісні MediaSession на екрані блокування</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Показує поточний рядок на екрані блокування, в Android Auto та через Bluetooth. Потрібен Android 11 або новіший</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Показує поточний рядок на екрані блокування, в Android Auto та через Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">Показувати текст пісні в мініплеєрі</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Показує поточний рядок у мініплеєрі, а трек переноситься в підзаголовок</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Формат назви пісні/виконавця</string>
@@ -777,6 +795,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">Робить першу літеру кожного рядка тексту пісні великою</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Прибирати кінцеву пунктуацію</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Прибирає крапки, коми, двокрапки та крапки з комою в кінці рядків тексту пісні. Знаки питання, знаки оклику, трикрапки, лапки та дужки залишаються</string>
+  <string name="morphe_music_lyrics_han_form_title">Перетворення китайського письма</string>
+  <string name="morphe_music_lyrics_han_form_summary">Якщо ввімкнено, відповідно до цільової мови перекладу перетворює текст пісні між спрощеним і традиційним письмом</string>
   <string name="morphe_music_lyrics_text_size_title">Розмір тексту</string>
   <string name="morphe_music_lyrics_text_size_summary">Розмір тексту пісні</string>
   <string name="morphe_music_lyrics_offset_ms_title">Глобальний зсув часу</string>
@@ -792,6 +812,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_ai">Перекладено %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Романізовано %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Романізовано %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (з %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Романізовано Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Перекладено</string>
@@ -807,6 +828,8 @@ Second \"item\" text"</string>
   <string name="morphe_romanize_language_DEFAULT">Автоматична</string>
   <string name="morphe_music_lyrics_romanizing">Романізується…</string>
   <string name="morphe_music_lyrics_romanize_failed">Не вдалося романізувати текст пісні</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Немає</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Цільова мова Ruby</string>
   <string name="morphe_music_lyrics_translate_only">Лише переклад</string>
   <string name="morphe_music_lyrics_romanize_only">Лише романізовано</string>
   <string name="morphe_music_lyrics_dual_only">Подвійний режим</string>
@@ -818,7 +841,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">Ключ QuickLRC збережено. Скористайтеся кнопкою вирівнювання в діалозі пошуку тексту пісні або запитом на панелі, коли для треку немає тексту</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">Ключ API QuickLRC збережено</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC не прийняв цей ключ</string>
-  <string name="morphe_music_lyrics_transcribe_key_cleared">Ключ API QuickLRTC очищено</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">Ключ API QuickLRC очищено</string>
   <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC додає таймінги до текстів, у яких їх немає, або транскрибує їх із треку, витрачаючи кредити. Якщо ключ вказано, для треків без тексту пропонується транскрипція, а в діалозі пошуку з\'являється кнопка вирівнювання</string>
   <string name="morphe_music_lyrics_transcribe_align">Запросити вирівнювання QuickLRC</string>
   <string name="morphe_music_lyrics_transcribe_aligning">Вирівнювання</string>
@@ -837,7 +860,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">Приховати рядок з інформацією про авторів</string>
   <string name="morphe_music_lyrics_hide_info_summary">Приховати рядок з інформацією про авторів, що показується під текстом пісні</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Поміняти місцями переклад і романізацію</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Змінює порядок відображення перекладу та романізації під текстом пісні</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Переносить переклад над текст пісні; читання та романізація залишаються під ним</string>
   <string name="morphe_music_lyrics_force_center_title">Завжди центрувати текст пісні</string>
   <string name="morphe_music_lyrics_force_center_summary">Увімкнено: кожен рядок розташовується посередині, а вирівнювання з джерела ігнорується, зокрема сторони дуету; вимкнено: зберігається вирівнювання, яке задає текст пісні</string>
   <string name="morphe_music_lyrics_providers_keep_one">Принаймні один постачальник має залишатися увімкненим</string>
@@ -845,14 +868,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Романізація або транслітерація</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Офлайн-словник</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Список слів Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Офлайн-словник</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Скрипт Ruby</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Хірагана (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Катакана (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Показувати кнопку Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Натисніть, щоб перемкнути читання ruby над текстом пісні; натисніть і утримуйте, щоб перемикатися між хіраганою та катаканою. Використовує увімкнених постачальників ruby в порядку, вказаному у списку</string>
-  <string name="morphe_music_lyrics_ruby_generating">Створення ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU-транслітератор</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Визначати розділи за допомогою ШІ</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Використовується лише тоді, коли постачальник не надає позначок розділів, таких як \"Приспів\" або \"Куплет\", які тоді визначає ваша модель, сумісна з OpenAI. Редагування цього рядка також відкриває його запит</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-адреса кінцевої точки API (наприклад, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +891,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Виберіть модель</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Не вдалося отримати моделі. Перевірте ключ API або з\'єднання</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Запит</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Запит Ruby (кана)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Модель</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Базова URL-адреса</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Шаблони сервісів</string>

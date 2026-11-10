@@ -116,7 +116,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Типовий клієнт</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR з входом</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Ви не ввійшли в Android VR. Натисніть тут, щоб увійти</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR потребує окремого входу. Натисніть тут, щоб продовжити</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Наразі ви ввійшли в Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Щоб використовувати цю функцію, змініть \"Типовий клієнт\" на Android VR</string>
@@ -208,13 +208,15 @@ Second \"item\" text"</string>
   <string name="morphe_replace_links_with_shortener_title">Змінити посилання для поширення на youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Примусово використовує скорочений формат URL youtu.be для відео</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Налагоджувальний журнал протоколу буфера</string>
-  <string name="morphe_debug_protobuffer_summary">Додає додаткову інформацію в журнал для розробників для ідентифікації компонентів застосунку</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Увімкнення цього налаштування додасть до журналу додаткові дані макета, включно з текстом на екрані для деяких компонентів інтерфейсу.
+  <string name="morphe_debug_litho_title">Журнал Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Вимкнена</string>
+  <string name="morphe_debug_litho_entry_path">Шлях</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Шлях і буфер</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Журналювання Litho реєструє компоненти макета програми, включно з текстом на екрані для деяких компонентів інтерфейсу.
 
 Це може допомогти визначити компоненти при створенні власних фільтрів.
 
-Однак увімкнення цього також додасть до журналу деякі дані користувача, наприклад вашу IP-адресу"</string>
+Однак це також призведе до реєстрації деяких даних користувача, наприклад вашої IP-адреси"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Власний фільтр</string>
   <string name="morphe_custom_filter_screen_summary">Налаштуйте власні фільтри для приховування будь-яких елементів</string>

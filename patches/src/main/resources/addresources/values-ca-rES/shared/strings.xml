@@ -18,13 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">Configuració</string>
-  <string name="morphe_settings_confirm_user_dialog_title">Està segur que vols procedir?</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Segur que vols procedir?</string>
   <string name="morphe_settings_save">Desar</string>
   <string name="morphe_settings_reset">Restaurar</string>
   <string name="morphe_settings_reset_color">Restaurar color</string>
   <string name="morphe_settings_color_invalid">Color invàlid</string>
   <string name="morphe_settings_restart_title">Cal reiniciar</string>
-  <string name="morphe_settings_restart_dialog_message">Reinicia l\'aplicació perquè aquest canvi surti ef {ect}</string>
+  <string name="morphe_settings_restart_dialog_message">Reinicia l\'aplicació perquè aquest canvi tingui efecte</string>
   <string name="morphe_settings_restart">Reiniciar</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importar</string>
@@ -41,16 +41,16 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_remove_message">Vols eliminar-ho de l\'historial de cerques?</string>
   <string name="morphe_settings_search_remove">Elimina de l\'historial de cerca</string>
   <string name="morphe_settings_search_clear_history">Netejar l\'historial de cerques</string>
-  <string name="morphe_settings_search_clear_history_message">Està segur que vol netejar tot l\'historial de cerques?</string>
+  <string name="morphe_settings_search_clear_history_message">Segur que vols netejar tot l\'historial de cerques?</string>
   <string name="morphe_settings_search_tips_title">Consells de cerca</string>
   <string name="morphe_settings_search_tips_summary">"• Toqueu una ruta per navegar-hi
 • Mantingueu premut un ajust per navegar-hi
 • Premeu Enter per desar una consulta de cerca a l'historial
 • La cerca ignora les majúscules i la puntuació
-• Els ajusts pare apareixen per sobre dels ajusts fills deshabilitats"</string>
-  <string name="morphe_settings_search_empty_history_title">L\'historial de cercas està buit</string>
-  <string name="morphe_settings_search_empty_history_summary">Per desar l\'historial de cercas, escriviu una consulta de cerca i premeu Enter</string>
-  <string name="morphe_settings_search_history_title">Mostrar l\'historial de cercas d\'ajusts</string>
+• Els ajusts pare apareixen per sobre dels ajusts fills desactivats"</string>
+  <string name="morphe_settings_search_empty_history_title">L\'historial de cerques està buit</string>
+  <string name="morphe_settings_search_empty_history_summary">Per desar l\'historial de cerques, escriviu una consulta de cerca i premeu Enter</string>
+  <string name="morphe_settings_search_history_title">Mostrar l\'historial de cerques d\'ajusts</string>
   <string name="morphe_settings_name_title">Nom de la configuració de Morphe</string>
   <string name="morphe_settings_name_default_item">Per defecte</string>
   <string name="morphe_settings_name_entry_2">Extras</string>
@@ -78,7 +78,7 @@ Per traduir nous idiomes o millorar les traduccions existents, visita morphe.sof
   <string name="morphe_settings_about_links_body_version_current">Estàs utilitzant l\'última versió de Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Estàs utilitzant la versió &lt;i&gt;%1$s&lt;/i&gt; de Morphe Patches&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualització disponible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Per actualitzar els teus retalls, utilitza Morphe per tornar a retallar aquesta aplicació</string>
   <string name="morphe_settings_about_links_dev_header">Nota</string>
-  <string name="morphe_settings_about_links_dev_body">Aquesta versió és una versió preliminar i és possible que experiencieu problemes inesperats</string>
+  <string name="morphe_settings_about_links_dev_body">Aquesta versió és una versió preliminar i és possible que experimenteu problemes inesperats</string>
   <string name="morphe_settings_about_links_header">Enllaços oficials</string>
   <string name="morphe_settings_about_links_website">Lloc web</string>
   <string name="morphe_settings_about_links_donate">Donació</string>
@@ -97,9 +97,10 @@ Per traduir nous idiomes o millorar les traduccions existents, visita morphe.sof
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuració</string>
   <string name="morphe_debug_screen_summary">Configureu les opcions avançades de desenvolupador i els registres de diagnòstic</string>
-  <string name="morphe_debug_title">Habiliteu el registre de depuració</string>
-  <string name="morphe_debug_stacktrace_title">Seguiment de la pila del registre de depuració</string>
-  <string name="morphe_debug_stacktrace_summary">Inclou rastres de la pila als registres de depuració per ajudar a identificar errors</string>
+  <string name="morphe_debug_level_title">Registre de depuració</string>
+  <string name="morphe_debug_level_entry_disabled">Deshabilitat</string>
+  <string name="morphe_debug_level_entry_debug">Depuració</string>
+  <string name="morphe_debug_level_entry_verbose">Detallat</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar notificació en cas d\'error de Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar les notificacions d'error oculta totes les notificacions d'error de Morphe.
 
@@ -109,13 +110,13 @@ No rebràs cap notificació d'esdeveniments inesperats"</string>
   <string name="morphe_debug_export_logs_success">Registres de depuració exportats correctament</string>
   <string name="morphe_debug_export_logs_failed">Error en exportar els registres de depuració</string>
   <string name="morphe_debug_logs_search_hint">Cerca als registres de depuració…</string>
-  <string name="morphe_debug_export_logs_clear">Buida</string>
+  <string name="morphe_debug_export_logs_clear">Esborra</string>
   <string name="morphe_debug_logs_disabled">El registre de depuració està desactivat</string>
   <string name="morphe_debug_logs_none_found">No s\'han trobat registres de depuració</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Registres de depuració copiats</string>
   <string name="morphe_debug_logs_failed_to_export">Error en exportar els registres de depuració: %s</string>
   <string name="morphe_debug_logs_clear_toast">Registres de depuració eliminats</string>
-  <string name="morphe_debug_feature_flags_manager_title">Gestor de banderes de funcions</string>
+  <string name="morphe_debug_feature_flags_manager_title">Gestor d\'indicadors de funcions</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gestiona els indicadors de funcions booleanes</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Cerca indicadors de funcions…</string>
   <!-- Keep short, four of these are shown in one row. -->
@@ -135,14 +136,14 @@ No rebràs cap notificació d'esdeveniments inesperats"</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Forçar activació</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Bloquejar</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Eliminar</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Indicadors de funcions guardats</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Indicadors de funcions desats</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Indicadors de funcions restableixits</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Indicadors de funcions copiats al porta papers</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Indicadors de funcions copiats al portapapers</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicia l\'aplicació per utilitzar aquest ajust</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Exportar i importar</string>
   <string name="morphe_debug_feature_flags_manager_import_success">S\'han importat %s indicadors de funcionalitat</string>
   <string name="morphe_debug_feature_flags_manager_import_failed">No s\'han trobat indicadors de funcionalitat</string>
-  <string name="morphe_debug_feature_flags_manager_export_file_success">Indícadors de funcions exportats correctament</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Indicadors de funcions exportats correctament</string>
   <string name="morphe_debug_feature_flags_manager_export_file_failed">Error en exportar els indicadors de funcions</string>
   <string name="morphe_debug_feature_flags_manager_import_file_success">Indicadors de funcions carregats, toca Desa per aplicar</string>
   <string name="morphe_debug_feature_flags_manager_import_file_failed">S\'ha produït un error en llegir el fitxer</string>
@@ -156,9 +157,9 @@ Reproduï el comportament una vegada abans de començar; si no, els indicadors q
   <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"No hi ha indicadors de funcions per buscar.
 
 Només s'hi poden utilitzar els indicadors que l'aplicació ha detectat i que actualment no estan forçats a l'estat activat"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_status">"Pass %1$s
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Pas %1$s
 
-Queden %2$s indicadors de funcions, %3$s d'ells estan bloquejats per a aquest pass.
+Queden %2$s indicadors de funcions, %3$s d'ells estan bloquejats per a aquest pas.
 
 Reinicia l'aplicació, comprova si el comportament persisteix i després respon a continuació"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Cerca d\'indicadors de funcions en curs</string>
@@ -193,7 +194,7 @@ Si us plau, actualitza MicroG a l'última versió v%2$s"</string>
 Toca per desinstal·lar-lo, després torna a obrir aquesta aplicació i instal·la MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Desinstal·lar</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG no té permís per s'executar en segon pla.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG no té permís per executar-se en segon pla.
 
 Segueix la guia \"Don't kill my app\" per al teu telèfon i aplica les instruccions a la teva instal·lació de MicroG.
 
@@ -215,9 +216,9 @@ Si no es canvien les optimitzacions de la bateria, és possible que experimenteu
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Gestió d\'enllaços de l\'app</string>
   <string name="morphe_link_handling_summary">Configureu els enllaços per obrir-los en aquesta aplicació</string>
-  <string name="morphe_link_handling_step1_title">Pass 1: Desactiva els enllaços de l\'app original</string>
+  <string name="morphe_link_handling_step1_title">Pas 1: Desactiva els enllaços de l\'app original</string>
   <string name="morphe_link_handling_step1_message">Obre la configuració de l\'aplicació original i desactiva tots els enllaços de domini</string>
-  <string name="morphe_link_handling_step2_title">Pass 2: Activa els enllaços de l\'app amb retalls</string>
+  <string name="morphe_link_handling_step2_title">Pas 2: Activa els enllaços de l\'app amb retalls</string>
   <string name="morphe_link_handling_step2_message">Obre la configuració de l\'aplicació amb retalls i activa tots els enllaços de domini</string>
   <string name="morphe_link_handling_open">Obre la configuració</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
@@ -229,6 +230,19 @@ Si no es canvien les optimitzacions de la bateria, és possible que experimenteu
 Si vols l'experiència amb menys problemes, &lt;b&gt;desinstal·la&lt;/b&gt; aquesta i instal·la la versió recomanada de ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Vull l\'experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Vull la versió estable</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Mostrar notificació a l\'aplicació per a actualitzacions de mosaics</string>
+  <string name="morphe_patches_update_notice_entry_off">Desactivat</string>
+  <string name="morphe_patches_update_notice_entry_stable">Versions estables</string>
+  <string name="morphe_patches_update_notice_entry_dev">Versions estables i de desenvolupament</string>
+  <string name="morphe_patches_update_notice_dialog_title">Hi ha nous pegats disponibles</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (actual: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Noves funcions</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Correccions d\'errors</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Altres canvis</string>
+  <string name="morphe_patches_update_notice_dialog_more">…i %s més</string>
+  <string name="morphe_patches_update_notice_dialog_update">Actualitzar</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Descartar</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Registre d\'errors desat als documents de l\'usuari: %s</string>
   <string name="morphe_crash_log_saved">Registre d\'errors desat: %s</string>

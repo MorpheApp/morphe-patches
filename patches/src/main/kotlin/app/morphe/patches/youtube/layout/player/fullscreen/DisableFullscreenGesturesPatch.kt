@@ -108,7 +108,7 @@ val disableFullscreenGesturesPatch = patch(
         VideoZoomScaleBeginFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static { }, $EXTENSION_CLASS->disableZoomGesture()Z
+                invoke-static { p1 }, $EXTENSION_CLASS->disableZoomGestureBegin(Landroid/view/ScaleGestureDetector;)Z
                 move-result v0
                 if-eqz v0, :allow_zoom
                 const/4 v0, 0x0
@@ -116,6 +116,13 @@ val disableFullscreenGesturesPatch = patch(
                 :allow_zoom
                 nop
             """
+        )
+
+        // The zoom begins only after the touch can no longer be a tap with two fingers.
+        VideoZoomTouchFingerprint.match(VideoZoomScaleBeginFingerprint.classDef).method.addInstruction(
+            0,
+            "invoke-static { p1, p2 }, $EXTENSION_CLASS->" +
+                "onZoomTouchEvent(Landroid/view/View;Landroid/view/MotionEvent;)V"
         )
 
         // Shorts pinch-to-zoom is an A/B test that is off by default. Turn it on

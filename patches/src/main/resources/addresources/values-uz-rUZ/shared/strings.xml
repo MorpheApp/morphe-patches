@@ -20,8 +20,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_submenu_title">Sozlamalar</string>
   <string name="morphe_settings_confirm_user_dialog_title">Davom ettirmoqchi ekanligingizga ishonasizmi?</string>
   <string name="morphe_settings_save">Saqlash</string>
-  <string name="morphe_settings_reset">Taqimslash</string>
-  <string name="morphe_settings_reset_color">Rangni taqimlash</string>
+  <string name="morphe_settings_reset">Tiklash</string>
+  <string name="morphe_settings_reset_color">Rangni tiklash</string>
   <string name="morphe_settings_color_invalid">Noto\'g\'ri rang</string>
   <string name="morphe_settings_restart_title">Qayta ishga tushirish talab qilinadi</string>
   <string name="morphe_settings_restart_dialog_message">Ushbu o\'zgarish kuchga kirishi uchun ilovani qayta ishga tushiring</string>
@@ -97,9 +97,10 @@ Yangi tillarni tarjima qilish yoki mavjud tarjimalarni yaxshilash uchun morphe.s
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Kodni tekshirish</string>
   <string name="morphe_debug_screen_summary">Kengaytirilgan ishlab chiquvchi variantlarini va diagnostika loglarini sozlang</string>
-  <string name="morphe_debug_title">Debug logging-ni yoqish</string>
-  <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
-  <string name="morphe_debug_stacktrace_summary">Xatolarni aniqlashga yordam berish uchun debug loglariga stack trace-larni qo\'shadi</string>
+  <string name="morphe_debug_level_title">Debug loglari</string>
+  <string name="morphe_debug_level_entry_disabled">O\'chirilgan</string>
+  <string name="morphe_debug_level_entry_debug">Debug</string>
+  <string name="morphe_debug_level_entry_verbose">Batafsil</string>
   <string name="morphe_debug_toast_on_error_title">Morphe xatosi yuz berganda toast-xabarnomani ko\'rsatish</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Xatolik toastlarini o'chirish barcha Morphe xatolik bildirishnomalarini yashiradi.
 
@@ -229,6 +230,19 @@ Agar batareya optimallashtiruvlari o'zgartirilmasa, quyidagilar yuz berishi mumk
 Agar siz eng muammosiz tajribani xohlasangiz, unda buni &lt;b&gt;o'chirib tashlang&lt;/b&gt; va ✅ &lt;b&gt;%2$s&lt;/b&gt; tavsiya etilgan ilova versiyasini patch qiling"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Menga eksperimental versiya kerak</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Menga barqaror versiya kerak</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Patch yangilanishlari uchun ilova ichida bildirishnomani ko\'rsatish</string>
+  <string name="morphe_patches_update_notice_entry_off">O\'chiq</string>
+  <string name="morphe_patches_update_notice_entry_stable">Barqaror versiyalar</string>
+  <string name="morphe_patches_update_notice_entry_dev">Barqaror va ishchi versiyalar</string>
+  <string name="morphe_patches_update_notice_dialog_title">Yangi patchlar mavjud</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (hozirgi: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Yangi imkoniyatlar</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Xatoliklar tuzatildi</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Boshqa o\'zgarishlar</string>
+  <string name="morphe_patches_update_notice_dialog_more">…yana %s ta</string>
+  <string name="morphe_patches_update_notice_dialog_update">Yangilash</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Yopish</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Xatolik logi foydalanuvchi hujjatlariga saqlandi: %s</string>
   <string name="morphe_crash_log_saved">Xatolik logi saqlandi: %s</string>

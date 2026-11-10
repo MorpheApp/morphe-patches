@@ -274,7 +274,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_enabled_title">เปิดใช้งาน Crossfade</string>
   <string name="morphe_music_crossfade_curve_title">เส้นโค้ง Fade</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">พลังงานเท่ากัน</string>
-  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">การหน่วงเวลาที่ละเอียดอ่อน</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">การลดระดับเสียงที่ละเอียดอ่อน</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">การผ่อนคลายที่นุ่มนวล</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">เส้นโค้ง S ที่ราบรื่น</string>
   <!-- Empty string because custom preference handles the title itself -->
@@ -449,7 +449,7 @@ Second \"item\" text"</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">หน้าเริ่มต้น</string>
   <string name="morphe_change_start_page_entry_default">ค่าเริ่มต้น</string>
-  <string name="morphe_change_start_page_entry_charts">กราฟ</string>
+  <string name="morphe_change_start_page_entry_charts">ชาร์ต</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">ตอนสำหรับภายหลัง</string>
   <string name="morphe_change_start_page_entry_explore">สำรวจ</string>
   <string name="morphe_change_start_page_entry_history">ประวัติ</string>
@@ -490,6 +490,23 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">ซ่อนปุ่มอัปเกรด</string>
   <string name="morphe_music_hide_navigation_bar_title">ซ่อนแถบนำทาง</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
+  <string name="morphe_music_navigation_bar_glass_title">เปิดใช้งานแถบนำทางแบบกระจก</string>
+  <string name="morphe_music_navigation_bar_glass_summary">แสดงแถบนำทางเป็นแคปซูลโปร่งแสง ขอบมน และลอยตัว</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">ความทึบแสงของกระจก</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">ปรับระดับความโปร่งใสของแถบนำทางแบบกระจก (0 คือโปร่งใส, 100 คือทึบแสง)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">กระจกสีอ่อน</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">เปลี่ยนสีแถบนำทางแบบกระจกให้เป็นสีขาวแทนสีเข้ม เพื่อให้กระจกดูสว่างและใสขึ้น</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">ขนาดของแถบนำทางแบบกระจก</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">ปรับความสูง ความกว้าง และระยะห่างระหว่างปุ่มของแถบนำทางแบบกระจก พร้อมตัวอย่างการแสดงผล ปุ่มที่ไม่พอดีกับความกว้างของหน้าจอจะถูกซ่อนไว้</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">ความสูง</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">ความกว้างสูงสุด</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">ระยะห่างระหว่างปุ่ม</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">ปุ่มที่แสดง: %1$s จาก %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">หน้าแรก</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">ตัวอย่าง</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">สำรวจ</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">คลัง</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">ยังไม่ได้เข้าสู่ระบบ แตะเพื่อตั้งค่า</string>
   <string name="morphe_music_scrobbling_log_out">ออกจากระบบ</string>
@@ -606,7 +623,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_source_reset_title">รีเซ็ตผู้ให้บริการทั้งหมดหรือไม่</string>
   <string name="morphe_music_lyrics_source_reset_message">คืนค่าผู้ให้บริการกลับไปเป็นลำดับความสำคัญเริ่มต้น</string>
   <string name="morphe_music_lyrics_rime_dict_title">รายการคำ Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist ยังต้องการ UniDict: ในผู้ให้บริการพจนานุกรมแบบออฟไลน์ ให้ติ๊ก \"ตัวอักษรจีนและภาษาแคะ (UniDict)\" และรอให้ดาวน์โหลดเสร็จสิ้นก่อน หากไม่มีรายการนี้ รายการที่อ่านตัวอักษรจะไม่สามารถแปลเสียงได้
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist ยังต้องการ UniDict: ในผู้ให้บริการพจนานุกรมแบบออฟไลน์ ให้ติ๊ก \"ตัวอักษรจีนและกวางตุ้ง (UniDict)\" และรอให้ดาวน์โหลดเสร็จสิ้นก่อน หากไม่มีรายการนี้ รายการที่อ่านตัวอักษรจะไม่สามารถแปลเสียงได้
 
 ติ๊กเลือกรายการที่ Rime Wordlist ควรอ่าน แล้วแตะบันทึกเพื่อดาวน์โหลด รายการที่คุณเพิ่มจะถูกนำออกเมื่อคุณยกเลิกการติ๊กมัน
 
@@ -617,7 +634,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">ไม่มีรายการคำ Rime สำหรับภาษาข้างต้นที่ทำเครื่องหมายไว้ แตะชื่อนี้เพื่อทำเครื่องหมายเลือกหนึ่งรายการ หรือเลือกภาษาที่มีรายการ</string>
   <string name="morphe_music_lyrics_rime_dict_add">เพิ่ม</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">เพิ่มรายการคำ Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">ไฟล์ .dict.yaml หรือ zip ที่ครอบไฟล์ดังกล่าว โดยมีบรรทัดเช่น 字 ham และ 典 din2 รายการนี้จะถูกดึงเมื่อบางคนติ๊กเลือกและแตะบันทึก และใบอนุญาตของรายการนี้เป็นสิทธิ์ของคุณที่จะตรวจสอบ</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">ไฟล์ .dict.yaml หรือ zip ที่ครอบไฟล์ดังกล่าว โดยมีบรรทัดเช่น 字 ham และ 典 din2 รายการนี้จะถูกดึงเมื่อคุณติ๊กเลือกและแตะบันทึก และใบอนุญาตของรายการนี้เป็นสิทธิ์ของคุณที่จะตรวจสอบ</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">รหัสภาษา</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">สองหรือสามตัวอักษร เช่น hak หรือ wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">ชื่อ</string>
@@ -630,12 +647,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_char_source_pinyin">ตัวอักษรมัณฑาร์ริน</string>
   <string name="morphe_music_lyrics_rime_char_source_none">ไม่มีการอ่านตัวอักษร</string>
   <string name="morphe_music_lyrics_rime_dict_incomplete">กรอกรหัส ชื่อ และที่อยู่</string>
-  <string name="morphe_music_lyrics_rime_dict_bad_code">รหัสมUSTประกอบด้วยสองหรือสามตัวอักษร เช่น hak</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_code">รหัสต้องประกอบด้วยสองหรือสามตัวอักษร เช่น hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">ที่อยู่ต้องใช้ https:// เป็นจุดเริ่มต้น</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">ชื่อและที่อยู่ไม่สามารถมีเส้นตั้งกลางได้</string>
   <string name="morphe_music_lyrics_rime_dict_duplicate">%s มีตารางคำศัพท์อยู่แล้ว</string>
   <string name="morphe_music_lyrics_rime_dict_reserved">%s ถูกอ่านโดยระบบถอดอักษรโรมันในตัว และไม่สามารถใช้รายการคำศัพท์ได้</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved_row">ไม่ได้ใช้งาน: ภาษา nàyมีเสียงอ่านของตัวเองแล้ว ดังนั้นยกเลิกการทำเครื่องหมายเพื่อลบออก</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">ไม่ได้ใช้งาน: ภาษานี้มีเสียงอ่านของตัวเองแล้ว ดังนั้นยกเลิกการทำเครื่องหมายเพื่อลบออก</string>
   <string name="morphe_music_lyrics_rime_dict_added">เพิ่ม %s แล้ว - ให้ทำเครื่องหมายและแตะบันทึกเพื่อดาวน์โหลด</string>
   <string name="morphe_music_lyrics_rime_dict_ready">รายการคำพร้อมใช้งาน</string>
   <string name="morphe_music_lyrics_rime_dict_ready_toast">รายการคำศัพท์พร้อมแล้ว (%s รายการ)</string>
@@ -700,7 +717,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_section_title">แสดงแท็กส่วนของเพลง</string>
   <string name="morphe_music_lyrics_show_section_summary">ระบุแต่ละส่วนใหม่ของเนื้อเพลงด้วยแท็กขนาดเล็ก เช่น Verse หรือ Chorus</string>
   <string name="morphe_music_lyrics_show_copy_button_title">แสดงปุ่มคัดลอก</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">แตะเพื่อคัดลอกเนื้อเพลงต้นฉบับเป็นข้อความธรรมดา กดค้างเพื่อบันทึกไฟล์แหล่งที่มาของเนื้อเพลงดิบลงในโฟลเดอร์ดาวน์โหลด</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">แตะเพื่อคัดลอกเนื้อเพลงต้นฉบับเป็นข้อความธรรมดา; กดค้างเพื่อบันทึกไฟล์แหล่งที่มาของเนื้อเพลงดิบและไฟล์ TTML ที่แปลงแล้วลงใน ดาวน์โหลด</string>
   <string name="morphe_music_lyrics_show_translate_button_title">แสดงปุ่มแปลภาษา</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">แตะเพื่อสลับการแปล; กดค้างสำหรับการแปลเท่านั้น ใช้ผู้ให้บริการการแปลที่เปิดใช้งานตามลำดับที่ระบุ</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">แสดงปุ่มแปลงอักษรโรมันหรือถอดรหัส</string>
@@ -715,7 +732,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">ภาษาญี่ปุ่น (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">ตัวอักษรจีนและกวางตุ้ง (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">คำภาษาจีน (pinyin-pro, ~17 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_cldr">การถอดรหัสภาษากรีก ไวยาيليةสลาฟ (รวมถึงรัสเซีย ยูเครน บัลแกเรีย เซอร์เบีย เบลารุส มาซิโดเนีย), จอร์เจีย อาร์เมเนียน ฮีบรู อาหรับ อัมฮาริก และซีรีแอค (CLDR, ~0.5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">การถอดรหัสภาษากรีก ซีริลลิกสลาฟ (รวมถึงรัสเซีย ยูเครน บัลแกเรีย เซอร์เบีย เบลารุส มาซิโดเนีย), จอร์เจีย อาร์เมเนียน ฮีบรู อาหรับ อัมฮาริก และซีรีแอค (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">กำลังสร้างคำอ่าน %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">แสดงปุ่มรีเฟรช</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">แตะเพื่อสลับไปยังตัวเลือกเนื้อเพลงถัดไป; กดค้างเพื่อค้นหาเนื้อเพลงตามชื่อเพลงและศิลปิน</string>
@@ -725,6 +742,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_empty">ป้อนชื่อเพลงและศิลปิน</string>
   <string name="morphe_music_lyrics_search_no_providers">ไม่มีผู้ให้บริการที่เปิดใช้งานใดสามารถค้นหาเพลงอื่นได้</string>
   <string name="morphe_music_lyrics_saved">บันทึกแล้ว</string>
+  <string name="morphe_music_lyrics_written_by">เขียนโดย: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">ไฮไลต์คำหรือพยางค์ที่ซิงก์</string>
   <string name="morphe_music_lyrics_word_sync_summary">ให้ความสำคัญกับเนื้อเพลงแบบคำต่อคำเมื่อมีให้บริการ เมื่อเนื้อเพลงมีข้อมูลเวลาของคำ จะไฮไลต์แต่ละคำหรือพยางค์ให้ตรงกับจังหวะเพลง</string>
   <string name="morphe_music_lyrics_line_scale_title">ลดขนาดบรรทัดที่ไม่ใช้งาน</string>
@@ -740,7 +758,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_title">เคลื่อนไหวพื้นหลังแบบไดนามิก</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">เคลื่อนย้ายพื้นหลังขณะเล่น และทำให้พื้นหลังเต้นตามจังหวะเพลงหาก YouTube Music ได้รับการอนุญาตให้เข้าถึงไมโครโฟน ปิดเพื่อใช้พื้นหลังแบบนิ่งซึ่งจะช่วยประหยัดแบตเตอรี่มากขึ้น</string>
   <string name="morphe_music_lyrics_mediasession_title">แสดงเนื้อเพลง MediaSession บนหน้าจอล็อก</string>
-  <string name="morphe_music_lyrics_mediasession_summary">แสดงบรรทัดปัจจุบันบนหน้าจอล็อค Android Auto และบลูทูธ ต้องการ Android 11 หรือใหม่กว่า</string>
+  <string name="morphe_music_lyrics_mediasession_summary">แสดงบรรทัดปัจจุบันบนหน้าจอล็อก, Android Auto และ Bluetooth</string>
   <string name="morphe_music_lyrics_miniplayer_title">แสดงเนื้อเพลงในมินิเพลเยอร์</string>
   <string name="morphe_music_lyrics_miniplayer_summary">แสดงบรรทัดปัจจุบันในมินิเพลเยอร์ โดยย้ายแทร็กไปยังส่วนบรรยาย</string>
   <string name="morphe_music_lyrics_mini_track_format_title">รูปแบบชื่อเพลง/ศิลปิน</string>
@@ -767,16 +785,18 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_mini_next_offset_ms_title">การชดเชยเวลาของมินิเพลเยอร์และ MediaSession</string>
   <string name="morphe_music_lyrics_mini_next_offset_ms_summary">ปรับเวลาแสดงบรรทัดถัดไปในมินิเพลเยอร์และ MediaSession ใช้ค่าติดลบหากบรรทัดแสดงขึ้นช้าเกินไป เช่น บนหน้าจอล็อก</string>
   <string name="morphe_settings_music_lyrics_metadata_title">ตัวกรอง</string>
-  <string name="morphe_music_lyrics_custom_regex_title">Metadata: \"รีเจ็กซ์ตัวกรองเนื้อเพลง\"</string>
+  <string name="morphe_music_lyrics_custom_regex_title">รีเจ็กซ์ของเมทาดาตา</string>
   <string name="morphe_music_lyrics_custom_regex_summary">นิพจน์ปกติที่ใช้กับชื่อเพลง ศิลปิน และอัลบั้มก่อนค้นหาเนื้อเพลง และใช้เมื่อให้คะแนนว่าชื่อสองชื่อตรงกันหรือไม่ เว้นว่างไว้เพื่อปิดใช้งานทั้งสองอย่าง ค่าเริ่มต้นจะลบคำที่ไม่จำเป็นทั่วไป เช่น \"Official Video\", \"Remaster\", \"【插曲】\" และ \"- Topic\"</string>
   <string name="morphe_music_lyrics_text_filter_title">นิพจน์ทั่วไปสำหรับกรองเนื้อเพลง</string>
   <string name="morphe_music_lyrics_text_filter_summary">นิพจน์ทั่วไปที่ใช้กับเนื้อเพลงต้นฉบับเท่านั้น (ไม่รวมคำแปลหรือข้อความแบบโรมัน) เว้นว่างเพื่อปิดใช้งาน</string>
-  <string name="morphe_music_lyrics_credit_line_regex_title">…</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">เครื่องหมายบรรทัดข้อมูล</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">หากเนื้อเพลงถูกกรองไปไว้ด้านล่างอย่างไม่ถูกต้อง ให้ปรับหรือล้างค่าตรงนี้ คำกำกับที่คั่นด้วยเครื่องหมายจุลภาค: บรรทัดที่มีคำกำกับตามด้วยเครื่องหมายทวิภาคจะแสดงเป็นข้อมูลเครดิตที่ด้านล่าง เว้นว่างเพื่อปิดใช้</string>
   <string name="morphe_music_lyrics_force_capitalize_title">ขึ้นต้นด้วยตัวพิมพ์ใหญ่</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">ทำให้ตัวอักษรแรกของแต่ละบรรทัดในเนื้อเพลงเป็นตัวพิมพ์ใหญ่</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">ลบเครื่องหมายวรรคตอนท้ายประโยค</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">ลบจุดทศนิยม จุลภาค ทวิภาค และอัฒภาคที่ท้ายบรรทัดของเนื้อเพลง โดยจะยังคงเครื่องหมายคำถาม เครื่องหมายตกใจ จุดไข่ปลา อัญประกาศ และวงเล็บไว้</string>
+  <string name="morphe_music_lyrics_han_form_title">การแปลงรูปแบบอักษรจีน</string>
+  <string name="morphe_music_lyrics_han_form_summary">เมื่อเปิดใช้งาน จะทำตามภาษาเป้าหมายของการแปลเพื่อแปลงเนื้อเพลงระหว่างตัวย่อและตัวเต็ม</string>
   <string name="morphe_music_lyrics_text_size_title">ขนาดข้อความ</string>
   <string name="morphe_music_lyrics_text_size_summary">ขนาดของข้อความเนื้อเพลง</string>
   <string name="morphe_music_lyrics_offset_ms_title">ออฟเซ็ตเวลาโดยรวม</string>
@@ -792,6 +812,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_translated_by_ai">แปลโดย %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">ถอดเป็นอักษรโรมันโดย %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">ถอดเป็นอักษรโรมันโดย %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (พร้อม %2$s)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">แปลงอักษรโรมันโดย Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">แปลแล้ว</string>
@@ -807,6 +828,8 @@ Second \"item\" text"</string>
   <string name="morphe_romanize_language_DEFAULT">อัตโนมัติ</string>
   <string name="morphe_music_lyrics_romanizing">กำลังโรมาไนซ์…</string>
   <string name="morphe_music_lyrics_romanize_failed">ไม่สามารถโรมาไนซ์เนื้อเพลงได้</string>
+  <string name="morphe_music_lyrics_romanize_language_none">ไม่มี</string>
+  <string name="morphe_music_lyrics_ruby_language_title">เป้าหมาย Ruby</string>
   <string name="morphe_music_lyrics_translate_only">เฉพาะคำแปล</string>
   <string name="morphe_music_lyrics_romanize_only">เฉพาะอักษรโรมันเท่านั้น</string>
   <string name="morphe_music_lyrics_dual_only">โหมดคู่</string>
@@ -837,22 +860,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_hide_info_title">ซ่อนบรรทัดเครดิต</string>
   <string name="morphe_music_lyrics_hide_info_summary">ซ่อนบรรทัดเครดิตที่แสดงใต้เนื้อเพลง</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">สลับคำแปลและการโรมาไนซ์</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">สลับลำดับการแสดงผลของการแปลและการถอดเสียงโรมันใต้เนื้อเพลง</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">ย้ายคำแปลไว้เหนือเนื้อเพลง โดยที่คำอ่านและคำทับศัพท์ยังคงอยู่ด้านล่าง</string>
   <string name="morphe_music_lyrics_force_center_title">จัดข้อความกลางเสมอ</string>
-  <string name="morphe_music_lyrics_force_center_summary">ON จัดบรรทัดทุกบรรทัดตรงกลางและละเลยการจัดตำแหน่งต้นฉบับ รวมถึงด้านคู่ дуэт; OFF คงการจัดตำแหน่งตามที่ต้องการโดยเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_force_center_summary">ON จัดบรรทัดทุกบรรทัดตรงกลางและละเลยการจัดตำแหน่งต้นฉบับ รวมถึงด้านคู่เสียงร้อง; OFF คงการจัดตำแหน่งตามที่เนื้อเพลงต้องการ</string>
   <string name="morphe_music_lyrics_providers_keep_one">ต้องมีผู้ให้บริการอย่างน้อยหนึ่งรายการที่เปิดอยู่</string>
   <string name="morphe_music_lyrics_translation_provider_title">การแปล</string>
   <string name="morphe_music_lyrics_romanization_provider_title">การแปลงอักษรโรมันหรือถอดรหัส</string>
   <string name="morphe_music_lyrics_romanization_provider_local">พจนานุกรมออฟไลน์</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">รายการคำ Rime</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">พจนานุกรมแบบออฟไลน์</string>
-  <string name="morphe_music_lyrics_ruby_style_title">สคริปต์ Ruby</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">ฮิรางานะ (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">คาตาคานะ (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">แสดงปุ่ม Ruby</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">แตะเพื่อสลับการแสดงคำอ่าน ruby เหนือเนื้อเพลง; กดค้างเพื่อสลับระหว่าง hiragana และ katakana โดยจะใช้ผู้ให้บริการ ruby ที่เปิดใช้งานตามลำดับที่ระบุไว้</string>
-  <string name="morphe_music_lyrics_ruby_generating">กำลังสร้าง ruby…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ตัวแปลงอักขระ ICU</string>
   <string name="morphe_music_lyrics_use_ai_section_title">ตรวจจับส่วนด้วย AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">ใช้ก็ต่อเมื่อผู้ให้บริการไม่มีป้ายส่วน เช่น Chorus หรือ Verse ซึ่งโมเดลที่เข้ากันได้กับ OpenAI ของคุณจะตรวจจับ การแก้ไขแถวจะเปิดพรอมต์ของมันด้วย</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL จุดสิ้นสุด API (เช่น https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -875,6 +891,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">เลือกโมเดล</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">ดึงข้อมูลโมเดลล้มเหลว โปรดตรวจสอบ API key หรือการเชื่อมต่อ</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">พรอมต์</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">คำสั่ง Ruby (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">โมเดล</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">พรีเซ็ตบริการ</string>

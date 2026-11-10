@@ -17,7 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_enabled_title">הפעל את SponsorBlock</string>
-  <string name="morphe_sb_enabled_summary">המערכת SponsorBlock היא מערכת מיקור המונים לדילוג על חלקים מעצבנים של סרטוני YouTube</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock היא מערכת מבוססת המונים לדילוג על חלקים מעצבנים של סרטוני YouTube</string>
   <string name="morphe_sb_appearance_category_title">מראה</string>
   <string name="morphe_sb_voting_button_title">הצג לחצן הצבעה</string>
   <string name="morphe_sb_voting_button_summary">מוסיף כפתור להצבעה בעד או נגד קטעים</string>
@@ -45,7 +45,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_duration_10s">10 שניות</string>
   <string name="morphe_sb_video_length_without_segments_title">הצג אורך סרטון ללא מקטעים</string>
   <string name="morphe_sb_video_length_without_segments_summary">מחסיר את כל הקטעים ממשך הסרטון הכולל המוצג בסרגל החיפוש</string>
-  <string name="morphe_sb_create_segment_category_title">יוצר מקטעים חדשים</string>
+  <string name="morphe_sb_create_segment_category_title">יצירת מקטעים חדשים</string>
   <string name="morphe_sb_create_new_segment_title">הצג כפתור \'צור קטע חדש\'</string>
   <string name="morphe_sb_create_new_segment_summary">מוסיף כפתור לנגן הווידאו המאפשר לך לשלוח קטעי SponsorBlock חדשים</string>
   <string name="morphe_sb_create_new_segment_step_title">צעד התאמת זמן</string>
@@ -63,7 +63,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_toast_on_connection_error_title">הצג התראות שגיאת חיבור</string>
   <string name="morphe_sb_toast_on_connection_error_summary">מציג התראה כאשר שרת SponsorBlock אינו זמין</string>
   <string name="morphe_sb_track_skip_count_title">הפעל מעקב ספירת דילוגים</string>
-  <string name="morphe_sb_track_skip_count_summary">שולח ספירות דילוג לטבלת המיצבים של SponsorBlock כדי לעקוב אחר הזמן שנחסך</string>
+  <string name="morphe_sb_track_skip_count_summary">שולח ספירות דילוג ללוח המובילים של SponsorBlock כדי לעקוב אחר הזמן שנחסך</string>
   <string name="morphe_sb_min_segment_duration_title">משך מקטע מינימלי</string>
   <string name="morphe_sb_min_segment_duration_summary">מקטעים קצרים יותר מערך זה (בשניות) לא יוצגו או ידולגו</string>
   <string name="morphe_sb_min_segment_duration_invalid">משך זמן לא חוקי</string>
@@ -93,7 +93,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">אל תציג שוב</string>
   <string name="morphe_sb_diff_segments_title">שנה התנהגות מקטע</string>
   <string name="morphe_sb_segments_sponsor">נותן חסות</string>
-  <string name="morphe_sb_segments_sponsor_summary">קידום בתשלום, הפניות בתשלום ופרסומות ישירות. לא בשביל מימון עצמי או הכרות תודה בחינם לגורמים/יוצרים/אתרים/מוצרים שהם אוהבים</string>
+  <string name="morphe_sb_segments_sponsor_summary">קידום בתשלום, הפניות בתשלום ופרסומות ישירות. לא לקידום עצמי או הכרות תודה בחינם לגורמים/יוצרים/אתרים/מוצרים שהם אוהבים</string>
   <string name="morphe_sb_segments_selfpromo">קידום ללא תשלום/עצמי</string>
   <string name="morphe_sb_segments_selfpromo_summary">דומה לנותן חסות למעט קידום ללא תשלום או קידום עצמי. כולל קטעים על מרצ\'נדייז, תרומות, או מידע לגבי עם מי הם שיתפו פעולה</string>
   <string name="morphe_sb_segments_interaction">תזכורת לאינטראקציה (הרשמה למינוי)</string>
@@ -173,7 +173,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_vote_segment_time_to_from">%1$s עד %2$s</string>
   <string name="morphe_sb_new_segment_choose_category">בחר את קטגוריית המקטע</string>
   <string name="morphe_sb_new_segment_disabled_category">קטגוריה מושבתת בהגדרות. הפעל קטגוריה כדי לשלוח</string>
-  <string name="morphe_sb_new_segment_title">מקטע חדש של SponsorBloack</string>
+  <string name="morphe_sb_new_segment_title">מקטע חדש של SponsorBlock</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">להגדיר את %s כתחילת או סיום המקטע החדש?</string>
   <string name="morphe_sb_new_segment_mark_start">התחלה</string>
   <string name="morphe_sb_new_segment_mark_end">סיום</string>
@@ -228,5 +228,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s שניות</string>
   <string name="morphe_sb_color_opacity_label">אטימות:</string>
   <string name="morphe_sb_color_dot_label">צבע:</string>
-  <string name="morphe_sb_about_api_summary">"SponsorBlock הוא מסד נתונים שיתופי של קטעי וידאו, כגון חסויות, פתיחים, סיומים ותזכורות להירשם. הקטעים מוגשים ומוצבעים על ידי הקהילה, ומסד הנתונים פתוח וחינמי להורדה\n\nמזהה הווידאו שאתה צופה בו נשלח ל-API של SponsorBlock כדי לקבל את הקטעים שלו"</string>
+  <string name="morphe_sb_about_api_summary">"SponsorBlock הוא מסד נתונים שיתופי של קטעי וידאו, כגון חסויות, פתיחים, סיומים ותזכורות להירשם. הקטעים מוגשים ומוצבעים על ידי הקהילה, ומסד הנתונים פתוח וחינמי להורדה
+
+מזהה הווידאו שאתה צופה בו נשלח ל-API של SponsorBlock כדי לקבל את הקטעים שלו"</string>
 </resources>

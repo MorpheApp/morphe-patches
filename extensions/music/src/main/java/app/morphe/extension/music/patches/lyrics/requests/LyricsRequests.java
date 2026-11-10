@@ -37,7 +37,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
-import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
+import app.morphe.extension.music.patches.lyrics.utils.CharactersConverter;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -86,7 +86,45 @@ public final class LyricsRequests {
     }
 
     public static String deviceLanguage() {
-        return Requester.getAppLocale().getLanguage();
+        Locale locale = Requester.getAppLocale();
+        String lang = locale.getLanguage().toLowerCase(Locale.ROOT);
+        // Normalize legacy Android ISO-639 language codes
+        switch (lang) {
+            case "iw":
+                return "he";
+            case "in":
+                return "id";
+            case "ji":
+                return "yi";
+            case "fil":
+                return "tl";
+            case "kmr":
+                return "ku";
+            default:
+                break;
+        }
+        if ("zh".equals(lang)) {
+            String script = locale.getScript();
+            if ("Hant".equalsIgnoreCase(script)) {
+                return "zh-TW";
+            }
+            if ("Hans".equalsIgnoreCase(script)) {
+                return "zh-CN";
+            }
+            String country = locale.getCountry().toUpperCase(Locale.ROOT);
+            if ("TW".equals(country) || "HK".equals(country) || "MO".equals(country)) {
+                return "zh-TW";
+            }
+            return "zh-CN";
+        }
+        if ("pt".equals(lang)) {
+            String country = locale.getCountry().toUpperCase(Locale.ROOT);
+            if ("PT".equals(country)) {
+                return "pt-PT";
+            }
+            return "pt-BR";
+        }
+        return lang;
     }
 
     public static String translationLanguage() {
@@ -104,6 +142,19 @@ public final class LyricsRequests {
                 : language.toLowerCase(Locale.ROOT);
     }
 
+    /** The resolved ruby language for reading/ruby prompts. */
+    public static String rubyLanguage() {
+        String language = Settings.LYRICS_RUBY_LANGUAGE.get();
+        return "DEFAULT".equalsIgnoreCase(language)
+                ? deviceLanguage()
+                : language.toLowerCase(Locale.ROOT);
+    }
+
+    /** Whether the user turned the romanization off, which leaves only the ruby. */
+    public static boolean isRomanizationOff() {
+        return "NONE".equalsIgnoreCase(Settings.LYRICS_ROMANIZE_LANGUAGE.get());
+    }
+
     /** Whether romanization is left on "Automatic", which reads the lyrics instead. */
     public static boolean isDefaultRomanizationLanguage() {
         return "DEFAULT".equalsIgnoreCase(Settings.LYRICS_ROMANIZE_LANGUAGE.get());
@@ -115,7 +166,15 @@ public final class LyricsRequests {
             return "";
         }
         int idx = language.indexOf('-');
-        return (idx >= 0 ? language.substring(0, idx) : language).toLowerCase(Locale.ROOT);
+        String subtag = (idx >= 0 ? language.substring(0, idx) : language).toLowerCase(Locale.ROOT);
+        return switch (subtag) {
+            case "iw" -> "he";
+            case "in" -> "id";
+            case "ji" -> "yi";
+            case "fil" -> "tl";
+            case "kmr" -> "ku";
+            default -> subtag;
+        };
     }
 
     @NonNull

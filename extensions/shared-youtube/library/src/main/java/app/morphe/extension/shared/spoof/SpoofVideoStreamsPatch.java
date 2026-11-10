@@ -32,7 +32,6 @@ import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
-import app.morphe.extension.shared.spoof.requests.VisitorIdRequester;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
@@ -95,6 +94,31 @@ public class SpoofVideoStreamsPatch {
     private static final ThreadLocal<Boolean> streamRangeLimitedOnThread = ThreadLocal.withInitial(() -> false);
 
     /**
+     * UMP part type of a SABR error. The server can send it instead of the media of a plain stream range.
+     */
+    private static final byte UMP_PART_SABR_ERROR = 44;
+
+    /**
+     * Response of the last plain stream request built on the thread. A request is built and read on the same thread.
+     */
+    private static final class StreamResponse {
+        /**
+         * If the response is a UMP response of a plain stream, and its first part is not read yet.
+         */
+        boolean checkFirstPart;
+        /**
+         * Position of the buffer when the current read of the response started.
+         */
+        int readStart;
+        /**
+         * If the response starts with a SABR error.
+         */
+        boolean sabrError;
+    }
+
+    private static final ThreadLocal<StreamResponse> streamResponseOnThread = ThreadLocal.withInitial(StreamResponse::new);
+
+    /**
      * If the streams of the player responses created on this thread are kept.
      * Used for videos that are saved, which use streams that the app can save instead of the playback streams.
      */
@@ -127,8 +151,7 @@ public class SpoofVideoStreamsPatch {
         StreamingDataRequest.setClientOrderToUse(availableClients, client);
 
         if (SPOOF_VIDEO_STREAMS) {
-            // Prefetch visitorId for default client.
-            Utils.runOnBackgroundThread(() -> VisitorIdRequester.getVisitorId(client));
+            Utils.runOnBackgroundThread(StreamingDataRequest::prepareClients);
         }
     }
 
@@ -452,9 +475,9 @@ public class SpoofVideoStreamsPatch {
                         if (config != null) {
                             Logger.printDebug(() -> "Overriding player config: " + videoId);
                             // This config replaces the whole config of the app, which tells how the
-                            // video is played inline, such as a muted preview in the feed.
+                            // video is played inline, such as a muted preview in the feed, and how it is buffered.
                             return buffers.hasAndroidMedia() && appPlayerConfig != null
-                                    ? StreamingDataRequest.addInlinePlayback(config, appPlayerConfig)
+                                    ? StreamingDataRequest.addAppPlayerConfig(config, appPlayerConfig)
                                     : config;
                         }
                     }
@@ -622,6 +645,7 @@ public class SpoofVideoStreamsPatch {
      * at about playback speed. The range is shortened, and {@link #isLimitedStreamRangeFinished(long)}
      * makes the app request the following range after this one ends.
      * Ranges without an end are left as they are, because the app reads those until the stream ends.
+     * The first part of the response is checked by {@link #onStreamResponseRead(ByteBuffer)}.
      *
      * @param url Url of the request.
      * @return The url to request.
@@ -631,11 +655,16 @@ public class SpoofVideoStreamsPatch {
         try {
             // A request is built and read on the same thread.
             streamRangeLimitedOnThread.set(false);
+            StreamResponse response = streamResponseOnThread.get();
+            response.checkFirstPart = false;
+            response.sabrError = false;
             if (url == null || !isPlainStreamRequest(url)) {
                 return url;
             }
 
-            String range = Uri.parse(url).getQueryParameter("range");
+            Uri uri = Uri.parse(url);
+            response.checkFirstPart = "1".equals(uri.getQueryParameter("ump"));
+            String range = uri.getQueryParameter("range");
             if (range == null) {
                 return url;
             }
@@ -687,6 +716,55 @@ public class SpoofVideoStreamsPatch {
 
         streamRangeLimitedOnThread.set(false);
         Logger.printDebug(() -> "Requesting the rest of the shortened stream range");
+        return true;
+    }
+
+    /**
+     * Injection point.
+     * Called before the response of a network request is read into the buffer.
+     */
+    public static void onStreamResponseReadStart(ByteBuffer buffer) {
+        StreamResponse response = streamResponseOnThread.get();
+        if (response.checkFirstPart) {
+            response.readStart = buffer.position();
+        }
+    }
+
+    /**
+     * Injection point.
+     * Called after the response of a network request is read into the buffer.
+     * The server can answer a plain stream range with only a SABR error and no media, for seconds
+     * or minutes. The app ignores the error, finds no media, and requests the same range again right
+     * away, over and over, which freezes playback.
+     */
+    public static void onStreamResponseRead(ByteBuffer buffer) {
+        StreamResponse response = streamResponseOnThread.get();
+        if (!response.checkFirstPart || buffer.position() <= response.readStart) {
+            return;
+        }
+
+        response.checkFirstPart = false;
+        // A part type below 128 is a single byte.
+        if (buffer.get(response.readStart) == UMP_PART_SABR_ERROR) {
+            response.sabrError = true;
+        }
+    }
+
+    /**
+     * Injection point.
+     * Called when the response of a network request is read.
+     *
+     * @return If the response is a SABR error, and must fail like a response with a server error status.
+     *         The app then requests the range again from a fallback host.
+     */
+    public static boolean isStreamSabrErrorResponse() {
+        StreamResponse response = streamResponseOnThread.get();
+        if (!response.sabrError) {
+            return false;
+        }
+
+        response.sabrError = false;
+        Logger.printDebug(() -> "Stream response is a SABR error, failing it so the range is requested from a fallback host");
         return true;
     }
 

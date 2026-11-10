@@ -150,8 +150,8 @@ Allalaaditud palad ilmuvad siia"</string>
   <string name="morphe_music_downloads_previous">Eelmine</string>
   <string name="morphe_music_downloads_next">Järgmine</string>
   <string name="morphe_music_downloads_pause">Peata</string>
-  <string name="morphe_music_downloads_shuffle">Segi</string>
-  <string name="morphe_music_downloads_repeat">Kordus</string>
+  <string name="morphe_music_downloads_shuffle">Segita</string>
+  <string name="morphe_music_downloads_repeat">Korda</string>
   <string name="morphe_music_downloads_minimize">Minimeeri</string>
   <string name="morphe_music_downloads_close">Sulge</string>
   <string name="morphe_music_downloads_delete">Kustuta</string>
@@ -210,7 +210,7 @@ Allalaaditud palad ilmuvad siia"</string>
   <string name="morphe_music_downloads_playlist_download_all_saved">Juba allalaaditud: %s</string>
   <string name="morphe_music_downloads_playlist_download_confirm_message">"Selles esitusloendis on %1$s lugu, %2$s pole veel allalaaditud.
 
-Need laadatakse alla ükshaavuti, mis võib võtta kaua ja nõuab umbes %3$s vaba ruumi"</string>
+Need laaditakse alla ükshaaval, mis võib võtta kaua ja nõuab umbes %3$s vaba ruumi"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Laadi alla</string>
   <string name="morphe_music_downloads_playlist_download_progress">Laadatakse alla lugu %1$s kokku %2$s-st</string>
   <string name="morphe_music_downloads_playlist_download_complete">%s allalaaditud</string>
@@ -218,13 +218,13 @@ Need laadatakse alla ükshaavuti, mis võib võtta kaua ja nõuab umbes %3$s vab
   <string name="morphe_music_downloads_playlist_download_already_running">Esitusloendi allalaadimine on juba käimas</string>
   <string name="morphe_music_downloads_playlist_download_needs_account">Teie konto pole veel teada. Proovige hetke pärast uuesti</string>
   <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s loetletud, kõik on juba allalaaditud</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Loetleti vaid osa esitusloendist. Puutke hiljem uuesti nuppu Allalaadimine, et saada ülejäänik</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Loetleti vaid osa esitusloendist. Puutke hiljem uuesti nuppu Allalaadimine, et saada ülejäänud</string>
   <string name="morphe_music_downloads_playlist_download_started">Laadatakse %s taustal alla</string>
   <string name="morphe_music_downloads_playlist_download_no_network">Puudub võrgühendus</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Oigatakse võrgühendust…</string>
+  <string name="morphe_music_downloads_playlist_download_waiting_network">Oodatakse võrgühendust…</string>
   <string name="morphe_music_downloads_playlist_download_stopped">Peatatud pärast %1$s kokku %2$s-st. Jätkamiseks puutke uuesti nuppu Allalaadimine</string>
   <string name="morphe_music_downloads_mark_title">Märgi allalaaditud laulud</string>
-  <string name="morphe_music_downloads_mark_summary">Allalaaditud lugude juures kuvatakse märk pleiallistetes, albumbides ja otsingutulemustes</string>
+  <string name="morphe_music_downloads_mark_summary">Allalaaditud lugude juures kuvatakse märk esitusloendites, albumites ja otsingutulemustes</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Teave</string>
@@ -347,11 +347,11 @@ SABR-taasesitus (videovoogude imiteerimine välja lülitatud)"</string>
   <string name="morphe_music_playlist_track_tap_added_to_queue">Lisatud järjekorda</string>
   <!-- layout.playlisttags.playlistTagsPatch -->
   <string name="morphe_music_playlist_tags_screen_title">Esitusloendi märgid</string>
-  <string name="morphe_music_playlist_tags_screen_summary">Märgi esitusloendeid ja filtrei raamatukotti märgiga</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Märkige esitusloendeid ja filtreerige raamatukogu märgi järgi</string>
   <string name="morphe_music_playlist_tags_title">Luba esitusloendi märgid</string>
-  <string name="morphe_music_playlist_tags_summary">Lisab märgi üksuse esitusloendide menüüsse ja märgi filtrinupu raamatukoti sorteerimisnupu kõrvale</string>
+  <string name="morphe_music_playlist_tags_summary">Lisab märgide üksuse esitusloendide menüüsse ja märgide filtrinupu raamatukoti sorteerimisnupu kõrvale</string>
   <string name="morphe_music_playlist_tags_manage_title">Halda esitusloendi märke</string>
-  <string name="morphe_music_playlist_tags_manage_summary">Loo, nimeta ümber ja kustuta märke ning märgi oma raamatukotis nähtavaid esitusloendeid</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Looge, nimetage ümber ja kustutage märke ning märgistage oma raamatukogus nähtavaid esitusloendeid</string>
   <!-- Title of the row added to the menu of a playlist. -->
   <string name="morphe_music_playlist_tags_menu_item">Märgid</string>
   <string name="morphe_music_playlist_tags_menu_item_none">Märke pole</string>
@@ -373,10 +373,10 @@ SABR-taasesitus (videovoogude imiteerimine välja lülitatud)"</string>
   <string name="morphe_music_playlist_tags_filter_all">Kõik esitusloendid</string>
   <string name="morphe_music_playlist_tags_filter_visible">Nähtavad märgid</string>
   <string name="morphe_music_playlist_tags_manage">Haldamine</string>
-  <string name="morphe_music_playlist_tags_none">Märke pole veel. Vajuta esitusloendi peale pikalt ja vali Märgid, et luua uus</string>
+  <string name="morphe_music_playlist_tags_none">Märke pole veel. Vajutage esitusloendi peale pikalt ja valige Märgid, et luua uus</string>
   <string name="morphe_music_playlist_tags_section_tags">Märgid</string>
   <string name="morphe_music_playlist_tags_section_playlists">Esitusloendid</string>
-  <string name="morphe_music_playlist_tags_no_playlists">Ava raamatukott üks kord, et esitusloendid ilmuksid siia</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Avage raamatukogu üks kord, et esitusloendid ilmuksid siia</string>
   <string name="morphe_music_playlist_tags_new_tag">Uus märk</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">Muuda märki</string>
   <string name="morphe_music_playlist_tags_rename">Muuda nimi</string>
@@ -408,7 +408,7 @@ SABR-taasesitus (videovoogude imiteerimine välja lülitatud)"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Peida allalaadimisnupp</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Peita nuppu \"Alusta raadiot\"</string>
+  <string name="morphe_music_hide_radio_button_title">Peida nuppu \"Alusta raadiot\"</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Libisemenüü</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Vali, millised komponendid kuvatakse pleieri ja järjekorra libisemenüüdes</string>
@@ -490,6 +490,23 @@ SABR-taasesitus (videovoogude imiteerimine välja lülitatud)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Peida nupp Uuenda</string>
   <string name="morphe_music_hide_navigation_bar_title">Peida navigeerimisriba</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Peida navigeerimisnuppude sildid</string>
+  <string name="morphe_music_navigation_bar_glass_title">Luba klaasist navigeerimisriba</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Kuvab navigeerimisiriba kui hõljuval, ümarate nurkadega poolläbipaatva kapslina</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Klaasi läbipaistmatus</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Reguleeri klaasist navigeerimisriba läbipaistvust (0 on läbipaistev, 100 on läbipaistmatu)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Hele klaas</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Värvab klaasist navigeerimisriba tumeda asemel valgeks, et saada hele ja selgem klaas</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Klaasise navigeerimisriba suurus</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Reguleerige klaasise navigeerimisriba kõrgust, laialgust ja nuppude vahemaad koos eelvaatega. Nupud, mis ei mahu ekraani laialgusse, on peidetud</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Kõrgus</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Maksimaalne laius</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Nuppude vahe</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Kuvatud nupud: %1$s est %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Avaleht</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Proovid</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Avasta</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Raamatukogu</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Pole sisse logitud. Puudutage seadistamiseks</string>
   <string name="morphe_music_scrobbling_log_out">Logi välja</string>
@@ -552,26 +569,26 @@ SABR-taasesitus (videovoogude imiteerimine välja lülitatud)"</string>
 Et tagada scrobblingi sünkroonimine taustal taasesituse ajal, veendu, et YouTube Musicu rakenduse aku kasutuse seadeks on määratud \"Piiranguteta\""</string>
   <!-- interaction.soundproof.soundProofPatch -->
   <!-- 'SoundProof' must be kept untranslated -->
-  <string name="morphe_music_soundproof_screen_summary">Vaata üle esitajate lugusid, keda kogukond on märkinud kui AI-põhiseid</string>
+  <string name="morphe_music_soundproof_screen_summary">Jäta vahele lood esitajatelt, kelle on kogukond märkinud tehisintellekti loomuteks</string>
   <string name="morphe_music_soundproof_show_button_title">Näita SoundProof-nuppu</string>
   <string name="morphe_music_soundproof_show_button_summary">Kuva mängija ülaribas nupp, et näha kogukonna hääletusi praeguse esitaja kohta ja hääletada ise</string>
-  <string name="morphe_music_soundproof_skip_ai_artists_title">Vaata AI-esitajaid üle</string>
-  <string name="morphe_music_soundproof_skip_ai_artists_summary">Automaticelt mööda hüppatud rajad, whose artist reaches the AI threshold below</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_title">Jäta tehisintellektiga esitajad vahele</string>
+  <string name="morphe_music_soundproof_skip_ai_artists_summary">Jätab automaatselt vahele lood, mille esitaja jõuab tehisintellekti läveni allapoole</string>
   <string name="morphe_music_soundproof_toast_on_skip_title">Kuva hüppe teavitus</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">Kuvab teavituse, kui raja hüppatakse automaatselt mööda</string>
-  <string name="morphe_music_soundproof_threshold_title">Tuvamise lävi</string>
+  <string name="morphe_music_soundproof_threshold_title">Tuvastamise lävi</string>
   <string name="morphe_music_soundproof_minimum_ai_percent_title">Minimaalsed AI hääled</string>
-  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Artist on AI, kui vähemalt see osa hääletest on AI poolt</string>
-  <string name="morphe_music_soundproof_minimum_votes_title">Häältes minimaalne arv</string>
+  <string name="morphe_music_soundproof_minimum_ai_percent_summary">Esineja on tehisintellekt, kui vähemalt selline osa tema häältest viitab tehisintellektile</string>
+  <string name="morphe_music_soundproof_minimum_votes_title">Minimaalne häältes arv</string>
   <string name="morphe_music_soundproof_minimum_votes_summary">Artiste, kellel on hääletusi vähem kui siin märgitud, ei hüppata kunagi mööda</string>
   <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
   <string name="morphe_music_soundproof_skipped_toast">Jäeti üle %1$s (AI, %2$s%%)</string>
-  <string name="morphe_music_soundproof_button_description">SoundProofi hääled selle artisti poolt</string>
+  <string name="morphe_music_soundproof_button_description">SoundProof hääletab selle esitaja poolt</string>
   <string name="morphe_music_soundproof_sheet_verified">Kinnitatud</string>
   <!-- Share of the votes on the majority side. Example: 93% AI -->
   <string name="morphe_music_soundproof_sheet_percent_ai">%s%% AI</string>
   <!-- Share of the votes on the majority side. Example: 92% human -->
-  <string name="morphe_music_soundproof_sheet_percent_human">%s%% inimene</string>
+  <string name="morphe_music_soundproof_sheet_percent_human">%s%% inimest</string>
   <string name="morphe_music_soundproof_sheet_one_vote">1 hääl</string>
   <!-- Total number of votes, always more than one. Example: 44 votes -->
   <string name="morphe_music_soundproof_sheet_votes">%s häält</string>
@@ -579,18 +596,18 @@ Et tagada scrobblingi sünkroonimine taustal taasesituse ajal, veendu, et YouTub
   <string name="morphe_music_soundproof_sheet_human_votes">%s inimest</string>
   <!-- Number of votes saying the artist is AI. Example: 41 AI -->
   <string name="morphe_music_soundproof_sheet_ai_votes">%s AI</string>
-  <string name="morphe_music_soundproof_sheet_no_votes_title">Selle artisti kohta pole veel hääletuksia</string>
+  <string name="morphe_music_soundproof_sheet_no_votes_title">Selle artisti kohta pole veel hääletusi</string>
   <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof andmebaas pole veel saadaval</string>
-  <string name="morphe_music_soundproof_sheet_unavailable_summary">Seda allalaaditakse taustal. Ükski lugus ei jääle, kuni see on saadaval.</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Seda allalaaditakse taustal. Ükski lugu ei jäeta vahele, kuni see on saadaval.</string>
   <!-- 'SoundProof' must be kept untranslated -->
   <string name="morphe_music_soundproof_sheet_source">Kogukonna hääletused SoundProof andmebaasist</string>
   <string name="morphe_music_soundproof_sheet_vote_human">Inimene</string>
-  <string name="morphe_music_soundproof_sheet_vote_ai">tehisintellekt</string>
+  <string name="morphe_music_soundproof_sheet_vote_ai">AI</string>
   <string name="morphe_music_soundproof_sheet_voting_locked">Hääletamine on lõppenud: SoundProof moderaator on kontrollinud seda artisti</string>
   <string name="morphe_music_soundproof_sheet_live_failed">Ühendust SoundProofiga ei õnnestunud luua. Hääletused on päeva andmebaasist ja hääletamine ei ole saadaval.</string>
   <string name="morphe_music_soundproof_vote_failed_toast">SoundProof hääletamine ebaõnnestus</string>
   <!-- 'SoundProof' and 'SoundProof-Dumps' must be kept untranslated -->
-  <string name="morphe_music_soundproof_about_summary">"Artisti andmed pärinevad SoundProof-Dumpsist (github.com/NuclearBlox/SoundProof-Dumps) ning neid uuendatakse kord päevas.끔 Vaatamise jätmine ei saada infot selle kohta, mida sa kuulad. SoundProof lehe avamine saadab praeguse artisti nime SoundProof serverile, et kuvada värskeid hääletusi ja hääletada. Server eristab hääletajaid IP-aadressi järgi, seega võib sinu hääl teises võrgus näida teisiti.
+  <string name="morphe_music_soundproof_about_summary">"Artistide andmed pärinevad SoundProof-Dumpsist (github.com/NuclearBlox/SoundProof-Dumps) ja neid laaditakse alla kord päevas. Loo vahelejätmisel ei saadeta mingit teavet selle kohta, mida parasjagu kuulad. SoundProofi tabeli avamisel saadetakse praeguse artisti nimi SoundProofi serverisse, et kuvada värskeid hääli ja võimaldada hääletamist. Server eristab hääletajaid IP-aadressi alusel, mistõttu võib sinu hääl teises võrgus teistmoodi kajastuda.
 
 Andmebaas on litsentseeritud ODC Open Database License (ODbL) järgi. xoundbyte'i Soul Over AI kirjekandmed on litsentseeritud CC BY 4.0 järgi. Mitte seotud SoundProofi või Soul Over AI-ga ega nende poolt heaks kiidetud."</string>
   <!-- layout.lyrics.lyricsPatch -->
@@ -637,7 +654,7 @@ Esimeses veerus on sõna ja teises selle hääldus. Täiendavaid veerge ja ridu,
   <string name="morphe_music_lyrics_rime_dict_duplicate">%s on juba sõnatabel</string>
   <string name="morphe_music_lyrics_rime_dict_reserved">%s on sisseehitatud romaniseerija poolt loetav ja ei saa võtta sõnalisti</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Ei kasutata: sellel keelel on juba oma hääldusjuhis, seega eemaldage märkeruut selle väljalülitamiseks</string>
-  <string name="morphe_music_lyrics_rime_dict_added">Lisatud %s – märgi see ja puuduta Salvesta, et see alla laadida</string>
+  <string name="morphe_music_lyrics_rime_dict_added">Lisatud %s – märkige see ja puudutage nuppu Salvesta, et see alla laadida</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Sõnalistid on valmis</string>
   <string name="morphe_music_lyrics_rime_dict_ready_toast">Sõnalistid on valmis (%s kirjet)</string>
   <string name="morphe_music_lyrics_rime_dict_building">Loetakse sõnalisti: %s%%</string>
@@ -668,12 +685,12 @@ Sammud:
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: kehtetu sp_dc – palun kontrollige ja proovige uuesti</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Musicu tunnus on valikuline. Ilma selleta kasutatakse varuvariandina teenust Lyrically</string>
   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
-  <string name="morphe_music_deezer_arl_dialog_instruction">"Kleetite Deezeri arl-cookie.
+  <string name="morphe_music_deezer_arl_dialog_instruction">"Kleepige Deezeri arl-cookie.
 
 Sammud:
-1. Logi sisse aadressil deezer.com
-2. Ava DevTools → Application → Cookies → deezer.com
-3. Kopeeri väärtus \"arl\""</string>
+1. Logige sisse aadressil deezer.com
+2. Avage DevTools → Application → Cookies → deezer.com
+3. Kopeerige väärtus \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl salvestatud</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl tühjendatud</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: kehtetu arl – palun kontrollige ja proovige uuesti</string>
@@ -685,14 +702,14 @@ Sammud:
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: kasutaja token tühjendatud</string>
   <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: kehtetu kasutajatoken – palun kontrollige ja proovige uuesti</string>
   <string name="morphe_music_youtube_cookies_title">YouTube\'i küpsised</string>
-  <string name="morphe_music_youtube_cookies_dialog_instruction">"Kleepige oma YouTube'i küpsised, et päriidavalt kuvada altekste ja ajatekste YouTube'ist.
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"Kleepige oma YouTube'i küpsised, et pärida YouTube'ist altekste ja ajatekste.
 
 Sammud:
 1. Avage brauseris youtube.com ja logige sisse
 2. Avage DevTools (F12) → Application → Cookies → youtube.com
-3. Kopeerige kogu küpsiste tekst (võrkude key=value paarid, mida eraldavad semicolonid)
+3. Kopeerige kogu küpsiste tekst (key=value paarid, mida eraldavad semikoolonid)
 
-Kohalduvad küpsised: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+Nõutavad küpsised: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: küpsised salvestatud</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: küpsised kustutatud</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: küpsised on kehtetud - palun kontrollige ja proovige uuesti</string>
@@ -701,7 +718,7 @@ Kohalduvad küpsised: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_section_title">Kuva jaotisesildid</string>
   <string name="morphe_music_lyrics_show_section_summary">Tähista laulusõnade iga uut osa väikese märgendiga, näiteks \"Salm\" või \"Refrään\".</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Kuva kopeerimisnupp</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Puuduta, et kopeerida algse laulusõnade teksti; hoia all, et salvestada laulusõnade algfail kausta \"Downloads\"</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Puuduta, et kopeerida algse laulusõnade teksti; hoia all, et salvestada laulusõnade algfail ja konverteeritud TTML-fail kausta \"Downloads\"</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Kuva tõlkenupp</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Puudutage tõlke sisse- või väljalülitamiseks; pikalt vajutades lülitatakse sisse ainult tõlke režiim. Kasutatakse aktiveeritud tõlketeenuse pakkujaid loetletud järjekorras</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Kuva romaniseerimise või transliteratsiooni nupp</string>
@@ -712,7 +729,7 @@ Kohalduvad küpsised: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_local_romanization_download_started">Laaditakse lugemissõnastikke alla…</string>
   <string name="morphe_music_lyrics_local_romanization_dict_ready">Loetused on valmis (%s kirjet)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Allalaadimine ebaõnnestus – proovimiseks lülita see välja ja uuesti sisse</string>
-  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Võrguta sõnastik</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Võrguväline sõnastik</string>
   <string name="morphe_music_lyrics_local_romanization_dict_japanese">Jaapani keel (SudachiDict, ~75 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_unidict">Hiina ja kantonee märgid (UniDict, ~8 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">Hiina sõnad (pinyin-pro, ~17 MB)</string>
@@ -726,6 +743,7 @@ Kohalduvad küpsised: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_search_empty">Sisestage laulu pealkiri ja esitaja</string>
   <string name="morphe_music_lyrics_search_no_providers">Ükski lubatud teenusepakkuja ei saa otsida teisi laule</string>
   <string name="morphe_music_lyrics_saved">Salvestatud</string>
+  <string name="morphe_music_lyrics_written_by">Kirjutaja: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Tõsta esile sünkroonitud sõnad või silbid</string>
   <string name="morphe_music_lyrics_word_sync_summary">Eelista sõna-sõnalt esitatud laulusõnu, kui need on saadaval. Kui laulusõnad sisaldavad ajastust, tõstetakse iga sõna või silp esile muusikaga samas taktis</string>
   <string name="morphe_music_lyrics_line_scale_title">Lühenda mitteaktiivsed read</string>
@@ -741,7 +759,7 @@ Kohalduvad küpsised: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Animeeri dünaamiline taust</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Liiguta tausta esitamise ajal ja pane see muusikaga koos pulseerima, eeldusel, et YouTube Musicul on luba mikrofonile ligi pääseda. Lülita see välja, kui soovid staatilist tausta, mis tarbib vähem akut</string>
   <string name="morphe_music_lyrics_mediasession_title">Kuva lukustuskuval MediaSessioni laulusõnu</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Kuvab praegust rida lukustuskuval, Android Autos ja Bluetoothi ​​kaudu. Vajalik on Android 11 või uuem versioon</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Kuvab praegust rida lukustuskuval, Android Autos ja Bluetoothi kaudu</string>
   <string name="morphe_music_lyrics_miniplayer_title">Kuva minipleieri laulusõnad</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Kuvab minipleieris praegust rida, kusjuures lugu on nihutatud subtiitri kohale</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Laulu pealkirja/esitaja vorming</string>
@@ -771,20 +789,22 @@ Kehtib mõlema piirmäära puhul. Väärtuse 1,75 korral arvestatakse nelja täi
   <string name="morphe_music_lyrics_custom_regex_title">Metaandmete regex</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Regulaaravaldis, mida rakendatakse pealkirjadele, esitajatele ja albumitele enne laulusõnade otsimist ning kahe pealkirja vastavuse hindamisel. Jätke tühjaks, et mõlemad funktsioonid välja lülitada. Vaikimisi eemaldatakse levinud lisandid, nagu \"Official Video\", \"Remaster\", \"【插曲】\" ja \"- Topic\"</string>
   <string name="morphe_music_lyrics_text_filter_title">Laulusõnade filtreerimise regex</string>
-  <string name="morphe_music_lyrics_text_filter_summary">Regulaarne väljend, mida rakendatakse ainult algse lüürika teksti kohta (mitte tõlgete või romaniseerimise kohta). Jätke tühjaks, et pöörata välja</string>
+  <string name="morphe_music_lyrics_text_filter_summary">Regulaarne väljend, mida rakendatakse ainult algsete laulusõnade teksti kohta (mitte tõlgete ega romaniseerimise kohta). Jätke tühjaks, et lülitada välja</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Inforea märgised</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">Kui laulusõnad filtreeritakse ekslikult allossa, korrigeerige seda või tühjendage väli. Komadega eraldatud tähised: read, mis sisaldavad tähist ja sellele järgnevat koolonit, kuvatakse allosas autorite või osaliste teabena. Jätke tühjaks, et funktsioon välja lülitada</string>
   <string name="morphe_music_lyrics_force_capitalize_title">Kirjuta esimene täht suureks</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">Muudab iga laulusõnade rea esimese tähe suureks</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Eemalda lõpus olev kirjavahemärk</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Eemaldab laulusõnade ridade lõpust punktid, komad, koolonid ja semikoolonid. Küsimärgid, hüüumärgid, mõttekriipsud või mitmikpunktid, jutumärgid ja sulud jäetakse alles</string>
+  <string name="morphe_music_lyrics_han_form_title">Hiina vormi konverteerimine</string>
+  <string name="morphe_music_lyrics_han_form_summary">Kui see on sisse lülitatud, järgib see teie tõlke sihtkeelt, et konverteerida lüüblikud lihtsustatud ja traditsioonilise kirjutamise vahel</string>
   <string name="morphe_music_lyrics_text_size_title">Teksti suurus</string>
   <string name="morphe_music_lyrics_text_size_summary">Laulusõnade teksti suurus</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globaalne ajaline nihe</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Sünkroonitud laulusõnad järgivad taasesitust. Kui need lähevad paigast, korrigeeri ajalist nihet. Nihuta sünkroonitud laulusõnu edasi või tagasi. Kasuta positiivset väärtust, kui laulusõnad jõuavad laulust ette</string>
   <string name="morphe_music_lyrics_sb_matching_title">Kasuta SponsorBlocki segmente laulusõnade nihke määramiseks</string>
   <string name="morphe_music_lyrics_sb_matching_summary">Sobita, jättes vahele SponsorBlocki eemaldatavad lõigud, ning nihuta laulusõnad vastavusse avaldatud heliga. Off eirab SponsorBlocki täielikult</string>
-  <string name="morphe_music_lyrics_sb_no_video">Sellel rajal puudub esitav video-ID</string>
+  <string name="morphe_music_lyrics_sb_no_video">Sellel rajal puudub video-ID, mida saata</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Allikas: %s</string>
   <string name="morphe_music_lyrics_contribute_credit">Vajuta pikalt kopeerimisnuppu, et see LRC salvestada; kui sul õnnestub ajastusi täpsustada ja neid kogukonna panustajatega jagada, oleksime väga tänulikud</string>
@@ -793,6 +813,7 @@ Kehtib mõlema piirmäära puhul. Väärtuse 1,75 korral arvestatakse nelja täi
   <string name="morphe_music_lyrics_translated_by_ai">Tõlkinud %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romaniseerinud %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romaniseerinud %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (koos %2$s-ga)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Rime\'i poolt romaniseeritud (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Tõlgitud</string>
@@ -808,6 +829,8 @@ Kehtib mõlema piirmäära puhul. Väärtuse 1,75 korral arvestatakse nelja täi
   <string name="morphe_romanize_language_DEFAULT">Automaatne</string>
   <string name="morphe_music_lyrics_romanizing">Romaniseerimine…</string>
   <string name="morphe_music_lyrics_romanize_failed">Laulusõnu ei õnnestunud romaniseerida</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Puudub</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Ruby sihtkeel</string>
   <string name="morphe_music_lyrics_translate_only">Ainult tõlgitud</string>
   <string name="morphe_music_lyrics_romanize_only">Ainult romaniseeritud</string>
   <string name="morphe_music_lyrics_dual_only">Kaksirežiim</string>
@@ -815,7 +838,7 @@ Kehtib mõlema piirmäära puhul. Väärtuse 1,75 korral arvestatakse nelja täi
   <string name="morphe_music_lyrics_refreshing">Värskendamine</string>
   <string name="morphe_music_lyrics_refreshed">Värskendatud</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API võti</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkribeerib või sünkroniseerib lüürikat praeguse loo jaoks</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkribeerib või sünkroniseerib laulusõnu praeguse loo jaoks</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC võti on salvestatud. Kasutage laulusõnade otsinguaknas joondamisnuppu või paneelil kuvatavat viipa, kui palal puuduvad laulusõnad</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API võti salvestatud</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC ei aktsepteerinud seda võtit</string>
@@ -838,7 +861,7 @@ Laulutekstid pärinevad kolmandate osapoolte teenustest, mis ei ole Morphega seo
   <string name="morphe_music_lyrics_hide_info_title">Peida autoriinfo</string>
   <string name="morphe_music_lyrics_hide_info_summary">Peita laulusõnade all kuvatavat autoriinfot</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Vaheta tõlge ja romanisatsioon</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Vahetab laulusõnade all oleva tõlke ja romaniseeringu kuvamisjärjekorda</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Liigutab tõlklaulu lüürika kohale; loetak ja romaniseerimine jäävad allalugemise alla</string>
   <string name="morphe_music_lyrics_force_center_title">Keskita alati laulutekstid</string>
   <string name="morphe_music_lyrics_force_center_summary">SEADE ON asetab iga rea keskelle ja ignoreerib algset jooneustamist, sealhulgas duettide poolid; SEADE OFF säilitab lüürika nõutud jooneustamise</string>
   <string name="morphe_music_lyrics_providers_keep_one">Vähemalt üks teenusepakkuja peab jääma sisse</string>
@@ -846,14 +869,7 @@ Laulutekstid pärinevad kolmandate osapoolte teenustest, mis ei ole Morphega seo
   <string name="morphe_music_lyrics_romanization_provider_title">Romaniseerimine või transliteratsioon</string>
   <string name="morphe_music_lyrics_romanization_provider_local">Võrguväline sõnastik</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime sõnalista</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Võrgust sõltumatu sõnastik</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Ruby skript</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Kuva Ruby-nupp</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Puuduta, et lülitada sisse või välja laulusõnade kohal kuvatavad lugemisjuhised; vajuta pikalt, et vahetada hiragana ja katakana vahel. Kasutab lubatud lugemisjuhiste pakkujaid nende loetelus toodud järjekorras</string>
-  <string name="morphe_music_lyrics_ruby_generating">Genereeritakse ruby...</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU transliteraator</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Tuvasta jaotused AI-ga</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Kasutatakse ainult siis, kui teenusepakkuja ei sisalda jaotuste märkmeid, nagu Refrään või Salm, mille teie OpenAI-ga ühilduv mudel seejärel tuvastab. Rea redigeerimine avab ka selle prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API lõpppunkti URL (nt https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -868,7 +884,7 @@ Laulutekstid pärinevad kolmandate osapoolte teenustest, mis ei ole Morphega seo
   <string name="morphe_music_lyrics_ai_config_status_invalid">Seaded on mittetäielikud või tagasi lükatud teenusepakkuja pool</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Ühendust kontrollitakse…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Ühendatud! (%2$s)</string>
-  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Ühendamine ebaõnnestus. Kontrolli seadeid.</string>
+  <string name="morphe_music_lyrics_ai_config_status_failed">%s: Ühendamine ebaõnnestus. Kontrollige seadeid.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Sisestage esmalt API võti</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Testi ühendust</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Mudelite hankimine…</string>
@@ -876,6 +892,7 @@ Laulutekstid pärinevad kolmandate osapoolte teenustest, mis ei ole Morphega seo
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Vali mudel</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Mudelite hankimine ebaõnnestus. Kontrolli API-võtit või ühendust.</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">Juhend</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby juhis (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Mudel</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Base-URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Teenuse eelseaded</string>

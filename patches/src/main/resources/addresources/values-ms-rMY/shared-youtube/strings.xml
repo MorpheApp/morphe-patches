@@ -45,9 +45,9 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_entry_15">Merah tua</string>
   <string name="morphe_theme_color_dark_custom_title">Latar belakang gelap tersuai</string>
   <string name="morphe_theme_color_dark_custom_summary">Tetapkan warna latar belakang untuk tema gelap</string>
-  <string name="morphe_theme_color_entry_1">App default</string>
+  <string name="morphe_theme_color_entry_1">Lalai aplikasi</string>
   <string name="morphe_theme_color_entry_4">Material You (Neutral)</string>
-  <string name="morphe_theme_color_entry_5">Material You (Primary)</string>
+  <string name="morphe_theme_color_entry_5">Material You (Utama)</string>
   <string name="morphe_theme_color_entry_6">Material You (Sekunder)</string>
   <string name="morphe_theme_color_entry_7">Material You (Tertier)</string>
   <string name="morphe_theme_color_custom_entry">Tersuai</string>
@@ -116,7 +116,7 @@ Jadikan %2$s sebagai klien lalai?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Klien lalai</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Log masuk VR Android</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Tidak log masuk ke VR Android. Ketik di sini untuk log masuk</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR memerlukan log masuk berasingan. Ketik di sini untuk meneruskan</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kini log masuk ke Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Untuk menggunakan ciri ini, tukar \'Klien lalai\' kepada Android VR</string>
@@ -130,7 +130,7 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kod pengaktifan: %s
 
 1. Ketik 'Buka laman web' di bawah untuk membuka laman web 'Sambungkan peranti'
-2. Tampal daripada papan klip (atau taip) kod pengaktifan yang dipaparkan di atas
+2. Tampal daripada papan keratan (atau taip) kod pengaktifan yang dipaparkan di atas
 3. Log masuk ke Google jika diminta. Jika anda mempunyai beberapa akaun, pilih akaun YouTube ini
 4. Ketik 'Benarkan akses YouTube VR'
 5. Kembali ke aplikasi ini selepas mencapai mesej 'Peranti disambungkan'"</string>
@@ -202,19 +202,21 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_force_original_audio_not_available">Untuk menggunakan ciri ini, tukar \'Spoof video streams\' kepada mana-mana klien kecuali \'Android Studio\' dan \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Bersihkan pautan perkongsian</string>
-  <string name="morphe_sanitize_sharing_links_summary">Alihkan parameter pertanyaan penjejakan daripada pautan yang dikongsi</string>
+  <string name="morphe_sanitize_sharing_links_summary">Buang parameter pertanyaan penjejakan daripada pautan yang dikongsi</string>
   <string name="morphe_replace_music_with_youtube_title">Tukar pautan kongsi ke youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary">Menggantikan music.youtube.com kepada youtube.com dalam pautan yang dikongsi</string>
   <string name="morphe_replace_links_with_shortener_title">Tukar pautan kongsi kepada youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Memaksa video menggunakan format URL youtu.be yang dipendekkan</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Protokol penimbal log debug</string>
-  <string name="morphe_debug_protobuffer_summary">Menambahkan maklumat log tambahan bagi pembangun untuk mengenal pasti komponen aplikasi</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Mendayakan tetapan ini akan mencatat data tataletak tambahan, termasuklah teks pada skrin untuk beberapa komponen UI.
+  <string name="morphe_debug_litho_title">Log Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Dilumpuhkan</string>
+  <string name="morphe_debug_litho_entry_path">Laluan</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Laluan dan penimbal</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Log Litho mencatat log komponen tataletak aplikasi, termasuk teks pada skrin untuk beberapa komponen UI.
 
 Ini boleh membantu mengenal pasti komponen apabila mencipta penapis tersuai.
 
-Walau bagaimanapun, mendayakan tetapan ini juga akan mencatat beberapa data pengguna seperti alamat IP anda"</string>
+Walau bagaimanapun, ini juga akan mencatat beberapa data pengguna seperti alamat IP anda"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Penapis tersuai</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurasikan penapis tersuai untuk menyembunyikan sebarang komponen</string>
@@ -248,9 +250,7 @@ Untuk menggunakan ciri ini, matikan 'Spoof strim video'"</string>
 Ketik di sini untuk memuat turun PotHelper"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper tidak lagi berfungsi</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
-  <string name="morphe_external_potoken_provider_expired_dialog_message">"Token yang terbina dalam versi PotHelper ini tidak lagi berfungsi
-
- hidupkan 'Spoof video streams' untuk membaiki main balik"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Hidupkan 'Spoof video streams' untuk membaiki main balik"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Hidupkan</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Tiru versi apl</string>
@@ -281,10 +281,10 @@ Jika dimatikan kemudian, anda disyorkan untuk mengosongkan data aplikasi untuk m
   <string name="morphe_custom_font_failed_to_load">Fon tersuai tidak dapat dimuatkan dan telah dimatikan</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_ryd_failure_connection_timeout">Dislike tidak tersedia buat sementara waktu (API tamat masa)</string>
+  <string name="morphe_ryd_failure_connection_timeout">Tidak suka tidak tersedia buat sementara waktu (API tamat masa)</string>
   <string name="morphe_ryd_failure_connection_status_code">Tidak suka tidak tersedia (status %s)</string>
-  <string name="morphe_ryd_failure_client_rate_limit_requested">Dislike tidak tersedia (had API klien)</string>
-  <string name="morphe_ryd_failure_generic">Dislike tidak tersedia (%s)</string>
+  <string name="morphe_ryd_failure_client_rate_limit_requested">Tidak suka tidak tersedia (had API klien)</string>
+  <string name="morphe_ryd_failure_generic">Tidak suka tidak tersedia (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Disembunyikan oleh pemilik</string>
   <string name="morphe_ryd_accessibility_dislike_count">Tidak suka video ini, bersama %s orang lain</string>

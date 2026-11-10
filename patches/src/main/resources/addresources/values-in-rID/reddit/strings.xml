@@ -17,8 +17,8 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="reddit_privacy_policy">Kebijakan privasi Reddit</string>
-  <string name="morphe_google_signin_not_available_toast">Google login tidak tersedia. Gunakan email untuk login</string>
-  <string name="morphe_app_downgrade_dialog_title">Downgrade tidak didukung</string>
+  <string name="morphe_google_signin_not_available_toast">Masuk dengan Google tidak tersedia. Gunakan email untuk masuk</string>
+  <string name="morphe_app_downgrade_dialog_title">Penurunan versi tidak didukung</string>
   <string name="morphe_app_downgrade_dialog_message">"Instalasi Reddit ini diturunkan versinya dari &lt;b&gt;%1$s&lt;/b&gt; ke &lt;b&gt;%2$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 Data aplikasi dari versi yang lebih baru tidak berfungsi dengan versi yang lebih lama dan aplikasi mungkin tidak berjalan dengan benar.
@@ -65,6 +65,8 @@ Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan
   <string name="morphe_hide_trending_shelves_summary">Menyembunyikan rak-rak Trending dari feed dan saran pencarian</string>
   <string name="morphe_remove_notification_dialog_title">Hapus dialog saran notifikasi</string>
   <string name="morphe_remove_notification_dialog_summary">Secara otomatis menutup dialog saran notifikasi saat mengunjungi subreddit</string>
+  <string name="morphe_high_quality_avatars_title">Avatar berkualitas tinggi</string>
+  <string name="morphe_high_quality_avatars_summary">Menampilkan avatar pengguna dalam resolusi penuh</string>
   <string name="morphe_show_flairs_in_home_feed_title">Tampilkan flair di feed beranda</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Menampilkan badge flair postingan di feed beranda</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Beberapa item feed mungkin tidak menampilkan flair</string>
@@ -140,5 +142,5 @@ Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan
   <string name="morphe_app_icon_title">Ikon aplikasi</string>
   <string name="morphe_app_icon_choose_title">Pilih ikon aplikasi</string>
   <string name="morphe_app_icon_default">Bawaan</string>
-  <string name="morphe_app_icon_unknown">Tidak Diketahui</string>
+  <string name="morphe_app_icon_unknown">Tidak diketahui</string>
 </resources>

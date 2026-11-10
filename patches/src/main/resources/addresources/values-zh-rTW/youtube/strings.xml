@@ -58,9 +58,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_feed_flyout_menu_title">啟用推薦內容彈出式選單篩選器</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">推薦內容彈出式選單篩選器</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">輸入彈出式選單名稱以進行篩選，每行一個</string>
-  <string name="morphe_hide_account_menu_title">啟用資料庫 / 您在底部選單中的篩選選項</string>
-  <string name="morphe_hide_account_menu_filter_strings_title">啟用資料庫 / 您在底部選單中的篩選選項</string>
-  <string name="morphe_hide_account_menu_filter_strings_summary">輸入資料庫 / 您要在底部選單中篩選的名稱，以新行分隔</string>
+  <string name="morphe_hide_account_menu_title">啟用媒體庫 / 你的底部選單篩選</string>
+  <string name="morphe_hide_account_menu_filter_strings_title">媒體庫 / 你的底部選單篩選</string>
+  <string name="morphe_hide_account_menu_filter_strings_summary">輸入要篩選的媒體庫 / 你的底部選單名稱，每行一個</string>
   <string name="morphe_hide_account_menu_downloads_title">隱藏下載</string>
   <string name="morphe_hide_album_cards_title">隱藏專輯資訊卡</string>
   <string name="morphe_hide_album_cards_summary">隱藏藝術家描述下方的專輯卡片</string>
@@ -93,7 +93,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_get_premium_button_title">隱藏取得 Premium 按鈕</string>
   <string name="morphe_hide_history_shelf_title">隱藏觀看記錄欄</string>
   <string name="morphe_hide_horizontal_shelves_title">隱藏橫向區塊</string>
-  <string name="morphe_hide_horizontal_shelves_summary">已隱藏橫向專區，例如：• 即時新聞• 你可能喜歡的社群貼文• 繼續觀看• 探索更多頻道• 探索更多主題• 為你推薦• 最新影片• 最相關• 來自創作者社群的貼文• 購物• 再次觀看</string>
+  <string name="morphe_hide_horizontal_shelves_summary">隱藏橫向區塊，例如：即時新聞、你可能喜歡的社群貼文、繼續觀看、探索更多頻道、探索更多主題、為你推薦、最新影片、最相關、來自創作者社群的貼文、購物和再次觀看</string>
   <string name="morphe_hide_image_shelf_title">隱藏圖庫</string>
   <string name="morphe_hide_image_shelf_summary">隱藏搜尋結果中的圖片專區</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
@@ -240,7 +240,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_members_only_chip_summary">隱藏頻道篩選列中的「僅限會員」標籤</string>
   <string name="morphe_hide_members_shelf_title">隱藏會員專屬區塊</string>
   <string name="morphe_hide_members_shelf_summary">隱藏頻道成員清單</string>
-  <string name="morphe_hide_posts_shelf_title">隱藏貼文層級</string>
+  <string name="morphe_hide_posts_shelf_title">隱藏貼文區塊</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">隱藏「商店」按鈕</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
@@ -270,11 +270,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_works_menu_title">隱藏「YouTube 運作方式」選單</string>
   <string name="morphe_hide_privacy_tos_footer_title">隱藏法律和隱私權頁尾</string>
   <string name="morphe_comments_screen_title">留言區</string>
-  <string name="morphe_comments_screen_summary">選擇要在評論區中隱藏哪些元件</string>
+  <string name="morphe_comments_screen_summary">選擇要在評論區中顯示哪些元件</string>
   <string name="morphe_hide_comments_carousel_title">啟用評論輪播過濾器</string>
   <string name="morphe_hide_comments_carousel_summary">"• 輸入關鍵字或完整名稱（例如：提問、社群、話題、收聽）
 • 若隱藏所有項目，則會隱藏整個評論區"</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_title">啟用評論輪播過濾器</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">評論輪播過濾器</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">輸入要篩選的評論輪播名稱，每行一個</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">隱藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_channel_guidelines_title">隱藏頻道準則</string>
@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">依關鍵字隱藏搜尋結果</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">依關鍵字隱藏訂閱內容影片</string>
   <string name="morphe_hide_keyword_content_phrases_title">要隱藏的關鍵字</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"要隱藏的關鍵字和詞語，請用換行符號分隔
+  <string name="morphe_hide_keyword_content_phrases_summary">"輸入要隱藏的關鍵字和詞組，請用換行分隔
 
-關鍵字可以是影片標題或頻道名稱中顯示的任何文字
-
-中間有大寫字母的詞語必須完全匹配（例如：iPhone、TikTok、LeBlanc）"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"「首頁/訂閱/搜尋/留言」將會篩選內容，以隱藏符合關鍵字詞組的相關內容
+關鍵字可以是影片標題或頻道名稱中顯示的任何文字"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"「首頁 / 訂閱 / 搜尋 / 留言」將會篩選內容，以隱藏符合關鍵字詞組的內容
 
 限制：
-• 無法依頻道名稱隱藏 Shorts
-• 部份 UI 元件可能無法隱藏
-• 搜尋關鍵字可能無法顯示結果"</string>
+• 部份 Shorts 無法依頻道名稱隱藏
+• 部份 UI 組件可能無法隱藏"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">比對整個字詞</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">將關鍵字或詞組用雙引號括起來，可以防止影片標題和頻道名稱的部份相符&lt;br&gt;&lt;br&gt;例如：&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; 會隱藏影片：&lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;但不會隱藏：&lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">無法使用關鍵字：%s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">請加上引號來使用關鍵字：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">關鍵字存在衝突宣告：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">關鍵字過短，需要加上引號：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">關鍵字將隱藏所有影片：%s</string>
@@ -433,7 +426,7 @@ Second \"item\" text"</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_current_channel">目前頻道：</string>
   <string name="morphe_channel_whitelist_add">加入白名單</string>
-  <string name="morphe_channel_whitelist_remove">刪除</string>
+  <string name="morphe_channel_whitelist_remove">移除</string>
   <string name="morphe_channel_whitelist_channels_header">已加入白名單的頻道</string>
   <string name="morphe_channel_whitelist_empty">沒有已加入白名單的頻道</string>
   <string name="morphe_channel_whitelist_channel_added">頻道已加入白名單</string>
@@ -500,6 +493,17 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">正在翻譯……</string>
   <string name="morphe_post_translate_failed">無法翻譯此貼文</string>
   <string name="morphe_post_translate_same_language">貼文已翻譯為目標語言</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">啟用隨處可用 Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">播放器彈出式「隨時隨地」會開啟 Morphe 自定義播放控制項</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">隨時隨地</string>
+  <string name="morphe_on_the_go_audio_mode">切換至音訊模式</string>
+  <string name="morphe_on_the_go_video_mode">切換至視訊模式</string>
+  <string name="morphe_on_the_go_download">下載</string>
+  <string name="morphe_on_the_go_queue">佇列</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">在彈出式選單中加入「Ask」項目</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">在資訊流彈出式選單中加入影片摘要項目</string>
@@ -541,7 +545,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_quick_menu_title">點擊快速下載</string>
   <string name="morphe_external_downloader_quick_menu_summary">提示在背景下載。長按以開啟下載器。支援 YTDLnis 與 YTindir</string>
   <string name="morphe_external_downloader_mark_watched_title">將下載內容標記為已觀看</string>
-  <string name="morphe_external_downloader_mark_watched_summary">使用外部下載器下載的影片將被添加到您的 YouTube 觀看記錄中</string>
+  <string name="morphe_external_downloader_mark_watched_summary">使用外部下載器下載的影片將新增到您的 YouTube 觀看記錄中</string>
   <string name="morphe_external_downloader_quick_video_quality">Full HD (1080p)</string>
   <string name="morphe_external_downloader_quick_audio_quality">Medium (192 kbps)</string>
   <string name="morphe_external_downloader_quick_menu_header">快速下載</string>
@@ -568,7 +572,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_failed">無法匯出影片</string>
   <string name="morphe_export_download_canceled">取消匯出</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
-  <string name="morphe_vot_screen_title">語音轉錄翻譯</string>
+  <string name="morphe_vot_screen_title">語音旁白翻譯</string>
   <string name="morphe_vot_screen_summary">使用裝置上的文字轉語音功能朗讀影片字幕，並與播放同步</string>
   <string name="morphe_vot_enabled_summary">在影片播放器中顯示疊加按鈕。輕觸可切換翻譯，長按可開啟快速設定。</string>
   <string name="morphe_vot_caption_language_title">語言</string>
@@ -616,15 +620,17 @@ Second \"item\" text"</string>
   <string name="morphe_vot_openrouter_open_website">開啟 OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_error">OpenRouter 翻譯失敗 (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">MyMemory 每日額度已達標</string>
-  <string name="morphe_vot_mymemory_quota_next_available">%s 可使用下次重置</string>
+  <string name="morphe_vot_mymemory_quota_next_available">下次可用時間：%s</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">您已用完今天的免費 MyMemory 翻譯額度 (5,000 個字元)。在設定中新增 MyMemory 電子郵件地址，將每日額度提高到 50,000 個字元，或切換至其他翻譯服務</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">您已用完今天的 MyMemory 翻譯額度 (50,000 個字元)。切換至其他翻譯服務或明天再試</string>
   <string name="morphe_vot_mymemory_error">MyMemory 翻譯失敗 (狀態 %s)</string>
-  <!-- interaction.watchlater.watchLaterPatch -->
-  <string name="morphe_watch_later_wide_drag_handles_title">加寬「稍後觀看」拖曳控制項</string>
-  <string name="morphe_watch_later_wide_drag_handles_summary">「稍後觀看」影片的拖曳控制項將更容易抓取</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">隱藏「稍後觀看」移除提示欄</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_summary">從「稍後觀看」移除影片後將不再顯示確認提示</string>
+  <!-- interaction.playlist.playlistPatch -->
+  <string name="morphe_playlist_wide_drag_handles_title">加寬播放清單拖曳控制項</string>
+  <string name="morphe_playlist_wide_drag_handles_summary">播放清單拖曳控制項更容易抓取</string>
+  <string name="morphe_playlist_hide_removal_snackbar_title">隱藏播放清單移除提示欄</string>
+  <string name="morphe_playlist_hide_removal_snackbar_summary">從播放清單移除影片後不再顯示確認提示</string>
+  <string name="morphe_playlist_long_press_drag_title">長按以重新排列播放清單中的影片</string>
+  <string name="morphe_playlist_long_press_drag_summary">觸碰並按住播放清單中的影片，將其拖曳至新位置</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">啟用循環播放影片</string>
   <string name="morphe_do_not_remember_loop_video_title">記住循環播放影片</string>
@@ -641,7 +647,7 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_set">設定</string>
   <string name="morphe_loop_video_range_clear">清除</string>
   <string name="morphe_loop_video_range_toast_on">循環播放 %1$s - %2$s</string>
-  <string name="morphe_loop_video_range_invalid_time">所選擇的時間無效</string>
+  <string name="morphe_loop_video_range_invalid_time">所選時間無效</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">顯示子母畫面按鈕</string>
   <string name="morphe_pip_button_flyout_title">顯示子母畫面選單</string>
@@ -661,9 +667,7 @@ Second \"item\" text"</string>
   <string name="morphe_pip_action_entry_background_playback">背景播放</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">顯示播放全部按鈕</string>
-  <string name="morphe_play_all_button_summary">"點擊播放頻道中的所有影片，長按取消
-
-資訊：可能無法在直播中使用"</string>
+  <string name="morphe_play_all_button_summary">"點擊以產生頻道所有影片的播放清單，長按取消"</string>
   <string name="morphe_play_all_button_type_title">產生播放清單模式</string>
   <string name="morphe_play_all_button_type_entry_0">所有內容 (依時間排序，遞增)</string>
   <string name="morphe_play_all_button_type_entry_1">所有內容 (依時間排序)</string>
@@ -703,7 +707,7 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_1">預設</string>
   <string name="morphe_queue_type_entry_2">原生佇列</string>
   <string name="morphe_queue_type_entry_3">Morphe 佇列</string>
-  <string name="morphe_queue_type_entry_4">Morphe 佇列客戶端</string>
+  <string name="morphe_queue_type_entry_4">Morphe 佇列用戶端</string>
   <string name="morphe_queue_add_flyout_menu_title">新增動態消息彈出式佇列選單項目</string>
   <string name="morphe_queue_add_flyout_menu_summary">新增額外的彈出式項目。若未顯示「加入佇列」，請啟用此選項</string>
   <string name="morphe_local_queue_sheet_title">佇列</string>
@@ -715,7 +719,7 @@ Second \"item\" text"</string>
   <string name="morphe_local_queue_play_next">播放佇列中的下一個</string>
   <string name="morphe_local_queue_play_last">播放佇列中的最後一個</string>
   <string name="morphe_local_queue_reorder">重新排序</string>
-  <string name="morphe_local_queue_remove">刪除</string>
+  <string name="morphe_local_queue_remove">移除</string>
   <string name="morphe_local_queue_added">已新增至佇列</string>
   <string name="morphe_local_queue_unavailable">無法將此影片新增至佇列</string>
   <string name="morphe_local_queue_playlist_unsupported">無法將播放清單新增至佇列</string>
@@ -728,7 +732,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">彈出式選單中的播放速度白名單</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">新增一個彈出式選單項目，讓該影片所屬頻道的影片一律以 1.0 倍速播放。</string>
   <string name="morphe_queue_manager_check_failed_auth">未登入</string>
-  <string name="morphe_queue_manager_check_failed_playlist_id">沒有播放列表 ID</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">沒有播放清單 ID</string>
   <string name="morphe_queue_manager_check_failed_queue">佇列是空的</string>
   <string name="morphe_queue_manager_check_failed_video_id">沒有影片 ID</string>
   <string name="morphe_queue_manager_check_failed_generic">失敗：%s</string>
@@ -749,8 +753,10 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_remove_from_queue_and_open_queue">移除並開啟佇列</string>
   <string name="morphe_queue_manager_remove_from_queue_and_reload_video">移除並重新載入影片</string>
   <string name="morphe_queue_manager_open_queue">開啟佇列</string>
-  <string name="morphe_queue_manager_save_queue">將佇列儲存至播放列表</string>
+  <string name="morphe_queue_manager_save_queue">將佇列儲存至播放清單</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">捲動時載入隊列頁面</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">在捲動至隊列末端附近時，載入更多播放清單影片</string>
   <string name="morphe_native_playlist_queue_saved">已儲存播放清單</string>
   <string name="morphe_native_playlist_queue_saved_to">已儲存在 %s</string>
   <string name="morphe_native_playlist_queue_clear">清除佇列</string>
@@ -780,19 +786,29 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_live_stream_dvr_not_available">"'啟用直播 DVR' 可能無法使用
 
-若要修正此問題，請開啟 '模擬影片串流' 並將 '預設用戶端' 變更為 'TV Simply' 或 'visionOS'"</string>
+若要修正此問題，請開啟 '欺騙影片串流' 並將 '預設用戶端' 變更為 'TV Simply' 或 'visionOS'"</string>
   <string name="morphe_expand_live_stream_dvr_duration_title">擴展直播 DVR 時長</string>
   <string name="morphe_expand_live_stream_dvr_duration_summary">允許您將直播回捲至過去最多 7 天</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_expand_live_stream_dvr_duration_not_available">"'擴展直播 DVR 時長' 可能無法使用
 
-若要修正此問題，請開啟 '模擬影片串流' 並將 '預設用戶端' 變更為 'TV Simply' 或 'visionOS'"</string>
+若要修正此問題，請開啟 '欺騙影片串流' 並將 '預設用戶端' 變更為 'TV Simply' 或 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">啟用滑動預覽</string>
   <string name="morphe_slide_to_seek_summary">按住影片來滑動影片進度條，而不是以 2 倍速播放。</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">啟用輕觸以跳轉</string>
   <string name="morphe_tap_to_seek_summary">點擊進度條上的任何位置即可跳到該位置，無需拖曳。</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_title">啟用自訂跳轉列滑桿</string>
+  <string name="morphe_custom_seekbar_thumb_summary">將跳轉列滑桿替換為自訂圖片或動畫 GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">滑桿圖片</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">從裝置儲存空間選擇圖片或動畫 GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">選取的檔案不是支援的圖片</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">找不到自訂跳轉列滑桿圖片</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">滑桿大小</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">適配跳轉列</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">原始大小</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">向左滑動手勢</string>
   <string name="morphe_swipe_right_zone_title">向右滑動手勢</string>
@@ -858,7 +874,7 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary">在全螢幕模式下滑動以跳到下一部或上一部影片</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_action_buttons_screen_title">動作按鈕</string>
-  <string name="morphe_action_buttons_screen_summary">選擇要在底部導航欄中顯示哪些按鈕</string>
+  <string name="morphe_action_buttons_screen_summary">選擇要在直向和全螢幕模式中顯示哪些動作按鈕</string>
   <string name="morphe_portrait_buttons">縱向模式按鈕</string>
   <string name="morphe_disable_like_subscribe_glow_title">停用「喜歡」和「訂閱」的發光效果</string>
   <string name="morphe_disable_like_subscribe_glow_summary">防止創作者在提到它們時，喜歡和訂閱按鈕發光</string>
@@ -959,7 +975,7 @@ Second \"item\" text"</string>
   <string name="morphe_caption_blocks_too_large">兩個字幕語言無法在這個播放器中完整顯示。顯示主要語言。</string>
   <!-- layout.buttons.navigation.navigationBarPatch -->
   <string name="morphe_navigation_bar_screen_title">導覽列</string>
-  <string name="morphe_navigation_bar_screen_summary">選擇要在工具列中顯示哪些元件</string>
+  <string name="morphe_navigation_bar_screen_summary">選擇要在底部導覽列中顯示哪些按鈕</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">隱藏首頁按鈕</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -977,7 +993,7 @@ Second \"item\" text"</string>
   <string name="morphe_watch_later_navigation_label">稍後觀看</string>
   <string name="morphe_show_settings_button_title">顯示設定按鈕</string>
   <string name="morphe_show_settings_button_type_title">設定按鈕動作</string>
-  <string name="morphe_show_settings_button_type_summary">開啟啟用時的 Morphe 設定，或停用時的 YouTube 設定</string>
+  <string name="morphe_show_settings_button_type_summary">啟用時開啟 Morphe 設定，停用時開啟 YouTube 設定</string>
   <string name="morphe_navigation_buttons_order_title">導覽列按鈕順序</string>
   <string name="morphe_navigation_buttons_order_summary">拖曳按鈕以更改其在導覽列中的順序</string>
   <string name="morphe_swap_create_with_notifications_button_title">將「建立」按鈕與「通知」按鈕對調</string>
@@ -1023,7 +1039,7 @@ Second \"item\" text"</string>
   <string name="morphe_toolbar_buttons_order_title">工具列按鈕順序</string>
   <string name="morphe_toolbar_buttons_order_summary">拖曳按鈕以更改其在工具列中的順序</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">介面選單</string>
+  <string name="morphe_hide_player_flyout_title">彈出式選單</string>
   <string name="morphe_hide_player_flyout_summary">選擇哪些元件出現在彈出式選單中</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">隱藏「其他設定」/「更多」選單</string>
@@ -1091,6 +1107,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">允許微光模式在省電模式中保持作用</string>
   <string name="morphe_disable_ambient_mode_title">停用微光效果</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">在全螢幕狀態下停用微光效果</string>
+  <string name="morphe_enhanced_ambient_mode_title">增強型微光效果</string>
+  <string name="morphe_enhanced_ambient_mode_summary">使用影片色彩照亮整個觀看頁面及黑邊，以取代微光效果</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">保持文字可讀性</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">調低明亮影片的亮度，使頁面上的文字保持可讀</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">隱藏資訊卡</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1173,7 +1193,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_playlist_autoplay_title">停用播放清單自動播放</string>
   <string name="morphe_disable_playlist_autoplay_summary">防止播放清單自動跳到下一個影片</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-  <string name="morphe_disable_continue_watching_prompt_title">停用「繼續觀看？」提示</string>
+  <string name="morphe_continue_watching_prompt_title">“繼續觀看？”提示</string>
+  <string name="morphe_continue_watching_prompt_entry_1">預設</string>
+  <string name="morphe_continue_watching_prompt_entry_2">已停用</string>
+  <string name="morphe_continue_watching_prompt_entry_3">已停用，始終顯示自動播放倒數</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">影片結束時退出全螢幕模式</string>
   <string name="morphe_exit_fullscreen_entry_1">停用</string>
@@ -1187,8 +1210,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_gestures_title">全螢幕手勢</string>
   <string name="morphe_disable_fullscreen_gestures_summary">全螢幕模式下的手勢操作</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">停用向上滑動手勢</string>
-  <string name="morphe_disable_fullscreen_sliding_down_gesture_title">停用直立螢幕滑下勢態</string>
-  <string name="morphe_disable_fullscreen_dragged_down_gesture_title">停用橫向螢幕滑下勢態</string>
+  <string name="morphe_disable_fullscreen_sliding_down_gesture_title">停用直立螢幕下滑手勢</string>
+  <string name="morphe_disable_fullscreen_dragged_down_gesture_title">停用橫向螢幕下滑手勢</string>
   <string name="morphe_disable_fullscreen_zoom_gesture_title">停用捏合縮放手勢</string>
   <string name="morphe_restore_pinch_to_zoom_title">還原捏合縮放</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
@@ -1294,7 +1317,7 @@ Second \"item\" text"</string>
   <string name="morphe_skip_live_shorts_title">跳過直播 Short</string>
   <string name="morphe_skip_live_shorts_summary">跳過出現在 Shorts 資訊流中的直播</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
-  <string name="morphe_playback_in_feeds_title">feeds 中的播放</string>
+  <string name="morphe_playback_in_feeds_title">動態消息中的播放</string>
   <string name="morphe_playback_in_feeds_entry_always_on">持續開啟</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">僅 Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">關閉</string>
@@ -1306,7 +1329,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_auto_feed_refresh_title">停用動態消息自動重新整理</string>
   <string name="morphe_disable_auto_feed_refresh_summary">防止動態消息在過時後自動重新整理</string>
   <!-- layout.feedcards.feedCardLayoutPatch -->
-  <string name="morphe_feed_card_layout_title">Feed 卡版面</string>
+  <string name="morphe_feed_card_layout_title">動態消息卡片版面</string>
   <string name="morphe_feed_card_layout_entry_1">經典</string>
   <string name="morphe_feed_card_layout_entry_2">卡片</string>
   <string name="morphe_feed_card_layout_entry_3">含喜歡、留言和儲存按鈕的卡片</string>
@@ -1384,9 +1407,9 @@ Second \"item\" text"</string>
   <string name="morphe_gradient_loading_screen_title">啟用漸層載入畫面</string>
   <string name="morphe_gradient_loading_screen_summary">在載入畫面顯示漸層背景，而不是純色</string>
   <string name="morphe_seekbar_custom_color_title">啟用自訂跳轉列顏色</string>
-  <string name="morphe_seekbar_custom_color_primary_title">尋找列顏色</string>
+  <string name="morphe_seekbar_custom_color_primary_title">跳轉列顏色</string>
   <string name="morphe_seekbar_custom_color_primary_summary">設定影片進度條的主要顏色</string>
-  <string name="morphe_seekbar_custom_color_accent_title">尋找列輔色</string>
+  <string name="morphe_seekbar_custom_color_accent_title">跳轉列輔色</string>
   <string name="morphe_seekbar_custom_color_accent_summary">設定影片進度條的次要顏色</string>
   <string name="morphe_seekbar_custom_color_invalid">跳轉列色彩值無效</string>
   <!-- layout.branding.customBrandingPatch -->
@@ -1430,11 +1453,11 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_connection_toast_title">在 DeArrow 伺服器無法使用時顯示通知</string>
   <string name="morphe_dearrow_connection_toast_summary">當 DeArrow 伺服器無法使用時顯示通知</string>
   <string name="morphe_dearrow_api_url_title">API 端點</string>
-  <string name="morphe_dearrow_api_url_summary">DeArrow URL 縮圖快取端點</string>
+  <string name="morphe_dearrow_api_url_summary">DeArrow 縮圖快取端點的 URL</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">靜態影片擷取</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">靜態擷取是擷取每個影片的開頭/中間/結尾作為縮圖。這些圖像內建於 YouTube 中，不會使用外部 API</string>
-  <string name="morphe_dearrow_thumbnail_stills_time_title">開始</string>
-  <string name="morphe_dearrow_thumbnail_stills_time_entry_1">中間</string>
+  <string name="morphe_dearrow_thumbnail_stills_time_title">擷取影片畫面位置</string>
+  <string name="morphe_dearrow_thumbnail_stills_time_entry_1">開頭</string>
   <string name="morphe_dearrow_thumbnail_stills_time_entry_2">將粗體影片播放器控制項復原為較舊、較細的視覺樣式</string>
   <string name="morphe_dearrow_thumbnail_stills_time_entry_3">結束</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -1443,14 +1466,14 @@ Second \"item\" text"</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">還原舊播放器按鈕樣式</string>
-  <string name="morphe_restore_old_player_buttons_summary">欺騙伺服器以提供更高品質的選項，方法是偽造裝置尺寸</string>
+  <string name="morphe_restore_old_player_buttons_summary">還原為較舊、較細的視覺風格，取代粗體的影片播放器控制項</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">偽裝裝置尺寸</string>
   <string name="morphe_spoof_device_dimensions_summary">啟用此設定可以解鎖更高的影片畫質</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">啟用這個功能可能會導致影片播放卡頓、電池續航力變差，以及未知的副作用</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">觸覺回饋</string>
-  <string name="morphe_disable_haptic_feedback_summary">自訂鎖定畫面和通知面板上顯示的播放控制項</string>
+  <string name="morphe_disable_haptic_feedback_summary">選擇哪些操作會觸發裝置震動</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">停用章節觸覺回饋</string>
   <string name="morphe_disable_haptic_feedback_precise_seeking_title">停用精準拖曳觸覺回饋</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">停用拖曳還原觸覺回饋</string>
@@ -1482,14 +1505,14 @@ Second \"item\" text"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">自動</string>
-  <string name="morphe_remember_video_quality_last_selected_title">將您的手動畫質選擇套用至所有未來的影片</string>
+  <string name="morphe_remember_video_quality_last_selected_title">記住影片畫質</string>
   <string name="morphe_remember_video_quality_last_selected_summary">將你手動選擇的畫質套用到之後的所有影片</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">在變更預設影片畫質時顯示通知</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary">儲存新的預設畫質時顯示通知</string>
   <string name="morphe_video_quality_default_wifi_title">使用 Wi-Fi 時的預設影片畫質</string>
   <string name="morphe_video_quality_default_mobile_title">使用行動數據時的預設影片畫質</string>
-  <string name="morphe_remember_shorts_quality_last_selected_title">將您的手動畫質選擇套用至所有未來的 Shorts</string>
-  <string name="morphe_remember_shorts_quality_last_selected_summary">顯示播放速度按鈕</string>
+  <string name="morphe_remember_shorts_quality_last_selected_title">記住 Shorts 畫質</string>
+  <string name="morphe_remember_shorts_quality_last_selected_summary">將你手動選擇的畫質套用到之後的所有 Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi 網路下的預設 Shorts 畫質</string>
   <string name="morphe_shorts_quality_default_mobile_title">行動網路下的預設 Shorts 畫質</string>
   <string name="morphe_remember_video_quality_toast_mobile">已將預設行動網路畫質變更為：%s</string>
@@ -1497,25 +1520,25 @@ Second \"item\" text"</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">已將 Shorts 行動網路畫質變更為：%s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">已將 Shorts Wi-Fi 畫質變更為：%s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
-  <string name="morphe_playback_speed_dialog_button_title">點擊並按住以重設為預設速度</string>
-  <string name="morphe_playback_speed_dialog_button_summary">顯示畫質按鈕</string>
+  <string name="morphe_playback_speed_dialog_button_title">顯示播放速度按鈕</string>
+  <string name="morphe_playback_speed_dialog_button_summary">點擊並按住以重設為預設速度</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
-  <string name="morphe_video_quality_dialog_button_title">點擊並按住以重設為預設畫質</string>
-  <string name="morphe_video_quality_dialog_button_summary">輸入您偏好的播放速度選項</string>
+  <string name="morphe_video_quality_dialog_button_title">顯示畫質按鈕</string>
+  <string name="morphe_video_quality_dialog_button_summary">點擊並按住以重設為預設畫質</string>
   <string name="morphe_video_quality_dialog_button_resolution_title">在畫質按鈕上顯示解析度</string>
   <string name="morphe_video_quality_dialog_button_resolution_summary">顯示解析度（例如 1080），而不是像 FHD 那樣的標籤</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">自訂播放速度選單</string>
   <string name="morphe_restore_old_speed_menu_title">復原舊版播放速度選單</string>
   <string name="morphe_custom_playback_speeds_title">自訂播放速度</string>
-  <string name="morphe_custom_playback_speeds_summary">點擊並按住播放速度</string>
+  <string name="morphe_custom_playback_speeds_summary">輸入您偏好的播放速度選項</string>
   <string name="morphe_custom_playback_speeds_invalid">自訂播放速度必須小於 %s</string>
   <string name="morphe_custom_playback_speeds_parse_exception">自訂播放速度格式不正確</string>
   <string name="morphe_custom_playback_speeds_auto">自動</string>
-  <string name="morphe_speed_tap_and_hold_title">設定按住螢幕時的速度乘數，設定為 0 以停用</string>
+  <string name="morphe_speed_tap_and_hold_title">點擊並按住播放速度</string>
   <string name="morphe_speed_tap_and_hold_summary">設定按住畫面時的速度倍數，設為 0 可停用</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
-  <string name="morphe_remember_playback_speed_last_selected_title">將您的手動速度選擇套用至所有未來的影片</string>
+  <string name="morphe_remember_playback_speed_last_selected_title">記住播放速度</string>
   <string name="morphe_remember_playback_speed_last_selected_summary">將你手動選擇的速度套用到之後的所有影片</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">在變更預設播放速度時顯示通知</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">變更預設播放速度時會顯示提示</string>
@@ -1550,11 +1573,11 @@ Second \"item\" text"</string>
 限制：
 • 如果顯示器實際上無法顯示 HDR，顏色可能會看起來不正確。
 • 如果解碼器無法處理 HDR，播放可能會失敗。
-• HDR 仍然取決於 spoof 影片串流用戶端。"</string>
-  <string name="morphe_video_codec_title">視訊編解碼器</string>
+• HDR 仍然取決於「欺騙影片串流」用戶端。"</string>
+  <string name="morphe_video_codec_title">影片編解碼器</string>
   <string name="morphe_video_codec_entry_default">預設</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_video_codec_avc_not_available">若要強制使用 AVC，請將「模擬影片串流」改為「Android Studio」、「Android VR」或「visionOS」</string>
+  <string name="morphe_video_codec_avc_not_available">若要強制使用 AVC，請將「欺騙影片串流」改為「Android Studio」、「Android VR」或「visionOS」</string>
   <string name="morphe_video_codec_user_dialog_message">"VP9
 • 可延長電池續航力並修正播放卡頓
 • 比 AV1 消耗更多網路流量
@@ -1580,10 +1603,10 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_av1_summary">允許在使用「Android VR」/ visionOS 用戶端時進行軟體 AV1 解碼</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"啟用此設定可能會使用軟體 AV1 解碼。
 
-AV1 視訊播放可能會卡頓或丟格"</string>
+AV1 影片播放可能會卡頓或丟格"</string>
   <string name="morphe_spoof_video_streams_about_title">偽裝副作用</string>
   <string name="morphe_spoof_video_streams_about_failure">• 播放可能會在 1 分鐘時失敗</string>
-  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• 「音軌」選單遺失</string>
+  <string name="morphe_spoof_video_streams_about_no_audio_tracks">• 「音訊軌道」選單遺失</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 沒有 AV1 影片解碼器</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 全景模式不可用</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• 無法使用平衡音量</string>
@@ -1635,7 +1658,7 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_ui_clear_all_local_progress">清除所有本機進度</string>
   <string name="morphe_series_tracker_ui_clear_history">清除歷史記錄</string>
   <string name="morphe_series_tracker_clear_progress_title">確定要清除所有本機進度嗎？</string>
-  <string name="morphe_series_tracker_clear_progress_message">這會清除每部影片的觀看進度位置、已观看覆蓋狀態和斷點選擇。已儲存系列及其目錄不受影響。如果啟用了記錄功能，將會開始重新記錄播放進度</string>
+  <string name="morphe_series_tracker_clear_progress_message">這會清除每部影片的位置、已看覆寫狀態和續播選擇。已儲存的系列及其目錄不受影響。如果已啟用記錄功能，之後的播放將會被記錄</string>
   <string name="morphe_series_tracker_ui_mark_watched">標記為已觀看</string>
   <string name="morphe_series_tracker_ui_mark_unwatched">標記為未觀看</string>
   <string name="morphe_series_tracker_ui_use_automatic_status">使用自動狀態</string>
@@ -1651,18 +1674,18 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_ui_watch_history">觀看歷史記錄</string>
   <string name="morphe_series_tracker_ui_series">系列</string>
   <string name="morphe_series_tracker_ui_loading_saved_series">正在載入已儲存的系列……</string>
-  <string name="morphe_series_tracker_empty_library">追蹤播放清單以跟蹤其劇集</string>
+  <string name="morphe_series_tracker_empty_library">追蹤播放清單以查看其集數</string>
   <string name="morphe_series_tracker_ui_playlist_bookmark">播放清單書籤</string>
   <string name="morphe_series_tracker_ui_refreshing_episodes">正在重新整理集數……</string>
   <string name="morphe_series_tracker_ui_all_series">所有系列</string>
   <string name="morphe_series_tracker_watched">已觀看</string>
   <string name="morphe_series_tracker_ui_loading_episodes">正在載入集數……</string>
   <string name="morphe_series_tracker_ui_more_options">更多選項</string>
-  <string name="morphe_series_tracker_record_consent">"僅為您的已儲存系列和已書籤標記的影片記錄進度。
+  <string name="morphe_series_tracker_record_consent">"僅為您已儲存的系列和已加入書籤的影片記錄進度。
 
-此資料庫儲存在本裝置上，並在多個 YouTube 帳戶之間共用。YouTube 的暫停和清除歷史記錄控制項不會影響它。使用「系列」→「更多」→「清除本地進度」即可將其刪除。
+此程式庫儲存在本裝置上，並在多個 YouTube 帳戶之間共用。YouTube 的暫停和清除歷史記錄控制項不會影響它。使用「系列」→「更多」→「清除本機進度」即可將其刪除。
 
-在無痕模式下、帳戶身分不可用時或切換至其他帳戶時，自動記錄會停止。再次啟用追蹤功能即可與該帳戶一起使用"</string>
+在無痕模式下、帳戶身分無法取得時，或切換至其他帳戶時，自動記錄會停止。若要與該帳戶一起使用，請重新啟用追蹤功能"</string>
   <string name="morphe_series_tracker_identity_unavailable">在無痕模式下或 YouTube 尚未載入目前帳戶狀態之前，無法啟用追蹤功能。請返回主頁並再試一次。無需登入</string>
   <string name="morphe_series_tracker_enable">啟用本機追蹤功能</string>
   <string name="morphe_series_tracker_tracking_paused">進度記錄已關閉</string>
@@ -1670,11 +1693,11 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_watched_count">%1$s / %2$s 集已看</string>
   <string name="morphe_series_tracker_episode_position">第 %1$s 集 · %2$s</string>
   <string name="morphe_series_tracker_episode_range">共 %3$s 集中的第 %1$s-%2$s 集</string>
-  <string name="morphe_series_tracker_catalog_unavailable">重新整理以嘗試載入影集。私人播放清單需要帳戶存取權；其書籤仍會在 YouTube 中開啟</string>
+  <string name="morphe_series_tracker_catalog_unavailable">重新整理以嘗試載入集數。私人播放清單需要帳戶存取權；其書籤仍會在 YouTube 中開啟</string>
   <string name="morphe_series_tracker_open_failed">YouTube 無法開啟此集</string>
   <string name="morphe_series_tracker_playlist_failed">YouTube 無法開啟此播放清單</string>
   <string name="morphe_series_tracker_plan_changed">選取一集</string>
-  <string name="morphe_series_tracker_plan_caught_up">追平了</string>
+  <string name="morphe_series_tracker_plan_caught_up">已追上</string>
   <string name="morphe_series_tracker_plan_none">沒有可播放的集數</string>
   <string name="morphe_series_tracker_saved_position">已儲存影片 · %s</string>
   <string name="morphe_series_tracker_follow">追蹤系列</string>
@@ -1699,10 +1722,10 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_error_storage_unavailable">儲存空間不可用。已保留您的儲存資料</string>
   <string name="morphe_series_tracker_error_storage_save">無法儲存變更。在關閉 YouTube 前重試儲存</string>
   <string name="morphe_series_tracker_error_conflict">此劇集已儲存，或其播放清單已變更。請重新開啟</string>
-  <string name="morphe_series_tracker_error_series_changed">此劇集已變更或遭移除。請重新開啟圖書館</string>
+  <string name="morphe_series_tracker_error_series_changed">此系列已變更或遭移除。請重新開啟程式庫</string>
   <string name="morphe_series_tracker_error_playlist_changed">播放清單已變更。請再次選取劇集</string>
   <string name="morphe_series_tracker_error_episode_unavailable">此劇集不可用。請選擇其他劇集</string>
-  <string name="morphe_series_tracker_error_name_required">輸入劇集名稱</string>
+  <string name="morphe_series_tracker_error_name_required">請輸入系列名稱</string>
   <string name="morphe_series_tracker_error_playlist_input">輸入 YouTube 播放清單連結或播放清單 ID</string>
   <string name="morphe_series_tracker_error_retry_later">請稍候再刷新</string>
   <string name="morphe_series_tracker_error_catalog_unavailable">無法載入劇集。請稍後再試</string>
@@ -1731,26 +1754,26 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_series_tracker_completion_range">輸入 %1$s 至 %2$s 之間的數值</string>
   <string name="morphe_series_tracker_youtube_progress_title">使用 YouTube 進度</string>
   <string name="morphe_series_tracker_youtube_progress_summary">在其他裝置上觀看後繼續追蹤系列</string>
-  <string name="morphe_series_tracker_sync_consent">從目前的 YouTube 帳戶讀取已追劇集和已看狀態及繼續播放位置。僅在此手機上保存匹配的影集集數。檢查會在影集資料庫開啟及「繼續」之前執行。您的其他裝置必須啟用了 YouTube 歷史記錄</string>
+  <string name="morphe_series_tracker_sync_consent">從目前的 YouTube 帳戶讀取您追蹤系列的已看狀態和續播位置。僅會在此手機上儲存相符的集數。檢查會在系列程式庫開啟時及「繼續」之前執行。您的其他裝置必須啟用 YouTube 歷史記錄</string>
   <string name="morphe_series_tracker_sync_checking">正在檢查 YouTube 進度……</string>
   <string name="morphe_series_tracker_sync_failed">YouTube 進度不可用。使用保存的進度</string>
   <string name="morphe_series_tracker_sync_partial">部分 YouTube 進度不可用。保留保存的位置</string>
   <string name="morphe_series_tracker_backup_title">備份和還原</string>
   <string name="morphe_series_tracker_backup_summary">將您的系列程式庫儲存至檔案或還原備份</string>
-  <string name="morphe_series_tracker_backup_explanation">保存追劇集、影集集位置和已看選擇。不包含記錄和 YouTube 進度權限</string>
+  <string name="morphe_series_tracker_backup_explanation">儲存追蹤的系列、集數位置和已看選擇。不包含記錄和 YouTube 進度的權限設定</string>
   <string name="morphe_series_tracker_backup_save">儲存備份</string>
   <string name="morphe_series_tracker_backup_restore">還原備份</string>
-  <string name="morphe_series_tracker_backup_preview">新增 %1$s 個追劇集。圖書館中已存在的 %2$s 個追劇集將保留。現有影片進度將保留</string>
+  <string name="morphe_series_tracker_backup_preview">新增 %1$s 個系列。程式庫中已存在的 %2$s 個系列將保留。現有影片進度將保留</string>
   <string name="morphe_series_tracker_backup_saved">系列備份已儲存</string>
   <string name="morphe_series_tracker_backup_restored">已恢復 %s 部劇集</string>
-  <string name="morphe_series_tracker_error_backup_invalid">此檔案不是支援的劇集備份，或檔案過大。圖書館未作任何變更</string>
+  <string name="morphe_series_tracker_error_backup_invalid">此檔案不是支援的系列備份，或檔案過大。程式庫未作任何變更</string>
   <string name="morphe_series_tracker_error_backup_write">無法儲存備份。請選擇其他位置</string>
   <string name="morphe_series_tracker_removed">系列已移除</string>
   <string name="morphe_series_tracker_recovery_duplicate">此劇集現在出現不止一次。請選擇要從哪一集繼續</string>
   <string name="morphe_series_tracker_recovery_missing">您儲存的劇集不再位於此播放清單中。已保留您的觀看進度</string>
   <string name="morphe_series_tracker_recovery_continue">從第 %1$s 集 · %2$s 繼續</string>
   <string name="morphe_series_tracker_recovery_choose">您也可以選擇以下任何劇集。之前的劇集不會被更改</string>
-  <string name="morphe_series_tracker_playback_changed">播放清單已變更。開啟劇集以選擇從何處繼續</string>
+  <string name="morphe_series_tracker_playback_changed">播放清單已變更。開啟系列以選擇從何處繼續</string>
   <string name="morphe_series_tracker_playback_boundary">這個方向沒有更多集數了</string>
   <string name="morphe_series_tracker_continue_series">繼續 %s</string>
   <string name="morphe_series_tracker_search_series">搜尋系列</string>
@@ -1762,6 +1785,9 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_niconico_comments_screen_title">Niconico 評論</string>
   <string name="morphe_niconico_comments_screen_summary">將即時聊天和聊天回放顯示為在影片中滾動的評論</string>
   <string name="morphe_niconico_comments_summary">在影片播放器中顯示疊加按鈕。輕觸可顯示或隱藏評論，長按可開啟快速設定</string>
+  <string name="morphe_niconico_comments_appearance_title">外觀</string>
+  <string name="morphe_niconico_comments_portrait_category_title">直立</string>
+  <string name="morphe_niconico_comments_video_types_title">影片類型</string>
   <string name="morphe_niconico_comments_font_size_title">評論字體大小</string>
   <string name="morphe_niconico_comments_font_size_summary">評論的文字大小 (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">評論不透明度</string>
@@ -1770,6 +1796,18 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_niconico_comments_travel_duration_summary">評論橫跨螢幕所需秒數。數值越低，移動速度越快</string>
   <string name="morphe_niconico_comments_display_area_title">顯示區域</string>
   <string name="morphe_niconico_comments_display_area_summary">註解從播放器頂部開始使用的範圍。較低的值可保持影片底部清晰</string>
+  <string name="morphe_niconico_comments_portrait_title">在直向模式中顯示</string>
+  <string name="morphe_niconico_comments_portrait_summary">當螢幕處於直向模式時顯示評論。關閉則僅在橫向模式中顯示</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">直向模式的獨立設定</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">在直向模式中使用不同的字體大小、移動時間和顯示區域。開啟後，將從目前值開始設定</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">直向模式中的評論字體大小</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">直向模式中評論的文字大小 (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">直向模式中的移動時間</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">在直向模式下，評論橫跨螢幕所需的時間（秒）</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">直向模式下的顯示區域</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">在直向模式下，評論從播放器頂部開始所佔用的範圍</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">隱藏會重疊的評論</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">當顯示區域滿時，新評論將被隱藏而不會與其他評論重疊</string>
   <string name="morphe_niconico_comments_max_length_title">最大評論長度</string>
   <string name="morphe_niconico_comments_max_length_summary">隱藏字數超過此限制的評論。每個表情符號計為一個字元</string>
   <string name="morphe_niconico_comments_max_length_no_limit">無限制</string>
@@ -1785,6 +1823,8 @@ AV1 視訊播放可能會卡頓或丟格"</string>
   <string name="morphe_niconico_comments_timed_comments_summary">在沒有聊天室的影片中，包含時間（例如 1:23）的頂級評論將在該時間點顯示</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">在聊天回放中顯示定時評論</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">在直播和首播的回放中，定時評論也會與聊天內容一同顯示</string>
+  <string name="morphe_niconico_comments_all_settings">所有設定</string>
+  <string name="morphe_niconico_comments_reset_title">重設這些設定嗎？</string>
   <string name="morphe_live_chat_translate_screen_title">直播聊天翻譯</string>
   <string name="morphe_live_chat_translate_screen_summary">翻譯直播聊天與直播重播訊息</string>
   <string name="morphe_live_chat_translate_title">翻譯直播聊天</string>

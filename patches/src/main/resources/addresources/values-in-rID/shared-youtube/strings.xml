@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Tersier)</string>
   <string name="morphe_theme_color_custom_entry">Kustom</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Download</string>
+  <string name="morphe_external_downloader_screen_title">Unduhan</string>
   <string name="morphe_download_mode_title">Mode unduh</string>
   <string name="morphe_download_mode_entry_default">Bawaan</string>
   <string name="morphe_download_mode_entry_in_app">Unduh dalam aplikasi</string>
@@ -116,7 +116,7 @@ Jadikan %2$s sebagai klien bawaan?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Klien bawaan</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Masuk Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Tidak masuk ke Android VR. Ketuk disini untuk masuk</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR memerlukan login terpisah. Ketuk di sini untuk melanjutkan</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Saat ini sedang masuk ke Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Untuk menggunakan fitur ini, ubah \'Klien bawaan\' ke Android VR</string>
@@ -208,13 +208,15 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_replace_links_with_shortener_title">Ubah tautan berbagi ke youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Memaksa video untuk menggunakan format pemendek URL youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Buffer protokol log</string>
-  <string name="morphe_debug_protobuffer_summary">Menambahkan informasi catatan tambahan untuk pengembang guna mengidentifikasi komponen aplikasi</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Mengaktifkan setelan ini akan mencatat data tata letak tambahan, termasuk teks pada layar untuk beberapa komponen UI.
+  <string name="morphe_debug_litho_title">Pencatatan Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Tidak aktif</string>
+  <string name="morphe_debug_litho_entry_path">Jalur</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Jalur dan buffer</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Pencatatan Litho mencatat komponen tata letak aplikasi, termasuk teks pada layar untuk beberapa komponen UI.
 
 Ini dapat membantu mengidentifikasi komponen saat membuat penyaring khusus.
 
-Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat IP Anda"</string>
+Namun, ini juga akan mencatat beberapa data pengguna seperti alamat IP Anda"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Penyaring khusus</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurasikan penyaring khusus untuk menyembunyikan komponen apa pun</string>
@@ -298,7 +300,7 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_ryd_toast_on_connection_error_summary">Menampilkan notifikasi saat server Return YouTube Dislike tidak tersedia</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike mengembalikan jumlah dislike yang disembunyikan YouTube pada tahun 2021. Jumlah tersebut berasal dari data yang diarsipkan sebelum penghapusan dan diperkirakan untuk video yang lebih baru dari suara penggunanya, sehingga bersifat perkiraan dan diperbarui setiap beberapa hari
 
-ID video yang Anda tonton dikirim ke API Return YouTube Dislike, dan suka dan tidak suka Anda dikirim secara anonim untuk meningkatkan perkiraan.}"</string>
+ID video yang Anda tonton dikirim ke API Return YouTube Dislike, dan suka dan tidak suka Anda dikirim secara anonim untuk meningkatkan perkiraan."</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistik API Return YouTube Dislike untuk perangkat ini</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Waktu respons API, rata-rata</string>
@@ -306,10 +308,10 @@ ID video yang Anda tonton dikirim ke API Return YouTube Dislike, dan suka dan ti
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Waktu respons API, maksimum</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Waktu respons API, media terakhir</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislike sementara tidak tersedia - Batas kuota API klien berlaku</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_title">API mengambil vote, jumlah dari panggilan</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_title">API pengambilan suara, jumlah panggilan</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Tidak ada panggilan jaringan yang terjadi</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s panggilan jaringan dilakukan</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API mengambil vote, jumlah kegagalan</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API pengambilan suara, jumlah timeout</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Tidak ada panggilan jaringan yang gagal</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s panggilan jaringan habis waktu</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Batas kuota klien API</string>

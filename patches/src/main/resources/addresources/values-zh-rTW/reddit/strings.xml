@@ -65,6 +65,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">從動態消息和搜尋建議中隱藏熱門專區</string>
   <string name="morphe_remove_notification_dialog_title">移除通知建議對話框</string>
   <string name="morphe_remove_notification_dialog_summary">前往 subreddit 時自動解除通知建議對話方塊</string>
+  <string name="morphe_high_quality_avatars_title">高品質頭像</string>
+  <string name="morphe_high_quality_avatars_summary">以全解析度顯示使用者頭像</string>
   <string name="morphe_show_flairs_in_home_feed_title">在主資訊流中顯示標籤</string>
   <string name="morphe_show_flairs_in_home_feed_summary">在主資訊流中顯示文章標籤徽章</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">部份資訊流項目可能不會顯示標籤</string>
@@ -112,7 +114,7 @@ Second \"item\" text"</string>
   <string name="morphe_download_location_no_picker">此裝置上沒有可用的資料夾選擇器</string>
   <string name="morphe_download_location_pattern_title">檔案名稱</string>
   <string name="morphe_download_location_pattern_hint">Reddit 的檔案名稱</string>
-  <string name="morphe_download_location_pattern_help">輕觸語彙基元以插入。/ 會建立子資料夾。不明值變更為「unknown」</string>
+  <string name="morphe_download_location_pattern_help">輕觸項目即可插入。/ 會建立子資料夾。未知值會變為「unknown」</string>
   <string name="morphe_download_location_example_images">圖片：%s</string>
   <string name="morphe_download_location_example_videos">影片：%s</string>
   <string name="morphe_download_location_save">儲存</string>

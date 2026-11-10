@@ -27,8 +27,8 @@ import java.util.function.IntPredicate;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
+import app.morphe.extension.music.patches.lyrics.utils.CharactersConverter;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
@@ -813,16 +813,12 @@ public final class LocalLyricsFetcher {
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(raw);
         if (!result.lines.isEmpty()) {
-            boolean synced = false;
-            for (LyricsLine line : result.lines) {
-                if (line.hasWords()) {
-                    synced = true;
-                    break;
-                }
-            }
+            // LRC line timestamps synchronize whole lines; word-level
+            // (karaoke) timestamps are not required for synchronized lyrics.
+            final boolean synced = !result.lines.isEmpty();
             return new Lyrics(result.lines, "Local", synced, null, null, null,
-                    result.creditLines.isEmpty() ? null : result.creditLines,
-                    raw, "lrc", null);
+                    null, result.creditLines.isEmpty() ? null : result.creditLines,
+                    raw, "lrc", null, null, null);
         }
 
         List<LyricsLine> plain = LRCParser.parsePlain(raw);

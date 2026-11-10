@@ -20,6 +20,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsTextFormatter;
 import app.morphe.extension.music.patches.lyrics.model.MiniLyricsFormatter;
 import app.morphe.extension.music.patches.lyrics.model.MiniLyricsTimeline;
 import app.morphe.extension.music.patches.lyrics.model.TrackVersion;
+import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.ui.LyricsSpanBuilder;
 import app.morphe.extension.music.settings.Settings;
 
@@ -42,6 +43,7 @@ public final class LyricsPresentation {
     private static boolean chunksCapitalize;
     private static boolean chunksStrip;
     private static float chunksMultiplier = 1;
+    private static int chunksHanMode = LyricsTextFormatter.HAN_NONE;
     private static List<MiniLyricsFormatter.Chunk> chunks = List.of();
 
     // The panel's only/dual mode, shared so the miniplayer and the media session mirror its main line.
@@ -57,12 +59,28 @@ public final class LyricsPresentation {
 
     /** If any of the filters that change the displayed text are on. */
     public static boolean isFormattingEnabled() {
-        return Settings.LYRICS_FORCE_CAPITALIZE.get() || Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.get();
+        return Settings.LYRICS_FORCE_CAPITALIZE.get() || Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.get()
+                || Settings.LYRICS_HAN_FORM.get();
     }
 
     public static LyricsTextFormatter.Result format(String text) {
         return LyricsTextFormatter.format(text, Settings.LYRICS_FORCE_CAPITALIZE.get(),
-                Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.get());
+                Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.get(), hanMode());
+    }
+
+    /** Han direction: none unless on and the translation target resolves to a Chinese script. */
+    public static int hanMode() {
+        if (!Settings.LYRICS_HAN_FORM.get()) {
+            return LyricsTextFormatter.HAN_NONE;
+        }
+        final String script = LyricsRequests.resolvedScript(LyricsRequests.translationLanguage());
+        if ("Hant".equalsIgnoreCase(script)) {
+            return LyricsTextFormatter.HAN_TRADITIONAL;
+        }
+        if ("Hans".equalsIgnoreCase(script)) {
+            return LyricsTextFormatter.HAN_SIMPLIFIED;
+        }
+        return LyricsTextFormatter.HAN_NONE;
     }
 
     public static String formatText(String text) {
@@ -186,7 +204,7 @@ public final class LyricsPresentation {
         if (onlyModeText != null) {
             final boolean cap = Settings.LYRICS_FORCE_CAPITALIZE.get();
             final boolean strip = Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.get();
-            String text = LyricsTextFormatter.format(onlyModeText, cap, strip).text();
+            String text = LyricsTextFormatter.format(onlyModeText, cap, strip, hanMode()).text();
             return text.isEmpty() ? "" : MiniLyricsFormatter.encapsulate(
                     Settings.LYRICS_MINI_ENCAPSULATION.get(), text,
                     MiniLyricsFormatter.repeatCount(lines, index));
@@ -195,16 +213,19 @@ public final class LyricsPresentation {
         final boolean capitalize = Settings.LYRICS_FORCE_CAPITALIZE.get();
         final boolean strip = Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.get();
         final float multiplier = Settings.LYRICS_MINI_FULL_WIDTH_MULTIPLIER.get();
+        final int hanMode = hanMode();
         if (line != chunksLine || vocal.endMs() != chunksEndMs || limit != chunksLimit
                 || capitalize != chunksCapitalize || strip != chunksStrip
-                || multiplier != chunksMultiplier) {
-            chunks = MiniLyricsFormatter.chunks(line, vocal.endMs(), limit, capitalize, strip, multiplier);
+                || multiplier != chunksMultiplier || hanMode != chunksHanMode) {
+            chunks = MiniLyricsFormatter.chunks(line, vocal.endMs(), limit, capitalize, strip,
+                    multiplier, hanMode);
             chunksLine = line;
             chunksEndMs = vocal.endMs();
             chunksLimit = limit;
             chunksCapitalize = capitalize;
             chunksStrip = strip;
             chunksMultiplier = multiplier;
+            chunksHanMode = hanMode;
         }
 
         return MiniLyricsFormatter.current(chunks, positionMs, Settings.LYRICS_MINI_ENCAPSULATION.get(),

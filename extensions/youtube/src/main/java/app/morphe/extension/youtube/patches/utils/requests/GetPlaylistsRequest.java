@@ -31,7 +31,6 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.settings.BaseSettings;
 
 public class GetPlaylistsRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
@@ -48,9 +47,9 @@ public class GetPlaylistsRequest {
     @Nullable
     public Pair<String, String>[] getPlaylists() {
         try {
-            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: Blocking main thread");
-            }
+            Logger.printExceptionIfDebug(() -> !future.isDone() && Utils.isCurrentlyOnMainThread()
+                    ? "Debug: Blocking main thread"
+                    : null);
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getPlaylists timed out", ex);
@@ -68,17 +67,10 @@ public class GetPlaylistsRequest {
     }
 
     public static GetPlaylistsRequest fetchRequestIfNeeded(String playlistId, Map<String, String> requestHeader) {
-        cache.computeIfAbsent(
+        return cache.computeIfAbsent(
                 Objects.requireNonNull(playlistId),
                 k -> new GetPlaylistsRequest(playlistId, requestHeader)
         );
-        return cache.get(playlistId);
-    }
-
-    @SuppressWarnings("unused")
-    @Nullable
-    public static GetPlaylistsRequest getRequestForPlaylistId(String playlistId) {
-        return cache.get(playlistId);
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {

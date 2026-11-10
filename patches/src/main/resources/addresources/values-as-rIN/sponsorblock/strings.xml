@@ -17,8 +17,8 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_enabled_title">SponsorBlock সক্ৰিয় কৰক</string>
-  <string name="morphe_sb_enabled_summary">SponsorBlock হৈছে YouTube ভিডিঅ\'ৰ বিরক্তিকৰ অংশসমূহ স্কিপ কৰিবলৈ এটা ক্ৰাউডচৰ্ছড প্ৰণালী</string>
-  <string name="morphe_sb_appearance_category_title">প্ৰকাশ</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock হৈছে YouTube ভিডিঅ\'ৰ বিৰক্তিকৰ অংশসমূহ স্কিপ কৰিবলৈ এটা জনসাধাৰণৰ দ্বাৰা সংগ্ৰহ কৰা প্ৰণালী</string>
+  <string name="morphe_sb_appearance_category_title">ৰূপ</string>
   <string name="morphe_sb_voting_button_title">ভোটদান বুটাম দেখুৱাওক</string>
   <string name="morphe_sb_voting_button_summary">খণ্ডসমূহক আপভোট বা ডাউনভোট দিবলৈ এটা বুটাম যোগ কৰে</string>
   <string name="morphe_sb_square_layout_title">বৰ্গাকৃতি লেআউট ব্যৱহাৰ কৰক</string>
@@ -36,20 +36,20 @@ Second \"item\" text"</string>
   <string name="morphe_sb_duration_1s">১ ছেকেণ্ড</string>
   <string name="morphe_sb_duration_2s">২ ছেকেণ্ড</string>
   <string name="morphe_sb_duration_3s">৩ ছেকেণ্ড</string>
-  <string name="morphe_sb_duration_4s">৪ ছেকেনড</string>
-  <string name="morphe_sb_duration_5s">৫ ছেকেনড</string>
-  <string name="morphe_sb_duration_6s">৬ ছেকেনড</string>
-  <string name="morphe_sb_duration_7s">৭ ছেকেনড</string>
-  <string name="morphe_sb_duration_8s">৮ ছেকেনড</string>
-  <string name="morphe_sb_duration_9s">৯ ছেকেনড</string>
-  <string name="morphe_sb_duration_10s">১০ ছেকেনড</string>
+  <string name="morphe_sb_duration_4s">৪ ছেকেণ্ড</string>
+  <string name="morphe_sb_duration_5s">৫ ছেকেণ্ড</string>
+  <string name="morphe_sb_duration_6s">৬ ছেকেণ্ড</string>
+  <string name="morphe_sb_duration_7s">৭ ছেকেণ্ড</string>
+  <string name="morphe_sb_duration_8s">৮ ছেকেণ্ড</string>
+  <string name="morphe_sb_duration_9s">৯ ছেকেণ্ড</string>
+  <string name="morphe_sb_duration_10s">১০ ছেকেণ্ড</string>
   <string name="morphe_sb_video_length_without_segments_title">ছেগমেন্ট অবিহনে ভিডিঅ\'ৰ দৈৰ্ঘ্য দেখুৱাওক</string>
-  <string name="morphe_sb_video_length_without_segments_summary">চীকবাৰত দেখুওৱা মুঠ ভিডিঅ\'ৰ সময়ৰ পৰা সকলো ছেগমেন্ট বিয়োগ কৰে</string>
+  <string name="morphe_sb_video_length_without_segments_summary">ছিকবাৰত দেখুৱা মুঠ ভিডিঅ\'ৰ সময়ৰ পৰা সকলো ছেগমেন্ট বিয়োগ কৰে</string>
   <string name="morphe_sb_create_segment_category_title">নতুন ছেগমেন্ট সৃষ্টি কৰা</string>
   <string name="morphe_sb_create_new_segment_title">\'নতুন ছেগমেণ্ট সৃষ্টি কৰক\' বুটামটো দেখুৱাওক</string>
   <string name="morphe_sb_create_new_segment_summary">ভিডিঅ\' প্লেয়াৰত এটা বুটাম যোগ কৰে যাৰ জৰিয়তে আপুনি নতুন SponsorBlock ছেগমেণ্ট জমা দিব পাৰিব</string>
   <string name="morphe_sb_create_new_segment_step_title">সময়ৰ সামঞ্জস্যৰ পদক্ষেপ</string>
-  <string name="morphe_sb_create_new_segment_step_summary">সময়ৰ সামঞ্জস্যৰ বুটামবোৰৰ সন্ধানৰ পৰিমাণ (মিলিসেকণ্ডত)</string>
+  <string name="morphe_sb_create_new_segment_step_summary">সময়ৰ সামঞ্জস্যৰ বুটামবোৰৰ ছিকৰ পৰিমাণ (মিলিসেকণ্ডত)</string>
   <string name="morphe_sb_create_new_segment_step_invalid">মানটো এটা ধনাত্মক সংখ্যা হ\'ব লাগিব</string>
   <string name="morphe_sb_guidelines_title">জমা দিয়াৰ নিৰ্দেশাৱলী</string>
   <string name="morphe_sb_guidelines_summary">নিৰ্দেশাৱলীসমূহত নতুন ছেগমেণ্ট সৃষ্টি কৰাৰ বাবে নিয়ম আৰু পৰামৰ্শ থাকে</string>
@@ -63,10 +63,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_toast_on_connection_error_title">সংযোগৰ ত্ৰুটিৰ সতৰ্কবাৰ্তাসমূহ দেখুৱাওক</string>
   <string name="morphe_sb_toast_on_connection_error_summary">SponsorBlock চাৰ্ভাৰটো উপলব্ধ নোহোৱাৰ সময়ত এটা জাননী দেখুৱায়</string>
   <string name="morphe_sb_track_skip_count_title">স্কিপ কাউণ্ট ট্ৰেকিং সক্ষম কৰক</string>
-  <string name="morphe_sb_track_skip_count_summary">কিমান সময় ৰৈছে তাৰ ট্ৰেক কৰিবলৈ SponsorBlock লিডাৰবৰ্ডলৈ স্কিপ কাউণ্টবোৰ পঠিয়াই</string>
+  <string name="morphe_sb_track_skip_count_summary">স্কিপ কাউণ্টবোৰ SponsorBlock লিডাৰবৰ্ডলৈ পঠায়, যাতে কিমান সময় ৰক্ষা হৈছে সেয়া ট্ৰেক কৰিব পৰা যায়</string>
   <string name="morphe_sb_min_segment_duration_title">খণ্ডৰ ন্যূনতম সময়সীমা</string>
-  <string name="morphe_sb_min_segment_duration_summary">এই মানতকৈ (ছেকেণ্ডত) চুটি খণ্ডবোৰ দেখুওৱা নহ\'ব বা স্কিপ কৰা নহ\'ব</string>
-  <string name="morphe_sb_min_segment_duration_invalid">অ वैध সময়সীমা</string>
+  <string name="morphe_sb_min_segment_duration_summary">এই মানতকৈ (ছেকেণ্ডত) চুটি খণ্ডবোৰ দেখুৱা নহ\'ব বা স্কিপ কৰা নহ\'ব</string>
+  <string name="morphe_sb_min_segment_duration_invalid">অবৈধ সময়সীমা</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_title">আপোনাৰ ব্যক্তিগত ব্যৱহাৰকাৰী ID</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">এয়া গোপন ৰখা উচিত। এয়া এটা পাছৱৰ্ডৰ দৰে আৰু কাৰোবাৰ সৈতে ভাগ কৰিব নালাগে। যদি কাৰোবাৰ হাতত এইটো থাকে, তেওঁ আপোনাৰ নামত ভুৱা পৰিচয় দিব পাৰে</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">ব্যক্তিগত ব্যৱহাৰকাৰী ID অন্ততঃ ৩০ টা আখৰৰ হ\'ব লাগে</string>
@@ -86,29 +86,29 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_ie_summary_warning">"আপোনাৰ SponsorBlock JSON কনফিগাৰেশ্যন যিটো Morphe আৰু অন্যান্য SponsorBlock প্লেটফৰ্মলৈ আমদানি / ৰপ্তানি কৰিব পাৰি
 
 ইয়াত আপোনাৰ ব্যক্তিগত ইউজাৰ ID অন্তৰ্ভুক্ত থাকে। ইয়াক সাৱধানে শ্বেয়াৰ কৰক"</string>
-  <string name="morphe_sb_settings_import_successful">ছেটিংছসমূহ সফলতাৰে ইম্পৰ্ট কৰা হৈছে</string>
-  <string name="morphe_sb_settings_import_failed">ইম্পৰ্ট কৰাত ব্যৰ্থ হৈছে: %s</string>
-  <string name="morphe_sb_settings_export_failed">এক্সপৰ্ট কৰাত ব্যৰ্থ হৈছে: %s</string>
+  <string name="morphe_sb_settings_import_successful">ছেটিংছসমূহ সফলতাৰে আমদানি কৰা হৈছে</string>
+  <string name="morphe_sb_settings_import_failed">আমদানি কৰাত ব্যৰ্থ হৈছে: %s</string>
+  <string name="morphe_sb_settings_export_failed">এক্সপোর্ট কৰাত ব্যৰ্থ হৈছে: %s</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"আপোনাৰ ছেটিংছত এটা ব্যক্তিগত SponsorBlock ব্যৱহাৰকাৰী ID আছে।
 
 আপোনাৰ ব্যৱহাৰকাৰী ID টো এটা পাছৱৰ্ডৰ দৰে, আৰু ইয়াক কেতিয়াও আনৰ সৈতে ভাগ কৰিব নালাগে"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">পুনৰ দেখুৱাব নালাগে</string>
   <string name="morphe_sb_diff_segments_title">ছেগমেণ্টৰ আচৰণ সলনি কৰক</string>
   <string name="morphe_sb_segments_sponsor">স্পনছৰ</string>
-  <string name="morphe_sb_segments_sponsor_summary">পেইড প্ৰমোদচন, পেইড ৰিফাৰেল আৰু পোনপটীয়া বিজ্ঞাপন। আত্ম-প্ৰমোচন বা তেওঁলোকে পছন্দ কৰা কাৰ্য/সৃষ্টিকৰ্তা/ৱেবচাইট/প্ৰডাক্টৰ বিনামূলীয়া শ্বাউট-আউটৰ বাবে নহয়</string>
+  <string name="morphe_sb_segments_sponsor_summary">পেইড প্ৰমোচন, পেইড ৰিফাৰেল আৰু পোনপটীয়া বিজ্ঞাপন। আত্ম-প্ৰমোচন বা তেওঁলোকে পছন্দ কৰা কাৰ্য/সৃষ্টিকৰ্তা/ৱেবচাইট/প্ৰডাক্টৰ বিনামূলীয়া শ্বাউট-আউটৰ বাবে নহয়</string>
   <string name="morphe_sb_segments_selfpromo">বিনামূলীয়া / আত্ম-প্ৰমোচন</string>
-  <string name="morphe_sb_segments_selfpromo_summary">বিনামূলীয়া / আত্ম-প্ৰমোচনৰ বাদে স্পনছৰৰ দৰেই। ইয়াত মাৰ্চেনডাইজ, অনুদান, বা তেওঁলোকে কাৰ সৈতে সহযোগিতা কৰিছে তাৰ তথ্য সংলগ্ন আছে</string>
-  <string name="morphe_sb_segments_interaction">আন্তঃক্ৰিয়াৰ সোঁৰণ কাৰক (চাবস্ক্ৰাইব কৰক)</string>
-  <string name="morphe_sb_segments_interaction_summary">চামগৰ মাজতে লাইক, চাবস্ক্ৰাইব বা ফলো কৰিবলৈ এটা চুটি সোঁৱৰণি। যদি ই দীঘলীয়া বা কোনো বিশেষ কথাৰ ওপৰত হয়, তেন্তে ইয়াক স্ব-প্ৰচাৰৰ অধীনত ৰখা উচিত</string>
+  <string name="morphe_sb_segments_selfpromo_summary">বিনামূলীয়া / আত্ম-প্ৰমোচনৰ বাহিৰে স্পনছৰৰ দৰেই। ইয়াত মাৰ্চেণ্ডাইজ, অনুদান, বা তেওঁলোকে কাৰ সৈতে সহযোগিতা কৰিছে তাৰ তথ্যৰ অংশ অন্তৰ্ভুক্ত</string>
+  <string name="morphe_sb_segments_interaction">আন্তঃক্ৰিয়াৰ সোঁৱৰণি (চাবস্ক্ৰাইব কৰক)</string>
+  <string name="morphe_sb_segments_interaction_summary">সমলৰ মাজতে লাইক, চাবস্ক্ৰাইব বা ফলো কৰিবলৈ এটা চুটি সোঁৱৰণি। যদি ই দীঘলীয়া বা কোনো বিশেষ কথাৰ ওপৰত হয়, তেন্তে ইয়াক স্ব-প্ৰচাৰৰ অধীনত ৰখা উচিত</string>
   <string name="morphe_sb_segments_highlight">হাইলাইট</string>
   <string name="morphe_sb_segments_highlight_summary">ভিডিঅ\'ৰ সেই অংশটো যিটো বেছিভাগ মানুহে বিচাৰে</string>
-  <string name="morphe_sb_segments_intro">অন্তৰাল / ইন্ট্রো এনিমেশ্বন</string>
-  <string name="morphe_sb_segments_intro_summary">আচল বিষয়বস্তু নথকা এটা অন্তৰাল। ই এটা বিৰতি, স্থিৰ ফ্ৰেম, বা পুনৰাবৃত্তি হোৱা এনিমেশ্বন হ\'ব পাৰে। ইয়াত তথ্যযুক্ত পৰিৱৰ্তনসমূহ অন্তৰ্ভুক্ত নহয়</string>
+  <string name="morphe_sb_segments_intro">অন্তৰাল / ইন্ট্রো এনিমেশ্যন</string>
+  <string name="morphe_sb_segments_intro_summary">আচল বিষয়বস্তু নথকা এটা অন্তৰাল। ই এটা বিৰতি, স্থিৰ ফ্ৰেম, বা পুনৰাবৃত্তি হোৱা এনিমেশ্যন হ\'ব পাৰে। ইয়াত তথ্যযুক্ত পৰিৱৰ্তনসমূহ অন্তৰ্ভুক্ত নহয়</string>
   <string name="morphe_sb_segments_outro">এণ্ডকাৰ্ডছ / ক্ৰেডিটছ</string>
   <string name="morphe_sb_segments_outro_summary">ক্ৰেডিটছ বা যেতিয়া YouTube এণ্ডকাৰ্ডসমূহ দেখা যায়। তথ্যসহ সমাপ্তিসমূহৰ বাবে নহয়</string>
   <string name="morphe_sb_segments_hook">হুক / সম্ভাষণ</string>
-  <string name="morphe_sb_segments_hook_summary">আহাৰ মানি আগন্তুক ভিডিঅ\'ৰ বাবে বৰ্ণনা কৰা ট্ৰেলাৰ, সম্ভাষণ আৰু বিদায়। ইয়াত অতিৰিক্ত বিষয়বস্তু যোগ কৰা বিভাগসমূহ অন্তৰ্ভুক্ত নহয়</string>
-  <string name="morphe_sb_segments_preview">পিৰুভিউ / ৰিক্যাপ</string>
+  <string name="morphe_sb_segments_hook_summary">আগন্তুক ভিডিঅ\'ৰ বাবে বৰ্ণনা কৰা ট্ৰেলাৰ, সম্ভাষণ আৰু বিদায়। ইয়াত অতিৰিক্ত বিষয়বস্তু যোগ কৰা বিভাগসমূহ অন্তৰ্ভুক্ত নহয়</string>
+  <string name="morphe_sb_segments_preview">প্ৰিভিউ / ৰিক্যাপ</string>
   <string name="morphe_sb_segments_preview_summary">ক্লিপৰ সংগ্ৰহ যিয়ে দেখুৱায় যে ভিডিঅ\'টোত বা শৃংখলৰ অন্যান্য ভিডিঅ\'ত কি অহাৰ আছে বা কি ঘটিছে, য\'ত সকলো তথ্য আন ঠাইতে পুনৰাবৃত্তি কৰা হৈছে</string>
   <string name="morphe_sb_segments_filler">টেনজেন্ট / জকছ</string>
   <string name="morphe_sb_segments_filler_summary">পৰোক্ষ দৃশ্য বা জকছ যিবোৰ ভিডিঅ\'টোৰ মূল বিষয়বস্তু বুজিবলৈ প্ৰয়োজন নাই। ইয়াৰ ভিতৰত প্ৰসংগ বা পটভূমিৰ সবিশেষ প্ৰদান কৰা অংশসমূহ অন্তৰ্ভুক্ত নহয়</string>
@@ -121,31 +121,31 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_button_interaction">আন্তঃক্ৰিয়া বাদ দিয়ক</string>
   <string name="morphe_sb_skip_button_highlight">হাইলাইটলৈ যাওক</string>
   <string name="morphe_sb_skip_button_intro_beginning">আৰম্ভণিৰ অংশটো বাদ দিয়ক</string>
-  <string name="morphe_sb_skip_button_intro_middle">অন্তৰা ত্বৰান্বিত কৰক</string>
-  <string name="morphe_sb_skip_button_intro_end">অন্তৰা ত্বৰান্বিত কৰক</string>
-  <string name="morphe_sb_skip_button_outro">আউট্ৰো ত্বৰান্বিত কৰক</string>
-  <string name="morphe_sb_skip_button_hook">হুক ত্বৰান্বিত কৰক</string>
-  <string name="morphe_sb_skip_button_preview_beginning">প্ৰিভিউ ত্বৰান্বিত কৰক</string>
-  <string name="morphe_sb_skip_button_preview_middle">প্ৰিভিউ ত্বৰান্বিত কৰক</string>
-  <string name="morphe_sb_skip_button_preview_end">ৰিক্যাপ ত্বৰান্বিত কৰক</string>
-  <string name="morphe_sb_skip_button_filler">অপ্রাসঙ্গিক কথা ত্বৰান্বিত কৰক</string>
-  <string name="morphe_sb_skip_button_nomusic">সংগীত নোহোৱা অংশ ছেক কৰক</string>
-  <string name="morphe_sb_skip_button_unsubmitted">খণ্ডটো ছেক কৰক</string>
-  <string name="morphe_sb_skipped_sponsor">স্পনচৰ অংশ ছেক কৰা হ\'ল</string>
-  <string name="morphe_sb_skipped_selfpromo">নিজৰ প্ৰচাৰৰ অংশ ছেক কৰা হ\'ল</string>
-  <string name="morphe_sb_skipped_interaction">নিৰুদ্দেশ কৰা ৰিমেণ্ডাৰ ছেক কৰা হ\'ল</string>
-  <string name="morphe_sb_skipped_highlight">হাইলাইটৰ ফালে ছেক কৰা হ\'ল</string>
-  <string name="morphe_sb_skipped_intro_beginning">আৰম্ভণিৰ অংশ ছেক কৰা হ\'ল</string>
-  <string name="morphe_sb_skipped_intro_middle">মধ্যভৰতি ছেক কৰা হ\'ল</string>
-  <string name="morphe_sb_skipped_intro_end">মধ্যভৰতি ছেক কৰা হ\'ল</string>
-  <string name="morphe_sb_skipped_outro">সামৰণিৰ অংশ ছেক কৰা হ\'ল</string>
-  <string name="morphe_sb_skipped_hook">হুক অংশ ছেক কৰা হ\'ল</string>
-  <string name="morphe_sb_skipped_preview_beginning">প্ৰিভিউ স্কিপ কৰা হৈছে</string>
-  <string name="morphe_sb_skipped_preview_middle">প্ৰিভিউ ত্বৰান্বিত কৰা হৈছে</string>
-  <string name="morphe_sb_skipped_preview_end">ৰিক্যাপ ত্বৰান্বিত কৰা হৈছে</string>
-  <string name="morphe_sb_skipped_filler">বৰ্ণনাক্ৰম বাদ দিয়া হৈছে</string>
+  <string name="morphe_sb_skip_button_intro_middle">অন্তৰাল ত্বৰান্বিত কৰক</string>
+  <string name="morphe_sb_skip_button_intro_end">অন্তৰাল ত্বৰান্বিত কৰক</string>
+  <string name="morphe_sb_skip_button_outro">আউট্ৰো বাদ দিয়ক</string>
+  <string name="morphe_sb_skip_button_hook">হুক বাদ দিয়ক</string>
+  <string name="morphe_sb_skip_button_preview_beginning">প্ৰিভিউ বাদ দিয়ক</string>
+  <string name="morphe_sb_skip_button_preview_middle">প্ৰিভিউ বাদ দিয়ক</string>
+  <string name="morphe_sb_skip_button_preview_end">ৰিক্যাপ বাদ দিয়ক</string>
+  <string name="morphe_sb_skip_button_filler">অপ্ৰাসংগিক অংশ বাদ দিয়ক</string>
+  <string name="morphe_sb_skip_button_nomusic">সংগীত নোহোৱা অংশ বাদ দিয়ক</string>
+  <string name="morphe_sb_skip_button_unsubmitted">খণ্ডটো বাদ দিয়ক</string>
+  <string name="morphe_sb_skipped_sponsor">স্পনছৰৰ অংশ বাদ দিয়া হ\'ল</string>
+  <string name="morphe_sb_skipped_selfpromo">নিজৰ প্ৰচাৰৰ অংশ বাদ দিয়া হ\'ল</string>
+  <string name="morphe_sb_skipped_interaction">বিৰক্তিকৰ ৰিমেণ্ডাৰ ছেক কৰা হ\'ল</string>
+  <string name="morphe_sb_skipped_highlight">হাইলাইটলৈ যোৱা হ\'ল</string>
+  <string name="morphe_sb_skipped_intro_beginning">আৰম্ভণিৰ অংশ বাদ দিয়া হ\'ল</string>
+  <string name="morphe_sb_skipped_intro_middle">অন্তৰাল ছেক কৰা হ\'ল</string>
+  <string name="morphe_sb_skipped_intro_end">অন্তৰাল ছেক কৰা হ\'ল</string>
+  <string name="morphe_sb_skipped_outro">সামৰণিৰ অংশ বাদ দিয়া হ\'ল</string>
+  <string name="morphe_sb_skipped_hook">হুক অংশ বাদ দিয়া হ\'ল</string>
+  <string name="morphe_sb_skipped_preview_beginning">প্ৰিভিউ বাদ দিয়া হ\'ল</string>
+  <string name="morphe_sb_skipped_preview_middle">প্ৰিভিউ বাদ দিয়া হ\'ল</string>
+  <string name="morphe_sb_skipped_preview_end">ৰিক্যাপ বাদ দিয়া হ\'ল</string>
+  <string name="morphe_sb_skipped_filler">অপ্ৰাসংগিক অংশ বাদ দিয়া হৈছে</string>
   <string name="morphe_sb_skipped_nomusic">সংগীত নোহোৱা বিভাগ এটা বাদ দিয়া হৈছে</string>
-  <string name="morphe_sb_skipped_unsubmitted">নজমা লোৱা খণ্ড এটা বাদ দিয়া হৈছে</string>
+  <string name="morphe_sb_skipped_unsubmitted">জমা দিয়া নোহোৱা খণ্ড এটা বাদ দিয়া হৈছে</string>
   <string name="morphe_sb_skipped_multiple_segments">বহুতো খণ্ড বাদ দিয়া হৈছে</string>
   <string name="morphe_sb_skip_automatically">স্বয়ংক্ৰিয়ভাৱে বাদ দিয়ক</string>
   <string name="morphe_sb_skip_automatically_once">একবাৰ স্বয়ংক্ৰিয়ভাৱে বাদ দিয়ক</string>
@@ -155,7 +155,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_submit_failed_invalid">ছেগমেন্টটো জমা দিব নোৱাৰিল: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock সাময়িকভাৱে বন্ধ হৈ আছে</string>
   <string name="morphe_sb_submit_failed_unknown_error">ছেগমেন্টটো জমা কৰিব নোৱাৰিল (স্থিতি: %1$s %2$s)</string>
-  <string name="morphe_sb_submit_failed_rate_limit">ছেগমেন্টটো জমা দিব নোৱাৰিল। ৰেট লিমিটেড (একেজন ব্যৱহাৰকাৰী বা IP পৰা অতিৰিক্ত সংখ্যক অনুৰোধ)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">ছেগমেন্টটো জমা দিব নোৱাৰিল। ৰেট লিমিটেড (একেজন ব্যৱহাৰকাৰী বা IP-ৰ পৰা অতিৰিক্ত সংখ্যক অনুৰোধ)</string>
   <string name="morphe_sb_submit_failed_forbidden">ছেগমেন্টটো জমা দিব নোৱাৰি: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"ছেগমেন্টটো জমা দিব নোৱাৰি।
 আগতেই বিদ্যমান"</string>
@@ -196,10 +196,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_new_segment_confirm_submit">জমা দিয়ক</string>
   <string name="morphe_sb_new_segment_start_is_before_end">আৰম্ভটো শেষৰ আগতে হ\'ব লাগিব</string>
   <string name="morphe_sb_new_segment_mark_locations_first">প্ৰথমে টাইম বাৰত এটা স্থান চিহ্নিত কৰক</string>
-  <string name="morphe_sb_new_segment_preview_segment_first">চিগমেন্টটোৰ প্ৰিভিউ কৰক, আৰু ই মসৃণভাৱে স্কিপ কৰা নিশ্চিত কৰক</string>
-  <string name="morphe_sb_new_segment_edit_by_hand_title">চিগমেন্টৰ টাইমিংটো হাতেৰে সম্পাদনা কৰক</string>
-  <string name="morphe_sb_new_segment_edit_by_hand_content">আপুনি চিগমেন্টটোৰ আৰম্ভণি বা শেষৰ টাইমিংটো সম্পাদনা কৰিব বিচাৰে নেকি?</string>
-  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">অহা সময়টো অবৈধ</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">ছেগমেন্টটোৰ প্ৰিভিউ কৰক, আৰু ই মসৃণভাৱে স্কিপ কৰা নিশ্চিত কৰক</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">ছেগমেন্টটোৰ টাইমিংটো হাতেৰে সম্পাদনা কৰক</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">আপুনি ছেগমেন্টটোৰ আৰম্ভণি বা শেষৰ টাইমিংটো সম্পাদনা কৰিব বিচাৰে নেকি?</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">দিয়া সময়টো অবৈধ</string>
   <string name="morphe_sb_new_segment_highlight_title">হাইলাইট জমা দিয়ক</string>
   <string name="morphe_sb_new_segment_highlight_content">"হাইলাইটৰ সময়টো শুদ্ধ নে?
 
@@ -207,9 +207,9 @@ Second \"item\" text"</string>
 
 যদি আপুনি হাইলাইট জমা নিদিয়ে, তেন্তে Cancel টিপক আৰু দ্বিতীয়টো স্থান চিহ্নিত কৰক"</string>
   <string name="morphe_sb_new_segment_highlight_submit">হাইলাইট জমা কৰক</string>
-  <string name="morphe_sb_stats_title">প্ৰসাংখ্য</string>
+  <string name="morphe_sb_stats_title">পৰিসংখ্যা</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
-  <string name="morphe_sb_stats_connection_failure">প্ৰসাংখ্য সাময়িকভাবে উপলব্ধ নহয় (API ডাউন হৈছে)</string>
+  <string name="morphe_sb_stats_connection_failure">পৰিসংখ্যা সাময়িকভাৱে উপলব্ধ নহয় (API ডাউন হৈছে)</string>
   <string name="morphe_sb_stats_loading">লোডিং হৈছে…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock নিষ্ক্ৰিয় কৰা হৈছে</string>
   <string name="morphe_sb_stats_username">আপোনাৰ ইউজাৰনেম: &lt;b&gt;%s&lt;/b&gt;</string>
@@ -221,7 +221,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_submissions_summary">আপোনাৰ চেগমেণ্টসমূহ চাবলৈ ইয়াত টেপ কৰক</string>
   <string name="morphe_sb_stats_saved_zero">SponsorBlock লিডাৰবৰ্ড</string>
   <string name="morphe_sb_stats_saved">আপুনি মানুহক &lt;b&gt;%s&lt;/b&gt; চেগমেণ্টৰ পৰা ৰক্ষা কৰিছে</string>
-  <string name="morphe_sb_stats_saved_summary_zero">গোলকীয় পৰিসংখ্যা আৰু শীৰ্ষ দাতা সকলক চাবলৈ ইয়াত টেপ কৰক</string>
+  <string name="morphe_sb_stats_saved_summary_zero">গোলকীয় পৰিসংখ্যা আৰু শীৰ্ষ অৱদানকাৰীসকলক চাবলৈ ইয়াত টেপ কৰক</string>
   <string name="morphe_sb_stats_saved_summary">সেয়া তেওঁলোকৰ জীৱনৰ &lt;b&gt;%s&lt;/b&gt; অংশ।&lt;br&gt;লিডাৰবৰ্ডটো চাবলৈ ইয়াত টেপ কৰক</string>
   <string name="morphe_sb_stats_self_saved">আপুনি &lt;b&gt;%s&lt;/b&gt; টা চেগমেণ্ট স্কিপ কৰিছে</string>
   <string name="morphe_sb_stats_self_saved_summary">সেয়া হ\'ল &lt;b&gt;%s&lt;/b&gt;</string>
@@ -231,7 +231,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s ছেকেণ্ড</string>
   <string name="morphe_sb_color_opacity_label">অপাসিটি:</string>
   <string name="morphe_sb_color_dot_label">ৰং:</string>
-  <string name="morphe_sb_about_api_summary">"SponsorBlock হৈছে ভিডিঅ'ৰ বিভিন্ন খণ্ড যেনে স্পনছৰ, ইন্ট্রো, আউট্ৰো আৰু চাবস্ক্ৰাইব কৰাৰ ৰিমাইণ্ডাৰৰ এটা ক্লাউডচৰ্ছড ডেটাবেচ। এই খণ্ডসমূহ সম্প্ৰদায়ৰ দ্বাৰা জমা দিয়া হয় আৰু ভোট দিয়া হয়, আৰু ডেটাবেচটো মুকলি আৰু বিনামূল্যে ডাউনলোড কৰিব পৰা হয়
+  <string name="morphe_sb_about_api_summary">"SponsorBlock হৈছে ভিডিঅ'ৰ বিভিন্ন খণ্ড যেনে স্পনছৰ, ইন্ট্রো, আউট্ৰো আৰু চাবস্ক্ৰাইব কৰাৰ ৰিমাইণ্ডাৰৰ এটা জনসাধাৰণৰ দ্বাৰা সংগ্ৰহ কৰা ডেটাবেচ। এই খণ্ডসমূহ সম্প্ৰদায়ৰ দ্বাৰা জমা দিয়া হয় আৰু ভোট দিয়া হয়, আৰু ডেটাবেচটো মুকলি আৰু বিনামূল্যে ডাউনলোড কৰিব পৰা হয়
 
 আপুনি যিটো ভিডিঅ' চাইছে তাৰ ID SponsorBlock API-লৈ পঠিয়াই ইয়াৰ খণ্ডসমূহ সংগ্ৰহ কৰা হয়"</string>
 </resources>

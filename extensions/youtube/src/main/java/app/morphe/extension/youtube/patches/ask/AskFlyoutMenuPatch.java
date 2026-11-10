@@ -183,9 +183,10 @@ public final class AskFlyoutMenuPatch {
 
     /**
      * The selection id of the summarize suggestion of the opened panel, whose tap handler is run
-     * once it is created, or -1 if no suggestion is awaited.
+     * once it is created, or null if no suggestion is awaited. Selection ids can be negative.
      */
-    private static volatile long pendingSuggestionSelectionId = -1;
+    @Nullable
+    private static volatile Long pendingSuggestionSelectionId;
 
     /**
      * The menu bottom sheet or popup that shows the summarize item, to update the item once the live status
@@ -258,7 +259,7 @@ public final class AskFlyoutMenuPatch {
                 pendingWelcomeToken = null;
                 pendingSummarizeToken = null;
                 // The summarize suggestion has not been selected, and now is not.
-                pendingSuggestionSelectionId = -1;
+                pendingSuggestionSelectionId = null;
             }
             if (summarizeToken != null
                     && SystemClock.uptimeMillis() - pendingTime < OPENED_PANEL_TIMEOUT_MS) {
@@ -514,7 +515,7 @@ public final class AskFlyoutMenuPatch {
      */
     public static void onTapHandlerCreated(TapHandlerAccess tapHandler) {
         // A later Ask panel of the app can have a summarize suggestion with the same selection id.
-        if (pendingSuggestionSelectionId < 0
+        if (pendingSuggestionSelectionId == null
                 || SystemClock.uptimeMillis() - pendingTime >= OPENED_PANEL_TIMEOUT_MS) {
             return;
         }
@@ -522,19 +523,19 @@ public final class AskFlyoutMenuPatch {
         WeakReference<TapHandlerAccess> tapHandlerRef = new WeakReference<>(tapHandler);
         Utils.runOnMainThread(() -> {
             try {
-                final long selectionId = pendingSuggestionSelectionId;
+                Long selectionId = pendingSuggestionSelectionId;
                 TapHandlerAccess handler = tapHandlerRef.get();
-                if (selectionId < 0 || handler == null || !AskPanelCommand.selectsSuggestion(
+                if (selectionId == null || handler == null || !AskPanelCommand.selectsSuggestion(
                         handler.patch_getCommand().patch_toByteArray(), selectionId)) {
                     return;
                 }
 
                 synchronized (pendingLock) {
-                    if (pendingSuggestionSelectionId != selectionId) {
+                    if (!selectionId.equals(pendingSuggestionSelectionId)) {
                         // The welcome request was replaced first.
                         return;
                     }
-                    pendingSuggestionSelectionId = -1;
+                    pendingSuggestionSelectionId = null;
                     // The suggestion sends its own request, so the welcome is sent as is.
                     pendingWelcomeToken = null;
                     pendingSummarizeToken = null;

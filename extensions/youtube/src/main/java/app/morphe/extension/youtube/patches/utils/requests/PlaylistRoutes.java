@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.patches.utils.requests;
 
 import android.os.Build;
 
+import androidx.annotation.Nullable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -141,8 +143,18 @@ public final class PlaylistRoutes {
     }
 
     public static byte[] getSetVideoIdBody(String videoId, String playlistId) {
+        return getSetVideoIdBody(videoId, playlistId, null);
+    }
+
+    /** Localized display metadata, while existing playlist-edit callers keep their context. */
+    public static byte[] getSetVideoIdBody(String videoId, String playlistId, @Nullable Locale locale) {
         try {
             JSONObject body = getBaseContentJson();
+            if (locale != null) {
+                JSONObject client = body.getJSONObject("context").getJSONObject("client");
+                client.put("hl", locale.toLanguageTag());
+                client.put("gl", locale.getCountry());
+            }
             body.put("videoId", videoId);
             body.put("playlistId", playlistId);
             return body.toString().getBytes(StandardCharsets.UTF_8);

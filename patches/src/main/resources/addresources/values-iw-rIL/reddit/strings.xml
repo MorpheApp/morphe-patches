@@ -18,12 +18,12 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">מדיניות הפרטיות של Reddit</string>
   <string name="morphe_google_signin_not_available_toast">התחברות עם Google אינה זמינה. התחבר באמצעות דוא\"ל</string>
-  <string name="morphe_app_downgrade_dialog_title">שדרוג לאחור אינו נתמך</string>
-  <string name="morphe_app_downgrade_dialog_message">"התקנה זו של Reddit שודרגה לאחור מ-&lt;b&gt;%1$s&lt;/b&gt; ל-&lt;b&gt;%2$s&lt;/b&gt;
+  <string name="morphe_app_downgrade_dialog_title">הורדת גרסה אינה נתמכת</string>
+  <string name="morphe_app_downgrade_dialog_message">"התקנה זו של Reddit הורדה מגרסה &lt;b&gt;%1$s&lt;/b&gt; לגרסה &lt;b&gt;%2$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
-נתוני אפליקציה מגרסה חדשה יותר אינם עובדים עם גרסאות ישנות יותר והאפליקציה עשויה שלא לעבוד כראוי.
+נתוני אפליקציה מגרסה חדשה יותר אינם עובדים עם גרסאות ישנות יותר, והאפליקציה עשויה שלא לעבוד כראוי.
 &lt;br/&gt;&lt;br/&gt;
-כדי להשתמש בגרסה ישנה יותר, עליך &lt;b&gt;להסיר התקנה&lt;/b&gt; של Reddit ואז להתקין את הגרסה הישנה יותר."</string>
+כדי להשתמש בגרסה ישנה יותר, עליך &lt;b&gt;להסיר את ההתקנה&lt;/b&gt; של Reddit ואז להתקין את הגרסה הישנה יותר."</string>
   <string name="morphe_app_downgrade_dialog_open_app_info">פתח את מידע האפליקציה</string>
   <string name="morphe_screen_ads_title">מודעות</string>
   <string name="morphe_hide_post_ads_title">הסתר מודעות פיד</string>
@@ -35,7 +35,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_discover_button_title">הסתרת כפתור גלה או קהילות</string>
   <string name="morphe_hide_games_button_title">הסתרת כפתור משחקים</string>
   <string name="morphe_screen_sidebar_title">סרגל צד</string>
-  <string name="morphe_hide_recently_visited_shelf_title">הסתרת מדף הכניסות האחרונות שביקרו</string>
+  <string name="morphe_hide_recently_visited_shelf_title">הסתרת מדף שנצפה לאחרונה</string>
   <string name="morphe_hide_games_on_reddit_shelf_title">הסתרת מדף משחקי רדיט</string>
   <string name="morphe_hide_reddit_pro_shelf_title">הסתרת מדף Reddit Pro</string>
   <string name="morphe_hide_about_shelf_title">הסתרת מדף מידע</string>
@@ -43,7 +43,7 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">פריסה</string>
   <string name="morphe_copy_text_title">העתק טקסט</string>
   <string name="morphe_copy_text_summary">מאפשר בחירה והעתקה של טקסט בפוסטים ובתגובות. משבית את כיווץ התגובות</string>
-  <string name="morphe_copy_text_user_dialog_message">הערות שנסגרות יפסיקו לעבוד כאשר העתקת טקסט מופעלת</string>
+  <string name="morphe_copy_text_user_dialog_message">תגובות מתכווצות יפסיקו לעבוד כאשר העתקת טקסט מופעלת</string>
   <string name="morphe_custom_font_title">גופן מותאם אישית</string>
   <string name="morphe_custom_font_summary">טען קובץ גופן TTF או OTF מותאם אישית מהנתיב למטה. הפעלת אפשרות זו מכבה גם את גופן מערכת בכפייה</string>
   <string name="morphe_custom_font_file_path_title">קובץ גופן מותאם אישית</string>
@@ -53,8 +53,8 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_invalid_file">אנא בחר קובץ גופן ‎.ttf או ‎.otf</string>
   <string name="morphe_custom_font_failed_to_load">שגיאה בטעינת גופן מותאם אישית. בחר קובץ אחר.</string>
   <string name="morphe_disable_modern_home_title">השבת ממשק ביתי מודרני</string>
-  <string name="morphe_disable_screenshot_popup_title">השבתת חלון הצידודית של צילום מסך</string>
-  <string name="morphe_disable_screenshot_popup_summary">משביתה את החלון הצידודית שמופיע בעת לקיחת צילום מסך</string>
+  <string name="morphe_disable_screenshot_popup_title">השבת את חלון הקופץ של צילום המסך</string>
+  <string name="morphe_disable_screenshot_popup_summary">מבטל את החלון הקופץ שמופיע בעת צילום מסך</string>
   <string name="morphe_force_system_font_title">גופן מערכת בכפייה</string>
   <string name="morphe_force_system_font_summary">השתמש בגופן המערכת של המכשיר במקום Reddit Sans או Roboto. הפעלת אפשרות זו מכבה גם את גופן מותאם אישית</string>
   <string name="morphe_hide_ask_button_title">הסתר לחצן שאלה</string>
@@ -64,10 +64,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_title">הסתר מדפים פופולריים</string>
   <string name="morphe_hide_trending_shelves_summary">מסתיר את המדפים הפופולריים מהפיד והצעות החיפוש</string>
   <string name="morphe_remove_notification_dialog_title">הסרת חלון ההצעה של התראות</string>
-  <string name="morphe_remove_notification_dialog_summary">מפטר אוטומטית את תיבת ההצעה להודעה בעת ביקור בתת-פורום</string>
+  <string name="morphe_remove_notification_dialog_summary">סוגר אוטומטית את תיבת ההצעה להפעלת התראות בעת ביקור בתת-רדיט</string>
+  <string name="morphe_high_quality_avatars_title">אוואטרים באיכות גבוהה</string>
+  <string name="morphe_high_quality_avatars_summary">מציג אוואטרים של משתמשים ברזולוציה מלאה</string>
   <string name="morphe_show_flairs_in_home_feed_title">הצג תגי קישוט בעמוד הבית</string>
   <string name="morphe_show_flairs_in_home_feed_summary">מציג את תגי הקישוט של הפוסטים בעמוד הבית</string>
-  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">לא כל הפריטים במזין עשויים להציג תג קישוט</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">לא כל הפריטים בפיד עשויים להציג תג קישוט</string>
   <string name="morphe_show_view_count_title">הצג מספר צפיות בפוסטים</string>
   <string name="morphe_show_view_count_summary">מגבלה: זמין רק אם תגובת ה-API כוללת את מספר הצפיות</string>
   <string name="morphe_flip_post_action_bar_title">הפוך את סרגל הפעולות של הפוסט</string>
@@ -94,10 +96,10 @@ Second \"item\" text"</string>
   <string name="morphe_redgifs_audio_title">הפעל סרטוני Redgifs עם שמע</string>
   <string name="morphe_redgifs_audio_summary">מנגן בסרטון המקורי של Redgifs במקום העותק של Reddit, שלרוב אין לו שמע</string>
   <string name="morphe_redgifs_hd_title">איכות HD לסרטוני Redgifs</string>
-  <string name="morphe_redgifs_hd_summary">מנגן בסרטוני Redgifs באיכות HD. סרטוני HD גדולים יותר ועשויים להמתין בטעינה</string>
+  <string name="morphe_redgifs_hd_summary">מנגן בסרטוני Redgifs באיכות HD. סרטוני HD גדולים יותר ועשויים להיעצר לטעינה</string>
   <string name="morphe_download_location_title">מיקום הורדה</string>
   <string name="morphe_download_location_all_title">כל החשבונות</string>
-  <string name="morphe_download_location_default_summary">ברירת המחדל של Reddit: תמונות בPictures/Reddit, סרטונים בDownload</string>
+  <string name="morphe_download_location_default_summary">ברירת המחדל של Reddit: תמונות ב-Pictures/Reddit, סרטונים ב-Download</string>
   <string name="morphe_download_location_summary_folder">תיקייה: %s</string>
   <string name="morphe_download_location_summary_pattern">שם קובץ: %s</string>
   <string name="morphe_download_location_pattern_default">שמות קבצים של Reddit</string>
@@ -109,7 +111,7 @@ Second \"item\" text"</string>
   <string name="morphe_download_location_subfolder_hint">תת־תיקייה</string>
   <string name="morphe_download_location_subfolder_tree_hint">הוסף תתי־תיקיות באמצעות / בשם הקובץ</string>
   <string name="morphe_download_location_browse">עיון…</string>
-  <string name="morphe_download_location_no_picker">לא זמנה ממשק בחירת תיקיות על התקן זה</string>
+  <string name="morphe_download_location_no_picker">אין בחירת תיקיות זמינה במכשיר זה</string>
   <string name="morphe_download_location_pattern_title">שם קובץ</string>
   <string name="morphe_download_location_pattern_hint">שם קובץ של Reddit</string>
   <string name="morphe_download_location_pattern_help">הקש על טוקן כדי להכניס אותו. / יוצר תת־תיקייה. ערכים לא ידועים יהפכו ל\"unknown\"</string>
@@ -136,7 +138,7 @@ Second \"item\" text"</string>
   <string name="morphe_open_links_externally_title">פתיחת קישורים מחוץ לאפליקציה</string>
   <string name="morphe_open_links_externally_summary">פותח קישורים בדפדפן שלך במקום בדפדפן בתוך האפליקציה</string>
   <string name="morphe_remember_collapsed_comments_title">זכור תגובות מכווצות</string>
-  <string name="morphe_remember_collapsed_comments_summary">תגובות שתכווץ יישארו מכווצות כשתפתח מחדש את הפוסט</string>
+  <string name="morphe_remember_collapsed_comments_summary">תגובות שכיווצת יישארו מכווצות כשתפתח מחדש את הפוסט</string>
   <string name="morphe_app_icon_title">אייקון האפליקציה</string>
   <string name="morphe_app_icon_choose_title">בחר אייקון אפליקציה</string>
   <string name="morphe_app_icon_default">ברירת מחדל</string>

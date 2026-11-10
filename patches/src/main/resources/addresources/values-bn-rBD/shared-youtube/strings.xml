@@ -56,7 +56,7 @@ Second \"item\" text"</string>
   <string name="morphe_download_mode_title">ডাউনলোড মোড</string>
   <string name="morphe_download_mode_entry_default">ডিফল্ট</string>
   <string name="morphe_download_mode_entry_in_app">অ্যাপ-ভিত্তিক ডাউনলোড</string>
-  <string name="morphe_download_mode_entry_external">বাহিরে ডাউনলোড</string>
+  <string name="morphe_download_mode_entry_external">বাহ্যিক ডাউনলোডার</string>
   <string name="morphe_external_downloader_name_title">ডাউনলোডারের প্যাকেজ নাম</string>
   <string name="morphe_external_downloader_name_summary">আপনার ইনস্টল করা বাহ্যিক ডাউনলোডার অ্যাপের প্যাকেজ নাম</string>
   <string name="morphe_external_downloader_other_item_hint">প্যাকেজের নাম লিখুন</string>
@@ -71,9 +71,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_name_entry_5">কাস্টম</string>
   <string name="morphe_custom_branding_icon_title">অ্যাপ আইকন</string>
   <string name="morphe_custom_branding_icon_entry_1">মূল</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe कालो</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe কালো</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe গাঢ়</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe प्रकाश</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe হালকা</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_5">Morphe প্লে লাইট</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
@@ -112,18 +112,18 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">এই সেটিং বন্ধ করলে প্লেব্যাক সমস্যা হতে পারে</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">চেষ্টা করুন সক্রিয় করতে: ভিডিও স্ট্রিম স্পুফিং > অ্যান্ড্রয়েড ভিআর সাইন ইন করুন</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">চেষ্টা করুন সক্রিয় করতে: ভিডিও স্ট্রিম স্পুফ &gt; অ্যান্ড্রয়েড ভিআর সাইন ইন করুন</string>
   <string name="morphe_spoof_video_streams_client_type_title">ডিফল্ট ক্লায়েন্ট</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">অ্যান্ড্রয়েড ভিআর সাইন ইন করুন</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">অ্যান্ড্রয়েড ভিআরে সাইন ইন করা হয়নি। সাইন ইন করতে এখানে ট্যাপ করুন</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-এর জন্য আলাদা সাইন-ইন প্রয়োজন। চালিয়ে যেতে এখানে ট্যাপ করুন</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">বর্তমানে অ্যান্ড্রয়েড ভিআরে সাইন ইন করা হয়েছে</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">এই বৈশিষ্ট্যটি ব্যবহার করতে \'ডিফল্ট ক্লায়েন্ট\' অ্যান্ড্রয়েড ভিআর এ পরিবর্তন করুন</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">অ্যান্ড্রয়েড ভিআরে সাইন ইন করুন</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"আন্ড্রয়েড ভিআরতে সাইন ইন করলে কিছু ব্যবহারকারীদের জন্য প্লে ব্যাকের সমস্যা সমাধান হতে পারে
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"অ্যান্ড্রয়েড ভিআরে সাইন ইন করলে কিছু ব্যবহারকারীদের জন্য প্লেব্যাকের সমস্যা সমাধান হতে পারে
 
-সাইন ইন করতে, নিচে কন্টিনিউ প্রেস করুন"</string>
+সাইন ইন করতে, নিচে এগিয়ে যান-এ ট্যাপ করুন"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">সাইন আউট করুন</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">নির্দেশনা</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -131,19 +131,19 @@ Second \"item\" text"</string>
 
 1. নিচের 'ওয়েবসাইট খুলুন' ট্যাপ করে 'কনেক্ট এ ডিভাইস' ওয়েবসাইট খুলুন
 2. ক্লিপবোর্ড থেকে পেস্ট করুন (অথবা টাইপ করুন) উপরে দেখানো অ্যাক্টিভেশন কোড
-3. গুগলে সাইন ইন করতে প্রম্প্ট হলে। যদি আপনার একাধিক অ্যাকাউন্ট থাকে তাহলে এই ইউটিউব অ্যাকাউন্ট বেছে নিন
+3. গুগলে সাইন ইন করতে প্রম্পট হলে। যদি আপনার একাধিক অ্যাকাউন্ট থাকে তাহলে এই ইউটিউব অ্যাকাউন্ট বেছে নিন
 4. 'ইউটিউব ভিআর' অ্যাক্সেস অনুমতি দিন
 5. 'ডিভাইস কনেক্টেড' মেসেজ পাওয়ার পর এই অ্যাপে ফিরে আসুন"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">অ্যাক্টিভেশন কোড জারি করতে ব্যর্থ হয়েছে</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">প্রমাণीकरण টোকেন জারি করতে ব্যর্থ হয়েছে</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">প্রমাণীকরণ টোকেন জারি করতে ব্যর্থ হয়েছে</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">সফলভাবে সাইন ইন করা হয়েছে</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"প্রমাণীকরণ সংরক্ষিত হয়েছে
 
-• আপনার মলফে সেটিংস অ্যান্ড্রয়েড ভিআর প্রমাণীকরণ আমদানি / রফতানি করবে না
+• আপনার Morphe সেটিংস অ্যান্ড্রয়েড ভিআর প্রমাণীকরণ আমদানি / রফতানি করবে না
 • যদি এই অ্যাপটি ৬ মাসের জন্য অব্যবহৃত থাকে তাহলে গুগল এই প্রমাণীকরণ সরিয়ে দেবে
-• যদি আপনি আপনার গুগল পাসওয়ার্ড পরিবর্তন করেন বা আপনার গুগল সেটিংস থেকে এই ডিভাইস আনয়ন করেন তাহলে আপনাকে আবার সাইন ইন করতে হবে"</string>
+• যদি আপনি আপনার গুগল পাসওয়ার্ড পরিবর্তন করেন বা আপনার গুগল সেটিংস থেকে এই ডিভাইসের নিবন্ধন বাতিল করেন তাহলে আপনাকে আবার সাইন ইন করতে হবে"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 সাময়িকভাবে উপলব্ধ নয় (API সময় শেষ হয়েছে)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">আন্ড্রয়েড ভিআর সাইন ইন মেয়াদোত্তীর্ণ, ভিআরতে পুনরায় সাইন ইন করার চেষ্টা করুন</string>
+  <string name="morphe_oauth2_connection_failure_status_400">অ্যান্ড্রয়েড ভিআর সাইন ইন মেয়াদোত্তীর্ণ, ভিআরতে পুনরায় সাইন ইন করার চেষ্টা করুন</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 সাময়িকভাবে উপলভ্য নয় (অবস্থা %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 সাময়িকভাবে উপলব্ধ নয়</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">ভিআরতে সাইন ইন করতে পারছেন না, ওয়েবসাইট অথেন্টিকেশন অনুমোদিত হয়নি</string>
@@ -157,7 +157,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">মিডিয়া বিজ্ঞপ্তিতে, লক স্ক্রিনে এবং হেডফোন নিয়ন্ত্রণে পূর্ববর্তী ও পরবর্তী বোতাম লুকিয়ে রাখে</string>
   <string name="morphe_disable_notification_media_seekbar_title">সিকবার নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_notification_media_seekbar_summary">লক স্ক্রিনে এবং বিজ্ঞপ্তি প্যানেলে সিকবার টেনে সরানো প্রতিরোধ করে</string>
-  <string name="morphe_seek_notification_media_prev_next_title">পূর্ববর্তী ও পরবর্তী বোতাম দিয়ে <b>সিক করুন</b></string>
+  <string name="morphe_seek_notification_media_prev_next_title">পূর্ববর্তী ও পরবর্তী বোতাম দিয়ে সিক করুন</string>
   <string name="morphe_seek_notification_media_prev_next_summary">ভিডিও পরিবর্তনের পরিবর্তে মিডিয়া নোটিফিকেশন, লক স্ক্রিন এবং হেডফোনে সিক করার জন্য নিয়ন্ত্রণ পরিবর্তন করুন</string>
   <string name="morphe_seek_notification_media_rewind_length_title">রিওয়ান্ড দৈর্ঘ্য</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">পূর্ববর্তী বোতাম দিয়ে রিওয়ান্ড করার জন্য সেকেন্ড সংখ্যা</string>
@@ -196,7 +196,7 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_allow_direct_fallback_title">সরাসরি সংযোগের অনুমতি দিন</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">প্রক্সি ব্যর্থ হলে সরাসরি কানেক্ট করুন</string>
   <!-- ad.hideFullscreenAdsPatch -->
-  <string name="morphe_hide_fullscreen_ads_title">পূর্ণ স্ক্রীন প্যানেল লুকান</string>
+  <string name="morphe_hide_fullscreen_ads_title">পূর্ণ স্ক্রিন বিজ্ঞাপন লুকান</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">এই বৈশিষ্ট্যটি ব্যবহার করতে, \'ভিডিও স্ট্রিম স্পুফ করুন\' \'Android Studio\' এবং \'Android VR Downgraded\' ছাড়া অন্য কোনো ক্লায়েন্টে পরিবর্তন করুন</string>
@@ -208,13 +208,15 @@ Second \"item\" text"</string>
   <string name="morphe_replace_links_with_shortener_title">শেয়ার লিঙ্কগুলি youtu.be-এ পরিবর্তন করুন</string>
   <string name="morphe_replace_links_with_shortener_summary">ভিডিওগুলিকে সংক্ষেপিত youtu.be URL ফর্ম্যাট ব্যবহার করতে বাধ্য করে</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">ডিবাগ লগ প্রোটোকল বাফার</string>
-  <string name="morphe_debug_protobuffer_summary">অ্যাপ উপাদান সনাক্ত করতে ডেভেলপারদের জন্য অতিরিক্ত লগিং তথ্য যোগ করে</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"এই সেটিংস সক্ষম করলে কিছু UI উপাদানের জন্য অন-স্ক্রীন পাঠ্য সহ অতিরিক্ত লেআউট ডেটা লগ করা হবে。
+  <string name="morphe_debug_litho_title">লিথো লগিং</string>
+  <string name="morphe_debug_litho_entry_disabled">বন্ধ রাখুন</string>
+  <string name="morphe_debug_litho_entry_path">পাথ</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">পাথ এবং বাফার</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho logging অ্যাপের লেআউট উপাদানগুলো লগ করে, যার মধ্যে কিছু UI উপাদানের জন্য অন-স্ক্রীন পাঠ্য অন্তর্ভুক্ত থাকে
 
-এটি কাস্টম ফিল্টার তৈরি করার সময় উপাদান সনাক্ত করতে সাহায্য করতে পারে。
+এটি কাস্টম ফিল্টার তৈরি করার সময় উপাদানগুলো সনাক্ত করতে সাহায্য করতে পারে
 
-তবে, এটি সক্রিয় করলে আপনার আইপি ঠিকানার মতো কিছু ব্যবহারকারীর ডেটাও লগ করা হবে।"</string>
+তবে, এটি আপনার আইপি ঠিকানার মতো কিছু ব্যবহারকারীর ডেটাও লগ করবে"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">কাস্টম ফিল্টার</string>
   <string name="morphe_custom_filter_screen_summary">কোনো উপাদান লুকানোর জন্য কাস্টম ফিল্টার কনফিগার করুন</string>
@@ -224,7 +226,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">ত্রুটিপূর্ণ কাস্টম ফিল্টার: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">সেটিংস মেনু ফিল্টার</string>
-  <string name="morphe_settings_menu_filter_screen_summary">видиমান নামের মাধ্যমে স্ট্যান্ডার্ড অ্যাপ সেটিংস স্ক্রিনে আইটেম লুকান</string>
+  <string name="morphe_settings_menu_filter_screen_summary">দৃশ্যমান নামের মাধ্যমে স্ট্যান্ডার্ড অ্যাপ সেটিংস স্ক্রিনে আইটেম লুকান</string>
   <string name="morphe_settings_menu_filter_picker_empty">তালিকাটি পপুলেট করার জন্য স্ট্যান্ডার্ড অ্যাপ সেটিংস স্ক্রিনটি একবার খুলুন</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">ডিস্ক্রেশন ডায়ালগ সরান</string>
@@ -240,7 +242,7 @@ Second \"item\" text"</string>
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_unavailable_summary">"বহিরাগত PoToken মিন্টার ব্যবহার করে প্লেব্যাক সমস্যা ঠিক করে (পরীক্ষামূলক)
 
-এই বৈশিষ্ট্যটি ব্যবহার করতে, 'ভিডিও স্ট্রিম ছদ্মবেশ' বন্ধ করুন"</string>
+এই বৈশিষ্ট্যটি ব্যবহার করতে, 'ভিডিও স্ট্রিম স্পুফ' বন্ধ করুন"</string>
   <string name="morphe_external_potoken_provider_user_dialog_message">যদি এটি কাজ না করে, তাহলে MicroG জোর করে বন্ধ করার চেষ্টা করুন।</string>
   <string name="morphe_external_potoken_provider_settings_summary">PotHelper সেটিংস খুলুন</string>
   <string name="morphe_external_potoken_provider_about_summary">"এই বৈশিষ্ট্যটি বর্তমানে উন্নয়নাধীন এবং কাজ নাও করতে পারে
@@ -250,14 +252,14 @@ PotHelper ডাউনলোড করতে এখানে ট্যাপ ক
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_expired_dialog_message">"PotHelper-এর এই সংস্করণে থাকা টোকেনটি আর কাজ করে না
 
-প্লেব্যাক ঠিক করতে 'স্পুফ ভিডিও স্ট্রিম' চালু করুন"</string>
+প্লেব্যাক ঠিক করতে 'ভিডিও স্ট্রিম স্পুফ' চালু করুন"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">চালু করুন</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">অ্যাপের সংস্করণ স্পুফ করুন</string>
   <string name="morphe_spoof_app_version_summary">পুরোনো ইউজার ইন্টারফেস (UI) ফিচারগুলো ফিরিয়ে আনতে সার্ভারকে এমনভাবে বিভ্রান্ত করে যেন মনে হয় আপনি অ্যাপের একটি পুরোনো সংস্করণ ব্যবহার করছেন</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"অ্যাপের ভার্সন একটি পুরোনো ভার্সনে স্পুফ করা হবে。
+  <string name="morphe_spoof_app_version_user_dialog_message">"অ্যাপের ভার্সন একটি পুরোনো ভার্সনে স্পুফ করা হবে।
 
-এতে অ্যাপের ডিজাইন ও ফিচার পরিবর্তন হবে, তবে কিছু অচেনা পার্শ্বপ্রতিক্রিয়া দেখা দিতে পারে。
+এতে অ্যাপের ডিজাইন ও ফিচার পরিবর্তন হবে, তবে কিছু অচেনা পার্শ্বপ্রতিক্রিয়া দেখা দিতে পারে।
 
 পরবর্তীতে এটি বন্ধ করলে, UI বাগ এড়াতে অ্যাপের ডেটা ক্লিয়ার করার পরামর্শ দেওয়া হয়"</string>
   <string name="morphe_spoof_app_version_target_title">যে অ্যাপ ভার্সনে স্পুফ করবেন</string>
@@ -309,11 +311,11 @@ PotHelper ডাউনলোড করতে এখানে ট্যাপ ক
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API ভোট, কল সংখ্যা</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">কোন নেটওয়ার্ক কল তৈরি করা হয়নি</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s নেটওয়ার্ক কল করা হয়েছে</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API ভোট, কল সংখ্যা</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API ভোট, টাইমআউটের সংখ্যা</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">কোন নেটওয়ার্ক কল সময় শেষ হয়নি</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s নেটওয়ার্ক কলের মেয়াদ শেষ হয়েছে</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API ক্লায়েন্ট হার সীমা</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">কোন ক্লায়েন্ট হার সীমা সম্মুখীন হয়নি</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">ক্লায়েন্ট রেট লিমিট %s বার_encountered_ হয়েছে</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">ক্লায়েন্ট রেট লিমিটের সম্মুখীন হয়েছে %s বার</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s মিলিসেকেন্ড</string>
 </resources>

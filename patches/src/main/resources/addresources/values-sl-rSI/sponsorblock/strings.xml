@@ -67,8 +67,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_min_segment_duration_title">Minimalna dolžina segmenta</string>
   <string name="morphe_sb_min_segment_duration_summary">Segmenti, krajši od te vrednosti (v sekundah), ne bodo prikazani ali preskočeni</string>
   <string name="morphe_sb_min_segment_duration_invalid">Neveljavna dolžina časa</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Tvoja zasebna uporabniška identifikacija</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">To je treba hraniti zasebno. To je kot geslo in ga ne smete deliti z nikomer. Če ga ima nekdo, vas lahko pretvori</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_title">Vaša zasebna uporabniška identifikacija</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">To je treba hraniti zasebno. To je kot geslo in ga ne smete deliti z nikomer. Če ga ima nekdo, se lahko predstavi kot vi</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Zasebna uporabniška identifikacija mora biti dolga vsaj 30 znakov</string>
   <string name="morphe_sb_api_url_title">Spremeni URL API</string>
   <string name="morphe_sb_api_url_summary">Naslov, ki ga SponsorBlock uporablja za klic na strežnik</string>
@@ -99,7 +99,7 @@ Vaš uporabniški ID je kot geslo in ga nikoli ne smete deliti"</string>
   <string name="morphe_sb_segments_selfpromo">Neplačano / Samopromocija</string>
   <string name="morphe_sb_segments_selfpromo_summary">Podobno kot sponzor, razen za neplačljivo/samopromocijo. Vključuje odseke o blagu, donacijah ali informacijah o tem, s kom so sodelovali</string>
   <string name="morphe_sb_segments_interaction">Opomnik o interakciji (Naročite se)</string>
-  <string name="morphe_sb_segments_interaction_summary">Kratko opomnik za všečke, naročnine ali sledenje vmesu vsebine.Če je dolgo ali o čem specifičnem, bi ga morali namesto tega uvrstiti v samopromocijo</string>
+  <string name="morphe_sb_segments_interaction_summary">Kratek opomnik za všečke, naročnine ali sledenje sredi vsebine. Če je dolg ali o čem specifičnem, ga je treba namesto tega uvrstiti v samopromocijo</string>
   <string name="morphe_sb_segments_highlight">Poudarek</string>
   <string name="morphe_sb_segments_highlight_summary">Del videa, ki ga večina ljudi išče</string>
   <string name="morphe_sb_segments_intro">Premor / Animacija uvoda</string>
@@ -121,8 +121,8 @@ Vaš uporabniški ID je kot geslo in ga nikoli ne smete deliti"</string>
   <string name="morphe_sb_skip_button_interaction">Preskoči interakcijo</string>
   <string name="morphe_sb_skip_button_highlight">Preskoči do poudarjanja</string>
   <string name="morphe_sb_skip_button_intro_beginning">Preskoči uvod</string>
-  <string name="morphe_sb_skip_button_intro_middle">Preskoči odmora</string>
-  <string name="morphe_sb_skip_button_intro_end">Preskoči odmora</string>
+  <string name="morphe_sb_skip_button_intro_middle">Preskoči odmor</string>
+  <string name="morphe_sb_skip_button_intro_end">Preskoči odmor</string>
   <string name="morphe_sb_skip_button_outro">Preskoči zaključek</string>
   <string name="morphe_sb_skip_button_hook">Preskoči priklop</string>
   <string name="morphe_sb_skip_button_preview_beginning">Preskoči predogled</string>
@@ -136,8 +136,8 @@ Vaš uporabniški ID je kot geslo in ga nikoli ne smete deliti"</string>
   <string name="morphe_sb_skipped_interaction">Preskočeno nadležno opozorilo</string>
   <string name="morphe_sb_skipped_highlight">Preskočeno do poudarjanja</string>
   <string name="morphe_sb_skipped_intro_beginning">Preskočen uvod</string>
-  <string name="morphe_sb_skipped_intro_middle">Preskočen odmora</string>
-  <string name="morphe_sb_skipped_intro_end">Preskočen odmora</string>
+  <string name="morphe_sb_skipped_intro_middle">Preskočen odmor</string>
+  <string name="morphe_sb_skipped_intro_end">Preskočen odmor</string>
   <string name="morphe_sb_skipped_outro">Preskočen zaključek</string>
   <string name="morphe_sb_skipped_hook">Preskočen priklop</string>
   <string name="morphe_sb_skipped_preview_beginning">Preskočen predogled</string>
@@ -145,8 +145,8 @@ Vaš uporabniški ID je kot geslo in ga nikoli ne smete deliti"</string>
   <string name="morphe_sb_skipped_preview_end">Preskočen povzetek</string>
   <string name="morphe_sb_skipped_filler">Preskočena digresija</string>
   <string name="morphe_sb_skipped_nomusic">Preskočen nemuzikalni del</string>
-  <string name="morphe_sb_skipped_unsubmitted">Preskočen nepreneseni segment</string>
-  <string name="morphe_sb_skipped_multiple_segments">Preskočeni več segmentov</string>
+  <string name="morphe_sb_skipped_unsubmitted">Preskočen neoddani segment</string>
+  <string name="morphe_sb_skipped_multiple_segments">Preskočenih več segmentov</string>
   <string name="morphe_sb_skip_automatically">Samodejno preskoči</string>
   <string name="morphe_sb_skip_automatically_once">Samodejno preskoči enkrat</string>
   <string name="morphe_sb_skip_showbutton">Pokaži gumb za preskok</string>
@@ -194,8 +194,8 @@ do
 Pripravljeni na oddajo?"</string>
   <string name="morphe_sb_new_segment_confirm_submit">Pošlji</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Začetek mora biti pred koncem</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Najprej označi lokacijo na časovni vrstici</string>
-  <string name="morphe_sb_new_segment_preview_segment_first">Predogled segmenta in zagotovite gladko preskok</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Najprej označite lokacijo na časovni vrstici</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">Predogled segmenta in zagotovite, da se gladko preskoči</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Ročno uredite čas segmenta</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Želite urediti čas za začetek ali konec segmenta?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Napačen čas</string>
@@ -219,16 +219,16 @@ Pripravljeni na oddajo?"</string>
   <string name="morphe_sb_stats_submissions">Ustvarili ste &lt;b&gt;%s&lt;/b&gt; segmentov</string>
   <string name="morphe_sb_stats_submissions_summary">Pokaže zbirko segmentov</string>
   <string name="morphe_sb_stats_saved_zero">Lestvica SponsorBlock</string>
-  <string name="morphe_sb_stats_saved">Preprečili ste ljudi pred &lt;b&gt;%s&lt;/b&gt; segmenti</string>
+  <string name="morphe_sb_stats_saved">Obvarovali ste ljudi pred &lt;b&gt;%s&lt;/b&gt; segmenti</string>
   <string name="morphe_sb_stats_saved_summary_zero">Pokaže globalno statistiko in najboljše prispevalce</string>
   <string name="morphe_sb_stats_saved_summary">To je &lt;b&gt;%s&lt;/b&gt; njihovega življenja.&lt;br&gt;Tapnite tukaj, da si ogledate lestvico</string>
-  <string name="morphe_sb_stats_self_saved">Preko &lt;b&gt;%s&lt;/b&gt; segmentov</string>
+  <string name="morphe_sb_stats_self_saved">Preskočili ste &lt;b&gt;%s&lt;/b&gt; segmentov</string>
   <string name="morphe_sb_stats_self_saved_summary">To je &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_self_saved_reset_title">Ponastaviti števec preskočenih segmentov?</string>
   <string name="morphe_sb_stats_saved_hour_format">%1$s ur %2$s minut</string>
   <string name="morphe_sb_stats_saved_minute_format">%1$s minut %2$s sekund</string>
   <string name="morphe_sb_stats_saved_second_format">%s sekund</string>
-  <string name="morphe_sb_color_opacity_label">Neproizročnost:</string>
+  <string name="morphe_sb_color_opacity_label">Neprozornost:</string>
   <string name="morphe_sb_color_dot_label">Barva:</string>
   <string name="morphe_sb_about_api_summary">"SponsorBlock je skupnostno ustvarjena baza podatkov o segmentih videoposnetkov, kot so sponzorski deli, uvodi, zaključki in opomniki za naročanje. Segmente prispeva in o njih glasuje skupnost, baza podatkov pa je odprta in brezplačna za prenos.
 

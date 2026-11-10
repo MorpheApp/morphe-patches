@@ -22,7 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_save">שמור</string>
   <string name="morphe_settings_reset">איפוס</string>
   <string name="morphe_settings_reset_color">אפס צבע</string>
-  <string name="morphe_settings_color_invalid">צבע לא חוקי</string>
+  <string name="morphe_settings_color_invalid">צבע לא תקין</string>
   <string name="morphe_settings_restart_title">נדרשת הפעלה מחדש</string>
   <string name="morphe_settings_restart_dialog_message">יש להפעיל מחדש את היישום כדי שהשינוי ייכנס לתוקף</string>
   <string name="morphe_settings_restart">הפעלה מחדש</string>
@@ -30,7 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import">ייבוא</string>
   <string name="morphe_settings_import_copy">העתק</string>
   <string name="morphe_settings_import_reset">הגדרות Morphe אופסו לברירת מחדל</string>
-  <string name="morphe_settings_import_success">%s הגדרות יובאו</string>
+  <string name="morphe_settings_import_success">יובאו %s הגדרות</string>
   <string name="morphe_settings_import_failure_parse">ייבוא נכשל: %s</string>
   <string name="morphe_settings_navigate_up">ניווט למעלה</string>
   <string name="morphe_settings_search_hint">חפש בהגדרות</string>
@@ -38,8 +38,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_no_results_title">לא נמצאו תוצאות עבור \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">נסה מילת מפתח אחרת</string>
   <string name="morphe_settings_search_recent_searches">חיפושים אחרונים</string>
-  <string name="morphe_settings_search_remove_message">להסיר מהיסטוריית חיפוש?</string>
-  <string name="morphe_settings_search_remove">להסיר מהיסטוריית חיפוש</string>
+  <string name="morphe_settings_search_remove_message">להסיר מהיסטוריית החיפוש?</string>
+  <string name="morphe_settings_search_remove">הסר מהיסטוריית החיפוש</string>
   <string name="morphe_settings_search_clear_history">נקה היסטוריית חיפושים</string>
   <string name="morphe_settings_search_clear_history_message">האם אתה בטוח שברצונך למחוק את כל היסטוריית החיפושים?</string>
   <string name="morphe_settings_search_tips_title">טיפים לחיפוש</string>
@@ -69,16 +69,16 @@ Second \"item\" text"</string>
   <string name="morphe_pref_import_export_title">ייבוא / ייצוא</string>
   <string name="morphe_pref_import_export_summary">ייבוא / ייצוא הגדרות Morphe</string>
   <string name="morphe_settings_import_file">ייבוא מתוך קובץ</string>
-  <string name="morphe_settings_import_file_success">ההגדרות יובאו בהצלחה, הקש שמור כדי להחיל</string>
+  <string name="morphe_settings_import_file_success">ההגדרות יובאו בהצלחה, הקש על שמירה כדי להחיל</string>
   <string name="morphe_settings_import_file_failed">נכשל ייבוא הגדרות</string>
   <string name="morphe_settings_export_file">ייצוא לקובץ</string>
-  <string name="morphe_settings_export_file_success">הגדרות יובאו בהצלחה</string>
-  <string name="morphe_settings_export_file_failed">נכשל לייצא הגדרות</string>
+  <string name="morphe_settings_export_file_success">ההגדרות יוצאו בהצלחה</string>
+  <string name="morphe_settings_export_file_failed">ייצוא ההגדרות נכשל</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">אתה משתמש בגרסה האחרונה של Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">אתה משתמש בגרסת Morphe Patches &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;עדכון זמין: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;כדי לעדכן את התיקונים שלך, השתמש ב-Morphe כדי לתקן מחדש את האפליקציה הזו</string>
   <string name="morphe_settings_about_links_dev_header">הערה</string>
-  <string name="morphe_settings_about_links_dev_body">גרסה זו היא קדם-הפצה וייתכן שתיתקל בבעיות בלתי צפויות</string>
+  <string name="morphe_settings_about_links_dev_body">גרסה זו היא גרסה מקדימה וייתכן שתיתקל בבעיות בלתי צפויות</string>
   <string name="morphe_settings_about_links_header">קישורים רשמיים</string>
   <string name="morphe_settings_about_links_website">אתר אינטרנט</string>
   <string name="morphe_settings_about_links_donate">תרומה</string>
@@ -97,25 +97,26 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">איתור באגים</string>
   <string name="morphe_debug_screen_summary">הגדרת אפשרויות מפתחים ודיאגנוסטיקה</string>
-  <string name="morphe_debug_title">אפשר הודעות דיבאג</string>
-  <string name="morphe_debug_stacktrace_title">עקבות מחסנית באיתור באגים</string>
-  <string name="morphe_debug_stacktrace_summary">כולל מעקב מחסנית ביומני ניפוי באגים כדי לעזור בזיהוי שגיאות</string>
+  <string name="morphe_debug_level_title">רישום איתור באגים</string>
+  <string name="morphe_debug_level_entry_disabled">מושבת</string>
+  <string name="morphe_debug_level_entry_debug">ניפוי באגים</string>
+  <string name="morphe_debug_level_entry_verbose">מפורט</string>
   <string name="morphe_debug_toast_on_error_title">הצג הודעה קופצת בעת שגיאת Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"השבתת הודעות שגיאה קופצות מסתירה את כל הודעות השגיאה של Morphe.
 
 לא תקבל הודעה על אירועים בלתי צפויים"</string>
   <string name="morphe_debug_export_logs_title">ייצוא יומני איתור באגים</string>
   <string name="morphe_debug_export_logs_summary">ייצוא יומני איתור באגים Morphe</string>
-  <string name="morphe_debug_export_logs_success">יומני איתור באגים יובאו בהצלחה</string>
+  <string name="morphe_debug_export_logs_success">יומני איתור הבאגים יוצאו בהצלחה</string>
   <string name="morphe_debug_export_logs_failed">נכשל לייצא יומני איתור באגים</string>
   <string name="morphe_debug_logs_search_hint">חפש ביומני איתור באגים…</string>
   <string name="morphe_debug_export_logs_clear">נקה</string>
   <string name="morphe_debug_logs_disabled">תיעוד איתור באגים מושבת</string>
   <string name="morphe_debug_logs_none_found">לא נמצאו יומני איתור באגים</string>
   <string name="morphe_debug_logs_copied_to_clipboard">יומני איתור באגים הועתקו</string>
-  <string name="morphe_debug_logs_failed_to_export">נכשל לייצא יומני איתור באגים: %s</string>
+  <string name="morphe_debug_logs_failed_to_export">ייצוא יומני איתור הבאגים נכשל: %s</string>
   <string name="morphe_debug_logs_clear_toast">יומני איתור באגים נוקו</string>
-  <string name="morphe_debug_feature_flags_manager_title">Manager דגלי תכונות</string>
+  <string name="morphe_debug_feature_flags_manager_title">מנהל דגלי תכונות</string>
   <string name="morphe_debug_feature_flags_manager_summary">נהל דגלי תכונות בוליאניים</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">חפש דגלי תכונה…</string>
   <!-- Keep short, four of these are shown in one row. -->
@@ -131,12 +132,12 @@ Second \"item\" text"</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">כבוי</string>
   <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">דלוק</string>
-  <string name="morphe_debug_feature_flags_manager_action_force_on">הפעל בכוח</string>
+  <string name="morphe_debug_feature_flags_manager_state_forced">מופעל</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">הפעל בכפייה</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">חסום</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">הסר</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">דגלי תכונות נשמרו</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">דגלי תכונות הוחזרו</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">דגלי התכונה אופסו</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">הדגלים הועתקו ללוח</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">הפעל מחדש את האפליקציה כדי להשתמש בהגדרה זו</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">ייצוא וייבוא</string>
@@ -214,11 +215,11 @@ Second \"item\" text"</string>
 • השמעת מוזיקה ברקע עלולה לא לעבוד"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">טיפול בקישורים באפליקציה</string>
-  <string name="morphe_link_handling_summary">הגדר קישורים להיפתח באפליקציה זו</string>
+  <string name="morphe_link_handling_summary">הגדר קישורים שייפתחו באפליקציה זו</string>
   <string name="morphe_link_handling_step1_title">שלב 1: השבת קישורים לאפליקציה המקורית</string>
-  <string name="morphe_link_handling_step1_message">פתחו את הגדרות האפליקציה המקורית והשביתו את כל קישורי הדומיין</string>
+  <string name="morphe_link_handling_step1_message">פתח את הגדרות האפליקציה המקורית והשבת את כל קישורי הדומיין</string>
   <string name="morphe_link_handling_step2_title">שלב 2: הפעלה של קישורים לאפליקציה המתוקנת</string>
-  <string name="morphe_link_handling_step2_message">פתחו את הגדרות האפליקציה המתוקנת והפעילו את כל קישורי הדומיין</string>
+  <string name="morphe_link_handling_step2_message">פתח את הגדרות האפליקציה המתוקנת והפעל את כל קישורי הדומיין</string>
   <string name="morphe_link_handling_open">פתח הגדרות</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 התראה ניסיונית 🚨</string>
@@ -227,8 +228,21 @@ Second \"item\" text"</string>
 🔧 צפה להתנהגות מוזרה באפליקציה או באגים בלתי מזוהים בזמן שאנו מכוונים את התיקונים עבור גרסת האפליקציה הזו.
 &lt;br/&gt;&lt;br/&gt;
 אם אתה רוצה את החוויה הנטולת הבעיות ביותר, אז &lt;b&gt;הסר התקנה&lt;/b&gt; של זה ותקן את גרסת האפליקציה המומלצת ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ אני רוצה ניסיונית</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ אני רוצה יציבה</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ אני רוצה גרסה ניסיונית</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ אני רוצה גרסה יציבה</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">הצג התראה בתוך האפליקציה עבור עדכוני תיקון</string>
+  <string name="morphe_patches_update_notice_entry_off">כבוי</string>
+  <string name="morphe_patches_update_notice_entry_stable">גרסאות יציבות</string>
+  <string name="morphe_patches_update_notice_entry_dev">גרסאות יציבות וגרסאות פיתוח</string>
+  <string name="morphe_patches_update_notice_dialog_title">תיקונים חדשים זמינים</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (נוכחי: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ תכונות חדשות</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 תיקוני באגים</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 שינויים אחרים</string>
+  <string name="morphe_patches_update_notice_dialog_more">…ועוד %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">עדכון</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">דחה</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">יומן קריסה נשמר למסמכי המשתמש: %s</string>
   <string name="morphe_crash_log_saved">יומן קריסה נשמר: %s</string>

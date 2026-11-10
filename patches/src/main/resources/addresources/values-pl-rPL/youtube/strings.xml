@@ -93,7 +93,7 @@ Zmiany obejmują:
   <string name="morphe_hide_get_premium_button_title">Ukryj przycisk \"Kup Premium\"</string>
   <string name="morphe_hide_history_shelf_title">Ukryj sekcję Historia</string>
   <string name="morphe_hide_horizontal_shelves_title">Ukryj sekcje poziome</string>
-  <string name="morphe_hide_horizontal_shelves_summary">Ukrywa poziome sekcje, takie jak Najważniejsze wiadomości, Posty, które mogą Cię zainteresować, Kontynuuj oglądanie, Odkryj więcej kanałów, Odkryj więcej tematów, Dla Ciebie, Najnowsze filmy, Najbardziej istotne, Posty ze Społeczności twórcy, Zakupy oraz Obejrzyj ponownie</string>
+  <string name="morphe_hide_horizontal_shelves_summary">Ukrywa poziome sekcje, takie jak Najważniejsze wiadomości, Posty, które mogą Cię zainteresować, Oglądaj dalej, Odkryj więcej kanałów, Odkryj więcej tematów, Dla Ciebie, Najnowsze filmy, Najbardziej istotne, Posty ze Społeczności twórcy, Zakupy oraz Obejrzyj ponownie</string>
   <string name="morphe_hide_image_shelf_title">Ukryj sekcję obrazków</string>
   <string name="morphe_hide_image_shelf_summary">Ukrywa sekcję obrazków w wynikach wyszukiwania</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
@@ -319,25 +319,18 @@ Zmiany obejmują:
   <string name="morphe_hide_keyword_content_search_title">Ukryj wyniki wyszukiwania</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ukryj filmy na stronie subskrypcji</string>
   <string name="morphe_hide_keyword_content_phrases_title">Słowa do ukrycia</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Wprowadź słowa i frazy do ukrycia, każda w nowej linii
+  <string name="morphe_hide_keyword_content_phrases_summary">"Wprowadź słowa i frazy do ukrycia, rozdzielając je nowymi wierszami
 
-Słowem może być dowolny tekst wyświetlany w tytułach filmów lub nazwach kanałów
+​Słowem może być dowolny tekst widoczny w tytułach filmów lub nazwach kanałów"</string>
+  <string name="morphe_hide_keyword_content_about_summary">"Strona główna / Subskrypcje / Wyszukiwanie / Komentarze są filtrowane, aby ukryć treści pasujące do podanych słów i fraz
 
-Słowa z wielkimi literami w środku muszą pasować dokładnie (np. iPhone, TikTok, InPost)"</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Strona główna / Subskrypcje / Wyniki wyszukiwania / Komentarze są filtrowane, aby ukryć treści, które zawierają słowa z filtra
-
-Ograniczenia:
-• Filmy Short nie mogą być ukryte po nazwie kanału
-• Niektóre elementy interfejsu mogą nie być ukryte
-• Wyszukiwanie słowa z filtru może nie pokazywać żadnych wyników"</string>
+​Ograniczenia:
+• Niektórych filmów Short nie można ukryć po nazwie kanału
+• Niektóre elementy interfejsu mogą nie zostać ukryte"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Dopasuj całe wyrazy</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Otoczenie słowa/frazy cudzysłowem zapobiegnie częściowym dopasowaniom w tytułach filmów i nazwach kanałów&lt;br&gt;&lt;br&gt;Na przykład,&lt;br&gt;&lt;b&gt;\"kot\"&lt;/b&gt; ukryje film: &lt;b&gt;Jak zachowuje się kot?&lt;/b&gt;&lt;br&gt;lecz nie ukryje: &lt;b&gt;Wielki bojkot znanej marki&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Nie można użyć słowa: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Dodaj cudzysłowy, aby użyć słowa: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Słowo zawiera sprzeczne deklaracje: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Słowo jest za krótkie i wymaga użycia cudzysłowu: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Słowo ukryje wszystkie filmy: %s</string>
@@ -500,6 +493,17 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_post_translate_started">Tłumaczenie…</string>
   <string name="morphe_post_translate_failed">Nie udało się przetłumaczyć posta</string>
   <string name="morphe_post_translate_same_language">Post jest już w docelowym języku tłumaczenia</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Włącz tryb mobilny Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Pozycja \"Tryb mobilny\" w menu odtwarzacza otwiera własne elementy sterujące odtwarzacza Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Tryb mobilny</string>
+  <string name="morphe_on_the_go_audio_mode">Przełącz na tryb dźwięku</string>
+  <string name="morphe_on_the_go_video_mode">Przełącz na tryb filmu</string>
+  <string name="morphe_on_the_go_download">Pobierz</string>
+  <string name="morphe_on_the_go_queue">Kolejka</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Dodaj opcję \"Zapytaj\" do menu</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Dodaje opcję podsumowania filmu do menu na liście</string>
@@ -620,11 +624,13 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_vot_mymemory_quota_message_no_email">Wykorzystano dzisiejszy darmowy limit tłumaczeń MyMemory (5000 znaków). Dodaj adres e-mail MyMemory w ustawieniach, aby zwiększyć dzienny limit do 50 000 znaków, lub zmień usługę tłumaczenia</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Wykorzystano dzisiejszy limit tłumaczeń MyMemory (50 000 znaków). Zmień usługę tłumaczenia lub spróbuj ponownie jutro</string>
   <string name="morphe_vot_mymemory_error">Tłumaczenie MyMemory nie powiodło się (status %s)</string>
-  <!-- interaction.watchlater.watchLaterPatch -->
-  <string name="morphe_watch_later_wide_drag_handles_title">Poszerz uchwyty przeciągania w \"Do obejrzenia\"</string>
-  <string name="morphe_watch_later_wide_drag_handles_summary">Uchwyty do przeciągania filmów na playliście \"Do obejrzenia\" są łatwiejsze do chwycenia</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">Ukryj powiadomienie o usunięciu z \"Do obejrzenia\"</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_summary">Nie wyświetla potwierdzenia po usunięciu filmu z playlisty \"Do obejrzenia\"</string>
+  <!-- interaction.playlist.playlistPatch -->
+  <string name="morphe_playlist_wide_drag_handles_title">Poszerz uchwyty przeciągania na playliście</string>
+  <string name="morphe_playlist_wide_drag_handles_summary">Uchwyty do przeciągania na playliście są łatwiejsze do złapania</string>
+  <string name="morphe_playlist_hide_removal_snackbar_title">Ukryj pasek powiadomienia o usunięciu z playlisty</string>
+  <string name="morphe_playlist_hide_removal_snackbar_summary">Potwierdzenie nie jest wyświetlane po usunięciu filmu z playlisty</string>
+  <string name="morphe_playlist_long_press_drag_title">Przytrzymaj, aby zmienić kolejność filmów na playliście</string>
+  <string name="morphe_playlist_long_press_drag_summary">Przytrzymaj film na swojej playliście, aby przeciągnąć go na nową pozycję</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Włącz zapętlanie filmu</string>
   <string name="morphe_do_not_remember_loop_video_title">Nie zapamiętuj zapętlania</string>
@@ -751,6 +757,8 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_queue_manager_open_queue">Otwórz kolejkę</string>
   <string name="morphe_queue_manager_save_queue">Zapisz kolejkę na playliście</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Wczytuj strony kolejki podczas przewijania</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Wczytuje więcej filmów z playlisty podczas przewijania w pobliżu końca kolejki</string>
   <string name="morphe_native_playlist_queue_saved">Zapisano playlistę</string>
   <string name="morphe_native_playlist_queue_saved_to">Zapisano w %s</string>
   <string name="morphe_native_playlist_queue_clear">Wyczyść kolejkę</string>
@@ -793,6 +801,16 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Włącz przewijanie dotknięciem</string>
   <string name="morphe_tap_to_seek_summary">Dotknij dowolnego miejsca na pasku postępu, aby przeskoczyć do wybranego momentu, zamiast przeciągać suwak</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_title">Włącz własny uchwyt paska postępu</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Zastąp uchwyt paska postępu własnym obrazem lub animowanym plikiem GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Obraz uchwytu</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Wybierz obraz lub animowany plik GIF z pamięci urządzenia</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Wybrany plik nie jest obsługiwanym obrazem</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Nie znaleziono własnego obrazu uchwytu paska postępu</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Rozmiar uchwytu</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Dopasuj do paska postępu</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Oryginalny rozmiar</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gest przesunięcia w lewo</string>
   <string name="morphe_swipe_right_zone_title">Gest przesunięcia w prawo</string>
@@ -1091,6 +1109,10 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Umożliwia działanie oświetlenia kinowego w trybie oszczędzania baterii</string>
   <string name="morphe_disable_ambient_mode_title">Wyłącz oświetlenie kinowe</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Wyłącz oświetlenie kinowe w trybie pełnoekranowym</string>
+  <string name="morphe_enhanced_ambient_mode_title">Ulepszony tryb oświetlenia kinowego</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Podświetla całą stronę odtwarzania oraz czarne pasy kolorami z filmu, zastępując standardowy tryb oświetlenia kinowego</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Zachowaj czytelność tekstu</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Przyciemnia podświetlenie przy jasnych filmach, aby tekst na stronie pozostał czytelny</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ukryj karty informacyjne</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1172,7 +1194,10 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <string name="morphe_disable_playlist_autoplay_title">Wyłącz autoodtwarzanie playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Zapobiega automatycznemu przechodzeniu playlist do następnego filmu</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-  <string name="morphe_disable_continue_watching_prompt_title">Wyłącz komunikat \"Kontynuować oglądanie?\"</string>
+  <string name="morphe_continue_watching_prompt_title">Komunikat \"Oglądasz dalej?\"</string>
+  <string name="morphe_continue_watching_prompt_entry_1">Domyślny</string>
+  <string name="morphe_continue_watching_prompt_entry_2">Wyłączony</string>
+  <string name="morphe_continue_watching_prompt_entry_3">Wyłączony, zawsze pokazuj odliczanie autoodtwarzania</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Wyjście z trybu pełnoekranowego po zakończeniu filmu</string>
   <string name="morphe_exit_fullscreen_entry_1">Wyłączone</string>
@@ -1762,6 +1787,9 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_niconico_comments_screen_title">Komentarze w stylu Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Pokaż czat na żywo oraz powtórkę czatu jako komentarze przewijające się przez ekran filmu</string>
   <string name="morphe_niconico_comments_summary">Wyświetla przycisk w nakładce odtwarzacza. Dotknij, aby pokazać lub ukryć komentarze. Przytrzymaj, aby otworzyć szybkie ustawienia</string>
+  <string name="morphe_niconico_comments_appearance_title">Wygląd</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Orientacja pionowa</string>
+  <string name="morphe_niconico_comments_video_types_title">Rodzaje filmów</string>
   <string name="morphe_niconico_comments_font_size_title">Rozmiar czcionki komentarzy</string>
   <string name="morphe_niconico_comments_font_size_summary">Rozmiar tekstu komentarzy (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Krycie komentarzy</string>
@@ -1770,6 +1798,18 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_niconico_comments_travel_duration_summary">Liczba sekund potrzebna komentarzom na pokonanie ekranu. Mniejsze wartości oznaczają szybszy ruch</string>
   <string name="morphe_niconico_comments_display_area_title">Obszar wyświetlania</string>
   <string name="morphe_niconico_comments_display_area_summary">Określa, jaką część odtwarzacza (licząc od góry) zajmują komentarze. Niższe wartości pozostawiają dolną część filmu odsłoniętą</string>
+  <string name="morphe_niconico_comments_portrait_title">Pokazuj w orientacji pionowej</string>
+  <string name="morphe_niconico_comments_portrait_summary">Wyświetlaj komentarze, gdy ekran jest w orientacji pionowej. Wyłącz, aby wyświetlać je tylko w orientacji poziomej</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Osobne ustawienia dla orientacji pionowej</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Używaj innego rozmiaru czcionki, czasu przelotu i obszaru wyświetlania w orientacji pionowej. Po włączeniu opcje te przyjmują na start bieżące wartości</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Rozmiar czcionki komentarzy w orientacji pionowej</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Rozmiar tekstu komentarzy w orientacji pionowej (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Czas przelotu w orientacji pionowej</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Ile sekund zajmuje komentarzom przejście przez ekran w orientacji pionowej</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Obszar wyświetlania w orientacji pionowej</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Określa, jaką część odtwarzacza (licząc od góry) zajmują komentarze w orientacji pionowej</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Ukrywaj nakładające się komentarze</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Gdy obszar wyświetlania jest pełny, nowe komentarze są ukrywane, zamiast nakładać się na inne</string>
   <string name="morphe_niconico_comments_max_length_title">Maksymalna długość komentarza</string>
   <string name="morphe_niconico_comments_max_length_summary">Ukrywa komentarze przekraczające podaną liczbę znaków. Każda emotka liczy się jako jeden znak</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Bez limitu</string>
@@ -1783,8 +1823,10 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_niconico_comments_ended_premieres_summary">Powtórka czatu z zakończonych premier</string>
   <string name="morphe_niconico_comments_timed_comments_title">Pokaż komentarze ze znacznikami czasu</string>
   <string name="morphe_niconico_comments_timed_comments_summary">W filmach bez czatu najpopularniejsze komentarze zawierające czas, np. 1:23, są wyświetlane w tym właśnie momencie</string>
-  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Pokaż komentarze zsynchronizowane z czasem podczas powtórki czatu</string>
-  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">W przypadku powtórek transmisji na żywo i premier, komentarze zsynchronizowane z czasem są wyświetlane wraz z czatem</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Pokaż komentarze ze znacznikami czasu razem z powtórką czatu</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">W powtórkach transmisji na żywo i premier komentarze ze znacznikami czasu są wyświetlane razem z czatem</string>
+  <string name="morphe_niconico_comments_all_settings">Wszystkie ustawienia</string>
+  <string name="morphe_niconico_comments_reset_title">Zresetować te ustawienia?</string>
   <string name="morphe_live_chat_translate_screen_title">Tłumaczenie czatu na żywo</string>
   <string name="morphe_live_chat_translate_screen_summary">Tłumacz wiadomości na czacie na żywo oraz w powtórce czatu</string>
   <string name="morphe_live_chat_translate_title">Tłumacz czat na żywo</string>

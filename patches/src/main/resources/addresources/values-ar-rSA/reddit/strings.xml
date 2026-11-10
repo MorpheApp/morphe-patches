@@ -18,8 +18,8 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">سياسة خصوصية Reddit</string>
   <string name="morphe_google_signin_not_available_toast">تسجيل الدخول عبر Google غير متاح. استخدم البريد الإلكتروني لتسجيل الدخول</string>
-  <string name="morphe_app_downgrade_dialog_title">تنزيل إصدار أقدم غير مدعوم</string>
-  <string name="morphe_app_downgrade_dialog_message">"تم تنزيل إصدار تثبيت Reddit هذا من &lt;b&gt;%1$s&lt;/b&gt; إلى &lt;b&gt;%2$s&lt;/b&gt;
+  <string name="morphe_app_downgrade_dialog_title">الرجوع إلى إصدار أقدم غير مدعوم</string>
+  <string name="morphe_app_downgrade_dialog_message">"تم الرجوع بتثبيت Reddit هذا من الإصدار &lt;b&gt;%1$s&lt;/b&gt; إلى &lt;b&gt;%2$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 بيانات التطبيق من إصدار أحدث لا تعمل مع الإصدارات الأقدم وقد لا يعمل التطبيق بشكل صحيح.
 &lt;br/&gt;&lt;br/&gt;
@@ -65,11 +65,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">يخفي رفوف \"الترند\" من موجز الأخبار واقتراحات البحث</string>
   <string name="morphe_remove_notification_dialog_title">إزالة مربع حوار اقتراح الإشعارات</string>
   <string name="morphe_remove_notification_dialog_summary">يقوم بإخفاء حوار اقتراح الإشعار تلقائيًا عند زيارة subreddit</string>
-  <string name="morphe_show_flairs_in_home_feed_title">إظهار الشارات في خلاصة الرئيسية</string>
-  <string name="morphe_show_flairs_in_home_feed_summary">يعرض شارات التصنيفات للمشاركات في خلاصة الرئيسية</string>
+  <string name="morphe_high_quality_avatars_title">صور رمزية عالية الجودة</string>
+  <string name="morphe_high_quality_avatars_summary">عرض الصور الرمزية للمستخدمين بدقة كاملة</string>
+  <string name="morphe_show_flairs_in_home_feed_title">إظهار الشارات في خلاصة الصفحة الرئيسية</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">يعرض شارات التصنيفات للمشاركات في خلاصة الصفحة الرئيسية</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">قد لا تظهر بعض عناصر الخلاصة تصنيفاً</string>
   <string name="morphe_show_view_count_title">إظهار عدد المشاهدات</string>
-  <string name="morphe_show_view_count_summary">القيود: متاح فقط إذا كان استجابة واجهة برمجة التطبيقات تتضمن عدد المشاهدات</string>
+  <string name="morphe_show_view_count_summary">القيود: متاح فقط إذا كانت استجابة واجهة برمجة التطبيقات تتضمن عدد المشاهدات</string>
   <string name="morphe_flip_post_action_bar_title">عكس شريط إجراءات المنشور</string>
   <string name="morphe_flip_post_action_bar_summary">ينقل أزرار التصويت والتعليق في المنشورات إلى الجانب الأيمن، وأزرار إعادة النشر والمشاركة إلى الجانب الأيسر</string>
   <string name="morphe_swap_post_vote_comment_buttons_title">تبديل أزرار التصويت والتعليق</string>

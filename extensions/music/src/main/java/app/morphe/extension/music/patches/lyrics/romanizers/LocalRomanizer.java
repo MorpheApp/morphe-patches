@@ -28,7 +28,7 @@ import app.morphe.extension.music.settings.Settings;
  * a script nothing here covers is passed through untouched.
  *
  * <p>A word the dictionary does not have stays in the script it was written in; dropping
- * the line would lose the words around it.
+ * the line would lose the surrounding words.
  */
 public final class LocalRomanizer {
     private static final String PINYIN = "UniDict, pinyin-pro";
@@ -74,7 +74,7 @@ public final class LocalRomanizer {
             script = Script.JAPANESE;
         }
         if (script == null || script == Script.OTHER) return null;
-        final String reading = readAs(syllable, script, false, line).text().trim();
+        final String reading = readAs(syllable, script, RimeDictStore.isActive(), line).text().trim();
         return reading.isEmpty() || reading.equals(syllable) ? null : reading;
     }
 
@@ -136,6 +136,7 @@ public final class LocalRomanizer {
     }
 
     /** Null when not one word could be read, leaving the line to {@link #splitReading}. */
+    @SuppressWarnings("unused")
     @Nullable
     private static List<Word> exactReadings(List<Word> words, @Nullable Script script,
                                             boolean rime) {
@@ -169,6 +170,7 @@ public final class LocalRomanizer {
      * place without guessing: one syllable per spoken character, or one per word. Anything
      * else keeps the whole line; a reading on the wrong word is worse than none.
      */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Nullable
     private static List<Word> splitReading(LyricsLine line, @Nullable String wholeLine) {
         final List<Word> words = line.words();
@@ -340,6 +342,7 @@ public final class LocalRomanizer {
         return out;
     }
 
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static String joinTokens(String reading, int[][] tokens, int from, int to) {
         StringBuilder sb = new StringBuilder();
         for (int t = from; t < to; t++) {
@@ -438,7 +441,7 @@ public final class LocalRomanizer {
         }
     }
 
-    /** Whether the text is said at all, as against being only the marks around it. */
+    /** Whether the text is said at all, as against being only the surrounding marks. */
     private static boolean speaks(String text) {
         for (int i = 0; i < text.length(); i++) {
             if (Character.isLetterOrDigit(text.charAt(i))) return true;
@@ -452,42 +455,33 @@ public final class LocalRomanizer {
 
     /** @param line The line the text came from, or null when it is read on its own. */
     private static Read readAs(String text, Script script, boolean rime, @Nullable String line) {
-        switch (script) {
-            case HAN:
+        return switch (script) {
+            case HAN -> {
                 if (rime) {
-                    return RimeDictStore.isReady()
+                    yield RimeDictStore.isReady()
                             ? new Read(RimeRomanizer.romanize(text),
                             "UniDict, " + RimeDictStore.dictionaryName())
                             : new Read(text, null);
                 }
-                return PinyinDictStore.isReady()
+                yield PinyinDictStore.isReady()
                         ? new Read(PinyinRomanizer.romanize(text), PINYIN)
                         : new Read(text, null);
-            case JAPANESE:
+            }
+            case JAPANESE ->
                 // Kana read by rule are not the dictionary's work, so nothing is credited.
-                return new Read(japanese(text), JapaneseDictStore.isReady() ? JAPANESE : null);
-            case KOREAN:
-                return new Read(HangulRomanizer.romanize(text,
-                        line != null ? line : text), RULE);
-            case GREEK:
-                return new Read(transliterate(text, "greek"), RULE);
-            case CYRILLIC:
-                return new Read(transliterate(text, cyrillicScript()), RULE);
-            case GEORGIAN:
-                return new Read(transliterate(text, "georgian"), RULE);
-            case ARMENIAN:
-                return new Read(transliterate(text, "armenian"), RULE);
-            case HEBREW:
-                return new Read(transliterate(text, "hebrew"), RULE);
-            case ARABIC:
-                return new Read(transliterate(text, "arabic"), RULE);
-            case ETHIOPIC:
-                return new Read(transliterate(text, "amharic"), RULE);
-            case SYRIAC:
-                return new Read(transliterate(text, "syriac"), RULE);
-            default:
-                return new Read(text, null);
-        }
+                    new Read(japanese(text), JapaneseDictStore.isReady() ? JAPANESE : null);
+            case KOREAN -> new Read(HangulRomanizer.romanize(text,
+                    line != null ? line : text), RULE);
+            case GREEK -> new Read(transliterate(text, "greek"), RULE);
+            case CYRILLIC -> new Read(transliterate(text, cyrillicScript()), RULE);
+            case GEORGIAN -> new Read(transliterate(text, "georgian"), RULE);
+            case ARMENIAN -> new Read(transliterate(text, "armenian"), RULE);
+            case HEBREW -> new Read(transliterate(text, "hebrew"), RULE);
+            case ARABIC -> new Read(transliterate(text, "arabic"), RULE);
+            case ETHIOPIC -> new Read(transliterate(text, "amharic"), RULE);
+            case SYRIAC -> new Read(transliterate(text, "syriac"), RULE);
+            default -> new Read(text, null);
+        };
     }
 
     /**
@@ -505,24 +499,16 @@ public final class LocalRomanizer {
      */
     private static String cyrillicScript() {
         final String language = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
-        if (language == null) return "cyrillic";
         final String subtag = language.toLowerCase(Locale.ROOT).split("-", 2)[0];
-        switch (subtag) {
-            case "ru":
-                return "russian";
-            case "uk":
-                return "ukrainian";
-            case "be":
-                return "belarusian";
-            case "bg":
-                return "bulgarian";
-            case "mk":
-                return "macedonian";
-            case "sr":
-                return "serbian";
-            default:
-                return "cyrillic";
-        }
+        return switch (subtag) {
+            case "ru" -> "russian";
+            case "uk" -> "ukrainian";
+            case "be" -> "belarusian";
+            case "bg" -> "bulgarian";
+            case "mk" -> "macedonian";
+            case "sr" -> "serbian";
+            default -> "cyrillic";
+        };
     }
 
     /** Kana by rule, everything else out of the dictionary. */

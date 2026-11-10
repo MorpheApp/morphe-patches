@@ -20,8 +20,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_submenu_title">ቅንብሮች</string>
   <string name="morphe_settings_confirm_user_dialog_title">ለመቀጠል እርግጠኛ ነዎት?</string>
   <string name="morphe_settings_save">አስቀምጥ</string>
-  <string name="morphe_settings_reset">መልስ</string>
-  <string name="morphe_settings_reset_color">ቀለሙን መልስ</string>
+  <string name="morphe_settings_reset">ዳግም አስጀምር</string>
+  <string name="morphe_settings_reset_color">ቀለሙን ዳግም አስጀምር</string>
   <string name="morphe_settings_color_invalid">ልክ ያልሆነ ቀለም</string>
   <string name="morphe_settings_restart_title">እንደገና ማስጀመር ያስፈልጋል</string>
   <string name="morphe_settings_restart_dialog_message">ይህ ለውጥ ተፈጻሚ እንዲሆን መተግበሪያውን እንደገና ያስጀምሩ</string>
@@ -30,15 +30,15 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import">አስገባ</string>
   <string name="morphe_settings_import_copy">ቅዳ</string>
   <string name="morphe_settings_import_reset">የMorphe ቅንብሮች ወደ መጀመሪያው ተመልሰዋል</string>
-  <string name="morphe_settings_import_success">%s ቅንብሮች ተገብተዋል</string>
+  <string name="morphe_settings_import_success">%s ቅንብሮች ወደ ውስጥ ገብተዋል</string>
   <string name="morphe_settings_import_failure_parse">ማስገባት አልተሳካም: %s</string>
-  <string name="morphe_settings_navigate_up">ወደ ላይ ተጓዝ</string>
+  <string name="morphe_settings_navigate_up">ወደ ላይ ተመለስ</string>
   <string name="morphe_settings_search_hint">ቅንብሮችን ፈልግ</string>
   <string name="morphe_settings_screen_info_title">ስለ እኛ</string>
   <string name="morphe_settings_search_no_results_title">ለ \'%s\' ምንም ውጤት አልተገኘም</string>
   <string name="morphe_settings_search_no_results_summary">ሌላ ቁልፍ ቃል ይሞክሩ</string>
   <string name="morphe_settings_search_recent_searches">የቅርብ ጊዜ ፍለጋዎች</string>
-  <string name="morphe_settings_search_remove_message">ከፍለጋ ታሪክ ውስጥ ይውጣ?</string>
+  <string name="morphe_settings_search_remove_message">ከፍለጋ ታሪክ ይወገድ?</string>
   <string name="morphe_settings_search_remove">ከፍለጋ ታሪክ ውስጥ አስወግድ</string>
   <string name="morphe_settings_search_clear_history">የፍለጋ ታሪክን አጽዳ</string>
   <string name="morphe_settings_search_clear_history_message">ሁሉንም የፍለጋ ታሪኮች ማጽዳት እንደሚፈልጉ እርግጠኛ ነዎት?</string>
@@ -59,7 +59,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_name_custom_item">ብጁ</string>
   <string name="morphe_settings_name_custom_item_hint">ስም ያስገቡ</string>
   <string name="morphe_settings_name_empty_warning">ስም ባዶ ሊሆን አይችልም</string>
-  <string name="morphe_show_menu_icons_title">የMorphe የቅንብር చిహ్ቶችን አሳይ</string>
+  <string name="morphe_show_menu_icons_title">የMorphe የቅንብር አዶዎችን አሳይ</string>
   <string name="morphe_settings_menu_copy_path">ተቀድቷል: %s</string>
   <string name="morphe_language_title">የMorphe ቋንቋ</string>
   <string name="morphe_language_user_dialog_message">"ለአንዳንድ ቋንቋዎች ትርጉሞች ላይጎድሉ ወይም ያልተሟሉ ሊሆኑ ይችላሉ።
@@ -69,23 +69,23 @@ Second \"item\" text"</string>
   <string name="morphe_pref_import_export_title">አስገባ / ላክ</string>
   <string name="morphe_pref_import_export_summary">የMorphe ቅንብሮችን አስገባ / ላክ</string>
   <string name="morphe_settings_import_file">ከፋይል ወደ ውስጥ አስገባ</string>
-  <string name="morphe_settings_import_file_success">ቅንብሮች በተሳካ ሁኔታ ወደ ውስጥ ገብተዋል፣ ለመተግበር \'Save\' የሚለውን ይጫኑ</string>
+  <string name="morphe_settings_import_file_success">ቅንብሮች በተሳካ ሁኔታ ወደ ውስጥ ገብተዋል፣ ለመተግበር \'አስቀምጥ\' የሚለውን ይጫኑ</string>
   <string name="morphe_settings_import_file_failed">ቅንብሮችን ወደ ውስጥ ማስገባት አልተቻለም</string>
   <string name="morphe_settings_export_file">ወደ ፋይል ላክ</string>
   <string name="morphe_settings_export_file_success">ቅንብሮች በተሳካ ሁኔታ ተልከዋል</string>
   <string name="morphe_settings_export_file_failed">ቅንብሮችን መላክ አልተቻለም</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">የቅርብ ጊዜውን የ Morphe Patches ስሪት &lt;i&gt;%s&lt;/i&gt; እየተጠቀሙ ነው</string>
-  <string name="morphe_settings_about_links_body_version_outdated">የ Morphe Patches ስሪት &lt;i&gt;%1$s&lt;/i&gt; እየተጠቀሙ ነው&lt;br&gt;&lt;br&gt;&lt;b&gt;የዘመነ ስሪት አለ: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;ፓቾችንዎን ለማዘመን፣ ይህንን መተግበሪያ እንደገና ለመፓች Morphe-ን ይጠቀሙ</string>
+  <string name="morphe_settings_about_links_body_version_outdated">የ Morphe Patches ስሪት &lt;i&gt;%1$s&lt;/i&gt; እየተጠቀሙ ነው&lt;br&gt;&lt;br&gt;&lt;b&gt;አዲስ ስሪት አለ: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;ፓቾችዎን ለማዘመን፣ ይህንን መተግበሪያ Morphe በመጠቀም እንደገና ፓች ያድርጉ</string>
   <string name="morphe_settings_about_links_dev_header">ማስታወሻ</string>
-  <string name="morphe_settings_about_links_dev_body">ይህ ስሪት የቅድመ-ብቃት ስሪት ነው እና ያልተጠበቁ ችግሮች ሊያጋጥሙዎት ይችላሉ</string>
+  <string name="morphe_settings_about_links_dev_body">ይህ ስሪት ቅድመ-ልቀት ስሪት ነው እና ያልተጠበቁ ችግሮች ሊያጋጥሙዎት ይችላሉ</string>
   <string name="morphe_settings_about_links_header">ይፋዊ ሊንኮች</string>
   <string name="morphe_settings_about_links_website">ድረ-ገጽ</string>
   <string name="morphe_settings_about_links_donate">ልገሳ ያድርጉ</string>
   <string name="morphe_settings_about_links_translations">ትርጉሞች</string>
   <string name="morphe_settings_about_links_credits">ክሬዲቶች</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">ወቅታዊ ነው</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">ዘመናዊ ስሪት ይገኛል</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">አዲስ ስሪት ይገኛል</string>
   <string name="morphe_settings_about_contributors_current">የአሁኑ ልማት</string>
   <string name="morphe_settings_about_contributors_prior">የቀድሞ ልማት</string>
   <string name="morphe_settings_about_links_morphe">ንቁ ልማት</string>
@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ዲባጊንግ</string>
   <string name="morphe_debug_screen_summary">የላቁ የልማት አማራጮችን እና የምርመራ መዝገቦችን ያዋቅሩ</string>
-  <string name="morphe_debug_title">የዲባግ መዝገቦችን አግብር</string>
-  <string name="morphe_debug_stacktrace_title">የዲበግ ሎግ ስታክ ትሬስ</string>
-  <string name="morphe_debug_stacktrace_summary">ስህተቶችን ለመለየት እንዲረዱ በዲባግ መዝገቦች ውስጥ ስታክ ትሬሶችን ያካትታል</string>
+  <string name="morphe_debug_level_title">የዲባግ ሎጊንግ</string>
+  <string name="morphe_debug_level_entry_disabled">ተሰርዟል</string>
+  <string name="morphe_debug_level_entry_debug">ዲባግ</string>
+  <string name="morphe_debug_level_entry_verbose">ዝርዝር</string>
   <string name="morphe_debug_toast_on_error_title">በ Morphe ስህተት ላይ የቶስት ማሳወቂያ አሳይ</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"የስህተት ማሳወቂያዎችን ማጥፋት ሁሉንም የ Morphe የስህተት ማሳወቂያዎች ይደብቃል።
 
@@ -114,7 +115,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_none_found">ምንም የዲባግ ሎጎዎች አልተገኙም</string>
   <string name="morphe_debug_logs_copied_to_clipboard">የዲባግ ሎጎች ተገለበጡ</string>
   <string name="morphe_debug_logs_failed_to_export">የዲባግ ሎጎችን ወደ ውጭ ለመላክ አልተቻለም፦ %s</string>
-  <string name="morphe_debug_logs_clear_toast">የዲባግ ሎጎች ተጽድተዋል</string>
+  <string name="morphe_debug_logs_clear_toast">የዲባግ ሎጎች ተሰርዘዋል</string>
   <string name="morphe_debug_feature_flags_manager_title">የባህሪ ምልክቶች ስራ አስኪያጅ</string>
   <string name="morphe_debug_feature_flags_manager_summary">የቡሊያን ባህሪ ምልክቶችን ያስተዳድሩ</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">የባህሪ ምልክቶችን ይፈልጉ…</string>
@@ -125,53 +126,53 @@ Second \"item\" text"</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_blocked">ተዘግተዋል (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
-  <string name="morphe_debug_feature_flags_manager_filter_forced">የተገደደ (%s)</string>
+  <string name="morphe_debug_feature_flags_manager_filter_forced">በግድ የበሩ (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">ራስ-ሰር</string>
   <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_blocked">ጠፍ</string>
+  <string name="morphe_debug_feature_flags_manager_state_blocked">ጠፍቷል</string>
   <!-- Keep short, shown as a badge and as a button. -->
-  <string name="morphe_debug_feature_flags_manager_state_forced">켜</string>
+  <string name="morphe_debug_feature_flags_manager_state_forced">በርቷል</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">በግድ አብራ</string>
-  <string name="morphe_debug_feature_flags_manager_action_force_off">እግድ</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">አግድ</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">አስወግድ</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">የባህሪ ምልክቶች ተቀምጠዋል</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">የባህሪ ምልክቶች ተቀናሽተዋል</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">የባህሪ ምልክቶች ዳግም ተጀምረዋል</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">የባህሪ ምልክቶች ወደ ክሊፕቦርድ ተቀድበዋል</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">ይህንን ቅንብር ለመጠቀም መተግበሪያውን እንደገና ያስጀምሩ</string>
-  <string name="morphe_debug_feature_flags_manager_import_export_title">ኤክስፖርት እና ኢምፖርት</string>
-  <string name="morphe_debug_feature_flags_manager_import_success">%s የባህሪ ምልክቶች ገቢ ተደርገዋል</string>
-  <string name="morphe_debug_feature_flags_manager_import_failed">ምንም የልዩ ባህሪ ምልክቶች አልተገኙም</string>
-  <string name="morphe_debug_feature_flags_manager_export_file_success">የልዩ ባህሪ ምልክቶች በተሳካ ሁኔታ ተላክተዋል</string>
-  <string name="morphe_debug_feature_flags_manager_export_file_failed">የልዩ ባህሪ ምልክቶችን ለመላክ አልተቻለም</string>
-  <string name="morphe_debug_feature_flags_manager_import_file_success">የልዩ ባህሪ ምልክቶች ተጭነዋል፣ ለመተግበር Save የሚለውን ይጫኑ</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">ላክ እና አስገባ</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s የባህሪ ምልክቶች ወደ ውስጥ ገብተዋል</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">ምንም የባህሪ ምልክቶች አልተገኙም</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">የባህሪ ምልክቶች በተሳካ ሁኔታ ተላክተዋል</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">የባህሪ ምልክቶችን ለመላክ አልተቻለም</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">የባህሪ ምልክቶች ተጭነዋል፣ ለመተግበር \'አስቀምጥ\' የሚለውን ይጫኑ</string>
   <string name="morphe_debug_feature_flags_manager_import_file_failed">ፋይሉን ለማንበብ አልተቻለም</string>
   <string name="morphe_debug_feature_flags_manager_bisect_title">ባይነሪ ፍለጋ</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"የትኛው የልዩ ባህሪ ምልክት የ приложение ባህሪን እንደሚያስከትል ያገኛል።
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"የትኛው የባህሪ ምልክት የመተግበሪያ ባህሪን እንደሚያስከትል ያገኛል።
 
 ከ %s ምልክቶች ውስጥ ግማሹ ተዘግተዋል፣ እና በእያንዳንዱ እንደገና ማስጀመር በኋላ ባህሪው አሁንም መኖሩን ይነግሩናል።
 
 ከመጀመርዎ በፊት ባህሪውን አንድ ጊዜ ይድገሙት፣ አለበለዚያ አፕሊኬሽኑ እስካሁን ያልጠየቃቸው ምልክቶች ከፍለጋው ውስጥ ይጎድላሉ"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">ጀምር</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"የሚፈለጉ የፊቸር ፍላጎች የሉም
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"ለመፈለግ የባህሪ ምልክቶች የሉም
 
-በባይነሪ ፍለጋ ውስጥ ሊጠቀሙባቸው የሚችሉት መተግበሪያው የደረሰባቸው እና በአሁኑ ጊዜ በግዳጅ ያልበሩ ፍላጎች ብቻ ናቸው"</string>
+በባይነሪ ፍለጋ ውስጥ ሊጠቀሙባቸው የሚችሉት መተግበሪያው የደረሰባቸው እና በአሁኑ ጊዜ በግዳጅ ያልበሩ የባህሪ ምልክቶች ብቻ ናቸው"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_status">"ደረጃ %1$s
 
-%2$s ፍላጎች ቀርተዋል፣ %3$s ለዚህ ደረጃ ታግደዋል።
+%2$s የባህሪ ምልክቶች ቀርተዋል፣ %3$s ለዚህ ደረጃ ታግደዋል።
 
 መተግበሪያውን እንደገና ያስጀምሩ፣ ባህሪው መኖሩን ያረጋግጡ፣ ከዚያም ከታች ይመልሱ"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">የፊቸር ፍላጎች ፍለጋ በመካሄድ ላይ ነው</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">የባህሪ ምልክቶች ፍለጋ በመካሄድ ላይ ነው</string>
   <string name="morphe_debug_feature_flags_manager_bisect_present">ባህሪው አለ</string>
   <string name="morphe_debug_feature_flags_manager_bisect_absent">ባህሪው የለም</string>
   <string name="morphe_debug_feature_flags_manager_bisect_cancel">ባይነሪ ፍለጋውን ሰርዝ</string>
   <string name="morphe_debug_feature_flags_manager_bisect_canceled">ባይነሪ ፍለጋው ተሰርዟል</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_found">"የፊቸር ፍላጎት %s ለባህሪው ምክንያት ሆኗል።
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"የባህሪ ምልክት %s ለባህሪው ምክንያት ሆኗል።
 
 አሁን ታግዷል"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"የፊቸር ፍላጎት ማግኘት አልተቻለም
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"የባህሪ ምልክት ማግኘት አልተቻለም
 
-የመተግበሪያው ባህሪ በፊቸር ፍላጎት የሚቆጣጠር አይመስልም"</string>
+የመተግበሪያው ባህሪ በባህሪ ምልክት የሚቆጣጠር አይመስልም"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"አንድም የባህሪ ምልክት ማግኘት አልተቻለም።
 
 ባህሪው በፍለጋው ወቅት ቀድሞ ጠፍቷል፣ ስለዚህ ከአንድ በላይ ምልክቶች ተያይዘው ሊሆን ይችላል ወይም አንዱ መልስ ስህተት ነበር"</string>
@@ -185,13 +186,13 @@ Second \"item\" text"</string>
 
 እባክዎ MicroGን ወደ አዲሱ ስሪት v%2$s ያዘምኑ"</string>
   <string name="gms_core_dialog_update_text">አዘምን</string>
-  <string name="gms_core_dialog_ignore_text">ተجاهል</string>
+  <string name="gms_core_dialog_ignore_text">ችላ በል</string>
   <string name="gms_core_dialog_conflict_message">"የተጫነው MicroG በ Morphe አይመከርም፦
 
 %s
 
 ለማጥፋት ይጫኑት፣ ከዚያ ይህንን መተግበሪያ እንደገና ይክፈቱ እና MicroG REን ይጫኑ"</string>
-  <string name="gms_core_dialog_uninstall_text">ይጫኑት ያጥፉ</string>
+  <string name="gms_core_dialog_uninstall_text">ያራግፉ</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG በጀርባ እንዲሰራ ፈቃድ የለውም።
 
@@ -211,7 +212,7 @@ Second \"item\" text"</string>
 የባትሪ ማመቻቻዎች ካልተለወጡ የሚከተሉትን ችግሮች ሊያጋጥሙዎት ይችላሉ፡
 • መተግበሪያው በዘፈቀደ ሊዘጋ ይችላል
 • ማሳወቂያዎች ላይሰሩ ይችላሉ
-• የጀርባ ስርጭት ላይሰራ ይችላል"</string>
+• የጀርባ መልሶ ማጫወት ላይሰራ ይችላል"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">የመተግበሪያ ሊንክ አያያዝ</string>
   <string name="morphe_link_handling_summary">ሊንኮች በዚህ መተግበሪያ ውስጥ እንዲከፈቱ ያዋቅሩ</string>
@@ -226,10 +227,23 @@ Second \"item\" text"</string>
 &lt;br/&gt;&lt;br/&gt;
 🔧 ለዚህ የመተግበሪያ ስሪት ማስተካከያዎችን እያደረግን ስለሆነ ያልተለመደ የመተግበሪያ ባህሪ ወይም ያልታወቁ ስህተቶች ሊያጋጥሙ ይችላሉ
 &lt;br/&gt;&lt;br/&gt;
-ችግር የሌለው ተሞክሮ ከፈለጉ፣ ይህንን &lt;b&gt;ያጥፉ&lt;/b&gt; እና የሚመከርውን የ ✅ &lt;b&gt;%2$s&lt;/b&gt; መተግበሪያ ስሪት ይጫኑ"</string>
+ችግር የሌለው ተሞክሮ ከፈለጉ፣ ይህንን &lt;b&gt;ያራግፉ&lt;/b&gt; እና የሚመከርውን የ ✅ &lt;b&gt;%2$s&lt;/b&gt; መተግበሪያ ስሪት ይጫኑ"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ የሙከራውን እፈልጋለሁ</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ የተረጋጋውን እፈልጋለሁ</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">ለፓች ማሻሻያዎች በ应用程序 ውስጥ ማሳወቂያ አሳይ</string>
+  <string name="morphe_patches_update_notice_entry_off">ጠፍቷል</string>
+  <string name="morphe_patches_update_notice_entry_stable">የተረጋጉ ስሪቶች</string>
+  <string name="morphe_patches_update_notice_entry_dev">የተረጋጉ እና የልማት ስሪቶች</string>
+  <string name="morphe_patches_update_notice_dialog_title">አዳዲስ ፓቾች ይገኛሉ</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe ፓቾች &lt;b&gt;%1$s&lt;/b&gt; (አሁን ያለው: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ አዳዲስ ባህሪያት</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 የባግ ጥገናዎች</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 ሌሎች ለውጦች</string>
+  <string name="morphe_patches_update_notice_dialog_more">…እና %s ተጨማሪ</string>
+  <string name="morphe_patches_update_notice_dialog_update">አዘምን</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">ዝጋ</string>
   <!-- misc.crashlog.crashLogPatch -->
-  <string name="morphe_crash_log_saved_documents">የመላላጥ መዝገብ በተጠቃሚ ሰነዶች ውስጥ ተቀምጧል፡ %s</string>
-  <string name="morphe_crash_log_saved">የመላላጥ መዝገብ ተቀምጧል፡ %s</string>
+  <string name="morphe_crash_log_saved_documents">የብልሽት መዝገብ በተጠቃሚ ሰነዶች ውስጥ ተቀምጧል፡ %s</string>
+  <string name="morphe_crash_log_saved">የብልሽት መዝገብ ተቀምጧል፡ %s</string>
 </resources>

@@ -88,6 +88,18 @@
         <item>CUSTOM</item>
     </string-array>
 
+    <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
+    <string-array name="morphe_continue_watching_prompt_entries">
+        <item>@string/morphe_continue_watching_prompt_entry_1</item>
+        <item>@string/morphe_continue_watching_prompt_entry_2</item>
+        <item>@string/morphe_continue_watching_prompt_entry_3</item>
+    </string-array>
+    <string-array name="morphe_continue_watching_prompt_entry_values">
+        <item>DEFAULT</item>
+        <item>DISABLED</item>
+        <item>ALWAYS_COUNTDOWN</item>
+    </string-array>
+
     <!-- interaction.playall.playAllButtonPatch -->
     <string-array name="morphe_play_all_button_type_entries">
         <item>@string/morphe_play_all_button_type_entry_0</item>
@@ -139,6 +151,7 @@
         <item>Android Studio</item>
         <item>Android VR</item>
         <item>Android VR Downgraded</item>
+        <item>Android VR Experimental</item>
         <item>TV</item>
         <item>TV Simply</item>
         <item>visionOS</item>
@@ -147,6 +160,7 @@
         <item>ANDROID_CREATOR</item>
         <item>ANDROID_VR_SABR</item>
         <item>ANDROID_VR_DASH</item>
+        <item>ANDROID_VR_EXPERIMENTAL</item>
         <item>TV_SABR</item>
         <item>TV_SIMPLY</item>
         <item>VISIONOS_1_02</item>
@@ -1234,5 +1248,15 @@
         <item>FAST_FORWARD</item>
         <item>PLAY_PAUSE</item>
         <item>BACKGROUND_PLAYBACK</item>
+    </string-array>
+
+    <!-- interaction.seekbar.customSeekbarThumbPatch -->
+    <string-array name="morphe_custom_seekbar_thumb_scale_type_entries">
+        <item>@string/morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar</item>
+        <item>@string/morphe_custom_seekbar_thumb_scale_type_entry_original</item>
+    </string-array>
+    <string-array name="morphe_custom_seekbar_thumb_scale_type_entry_values" translatable="false">
+        <item>FIT_SEEKBAR</item>
+        <item>ORIGINAL</item>
     </string-array>
 </resources>

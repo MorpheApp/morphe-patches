@@ -332,25 +332,18 @@ Changes include:
     <string name="morphe_hide_keyword_content_search_title">Hide search results by keywords</string>
     <string name="morphe_hide_keyword_content_subscriptions_title">Hide Subscriptions videos by keywords</string>
     <string name="morphe_hide_keyword_content_phrases_title">Keywords to hide</string>
-    <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
     <string name="morphe_hide_keyword_content_phrases_summary">"Enter keywords and phrases to hide, separated by new lines
 
-Keywords can be any text shown in video titles or channel names
-
-Words with uppercase letters in the middle must match exactly (e.g., iPhone, TikTok, LeBlanc)"</string>
+Keywords can be any text shown in video titles or channel names"</string>
     <string name="morphe_hide_keyword_content_about_summary">"Home / Subscriptions / Search / Comments are filtered to hide content that matches keyword phrases
 
 Limitations:
-• Shorts cannot be hidden by channel name
-• Some UI components may not be hidden
-• Searching for a keyword may show no results"</string>
+• Some Shorts cannot be hidden by channel name
+• Some UI components may not be hidden"</string>
     <string name="morphe_hide_keyword_content_about_whole_words_title">Match whole words</string>
     <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
     <string name="morphe_hide_keyword_content_about_whole_words_summary">Surrounding a keyword/phrase with double-quotes will prevent partial matches of video titles and channel names&lt;br>&lt;br>For example,&lt;br>&lt;b>\"ai\"&lt;/b> will hide the video: &lt;b>How does AI work?&lt;/b>&lt;br>but will not hide: &lt;b>What does fair use mean?&lt;/b></string>
     <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-    <string name="morphe_hide_keyword_toast_invalid_common">Cannot use keyword: %s</string>
-    <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Add quotes to use keyword: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_conflicting">Keyword has conflicting declarations: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_length">Keyword is too short and requires quotes: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
@@ -537,6 +530,18 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_post_translate_failed">Could not translate the post</string>
     <string name="morphe_post_translate_same_language">The post is already in the translation language</string>
 
+    <!-- interaction.onthego.onTheGoPatch -->
+    <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_on_the_go_title">Enable Morphe on-the-go</string>
+    <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_on_the_go_summary">Player flyout \'on-the-go\' opens Morphe custom player controls</string>
+    <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+    <string name="morphe_on_the_go_panel_title">On-the-go</string>
+    <string name="morphe_on_the_go_audio_mode">Switch to audio mode</string>
+    <string name="morphe_on_the_go_video_mode">Switch to video mode</string>
+    <string name="morphe_on_the_go_download">Download</string>
+    <string name="morphe_on_the_go_queue">Queue</string>
+
     <!-- interaction.ask.askFlyoutMenuPatch -->
     <string name="morphe_ask_summarize_flyout_menu_title">Add Ask item to flyout menu</string>
     <string name="morphe_ask_summarize_flyout_menu_summary">Adds a video summarize item to the feed flyout menu</string>
@@ -673,11 +678,13 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_vot_mymemory_quota_message_with_email">You\'ve used today\'s MyMemory translation quota (50,000 characters). Switch to a different translation service or try again tomorrow</string>
     <string name="morphe_vot_mymemory_error">MyMemory translation failed (status %s)</string>
 
-    <!-- interaction.watchlater.watchLaterPatch -->
-    <string name="morphe_watch_later_wide_drag_handles_title">Widen Watch later drag handles</string>
-    <string name="morphe_watch_later_wide_drag_handles_summary">The drag handles of the Watch later videos are easier to grab</string>
-    <string name="morphe_watch_later_hide_removal_snackbar_title">Hide Watch later removal snackbar</string>
-    <string name="morphe_watch_later_hide_removal_snackbar_summary">The confirmation is not shown after a video is removed from Watch later</string>
+    <!-- interaction.playlist.playlistPatch -->
+    <string name="morphe_playlist_wide_drag_handles_title">Widen playlist drag handles</string>
+    <string name="morphe_playlist_wide_drag_handles_summary">Playlist drag handles are easier to grab</string>
+    <string name="morphe_playlist_hide_removal_snackbar_title">Hide playlist removal snackbar</string>
+    <string name="morphe_playlist_hide_removal_snackbar_summary">The confirmation is not shown after a video is removed from a playlist</string>
+    <string name="morphe_playlist_long_press_drag_title">Long press to reorder playlist videos</string>
+    <string name="morphe_playlist_long_press_drag_summary">Touch and hold a video of your playlist to drag it to a new position</string>
 
     <!-- interaction.loop.loopVideoPatch -->
     <string name="morphe_loop_video_title">Enable loop video</string>
@@ -812,6 +819,8 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_manager_save_queue">Save queue to playlist</string>
 
     <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+    <string name="morphe_native_queue_fetch_on_scroll_title">Load queue pages on scroll</string>
+    <string name="morphe_native_queue_fetch_on_scroll_summary">Loads more playlist videos when scrolling near the end of the queue</string>
     <string name="morphe_native_playlist_queue_saved">Playlist saved</string>
     <string name="morphe_native_playlist_queue_saved_to">Saved to %s</string>
     <string name="morphe_native_playlist_queue_clear">Clear queue</string>
@@ -859,6 +868,17 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <!-- interaction.seekbar.enableTapToSeekPatch -->
     <string name="morphe_tap_to_seek_title">Enable tap to seek</string>
     <string name="morphe_tap_to_seek_summary">Tap anywhere on the seekbar to jump to that position instead of dragging</string>
+
+    <!-- interaction.seekbar.customSeekbarThumbPatch -->
+    <string name="morphe_custom_seekbar_thumb_title">Enable custom seekbar thumb</string>
+    <string name="morphe_custom_seekbar_thumb_summary">Replace the seekbar thumb with a custom image or animated GIF</string>
+    <string name="morphe_custom_seekbar_thumb_file_title">Thumb image</string>
+    <string name="morphe_custom_seekbar_thumb_file_summary">Select an image or animated GIF from device storage</string>
+    <string name="morphe_custom_seekbar_thumb_file_invalid">The selected file is not a supported image</string>
+    <string name="morphe_custom_seekbar_thumb_file_not_found">Custom seekbar thumb image not found</string>
+    <string name="morphe_custom_seekbar_thumb_scale_type_title">Thumb size</string>
+    <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Fit seekbar</string>
+    <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Original size</string>
 
     <!-- interaction.swipecontrols.swipeControlsPatch -->
     <string name="morphe_swipe_left_zone_title">Left swipe gesture</string>
@@ -1176,6 +1196,10 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_bypass_ambient_mode_restrictions_summary">Allows Ambient mode to stay active in battery saver mode</string>
     <string name="morphe_disable_ambient_mode_title">Disable Ambient mode</string>
     <string name="morphe_disable_fullscreen_ambient_mode_title">Disable Ambient mode in fullscreen</string>
+    <string name="morphe_enhanced_ambient_mode_title">Enhanced Ambient mode</string>
+    <string name="morphe_enhanced_ambient_mode_summary">Lights the whole watch page and black bars with the video, in place of Ambient mode</string>
+    <string name="morphe_enhanced_ambient_mode_readable_text_title">Keep text readable</string>
+    <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dims the light on bright videos so the text on the page stays readable</string>
 
     <!-- layout.hide.infocards.hideInfocardsPatch -->
     <string name="morphe_hide_info_cards_title">Hide info cards</string>
@@ -1269,7 +1293,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_disable_playlist_autoplay_summary">Prevents playlists from automatically advancing to the next video</string>
 
     <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-    <string name="morphe_disable_continue_watching_prompt_title">Disable \'Continue watching?\' prompt</string>
+    <string name="morphe_continue_watching_prompt_title">\'Continue watching?\' prompt</string>
+    <string name="morphe_continue_watching_prompt_entry_1">Default</string>
+    <string name="morphe_continue_watching_prompt_entry_2">Disabled</string>
+    <string name="morphe_continue_watching_prompt_entry_3">Disabled, always show the autoplay countdown</string>
 
     <!-- layout.player.fullscreen.exitFullscreenPatch -->
     <string name="morphe_exit_fullscreen_title">Exit fullscreen mode on video end</string>
@@ -1932,6 +1959,9 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_screen_title">Niconico comments</string>
     <string name="morphe_niconico_comments_screen_summary">Show live chat and chat replay as comments that scroll across the video</string>
     <string name="morphe_niconico_comments_summary">Shows an overlay button in the video player. Tap to show or hide the comments, tap and hold for quick settings</string>
+    <string name="morphe_niconico_comments_appearance_title">Appearance</string>
+    <string name="morphe_niconico_comments_portrait_category_title">Portrait</string>
+    <string name="morphe_niconico_comments_video_types_title">Video types</string>
     <string name="morphe_niconico_comments_font_size_title">Comment font size</string>
     <string name="morphe_niconico_comments_font_size_summary">Text size of the comments (12-40 sp)</string>
     <string name="morphe_niconico_comments_opacity_title">Comment opacity</string>
@@ -1940,6 +1970,18 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_travel_duration_summary">How many seconds comments take to cross the screen. Lower values move faster</string>
     <string name="morphe_niconico_comments_display_area_title">Display area</string>
     <string name="morphe_niconico_comments_display_area_summary">How much of the player, from the top, the comments use. Lower values keep the lower part of the video clear</string>
+    <string name="morphe_niconico_comments_portrait_title">Show in portrait</string>
+    <string name="morphe_niconico_comments_portrait_summary">Show the comments when the screen is in portrait. Turn off to show them only in landscape</string>
+    <string name="morphe_niconico_comments_separate_portrait_title">Separate settings for portrait</string>
+    <string name="morphe_niconico_comments_separate_portrait_summary">Use a different font size, travel duration and display area in portrait. When turned on, they start from the current values</string>
+    <string name="morphe_niconico_comments_portrait_font_size_title">Comment font size in portrait</string>
+    <string name="morphe_niconico_comments_portrait_font_size_summary">Text size of the comments in portrait (12-40 sp)</string>
+    <string name="morphe_niconico_comments_portrait_travel_duration_title">Travel duration in portrait</string>
+    <string name="morphe_niconico_comments_portrait_travel_duration_summary">How many seconds comments take to cross the screen in portrait</string>
+    <string name="morphe_niconico_comments_portrait_display_area_title">Display area in portrait</string>
+    <string name="morphe_niconico_comments_portrait_display_area_summary">How much of the player, from the top, the comments use in portrait</string>
+    <string name="morphe_niconico_comments_hide_crowded_title">Hide comments that would overlap</string>
+    <string name="morphe_niconico_comments_hide_crowded_summary">When the display area is full, new comments are hidden instead of overlapping other comments</string>
     <string name="morphe_niconico_comments_max_length_title">Max comment length</string>
     <string name="morphe_niconico_comments_max_length_summary">Hides comments with more characters than this. Each emoji counts as one character</string>
     <string name="morphe_niconico_comments_max_length_no_limit">No limit</string>
@@ -1955,6 +1997,8 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_timed_comments_summary">On videos without a chat, top comments that contain a time such as 1:23 are shown at that time</string>
     <string name="morphe_niconico_comments_timed_comments_with_replay_title">Show timed comments with chat replay</string>
     <string name="morphe_niconico_comments_timed_comments_with_replay_summary">On replays of live streams and Premieres, timed comments are also shown with the chat</string>
+    <string name="morphe_niconico_comments_all_settings">All settings</string>
+    <string name="morphe_niconico_comments_reset_title">Reset these settings?</string>
 
     <string name="morphe_live_chat_translate_screen_title">Live chat translation</string>
     <string name="morphe_live_chat_translate_screen_summary">Translate live chat and live chat replay messages</string>

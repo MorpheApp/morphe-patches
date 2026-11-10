@@ -528,6 +528,23 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Hide Upgrade button</string>
     <string name="morphe_music_hide_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_music_hide_navigation_bar_labels_title">Hide navigation button labels</string>
+    <string name="morphe_music_navigation_bar_glass_title">Enable glass navigation bar</string>
+    <string name="morphe_music_navigation_bar_glass_summary">Shows the navigation bar as a floating, rounded, translucent capsule</string>
+    <string name="morphe_music_navigation_bar_glass_opacity_title">Glass opacity</string>
+    <string name="morphe_music_navigation_bar_glass_opacity_summary">Adjust the transparency level of the glass navigation bar (0 is transparent, 100 is opaque)</string>
+    <string name="morphe_music_navigation_bar_glass_light_title">Light glass</string>
+    <string name="morphe_music_navigation_bar_glass_light_summary">Tints the glass navigation bar white instead of dark, for a lighter and clearer glass</string>
+    <string name="morphe_music_navigation_bar_glass_size_title">Glass navigation bar size</string>
+    <string name="morphe_music_navigation_bar_glass_size_summary">Adjust the height, the width and the button spacing of the glass navigation bar, with a preview. Buttons that do not fit in the width of the screen are hidden</string>
+    <string name="morphe_music_navigation_bar_glass_size_height">Height</string>
+    <string name="morphe_music_navigation_bar_glass_size_width">Maximum width</string>
+    <string name="morphe_music_navigation_bar_glass_size_button_spacing">Button spacing</string>
+    <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Buttons shown: %1$s of %2$s</string>
+    <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+    <string name="morphe_music_navigation_bar_glass_preview_home">Home</string>
+    <string name="morphe_music_navigation_bar_glass_preview_samples">Samples</string>
+    <string name="morphe_music_navigation_bar_glass_preview_explore">Explore</string>
+    <string name="morphe_music_navigation_bar_glass_preview_library">Library</string>
 
     <!-- interaction.scrobbling.scrobblingPatch -->
     <string name="morphe_music_scrobbling_summary_logged_out">Not logged in. Tap to configure</string>
@@ -753,7 +770,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_show_section_title">Show section tags</string>
     <string name="morphe_music_lyrics_show_section_summary">Label each new section of the lyrics with a small tag, such as Verse or Chorus</string>
     <string name="morphe_music_lyrics_show_copy_button_title">Show Copy button</string>
-    <string name="morphe_music_lyrics_show_copy_button_summary">Tap to copy original lyrics as plain text; long-press to save raw lyrics source file to Downloads</string>
+    <string name="morphe_music_lyrics_show_copy_button_summary">Tap to copy original lyrics as plain text; long-press to save the raw lyrics source file and a converted TTML file to Downloads</string>
     <string name="morphe_music_lyrics_show_translate_button_title">Show Translate button</string>
     <string name="morphe_music_lyrics_show_translate_button_summary">Tap to toggle translation; long-press for translation only. Uses the enabled translation providers in their listed order</string>
     <string name="morphe_music_lyrics_show_romanize_button_title">Show Romanize or Transliterate button</string>
@@ -779,6 +796,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_search_empty">Enter a song title and an artist</string>
     <string name="morphe_music_lyrics_search_no_providers">None of the enabled providers can search for other songs</string>
     <string name="morphe_music_lyrics_saved">Saved</string>
+    <string name="morphe_music_lyrics_written_by">Written by: %s</string>
     <string name="morphe_music_lyrics_word_sync_title">Highlight synced words or syllables</string>
     <string name="morphe_music_lyrics_word_sync_summary">Prioritize word-by-word lyrics when available. When lyrics carry word timing, highlights each word or syllable in time with the music</string>
     <string name="morphe_music_lyrics_line_scale_title">Shrink inactive lines</string>
@@ -794,7 +812,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_dynamic_background_animated_title">Animate dynamic background</string>
     <string name="morphe_music_lyrics_dynamic_background_animated_summary">Move the background while playing, and pulse it with the music if YouTube Music has the microphone permission. Turn off for a still background that uses less battery</string>
     <string name="morphe_music_lyrics_mediasession_title">Show MediaSession Lyrics on lock screen</string>
-    <string name="morphe_music_lyrics_mediasession_summary">Shows the current line on the lock screen, Android Auto and Bluetooth. Needs Android 11 or newer</string>
+    <string name="morphe_music_lyrics_mediasession_summary">Shows the current line on the lock screen, Android Auto and Bluetooth</string>
     <string name="morphe_music_lyrics_miniplayer_title">Show Miniplayer Lyrics</string>
     <string name="morphe_music_lyrics_miniplayer_summary">Shows the current line in the miniplayer, with the track moved to the subtitle</string>
     <string name="morphe_music_lyrics_mini_track_format_title">Song title/artist format</string>
@@ -831,6 +849,8 @@ Applies to both limits. At 1.75, four full-width characters count as 7."</string
     <string name="morphe_music_lyrics_force_capitalize_summary">Capitalizes the first letter of each lyrics line</string>
     <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Remove trailing punctuation</string>
     <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Removes full stops, commas, colons and semicolons at the end of lyrics lines. Question marks, exclamation marks, ellipses, quotes and brackets are kept</string>
+    <string name="morphe_music_lyrics_han_form_title">Chinese form conversion</string>
+    <string name="morphe_music_lyrics_han_form_summary">When on, follows your translation target language to convert lyrics between Simplified and Traditional writing</string>
     <string name="morphe_music_lyrics_text_size_title">Text size</string>
     <string name="morphe_music_lyrics_text_size_summary">Size of the lyrics text</string>
     <string name="morphe_music_lyrics_offset_ms_title">Global timing offset</string>
@@ -846,6 +866,7 @@ Applies to both limits. At 1.75, four full-width characters count as 7."</string
     <string name="morphe_music_lyrics_translated_by_ai">Translated by %s</string>
     <string name="morphe_music_lyrics_romanized_by_ai">Romanized by %s</string>
     <string name="morphe_music_lyrics_romanized_by_local">Romanized by %s</string>
+    <string name="morphe_music_lyrics_with_ruby_provider">%1$s (with %2$s)</string>
     <string name="morphe_music_lyrics_romanized_by_rime">Romanized by Rime (%s)</string>
     <!-- Tappable label under the lyrics that turns the translation on. -->
     <string name="morphe_music_lyrics_translate_hide">Translated</string>
@@ -861,6 +882,8 @@ Applies to both limits. At 1.75, four full-width characters count as 7."</string
     <string name="morphe_romanize_language_DEFAULT">Automatic</string>
     <string name="morphe_music_lyrics_romanizing">Romanizing…</string>
     <string name="morphe_music_lyrics_romanize_failed">Could not romanize the lyrics</string>
+    <string name="morphe_music_lyrics_romanize_language_none">None</string>
+    <string name="morphe_music_lyrics_ruby_language_title">Ruby Target</string>
     <string name="morphe_music_lyrics_translate_only">Translated only</string>
     <string name="morphe_music_lyrics_romanize_only">Romanized only</string>
     <string name="morphe_music_lyrics_dual_only">Dual mode</string>
@@ -891,7 +914,7 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_hide_info_title">Hide credit line</string>
     <string name="morphe_music_lyrics_hide_info_summary">Hide the credit line shown below the lyrics</string>
     <string name="morphe_music_lyrics_swap_trans_roma_title">Swap translation and romanization</string>
-    <string name="morphe_music_lyrics_swap_trans_roma_summary">Swaps the display order of translation and romanization below the lyrics</string>
+    <string name="morphe_music_lyrics_swap_trans_roma_summary">Moves the translation above the lyrics; the reading and romanization stay below</string>
     <string name="morphe_music_lyrics_force_center_title">Always center lyrics</string>
     <string name="morphe_music_lyrics_force_center_summary">ON puts every line in the middle and ignores the source alignment, including duet sides; OFF keeps the alignment the lyrics ask for</string>
     <string name="morphe_music_lyrics_providers_keep_one">At least one provider must stay on</string>
@@ -899,14 +922,7 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_romanization_provider_title">Romanization or transliteration</string>
     <string name="morphe_music_lyrics_romanization_provider_local">Offline Dictionary</string>
     <string name="morphe_music_lyrics_romanization_provider_rime">Rime Wordlist</string>
-    <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-    <string name="morphe_music_lyrics_ruby_provider_local">Offline Dictionary</string>
-    <string name="morphe_music_lyrics_ruby_style_title">Ruby script</string>
-    <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-    <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-    <string name="morphe_music_lyrics_show_ruby_button_title">Show Ruby button</string>
-    <string name="morphe_music_lyrics_show_ruby_button_summary">Tap to toggle ruby readings above lyrics; long-press to switch between hiragana and katakana. Uses the enabled ruby providers in their listed order</string>
-    <string name="morphe_music_lyrics_ruby_generating">Generating ruby…</string>
+    <string name="morphe_music_lyrics_romanization_provider_icu">ICU Transliterator</string>
     <string name="morphe_music_lyrics_use_ai_section_title">Detect sections with AI</string>
     <string name="morphe_music_lyrics_use_ai_section_summary">Only used when the provider ships no section labels such as Chorus or Verse, which your OpenAI-compatible model then detects. Editing the row also opens its prompt</string>
     <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (e.g. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -929,6 +945,7 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_ai_config_fetch_models_success">Select a Model</string>
     <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Failed to fetch models. Check API key or connection.</string>
     <string name="morphe_music_lyrics_ai_config_prompt_label">Prompt</string>
+    <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby Prompt (Kana)</string>
     <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
     <string name="morphe_music_lyrics_ai_config_base_url_label">Base URL</string>
     <string name="morphe_music_lyrics_ai_config_base_url_presets">Service presets</string>

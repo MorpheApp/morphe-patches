@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 /**
  * Reads a line of Han characters a word at a time, since a character alone cannot say which of its
- * readings the word around it wants, and a character at a time where no word is known. Kana are
+ * readings the surrounding word wants, and a character at a time when no word is known. Kana are
  * read by rule and the rest is passed through, so a line that mixes scripts keeps its other half.
  */
 final class HanRomanizer {

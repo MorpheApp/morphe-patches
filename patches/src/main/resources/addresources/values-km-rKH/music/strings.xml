@@ -68,6 +68,8 @@ Second \"item\" text"</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">ទំព័រដើម</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbled' must be kept untranslated -->
@@ -90,5 +92,6 @@ Second \"item\" text"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->
+  <string name="morphe_music_lyrics_romanize_language_none">ឥតមាន</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

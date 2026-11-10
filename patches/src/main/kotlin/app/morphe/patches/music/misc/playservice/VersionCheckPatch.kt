@@ -36,6 +36,8 @@ var is_9_41_or_greater: Boolean by Delegates.notNull()
     private set
 var is_9_43_or_greater: Boolean by Delegates.notNull()
     private set
+var is_9_45_or_greater: Boolean by Delegates.notNull()
+    private set
 
 val versionCheckPatch = patch {
     execute {
@@ -58,5 +60,6 @@ val versionCheckPatch = patch {
         is_9_39_or_greater = isEqualsOrGreaterThan("9.39.00")
         is_9_41_or_greater = isEqualsOrGreaterThan("9.41.00")
         is_9_43_or_greater = isEqualsOrGreaterThan("9.43.00")
+        is_9_45_or_greater = isEqualsOrGreaterThan("9.45.00")
     }
 }

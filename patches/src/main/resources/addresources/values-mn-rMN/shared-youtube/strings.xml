@@ -18,7 +18,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_style_title">Эхлэлийн хเคลื่อนхүү дүрслэл</string>
+  <string name="morphe_splash_screen_style_title">Эхлэлийн хөдөлгөөнт дүрслэл</string>
   <string name="morphe_splash_screen_style_entry_1">Идэвхгүй</string>
   <string name="morphe_splash_screen_style_entry_2">Өнгө</string>
   <string name="morphe_splash_screen_style_entry_3">Morphe Өнгөт</string>
@@ -42,7 +42,7 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_entry_12">Баримгяа ногоон</string>
   <string name="morphe_theme_color_dark_entry_13">Баримгяа шар</string>
   <string name="morphe_theme_color_dark_entry_14">Баримгяа улбар шар</string>
-  <string name="morphe_theme_color_dark_entry_15">Баримлсан улаан</string>
+  <string name="morphe_theme_color_dark_entry_15">Баримгяа улаан</string>
   <string name="morphe_theme_color_dark_custom_title">Бүтээлчээр тохируулсан бараан дэвсгэр</string>
   <string name="morphe_theme_color_dark_custom_summary">Бараан сэвэргийн дэвсгэр өнгийг тохируулах</string>
   <string name="morphe_theme_color_entry_1">Аппликейшний үндсэн</string>
@@ -54,7 +54,7 @@ Second \"item\" text"</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Татаж авах</string>
   <string name="morphe_download_mode_title">Татах горим</string>
-  <string name="morphe_download_mode_entry_default">Өгөгдрьсөн</string>
+  <string name="morphe_download_mode_entry_default">Үндсэн</string>
   <string name="morphe_download_mode_entry_in_app">Апп дотор татах</string>
   <string name="morphe_download_mode_entry_external">Гадаад татах программ</string>
   <string name="morphe_external_downloader_name_title">Татаж авах программын багцын нэр</string>
@@ -117,7 +117,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Үндсэн клиент</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR-т нэвтрэх</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-т нэвтрээгүй байна. Нэвтрэхийн тулд энд дарна уу</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-т тусдаа нэвтрэлт шаардлагатай. Үргэлжлүүлэхийн тулд энд дарна уу</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Одоогоор Android VR-т нэвтэрсэн байна</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Энэ функцийг ашиглахын тулд \'Үндсэн клиент\'-ийг Android VR болгож өөрчилнө үү</string>
@@ -156,8 +156,8 @@ Second \"item\" text"</string>
   <string name="morphe_notification_media_screen_summary">Түгээн дэлгэц болон мэдэгдлийн хэсэгт харагдах тоглуулах удирдлагуудыг тохируулна уу</string>
   <string name="morphe_hide_notification_media_prev_next_title">Өмнөх &amp; Дараагийн товчлууруудыг нуух</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Медиа мэдэгдэл, түгээн дэлгэц болон чихэвчний удирдлага дээрх Өмнөх болон Дараагийн товчлууруудыг нууна</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Хайх түүрийг идэвхгүй болгох</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Түгээн дэлгэц болон мэдэгдлийн хэсэг дээрх хайх түүрийг чирж өөрчлөхийг хязгаарлана</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Хайлтын зурвасыг идэвхгүй болгох</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Түгээн дэлгэц болон мэдэгдлийн хэсэг дээрх хайлтын зурвасыг чирж өөрчлөхийг хязгаарлана</string>
   <string name="morphe_seek_notification_media_prev_next_title">Өмнөх &amp; Дараах товчлууруудаар ухраах/урагшлуулах</string>
   <string name="morphe_seek_notification_media_prev_next_summary">Мэдэгдэл, түгжээтэй дэлгэц, чихэвчний удирдлагыг видеог солихын оронд ухраах/урагшлуулах болгон өөрчилнө</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Ухраах хугацаа</string>
@@ -209,20 +209,22 @@ Second \"item\" text"</string>
   <string name="morphe_replace_links_with_shortener_title">Хуваалцах холбоосуудыг youtu.be болгож өөрчлөх</string>
   <string name="morphe_replace_links_with_shortener_summary">Видеог youtu.be богино URL форматаар ашиглахыг шаардана</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Debug log protocol buffer-ийг шалгах</string>
-  <string name="morphe_debug_protobuffer_summary">Хөгжүүлэгчид апп-ын бүрэлдэхүүн хэсгүүдийг тодорхойлохын тулд нэмэлт лог мэдээлэл нэмнэ</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Энэ тохиргоог идэвхжүүлснээр зарим UI бүрэлдэхүүн хэсгүүдийн дэлгэц дээрх текст зэрэг нэмэлт бүтцийн өгөгдлийг бүртгэнэ.
+  <string name="morphe_debug_litho_title">Litho лог бүртгэл</string>
+  <string name="morphe_debug_litho_entry_disabled">Идэвхгүй</string>
+  <string name="morphe_debug_litho_entry_path">Зам</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Зам болон буфер</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho-гийн бүртгэл нь апп-ын layout бүрэлдэхүүн хэсгүүдийг, түүний дотор зарим UI бүрэлдэхүүн хэсгүүдийн дэлгэц дээрх текстийг бүртгэдэг
 
-Энэ нь тусгай шүүлтүүр үүсгэхэд бүрэлдэхүүн хэсгүүдийг тодорхойлоход тусална.
+Энэ нь тусгай шүүлтүүр үүсгэхэд бүрэлдэхүүн хэсгүүдийг тодорхойлоход тусална
 
-Гэвч үүнийг идэвхжүүлснээр таны IP хаяг гэх мэт зарим хэрэглэгчийн өгөгдлийг мөн бүртгэх болно"</string>
+Гэвч энэ нь таны IP хаяг зэрэг зарим хэрэглэгчийн өгөгдлийг мөн бүртгэх болно"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Тусгай шүүлтүүр</string>
   <string name="morphe_custom_filter_screen_summary">Ямар ч бүрэлдэхүүн хэсгийг нуухын тулд тусгай шүүлтүүрийг тохируулна уу</string>
   <string name="morphe_custom_filter_title">Тусгай шүүлтүүрийг идэвхжүүлэх</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Шүүлтүүрт ашиглах компонент замын бүтээгчийн мөрүүдийн жагсаалтыг шинэ мөрөөр тусгаарлан оруулна уу</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Буруу төгсгөлгүй шүүлтүүр: %s</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Буруу тусгай шүүлтүүр: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Тохиргооны цэсний шүүлтүүр</string>
   <string name="morphe_settings_menu_filter_screen_summary">Аппликейшний үндсэн тохиргооны дэлгэц дээрх зүйлсийг харагдах нэрээр нь нуух</string>
@@ -283,7 +285,7 @@ PotHelper татахын тулд энд дарна уу"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Таалагдаагүй үзүүлэлт түр зуур боломжгүй (API хугацаа дууссан)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Таалагдаагүйцүүдийг ашиглах боломжгүй (төлөв %s)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Таалагдаагүй тоог ашиглах боломжгүй (төлөв %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Таалагдаагүй үзүүлэлт боломжгүй (client API хязгаарлалт)</string>
   <string name="morphe_ryd_failure_generic">Үгүйсгэлийг ашиглах боломжгүй (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -310,7 +312,7 @@ PotHelper татахын тулд энд дарна уу"</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API-аас санал авах дуудлагын тоо</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Сүлжээний дуудлага хийгээгүй</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s сүлжээний дуудлага хийсэн</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API-аас саавал авах, цаг хугацаа дууссан тоо</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API-аас санал авах, цаг хугацаа дууссан тоо</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Сүлжээний дуудлага цаг хугацаа дуусаагүй</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s сүлжээний дуудлагын хугацаа дууссан</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API клиентийн хүсэлтийн хязгаарлалт</string>

@@ -112,7 +112,7 @@ Mã định danh người dùng giống như mật khẩu, và nó không bao gi
   <string name="morphe_sb_segments_preview_summary">Các đoạn tổng hợp giới thiệu nội dung sắp tới hoặc tóm tắt lại nội dung đã xuất hiện trong video hoặc cả series, nơi mọi thông tin đều được lặp lại ở phần khác</string>
   <string name="morphe_sb_segments_filler">Lạc đề / Đùa giỡn</string>
   <string name="morphe_sb_segments_filler_summary">Những đoạn ngoài lề hoặc pha đùa không cần thiết để hiểu nội dung chính. Không bao gồm các phần giải thích bối cảnh hay thông tin nền</string>
-  <string name="morphe_sb_segments_nomusic">Âm nhạc nhưng không có nhạc</string>
+  <string name="morphe_sb_segments_nomusic">Âm nhạc: Phần không có nhạc</string>
   <string name="morphe_sb_segments_nomusic_summary">Chỉ áp dụng cho MV âm nhạc. Những đoạn không có nhạc mà chưa được thuộc bất kỳ danh mục khác</string>
   <string name="morphe_sb_skip_button_compact">Bỏ qua</string>
   <string name="morphe_sb_skip_button_compact_highlight">Nổi bật</string>
@@ -150,7 +150,7 @@ Mã định danh người dùng giống như mật khẩu, và nó không bao gi
   <string name="morphe_sb_skip_automatically">Tự động bỏ qua</string>
   <string name="morphe_sb_skip_automatically_once">Tự động bỏ qua một lần</string>
   <string name="morphe_sb_skip_showbutton">Hiện nút Bỏ qua</string>
-  <string name="morphe_sb_skip_seekbaronly">Đã hiển thị trên thanh tiến trình</string>
+  <string name="morphe_sb_skip_seekbaronly">Hiện trên thanh tiến trình</string>
   <string name="morphe_sb_skip_ignore">Tắt</string>
   <string name="morphe_sb_submit_failed_invalid">Không thể gửi phân đoạn: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock tạm thời không hoạt động</string>

@@ -8,8 +8,8 @@
 package app.morphe.extension.music.patches.lyrics.requests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -25,7 +25,8 @@ public class LRCLIBSyncedFirstTest {
                 null, null, null, null, null, "lrc", null);
     }
 
-    @Test public void syncedBeatsAHigherScoredPlainResult() {
+    @Test
+    public void syncedBeatsAHigherScoredPlainResult() {
         List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
         scored.add(new Lyrics.ScoredLyrics(100, lyrics(false)));
         scored.add(new Lyrics.ScoredLyrics(40, lyrics(true)));

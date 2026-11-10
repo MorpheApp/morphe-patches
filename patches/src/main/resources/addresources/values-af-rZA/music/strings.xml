@@ -48,7 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_enable_layer_first">Aktiveer eers Jam Layer</string>
   <string name="morphe_music_jam_enable_patch_first">Aktiveer Jam-tou-deling in die instellings, herbegin dan YouTube Music</string>
   <string name="morphe_music_jam_install_layer_first">Installeer eers die geselekteerde Jam Layer-pakket</string>
-  <string name="morphe_music_jam_join_hint">Voer die kode wat op die gasheer vertoon word, in. Wi-Fi Aware kan nabygeleë toestelle verbind, selfs wanneer hul LAN\'e verskil</string>
+  <string name="morphe_music_jam_join_hint">Voer die kode wat op die gasheer vertoon word, in. Wi-Fi Aware kan nabygeleë toestelle verbind, selfs wanneer hul LAN\'s verskil</string>
   <string name="morphe_music_jam_join_with_code">Sluit aan met ’n kode</string>
   <string name="morphe_music_jam_join">Sluit aan</string>
   <string name="morphe_music_jam_scan_qr">Skandeer QR</string>
@@ -59,11 +59,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_show_qr">Wys QR</string>
   <string name="morphe_music_jam_done">Klaar</string>
   <string name="morphe_music_jam_invite_title">Nooi na jou Jam</string>
-  <string name="morphe_music_jam_invite_message">Skander om aan te sluit by en hierdie wagtelys te wysig. Die beëindiging van die Jam trek die uitnodiging in</string>
+  <string name="morphe_music_jam_invite_message">Skandeer om by hierdie tou aan te sluit en dit te wysig. Die beëindiging van die Jam trek die uitnodiging in</string>
   <string name="morphe_music_jam_copy_link">Kopieer skakel</string>
   <string name="morphe_music_jam_invitation_clip">Jam-uitnodiging</string>
   <string name="morphe_music_jam_reconnecting_toast">Jam is besig om weer te koppel; probeer binnekort weer.</string>
-  <string name="morphe_music_jam_added_to_jam">Bygevoeg tot Jam</string>
+  <string name="morphe_music_jam_added_to_jam">Bygevoeg aan Jam</string>
   <string name="morphe_music_jam_unavailable_toast">Jam is nie beskikbaar nie; die snit is nie bygevoeg nie.</string>
   <string name="morphe_music_jam_your_jam">Jou Jam</string>
   <string name="morphe_music_jam_listening_together">Saam luister</string>
@@ -84,12 +84,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">Nie ondersteun tydens Jam nie</string>
   <string name="morphe_music_jam_cancelled">Aansluiting gekanselleer</string>
   <string name="morphe_music_jam_reconnecting_host">Besig om weer met jou gasheer te koppel…</string>
-  <string name="morphe_music_jam_share_prompt">Deel \'n wagtelys. Laat almal liedjies byvoeg</string>
+  <string name="morphe_music_jam_share_prompt">Deel \'n tou. Laat almal liedjies byvoeg</string>
   <string name="morphe_music_jam_invite_people">Nooi mense</string>
   <string name="morphe_music_jam_guest_edits">Gaste kan die tou redigeer</string>
   <string name="morphe_music_jam_end_jam">Beëindig Jam</string>
-  <string name="morphe_music_jam_participant_help">Die gasheer speel die musiek. Voeg, skuif of verwyder liedjies direk in die YouTube Music-wagtelys</string>
-  <string name="morphe_music_jam_joining_help">Hou beide toestelle naby mekaar. U kan kanselleer terwyl ons vir die gasheer soek</string>
+  <string name="morphe_music_jam_participant_help">Die gasheer speel die musiek. Voeg liedjies direk in die YouTube Music-tou by, skuif of verwyder hulle</string>
+  <string name="morphe_music_jam_joining_help">Hou beide toestelle naby mekaar. Jy kan kanselleer terwyl ons vir die gasheer soek</string>
   <string name="morphe_music_jam_cancel_joining">Kanselleer aansluiting</string>
   <string name="morphe_music_jam_leave_jam">Verlaat Jam</string>
   <string name="morphe_music_jam_start_jam">Begin ’n Jam</string>
@@ -127,8 +127,8 @@ Second \"item\" text"</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Laai musiekvideo\'s, podcasts of liedjies af met derdeparty-aflaai-programme</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
-  <string name="morphe_external_downloader_menu_title">Gebruik eksterne afwerker vir Afwerk-kieslys</string>
-  <string name="morphe_external_downloader_menu_summary">Die Afwerkeropsie in kieslyse open jou eksterne afwerker eerder</string>
+  <string name="morphe_external_downloader_menu_title">Gebruik eksterne aflaaier vir Aflaai-kieslys</string>
+  <string name="morphe_external_downloader_menu_summary">Die Aflaai-opsie in kieslyse open eerder jou eksterne aflaaier</string>
   <string name="morphe_music_downloads_screen_title">Aflaaie</string>
   <string name="morphe_music_downloads_empty">"Geen aflaaie nie
 Afgelaaide snitte verskyn hier"</string>
@@ -150,7 +150,7 @@ Afgelaaide snitte verskyn hier"</string>
   <string name="morphe_music_downloads_previous">Vorige</string>
   <string name="morphe_music_downloads_next">Volgende</string>
   <string name="morphe_music_downloads_pause">Pouse</string>
-  <string name="morphe_music_downloads_shuffle">Skel</string>
+  <string name="morphe_music_downloads_shuffle">Skommel</string>
   <string name="morphe_music_downloads_repeat">Herhaal</string>
   <string name="morphe_music_downloads_minimize">Minimaliseer</string>
   <string name="morphe_music_downloads_close">Maak toe</string>
@@ -161,19 +161,19 @@ Afgelaaide snitte verskyn hier"</string>
   <string name="morphe_music_downloads_track_deleted">Aflaai uitgevee</string>
   <string name="morphe_music_downloads_track_delete_failed">Kon nie die aflaai uitvee nie</string>
   <string name="morphe_music_downloads_play_failed">Kon nie die aflaai speel nie</string>
-  <string name="morphe_music_downloads_playlists">Klassieke lyste</string>
-  <string name="morphe_music_downloads_playlists_section">Geskepte klassieke lyste (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Geen plaaslike klassieke lyste nog nie</string>
-  <string name="morphe_music_downloads_playlists_hide">Steek klassieke lyste weg ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Nuwe klassieke lys</string>
-  <string name="morphe_music_downloads_playlist_new_button">Nuwe klassieke lys</string>
+  <string name="morphe_music_downloads_playlists">Speellyste</string>
+  <string name="morphe_music_downloads_playlists_section">Geskepte speellyste (%s)</string>
+  <string name="morphe_music_downloads_playlists_empty">Geen plaaslike speellyste nog nie</string>
+  <string name="morphe_music_downloads_playlists_hide">Verberg speellyste ▲</string>
+  <string name="morphe_music_downloads_playlist_new">+ Nuwe speellys</string>
+  <string name="morphe_music_downloads_playlist_new_button">Nuwe speellys</string>
   <string name="morphe_music_downloads_playlist_selected">Geselekteer (%s)</string>
   <string name="morphe_music_downloads_playlist_select_first">Kies eers liedjies</string>
   <string name="morphe_music_downloads_playlist_clear_selection">Maak seleksie skoon</string>
-  <string name="morphe_music_downloads_playlist_create">Skep klassieke lys</string>
+  <string name="morphe_music_downloads_playlist_create">Skep speellys</string>
   <string name="morphe_music_downloads_playlist_create_button">Skep</string>
   <string name="morphe_music_downloads_playlist_add">Voeg toe aan speellys</string>
-  <string name="morphe_music_downloads_playlist_added">Toegevoeg tot %s</string>
+  <string name="morphe_music_downloads_playlist_added">Toegevoeg aan %s</string>
   <string name="morphe_music_downloads_playlist_name_hint">Speellysnaam</string>
   <string name="morphe_music_downloads_playlist_name_empty">Speellysnaam kan nie leeg wees nie</string>
   <string name="morphe_music_downloads_playlist_save_failed">Kon nie die speellys stoor nie</string>
@@ -183,7 +183,7 @@ Afgelaaide snitte verskyn hier"</string>
   <string name="morphe_music_downloads_playlist_play">Speel speellys</string>
   <string name="morphe_music_downloads_playlist_play_all">Speel alles</string>
   <string name="morphe_music_downloads_playlist_rename">Hernoem</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Hernoem spelys</string>
+  <string name="morphe_music_downloads_playlist_rename_title">Hernoem speellys</string>
   <string name="morphe_music_downloads_playlist_save">Stoor</string>
   <string name="morphe_music_downloads_playlist_delete">Vee speellys uit</string>
   <string name="morphe_music_downloads_playlist_delete_title">Vee speellys uit?</string>
@@ -203,22 +203,22 @@ Afgelaaide snitte verskyn hier"</string>
   <string name="morphe_music_downloads_progress">Laai %s%% af</string>
   <string name="morphe_music_downloads_complete">Aflaai voltooi</string>
   <string name="morphe_music_downloads_failed">Aflaai misluk</string>
-  <string name="morphe_music_downloads_playlist_download_title">Aflaai van spelysye-lys thanked</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Lys tracks…</string>
+  <string name="morphe_music_downloads_playlist_download_title">Speellys-aflaai</string>
+  <string name="morphe_music_downloads_playlist_download_listing">Lys snitte…</string>
   <string name="morphe_music_downloads_playlist_download_listed">%s gelys…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Kon nie die tracks van die spelysye lys nie</string>
+  <string name="morphe_music_downloads_playlist_download_listing_failed">Kon nie die snitte van die speellys kry nie</string>
   <string name="morphe_music_downloads_playlist_download_all_saved">Reeds afgelaai: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s in hierdie spelysye, %2$s nog nie afgelaai nie.
+  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s in hierdie speellys, %2$s nog nie afgelaai nie.
 
 Hulle word een-vir-een afgelaai, wat 'n lang tyd kan neem en ongeveer %3$s vrye spasie benodig"</string>
   <string name="morphe_music_downloads_playlist_download_confirm_button">Aflaai</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Laai track %1$s van %2$s af</string>
+  <string name="morphe_music_downloads_playlist_download_progress">Laai snit %1$s van %2$s af</string>
   <string name="morphe_music_downloads_playlist_download_complete">%s afgelaai</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s afgelaai, %2$s kon nie afgelaai word nie</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Aflaai van spelysye reeds aan die gang</string>
+  <string name="morphe_music_downloads_playlist_download_already_running">Aflaai van speellys is reeds aan die gang</string>
   <string name="morphe_music_downloads_playlist_download_needs_account">Jou rekening is nog nie bekend nie. Probeer weer oor \'n oomblik</string>
   <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s gelys, almal reeds afgelaai</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Slegs \'n deel van die spelysye kon gelys word. Tik later weer op Aflaai om die res te kry</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">Slegs \'n deel van die speellys kon gelys word. Tik later weer op Aflaai om die res te kry</string>
   <string name="morphe_music_downloads_playlist_download_started">Laai %s in die agtergrond af</string>
   <string name="morphe_music_downloads_playlist_download_no_network">Geen netwerkverbinding nie</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">Wag vir die netwerk…</string>
@@ -244,7 +244,7 @@ Hulle word een-vir-een afgelaai, wat 'n lang tyd kan neem en ongeveer %3$s vrye 
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Verberg Klank/Video-wisselknoppie</string>
   <string name="morphe_music_hide_podcast_episode_download_button_title">Versteek die aflaaiknoppie</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_summary">Versteek die aflaaiknoppie in die potgooiprogram</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Versteek die aflaaiknoppie in die podcast-program</string>
   <string name="morphe_music_hide_explore_shelf_title">Verberg Verken-rak</string>
   <string name="morphe_music_hide_filter_bar_title">Versteek filterbalk</string>
   <string name="morphe_music_hide_grid_shelves_title">Verberg rooster-rakke</string>
@@ -256,11 +256,11 @@ Hulle word een-vir-een afgelaai, wat 'n lang tyd kan neem en ongeveer %3$s vrye 
   <string name="morphe_music_hide_new_from_shelf_title">Verberg \'Nuut van\'-rak</string>
   <string name="morphe_music_hide_playlist_shelves_title">Verberg playlist-rakke</string>
   <string name="morphe_music_hide_repeat_button_title">Verberg Herhaal-knoppie</string>
-  <string name="morphe_music_hide_shuffle_button_title">Verberg Lukrake volgorde-knoppie</string>
-  <string name="morphe_music_hide_speed_dial_shelf_title">Verberg \'Spoedskakelaar\'-rak</string>
-  <string name="morphe_music_comments_screen_title">Kommentare</string>
-  <string name="morphe_music_comments_screen_summary">Kies watter komponente in die kommentaar afdeling verskyn</string>
-  <string name="morphe_music_hide_comments_community_guidelines_title">Verberg Gemeenskapriglyne</string>
+  <string name="morphe_music_hide_shuffle_button_title">Verberg Skommel-knoppie</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Verberg \'Spoedskakel\'-rak</string>
+  <string name="morphe_music_comments_screen_title">Kommentaar</string>
+  <string name="morphe_music_comments_screen_summary">Kies watter komponente in die kommentaarafdeling verskyn</string>
+  <string name="morphe_music_hide_comments_community_guidelines_title">Verberg Gemeenskapsriglyne</string>
   <string name="morphe_music_hide_comments_context_title">Versteek konteksboodskap</string>
   <string name="morphe_music_hide_comments_emoji_button_title">Verberg Emoji-knoppie</string>
   <string name="morphe_music_hide_comments_gif_button_title">Verberg GIF-knoppie</string>
@@ -275,7 +275,7 @@ Hulle word een-vir-een afgelaai, wat 'n lang tyd kan neem en ongeveer %3$s vrye 
   <string name="morphe_music_crossfade_curve_title">Vervaagkurwe</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Gelyke krag</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtiele vas</string>
-  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Sagt gemak</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Sagte gemak</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Glad S-kurwe</string>
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_curve_preview_outgoing">Uitgaande</string>
@@ -297,61 +297,61 @@ Hulle word een-vir-een afgelaai, wat 'n lang tyd kan neem en ongeveer %3$s vrye 
   <string name="morphe_crossfade_duration_11000ms">11 sekondes</string>
   <string name="morphe_crossfade_duration_12000ms">12 sekondes</string>
   <string name="morphe_music_crossfade_on_skip_title">Kruisverdof tydens handspring</string>
-  <string name="morphe_music_crossfade_on_skip_summary">Wendt die oorgangs effek toe wanneer jy handmatig na die volgende liedjie spring</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Pas die oorgangseffek toe wanneer jy handmatig na die volgende liedjie spring</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Kruisverdof op outo-vooruitgang</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary">Wendt die oorgangs effek toe wanneer \'n liedjie natuurlik eindig</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Pas die oorgangseffek toe wanneer \'n liedjie natuurlik eindig</string>
   <string name="morphe_music_crossfade_session_control_title">Sesiebeheer</string>
-  <string name="morphe_music_crossfade_session_control_summary">Druk lank op die skuifknoppie om kruisverdof te onderbreek of te hervat</string>
+  <string name="morphe_music_crossfade_session_control_summary">Druk lank op die skuifknoppie om oorgangsvervaging te onderbreek of te hervat</string>
   <string name="morphe_music_crossfade_paused_toast">Die oorgangsvervaging is vir hierdie sessie gestop</string>
   <string name="morphe_music_crossfade_resumed_toast">Die oorgangsvervaging hervat</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videoweergave is nie beskikbaar terwyl oorgangsvervaging geaktiveer is nie</string>
-  <string name="morphe_music_crossfade_sabr_toast">Kruisvervaag is af tydens SABR-afspeel</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Kruisvervaag is af terwyl jy cast</string>
+  <string name="morphe_music_crossfade_sabr_toast">Oorgangsvervaging is af met SABR-afspeel</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Oorgangsvervaging is af terwyl jy cast</string>
   <string name="morphe_music_crossfade_about_how_title">Hoe dit werk</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Kruisvervaging laat die einde van een liedjie oorvleuel met die begin van die volgende, deur jou duur en kromme te gebruik
+  <string name="morphe_music_crossfade_about_how_summary">"Oorgangsvervaging laat die einde van een liedjie oorvleuel met die begin van die volgende, deur jou duur en kromme te gebruik
 
 Dit werk by outomatiese vooruitgang en by handmatige oorslaan, elk met sy eie skakelaar. By outomatiese vooruitgang begin die vermenging 'n paar sekondes voordat die liedjie eindig"</string>
   <string name="morphe_music_crossfade_about_quirks_title">Beperkings</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Musiekvideo’s speel slegs as klank terwyl kruisvervaag aan is. Druk en hou die skommelknoppie om kruisvervaag te onderbreek en die video te kyk
+  <string name="morphe_music_crossfade_about_quirks_summary">"Musiekvideo's speel slegs as klank terwyl oorgangsvervaging aan is. Druk lank op die skommelknoppie om oorgangsvervaging te onderbreek en die video te kyk
 
-’n Musiekvideo wat begin speel, bly in videomodus tot die volgende liedjie
+'n Musiekvideo wat begin speel, bly in videomodus tot die volgende liedjie
 
-Liedjies korter as die vervaagduur word nie kruisvervaag nie
+Liedjies korter as die vervaagduur word nie met oorgangsvervaging gespeel nie
 
-Die sluitskerm of kennisgewing kan kortliks ’n verouderde status tydens die oorgang wys
+Die sluitskerm of kennisgewing kan kortliks 'n verouderde status tydens die oorgang wys
 
-Om kruisvervaag te onderbreek om ’n musiekvideo te kyk, kan sommige video’s swart laat. Om kruisvervaag te onderbreek voordat jy die liedjie kies, voorkom dit"</string>
+As jy oorgangsvervaging onderbreek om 'n musiekvideo te kyk, kan sommige video's swart bly. Onderbreek oorgangsvervaging voordat jy die liedjie kies om dit te voorkom"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">Nie ondersteun nie</string>
   <string name="morphe_music_crossfade_about_unsupported_summary">"Oudio-uitsaai of -spieëling (Chromecast, skerm- of oudiospieëling)
 
 SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Erkenning</string>
-  <string name="morphe_music_crossfade_about_credit_summary">Vervaag-funksie deur VazerOG</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Oorgangsvervaging-funksie deur VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <string name="morphe_music_remember_repeat_state_title">Onthou herhalingsstatus</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
-  <string name="morphe_music_remember_shuffle_state_title">Onthou skakelstatus</string>
+  <string name="morphe_music_remember_shuffle_state_title">Onthou lukrake volgorde-status</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Afspeelspoed</string>
   <string name="morphe_music_playback_speed_summary">Spoed wat vir alle snitte gebruik word. Teen 100% word die toepassing se spoed gebruik, soos die podcast-afspeelspoed</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Verander toonhoogte saam met afspeelspoed</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
-  <string name="morphe_music_disable_dislike_redirection_title">Deaktiveer die afkeur-hertoekenning</string>
-  <string name="morphe_music_disable_dislike_redirection_summary">Voorkom dat na die volgende snitspring wanneer die afkeur-knoppie gedruk word</string>
+  <string name="morphe_music_disable_dislike_redirection_title">Deaktiveer die afkeur-omleiding</string>
+  <string name="morphe_music_disable_dislike_redirection_summary">Voorkom dat dit na die volgende snit spring wanneer die afkeur-knoppie gedruk word</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
-  <string name="morphe_music_playlist_track_tap_action_title">Tikaksie vir snitlyssnit</string>
-  <string name="morphe_music_playlist_track_tap_action_entry_default">Speel die snitlys</string>
+  <string name="morphe_music_playlist_track_tap_action_title">Tikaksie vir speellyssnit</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Speel die speellys</string>
   <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Speel net die geselekteerde snit</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Voeg die geselekteerde snit by die tou</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <string name="morphe_music_playlist_track_tap_added_to_queue">By tou gevoeg</string>
   <!-- layout.playlisttags.playlistTagsPatch -->
-  <string name="morphe_music_playlist_tags_screen_title">Katalogmerkers</string>
-  <string name="morphe_music_playlist_tags_screen_summary">Merk kataloge en filter die Biblioteek volgens merker</string>
-  <string name="morphe_music_playlist_tags_title">Aktiveer katalogmerkers</string>
-  <string name="morphe_music_playlist_tags_summary">Voeg \'n Merkers-item by die menu van kataloge, en \'n Merkers-filterknoppie langs die sorteerknoppie van die Biblioteek</string>
-  <string name="morphe_music_playlist_tags_manage_title">Bestuur katalogmerkers</string>
-  <string name="morphe_music_playlist_tags_manage_summary">Skep, hernoem en skrap merkers, en merk die kataloge wat in jou Biblioteek verskyn</string>
+  <string name="morphe_music_playlist_tags_screen_title">Speellysmerkers</string>
+  <string name="morphe_music_playlist_tags_screen_summary">Merk speellyste en filter die Biblioteek volgens merker</string>
+  <string name="morphe_music_playlist_tags_title">Aktiveer speellysmerkers</string>
+  <string name="morphe_music_playlist_tags_summary">Voeg \'n Merkers-item by die menu van speellyste, en \'n Merkers-filterknoppie langs die sorteerknoppie van die Biblioteek</string>
+  <string name="morphe_music_playlist_tags_manage_title">Bestuur speellysmerkers</string>
+  <string name="morphe_music_playlist_tags_manage_summary">Skep, hernoem en vee merkers uit, en merk die speellyste wat in jou Biblioteek verskyn</string>
   <!-- Title of the row added to the menu of a playlist. -->
   <string name="morphe_music_playlist_tags_menu_item">Merkers</string>
   <string name="morphe_music_playlist_tags_menu_item_none">Geen merkers</string>
@@ -363,24 +363,24 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <!-- %s is the name of the playlist. -->
   <string name="morphe_music_playlist_tags_assign_title">Merkers vir %s</string>
   <string name="morphe_music_playlist_tags_new_tag_hint">Nuwe merker</string>
-  <string name="morphe_music_playlist_tags_playlist_count_one">1 katalog</string>
+  <string name="morphe_music_playlist_tags_playlist_count_one">1 speellys</string>
   <!-- %s is the number of playlists that have the tag. -->
-  <string name="morphe_music_playlist_tags_playlist_count">%s kataloge</string>
+  <string name="morphe_music_playlist_tags_playlist_count">%s speellyste</string>
   <!-- %s is the name of the tag. -->
   <string name="morphe_music_playlist_tags_tag_exists">\'n Merker met die naam %s bestaan reeds</string>
   <string name="morphe_music_playlist_tags_filter_title">Filter volgens merker</string>
   <string name="morphe_music_playlist_tags_filter_show_only">Wys slegs</string>
-  <string name="morphe_music_playlist_tags_filter_all">Alle kataloge</string>
-  <string name="morphe_music_playlist_tags_filter_visible">Sigtbare merkers</string>
+  <string name="morphe_music_playlist_tags_filter_all">Alle speellyste</string>
+  <string name="morphe_music_playlist_tags_filter_visible">Sigbare merkers</string>
   <string name="morphe_music_playlist_tags_manage">Bestuur</string>
-  <string name="morphe_music_playlist_tags_none">Nog geen merkers nie. Druk lank op \'n katalog en kies Merkers om een te skep</string>
+  <string name="morphe_music_playlist_tags_none">Nog geen merkers nie. Druk lank op \'n speellys en kies Merkers om een te skep</string>
   <string name="morphe_music_playlist_tags_section_tags">Merkers</string>
-  <string name="morphe_music_playlist_tags_section_playlists">Kataloge</string>
-  <string name="morphe_music_playlist_tags_no_playlists">Maak die Biblioteek een keer oop sodat jou kataloge hier verskyn</string>
+  <string name="morphe_music_playlist_tags_section_playlists">Speellyste</string>
+  <string name="morphe_music_playlist_tags_no_playlists">Maak die Biblioteek een keer oop sodat jou speellyste hier verskyn</string>
   <string name="morphe_music_playlist_tags_new_tag">Nuwe merker</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">Wysig merker</string>
   <string name="morphe_music_playlist_tags_rename">Hernoem</string>
-  <string name="morphe_music_playlist_tags_delete">Skrap</string>
+  <string name="morphe_music_playlist_tags_delete">Vee uit</string>
   <string name="morphe_music_playlist_tags_hidden">Versteek</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Verberg Cast-knoppie</string>
@@ -392,11 +392,11 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_hide_library_new_button_title">Versteek Nuwe-knoppie</string>
   <string name="morphe_music_hide_library_new_button_summary">Versteek die Nuwe-knoppie in die Biblioteek-oortjie</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
-  <string name="morphe_music_action_buttons_screen_title">Aksieknoppie</string>
-  <string name="morphe_music_action_buttons_screen_summary">Kies watter aksieknoppie onder die speler verskyn</string>
+  <string name="morphe_music_action_buttons_screen_title">Aksieknoppies</string>
+  <string name="morphe_music_action_buttons_screen_summary">Kies watter aksieknoppies onder die speler verskyn</string>
   <string name="morphe_music_hide_action_bar_title">Verberg aksiebalk</string>
   <string name="morphe_music_hide_like_dislike_button_title">Verberg Hou van- en Nie-van-knoppie</string>
-  <string name="morphe_music_hide_comments_button_title">Verberg Kemente-knoppie</string>
+  <string name="morphe_music_hide_comments_button_title">Verberg Kommentaar-knoppie</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">Verberg \'Live-kletsherhaling\'-knoppie</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -414,15 +414,15 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Kies watter komponente in die speler- en tou-vloumenus verskyn</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">Verberg 3-kolom komponent</string>
   <string name="morphe_music_hide_flyout_menu_like_dislike_title">Verberg Like- en Dislike-knoppies</string>
-  <string name="morphe_music_hide_flyout_menu_taste_match_title">Verberg \'Taste match\' spyskaart</string>
-  <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Verberg \'Voeg by \'Later luister\' snlys\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_taste_match_title">Verberg \'Smaakpassing\' spyskaart</string>
+  <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Verberg \'Voeg by \'Later luister\'-speellys\' menu</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Verberg \'Voeg by tou\' menu</string>
   <string name="morphe_music_hide_flyout_menu_captions_title">Verberg Ondertitels-kieslys</string>
-  <string name="morphe_music_hide_flyout_menu_delete_playlist_title">Versteek \'Playlist verwyder\' menu</string>
-  <string name="morphe_music_hide_flyout_menu_dismiss_queue_title">Versteek \'Waglys prys\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_delete_playlist_title">Versteek \'Vee speellys uit\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_dismiss_queue_title">Versteek \'Verwerp waglys\' menu</string>
   <string name="morphe_music_hide_flyout_menu_dont_recommend_artist_title">Versteek \'Moenie hierdie kunstenaar aanbeveel nie\' menu</string>
   <string name="morphe_music_hide_flyout_menu_download_title">Verberg Aflaai-kieslys</string>
-  <string name="morphe_music_hide_flyout_menu_edit_playlist_title">Versteek \'Playlist wysig\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_edit_playlist_title">Versteek \'Wysig speellys\' menu</string>
   <string name="morphe_music_hide_flyout_menu_go_to_album_title">Versteek \'Gaan na album\' menu</string>
   <string name="morphe_music_hide_flyout_menu_go_to_artist_title">Versteek \'Gaan na kunstenaar\' menu</string>
   <string name="morphe_music_hide_flyout_menu_go_to_episode_title">Versteek \'Gaan na episode\' menu</string>
@@ -430,22 +430,22 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_hide_flyout_menu_help_title">Verberg Help-kieslys</string>
   <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">Versteek \'Merk episode as gespeel\' menu</string>
   <string name="morphe_music_hide_flyout_menu_not_interested_title">Versteek \'Nie belangestel nie\' menu</string>
-  <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">Versteek \'Spyskaart vaspen aan spoedskakel\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">Versteek \'Vaspen aan spoedskakel\' menu</string>
   <string name="morphe_music_hide_flyout_menu_play_next_title">Versteek \'Speel volgende\' menu</string>
   <string name="morphe_music_hide_flyout_menu_quality_title">Verberg Kwaliteit-kieslys</string>
   <string name="morphe_music_hide_flyout_menu_remove_from_library_title">Versteek \'Verwyder van biblioteek\' menu</string>
-  <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">Versteek \'Verwyder van playlist\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_remove_from_playlist_title">Versteek \'Verwyder van speellys\' menu</string>
   <string name="morphe_music_hide_flyout_menu_report_title">Verberg Rapporteer-kieslys</string>
-  <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">Versteek \'Spaark episode vir later\' / \'Spaark na biblioteek\' menu</string>
-  <string name="morphe_music_hide_flyout_menu_save_to_playlist_title">Versteek \'Spaark na playlist\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_save_episode_for_later_save_to_library_title">Versteek \'Spaar episode vir later\' / \'Spaar na biblioteek\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_save_to_playlist_title">Versteek \'Stoor in speellys\' menu</string>
   <string name="morphe_music_hide_flyout_menu_share_title">Verberg Deel-kieslys</string>
-  <string name="morphe_music_hide_flyout_menu_shuffle_play_title">Versteek \'Willekeurige afspeellys\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_shuffle_play_title">Versteek \'Speel lukraak\' menu</string>
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Versteek \'Slaaptimer\' menu</string>
   <string name="morphe_music_hide_flyout_menu_start_radio_title">Versteek \'Begin radio\' menu</string>
   <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Versteek \'Statistieke vir nerds\' menu</string>
   <string name="morphe_music_hide_flyout_menu_subscribe_title">Verberg Abonneer-kieslys</string>
-  <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Versteek \'Ontkoppel van spoedskakel\' menu</string>
-  <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Versteek \'Besigtig liedjie-krediete\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Versteek \'Maak los van spoedskakel\' menu</string>
+  <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Versteek \'Bekyk liedjiekrediete\' menu</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Beginblad</string>
   <string name="morphe_change_start_page_entry_default">Verstek</string>
@@ -454,13 +454,13 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_change_start_page_entry_explore">Verken</string>
   <string name="morphe_change_start_page_entry_history">Geskiedenis</string>
   <string name="morphe_change_start_page_entry_library">Biblioteek</string>
-  <string name="morphe_change_start_page_entry_liked_music">Geleë musiek</string>
+  <string name="morphe_change_start_page_entry_liked_music">Gelike musiek</string>
   <string name="morphe_change_start_page_entry_playlists">Speellyste</string>
   <string name="morphe_change_start_page_entry_search">Soek</string>
   <string name="morphe_change_start_page_entry_subscriptions">Inskrywings</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Dwing portretoriëntasie</string>
-  <string name="morphe_music_force_portrait_orientation_summary">Hou die toep in portretoriëntasie wanneer die toestel gedraai word</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Hou die toepassing in portretoriëntasie wanneer die toestel gedraai word</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Verander miniplayer-kleur</string>
   <string name="morphe_music_change_miniplayer_color_summary">Pas die mini-speler se kleur aan die volskerm-speler se kleur aan</string>
@@ -471,7 +471,7 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_miniplayer_previous_button_title">Wys vorige knoppie in miniplayer</string>
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Aktiveer geforseerde miniplayer</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary">Verhoed dat die speler outomaties na volskerm aansit wanneer \'n nuwe liedjie begin</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Verhoed dat die speler outomaties na volskerm uitbrei wanneer \'n nuwe liedjie begin</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Aktiveer swip om mini-speler te verwyder</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Laat toe om die mini-speler te verwyder deur daarop af te swiep</string>
@@ -490,24 +490,41 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Verberg Opgraderingsknoppie</string>
   <string name="morphe_music_hide_navigation_bar_title">Versteek navigasiebalk</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Versteek navigasieknoppie-etikette</string>
+  <string name="morphe_music_navigation_bar_glass_title">Aktiveer glas-navigasiebalk</string>
+  <string name="morphe_music_navigation_bar_glass_summary">Wys die navigasiebalk as \'n drywende, afgeronde, semi-deursigtige kapsule</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Glas-opasiteit</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">Pas die deursigtigheidsvlak van die glas-navigasiebalk aan (0 is deursigtig, 100 is opaak)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Ligglas</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Kleur die glas-navigasiebalk wit in plaas van donker, vir \'n ligter en helderder glas</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Glas-navigasiebalk grootte</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Pas die hoogte, die breedte en die knoppie-spasiëring van die glas-navigasiebalk aan, met \'n voorbeeld. Knoppies wat nie in die breedte van die skerm pas nie, word versteek</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">Hoogte</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">Maksimum breedte</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">Knoppie-spasiëring</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Knoppies gewys: %1$s van %2$s</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">Tuis</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">Voorbeelde</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">Verken</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">Biblioteek</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">Nie aangemeld nie. Tik om te konfigureer</string>
   <string name="morphe_music_scrobbling_log_out">Uitlog</string>
-  <string name="morphe_music_scrobbling_logged_out_toast">Uitgevoer</string>
+  <string name="morphe_music_scrobbling_logged_out_toast">Afgemeld</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_enabled_title">Aktiveer scrobbling</string>
   <string name="morphe_music_scrobbling_now_playing_title">Dien \'Besig om te speel\'-status in</string>
   <string name="morphe_music_scrobbling_min_song_duration_title">Minimum liedjie-duur</string>
   <!-- 'scrobbled' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_min_song_duration_summary">Liedjies korter as dit sal nie gescrobble word nie</string>
+  <string name="morphe_music_scrobbling_min_song_duration_summary">Liedjies korter as hierdie tyd word nie gescrobble nie</string>
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_percent_title">Scrobble-vertraging persent</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_percent_summary">Trigger scrobble nadat hierdie persentasie van die liedjie geluister is</string>
+  <string name="morphe_music_scrobbling_delay_percent_summary">Aktiveer scrobble nadat na hierdie persentasie van die liedjie geluister is</string>
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_seconds_title">Scrobble-vertraging sekondes</string>
   <!-- 'scrobble' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_delay_seconds_summary">Trigger scrobble nadat daar vir hierdie hoeveelheid sekondes geluister is</string>
+  <string name="morphe_music_scrobbling_delay_seconds_summary">Aktiveer scrobble nadat vir hierdie aantal sekondes geluister is</string>
   <string name="morphe_music_listenbrainz_token_title">ListenBrainz Rekening</string>
   <string name="morphe_music_listenbrainz_token_summary_logged_in">Aangemeld. Tik om rekening te bestuur</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -521,31 +538,31 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_listenbrainz_token_status_invalid_unknown">onbekend</string>
   <string name="morphe_music_listenbrainz_token_status_failed">Verifikasie misluk: %s</string>
   <string name="morphe_music_listenbrainz_token_toast_cleared">Token uitgevee</string>
-  <string name="morphe_music_listenbrainz_token_toast_saved">Token gered</string>
-  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Waarskuwing: Geredde token is ongeldig!</string>
-  <string name="morphe_music_lastfm_love_on_like_title">Hou van geliefde liedjies</string>
-  <string name="morphe_music_lastfm_love_on_like_summary">Hou outomaties van liedjies op Last.fm wanneer jy daarvan op YouTube Music hou (en verwyder liefde wanneer dit nie meer gehou of nie gehou word)</string>
+  <string name="morphe_music_listenbrainz_token_toast_saved">Token gestoor</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Waarskuwing: Gestoorde token is ongeldig!</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Hou van gelike liedjies</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Hou outomaties van liedjies op Last.fm wanneer jy daarvan hou op YouTube Music (en verwyder die liefde wanneer hulle nie meer gehou word of afgekeur word nie)</string>
   <string name="morphe_music_lastfm_token_title">Last.fm Rekening</string>
   <string name="morphe_music_lastfm_token_summary_logged_in">Aangemeld as %s. Tik om rekening te bestuur</string>
   <string name="morphe_music_lastfm_token_dialog_instruction">Voer jou Last.fm geloofsbriewe in om aan te meld</string>
   <string name="morphe_music_lastfm_token_dialog_username_hint">Gebruikersnaam</string>
   <string name="morphe_music_lastfm_token_dialog_password_hint">Wagwoord</string>
-  <string name="morphe_music_lastfm_token_dialog_login">Aanmeld</string>
+  <string name="morphe_music_lastfm_token_dialog_login">Meld aan</string>
   <string name="morphe_music_lastfm_token_status_empty">Voer asseblief gebruikersnaam en wagwoord in</string>
   <string name="morphe_music_lastfm_token_status_logging_in">Besig met aanmeld…</string>
-  <string name="morphe_music_lastfm_token_status_success">Succesvol aangemeld!</string>
+  <string name="morphe_music_lastfm_token_status_success">Suksesvol aangemeld!</string>
   <string name="morphe_music_lastfm_token_status_no_session">Kon nie sessie van Last.fm kry nie</string>
   <string name="morphe_music_lastfm_token_status_failed">Aanmelding misluk: %s</string>
-  <string name="morphe_music_lastfm_token_toast_saved">Last.fm geloofsbriewe gered!</string>
+  <string name="morphe_music_lastfm_token_toast_saved">Last.fm geloofsbriewe gestoor!</string>
   <string name="morphe_settings_music_scrobbling_metadata_title">Metadata opruiming</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_title">Maak metadata skoon</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Maak outomaties algemene rommel (soos \"Official Video\", \"Remaster\", \"Live\") skoon van titels, kunstenaars en albums voordat dit gescrob word</string>
-  <string name="morphe_music_scrobbling_custom_regex_title">Custom regex opruiming</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">Pasgemaakte regex-opruiming</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Voer \'n pasgemaakte regulêre uitdrukking in om ekstra teks uit liedtitels, kunstenaars of albums te verwyder. Voorbeeld: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Ontleed kunstenaar en snit uit titel</string>
-  <string name="morphe_music_scrobbling_parse_title_summary">Trek kunstenaar- en titelnaam uit die video-titel met die \" - \"-skeier. Nuttig vir hernoorbeelde inhoud waar die kanaalnaam dalk as die kunstenaar gebruik word</string>
+  <string name="morphe_music_scrobbling_parse_title_summary">Trek kunstenaar- en titelnaam uit die video-titel met die \" - \"-skeier. Nuttig vir heropgelaaide inhoud waar die kanaalnaam dalk as die kunstenaar gebruik word</string>
   <string name="morphe_music_scrobbling_guess_album_title">Vul ontbrekende album in</string>
-  <string name="morphe_music_scrobbling_guess_album_summary">Wanneer die musiek nie \'n album bevat nie, slaan dit op Last.fm na sodat jou scrobble volledig is</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Wanneer die musiek nie \'n album insluit nie, soek dit op Last.fm sodat jou scrobble volledig is</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling sinkroniseer outomaties jou YouTube Music gebruik met jou Last.fm of ListenBrainz profiel
 
@@ -554,7 +571,7 @@ Om te verseker dat scrobbling tydens agtergrondweergawe gesinkroniseer word, ver
   <!-- 'SoundProof' must be kept untranslated -->
   <string name="morphe_music_soundproof_screen_summary">Slaan snitte van kunstenaars oor wat deur die gemeenskap as KI aangemeld is</string>
   <string name="morphe_music_soundproof_show_button_title">Wys SoundProof-knoppie</string>
-  <string name="morphe_music_soundproof_show_button_summary">Wys \'n knoppie in die boonste balk van die speler om gemeenskapsstemme vir die huidige kunstenaar te sien en te gooi</string>
+  <string name="morphe_music_soundproof_show_button_summary">Wys \'n knoppie in die boonste balk van die speler om gemeenskapsstemme vir die huidige kunstenaar te sien en uit te bring</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">Slaan KI-kunstenaars oor</string>
   <string name="morphe_music_soundproof_skip_ai_artists_summary">Slaan snitte outomaties oor waarvan die kunstenaar die AI-drempel hieronder bereik</string>
   <string name="morphe_music_soundproof_toast_on_skip_title">Wys oorslaan-kennisgewing</string>
@@ -581,7 +598,7 @@ Om te verseker dat scrobbling tydens agtergrondweergawe gesinkroniseer word, ver
   <string name="morphe_music_soundproof_sheet_ai_votes">%s KI</string>
   <string name="morphe_music_soundproof_sheet_no_votes_title">Nog geen stemme vir hierdie kunstenaar nie</string>
   <string name="morphe_music_soundproof_sheet_unavailable_title">SoundProof-databasis is nog nie beskikbaar nie</string>
-  <string name="morphe_music_soundproof_sheet_unavailable_summary">Dit word in die agtergrond afgelaai. Geen snit word oorslaan totdat dit beskikbaar is nie.</string>
+  <string name="morphe_music_soundproof_sheet_unavailable_summary">Dit word in die agtergrond afgelaai. Geen snit word oorgeslaan totdat dit beskikbaar is nie.</string>
   <!-- 'SoundProof' must be kept untranslated -->
   <string name="morphe_music_soundproof_sheet_source">Gemeenskapstemme vanaf die SoundProof-databasis</string>
   <string name="morphe_music_soundproof_sheet_vote_human">Mens</string>
@@ -600,24 +617,24 @@ Die databasis is gelisensieer onder die ODC Open Database License (ODbL). Inskry
   <string name="morphe_music_lyrics_keep_screen_on_summary">Voorkom dat die skerm afskakel terwyl die lirieke-paneel oop is</string>
   <string name="morphe_music_lyrics_section_service_title">Lirieke-diens</string>
   <string name="morphe_music_lyrics_section_display_title">Vertoon</string>
-  <string name="morphe_music_lyrics_section_sync_title">Sinchronisasie</string>
+  <string name="morphe_music_lyrics_section_sync_title">Sinkronisasie</string>
   <string name="morphe_music_lyrics_section_panel_title">Paneel</string>
   <string name="morphe_music_lyrics_source_all_disabled">Alle verskaffers gedeaktiveer - ingeboude lirieke en ingeslote lirieke</string>
   <string name="morphe_music_lyrics_source_reset_title">Verskaffervolgorde terugstel?</string>
   <string name="morphe_music_lyrics_source_reset_message">Herstel verskaffers na die standaardprioriteitsorde</string>
   <string name="morphe_music_lyrics_rime_dict_title">Rime Woordlys</string>
-  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Woordlys benodig ook UniDict: in die Afgeskakelde Woordeboekverskaffer, merk \"Chinese en Kantonese karakters (UniDict)\" en laat dit eers klaar aflaai. Sonder dit lewer 'n lys wat karakters lees geen lees op nie.
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime Woordlys benodig ook UniDict: in die Vanlyn-woordeboekverskaffer, merk \"Chinees en Kantonees karakters (UniDict)\" en laat dit eers klaar aflaai. Sonder dit gee 'n lys wat karakters lees, geen lesing terug nie.
 
-Merk die lyste wat Rime Woordlys moet lees, tik dan Stoor om hulle af te laai. 'n Lys wat jy bygevoeg het, word verwyder wanneer jy dit ontmerk.
+Merk die lyste wat Rime Woordlys moet lees, tik dan Stoor om hulle af te laai. 'n Lys wat jy bygevoeg het, word verwyder wanneer jy dit onvink.
 
-Elke lys is jou eie woord-na-lees tabel, 'n .dict.yaml met lyne soos:
+Elke lys is jou eie woord-na-lesing-tabel, 'n .dict.yaml met lyne soos:
 字 ham
 典 din2
-Die eerste kolom is die woord, die tweede sy lees; ekstra kolomme en lyne sonder 'n tab word geignoreer."</string>
-  <string name="morphe_music_lyrics_rime_dict_no_table">Geen Rime-woordlys is vir die taal hierbo aangelê nie. Tik hierdie naam om een aan te vink, of kies \'n taal wat \'n lys het</string>
+Die eerste kolom is die woord, die tweede sy lesing; ekstra kolomme en lyne sonder 'n tab word geïgnoreer."</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">Geen Rime-woordlys is vir die taal hierbo aangevink nie. Tik hierdie naam om een aan te vink, of kies \'n taal wat \'n lys het</string>
   <string name="morphe_music_lyrics_rime_dict_add">Voeg by</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Voeg \'n Rime-woordlys by</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">\'n .dict.yaml-lêer, of \'n zip wat een bevat, met lyne soos 字 ham en 典 din2. Die lys word opgespoor wanneer jy dit merk en tik Stoor, en sy lisensie is van jou om te kontroleer</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">\'n .dict.yaml-lêer, of \'n zip wat een bevat, met lyne soos 字 ham en 典 din2. Die lys word afgelaai wanneer jy dit merk en op Stoor tik, en dit is aan jou om die lisensie na te gaan</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Taalkode</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Twee of drie letters, soos hak of wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Naam</string>
@@ -626,7 +643,7 @@ Die eerste kolom is die woord, die tweede sy lees; ekstra kolomme en lyne sonder
   <string name="morphe_music_lyrics_rime_dict_field_url_hint">https:// adres van die .dict.yaml of sy zip</string>
   <string name="morphe_music_lyrics_rime_dict_field_char_source">Karakters nie in \'n woord nie</string>
   <string name="morphe_music_lyrics_rime_char_source_auto">Outomaties</string>
-  <string name="morphe_music_lyrics_rime_char_source_cantonese">Kantonese karakters</string>
+  <string name="morphe_music_lyrics_rime_char_source_cantonese">Kantonees karakters</string>
   <string name="morphe_music_lyrics_rime_char_source_pinyin">Mandaryn-karakters</string>
   <string name="morphe_music_lyrics_rime_char_source_none">Geen karakterlesing nie</string>
   <string name="morphe_music_lyrics_rime_dict_incomplete">Vul die kode, naam en adres in</string>
@@ -635,14 +652,14 @@ Die eerste kolom is die woord, die tweede sy lees; ekstra kolomme en lyne sonder
   <string name="morphe_music_lyrics_rime_dict_bad_field">Die naam en adres kan nie \'n vertikale staaf bevat nie</string>
   <string name="morphe_music_lyrics_rime_dict_duplicate">%s het reeds \'n woordtabel</string>
   <string name="morphe_music_lyrics_rime_dict_reserved">%s word deur die ingeboude romaniseerder gelees en kan nie \'n woordlys aanvaar nie</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved_row">Nie gebruik nie: hierdie taal het reeds sy eie lesing, so onvink dit om dit te verwyder</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved_row">Nie gebruik nie: hierdie taal het reeds sy eie lesing, so ontmerk dit om dit te verwyder</string>
   <string name="morphe_music_lyrics_rime_dict_added">%s bygevoeg - merk dit en tik Stoor om dit af te laai</string>
   <string name="morphe_music_lyrics_rime_dict_ready">Woordlyse gereed</string>
   <string name="morphe_music_lyrics_rime_dict_ready_toast">Woordlyste gereed (%s inskrywings)</string>
   <string name="morphe_music_lyrics_rime_dict_building">Lees woordlys: %s%%</string>
-  <string name="morphe_music_lyrics_rime_dict_failed">Aflewering van woordlys misluk - tik Stoor weer om te probeer</string>
-  <string name="morphe_music_lyrics_clear_cache_title">Skoon gestoorde lirieke</string>
-  <string name="morphe_music_lyrics_clear_cache_summary">Skrap die %s MB lirieke wat op hierdie toestel gestoor is</string>
+  <string name="morphe_music_lyrics_rime_dict_failed">Aflaai van woordlys misluk - tik Stoor weer om te probeer</string>
+  <string name="morphe_music_lyrics_clear_cache_title">Maak gestoorde lirieke skoon</string>
+  <string name="morphe_music_lyrics_clear_cache_summary">Vee die %s MB lirieke uit wat op hierdie toestel gestoor is</string>
   <string name="morphe_music_lyrics_clear_cache_done">%s MB skoongemaak</string>
   <string name="morphe_music_token_dialog_get_token">Kry token</string>
   <string name="morphe_music_apple_music_token_title">Apple Music-mediagebruikerstoken</string>
@@ -654,7 +671,7 @@ Stappe:
 3. Kopieer die waarde van \"media-user-token\""</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token gestoor</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token verwyder</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: ongeldige media-gebruikertoken - neem asseblief kennis en probeer weer</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: ongeldige media-gebruikertoken - kontroleer asseblief en probeer weer</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Plak die sp_dc-koekie van Spotify.
 
@@ -664,7 +681,7 @@ Stappe:
 3. Kopieer die waarde van \"sp_dc\""</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc gestoor</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc verwyder</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Spotify: ongeldige sp_dc - neem asseblief kennis en probeer weer</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: ongeldige sp_dc - kontroleer asseblief en probeer weer</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music-token is opsioneel. Sonder dit sal Lyrically as terugval gebruik word.</string>
   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Plak die arl-koekie van Deezer.
@@ -674,15 +691,15 @@ Stappe:
 2. Maak DevTools oop → Toepassing → Koekies → deezer.com
 3. Kopieer die waarde van \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl gestoor</string>
-  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: ongeldige arl, probeer asseblief weer</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ongeldige arl - neem asseblief kennis en probeer weer</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl verwyder</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ongeldige arl - kontroleer asseblief en probeer weer</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">Voeg slegs \'n token by om jou eie rekening te gebruik. Dit moet van die Musixmatch Android-toepassing kom: tokens wat van musixmatch.com gekopieer is, behoort aan die uitgefaseerde lessenaarkliënt en die API weier hulle.</string>
   <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch werk sonder \'n token, so hierdie veld kan leeg bly.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">gebruikerstoken</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: gebruikerstoken gestoor</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: gebruikerstoken verwyder</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: ongeldige gebruikertoken - neem asseblief kennis en probeer weer</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: ongeldige gebruikertoken - kontroleer asseblief en probeer weer</string>
   <string name="morphe_music_youtube_cookies_title">YouTube-koekies</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Plak jou YouTube-koekies om onderskrifte en tydteks van YouTube af te haal.
 
@@ -694,61 +711,62 @@ Stappe:
 Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: koekies gestoor</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: koekies skoongemaak</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: ongeldige koekies - neem asseblief kennis en probeer weer</string>
-  <string name="morphe_music_lyrics_tap_to_seek_title">Klik en hou ’n lyn vas</string>
-  <string name="morphe_music_lyrics_tap_to_seek_summary">Tik \'n lyn om na daardie oomblik in die liedjie te spring, hou dit lank ingedruk om die woord onder jou vinger te kopieer, of die hele lyn as die druk nie op \'n woord is nie. Afname skakel albei gebare af</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: ongeldige koekies - kontroleer asseblief en probeer weer</string>
+  <string name="morphe_music_lyrics_tap_to_seek_title">Tik en hou \'n lyn vas</string>
+  <string name="morphe_music_lyrics_tap_to_seek_summary">Tik \'n lyn om na daardie oomblik in die liedjie te spring, hou dit lank ingedruk om die woord onder jou vinger te kopieer, of die hele lyn as die druk nie op \'n woord is nie. Af skakel albei gebare af</string>
   <string name="morphe_music_lyrics_show_section_title">Wys afdeling-etikette</string>
   <string name="morphe_music_lyrics_show_section_summary">Etiketteer elke nuwe afdeling van die lirieke met \'n klein etiket, soos Vers of Refrein</string>
-  <string name="morphe_music_lyrics_show_copy_button_title">Wys Kopièer knoppie</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">Klik om oorspronklike lirieke as plat teks te kopieer; hou ingedruk om ruwe lirieke-bronlêer na Aflaais te stuur</string>
-  <string name="morphe_music_lyrics_show_translate_button_title">Wys Vertaal knoppie</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Tik om vertaling te skakel; lang druk vir slegs vertaling. Gebruik die aktiveringsvertaalverskaffers in hul lysvolgorde</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">Vertoon Romaniseer of Translitereer-knoppie</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Tik om romanisering of transliterasie te skakel; langdruk vir slegs romanisering of transliterasie. Gebruik die aktiveringsromaniseringverskaffers in hul lysvolgorde</string>
+  <string name="morphe_music_lyrics_show_copy_button_title">Wys Kopieer-knoppie</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Tik om oorspronklike lirieke as gewone teks te kopieer; hou lank gedruk om die rou lirieke-bronlêer en \'n omgesette TTML-lêer na Afrigoudings te stoor</string>
+  <string name="morphe_music_lyrics_show_translate_button_title">Wys Vertaal-knoppie</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Tik om vertaling te skakel; lang druk vir slegs vertaling. Gebruik die geaktiveerde vertaalverskaffers in hul lysvolgorde</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Wys Romaniseer- of Translitereer-knoppie</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Tik om romanisering of transliterasie te skakel; langdruk vir slegs romanisering of transliterasie. Gebruik die geaktiveerde romaniseringverskaffers in hul lysvolgorde</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Aktiveer transliterasie</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Laat nie-Latynse lesings toe vanaf die liriekbron; wanneer af, hou slegs Latynse letters, geaksenteerde letters en toonsiffers</string>
-  <string name="morphe_music_lyrics_local_romanization_summary">Lees elke woord van \'n tydsyncro-liriek (woordsinkronisasie aan); Koreaans benodig geen aflaai nie; veertien skrifte deel een CLDR-aflaai; Han-karakters word deur Rime-woordlys gelees wanneer sy woordestabel die taal dek</string>
+  <string name="morphe_music_lyrics_local_romanization_summary">Lees elke woord van \'n gesinchroniseerde liriek (woordsinkronisasie aan); Koreaans benodig geen aflaai nie; veertien skrifte deel een CLDR-aflaai; Han-karakters word deur Rime-woordlys gelees wanneer sy woordetabel die taal dek</string>
   <string name="morphe_music_lyrics_local_romanization_download_started">Aflaai van lesingswoordeboeke…</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_ready">Leesmetodes gereed (%s inskrywings)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_ready">Lesings gereed (%s inskrywings)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_failed">Laai misluk - skakel dit af en aan weer om te herprobeer</string>
-  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Oorlogswoordeboek</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japannese (SudachiDict, ~75 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Chinese en Kantonese karakters (UniDict, ~8 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Chineesse woorde (pinyin-pro, ~17 MB)</string>
-  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grieks, Slawiese Cyrillies (insluitend Russies, Oekraïens, Bulgaars, Serwies, Wit-Russies, Masedonies), Georgies, Armeens, Hebreeus, Arabies, Amharaties en Sirië transliterasie (CLDR, ~0.5 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_download_confirm_title">Vanlyn-woordeboek</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_japanese">Japannees (SudachiDict, ~75 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_unidict">Chinees en Kantonees karakters (UniDict, ~8 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_chinese">Chinees-woorde (pinyin-pro, ~17 MB)</string>
+  <string name="morphe_music_lyrics_local_romanization_dict_cldr">Grieks, Slawiese Cyrillies (insluitend Russies, Oekraïens, Bulgaars, Serwies, Wit-Russies, Masedonies), Georgies, Armeens, Hebreeus, Arabies, Amharaties en Siries transliterasie (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">Lees %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Wys verfris-knoppie</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Klik om na die volgende liriekkandidaat te skakel; hou ingedruk om lirieke deur titel en kunstenaar soek</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Tik om na die volgende liriekkandidaat te skakel; hou ingedruk om lirieke volgens titel en kunstenaar te soek</string>
   <string name="morphe_music_lyrics_search_dialog_title">Soek lirieke</string>
   <string name="morphe_music_lyrics_search_title_hint">Liedtitel</string>
   <string name="morphe_music_lyrics_search_artist_hint">Kunstenaar</string>
   <string name="morphe_music_lyrics_search_empty">Voer \'n liedtitel en \'n kunstenaar in</string>
   <string name="morphe_music_lyrics_search_no_providers">Geen van die geaktiveerde verskaffers kan na ander liedjies soek nie</string>
   <string name="morphe_music_lyrics_saved">Gestoor</string>
-  <string name="morphe_music_lyrics_word_sync_title">Raak aan ▲/▼ om die prioriteitsorde te stel, en die blokkie om elke verskaffer te aktiveer of deaktiveer.</string>
-  <string name="morphe_music_lyrics_word_sync_summary">Alle verskaffers gedeaktiveer — ingeboude lirieke en ingebedde lirieke.</string>
+  <string name="morphe_music_lyrics_written_by">Geskryf deur: %s</string>
+  <string name="morphe_music_lyrics_word_sync_title">Beklemtoon gesinchroniseerde woorde of lettergrepe</string>
+  <string name="morphe_music_lyrics_word_sync_summary">Gee voorkeur aan woord-vir-woord-lirieke wanneer beskikbaar. Wanneer lirieke woordtydsberekening bevat, beklemtoon elke woord of lettergreep in tyd met die musiek</string>
   <string name="morphe_music_lyrics_line_scale_title">Krimp onaktiewe lyne</string>
   <string name="morphe_music_lyrics_line_scale_summary">Trek elke lyn wat tans nie gesing word nie effens kleiner, bo-op die vervaging daarvan</string>
   <string name="morphe_music_lyrics_split_background_title">Vertoon agtergrondvokale afsonderlik</string>
   <string name="morphe_music_lyrics_split_background_summary">Skei agtergrondvokale en harmonie van die hooflyn. Verplaas \'n agtergrondvokaal wat in hakies geskryf is, soos \"(Oh) ek wil hê dat jy\", uit die gesong lyn na \'n eie doflyn</string>
-  <string name="morphe_music_lyrics_hide_played_title">Verskafferorde terugstel?</string>
+  <string name="morphe_music_lyrics_hide_played_title">Versteek gespeelde lirieke</string>
   <string name="morphe_music_lyrics_hide_played_summary">Versteek liriekreëls bo die reël wat tans speel</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">Versteek ongespeelde lirieke</string>
-  <string name="morphe_music_lyrics_hide_unplayed_summary">Herstel verskaffers na die standaard prioriteitsorde.</string>
-  <string name="morphe_music_lyrics_dynamic_background_title">Dinamiiese agtergrond</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">Versteek liriekreëls onder die reël wat tans speel</string>
+  <string name="morphe_music_lyrics_dynamic_background_title">Dinamiese agtergrond</string>
   <string name="morphe_music_lyrics_dynamic_background_summary">Wys \'n vervaagde agtergrond wat uit die albumkunst gemaak is agter die lirieke</string>
-  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animeer dinamiiese agtergrond</string>
+  <string name="morphe_music_lyrics_dynamic_background_animated_title">Animeer dinamiese agtergrond</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">Beweeg die agtergrond terwyl dit speel, en laat dit pols saam met die musiek as YouTube Music die mikrofoontoestemming het. Skakel af vir \'n stil agtergrond wat minder battery gebruik</string>
   <string name="morphe_music_lyrics_mediasession_title">Wys MediaSession-lirieke op die sluitskerm</string>
-  <string name="morphe_music_lyrics_mediasession_summary">Wys die huidige lyn op die sluitingsskerm, Android Auto en Bluetooth. Benodig Android 11 of nuwer</string>
-  <string name="morphe_music_lyrics_miniplayer_title">Wys romaniseer-knoppie</string>
+  <string name="morphe_music_lyrics_mediasession_summary">Wys die huidige reël op die sluitskerm, Android Auto en Bluetooth</string>
+  <string name="morphe_music_lyrics_miniplayer_title">Wys lirieke in miniplayer</string>
   <string name="morphe_music_lyrics_miniplayer_summary">Wys die huidige lyn in die minispeler, met die snit na die onderskrif verskuif</string>
   <string name="morphe_music_lyrics_mini_track_format_title">Liedtitel/kunstenaar-formaat</string>
   <string name="morphe_music_lyrics_mini_track_format_summary">Formaat van die snit wat saam met die lirieke in die geminimaliseerde speler en MediaSession getoon word. {t} is die titel, {a} is die kunstenaar en {v} is die weergawe, soos Akoesties, wanneer die liriekebron een verskaf. Teks tussen twee dubbelpunte word slegs getoon wanneer elke veranderlike daarin \'n waarde het; skryf \\: vir \'n gewone dubbelpunt. Elke lyn word beurtelings getoon en beweeg aan wanneer die lirieke verander</string>
   <string name="morphe_music_lyrics_mini_encapsulation_title">Lirieke-lynformaat</string>
   <string name="morphe_music_lyrics_mini_encapsulation_summary">Formaat van die lirieke-lyn in die geminimaliseerde speler en MediaSession. {lrc} is die lyn en {n} is hoeveel keer agtereenvolgens dit gesing word. Teks tussen dubbelpunte word slegs getoon wanneer die lyn herhaal. Gebruik \\: vir \'n dubbelpunt</string>
   <string name="morphe_music_lyrics_mini_encapsulation_invalid">Die formaat moet {lrc} bevat</string>
-  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Kunstenaar-lyn sjabloon en animasie-tysberekening</string>
+  <string name="morphe_music_lyrics_mini_track_format_menu_summary">Kunstenaar-lyn sjabloon en animasie-tydsberekening</string>
   <string name="morphe_music_lyrics_mini_artist_min_label">Minimum skermtyd (ms)</string>
   <string name="morphe_music_lyrics_mini_artist_max_label">Maksimum skermtyd (ms)</string>
   <string name="morphe_music_lyrics_mini_artist_timing_explanation">Slegs vir multilyn-animasies. Hou elke raam vir ten minste die minimum tyd. By die maksimum, skuif die kunstenaarlyn selfs wanneer die lirieke dieselfde bly.</string>
@@ -758,68 +776,73 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_mini_line_limits_lyrics">"Lirieke lynbeperking
 Verdeel langer lirieke in gebalanseerde helftes. 0 skakel verdeling af."</string>
   <string name="morphe_music_lyrics_mini_line_limits_artist">"Kunstenaar lynlimiet
-Verdeel die bevolkte snarlestroom in sikluse frames. 0 skakel verdeeling uit."</string>
+Verdeel die ingevulde snitformaat in wisselende rame. 0 skakel verdeling uit."</string>
   <string name="morphe_music_lyrics_mini_line_limits_weight">"Volbreedte-karaktergewig
-Daar word op beide limiete toegepas. By 1.75 tel vier volbreedte-karakters as 7."</string>
+Word op beide limiete toegepas. By 1.75 tel vier volbreedte-karakters as 7."</string>
   <string name="morphe_music_lyrics_mini_line_limits_invalid">Voer heelgetal-limiete van 0 tot 10000 en \'n karaktergewig groter as 0 in</string>
   <string name="morphe_music_lyrics_mini_instrumental_title">Instrumentele onderbreking</string>
   <string name="morphe_music_lyrics_mini_instrumental_summary">Word in die Mini-speler en MediaSession tydens \'n instrumentele onderbreking vertoon. Elke lyn is een animasie-frame. {t} is die titel, {a} is die kunstenaar en {lrc} is die laaste lirieke-lyn</string>
-  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Mini-speler en MediaSession tydversaaing</string>
-  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Verschuif wanneer die volgende reël in die miniplayer en MediaSession getoon word. Gebruik \'n negatiewe waarde as reëls laat verskyn, byvoorbeeld op die slotskerm</string>
-  <string name="morphe_settings_music_lyrics_metadata_title">Lirieke-bron?</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_title">Mini-speler en MediaSession tydverskuiwing</string>
+  <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Verskuif wanneer die volgende reël in die mini-speler en MediaSession getoon word. Gebruik \'n negatiewe waarde as reëls laat verskyn, byvoorbeeld op die sluitskerm</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">Filters</string>
   <string name="morphe_music_lyrics_custom_regex_title">Metadata-regex</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Reguliere uitdrukking word toegepas op titels, kunstenaars en albums voordat lirieke opgesoek word en wanneer daar beoordeel word of twee titels ooreenstem. Los leeg om albei te deaktiveer. Die verstek verwyder algemene rommel soos \"Official Video\", \"Remaster\", \"【插曲】\" en \"- Topic\".</string>
   <string name="morphe_music_lyrics_text_filter_title">Lirieke-filter-regex</string>
-  <string name="morphe_music_lyrics_text_filter_summary">Vertaal lirieke met verskaffervertalings of Google Translate</string>
-  <string name="morphe_music_lyrics_credit_line_regex_title">Wys romaniseer-knoppie</string>
+  <string name="morphe_music_lyrics_text_filter_summary">Reguliere uitdrukking wat slegs op die oorspronklike lirieketeks toegepas word (nie op vertalings of romanisasies nie). Laat leeg om te deaktiveer</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">Inligtingreël-merkers</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">As lirieke verkeerdelik na onder gefiltreer word, pas dit aan of maak dit skoon. Kommageskeide merkers: reëls met \'n merker gevolg deur \'n dubbelpunt word onderaan as krediete gewys. Laat leeg om te deaktiveer</string>
   <string name="morphe_music_lyrics_force_capitalize_title">Maak eerste letter hoofletter</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">Maak die eerste letter van elke liriekreël \'n hoofletter</string>
-  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Verwyder leuensteken aan die einde</string>
+  <string name="morphe_music_lyrics_strip_trailing_punctuation_title">Verwyder leestekens aan die einde</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">Verwyder punte, kommas, dubbelpunte en puntkommas aan die einde van liriekreëls. Vraagtekens, uitroeptekens, ellipses, aanhalingstekens en hakies word behou</string>
-  <string name="morphe_music_lyrics_text_size_title">Teks grootte</string>
+  <string name="morphe_music_lyrics_han_form_title">Chinese vorm-omskakeling</string>
+  <string name="morphe_music_lyrics_han_form_summary">Wanneer dit aan is, volg dit jou vertalingsdoeltaal om lirieke tussen Vereenvoudigde en Tradisionele skrif om te skakel</string>
+  <string name="morphe_music_lyrics_text_size_title">Teksgrootte</string>
   <string name="morphe_music_lyrics_text_size_summary">Grootte van die lirieke teks</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globale tydverskuiwing</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Gesinchroniseerde lirieke volg die terugspeel. As hulle wegdryf, pas die tydsverskuiwing aan. Skuif gesinchroniseerde lirieke vorentoe of agtertoe. Gebruik \'n positiewe waarde as die lirieke voor die lied loop</string>
   <string name="morphe_music_lyrics_sb_matching_title">Gebruik SponsorBlock-segmente vir die lirieke-tydverskuiwing</string>
-  <string name="morphe_music_lyrics_sb_matching_summary">Pas sonder die segmente wat SponsorBlock oorslaan en skuif lirieke na die vrygestelde audio. Af ignoreer SponsorBlock heeltemal</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Stem ooreen sonder die segmente wat SponsorBlock oorslaan en skuif lirieke na die vrygestelde audio. Af ignoreer SponsorBlock heeltemal</string>
   <string name="morphe_music_lyrics_sb_no_video">Hierdie snit het geen video-id om in te dien nie</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Bron: %s</string>
-  <string name="morphe_music_lyrics_contribute_credit">Druk lank op die kopieerknoop om hierdie LRC te stoor; as jy tydstippe kan fynafstem en dit met die gemeenskapsverskaffers kan deel, sou ons baie dankbaar wees</string>
-  <string name="morphe_music_lyrics_translated_by_google">Gereedskapsafdelings?</string>
-  <string name="morphe_music_lyrics_romanized_by_google">Lirieke-bron?</string>
+  <string name="morphe_music_lyrics_contribute_credit">Druk lank op die kopieerknoppie om hierdie LRC te stoor; as jy tydstippe kan fynafstem en dit met die gemeenskapsverskaffers kan deel, sou ons baie dankbaar wees</string>
+  <string name="morphe_music_lyrics_translated_by_google">Vertaal deur Google</string>
+  <string name="morphe_music_lyrics_romanized_by_google">Geromaniseer deur Google</string>
   <string name="morphe_music_lyrics_translated_by_ai">Vertaal deur %s</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Geromaniseer deur %s</string>
-  <string name="morphe_music_lyrics_romanized_by_local">Gromaniseer deur %s</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Romaniseer deur Rime (%s)</string>
+  <string name="morphe_music_lyrics_romanized_by_local">Geromaniseer deur %s</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (met %2$s)</string>
+  <string name="morphe_music_lyrics_romanized_by_rime">Geromaniseer deur Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Vertaal</string>
   <string name="morphe_music_lyrics_translation_language_title">Vertalingstaal</string>
   <string name="morphe_music_lyrics_romanize_language_title">Romanisering of transliterasietaal</string>
-  <string name="morphe_music_lyrics_translation_target_language">"Vertaling-teiken taal:
+  <string name="morphe_music_lyrics_translation_target_language">"Teikentaal vir vertaling:
 %s"</string>
-  <string name="morphe_music_lyrics_romanization_target_language">"Romanisering of transliterering teiken taal:
+  <string name="morphe_music_lyrics_romanization_target_language">"Teikentaal vir romanisering of transliterasie:
 %s"</string>
   <string name="morphe_music_lyrics_translating">Besig met vertaling…</string>
   <string name="morphe_music_lyrics_translate_failed">Kon nie die lirieke vertaal nie</string>
-  <string name="morphe_music_lyrics_romanize_hide">Lirieke-bron?</string>
+  <string name="morphe_music_lyrics_romanize_hide">Geromaniseer</string>
   <string name="morphe_romanize_language_DEFAULT">Outomaties</string>
   <string name="morphe_music_lyrics_romanizing">Romaniseer tans…</string>
-  <string name="morphe_music_lyrics_romanize_failed">Gereedskapsafdelings?</string>
-  <string name="morphe_music_lyrics_translate_only">Slegs vertaal.</string>
+  <string name="morphe_music_lyrics_romanize_failed">Kon nie die lirieke romaniseer nie</string>
+  <string name="morphe_music_lyrics_romanize_language_none">Geen</string>
+  <string name="morphe_music_lyrics_ruby_language_title">Ruby-teiken</string>
+  <string name="morphe_music_lyrics_translate_only">Slegs vertaal</string>
   <string name="morphe_music_lyrics_romanize_only">Slegs geromaniseer</string>
   <string name="morphe_music_lyrics_dual_only">Dubbele modus</string>
   <string name="morphe_music_lyrics_copied">Na knipbord gekopieer</string>
   <string name="morphe_music_lyrics_refreshing">Besig om te verfris</string>
-  <string name="morphe_music_lyrics_refreshed">Lirieke-bron?</string>
+  <string name="morphe_music_lyrics_refreshed">Verfris</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API-sleutel</string>
   <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC transkribeer of tyd-alineeër die lirieke vir die huidige snit</string>
-  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC-sleutel gestoor. Gebruik die alynknoppie in die liedsoekdialoog, of die paneelaansporing wanneer \'n snit geen liedtekste het nie</string>
+  <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRC-sleutel gestoor. Gebruik die belyningsknoppie in die liriekesoekdialoog, of die paneelaanwysing wanneer \'n snit geen lirieke het nie</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC API-sleutel gestoor</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC het daardie sleutel nie aanvaar nie</string>
-  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API-sleutel gewis</string>
-  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC gee tyd aan liedtekste wat niks het nie, of transkribeer dit van die snit, teen die koste van krediete. Met \'n sleutel ingestel, bied snitte sonder liedtekste transkripsie en die soekdialoog kry \'n alynknoppie</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">QuickLRC API-sleutel verwyder</string>
+  <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC gee tyd aan lirieke wat dit nie het nie, of transkribeer dit van die snit, teen die koste van krediete. Met \'n sleutel ingestel, bied snitte sonder lirieke transkripsie en kry die soekdialoog \'n belyningsknoppie</string>
   <string name="morphe_music_lyrics_transcribe_align">Vra QuickLRC-belyning aan</string>
   <string name="morphe_music_lyrics_transcribe_aligning">Belyn tans</string>
   <string name="morphe_music_lyrics_transcribe_apply_align">Pas belyning toe</string>
@@ -827,63 +850,57 @@ Daar word op beide limiete toegepas. By 1.75 tel vier volbreedte-karakters as 7.
   <string name="morphe_music_lyrics_transcribe_working">Transkribeer tans</string>
   <string name="morphe_music_lyrics_transcribe_cancelled">Transkripsie gekanselleer</string>
   <string name="morphe_music_lyrics_transcribe_local_unsupported">Slegs snitte wat van YouTube gespeel word, kan getranskribeer word</string>
-  <string name="morphe_music_lyrics_transcribe_no_text">Geen liedtekste om te alyn nie - transkribeer eerder</string>
+  <string name="morphe_music_lyrics_transcribe_no_text">Geen lirieke om te belyn nie - transkribeer eerder</string>
   <string name="morphe_music_lyrics_transcribe_failed">QuickLRC kon nie hierdie snit verwerk nie</string>
-  <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC-krediete is vir hierdie snit gebruik</string>
-  <string name="morphe_music_lyrics_about_summary">"Liriek word ooreenkomstig titel en kunstenaar gekoppel, ongewone metagegevens mag niks of die verkeerde weergawe vind. Gebruik vernuwingsknoppie om tussen weergawes te skakel. Verskaffers gemerk * vereis 'n token. Nie al aktief verskaffers word altyd in jou volgorde aangevra nie, maar reageer gebaseer op hul spoed.
+  <string name="morphe_music_lyrics_transcribe_out_of_credits">QuickLRC-krediete is opgebruik vir hierdie snit</string>
+  <string name="morphe_music_lyrics_about_summary">"Liriek word ooreenkomstig titel en kunstenaar gekoppel, ongewone metagegevens mag niks of die verkeerde weergawe vind. Gebruik die verfris-knoppie om tussen weergawes te skakel. Verskaffers gemerk * vereis 'n token. Nie al die geaktiveerde verskaffers word altyd in jou volgorde aangevra nie, maar reageer gebaseer op hul spoed.
 
-Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord of goedgekeur is nie. Elke een word soos dit is gebruik: die liriek, beskikbaarheid en lisensiëring bly by daardie diensverskaffers en hulle licentiegevers, en die gebruik daarvan kan onderhewig wees aan hul diensvoorwaardes. Wat na 'n geaktiveerde diens gestuur word, is slegs die soektog wat jy versoek het - die titel, die kunstenaar, en, waar diensverskaffer dit nodig het, die video-ID. Die opsionele AI-eindpunt en QuickLRC-transkripsie loop slegs nadat jy dit gekonfigureer het, en ontvang die liriekteks of die snit se video-URL."</string>
-  <string name="morphe_music_lyrics_source_advice_summary">Aktiveer slegs die verskaffers wat u gebruik, of behou die verstek – konstante versoekings kan klein gemeenskapsliedjie-bladsye oorweldig</string>
-  <string name="morphe_music_lyrics_hide_info_title">Lirieke-bron?</string>
+Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord of goedgekeur is nie. Elke een word soos dit is gebruik: die liriek, beskikbaarheid en lisensiëring bly by daardie diensverskaffers en hulle licentiegewers, en die gebruik daarvan kan onderhewig wees aan hul diensvoorwaardes. Wat na 'n geaktiveerde diens gestuur word, is slegs die soektog wat jy versoek het - die titel, die kunstenaar, en, waar daardie diens dit nodig het, die video-ID. Die opsionele AI-eindpunt en QuickLRC-transkripsie loop slegs nadat jy dit gekonfigureer het, en ontvang die liriekteks of die snit se video-URL."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Aktiveer slegs die verskaffers wat jy gebruik, of behou die verstek – konstante versoekings kan klein gemeenskapsliedjie-bladsye oorweldig</string>
+  <string name="morphe_music_lyrics_hide_info_title">Versteek kredietreël</string>
   <string name="morphe_music_lyrics_hide_info_summary">Versteek die kredietreël onder die lirieke</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_title">Lirieke-bron?</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">Ruil die vertoningsvolgorde van vertaling en romanisering onder die lirieke om</string>
-  <string name="morphe_music_lyrics_force_center_title">Altyd lirieke sentreer</string>
-  <string name="morphe_music_lyrics_force_center_summary">AAN plaas elke lyn in die middel en ignoreer die bronuitligting, insluitend duet-sye; UIT hou die uitligging wat die lirieke versoek</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">Ruil vertaling en romanisering</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Skuif die vertaling bo die lirieke; die leeswyse en romanisering bly onder</string>
+  <string name="morphe_music_lyrics_force_center_title">Sentreer lirieke altyd</string>
+  <string name="morphe_music_lyrics_force_center_summary">AAN plaas elke lyn in die middel en ignoreer die bronbelyning, insluitend duet-sye; UIT hou die belyning wat die lirieke versoek</string>
   <string name="morphe_music_lyrics_providers_keep_one">Ten minste een verskaffer moet aan bly</string>
   <string name="morphe_music_lyrics_translation_provider_title">Vertaling</string>
   <string name="morphe_music_lyrics_romanization_provider_title">Romanisering of transliterasie</string>
-  <string name="morphe_music_lyrics_romanization_provider_local">Afvalwoordeboek</string>
+  <string name="morphe_music_lyrics_romanization_provider_local">Vanlyn-woordeboek</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime-Woordlys</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">Ruby</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">Vanlyn-woordeboek</string>
-  <string name="morphe_music_lyrics_ruby_style_title">Ruby-skrif</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">Hiragana (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">Katakana (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">Wys Ruby-knoppie</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">Tik om ruby-leesings bo lirieke te wissel; hou lank gedruk om tussen hiragana en katakana te wissel. Gebruik die geaktiveerde ruby-verskaffers in hul gelyste volgorde</string>
-  <string name="morphe_music_lyrics_ruby_generating">Genereer ruby…</string>
-  <string name="morphe_music_lyrics_use_ai_section_title">Detecteer afdelings met AI</string>
-  <string name="morphe_music_lyrics_use_ai_section_summary">Slegs gebruik wanneer die verskaffer geen sektorlabelle soos Refrein of Strofe stuur nie, wat jou OpenAI-kompatibele model dan detecteer. Die redigering van die ry open ook sy spoortjie</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU-transliterator</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Bespeur afdelings met AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Slegs gebruik wanneer die verskaffer geen afdelingsetikette soos Refrein of Strofe stuur nie, wat jou OpenAI-kompatibele model dan opspoor. Die wysiging van die ry open ook die aanwysing daarvan</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt-URL (bv. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_title">Aanwysingtemplaat</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Plekhouers: {task}, {language}, {title}, {artist}, {count}, {lines}. Onbekendes word gelaat soos getik</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_saved">Aanwysing gestoor</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Aansporing gestoor, maar die AI-eindpunt is nog nie bruikbaar nie. Stel dit eers onder AI-instellings in</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Aanwysing gestoor, maar die AI-eindpunt is nog nie bruikbaar nie. Stel dit eers onder AI-instellings in</string>
   <string name="morphe_music_lyrics_ai_prompt_toast_reset">Aanwysing teruggestel</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Vertalings- &amp; Romanisering-instellings gestoor</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Instellings is teruggesit na verstek</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Basis-URL moet met http:// of https:// begin</string>
-  <string name="morphe_music_lyrics_ai_config_status_invalid">Instellings onvolledig of deur die verskapper verwerp</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid">Instellings onvolledig of deur die verskaffer verwerp</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Valideer verbinding…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Aangesluit! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Konneksie het misluk. Gaan die instellings na.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Gee die API-sleutel eerste</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_key">Voer die API-sleutel eers in</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Toets konneksie</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Haal modelle op…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Haal modelle op</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">Kies \'n Model</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">Kon nie modelle ophaal nie. Gaan API-sleutel of konneksie na.</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_label">Spoortjie</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_label">Aanwysing</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">Ruby-opdrag (Kana)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">Model</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">Basis-URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">Diensvoorkeure</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets_title">Kies \'n diens</string>
   <string name="morphe_music_lyrics_ai_config_api_token_label">API-sleutel (opsioneel)</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_label">Ekstra versoekliggaam (opsionele JSON)</string>
-  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Ekstra versoekhoofde (opsioneel JSON)</string>
-  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Sitoatname en waardes, bv. {\"api-key\": \"abc\"}. \'n Onbegrensde waarde wat / : of \'n getal bevat, word verwerp. \'n Leë waarde verwyder \'n hoofde.</string>
-  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Sitoatname en waardes, bv. {\"temperature\": 0.3}. \'n Onbegrensde waarde wat / of : bevat, word verwerp. Model en berigte kan hier nie gestel word nie.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_label">Ekstra versoekopskrifte (opsionele JSON)</string>
+  <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Plaas name en waardes tussen aanhalingstekens, bv. {\"api-key\": \"abc\"}. \'n Waarde sonder aanhalingstekens wat / : of \'n getal bevat, word verwerp. \'n Leë waarde verwyder \'n kopskrif.</string>
+  <string name="morphe_music_lyrics_ai_config_extra_body_hint">Plaas name en waardes tussen aanhalingstekens, bv. {\"temperature\": 0.3}. \'n Waarde sonder aanhalingstekens wat / of : bevat, word verwerp. Model en berigte kan hier nie gestel word nie.</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Outentiseringssleutel (Gratis of Pro)</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Deaktiveer vet ikone</string>

@@ -21,38 +21,97 @@ import java.util.List;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings("unused")
 public final class LithoFilterPatch {
 
     /**
-     * Simple wrapper to pass the litho parameters through the prefix search.
+     * What {@link SharedYouTubeSettings#DEBUG_LITHO} logs of each Litho component.
      */
-    private record LithoFilterParameters(ContextInterface contextInterface, String identifier,
-                                         CharSequence path, String accessibility, byte[] buffer,
-                                         BufferAsciiStrings asciiStrings) {
+    public enum LithoLogging {
+        DISABLED,
+        /**
+         * Identifier, accessibility and path.
+         */
+        PATH,
+        /**
+         * Identifier, accessibility, path and the strings of the buffer.
+         */
+        PATH_AND_BUFFER
+    }
+
+    /**
+     * Simple wrapper to pass the litho parameters through the prefix search,
+     * computing accessibility string and buffer ascii strings lazily only when needed.
+     */
+    private static final class LithoFilterParameters {
+        final ContextInterface contextInterface;
+        final String identifier;
+        final CharSequence path;
+        @Nullable
+        private final String accessibilityId;
+        @Nullable
+        private final String accessibilityText;
+        private String accessibility;
+        final byte[] buffer;
+        private BufferAsciiStrings asciiStrings;
+
+        LithoFilterParameters(ContextInterface contextInterface,
+                              String identifier,
+                              CharSequence path,
+                              @Nullable String accessibilityId,
+                              @Nullable String accessibilityText,
+                              byte[] buffer) {
+            this.contextInterface = contextInterface;
+            this.identifier = identifier;
+            this.path = path;
+            this.accessibilityId = accessibilityId;
+            this.accessibilityText = accessibilityText;
+            this.buffer = buffer;
+        }
+
+        public String accessibility() {
+            if (accessibility == null) {
+                if (accessibilityText != null && !accessibilityText.isBlank()) {
+                    accessibility = accessibilityId + '|' + accessibilityText;
+                } else if (accessibilityId != null && !accessibilityId.isBlank()) {
+                    accessibility = accessibilityId;
+                } else {
+                    accessibility = "";
+                }
+            }
+            return accessibility;
+        }
+
+        public BufferAsciiStrings asciiStrings() {
+            if (asciiStrings == null) {
+                asciiStrings = new BufferAsciiStrings(buffer);
+            }
+            return asciiStrings;
+        }
+
         @NonNull
         @Override
         public String toString() {
+            String acc = accessibility();
             StringBuilder builder = new StringBuilder(identifier.length()
                     + path.length()
-                    + accessibility.length()
+                    + acc.length()
                     + buffer.length);
 
             builder.append("ID: ");
             builder.append(identifier);
-            if (!accessibility.isEmpty()) {
+            if (!acc.isEmpty()) {
                 // AccessibilityId and AccessibilityText are pieces of BufferStrings.
                 builder.append(" Accessibility: ");
-                builder.append(accessibility);
+                builder.append(acc);
             }
             builder.append(" Path: ");
             builder.append(path);
-            if (SharedYouTubeSettings.DEBUG_PROTOBUFFER.get()) {
+            if (SharedYouTubeSettings.DEBUG_LITHO.get() == LithoLogging.PATH_AND_BUFFER) {
                 builder.append(" BufferStrings: ");
-                builder.append(asciiStrings.getStrings());
+                builder.append(asciiStrings().getStrings());
             }
 
             return builder.toString();
@@ -156,11 +215,11 @@ public final class LithoFilterPatch {
 
                                 LithoFilterParameters parameters = (LithoFilterParameters) callbackParameter;
                                 final boolean isFiltered = filter.isFiltered(parameters.contextInterface,
-                                        parameters.identifier, parameters.accessibility, parameters.path,
-                                        parameters.buffer, parameters.asciiStrings,
+                                        parameters.identifier, parameters.accessibility(), parameters.path,
+                                        parameters.buffer, parameters.asciiStrings(),
                                         group, type, matchedStartIndex);
 
-                                if (isFiltered && BaseSettings.DEBUG.get()) {
+                                if (isFiltered) {
                                     Logger.printDebug(() -> type == Filter.FilterContentType.IDENTIFIER
                                             ? filterSimpleName + " filtered identifier: " + parameters.identifier
                                             : filterSimpleName + " filtered path: " + parameters.path);
@@ -191,22 +250,15 @@ public final class LithoFilterPatch {
                 return false;
             }
 
-            String accessibility;
-            if (accessibilityText != null && !accessibilityText.isBlank()) {
-                accessibility = accessibilityId + '|' + accessibilityText;
-            } else if (accessibilityId != null && !accessibilityId.isBlank()) {
-                accessibility = accessibilityId;
-            } else {
-                accessibility = "";
-            }
-
             // Use an empty buffer if there is none, so the litho id/path filters that do not use a buffer still work.
             byte[] buffer = bytes == null ? EMPTY_BYTE_ARRAY : bytes;
 
             LithoFilterParameters parameter = new LithoFilterParameters(
-                    contextInterface, identifier, pathBuilder, accessibility,
-                    buffer, new BufferAsciiStrings(buffer));
-            Logger.printDebug(() -> "Searching " + parameter);
+                    contextInterface, identifier, pathBuilder,
+                    accessibilityId, accessibilityText, buffer);
+            if (SharedYouTubeSettings.DEBUG_LITHO.get() != LithoLogging.DISABLED) {
+                Logger.printDebug(() -> "Searching " + parameter);
+            }
 
             if (identifierSearchTree.matches(identifier, parameter)
                     || pathSearchTree.matches(pathBuilder, parameter)) {

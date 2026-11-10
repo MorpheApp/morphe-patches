@@ -21,7 +21,7 @@ Second \"item\" text"</string>
   <string name="morphe_app_downgrade_dialog_title">Versiooni alumine ei ole toetatud</string>
   <string name="morphe_app_downgrade_dialog_message">"Selle Reddit'i installatsiooni versioon on alandatud versioonist &lt;b&gt;%1$s&lt;/b&gt; versioonile &lt;b&gt;%2$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
-Uuemast versioonist pärit rakenduse andmed ei tööta vanema versiooniga ja rakendus ei prugu õigesti toimida.
+Uuemast versioonist pärit rakenduse andmed ei tööta vanema versiooniga ja rakendus ei pruugi õigesti toimida.
 &lt;br/&gt;&lt;br/&gt;
 Vanema versiooni kasutamiseks peate Reddit'i &lt;b&gt;desinstalleerima&lt;/b&gt; ja seejärel installima vanema versiooni."</string>
   <string name="morphe_app_downgrade_dialog_open_app_info">Ava rakenduse info</string>
@@ -65,6 +65,8 @@ Vanema versiooni kasutamiseks peate Reddit'i &lt;b&gt;desinstalleerima&lt;/b&gt;
   <string name="morphe_hide_trending_shelves_summary">Peidab Populaarsed sektsioonid voost ja otsingupakkumistest</string>
   <string name="morphe_remove_notification_dialog_title">Eemaldage teavituste soovituse dialoog</string>
   <string name="morphe_remove_notification_dialog_summary">Sulgeb automaatselt teavituste soovitusdialoogi subredditis külastamisel</string>
+  <string name="morphe_high_quality_avatars_title">Kvaliteetsed avatarid</string>
+  <string name="morphe_high_quality_avatars_summary">Kuvab kasutajate avatarid täislahendusega</string>
   <string name="morphe_show_flairs_in_home_feed_title">Kuva märgiseid avalehe voogus</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Kuvab postituste märgiseid avalehe voo sees</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Mõnel voo üksusel ei pruugi märgist olla</string>
@@ -108,7 +110,7 @@ Vanema versiooni kasutamiseks peate Reddit'i &lt;b&gt;desinstalleerima&lt;/b&gt;
   <string name="morphe_download_location_folder_default_short">Vaikimisi</string>
   <string name="morphe_download_location_subfolder_hint">Alamkaust</string>
   <string name="morphe_download_location_subfolder_tree_hint">Lisage failinimele / märkiga alamkaustad</string>
-  <string name="morphe_download_location_browse">Siru…</string>
+  <string name="morphe_download_location_browse">Sirvi…</string>
   <string name="morphe_download_location_no_picker">Selle seadme puhul pole kaustide valijat saadaval</string>
   <string name="morphe_download_location_pattern_title">Failinimi</string>
   <string name="morphe_download_location_pattern_hint">Reddit\'i failinimi</string>
@@ -116,9 +118,9 @@ Vanema versiooni kasutamiseks peate Reddit'i &lt;b&gt;desinstalleerima&lt;/b&gt;
   <string name="morphe_download_location_example_images">Pildid: %s</string>
   <string name="morphe_download_location_example_videos">Videod: %s</string>
   <string name="morphe_download_location_save">Salvesta</string>
-  <string name="morphe_download_location_reset">Läbi seatamine</string>
+  <string name="morphe_download_location_reset">Lähtesta</string>
   <string name="morphe_download_location_delete">Kustuta</string>
-  <string name="morphe_download_location_reset_confirm">Kas lähtestada kõigi kontade alllaadimisasukoht Redditi vaikeseadetele?</string>
+  <string name="morphe_download_location_reset_confirm">Kas lähtestada kõigi kontade allalaadimisasukoht Redditi vaikeseadetele?</string>
   <string name="morphe_download_location_delete_confirm">Kas kustutada allalaadimisasukoht %s?</string>
   <string name="morphe_download_location_save_failed">Allalaadimiskohta ei õnnestunud salvestada. Selle asemel salvestati Redditi vaikekausta</string>
   <string name="morphe_download_location_folder_unavailable">Allalaadimiskaust ei ole enam saadaval. Salvestati selle asemel Redditi vaikimiskausta</string>

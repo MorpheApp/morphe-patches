@@ -19,7 +19,7 @@ Second \"item\" text"</string>
   <string name="reddit_privacy_policy">Политика за поверителност на Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Входът с Google не е наличен. Използвайте имейл, за да влезете</string>
   <string name="morphe_app_downgrade_dialog_title">Намаляването на версията не се поддържа</string>
-  <string name="morphe_app_downgrade_dialog_message">"Тази инсталация на Reddit беше downgraded от &lt;b&gt;%1$s&lt;/b&gt; до &lt;b&gt;%2$s&lt;/b&gt;
+  <string name="morphe_app_downgrade_dialog_message">"Тази инсталация на Reddit беше понижена от &lt;b&gt;%1$s&lt;/b&gt; до &lt;b&gt;%2$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 Данните на приложението от по-нова версия не работят с по-стари версии и приложението може да не работи правилно.
 &lt;br/&gt;&lt;br/&gt;
@@ -65,6 +65,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_shelves_summary">Скрива секциите \"Тенденции\" от началната страница и предложенията за търсене.</string>
   <string name="morphe_remove_notification_dialog_title">Премахване на диалоговия прозорец за предложения за известия</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматично затваря диалоговия прозорец за предложение за известие при посещение на подреддит</string>
+  <string name="morphe_high_quality_avatars_title">Аватари с високо качество</string>
+  <string name="morphe_high_quality_avatars_summary">Показва потребителските аватари в пълна резолюция</string>
   <string name="morphe_show_flairs_in_home_feed_title">Показване на етикети в началния източник</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Показва значки за постове с етикети в началния източник</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Някои елементи от източника може да не показват етикет</string>
@@ -75,12 +77,12 @@ Second \"item\" text"</string>
   <string name="morphe_swap_post_vote_comment_buttons_title">Размяна на бутоните за гласуване и коментари</string>
   <string name="morphe_swap_post_vote_comment_buttons_summary">Показва бутона за коментари на публикациите преди бутоните за гласуване</string>
   <string name="morphe_remove_nsfw_dialog_title">Премахване на диалоговия прозорец за NSFW предупреждение</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Автоматично приема предупреждението за NSFW съдържание при посещение на subreddit</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Автоматично приема предупреждението за NSFW съдържание при посещение на подреддит</string>
   <string name="morphe_screen_miscellaneous_title">Други</string>
   <string name="morphe_about_title">Относно</string>
   <string name="morphe_about_summary">Версия на поправката и официални връзки</string>
   <string name="morphe_sanitize_sharing_links_title">Почистване на споделените връзки</string>
-  <string name="morphe_sanitize_sharing_links_summary">Параметърът за следене е премахнат от споделяни връзки</string>
+  <string name="morphe_sanitize_sharing_links_summary">Премахва параметрите за проследяване от споделените връзки</string>
   <string name="morphe_open_links_directly_title">Отваряне на връзки директно</string>
   <string name="morphe_open_links_directly_summary">Заобикаля пренасочващите URL адреси при отваряне на външни връзки</string>
   <string name="morphe_full_width_feed_media_title">Медийно съдържание в потока на цяла ширина</string>
@@ -91,7 +93,7 @@ Second \"item\" text"</string>
   <string name="morphe_keep_feed_position_summary">Запазва позицията на потока след затваряне на публикация, изображение или видео, вместо да премества отворената публикация в началото</string>
   <string name="morphe_feed_media_max_height_title">Максимална височина на медиите в потока</string>
   <string name="morphe_feed_media_max_height_summary">Максимална височина на изображенията, видеоклиповете и галериите в потока, като кратно на тяхната ширина. По-високите медийни елементи се изрязват. 1,33 е стойността по подразбиране в Reddit</string>
-  <string name="morphe_redgifs_audio_title">Изключете звука на Redgifs</string>
+  <string name="morphe_redgifs_audio_title">Възпроизвеждане на Redgifs със звук</string>
   <string name="morphe_redgifs_audio_summary">Възпроизвежда оригиналното видео от Redgifs вместо копие от Reddit, което често няма аудио</string>
   <string name="morphe_redgifs_hd_title">HD качество в Redgifs</string>
   <string name="morphe_redgifs_hd_summary">Възпроизвежда HD видеа от Redgifs. HD видеата са по-големи и могат да паузират за зареждане</string>
@@ -116,7 +118,7 @@ Second \"item\" text"</string>
   <string name="morphe_download_location_example_images">Изображения: %s</string>
   <string name="morphe_download_location_example_videos">Видеоклипове: %s</string>
   <string name="morphe_download_location_save">Запази</string>
-  <string name="morphe_download_location_reset">Изчисти</string>
+  <string name="morphe_download_location_reset">Нулиране</string>
   <string name="morphe_download_location_delete">Изтрий</string>
   <string name="morphe_download_location_reset_confirm">Да нулирам ли местоположението за изтегляне на всички акаунти до стандартното на Reddit?</string>
   <string name="morphe_download_location_delete_confirm">Да изтрия ли местоположението за изтегляне на %s?</string>
@@ -125,15 +127,15 @@ Second \"item\" text"</string>
   <string name="morphe_download_location_video_failed">Не може да се запази изтегленият видеоклип</string>
   <string name="morphe_download_location_invalid_folder">Тази папка не може да се използва за изтегляния</string>
   <string name="morphe_download_location_account_current">%s (актуално)</string>
-  <string name="morphe_download_location_account_logged_out">%s (не оторизиран)</string>
-  <string name="morphe_download_location_account_anonymous">Анонимен (отписан или в режим инкогнито)</string>
+  <string name="morphe_download_location_account_logged_out">%s (не е влязъл)</string>
+  <string name="morphe_download_location_account_anonymous">Анонимен (излязъл или в режим инкогнито)</string>
   <string name="morphe_hide_media_viewer_overlay_title">Скриване на наслагването в прегледа на медии</string>
   <string name="morphe_hide_media_viewer_overlay_summary">Скрива заглавието, бутоните и контролите за видео при отваряне на изображение или видео. Докоснете медията, за да ги покажете</string>
   <string name="morphe_hide_join_conversation_button_title">Скриване на бутона „Виж разговора“</string>
   <string name="morphe_hide_join_conversation_button_summary">Скрива бутона „Виж разговора“ в долната част на прегледа на медии</string>
   <string name="morphe_media_viewer_black_background_title">Черен фон на прегледа на медии</string>
   <string name="morphe_media_viewer_black_background_summary">Използва черен фон зад изображенията и видеата в прегледа на медии, вместо цвета на фона от темата</string>
-  <string name="morphe_open_links_externally_title">Oтваряне на линкове външно</string>
+  <string name="morphe_open_links_externally_title">Отваряне на връзки външно</string>
   <string name="morphe_open_links_externally_summary">Отваря връзките в браузъра ви вместо в браузъра в приложението</string>
   <string name="morphe_remember_collapsed_comments_title">Запомняне на свитите коментари</string>
   <string name="morphe_remember_collapsed_comments_summary">Коментарите, които свиеш, остават свити, когато отвориш отново публикацията</string>

@@ -75,7 +75,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_export_file_success">設定匯出成功</string>
   <string name="morphe_settings_export_file_failed">匯出設定失敗</string>
   <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">您正在使用 Morphe 修補版本 <i>%s</i></string>
+  <string name="morphe_settings_about_links_body_version_current">您正在使用 Morphe 修補版本 &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">您正在使用 Morphe 修補版本 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;有可用更新: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;若要更新您的修補程式，請使用 Morphe 重新修補此應用程式</string>
   <string name="morphe_settings_about_links_dev_header">注意</string>
   <string name="morphe_settings_about_links_dev_body">這個版本為預先發佈版，你可能會遇到非預期的問題</string>
@@ -97,13 +97,14 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">偵錯</string>
   <string name="morphe_debug_screen_summary">設定進階開發人員選項和診斷記錄</string>
-  <string name="morphe_debug_title">啟用偵錯記錄</string>
-  <string name="morphe_debug_stacktrace_title">Debug 記錄檔堆疊追蹤</string>
-  <string name="morphe_debug_stacktrace_summary">包含堆疊追蹤於偵錯記錄中，以協助識別錯誤</string>
+  <string name="morphe_debug_level_title">偵錯記錄</string>
+  <string name="morphe_debug_level_entry_disabled">已停用</string>
+  <string name="morphe_debug_level_entry_debug">偵錯</string>
+  <string name="morphe_debug_level_entry_verbose">詳細</string>
   <string name="morphe_debug_toast_on_error_title">在 Morphe 發生錯誤時顯示浮動式訊息</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"關閉錯誤提示會隱藏所有 Morphe 錯誤通知。
 
-你將不會收到任何非預期事件的通知"</string>
+您將不會收到任何非預期事件的通知"</string>
   <string name="morphe_debug_export_logs_title">匯出偵錯記錄</string>
   <string name="morphe_debug_export_logs_summary">匯出 Morphe 偵錯記錄</string>
   <string name="morphe_debug_export_logs_success">Debug 記錄已成功匯出</string>
@@ -190,7 +191,7 @@ Second \"item\" text"</string>
 
 %s
 
-輕觸以將其卸載，然後重新開啟此應用程式並安裝 MicroG RE"</string>
+輕觸以將其解除安裝，然後重新開啟此應用程式並安裝 MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">解除安裝</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG 沒有後台執行權限。
@@ -222,13 +223,26 @@ Second \"item\" text"</string>
   <string name="morphe_link_handling_open">開啟設定</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 實驗性提示 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"您正在使用⚠️ &lt;b&gt;%1$s&lt;/b&gt;應用程式的實驗性版本。
+  <string name="morphe_experimental_app_version_dialog_message">"您正在使用 ⚠️ &lt;b&gt;%1$s&lt;/b&gt; 的實驗性版本。
 &lt;br/&gt;&lt;br/&gt;
-🔧 我們仍在微調這個版本的修補程式，預計會出現一些奇怪行為或非發現的程式錯誤。
+🔧 我們仍在微調此應用程式版本的修補程式，因此可能會出現異常行為或尚未發現的程式錯誤。
 &lt;br/&gt;&lt;br/&gt;
-假如您想要最穩定的體驗，請&lt;b&gt;解除安裝&lt;/b&gt;此版本，並改用 ✅ &lt;b&gt;%2$s&lt;/b&gt;應用程式的推薦版本。"</string>
+若想要最穩定的體驗，請&lt;b&gt;解除安裝&lt;/b&gt;此版本，並修補推薦的應用程式版本 ✅ &lt;b&gt;%2$s&lt;/b&gt;。"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我要用實驗版本</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我要用穩定版本</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">顯示修補程式更新的應用程式內通知</string>
+  <string name="morphe_patches_update_notice_entry_off">關閉</string>
+  <string name="morphe_patches_update_notice_entry_stable">穩定版本</string>
+  <string name="morphe_patches_update_notice_entry_dev">穩定與開發版本</string>
+  <string name="morphe_patches_update_notice_dialog_title">有新的修補程式可用</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (目前版本: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ 新功能</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 修正錯誤</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 其他變更</string>
+  <string name="morphe_patches_update_notice_dialog_more">…以及更多 %s 個</string>
+  <string name="morphe_patches_update_notice_dialog_update">更新</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">忽略</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">當機記錄已儲存至使用者文件：%s</string>
   <string name="morphe_crash_log_saved">當機記錄已儲存：%s</string>

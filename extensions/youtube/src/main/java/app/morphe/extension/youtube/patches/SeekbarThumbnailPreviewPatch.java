@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.patches;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapRegionDecoder;
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.Point;
@@ -20,20 +21,25 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.view.ViewParent;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -130,6 +136,38 @@ public class SeekbarThumbnailPreviewPatch {
         }
 
         fineScrubbingPreviewBitmap = bitmap;
+    }
+
+    /**
+     * Injection point.
+     * The app cuts each storyboard frame at its column and row times the frame size of the
+     * storyboard spec, and 1 pixel smaller. The frames of the storyboard image can be larger
+     * (spec 159x90, image frames 160x90), so every frame after the first one of a row also shows
+     * the side of the frame before it, by 1 more pixel per column.
+     * Cut the frame with the frame size of the image instead.
+     */
+    public static void fixStoryboardFrameRect(Rect frame, BitmapRegionDecoder decoder) {
+        try {
+            final int specWidth = frame.width() + 1;
+            final int specHeight = frame.height() + 1;
+            // The last image of a storyboard can have fewer columns and rows.
+            final int columns = Math.round((float) decoder.getWidth() / specWidth);
+            final int rows = Math.round((float) decoder.getHeight() / specHeight);
+            if (columns <= 0 || rows <= 0) return;
+
+            final float frameWidth = (float) decoder.getWidth() / columns;
+            final float frameHeight = (float) decoder.getHeight() / rows;
+            final int column = Math.round((float) frame.left / specWidth);
+            final int row = Math.round((float) frame.top / specHeight);
+            frame.set(
+                    Math.round(column * frameWidth),
+                    Math.round(row * frameHeight),
+                    Math.round((column + 1) * frameWidth),
+                    Math.round((row + 1) * frameHeight)
+            );
+        } catch (Exception ex) {
+            Logger.printException(() -> "fixStoryboardFrameRect failure", ex);
+        }
     }
 
     /**
@@ -545,6 +583,79 @@ public class SeekbarThumbnailPreviewPatch {
     public static boolean disableBigBoardUpdate() {
         // Swipe to seek keeps the large preview of the app, as the finger is not on the seekbar.
         return Settings.THUMBNAIL_PREVIEW.get() && !SwipeSeekController.isSwipeSeeking();
+    }
+
+    /**
+     * Injection point.
+     * Called when the full screen seek preview is shown.
+     * <p>
+     * The app fits the preview in the player, so the sides of a video zoomed to fill the screen
+     * stay visible next to it. Scale the preview to the size of the video instead.
+     */
+    public static void setBigBoardScale(@Nullable ImageView preview) {
+        if (preview == null) return;
+
+        // The preview is laid out after it is shown the first time, and after the screen rotates.
+        preview.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                preview.getViewTreeObserver().removeOnPreDrawListener(this);
+                try {
+                    float scaleX = 1;
+                    float scaleY = 1;
+                    // The app crops the preview of vertical videos to their zoom itself.
+                    if (preview.getScaleType() == ImageView.ScaleType.FIT_CENTER
+                            && preview.getRootView().findViewById(ResourceUtils.getIdIdentifier("player_view"))
+                            instanceof ViewGroup playerView) {
+                        // The video renderers are in one child of the player, sized to the video and to the
+                        // zoom of the app. The renderers it does not use keep an old size, so use that child.
+                        View video = Utils.getChildView(playerView, true, view -> view instanceof SurfaceView);
+                        while (video != null && video.getParent() != playerView) {
+                            video = video.getParent() instanceof View parent ? parent : null;
+                        }
+
+                        final int width = preview.getWidth();
+                        final int height = preview.getHeight();
+                        if (video != null && width > 0 && height > 0 && video.getWidth() > 0 && video.getHeight() > 0) {
+                            // Size of the video on the screen, also when the player is scaled
+                            // (Restore pinch to zoom, Fullscreen video scale).
+                            final float[] videoSize = {video.getWidth(), video.getHeight()};
+                            // The app lays out only its last renderer. Include the transforms between
+                            // its video surface and that child too (the app sets none on 21.43 - 21.45).
+                            if (video instanceof ViewGroup group && group.getChildCount() > 0) {
+                                View renderer = group.getChildAt(group.getChildCount() - 1);
+                                View surface = renderer instanceof ViewGroup rendererGroup
+                                        ? Utils.getChildView(rendererGroup, true, view -> view instanceof SurfaceView)
+                                        : renderer;
+                                for (View view = surface; view != null && view != video; view = view.getParent() instanceof View parent ? parent : null) {
+                                    view.getMatrix().mapVectors(videoSize);
+                                }
+                            }
+                            for (View view = video; view != null; view = view.getParent() instanceof View parent ? parent : null) {
+                                view.getMatrix().mapVectors(videoSize);
+                            }
+                            // Scale of the views that hold the preview.
+                            final float[] parentScale = {1, 1};
+                            for (ViewParent parent = preview.getParent(); parent instanceof View view; parent = view.getParent()) {
+                                view.getMatrix().mapVectors(parentScale);
+                            }
+
+                            // Size of the video when it fits in the preview.
+                            final float fitWidth = Math.min(width, (float) height * video.getWidth() / video.getHeight());
+                            final float fitHeight = fitWidth * video.getHeight() / video.getWidth();
+                            scaleX = Math.max(1, Math.abs(videoSize[0] / parentScale[0]) / fitWidth);
+                            scaleY = Math.max(1, Math.abs(videoSize[1] / parentScale[1]) / fitHeight);
+                        }
+                    }
+
+                    preview.setScaleX(scaleX);
+                    preview.setScaleY(scaleY);
+                } catch (Exception ex) {
+                    Logger.printException(() -> "setBigBoardScale failure", ex);
+                }
+                return true;
+            }
+        });
     }
 
     /**

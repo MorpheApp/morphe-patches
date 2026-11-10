@@ -116,7 +116,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_client_type_title">کلاینت پیش‌فرض</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">ورود به Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">به Android VR وارد نشده‌اید. برای ورود، اینجا ضربه بزنید</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR به یک ورود به سیستم مجزا نیاز دارد. برای ادامه اینجا را لمس کنید</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">در حال حاضر به Android VR وارد شده‌اید</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">برای استفاده از این قابلیت، «کلاینت پیش‌فرض» را به Android VR تغییر دهید</string>
@@ -208,13 +208,15 @@ Second \"item\" text"</string>
   <string name="morphe_replace_links_with_shortener_title">تغییر پیوندهای اشتراک‌گذاری به youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">ویدئوها را مجبور می‌کند از قالب پیوند کوتاه‌شدهٔ youtu.be استفاده کنند</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">پروتوبافر گزارش اشکال‌زدایی</string>
-  <string name="morphe_debug_protobuffer_summary">اطلاعات گزارش بیشتری اضافه می‌کند تا توسعه‌دهندگان مؤلفه‌های برنامه را شناسایی کنند</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"فعال‌کردن این تنظیم، داده‌های چیدمان بیشتری از جمله متن روی صفحه را برای برخی مؤلفه‌های رابط کاربری ثبت می‌کند.
+  <string name="morphe_debug_litho_title">ثبت وقایع لیتو</string>
+  <string name="morphe_debug_litho_entry_disabled">غیرفعال</string>
+  <string name="morphe_debug_litho_entry_path">مسیر</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">مسیر و بافر</string>
+  <string name="morphe_debug_litho_user_dialog_message">"گزارش‌گیری Litho، مؤلفه‌های چیدمان برنامه، از جمله متن روی صفحه را برای برخی مؤلفه‌های رابط کاربری ثبت می‌کند
 
-این کار می‌تواند به شناسایی مؤلفه‌ها هنگام ایجاد فیلترهای سفارشی کمک کند.
+این کار می‌تواند به شناسایی مؤلفه‌ها هنگام ایجاد فیلترهای سفارشی کمک کند
 
-بااین‌حال، فعال‌کردن آن برخی داده‌های کاربر مانند نشانی IP شما را نیز ثبت می‌کند"</string>
+بااین‌حال، این کار برخی داده‌های کاربر مانند نشانی IP شما را نیز ثبت می‌کند"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">فیلتر سفارشی</string>
   <string name="morphe_custom_filter_screen_summary">فیلترهای سفارشی را برای پنهان‌کردن هر مؤلفه‌ای پیکربندی کنید</string>

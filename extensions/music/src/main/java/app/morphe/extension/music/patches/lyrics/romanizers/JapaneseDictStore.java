@@ -48,7 +48,6 @@ public final class JapaneseDictStore {
     private static final WordTableFile TABLE = new WordTableFile(
             "japanese_readings_" + VERSION + ".bin",
             new byte[]{'M', 'J', 'P', 'W', '0', '0', '0', '2'}, 1 << 23);
-    private static final String NOTICE_NAME = "japanese_readings.NOTICE.txt";
 
     /** How many entries go in before the row is worth moving. */
     private static final int PROGRESS_EVERY = 50000;
@@ -70,18 +69,13 @@ public final class JapaneseDictStore {
         return table() != null;
     }
 
-    /** Removes the table and its licence notice. Called when the user turns Japanese off. */
+    /** Removes the table. Called when the user turns Japanese off. */
     public static void delete() {
         TABLE.clear();
         File file = TABLE.file();
         if (file != null && file.exists()) {
             //noinspection ResultOfMethodCallIgnored
             file.delete();
-        }
-        File directory = RomanizationDict.directory();
-        if (directory != null) {
-            //noinspection ResultOfMethodCallIgnored
-            new File(directory, NOTICE_NAME).delete();
         }
     }
 
@@ -99,7 +93,7 @@ public final class JapaneseDictStore {
 
         WORKER.execute(() -> {
             try {
-                build(CHANNEL);
+                build();
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Japanese dictionary build failed", ex);
                 CHANNEL.onFailed();
@@ -116,17 +110,12 @@ public final class JapaneseDictStore {
         return TABLE.open();
     }
 
-    @Nullable
-    public static String notice() {
-        File directory = RomanizationDict.directory();
-        return directory == null ? null : RomanizationDict.readNotice(directory, NOTICE_NAME);
-    }
-
-    private static void build(RomanizationDict.Listener listener) throws IOException {
+    private static void build() throws IOException {
         File directory = RomanizationDict.directory();
         if (directory == null) throw new IOException("no cache directory");
 
         File target = TABLE.file();
+        assert target != null;
         File built = new File(target.getPath() + ".building");
         //noinspection ResultOfMethodCallIgnored
         built.delete();
@@ -136,17 +125,16 @@ public final class JapaneseDictStore {
             File archive = new File(directory, source);
             if (!archive.isFile()) {
                 RomanizationDict.download(BASE_URL + VERSION + "/" + source, archive,
-                        displayName(source), listener);
+                        displayName(source), (RomanizationDict.Listener) JapaneseDictStore.CHANNEL);
             }
-            addSource(builder, archive, listener);
+            addSource(builder, archive, (RomanizationDict.Listener) JapaneseDictStore.CHANNEL);
             //noinspection ResultOfMethodCallIgnored
             archive.delete();
         }
         builder.finish(Integer.parseInt(VERSION));
 
         RomanizationDict.commit(built, target);
-        RomanizationDict.writeNotice(directory, NOTICE_NAME, noticeText());
-        listener.onReady(builder.size());
+        JapaneseDictStore.CHANNEL.onReady(builder.size());
     }
 
     private static void addSource(WordReadingTable.Builder builder, File archive,
@@ -254,20 +242,4 @@ public final class JapaneseDictStore {
         return fileName.replace("_lex", "").replace('_', ' ');
     }
 
-    /**
-     * Downloaded rather than shipped, so the licence travels with the data into the
-     * cache and is shown from the About row.
-     */
-    private static String noticeText() {
-        return "SudachiDict reading data\n"
-                + "https://github.com/WorksApplications/SudachiDict\n\n"
-                + "Licence: Apache License, Version 2.0\n"
-                + "https://www.apache.org/licenses/LICENSE-2.0\n\n"
-                + "Source files: " + BASE_URL + VERSION + "/\n\n"
-                + "As its authors state, this project includes UniDic and a part of Neologd,\n"
-                + "and is distributed under the Apache License, Version 2.0. UniDic is\n"
-                + "additionally available under the BSD 3-Clause licence.\n\n"
-                + "What is stored here is a table of surface forms and their katakana\n"
-                + "readings, derived from the files above.\n";
-    }
 }

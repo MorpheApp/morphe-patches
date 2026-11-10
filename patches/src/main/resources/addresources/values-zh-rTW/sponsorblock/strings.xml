@@ -25,8 +25,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_square_layout_summary">SponsorBlock 按鈕和控制項使用方角</string>
   <string name="morphe_sb_compact_skip_button_title">使用精簡「跳過」按鈕</string>
   <string name="morphe_sb_compact_skip_button_summary">縮小「跳過」按鈕的寬度以節省空間</string>
-  <string name="morphe_sb_auto_hide_skip_button_title">自動隱藏「略過」按鈕</string>
-  <string name="morphe_sb_auto_hide_skip_button_summary">在片段結束後幾秒隱藏「跳過」按鈕，而不是在整個片段期間顯示它</string>
+  <string name="morphe_sb_auto_hide_skip_button_title">自動隱藏「跳過」按鈕</string>
+  <string name="morphe_sb_auto_hide_skip_button_summary">幾秒後隱藏「跳過」按鈕，而不是在整個片段期間都保持顯示</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">跳過按鈕顯示時間</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">設定「跳過」按鈕可見時間</string>
   <string name="morphe_sb_toast_on_skip_title">顯示跳過通知</string>
@@ -43,8 +43,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_duration_8s">8 秒</string>
   <string name="morphe_sb_duration_9s">9 秒</string>
   <string name="morphe_sb_duration_10s">10 秒</string>
-  <string name="morphe_sb_video_length_without_segments_title">顯示不包含被跳過片段的時間戳記</string>
-  <string name="morphe_sb_video_length_without_segments_summary">從尋找條上減去影片總長度中的所有片段</string>
+  <string name="morphe_sb_video_length_without_segments_title">顯示不含片段的影片長度</string>
+  <string name="morphe_sb_video_length_without_segments_summary">從跳轉列上顯示的影片總長度中減去所有片段</string>
   <string name="morphe_sb_create_segment_category_title">建立新片段</string>
   <string name="morphe_sb_create_new_segment_title">顯示「建立新片段」按鈕</string>
   <string name="morphe_sb_create_new_segment_summary">在影片播放器中新增按鈕，讓您可以提交新的 SponsorBlock 片段</string>
@@ -58,7 +58,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_guidelines_popup_already_read">已閱讀</string>
   <string name="morphe_sb_guidelines_popup_open">顯示</string>
   <string name="morphe_sb_general_title">一般</string>
-  <string name="morphe_sb_offline_segments_title">儲存已下載影片的分段</string>
+  <string name="morphe_sb_offline_segments_title">儲存已下載影片的片段</string>
   <string name="morphe_sb_offline_segments_summary">允許在離線狀態下跳過已下載影片的分段</string>
   <string name="morphe_sb_toast_on_connection_error_title">顯示連線錯誤警示</string>
   <string name="morphe_sb_toast_on_connection_error_summary">在 SponsorBlock 伺服器無法使用時顯示通知</string>
@@ -69,7 +69,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_min_segment_duration_invalid">無效的時間長度</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_title">您的私人使用者 ID</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">這應該被保密。這就像一個密碼，不應該與他人分享。如果有人擁有它，他們就可以冒充您</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">私人使用者 ID 必須至少有 30 個字元長</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">私人使用者 ID 長度必須至少為 30 個字元</string>
   <string name="morphe_sb_api_url_title">變更 API URL</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock 用來和伺服器互動的位址</string>
   <string name="morphe_sb_channel_whitelist_title">頻道白名單</string>
@@ -131,7 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_button_unsubmitted">跳過片段</string>
   <string name="morphe_sb_skipped_sponsor">已跳過贊助商廣告</string>
   <string name="morphe_sb_skipped_selfpromo">已跳過自我推廣</string>
-  <string name="morphe_sb_skipped_interaction">已跳過提醒</string>
+  <string name="morphe_sb_skipped_interaction">已跳過煩人的提醒</string>
   <string name="morphe_sb_skipped_highlight">已跳到精華</string>
   <string name="morphe_sb_skipped_intro_beginning">已跳過開頭</string>
   <string name="morphe_sb_skipped_intro_middle">已跳過中場休息</string>
@@ -143,7 +143,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_preview_end">已跳過回顧</string>
   <string name="morphe_sb_skipped_filler">已跳過不相關內容</string>
   <string name="morphe_sb_skipped_nomusic">已跳過非音樂部份</string>
-  <string name="morphe_sb_skipped_unsubmitted">跳過了未提交的片段</string>
+  <string name="morphe_sb_skipped_unsubmitted">已跳過未提交的片段</string>
   <string name="morphe_sb_skipped_multiple_segments">已跳過多個片段</string>
   <string name="morphe_sb_skip_automatically">自動跳過</string>
   <string name="morphe_sb_skip_automatically_once">自動跳過一次</string>
@@ -214,13 +214,13 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_username_change">輕觸這裡變更你的使用者名稱</string>
   <string name="morphe_sb_stats_username_change_unknown_error">無法變更使用者名稱：狀態：%1$s %2$s</string>
   <string name="morphe_sb_stats_username_changed">使用者名稱變更成功</string>
-  <string name="morphe_sb_stats_reputation">你的評價是 &lt;b&gt;%.2f&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_reputation">你的信譽為 &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">你已建立 &lt;b&gt;%s&lt;/b&gt; 個片段</string>
   <string name="morphe_sb_stats_submissions_summary">輕觸這裡查看你的片段</string>
   <string name="morphe_sb_stats_saved_zero">SponsorBlock 排行榜</string>
-  <string name="morphe_sb_stats_saved">你已為人們省下了觀看 &lt;b&gt;%s&lt;/b&gt; 個片段的時間</string>
+  <string name="morphe_sb_stats_saved">你已幫助大家省下觀看 &lt;b&gt;%s&lt;/b&gt; 個片段的時間</string>
   <string name="morphe_sb_stats_saved_summary_zero">輕觸這裡查看全球統計資料和最佳貢獻者</string>
-  <string name="morphe_sb_stats_saved_summary">那可是他們生命中寶貴的 &lt;b&gt;%s&lt;/b&gt;。&lt;br&gt;輕觸這裡檢視排行榜</string>
+  <string name="morphe_sb_stats_saved_summary">這相當於他們生命中的 &lt;b&gt;%s&lt;/b&gt;。&lt;br&gt;輕觸這裡檢視排行榜</string>
   <string name="morphe_sb_stats_self_saved">你已跳過 &lt;b&gt;%s&lt;/b&gt; 個片段</string>
   <string name="morphe_sb_stats_self_saved_summary">總共 &lt;b&gt;%s&lt;/b&gt;</string>
   <string name="morphe_sb_stats_self_saved_reset_title">要重設跳過片段的計數器嗎？</string>

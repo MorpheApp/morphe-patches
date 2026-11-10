@@ -116,7 +116,7 @@ Ali naj %2$s postane privzeti odjemalec?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Privzeti odjemalec</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava v Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Niste prijavljeni v Android VR. Dotaknite se tukaj za prijavo</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Za Android VR je potrebna ločena prijava. Dotaknite se tukaj za nadaljevanje</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Trenutno ste prijavljeni v Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Če želite uporabljati to funkcijo, spremenite \'Privzeti odjemalec\' v Android VR</string>
@@ -169,8 +169,8 @@ Pritisnite \"nadaljujte\", da se prijavite"</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Onemogoči zvok DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
-  <string name="morphe_force_original_audio_title">Sili izvorno jezikovno sledi</string>
-  <string name="morphe_force_original_audio_summary">Vedno predvaja prvotno zvočno pot videoposnetka namesto sinhronizirane različice</string>
+  <string name="morphe_force_original_audio_title">Vsili izvirni jezik zvoka</string>
+  <string name="morphe_force_original_audio_summary">Vedno predvaja prvotni zvočni posnetek videoposnetka namesto sinhronizirane različice</string>
   <!-- misc.audio.silence.skipSilencePatch -->
   <string name="morphe_skip_silence_title">Preskoči tišino</string>
   <string name="morphe_skip_silence_summary">Samodejno preskakuje tihe premore v zvočnem posnetku videa</string>
@@ -178,7 +178,7 @@ Pritisnite \"nadaljujte\", da se prijavite"</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Skrajšajo se samo premori, ki trajajo vsaj toliko. Začne veljati ob začetku naslednjega videa</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Omrežni proxy</string>
-  <string name="morphe_proxy_screen_summary">Usmerjanje podpršanih omrežnih zahtev prek proxyja</string>
+  <string name="morphe_proxy_screen_summary">Usmerjanje podprtih omrežnih zahtev prek proxyja</string>
   <string name="morphe_proxy_enabled_title">Omogoči proxy</string>
   <string name="morphe_proxy_enabled_summary">Usmerja podprane omrežne zahteve prek konfiguriranega HTTP ali HTTPS proxy strežnika</string>
   <string name="morphe_proxy_host_title">Gostitelj proxy strežnika</string>
@@ -188,11 +188,11 @@ Pritisnite \"nadaljujte\", da se prijavite"</string>
   <string name="morphe_proxy_https_title">Uporabi HTTPS proxy</string>
   <string name="morphe_proxy_https_summary">Uporabi HTTPS za povezavo na proxy strežnik namesto HTTP</string>
   <string name="morphe_proxy_auth_enabled_title">Preverjanje pristnosti proxy strežnika</string>
-  <string name="morphe_proxy_auth_enabled_summary">Pošlje osrednje preverjanje pristnosti z zahtevami proxy strežnika</string>
+  <string name="morphe_proxy_auth_enabled_summary">Pošlje osnovno preverjanje pristnosti z zahtevami proxy strežnika</string>
   <string name="morphe_proxy_auth_username_title">Uporabniško ime proxy strežnika</string>
-  <string name="morphe_proxy_auth_username_summary">Uporabniško ime za osrednje preverjanje pristnosti proxy strežnika</string>
+  <string name="morphe_proxy_auth_username_summary">Uporabniško ime za osnovno preverjanje pristnosti proxy strežnika</string>
   <string name="morphe_proxy_auth_password_title">Geslo proxy strežnika</string>
-  <string name="morphe_proxy_auth_password_summary">Geslo za osrednje preverjanje pristnosti proxy strežnika</string>
+  <string name="morphe_proxy_auth_password_summary">Geslo za osnovno preverjanje pristnosti proxy strežnika</string>
   <string name="morphe_proxy_allow_direct_fallback_title">Dovoli neposredno rezervno povezavo</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Poveži se neposredno, če proxy strežnik ne deluje</string>
   <!-- ad.hideFullscreenAdsPatch -->
@@ -208,11 +208,15 @@ Pritisnite \"nadaljujte\", da se prijavite"</string>
   <string name="morphe_replace_links_with_shortener_title">Spremenite povezave za deljenje v youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Prisilno uporablja skrajšano obliko URL-jev youtu.be za videe</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Debug protokol protokola</string>
-  <string name="morphe_debug_protobuffer_summary">Dodaja dodatne informacije za razvojarje za prepoznavanje komponent aplikacije</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Ta nastavitev bo omogočila beleženje dodatnih podatkov o razmerju med elementi, vključno z besedilom na zaslonu za nekatere UI komponente.
+  <string name="morphe_debug_litho_title">Litho zapisovanje</string>
+  <string name="morphe_debug_litho_entry_disabled">Onemogočeno</string>
+  <string name="morphe_debug_litho_entry_path">Pot</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Pot in predrazrednik</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho beleženje beleži komponente razmerja aplikacije, vključno z besedilom na zaslonu za nekatere UI komponente.
 
-To lahko pomaga pri prepoznavanju komponent pri ustvarjanju prilagojenih filtrov, vendar bo omogočanje te možnosti tudi beležilo nekaj uporabniških podatkov, kot je vaš IP naslov"</string>
+To lahko pomaga pri prepoznavanju komponent pri ustvarjanju prilagojenih filtrov.
+
+Vendar bo to beležilo tudi nekaj uporabniških podatkov, kot je vaš IP naslov"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Filtri po meri</string>
   <string name="morphe_custom_filter_screen_summary">Nastavite prilagodljive filtre tako, da skrijete katerokoli komponento</string>
@@ -279,13 +283,13 @@ To bo spremenilo videz in funkcije aplikacije, vendar se lahko pojavijo nepoznan
   <string name="morphe_custom_font_failed_to_load">Pisave po meri ni bilo mogoče naložiti, zato je izklopljena</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_ryd_failure_connection_timeout">Ne maram všeč so trenutno ni na voljo (API je prekinil povezavo)</string>
+  <string name="morphe_ryd_failure_connection_timeout">Ne maram všeč trenutno ni na voljo (API je prekinil povezavo)</string>
   <string name="morphe_ryd_failure_connection_status_code">Nepriljubljeno ni na voljo (status %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Ne maram všeč ni na voljo (omejitev API stranke)</string>
   <string name="morphe_ryd_failure_generic">Ne maram všeč ni na voljo (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skrije ga lastnik</string>
-  <string name="morphe_ryd_accessibility_dislike_count">Ta video ni všeč tebi in še %s drugim.</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Ta video mi ni všeč, skupaj z %s drugimi osebami.</string>
   <string name="morphe_ryd_accessibility_dislike_percentage">Ta video mi ni všeč, %s glasov je negativnih</string>
   <string name="morphe_ryd_enabled_title">Omogoči Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Prikaži ne maram kot odstotek</string>
@@ -294,24 +298,24 @@ To bo spremenilo videz in funkcije aplikacije, vendar se lahko pojavijo nepoznan
   <string name="morphe_ryd_estimated_like_summary">Prikaže ocenjeno število všečnosti na videih, kjer je ustvarjalec onemogočil všečke</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Prikaži opozorila o napaki povezave</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Prikaže obvestilo, ko strežnik Return YouTube Dislike ni na voljo</string>
-  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike obnovi število nevšečnosti, ki jih je YouTube skril leta 2021. Števila izhajajo iz podatkov, arhiviranih pred odstranitvijo, in so ocenjena za novejše videoposnetke na podlagi glasov uporabnikov, zato so približna in se posodabljajo vsakih nekaj dni
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike obnovi število nevšečnosti, ki jih je YouTube skril leta 2021. Števila izhajajo iz podatkov, arhiviranih pred odstranitvijo, za novejše videoposnetke pa so ocenjena na podlagi glasov uporabnikov, zato so približna in se posodabljajo vsakih nekaj dni
 
-ID videoposnetka, ki ga gledate, se pošlje API-ju Return YouTube Dislike, vaši všečki in nevšečki pa se pošljejo anonimno za izboljšanje ocen.}],"</string>
+ID videoposnetka, ki ga gledate, se pošlje API-ju Return YouTube Dislike, vaši všečki in nevšečki pa se anonimno pošljejo za izboljšanje ocen."</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistika API-ja Return YouTube Dislike te naprave</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Čas odziva API-ja, povprečje</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">Čas odziva API-ja, minimum</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Čas odziva API-ja, maksimum</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Čas odziva API-ja, zadnji medij</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Ne maram všeč so trenutno ni na voljo – Uporabljena omejitev hitrosti API-ja stranke</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Ne maram všeč trenutno ni na voljo - omejitev hitrosti API-ja stranke je v veljavi</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Klici API-ja za pridobivanje glasov, število klicov</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Ni bilo opravljenih omrežnih klicev</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Izvedenih je bilo %s omrežnih klicev</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Klici API-ja za pridobivanje glasov, število prekinjenih povezav</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Ni prekinjenih omrežnih klicev</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">Časovna omejitev za %s omrežnih klicev</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">Pri %s omrežnih klicih je prišlo do časovne omejitve</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Omejitve hitrosti API-ja stranke</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Ni bilo zaznanih omejitev hitrosti stranke</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Omejitve hitrosti odjemalca je bilo opaženih %s-krat</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Omejitev hitrosti odjemalca je bila zaznana %s-krat</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s milisekund</string>
 </resources>

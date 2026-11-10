@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.TextTrim;
+import app.morphe.extension.music.patches.lyrics.utils.TextTrim;
 
 public final class LyricsBracketSplitter {
 
@@ -59,8 +59,8 @@ public final class LyricsBracketSplitter {
                 widen(lyrics.romanization(), count, room),
                 widen(lyrics.translations(), count, room),
                 widen(lyrics.romanizations(), count, room),
-                lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(),
-                lyrics.sourceUrl(), lyrics.about());
+                lyrics.songwriters(), lyrics.credits(), lyrics.rawFormat(),
+                lyrics.formatType(), lyrics.sourceUrl(), lyrics.about(), lyrics.agentNames());
     }
 
     /** Reading brackets on top of a stated split would put two background lines under one sung line. */

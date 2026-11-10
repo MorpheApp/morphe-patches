@@ -24,6 +24,8 @@ public final class ExploreMenuFilter extends Filter {
     private final ByteArrayFilterGroupList exploreMenuGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup incognitoExploreButton;
     private final ByteArrayFilterGroup incognitoExploreButtonBuffer;
+    private final StringFilterGroup searchBarMicrophoneButton;
+    private final ByteArrayFilterGroup searchBarMicrophoneButtonBuffer;
 
     public ExploreMenuFilter() {
         divider = new StringFilterGroup(
@@ -144,6 +146,20 @@ public final class ExploreMenuFilter extends Filter {
                 "more_drawer"
         );
 
+        // Search bar at the top of the Home feed in incognito mode and for some accounts.
+        searchBarMicrophoneButton = new StringFilterGroup(
+                Settings.HIDE_TOOLBAR_MICROPHONE_BUTTON,
+                "|CellType|ContainerType|ContainerType|ContainerType|"
+        );
+
+        // The voice search button runs a search endpoint (field 48687709) with field 11 set.
+        // The search box runs the same endpoint without it. The label is localized and the icon
+        // is not always a name in the buffer, so the button is found by its command.
+        searchBarMicrophoneButtonBuffer = new ByteArrayFilterGroup(
+                null,
+                new byte[]{(byte) 0xEA, (byte) 0xA5, (byte) 0xDD, (byte) 0xB9, 0x01, 0x02, 0x58, 0x01}
+        );
+
         final var moreDrawerButton = new StringFilterGroup(
                 Settings.HIDE_EXPLORE_BUTTON,
                 "more_drawer_button.e"
@@ -160,6 +176,7 @@ public final class ExploreMenuFilter extends Filter {
                 exploreMenu,
                 legalDisclosureAndPrivacyToS,
                 incognitoExploreButton,
+                searchBarMicrophoneButton,
                 moreDrawerButton
         );
     }
@@ -185,6 +202,10 @@ public final class ExploreMenuFilter extends Filter {
 
         if (matchedGroup == incognitoExploreButton) {
             return Utils.startsWith(path, "search_bar_entry_point.e") && incognitoExploreButtonBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == searchBarMicrophoneButton) {
+            return Utils.startsWith(path, "search_bar_entry_point.e") && searchBarMicrophoneButtonBuffer.check(buffer).isFiltered();
         }
 
         return true;

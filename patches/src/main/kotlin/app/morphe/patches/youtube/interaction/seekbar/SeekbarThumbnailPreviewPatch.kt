@@ -11,6 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.chapters.chaptersHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -22,7 +23,11 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.patcher.util.getReference
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -86,6 +91,22 @@ val seekbarThumbnailPreviewPatch = patch(
                     "setFineScrubbingPreviewBitmap(Landroid/graphics/Bitmap;)V"
         )
 
+        // The app cuts storyboard frames with the frame size of the storyboard spec,
+        // which can be smaller than the frames of the storyboard image.
+        StoryboardFrameRegionFingerprint.let {
+            it.method.apply {
+                val rectIndex = it.instructionMatches[1].index
+                val rectRegister = it.instructionMatches[1].getInstruction<OneRegisterInstruction>().registerA
+                val decoderRegister = it.instructionMatches[2].getInstruction<FiveRegisterInstruction>().registerC
+
+                addInstruction(
+                    rectIndex + 1,
+                    "invoke-static { v$rectRegister, v$decoderRegister }, $EXTENSION_CLASS->" +
+                            "fixStoryboardFrameRect(Landroid/graphics/Rect;Landroid/graphics/BitmapRegionDecoder;)V"
+                )
+            }
+        }
+
         SeekbarOnDrawFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
@@ -108,6 +129,30 @@ val seekbarThumbnailPreviewPatch = patch(
                 nop
             """
         )
+
+        // The full screen seek preview fits in the player, also when the video is zoomed to fill the screen.
+        // Scale it to the video when it is shown.
+        SeekbarBigBoardsScrubFingerprint.let {
+            val previewField = it.classDef.fields.single { field ->
+                field.type == "Landroid/widget/ImageView;"
+            }
+            val seekMethod = it.instructionMatches.first().getInstruction<ReferenceInstruction>().reference
+
+            it.method.apply {
+                val index = indexOfFirstInstructionReversedOrThrow {
+                    opcode == Opcode.INVOKE_DIRECT && getReference<MethodReference>() == seekMethod
+                }
+                val register = findFreeRegister(index)
+
+                addInstructions(
+                    index,
+                    """
+                        iget-object v$register, p0, $previewField
+                        invoke-static { v$register }, $EXTENSION_CLASS->setBigBoardScale(Landroid/widget/ImageView;)V
+                    """
+                )
+            }
+        }
 
         PreciseSeekingRecyclerViewFingerprint.method.addInstruction(
             0,

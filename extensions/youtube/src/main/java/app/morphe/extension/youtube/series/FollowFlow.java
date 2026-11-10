@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import java.util.function.Consumer;
 
+import app.morphe.extension.shared.misc.MediaTime;
+
 /** One follow action resolves the catalog and its title. No rename or manual loading step. */
 final class FollowFlow {
     private final Activity activity;
@@ -274,7 +276,7 @@ final class FollowFlow {
         resume.setVisibility(position >= 0 ? android.view.View.VISIBLE : android.view.View.GONE);
         if (position >= 0) {
             resume.setText(UiText.format(
-                    "morphe_series_tracker_resume_at", ResumePlanner.time(position)));
+                    "morphe_series_tracker_resume_at", MediaTime.format(position)));
         }
         updateOrder();
     }

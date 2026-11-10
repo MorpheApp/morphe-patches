@@ -15,7 +15,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
@@ -76,48 +78,91 @@ val niconicoCommentsPatch = patch(
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_niconico_comments_screen",
-                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference(
                         "morphe_niconico_comments",
                         titleKey = "morphe_niconico_comments_screen_title",
                         summary = true
                     ),
-                    NonInteractivePreference(
-                        "morphe_niconico_comments_font_size",
-                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-                        selectable = true
+                    PreferenceCategory(
+                        key = "morphe_niconico_comments_appearance_category",
+                        titleKey = "morphe_niconico_comments_appearance_title",
+                        sorting = Sorting.UNSORTED,
+                        preferences = setOf(
+                            NonInteractivePreference(
+                                "morphe_niconico_comments_font_size",
+                                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                                selectable = true
+                            ),
+                            NonInteractivePreference(
+                                "morphe_niconico_comments_opacity",
+                                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                                selectable = true
+                            ),
+                            NonInteractivePreference(
+                                "morphe_niconico_comments_travel_duration",
+                                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                                selectable = true
+                            ),
+                            NonInteractivePreference(
+                                "morphe_niconico_comments_display_area",
+                                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                                selectable = true
+                            ),
+                            SwitchPreference("morphe_niconico_comments_hide_crowded", summary = true),
+                            NonInteractivePreference(
+                                "morphe_niconico_comments_max_length",
+                                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                                selectable = true
+                            ),
+                            NonInteractivePreference(
+                                "morphe_niconico_comments_max_refresh_rate",
+                                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                                selectable = true
+                            )
+                        )
                     ),
-                    NonInteractivePreference(
-                        "morphe_niconico_comments_opacity",
-                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-                        selectable = true
+                    PreferenceCategory(
+                        key = "morphe_niconico_comments_portrait_category",
+                        titleKey = "morphe_niconico_comments_portrait_category_title",
+                        sorting = Sorting.UNSORTED,
+                        preferences = setOf(
+                            SwitchPreference("morphe_niconico_comments_portrait", summary = true),
+                            SwitchPreference(
+                                key = "morphe_niconico_comments_separate_portrait",
+                                summary = true,
+                                tag = "app.morphe.extension.youtube.settings.preference.NiconicoCommentsSeparatePortraitPreference"
+                            ),
+                            NonInteractivePreference(
+                                "morphe_niconico_comments_portrait_font_size",
+                                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                                selectable = true
+                            ),
+                            NonInteractivePreference(
+                                "morphe_niconico_comments_portrait_travel_duration",
+                                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                                selectable = true
+                            ),
+                            NonInteractivePreference(
+                                "morphe_niconico_comments_portrait_display_area",
+                                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                                selectable = true
+                            )
+                        )
                     ),
-                    NonInteractivePreference(
-                        "morphe_niconico_comments_travel_duration",
-                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-                        selectable = true
-                    ),
-                    NonInteractivePreference(
-                        "morphe_niconico_comments_display_area",
-                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-                        selectable = true
-                    ),
-                    NonInteractivePreference(
-                        "morphe_niconico_comments_max_length",
-                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-                        selectable = true
-                    ),
-                    NonInteractivePreference(
-                        "morphe_niconico_comments_max_refresh_rate",
-                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-                        selectable = true
-                    ),
-                    SwitchPreference("morphe_niconico_comments_live_streams", summary = true),
-                    SwitchPreference("morphe_niconico_comments_live_premieres", summary = true),
-                    SwitchPreference("morphe_niconico_comments_ended_premieres", summary = true),
-                    SwitchPreference("morphe_niconico_comments_timed_comments", summary = true),
-                    SwitchPreference("morphe_niconico_comments_timed_comments_with_replay", summary = true)
+                    PreferenceCategory(
+                        key = "morphe_niconico_comments_video_types_category",
+                        titleKey = "morphe_niconico_comments_video_types_title",
+                        sorting = Sorting.UNSORTED,
+                        preferences = setOf(
+                            SwitchPreference("morphe_niconico_comments_live_streams", summary = true),
+                            SwitchPreference("morphe_niconico_comments_live_premieres", summary = true),
+                            SwitchPreference("morphe_niconico_comments_ended_premieres", summary = true),
+                            SwitchPreference("morphe_niconico_comments_timed_comments", summary = true),
+                            SwitchPreference("morphe_niconico_comments_timed_comments_with_replay", summary = true)
+                        )
+                    )
                 )
             )
         )

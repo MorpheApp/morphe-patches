@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package app.morphe.extension.youtube.innertube.elementtexts;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+option java_outer_classname = "ElementTexts";
+
+// Bytes of a Litho element (the newElement of an elementRenderer), with only the texts
+// that the video cards and the comments show. The field numbers are the same as in feed_card_layout.proto.
+message Element {
+    ElementType type = 1;
+    // Elements inside a container element, such as the Short inside the cell of a Short.
+    repeated Element children = 3;
+}
+
+message ElementType {
+    ComponentType componentType = 168777401;
+}
+
+message ComponentType {
+    ElementModel model = 5;
+}
+
+message ElementModel {
+    // Feed video (video_lockup_with_attachment.eml).
+    VideoWithContextModel videoWithContextModel = 232954548;
+    // View models, such as the Short of shorts_video_cell.eml.
+    YoutubeModel youtubeModel = 413471385;
+    // Comment of comment_thread.eml.
+    CommentModel commentModel = 203234692;
+    // Title of the video of compact_video.eml (metadata.eml), such as the search results of YouTube 20.26.
+    CompactVideoMetadataModel compactVideoMetadataModel = 196274543;
+}
+
+message VideoWithContextModel {
+    VideoWithContextData data = 18;
+}
+
+message VideoWithContextData {
+    VideoData videoData = 1;
+}
+
+message VideoData {
+    ChannelAvatar avatar = 3;
+    LockupMetadata lockupMetadata = 21;
+}
+
+message ChannelAvatar {
+    InnertubeCommandHolder endpoint = 5;
+}
+
+message InnertubeCommandHolder {
+    InnertubeCommand innertubeCommand = 169495254;
+}
+
+message InnertubeCommand {
+    BrowseEndpoint browseEndpoint = 48687626;
+}
+
+message BrowseEndpoint {
+    string canonicalBaseUrl = 4; // Handle of the channel, such as "/@handle".
+}
+
+message LockupMetadata {
+    LockupMetadataViewModel lockupMetadataViewModel = 8178;
+}
+
+message LockupMetadataViewModel {
+    AttributedText title = 1;
+    ContentMetadata metadata = 3;
+}
+
+message ContentMetadata {
+    ContentMetadataViewModel contentMetadataViewModel = 514549827;
+}
+
+// Lines below the title: the channel, the views and the date. Some app versions show them in one text,
+// such as "Channel   1.2M   3y ago", and others in separate parts, such as the channel and the views.
+message ContentMetadataViewModel {
+    repeated MetadataRow metadataRows = 1;
+}
+
+message MetadataRow {
+    repeated MetadataPart metadataParts = 1;
+}
+
+message MetadataPart {
+    AttributedText text = 2;
+}
+
+message AttributedText {
+    string content = 1;
+}
+
+message YoutubeModel {
+    ViewModelHolder viewModel = 1;
+}
+
+message ViewModelHolder {
+    ShortsLockupViewModel shortsLockupViewModel = 518308277;
+}
+
+message ShortsLockupViewModel {
+    ShortsLockupTitle title = 22;
+    // Only in some layouts, such as the search results.
+    ShortsLockupMetadata metadata = 23;
+}
+
+message ShortsLockupTitle {
+    AttributedText text = 1;
+}
+
+message ShortsLockupMetadata {
+    AttributedText channelName = 1;
+}
+
+message CommentModel {
+    CommentData data = 1;
+}
+
+message CommentData {
+    CommentProperties properties = 2;
+    CommentAuthor author = 3;
+}
+
+message CommentProperties {
+    AttributedText content = 3;
+}
+
+message CommentAuthor {
+    string displayName = 2; // Handle of the author, such as "@handle".
+}
+
+message CompactVideoMetadataModel {
+    CompactVideoMetadata metadata = 1;
+}
+
+message CompactVideoMetadata {
+    string title = 1;
+}

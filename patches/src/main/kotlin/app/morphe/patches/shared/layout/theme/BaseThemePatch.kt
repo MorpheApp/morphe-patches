@@ -317,6 +317,8 @@ internal val THEME_DEFAULT_COLOR_NAMES_DARK = setOf(
     "yt_black0", "yt_black1", "yt_black2", "yt_black3", "yt_black4",
     "yt_black1_opacity95", "yt_black1_opacity98",
     "yt_status_bar_background_dark", APP_COLOR_NAME_DARK,
+    "yt_ref_color_constants_default_baseline_black_black1",
+    "yt_ref_color_constants_default_grey20",
     "yt_sys_color_baseline_mobile_dark_default_raised_background",
     "material_grey_850"
 )

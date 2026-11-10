@@ -1,7 +1,5 @@
 package app.morphe.extension.shared.settings.preference;
 
-import static app.morphe.extension.shared.StringRef.str;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Pair;
@@ -9,7 +7,6 @@ import android.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 
@@ -118,13 +115,7 @@ public class SortedListPreference extends CustomDialogListPreference {
     }
 
     public SortedListPreference(Context context, Setting<?> setting) {
-        this(context);
-
-        String key = setting.key;
-        setKey(key);
-        setTitle(str(key + "_title"));
-        setEntries(ResourceUtils.getStringArray(key + "_entries"));
-        setEntryValues(ResourceUtils.getStringArray(key + "_entry_values"));
+        super(context, setting);
     }
 
     /**

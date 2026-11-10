@@ -97,9 +97,10 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Dífhabhtú</string>
   <string name="morphe_debug_screen_summary">Cumraigh roghanna forbróra ardleibhéil agus logaí diagnóiseacha</string>
-  <string name="morphe_debug_title">Cumasaigh logáil dífhabhtaithe</string>
-  <string name="morphe_debug_stacktrace_title">Rian staice loga dífhabhtaithe</string>
-  <string name="morphe_debug_stacktrace_summary">Áirítear rianta cruachta i logaí dífhabhtaithe chun cabhrú le hearráidí a aithint</string>
+  <string name="morphe_debug_level_title">Logáil dífhabhtaithe</string>
+  <string name="morphe_debug_level_entry_disabled">Díchumasaithe</string>
+  <string name="morphe_debug_level_entry_debug">Dífhabhtaigh</string>
+  <string name="morphe_debug_level_entry_verbose">Foclach</string>
   <string name="morphe_debug_toast_on_error_title">Taispeáin tósta ar earráid Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Má mhúchann tú fógraí earráide, cuirfear gach fógra earráide ó Morphe i bhfolach.
 
@@ -229,7 +230,20 @@ Mura n-athraítear na hoptamuithe ceallraí, d’fhéadfadh na nithe seo a leana
 Más mian leat an taithí is saoire, ansin &lt;b&gt;díshuiteáil&lt;/b&gt; seo agus paisteáil an leagan molta den aip de ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ba mhaith liom turgnamhach</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ba mhaith liom cobhsaíocht</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Taispeáin fógra laistigh den aip maidir le nuashonruithe paiste</string>
+  <string name="morphe_patches_update_notice_entry_off">As</string>
+  <string name="morphe_patches_update_notice_entry_stable">Eisiúintí cobhsaí</string>
+  <string name="morphe_patches_update_notice_entry_dev">Eisiúintí cobhsaí agus forbartha</string>
+  <string name="morphe_patches_update_notice_dialog_title">Paistí nua ar fáil</string>
+  <string name="morphe_patches_update_notice_dialog_message">Paistí Morphe &lt;b&gt;%1$s&lt;/b&gt; (reatha: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Gnéithe nua</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Ceartúcháin ar fhabhtanna</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Athruithe eile</string>
+  <string name="morphe_patches_update_notice_dialog_more">…agus %s eile</string>
+  <string name="morphe_patches_update_notice_dialog_update">Nuashonrú</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Diúltaigh</string>
   <!-- misc.crashlog.crashLogPatch -->
-  <string name="morphe_crash_log_saved_documents">Log tuairteála sábháilte i ndoiciméid an úsáideora: %s</string>
-  <string name="morphe_crash_log_saved">Log tuairteála sábháilte: %s</string>
+  <string name="morphe_crash_log_saved_documents">Log timpiste sábháilte i ndoiciméid an úsáideora: %s</string>
+  <string name="morphe_crash_log_saved">Log timpiste sábháilte: %s</string>
 </resources>

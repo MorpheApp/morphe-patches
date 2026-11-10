@@ -14,6 +14,7 @@ package app.morphe.extension.youtube.niconicocomments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -144,7 +145,7 @@ final class NiconicoCommentsOverlayView extends View {
         fontSizeSp = nextFontSizeSp;
         applyFontSize();
         if (getHeight() > 0) {
-            schedule.redistributeLanes(getLaneCount());
+            redistributeLanes();
         }
         invalidate();
     }
@@ -163,7 +164,7 @@ final class NiconicoCommentsOverlayView extends View {
         }
         displayAreaPercent = nextDisplayAreaPercent;
         if (getHeight() > 0) {
-            schedule.redistributeLanes(getLaneCount());
+            redistributeLanes();
         }
         invalidate();
     }
@@ -174,7 +175,14 @@ final class NiconicoCommentsOverlayView extends View {
             return;
         }
         schedule.setCommentDurationMs(durationMs);
+        if (getHeight() > 0) {
+            redistributeLanes();
+        }
         invalidate();
+    }
+
+    void setHideCrowdedComments(boolean hide) {
+        schedule.setHideCrowdedComments(hide);
     }
 
     void setMaxRefreshRate(int nextMaxRefreshRate) {
@@ -211,12 +219,28 @@ final class NiconicoCommentsOverlayView extends View {
     }
 
     @Override
+    protected void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        NiconicoCommentsController.onConfigurationChanged(newConfig);
+    }
+
+    @Override
     protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
         super.onSizeChanged(width, height, oldWidth, oldHeight);
-        if (height > 0 && height != oldHeight) {
-            schedule.redistributeLanes(getLaneCount());
+        if (height > 0 && (height != oldHeight || width != oldWidth)) {
+            redistributeLanes();
             requestNextFrame();
         }
+    }
+
+    /**
+     * Places the comments again with the current sizes. A new size always comes through here.
+     */
+    private void redistributeLanes() {
+        // Half the font size between comments, and at least room for the backgrounds of paid messages.
+        float minGap = Math.max(fillPaint.getTextSize() / 2, 2 * backgroundPadding + strokePaint.getStrokeWidth());
+        schedule.setLayout(getWidth(), minGap, this::measureCommentWidth);
+        schedule.redistributeLanes(getLaneCount());
     }
 
     @Override

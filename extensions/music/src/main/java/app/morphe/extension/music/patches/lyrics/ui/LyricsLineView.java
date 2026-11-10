@@ -68,6 +68,7 @@ final class LyricsLineView extends TextView {
     long positionMs = Long.MIN_VALUE;
     boolean allSung = false;
     private int unsungColor;
+    private boolean sweepEnabled;
     int originalTextStart;
     private float[] lineMaxSungX;
     private Layout cachedLayout;
@@ -113,8 +114,10 @@ final class LyricsLineView extends TextView {
     int romaEnd = -1;
     boolean perWordReading;
     boolean showSyllableRomanization;
+    boolean rubyActive;
     boolean smallRunHoldsWords;
     float lastTouchY;
+    float lastTouchX;
     private final Paint layerPaint = new Paint();
     private PorterDuffColorFilter tintFilter;
     private int tintFilterColor;
@@ -322,6 +325,15 @@ final class LyricsLineView extends TextView {
         setRomanizationBounds(start, end, perWord, false);
     }
 
+    void setRubyActive(boolean active) {
+        if (rubyActive != active) {
+            rubyActive = active;
+            syllableCache = null;
+            requestLayout();
+            invalidate();
+        }
+    }
+
     void setRomanizationBounds(int start, int end, boolean perWord, boolean syllableInline) {
         if (romaStart != start || romaEnd != end
                 || perWordReading != perWord
@@ -465,15 +477,48 @@ final class LyricsLineView extends TextView {
     }
 
     @Nullable
-    String getCopyTextForTouch(float touchY) {
+    String getCopyTextForTouch(float touchX, float touchY) {
         SyllableRomanCache syllables = syllableCache;
         if (syllables != null && syllables.hasSyllableRomanization) {
+            final float x = touchX - textOriginX();
             final float y = touchY - textOriginY();
-            if (syllables.transLayout != null && (syllables.mainTopY > 0
-                    ? y < syllables.mainTopY : y >= syllables.transTopY)) {
+
+            // Translation region: whole translation, unchanged.
+            if (syllables.transLayout != null && (syllables.transTopY == 0
+                    ? y < syllables.transLayout.getHeight() : y >= syllables.transTopY)) {
                 return syllables.transText;
             }
-            return syllables.mainText != null ? syllables.mainText.trim() : null;
+
+            int sylIdx = findSyllableByX(x, syllables.sylShiftedLeadX, syllables.sylShiftedTrailX);
+            if (sylIdx < 0) {
+                return syllables.mainText != null ? syllables.mainText.trim() : null;
+            }
+            AlignedSyllable syl = syllables.alignedSyllables.get(sylIdx);
+
+            // Ruby region: above the main text.
+            if (y < syllables.mainTopY) {
+                String ruby = syl.syllable().ruby();
+                if (ruby != null && !ruby.isEmpty()) {
+                    return ruby;
+                }
+            }
+
+            // Romaji region: below the main text.
+            if (y >= syllables.mainTopY + syllables.mainLayoutHeight) {
+                String romaji = syl.syllable().romaji();
+                if (romaji != null && !romaji.isEmpty()) {
+                    return romaji;
+                }
+            }
+
+            // Main text region: just this syllable's characters.
+            int start = syl.startOffset();
+            int end = syl.endOffset();
+            String mainText = syllables.mainText;
+            if (mainText != null && end > start && end <= mainText.length()) {
+                return mainText.substring(start, end);
+            }
+            return mainText != null ? mainText.trim() : null;
         }
         Layout layout = getLayout();
         if (layout == null) {
@@ -506,11 +551,33 @@ final class LyricsLineView extends TextView {
         return null;
     }
 
+    /** Finds which syllable's horizontal range contains x, or the nearest one. */
+    private static int findSyllableByX(float x, float[] leadX, float[] trailX) {
+        for (int i = 0; i < leadX.length; i++) {
+            if (x >= leadX[i] && x <= trailX[i]) {
+                return i;
+            }
+        }
+        // Touch is between syllables; return the nearest by midpoint.
+        int nearest = -1;
+        float nearestDist = Float.MAX_VALUE;
+        for (int i = 0; i < leadX.length; i++) {
+            float mid = (leadX[i] + trailX[i]) / 2f;
+            float dist = Math.abs(x - mid);
+            if (dist < nearestDist) {
+                nearestDist = dist;
+                nearest = i;
+            }
+        }
+        return nearest;
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             lastTouchY = event.getY();
+            lastTouchX = event.getX();
         }
         return super.onTouchEvent(event);
     }
@@ -529,6 +596,15 @@ final class LyricsLineView extends TextView {
         this.wordTimings = timings != null ? timings : Collections.emptyList();
         this.positionMs = posMs;
         this.allSung = sung;
+        boolean hasRealTimings = false;
+        for (LyricsSpanBuilder.WordTiming wt : this.wordTimings) {
+            if (!wt.averaged()) {
+                hasRealTimings = true;
+                break;
+            }
+        }
+        this.sweepEnabled = hasRealTimings;
+
         this.unsungColor = unsungCol;
         this.originalTextStart = origStart;
         if (structuralChange) {
@@ -756,14 +832,14 @@ final class LyricsLineView extends TextView {
         }
 
         final float contentNow = contentReveal;
-        final int mainAlpha = Math.round(((unsungColor != 0 && !wordTimings.isEmpty())
+        final int mainAlpha = Math.round(((unsungColor != 0 && !wordTimings.isEmpty() && sweepEnabled)
                 ? LyricsColors.UNSUNG_ALPHA * 255f : baseTextAlpha) * lineAlpha * contentNow);
         final float secondaryBaseAlpha = activeLine
                 ? LyricsColors.ACTIVE_TRANSLATION_ALPHA * 255f
                 : Color.alpha(LyricsColors.secondaryTextColor());
         final int secondaryAlpha = Math.round(lineAlpha * secondaryBaseAlpha * contentNow);
         final float readingBaseAlpha = activeLine
-                ? (perWordReading && Settings.LYRICS_WORD_SYNC.get()
+                ? (perWordReading && Settings.LYRICS_WORD_SYNC.get() && sweepEnabled
                    ? LyricsColors.UNSUNG_ALPHA * 255f
                    : LyricsColors.ACTIVE_READING_ALPHA * 255f)
                 : Color.alpha(LyricsColors.secondaryTextColor());
@@ -807,8 +883,8 @@ final class LyricsLineView extends TextView {
                     // exactly when the reading's range is the one present.
                     final boolean runHoldsWords = smallRunHoldsWords ? isRoma == (romaFirst >= 0) : isRoma;
                     final float reveal = isRoma ? romaReveal : transReveal;
-            drawTextRun(canvas, layout, runStart, runLast,
-                    Math.round((runHoldsWords ? romaAlpha : secondaryAlpha) * reveal), 0);
+                    drawTextRun(canvas, layout, runStart, runLast,
+                            Math.round((runHoldsWords ? romaAlpha : secondaryAlpha) * reveal), 0);
                 } else {
                     drawTextRun(canvas, layout, runStart, runLast, mainAlpha, 0);
                 }
@@ -878,7 +954,8 @@ final class LyricsLineView extends TextView {
         }
         try {
             if (contentReveal <= 0f
-                    || unsungColor == 0 || (wordTimings.isEmpty() && !allSung)) {
+                    || (!sweepEnabled && !allSung && !activeLine)
+                    || (wordTimings.isEmpty() && !allSung)) {
                 return;
             }
 
@@ -1028,10 +1105,17 @@ final class LyricsLineView extends TextView {
                 }
             }
 
+            if (!sweepEnabled && activeLine) {
+                for (int ln = 0; ln < lineCount; ln++) {
+                    lineMaxSungX[ln] = isRightToLeftLine(layout, ln)
+                            ? cachedLineLeft[ln] : cachedLineRight[ln];
+                }
+            }
+
             // Smallness follows the run beside it, never the words it holds: a dual line hands those to the
             // reading wherever the swap puts it, so a main run without them is still the main run.
-        final int lyricColor = LyricsColors.lineTextColor() | 0xFF000000;
-        final int readingColor = (activeLine ? lyricColor : LyricsColors.secondaryTextColor()) | 0xFF000000;
+            final int lyricColor = LyricsColors.lineTextColor() | 0xFF000000;
+            final int readingColor = (activeLine ? lyricColor : LyricsColors.secondaryTextColor()) | 0xFF000000;
             // A main run holding none of the line's words has no word to light it, so it would sit in
             // the unsung colour for the whole line and then jump white at the last word. Drawn while the
             // line is active instead, and kept once the words are past so it does not fall back.
@@ -1156,6 +1240,7 @@ final class LyricsLineView extends TextView {
         final int transTopY;
         final int mainTopY;
         final int totalHeightPx;
+        final int mainLayoutHeight;
 
         SyllableRomanCache(int widthPx, float fontSizePx, boolean hasSyllableRomanization,
                            @Nullable String mainText, int lineCount, List<AlignedSyllable> alignedSyllables,
@@ -1163,7 +1248,7 @@ final class LyricsLineView extends TextView {
                            RomanLineStatics[] romanLines, RomanLineStatics[] rubyLines, int[] sylLine,
                            float[] sylShiftedLeadX, float[] sylShiftedTrailX,
                            @Nullable String transText, @Nullable StaticLayout transLayout,
-                           int transTopY, int mainTopY, int totalHeightPx) {
+                           int transTopY, int mainTopY, int totalHeightPx, int mainLayoutHeight) {
             this.widthPx = widthPx;
             this.fontSizePx = fontSizePx;
             this.hasSyllableRomanization = hasSyllableRomanization;
@@ -1184,6 +1269,7 @@ final class LyricsLineView extends TextView {
             this.transTopY = transTopY;
             this.mainTopY = mainTopY;
             this.totalHeightPx = totalHeightPx;
+            this.mainLayoutHeight = mainLayoutHeight;
         }
 
         /** Remembers that a line has nothing to draw this way, so it is not worked out every frame. */
@@ -1192,7 +1278,7 @@ final class LyricsLineView extends TextView {
                     Collections.emptyList(), 0, Collections.emptyList(),
                     new ClusterStatics(new float[0], new float[0]),
                     new RomanLineStatics[0], new RomanLineStatics[0], new int[0], new float[0], new float[0],
-                    null, null, 0, 0, 0);
+                    null, null, 0, 0, 0, 0);
         }
     }
 
@@ -1207,6 +1293,21 @@ final class LyricsLineView extends TextView {
                 .setIncludePad(false)
                 .setMaxLines(1)
                 .build();
+    }
+
+    /** Shrinks a reading wider than its line so it doesn't run off the edge. */
+    private static StaticLayout buildFittedLayout(String text, TextPaint paint, float maxWidthPx) {
+        StaticLayout layout = buildSingleLineLayout(text, paint);
+        if (maxWidthPx <= 0f) {
+            return layout;
+        }
+        final float width = singleLineWidth(text, paint, layout);
+        if (width <= maxWidthPx) {
+            return layout;
+        }
+        final float scale = maxWidthPx / Math.max(1f, width);
+        paint.setTextSize(Math.max(1f, paint.getTextSize() * scale));
+        return buildSingleLineLayout(text, paint);
     }
 
     private static float singleLineWidth(String text, TextPaint paint, StaticLayout layout) {
@@ -1261,7 +1362,8 @@ final class LyricsLineView extends TextView {
         rubyPaint.setLetterSpacing(0f);
 
         String formattedMainText = buildFormattedMainText(
-                rawMainText, wordTimings, mainPaint, romPaint, rubyPaint, widthPx, fontSizePx);
+                rawMainText, wordTimings, mainPaint, romPaint, rubyPaint, widthPx, fontSizePx,
+                rubyActive);
 
         StaticLayout mainLayout = StaticLayout.Builder.obtain(
                         formattedMainText, 0, formattedMainText.length(), mainPaint, widthPx)
@@ -1290,10 +1392,11 @@ final class LyricsLineView extends TextView {
         List<AlignedSyllable> alignedSyllables =
                 alignSyllablesForFormatting(wordTimings, rawMainText, formattedMainText);
         List<RomanizedWordCluster> romanClusters =
-                buildRomanizedWordClusters(alignedSyllables, formattedMainText, mainLayout, romPaint);
-        final boolean enableRuby = Settings.LYRICS_RUBY.get();
-        List<RomanizedWordCluster> rubyClusters = enableRuby
-                ? buildRubyClusters(alignedSyllables, formattedMainText, mainLayout, rubyPaint)
+                buildRomanizedWordClusters(alignedSyllables, formattedMainText, mainLayout, romPaint,
+                        widthPx);
+        List<RomanizedWordCluster> rubyClusters = rubyActive
+                ? buildRubyClusters(alignedSyllables, formattedMainText, mainLayout, rubyPaint,
+                widthPx)
                 : Collections.emptyList();
         if (romanClusters.isEmpty() && rubyClusters.isEmpty()) {
             return SyllableRomanCache.none(widthPx, fontSizePx);
@@ -1406,7 +1509,8 @@ final class LyricsLineView extends TextView {
         return new SyllableRomanCache(widthPx, fontSizePx, true, rawMainText, lineCount,
                 alignedSyllables, extraRomanHeightPx, clusters, statics,
                 romanStatics, rubyStatics, sylLine,
-                sylShiftedLeadX, sylShiftedTrailX, transText, transLayout, transTopY, mainTopY, totalH);
+                sylShiftedLeadX, sylShiftedTrailX, transText, transLayout, transTopY, mainTopY, totalH,
+                mainLayout.getHeight());
     }
 
     /** Finds each word timing in the laid out text, which may carry bidi marks and added breaks. */
@@ -1485,7 +1589,8 @@ final class LyricsLineView extends TextView {
             TextPaint romPaint,
             @Nullable TextPaint rubyPaint,
             int widthPx,
-            float fontSizePx) {
+            float fontSizePx,
+            boolean rubyActive) {
         if (mainText.isEmpty() || widthPx <= 0 || words.isEmpty()) {
             return mainText;
         }
@@ -1503,10 +1608,9 @@ final class LyricsLineView extends TextView {
                 .build();
 
         List<RomanizedWordCluster> romanClusters =
-                buildRomanizedWordClusters(alignedSyllables, mainText, unconstrained, romPaint);
-        final boolean enableRuby = Settings.LYRICS_RUBY.get();
-        List<RomanizedWordCluster> rubyClusters = (enableRuby && rubyPaint != null)
-                ? buildRubyClusters(alignedSyllables, mainText, unconstrained, rubyPaint)
+                buildRomanizedWordClusters(alignedSyllables, mainText, unconstrained, romPaint, widthPx);
+        List<RomanizedWordCluster> rubyClusters = (rubyActive && rubyPaint != null)
+                ? buildRubyClusters(alignedSyllables, mainText, unconstrained, rubyPaint, widthPx)
                 : Collections.emptyList();
         if (romanClusters.isEmpty() && rubyClusters.isEmpty()) {
             return mainText;
@@ -1692,7 +1796,8 @@ final class LyricsLineView extends TextView {
             List<AlignedSyllable> alignedSyllables,
             String mainText,
             Layout textLayoutResult,
-            TextPaint romPaint) {
+            TextPaint romPaint,
+            float maxWidthPx) {
         if (alignedSyllables.isEmpty() || mainText.isEmpty()) {
             return Collections.emptyList();
         }
@@ -1718,8 +1823,9 @@ final class LyricsLineView extends TextView {
                 final int clampedStart = Math.max(0, Math.min(syl.startOffset(), maxCharIdx));
                 final int li = textLayoutResult.getLineForOffset(clampedStart);
                 TextPaint subPaint = new TextPaint(romPaint);
-                StaticLayout subLayout = buildSingleLineLayout(text, subPaint);
                 final float pad = (idx + 1 < alignedSyllables.size()) ? Dim.dp(2) : 0f;
+                StaticLayout subLayout = buildFittedLayout(text, subPaint,
+                        maxWidthPx > 0f ? Math.max(1f, maxWidthPx - pad) : 0f);
                 final float romW = singleLineWidth(text, subPaint, subLayout) + pad;
                 result.add(new RomanizedWordCluster(idx, syl.startOffset(), li, subLayout, romW));
             }
@@ -2036,7 +2142,8 @@ final class LyricsLineView extends TextView {
             List<AlignedSyllable> alignedSyllables,
             String mainText,
             Layout textLayoutResult,
-            TextPaint rubyPaint) {
+            TextPaint rubyPaint,
+            float maxWidthPx) {
         if (alignedSyllables.isEmpty() || mainText.isEmpty()) {
             return Collections.emptyList();
         }
@@ -2061,7 +2168,7 @@ final class LyricsLineView extends TextView {
                 final int clampedStart = Math.max(0, Math.min(syl.startOffset(), maxCharIdx));
                 final int li = textLayoutResult.getLineForOffset(clampedStart);
                 TextPaint subPaint = new TextPaint(rubyPaint);
-                StaticLayout subLayout = buildSingleLineLayout(text, subPaint);
+                StaticLayout subLayout = buildFittedLayout(text, subPaint, maxWidthPx);
                 final float romW = singleLineWidth(text, subPaint, subLayout);
                 result.add(new RomanizedWordCluster(idx, syl.startOffset(), li, subLayout, romW));
             }
@@ -2108,7 +2215,9 @@ final class LyricsLineView extends TextView {
             final float baseBaseline = li < lineBaselines.length
                     ? lineBaselines[li] : (fontSizePx * 0.8f);
             final float rubyGap = Dim.dp(4);
-            final float y = baseBaseline - fontSizePx * 0.85f - rubyGap - maxClusterHeight + li * lineExtraHeight;
+            // Furigana rides along with the line it reads
+            final float y = baseBaseline - fontSizePx * 0.85f - rubyGap - maxClusterHeight
+                    + li * lineExtraHeight;
             lines[li] = new RomanLineStatics(cs, drawX, y);
         }
         return lines;
@@ -2124,15 +2233,17 @@ final class LyricsLineView extends TextView {
         final float originY = textOriginY();
         final float mainY = originY + cache.mainTopY;
 
-        // The unsung colours, as drawBaseText picks them.
-        final int mainUnsungAlpha = Math.round(((unsungColor != 0 && !wordTimings.isEmpty())
+        // The unsung colours, as drawBaseText picks them. Without a real sweep (synthesized
+        // plain-text timings), the main text is not being karaoke-swept, so it stays bright.
+        final boolean dimMain = unsungColor != 0 && !wordTimings.isEmpty() && sweepEnabled;
+        final int mainUnsungAlpha = Math.round((dimMain
                 ? LyricsColors.UNSUNG_ALPHA * 255f : baseTextAlpha) * lineAlpha * contentNow);
         final float secondaryBaseAlpha = activeLine
                 ? LyricsColors.ACTIVE_TRANSLATION_ALPHA * 255f
                 : Color.alpha(LyricsColors.secondaryTextColor());
         final int transAlpha = Math.round(lineAlpha * secondaryBaseAlpha * contentNow * transReveal);
         final float readingBaseAlpha = activeLine
-                ? (Settings.LYRICS_WORD_SYNC.get() && unsungColor != 0 && !wordTimings.isEmpty()
+                ? (Settings.LYRICS_WORD_SYNC.get() && unsungColor != 0 && !wordTimings.isEmpty() && sweepEnabled
                    ? LyricsColors.UNSUNG_ALPHA * 255f
                    : LyricsColors.ACTIVE_READING_ALPHA * 255f)
                 : Color.alpha(LyricsColors.secondaryTextColor());
@@ -2167,9 +2278,8 @@ final class LyricsLineView extends TextView {
         if (romaReveal > 0f && romaUnsungAlpha > 0) {
             drawUnsungReadings(canvas, cache.romanLines, originX, mainY, romaUnsungColor);
         }
-        final boolean drawRuby = Settings.LYRICS_RUBY.get();
         final int rubyUnsungAlpha = Math.round(lineAlpha * readingBaseAlpha * contentNow);
-        if (drawRuby && rubyUnsungAlpha > 0) {
+        if (rubyUnsungAlpha > 0) {
             drawUnsungReadings(canvas, cache.rubyLines, originX, mainY,
                     readingRgb | (Math.max(0, Math.min(255, rubyUnsungAlpha)) << 24));
         }
@@ -2185,7 +2295,7 @@ final class LyricsLineView extends TextView {
         }
 
         // The sweep, as onDraw runs it.
-        if (unsungColor == 0 || (wordTimings.isEmpty() && !allSung)) {
+        if ((!sweepEnabled && !allSung && !activeLine) || (wordTimings.isEmpty() && !allSung)) {
             return;
         }
 
@@ -2235,6 +2345,16 @@ final class LyricsLineView extends TextView {
             }
         }
 
+        if (!sweepEnabled && activeLine) {
+            for (int ln = 0; ln < lineCount; ln++) {
+                lineMaxSungX[ln] = Float.MAX_VALUE;
+            }
+            // Readings light whole too, not per-syllable from the synthesized range.
+            for (int i = 0; i < sylCount; i++) {
+                sylProgress[i] = 1f;
+            }
+        }
+
         final int mainSungAlpha = Math.round(255f * contentNow);
         final int mainSungColor = (LyricsColors.lineTextColor() & 0x00FFFFFF)
                 | (Math.max(0, Math.min(255, mainSungAlpha)) << 24);
@@ -2276,11 +2396,9 @@ final class LyricsLineView extends TextView {
                     readingRgb | (Math.max(0, Math.min(255, romaSungAlpha)) << 24),
                     sylProgress, sylCount, allSung);
         }
-        if (drawRuby) {
-            drawSungReadings(canvas, cache.rubyLines, originX, mainY,
-                    readingRgb | (Math.max(0, Math.min(255, sungReadingAlpha)) << 24),
-                    sylProgress, sylCount, allSung);
-        }
+        drawSungReadings(canvas, cache.rubyLines, originX, mainY,
+                readingRgb | (Math.max(0, Math.min(255, sungReadingAlpha)) << 24),
+                sylProgress, sylCount, allSung);
     }
 
     private static void drawUnsungReadings(Canvas canvas, RomanLineStatics[] lines,

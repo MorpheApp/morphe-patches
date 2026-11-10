@@ -34,7 +34,7 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class NativeSnackbarPatch {
 
-    private static final long MESSAGE_INTERVAL_MS = 5000;
+    private static final long MESSAGE_INTERVAL_MS = 3000;
 
     private record QueuedMessage(String message, boolean longDuration) {
     }
@@ -125,7 +125,7 @@ public final class NativeSnackbarPatch {
                 offset = Math.max(0, Math.min(paddingBottom, roomBelow));
             }
 
-            offset -= GlassNavigationBar.getAddedRoomOnScreen();
+            offset -= YouTubeGlassNavigationBar.getAddedRoomOnScreen();
             if (offset == 0) {
                 return;
             }

@@ -300,7 +300,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Приховує спливні підказки біля панелі вводу чату, наприклад повідомлення про чат лише для підписників</string>
   <string name="morphe_hide_comments_menu_button_title">Приховати кнопку \"Меню\"</string>
   <string name="morphe_hide_comments_menu_button_summary">Приховує кнопку меню з трьома крапками для кожного коментаря</string>
-  <string name="morphe_hide_comments_preview_comment_title">Приховати прев\'ю коментар</string>
+  <string name="morphe_hide_comments_preview_comment_title">Приховати попередній коментар</string>
   <string name="morphe_hide_comments_preview_comment_summary">Приховує попередній перегляд коментаря під відео до повного відкриття секції коментарів</string>
   <string name="morphe_hide_comments_preview_comment_hidden">Коментар приховано Morphe</string>
   <string name="morphe_minimal_comments_button_title">Увімкнути мінімалістичну кнопку коментарів</string>
@@ -319,25 +319,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">Приховати відео в пошуку</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Приховати відео в підписках</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ключові слова, які потрібно приховати</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Введіть ключові слова та фрази, які потрібно приховати, кожне з нового рядка
+  <string name="morphe_hide_keyword_content_phrases_summary">"Введіть ключові слова та фрази для приховування, розділяючи їх новими рядками
 
-Ключові слова можуть бути будь-яким текстом із назв відео або назв каналів
-
-Слова з великими літерами всередині потрібно вводити точно (наприклад, iPhone, TikTok, Івано-Франківськ)"</string>
+Ключовими словами може бути будь-який текст, що показується в назвах відео або назвах каналів"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Головна / Підписки / Пошук / Коментарі фільтруються, щоб приховати вміст, який відповідає ключовим фразам
 
 Обмеження:
-• Shorts неможливо приховати за назвою каналу
-• Деякі компоненти інтерфейсу можуть не приховуватися
-• Пошук за ключовим словом може не показувати результатів"</string>
+• Деякі Shorts неможливо приховати за назвою каналу
+• Деякі елементи інтерфейсу можуть не приховуватися"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Лише цілі слова</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Взяття ключового слова/фрази в подвійні лапки запобігатиме частковим збігам назв відео та каналів&lt;br&gt;&lt;br&gt;Наприклад,&lt;br&gt;&lt;b&gt;\"ші\"&lt;/b&gt; приховає відео: &lt;b&gt;Як працює ШІ (штучний інтелект)?&lt;/b&gt;&lt;br&gt;але не приховає: &lt;b&gt;Що означає цифра шість?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Неможливо використати: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Додайте лапки, щоб використовувати: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключове слово має конфліктні оголошення: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключове слово занадто коротке і потребує лапок: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключове слово приховає всі відео: %s</string>
@@ -500,6 +493,17 @@ Second \"item\" text"</string>
   <string name="morphe_post_translate_started">Переклад…</string>
   <string name="morphe_post_translate_failed">Не вдалося перекласти допис</string>
   <string name="morphe_post_translate_same_language">Допис уже написано мовою перекладу</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Увімкнути режим \"У дорозі\" від Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Пункт \"У дорозі\" у спливному меню плеєра відкриває власні елементи керування плеєром Morphe</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">У дорозі</string>
+  <string name="morphe_on_the_go_audio_mode">Перейти в режим аудіо</string>
+  <string name="morphe_on_the_go_video_mode">Перейти в режим відео</string>
+  <string name="morphe_on_the_go_download">Завантажити</string>
+  <string name="morphe_on_the_go_queue">Черга</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Додати пункт \"Запитати\" у спливне меню</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Додає пункт підсумовування відео до спливного меню стрічки</string>
@@ -620,11 +624,13 @@ Second \"item\" text"</string>
   <string name="morphe_vot_mymemory_quota_message_no_email">Ви використали сьогоднішню безплатну квоту перекладу MyMemory (5 000 символів). Додайте електронну пошту MyMemory в налаштуваннях, щоб збільшити денний ліміт до 50 000 символів, або виберіть інший сервіс перекладу</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Ви використали сьогоднішню квоту перекладу MyMemory (50 000 символів). Виберіть інший сервіс перекладу або спробуйте знову завтра</string>
   <string name="morphe_vot_mymemory_error">Переклад через MyMemory не вдався (статус %s)</string>
-  <!-- interaction.watchlater.watchLaterPatch -->
-  <string name="morphe_watch_later_wide_drag_handles_title">Розширити маркери перетягування в \"Дивитися пізніше\"</string>
-  <string name="morphe_watch_later_wide_drag_handles_summary">За маркери перетягування відео в \"Дивитися пізніше\" легше вхопитися</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">Приховати повідомлення про видалення з \"Дивитися пізніше\"</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_summary">Підтвердження не показується після видалення відео з \"Дивитися пізніше\"</string>
+  <!-- interaction.playlist.playlistPatch -->
+  <string name="morphe_playlist_wide_drag_handles_title">Розширити маркери перетягування в плейлистах</string>
+  <string name="morphe_playlist_wide_drag_handles_summary">Маркери перетягування в плейлистах стало легше захвачувати</string>
+  <string name="morphe_playlist_hide_removal_snackbar_title">Приховати повідомлення про видалення з плейлиста</string>
+  <string name="morphe_playlist_hide_removal_snackbar_summary">Підтвердження не показується після видалення відео з плейлиста</string>
+  <string name="morphe_playlist_long_press_drag_title">Довго натискайте, щоб змінити порядок відео у плейлисті</string>
+  <string name="morphe_playlist_long_press_drag_summary">Натисніть і утримуйте відео у вашому плейлисті, щоб перетягнути його на нову позицію</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Увімкнути повторення відео</string>
   <string name="morphe_do_not_remember_loop_video_title">Не запам\'ятовувати повтор відео</string>
@@ -751,6 +757,8 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Відкрити чергу</string>
   <string name="morphe_queue_manager_save_queue">Зберегти чергу як список відтворення</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Завантажувати сторінки черги під час прокручування</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Завантажує більше відео зі списку відтворення, коли ви прокручуєте чергу ближче до кінця</string>
   <string name="morphe_native_playlist_queue_saved">Список відтворення збережено</string>
   <string name="morphe_native_playlist_queue_saved_to">Збережено до %s</string>
   <string name="morphe_native_playlist_queue_clear">Очистити чергу</string>
@@ -793,6 +801,16 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Увімкнути перемотування дотиком</string>
   <string name="morphe_tap_to_seek_summary">Натисніть будь-де на смузі відтворення, щоб перейти до цієї позиції замість перетягування</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_title">Увімкнути власний бігунок смуги відтворення</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Замінює бігунок смуги відтворення власним зображенням або анімованим GIF</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Зображення бігунка</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Виберіть зображення або анімований GIF у сховищі пристрою</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Вибраний файл не є підтримуваним зображенням</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Зображення власного бігунка смуги відтворення не знайдено</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Розмір бігунка</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Підігнати під смугу відтворення</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Початковий розмір</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Жест свайпом ліворуч</string>
   <string name="morphe_swipe_right_zone_title">Жест свайпом праворуч</string>
@@ -1091,6 +1109,10 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Дозволяє кінематографічному режиму працювати навіть у режимі економії енергії</string>
   <string name="morphe_disable_ambient_mode_title">Вимкнути \"Кінематографічне освітлення\"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Вимкнути \"Кінематографічне освітлення\" для повноекранного режиму</string>
+  <string name="morphe_enhanced_ambient_mode_title">Покращене кінематографічне освітлення</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Підсвічує всю сторінку перегляду та чорні смуги кольорами відео замість кінематографічного освітлення</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Зберігати читабельність тексту</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Приглушує підсвічування на яскравих відео, щоб текст на сторінці залишався читабельним</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Приховати підказки</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1172,7 +1194,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_playlist_autoplay_title">Вимкнути автовідтворення списку відтворення</string>
   <string name="morphe_disable_playlist_autoplay_summary">Запобігає автоматичному переходу списку відтворення до наступного відео</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-  <string name="morphe_disable_continue_watching_prompt_title">Вимкнути запит \"Продовжити перегляд?\"</string>
+  <string name="morphe_continue_watching_prompt_title">Запит \"Продовжити перегляд\"</string>
+  <string name="morphe_continue_watching_prompt_entry_1">Типові</string>
+  <string name="morphe_continue_watching_prompt_entry_2">Вимкнена</string>
+  <string name="morphe_continue_watching_prompt_entry_3">Вимкнено, завжди показувати відлік автовідтворення</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Вийти з повноекранного режиму в кінці відео</string>
   <string name="morphe_exit_fullscreen_entry_1">Вимкнено</string>
@@ -1514,7 +1539,7 @@ Second \"item\" text"</string>
   <string name="morphe_speed_tap_and_hold_title">Швидкість відтворення при натисненні та утримувані</string>
   <string name="morphe_speed_tap_and_hold_summary">Встановлює множник швидкості при натисканні та утриманні екрана, встановіть 0 для вимкнення</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
-  <string name="morphe_remember_playback_speed_last_selected_title">Запам’ятати швидкість відтворення</string>
+  <string name="morphe_remember_playback_speed_last_selected_title">Запам’ятовувати швидкість відтворення</string>
   <string name="morphe_remember_playback_speed_last_selected_summary">Застосовує вибраний рівень якості до всіх наступних Shorts</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">Сповіщення про зміну швидкості</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Показує сповіщення при збереженні нової типової швидкості відтворення</string>
@@ -1590,7 +1615,7 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_end_early">• Відтворення може завершитися на 1 секунду раніше</string>
   <string name="morphe_spoof_video_streams_about_js">• Якщо деобфускація не вдається, відтворення може завершитися невдачею</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
-  <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Примусово оригінальна мова звукової доріжки\" недоступна</string>
+  <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Функція \"Примусово оригінальна мова звукової доріжки\" недоступна</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Потрібен вхід в Android VR</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_about_720p_max">• Якість може бути обмежена до 720p</string>
@@ -1762,6 +1787,9 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Коментарі Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Показувати живий чат і повтор чату як коментарі, що прокручуються по відео</string>
   <string name="morphe_niconico_comments_summary">Показує кнопку у відеоплеєрі. Натисніть, щоб показувати або приховувати коментарі, утримуйте для швидких налаштувань</string>
+  <string name="morphe_niconico_comments_appearance_title">Вигляд</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Портретна орієнтація</string>
+  <string name="morphe_niconico_comments_video_types_title">Типи відео</string>
   <string name="morphe_niconico_comments_font_size_title">Розмір шрифту коментарів</string>
   <string name="morphe_niconico_comments_font_size_summary">Розмір тексту коментарів (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Прозорість коментарів</string>
@@ -1770,6 +1798,18 @@ AVC (H.264)
   <string name="morphe_niconico_comments_travel_duration_summary">За скільки секунд коментарі перетинають екран. Менші значення означають швидший рух</string>
   <string name="morphe_niconico_comments_display_area_title">Область відображення</string>
   <string name="morphe_niconico_comments_display_area_summary">Яку частину плеєра від верхнього краю використовують коментарі. Менші значення залишають нижню частину відео вільною</string>
+  <string name="morphe_niconico_comments_portrait_title">Показувати в портретній орієнтації</string>
+  <string name="morphe_niconico_comments_portrait_summary">Показувати коментарі, коли екран у портретній орієнтації. Вимкніть, щоб показувати їх лише в альбомній</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Окремі налаштування для портретної орієнтації</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Використовувати інший розмір шрифту, тривалість руху та область відображення в портретній орієнтації. Після ввімкнення вони беруть початкові значення з поточних</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Розмір шрифту коментарів у портретній орієнтації</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Розмір тексту коментарів у портретній орієнтації (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Тривалість руху в портретній орієнтації</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">За скільки секунд коментарі перетинають екран у портретній орієнтації</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Область відображення в портретній орієнтації</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Яку частину плеєра від верхнього краю займають коментарі в портретній орієнтації</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Приховати коментарі, які перекривалися б</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Коли область відображення заповнена, нові коментарі приховуються замість того, щоб перекривати інші</string>
   <string name="morphe_niconico_comments_max_length_title">Максимальна довжина коментаря</string>
   <string name="morphe_niconico_comments_max_length_summary">Приховує коментарі з більшою кількістю символів, ніж це значення. Кожне емодзі враховується як один символ</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Без обмежень</string>
@@ -1785,6 +1825,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_timed_comments_summary">У відео без чату найпопулярніші коментарі, що містять час, наприклад 1:23, показуються в цей момент</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_title">Показувати коментарі з позначками часу разом із повтором чату</string>
   <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Під час повторів прямих трансляцій і прем\'єр коментарі з позначками часу також показуються разом із чатом</string>
+  <string name="morphe_niconico_comments_all_settings">Усі налаштування</string>
+  <string name="morphe_niconico_comments_reset_title">Скинути ці налаштування?</string>
   <string name="morphe_live_chat_translate_screen_title">Переклад живого чату</string>
   <string name="morphe_live_chat_translate_screen_summary">Перекладати повідомлення живого чату та повтору чату</string>
   <string name="morphe_live_chat_translate_title">Перекладати живий чат</string>

@@ -22,7 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_1">Idisayizelwe</string>
   <string name="morphe_splash_screen_style_entry_2">Umbala</string>
   <string name="morphe_splash_screen_style_entry_3">Imibala ye-Morphe</string>
-  <string name="morphe_splash_screen_style_entry_4">Imibala emifana</string>
+  <string name="morphe_splash_screen_style_entry_4">Okumnyama nokumhlophe</string>
   <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_new_indicator_days_title">Gqamisa izilungiselelo ezintsha</string>
@@ -31,7 +31,7 @@ Second \"item\" text"</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Qala kabusha ukuze uqedele ukusetha</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
-  <string name="morphe_custom_branding_name_title">Igama lehapps</string>
+  <string name="morphe_custom_branding_name_title">Igama lohlelo</string>
   <!-- layout.theme.baseThemePatch -->
   <string name="morphe_theme_color_dark_title">Isizinda setheme esimnyama</string>
   <string name="morphe_theme_color_dark_entry_2">Mnyama wempela</string>
@@ -69,7 +69,7 @@ Qinisekisa ukuthi igama lepakeji lilungile nokuthi i-app ifakiwe"</string>
   <string name="morphe_external_downloader_empty_warning">Igama lephakheji alikwazi ukuba lingena</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Okuhleliwe</string>
-  <string name="morphe_custom_branding_icon_title">I-ayikoni yohlelo</string>
+  <string name="morphe_custom_branding_icon_title">I-icon yohlelo</string>
   <string name="morphe_custom_branding_icon_entry_1">Okokuqala</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe omnyama</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe omnyama kakhulu</string>
@@ -105,7 +105,7 @@ Uma ungumsebenzisi we-YouTube Premium, le setting kungenzeka ingadingeki"</strin
   <string name="morphe_spoof_video_streams_no_clients_toast">Akukwazanga ukuthola noma yiziphi izimuerzo ze-client</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_client_failing_dialog_title">I-client evamile ayisebenzi</string>
-  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"u-%1$s akasebenzi kaningi ngemva kwemva, kodwa u-%2$s usebenze.
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"u-%1$s akasebenzanga kaningi ngokulandelana, kodwa u-%2$s usebenze.
 
 Ukwenza u-%2$s abe yi-client evamile?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Shintsha</string>
@@ -116,7 +116,7 @@ Ukwenza u-%2$s abe yi-client evamile?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">I-client eyisisekelo</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Ngena ku-Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Awunangena ku-Android VR. Thinta lapha ukuze ungene</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">I-Android VR idinga ukungena ngendlela eyizimele. Chofoza lapha ukuze uqhubeke</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Okwamanje ungenile ku-Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ukuze usebenzise lo mshini, shintsha \'Iklayenti elijwayelekile\' kube i-Android VR</string>
@@ -135,7 +135,7 @@ Ukuze ungene, cindezela qhubeka ngezansi"</string>
 4. Thinta u\"Vumela i-YouTube VR\" ukuba ithole ukufunda
 5. Buyela kulolu hlelo ngemuva kokufika umlayezo othi \"Idivayisi ixhumekile\""</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Kuhlulekile ukukhipha ikhodi yokuvula</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Kuhlulekile ukukhipha ithokeni lokugqamisa</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ithokheni lokuqinisekisa</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Ungene ngempumelelo</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Ukuqinisekisa kugcinwe
 
@@ -155,7 +155,7 @@ Ukuze ungene, cindezela qhubeka ngezansi"</string>
   <string name="morphe_notification_media_screen_summary">Lungisa izilawuli zokudlala ezibonakala esikrinini sakho sokukhiya nasipanelini sezaziso</string>
   <string name="morphe_hide_notification_media_prev_next_title">Fihla izinkinobho zeNganu &amp; Elandelayo</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Ifihla izinkinobho zeNganu neLandelayo ezazisweni yezimedia, esikrinini sokukhiya, nasezilawulini zezikopho</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Khulula i-seekbar</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Khubaza i-seekbar</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Kuvimbela ukukweba i-seekbar esikrinini sokukhiya nasipanelini sezaziso</string>
   <string name="morphe_seek_notification_media_prev_next_title">Funa ngama-button e-Previous &amp; Next</string>
   <string name="morphe_seek_notification_media_prev_next_summary">Ishintsha izilawuli zezaziso zezimedia, isikrini esishiwo, kanye ne-headphone ukuze kufunwe esikhundleni sokushintsha amavidiyo</string>
@@ -163,7 +163,7 @@ Ukuze ungene, cindezela qhubeka ngezansi"</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Imizuzwana yokubuyisela emuva nge-button e-Previous</string>
   <string name="morphe_seek_notification_media_fast_forward_length_title">Ubude bokunyakazisa phambili</string>
   <string name="morphe_seek_notification_media_fast_forward_length_summary">Imizuzwana yokunyakazisa phambili nge-button e-Next</string>
-  <string name="morphe_seek_notification_media_length_invalid">Ubude bokufuna kumele bube phakathi kwe-1 kanye ne-%s imizuzwana. Kusetshenziswe okuyisayenzi</string>
+  <string name="morphe_seek_notification_media_length_invalid">Ubude bokufuna kumele bube phakathi kwe-1 kanye ne-%s imizuzwana. Kusetshenziswe okujwayelekile</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Vala iphrothokholi ye-QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -196,10 +196,10 @@ Ukuze ungene, cindezela qhubeka ngezansi"</string>
   <string name="morphe_proxy_allow_direct_fallback_title">Vumela ukuya ngqo lapho kuhluleka</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Xhumana ngqo uma i-proxy ihluleka</string>
   <!-- ad.hideFullscreenAdsPatch -->
-  <string name="morphe_hide_fullscreen_ads_title">Fihla izikhangiso zesikrin sahhayu</string>
+  <string name="morphe_hide_fullscreen_ads_title">Fihla izikhangiso zesikrini esigcwele</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Ukuze usebenzise this feature, shintsha i\'Spoof video streams\' abe yiklayenti noma iyiphi ngaphandle kwe-\'Android Studio\' kanye ne-\'Android VR Downgraded\'</string>
+  <string name="morphe_force_original_audio_not_available">Ukuze usebenzise lesi sici, shintsha i-\'Spoof video streams\' ibe yiklayenti noma iyiphi ngaphandle kwe-\'Android Studio\' ne-\'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Hlanza ama-link okwabelana</string>
   <string name="morphe_sanitize_sharing_links_summary">Isusa ama-tracking query parameters kuma-links ahlanganyelwe</string>
@@ -208,13 +208,15 @@ Ukuze ungene, cindezela qhubeka ngezansi"</string>
   <string name="morphe_replace_links_with_shortener_title">Shintsha ama-link okwabelana abe ngu youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Yenza amavidiyo ukuba asebenzise ifomathi ye-URL efishane ye-youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">I-Protocol buffer ye-Debug log</string>
-  <string name="morphe_debug_protobuffer_summary">Yengeza imininingwane yokurekhoda eyengeziwe kubalusi ukuze babone izici zohlelo</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Ukuvula leli setting kuzobhala idatha eyengeziwe yohlelo, kuhlanganise nombhalo oseku-screen kwezinye izinto ze-UI.
+  <string name="morphe_debug_litho_title">Ukubhala ama-log e-Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Kukhishwa</string>
+  <string name="morphe_debug_litho_entry_path">Indlela</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Indlela kanye ne-buffer</string>
+  <string name="morphe_debug_litho_user_dialog_message">"I-Litho logging ibhala amakomponenti ohlelo lwe-app, kuhlanganise nombhalo osesikrinini kwezinye izici ze-UI.
 
-Lokhu kungasiza ukuhlonza izinto lapho kudalwa ama-custom filters.
+Lokhu kungasiza ukuhlonza amakomponenti lapho kudalwa amafiltha okukhethekile.
 
-Nokho, ukuvula lokhu kuzobhala naphansi idatha yomsebenzisi efana ne-IP address yakho"</string>
+Nokho, lokhu kuzobhala futhi nezinye izidathelu zomsebenzisi njenge-IP address yakho"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Ifiltha elilayishwe</string>
   <string name="morphe_custom_filter_screen_summary">Lungisa amafiltha alayishwe ukuze ufihle noma yisiphi isisindo</string>
@@ -268,8 +270,8 @@ Uma icishwa kamuva, kunalulekile ukusula idatha ye-app ukuze kuvikelwe amaphutha
   <string name="morphe_app_refresh_rate_type_title">Dlula izinga lokuvuselelwa</string>
   <string name="morphe_app_refresh_rate_type_entry_1">Njalo</string>
   <string name="morphe_app_refresh_rate_type_entry_2">Ukudlala ngokuma kokuphakathi</string>
-  <string name="morphe_app_refresh_rate_type_entry_3">Ukudlala ngesikrinimfunda</string>
-  <string name="morphe_app_refresh_rate_type_entry_4">Ukudlala ngendlela eyimele nangesikrinimfunda</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Ukudlala ngesikrini esigcwele</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Ukudlala ngendlela eyimele nangesikrini esigcwele</string>
   <!-- layout.font.baseCustomFontPatch -->
   <string name="morphe_custom_font_type_title">Ifonti</string>
   <string name="morphe_custom_font_type_entry_default">Okujwayelekile</string>
@@ -278,7 +280,7 @@ Uma icishwa kamuva, kunalulekile ukusula idatha ye-app ukuze kuvikelwe amaphutha
   <string name="morphe_custom_font_file_title">Ifayela lefonti elikhethiwe</string>
   <string name="morphe_custom_font_file_summary">Khetha ifayela lefonti le-TTF noma le-OTF</string>
   <string name="morphe_custom_font_file_invalid">Ifayela ekhethiwe aliyona ifonti ye-TTF noma i-OTF</string>
-  <string name="morphe_custom_font_failed_to_load">Ifonti ekhethiwe ayikwazanga ukulodwa futhi icishiwe</string>
+  <string name="morphe_custom_font_failed_to_load">Ifonti ekhethiwe ayikwazanga ukulayishwa futhi icishiwe</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Izinto ezingathandeki azitholakali okwamanje (API timed out)</string>
@@ -301,7 +303,7 @@ Uma icishwa kamuva, kunalulekile ukusula idatha ye-app ukuze kuvikelwe amaphutha
 I-ID ye-video oyibukayo ithunyelwa ku-Return YouTube Dislike API, kanti ukuthanda nokungathanda kwakho kuthunyelwa ngokungaziwa ukuze kuthuthukiswe ukubalulelwa"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Izibalo ze-API ze-Return YouTube Dislike zaleli device</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Isikhathi sokuphendula se-API, isinyathelo</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Isikhathi sokuphendula se-API, isilinganiso</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">Isikhathi sokuphendula se-API, esiphansi kakhulu</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Isikhathi sokuphendula se-API, esiphezulu kakhulu</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Isikhathi sokuphendula se-API, imediya yokugcina</string>

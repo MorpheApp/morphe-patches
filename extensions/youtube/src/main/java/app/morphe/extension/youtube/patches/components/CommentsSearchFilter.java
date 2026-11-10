@@ -535,7 +535,7 @@ public final class CommentsSearchFilter extends Filter {
             Drawable icon = iconView.getDrawable();
             if (icon != null) {
                 icon.setTint(ThemeUtils.getAppForegroundColor());
-                iconView.setAlpha(isSearching() ? 1.0f : 0.6f);
+                iconView.setImageLevel(isSearching() ? 1 : 0);
             }
         }
     }

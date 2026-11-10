@@ -79,6 +79,8 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Collectio
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CollectionStackColors;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CollectionThumbnailViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CommandContext;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CompactPlaylistData;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CompactPlaylistModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ComponentType;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ContentImage;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ContentMetadata;
@@ -112,6 +114,7 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.OpenPopup
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.RendererContext;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ShelfHeaderData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ShelfHeaderModel;
+import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.GridVideoMetadata;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.GridVideoModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ShortsShelfModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ShortsVideoCellData;
@@ -193,6 +196,16 @@ public class FeedCardLayoutPatch {
     private static final String SHORTS_VIDEO_CELL_TEMPLATE = "shorts_video_cell.eml";
     private static final String SHORTS_SHELF_TEMPLATE = "shorts_shelf.eml";
     private static final String GRID_VIDEO_TEMPLATE = "grid_video_wrapper.eml";
+    /**
+     * Template of the playlists and the podcasts of the vertical shelves, such as in the channel home,
+     * with the same model as {@link #GRID_VIDEO_TEMPLATE}.
+     */
+    private static final String GRID_COLLECTION_TEMPLATE = "grid_video.eml";
+    /**
+     * Template of the playlists and the podcasts in a row of a list, such as in the vertical shelves
+     * of the channel home, below the playlists of {@link #GRID_COLLECTION_TEMPLATE}.
+     */
+    private static final String COMPACT_PLAYLIST_TEMPLATE = "compact_playlist.eml";
 
     private static final int LOCKUP_CONTENT_TYPE_VIDEO = 1;
     private static final int LOCKUP_CONTENT_TYPE_PLAYLIST = 2;
@@ -323,6 +336,11 @@ public class FeedCardLayoutPatch {
      * Comments panel of the watch page. Newer clients use the first id.
      */
     private static final String[] COMMENTS_PANEL_IDS = {"comment-item-section", "engagement-panel-comments-section"};
+    /**
+     * Start of the ids of the replies panels that the comments open, such as 'FEcomment_watch_replies_panel'.
+     */
+    private static final String COMMENT_REPLIES_PANEL_ID_PREFIX = "FEcomment";
+    private static final String ENGAGEMENT_PANEL_SURFACE_UNKNOWN = "ENGAGEMENT_PANEL_SURFACE_UNKNOWN";
 
     /**
      * Invisible characters at the end of the accessibility labels of the cards and of their comment button.
@@ -369,7 +387,8 @@ public class FeedCardLayoutPatch {
      */
     private static final String[] elementTemplates = CARD_LAYOUT
             ? new String[]{CLASSIC_TEMPLATE, SHELF_HEADER_TEMPLATE, HORIZONTAL_SHELF_TEMPLATE,
-            SHORTS_VIDEO_CELL_TEMPLATE, SHORTS_SHELF_TEMPLATE, GRID_VIDEO_TEMPLATE}
+            SHORTS_VIDEO_CELL_TEMPLATE, SHORTS_SHELF_TEMPLATE, GRID_VIDEO_TEMPLATE, GRID_COLLECTION_TEMPLATE,
+            COMPACT_PLAYLIST_TEMPLATE}
             : new String[]{CARD_TEMPLATE};
     /**
      * Label of the shelf headers, in the bytes of the converted elements.
@@ -399,6 +418,11 @@ public class FeedCardLayoutPatch {
      * Minimum time between the lookups of a template in the template cache of the app.
      */
     private static final long TEMPLATE_LOOKUP_INTERVAL_MILLIS = 10_000;
+    /**
+     * Time before the cache is looked up again while no version of a template is known,
+     * or while the version that is used was not found by the last lookup.
+     */
+    private static final long TEMPLATE_CONFIRM_INTERVAL_MILLIS = 1000;
     /**
      * Minimum time between the checks of the elements of a template, after the template is taken from an element.
      */
@@ -479,6 +503,11 @@ public class FeedCardLayoutPatch {
      */
     private static final Map<Drawable, Boolean> unmountedItemBackgrounds = new WeakHashMap<>();
     /**
+     * Litho backgrounds of the cards. They keep their color on the see-through watch page of the
+     * Enhanced Ambient mode, which otherwise turns them translucent where nothing else covers them.
+     */
+    public static final Map<Drawable, Boolean> cardBackgrounds = new WeakHashMap<>();
+    /**
      * Edges of the last Shorts shelf card, for the header of a shelf whose Shorts are not in the list yet.
      */
     private static int shortsCardLeft;
@@ -524,7 +553,13 @@ public class FeedCardLayoutPatch {
          * Whether the uri and the fields were taken from an element.
          */
         private volatile boolean fromElement;
+        /**
+         * Whether the last lookup did not find the version of the uri in the cache,
+         * which is replaced only if the next lookup does not find it either.
+         */
+        private volatile boolean missingInCache;
         private volatile long cacheLookupTime;
+        private volatile long synchronousLookupTime;
         private long checkTime;
 
         VideoTemplate(String name, int modelField, int themeField, int capabilitiesField) {
@@ -539,16 +574,28 @@ public class FeedCardLayoutPatch {
         String getUri() {
             // The app drops the older versions of the templates from its cache, also while it runs,
             // and the elements of a template version that is no longer cached are not shown.
-            // So the version taken from the cache is looked up again once in a while.
-            // The version of an element is the one the server sends now, and is kept.
+            // So the version is looked up again once in a while, also the version of an element,
+            // which is the one the server sends now, and is kept while the app has it.
+            // Until a version is found, the cache is looked up more often, as the elements that are
+            // converted meanwhile keep the layout of the server.
             final long now = System.currentTimeMillis();
-            if (!fromElement && now - cacheLookupTime > TEMPLATE_LOOKUP_INTERVAL_MILLIS) {
+            if (now - cacheLookupTime > (uri == null || missingInCache
+                    ? TEMPLATE_CONFIRM_INTERVAL_MILLIS
+                    : TEMPLATE_LOOKUP_INTERVAL_MILLIS)) {
+                // The element that is converted now gets the uri of a lookup on its thread,
+                // at most as often as before a version is found.
+                final boolean synchronous = uri == null
+                        && now - synchronousLookupTime > TEMPLATE_LOOKUP_INTERVAL_MILLIS;
+                if (synchronous) {
+                    synchronousLookupTime = now;
+                }
                 cacheLookupTime = now;
                 // The uri of a template includes the hash of its version, so it's taken from the template
                 // cache of the app, which has the templates the app received. The last cached version
                 // of the template is used, or none if the template is not cached.
                 Runnable lookup = () -> {
-                    String cached = null;
+                    // The cached versions of the template, from the oldest to the newest.
+                    List<String> cached = new ArrayList<>();
                     try {
                         File metadata = new File(Utils.getContext().getFilesDir(), "ElementsResourceCacheMetadata");
                         if (metadata.isFile()) {
@@ -569,7 +616,7 @@ public class FeedCardLayoutPatch {
                                             == WireFormat.WIRETYPE_LENGTH_DELIMITED) {
                                         String key = entry.readString();
                                         if (isTemplate(key, name)) {
-                                            cached = key;
+                                            cached.add(key);
                                         }
                                     } else {
                                         entry.skipField(entryTag);
@@ -581,21 +628,41 @@ public class FeedCardLayoutPatch {
                         // The app rewrites the cache while it runs, so the file can be read while it's
                         // incomplete. The uri found before is kept, and the cache is read again soon.
                         Logger.printDebug(() -> "Template cache is being written", ex);
-                        cacheLookupTime = System.currentTimeMillis() - TEMPLATE_LOOKUP_INTERVAL_MILLIS + 1000;
+                        cacheLookupTime = System.currentTimeMillis() - TEMPLATE_LOOKUP_INTERVAL_MILLIS
+                                + TEMPLATE_CONFIRM_INTERVAL_MILLIS;
                         return;
                     } catch (Exception ex) {
                         Logger.printException(() -> "getUri failure", ex);
                         return;
                     }
                     // An element of the template can be seen while the cache is read.
-                    if (!fromElement && !Objects.equals(uri, cached)) {
-                        String found = cached;
-                        Logger.printDebug(() -> "Cached template: " + found);
-                        uri = cached;
+                    synchronized (this) {
+                        String current = uri;
+                        // The app rewrites the cache in the same file while it runs, so a file that is read
+                        // while it's rewritten can end before the template without an error. Without the uri,
+                        // the elements would keep the layout of the server, so a version that is not found
+                        // is replaced only if the next lookup does not find it either.
+                        if (current != null && !cached.contains(current) && !missingInCache) {
+                            missingInCache = true;
+                            Logger.printDebug(() -> "Template not found in the cache: " + current);
+                            return;
+                        }
+                        missingInCache = false;
+
+                        String newest = cached.isEmpty() ? null : cached.get(cached.size() - 1);
+                        // The version of an element is kept while it's cached, and while no version is cached,
+                        // as the app can use it before it's written to the cache.
+                        if (fromElement
+                                ? newest == null || cached.contains(current)
+                                : Objects.equals(current, newest)) {
+                            return;
+                        }
+                        Logger.printDebug(() -> "Cached template: " + newest);
+                        uri = newest;
+                        fromElement = false;
                     }
                 };
-                // The first lookup gives the uri to the element that is converted now.
-                if (uri == null) {
+                if (synchronous) {
                     lookup.run();
                 } else {
                     Utils.runOnBackgroundThread(lookup);
@@ -667,8 +734,12 @@ public class FeedCardLayoutPatch {
                             Logger.printDebug(() -> "Template of an element: " + elementUri + " theme field: "
                                     + template.themeField + " capabilities field: " + template.capabilitiesField);
                         }
-                        template.uri = elementUri;
-                        template.fromElement = true;
+                        // A lookup of the cache can replace the uri at the same time.
+                        synchronized (template) {
+                            template.uri = elementUri;
+                            template.fromElement = true;
+                            template.missingInCache = false;
+                        }
                     }
                 }
                 return bytes;
@@ -1086,14 +1157,45 @@ public class FeedCardLayoutPatch {
                                         .setHeader(modernShelfHeader(shelf.getHeader()))))
                                 .build();
                     }
-                } else if (isTemplate(uri, GRID_VIDEO_TEMPLATE) && model.hasGridVideoModel()) {
+                } else if ((isTemplate(uri, GRID_VIDEO_TEMPLATE) || isTemplate(uri, GRID_COLLECTION_TEMPLATE))
+                        && model.hasGridVideoModel()) {
                     // The label of the videos of the vertical shelves ends with an invisible character,
                     // to draw the shelf below the header as a card.
                     GridVideoModel video = model.getGridVideoModel();
+                    String label = video.getAccessibilityText();
+                    if (label.isEmpty()) {
+                        // The playlists and the podcasts have no label, so they get the label of their texts,
+                        // as a compact playlist, such as "Title - Channel · Playlist - 20 videos - Updated 2 days ago".
+                        // Accessibility services read the label instead of the texts.
+                        GridVideoMetadata metadata = video.getData().getMetadata();
+                        StringBuilder texts = new StringBuilder();
+                        for (ByteString text : List.of(metadata.getTitle(), metadata.getSubtitle(),
+                                video.getData().getThumbnail().getCollectionCountText(), metadata.getDetails())) {
+                            if (!text.isEmpty()) {
+                                if (texts.length() > 0) {
+                                    texts.append(" - ");
+                                }
+                                texts.append(text.toStringUtf8());
+                            }
+                        }
+                        label = texts.toString();
+                    }
                     converted = componentType.toBuilder()
                             .setModel(ElementModel.newBuilder().setGridVideoModel(video.toBuilder()
-                                    .setAccessibilityText(video.getAccessibilityText() + VIDEO_SHELF_ROW_LABEL_MARKER)))
+                                    .setAccessibilityText(label + VIDEO_SHELF_ROW_LABEL_MARKER)))
                             .build();
+                } else if (isTemplate(uri, COMPACT_PLAYLIST_TEMPLATE) && model.hasCompactPlaylistModel()) {
+                    // The playlists in a row of a vertical shelf are drawn on the card of the shelf too.
+                    CompactPlaylistModel playlist = model.getCompactPlaylistModel();
+                    CompactPlaylistData data = playlist.getData();
+                    if (!data.getAccessibilityText().isEmpty()) {
+                        converted = componentType.toBuilder()
+                                .setModel(ElementModel.newBuilder().setCompactPlaylistModel(playlist.toBuilder()
+                                        .setData(data.toBuilder()
+                                                .setAccessibilityText(data.getAccessibilityText()
+                                                        + VIDEO_SHELF_ROW_LABEL_MARKER))))
+                                .build();
+                    }
                 }
             } else if (isTemplate(uri, CARD_TEMPLATE) && model.hasLockupModel()) {
                 LockupModel card = model.getLockupModel();
@@ -1390,11 +1492,14 @@ public class FeedCardLayoutPatch {
                 }
 
                 if (inCard) {
+                    cardBackgrounds.put(drawable, Boolean.TRUE);
                     // The theme patch changes only some exact colors, such as the background of the cards.
                     // The lowest bit of blue is not visible.
                     return color ^ 1;
                 }
             }
+            // The drawables are recycled for other elements.
+            cardBackgrounds.remove(drawable);
         } catch (Exception ex) {
             Logger.printException(() -> "getCardColor failure", ex);
         }
@@ -1948,15 +2053,6 @@ public class FeedCardLayoutPatch {
         }
     }
 
-    /**
-     * @return The header of the Shorts shelf, which is the Shorts shelf header or another shelf header
-     *         above the Shorts, or null if the item above the Shorts is not a shelf header.
-     */
-    @Nullable
-    private static View getShortsShelfHeader(@Nullable View above) {
-        return above != null && (isShelfHeader(above) || isVideoShelfHeader(above)) ? above : null;
-    }
-
     private static boolean isVideoShelfRow(View item) {
         return hasLabelMarker(item, VIDEO_SHELF_ROW_LABEL_MARKER, 0);
     }
@@ -1973,7 +2069,9 @@ public class FeedCardLayoutPatch {
      */
     private static void drawShortsShelfCard(RecyclerView list, @Nullable View above, View firstRow,
                                             @Nullable Canvas canvas) {
-        View header = getShortsShelfHeader(above);
+        // The Shorts shelf header or another shelf header above the Shorts,
+        // or null if the item above the Shorts is not a shelf header.
+        View header = above != null && (isShelfHeader(above) || isVideoShelfHeader(above)) ? above : null;
         // The rows of Shorts are the list items below the header, which can be scrolled out of the list.
         List<View> rows = new ArrayList<>();
         View item = firstRow;
@@ -2469,6 +2567,34 @@ public class FeedCardLayoutPatch {
             Logger.printException(() -> "openCommentsPanel failure", ex);
         }
         return false;
+    }
+
+    /**
+     * Injection point.
+     * The commands of the comments, such as the command that opens the replies, show their panel without a surface,
+     * and the app shows a panel without a surface with the panels of the watch page, which is not open.
+     *
+     * @return If the panel can be shown over the feed, when the feed shows the comments panel.
+     */
+    public static boolean isPanelWithoutSurface(@Nullable Enum<?> surface) {
+        return ACTION_BUTTONS && surface != null && ENGAGEMENT_PANEL_SURFACE_UNKNOWN.equals(surface.name())
+                && !PlayerType.getCurrent().isMaximizedOrFullscreen();
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param shownPanelId The panel that is shown over the feed, if any.
+     * @return If the panel without a surface is shown over the feed, with the comments panel that the cards opened.
+     */
+    public static boolean showPanelOverFeed(@Nullable String shownPanelId) {
+        if (shownPanelId == null || !(Utils.equalsAny(shownPanelId, COMMENTS_PANEL_IDS)
+                || shownPanelId.startsWith(COMMENT_REPLIES_PANEL_ID_PREFIX))) {
+            return false;
+        }
+
+        Logger.printDebug(() -> "Showing the panel over the feed, above: " + shownPanelId);
+        return true;
     }
 
     /**

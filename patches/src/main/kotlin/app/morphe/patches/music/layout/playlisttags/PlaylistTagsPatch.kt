@@ -12,8 +12,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.findInstructionIndicesReversedOrThrow
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -50,7 +50,7 @@ private const val FILTER_GRID_ITEMS =
     "$EXTENSION_CLASS->filterGridItems(Ljava/util/List;)Ljava/util/List;"
 
 @Suppress("unused")
-val playlistTagsPatch = bytecodePatch(
+val playlistTagsPatch = patch(
     name = "Playlist tags",
     description = "Adds an option to tag playlists from their menu, and to filter the Library playlists by tag.",
 ) {
@@ -161,7 +161,7 @@ private fun MutableMethod.filterReturnedItems(filterMethod: String) {
  * @param restoredItemsField Field the constructor sets to the items restored from the saved state
  *                           of a previous presenter, which are filtered again.
  */
-private fun BytecodePatchContext.registerLibraryPresenter(
+private fun registerLibraryPresenter(
     presenterClass: ClassDef,
     restoredItemsField: FieldReference? = null,
 ) {
@@ -199,7 +199,7 @@ private fun BytecodePatchContext.registerLibraryPresenter(
 /**
  * Hooks the presenter of the Library list view.
  */
-private fun BytecodePatchContext.hookLibraryListPresenter() {
+private fun hookLibraryListPresenter() {
     val itemsMethod = GridRendererItemsFingerprint.method
     itemsMethod.filterReturnedItems(FILTER_LIBRARY_ITEMS)
 
@@ -234,7 +234,7 @@ private fun BytecodePatchContext.hookLibraryListPresenter() {
  * The presenter keeps only the last page of items it loaded in its renderer field, so the
  * extension keeps the items of all pages, and rebinds the grid from them after the filter changes.
  */
-private fun BytecodePatchContext.hookLibraryGridPresenter() {
+private fun hookLibraryGridPresenter() {
     LibraryGridItemsFingerprint.method.apply {
         filterReturnedItems(FILTER_GRID_ITEMS)
         addInstruction(

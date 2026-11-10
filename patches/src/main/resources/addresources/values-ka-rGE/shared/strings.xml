@@ -20,8 +20,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_submenu_title">პარამეტრები</string>
   <string name="morphe_settings_confirm_user_dialog_title">დარწმუნებული ხართ, რომ გსურთ გაგრძელება?</string>
   <string name="morphe_settings_save">შენახვა</string>
-  <string name="morphe_settings_reset">გაუქმება</string>
-  <string name="morphe_settings_reset_color">ფერების განახლება</string>
+  <string name="morphe_settings_reset">გადაყენება</string>
+  <string name="morphe_settings_reset_color">ფერის გადაყენება</string>
   <string name="morphe_settings_color_invalid">არასწორი ფერი</string>
   <string name="morphe_settings_restart_title">საჭიროა გადატვირთვა</string>
   <string name="morphe_settings_restart_dialog_message">გადატვირთეთ აპლიკაცია, რათა ეს ცვლილება ძალაში შევიდეს</string>
@@ -37,14 +37,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_info_title">შესახებ</string>
   <string name="morphe_settings_search_no_results_title">\'%s\'-ისთვის შედეგები ვერ მოიძებნა</string>
   <string name="morphe_settings_search_no_results_summary">სცადეთ სხვა საკვანძო სიტყვა</string>
-  <string name="morphe_settings_search_recent_searches">ბოლოდროინდელი მოძებნებები</string>
-  <string name="morphe_settings_search_remove_message">წავშალოთ ძებნის ისტორიიდან?</string>
+  <string name="morphe_settings_search_recent_searches">ბოლო ძებნები</string>
+  <string name="morphe_settings_search_remove_message">წაიშალოს ძებნის ისტორიიდან?</string>
   <string name="morphe_settings_search_remove">წაშლა ძებნის ისტორიიდან</string>
   <string name="morphe_settings_search_clear_history">ძებნის ისტორიის გასუფთავება</string>
   <string name="morphe_settings_search_clear_history_message">დარწმუნებული ხართ, რომ გსურთ ძებნის მთელი ისტორიის გასუფთავება?</string>
   <string name="morphe_settings_search_tips_title">რჩევები ძებნისთვის</string>
   <string name="morphe_settings_search_tips_summary">"• დააჭირეთ გზას მასზე გადასასვლელად
-• გრძლად დააჭირეთ პარამეტრს მასზე გადასასვლელად
+• ხანგრძლივად დააჭირეთ პარამეტრს მასზე გადასასვლელად
 • დააჭირეთ Enter-ს ძებნის მოთხოვნის ისტორიაში შესანახად
 • ძებნა არ ითვალისწინებს რეგისტრს და პუნქტუაციას
 • მშობელი პარამეტრები ჩნდება გამორთული შვილობილი პარამეტრების ზემოთ"</string>
@@ -69,16 +69,16 @@ Second \"item\" text"</string>
   <string name="morphe_pref_import_export_title">იმპორტი / ექსპორტი</string>
   <string name="morphe_pref_import_export_summary">Morphe-ის პარამეტრების იმპორტი / ექსპორტი</string>
   <string name="morphe_settings_import_file">იმპორტი ფაილიდან</string>
-  <string name="morphe_settings_import_file_success">პარამეტრები წარმატებით იქნა იმპორტირებული, შესატطبيقებლად დააჭირეთ „შენახვას“</string>
+  <string name="morphe_settings_import_file_success">პარამეტრები წარმატებით იმპორტირდა. გასააქტიურებლად დააჭირეთ „შენახვას“</string>
   <string name="morphe_settings_import_file_failed">პარამეტრების იმპორტი ვერ მოხერხდა</string>
   <string name="morphe_settings_export_file">ექსპორტი ფაილში</string>
   <string name="morphe_settings_export_file_success">პარამეტრები წარმატებით იქნა ექსპორტირებული</string>
   <string name="morphe_settings_export_file_failed">პარამეტრების ექსპორტი ვერ მოხერხდა</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">თქვენ იყენებთ Morphe Patches-ის უახლეს ვერსიას &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">თქვენ იყენებთ Morphe Patches-ის ვერსიას &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;ხელმისაწვდომია განახლება: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;პატჩების განაახლებად, გამოიყენეთ Morphe ამ აპლიკაციის ხელახალი დაპატჩვისთვის</string>
+  <string name="morphe_settings_about_links_body_version_outdated">თქვენ იყენებთ Morphe Patches-ის ვერსიას &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;ხელმისაწვდომია განახლება: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;პატჩების განსაახლებლად, გამოიყენეთ Morphe ამ აპლიკაციის ხელახლა დასაპატჩებლად</string>
   <string name="morphe_settings_about_links_dev_header">შენიშვნა</string>
-  <string name="morphe_settings_about_links_dev_body">ეს ვერსია არის წინასწარი რელიზი და შესაძლოა შეგვხვდეს მოულოდნელი პრობლემები</string>
+  <string name="morphe_settings_about_links_dev_body">ეს ვერსია წინასწარი გამოშვებაა და შესაძლოა მოულოდნელი პრობლემები შეგექმნათ</string>
   <string name="morphe_settings_about_links_header">ოფიციალური ბმულები</string>
   <string name="morphe_settings_about_links_website">ვებგვერდი</string>
   <string name="morphe_settings_about_links_donate">დონაცია</string>
@@ -95,28 +95,29 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_licenses">ლიცენზიის შეტყობინებები</string>
   <string name="morphe_settings_about_licenses_loading">იტვირთება…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_screen_title">დებაგინგი</string>
+  <string name="morphe_debug_screen_title">გამართვა</string>
   <string name="morphe_debug_screen_summary">დეველოპერის გაფართოებული პარამეტრებისა და დიაგნოსტიკური ლოგების კონფიგურაცია</string>
-  <string name="morphe_debug_title">დებაგირების ლოგირების ჩართვა</string>
-  <string name="morphe_debug_stacktrace_title">Debug ლოგის stack trace</string>
-  <string name="morphe_debug_stacktrace_summary">მოიცავს სტეკის კვალს დებაგირების ლოგებში შეცდომების იდენტიფიცირებისთვის</string>
-  <string name="morphe_debug_toast_on_error_title">აჩვენე შეტყობინება Morphe-ის შეცდომისას</string>
+  <string name="morphe_debug_level_title">Debug ლოგირება</string>
+  <string name="morphe_debug_level_entry_disabled">გამორთვებული</string>
+  <string name="morphe_debug_level_entry_debug">დებაგი</string>
+  <string name="morphe_debug_level_entry_verbose">დეტალური</string>
+  <string name="morphe_debug_toast_on_error_title">აჩვენეთ შეტყობინება Morphe-ის შეცდომისას</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"შეცდომის შეტყობინებების გამორთვა მალავს Morphe-ის ყველა შეცდომის შეტყობინებას.
 
 თქვენ არ მიიღებთ შეტყობინებას არანაირი მოულოდნელი მოვლენის შესახებ"</string>
-  <string name="morphe_debug_export_logs_title">სადებაგო ლოგების ექსპორტი</string>
-  <string name="morphe_debug_export_logs_summary">Morphe-ის სადებაგო ლოგების ექსპორტი</string>
-  <string name="morphe_debug_export_logs_success">სადებაგო ლოგები წარმატებით იქნა ექსპორტირებული</string>
-  <string name="morphe_debug_export_logs_failed">სადებაგო ლოგების ექსპორტი ვერ მოხერხდა</string>
-  <string name="morphe_debug_logs_search_hint">სადებაგო ჩანაწერების ძებნა…</string>
+  <string name="morphe_debug_export_logs_title">გამართვის ლოგების ექსპორტი</string>
+  <string name="morphe_debug_export_logs_summary">Morphe-ის გამართვის ლოგების ექსპორტი</string>
+  <string name="morphe_debug_export_logs_success">გამართვის ლოგები წარმატებით იქნა ექსპორტირებული</string>
+  <string name="morphe_debug_export_logs_failed">გამართვის ლოგების ექსპორტი ვერ მოხერხდა</string>
+  <string name="morphe_debug_logs_search_hint">გამართვის ლოგების ძებნა…</string>
   <string name="morphe_debug_export_logs_clear">გასუფთავება</string>
-  <string name="morphe_debug_logs_disabled">დებაგინგის ლოგირება გამორთულია</string>
-  <string name="morphe_debug_logs_none_found">სადებაგო ლოგები ვერ მოიძებნა</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">სადებაგო ლოგები დაკოპირებულია</string>
-  <string name="morphe_debug_logs_failed_to_export">სადებაგო ლოგების ექსპორტი ვერ მოხერხდა: %s</string>
-  <string name="morphe_debug_logs_clear_toast">სადებაგო ლოგები გასუფთავებულია</string>
+  <string name="morphe_debug_logs_disabled">გამართვის ლოგირება გამორთულია</string>
+  <string name="morphe_debug_logs_none_found">გამართვის ლოგები ვერ მოიძებნა</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">გამართვის ლოგები დაკოპირებულია</string>
+  <string name="morphe_debug_logs_failed_to_export">გამართვის ლოგების ექსპორტი ვერ მოხერხდა: %s</string>
+  <string name="morphe_debug_logs_clear_toast">გამართვის ლოგები გასუფთავებულია</string>
   <string name="morphe_debug_feature_flags_manager_title">ფუნქციების დროშების მენეჯერი</string>
-  <string name="morphe_debug_feature_flags_manager_summary">მართეთ ბულეანური ფუნქციების დროშები</string>
+  <string name="morphe_debug_feature_flags_manager_summary">მართეთ ლოგიკური (ჩართვა/გამორთვა) ფუნქციების დროშები</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">ფუნქციების დროშების ძებნა…</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_inactive">არააქტიური (%s)</string>
@@ -136,9 +137,9 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">დაბლოკვა</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">წაშლა</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">ფუნქციების დროშები შენახულია</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">ფუნქციების დროშები განის resetting-და</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">ფუნქციების დროშები გადაყენებულია</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">ფუნქციების დროშები კოპირებულია ბუფერში</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">გადმოტვირთეთ აპლიკაცია ამ პარამეტრის გამოსაყენებლად</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">გადატვირთეთ აპლიკაცია ამ პარამეტრის გამოსაყენებლად</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">ექსპორტი და იმპორტი</string>
   <string name="morphe_debug_feature_flags_manager_import_success">იმპორტირებული %s ფუნქციური დროშა</string>
   <string name="morphe_debug_feature_flags_manager_import_failed">ფუნქციური დროშები ვერ მოიძებნა</string>
@@ -199,16 +200,16 @@ Second \"item\" text"</string>
 
 ეს აუცილებელია აპლიკაციის გამართული მუშაობისთვის"</string>
   <string name="gms_core_dialog_open_website_text">გახსენით ვებგვერდი</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"პრობლემების თავიდან ასაცილებლად, MicroG-ის ელემენტის ოპტიმიზაცია უნდა იყოს გამორთული.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"პრობლემების თავიდან ასაცილებლად, MicroG-ის ბატარეის ოპტიმიზაცია უნდა იყოს გამორთული.
 
-MicroG-ისთვის ელემენტის ოპტიმიზაციის გამორთვა უარყოფითად არ იმოქმედებს ელემენტის მოხმარებაზე.
+MicroG-ისთვის ბატარეის ოპტიმიზაციის გამორთვა უარყოფითად არ იმოქმედებს ბატარეის მოხმარებაზე.
 
 დააჭირეთ გაგრძელების ღილაკს და დაეთანხმეთ ოპტიმიზაციის ცვლილებებს"</string>
   <string name="gms_core_dialog_continue_text">გაგრძელება</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG-ის ელემენტის ოპტიმიზაციის დიალოგის ჩვენება</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"ამის გამორთვა დამალავს MicroG-ის ელემენტის ოპტიმიზაციის შეტყობინებას.
+  <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG-ის ბატარეის ოპტიმიზაციის დიალოგის ჩვენება</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"ამის გამორთვა დამალავს MicroG-ის ბატარეის ოპტიმიზაციის შეტყობინებას.
 
-თუ ელემენტის ოპტიმიზაცია არ შეიცვლება, შესაძლოა შეგვხვდეს:
+თუ ბატარეის ოპტიმიზაცია არ შეიცვლება, შეიძლება წააწყდეთ:
 • აპლიკაცია შეიძლება შემთხვევით დაიხუროს
 • შეტყობინებებმა შესაძლოა არ იმუშაოს
 • ფონურ რეჟიმში დაკვრამ შესაძლოა არ იმუშაოს"</string>
@@ -229,6 +230,19 @@ MicroG-ისთვის ელემენტის ოპტიმიზა�
 თუ გსურთ მაქსიმალურად შეუფერხებელი მუშაობა, მაშინ &lt;b&gt;წაშალეთ&lt;/b&gt; ეს ვერსია და დააინსტალირეთ რეკომენდებული სტაბილური ვერსია ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ მსურს ექსპერიმენტული</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ მსურს სტაბილური</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">აპლიკაციაში შეტყობინების ჩვენება პატჩების განახლებების შესახებ</string>
+  <string name="morphe_patches_update_notice_entry_off">გამორთული</string>
+  <string name="morphe_patches_update_notice_entry_stable">სტაბილური ვერსიები</string>
+  <string name="morphe_patches_update_notice_entry_dev">სტაბილური და დეველოპერსიები</string>
+  <string name="morphe_patches_update_notice_dialog_title">ხელმისაწვდომია ახალი პატჩები</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (მიმდინარე: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ ახალი ფუნქციები</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 შეცდომების გამოსწორება</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 სხვა ცვლილებები</string>
+  <string name="morphe_patches_update_notice_dialog_more">…და კიდევ %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">განახლება</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">გათიშვა</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">ავარიის ჩანაწერი შენახულია მომხმარებლის დოკუმენტებში: %s</string>
   <string name="morphe_crash_log_saved">ავარიის ჩანაწერი შენახულია: %s</string>

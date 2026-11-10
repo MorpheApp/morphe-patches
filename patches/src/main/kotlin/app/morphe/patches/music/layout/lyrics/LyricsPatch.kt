@@ -9,7 +9,9 @@
 package app.morphe.patches.music.layout.lyrics
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -39,7 +41,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPatch;"
-private const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/lyrics/ui/LyricsPanelInstaller;"
+internal const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/lyrics/ui/LyricsPanelInstaller;"
 private const val LOCKSCREEN_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/LockScreenLyrics;"
 private const val MINIPLAYER_LYRICS_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/MiniplayerLyrics;"
 
@@ -58,7 +60,7 @@ val lyricsPatch = patch(
         lithoFilterPatch,
         mediaSessionHookPatch,
         musicVideoInformationPatch,
-        // The copy, romanize and furigana buttons need their icons whether the patches
+        // The copy and romanize buttons need their icons whether the patches
         // that own these resources are applied.
         patch {
             execute {
@@ -68,7 +70,7 @@ val lyricsPatch = patch(
                 )
                 copyResources(
                     "romanisationbutton",
-                    ResourceGroup("drawable", "morphe_yt_romanize.xml", "morphe_yt_ruby.xml")
+                    ResourceGroup("drawable", "morphe_yt_romanize.xml")
                 )
             }
         }
@@ -129,14 +131,6 @@ val lyricsPatch = patch(
                     ),
                     SwitchPreference("morphe_music_lyrics_allow_transliteration", summary = true),
                     NonInteractivePreference(
-                        key = "morphe_music_lyrics_ruby_provider",
-                        summaryKey = null,
-                        tag = "app.morphe.extension.music.settings.preference.LyricsOrderedListPreference",
-                        selectable = false,
-                        dependency = "morphe_music_lyrics_enabled"
-                    ),
-                    ListPreference("morphe_music_lyrics_ruby_style"),
-                    NonInteractivePreference(
                         key = "morphe_music_lyrics_clear_cache",
                         tag = "app.morphe.extension.music.settings.preference.LyricsClearCachePreference",
                         dependency = "morphe_music_lyrics_enabled"
@@ -168,6 +162,7 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_hide_info", summary = true),
                     SwitchPreference("morphe_music_lyrics_force_capitalize", summary = true),
                     SwitchPreference("morphe_music_lyrics_strip_trailing_punctuation", summary = true),
+                    SwitchPreference("morphe_music_lyrics_han_form", summary = true),
                     SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true),
                     SwitchPreference("morphe_music_lyrics_force_center", summary = true)
                 )
@@ -183,8 +178,7 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_show_ruby_button", summary = true)
+                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true)
                 )
             ),
             PreferenceCategory(
@@ -256,10 +250,6 @@ val lyricsPatch = patch(
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_about",
                         titleKey = null,
-                        // The summary is written by the preference itself, since what the fetched
-                        // reading dictionaries add to it is not known when the layout is built.
-                        summaryKey = null,
-                        tag = "app.morphe.extension.music.settings.preference.LyricsAboutPreference",
                         dependency = "morphe_music_lyrics_enabled"
                     )
                 )
@@ -282,8 +272,8 @@ val lyricsPatch = patch(
         // the app itself put in the container is what tells them apart. Panels with a
         // heading do not need this, so a miss here leaves the rest of the patch working.
         val log = Logger.getLogger(this::class.java.name)
-        runCatching {
-            EngagementPanelControllerFingerprint.classDef.apply {
+        val engagementPanelType = runCatching {
+            EngagementPanelControllerFingerprint.classDef.run {
                 val controllerType = type
 
                 // Only instance fields the controller reassigns can hold the panel it shows,
@@ -320,11 +310,47 @@ val lyricsPatch = patch(
                             "$PANEL_INSTALLER_CLASS->onEngagementPanelChanged(Ljava/lang/Object;)V"
                     )
                 }
+
+                panelType
             }
         }.onFailure {
             log.warning(
                 "Engagement panel controller not found, a lyrics panel shown without a " +
                     "heading will not be used: ${it.message}"
+            )
+        }.getOrNull()
+
+        // The panel identifier says which panel this is in any language, and with or without
+        // a heading. The app reads it with a static helper taking the panel renderer, and the
+        // panel hands out its renderer through the only method of the panel type that takes
+        // nothing and returns that type.
+        if (engagementPanelType != null) {
+            val identifierHelper = PanelIdentifierFingerprint.instructionMatches.first().methodReference
+            val rendererType = identifierHelper.parameterTypes.single().toString()
+            val panelClass = classDefBy(engagementPanelType)
+            val rendererGetter = panelClass.methods.single { method ->
+                method.parameterTypes.isEmpty() && method.returnType == rendererType
+            }
+            val invokeGetter = if (AccessFlags.INTERFACE.isSet(panelClass.accessFlags)) {
+                "invoke-interface"
+            } else {
+                "invoke-virtual"
+            }
+
+            GetPanelIdentifierFingerprint.method.addInstructionsWithLabels(
+                0,
+                """
+                    check-cast p0, $engagementPanelType
+                    $invokeGetter { p0 }, $rendererGetter
+                    move-result-object p0
+                    if-eqz p0, :no_renderer
+                    invoke-static { p0 }, $identifierHelper
+                    move-result-object p0
+                    return-object p0
+                    :no_renderer
+                    const/4 p0, 0x0
+                    return-object p0
+                """
             )
         }
 

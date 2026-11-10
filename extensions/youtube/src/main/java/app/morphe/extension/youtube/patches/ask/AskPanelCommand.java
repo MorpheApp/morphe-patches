@@ -177,12 +177,13 @@ final class AskPanelCommand {
         @Nullable
         final String summarizeToken;
         /**
-         * Identifies the summarize suggestion in the command that its tap runs, or -1 if unknown.
+         * Identifies the summarize suggestion in the command that its tap runs, or null if unknown.
          */
-        final long summarizeSelectionId;
+        @Nullable
+        final Long summarizeSelectionId;
 
         Panel(byte[] command, @Nullable String welcomeToken, @Nullable String summarizeToken,
-              long summarizeSelectionId) {
+              @Nullable Long summarizeSelectionId) {
             this.command = command;
             this.welcomeToken = welcomeToken;
             this.summarizeToken = summarizeToken;
@@ -322,7 +323,11 @@ final class AskPanelCommand {
         // A panel built again unchanged keeps its key, so the app shows its chat as it was.
         if (!Arrays.equals(panel, lastBuiltPanel)) {
             lastBuiltPanel = panel;
-            lastSelectionEntityKey = newSelectionEntityKey();
+            // A selection entity key of its own, as long as the key in the template,
+            // so the tokens that hold it keep their length.
+            String number = Integer.toString(++selectionEntityCount);
+            lastSelectionEntityKey = SELECTION_ENTITY_KEY.substring(
+                    0, SELECTION_ENTITY_KEY.length() - number.length()) + number;
         }
         panel = bytes(retarget(latin1(panel), SELECTION_ENTITY_KEY, lastSelectionEntityKey, 0, new int[1]));
 
@@ -333,7 +338,7 @@ final class AskPanelCommand {
             panel = summarizeOnly;
         }
         String[] tokens = new String[2];
-        long[] summarizeSelectionId = {-1};
+        Long[] summarizeSelectionId = new Long[1];
         findTokens(panel, 0, tokens, summarizeSelectionId);
 
         ProtoWriter replacingPanel = new ProtoWriter();
@@ -354,15 +359,6 @@ final class AskPanelCommand {
         ProtoWriter command = new ProtoWriter();
         command.writeLengthDelimited(SHOW_ENGAGEMENT_PANEL_ENDPOINT_FIELD, endpoint.toByteArray());
         return new Panel(command.toByteArray(), tokens[0], tokens[1], summarizeSelectionId[0]);
-    }
-
-    /**
-     * @return A selection entity key of its own, as long as the key in the template,
-     *         so the tokens that hold it keep their length.
-     */
-    private static String newSelectionEntityKey() {
-        String number = Integer.toString(++selectionEntityCount);
-        return SELECTION_ENTITY_KEY.substring(0, SELECTION_ENTITY_KEY.length() - number.length()) + number;
     }
 
     /**
@@ -412,7 +408,7 @@ final class AskPanelCommand {
 
     private static boolean hasSummarizeSuggestion(byte[] panel) {
         String[] tokens = new String[2];
-        findTokens(panel, 0, tokens, new long[]{-1});
+        findTokens(panel, 0, tokens, new Long[1]);
         return tokens[1] != null;
     }
 
@@ -447,7 +443,7 @@ final class AskPanelCommand {
      * @param tokens The welcome token and the summarize token, as they are found.
      * @param summarizeSelectionId The selection id of the summarize suggestion, as it is found.
      */
-    private static void findTokens(byte[] message, int depth, String[] tokens, long[] summarizeSelectionId) {
+    private static void findTokens(byte[] message, int depth, String[] tokens, Long[] summarizeSelectionId) {
         if (depth > MAX_MESSAGE_DEPTH) {
             return;
         }

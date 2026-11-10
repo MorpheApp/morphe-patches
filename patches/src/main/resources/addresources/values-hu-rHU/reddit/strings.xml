@@ -18,10 +18,10 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Reddit adatvédelmi szabályzata</string>
   <string name="morphe_google_signin_not_available_toast">A Google-bejelentkezés nem érhető el. Jelentkezzen be e-maillel</string>
-  <string name="morphe_app_downgrade_dialog_title">A verzióvisszavonás nem támogatott</string>
-  <string name="morphe_app_downgrade_dialog_message">"Ez a Reddit telepítés vissza lett csökkentve a(z) &lt;b&gt;%1$s&lt;/b&gt; verzióról a(z) &lt;b&gt;%2$s&lt;/b&gt; verzióra
+  <string name="morphe_app_downgrade_dialog_title">Visszalépés nem támogatott</string>
+  <string name="morphe_app_downgrade_dialog_message">"Ez a Reddit-telepítés a(z) &lt;b&gt;%1$s&lt;/b&gt; verzióról a(z) &lt;b&gt;%2$s&lt;/b&gt; verzióra lett visszaállítva
 &lt;br/&gt;&lt;br/&gt;
-A újabb verzióból származó alkalmazásadatok nem működnek régebbi verziókkal, és az alkalmazás nem működhet megfelelően.
+Az újabb verzióból származó alkalmazásadatok nem működnek a régebbi verziókkal, és az alkalmazás nem működhet megfelelően.
 &lt;br/&gt;&lt;br/&gt;
 A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet, majd telepítenie a régebbi verziót."</string>
   <string name="morphe_app_downgrade_dialog_open_app_info">Alkalmazásinformációk megnyitása</string>
@@ -35,7 +35,7 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_hide_discover_button_title">Felfedezés vagy Közösségek gomb elrejtése</string>
   <string name="morphe_hide_games_button_title">Játékok gomb elrejtése</string>
   <string name="morphe_screen_sidebar_title">Oldalsáv</string>
-  <string name="morphe_hide_recently_visited_shelf_title">Elkeresett látogatott polc elrejtése</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Nemrég megtekintett polc elrejtése</string>
   <string name="morphe_hide_games_on_reddit_shelf_title">Játékok a Redditen sáv elrejtése</string>
   <string name="morphe_hide_reddit_pro_shelf_title">Reddit Pro sáv elrejtése</string>
   <string name="morphe_hide_about_shelf_title">Névjegysáv elrejtése</string>
@@ -43,7 +43,7 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_screen_layout_title">Elrendezés</string>
   <string name="morphe_copy_text_title">Szöveg másolása</string>
   <string name="morphe_copy_text_summary">Lehetővé teszi a szöveg kijelölését és másolását a bejegyzésekben és hozzászólásokban. Letiltja a hozzászólások összecsukását</string>
-  <string name="morphe_copy_text_user_dialog_message">A megjegyzések összecsukása abbamarad, amíg a szöveg másolása engedélyezve van</string>
+  <string name="morphe_copy_text_user_dialog_message">A hozzászólások összecsukása nem működik, amíg a Szöveg másolása engedélyezve van</string>
   <string name="morphe_custom_font_title">Egyéni betűtípus</string>
   <string name="morphe_custom_font_summary">Töltse be egyéni TTF vagy OTF betűtípus-fájlt az alábbi elérési útról. Ennek engedélyezése kikapcsolja a Rendszerbetű használatát is.</string>
   <string name="morphe_custom_font_file_path_title">Egyéni betűtípus-fájl</string>
@@ -56,15 +56,17 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_disable_screenshot_popup_title">Képernyőfotó-felugró párbeszéd letiltása</string>
   <string name="morphe_disable_screenshot_popup_summary">Letiltja a képernyőfotó készítésekor megjelenő felugró párbeszédet</string>
   <string name="morphe_force_system_font_title">Rendszerbetűtípus kényszerítése</string>
-  <string name="morphe_force_system_font_summary">A rendszerbetűt használja a Reddit Sans vagy Roboto helyett. Ennek engedélyezése kikapcsolja a Egyéni betűtípust is.</string>
-  <string name="morphe_hide_ask_button_title">Kérdezz gomb elrejtése</string>
-  <string name="morphe_hide_ask_button_summary">Elrejti a Kérdezz gombot a keresősávban</string>
+  <string name="morphe_force_system_font_summary">A rendszerbetűt használja a Reddit Sans vagy Roboto helyett. Ennek engedélyezése az Egyéni betűtípust is kikapcsolja</string>
+  <string name="morphe_hide_ask_button_title">Ask gomb elrejtése</string>
+  <string name="morphe_hide_ask_button_summary">Elrejti az Ask gombot a keresősávban</string>
   <string name="morphe_hide_communities_shelf_title">Közösségek polc elrejtése</string>
   <string name="morphe_hide_communities_shelf_summary">Elrejti a kapcsolódó vagy javasolt közösségek polcát a subredditeken.</string>
-  <string name="morphe_hide_trending_shelves_title">Elrejtett népszerű polcok</string>
-  <string name="morphe_hide_trending_shelves_summary">Elrejti a népszerű polcokat a hírekből és a keresési javaslatokból.</string>
+  <string name="morphe_hide_trending_shelves_title">Népszerű polcok elrejtése</string>
+  <string name="morphe_hide_trending_shelves_summary">Elrejti a népszerű polcokat a hírfolyamból és a keresési javaslatokból</string>
   <string name="morphe_remove_notification_dialog_title">Értesítési javaslat ablak eltávolítása</string>
   <string name="morphe_remove_notification_dialog_summary">Automatikusan elutasítja az értesítési javaslatok ablakot egy subreddit felkeresésekor</string>
+  <string name="morphe_high_quality_avatars_title">Kiváló minőségű avatarok</string>
+  <string name="morphe_high_quality_avatars_summary">A felhasználói avatarokat teljes felbontásban jeleníti meg</string>
   <string name="morphe_show_flairs_in_home_feed_title">Flairek megjelenítése a kezdőlapban</string>
   <string name="morphe_show_flairs_in_home_feed_summary">Posztok flair jelvényeinek megjelenítése a kezdőlapon</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Egyes hírfolyambejegyzések nem jelenítenek meg flairt</string>
@@ -84,8 +86,8 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_open_links_directly_title">Linkek közvetlen megnyitása</string>
   <string name="morphe_open_links_directly_summary">Kihagyja az átirányításokat a külső linkek megnyitásakor</string>
   <string name="morphe_full_width_feed_media_title">Hírfolyam médiatartalmai teljes szélességben</string>
-  <string name="morphe_full_width_feed_media_summary">A képek és videók szélétől szélig jelennek meg a hírfolyamban és a bejegyzés részleteinél, oldalsó kitöltés és lekerekített sarkok nélkül</string>
-  <string name="morphe_media_viewer_fade_title">Médianézegető háttérsötétítésének erőssége</string>
+  <string name="morphe_full_width_feed_media_summary">A képek és videók szélről szélre jelennek meg a hírfolyamban és a bejegyzés részleteinél, oldalsó margó és lekerekített sarkok nélkül</string>
+  <string name="morphe_media_viewer_fade_title">Médianézegető háttérsötétítés erőssége</string>
   <string name="morphe_media_viewer_fade_summary">A felirat mögötti sötétítés erőssége képek és videók megtekintésekor, 0 (nincs sötétítés) és 1 (a Reddit alapértelmezése) között</string>
   <string name="morphe_keep_feed_position_title">Hírfolyam pozíciójának megtartása</string>
   <string name="morphe_keep_feed_position_summary">A hírfolyamot ugyanazon a pozíción tartja egy bejegyzés, kép vagy videó bezárása után, ahelyett, hogy a megnyitott bejegyzést a tetejére mozgatná</string>
@@ -94,15 +96,15 @@ A régebbi verzió használatához &lt;b&gt;törölnie&lt;/b&gt; kell a Redditet
   <string name="morphe_redgifs_audio_title">RedGifok lejátszása hanggal</string>
   <string name="morphe_redgifs_audio_summary">Az eredeti Redgifs videót játssza le, nem a Reddit másolatát, amelynek gyakran nincs hangja</string>
   <string name="morphe_redgifs_hd_title">RedGifok HD minőségben</string>
-  <string name="morphe_redgifs_hd_summary">HD RedGif-videót játszik le. Az HD videók nagyobbak és szünetelhetnek a betöltéshez</string>
+  <string name="morphe_redgifs_hd_summary">HD RedGif-videót játszik le. A HD videók nagyobbak, és betöltésükhöz szünetelhetnek</string>
   <string name="morphe_download_location_title">Letöltési hely</string>
   <string name="morphe_download_location_all_title">Minden fiók</string>
   <string name="morphe_download_location_default_summary">Reddit alapértelmezése: képek a Pictures/Reddit mappában, videók a Download mappában</string>
-  <string name="morphe_download_location_summary_folder">Könyvtár: %s</string>
+  <string name="morphe_download_location_summary_folder">Mappa: %s</string>
   <string name="morphe_download_location_summary_pattern">Fájlnév: %s</string>
-  <string name="morphe_download_location_pattern_default">Reddit alapértelmezett fájnevei</string>
+  <string name="morphe_download_location_pattern_default">Reddit alapértelmezett fájlnevei</string>
   <string name="morphe_download_location_uses_all_summary">\"Minden fiók\" használata</string>
-  <string name="morphe_download_location_own_title">Saját helyszín használata</string>
+  <string name="morphe_download_location_own_title">Saját hely használata</string>
   <string name="morphe_download_location_folder_title">Mentés ide</string>
   <string name="morphe_download_location_folder_default">Reddit alapértelmezett mappái</string>
   <string name="morphe_download_location_folder_default_short">Alapértelmezett</string>

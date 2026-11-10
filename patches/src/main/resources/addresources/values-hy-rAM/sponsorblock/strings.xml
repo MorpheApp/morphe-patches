@@ -49,7 +49,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_create_new_segment_title">Ցույց տալ \"Ստեղծել նոր հատված\" կոճակը</string>
   <string name="morphe_sb_create_new_segment_summary">Ավելացնում է կոճակ տեսանյութերի նվագարկիչին, որը թույլ է տալիս ուղարկել նոր SponsorBlock հատվածներ</string>
   <string name="morphe_sb_create_new_segment_step_title">Ժամանակի ճշգրտման քայլը</string>
-  <string name="morphe_sb_create_new_segment_step_summary">Ժամանակի ճշգրտման կոճակների փոխ displacement-ը (միլիվայրկյաններով)</string>
+  <string name="morphe_sb_create_new_segment_step_summary">Ժամանակի ճշգրտման կոճակների ժամանակային քայլը (միլիվայրկյաններով)</string>
   <string name="morphe_sb_create_new_segment_step_invalid">Արժեքը պետք է լինի դրական թիվ</string>
   <string name="morphe_sb_guidelines_title">Ուղարկման ուղեցույցներ</string>
   <string name="morphe_sb_guidelines_summary">Ուղեցույցները պարունակում են կանոններ և հուշումներ նոր հատվածներ ստեղծելու համար</string>
@@ -61,9 +61,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_offline_segments_title">Պահպանել ներբեռնված տեսանյութերի հատվածները</string>
   <string name="morphe_sb_offline_segments_summary">Թույլ է տալիս բաց թողնել ներբեռնված տեսանյութերի հատվածները օֆլայն վիճակում</string>
   <string name="morphe_sb_toast_on_connection_error_title">Ցույց տալ կապի սխալների մասին ծանուցումները</string>
-  <string name="morphe_sb_toast_on_connection_error_summary">Ցույց է տալ ծանուցում, երբ SponsorBlock սերվերը հասանելի չէ</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">Ցույց է տալիս ծանուցում, երբ SponsorBlock սերվերը հասանելի չէ</string>
   <string name="morphe_sb_track_skip_count_title">Միացնել բաց թողնումների քանակի հետևումը</string>
-  <string name="morphe_sb_track_skip_count_summary">Ուղարկում է բաց արժեքները SponsorBlock-ի առաջատարների ցուցակին՝ հետևելու համար, թե որքան ժամանակ է խնայվել</string>
+  <string name="morphe_sb_track_skip_count_summary">Ուղարկում է բաց թողնումների քանակը SponsorBlock-ի առաջատարների ցուցակին՝ հետևելու համար, թե որքան ժամանակ է խնայվել</string>
   <string name="morphe_sb_min_segment_duration_title">Սեգմենտի նվազագույն տևողությունը</string>
   <string name="morphe_sb_min_segment_duration_summary">Այս արժեքից (վայրկյաններով) կարճ սեգմենտները չեն ցուցադրվի և չեն բացվի</string>
   <string name="morphe_sb_min_segment_duration_invalid">Ժամանակի անվավեր տևողություն</string>
@@ -95,12 +95,12 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Այլևս չցուցադրել</string>
   <string name="morphe_sb_diff_segments_title">Փոխել սեգմենտի վարքագիծը</string>
   <string name="morphe_sb_segments_sponsor">Հովանավոր</string>
-  <string name="morphe_sb_segments_sponsor_summary">Վճարովի and promotion, վճարովի հղումներ և ուղիղ գովազդներ: Ոչ ինքնագովազդման կամ անվճար հիշատակումների համար՝ նպատակների / ստեղծողների / կայքերի / նախնականապես հավանած ապրանքների մասին</string>
+  <string name="morphe_sb_segments_sponsor_summary">Վճարովի գովազդ, վճարովի հղումներ և ուղիղ գովազդներ: Ոչ ինքնագովազդման կամ անվճար հիշատակումների համար՝ նպատակների / ստեղծողների / կայքերի / նախապես հավանած ապրանքների մասին</string>
   <string name="morphe_sb_segments_selfpromo">Անվճար / Ինքնագովազդում</string>
   <string name="morphe_sb_segments_selfpromo_summary">Նման է Հովանավորին, բացի անվճար / ինքնագովազդումից: Ներառում է բաժիններ ապրանքների, նվիրատվությունների կամ այն մասին տեղեկություն, թե ում հետ են համագործակցել</string>
   <string name="morphe_sb_segments_interaction">Փոխազդեցության հիշեցում (Բաժանորդագրություն)</string>
   <string name="morphe_sb_segments_interaction_summary">Կարճ հիշեցում՝ հավանելու, բաժանորդագրվելու կամ հետևելու նրանց համար բովանդակության մեջ: Եթե այն երկար է կամ վերաբերում է որևէ կոնկրետ բանի, ապա այն պետք է լինի ինքնագովազդման բաժնում</string>
-  <string name="morphe_sb_segments_highlight">Հիգլայթ</string>
+  <string name="morphe_sb_segments_highlight">Ընդգծում</string>
   <string name="morphe_sb_segments_highlight_summary">Տեսանյութի այն հատվածը, որն ամենաշատն են փնտրում մարդիկ</string>
   <string name="morphe_sb_segments_intro">Դադար / Ներածական անիմացիա</string>
   <string name="morphe_sb_segments_intro_summary">Միջակայք առանց իրական բովանդակության: Կարող է լինել դադար, ստատիկ կադր կամ կրկնվող անիմացիա: Չի ներառում տեղեկատվություն պարունակող անցումները</string>
@@ -111,27 +111,27 @@ Second \"item\" text"</string>
   <string name="morphe_sb_segments_preview">Նախադիտում / Ամփոփում</string>
   <string name="morphe_sb_segments_preview_summary">Հոլովակների հավաքածու, որը ցույց է տալիս, թե ինչ է սպասվում կամ ինչ է տեղի ունեցել տվյալ տեսանյութում կամ շարքի այլ տեսանյութերում, որտեղ ողջ տեղեկատվությունը կրկնվում է այլ տեղ</string>
   <string name="morphe_sb_segments_filler">Շեղումներ / Կատակներ</string>
-  <string name="morphe_sb_segments_filler_summary">Շեղող տեսարաններ կամ կատակներ, որոնք անհրաժեշտ չեն տեսանյութի հիմնական բովանդակությունը հասկանալու համար: չի ներառում համատեքստ կամ հիմնական մանրամասներ տրամադրող հատվածները</string>
-  <string name="morphe_sb_segments_nomusic">Երաժշկություն. Առանց երաժշկության հատված</string>
-  <string name="morphe_sb_segments_nomusic_summary">Միայն երաժշտական տեսահոլովակների համար: Երաժշտական տեսահոլովակների այն հատվածները, որոնք առանց երաժշկության են և արդեն չեն ընդգրկված մեկ այլ կատեգորիայի մեջ</string>
+  <string name="morphe_sb_segments_filler_summary">Չի ներառում համատեքստ կամ հիմնական մանրամասներ տրամադրող հատվածները</string>
+  <string name="morphe_sb_segments_nomusic">Երաժշտություն. Առանց երաժշտության հատված</string>
+  <string name="morphe_sb_segments_nomusic_summary">Միայն երաժշտական տեսահոլովակների համար: Երաժշտական տեսահոլովակների այն հատվածները, որոնք առանց երաժշտության են և արդեն չեն ընդգրկված մեկ այլ կատեգորիայում</string>
   <string name="morphe_sb_skip_button_compact">Բաց թողնել</string>
   <string name="morphe_sb_skip_button_compact_highlight">Շեշտադրում</string>
-  <string name="morphe_sb_skip_button_sponsor">Բաց թողնել հովնավորին</string>
+  <string name="morphe_sb_skip_button_sponsor">Բաց թողնել հովանավորին</string>
   <string name="morphe_sb_skip_button_selfpromo">Բաց թողնել գովազդը</string>
   <string name="morphe_sb_skip_button_interaction">Բաց թողնել փոխազդեցությունը</string>
   <string name="morphe_sb_skip_button_highlight">Անցնել ընդգծմանը</string>
   <string name="morphe_sb_skip_button_intro_beginning">Բաց թողնել ներածությունը</string>
-  <string name="morphe_sb_skip_button_intro_middle">Բաց թողնել միջնաբեկումը</string>
-  <string name="morphe_sb_skip_button_intro_end">Բաց թողնել միջնաբեկումը</string>
+  <string name="morphe_sb_skip_button_intro_middle">Բաց թողնել ընդմիջումը</string>
+  <string name="morphe_sb_skip_button_intro_end">Բաց թողնել ընդմիջումը</string>
   <string name="morphe_sb_skip_button_outro">Բաց թողնել եզրափակումը</string>
   <string name="morphe_sb_skip_button_hook">Բաց թողնել հիմնական մասի սկիզբը</string>
   <string name="morphe_sb_skip_button_preview_beginning">Բաց թողնել նախադիտումը</string>
   <string name="morphe_sb_skip_button_preview_middle">Բաց թողնել նախադիտումը</string>
   <string name="morphe_sb_skip_button_preview_end">Բաց թողնել ամփոփումը</string>
   <string name="morphe_sb_skip_button_filler">Բաց թողնել շեղումը</string>
-  <string name="morphe_sb_skip_button_nomusic">Բաց թողնել ոչ երաժշտականը</string>
+  <string name="morphe_sb_skip_button_nomusic">Բաց թողնել ոչ երաժշտական հատվածը</string>
   <string name="morphe_sb_skip_button_unsubmitted">Բաց թողնել հատվածը</string>
-  <string name="morphe_sb_skipped_sponsor">Բաց է թողնվել հովնավորը</string>
+  <string name="morphe_sb_skipped_sponsor">Բաց է թողնվել հովանավորը</string>
   <string name="morphe_sb_skipped_selfpromo">Բաց է թողնվել ինքնագովազդը</string>
   <string name="morphe_sb_skipped_interaction">Բաց է թողնվել ձանձրալի հիշեցումը</string>
   <string name="morphe_sb_skipped_highlight">Բաց է թողնվել մինչև կարևոր հատվածը</string>
@@ -140,7 +140,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_intro_end">Բաց է թողնվել ընդմիջումը</string>
   <string name="morphe_sb_skipped_outro">Բաց է թողնվել եզրափակումը</string>
   <string name="morphe_sb_skipped_hook">Բաց է թողնվել հիմնական հատվածը</string>
-  <string name="morphe_sb_skipped_preview_beginning">Բաց է թողնվել նախնական դիտումը</string>
+  <string name="morphe_sb_skipped_preview_beginning">Բաց է թողնվել նախադիտումը</string>
   <string name="morphe_sb_skipped_preview_middle">Բաց է թողնվել նախադիտումը</string>
   <string name="morphe_sb_skipped_preview_end">Բաց է թողնվել ամփոփումը</string>
   <string name="morphe_sb_skipped_filler">Բաց է թողնվել շեղումը</string>
@@ -150,10 +150,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_automatically">Բաց թողնել ավտոմատ կերպով</string>
   <string name="morphe_sb_skip_automatically_once">Բաց թողնել ավտոմատ կերպով մեկ անգամ</string>
   <string name="morphe_sb_skip_showbutton">Ցույց տալ \"Բաց թողնել\" կոճակը</string>
-  <string name="morphe_sb_skip_seekbaronly">Ցույց տալ միայն փոխադարձման սլայդերում</string>
+  <string name="morphe_sb_skip_seekbaronly">Ցույց տալ միայն փնտրման սլայդերում</string>
   <string name="morphe_sb_skip_ignore">Անջատել</string>
   <string name="morphe_sb_submit_failed_invalid">Հնարավոր չէ ուղարկել հատվածը՝ %s</string>
-  <string name="morphe_sb_submit_failed_timeout">SponsorBlock-ը ժամանակավորապես ան అందు throughout է</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock-ը ժամանակավորապես անհասանելի է</string>
   <string name="morphe_sb_submit_failed_unknown_error">Հնարավոր չէ ուղարկել հատվածը (կարգավիճակ՝ %1$s %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Հնարավոր չէ ուղարկել հատվածը: Սահմանափակված է հարցումների քանակը (չափազանց շատ հարցումներ նույն օգտատիրոջ կամ IP-ի կողմից)</string>
   <string name="morphe_sb_submit_failed_forbidden">Հնարավոր չէ ներկայացնել հատվածը՝ %s</string>
@@ -164,9 +164,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock-ը ժամանակավորապես հասանելի չէ (API-ի ժամանակը սպառվել է)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock-ը ժամանակավորապես հասանելի չէ (կարգավիճակ՝ %s)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock-ը ժամանակավորապես հասանելի չէ</string>
-  <string name="morphe_sb_vote_failed_timeout">Հնարավոր չé քվեարկել հատվածի համար (API-ի ժամանակը սպառվել է)</string>
+  <string name="morphe_sb_vote_failed_timeout">Հնարավոր չէ քվեարկել հատվածի համար (API-ի ժամանակը սպառվել է)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Հնարավոր չէ քվեարկել հատվածի համար (կարգավիճակ՝ %1$s %2$s)</string>
-  <string name="morphe_sb_vote_failed_forbidden">Հնարավոր չé քվեարկել հատվածի համար՝ %s</string>
+  <string name="morphe_sb_vote_failed_forbidden">Հնարավոր չէ քվեարկել հատվածի համար՝ %s</string>
   <string name="morphe_sb_vote_upvote">Դրական ձայն</string>
   <string name="morphe_sb_vote_downvote">Բացասական ձայն</string>
   <string name="morphe_sb_vote_category">Փոխել կատեգորիան</string>
@@ -194,7 +194,7 @@ Second \"item\" text"</string>
 Պատրա՞ստ եք ուղարկել։"</string>
   <string name="morphe_sb_new_segment_confirm_submit">Ուղարկել</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Սկիզբը պետք է լինի ավարտից առաջ</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Նախ նշեք վայրը ժամանակային զողովի վրա</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Նախ նշեք վայրը ժամանակային գոտու վրա</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Նայեք հատվածի նախադիտմանը և համոզվեք, որ այն սահուն է բաց թողնվում</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Խմբագրել հատվածի ժամանակավորումը ձեռքով</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Ցանկանու՞մ եք խմբագրել հատվածի սկզբի կամ ավարտի ժամանակը։</string>
@@ -220,7 +220,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_submissions_summary">Հպեք այստեղ՝ ձեր հատվածները տեսնելու համար</string>
   <string name="morphe_sb_stats_saved_zero">SponsorBlock-ի առաջատարների ցուցակը</string>
   <string name="morphe_sb_stats_saved">Դուք փրկել եք մարդկանց &lt;b&gt;%s&lt;/b&gt; հատվածներից</string>
-  <string name="morphe_sb_stats_saved_summary_zero">Հպեք այստեղ՝ գլոբալ վիճակագրությունը և լավագույն ներդ contribu-տորները տեսնելու համար</string>
+  <string name="morphe_sb_stats_saved_summary_zero">Հպեք այստեղ՝ գլոբալ վիճակագրությունը և լավագույն ներդրողները տեսնելու համար</string>
   <string name="morphe_sb_stats_saved_summary">Դա նրանց կյանքի &lt;b&gt;%s&lt;/b&gt;-ն է։&lt;br&gt;Հպեք այստեղ՝ առաջատարների ցուցակը տեսնելու համար</string>
   <string name="morphe_sb_stats_self_saved">Դուք բաց եք թողել &lt;b&gt;%s&lt;/b&gt; հատվածներ</string>
   <string name="morphe_sb_stats_self_saved_summary">Դա &lt;b&gt;%s&lt;/b&gt; է</string>
@@ -230,7 +230,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s վայրկյան</string>
   <string name="morphe_sb_color_opacity_label">Թափանցիկություն՝</string>
   <string name="morphe_sb_color_dot_label">Գույն՝</string>
-  <string name="morphe_sb_about_api_summary">"SponsorBlock-ը տեսանյութերի հատվածների հանրային տվյալների բազա է, ինչպիսիք են հովናരերը, ներածությունները, եզրափակությունները և բաժանորդագրվելու հիշեցումները: Հատվածները ներկայացվում և քվեարկվում են համայնքի կողմից, իսկ տվյալների բազան բաց է և անվճար ներբեռնման համար
+  <string name="morphe_sb_about_api_summary">"SponsorBlock-ը տեսանյութերի հատվածների հանրային տվյալների բազա է, ինչպիսիք են հովանավորները, ներածությունները, եզրափակությունները և բաժանորդագրվելու հիշեցումները: Հատվածները ներկայացվում և քվեարկվում են համայնքի կողմից, իսկ տվյալների բազան բաց է և անվճար ներբեռնման համար
 
 Ձեր դիտած տեսանյութի ID-ն ուղարկվում է SponsorBlock API-ին՝ դրա հատվածները ստանալու համար"</string>
 </resources>

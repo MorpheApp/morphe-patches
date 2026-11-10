@@ -123,6 +123,29 @@ public class YouTubeChatSourceTest {
     }
 
     @Test
+    public void skipsChatStatusMessages() throws Exception {
+        String status = "{\"addChatItemAction\":{\"item\":{\"liveChatViewerEngagementMessageRenderer\":{"
+                + "\"id\":\"status\",\"icon\":{\"iconType\":\"YOUTUBE_ROUND\"},"
+                + "\"message\":{\"runs\":[{\"text\":\"Welcome to live chat!\"}]}}}}}";
+        String text = "{\"addChatItemAction\":{\"item\":{\"liveChatTextMessageRenderer\":{"
+                + "\"id\":\"text\",\"timestampText\":{\"simpleText\":\"0:01\"},"
+                + "\"message\":{\"simpleText\":\"hello\"}}}}}";
+
+        List<NiconicoComment> live = YouTubeChatSource.parseComments(
+                new JSONArray("[" + status + "," + text + "]"));
+
+        assertEquals(1, live.size());
+        assertEquals("hello", live.get(0).text);
+
+        YouTubeChatSource.ReplayParseResult replay = YouTubeChatSource.parseReplayComments(new JSONArray(
+                "[{\"replayChatItemAction\":{\"videoOffsetTimeMsec\":\"0\",\"actions\":[" + status + "]}},"
+                        + "{\"replayChatItemAction\":{\"videoOffsetTimeMsec\":\"1000\",\"actions\":[" + text + "]}}]"));
+
+        assertEquals(1, replay.comments.size());
+        assertEquals("hello", replay.comments.get(0).text);
+    }
+
+    @Test
     public void preservesExactReplayOffsetAndNestedChatAction() throws Exception {
         JSONArray actions = new JSONArray("[{\"replayChatItemAction\":{"
                 + "\"videoOffsetTimeMsec\":\"7449\",\"actions\":["

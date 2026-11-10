@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -84,6 +85,8 @@ public final class LayoutComponentsFilter extends Filter {
      */
     private static final String COMMUNITY_PAGE_BROWSE_ID = "FEcommunity_page";
 
+    private static final String POST_DETAIL_BROWSE_ID = "FEpost_detail";
+
     /**
      * Browse id of the page that is shown, or empty for the search feed.
      * Also used by {@link HorizontalShelvesFilter}.
@@ -117,6 +120,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup chipBar;
     private final StringFilterGroup communityPosts;
     private final StringFilterGroup compactChannel;
+    private final StringFilterGroup compactChannelMusicBanner;
+    private final ByteArrayFilterGroup youtubeMusicChannelLink;
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
@@ -316,6 +321,18 @@ public final class LayoutComponentsFilter extends Filter {
         compactChannel = new StringFilterGroup(
                 Settings.HIDE_CHANNEL_BUTTONS,
                 "compact_channel.e"
+        );
+
+        // With some device layouts, such as Automotive, the YouTube Music button of a channel
+        // in the search results is a banner below the channel instead of a button of the channel.
+        compactChannelMusicBanner = new StringFilterGroup(
+                Settings.HIDE_CHANNEL_BUTTONS,
+                "button_banner.e"
+        );
+
+        youtubeMusicChannelLink = new ByteArrayFilterGroup(
+                null,
+                "vnd.youtube.music://music.youtube.com/channel/"
         );
 
         final var compactChannelBar = new StringFilterGroup(
@@ -525,6 +542,7 @@ public final class LayoutComponentsFilter extends Filter {
                 compactBanner,
                 compactChannelBar,
                 compactChannel,
+                compactChannelMusicBanner,
                 compactChannelBarInner,
                 communityPosts,
                 crowdfundingBox,
@@ -658,7 +676,8 @@ public final class LayoutComponentsFilter extends Filter {
             // The watch page, with its related videos, comments and other panels, covers the page
             // below it, also when the video is opened from the community page
             // (https://github.com/MorpheApp/morphe-patches/issues/4170).
-            if (COMMUNITY_PAGE_BROWSE_ID.equals(browseId) && !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
+            if ((COMMUNITY_PAGE_BROWSE_ID.equals(browseId) || POST_DETAIL_BROWSE_ID.equals(browseId))
+                    && !PlayerType.getCurrent().isMaximizedOrFullscreen()) {
                 return false;
             }
 
@@ -667,6 +686,10 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == compactChannel) {
             return Utils.contains(path, "button.e");
+        }
+
+        if (matchedGroup == compactChannelMusicBanner) {
+            return youtubeMusicChannelLink.check(buffer).isFiltered();
         }
 
         if (matchedGroup == compactChannelBarInner) {
@@ -1158,6 +1181,26 @@ public final class LayoutComponentsFilter extends Filter {
 
     /**
      * Injection point.
+     *
+     * @return If every element in a box of the fullscreen engagement panel was filtered,
+     *         so the empty box with its rounded border is collapsed, such as with "Hide channel bar".
+     */
+    public static boolean isEngagementPanelBoxEmpty(ViewGroup box) {
+        final int count = box.getChildCount();
+        if (count == 0) {
+            return false;
+        }
+        for (int i = 0; i < count; i++) {
+            View child = box.getChildAt(i);
+            if (child.getVisibility() != View.GONE && child.getMeasuredHeight() > 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Injection point.
      */
     public static boolean hideFloatingMicrophoneButton(final boolean original) {
         return original || Settings.HIDE_FLOATING_MICROPHONE_BUTTON.get();
@@ -1429,6 +1472,68 @@ public final class LayoutComponentsFilter extends Filter {
     }
 
     /**
+     * Item of a menu, such as the items of the popup menus.
+     */
+    public interface FlyoutMenuItem {
+        @Nullable
+        CharSequence patch_getFlyoutMenuItemTitle();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Leaves the filtered items out of the items of a popup menu, as the list popup menu
+     * ignores the zero height of a hidden item and only keeps its text hidden.
+     *
+     * @param menuItems resolved items of one item of the menu
+     */
+    public static Iterable<?> hideFlyoutMenuItems(Iterable<?> menuItems) {
+        if (!Settings.HIDE_FEED_FLYOUT_MENU.get() || flyoutMenuFilterStrings.isEmpty()) {
+            return menuItems;
+        }
+
+        List<Object> shownMenuItems = new ArrayList<>();
+        for (Object menuItem : menuItems) {
+            if (menuItem instanceof FlyoutMenuItem flyoutMenuItem) {
+                CharSequence menuTitleCharSequence = flyoutMenuItem.patch_getFlyoutMenuItemTitle();
+                if (menuTitleCharSequence != null) {
+                    String menuTitleString = menuTitleCharSequence.toString();
+                    if (isFlyoutMenuFiltered(menuTitleString)) {
+                        Logger.printDebug(() -> "Hiding popup menu item: " + menuTitleString);
+                        continue;
+                    }
+                }
+            }
+            shownMenuItems.add(menuItem);
+        }
+
+        return shownMenuItems;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Hide the items of the toolbar menu, such as the overflow menu of a playlist page.
+     *
+     * @param menu                  toolbar menu
+     * @param menuItemId            id of the item just added to the menu
+     * @param menuTitleCharSequence title of the item
+     */
+    public static void hideFlyoutMenu(Menu menu, int menuItemId, @Nullable CharSequence menuTitleCharSequence) {
+        if (menuTitleCharSequence == null || !Settings.HIDE_FEED_FLYOUT_MENU.get()
+                || flyoutMenuFilterStrings.isEmpty()) {
+            return;
+        }
+
+        String menuTitleString = menuTitleCharSequence.toString();
+
+        if (isFlyoutMenuFiltered(menuTitleString)) {
+            Logger.printDebug(() -> "Hiding toolbar menu item: " + menuTitleString);
+            menu.removeItem(menuItemId);
+        }
+    }
+
+    /**
      * The download item shows a placeholder while the state of the download is loaded in the background,
      * and shows its real text only about a second after the menu opens. A filter of the download text
      * therefore also hides the placeholder, otherwise the item is shown and then collapses.
@@ -1467,6 +1572,13 @@ public final class LayoutComponentsFilter extends Filter {
     public static boolean hideChannelTab(@Nullable String channelTabText) {
         if (!Utils.isNotEmpty(channelTabText) || !Settings.HIDE_CHANNEL_TAB.get()
                 || channelTabFilterStrings.isEmpty()) {
+            return false;
+        }
+
+        // A page without tabs is blank. The last tab is kept, as 21.44+ also shows
+        // the Home feed as a page with a single "Home" tab.
+        List<?> tabs = channelTabs;
+        if (tabs != null && tabs.size() <= 1) {
             return false;
         }
 

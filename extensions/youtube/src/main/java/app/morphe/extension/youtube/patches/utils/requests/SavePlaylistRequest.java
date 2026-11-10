@@ -15,7 +15,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
-import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
@@ -26,13 +25,9 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.settings.BaseSettings;
 
 public class SavePlaylistRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
-
-    public static final Map<String, SavePlaylistRequest> cache = Collections.synchronizedMap(
-            Utils.createSizeRestrictedMap(50));
 
     private final Future<Boolean> future;
 
@@ -43,9 +38,9 @@ public class SavePlaylistRequest {
     @Nullable
     public Boolean getResult() {
         try {
-            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: Blocking main thread");
-            }
+            Logger.printExceptionIfDebug(() -> !future.isDone() && Utils.isCurrentlyOnMainThread()
+                    ? "Debug: Blocking main thread"
+                    : null);
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getResult timed out", ex);
@@ -58,23 +53,13 @@ public class SavePlaylistRequest {
         return null;
     }
 
-    public static void clear() {
-        cache.clear();
-    }
-
     public static SavePlaylistRequest fetchRequestIfNeeded(
             String playlistId,
             String libraryId,
             Map<String, String> requestHeader
     ) {
         Objects.requireNonNull(playlistId);
-        return cache.put(libraryId, new SavePlaylistRequest(playlistId, libraryId, requestHeader));
-    }
-
-    @SuppressWarnings("unused")
-    @Nullable
-    public static SavePlaylistRequest getRequestForLibraryId(String libraryId) {
-        return cache.get(libraryId);
+        return new SavePlaylistRequest(playlistId, libraryId, requestHeader);
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {

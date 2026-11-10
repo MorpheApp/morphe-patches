@@ -79,7 +79,7 @@ Kiểm tra xem tên gói có chính xác không và ứng dụng đã được c
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_6">Morphe play đen</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_7">Morphe tỉ lệ</string>
+  <string name="morphe_custom_branding_icon_entry_7">Tùy chỉnh</string>
   <string name="morphe_custom_branding_icon_user_dialog_message">"Việc này sẽ thay đổi biểu tượng hiển thị trong trình khởi chạy ứng dụng của bạn.
 
 Cài đặt này sẽ không thay đổi biểu tượng ở bất kỳ vị trí nào sau đây:
@@ -94,7 +94,7 @@ Cài đặt này sẽ không thay đổi biểu tượng ở bất kỳ vị tr�
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Thông báo Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Nhật ký xem của bạn hiện không được lưu lại.&lt;br&gt;&lt;br&gt;Nguyên nhân thường là do DNS chặn quảng cáo hoặc proxy mạng.&lt;br&gt;&lt;br&gt;Vì vậy, hãy thử thêm &lt;b&gt;s.youtube.com&lt;/b&gt; vào danh sách cho phép, hoặc tắt tất cả DNS và proxy</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Nhật ký xem của bạn hiện không được lưu lại.&lt;br&gt;&lt;br&gt;Nguyên nhân thường là do DNS chặn quảng cáo hoặc proxy mạng.&lt;br&gt;&lt;br&gt;Để khắc phục, hãy thêm &lt;b&gt;s.youtube.com&lt;/b&gt; vào danh sách cho phép, hoặc tắt tất cả DNS và proxy</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Không hiện lại</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Giả mạo luồng phát video</string>
@@ -116,7 +116,7 @@ Nếu bạn đã mua gói Premium, có thể không cần thiết phải bật c
   <string name="morphe_spoof_video_streams_client_type_title">Client mặc định</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Đăng nhập Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Chưa đăng nhập Android VR. Bấm vào đây để đăng nhập</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR yêu cầu đăng nhập riêng. Nhấn vào đây để tiếp tục</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Đã đăng nhập vào Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Để dùng tính năng này, thay đổi \"Client mặc định\" thành Android VR</string>
@@ -208,13 +208,15 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_replace_links_with_shortener_title">Đổi liên kết chia sẻ thành youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Buộc các video dùng định dạng youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Ghi nhật ký gỡ lỗi protocol buffer</string>
-  <string name="morphe_debug_protobuffer_summary">Bổ sung thông tin chi tiết hơn giúp nhà phát triển xác định các thành phần trong ứng dụng</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Bật cài đặt này để ghi thêm dữ liệu bố cục, bao gồm cả văn bản trên màn hình của một số thành phần giao diện.
+  <string name="morphe_debug_litho_title">Nhật ký Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Đang tắt</string>
+  <string name="morphe_debug_litho_entry_path">Đường dẫn</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Đường dẫn và bộ đệm</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Nhật ký Litho ghi lại các thành phần bố cục của ứng dụng, bao gồm cả văn bản trên màn hình của một số thành phần giao diện.
 
-Giúp xác định các thành phần dễ hơn khi tạo bộ lọc tùy chỉnh.
+Điều này có thể giúp xác định các thành phần khi tạo bộ lọc tùy chỉnh.
 
-Tuy nhiên, một số dữ liệu người dùng cũng được ghi lại như địa chỉ IP của bạn"</string>
+Tuy nhiên, việc này cũng sẽ ghi lại một số dữ liệu người dùng như địa chỉ IP của bạn"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Bộ lọc tùy chỉnh</string>
   <string name="morphe_custom_filter_screen_summary">Cấu hình bộ lọc tùy chỉnh để ẩn bất kỳ thành phần nào</string>
@@ -257,7 +259,7 @@ Bật 'Giả mạo luồng video' để sửa lỗi phát lại"</string>
   <string name="morphe_spoof_app_version_summary">Khiến server nghĩ rằng bạn đang sử dụng phiên bản cũ để khôi phục giao diện cũ</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"Phiên bản ứng dụng sẽ được giả mạo thành một phiên bản cũ hơn.
 
-Giúp thay đổi giao diện và tính năng của ứng dụng, nhưng đồng thời cũng có thể xảy ra một số lỗi không xác định.
+Thao tác này sẽ thay đổi giao diện và tính năng của ứng dụng, nhưng đồng thời cũng có thể xảy ra một số lỗi không xác định.
 
 Nếu muốn tắt tính năng này sau đó, bạn nên xóa dữ liệu ứng dụng để tránh vỡ giao diện"</string>
   <string name="morphe_spoof_app_version_target_title">Mục tiêu phiên bản giả mạo</string>

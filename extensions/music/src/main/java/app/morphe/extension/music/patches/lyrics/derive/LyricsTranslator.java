@@ -20,7 +20,6 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
-import app.morphe.extension.music.patches.lyrics.romanizers.LyricsLanguageDetector;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
@@ -108,9 +107,9 @@ public final class LyricsTranslator {
         }
 
         String language = LyricsRequests.translationLanguage();
-        List<String> providers = AiProviders.enabledProviders(
+        List<String> providers = ProcessingProviders.enabledProviders(
                 Settings.LYRICS_TRANSLATION_PROVIDERS.get(),
-                AiProviders.TRANSLATION_ORDER);
+                ProcessingProviders.TRANSLATION_ORDER);
         if (providers.isEmpty()) {
             callback.onTranslated(null, false, false, null, false);
             return;
@@ -122,12 +121,12 @@ public final class LyricsTranslator {
             return;
         }
 
-        final List<String> embedded = providers.contains(AiProviders.EMBEDDED)
+        final List<String> embedded = providers.contains(ProcessingProviders.EMBEDDED)
                 ? embeddedTranslation(lyrics, language, lines.size())
                 : null;
 
         // Embedded translation is already in memory, so keep the old synchronous result.
-        if (AiProviders.EMBEDDED.equals(providers.get(0)) && embedded != null) {
+        if (ProcessingProviders.EMBEDDED.equals(providers.get(0)) && embedded != null) {
             callback.onTranslated(embedded, false, false, null, false);
             return;
         }
@@ -136,7 +135,7 @@ public final class LyricsTranslator {
             try {
                 for (String provider : providers) {
                     try {
-                        ProviderTranslation result = AiProviders.EMBEDDED.equals(provider)
+                        ProviderTranslation result = ProcessingProviders.EMBEDDED.equals(provider)
                                 ? (embedded == null ? null
                                    : new ProviderTranslation(embedded, false, false, null))
                                 : translateWithProvider(
@@ -165,7 +164,7 @@ public final class LyricsTranslator {
     private static ProviderTranslation translateWithProvider(
             String provider, TrackInfo track, String source, String language,
             List<String> lines) {
-        if (AiProviders.GOOGLE.equals(provider)) {
+        if (ProcessingProviders.GOOGLE.equals(provider)) {
             List<String> translated = LyricsCache.getTranslation(
                     track, source, language, lines);
             if (hasTranslation(translated, lines)) {
@@ -181,8 +180,8 @@ public final class LyricsTranslator {
             return null;
         }
 
-        final boolean deepl = AiProviders.DEEPL.equals(provider);
-        if (!deepl && !AiProviders.isAi(provider)) {
+        final boolean deepl = ProcessingProviders.DEEPL.equals(provider);
+        if (!deepl && !ProcessingProviders.isAi(provider)) {
             return null;
         }
 
@@ -194,9 +193,9 @@ public final class LyricsTranslator {
                     deepl ? "DeepL" : Settings.LYRICS_AI_MODEL.get());
         }
 
-        AiProviders.Result ai = deepl
+        ProcessingProviders.Result ai = deepl
                 ? deepLTranslate(lines, language)
-                : AiProviders.mapLines(provider, OpenAIClient.renderPrompt(
+                : ProcessingProviders.mapLines(provider, OpenAIClient.renderPrompt(
                 Settings.LYRICS_AI_TRANSLATION_PROMPT.get(), "translation",
                 language, track.title(), track.artist(), lines), lines);
         if (ai == null || ai.lines() == null || ai.lines().isEmpty()
@@ -236,13 +235,13 @@ public final class LyricsTranslator {
     }
 
     @Nullable
-    private static AiProviders.Result deepLTranslate(List<String> lines, String language) {
+    private static ProcessingProviders.Result deepLTranslate(List<String> lines, String language) {
         String apiKey = Settings.LYRICS_DEEPL_API_KEY.get();
         if (apiKey.isEmpty()) {
             return null;
         }
         try {
-            return new AiProviders.Result(DeepLClient.translate(lines, language, apiKey), "DeepL");
+            return new ProcessingProviders.Result(DeepLClient.translate(lines, language, apiKey), "DeepL");
         } catch (Exception ex) {
             Logger.printDebug(() -> "DeepL request failed", ex);
             return null;

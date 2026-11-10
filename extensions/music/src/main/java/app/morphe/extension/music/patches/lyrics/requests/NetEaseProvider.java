@@ -36,7 +36,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
-import app.morphe.extension.music.patches.lyrics.parsers.LyricsCrypto;
+import app.morphe.extension.music.patches.lyrics.utils.LyricsCrypto;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
@@ -797,7 +797,8 @@ public final class NetEaseProvider implements LyricsProvider {
         long songId = song.getLong("id");
         String sourceUrl = "https://music.163.com/song?id=" + songId;
         return new Lyrics(lines, name(), true, romanization, translations, null,
-                creditLines.isEmpty() ? null : creditLines, rawFormat, formatType, sourceUrl);
+                null, creditLines.isEmpty() ? null : creditLines, rawFormat, formatType, sourceUrl,
+                null, null);
     }
 
     private record Item(long start, String text) {

@@ -20,6 +20,8 @@ Second \"item\" text"</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <!-- String is also duplicated in Reddit about preference -->
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_level_title">ការកត់ត្រាកែកំហុស</string>
+  <string name="morphe_debug_level_entry_disabled">បានផ្ដាច់</string>
   <!-- Keep short, four of these are shown in one row. -->
   <!-- Keep short, four of these are shown in one row. -->
   <!-- Keep short, four of these are shown in one row. -->
@@ -33,5 +35,6 @@ Second \"item\" text"</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
   <!-- misc.crashlog.crashLogPatch -->
 </resources>

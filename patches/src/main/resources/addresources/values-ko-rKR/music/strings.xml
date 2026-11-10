@@ -72,8 +72,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">잼을 업데이트하는 중…</string>
   <string name="morphe_music_jam_finding_host">Wi-Fi에서 호스트를 찾는 중…</string>
   <string name="morphe_music_jam_waiting_people">참여자를 기다리는 중</string>
-  <string name="morphe_music_jam_one_connected">%s 명 연결됨</string>
-  <string name="morphe_music_jam_many_connected">%s 명 연결됨</string>
+  <string name="morphe_music_jam_one_connected">%s명 연결됨</string>
+  <string name="morphe_music_jam_many_connected">%s명 연결됨</string>
   <string name="morphe_music_jam_code_expires">이 코드를 근처 기기에 입력하세요. Wi-Fi Aware는 지원되는 경우 서로 다른 LAN에서도 작동합니다. %s 분 후에 만료됩니다</string>
   <string name="morphe_music_jam_seek_to">%s으로 이동할까요?</string>
   <string name="morphe_music_jam_edits_open">편집 열기</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">잼 중 지원되지 않음</string>
   <string name="morphe_music_jam_cancelled">참여 취소됨</string>
   <string name="morphe_music_jam_reconnecting_host">호스트에 다시 연결하는 중…</string>
-  <string name="morphe_music_jam_share_prompt">재생목록을 공유하세요. 모두가 노래를 추가할 수 있도록 하세요</string>
+  <string name="morphe_music_jam_share_prompt">재생목록을 공유하세요. 모두가 노래를 추가할 수 있게 하세요</string>
   <string name="morphe_music_jam_invite_people">참여자 초대</string>
   <string name="morphe_music_jam_guest_edits">게스트는 재생목록을 편집할 수 있습니다</string>
   <string name="morphe_music_jam_end_jam">잼 종료</string>
@@ -216,13 +216,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_download_complete">%s 다운로드됨</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s개 다운로드됨, %2$s개 다운로드 실패</string>
   <string name="morphe_music_downloads_playlist_download_already_running">재생목록 다운로드가 이미 진행 중입니다</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">계정 정보가 아직 확인되지 않았습니다. 잠시 후 다시 시도하십시오</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">잠시 후 다시 시도하세요</string>
   <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s개 목록화됨, 모두 이미 다운로드됨</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">재생목록의 일부만 가져올 수 있었습니다. 나중에 다시 다운로드 탭을 눌러 나머지를 가져오십시오</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">재생목록의 일부만 가져올 수 있었습니다. 나중에 다운로드 탭을 눌러 나머지를 가져오세요</string>
   <string name="morphe_music_downloads_playlist_download_started">백그라운드에서 %s 다운로드 중</string>
   <string name="morphe_music_downloads_playlist_download_no_network">네트워크 연결 없음</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">네트워크 대기 중…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">%2$s개 중 %1$s개에서 중단되었습니다. 계속하려면 다시 다운로드 탭을 누르십시오</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s개 중 %1$s개에서 중단되었습니다. 계속하려면 다시 다운로드 탭을 누르세요</string>
   <string name="morphe_music_downloads_mark_title">다운로드한 노래 표시하기</string>
   <string name="morphe_music_downloads_mark_summary">이미 다운로드한 노래는 재생목록, 앨범 및 검색 결과에서 곡 정보 앞에 표시가 나타납니다</string>
   <!-- misc.settings.settingsPatch -->
@@ -344,7 +344,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">선택한 트랙만 재생</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">선택한 트랙을 현재 재생목록에 추가</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
-  <string name="morphe_music_playlist_track_tap_added_to_queue">현재 재생목록에 추가하였습니다</string>
+  <string name="morphe_music_playlist_track_tap_added_to_queue">대기열에 추가되었습니다</string>
   <!-- layout.playlisttags.playlistTagsPatch -->
   <string name="morphe_music_playlist_tags_screen_title">재생목록 태그</string>
   <string name="morphe_music_playlist_tags_screen_summary">재생목록에 태그를 지정하고 태그별로 라이브러리를 필터링하세요</string>
@@ -395,7 +395,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_action_buttons_screen_title">작업 버튼</string>
   <string name="morphe_music_action_buttons_screen_summary">플레이어 아래에 표시할 작업 버튼을 설정하세요</string>
   <string name="morphe_music_hide_action_bar_title">작업 버튼 바 숨기기</string>
-  <string name="morphe_music_hide_like_dislike_button_title">‘좋아요’ 및 ‘싫어요’ 버튼 숨기기</string>
+  <string name="morphe_music_hide_like_dislike_button_title">\'좋아요\' 및 \'싫어요\' 버튼 숨기기</string>
   <string name="morphe_music_hide_comments_button_title">댓글 버튼 숨기기</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">\'실시간 채팅 다시보기\' 버튼 숨기기</string>
@@ -490,6 +490,23 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">업그레이드 버튼 숨기기</string>
   <string name="morphe_music_hide_navigation_bar_title">하단바 숨기기</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">하단바 버튼 라벨 숨기기</string>
+  <string name="morphe_music_navigation_bar_glass_title">글래스 하단바 활성화하기</string>
+  <string name="morphe_music_navigation_bar_glass_summary">탐색 바를 플로팅 형태의 둥글고 반투명한 캡슐 모양으로 표시합니다</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">글래스 불투명도</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_summary">글래스 하단바의 투명도를 설정할 수 있습니다 (0: 완전 투명, 100: 완전 불투명)</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">밝은 글래스</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">더 밝고 투명한 느낌을 위해 글래스 탐색 바의 색상을 어두운 색 대신 흰색으로 설정합니다</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">글래스 탐색 바 크기</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">미리보기를 통해 글래스 탐색 바의 높이, 너비 및 버튼 간격을 조정합니다. 화면 너비에 맞지 않는 버튼은 숨겨집니다</string>
+  <string name="morphe_music_navigation_bar_glass_size_height">높이</string>
+  <string name="morphe_music_navigation_bar_glass_size_width">최대 너비</string>
+  <string name="morphe_music_navigation_bar_glass_size_button_spacing">버튼 간격</string>
+  <string name="morphe_music_navigation_bar_glass_size_buttons_shown">표시된 버튼: %2$s개 중 %1$s개</string>
+  <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
+  <string name="morphe_music_navigation_bar_glass_preview_home">홈</string>
+  <string name="morphe_music_navigation_bar_glass_preview_samples">샘플</string>
+  <string name="morphe_music_navigation_bar_glass_preview_explore">둘러보기</string>
+  <string name="morphe_music_navigation_bar_glass_preview_library">보관함</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
   <string name="morphe_music_scrobbling_summary_logged_out">로그인되어 있지 않습니다. 설정하려면 탭하세요</string>
   <string name="morphe_music_scrobbling_log_out">로그아웃</string>
@@ -702,7 +719,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_show_section_title">섹션 태그 표시하기</string>
   <string name="morphe_music_lyrics_show_section_summary">가사에 절 또는 후렴과 같은 작은 태그를 붙여 각 새로운 섹션을 표시합니다.</string>
   <string name="morphe_music_lyrics_show_copy_button_title">복사 버튼 표시하기</string>
-  <string name="morphe_music_lyrics_show_copy_button_summary">버튼을 탭하여 원본 가사를 일반 텍스트로 복사할 수 있고, 길게 탭하면 원본 가사 소스 파일을 다운로드에 저장할 수 있습니다</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">탭하여 원본 가사를 일반 텍스트로 복사하고, 길게 눌러 원본 가사 소스 파일과 변환된 TTML 파일을 다운로드에 저장하세요</string>
   <string name="morphe_music_lyrics_show_translate_button_title">번역 버튼 표시하기</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">번역을 켜거나 끄려면 탭하세요; 번역만 표시하려면 길게 탭하세요. 활성화된 번역 제공자를 설정된 순서대로 사용합니다</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">로마자 표기 또는 음역 버튼 표시하기</string>
@@ -727,6 +744,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_search_empty">노래 제목과 아티스트를 입력하세요</string>
   <string name="morphe_music_lyrics_search_no_providers">활성화된 제공자 중 다른 노래를 검색할 수 있는 곳이 없습니다</string>
   <string name="morphe_music_lyrics_saved">저장됨</string>
+  <string name="morphe_music_lyrics_written_by">작성자: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">동기화된 단어 또는 음절 강조 표시하기</string>
   <string name="morphe_music_lyrics_word_sync_summary">가능한 경우 단어 단위로 표시되는 가사를 우선합니다. 가사에 단어별 타이밍 정보가 포함되어 있으면, 음악에 맞춰 각 단어 음절을 순서대로 강조 표시합니다</string>
   <string name="morphe_music_lyrics_line_scale_title">비활성 가사 줄 축소하기</string>
@@ -742,7 +760,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_title">동적 배경 애니메이션</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_summary">음악을 재생하는 중에 배경이 움직이고, YouTube Music에 마이크 권한이 허용되어 있으면 음악에 맞춰 배경이 반응합니다. 배터리 소모를 줄이려면 이 기능을 비활성화하세요. 그러면 배경이 움직이지 않고 고정됩니다</string>
   <string name="morphe_music_lyrics_mediasession_title">잠금 화면에 MediaSession 가사 표시하기</string>
-  <string name="morphe_music_lyrics_mediasession_summary">잠금 화면, Android Auto 및 블루투스에서 현재 가사 줄을 표시합니다. Android 11 이상이 필요합니다</string>
+  <string name="morphe_music_lyrics_mediasession_summary">잠금 화면, Android Auto 및 블루투스에서 현재 재생 중인 가사를 표시합니다</string>
   <string name="morphe_music_lyrics_miniplayer_title">미니 플레이어 가사 표시하기</string>
   <string name="morphe_music_lyrics_miniplayer_summary">미니 플레이어에 현재 가사 줄을 표시하고, 노래 정보를 제목 하단으로 이동합니다</string>
   <string name="morphe_music_lyrics_mini_track_format_title">노래 제목/아티스트 형식</string>
@@ -779,6 +797,8 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_force_capitalize_summary">각 가사 줄의 첫 글자를 대문자로 표시합니다</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_title">끝 문장 부호 제거하기</string>
   <string name="morphe_music_lyrics_strip_trailing_punctuation_summary">가사 줄 끝에 있는 마침표, 쉼표, 콜론 및 세미콜론을 제거합니다. 물음표, 느낌표, 말줄임표, 따옴표 및 괄호는 유지됩니다</string>
+  <string name="morphe_music_lyrics_han_form_title">중국어 간체/번체 변환</string>
+  <string name="morphe_music_lyrics_han_form_summary">이 기능을 활성화하면 번역 대상 언어에 맞춰 가사를 중국어 간체 또는 번체로 변환합니다</string>
   <string name="morphe_music_lyrics_text_size_title">텍스트 크기</string>
   <string name="morphe_music_lyrics_text_size_summary">가사 텍스트 크기</string>
   <string name="morphe_music_lyrics_offset_ms_title">전역 타이밍 오프셋</string>
@@ -794,6 +814,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_translated_by_ai">%s에 의해 번역됨</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s에 의해 로마자 표기됨</string>
   <string name="morphe_music_lyrics_romanized_by_local">%s에 의해 로마자 표기됨</string>
+  <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s 포함)</string>
   <string name="morphe_music_lyrics_romanized_by_rime">Rime에 의해 로마자 표기됨 (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">번역됨</string>
@@ -809,6 +830,8 @@ LOGIN_INFO"</string>
   <string name="morphe_romanize_language_DEFAULT">자동</string>
   <string name="morphe_music_lyrics_romanizing">로마자 표기 중…</string>
   <string name="morphe_music_lyrics_romanize_failed">가사를 로마자로 표기할 수 없습니다</string>
+  <string name="morphe_music_lyrics_romanize_language_none">없음</string>
+  <string name="morphe_music_lyrics_ruby_language_title">루비 대상</string>
   <string name="morphe_music_lyrics_translate_only">번역만</string>
   <string name="morphe_music_lyrics_romanize_only">로마자 표기만</string>
   <string name="morphe_music_lyrics_dual_only">듀얼 모드</string>
@@ -839,7 +862,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_hide_info_title">크레딧 라인 숨기기</string>
   <string name="morphe_music_lyrics_hide_info_summary">가사 아래에 표시되는 크레딧 라인을 숨깁니다</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">번역과 로마자 표기 위치 바꾸기</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">가사 아래의 번역과 로마자 표기 표시 순서를 바꿉니다</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">번역을 가사 위에 표시합니다; 독음과 로마자 표기는 아래에 유지됩니다</string>
   <string name="morphe_music_lyrics_force_center_title">항상 가사 가운데 정렬하기</string>
   <string name="morphe_music_lyrics_force_center_summary">활성화하면 듀엣 파트의 좌우 배치를 포함하여 원본 정렬 설정을 무시하고 모든 가사를 가운데에 표시합니다. 비활성화하면 가사에 지정된 정렬 방식을 유지합니다</string>
   <string name="morphe_music_lyrics_providers_keep_one">최소 하나의 제공자가 활성화되어 있어야 합니다</string>
@@ -847,14 +870,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_romanization_provider_title">로마자 표기 또는 음역</string>
   <string name="morphe_music_lyrics_romanization_provider_local">오프라인 사전</string>
   <string name="morphe_music_lyrics_romanization_provider_rime">Rime 단어 목록</string>
-  <string name="morphe_music_lyrics_ruby_provider_title">루비</string>
-  <string name="morphe_music_lyrics_ruby_provider_local">오프라인 사전</string>
-  <string name="morphe_music_lyrics_ruby_style_title">루비 스크립트</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_hiragana">히라가나 (ひらがな)</string>
-  <string name="morphe_music_lyrics_ruby_style_entry_katakana">카타카나 (カタカナ)</string>
-  <string name="morphe_music_lyrics_show_ruby_button_title">루비 버튼 표시하기</string>
-  <string name="morphe_music_lyrics_show_ruby_button_summary">버튼을 탭하여 가사 위에 루비 읽기 표시를 켜거나 끌 수 있습니다. 길게 누르면 히라가나와 가타카나가 전환됩니다. 활성화된 루비 제공자를 설정된 순서대로 사용합니다</string>
-  <string name="morphe_music_lyrics_ruby_generating">루비를 생성하는 중…</string>
+  <string name="morphe_music_lyrics_romanization_provider_icu">ICU 음역기</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI로 섹션 감지하기</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">제공자가 후렴이나 절과 같은 섹션 레이블을 제공하지 않는 경우에만 사용되며, 이때 OpenAI 호환 모델이 해당 구간을 자동으로 감지합니다. 해당 행을 편집하면 프롬프트도 함께 열립니다</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API 엔드포인트 URL (예시: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
@@ -877,6 +893,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_success">모델 선택</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models_failed">모델을 가져올 수 없습니다. API 키 또는 연결을 확인하세요</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">프롬프트</string>
+  <string name="morphe_music_lyrics_ai_config_ruby_prompt_label">루비 프롬프트 (카나)</string>
   <string name="morphe_music_lyrics_ai_config_model_label">모델</string>
   <string name="morphe_music_lyrics_ai_config_base_url_label">기본 URL</string>
   <string name="morphe_music_lyrics_ai_config_base_url_presets">서비스 프리셋</string>

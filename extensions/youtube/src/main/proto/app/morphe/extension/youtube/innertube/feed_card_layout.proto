@@ -55,12 +55,43 @@ message ElementModel {
     ShortsVideoCellModel shortsVideoCellModel = 519005951;
     // Shelf of Shorts in a carousel, with its header (shorts_shelf.eml), such as in the search results.
     ShortsShelfModel shortsShelfModel = 315733268;
-    // Video of the vertical shelves below a shelf header, such as in the channel home (grid_video_wrapper.eml).
+    // Video of the vertical shelves below a shelf header, such as in the channel home (grid_video_wrapper.eml),
+    // and playlist or podcast of these shelves (grid_video.eml).
     GridVideoModel gridVideoModel = 234662488;
+    // Playlist or podcast in a row of a list, such as in the vertical shelves of the channel home (compact_playlist.eml).
+    CompactPlaylistModel compactPlaylistModel = 202672916;
+}
+
+message CompactPlaylistModel {
+    CompactPlaylistData data = 16;
+}
+
+message CompactPlaylistData {
+    string accessibilityText = 5;
 }
 
 message GridVideoModel {
+    GridVideoData data = 1;
     string accessibilityText = 19;
+}
+
+// Texts are bytes, as the fields are not all texts in every element.
+message GridVideoData {
+    GridVideoThumbnail thumbnail = 1;
+    GridVideoMetadata metadata = 2;
+}
+
+message GridVideoThumbnail {
+    // Text of the badge of a playlist or a podcast, such as "249 episodes".
+    bytes collectionCountText = 6;
+}
+
+message GridVideoMetadata {
+    bytes title = 1;
+    // Such as "Channel · Playlist".
+    bytes subtitle = 2;
+    // Such as "Updated 2 days ago".
+    bytes details = 3;
 }
 
 message ShortsShelfModel {

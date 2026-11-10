@@ -109,14 +109,14 @@ Jei esate „YouTube Premium“ vartotojas, šis nustatymas gali būti nereikali
 
 Padaryti %2$s numatytuoju klientu?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Perjungti</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Šio nustatymo išjungimas gali cause atkūrimo problemų</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Šio nustatymo išjungimas gali sukelti atkūrimo problemų</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bandykite įjungti: Maskuoti vaizdo įrašų srautus &gt; Prisijungti prie Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Numatytasis klientas</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">„Android VR“ prisijungimas</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nesate prisijungę prie Android VR. Bakstelėkite čia, kad prisijungtumėte</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">„Android VR“ reikalaujama atskira prisijungimo procedūra. Bakstelėkite čia, kad tęstumėte</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Šiuo metu prisijungta prie Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Norėdami naudoti šią funkciją, pakeiskite „Numatytasis klientas“ į Android VR</string>
@@ -147,7 +147,7 @@ Norėdami prisijungti, žemiau bakstelėkite „Tęsti“"</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 laikinai nepasiekiamas (būsena %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 laikinai nepasiekiamas</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Nepavyko prisijungti prie VR, nes svetainės autentifikavimas nebuvo patvirtintas</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Nepavyksta prisijungti prie VR: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Nepavyko prisijungti prie VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Atsijungta nuo Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Neteisingas VR prisijungimo prieigos raktas. Bandykite prisijungti prie VR dar kartą</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
@@ -157,13 +157,13 @@ Norėdami prisijungti, žemiau bakstelėkite „Tęsti“"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Slėpia „Ankstesnis“ ir „Kitas“ mygtukus medijos pranešime, užrakintame ekrane ir ausinių valdikliuose</string>
   <string name="morphe_disable_notification_media_seekbar_title">Išjungti slankiklį</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Neleidžia vilkti slankiklio užrakintame ekrane ir pranešimų skydelyje</string>
-  <string name="morphe_seek_notification_media_prev_next_title">Ieškoti su mygtukais „Ankstesnis“ ir „Kitas”</string>
-  <string name="morphe_seek_notification_media_prev_next_summary">Perjungia medijos pranešimo, užrakto ekrano ir ausinių valdymą: vietoj vaizdo įrašų keitimo bus atliekama paieška</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Ieškoti su mygtukais „Ankstesnis“ ir „Kitas“</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Medijos pranešimo, užrakinto ekrano ir ausinių valdikliai vietoj vaizdo įrašų keitimo atlieka paiešką</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Gręžimo ilgis</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Ankstesnio mygtuko gręžimo sekundžių skaičius</string>
-  <string name="morphe_seek_notification_media_fast_forward_length_title">Greitėjimo ilgis</string>
-  <string name="morphe_seek_notification_media_fast_forward_length_summary">Kitu mygtuku greitėjimo sekundžių skaičius</string>
-  <string name="morphe_seek_notification_media_length_invalid">Paieškos ilgis turi būti nuo 1 iki %s sekundžių. Naudos numatytąjį</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Persukimo į priekį ilgis</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekundžių skaičius, per kurį persukama į priekį mygtuku „Kitas“</string>
+  <string name="morphe_seek_notification_media_length_invalid">Paieškos ilgis turi būti nuo 1 iki %s sekundžių. Bus naudojama numatytoji reikšmė</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Išjungti QUIC protokolą</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -208,13 +208,15 @@ Norėdami prisijungti, žemiau bakstelėkite „Tęsti“"</string>
   <string name="morphe_replace_links_with_shortener_title">Keisti bendrinimo nuorodas į youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Priverčia vaizdo įrašus naudoti sutrumpintą youtu.be URL formatą</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Derinimo žurnalo protobuf</string>
-  <string name="morphe_debug_protobuffer_summary">Prideda papildomos registravimo informacijos, kad kūrėjai galėtų nustatyti programos komponentus</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Įgalinus šį nustatymą bus fiksuojami papildomi išdėstymo duomenys, įskaitant ekrane rodomą tekstą kai kuriems UI komponentams.
+  <string name="morphe_debug_litho_title">Litho žurnalo įrašai</string>
+  <string name="morphe_debug_litho_entry_disabled">Išjungta</string>
+  <string name="morphe_debug_litho_entry_path">Kelias</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Kelias ir buferis</string>
+  <string name="morphe_debug_litho_user_dialog_message">"„Litho“ žurnalo įrašai registruoja programėlės maketo komponentus, įskaitant ekrano tekstą kai kuriems vartotojo sąsajos komponentams.
 
-Tai gali padėti identifikuoti komponentus kuriant individualius filtrus.
+Tai gali padėti identifikuoti komponentus kuriant specialius filtrus.
 
-Tačiau įgalinus šį nustatymą taip pat bus fiksuojami kai kurie vartotojo duomenys, pvz., jūsų IP adresas"</string>
+Tačiau taip pat bus užregistruoti kai kurie vartotojo duomenys, pavyzdžiui, jūsų IP adresas"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Tinkintas filtras</string>
   <string name="morphe_custom_filter_screen_summary">Konfigūruokite tinkintus filtrus, kad paslėptumėte bet kurį komponentą</string>
@@ -250,7 +252,7 @@ Bakstelėkite čia, kad atsisiųstumėte PotHelper"</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_expired_dialog_message">"Šioje PotHelper versijoje įtaisytas tokenas nebeveikia
 
-Įjunkite „Klastoti vaizdo srautus“, kad pataisytumėte atkūrimą"</string>
+Įjunkite „Maskuoti vaizdo įrašų srautus“, kad pataisytumėte atkūrimą"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Įjungti</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Maskuoti programos versiją</string>

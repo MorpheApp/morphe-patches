@@ -57,7 +57,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_guidelines_popup_content">新しいセグメントを作成する前に SponsorBlock のガイドラインを確認してください</string>
   <string name="morphe_sb_guidelines_popup_already_read">既読</string>
   <string name="morphe_sb_guidelines_popup_open">表示する</string>
-  <string name="morphe_sb_general_title">その他</string>
+  <string name="morphe_sb_general_title">全般</string>
   <string name="morphe_sb_offline_segments_title">ダウンロードした動画のセグメント情報を保存</string>
   <string name="morphe_sb_offline_segments_summary">アプリ内でダウンロードした動画をオフラインで再生するときにも、セグメントをスキップできるようになります</string>
   <string name="morphe_sb_toast_on_connection_error_title">接続エラーの通知を表示</string>
@@ -232,7 +232,5 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_dot_label">色:</string>
   <string name="morphe_sb_about_api_summary">"SponsorBlockは、スポンサー、イントロ、アウトロ、チャンネル登録のリマインダーなどの動画セグメントのクラウドソースデータベースです。セグメントはコミュニティによって投稿・投票され、データベースはオープンで無料でダウンロードできます。
 
-視聴中の動画のIDはSponsorBlock APIに送信され、そのセグメントを取得します。。
-
-視聴中の動画のIDはSponsorBlock APIに送信され、そのセグメントを取得します。,"</string>
+視聴中の動画のIDはSponsorBlock APIに送信され、そのセグメントを取得します。"</string>
 </resources>

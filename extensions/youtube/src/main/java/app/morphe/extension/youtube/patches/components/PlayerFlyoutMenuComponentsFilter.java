@@ -167,13 +167,23 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         flyoutMenuBufferGroupList.addAll(
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS,
-                        "yt_outline_gear_",
-                        "yt_outline_experimental_gear_"
+                        new String[]{
+                                "yt_outline_gear_",
+                                "yt_outline_experimental_gear_"
+                        },
+                        // 21.x: Command that opens the submenu (field 469660771),
+                        // when the icon has no name in the buffer.
+                        new byte[]{(byte) 0x9A, (byte) 0xC6, (byte) 0xCE, (byte) 0xFF, 0x0D}
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_AMBIENT_MODE,
-                        "yt_outline_screen_light_",
-                        "yt_outline_experimental_ambient_mode_"
+                        new String[]{
+                                "yt_outline_screen_light_",
+                                "yt_outline_experimental_ambient_mode_"
+                        },
+                        // 21.x: Ambient mode toggle command (field 456628506),
+                        // when the icon has no name in the buffer.
+                        new byte[]{(byte) 0xD2, (byte) 0x91, (byte) 0xF3, (byte) 0xCD, 0x0D}
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK,
@@ -196,7 +206,10 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC,
                         "yt_outline_youtube_music_",
-                        "yt_outline_experimental_youtube_music_"
+                        "yt_outline_experimental_youtube_music_",
+                        // 21.x: Link that opens the playing video in YouTube Music,
+                        // when the icon has no name in the buffer.
+                        "vnd.youtube.music://music.youtube.com/watch?v="
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_LOCK_SCREEN,
@@ -208,7 +221,10 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_ON_THE_GO,
                         "yt_outline_headset_",
-                        "yt_outline_experimental_headset_"
+                        "yt_outline_experimental_headset_",
+                        // 21.x: Premium upsell parameters of the item, when the icon has no name
+                        // in the buffer. Each Premium feature has its own parameters.
+                        "igkCCA8%3D"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_QUALITY,
@@ -231,9 +247,14 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,
-                        "volume_stable_",
-                        "yt_fill_experimental_stable_volume_",
-                        "yt_outline_experimental_stable_volume_"
+                        new String[]{
+                                "volume_stable_",
+                                "yt_fill_experimental_stable_volume_",
+                                "yt_outline_experimental_stable_volume_"
+                        },
+                        // 21.x: Stable volume toggle command (field 449823757),
+                        // when the icon has no name in the buffer.
+                        new byte[]{(byte) 0xEA, (byte) 0xC0, (byte) 0xF8, (byte) 0xB3, 0x0D}
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_WATCH_IN_VR,

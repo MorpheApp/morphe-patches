@@ -128,7 +128,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_subscribed_channels_bar_names_summary">Abunə olunmuş kanallar cərgəsində kanal adlarını gizlədir</string>
   <string name="morphe_hide_surveys_title">Təftişləri gizlət</string>
   <string name="morphe_hide_surveys_summary">Axın tövsiyəsi dəqiqliyi haqqında təftişləri və xatırlatmaları gizlət</string>
-  <string name="morphe_hide_ticket_shelf_title">Bilet bölməsin gizlət</string>
+  <string name="morphe_hide_ticket_shelf_title">Bilet bölməsini gizlət</string>
   <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
   <string name="morphe_hide_unavailable_videos_hidden_banner_title">\"Əlçatmaz videolar gizlidir\" panelini gizlət</string>
   <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Pleylistlərdə \"Əlçatmaz videolar gizlidir\" panelini gizlədir</string>
@@ -319,25 +319,18 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_keyword_content_search_title">Axtarış nəticələrini açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Abunəlik videolarını açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_phrases_title">Gizlədiləcək açar sözlər</string>
-  <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
-         This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">"Gizlətmək üçün açar sözlər və ifadələri yeni sətirlərlə ayrılmış şəkildə qeyd et
+  <string name="morphe_hide_keyword_content_phrases_summary">"Gizlətmək üçün açar sözləri və ifadələri yeni sətirlərlə ayıraraq daxil edin
 
-Açar sözlər video başlıqlarında və ya kanal adlarında görünən hər hansı mətn ola bilər
-
-Ortada böyük hərflər olan sözlər tam uyğunlaşmalıdır (məsələn., iPhone, TikTok, LeBlanc)"</string>
+​Açar sözlər video başlıqlarında və ya kanal adlarında görünən istənilən mətn ola bilər"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Ev / Abunəliklər / Axtarış / Şərhlər açar söz ifadələrinə uyğun məzmunu gizlətmək üçün filtrlənir
 
 Məhdudiyyətlər:
-• Shorts kanal adına görə gizlədilə bilməz
-• Bəzi UI elementləri gizlədilməyə bilər
-• Açar söz axtarışı heç bir nəticə göstərməyə bilər"</string>
+• Bəzi Shorts-lar kanal adına görə gizlədilə bilməz
+• Bəzi UI elementləri gizlədilməyə bilər"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Bütöv sözləri uyğunlaşdır</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">​Açar sözü/ifadəni qoşa dırnaq işarəsinə almaq, video başlıqlarının və kanal adlarının qismən uyğunlaşmasına mane olacaq&lt;br&gt;&lt;br&gt;Məsələn,&lt;b&gt;&lt;br&gt;\"ai\"&lt;/b&gt; bu videonu gizlədəcək: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ancaq bunu gizlətməyəcək: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_common">Açar sözü istifadə etmək olmur: %s</string>
-  <string name="morphe_hide_keyword_toast_invalid_common_whole_word_required">Açar sözü istifadə etmək üçün dırnaq işarəsi əlavə et: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Açar sözün ziddiyyətli hissəcikləri var: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Açar söz çox qısadır və dırnaq işarəsi tələb edir: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Açar söz bütün videoları gizlədəcək: %s</string>
@@ -500,6 +493,17 @@ Məhdudiyyətlər:
   <string name="morphe_post_translate_started">Tərcümə olunur…</string>
   <string name="morphe_post_translate_failed">Postları tərcümə etmək olmadı</string>
   <string name="morphe_post_translate_same_language">Post artıq tərcümə dilindədir</string>
+  <!-- interaction.onthego.onTheGoPatch -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_title">Morphe hərəkət zamanındanı aktivləşdir</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_summary">Oynadıcının açılan \'Yolda rejimi\' Morphe fərdi oynadıcı idarəetmələrini açır</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_on_the_go_panel_title">Hərəkət zamanı</string>
+  <string name="morphe_on_the_go_audio_mode">Səs rejiminə keç</string>
+  <string name="morphe_on_the_go_video_mode">Video rejiminə keç</string>
+  <string name="morphe_on_the_go_download">Yüklə</string>
+  <string name="morphe_on_the_go_queue">Növbə</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
   <string name="morphe_ask_summarize_flyout_menu_title">Soruş elementini açılan menyuya əlavə et</string>
   <string name="morphe_ask_summarize_flyout_menu_summary">Axın açılan menyusuna video xülasəsi elementi əlavə edir</string>
@@ -620,11 +624,13 @@ API açarınız heç vaxt paylaşılmamalıdır. Buna girişi olan hər bir kəs
   <string name="morphe_vot_mymemory_quota_message_no_email">Bugünkü pulsuz MyMemory tərcümə normasını (5.000 simvol) istifadə etmisiniz. Gündəlik limiti 50.000 simvola artırmaq üçün tənzimləmələrdə MyMemory e-poçtunu əlavə edin və ya fərqli tərcümə xidmətinə keçin</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Bugünkü MyMemory tərcümə normasını (50.000 simvol) istifadə etmisiniz. Başqa tərcümə xidmətinə keçin və ya sabah təkrar cəhd edin</string>
   <string name="morphe_vot_mymemory_error">MyMemory tərcüməsi uğursuz oldu (status %s)</string>
-  <!-- interaction.watchlater.watchLaterPatch -->
-  <string name="morphe_watch_later_wide_drag_handles_title">Sonra izləyin sürükləmə tutacaqlarını genişləndir</string>
-  <string name="morphe_watch_later_wide_drag_handles_summary">Sonra izləyin videolarının sürükləmə tutacaqlarını tutmaq daha asandır</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">Sonra izləyindən silinmə bildiriş cizgisin gizlət</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_summary">Video \"Sonra izləyindən\" silindikdən sonra təsdiqləmə göstərilmir</string>
+  <!-- interaction.playlist.playlistPatch -->
+  <string name="morphe_playlist_wide_drag_handles_title">Pleylist sürükləmə tutacaqlarını genişlət</string>
+  <string name="morphe_playlist_wide_drag_handles_summary">Pleylist sürükləmə tutacaqlarını tutmaq daha asandır</string>
+  <string name="morphe_playlist_hide_removal_snackbar_title">Pleylist silinmə bildirişini gizlət</string>
+  <string name="morphe_playlist_hide_removal_snackbar_summary">Video pleylistdən silindikdən sonra təsdiqləmə göstərilmir</string>
+  <string name="morphe_playlist_long_press_drag_title">Pleylist videolarını yenidən sıralamaq üçün uzun bas</string>
+  <string name="morphe_playlist_long_press_drag_summary">Pleylistinizin videosunu yeni mövqeyə sürükləmək üçün toxunub saxla</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Video təkrarlamanı aktivləşdir</string>
   <string name="morphe_do_not_remember_loop_video_title">Video təkrarlanmasını xatırlamasın</string>
@@ -751,6 +757,8 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_queue_manager_open_queue">Növbəni aç</string>
   <string name="morphe_queue_manager_save_queue">Növbəni pleylistdə saxla</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Sürüşdürmədə növbə səhifələrini yüklə</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Növbənin sonuna yaxın sürüşdürüldükdə daha çox pleylist videosu yüklənilir</string>
   <string name="morphe_native_playlist_queue_saved">Pleylist saxlanıldı</string>
   <string name="morphe_native_playlist_queue_saved_to">%s da saxlanıldı</string>
   <string name="morphe_native_playlist_queue_clear">Növbəni təmizlə</string>
@@ -793,6 +801,16 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Çevirmək üçün toxunu aktivləşdir</string>
   <string name="morphe_tap_to_seek_summary">Sürükləmək əvəzinə həmin mövqeyə keçmək üçün çevirmə zolağında istənilən yerə toxun</string>
+  <!-- interaction.seekbar.customSeekbarThumbPatch -->
+  <string name="morphe_custom_seekbar_thumb_title">Fərdi çevirmə cizgisi baş barmağını aktivləşdir</string>
+  <string name="morphe_custom_seekbar_thumb_summary">Çəkmə cizgisi baş barmağını fərdi şəkil və ya animasiyalı GIF ilə əvəzlə</string>
+  <string name="morphe_custom_seekbar_thumb_file_title">Baş barmaq şəkli</string>
+  <string name="morphe_custom_seekbar_thumb_file_summary">Cihaz yaddaşından şəkil və ya animasiyalı GIF seç</string>
+  <string name="morphe_custom_seekbar_thumb_file_invalid">Seçilmiş fayl dəstəklənən şəkil deyil</string>
+  <string name="morphe_custom_seekbar_thumb_file_not_found">Fərdi çəkmə cizgisinin baş barmağı şəkli tapılmadı</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_title">Baş barmaq ölçüsü</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_fit_seekbar">Çəkmə zolağına uyğunlaşdır</string>
+  <string name="morphe_custom_seekbar_thumb_scale_type_entry_original">Orijinal ölçü</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Sol sürüşdürmə jesti</string>
   <string name="morphe_swipe_right_zone_title">Sağ sürüşdürmə jesti</string>
@@ -1013,7 +1031,7 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_navigation_bar_glass_size_height">Hündürlük</string>
   <string name="morphe_navigation_bar_glass_size_width">Ən yüksək en</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Düymə boşluğu</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Göstərilən düymələr: %2$s ədəddən %1$s \'si</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Göstərilən düymələr: %1$s / %2$s</string>
   <string name="morphe_toolbar_screen_title">Alət cərgəsi</string>
   <string name="morphe_toolbar_screen_summary">Alətlər zolağında hansı elementlər görünür seç</string>
   <string name="morphe_hide_toolbar_chat_button_title">Söhbət düyməsin gizlət</string>
@@ -1091,6 +1109,10 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Ambient rejimini batareya qənaətçisi rejimində işlək saxlamağa icazə verir</string>
   <string name="morphe_disable_ambient_mode_title">Ambient rejimini qapat</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Tam ekranda Ambient rejimini qapat</string>
+  <string name="morphe_enhanced_ambient_mode_title">Təkmilləşdirilmiş Ambient rejimi</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Ambient rejimini əvəzləyərək bütün baxış səhifəsini və qara zolaqları video ilə işıqlandırır</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Mətni oxunaqlı saxla</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Səhifədəki mətnin oxunaqlı qalması üçün parlaq videolarda işığı azaldır</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Məlumat kartlarını gizlət</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1173,7 +1195,10 @@ Ayarlar→ Oxunuş (və ya Avtomatik oxunuş) → Növbəti videonu avtomatik ox
   <string name="morphe_disable_playlist_autoplay_title">Pleylist avtomatik oynatmasını qapat</string>
   <string name="morphe_disable_playlist_autoplay_summary">Pleylistlərin növbəti videoya avtomatik keçməsinin qarşısını alır</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-  <string name="morphe_disable_continue_watching_prompt_title">\"İzləməyə davam edilsin?\" sorğusunu qapat</string>
+  <string name="morphe_continue_watching_prompt_title">\"İzləməyə davam edilsin?\" sorğusu</string>
+  <string name="morphe_continue_watching_prompt_entry_1">İlkin</string>
+  <string name="morphe_continue_watching_prompt_entry_2">Qapalıdı</string>
+  <string name="morphe_continue_watching_prompt_entry_3">Qapalı, həmişə avtomatik oynatma geri sayımını göstər</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Video bitdikdə tam ekran rejimini sonlandır</string>
   <string name="morphe_exit_fullscreen_entry_1">Qapalı</string>
@@ -1606,7 +1631,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_video_action_bar_layout_user_dialog_message">Məhdudiyyət: Klassik tərtibatlar köhnə üslubda \"Daha çox video\" örtüyünə qayıdır</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Oynadıcı simvol üslubu</string>
-  <string name="morphe_player_icon_style_entry_auto">Birbaşa</string>
+  <string name="morphe_player_icon_style_entry_auto">Avtomatik</string>
   <string name="morphe_player_icon_style_entry_default">İlkin</string>
   <string name="morphe_player_icon_style_entry_regular">Nazik</string>
   <string name="morphe_player_icon_style_entry_bold">Qalın</string>
@@ -1763,14 +1788,29 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_niconico_comments_screen_title">Niconico şərhləri</string>
   <string name="morphe_niconico_comments_screen_summary">Canlı söhbəti və təkrar oxudulan söhbəti video üzərində axan şərhlər kimi göstər</string>
   <string name="morphe_niconico_comments_summary">Video oynadıcıda örtük düyməsini göstərir. Şərhləri göstərmək və ya gizlətmək üçün toxun, sürətli tənzimləmələr üçün basıb saxla</string>
+  <string name="morphe_niconico_comments_appearance_title">Görünüş</string>
+  <string name="morphe_niconico_comments_portrait_category_title">Portret</string>
+  <string name="morphe_niconico_comments_video_types_title">Video növləri</string>
   <string name="morphe_niconico_comments_font_size_title">Şərh şriftinin ölçüsü</string>
   <string name="morphe_niconico_comments_font_size_summary">Şərhlərin mətn ölçüsü (12-40 sp)</string>
   <string name="morphe_niconico_comments_opacity_title">Şərhin qeyri-şəffaflığı</string>
   <string name="morphe_niconico_comments_opacity_summary">Şərh mətninin və arxa planların qeyri-şəffaflığı</string>
   <string name="morphe_niconico_comments_travel_duration_title">Səyahət müddəti</string>
-  <string name="morphe_niconico_comments_travel_duration_summary">Şərhlərin ekrandan keçməsi üçün tələb olunan saniyə dəyəri. Kiçik dəyərlər daha sürətli hərəkət edir</string>
+  <string name="morphe_niconico_comments_travel_duration_summary">Şərhlərin ekrandan neçə saniyəyə keçməsi. Daha kiçik dəyərlər daha sürətli hərəkət edir</string>
   <string name="morphe_niconico_comments_display_area_title">Ekran sahəsi</string>
   <string name="morphe_niconico_comments_display_area_summary">Şərhlərin yuxarıdan oynadıcının nə qədər hissəsini tutduğu. Daha aşağı dəyərlər videonun aşağı hissəsini təmiz saxlayır</string>
+  <string name="morphe_niconico_comments_portrait_title">Portretdə göstər</string>
+  <string name="morphe_niconico_comments_portrait_summary">Ekran portret olduqda şərhləri göstər. Yalnız landşaftda göstərmək üçün qapat</string>
+  <string name="morphe_niconico_comments_separate_portrait_title">Portret üçün ayrı tənzimləmələr</string>
+  <string name="morphe_niconico_comments_separate_portrait_summary">Portretdə fərqli şrift ölçüsü, hərəkət müddəti və göstərmə sahəsi istifadə et. Aktiv edildikdə, onlar cari dəyərlərdən başlayır</string>
+  <string name="morphe_niconico_comments_portrait_font_size_title">Portretdə şərh şrift ölçüsü</string>
+  <string name="morphe_niconico_comments_portrait_font_size_summary">Portretdə şərhlərin mətn ölçüsü (12-40 sp)</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_title">Portretdə hərəkət müddəti</string>
+  <string name="morphe_niconico_comments_portrait_travel_duration_summary">Portretdə şərhlərin ekrandan neçə saniyəyə keçməsi</string>
+  <string name="morphe_niconico_comments_portrait_display_area_title">Portretdə göstərmə sahəsi</string>
+  <string name="morphe_niconico_comments_portrait_display_area_summary">Portretdə şərhlərin oynadıcının yuxarısından nə qədər sahəni tutması</string>
+  <string name="morphe_niconico_comments_hide_crowded_title">Üst-üstə düşəcək şərhləri gizlət</string>
+  <string name="morphe_niconico_comments_hide_crowded_summary">Göstərmə sahəsi doludursa, yeni şərhlər digər şərhlərlə üst-üstə düşmək əvəzinə gizlədilir</string>
   <string name="morphe_niconico_comments_max_length_title">Maksimum şərh uzunluğu</string>
   <string name="morphe_niconico_comments_max_length_summary">Bundan çox simvolu olan şərhləri gizlədir. Hər bir emoji bir simvol kimi sayılır</string>
   <string name="morphe_niconico_comments_max_length_no_limit">Limitsiz</string>
@@ -1784,6 +1824,10 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_niconico_comments_ended_premieres_summary">Sonlanmış Premyeraların söhbət təkrarı</string>
   <string name="morphe_niconico_comments_timed_comments_title">Zamanlanmış şərhləri göstər</string>
   <string name="morphe_niconico_comments_timed_comments_summary">Söhbəti olmayan videolarda 1:23 kimi vaxtı olan ən yaxşı şərhlər həmin vaxtda göstərilir</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_title">Söhbətin təkrar oxudulması ilə zamanlanmış şərhləri göstər</string>
+  <string name="morphe_niconico_comments_timed_comments_with_replay_summary">Canlı yayımların və Premyeraların təkrar oxudulmasında zamanlanmış şərhlər də söhbət ilə göstərilir</string>
+  <string name="morphe_niconico_comments_all_settings">Bütün tənzimləmələr</string>
+  <string name="morphe_niconico_comments_reset_title">Bu tənzimləmələri sıfırlasın?</string>
   <string name="morphe_live_chat_translate_screen_title">Canlı söhbət tərcüməsi</string>
   <string name="morphe_live_chat_translate_screen_summary">Canlı söhbət və canlı söhbətin təkrar mesajlarını tərcümə et</string>
   <string name="morphe_live_chat_translate_title">Canlı söhbəti tərcümə et</string>

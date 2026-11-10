@@ -101,6 +101,12 @@ Translations are managed on [Crowdin](https://morphe.software/translate). Only a
 remove strings in the English `values/` resources. Do not edit the translated `values-*` files:
 Crowdin syncs those automatically.
 
+Use `%s` for format placeholders unless the value needs a format feature such as decimal places
+(`%.1f`) or padding. For example, use `%s` and not `%d` for a plain integer. `%s` accepts any
+argument, while a type letter like `%d` throws an exception if a translation changes it or the code
+later passes a different type. Use a plain `%s` when a string has only one argument, and indexed
+placeholders (`%1$s`, `%2$s`) only when it has more than one, so translations can reorder them.
+
 ## Testing
 
 - Test on the minimum and maximum recommended app versions, and on the latest experimental versions
