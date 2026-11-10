@@ -256,71 +256,73 @@ val downloadsPatch = patch(
             }
         }
 
-        // Virtualize MediaStore ContentResolver.query (5-parameter overload)
-        val contentResolverQueryFilter = methodCall(
-            smali = "Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;"
-        )
+        // Helper to redirect all ContentResolver calls to VirtualMediaProvider
+        fun replaceContentResolverCall(methodSignature: String, replacementMethodSignature: String) {
+            Fingerprint(
+                filters = listOf(methodCall(smali = "Landroid/content/ContentResolver;->$methodSignature")),
+                custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/") }
+            ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
+                val instruction = getInstruction(index)
+                val invokeString = if (instruction is RegisterRangeInstruction) {
+                    "invoke-static/range { v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1} }"
+                } else {
+                    "invoke-static { ${fiveRegisters(index)} }"
+                }
 
-        Fingerprint(
-            filters = listOf(contentResolverQueryFilter),
-            custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/") }
-        ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
-            val instruction = getInstruction(index)
-            val invokeString = if (instruction is RegisterRangeInstruction) {
-                "invoke-static/range { v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1} }"
-            } else {
-                "invoke-static { ${fiveRegisters(index)} }"
+                replaceInstruction(
+                    index,
+                    "$invokeString, $VIRTUAL_MEDIA_PROVIDER->$replacementMethodSignature"
+                )
             }
-
-            replaceInstruction(
-                index,
-                "$invokeString, $VIRTUAL_MEDIA_PROVIDER->query(Landroid/content/ContentResolver;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;"
-            )
         }
 
-        // Virtualize MediaStore ContentResolver.query (6-parameter overload with CancellationSignal)
-        val contentResolverQuerySignalFilter = methodCall(
-            smali = "Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/database/Cursor;"
+        // Virtualize MediaStore ContentResolver queries
+        replaceContentResolverCall(
+            "query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;",
+            "query(Landroid/content/ContentResolver;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;"
+        )
+        replaceContentResolverCall(
+            "query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/database/Cursor;",
+            "query(Landroid/content/ContentResolver;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/database/Cursor;"
+        )
+        replaceContentResolverCall(
+            "query(Landroid/net/Uri;[Ljava/lang/String;Landroid/os/Bundle;Landroid/os/CancellationSignal;)Landroid/database/Cursor;",
+            "query(Landroid/content/ContentResolver;Landroid/net/Uri;[Ljava/lang/String;Landroid/os/Bundle;Landroid/os/CancellationSignal;)Landroid/database/Cursor;"
         )
 
-        Fingerprint(
-            filters = listOf(contentResolverQuerySignalFilter),
-            custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/") }
-        ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
-            val instruction = getInstruction(index)
-            val invokeString = if (instruction is RegisterRangeInstruction) {
-                "invoke-static/range { v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1} }"
-            } else {
-                "invoke-static { ${fiveRegisters(index)} }"
-            }
-
-            replaceInstruction(
-                index,
-                "$invokeString, $VIRTUAL_MEDIA_PROVIDER->query(Landroid/content/ContentResolver;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/database/Cursor;"
-            )
-        }
-
-        // Virtualize ContentResolver.openAssetFileDescriptor for direct ExoPlayer playback
-        val openAssetFileDescriptorFilter = methodCall(
-            smali = "Landroid/content/ContentResolver;->openAssetFileDescriptor(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;"
+        // Virtualize ContentResolver audio streams for ExoPlayer ContentDataSource playback
+        replaceContentResolverCall(
+            "openTypedAssetFileDescriptor(Landroid/net/Uri;Ljava/lang/String;Landroid/os/Bundle;)Landroid/content/res/AssetFileDescriptor;",
+            "openTypedAssetFileDescriptor(Landroid/content/ContentResolver;Landroid/net/Uri;Ljava/lang/String;Landroid/os/Bundle;)Landroid/content/res/AssetFileDescriptor;"
+        )
+        replaceContentResolverCall(
+            "openTypedAssetFileDescriptor(Landroid/net/Uri;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/CancellationSignal;)Landroid/content/res/AssetFileDescriptor;",
+            "openTypedAssetFileDescriptor(Landroid/content/ContentResolver;Landroid/net/Uri;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/CancellationSignal;)Landroid/content/res/AssetFileDescriptor;"
+        )
+        replaceContentResolverCall(
+            "openAssetFileDescriptor(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;",
+            "openAssetFileDescriptor(Landroid/content/ContentResolver;Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;"
+        )
+        replaceContentResolverCall(
+            "openAssetFileDescriptor(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/content/res/AssetFileDescriptor;",
+            "openAssetFileDescriptor(Landroid/content/ContentResolver;Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/content/res/AssetFileDescriptor;"
         )
 
-        Fingerprint(
-            filters = listOf(openAssetFileDescriptorFilter),
-            custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/") }
-        ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
-            val instruction = getInstruction(index)
-            val invokeString = if (instruction is RegisterRangeInstruction) {
-                "invoke-static/range { v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1} }"
-            } else {
-                "invoke-static { ${fiveRegisters(index)} }"
-            }
+        // Virtualize ContentResolver openInputStream for Glide artwork loading
+        replaceContentResolverCall(
+            "openInputStream(Landroid/net/Uri;)Ljava/io/InputStream;",
+            "openInputStream(Landroid/content/ContentResolver;Landroid/net/Uri;)Ljava/io/InputStream;"
+        )
 
-            replaceInstruction(
-                index,
-                "$invokeString, $VIRTUAL_MEDIA_PROVIDER->openAssetFileDescriptor(Landroid/content/ContentResolver;Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;"
-            )
-        }
+        // Virtualize ContentResolver openFileDescriptor
+        replaceContentResolverCall(
+            "openFileDescriptor(Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;",
+            "openFileDescriptor(Landroid/content/ContentResolver;Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;"
+        )
+        replaceContentResolverCall(
+            "openFileDescriptor(Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/os/ParcelFileDescriptor;",
+            "openFileDescriptor(Landroid/content/ContentResolver;Landroid/net/Uri;Ljava/lang/String;Landroid/os/CancellationSignal;)Landroid/os/ParcelFileDescriptor;"
+        )
 
         // Bypass storage permissions in sideloaded tracks loader
         SideloadedPermissionCheckFingerprint.let {
