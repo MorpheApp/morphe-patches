@@ -7,10 +7,13 @@
 
 package app.morphe.extension.youtube.patches;
 
+import android.app.Activity;
+
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -42,6 +45,26 @@ public final class PlaybackInFeedsPatch {
     private static volatile PlaybackInFeedsController controller;
 
     /**
+     * An import changes only this copy, and on the next start the copy is refreshed from YouTube.
+     * So an import marks the copy as the one to keep, and YouTube takes it over once its
+     * controller exists. The mark survives the restart that an imported change asks for.
+     */
+    public static final Setting.ImportExportCallback IMPORT_EXPORT_CALLBACK = new Setting.ImportExportCallback() {
+        @Override
+        public void settingsImported(@Nullable Activity context) {
+            if (controller == null) {
+                Settings.PLAYBACK_IN_FEEDS_IMPORTED.save(true);
+            } else {
+                setMode(Settings.PLAYBACK_IN_FEEDS.get());
+            }
+        }
+
+        @Override
+        public void settingsExported(@Nullable Activity context) {
+        }
+    };
+
+    /**
      * Injection point.
      */
     public static void setController(PlaybackInFeedsController instance) {
@@ -49,8 +72,16 @@ public final class PlaybackInFeedsPatch {
 
         // Refresh the copy on startup, otherwise exporting can save a stale mode
         // if the mode was changed using the settings of YouTube.
+        // After an import the copy wins instead (see IMPORT_EXPORT_CALLBACK).
         // Must not run inline, since YouTube is still inside its own constructor.
-        Utils.runOnMainThread(PlaybackInFeedsPatch::updateSettingFromApp);
+        Utils.runOnMainThread(() -> {
+            if (Settings.PLAYBACK_IN_FEEDS_IMPORTED.get()) {
+                Settings.PLAYBACK_IN_FEEDS_IMPORTED.save(false);
+                setMode(Settings.PLAYBACK_IN_FEEDS.get());
+            } else {
+                updateSettingFromApp();
+            }
+        });
     }
 
     /**
