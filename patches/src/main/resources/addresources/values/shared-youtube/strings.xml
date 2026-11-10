@@ -58,6 +58,12 @@ Second \"item\" text"</string>
     <string name="morphe_theme_color_custom_entry">Custom</string>
 
     <!-- interaction.downloads.downloadsPatch -->
+    <string name="morphe_newpipe_loading">Loading download options</string>
+    <string name="morphe_newpipe_no_streams">No supported download formats are available</string>
+    <string name="morphe_newpipe_notification_channel">NewPipe downloads</string>
+    <string name="morphe_newpipe_downloading">Downloading</string>
+    <string name="morphe_newpipe_complete">Download complete</string>
+    <string name="morphe_newpipe_failed">Download failed</string>
     <string name="morphe_external_downloader_screen_title">Downloads</string>
     <string name="morphe_download_mode_title">Download mode</string>
     <string name="morphe_download_mode_entry_default">Default</string>
