@@ -1693,6 +1693,10 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_remember_video_quality_toast_shorts_mobile">Changed Shorts mobile quality to: %s</string>
     <string name="morphe_remember_video_quality_toast_shorts_wifi">Changed Shorts Wi-Fi quality to: %s</string>
 
+    <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+    <string name="morphe_playlist_panel_button_title">Show playlist button</string>
+    <string name="morphe_playlist_panel_button_summary">A button at the top of the player opens the playlist panel. Shown only when a video plays from a list</string>
+
     <!-- video.speed.button.playbackSpeedButtonPatch -->
     <string name="morphe_playback_speed_dialog_button_title">Show Playback speed button</string>
     <string name="morphe_playback_speed_dialog_button_summary">Tap and hold to reset speed to default</string>
