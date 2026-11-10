@@ -1,3 +1,24 @@
+## [2.2.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v2.2.0-dev.4...v2.2.0-dev.5) (2026-11-10)
+
+### ✨ New Features
+
+* **Debugging:** Add verbose debug logging setting ([#4547](https://github.com/MorpheApp/morphe-patches/issues/4547)) ([ae2f2e0](https://github.com/MorpheApp/morphe-patches/commit/ae2f2e08a210ff29bd9cd017f3bd10a965876a81))
+* **YouTube - Disable continue watching prompt:** Replace the setting with "'Continue watching?' prompt", with a mode that always shows the autoplay countdown at the end of the video ([772363e](https://github.com/MorpheApp/morphe-patches/commit/772363e4b2f94dc8f166c43fe29b6cea4a536e2e))
+* **YouTube - Spoof video streams:** Add "Android VR Experimental" client, which uses the latest Android VR app version ([59262c1](https://github.com/MorpheApp/morphe-patches/commit/59262c14f25029e5e23704d47c97d097a7045410))
+
+### 🐛 Bug Fixes
+
+* **Spoof video streams:** "OAuth2 is temporarily not available" toast when the app starts before the network is ready with Android VR ([77a4626](https://github.com/MorpheApp/morphe-patches/commit/77a462669134df8f1162530bd5173b4e726adac0))
+* **Spoof video streams:** Android VR buffers more before starting a video than the app player config ([369f555](https://github.com/MorpheApp/morphe-patches/commit/369f555c10d1ac4e7565131abbd2267fde4d193e))
+* **Spoof video streams:** First video after app launch, or a video that falls back to another client, starts slowly while the JavaScript engine, access token, and visitor id are prepared ([75a14c7](https://github.com/MorpheApp/morphe-patches/commit/75a14c78dee1e7ac93f3d8a63ab7798b8a47e81d))
+* **YouTube - Ambient mode:** Black band under the player after the page scrolls ([#4610](https://github.com/MorpheApp/morphe-patches/issues/4610)) ([8789c82](https://github.com/MorpheApp/morphe-patches/commit/8789c82dea8c4e246274149ce51195b2ec033eb8))
+* **YouTube - Ambient mode:** Comment box turns white with Enhanced Ambient mode ([#4603](https://github.com/MorpheApp/morphe-patches/issues/4603)) ([45a0312](https://github.com/MorpheApp/morphe-patches/commit/45a0312b765192f9ae27170332ef2efd6f154f0d))
+* **YouTube - Ambient mode:** With "Enhanced Ambient mode", the cards of "Feed card layout" are partly translucent and the list shows through the sticky filter chips ([ee7199b](https://github.com/MorpheApp/morphe-patches/commit/ee7199bb6cd12cedc6a539044643835a57c7b25f))
+* **YouTube - Hide layout components:** "Channel tab filter" with the Home tab leaves the Home feed blank on 21.44+ ([b02995c](https://github.com/MorpheApp/morphe-patches/commit/b02995c93cd94d92a766bed41c81be94b2361983))
+* **YouTube - Hide video action buttons:** "Hide Ask button" does not hide the Ask button of the portrait action bar ([e022ec5](https://github.com/MorpheApp/morphe-patches/commit/e022ec5af430a54b87479c4ec6f8e818da059db5))
+* **YouTube - SponsorBlock:** Video does not end after a segment at the end of the video is skipped ([4c7a0c2](https://github.com/MorpheApp/morphe-patches/commit/4c7a0c2d10a11e97e7bfa2113c6beeb552a90c54))
+* **YouTube Music - Third-party lyrics:** LRC lyrics with line timestamps detected as unsynchronized ([#4611](https://github.com/MorpheApp/morphe-patches/issues/4611)) ([219265e](https://github.com/MorpheApp/morphe-patches/commit/219265e52e6383d53438989901bac3c69a25d2bf))
+
 ## [2.2.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v2.2.0-dev.3...v2.2.0-dev.4) (2026-11-09)
 
 ### 🐛 Bug Fixes

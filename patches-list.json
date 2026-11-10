@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.2.0-dev.4",
+  "version": "2.2.0-dev.5",
   "patches": [
     {
       "name": "AI channel filter",
@@ -3190,7 +3190,7 @@
     },
     {
       "name": "Disable continue watching prompt",
-      "description": "Adds an option to keep autoplay going instead of pausing with a \"Continue watching\" prompt after a period of inactivity.",
+      "description": "Adds an option to keep autoplay going instead of pausing with a \"Continue watching\" prompt after a period of inactivity, or to always show the autoplay countdown at the end of the video.",
       "default": true,
       "category": null,
       "compatiblePackages": [
