@@ -272,6 +272,23 @@ fun newIntent(settingsName: String) = IntentPreference.Intent(
 }
 
 object PreferenceScreen : BasePreferenceScreen() {
+    private val miniplayerPreferences = mutableSetOf<BasePreference>()
+
+    val MINIPLAYER = PreferenceScreenPreference(
+        key = "morphe_music_miniplayer_screen",
+        sorting = Sorting.UNSORTED,
+        preferences = miniplayerPreferences,
+    )
+
+    private var miniplayerScreenAdded = false
+
+    fun addMiniplayerPreferences(vararg preferences: BasePreference) {
+        miniplayerPreferences.addAll(preferences)
+        if (!miniplayerScreenAdded) {
+            PLAYER.addPreferences(MINIPLAYER)
+            miniplayerScreenAdded = true
+        }
+    }
     val ADS = Screen(
         key = "morphe_settings_music_screen_1_ads",
         summaryKey = null,

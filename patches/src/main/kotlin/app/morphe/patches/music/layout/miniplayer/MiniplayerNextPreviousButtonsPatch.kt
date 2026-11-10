@@ -103,7 +103,7 @@ val miniplayerPreviousNextButtonsPatch = patch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
+        PreferenceScreen.addMiniplayerPreferences(
             SwitchPreference("morphe_music_miniplayer_next_button"),
             SwitchPreference("morphe_music_miniplayer_previous_button"),
         )
