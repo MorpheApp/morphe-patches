@@ -412,24 +412,34 @@ public final class InAppDownloadsPatch {
                 .build();
     }
 
-    /** Implemented by YouTube's offline playback worker during patching. */
+    /**
+     * Implemented by the app class that loads the player response of saved videos.
+     */
     public interface OfflinePlaybackWorker {
-        void patch_storeDownloadStartTime(Object descriptor, @Nullable Object playerResponse) throws Exception;
+        /**
+         * Sets the start time of a saved video played from Downloads
+         * to the position saved in its Downloads entry.
+         *
+         * @param descriptor     Playback start descriptor.
+         * @param playerResponse Player response model of the saved video.
+         */
+        void patch_setDownloadStartTime(Object descriptor, @Nullable Object playerResponse);
     }
 
-    /** Injection point. */
-    public static void storeDownloadStartTime(OfflinePlaybackWorker worker,
-                                              Object descriptor,
-                                              @Nullable Object playerResponse) {
+    /**
+     * Injection point.
+     * <p>
+     * Called when the player response of a saved video is loaded. The play command of a Downloads card
+     * keeps the position from when the card was built, and the app can use an older position than the
+     * one saved in Downloads, so a saved video can start at 0:00 or at an older position.
+     */
+    public static void setDownloadStartTime(OfflinePlaybackWorker worker,
+                                            Object descriptor,
+                                            @Nullable Object playerResponse) {
         try {
-            if (Settings.DOWNLOAD_MODE.get() != DownloadMode.IN_APP) {
-                return;
-            }
-            worker.patch_storeDownloadStartTime(descriptor, playerResponse);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
+            worker.patch_setDownloadStartTime(descriptor, playerResponse);
         } catch (Exception ex) {
-            Logger.printException(() -> "storeDownloadStartTime failure", ex);
+            Logger.printException(() -> "setDownloadStartTime failure", ex);
         }
     }
 

@@ -35,7 +35,6 @@ import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
-import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -140,8 +139,7 @@ val downloadsPatch = patch(
         fixProtoLibraryPatch,
         elementProtoParserHookPatch,
         flyoutPatch,
-        commandRouterHookPatch,
-        versionCheckPatch
+        commandRouterHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -278,7 +276,6 @@ val downloadsPatch = patch(
                 fromBytesMethod.definingClass,
                 playerResponseType
             ).method
-            hookOfflineDownloadResume(playerResponseModelType, fromBytesMethod.definingClass)
 
             val helperMethod = ImmutableMethod(
                 it.classDef.type,
@@ -333,6 +330,9 @@ val downloadsPatch = patch(
                 """
             )
         }
+
+        // Start saved videos played from Downloads at the position saved in Downloads.
+        hookOfflineDownloadResume()
 
         // Keep saved videos playable, if the server disables them when they are refreshed.
         UpdateOfflineVideoPolicyFingerprint.matchAll().forEach { match ->

@@ -13,7 +13,7 @@ package app.morphe.patches.youtube.interaction.downloads
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.InstructionLocation.MatchFirst
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -24,7 +24,6 @@ import app.morphe.patcher.string
 import app.morphe.patches.youtube.video.information.ChannelInformationFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object YouTubeOfflineVideoEndpointFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -43,64 +42,52 @@ internal object YouTubeOfflineVideoEndpointFingerprint : Fingerprint(
     )
 )
 
-/** Builds a Downloads card's play command using its saved position. */
+/**
+ * Builds the play command of a Downloads card, which starts at the position saved in Downloads.
+ */
 internal object OfflineDownloadCardCommandFingerprint : Fingerprint(
     filters = listOf(
+        // Calculates the start time in seconds from the length and the saved position.
         methodCall(opcode = Opcode.INVOKE_STATIC, parameters = listOf("J", "J"), returnType = "F"),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
         string(DOWNLOADS_PLAYLIST_ID, location = MatchAfterImmediately()),
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
             parameters = listOf("Ljava/lang/String;", "Ljava/lang/String;", "I", "F"),
-            returnType = "L",
-            location = MatchAfterWithin(2)
-        ),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately())
-    )
-)
-
-internal fun offlineDownloadPlaylistIdFingerprint(videoIdGetter: MethodReference) = Fingerprint(
-    filters = listOf(
-        methodCall(videoIdGetter),
-        methodCall(returnType = "Ljava/lang/String;", parameters = emptyList())
-    )
-)
-
-internal fun offlineDownloadLoadFingerprint(modelType: String, descriptorType: String) = Fingerprint(
-    classFingerprint = ChannelInformationFingerprint,
-    parameters = listOf(modelType, descriptorType),
-    returnType = "V",
-    filters = listOf(
-        methodCall(definingClass = "this", parameters = listOf("L", descriptorType), returnType = "V"),
-        string("loadVideo() called on LocalDirector in wrong state")
-    )
-)
-
-internal fun offlineDownloadPlayerFingerprint(contextType: String, modelType: String) = Fingerprint(
-    filters = listOf(
-        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = contextType),
-        methodCall(
-            opcode = Opcode.INVOKE_INTERFACE,
-            parameters = emptyList(),
-            returnType = modelType,
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(5)
         )
     )
 )
 
-internal fun offlineDownloadPositionApplyFingerprint(playerType: String) = Fingerprint(
+/**
+ * The PlaybackStartDescriptor toString(), which logs the video ID and then the playlist ID.
+ */
+internal object PlaybackStartDescriptorIdsFingerprint : Fingerprint(
+    name = "toString",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
     filters = listOf(
-        methodCall(opcode = Opcode.INVOKE_STATIC, parameters = listOf(playerType, "J"), returnType = "V"),
-        methodCall(definingClass = "this", parameters = listOf("Z", "I", playerType), returnType = "V")
+        methodCall(smali = "Ljava/util/Locale;->getDefault()Ljava/util/Locale;"),
+        methodCall(returnType = "Ljava/lang/String;", parameters = listOf()), // Video ID.
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        methodCall( // Playlist ID.
+            returnType = "Ljava/lang/String;",
+            parameters = listOf(),
+            location = MatchAfterImmediately()
+        ),
+        string("PlaybackStartDescriptor:", comparison = StringComparisonType.STARTS_WITH)
     )
 )
 
+/**
+ * Loads the saved player response of a saved video and returns it to the callback.
+ */
 internal fun offlinePlaybackWorkerFingerprint(descriptorType: String) = Fingerprint(
-    parameters = listOf(descriptorType, "L"),
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
+    parameters = listOf(descriptorType, "L"),
     filters = listOf(
-        // The worker returns immediately after delivering a successful response.
+        // Callback with the player response, after which the method returns.
         methodCall(
             opcode = Opcode.INVOKE_INTERFACE,
             parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
@@ -111,59 +98,105 @@ internal fun offlinePlaybackWorkerFingerprint(descriptorType: String) = Fingerpr
     )
 )
 
-internal object OfflinePlaybackWorkerReceiverFingerprint : Fingerprint(
-    filters = listOf(
-        opcode(Opcode.MOVE_OBJECT_FROM16, location = MatchFirst())
-    )
-)
-
-internal fun offlinePlaybackRowFingerprint(workerType: String) = Fingerprint(
+/**
+ * Returns the Downloads entry of a video ID from the store of the current account.
+ */
+internal fun offlinePlaybackEntryFingerprint(workerType: String) = Fingerprint(
     definingClass = workerType,
-    parameters = listOf("Ljava/lang/String;"),
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "L",
+    parameters = listOf("Ljava/lang/String;"),
     filters = listOf(
         methodCall(
-            smali = "Lcom/google/common/util/concurrent/ListenableFuture;->get(JLjava/util/concurrent/TimeUnit;)Ljava/lang/Object;",
-            opcode = Opcode.INVOKE_INTERFACE
+            opcode = Opcode.INVOKE_INTERFACE,
+            smali = "Lcom/google/common/util/concurrent/ListenableFuture;->get(JLjava/util/concurrent/TimeUnit;)Ljava/lang/Object;"
         )
     )
 )
 
-/** YouTube copies the position from the Downloads row into its type 76 playback record. */
-internal fun offlineDownloadPositionCopyFingerprint(rowType: String) = Fingerprint(
-    parameters = listOf(rowType),
+/**
+ * Copies the position of a Downloads entry to the playback position record (entity type 76).
+ */
+internal fun offlineDownloadPositionCopyFingerprint(entryType: String) = Fingerprint(
     returnType = $$"Lj$/util/Optional;",
+    parameters = listOf(entryType),
     filters = listOf(
         literal(76),
         methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = listOf("Ljava/lang/String;"), returnType = "V"),
-        fieldAccess(opcode = Opcode.IGET_WIDE, definingClass = rowType, location = MatchAfterImmediately()),
-        methodCall("Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;", location = MatchAfterImmediately())
+        // Saved position in seconds.
+        fieldAccess(opcode = Opcode.IGET_WIDE, definingClass = entryType, location = MatchAfterImmediately()),
+        methodCall(
+            smali = "Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;",
+            location = MatchAfterImmediately()
+        )
     )
 )
 
-internal fun offlineDownloadDurationFingerprint(modelImplementation: String) = Fingerprint(
-    definingClass = modelImplementation,
-    parameters = listOf(),
+/**
+ * Length of the video in milliseconds, from the length in seconds.
+ */
+internal fun offlineDownloadDurationFingerprint(playerResponseModelClass: String) = Fingerprint(
+    definingClass = playerResponseModelClass,
     returnType = "J",
+    parameters = listOf(),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.SGET_OBJECT,
             definingClass = "Ljava/util/concurrent/TimeUnit;",
             name = "SECONDS"
         ),
-        methodCall(
+        methodCall( // Length in seconds.
             opcode = Opcode.INVOKE_VIRTUAL,
             definingClass = "this",
-            parameters = listOf(),
             returnType = "I",
+            parameters = listOf(),
             location = MatchAfterImmediately()
         ),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
         opcode(Opcode.INT_TO_LONG, location = MatchAfterImmediately()),
         methodCall(
-            "Ljava/util/concurrent/TimeUnit;->toMillis(J)J",
+            smali = "Ljava/util/concurrent/TimeUnit;->toMillis(J)J",
             location = MatchAfterImmediately()
         )
+    )
+)
+
+/**
+ * LocalDirector loadVideo(), which calls the method that loads the player response.
+ */
+internal fun localDirectorLoadFingerprint(playerResponseModelType: String, descriptorType: String) = Fingerprint(
+    classFingerprint = ChannelInformationFingerprint,
+    returnType = "V",
+    parameters = listOf(playerResponseModelType, descriptorType),
+    filters = listOf(
+        methodCall(definingClass = "this", parameters = listOf("L", descriptorType), returnType = "V"),
+        string("loadVideo() called on LocalDirector in wrong state")
+    )
+)
+
+/**
+ * Matched against the method that loads the player response, for the player of the load target.
+ */
+internal fun localDirectorLoadPlayerFingerprint(loadTargetType: String, playerResponseModelType: String) = Fingerprint(
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = loadTargetType),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            returnType = playerResponseModelType,
+            parameters = listOf(),
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Matched against the method that loads the player response,
+ * for the start time setter and the call that starts playback.
+ */
+internal fun localDirectorStartPlaybackFingerprint(playerType: String) = Fingerprint(
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_STATIC, parameters = listOf(playerType, "J"), returnType = "V"),
+        methodCall(definingClass = "this", parameters = listOf("Z", "I", playerType), returnType = "V")
     )
 )
 
