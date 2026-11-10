@@ -241,7 +241,7 @@ internal fun baseCustomBrandingPatch(
 
                 mainActivityOnCreateFingerprint.method.addInstruction(
                     0,
-                    "invoke-static { }, $EXTENSION_CLASS->setBranding()V"
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setBranding(Landroid/app/Activity;)V"
                 )
 
                 NumberOfPresetAppNamesExtensionFingerprint.method.returnEarly(numberOfPresetAppNames)
@@ -591,6 +591,27 @@ internal fun baseCustomBrandingPatch(
                 val targetFile = resourceFile("res/${file.parentFile.name}/${file.name}", false)
                 targetFile.parentFile.mkdirs()
                 file.copyTo(targetFile, overwrite = true)
+            }
+        }
+
+        resourceXml("res/values/styles.xml", copy = false).use { styles ->
+            fun addSplashIconStyle(styleName: String, iconMipmap: String) {
+                styles.root.appendChild("style") {
+                    setAttribute("name", "morphe_splash_icon_$styleName")
+                    appendChild("item") {
+                        setAttribute("name", "android:windowSplashScreenAnimatedIcon")
+                        text = "@mipmap/$iconMipmap"
+                    }
+                }
+            }
+
+            addSplashIconStyle(ORIGINAL_USER_ICON_STYLE_NAME, originalLauncherIconName())
+            addSplashIconStyle(CUSTOM_USER_ICON_STYLE_NAME, "$LAUNCHER_RESOURCE_NAME_PREFIX$CUSTOM_USER_ICON_STYLE_NAME")
+            iconStyleNames.forEach { style ->
+                addSplashIconStyle(style, "$LAUNCHER_RESOURCE_NAME_PREFIX$style")
+            }
+            appLauncherIconNames().forEach { (style, mipmap) ->
+                addSplashIconStyle(style, mipmap)
             }
         }
 

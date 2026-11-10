@@ -11,11 +11,20 @@
 
 package app.morphe.extension.shared.patches;
 
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -266,7 +275,9 @@ public class CustomBrandingPatch {
         try {
             String animationName = getLauncherIconBranding().startupAnimationResourceName();
             if (animationName == null) {
-                animationName = BrandingTheme.BLACK.startupAnimationResourceName();
+                // The original icon, user-provided custom icon, and alternative app icons
+                // do not use the Morphe animation, allowing the original app splash animation to play.
+                return 0;
             }
 
             // Not found if the patch that adds the startup animations is excluded.
@@ -460,11 +471,191 @@ public class CustomBrandingPatch {
     }
 
     /**
+     * The lowercase style name of the currently selected launcher icon (e.g. "original", "black", "custom").
+     */
+    public static String getLauncherIconStyleName() {
+        return getLauncherIconBranding().name().toLowerCase(Locale.US);
+    }
+
+    /**
+     * Resolves the mipmap resource ID for the currently selected branding theme.
+     */
+    public static int getLauncherIconResourceId() {
+        return getLauncherIconResourceId(getLauncherIconBranding());
+    }
+
+    /**
+     * Resolves the mipmap resource ID for a given branding theme.
+     */
+    public static int getLauncherIconResourceId(BrandingTheme branding) {
+        String launcherIconName = branding.appLauncherIconResourceName();
+        if (launcherIconName != null && !launcherIconName.isEmpty()) {
+            int resId = ResourceUtils.getIdentifier(ResourceType.MIPMAP, launcherIconName);
+            if (resId != 0) {
+                return resId;
+            }
+        }
+
+        String morpheIconName = "morphe_launcher_" + branding.name().toLowerCase(Locale.US);
+        int resId = ResourceUtils.getIdentifier(ResourceType.MIPMAP, morpheIconName);
+        if (resId != 0) {
+            return resId;
+        }
+
+        String originalName = originalLauncherIconName();
+        if (!originalName.isEmpty()) {
+            resId = ResourceUtils.getIdentifier(ResourceType.MIPMAP, originalName);
+            if (resId != 0) {
+                return resId;
+            }
+        }
+        return 0;
+    }
+
+    /**
+     * Creates a Bitmap representing the launcher icon at standard density for TaskDescription on API < 28.
+     */
+    @Nullable
+    public static Bitmap getLauncherIconBitmap(@NonNull Context context, int iconResId) {
+        if (iconResId == 0) {
+            return null;
+        }
+        try {
+            Drawable drawable = context.getDrawable(iconResId);
+            if (drawable == null) {
+                return null;
+            }
+            int sizePx = Math.round(TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP, 48f, context.getResources().getDisplayMetrics()));
+            Bitmap bitmap = Bitmap.createBitmap(sizePx, sizePx, Bitmap.Config.ARGB_8888);
+            Canvas canvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, sizePx, sizePx);
+            drawable.draw(canvas);
+            return bitmap;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getLauncherIconBitmap failure", ex);
+            return null;
+        }
+    }
+
+    @Nullable
+    private static String getAppLabel(@NonNull Context context) {
+        try {
+            if (userProvidedCustomName()) {
+                return null;
+            }
+            int nameIndex = SharedYouTubeSettings.CUSTOM_BRANDING_NAME.get();
+            if (nameIndex > 1) {
+                int stringRes = ResourceUtils.getIdentifier(ResourceType.STRING,
+                        "morphe_custom_branding_name_entry_" + nameIndex);
+                if (stringRes != 0) {
+                    return context.getString(stringRes);
+                }
+            }
+            CharSequence label = context.getPackageManager().getApplicationLabel(context.getApplicationInfo());
+            return label != null ? label.toString() : null;
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
+    /**
+     * Applies the current branding icon and label to an activity's TaskDescription so the selected icon
+     * appears consistently in the Android recent-apps screen.
+     */
+    public static void applyTaskDescription(@Nullable Activity activity) {
+        if (activity == null) {
+            return;
+        }
+        try {
+            int iconResId = getLauncherIconResourceId();
+            String label = getAppLabel(activity);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                ActivityManager.TaskDescription.Builder builder =
+                        new ActivityManager.TaskDescription.Builder();
+                if (iconResId != 0) {
+                    builder.setIcon(iconResId);
+                }
+                if (label != null) {
+                    builder.setLabel(label);
+                }
+                activity.setTaskDescription(builder.build());
+            } else {
+                Bitmap bitmap = getLauncherIconBitmap(activity, iconResId);
+                if (bitmap != null) {
+                    activity.setTaskDescription(new ActivityManager.TaskDescription(label, bitmap));
+                } else if (label != null) {
+                    activity.setTaskDescription(new ActivityManager.TaskDescription(label));
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "applyTaskDescription failure", ex);
+        }
+    }
+
+    private static boolean lifecycleCallbacksRegistered = false;
+
+    /**
+     * Automatically ensures all activities in the application receive the task description of the chosen icon.
+     */
+    public static void registerActivityLifecycleCallbacks(@Nullable Context context) {
+        if (lifecycleCallbacksRegistered || context == null) {
+            return;
+        }
+        Context appContext = context.getApplicationContext();
+        if (appContext instanceof Application application) {
+            application.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
+                @Override
+                public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
+                    applyTaskDescription(activity);
+                }
+
+                @Override
+                public void onActivityStarted(@NonNull Activity activity) {
+                    applyTaskDescription(activity);
+                }
+
+                @Override
+                public void onActivityResumed(@NonNull Activity activity) {
+                    applyTaskDescription(activity);
+                }
+
+                @Override
+                public void onActivityPaused(@NonNull Activity activity) {}
+
+                @Override
+                public void onActivityStopped(@NonNull Activity activity) {}
+
+                @Override
+                public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {}
+
+                @Override
+                public void onActivityDestroyed(@NonNull Activity activity) {}
+            });
+            lifecycleCallbacksRegistered = true;
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setBranding(Activity activity) {
+        setBranding();
+        if (activity != null) {
+            applyTaskDescription(activity);
+        }
+    }
+
+    /**
      * Injection point.
      */
     @SuppressWarnings("ConstantConditions")
     public static void setBranding() {
         try {
+            Context context = Utils.getContext();
+            registerActivityLifecycleCallbacks(context);
+
             if (GmsCoreSupportPatch.isPackageNameOriginal()) {
                 Logger.printInfo(() -> "App is root mounted. Branding was applied while patching");
                 refreshMountedLauncherIcon();
