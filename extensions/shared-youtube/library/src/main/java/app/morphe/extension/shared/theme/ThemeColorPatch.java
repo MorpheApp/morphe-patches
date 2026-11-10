@@ -505,12 +505,13 @@ public class ThemeColorPatch {
 
             final int index = splashScreenThemeIndex(isDarkTheme());
             final String iconStyle = CustomBrandingPatch.getLauncherIconStyleName();
-            int themeId = ResourceUtils.getIdentifier(
+            int resolvedThemeId = ResourceUtils.getIdentifier(
                     ResourceType.STYLE, SPLASH_THEME_NAME + iconStyle + "_" + index);
-            if (themeId == 0) {
-                themeId = ResourceUtils.getIdentifier(
+            if (resolvedThemeId == 0) {
+                resolvedThemeId = ResourceUtils.getIdentifier(
                         ResourceType.STYLE, SPLASH_THEME_NAME + index);
             }
+            final int themeId = resolvedThemeId;
 
             Logger.printDebug(() -> "Splash screen theme: " + SPLASH_THEME_NAME + iconStyle + "_" + index
                     + " id: " + themeId);
