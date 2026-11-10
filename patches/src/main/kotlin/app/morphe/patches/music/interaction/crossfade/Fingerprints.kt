@@ -9,7 +9,9 @@
 package app.morphe.patches.music.interaction.crossfade
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
@@ -30,6 +32,19 @@ internal object PlayNextInQueueFingerprint : Fingerprint(
         opcode(Opcode.IGET_OBJECT)
     ),
     strings = listOf("gapless.seek.next", "playNextInQueue.")
+)
+
+/**
+ * Sets the player volume, which includes the app's volume normalization, and stores it in a field.
+ */
+internal object PlayerVolumeFingerprint : Fingerprint(
+    classFingerprint = PlayNextInQueueFingerprint,
+    returnType = "V",
+    parameters = listOf("F"),
+    filters = listOf(
+        methodCall(definingClass = EXO_PLAYER_TYPE, returnType = "V", parameters = listOf("F")),
+        fieldAccess(opcode = Opcode.IPUT, type = "F", location = MatchAfterImmediately())
+    )
 )
 
 internal object AudioVideoToggleFingerprint : Fingerprint(
