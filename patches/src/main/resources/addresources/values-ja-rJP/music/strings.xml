@@ -623,30 +623,30 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_source_reset_title">プロバイダーの順序をリセットしますか？</string>
   <string name="morphe_music_lyrics_source_reset_message">プロバイダーを既定の優先順位に戻します</string>
   <string name="morphe_music_lyrics_rime_dict_title">Rime 単語リスト</string>
-  <string name="morphe_music_lyrics_rime_dict_empty">"Rime 単語リストを使用するには、UniDict も必要になります。事前に [オフライン辞書] で「中国語・広東語文字 (UniDict)」にチェックを入れ、ダウンロードを完了させてください。辞書なしでは、Rime 単語リストは読みデータを検出することができません。
+  <string name="morphe_music_lyrics_rime_dict_empty">"Rime 単語リストを使用するには、UniDict も必要になります。事前に [オフライン辞書] で「中国語・広東語文字 (UniDict)」にチェックを入れ、ダウンロードを完了させてください。この辞書がない場合、リスト内に合致する単語がない文字の読みを取得できません。
 
-読みデータの検出に使用する Rime 単語リストにチェックを入れ、[適用] をタップしてダウンロードしてください。ダウンロードしたリストは、チェックを外すと削除されます。
+単語の読みを取得するために使用する Rime 単語リストにチェックを入れ、[適用] をタップしてダウンロードしてください。ダウンロードしたリストは、チェックを外すと削除されます。
 
 各リストは、単語と読みの対応表であり、次のような行で構成される .dict.yaml ファイルです:
 字 ham
 典 din2
 1 列目が単語、2 列目がその読みです。3 列目以降の列や、区切り文字であるタブ文字を含まない行 (1 列しかない行) は無視されます。"</string>
-  <string name="morphe_music_lyrics_rime_dict_no_table">上記の言語では、チェックが入っている Rime 単語リストがありません。言語名をタップしてリストにチェックを入れるか、チェックを入れたリストを持つ言語を選択してください。</string>
+  <string name="morphe_music_lyrics_rime_dict_no_table">上記の言語には、チェックが入っている Rime 単語リストがありません。言語名をタップしてリストにチェックを入れるか、チェックを入れたリストを持つ言語を選択してください。</string>
   <string name="morphe_music_lyrics_rime_dict_add">追加</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Rime 単語リストを追加</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">字 ham や 典 din2 のような行を含む .dict.yaml ファイル、またはそれを含む zip ファイル。リストはチェックを入れて [保存] をタップすると取得されます。ライセンスはご自身でご確認ください。</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">「字 ham」や「典 din2」のような形式の行で構成された .dict.yaml ファイルまたはその種のファイルを格納した ZIP ファイル。チェックを入れて [適用] をタップするとリストをダウンロードします。なお、リストのライセンスについてはご自身で確認してください</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">言語コード</string>
-  <string name="morphe_music_lyrics_rime_dict_field_code_hint">hakやwuuのように、2〜3文字</string>
+  <string name="morphe_music_lyrics_rime_dict_field_code_hint">「hak」や「wuu」のような 2 文字または 3 文字のコード</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">言語名</string>
-  <string name="morphe_music_lyrics_rime_dict_field_label_hint">「in Hakka (Meixian)」のような形で読み表記の下に表示されます</string>
-  <string name="morphe_music_lyrics_rime_dict_field_url">単語リストのアドレス</string>
-  <string name="morphe_music_lyrics_rime_dict_field_url_hint">.dict.yaml またはその zip ファイルの https:// アドレス</string>
-  <string name="morphe_music_lyrics_rime_dict_field_char_source">単語に含まれない文字</string>
+  <string name="morphe_music_lyrics_rime_dict_field_label_hint">「Hakka (Meixian)」のような形で読み表記の下に表示されます</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url">単語リストの URL</string>
+  <string name="morphe_music_lyrics_rime_dict_field_url_hint">.dict.yaml ファイルまたはその種のファイルを格納した ZIP ファイルへの https リンクの URL</string>
+  <string name="morphe_music_lyrics_rime_dict_field_char_source">リスト内に合致する単語がない文字</string>
   <string name="morphe_music_lyrics_rime_char_source_auto">自動</string>
   <string name="morphe_music_lyrics_rime_char_source_cantonese">広東語文字</string>
-  <string name="morphe_music_lyrics_rime_char_source_pinyin">標準語文字</string>
-  <string name="morphe_music_lyrics_rime_char_source_none">文字の読みなし</string>
-  <string name="morphe_music_lyrics_rime_dict_incomplete">言語コード、言語名、アドレスを入力してください</string>
+  <string name="morphe_music_lyrics_rime_char_source_pinyin">標準中国語文字</string>
+  <string name="morphe_music_lyrics_rime_char_source_none">文字の読みを表示しない</string>
+  <string name="morphe_music_lyrics_rime_dict_incomplete">言語コード、言語名、URL を入力してください</string>
   <string name="morphe_music_lyrics_rime_dict_bad_code">コードはhakのように2〜3文字である必要があります</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">アドレスは https:// で始まる必要があります</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">名称とアドレスには縦棒を含めることはできません</string>

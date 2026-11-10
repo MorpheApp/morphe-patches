@@ -94,7 +94,7 @@ Simvolu hər yerdə dəyişdirmək üçün təkrar yamaqlayın və 'Tətbiq simv
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe oynat</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirişi</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Baxış tarixçəniz saxlanılmır.&lt;br&gt;&lt;br&gt;Bu çox güman ki, DNS reklam əngəlləyici və ya şəbəkə proksisinə görədir.&lt;br&gt;&lt;br&gt;Bunu düzəltmək üçün &lt;b&gt;s.youtube.com&lt;/b&gt; ünvanını ağ siyahıya salın və ya bütün DNS əngəlləyiciləri və proksiləri bağlayın</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Baxış tarixçəniz saxlanılmır.&lt;br&gt;&lt;br&gt;Bu çox güman ki, DNS reklam əngəlləyici və ya şəbəkə proksisinə görədir.&lt;br&gt;&lt;br&gt;Bunu düzəltmək üçün s.youtube.com-u&lt;/b&gt; &lt;b&gt;ağ siyahıya salın və ya bütün DNS əngəlləyiciləri və proksiləri bağlayın</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Təkrar göstərmə</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Video yayımların saxtalaşdır</string>
@@ -155,8 +155,8 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_notification_media_screen_summary">Kilid ekranınızda və bildiriş lövhənizdə görünən oynatma nəzarətçilərini fərdiləşdirin</string>
   <string name="morphe_hide_notification_media_prev_next_title">Əvvəlki &amp; Növbəti düymələrini gizlət</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Media bildirişlərində, kilid ekranında və qulaqlıq idarəetmələrində Əvvəlki və Növbəti düyməsini gizlədir</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Axtarış çubuğunu qapat</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Kilid ekranında və bildiriş panelində axtarış çubuğunun sürüklənməsinə mane olur</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Çevirmə cizgisin qapat</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Kilid ekranında və bildiriş panelində çevirmə cizgisinin sürüklənməsinə mane olur</string>
   <string name="morphe_seek_notification_media_prev_next_title">Əvvəlki &amp; Növbəti düymələri ilə çevirmə</string>
   <string name="morphe_seek_notification_media_prev_next_summary">Media bildirişi, kilid ekranı və qulaqlıq idarəetməsini videoları dəyişmək əvəzinə çevirmək üçün dəyişir</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Geri çevirmə uzunluğu</string>

@@ -315,7 +315,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_keyword_content_screen_title">Açar söz çeşidləyici</string>
   <string name="morphe_hide_keyword_content_screen_summary">Videoları axınlarda və axtarışda gizlətmək üçün xüsusi sözlər və ya ifadələr seç</string>
   <string name="morphe_hide_keyword_content_comments_title">Şərhləri açar sözlərə görə gizlət</string>
-  <string name="morphe_hide_keyword_content_home_title">Ana səhifə videolarını açar sözlərə görə gizlət</string>
+  <string name="morphe_hide_keyword_content_home_title">Ev videolarını açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_search_title">Axtarış nəticələrini açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Abunəlik videolarını açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_phrases_title">Gizlədiləcək açar sözlər</string>
@@ -334,7 +334,7 @@ Məhdudiyyətlər:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Açar sözün ziddiyyətli hissəcikləri var: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Açar söz çox qısadır və dırnaq işarəsi tələb edir: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Açar söz bütün videoları gizlədəcək: %s</string>
-  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Ana səhifə: %1$s
+  <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Ev: %1$s
 • Abunəliklər: %2$s
 • Axtarış: %3$s
 • Şərhlər: %4$s
@@ -350,7 +350,7 @@ Məhdudiyyətlər:
   <string name="morphe_hide_aislist_warnlist_category_title">Xəbərdarlıq siyahısı: Orta dərəcədə etibarlılıq</string>
   <string name="morphe_hide_aislist_hide_home_title">Videoları Ev səhifəsində gizlət</string>
   <string name="morphe_hide_aislist_hide_search_title">Videoları axtarışda gizlət</string>
-  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Ana səhifə: %1$s
+  <string name="morphe_hide_aislist_stats_hidden_breakdown">"• Ev: %1$s
 • Axtarış: %2$s
 • Ümumi: %3$s"</string>
   <string name="morphe_hide_aislist_stats_blocklist_channels_title">Bloklanma siyahısı kanalları</string>
@@ -1000,7 +1000,7 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_navigation_buttons_order_summary">Fəaliyyət zolağındakı sıralarını dəyişdirmək üçün düymələri sürüklə</string>
   <string name="morphe_swap_create_with_notifications_button_title">Yarat düyməsi ilə Bildirişlər düyməsini əvəzlə</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Bu tənzimləməni dəyişdirmək təsir göstərmirsə, Gizli rejimə keçməyi sına</string>
-  <string name="morphe_hide_navigation_button_labels_title">Naviqasiya düyməsi etiketlərini gizlət</string>
+  <string name="morphe_hide_navigation_button_labels_title">Fəaliyyət düymə etiketlərini gizlət</string>
   <string name="morphe_hide_navigation_new_content_dot_title">Yeni məzmun nöqtəsini gizlət</string>
   <string name="morphe_hide_navigation_bar_title">Fəaliyyət cizgisini gizlət</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Bu, \"Siz\" tabeli də daxil olmaqla fəaliyyət cərgəsin tamamilə gizlədir.
@@ -1160,7 +1160,7 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_remix_button_title">Remix düyməsini gizlət</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Saxla düyməsini gizlət</string>
+  <string name="morphe_hide_shorts_save_button_title">Saxlayın düyməsini gizlət</string>
   <string name="morphe_hide_shorts_save_sound_button_title">\"Musiqini saxla\" düyməsini gizlət</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Axtarış təkliflərini gizlət</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
@@ -1431,7 +1431,7 @@ Avtomobil tərtibatı
   <!-- "DeArrow" must be kept untranslated. -->
   <string name="morphe_dearrow_titles_title">DeArrow başlıqları</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_titles_home_title">Ana səhifə bölməsi</string>
+  <string name="morphe_dearrow_titles_home_title">Ev paneli</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_dearrow_titles_subscription_title">Abunəliklər bölməsi</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1654,7 +1654,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_series_tracker_ui_series_options">Seriya seçimləri</string>
   <string name="morphe_series_tracker_ui_library_options">Kitabxana seçimləri</string>
   <string name="morphe_series_tracker_ui_refresh_episodes">Epizodları yenilə</string>
-  <string name="morphe_series_tracker_ui_rename">Adını dəyiş</string>
+  <string name="morphe_series_tracker_ui_rename">Təkrar adlandır</string>
   <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Pleylisti YouTube-da aç</string>
   <string name="morphe_series_tracker_ui_remove_from_library">Kitabxanadan sil</string>
   <string name="morphe_series_tracker_ui_playlist_link_or_id">Pleylist linki və ya ID</string>

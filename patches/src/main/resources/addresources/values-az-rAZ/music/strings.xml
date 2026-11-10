@@ -182,7 +182,7 @@ Yüklənilmiş treklər burada görünür"</string>
   <string name="morphe_music_downloads_playlist_no_tracks">Bu pleylistdə trek yoxdur</string>
   <string name="morphe_music_downloads_playlist_play">Pleylisti səsləndir</string>
   <string name="morphe_music_downloads_playlist_play_all">Hamısını oynat</string>
-  <string name="morphe_music_downloads_playlist_rename">Adını dəyiş</string>
+  <string name="morphe_music_downloads_playlist_rename">Təkrar adlandır</string>
   <string name="morphe_music_downloads_playlist_rename_title">Pleylisti yenidən adlandır</string>
   <string name="morphe_music_downloads_playlist_save">Saxla</string>
   <string name="morphe_music_downloads_playlist_delete">Pleylisti sil</string>
@@ -243,7 +243,7 @@ Onlar bir-bir yüklənir, uzun müddət çəkə bilər və təxminən %3$s boş 
   <string name="morphe_music_hide_video_ads_title">Video reklamlarını gizlət</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Səs / Video keçiricisini gizlət</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Endir düyməsini gizlət</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Endirin düyməsini gizlət</string>
   <string name="morphe_music_hide_podcast_episode_download_button_summary">Podkastda göstərilən Yükləmə düyməsini gizlədir</string>
   <string name="morphe_music_hide_explore_shelf_title">Kəşf et bölməsini gizlət</string>
   <string name="morphe_music_hide_filter_bar_title">Filtr cərgəsini gizlət</string>
@@ -379,7 +379,7 @@ Onlar bir-bir yüklənir, uzun müddət çəkə bilər və təxminən %3$s boş 
   <string name="morphe_music_playlist_tags_no_playlists">Pleylistlərinizin burada görünməsi üçün Kitabxananı bir dəfə açın</string>
   <string name="morphe_music_playlist_tags_new_tag">Yeni etiket</string>
   <string name="morphe_music_playlist_tags_edit_tag_title">Etiketə düzəliş et</string>
-  <string name="morphe_music_playlist_tags_rename">Adını dəyiş</string>
+  <string name="morphe_music_playlist_tags_rename">Təkrar adlandır</string>
   <string name="morphe_music_playlist_tags_delete">Sil</string>
   <string name="morphe_music_playlist_tags_hidden">Gizlədildi</string>
   <!-- layout.buttons.hideButtonsPatch -->
@@ -476,8 +476,8 @@ Onlar bir-bir yüklənir, uzun müddət çəkə bilər və təxminən %3$s boş 
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Kiçik səsləndiricini ləğv etmək üçün sürüşdürməni aktivləşdir</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Kiçik səsləndirici üzərində aşağı sürüşdürərək onu ləğv etməyə imkan verir</string>
   <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Naviqasiya paneli</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Aşağı naviqasiya panelində hansı düymələrin görünəcəyini seç</string>
+  <string name="morphe_music_navigation_bar_screen_title">Fəaliyyət zolağı</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Aşağı fəaliyyət zolağında hansı düymələr görünür seç</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ev düyməsini gizlət</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -488,8 +488,8 @@ Onlar bir-bir yüklənir, uzun müddət çəkə bilər və təxminən %3$s boş 
   <string name="morphe_music_hide_navigation_bar_library_button_title">Kitabxana düyməsini gizlət</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Güncəlləyin düyməsini gizlət</string>
-  <string name="morphe_music_hide_navigation_bar_title">Naviqasiya panelini gizlət</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">Naviqasiya düyməsi etiketlərini gizlət</string>
+  <string name="morphe_music_hide_navigation_bar_title">Fəaliyyət cizgisin gizlət</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Fəaliyyət düyməsi etiketlərini gizlət</string>
   <string name="morphe_music_navigation_bar_glass_title">Şüşə fəaliyyət cərgəsini aktivləşdir</string>
   <string name="morphe_music_navigation_bar_glass_summary">Fəaliyyət zolağını üzən, yuvarlaq, yarımşəffaf kapsul kimi göstərir</string>
   <string name="morphe_music_navigation_bar_glass_opacity_title">Şüşə tutqunluğu</string>
