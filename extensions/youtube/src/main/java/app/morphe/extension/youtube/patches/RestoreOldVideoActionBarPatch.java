@@ -15,6 +15,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -53,6 +54,7 @@ import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SecondaryCo
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SlimVideoMetadataSectionRenderer;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.TertiaryContents;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
+import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.patches.utils.requests.ConfigRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -108,6 +110,22 @@ public class RestoreOldVideoActionBarPatch {
             || LAYOUT == VideoActionBarLayout.CLASSIC_TWO_ROWS;
 
     private static final String VIDEO_ACTION_BAR_TEMPLATE = "compactify_video_action_bar.eml";
+
+    /**
+     * Template of the title of the watch page, with the channel name, the views and the date below it.
+     */
+    private static final String VIDEO_METADATA_TEMPLATE = "video_metadata.eml";
+
+    /**
+     * Field path of the channel name below the title of the watch page: element, element type,
+     * component type, model, video metadata model, subtitle, subtitle model, channel name.
+     */
+    private static final int[] SUBTITLE_CHANNEL_NAME_PATH = {1, 168777401, 5, 377581260, 6, 1019, 17, 1017, 1};
+
+    /**
+     * Commands of the parts of a text, such as the channel that the channel name opens.
+     */
+    private static final int TEXT_COMMAND_RUNS_FIELD = 5;
     private static final int LAYOUT_STYLE_CLASSIC = 4;
     private static final int LAYOUT_STYLE_MINIMAL = 6;
     /**
@@ -213,6 +231,39 @@ public class RestoreOldVideoActionBarPatch {
             }
         } else {
             needFetch = false;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The channel name below the title of the watch page opens the channel, next to the views
+     * and the date that open the description, so the channel opens when the description is meant.
+     * The command of the channel name is removed, so the whole subtitle opens the description.
+     */
+    public static byte[] removeSubtitleChannelCommand(byte[] bytes) {
+        if (!FeedVideoCardsPatch.getElementText(bytes).contains(VIDEO_METADATA_TEMPLATE)) {
+            return bytes;
+        }
+
+        try {
+            List<ProtoNode> element = ProtoNode.parse(bytes);
+            if (element == null) {
+                return bytes;
+            }
+            List<ProtoNode> channelName = ProtoNode.message(element, SUBTITLE_CHANNEL_NAME_PATH);
+            ProtoNode commandRuns = ProtoNode.field(channelName, TEXT_COMMAND_RUNS_FIELD);
+            if (commandRuns == null) {
+                return bytes;
+            }
+            do {
+                commandRuns.remove();
+                commandRuns = ProtoNode.field(channelName, TEXT_COMMAND_RUNS_FIELD);
+            } while (commandRuns != null);
+            return ProtoNode.write(element);
+        } catch (Exception ex) {
+            Logger.printException(() -> "removeSubtitleChannelCommand failure", ex);
+            return bytes;
         }
     }
 
