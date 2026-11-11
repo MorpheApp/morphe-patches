@@ -191,10 +191,13 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
                 wholeWordMatching = false;
             }
 
-            // Check if the same phrase is declared both with and without quotes.
-            Keyword existing = keywords.putIfAbsent(foldCase(phrase), new Keyword(phrase, wholeWordMatching));
-            if (existing != null && existing.wholeWord() != wholeWordMatching) {
-                Utils.showSnackbarLong(str("morphe_hide_keyword_toast_invalid_conflicting", phrase));
+            // If the phrase is declared both with and without quotes, use without quotes since it is broader.
+            String key = foldCase(phrase);
+            Keyword existing = keywords.get(key);
+            if (existing == null) {
+                keywords.put(key, new Keyword(phrase, wholeWordMatching));
+            } else if (existing.wholeWord() && !wholeWordMatching) {
+                keywords.put(key, new Keyword(phrase, false));
             }
         }
 
