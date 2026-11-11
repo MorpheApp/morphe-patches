@@ -74,7 +74,9 @@ public final class HorizontalShelvesFilter extends Filter {
 
         StringFilterGroup horizontalShelves = new StringFilterGroup(
                 null,
-                "horizontal_shelf.e"
+                "horizontal_shelf.e",
+                // Newer shelves with a header and a row of items.
+                "horizontal_shelf_slots.e"
         );
 
         addPathCallbacks(forYouShelf, horizontalShelves);
