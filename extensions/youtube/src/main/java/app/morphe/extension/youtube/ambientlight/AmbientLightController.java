@@ -52,6 +52,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.youtube.patches.AmbientModePatch;
 import app.morphe.extension.youtube.patches.FeedCardLayoutPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -109,7 +110,8 @@ public final class AmbientLightController {
     private static final int FULL_STRENGTH = 256;
     private static final long DIM_DURATION_MS = 180;
     private static final long RESTORE_DURATION_MS = 1_600;
-    private static final long RESTORE_DELAY_MS = 3_000;
+    /** Scrolling has stopped once no scroll was seen for this long, as the scrolls are throttled. */
+    private static final long SCROLL_END_MS = 200;
     private static final long FADE_STEP_MS = 33;
     /** Share of the way to the wanted cover for each capture, so that scene cuts do not pump. */
     private static final float COVER_EASING = 0.25f;
@@ -256,7 +258,7 @@ public final class AmbientLightController {
     };
 
     private static final ViewTreeObserver.OnScrollChangedListener scrollListener = () -> {
-        if (SystemClock.uptimeMillis() - lastPageTouch <= TOUCH_SCROLL_WINDOW_MS) onInteraction();
+        if (SystemClock.uptimeMillis() - lastPageTouch <= TOUCH_SCROLL_WINDOW_MS) onInteraction(true);
     };
 
     private static final Runnable restoreLight = () -> setDimmed(false);
@@ -880,13 +882,19 @@ public final class AmbientLightController {
         return true;
     }
 
-    private static void onInteraction() {
+    private static void onInteraction(boolean scrolled) {
+        if (!Settings.ENHANCED_AMBIENT_MODE_DIM_WHILE_SCROLLING.get()) return;
+
         final long now = SystemClock.uptimeMillis();
         if (now - lastInteraction < INTERACTION_THROTTLE_MS) return;
+        final long restoreDelay = SeekBarPreference.clampToRange(Settings.ENHANCED_AMBIENT_MODE_DIM_DURATION) * 1_000L;
+        // Without a delay, a touch that does not scroll would only make the light blink.
+        if (restoreDelay == 0 && !scrolled) return;
+
         lastInteraction = now;
         setDimmed(true);
         mainHandler.removeCallbacks(restoreLight);
-        mainHandler.postDelayed(restoreLight, RESTORE_DELAY_MS);
+        mainHandler.postDelayed(restoreLight, Math.max(restoreDelay, SCROLL_END_MS));
     }
 
     private static void setDimmed(boolean value) {
@@ -937,7 +945,7 @@ public final class AmbientLightController {
         public boolean onTouchEvent(MotionEvent event) {
             if (event.getActionMasked() == MotionEvent.ACTION_DOWN && !isOnPlayer(event)) {
                 lastPageTouch = SystemClock.uptimeMillis();
-                onInteraction();
+                onInteraction(false);
             }
             return false;
         }
