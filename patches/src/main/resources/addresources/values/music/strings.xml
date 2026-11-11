@@ -775,6 +775,8 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_show_translate_button_summary">Tap to toggle translation; long-press for translation only. Uses the enabled translation providers in their listed order</string>
     <string name="morphe_music_lyrics_show_romanize_button_title">Show Romanize or Transliterate button</string>
     <string name="morphe_music_lyrics_show_romanize_button_summary">Tap to toggle romanization or transliteration; long-press for romanization or transliteration only. Uses the enabled romanization providers in their listed order</string>
+    <string name="morphe_music_lyrics_show_current_button_title">Show Current button</string>
+    <string name="morphe_music_lyrics_show_current_button_summary">While scrolling the lyrics by hand, shows a button that jumps back to the line being sung</string>
     <string name="morphe_music_lyrics_allow_transliteration_title">Enable transliteration</string>
     <string name="morphe_music_lyrics_allow_transliteration_summary">Allow non-Latin readings from the lyrics source; when off, keep only Latin letters, accented letters and tone digits</string>
     <string name="morphe_music_lyrics_local_romanization_summary">Reads each word of a timed lyric (word sync on); Korean needs no download; fourteen scripts share one CLDR download; Han characters are read by Rime Wordlist when its word table covers the language</string>
@@ -799,6 +801,12 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_written_by">Written by: %s</string>
     <string name="morphe_music_lyrics_word_sync_title">Highlight synced words or syllables</string>
     <string name="morphe_music_lyrics_word_sync_summary">Prioritize word-by-word lyrics when available. When lyrics carry word timing, highlights each word or syllable in time with the music</string>
+    <string name="morphe_music_lyrics_spring_scroll_title">Use spring scrolling</string>
+    <string name="morphe_music_lyrics_spring_scroll_summary">Scrolls the lyrics with spring physics, and moves each line a little after the one above it. Turn off to save battery on slower devices</string>
+    <string name="morphe_music_lyrics_gap_dots_title">Show instrumental break dots</string>
+    <string name="morphe_music_lyrics_gap_dots_summary">Shows three dots between the lines during a long instrumental break, which fill up as the break runs out</string>
+    <string name="morphe_music_lyrics_focus_spotlight_title">Dim distant lines more</string>
+    <string name="morphe_music_lyrics_focus_spotlight_summary">Dims each inactive line more the further it is from the line being sung. When off, every inactive line is dimmed the same</string>
     <string name="morphe_music_lyrics_line_scale_title">Shrink inactive lines</string>
     <string name="morphe_music_lyrics_line_scale_summary">Draws every line that is not currently being sung slightly smaller, on top of dimming it</string>
     <string name="morphe_music_lyrics_split_background_title">Show background vocals separately</string>
@@ -888,6 +896,7 @@ Applies to both limits. At 1.75, four full-width characters count as 7."</string
     <string name="morphe_music_lyrics_romanize_only">Romanized only</string>
     <string name="morphe_music_lyrics_dual_only">Dual mode</string>
     <string name="morphe_music_lyrics_copied">Copied to clipboard</string>
+    <string name="morphe_music_lyrics_current">Current</string>
     <string name="morphe_music_lyrics_refreshing">Refreshing</string>
     <string name="morphe_music_lyrics_refreshed">Refreshed</string>
     <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API key</string>
