@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerGestureConfig;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.shared.spoof.ClientType;
@@ -353,8 +354,16 @@ public final class InAppDownloadsPatch {
             OfflinePlayerConfig playerConfig = original.hasPlayerConfig()
                     ? original.getPlayerConfig()
                     : builder.getPlayerConfig();
-            builder.setPlayerConfig(playerConfig.toBuilder().setExoPlayerConfig(
-                    playerConfig.getExoPlayerConfig().toBuilder()
+            PlayerGestureConfig.Builder gestures = playerConfig.getPlayerGestureConfig().toBuilder();
+            if (!gestures.hasDownAndOutPortraitAllowed()) {
+                gestures.setDownAndOutPortraitAllowed(true);
+            }
+            if (!gestures.hasDownAndOutLandscapeAllowed()) {
+                gestures.setDownAndOutLandscapeAllowed(true);
+            }
+            builder.setPlayerConfig(playerConfig.toBuilder()
+                    .setPlayerGestureConfig(gestures)
+                    .setExoPlayerConfig(playerConfig.getExoPlayerConfig().toBuilder()
                             .setUseExoPlayer(true)
                             .setEnableVariableSpeedPlayback(true)));
 
