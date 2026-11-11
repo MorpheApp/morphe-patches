@@ -301,9 +301,13 @@ public final class FeedVideoCardsPatch {
      */
     public static boolean isLiveCard(ComponentHost host) {
         String videoId = cardVideoIds.get(host);
-        if (videoId == null) {
-            return false;
-        }
+        return videoId != null && isLiveVideo(videoId);
+    }
+
+    /**
+     * @return If the video is live, such as of a card that enters the list, which is not known by its texts yet.
+     */
+    public static boolean isLiveVideo(String videoId) {
         synchronized (liveVideoIds) {
             return liveVideoIds.containsKey(videoId);
         }
@@ -1275,8 +1279,9 @@ public final class FeedVideoCardsPatch {
                         && (!root.getLocalVisibleRect(visibleRect) || visibleRect.top > 0));
                 // A card that enters from the bottom of the list shows the top of its thumbnail before its texts
                 // and its duration, and then only some of its texts, so it's not known by them yet. The like count
-                // at the top of the thumbnail is shown at once if the description of the card is a text of only
-                // a video with a duration. A card shown up to its bottom without a duration is a mix or a playlist.
+                // and the view count of the thumbnail are shown at once if the description of the card is a text
+                // of only a video with a duration. A card shown up to its bottom without a duration is a mix or
+                // a playlist.
                 String enteringVideoId = null;
                 if (fullWidthCard && (videoId == null || NOT_READY.equals(videoId) || PLAYLIST.equals(videoId))
                         && root.getLocalVisibleRect(visibleRect) && visibleRect.top == 0
@@ -1451,6 +1456,7 @@ public final class FeedVideoCardsPatch {
                 if (NOT_READY.equals(videoId)) {
                     if (enteringVideoId != null && cards.isEmpty()) {
                         FeedEngagementCountsPatch.onCardLaidOut(root, enteringVideoId, null);
+                        FeedViewCountPatch.onCardLaidOut(root, enteringVideoId, null);
                     }
                     // The like count of the Shorts whose title is not drawn yet.
                     for (int i = 0; i < shortsFrames.size(); i++) {
@@ -1516,10 +1522,11 @@ public final class FeedVideoCardsPatch {
                 final String fullWidthCardVideoId = cards.isEmpty() ? cardVideoId : null;
                 // The root host of a Short of a shelf is the card of the Short.
                 if (!cards.contains(root)) {
-                    FeedEngagementCountsPatch.onCardLaidOut(root, enteringVideoId != null && cards.isEmpty()
+                    final String rootVideoId = enteringVideoId != null && cards.isEmpty()
                             ? enteringVideoId
-                            : fullWidthCardVideoId, null);
-                    FeedViewCountPatch.onCardLaidOut(root, fullWidthCardVideoId, null);
+                            : fullWidthCardVideoId;
+                    FeedEngagementCountsPatch.onCardLaidOut(root, rootVideoId, null);
+                    FeedViewCountPatch.onCardLaidOut(root, rootVideoId, null);
                 }
                 FeedVideoActionsPatch.onCardLaidOut(root, fullWidthCardVideoId, true);
                 PostImageDownloadPatch.onRootLaidOut(root);
