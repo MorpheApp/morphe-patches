@@ -11,9 +11,10 @@
 package app.morphe.patches.youtube.video.speed.button
 
 import app.morphe.patcher.patch.patch
+import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
@@ -57,7 +58,10 @@ val playbackSpeedButtonPatch = patch(
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference("morphe_playback_speed_dialog_button", summary = true),
                 SwitchPreference("morphe_playback_speed_button_cycle", summary = true),
-                TextPreference("morphe_playback_speed_button_cycle_speeds"),
+                TextPreference(
+                    "morphe_playback_speed_button_cycle_speeds",
+                    inputType = InputType.TEXT_MULTI_LINE
+                ),
             )
         )
 

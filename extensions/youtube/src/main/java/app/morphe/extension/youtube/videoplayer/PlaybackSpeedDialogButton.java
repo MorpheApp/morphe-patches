@@ -22,10 +22,10 @@ import java.text.DecimalFormat;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.playback.speed.CustomPlaybackSpeedPatch;
-import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -136,7 +136,7 @@ public class PlaybackSpeedDialogButton {
                 CustomPlaybackSpeedPatch.showModernCustomPlaybackSpeedDialog(view.getContext());
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "speed button onClick failure", ex);
+            Logger.printException(() -> "showSpeedDialog failure", ex);
         }
     }
 
@@ -146,16 +146,7 @@ public class PlaybackSpeedDialogButton {
      */
     private static void cycleSpeed() {
         try {
-            float[] speeds = parseCycleSpeeds(Settings.PLAYBACK_SPEED_BUTTON_CYCLE_SPEEDS.get());
-            if (speeds == null) {
-                Utils.showToastShort(str("morphe_playback_speed_button_cycle_speeds_invalid"));
-                Settings.PLAYBACK_SPEED_BUTTON_CYCLE_SPEEDS.resetToDefault();
-                speeds = parseCycleSpeeds(Settings.PLAYBACK_SPEED_BUTTON_CYCLE_SPEEDS.get());
-                if (speeds == null) {
-                    return;
-                }
-            }
-
+            final float[] speeds = loadCycleSpeeds();
             final float current = VideoInformation.getPlaybackSpeed();
             float next = speeds[0];
             for (int i = 0; i < speeds.length; i++) {
@@ -167,34 +158,36 @@ public class PlaybackSpeedDialogButton {
 
             final float speed = next;
             Logger.printDebug(() -> "Speed button cycle: " + current + " -> " + speed);
-            VideoInformation.changePlaybackSpeed(speed);
-            // Same as a speed picked in the menu: with "Remember playback speed" on,
-            // the speed stays for later videos.
-            RememberPlaybackSpeedPatch.userSelectedPlaybackSpeed(speed);
+            // Same as a speed picked in the speed menu, including "Remember playback speed".
+            VideoInformation.setPlaybackSpeed(speed);
         } catch (Exception ex) {
-            Logger.printException(() -> "speed button cycle failure", ex);
+            Logger.printException(() -> "cycleSpeed failure", ex);
         }
     }
 
     /**
-     * @return The speeds, or null if the text is not a comma separated list of valid speeds.
+     * @return The cycle speeds. An invalid list is reset to the default.
      */
-    @Nullable
-    private static float[] parseCycleSpeeds(String text) {
+    private static float[] loadCycleSpeeds() {
+        StringSetting setting = Settings.PLAYBACK_SPEED_BUTTON_CYCLE_SPEEDS;
         try {
-            String[] parts = text.split(",");
-            float[] speeds = new float[parts.length];
-            for (int i = 0; i < parts.length; i++) {
-                final float speed = Float.parseFloat(parts[i].trim());
+            // Same format as the custom playback speeds,
+            // including commas for speeds in a localized format.
+            String[] speedStrings = setting.get().trim().replace(',', '.').split("\\s+");
+            float[] speeds = new float[speedStrings.length];
+            for (int i = 0; i < speedStrings.length; i++) {
+                final float speed = Float.parseFloat(speedStrings[i]);
                 if (speed <= 0 || speed > VideoInformation.PLAYBACK_SPEED_MAXIMUM) {
-                    return null;
+                    throw new IllegalArgumentException("Invalid speed: " + speed);
                 }
                 speeds[i] = speed;
             }
-            return speeds.length == 0 ? null : speeds;
-        } catch (NumberFormatException ex) {
-            Logger.printDebug(() -> "Invalid speed cycle list: " + text);
-            return null;
+            return speeds;
+        } catch (IllegalArgumentException ex) { // NumberFormatException is a subclass.
+            Logger.printInfo(() -> "Invalid speed cycle list: " + setting.get(), ex);
+            Utils.showToastShort(str("morphe_playback_speed_button_cycle_speeds_invalid"));
+            setting.resetToDefault();
+            return loadCycleSpeeds();
         }
     }
 

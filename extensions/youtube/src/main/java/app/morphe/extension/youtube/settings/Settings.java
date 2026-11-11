@@ -363,7 +363,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<PlaylistIDPrefix> PLAY_ALL_BUTTON_TYPE = new EnumSetting<>("morphe_play_all_button_type", PlaylistIDPrefix.ALL_CONTENTS_WITH_TIME_DESCENDING,  parent(PLAY_ALL_BUTTON));
     public static final BooleanSetting PLAYBACK_SPEED_DIALOG_BUTTON = new BooleanSetting("morphe_playback_speed_dialog_button", FALSE, true);
     public static final BooleanSetting PLAYBACK_SPEED_BUTTON_CYCLE = new BooleanSetting("morphe_playback_speed_button_cycle", FALSE, parent(PLAYBACK_SPEED_DIALOG_BUTTON));
-    public static final StringSetting PLAYBACK_SPEED_BUTTON_CYCLE_SPEEDS = new StringSetting("morphe_playback_speed_button_cycle_speeds", "2.0,1.0,1.5", parent(PLAYBACK_SPEED_BUTTON_CYCLE));
+    public static final StringSetting PLAYBACK_SPEED_BUTTON_CYCLE_SPEEDS = new StringSetting("morphe_playback_speed_button_cycle_speeds", "1.0\n1.5\n2.0", parent(PLAYBACK_SPEED_BUTTON_CYCLE));
     public static final EnumSetting<PlayerIcons.Style> PLAYER_ICON_STYLE = new EnumSetting<>("morphe_player_icon_style", PlayerIcons.Style.AUTO, true);
     public static final IntegerSetting PLAYER_OVERLAY_OPACITY = new IntegerSetting("morphe_player_overlay_opacity", 100, true);
     public static final BooleanSetting RELOAD_VIDEO_BUTTON = new BooleanSetting("morphe_reload_video_button", FALSE);
