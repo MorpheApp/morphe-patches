@@ -39,6 +39,7 @@ import android.provider.MediaStore;
 import android.util.Base64;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
@@ -674,27 +675,11 @@ public final class OfflineVideoExporter {
 
     /**
      * A file in the folder the user picked, or by default in the shared Download folder.
+     *
+     * @param document If the uri is of a document in the folder the user picked, and not of the media store.
      */
-    private static final class OutputFile {
-        @Nullable
-        private final Uri uri;
-        /**
-         * If the uri is of a document in the folder the user picked, and not of the media store.
-         */
-        private final boolean document;
-        @Nullable
-        private final File file;
-        private final ParcelFileDescriptor descriptor;
-        private final String location;
-
-        private OutputFile(@Nullable Uri uri, boolean document, @Nullable File file,
-                           ParcelFileDescriptor descriptor, String location) {
-            this.uri = uri;
-            this.document = document;
-            this.file = file;
-            this.descriptor = descriptor;
-            this.location = location;
-        }
+    private record OutputFile(@Nullable Uri uri, boolean document, @Nullable File file,
+                              ParcelFileDescriptor descriptor, String location) {
 
         /**
          * Files are never replaced. If the name is taken, a number is added to it.
@@ -765,6 +750,7 @@ public final class OfflineVideoExporter {
         /**
          * Only the files the app created can be found, as other files are not visible to the app.
          */
+        @RequiresApi(Build.VERSION_CODES.Q)
         private static boolean isMediaStoreNameTaken(ContentResolver resolver, String folder, String fileName) {
             try (Cursor cursor = resolver.query(MediaStore.Downloads.EXTERNAL_CONTENT_URI,
                     new String[]{MediaStore.MediaColumns._ID},
@@ -928,7 +914,6 @@ public final class OfflineVideoExporter {
                     .setOnlyAlertOnce(true);
         }
 
-        @SuppressLint("NotificationPermission") // The app declares POST_NOTIFICATIONS.
         private void post(Notification.Builder builder) {
             NotificationManager manager = getManager();
             manager.createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL,
@@ -1147,20 +1132,22 @@ public final class OfflineVideoExporter {
 
         private void decrypt(long position, byte[] buffer, int offset, int count) throws IOException {
             try {
-                if (cipher == null || position != cipherPosition) {
-                    cipher = Cipher.getInstance(CACHE_CIPHER);
+                Cipher current = cipher;
+                if (current == null || position != cipherPosition) {
+                    current = Cipher.getInstance(CACHE_CIPHER);
                     byte[] iv = ByteBuffer.allocate(AES_BLOCK_SIZE)
                             .putLong(nonce)
                             .putLong(position / AES_BLOCK_SIZE)
                             .array();
-                    cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(iv));
+                    current.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(iv));
                     final int skip = (int) (position % AES_BLOCK_SIZE);
                     if (skip > 0) {
-                        cipher.update(new byte[skip]);
+                        current.update(new byte[skip]);
                     }
+                    cipher = current;
                 }
 
-                final int decrypted = cipher.update(buffer, offset, count, buffer, offset);
+                final int decrypted = current.update(buffer, offset, count, buffer, offset);
                 if (decrypted != count) {
                     throw new IOException("Decrypted " + decrypted + " of " + count + " bytes");
                 }
