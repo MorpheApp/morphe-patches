@@ -20,6 +20,7 @@ import app.morphe.patches.music.video.playerresponse.Hook
 import app.morphe.patches.music.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.music.video.playerresponse.musicPlayerResponseMethodHookPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -45,8 +46,10 @@ val enableAudioVideoSwitchPatch = patch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_music_enable_audio_video_switch", summary = true),
-            SwitchPreference("morphe_music_auto_song_version", summary = true)
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_music_enable_audio_video_switch", summary = true),
+                SwitchPreference("morphe_music_auto_song_version", summary = true)
+            )
         )
 
         AudioVideoSwitchPillContainerFingerprint.matchAll().forEach { match ->
