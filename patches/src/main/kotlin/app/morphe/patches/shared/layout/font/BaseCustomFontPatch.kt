@@ -14,23 +14,19 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchDefinition
-import app.morphe.patcher.patch.classDefForEach
-import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.matchAllMethodIndicesForEach
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/CustomFontPatch;"
 
@@ -115,66 +111,30 @@ fun baseCustomFontPatch(
         // replaced, so the app reads them through the extension. The system also uses the default typeface
         // for a font family that it does not have, so the app creates the typefaces of font families
         // through the extension too.
-        val typefaceType = "Landroid/graphics/Typeface;"
-        val defaultTypefaceGetters = mapOf(
-            "DEFAULT" to "getDefaultTypeface",
-            "DEFAULT_BOLD" to "getDefaultBoldTypeface",
-            "SANS_SERIF" to "getSansSerifTypeface",
-        )
+        DefaultTypefaceReadFingerprint.matchAllMethodIndicesForEach { index ->
+            val instruction = getInstruction<OneRegisterInstruction>(index)
+            val getter = defaultTypefaceGetters.getValue(instruction.getReference<FieldReference>()!!.name)
 
-        fun Instruction.isDefaultTypefaceRead() = opcode == Opcode.SGET_OBJECT &&
-                ((this as ReferenceInstruction).reference as FieldReference).let {
-                    it.definingClass == typefaceType && it.name in defaultTypefaceGetters
-                }
-
-        fun Instruction.isFamilyTypefaceCreate() =
-                (opcode == Opcode.INVOKE_STATIC || opcode == Opcode.INVOKE_STATIC_RANGE) &&
-                ((this as ReferenceInstruction).reference as MethodReference).let {
-                    it.definingClass == typefaceType && it.name == "create"
-                            && it.parameterTypes == listOf("Ljava/lang/String;", "I")
-                }
-
-        val typefaceClasses = mutableListOf<String>()
-        classDefForEach { classDef ->
-            // The extension uses the original typefaces to create the fonts.
-            if (classDef.type != EXTENSION_CLASS && classDef.methods.any { method ->
-                    method.implementation?.instructions?.any {
-                        it.isDefaultTypefaceRead() || it.isFamilyTypefaceCreate()
-                    } == true
-                }
-            ) {
-                typefaceClasses += classDef.type
-            }
+            replaceInstruction(
+                index,
+                "invoke-static { }, $EXTENSION_CLASS->$getter()$TYPEFACE_TYPE"
+            )
+            addInstruction(index + 1, "move-result-object v${instruction.registerA}")
         }
 
-        typefaceClasses.forEach { type ->
-            mutableClassDefBy(type).methods.forEach { method ->
-                val instructions = method.implementation?.instructions ?: return@forEach
-                instructions.withIndex().filter { (_, instruction) ->
-                    instruction.isDefaultTypefaceRead() || instruction.isFamilyTypefaceCreate()
-                }.map { it.index }.reversed().forEach { index ->
-                    val instruction = method.getInstruction(index)
-                    val reference = (instruction as ReferenceInstruction).reference
-                    if (reference is FieldReference) {
-                        val register = (instruction as OneRegisterInstruction).registerA
-                        method.replaceInstruction(
-                            index,
-                            "invoke-static { }, $EXTENSION_CLASS->${defaultTypefaceGetters.getValue(reference.name)}()$typefaceType"
-                        )
-                        method.addInstruction(index + 1, "move-result-object v$register")
-                    } else {
-                        val registers = if (instruction is RegisterRangeInstruction) {
-                            "/range { v${instruction.startRegister} .. v${instruction.startRegister + 1} }"
-                        } else {
-                            (instruction as FiveRegisterInstruction).let { " { v${it.registerC}, v${it.registerD} }" }
-                        }
-                        method.replaceInstruction(
-                            index,
-                            "invoke-static$registers, $EXTENSION_CLASS->createTypeface(Ljava/lang/String;I)$typefaceType"
-                        )
-                    }
-                }
+        FamilyTypefaceCreateFingerprint.matchAllMethodIndicesForEach { index ->
+            val instruction = getInstruction(index)
+            val (familyRegister, styleRegister) = instruction.registersUsed
+            val invoke = if (instruction is RegisterRangeInstruction) {
+                "invoke-static/range { v$familyRegister .. v$styleRegister }"
+            } else {
+                "invoke-static { v$familyRegister, v$styleRegister }"
             }
+
+            replaceInstruction(
+                index,
+                "$invoke, $EXTENSION_CLASS->createTypeface(Ljava/lang/String;I)$TYPEFACE_TYPE"
+            )
         }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
