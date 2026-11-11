@@ -72,10 +72,11 @@ public final class AutoplayButton {
 
     private static void showList(Context context) {
         try {
-            final int modeCount = AutoplayRule.Mode.values().length;
+            AutoplayRule.Mode[] modes = AutoplayRule.Mode.values();
+            final int modeCount = modes.length;
             String[] items = new String[modeCount + MIX_LENGTHS.length];
             for (int i = 0; i < modeCount; i++) {
-                items[i] = modeLabel(AutoplayRule.Mode.values()[i]);
+                items[i] = modeLabel(modes[i]);
             }
             for (int i = 0; i < MIX_LENGTHS.length; i++) {
                 items[modeCount + i] = MIX_LENGTHS[i] == 0
@@ -86,7 +87,7 @@ public final class AutoplayButton {
                     .setTitle(str("morphe_autoplay_control_title"))
                     .setItems(items, (dialog, which) -> {
                         if (which < modeCount) {
-                            AutoplayControlPatch.setMode(AutoplayRule.Mode.values()[which]);
+                            AutoplayControlPatch.setMode(modes[which]);
                         } else {
                             Settings.AUTOPLAY_MIX_STOP_AFTER.save(MIX_LENGTHS[which - modeCount]);
                             AutoplayControlPatch.setMode(AutoplayRule.Mode.AUTO);
@@ -109,17 +110,20 @@ public final class AutoplayButton {
     /**
      * @return The button text: the mode, or the Mix position in mode Auto.
      */
-    static String text() {
+    private static String text() {
         AutoplayRule.Mode mode = Settings.AUTOPLAY_MODE.get();
         final int count = AutoplayControlPatch.mixCount();
         if (mode == AutoplayRule.Mode.AUTO && count > 0
                 && AutoplayRule.isMix(VideoInformation.getPlaylistId())) {
-            final int limit = Settings.AUTOPLAY_MIX_STOP_AFTER.get();
+            final int limit = AutoplayControlPatch.mixStopAfter();
             return limit > 0 ? count + "/" + limit : String.valueOf(count);
         }
         return modeLabel(mode);
     }
 
+    /**
+     * Updates the button text. Must be called on the main thread.
+     */
     public static void update() {
         try {
             Utils.verifyOnMainThread();

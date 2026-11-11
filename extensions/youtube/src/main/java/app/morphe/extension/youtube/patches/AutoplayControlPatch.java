@@ -31,8 +31,7 @@ public final class AutoplayControlPatch {
      */
     static boolean shouldSkip(String intent) {
         String listId = VideoInformation.getPlaylistId();
-        boolean skip = rule.shouldSkip(intent, listId, Settings.AUTOPLAY_MODE.get(),
-                Math.max(0, Settings.AUTOPLAY_MIX_STOP_AFTER.get()));
+        final boolean skip = rule.shouldSkip(intent, listId, Settings.AUTOPLAY_MODE.get(), mixStopAfter());
         Logger.printDebug(() -> "Autoplay control: " + intent + " list " + listId + " count "
                 + rule.mixCount() + (skip ? " -> skip" : " -> go on"));
         if (skip) {
@@ -42,7 +41,8 @@ public final class AutoplayControlPatch {
     }
 
     /**
-     * Injection point. Every loaded video, more than once for the same one.
+     * Injection point. Every loaded regular video, also in the background,
+     * and more than once for the same one.
      */
     public static void newVideoLoaded(String videoId) {
         try {
@@ -54,6 +54,13 @@ public final class AutoplayControlPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "Autoplay control newVideoLoaded failure", ex);
         }
+    }
+
+    /**
+     * @return Mix videos to play in mode Auto, 0 for no limit.
+     */
+    public static int mixStopAfter() {
+        return Math.max(0, Settings.AUTOPLAY_MIX_STOP_AFTER.get());
     }
 
     /**

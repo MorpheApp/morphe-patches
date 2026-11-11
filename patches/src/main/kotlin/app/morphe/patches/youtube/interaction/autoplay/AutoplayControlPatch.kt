@@ -12,6 +12,7 @@ import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.layout.playlistautoplay.disablePlaylistAutoplayPatch
@@ -20,7 +21,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
-import app.morphe.patches.youtube.video.videoid.hookVideoId
+import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 
 private const val EXTENSION_CLASS =
@@ -49,13 +50,16 @@ val autoplayControlPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_autoplay_control", summary = true),
-            ListPreference("morphe_autoplay_mode"),
-            TextPreference("morphe_autoplay_mix_stop_after", inputType = InputType.NUMBER),
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_autoplay_control", summary = true),
+                ListPreference("morphe_autoplay_mode"),
+                TextPreference("morphe_autoplay_mix_stop_after", inputType = InputType.NUMBER),
+            )
         )
 
         addPlayerBottomButton(EXTENSION_BUTTON)
 
-        hookVideoId("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")
+        // Mixes are mostly listened to in the background, where the regular video ID hook is not called.
+        hookBackgroundPlayVideoId("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")
     }
 }
