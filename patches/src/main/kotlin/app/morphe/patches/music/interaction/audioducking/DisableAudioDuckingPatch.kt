@@ -10,7 +10,6 @@ package app.morphe.patches.music.interaction.audioducking
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -54,20 +53,16 @@ val disableAudioDuckingPatch = patch(
         }
 
         // The app is then told to duck, and would lower the volume itself.
-        AudioFocusChangeFingerprint.method.apply {
-            val register = findFreeRegister(0)
-
-            addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->ignoreAudioFocusChange(I)Z
-                    move-result v$register
-                    if-eqz v$register, :handle
-                    return-void
-                    :handle
-                    nop
-                """
-            )
-        }
+        AudioFocusChangeFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->ignoreAudioFocusChange(I)Z
+                move-result v0
+                if-eqz v0, :handle
+                return-void
+                :handle
+                nop
+            """
+        )
     }
 }
