@@ -791,8 +791,6 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_type_entry_2">Native queue</string>
     <string name="morphe_queue_type_entry_3">Morphe queue</string>
     <string name="morphe_queue_type_entry_4">Morphe queue client side</string>
-    <string name="morphe_queue_add_flyout_menu_title">Add feed flyout queue menu item</string>
-    <string name="morphe_queue_add_flyout_menu_summary">Adds an additional flyout item. Enable this if \"Add to queue\" is not shown</string>
     <string name="morphe_local_queue_sheet_title">Queue</string>
     <string name="morphe_local_queue_open">Queue (%s)</string>
     <string name="morphe_local_queue_clear">Clear all</string>
@@ -841,8 +839,6 @@ Info: May not work on live streams"</string>
     <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
     <string name="morphe_native_queue_fetch_on_scroll_title">Load queue pages on scroll</string>
     <string name="morphe_native_queue_fetch_on_scroll_summary">Loads more playlist videos when scrolling near the end of the queue</string>
-    <string name="morphe_native_queue_shorts_menu_title">Show queue actions for Shorts</string>
-    <string name="morphe_native_queue_shorts_menu_summary">Adds Native queue actions to Shorts card menus</string>
     <string name="morphe_native_playlist_queue_saved">Playlist saved</string>
     <string name="morphe_native_playlist_queue_saved_to">Saved to %s</string>
     <string name="morphe_native_playlist_queue_clear">Clear queue</string>

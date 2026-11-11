@@ -125,7 +125,7 @@ public class QueueFlyoutActionsTest {
         assertSame(cleaned, QueueFlyoutActions.completeMenu(cleaned, false, "Next", "Last"));
     }
 
-    @Test public void optedInMenuAddsMissingLocalActionsWithoutChangingCastOrOtherItems() throws Exception {
+    @Test public void shortsMenuAddsMissingLocalActionsWithoutChangingCastOrOtherItems() throws Exception {
         var cast = conditional(251, 1);
         var share = conditional(YTIconType.SHARE.getNumber(), 2);
         var bytes = new ByteArrayOutputStream();

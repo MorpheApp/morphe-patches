@@ -27,7 +27,6 @@ import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuRe
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
-import app.morphe.extension.youtube.settings.Settings;
 
 /** Adjusts native menu data before YouTube filters and binds its rows. */
 public final class QueueFlyoutActions {
@@ -60,8 +59,7 @@ public final class QueueFlyoutActions {
             }
             FlyoutUtils.setNativeQueuePlaylistId(playlistId);
             // Menus of Shorts in the feed have no stock queue items to replace.
-            final boolean addShortsItems = playlistId.isEmpty()
-                    && Settings.NATIVE_QUEUE_SHORTS_MENU.get() && FlyoutUtils.isShortsFeedMenu();
+            final boolean addShortsItems = playlistId.isEmpty() && FlyoutUtils.isShortsFeedMenu();
             MenuRenderer completed = completeMenu(menu,
                     !playlistId.isEmpty() || NativePlaylistQueuePatch.canShowFlyoutLast(),
                     str("morphe_native_playlist_queue_next"), str("morphe_native_playlist_queue_last"), playlistId,

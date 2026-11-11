@@ -88,10 +88,10 @@ class QueueRuntimeBoundaryTest {
     fun `stock queue actions route to Native without opening the account queue dialog`() = withFixture("stockQueueRouting")
 
     @Test
-    fun `opted in Shorts menus start a normal watch queue and show Last only with a queue`() = withFixture("shortsQueueMenu")
+    fun `Shorts menus start a normal watch queue and show Last only with a queue`() = withFixture("shortsQueueMenu")
 
     @Test
-    fun `Shorts queue menu opt in leaves other video types providers and missing targets unchanged`() =
+    fun `Shorts queue menu leaves other video types providers and missing targets unchanged`() =
         withFixture("shortsQueueMenuGuards")
 
     @Test
@@ -591,8 +591,6 @@ class QueueRuntimeBoundaryTest {
                         new app.morphe.extension.shared.settings.EnumSetting<>(QueueType.NATIVE);
                     public static final app.morphe.extension.shared.settings.BooleanSetting NATIVE_QUEUE_FETCH_ON_SCROLL =
                         new app.morphe.extension.shared.settings.BooleanSetting();
-                    public static final app.morphe.extension.shared.settings.BooleanSetting NATIVE_QUEUE_SHORTS_MENU =
-                        new app.morphe.extension.shared.settings.BooleanSetting();
                 }
             """,
             "BooleanSetting" to """
@@ -823,8 +821,6 @@ class QueueRuntimeBoundaryTest {
                         var selectedSource = QueueFlyoutActions.playlistSource(source, new android.view.View());
                         require(!selectedSource.playlist(), "A recognized Short must not become an unresolved playlist");
                         app.morphe.extension.youtube.patches.utils.FlyoutUtils.nativePlaylistMenu = selectedSource.playlist();
-                        require(QueueFlyoutActions.completeQueueMenu(original) == original, "Disabled setting adds no menu items");
-                        Settings.NATIVE_QUEUE_SHORTS_MENU.value = true;
                         var completed = (PlaylistQueueRenderer.MenuRenderer) QueueFlyoutActions.completeQueueMenu(original);
                         require(completed.getItemsCount() == 2 && completed.getItems(0).getMenuConditionalServiceItemRenderer()
                                 .getIcon().getYtIconType() == IconOuterClass.YTIconType.QUEUE_PLAY_NEXT,
@@ -862,7 +858,6 @@ class QueueRuntimeBoundaryTest {
                     }
                     public static void shortsQueueMenuGuards() throws Exception {
                         var original = nativeMenu(shortsOriginalMenu());
-                        Settings.NATIVE_QUEUE_SHORTS_MENU.value = true;
                         require(QueueFlyoutActions.completeQueueMenu(original) == original, "Regular videos retain their menu");
                         app.morphe.extension.youtube.patches.utils.FlyoutUtils.shortsFeed = true;
                         for (var type : List.of(QueueType.DEFAULT, QueueType.MORPHE, QueueType.LOCAL)) {
@@ -878,7 +873,7 @@ class QueueRuntimeBoundaryTest {
                         var playlist = (PlaylistQueueRenderer.MenuRenderer) QueueFlyoutActions.completeQueueMenu(original);
                         require(playlist.getItemsCount() == 3 && playlist.getItemsList().subList(0, 2).stream().allMatch(item ->
                             item.getMenuConditionalServiceItemRenderer().getServiceEndpoint().getQueuePlaylistId().equals("WL")),
-                            "Opting into Shorts must preserve collection actions and their exact playlist target");
+                            "Shorts support must preserve collection actions and their exact playlist target");
                         require(LoadVideoPatch.opens == 0 && Logger.errors == 0, "Preparing a menu never starts playback");
                     }
                     public static void otherQueueRouting() {
