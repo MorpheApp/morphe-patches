@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.misc.backgroundplayback
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -19,6 +20,7 @@ import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -44,15 +46,29 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.containsLiteralInstruction
 import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.indexOfFirstInstruction
+import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.NarrowLiteralInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/BackgroundPlaybackPatch;"
+
+private const val EXTENSION_BACKGROUND_PLAYBACK_SETTING_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/BackgroundPlaybackPatch$BackgroundPlaybackSetting;"
 
 val backgroundPlaybackPatch = patch(
     name = "Remove background playback restrictions",
@@ -147,6 +163,100 @@ val backgroundPlaybackPatch = patch(
         // the video keeps the value of the account
         // (https://github.com/MorpheApp/morphe-patches/issues/2506).
         if (is_21_15_or_greater) {
+            // When the background playback setting of YouTube does not allow background playback,
+            // the app pauses the video when it goes to the background, and the flag keeps the value
+            // of the account so the video resumes when the app returns to the foreground
+            // (https://github.com/MorpheApp/morphe-patches/issues/4639).
+            BackgroundPlaybackSettingAllowedFingerprint.let { fingerprint ->
+                val settingAllowedMethod = fingerprint.method
+                val audioManagerType = settingAllowedMethod.parameterTypes[1]
+
+                fingerprint.classDef.apply {
+                    // The instance method that reads the setting of the account and calls the static method.
+                    val settingMethod = methods.single { method ->
+                        method.returnType == "Z" && method.parameters.isEmpty() &&
+                                method.indexOfFirstInstruction {
+                                    MethodUtil.methodSignaturesMatch(
+                                        getReference<MethodReference>() ?: return@indexOfFirstInstruction false,
+                                        settingAllowedMethod
+                                    )
+                                } >= 0
+                    }
+
+                    interfaces.add(EXTENSION_BACKGROUND_PLAYBACK_SETTING_INTERFACE)
+                    methods.add(
+                        ImmutableMethod(
+                            type,
+                            "patch_isBackgroundPlaybackAllowed",
+                            listOf(),
+                            "Z",
+                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                            null,
+                            null,
+                            MutableMethodImplementation(2),
+                        ).toMutable().apply {
+                            addInstructions(
+                                0,
+                                """
+                                    invoke-virtual { p0 }, $settingMethod
+                                    move-result v0
+                                    return v0
+                                """
+                            )
+                        }
+                    )
+
+                    // The field the method reads the audio manager from.
+                    val audioManagerField = settingMethod.let { method ->
+                        val castIndex = method.indexOfFirstInstructionOrThrow {
+                            opcode == Opcode.CHECK_CAST && getReference<TypeReference>()?.type == audioManagerType
+                        }
+                        val castRegister = method.getInstruction<OneRegisterInstruction>(castIndex).registerA
+                        val fieldIndex = method.indexOfFirstInstructionReversedOrThrow(castIndex) {
+                            opcode == Opcode.IGET_OBJECT && (this as TwoRegisterInstruction).registerA == castRegister
+                        }
+                        method.getInstruction<ReferenceInstruction>(fieldIndex).reference as FieldReference
+                    }
+
+                    // The class is merged with other classes, so more than one constructor can take
+                    // the audio manager. Use the one that saves it in the field the method reads.
+                    methods.single { method ->
+                        if (!MethodUtil.isConstructor(method)) return@single false
+                        val parameterIndex = method.parameterTypes.indexOf(audioManagerType)
+                        if (parameterIndex < 0) return@single false
+
+                        fun wordCount(types: List<CharSequence>) = types.sumOf { type ->
+                            if (type == "J" || type == "D") 2 else 1
+                        }
+                        // The parameters are the last registers of the method.
+                        val parameterRegister = method.implementation!!.registerCount -
+                                wordCount(method.parameterTypes) +
+                                wordCount(method.parameterTypes.take(parameterIndex))
+
+                        method.indexOfFirstInstruction {
+                            if (opcode != Opcode.IPUT_OBJECT ||
+                                (this as TwoRegisterInstruction).registerA != parameterRegister
+                            ) return@indexOfFirstInstruction false
+                            val field = getReference<FieldReference>()
+                                ?: return@indexOfFirstInstruction false
+                            field.definingClass == audioManagerField.definingClass &&
+                                    field.name == audioManagerField.name
+                        } >= 0
+                    }.apply {
+                        // Right after the super constructor call, before 'this' register can be reused.
+                        val superIndex = indexOfFirstInstructionOrThrow {
+                            opcode == Opcode.INVOKE_DIRECT && getReference<MethodReference>()?.name == "<init>"
+                        }
+                        val thisRegister = getInstruction<FiveRegisterInstruction>(superIndex).registerC
+                        addInstruction(
+                            superIndex + 1,
+                            "invoke-static { v$thisRegister }, $EXTENSION_CLASS->" +
+                                    "setBackgroundPlaybackSetting($EXTENSION_BACKGROUND_PLAYBACK_SETTING_INTERFACE)V"
+                        )
+                    }
+                }
+            }
+
             val override = "$EXTENSION_CLASS->isAutomaticForegroundPlaybackAllowed(Z)Z"
             // 21.29 and older read the flag with a single accessor method.
             val flagAccessor = if (is_21_30_or_greater) {

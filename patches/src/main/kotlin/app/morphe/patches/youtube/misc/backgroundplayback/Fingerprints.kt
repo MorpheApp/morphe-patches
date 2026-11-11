@@ -114,6 +114,21 @@ internal object PlayingWhenBackgroundedFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Returns if the background playback setting of YouTube (Settings > Background & downloads) allows
+ * background playback now: always, or only with headphones and headphones are connected.
+ */
+internal object BackgroundPlaybackSettingAllowedFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Z",
+    parameters = listOf("L", "L", "L"),
+    filters = listOf(
+        methodCall(definingClass = "Landroid/media/AudioManager;", name = "isWiredHeadsetOn"),
+        methodCall(definingClass = "Landroid/media/AudioManager;", name = "isBluetoothA2dpOn"),
+        methodCall(definingClass = "Landroid/media/AudioManager;", name = "isBluetoothScoOn")
+    )
+)
+
 internal object AutomaticPlaybackPausedInFlyoutFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45741823L)

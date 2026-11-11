@@ -20,6 +20,8 @@ import android.os.Build;
 import android.os.SystemClock;
 import android.view.KeyEvent;
 
+import androidx.annotation.Nullable;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
@@ -42,7 +44,17 @@ public class BackgroundPlaybackPatch {
     private static final boolean REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS_SHORTS
             = !Settings.DISABLE_SHORTS_BACKGROUND_PLAYBACK.get();
 
+    public interface BackgroundPlaybackSetting {
+        /**
+         * @return If the background playback setting of YouTube allows background playback now.
+         */
+        boolean patch_isBackgroundPlaybackAllowed();
+    }
+
     private static boolean receiverRegistered;
+
+    @Nullable
+    private static volatile BackgroundPlaybackSetting backgroundPlaybackSetting;
 
     private static boolean pendingAutoPause;
 
@@ -204,8 +216,26 @@ public class BackgroundPlaybackPatch {
     /**
      * Injection point.
      */
+    public static void setBackgroundPlaybackSetting(BackgroundPlaybackSetting setting) {
+        backgroundPlaybackSetting = setting;
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean isAutomaticForegroundPlaybackAllowed(boolean original) {
-        return original && !REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS;
+        if (!original || !REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS) return original;
+
+        // When the background playback setting of YouTube does not allow background playback,
+        // the app pauses the video when it goes to the background, and the original value
+        // resumes the video if it was playing when the app returns to the foreground.
+        BackgroundPlaybackSetting setting = backgroundPlaybackSetting;
+        try {
+            return setting != null && !setting.patch_isBackgroundPlaybackAllowed();
+        } catch (Exception ex) {
+            Logger.printException(() -> "isAutomaticForegroundPlaybackAllowed failure", ex);
+            return false;
+        }
     }
 
     /**
