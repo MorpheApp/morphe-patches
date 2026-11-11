@@ -97,15 +97,16 @@ Ili kutafsiri lugha mpya au kuboresha tafsiri zilizopo, tembelea morphe.software
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Kutambua hitilafu</string>
   <string name="morphe_debug_screen_summary">Sanidi chaguzi za juu za msanidi programu na logi za utambuzi</string>
-  <string name="morphe_debug_title">Washa urejeshaji wa debug</string>
-  <string name="morphe_debug_stacktrace_title">Kumbukumbu ya kosa la debug (stack trace)</string>
-  <string name="morphe_debug_stacktrace_summary">Inajumuisha stack traces katika logi za debug ili kusaidia kutambua makosa</string>
+  <string name="morphe_debug_level_title">Kurekodi kosa</string>
+  <string name="morphe_debug_level_entry_disabled">Zimwa</string>
+  <string name="morphe_debug_level_entry_debug">Kutatua kosa</string>
+  <string name="morphe_debug_level_entry_verbose">Maelezo ya kina</string>
   <string name="morphe_debug_toast_on_error_title">Onyesha taarifu ya toast wakati wa hitilafu ya Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Kuzima toast za makosa huficha arifa zote za makosa za Morphe.
 
 Hautataarifiwa kuhusu matukio yoyote yasiyotarajiwa"</string>
   <string name="morphe_debug_export_logs_title">Hamisha logi za debug</string>
-  <string name="morphe_debug_export_logs_summary">Exporta rekodi za debug za Morphe</string>
+  <string name="morphe_debug_export_logs_summary">Hamisha rekodi za debug za Morphe</string>
   <string name="morphe_debug_export_logs_success">Kumbukumbu za debug zimehamishwa kikamilifu</string>
   <string name="morphe_debug_export_logs_failed">Imeshindwa kuhamisha kumbukumbu za debug</string>
   <string name="morphe_debug_logs_search_hint">Tafuta kumbukumbu za debug…</string>
@@ -125,7 +126,7 @@ Hautataarifiwa kuhusu matukio yoyote yasiyotarajiwa"</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_blocked">Imezuiliwa (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
-  <string name="morphe_debug_feature_flags_manager_filter_forced">Ime forced (%s)</string>
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Imelazimishwa (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">Kiotomatiki</string>
   <!-- Keep short, shown as a badge and as a button. -->
@@ -137,15 +138,15 @@ Hautataarifiwa kuhusu matukio yoyote yasiyotarajiwa"</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Ondoa</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Alama za vipengele zimehifadhiwa</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Alama za vipengele zimerejeshwa</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Viwashio vya vipengele vimenakiliwa kwenye ubao wa kunakili</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Bendera za vipengele zimenakiliwa kwenye ubao wa kunakili</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Washa upya programu ili kutumia mpangilio huu</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Export na import</string>
-  <string name="morphe_debug_feature_flags_manager_import_success">Vishika-ishara vya vipengele %s vimeingizwa</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Bendera za vipengele %s zimeingizwa</string>
   <string name="morphe_debug_feature_flags_manager_import_failed">Hakuna feature flags zilizopatikana</string>
-  <string name="morphe_debug_feature_flags_manager_export_file_success">Vishika-bendera vya vipengele vimehamishwa kwa mafanikio</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Bendera za vipengele zimehamishwa kwa mafanikio</string>
   <string name="morphe_debug_feature_flags_manager_export_file_failed">Imeshindwa ku-export feature flags</string>
   <string name="morphe_debug_feature_flags_manager_import_file_success">Feature flags zimepakia, gusa Hifadhi ili kutumia</string>
-  <string name="morphe_debug_feature_flags_manager_import_file_failed">Imeshindikana kusoma faili</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Imeshindwa kusoma faili</string>
   <string name="morphe_debug_feature_flags_manager_bisect_title">Utafutaji wa binary</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Inatambua ni bendera ya sifa ipi inasababisha tabia ya programu.
 

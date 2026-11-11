@@ -43,7 +43,7 @@ For å bruke en eldre versjon må du &lt;b&gt;avinstallere&lt;/b&gt; Reddit og d
   <string name="morphe_screen_layout_title">Oppsett</string>
   <string name="morphe_copy_text_title">Kopier tekst</string>
   <string name="morphe_copy_text_summary">Tillater markering og kopiering av tekst i innlegg og kommentarer. Deaktiverer sammenlegging av kommentarer</string>
-  <string name="morphe_copy_text_user_dialog_message">Når du slår av kollapsing av kommentarer, vil \"Kopier tekst\"-funksjonen være aktiv</string>
+  <string name="morphe_copy_text_user_dialog_message">Sammenfelling av kommentarer slutter å fungere mens «Kopier tekst» er aktivert</string>
   <string name="morphe_custom_font_title">Egendefinert font</string>
   <string name="morphe_custom_font_summary">Last inn en egendefinert TTF- eller OTF-fontfil fra banen nedenfor. Å aktivere dette slår også av bruk av systemfont.</string>
   <string name="morphe_custom_font_file_path_title">Egendefinert fontfil</string>
@@ -96,7 +96,7 @@ For å bruke en eldre versjon må du &lt;b&gt;avinstallere&lt;/b&gt; Reddit og d
   <string name="morphe_redgifs_audio_title">Spill Redgifs med lyd</string>
   <string name="morphe_redgifs_audio_summary">Spiller den opprinnelige Redgifs-videoen i stedet for Reddit sin kopi, som ofte mangler lyd</string>
   <string name="morphe_redgifs_hd_title">Redgifs HD-kvalitet</string>
-  <string name="morphe_redgifs_hd_summary">Spiller Redgifs-videoer i HD. HD-videoer er større og kan pauses for å laste</string>
+  <string name="morphe_redgifs_hd_summary">Spiller Redgifs-videoer i HD. HD-videoer er større og kan stoppe midlertidig mens de lastes</string>
   <string name="morphe_download_location_title">Nedlastingssted</string>
   <string name="morphe_download_location_all_title">Alle kontoer</string>
   <string name="morphe_download_location_default_summary">Reddit\'s standard: bilder i Pictures/Reddit, videoer i Download</string>
@@ -110,7 +110,7 @@ For å bruke en eldre versjon må du &lt;b&gt;avinstallere&lt;/b&gt; Reddit og d
   <string name="morphe_download_location_folder_default_short">Standard</string>
   <string name="morphe_download_location_subfolder_hint">Undermappe</string>
   <string name="morphe_download_location_subfolder_tree_hint">Legg til undermapper med / i filnavnet</string>
-  <string name="morphe_download_location_browse">Søk…</string>
+  <string name="morphe_download_location_browse">Bla gjennom…</string>
   <string name="morphe_download_location_no_picker">Ingen mappevelger er tilgjengelig på denne enheten</string>
   <string name="morphe_download_location_pattern_title">Filnavn</string>
   <string name="morphe_download_location_pattern_hint">Reddit\'s filnavn</string>

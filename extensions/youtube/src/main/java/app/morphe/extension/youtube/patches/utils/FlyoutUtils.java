@@ -19,6 +19,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -62,6 +63,7 @@ import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.FeedVideoActionsPatch;
 import app.morphe.extension.youtube.patches.LocalQueuePatch;
+import app.morphe.extension.youtube.patches.LoopCountPatch;
 import app.morphe.extension.youtube.patches.PictureinPictureButtonPatch;
 import app.morphe.extension.youtube.patches.PostImageDownloadPatch;
 import app.morphe.extension.youtube.patches.PostTranslatePatch;
@@ -78,6 +80,7 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.videoplayer.ExportDownloadButton;
+import app.morphe.extension.youtube.videoplayer.LoopCountFlyoutButton;
 import app.morphe.extension.youtube.videoplayer.PictureinPictureButton;
 import app.morphe.extension.youtube.videoplayer.SaveToWatchLaterButton;
 import app.morphe.extension.youtube.videoplayer.ShortsDownloadButton;
@@ -320,9 +323,11 @@ public final class FlyoutUtils {
             getAsciiBytes("FEhistory")
     );
 
+    private static final int SECONDARY_CONTAINER_ID = ResourceUtils.getIdentifier(
+            ResourceType.ID, "list_item_secondary_container");
     // 20.21 has no container, and its secondary views are direct children of the item.
     private static final List<Integer> SECONDARY_VIEW_IDS = List.of(
-            ResourceUtils.getIdentifier(ResourceType.ID, "list_item_secondary_container"),
+            SECONDARY_CONTAINER_ID,
             ResourceUtils.getIdentifier(ResourceType.ID, "list_item_text_secondary"),
             ResourceUtils.getIdentifier(ResourceType.ID, "list_item_text_secondary_separator"),
             ResourceUtils.getIdentifier(ResourceType.ID, "list_item_icon_secondary")
@@ -353,9 +358,14 @@ public final class FlyoutUtils {
 
 
     /**
-     * If the elements were added to the open menu. Menus opened on top of it stay as they are.
+     * If the elements were added to the open menu. Menus opened on top of it, or opened before it closes,
+     * only get the elements of nested menus.
      */
     private static boolean flyoutElementsAdded;
+    /**
+     * The menu that the elements were last added to.
+     */
+    private static WeakReference<Object> flyoutElementsPanelRef = new WeakReference<>(null);
     private static Dialog flyoutDialog;
     private static PopupWindow flyoutPopupWindow;
     private static String flyoutVideoId = "";
@@ -545,8 +555,14 @@ public final class FlyoutUtils {
         Runnable addElements = () -> {
             if (!flyoutElementsAdded) {
                 flyoutElementsAdded = true;
+                flyoutElementsPanelRef = new WeakReference<>(flyoutPanel);
                 addFlyoutElements(flyoutPanel);
                 onFlyoutListBound(flyoutPanel);
+            } else if (flyoutElementsPanelRef.get() != flyoutPanel) {
+                // The menu of the additional player settings is shown before the player settings menu closes,
+                // so the state of the player settings menu is not reset.
+                flyoutElementsPanelRef = new WeakReference<>(flyoutPanel);
+                addNestedFlyoutElements(flyoutPanel);
             }
         };
 
@@ -610,12 +626,32 @@ public final class FlyoutUtils {
         }
 
         if (nextButtonIndex > 0) {
-            addFlyoutMenuItem(flyoutPanel, null, null, null, nextButtonIndex, true, null);
+            addFlyoutMenuItem(flyoutPanel, null, null, null, nextButtonIndex, true, null, null, true);
         }
 
         // Reset 'topFlyoutMenuVisible' field, once the buttons have been injected into the player's
         // overlay settings, to prevent them from also being added into nested menus.
         PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
+    }
+
+    /**
+     * Adds the elements of a menu opened on top of another menu, or opened before another menu closes.
+     * The state of the flyout is still the state of the other menu, so only elements that do not use it are added.
+     */
+    private static void addNestedFlyoutElements(Object flyoutPanel) {
+        Logger.printDebug(() -> "Adding the elements of a nested menu");
+        int nextButtonIndex = 0;
+
+        // The items of the other menu are not in this menu.
+        customItemTextRefs.clear();
+
+        if (LoopCountPatch.isPatchIncluded()) {
+            nextButtonIndex = LoopCountFlyoutButton.addFlyoutButton(flyoutPanel, nextButtonIndex, "", false);
+        }
+
+        if (nextButtonIndex > 0) {
+            addFlyoutMenuItem(flyoutPanel, null, null, null, nextButtonIndex, true, null, null, true);
+        }
     }
 
     /**
@@ -754,6 +790,15 @@ public final class FlyoutUtils {
             );
         }
 
+        if (LoopCountPatch.isPatchIncluded()) {
+            nextButtonIndex = LoopCountFlyoutButton.addFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    flyoutVideoId,
+                    PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()
+            );
+        }
+
         return nextButtonIndex;
     }
 
@@ -830,7 +875,7 @@ public final class FlyoutUtils {
             View.OnClickListener clickListener,
             int index
     ) {
-        return addFlyoutMenuItem(flyoutPanel, icon, text, clickListener, index, false, null);
+        return addFlyoutMenuItem(flyoutPanel, icon, text, clickListener, index, false, null, null, true);
     }
 
     /**
@@ -868,7 +913,26 @@ public final class FlyoutUtils {
             int index,
             FlyoutButtonResource buttonResource
     ) {
-        return addFlyoutMenuItem(flyoutPanel, icon, text, clickListener, index, false, buttonResource);
+        return addFlyoutMenuItem(flyoutPanel, icon, text, clickListener, index, false, buttonResource, null, true);
+    }
+
+    /**
+     * Adds a button with a view at its end, such as controls that change a value without closing the menu.
+     *
+     * @param endView View shown at the end of the button, in place of the secondary text and icon of the app items.
+     *                If the button is not enabled, the end view must disable its own controls.
+     * @param enabled If the button can be used.
+     */
+    public static int addFlyoutButton(
+            Object flyoutPanel,
+            @Nullable Drawable icon,
+            String text,
+            View.OnClickListener clickListener,
+            int index,
+            View endView,
+            boolean enabled
+    ) {
+        return addFlyoutMenuItem(flyoutPanel, icon, text, clickListener, index, false, null, endView, enabled);
     }
 
     private static int addFlyoutMenuItem(
@@ -878,7 +942,9 @@ public final class FlyoutUtils {
             @Nullable View.OnClickListener clickListener,
             int index,
             boolean isDivider,
-            @Nullable FlyoutButtonResource buttonResource
+            @Nullable FlyoutButtonResource buttonResource,
+            @Nullable View endView,
+            boolean enabled
     ) {
         try {
             FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel, 0);
@@ -933,7 +999,9 @@ public final class FlyoutUtils {
                                 icon,
                                 text,
                                 clickListener,
-                                buttonResource
+                                buttonResource,
+                                endView,
+                                enabled
                         )
                 );
             }
@@ -1070,8 +1138,14 @@ public final class FlyoutUtils {
                             if (menuRoot instanceof ViewGroup group &&
                                     group.getChildAt(0) instanceof LinearLayout linearLayout) {
                                 menuContainer = linearLayout;
-                                // Skip an index to inject the button after the bottom sheet handle.
-                                adjustedIndex += 1;
+                                // Skip an index to inject the button after the bottom sheet handle,
+                                // unless the handle is after the list, as in the menu of the additional
+                                // player settings. The handle is drawn over the top of the menu either way.
+                                final int childCount = linearLayout.getChildCount();
+                                if (childCount < 2 || !(linearLayout.getChildAt(0) instanceof ViewGroup)
+                                        || linearLayout.getChildAt(childCount - 1) instanceof ViewGroup) {
+                                    adjustedIndex += 1;
+                                }
                             }
                         }
                     }
@@ -1153,7 +1227,9 @@ public final class FlyoutUtils {
             @Nullable Drawable icon,
             String text,
             View.OnClickListener clickListener,
-            @Nullable FlyoutButtonResource buttonResource
+            @Nullable FlyoutButtonResource buttonResource,
+            @Nullable View endView,
+            boolean enabled
     ) {
         // Inflating the same layout the app uses for its own items keeps the row height,
         // paddings, font and icon size identical to them.
@@ -1204,6 +1280,14 @@ public final class FlyoutUtils {
 
         customButton.setOnClickListener(clickListener);
 
+        if (endView != null) {
+            addFlyoutButtonEndView(customButton, endView);
+        }
+
+        if (!enabled) {
+            setFlyoutButtonEnabled(customButton, false);
+        }
+
         if (buttonResource != null) {
             Future<?> resource = buttonResource.resource();
             if (resource.isDone()) {
@@ -1249,6 +1333,24 @@ public final class FlyoutUtils {
         return customButton;
     }
 
+    private static void addFlyoutButtonEndView(View button, View endView) {
+        // The secondary container is at the end of the item, and the item text ends before it.
+        if (button.findViewById(SECONDARY_CONTAINER_ID) instanceof ViewGroup secondaryContainer) {
+            for (int i = 0, count = secondaryContainer.getChildCount(); i < count; i++) {
+                secondaryContainer.getChildAt(i).setVisibility(View.GONE);
+            }
+            secondaryContainer.setVisibility(View.VISIBLE);
+            secondaryContainer.addView(endView, new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    Gravity.CENTER_VERTICAL
+            ));
+        } else {
+            // 20.21 has no container. The button is still usable with its click listener.
+            Logger.printDebug(() -> "Flyout button has no place for its end view");
+        }
+    }
+
     /**
      * Shows the button text again and enables the button if its resource can be used.
      * Can run more than once for the same button.
@@ -1263,6 +1365,18 @@ public final class FlyoutUtils {
             textView.setText(text);
         }
         setFlyoutButtonEnabled(button, buttonResource.onLoaded().test(textView));
+    }
+
+    /**
+     * Enables or disables a menu item that was added with an end view, after it was added.
+     */
+    public static void setFlyoutButtonWithEndViewEnabled(View endView, boolean enabled) {
+        // The end view is in the secondary container of the menu item.
+        if (endView.getParent() instanceof View secondaryContainer
+                && secondaryContainer.getId() == SECONDARY_CONTAINER_ID
+                && secondaryContainer.getParent() instanceof View button) {
+            setFlyoutButtonEnabled(button, enabled);
+        }
     }
 
     private static void setFlyoutButtonEnabled(View button, boolean enabled) {

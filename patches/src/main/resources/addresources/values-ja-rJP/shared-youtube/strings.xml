@@ -208,13 +208,15 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
   <string name="morphe_replace_links_with_shortener_title">共有リンクを youtu.be に変更</string>
   <string name="morphe_replace_links_with_shortener_summary">動画の共有 URL を短縮ドメインである youtu.be に固定します</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">デバッグログ (protocol buffer)</string>
-  <string name="morphe_debug_protobuffer_summary">開発者がアプリのコンポーネントを識別するための、より詳細なログ情報をデバッグログに追加します</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"この設定を有効にすると、一部の UI コンポーネントの画面上に表示されるテキストを含む追加のレイアウト データがログに記録されます。
+  <string name="morphe_debug_litho_title">Litho ログ記録</string>
+  <string name="morphe_debug_litho_entry_disabled">無効</string>
+  <string name="morphe_debug_litho_entry_path">パス</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">パスとバッファ</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho ロギングでは、一部の UI コンポーネントの画面上のテキストを含む、アプリのレイアウト コンポーネントがログに記録されます
 
-これは、カスタム フィルタを作成する際にコンポーネントを識別するのに役立ちます。
+これにより、カスタム フィルタを作成する際にコンポーネントを識別しやすくなります
 
-ただし、有効にすると、IP アドレスなどの一部のユーザーデータもログに記録されます"</string>
+ただし、IP アドレスなどの一部のユーザーデータもログに記録されます"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">カスタム フィルタ</string>
   <string name="morphe_custom_filter_screen_summary">任意のコンポーネントを非表示にするフィルタであるカスタム フィルタの設定をします</string>
@@ -282,7 +284,7 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">低評価数表示は一時的に利用できません (API タイムアウト)</string>
-  <string name="morphe_ryd_failure_connection_status_code">低評価数表示は利用できません (status %s)</string>
+  <string name="morphe_ryd_failure_connection_status_code">低評価数表示は利用できません (ステータス %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">低評価数表示は利用できません (API のレート制限)</string>
   <string name="morphe_ryd_failure_generic">低評価数表示は利用できません (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->

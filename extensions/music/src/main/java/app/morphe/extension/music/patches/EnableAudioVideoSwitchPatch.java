@@ -86,6 +86,11 @@ public final class EnableAudioVideoSwitchPatch {
     private static final String AUDIO_TYPE = "MUSIC_VIDEO_TYPE_ATV";
     private static final String VIDEO_TYPE = "MUSIC_VIDEO_TYPE_OMV";
 
+    /** Title score of a title that contains the other title. */
+    private static final double FULL_MATCH_SCORE = 1.0d;
+    /** Lower scores are usually a different song, so no switch is made. */
+    private static final double MIN_MATCH_SCORE = FULL_MATCH_SCORE;
+
     private static volatile boolean busy;
 
     private static volatile WeakReference<QueueAccess> queue = new WeakReference<>(null);
@@ -402,7 +407,7 @@ public final class EnableAudioVideoSwitchPatch {
                 best = item;
             }
         }
-        String resolved = best == null ? null : best.videoId;
+        String resolved = best == null || bestScore < MIN_MATCH_SCORE ? null : best.videoId;
         final double resolvedScore = bestScore;
         Logger.printDebug(() -> "audio/video switch: " + currentId + " (" + resolvedType
                 + ") -> " + resolved + " score: " + resolvedScore);
@@ -436,7 +441,7 @@ public final class EnableAudioVideoSwitchPatch {
     }
 
     private static double normalizeScore(String left, String right) {
-        if (left.contains(right) || right.contains(left)) return 1.0d;
+        if (left.contains(right) || right.contains(left)) return FULL_MATCH_SCORE;
         Set<String> a = new LinkedHashSet<>(Arrays.asList(left.split(" ")));
         Set<String> b = new LinkedHashSet<>(Arrays.asList(right.split(" ")));
         if (a.isEmpty() || b.isEmpty()) return 0.0d;

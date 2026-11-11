@@ -18,7 +18,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
-  <string name="morphe_splash_screen_style_title">Uchochezi wa kuanza</string>
+  <string name="morphe_splash_screen_style_title">Uhuishaji wa kuanza</string>
   <string name="morphe_splash_screen_style_entry_1">Imezimwa</string>
   <string name="morphe_splash_screen_style_entry_2">Rangi</string>
   <string name="morphe_splash_screen_style_entry_3">Rangi ya Morphe</string>
@@ -43,14 +43,14 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_entry_13">Njano nzito</string>
   <string name="morphe_theme_color_dark_entry_14">Chungwa nzito</string>
   <string name="morphe_theme_color_dark_entry_15">Nyekundu iliyokolea</string>
-  <string name="morphe_theme_color_dark_custom_title">Mandhari ya giza ya kiserikali</string>
-  <string name="morphe_theme_color_dark_custom_summary">Weka rangi ya mandhari ya mandhari ya giza</string>
+  <string name="morphe_theme_color_dark_custom_title">Mandhari ya giza maalum</string>
+  <string name="morphe_theme_color_dark_custom_summary">Weka rangi ya mandhari ya giza</string>
   <string name="morphe_theme_color_entry_1">Chaguo-msingi la programu</string>
   <string name="morphe_theme_color_entry_4">Material You (Kawaida)</string>
   <string name="morphe_theme_color_entry_5">Material You (Kuu)</string>
   <string name="morphe_theme_color_entry_6">Material You (Sekondari)</string>
   <string name="morphe_theme_color_entry_7">Material You (Tati)</string>
-  <string name="morphe_theme_color_custom_entry">Kiserikali</string>
+  <string name="morphe_theme_color_custom_entry">Maalum</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Pakua</string>
   <string name="morphe_download_mode_title">Hali ya kupakua</string>
@@ -68,7 +68,7 @@ Second \"item\" text"</string>
 Hakiki ikiwa jina la kifurushi ni sahihi na programu imesakinishwa"</string>
   <string name="morphe_external_downloader_empty_warning">Jina la kifurushi haliwezi kuwa tupu</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
-  <string name="morphe_custom_branding_name_entry_5">Kutengeneza</string>
+  <string name="morphe_custom_branding_name_entry_5">Maalum</string>
   <string name="morphe_custom_branding_icon_title">Aikoni ya programu</string>
   <string name="morphe_custom_branding_icon_entry_1">Asilia</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe nyeusi</string>
@@ -99,27 +99,27 @@ Ili kubadilisha aikoni kila mahali, patch tena na ubadilishe chaguo la patch la 
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Ghushi mkondo wa video</string>
   <string name="morphe_spoof_video_streams_screen_summary">Sanidi uigaji wa mteja ili kuzuia matatizo ya uchezaji</string>
-  <string name="morphe_spoof_video_streams_summary">"Hurekebisha matatizo ya uchezaji kwa watumiaji wengi kwa kuomba mkirimo wa video unaoendana
+  <string name="morphe_spoof_video_streams_summary">"Hurekebisha matatizo ya uchezaji kwa watumiaji wengi kwa kuomba mkondo wa video unaoendana
 
 Ikiwa wewe ni mtumiaji wa YouTube Premium, mpangilio huu unaweza usihitajike"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Hakuweza kupata mikondo yoyote ya kliyenti</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Klijenti ya kawaida haifanyi kazi</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Mteja chaguo-msingi haifanyi kazi</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s haikufanya kazi mara kadhaa mfululizo, lakini %2$s ilifanya.
 
-Je, uiweke %2$s kuwa klijenti ya kawaida?"</string>
+Je, uiweke %2$s kuwa mteja chaguo-msingi?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Badilisha</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Kuzima mpangilio huu kunaweza kusababisha matatizo ya uchezaji</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Jaribu kuwezesha: Ghushi utiririko wa video &gt; Ingia kwenye Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Jaribu kuwezesha: Ghushi mkondo wa video &gt; Ingia kwenye Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Kliyenti ya kawaida</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Ingia kwenye Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR inahitaji kuingia kando. Gusa hapa ili kuendelea</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hivi sasa umeingia kwenye Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ili kutumia kipengele hiki, badilisha \'Klijenti ya chaguo-msingi\' kuwa Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Ili kutumia kipengele hiki, badilisha \'Mteja chaguo-msingi\' kuwa Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Ingia kwenye Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Kuingia kwenye Android VR kunaweza kurekebisha matatizo ya uchezaji kwa baadhi ya watumiaji
 
@@ -134,8 +134,8 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
 3. Ingia kwenye Google ukihitajika. Ikiwa una akaunti nyingi, chagua akaunti hii ya YouTube
 4. Gusa 'Ruhusu YouTube VR' kupata ufikiaji
 5. Rudi kwenye programu hii baada ya kufika kwenye ujumbe wa 'Kifaa kimeunganishwa'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Imeshindikana kutoa kodi ya uanzishaji</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Imeshindikana kutoa tokeni ya uthibitishaji</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Imeshindwa kutoa msimbo wa uanzishaji</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Imeshindwa kutoa tokeni ya uthibitishaji</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Umeingia kikamilifu</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Uthibitisho umehifadhiwa
 
@@ -152,17 +152,17 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_oauth2_toast_invalid">Tokeni ya kuingia kwenye VR si sahihi, jaribu kuingia tena kwenye VR</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Vidhibiti vya vyombo vya habari vya taarifa</string>
-  <string name="morphe_notification_media_screen_summary">Badilisha vidhibiti vya uchezaji vinavyoonyeshwa kwenye skrini yako ya kufulia na paneli ya taarifa</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Ficha vitufe vya Nyuma &amp; Itakuja</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Huficha vitufe vya Nyuma na Itakuja katika taarifa ya vyombo vya habari, skrini ya kufulia, na vidhibiti vya spika za masikioni</string>
+  <string name="morphe_notification_media_screen_summary">Badilisha vidhibiti vya uchezaji vinavyoonyeshwa kwenye skrini yako ya kufunga na paneli ya taarifa</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ficha vitufe vya Nyuma &amp; Inayofuata</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Huficha vitufe vya Nyuma na Inayofuata katika taarifa ya vyombo vya habari, skrini ya kufunga, na vidhibiti vya spika za masikioni</string>
   <string name="morphe_disable_notification_media_seekbar_title">Zima seekbar</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Huzuia kuburuta seekbar kwenye skrini ya kufulia na paneli ya taarifa</string>
-  <string name="morphe_seek_notification_media_prev_next_title">Tafuta kwa vitufe vya Nyuma &amp; Fuata</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Huzuia kuburuta seekbar kwenye skrini ya kufunga na paneli ya taarifa</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Tafuta kwa vitufe vya Nyuma &amp; Inayofuata</string>
   <string name="morphe_seek_notification_media_prev_next_summary">Inabadilisha vidhibiti vya arifa ya media, skrini ya kufunga, na headphones ili kutafuta badala ya kubadilisha video</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Urefu wa kurudisha nyuma</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Sekunde za kurudisha nyuma kwa kifungo cha Nyuma</string>
   <string name="morphe_seek_notification_media_fast_forward_length_title">Urefu wa kusogeza mbele</string>
-  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekunde za kusogeza mbele kwa kifungo cha Fuata</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekunde za kusogeza mbele kwa kitufe cha Inayofuata</string>
   <string name="morphe_seek_notification_media_length_invalid">Urefu wa utafutaji lazima uwe kati ya sekunde 1 na %s. Inatumia chaguo-msingi</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Zima itifaki ya QUIC</string>
@@ -175,7 +175,7 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_skip_silence_title">Ruka ukimya</string>
   <string name="morphe_skip_silence_summary">Huruka kiotomatiki vipindi vya ukimya katika sauti ya video</string>
   <string name="morphe_skip_silence_minimum_pause_title">Urefu wa chini wa pause</string>
-  <string name="morphe_skip_silence_minimum_pause_summary">Ni mapumziko ya urefu huu au zaidi pekee ndiyo yanayofupishwa. Itaanza kufanya kazi video inayofuata inapoanza</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Ni mapumziko ya urefu huu au zaidi pekee ndiyo yanayofupishwa. Itaanza kutumika video inayofuata inapoanza</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proksi ya mtandao</string>
   <string name="morphe_proxy_screen_summary">Elekeza maombi ya mtandao yanayoungwa mkono kupitia proksi</string>
@@ -208,20 +208,22 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_replace_links_with_shortener_title">Badilisha viunganishi vya kushiriki kuwa youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Inalazimisha video kutumia muundo mfupi wa URL wa youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Itifaki ya kurekodi hitilafu ya protobuffer</string>
-  <string name="morphe_debug_protobuffer_summary">Huongeza taarifa za ziada za kurekodi kwa ajili ya watengenezaji ili kutambua vipengele vya programu</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Kuwasha mpangilio huu kutarekodi data ya ziada ya mpangilio, ikiwa ni pamoja na maandishi kwenye skrini kwa baadhi ya vipengele vya UI.
+  <string name="morphe_debug_litho_title">Kurekodi kwa Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Zimwa</string>
+  <string name="morphe_debug_litho_entry_path">Njia</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Njia na bahari</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Kurekodi kwa Litho hurekodi vipengele vya mpangilio vya programu, ikiwa ni pamoja na maandishi yanayoonekana kwenye skrini kwa baadhi ya vipengele vya UI.
 
-Hii inaweza kusaidia kutambua vipengele wakati wa kuunda vichujio vya kistaili.
+Hii inaweza kusaidia kutambua vipengele wakati wa kuunda vichujio vya kitalaamu.
 
-Hata hivyo, kuwasha hili pia kutarekodi baadhi ya data ya mtumiaji kama vile anwani yako ya IP"</string>
+Hata hivyo, hii pia itarekodi baadhi ya data za mtumiaji kama vile anwani yako ya IP"</string>
   <!-- Custom filter -->
-  <string name="morphe_custom_filter_screen_title">Kichujio cha kistaili</string>
-  <string name="morphe_custom_filter_screen_summary">Sanidi vichujio vya kistaili ili kuficha kipengele chochote</string>
-  <string name="morphe_custom_filter_title">Wezesha kichujio cha kistaili</string>
+  <string name="morphe_custom_filter_screen_title">Kichujio maalum</string>
+  <string name="morphe_custom_filter_screen_summary">Sanidi vichujio maalum ili kuficha kipengele chochote</string>
+  <string name="morphe_custom_filter_title">Wezesha kichujio maalum</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Orodha ya nyuzi za mjenzi wa njia ya kipengele za kuchuja, zilizotenganishwa kwa mistari mipya</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Chujio cha kawaida kisicho sahihi: %s</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Chujio maalum si sahihi: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Chujio la menyu ya mipangilio</string>
   <string name="morphe_settings_menu_filter_screen_summary">Ficha vipengele kwenye skrini ya kawaida ya mipangilio ya programu kwa jina lao linaloonekana</string>
@@ -250,7 +252,7 @@ Gusa hapa kupakua PotHelper"</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_expired_dialog_message">"Tokeni iliyojengwa ndani ya toleo hili la PotHelper haifanyi kazi tena
 
-Washa 'Ghushi mifuatisho ya video' ili kurekebisha uchezaji"</string>
+Washa 'Ghushi mkondo wa video' ili kurekebisha uchezaji"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Washa</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Ghushi toleo la programu</string>
@@ -262,10 +264,10 @@ Hii itabadilisha mwonekano na vipengele vya programu, lakini athari zisizojulika
 Ikiwa itazimwa baadaye, inapendekezwa kufuta data ya programu ili kuzuia hitilafu za UI"</string>
   <string name="morphe_spoof_app_version_target_title">Ghushi toleo la programu linalolengwa</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
-  <string name="morphe_app_refresh_rate_title">Kiwango cha kuburudisha cha programu</string>
+  <string name="morphe_app_refresh_rate_title">Kiwango cha kuonyesha upya cha programu</string>
   <string name="morphe_app_refresh_rate_default">Chaguo-msingi</string>
   <string name="morphe_app_refresh_rate_fps">%s FPS</string>
-  <string name="morphe_app_refresh_rate_type_title">Ghadhabishia kiwango cha kuburudisha</string>
+  <string name="morphe_app_refresh_rate_type_title">Badilisha kiwango cha kuonyesha upya</string>
   <string name="morphe_app_refresh_rate_type_entry_1">Daima</string>
   <string name="morphe_app_refresh_rate_type_entry_2">Uchezaji wa wima</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Uchezaji wa skrini nzima</string>
@@ -274,15 +276,15 @@ Ikiwa itazimwa baadaye, inapendekezwa kufuta data ya programu ili kuzuia hitilaf
   <string name="morphe_custom_font_type_title">Fonti</string>
   <string name="morphe_custom_font_type_entry_default">Kawaida</string>
   <string name="morphe_custom_font_type_entry_system">Fonti ya mfumo wa kifaa</string>
-  <string name="morphe_custom_font_type_entry_custom">Faili la fonti ya kiserikali</string>
-  <string name="morphe_custom_font_file_title">Faili la fonti ya kiserikali</string>
+  <string name="morphe_custom_font_type_entry_custom">Faili la fonti maalum</string>
+  <string name="morphe_custom_font_file_title">Faili la fonti maalum</string>
   <string name="morphe_custom_font_file_summary">Chagua faili la fonti la TTF au OTF</string>
   <string name="morphe_custom_font_file_invalid">Faili lililochaguliwa si fonti ya TTF au OTF</string>
-  <string name="morphe_custom_font_failed_to_load">Font ya kistaili haikuweza kupakiwa na imezimwa</string>
+  <string name="morphe_custom_font_failed_to_load">Fonti maalum haikuweza kupakiwa na imezimwa</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_ryd_failure_connection_timeout">Kutopenda hazipatikani kwa muda (API imekwepa muda)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Kutopenda hakupatikanika (hali %s)</string>
+  <string name="morphe_ryd_failure_connection_timeout">Kutopenda hazipatikani kwa muda (API imeisha muda)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Kutopenda hakupatikani (hali %s)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Kutopenda hazipatikani (kikomo cha API ya mteja)</string>
   <string name="morphe_ryd_failure_generic">Kutopenda hazipatikani (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
@@ -295,7 +297,7 @@ Ikiwa itazimwa baadaye, inapendekezwa kufuta data ya programu ili kuzuia hitilaf
   <string name="morphe_ryd_estimated_like_title">Onyesha makadirio ya kupenda</string>
   <string name="morphe_ryd_estimated_like_summary">Inaonyesha makadirio ya idadi ya kupenda kwenye video ambapo muundaji amezima kupenda</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Onyesha tahadhari za hitilafu ya muunganisho</string>
-  <string name="morphe_ryd_toast_on_connection_error_summary">Inaonyesha taarifa wakati seva ya Return YouTube Dislike inapopatikana</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary">Inaonyesha taarifa wakati seva ya Return YouTube Dislike haipatikani</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike hurudisha idadi ya kutopenda ambayo YouTube ilificha mnamo 2021. Idadi hizi zinatokana na data zilizohifadhiwa kabla ya kuondolewa na zinakadiriwa kwa video mpya kutokana na kura za watumiaji wake, hivyo ni za takriban na husasishwa kila baada ya siku chache
 
 ID ya video unayotazama hutumwa kwenye Return YouTube Dislike API, na likes na dislikes zako hutumwa bila utambulisho ili kuboresha makadirio"</string>
@@ -305,15 +307,15 @@ ID ya video unayotazama hutumwa kwenye Return YouTube Dislike API, na likes na d
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">Wakati wa majibu ya API, kiwango cha chini</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Wakati wa majibu ya API, kiwango cha juu</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Wakati wa majibu ya API, media ya mwisho</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislikes hazipatikani kwa muda - Kikomo cha kiwango cha API cha mteja kiko kwenye utendaji</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Kutopenda hazipatikani kwa muda - Kikomo cha kiwango cha API cha mteja kinatumika</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Kupata kura za API, idadi ya wito</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Hakuna wito wa mtandao uliofanywa</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">miito %s ya mtandao imefanyika</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API fetch votes, idadi ya timeouts</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Hakuna wito wa mtandao uliopata timeout</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">miito %s ya mtandao imekwisha muda</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s wito wa mtandao umefanywa</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Kupata kura za API, idadi ya muda uliopitwa</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Hakuna wito wa mtandao uliokwisha muda</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s wito wa mtandao umekwisha muda</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Vikomo vya kiwango cha mteja wa API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Hakuna vikomo vya kiwango cha mteja vilivyopatikana</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kikomo cha kiwango cha mteja kimekutana mara %s</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Kikomo cha kiwango cha mteja kimefikiwa mara %s</string>
   <string name="morphe_ryd_statistics_millisecond_text">milisekunde %s</string>
 </resources>

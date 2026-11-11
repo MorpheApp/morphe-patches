@@ -42,7 +42,7 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_entry_12">Tmavozelená</string>
   <string name="morphe_theme_color_dark_entry_13">Tmavožltá</string>
   <string name="morphe_theme_color_dark_entry_14">Tmavooranžová</string>
-  <string name="morphe_theme_color_dark_entry_15">Tmav červená</string>
+  <string name="morphe_theme_color_dark_entry_15">Tmavočervená</string>
   <string name="morphe_theme_color_dark_custom_title">Vlastné tmavé pozadie</string>
   <string name="morphe_theme_color_dark_custom_summary">Nastavte farbu pozadia tmavého motívu</string>
   <string name="morphe_theme_color_entry_1">Predvolené aplikáciou</string>
@@ -57,8 +57,8 @@ Second \"item\" text"</string>
   <string name="morphe_download_mode_entry_default">Predvolený</string>
   <string name="morphe_download_mode_entry_in_app">Sťahovanie v aplikácii</string>
   <string name="morphe_download_mode_entry_external">Externý sťahovač</string>
-  <string name="morphe_external_downloader_name_title">Názov balíka programu na stiahovanie</string>
-  <string name="morphe_external_downloader_name_summary">Názov balíka nainštalovanej aplikácie na externé stiahnutie</string>
+  <string name="morphe_external_downloader_name_title">Názov balíka programu na sťahovanie</string>
+  <string name="morphe_external_downloader_name_summary">Názov balíka nainštalovaného externého sťahovača</string>
   <string name="morphe_external_downloader_other_item_hint">Zadajte názov balíka</string>
   <string name="morphe_external_downloader_other_item">Ostatné</string>
   <string name="morphe_external_downloader_not_found_title">Aplikácia nie je nainštalovaná</string>
@@ -75,9 +75,9 @@ Skontrolujte, či je názov balíka správny a či je aplikácia nainštalovaná
   <string name="morphe_custom_branding_icon_entry_3">Morphe tmavá</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe svetlá</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
-  <string name="morphe_custom_branding_icon_entry_5">Morphe hra so svetlom</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe hra svetlá</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
-  <string name="morphe_custom_branding_icon_entry_6">Morphe hra s čiernou</string>
+  <string name="morphe_custom_branding_icon_entry_6">Morphe hra čierna</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Vlastná</string>
   <string name="morphe_custom_branding_icon_user_dialog_message">"Toto zmení ikonu zobrazenú vo vašom spúšťači aplikácií.
@@ -90,7 +90,7 @@ Toto nastavenie nezmení ikonu v žiadnom z týchto miest:
 
 Ak chcete zmeniť ikonu všade, znova aplikujte záplatu a zmeňte možnosť záplaty „Ikona aplikácie“"</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikona upozornenia</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Zmeniť ikonu aplikácie</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Zhodné s ikonou aplikácie</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe hra</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornenie Morphe</string>
@@ -170,7 +170,7 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
   <string name="morphe_disable_drc_audio_title">Zakázať zvuk DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Vynútiť pôvodný jazyk zvukovej stopy</string>
-  <string name="morphe_force_original_audio_summary">Vždy prehráva pôvodnú zvukovu stopu videa namiesto nadabovanej verzie</string>
+  <string name="morphe_force_original_audio_summary">Vždy prehráva pôvodnú zvukovú stopu videa namiesto nadabovanej verzie</string>
   <!-- misc.audio.silence.skipSilencePatch -->
   <string name="morphe_skip_silence_title">Preskočiť ticho</string>
   <string name="morphe_skip_silence_summary">Automaticky preskakuje tiché pauzy vo videu</string>
@@ -180,7 +180,7 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
   <string name="morphe_proxy_screen_title">Sieťový proxy</string>
   <string name="morphe_proxy_screen_summary">Smerujte podporované sieťové požiadavky cez proxy</string>
   <string name="morphe_proxy_enabled_title">Povoliť proxy</string>
-  <string name="morphe_proxy_enabled_summary">Smeruje sieťové požiadavky podporovaných trás cez konfigurovaný HTTP alebo HTTPS proxy server</string>
+  <string name="morphe_proxy_enabled_summary">Smeruje podporované sieťové požiadavky cez nakonfigurovaný HTTP alebo HTTPS proxy server</string>
   <string name="morphe_proxy_host_title">Proxy hostiteľ</string>
   <string name="morphe_proxy_host_summary">Názov hostiteľa alebo IP adresa proxy servera</string>
   <string name="morphe_proxy_port_title">Proxy port</string>
@@ -208,13 +208,15 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
   <string name="morphe_replace_links_with_shortener_title">Zmeniť odkazy na zdieľanie na youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Prinúti videá používať skrátený formát URL youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Debugovací protokol</string>
-  <string name="morphe_debug_protobuffer_summary">Pridáva dodatočné informácie o protokolovaní pre vývojárov na identifikáciu komponentov aplikácie</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Zapnutie tohto nastavenia zaznamená dodatočné údaje o rozložení, vrátane textu na obrazovke pre niektoré komponenty UI.
+  <string name="morphe_debug_litho_title">Zaznamenávanie Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Vypnutý</string>
+  <string name="morphe_debug_litho_entry_path">Cesta</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Cesta a vyrovnávacia pamäť</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho logging zaznamenáva rozloženia komponentov aplikácie, vrátane textu na obrazovke pre niektoré komponenty používateľského rozhrania.
 
-Toto môže pomôcť pri identifikácii komponentov pri vytváraní vlastných filtrov.
+To môže pomôcť pri identifikácii komponentov počas vytvárania vlastných filtrov.
 
-Avšak zapnutím tejto možnosti sa tiež budú zaznamenávať nejaké užívateľské údaje, ako napríklad vaša IP adresa"</string>
+Zaznamenajú sa však aj niektoré údaje používateľa, napríklad vaša IP adresa"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Vlastný filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurujte vlastné filtre na skrytie akejkoľvek zložky</string>
@@ -250,11 +252,11 @@ Klepnite sem na stiahnutie PotHelper"</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_expired_dialog_message">"Token vstavaný do tejto verzie PotHelper už nefunguje
 
-Zapnite 'Napodobňovať video streamy' na opravu prehrávania"</string>
+Zapnite 'Spoofovať video streamy' na opravu prehrávania"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Zapnúť</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falošovať verziu aplikácie</string>
-  <string name="morphe_spoof_app_version_summary">Oklame server, aby si myslel, žoužívaš staršiu verziu aplikácie na obnovenie staršieho vzhľadu.</string>
+  <string name="morphe_spoof_app_version_summary">Oklame server, aby si myslel, že používate staršiu verziu aplikácie, a tak obnoví staršie funkcie rozhrania</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"Verzia aplikácie bude predstieraná ako staršia verzia.
 
 Toto zmení vzhľad a funkcie aplikácie, ale môžu sa vyskytnúť neznáme vedľajšie účinky.
@@ -283,7 +285,7 @@ Ak bude neskôr vypnuté, odporúča sa vymazať dáta aplikácie, aby sa predi�
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Nedostupné (časový limit API vypršal)</string>
   <string name="morphe_ryd_failure_connection_status_code">Počet \'Nepáči sa mi\' nie je dostupný (stav %s)</string>
-  <string name="morphe_ryd_failure_client_rate_limit_requested">Počet \'Nepáči sa mi\' nie je dostupný (časový limit API vypršal)</string>
+  <string name="morphe_ryd_failure_client_rate_limit_requested">Počet \'Nepáči sa mi\' nie je dostupný (limit API klienta)</string>
   <string name="morphe_ryd_failure_generic">Počet \'Nepáči sa mi\' nie je dostupný (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skryté vlastníkom</string>

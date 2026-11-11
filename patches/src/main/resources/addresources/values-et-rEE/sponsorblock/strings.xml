@@ -22,9 +22,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_title">Kuva hääletamisnupp</string>
   <string name="morphe_sb_voting_button_summary">Lisab nupu segmentidele positiivse või negatiivse hääle andmiseks</string>
   <string name="morphe_sb_square_layout_title">Kasuta ruudukujulist paigutust</string>
-  <string name="morphe_sb_square_layout_summary">Kasutab SponsorBlocki nuppide ja juhtimiste jaoks nurkkasutust</string>
+  <string name="morphe_sb_square_layout_summary">Kasutab SponsorBlocki nuppide ja juhtelementide jaoks ruudukujulisi nurki</string>
   <string name="morphe_sb_compact_skip_button_title">Kasuta kompaktnuppu \"Mööda\"</string>
-  <string name="morphe_sb_compact_skip_button_summary">Vähendab nupu \"Mööda\" laialgust, et säästa ruumi</string>
+  <string name="morphe_sb_compact_skip_button_summary">Vähendab nupu \"Mööda\" laiust, et säästa ruumi</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Peida \"Jäta üle\" nupp automaatselt</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Peidab \"Jäta üle\" nupu mõne sekundi pärast selle asemel, et hoida seda kogu segmendi vältel nähtaval</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">\"Jäta üle\" nupu kestus</string>
@@ -44,7 +44,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_duration_9s">9 sekundit</string>
   <string name="morphe_sb_duration_10s">10 sekundit</string>
   <string name="morphe_sb_video_length_without_segments_title">Kuva video pikkust ilma segmentiteta</string>
-  <string name="morphe_sb_video_length_without_segments_summary">Käibemajutisse lisatud video kestusest lahutatakse kõik segmendid</string>
+  <string name="morphe_sb_video_length_without_segments_summary">Edenemisribal kuvatavast video kogukestusest lahutatakse kõik segmendid</string>
   <string name="morphe_sb_create_segment_category_title">Uute segmentide loomine</string>
   <string name="morphe_sb_create_new_segment_title">Kuva nupp \"Loo uus segment\"</string>
   <string name="morphe_sb_create_new_segment_summary">Lisab videopleierisse nupu, mis võimaldab esitada uusi SponsorBlock segmente</string>
@@ -62,7 +62,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_offline_segments_summary">Võimaldab võrguühenduseta olles allalaaditud videote segmentide vahelejätmist</string>
   <string name="morphe_sb_toast_on_connection_error_title">Kuva ühendusvigade teavitused</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Kuvab teavituse, kui SponsorBlock server ei ole saadaval</string>
-  <string name="morphe_sb_track_skip_count_title">Luba möödaminekute arvamist</string>
+  <string name="morphe_sb_track_skip_count_title">Luba möödaminekute arvestamine</string>
   <string name="morphe_sb_track_skip_count_summary">Saadab möödaminekute arvu SponsorBlocki edetabelisse, et jälgida säästetud aega</string>
   <string name="morphe_sb_min_segment_duration_title">Segmendi minimaalne kestus</string>
   <string name="morphe_sb_min_segment_duration_summary">Sellest väärtusest lühemaid segmente (sekundites) ei kuvata või need jäetakse vahele</string>
@@ -72,7 +72,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Privaatne kasutaja-ID peab olema vähemalt 30 märki pikkune</string>
   <string name="morphe_sb_api_url_title">Muuda API URL-i</string>
   <string name="morphe_sb_api_url_summary">Aadress, mida SponsorBlock kasutab serveriga suhtlemiseks</string>
-  <string name="morphe_sb_channel_whitelist_title">Kanalite valge nimekirja</string>
+  <string name="morphe_sb_channel_whitelist_title">Kanalite valge nimekiri</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock on lubatud nimekirja kanalite puhul keelatud</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Teavita valge nimekirja kanali puhul</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Kuva teavitus, kui SponsorBlock on valge nimekirja kanali puhul keelatud</string>
@@ -86,7 +86,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Teie SponsorBlock JSON-konfiguratsioon, mida saab importida/eksportida Morphe'i ja teistesse SponsorBlock platvormidesse
 
 Selle hulgas on teie privaatne kasutaja ID. Jagage seda targalt"</string>
-  <string name="morphe_sb_settings_import_successful">Seaded eksporteeriti edukalt</string>
+  <string name="morphe_sb_settings_import_successful">Seaded imporditi edukalt</string>
   <string name="morphe_sb_settings_import_failed">Importimine ebaõnnestus: %s</string>
   <string name="morphe_sb_settings_export_failed">Eksportimine ebaõnnestus: %s</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Teie seadistused sisaldavad privaatset SponsorBlock kasutaja ID-d.
@@ -95,21 +95,21 @@ Teie kasutaja ID on nagu parool ja seda ei tohi kunagi jagada"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Ära näita uuesti</string>
   <string name="morphe_sb_diff_segments_title">Muuda segmendi käitumist</string>
   <string name="morphe_sb_segments_sponsor">Sponsor</string>
-  <string name="morphe_sb_segments_sponsor_summary">Tasutatud reklaam, tasutatud viitused ja otsesed reklaamid. Mitte enese reklaamimiseks või tasuta reklaamiks põhjustele / loojatele / veebilehtedele / toitetele, mida nad poelavad</string>
+  <string name="morphe_sb_segments_sponsor_summary">Tasutatud reklaam, tasutatud viitused ja otsesed reklaamid. Mitte enese reklaamimiseks või tasuta reklaamiks põhjustele / loojatele / veebilehtedele / toodetele, mida nad armastavad</string>
   <string name="morphe_sb_segments_selfpromo">Tasuta / Enese reklaamimine</string>
-  <string name="morphe_sb_segments_selfpromo_summary">Sarnaselt Sponsorile, kuid tasuta / enese reklaamimiseks. Sisaldab jaotiseid merchendise, annetuste või teavet koostööpartnerite kohta</string>
+  <string name="morphe_sb_segments_selfpromo_summary">Sarnaselt Sponsorile, kuid tasuta / enese reklaamimiseks. Sisaldab jaotiseid kaupade, annetuste või teavet koostööpartnerite kohta</string>
   <string name="morphe_sb_segments_interaction">Interaktsiooni meeldetuletus (Telli)</string>
-  <string name="morphe_sb_segments_interaction_summary">Lühike meeldetuletus meelda jätta, tellida või jälgida sisu keskel. Kui see on pikk või puudutab midagi konkreetset, peaks see olema jaotises \"enese reklaam\"</string>
+  <string name="morphe_sb_segments_interaction_summary">Lühike meeldetuletus video meeldivaks märkimiseks, tellimiseks või jälgimiseks sisu keskel. Kui see on pikk või puudutab midagi konkreetset, peaks see olema jaotises \"enese reklaam\"</string>
   <string name="morphe_sb_segments_highlight">Olulisem osa</string>
   <string name="morphe_sb_segments_highlight_summary">Video osa, mida enamik inimesi otsib</string>
   <string name="morphe_sb_segments_intro">Vahepeatus / sissejuhatuse animatsioon</string>
   <string name="morphe_sb_segments_intro_summary">Intervall ilma tegeliku sisuga. Võib olla paus, staatiline kaader või korduv animatsioon. Ei sisalda infot sisaldavaid üleminekuid</string>
   <string name="morphe_sb_segments_outro">Lõppkaardid / lõpptiitrid</string>
   <string name="morphe_sb_segments_outro_summary">Lõpptiitrid või aeg, mil ilmuvad YouTube\'i lõppkaardid. Mitte info sisaldavate kokkuvõtete jaoks</string>
-  <string name="morphe_sb_segments_hook">Püütme / Tervitused</string>
+  <string name="morphe_sb_segments_hook">Kutse / Tervitused</string>
   <string name="morphe_sb_segments_hook_summary">Eelse video jutustatud treilerid, tervitused ja hüvastused. Ei sisalda jaotiseid, mis lisavad täiendavat sisu</string>
   <string name="morphe_sb_segments_preview">Eelvaade / Kokkuvõte</string>
-  <string name="morphe_sb_segments_preview_summary">Klippide kogumik, mis näitavad, mis on tulemas või mis juhtus videos või sarja teistes videotes, kus kogu info kordub elsewhere</string>
+  <string name="morphe_sb_segments_preview_summary">Klippide kogumik, mis näitavad, mis on tulemas või mis juhtus videos või sarja teistes videotes, kus kogu info kordub mujal</string>
   <string name="morphe_sb_segments_filler">Kõrvateemad / Jutud</string>
   <string name="morphe_sb_segments_filler_summary">Kõrvateemad või jutud, mida ei ole vaja video peasisu mõistmiseks. Ei sisalda osa, mis annavad konteksti või taustainfot</string>
   <string name="morphe_sb_segments_nomusic">Muusika: mitte-muusikaline osa</string>
@@ -193,8 +193,8 @@ See on juba olemas"</string>
 
 Kas on valmis esitama?"</string>
   <string name="morphe_sb_new_segment_confirm_submit">Saada</string>
-  <string name="morphe_sb_new_segment_start_is_before_end">Algus peab olema lõpust enne</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Märgi esmalt asukoht ajavõtl complimentsul</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">Algus peab olema enne lõppu</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Märgi esmalt asukoht ajaribal</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Vaata segmenti eelvaadet ja veendu, et see hüppab sujuvalt</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Muuda segmendi ajastust käsitsi</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Kas soovid muuta segmendi alguse või lõpu ajastust?</string>
@@ -220,7 +220,7 @@ Kui te ei soovi märgistust saata, puudutage nuppu Tühista ja märkige teine as
   <string name="morphe_sb_stats_submissions_summary">Puuduta siia, et näha oma segmente</string>
   <string name="morphe_sb_stats_saved_zero">SponsorBlock edetabel</string>
   <string name="morphe_sb_stats_saved">Oled päästanud inimesi &lt;b&gt;%s&lt;/b&gt; segmenti</string>
-  <string name="morphe_sb_stats_saved_summary_zero">Puuduta siia, et näha globaalseid statistikas ja peamisi panustajaid</string>
+  <string name="morphe_sb_stats_saved_summary_zero">Puuduta siia, et näha globaalset statistikat ja peamisi panustajaid</string>
   <string name="morphe_sb_stats_saved_summary">See on &lt;b&gt;%s&lt;/b&gt; nende elust.&lt;br&gt;Puuduta siia, et näha edetabelit</string>
   <string name="morphe_sb_stats_self_saved">Oled jätnud mööda &lt;b&gt;%s&lt;/b&gt; segmenti</string>
   <string name="morphe_sb_stats_self_saved_summary">See on &lt;b&gt;%s&lt;/b&gt;</string>

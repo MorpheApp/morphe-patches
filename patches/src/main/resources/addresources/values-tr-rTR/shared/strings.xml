@@ -39,7 +39,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_no_results_summary">Başka bir anahtar kelime deneyin</string>
   <string name="morphe_settings_search_recent_searches">Son aramalar</string>
   <string name="morphe_settings_search_remove_message">Arama geçmişinden kaldırılsın mı?</string>
-  <string name="morphe_settings_search_remove">Arama geçmişinden kaldırılsın mı</string>
+  <string name="morphe_settings_search_remove">Arama geçmişinden kaldır</string>
   <string name="morphe_settings_search_clear_history">Arama geçmişini temizle</string>
   <string name="morphe_settings_search_clear_history_message">Tüm arama geçmişini temizlemek istediğinizden emin misiniz?</string>
   <string name="morphe_settings_search_tips_title">Arama İpuçları</string>
@@ -83,7 +83,7 @@ Yeni dilleri çevirmek veya mevcut çevirileri iyileştirmek için morphe.softwa
   <string name="morphe_settings_about_links_website">Website</string>
   <string name="morphe_settings_about_links_donate">Bağış</string>
   <string name="morphe_settings_about_links_translations">Çeviriler</string>
-  <string name="morphe_settings_about_links_credits">Takdir</string>
+  <string name="morphe_settings_about_links_credits">Katkıda bulunanlar</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Güncel</string>
   <string name="morphe_settings_about_links_dev_header_update_available">Güncelleme mevcut</string>
   <string name="morphe_settings_about_contributors_current">MEVCUT GELİŞTİRME</string>
@@ -97,9 +97,10 @@ Yeni dilleri çevirmek veya mevcut çevirileri iyileştirmek için morphe.softwa
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Hata ayıklama</string>
   <string name="morphe_debug_screen_summary">Gelişmiş geliştirici seçeneklerini ve tanılama günlüklerini yapılandırın</string>
-  <string name="morphe_debug_title">Hata ayıklama kayıtlarını etkinleştir</string>
-  <string name="morphe_debug_stacktrace_title">Hata ayıklama kaydı stack trace</string>
-  <string name="morphe_debug_stacktrace_summary">Hataları belirlemeye yardımcı olması için hata ayıklama günlüklerine stack traces dahil edilir</string>
+  <string name="morphe_debug_level_title">Hata ayıklama kayıtları</string>
+  <string name="morphe_debug_level_entry_disabled">Devre dışı</string>
+  <string name="morphe_debug_level_entry_debug">Hata ayıklama</string>
+  <string name="morphe_debug_level_entry_verbose">Ayrıntılı</string>
   <string name="morphe_debug_toast_on_error_title">Morphe hatası durumunda uyarı göster</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Hata bildirimlerini kapatmak, tüm Morphe hata bildirimlerini gizler.
 

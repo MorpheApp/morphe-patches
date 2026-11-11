@@ -52,6 +52,15 @@ Second \"item\" text"</string>
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_litho_title">Litho பதிவு செய்தல்</string>
+  <string name="morphe_debug_litho_entry_disabled">முடக்கப்பட்டது</string>
+  <string name="morphe_debug_litho_entry_path">பாதை</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">பாதை மற்றும் பஃபர்</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho லாகிங், சில UI கூறுகளின் திரையிலுள்ள உரை உட்பட ஆப்பின் லேஅவுட் கூறுகளைப் பதிவு செய்கிறது.
+
+தனிப்பயன் வடிகட்டிகளை உருவாக்கும்போது கூறுகளை அடையாளம் காண இது உதவும்.
+
+இருப்பினும், இது உங்கள் IP முகவரி போன்ற சில பயனர் தரவுகளையும் பதிவு செய்யும்"</string>
   <!-- Custom filter -->
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->

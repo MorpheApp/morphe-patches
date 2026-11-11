@@ -88,7 +88,7 @@ Questa impostazione non cambierà l'icona in nessuna di queste posizioni:
 • Selettore di app 'Apri con'
 • Icona di Android Auto
 
-Per cambiare l'icona ovunque, esegui di nuovo la patch e modifica l'opzione della patch 'Icona app'.Rient"</string>
+Per cambiare l'icona ovunque, esegui di nuovo la patch e modifica l'opzione della patch 'Icona app'."</string>
   <string name="morphe_custom_branding_notification_icon_title">Icona di notifica</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Abbina all\'icona dell\'app</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
@@ -157,9 +157,9 @@ Per accedere, premi su Continua di seguito"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Nasconde i pulsanti Precedente e Successivo nelle notifiche multimediali, nella schermata di blocco e per i controlli delle cuffie</string>
   <string name="morphe_disable_notification_media_seekbar_title">Disattiva barra di avanzamento</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Impedisce di trascinare la barra di avanzamento sulla schermata di blocco e nel pannello delle notifiche</string>
-  <string name="morphe_seek_notification_media_prev_next_title">Cerca con pulsanti <b>Precedente &amp; Successivo</b></string>
-  <string name="morphe_seek_notification_media_prev_next_summary">Le modifiche controllano la notifica multimediale, lo schermo di blocco e le cuffie per cercare invece di cambiare video</string>
-  <string name="morphe_seek_notification_media_rewind_length_title">Durata rimandi</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Cerca con pulsanti Precedente &amp; Successivo</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">I controlli della notifica multimediale, della schermata di blocco e delle cuffie cercano invece di cambiare video</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Durata riavvolgimento</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Secondi da retrocedere con il pulsante Precedente</string>
   <string name="morphe_seek_notification_media_fast_forward_length_title">Durata avanzamento rapido</string>
   <string name="morphe_seek_notification_media_fast_forward_length_summary">Secondi da avanzare rapidamente con il pulsante Successivo</string>
@@ -208,13 +208,15 @@ Per accedere, premi su Continua di seguito"</string>
   <string name="morphe_replace_links_with_shortener_title">Cambia i link di condivisione in youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Forza i video a utilizzare il formato URL abbreviato youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Buffer di protocollo per log</string>
-  <string name="morphe_debug_protobuffer_summary">Aggiunge informazioni di registrazione aggiuntive per gli sviluppatori, al fine di identificare i componenti dell\'app</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"L'abilitazione di questa impostazione registrerà dati di layout aggiuntivi, incluso il testo su schermo per alcuni componenti dell'interfaccia utente.
+  <string name="morphe_debug_litho_title">Log di Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Disattivato</string>
+  <string name="morphe_debug_litho_entry_path">Percorso</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Percorso e buffer</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Il logging di Litho registra i componenti di layout dell'app, incluso il testo su schermo per alcuni componenti dell'interfaccia utente.
 
-Questo potrebbe aiutare a identificare i componenti durante la creazione di filtri personalizzati.
+Questo può aiutare a identificare i componenti durante la creazione di filtri personalizzati.
 
-Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'utente come l'indirizzo IP"</string>
+Tuttavia, verranno registrati anche alcuni dati dell'utente, come l'indirizzo IP"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Filtro personalizzato</string>
   <string name="morphe_custom_filter_screen_summary">Configura filtri personalizzati per nascondere qualsiasi componente</string>
@@ -227,7 +229,7 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
   <string name="morphe_settings_menu_filter_screen_summary">Nascondi elementi nella schermata delle impostazioni dell\'app standard in base al loro nome visibile</string>
   <string name="morphe_settings_menu_filter_picker_empty">Apri la schermata delle impostazioni dell\'app standard una volta per popolare l\'elenco</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Rimuovi il messaggio di avviso per la visione</string>
+  <string name="morphe_remove_viewer_discretion_dialog_title">Rimuovi l\'avviso sui contenuti sensibili</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Questo non aggira la restrizione di età. Le accetta solo automaticamente</string>
   <!-- misc.potoken.poTokenProviderPatch -->
   <string name="morphe_potoken_provider_screen_title">Provider di PoToken</string>

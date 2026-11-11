@@ -62,16 +62,16 @@ Second \"item\" text"</string>
   <string name="morphe_sb_offline_segments_summary">Permite sărirea peste segmentele videoclipurilor descărcate în modul offline</string>
   <string name="morphe_sb_toast_on_connection_error_title">Afișează alerte de eroare de conexiune</string>
   <string name="morphe_sb_toast_on_connection_error_summary">Afișează o notificare atunci când serverul SponsorBlock este indisponibil</string>
-  <string name="morphe_sb_track_skip_count_title">Activați omiterea peste urmărire</string>
+  <string name="morphe_sb_track_skip_count_title">Activează urmărirea numărului de salturi</string>
   <string name="morphe_sb_track_skip_count_summary">Trimite numărul de salturi către clasamentul SponsorBlock pentru a urmări cât timp se economisește</string>
   <string name="morphe_sb_min_segment_duration_title">Durata minimă a segmentului</string>
-  <string name="morphe_sb_min_segment_duration_summary">Segmente mai scurte decat aceasta valoare (in secunde) nu vor fi afisate sau omise</string>
+  <string name="morphe_sb_min_segment_duration_summary">Segmentele mai scurte decât această valoare (în secunde) nu vor fi afișate sau omise</string>
   <string name="morphe_sb_min_segment_duration_invalid">Durată de timp invalidă</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_title">ID-ul tău privat de utilizator</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Acesta trebuie să fie păstrat. Este ca o parolă și nu ar trebui împartășit cu nimeni. Daca cineva îl are, vă poate imita identitatea</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Acesta trebuie păstrat privat. Este ca o parolă și nu ar trebui să fie împărtășit cu nimeni. Dacă cineva îl are, te poate imita</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">ID-ul utilizatorului privat trebuie să aibă cel puțin 30 de caractere</string>
   <string name="morphe_sb_api_url_title">Schimbă URL-ul API</string>
-  <string name="morphe_sb_api_url_summary">SponsorBlocul de adresă utilizează pentru a efectua apeluri către server</string>
+  <string name="morphe_sb_api_url_summary">Adresa pe care SponsorBlock o folosește pentru a face apeluri către server</string>
   <string name="morphe_sb_channel_whitelist_title">Listă albă de canale</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock este dezactivat pentru canalele din lista albă</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Notifică la canalul din lista albă</string>
@@ -99,13 +99,13 @@ ID-ul tău de utilizator este ca o parolă și nu ar trebui niciodată partajat"
   <string name="morphe_sb_segments_selfpromo">Promovare neplătită/autopromovare</string>
   <string name="morphe_sb_segments_selfpromo_summary">Similar cu Sponsor, cu excepția promovărilor neplătite sau proprii. Include secțiuni despre produse, donații sau informații despre cu cine au colaborat</string>
   <string name="morphe_sb_segments_interaction">Reamintire interactiune (Abonati)</string>
-  <string name="morphe_sb_segments_interaction_summary">Un scurt memento pentru a vă plăcea, abonați sau urmăriți-le în mijlocul conținutului. Dacă este lung sau este vorba despre ceva specific, acesta ar trebui în schimb autopromovat</string>
+  <string name="morphe_sb_segments_interaction_summary">Un scurt memento să apreciezi, să te abonezi sau să urmărești canalul în mijlocul conținutului. Dacă este lung sau este vorba despre ceva specific, acesta ar trebui încadrat la autopromovare</string>
   <string name="morphe_sb_segments_highlight">Evidențiere</string>
   <string name="morphe_sb_segments_highlight_summary">Partea din video pe care majoritatea oamenilor o caută</string>
   <string name="morphe_sb_segments_intro">Intermizare/Animație Intro</string>
   <string name="morphe_sb_segments_intro_summary">Un interval fără conținut real. Poate fi o pauză, un cadru static sau o repetare a animației. Nu include tranziții care conțin informații</string>
   <string name="morphe_sb_segments_outro">Carduri finale / Credite</string>
-  <string name="morphe_sb_segments_outro_summary">Credite sau atunci când apar cardurile Youtube . Nu sunt concluzii cu informaţii</string>
+  <string name="morphe_sb_segments_outro_summary">Credite sau atunci când apar cardurile YouTube. Nu sunt concluzii cu informații</string>
   <string name="morphe_sb_segments_hook">Introducere / Salutări</string>
   <string name="morphe_sb_segments_hook_summary">Trailere narate pentru videoclipul următor, salutări și despărțiri. Nu include secțiuni care adaugă conținut suplimentar</string>
   <string name="morphe_sb_segments_preview">Prezentare generală / Rezumat</string>
@@ -127,7 +127,7 @@ ID-ul tău de utilizator este ca o parolă și nu ar trebui niciodată partajat"
   <string name="morphe_sb_skip_button_hook">Omite introducerea</string>
   <string name="morphe_sb_skip_button_preview_beginning">Sari peste previzualizare</string>
   <string name="morphe_sb_skip_button_preview_middle">Sari peste previzualizare</string>
-  <string name="morphe_sb_skip_button_preview_end">Sari peste recap</string>
+  <string name="morphe_sb_skip_button_preview_end">Sari peste rezumat</string>
   <string name="morphe_sb_skip_button_filler">Omite tangenta</string>
   <string name="morphe_sb_skip_button_nomusic">Omite non-muzica</string>
   <string name="morphe_sb_skip_button_unsubmitted">Sari peste segment</string>
@@ -138,11 +138,11 @@ ID-ul tău de utilizator este ca o parolă și nu ar trebui niciodată partajat"
   <string name="morphe_sb_skipped_intro_beginning">Introducere sărită</string>
   <string name="morphe_sb_skipped_intro_middle">Intermisiune sărită</string>
   <string name="morphe_sb_skipped_intro_end">Intermisiune sărită</string>
-  <string name="morphe_sb_skipped_outro">Sutro sărit</string>
+  <string name="morphe_sb_skipped_outro">Final sărit</string>
   <string name="morphe_sb_skipped_hook">Introducerea omisă</string>
   <string name="morphe_sb_skipped_preview_beginning">Previzualizare sărită</string>
   <string name="morphe_sb_skipped_preview_middle">Previzualizare sărită</string>
-  <string name="morphe_sb_skipped_preview_end">Amplasare sărită</string>
+  <string name="morphe_sb_skipped_preview_end">Rezumat sărit</string>
   <string name="morphe_sb_skipped_filler">Tangenta omisă</string>
   <string name="morphe_sb_skipped_nomusic">S-a sărit o secţiune non-muzică</string>
   <string name="morphe_sb_skipped_unsubmitted">Salt netrimis</string>
@@ -168,14 +168,14 @@ Există deja"</string>
   <string name="morphe_sb_vote_failed_unknown_error">Nu se poate vota pentru segment (stare: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Nu se poate vota pentru segment: %s</string>
   <string name="morphe_sb_vote_upvote">Votează</string>
-  <string name="morphe_sb_vote_downvote">Retrogradeaza</string>
+  <string name="morphe_sb_vote_downvote">Votează negativ</string>
   <string name="morphe_sb_vote_category">Schimbă categoria</string>
-  <string name="morphe_sb_vote_no_segments">Nu sunt segmente pentru a vota pentru</string>
+  <string name="morphe_sb_vote_no_segments">Nu există segmente pentru care să votezi</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <string name="morphe_sb_vote_segment_time_to_from">%1$s până la %2$s</string>
   <string name="morphe_sb_new_segment_choose_category">Alege categoria segmentului</string>
   <string name="morphe_sb_new_segment_disabled_category">Categoria este dezactivată în setări. Activați categoria pentru a trimite</string>
-  <string name="morphe_sb_new_segment_title">Segment de sponsorBlock nou</string>
+  <string name="morphe_sb_new_segment_title">Segment SponsorBlock nou</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">Setați %s ca început sau sfârșit al unui nou segment?</string>
   <string name="morphe_sb_new_segment_mark_start">Pornire</string>
   <string name="morphe_sb_new_segment_mark_end">Sfârșit</string>
@@ -208,7 +208,7 @@ Dacă nu trimiteți o evidențiere, apăsați Anulare și marcați a doua locaț
   <string name="morphe_sb_new_segment_highlight_submit">Trimite evidențiere</string>
   <string name="morphe_sb_stats_title">Statistici</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
-  <string name="morphe_sb_stats_connection_failure">Statisticile nu sunt disponibile temporar (API este defect)</string>
+  <string name="morphe_sb_stats_connection_failure">Statisticile nu sunt disponibile temporar (API nu funcționează)</string>
   <string name="morphe_sb_stats_loading">Se încarcă</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock este dezactivat</string>
   <string name="morphe_sb_stats_username">Numele de utilizator: &lt;b&gt;%s&lt;/b&gt;</string>

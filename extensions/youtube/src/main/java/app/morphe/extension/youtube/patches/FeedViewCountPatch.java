@@ -650,7 +650,8 @@ public final class FeedViewCountPatch {
      * The view count of the element is kept, so the badge shows it as soon as the thumbnail is shown.
      * <p>
      * Only the text shown below the title is used, such as "Channel  4.7M  2 days ago":
-     * the text with a part that the element also has as a text of its own, such as "4.7M".
+     * the text with a part that the element also has as a text of its own, such as "4.7M",
+     * or whose parts are also in the text read by accessibility services.
      * Usually called off the main thread.
      *
      * @param isShort If the element is of a Short, whose view count is in the metadata of the element.
@@ -752,12 +753,65 @@ public final class FeedViewCountPatch {
                         break;
                     }
                 }
+                // The text of the count alone is only in the command that opens the video,
+                // which some accounts and videos don't get. Else the text that accessibility services
+                // read is used, such as "Channel, 4.7 million views, 2 days ago": it has each segment,
+                // or else its number, in the same order. It is not a copy of this text, such as the
+                // label of the menu, which has the title. A count written in words, such as "thousand",
+                // is found only by the text of the count alone.
+                boolean spoken = false;
                 if (!hasCountText) {
-                    continue;
+                    final int last = segments.size() - 1;
+                    String start = text.substring(segments.get(0).start, segments.get(1).end);
+                    String end = text.substring(segments.get(last - 1).start, segments.get(last).end);
+                    for (ProtoNode other : textNodes) {
+                        String otherText = other.getText();
+                        if (other == node || otherText.length() > 2 * MAX_SUBTITLE_LENGTH
+                                || otherText.contains(start) || otherText.contains(end)) {
+                            continue;
+                        }
+                        Matcher otherNumber = NUMBER_PATTERN.matcher(otherText);
+                        int from = 0;
+                        for (Segment segment : segments) {
+                            // The same segment, such as the channel, or else its number, such as of "4.7M".
+                            // Both must be whole words, not a part of a longer word or number, such as of a URL.
+                            String part = segment.text;
+                            int found = otherText.indexOf(part, from);
+                            while (found >= 0
+                                    && ((found > 0 && Character.isLetterOrDigit(otherText.codePointBefore(found)))
+                                    || (found + part.length() < otherText.length()
+                                    && Character.isLetterOrDigit(otherText.codePointAt(found + part.length()))))) {
+                                found = otherText.indexOf(part, found + 1);
+                            }
+                            Matcher number = NUMBER_PATTERN.matcher(segment.text);
+                            if (found < 0 && number.find()) {
+                                part = number.group();
+                                found = otherText.indexOf(part, from);
+                                while (found >= 0
+                                        && ((found > 0 && Character.isLetterOrDigit(otherText.codePointBefore(found)))
+                                        || !(otherNumber.region(found, otherText.length()).lookingAt()
+                                        && otherNumber.end() == found + part.length()))) {
+                                    found = otherText.indexOf(part, found + 1);
+                                }
+                            }
+                            if (found < 0) {
+                                from = -1;
+                                break;
+                            }
+                            from = found + part.length();
+                        }
+                        if (from >= 0) {
+                            spoken = true;
+                            break;
+                        }
+                    }
+                    if (!spoken) {
+                        continue;
+                    }
                 }
                 ViewCountMatch match = findViewCount(text, locale);
-                if (match != null
-                        && texts.contains(SPACES_PATTERN.matcher(match.parsed.count).replaceAll(""))) {
+                if (match != null && (spoken
+                        || texts.contains(SPACES_PATTERN.matcher(match.parsed.count).replaceAll("")))) {
                     synchronized (videoViewCounts) {
                         videoViewCounts.put(videoId, new ElementViewCount(match.parsed.count, badgeTexts));
                     }
@@ -1051,10 +1105,16 @@ public final class FeedViewCountPatch {
         /** The thumbnail, or null if not found. */
         @Nullable
         public final Rect thumbnail;
+        /**
+         * If the duration badge is placed as high as it can be, because what it's placed from is not drawn yet,
+         * such as the title of a Short that is only partly shown. It is placed again once that is drawn.
+         */
+        public final boolean estimated;
 
-        public ThumbnailFrame(@Nullable Rect duration, @Nullable Rect thumbnail) {
+        public ThumbnailFrame(@Nullable Rect duration, @Nullable Rect thumbnail, boolean estimated) {
             this.duration = duration;
             this.thumbnail = thumbnail;
+            this.estimated = estimated;
         }
     }
 
@@ -1075,7 +1135,7 @@ public final class FeedViewCountPatch {
                 thumbnail = new Rect(0, 0, host.getWidth(), squareBottom);
             }
         }
-        return new ThumbnailFrame(info.duration, thumbnail);
+        return new ThumbnailFrame(info.duration, thumbnail, false);
     }
 
     /**
@@ -1154,7 +1214,7 @@ public final class FeedViewCountPatch {
                     // such as while only the thumbnail of a card that enters the list is shown.
                     String cardVideoId = videoId != null
                             ? videoId
-                            : FeedVideoCardsPatch.findVideoIdByDescription(host);
+                            : FeedVideoCardsPatch.findVideoIdByDescription(host, false);
                     if (cardVideoId != null && info.badgeText != null) {
                         ElementViewCount element;
                         synchronized (videoViewCounts) {

@@ -19,7 +19,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
   <string name="morphe_splash_screen_style_title">Animació d\'inici</string>
-  <string name="morphe_splash_screen_style_entry_1">Deshabilitat</string>
+  <string name="morphe_splash_screen_style_entry_1">Desactivada</string>
   <string name="morphe_splash_screen_style_entry_2">Color</string>
   <string name="morphe_splash_screen_style_entry_3">Morphe Color</string>
   <string name="morphe_splash_screen_style_entry_4">Monocrom</string>
@@ -39,12 +39,12 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_entry_9">YouTube clàssic</string>
   <string name="morphe_theme_color_dark_entry_10">Rosa fosc</string>
   <string name="morphe_theme_color_dark_entry_11">Blau fosc</string>
-  <string name="morphe_theme_color_dark_entry_12">Verd fosca</string>
+  <string name="morphe_theme_color_dark_entry_12">Verd fosc</string>
   <string name="morphe_theme_color_dark_entry_13">Groc fosc</string>
-  <string name="morphe_theme_color_dark_entry_14">Taronja fosca</string>
-  <string name="morphe_theme_color_dark_entry_15">Vermell fosca</string>
-  <string name="morphe_theme_color_dark_custom_title">Fons fosca personalitzat</string>
-  <string name="morphe_theme_color_dark_custom_summary">Estableix el color de fons del tema fosca</string>
+  <string name="morphe_theme_color_dark_entry_14">Taronja fosc</string>
+  <string name="morphe_theme_color_dark_entry_15">Vermell fosc</string>
+  <string name="morphe_theme_color_dark_custom_title">Fons fosc personalitzat</string>
+  <string name="morphe_theme_color_dark_custom_summary">Estableix el color de fons del tema fosc</string>
   <string name="morphe_theme_color_entry_1">Per defecte de l\'app</string>
   <string name="morphe_theme_color_entry_4">Material You (Neutre)</string>
   <string name="morphe_theme_color_entry_5">Material You (Primari)</string>
@@ -73,7 +73,7 @@ Verifiqueu que el nom del paquet sigui correcte i que l'aplicació estigui insta
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe negre</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe fosc</string>
-  <string name="morphe_custom_branding_icon_entry_4">Llum Morphe</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe clar</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_5">Morphe play clar</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
@@ -90,7 +90,7 @@ Aquest ajust no canviarà la icona en cap d'aquestes ubicacions:
 
 Per canviar la icona a tot arreu, aplica el patch novament i canvia l'opció de patch 'Icona de l'app'"</string>
   <string name="morphe_custom_branding_notification_icon_title">Icona de notificació</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Coincidència amb la icona de l\'app</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Igual que la icona de l\'app</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Avís de Morphe</string>
@@ -99,7 +99,7 @@ Per canviar la icona a tot arreu, aplica el patch novament i canvia l'opció de 
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Simular fluxos de vídeo</string>
   <string name="morphe_spoof_video_streams_screen_summary">Configura la simulació del client per evitar problemes de reproducció</string>
-  <string name="morphe_spoof_video_streams_summary">"Soluciona problemes de reproducció per a la majoria d'usuaris sol·licitant un flux de vídeo compatible
+  <string name="morphe_spoof_video_streams_summary">"Corregeix problemes de reproducció per a la majoria d'usuaris sol·licitant un flux de vídeo compatible
 
 Si sou un usuari de YouTube Premium, potser aquest ajust no sigui necessari"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">No s\'ha pogut recuperar cap flux de client</string>
@@ -112,7 +112,7 @@ Defineix %2$s com el client per defecte?"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Desactivar aquest ajust pot causar problemes de reproducció</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Intenti d\'activar: Simulació de fluxos de vídeo &gt; Iniciar sessió a Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Proveu d\'activar: Simular fluxos de vídeo &gt; Iniciar sessió a Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client per defecte</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Inici de sessió a Android VR</string>
@@ -130,36 +130,36 @@ Per iniciar la sessió, premeu continuar a continuació"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Codi d'activació: %s
 
 1. Toqueu 'Obre el lloc web' a sota per obrir el lloc web 'Connecta un dispositiu'
-2. Engaltréu des del porta papers (o escriviu) el codi d'activació indicat a dalt
+2. Enganxeu des del portapapers (o escriviu) el codi d'activació indicat a dalt
 3. Inicia la sessió a Google si se n'hi sol·licita. Si teniu diversos comptes, trieu aquest compte de YouTube
 4. Toqueu 'Permet l'accés a YouTube VR'
 5. Torneu a aquesta aplicació després de veure el missatge 'Dispositiu connectat'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">S\'ha produït un error en emissió el codi d\'activació</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">S\'ha produït un error en emissió del token d\'autenticació</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">S\'ha produït un error en emetre el codi d\'activació</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">S\'ha produït un error en emetre el token d\'autenticació</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">S\'ha iniciat la sessió correctament</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autenticació guardada
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autenticació desada
 
 • La configuració de Morphe no importarà/exportarà l'autenticació d'Android VR
 • Si aquesta aplicació no s'utilitza durant 6 mesos, Google eliminarà aquesta autenticació
 • Haurà de tornar a iniciar la sessió si canvia la contrasenya de Google o desregistra aquest dispositiu de la configuració de Google"</string>
-  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 no està disponible temporalment (esvaeix el temps d\'espera de l\'API)</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 no està disponible temporalment (s\'ha esgotat el temps d\'espera de l\'API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">La sessió de VR d\'Android ha caducat, intenteu iniciar sessió a VR novament</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 no està disponible temporalment (estat %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 no està disponible temporalment</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">No es pot iniciar sessió a VR, l\'autenticació del lloc web no s\'ha aprovat</string>
   <string name="morphe_oauth2_connection_failure_auth_error">No es pot iniciar sessió a VR: %s</string>
   <string name="morphe_oauth2_toast_reset">S\'ha tancat la sessió d\'Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Token d\'inici de sessió de VR invàlid, intentiu iniciar sessió a VR novament</string>
+  <string name="morphe_oauth2_toast_invalid">Token d\'inici de sessió de VR invàlid, intenteu iniciar sessió a VR novament</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Controls de mitjans de la notificació</string>
   <string name="morphe_notification_media_screen_summary">Personalitza els controls de reproducció que apareixen a la pantalla de bloqueig i al panell de notificacions</string>
   <string name="morphe_hide_notification_media_prev_next_title">Ocultar els botons Anterior &amp; Següent</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Oculta els botons Anterior i Següent a la notificació de mitjans, a la pantalla de bloqueig i als controls dels auriculars</string>
   <string name="morphe_disable_notification_media_seekbar_title">Desactivar la barra de cerca</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Impedix d\'arrossegar la barra de cerca a la pantalla de bloqueig i al panell de notificacions</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Impedeix d\'arrossegar la barra de cerca a la pantalla de bloqueig i al panell de notificacions</string>
   <string name="morphe_seek_notification_media_prev_next_title">Desplaçar amb els botons Anterior &amp; Següent</string>
   <string name="morphe_seek_notification_media_prev_next_summary">Canvia els controls de la notificació de mitjans, la pantalla de bloqueig i els auriculars per desplaçar-se en lloc de canviar de vídeo</string>
-  <string name="morphe_seek_notification_media_rewind_length_title">Longitud del retrocess</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Longitud del retrocés</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Segons per retrocedir amb el botó Anterior</string>
   <string name="morphe_seek_notification_media_fast_forward_length_title">Longitud de l\'avanç ràpid</string>
   <string name="morphe_seek_notification_media_fast_forward_length_summary">Segons per avançar ràpidament amb el botó Següent</string>
@@ -175,12 +175,12 @@ Per iniciar la sessió, premeu continuar a continuació"</string>
   <string name="morphe_skip_silence_title">Omitir el silenci</string>
   <string name="morphe_skip_silence_summary">Omet automàticament les pauses silencioses en l\'àudio del vídeo</string>
   <string name="morphe_skip_silence_minimum_pause_title">Longitud mínima de la pausa</string>
-  <string name="morphe_skip_silence_minimum_pause_summary">Nomes s\'acurtiran les pauses que siguin almenys d\'aquesta durada. Tindrà efecte quan comenci el següent vídeo</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Només s\'acurtiran les pauses que siguin almenys d\'aquesta durada. Tindrà efecte quan comenci el següent vídeo</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy de xarxa</string>
-  <string name="morphe_proxy_screen_summary">Enrutar les sol·licituds de xarxa compatibles a través d\'un proxy</string>
+  <string name="morphe_proxy_screen_summary">Encaminar les sol·licituds de xarxa compatibles a través d\'un proxy</string>
   <string name="morphe_proxy_enabled_title">Habilitar el proxy</string>
-  <string name="morphe_proxy_enabled_summary">Enruta les sol·licituds de xarxa compatibles a través d\'un proxy HTTP o HTTPS configurat</string>
+  <string name="morphe_proxy_enabled_summary">Encamina les sol·licituds de xarxa compatibles a través d\'un proxy HTTP o HTTPS configurat</string>
   <string name="morphe_proxy_host_title">Host del proxy</string>
   <string name="morphe_proxy_host_summary">Nom de l\'host o adreça IP del servidor proxy</string>
   <string name="morphe_proxy_port_title">Port del proxy</string>
@@ -193,13 +193,13 @@ Per iniciar la sessió, premeu continuar a continuació"</string>
   <string name="morphe_proxy_auth_username_summary">Nom d\'usuari per a l\'autenticació bàsica del proxy</string>
   <string name="morphe_proxy_auth_password_title">Contrasenya del proxy</string>
   <string name="morphe_proxy_auth_password_summary">Contrasenya per a l\'autenticació bàsica del proxy</string>
-  <string name="morphe_proxy_allow_direct_fallback_title">Permetre el ressòrt directe</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Permetre la connexió directa de reserva</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">Connecta\'t directament si el proxy falla</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Oculta els anuncis a pantalla completa</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">Per utilitzar aquesta funció, canvieu \'Spoof video streams\' a qualsevol client excepte \'Android Studio\' i \'Android VR Downgraded\'</string>
+  <string name="morphe_force_original_audio_not_available">Per utilitzar aquesta funció, canvieu \'Simular fluxos de vídeo\' a qualsevol client excepte \'Android Studio\' i \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Netejar els enllaços per compartir</string>
   <string name="morphe_sanitize_sharing_links_summary">Elimina els paràmetres de consulta de seguiment dels enllaços compartits</string>
@@ -208,13 +208,15 @@ Per iniciar la sessió, premeu continuar a continuació"</string>
   <string name="morphe_replace_links_with_shortener_title">Canvia els enllaços de compartir a youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Força els vídeos a utilitzar el format d\'URL curt youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Buffer de protocol del registre de depuració</string>
-  <string name="morphe_debug_protobuffer_summary">Afegeix informació de registre addicional per a els desenvolupadors per identificar els components de l\'app</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"En activar aquest ajust s'enregistrarán dades addicionals de la disposició, incloent-hi el text a la pantalla de alguns components de la interfície d'usuari.
+  <string name="morphe_debug_litho_title">Registres de Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Deshabilitat</string>
+  <string name="morphe_debug_litho_entry_path">Ruta</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Ruta i memòria temporal</string>
+  <string name="morphe_debug_litho_user_dialog_message">"El registre de Litho registra els components de disposició de l'aplicació, incloent el text a la pantalla de alguns components de la UI.
 
 Això pot ajudar a identificar components en crear filtres personalitzats.
 
-No obstant això, l'activació d'això també registraràAlgunes dades de l'usuari, com l'adreça IP"</string>
+No obstant això, això també registraràAlgunes dades de l'usuari, com l'adreça IP"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Filtre personalitzat</string>
   <string name="morphe_custom_filter_screen_summary">Configureu filtres personalitzats per ocultar qualsevol component</string>
@@ -230,15 +232,15 @@ No obstant això, l'activació d'això també registraràAlgunes dades de l'usua
   <string name="morphe_remove_viewer_discretion_dialog_title">Eliminar el diàleg de discreció de l\'espectador</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Això no ignora la restricció d\'edat. Simplement l\'accepta automàticament</string>
   <!-- misc.potoken.poTokenProviderPatch -->
-  <string name="morphe_potoken_provider_screen_title">Provider de PoToken</string>
-  <string name="morphe_potoken_provider_screen_summary">Configura el provider de PoToken per evitar problemes de reproducció</string>
-  <string name="morphe_external_potoken_provider_title">Proveïdor خارجي de PoToken</string>
-  <string name="morphe_external_potoken_provider_summary">"Soluciona problemes de reproducció utilitzant un generador de PoToken extern (experimental)
+  <string name="morphe_potoken_provider_screen_title">Proveïdor de PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Configura el proveïdor de PoToken per evitar problemes de reproducció</string>
+  <string name="morphe_external_potoken_provider_title">Proveïdor extern de PoToken</string>
+  <string name="morphe_external_potoken_provider_summary">"Corregeix problemes de reproducció utilitzant un generador de PoToken extern (experimental)
 
 Si ets un usuari de YouTube Premium, és possible que aquesta configuració no sigui necessària"</string>
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
-  <string name="morphe_external_potoken_provider_unavailable_summary">"Soluciona problemes de reproducció utilitzant un generador de PoToken extern (experimental)
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Corregeix problemes de reproducció utilitzant un generador de PoToken extern (experimental)
 
 Per utilitzar aquesta funció, desactiva \"Simular fluxos de vídeo\""</string>
   <string name="morphe_external_potoken_provider_user_dialog_message">Si no funciona, intenta forçar el tancament de MicroG</string>
@@ -254,13 +256,13 @@ Activa 'Simular fluxos de vídeo' per solucionar la reproducció"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Activa</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Simular versió de l\'app</string>
-  <string name="morphe_spoof_app_version_summary">Enganya el servidor fent-li creure que fas servir una versió d\'app més antiga per restaurar funcions de la interfície heredades</string>
+  <string name="morphe_spoof_app_version_summary">Enganya el servidor fent-li creure que fas servir una versió d\'app més antiga per restaurar funcions de la interfície heretades</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"La versió de l'app es simularà com una versió anterior.
 
-Això canviarà l'aparença i les funcions de l'app, però poden occorrer efectes secundaris desconeguts.
+Això canviarà l'aparença i les funcions de l'app, però poden ocórrer efectes secundaris desconeguts.
 
-Si més tard s'estapat, es recomana esborrar les dades de l'app per evitar errors de la interfície d'usuari"</string>
-  <string name="morphe_spoof_app_version_target_title">Objetiu de simulació de versió de l\'app</string>
+Si més tard es desactiva, es recomana esborrar les dades de l'app per evitar errors de la interfície d'usuari"</string>
+  <string name="morphe_spoof_app_version_target_title">Objectiu de simulació de versió de l\'app</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Freqüència d\'actualització de l\'app</string>
   <string name="morphe_app_refresh_rate_default">Per defecte</string>
@@ -271,7 +273,7 @@ Si més tard s'estapat, es recomana esborrar les dades de l'app per evitar error
   <string name="morphe_app_refresh_rate_type_entry_3">Reproducció a pantalla completa</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Reproducció en vertical i a pantalla completa</string>
   <!-- layout.font.baseCustomFontPatch -->
-  <string name="morphe_custom_font_type_title"> interactors</string>
+  <string name="morphe_custom_font_type_title">Font</string>
   <string name="morphe_custom_font_type_entry_default">Per defecte</string>
   <string name="morphe_custom_font_type_entry_system">Font del sistema del dispositiu</string>
   <string name="morphe_custom_font_type_entry_custom">Arxiu de font personalitzada</string>
@@ -286,19 +288,19 @@ Si més tard s'estapat, es recomana esborrar les dades de l'app per evitar error
   <string name="morphe_ryd_failure_client_rate_limit_requested">Els \"no m\'agrada\" no estan disponibles (límit de l\'API del client)</string>
   <string name="morphe_ryd_failure_generic">Els \"no m\'agrada\" no estan disponibles (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
-  <string name="morphe_ryd_video_likes_hidden_by_video_owner">Ocultat per el propietari</string>
-  <string name="morphe_ryd_accessibility_dislike_count">No agrada aquest vídeo, juntament amb %s altres persones</string>
-  <string name="morphe_ryd_accessibility_dislike_percentage">No agrada aquest vídeo, %s dels vots són negatives</string>
+  <string name="morphe_ryd_video_likes_hidden_by_video_owner">Ocultat pel propietari</string>
+  <string name="morphe_ryd_accessibility_dislike_count">No m\'agrada aquest vídeo, juntament amb %s altres persones</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">No m\'agrada aquest vídeo, %s dels vots són negatius</string>
   <string name="morphe_ryd_enabled_title">Habilitar Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Mostrar els \"no m\'agrada\" com a percentatge</string>
   <string name="morphe_ryd_dislike_percentage_summary">Mostra els \"no m\'agrada\" com a un percentatge dels \"m\'agrada\" en lloc d\'un número</string>
   <string name="morphe_ryd_estimated_like_title">Mostrar els \"m\'agrada\" estimats</string>
-  <string name="morphe_ryd_estimated_like_summary">Mostra un recompte estimat de \"m\'agrada\" en els vídeos on el creador ha deshabilitat els \"m\'agrada\"</string>
+  <string name="morphe_ryd_estimated_like_summary">Mostra un recompte estimat de \"m\'agrada\" en els vídeos on el creador ha desactivat els \"m\'agrada\"</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertes d\'error de connexió</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Mostra una notificació quan el servidor de Return YouTube Dislike no està disponible</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restaura els recomptes de \"no m'agrada\" que YouTube va ocultar el 2021. Els recomptes provenen de dades arxivades abans de l'eliminació i s'estimen per als vídeos més recents a partir dels vots dels seus usuaris, per la qual cosa són aproximats i s'actualitzen cada pocs dies
 
-L'ID del vídeo que Miros veu s'envia a l'API de Return YouTube Dislike, i els vostres \"m'agrada\" i \"no m'agrada\" s'envien de forma anònima per millorar les estimacions"</string>
+L'ID del vídeo que veus s'envia a l'API de Return YouTube Dislike, i els teus \"m'agrada\" i \"no m'agrada\" s'envien de forma anònima per millorar les estimacions"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Estadístiques de l\'API de Return YouTube Dislike d\'aquest dispositiu</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Temps de resposta de l\'API, mitjana</string>
@@ -309,8 +311,8 @@ L'ID del vídeo que Miros veu s'envia a l'API de Return YouTube Dislike, i els v
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API de recuperació de vots, nombre de trucades</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">No s\'han realitzat trucades de xarxa</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s trucades de xarxa realitzades</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API de recuperació de vots, nombre de temporitzadors esgotats</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Ninguna trucada de xarxa ha esgotat el temps d\'espera</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API de recuperació de vots, nombre de temps d\'espera esgotats</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Cap trucada de xarxa ha esgotat el temps d\'espera</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s trucades de xarxa amb temps d\'espera esgotat</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Límits de velocitat del client de l\'API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">No s\'han trobat límits de velocitat del client</string>

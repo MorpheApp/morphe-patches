@@ -18,17 +18,17 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_sb_enabled_title">SponsorBlock-ийг идэвхжүүлэх</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock нь YouTube видеоны төвөгтэй хэсгүүдийг алгасах олон нийтийн систем юм</string>
-  <string name="morphe_sb_appearance_category_title">Гадаж харагдах байдал</string>
+  <string name="morphe_sb_appearance_category_title">Гадаад төрх</string>
   <string name="morphe_sb_voting_button_title">Саналын товчлуурыг харуулах</string>
   <string name="morphe_sb_voting_button_summary">Хэсгүүдийг дэмжих эсвэл эсэргүүцэх товчлуурыг нэмнэ</string>
   <string name="morphe_sb_square_layout_title">Дөрвөлжин бүтэц ашиглах</string>
   <string name="morphe_sb_square_layout_summary">SponsorBlock товчлуур болон хянах хэрэгслүүдэд дөрвөлжин булан ашиглана</string>
-  <string name="morphe_sb_compact_skip_button_title">Алгасах товчлуурыг авцтай ашиглах</string>
+  <string name="morphe_sb_compact_skip_button_title">Товч \"Алгасах\" товчлуурыг ашиглах</string>
   <string name="morphe_sb_compact_skip_button_summary">Зай хэмнэхийн тулд Алгасах товчлуурын өргөнийг багасгана</string>
-  <string name="morphe_sb_auto_hide_skip_button_title">Атгаах товчийг автоматаар нуух</string>
-  <string name="morphe_sb_auto_hide_skip_button_summary">Атгаах товчийг бүхэл хэсэгт харуулахын оронд хэдэн секундын дараа нууна</string>
-  <string name="morphe_sb_auto_hide_skip_button_duration_title">Атгаах товчны харагдах хугацаа</string>
-  <string name="morphe_sb_auto_hide_skip_button_duration_summary">Атгаах товч хэр удаан харагдахыг тохируулна уу</string>
+  <string name="morphe_sb_auto_hide_skip_button_title">Алгасах товчийг автоматаар нуух</string>
+  <string name="morphe_sb_auto_hide_skip_button_summary">Алгасах товчийг бүхэл хэсэгт харуулахын оронд хэдэн секундын дараа нууна</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_title">Алгасах товчийн харагдах хугацаа</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">Алгасах товч хэр удаан харагдахыг тохируулна уу</string>
   <string name="morphe_sb_toast_on_skip_title">Атгасны мэдэгдлийг харуулах</string>
   <string name="morphe_sb_toast_on_skip_summary">Хэсгийг автоматаар атгахад мэдэгдэл харуулна</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Атгасны мэдэгдлийн хугацаа</string>
@@ -102,8 +102,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_segments_interaction_summary">Агуулгын дундуур лайк дарах, бүртгүүлэх эсвэл дагахыг сануулах богино хэсэг. Хэрэв энэ нь урт эсвэл тодорхой зүйлийн тухай бол өөрийгөө сурталчлах хэсэгт багтах ёстой</string>
   <string name="morphe_sb_segments_highlight">Онцлох хэсэг</string>
   <string name="morphe_sb_segments_highlight_summary">Видеоны хамгийн олон хүмүүсийн хайж буй хэсэг</string>
-  <string name="morphe_sb_segments_intro">За இடைл / Эхлэлийн хเคลื่อน animasi</string>
-  <string name="morphe_sb_segments_intro_summary">Бодит агуулгагүй завсарлага. Энэ нь тэмдэглэл, хөдөлгөөнгүй зураг эсвэл давтагддаг хөдөлгөөнт дүрслэл байж болно. Мэдээлэл агуулсан шилжүүлгүүдийг оролцуулахгүй</string>
+  <string name="morphe_sb_segments_intro">Завсарлага / Эхлэлийн хөдөлгөөнт дүрс</string>
+  <string name="morphe_sb_segments_intro_summary">Бодит агуулгагүй завсарлага. Энэ нь түр зогсолт, хөдөлгөөнгүй зураг эсвэл давтагддаг хөдөлгөөнт дүрслэл байж болно. Мэдээлэл агуулсан шилжилтүүдийг оруулахгүй</string>
   <string name="morphe_sb_segments_outro">Төгсгөлийн карт / Зохиогчийн жагсаалт</string>
   <string name="morphe_sb_segments_outro_summary">Зохиогчийн жагсаалт эсвэл YouTube-ийн төгсгөлийн картууд гарч ирэх хэсэг. Мэдээлэл агуулсан дүгнэлтүүдэд зориулагдсангүй</string>
   <string name="morphe_sb_segments_hook">Анхаарал татах хэсэг / Мэндчилгээ</string>
@@ -122,7 +122,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_button_highlight">Онцлох хэсэг рүү алгасах</string>
   <string name="morphe_sb_skip_button_intro_beginning">Эхлэлийг алгасах</string>
   <string name="morphe_sb_skip_button_intro_middle">Зай авах хэсгийг алгасах</string>
-  <string name="morphe_sb_skip_button_intro_end">Зааварчилгааг алгасах</string>
+  <string name="morphe_sb_skip_button_intro_end">Завсарлагыг алгасах</string>
   <string name="morphe_sb_skip_button_outro">Төгсгөлийг алгасах</string>
   <string name="morphe_sb_skip_button_hook">Эхлэлийг алгасах</string>
   <string name="morphe_sb_skip_button_preview_beginning">Урьдчилгааг алгасах</string>
@@ -218,7 +218,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_submissions">Та &lt;b&gt;%s&lt;/b&gt; хэсэг үүсгэсэн байна</string>
   <string name="morphe_sb_stats_submissions_summary">Сегментүүдээ харахын тулд энд дарна уу</string>
   <string name="morphe_sb_stats_saved_zero">SponsorBlock-ийн тэргүүллэлийн хүснэгт</string>
-  <string name="morphe_sb_stats_saved">Та хүмүүсийг &lt;b&gt;%s&lt;/b&gt; сегментээс сэвлүүлсэн байна</string>
+  <string name="morphe_sb_stats_saved">Та хүмүүсийг &lt;b&gt;%s&lt;/b&gt; сегментээс аварсан байна</string>
   <string name="morphe_sb_stats_saved_summary_zero">Дэлхийн статистик болон хамгийн их хувь нэмэр оруулсан хэрэглэгчдийг харахын тулд энд дарна уу</string>
   <string name="morphe_sb_stats_saved_summary">Энэ нь тэдний амьдралын &lt;b&gt;%s&lt;/b&gt; хугацаа юм.&lt;br&gt;Тэргүүллэлийн хүснэгтийг харахын тулд энд дарна уу</string>
   <string name="morphe_sb_stats_self_saved">Та &lt;b&gt;%s&lt;/b&gt; сегментийг алгасалсан байна</string>

@@ -35,7 +35,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_navigate_up">Navegar para cima</string>
   <string name="morphe_settings_search_hint">Configurações de pesquisa</string>
   <string name="morphe_settings_screen_info_title">Sobre</string>
-  <string name="morphe_settings_search_no_results_title">Nenhum resultado encontrado para \",%s\"</string>
+  <string name="morphe_settings_search_no_results_title">Nenhum resultado encontrado para \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Tente outra palavra-chave</string>
   <string name="morphe_settings_search_recent_searches">Pesquisas recentes</string>
   <string name="morphe_settings_search_remove_message">Remover do histórico de pesquisa?</string>
@@ -97,9 +97,10 @@ Para traduzir novos idiomas ou melhorar as traduções existentes, visite morphe
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuração</string>
   <string name="morphe_debug_screen_summary">Configurar opções avançadas de desenvolvedor e logs de diagnóstico</string>
-  <string name="morphe_debug_title">Ativar registro de depuração</string>
-  <string name="morphe_debug_stacktrace_title">Rastreamento de pilha do registro de depuração</string>
-  <string name="morphe_debug_stacktrace_summary">Inclui rastreamentos de pilha nos logs de depuração para ajudar a identificar erros</string>
+  <string name="morphe_debug_level_title">Registro de depuração</string>
+  <string name="morphe_debug_level_entry_disabled">Desativado</string>
+  <string name="morphe_debug_level_entry_debug">Depurar</string>
+  <string name="morphe_debug_level_entry_verbose">Detalhado</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar notificação flutuante de erro do Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desligar as notificações de erro oculta todas as notificações de erro do Morphe.
 
@@ -152,7 +153,7 @@ Você não será notificado sobre nenhum evento inesperado"</string>
 Metade das %s flags é bloqueada e, após cada reinicialização, você informa se o comportamento ainda está presente.
 
 Reproduza o comportamento uma vez antes de começar; caso contrário, as flags que o aplicativo ainda não solicitou ficarão ausentes da pesquisa."</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Começo</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Iniciar</string>
   <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Nenhuma flag de recurso para pesquisar.
 
 Apenas flags que o aplicativo já acionou e que não estão atualmente forçadas podem ser usadas em uma pesquisa binária"</string>
@@ -227,8 +228,8 @@ Se as otimizações de bateria não forem alteradas, você poderá ter:
 🔧 Espere comportamentos inesperados no aplicativo ou bugs não identificados enquanto ajustamos os patches para esta versão do aplicativo.
 &lt;br/&gt;&lt;br/&gt;
 Se quiser uma experiência com menos problemas, então &lt;b&gt;desinstale&lt;/b&gt; esta versão e aplique os patches na versão recomendada do aplicativo ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quero experimental</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quero estável</string>
   <!-- misc.announcements.patchesUpdateNoticePatch -->
   <string name="morphe_patches_update_notice_title">Mostrar notificação no app para atualizações de patches</string>
   <string name="morphe_patches_update_notice_entry_off">Desativado</string>

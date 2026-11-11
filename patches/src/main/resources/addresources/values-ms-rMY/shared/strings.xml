@@ -97,9 +97,10 @@ Untuk menterjemah bahasa baharu atau menambah baik terjemahan sedia ada, layari 
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Penyahpepijatan</string>
   <string name="morphe_debug_screen_summary">Konfigurasikan pilihan pembangun lanjutan dan log diagnostik</string>
-  <string name="morphe_debug_title">Dayakan log debug</string>
-  <string name="morphe_debug_stacktrace_title">Jejak timbunan log debug</string>
-  <string name="morphe_debug_stacktrace_summary">Sertakan jejak timbunan dalam log debug untuk membantu mengenal pasti ralat</string>
+  <string name="morphe_debug_level_title">Log penyahpepijatan</string>
+  <string name="morphe_debug_level_entry_disabled">Dilumpuhkan</string>
+  <string name="morphe_debug_level_entry_debug">Nyahpepijat</string>
+  <string name="morphe_debug_level_entry_verbose">Terperinci</string>
   <string name="morphe_debug_toast_on_error_title">Tunjukkan pemberitahuan pada ralat Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Menutup pemberitahuan ralat menyembunyikan semua pemberitahuan ralat Morphe.
 

@@ -17,8 +17,8 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_enabled_title">ჩართეთ SponsorBlock</string>
-  <string name="morphe_sb_enabled_summary">SponsorBlock არის კოლექტიური სისტემა YouTube ვიდეოების გამაღიზიანებელი ნაწილების გადასახტობად</string>
-  <string name="morphe_sb_appearance_category_title">გარეგნული სახე</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock არის კოლექტიური სისტემა YouTube ვიდეოების გამაღიზიანებელი ნაწილების გამოსატოვებლად</string>
+  <string name="morphe_sb_appearance_category_title">გარეგნობა</string>
   <string name="morphe_sb_voting_button_title">ხმის მიცემის ღილაკის ჩვენება</string>
   <string name="morphe_sb_voting_button_summary">ამატებს ღილაკს სეგმენტების დადებითი ან უარყოფითი შეფასებისთვის</string>
   <string name="morphe_sb_square_layout_title">კვადრატული განლაგების გამოყენება</string>
@@ -47,7 +47,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_video_length_without_segments_summary">გამოკლებს ყველა სეგმენტს seekbar-ზე ჩვენებულ ვიდეოს საერთო ხანგრძლივობას</string>
   <string name="morphe_sb_create_segment_category_title">ახალი სეგმენტების შექმნა</string>
   <string name="morphe_sb_create_new_segment_title">აჩვენე ღილაკი \'ახალი სეგმენტის შექმნა\'</string>
-  <string name="morphe_sb_create_new_segment_summary">ამატებს ღილაკს ვიდეო ప్ლეიერში, რაც საშუალებას გაძლევთ გაგზავნოთ SponsorBlock-ის ახალი სეგმენტები</string>
+  <string name="morphe_sb_create_new_segment_summary">ამატებს ღილაკს ვიდეოპლეიერში, რაც საშუალებას გაძლევთ გაგზავნოთ SponsorBlock-ის ახალი სეგმენტები</string>
   <string name="morphe_sb_create_new_segment_step_title">დროის კორექტირების ნაბიჯი</string>
   <string name="morphe_sb_create_new_segment_step_summary">დროის კორექტირების ღილაკების გადახვევის რაოდენობა (მილიწამებში)</string>
   <string name="morphe_sb_create_new_segment_step_invalid">მნიშვნელობა უნდა იყოს დადებითი რიცხვი</string>
@@ -83,9 +83,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_ie_title">პარამეტრების იმპორტი / ექსპორტი</string>
   <string name="morphe_sb_settings_copy">კოპირება</string>
   <string name="morphe_sb_settings_ie_summary">თქვენი SponsorBlock JSON კონფიგურაცია, რომელიც შეიძლება được იმპორტირებული / ექსპორტირებული იყოს Morphe-სა და სხვა SponsorBlock პლატფორმებზე</string>
-  <string name="morphe_sb_settings_ie_summary_warning">"თქვენი SponsorBlock JSON კონფიგურაცია, რომელიც შეიძლება được იმპორტირებული / ექსპორტირებული იყოს Morphe-სა და სხვა SponsorBlock პლატფორმებზე
+  <string name="morphe_sb_settings_ie_summary_warning">"თქვენი SponsorBlock JSON კონფიგურაცია, რომელიც შეიძლება იმპორტირებული / ექსპორტირებული იყოს Morphe-სა და სხვა SponsorBlock პლატფორმებზე
 
-ეს მოიცავს თქვენს კერძო მომხმარებლის ID-ს. გააზარეთ ამის გაზიარება"</string>
+ეს მოიცავს თქვენს პირად მომხმარებლის ID-ს. ფრთხილად გააზიარეთ"</string>
   <string name="morphe_sb_settings_import_successful">პარამეტრები წარმატებით იქნა იმპორტირებული</string>
   <string name="morphe_sb_settings_import_failed">იმპორტი ვერ მოხერხდა: %s</string>
   <string name="morphe_sb_settings_export_failed">ექსპორტი ვერ მოხერხდა: %s</string>
@@ -133,7 +133,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_button_unsubmitted">სეგმენტის გამოტოვება</string>
   <string name="morphe_sb_skipped_sponsor">სპონსორის გამოტოვება</string>
   <string name="morphe_sb_skipped_selfpromo">თვითპრომოუშენის გამოტოვება</string>
-  <string name="morphe_sb_skipped_interaction">მღ烦ირებელი შეხსენების გამოტოვება</string>
+  <string name="morphe_sb_skipped_interaction">გამაღიზიანებელი შეხსენების გამოტოვება</string>
   <string name="morphe_sb_skipped_highlight">გაგრძელება მთავარ ნაწილზე</string>
   <string name="morphe_sb_skipped_intro_beginning">ინტროს გამოტოვება</string>
   <string name="morphe_sb_skipped_intro_middle">შუალედის გამოტოვება</string>
@@ -143,14 +143,14 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_preview_beginning">პრევიუს გამოტოვება</string>
   <string name="morphe_sb_skipped_preview_middle">გამოტოვებული წინასწარი ნახვა</string>
   <string name="morphe_sb_skipped_preview_end">გამოტოვებული შეჯამება</string>
-  <string name="morphe_sb_skipped_filler">გამოტოვებული विषयाრიგვნება</string>
+  <string name="morphe_sb_skipped_filler">გამოტოვებული გვერდითი თემა</string>
   <string name="morphe_sb_skipped_nomusic">გამოტოვებული არამუსიკალური სექცია</string>
-  <string name="morphe_sb_skipped_unsubmitted">გამოტოვებული გაუგზავებელი სეგმენტი</string>
+  <string name="morphe_sb_skipped_unsubmitted">გამოტოვებული არაგაგზავნილი სეგმენტი</string>
   <string name="morphe_sb_skipped_multiple_segments">გამოტოვებული რამდენიმე სეგმენტი</string>
   <string name="morphe_sb_skip_automatically">ავტომატურად გამოტოვება</string>
   <string name="morphe_sb_skip_automatically_once">ერთხელ ავტომატურად გამოტოვება</string>
   <string name="morphe_sb_skip_showbutton">გამოტოვების ღილაკის ჩვენება</string>
-  <string name="morphe_sb_skip_seekbaronly">ჩვენება გადამ winding-ის ზოლში</string>
+  <string name="morphe_sb_skip_seekbaronly">ჩვენება დროის ზოლში</string>
   <string name="morphe_sb_skip_ignore">გამორთვა</string>
   <string name="morphe_sb_submit_failed_invalid">სეგმენტის გაგზავნა ვერ მოხერხდა: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock დროებით გათიშულია</string>
@@ -229,7 +229,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s წამი</string>
   <string name="morphe_sb_color_opacity_label">გამჭვირვალობა:</string>
   <string name="morphe_sb_color_dot_label">ფერი:</string>
-  <string name="morphe_sb_about_api_summary">"SponsorBlock არის ვიდეოს სეგმენტების კროვსორსინგული მონაცემთა ბაზა, როგორიცაა სპონსორები, შესავალი, დასავალი და გამოწერის შეხსენებები. სეგმენტებს წარადგენს და ხვადს საზოგადოება, ხოლო მონაცემთა ბაზა ღიაა და უფასოა გადმოსაწერად
+  <string name="morphe_sb_about_api_summary">"SponsorBlock არის საზოგადოების მიერ შევსებული ვიდეოს სეგმენტების მონაცემთა ბაზა, როგორიცაა სპონსორები, შესავალი, დასასრული და გამოწერის შეხსენებები. სეგმენტებს საზოგადოება წარადგენს და აფასებს, ხოლო მონაცემთა ბაზა ღიაა და უფასოდ ჩამოსატვირთი
 
-თქვენ მიერ ნანახი ვიდეოს ID იგზავნება SponsorBlock-ის API-ში სეგმენტების მისაღებად"</string>
+თქვენ მიერ ნანახი ვიდეოს ID იგზავნება SponsorBlock-ის API-ში მისი სეგმენტების მისაღებად"</string>
 </resources>

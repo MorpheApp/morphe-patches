@@ -44,7 +44,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_duration_9s">9 sekundės</string>
   <string name="morphe_sb_duration_10s">10 sekundžių</string>
   <string name="morphe_sb_video_length_without_segments_title">Rodyti vaizdo įrašo trukmę be segmentų</string>
-  <string name="morphe_sb_video_length_without_segments_summary">Iš visos vaizdo įrašo trukmės, rodomos peržiūros juostoje, atima visus segmentus</string>
+  <string name="morphe_sb_video_length_without_segments_summary">Iš visos vaizdo įrašo trukmės, rodomos slankiklyje, atima visus segmentus</string>
   <string name="morphe_sb_create_segment_category_title">Naujų segmentų kūrimas</string>
   <string name="morphe_sb_create_new_segment_title">Rodyti mygtuką „Kurti naują segmentą“</string>
   <string name="morphe_sb_create_new_segment_summary">Prideda vaizdo įrašų grotuve mygtuką, leidžiantį pateikti naujus SponsorBlock segmentus</string>
@@ -89,7 +89,9 @@ Tai apima jūsų privatų vartotojo ID. Dalinkitės ja apgalvotai"</string>
   <string name="morphe_sb_settings_import_successful">Nustatymai sėkmingai importuoti</string>
   <string name="morphe_sb_settings_import_failed">Nepavyko importuoti: %s</string>
   <string name="morphe_sb_settings_export_failed">Nepavyko eksportuoti: %s</string>
-  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Jūsų nustatymuose yra privatus „SponsorBlock"</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"Jūsų nustatymuose yra privatus „SponsorBlock“ vartotojo ID.
+
+Jūsų vartotojo ID yra tarsi slaptažodis, todėl juo niekada nereikėtų dalytis"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Daugiau neberodyti</string>
   <string name="morphe_sb_diff_segments_title">Keisti segmentų elgseną</string>
   <string name="morphe_sb_segments_sponsor">Reklama</string>
@@ -148,7 +150,7 @@ Tai apima jūsų privatų vartotojo ID. Dalinkitės ja apgalvotai"</string>
   <string name="morphe_sb_skip_automatically">Praleisti automatiškai</string>
   <string name="morphe_sb_skip_automatically_once">Praleisti automatiškai vieną kartą</string>
   <string name="morphe_sb_skip_showbutton">Rodyti praleidimo mygtuką</string>
-  <string name="morphe_sb_skip_seekbaronly">Rodyti peržiūros juostoje</string>
+  <string name="morphe_sb_skip_seekbaronly">Rodyti slankiklyje</string>
   <string name="morphe_sb_skip_ignore">Išjungti</string>
   <string name="morphe_sb_submit_failed_invalid">Nepavyko pateikti segmento: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock laikinai neveikia</string>

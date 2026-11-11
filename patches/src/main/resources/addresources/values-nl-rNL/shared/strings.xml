@@ -35,13 +35,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_navigate_up">Omhoog navigeren</string>
   <string name="morphe_settings_search_hint">Zoekinstellingen</string>
   <string name="morphe_settings_screen_info_title">Over</string>
-  <string name="morphe_settings_search_no_results_title">Geen resultaten gevonden voor \", %s\"</string>
+  <string name="morphe_settings_search_no_results_title">Geen resultaten gevonden voor \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Probeer een ander trefwoord</string>
   <string name="morphe_settings_search_recent_searches">Recente zoekopdrachten</string>
   <string name="morphe_settings_search_remove_message">Verwijderen uit zoekgeschiedenis?</string>
   <string name="morphe_settings_search_remove">Verwijderen uit zoekgeschiedenis</string>
   <string name="morphe_settings_search_clear_history">Zoekgeschiedenis wissen</string>
-  <string name="morphe_settings_search_clear_history_message">Weet u zeker dat u alle zoekgeschiedenis wilt wissen?</string>
+  <string name="morphe_settings_search_clear_history_message">Weet je zeker dat je alle zoekgeschiedenis wilt wissen?</string>
   <string name="morphe_settings_search_tips_title">Zoektips</string>
   <string name="morphe_settings_search_tips_summary">"• Tik op een pad om ernaartoe te navigeren
 • Lang indrukken op een instelling om ernaartoe te navigeren
@@ -57,7 +57,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_name_entry_3">Aanpassingen</string>
   <string name="morphe_settings_name_entry_4">Morphing-tijd</string>
   <string name="morphe_settings_name_custom_item">Aangepast</string>
-  <string name="morphe_settings_name_custom_item_hint">Voer een na am in</string>
+  <string name="morphe_settings_name_custom_item_hint">Voer een naam in</string>
   <string name="morphe_settings_name_empty_warning">Naam mag niet leeg zijn</string>
   <string name="morphe_show_menu_icons_title">Pictogrammen voor Morphe-instellingen weergeven</string>
   <string name="morphe_settings_menu_copy_path">Gekopieerd: %s</string>
@@ -78,7 +78,7 @@ Om nieuwe talen te vertalen of bestaande vertalingen te verbeteren, bezoek morph
   <string name="morphe_settings_about_links_body_version_current">U gebruikt de nieuwste Morphe Patches versie &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">U gebruikt Morphe Patches versie &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Bijwerking beschikbaar: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Om uw patches bij te werken, gebruikt u Morphe om deze app opnieuw te patchen</string>
   <string name="morphe_settings_about_links_dev_header">Opmerking</string>
-  <string name="morphe_settings_about_links_dev_body">Deze versie is een pre-release en u kunt onverwachte problemen ondervinden</string>
+  <string name="morphe_settings_about_links_dev_body">Deze versie is een pre-release en je kunt onverwachte problemen ondervinden</string>
   <string name="morphe_settings_about_links_header">Officiële links</string>
   <string name="morphe_settings_about_links_website">Website</string>
   <string name="morphe_settings_about_links_donate">Doneren</string>
@@ -97,23 +97,24 @@ Om nieuwe talen te vertalen of bestaande vertalingen te verbeteren, bezoek morph
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debuggen</string>
   <string name="morphe_debug_screen_summary">Configureer geavanceerde ontwikkelaarsopties en diagnostische logs</string>
-  <string name="morphe_debug_title">Schakel debuglogboek in</string>
-  <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
-  <string name="morphe_debug_stacktrace_summary">Bevat stack traces in debuglogs om fouten te helpen identificeren</string>
+  <string name="morphe_debug_level_title">Debuglogboek</string>
+  <string name="morphe_debug_level_entry_disabled">Uitgeschakeld</string>
+  <string name="morphe_debug_level_entry_debug">Debuggen</string>
+  <string name="morphe_debug_level_entry_verbose">Uitgebreid</string>
   <string name="morphe_debug_toast_on_error_title">Toon toastmelding bij Morphe error</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Het uitschakelen van foutmeldingen verbergt alle Morphe-foutmeldingen.
 
-U wordt niet op de hoogte gesteld van onverwachte gebeurtenissen"</string>
+Je wordt niet op de hoogte gesteld van onverwachte gebeurtenissen"</string>
   <string name="morphe_debug_export_logs_title">Foutopsporingslogboeken exporteren</string>
-  <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
+  <string name="morphe_debug_export_logs_summary">Morphe-debuglogs exporteren</string>
   <string name="morphe_debug_export_logs_success">Debuglogboeken succesvol geëxporteerd</string>
-  <string name="morphe_debug_export_logs_failed">Mislukt om debuglogboeken te exporteren</string>
+  <string name="morphe_debug_export_logs_failed">Exporteren van debuglogboeken is mislukt</string>
   <string name="morphe_debug_logs_search_hint">Zoek in foutopsporingslogboeken…</string>
   <string name="morphe_debug_export_logs_clear">Wissen</string>
   <string name="morphe_debug_logs_disabled">Foutopsporing is uitgeschakeld</string>
   <string name="morphe_debug_logs_none_found">Geen debuglogboeken gevonden</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Debuglogboeken gekopieerd</string>
-  <string name="morphe_debug_logs_failed_to_export">Mislukt om debuglogboeken te exporteren: %s</string>
+  <string name="morphe_debug_logs_failed_to_export">Exporteren van debuglogboeken is mislukt: %s</string>
   <string name="morphe_debug_logs_clear_toast">Debuglogboeken gewist</string>
   <string name="morphe_debug_feature_flags_manager_title">Functievlaggen Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Beheer booleaanse functievlaggen</string>
@@ -191,7 +192,7 @@ Update MicroG naar de nieuwste versie v%2$s"</string>
 %s
 
 Tik om deze te verwijderen, open dan deze app opnieuw en installeer MicroG RE"</string>
-  <string name="gms_core_dialog_uninstall_text">Uninstall</string>
+  <string name="gms_core_dialog_uninstall_text">Verwijderen</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG heeft geen toestemming om op de achtergrond te draaien.
 
@@ -208,7 +209,7 @@ Tik op de knop Doorgaan en sta wijzigingen in de optimalisatie toe"</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Toon MicroG dialoog voor batterijoptimalisatie</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Het uitschakelen hiervan verbergt het MicroG-prompt voor batterijoptimalisatie.
 
-Als batterijoptimalisaties niet worden gewijzigd, kunt u het volgende ervaren:
+Als batterijoptimalisaties niet worden gewijzigd, kun je het volgende ervaren:
 • De app kan willekeurig sluiten
 • Meldingen werken mogelijk niet
 • Achtergrondafspelen werkt mogelijk niet"</string>
@@ -222,11 +223,11 @@ Als batterijoptimalisaties niet worden gewijzigd, kunt u het volgende ervaren:
   <string name="morphe_link_handling_open">Open instellingen</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentele Waarschuwing 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"U gebruikt een experimentele app-versie van ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+  <string name="morphe_experimental_app_version_dialog_message">"Je gebruikt een experimentele app-versie van ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 🔧 Verwacht afwijkend app-gedrag of onbekende bugs terwijl we de patches voor deze app-versie verfijnen.
 &lt;br/&gt;&lt;br/&gt;
-Als u de meest probleemloze ervaring wilt, &lt;b&gt;verwijder&lt;/b&gt; dit dan en patch de aanbevolen app-versie van ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Als je de meest probleemloze ervaring wilt, &lt;b&gt;verwijder&lt;/b&gt; dit dan en patch de aanbevolen app-versie van ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ik wil experimenteel</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ik wil stabiel</string>
   <!-- misc.announcements.patchesUpdateNoticePatch -->

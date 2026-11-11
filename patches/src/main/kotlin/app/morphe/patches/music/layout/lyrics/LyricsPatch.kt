@@ -149,6 +149,9 @@ val lyricsPatch = patch(
                         dependency = "morphe_music_lyrics_enabled"
                     ),
                     SwitchPreference("morphe_music_lyrics_word_sync", summary = true),
+                    SwitchPreference("morphe_music_lyrics_spring_scroll", summary = true),
+                    SwitchPreference("morphe_music_lyrics_gap_dots", summary = true),
+                    SwitchPreference("morphe_music_lyrics_focus_spotlight", summary = true),
                     SwitchPreference("morphe_music_lyrics_line_scale", summary = true),
                     SwitchPreference("morphe_music_lyrics_split_background", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_section", summary = true),
@@ -178,7 +181,8 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
-                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true)
+                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_current_button", summary = true)
                 )
             ),
             PreferenceCategory(

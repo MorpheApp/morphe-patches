@@ -213,6 +213,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_YOU_MAY_LIKE_SECTION = new BooleanSetting("morphe_hide_you_may_like_section", TRUE, true);
     public static final BooleanSetting HIDE_YOUTUBE_DOODLES = new BooleanSetting("morphe_hide_youtube_doodles", TRUE, true, "morphe_hide_youtube_doodles_user_dialog_message");
     public static final IntegerSetting PLAYBACK_IN_FEEDS = new IntegerSetting("morphe_playback_in_feeds", PlaybackInFeedsPatch.MODE_ALWAYS_ON, true);
+    public static final BooleanSetting PLAYBACK_IN_FEEDS_IMPORTED = new BooleanSetting("morphe_playback_in_feeds_imported", FALSE, false, false);
     public static final BooleanSetting RESTORE_ORIGINAL_TITLES = new BooleanSetting("morphe_restore_original_titles", FALSE, true);
     public static final BooleanSetting DISABLE_AUTO_FEED_REFRESH = new BooleanSetting("morphe_disable_auto_feed_refresh", FALSE);
     public static final EnumSetting<FeedCardLayout> FEED_CARD_LAYOUT = new EnumSetting<>("morphe_feed_card_layout", FeedCardLayout.CLASSIC, true);
@@ -352,6 +353,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SETTINGS_BUTTON = new BooleanSetting("morphe_hide_settings_button", FALSE, true);
     public static final BooleanSetting LOOP_VIDEO_BUTTON = new BooleanSetting("morphe_loop_video_button", FALSE, true);
     public static final BooleanSetting LOOP_VIDEO = new BooleanSetting("morphe_loop_video", FALSE);
+    public static final BooleanSetting LOOP_COUNT = new BooleanSetting("morphe_loop_count", FALSE);
+    public static final BooleanSetting LOOP_COUNT_PLAYLISTS = new BooleanSetting("morphe_loop_count_playlists", TRUE, parent(LOOP_COUNT));
+    public static final StringSetting LOOP_COUNT_PLAYLIST_COUNTS = new StringSetting("morphe_loop_count_playlist_counts", "", false, true);
     public static final BooleanSetting DO_NOT_REMEMBER_LOOP_VIDEO = new BooleanSetting("morphe_do_not_remember_loop_video", FALSE, parent(LOOP_VIDEO_BUTTON));
     public static final BooleanSetting MUTE_VIDEO_BUTTON = new BooleanSetting("morphe_mute_video_button", FALSE, true);
     public static final BooleanSetting PIP_OVERLAY_BUTTON = new BooleanSetting("morphe_pip_button_overlay", FALSE, new PipButtonPatchAvailability());
@@ -715,6 +719,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SHORTS_LOCATION_LABEL = new BooleanSetting("morphe_hide_shorts_location_label", FALSE);
     public static final BooleanSetting HIDE_SHORTS_NAVIGATION_BAR = new BooleanSetting("morphe_hide_shorts_navigation_bar", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting HIDE_SHORTS_NEW_POSTS_BUTTON = new BooleanSetting("morphe_hide_shorts_new_posts_button", TRUE);
+    public static final BooleanSetting HIDE_SHORTS_NOTIFICATIONS = new BooleanSetting("morphe_hide_shorts_notifications", FALSE);
     public static final BooleanSetting HIDE_SHORTS_PAUSED_OVERLAY_BUTTONS = new BooleanSetting("morphe_hide_shorts_paused_overlay_buttons", FALSE);
     public static final BooleanSetting HIDE_SHORTS_PREVIEW_COMMENT = new BooleanSetting("morphe_hide_shorts_preview_comment", TRUE);
     public static final BooleanSetting HIDE_SHORTS_REMIX_BUTTON = new BooleanSetting("morphe_hide_shorts_remix_button", FALSE);
@@ -1253,6 +1258,7 @@ public class Settings extends SharedYouTubeSettings {
 
         Setting.addImportExportCallback(SponsorBlockSettings.SB_IMPORT_EXPORT_CALLBACK);
         Setting.addImportExportCallback(VoiceOverTranslationPatch.VOT_IMPORT_EXPORT_CALLBACK);
+        Setting.addImportExportCallback(PlaybackInFeedsPatch.IMPORT_EXPORT_CALLBACK);
 
         // Must run before any code reads a SegmentCategory setting.
         YouTubeSponsorBlockConfig.install();

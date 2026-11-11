@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ดีบัก</string>
   <string name="morphe_debug_screen_summary">กำหนดค่าตัวเลือกขั้นสูงสำหรับนักพัฒนาและบันทึกการวินิจฉัย</string>
-  <string name="morphe_debug_title">เปิดการบันทึกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_stacktrace_title">การติดตามสแต็กบันทึกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_stacktrace_summary">รวมการติดตามสแต็กในบันทึกการแก้ไขข้อบกพร่องเพื่อช่วยระบุข้อผิดพลาด</string>
+  <string name="morphe_debug_level_title">การบันทึกการแก้ไขข้อบกพร่อง</string>
+  <string name="morphe_debug_level_entry_disabled">ปิดการใช้งาน</string>
+  <string name="morphe_debug_level_entry_debug">ดีบั๊ก</string>
+  <string name="morphe_debug_level_entry_verbose">ละเอียด</string>
   <string name="morphe_debug_toast_on_error_title">แสดงข้อความแจ้งเตือนชั่วคราวเมื่อเกิดข้อผิดพลาดของ Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"การปิดข้อความแจ้งเตือนข้อผิดพลาดจะซ่อนการแจ้งเตือนข้อผิดพลาดทั้งหมดของ Morphe
 

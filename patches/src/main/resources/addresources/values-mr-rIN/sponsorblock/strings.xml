@@ -22,7 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_voting_button_title">व्होटिंग बटण दाखवा</string>
   <string name="morphe_sb_voting_button_summary">सेगमेंट्सना अपव्होट किंवा डाऊनव्होट करण्यासाठी एक बटण जोडते</string>
   <string name="morphe_sb_square_layout_title">चौकोनी लेआउट वापरा</string>
-  <string name="morphe_sb_square_layout_summary">स्पॉन्सर ब्लॉक बटणे आणि नियंत्रकांसाठी स्क्वेअर कोपरे वापरते</string>
+  <string name="morphe_sb_square_layout_summary">SponsorBlock बटणे आणि नियंत्रणांसाठी चौकोनी कोपरे वापरते</string>
   <string name="morphe_sb_compact_skip_button_title">कॉम्पॅक्ट Skip बटण वापरा</string>
   <string name="morphe_sb_compact_skip_button_summary">जागा वाचवण्यासाठी Skip बटणाची रुंदी कमी करते</string>
   <string name="morphe_sb_auto_hide_skip_button_title">Skip बटण आपोआप लपवा</string>
@@ -114,10 +114,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_segments_filler_summary">असंबंधित प्रसंग किंवा विनोद जे व्हिडिओचा मुख्य मजकूर समजून घेण्यासाठी आवश्यक नाहीत. यामध्ये संदर्भ किंवा पार्श्वभूमी तपशील प्रदान करणारे विभाग समाविष्ट नाहीत</string>
   <string name="morphe_sb_segments_nomusic">संगीत: गैर-संगीत विभाग</string>
   <string name="morphe_sb_segments_nomusic_summary">केवळ संगीत व्हिडिओंमध्ये वापरण्यासाठी. संगीत व्हिडिओंमधील संगीताशिवाय असलेले विभाग जे आधीच दुसऱ्या श्रेणीमध्ये समाविष्ट केलेले नाहीत</string>
-  <string name="morphe_sb_skip_button_compact">वजा करा</string>
+  <string name="morphe_sb_skip_button_compact">वगळा</string>
   <string name="morphe_sb_skip_button_compact_highlight">हायलाइट</string>
-  <string name="morphe_sb_skip_button_sponsor">प्रायोजक वजा करा</string>
-  <string name="morphe_sb_skip_button_selfpromo">प्रोमो वजा करा</string>
+  <string name="morphe_sb_skip_button_sponsor">प्रायोजक वगळा</string>
+  <string name="morphe_sb_skip_button_selfpromo">प्रोमो वगळा</string>
   <string name="morphe_sb_skip_button_interaction">परस्परसंवाद वगळा</string>
   <string name="morphe_sb_skip_button_highlight">हायलाइटवर जा</string>
   <string name="morphe_sb_skip_button_intro_beginning">इंट्रो वगळा</string>

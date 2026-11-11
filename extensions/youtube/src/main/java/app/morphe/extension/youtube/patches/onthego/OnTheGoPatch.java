@@ -274,7 +274,10 @@ public final class OnTheGoPatch {
             }
 
             Logger.printDebug(() -> "Showing the On-the-go panel instead of the upsell");
-            Utils.runOnMainThread(OnTheGoSheet::show);
+            Utils.runOnMainThread(() -> {
+                FlyoutUtils.dismissFlyout();
+                OnTheGoSheet.show();
+            });
             return true;
         } catch (Exception ex) {
             Logger.printException(() -> "onCommand failure", ex);

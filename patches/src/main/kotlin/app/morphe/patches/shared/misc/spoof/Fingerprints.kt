@@ -404,3 +404,27 @@ internal object PriorityTooLowExceptionFingerprint : Fingerprint(
         string("Priority too low [priority=")
     )
 )
+
+/**
+ * Throws the exception of [PriorityTooLowExceptionFingerprint] if a task of a higher priority is running.
+ */
+internal object PriorityTaskManagerProceedOrThrowFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("I"),
+    filters = listOf(
+        methodCall(reference = { PriorityTooLowExceptionFingerprint.originalMethod })
+    )
+)
+
+/**
+ * Opens the data source a priority data source wraps, after it checks the priority of its task.
+ * Only saved videos are transferred through a priority data source.
+ */
+internal object PriorityDataSourceOpenFingerprint : Fingerprint(
+    returnType = "J",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(reference = { PriorityTaskManagerProceedOrThrowFingerprint.originalMethod }),
+        methodCall(opcode = Opcode.INVOKE_INTERFACE, returnType = "J", location = MatchAfterWithin(3))
+    )
+)

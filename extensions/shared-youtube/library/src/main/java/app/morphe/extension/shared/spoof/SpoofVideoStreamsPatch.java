@@ -18,6 +18,7 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Locale;
@@ -32,7 +33,6 @@ import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
-import app.morphe.extension.shared.spoof.requests.VisitorIdRequester;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
@@ -88,6 +88,11 @@ public class SpoofVideoStreamsPatch {
      * Largest byte range of a plain stream request. The server sends larger ranges at about playback speed.
      */
     private static final long MAX_STREAM_RANGE_LENGTH = 10 * 1024 * 1024;
+
+    /**
+     * If the next network request built on the thread is opened through a priority data source.
+     */
+    private static final ThreadLocal<Boolean> priorityDataSourceOpenOnThread = ThreadLocal.withInitial(() -> false);
 
     /**
      * If the last request built on the thread is of a shortened stream range.
@@ -152,8 +157,7 @@ public class SpoofVideoStreamsPatch {
         StreamingDataRequest.setClientOrderToUse(availableClients, client);
 
         if (SPOOF_VIDEO_STREAMS) {
-            // Prefetch visitorId for default client.
-            Utils.runOnBackgroundThread(() -> VisitorIdRequester.getVisitorId(client));
+            Utils.runOnBackgroundThread(StreamingDataRequest::prepareClients);
         }
     }
 
@@ -229,11 +233,29 @@ public class SpoofVideoStreamsPatch {
         offlineResponseResolver = resolver;
     }
 
+    private record OfflineCheck(WeakReference<Object> playerProto, boolean offline) {}
+
+    /**
+     * Last checked player response and its result. The app can create the player response model
+     * twice from the same player response. Checking serializes the player response, which caches
+     * its size, and patch_setStreamingData then sets the player config of that same response.
+     * Serializing it again fails because the cached size no longer matches.
+     */
+    @Nullable
+    private static volatile OfflineCheck lastOfflineCheck;
+
     private static boolean isOfflinePlayerResponse(@NonNull String videoId, @Nullable Object playerProto) {
         try {
             OfflineResponseResolver resolver = offlineResponseResolver;
             if (resolver != null) {
-                return resolver.isOffline(videoId, playerProto);
+                OfflineCheck lastCheck = lastOfflineCheck;
+                if (playerProto != null && lastCheck != null && lastCheck.playerProto().get() == playerProto) {
+                    return lastCheck.offline();
+                }
+
+                final boolean offline = resolver.isOffline(videoId, playerProto);
+                lastOfflineCheck = new OfflineCheck(new WeakReference<>(playerProto), offline);
+                return offline;
             }
         } catch (Exception ex) {
             Logger.printException(() -> "isOfflinePlayerResponse failure", ex);
@@ -477,9 +499,9 @@ public class SpoofVideoStreamsPatch {
                         if (config != null) {
                             Logger.printDebug(() -> "Overriding player config: " + videoId);
                             // This config replaces the whole config of the app, which tells how the
-                            // video is played inline, such as a muted preview in the feed.
+                            // video is played inline, such as a muted preview in the feed, and how it is buffered.
                             return buffers.hasAndroidMedia() && appPlayerConfig != null
-                                    ? StreamingDataRequest.addInlinePlayback(config, appPlayerConfig)
+                                    ? StreamingDataRequest.addAppPlayerConfig(config, appPlayerConfig)
                                     : config;
                         }
                     }
@@ -642,10 +664,22 @@ public class SpoofVideoStreamsPatch {
     /**
      * Injection point.
      * <p>
+     * Called when a priority data source opens the data source it wraps, which builds its request on the same thread.
+     * Only saved videos are transferred through a priority data source.
+     */
+    public static void onPriorityDataSourceOpen() {
+        priorityDataSourceOpenOnThread.set(true);
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * Called for every network request the app makes, when the request is built.
      * Saving a video requests the rest of a stream with a single range, but the server sends a large range
      * at about playback speed. The range is shortened, and {@link #isLimitedStreamRangeFinished(long)}
      * makes the app request the following range after this one ends.
+     * Only ranges opened by {@link #onPriorityDataSourceOpen()} are shortened. Playback takes the pause
+     * of a transfer as an error of the stream.
      * Ranges without an end are left as they are, because the app reads those until the stream ends.
      * The first part of the response is checked by {@link #onStreamResponseRead(ByteBuffer)}.
      *
@@ -656,8 +690,10 @@ public class SpoofVideoStreamsPatch {
     public static String limitPlainStreamRange(@Nullable String url) {
         try {
             // A request is built and read on the same thread.
+            final boolean priorityDataSource = Boolean.TRUE.equals(priorityDataSourceOpenOnThread.get());
+            priorityDataSourceOpenOnThread.set(false);
             streamRangeLimitedOnThread.set(false);
-            StreamResponse response = streamResponseOnThread.get();
+            StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
             response.checkFirstPart = false;
             response.sabrError = false;
             if (url == null || !isPlainStreamRequest(url)) {
@@ -666,6 +702,10 @@ public class SpoofVideoStreamsPatch {
 
             Uri uri = Uri.parse(url);
             response.checkFirstPart = "1".equals(uri.getQueryParameter("ump"));
+            if (!priorityDataSource) {
+                return url;
+            }
+
             String range = uri.getQueryParameter("range");
             if (range == null) {
                 return url;
@@ -712,7 +752,7 @@ public class SpoofVideoStreamsPatch {
      * @return If the response of a shortened range has ended, and the rest of the range must be requested.
      */
     public static boolean isLimitedStreamRangeFinished(long remainingBytes) {
-        if (remainingBytes != 0 || !streamRangeLimitedOnThread.get()) {
+        if (remainingBytes != 0 || !Boolean.TRUE.equals(streamRangeLimitedOnThread.get())) {
             return false;
         }
 
@@ -726,7 +766,7 @@ public class SpoofVideoStreamsPatch {
      * Called before the response of a network request is read into the buffer.
      */
     public static void onStreamResponseReadStart(ByteBuffer buffer) {
-        StreamResponse response = streamResponseOnThread.get();
+        StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
         if (response.checkFirstPart) {
             response.readStart = buffer.position();
         }
@@ -740,7 +780,7 @@ public class SpoofVideoStreamsPatch {
      * away, over and over, which freezes playback.
      */
     public static void onStreamResponseRead(ByteBuffer buffer) {
-        StreamResponse response = streamResponseOnThread.get();
+        StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
         if (!response.checkFirstPart || buffer.position() <= response.readStart) {
             return;
         }
@@ -760,7 +800,7 @@ public class SpoofVideoStreamsPatch {
      *         The app then requests the range again from a fallback host.
      */
     public static boolean isStreamSabrErrorResponse() {
-        StreamResponse response = streamResponseOnThread.get();
+        StreamResponse response = Objects.requireNonNull(streamResponseOnThread.get());
         if (!response.sabrError) {
             return false;
         }

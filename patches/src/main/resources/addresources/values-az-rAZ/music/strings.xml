@@ -153,7 +153,7 @@ Yüklənilmiş treklər burada görünür"</string>
   <string name="morphe_music_downloads_shuffle">Qarışdır</string>
   <string name="morphe_music_downloads_repeat">Təkrarla</string>
   <string name="morphe_music_downloads_minimize">Kiçilt</string>
-  <string name="morphe_music_downloads_close">Qapa</string>
+  <string name="morphe_music_downloads_close">Bağla</string>
   <string name="morphe_music_downloads_delete">Sil</string>
   <string name="morphe_music_downloads_delete_track">Yükləməni sil</string>
   <string name="morphe_music_downloads_delete_track_title">Yükləmə silinsin?</string>
@@ -476,8 +476,8 @@ Onlar bir-bir yüklənir, uzun müddət çəkə bilər və təxminən %3$s boş 
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Kiçik səsləndiricini ləğv etmək üçün sürüşdürməni aktivləşdir</string>
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Kiçik səsləndirici üzərində aşağı sürüşdürərək onu ləğv etməyə imkan verir</string>
   <!-- layout.navigationbar.navigationBarPatch -->
-  <string name="morphe_music_navigation_bar_screen_title">Fəaliyyət cizgisi</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Aşağı fəaliyyət cərgəsində hansı düymələr görünür seç</string>
+  <string name="morphe_music_navigation_bar_screen_title">Fəaliyyət zolağı</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Aşağı fəaliyyət zolağında hansı düymələr görünür seç</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ev düyməsini gizlət</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -642,7 +642,7 @@ Birinci sütun söz, ikincisi isə onun oxunuşudur; əlavə sütunlar və səhi
   <string name="morphe_music_lyrics_rime_dict_field_url">Söz siyahısı ünvanı</string>
   <string name="morphe_music_lyrics_rime_dict_field_url_hint">.dict.yaml faylının və ya onun zip\'i olan https:// ünvanı</string>
   <string name="morphe_music_lyrics_rime_dict_field_char_source">Sözdə olmayan simvollar</string>
-  <string name="morphe_music_lyrics_rime_char_source_auto">Birbaşa</string>
+  <string name="morphe_music_lyrics_rime_char_source_auto">Avtomatik</string>
   <string name="morphe_music_lyrics_rime_char_source_cantonese">Kanton simvolları</string>
   <string name="morphe_music_lyrics_rime_char_source_pinyin">Mandarin simvolları</string>
   <string name="morphe_music_lyrics_rime_char_source_none">Simvol oxunuşu yoxdur</string>
@@ -825,7 +825,7 @@ Hər iki limitə tətbiq olunur. 1.75-də dörd tam enli simvol 7 kimi sayılır
   <string name="morphe_music_lyrics_translating">Tərcümə olunur…</string>
   <string name="morphe_music_lyrics_translate_failed">Mahnı sözlərini tərcümə etmək olmadı</string>
   <string name="morphe_music_lyrics_romanize_hide">Transkripsiya olundu</string>
-  <string name="morphe_romanize_language_DEFAULT">Birbaşa</string>
+  <string name="morphe_romanize_language_DEFAULT">Avtomatik</string>
   <string name="morphe_music_lyrics_romanizing">Transkripsiya olunur...</string>
   <string name="morphe_music_lyrics_romanize_failed">Mahnı sözlərini transkripsiya etmək olmadı</string>
   <string name="morphe_music_lyrics_romanize_language_none">Heç biri</string>

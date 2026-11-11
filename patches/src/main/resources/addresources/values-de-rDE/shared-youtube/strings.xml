@@ -53,19 +53,19 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_custom_entry">Benutzerdefiniert</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Downloads</string>
-  <string name="morphe_download_mode_title">Herunterladen</string>
+  <string name="morphe_download_mode_title">Download-Modus</string>
   <string name="morphe_download_mode_entry_default">Standard</string>
   <string name="morphe_download_mode_entry_in_app">In-App-Download</string>
   <string name="morphe_download_mode_entry_external">Externer Downloader</string>
   <string name="morphe_external_downloader_name_title">Paketname des Downloaders</string>
-  <string name="morphe_external_downloader_name_summary">Paketname Ihrer installierten externen Downloader-App</string>
+  <string name="morphe_external_downloader_name_summary">Paketname deiner installierten externen Downloader-App</string>
   <string name="morphe_external_downloader_other_item_hint">Paketname eingeben</string>
   <string name="morphe_external_downloader_other_item">Andere</string>
   <string name="morphe_external_downloader_not_found_title">App nicht installiert</string>
-  <string name="morphe_external_downloader_not_installed_warning">%s ist nicht installiert. Bitte installieren Sie es</string>
+  <string name="morphe_external_downloader_not_installed_warning">%s ist nicht installiert. Bitte installiere es</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Es konnte keine installierte App mit dem Paketnamen %s gefunden werden.
 
-Überprüfen Sie, ob der Paketname korrekt ist und die App installiert ist"</string>
+Überprüfe, ob der Paketname korrekt ist und die App installiert ist"</string>
   <string name="morphe_external_downloader_empty_warning">Paketname darf nicht leer sein</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Benutzerdefiniert</string>
@@ -90,11 +90,11 @@ Diese Einstellung ändert das Symbol an keiner der folgenden Stellen:
 
 Um das Symbol überall zu ändern, patche erneut und ändere die Patch-Option 'App-Symbol'."</string>
   <string name="morphe_custom_branding_notification_icon_title">Benachrichtigungsicon</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">App-Symbol ändern</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">App-Symbol anpassen</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Spiel</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
-  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Hinweis</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Ihr Verlauf wird nicht gespeichert.&lt;br&gt;&lt;br&gt;Dies wird höchstwahrscheinlich durch einen DNS-Werbeblocker oder einen Netzwerkproxy verursacht.&lt;br&gt;&lt;br&gt;Um dies zu beheben, setzen Sie &lt;b&gt;s.youtube.com&lt;/b&gt; auf die Whitelist oder schalten Sie alle DNS-Blocker und Proxies aus</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-Hinweis</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Dein Verlauf wird nicht gespeichert.&lt;br&gt;&lt;br&gt;Dies wird höchstwahrscheinlich durch einen DNS-Werbeblocker oder einen Netzwerkproxy verursacht.&lt;br&gt;&lt;br&gt;Um dies zu beheben, setze &lt;b&gt;s.youtube.com&lt;/b&gt; auf die Whitelist oder schalte alle DNS-Blocker und Proxies aus</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nicht wieder anzeigen</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Video-Streams spoofen</string>
@@ -152,18 +152,18 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_oauth2_toast_invalid">Ungültiger VR-Anmelde-Token, melden Sie sich erneut in VR an</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Mediensteuerung in Benachrichtigungen</string>
-  <string name="morphe_notification_media_screen_summary">Passen Sie die Wiedergabesteuerungen auf Ihrem Sperrbildschirm und im Benachrichtigungsfeld an.</string>
+  <string name="morphe_notification_media_screen_summary">Passe die Wiedergabesteuerung auf deinem Sperrbildschirm und im Benachrichtigungsfeld an.</string>
   <string name="morphe_hide_notification_media_prev_next_title">Vorherige &amp; nächste Schaltflächen ausblenden</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Blendet Zurück- und Weiter-Schaltflächen in Medienbenachrichtigung, Sperrbildschirm und Kopfhörersteuerung aus.</string>
   <string name="morphe_disable_notification_media_seekbar_title">Videofortschrittsbalken deaktivieren</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Verhindert das Verschieben der Fortschrittsleiste auf dem Sperrbildschirm und im Benachrichtigungsfeld.</string>
-  <string name="morphe_seek_notification_media_prev_next_title">Mit <b>&amp;</b>-Tasten suchen</string>
-  <string name="morphe_seek_notification_media_prev_next_summary">Steuerelemente für Medienbenachrichtigung, Sperrbildschirm und Kopfhörer ändern: Statt Videos zu wechseln, jetzt suchen</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Mit Vorherige- &amp; Nächste-Tasten spulen</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Ändert die Steuerung in Medienbenachrichtigung, Sperrbildschirm und Kopfhörern so, dass gespult statt das Video gewechselt wird</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Rückspullänge</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Sekunden zum Rückspulen mit der Vorherige-Taste</string>
   <string name="morphe_seek_notification_media_fast_forward_length_title">Vorspulänge</string>
   <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekunden zum Vorspulen mit der Nächste-Taste</string>
-  <string name="morphe_seek_notification_media_length_invalid">Suchlänge muss zwischen 1 und %s Sekunden liegen. Verwende Standardwert</string>
+  <string name="morphe_seek_notification_media_length_invalid">Die Spuldauer muss zwischen 1 und %s Sekunden liegen. Standardwert wird verwendet</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC-Protokoll deaktivieren </string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -173,7 +173,7 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_force_original_audio_summary">Spielt immer die Original-Audiospur des Videos ab, anstatt eine synchronisierte Version</string>
   <!-- misc.audio.silence.skipSilencePatch -->
   <string name="morphe_skip_silence_title">Stille überspringen</string>
-  <string name="morphe_skip_silence_summary">Überspringt automatisch Stillepausen in Video-Audio</string>
+  <string name="morphe_skip_silence_summary">Überspringt automatisch stille Pausen im Video-Audio</string>
   <string name="morphe_skip_silence_minimum_pause_title">Minimale Pausenlänge</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Nur Pausen, die mindestens so lang sind, werden verkürzt. Wirkt sich erst aus, wenn das nächste Video startet</string>
   <!-- misc.proxy.networkProxyPatch -->
@@ -189,7 +189,7 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_proxy_https_summary">Verwendet HTTPS, um sich mit dem Proxyserver statt mit HTTP zu verbinden</string>
   <string name="morphe_proxy_auth_enabled_title">Proxy-Authentifizierung</string>
   <string name="morphe_proxy_auth_enabled_summary">Sendet eine Basis-Authentifizierung mit Proxy-Anfragen</string>
-  <string name="morphe_proxy_auth_username_title">Ihr Benutzername</string>
+  <string name="morphe_proxy_auth_username_title">Proxy-Benutzername</string>
   <string name="morphe_proxy_auth_username_summary">Benutzername für die Basis-Proxy-Authentifizierung</string>
   <string name="morphe_proxy_auth_password_title">Proxy-Passwort</string>
   <string name="morphe_proxy_auth_password_summary">Passwort für die Basis-Proxy-Authentifizierung</string>
@@ -208,16 +208,18 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_replace_links_with_shortener_title">Freigabe-Links zu youtu.be ändern</string>
   <string name="morphe_replace_links_with_shortener_summary">Sorgt dafür, dass geteilte Links das kürzere youtu.be URL-Format nutzen</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Debug-Protokollpuffer</string>
-  <string name="morphe_debug_protobuffer_summary">Fügt zusätzliche Protokollierungsinformationen für Entwickler hinzu, um App-Komponenten zu identifizieren</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Wenn du diese Einstellung aktivierst, werden zusätzliche Layout-Daten protokolliert, einschließlich des eingeblendeten Texts einiger UI-Elemente.
+  <string name="morphe_debug_litho_title">Litho-Protokollierung</string>
+  <string name="morphe_debug_litho_entry_disabled">Deaktiviert</string>
+  <string name="morphe_debug_litho_entry_path">Pfad</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Pfad und Puffer</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho-Logging protokolliert die Layout-Komponenten der App, einschließlich des eingeblendeten Texts einiger UI-Elemente.
 
 Das kann beim Erstellen benutzerdefinierter Filter helfen, Komponenten besser zu identifizieren.
 
 Allerdings werden dabei auch einige Nutzerdaten protokolliert, zum Beispiel deine IP-Adresse"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Eigener Filter</string>
-  <string name="morphe_custom_filter_screen_summary">Konfigurieren Sie benutzerdefinierte Filter, um Komponenten auszublenden</string>
+  <string name="morphe_custom_filter_screen_summary">Konfiguriere benutzerdefinierte Filter, um Komponenten auszublenden</string>
   <string name="morphe_custom_filter_title">Eigenen Filter aktivieren</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liste der Komponenten-Pfad-Generator-Zeichenketten zum Filtern, getrennt durch neue Zeilen</string>
@@ -225,7 +227,7 @@ Allerdings werden dabei auch einige Nutzerdaten protokolliert, zum Beispiel dein
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filter für das Einstellungsmenü</string>
   <string name="morphe_settings_menu_filter_screen_summary">Elemente auf dem Bildschirm der Standard-App-Einstellungen anhand ihres sichtbaren Namens ausblenden</string>
-  <string name="morphe_settings_menu_filter_picker_empty">Öffnen Sie den Bildschirm der Standard-App-Einstellungen einmal, um die Liste zu befüllen</string>
+  <string name="morphe_settings_menu_filter_picker_empty">Öffne den Bildschirm der Standard-App-Einstellungen einmal, um die Liste zu befüllen</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Hinweis zur Altersfreigabe entfernen</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Dies umgeht die Altersbeschränkung nicht. Es akzeptiert sie nur automatisch</string>
@@ -240,7 +242,7 @@ Wenn du ein YouTube-Premium-Nutzer bist, ist diese Einstellung möglicherweise n
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_unavailable_summary">"Behebt Wiedergabeprobleme mit einem externen PoToken-Minter (Experimentell)
 
-Um diese Funktion zu nutzen, deaktiviere 'Video-Streams spoofen'.originalText"</string>
+Um diese Funktion zu nutzen, deaktiviere 'Video-Streams vortäuschen'."</string>
   <string name="morphe_external_potoken_provider_user_dialog_message">Wenn es nicht funktioniert, versuche, MicroG zwangsweise zu beenden.</string>
   <string name="morphe_external_potoken_provider_settings_summary">Öffne die PotHelper-Einstellungen.</string>
   <string name="morphe_external_potoken_provider_about_summary">"Diese Funktion befindet sich derzeit in der Entwicklung und funktioniert möglicherweise nicht
@@ -250,14 +252,14 @@ Tippe hier, um PotHelper herunterzuladen."</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_expired_dialog_message">"Das in dieser Version von PotHelper enthaltene Token funktioniert nicht mehr
 
-Aktivieren Sie „Video-Streams vortäuschen“, um die Wiedergabe zu reparieren"</string>
+Aktiviere \"Video-Streams vortäuschen\", um die Wiedergabe zu reparieren"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Aktivieren</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">App-Version spoofen</string>
   <string name="morphe_spoof_app_version_summary">Täuscht dem Server eine ältere App-Version vor, um ältere UI-Funktionen wiederherzustellen</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Die App-Version wird zu einer älteren Version gefälscht.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Die App-Version wird als ältere Version vorgetäuscht.
 
-Dadurch ändert sich das Erscheinungsbild und die Funktionen der App, es können jedoch unbekannte Nebeneffekte auftreten.
+Dadurch ändern sich das Erscheinungsbild und die Funktionen der App, es können jedoch unbekannte Nebeneffekte auftreten.
 
 Sollte die Funktion später deaktiviert werden, wird empfohlen, die App-Daten zu löschen, um Fehler in der Benutzeroberfläche zu vermeiden"</string>
   <string name="morphe_spoof_app_version_target_title">Angestrebte App-Version</string>
@@ -276,7 +278,7 @@ Sollte die Funktion später deaktiviert werden, wird empfohlen, die App-Daten zu
   <string name="morphe_custom_font_type_entry_system">Systemschriftart des Geräts</string>
   <string name="morphe_custom_font_type_entry_custom">Benutzerdefinierte Schriftartdatei</string>
   <string name="morphe_custom_font_file_title">Benutzerdefinierte Schriftartdatei</string>
-  <string name="morphe_custom_font_file_summary">Wählen Sie eine TTF- oder OTF-Schriftdatei aus</string>
+  <string name="morphe_custom_font_file_summary">Wähle eine TTF- oder OTF-Schriftdatei aus</string>
   <string name="morphe_custom_font_file_invalid">Die ausgewählte Datei ist keine TTF- oder OTF-Schriftdatei</string>
   <string name="morphe_custom_font_failed_to_load">Die benutzerdefinierte Schriftartdatei konnte nicht geladen werden und ist deaktiviert</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
@@ -307,13 +309,13 @@ Die ID des Videos, das du dir ansiehst, wird an die Return YouTube Dislike-API g
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">API-Antwortzeit, letztes Medium</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislikes sind vorübergehend nicht verfügbar - Client API Ratenbegrenzung aktiv</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API-Abstimmungen abrufen, Anzahl der Aufrufe</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Keine Netzwerkanrufe durchgeführt</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s Netzwerkanrufe durchgeführt</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Keine Netzwerkaufrufe durchgeführt</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s Netzwerkaufrufe durchgeführt</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API-Abruf der Bewertungen, Anzahl der Zeitüberschreitungen</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Keine Netzwerkaufrufe haben eine Zeitüberschreitung erreicht</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s Netzwerkanrufe sind abgelaufen</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s Netzwerkaufrufe sind abgelaufen</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Client-Ratenbegrenzungen der API</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Keine Client-Ratenbegrenzungen festgestellt</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client-Ratenbegrenzung %s-mal encountered</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Client-Ratenbegrenzung %s-mal aufgetreten</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s Millisekunden</string>
 </resources>

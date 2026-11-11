@@ -331,6 +331,9 @@ val downloadsPatch = patch(
             )
         }
 
+        // Start saved videos played from Downloads at the position saved in Downloads.
+        hookOfflineDownloadResume()
+
         // Keep saved videos playable, if the server disables them when they are refreshed.
         UpdateOfflineVideoPolicyFingerprint.matchAll().forEach { match ->
             // The method has too few free registers.

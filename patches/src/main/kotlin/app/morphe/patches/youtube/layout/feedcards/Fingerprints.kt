@@ -9,7 +9,6 @@ package app.morphe.patches.youtube.layout.feedcards
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -64,29 +63,6 @@ internal class DividerItemOffsetsFingerprint(dividerInfoLookupMethod: MethodRefe
     ),
     filters = listOf(
         methodCall(reference = dividerInfoLookupMethod)
-    )
-)
-
-/**
- * List item of an element, which keeps the bytes of the element.
- */
-internal object ElementItemConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    parameters = listOf("L"),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            returnType = "[B"
-        ),
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            type = "[B",
-            location = MatchAfterWithin(1)
-        ),
-        opcode(Opcode.CONST_4, MatchAfterImmediately()),
-        opcode(Opcode.IPUT_OBJECT, MatchAfterImmediately()),
-        opcode(Opcode.RETURN_VOID, MatchAfterImmediately())
     )
 )
 

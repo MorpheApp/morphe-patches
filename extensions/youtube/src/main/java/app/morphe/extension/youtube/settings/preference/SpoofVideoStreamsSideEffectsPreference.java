@@ -98,7 +98,7 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
                     summary = str("morphe_spoof_video_streams_about_no_audio_tracks")
                             + '\n' + str("morphe_spoof_video_streams_about_no_stable_volume")
                             + '\n' + str("morphe_spoof_video_streams_about_sign_in_to_vr_required");
-            case ANDROID_VR_SABR, ANDROID_XR_SABR ->
+            case ANDROID_VR_SABR, ANDROID_VR_EXPERIMENTAL, ANDROID_XR_SABR ->
                     summary = str("morphe_spoof_video_streams_about_no_stable_volume")
                             + '\n' + str("morphe_spoof_video_streams_about_sign_in_to_vr_required");
             case VISIONOS_1_02, VISIONOS_1_03 ->

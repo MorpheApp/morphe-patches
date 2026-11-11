@@ -117,7 +117,7 @@ Second \"item\" text"</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">เข้าสู่ระบบ Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR ต้องมีการลงชื่อเข้าใช้แยกต่างหาก แตะที่นี่เพื่อดำเนินการต่อ</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">อยู่ในส่วนของ Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">ลงชื่อเข้าใช้ Android VR อยู่ในขณะนี้</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">เปลี่ยน \'ไคลเอ็นต์เริ่มต้น\' เป็น Android VR เพื่อใช้งานคุณสมบัติ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">เข้าสู่ระบบ Android VR</string>
@@ -127,12 +127,12 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">ออกจากระบบ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">คำแนะนำ</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"รหัสเข้าสู่ระบบ: %s
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"รหัสเปิดใช้งาน: %s
 
-1. กด 'เปิดเว็บไซต์' ด้านล่างเพื่อเปิดเข้าสู่เว็บไซต์ 'ที่เชื่อมต่ออุปกรณ์'
-2. วางข้อมูลจากคลิปบอร์ด (หรือสามารถพิมพ์ออกมาได้) ของรหัสเข้าสู่ระบบที่อยู่ด้านบนนี้
-3. หากต้องเข้าสู่ระบบ Google ให้ดำเนินการทันที ถ้ามีหลายบัญชีให้เลือกบัญชีนี้ของ YouTube
-4. กด 'Metadata API'
+1. กด 'เปิดเว็บไซต์' ด้านล่างเพื่อเปิดเว็บไซต์ 'เชื่อมต่ออุปกรณ์'
+2. วางรหัสเปิดใช้งานที่แสดงด้านบนจากคลิปบอร์ด (หรือพิมพ์ตาม)
+3. หากมีการขอให้เข้าสู่ระบบ Google ให้เข้าสู่ระบบ หากมีหลายบัญชี ให้เลือกบัญชี YouTube นี้
+4. กด 'อนุญาตการเข้าถึง YouTube VR'
 5. กลับมาที่แอปนี้หลังจากเห็นข้อความ 'อุปกรณ์ได้เชื่อมต่อแล้ว'"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">ไม่สามารถออกรหัสเปิดใช้งานได้</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">ไม่สามารถออกโทเค็นการตรวจสอบสิทธิ์ได้</string>
@@ -157,8 +157,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">ซ่อนปุ่มก่อนหน้าและถัดไปในการแจ้งเตือนสื่อ หน้าจอล็อก และตัวควบคุมหูฟัง</string>
   <string name="morphe_disable_notification_media_seekbar_title">ปิดใช้งานแถบเลื่อน</string>
   <string name="morphe_disable_notification_media_seekbar_summary">ป้องกันการลากแถบเลื่อนบนหน้าจอล็อกและแผงการแจ้งเตือน</string>
-  <string name="morphe_seek_notification_media_prev_next_title">ค้นหาด้วยปุ่มก่อนหน้า &amp; ถัดไป</string>
-  <string name="morphe_seek_notification_media_prev_next_summary">เปลี่ยนการควบคุมสำหรับการแจ้งเตือนสื่อ หน้าจอปิดบัง และหูฟังให้เป็นการเลื่อนแทนที่จะเปลี่ยนวิดีโอ</string>
+  <string name="morphe_seek_notification_media_prev_next_title">เลื่อนเวลาด้วยปุ่มก่อนหน้า &amp; ถัดไป</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">เปลี่ยนการควบคุมสำหรับการแจ้งเตือนสื่อ หน้าจอล็อก และหูฟังให้เป็นการเลื่อนแทนที่จะเปลี่ยนวิดีโอ</string>
   <string name="morphe_seek_notification_media_rewind_length_title">ความยาวของการย้อนกลับ</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">จำนวนวินาทีเพื่อย้อนกลับเมื่อใช้ปุ่มก่อนหน้า</string>
   <string name="morphe_seek_notification_media_fast_forward_length_title">ความยาวของการเลื่อนไปข้างหน้า</string>
@@ -167,7 +167,7 @@ Second \"item\" text"</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">ปิดใช้งานโพรโทคอล QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">ปิดเสียง DRC</string>
+  <string name="morphe_disable_drc_audio_title">ปิดใช้งานเสียง DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">บังคับใช้ภาษาเสียงต้นฉบับ</string>
   <string name="morphe_force_original_audio_summary">เล่นแทร็กเสียงต้นฉบับของวิดีโอเสมอแทนที่จะเป็นฉบับพากย์</string>
@@ -208,13 +208,15 @@ Second \"item\" text"</string>
   <string name="morphe_replace_links_with_shortener_title">เปลี่ยนลิงก์การแชร์เป็น youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">บังคับให้วิดีโอใช้รูปแบบ URL แบบสั้น youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">บันทึกโปรโตคอลบัฟเฟอร์</string>
-  <string name="morphe_debug_protobuffer_summary">เพิ่มข้อมูลการบันทึกเพิ่มเติมสำหรับนักพัฒนาเพื่อระบุส่วนประกอบของแอป</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"การเปิดใช้งานการตั้งค่านี้จะบันทึกข้อมูลเค้าโครงเพิ่มเติม รวมถึงข้อความบนหน้าจอสำหรับส่วนประกอบ UI บางส่วน
+  <string name="morphe_debug_litho_title">การบันทึก Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">ปิดการใช้งาน</string>
+  <string name="morphe_debug_litho_entry_path">เส้นทาง</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">เส้นทางและบัฟเฟอร์</string>
+  <string name="morphe_debug_litho_user_dialog_message">"การบันทึกข้อมูลของ Litho จะบันทึกส่วนประกอบเค้าโครงของแอป รวมถึงข้อความบนหน้าจอสำหรับส่วนประกอบ UI บางส่วน
 
 ซึ่งจะช่วยระบุส่วนประกอบเมื่อสร้างตัวกรองที่กำหนดเองได้
 
-อย่างไรก็ตาม การเปิดใช้งานนี้จะบันทึกข้อมูลผู้ใช้บางอย่าง เช่น ที่อยู่ IP ของคุณด้วย"</string>
+อย่างไรก็ตาม สิ่งนี้จะบันทึกข้อมูลผู้ใช้บางอย่าง เช่น ที่อยู่ IP ของคุณด้วย"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">ตัวกรองแบบกำหนดเอง</string>
   <string name="morphe_custom_filter_screen_summary">กำหนดค่าตัวกรองแบบกำหนดเองเพื่อซ่อนส่วนประกอบใดๆ</string>

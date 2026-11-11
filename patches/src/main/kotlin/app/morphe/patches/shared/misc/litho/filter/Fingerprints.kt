@@ -218,6 +218,30 @@ internal object ListSectionUpdateRowsFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Constructor of the item of an element in a list, such as a card of the feed or a cell of a grid,
+ * which keeps the bytes of the element.
+ */
+internal object ElementItemConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "[B"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "[B",
+            location = MatchAfterWithin(1)
+        ),
+        opcode(Opcode.CONST_4, MatchAfterImmediately()),
+        opcode(Opcode.IPUT_OBJECT, MatchAfterImmediately()),
+        opcode(Opcode.RETURN_VOID, MatchAfterImmediately())
+    )
+)
+
 // region Sticky headers
 
 /**

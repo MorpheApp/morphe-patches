@@ -79,7 +79,7 @@ Second \"item\" text"</string>
   <!-- interaction.downloads.downloadsPatch -->
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
-  <!-- interaction.watchlater.watchLaterPatch -->
+  <!-- interaction.playlist.playlistPatch -->
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
@@ -175,6 +175,7 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
+  <string name="morphe_continue_watching_prompt_entry_2">បានផ្ដាច់</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->

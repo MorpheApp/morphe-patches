@@ -42,7 +42,7 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_entry_12">深綠色</string>
   <string name="morphe_theme_color_dark_entry_13">深黃色</string>
   <string name="morphe_theme_color_dark_entry_14">深橙色</string>
-  <string name="morphe_theme_color_dark_entry_15">深紅主題</string>
+  <string name="morphe_theme_color_dark_entry_15">深紅色</string>
   <string name="morphe_theme_color_dark_custom_title">自訂深色背景</string>
   <string name="morphe_theme_color_dark_custom_summary">設定深色主題的背景顏色</string>
   <string name="morphe_theme_color_entry_1">應用程式預設</string>
@@ -52,11 +52,11 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You（第三色）</string>
   <string name="morphe_theme_color_custom_entry">自訂</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">已下載的音樂</string>
+  <string name="morphe_external_downloader_screen_title">下載</string>
   <string name="morphe_download_mode_title">下載模式</string>
   <string name="morphe_download_mode_entry_default">預設</string>
   <string name="morphe_download_mode_entry_in_app">在應用程式內下載</string>
-  <string name="morphe_download_mode_entry_external">外部下載程式</string>
+  <string name="morphe_download_mode_entry_external">外部下載器</string>
   <string name="morphe_external_downloader_name_title">下載器套件名稱</string>
   <string name="morphe_external_downloader_name_summary">您已安裝的外部下載器應用程式的套件名稱</string>
   <string name="morphe_external_downloader_other_item_hint">輸入套件名稱</string>
@@ -90,11 +90,11 @@ Second \"item\" text"</string>
 
 若要變更所有位置的圖示，請再次修補，並變更「App icon」修補選項。"</string>
   <string name="morphe_custom_branding_notification_icon_title">通知圖示</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">變更應用程式圖示？</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">符合應用程式圖示</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe 遊戲</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br&gt;&lt;br&gt;This most likely is caused by a DNS ad blocker or network proxy.&lt;br&gt;&lt;br&gt;To fix this, whitelist &lt;b&gt;s.youtube.com&lt;/b&gt; or turn off all DNS blockers and proxies</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">您的觀看記錄未被儲存。&lt;br&gt;&lt;br&gt;這很可能是由 DNS 廣告攔截器或網路代理造成的。&lt;br&gt;&lt;br&gt;若要修正此問題，請將 &lt;b&gt;s.youtube.com&lt;/b&gt; 加入白名單，或關閉所有 DNS 攔截器和代理。</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">不再顯示</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">偽裝影片串流</string>
@@ -158,7 +158,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_notification_media_seekbar_title">停用進度列</string>
   <string name="morphe_disable_notification_media_seekbar_summary">防止在鎖定畫面和通知面板上拖曳進度列</string>
   <string name="morphe_seek_notification_media_prev_next_title">使用上一首 &amp; 下一首按鈕搜尋</string>
-  <string name="morphe_seek_notification_media_prev_next_summary">修改媒體通知、鎖定螢幕和耳機的 Controls，以進行搜尋而不是切換影片</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">變更媒體通知、鎖定畫面和耳機的控制項，改為搜尋而非切換影片</string>
   <string name="morphe_seek_notification_media_rewind_length_title">倒帶長度</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">使用「上一首」按鈕倒帶的秒數</string>
   <string name="morphe_seek_notification_media_fast_forward_length_title">快轉長度</string>
@@ -178,18 +178,18 @@ Second \"item\" text"</string>
   <string name="morphe_skip_silence_minimum_pause_summary">無聲停頓至少要足夠這個時間長度才會被縮短。會在下一段影片開始時生效。</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">網路代理</string>
-  <string name="morphe_proxy_screen_summary">透過代理路由支援網路請求</string>
+  <string name="morphe_proxy_screen_summary">透過代理伺服器轉送支援的網路請求</string>
   <string name="morphe_proxy_enabled_title">啟用代理</string>
   <string name="morphe_proxy_enabled_summary">透過已設定的 HTTP 或 HTTPS 代理伺服器路由受支援的網路請求</string>
   <string name="morphe_proxy_host_title">代理伺服器主機</string>
-  <string name="morphe_proxy_host_summary">代理伺服器的hostname 或 IP 位址</string>
+  <string name="morphe_proxy_host_summary">代理伺服器的主機名稱或 IP 位址</string>
   <string name="morphe_proxy_port_title">代理伺服器埠</string>
   <string name="morphe_proxy_port_summary">代理伺服器埠</string>
   <string name="morphe_proxy_https_title">使用 HTTPS 代理伺服器</string>
   <string name="morphe_proxy_https_summary">改用 HTTPS 連接至代理伺服器，而不是 HTTP</string>
   <string name="morphe_proxy_auth_enabled_title">代理伺服器驗證</string>
   <string name="morphe_proxy_auth_enabled_summary">在代理伺服器請求中傳送基本驗證</string>
-  <string name="morphe_proxy_auth_username_title">您的使用者名稱：</string>
+  <string name="morphe_proxy_auth_username_title">代理伺服器使用者名稱</string>
   <string name="morphe_proxy_auth_username_summary">用於基本代理伺服器驗證的使用者名稱</string>
   <string name="morphe_proxy_auth_password_title">代理伺服器密碼</string>
   <string name="morphe_proxy_auth_password_summary">用於基本代理伺服器驗證的密碼</string>
@@ -199,7 +199,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fullscreen_ads_title">隱藏全螢幕廣告</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <string name="morphe_force_original_audio_not_available">若要使用此功能，請將「偽造視訊串流」變更為 Android Studio 和 Android VR Downgraded 以外的任何用戶端。</string>
+  <string name="morphe_force_original_audio_not_available">若要使用此功能，請將「欺騙影片串流」變更為「Android Studio」和「Android VR Downgraded」以外的任何用戶端。</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">清理分享連結</string>
   <string name="morphe_sanitize_sharing_links_summary">已從分享連結中移除追蹤查詢參數</string>
@@ -208,13 +208,15 @@ Second \"item\" text"</string>
   <string name="morphe_replace_links_with_shortener_title">將分享連結更改為 youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">強制影片使用縮短的 youtu.be URL 格式</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">偵錯日誌協定緩衝區</string>
-  <string name="morphe_debug_protobuffer_summary">為開發者新增額外的紀錄資訊，以便識別應用程式元件</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Enabling this setting will log additional layout data, including on-screen text for some UI components.
+  <string name="morphe_debug_litho_title">Litho 記錄</string>
+  <string name="morphe_debug_litho_entry_disabled">已停用</string>
+  <string name="morphe_debug_litho_entry_path">路徑</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">路徑與緩衝區</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho 記錄會記錄應用程式的版面配置元件，包括某些 UI 元件的螢幕文字。
 
-This can help identify components when creating custom filters.
+這有助於在建立自訂篩選器時識別元件。
 
-However, enabling this will also log some user data such as your IP address"</string>
+然而，這也會記錄某些使用者資料，例如你的 IP 位址"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">自訂篩選器</string>
   <string name="morphe_custom_filter_screen_summary">設定自訂篩選器以隱藏任何元件</string>
@@ -233,12 +235,12 @@ However, enabling this will also log some user data such as your IP address"</st
   <string name="morphe_potoken_provider_screen_title">PoToken 提供者</string>
   <string name="morphe_potoken_provider_screen_summary">設定 PoToken 提供者以避免播放問題</string>
   <string name="morphe_external_potoken_provider_title">外部 PoToken 提供者</string>
-  <string name="morphe_external_potoken_provider_summary">"使用外部 PoToken minter 修復播放問題（實驗性）
+  <string name="morphe_external_potoken_provider_summary">"使用外部 PoToken 鑄造器修復播放問題（實驗性）
 
 如果您是 YouTube Premium 用戶，可能不需要此設定"</string>
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
-  <string name="morphe_external_potoken_provider_unavailable_summary">"使用外部 PoToken 铸造器修復播放問題（實驗性）
+  <string name="morphe_external_potoken_provider_unavailable_summary">"使用外部 PoToken 鑄造器修復播放問題（實驗性）
 
 要使用此功能，請關閉「欺騙影片串流」"</string>
   <string name="morphe_external_potoken_provider_user_dialog_message">如果無法運作，請嘗試強制關閉 MicroG</string>
@@ -255,11 +257,11 @@ However, enabling this will also log some user data such as your IP address"</st
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">偽裝應用程式版本</string>
   <string name="morphe_spoof_app_version_summary">欺騙伺服器，使其認為您正在使用較舊的應用程式版本，以恢復舊版使用者介面功能</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"App version will be spoofed to an older version.
+  <string name="morphe_spoof_app_version_user_dialog_message">"應用程式版本將被偽裝成較舊的版本。
 
-This will change the appearance and features of the app, but unknown side effects may occur.
+這會改變應用程式的外觀和功能，但可能會產生未知的副作用。
 
-If later turned off, it is recommended to clear the app data to prevent UI bugs"</string>
+若之後關閉此設定，建議清除應用程式資料以避免 UI 錯誤"</string>
   <string name="morphe_spoof_app_version_target_title">應用程式偽裝目標版本</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">應用程式更新頻率</string>
@@ -305,15 +307,15 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs"
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">API 回應時間，最小值</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">API 回應時間，最大值</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">API 回應時間，上次媒體</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">暫時無法顯示不喜歡人數 - 客戶端 API 速率限制生效</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">暫時無法顯示不喜歡人數 - 用戶端 API 速率限制生效</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API 取得投票呼叫數</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">未進行網路呼叫</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">已進行 %s 次網路呼叫</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API 取得投票呼叫數</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API 取得投票呼叫逾時次數</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">未發生網路呼叫逾時</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">有 %s 次網路呼叫逾時</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API 客戶端速率限制</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">未遭遇客戶端速率限制</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API 用戶端速率限制</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">未遭遇用戶端速率限制</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">遭遇用戶端速率限制 %s 次</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s 毫秒</string>
 </resources>

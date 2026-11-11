@@ -94,7 +94,7 @@ import app.morphe.patches.shared.misc.litho.filter.EXTENSION_CLASS as LITHO_FILT
 private const val LAYOUT_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter;"
 private const val EXTENSION_FLYOUT_MENU_ITEM_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter\$FlyoutMenuItem;"
+    $$"Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter$FlyoutMenuItem;"
 private const val DESCRIPTION_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/DescriptionComponentsFilter;"
 private const val EXPLORE_MENU_FILTER =

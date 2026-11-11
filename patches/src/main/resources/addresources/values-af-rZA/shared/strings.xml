@@ -32,7 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">Morphe instellings is teruggesit na verstek</string>
   <string name="morphe_settings_import_success">%s instellings ingevoer</string>
   <string name="morphe_settings_import_failure_parse">Invoer misluk: %s</string>
-  <string name="morphe_settings_navigate_up">Navigeer op</string>
+  <string name="morphe_settings_navigate_up">Gaan terug</string>
   <string name="morphe_settings_search_hint">Soek instellings</string>
   <string name="morphe_settings_screen_info_title">Oor</string>
   <string name="morphe_settings_search_no_results_title">Geen resultate gevind vir \'%s\'</string>
@@ -42,7 +42,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_remove">Verwyder uit soekgeskiedenis</string>
   <string name="morphe_settings_search_clear_history">Vee soekgeskiedenis uit</string>
   <string name="morphe_settings_search_clear_history_message">Is jy seker dat jy alle soekgeskiedenis wil uitvee?</string>
-  <string name="morphe_settings_search_tips_title">Soektip</string>
+  <string name="morphe_settings_search_tips_title">Soekwenke</string>
   <string name="morphe_settings_search_tips_summary">"• Tik op 'n pad om daaroor te navigeer
 • Druk lank op 'n instelling om daaroor te navigeer
 • Druk Enter om 'n soekversoek aan die geskiedenis te voeg
@@ -96,19 +96,20 @@ Om nuwe tale te vertaal of bestaande vertalings te verbeter, besoek morphe.softw
   <string name="morphe_settings_about_licenses_loading">Laai…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ontfouting</string>
-  <string name="morphe_debug_screen_summary">Konfigureer gevorderde ontwikkelaarsopsies en diagnostiese logs</string>
-  <string name="morphe_debug_title">Aktiveer ontfoutingslogboek</string>
-  <string name="morphe_debug_stacktrace_title">Ontfouting logboek stapelspoor</string>
-  <string name="morphe_debug_stacktrace_summary">Sluit stapelspore in in ontfoutingslogboeke om foute te help identifiseer</string>
-  <string name="morphe_debug_toast_on_error_title">Wys rooster op Morphe fout</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Om foutrooster uit te skakel, verberg dit al Morphe foutkennisgewings.
+  <string name="morphe_debug_screen_summary">Konfigureer gevorderde ontwikkelaarsopsies en diagnostiese logboeke</string>
+  <string name="morphe_debug_level_title">Ontfouting logboek</string>
+  <string name="morphe_debug_level_entry_disabled">Deaktiveer</string>
+  <string name="morphe_debug_level_entry_debug">Foutopsporing</string>
+  <string name="morphe_debug_level_entry_verbose">Uitbreidend</string>
+  <string name="morphe_debug_toast_on_error_title">Wys kennisgewing op Morphe-fout</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Die afskakeling van foutkennisgewings verberg alle Morphe-foutkennisgewings.
 
-Jy sal nie van enige onverwags gebeurtenisse in kennis gestel word nie"</string>
-  <string name="morphe_debug_export_logs_title">Voer ontfouting protokolle uit</string>
-  <string name="morphe_debug_export_logs_summary">Voer Morphe ontfouting protokolle uit</string>
+Jy sal nie van enige onverwagte gebeurtenisse in kennis gestel word nie"</string>
+  <string name="morphe_debug_export_logs_title">Voer ontfoutingslogboeke uit</string>
+  <string name="morphe_debug_export_logs_summary">Voer Morphe ontfoutingslogboeke uit</string>
   <string name="morphe_debug_export_logs_success">Ontfouting logboeke is suksesvol uitgevoer</string>
   <string name="morphe_debug_export_logs_failed">Ontfouting logboeke kon nie uitgevoer word nie</string>
-  <string name="morphe_debug_logs_search_hint">Soek ontfouting logboeke</string>
+  <string name="morphe_debug_logs_search_hint">Soek ontfoutingslogboeke…</string>
   <string name="morphe_debug_export_logs_clear">Klar</string>
   <string name="morphe_debug_logs_disabled">Ontfouting logboeke is gedeaktiveer</string>
   <string name="morphe_debug_logs_none_found">Geen ontfouting logboeke gevind nie</string>
@@ -140,7 +141,7 @@ Jy sal nie van enige onverwags gebeurtenisse in kennis gestel word nie"</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Kenmerkvlae gekopieer na knipbord</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Herstart die program om hierdie instelling te gebruik</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Uitvoer en invoer</string>
-  <string name="morphe_debug_feature_flags_manager_import_success">Geïmporteerde %s kenmerk-vlagte</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s kenmerk-vlagte ingevoer</string>
   <string name="morphe_debug_feature_flags_manager_import_failed">Geen kenmerk-vlagte gevind nie</string>
   <string name="morphe_debug_feature_flags_manager_export_file_success">Kenmerk-vlagte suksesvol uitgevoer</string>
   <string name="morphe_debug_feature_flags_manager_export_file_failed">Kon nie kenmerk-vlagte uitvoer nie</string>
@@ -183,8 +184,8 @@ Die gedrag het vroeër in die soektog verdwyn, so meer as een kenmerk-vlag kan b
   <string name="gms_core_dialog_title">Aandag benodig</string>
   <string name="gms_core_dialog_outdated_message">"Jou MicroG v%1$s is verouderd en mag probleme veroorsaak.
 
-Kyk asseblief om MicroG na die nuutste weergawe v%2$s op te dateer"</string>
-  <string name="gms_core_dialog_update_text">Dateer op</string>
+Dateer asseblief MicroG op na die nuutste weergawe v%2$s"</string>
+  <string name="gms_core_dialog_update_text">Opdateer</string>
   <string name="gms_core_dialog_ignore_text">Ignoreer</string>
   <string name="gms_core_dialog_conflict_message">"Die geïnstalleerde MicroG word nie deur Morphe aanbeveel nie:
 
@@ -201,11 +202,11 @@ Dit is benodig vir die program om te werk"</string>
   <string name="gms_core_dialog_open_website_text">Maak webwerf oop</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG se batterijoptimerings moet afgeskakel word om probleme te vermy.
 
-Afkeskakeling van batterijoptimerings vir MicroG sal nie negatief op batterylewing raak nie.
+Afskakeling van batterijoptimerings vir MicroG sal nie negatief op batterylewing raak nie.
 
-Tik die voortgaan-knoop en staar optimaliseringsveranderinge toe"</string>
+Tik die voortgaan-knoppie en laat optimaliseringsveranderinge toe"</string>
   <string name="gms_core_dialog_continue_text">Gaan voort</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Toon MicroG battery optimerings dialoog</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Wys MicroG se battery-optimalisasie-dialoog</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering hiervan sal die MicroG battery optimerings prompt verberg.
 
 As battery optimerings nie verander word nie dan mag jy ervaar:

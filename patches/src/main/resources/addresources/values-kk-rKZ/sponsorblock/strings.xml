@@ -20,19 +20,19 @@ Second \"item\" text"</string>
   <string name="morphe_sb_enabled_summary">SponsorBlock — бұл YouTube бейнелерінің жағымсыз бөлімдерін өткізіп жіберуге арналған көпшілікке негізделген жүйе</string>
   <string name="morphe_sb_appearance_category_title">Сыртқы түрі</string>
   <string name="morphe_sb_voting_button_title">Дауыс беру батырмасын көрсету</string>
-  <string name="morphe_sb_voting_button_summary">Сегменттерге жақсы немесе жаман баға беру батырмасын қосады</string>
+  <string name="morphe_sb_voting_button_summary">Сегменттерді оң немесе теріс бағалау батырмасын қосады</string>
   <string name="morphe_sb_square_layout_title">Шаршы пішінді макетті пайдалану</string>
   <string name="morphe_sb_square_layout_summary">SponsorBlock батырмалары мен басқару элементтері үшін шаршы тәрізді бұрыштарды қолданады</string>
   <string name="morphe_sb_compact_skip_button_title">Шағын «Өткізіп жіберу» батырмасын пайдалану</string>
   <string name="morphe_sb_compact_skip_button_summary">Орын үнемдеу үшін «Өткізіп жіберу» батырмасының енін азайтады</string>
-  <string name="morphe_sb_auto_hide_skip_button_title">\"Аттап өту\" батырмасын автоматты түрде жасыру</string>
-  <string name="morphe_sb_auto_hide_skip_button_summary">«Пропустить» түймесін бүкіл сегмент бойы көрініп тұруының орнына, бірнеше секундтан кейін жасырады</string>
+  <string name="morphe_sb_auto_hide_skip_button_title">\"Өткізіп жіберу\" батырмасын автоматты түрде жасыру</string>
+  <string name="morphe_sb_auto_hide_skip_button_summary">«Өткізіп жіберу» батырмасын бүкіл сегмент бойы көрініп тұруының орнына, бірнеше секундтан кейін жасырады</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">«Пропустить» түймесінің көрсету уақыты</string>
-  <string name="morphe_sb_auto_hide_skip_button_duration_summary">«Пропустить» түймесінің қанша уақыт бойы көрініп тұратынын орнатыңыз</string>
-  <string name="morphe_sb_toast_on_skip_title">Пропуск туралы хабарландыруды көрсету</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">«Өткізіп жіберу» батырмасының қанша уақыт бойы көрініп тұратынын орнатыңыз</string>
+  <string name="morphe_sb_toast_on_skip_title">Өткізу туралы хабарландыруды көрсету</string>
   <string name="morphe_sb_toast_on_skip_summary">Сегмент автоматты түрде өткізілгенде хабарландыру көрсетеді</string>
-  <string name="morphe_sb_toast_on_skip_duration_title">Пропуск хабарландыруының көрсету уақыты</string>
-  <string name="morphe_sb_toast_on_skip_duration_summary">Кіресіз ету хабарландыруының қанша уақыт бойы көрініп тұратынын орнатыңыз</string>
+  <string name="morphe_sb_toast_on_skip_duration_title">Өткізу хабарландыруының көрсету уақыты</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">Болдырмау хабарландыруының қанша уақыт бойы көрініп тұратынын орнатыңыз</string>
   <string name="morphe_sb_duration_1s">1 секунд</string>
   <string name="morphe_sb_duration_2s">2 секунд</string>
   <string name="morphe_sb_duration_3s">3 секунд</string>
@@ -72,7 +72,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Жеке пайдаланушы ID-і кемінде 30 таңбадан тұруы керек</string>
   <string name="morphe_sb_api_url_title">API URL-ді өзгерту</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock серверге сұраныстар жіберу үшін қолданатын мекенжай</string>
-  <string name="morphe_sb_channel_whitelist_title">Арналардың әқпарақ тізімі</string>
+  <string name="morphe_sb_channel_whitelist_title">Арналардың ақ тізімі</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock ақ тізімдегі арналар үшін өшірілген</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Ақ тізімдегі арна туралы хабарлау</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Ақ тізімдегі арна үшін SponsorBlock өшірілген кезде хабарламаны көрсетеді</string>
@@ -98,7 +98,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_segments_sponsor_summary">Ақылы жарнама, ақылы рефералдық сілтемелер және тікелей жарнамалар. Өзін-өзі жарнамалау немесе ұнайтын жобаларға / авторларға / веб-сайттарға / өнімдерге тегін сілтеме жасау үшін емес</string>
   <string name="morphe_sb_segments_selfpromo">Ақысыз / Өзін-өзі жарнамалау</string>
   <string name="morphe_sb_segments_selfpromo_summary">Ақысыз / өзін-өзі жарнамалаудан басқа жағдайда Спонсор сегментіне ұқсас. Мерчендайзинг, қайырымдылық немесе кіммен бірлесіп жұмыс істегені туралы бөлімдерді қамтиды</string>
-  <string name="morphe_sb_segments_interaction">Әрекетету туралы еске рту (Жазылу)</string>
+  <string name="morphe_sb_segments_interaction">Әрекетке шақыру туралы еске салу (Жазылу)</string>
   <string name="morphe_sb_segments_interaction_summary">Мазмұнның ортасында лайк басуды, жазылуды немесе бақылауды еске салатын қысқа ескерту. Егер ол ұзақ немесе нақты бір нәрсе туралы болса, онда ол өзін жарнамалау бөлімінде болуы керек</string>
   <string name="morphe_sb_segments_highlight">Ерекшелеу</string>
   <string name="morphe_sb_segments_highlight_summary">Көпшілік іздейтін бейнебаянның бөлігі</string>
@@ -110,7 +110,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_segments_hook_summary">Алдағы бейнебаянға арналған баяндалған трейлерлер, сәлемдесу және қоштасу. Қосымша мазмұн қосатын бөлімдерді қоспайды</string>
   <string name="morphe_sb_segments_preview">Алдын ала қарау / Қорытынды</string>
   <string name="morphe_sb_segments_preview_summary">Видеода немесе серияның басқа видеоларында не болатынын немесе не болғанын көрсететін клиптер жинағы, мұнда барлық ақпарат басқа жерде қайталанады</string>
-  <string name="morphe_sb_segments_filler">Шытырман / Әзілдер</string>
+  <string name="morphe_sb_segments_filler">Тақырыптан тыс / Әзілдер</string>
   <string name="morphe_sb_segments_filler_summary">Видеоның негізгі мазмұнын түсіну үшін қажет емес жанама көріністер немесе әзілдер. Контекст немесе фондық мәліметтер беретін бөлімдерді қамтымайды</string>
   <string name="morphe_sb_segments_nomusic">Музыка: Музыкасыз бөлім</string>
   <string name="morphe_sb_segments_nomusic_summary">Тек музыкалық клиптер үшін. Музыкалық клиптердің басқа категорияларға кірмейтін музыкасыз бөлімдері</string>
@@ -133,7 +133,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_button_unsubmitted">Сегментті өткізу</string>
   <string name="morphe_sb_skipped_sponsor">Спонсор өткізілді</string>
   <string name="morphe_sb_skipped_selfpromo">Өзін жарнамалау өткізілді</string>
-  <string name="morphe_sb_skipped_interaction">Жітірілген жалықтыратын ескерту</string>
+  <string name="morphe_sb_skipped_interaction">Жалықтыратын ескерту өткізілді</string>
   <string name="morphe_sb_skipped_highlight">Ерекшелеуге өткізілді</string>
   <string name="morphe_sb_skipped_intro_beginning">Кіріспе өткізілді</string>
   <string name="morphe_sb_skipped_intro_middle">Үзіліс өткізілді</string>
@@ -143,7 +143,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_preview_beginning">Алдын ала қарау өткізілді</string>
   <string name="morphe_sb_skipped_preview_middle">Алдын ала қарау өткізілді</string>
   <string name="morphe_sb_skipped_preview_end">Қысқаша мазмұн өткізілді</string>
-  <string name="morphe_sb_skipped_filler">Шығынды сөздер өткізілді</string>
+  <string name="morphe_sb_skipped_filler">Тақырыптан тыс бөлім өткізілді</string>
   <string name="morphe_sb_skipped_nomusic">Музыкасыз бөлім өткізілді</string>
   <string name="morphe_sb_skipped_unsubmitted">Жіберілмеген сегмент өткізілді</string>
   <string name="morphe_sb_skipped_multiple_segments">Бірнеше сегмент өткізілді</string>
@@ -158,7 +158,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_submit_failed_rate_limit">Сегментті жіберу мүмкін болмады. Жіберу шектеуі (бір пайдаланушыдан немесе IP-мекенжайдан тым көп сұраныс)</string>
   <string name="morphe_sb_submit_failed_forbidden">Сегментті жіберу мүмкін емес: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Сегментті жіберу мүмкін емес.
-Ол redan бар"</string>
+Ол бұрыннан бар"</string>
   <string name="morphe_sb_submit_succeeded">Сегмент сәтті жіберілді</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock уақытша қолжетімсіз (API уақыты аяқталды)</string>
@@ -225,7 +225,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_summary">Бұл олардың өмірінің &lt;b&gt;%s&lt;/b&gt; бөлігі.&lt;br&gt;Көшбасшылар кестесін көру үшін осы жерді басыңыз</string>
   <string name="morphe_sb_stats_self_saved">Сіз &lt;b&gt;%s&lt;/b&gt; сегментті өткізіп жібердіңіз</string>
   <string name="morphe_sb_stats_self_saved_summary">Бұл &lt;b&gt;%s&lt;/b&gt;</string>
-  <string name="morphe_sb_stats_self_saved_reset_title">Өткізіліп жіберілген сегменттер есепшігін sıфрлау керек пе?</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">Өткізіліп жіберілген сегменттер санағышын қалпына келтіру керек пе?</string>
   <string name="morphe_sb_stats_saved_hour_format">%1$s сағат %2$s минут</string>
   <string name="morphe_sb_stats_saved_minute_format">%1$s минут %2$s секунд</string>
   <string name="morphe_sb_stats_saved_second_format">%s секунд</string>
@@ -233,5 +233,5 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_dot_label">Түс:</string>
   <string name="morphe_sb_about_api_summary">"SponsorBlock — бұл демеушілер, кіріспелер, соңғы бөлімдер және жазылу туралы ескертулер сияқты бейнебаян сегменттерінің көпшілікке негізделген дерекқоры. Сегменттерді қауымдастық ұсынады және оларға дауыс береді, ал дерекқор ашық және оны тегін жүктеуге болады
 
-Сен көрген бейнебаянның ID-і оның сегменттерін алу үшін SponsorBlock API-іне жіберіледі"</string>
+Сіз көрген бейнебаянның ID-і оның сегменттерін алу үшін SponsorBlock API-іне жіберіледі"</string>
 </resources>

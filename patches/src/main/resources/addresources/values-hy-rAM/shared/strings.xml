@@ -20,8 +20,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_submenu_title">Կարգավորումներ</string>
   <string name="morphe_settings_confirm_user_dialog_title">Համոզվա՞ծ եք, որ ցանկանում եք շարունակել:</string>
   <string name="morphe_settings_save">Պահպանել</string>
-  <string name="morphe_settings_reset">Վերակնդրել</string>
-  <string name="morphe_settings_reset_color">Վերակնդրել գույնը</string>
+  <string name="morphe_settings_reset">Վերակայել</string>
+  <string name="morphe_settings_reset_color">Վերակայել գույնը</string>
   <string name="morphe_settings_color_invalid">Անվավեր գույն</string>
   <string name="morphe_settings_restart_title">Պահանջվում է վերագործարկում</string>
   <string name="morphe_settings_restart_dialog_message">Վերագործարկեք հավելվածը, որպեսզի այս փոփոխությունն ուժի մեջ մտնի</string>
@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Ներմուծել</string>
   <string name="morphe_settings_import_copy">Պատճենել</string>
-  <string name="morphe_settings_import_reset">Morphe-ի կարգավորումները վերակնդրվեցին լռելյայն արժեքներին</string>
+  <string name="morphe_settings_import_reset">Morphe-ի կարգավորումները վերակայվեցին լռելյայն արժեքներին</string>
   <string name="morphe_settings_import_success">Ներմուծվել է %s կարգավորում</string>
   <string name="morphe_settings_import_failure_parse">Ներմուծումը ձախողվեց՝ %s</string>
   <string name="morphe_settings_navigate_up">Նավարկել վերև</string>
@@ -93,30 +93,31 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Լիցենզիոն ծանուցումներ</string>
-  <string name="morphe_settings_about_licenses_loading">Բեռնում է…</string>
+  <string name="morphe_settings_about_licenses_loading">Բեռնվում է…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_screen_title">Սխալների ուղղում</string>
-  <string name="morphe_debug_screen_summary">Կարգավորեք մշակողի 고급 տարբերակները և ախտորոշման մատյանները</string>
-  <string name="morphe_debug_title">Միացնել 디բագ մատյանների գրանցումը</string>
-  <string name="morphe_debug_stacktrace_title">Debug լոգի stack trace-ը</string>
-  <string name="morphe_debug_stacktrace_summary">Ներառում է ստեկի հետքերը 디բագ մատյաններում՝ սխալները հայտնաբերելու համար</string>
+  <string name="morphe_debug_screen_title">Վրիպազերծում</string>
+  <string name="morphe_debug_screen_summary">Կարգավորեք մշակողի առաջադեմ տարբերակները և ախտորոշման մատյանները</string>
+  <string name="morphe_debug_level_title">Debug լոգավորում</string>
+  <string name="morphe_debug_level_entry_disabled">Անջատված</string>
+  <string name="morphe_debug_level_entry_debug">Հատկացում</string>
+  <string name="morphe_debug_level_entry_verbose">Մանրամասն</string>
   <string name="morphe_debug_toast_on_error_title">Ցույց տալ ծանուցում Morphe-ի սխալի դեպքում</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Սխալների toast ծանուցումների անջատումը թաքցնում է Morphe-ի բոլոր սխալների ծանուցումները:
 
 Դուք չեք ծանուցվի ցանկացած անսպասելի իրադարձության մասին"</string>
-  <string name="morphe_debug_export_logs_title">Արտահանել 디բագ լոգերը</string>
-  <string name="morphe_debug_export_logs_summary">Արտահանել Morphe-ի 디բագ լոգերը</string>
+  <string name="morphe_debug_export_logs_title">Արտահանել debug լոգերը</string>
+  <string name="morphe_debug_export_logs_summary">Արտահանել Morphe-ի debug լոգերը</string>
   <string name="morphe_debug_export_logs_success">Debug-ի լոգերը հաջողությամբ արտահանվեցին</string>
   <string name="morphe_debug_export_logs_failed">Debug-ի լոգերի արտահանումը ձախողվեց</string>
-  <string name="morphe_debug_logs_search_hint">Փնտրել 디բագ լոգերում…</string>
+  <string name="morphe_debug_logs_search_hint">Փնտրել debug լոգերում…</string>
   <string name="morphe_debug_export_logs_clear">Մաքրել</string>
-  <string name="morphe_debug_logs_disabled">Debug լոգավորումն անջատված է</string>
+  <string name="morphe_debug_logs_disabled">Debug-ի գրանցումն անջատված է</string>
   <string name="morphe_debug_logs_none_found">Debug-ի լոգեր չեն գտնվել</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Debug-ի լոգերը պատճենվեցին</string>
   <string name="morphe_debug_logs_failed_to_export">Debug-ի լոգերի արտահանումը ձախողվեց. %s</string>
   <string name="morphe_debug_logs_clear_toast">Debug-ի լոգերը մաքրվեցին</string>
-  <string name="morphe_debug_feature_flags_manager_title">Ֆունկցիանալության դրոշակների կառավարիչ</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Կառավարել բուլյան ֆունկցիանալության դրոշակները</string>
+  <string name="morphe_debug_feature_flags_manager_title">Ֆունկցիոնալության դրոշակների կառավարիչ</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Կառավարել բուլյան ֆունկցիոնալության դրոշակները</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Փնտրել ֆունկցիոնալության դրոշակներում…</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_inactive">Ոչ ակտիվ (%s)</string>
@@ -135,27 +136,27 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Միացնել հարկադիր</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Արգելել</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Հեռացնել</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Ֆունկցիայի դրոշակները պահպանվեցին</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Ֆունկցիաների դրոշակները վերակնդրվեցին</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Ֆունկցիաների դրոշակները պատճենվեցին échanges-ի մեջ</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Ֆունկցիոնալության դրոշակները պահպանվեցին</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Ֆունկցիոնալության դրոշակները վերակայվեցին</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Ֆունկցիոնալության դրոշակները պատճենվեցին հիշողության մեջ</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Վերագործարկեք հավելվածը՝ այս կարգավորումն օգտագործելու համար</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Արտահանել և ներմուծել</string>
   <string name="morphe_debug_feature_flags_manager_import_success">Ներմուծվեց %s ֆունկցիոնալության դրոշակ</string>
-  <string name="morphe_debug_feature_flags_manager_import_failed">Ֆունկցիոնալության ցուցիչներ չեն գտնվել</string>
-  <string name="morphe_debug_feature_flags_manager_export_file_success">Ֆունկցիոնալության ցուցիչները հաջողությամբ արտահանվեցին</string>
-  <string name="morphe_debug_feature_flags_manager_export_file_failed">Ֆունկցիոնալության ցուցիչների արտահանումը ձախողվեց</string>
-  <string name="morphe_debug_feature_flags_manager_import_file_success">Ֆունկցիոնալության ցուցիչները բեռնվեցին, սեղմեք «Պահպանել» կիրառելու համար</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Ֆունկցիոնալության դրոշակներ չեն գտնվել</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Ֆունկցիոնալության դրոշակները հաջողությամբ արտահանվեցին</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Ֆունկցիոնալության դրոշակների արտահանումը ձախողվեց</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Ֆունկցիոնալության դրոշակները բեռնվեցին, սեղմեք «Պահպանել» կիրառելու համար</string>
   <string name="morphe_debug_feature_flags_manager_import_file_failed">Ֆայլի ընթերցումը ձախողվեց</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_title">Բինար որոնում</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Գտնում է, թե որ ֆունկցիոնալության ցուցիչն է առաջացնում հավելվածի վարքագիծը
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Երկուական որոնում</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Գտնում է, թե որ ֆունկցիոնալության դրոշակն է առաջացնում հավելվածի վարքագիծը
 
-%s ցուցիչների կեսը արգելափակված են, և յուրաքանչյուր վերագործարկումից հետո դուք նշում եք՝ արդյոք վարքագիծը դեռ առկա է
+%s դրոշակների կեսը արգելափակված են, և յուրաքանչյուր վերագործարկումից հետո դուք նշում եք՝ արդյոք վարքագիծը դեռ առկա է
 
-Նախքան սկսելը մեկ անգամ վերարտադրեք վարքագիծը, հակառակ դեպքում որոնումից բացակայելու են այն ցուցիչները, որոնք հավելվածը դեռ չի հայցել"</string>
+Նախքան սկսելը մեկ անգամ վերարտադրեք վարքագիծը, հակառակ դեպքում որոնումից բացակայելու են այն դրոշակները, որոնք հավելվածը դեռ չի հայցել"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Սկսել</string>
   <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Որոնելու համար ֆունկցիոնալության դրոշակներ չկան
 
-Բինար որոնման մեջ կարող են օգտագործվել միայն այն դրոշակները, որոնց հավելվածը հասել է և որոնք ներկայումս հարկադիր միացված չեն"</string>
+Երկուական որոնման մեջ կարող են օգտագործվել միայն այն դրոշակները, որոնց հավելվածը հասել է և որոնք ներկայումս հարկադիր միացված չեն"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_status">"Քայլ %1$s
 
 Մնացել է %2$s դրոշակ, որոնցից %3$s-ը արգելափակված են այս քայլի համար
@@ -169,12 +170,12 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_found">"%s ֆունկցիոնալ դրոշակը առաջացնում է այդ վարքագիծը
 
 Այն այժմ արգելափակված է"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Չհաջողվեց գտնել ֆունկցիոնալ դրոշակ
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Չհաջողվեց գտնել ֆունկցիոնալության դրոշակ
 
-Թվում է, թե հավելվածի վարքագիծը չի կառավարվի ֆունկցիոնալ դրոշակի միջոցով"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Չհաջողվեց գտնել որևէ առանձին feature flag
+Թվում է, թե հավելվածի վարքագիծը չի կառավարվում ֆունկցիոնալության դրոշակով"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Չհաջողվեց գտնել մեկ ֆունկցիոնալության դրոշակ
 
-Պատկերագծված վարքագիծն անհետացել է որոնման ավելի վաղ փուլում, ուստի հնարավոր է, որ ներգրավված լինեն մեկից ավելի flag-եր, կամ պատասխաններից մեկը սխալ էր"</string>
+Վարքագիծն անհետացավ որոնման ավելի վաղ փուլում, ուստի հնարավոր է, որ ներգրավված լինեն մեկից ավելի դրոշակներ, կամ պատասխաններից մեկը սխալ էր"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Բացել MicroG-ի կարգավորումները</string>
@@ -186,7 +187,7 @@ Second \"item\" text"</string>
 Խնդրում ենք թարմացնել MicroG-ն մինչև վերջին v%2$s տարբերակը"</string>
   <string name="gms_core_dialog_update_text">Թարմացնել</string>
   <string name="gms_core_dialog_ignore_text">Անտեսել</string>
-  <string name="gms_core_dialog_conflict_message">"Տեղադրված MicroG-ն չի խորհուրդացվում Morphe-ի կողմից.
+  <string name="gms_core_dialog_conflict_message">"Տեղադրված MicroG-ն չի խորհուրդ տրվում Morphe-ի կողմից.
 
 %s
 
@@ -206,9 +207,9 @@ MicroG-ի համար մարտկոցի օպտիմիզացիայի անջատու�
 Սեղմեք շարունակել կոճակը և թույլ տվեք օպտիմիզացիայի փոփոխությունները"</string>
   <string name="gms_core_dialog_continue_text">Շարունակել</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Ցույց տալ MicroG-ի մարտկոցի օպտիմիզացման երկխոսությունը</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Սա անջատելը կթաքցնի MicroG-ի մարտկոցի օպտիմալացման հրդիരը
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Սա անջատելը կթաքցնի MicroG-ի մարտկոցի օպտիմիզացման հուշումը
 
-Եթե մարտկոցի օպտիմալացումները չփոխվեն, ապա դուք կարող եք հանդիպել հետևյալին.
+Եթե մարտկոցի օպտիմիզացումները չփոխվեն, ապա դուք կարող եք հանդիպել հետևյալին.
 • Հավելվածը կարող է պատահականորեն փակվել
 • Ծանուցումները կարող են չաշխատել
 • Հետնապլանի վերարտադրությունը կարող է չաշխատել"</string>
@@ -243,6 +244,6 @@ MicroG-ի համար մարտկոցի օպտիմիզացիայի անջատու�
   <string name="morphe_patches_update_notice_dialog_update">Թարմացնել</string>
   <string name="morphe_patches_update_notice_dialog_dismiss">Փակել</string>
   <!-- misc.crashlog.crashLogPatch -->
-  <string name="morphe_crash_log_saved_documents">Ավարհման մատյանը պահպանվել է օգտատիրոջ փաստաթղթերում՝ %s</string>
-  <string name="morphe_crash_log_saved">Ավարհման մատյանը պահպանված է՝ %s</string>
+  <string name="morphe_crash_log_saved_documents">Խափանման մատյանը պահպանվել է օգտատիրոջ փաստաթղթերում՝ %s</string>
+  <string name="morphe_crash_log_saved">Խափանման մատյանը պահպանված է՝ %s</string>
 </resources>

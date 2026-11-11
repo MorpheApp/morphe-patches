@@ -443,7 +443,7 @@ Lecture SABR (Falsifier les flux vidéo désactivés)"</string>
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Masquer le menu \'Délai de mise en veille\'</string>
   <string name="morphe_music_hide_flyout_menu_start_radio_title">Masquer le menu \'Démarrer le mix\'</string>
   <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Masquer le menu \'Stats pour les nerds\'</string>
-  <string name="morphe_music_hide_flyout_menu_subscribe_title">Masquer le menu \'S\'abonner\'</string>
+  <string name="morphe_music_hide_flyout_menu_subscribe_title">Masquer le menu \'S’abonner\'</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Masquer le menu \'Retirer de \"Accès rapide\"\'</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Masquer le menu \'Afficher les crédits du titre\'</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -582,7 +582,7 @@ Pour que le scrobbling continue à se synchroniser pendant la lecture en arrièr
   <string name="morphe_music_soundproof_minimum_votes_title">Nombre minimum de votes</string>
   <string name="morphe_music_soundproof_minimum_votes_summary">Les artistes ayant moins de votes que ce nombre ne sont jamais passés</string>
   <!-- %1$s is the artist name, %2$s the share of AI votes. Example: Skipped 10mm (AI, 100%) -->
-  <string name="morphe_music_soundproof_skipped_toast">Passé : %1$s (IA, %2$s%%)</string>
+  <string name="morphe_music_soundproof_skipped_toast">Ignoré : %1$s (IA, %2$s%%)</string>
   <string name="morphe_music_soundproof_button_description">Votes SoundProof pour cet artiste</string>
   <string name="morphe_music_soundproof_sheet_verified">Vérifié</string>
   <!-- Share of the votes on the majority side. Example: 93% AI -->
