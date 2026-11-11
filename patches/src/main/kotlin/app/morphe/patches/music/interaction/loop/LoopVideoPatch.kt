@@ -7,14 +7,9 @@
 
 package app.morphe.patches.music.interaction.loop
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -23,170 +18,120 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoIdHook
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.music.video.information.musicVideoTimeHook
-import app.morphe.patches.music.video.information.onMusicCreateHook
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.BuilderInstruction
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
-import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction3rc
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/LoopVideoPatch;"
 
-private const val TIME_BAR_CLASS =
-    "Lcom/google/android/apps/youtube/music/watchpage/MusicPlaybackControlsTimeBar;"
-
 @Suppress("unused")
 val loopVideoPatch = patch(
     name = "Loop video",
-    description = "Adds A/B loop markers on the seekbar. Long-press to set loop points.",
+    description = "Adds an option to loop part of a song by long-pressing the seekbar to set the loop start and end.",
 ) {
     dependsOn(
         sharedExtensionPatch,
-        musicVideoInformationPatch,
         settingsPatch,
+        musicVideoInformationPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_loop_video", summary = true),
+            SwitchPreference("morphe_music_loop_video", summary = true)
         )
 
-        onMusicCreateHook(EXTENSION_CLASS, "initialize")
-        musicVideoTimeHook(EXTENSION_CLASS, "videoTimeChanged")
         musicVideoIdHook("$EXTENSION_CLASS->videoIdChanged(Ljava/lang/String;)V")
+        musicVideoTimeHook(EXTENSION_CLASS, "videoTimeChanged")
 
-        // Clamp real player seeks (in-app + media-session) to [A, B].
-        LoopMediaPlayerSeekFingerprint.method.addInstructions(
+        // Keep seeks from the app and from the media session inside the loop.
+        MedialibPlayerSeekToFingerprint.method.addInstructions(
             0,
             """
-                invoke-static {p1, p2}, $EXTENSION_CLASS->clampSeekPosition(J)J
+                invoke-static { p1, p2 }, $EXTENSION_CLASS->clampSeekPosition(J)J
                 move-result-wide p1
             """
         )
 
-        val onMeasureFp = LoopMusicTimeBarOnMeasureFingerprint
-        val onMeasureMatch = onMeasureFp.instructionMatches.first()
-        val rectField = onMeasureMatch.fieldReference
+        val seekbarRectField: String
 
-        // Override onTouchEvent to observe long-presses.
-        // Parent (Labjf) is obfuscated; invoke-super uses the name resolved at patch time.
-        val timeBarClass = mutableClassDefBy(TIME_BAR_CLASS)
+        TimeBarSetScrubPositionFingerprint.let {
+            seekbarRectField = it.instructionMatches.first().fieldReference.toString()
 
-        val existingOnTouch = timeBarClass.methods.find { it.name == "onTouchEvent" }
-        if (existingOnTouch != null) {
-            existingOnTouch.addInstructions(
+            // Keep the dragged thumb inside the loop.
+            it.method.addInstructions(
                 0,
-                "invoke-static {p0, p1}, $EXTENSION_CLASS->onTouchEvent(Landroid/view/View;Landroid/view/MotionEvent;)V",
+                """
+                    invoke-static { p1 }, $EXTENSION_CLASS->clampSeekX(F)F
+                    move-result p1
+                """
             )
-        } else {
-            val superclassName = timeBarClass.superclass!!
-            val onTouchEventMethod = ImmutableMethod(
-                timeBarClass.type,
-                "onTouchEvent",
-                listOf(ImmutableMethodParameter("Landroid/view/MotionEvent;", null, null)),
-                "Z",
-                AccessFlags.PUBLIC.value,
-                null,
-                null,
-                MutableMethodImplementation(3),
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        invoke-static {p0, p1}, $EXTENSION_CLASS->onTouchEvent(Landroid/view/View;Landroid/view/MotionEvent;)V
-                        invoke-super {p0, p1}, $superclassName->onTouchEvent(Landroid/view/MotionEvent;)Z
-                        move-result v0
-                        return v0
-                    """,
+
+            // The time bar does not override onTouchEvent, so add one that also passes
+            // touches to the extension.
+            it.classDef.apply {
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "onTouchEvent",
+                        listOf(ImmutableMethodParameter("Landroid/view/MotionEvent;", null, null)),
+                        "Z",
+                        AccessFlags.PUBLIC.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(3),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                invoke-static { p0, p1 }, $EXTENSION_CLASS->onTouchEvent(Landroid/view/View;Landroid/view/MotionEvent;)V
+                                invoke-super { p0, p1 }, $superclass->onTouchEvent(Landroid/view/MotionEvent;)Z
+                                move-result v0
+                                return v0
+                            """
+                        )
+                    }
                 )
             }
-            timeBarClass.methods.add(onTouchEventMethod)
         }
 
-        // Clamp thumb pixel to [A, B]. c(F) only called from the player's touch handler.
-        LoopMusicTimeBarSeekFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static {p1}, $EXTENSION_CLASS->clampSeekX(F)F
-                move-result p1
-            """,
-        )
+        TimeBarDrawFingerprint.let {
+            it.method.apply {
+                // Show the time labels with milliseconds while dragging.
+                // Hook the later elapsed label first, so the remaining label index stays valid.
+                listOf(
+                    6 to "formatElapsedTime",
+                    3 to "formatRemainingTime",
+                ).forEach { (matchIndex, methodName) ->
+                    val index = it.instructionMatches[matchIndex].index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-        LoopMusicTimeBarDrawFingerprint.method.apply {
-            val freeRegister = findFreeRegister(1)
-            addInstructions(
-                1,
-                """
-                    iget-object v$freeRegister, p0, $rectField
-                    invoke-static {v$freeRegister}, $EXTENSION_CLASS->setSeekbarRectangle(Landroid/graphics/Rect;)V
-                """,
-            )
-
-            // Formatting class is obfuscated; match by signature.
-            val formatterCalls = findInstructionIndicesReversedOrThrow(
-                methodCall(
-                    parameters = listOf("J"),
-                    returnType = "Ljava/lang/CharSequence;",
-                    opcodes = listOf(Opcode.INVOKE_STATIC),
-                ),
-            )
-            val drawTextCalls = findInstructionIndicesReversedOrThrow(
-                methodCall(
-                    definingClass = "Landroid/graphics/Canvas;",
-                    name = "drawText",
-                    parameters = listOf("Ljava/lang/String;", "F", "F", "Landroid/graphics/Paint;"),
-                ),
-            )
-
-            // Each formatter call feeds one time label: the first drawText after it.
-            // The remaining-time formatter negates its argument; the elapsed one does not.
-            formatterCalls.forEach { formatterIndex ->
-                val labelIndex = drawTextCalls.filter { it > formatterIndex }.minOrNull()
-                    ?: error("No drawText after formatter at index $formatterIndex")
-
-                val isRemaining = (1..4).any { offset ->
-                    val index = formatterIndex - offset
-                    index >= 0 &&
-                        getInstruction<BuilderInstruction>(index).opcode == Opcode.NEG_LONG
-                }
-                val formatMethod =
-                    if (isRemaining) "formatScrubRemainingOrDefault" else "formatScrubOrDefault"
-
-                // drawText's receiver is registerC; the String argument is the next register.
-                val stringRegister = when (val instruction = getInstruction<Any>(labelIndex)) {
-                    is BuilderInstruction35c -> instruction.registerD
-                    is BuilderInstruction3rc -> instruction.startRegister + 1
-                    else -> error("Unexpected drawText instruction: $instruction")
-                }
-                require(stringRegister < 16) {
-                    "drawText string register v$stringRegister is not a low register"
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->$methodName(Ljava/lang/String;)Ljava/lang/String;
+                            move-result-object v$register
+                        """
+                    )
                 }
 
-                addInstructions(
-                    labelIndex,
-                    """
-                        invoke-static {v$stringRegister}, $EXTENSION_CLASS->$formatMethod(Ljava/lang/String;)Ljava/lang/String;
-                        move-result-object v$stringRegister
-                    """,
-                )
-            }
-
-            // Branch targets reference instruction locations, so replacing return-void
-            // makes every exit path draw markers; inserting before would be skipped.
-            findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { returnIndex ->
-                replaceInstruction(
-                    returnIndex,
-                    "invoke-static {p1}, $EXTENSION_CLASS->drawLoopMarkers(Landroid/graphics/Canvas;)V",
-                )
-                addInstruction(returnIndex + 1, "return-void")
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            iget-object v0, p0, $seekbarRectField
+                            invoke-static { p1, v0 }, $EXTENSION_CLASS->drawLoopMarkers(Landroid/graphics/Canvas;Landroid/graphics/Rect;)V
+                        """
+                    )
+                }
             }
         }
     }

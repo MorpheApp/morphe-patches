@@ -239,4 +239,3 @@ fun musicVideoIdHook(descriptor: String) =
     videoInformationMethodRef.get()!!.addInstructionsToEnd(
         "invoke-static { v$REG_VIDEO_ID }, $descriptor"
     )
-

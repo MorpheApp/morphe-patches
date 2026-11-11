@@ -93,13 +93,12 @@ public final class VideoInformation {
     /** Returns playback time in ms, or -1 if not yet initialized. */
     public static long getVideoTime() { return videoTime; }
 
-    /** Seeks to ms. */
+    /**
+     * Seeks the player to the given position in milliseconds.
+     *
+     * @return true if the seek was dispatched successfully
+     */
     public static boolean seekTo(final long seekTime) {
-        return seekTo(seekTime, false);
-    }
-
-    /** Seeks to ms. @param raw skips end-of-video workaround. */
-    public static boolean seekTo(final long seekTime, boolean raw) {
         Utils.verifyOnMainThread();
         try {
             final long len = getVideoLength();
@@ -109,7 +108,7 @@ public final class VideoInformation {
                 return false;
             }
             // Seeking very close to the end causes a seek loop; push past the video end instead.
-            final long adjusted = raw ? seekTime : ((len - seekTime > 500) ? seekTime : Integer.MAX_VALUE);
+            final long adjusted = (len - seekTime > 500) ? seekTime : Integer.MAX_VALUE;
             Logger.printDebug(() -> "VideoInformation: seekTo " + adjusted + "ms");
             final boolean seeked = overrideVideoTime(adjusted);
             if (seeked && seekTime > 0) {

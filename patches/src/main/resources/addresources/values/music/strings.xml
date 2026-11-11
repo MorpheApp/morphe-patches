@@ -373,11 +373,11 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_disable_dislike_redirection_summary">Prevents skipping to the next track when the dislike button is pressed</string>
 
     <!-- interaction.loop.loopVideoPatch -->
-    <string name="morphe_loop_video_title">Loop video</string>
-    <string name="morphe_loop_video_summary">Long-press the seekbar to set A/B loop points</string>
-    <string name="morphe_loop_video_range_toast_start">Loop start set to %s</string>
-    <string name="morphe_loop_video_range_toast_end">Loop end set to %s</string>
-    <string name="morphe_loop_video_range_toast_cleared">Loop cleared</string>
+    <string name="morphe_music_loop_video_title">Loop part of a song</string>
+    <string name="morphe_music_loop_video_summary">Long-press the seekbar to set the loop start, again to set the loop end, and again to clear the loop</string>
+    <string name="morphe_music_loop_video_toast_start">Loop start set to %s</string>
+    <string name="morphe_music_loop_video_toast_end">Loop end set to %s</string>
+    <string name="morphe_music_loop_video_toast_cleared">Loop cleared</string>
 
     <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
     <string name="morphe_music_playlist_track_tap_action_title">Playlist track tap action</string>
