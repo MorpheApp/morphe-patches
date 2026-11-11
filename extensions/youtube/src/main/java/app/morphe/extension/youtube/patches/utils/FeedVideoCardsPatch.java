@@ -1448,6 +1448,7 @@ public final class FeedVideoCardsPatch {
                     if (enteringVideoId != null && cards.isEmpty()) {
                         FeedEngagementCountsPatch.onCardLaidOut(root, enteringVideoId, null);
                     }
+                    FeedVideoActionsPatch.onCardLaidOut(root, null, false);
                     continue;
                 }
                 if (videoId == null) {
@@ -1504,7 +1505,7 @@ public final class FeedVideoCardsPatch {
                             : fullWidthCardVideoId, null);
                     FeedViewCountPatch.onCardLaidOut(root, fullWidthCardVideoId, null);
                 }
-                FeedVideoActionsPatch.onCardLaidOut(root, fullWidthCardVideoId);
+                FeedVideoActionsPatch.onCardLaidOut(root, fullWidthCardVideoId, true);
                 PostImageDownloadPatch.onRootLaidOut(root);
                 PostTranslatePatch.onRootLaidOut(root);
             }
