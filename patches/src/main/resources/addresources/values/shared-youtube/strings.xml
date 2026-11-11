@@ -28,6 +28,10 @@ Second \"item\" text"</string>
     <string name="morphe_settings_new_indicator_days_title">Highlight new settings</string>
     <string name="morphe_settings_new_indicator_days_summary">Number of days a dot is shown next to settings and options added by an update</string>
     <string name="morphe_settings_new_indicator_days_off">Off</string>
+    <string name="morphe_settings_new_indicator_clear_title">Mark all settings as seen</string>
+    <string name="morphe_settings_new_indicator_clear_summary">Remove the dot from all new settings and options</string>
+    <string name="morphe_settings_new_indicator_clear_dialog_title">Mark all settings as seen?</string>
+    <string name="morphe_settings_new_indicator_clear_dialog_message">The dot is removed from all new settings and options. Settings added by future updates are still highlighted.</string>
 
     <!-- misc.initialization.initializationPatch -->
     <string name="morphe_restart_first_run">Restart to finish setting up</string>

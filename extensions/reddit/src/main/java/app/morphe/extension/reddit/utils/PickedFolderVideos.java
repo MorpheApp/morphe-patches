@@ -136,7 +136,7 @@ public final class PickedFolderVideos {
     }
 
     // The exported flag is only required on Android 13 and newer.
-    @SuppressLint("UnspecifiedRegisterReceiverFlag")
+    @SuppressLint({"UnspecifiedRegisterReceiverFlag", "WrongConstant"})
     private static synchronized void registerDownloadCompleteReceiver() {
         if (downloadCompleteReceiver != null) return;
 

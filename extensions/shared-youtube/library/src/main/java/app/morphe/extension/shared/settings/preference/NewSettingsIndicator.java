@@ -285,6 +285,48 @@ public final class NewSettingsIndicator {
     }
 
     /**
+     * Removes the dot of all new preferences, list entries and screens.
+     * Nothing currently in the settings is new again.
+     *
+     * @param screen The root screen of the settings.
+     */
+    public static void markAllSeen(PreferenceScreen screen) {
+        try {
+            Logger.printDebug(() -> "Marking all new settings as seen");
+
+            SharedPreferences.Editor editor = preferences.edit();
+            for (String key : preferences.getAll().keySet()) {
+                if (key.startsWith(FIRST_SEEN_KEY_PREFIX)) {
+                    editor.remove(key);
+                }
+            }
+            editor.apply();
+
+            removeDots(screen);
+        } catch (Exception ex) {
+            Logger.printException(() -> "markAllSeen failure", ex);
+        }
+    }
+
+    private static void removeDots(PreferenceGroup group) {
+        for (int i = 0, count = group.getPreferenceCount(); i < count; i++) {
+            Preference pref = group.getPreference(i);
+            if (pref instanceof PreferenceGroup subGroup) {
+                removeDots(subGroup);
+                // Categories have no dot of their own.
+                if (!(pref instanceof PreferenceScreen)) continue;
+            } else if (pref instanceof CustomDialogListPreference listPref) {
+                listPref.setNewEntryValues(null, DOT_COLOR);
+            }
+
+            CharSequence title = pref.getTitle();
+            if (NewIndicatorSpan.isIn(title)) {
+                pref.setTitle(NewIndicatorSpan.removeFrom(title));
+            }
+        }
+    }
+
+    /**
      * @return If the group contains a preference with a dot.
      *         Only preferences are checked, since the title of a screen may not have a dot.
      */

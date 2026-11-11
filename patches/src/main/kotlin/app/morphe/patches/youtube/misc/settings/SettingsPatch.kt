@@ -46,6 +46,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.shared.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -269,10 +270,17 @@ val settingsPatch = patch(
         )
 
         PreferenceScreen.MISC.addPreferences(
-            NonInteractivePreference(
-                key = "morphe_settings_new_indicator_days",
-                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-                selectable = true
+            noTitleUnsortedPreferenceCategory(
+                NonInteractivePreference(
+                    key = "morphe_settings_new_indicator_days",
+                    tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                    selectable = true
+                ),
+                NonInteractivePreference(
+                    key = "morphe_settings_new_indicator_clear",
+                    tag = "app.morphe.extension.shared.settings.preference.ClearNewSettingsIndicatorPreference",
+                    selectable = true
+                )
             ),
             TextPreference(
                 key = null,
