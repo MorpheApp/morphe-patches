@@ -785,7 +785,9 @@ public final class LyricsCache {
      * returning lyrics cached under a different source.
      */
     private static String key(TrackInfo track, String source) {
-        return track.cacheKey() + "|" + source;
+        // Retry YouTube Music lookups that failed when the request included account headers.
+        String revision = "YTMusic".equals(source) ? "|2" : "";
+        return track.cacheKey() + "|" + source + revision;
     }
 
     private static String trackKey(TrackInfo track) {
