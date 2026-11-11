@@ -126,6 +126,8 @@ public final class AmbientLightController {
     private static final int SCENE_CUT_DIFFERENCE = 40;
     /** Share of the previous light kept for each capture, out of 256. */
     private static final int SMOOTHING_KEEP = 64;
+    /** Captures in a row that can be converted ones. A change that stays longer is a change of the video. */
+    private static final int MAX_CONVERTED_CAPTURES = 15;
 
     /** A background this small is a button, and keeps its color. */
     private static final float BUTTON_MAX_WIDTH_SCREEN_RATIO = 0.45f;
@@ -224,6 +226,12 @@ public final class AmbientLightController {
     // Used only on the worker thread.
     private static final int[] readbackPixels = new int[READBACK_WIDTH * READBACK_HEIGHT];
     private static final int[] pictureColors = new int[PICTURE_WIDTH * PICTURE_HEIGHT];
+    /** The last capture as it came, and as the light used it. */
+    private static final int[] lastCapture = new int[PICTURE_WIDTH * PICTURE_HEIGHT];
+    private static final int[] lastPicture = new int[PICTURE_WIDTH * PICTURE_HEIGHT];
+    private static boolean hasLastPicture;
+    private static int convertedCaptures;
+    private static int brighterCaptures;
     private static final int[] near = new int[PICTURE_WIDTH * PICTURE_HEIGHT];
     private static final int[] far = new int[FAR_WIDTH * FAR_HEIGHT];
     private static final float[] nearLinear = new float[PICTURE_WIDTH * PICTURE_HEIGHT * LIGHT_CHANNELS];
@@ -451,6 +459,7 @@ public final class AmbientLightController {
     private static void resetPicture() {
         drawnLayout = null;
         resetSmoothing = true;
+        hasLastPicture = false;
     }
 
     /**
@@ -764,6 +773,23 @@ public final class AmbientLightController {
             updateBars();
             AmbientLightMath.downsample(readbackPixels, READBACK_WIDTH, readbackBounds,
                     pictureColors, PICTURE_WIDTH, PICTURE_HEIGHT);
+
+            // A device cannot convert a converted capture again, so two such steps in a row are
+            // the video getting brighter.
+            brighterCaptures = hasLastPicture && AmbientLightMath.isConverted(lastCapture, pictureColors)
+                    ? brighterCaptures + 1 : 0;
+            final boolean converted = hasLastPicture && brighterCaptures < 2
+                    && convertedCaptures < MAX_CONVERTED_CAPTURES
+                    && AmbientLightMath.isConverted(lastPicture, pictureColors);
+            System.arraycopy(pictureColors, 0, lastCapture, 0, lastCapture.length);
+            if (converted) {
+                convertedCaptures++;
+                AmbientLightMath.undoConversion(pictureColors);
+            } else {
+                convertedCaptures = 0;
+            }
+            hasLastPicture = true;
+            System.arraycopy(pictureColors, 0, lastPicture, 0, lastPicture.length);
 
             final int difference = AmbientLightMath.difference(near, pictureColors);
             final boolean unchanged = difference <= UNCHANGED_DIFFERENCE;
