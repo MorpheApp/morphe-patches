@@ -14,8 +14,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_21_43_or_greater
-import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -36,7 +34,6 @@ val fullscreenPlaylistPanelPatch = bytecodePatch(
         settingsPatch,
         // The id of the panel that opens.
         engagementPanelHookPatch,
-        versionCheckPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -62,12 +59,11 @@ val fullscreenPlaylistPanelPatch = bytecodePatch(
 
         // Use the panel overlay over the fullscreen player, which YouTube enables by a server
         // config only on phones. Without it the panel opens in the watch column, which fullscreen hides.
-        val panelModeFingerprint =
-            if (is_21_43_or_greater) PanelModeFingerprint else PanelModeLegacyFingerprint
-        panelModeFingerprint.let {
-            it.method.apply {
+        val panelModeFingerprint = getPanelModeFingerprint(PanelModeEnumFingerprint.originalClassDef.type)
+        panelModeFingerprint.matchAll().forEach { match ->
+            match.method.apply {
                 // The read of the server config: the boolean field, or the result of the static call.
-                val configIndex = it.instructionMatches[1].index
+                val configIndex = match.instructionMatches.first().index
                 val register = getInstruction<OneRegisterInstruction>(configIndex).registerA
 
                 addInstructions(

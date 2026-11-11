@@ -9,6 +9,8 @@ package app.morphe.patches.youtube.layout.player.playlistpanel
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -28,34 +30,43 @@ internal object PanelExitsFullscreenFingerprint : Fingerprint(
 )
 
 /**
- * YouTube's rule where a panel opens: beside the player, or over the fullscreen player.
- * The overlay needs a server config, read inline (the boolean read after the static config).
+ * Where a panel opens: beside the player, or over the fullscreen player.
  */
-internal object PanelModeFingerprint : Fingerprint(
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;", "Ljava/lang/Object;",
-        "Ljava/lang/Object;", "Ljava/lang/Object;", "Ljava/lang/Object;"),
-    filters = listOf(
-        opcode(Opcode.SGET_OBJECT),
-        fieldAccess(opcode = Opcode.IGET_BOOLEAN, location = MatchAfterImmediately()),
-        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
-        literal(45717387L)
-    )
+internal object PanelModeEnumFingerprint : Fingerprint(
+    name = "<clinit>",
+    strings = listOf("PORTRAIT_WATCH_PANEL", "FULLSCREEN_PLAYER_OVERLAY")
 )
 
 /**
- * Before 21.43 the server config of [PanelModeFingerprint] is read by a static boolean call.
+ * YouTube's rule where a panel opens. Its first check is the server config that enables the panel
+ * overlay over the fullscreen player, then the check for the fullscreen state. Depending on the app
+ * build the config is read inline (a boolean field) or by a static call, so either read is matched.
+ * Some versions have two variants of this method, chosen by a server flag.
  */
-internal object PanelModeLegacyFingerprint : Fingerprint(
+internal fun getPanelModeFingerprint(panelModeType: String) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/Object;",
-    parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;", "Ljava/lang/Object;",
-        "Ljava/lang/Object;", "Ljava/lang/Object;", "Ljava/lang/Object;"),
     filters = listOf(
-        methodCall(opcode = Opcode.INVOKE_STATIC, returnType = "Z", parameters = listOf("L")),
-        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
-        literal(45717387L)
+        anyInstruction(
+            opcode(Opcode.MOVE_RESULT),
+            fieldAccess(opcode = Opcode.IGET_BOOLEAN)
+        ),
+        anyInstruction(
+            opcode(Opcode.IF_EQZ),
+            opcode(Opcode.IF_NEZ),
+            location = MatchAfterImmediately()
+        ),
+        // The fullscreen state.
+        literal(3, location = MatchAfterWithin(10)),
+        opcode(Opcode.IF_EQ, location = MatchAfterImmediately()),
+        // The panel beside the player.
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            type = panelModeType,
+            location = MatchAfterImmediately()
+        )
     )
-)
+) {}
 
 /**
  * YouTube's rule whether a panel is refused for the current mode. Over the fullscreen player it

@@ -1313,8 +1313,8 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
     <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
     <string name="morphe_fullscreen_playlist_panel_title">Show playlist panel in fullscreen</string>
-    <string name="morphe_fullscreen_playlist_panel_summary_on">The playlist panel opens over the fullscreen player, and fullscreen stays</string>
-    <string name="morphe_fullscreen_playlist_panel_summary_off">On a tablet the playlist panel exits fullscreen (YouTube default)</string>
+    <string name="morphe_fullscreen_playlist_panel_summary_on">Playlist panel opens over the fullscreen player</string>
+    <string name="morphe_fullscreen_playlist_panel_summary_off">Playlist panel exits fullscreen on tablets</string>
 
     <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
     <string name="morphe_disable_playlist_autoplay_title">Disable playlist autoplay</string>
