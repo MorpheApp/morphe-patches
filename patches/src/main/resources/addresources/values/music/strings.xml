@@ -279,6 +279,7 @@ They are downloaded one at a time, which can take a long time and needs about %3
     <string name="morphe_music_hide_repeat_button_title">Hide Repeat button</string>
     <string name="morphe_music_hide_shuffle_button_title">Hide Shuffle button</string>
     <string name="morphe_music_hide_speed_dial_shelf_title">Hide \'Speed dial\' shelf</string>
+    <string name="morphe_music_hide_you_may_also_like_section_title">Hide \'You may also like\' section</string>
 
     <string name="morphe_music_comments_screen_title">Comments</string>
     <string name="morphe_music_comments_screen_summary">Choose which components appear in the comments section</string>
@@ -715,7 +716,7 @@ The first column is the word, the second its reading; extra columns and lines wi
     <string name="morphe_music_lyrics_rime_dict_no_table">No Rime word list is ticked for the language above. Tap this name to tick one, or pick a language that has a list</string>
     <string name="morphe_music_lyrics_rime_dict_add">Add</string>
     <string name="morphe_music_lyrics_rime_dict_add_title">Add a Rime Wordlist</string>
-    <string name="morphe_music_lyrics_rime_dict_add_hint">A .dict.yaml file, or a zip holding one, with lines like 字 ham and 典 din2. The list is fetched when you tick it and tap Save, and its licence is yours to check</string>
+    <string name="morphe_music_lyrics_rime_dict_add_hint">A .dict.yaml file, or a zip holding one, with lines like 字 ham and 典 din2. The list is fetched when you tick it and tap Save, and its license is yours to check</string>
     <string name="morphe_music_lyrics_rime_dict_field_code">Language code</string>
     <string name="morphe_music_lyrics_rime_dict_field_code_hint">Two or three letters, as in hak or wuu</string>
     <string name="morphe_music_lyrics_rime_dict_field_label">Name</string>
