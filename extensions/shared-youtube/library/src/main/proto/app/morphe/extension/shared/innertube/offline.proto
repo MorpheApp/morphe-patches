@@ -3,10 +3,10 @@ syntax = "proto3";
 import "app/morphe/extension/shared/innertube/player_response.proto";
 import "app/morphe/extension/shared/innertube/saved_video.proto";
 
-package app.morphe.extension.youtube.innertube;
+package app.morphe.extension.shared.innertube;
 
 option optimize_for = LITE_RUNTIME;
-option java_package = "app.morphe.extension.youtube.innertube";
+option java_package = "app.morphe.extension.shared.innertube";
 
 // Messages used by the in-app downloads (offline videos and tracks).
 // Only the fields that are read or changed are declared, all other fields are kept as unknown fields.

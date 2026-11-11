@@ -10,6 +10,7 @@ package app.morphe.patches.music.interaction.downloads
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
@@ -45,7 +46,9 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -149,33 +152,59 @@ val downloadsPatch = patch(
             )
         }
 
-        // Unlock OfflineabilityRenderer in both single-track (Lhkj;->e) and playlist/album (Lhkb;->c) controllers.
+        // Unlock the offlineability of the songs, albums and playlists the endpoints save.
+        // The save method is an interface method in some app versions, so its call is changed.
         listOf(
-            MusicOfflineVideoEndpointFingerprint.instructionMatches.first().getMethodCalled(),
-            SaveOfflinePlaylistCallFingerprint.instructionMatches.first().getMethodCalled(),
-        ).forEach { controllerMethod ->
-            controllerMethod.apply {
-                val offlineabilityType = parameterTypes[1].toString()
+            MusicOfflineVideoEndpointFingerprint,
+            SaveOfflinePlaylistCallFingerprint,
+        ).forEach { fingerprint ->
+            val saveCall = fingerprint.instructionMatches.first()
+            val offlineabilityType = saveCall.methodReference.parameterTypes[1].toString()
 
+            val unlockMethod = ImmutableMethod(
+                fingerprint.classDef.type,
+                "patch_unlockOfflineability",
+                listOf(ImmutableMethodParameter(offlineabilityType, null, null)),
+                offlineabilityType,
+                AccessFlags.PRIVATE.value or AccessFlags.STATIC.value,
+                null,
+                null,
+                MutableMethodImplementation(4),
+            ).toMutable().apply {
                 addInstructionsWithLabels(
                     0,
                     """
-                        invoke-static/range { p2 .. p2 }, $EXTENSION_CLASS->unlockOfflineability(Ljava/lang/Object;)[B
+                        invoke-static { p0 }, $EXTENSION_CLASS->unlockOfflineability(Ljava/lang/Object;)[B
                         move-result-object v0
                         if-eqz v0, :keep_offlineability
-
                         sget-object v1, ${protoDefaultInstance(offlineabilityType)}
                         invoke-static { }, $GET_GENERATED_REGISTRY
                         move-result-object v2
                         invoke-static { v1, v0, v2 }, ${parseByteArrayWithRegistryMethodRef.get()!!}
                         move-result-object v0
                         check-cast v0, $offlineabilityType
-                        move-object/from16 p2, v0
+                        return-object v0
                         :keep_offlineability
-                        nop
+                        return-object p0
                     """
                 )
             }
+            fingerprint.classDef.methods.add(unlockMethod)
+
+            // The registers of the call are the instance, the id, then the offlineability.
+            val offlineabilityRegister = when (val call = saveCall.instruction) {
+                is RegisterRangeInstruction -> call.startRegister + 2
+                is FiveRegisterInstruction -> call.registerE
+                else -> throw PatchException("Unexpected save call: $call")
+            }
+
+            fingerprint.method.addInstructionsAtControlFlowLabel(
+                saveCall.index,
+                """
+                    invoke-static/range { v$offlineabilityRegister .. v$offlineabilityRegister }, $unlockMethod
+                    move-result-object v$offlineabilityRegister
+                """
+            )
         }
 
         // Save the track instead of showing the Premium upsell of the offline upsell endpoint.

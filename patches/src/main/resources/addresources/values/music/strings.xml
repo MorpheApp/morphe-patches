@@ -152,102 +152,6 @@ Export folder: %s"</string>
     <string name="morphe_export_download_notification_channel">Download exports</string>
     <string name="morphe_export_download_saved">Download exported to %s</string>
     <string name="morphe_export_download_failed">Could not export the download</string>
-    <string name="morphe_music_downloads_screen_title">Downloads</string>
-    <string name="morphe_music_downloads_empty">"No downloads
-Downloaded tracks appear here"</string>
-    <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-    <string name="morphe_music_downloads_summary">%1$s tracks • %2$s MB</string>
-    <string name="morphe_music_downloads_search_hint">Search downloads</string>
-    <string name="morphe_music_downloads_sort">Sort</string>
-    <string name="morphe_music_downloads_sort_artist">Sort by artist</string>
-    <string name="morphe_music_downloads_sort_title">Sort by title</string>
-    <string name="morphe_music_downloads_sort_size">Sort by size</string>
-    <string name="morphe_music_downloads_delete_all">Delete all downloads</string>
-    <string name="morphe_music_downloads_delete_all_title">Delete all downloads?</string>
-    <string name="morphe_music_downloads_delete_all_message">All downloaded tracks will be deleted from this device</string>
-    <string name="morphe_music_downloads_all_deleted">Downloads deleted</string>
-    <string name="morphe_music_downloads_nothing_found">Nothing found</string>
-    <string name="morphe_music_downloads_actions_for">Actions for %s</string>
-    <string name="morphe_music_downloads_play">Play</string>
-    <string name="morphe_music_downloads_play_pause">Play or pause</string>
-    <string name="morphe_music_downloads_previous">Previous</string>
-    <string name="morphe_music_downloads_next">Next</string>
-    <string name="morphe_music_downloads_pause">Pause</string>
-    <string name="morphe_music_downloads_shuffle">Shuffle</string>
-    <string name="morphe_music_downloads_repeat">Repeat</string>
-    <string name="morphe_music_downloads_minimize">Minimize</string>
-    <string name="morphe_music_downloads_close">Close</string>
-    <string name="morphe_music_downloads_delete">Delete</string>
-    <string name="morphe_music_downloads_delete_track">Delete download</string>
-    <string name="morphe_music_downloads_delete_track_title">Delete download?</string>
-    <string name="morphe_music_downloads_delete_track_message">%s will be deleted from this device</string>
-    <string name="morphe_music_downloads_track_deleted">Download deleted</string>
-    <string name="morphe_music_downloads_track_delete_failed">Could not delete the download</string>
-    <string name="morphe_music_downloads_play_failed">Could not play the download</string>
-    <string name="morphe_music_downloads_playlists">Playlists</string>
-    <string name="morphe_music_downloads_playlists_section">Created playlists (%s)</string>
-    <string name="morphe_music_downloads_playlists_empty">No local playlists yet</string>
-    <string name="morphe_music_downloads_playlists_hide">Hide playlists ▲</string>
-    <string name="morphe_music_downloads_playlist_new">+ New playlist</string>
-    <string name="morphe_music_downloads_playlist_new_button">New playlist</string>
-    <string name="morphe_music_downloads_playlist_selected">Selected (%s)</string>
-    <string name="morphe_music_downloads_playlist_select_first">Select songs first</string>
-    <string name="morphe_music_downloads_playlist_clear_selection">Clear selection</string>
-    <string name="morphe_music_downloads_playlist_create">Create playlist</string>
-    <string name="morphe_music_downloads_playlist_create_button">Create</string>
-    <string name="morphe_music_downloads_playlist_add">Add to playlist</string>
-    <string name="morphe_music_downloads_playlist_added">Added to %s</string>
-    <string name="morphe_music_downloads_playlist_name_hint">Playlist name</string>
-    <string name="morphe_music_downloads_playlist_name_empty">Playlist name cannot be empty</string>
-    <string name="morphe_music_downloads_playlist_save_failed">Could not save the playlist</string>
-    <string name="morphe_music_downloads_playlist_track_count">%s tracks</string>
-    <string name="morphe_music_downloads_playlist_track_count_one">1 track</string>
-    <string name="morphe_music_downloads_playlist_no_tracks">No tracks in this playlist</string>
-    <string name="morphe_music_downloads_playlist_play">Play playlist</string>
-    <string name="morphe_music_downloads_playlist_play_all">Play all</string>
-    <string name="morphe_music_downloads_playlist_rename">Rename</string>
-    <string name="morphe_music_downloads_playlist_rename_title">Rename playlist</string>
-    <string name="morphe_music_downloads_playlist_save">Save</string>
-    <string name="morphe_music_downloads_playlist_delete">Delete playlist</string>
-    <string name="morphe_music_downloads_playlist_delete_title">Delete playlist?</string>
-    <string name="morphe_music_downloads_playlist_delete_message">%s will be deleted. Downloaded songs are kept</string>
-    <string name="morphe_music_downloads_playlist_deleted">Playlist deleted</string>
-    <string name="morphe_music_downloads_playlist_remove_track">Remove from playlist</string>
-    <string name="morphe_music_downloads_playlist_drag_track">Drag to reorder</string>
-    <string name="morphe_music_downloads_playlist_reorder_hint">%s • Drag handle to reorder</string>
-    <string name="morphe_music_downloads_playlist_reorder_done">Done</string>
-    <string name="morphe_music_downloads_notification_channel">Audio downloads</string>
-    <string name="morphe_music_downloads_playback_channel">Offline playback</string>
-    <string name="morphe_music_downloads_unknown_track">Could not identify the track to download</string>
-    <string name="morphe_music_downloads_already_running">Download already in progress</string>
-    <string name="morphe_music_downloads_already_saved">Already downloaded</string>
-    <string name="morphe_music_downloads_started">Download started</string>
-    <string name="morphe_music_downloads_starting">Starting download…</string>
-    <string name="morphe_music_downloads_progress">Downloading %s%%</string>
-    <string name="morphe_music_downloads_complete">Download complete</string>
-    <string name="morphe_music_downloads_failed">Download failed</string>
-    <string name="morphe_music_downloads_playlist_download_title">Playlist download</string>
-    <string name="morphe_music_downloads_playlist_download_listing">Listing tracks…</string>
-    <string name="morphe_music_downloads_playlist_download_listed">%s listed…</string>
-    <string name="morphe_music_downloads_playlist_download_listing_failed">Could not list the tracks of the playlist</string>
-    <string name="morphe_music_downloads_playlist_download_all_saved">Already downloaded: %s</string>
-    <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s in this playlist, %2$s not downloaded yet.
-
-They are downloaded one at a time, which can take a long time and needs about %3$s of free space"</string>
-    <string name="morphe_music_downloads_playlist_download_confirm_button">Download</string>
-    <string name="morphe_music_downloads_playlist_download_progress">Downloading track %1$s of %2$s</string>
-    <string name="morphe_music_downloads_playlist_download_complete">%s downloaded</string>
-    <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s downloaded, %2$s could not be downloaded</string>
-    <string name="morphe_music_downloads_playlist_download_already_running">Playlist download already in progress</string>
-    <string name="morphe_music_downloads_playlist_download_needs_account">Your account is not known yet. Try again in a moment</string>
-    <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listed, all already downloaded</string>
-    <string name="morphe_music_downloads_playlist_download_incomplete">Only part of the playlist could be listed. Tap Download again later to get the rest</string>
-    <string name="morphe_music_downloads_playlist_download_started">Downloading %s in the background</string>
-    <string name="morphe_music_downloads_playlist_download_no_network">No network connection</string>
-    <string name="morphe_music_downloads_playlist_download_waiting_network">Waiting for the network…</string>
-    <string name="morphe_music_downloads_playlist_download_stopped">Stopped after %1$s of %2$s. Tap Download again to continue</string>
-    <string name="morphe_music_downloads_mark_title">Mark downloaded songs</string>
-    <string name="morphe_music_downloads_mark_summary">Songs already downloaded show a mark before their details in playlists, albums and search results</string>
 
     <!-- misc.settings.settingsPatch -->
 
@@ -1019,9 +923,4 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disable bold icons</string>
     <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Restore Player Up next, Lyrics, and Related tabs</string>
 
-    <!-- downloads.deviceFilesSource -->
-    <string name="morphe_music_sideloaded_source_title">Device files source</string>
-    <string name="morphe_music_sideloaded_source_entry_both">Both (Blended)</string>
-    <string name="morphe_music_sideloaded_source_entry_device_only">Only device files</string>
-    <string name="morphe_music_sideloaded_source_entry_downloads_only">Only downloaded files</string>
 </resources>

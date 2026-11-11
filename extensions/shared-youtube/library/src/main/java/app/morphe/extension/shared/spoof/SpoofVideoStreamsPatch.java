@@ -547,33 +547,6 @@ public class SpoofVideoStreamsPatch {
      * Called after {@link #getStreamingData(String)}.
      */
     @Nullable
-    private static volatile java.util.function.Function<Uri, Uri> streamUriInterceptor;
-
-    public static void setStreamUriInterceptor(@Nullable java.util.function.Function<Uri, Uri> interceptor) {
-        streamUriInterceptor = interceptor;
-    }
-
-    /**
-     * Injection point.
-     * Overrides the media stream URI if an interceptor (such as local downloads) handles it.
-     */
-    @Nullable
-    public static Uri overrideStreamUri(@Nullable Uri uri) {
-        java.util.function.Function<Uri, Uri> interceptor = streamUriInterceptor;
-        if (interceptor != null && uri != null) {
-            try {
-                Uri overridden = interceptor.apply(uri);
-                if (overridden != null) {
-                    return overridden;
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "overrideStreamUri failure", ex);
-            }
-        }
-        return uri;
-    }
-
-    @Nullable
     public static byte[] removeVideoPlaybackPostBody(Uri uri, int method, byte[] postData) {
         if (SPOOF_VIDEO_STREAMS) {
             try {

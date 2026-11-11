@@ -24,29 +24,29 @@ import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
-import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTrack;
-import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTracklist;
-import app.morphe.extension.youtube.innertube.Offline.OfflineCaptions;
-import app.morphe.extension.youtube.innertube.Offline.OfflineCommand;
-import app.morphe.extension.youtube.innertube.Offline.OfflineFormat;
-import app.morphe.extension.youtube.innertube.Offline.OfflineFormatAvailability;
-import app.morphe.extension.youtube.innertube.Offline.OfflineFormatLabel;
-import app.morphe.extension.youtube.innertube.Offline.OfflineFormatType;
-import app.morphe.extension.youtube.innertube.Offline.OfflinePlayerConfig;
-import app.morphe.extension.youtube.innertube.Offline.OfflinePlayerResponse;
-import app.morphe.extension.youtube.innertube.Offline.OfflinePlaylistAction;
-import app.morphe.extension.youtube.innertube.Offline.OfflinePlaylistEndpoint;
-import app.morphe.extension.youtube.innertube.Offline.OfflineStreamFormat;
-import app.morphe.extension.youtube.innertube.Offline.OfflineStreamingData;
-import app.morphe.extension.youtube.innertube.Offline.OfflineUpsellCommand;
-import app.morphe.extension.youtube.innertube.Offline.OfflineUpsellResponse;
-import app.morphe.extension.youtube.innertube.Offline.OfflineVideoAction;
-import app.morphe.extension.youtube.innertube.Offline.OfflineVideoEndpoint;
-import app.morphe.extension.youtube.innertube.Offline.OfflineabilityContainer;
-import app.morphe.extension.youtube.innertube.Offline.OfflineabilityRenderer;
+import app.morphe.extension.shared.innertube.Offline.OfflineCaptionTrack;
+import app.morphe.extension.shared.innertube.Offline.OfflineCaptionTracklist;
+import app.morphe.extension.shared.innertube.Offline.OfflineCaptions;
+import app.morphe.extension.shared.innertube.Offline.OfflineCommand;
+import app.morphe.extension.shared.innertube.Offline.OfflineFormat;
+import app.morphe.extension.shared.innertube.Offline.OfflineFormatAvailability;
+import app.morphe.extension.shared.innertube.Offline.OfflineFormatLabel;
+import app.morphe.extension.shared.innertube.Offline.OfflineFormatType;
+import app.morphe.extension.shared.innertube.Offline.OfflinePlayerConfig;
+import app.morphe.extension.shared.innertube.Offline.OfflinePlayerResponse;
+import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistAction;
+import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistEndpoint;
+import app.morphe.extension.shared.innertube.Offline.OfflineStreamFormat;
+import app.morphe.extension.shared.innertube.Offline.OfflineStreamingData;
+import app.morphe.extension.shared.innertube.Offline.OfflineUpsellCommand;
+import app.morphe.extension.shared.innertube.Offline.OfflineUpsellResponse;
+import app.morphe.extension.shared.innertube.Offline.OfflineVideoAction;
+import app.morphe.extension.shared.innertube.Offline.OfflineVideoEndpoint;
+import app.morphe.extension.shared.innertube.Offline.OfflineabilityContainer;
+import app.morphe.extension.shared.innertube.Offline.OfflineabilityRenderer;
 
 /**
- * Shared native in-app offline download logic used by both YouTube and YouTube Music.
+ * Saves videos and songs with the offline downloads of the app, for both YouTube and YouTube Music.
  */
 @SuppressWarnings("unused")
 public class BaseInAppDownloadsPatch {
@@ -90,7 +90,10 @@ public class BaseInAppDownloadsPatch {
     protected static final String UNSAVABLE_AUDIO_MIME_TYPE_PREFIX = "audio/webm";
 
     /**
-     * Format of the caption urls of the app.
+     * Format of the caption urls of the app. The caption urls of visionOS have no format, and the server
+     * then answers with a legacy format whose text is escaped twice, so the saved captions show
+     * entities such as {@code &#39;} instead of an apostrophe.
+     * The format is not a signed parameter, so the url stays valid.
      */
     protected static final String CAPTION_URL_FORMAT = "&fmt=srv3";
 
@@ -272,6 +275,8 @@ public class BaseInAppDownloadsPatch {
      * <p>
      * Called off the main thread with the offline state the server gives a saved video when the app
      * refreshes its saved videos, which the server schedules about every 12 hours.
+     * The server disables saved videos that need Premium to be saved, such as music videos,
+     * and the app then shows an error instead of playing them.
      *
      * @param offlineState New offline state of a saved video.
      * @return An offline state that keeps the video playable, or null to keep the original.

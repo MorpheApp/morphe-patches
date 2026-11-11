@@ -1,13 +1,12 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1881
+ * https://github.com/MorpheApp/morphe-patches/pull/4698
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.music.patches;
-
-import static app.morphe.extension.youtube.innertube.Offline.OfflinePlaylistAction.OFFLINE_PLAYLIST_ACTION_ADD;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -31,6 +30,11 @@ import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.Offline.OfflineCommand;
+import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistAction;
+import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistEndpoint;
+import app.morphe.extension.shared.innertube.Offline.OfflineVideoAction;
+import app.morphe.extension.shared.innertube.Offline.OfflineVideoEndpoint;
 import app.morphe.extension.shared.patches.BaseInAppDownloadsPatch;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
@@ -44,23 +48,18 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
             "com.google.android.libraries.youtube.rendering.elements.sender_view";
     private static final int IGNORE_DOUBLE_CLICK_DURATION_MS = 1000;
 
+    /**
+     * Command that does nothing, which replaces a command that was handled.
+     */
     private static final byte[] EMPTY_COMMAND = new byte[0];
 
     private static volatile String downloadButtonLabel = "";
 
-    /** Command field of the 'ypc/get_offline_upsell' endpoint. */
-    private static final int OFFLINE_UPSELL_ENDPOINT = 133724106;
-    /** Command field of the offline video endpoint, with the video id in field 1 and action in field 2. */
-    private static final int OFFLINE_VIDEO_ENDPOINT = 73080600;
-    private static final long OFFLINE_VIDEO_ACTION_ADD = 1;
-    /** Command field of the offline playlist endpoint, with the playlist id in field 1 and action in field 2. */
-    private static final int OFFLINE_PLAYLIST_ENDPOINT = 73082583;
-    private static final long OFFLINE_PLAYLIST_ACTION_ADD_VALUE = 1;
-
     /**
-     * Fields of the encoded parameters of the offline upsell of an album or a playlist, which
-     * hold its id in a nested message. The parameters of a song hold its video ID instead.
+     * Fields of the encoded parameters of the offline upsell. The parameters of a song hold its video ID,
+     * and the parameters of an album or a playlist hold its id in a nested message.
      */
+    private static final int UPSELL_PARAMETERS_VIDEO_ID = 4;
     private static final int UPSELL_PARAMETERS_PLAYLIST = 5;
     private static final int UPSELL_PLAYLIST_ITEM = 10;
     private static final int UPSELL_PLAYLIST_ID = 3;
@@ -100,6 +99,7 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
      */
     public static CharSequence onLithoTextLoaded(ContextInterface conversionContext, CharSequence original) {
         try {
+            // Such as the text of an icon only button.
             //noinspection SizeReplaceableByIsEmpty
             if (original.length() == 0) return original;
 
@@ -116,6 +116,10 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
         return original;
     }
 
+    /**
+     * In app downloads and the external downloader always replace the Download button.
+     */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isActionButtonOverridden() {
         return Settings.DOWNLOAD_MODE.get() != DownloadMode.DEFAULT;
     }
@@ -142,10 +146,13 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
 
     /**
      * Injection point.
+     * <p>
+     * If the external downloader replaces the Download menu, the menus open it instead,
+     * so the upsell is kept.
      */
     @Nullable
     public static byte[] replaceOfflineUpsell(@Nullable MessageLite command, @Nullable Object response) {
-        if (!isInAppDownloadMode() || Settings.EXTERNAL_DOWNLOADER_MENU.get()) {
+        if (Settings.EXTERNAL_DOWNLOADER_MENU.get()) {
             return null;
         }
         return BaseInAppDownloadsPatch.replaceOfflineUpsell(command, response);
@@ -154,9 +161,14 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
     /**
      * Injection point.
      * <p>
-     * Replaces Premium upsell and offline commands in {@code CommandResolver.resolveCommand}
-     * with native {@code OfflineCommand} messages so YouTube Music downloads and plays songs,
-     * albums, and playlists directly through its built-in offline engine.
+     * Called for every command the app resolves, on or off the main thread.
+     * Replaces the Premium upsell of the Download buttons and menus with a command that saves the song,
+     * album or playlist with the offline downloads of the app, or opens the external downloader.
+     *
+     * @param command The command that is resolved.
+     * @param map     The context of the command, which holds the view that was tapped.
+     * @return The command to resolve instead, an empty array if the command was handled,
+     *         or null to keep the original.
      */
     @Nullable
     public static byte[] replaceDownloadCommand(
@@ -177,21 +189,22 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
             final boolean premiumUpsell = PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered()
                     && !MENU_COMMAND.check(commandBytes).isFiltered();
 
-            // 1. Flyout menu Download tap on accounts offered Premium.
+            // Menu Download of accounts offered Premium.
             if (insideDialog && premiumUpsell) {
                 String videoId = SongMenuFilter.getMenuVideoId();
                 if (videoId != null && !videoId.isEmpty()) {
-                    return dispatchMenuVideoDownload(videoId);
+                    return menuVideoDownload(videoId);
                 }
 
                 String playlistId = PlaylistPageFilter.getMenuPlaylistId();
                 if (playlistId == null || playlistId.isEmpty()) {
                     playlistId = PlaylistPageFilter.getPagePlaylistId();
                 }
-                return dispatchPlaylistDownload(playlistId, insideDialog);
+                return playlistDownload(playlistId, true);
             }
 
-            // 2. Player action bar Download button tap.
+            // Song menus in search results, playlists and the queue share the player's Download label.
+            // Only the player action bar button should use the playing song's ID.
             if (!insideDialog && isPlayerDownloadButton(map)) {
                 if (!isActionButtonOverridden()) {
                     return null;
@@ -208,38 +221,38 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                 }
                 lastMainPlayerDownloadTime = now;
 
-                return dispatchVideoDownload(videoId, !isInAppDownloadMode());
+                return videoDownload(videoId, useExternalDownloader(false));
             }
 
-            // 3. Playlist or Album page header Download button tap on accounts offered Premium.
+            // Download button of a playlist or album page of accounts offered Premium.
+            // Only a tap can be the page button: commands the app resolves itself have no sender view.
             if (!insideDialog && premiumUpsell
                     && map != null
                     && map.get(ELEMENTS_SENDER_VIEW) instanceof View senderView
                     && !isViewInsideActionBar(senderView)) {
-                return dispatchPlaylistDownload(PlaylistPageFilter.getPagePlaylistId(), false);
+                return playlistDownload(PlaylistPageFilter.getPagePlaylistId(), false);
             }
 
-            ProtoMessage proto = new ProtoMessage(commandBytes);
+            OfflineCommand offlineCommand = OfflineCommand.parseFrom(commandBytes);
 
-            // 4. 'ypc/get_offline_upsell' endpoint command.
-            ProtoMessage upsellEndpoint = proto.messageField(OFFLINE_UPSELL_ENDPOINT);
-            if (!upsellEndpoint.isEmpty()) {
-                String value = upsellEndpoint.stringField(1);
+            // The 'ypc/get_offline_upsell' endpoint, which holds the video ID of a song, or encoded parameters.
+            if (offlineCommand.hasOfflineUpsellEndpoint()) {
+                String value = offlineCommand.getOfflineUpsellEndpoint().getVideoId();
                 if (value.isEmpty()) {
                     return null;
                 }
                 if (VIDEO_ID.matcher(value).matches()) {
                     return insideDialog
-                            ? dispatchMenuVideoDownload(value)
-                            : dispatchVideoDownload(value, useExternalDownloader(false));
+                            ? menuVideoDownload(value)
+                            : videoDownload(value, useExternalDownloader(false));
                 }
 
                 ProtoMessage parameters = new ProtoMessage(Base64.decode(Uri.decode(value), Base64.URL_SAFE));
                 String videoId = getOfflineUpsellVideoId(parameters);
                 if (videoId != null) {
                     return insideDialog
-                            ? dispatchMenuVideoDownload(videoId)
-                            : dispatchVideoDownload(videoId, useExternalDownloader(false));
+                            ? menuVideoDownload(videoId)
+                            : videoDownload(videoId, useExternalDownloader(false));
                 }
 
                 String playlistId = parameters.messagePath(UPSELL_PARAMETERS_PLAYLIST, UPSELL_PLAYLIST_ITEM)
@@ -249,32 +262,30 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                             ? PlaylistPageFilter.getMenuPlaylistId()
                             : PlaylistPageFilter.getPagePlaylistId();
                 }
-                return dispatchPlaylistDownload(playlistId, insideDialog);
+                return playlistDownload(playlistId, insideDialog);
             }
 
-            // 5. Native OfflineVideoEndpoint (e.g., podcast episodes or tracks allowed by server).
-            ProtoMessage videoEndpoint = proto.messageField(OFFLINE_VIDEO_ENDPOINT);
-            if (!videoEndpoint.isEmpty()) {
-                long action = videoEndpoint.varintField(2);
-                String videoId = videoEndpoint.stringField(1);
-                if (action == OFFLINE_VIDEO_ACTION_ADD && VIDEO_ID.matcher(videoId).matches()) {
-                    if (useExternalDownloader(insideDialog)) {
-                        return dispatchVideoDownload(videoId, true);
-                    }
-                    if (isInAppDownloadMode()) {
-                        return saveVideoCommand(videoId, List.of()).toByteArray();
-                    }
+            // The endpoints of the songs and playlists the account is allowed to save, such as
+            // podcast episodes and Liked music. In-app downloads keep them and only unlock their
+            // offlineability, so the quality picker of the app shows the formats of the server.
+            // Removing or refreshing a saved song or playlist is left to the app.
+            if (offlineCommand.hasOfflineVideoEndpoint()) {
+                OfflineVideoEndpoint endpoint = offlineCommand.getOfflineVideoEndpoint();
+                String videoId = endpoint.getVideoId();
+                if (endpoint.getAction() == OfflineVideoAction.OFFLINE_VIDEO_ACTION_ADD
+                        && VIDEO_ID.matcher(videoId).matches()
+                        && useExternalDownloader(insideDialog)) {
+                    return videoDownload(videoId, true);
                 }
                 return null;
             }
 
-            // 6. Native OfflinePlaylistEndpoint (e.g., Liked Music VLLM or user playlists).
-            ProtoMessage playlistEndpoint = proto.messageField(OFFLINE_PLAYLIST_ENDPOINT);
-            if (!playlistEndpoint.isEmpty()) {
-                long action = playlistEndpoint.varintField(2);
-                String playlistId = playlistEndpoint.stringField(1);
-                if (action == OFFLINE_PLAYLIST_ACTION_ADD_VALUE && PLAYLIST_ID.matcher(playlistId).matches()) {
-                    return dispatchPlaylistDownload(playlistId, insideDialog);
+            if (offlineCommand.hasOfflinePlaylistEndpoint()) {
+                OfflinePlaylistEndpoint endpoint = offlineCommand.getOfflinePlaylistEndpoint();
+                String playlistId = endpoint.getPlaylistId();
+                if (endpoint.getAction() == OfflinePlaylistAction.OFFLINE_PLAYLIST_ACTION_ADD
+                        && useExternalDownloader(insideDialog)) {
+                    return playlistDownload(playlistId, insideDialog);
                 }
                 return null;
             }
@@ -284,12 +295,12 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
         return null;
     }
 
+    /**
+     * The song menu stays open after Download, so repeated taps can repeat the request.
+     * The timer is separate from the player button, so a menu download of another song is not blocked.
+     */
     @Nullable
-    private static byte[] dispatchMenuVideoDownload(String videoId) {
-        if (!isFlyoutMenuOverridden()) {
-            return null;
-        }
-
+    private static byte[] menuVideoDownload(String videoId) {
         final long now = System.currentTimeMillis();
         if (now - lastFlyoutDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
             return EMPTY_COMMAND;
@@ -297,19 +308,18 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
         lastFlyoutDownloadTime = now;
 
         Logger.printDebug(() -> "Menu download of " + videoId);
-        return dispatchVideoDownload(videoId, flyoutMenuUsesExternalDownloader());
+        return videoDownload(videoId, flyoutMenuUsesExternalDownloader());
     }
 
+    /**
+     * @return A command that saves the song in-app, an empty command if the external downloader
+     *         was opened, or null if the download mode is the default.
+     */
     @Nullable
-    private static byte[] dispatchVideoDownload(String videoId, boolean externalDownloader) {
+    private static byte[] videoDownload(String videoId, boolean externalDownloader) {
         if (externalDownloader) {
-            Utils.runOnMainThreadNowOrLater(() ->
-                    ExternalDownloaderPreference.launchExternalDownloader(
-                            videoId,
-                            Utils.getActivity(),
-                            "https://music.youtube.com/watch?v=" + videoId
-                    )
-            );
+            Utils.runOnMainThreadNowOrLater(() -> ExternalDownloaderPreference.launchExternalDownloader(
+                    videoId, Utils.getActivity(), "https://music.youtube.com/watch?v=" + videoId));
             return EMPTY_COMMAND;
         }
         if (isInAppDownloadMode()) {
@@ -318,15 +328,23 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
         return null;
     }
 
+    /**
+     * Saves a playlist or an album in-app, or hands its page to the external downloader,
+     * as the download mode says.
+     *
+     * @return The command to resolve instead, an empty command if the external downloader was opened,
+     *         or null to keep the original.
+     */
     @Nullable
-    private static byte[] dispatchPlaylistDownload(@Nullable String playlistId, boolean insideDialog) {
-        if (playlistId == null || playlistId.isEmpty() || !PLAYLIST_ID.matcher(playlistId).matches()) {
+    private static byte[] playlistDownload(@Nullable String playlistId, boolean insideDialog) {
+        if (playlistId == null || !PLAYLIST_ID.matcher(playlistId).matches()) {
             return null;
         }
         if (!insideDialog && !isActionButtonOverridden()) {
             return null;
         }
 
+        // A single tap can resolve the command twice.
         final long now = System.currentTimeMillis();
         if (now - lastPlaylistDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
             return EMPTY_COMMAND;
@@ -335,17 +353,13 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
 
         Logger.printDebug(() -> "Playlist download of " + playlistId);
         if (useExternalDownloader(insideDialog)) {
-            Utils.runOnMainThreadNowOrLater(() ->
-                    ExternalDownloaderPreference.launchExternalDownloader(
-                            playlistId,
-                            Utils.getActivity(),
-                            playlistUrl(playlistId)
-                    )
-            );
+            Utils.runOnMainThreadNowOrLater(() -> ExternalDownloaderPreference.launchExternalDownloader(
+                    playlistId, Utils.getActivity(), playlistUrl(playlistId)));
             return EMPTY_COMMAND;
         }
         if (isInAppDownloadMode()) {
-            return savePlaylistCommand(playlistId, OFFLINE_PLAYLIST_ACTION_ADD, List.of()).toByteArray();
+            return savePlaylistCommand(playlistId, OfflinePlaylistAction.OFFLINE_PLAYLIST_ACTION_ADD, List.of())
+                    .toByteArray();
         }
         return null;
     }
@@ -357,20 +371,30 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
         return "https://music.youtube.com/playlist?list=" + playlistId.replaceFirst("^VL", "");
     }
 
+    /**
+     * @param parameters The encoded parameters of the offline upsell endpoint.
+     * @return The video ID, or null if the parameters are of an album or a playlist.
+     */
     @Nullable
     private static String getOfflineUpsellVideoId(ProtoMessage parameters) {
         try {
-            String videoId = parameters.stringField(4);
+            String videoId = parameters.stringField(UPSELL_PARAMETERS_VIDEO_ID);
             return VIDEO_ID.matcher(videoId).matches() ? videoId : null;
         } catch (IllegalArgumentException ex) {
+            // The parameters of an album or a playlist hold other fields at this number.
             Logger.printDebug(() -> "Offline upsell parameters are not those of a song", ex);
             return null;
         }
     }
 
+    /**
+     * Determines if the clicked view is inside a Dialog/BottomSheet by comparing
+     * its Window root to the main Activity's Window root.
+     */
     private static boolean isViewInsideDialog(@Nullable Object viewObj) {
         if (viewObj instanceof View view) {
             View buttonRoot = view.getRootView();
+
             Activity activity = Utils.getActivity();
             if (activity != null) {
                 View activityRoot = activity.getWindow().getDecorView();
@@ -380,6 +404,9 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
         return false;
     }
 
+    /**
+     * The label is the localized download text litho gave us, so no hard coded language is needed.
+     */
     private static boolean isPlayerDownloadButton(@Nullable Map<Object, Object> map) {
         if (map == null || downloadButtonLabel.isEmpty()
                 || !(map.get(ELEMENTS_SENDER_VIEW) instanceof ViewGroup senderViewGroup)) {

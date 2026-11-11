@@ -327,7 +327,9 @@ internal fun playerResponseModelFromBytesFingerprint(playerResponseModel: String
             parameters = listOf("[B", "Lcom/google/protobuf/MessageLite;"),
             returnType = "Lcom/google/protobuf/MessageLite;"
         ),
-        opcode(Opcode.CHECK_CAST) // Player response.
+        // Player response. YT Music 9.45+ has another method with these parameters,
+        // which parses with a fallback and casts another object much later.
+        opcode(Opcode.CHECK_CAST, location = MatchAfterWithin(2))
     )
 )
 

@@ -24,22 +24,22 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.patches.BaseInAppDownloadsPatch;
 import app.morphe.extension.shared.patches.DownloadMode;
-import app.morphe.extension.youtube.innertube.Offline.ButtonCommand;
-import app.morphe.extension.youtube.innertube.Offline.DownloadButtonColor;
-import app.morphe.extension.youtube.innertube.Offline.DownloadButtonLayout;
-import app.morphe.extension.youtube.innertube.Offline.DownloadButtonSize;
-import app.morphe.extension.youtube.innertube.Offline.DownloadButtonStyle;
-import app.morphe.extension.youtube.innertube.Offline.EntityKey;
-import app.morphe.extension.youtube.innertube.Offline.FlexibleAction;
-import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsRow;
-import app.morphe.extension.youtube.innertube.Offline.FlexibleActionsViewModel;
-import app.morphe.extension.youtube.innertube.Offline.OfflineCommand;
-import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadAction;
-import app.morphe.extension.youtube.innertube.Offline.OfflineDownloadActionCommand;
-import app.morphe.extension.youtube.innertube.Offline.OfflinePlaylistAction;
-import app.morphe.extension.youtube.innertube.Offline.OfflinePlaylistEndpoint;
-import app.morphe.extension.youtube.innertube.Offline.PlaylistDownloadButtonViewModel;
-import app.morphe.extension.youtube.innertube.Offline.PlaylistDownloadStatusEntityId;
+import app.morphe.extension.shared.innertube.Offline.ButtonCommand;
+import app.morphe.extension.shared.innertube.Offline.DownloadButtonColor;
+import app.morphe.extension.shared.innertube.Offline.DownloadButtonLayout;
+import app.morphe.extension.shared.innertube.Offline.DownloadButtonSize;
+import app.morphe.extension.shared.innertube.Offline.DownloadButtonStyle;
+import app.morphe.extension.shared.innertube.Offline.EntityKey;
+import app.morphe.extension.shared.innertube.Offline.FlexibleAction;
+import app.morphe.extension.shared.innertube.Offline.FlexibleActionsRow;
+import app.morphe.extension.shared.innertube.Offline.FlexibleActionsViewModel;
+import app.morphe.extension.shared.innertube.Offline.OfflineCommand;
+import app.morphe.extension.shared.innertube.Offline.OfflineDownloadAction;
+import app.morphe.extension.shared.innertube.Offline.OfflineDownloadActionCommand;
+import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistAction;
+import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistEndpoint;
+import app.morphe.extension.shared.innertube.Offline.PlaylistDownloadButtonViewModel;
+import app.morphe.extension.shared.innertube.Offline.PlaylistDownloadStatusEntityId;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
@@ -129,7 +129,9 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     /**
      * Injection point.
      * <p>
-     * Called when the player response of a saved video is loaded.
+     * Called when the player response of a saved video is loaded. The play command of a Downloads card
+     * keeps the position from when the card was built, and the app can use an older position than the
+     * one saved in Downloads, so a saved video can start at 0:00 or at an older position.
      */
     public static void setDownloadStartTime(OfflinePlaybackWorker worker,
                                             Object descriptor,
@@ -145,6 +147,12 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
      * Injection point.
      * <p>
      * Called for every element the app parses.
+     * The server only gives a Download button to the playlist page headers of Premium accounts,
+     * so it's added to the headers of other accounts. The button saves the playlist in-app,
+     * or opens the external downloader in External downloader mode.
+     *
+     * @param bytes Proto of the element.
+     * @return The element with a Download button, or the original element.
      */
     public static byte[] addPlaylistDownloadButton(byte[] bytes) {
         try {
@@ -173,6 +181,10 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
         return bytes;
     }
 
+    /**
+     * @return The buttons with a Download button in the row of the Play all button of a playlist,
+     *         or null if the buttons are not of a playlist or already have a Download button.
+     */
     @Nullable
     private static FlexibleActionsViewModel withPlaylistDownloadButton(FlexibleActionsViewModel actions) {
         int playlistRowIndex = -1;
@@ -202,6 +214,10 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
                 .build();
     }
 
+    /**
+     * @return The Download button the server gives to the playlist page header of Premium accounts,
+     *         which saves the playlist or removes it if it's saved.
+     */
     private static FlexibleAction playlistDownloadButton(String playlistId) {
         Logger.printDebug(() -> "Adding download button to playlist: " + playlistId);
 
@@ -210,6 +226,7 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
                 .setAction(OfflinePlaylistAction.OFFLINE_PLAYLIST_ACTION_INFER_AUTOMATICALLY)
                 .setOfflineability(offlineability(List.of()))
                 .build();
+        // Texts of the app, which all supported app versions have.
         String downloadableText = ResourceUtils.getString("accessibility_playlist_download");
         String inProgressText = ResourceUtils.getString("offline_button_progress_text");
         String completedText = ResourceUtils.getString("offline_button_complete_text");
@@ -242,6 +259,9 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
         return FlexibleAction.newBuilder().setDownloadButtonViewModel(button).build();
     }
 
+    /**
+     * @return The key of the entity, as the app encodes it.
+     */
     private static String entityKey(int entityType, ByteString entityId) {
         EntityKey key = EntityKey.newBuilder()
                 .setEntityId(entityId)
@@ -257,6 +277,8 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
      */
     public static void saveVideo(String videoId) {
         Logger.printDebug(() -> "Saving video: " + videoId);
+        // If the formats of the video are loaded first, the command logs to the interaction logger
+        // without checking it is set.
         Map<String, Object> context = new HashMap<>();
         context.put(INTERACTION_LOGGER_KEY, getNoOpInteractionLogger());
         if (!CommandRouterPatch.executeCommand(saveVideoCommand(videoId, List.of()).toByteArray(), context)) {

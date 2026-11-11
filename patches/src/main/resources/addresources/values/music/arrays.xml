@@ -298,16 +298,4 @@
         <item>NONE</item>
     </string-array>
 
-    <!-- downloads.deviceFilesSource -->
-    <string-array name="morphe_music_sideloaded_source_entries">
-        <item>@string/morphe_music_sideloaded_source_entry_both</item>
-        <item>@string/morphe_music_sideloaded_source_entry_device_only</item>
-        <item>@string/morphe_music_sideloaded_source_entry_downloads_only</item>
-    </string-array>
-    <string-array name="morphe_music_sideloaded_source_entry_values">
-        <item>BOTH</item>
-        <item>DEVICE_ONLY</item>
-        <item>DOWNLOADS_ONLY</item>
-    </string-array>
-
 </resources>
