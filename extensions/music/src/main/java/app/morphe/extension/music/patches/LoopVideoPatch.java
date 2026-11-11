@@ -121,7 +121,7 @@ public class LoopVideoPatch {
      * Injection point.
      */
     public static void videoIdChanged(String videoId) {
-        if (Settings.LOOP_VIDEO.get() && rangeStartMs >= 0 && !rangeVideoId.equals(videoId)) {
+        if (Settings.AB_LOOP.get() && rangeStartMs >= 0 && !rangeVideoId.equals(videoId)) {
             clearRange();
         }
     }
@@ -131,7 +131,7 @@ public class LoopVideoPatch {
      */
     public static void videoTimeChanged(long time) {
         try {
-            if (!Settings.LOOP_VIDEO.get() || !isRangeActive() || scrubbing || time < 0) {
+            if (!Settings.AB_LOOP.get() || !isRangeActive() || scrubbing || time < 0) {
                 return;
             }
 
@@ -152,7 +152,7 @@ public class LoopVideoPatch {
      * Injection point. Keeps player seeks (in app and from the media session) inside the loop.
      */
     public static long clampSeekPosition(long time) {
-        if (!Settings.LOOP_VIDEO.get()) return time;
+        if (!Settings.AB_LOOP.get()) return time;
         return clampToRange(time);
     }
 
@@ -161,7 +161,7 @@ public class LoopVideoPatch {
      */
     public static float clampSeekX(float x) {
         try {
-            if (!Settings.LOOP_VIDEO.get() || !isRangeActive() || !hasSeekbarBounds()) {
+            if (!Settings.AB_LOOP.get() || !isRangeActive() || !hasSeekbarBounds()) {
                 return x;
             }
 
@@ -180,7 +180,7 @@ public class LoopVideoPatch {
      * Injection point. Tracks long presses and dragging. Never consumes the event.
      */
     public static void onTouchEvent(View view, MotionEvent event) {
-        if (!Settings.LOOP_VIDEO.get()) return;
+        if (!Settings.AB_LOOP.get()) return;
 
         try {
             switch (event.getActionMasked()) {
@@ -245,20 +245,20 @@ public class LoopVideoPatch {
             if (rangeStartMs < 0) {
                 rangeStartMs = timeMs;
                 rangeVideoId = VideoInformation.getVideoId();
-                Utils.showToastShort(str("morphe_music_loop_video_toast_start", formatMillis(timeMs)));
+                Utils.showToastShort(str("morphe_music_ab_loop_toast_start", formatMillis(timeMs)));
             } else if (rangeEndMs < 0) {
                 if (timeMs > rangeStartMs) {
                     rangeEndMs = timeMs;
-                    Utils.showToastShort(str("morphe_music_loop_video_toast_end", formatMillis(timeMs)));
+                    Utils.showToastShort(str("morphe_music_ab_loop_toast_end", formatMillis(timeMs)));
                 } else {
                     // Pressed before the start, so the old start becomes the end.
                     rangeEndMs = rangeStartMs;
                     rangeStartMs = timeMs;
-                    Utils.showToastShort(str("morphe_music_loop_video_toast_start", formatMillis(timeMs)));
+                    Utils.showToastShort(str("morphe_music_ab_loop_toast_start", formatMillis(timeMs)));
                 }
             } else {
                 clearRange();
-                Utils.showToastShort(str("morphe_music_loop_video_toast_cleared"));
+                Utils.showToastShort(str("morphe_music_ab_loop_toast_cleared"));
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onLongPress failure", ex);
@@ -269,7 +269,7 @@ public class LoopVideoPatch {
      * Injection point. Called at the end of the time bar draw.
      */
     public static void drawLoopMarkers(Canvas canvas, Rect seekbarRect) {
-        if (!Settings.LOOP_VIDEO.get()) return;
+        if (!Settings.AB_LOOP.get()) return;
 
         try {
             seekbarBounds.set(seekbarRect);
@@ -297,7 +297,7 @@ public class LoopVideoPatch {
      * Injection point. Elapsed time label, shown with milliseconds while dragging.
      */
     public static String formatElapsedTime(String original) {
-        if (!Settings.LOOP_VIDEO.get() || !scrubbing) return original;
+        if (!Settings.AB_LOOP.get() || !scrubbing) return original;
         return formatMillis(scrubTimeMs);
     }
 
@@ -305,7 +305,7 @@ public class LoopVideoPatch {
      * Injection point. Remaining time label, shown with milliseconds while dragging.
      */
     public static String formatRemainingTime(String original) {
-        if (!Settings.LOOP_VIDEO.get() || !scrubbing) return original;
+        if (!Settings.AB_LOOP.get() || !scrubbing) return original;
         return "-" + formatMillis(VideoInformation.getVideoLength() - scrubTimeMs);
     }
 }

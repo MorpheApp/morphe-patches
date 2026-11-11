@@ -33,7 +33,7 @@ private const val EXTENSION_CLASS =
 
 @Suppress("unused")
 val loopVideoPatch = patch(
-    name = "Loop video",
+    name = "A-B loop",
     description = "Adds an option to loop part of a song by long-pressing the seekbar to set the loop start and end.",
 ) {
     dependsOn(
@@ -46,7 +46,7 @@ val loopVideoPatch = patch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_music_loop_video", summary = true)
+            SwitchPreference("morphe_music_ab_loop", summary = true)
         )
 
         musicVideoIdHook("$EXTENSION_CLASS->videoIdChanged(Ljava/lang/String;)V")
