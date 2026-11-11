@@ -67,7 +67,8 @@ val hideLayoutComponentsPatch = patch(
             SwitchPreference("morphe_music_hide_new_from_shelf"),
             SwitchPreference("morphe_music_hide_playlist_shelves"),
             SwitchPreference("morphe_music_hide_speed_dial_shelf"),
-            SwitchPreference("morphe_music_hide_you_may_also_like_section")
+            SwitchPreference("morphe_music_hide_you_may_also_like_section"),
+            SwitchPreference("morphe_music_hide_your_downloads_shelf")
         )
 
         PreferenceScreen.GENERAL.addPreferences(
