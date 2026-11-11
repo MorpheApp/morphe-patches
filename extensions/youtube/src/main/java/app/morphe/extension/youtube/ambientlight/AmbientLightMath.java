@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.ambientlight;
 
 import androidx.annotation.Nullable;
 
+import java.util.Arrays;
+
 /**
  * Pixel work for the ambient light. The picture is small ARGB int arrays. The light is
  * 3 floats per pixel in linear light, because 8 bit values and gamma blending make a smooth
@@ -40,10 +42,31 @@ final class AmbientLightMath {
     private static final int HALF_ROUNDING = 1 << (HALF_MANTISSA_SHIFT - 1);
     private static final int HALF_EXPONENT_OFFSET = 112 << 10;
 
+    /** The level a converted capture has, for each level of a capture that is not converted. */
+    private static final float[] CONVERTED = new float[256];
+    /** The level without the conversion, for each level of a converted capture. */
+    private static final int[] NOT_CONVERTED = new int[256];
+    /** A conversion changes the mean level by this share of what is expected, more or less. */
+    private static final float MIN_CONVERSION_SHARE = 0.5f;
+    private static final float MAX_CONVERSION_SHARE = 1.6f;
+    /** Mean channel difference (out of 255) that the conversion may leave unexplained. */
+    private static final float MAX_CONVERSION_RESIDUAL = 3f;
+    /** Share of the difference between two captures that the conversion may leave unexplained. */
+    private static final float MAX_CONVERSION_RESIDUAL_SHARE = 0.3f;
+    private static int[] referenceChannel = new int[0];
+    private static int[] pictureChannel = new int[0];
+
     static {
         for (int i = 0; i < LINEAR.length; i++) {
             final float value = i / 255f;
             LINEAR[i] = value * value;
+            // The BT.709 curve of the video to linear light, and that to the sRGB curve.
+            final double light = value < 0.081 ? value / 4.5 : Math.pow((value + 0.099) / 1.099, 1 / 0.45);
+            CONVERTED[i] = (float) (255 * (light <= 0.0031308 ? 12.92 * light : 1.055 * Math.pow(light, 1 / 2.4) - 0.055));
+        }
+        for (int level = 0, plain = 0; level < NOT_CONVERTED.length; level++) {
+            while (plain < 255 && CONVERTED[plain + 1] <= level) plain++;
+            NOT_CONVERTED[level] = plain < 255 && CONVERTED[plain + 1] - level < level - CONVERTED[plain] ? plain + 1 : plain;
         }
     }
 
@@ -156,6 +179,70 @@ final class AmbientLightMath {
                     + Math.abs((a & 0xFF) - (b & 0xFF));
         }
         return (int) (total / (3L * first.length));
+    }
+
+    /**
+     * Some devices convert the BT.709 transfer curve of the video to sRGB in only some of the
+     * captures, about every second one on a reported device. A converted capture is brighter,
+     * mostly in the dark parts, and the light flickers if it follows both kinds.
+     * The channels are compared sorted, so things that moved in the picture do not count.
+     *
+     * @return If {@code picture} is {@code reference} with the conversion.
+     */
+    static boolean isConverted(int[] reference, int[] picture) {
+        final int length = reference.length;
+        long referenceSum = 0;
+        long pictureSum = 0;
+        float convertedSum = 0f;
+        for (int i = 0; i < length; i++) {
+            final int a = reference[i];
+            final int b = picture[i];
+            final int red = (a >> 16) & 0xFF;
+            final int green = (a >> 8) & 0xFF;
+            final int blue = a & 0xFF;
+            referenceSum += red + green + blue;
+            convertedSum += CONVERTED[red] + CONVERTED[green] + CONVERTED[blue];
+            pictureSum += ((b >> 16) & 0xFF) + ((b >> 8) & 0xFF) + (b & 0xFF);
+        }
+        final float expected = (convertedSum - referenceSum) / (3f * length);
+        final float change = (pictureSum - referenceSum) / (3f * length);
+        // Almost every capture stops here, so the sorting below is rare.
+        if (expected < 1f || change < MIN_CONVERSION_SHARE * expected || change > MAX_CONVERSION_SHARE * expected) {
+            return false;
+        }
+
+        if (referenceChannel.length != length) {
+            referenceChannel = new int[length];
+            pictureChannel = new int[length];
+        }
+        float difference = 0f;
+        float residual = 0f;
+        for (int shift = 16; shift >= 0; shift -= 8) {
+            for (int i = 0; i < length; i++) {
+                referenceChannel[i] = (reference[i] >> shift) & 0xFF;
+                pictureChannel[i] = (picture[i] >> shift) & 0xFF;
+            }
+            Arrays.sort(referenceChannel);
+            Arrays.sort(pictureChannel);
+            for (int i = 0; i < length; i++) {
+                difference += Math.abs(pictureChannel[i] - referenceChannel[i]);
+                residual += Math.abs(pictureChannel[i] - CONVERTED[referenceChannel[i]]);
+            }
+        }
+        residual /= 3f * length;
+        difference /= 3f * length;
+        return residual <= MAX_CONVERSION_RESIDUAL && residual <= MAX_CONVERSION_RESIDUAL_SHARE * difference;
+    }
+
+    /**
+     * Takes the conversion out of a capture again, see {@link #isConverted}.
+     */
+    static void undoConversion(int[] picture) {
+        for (int i = 0; i < picture.length; i++) {
+            final int color = picture[i];
+            picture[i] = 0xFF000000 | NOT_CONVERTED[(color >> 16) & 0xFF] << 16
+                    | NOT_CONVERTED[(color >> 8) & 0xFF] << 8 | NOT_CONVERTED[color & 0xFF];
+        }
     }
 
     /**

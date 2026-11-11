@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.ambientlight;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -255,6 +256,76 @@ public class AmbientLightMathTest {
                 new float[]{2f, 2f, 8f, 8f});
 
         assertEquals(0f, change, 0f);
+    }
+
+    /** A picture with dark and bright parts, where every channel is different. */
+    private static int[] scene(int shift) {
+        int[] pixels = new int[48 * 27];
+        for (int i = 0; i < pixels.length; i++) {
+            final int x = (i + shift) % 48;
+            final int y = i / 48;
+            pixels[i] = 0xFF000000 | (x * 5) << 16 | (y * 8) << 8 | (x * 2 + y * 3);
+        }
+        return pixels;
+    }
+
+    /** The BT.709 curve of a level converted to the sRGB curve, as a device does it. */
+    private static int converted(int level) {
+        final double value = level / 255.0;
+        final double light = value < 0.081 ? value / 4.5 : Math.pow((value + 0.099) / 1.099, 1 / 0.45);
+        return (int) Math.round(255 * (light <= 0.0031308 ? 12.92 * light : 1.055 * Math.pow(light, 1 / 2.4) - 0.055));
+    }
+
+    private static int[] converted(int[] pixels) {
+        int[] result = new int[pixels.length];
+        for (int i = 0; i < pixels.length; i++) {
+            result[i] = 0xFF000000 | converted((pixels[i] >> 16) & 0xFF) << 16
+                    | converted((pixels[i] >> 8) & 0xFF) << 8 | converted(pixels[i] & 0xFF);
+        }
+        return result;
+    }
+
+    private static int[] scaled(int[] pixels, int numerator, int denominator, int offset) {
+        int[] result = new int[pixels.length];
+        for (int i = 0; i < pixels.length; i++) {
+            int color = 0xFF000000;
+            for (int shift = 16; shift >= 0; shift -= 8) {
+                final int value = ((pixels[i] >> shift) & 0xFF) * numerator / denominator + offset;
+                color |= Math.max(0, Math.min(255, value)) << shift;
+            }
+            result[i] = color;
+        }
+        return result;
+    }
+
+    @Test
+    public void convertedCaptureIsFound() {
+        assertTrue(AmbientLightMath.isConverted(scene(0), converted(scene(0))));
+        // Also when something moved between the two captures.
+        assertTrue(AmbientLightMath.isConverted(scene(0), converted(scene(3))));
+    }
+
+    @Test
+    public void conversionIsTakenOutAgain() {
+        int[] picture = converted(scene(0));
+        AmbientLightMath.undoConversion(picture);
+        assertTrue(AmbientLightMath.difference(scene(0), picture) <= 1);
+    }
+
+    @Test
+    public void realChangesAreNotAConversion() {
+        assertFalse(AmbientLightMath.isConverted(scene(0), scene(0)));
+        assertFalse(AmbientLightMath.isConverted(scene(0), scene(3)));
+        // The converted capture is the reference: the next capture is as it should be.
+        assertFalse(AmbientLightMath.isConverted(converted(scene(0)), scene(0)));
+        // Another scene that happens to be a little brighter.
+        assertFalse(AmbientLightMath.isConverted(filled(0xFF404040, 48 * 27), scene(0)));
+        // A brighter exposure scales the picture, and leaves black as it is.
+        assertFalse(AmbientLightMath.isConverted(scene(0), scaled(scene(0), 23, 20, 0)));
+        // A strong fade to white raises black much more than the conversion does.
+        assertFalse(AmbientLightMath.isConverted(scene(0), scaled(scene(0), 17, 20, 38)));
+        // Every level raised by the same amount, which moves the bright parts too far.
+        assertFalse(AmbientLightMath.isConverted(scene(0), scaled(scene(0), 1, 1, 30)));
     }
 
     @Test
