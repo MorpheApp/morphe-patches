@@ -211,6 +211,8 @@ public final class AmbientLightController {
     /** False while the light still has to reach the current picture. */
     private static volatile boolean settled;
     private static volatile int stillCaptures;
+    /** Set when a surface got a new buffer, which is empty until the light is drawn again. */
+    private static volatile boolean redraw;
     /** Strength of the light over the page color, out of 256. */
     private static volatile int strength = FULL_STRENGTH;
     /** The part of the video the colors of the light come from, without black bars. In readback pixels. */
@@ -261,6 +263,7 @@ public final class AmbientLightController {
 
     private static final Runnable restoreLight = () -> setDimmed(false);
     private static final Runnable fadeStep = AmbientLightController::stepFade;
+    private static final Runnable tickRunnable = AmbientLightController::tick;
 
     /**
      * Drawables that keep their color until they are mounted in the window of the watch page.
@@ -644,7 +647,14 @@ public final class AmbientLightController {
     }
 
     private static void requestFrame() {
+        redraw = true;
         settled = false;
+        // The next capture is half a second away while the picture is still.
+        if (stillCaptures >= STILL_CAPTURES_BEFORE_SLOWDOWN) {
+            stillCaptures = 0;
+            mainHandler.removeCallbacks(tickRunnable);
+            tickScheduled = false;
+        }
         scheduleTick();
     }
 
@@ -655,7 +665,7 @@ public final class AmbientLightController {
     private static void scheduleTick() {
         if (active && !tickScheduled) {
             tickScheduled = true;
-            mainHandler.post(AmbientLightController::tick);
+            mainHandler.post(tickRunnable);
         }
     }
 
@@ -683,7 +693,7 @@ public final class AmbientLightController {
             if (!captureInFlight) capture(video, current);
 
             tickScheduled = true;
-            mainHandler.postDelayed(AmbientLightController::tick, interval);
+            mainHandler.postDelayed(tickRunnable, interval);
         } catch (Exception ex) {
             Logger.printException(() -> "tick failure", ex);
         }
@@ -767,10 +777,12 @@ public final class AmbientLightController {
 
             final int difference = AmbientLightMath.difference(near, pictureColors);
             final boolean unchanged = difference <= UNCHANGED_DIFFERENCE;
+            final boolean emptySurface = redraw;
+            redraw = false;
             if (unchanged && current == drawnLayout) {
                 stillCaptures++;
-                if (stepCover()) {
-                    present(current);
+                if (stepCover() || emptySurface) {
+                    if (!present(current)) redraw = true;
                 } else {
                     settled = true;
                 }
@@ -813,7 +825,7 @@ public final class AmbientLightController {
             }
             final float change = AmbientLightMath.encodeVisible(light, encodedLight, presentedLight, width, height, gridVideo);
             final boolean visible = current != drawnLayout || change >= MIN_VISIBLE_CHANGE;
-            if (!visible && !coverMoved) return;
+            if (!visible && !coverMoved && !emptySurface) return;
 
             if (visible) {
                 float[] shown = encodedLight;
@@ -825,6 +837,8 @@ public final class AmbientLightController {
             if (present(current)) {
                 drawnLayout = current;
                 if (!pageCleared) mainHandler.post(AmbientLightController::onFrameShown);
+            } else {
+                redraw = true;
             }
         } catch (Exception ex) {
             Logger.printException(() -> "process failure", ex);
