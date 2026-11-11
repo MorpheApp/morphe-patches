@@ -18,6 +18,7 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
+import app.morphe.patches.music.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
@@ -29,11 +30,8 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.patches.music.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableStringResult
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
-import app.morphe.patches.youtube.interaction.downloads.OfflinePlayerResponseFingerprint
-import app.morphe.patches.youtube.interaction.downloads.OfflineUpsellResponseFingerprint
 import app.morphe.patches.youtube.interaction.downloads.ResolveCommandFingerprint
 import app.morphe.patches.youtube.interaction.downloads.UpdateOfflineVideoPolicyFingerprint
 import app.morphe.patches.youtube.interaction.downloads.playerResponseGetterFingerprint
@@ -139,9 +137,12 @@ val downloadsPatch = patch(
             )
         }
 
-        // Unlock OfflineabilityRenderer in both playlist/album (Lhkb;->c) and single-track (Lhkj;->e) controllers.
-        MusicOfflineVideoEndpointFingerprint.instructionMatches.forEach { match ->
-            match.getMethodCalled().apply {
+        // Unlock OfflineabilityRenderer in both single-track (Lhkj;->e) and playlist/album (Lhkb;->c) controllers.
+        listOf(
+            MusicOfflineVideoEndpointFingerprint.instructionMatches.first().getMethodCalled(),
+            SaveOfflinePlaylistCallFingerprint.instructionMatches.first().getMethodCalled(),
+        ).forEach { controllerMethod ->
+            controllerMethod.apply {
                 val offlineabilityType = parameterTypes[1].toString()
 
                 addInstructionsWithLabels(
@@ -166,7 +167,7 @@ val downloadsPatch = patch(
         }
 
         // Save the track instead of showing the Premium upsell of the offline upsell endpoint.
-        OfflineUpsellResponseFingerprint.let {
+        MusicOfflineUpsellResponseFingerprint.let {
             val responseType = it.instructionMatches.first().instruction.getReference<TypeReference>()!!.type
             val commandField = it.instructionMatches[2].fieldReference
 
@@ -193,7 +194,7 @@ val downloadsPatch = patch(
         }
 
         // Save the track with streams of another client, if the server declines to save the track.
-        OfflinePlayerResponseFingerprint.let {
+        MusicOfflinePlayerResponseFingerprint.let {
             val playerResponseModelType = it.method.returnType
 
             val fromBytesFingerprint = playerResponseModelFromBytesFingerprint(playerResponseModelType)
@@ -244,11 +245,11 @@ val downloadsPatch = patch(
             }
             it.classDef.methods.add(helperMethod)
 
-            val cachePut = it.instructionMatches.last()
-            val playerResponseModelRegister = cachePut.instruction.registersUsed[2]
+            val moveResult = it.instructionMatches.last()
+            val playerResponseModelRegister = moveResult.instruction.registersUsed.first()
 
             it.method.addInstructions(
-                cachePut.index,
+                moveResult.index + 1,
                 """
                     invoke-static/range { v$playerResponseModelRegister .. v$playerResponseModelRegister }, $helperMethod
                     move-result-object v$playerResponseModelRegister
