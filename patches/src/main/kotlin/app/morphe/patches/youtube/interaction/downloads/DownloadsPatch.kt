@@ -18,12 +18,12 @@ import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
+import app.morphe.patches.shared.misc.downloads.exportDownloadFolderPreference
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
 import app.morphe.patches.shared.misc.fix.proto.protoDefaultInstanceFingerprint
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -63,12 +63,7 @@ private val downloadsResourcePatch = patch {
                 preferences = setOf(
                     ListPreference("morphe_download_mode"),
                     SwitchPreference("morphe_shorts_download_flyout_button", summary = true),
-                    NonInteractivePreference(
-                        "morphe_export_download_folder",
-                        summaryKey = null,
-                        tag = "app.morphe.extension.youtube.settings.preference.ExportFolderPreference",
-                        selectable = true
-                    ),
+                    exportDownloadFolderPreference(),
                     SwitchPreference("morphe_external_downloader_overlay_button", summary = true),
                     TextPreference(
                         "morphe_external_downloader_name",

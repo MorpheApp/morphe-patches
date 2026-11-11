@@ -3,6 +3,7 @@ package app.morphe.extension.shared.settings;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static app.morphe.extension.shared.StringRef.sf;
+import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 import static app.morphe.extension.shared.settings.Setting.parent;
 import static app.morphe.extension.shared.settings.Setting.parentNot;
@@ -126,6 +127,10 @@ public class SharedYouTubeSettings extends BaseSettings {
     // YouTube Music only.
     public static final BooleanSetting EXTERNAL_DOWNLOADER_MENU = new BooleanSetting("morphe_external_downloader_menu", FALSE, DOWNLOAD_MODE.availability(DownloadMode.DEFAULT, DownloadMode.IN_APP));
     public static final StringSetting EXTERNAL_DOWNLOADER_PACKAGE_NAME = new StringSetting("morphe_external_downloader_name", "com.deniscerri.ytdl" /* YTDLnis */, new ExternalDownloaderAvailability());
+    // YouTube only saves videos in the app with these download modes.
+    // YouTube Music also saves songs with smart downloads, with any download mode.
+    public static final StringSetting EXPORT_DOWNLOAD_FOLDER = new StringSetting("morphe_export_download_folder", "",
+            IS_YOUTUBE_MUSIC ? null : DOWNLOAD_MODE.availability(DownloadMode.DEFAULT, DownloadMode.IN_APP));
 
     // Spoof app version
     public static final BooleanSetting SPOOF_APP_VERSION = new BooleanSetting("morphe_spoof_app_version", FALSE, true, "morphe_spoof_app_version_user_dialog_message");

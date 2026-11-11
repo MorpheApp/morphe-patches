@@ -77,6 +77,13 @@ Second \"item\" text"</string>
 
 Verify the package name is correct and the app is installed"</string>
     <string name="morphe_external_downloader_empty_warning">Package name cannot be empty</string>
+    <string name="morphe_export_download_folder_dialog_title">Export folder</string>
+    <string name="morphe_export_download_folder_change">Change folder</string>
+    <string name="morphe_export_download_folder_changed">Export folder changed</string>
+    <string name="morphe_export_download_folder_reset">Export folder reset</string>
+    <string name="morphe_export_download_folder_missing">Could not find export folder %s</string>
+    <string name="morphe_export_download_flyout_title">Export to device</string>
+    <string name="morphe_export_download_canceled">Export canceled</string>
 
     <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
     <string name="morphe_custom_branding_name_entry_5">Custom</string>

@@ -61,13 +61,12 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.QueueAccess;
 import app.morphe.extension.music.patches.album.PlaylistRequest;
-import app.morphe.extension.music.patches.downloads.DownloadedMark;
 import app.morphe.extension.music.patches.jam.QueueCommand;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.patches.OfflineVideoExporter;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
@@ -511,8 +510,11 @@ public final class AutoSongVersionPatch {
         return !album.isEmpty() && !album.equals(wantedTitle);
     }
 
+    /**
+     * @return If the app saved the video, with any download mode.
+     */
     private static boolean isDownloaded(String videoId) {
-        return Settings.DOWNLOAD_MODE.get() == DownloadMode.IN_APP && DownloadedMark.isDownloaded(videoId);
+        return OfflineVideoExporter.isExportable(videoId);
     }
 
     private static String songVersionOf(String videoId) throws Exception {

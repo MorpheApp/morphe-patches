@@ -604,18 +604,11 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_export_download_folder_summary">"Export in-app saved videos to your device storage using the in-app downloads flyout menu. Tap to change the export folder
 
 Export folder: %s"</string>
-    <string name="morphe_export_download_folder_dialog_title">Export folder</string>
-    <string name="morphe_export_download_folder_change">Change folder</string>
-    <string name="morphe_export_download_folder_changed">Export folder changed</string>
-    <string name="morphe_export_download_folder_reset">Export folder reset</string>
-    <string name="morphe_export_download_folder_missing">Could not find export folder %s</string>
-    <string name="morphe_export_download_flyout_title">Export to device</string>
     <string name="morphe_export_download_started">Exporting video</string>
     <string name="morphe_export_download_progress">Exporting video: %s%%</string>
     <string name="morphe_export_download_notification_channel">Video exports</string>
     <string name="morphe_export_download_saved">Video exported to %s</string>
     <string name="morphe_export_download_failed">Could not export the video</string>
-    <string name="morphe_export_download_canceled">Export canceled</string>
 
     <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
     <string name="morphe_vot_screen_title">Voice over translation</string>

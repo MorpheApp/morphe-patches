@@ -23,7 +23,6 @@ import android.preference.PreferenceFragment;
 import android.view.View;
 import android.widget.Toolbar;
 
-import app.morphe.extension.music.patches.downloads.LocalDownloadsFragment;
 import app.morphe.extension.music.settings.preference.MusicPreferenceFragment;
 import app.morphe.extension.music.settings.search.MusicSearchViewController;
 import app.morphe.extension.shared.Logger;
@@ -44,7 +43,6 @@ public class MusicActivityHook extends BaseActivityHook {
 
     @SuppressLint("StaticFieldLeak")
     public static MusicSearchViewController searchViewController;
-    private static boolean downloadsMode;
 
     private static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
             && !SpoofAppVersionPatch.isSpoofingToLessThan("8.40.00");
@@ -69,10 +67,6 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @SuppressWarnings("unused")
     public static void initialize(Activity parentActivity) {
-
-        downloadsMode = BaseActivityHook.MORPHE_DOWNLOADS_INTENT.equals(
-                parentActivity.getIntent().getDataString());
-
         // Prevent opening multiple settings activities if menu is double tapped quickly.
         if (Utils.isFastClick()) {
             parentActivity.finish();
@@ -148,9 +142,7 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @Override
     protected void onPostToolbarSetup(Activity activity, Toolbar toolbar, PreferenceFragment fragment) {
-        if (fragment instanceof LocalDownloadsFragment) {
-            toolbar.setTitle(str("morphe_music_downloads_screen_title"));
-        } else if (fragment instanceof MusicPreferenceFragment) {
+        if (fragment instanceof MusicPreferenceFragment) {
             searchViewController = MusicSearchViewController.addSearchViewComponents(
                     activity, toolbar, (MusicPreferenceFragment) fragment);
         }
@@ -161,7 +153,7 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @Override
     protected PreferenceFragment createPreferenceFragment() {
-        return downloadsMode ? new LocalDownloadsFragment() : new MusicPreferenceFragment();
+        return new MusicPreferenceFragment();
     }
 
     /**
@@ -174,13 +166,7 @@ public class MusicActivityHook extends BaseActivityHook {
     @SuppressWarnings("unused")
     public static boolean handleFinish(Activity activity) {
         return MusicSearchViewController.handleFinish(searchViewController)
-                || handleDownloadsBack(activity)
                 || AbstractPreferenceFragment.showRestartDialogIfNeeded(activity);
-    }
-
-    private static boolean handleDownloadsBack(Activity activity) {
-        return activity.getFragmentManager().findFragmentById(ID_MORPHE_SETTINGS_FRAGMENTS)
-                instanceof LocalDownloadsFragment downloads && downloads.handleBack();
     }
 
     /**

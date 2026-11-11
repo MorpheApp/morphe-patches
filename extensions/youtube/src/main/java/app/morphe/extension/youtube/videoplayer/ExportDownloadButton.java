@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.youtube.patches.OfflineVideoExporter;
+import app.morphe.extension.shared.patches.OfflineVideoExporter;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.settings.Settings;
 

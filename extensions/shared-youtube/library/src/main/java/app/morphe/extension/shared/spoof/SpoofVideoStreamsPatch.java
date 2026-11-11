@@ -18,6 +18,8 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.protobuf.MessageLite;
+
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.List;
@@ -27,6 +29,8 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.SavedVideo.OfflineStateAction;
+import app.morphe.extension.shared.innertube.SavedVideo.SavedPlayerResponse;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.patches.MediaHttpRequest;
 import app.morphe.extension.shared.settings.AppLanguage;
@@ -222,17 +226,6 @@ public class SpoofVideoStreamsPatch {
         }
     }
 
-    public interface OfflineResponseResolver {
-        boolean isOffline(@NonNull String videoId, @Nullable Object playerProto);
-    }
-
-    @Nullable
-    private static volatile OfflineResponseResolver offlineResponseResolver;
-
-    public static void setOfflineResponseResolver(@Nullable OfflineResponseResolver resolver) {
-        offlineResponseResolver = resolver;
-    }
-
     private record OfflineCheck(WeakReference<Object> playerProto, boolean offline) {}
 
     /**
@@ -244,19 +237,30 @@ public class SpoofVideoStreamsPatch {
     @Nullable
     private static volatile OfflineCheck lastOfflineCheck;
 
+    /**
+     * @return If the player response is of a video that is saved and can be played,
+     *         such as a video the app is saving. Its streams are the streams the app saves.
+     */
     private static boolean isOfflinePlayerResponse(@NonNull String videoId, @Nullable Object playerProto) {
         try {
-            OfflineResponseResolver resolver = offlineResponseResolver;
-            if (resolver != null) {
-                OfflineCheck lastCheck = lastOfflineCheck;
-                if (playerProto != null && lastCheck != null && lastCheck.playerProto().get() == playerProto) {
-                    return lastCheck.offline();
-                }
-
-                final boolean offline = resolver.isOffline(videoId, playerProto);
-                lastOfflineCheck = new OfflineCheck(new WeakReference<>(playerProto), offline);
-                return offline;
+            if (!(playerProto instanceof MessageLite message)) {
+                return false;
             }
+
+            OfflineCheck lastCheck = lastOfflineCheck;
+            if (lastCheck != null && lastCheck.playerProto().get() == playerProto) {
+                return lastCheck.offline();
+            }
+
+            SavedPlayerResponse response = SavedPlayerResponse.parseFrom(message.toByteArray());
+            final boolean offline = response.hasOfflineState()
+                    && response.getOfflineState().getAction() == OfflineStateAction.OFFLINE_STATE_ACTION_OK;
+            if (response.hasOfflineState() && !offline) {
+                Logger.printDebug(() -> "Offline state action is not OK: "
+                        + response.getOfflineState().getActionValue() + " for: " + videoId);
+            }
+            lastOfflineCheck = new OfflineCheck(new WeakReference<>(playerProto), offline);
+            return offline;
         } catch (Exception ex) {
             Logger.printException(() -> "isOfflinePlayerResponse failure", ex);
         }
