@@ -18,7 +18,6 @@ import android.provider.MediaStore;
 import androidx.annotation.Nullable;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -55,60 +54,10 @@ public final class LocalLyricsFetcher {
         }
 
         try {
-            Lyrics companion = readCompanionLyrics(mediaUri);
-            if (companion != null) {
-                return companion;
-            }
-
             return readEmbeddedLyrics(mediaUri);
         } catch (Throwable ignored) {
             return null;
         }
-    }
-
-    @Nullable
-    private static Lyrics readCompanionLyrics(Uri mediaUri) {
-        try {
-            File audioFile = null;
-            if ("file".equalsIgnoreCase(mediaUri.getScheme()) && mediaUri.getPath() != null) {
-                audioFile = new File(mediaUri.getPath());
-            } else if (mediaUri.toString().contains("stream?id=")) {
-                String uriStr = mediaUri.toString();
-                int idx = uriStr.indexOf("id=");
-                if (idx != -1) {
-                    String id = uriStr.substring(idx + 3);
-                    int amp = id.indexOf('&');
-                    if (amp != -1) id = id.substring(0, amp);
-                    audioFile = app.morphe.extension.music.patches.downloads.LocalDownloadManager.getSongFile(id);
-                }
-            }
-
-            if (audioFile != null && audioFile.getParentFile() != null) {
-                String name = audioFile.getName();
-                int dot = name.lastIndexOf('.');
-                String baseName = dot > 0 ? name.substring(0, dot) : name;
-                File lrcFile = new File(audioFile.getParentFile(), baseName + ".lrc");
-                if (lrcFile.isFile()) {
-                    try (java.io.FileInputStream in = new java.io.FileInputStream(lrcFile)) {
-                        ByteArrayOutputStream out = new ByteArrayOutputStream();
-                        byte[] buf = new byte[4096];
-                        int r;
-                        while ((r = in.read(buf)) != -1) {
-                            out.write(buf, 0, r);
-                        }
-                        String lrc = out.toString(StandardCharsets.UTF_8.name());
-                        Lyrics parsed = parse(lrc);
-                        if (parsed != null) {
-                            Logger.printDebug(() -> "Loaded offline companion lyrics for " + lrcFile.getName());
-                            return parsed;
-                        }
-                    }
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not read companion lyrics", ex);
-        }
-        return null;
     }
 
     @Nullable
@@ -864,13 +813,9 @@ public final class LocalLyricsFetcher {
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(raw);
         if (!result.lines.isEmpty()) {
-            boolean synced = false;
-            for (LyricsLine line : result.lines) {
-                if (line.hasWords()) {
-                    synced = true;
-                    break;
-                }
-            }
+            // LRC line timestamps synchronize whole lines; word-level
+            // (karaoke) timestamps are not required for synchronized lyrics.
+            final boolean synced = !result.lines.isEmpty();
             return new Lyrics(result.lines, "Local", synced, null, null, null,
                     null, result.creditLines.isEmpty() ? null : result.creditLines,
                     raw, "lrc", null, null, null);

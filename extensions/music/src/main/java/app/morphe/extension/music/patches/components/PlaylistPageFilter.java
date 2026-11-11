@@ -90,8 +90,15 @@ public final class PlaylistPageFilter extends Filter {
 
             String playlistId = findPlaylistId(buffer,
                     result.getMatchedIndex() + result.getMatchedLength());
+            if (playlistId == null || playlistId.startsWith("MPRE")) {
+                String fullScanId = findPlaylistId(buffer, 1);
+                if (fullScanId != null) {
+                    playlistId = fullScanId;
+                }
+            }
             if (!Objects.equals(playlistId, pagePlaylistId)) {
-                Logger.printDebug(() -> "Playlist page: " + playlistId);
+                final String finalPlaylistId = playlistId;
+                Logger.printDebug(() -> "Playlist page: " + finalPlaylistId);
                 pagePlaylistId = playlistId;
             }
         } else if (matchedGroup == menuHeader) {
@@ -110,6 +117,7 @@ public final class PlaylistPageFilter extends Filter {
 
     @Nullable
     private static String findPlaylistId(byte[] buffer, int start) {
+        String fallback = null;
         for (int i = Math.max(start, 1), end = buffer.length - 1; i < end; i++) {
             final int length = buffer[i - 1];
             if (length < 2 || length > MAX_ID_LENGTH || i + length > buffer.length) continue;
@@ -119,8 +127,16 @@ public final class PlaylistPageFilter extends Filter {
                     && first != 'M' && first != 'R' && first != 'L') continue;
 
             String value = new String(buffer, i, length, StandardCharsets.US_ASCII);
-            if (DownloadsPatch.PLAYLIST_ID.matcher(value).matches()) return value;
+            if (DownloadsPatch.PLAYLIST_ID.matcher(value).matches()) {
+                String id = value.startsWith("VL") ? value.substring(2) : value;
+                if (!id.startsWith("MPRE")) {
+                    return id;
+                }
+                if (fallback == null) {
+                    fallback = id;
+                }
+            }
         }
-        return null;
+        return fallback;
     }
 }
