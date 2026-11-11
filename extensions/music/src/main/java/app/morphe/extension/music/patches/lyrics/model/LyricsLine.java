@@ -133,6 +133,15 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
         return !words.isEmpty();
     }
 
+    /** {@return the later of the line's end and its last word's end, or NO_TIME without either} */
+    public long sungEndMs() {
+        final long wordEnd = words.isEmpty() ? NO_TIME : words.get(words.size() - 1).endMs();
+        if (wordEnd == NO_TIME) {
+            return endTimeMs;
+        }
+        return endTimeMs == NO_TIME ? wordEnd : Math.max(wordEnd, endTimeMs);
+    }
+
     /** Whether Apple's group/other vocal agent is centered instead of placed on a duet side. */
     public boolean isCentered() {
         return isCenteredAgentId(agentId);

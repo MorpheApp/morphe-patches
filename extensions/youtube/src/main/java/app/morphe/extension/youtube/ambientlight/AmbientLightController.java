@@ -52,6 +52,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.youtube.patches.AmbientModePatch;
 import app.morphe.extension.youtube.patches.FeedCardLayoutPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -109,7 +110,8 @@ public final class AmbientLightController {
     private static final int FULL_STRENGTH = 256;
     private static final long DIM_DURATION_MS = 180;
     private static final long RESTORE_DURATION_MS = 1_600;
-    private static final long RESTORE_DELAY_MS = 3_000;
+    /** Scrolling has stopped once no scroll was seen for this long, as the scrolls are throttled. */
+    private static final long SCROLL_END_MS = 200;
     private static final long FADE_STEP_MS = 33;
     /** Share of the way to the wanted cover for each capture, so that scene cuts do not pump. */
     private static final float COVER_EASING = 0.25f;
@@ -126,6 +128,8 @@ public final class AmbientLightController {
     private static final int SCENE_CUT_DIFFERENCE = 40;
     /** Share of the previous light kept for each capture, out of 256. */
     private static final int SMOOTHING_KEEP = 64;
+    /** Captures in a row that can be converted ones. A change that stays longer is a change of the video. */
+    private static final int MAX_CONVERTED_CAPTURES = 15;
 
     /** A background this small is a button, and keeps its color. */
     private static final float BUTTON_MAX_WIDTH_SCREEN_RATIO = 0.45f;
@@ -211,6 +215,8 @@ public final class AmbientLightController {
     /** False while the light still has to reach the current picture. */
     private static volatile boolean settled;
     private static volatile int stillCaptures;
+    /** Set when a surface got a new buffer, which is empty until the light is drawn again. */
+    private static volatile boolean redraw;
     /** Strength of the light over the page color, out of 256. */
     private static volatile int strength = FULL_STRENGTH;
     /** The part of the video the colors of the light come from, without black bars. In readback pixels. */
@@ -224,6 +230,12 @@ public final class AmbientLightController {
     // Used only on the worker thread.
     private static final int[] readbackPixels = new int[READBACK_WIDTH * READBACK_HEIGHT];
     private static final int[] pictureColors = new int[PICTURE_WIDTH * PICTURE_HEIGHT];
+    /** The last capture as it came, and as the light used it. */
+    private static final int[] lastCapture = new int[PICTURE_WIDTH * PICTURE_HEIGHT];
+    private static final int[] lastPicture = new int[PICTURE_WIDTH * PICTURE_HEIGHT];
+    private static boolean hasLastPicture;
+    private static int convertedCaptures;
+    private static int brighterCaptures;
     private static final int[] near = new int[PICTURE_WIDTH * PICTURE_HEIGHT];
     private static final int[] far = new int[FAR_WIDTH * FAR_HEIGHT];
     private static final float[] nearLinear = new float[PICTURE_WIDTH * PICTURE_HEIGHT * LIGHT_CHANNELS];
@@ -256,11 +268,12 @@ public final class AmbientLightController {
     };
 
     private static final ViewTreeObserver.OnScrollChangedListener scrollListener = () -> {
-        if (SystemClock.uptimeMillis() - lastPageTouch <= TOUCH_SCROLL_WINDOW_MS) onInteraction();
+        if (SystemClock.uptimeMillis() - lastPageTouch <= TOUCH_SCROLL_WINDOW_MS) onInteraction(true);
     };
 
     private static final Runnable restoreLight = () -> setDimmed(false);
     private static final Runnable fadeStep = AmbientLightController::stepFade;
+    private static final Runnable tickRunnable = AmbientLightController::tick;
 
     /**
      * Drawables that keep their color until they are mounted in the window of the watch page.
@@ -451,6 +464,7 @@ public final class AmbientLightController {
     private static void resetPicture() {
         drawnLayout = null;
         resetSmoothing = true;
+        hasLastPicture = false;
     }
 
     /**
@@ -644,7 +658,14 @@ public final class AmbientLightController {
     }
 
     private static void requestFrame() {
+        redraw = true;
         settled = false;
+        // The next capture is half a second away while the picture is still.
+        if (stillCaptures >= STILL_CAPTURES_BEFORE_SLOWDOWN) {
+            stillCaptures = 0;
+            mainHandler.removeCallbacks(tickRunnable);
+            tickScheduled = false;
+        }
         scheduleTick();
     }
 
@@ -655,7 +676,7 @@ public final class AmbientLightController {
     private static void scheduleTick() {
         if (active && !tickScheduled) {
             tickScheduled = true;
-            mainHandler.post(AmbientLightController::tick);
+            mainHandler.post(tickRunnable);
         }
     }
 
@@ -683,7 +704,7 @@ public final class AmbientLightController {
             if (!captureInFlight) capture(video, current);
 
             tickScheduled = true;
-            mainHandler.postDelayed(AmbientLightController::tick, interval);
+            mainHandler.postDelayed(tickRunnable, interval);
         } catch (Exception ex) {
             Logger.printException(() -> "tick failure", ex);
         }
@@ -765,12 +786,31 @@ public final class AmbientLightController {
             AmbientLightMath.downsample(readbackPixels, READBACK_WIDTH, readbackBounds,
                     pictureColors, PICTURE_WIDTH, PICTURE_HEIGHT);
 
+            // A device cannot convert a converted capture again, so two such steps in a row are
+            // the video getting brighter.
+            brighterCaptures = hasLastPicture && AmbientLightMath.isConverted(lastCapture, pictureColors)
+                    ? brighterCaptures + 1 : 0;
+            final boolean converted = hasLastPicture && brighterCaptures < 2
+                    && convertedCaptures < MAX_CONVERTED_CAPTURES
+                    && AmbientLightMath.isConverted(lastPicture, pictureColors);
+            System.arraycopy(pictureColors, 0, lastCapture, 0, lastCapture.length);
+            if (converted) {
+                convertedCaptures++;
+                AmbientLightMath.undoConversion(pictureColors);
+            } else {
+                convertedCaptures = 0;
+            }
+            hasLastPicture = true;
+            System.arraycopy(pictureColors, 0, lastPicture, 0, lastPicture.length);
+
             final int difference = AmbientLightMath.difference(near, pictureColors);
             final boolean unchanged = difference <= UNCHANGED_DIFFERENCE;
+            final boolean emptySurface = redraw;
+            redraw = false;
             if (unchanged && current == drawnLayout) {
                 stillCaptures++;
-                if (stepCover()) {
-                    present(current);
+                if (stepCover() || emptySurface) {
+                    if (!present(current)) redraw = true;
                 } else {
                     settled = true;
                 }
@@ -813,7 +853,7 @@ public final class AmbientLightController {
             }
             final float change = AmbientLightMath.encodeVisible(light, encodedLight, presentedLight, width, height, gridVideo);
             final boolean visible = current != drawnLayout || change >= MIN_VISIBLE_CHANGE;
-            if (!visible && !coverMoved) return;
+            if (!visible && !coverMoved && !emptySurface) return;
 
             if (visible) {
                 float[] shown = encodedLight;
@@ -825,6 +865,8 @@ public final class AmbientLightController {
             if (present(current)) {
                 drawnLayout = current;
                 if (!pageCleared) mainHandler.post(AmbientLightController::onFrameShown);
+            } else {
+                redraw = true;
             }
         } catch (Exception ex) {
             Logger.printException(() -> "process failure", ex);
@@ -880,13 +922,19 @@ public final class AmbientLightController {
         return true;
     }
 
-    private static void onInteraction() {
+    private static void onInteraction(boolean scrolled) {
+        if (!Settings.ENHANCED_AMBIENT_MODE_DIM_WHILE_SCROLLING.get()) return;
+
         final long now = SystemClock.uptimeMillis();
         if (now - lastInteraction < INTERACTION_THROTTLE_MS) return;
+        final long restoreDelay = SeekBarPreference.clampToRange(Settings.ENHANCED_AMBIENT_MODE_DIM_DURATION) * 1_000L;
+        // Without a delay, a touch that does not scroll would only make the light blink.
+        if (restoreDelay == 0 && !scrolled) return;
+
         lastInteraction = now;
         setDimmed(true);
         mainHandler.removeCallbacks(restoreLight);
-        mainHandler.postDelayed(restoreLight, RESTORE_DELAY_MS);
+        mainHandler.postDelayed(restoreLight, Math.max(restoreDelay, SCROLL_END_MS));
     }
 
     private static void setDimmed(boolean value) {
@@ -937,7 +985,7 @@ public final class AmbientLightController {
         public boolean onTouchEvent(MotionEvent event) {
             if (event.getActionMasked() == MotionEvent.ACTION_DOWN && !isOnPlayer(event)) {
                 lastPageTouch = SystemClock.uptimeMillis();
-                onInteraction();
+                onInteraction(false);
             }
             return false;
         }

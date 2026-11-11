@@ -1069,6 +1069,7 @@ public final class LayoutComponentsFilter extends Filter {
                 }
             }
             for (ProtoNode buttons : ProtoNode.findMessages(element, POST_BUTTONS_PATH)) {
+                assert (buttons.getParent() != null ? buttons.getParent().getParent() : null) != null;
                 ProtoNode model = buttons.getParent().getParent().getParent();
                 // Only the buttons data of a post model, which has the share or the comment button.
                 if (model != null && model.getFieldNumber() >= POST_MODEL_MIN_FIELD && buttons.children != null

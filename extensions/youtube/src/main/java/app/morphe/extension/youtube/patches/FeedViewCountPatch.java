@@ -1105,10 +1105,16 @@ public final class FeedViewCountPatch {
         /** The thumbnail, or null if not found. */
         @Nullable
         public final Rect thumbnail;
+        /**
+         * If the duration badge is placed as high as it can be, because what it's placed from is not drawn yet,
+         * such as the title of a Short that is only partly shown. It is placed again once that is drawn.
+         */
+        public final boolean estimated;
 
-        public ThumbnailFrame(@Nullable Rect duration, @Nullable Rect thumbnail) {
+        public ThumbnailFrame(@Nullable Rect duration, @Nullable Rect thumbnail, boolean estimated) {
             this.duration = duration;
             this.thumbnail = thumbnail;
+            this.estimated = estimated;
         }
     }
 
@@ -1129,7 +1135,7 @@ public final class FeedViewCountPatch {
                 thumbnail = new Rect(0, 0, host.getWidth(), squareBottom);
             }
         }
-        return new ThumbnailFrame(info.duration, thumbnail);
+        return new ThumbnailFrame(info.duration, thumbnail, false);
     }
 
     /**

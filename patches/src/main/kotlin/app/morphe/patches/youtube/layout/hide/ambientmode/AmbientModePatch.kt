@@ -27,6 +27,7 @@ import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.sponsorblock.ControlsOverlayFingerprint
@@ -112,6 +113,12 @@ val ambientModePatch = patch(
                 preferences = setOf(
                     SwitchPreference("morphe_enhanced_ambient_mode", summary = true),
                     SwitchPreference("morphe_enhanced_ambient_mode_readable_text", summary = true),
+                    SwitchPreference("morphe_enhanced_ambient_mode_dim_while_scrolling", summary = true),
+                    NonInteractivePreference(
+                        key = "morphe_enhanced_ambient_mode_dim_duration",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true
+                    ),
                     SwitchPreference("morphe_bypass_ambient_mode_restrictions", summary = true),
                     SwitchPreference("morphe_disable_ambient_mode"),
                     SwitchPreference("morphe_disable_fullscreen_ambient_mode"),

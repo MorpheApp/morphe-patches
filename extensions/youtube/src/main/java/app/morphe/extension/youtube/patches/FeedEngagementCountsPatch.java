@@ -558,6 +558,12 @@ public final class FeedEngagementCountsPatch {
             final int top = thumbnailTop + margin;
             // The badge does not overlap the row of the duration badge, which can also have the view count.
             compact = top + height > bottom;
+            if (compact && this.frame != null && this.frame.estimated) {
+                // The row of the duration can be lower, where the full badge fits, so the badge waits for it
+                // instead of changing its layout.
+                removeFromOverlay(host);
+                return;
+            }
             if (compact) {
                 // The badge does not fit above the row of the duration, so it's a single row.
                 float compactWidth = 0;
