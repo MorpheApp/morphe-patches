@@ -31,6 +31,7 @@ import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.observer.layoutReloadObserverPatch
 import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_51_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_17_or_greater
@@ -39,7 +40,9 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -177,6 +180,32 @@ val hideShortsComponentsPatch = patch(
 
     execute {
         addLithoFilter(EXTENSION_FILTER)
+
+        // region Hide the empty bar below a Short.
+
+        // The container of the bar below a Short keeps its height when the filter hides the bar,
+        // such as the comment bar, so the Short is shown above an empty black bar.
+        if (is_20_51_or_greater) {
+            resourceLiteral(
+                ResourceType.ID, "reel_bottom_action_bar_container"
+            ).matchAllMethodIndicesForEach { literalInstructionIndex ->
+                val viewIndex = indexOfFirstInstruction(
+                    literalInstructionIndex,
+                    methodCall(name = "findViewById")
+                ) + 1
+                if (viewIndex <= 0 || getInstruction(viewIndex).opcode != Opcode.MOVE_RESULT_OBJECT) {
+                    return@matchAllMethodIndicesForEach
+                }
+                val viewRegister = getInstruction<OneRegisterInstruction>(viewIndex).registerA
+
+                addInstruction(
+                    viewIndex + 1,
+                    "invoke-static { v$viewRegister }, $EXTENSION_FILTER->hideEmptyBottomActionBar(Landroid/view/View;)V"
+                )
+            }
+        }
+
+        // endregion
 
         // region Hide sound button.
 

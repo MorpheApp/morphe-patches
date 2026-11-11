@@ -13,14 +13,19 @@ package app.morphe.extension.youtube.patches.components;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.facebook.litho.ComponentHost;
+import com.facebook.litho.TextContent;
 import com.google.android.libraries.youtube.rendering.ui.pivotbar.PivotBar;
 import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -461,6 +466,73 @@ public final class ShortsFilter extends Filter {
         }
 
         return true;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The container of the bar below a Short keeps its height when the bar is hidden,
+     * such as the comment bar hidden by "Hide preview comment", so the Short is shown above an empty bar.
+     * The container is hidden while it shows nothing.
+     */
+    public static void hideEmptyBottomActionBar(View container) {
+        try {
+            if (!Settings.HIDE_SHORTS_PREVIEW_COMMENT.get() || container == null) {
+                return;
+            }
+            ViewTreeObserver.OnPreDrawListener listener = () -> {
+                try {
+                    if (container.getVisibility() != View.VISIBLE) {
+                        return true;
+                    }
+                    // A text or a view other than an empty Litho host, such as the bar of another feature.
+                    // A Litho host without children or texts is what is left of a hidden bar.
+                    ArrayDeque<View> views = new ArrayDeque<>();
+                    views.add(container);
+                    while (!views.isEmpty()) {
+                        View view = views.poll();
+                        if (view.getVisibility() != View.VISIBLE) {
+                            continue;
+                        }
+                        if (view instanceof ComponentHost host) {
+                            TextContent textContent = host.getTextContent();
+                            if (textContent != null && !textContent.getTextItems().isEmpty()) {
+                                return true;
+                            }
+                        } else if (!(view instanceof ViewGroup)) {
+                            return true;
+                        }
+                        if (view instanceof ViewGroup group) {
+                            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                                views.add(group.getChildAt(i));
+                            }
+                        }
+                    }
+                    container.setVisibility(View.GONE);
+                    // Not drawn with the empty bar.
+                    return false;
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Bottom action bar check failure", ex);
+                }
+                return true;
+            };
+            container.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+                @Override
+                public void onViewAttachedToWindow(@NonNull View view) {
+                    view.getViewTreeObserver().addOnPreDrawListener(listener);
+                }
+
+                @Override
+                public void onViewDetachedFromWindow(@NonNull View view) {
+                    view.getViewTreeObserver().removeOnPreDrawListener(listener);
+                }
+            });
+            if (container.isAttachedToWindow()) {
+                container.getViewTreeObserver().addOnPreDrawListener(listener);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideEmptyBottomActionBar failure", ex);
+        }
     }
 
     @Override
