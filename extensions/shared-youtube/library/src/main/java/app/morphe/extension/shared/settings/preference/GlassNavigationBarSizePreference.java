@@ -9,29 +9,27 @@ package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Picture;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.preference.Preference;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -39,33 +37,29 @@ import java.util.List;
 
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.IntegerSetting;
-import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.theme.ThemeUtils;
-import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.glass.GlassCapsuleDrawable;
 import app.morphe.extension.shared.ui.glass.GlassNavigationBarLayout;
 
 /**
- * Sets the height, the width and the button spacing of the glass navigation bar,
- * with a preview of the bar that follows the sliders. Shared by the apps, which give the settings,
+ * Sets the height, the width and the button spacing of the glass navigation bar, and optionally
+ * more of its style, with a preview of the bar that follows the sliders. Shared by the apps, which give the settings,
  * the strings and the buttons.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public abstract class GlassNavigationBarSizePreference extends Preference {
+public abstract class GlassNavigationBarSizePreference extends SeekBarsPreviewPreference {
 
     public GlassNavigationBarSizePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     /**
-     * @return The settings of the height, the width and the button spacing, in that order.
+     * @return The settings of the height, the width and the button spacing, in that order,
+     *         followed by any other sliders, such as of the style of the glass.
      */
-    protected abstract IntegerSetting[] getSizeSettings();
-
-    /**
-     * @return The keys of the titles of the height, the width and the button spacing sliders.
-     */
-    protected abstract String[] getSizeTitleKeys();
+    @Override
+    protected abstract IntegerSetting[] getSettings();
 
     /**
      * @return The key of the text that shows how many buttons fit, with the shown and the total count.
@@ -137,120 +131,82 @@ public abstract class GlassNavigationBarSizePreference extends Preference {
      */
     protected abstract int getHorizontalMargin();
 
+    /**
+     * @param values The values of the sliders.
+     * @return How opaque the glass in the preview is: 1 keeps the default alphas, 0 is fully clear, 2 doubles them.
+     */
+    protected float getOpacityScale(int[] values) {
+        return 1;
+    }
+
+    /**
+     * @param values The values of the sliders.
+     * @return How bright the rim of the glass in the preview is: 1 keeps the default alphas, 0 draws no rim.
+     */
+    protected float getRimScale(int[] values) {
+        return 1;
+    }
+
+    /**
+     * @return If the glass is tinted white with the dark theme.
+     */
+    protected boolean isLightTint() {
+        return false;
+    }
+
+    /**
+     * @return The color the glass is tinted with, or 0 for the colors of the theme.
+     */
+    @ColorInt
+    protected int getTintColor() {
+        return 0;
+    }
+
+    /**
+     * @return If the selected button has a rounded indicator.
+     */
+    protected boolean isIndicatorShown() {
+        return true;
+    }
+
     @Override
-    protected void onClick() {
-        Context context = getContext();
-
-        TypedValue accent = new TypedValue();
-        context.getTheme().resolveAttribute(android.R.attr.colorAccent, accent, true);
-        final int accentColor = accent.data;
-
-        final IntegerSetting[] settings = getSizeSettings();
-        final String[] titleKeys = getSizeTitleKeys();
-        PreviewButtons previewButtons = getButtons();
-        List<String> labels = previewButtons.labels;
-
-        final int[] pending = new int[settings.length];
-        PreviewView preview = new PreviewView(context, previewButtons, pending, getHorizontalMargin());
+    protected View createPreview(Context context, int[] values) {
+        PreviewView preview = new PreviewView(context, getButtons(), values, getHorizontalMargin());
         TextView shownButtons = new TextView(context);
         shownButtons.setGravity(Gravity.CENTER);
         shownButtons.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-        final int screenWidth = context.getResources().getDisplayMetrics().widthPixels;
-        Runnable update = () -> {
-            preview.invalidate();
-            shownButtons.setText(str(getButtonsShownKey(),
-                    GlassNavigationBarLayout.getButtonsLayout(screenWidth, labels.size(), preview.getContentWidth(),
-                            GlassNavigationBarLayout.lastMinButtonWidth, pending[1], Dim.dp(pending[2]), getHorizontalMargin())[0],
-                    labels.size()));
-        };
 
-        LinearLayout content = new LinearLayout(context);
-        content.setOrientation(LinearLayout.VERTICAL);
-        content.setPadding(0, Dim.dp8, 0, Dim.dp8);
-        content.addView(preview, LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp(120));
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.addView(preview, LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp(120));
         LinearLayout.LayoutParams shownParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         shownParams.topMargin = Dim.dp4;
         shownParams.bottomMargin = Dim.dp8;
-        content.addView(shownButtons, shownParams);
+        layout.addView(shownButtons, shownParams);
+        return layout;
+    }
 
-        SeekBar[] seekBars = new SeekBar[settings.length];
-        for (int i = 0; i < settings.length; i++) {
-            final int index = i;
-            SeekBarConfig config = SeekBarPreference.configFor(settings[i]);
-            pending[i] = SeekBarPreference.clampToRange(settings[i]);
+    @Override
+    protected void updatePreview(View view, int[] values) {
+        ViewGroup layout = (ViewGroup) view;
+        PreviewView preview = (PreviewView) layout.getChildAt(0);
+        TextView shownButtons = (TextView) layout.getChildAt(1);
+        preview.setStyle(getOpacityScale(values), isLightTint(), getRimScale(values), getTintColor(), isIndicatorShown());
 
-            TextView title = new TextView(context);
-            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-            TextView value = new TextView(context);
-            value.setTextColor(accentColor);
-            value.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-            title.setText(str(titleKeys[i]));
-            value.setText(SeekBarPreference.formatLabel(pending[i], config));
-
-            LinearLayout titleRow = new LinearLayout(context);
-            titleRow.setOrientation(LinearLayout.HORIZONTAL);
-            titleRow.addView(title, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-            titleRow.addView(value, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
-            SeekBar seekBar = new SeekBar(context);
-            seekBar.setMax((config.max() - config.min()) / config.step());
-            seekBar.setProgress(SeekBarPreference.valueToProgress(config, pending[i]));
-            seekBar.setProgressTintList(ColorStateList.valueOf(accentColor));
-            seekBar.setThumbTintList(ColorStateList.valueOf(accentColor));
-            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar bar, int progress, boolean fromUser) {
-                    pending[index] = SeekBarPreference.progressToValue(config, progress);
-                    value.setText(SeekBarPreference.formatLabel(pending[index], config));
-                    update.run();
-                }
-
-                @Override public void onStartTrackingTouch(SeekBar bar) {}
-                @Override public void onStopTrackingTouch(SeekBar bar) {}
-            });
-            seekBars[i] = seekBar;
-
-            LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            titleParams.topMargin = Dim.dp8;
-            content.addView(titleRow, titleParams);
-            content.addView(seekBar, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        }
-        update.run();
-
-        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                context,
-                getTitle() != null ? getTitle().toString() : "",
-                null,
-                null,
-                null,
-                () -> {
-                    for (int i = 0; i < settings.length; i++) {
-                        settings[i].save(pending[i]);
-                    }
-                },
-                () -> {},
-                str("morphe_settings_reset"),
-                () -> {
-                    for (int i = 0; i < settings.length; i++) {
-                        seekBars[i].setProgress(SeekBarPreference.valueToProgress(
-                                SeekBarPreference.configFor(settings[i]), settings[i].defaultValue));
-                    }
-                },
-                false
-        );
-
-        // Insert the content between the title (index 0) and the buttons (index 1).
-        dialogPair.second.addView(content, 1);
-        dialogPair.first.show();
+        final int screenWidth = getContext().getResources().getDisplayMetrics().widthPixels;
+        final int buttons = preview.labels.size();
+        shownButtons.setText(str(getButtonsShownKey(),
+                GlassNavigationBarLayout.getButtonsLayout(screenWidth, buttons, preview.getContentWidth(),
+                        GlassNavigationBarLayout.lastMinButtonWidth, values[1], Dim.dp(values[2]), getHorizontalMargin())[0],
+                buttons));
     }
 
     /**
      * The bottom of the screen with the glass navigation bar, scaled to the width of the preview.
      * The buttons are laid out as in the navigation bar, see {@link GlassNavigationBarLayout}.
      */
-    private static final class PreviewView extends View {
+    private static final class PreviewView extends View implements GlassCapsuleDrawable.Host {
         private static final int ICON_SIZE = Dim.dp24;
         private static final float LABEL_SIZE_SP = 12;
 
@@ -262,7 +218,7 @@ public abstract class GlassNavigationBarSizePreference extends Preference {
         private final int selected;
         private final boolean showLabels;
         /**
-         * Height percent, width percent and button spacing in dp.
+         * Height percent, width percent and button spacing in dp, and what else the app gives.
          */
         private final int[] values;
 
@@ -274,6 +230,10 @@ public abstract class GlassNavigationBarSizePreference extends Preference {
          * The least room between the ends of the capsule and the edges of the screen.
          */
         private final int margin;
+
+        private final GlassCapsuleDrawable glass;
+        private final Rect capsule = new Rect();
+        private boolean indicatorShown = true;
 
         PreviewView(Context context, PreviewButtons buttons, int[] values, int margin) {
             super(context);
@@ -288,6 +248,27 @@ public abstract class GlassNavigationBarSizePreference extends Preference {
             labelPaint.setTypeface(Typeface.DEFAULT);
             labelPaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, LABEL_SIZE_SP,
                     context.getResources().getDisplayMetrics()));
+            glass = new GlassCapsuleDrawable(this, this, 1);
+        }
+
+        void setStyle(float opacityScale, boolean lightTint, float rimScale, @ColorInt int tintColor,
+                      boolean indicatorShown) {
+            glass.setStyle(opacityScale, lightTint, rimScale);
+            glass.setTintColor(tintColor);
+            this.indicatorShown = indicatorShown;
+            invalidate();
+        }
+
+        @Override
+        public void getCapsule(Rect bounds, RectF out) {
+            out.set(bounds);
+        }
+
+        @Nullable
+        @Override
+        public View getSelectedTabView() {
+            // The indicator is drawn by the preview, which has no buttons.
+            return null;
         }
 
         /**
@@ -346,25 +327,20 @@ public abstract class GlassNavigationBarSizePreference extends Preference {
             final float left = (width - capsuleWidth) / 2;
             final float bottom = height - Dim.dp10 * scale;
             final float top = bottom - capsuleHeight;
-            rect.set(left, top, left + capsuleWidth, bottom);
-            final float radius = capsuleHeight / 2;
-
-            paint.setColor(dark ? 0x99383838 : 0x99F7F7F7);
-            canvas.drawRoundRect(rect, radius, radius, paint);
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(Dim.dp1);
-            paint.setColor(dark ? 0x80FFFFFF : 0xF2FFFFFF);
-            canvas.drawRoundRect(rect, radius, radius, paint);
-            paint.setStyle(Paint.Style.FILL);
+            capsule.set(Math.round(left), Math.round(top), Math.round(left + capsuleWidth), Math.round(bottom));
+            glass.setBounds(capsule);
+            glass.draw(canvas);
 
             // The buttons that do not fit are hidden from the end, but never the selected one.
             final int selectedButton = Math.min(selected, buttons - 1);
             final int selectedSlot = Math.min(selectedButton, shownButtons - 1);
             final float inset = Dim.dp4 * scale;
-            final float selectedLeft = left + buttonWidth * selectedSlot;
-            paint.setColor(dark ? 0x26FFFFFF : 0x14000000);
-            rect.set(selectedLeft + inset, top + inset, selectedLeft + buttonWidth - inset, bottom - inset);
-            canvas.drawRoundRect(rect, (capsuleHeight - 2 * inset) / 2, (capsuleHeight - 2 * inset) / 2, paint);
+            if (indicatorShown) {
+                final float selectedLeft = left + buttonWidth * selectedSlot;
+                paint.setColor(dark ? 0x26FFFFFF : 0x14000000);
+                rect.set(selectedLeft + inset, top + inset, selectedLeft + buttonWidth - inset, bottom - inset);
+                canvas.drawRoundRect(rect, (capsuleHeight - 2 * inset) / 2, (capsuleHeight - 2 * inset) / 2, paint);
+            }
 
             // The icon and the label of each button, in the middle of the capsule.
             // Buttons without a recorded icon, such as before the bar was shown, get a placeholder.
