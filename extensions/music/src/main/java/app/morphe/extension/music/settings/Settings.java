@@ -54,6 +54,9 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_YOU_MAY_ALSO_LIKE_SECTION = new BooleanSetting("morphe_music_hide_you_may_also_like_section", FALSE, true);
     public static final BooleanSetting HIDE_YOUR_DOWNLOADS_SHELF = new BooleanSetting("morphe_music_hide_your_downloads_shelf", FALSE, true);
 
+    // General
+    public static final BooleanSetting PAUSE_ON_MUTE = new BooleanSetting("morphe_music_pause_on_mute", FALSE, true);
+
     // General (Layout)
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
     public static final BooleanSetting FORCE_PORTRAIT_ORIENTATION = new BooleanSetting("morphe_music_force_portrait_orientation", FALSE, true);
