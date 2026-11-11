@@ -14,6 +14,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
@@ -26,6 +27,7 @@ import app.morphe.patches.youtube.misc.playercontrols.disableNewPlayerControlsFe
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_51_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
@@ -44,6 +46,7 @@ import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.NarrowLiteralInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.util.MethodUtil
@@ -213,6 +216,26 @@ val backgroundPlaybackPatch = patch(
             // Edit: This override may not be needed and only 45752335L override might be needed.
             NewPlayerTypeEnumFeatureFlagFingerprint.matchAll().forEach {
                 it.method.addBackgroundPlaybackFeatureFlagHook(it.instructionMatches.first().index, false)
+            }
+        }
+
+        // The playback media session publishes its state, and the playback notification is shown, once the state
+        // has its artwork, or after a short wait without other changes, which a playing video can keep from ending.
+        // Without a thumbnail, such as when it fails to load, the missing artwork is not a change of the state,
+        // so the notification can be missing and the service is not kept in the foreground, which stops the audio
+        // in the background after a while. The artwork is now always a change of the state, also when it is missing.
+        if (is_20_51_or_greater) {
+            MediaSessionArtworkStateFingerprint.let {
+                it.method.apply {
+                    val noChangeIndex = it.instructionMatches.first { match ->
+                        match.instruction.opcode == Opcode.CONST_4
+                    }.index
+                    val register = getInstruction<OneRegisterInstruction>(noChangeIndex).registerA
+                    val change = getInstruction<NarrowLiteralInstruction>(
+                        it.instructionMatches.last().index
+                    ).narrowLiteral
+                    replaceInstruction(noChangeIndex, "const v$register, $change")
+                }
             }
         }
 
