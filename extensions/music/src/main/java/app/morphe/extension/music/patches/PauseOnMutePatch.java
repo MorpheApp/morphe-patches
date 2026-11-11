@@ -8,7 +8,10 @@
 package app.morphe.extension.music.patches;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.media.AudioManager;
 import android.media.MediaMetadata;
@@ -16,8 +19,9 @@ import android.media.session.MediaController;
 import android.media.session.MediaSession;
 import android.media.session.PlaybackState;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
-import android.os.Looper;
+import android.os.HandlerThread;
 
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
@@ -25,47 +29,33 @@ import app.morphe.extension.shared.Utils;
 
 /**
  * Pauses playback when the media volume is muted, and resumes it when the volume is raised again.
+ *
+ * The volume is watched with the broadcasts the audio service sends, and with a settings observer
+ * as a fallback. Both run on a dedicated thread, because callbacks posted to the main thread can
+ * be delayed a lot while the app is in the background, and the pause would be delayed with them.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public final class PauseOnMutePatch {
 
     /**
-     * Delay before pausing, so that dragging the volume slider through zero does not pause
-     * playback for only a fraction of a second.
+     * Sent by the audio service right after the volume of a stream changes, and when a stream is
+     * muted or unmuted. These are hidden framework constants, hence the literal values.
      */
-    private static final long PAUSE_DELAY_MILLIS = 250;
+    private static final String ACTION_VOLUME_CHANGED = "android.media.VOLUME_CHANGED_ACTION";
+    private static final String ACTION_STREAM_MUTE_CHANGED = "android.media.STREAM_MUTE_CHANGED_ACTION";
+    private static final String EXTRA_VOLUME_STREAM_TYPE = "android.media.EXTRA_VOLUME_STREAM_TYPE";
 
-    private static final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private static HandlerThread handlerThread;
+    private static Handler handler;
 
     private static AudioManager audioManager;
+    private static BroadcastReceiver volumeReceiver;
+    private static ContentObserver volumeObserver;
     private static volatile MediaSession capturedSession;
     private static volatile MediaController mediaController;
-    private static ContentObserver volumeObserver;
-    private static boolean initialized;
-    private static boolean muted;
-    private static boolean pausedByMute;
-
-    private static final Runnable pausePlaybackTask = () -> {
-        try {
-            MediaController controller = mediaController;
-            if (controller == null) {
-                return;
-            }
-            PlaybackState state = controller.getPlaybackState();
-            if (state == null) {
-                return;
-            }
-            int playbackState = state.getState();
-            if (playbackState != PlaybackState.STATE_PLAYING
-                    && playbackState != PlaybackState.STATE_BUFFERING) {
-                return;
-            }
-            pausedByMute = true;
-            controller.getTransportControls().pause();
-        } catch (Exception ex) {
-            Logger.printException(() -> "Pause on mute: pause failure", ex);
-        }
-    };
+    private static volatile boolean initialized;
+    private static volatile boolean muted;
+    private static volatile boolean pausedByMute;
 
     private PauseOnMutePatch() {
     }
@@ -89,7 +79,39 @@ public final class PauseOnMutePatch {
             audioManager = manager;
             muted = isMuted(manager);
 
-            ContentObserver observer = new ContentObserver(mainHandler) {
+            HandlerThread thread = new HandlerThread("MorphePauseOnMute");
+            thread.start();
+            Handler backgroundHandler = new Handler(thread.getLooper());
+            handlerThread = thread;
+            handler = backgroundHandler;
+
+            BroadcastReceiver receiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context receiverContext, Intent intent) {
+                    if (intent == null) {
+                        return;
+                    }
+                    int streamType = intent.getIntExtra(EXTRA_VOLUME_STREAM_TYPE, -1);
+                    if (streamType != -1 && streamType != AudioManager.STREAM_MUSIC) {
+                        return;
+                    }
+                    onVolumeChanged();
+                }
+            };
+
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(ACTION_VOLUME_CHANGED);
+            filter.addAction(ACTION_STREAM_MUTE_CHANGED);
+            if (Build.VERSION.SDK_INT >= 33) {
+                context.registerReceiver(
+                        receiver, filter, null, backgroundHandler, Context.RECEIVER_NOT_EXPORTED);
+            } else {
+                context.registerReceiver(receiver, filter, null, backgroundHandler, 0);
+            }
+            volumeReceiver = receiver;
+
+            // Fallback for devices that do not deliver the broadcasts to a background app.
+            ContentObserver observer = new ContentObserver(backgroundHandler) {
                 @Override
                 public void onChange(boolean selfChange) {
                     onVolumeChanged();
@@ -100,14 +122,13 @@ public final class PauseOnMutePatch {
                     onVolumeChanged();
                 }
             };
-
             context.getContentResolver().registerContentObserver(
                     android.provider.Settings.System.CONTENT_URI,
                     true,
                     observer
             );
-
             volumeObserver = observer;
+
             initialized = true;
         } catch (Exception ex) {
             Logger.printException(() -> "Pause on mute: initialization failure", ex);
@@ -134,7 +155,7 @@ public final class PauseOnMutePatch {
 
     private static boolean isMuted(AudioManager manager) {
         // getStreamVolume() returns 0 while the volume is held down, and isStreamMute() also
-        // covers muting that keeps the volume index, such as the mute key or a Bluetooth mute.
+        // covers muting that keeps the volume index.
         return manager.getStreamVolume(AudioManager.STREAM_MUSIC) == 0
                 || manager.isStreamMute(AudioManager.STREAM_MUSIC);
     }
@@ -153,21 +174,39 @@ public final class PauseOnMutePatch {
             muted = stillMuted;
 
             if (!Settings.PAUSE_ON_MUTE.get()) {
-                mainHandler.removeCallbacks(pausePlaybackTask);
                 pausedByMute = false;
                 return;
             }
 
             if (stillMuted) {
-                // The observer fires for every step of the volume slider.
-                mainHandler.removeCallbacks(pausePlaybackTask);
-                mainHandler.postDelayed(pausePlaybackTask, PAUSE_DELAY_MILLIS);
+                pausePlayback();
             } else {
-                mainHandler.removeCallbacks(pausePlaybackTask);
                 resumePlayback();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Pause on mute: volume change failure", ex);
+        }
+    }
+
+    private static void pausePlayback() {
+        try {
+            MediaController controller = mediaController;
+            if (controller == null) {
+                return;
+            }
+            PlaybackState state = controller.getPlaybackState();
+            if (state == null) {
+                return;
+            }
+            int playbackState = state.getState();
+            if (playbackState != PlaybackState.STATE_PLAYING
+                    && playbackState != PlaybackState.STATE_BUFFERING) {
+                return;
+            }
+            pausedByMute = true;
+            controller.getTransportControls().pause();
+        } catch (Exception ex) {
+            Logger.printException(() -> "Pause on mute: pause failure", ex);
         }
     }
 
