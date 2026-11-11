@@ -1,15 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- *
- * https://github.com/MorpheApp/morphe-patches/pull/4538
- * https://github.com/MorpheApp/morphe-patches/pull/4373
- * https://github.com/MorpheApp/morphe-patches/pull/2688
- * https://github.com/MorpheApp/morphe-patches/pull/2533
- * https://github.com/MorpheApp/morphe-patches/pull/2479
- * https://github.com/MorpheApp/morphe-patches/pull/2479
- * https://github.com/MorpheApp/morphe-patches/pull/891
- * https://github.com/MorpheApp/morphe-patches/pull/871
- * https://github.com/MorpheApp/morphe-patches/pull/249
+ * https://github.com/MorpheApp/morphe-patches
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -26,8 +17,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -60,11 +51,6 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
-
-/**
- * Status of the server error a stream response fails with, when it is a SABR error.
- */
-private const val HTTP_STATUS_SERVICE_UNAVAILABLE = 503
 
 internal fun addMediaSessionOverride(extension: String) {
     MediaSessionFeatureFlagFingerprint.matchAll().forEach {
@@ -343,6 +329,9 @@ internal fun spoofVideoStreamsPatch(
                     # Field $httpBodyField: Post data.
                     move-object v0, p0  # method has over 15 registers and must copy p0 to a lower register.
                     iget-object v1, v0, $urlField
+                    invoke-static { v1 }, $EXTENSION_CLASS->overrideStreamUri(Landroid/net/Uri;)Landroid/net/Uri;
+                    move-result-object v1
+                    iput-object v1, v0, $urlField
                     iget v2, v0, $httpMethodField
                     iget-object v3, v0, $httpBodyField
                     invoke-static { v1, v2, v3 }, $EXTENSION_CLASS->removeVideoPlaybackPostBody(Landroid/net/Uri;I[B)[B
@@ -396,64 +385,34 @@ internal fun spoofVideoStreamsPatch(
             )
         }
 
-        // Only the ranges of saved videos are shortened. A saved video is transferred through a priority
-        // data source, which continues from the last byte it got after the transfer is paused. Playback
-        // takes the pause as an error of the stream.
-        PriorityDataSourceOpenFingerprint.let {
-            it.method.addInstruction(
-                it.instructionMatches.last().index,
-                "invoke-static { }, $EXTENSION_CLASS->onPriorityDataSourceOpen()V"
-            )
-        }
-
         // A response with a shortened range ends before the requested range does. The app takes that
         // as the end of the stream, and a saved video would end there. Instead, the transfer is paused
         // like for a task of a higher priority, and the saved video continues from the last byte it got.
         // The response ends when its remaining byte count is zero, or when it is finished.
-        //
-        // The server can also answer a range with only a SABR error and no media. The app finds no media
-        // and requests the same range again right away, over and over, until the server sends it, which
-        // freezes playback for seconds or minutes. Instead, the response fails like a response with a
-        // server error status, and the app requests the range from a fallback host.
         CronetDataSourceReadFingerprint.let {
             val remainingBytesField = it.instructionMatches.last().fieldReference
-            val pauseExceptionType = PriorityTooLowExceptionFingerprint.method.definingClass
-            val serverErrorExceptionConstructor = InvalidResponseCodeExceptionFingerprint.method
-            val dataSpecType = it.instructionMatches[1].methodReference.parameterTypes[1]
-            val dataSpecField = it.classDef.fields.first { field -> field.type == dataSpecType }
+            val exceptionType = PriorityTooLowExceptionFingerprint.method.definingClass
 
             val helperMethod = ImmutableMethod(
                 it.classDef.type,
-                "patch_checkStreamResponse",
+                "patch_pauseIfStreamRangeLimited",
                 listOf(ImmutableMethodParameter(it.classDef.type, null, null)),
                 "V",
                 AccessFlags.PRIVATE.value or AccessFlags.STATIC.value,
                 null,
                 null,
-                MutableMethodImplementation(6),
+                MutableMethodImplementation(4),
             ).toMutable().apply {
                 addInstructionsWithLabels(
                     0,
                     """
-                        invoke-static { }, $EXTENSION_CLASS->isStreamSabrErrorResponse()Z
-                        move-result v0
-                        if-eqz v0, :check_range
-                        new-instance v0, ${serverErrorExceptionConstructor.definingClass}
-                        const/16 v1, $HTTP_STATUS_SERVICE_UNAVAILABLE
-                        const/4 v2, 0x0
-                        invoke-static { }, Ljava/util/Collections;->emptyMap()Ljava/util/Map;
-                        move-result-object v3
-                        iget-object v4, p0, $dataSpecField
-                        invoke-direct { v0, v1, v2, v3, v4 }, $serverErrorExceptionConstructor
-                        throw v0
-                        :check_range
                         iget-wide v0, p0, $remainingBytesField
                         invoke-static { v0, v1 }, $EXTENSION_CLASS->isLimitedStreamRangeFinished(J)Z
                         move-result v0
                         if-eqz v0, :keep_reading
-                        new-instance v0, $pauseExceptionType
+                        new-instance v0, $exceptionType
                         const/4 v1, 0x0
-                        invoke-direct { v0, v1, v1 }, $pauseExceptionType-><init>(II)V
+                        invoke-direct { v0, v1, v1 }, $exceptionType-><init>(II)V
                         throw v0
                         :keep_reading
                         return-void
@@ -462,30 +421,13 @@ internal fun spoofVideoStreamsPatch(
             }
             it.classDef.methods.add(helperMethod)
 
-            // The response is read into a byte array or a buffer, with the index of the match that reads
-            // the next part of the response. The buffer read is found with the byte array read, so it is
-            // matched first, before the byte array read is changed.
-            listOf(CronetDataSourceReadBufferFingerprint to 0, it to 1).forEach { (read, readMatchIndex) ->
-                // Insert after the remaining byte count is cleared, before the hooks of the read
-                // and the hook at the start of the method.
+            // The response is read into a byte array or a buffer.
+            listOf(it, CronetDataSourceReadBufferFingerprint).forEach { read ->
+                // Insert after the remaining byte count is cleared, before the hook at the start of the method.
                 read.method.addInstruction(
                     read.instructionMatches.last().index + 1,
                     "invoke-static/range { p0 .. p0 }, $helperMethod"
                 )
-
-                val readMatch = read.instructionMatches[readMatchIndex]
-                val bufferRegister = readMatch.instruction.registersUsed[1]
-                read.method.addInstructions(
-                    readMatch.index + 1,
-                    "invoke-static/range { v$bufferRegister .. v$bufferRegister }, " +
-                            "$EXTENSION_CLASS->onStreamResponseRead(Ljava/nio/ByteBuffer;)V"
-                )
-                read.method.addInstructions(
-                    readMatch.index,
-                    "invoke-static/range { v$bufferRegister .. v$bufferRegister }, " +
-                            "$EXTENSION_CLASS->onStreamResponseReadStart(Ljava/nio/ByteBuffer;)V"
-                )
-
                 read.method.addInstruction(
                     0,
                     "invoke-static/range { p0 .. p0 }, $helperMethod"

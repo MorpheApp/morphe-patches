@@ -29,7 +29,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.patches.shared.misc.spoof.spoofVideoStreamsPatch
+import app.morphe.patches.music.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableStringResult
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.youtube.interaction.downloads.OfflinePlayerResponseFingerprint
