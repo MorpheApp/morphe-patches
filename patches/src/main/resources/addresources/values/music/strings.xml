@@ -135,6 +135,8 @@ Second \"item\" text"</string>
     <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
     <string name="morphe_music_enable_audio_video_switch_title">Enable audio/video switch</string>
     <string name="morphe_music_enable_audio_video_switch_summary">Try to switch Audio Track Version and Official Music Video</string>
+    <string name="morphe_music_auto_song_version_title">Always play the song version</string>
+    <string name="morphe_music_auto_song_version_summary">Replaces official music videos in the queue with the matching song. Requires the app setting \'Don\'t play music videos\' to be on. Tracks without an exact match are left unchanged</string>
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_summary">Download music videos, podcasts, or songs with third-party downloading apps</string>
