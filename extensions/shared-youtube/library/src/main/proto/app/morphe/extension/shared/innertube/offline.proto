@@ -18,6 +18,9 @@ message OfflineCommand {
     optional PlaylistWatchEndpoint watchEndpoint = 48687757;
     optional OfflineUpsellEndpoint offlineUpsellEndpoint = 133724106;
     optional bytes modalEndpoint = 106613510;
+    // Runs a list of commands. The Download item of a menu runs the offline upsell this way,
+    // followed by a command that closes the menu.
+    optional bytes commandExecutorContainer = 204158123;
 }
 
 message PlaylistWatchEndpoint {

@@ -186,8 +186,13 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
             }
 
             final boolean insideDialog = map != null && isViewInsideDialog(map.get(ELEMENTS_SENDER_VIEW));
+            OfflineCommand offlineCommand = OfflineCommand.parseFrom(commandBytes);
+
+            // The app resolves each command of a list on its own. Only the upsell of the list
+            // is replaced, so the other commands still run, such as the one that closes the menu.
             final boolean premiumUpsell = PREMIUM_UPSELL_COMMAND.check(commandBytes).isFiltered()
-                    && !MENU_COMMAND.check(commandBytes).isFiltered();
+                    && !MENU_COMMAND.check(commandBytes).isFiltered()
+                    && !offlineCommand.hasCommandExecutorContainer();
 
             // Menu Download of accounts offered Premium.
             if (insideDialog && premiumUpsell) {
@@ -232,8 +237,6 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                     && !isViewInsideActionBar(senderView)) {
                 return playlistDownload(PlaylistPageFilter.getPagePlaylistId(), false);
             }
-
-            OfflineCommand offlineCommand = OfflineCommand.parseFrom(commandBytes);
 
             // The 'ypc/get_offline_upsell' endpoint, which holds the video ID of a song, or encoded parameters.
             if (offlineCommand.hasOfflineUpsellEndpoint()) {
@@ -296,7 +299,7 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
     }
 
     /**
-     * The song menu stays open after Download, so repeated taps can repeat the request.
+     * A quick second tap before the menu closes can repeat the request.
      * The timer is separate from the player button, so a menu download of another song is not blocked.
      */
     @Nullable
