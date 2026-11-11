@@ -426,8 +426,11 @@ public final class FlyoutUtils {
         }
     }
 
-    /** Uses the existing Shorts card markers, and requires a current source buffer. */
+    /**
+     * @return If the open menu is of a Short in the feed or on a channel, and not of the Shorts player.
+     */
     public static boolean isShortsFeedMenu() {
+        // The buffer is cleared when the menu closes, but the Shorts flag is not.
         return isShortFlyout && flyoutBuffer != null && !ShortsPlayerState.isOpen();
     }
 
@@ -1432,7 +1435,8 @@ public final class FlyoutUtils {
                 ? bufferInterface.patch_getBuffer()
                 : null;
         FlyoutUtils.flyoutBuffer = flyoutBuffer;
-        // Classify this source before the queue inspects the card. Shorts, like playlists, have no duration badge.
+        // Set before the queue reads the source. A Short has no duration badge,
+        // so the queue would otherwise treat its card as a playlist.
         isShortFlyout = flyoutBuffer != null && byteIndexesOf(flyoutBuffer, SHORTS_VIDEO_ELEMENT_BYTES).size() == 1;
         if (AddToQueuePatch.isPatchIncluded() && AddToQueuePatch.isNativeQueueEnabled()) {
             nativeQueuePlaylistSource = QueueFlyoutActions.playlistSource(bufferObject, senderViewRef.get());

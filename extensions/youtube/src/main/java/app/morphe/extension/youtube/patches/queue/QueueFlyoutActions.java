@@ -59,10 +59,13 @@ public final class QueueFlyoutActions {
                 return original;
             }
             FlyoutUtils.setNativeQueuePlaylistId(playlistId);
+            // Menus of Shorts in the feed have no stock queue items to replace.
+            final boolean addShortsItems = playlistId.isEmpty()
+                    && Settings.NATIVE_QUEUE_SHORTS_MENU.get() && FlyoutUtils.isShortsFeedMenu();
             MenuRenderer completed = completeMenu(menu,
                     !playlistId.isEmpty() || NativePlaylistQueuePatch.canShowFlyoutLast(),
                     str("morphe_native_playlist_queue_next"), str("morphe_native_playlist_queue_last"), playlistId,
-                    playlistId.isEmpty() && Settings.NATIVE_QUEUE_SHORTS_MENU.get() && FlyoutUtils.isShortsFeedMenu());
+                    addShortsItems);
             if (completed == menu) {
                 return original;
             }
@@ -84,7 +87,7 @@ public final class QueueFlyoutActions {
     }
 
     static MenuRenderer completeMenu(MenuRenderer menu, boolean allowLast, String nextLabel, String lastLabel,
-                                     String playlistId, boolean addMissing) {
+                                     String playlistId, boolean addIfMissing) {
         MenuItem next = null;
         MenuItem last = null;
         for (MenuItem item : menu.getItemsList()) {
@@ -99,7 +102,7 @@ public final class QueueFlyoutActions {
             }
         }
 
-        if (next == null && last == null && !PlaylistCardSource.isPlaylistId(playlistId) && !addMissing) {
+        if (next == null && last == null && !PlaylistCardSource.isPlaylistId(playlistId) && !addIfMissing) {
             return menu;
         }
         next = prepareLocalItem(next == null ? queueItem(YTIconType.QUEUE_PLAY_NEXT, nextLabel) : next);

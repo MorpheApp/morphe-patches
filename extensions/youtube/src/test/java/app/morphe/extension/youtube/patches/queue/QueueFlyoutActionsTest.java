@@ -124,6 +124,7 @@ public class QueueFlyoutActionsTest {
         assertFalse(cleaned.getItems(0).getMenuConditionalServiceItemRenderer().hasSecondaryIcon());
         assertSame(cleaned, QueueFlyoutActions.completeMenu(cleaned, false, "Next", "Last"));
     }
+
     @Test public void optedInMenuAddsMissingLocalActionsWithoutChangingCastOrOtherItems() throws Exception {
         var cast = conditional(251, 1);
         var share = conditional(YTIconType.SHARE.getNumber(), 2);
