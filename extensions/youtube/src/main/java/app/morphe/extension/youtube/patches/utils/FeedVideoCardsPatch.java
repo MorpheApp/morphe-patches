@@ -1349,7 +1349,9 @@ public final class FeedVideoCardsPatch {
                 // The cards of Shorts have no duration on their thumbnail, so they look like a mix.
                 // A grid row of Shorts is shaped like a full width card, and a shelf has a root host for each Short.
                 List<FeedViewCountPatch.ThumbnailFrame> shortsFrames = new ArrayList<>();
-                if (cards.isEmpty() && (videoId == null || PLAYLIST.equals(videoId)) && !hasHorizontalList(root)) {
+                // A row of Shorts that enters the list shows the top of the Shorts before any text.
+                if (cards.isEmpty() && (videoId == null || NOT_READY.equals(videoId) || PLAYLIST.equals(videoId))
+                        && !hasHorizontalList(root)) {
                     final float density = root.getResources().getDisplayMetrics().density;
                     // Host -> its depth. A card is the smallest host shaped like the card of a Short,
                     // as the column of a grid around it can be shaped like it too, with a margin around the card.
@@ -1420,20 +1422,22 @@ public final class FeedVideoCardsPatch {
                                 }
                             }
                         }
-                        FeedViewCountPatch.ThumbnailFrame frame = null;
-                        if (titleTop == Integer.MAX_VALUE) {
-                            // The title is not drawn yet.
-                            cardId = NOT_READY;
+                        // The title is not drawn yet, such as while only the top of a Short that enters the list
+                        // is shown. The row is placed as high as the title can be, and only the like count,
+                        // which is at the top of the Short, is drawn until the title is drawn.
+                        final boolean titleShown = titleTop != Integer.MAX_VALUE;
+                        if (!titleShown) {
+                            titleTop = card.getHeight() / 2;
                             retry = true;
-                        } else {
-                            // The row above the title, as the duration badge at the end of the row.
-                            final int rowBottom = titleTop - Math.round(SHORTS_TITLE_GAP_DP * density);
-                            final int rowTop = rowBottom - Math.round(SHORTS_ROW_HEIGHT_DP * density);
-                            final int margin = Math.round(SHORTS_ROW_MARGIN_DP * density);
-                            final int edge = FeedViewCountPatch.isRtl(card) ? margin : width - margin;
-                            frame = new FeedViewCountPatch.ThumbnailFrame(new Rect(edge, rowTop, edge, rowBottom),
-                                    new Rect(0, 0, width, card.getHeight()));
                         }
+                        // The row above the title, as the duration badge at the end of the row.
+                        final int rowBottom = titleTop - Math.round(SHORTS_TITLE_GAP_DP * density);
+                        final int rowTop = rowBottom - Math.round(SHORTS_ROW_HEIGHT_DP * density);
+                        final int margin = Math.round(SHORTS_ROW_MARGIN_DP * density);
+                        final int edge = FeedViewCountPatch.isRtl(card) ? margin : width - margin;
+                        FeedViewCountPatch.ThumbnailFrame frame = new FeedViewCountPatch.ThumbnailFrame(
+                                new Rect(edge, rowTop, edge, rowBottom), new Rect(0, 0, width, card.getHeight()),
+                                !titleShown);
                         cards.add(card);
                         cardIds.add(cardId);
                         shortsFrames.add(frame);
@@ -1447,6 +1451,14 @@ public final class FeedVideoCardsPatch {
                 if (NOT_READY.equals(videoId)) {
                     if (enteringVideoId != null && cards.isEmpty()) {
                         FeedEngagementCountsPatch.onCardLaidOut(root, enteringVideoId, null);
+                    }
+                    // The like count of the Shorts whose title is not drawn yet.
+                    for (int i = 0; i < shortsFrames.size(); i++) {
+                        FeedViewCountPatch.ThumbnailFrame frame = shortsFrames.get(i);
+                        if (frame.estimated) {
+                            cardVideoIds.put(cards.get(i), cardIds.get(i));
+                            FeedEngagementCountsPatch.onCardLaidOut(cards.get(i), cardIds.get(i), frame);
+                        }
                     }
                     FeedVideoActionsPatch.onCardLaidOut(root, null, false);
                     continue;
@@ -1486,6 +1498,10 @@ public final class FeedVideoCardsPatch {
                         cardVideoIds.put(card, cardId);
                     }
                     FeedViewCountPatch.ThumbnailFrame shortsFrame = i < shortsFrames.size() ? shortsFrames.get(i) : null;
+                    if (shortsFrame != null && shortsFrame.estimated) {
+                        FeedEngagementCountsPatch.onCardLaidOut(card, cardId, shortsFrame);
+                        continue;
+                    }
                     if (shortsFrame != null) {
                         shortsCards.add(card);
                         FeedEngagementCountsPatch.onCardLaidOut(card, cardId, shortsFrame);
@@ -1559,7 +1575,7 @@ public final class FeedVideoCardsPatch {
         }
         FeedEngagementCountsPatch.onCardLaidOut(thumbnail, compactVideoIds.get(thumbnail),
                 new FeedViewCountPatch.ThumbnailFrame(duration,
-                        new Rect(0, 0, thumbnail.getWidth(), thumbnail.getHeight())));
+                        new Rect(0, 0, thumbnail.getWidth(), thumbnail.getHeight()), false));
     }
 
     /**
