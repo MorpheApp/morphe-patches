@@ -41,8 +41,7 @@ private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/
 @Suppress("unused")
 val playlistPanelButtonPatch = patch(
     name = "Playlist button",
-    description = "Adds an option to show a button at the top of the video player that opens the playlist panel, " +
-        "in place of the playlist quick action under the seekbar.",
+    description = "Adds an option to display a button in the video player that opens the playlist panel.",
 ) {
     dependsOn(
         sharedExtensionPatch,

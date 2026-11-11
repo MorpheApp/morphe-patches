@@ -9,30 +9,27 @@ package app.morphe.extension.youtube.videoplayer;
 
 import android.view.View;
 
-import com.google.protobuf.CodedOutputStream;
-
-import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.innertube.queue.fullscreen.QueueFullscreenRenderer;
 import app.morphe.extension.youtube.patches.CommandRouterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.queue.QueueFullscreenActions;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.ButtonVisibility;
 
 /**
- * Opens the playlist panel from a button at the top of the player, with the same command as the
- * playlist quick action under the seekbar, which pushes the seekbar up.
+ * Opens the playlist panel with the same command as the playlist quick action under the seekbar.
  */
 @SuppressWarnings("unused")
 public class PlaylistPanelButton {
 
-    /**
-     * Protobuf field numbers of showEngagementPanelEndpoint and of its panel id.
-     */
-    private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_FIELD = 138681778;
-    private static final int SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_ID_FIELD = 1;
-    private static final String PLAYLIST_PANEL = "engagement-panel-playlist";
+    private static final byte[] SHOW_PLAYLIST_PANEL_COMMAND = QueueFullscreenRenderer.Endpoint.newBuilder()
+            .setShowEngagementPanel(QueueFullscreenRenderer.ShowPanel.newBuilder()
+                    .setPanelId(QueueFullscreenActions.PLAYLIST_PANEL_ID))
+            .build()
+            .toByteArray();
 
     static {
         if (Settings.PLAYLIST_PANEL_BUTTON.get()) {
@@ -63,18 +60,8 @@ public class PlaylistPanelButton {
 
     private static void openPlaylistPanel() {
         try {
-            ByteArrayOutputStream endpoint = new ByteArrayOutputStream();
-            CodedOutputStream endpointOutput = CodedOutputStream.newInstance(endpoint);
-            endpointOutput.writeString(SHOW_ENGAGEMENT_PANEL_ENDPOINT_PANEL_ID_FIELD, PLAYLIST_PANEL);
-            endpointOutput.flush();
-
-            ByteArrayOutputStream command = new ByteArrayOutputStream();
-            CodedOutputStream commandOutput = CodedOutputStream.newInstance(command);
-            commandOutput.writeByteArray(SHOW_ENGAGEMENT_PANEL_ENDPOINT_FIELD, endpoint.toByteArray());
-            commandOutput.flush();
-
-            if (!CommandRouterPatch.executeCommand(command.toByteArray(), new HashMap<>())) {
-                Logger.printDebug(() -> "Playlist button: no shown activity to open the panel in");
+            if (!CommandRouterPatch.executeCommand(SHOW_PLAYLIST_PANEL_COMMAND, new HashMap<>())) {
+                Logger.printDebug(() -> "No command router of a shown activity");
             }
         } catch (Exception ex) {
             Logger.printException(() -> "openPlaylistPanel failure", ex);

@@ -765,6 +765,10 @@ Info: May not work on live streams"</string>
     <string name="morphe_play_all_button_type_entry_12">Members only live streams</string>
     <string name="morphe_play_all_button_not_available_toast">Unable to generate playlist due to channel ID mismatch</string>
 
+    <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+    <string name="morphe_playlist_panel_button_title">Show Playlist button</string>
+    <string name="morphe_playlist_panel_button_summary">Tap to open the playlist panel. Shown only when playing a playlist</string>
+
     <!-- interaction.reload.reloadVideoPatch -->
     <string name="morphe_reload_video_button_title">Show Reload video button</string>
     <string name="morphe_dismiss_player_not_available_toast">Video ID is unavailable. Please manually reload the video</string>
@@ -1692,10 +1696,6 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_remember_video_quality_toast_wifi">Changed default Wi-Fi quality to: %s</string>
     <string name="morphe_remember_video_quality_toast_shorts_mobile">Changed Shorts mobile quality to: %s</string>
     <string name="morphe_remember_video_quality_toast_shorts_wifi">Changed Shorts Wi-Fi quality to: %s</string>
-
-    <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
-    <string name="morphe_playlist_panel_button_title">Show playlist button</string>
-    <string name="morphe_playlist_panel_button_summary">A button at the top of the player opens the playlist panel. Shown only when a video plays from a list</string>
 
     <!-- video.speed.button.playbackSpeedButtonPatch -->
     <string name="morphe_playback_speed_dialog_button_title">Show Playback speed button</string>
