@@ -1208,7 +1208,7 @@ public final class FeedViewCountPatch {
                     // such as while only the thumbnail of a card that enters the list is shown.
                     String cardVideoId = videoId != null
                             ? videoId
-                            : FeedVideoCardsPatch.findVideoIdByDescription(host);
+                            : FeedVideoCardsPatch.findVideoIdByDescription(host, false);
                     if (cardVideoId != null && info.badgeText != null) {
                         ElementViewCount element;
                         synchronized (videoViewCounts) {

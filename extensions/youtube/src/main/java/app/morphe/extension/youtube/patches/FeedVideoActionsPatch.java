@@ -973,7 +973,7 @@ public final class FeedVideoActionsPatch {
         // The texts of a card that is not fully shown may not be drawn.
         return cardVideoId != null && VIDEO_ID_PATTERN.matcher(cardVideoId).matches()
                 ? cardVideoId
-                : FeedVideoCardsPatch.findVideoIdByDescription(host);
+                : FeedVideoCardsPatch.findVideoIdByDescription(host, false);
     }
 
     /**
