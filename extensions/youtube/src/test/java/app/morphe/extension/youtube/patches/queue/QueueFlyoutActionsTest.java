@@ -11,6 +11,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import com.google.protobuf.CodedOutputStream;
 
@@ -23,6 +24,24 @@ import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuIt
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuRenderer;
 
 public class QueueFlyoutActionsTest {
+    @Test
+    public void playlistNextAndLastKeepTheirOwnCollectionTargetAfterSerialization() throws Exception {
+        for (String playlist : java.util.List.of("PL-public", "PL-private", "WL", "LL", "RD-mix")) {
+            var completed = QueueFlyoutActions.completeMenu(MenuRenderer.getDefaultInstance(), true,
+                    "Next", "Last", playlist, false);
+            assertEquals(2, completed.getItemsCount());
+            var rebound = MenuRenderer.parseFrom(completed.toByteArray());
+            assertEquals(playlist, rebound.getItems(0).getMenuConditionalServiceItemRenderer()
+                    .getServiceEndpoint().getQueuePlaylistId());
+            assertEquals(playlist, rebound.getItems(1).getMenuConditionalServiceItemRenderer()
+                    .getServiceEndpoint().getQueuePlaylistId());
+            assertEquals(YTIconType.QUEUE_PLAY_NEXT, rebound.getItems(0)
+                    .getMenuConditionalServiceItemRenderer().getIcon().getYtIconType());
+            assertEquals(YTIconType.QUEUE_PLAY_LAST, rebound.getItems(1)
+                    .getMenuConditionalServiceItemRenderer().getIcon().getYtIconType());
+        }
+    }
+
     // Write the native conditional wire shape independently of our schema.
     // Using ordinary service builders here previously missed the real feed format.
     private static MenuItem conditional(int icon, int visibility) throws Exception {
@@ -105,6 +124,39 @@ public class QueueFlyoutActionsTest {
         assertFalse(cleaned.getItems(0).getMenuConditionalServiceItemRenderer().hasSecondaryIcon());
         assertSame(cleaned, QueueFlyoutActions.completeMenu(cleaned, false, "Next", "Last"));
     }
+
+    @Test public void shortsMenuAddsMissingLocalActionsWithoutChangingCastOrOtherItems() throws Exception {
+        var cast = conditional(251, 1);
+        var share = conditional(YTIconType.SHARE.getNumber(), 2);
+        var bytes = new ByteArrayOutputStream();
+        var output = CodedOutputStream.newInstance(bytes);
+        output.writeMessage(1, cast);
+        output.writeMessage(1, share);
+        output.writeString(80, "unknown menu field");
+        output.flush();
+        var menu = MenuRenderer.parseFrom(bytes.toByteArray());
+
+        for (boolean allowLast : new boolean[] {false, true}) {
+            assertSame(menu, QueueFlyoutActions.completeMenu(menu, allowLast, "Next", "Last", "", false));
+            var completed = QueueFlyoutActions.completeMenu(menu, allowLast, "Next", "Last", "", true);
+            final int added = allowLast ? 2 : 1;
+            assertEquals(added + 2, completed.getItemsCount());
+            var next = completed.getItems(0).getMenuConditionalServiceItemRenderer();
+            assertEquals(YTIconType.QUEUE_PLAY_NEXT, next.getIcon().getYtIconType());
+            assertFalse(next.hasServiceEndpoint());
+            assertEquals(2, next.getVisibility());
+            if (allowLast) {
+                var last = completed.getItems(1).getMenuConditionalServiceItemRenderer();
+                assertEquals(YTIconType.QUEUE_PLAY_LAST, last.getIcon().getYtIconType());
+                assertFalse(last.hasServiceEndpoint());
+            }
+            assertArrayEquals(cast.toByteArray(), completed.getItems(added).toByteArray());
+            assertArrayEquals(share.toByteArray(), completed.getItems(added + 1).toByteArray());
+            assertArrayEquals(menu.toBuilder().clearItems().build().toByteArray(),
+                    completed.toBuilder().clearItems().build().toByteArray());
+            assertSame(completed, QueueFlyoutActions.completeMenu(completed, allowLast, "Next", "Last", "", true));
+        }
+    }
     @Test public void nativeNavigationAndServiceVariantsKeepTheirCommandsAndLoseOnlyTheBadge() throws Exception {
         int[][] variants = { { 66441108, 11 }, { 66441155, 9 }, { 77258115, 12 }, { 77262503, 0 } };
         for (int[] variant : variants) {
@@ -156,6 +208,13 @@ public class QueueFlyoutActionsTest {
                 active.getItems(1).getMenuConditionalServiceItemRenderer().getIcon().getYtIconType());
         assertEquals(original.getItems(0).getMenuConditionalServiceItemRenderer().getServiceEndpoint(),
                 active.getItems(1).getMenuConditionalServiceItemRenderer().getServiceEndpoint());
+    }
+
+    @Test public void unresolvedCollectionCannotBeMistakenForItsThumbnailVideo() throws Exception {
+        var collection = PlaylistCardSource.fromElement(new byte[0], true);
+        assertTrue(collection.playlist());
+        assertEquals("", collection.playlistId());
+        assertFalse(PlaylistCardSource.fromElement(new byte[0], false).playlist());
     }
 
 }

@@ -43,6 +43,20 @@ internal fun getInnerTubeClientConfigFingerprint() = object : Fingerprint(
     )
 ) {}
 
+private object ResponsiveContainerPropertiesToStringFingerprint : Fingerprint(
+    name = "toString",
+    strings = listOf("ResponsiveContainerProperties{usingResponsiveContainerConfiguration=")
+)
+
+/**
+ * Picks the responsive container properties by the width and height of a container.
+ * Since 21.30 the home feed lays out its items by the size class of the picked properties.
+ */
+internal fun getResponsiveContainerPropertiesFingerprint() = object : Fingerprint(
+    returnType = ResponsiveContainerPropertiesToStringFingerprint.originalClassDef.type,
+    parameters = listOf("I", "I")
+) {}
+
 internal object RepeatedItemSectionRendererFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",

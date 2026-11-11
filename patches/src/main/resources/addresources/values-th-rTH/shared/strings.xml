@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ดีบัก</string>
   <string name="morphe_debug_screen_summary">กำหนดค่าตัวเลือกขั้นสูงสำหรับนักพัฒนาและบันทึกการวินิจฉัย</string>
-  <string name="morphe_debug_title">เปิดการบันทึกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_stacktrace_title">การติดตามสแต็กบันทึกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_stacktrace_summary">รวมการติดตามสแต็กในบันทึกการแก้ไขข้อบกพร่องเพื่อช่วยระบุข้อผิดพลาด</string>
+  <string name="morphe_debug_level_title">การบันทึกการแก้ไขข้อบกพร่อง</string>
+  <string name="morphe_debug_level_entry_disabled">ปิดการใช้งาน</string>
+  <string name="morphe_debug_level_entry_debug">ดีบั๊ก</string>
+  <string name="morphe_debug_level_entry_verbose">ละเอียด</string>
   <string name="morphe_debug_toast_on_error_title">แสดงข้อความแจ้งเตือนชั่วคราวเมื่อเกิดข้อผิดพลาดของ Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"การปิดข้อความแจ้งเตือนข้อผิดพลาดจะซ่อนการแจ้งเตือนข้อผิดพลาดทั้งหมดของ Morphe
 
@@ -229,6 +230,19 @@ Second \"item\" text"</string>
 หากคุณต้องการประสบการณ์ที่ไม่ยุ่งยากเท่าที่จะเป็นไปได้ ให้ &lt;b&gt;ถอนการติดตั้ง&lt;/b&gt; และแพตช์แอปเวอร์ชันที่แนะนำของ ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ ผมต้องการเวอร์ชันทดลอง</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ ผมต้องการเวอร์ชันที่เสถียร</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">แสดงการแจ้งเตือนภายในแอปสำหรับการอัปเดตแพตช์</string>
+  <string name="morphe_patches_update_notice_entry_off">ปิด</string>
+  <string name="morphe_patches_update_notice_entry_stable">รุ่นเสถียร</string>
+  <string name="morphe_patches_update_notice_entry_dev">รุ่นเสถียรและรุ่นพัฒนา</string>
+  <string name="morphe_patches_update_notice_dialog_title">มีแพตช์ใหม่พร้อมใช้งาน</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (ปัจจุบัน: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ ฟีเจอร์ใหม่</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 แก้ไขบั๊ก</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 การเปลี่ยนแปลงอื่นๆ</string>
+  <string name="morphe_patches_update_notice_dialog_more">…และอีก %s รายการ</string>
+  <string name="morphe_patches_update_notice_dialog_update">อัปเดต</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">ปิด</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">บันทึกการขัดข้องถูกบันทึกไปยังเอกสารผู้ใช้แล้ว: %s</string>
   <string name="morphe_crash_log_saved">บันทึกการขัดข้องถูกบันทึกแล้ว: %s</string>

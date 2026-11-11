@@ -105,7 +105,7 @@ public final class UniDictStore {
 
         WORKER.execute(() -> {
             try {
-                build(CHANNEL);
+                build();
             } catch (Exception ex) {
                 Logger.printDebug(() -> "UniDict build failed", ex);
                 CHANNEL.onFailed();
@@ -177,7 +177,7 @@ public final class UniDictStore {
         return directory == null ? null : new File(directory, name);
     }
 
-    private static void build(RomanizationDict.Listener listener) throws IOException {
+    private static void build() throws IOException {
         File directory = RomanizationDict.directory();
         if (directory == null) throw new IOException("no cache directory");
 
@@ -191,20 +191,20 @@ public final class UniDictStore {
             }
         }
         if (!missing) {
-            listener.onReady(entries());
+            UniDictStore.CHANNEL.onReady(entries());
             return;
         }
 
         File archive = tableFile(ARCHIVE);
         if (archive == null) throw new IOException("no cache directory");
         if (!archive.isFile()) {
-            RomanizationDict.download(URL, archive, ARCHIVE, listener);
+            RomanizationDict.download(URL, archive, ARCHIVE, (RomanizationDict.Listener) UniDictStore.CHANNEL);
         }
-        extract(archive, listener);
+        extract(archive, (RomanizationDict.Listener) UniDictStore.CHANNEL);
         //noinspection ResultOfMethodCallIgnored
         archive.delete();
 
-        listener.onReady(entries());
+        UniDictStore.CHANNEL.onReady(entries());
     }
 
     /**
@@ -224,6 +224,7 @@ public final class UniDictStore {
         try {
             for (int i = 0; i < TABLES.length; i++) {
                 File target = tableFile(TABLES[i].tableName);
+                assert target != null;
                 built[i] = new File(target.getPath() + ".building");
                 targets[i] = target;
                 writers[i] = new BufferedWriter(new OutputStreamWriter(
@@ -325,7 +326,7 @@ public final class UniDictStore {
         return -1;
     }
 
-    /** How much a reading field is trusted within its table, best first. */
+    /** How much a reading field is trusted within its table, the best first. */
     private static int rank(ReadingTable table, String field) {
         for (int i = 0; i < table.sources.length; i++) {
             if (table.sources[i].equals(field)) return i;
@@ -361,7 +362,7 @@ public final class UniDictStore {
     }
 
     /**
-     * One language's character readings: the Unihan fields that say them, best first, and
+     * One language's character readings: the Unihan fields that say them, the best first, and
      * what the table is stored as.
      */
     private static final class ReadingTable {

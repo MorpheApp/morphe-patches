@@ -5,9 +5,10 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.patches;
+package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -63,15 +64,17 @@ import javax.crypto.spec.SecretKeySpec;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.innertube.Offline.OfflinePlayerResponse;
-import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.shared.innertube.SavedVideo.SavedPlayerResponse;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 /**
- * Exports a video saved by the app to a video file in the shared Download folder.
+ * Exports a video or song saved by the app to a file in the shared Download folder.
+ * YouTube and YouTube Music save them the same way.
  * <p>
  * The app keeps each saved stream in an ExoPlayer cache, encrypted with AES/CTR
  * using a key from the app preferences. The streams are decrypted while they are read,
- * and the video and audio streams are muxed into one file.
+ * and the video and audio streams are muxed into one file. A single stream, such as
+ * the audio of a song, is saved as it is.
  */
 public final class OfflineVideoExporter {
 
@@ -96,7 +99,7 @@ public final class OfflineVideoExporter {
     private static final String INDEX_CIPHER = "AES/CBC/PKCS5Padding";
     private static final int AES_BLOCK_SIZE = 16;
 
-    private static final String SAVE_FOLDER = "Morphe videos";
+    private static final String SAVE_FOLDER = IS_YOUTUBE_MUSIC ? "Morphe music" : "Morphe videos";
     private static final int FOLDER_PERMISSIONS =
             Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION;
     private static final int MAX_FILE_NAME_LENGTH = 100;
@@ -113,7 +116,7 @@ public final class OfflineVideoExporter {
      */
     private static final long NOTIFICATION_INTERVAL_MILLISECONDS = 1000;
     private static final int PROGRESS_MAX = 100;
-    private static final String CANCEL_ACTION_PREFIX = "app.morphe.extension.youtube.EXPORT_CANCEL.";
+    private static final String CANCEL_ACTION_PREFIX = "app.morphe.extension.shared.EXPORT_CANCEL.";
 
     /**
      * Same as MediaFormat.MIMETYPE_VIDEO_AV1, which is only available with Android 10 and newer.
@@ -202,7 +205,7 @@ public final class OfflineVideoExporter {
      * @return The folder videos are exported to, as shown to the user.
      */
     public static String getFolderName() {
-        String folder = Settings.EXPORT_DOWNLOAD_FOLDER.get();
+        String folder = SharedYouTubeSettings.EXPORT_DOWNLOAD_FOLDER.get();
         if (folder.isEmpty()) {
             return Build.VERSION.SDK_INT < Build.VERSION_CODES.Q
                     ? getLegacyFolder().getPath()
@@ -224,7 +227,7 @@ public final class OfflineVideoExporter {
         ContentResolver resolver = Utils.getContext().getContentResolver();
 
         // Only one folder is used, so the access to the previous folder is no longer needed.
-        String previous = Settings.EXPORT_DOWNLOAD_FOLDER.get();
+        String previous = SharedYouTubeSettings.EXPORT_DOWNLOAD_FOLDER.get();
         for (UriPermission permission : resolver.getPersistedUriPermissions()) {
             if (permission.getUri().toString().equals(previous)) {
                 resolver.releasePersistableUriPermission(permission.getUri(), FOLDER_PERMISSIONS);
@@ -232,10 +235,10 @@ public final class OfflineVideoExporter {
         }
 
         if (folder == null) {
-            Settings.EXPORT_DOWNLOAD_FOLDER.resetToDefault();
+            SharedYouTubeSettings.EXPORT_DOWNLOAD_FOLDER.resetToDefault();
         } else {
             resolver.takePersistableUriPermission(folder, FOLDER_PERMISSIONS);
-            Settings.EXPORT_DOWNLOAD_FOLDER.save(folder.toString());
+            SharedYouTubeSettings.EXPORT_DOWNLOAD_FOLDER.save(folder.toString());
         }
     }
 
@@ -245,7 +248,7 @@ public final class OfflineVideoExporter {
      */
     @Nullable
     private static Uri getPickedFolder(ContentResolver resolver) {
-        String pickedFolder = Settings.EXPORT_DOWNLOAD_FOLDER.get();
+        String pickedFolder = SharedYouTubeSettings.EXPORT_DOWNLOAD_FOLDER.get();
         if (pickedFolder.isEmpty()) {
             return null;
         }
@@ -358,7 +361,7 @@ public final class OfflineVideoExporter {
                 new String[]{videoId},
                 null, null, null)) {
             if (cursor.moveToFirst() && !cursor.isNull(0)) {
-                String title = OfflinePlayerResponse.parseFrom(cursor.getBlob(0))
+                String title = SavedPlayerResponse.parseFrom(cursor.getBlob(0))
                         .getVideoDetails().getTitle();
                 if (!title.isEmpty()) {
                     return title;
@@ -399,7 +402,8 @@ public final class OfflineVideoExporter {
             notification.setSources(sources);
 
             String fileName = getFileName(video.title());
-            Integer muxerFormat = getMuxerFormat(formats);
+            // A single stream, such as the audio of a song, is already a complete media file.
+            Integer muxerFormat = sources.size() > 1 ? getMuxerFormat(formats) : null;
             if (muxerFormat != null) {
                 final boolean webm = muxerFormat == MediaMuxer.OutputFormat.MUXER_OUTPUT_WEBM;
                 String mimeType = webm ? "video/webm" : "video/mp4";
@@ -415,6 +419,7 @@ public final class OfflineVideoExporter {
 
             // The streams can't be muxed together on this device, so each stream is saved as its own file.
             // The streams are complete media files, so they play by themselves.
+            final boolean multipleStreams = sources.size() > 1;
             ExportResult result = null;
             // If a stream can't be saved, the other streams are deleted too, so no partial export is left.
             List<OutputFile> finished = new ArrayList<>();
@@ -424,7 +429,7 @@ public final class OfflineVideoExporter {
                 final boolean webm = WEBM_MIME_TYPES.contains(formats.get(i).getString(MediaFormat.KEY_MIME));
                 String extension = webm ? ".webm" : (audio ? ".m4a" : ".mp4");
                 OutputFile output = OutputFile.create(
-                        fileName + (audio ? " (audio)" : ""),
+                        fileName + (audio && multipleStreams ? " (audio)" : ""),
                         extension,
                         mimeType
                 );

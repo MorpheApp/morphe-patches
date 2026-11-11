@@ -116,7 +116,7 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_spoof_video_streams_client_type_title">기본 클라이언트</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR에 로그인하기</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR에 로그인되어 있지 않습니다 \n로그인하려면 여기를 탭하세요</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR은 별도의 로그인이 필요합니다. 계속하려면 여기를 탭하세요</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">현재 Android VR에 로그인되어 있습니다</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">이 기능을 사용하려면, \'동영상 스트림 속이기\'에서 \'기본 클라이언트\'를 \'Android VR\'로 변경하세요</string>
@@ -205,16 +205,18 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_sanitize_sharing_links_summary">링크를 공유할 경우에 URL에서 추적 쿼리 매개변수를 제거합니다</string>
   <string name="morphe_replace_music_with_youtube_title">공유 링크를 \'youtube.com\'으로 변경하기</string>
   <string name="morphe_replace_music_with_youtube_summary">공유 링크에서 music.youtube.com을 youtube.com으로 변경합니다</string>
-  <string name="morphe_replace_links_with_shortener_title">공유 링크를 \'youtu.be\'으로 변경하기</string>
+  <string name="morphe_replace_links_with_shortener_title">공유 링크를 youtu.be로 변경하기</string>
   <string name="morphe_replace_links_with_shortener_summary">동영상이 단축된 youtu.be URL 형식을 사용하도록 강제합니다</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">디버그 로그 프로토콜 버퍼</string>
-  <string name="morphe_debug_protobuffer_summary">개발자가 앱 구성 요소를 식별할 수 있도록 추가 로그 정보를 추가합니다</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"이 설정을 활성화하면 일부 UI 구성 요소에 대한 화면 텍스트를 포함한 추가 레이아웃 데이터가 기록됩니다.
+  <string name="morphe_debug_litho_title">Litho 로깅</string>
+  <string name="morphe_debug_litho_entry_disabled">사용 안함</string>
+  <string name="morphe_debug_litho_entry_path">경로</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">경로 및 버퍼</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho 로깅은 일부 UI 구성 요소의 화면 텍스트를 포함하여 앱의 레이아웃 구성 요소를 기록합니다
 
-이 설정은 사용자 정의 필터를 만들 경우에 구성 요소를 식별하는 데 도움이 될 수 있습니다.
+이는 사용자 정의 필터를 만들 때 구성 요소를 식별하는 데 도움이 될 수 있습니다
 
-그러나 이 설정을 활성화하면 IP 주소와 같은 일부 사용자 데이터도 기록됩니다"</string>
+하지만 IP 주소와 같은 일부 사용자 데이터도 함께 기록됩니다"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">사용자 정의 필터</string>
   <string name="morphe_custom_filter_screen_summary">원하는 구성 요소를 숨기기 위한 사용자 정의 필터를 설정합니다</string>
@@ -276,7 +278,7 @@ PotHelper를 다운로드하려면 여기를 탭하세요"</string>
   <string name="morphe_custom_font_type_entry_system">기기 시스템 글꼴</string>
   <string name="morphe_custom_font_type_entry_custom">사용자 정의 글꼴 파일</string>
   <string name="morphe_custom_font_file_title">사용자 정의 글꼴 파일</string>
-  <string name="morphe_custom_font_file_summary">TTF 또는 OTF 글꼴 파일 선택할 수 있습니다</string>
+  <string name="morphe_custom_font_file_summary">TTF 또는 OTF 글꼴 파일을 선택할 수 있습니다</string>
   <string name="morphe_custom_font_file_invalid">선택한 파일은 TTF 또는 OTF 글꼴이 아닙니다</string>
   <string name="morphe_custom_font_failed_to_load">사용자 정의 글꼴을 불러올 수 없어 사용 중지되었습니다</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
@@ -308,10 +310,10 @@ PotHelper를 다운로드하려면 여기를 탭하세요"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">싫어요 수를 일시적으로 표시할 수 없습니다 - 클라이언트 API 비율 제한 적용 중</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API 투표 가져오기, 호출 횟수</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">네트워크 호출한 적이 없습니다</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s 개의 네트워크 호출이 이루어졌습니다</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s회의 네트워크 호출이 이루어졌습니다</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API 투표 가져오기, 시간 초과 횟수</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">네트워크 호출이 시간 초과된 적이 없습니다</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s 개의 네트워크 호출이 시간 초과되었습니다</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s회의 네트워크 호출이 시간 초과되었습니다</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">API 클라이언트 비율 제한</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">클라이언트 비율 제한이 발생하지 않았습니다</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">클라이언트 비율 제한이 %s 번 발생하였습니다</string>

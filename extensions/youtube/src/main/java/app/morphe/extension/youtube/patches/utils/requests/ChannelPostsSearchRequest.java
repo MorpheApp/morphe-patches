@@ -183,13 +183,13 @@ public final class ChannelPostsSearchRequest {
             return null;
         }
 
-        String text = parseText(post.optJSONObject("contentText"));
-        String publishedTime = parseText(post.optJSONObject("publishedTimeText"));
+        String text = ChannelSearchRequest.parseText(post.optJSONObject("contentText"));
+        String publishedTime = ChannelSearchRequest.parseText(post.optJSONObject("publishedTimeText"));
 
         JSONObject voteCount = post.optJSONObject("voteCount");
         String likes = accessibilityLabel(voteCount);
         if (likes.isEmpty()) {
-            likes = parseText(voteCount);
+            likes = ChannelSearchRequest.parseText(voteCount);
         }
 
         StringBuilder searchText = new StringBuilder(text);
@@ -221,14 +221,14 @@ public final class ChannelPostsSearchRequest {
                 if (thumbnail != null) {
                     thumbnailUrl = ChannelSearchRequest.widestThumbnail(thumbnail.optJSONArray("thumbnails"));
                 }
-                appendSearchText(searchText, parseText(video.optJSONObject("title")));
+                appendSearchText(searchText, ChannelSearchRequest.parseText(video.optJSONObject("title")));
             } else if (poll != null) {
                 JSONArray choices = poll.optJSONArray("choices");
                 if (choices != null) {
                     for (int i = 0, length = choices.length(); i < length; i++) {
                         JSONObject choice = choices.optJSONObject(i);
                         if (choice != null) {
-                            appendSearchText(searchText, parseText(choice.optJSONObject("text")));
+                            appendSearchText(searchText, ChannelSearchRequest.parseText(choice.optJSONObject("text")));
                         }
                     }
                 }
@@ -512,33 +512,5 @@ public final class ChannelPostsSearchRequest {
         JSONObject accessibility = text.optJSONObject("accessibility");
         JSONObject data = accessibility == null ? null : accessibility.optJSONObject("accessibilityData");
         return data == null ? "" : data.optString("label");
-    }
-
-    /**
-     * Text is either a plain string or a list of runs, depending on the field.
-     */
-    private static String parseText(@Nullable JSONObject text) {
-        if (text == null) {
-            return "";
-        }
-
-        String simpleText = text.optString("simpleText");
-        if (!simpleText.isEmpty()) {
-            return simpleText;
-        }
-
-        JSONArray runs = text.optJSONArray("runs");
-        if (runs == null) {
-            return "";
-        }
-
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0, length = runs.length(); i < length; i++) {
-            JSONObject run = runs.optJSONObject(i);
-            if (run != null) {
-                builder.append(run.optString("text"));
-            }
-        }
-        return builder.toString();
     }
 }

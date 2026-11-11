@@ -109,7 +109,7 @@ public class LoopVideoPatch {
                     && status != null && "ENDED".equals(status.name());
 
             if (isEnded) {
-                if (isSleepTimerEndingVideo()) {
+                if (isSleepTimerEndingVideo() || LoopCountPatch.isLoopCountReached()) {
                     return false;
                 }
 

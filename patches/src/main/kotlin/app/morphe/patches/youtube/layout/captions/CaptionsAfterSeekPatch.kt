@@ -11,8 +11,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.p0Register
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.util.cloneMutable
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -43,24 +44,24 @@ internal val captionsAfterSeekPatch = patch(
             .fieldReference
 
         getCaptionChunkLoaderFingerprint(loaderConstructorFingerprint.originalClassDef.type).let {
-            it.method.apply {
-                val loadChunkMethod = cloneMutable(name = "patch_loadCaptionChunk")
-                it.classDef.methods.add(loadChunkMethod)
-                val register = findFreeRegister(0)
+            val loadChunkMethod = it.method.cloneMutable(name = "patch_loadCaptionChunk")
+            it.classDef.methods.add(loadChunkMethod)
 
-                addInstructions(
-                    0,
-                    """
-                        invoke-virtual { p0, p1, p2 }, $loadChunkMethod
-                        iget-object v$register, p0, $captionWindowsField
-                        iget-object v$register, v$register, $captionTimesField
-                        invoke-static { v$register, p1, p2 }, $EXTENSION_CLASS->getCaptionStartTime(Ljava/util/List;J)J
-                        move-result-wide p1
-                        invoke-virtual { p0, p1, p2 }, $loadChunkMethod
-                        return-void
-                    """
-                )
-            }
+            // Index 0: no local register is written yet, so v0 is free if the method has local registers.
+            var method = it.method
+            if (method.p0Register == 0) method = method.cloneParameters()
+            method.addInstructions(
+                0,
+                """
+                    invoke-virtual { p0, p1, p2 }, $loadChunkMethod
+                    iget-object v0, p0, $captionWindowsField
+                    iget-object v0, v0, $captionTimesField
+                    invoke-static { v0, p1, p2 }, $EXTENSION_CLASS->getCaptionStartTime(Ljava/util/List;J)J
+                    move-result-wide p1
+                    invoke-virtual { p0, p1, p2 }, $loadChunkMethod
+                    return-void
+                """
+            )
         }
 
         AddCueRangesFingerprint.let {

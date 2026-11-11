@@ -97,16 +97,17 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Gỡ lỗi</string>
   <string name="morphe_debug_screen_summary">Cấu hình các tùy chọn nhà phát triển nâng cao và nhật ký chẩn đoán</string>
-  <string name="morphe_debug_title">Bật ghi nhật ký gỡ lỗi</string>
-  <string name="morphe_debug_stacktrace_title">Ghi nhật ký gỡ lỗi (Stack Trace)</string>
-  <string name="morphe_debug_stacktrace_summary">Thêm stack trace vào nhật ký để dễ tìm nguyên nhân</string>
+  <string name="morphe_debug_level_title">Nhật ký gỡ lỗi</string>
+  <string name="morphe_debug_level_entry_disabled">Đang tắt</string>
+  <string name="morphe_debug_level_entry_debug">Gỡ lỗi</string>
+  <string name="morphe_debug_level_entry_verbose">Chi tiết</string>
   <string name="morphe_debug_toast_on_error_title">Hiện thông báo ngắn về lỗi Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Tắt thông báo lỗi sẽ ẩn mọi thông báo lỗi từ Morphe.
 
-Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ"</string>
+Bạn sẽ không được thông báo khi xảy ra lỗi bất ngờ"</string>
   <string name="morphe_debug_export_logs_title">Nhật ký gỡ lỗi</string>
   <string name="morphe_debug_export_logs_summary">Xuất nhật ký gỡ lỗi của Morphe</string>
-  <string name="morphe_debug_export_logs_success">Xuất bản nhật ký gỡ lỗi thành công</string>
+  <string name="morphe_debug_export_logs_success">Đã xuất nhật ký gỡ lỗi thành công</string>
   <string name="morphe_debug_export_logs_failed">Không thể xuất nhật ký gỡ lỗi</string>
   <string name="morphe_debug_logs_search_hint">Tìm kiếm nhật ký gỡ lỗi…</string>
   <string name="morphe_debug_export_logs_clear">Dọn dẹp</string>
@@ -193,9 +194,17 @@ Vui lòng cập nhật MicroG lên phiên bản mới nhất v%2$s"</string>
 Nhấn để gỡ cài đặt, sau đó mở lại ứng dụng này và cài đặt MicroG RE"</string>
   <string name="gms_core_dialog_uninstall_text">Gỡ</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG không có quyền chạy nền.\n\nHãy làm theo hướng dẫn \"Don\"t kill my app\" dành cho điện thoại của bạn và áp dụng các bước đó cho cài đặt microG.\n\nĐiều này cần thiết cho ứng dụng hoạt động"</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG không có quyền chạy nền.
+
+Hãy làm theo hướng dẫn \"Don't kill my app\" dành cho điện thoại của bạn và áp dụng các bước đó cho cài đặt microG.
+
+Điều này cần thiết để ứng dụng hoạt động"</string>
   <string name="gms_core_dialog_open_website_text">Mở trang web</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nBấm tiếp tục để tắt tối ưu hóa"</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.
+
+Đừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.
+
+Bấm tiếp tục để tắt tối ưu hóa"</string>
   <string name="gms_core_dialog_continue_text">Tiếp tục</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Hiện hộp thoại tối ưu hóa pin MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tắt tùy chọn này sẽ ẩn thông báo tối ưu hoá pin cho MicroG.
@@ -221,6 +230,19 @@ Nếu bạn vẫn chưa tắt tối ưu hóa pin, một số lỗi có thể x�
 Nếu bạn muốn có trải nghiệm ổn định và ít lỗi, thì hãy &lt;b&gt;gỡ cài đặt&lt;/b&gt; phiên bản này và  vá phiên bản đề xuất là &lt;b&gt;%2$s&lt;/b&gt; ✅"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Tôi muốn thử</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Thôi ổn định vậy</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Hiển thị thông báo trong ứng dụng cho các bản cập nhật vá lỗi</string>
+  <string name="morphe_patches_update_notice_entry_off">Tắt</string>
+  <string name="morphe_patches_update_notice_entry_stable">Các bản phát hành ổn định</string>
+  <string name="morphe_patches_update_notice_entry_dev">Các bản phát hành ổn định và dev</string>
+  <string name="morphe_patches_update_notice_dialog_title">Đã có bản vá mới</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (hiện tại: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Tính năng mới</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Sửa lỗi</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Các thay đổi khác</string>
+  <string name="morphe_patches_update_notice_dialog_more">…và %s mục khác</string>
+  <string name="morphe_patches_update_notice_dialog_update">Cập nhật</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Kệ</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Đã lưu nhật ký sự cố vào tài liệu người dùng: %s</string>
   <string name="morphe_crash_log_saved">Đã lưu nhật ký sự cố: %s</string>

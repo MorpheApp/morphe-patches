@@ -152,6 +152,15 @@ internal object VideoZoomScaleBeginFingerprint : Fingerprint(
 )
 
 /**
+ * Touch events of the player, in the class of [VideoZoomScaleBeginFingerprint].
+ */
+internal object VideoZoomTouchFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf("Landroid/view/View;", "Landroid/view/MotionEvent;")
+)
+
+/**
  * Shorts pinch-to-zoom flag, 20.51 - 21.29.
  */
 internal object ShortsPinchToZoomLegacyFeatureFlagFingerprint : Fingerprint(

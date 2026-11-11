@@ -804,7 +804,7 @@ public final class CaptionTracks {
 
         try {
             if (!(result instanceof StableCaptionBlocks.Timeline timeline) || !hasUploadedTracks()) return result;
-            if (requiresNativeWindows()) {
+            if (nativeWindows(uploaded.first()) || nativeWindows(uploaded.second())) {
                 // Keep uploaded windows native; a missing output uses a separate translated window.
                 // Cached windows and event lists remain unchanged.
                 StableCaptionBlocks.Timeline sourceTimeline = timeline;
@@ -831,10 +831,6 @@ public final class CaptionTracks {
             Logger.printException(() -> "mergeUploadedTracks failure", ex);
             return result;
         }
-    }
-
-    private static synchronized boolean requiresNativeWindows() {
-        return hasUploadedTracks() && (nativeWindows(uploaded.first()) || nativeWindows(uploaded.second()));
     }
 
     private static boolean nativeWindows(@Nullable StableCaptionBlocks.Timeline timeline) {

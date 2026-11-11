@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.patches.utils.requests;
 
 import android.os.Build;
 
+import androidx.annotation.Nullable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -141,8 +143,18 @@ public final class PlaylistRoutes {
     }
 
     public static byte[] getSetVideoIdBody(String videoId, String playlistId) {
+        return getSetVideoIdBody(videoId, playlistId, null);
+    }
+
+    /** Localized display metadata, while existing playlist-edit callers keep their context. */
+    public static byte[] getSetVideoIdBody(String videoId, String playlistId, @Nullable Locale locale) {
         try {
             JSONObject body = getBaseContentJson();
+            if (locale != null) {
+                JSONObject client = body.getJSONObject("context").getJSONObject("client");
+                client.put("hl", locale.toLanguageTag());
+                client.put("gl", locale.getCountry());
+            }
             body.put("videoId", videoId);
             body.put("playlistId", playlistId);
             return body.toString().getBytes(StandardCharsets.UTF_8);
@@ -171,6 +183,33 @@ public final class PlaylistRoutes {
             return body.toString().getBytes(StandardCharsets.UTF_8);
         } catch (JSONException ex) {
             Logger.printException(() -> "editPlaylistBody failed", ex);
+        }
+        return new byte[0];
+    }
+
+    /**
+     * @param predecessorSetVideoId The entry to move the video after,
+     *                              or null to move the video to the start of the playlist.
+     */
+    public static byte[] moveVideoBody(String playlistId, String setVideoId, @Nullable String predecessorSetVideoId) {
+        try {
+            JSONObject body = getBaseContentJson();
+            body.put("playlistId", playlistId);
+
+            JSONObject action = new JSONObject();
+            action.put("action", "ACTION_MOVE_VIDEO_AFTER");
+            action.put("setVideoId", setVideoId);
+            // Without a predecessor the video is moved to the start.
+            // ACTION_MOVE_VIDEO_TO_BEGINNING fails with code 500.
+            if (predecessorSetVideoId != null) {
+                action.put("movedSetVideoIdPredecessor", predecessorSetVideoId);
+            }
+            JSONArray actions = new JSONArray();
+            actions.put(action);
+            body.put("actions", actions);
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "moveVideoBody failed", ex);
         }
         return new byte[0];
     }

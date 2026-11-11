@@ -30,7 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import">Impor</string>
   <string name="morphe_settings_import_copy">Salin</string>
   <string name="morphe_settings_import_reset">Setelan Morphe diatur ke bawaan</string>
-  <string name="morphe_settings_import_success">%s Setelan diimpor</string>
+  <string name="morphe_settings_import_success">%s setelan diimpor</string>
   <string name="morphe_settings_import_failure_parse">Impor gagal: %s</string>
   <string name="morphe_settings_navigate_up">Navigasi ke atas</string>
   <string name="morphe_settings_search_hint">Cari setelan</string>
@@ -97,9 +97,10 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
   <string name="morphe_debug_screen_summary">Konfigurasikan pilihan pengembang lanjutan dan catatan diagnostik</string>
-  <string name="morphe_debug_title">Aktifkan pencatatan debug</string>
-  <string name="morphe_debug_stacktrace_title">Jejak stack catatan debug</string>
-  <string name="morphe_debug_stacktrace_summary">Menyertakan jejak stack dalam catatan debug untuk membantu mengidentifikasi kesalahan</string>
+  <string name="morphe_debug_level_title">Pencatatan debug</string>
+  <string name="morphe_debug_level_entry_disabled">Tidak aktif</string>
+  <string name="morphe_debug_level_entry_debug">Debug</string>
+  <string name="morphe_debug_level_entry_verbose">Verbose</string>
   <string name="morphe_debug_toast_on_error_title">Tampilkan pesan timbul pada kesalahan Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Mematikan pesan timbul kesalahan menyembunyikan semua pemberitahuan kesalahan Morphe.
 
@@ -229,6 +230,19 @@ Jika optimasi baterai tidak diubah, Anda mungkin mengalami:
 Jika Anda ingin pengalaman tanpa kendala, silakan &lt;b&gt;copot&lt;/b&gt; ini dan tambal versi aplikasi yang direkomendasikan ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Saya ingin versi eksperimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Saya ingin versi stabil</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Tampilkan notifikasi dalam aplikasi untuk pembaruan patch</string>
+  <string name="morphe_patches_update_notice_entry_off">Nonaktif</string>
+  <string name="morphe_patches_update_notice_entry_stable">Rilis stabil</string>
+  <string name="morphe_patches_update_notice_entry_dev">Rilis stabil dan dev</string>
+  <string name="morphe_patches_update_notice_dialog_title">Tambalan baru tersedia</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (saat ini: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Fitur baru</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Perbaikan bug</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Perubahan lainnya</string>
+  <string name="morphe_patches_update_notice_dialog_more">…dan %s lainnya</string>
+  <string name="morphe_patches_update_notice_dialog_update">Perbarui</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Abaikan</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Log kerusakan disimpan ke dokumen pengguna: %s</string>
   <string name="morphe_crash_log_saved">Log kerusakan disimpan: %s</string>

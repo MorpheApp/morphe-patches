@@ -110,7 +110,7 @@ public final class PinyinDictStore {
 
         WORKER.execute(() -> {
             try {
-                build(CHANNEL);
+                build();
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Pinyin dictionary build failed", ex);
                 CHANNEL.onFailed();
@@ -126,18 +126,19 @@ public final class PinyinDictStore {
         return words == null ? 0 : words.size();
     }
 
-    private static void build(RomanizationDict.Listener listener) throws IOException {
+    private static void build() throws IOException {
         File directory = RomanizationDict.directory();
         if (directory == null) throw new IOException("no cache directory");
 
-        WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, PinyinDictStore::addWords, listener);
-        listener.onReady(entries());
+        WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, PinyinDictStore::addWords, (RomanizationDict.Listener) PinyinDictStore.CHANNEL);
+        PinyinDictStore.CHANNEL.onReady(entries());
     }
 
     /**
      * Read rather than parsed: a quote followed by a colon appears in a word and nowhere else,
      * which is enough to tell a key from a reading however the file happens to be laid out.
      */
+    @SuppressWarnings("ConstantValue")
     private static void addWords(File archive, WordReadingTable.Builder builder,
                                  RomanizationDict.Listener listener) throws IOException {
         String word = null;

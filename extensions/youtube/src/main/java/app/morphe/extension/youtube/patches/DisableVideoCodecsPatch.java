@@ -138,6 +138,7 @@ public class DisableVideoCodecsPatch {
                 ClientType.ANDROID_CREATOR,
                 ClientType.ANDROID_VR_DASH,
                 ClientType.ANDROID_VR_SABR,
+                ClientType.ANDROID_VR_EXPERIMENTAL,
                 ClientType.VISIONOS_1_02).contains(Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get());
     }
 
@@ -199,13 +200,21 @@ public class DisableVideoCodecsPatch {
      * Injection point.
      */
     public static boolean allowVP9() {
-        return getVideoCodec() != VideoCodec.AVC;
+        final boolean allowed = getVideoCodec() != VideoCodec.AVC;
+        if (!allowed) {
+            Logger.printVerbose(() -> "VP9 not allowed");
+        }
+        return allowed;
     }
 
     /**
      * Injection point.
      */
     public static boolean allowCodec(String mimeType) {
-        return !(getVideoCodec() == VideoCodec.VP9 && MIMETYPE_VIDEO_AV1.equals(mimeType));
+        final boolean allowed = !(getVideoCodec() == VideoCodec.VP9 && MIMETYPE_VIDEO_AV1.equals(mimeType));
+        if (!allowed) {
+            Logger.printVerbose(() -> "Codec not allowed: " + mimeType);
+        }
+        return allowed;
     }
 }

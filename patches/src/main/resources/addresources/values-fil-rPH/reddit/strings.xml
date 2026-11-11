@@ -43,7 +43,7 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_copy_text_title">Kopyahin ang teksto</string>
   <string name="morphe_copy_text_summary">Nagbibigay-daan sa pagpili at pagkopya ng teksto sa mga post at komento. Hindi pinapagana ang pag-collapse ng mga komento</string>
-  <string name="morphe_copy_text_user_dialog_message">Magtatigil ang paggana ng mga collapsable na komento habang nakapag-enable ang Copy text</string>
+  <string name="morphe_copy_text_user_dialog_message">Hihinto sa paggana ang pag-collapse ng mga komento habang naka-enable ang Copy text</string>
   <string name="morphe_custom_font_title">Pasadyang font</string>
   <string name="morphe_custom_font_summary">Mag-load ng custom na TTF o OTF font file mula sa path sa ibaba. Ang pagpapagana nito ay nagpapahinto din sa Force system font.</string>
   <string name="morphe_custom_font_file_path_title">Pasadyang font file</string>
@@ -55,11 +55,11 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_disable_modern_home_title">I-disable ang modernong UI ng home screen</string>
   <string name="morphe_disable_screenshot_popup_title">I-disable ang screenshot popup</string>
   <string name="morphe_disable_screenshot_popup_summary">Hindi pinapagana ang popup na lumalabas kapag kumukuha ng screenshot</string>
-  <string name="morphe_force_system_font_title">Pilitin ang sistemang font</string>
+  <string name="morphe_force_system_font_title">Pilitin ang system font</string>
   <string name="morphe_force_system_font_summary">Gumamit ng system font ng device sa halip na Reddit Sans o Roboto. Ang pagpapagana nito ay nagpapahinto din sa Custom font.</string>
   <string name="morphe_hide_ask_button_title">Itago ang Ask button</string>
   <string name="morphe_hide_ask_button_summary">Itinatago ang Ask button sa search bar</string>
-  <string name="morphe_hide_communities_shelf_title">Itago ang mga komunidad na shelf</string>
+  <string name="morphe_hide_communities_shelf_title">Itago ang shelf ng mga komunidad</string>
   <string name="morphe_hide_communities_shelf_summary">Itinatago ang mga kaugnay o iminungkahing komunidad na shelf sa mga subreddit</string>
   <string name="morphe_hide_trending_shelves_title">Itago ang mga trending shelf</string>
   <string name="morphe_hide_trending_shelves_summary">Itinatago ang mga Trending na shelf mula sa feed at mga mungkahi sa paghahanap</string>
@@ -67,8 +67,8 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_remove_notification_dialog_summary">Awtomatikong itatanggal ang suhestiyon ng notipikasyon kapag binisita ang isang subreddit</string>
   <string name="morphe_high_quality_avatars_title">Mataas na kalidad na mga avatar</string>
   <string name="morphe_high_quality_avatars_summary">Nagpapakita ng mga avatar ng user sa full resolution</string>
-  <string name="morphe_show_flairs_in_home_feed_title">Ipakita ang mga flair sa feed ng bahay</string>
-  <string name="morphe_show_flairs_in_home_feed_summary">Ipinapakita ang mga badge ng post flair sa feed ng bahay</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Ipakita ang mga flair sa home feed</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">Ipinapakita ang mga badge ng post flair sa home feed</string>
   <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Maaaring hindi ipakita ang flair sa ilang item sa feed</string>
   <string name="morphe_show_view_count_title">Ipakita ang bilang ng views sa mga post</string>
   <string name="morphe_show_view_count_summary">Limitasyon: Available lamang kung kasama sa tugon ng API ang bilang ng pagtingin</string>
@@ -100,7 +100,7 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_download_location_title">Lokasyon ng pag-download</string>
   <string name="morphe_download_location_all_title">Lahat ng account</string>
   <string name="morphe_download_location_default_summary">Kadalasan sa Reddit: imahe sa Pictures/Reddit, video sa Download</string>
-  <string name="morphe_download_location_summary_folder">Tahanang-latak: %s</string>
+  <string name="morphe_download_location_summary_folder">Folder: %s</string>
   <string name="morphe_download_location_summary_pattern">Pangalan ng file: %s</string>
   <string name="morphe_download_location_pattern_default">Mga pangalan ng file ng Reddit</string>
   <string name="morphe_download_location_uses_all_summary">Gumagamit ng \"Lahat ng account\"</string>
@@ -120,11 +120,11 @@ Para gumamit ng mas lumang bersyon, kailangang &lt;b&gt;i-uninstall&lt;/b&gt; an
   <string name="morphe_download_location_save">I-save</string>
   <string name="morphe_download_location_reset">Ipawalang-bisa</string>
   <string name="morphe_download_location_delete">Burahin</string>
-  <string name="morphe_download_location_reset_confirm">I-reset ang lokasyon ng pag-download ng lahat ng account sa kadalasan sa Reddit?</string>
-  <string name="morphe_download_location_delete_confirm">Itago ang lokasyon ng pag-download ng %s?</string>
+  <string name="morphe_download_location_reset_confirm">I-reset ang lokasyon ng pag-download ng lahat ng account sa default ng Reddit?</string>
+  <string name="morphe_download_location_delete_confirm">Burahin ang lokasyon ng pag-download ng %s?</string>
   <string name="morphe_download_location_save_failed">Hindi makapag-save sa lokasyon ng pag-download. Na-save sa default na folder ng Reddit sa halip</string>
   <string name="morphe_download_location_folder_unavailable">Ang download folder ay hindi na available. Na-save sa default na folder ng Reddit sa halip</string>
-  <string name="morphe_download_location_video_failed">Hindi maitaas ang na-download na video</string>
+  <string name="morphe_download_location_video_failed">Hindi ma-save ang na-download na video</string>
   <string name="morphe_download_location_invalid_folder">Hindi maaaring gamitin ang folder na ito para sa downloads</string>
   <string name="morphe_download_location_account_current">%s (kasalukuyan)</string>
   <string name="morphe_download_location_account_logged_out">%s (hindi naka-login)</string>

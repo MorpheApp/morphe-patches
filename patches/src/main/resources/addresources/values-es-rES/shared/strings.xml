@@ -89,17 +89,18 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_settings_about_contributors_current">Desarrollo actual</string>
   <string name="morphe_settings_about_contributors_prior">Desarrollo anterior</string>
   <string name="morphe_settings_about_links_morphe">Desarrollo activo</string>
-  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
-  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
-  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Avisos de licencia</string>
   <string name="morphe_settings_about_licenses_loading">Cargando…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuración</string>
   <string name="morphe_debug_screen_summary">Configura opciones avanzadas de desarrollador y registros de diagnóstico</string>
-  <string name="morphe_debug_title">Activar registro de depuración</string>
-  <string name="morphe_debug_stacktrace_title">Registro de depuración de la traza de pila</string>
-  <string name="morphe_debug_stacktrace_summary">Incluye trazas de pila en los registros de depuración para ayudar a identificar errores</string>
+  <string name="morphe_debug_level_title">Registro de depuración</string>
+  <string name="morphe_debug_level_entry_disabled">Desactivado</string>
+  <string name="morphe_debug_level_entry_debug">Depuración</string>
+  <string name="morphe_debug_level_entry_verbose">Detallado</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar aviso de error en Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar los avisos de error oculta todas las notificaciones de error de Morphe.
 
@@ -177,7 +178,7 @@ El comportamiento de la aplicación no parece estar controlado por un indicador 
 El comportamiento desapareció antes en la búsqueda, por lo que puede que estén involucrados más de un indicador o que alguna de las respuestas haya sido incorrecta"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_summary">Abrir la configuración de MicroG</string>
+  <string name="microg_settings_summary">Abrir los ajustes de MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG no está instalado. Instálalo</string>
   <string name="gms_core_dialog_title">Acción necesaria</string>
@@ -229,6 +230,19 @@ Si no se modifican las optimizaciones de la batería, es posible que se produzca
 Si deseas disfrutar de una experiencia sin problemas, &lt;b&gt;desinstala&lt;/b&gt; esta versión y actualiza la aplicación a la versión recomendada: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quiero experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quiero estable</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Mostrar notificación en la aplicación para actualizaciones de parches</string>
+  <string name="morphe_patches_update_notice_entry_off">Desactivado</string>
+  <string name="morphe_patches_update_notice_entry_stable">Versiones estables</string>
+  <string name="morphe_patches_update_notice_entry_dev">Versiones estables y de desarrollo</string>
+  <string name="morphe_patches_update_notice_dialog_title">Nuevos parches disponibles</string>
+  <string name="morphe_patches_update_notice_dialog_message">Parches de Morphe &lt;b&gt;%1$s&lt;/b&gt; (actual: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nuevas funciones</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Corrección de errores</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Otros cambios</string>
+  <string name="morphe_patches_update_notice_dialog_more">…y %s más</string>
+  <string name="morphe_patches_update_notice_dialog_update">Actualizar</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Descartar</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Registro de fallos guardado en los documentos del usuario: %s</string>
   <string name="morphe_crash_log_saved">Registro de fallos guardado: %s</string>

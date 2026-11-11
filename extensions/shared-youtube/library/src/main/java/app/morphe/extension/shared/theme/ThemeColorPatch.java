@@ -252,7 +252,7 @@ public class ThemeColorPatch {
     private static int lightConfigValue = -1;
 
     /**
-     * If the color of a theme is one the user picked, and the overlay of that theme must be
+     * If the color of a theme was picked by the user, and the overlay of that theme must be
      * loaded into every context that shows it.
      */
     private static boolean useDarkOverlay;
@@ -494,7 +494,7 @@ public class ThemeColorPatch {
             }
 
             // A theme handed over is used from the next launch on,
-            // so this launch was drawn with the one handed over before.
+            // so this launch was drawn with the theme handed over before.
             launchSplashScreenThemeIndex = SharedYouTubeSettings.THEME_LAST_SPLASH_SCREEN_INDEX.get();
 
             if (splashScreenThemeApplied) {

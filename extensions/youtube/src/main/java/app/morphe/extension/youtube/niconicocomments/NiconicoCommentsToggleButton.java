@@ -33,6 +33,7 @@ import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 import app.morphe.extension.youtube.videoplayer.PlayerIcons;
@@ -221,23 +222,35 @@ public final class NiconicoCommentsToggleButton {
                     context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
             PipDismissHelper.dismissOnPip(dialog);
 
-            Button resetButton = CustomDialog.createButton(context, dialog,
-                    str("morphe_settings_reset"),
+            Button settingsButton = CustomDialog.createButton(context, dialog,
+                    str("morphe_niconico_comments_all_settings"),
                     () -> {
-                        fontSize.resetToDefault();
-                        Settings.NICONICO_COMMENTS_OPACITY.resetToDefault();
-                        travelDuration.resetToDefault();
-                        displayArea.resetToDefault();
-                        Settings.NICONICO_COMMENTS_MAX_LENGTH.resetToDefault();
-                        NiconicoCommentsController.updateViewState();
-                        // Reopen so the sliders show the default values.
-                        showQuickSettings(context);
+                        // A second tap while the sheet slides away would open the settings twice.
+                        if (quickSettingsRef.get() == dialog) {
+                            quickSettingsRef = new WeakReference<>(null);
+                            YouTubeActivityHook.openSettings(context, "morphe_niconico_comments_screen");
+                        }
                     },
                     false, true);
-            LinearLayout.LayoutParams resetParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp36);
-            resetParams.topMargin = Dim.dp16;
-            contentLayout.addView(resetButton, resetParams);
+            Button resetButton = CustomDialog.createButton(context, null,
+                    str("morphe_settings_reset"),
+                    () -> CustomDialog.create(context,
+                            str("morphe_niconico_comments_reset_title"),
+                            null, null, null,
+                            () -> {
+                                fontSize.resetToDefault();
+                                Settings.NICONICO_COMMENTS_OPACITY.resetToDefault();
+                                travelDuration.resetToDefault();
+                                displayArea.resetToDefault();
+                                Settings.NICONICO_COMMENTS_MAX_LENGTH.resetToDefault();
+                                NiconicoCommentsController.updateViewState();
+                                // Reopen so the sliders show the default values.
+                                showQuickSettings(context);
+                                dialog.dismiss();
+                            },
+                            () -> {}, null, null, true).first.show(),
+                    false, false);
+            contentLayout.addView(CustomDialog.createButtonRow(context, settingsButton, resetButton));
 
             quickSettingsRef = new WeakReference<>(dialog);
             dialog.show();

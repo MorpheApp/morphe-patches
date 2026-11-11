@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.settings.preference;
+package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
@@ -18,12 +18,11 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
+import app.morphe.extension.shared.patches.OfflineVideoExporter;
 import app.morphe.extension.shared.ui.CustomDialog;
-import app.morphe.extension.youtube.patches.OfflineVideoExporter;
 
 /**
- * Explains how saved videos are exported, and picks the folder they are exported to.
+ * Explains how saved videos and songs are exported, and picks the folder they are exported to.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public final class ExportFolderPreference extends Preference {

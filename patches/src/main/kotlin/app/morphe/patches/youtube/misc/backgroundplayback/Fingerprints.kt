@@ -11,10 +11,13 @@
 package app.morphe.patches.youtube.misc.backgroundplayback
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
@@ -155,3 +158,31 @@ internal object NewPlayerTypeEnumFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Sets the artwork of the state of the playback media session, such as the thumbnail of the playback notification,
+ * and returns the change of the state, or 0 if there is no artwork and there was none before.
+ */
+internal object MediaSessionArtworkStateFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "I",
+    parameters = listOf("Landroid/graphics/Bitmap;", "Landroid/graphics/Bitmap;"),
+    filters = listOf(
+        opcode(Opcode.IF_NEZ),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Landroid/graphics/Bitmap;", location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Landroid/graphics/Bitmap;", location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        // No change.
+        opcode(Opcode.CONST_4, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Landroid/graphics/Bitmap;"),
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Landroid/graphics/Bitmap;", location = MatchAfterImmediately()),
+        // Change of the artwork.
+        opcode(Opcode.CONST_16, location = MatchAfterImmediately())
+    ),
+    // The state class implements the interface of the state. Some versions have a class
+    // with the same method for a second state, which implements nothing.
+    custom = { _, classDef ->
+        classDef.interfaces.isNotEmpty()
+    }
+)

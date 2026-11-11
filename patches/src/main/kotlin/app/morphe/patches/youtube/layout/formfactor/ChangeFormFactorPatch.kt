@@ -78,6 +78,14 @@ val changeFormFactorPatch = patch(
             )
         }
 
+        getResponsiveContainerPropertiesFingerprint().method.addInstructions(
+            0,
+            """
+                invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->getResponsiveContainerWidth(I)I
+                move-result p1
+            """
+        )
+
         RepeatedItemSectionRendererFingerprint.let {
             it.method.apply {
                 val match = it.instructionMatches[1]

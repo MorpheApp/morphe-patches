@@ -26,12 +26,12 @@ Second \"item\" text"</string>
 Хуучин хувилбарыг ашиглахын тулд та Reddit-ийг &lt;b&gt;устгаад&lt;/b&gt;, дараа нь хуучин хувилбарыг суулгах шаардлагатай."</string>
   <string name="morphe_app_downgrade_dialog_open_app_info">Апп-ын мэдээллийг нээх</string>
   <string name="morphe_screen_ads_title">Зар</string>
-  <string name="morphe_hide_post_ads_title">Фีด дэх сурталчилгаануудыг нуух</string>
+  <string name="morphe_hide_post_ads_title">Фийд дэх сурталчилгаануудыг нуух</string>
   <string name="morphe_hide_comment_ads_title">Сэтгэгдэл дэх сурталчилгаануудыг нуух</string>
   <string name="morphe_screen_navigation_bar_title">Навигацийн мөр</string>
   <string name="morphe_hide_answers_button_title">\"Хариулт\" товчийг нуух</string>
   <string name="morphe_hide_chat_button_title">\"Чат\" товчийг нуух</string>
-  <string name="morphe_hide_create_button_title">\"Үйлэх\" товчийг нуух</string>
+  <string name="morphe_hide_create_button_title">\"Үүсгэх\" товчийг нуух</string>
   <string name="morphe_hide_discover_button_title">\"Нээх\" эсвэл \"Хамт олон\" товчийг нуух</string>
   <string name="morphe_hide_games_button_title">Тоглоомын товчийг нуух</string>
   <string name="morphe_screen_sidebar_title">Хажуугийн цэс</string>
@@ -45,7 +45,7 @@ Second \"item\" text"</string>
   <string name="morphe_copy_text_summary">Пост болон сэтгэгдэл дэх текстийг сонгох, хуулах боломжийг олгоно. Сэтгэгдлийг нуух функцийг идэвхгүй болгоно</string>
   <string name="morphe_copy_text_user_dialog_message">Текстийг хуулах функц идэвхтэй байх үед сэтгэгдэл нуух функц ажиллахгүй болно</string>
   <string name="morphe_custom_font_title">Өөрийн загварчласан фонт</string>
-  <string name="morphe_custom_font_summary">Доорх замаас өөрийн загварчласан TTF эсвэл OTF фонт файлыг ачаална. Үүнийг идэвхжүүлснээр \"Системийн фонтыг албадлах\" সেটিнг унтраана</string>
+  <string name="morphe_custom_font_summary">Доорх замаас өөрийн загварчласан TTF эсвэл OTF фонт файлыг ачаална. Үүнийг идэвхжүүлснээр \"Системийн фонтыг албадлах\" тохиргоог унтраана</string>
   <string name="morphe_custom_font_file_path_title">Өөрийн загварчласан фонт файл</string>
   <string name="morphe_custom_font_file_path_summary">TTF эсвэл OTF фонт файл сонгохын тулд дарна уу</string>
   <string name="morphe_custom_font_selected_font">Сонгосон фонт - %s</string>
@@ -56,13 +56,13 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_title">Скриншотны цонхыг идэвхгүй болгох</string>
   <string name="morphe_disable_screenshot_popup_summary">Скриншот авөх үед гарч ирэх цонхыг идэвхгүй болгоно</string>
   <string name="morphe_force_system_font_title">Системийн фонтыг албадлах</string>
-  <string name="morphe_force_system_font_summary">Reddit Sans эсвэл Roboto-ийн оронд төхөөрөмжийн системийн фонтыг ашиглана. Үүнийг идэвхжүүлснээр \"Өөрийн загварчласан фонт\" সেটিнг унтраана</string>
+  <string name="morphe_force_system_font_summary">Reddit Sans эсвэл Roboto-ийн оронд төхөөрөмжийн системийн фонтыг ашиглана. Үүнийг идэвхжүүлснээр \"Өөрийн загварчласан фонт\" тохиргоог унтраана</string>
   <string name="morphe_hide_ask_button_title">Асуух товчийг нуух</string>
   <string name="morphe_hide_ask_button_summary">Хайлтын хэсэг дэх Ask товчийг нуух</string>
   <string name="morphe_hide_communities_shelf_title">Комьюнити хэсгийг нуух</string>
   <string name="morphe_hide_communities_shelf_summary">Subreddit-уудын холбоотой эсвэл санал болгож буй комьюнити хэсгийг нууна</string>
   <string name="morphe_hide_trending_shelves_title">Трэнд хэсгийг нуух</string>
-  <string name="morphe_hide_trending_shelves_summary">Фeed болон хайлтын саналуудаас Трэнд хэсгийг нууна</string>
+  <string name="morphe_hide_trending_shelves_summary">Фийд болон хайлтын саналуудаас Трэнд хэсгийг нууна</string>
   <string name="morphe_remove_notification_dialog_title">Мэдэгдлийн зөвлөмжийн цонхыг устгах</string>
   <string name="morphe_remove_notification_dialog_summary">Subreddit-д зочилөх үед мэдэгдлийн санал болгох цонхыг автоматаар хаах</string>
   <string name="morphe_high_quality_avatars_title">Өндөр чанартай аватарууд</string>
@@ -138,9 +138,9 @@ Second \"item\" text"</string>
   <string name="morphe_open_links_externally_title">Холбоосуудыг гаднаас нээх</string>
   <string name="morphe_open_links_externally_summary">Холбоосыг апп доторх хөтөч биш, таны үндсэн хөтөч дээр нээх</string>
   <string name="morphe_remember_collapsed_comments_title">Нугалаа сэтгэгдлийг санаж байх</string>
-  <string name="morphe_remember_collapsed_comments_summary">Таны нугалаа сэтгэгдлүүдโพст-ыг дахин нээх үед нугалаа хэвээр байна</string>
+  <string name="morphe_remember_collapsed_comments_summary">Таны нугалсан сэтгэгдлүүд постыг дахин нээх үед нугалсан хэвээр байна</string>
   <string name="morphe_app_icon_title">Аппликейшны дүрс</string>
   <string name="morphe_app_icon_choose_title">Апп-ын дүрс сонгох</string>
-  <string name="morphe_app_icon_default">Өгөгдлийн</string>
+  <string name="morphe_app_icon_default">Үндсэн</string>
   <string name="morphe_app_icon_unknown">Тодорхойгүй</string>
 </resources>

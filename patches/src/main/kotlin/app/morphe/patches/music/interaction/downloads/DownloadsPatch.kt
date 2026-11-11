@@ -9,8 +9,10 @@ package app.morphe.patches.music.interaction.downloads
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.cloneParameters
+import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
@@ -21,7 +23,9 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
+import app.morphe.patches.shared.misc.downloads.exportDownloadFolderPreference
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
 import app.morphe.patches.shared.misc.fix.proto.protoDefaultInstanceFingerprint
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
@@ -36,8 +40,12 @@ import app.morphe.patches.youtube.interaction.downloads.ResolveCommandFingerprin
 import app.morphe.patches.youtube.interaction.downloads.UpdateOfflineVideoPolicyFingerprint
 import app.morphe.patches.youtube.interaction.downloads.playerResponseGetterFingerprint
 import app.morphe.patches.youtube.interaction.downloads.playerResponseModelFromBytesFingerprint
+import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -50,6 +58,8 @@ private const val SONG_MENU_FILTER =
     "Lapp/morphe/extension/music/patches/components/SongMenuFilter;"
 private const val PLAYLIST_PAGE_FILTER =
     "Lapp/morphe/extension/music/patches/components/PlaylistPageFilter;"
+private const val EXPORT_MENU_ITEM =
+    "Lapp/morphe/extension/music/patches/downloads/ExportMenuItem;"
 private const val GET_GENERATED_REGISTRY =
     "Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;"
 
@@ -69,6 +79,7 @@ private val downloadsResourcePatch = patch {
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     ListPreference("morphe_download_mode"),
+                    exportDownloadFolderPreference(),
                     SwitchPreference("morphe_external_downloader_menu", summary = true),
                     TextPreference(
                         "morphe_external_downloader_name",
@@ -84,7 +95,8 @@ private val downloadsResourcePatch = patch {
 val downloadsPatch = patch(
     name = "Downloads",
     description = "Adds support to download songs, albums, and playlists using the in-app " +
-        "download button, either inside YouTube Music or with an external downloader app.",
+        "download button, either inside YouTube Music or with an external downloader app, " +
+        "and exports songs and videos saved by the app to the device.",
 ) {
     dependsOn(
         downloadsResourcePatch,
@@ -282,5 +294,81 @@ val downloadsPatch = patch(
                 )
             }
         }
+
+        // region Export to device.
+
+        // Add the export item to the menus of the songs and videos the app saved.
+        MusicMenuBottomSheetItemsFingerprint.let {
+            val menuField = it.instructionMatches.first().fieldReference
+            val menuItemType = it.instructionMatches[3].instruction.getReference<TypeReference>()!!.type
+            val addItemMethod = it.instructionMatches.last().methodReference
+            val itemsType = addItemMethod.definingClass
+
+            val addExportMenuItemMethod = ImmutableMethod(
+                it.classDef.type,
+                "patch_addExportMenuItem",
+                listOf(
+                    ImmutableMethodParameter(itemsType, null, null),
+                    ImmutableMethodParameter("Ljava/lang/Object;", null, null)
+                ),
+                "V",
+                AccessFlags.PRIVATE.value or AccessFlags.STATIC.value,
+                null,
+                null,
+                MutableMethodImplementation(4),
+            ).toMutable().apply {
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        invoke-static { p1 }, $EXPORT_MENU_ITEM->getExportMenuItem(Ljava/lang/Object;)[B
+                        move-result-object v0
+                        if-eqz v0, :no_export_item
+                        sget-object v1, ${protoDefaultInstance(menuItemType)}
+                        invoke-static { v1, v0 }, ${parseByteArrayMethodRef.get()!!}
+                        move-result-object v0
+                        invoke-virtual { p0, v0 }, $addItemMethod
+                        :no_export_item
+                        return-void
+                    """
+                )
+            }
+            it.classDef.methods.add(addExportMenuItemMethod)
+
+            // The method overwrites the register of the fragment, which is needed for the menu renderer.
+            it.method.cloneParameters().apply {
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                    val itemsRegister = getInstruction<OneRegisterInstruction>(index).registerA
+                    val menuRegister = findFreeRegister(index, itemsRegister)
+
+                    // The loop jumps to the return when it ends, so the code goes at its label.
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            iget-object v$menuRegister, p0, $menuField
+                            invoke-static { v$itemsRegister, v$menuRegister }, $addExportMenuItemMethod
+                        """
+                    )
+                }
+            }
+        }
+
+        // The export item has no command, so the app only closes the menu when it is clicked.
+        MenuItemClickFingerprint.let {
+            val menuItemField = it.instructionMatches.first().fieldReference
+
+            it.method.apply {
+                val register = findFreeRegister(0)
+
+                addInstructions(
+                    0,
+                    """
+                        iget-object v$register, p0, $menuItemField
+                        invoke-static { v$register }, $EXPORT_MENU_ITEM->onMenuItemClick(Ljava/lang/Object;)V
+                    """
+                )
+            }
+        }
+
+        // endregion
     }
 }

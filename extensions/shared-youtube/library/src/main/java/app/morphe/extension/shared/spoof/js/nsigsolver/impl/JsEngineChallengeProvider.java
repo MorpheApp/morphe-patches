@@ -21,7 +21,6 @@ import java.util.concurrent.Executors;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport;
 import app.morphe.extension.shared.spoof.js.nsigsolver.common.CacheError;
 import app.morphe.extension.shared.spoof.js.nsigsolver.common.ScriptUtils;
@@ -139,7 +138,7 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
                 }
                 // Initial JavaScript sandbox check can incorrectly pass on some weird devices.
                 String message = "JavaScript engine error, warmup: " + warmup;
-                if (BaseSettings.DEBUG.get()) {
+                if (Logger.isDebugEnabled()) {
                     Logger.printException(() -> message, jsError);
                 } else {
                     Logger.printInfo(() -> message, jsError);
@@ -170,7 +169,8 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
                 // Declare a global function
                 runJS(commonStdin, true);
             } catch (Exception e) {
-                // ignore warmup errors
+                // The challenges run the script again.
+                Logger.printDebug(() -> "JavaScript warm up failure", e);
             }
         }
     }

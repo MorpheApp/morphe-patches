@@ -32,7 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">Setările Morphe au fost resetate la valorile implicite</string>
   <string name="morphe_settings_import_success">Au fost importate %s setări</string>
   <string name="morphe_settings_import_failure_parse">Importare eșuată: %s</string>
-  <string name="morphe_settings_navigate_up">Navighează în sus</string>
+  <string name="morphe_settings_navigate_up">Navigare în sus</string>
   <string name="morphe_settings_search_hint">Caută în setări</string>
   <string name="morphe_settings_screen_info_title">Despre</string>
   <string name="morphe_settings_search_no_results_title">Nu s-au găsit rezultate pentru „%s”</string>
@@ -92,14 +92,15 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
-  <string name="morphe_settings_about_links_licenses">Avertismente licen</string>
+  <string name="morphe_settings_about_links_licenses">Notificări de licență</string>
   <string name="morphe_settings_about_licenses_loading">Se încarcă</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depanare</string>
   <string name="morphe_debug_screen_summary">Configurați opțiuni avansate pentru dezvoltatori și jurnale de diagnostic</string>
-  <string name="morphe_debug_title">Activați jurnalizarea depanării</string>
-  <string name="morphe_debug_stacktrace_title">Urmărirea stivei în jurnalul de depanare</string>
-  <string name="morphe_debug_stacktrace_summary">Include urmăririle stivei în jurnalele de depanare pentru a ajuta la identificarea erorilor</string>
+  <string name="morphe_debug_level_title">Jurnal depanare</string>
+  <string name="morphe_debug_level_entry_disabled">Dezactivat</string>
+  <string name="morphe_debug_level_entry_debug">Depanare</string>
+  <string name="morphe_debug_level_entry_verbose">Detaliat</string>
   <string name="morphe_debug_toast_on_error_title">Arată toast la eroare Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Oprirea toasturilor de eroare ascunde toate notificările de eroare Morphe.
 
@@ -135,9 +136,9 @@ Nu veți fi notificat de niciun eveniment neașteptat"</string>
   <string name="morphe_debug_feature_flags_manager_action_force_on">Forțează activ</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Blochează</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Elimină</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Steagurile au fost salvate</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Steagurile au fost resetați</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Steagurile au fost copiate în clipboard</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Flagurile au fost salvate</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Flagurile au fost resetate</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Flagurile au fost copiate în clipboard</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Repornește aplicația pentru a utiliza această setare</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Export și import</string>
   <string name="morphe_debug_feature_flags_manager_import_success">Flaguri de funcționalitate importate: %s</string>
@@ -177,7 +178,7 @@ Comportamentul aplicației nu pare să fie controlat de un flag"</string>
 Comportamentul a dispărut mai devreme în căutare, deci poate fi implicat mai mult de un flag sau unul dintre răspunsuri a fost greșit"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_summary">Deschide setârii MicroG</string>
+  <string name="microg_settings_summary">Deschide setările MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG nu este instalat. Instalați-l</string>
   <string name="gms_core_dialog_title">Acțiune necesară</string>
@@ -198,14 +199,14 @@ Apasă pentru a o dezinstala, apoi redeschide această aplicație și instaleaz�
 Uitați-vă la ghidul „Don't kill my app” pentru telefonul dvs. și aplicați instrucțiunile pentru instalarea MicroG.
 
 Acest lucru este necesar pentru ca aplicația să funcționeze"</string>
-  <string name="gms_core_dialog_open_website_text">Deschide website </string>
+  <string name="gms_core_dialog_open_website_text">Deschide site-ul web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optimizările bateriei pentru MicroG trebuie dezactivate pentru a preveni problemele.
 
 Dezactivarea optimizărilor bateriei pentru MicroG nu va afecta negativ utilizarea bateriei.
 
 Apăsați butonul continuare și permiteți modificările de optimizare"</string>
   <string name="gms_core_dialog_continue_text">Continuă</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Afiřează dialogul de optimizare a bateriei MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Afișează dialogul de optimizare a bateriei MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Dezactivarea acestei opțiuni va ascunde solicitarea de optimizare a bateriei MicroG.
 
 Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următoarele probleme:
@@ -229,6 +230,19 @@ Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următo
 Dacă doriți o experiență cât mai bună, atunci &lt;b&gt;dezinstalați&lt;/b&gt; această aplicație și actualizați versiunea recomandată a aplicației ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Vreau experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Vreau stabil</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Afișează notificări în aplicație pentru actualizările de patch-uri</string>
+  <string name="morphe_patches_update_notice_entry_off">Oprit</string>
+  <string name="morphe_patches_update_notice_entry_stable">Versiuni stabile</string>
+  <string name="morphe_patches_update_notice_entry_dev">Versiuni stable și dev</string>
+  <string name="morphe_patches_update_notice_dialog_title">Patch-uri noi disponibile</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (actual: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Funcții noi</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Corectări de bug-uri</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Alte modificări</string>
+  <string name="morphe_patches_update_notice_dialog_more">…și încă %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Actualizează</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Anulare</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Jurnal de erori salvat în documentele utilizatorului: %s</string>
   <string name="morphe_crash_log_saved">Jurnal de erori salvat: %s</string>

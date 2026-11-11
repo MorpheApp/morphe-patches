@@ -30,7 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import">I-import</string>
   <string name="morphe_settings_import_copy">Kopyahin</string>
   <string name="morphe_settings_import_reset">Ibinalik sa default ang mga pagpipilian sa Morphe</string>
-  <string name="morphe_settings_import_success">Na-import %s na mga pagpipilian</string>
+  <string name="morphe_settings_import_success">Na-import ang %s na setting</string>
   <string name="morphe_settings_import_failure_parse">Nabigong ma-import: %s</string>
   <string name="morphe_settings_navigate_up">Mag-navigate pataas</string>
   <string name="morphe_settings_search_hint">Maghanap sa mga pagpipilian</string>
@@ -39,7 +39,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_no_results_summary">Subukan ang ibang keyword</string>
   <string name="morphe_settings_search_recent_searches">Mga kamakailang mga paghahanap</string>
   <string name="morphe_settings_search_remove_message">Alisin mula sa kasaysayan sa paghahanap?</string>
-  <string name="morphe_settings_search_remove">Alisin mula sa kasaysayan sa paghahanap</string>
+  <string name="morphe_settings_search_remove">Alisin sa kasaysayan ng paghahanap</string>
   <string name="morphe_settings_search_clear_history">Alisin ang kasaysayan sa paghahanap</string>
   <string name="morphe_settings_search_clear_history_message">Sigurado ka bang nais mong alisin ang lahat ng kasaysayan sa paghahanap?</string>
   <string name="morphe_settings_search_tips_title">Mga Pahiwatig sa Paghahanap</string>
@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_summary">Upang i-save ang kasaysayan sa paghahanap, mag-type ng isang paghahanap at pindutin ang Enter</string>
   <string name="morphe_settings_search_history_title">Ipakita ang pagpipilian ng kasaysayan sa paghahanap</string>
   <string name="morphe_settings_name_title">Pangalan ng mga setting ng Morphe</string>
-  <string name="morphe_settings_name_default_item">Panimula</string>
+  <string name="morphe_settings_name_default_item">Default</string>
   <string name="morphe_settings_name_entry_2">Mga dagdag</string>
   <string name="morphe_settings_name_entry_3">Mga pagsasaayos</string>
   <string name="morphe_settings_name_entry_4">Oras ng pag-morph</string>
@@ -85,7 +85,7 @@ Upang isalin ang mga bagong wika o pagbutihin ang mga kasalukuyang pagsasalin, b
   <string name="morphe_settings_about_links_translations">Mga Pagsasalin</string>
   <string name="morphe_settings_about_links_credits">Kredito</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Napapanahon</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Mayroon nang update</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">May available na update</string>
   <string name="morphe_settings_about_contributors_current">Kasalukuyang pagpapaunlad</string>
   <string name="morphe_settings_about_contributors_prior">Paunang pag-unlad</string>
   <string name="morphe_settings_about_links_morphe">Aktibong pag-unlad</string>
@@ -97,14 +97,15 @@ Upang isalin ang mga bagong wika o pagbutihin ang mga kasalukuyang pagsasalin, b
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugging</string>
   <string name="morphe_debug_screen_summary">I-configure ang mga advanced na opsyon ng developer at diagnostic logs</string>
-  <string name="morphe_debug_title">I-enable ang debug logging</string>
-  <string name="morphe_debug_stacktrace_title">Batakan ng log ng debug</string>
-  <string name="morphe_debug_stacktrace_summary">Kasama ang mga stack trace sa debug logs upang matulungan na matukoy ang mga error</string>
+  <string name="morphe_debug_level_title">Tala ng debug</string>
+  <string name="morphe_debug_level_entry_disabled">Nakapatay</string>
+  <string name="morphe_debug_level_entry_debug">Debug</string>
+  <string name="morphe_debug_level_entry_verbose">Detalyado</string>
   <string name="morphe_debug_toast_on_error_title">Ipakita ang abiso sa pagkakamali sa Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Itinatago ang lahat ng abiso ng pagkakamali sa Morphe kung nakapatay ang mga abiso ng pagkakamali.
 
 Hindi ka aabisuhan ng anumang mga hindi inaasahang pangyayari"</string>
-  <string name="morphe_debug_export_logs_title">I-export ang mga tala ng debug</string>
+  <string name="morphe_debug_export_logs_title">I-export ang mga log ng debug</string>
   <string name="morphe_debug_export_logs_summary">I-export ang mga log ng debug ng Morphe</string>
   <string name="morphe_debug_export_logs_success">Matagumpay na na-export ang mga log ng debug</string>
   <string name="morphe_debug_export_logs_failed">Nabigong i-export ang mga log ng debug</string>
@@ -161,7 +162,7 @@ Tanging ang mga flag na na-hit ng app at hindi kasalukuyang pinilit bukas ang ma
 %2$s na mga flag ang natitira, %3$s sa mga ito ang hinarang para sa hakbang na ito.
 
 I-restart ang app, tingnan kung naroroon pa rin ang pag-uugali, pagkatapos ay sagutin sa ibaba"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Nangyayari ang paghahanap ng flag</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Ginagawa ang paghahanap ng flag</string>
   <string name="morphe_debug_feature_flags_manager_bisect_present">Naroroon ang pag-uugali</string>
   <string name="morphe_debug_feature_flags_manager_bisect_absent">Hindi naroroon ang pag-uugali</string>
   <string name="morphe_debug_feature_flags_manager_bisect_cancel">Kanselahin ang binary search</string>
@@ -228,6 +229,19 @@ Kung hindi nagbago ang pag-optimize sa baterya, maaaring makaranas ka ng:
 &lt;br/&gt;&lt;br/&gt; Kung gusto mo ang pinakawalang bagabag na karanasan, pagkatapos ay &lt;b&gt;burahin&lt;/b&gt; ito at i-patch ang inirerekomendang bersyon ng aplikasyon ng ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Gusto ko ng pang-eksperimento</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Gusto ko ng katatagan</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Ipakita ang in-app notification para sa mga patch update</string>
+  <string name="morphe_patches_update_notice_entry_off">Naka-off</string>
+  <string name="morphe_patches_update_notice_entry_stable">Mga stable na release</string>
+  <string name="morphe_patches_update_notice_entry_dev">Mga stable at dev release</string>
+  <string name="morphe_patches_update_notice_dialog_title">Magagamit ang mga bagong patch</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (kasalukuyan: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Mga bagong feature</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Mga bug fix</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Iba pang mga pagbabago</string>
+  <string name="morphe_patches_update_notice_dialog_more">…at %s pa</string>
+  <string name="morphe_patches_update_notice_dialog_update">I-update</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">I-dismiss</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Na-save ang crash log sa mga dokumento ng gumagamit: %s</string>
   <string name="morphe_crash_log_saved">Na-save ang crash log: %s</string>

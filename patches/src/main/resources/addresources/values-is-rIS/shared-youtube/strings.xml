@@ -22,16 +22,16 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_1">Óvirkt</string>
   <string name="morphe_splash_screen_style_entry_2">Litur</string>
   <string name="morphe_splash_screen_style_entry_3">Morphe Litir</string>
-  <string name="morphe_splash_screen_style_entry_4">Einstafengur</string>
+  <string name="morphe_splash_screen_style_entry_4">Einlitur</string>
   <string name="morphe_splash_screen_style_entry_5">Morphe Einlitur</string>
   <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_new_indicator_days_title">Áhersla á nýjar stillingar</string>
-  <string name="morphe_settings_new_indicator_days_summary">Fjöldi daga sem punktur birtist við stillingar og valmögla sem bættust við í uppfærslu</string>
+  <string name="morphe_settings_new_indicator_days_summary">Fjöldi daga sem punktur birtist við stillingar og valkosti sem bættust við í uppfærslu</string>
   <string name="morphe_settings_new_indicator_days_off">Slökkt</string>
   <!-- misc.initialization.initializationPatch -->
-  <string name="morphe_restart_first_run">Endurræstu til að lokar á uppsetninguna</string>
+  <string name="morphe_restart_first_run">Endurræstu til að ljúka uppsetningunni</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
-  <string name="morphe_custom_branding_name_title">App nafn</string>
+  <string name="morphe_custom_branding_name_title">Heiti forrits</string>
   <!-- layout.theme.baseThemePatch -->
   <string name="morphe_theme_color_dark_title">Bakgrunnur fyrir dökkt þema</string>
   <string name="morphe_theme_color_dark_entry_2">Hreint svart</string>
@@ -41,7 +41,7 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_entry_11">Dökkblátt</string>
   <string name="morphe_theme_color_dark_entry_12">Dökkgrænn</string>
   <string name="morphe_theme_color_dark_entry_13">Dökkgulur</string>
-  <string name="morphe_theme_color_dark_entry_14">Dökkppelsínugult</string>
+  <string name="morphe_theme_color_dark_entry_14">Dökkappelsínugult</string>
   <string name="morphe_theme_color_dark_entry_15">Dökkrautt</string>
   <string name="morphe_theme_color_dark_custom_title">Sérsniðinn dökkur bakgrunnur</string>
   <string name="morphe_theme_color_dark_custom_summary">Stilltu bakgrunnslit á dimmu þema</string>
@@ -52,24 +52,24 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">Material You (Þriðja)</string>
   <string name="morphe_theme_color_custom_entry">Sérsniðið</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">Niðurstöður</string>
-  <string name="morphe_download_mode_title">Sniðmát niðurhals</string>
+  <string name="morphe_external_downloader_screen_title">Niðurhal</string>
+  <string name="morphe_download_mode_title">Niðurhalsstilling</string>
   <string name="morphe_download_mode_entry_default">Sjálfgefið</string>
   <string name="morphe_download_mode_entry_in_app">Niðurhal í forriti</string>
-  <string name="morphe_download_mode_entry_external">Ytri niðurhalstjóri</string>
+  <string name="morphe_download_mode_entry_external">Ytra niðurhalsforrit</string>
   <string name="morphe_external_downloader_name_title">Nafn pakkans fyrir niðurhal</string>
-  <string name="morphe_external_downloader_name_summary">Nafn pakkans á uppsettu niðurhalasforritinu þínu</string>
+  <string name="morphe_external_downloader_name_summary">Pakkanafn uppsetts niðurhalsforrits</string>
   <string name="morphe_external_downloader_other_item_hint">Sláðu inn pakkarnafn</string>
   <string name="morphe_external_downloader_other_item">Annað</string>
-  <string name="morphe_external_downloader_not_found_title">App er ekki uppsett</string>
+  <string name="morphe_external_downloader_not_found_title">Forrit er ekki uppsett</string>
   <string name="morphe_external_downloader_not_installed_warning">%s er ekki uppsett. Vinsamlegast settu það upp</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"Gat ekki fundið uppsett forrit með pakkanafnið: %s
+  <string name="morphe_external_downloader_package_not_found_warning">"Gat ekki fundið uppsett forrit með pakkanafninu: %s
 
-Staðfestu að pakkanafnið er rétt og að forritið er uppsett"</string>
+Staðfestu að pakkanafnið sé rétt og að forritið sé uppsett"</string>
   <string name="morphe_external_downloader_empty_warning">Pakkarnafn má ekki vera tómt</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Sérsniðin</string>
-  <string name="morphe_custom_branding_icon_title">App tákn</string>
+  <string name="morphe_custom_branding_icon_title">Tákn forrits</string>
   <string name="morphe_custom_branding_icon_entry_1">Upprunalegt</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe svartur</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe dökkur</string>
@@ -90,19 +90,19 @@ Staðfestu að pakkanafnið er rétt og að forritið er uppsett"</string>
 
 Til að breyta tákninu alls staðar skaltu keyra plástra aftur og breyta plástravalkostinum 'Forritstákn'."</string>
   <string name="morphe_custom_branding_notification_icon_title">Tákn tilkynninga</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Passa við tákn app</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Passa við tákn forrits</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe spila</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe tilkynning</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Skjávarpsferillinn þinn er ekki vistuð.&lt;br&gt;&lt;br&gt;Þetta er líklega vegna DNS augnablokks eða netfars.&lt;br&gt;&lt;br&gt;Til að laga þetta, setjðu &lt;b&gt;s.youtube.com&lt;/b&gt; á hvítlista eða slökktu á öllum DNS-blockers og proxy-um</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Áhorfssagan þín er ekki vistuð.&lt;br&gt;&lt;br&gt;Þetta er líklega vegna DNS-auglýsingablokkara eða umboðs.&lt;br&gt;&lt;br&gt;Til að laga þetta, settu &lt;b&gt;s.youtube.com&lt;/b&gt; á hvítlista eða slökktu á öllum DNS-blokkurum og umboðum</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ekki sýna aftur</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Spofa myndstreymi</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Stilltu klientakupunni til að koma í veg fyrir vandamál með spilun</string>
-  <string name="morphe_spoof_video_streams_summary">"Lagfærir vandamál með spilun fyrir flesta notendur með því að krefjast samhæfra streymis myndbandsins
+  <string name="morphe_spoof_video_streams_screen_summary">Stilltu biðlaraforgerfingu til að koma í veg fyrir spilunarvandamál</string>
+  <string name="morphe_spoof_video_streams_summary">"Lagfærir vandamál með spilun fyrir flesta notendur með því að krefjast samhæfs myndstreymis
 
-Ef þú ert YouTube Premium notandi gæti þessi stilling verið óþarf"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">Ekki tókst að sækja klientastreymi</string>
+Ef þú ert YouTube Premium notandi gæti þessi stilling ekki verið nauðsynleg"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Ekki tókst að sækja biðlarastrauma</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_client_failing_dialog_title">Sjálfgefinn biðlari virkar ekki</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s virkaði ekki nokkrum sinnum í röð, en %2$s gerði það.
@@ -113,17 +113,17 @@ Gera %2$s að sjálfgefnum biðlara?"</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Reyndu að virkja: Spoof myndstreymi > Android VR innskráning</string>
-  <string name="morphe_spoof_video_streams_client_type_title">Sjálfgefið tengiliður</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Sjálfgefinn biðlari</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR innskráning</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Ekki skráð inn á Android VR. Ýttu hér til að skrá þig inn</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR krefst sérstaks skráningarferlis. Ýttu hér til að halda áfram</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Skráður inn á Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Til að nota þessa eiginleika skaltu breyta \'Sjálfgefa klient\' í Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Til að nota þennan eiginleika skaltu breyta \'Sjálfgefinn biðlari\' í Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Skrá þig inn á Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Að skrá þig inn á Android VR getur lagað vandamál með spilun fyrir suma notendur
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Innskráning á Android VR getur lagað spilunarvandamál hjá sumum notendum
 
-Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
+Til að skrá þig inn ýttu á Halda áfram hér að neðan"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Skrá út</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Leiðbeiningar</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
@@ -134,22 +134,22 @@ Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
 3. Skráðu þig inn á Google ef þess er óskað. Ef þú ert með fleiri reikninga skaltu velja þennan YouTube reikning
 4. Ýttu á 'Leyfa YouTube VR' aðgang
 5. Snúðu aftur á þetta forrit eftir að hafa náð 'Tæki tengt' skilaboðinu"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ekki tókst að gefa út virkjunar kóða</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ekki tókst að gefa út staðfestingartakann</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ekki tókst að fá virkjunarkóða</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ekki tókst að fá staðfestingartákn</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Skráning tókst</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Staðfesting vistað
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Auðkenning vistuð
 
-• Morphe stillingar munu ekki flytja / flytja Android VR staðfestingu
-• Ef þetta forrit er ekki notað í 6 mánuði mun Google fjarlægja þessa staðfestingu
-• Þú þarft að skrá þig inn aftur ef þú breytir Google lykilorðinu þínu eða hættir þessu tæki úr Google stillingum þínum"</string>
-  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er tímabundið ekki í boði (API tímdi út)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR innskráning er runnin út, prófaðu að skrá þig inn á VR aftur</string>
+• Morphe stillingar flytja ekki út eða inn Android VR auðkenningu
+• Ef þetta forrit er ekki notað í 6 mánuði mun Google fjarlægja þessa auðkenningu
+• Þú þarft að skrá þig inn aftur ef þú breytir Google lykilorðinu þínu eða afskráir þetta tæki í Google stillingum þínum"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er tímabundið ekki tiltækt (API rann út á tíma)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Innskráning á Android VR er runnin út, reyndu að skrá þig inn á VR aftur</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 er tímabundið ekki tiltækt (staða %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 er tímabundið ekki í boði</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Ekki hægt að skrá inn á VR, vefsíðu staðfesting var ekki samþykkja</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Ekki hægt að skrá inn á VR, staðfesting á vefsíðu var ekki samþykkt</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ekki hægt að skrá inn á VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Skráð út af Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Ógild VR innskráningartakinn, prófaðu að skrá þig inn á VR aftur</string>
+  <string name="morphe_oauth2_toast_invalid">Ógilt VR innskráningartákn, reyndu að skrá þig inn á VR aftur</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Margmiðlunarstýringar tilkynninga</string>
   <string name="morphe_notification_media_screen_summary">Sérsníddu spilunarstýringarnar sem birtast á læsiskjánum þínum og tilkynningaspjaldinu</string>
@@ -157,78 +157,80 @@ Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Felur fyrri og næstu hnappa í spilunartilkynningu, á læsiskjá og í heyrnartólstýringum</string>
   <string name="morphe_disable_notification_media_seekbar_title">Slökkva á framvindustiku</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Kemur í veg fyrir að hægt sé að draga framvindustikuna á læsiskjánum og tilkynningaspjaldinu</string>
-  <string name="morphe_seek_notification_media_prev_next_title">Leita með takköm fyrir fyrra og næsta</string>
-  <string name="morphe_seek_notification_media_prev_next_summary">Breytir stjórnun fyrir margmiðlunartilkynningu, lásaskjá og heyrnartól til að leisa frekar en að skipta um myndbönd</string>
-  <string name="morphe_seek_notification_media_rewind_length_title">Tilbaka skref</string>
-  <string name="morphe_seek_notification_media_rewind_length_summary">Sekúndur til að baka með fyrra takkanum</string>
-  <string name="morphe_seek_notification_media_fast_forward_length_title">Fram á við skref</string>
-  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekúndur til að fara fram á við með næsta takkanum</string>
-  <string name="morphe_seek_notification_media_length_invalid">Leisir lengd verður að vera á milli 1 og %s sekúndna. Notar sjálfgefið</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Leita með fyrra og næsta hnöppum</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Breytir stýringum fyrir margmiðlunartilkynningu, læsiskjá og heyrnartól þannig að þær leiti í myndbandinu í stað þess að skipta um myndbönd</string>
+  <string name="morphe_seek_notification_media_rewind_length_title">Skref til baka</string>
+  <string name="morphe_seek_notification_media_rewind_length_summary">Sekúndur til að spóla til baka með fyrri hnappnum</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_title">Skref áfram</string>
+  <string name="morphe_seek_notification_media_fast_forward_length_summary">Sekúndur til að spóla áfram með næsta hnappi</string>
+  <string name="morphe_seek_notification_media_length_invalid">Leitarlengd verður að vera á bilinu 1 til %s sekúndur. Notar sjálfgefið gildi</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Slökktu á QUIC samskiptareglum</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Slökktu á DRC hljóðrás</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
-  <string name="morphe_force_original_audio_title">Neysla á upprunalegu hljóðrás</string>
-  <string name="morphe_force_original_audio_summary">Spilar alltaf upprunalega hljóðrás myndbandsins stað þess sem eru dubbuð</string>
+  <string name="morphe_force_original_audio_title">Nota upprunalega hljóðrás</string>
+  <string name="morphe_force_original_audio_summary">Spilar alltaf upprunalega hljóðrás myndbandsins í stað talsettra útgáfa</string>
   <!-- misc.audio.silence.skipSilencePatch -->
-  <string name="morphe_skip_silence_title">Sleppa þögn</string>
+  <string name="morphe_skip_silence_title">Sleppa þögnum</string>
   <string name="morphe_skip_silence_summary">Sleppir sjálfkrafa hljóðlátum hléum í myndbandshljóði</string>
   <string name="morphe_skip_silence_minimum_pause_title">Lágmarkslengd hlés</string>
   <string name="morphe_skip_silence_minimum_pause_summary">Aðeins hlé sem eru að minnsta kosti svona löng verða stytt. Tekur gildi þegar næsta myndband byrjar</string>
   <!-- misc.proxy.networkProxyPatch -->
-  <string name="morphe_proxy_screen_title">Staðanets umboð</string>
-  <string name="morphe_proxy_screen_summary">Leiða samsetningu nettbeiðna í gegnum umboð</string>
+  <string name="morphe_proxy_screen_title">Netumboð</string>
+  <string name="morphe_proxy_screen_summary">Beina studdum netbeiðnum í gegnum umboðsþjón</string>
   <string name="morphe_proxy_enabled_title">Virkja umboð</string>
-  <string name="morphe_proxy_enabled_summary">Rútar netbeiðnir í gegnum stilltan HTTP eða HTTPS staðsettu netþjón</string>
-  <string name="morphe_proxy_host_title">Proxy netfang</string>
-  <string name="morphe_proxy_host_summary">Netfang eða IP-tölu staðsettu netþjónsins</string>
-  <string name="morphe_proxy_port_title">Proxy port</string>
-  <string name="morphe_proxy_port_summary">Portur staðsettu netþjónsins</string>
-  <string name="morphe_proxy_https_title">Nota HTTPS proxy</string>
-  <string name="morphe_proxy_https_summary">Nota HTTPS til að tengja við staðsettan netþjón, í stað HTTP</string>
-  <string name="morphe_proxy_auth_enabled_title">Proxy auðkenning</string>
-  <string name="morphe_proxy_auth_enabled_summary">Sendir Basic auðkenningu með proxy beiðnum</string>
-  <string name="morphe_proxy_auth_username_title">Proxy notendanafn</string>
-  <string name="morphe_proxy_auth_username_summary">Notendanafn fyrir Basic proxy auðkenningu</string>
-  <string name="morphe_proxy_auth_password_title">Proxy lykilorð</string>
-  <string name="morphe_proxy_auth_password_summary">Lykilorð fyrir Basic proxy auðkenningu</string>
-  <string name="morphe_proxy_allow_direct_fallback_title">Leyfa beina afturköllun</string>
-  <string name="morphe_proxy_allow_direct_fallback_summary">Tengist beint ef proxy virkar ekki</string>
+  <string name="morphe_proxy_enabled_summary">Beinir studdum netbeiðnum í gegnum stilltan HTTP- eða HTTPS-umboðsþjón</string>
+  <string name="morphe_proxy_host_title">Proxy-þjónn</string>
+  <string name="morphe_proxy_host_summary">Lén eða IP-tala umboðsþjónsins</string>
+  <string name="morphe_proxy_port_title">Proxy-gátt</string>
+  <string name="morphe_proxy_port_summary">Gátt umboðsþjónsins</string>
+  <string name="morphe_proxy_https_title">Nota HTTPS-umboð</string>
+  <string name="morphe_proxy_https_summary">Nota HTTPS til að tengjast umboðsþjóninum í stað HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Auðkenning umboðs</string>
+  <string name="morphe_proxy_auth_enabled_summary">Sendir Basic-auðkenningu með umboðsbeiðnum</string>
+  <string name="morphe_proxy_auth_username_title">Notandanafn umboðs</string>
+  <string name="morphe_proxy_auth_username_summary">Notandanafn fyrir Basic-auðkenningu umboðs</string>
+  <string name="morphe_proxy_auth_password_title">Lykilorð umboðs</string>
+  <string name="morphe_proxy_auth_password_summary">Lykilorð fyrir Basic-auðkenningu umboðs</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Leyfa beina tengingu sem varaleið</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Tengist beint ef umboðið virkar ekki</string>
   <!-- ad.hideFullscreenAdsPatch -->
-  <string name="morphe_hide_fullscreen_ads_title">Falir auglýsingar á fullri skjánum</string>
+  <string name="morphe_hide_fullscreen_ads_title">Fela auglýsingar á öllum skjánum</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_force_original_audio_not_available">Til að nota þennan eiginleika, breyttu \'Spoofa myndstrauma\' í hvaða biðlara sem er nema \'Android Studio\' og \'Android VR Downgraded\'</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Hreinsa deilingshlökki</string>
-  <string name="morphe_sanitize_sharing_links_summary">Fjarlægir rekja breytur úr deilingshlökkum</string>
-  <string name="morphe_replace_music_with_youtube_title">Breyta deilingshlökkum í youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary">Breyta music.youtube.com í youtube.com í deilingshlökkum</string>
-  <string name="morphe_replace_links_with_shortener_title">Breyta deilingshlökkum í youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Neysla myndbanda til að nota styttri youtu.be URL snið</string>
+  <string name="morphe_sanitize_sharing_links_title">Hreinsa deilitengla</string>
+  <string name="morphe_sanitize_sharing_links_summary">Fjarlægir rekjubreytur úr deilitenglum</string>
+  <string name="morphe_replace_music_with_youtube_title">Breyta deilitenglum í youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Breytir music.youtube.com í youtube.com í deilitenglum</string>
+  <string name="morphe_replace_links_with_shortener_title">Breyta deilitenglum í youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Neyðir myndbönd til að nota styttri youtu.be-vefslóðarsnið</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Kembiskrá fyrir Protocol Buffer</string>
-  <string name="morphe_debug_protobuffer_summary">Bætir við viðbótarskráningarupplýsingum til að hjálpa forriturum að bera kennsl á hluta forritsins</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Ef þessi stilling er virkjuð verða skráðar viðbótarupplýsingar um uppsetningu viðmótsins, þar á meðal texti á skjánum fyrir suma viðmótshluta.
+  <string name="morphe_debug_litho_title">Litho-skráning</string>
+  <string name="morphe_debug_litho_entry_disabled">Óvirkt</string>
+  <string name="morphe_debug_litho_entry_path">Stígur</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Stígur og búfar</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho-skráning skráir uppsetningahluta appsins, þar á meðal texta á skjánum fyrir suma viðmótshluta.
 
 Þetta getur hjálpað við að bera kennsl á hluta þegar sérsniðnar síur eru búnar til.
 
-Athugaðu að einnig kunna að vera skráð ákveðin notendagögn, svo sem IP-talan þín"</string>
+Hins vegar verða einnig skráð ákveðin notendagögn, svo sem IP-talan þín"</string>
   <!-- Custom filter -->
-  <string name="morphe_custom_filter_screen_title">Sérstakur síubreyting</string>
-  <string name="morphe_custom_filter_screen_summary">Stilltu sérstakar síubreytingar til að fela þáttinn</string>
-  <string name="morphe_custom_filter_title">Virkja sérstaka síu</string>
+  <string name="morphe_custom_filter_screen_title">Sérsniðin sía</string>
+  <string name="morphe_custom_filter_screen_summary">Stilltu sérsniðnar síur til að fela hvaða þátt sem er</string>
+  <string name="morphe_custom_filter_title">Virkja sérsniðna síu</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Listi yfir Litho UI útlitseininga strengja til að síu, aðskilin með nýjum línum</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Ógild sérstök síubreyting: %s</string>
+  <string name="morphe_custom_filter_strings_summary">Listi yfir Litho-strengi slóðasmiða til að sía, aðskildir með nýjum línum</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Ógild sérsniðin sía: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
-  <string name="morphe_settings_menu_filter_screen_title">Síufiltrun valmyndarstillinga</string>
-  <string name="morphe_settings_menu_filter_screen_summary">Fela atriði á venjulegu stillingarvalmyndarstjórnunni eftir sýnilegu nafni</string>
-  <string name="morphe_settings_menu_filter_picker_empty">Opnaðu venjulegu stillingarvalmyndarstjórnunna einu sinni til að fylla listann</string>
+  <string name="morphe_settings_menu_filter_screen_title">Sía fyrir valmynd stillinga</string>
+  <string name="morphe_settings_menu_filter_screen_summary">Fela atriði á venjulegum stillingaskjá forritsins eftir sýnilegu heiti</string>
+  <string name="morphe_settings_menu_filter_picker_empty">Opnaðu venjulega stillingaskjáinn einu sinni til að fylla listann</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Fjarlægja spurningatexta um sjónarhátt</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">Þetta hjálpar ekki að umfara aldurstakmarkanirnar. Það samþykkir þær bara sjálfkrafa</string>
+  <string name="morphe_remove_viewer_discretion_dialog_title">Fjarlægja viðvörunarglugga um efni</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">Þetta fer ekki framhjá aldurstakmörkunum. Það samþykkir þær bara sjálfkrafa</string>
   <!-- misc.potoken.poTokenProviderPatch -->
   <string name="morphe_potoken_provider_screen_title">PoToken-veita</string>
   <string name="morphe_potoken_provider_screen_summary">Stilltu PoToken-veituna til að koma í veg fyrir spilunarvandamál</string>
@@ -238,31 +240,31 @@ Athugaðu að einnig kunna að vera skráð ákveðin notendagögn, svo sem IP-t
 Ef þú ert YouTube Premium notandi, gæti þessi stilling ekki verið nauðsynleg"</string>
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
-  <string name="morphe_external_potoken_provider_unavailable_summary">"Lagfærir spilunarvandamál með því að nota ytri PoToken útgefanda (Tilraunakennt)
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Lagfærir spilunarvandamál með því að nota ytri PoToken-myntara (tilraunakennt)
 
-Til að nota þessa eiginleika, slökktu á 'Falsun myndbandsstrauma'"</string>
-  <string name="morphe_external_potoken_provider_user_dialog_message">Ef það virkar ekki, reyndu að neyða MicroG til að lokast</string>
+Til að nota þennan eiginleika, slökktu á 'Falsun myndbandsstrauma'"</string>
+  <string name="morphe_external_potoken_provider_user_dialog_message">Ef það virkar ekki, reyndu að þvinga MicroG til að loka</string>
   <string name="morphe_external_potoken_provider_settings_summary">Opnaðu PotHelper stillingar</string>
-  <string name="morphe_external_potoken_provider_about_summary">"Þessi eiginleiki er nú í þróun og gæti ekki virkað
+  <string name="morphe_external_potoken_provider_about_summary">"Þessi eiginleiki er í þróun og gæti ekki virkað
 
-Snertu hér til að hlaða niður PotHelper"</string>
+Snertu hér til að sækja PotHelper"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper virkar ekki lengur</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_expired_dialog_message">"Táknið sem er innbyggt í þessa útgáfu af PotHelper virkar ekki lengur
 
 Kveiktu á 'Spoofa myndstrauma' til að laga spilun"</string>
-  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Kveikja</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Kveikja á</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Gerðu app útgáfuna að breytast</string>
-  <string name="morphe_spoof_app_version_summary">Blekkur netþjóninn til að láta það virðast eins og þú ert að nota eldri app útgáfu til að endurheimta eldri UI eiginleika</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Útgáfa forritsins verður svíkjuð til eldri útgáfu.
+  <string name="morphe_spoof_app_version_title">Breyta útgáfu forrits</string>
+  <string name="morphe_spoof_app_version_summary">Blekkir netþjóninn til að halda að þú notir eldri útgáfu forritsins og endurheimtir eldri viðmótseiginleika</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"Útgáfa forritsins verður fölsuð sem eldri útgáfa.
 
-Þetta mun breyta útliti og eiginleikum forritsins, en óþekkta aukaáhrif geta komið fram.
+Þetta breytir útliti og eiginleikum forritsins, en óþekktar aukaverkanir geta komið fram.
 
-Ef síðar slökkt, mælir með að hreina forritagögn til að koma í veg fyrir UI villa"</string>
-  <string name="morphe_spoof_app_version_target_title">Markmið breyttrar app útgáfu</string>
+Verði þessu síðar slökkt er mælt með að hreinsa gögn forritsins til að koma í veg fyrir viðmótsvillur"</string>
+  <string name="morphe_spoof_app_version_target_title">Markmiðsútgáfa forritsins</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
-  <string name="morphe_app_refresh_rate_title">Endurnýjunarhraði apps</string>
+  <string name="morphe_app_refresh_rate_title">Endurnýjunarhraði forrits</string>
   <string name="morphe_app_refresh_rate_default">Sjálfgefið</string>
   <string name="morphe_app_refresh_rate_fps">%s FPS</string>
   <string name="morphe_app_refresh_rate_type_title">Yfirskrifa endurnýjunarhraða</string>
@@ -281,21 +283,21 @@ Ef síðar slökkt, mælir með að hreina forritagögn til að koma í veg fyri
   <string name="morphe_custom_font_failed_to_load">Ekki tókst að hlaða sérsniðna letrið og það er því óvirkt</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_ryd_failure_connection_timeout">Dislikes eru tímabundið óþægilegt (API tímdi út)</string>
-  <string name="morphe_ryd_failure_connection_status_code">Óhagsmunar eru ekki tiltækir (staða %s)</string>
-  <string name="morphe_ryd_failure_client_rate_limit_requested">Dislikes eru óþægilegt (takmörk API fyrir notanda)</string>
-  <string name="morphe_ryd_failure_generic">Dislikes eru óþægilegt (%s)</string>
+  <string name="morphe_ryd_failure_connection_timeout">Mislíkin eru tímabundið ekki tiltæk (API rann út á tíma)</string>
+  <string name="morphe_ryd_failure_connection_status_code">Mislíkin eru ekki tiltæk (staða %s)</string>
+  <string name="morphe_ryd_failure_client_rate_limit_requested">Mislíkin eru ekki tiltæk (takmörk API fyrir notanda)</string>
+  <string name="morphe_ryd_failure_generic">Mislíkin eru ekki tiltæk (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Falinn af eiganda</string>
   <string name="morphe_ryd_accessibility_dislike_count">Mislíkaðu þetta myndband, ásamt %s öðrum</string>
   <string name="morphe_ryd_accessibility_dislike_percentage">Mislíkaðu þetta myndband, %s atkvæða eru mislíkanir</string>
-  <string name="morphe_ryd_enabled_title">Virkaðu Return YouTube Dislike</string>
-  <string name="morphe_ryd_dislike_percentage_title">Sýna dislikes sem prósentuhlutfall</string>
-  <string name="morphe_ryd_dislike_percentage_summary">Sýnir dislikes sem prósentuhlutfall af likes, frekar en tala</string>
-  <string name="morphe_ryd_estimated_like_title">Sýna álíkaða likes</string>
-  <string name="morphe_ryd_estimated_like_summary">Sýnir álíkaðan like fjölda á myndböndum þar sem búðandi hefur slökkt á likes</string>
-  <string name="morphe_ryd_toast_on_connection_error_title">Sýna tengingu villuskilaboð</string>
-  <string name="morphe_ryd_toast_on_connection_error_summary">Sýnir tilkynningu þegar Return YouTube Dislike netþjónninn er óskár</string>
+  <string name="morphe_ryd_enabled_title">Virkja Return YouTube Dislike</string>
+  <string name="morphe_ryd_dislike_percentage_title">Sýna mislíkin sem prósentuhlutfall</string>
+  <string name="morphe_ryd_dislike_percentage_summary">Sýnir mislíkin sem hlutfall af líkum frekar en tölu</string>
+  <string name="morphe_ryd_estimated_like_title">Sýna áætlaðan fjölda líka</string>
+  <string name="morphe_ryd_estimated_like_summary">Sýnir áætlaðan fjölda líka á myndböndum þar sem höfundur hefur slökkt á líkum</string>
+  <string name="morphe_ryd_toast_on_connection_error_title">Sýna villutilkynningar um tengingu</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary">Sýnir tilkynningu þegar Return YouTube Dislike netþjónninn er ekki tiltækur</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike endurheimtir fjölda mislíka sem YouTube faldi árið 2021. Tölurnar koma frá gögnum sem safnað var fyrir fjarlæginguna og eru áætlaðar fyrir nýrri myndbönd út frá atkvæðum notenda þess, svo þær eru ekki nákvæmar og uppfærast á nokkurra daga fresti
 
 Auðkenni myndbandsins sem þú horfir á er sent til Return YouTube Dislike API, og líkar og mislíkar þínar eru sendar nafnlaust til að bæta áætlanirnar"</string>
@@ -304,16 +306,16 @@ Auðkenni myndbandsins sem þú horfir á er sent til Return YouTube Dislike API
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Svarstími API, meðaltal</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">Svarstími API, lágmark</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Svarstími API, hámark</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Svarstími API, síðasta media</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislikes eru tímabundið óþægilegt - Takmörk API fyrir notanda í gildi</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Svarstími API, síðasta svar</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Mislíkin eru tímabundið ekki tiltæk - takmörk API fyrir notanda í gildi</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API sækir atkvæði, fjöldi kallanna</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Engar tengingar hafa verið gerðar</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Fjölda netkerfisfella %s gerð</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Engar netbeiðnir gerðar</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s netbeiðnir gerðar</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API sækir atkvæði, fjöldi tíma úts</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Engar tengingar hafa farið yfir tíma</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">Fjölda netkerfisfella %s tíma út</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Engar netbeiðnir runnu út á tíma</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s netbeiðnir runnu út á tíma</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Takmörk API fyrir notanda</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Engin takmörk API fyrir notanda hefur komið fyrir</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Viðskiptavinur lágmarks takmarkun lent %s sinnum</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Takmörk API fyrir notanda náðust %s sinnum</string>
   <string name="morphe_ryd_statistics_millisecond_text">%s millisekúndur</string>
 </resources>

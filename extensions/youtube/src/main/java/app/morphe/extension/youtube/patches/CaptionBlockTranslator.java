@@ -374,7 +374,10 @@ final class CaptionBlockTranslator implements CaptionSession.Translator {
                 else microsoftCooldownUntil = until;
                 throw new Failure("Caption provider HTTP " + status, seconds * 1000, status == 429);
             }
-            if (google && status >= 300 && status < 400 && isVerificationPage(connection.getHeaderField("Location"))) {
+            String location = google && status >= 300 && status < 400
+                    ? connection.getHeaderField("Location") : null;
+            if (location != null && (location.startsWith("https://www.google.com/sorry/")
+                    || location.startsWith("https://google.com/sorry/"))) {
                 googleCooldownUntil = clock.millis() + VERIFICATION_COOLDOWN_MS;
                 throw new Failure("Caption Google requires verification", VERIFICATION_COOLDOWN_MS, true);
             }
@@ -416,11 +419,6 @@ final class CaptionBlockTranslator implements CaptionSession.Translator {
         } catch (IOException ex) {
             Logger.printDebug(() -> "Could not close caption error stream", ex);
         }
-    }
-
-    private static boolean isVerificationPage(@Nullable String location) {
-        return location != null && (location.startsWith("https://www.google.com/sorry/")
-                || location.startsWith("https://google.com/sorry/"));
     }
 
     /**

@@ -62,7 +62,7 @@ Second \"item\" text"</string>
   <string name="morphe_show_menu_icons_title">Morphe тохиргооны дүржлэгүүдийг харуулах</string>
   <string name="morphe_settings_menu_copy_path">Хууллагдлаа: %s</string>
   <string name="morphe_language_title">Morphe хэл</string>
-  <string name="morphe_language_user_dialog_message">"Зарим хэлний орчуулга дутуу эсвэл бүрэн буш байж болзошгүй.
+  <string name="morphe_language_user_dialog_message">"Зарим хэлний орчуулга дутуу эсвэл бүрэн бус байж болзошгүй.
 
 Шинэ хэл дээр орчуулах эсвэл байгаа орчуулгаа сайжруулахын тулд morphe.software/translate хаягаар зочилно уу"</string>
   <string name="morphe_language_DEFAULT">Аппликейшний хэл</string>
@@ -81,7 +81,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_dev_body">Энэхүү хувилбар нь албан ёсны бус хувилбар тул гэнэтийн алдаа гарч болзошгүй</string>
   <string name="morphe_settings_about_links_header">Албан ёсны холбоосууд</string>
   <string name="morphe_settings_about_links_website">Вэбсайт</string>
-  <string name="morphe_settings_about_links_donate">Хандийлах</string>
+  <string name="morphe_settings_about_links_donate">Хандивлах</string>
   <string name="morphe_settings_about_links_translations">Орчуулга</string>
   <string name="morphe_settings_about_links_credits">Зохиогчид</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Шинэчлэгдсэн</string>
@@ -93,17 +93,18 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Лицензийн мэдэгдэл</string>
-  <string name="morphe_settings_about_licenses_loading">Тảiжи байна…</string>
+  <string name="morphe_settings_about_licenses_loading">Ачаалж байна…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Алдаа засах</string>
   <string name="morphe_debug_screen_summary">Хөгжүүлэгчийн ахисан түвшний тохиргоо болон оношилгооны логуудыг тохируулах</string>
-  <string name="morphe_debug_title">Дибаг логгینگ-ийг идэвхжүүлэх</string>
-  <string name="morphe_debug_stacktrace_title">Debug лог стек трейс</string>
-  <string name="morphe_debug_stacktrace_summary">Алдааг илрүүлэхэд туслах үүднээс дибаг логт стек трейс-ийг багтаана</string>
+  <string name="morphe_debug_level_title">Алдааг илрүүлэх бүртгэл</string>
+  <string name="morphe_debug_level_entry_disabled">Идэвхгүй болгосон</string>
+  <string name="morphe_debug_level_entry_debug">Алдааг илрүүлэх</string>
+  <string name="morphe_debug_level_entry_verbose">Дэлгэрэнгүй</string>
   <string name="morphe_debug_toast_on_error_title">Morphe-ийн алдаа гарсан үед мэдэгдэл харуулах</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Алдааны мэдэгдлүүдийг унтрааснаар Morphe-ийн бүх алдааны мэдэгдлүүд хаана.
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Алдааны мэдэгдлүүдийг унтрааснаар Morphe-ийн бүх алдааны мэдэгдлүүд нуугдана.
 
-Таноо гэнэтийн аливаа үйл явдлын талаар мэдэгдэхгүй байх болно"</string>
+Таныг гэнэтийн аливаа үйл явдлын талаар мэдэгдэхгүй байх болно"</string>
   <string name="morphe_debug_export_logs_title">Debug логуудыг экспортлох</string>
   <string name="morphe_debug_export_logs_summary">Morphe-ийн алдааг засах логуудыг экспортлох</string>
   <string name="morphe_debug_export_logs_success">Алдааг засах логуудыг амжилттай экспортлолоо</string>
@@ -117,7 +118,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Алдааг засах логуудыг цэвэрлэлээ</string>
   <string name="morphe_debug_feature_flags_manager_title">Боломжуудын тохиргооны менежер</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolean төрлийн боломжуудын тохиргоог удирдах</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Боломжуудын төгөөлтийг хайх…</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Боломжуудыг хайх…</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_inactive">Идэвхгүй (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
@@ -213,7 +214,7 @@ MicroG-ийн батерейны оновчлолыг идэвхгүй болг�
 • Мэдэгдэл ирэхгүй байх
 • Ард тал дээр тоглуулах үйлдэл ажиллахгүй байх"</string>
   <!-- misc.gms.linkHandlingPatch -->
-  <string name="morphe_link_handling_title">Апп-ын холбоос хариуцлалт</string>
+  <string name="morphe_link_handling_title">Апп-ын холбоосын удирдлага</string>
   <string name="morphe_link_handling_summary">Холбоосыг энэ апп-д нээх тохиргоо</string>
   <string name="morphe_link_handling_step1_title">Алхам 1: Эх хувилбарын апп холбоосыг идэвхгүй болгох</string>
   <string name="morphe_link_handling_step1_message">Эх аппликейшны тохиргоог нээгээд бүх домэйн холбоосыг идэвхгүй болгоно уу</string>
@@ -221,7 +222,7 @@ MicroG-ийн батерейны оновчлолыг идэвхгүй болг�
   <string name="morphe_link_handling_step2_message">Патч хийсэн апп-ын тохиргоог нээгээд бүх домэйн холбоосыг идэвхжүүлнэ үү</string>
   <string name="morphe_link_handling_open">Тохиргоог нээх</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Туршилтын сэтег 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Туршилтын анхааруулга 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Та ⚠️ &lt;b&gt;%1$s&lt;/b&gt; апп-ын туршилтын хувилбарыг ашиглаж байна
 &lt;br/&gt;&lt;br/&gt;
 🔧 Энэхүү хувилбарын засуулалтуудыг нарийвчлан тохируулах явцад апп-ын үйл ажиллагааг хачирхалтай эсвэл тодорхойгүй алдаанууд гарч болзошгүйг анхаарна уу.
@@ -229,6 +230,19 @@ MicroG-ийн батерейны оновчлолыг идэвхгүй болг�
 Хэрэв та хамгийн найдвартай туршлагыг хүсэж байгаа бол үүнийг &lt;b&gt;устгаад&lt;/b&gt;, зөвлөсөн ✅ &lt;b&gt;%2$s&lt;/b&gt; хувилбарыг суулгана уу"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Би туршилтын хувилбарыг хүсэж байна</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Би тогтвортой хувилбарыг хүсэж байна</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Нэвчүүлгийн шинэчлэлтийн мэдэгдлийг апп дотор харуулах</string>
+  <string name="morphe_patches_update_notice_entry_off">Унтраах</string>
+  <string name="morphe_patches_update_notice_entry_stable">Тогтвортой хувилбарууд</string>
+  <string name="morphe_patches_update_notice_entry_dev">Тогтвортой болон хөгжүүлэлтийн хувилбарууд</string>
+  <string name="morphe_patches_update_notice_dialog_title">Шинэ патчууд бэлэн боллоо</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (одоогийн: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Шинэ боломжууд</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Алдааны засварууд</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Бусад өөрчлөлтүүд</string>
+  <string name="morphe_patches_update_notice_dialog_more">…ба өдөр %s нэмэгдэх</string>
+  <string name="morphe_patches_update_notice_dialog_update">Шинэчлэх</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Хаах</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Системийн алдааны лог хэрэглэгчийн баримт бичигт хадгалагдлаа: %s</string>
   <string name="morphe_crash_log_saved">Системийн алдааны лог хадгалагдлаа: %s</string>

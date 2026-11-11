@@ -1,13 +1,12 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4698
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.shared.patches;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.protobuf.MessageLite;
@@ -18,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerGestureConfig;
+import app.morphe.extension.shared.innertube.SavedVideo.OfflineState;
+import app.morphe.extension.shared.innertube.SavedVideo.OfflineStateAction;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.shared.spoof.ClientType;
@@ -27,7 +28,6 @@ import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTrack;
 import app.morphe.extension.youtube.innertube.Offline.OfflineCaptionTracklist;
 import app.morphe.extension.youtube.innertube.Offline.OfflineCaptions;
 import app.morphe.extension.youtube.innertube.Offline.OfflineCommand;
-import app.morphe.extension.youtube.innertube.Offline.OfflineExoPlayerConfig;
 import app.morphe.extension.youtube.innertube.Offline.OfflineFormat;
 import app.morphe.extension.youtube.innertube.Offline.OfflineFormatAvailability;
 import app.morphe.extension.youtube.innertube.Offline.OfflineFormatLabel;
@@ -36,8 +36,6 @@ import app.morphe.extension.youtube.innertube.Offline.OfflinePlayerConfig;
 import app.morphe.extension.youtube.innertube.Offline.OfflinePlayerResponse;
 import app.morphe.extension.youtube.innertube.Offline.OfflinePlaylistAction;
 import app.morphe.extension.youtube.innertube.Offline.OfflinePlaylistEndpoint;
-import app.morphe.extension.youtube.innertube.Offline.OfflineState;
-import app.morphe.extension.youtube.innertube.Offline.OfflineStateAction;
 import app.morphe.extension.youtube.innertube.Offline.OfflineStreamFormat;
 import app.morphe.extension.youtube.innertube.Offline.OfflineStreamingData;
 import app.morphe.extension.youtube.innertube.Offline.OfflineUpsellCommand;
@@ -179,34 +177,6 @@ public class BaseInAppDownloadsPatch {
             Logger.printException(() -> "replaceOfflineUpsell failure", ex);
             return null;
         }
-    }
-
-    /**
-     * Determines whether the given player response proto represents a playable offline video.
-     */
-    public static boolean isOfflinePlayerResponse(@NonNull String videoId, @Nullable Object playerProto) {
-        try {
-            if (!(playerProto instanceof MessageLite message)) {
-                Logger.printDebug(() -> "isOfflinePlayerResponse: playerProto is not MessageLite: "
-                        + (playerProto != null ? playerProto.getClass().getName() : "null"));
-                return false;
-            }
-            OfflinePlayerResponse response = OfflinePlayerResponse.parseFrom(message.toByteArray());
-            if (response.hasOfflineState()) {
-                int action = response.getOfflineState().getActionValue();
-                if (action == OfflineStateAction.OFFLINE_STATE_ACTION_OK_VALUE) {
-                    Logger.printDebug(() -> "Detected playable offline video: " + videoId);
-                    return true;
-                } else {
-                    Logger.printDebug(() -> "Offline video state action not OK: " + action + " for: " + videoId);
-                }
-            } else {
-                Logger.printDebug(() -> "OfflinePlayerResponse has no offline state for: " + videoId);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "isOfflinePlayerResponse failure", ex);
-        }
-        return false;
     }
 
     /**

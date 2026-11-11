@@ -157,11 +157,10 @@ public final class SoundProofManager {
      * be called while rendering.
      */
     public void loadLiveStatus() {
-        Optional<VoteTarget> target = getVoteTarget();
-        if (!target.isPresent() || target.get().equals(liveTarget)) {
+        VoteTarget requested = getVoteTarget().orElse(null);
+        if (requested == null || requested.equals(liveTarget)) {
             return;
         }
-        VoteTarget requested = target.get();
         liveTarget = requested;
         liveState = LiveState.LOADING;
         liveStatus = null;
@@ -183,7 +182,7 @@ public final class SoundProofManager {
     private void fetchLiveStatus(VoteTarget target) {
         try {
             Optional<LiveArtistStatus> status = SoundProofApi.fetchStatus(target);
-            Utils.runOnMainThread(() -> onLiveStatusLoaded(target, status));
+            Utils.runOnMainThread(() -> onLiveStatusLoaded(target, status.orElse(null)));
         } catch (IOException ex) {
             Logger.printInfo(() -> "SoundProof status request failed", ex);
             Utils.runOnMainThread(() -> onLiveStatusFailed(target));
@@ -194,7 +193,7 @@ public final class SoundProofManager {
      * @return The progress of {@link #loadLiveStatus()} for the current artist.
      */
     public LiveState getLiveState() {
-        if (liveTarget == null || !getVoteTarget().map(liveTarget::equals).orElse(false)) {
+        if (liveTarget == null || !liveTarget.equals(getVoteTarget().orElse(null))) {
             return LiveState.LOADING;
         }
         return liveState;
@@ -229,11 +228,10 @@ public final class SoundProofManager {
      * The current track is not skipped, whatever the new votes say.
      */
     public void vote(VoteSide side) {
-        Optional<VoteTarget> target = getVoteTarget();
-        if (!target.isPresent() || isVoting || getLiveState() != LiveState.READY || isVoteLocked()) {
+        VoteTarget voted = getVoteTarget().orElse(null);
+        if (voted == null || isVoting || getLiveState() != LiveState.READY || isVoteLocked()) {
             return;
         }
-        VoteTarget voted = target.get();
         isVoting = true;
         notifyListeners();
         Utils.runOnBackgroundThread(() -> {
@@ -253,10 +251,10 @@ public final class SoundProofManager {
         });
     }
 
-    private void onLiveStatusLoaded(VoteTarget target, Optional<LiveArtistStatus> status) {
+    private void onLiveStatusLoaded(VoteTarget target, @Nullable LiveArtistStatus status) {
         isVoting = false;
-        if (status.isPresent()) {
-            ArtistRecord fresh = status.get().toRecord(target);
+        if (status != null) {
+            ArtistRecord fresh = status.toRecord(target);
             liveOverrides.put(fresh.id(), new LiveOverride(fresh, System.currentTimeMillis()));
         } else {
             liveOverrides.remove(target.id());
@@ -264,7 +262,7 @@ public final class SoundProofManager {
         // The track can have changed while the request ran: the override still applies.
         if (target.equals(liveTarget)) {
             liveState = LiveState.READY;
-            liveStatus = status.orElse(null);
+            liveStatus = status;
         }
         reassessWithoutSkip();
     }
@@ -332,7 +330,7 @@ public final class SoundProofManager {
         notifyListeners();
 
         if (currentAssessment.status() == ArtistStatus.AI && isSkipEnabled()) {
-            skipCurrentTrack(currentAssessment.artist().get());
+            currentAssessment.artist().ifPresent(this::skipCurrentTrack);
         }
     }
 
@@ -368,6 +366,9 @@ public final class SoundProofManager {
     }
 
     private void skipCurrentTrack(ArtistRecord aiArtist) {
+        if (currentSession == null) {
+            return;
+        }
         // Going through the MediaSession is the only skip that advances the native queue on 9.x.
         currentSession.getController().getTransportControls().skipToNext();
         if (Settings.SOUNDPROOF_TOAST_ON_SKIP.get()) {

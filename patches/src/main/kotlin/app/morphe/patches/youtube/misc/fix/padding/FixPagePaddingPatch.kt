@@ -75,24 +75,7 @@ internal val fixPagePaddingPatch = patch(
             }
         }
 
-        FeedListPaddingFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches.last().index
-                val paddingInstruction = getInstruction<FiveRegisterInstruction>(index)
-                val listRegister = paddingInstruction.registerC
-                val bottomPaddingRegister = paddingInstruction.registerG
-
-                addInstructions(
-                    index,
-                    """
-                        invoke-static { v$listRegister, v$bottomPaddingRegister }, $EXTENSION_CLASS->getAdjustedFeedListBottomPadding(Landroid/view/View;I)I
-                        move-result v$bottomPaddingRegister
-                    """
-                )
-            }
-        }
-
-        BrowseListBottomPaddingFingerprint.let {
+        listOf(FeedListPaddingFingerprint, BrowseListBottomPaddingFingerprint).forEach {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val paddingInstruction = getInstruction<FiveRegisterInstruction>(index)

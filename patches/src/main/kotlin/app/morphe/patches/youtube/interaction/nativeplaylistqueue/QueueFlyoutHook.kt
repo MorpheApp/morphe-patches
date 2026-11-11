@@ -59,6 +59,9 @@ internal fun installQueueFlyout() {
             read.index + 1,
             """
                 if-eqz v$item, :native_queue_command
+                invoke-static/range {v$item .. v$item}, $ACTIONS->onPlaylistQueueItemClick($MESSAGE)Z
+                move-result v$free
+                if-nez v$free, :native_queue_dismiss
                 invoke-static/range {v$item .. v$item}, $iconGetter
                 move-result-object v$free
                 if-eqz v$free, :native_queue_command

@@ -94,7 +94,7 @@ Pentru a schimba pictograma peste tot, aplicați patch-ul din nou și modificaț
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Notificare Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Istoricul de vizionare nu este salvat.&lt;br&gt;&lt;br&gt;Cel mai probabil este cauzată de un DNS de blocare a anunțurilor sau de un proxy de rețea.&lt;br&gt;&lt;br&gt;Pentru a remedia acest lucru, lista albă &lt;b&gt;s.youtube.com&lt;/b&gt; sau pentru a opri toate blocantele DNS și proxy-urile</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Istoricul de vizionare nu este salvat.&lt;br&gt;&lt;br&gt;Cel mai probabil este cauzat de un blocant DNS de reclame sau de un proxy de rețea.&lt;br&gt;&lt;br&gt;Pentru a remedia acest lucru, adaugă &lt;b&gt;s.youtube.com&lt;/b&gt; pe lista albă sau oprește toate blocantele DNS și proxy-urile</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nu mai afișa</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falsifică fluxurile video</string>
@@ -102,7 +102,7 @@ Pentru a schimba pictograma peste tot, aplicați patch-ul din nou și modificaț
   <string name="morphe_spoof_video_streams_summary">"Remediază problemele de redare pentru majoritatea utilizatorilor prin solicitarea unui flux video compatibil
 
 Dacă ești un utilizator YouTube Premium, această setare s-ar putea să nu fie necesară"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">Nu s-a putut încărca nicio client stream</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Nu s-a putut încărca niciun flux de client</string>
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_client_failing_dialog_title">Clientul implicit nu funcționează</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s nu a funcționat de mai multe ori la rând, dar %2$s a funcționat.
@@ -116,15 +116,15 @@ Faci din %2$s clientul implicit?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Client implicit</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Autentificare Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nu te-ai autentificat la Android VR. Apasă aici pentru a te autentifica</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR necesită o autentificare separată. Apasă aici pentru a continua</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Ești autentificat actualmente la Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pentru a utiliza această funcție, schimbă \'Default client\' în Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Pentru a utiliza această funcție, schimbă „Client implicit” în Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Autentificare la Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Apăsarea la Android VR poate rezolva problema reproducerii pentru unii utilizatori
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Autentificarea la Android VR poate rezolva problemele de redare pentru unii utilizatori
 
-Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Dezautentificare</string>
+Pentru a te autentifica, apasă butonul Continuă de mai jos"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Deconectare</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instrucțiuni</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Cod de autentificare: %s
@@ -134,21 +134,21 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
 3. Autentifichează-te la Google dacă este cerut. Dacă ai mai multe conturi, alege acest cont YouTube
 4. Apasă 'Permite accesului YouTube VR'
 5. Înapoiază în această aplicație după apariția mesajului 'Dispozitiv conectat'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Eșit să emit codul de activare</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Eșit să emit codul de autentificare</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Autentificare cu succes</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Nu s-a putut emite codul de activare</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Nu s-a putut emite tokenul de autentificare</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Autentificat cu succes</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autentificare salvată
 
 • Configurațiile Morphe nu vor importa/exporta autentificarea Android VR
 • Dacă această aplicație nu este folosită timp de 6 luni, Google va șterge această autentificare
-• Dacă schimbi parola Google sau deblochezi acest dispozitiv din setări Google, vei avea nevoie să te autentifici din nou"</string>
+• Dacă schimbi parola Google sau elimini acest dispozitiv din setările Google, va trebui să te autentifici din nou"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 este momentan indisponibil (API a expirat)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Apărarea la Android VR a expirat, încearcă din nou</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Autentificarea la Android VR a expirat, încearcă din nou</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 temporar indisponibil (status %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 este momentan indisponibil</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nu se poate apăra la VR, autentificarea website-ului nu a fost aprobată</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Nu puteți vă conecta la VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Delogat din Android VR</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Nu te poți autentifica la VR, autentificarea pe site nu a fost aprobată</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Nu te poți conecta la VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Deconectat din Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Tokenul de autentificare pentru VR este invalid, încercați să vă conectați la VR din nou</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">Controale media pentru notificări</string>
@@ -157,7 +157,7 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Ascunde butoanele Anterior și Următor din notificarea media, de pe ecranul de blocare și din comenzile căștilor</string>
   <string name="morphe_disable_notification_media_seekbar_title">Dezactivează bara de căutare</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Împiedică glisarea barei de căutare pe ecranul de blocare și în panoul de notificări</string>
-  <string name="morphe_seek_notification_media_prev_next_title">Caută cu butoanele <b>&amp;amp;</b> Anterior și Următor</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Caută cu butoanele Anterior &amp; Următor</string>
   <string name="morphe_seek_notification_media_prev_next_summary">Modifică controlurile pentru notificarea media, ecranul blocat și căștile pentru a căuta în loc să schimbe videoclipurile</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Lungimea derulării înapoi</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Secunde pentru derularea înapoi cu butonul Anterior</string>
@@ -208,13 +208,15 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_replace_links_with_shortener_title">Schimbați linkurile de partajare la youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Forțează clipurile video să utilizeze formatul URL scurtat youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Jurnal protocol buffer</string>
-  <string name="morphe_debug_protobuffer_summary">Adaugă informații suplimentare de înregistrare pentru dezvoltatori pentru a identifica componentele aplicației</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Activarea acestei setări va înregistra date suplimentare despre aspect, inclusiv textul de pe ecran pentru unele componente UI.
+  <string name="morphe_debug_litho_title">Jurnalizare Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Dezactivat</string>
+  <string name="morphe_debug_litho_entry_path">Cale</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Cale și buffer</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Jurnălul Litho înregistrează componentele de aspect ale aplicației, inclusiv textul de pe ecran pentru unele componente UI.
 
 Acest lucru poate ajuta la identificarea componentelor atunci când creați filtre personalizate.
 
-Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale utilizatorului, cum ar fi adresa dvs. IP"</string>
+Cu toate acestea, acest lucru va înregistra și unele date ale utilizatorului, cum ar fi adresa dvs. IP"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Filtru personalizat</string>
   <string name="morphe_custom_filter_screen_summary">Configurați filtre personalizate pentru a ascunde orice componentă</string>
@@ -227,7 +229,7 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <string name="morphe_settings_menu_filter_screen_summary">Ascunde elementele din ecranul de setări al aplicației, după numele lor vizibil</string>
   <string name="morphe_settings_menu_filter_picker_empty">Deschide o singură dată ecranul de setări al aplicației pentru a popula lista</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Eliminați dialogul de avertizare pentru publicul vizionator</string>
+  <string name="morphe_remove_viewer_discretion_dialog_title">Elimină dialogul de avertizare a conținutului</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Acest lucru nu ocolește restricția de vârstă. Doar o acceptă automat</string>
   <!-- misc.potoken.poTokenProviderPatch -->
   <string name="morphe_potoken_provider_screen_title">Furnizor PoToken</string>
@@ -250,7 +252,7 @@ Atinge aici pentru a descărca PotHelper"</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_expired_dialog_message">"Tokenul încorporat în această versiune de PotHelper nu mai funcționează
 
-Activează „Simulare fluxuri video” pentru a remedia redarea"</string>
+Activează „Falsifică fluxurile video” pentru a remedia redarea"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Activează</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>

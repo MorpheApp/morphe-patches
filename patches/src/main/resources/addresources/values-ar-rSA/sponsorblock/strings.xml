@@ -17,10 +17,10 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_enabled_title">تمكين SponsorBlock</string>
-  <string name="morphe_sb_enabled_summary">مانع الرُعَاة هو نظام جماعي لتخطي الأجزاء المزعجة من فيديوهات YouTube</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock هو نظام جماعي لتخطي الأجزاء المزعجة من فيديوهات YouTube</string>
   <string name="morphe_sb_appearance_category_title">المظهر</string>
   <string name="morphe_sb_voting_button_title">عرض زر التصويت</string>
-  <string name="morphe_sb_voting_button_summary">يضيف زرًا للتصويت على المقاطع بـ موافقة أو رفض</string>
+  <string name="morphe_sb_voting_button_summary">يضيف زرًا للتصويت بالموافقة أو الرفض على المقاطع</string>
   <string name="morphe_sb_square_layout_title">استخدام التخطيط المربع</string>
   <string name="morphe_sb_square_layout_summary">يستخدم زوايا مربعة لأزرار وعناصر تحكم SponsorBlock</string>
   <string name="morphe_sb_compact_skip_button_title">استخدام زر التخطي المُصَغَّر</string>
@@ -68,7 +68,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_min_segment_duration_summary">لن يتم عرض المقاطع الأقصر من هذه القيمة (بالثواني) أو تخطيها</string>
   <string name="morphe_sb_min_segment_duration_invalid">المدة الزمنية غير صالحة</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_title">معرف المستخدم User ID الفريد الخاص بك</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">يجب أن يبقى هذا خاصًا. انه مثل كلمة المرور ولا ينبغي مشاركته مع أي شخص. إذا كان شخص ما يملك هذا، فيمكنه انتحال شخصيتك</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">يجب أن يبقى هذا خاصًا. إنه مثل كلمة المرور ولا ينبغي مشاركته مع أي شخص. إذا كان شخص ما يملك هذا، فيمكنه انتحال شخصيتك</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">يجب أن يكون معرف المستخدم الخاص 30 حرفًا على الأقل</string>
   <string name="morphe_sb_api_url_title">تغيير عنوان API</string>
   <string name="morphe_sb_api_url_summary">العنوان الذي يستخدمه SponsorBlock لإجراء اتصالات إلى الخادم</string>
@@ -80,7 +80,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_reset">إعادة تعيين رابط API</string>
   <string name="morphe_sb_api_url_invalid">رابط API غير صالح</string>
   <string name="morphe_sb_api_url_changed">تم تغيير رابط API</string>
-  <string name="morphe_sb_settings_ie_title">إستيراد/تصدير الإعدادات</string>
+  <string name="morphe_sb_settings_ie_title">استيراد/تصدير الإعدادات</string>
   <string name="morphe_sb_settings_copy">نسخ</string>
   <string name="morphe_sb_settings_ie_summary">تكوين SponsorBlock JSON الخاص بك والذي يمكن استيراده/تصديره إلى Morphe ومنصات SponsorBlock الأخرى</string>
   <string name="morphe_sb_settings_ie_summary_warning">"تكوين SponsorBlock الخاص بك كتنسيق JSON والذي يمكن استيراده / تصديره إلى Morphe وغيره من منصات SponsorBlock الأخرى
@@ -147,14 +147,14 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_preview_end">تم تخطي الملخص</string>
   <string name="morphe_sb_skipped_filler">تم تخطي مقطع غير ذي صلة</string>
   <string name="morphe_sb_skipped_nomusic">تم تخطي جزء غير موسيقي</string>
-  <string name="morphe_sb_skipped_unsubmitted">تم تخطي المقطع الغير المرسل</string>
+  <string name="morphe_sb_skipped_unsubmitted">تم تخطي المقطع غير المرسل</string>
   <string name="morphe_sb_skipped_multiple_segments">تم تخطي عدة مقاطع</string>
   <string name="morphe_sb_skip_automatically">التخطي تلقائيًا</string>
   <string name="morphe_sb_skip_automatically_once">التخطي تلقائيًا مرة واحدة</string>
   <string name="morphe_sb_skip_showbutton">عرض زر التخطي</string>
   <string name="morphe_sb_skip_seekbaronly">عرض في شريط تقدم الفيديو</string>
   <string name="morphe_sb_skip_ignore">تعطيل</string>
-  <string name="morphe_sb_submit_failed_invalid">غير قادر على إرسال المقطع: الحالة: %s</string>
+  <string name="morphe_sb_submit_failed_invalid">تعذر إرسال المقطع: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock متوقف مؤقتًا</string>
   <string name="morphe_sb_submit_failed_unknown_error">غير قادر على إرسال المقطع (الحالة: %1$s %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">لا يمكن إرسال المقطع. جارٍ الحد من معدل إرسالك (عدد كبير جدًا من نفس المستخدم أو IP)</string>
@@ -176,7 +176,7 @@ Second \"item\" text"</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <string name="morphe_sb_vote_segment_time_to_from">%1$s إلى %2$s</string>
   <string name="morphe_sb_new_segment_choose_category">اختيار فئة المقطع</string>
-  <string name="morphe_sb_new_segment_disabled_category">الفئة معطلة في الإعدادات. تمكين الفئة للإرسال</string>
+  <string name="morphe_sb_new_segment_disabled_category">الفئة معطلة في الإعدادات. فعّل الفئة للإرسال</string>
   <string name="morphe_sb_new_segment_title">مقطع SponsorBlock جديد</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">تعيين %s كبداية أو نهاية لمقطع جديد؟</string>
   <string name="morphe_sb_new_segment_mark_start">البداية</string>
@@ -220,8 +220,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_reputation">سمعتك &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">لقد أنشأت &lt;b&gt;%s&lt;/b&gt; مقطع</string>
   <string name="morphe_sb_stats_submissions_summary">انقر هنا لعرض المقاطع الخاصة بك</string>
-  <string name="morphe_sb_stats_saved_zero">متصدرين SponsorBlock</string>
-  <string name="morphe_sb_stats_saved">لقد قمت بحفظ الناس من &lt;b&gt;%s&lt;/b&gt; مقطع</string>
+  <string name="morphe_sb_stats_saved_zero">لوحة متصدري SponsorBlock</string>
+  <string name="morphe_sb_stats_saved">لقد وفّرت على الناس مشاهدة &lt;b&gt;%s&lt;/b&gt; مقطع</string>
   <string name="morphe_sb_stats_saved_summary_zero">انقر هنا لرؤية الإحصائيات العالمية وأبرز المساهمين</string>
   <string name="morphe_sb_stats_saved_summary">هذا يساوي &lt;b&gt;%s&lt;/b&gt; من حياتهم.&lt;br&gt;انقر هنا لرؤية لوحة المتصدرين</string>
   <string name="morphe_sb_stats_self_saved">لقد قمت بتخطي &lt;b&gt;%s&lt;/b&gt; مقطع</string>

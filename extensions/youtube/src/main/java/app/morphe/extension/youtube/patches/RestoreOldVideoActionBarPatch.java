@@ -9,13 +9,17 @@ package app.morphe.extension.youtube.patches;
 import android.net.Uri;
 import android.util.Base64;
 
+import androidx.annotation.Nullable;
+
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.AddToPlaylistButtonViewModel;
@@ -114,6 +118,39 @@ public class RestoreOldVideoActionBarPatch {
             new FeedCardLayoutPatch.VideoTemplate("compact_channel_bar.eml", 391108665, 6, 5);
     private static final int CHANNEL_BAR_ENVIRONMENT_FIELD = 4;
     private static final String SHARE_BUTTON_ID = "id.video.share.button";
+    /**
+     * Key of the icon of a toggled button, after its target id.
+     */
+    private static final String TOGGLED_ICON_KEY = "|toggled";
+    /**
+     * Icons for buttons that the server sends without an icon, by target id, with the names of
+     * the newer app versions first. The like button has no icon, and its template draws an
+     * animation instead, which some accounts do not get.
+     */
+    private static final Map<String, String[]> FALLBACK_ICONS = new HashMap<>();
+    static {
+        FALLBACK_ICONS.put("id.video.like.button", new String[]{
+                "yt_outline_experimental_thumb_up_black_24", "yt_outline_thumb_up_black_24"});
+        FALLBACK_ICONS.put("id.video.like.button" + TOGGLED_ICON_KEY, new String[]{
+                "yt_fill_experimental_thumb_up_black_24", "yt_fill_thumb_up_black_24"});
+        FALLBACK_ICONS.put("id.video.dislike.button", new String[]{
+                "yt_outline_experimental_thumb_down_black_24", "yt_outline_thumb_down_black_24"});
+        FALLBACK_ICONS.put("id.video.dislike.button" + TOGGLED_ICON_KEY, new String[]{
+                "yt_fill_experimental_thumb_down_black_24", "yt_fill_thumb_down_black_24"});
+        FALLBACK_ICONS.put(SHARE_BUTTON_ID, new String[]{
+                "yt_outline_experimental_share_black_24", "yt_outline_share_black_24"});
+        FALLBACK_ICONS.put("id.video.add_to.button", new String[]{
+                "yt_outline_experimental_bookmark_black_24", "yt_outline_bookmark_black_24"});
+        FALLBACK_ICONS.put("id.video.add_to.button" + TOGGLED_ICON_KEY, new String[]{
+                "yt_fill_experimental_bookmark_black_24", "yt_fill_bookmark_black_24"});
+        FALLBACK_ICONS.put("id.video.remove_ads.button", new String[]{
+                "yt_outline_experimental_flag_black_24", "yt_outline_flag_black_24"});
+    }
+    /**
+     * Icons that the server sent for each button, by target id, so a button that later comes
+     * without its icon gets the same one.
+     */
+    private static final Map<String, String> serverIcons = new ConcurrentHashMap<>();
     private static final String OVERFLOW_BUTTON_ICON = "yt_outline_experimental_overflow_horizontal_black_24";
     private static final String MORE_ACTIONS_TEXT = "accessibility_more_actions_video";
     private static final int LIKE_COUNT_ENTITY_TYPE = 445;
@@ -198,7 +235,15 @@ public class RestoreOldVideoActionBarPatch {
             VideoActionBarViewModel actionBar = lockupModel.getViewModel().getVideoActionBarViewModel();
             final boolean minimal = LAYOUT == VideoActionBarLayout.MINIMAL;
             if (actionBar.getLayoutStyle() != (minimal ? LAYOUT_STYLE_CLASSIC : LAYOUT_STYLE_MINIMAL)) {
-                return bytes;
+                // The server sends the chosen layout, or a layout that is not changed.
+                if (actionBar.getLayoutStyle() != (minimal ? LAYOUT_STYLE_MINIMAL : LAYOUT_STYLE_CLASSIC)) {
+                    return bytes;
+                }
+
+                VideoActionBarViewModel newActionBar = withButtonIcons(actionBar);
+                return newActionBar == actionBar
+                        ? bytes
+                        : withActionBar(element, componentType, lockupModel, newActionBar).toByteArray();
             }
 
             VideoActionBarViewModel.Builder newActionBar = actionBar.toBuilder().clearActions();
@@ -360,10 +405,10 @@ public class RestoreOldVideoActionBarPatch {
                 newActionBar.clearSubscribeButton().clearSize();
             }
 
-            return withActionBar(element, componentType, lockupModel, newActionBar
+            return withActionBar(element, componentType, lockupModel, withButtonIcons(newActionBar
                     .setLayoutStyle(minimal ? LAYOUT_STYLE_MINIMAL : LAYOUT_STYLE_CLASSIC)
                     .setLayoutConfig(actionBar.getLayoutConfig().toBuilder().setIconButtons(minimal))
-                    .build())
+                    .build()))
                     .toByteArray();
         } catch (Exception ex) {
             Logger.printException(() -> "setVideoActionBarLayout failure", ex);
@@ -388,8 +433,10 @@ public class RestoreOldVideoActionBarPatch {
         byte[] sectionBytes;
         try {
             sectionBytes = section.toByteArray();
-        } catch (IllegalStateException ex) {
-            // A section that 'Hide related videos' changed in place, which cannot be serialized.
+        } catch (RuntimeException ex) {
+            // A section that 'Hide related videos' changed in place after its serialized size was saved.
+            // Depending on the change, this throws an IllegalStateException or a RuntimeException.
+            Logger.printDebug(() -> "Two rows not applied, the section changed in place", ex);
             return null;
         }
 
@@ -507,6 +554,176 @@ public class RestoreOldVideoActionBarPatch {
                 .build();
     }
 
+    private interface ButtonMapper {
+        ButtonViewModel map(ButtonViewModel button, boolean toggled);
+    }
+
+    /**
+     * Buttons without an icon get the icon that the server sent for the same button,
+     * or a fallback icon of the app.
+     *
+     * @return The same action bar if no button changes.
+     */
+    private static VideoActionBarViewModel withButtonIcons(VideoActionBarViewModel actionBar) {
+        // The icons of the whole action bar are saved first,
+        // because the same button can be in the row and in the overflow.
+        mapButtons(actionBar, (button, toggled) -> {
+            if (!button.getTargetId().isEmpty() && !button.getIconName().isEmpty()) {
+                serverIcons.put(toggled ? button.getTargetId() + TOGGLED_ICON_KEY : button.getTargetId(),
+                        button.getIconName());
+            }
+            return button;
+        });
+
+        return mapButtons(actionBar, (button, toggled) -> {
+            String targetId = button.getTargetId();
+            if (!button.getIconName().isEmpty() || targetId.isEmpty()) {
+                return button;
+            }
+
+            String icon = toggled ? buttonIcon(targetId + TOGGLED_ICON_KEY) : null;
+            if (icon == null) {
+                // A toggled button without its own icon shows the icon of the button.
+                icon = buttonIcon(targetId);
+            }
+            if (icon == null) {
+                return button;
+            }
+            final String newIcon = icon;
+            Logger.printDebug(() -> "Button " + targetId + (toggled ? " (toggled)" : "") + " has no icon, using: " + newIcon);
+            return button.toBuilder().setIconName(newIcon).build();
+        });
+    }
+
+    @Nullable
+    private static String buttonIcon(String key) {
+        String icon = serverIcons.get(key);
+        if (icon != null) {
+            return icon;
+        }
+
+        String[] fallbackIcons = FALLBACK_ICONS.get(key);
+        if (fallbackIcons != null) {
+            for (String fallbackIcon : fallbackIcons) {
+                // Older app versions have other names for the same icons.
+                if (ResourceUtils.getIdentifier(ResourceType.DRAWABLE, fallbackIcon) != 0) {
+                    return fallbackIcon;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @return The same action bar if the mapper changes no button.
+     */
+    private static VideoActionBarViewModel mapButtons(VideoActionBarViewModel actionBar, ButtonMapper mapper) {
+        VideoActionBarViewModel.Builder builder = null;
+        for (int i = 0, count = actionBar.getActionsCount(); i < count; i++) {
+            VideoActionBarItem action = actionBar.getActions(i);
+            VideoActionBarItemContent content = mapButtons(action.getContent(), mapper);
+            if (content != action.getContent()) {
+                if (builder == null) builder = actionBar.toBuilder();
+                builder.setActions(i, action.toBuilder().setContent(content));
+            }
+        }
+        return builder == null ? actionBar : builder.build();
+    }
+
+    /**
+     * @return The same content if the mapper changes no button.
+     */
+    private static VideoActionBarItemContent mapButtons(VideoActionBarItemContent content, ButtonMapper mapper) {
+        if (content.hasLikeDislikeButtons()) {
+            VideoActionBarLikeDislike likeDislike = content.getLikeDislikeButtons();
+            VideoActionBarItemContent likeButton = mapButtons(likeDislike.getLikeButton(), mapper);
+            VideoActionBarItemContent dislikeButton = mapButtons(likeDislike.getDislikeButton(), mapper);
+            return likeButton == likeDislike.getLikeButton() && dislikeButton == likeDislike.getDislikeButton()
+                    ? content
+                    : content.toBuilder().setLikeDislikeButtons(likeDislike.toBuilder()
+                            .setLikeButton(likeButton)
+                            .setDislikeButton(dislikeButton)).build();
+        }
+
+        if (content.hasOverflow()) {
+            // The buttons of the minimal layout, and the items of its menu.
+            VideoActionBarOverflow overflow = content.getOverflow();
+            VideoActionBarOverflow.Builder builder = null;
+            for (int i = 0, count = overflow.getShownItemsCount(); i < count; i++) {
+                VideoActionBarItemContent item = mapButtons(overflow.getShownItems(i), mapper);
+                if (item != overflow.getShownItems(i)) {
+                    if (builder == null) builder = overflow.toBuilder();
+                    builder.setShownItems(i, item);
+                }
+            }
+            for (int i = 0, count = overflow.getMenuItemsCount(); i < count; i++) {
+                VideoActionBarItemContent item = mapButtons(overflow.getMenuItems(i), mapper);
+                if (item != overflow.getMenuItems(i)) {
+                    if (builder == null) builder = overflow.toBuilder();
+                    builder.setMenuItems(i, item);
+                }
+            }
+            return builder == null ? content : content.toBuilder().setOverflow(builder).build();
+        }
+
+        if (content.hasButton()) {
+            ButtonViewModel button = mapper.map(content.getButton(), false);
+            return button == content.getButton() ? content : content.toBuilder().setButton(button).build();
+        }
+
+        if (content.hasLikeButton()) {
+            LikeButtonViewModel likeButton = content.getLikeButton();
+            ToggleButtonViewModelHolder toggleButton = mapToggleButton(likeButton.getToggleButtonViewModel(), mapper);
+            return toggleButton == likeButton.getToggleButtonViewModel()
+                    ? content
+                    : content.toBuilder().setLikeButton(likeButton.toBuilder().setToggleButtonViewModel(toggleButton)).build();
+        }
+
+        if (content.hasDislikeButton()) {
+            DislikeButtonViewModel dislikeButton = content.getDislikeButton();
+            ToggleButtonViewModelHolder toggleButton = mapToggleButton(dislikeButton.getToggleButtonViewModel(), mapper);
+            return toggleButton == dislikeButton.getToggleButtonViewModel()
+                    ? content
+                    : content.toBuilder().setDislikeButton(dislikeButton.toBuilder().setToggleButtonViewModel(toggleButton)).build();
+        }
+
+        if (content.hasSaveButton()) {
+            AddToPlaylistButtonViewModel saveButton = content.getSaveButton();
+            ToggleButtonViewModelHolder toggleButton = mapToggleButton(saveButton.getToggleButtonViewModel(), mapper);
+            return toggleButton == saveButton.getToggleButtonViewModel()
+                    ? content
+                    : content.toBuilder().setSaveButton(saveButton.toBuilder().setToggleButtonViewModel(toggleButton)).build();
+        }
+
+        return content;
+    }
+
+    /**
+     * @return The same holder if the mapper changes no button.
+     */
+    private static ToggleButtonViewModelHolder mapToggleButton(ToggleButtonViewModelHolder holder, ButtonMapper mapper) {
+        ToggleButtonViewModel toggleButton = holder.getToggleButtonViewModel();
+        if (!toggleButton.hasDefaultButtonViewModel() || !toggleButton.hasToggledButtonViewModel()) {
+            return holder;
+        }
+
+        ButtonViewModel defaultButton = toggleButton.getDefaultButtonViewModel().getButtonViewModel();
+        ButtonViewModel toggledButton = toggleButton.getToggledButtonViewModel().getButtonViewModel();
+        ButtonViewModel newDefaultButton = mapper.map(defaultButton, false);
+        ButtonViewModel newToggledButton = mapper.map(toggledButton, true);
+        if (newDefaultButton == defaultButton && newToggledButton == toggledButton) {
+            return holder;
+        }
+
+        return holder.toBuilder()
+                .setToggleButtonViewModel(toggleButton.toBuilder()
+                        .setDefaultButtonViewModel(toggleButton.getDefaultButtonViewModel().toBuilder()
+                                .setButtonViewModel(newDefaultButton))
+                        .setToggledButtonViewModel(toggleButton.getToggledButtonViewModel().toBuilder()
+                                .setButtonViewModel(newToggledButton)))
+                .build();
+    }
+
     /**
      * The buttons of the minimal layout have the text outside the button, below its icon.
      * The buttons of the classic layout have the text inside the button.
@@ -547,6 +764,9 @@ public class RestoreOldVideoActionBarPatch {
      */
     public static boolean useMediaSessionFeatureFlag(boolean original) {
         if (FIX_VIDEO_ACTION_BAR) {
+            if (original) {
+                Logger.printVerbose(() -> "useMediaSessionFeatureFlag turned off");
+            }
             return false;
         }
         return original;

@@ -377,6 +377,20 @@ internal object CronetDataSourceReadBufferFingerprint : Fingerprint(
 )
 
 /**
+ * Exception of a response with an HTTP error status. For a server error, the app requests
+ * the stream again from a fallback host.
+ */
+internal object InvalidResponseCodeExceptionFingerprint : Fingerprint(
+    name = "<init>",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf("I", "Ljava/io/IOException;", "Ljava/util/Map;", "L"),
+    filters = listOf(
+        string("Response code: ")
+    )
+)
+
+/**
  * Exception that pauses a transfer for a task of a higher priority.
  * A saved video continues from the last byte it got, after it is paused.
  */
@@ -388,5 +402,29 @@ internal object PriorityTooLowExceptionFingerprint : Fingerprint(
     parameters = listOf("I", "I"),
     filters = listOf(
         string("Priority too low [priority=")
+    )
+)
+
+/**
+ * Throws the exception of [PriorityTooLowExceptionFingerprint] if a task of a higher priority is running.
+ */
+internal object PriorityTaskManagerProceedOrThrowFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("I"),
+    filters = listOf(
+        methodCall(reference = { PriorityTooLowExceptionFingerprint.originalMethod })
+    )
+)
+
+/**
+ * Opens the data source a priority data source wraps, after it checks the priority of its task.
+ * Only saved videos are transferred through a priority data source.
+ */
+internal object PriorityDataSourceOpenFingerprint : Fingerprint(
+    returnType = "J",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(reference = { PriorityTaskManagerProceedOrThrowFingerprint.originalMethod }),
+        methodCall(opcode = Opcode.INVOKE_INTERFACE, returnType = "J", location = MatchAfterWithin(3))
     )
 )

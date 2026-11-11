@@ -32,7 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">Nastavenia Morphe boli obnovené na predvolené</string>
   <string name="morphe_settings_import_success">Importovaných %s nastavení</string>
   <string name="morphe_settings_import_failure_parse">Importovanie zlyhalo: %s</string>
-  <string name="morphe_settings_navigate_up">Nahor</string>
+  <string name="morphe_settings_navigate_up">Späť</string>
   <string name="morphe_settings_search_hint">Nastavenia vyhľadávania</string>
   <string name="morphe_settings_screen_info_title">O aplikácii</string>
   <string name="morphe_settings_search_no_results_title">Nenašli sa žiadne výsledky pre \'%s\'</string>
@@ -97,9 +97,10 @@ Ak chcete prekladať nové jazyky alebo vylepšiť existujúce preklady, navšt�
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ladenie chýb</string>
   <string name="morphe_debug_screen_summary">Konfigurujte rozšírené možnosti pre vývojárov a diagnostické protokoly</string>
-  <string name="morphe_debug_title">Zaznamenávanie ladiacich informácií</string>
-  <string name="morphe_debug_stacktrace_title">Záznamy ladenia budú obsahovať trasovacie stopy</string>
-  <string name="morphe_debug_stacktrace_summary">Zahrňuje trasovanie zásobníka v protokoloch ladenia, aby sa pomohlo pri identifikácii chýb</string>
+  <string name="morphe_debug_level_title">Zaznamenávanie ladiacich informácií</string>
+  <string name="morphe_debug_level_entry_disabled">Vypnutý</string>
+  <string name="morphe_debug_level_entry_debug">Ladenie</string>
+  <string name="morphe_debug_level_entry_verbose">Podrobné</string>
   <string name="morphe_debug_toast_on_error_title">Zobraziť oznámenie v prípade chyby Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Vypnutím chybových upozornení skryjete všetky notifikácie Morphe o chybách.
 
@@ -149,7 +150,7 @@ Nebudete informovaný o žiadnych nečakaných udalostiach"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_title">Binárne vyhľadávanie</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Zistí, ktorý funkčný prepínač spôsobuje správanie aplikácie.
 
-Polovica z %s prepínačov je zablokovaná a po každom reštartovaní poviete, či je správanie stále prítomné.
+Polovica z %s prepínačov je zablokovaná a po každom reštartovaní odpoviete, či je správanie stále prítomné.
 
 Správanie reprodukujte pred spustením, inak v hľadaní chýbajú prepínače, ktoré aplikácia ešte nevyžiadala"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Začiatok</string>
@@ -229,6 +230,18 @@ Ak nezmeníte optimalizácie batérie môže sa stať, že:
 Ak sa chcete vyvarovať zbytočným problémom, potom toto radšej &lt;b&gt;odinštalujte&lt;/b&gt; a zaplátajte odporúčanú verziu aplikácie ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chcem experimentálnu verziu</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chcem stabilnú verziu</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Zobrazovať oznámenia o aktualizáciách patchov v aplikácii</string>
+  <string name="morphe_patches_update_notice_entry_off">Vypnuté</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabilné vydania</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabilné a vývojové vydania</string>
+  <string name="morphe_patches_update_notice_dialog_title">Sú dostupné nové záplaty</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (aktuálne: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nové funkcie</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Opravy chýb</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Ďalšie zmeny</string>
+  <string name="morphe_patches_update_notice_dialog_update">Aktualizovať</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Zavrieť</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Protokol o páde uložený do používateľských dokumentov: %s</string>
   <string name="morphe_crash_log_saved">Protokol o páde uložený: %s</string>

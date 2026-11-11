@@ -26,10 +26,10 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_5">Morphe Monochrome</string>
   <!-- misc.settings.settingsPatch -->
   <string name="morphe_settings_new_indicator_days_title">Korosta uusia asetuksia</string>
-  <string name="morphe_settings_new_indicator_days_summary">Päivien määrä, jonka ajan piste näkyy päivityksellä lisättyjen asetusten ja vaihtoehtojen vieressä</string>
-  <string name="morphe_settings_new_indicator_days_off">pois</string>
+  <string name="morphe_settings_new_indicator_days_summary">Päivien määrä, jonka piste näkyy päivityksellä lisättyjen asetusten ja vaihtoehtojen vieressä</string>
+  <string name="morphe_settings_new_indicator_days_off">Pois</string>
   <!-- misc.initialization.initializationPatch -->
-  <string name="morphe_restart_first_run">Käynnistä uudelleen valituksen suorittamiseksi</string>
+  <string name="morphe_restart_first_run">Käynnistä uudelleen asennuksen viimeistelemiseksi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Sovelluksen nimi</string>
   <!-- layout.theme.baseThemePatch -->
@@ -116,7 +116,7 @@ Asetetaanko %2$s oletusasiakkaaksi?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Oletusasiakasohjelma</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR -kirjautuminen</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Ei kirjautuneena Android VR -tilaan. Kirjaudu sisään napauttamalla tästä</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR vaatii erillisen kirjautumisen. Napauta tästä jatkaaksesi</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kirjautuneena Android VR -tilaan</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Käyttääksesi tätä ominaisuutta, aseta Android VR \'Oletusasiakasohjelma\'\'-asetukseksi</string>
@@ -208,13 +208,15 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <string name="morphe_replace_links_with_shortener_title">Muuta jakolinkit youtu.be-sivustoksi</string>
   <string name="morphe_replace_links_with_shortener_summary">Pakottaa videot käyttämään lyhennettyä youtu.be-URL-muotoa</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Virheenkorjauslokin protokollapuskuri</string>
-  <string name="morphe_debug_protobuffer_summary">Lisää kehittäjille lisätietoja sovelluksen komponenttien tunnistamiseksi</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Tämän asetuksen käyttöönotto kirjaa lisätietoja asettelusta, mm. joidenkin käyttöliittymän osien näyttötekstiä.
+  <string name="morphe_debug_litho_title">Litho-kirjaaminen</string>
+  <string name="morphe_debug_litho_entry_disabled">Pois käytöstä</string>
+  <string name="morphe_debug_litho_entry_path">Polku</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Polku ja puskuri</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho-lokitus kirjaa sovelluksen asettelukomponentit, mukaan lukien joidenkin käyttöliittymäkomponenttien näyttötekstit.
 
-Tämä voi auttaa komponenttien tunnistamisessa, kun luot mukautettuja suodattimia.
+Tämä voi auttaa komponenttien tunnistamisessa mukautettuja suodattimia luotaessa.
 
-Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoitteesi"</string>
+Tämä kirjaa kuitenkin myös joitakin käyttäjätietoja, kuten IP-osoitteesi"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Mukautettu suodatin</string>
   <string name="morphe_custom_filter_screen_summary">Määritä mukautetut suodattimet piilottaaksesi minkä tahansa komponentin</string>
@@ -250,7 +252,7 @@ Napauta tästä ladataksesi PotHelperin"</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_expired_dialog_message">"Tähän PotHelper-versioon sisäänrakennettu tunnus ei enää toimi
 
-Ota 'Videovirtojen huijaus' käyttöön korjataksesi toiston"</string>
+Ota 'Naamioi videovirrat' käyttöön korjataksesi toiston"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Ota käyttöön</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Sovellusversio naamioidaan</string>

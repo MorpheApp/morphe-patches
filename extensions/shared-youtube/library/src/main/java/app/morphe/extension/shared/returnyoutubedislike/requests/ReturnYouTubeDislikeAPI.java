@@ -156,18 +156,6 @@ public class ReturnYouTubeDislikeAPI {
     } // utility class
 
     /**
-     * Clears any backoff rate limits in effect.
-     * Should be called if RYD is turned on/off.
-     */
-    public static void resetRateLimits() {
-        if (lastApiCallFailed || timeToResumeAPICalls != 0) {
-            Logger.printDebug(() -> "Reset rate limit");
-        }
-        lastApiCallFailed = false;
-        timeToResumeAPICalls = 0;
-    }
-
-    /**
      * @return True, if api rate limit is in effect.
      */
     private static boolean checkIfRateLimitInEffect(String apiEndPointName) {

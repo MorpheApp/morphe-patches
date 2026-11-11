@@ -186,25 +186,6 @@ val miniplayerPatch = patch(
             "$EXTENSION_CLASS->$extensionMethod(Z)Z"
         )
 
-        fun Fingerprint.insertMiniplayerFeatureFlagFloatOverride(
-            literal: Long,
-            extensionMethod: String,
-        ) {
-            method.apply {
-                val literalIndex = indexOfFirstLiteralInstructionOrThrow(literal)
-                val targetIndex = indexOfFirstInstructionOrThrow(literalIndex, Opcode.DOUBLE_TO_FLOAT)
-                val register = getInstruction<OneRegisterInstruction>(targetIndex).registerA
-
-                addInstructions(
-                    targetIndex + 1,
-                    """
-                        invoke-static { v$register }, $EXTENSION_CLASS->$extensionMethod(F)F
-                        move-result v$register
-                    """
-                )
-            }
-        }
-
         // region Disable resuming miniplayer (Continue watching)
 
         // Only skip the resume branch of the command. Other show miniplayer commands,

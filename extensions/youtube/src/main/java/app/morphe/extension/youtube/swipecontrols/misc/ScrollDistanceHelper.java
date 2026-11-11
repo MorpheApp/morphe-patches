@@ -52,7 +52,7 @@ public final class ScrollDistanceHelper {
 
         // invoke the callback if we scrolled far enough
         while (Math.abs(scrolledDistance) >= unitDistance) {
-            subtractUnitDistance();
+            scrolledDistance -= unitDistance * Math.signum(scrolledDistance);
             callback.accept((int) Math.signum(scrolledDistance));
         }
     }
@@ -62,12 +62,5 @@ public final class ScrollDistanceHelper {
      */
     public void reset() {
         scrolledDistance = 0.0;
-    }
-
-    /**
-     * Subtracts the {@link #unitDistance} from the total {@link #scrolledDistance}.
-     */
-    private void subtractUnitDistance() {
-        scrolledDistance -= unitDistance * Math.signum(scrolledDistance);
     }
 }

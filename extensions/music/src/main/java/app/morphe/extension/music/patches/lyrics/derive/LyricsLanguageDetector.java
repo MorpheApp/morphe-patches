@@ -33,6 +33,7 @@ public final class LyricsLanguageDetector {
             "ko", Category.HANGUL,
             "el", Category.GREEK,
             "he", Category.HEBREW,
+            "iw", Category.HEBREW,
             "hy", Category.ARMENIAN,
             "ka", Category.GEORGIAN,
             "th", Category.THAI

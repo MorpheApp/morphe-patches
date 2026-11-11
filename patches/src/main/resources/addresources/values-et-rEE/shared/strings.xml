@@ -22,7 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_save">Salvesta</string>
   <string name="morphe_settings_reset">Lähtesta</string>
   <string name="morphe_settings_reset_color">Lähtesta värv</string>
-  <string name="morphe_settings_color_invalid">Keelatud värv</string>
+  <string name="morphe_settings_color_invalid">Vigane värv</string>
   <string name="morphe_settings_restart_title">Vajalik taaskäivitus</string>
   <string name="morphe_settings_restart_dialog_message">Selle muudatuse jõustumiseks taaskäivitage rakendus</string>
   <string name="morphe_settings_restart">Taaskäivita</string>
@@ -69,7 +69,7 @@ Uute keelte tõlkimiseks või olemasolevate tõlgete parandamiseks külastage mo
   <string name="morphe_pref_import_export_title">Import / Eksport</string>
   <string name="morphe_pref_import_export_summary">Morphe seadete importimine / eksportimine</string>
   <string name="morphe_settings_import_file">Impordi failist</string>
-  <string name="morphe_settings_import_file_success">Seaded imporditi edukalt, rakendamiseks puuduta Salvesta</string>
+  <string name="morphe_settings_import_file_success">Seaded imporditi edukalt, rakendamiseks puudutage Salvesta</string>
   <string name="morphe_settings_import_file_failed">Seadete import ebaõnnestus</string>
   <string name="morphe_settings_export_file">Ekspordi faili</string>
   <string name="morphe_settings_export_file_success">Seaded eksporditi edukalt</string>
@@ -97,9 +97,10 @@ Uute keelte tõlkimiseks või olemasolevate tõlgete parandamiseks külastage mo
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Veaotsing</string>
   <string name="morphe_debug_screen_summary">Konfigureerige arendaja täpsemaid suvandeid ja diagnostikalogid</string>
-  <string name="morphe_debug_title">Luba veaotsingu logimine</string>
-  <string name="morphe_debug_stacktrace_title">Veaotsingu logi stack trace</string>
-  <string name="morphe_debug_stacktrace_summary">Lisab veaotsingulogidele kaudu lugemised, et aidata tõrkeid tuvastada</string>
+  <string name="morphe_debug_level_title">Veaotsingu logimine</string>
+  <string name="morphe_debug_level_entry_disabled">Välja lülitatud</string>
+  <string name="morphe_debug_level_entry_debug">Veaotsing</string>
+  <string name="morphe_debug_level_entry_verbose">Üksikasjalik</string>
   <string name="morphe_debug_toast_on_error_title">Kuva veateavitus Morphe\'i vea puhul</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Veateavituste väljalülitamine peidab kõik Morphe vea teavitused.
 
@@ -109,7 +110,7 @@ Teid ei teavitatakse ühegi ootamatutest sündmustest"</string>
   <string name="morphe_debug_export_logs_success">Veaotsingupäevikud eksporteeriti edukalt</string>
   <string name="morphe_debug_export_logs_failed">Veaotsingupäevikute eksport ebaõnnestus</string>
   <string name="morphe_debug_logs_search_hint">Otsi debugi logidest…</string>
-  <string name="morphe_debug_export_logs_clear">Tühista</string>
+  <string name="morphe_debug_export_logs_clear">Tühjenda</string>
   <string name="morphe_debug_logs_disabled">Veaotsingu logimine on keelatud</string>
   <string name="morphe_debug_logs_none_found">Veaotsingupäevikuid ei leitud</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Veaotsingupäevikud kopeeritud</string>
@@ -229,6 +230,19 @@ Kui aku optimeerimist ei muudeta, võib esineda järgmist:
 Kui soovite võimalikult tõrgetemat kogemust, siis &lt;b&gt;eemaldage&lt;/b&gt; see ja paigaldage soovitatud rakenduse versioon ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Soovin eksperimentaalset</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Soovin stabiilset</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Kuva rakenduses teavitus paranduste kohta</string>
+  <string name="morphe_patches_update_notice_entry_off">Väljas</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabiilsed versioonid</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabiilsed ja arendusversioonid</string>
+  <string name="morphe_patches_update_notice_dialog_title">Saadaval on uued parandused</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (praegune: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Uued funktsioonid</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Veaparandused</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Muud muudatused</string>
+  <string name="morphe_patches_update_notice_dialog_more">…ja veel %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Uuenda</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Sulge</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Crash-log salvestati kasutaja dokumentidesse: %s</string>
   <string name="morphe_crash_log_saved">Crash-log salvestatud: %s</string>

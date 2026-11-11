@@ -34,6 +34,9 @@ public final class IcuRomanizer {
     /** One reading per line, or null when nothing was read so the next provider takes the turn. */
     @Nullable
     public static List<String> romanize(List<String> lines) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return null;
+        }
         final Transliterator current = require();
         if (current == null) {
             return null;

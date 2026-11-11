@@ -75,17 +75,54 @@ message Format {
 
 message PlayerConfig {
   optional AudioConfig audioConfig = 55405814;
+  optional ExoPlayerConfig exoPlayerConfig = 57825011;
   optional AndroidMedialibConfig androidMedialibConfig = 78958444;
+  optional MediaCommonConfig mediaCommonConfig = 215771584;
   optional PlayerGestureConfig playerGestureConfig = 262192541;
   optional InlinePlaybackConfig inlinePlaybackConfig = 399288314;
+  optional TaskCoordinatorConfig taskCoordinatorConfig = 403990724;
 }
 
 message AudioConfig {
   optional bool muteOnStart = 4;
 }
 
+message ExoPlayerConfig {
+  optional int32 lowWatermarkMs = 7;
+  optional int32 highWatermarkMs = 8;
+  optional int32 minDurationForPlaybackStartMs = 17;
+  optional bool usePredictedBuffer = 69;
+  optional int32 maxReadAheadMediaTimeMs = 70;
+  optional bool useMediaTimeCappedLoadControl = 71;
+  optional int32 minDurationForPlaybackRestartMs = 75;
+}
+
 message AndroidMedialibConfig {
   optional bool isItag18MainProfile = 3;
+  optional bool enablePrerollPrebuffer = 19;
+  optional bool prebufferOptimizeForViewportSize = 20;
+}
+
+message MediaCommonConfig {
+  optional DynamicReadaheadConfig dynamicReadaheadConfig = 1;
+  optional ServerPlaybackStartConfig serverPlaybackStartConfig = 15;
+  optional MediaCacheConfig mediaCacheConfig = 22;
+}
+
+message DynamicReadaheadConfig {
+}
+
+message ServerPlaybackStartConfig {
+}
+
+message MediaCacheConfig {
+  optional CacheLoadPolicy cacheLoadPolicy = 1;
+}
+
+message CacheLoadPolicy {
+}
+
+message TaskCoordinatorConfig {
 }
 
 message PlayerGestureConfig {

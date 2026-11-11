@@ -13,6 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -24,6 +25,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -287,6 +289,16 @@ val crossfadePatch = patch(
             )
         }.onFailure {
             log.warning("Sleep timer state setter not found, end of song timer is not detected (#2017): ${it.message}")
+        }
+
+        CloseAudioEffectSessionFingerprint.let {
+            val sendBroadcastMatch = it.instructionMatches.last()
+            val (contextRegister, intentRegister) = sendBroadcastMatch.instruction.registersUsed
+            it.method.replaceInstruction(
+                sendBroadcastMatch.index,
+                "invoke-static { v$contextRegister, v$intentRegister }, $EXTENSION_CLASS->" +
+                        "closeAudioEffectSession(Landroid/content/Context;Landroid/content/Intent;)V"
+            )
         }
 
         val musicActivityClass = MusicActivityOnCreateFingerprint.classDef
@@ -801,6 +813,12 @@ val crossfadePatch = patch(
         coordinatorClass.addFieldGetter("patch_getSharedState", sharedStateFieldRef)
         coordinatorClass.addFieldGetter("patch_getSharedCallback", sharedCallbackFieldRef)
         coordinatorClass.addFieldGetter("patch_getVideoSurface", videoSurfaceField)
+        val playerVolumeField = PlayerVolumeFingerprint.instructionMatches.last()
+            .getInstruction<ReferenceInstruction>().getReference<FieldReference>()!!
+        coordinatorClass.addBridge(
+            "patch_getVolume", emptyList(), "F", 2,
+            "iget v0, p0, $playerVolumeField\nreturn v0"
+        )
 
         // A coordinator setter that also moves its listeners to the new player is preferred
         // over a raw field write. None of the supported 9.x versions has one.

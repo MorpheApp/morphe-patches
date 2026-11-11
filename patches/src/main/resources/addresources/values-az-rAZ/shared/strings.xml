@@ -97,9 +97,10 @@ Yeni dilləri tərcümə etmək və ya mövcud tərcümələri təkmilləşdirm�
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Sazlama</string>
   <string name="morphe_debug_screen_summary">Qabaqcıl tərtibatçı seçimlərini və diaqnostik qeydləri tənzimlə</string>
-  <string name="morphe_debug_title">Sazlanma qeydedicini aktivləşdir</string>
-  <string name="morphe_debug_stacktrace_title">Sazlama qeydi yığın izi</string>
-  <string name="morphe_debug_stacktrace_summary">Səhvləri təyin etməyə kömək etmək üçün sazlanma jurnallarında yığın izlərin yerləşdirir</string>
+  <string name="morphe_debug_level_title">Sazlama qeydləri</string>
+  <string name="morphe_debug_level_entry_disabled">Qapalıdı</string>
+  <string name="morphe_debug_level_entry_debug">Sazlama</string>
+  <string name="morphe_debug_level_entry_verbose">Ətraflı</string>
   <string name="morphe_debug_toast_on_error_title">Morphe xətasında ani bildiriş göstər</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Xəta ani bildirişlərin qapatmaq, bütün Morphe xəta bildirişlərin gizlədir.
 
@@ -230,6 +231,19 @@ Batareya optimallaşmaları dəyişdirilməsə, görə bilərsiniz:
 Ən qüsursuz təcrübə istəyirsinizsə, bunu &lt;b&gt;silin&lt;/b&gt; və ✅ &lt;b&gt;%2$s&lt;/b&gt; nömrəsinin tövsiyə olunan tətbiq versiyasını yamaqlayın"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Mən təcrübi istəyirəm</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Mən sabitlik istəyirəm</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Yamaq yeniləmələri üçün tətbiqdaxili bildirişi göstər</string>
+  <string name="morphe_patches_update_notice_entry_off">Qapalı</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabil buraxılışlar</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabil və beta buraxılışlar</string>
+  <string name="morphe_patches_update_notice_dialog_title">Yeni yamaqlar var</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Yamaqlar &lt;b&gt;%1$s&lt;/b&gt; (cari: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Yeni xüsusiyyətlər</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Səhv düzəlişləri</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Digər dəyişikliklər</string>
+  <string name="morphe_patches_update_notice_dialog_more">...və daha %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Yenilə</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Ləğv et</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Çökmə qeydi istifadəçi sənədlərində saxlanıldı: %s</string>
   <string name="morphe_crash_log_saved">Çökmə qeydi saxlanıldı: %s</string>

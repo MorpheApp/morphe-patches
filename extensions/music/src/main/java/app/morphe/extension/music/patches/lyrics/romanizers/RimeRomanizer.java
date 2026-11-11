@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
  * The reading of a line of Han characters in the romanization language's script: {@link
  * RimeDictStore#word()} reads it a word at a time, and {@link RimeDictStore#reading(char)} reads
  * the rest a character at a time. A character neither has is kept as it is, since dropping it
- * would lose the characters around it.
+ * would lose the surrounding characters.
  */
 public final class RimeRomanizer {
 

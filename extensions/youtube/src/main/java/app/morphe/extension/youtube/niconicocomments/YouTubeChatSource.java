@@ -241,7 +241,8 @@ final class YouTubeChatSource implements Runnable {
                 consecutiveFailures = 0;
                 // The shown comments still fit when playback only ran past the loaded chat.
                 if (seeked || beforeWindow) {
-                    clearSeenIds();
+                    seenIds.clear();
+                    seenIdOrder.clear();
                     timedComments.reset();
                     listener.onReplayReset(videoId);
                 }
@@ -768,11 +769,6 @@ final class YouTubeChatSource implements Runnable {
             result.add(comment);
         }
         return result;
-    }
-
-    private void clearSeenIds() {
-        seenIds.clear();
-        seenIdOrder.clear();
     }
 
     static JSONObject parseYoutubeConfig(String html) throws JSONException {

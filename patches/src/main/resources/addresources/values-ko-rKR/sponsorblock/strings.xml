@@ -103,7 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_segments_highlight">하이라이트</string>
   <string name="morphe_sb_segments_highlight_summary">사람들이 동영상에서 가장 많이 찾는 구간입니다</string>
   <string name="morphe_sb_segments_intro">무음 / 인트로 구간</string>
-  <string name="morphe_sb_segments_intro_summary">아무 내용도 없는 구간입니다. 애니메이션이나 정적 프레임과 같은 내용을 포함하고 있습니다</string>
+  <string name="morphe_sb_segments_intro_summary">아무 내용도 없는 구간입니다. 일시 정지, 정지 화면 또는 반복되는 애니메이션이 해당됩니다</string>
   <string name="morphe_sb_segments_outro">최종 화면 / 크레딧</string>
   <string name="morphe_sb_segments_outro_summary">엔딩 크레딧이나 최종 화면이 나타나는 구간입니다</string>
   <string name="morphe_sb_segments_hook">흥미 유발 / 인사말</string>
@@ -176,7 +176,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_new_segment_choose_category">구간 카테고리를 선택하세요</string>
   <string name="morphe_sb_new_segment_disabled_category">이 카테고리는 비활성화되어 있습니다. 제출하려면 설정에서 활성화해야 합니다</string>
   <string name="morphe_sb_new_segment_title">새 SponsorBlock 구간</string>
-  <string name="morphe_sb_new_segment_mark_time_as_question">%s 을 구간의 시작 또는 끝으로 설정하시겠습니까?</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">%s을 구간의 시작 또는 끝으로 설정하시겠습니까?</string>
   <string name="morphe_sb_new_segment_mark_start">시작</string>
   <string name="morphe_sb_new_segment_mark_end">끝</string>
   <string name="morphe_sb_new_segment_now">현재</string>
@@ -189,11 +189,11 @@ Second \"item\" text"</string>
 부터
 %2$s
 
-(%3$s) 까지 입니다
+(%3$s)까지입니다
 
-이렇게 제출하시겠습니까?"</string>
+제출하시겠습니까?"</string>
   <string name="morphe_sb_new_segment_confirm_submit">제출</string>
-  <string name="morphe_sb_new_segment_start_is_before_end">구간의 시작 또는 끝을 잘못 설정하였습니다</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">시작은 끝보다 앞이어야 합니다</string>
   <string name="morphe_sb_new_segment_mark_locations_first">먼저 재생바에서 구간을 표시하세요</string>
   <string name="morphe_sb_new_segment_preview_segment_first">구간 미리 보기 버튼을 탭하여 설정한 구간이 정상적으로 건너뛰기가 되는지 확인하세요</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">직접 시간 구간 편집하기</string>
@@ -204,11 +204,11 @@ Second \"item\" text"</string>
 
 %s
 
-하이라이트를 제출하지 않으려면 ‘취소’를 탭하고 두 번째 구간을 표시하세요"</string>
+하이라이트를 제출하지 않으려면 '취소'를 탭하고 두 번째 구간을 표시하세요"</string>
   <string name="morphe_sb_new_segment_highlight_submit">하이라이트 제출</string>
   <string name="morphe_sb_stats_title">기록</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
-  <string name="morphe_sb_stats_connection_failure">기록을 일시적으로 가져올 수 없습니다 (응답 시간 초과)</string>
+  <string name="morphe_sb_stats_connection_failure">기록을 일시적으로 가져올 수 없습니다 (API 사용 불가)</string>
   <string name="morphe_sb_stats_loading">불러오는 중…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock을 비활성화하였습니다</string>
   <string name="morphe_sb_stats_username">사용자 이름: &lt;b&gt;%s&lt;/b&gt;</string>
@@ -216,7 +216,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_username_change_unknown_error">사용자 이름을 변경할 수 없습니다. 상태 코드: %1$s %2$s</string>
   <string name="morphe_sb_stats_username_changed">사용자 이름을 성공적으로 변경하였습니다</string>
   <string name="morphe_sb_stats_reputation">사용자의 평판: &lt;b&gt;%.2f&lt;/b&gt;</string>
-  <string name="morphe_sb_stats_submissions">제출 횟수: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_submissions">구간 &lt;b&gt;%s&lt;/b&gt;개를 제출했습니다</string>
   <string name="morphe_sb_stats_submissions_summary">구간을 보려면 여기를 탭하세요</string>
   <string name="morphe_sb_stats_saved_zero">SponsorBlock 리더보드</string>
   <string name="morphe_sb_stats_saved">다른 분들이 &lt;b&gt;%s&lt;/b&gt;개의 구간을 건너뛸 수 있게 해주셨습니다</string>

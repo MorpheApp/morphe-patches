@@ -11,12 +11,13 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
-import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+
+import com.google.protobuf.MessageLite;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.patches.queue.NativePlaylistQueuePatch;
+import app.morphe.extension.youtube.patches.queue.QueueFlyoutActions;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.LocalQueueSheet;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
@@ -57,10 +59,10 @@ public final class AddToQueuePatch {
         LOCAL
     }
 
-    public static final class MorpheQueueAvailability implements Setting.Availability {
+    public static final class NotLocalQueueAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return Settings.QUEUE_TYPE.get() == QueueType.MORPHE;
+            return Settings.QUEUE_TYPE.get() != QueueType.LOCAL;
         }
 
         @Override
@@ -69,10 +71,10 @@ public final class AddToQueuePatch {
         }
     }
 
-    public static final class NotLocalQueueAvailability implements Setting.Availability {
+    public static final class NativeQueueAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return Settings.QUEUE_TYPE.get() != QueueType.LOCAL;
+            return Settings.QUEUE_TYPE.get() == QueueType.NATIVE;
         }
 
         @Override
@@ -113,9 +115,10 @@ public final class AddToQueuePatch {
             return addLocalQueueButtons(flyoutPanel, index, videoId);
         }
 
-        if (!Settings.QUEUE_ADD_FLYOUT_MENU.get() ||
-                !FlyoutUtils.getFlyoutPlaylistId().isEmpty() ||
-                videoId.isEmpty()) {
+        // Only added if the menu has no queue item of the app, such as the menus of Shorts.
+        if (!FlyoutUtils.getFlyoutPlaylistId().isEmpty() || videoId.isEmpty()
+                || FlyoutUtils.hasVisibleFlyoutButton(queueButtonOriginalNames.get(0))
+                || FlyoutUtils.hasVisibleFlyoutButton(queueButtonOriginalNames.get(1))) {
             return index;
         }
 
@@ -123,8 +126,9 @@ public final class AddToQueuePatch {
                 flyoutPanel,
                 queueButtonDrawable,
                 queueButtonName,
+                // Added to the end of the queue, as the item does not say otherwise.
                 v -> flyoutButtonClickLogic(
-                        queueButtonOriginalNames.get(0),
+                        queueButtonOriginalNames.get(1),
                         videoId
                 ),
                 index
@@ -168,7 +172,7 @@ public final class AddToQueuePatch {
             }
 
             if (nativeQueue && queueButtonOriginalNames.get(1).equals(buttonName)
-                    && !NativePlaylistQueuePatch.canShowFlyoutLast()) {
+                    && FlyoutUtils.getNativeQueuePlaylistId().isEmpty() && !NativePlaylistQueuePatch.canShowFlyoutLast()) {
                 // The queue may have been cleared since the native model was prepared.
                 item.setVisibility(View.GONE);
                 continue;
@@ -195,19 +199,10 @@ public final class AddToQueuePatch {
         }
     }
 
-    private static boolean hasFlyoutButton(String buttonName) {
-        for (Pair<String, Integer> button : FlyoutUtils.getVisibleFlyoutButtons()) {
-            if (button.first.equals(buttonName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private static int addLocalQueueButtons(Object flyoutPanel, int index, String videoId) {
         final boolean feedFlyout = !FlyoutUtils.getFlyoutVideoId().isEmpty();
         if (feedFlyout && FlyoutUtils.getFlyoutPlaylistId().isEmpty()
-                && !hasFlyoutButton(queueButtonOriginalNames.get(0))) {
+                && !FlyoutUtils.hasVisibleFlyoutButton(queueButtonOriginalNames.get(0))) {
             index = FlyoutUtils.addFlyoutButton(
                     flyoutPanel,
                     queueButtonDrawable,
@@ -218,7 +213,7 @@ public final class AddToQueuePatch {
         }
 
         if (feedFlyout && FlyoutUtils.getFlyoutPlaylistId().isEmpty()
-                && !hasFlyoutButton(queueButtonOriginalNames.get(1))) {
+                && !FlyoutUtils.hasVisibleFlyoutButton(queueButtonOriginalNames.get(1))) {
             index = FlyoutUtils.addFlyoutButton(
                     flyoutPanel,
                     queueButtonDrawable,
@@ -275,6 +270,24 @@ public final class AddToQueuePatch {
         }
 
         return getNewRunnable(original, FlyoutUtils.getCurrentButtonName());
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Keep the selected playlist bound to its own native menu item.
+     */
+    public static Runnable replaceButtonRunnable(Runnable original, Object item) {
+        Runnable action = QueueFlyoutActions.getPlaylistQueueAction(item);
+        return action == null ? replaceButtonRunnable(original) : action;
+    }
+
+    /**
+     * Injection point.
+     * 21.15 and newer. Runs a native playlist menu row bound to its own playlist.
+     */
+    public static boolean replacePlaylistItemClick(Object item) {
+        return item instanceof MessageLite message && QueueFlyoutActions.onPlaylistQueueItemClick(message);
     }
 
     /**
@@ -357,7 +370,8 @@ public final class AddToQueuePatch {
 
                 Activity activity = Utils.getActivity();
                 if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
-                    PlaylistPatch.prepareDialogBuilder(activity, videoId);
+                    PlaylistPatch.prepareDialogBuilder(activity, videoId,
+                            queueButtonOriginalNames.get(0).equals(buttonName));
                 } else {
                     Logger.printException(() -> "Could not open queue flyout, activity is not available");
                 }
@@ -379,8 +393,15 @@ public final class AddToQueuePatch {
         if (!queueButtonOriginalNames.contains(buttonName)) {
             return null;
         }
-        Runnable action = NativePlaylistQueuePatch.getFlyoutQueueAction(videoId,
-                queueButtonOriginalNames.get(1).equals(buttonName));
+        String playlistId = FlyoutUtils.getNativeQueuePlaylistId();
+        Runnable action = null;
+        if (!playlistId.isEmpty()) {
+            action = NativePlaylistQueuePatch.getPlaylistQueueAction(playlistId,
+                    queueButtonOriginalNames.get(1).equals(buttonName));
+        } else if (!FlyoutUtils.isNativeQueuePlaylistMenu()) {
+            action = NativePlaylistQueuePatch.getFlyoutQueueAction(videoId,
+                    queueButtonOriginalNames.get(1).equals(buttonName));
+        }
         // An unsupported/stale menu context cannot silently invoke a Premium or
         // account-backed queue when the user explicitly selected Native queue.
         return action != null ? action : () -> {

@@ -109,14 +109,14 @@ Kung ikaw ay isang gumagamit ng YouTube Premium, maaaring hindi na kailanganin a
 
 Gawing default na kliyente ang %2$s?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Lumipat</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Maaaring magdulot ng mga isyu sa playback kung patid mo ang setting na ito</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Maaaring magdulot ng mga isyu sa playback ang pag-off ng setting na ito</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Subukang paganahin: Gayahin ang mga video stream &gt; Pag-sign in sa Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Default na kliyente</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Pag-sign in sa Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Hindi naka-sign in sa Android VR. Pindutin dito upang mag-sign in</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nangangailangan ang Android VR ng hiwalay na sign-in. I-tap dito para magpatuloy</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Kasalukuyang naka-sign in sa Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Upang gamitin ang tampok na ito, baguhin ang \'Default na kliyente\' sa Android VR</string>
@@ -144,7 +144,7 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
 • Kakailanganin mong mag-sign in muli kung babaguhin mo ang iyong password sa Google o aalisin sa pagkakarehistro ang device na ito sa iyong mga pagpipilian sa Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">Pansamantalang hindi magagamit ang OAuth2 (Nag-time out ang API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Natapos ang pag-sign in sa Android VR, subukang mag-sign muli sa VR</string>
-  <string name="morphe_oauth2_connection_failure_status">Pansamantalang hindi magagamit ang OAuth2 (kapalaran %s)</string>
+  <string name="morphe_oauth2_connection_failure_status">Pansamantalang hindi magagamit ang OAuth2 (katayuan %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">Pansamantalang hindi magagamit ang OAuth2</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Hindi maka-sign in sa VR, hindi naaprubahan ang pagpapatunay sa website</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Hindi maka-sign in sa VR: %s</string>
@@ -175,12 +175,12 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_skip_silence_title">Laktawan ang katahimikan</string>
   <string name="morphe_skip_silence_summary">Awtomatikong nilalaktawan ang mga tahimik na paghinto sa audio ng video</string>
   <string name="morphe_skip_silence_minimum_pause_title">Pinakamababang haba ng paghinto</string>
-  <string name="morphe_skip_silence_minimum_pause_summary">Tanging ang mga paghinto na hindi bababa sa habang ito ang paiikliin. Magkakabisa ito kapag nagsimula ang susunod na video</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Mga paghinto lamang na kasinghaba nito o mas mahaba ang paiikliin. Magkakabisa kapag nagsimula ang susunod na video</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy ng network</string>
   <string name="morphe_proxy_screen_summary">Iruta ang mga suportadong kahilingan ng network sa pamamagitan ng isang proxy</string>
   <string name="morphe_proxy_enabled_title">Paganahin ang proxy</string>
-  <string name="morphe_proxy_enabled_summary">Dinadala ng mga ruta ang mga kahilingan sa network sa pamamagitan ng isang naka-configure na HTTP o HTTPS proxy</string>
+  <string name="morphe_proxy_enabled_summary">Dinadaan ang mga suportadong kahilingan sa network sa isang naka-configure na HTTP o HTTPS proxy</string>
   <string name="morphe_proxy_host_title">Host ng proxy</string>
   <string name="morphe_proxy_host_summary">Pangalan ng host o IP address ng proxy server</string>
   <string name="morphe_proxy_port_title">Port ng proxy</string>
@@ -208,22 +208,24 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_replace_links_with_shortener_title">Baguhin ang mga nakabahaging link sa youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Pinipilit ang mga video na gamitin ang pinaikling format ng URL na youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Itala ang protocol buffer</string>
-  <string name="morphe_debug_protobuffer_summary">Nagdaragdag ng karagdagang impormasyon sa pag-log para sa mga developer upang matukoy ang mga bahagi ng app</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Magtatala ng karagdagang datos ng layout ang pagpapagana sa pagpipiliang ito, kabilang ang on-screen na teksto para sa ilang bahagi ng UI. 
+  <string name="morphe_debug_litho_title">Tala ng Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Nakapatay</string>
+  <string name="morphe_debug_litho_entry_path">Landas</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Path at buffer</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Itinatala ng Litho logging ang mga layout component ng app, kabilang ang on-screen na teksto para sa ilang bahagi ng UI.
 
-Makakatulong ito na matukoy ang mga komponente kapag gumagawa ng mga pasadyang filter. 
+Makakatulong ito na matukoy ang mga komponente kapag gumagawa ng mga pasadyang filter.
 
-Gayunpaman, magtatala din ng ilang datos ng tagagamit ang pagpapagana nito kagaya ng iyong IP address"</string>
+Gayunpaman, magtatala din ito ng ilang datos ng tagagamit gaya ng iyong IP address"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Pasadyang filter</string>
   <string name="morphe_custom_filter_screen_summary">I-configure ang mga pasadyang filter upang itago ang anumang component</string>
   <string name="morphe_custom_filter_title">Paganahin ang pasadyang filter</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Ihihiwalay ng bagong linya ang listahan ng mga component path builder string na ifi-filter</string>
-  <string name="morphe_custom_filter_toast_invalid_syntax">Imbalido na pasadyang filter: %s</string>
+  <string name="morphe_custom_filter_strings_summary">Listahan ng mga component path builder string na sasalain, na pinaghihiwalay ng mga bagong linya</string>
+  <string name="morphe_custom_filter_toast_invalid_syntax">Hindi balidong pasadyang filter: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
-  <string name="morphe_settings_menu_filter_screen_title">Salain ng menu ng mga setting</string>
+  <string name="morphe_settings_menu_filter_screen_title">Filter ng menu ng mga setting</string>
   <string name="morphe_settings_menu_filter_screen_summary">Itago ang mga item sa standard screen ng mga setting ng app ayon sa kanilang nakikitang pangalan</string>
   <string name="morphe_settings_menu_filter_picker_empty">Buksan ang standard screen ng mga setting ng app nang isang beses upang mapunan ang listahan</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
@@ -240,7 +242,7 @@ Kung ikaw ay isang YouTube Premium user, maaaring hindi kinakailangan ang settin
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_unavailable_summary">"Inaayos ang mga isyu sa pag-playback gamit ang panlabas na PoToken minter (Eksperimental)
 
-Upang gamitin ang feature na ito, i-off ang 'Pekeng video streams'"</string>
+Upang gamitin ang feature na ito, i-off ang 'Gayahin ang mga video stream'"</string>
   <string name="morphe_external_potoken_provider_user_dialog_message">Kung hindi ito gumana, subukang puwersahang isara ang MicroG</string>
   <string name="morphe_external_potoken_provider_settings_summary">Buksan ang mga setting ng PotHelper</string>
   <string name="morphe_external_potoken_provider_about_summary">"Kasalukuyang nasa ilalim ng pag-unlad ang tampok na ito at maaaring hindi gumana
@@ -255,15 +257,15 @@ I-on ang 'Gayahin ang mga video stream' upang ayusin ang pag-playback"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Pekein ang bersyon ng app</string>
   <string name="morphe_spoof_app_version_summary">Niloloko nito ang server para isipin na gumagamit ka ng mas lumang bersyon ng app upang maibalik ang mga dating feature ng UI</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"Ang bersyon ng app ay iisusubok na maging lumang bersyon.
+  <string name="morphe_spoof_app_version_user_dialog_message">"Ang bersyon ng app ay ibababa sa mas lumang bersyon.
 
-Magbago ang hitsura at mga feature ng app, ngunit maaaring magkaroon ng mga hindi inaasahang side effects.
+Magbabago ang hitsura at mga feature ng app, ngunit maaaring magkaroon ng mga hindi inaasahang side effects.
 
-Kung ito ay babaliksa sa huli, inirerekomenda ang paglinis ng data ng app upang maiwasan ang mga bug sa UI"</string>
+Kung i-o-off ito sa huli, inirerekomenda ang paglinis ng data ng app upang maiwasan ang mga bug sa UI"</string>
   <string name="morphe_spoof_app_version_target_title">Target na pekein ang bersyon ng app</string>
   <!-- misc.framerate.baseAppRefreshRatePatch -->
   <string name="morphe_app_refresh_rate_title">Rate ng pag-refresh ng app</string>
-  <string name="morphe_app_refresh_rate_default">Panimula</string>
+  <string name="morphe_app_refresh_rate_default">Awtomatiko</string>
   <string name="morphe_app_refresh_rate_fps">%s FPS</string>
   <string name="morphe_app_refresh_rate_type_title">I-override ang rate ng pag-refresh</string>
   <string name="morphe_app_refresh_rate_type_entry_1">Palagi</string>

@@ -18,29 +18,13 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 
 public final class SectionDotsMotion {
-
-    public static final int DOT_COUNT = 3;
-
     /** Below this a silence is breathing room, not a break. */
     public static final long MIN_GAP_MS = 3000L;
-    public static final State IDLE = new State(1f, false, 0f, new float[DOT_COUNT], 0f);
     private static final long INFERRED_FLOOR_MS = 1200L;
     private static final long INFERRED_MS_PER_CHAR = 90L;
     /** Caps the guess so a long line cannot reach into the next one. */
     private static final int INFERRED_MAX_CHARS = 40;
     private static final long INFERRED_CEILING_MS = 5000L;
-    /** Reference cycle head at full size, scaled down for shorter gaps. */
-    private static final float ENTER_MS = 3000f;
-    private static final float DIP_MS = 3000f;
-    private static final float STILL_MS = 200f;
-    private static final float DOT_UNLIT = 0.4f;
-    private static final float PILL_FADE_MS = 250f;
-    private static final float VANISH_DOT_MS = 200f;
-    /** Stagger, so the dots go one after another. */
-    private static final float VANISH_STAGGER_MS = 150f;
-    private static final float VANISH_TOTAL_MS = VANISH_DOT_MS + VANISH_STAGGER_MS * (DOT_COUNT - 1);
-    /** Lets the label fade back in before the next line starts. */
-    private static final float PRE_HIDE_MS = 500f;
 
     private SectionDotsMotion() {
     }
@@ -91,54 +75,6 @@ public final class SectionDotsMotion {
         return gaps == null ? List.of() : Collections.unmodifiableList(gaps);
     }
 
-    /**
-     * The motion at {@code positionMs} within {@code [gapStartMs, gapEndMs)}. Positions outside
-     * the gap, or gaps too short to animate, give {@link #IDLE}.
-     */
-    @NonNull
-    public static State stateAt(long gapStartMs, long gapEndMs, long positionMs) {
-        final long gapMs = gapEndMs - gapStartMs;
-        if (gapMs < MIN_GAP_MS || positionMs < gapStartMs || positionMs >= gapEndMs) {
-            return IDLE;
-        }
-        final float t = positionMs - gapStartMs;
-
-        // Too short for the tail phases to fit.
-        final float vanishStart = gapMs - PRE_HIDE_MS - VANISH_TOTAL_MS;
-        if (vanishStart <= 0f) {
-            return IDLE;
-        }
-
-        // Laid out backwards from the vanish so they tile a short silence instead of overlapping.
-        final float factor = Math.min(vanishStart / (ENTER_MS + DIP_MS + STILL_MS), 1f);
-        final float enterEnd = ENTER_MS * factor;
-
-        final float pillFade = t < PILL_FADE_MS
-                ? 1f - smooth(t / PILL_FADE_MS)
-                : smooth((t - vanishStart - VANISH_TOTAL_MS) / PILL_FADE_MS);
-        final float pillAlpha = clamp(pillFade);
-        final boolean dotsVisible = t < vanishStart + VANISH_TOTAL_MS;
-        final float groupAlpha = t < enterEnd ? smooth(t / enterEnd) : 1f;
-
-        // Staggered so the last dot finishes exactly when the row hides.
-        final float dotSpan = Math.max(1f, (vanishStart - enterEnd) / DOT_COUNT);
-        final float[] dotAlpha = new float[DOT_COUNT];
-        for (int i = 0; i < DOT_COUNT; i++) {
-            final float lit = DOT_UNLIT + (1f - DOT_UNLIT)
-                    * clamp((t - enterEnd - dotSpan * i) / dotSpan);
-            final float gone = 1f - smooth(clamp(
-                    (t - (vanishStart + VANISH_STAGGER_MS * i)) / VANISH_DOT_MS));
-            dotAlpha[i] = Math.min(lit, gone);
-        }
-
-        // Opens over the fade-in and closes after the dots go, so nothing moves under a visible dot.
-        final float dotsGone = vanishStart + VANISH_TOTAL_MS;
-        final float expand = t < enterEnd ? smooth(t / enterEnd)
-                : 1f - smooth(clamp((t - dotsGone) / PRE_HIDE_MS));
-
-        return new State(pillAlpha, dotsVisible, groupAlpha, dotAlpha, clamp(expand));
-    }
-
     /** The end of a line: its own, else its last word's, else a guess from the text. */
     private static long effectiveEndMs(@Nullable LyricsLine line) {
         if (line == null) {
@@ -173,16 +109,6 @@ public final class SectionDotsMotion {
                 INFERRED_CEILING_MS);
     }
 
-    private static float clamp(float v) {
-        return v < 0f ? 0f : (v > 1f ? 1f : v);
-    }
-
-    /** Smoothstep, the reference easing. */
-    private static float smooth(float v) {
-        final float x = clamp(v);
-        return x * x * (3f - 2f * x);
-    }
-
     /**
      * A silence long enough to play the dots, anchored on the line that follows it.
      *
@@ -192,13 +118,4 @@ public final class SectionDotsMotion {
     public record Gap(int tagLineIndex, long gapStartMs, long gapEndMs) {
     }
 
-    /**
-     * @param pillAlpha  Opacity of the label: 1 outside the gap, 0 while the dots are up.
-     * @param groupAlpha Opacity of the dot row.
-     * @param dotAlpha   Per dot, lighting up and going out in turn.
-     * @param expand     How far a line without a label opens up for the dots, 0 to 1.
-     */
-    public record State(float pillAlpha, boolean dotsVisible, float groupAlpha, float[] dotAlpha,
-                        float expand) {
-    }
 }

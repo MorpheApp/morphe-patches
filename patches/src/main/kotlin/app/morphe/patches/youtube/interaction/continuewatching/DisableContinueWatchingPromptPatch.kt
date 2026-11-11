@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -27,7 +27,8 @@ private const val EXTENSION_CLASS =
 val disableContinueWatchingPromptPatch = patch(
     name = "Disable continue watching prompt",
     description = "Adds an option to keep autoplay going instead of pausing with a " +
-            "\"Continue watching\" prompt after a period of inactivity.",
+            "\"Continue watching\" prompt after a period of inactivity, " +
+            "or to always show the autoplay countdown at the end of the video.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -39,8 +40,24 @@ val disableContinueWatchingPromptPatch = patch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_disable_continue_watching_prompt")
+            ListPreference("morphe_continue_watching_prompt")
         )
+
+        // Hooked first, as the inactivity comparison hook below adds instructions before this index.
+        AutoplayInactivityLimitFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[6].index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->adjustAutoplayBlocked(Z)Z
+                        move-result v$register
+                    """
+                )
+            }
+        }
 
         mapOf(
             AutoplayInactivityLimitFingerprint to 3,

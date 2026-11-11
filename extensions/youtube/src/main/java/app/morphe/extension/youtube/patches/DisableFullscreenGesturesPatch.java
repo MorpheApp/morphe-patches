@@ -11,10 +11,12 @@
 package app.morphe.extension.youtube.patches;
 
 import android.app.Activity;
+import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
@@ -50,11 +52,74 @@ public class DisableFullscreenGesturesPatch {
         return false;
     }
 
-    /**
-     * Injection point.
-     */
-    public static boolean disableZoomGesture() {
+    private static boolean disableZoomGesture() {
         return Settings.DISABLE_FULLSCREEN_ZOOM_GESTURE.get();
+    }
+
+    /**
+     * Position of the first finger of the touch on the player.
+     */
+    private static float zoomTouchDownX, zoomTouchDownY;
+    /**
+     * If the first finger moved, so the touch is not a tap.
+     */
+    private static boolean zoomFirstPointerMoved;
+    /**
+     * Time when the second finger touched the player, or zero.
+     */
+    private static long zoomSecondPointerDownTime;
+
+    /**
+     * Injection point. Touch events of the player pinch-to-zoom gesture.
+     */
+    public static void onZoomTouchEvent(View view, MotionEvent event) {
+        try {
+            switch (event.getActionMasked()) {
+                case MotionEvent.ACTION_DOWN:
+                    zoomTouchDownX = event.getRawX();
+                    zoomTouchDownY = event.getRawY();
+                    zoomFirstPointerMoved = false;
+                    zoomSecondPointerDownTime = 0;
+                    break;
+                case MotionEvent.ACTION_POINTER_DOWN:
+                    if (event.getPointerCount() == 2) {
+                        zoomSecondPointerDownTime = event.getEventTime();
+                    }
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    if (!zoomFirstPointerMoved) {
+                        final float touchSlop = ViewConfiguration.get(view.getContext()).getScaledTouchSlop();
+                        zoomFirstPointerMoved = Math.abs(event.getRawX() - zoomTouchDownX) > touchSlop
+                                || Math.abs(event.getRawY() - zoomTouchDownY) > touchSlop;
+                    }
+                    break;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onZoomTouchEvent failure", ex);
+        }
+    }
+
+    /**
+     * Injection point. {@code onScaleBegin} of the player pinch-to-zoom gesture.
+     * <p>
+     * A tap with two fingers (the double tap that skips chapters) is a tap while the first finger
+     * stays where it touched, and the zoom takes the touch from the tap as soon as it begins.
+     * The fingers of a tap can move apart a little, so while the touch can still be a tap
+     * the zoom does not begin, and it begins with a later move of the fingers.
+     *
+     * @return If the zoom must not begin.
+     */
+    public static boolean disableZoomGestureBegin(ScaleGestureDetector detector) {
+        if (disableZoomGesture()) {
+            return true;
+        }
+
+        if (!zoomFirstPointerMoved && zoomSecondPointerDownTime != 0
+                && detector.getEventTime() - zoomSecondPointerDownTime < ViewConfiguration.getDoubleTapTimeout()) {
+            Logger.printDebug(() -> "Zoom does not begin, the touch can be a two finger tap");
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -144,7 +209,9 @@ public class DisableFullscreenGesturesPatch {
         if (!Settings.RESTORE_PINCH_TO_ZOOM.get()) {
             pinchScale = MIN_PINCH_SCALE;
         }
-        if (fullscreenScaleOwnsTransform()) {
+        FullscreenVideoScalePatch.VideoScaleMode mode = Settings.FULLSCREEN_VIDEO_SCALE.get();
+        if (mode == FullscreenVideoScalePatch.VideoScaleMode.STRETCH
+                || mode == FullscreenVideoScalePatch.VideoScaleMode.ZOOM) {
             pinchOwningView = false;
             detachPreDraw();
             FullscreenVideoScalePatch.applyScale();
@@ -167,12 +234,6 @@ public class DisableFullscreenGesturesPatch {
         disableClipping(view);
         applyScaleToViewAndSurfaces(view, pinchScale);
         attachPreDraw(view);
-    }
-
-    private static boolean fullscreenScaleOwnsTransform() {
-        FullscreenVideoScalePatch.VideoScaleMode mode = Settings.FULLSCREEN_VIDEO_SCALE.get();
-        return mode == FullscreenVideoScalePatch.VideoScaleMode.STRETCH
-                || mode == FullscreenVideoScalePatch.VideoScaleMode.ZOOM;
     }
 
     private static void applyScaleToViewAndSurfaces(View view, float scale) {

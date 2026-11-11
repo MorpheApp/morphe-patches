@@ -46,10 +46,11 @@ import app.morphe.extension.shared.ResourceUtils;
  * of {@link Settings#LYRICS_RIME_CUSTOM_DICTS}.
  *
  * <p>Only Cantonese ships. Every other word list is added by the user, who supplies its URL
- * and therefore judges its licence and freshness; the patch never bundles a list whose terms
+ * and therefore judges its license and freshness; the patch never bundles a list whose terms
  * it cannot vouch for. Downloaded rather than shipped, because the patch can only merge XML
  * resources and because a word list goes stale as soon as the source moves on.
  */
+@SuppressWarnings("ConstantValue")
 public final class RimeDictStore {
 
     /** The character table a word table falls back to for the characters a word does not cover. */
@@ -232,14 +233,11 @@ public final class RimeDictStore {
     public static String reading(char c) {
         RimeLang lang = lang();
         if (lang == null) return null;
-        switch (lang.charSource) {
-            case CHAR_SOURCE_CANTONESE:
-                return UniDictStore.cantoneseReading(c);
-            case CHAR_SOURCE_PINYIN:
-                return UniDictStore.pinyinReading(c);
-            default:
-                return null;
-        }
+        return switch (lang.charSource) {
+            case CHAR_SOURCE_CANTONESE -> UniDictStore.cantoneseReading(c);
+            case CHAR_SOURCE_PINYIN -> UniDictStore.pinyinReading(c);
+            default -> null;
+        };
     }
 
     /** Null leaves the line to be read a character at a time. */
@@ -265,14 +263,11 @@ public final class RimeDictStore {
     public static String reading(char c, String code) {
         RimeLang lang = langForCode(code);
         if (lang == null) return null;
-        switch (lang.charSource) {
-            case CHAR_SOURCE_CANTONESE:
-                return UniDictStore.cantoneseReading(c);
-            case CHAR_SOURCE_PINYIN:
-                return UniDictStore.pinyinReading(c);
-            default:
-                return null;
-        }
+        return switch (lang.charSource) {
+            case CHAR_SOURCE_CANTONESE -> UniDictStore.cantoneseReading(c);
+            case CHAR_SOURCE_PINYIN -> UniDictStore.pinyinReading(c);
+            default -> null;
+        };
     }
 
     @Nullable
@@ -326,7 +321,7 @@ public final class RimeDictStore {
      * rather than only the table of the chosen language. Progress goes through the same listener
      * a single fetch uses, but only the end of the last table reports ready.
      *
-     * <p>A fetch already on its way is not cancelled: the worker is single threaded, so this
+     * <p>A fetch already on its way is not canceled: the worker is single threaded, so this
      * batch waits behind it and reattaches its listener when its turn comes.
      */
     public static void ensureSelected(RomanizationDict.Listener listener) {
@@ -399,6 +394,7 @@ public final class RimeDictStore {
     }
 
     /** Records whether a built-in table is ticked, so it is fetched only when asked for. */
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     public static void setBuiltinSelected(String code, boolean selected) {
         final String stored = Settings.LYRICS_RIME_BUILTIN_SELECTED.get();
         final StringBuilder kept = new StringBuilder();
@@ -707,12 +703,7 @@ public final class RimeDictStore {
     /** The table of the language, or a new one named by the row. */
     private static WordTableFile table(RimeLang lang) {
         synchronized (TABLES) {
-            WordTableFile table = TABLES.get(lang.code);
-            if (table == null) {
-                table = new WordTableFile(lang.tableName, lang.magic, lang.slotCount);
-                TABLES.put(lang.code, table);
-            }
-            return table;
+            return TABLES.computeIfAbsent(lang.code, k -> new WordTableFile(lang.tableName, lang.magic, lang.slotCount));
         }
     }
 
@@ -887,16 +878,12 @@ public final class RimeDictStore {
     }
 
     private static int parseCharSource(String value) {
-        switch (value.trim().toUpperCase(Locale.ROOT)) {
-            case "CANTONESE":
-                return CHAR_SOURCE_CANTONESE;
-            case "PINYIN":
-                return CHAR_SOURCE_PINYIN;
-            case "NONE":
-                return CHAR_SOURCE_NONE;
-            default:
-                return CHAR_SOURCE_AUTO;
-        }
+        return switch (value.trim().toUpperCase(Locale.ROOT)) {
+            case "CANTONESE" -> CHAR_SOURCE_CANTONESE;
+            case "PINYIN" -> CHAR_SOURCE_PINYIN;
+            case "NONE" -> CHAR_SOURCE_NONE;
+            default -> CHAR_SOURCE_AUTO;
+        };
     }
 
     /** One language's word table: where it is fetched from and what it is stored as. */

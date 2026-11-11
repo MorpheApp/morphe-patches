@@ -18,7 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Politika zasebnosti Reddita</string>
   <string name="morphe_google_signin_not_available_toast">Prijava z Googlom ni mogoče. Uporabite email za prijavo</string>
-  <string name="morphe_app_downgrade_dialog_title">Razstopitev ni podprta</string>
+  <string name="morphe_app_downgrade_dialog_title">Znižanje različice ni podprto</string>
   <string name="morphe_app_downgrade_dialog_message">"Ta namestitev Reddita je bila razstopljena z različice &lt;b&gt;%1$s&lt;/b&gt; na &lt;b&gt;%2$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicami in aplikacija morda ne bo delovala pravilno.
@@ -46,7 +46,7 @@ Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicam
   <string name="morphe_copy_text_user_dialog_message">Strjevanje komentarjev bo prenehalo delovati, ko je omogočeno Kopiraj besedilo</string>
   <string name="morphe_custom_font_title">Poželjna pisava</string>
   <string name="morphe_custom_font_summary">Naložite datoteko pisave TTF ali OTF po spodnji poti. Omogočanje te možnosti onemogoči tudi možnost uporabe sistemske pisave.</string>
-  <string name="morphe_custom_font_file_path_title">Datoteka s pożyelnjo pisavo</string>
+  <string name="morphe_custom_font_file_path_title">Datoteka pisave po meri</string>
   <string name="morphe_custom_font_file_path_summary">Tapnite za izberitev datoteke s pisavo TTF ali OTF</string>
   <string name="morphe_custom_font_selected_font">Izbrana pisava – %s</string>
   <string name="morphe_custom_font_pick_file_first">Najprej izberite datoteko pisave.</string>
@@ -67,9 +67,9 @@ Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicam
   <string name="morphe_remove_notification_dialog_summary">Samodejno skrije okno z obvestili, ko obiščete subreddit.</string>
   <string name="morphe_high_quality_avatars_title">Avatarji visoke kakovosti</string>
   <string name="morphe_high_quality_avatars_summary">Prikaže uporabnikove avatarje v polni ločljivosti</string>
-  <string name="morphe_show_flairs_in_home_feed_title">Prikaži osebna označevanja v domačem viru</string>
-  <string name="morphe_show_flairs_in_home_feed_summary">V domačem viru prikaže oznake za postane</string>
-  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Nekateri elementi vira morda ne prikazujejo osebne označevanja</string>
+  <string name="morphe_show_flairs_in_home_feed_title">Prikaži oznake objav v domačem viru</string>
+  <string name="morphe_show_flairs_in_home_feed_summary">V domačem viru prikaže oznake objav</string>
+  <string name="morphe_show_flairs_in_home_feed_user_dialog_message">Nekateri elementi vira morda ne prikazujejo oznak objav</string>
   <string name="morphe_show_view_count_title">Prikaži število ogledov na objavah</string>
   <string name="morphe_show_view_count_summary">Omejitev: Na voljo samo, če odziv API vključuje število ogledov</string>
   <string name="morphe_flip_post_action_bar_title">Obrni vrstico dejanj objave</string>
@@ -114,7 +114,7 @@ Podatki aplikacije iz novejše različice ne delujejo s starejšimi različnicam
   <string name="morphe_download_location_no_picker">Na tej napravi ni na voljo izbirnik map</string>
   <string name="morphe_download_location_pattern_title">Ime datoteke</string>
   <string name="morphe_download_location_pattern_hint">Ime datoteke Reddita</string>
-  <string name="morphe_download_location_pattern_help">Kliknite žeton za njegovo vstavljanje. Znak / ustvari podmapo. Neznanе vrednosti se prikažejo kot »neznan«</string>
+  <string name="morphe_download_location_pattern_help">Tapnite žeton za njegovo vstavitev. Znak / ustvari podmapo. Neznane vrednosti postanejo »neznano«</string>
   <string name="morphe_download_location_example_images">Slike: %s</string>
   <string name="morphe_download_location_example_videos">Videoposnetki: %s</string>
   <string name="morphe_download_location_save">Shrani</string>

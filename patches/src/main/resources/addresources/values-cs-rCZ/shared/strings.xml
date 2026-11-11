@@ -69,7 +69,7 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <string name="morphe_pref_import_export_title">Importovat / Exportovat</string>
   <string name="morphe_pref_import_export_summary">Importovat / exportovat nastavení Morphe</string>
   <string name="morphe_settings_import_file">Importovat ze souboru</string>
-  <string name="morphe_settings_import_file_success">Nastavení importována úspěšně, klepněte na Uložit pro aplikaci</string>
+  <string name="morphe_settings_import_file_success">Nastavení bylo úspěšně importováno, klepnutím na Uložit jej použijte</string>
   <string name="morphe_settings_import_file_failed">Nepodařilo se importovat nastavení</string>
   <string name="morphe_settings_export_file">Exportovat do souboru</string>
   <string name="morphe_settings_export_file_success">Nastavení úspěšně exportováno</string>
@@ -97,9 +97,10 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ladění</string>
   <string name="morphe_debug_screen_summary">Konfigurace pokročilých voleb pro vývojáře a diagnostických protokolů</string>
-  <string name="morphe_debug_title">Povolit protokolování ladění</string>
-  <string name="morphe_debug_stacktrace_title">Sledování zásobníku ladění</string>
-  <string name="morphe_debug_stacktrace_summary">Zahrnuje trasování zásobníku v protokolech ladění pro usnadnění identifikace chyb</string>
+  <string name="morphe_debug_level_title">Debugovací záznamy</string>
+  <string name="morphe_debug_level_entry_disabled">Vypnuto</string>
+  <string name="morphe_debug_level_entry_debug">Ladění</string>
+  <string name="morphe_debug_level_entry_verbose">Podrobný</string>
   <string name="morphe_debug_toast_on_error_title">Zobrazit oznámení v případě chyby Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Vypnutí chybových toastů skryje všechna chybová oznámení Morphe.
 
@@ -111,7 +112,7 @@ Nebudete informováni o žádné neočekávané události"</string>
   <string name="morphe_debug_logs_search_hint">Hledat v ladicích protokolech…</string>
   <string name="morphe_debug_export_logs_clear">Vymazat</string>
   <string name="morphe_debug_logs_disabled">Ladění je vypnuto</string>
-  <string name="morphe_debug_logs_none_found">Nebyla nalezena žádná protokola ladění</string>
+  <string name="morphe_debug_logs_none_found">Nebyly nalezeny žádné protokoly ladění</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Protokoly ladění zkopírovány</string>
   <string name="morphe_debug_logs_failed_to_export">Nepodařilo se exportovat protokoly ladění: %s</string>
   <string name="morphe_debug_logs_clear_toast">Protokoly ladění vymazány</string>
@@ -195,9 +196,11 @@ Klepnutím ji odinstalujte, poté tuto aplikaci znovu otevřete a nainstalujte M
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG nemá oprávnění běžet na pozadí.
 
-Postupujte podle průvodce „Don't kill my app"</string>
+Postupujte podle průvodce „Don't kill my app“ pro váš telefon a použijte pokyny na svou instalaci MicroG.
+
+To je nutné, aby aplikace fungovala"</string>
   <string name="gms_core_dialog_open_website_text">Otevřít web</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optimalizace baterie MicroG musí být zakázány, aby se zabránilo problémům.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optimalizace baterie MicroG musí být zakázána, aby se zabránilo problémům.
 
 Zakázání optimalizace baterie pro MicroG nebude mít negativní vliv na spotřebu baterie.
 
@@ -217,16 +220,29 @@ Pokud se optimalizace baterie nezmění, můžete zaznamenat:
   <string name="morphe_link_handling_step1_message">Otevřete nastavení původní aplikace a vypněte všechny odkazy domén</string>
   <string name="morphe_link_handling_step2_title">Krok 2: Zapnout opravené odkazy aplikací</string>
   <string name="morphe_link_handling_step2_message">Otevřete nastavení opravené aplikace a zapněte všechny odkazy domén</string>
-  <string name="morphe_link_handling_open">Importováno nastavení</string>
+  <string name="morphe_link_handling_open">Otevřít nastavení</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentální upozornění 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Používáte experimentální verzi aplikace ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 🔧 Očekávejte neobvyklé chování aplikace nebo neidentifikované chyby, protože dolaďujeme opravy pro tuto verzi aplikace.
 &lt;br/&gt;&lt;br/&gt;
-Pokud chcete mít co nejméně problémů, &lt;b&gt;odinstalujte&lt;/b&gt; tuto aplikaci a aktualizujte doporučenou verzi aplikace ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Pokud chcete mít co nejméně problémů, &lt;b&gt;odinstalujte&lt;/b&gt; tuto aplikaci a patchujte doporučenou verzi aplikace ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chci experimentální</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chci stabilní</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Zobrazovat oznámení v aplikaci o aktualizacích oprav</string>
+  <string name="morphe_patches_update_notice_entry_off">Vypnuto</string>
+  <string name="morphe_patches_update_notice_entry_stable">Stabilní verze</string>
+  <string name="morphe_patches_update_notice_entry_dev">Stabilní a vývojové verze</string>
+  <string name="morphe_patches_update_notice_dialog_title">K dispozici jsou nové záplaty</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (aktuální: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nové funkce</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Opravy chyb</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Ostatní změny</string>
+  <string name="morphe_patches_update_notice_dialog_more">…a dalších %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Aktualizovat</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Zrušit</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Záznam o pádu byl uložen do uživatelských dokumentů: %s</string>
   <string name="morphe_crash_log_saved">Záznam o pádu uložen: %s</string>

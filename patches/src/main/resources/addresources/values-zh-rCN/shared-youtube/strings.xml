@@ -46,10 +46,10 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_dark_custom_title">自定义深色背景</string>
   <string name="morphe_theme_color_dark_custom_summary">设置深色主题的背景颜色</string>
   <string name="morphe_theme_color_entry_1">应用默认</string>
-  <string name="morphe_theme_color_entry_4">Material You (中性)|||</string>
+  <string name="morphe_theme_color_entry_4">Material You (中性)</string>
   <string name="morphe_theme_color_entry_5">Material You (主色)</string>
   <string name="morphe_theme_color_entry_6">Material You (次要)</string>
-  <string name="morphe_theme_color_entry_7">Material You (第三)</string>
+  <string name="morphe_theme_color_entry_7">Material You (第三色)</string>
   <string name="morphe_theme_color_custom_entry">自定义</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">下载</string>
@@ -88,7 +88,7 @@ Second \"item\" text"</string>
 • “打开方式”应用选择器
 • Android Auto 图标
 
-要更改所有位置的图标，请重新打补丁并更改“应用图标”补丁选项。\"}]}[{"</string>
+要更改所有位置的图标，请重新打补丁并更改“应用图标”补丁选项。"</string>
   <string name="morphe_custom_branding_notification_icon_title">通知图标</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">匹配应用图标</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe 玩乐</string>
@@ -116,7 +116,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_client_type_title">默认客户端</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR 登录</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">未登录 Android VR。点击此处登录</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR 需要单独登录。点击此处继续</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">当前已登录 Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">要使用此功能，请将“默认客户端”更改为Android VR</string>
@@ -189,9 +189,9 @@ Second \"item\" text"</string>
   <string name="morphe_proxy_https_summary">使用 HTTPS 连接到代理服务器，而不是 HTTP</string>
   <string name="morphe_proxy_auth_enabled_title">代理身份验证</string>
   <string name="morphe_proxy_auth_enabled_summary">使用 Basic 身份验证发送代理请求</string>
-  <string name="morphe_proxy_auth_username_title">您的用户名</string>
+  <string name="morphe_proxy_auth_username_title">代理用户名</string>
   <string name="morphe_proxy_auth_username_summary">Basic 代理身份验证的用户名</string>
-  <string name="morphe_proxy_auth_password_title">显示密码</string>
+  <string name="morphe_proxy_auth_password_title">代理密码</string>
   <string name="morphe_proxy_auth_password_summary">Basic 代理身份验证的密码</string>
   <string name="morphe_proxy_allow_direct_fallback_title">允许直接回退</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">如果代理失败，则直接连接</string>
@@ -208,13 +208,15 @@ Second \"item\" text"</string>
   <string name="morphe_replace_links_with_shortener_title">将分享链接更改为 youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">强制视频使用缩短的 youtu.be URL 格式</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">记录协议缓冲区</string>
-  <string name="morphe_debug_protobuffer_summary">为开发者添加额外的日志记录信息，以识别应用组件</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"启用此设置将记录额外的布局数据，包括某些 UI 组件的屏幕文本。
+  <string name="morphe_debug_litho_title">Litho 日志</string>
+  <string name="morphe_debug_litho_entry_disabled">已禁用</string>
+  <string name="morphe_debug_litho_entry_path">路径</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">路径和缓冲区</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho 日志记录应用的布局组件，包括某些 UI 组件的屏幕文本。
 
 这有助于在创建自定义过滤器时识别组件。
 
-但是，启用此设置也会记录一些用户数据，例如您的 IP 地址"</string>
+但是，这也会记录一些用户数据，例如您的 IP 地址"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">自定义过滤器</string>
   <string name="morphe_custom_filter_screen_summary">配置自定义过滤器以隐藏任何组件</string>

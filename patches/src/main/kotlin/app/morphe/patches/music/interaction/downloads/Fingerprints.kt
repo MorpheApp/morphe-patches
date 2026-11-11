@@ -9,12 +9,16 @@ package app.morphe.patches.music.interaction.downloads
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patches.music.layout.hide.flyoutmenu.MenuItemFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -77,5 +81,56 @@ internal object MusicOfflinePlayerResponseFingerprint : Fingerprint(
             returnType = "L"
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Layout of the menu bottom sheet of songs and videos.
+ */
+internal object MusicMenuBottomSheetLayoutFingerprint : Fingerprint(
+    returnType = "I",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "music_menu_bottom_sheet_dialog_fragment")
+    )
+)
+
+/**
+ * Creates the items of the menu bottom sheet of songs and videos, such as the menus of the downloads list,
+ * from the items of the menu renderer.
+ */
+internal object MusicMenuBottomSheetItemsFingerprint : Fingerprint(
+    classFingerprint = MusicMenuBottomSheetLayoutFingerprint,
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
+        // Menu renderer of the bottom sheet.
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/Object;"),
+        methodCall(smali = "Ljava/util/List;->iterator()Ljava/util/Iterator;"),
+        methodCall(smali = "Ljava/util/Iterator;->next()Ljava/lang/Object;"),
+        // Menu item renderer.
+        opcode(Opcode.CHECK_CAST, location = MatchAfterWithin(3)),
+        // Adds it to the items of the bottom sheet.
+        methodCall(
+            name = "add",
+            parameters = listOf("Ljava/lang/Object;"),
+            returnType = "Z",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Click of an item of a native menu.
+ */
+internal object MenuItemClickFingerprint : Fingerprint(
+    classFingerprint = MenuItemFingerprint,
+    name = "onClick",
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;"),
+    filters = listOf(
+        // Menu item renderer of the item.
+        fieldAccess(definingClass = "this", opcode = Opcode.IGET_OBJECT)
     )
 )

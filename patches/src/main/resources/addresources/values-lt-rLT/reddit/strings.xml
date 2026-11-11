@@ -23,7 +23,7 @@ Second \"item\" text"</string>
 &lt;br/&gt;&lt;br/&gt;
 Programėlės duomenys iš naujesnės versijos neveikia su senesnėmis versijomis, todėl programėlė gali veikti netinkamai.
 &lt;br/&gt;&lt;br/&gt;
-Norėdami naudoti senesnę versiją, turite &lt;b&gt;p pašalinti&lt;/b&gt; „Reddit“ ir tada įsistaliuoti senesnę versiją."</string>
+Norėdami naudoti senesnę versiją, turite &lt;b&gt;pašalinti&lt;/b&gt; „Reddit“ ir tada įdiegti senesnę versiją."</string>
   <string name="morphe_app_downgrade_dialog_open_app_info">Atidaryti programėlės informaciją</string>
   <string name="morphe_screen_ads_title">Reklamos</string>
   <string name="morphe_hide_post_ads_title">Paslėpti vaizdo reklamas</string>
@@ -93,10 +93,10 @@ Norėdami naudoti senesnę versiją, turite &lt;b&gt;p pašalinti&lt;/b&gt; „R
   <string name="morphe_keep_feed_position_summary">Išlaiko srautą toje pačioje padėtyje uždarius įrašą, paveikslėlį ar vaizdo įrašą, užuot perkėlus atidarytą įrašą į viršų</string>
   <string name="morphe_feed_media_max_height_title">Maksimalus srauto medijos aukštis</string>
   <string name="morphe_feed_media_max_height_summary">Maksimalus paveikslėlių, vaizdo įrašų ir galerijų aukštis sraute, kaip jų pločio kartotinis. Aukštesnė medija apkarpoma. 1,33 yra Reddit numatytoji reikšmė</string>
-  <string name="morphe_redgifs_audio_title">Groti „Redgifs</string>
-  <string name="morphe_redgifs_audio_summary">Gleidžia originalų „Redgifs</string>
-  <string name="morphe_redgifs_hd_title">„Redgifs</string>
-  <string name="morphe_redgifs_hd_summary">Groja HD „Redgifs“ vaizdo įrašus. HD vaizdo įrašai didesni ir gali sustoti kraunamasi</string>
+  <string name="morphe_redgifs_audio_title">Groti „Redgifs“ su garsu</string>
+  <string name="morphe_redgifs_audio_summary">Groja originalų „Redgifs“ vaizdo įrašą, o ne „Reddit“ kopiją, kurioje dažnai nėra garso</string>
+  <string name="morphe_redgifs_hd_title">„Redgifs“ HD kokybė</string>
+  <string name="morphe_redgifs_hd_summary">Groja HD „Redgifs“ vaizdo įrašus. HD vaizdo įrašai didesni ir gali sustoti kraunantis</string>
   <string name="morphe_download_location_title">Atsisiuntimo vieta</string>
   <string name="morphe_download_location_all_title">Visos paskyros</string>
   <string name="morphe_download_location_default_summary">Numatytoji „Reddit“: nuotraukos aplanke Pictures/Reddit, vaizdo įrašai – Download</string>
@@ -114,7 +114,7 @@ Norėdami naudoti senesnę versiją, turite &lt;b&gt;p pašalinti&lt;/b&gt; „R
   <string name="morphe_download_location_no_picker">Šiame įrenginyje nėra prieinamas aplanko parinkiklis</string>
   <string name="morphe_download_location_pattern_title">Failo pavadinimas</string>
   <string name="morphe_download_location_pattern_hint">„Reddit“ failo pavadinimas</string>
-  <string name="morphe_download_location_pattern_help">Paspauskite žetoną, kad jį įterptumėte. / kuriamas papildomas aplankas. Nežinomi duomenys virsta „unknown”</string>
+  <string name="morphe_download_location_pattern_help">Paspauskite žetoną, kad jį įterptumėte. / kuriamas papildomas aplankas. Nežinomi duomenys virsta „unknown“</string>
   <string name="morphe_download_location_example_images">Nuotraukos: %s</string>
   <string name="morphe_download_location_example_videos">Vaizdo įrašai: %s</string>
   <string name="morphe_download_location_save">Išsaugoti</string>
@@ -124,7 +124,7 @@ Norėdami naudoti senesnę versiją, turite &lt;b&gt;p pašalinti&lt;/b&gt; „R
   <string name="morphe_download_location_delete_confirm">Ištrinti %s atsisiuntimo vietą?</string>
   <string name="morphe_download_location_save_failed">Nepavyko išsaugoti į atsisiuntimo vietą. Vietoj to išsaugota numatytojoje „Reddit“ aplanke</string>
   <string name="morphe_download_location_folder_unavailable">Atsisiuntimo aplankas daugiau neprieinamas. Vietoj to išsaugota numatytojoje „Reddit“ aplanke</string>
-  <string name="morphe_download_location_video_failed">Nepavyko išsaugoti atsislinkto vaizdo įrašo</string>
+  <string name="morphe_download_location_video_failed">Nepavyko išsaugoti atsisiųsto vaizdo įrašo</string>
   <string name="morphe_download_location_invalid_folder">Šis aplankas negali būti naudojamas atsisiuntimams</string>
   <string name="morphe_download_location_account_current">%s (dabartinis)</string>
   <string name="morphe_download_location_account_logged_out">%s (neprisijungęs)</string>

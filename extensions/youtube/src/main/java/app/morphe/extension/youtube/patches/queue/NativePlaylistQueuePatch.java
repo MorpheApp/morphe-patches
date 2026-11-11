@@ -34,11 +34,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.WeakHashMap;
+import java.util.concurrent.Future;
 
 import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.utils.AuthUtils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
@@ -61,7 +63,7 @@ public final class NativePlaylistQueuePatch {
     private static final String SAVE_VIDEO_IDS_ARGUMENT = "app.morphe.native_playlist_queue.save_video_ids";
     private static final String ENDPOINT_TAG_KEY = "com.google.android.libraries.youtube.innertube.endpoint.tag";
     private static final String SENDER_VIEW_KEY = "com.google.android.libraries.youtube.rendering.elements.sender_view";
-    private static final String MIX_PLAYLIST_ID_PREFIX = "RD";
+    static final String MIX_PLAYLIST_ID_PREFIX = "RD";
     private static final int UNDO_DURATION_MILLISECONDS = 5_000;
     private static final int ACCESSIBLE_UNDO_DURATION_MILLISECONDS = 20_000;
 
@@ -78,6 +80,15 @@ public final class NativePlaylistQueuePatch {
     private static final Set<String> pendingMetadata = new HashSet<>();
     private static final Map<String, QueueRatingActions> ratingActions =
             Collections.synchronizedMap(Utils.createSizeRestrictedMap(50));
+
+    /**
+     * The last watch next responses that were read, compared by identity. The app parses a response it
+     * keeps again, after 'Hide related videos' and the 'Classic Two-Rows' action bar changed it in place.
+     * The serialized size of the response saved by the first read is then wrong, so it cannot be serialized.
+     * Synchronized on itself.
+     */
+    private static final WeakReference<?>[] readWatchNextResponses = new WeakReference<?>[8];
+    private static int readWatchNextResponseIndex;
 
     /** Implemented on the native playlist controller during patching. */
     public interface PlaylistController {
@@ -131,9 +142,15 @@ public final class NativePlaylistQueuePatch {
         boolean patch_canNavigateNativeQueue(Object request);
     }
 
+    public interface PlaylistNavigator extends ServiceNavigator {
+        Enum<?> patch_getPlaylistIntent(Object request);
+        void patch_resumePlaylistNavigation(Object request);
+    }
+
     /** Bridge to YouTube's mutable playback queue, independent of the watch view. */
     public interface NativePlayback {
         boolean patch_isLocalQueue();
+        Object patch_getQueueSequence();
         boolean patch_attachQueue(byte[] panel, byte[] currentWatchCommand);
         void patch_updateSnapshot(byte[] panel);
         int patch_getSelectedIndex();
@@ -159,6 +176,16 @@ public final class NativePlaylistQueuePatch {
     /** Read-only identity of a model which passed YouTube's stale-video checks. */
     public interface PlaylistModel {
         String patch_getPlaylistId();
+    }
+
+    /** Native list whose existing scroll listener requested another page. */
+    public interface PagingOwner {
+        Object patch_getPlaylistList();
+        @Nullable LoadingView patch_getPlaylistLoadingView();
+    }
+
+    public interface LoadingView {
+        void patch_setPlaylistLoading(boolean loading);
     }
 
     /** Native listener bridge retains the bound endpoint before logging decorates it. */
@@ -207,7 +234,7 @@ public final class NativePlaylistQueuePatch {
 
     private static DragSession dragSession;
     private static WeakReference<PlaylistController> controllerRef = new WeakReference<>(null);
-    private static PlaylistQueue queue;
+    private static volatile PlaylistQueue queue;
     private record MixChoice(String token, String playlistId, String videoId,
                              WeakReference<PlaylistController> controller,
                              WeakReference<NativePlayback> playback, Map<String, String> headers, Locale locale) {}
@@ -230,15 +257,50 @@ public final class NativePlaylistQueuePatch {
     private static boolean publishing;
     private static boolean observingPlayer;
 
+    // Main-thread-owned source-page worker, separate from an incoming playlist addition.
+    @Nullable
+    private static Future<?> playlistRequest;
+    @Nullable
+    private static Object playlistRequestToken;
+    private record PlaylistWindow(PlaylistQueue.Entry playing) {}
+    @Nullable
+    private static PlaylistQueue.Entry playlistWindowEntry;
+    private record PlaylistConversion(WeakReference<PlaylistController> controller, WeakReference<NativePlayback> playback,
+                                      WeakReference<Object> model, String videoId, String playlistId,
+                                      @Nullable Map<String, String> headers) {}
+    private record PlaylistNavigation(WeakReference<PlaylistNavigator> navigator, Object request,
+                                      PlaylistQueue.Entry playing, Object origin,
+                                      WeakReference<NativePlayback> playback) {}
+    @Nullable
+    private static PlaylistNavigation playlistNavigation;
+    private enum PlaylistOperation { SHUFFLE, SAVE }
+    @Nullable
+    private static PlaylistOperation playlistOperation;
+    private static WeakReference<LoadingView> playlistLoadingView = new WeakReference<>(null);
+
+    // Incoming Next can fetch independently while the queue's source continues paging.
+    private record PlaylistAddition(boolean playLast, WeakReference<NativePlayback> playback,
+                                    @Nullable PlaylistQueue.Source source) {}
+    @Nullable
+    private static PlaylistAddition playlistAddition;
+    @Nullable
+    private static Future<?> playlistAdditionRequest;
+
     // SharedPreferences holds listeners weakly. Retain ours for the installed patch's lifetime.
     private static final SharedPreferences.OnSharedPreferenceChangeListener QUEUE_SETTING_LISTENER =
             (preferences, key) -> {
-                if (Settings.QUEUE_TYPE.key.equals(key)) {
+                if (Settings.QUEUE_TYPE.key.equals(key) || Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.key.equals(key)) {
                     // Let the setting cache update before checking the chosen provider.
                     Utils.runOnMainThread(() -> {
                         try {
                             if (!AddToQueuePatch.isNativeQueueEnabled()) {
                                 releaseNativeQueue();
+                            } else if (Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.key.equals(key)) {
+                                if (playlistRequestToken instanceof PlaylistWindow) {
+                                    cancelPlaylistRequest();
+                                }
+                                playlistWindowEntry = null;
+                                loadPlaylistWindow();
                             }
                         } catch (Exception ex) {
                             Logger.printException(() -> "Queue type setting change failure", ex);
@@ -296,6 +358,805 @@ public final class NativePlaylistQueuePatch {
 
     private NativePlaylistQueuePatch() {}
 
+    public static boolean canQueuePlaylist() {
+        if (!AddToQueuePatch.isNativeQueueEnabled()) {
+            return false;
+        }
+        if (canStartQueue()) {
+            return true;
+        }
+        PlaylistController controller = readyController();
+        if (controller != null) {
+            return queue == null ? playbackFor(controller) != null : isQueuePlayback(controller, nativePlaybackRef.get());
+        }
+        controller = playingPlaylistController();
+        return queue == null && controller != null && playbackFor(controller) != null;
+    }
+
+    @Nullable
+    public static Runnable getPlaylistQueueAction(String playlistId, boolean playLast) {
+        if (!AddToQueuePatch.isNativeQueueEnabled() || !PlaylistCardSource.isPlaylistId(playlistId)) {
+            return null;
+        }
+        return () -> {
+            if (canStartQueue()) {
+                // Next and Last both start at the first playable video without playback.
+                startPlaylistQueue(playlistId);
+            } else if (queue == null) {
+                convertPlayingPlaylist(() -> addPlaylist(playlistId, playLast));
+            } else {
+                addPlaylist(playlistId, playLast);
+            }
+        };
+    }
+
+    /** Preserve the accepted playing list before handing additions to the existing queue actions. */
+    private static void convertPlayingPlaylist(Runnable after) {
+        try {
+            if (!AddToQueuePatch.isNativeQueueEnabled() || queue != null || publishing
+                    || dragSession != null || pendingSelection != null || playlistRequestToken != null) {
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
+                return;
+            }
+            PlaylistController controller = readyController();
+            if (controller != null) {
+                // Standalone playback already has the same in-place queue attachment path.
+                Object baseline = controller.patch_getModel();
+                if (publish(controller, new PlaylistQueue(controller.patch_getVideoId(), VideoInformation.getVideoTitle()), true)) {
+                    originalModel = baseline;
+                    after.run();
+                }
+                return;
+            }
+            controller = playingPlaylistController();
+            NativePlayback playback = controller == null ? null : playbackFor(controller);
+            if (controller == null || playback == null || !(controller.patch_getPanel() instanceof MessageLite panel)) {
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
+                return;
+            }
+            String playlistId = controller.patch_getPlaylistId();
+            final boolean mix = playlistId.startsWith(MIX_PLAYLIST_ID_PREFIX);
+            PlaylistPages.Source owner = PlaylistPages.current();
+            PlaylistPage.Account account = owner == null ? null : owner.patch_getPlaylistAccount();
+            if (!mix && account == null) {
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
+                return;
+            }
+            var conversion = new PlaylistConversion(new WeakReference<>(controller), new WeakReference<>(playback),
+                    new WeakReference<>(controller.patch_getModel()), controller.patch_getVideoId(), playlistId,
+                    mix ? Map.copyOf(AuthUtils.getRequestHeader()) : null);
+            var source = mix ? null : new PlaylistQueue.Source(playlistId, account);
+            playlistRequestToken = conversion;
+            FlyoutUtils.dismissFlyout();
+            playlistRequest = Utils.submitOnBackgroundThread(() -> {
+                PlaylistQueue candidate = null;
+                try {
+                    candidate = loadPlayingPlaylist(owner, source, panel, conversion);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Could not preserve the playing playlist", ex);
+                }
+                PlaylistQueue result = Thread.currentThread().isInterrupted() ? null : candidate;
+                Utils.runOnMainThread(() -> completePlaylistConversion(conversion, owner, source, result, after));
+                return null;
+            });
+        } catch (Exception ex) {
+            cancelPlaylistRequest();
+            Logger.printException(() -> "convertPlayingPlaylist failure", ex);
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
+        }
+    }
+
+    private static PlaylistQueue loadPlayingPlaylist(@Nullable PlaylistPages.Source owner, @Nullable PlaylistQueue.Source source,
+                                                       MessageLite panel, PlaylistConversion conversion) throws Exception {
+        Utils.verifyOffMainThread();
+        PlaylistPage playing = PlaylistPage.readPanel(panel, conversion.playlistId());
+        final int selected = playing.selectedIndex();
+        if (selected < 0 || !playing.rows().get(selected).entry().videoId().equals(conversion.videoId())) {
+            throw new IllegalArgumentException("Playing playlist has no matching selected occurrence");
+        }
+        // Mixes retain the finite generated batch already accepted by the player.
+        if (source == null || playing.rows().get(0).anchor().index() == 0) {
+            return PlaylistQueue.fromPage(playing, source).select(selected);
+        }
+        var anchor = playing.rows().get(selected).anchor();
+        PlaylistPage first = PlaylistPages.first(owner, source);
+        PlaylistQueue candidate = PlaylistQueue.fromPage(first, source);
+        int position = first.find(anchor);
+        if (position >= 0) {
+            return candidate.select(position);
+        }
+        // Local playback indexes are contiguous. Recover the prefix through the
+        // exact playing occurrence before handing its remaining tail to paging.
+        while (candidate.source() != null && candidate.source().anchor().index() < anchor.index()) {
+            if (Thread.currentThread().isInterrupted()) {
+                throw new InterruptedException();
+            }
+            var page = PlaylistPages.next(owner, candidate.source());
+            final int previous = page.page().find(candidate.source().anchor());
+            position = page.page().find(anchor);
+            final int boundary = candidate.source().boundary();
+            candidate = candidate.appendPage(page.page(), page.end());
+            if (position > previous) {
+                return candidate.select(boundary + position - previous - 1);
+            }
+        }
+        throw new IllegalArgumentException("Playlist changed before its playing occurrence could be preserved");
+    }
+
+    private static void completePlaylistConversion(PlaylistConversion conversion, @Nullable PlaylistPages.Source owner,
+                                                    @Nullable PlaylistQueue.Source source, @Nullable PlaylistQueue candidate,
+                                                    Runnable after) {
+        if (playlistRequestToken != conversion) {
+            return;
+        }
+        playlistRequestToken = null;
+        playlistRequest = null;
+        try {
+            PlaylistController controller = conversion.controller().get();
+            NativePlayback playback = conversion.playback().get();
+            if (!AddToQueuePatch.isNativeQueueEnabled() || queue != null || controller == null
+                    || controller != playingPlaylistController() || controller.patch_getModel() != conversion.model().get()
+                    || !conversion.videoId().equals(controller.patch_getVideoId())
+                    || !conversion.playlistId().equals(controller.patch_getPlaylistId())
+                    || playback == null || playbackFor(controller) != playback
+                    || conversion.headers() != null && !conversion.headers().equals(AuthUtils.getRequestHeader())
+                    || source != null && (owner != PlaylistPages.current()
+                            || !source.account().equals(owner.patch_getPlaylistAccount()))) {
+                return;
+            }
+            if (candidate == null) {
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+                return;
+            }
+            if (publish(controller, candidate, true)) {
+                convertedPlaylist = new ConvertedPlaylist(conversion.videoId(), conversion.playlistId(),
+                        new WeakReference<>(playback));
+                // Clear must hide the converted queue instead of reviving the account playlist.
+                originalModel = null;
+                refreshPlayerControls(controller.patch_getNavigator());
+                QueueFullscreenActions.refresh();
+                after.run();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "completePlaylistConversion failure", ex);
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
+        }
+    }
+
+    private static void addPlaylist(String playlistId, boolean playLast) {
+        try {
+            if (!canQueuePlaylist() || publishing || pendingSelection != null || dragSession != null) {
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
+                return;
+            }
+            if (playlistAddition != null || playlistOperation != null || pendingMixAddition != null) {
+                Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
+                return;
+            }
+            final boolean mix = playlistId.startsWith(MIX_PLAYLIST_ID_PREFIX);
+            PlaylistPages.Source owner = PlaylistPages.current();
+            PlaylistPage.Account account = owner == null ? null : owner.patch_getPlaylistAccount();
+            PlaylistQueue snapshot = queue;
+            if (snapshot == null || (!mix || playLast && snapshot.source() != null) && account == null) {
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
+                return;
+            }
+            if (playLast) {
+                PlaylistNavigation navigation = playlistNavigation;
+                cancelPlaylistRequest();
+                playlistNavigation = navigation;
+            }
+            var addition = new PlaylistAddition(playLast, new WeakReference<>(nativePlaybackRef.get()), snapshot.source());
+            playlistAddition = addition;
+            var source = mix ? (playLast ? snapshot.source() : null) : new PlaylistQueue.Source(playlistId, account);
+            Map<String, String> headers = mix ? Map.copyOf(AuthUtils.getRequestHeader()) : null;
+            FlyoutUtils.dismissFlyout();
+            updatePlaylistLoading();
+            playlistAdditionRequest = Utils.submitOnBackgroundThread(() -> {
+                List<PlaylistPages.Result> currentPages = null;
+                PlaylistQueue incoming = null;
+                try {
+                    // Last transfers the single paging cursor only after resolving the old source.
+                    currentPages = playLast ? remainingPlaylistPages(owner, snapshot) : List.of();
+                    if (Thread.currentThread().isInterrupted()) {
+                        throw new InterruptedException();
+                    }
+                    if (mix) {
+                        var videos = MixPlaylistRequest.fetch(playlistId, "", headers);
+                        if (videos != null) {
+                            incoming = PlaylistQueue.fromMetadata(videos);
+                        }
+                    } else {
+                        PlaylistQueue candidate = PlaylistQueue.fromPage(PlaylistPages.first(owner, source), source);
+                        if (!playLast) {
+                            for (var page : remainingPlaylistPages(owner, candidate)) {
+                                candidate = candidate.appendPage(page.page(), page.end());
+                            }
+                        }
+                        incoming = candidate;
+                    }
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Could not load playlist for the active queue", ex);
+                }
+                PlaylistQueue result = Thread.currentThread().isInterrupted() ? null : incoming;
+                List<PlaylistPages.Result> pages = currentPages;
+                Utils.runOnMainThread(() -> completePlaylistAddition(addition, owner, source, headers, pages, result));
+                return null;
+            });
+        } catch (Exception ex) {
+            cancelPlaylistAddition();
+            Logger.printException(() -> "addPlaylist failure", ex);
+            Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+        }
+    }
+
+    /** Collect pages off main, then replay onto the live edited queue in one native transaction. */
+    private static List<PlaylistPages.Result> remainingPlaylistPages(@Nullable PlaylistPages.Source owner,
+                                                                    PlaylistQueue snapshot) throws Exception {
+        var pages = new ArrayList<PlaylistPages.Result>();
+        while (snapshot.source() != null) {
+            if (Thread.currentThread().isInterrupted()) {
+                throw new InterruptedException();
+            }
+            if (owner == null) {
+                throw new IllegalStateException("Playlist page source is unavailable");
+            }
+            var page = PlaylistPages.next(owner, snapshot.source());
+            snapshot = snapshot.appendPage(page.page(), page.end());
+            pages.add(page);
+        }
+        return pages;
+    }
+
+    private static void completePlaylistAddition(PlaylistAddition addition, @Nullable PlaylistPages.Source owner,
+                                                 @Nullable PlaylistQueue.Source source, @Nullable Map<String, String> headers,
+                                                 @Nullable List<PlaylistPages.Result> pages, @Nullable PlaylistQueue incoming) {
+        if (playlistAddition != addition) {
+            return;
+        }
+        boolean committed = false;
+        boolean validTarget = false;
+        try {
+            PlaylistController controller = readyController();
+            if (queue == null || controller == null || !isQueuePlayback(controller, addition.playback().get())
+                    || dragSession != null || pendingSelection != null
+                    || headers != null && !headers.equals(AuthUtils.getRequestHeader())
+                    || source != null && (owner != PlaylistPages.current()
+                            || !source.account().equals(owner.patch_getPlaylistAccount()))) {
+                return;
+            }
+            if (addition.playLast()) {
+                var expected = addition.source();
+                var current = queue.source();
+                if (expected == null ? current != null : current == null || current.origin() != expected.origin()
+                        || !expected.anchor().equals(current.anchor())) {
+                    return;
+                }
+            }
+            validTarget = true;
+            if (incoming == null || pages == null) {
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+                return;
+            }
+            syncNativeSelection(controller.patch_getVideoId());
+            PlaylistQueue candidate = queue;
+            for (var page : pages) {
+                candidate = candidate.appendPage(page.page(), page.end());
+            }
+            candidate = candidate.addPlaylist(incoming, addition.playLast());
+            if (publish(controller, candidate, true)) {
+                committed = true;
+                // A waiting native request still belongs to this playing occurrence.
+                // Only this successful Last handoff may change its expected source.
+                var navigation = playlistNavigation;
+                if (addition.playLast() && addition.source() != null && candidate.source() != null
+                        && navigation != null && navigation.origin() == addition.source().origin()) {
+                    playlistNavigation = new PlaylistNavigation(navigation.navigator(), navigation.request(),
+                            navigation.playing(), candidate.source().origin(), navigation.playback());
+                }
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "completePlaylistAddition failure", ex);
+            Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+        } finally {
+            playlistAddition = null;
+            playlistAdditionRequest = null;
+            updatePlaylistLoading();
+            if (committed || validTarget && addition.playLast()) {
+                // A failed import must also release navigation waiting on the old source.
+                continuePlaylistNavigation();
+            } else if (addition.playLast()) {
+                playlistNavigation = null;
+            }
+        }
+    }
+
+    private static void cancelPlaylistAddition() {
+        playlistAddition = null;
+        Future<?> request = playlistAdditionRequest;
+        playlistAdditionRequest = null;
+        if (request != null && !request.isDone()) {
+            request.cancel(true);
+        }
+        updatePlaylistLoading();
+    }
+
+    private static void startPlaylistQueue(String playlistId) {
+        try {
+            if (!canStartQueue()) {
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
+                return;
+            }
+            boolean mix = playlistId.startsWith(MIX_PLAYLIST_ID_PREFIX);
+            PlaylistPages.Source owner = PlaylistPages.current();
+            PlaylistPage.Account account = owner == null ? null : owner.patch_getPlaylistAccount();
+            if (!mix && account == null) {
+                Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
+                return;
+            }
+            cancelPlaylistRequest();
+            Object token = new Object();
+            playlistRequestToken = token;
+            var source = account == null ? null : new PlaylistQueue.Source(playlistId, account);
+            Map<String, String> headers = mix ? Map.copyOf(AuthUtils.getRequestHeader()) : null;
+            String previousVideoId = VideoInformation.getVideoId();
+            FlyoutUtils.dismissFlyout();
+            playlistRequest = Utils.submitOnBackgroundThread(() -> {
+                PlaylistQueue candidate = null;
+                try {
+                    if (mix) {
+                        // Match the existing Watch/Add Mix dialog's finite-batch request.
+                        var videos = MixPlaylistRequest.fetch(playlistId, "", headers);
+                        if (videos != null) {
+                            candidate = PlaylistQueue.fromMetadata(videos);
+                        }
+                    } else {
+                        candidate = PlaylistQueue.fromPage(PlaylistPages.first(owner, source), source);
+                    }
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Could not load playlist for native queue", ex);
+                }
+                PlaylistQueue result = candidate;
+                Utils.runOnMainThread(() -> completePlaylistStart(token, owner, source, headers, result, previousVideoId));
+                return null;
+            });
+        } catch (Exception ex) {
+            cancelPlaylistRequest();
+            Logger.printException(() -> "startPlaylistQueue failure", ex);
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
+        }
+    }
+
+    private static void completePlaylistStart(Object token, @Nullable PlaylistPages.Source owner,
+                                              @Nullable PlaylistQueue.Source source, @Nullable Map<String, String> headers,
+                                              @Nullable PlaylistQueue candidate, String previousVideoId) {
+        if (playlistRequestToken != token) {
+            return;
+        }
+        playlistRequestToken = null;
+        playlistRequest = null;
+        try {
+            if (!canStartQueue() || (headers != null ? !headers.equals(AuthUtils.getRequestHeader())
+                    : owner != PlaylistPages.current() || source == null
+                            || !source.account().equals(owner.patch_getPlaylistAccount()))) {
+                return;
+            }
+            if (candidate == null) {
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+                return;
+            }
+            startQueue(new QueueStart(candidate, previousVideoId));
+        } catch (Exception ex) {
+            Logger.printException(() -> "completePlaylistStart failure", ex);
+            Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Runs inside YouTube's native near-end scroll branch, with its exact list owner.
+     */
+    public static void onNativePlaylistScroll(Object list) {
+        if (!AddToQueuePatch.isNativeQueueEnabled() || !Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.get() || !Utils.isCurrentlyOnMainThread()
+                || queue == null || queue.source() == null || playlistRequestToken != null || dragSession != null || publishing) {
+            return;
+        }
+        try {
+            PlaylistController controller = readyController();
+            if (!(controller instanceof PagingOwner paging) || paging.patch_getPlaylistList() != list
+                    || !isQueuePlayback(controller, nativePlaybackRef.get())) {
+                return;
+            }
+            loadNextPlaylistPage();
+        } catch (Exception ex) {
+            Logger.printException(() -> "onNativePlaylistScroll failure", ex);
+        }
+    }
+
+    private static void loadNextPlaylistPage() {
+        if (playlistRequestToken != null || playlistAddition != null && playlistAddition.playLast()) {
+            return;
+        }
+        PlaylistPages.Source owner = PlaylistPages.current();
+        PlaylistQueue.Source source = queue.source();
+        if (owner == null || source == null) {
+            // Same outcome as a failed request: never leave a deferred navigation waiting.
+            playlistNavigation = null;
+            Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+            return;
+        }
+        Object token = new Object();
+        playlistRequestToken = token;
+        playlistRequest = Utils.submitOnBackgroundThread(() -> {
+            PlaylistPages.Result page = null;
+            try {
+                page = PlaylistPages.next(owner, source);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not load next native queue page", ex);
+            }
+            PlaylistPages.Result result = page;
+            Utils.runOnMainThread(() -> completePlaylistPage(token, owner, source, result));
+            return null;
+        });
+    }
+
+    /** Native playback windows overlap; request around the playing source row, not the local queue index. */
+    private static void loadPlaylistWindow() {
+        if (!AddToQueuePatch.isNativeQueueEnabled() || Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.get()
+                || queue == null || queue.source() == null || queue.currentEntry() == playlistWindowEntry
+                || playlistRequestToken != null || playlistAddition != null && playlistAddition.playLast()
+                || publishing || dragSession != null || pendingSelection != null || isQueueSuspended()) {
+            return;
+        }
+        try {
+            PlaylistPage.Anchor anchor = queue.playbackAnchor();
+            PlaylistPages.Source owner = PlaylistPages.current();
+            PlaylistController controller = readyController();
+            if (anchor == null || owner == null || controller == null || !isQueuePlayback(controller, nativePlaybackRef.get())
+                    || !queue.currentEntry().videoId().equals(VideoInformation.getVideoId())) {
+                return;
+            }
+            PlaylistQueue.Source source = queue.source();
+            var token = new PlaylistWindow(queue.currentEntry());
+            playlistWindowEntry = token.playing();
+            playlistRequestToken = token;
+            playlistRequest = Utils.submitOnBackgroundThread(() -> {
+                PlaylistPages.Result page = null;
+                try {
+                    page = PlaylistPages.window(owner, source, anchor);
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Could not refresh native queue playlist window", ex);
+                }
+                PlaylistPages.Result result = page;
+                Utils.runOnMainThread(() -> completePlaylistPage(token, owner, source, result));
+                return null;
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "loadPlaylistWindow failure", ex);
+        }
+    }
+
+    private static void completePlaylistPage(Object token, PlaylistPages.Source owner, PlaylistQueue.Source source,
+                                              @Nullable PlaylistPages.Result result) {
+        if (playlistRequestToken != token) {
+            return;
+        }
+        playlistRequestToken = null;
+        playlistRequest = null;
+        final boolean playbackWindow = token instanceof PlaylistWindow;
+        try {
+            if (!AddToQueuePatch.isNativeQueueEnabled() || queue == null || queue.source() == null
+                    || queue.source().origin() != source.origin()
+                    || !source.anchor().equals(queue.source().anchor())
+                    || owner != PlaylistPages.current() || !source.account().equals(owner.patch_getPlaylistAccount())
+                    || dragSession != null || pendingSelection != null) {
+                playlistNavigation = null;
+                return;
+            }
+            PlaylistController controller = readyController();
+            if (controller == null || !isQueuePlayback(controller, nativePlaybackRef.get())) {
+                playlistNavigation = null;
+                return;
+            }
+            syncNativeSelection(controller.patch_getVideoId());
+            if (playbackWindow && (Settings.NATIVE_QUEUE_FETCH_ON_SCROLL.get()
+                    || ((PlaylistWindow) token).playing() != queue.currentEntry())) {
+                return;
+            }
+            if (result == null) {
+                playlistNavigation = null;
+                if (!playbackWindow) {
+                    Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+                }
+                return;
+            }
+            if (playbackWindow && !result.end()) {
+                int boundary = result.page().find(source.anchor());
+                if (boundary < 0 || boundary + 1 == result.page().rows().size()) {
+                    return;
+                }
+            }
+            if (publish(controller, queue.appendPage(result.page(), result.end()), !playbackWindow)) {
+                continuePlaylistNavigation();
+            } else {
+                playlistNavigation = null;
+            }
+        } catch (Exception ex) {
+            playlistNavigation = null;
+            Logger.printException(() -> "completePlaylistPage failure", ex);
+            if (!playbackWindow) {
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+            }
+        } finally {
+            // Playback may have advanced again while this request was in flight.
+            loadPlaylistWindow();
+        }
+    }
+
+    private static void cancelPlaylistRequest() {
+        playlistNavigation = null;
+        playlistOperation = null;
+        playlistRequestToken = null;
+        playlistWindowEntry = null;
+        Future<?> request = playlistRequest;
+        playlistRequest = null;
+        if (request != null && !request.isDone()) {
+            request.cancel(true);
+        }
+        updatePlaylistLoading();
+    }
+
+    private static void updatePlaylistLoading() {
+        LoadingView before = playlistLoadingView.get();
+        final boolean loading = playlistOperation != null || playlistAddition != null && playlistAddition.playLast();
+        if (!loading && before == null) {
+            return;
+        }
+        PlaylistController controller = controllerRef.get();
+        LoadingView view = queue != null && controller instanceof PagingOwner paging
+                && controller.patch_getModel() == publishedModel ? paging.patch_getPlaylistLoadingView() : null;
+        if (loading && view != null) {
+            playlistLoadingView = new WeakReference<>(view);
+            view.patch_setPlaylistLoading(true);
+        } else {
+            playlistLoadingView.clear();
+            // A reused account-playlist frame belongs to its new native owner.
+            if (before != null && before == view) {
+                before.patch_setPlaylistLoading(false);
+            }
+        }
+    }
+
+    private static void finishPlaylist(PlaylistOperation operation) {
+        if (playlistOperation != null || playlistAddition != null || queue == null || queue.source() == null) {
+            return;
+        }
+        PlaylistPages.Source owner = PlaylistPages.current();
+        if (owner == null) {
+            Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+            return;
+        }
+        PlaylistNavigation navigation = playlistNavigation;
+        cancelPlaylistRequest();
+        playlistNavigation = navigation;
+        PlaylistQueue snapshot = queue;
+        PlaylistQueue.Source source = snapshot.source();
+        Object token = new Object();
+        playlistRequestToken = token;
+        playlistOperation = operation;
+        updatePlaylistLoading();
+        playlistRequest = Utils.submitOnBackgroundThread(() -> {
+            List<PlaylistPages.Result> loaded = null;
+            try {
+                var pages = remainingPlaylistPages(owner, snapshot);
+                if (!Thread.currentThread().isInterrupted()) {
+                    loaded = pages;
+                }
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not finish native queue playlist", ex);
+            }
+            List<PlaylistPages.Result> pages = loaded;
+            Utils.runOnMainThread(() -> completePlaylistOperation(token, owner, source, operation, pages));
+            return null;
+        });
+    }
+
+    private static void completePlaylistOperation(Object token, PlaylistPages.Source owner, PlaylistQueue.Source source,
+                                                  PlaylistOperation operation, @Nullable List<PlaylistPages.Result> pages) {
+        if (playlistRequestToken != token) {
+            return;
+        }
+        playlistRequestToken = null;
+        playlistRequest = null;
+        boolean committed = false;
+        try {
+            if (!AddToQueuePatch.isNativeQueueEnabled() || queue == null || queue.source() == null
+                    || queue.source().origin() != source.origin() || !source.anchor().equals(queue.source().anchor())
+                    || owner != PlaylistPages.current() || !source.account().equals(owner.patch_getPlaylistAccount())
+                    || dragSession != null || pendingSelection != null) {
+                return;
+            }
+            PlaylistController controller = readyController();
+            if (controller == null || !isQueuePlayback(controller, nativePlaybackRef.get())) {
+                return;
+            }
+            if (pages == null) {
+                Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+                return;
+            }
+            syncNativeSelection(controller.patch_getVideoId());
+            PlaylistQueue candidate = queue;
+            for (var page : pages) {
+                candidate = candidate.appendPage(page.page(), page.end());
+            }
+            if (operation == PlaylistOperation.SHUFFLE) {
+                candidate = candidate.shuffle();
+            }
+            if (publish(controller, candidate, true)) {
+                committed = true;
+                continuePlaylistNavigation();
+                if (operation == PlaylistOperation.SAVE) {
+                    var videoIds = new ArrayList<String>();
+                    for (var entry : queue.entries()) {
+                        videoIds.add(entry.videoId());
+                    }
+                    controller.patch_showQueueFeedback(QueueSaveActions.openPicker(videoIds).toByteArray());
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "completePlaylistOperation failure", ex);
+            Utils.showSnackbarShort(str("morphe_queue_manager_fetch_failed_add"));
+        } finally {
+            if (!committed) {
+                playlistNavigation = null;
+            }
+            playlistOperation = null;
+            updatePlaylistLoading();
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Leave background playback navigation intact; cancel idle/UI-only work.
+     */
+    public static void onUserLeaveHint() {
+        if (playlistRequestToken == null && playlistAddition == null && playlistLoadingView.get() == null) {
+            return;
+        }
+        try {
+            if (playlistNavigation == null) {
+                cancelPlaylistAddition();
+                cancelPlaylistRequest();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onUserLeaveHint failure", ex);
+        }
+    }
+
+    private static boolean isPlaylistBoundary(PlaylistQueue snapshot, int index, @Nullable Enum<?> intent, int repeat) {
+        var source = snapshot.source();
+        if (source == null || intent == null || index < 0 || index >= snapshot.entries().size()
+                || "AUTOPLAY".equals(intent.name()) && repeat == PlaylistQueue.REPEAT_ONE) {
+            return false;
+        }
+        return switch (intent.name()) {
+            case "NEXT", "AUTOPLAY", "AUTONAV" -> index + 1 == source.boundary();
+            case "PREVIOUS" -> index == source.boundary();
+            default -> false;
+        };
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Unloaded source rows have no descriptor yet; never skip them or wrap early.
+     */
+    public static boolean isUnloadedPlaylistBoundary(Object sequence, @Nullable Enum<?> intent) {
+        PlaylistQueue snapshot = queue;
+        if (!AddToQueuePatch.isNativeQueueEnabled() || snapshot == null || snapshot.source() == null) {
+            return false;
+        }
+        try {
+            NativePlayback playback = nativePlaybackRef.get();
+            return playback != null && playback.patch_isLocalQueue() && sequence == playback.patch_getQueueSequence()
+                    && isPlaylistBoundary(snapshot, playback.patch_getSelectedIndex(), intent, playback.patch_getRepeatMode());
+        } catch (Exception ex) {
+            Logger.printException(() -> "isUnloadedPlaylistBoundary failure", ex);
+            return false;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Preserve the exact native intent, including autoplay policy, while loading its next source rows.
+     */
+    public static boolean deferPlaylistNavigation(PlaylistNavigator navigator, Object request) {
+        if (!AddToQueuePatch.isNativeQueueEnabled() || queue == null || queue.source() == null) {
+            return false;
+        }
+        try {
+            if (!ownsNativePlayback(navigator)) {
+                return false;
+            }
+            PlaylistQueue snapshot = queue;
+            NativePlayback playback = navigator.patch_getQueuePlayback();
+            if (!isPlaylistBoundary(snapshot, playback.patch_getSelectedIndex(),
+                    navigator.patch_getPlaylistIntent(request), playback.patch_getRepeatMode())) {
+                return false;
+            }
+            var pending = new PlaylistNavigation(new WeakReference<>(navigator), request,
+                    snapshot.entries().get(playback.patch_getSelectedIndex()), snapshot.source().origin(),
+                    new WeakReference<>(playback));
+            Utils.runOnMainThread(() -> {
+                try {
+                    if (queue == null || queue.source() != null && queue.source().origin() != pending.origin()
+                            || nativePlaybackRef.get() != playback || !playback.patch_isLocalQueue()) {
+                        return;
+                    }
+                    syncNativeSelection(navigator.patch_getVideoId());
+                    // Boundary navigation takes priority over a speculative playback window.
+                    if (playlistRequestToken instanceof PlaylistWindow) {
+                        cancelPlaylistRequest();
+                        playlistWindowEntry = pending.playing();
+                    }
+                    playlistNavigation = pending;
+                    if (!isPlaylistBoundary(queue, playback.patch_getSelectedIndex(), navigator.patch_getPlaylistIntent(request),
+                            playback.patch_getRepeatMode())) {
+                        continuePlaylistNavigation();
+                    } else if (playlistRequestToken == null) {
+                        loadNextPlaylistPage();
+                    }
+                } catch (Exception ex) {
+                    playlistNavigation = null;
+                    Logger.printException(() -> "Deferred playlist navigation failure", ex);
+                }
+            });
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "deferPlaylistNavigation failure", ex);
+            return false;
+        }
+    }
+
+    private static void continuePlaylistNavigation() {
+        PlaylistNavigation pending = playlistNavigation;
+        if (pending == null) {
+            return;
+        }
+        playlistNavigation = null;
+        PlaylistNavigator navigator = pending.navigator().get();
+        NativePlayback playback = pending.playback().get();
+        if (queue == null || navigator == null || playback == null || !ownsNativePlayback(navigator)
+                || playback != nativePlaybackRef.get() || queue.currentEntry() != pending.playing()
+                || queue.source() != null && queue.source().origin() != pending.origin()) {
+            return;
+        }
+        if (isPlaylistBoundary(queue, playback.patch_getSelectedIndex(), navigator.patch_getPlaylistIntent(pending.request()),
+                playback.patch_getRepeatMode())) {
+            // Previous from an appended outside video needs the original source's actual tail.
+            playlistNavigation = pending;
+            loadNextPlaylistPage();
+            return;
+        }
+        navigator.patch_resumePlaylistNavigation(pending.request());
+    }
+
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -309,8 +1170,27 @@ public final class NativePlaylistQueuePatch {
         if (response == null) {
             return;
         }
+        synchronized (readWatchNextResponses) {
+            for (WeakReference<?> reference : readWatchNextResponses) {
+                if (reference != null && reference.get() == response) {
+                    return;
+                }
+            }
+            readWatchNextResponses[readWatchNextResponseIndex] = new WeakReference<>(response);
+            readWatchNextResponseIndex = (readWatchNextResponseIndex + 1) % readWatchNextResponses.length;
+        }
+
+        byte[] bytes;
         try {
-            var results = SingleColumnWatchNextResults.parseFrom(response.toByteArray());
+            bytes = response.toByteArray();
+        } catch (RuntimeException ex) {
+            // A response read before, which is no longer in the array of read responses.
+            Logger.printDebug(() -> "Watch next response was changed in place and cannot be serialized", ex);
+            return;
+        }
+
+        try {
+            var results = SingleColumnWatchNextResults.parseFrom(bytes);
             for (var section : results.getPrimaryResults().getSecondaryResults().getSecondaryContentsList()) {
                 if (!section.hasSlimVideoMetadataSectionRenderer()) {
                     continue;
@@ -372,7 +1252,8 @@ public final class NativePlaylistQueuePatch {
                 return new VideoMetadata(id, title, channelName, "", "", false);
             }
             if (metadata.title().equals(id) && !title.equals(id)) {
-                metadata = new VideoMetadata(id, title, metadata.channelName(), metadata.videoInfo(), metadata.duration(), metadata.fullByline());
+                metadata = new VideoMetadata(id, title, metadata.channelName(), metadata.videoInfo(), metadata.duration(),
+                        metadata.fullByline(), metadata.panelMetadata(), metadata.lightColorPalette(), metadata.darkColorPalette());
             }
 
             return metadata.withChannelName(channelName);
@@ -407,6 +1288,7 @@ public final class NativePlaylistQueuePatch {
                 }
 
                 updateController(controller);
+                loadPlaylistWindow();
             } catch (Exception ex) {
                 Logger.printException(() -> "onControllerUpdated failure", ex);
             }
@@ -515,6 +1397,8 @@ public final class NativePlaylistQueuePatch {
 
         if (hasPlaylist(controller)) {
             Object navigator = controller.patch_getNavigator();
+            cancelPlaylistAddition();
+            cancelPlaylistRequest();
             queue = null;
             pendingUndo = null;
             shortsSession.reset();
@@ -563,6 +1447,7 @@ public final class NativePlaylistQueuePatch {
         Utils.runOnMainThreadNowOrLater(() -> {
             try {
                 updatePlaybackContext();
+                loadPlaylistWindow();
             } catch (Exception ex) {
                 Logger.printException(() -> "onPlaybackContextChanged failure", ex);
             }
@@ -842,6 +1727,7 @@ public final class NativePlaylistQueuePatch {
                 if (selectionNeedsPublishing) {
                     refreshOwnedPanel(VideoInformation.getVideoId());
                 }
+                loadPlaylistWindow();
             } catch (Exception ex) {
                 Logger.printException(() -> "onNativeQueueSelection failure", ex);
             }
@@ -1009,7 +1895,15 @@ public final class NativePlaylistQueuePatch {
             if (publishing || pendingSelection != null || dragSession != null) {
                 return true;
             }
+            if (playlistAddition != null) {
+                Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
+                return true;
+            }
             syncNativeSelection(VideoInformation.getVideoId());
+            if (queue.source() != null) {
+                finishPlaylist(PlaylistOperation.SHUFFLE);
+                return true;
+            }
             publish(controller, queue.shuffle(), true);
             return true;
         } catch (Exception ex) {
@@ -1319,6 +2213,14 @@ public final class NativePlaylistQueuePatch {
 
                 // The immutable selection is already serialized in this owned menu command.
                 if (!command.getQueueSaveVideoIdsList().equals(videoIds)) {
+                    return null;
+                }
+                if (playlistAddition != null) {
+                    Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
+                    return null;
+                }
+                if (queue.source() != null) {
+                    finishPlaylist(PlaylistOperation.SAVE);
                     return null;
                 }
                 return endpoint;
@@ -1846,6 +2748,7 @@ public final class NativePlaylistQueuePatch {
                 updateController(returningController);
             }
         }
+        loadPlaylistWindow();
     }
 
     /** Captures the eligible native menu action for the selected video. */
@@ -1863,13 +2766,15 @@ public final class NativePlaylistQueuePatch {
         return AddToQueuePatch.isNativeQueueEnabled() && PlaylistQueue.isVideoId(videoId);
     }
 
-    /** Only our Native queue makes Last available; account playlists and Mixes do not. */
+    /** A playing playlist can become a queue without replacing its current video. */
     public static boolean canShowFlyoutLast() {
-        return queue != null;
+        return queue != null || playingPlaylistController() != null;
     }
 
     /** Release only our session; never modify the Morphe queue or its settings. */
     private static void releaseNativeQueue() {
+        cancelPlaylistAddition();
+        cancelPlaylistRequest();
         pendingMixChoice = null;
         pendingMixAddition = null;
         convertedPlaylist = null;
@@ -1901,10 +2806,23 @@ public final class NativePlaylistQueuePatch {
     }
 
     @Nullable
+    private static PlaylistController playingPlaylistController() {
+        PlaylistController controller = controllerRef.get();
+        PlayerType type = PlayerType.getCurrent();
+        if (!AddToQueuePatch.isNativeQueueEnabled() || controller == null || !controller.patch_isAttached()
+                || !hasPlaylist(controller) || type.isNoneOrHidden() || type == PlayerType.INLINE_MINIMAL
+                || ShortsPlayerState.isOpen() || !controller.patch_getVideoId().equals(VideoInformation.getVideoId())) {
+            return null;
+        }
+        return controller;
+    }
+
+    @Nullable
     private static PlaylistController readyController() {
         PlaylistController controller = controllerRef.get();
         if (!AddToQueuePatch.isNativeQueueEnabled() || isQueueSuspended() || controller == null
                 || !controller.patch_isAttached() || hasPlaylist(controller)
+                || queue == null && hasForeignPlaybackPlaylist()
                 || PlayerType.getCurrent().isNoneOrHidden()
                 || PlayerType.getCurrent() == PlayerType.INLINE_MINIMAL
                 || !controller.patch_getVideoId().equals(VideoInformation.getVideoId())) {
@@ -1987,59 +2905,26 @@ public final class NativePlaylistQueuePatch {
             return;
         }
 
-        if (playLast && queue == null) {
+        PlaylistController playlist = playingPlaylistController();
+        if (playLast && queue == null && playlist == null) {
             // A menu callback can outlive the queue that made Play last available.
             Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
             return;
         }
 
-        // An attached account playlist of the active regular video is converted to the queue.
-        PlaylistController playlist = controllerRef.get();
-        PlayerType type = PlayerType.getCurrent();
-        if (playlist == null || !playlist.patch_isAttached() || !hasPlaylist(playlist)
-                || type.isNoneOrHidden() || type == PlayerType.INLINE_MINIMAL || ShortsPlayerState.isOpen()
-                || !playlist.patch_getVideoId().equals(VideoInformation.getVideoId())) {
-            playlist = null;
-        }
         String channelName = videoId.equals(FlyoutUtils.getFlyoutVideoId())
                 ? FlyoutUtils.getFlyoutChannelName() : "";
         try {
             if (playlist != null) {
-                if (dragSession != null || queue != null) {
-                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_not_ready"));
-                    return;
-                }
-
-                NativePlayback playback = playbackFor(playlist);
-                if (playback == null) {
-                    Utils.showSnackbarShort(str("morphe_native_playlist_queue_unavailable"));
-                    return;
-                }
-
-                String currentId = playlist.patch_getVideoId();
-                String currentTitle = VideoInformation.getVideoTitle();
-                String title = ChannelIdRequest.getVideoTitleIfAvailable(videoId);
-                rememberChannel(currentId, currentTitle, VideoInformation.getChannelName());
-                rememberChannel(videoId, title.isEmpty() ? videoId : title, channelName);
-                PlaylistQueue candidate = new PlaylistQueue(currentId, currentTitle);
-                if (!currentId.equals(videoId)) {
-                    candidate = candidate.playNext(videoId);
-                }
-                // The native accept transaction replaces navigation rows without a
-                // load, seek, pause or player dismissal. Reuse the mutable navigator
-                // when available; its factory receives only our list-free command.
-                String sourcePlaylistId = playlist.patch_getPlaylistId();
-                if (publish(playlist, candidate, true)) {
-                    convertedPlaylist = new ConvertedPlaylist(currentId, sourcePlaylistId, new WeakReference<>(playback));
-                    // Clear must hide the replaced playlist, not restore its old rows.
-                    originalModel = null;
-                    refreshPlayerControls(playlist.patch_getNavigator());
-                    QueueFullscreenActions.refresh();
-                    FlyoutUtils.dismissFlyout();
-                    Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
-                    completeMetadata();
-                }
-
+                convertPlayingPlaylist(() -> {
+                    if (videoId.equals(VideoInformation.getVideoId())) {
+                        // The initial queue already contains this playing occurrence.
+                        FlyoutUtils.dismissFlyout();
+                        Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
+                    } else {
+                        addToQueue(videoId, playLast);
+                    }
+                });
                 return;
             }
 
@@ -2096,6 +2981,8 @@ public final class NativePlaylistQueuePatch {
     }
 
     private static void startQueue(QueueStart start) {
+        cancelPlaylistAddition();
+        cancelPlaylistRequest();
         clearPendingQueueStart();
         pendingReload = null;
         pendingUndo = null;
@@ -2108,10 +2995,9 @@ public final class NativePlaylistQueuePatch {
             OpenVideosFullscreenHookPatch.keepVideoMinimized(null);
         }, NAVIGATION_TIMEOUT_MILLISECONDS);
 
-        // A focused feed preview must not take ownership of closed-player Undo.
-        if (start.restoresClosedPlayer()) {
-            pendingQueueStartInlinePlaybackBlockId = LoadVideoPatch.blockInlinePlaybackUntilPlayerOpens();
-        }
+        // Fresh starts and Undo both open from the feed, whose preview can otherwise
+        // replace the requested video's playback before the queue attaches.
+        pendingQueueStartInlinePlaybackBlockId = LoadVideoPatch.blockInlinePlaybackUntilPlayerOpens();
 
         try {
             LoadVideoPatch.openVideoIntent(start.watchUrl(), false);
@@ -2185,11 +3071,15 @@ public final class NativePlaylistQueuePatch {
 
     private static void completeMetadata() {
         for (PlaylistQueue.Entry entry : queue.entries()) {
+            // Imported rows retain native metadata; do not fetch once per playlist video.
+            if (entry.metadata() != null) {
+                continue;
+            }
             VideoMetadata metadata = metadataCache.get(entry.videoId());
             if (metadata != null && metadata.isComplete()) {
                 continue;
             }
-            Locale locale = Locale.getDefault();
+            Locale locale = Requester.getAppLocale();
             String key = entry.videoId() + ":" + locale.toLanguageTag();
             if (!pendingMetadata.add(key)) {
                 continue;
@@ -2201,7 +3091,7 @@ public final class NativePlaylistQueuePatch {
                 VideoMetadata fetched = PlaylistMetadataRequest.fetch(entry.videoId(), searchTitle, locale);
                 Utils.runOnMainThread(() -> {
                     pendingMetadata.remove(key);
-                    if (fetched == null || !Locale.getDefault().equals(locale)) {
+                    if (fetched == null || !Requester.getAppLocale().equals(locale)) {
                         return;
                     }
                     metadataCache.compute(entry.videoId(), (videoId, previous) ->
@@ -2293,6 +3183,10 @@ public final class NativePlaylistQueuePatch {
                 if (!command.getQueueMixAdd()) {
                     return false;
                 }
+                if (playlistAddition != null) {
+                    Utils.showSnackbarShort(str("morphe_flyout_button_loading"));
+                    return true;
+                }
                 pendingMixAddition = choice;
                 Utils.showSnackbarShort(str("morphe_native_playlist_queue_loading_mix"));
                 Utils.runOnBackgroundThread(() -> {
@@ -2329,7 +3223,7 @@ public final class NativePlaylistQueuePatch {
             }
             MixChoice choice = new MixChoice(UUID.randomUUID().toString(), watch.getPlaylistId(), watch.getVideoId(),
                     new WeakReference<>(controller), new WeakReference<>(playback),
-                    Map.copyOf(AuthUtils.getRequestHeader()), Locale.getDefault());
+                    Map.copyOf(AuthUtils.getRequestHeader()), Requester.getAppLocale());
             pendingMixChoice = choice;
             intercepted = true;
             controller.patch_showQueueFeedback(QueueMixActions.dialog(command, choice.token(),
@@ -2353,7 +3247,7 @@ public final class NativePlaylistQueuePatch {
                 && queue != null && controller != null && controller == readyController()
                 && isQueuePlayback(controller, playback) && playbackFor(controller) == playback
                 && queue.currentEntry().videoId().equals(VideoInformation.getVideoId())
-                && choice.headers().equals(AuthUtils.getRequestHeader()) && choice.locale().equals(Locale.getDefault());
+                && choice.headers().equals(AuthUtils.getRequestHeader()) && choice.locale().equals(Requester.getAppLocale());
     }
 
     /** If the controller shows our published model, played by our local native queue. */
@@ -2368,8 +3262,7 @@ public final class NativePlaylistQueuePatch {
      */
     @Nullable
     private static View getMixTapSender(PlaylistQueueRenderer.WatchEndpoint watch, Map<?, ?> context) {
-        if (!PlaylistQueue.isVideoId(watch.getVideoId()) || !watch.getPlaylistId().startsWith(MIX_PLAYLIST_ID_PREFIX)
-                || watch.hasIndex() || !watch.getPlaylistSetVideoId().isEmpty()) {
+        if (!PlaylistCardSource.isMixStart(watch)) {
             return null;
         }
 
@@ -2392,13 +3285,11 @@ public final class NativePlaylistQueuePatch {
         }
 
         try {
-            var additions = new ArrayList<PlaylistQueue.Entry>();
             for (VideoMetadata video : videos) {
-                additions.add(new PlaylistQueue.Entry(video.videoId(), video.title()));
                 metadataCache.put(video.videoId(), video);
             }
 
-            PlaylistQueue updated = queue.append(additions)
+            PlaylistQueue updated = queue.addPlaylist(PlaylistQueue.fromMetadata(videos), true)
                     .withRepeatMode(playback.patch_getRepeatMode());
             if (publish(controller, updated, true)) {
                 Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
@@ -2425,6 +3316,9 @@ public final class NativePlaylistQueuePatch {
             // A deliberate new watch supersedes Clear/close/reload Undo, even for
             // the same video. This hook runs on dispatch, not on prefetch.
             if (command.hasWatchEndpoint()) {
+                if (playlistRequestToken instanceof PlaylistConversion) {
+                    cancelPlaylistRequest();
+                }
                 pendingUndo = null;
                 PendingReload reload = pendingReload;
                 if (reload != null) {
@@ -2559,6 +3453,8 @@ public final class NativePlaylistQueuePatch {
     }
 
     private static void releasePanel() {
+        cancelPlaylistAddition();
+        cancelPlaylistRequest();
         pendingMixChoice = null;
         pendingMixAddition = null;
         pendingReload = null;
@@ -2687,7 +3583,7 @@ public final class NativePlaylistQueuePatch {
     private static byte[] renderer(PlaylistQueue source) {
         var panel = PlaylistQueueRenderer.Panel.newBuilder()
                 .setTitle(str("morphe_native_playlist_queue_title"))
-                .setSelectedIndex(source.selectedIndex()).setPlaylistId("").setVideoCount(source.entries().size())
+                .setSelectedIndex(source.selectedIndex()).setPlaylistId("").setVideoCount(source.totalCount())
                 .setLocalSelectedIndex(source.selectedIndex())
                 .setMenu(playlistMenu(source));
         var removeLabel = PlaylistQueueRenderer.Accessibility.newBuilder().setAccessibilityData(
@@ -2702,7 +3598,7 @@ public final class NativePlaylistQueuePatch {
                         .setAccessibilityData(removeLabel).setServiceEndpoint(removeEndpoint)).build();
         for (int index = 0; index < source.entries().size(); index++) {
             PlaylistQueue.Entry entry = source.entries().get(index);
-            VideoMetadata metadata = metadataCache.get(entry.videoId());
+            VideoMetadata metadata = entry.metadata() == null ? metadataCache.get(entry.videoId()) : entry.metadata();
             String title = metadata == null ? entry.title() : metadata.title();
             var image = PlaylistQueueRenderer.Thumbnail.newBuilder()
                     .setUrl("https://i.ytimg.com/vi/" + entry.videoId() + "/hqdefault.jpg")
@@ -2721,6 +3617,12 @@ public final class NativePlaylistQueuePatch {
                 video.setShortBylineText(PlaylistQueueRenderer.Text.newBuilder().setSimpleText(metadata.channelName()))
                         .setVideoInfo(PlaylistQueueRenderer.Text.newBuilder().setSimpleText(metadata.videoInfo()))
                         .setLengthText(PlaylistQueueRenderer.Text.newBuilder().setSimpleText(metadata.duration()));
+                if (metadata.lightColorPalette() != null) {
+                    video.setLightColorPalette(metadata.lightColorPalette());
+                }
+                if (metadata.darkColorPalette() != null) {
+                    video.setDarkColorPalette(metadata.darkColorPalette());
+                }
             }
 
             if (index != source.selectedIndex()
@@ -2738,6 +3640,10 @@ public final class NativePlaylistQueuePatch {
             panel.addItems(PlaylistQueueRenderer.Item.newBuilder().setVideo(video));
         }
 
+        var unavailableVideosMessage = source.unavailableVideosMessage();
+        if (unavailableVideosMessage != null) {
+            panel.addItems(unavailableVideosMessage);
+        }
         return panel.build().toByteArray();
     }
 }

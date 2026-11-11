@@ -97,9 +97,10 @@ Per tradurre nuove lingue o migliorare le traduzioni esistenti, visita morphe.so
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
   <string name="morphe_debug_screen_summary">Configura opzioni avanzate per sviluppatori e registri diagnostici</string>
-  <string name="morphe_debug_title">Abilita i registri di debug</string>
-  <string name="morphe_debug_stacktrace_title">Registra la traccia dello stack</string>
-  <string name="morphe_debug_stacktrace_summary">Include la traccia dello stack nei registri di debug per aiutare a identificare gli errori</string>
+  <string name="morphe_debug_level_title">Log di debug</string>
+  <string name="morphe_debug_level_entry_disabled">Disattivato</string>
+  <string name="morphe_debug_level_entry_debug">Debug</string>
+  <string name="morphe_debug_level_entry_verbose">Dettagliato</string>
   <string name="morphe_debug_toast_on_error_title">Mostra notifica per errore di Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Disabilitare i messaggi di errore nasconderà tutte le notifiche di errore di Morphe.
 
@@ -203,7 +204,7 @@ Questo è necessario per il corretto funzionamento dell'app"</string>
 
 Disabilitare le ottimizzazioni della batteria non influirà negativamente sull'utilizzo della batteria.
 
-Clicca \"Continua\" per consentire le modifiche"</string>
+Tocca \"Continua\" per consentire le modifiche"</string>
   <string name="gms_core_dialog_continue_text">Continua</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Mostra la finestra di dialogo di ottimizzazione della batteria MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabilitando questa opzione, verrà nascosto l'avviso di disattivazione dell'ottimizzazione della batteria per MicroG.
@@ -219,7 +220,7 @@ Se le ottimizzazioni della batteria non vengono modificate, potrebbero verificar
   <string name="morphe_link_handling_step1_message">Apri le impostazioni dell\'app originale e disabilita tutti i link di dominio</string>
   <string name="morphe_link_handling_step2_title">Passaggio 2: abilita i link delle app patchate</string>
   <string name="morphe_link_handling_step2_message">Apri le impostazioni dell\'app patchata e abilita tutti i link di dominio</string>
-  <string name="morphe_link_handling_open">Impostazioni avanzate</string>
+  <string name="morphe_link_handling_open">Apri impostazioni</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Avviso versione sperimentale 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Stai utilizzando una versione sperimentale di ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
@@ -229,6 +230,19 @@ Se le ottimizzazioni della batteria non vengono modificate, potrebbero verificar
 Se desideri un'esperienza più stabile, allora &lt;b&gt;disinstalla&lt;/b&gt; questa versione e passa ad una consigliata ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Voglio la versione sperimentale</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Voglio la versione stabile</string>
+  <!-- misc.announcements.patchesUpdateNoticePatch -->
+  <string name="morphe_patches_update_notice_title">Mostra notifica in-app per gli aggiornamenti delle patch</string>
+  <string name="morphe_patches_update_notice_entry_off">Spento</string>
+  <string name="morphe_patches_update_notice_entry_stable">Versioni stabili</string>
+  <string name="morphe_patches_update_notice_entry_dev">Versioni stabili e dev</string>
+  <string name="morphe_patches_update_notice_dialog_title">Nuove patch disponibili</string>
+  <string name="morphe_patches_update_notice_dialog_message">Morphe Patches &lt;b&gt;%1$s&lt;/b&gt; (attuale: %2$s)</string>
+  <string name="morphe_patches_update_notice_dialog_features">✨ Nuove funzionalità</string>
+  <string name="morphe_patches_update_notice_dialog_fixes">🐛 Correzioni di bug</string>
+  <string name="morphe_patches_update_notice_dialog_other">🚀 Altri cambiamenti</string>
+  <string name="morphe_patches_update_notice_dialog_more">...e altri %s</string>
+  <string name="morphe_patches_update_notice_dialog_update">Aggiorna</string>
+  <string name="morphe_patches_update_notice_dialog_dismiss">Chiudi</string>
   <!-- misc.crashlog.crashLogPatch -->
   <string name="morphe_crash_log_saved_documents">Registro degli arresti anomali salvato nei documenti utente: %s</string>
   <string name="morphe_crash_log_saved">Registro degli arresti anomali salvato: %s</string>

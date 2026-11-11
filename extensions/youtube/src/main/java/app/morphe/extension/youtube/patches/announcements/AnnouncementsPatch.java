@@ -47,7 +47,8 @@ public final class AnnouncementsPatch {
                 return true;
             }
         } catch (IOException ex) {
-            Logger.printException(() -> "Could not connect to announcements provider", ex);
+            // A slow or broken connection, which is not an error of the patch.
+            Logger.printInfo(() -> "Could not connect to announcements provider", ex);
             return true;
         }
 
@@ -155,6 +156,9 @@ public final class AnnouncementsPatch {
                     // Show the dialog.
                     Utils.showDialog(context, dialog);
                 });
+            } catch (IOException ex) {
+                // A slow or broken connection, which is not an error of the patch.
+                Logger.printInfo(() -> "Could not get announcement", ex);
             } catch (Exception e) {
                 final var message = "Failed to get announcement";
 
@@ -176,7 +180,7 @@ public final class AnnouncementsPatch {
         }
 
         public static Level fromInt(int value) {
-            return values()[Math.min(value, values().length - 1)];
+            return values()[Math.max(0, Math.min(value, values().length - 1))];
         }
     }
 }

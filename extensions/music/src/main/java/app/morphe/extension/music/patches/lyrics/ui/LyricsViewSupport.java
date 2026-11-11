@@ -52,12 +52,18 @@ final class LyricsViewSupport {
     /** Lines other than the active one shrink a little, on top of dimming. */
     static final float ACTIVE_LINE_SCALE = 1.0f;
     static final float INACTIVE_LINE_SCALE = 0.95f;
+    static final float INACTIVE_LINE_ALPHA = 0.35f;
+    /** Every line while the lyrics are scrolled by hand, so all of them read alike. */
+    static final float BROWSING_LINE_ALPHA = 0.60f;
     /** Compose LinearOutSlowInEasing. */
     static final TimeInterpolator LINEAR_OUT_SLOW_IN =
             new PathInterpolator(0f, 0f, 0.2f, 1f);
     /** The Compose FastOutSlowInEasing. */
     static final TimeInterpolator FAST_OUT_SLOW_IN =
             new PathInterpolator(0.4f, 0f, 0.2f, 1f);
+    /** The CSS ease curve, which line looks and the instrumental break dots change along. */
+    static final TimeInterpolator EASE =
+            new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
     private static final float FOOTER_ALPHA = 0.6f;
     private static final long HIGHLIGHT_FADE_DURATION_MILLISECONDS = 320;
     private static final String LYRICS_SOURCE_KEY = "morphe_music_lyrics_source_label";
@@ -123,28 +129,6 @@ final class LyricsViewSupport {
         return total;
     }
 
-    static void applySectionDotSize(@Nullable LinearLayout row) {
-        if (row == null) {
-            return;
-        }
-        final int size = scaledPixels(row.getContext(), LyricsPanelView.SECTION_DOT_SIZE_FACTOR);
-        final int gap = scaledPixels(row.getContext(), LyricsPanelView.SECTION_DOT_GAP_FACTOR);
-        for (int i = 0; i < row.getChildCount(); i++) {
-            View dot = row.getChildAt(i);
-            if (dot == null) {
-                continue;
-            }
-            LinearLayout.LayoutParams params =
-                    (LinearLayout.LayoutParams) dot.getLayoutParams();
-            if (params == null) {
-                continue;
-            }
-            params.width = size;
-            params.height = size;
-            params.setMarginStart(i == 0 ? 0 : gap);
-            dot.setLayoutParams(params);
-        }
-    }
 
     /**
      * The words the karaoke pass paints for one line.
@@ -193,6 +177,25 @@ final class LyricsViewSupport {
     }
 
     /** Eases the highlight between lines the way the built-in panel does, shrinking the dimmed ones. */
+    /** {@return the alpha of an inactive line this many lines from the sung one, in spotlight mode} */
+    static float spotlightAlpha(int distance) {
+        return switch (distance) {
+            case 0 -> INACTIVE_LINE_ALPHA;
+            case 1 -> 0.28f;
+            case 2 -> 0.20f;
+            case 3 -> 0.14f;
+            default -> 0.10f;
+        };
+    }
+
+    /** {@return the scale of an inactive line this many lines from the sung one, in spotlight mode} */
+    static float spotlightScale(int distance) {
+        if (distance <= 1) return 0.97f;
+        if (distance <= 3) return 0.93f;
+        if (distance == 4) return 0.90f;
+        return 0.85f;
+    }
+
     static void fadeTo(TextView lineView, float alpha) {
         if (!(lineView instanceof LyricsLineView view)) {
             return;
@@ -257,7 +260,7 @@ final class LyricsViewSupport {
         if (w > 0) {
             final boolean isEnd = view.isRightAligned()
                     || (view.getGravity() & Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.END;
-            view.setPivotX(isEnd ? w - view.getPaddingRight() : view.getPaddingLeft());
+            view.setPivotX(view.isCentered() ? w / 2f : (isEnd ? w - view.getPaddingRight() : view.getPaddingLeft()));
         }
         if (h > 0) {
             view.setPivotY(h * 0.5f);

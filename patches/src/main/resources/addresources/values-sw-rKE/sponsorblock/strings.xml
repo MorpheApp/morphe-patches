@@ -77,7 +77,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Taarifu kwenye chaneli ya orodha nyeupe</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Inaonyesha taarifa wakati SponsorBlock imezimwa kwa chaneli ya orodha nyeupe</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock imezimwa kwa chaneli hii</string>
-  <string name="morphe_sb_api_url_reset">URL ya API imezuiliwa</string>
+  <string name="morphe_sb_api_url_reset">URL ya API imewekwa upya</string>
   <string name="morphe_sb_api_url_invalid">URL ya API si sahihi</string>
   <string name="morphe_sb_api_url_changed">URL ya API imebadilika</string>
   <string name="morphe_sb_settings_ie_title">Mipangilio ya Kuagiza / Kusafirisha</string>
@@ -133,20 +133,20 @@ ID yako ya mtumiaji ni kama nywila, na haipaswi kushirikiwa kamwe"</string>
   <string name="morphe_sb_skip_button_unsubmitted">Ruka sehemu</string>
   <string name="morphe_sb_skipped_sponsor">Sponsa imerukwa</string>
   <string name="morphe_sb_skipped_selfpromo">Kujitangaza kumerukwa</string>
-  <string name="morphe_sb_skipped_interaction">Kikumbusho kinachokera kimerukwa</string>
+  <string name="morphe_sb_skipped_interaction">Kikumbusho kinachoudhi kimerukwa</string>
   <string name="morphe_sb_skipped_highlight">Imerukwa hadi sehemu muhimu</string>
   <string name="morphe_sb_skipped_intro_beginning">Utangulizi umerukwa</string>
   <string name="morphe_sb_skipped_intro_middle">Mapumziko yamerukwa</string>
   <string name="morphe_sb_skipped_intro_end">Mapumziko yamerukwa</string>
   <string name="morphe_sb_skipped_outro">Kimalizio kimerukwa</string>
   <string name="morphe_sb_skipped_hook">Kivutio kimerukwa</string>
-  <string name="morphe_sb_skipped_preview_beginning">Rukiza utangulizi</string>
-  <string name="morphe_sb_skipped_preview_middle">Rukiza utangulizi</string>
-  <string name="morphe_sb_skipped_preview_end">Rukiza muhtasari</string>
-  <string name="morphe_sb_skipped_filler">Rukiza mazungumzo yasiyohusiana</string>
-  <string name="morphe_sb_skipped_nomusic">Rukiza sehemu isiyo ya muziki</string>
-  <string name="morphe_sb_skipped_unsubmitted">Rukiza kipande kisichotumwa</string>
-  <string name="morphe_sb_skipped_multiple_segments">Rukiza vipande vingi</string>
+  <string name="morphe_sb_skipped_preview_beginning">Onyesho limerukwa</string>
+  <string name="morphe_sb_skipped_preview_middle">Onyesho limerukwa</string>
+  <string name="morphe_sb_skipped_preview_end">Muhtasari umerukwa</string>
+  <string name="morphe_sb_skipped_filler">Mada isiyohusika imerukwa</string>
+  <string name="morphe_sb_skipped_nomusic">Sehemu isiyo ya muziki imerukwa</string>
+  <string name="morphe_sb_skipped_unsubmitted">Kipande kisichotumwa kimerukwa</string>
+  <string name="morphe_sb_skipped_multiple_segments">Vipande vingi vimerukwa</string>
   <string name="morphe_sb_skip_automatically">Rukiza kiotomatiki</string>
   <string name="morphe_sb_skip_automatically_once">Rukiza kiotomatiki mara moja</string>
   <string name="morphe_sb_skip_showbutton">Onyesha kitufe cha Rukiza</string>
@@ -228,7 +228,7 @@ Kama huwasilishi sehemu muhimu, gusa Ghairi na uashirie eneo la pili"</string>
   <string name="morphe_sb_stats_saved_hour_format">Saa %1$s dakika %2$s</string>
   <string name="morphe_sb_stats_saved_minute_format">%1$s dakika %2$s sekunde</string>
   <string name="morphe_sb_stats_saved_second_format">%s sekunde</string>
-  <string name="morphe_sb_color_opacity_label">Ufikiaji:</string>
+  <string name="morphe_sb_color_opacity_label">Uwazi:</string>
   <string name="morphe_sb_color_dot_label">Rangi:</string>
   <string name="morphe_sb_about_api_summary">"SponsorBlock ni kanzi-data ya jamii ya vipande vya video kama vile wadhamini, utangulizi, hitimisho na vikumbusho vya kujiunga. Vipande hutumwa na kupigiwa kura na jamii, na kanzi-data hii iko wazi na ni bure kupakua
 

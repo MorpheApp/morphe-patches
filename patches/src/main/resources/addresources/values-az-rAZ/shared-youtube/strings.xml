@@ -116,7 +116,7 @@ YouTube Premium istifadəçisisinizsə, bu tənzimləmə tələb olunmaya bilər
   <string name="morphe_spoof_video_streams_client_type_title">İlkin qəbuledici</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR girişi</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-a daxil olunmayıb. Daxil olmaq üçün bura toxun</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR ayrıca giriş tələb edir. Davam etmək üçün buraya toxun</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hazırda Android VR-a daxil olunub</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu xüsusiyyəti istifadə etmək üçün, \"İlkin qəbuledici\"-ni Android VR-a dəyişdir</string>
@@ -208,13 +208,15 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_replace_links_with_shortener_title">Paylaşma keçidlərini youtu.be-yə dəyişdir</string>
   <string name="morphe_replace_links_with_shortener_summary">Videoları qısaldılan youtu.be URL formatın istifadə etməyə zorlayır</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Bufer protokol sazlanma jurnalı</string>
-  <string name="morphe_debug_protobuffer_summary">Tətbiq elementlərin təyin etmək məqsədilə tərtibatçılar üçün əlavə giriş məlumatları əlavə edir</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Bu seçimi aktivləşdirmə bəzi UI quruluşları üçün ekran mətni də olmaqla əlavə tərtibat bazasını daxil edəcək.
+  <string name="morphe_debug_litho_title">Litho qeydəalma</string>
+  <string name="morphe_debug_litho_entry_disabled">Qapalıdı</string>
+  <string name="morphe_debug_litho_entry_path">Yol</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Yol və bufer</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho qeydəalma tətbiqin tərtibat elementlərini, o cümlədən bəzi UI elementlərində ekrandakı mətni qeydə alır.
 
-Bu, xüsusi filtrlər yaradarkən quruluşları müəyyən etməyə kömək edə bilər.
+​Bu, xüsusi filtrlər yaradarkən elementləri müəyyən etməyə kömək edə bilər.
 
-Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlumatın da daxil edəcək"</string>
+​Lakin bu, həm də IP ünvanınız kimi bəzi şəxsi məlumatlarınızı qeydə alacaq"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Fərdi filtr</string>
   <string name="morphe_custom_filter_screen_summary">Hər hansı elementi gizlətmək üçün fərdi filtrləri tənzimlə</string>
