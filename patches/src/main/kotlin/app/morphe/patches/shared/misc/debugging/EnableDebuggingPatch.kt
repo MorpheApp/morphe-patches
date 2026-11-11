@@ -20,7 +20,6 @@ import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
-import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -77,13 +76,14 @@ internal fun enableDebuggingPatch(
         executeBlock()
 
         val preferences = mutableSetOf<BasePreference>(
-            ListPreference("morphe_debug_level"),
+            SwitchPreference("morphe_debug"),
         )
 
         preferences.addAll(additionalDebugPreferences)
 
         preferences.addAll(
             listOf(
+                SwitchPreference("morphe_debug_stacktrace", summary = true),
                 SwitchPreference("morphe_debug_toast_on_error"),
                 NonInteractivePreference(
                     "morphe_debug_export_logs",

@@ -121,6 +121,15 @@ public class IconListPreference extends CustomDialogListPreference {
     }
 
     /**
+     * Overrides the automatically resolved drawables.
+     * Must be the same length as {@link #getEntryValues()}.
+     * Pass {@code null} to revert to convention-based resolution.
+     */
+    public void setIconDrawables(@Nullable Drawable[] drawables) {
+        this.iconDrawables = drawables;
+    }
+
+    /**
      * Builds a rounded icon drawable for each entry by combining
      * {@code morphe_adaptive_background_{value}} and {@code morphe_adaptive_foreground_{value}}.
      * Falls back to the app's launcher icon for unrecognized entries (e.g. ORIGINAL).
@@ -267,9 +276,11 @@ public class IconListPreference extends CustomDialogListPreference {
             String selected = entryValues[position].toString();
             if (callChangeListener(selected)) {
                 setValue(selected);
-                CharSequence[] originalEntries = getEntries();
-                if (originalEntries != null && position < originalEntries.length) {
-                    setSummary(originalEntries[position]);
+                if (getStaticSummary() == null) {
+                    CharSequence[] originalEntries = getEntries();
+                    if (originalEntries != null && position < originalEntries.length) {
+                        setSummary(originalEntries[position]);
+                    }
                 }
                 adapter.selectedValue = selected;
                 adapter.notifyDataSetChanged();

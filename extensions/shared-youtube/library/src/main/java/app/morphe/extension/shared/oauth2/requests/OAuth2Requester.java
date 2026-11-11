@@ -102,14 +102,12 @@ public class OAuth2Requester {
         }
     }
 
-    private static void handleConnectionError(String toastMessage, @Nullable Exception ex, boolean showToast) {
-        if (showToast && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
+    private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
+        if (BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
             Utils.showToastLong(toastMessage);
         }
         if (ex != null) {
             Logger.printInfo(() -> toastMessage, ex);
-        } else if (!showToast) {
-            Logger.printDebug(() -> toastMessage);
         }
     }
 
@@ -138,13 +136,18 @@ public class OAuth2Requester {
         }
     }
 
+    private static boolean isAccessTokenDataAvailable() {
+        synchronized (OAuth2Requester.class) {
+            AccessTokenData accessTokenDataData = lastFetchedAccessTokenData;
+            return accessTokenDataData != null && !accessTokenDataData.isExpired();
+        }
+    }
+
     /**
      * Check the validity of the access token before the video starts.
      * Blocking call, and must be made off the main thread.
-     *
-     * @param showErrorToast If a connection error is shown. A sign in that is no longer valid is always shown.
      */
-    public static synchronized String getAndUpdateAccessTokenIfNeeded(boolean showErrorToast) {
+    public static synchronized String getAndUpdateAccessTokenIfNeeded() {
         Utils.verifyOffMainThread();
 
         synchronized (OAuth2Requester.class) {
@@ -156,13 +159,12 @@ public class OAuth2Requester {
             }
 
             // Access token has not expired, do nothing.
-            AccessTokenData accessTokenData = lastFetchedAccessTokenData;
-            if (accessTokenData != null && !accessTokenData.isExpired()) {
+            if (isAccessTokenDataAvailable()) {
                 return authorization;
             }
 
             // Access token has expired, so reissue it.
-            updateAccessTokenData(refreshToken, showErrorToast);
+            updateAccessTokenData(refreshToken);
 
             return authorization;
         }
@@ -212,11 +214,11 @@ public class OAuth2Requester {
                     lastFetchedActivationCodeData = fetchedActivationCodeData;
                     return fetchedActivationCodeData;
                 }
-                handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null, true);
+                handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
             } catch (SocketTimeoutException ex) {
-                handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex, true);
+                handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);
             } catch (IOException ex) {
-                handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex, true);
+                handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex);
             } catch (Exception ex) {
                 Logger.printException(() -> "getActivationCodeData failure", ex);
             }
@@ -273,11 +275,11 @@ public class OAuth2Requester {
                     lastFetchedAccessTokenData = fetchedAccessTokenData;
                     return fetchedAccessTokenData;
                 }
-                handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null, true);
+                handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
             } catch (SocketTimeoutException ex) {
-                handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex, true);
+                handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);
             } catch (IOException ex) {
-                handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex, true);
+                handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex);
             } catch (Exception ex) {
                 Logger.printException(() -> "getRefreshTokenData failure", ex);
             }
@@ -285,7 +287,7 @@ public class OAuth2Requester {
         }
     }
 
-    private static void updateAccessTokenData(String refreshToken, boolean showErrorToast) {
+    private static void updateAccessTokenData(String refreshToken) {
         Utils.verifyOffMainThread();
         Objects.requireNonNull(refreshToken);
 
@@ -324,15 +326,15 @@ public class OAuth2Requester {
                 // In this case, a response code of 400 is returned
                 // Since the refresh token is no longer valid, all locally stored tokens are removed.
                 Logger.printDebug(() -> "Invalid token, clear all");
-                handleConnectionError(str("morphe_oauth2_connection_failure_status_400", responseCode), null, true);
+                handleConnectionError(str("morphe_oauth2_connection_failure_status_400", responseCode), null);
                 clearAll(false);
             } else {
-                handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null, showErrorToast);
+                handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
             }
         } catch (SocketTimeoutException ex) {
-            handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex, showErrorToast);
+            handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);
         } catch (IOException ex) {
-            handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex, showErrorToast);
+            handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex);
         } catch (Exception ex) {
             Logger.printException(() -> "updateAccessTokenData failure", ex);
         }
@@ -357,11 +359,11 @@ public class OAuth2Requester {
             if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return true;
             }
-            handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null, true);
+            handleConnectionError(str("morphe_oauth2_connection_failure_status", responseCode), null);
         } catch (SocketTimeoutException ex) {
-            handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex, true);
+            handleConnectionError(str("morphe_oauth2_connection_failure_timeout"), ex);
         } catch (IOException ex) {
-            handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex, true);
+            handleConnectionError(str("morphe_oauth2_connection_failure_generic"), ex);
         } catch (Exception ex) {
             Logger.printException(() -> "revokeAccessToken failure", ex);
         }

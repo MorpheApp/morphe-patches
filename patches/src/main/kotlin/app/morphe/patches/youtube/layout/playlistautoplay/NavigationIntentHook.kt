@@ -30,7 +30,10 @@ internal fun navigationIntentHook(
 ) {
     val enumType = NavigationIntentEnumFingerprint.originalClassDef.type
 
-    val wrapperClassDef = navigationRequestFingerprint(enumType).originalClassDef
+    val wrapperClassDef = Fingerprint(
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+        parameters = listOf(enumType, "L", "L")
+    ).originalClassDef
     val wrapperType = wrapperClassDef.type
     val enumField = wrapperClassDef.fields.first { it.type == enumType }
 
@@ -55,7 +58,13 @@ internal fun navigationIntentHook(
         )
     }
 
-    navigationMethodFingerprint(wrapperType).matchAll().forEach { hook(it.method) }
+    // Matches each implementation of the navigation method. These share no common instructions
+    // (some are empty or only delegate), so the wrapper parameter is what identifies them.
+    Fingerprint(
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+        returnType = "V",
+        parameters = listOf(wrapperType)
+    ).matchAll().forEach { hook(it.method) }
 
     if (includePlayerButtons) {
         hook(

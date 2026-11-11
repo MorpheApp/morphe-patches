@@ -9,7 +9,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
@@ -351,8 +350,6 @@ public final class SwipeControlsOverlayLayout extends RelativeLayout implements 
             textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             textPaint.setColor(overlayTextColor);
             textPaint.setTextAlign(Paint.Align.CENTER);
-            // Also the custom font of the Custom font patch, which a paint without a typeface does not use.
-            textPaint.setTypeface(Typeface.DEFAULT);
             textPaint.setTextSize(toDisplayPixels(overlayTextSize));
         }
 

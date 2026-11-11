@@ -221,10 +221,7 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_ON_THE_GO,
                         "yt_outline_headset_",
-                        "yt_outline_experimental_headset_",
-                        // 21.x: Premium upsell parameters of the item, when the icon has no name
-                        // in the buffer. Each Premium feature has its own parameters.
-                        "igkCCA8%3D"
+                        "yt_outline_experimental_headset_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_QUALITY,

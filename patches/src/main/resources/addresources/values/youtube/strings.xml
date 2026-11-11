@@ -537,10 +537,6 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_on_the_go_summary">Player flyout \'on-the-go\' opens Morphe custom player controls</string>
     <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_on_the_go_panel_title">On-the-go</string>
-    <string name="morphe_on_the_go_audio_mode">Switch to audio mode</string>
-    <string name="morphe_on_the_go_video_mode">Switch to video mode</string>
-    <string name="morphe_on_the_go_download">Download</string>
-    <string name="morphe_on_the_go_queue">Queue</string>
 
     <!-- interaction.ask.askFlyoutMenuPatch -->
     <string name="morphe_ask_summarize_flyout_menu_title">Add Ask item to flyout menu</string>
@@ -678,13 +674,11 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_vot_mymemory_quota_message_with_email">You\'ve used today\'s MyMemory translation quota (50,000 characters). Switch to a different translation service or try again tomorrow</string>
     <string name="morphe_vot_mymemory_error">MyMemory translation failed (status %s)</string>
 
-    <!-- interaction.playlist.playlistPatch -->
-    <string name="morphe_playlist_wide_drag_handles_title">Widen playlist drag handles</string>
-    <string name="morphe_playlist_wide_drag_handles_summary">Playlist drag handles are easier to grab</string>
-    <string name="morphe_playlist_hide_removal_snackbar_title">Hide playlist removal snackbar</string>
-    <string name="morphe_playlist_hide_removal_snackbar_summary">The confirmation is not shown after a video is removed from a playlist</string>
-    <string name="morphe_playlist_long_press_drag_title">Long press to reorder playlist videos</string>
-    <string name="morphe_playlist_long_press_drag_summary">Touch and hold a video of your playlist to drag it to a new position</string>
+    <!-- interaction.watchlater.watchLaterPatch -->
+    <string name="morphe_watch_later_wide_drag_handles_title">Widen Watch later drag handles</string>
+    <string name="morphe_watch_later_wide_drag_handles_summary">The drag handles of the Watch later videos are easier to grab</string>
+    <string name="morphe_watch_later_hide_removal_snackbar_title">Hide Watch later removal snackbar</string>
+    <string name="morphe_watch_later_hide_removal_snackbar_summary">The confirmation is not shown after a video is removed from Watch later</string>
 
     <!-- interaction.loop.loopVideoPatch -->
     <string name="morphe_loop_video_title">Enable loop video</string>
@@ -704,26 +698,6 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_loop_video_range_clear">Clear</string>
     <string name="morphe_loop_video_range_toast_on">Looping %1$s - %2$s</string>
     <string name="morphe_loop_video_range_invalid_time">Invalid time range</string>
-
-    <!-- interaction.loop.loopCountPatch -->
-    <string name="morphe_loop_count_screen_title">Loop count</string>
-    <string name="morphe_loop_count_screen_summary">Choose how many times a video loops before the next video</string>
-    <string name="morphe_loop_count_title">Enable loop count</string>
-    <string name="morphe_loop_count_summary">The More menu of the player shows Loop count next to Loop video, to choose how many times the video plays before the next video</string>
-    <string name="morphe_loop_count_playlists_title">Save loop count in playlists</string>
-    <string name="morphe_loop_count_playlists_summary">Each video of a playlist keeps the loop count you choose, and Loop video turns on when the playlist plays it again. If turned off, the loop count is only for the video playing now</string>
-    <string name="morphe_loop_count_clear_title">Clear saved loop counts</string>
-    <string name="morphe_loop_count_clear_summary">Forget the loop counts saved in your playlists. Saved videos: %s</string>
-    <string name="morphe_loop_count_clear_summary_none">No loop counts are saved</string>
-    <string name="morphe_loop_count_clear_dialog_title">Clear saved loop counts?</string>
-    <string name="morphe_loop_count_clear_dialog_message">The videos of your playlists forget their loop count, and Loop video no longer turns on when a playlist plays them</string>
-    <string name="morphe_loop_count_clear_done">Saved loop counts cleared</string>
-    <string name="morphe_loop_count_flyout_name">Loop count</string>
-    <string name="morphe_loop_count_dialog_message">How many times the video plays before the next video, from %1$s to %2$s. Leave empty to loop the video without a limit.</string>
-    <string name="morphe_loop_count_times">%s times</string>
-    <string name="morphe_loop_count_no_limit">No limit</string>
-    <string name="morphe_loop_count_decrease">Fewer times</string>
-    <string name="morphe_loop_count_increase">More times</string>
 
     <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
     <string name="morphe_pip_button_overlay_title">Show Picture-in-Picture button</string>
@@ -839,8 +813,6 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_manager_save_queue">Save queue to playlist</string>
 
     <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
-    <string name="morphe_native_queue_fetch_on_scroll_title">Load queue pages on scroll</string>
-    <string name="morphe_native_queue_fetch_on_scroll_summary">Loads more playlist videos when scrolling near the end of the queue</string>
     <string name="morphe_native_playlist_queue_saved">Playlist saved</string>
     <string name="morphe_native_playlist_queue_saved_to">Saved to %s</string>
     <string name="morphe_native_playlist_queue_clear">Clear queue</string>
@@ -1216,14 +1188,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_bypass_ambient_mode_restrictions_summary">Allows Ambient mode to stay active in battery saver mode</string>
     <string name="morphe_disable_ambient_mode_title">Disable Ambient mode</string>
     <string name="morphe_disable_fullscreen_ambient_mode_title">Disable Ambient mode in fullscreen</string>
-    <string name="morphe_enhanced_ambient_mode_title">Enhanced Ambient mode</string>
-    <string name="morphe_enhanced_ambient_mode_summary">Lights the whole watch page and black bars with the video, in place of Ambient mode</string>
-    <string name="morphe_enhanced_ambient_mode_readable_text_title">Keep text readable</string>
-    <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dims the light on bright videos so the text on the page stays readable</string>
-    <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Dim while scrolling</string>
-    <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Dims the light while the page is scrolled or touched</string>
-    <string name="morphe_enhanced_ambient_mode_dim_duration_title">Dim duration</string>
-    <string name="morphe_enhanced_ambient_mode_dim_duration_summary">How long the light stays dim after scrolling stops. With 0 only scrolling dims the light, and it comes back as soon as scrolling stops</string>
 
     <!-- layout.hide.infocards.hideInfocardsPatch -->
     <string name="morphe_hide_info_cards_title">Hide info cards</string>
@@ -1248,7 +1212,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_shorts_subscriptions_title">Hide in Subscriptions feed</string>
     <string name="morphe_hide_shorts_video_description_title">Hide in video description</string>
     <string name="morphe_hide_shorts_history_title">Hide in watch history</string>
-    <string name="morphe_hide_shorts_notifications_title">Hide in push notifications</string>
     <string name="morphe_shorts_player_screen_title">Shorts player</string>
     <string name="morphe_shorts_player_screen_summary">Choose which components appear in the Shorts player</string>
     <string name="morphe_disable_shorts_double_tap_to_like_title">Disable double-tap to like</string>
@@ -1318,10 +1281,7 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_disable_playlist_autoplay_summary">Prevents playlists from automatically advancing to the next video</string>
 
     <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-    <string name="morphe_continue_watching_prompt_title">\'Continue watching?\' prompt</string>
-    <string name="morphe_continue_watching_prompt_entry_1">Default</string>
-    <string name="morphe_continue_watching_prompt_entry_2">Disabled</string>
-    <string name="morphe_continue_watching_prompt_entry_3">Disabled, always show the autoplay countdown</string>
+    <string name="morphe_disable_continue_watching_prompt_title">Disable \'Continue watching?\' prompt</string>
 
     <!-- layout.player.fullscreen.exitFullscreenPatch -->
     <string name="morphe_exit_fullscreen_title">Exit fullscreen mode on video end</string>
@@ -2022,8 +1982,6 @@ Automatic recording is optional. It stops in incognito or when the account chang
     <string name="morphe_niconico_comments_timed_comments_summary">On videos without a chat, top comments that contain a time such as 1:23 are shown at that time</string>
     <string name="morphe_niconico_comments_timed_comments_with_replay_title">Show timed comments with chat replay</string>
     <string name="morphe_niconico_comments_timed_comments_with_replay_summary">On replays of live streams and Premieres, timed comments are also shown with the chat</string>
-    <string name="morphe_niconico_comments_all_settings">All settings</string>
-    <string name="morphe_niconico_comments_reset_title">Reset these settings?</string>
 
     <string name="morphe_live_chat_translate_screen_title">Live chat translation</string>
     <string name="morphe_live_chat_translate_screen_summary">Translate live chat and live chat replay messages</string>

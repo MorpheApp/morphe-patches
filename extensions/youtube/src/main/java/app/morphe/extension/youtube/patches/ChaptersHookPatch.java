@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import java.util.Arrays;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.settings.BaseSettings;
 
 @SuppressWarnings("unused")
 public class ChaptersHookPatch {
@@ -24,6 +25,11 @@ public class ChaptersHookPatch {
     @Nullable
     private static volatile TimelineMarker[] chapterMarkers;
     private static boolean heatMapPeakPoint = false;
+
+    @Nullable
+    public static TimelineMarker[] getChapterMarkers() {
+        return chapterMarkers;
+    }
 
     @Nullable
     public static CharSequence getChapterTitleAtTime(long currentMillis) {
@@ -61,9 +67,9 @@ public class ChaptersHookPatch {
             return;
         }
 
-        Logger.printDebug(() -> Arrays.equals(markers, chapterMarkers)
-                ? null
-                : "TimelineMarkers: " + Arrays.toString(markers));
+        if (BaseSettings.DEBUG.get() && !Arrays.equals(markers, chapterMarkers)) {
+            Logger.printDebug(() -> "TimelineMarkers: " + Arrays.toString(markers));
+        }
         chapterMarkers = markers;
     }
 

@@ -10,7 +10,6 @@ package app.morphe.patches.youtube.layout.feedcards
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
@@ -19,7 +18,6 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
-import app.morphe.patches.shared.misc.litho.filter.ElementItemConstructorFingerprint
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
@@ -188,41 +186,5 @@ val feedCardLayoutPatch = patch(
 
         // The comment button opens the comments panel of the video, instead of the video.
         hookVideoIntentInterceptor(EXTENSION_CLASS, "openCommentsPanel")
-
-        // The comments panel is shown over the feed, and the commands of the comments,
-        // such as the command that opens the replies, show their panel over the feed too.
-        EngagementPanelControllerOfSurfaceFingerprint.let {
-            val feedControllerProvider = it.instructionMatches[3].fieldReference
-            val getController = it.instructionMatches[4].methodReference
-            val controllerClass = it.method.returnType
-            val getShownPanelId = EngagementPanelControllerShownPanelIdFingerprint.method.let { method ->
-                "${method.definingClass}->${method.name}()Ljava/lang/String;"
-            }
-
-            it.method.addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { p1 }, $EXTENSION_CLASS->isPanelWithoutSurface(Ljava/lang/Enum;)Z
-                    move-result v0
-                    if-eqz v0, :surface_controller
-                    iget-object v0, p0, $feedControllerProvider
-                    invoke-interface { v0 }, $getController
-                    move-result-object v0
-                    check-cast v0, $controllerClass
-                    invoke-virtual { v0 }, $getShownPanelId
-                    move-result-object v0
-                    invoke-static { v0 }, $EXTENSION_CLASS->showPanelOverFeed(Ljava/lang/String;)Z
-                    move-result v0
-                    if-eqz v0, :surface_controller
-                    iget-object v0, p0, $feedControllerProvider
-                    invoke-interface { v0 }, $getController
-                    move-result-object v0
-                    check-cast v0, $controllerClass
-                    return-object v0
-                    :surface_controller
-                    nop
-                """
-            )
-        }
     }
 }

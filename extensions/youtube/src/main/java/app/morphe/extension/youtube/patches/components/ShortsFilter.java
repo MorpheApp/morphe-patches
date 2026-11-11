@@ -15,10 +15,7 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
 
-import androidx.annotation.Nullable;
-
 import com.google.android.libraries.youtube.rendering.ui.pivotbar.PivotBar;
-import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
@@ -36,9 +33,8 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.patches.components.StringFilterGroupList;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
-import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationEndpoint;
-import app.morphe.extension.youtube.innertube.PushNotification.PushNotificationSupportedRenderers;
 import app.morphe.extension.youtube.patches.LayoutReloadObserverPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
@@ -666,15 +662,16 @@ public final class ShortsFilter extends Filter {
      * @return The decision.
      */
     private static boolean logDecision(CharSequence component, boolean hide, String reason) {
-        Logger.printDebug(() -> {
+        if (BaseSettings.DEBUG.get()) {
             String message = "Shorts " + (hide ? "hidden" : "shown") + " (" + reason + ") player: "
                     + PlayerType.getCurrent() + " search bar: " + NavigationBar.isSearchBarActive()
                     + " component: " + component;
             // The same element is filtered again on every layout, which would fill the log.
-            if (message.equals(lastDecisionLog)) return null;
-            lastDecisionLog = message;
-            return message;
-        });
+            if (!message.equals(lastDecisionLog)) {
+                lastDecisionLog = message;
+                Logger.printDebug(() -> message);
+            }
+        }
         return hide;
     }
 
@@ -793,32 +790,6 @@ public final class ShortsFilter extends Filter {
         if (HIDE_SHORTS_NAVIGATION_BAR) {
             pivotBarRef = new WeakReference<>(view);
         }
-    }
-
-    /**
-     * Injection point.
-     *
-     * @param renderers PushNotificationSupportedRenderers of a received push notification.
-     * @return If the notification opens a Short and is not shown.
-     */
-    public static boolean hideShortsNotification(@Nullable MessageLite renderers) {
-        if (!Settings.HIDE_SHORTS_NOTIFICATIONS.get() || renderers == null) {
-            return false;
-        }
-
-        try {
-            NavigationEndpoint endpoint = PushNotificationSupportedRenderers.parseFrom(renderers.toByteArray())
-                    .getAndroidPushNotificationRenderer()
-                    .getNavigationEndpoint();
-            if (endpoint.hasReelWatchEndpoint()) {
-                Logger.printDebug(() -> "Hiding Shorts push notification");
-                return true;
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "hideShortsNotification failure", ex);
-        }
-
-        return false;
     }
 
     /**

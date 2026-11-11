@@ -156,8 +156,7 @@ public class VideoDelayDialogButton {
     public static void updateButtonAppearance() {
         Utils.runOnMainThread(() -> {
             try {
-                // The button has room for about 4 characters, so the delay is shown in milliseconds without a unit.
-                String delayText = String.valueOf(SeekBarPreference.clampToRange(Settings.VIDEO_DELAY));
+                String delayText = formatButtonText(SeekBarPreference.clampToRange(Settings.VIDEO_DELAY));
                 if (legacy != null) {
                     legacy.setTextOverlay(delayText);
                 }
@@ -170,6 +169,13 @@ public class VideoDelayDialogButton {
                 Logger.printException(() -> "updateButtonAppearance failure", ex);
             }
         });
+    }
+
+    /**
+     * The button has room for about 4 characters, so the delay is shown in milliseconds without a unit.
+     */
+    private static String formatButtonText(int delayMs) {
+        return String.valueOf(delayMs);
     }
 
     /**

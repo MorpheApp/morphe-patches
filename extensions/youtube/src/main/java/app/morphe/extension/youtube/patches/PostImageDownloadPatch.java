@@ -253,6 +253,11 @@ public final class PostImageDownloadPatch {
         return index >= LONG_TEXT_LENGTH ? normalize(text.substring(0, index)) : null;
     }
 
+    private static String getOptions(String url) {
+        final int optionsIndex = url.indexOf('=');
+        return optionsIndex < 0 ? "" : url.substring(optionsIndex + 1);
+    }
+
     /**
      * @return The size the url asks for, or {@link Integer#MAX_VALUE} if it does not ask for one.
      */
@@ -278,9 +283,7 @@ public final class PostImageDownloadPatch {
         UrlKind kind = UrlKind.NONE;
         Matcher matcher = IMAGE_URL_PATTERN.matcher(text);
         while (matcher.find()) {
-            String url = matcher.group();
-            final int optionsIndex = url.indexOf('=');
-            String options = optionsIndex < 0 ? "" : url.substring(optionsIndex + 1);
+            String options = getOptions(matcher.group());
             if (isAvatarOptions(options)) {
                 kind = UrlKind.AVATAR;
             } else if (getImageSize(options) >= MIN_IMAGE_SIZE) {

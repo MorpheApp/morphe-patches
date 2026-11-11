@@ -38,6 +38,7 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 public final class BotGuardManager {
 
@@ -99,8 +100,7 @@ public final class BotGuardManager {
      */
     @Nullable
     public static synchronized String getChallengeData() {
-        if (Utils.isNotEmpty(challengeData)
-                && SystemClock.elapsedRealtime() - challengeFetchedTime < CHALLENGE_DATA_EXPIRATION_MS) {
+        if (isChallengeDataNotExpired()) {
             return challengeData;
         }
         // Previously fetched data is expired and must not be used,
@@ -282,6 +282,11 @@ public final class BotGuardManager {
         return null;
     }
 
+    private static boolean isChallengeDataNotExpired() {
+        return Utils.isNotEmpty(challengeData) && SystemClock.elapsedRealtime()
+                - challengeFetchedTime < CHALLENGE_DATA_EXPIRATION_MS;
+    }
+
     /**
      * Always downloads a new challenge. A failed or timed out download
      * does not prevent a later call from trying again.
@@ -308,7 +313,7 @@ public final class BotGuardManager {
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
-        if (Logger.isDebugEnabled()) {
+        if (SharedYouTubeSettings.DEBUG.get()) {
             Utils.showToastShort(toastMessage);
         }
         Logger.printInfo(() -> toastMessage, ex);

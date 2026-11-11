@@ -107,8 +107,7 @@ public class CustomFontFilePreference extends Preference {
 
             Uri uri = data.getData();
             String fileName = getFileName(context, uri);
-            String lowerCaseName = fileName == null ? "" : fileName.toLowerCase(Locale.ENGLISH);
-            if (!(lowerCaseName.endsWith(".ttf") || lowerCaseName.endsWith(".otf"))
+            if (fileName == null || !isFontFileName(fileName)
                     || !CustomFontPatch.importFontFile(context, uri)) {
                 Utils.showToastLong(str("morphe_custom_font_file_invalid"));
                 return;
@@ -132,6 +131,11 @@ public class CustomFontFilePreference extends Preference {
         } catch (Exception ex) {
             Logger.printException(() -> "handleActivityResult failure", ex);
         }
+    }
+
+    private static boolean isFontFileName(String name) {
+        name = name.toLowerCase(Locale.ENGLISH);
+        return name.endsWith(".ttf") || name.endsWith(".otf");
     }
 
     @Nullable

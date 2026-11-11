@@ -27,7 +27,7 @@ import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.setExtensionIsPatchIncluded
 
-internal const val EXTENSION_PACKAGE = "Lapp/morphe/extension/youtube/patches/queue"
+private const val EXTENSION_PACKAGE = "Lapp/morphe/extension/youtube/patches/queue"
 internal const val EXTENSION_CLASS = "$EXTENSION_PACKAGE/NativePlaylistQueuePatch;"
 internal const val CONTROLLER_INTERFACE = "$EXTENSION_PACKAGE/NativePlaylistQueuePatch\$PlaylistController;"
 internal const val NAVIGATOR_OWNER_INTERFACE = "$EXTENSION_PACKAGE/NativePlaylistQueuePatch\$NavigatorOwner;"
@@ -86,9 +86,6 @@ val nativePlaylistQueuePatch = patch(
         hookVideoIntentContext(EXTENSION_CLASS, "prepareQueueStartContext")
 
         installQueueFlyout()
-        installPlaylistCardSource()
-        installPlaylistPages()
-        installPlaylistPaging()
         installPlaylistPanel()
         installPlaylistTitle()
         installRatingCapture()

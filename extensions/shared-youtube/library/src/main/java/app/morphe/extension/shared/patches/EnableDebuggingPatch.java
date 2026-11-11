@@ -14,17 +14,6 @@ package app.morphe.extension.shared.patches;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
-import android.app.ActivityManager;
-import android.app.ApplicationExitInfo;
-import android.content.Context;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -37,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.FeatureFlagsBisect;
 
@@ -50,7 +39,7 @@ public final class EnableDebuggingPatch {
      * while the app is running then failing to restart
      * resulting in an incomplete log.
      */
-    private static final boolean LOG_FEATURE_FLAGS = Logger.isDebugEnabled();
+    private static final boolean LOG_FEATURE_FLAGS = BaseSettings.DEBUG.get();
 
     private static final Map<Long, Boolean> OVERRIDDEN_FEATURE_FLAGS = loadOverriddenFlags();
 
@@ -60,60 +49,6 @@ public final class EnableDebuggingPatch {
 
     static {
         FeatureFlagsBisect.handleAppStartup();
-
-        if (LOG_FEATURE_FLAGS && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            Utils.runOnBackgroundThread(EnableDebuggingPatch::logProcessExits);
-        }
-    }
-
-    /**
-     * Logs why the previous processes ended, such as a crash, an ANR or a kill in the background,
-     * which the app cannot log itself.
-     */
-    @RequiresApi(api = Build.VERSION_CODES.R)
-    private static void logProcessExits() {
-        try {
-            Context context = Utils.getContext();
-            String packageName = context.getPackageName();
-            StringBuilder builder = new StringBuilder("Last process exits:");
-            int count = 0;
-            for (ApplicationExitInfo exit : context.getSystemService(ActivityManager.class)
-                    .getHistoricalProcessExitReasons(packageName, 0, 20)) {
-                // The WebView processes of the app are listed too.
-                if (!exit.getProcessName().startsWith(packageName)) continue;
-                if (count++ >= 5) break;
-
-                builder.append('\n').append(exit);
-                // The system keeps the thread dump of an ANR. The main thread shows what blocked the app.
-                if (exit.getReason() == ApplicationExitInfo.REASON_ANR) {
-                    appendAnrMainThread(builder, exit);
-                }
-            }
-            Logger.printDebug(builder::toString);
-        } catch (Exception ex) {
-            Logger.printException(() -> "logProcessExits failure", ex);
-        }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.R)
-    private static void appendAnrMainThread(StringBuilder builder, ApplicationExitInfo exit) {
-        try (InputStream trace = exit.getTraceInputStream()) {
-            if (trace == null) return;
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(trace, StandardCharsets.UTF_8));
-            boolean mainThread = false;
-            int lines = 0;
-            for (String line; (line = reader.readLine()) != null && lines < 60; ) {
-                if (line.startsWith("\"main\"")) mainThread = true;
-                else if (mainThread && line.isEmpty()) break;
-                if (mainThread) {
-                    builder.append("\n  ").append(line);
-                    lines++;
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not read the ANR trace", ex);
-        }
     }
 
     private static Map<Long, Boolean> loadOverriddenFlags() {
@@ -155,7 +90,7 @@ public final class EnableDebuggingPatch {
             }
             // Always add flag but only log if flag is enabled.
             if (featureFlags.putIfAbsent(flagObj, value) == null && value) {
-                Logger.printVerbose(() -> "boolean feature is enabled: " + flag);
+                Logger.printDebug(() -> "boolean feature is enabled: " + flag);
             }
         }
 
@@ -173,7 +108,7 @@ public final class EnableDebuggingPatch {
             }
             if (featureFlags.putIfAbsent(flagObj, TRUE) == null) {
                 // Align the log outputs to make post-processing easier.
-                Logger.printVerbose(() -> " double feature is enabled: " + flag
+                Logger.printDebug(() -> " double feature is enabled: " + flag
                         + " value: " + value + (defaultValue == 0 ? "" : " default: " + defaultValue));
             }
         }
@@ -191,7 +126,7 @@ public final class EnableDebuggingPatch {
                 return defaultValue;
             }
             if (featureFlags.putIfAbsent(flagObj, TRUE) == null) {
-                Logger.printVerbose(() -> "   long feature is enabled: " + flag
+                Logger.printDebug(() -> "   long feature is enabled: " + flag
                         + " value: " + value + (defaultValue == 0 ? "" : " default: " + defaultValue));
             }
         }
@@ -209,12 +144,21 @@ public final class EnableDebuggingPatch {
                 return defaultValue;
             }
             if (featureFlags.putIfAbsent(flagObj, TRUE) == null) {
-                Logger.printVerbose(() -> " string feature is enabled: " + flag
+                Logger.printDebug(() -> " string feature is enabled: " + flag
                         + " value: " + value + (defaultValue.isEmpty() ? "" : " default: " + defaultValue));
             }
         }
 
         return value;
+    }
+
+    /**
+     * Bootstrap store flag ids are packed bit field locations, and never overlap server flag ids.
+     *
+     * @return The size of the flag value in bits, from bits 16-29 of the id.
+     */
+    private static int getBootstrapFlagBitSize(int flag) {
+        return (flag >>> 16) & 0x3FFF;
     }
 
     /**
@@ -228,17 +172,15 @@ public final class EnableDebuggingPatch {
                 return 0;
             }
 
-            // Bootstrap store flag ids are packed bit field locations, and never overlap server flag ids.
-            // Bits 16-29 of the id are the size of the flag value in bits.
-            if (((flag >>> 16) & 0x3FFF) == 1) {
+            if (getBootstrapFlagBitSize(flag) == 1) {
                 if (override != null) {
                     return 1;
                 }
                 if (featureFlags.putIfAbsent(flagObj, value != 0) == null && value != 0) {
-                    Logger.printVerbose(() -> "boolean feature is enabled: " + flag);
+                    Logger.printDebug(() -> "boolean feature is enabled: " + flag);
                 }
             } else if (value != 0 && featureFlags.putIfAbsent(flagObj, TRUE) == null) {
-                Logger.printVerbose(() -> "   long feature is enabled: " + flag + " value: " + value);
+                Logger.printDebug(() -> "   long feature is enabled: " + flag + " value: " + value);
             }
         }
 

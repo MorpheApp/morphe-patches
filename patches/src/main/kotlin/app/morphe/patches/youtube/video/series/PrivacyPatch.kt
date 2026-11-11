@@ -24,8 +24,7 @@ private const val IDENTITY = $$"$${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPriv
 /** Resolve the current-account providers, never an arbitrary identity getter or request header. */
 internal data class NativeAccountContract(val type: String, val id: String, val incognito: String)
 
-/** Also used by the native playlist queue. Resolving it does not install the Series tracker. */
-internal fun resolveNativeAccountContract(): NativeAccountContract {
+internal fun wirePrivacy(): NativeAccountContract {
     val identity = AccountIdentityFingerprint.originalClassDef
     val diagnostic = AccountIdentityFingerprint.originalMethod
 
@@ -54,12 +53,6 @@ internal fun resolveNativeAccountContract(): NativeAccountContract {
             IdentityInterfaceMethodFingerprint(idGetter).matchOrNull(it)
         } != null
     }
-    return NativeAccountContract(contract, idGetter.signature(), incognitoGetter.signature())
-}
-
-internal fun wirePrivacy(): NativeAccountContract {
-    val account = resolveNativeAccountContract()
-    val contract = account.type
     // There are two current-account providers. Either one can be the active provider.
     val providers = CurrentAccountProviderFingerprint.matchAll()
         .map { it.originalClassDef }
@@ -86,9 +79,9 @@ internal fun wirePrivacy(): NativeAccountContract {
                 invoke-virtual {p0}, $current
                 move-result-object v0
                 if-eqz v0, :unknown
-                invoke-interface {v0}, $contract->${account.id}
+                invoke-interface {v0}, $contract->${idGetter.signature()}
                 move-result-object v1
-                invoke-interface {v0}, $contract->${account.incognito}
+                invoke-interface {v0}, $contract->${incognitoGetter.signature()}
                 move-result v2
                 new-instance v3, $IDENTITY
                 invoke-direct {v3, v1, v2}, $IDENTITY-><init>(Ljava/lang/String;Z)V
@@ -106,5 +99,5 @@ internal fun wirePrivacy(): NativeAccountContract {
             "invoke-static/range {p0 .. p0}, $PRIVACY->attach($SOURCE)V",
         )
     }
-    return account
+    return NativeAccountContract(contract, idGetter.signature(), incognitoGetter.signature())
 }

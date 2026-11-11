@@ -520,12 +520,7 @@ final class TTSEngine {
     }
 
     private String buildSsml(String text, String voice, String lang) {
-        String speakLang = lang;
-        if (speakLang == null || speakLang.isEmpty()) {
-            // The locale portion of the voice name, e.g. "uk-UA-OstapNeural" -> "uk-UA".
-            final int third = voice.indexOf('-', voice.indexOf('-') + 1);
-            speakLang = third > 0 ? voice.substring(0, third) : "en-US";
-        }
+        String speakLang = lang != null && !lang.isEmpty() ? lang : localePart(voice);
         return "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis'"
                 + " xml:lang='" + speakLang + "'>"
                 + "<voice name='" + voice + "'>" + escapeXml(text) + "</voice></speak>";
@@ -800,6 +795,12 @@ final class TTSEngine {
                 currentPlayer = null;
             }
         });
+    }
+
+    /** Extract locale portion from a voice name, e.g. "uk-UA-OstapNeural" → "uk-UA". */
+    private static String localePart(String voice) {
+        final int third = voice.indexOf('-', voice.indexOf('-') + 1);
+        return third > 0 ? voice.substring(0, third) : "en-US";
     }
 
     private static String edgeTimestamp() {

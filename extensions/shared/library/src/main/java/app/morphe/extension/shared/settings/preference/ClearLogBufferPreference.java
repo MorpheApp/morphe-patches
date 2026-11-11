@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.BaseSettings;
 
 /**
  * A custom preference that clears the Morphe debug log buffer when clicked.
@@ -40,7 +41,7 @@ public class ClearLogBufferPreference extends Preference {
      * Clears the internal log buffer and displays a toast with the result.
      */
     public static void clearLogBuffer() {
-        if (!Logger.isDebugEnabled()) {
+        if (!BaseSettings.DEBUG.get()) {
             Utils.showToastShort(str("morphe_debug_logs_disabled"));
             return;
         }

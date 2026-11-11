@@ -33,7 +33,6 @@ import app.morphe.extension.shared.Utils;
  * before the first {@code Settings.*} access, so the {@code Setting.preferences} static initializer
  * finds a live context.
  */
-@SuppressWarnings({"deprecation", "unchecked"})
 public final class LyricsTestEnv {
 
     private static boolean bootstrapped;
@@ -65,7 +64,6 @@ public final class LyricsTestEnv {
     }
 
     /** The temp directory backing {@link FakeContext#getFilesDir()}. */
-    @SuppressWarnings("unused")
     public static File filesDir() {
         bootstrap();
         return filesDir;
@@ -203,7 +201,7 @@ public final class LyricsTestEnv {
         }
 
         void applyChanges(Map<String, Object> changes, Set<String> removals) {
-            map.putAll(changes);
+            changes.forEach(map::put);
             removals.forEach(map::remove);
             for (OnSharedPreferenceChangeListener listener : new ArrayList<>(listeners)) {
                 for (String key : changes.keySet()) {

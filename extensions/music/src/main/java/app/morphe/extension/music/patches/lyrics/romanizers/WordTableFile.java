@@ -48,9 +48,7 @@ final class WordTableFile {
         if (open != null) return open;
 
         File file = file();
-        // Not built yet, such as when the dictionary was never downloaded.
-        if (file == null || !file.isFile()) return null;
-
+        if (file == null) return null;
         open = WordReadingTable.open(file.toPath(), magic);
         if (open != null) {
             table = open;

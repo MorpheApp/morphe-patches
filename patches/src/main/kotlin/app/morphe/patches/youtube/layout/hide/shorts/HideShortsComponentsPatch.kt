@@ -12,7 +12,6 @@ package app.morphe.patches.youtube.layout.hide.shorts
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.booleanOption
@@ -127,8 +126,7 @@ private val hideShortsComponentsResourcePatch = patch {
                     SwitchPreference("morphe_hide_shorts_search"),
                     SwitchPreference("morphe_hide_shorts_subscriptions"),
                     SwitchPreference("morphe_hide_shorts_video_description"),
-                    SwitchPreference("morphe_hide_shorts_history"),
-                    SwitchPreference("morphe_hide_shorts_notifications")
+                    SwitchPreference("morphe_hide_shorts_history")
                 )
             ),
 
@@ -315,22 +313,6 @@ val hideShortsComponentsPatch = patch(
                 }
             }
         }
-
-        // endregion
-
-        // region Hide Shorts push notifications.
-
-        PushNotificationReceivedFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static { p2 }, $EXTENSION_FILTER->hideShortsNotification(Lcom/google/protobuf/MessageLite;)Z
-                move-result v0
-                if-eqz v0, :show
-                return-void
-                :show
-                nop
-            """
-        )
 
         // endregion
     }

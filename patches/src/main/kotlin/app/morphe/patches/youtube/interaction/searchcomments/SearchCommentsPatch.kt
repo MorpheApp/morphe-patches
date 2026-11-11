@@ -50,12 +50,7 @@ val searchCommentsPatch = patch(
             execute {
                 copyResources(
                     "searchcomments",
-                    ResourceGroup(
-                        "drawable",
-                        "morphe_search_comments_button.xml",
-                        "morphe_search_comments_button_active.xml",
-                        "morphe_search_comments_button_idle.xml"
-                    )
+                    ResourceGroup("drawable", "morphe_search_comments_button.xml")
                 )
             }
         }

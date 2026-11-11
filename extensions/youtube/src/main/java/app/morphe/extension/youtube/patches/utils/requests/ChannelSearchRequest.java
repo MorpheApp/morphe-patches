@@ -546,7 +546,7 @@ public final class ChannelSearchRequest {
     /**
      * Text is either a plain string or a list of runs, depending on the field.
      */
-    static String parseText(@Nullable JSONObject text) {
+    private static String parseText(@Nullable JSONObject text) {
         if (text == null) {
             return "";
         }

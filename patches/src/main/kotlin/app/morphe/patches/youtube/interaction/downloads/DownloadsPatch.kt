@@ -147,7 +147,6 @@ val downloadsPatch = patch(
     execute {
         initializeTopControl(EXTENSION_BUTTON)
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS)
         setExtensionIsPatchIncluded(EXTENSION_SHORTS_DOWNLOAD_BUTTON)
         setExtensionIsPatchIncluded(EXTENSION_EXPORT_DOWNLOAD_BUTTON)
 
@@ -330,9 +329,6 @@ val downloadsPatch = patch(
                 """
             )
         }
-
-        // Start saved videos played from Downloads at the position saved in Downloads.
-        hookOfflineDownloadResume()
 
         // Keep saved videos playable, if the server disables them when they are refreshed.
         UpdateOfflineVideoPolicyFingerprint.matchAll().forEach { match ->

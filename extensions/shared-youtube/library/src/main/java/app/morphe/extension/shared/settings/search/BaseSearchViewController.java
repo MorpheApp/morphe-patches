@@ -39,6 +39,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toolbar;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
@@ -602,14 +603,21 @@ public abstract class BaseSearchViewController {
     }
 
     /**
+     * Gets the background color for search view components based on current theme.
+     */
+    @ColorInt
+    public static int getSearchViewBackground() {
+        return Utils.adjustColorBrightness(ThemeUtils.getDialogBackgroundColor(), Utils.isDarkModeEnabled() ? 1.11f : 0.95f);
+    }
+
+    /**
      * Creates a rounded background drawable for the main search view.
      */
     protected static GradientDrawable createBackgroundDrawable() {
         GradientDrawable background = new GradientDrawable();
         background.setShape(GradientDrawable.RECTANGLE);
         background.setCornerRadius(Dim.dp28);
-        background.setColor(Utils.adjustColorBrightness(ThemeUtils.getDialogBackgroundColor(),
-                Utils.isDarkModeEnabled() ? 1.11f : 0.95f));
+        background.setColor(getSearchViewBackground());
         return background;
     }
 

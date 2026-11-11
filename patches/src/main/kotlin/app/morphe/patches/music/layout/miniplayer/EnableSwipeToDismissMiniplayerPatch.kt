@@ -57,7 +57,7 @@ val enableSwipeToDismissMiniplayerPatch = patch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        PreferenceScreen.addMiniplayerPreferences(
+        PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_music_enable_swipe_to_dismiss_miniplayer", summary = true)
         )
 

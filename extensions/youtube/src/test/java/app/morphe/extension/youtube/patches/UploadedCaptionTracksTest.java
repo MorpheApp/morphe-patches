@@ -13,7 +13,6 @@ import java.util.List;
 import org.junit.Test;
 
 public class UploadedCaptionTracksTest {
-    @SuppressWarnings("unchecked")
     @Test
     public void prefetchedNativeTrackKeepsMetadataWithoutReplacingSelectedSession() throws Exception {
         var type = Class.forName(CaptionTracks.class.getName() + "$Track");
@@ -29,8 +28,7 @@ public class UploadedCaptionTracksTest {
         var sessionField = CaptionTracks.class.getDeclaredField("translatedSession");
         sessionField.setAccessible(true);
         Object oldSession = sessionField.get(null);
-        ThreadLocal<Object> parsing = (ThreadLocal<Object>) parsingField.get(null);
-        assertNotNull(parsing);
+        ThreadLocal parsing = (ThreadLocal) parsingField.get(null);
         try {
             videoField.set(null, "other-video");
             parsing.set(track);
@@ -69,16 +67,12 @@ public class UploadedCaptionTracksTest {
         return new Track(language, "." + language,
             "https://www.youtube.com/api/timedtext?v=26P1KyvrmjI&lang=" + language + "&caps=asr");
     }
-    private static Object track(CaptionTracks.UploadedCandidate candidate) {
-        assertNotNull(candidate);
-        return candidate.track();
-    }
     @Test
     public void findsSecondLanguageInFullCatalogWithoutSelectingAnotherTrack() {
         var tr = authored("tr");
         var de = authored("de");
-        assertSame(de, track(CaptionTracks.findUploadedTrack(List.of(tr, de), "de")));
-        assertSame(tr, track(CaptionTracks.findUploadedTrack(List.of(de, tr), "tr")));
+        assertSame(de, CaptionTracks.findUploadedTrack(List.of(tr, de), "de").track());
+        assertSame(tr, CaptionTracks.findUploadedTrack(List.of(de, tr), "tr").track());
     }
     @Test
     public void rejectsAsrAndTranslatedCandidates() {
@@ -97,7 +91,7 @@ public class UploadedCaptionTracksTest {
     @Test
     public void canonicalAliasKeepsOriginalDescriptor() {
         var legacy = authored("iw");
-        assertSame(legacy, track(CaptionTracks.findUploadedTrack(List.of(legacy), "he")));
+        assertSame(legacy, CaptionTracks.findUploadedTrack(List.of(legacy), "he").track());
     }
     @Test
     public void doesNotInventMissingLanguage() {
@@ -145,18 +139,18 @@ public class UploadedCaptionTracksTest {
     @Test
     public void appDefaultCanUseGenericUploadedLanguage() {
         var english = authored("en");
-        assertSame(english, track(CaptionTracks.findUploadedTrack(
-            List.of(english), java.util.Locale.US.toLanguageTag(), true)));
+        assertSame(english, CaptionTracks.findUploadedTrack(
+            List.of(english), java.util.Locale.US.toLanguageTag(), true).track());
         var turkish = authored("tr");
-        assertSame(turkish, track(CaptionTracks.findUploadedTrack(List.of(turkish), "tr-TR", true)));
+        assertSame(turkish, CaptionTracks.findUploadedTrack(List.of(turkish), "tr-TR", true).track());
     }
 
     @Test
     public void appDefaultPrefersExactAndPreservesExplicitIdentity() {
         var generic = authored("en");
         var regional = authored("en-US");
-        assertSame(regional, track(CaptionTracks.findUploadedTrack(
-            List.of(generic, regional), "en-US", true)));
+        assertSame(regional, CaptionTracks.findUploadedTrack(
+            List.of(generic, regional), "en-US", true).track());
         assertNull(CaptionTracks.findUploadedTrack(List.of(generic), "en-US", false));
         assertNull(CaptionTracks.findUploadedTrack(List.of(authored("pt-BR")), "pt-PT", true));
         assertNull(CaptionTracks.findUploadedTrack(List.of(authored("pt")), "pt-PT", true));
@@ -167,7 +161,7 @@ public class UploadedCaptionTracksTest {
         assertNull(CaptionTracks.findUploadedTrack(List.of(authored("sr")), "sr-Cyrl", true));
         assertNull(CaptionTracks.findUploadedTrack(List.of(authored("zh-Hans")), "zh-Hant-TW", true));
         var traditional = authored("zh-Hant");
-        assertSame(traditional, track(CaptionTracks.findUploadedTrack(
-            List.of(traditional), "zh-Hant-TW", true)));
+        assertSame(traditional, CaptionTracks.findUploadedTrack(
+            List.of(traditional), "zh-Hant-TW", true).track());
     }
 }

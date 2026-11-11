@@ -8,7 +8,6 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.json)
     testImplementation(libs.morphe.extensions.library)
-    testImplementation(project(":extensions:shared:library"))
 
     compileOnly(libs.annotation)
     compileOnly(libs.morphe.extensions.library)

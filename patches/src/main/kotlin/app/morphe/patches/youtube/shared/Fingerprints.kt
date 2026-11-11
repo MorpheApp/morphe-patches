@@ -77,9 +77,7 @@ internal object EngagementPanelControllerFingerprint : Fingerprint(
         methodCall(smali = "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;"),
         opcode(opcode = Opcode.CHECK_CAST, location = MatchAfterWithin(4)),
         opcode(opcode = Opcode.IF_EQZ, location = MatchAfterImmediately()),
-        // Not immediately: the engagement panel hook inserts its code before this instruction,
-        // and the fingerprint must still match the changed method.
-        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(4)),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
         literal(45615449L),
         methodCall(smali = "Ljava/util/ArrayDeque;->iterator()Ljava/util/Iterator;"),
         fieldAccess(

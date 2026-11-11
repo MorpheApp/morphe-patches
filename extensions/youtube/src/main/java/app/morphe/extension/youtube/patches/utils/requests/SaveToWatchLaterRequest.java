@@ -26,6 +26,7 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 
 public class SaveToWatchLaterRequest {
@@ -47,9 +48,9 @@ public class SaveToWatchLaterRequest {
     @Nullable
     public Boolean getResult() {
         try {
-            Logger.printExceptionIfDebug(() -> !fetchIsDone() && Utils.isCurrentlyOnMainThread()
-                    ? "Debug: Blocking main thread"
-                    : null);
+            if (BaseSettings.DEBUG.get() && !fetchIsDone() && Utils.isCurrentlyOnMainThread()) {
+                Logger.printException(() -> "Debug: Blocking main thread");
+            }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getResult timed out", ex);

@@ -143,7 +143,7 @@ public final class CldrTransformsStore {
 
         WORKER.execute(() -> {
             try {
-                build();
+                build(CHANNEL);
             } catch (Exception ex) {
                 Logger.printDebug(() -> "CLDR transforms build failed", ex);
                 CHANNEL.onFailed();
@@ -163,19 +163,19 @@ public final class CldrTransformsStore {
         return total;
     }
 
-    private static void build() throws IOException {
+    private static void build(RomanizationDict.Listener listener) throws IOException {
         File directory = RomanizationDict.directory();
         if (directory == null) throw new IOException("no cache directory");
 
         File archive = new File(directory, ARCHIVE);
         if (!archive.isFile()) {
-            RomanizationDict.download(URL, archive, ARCHIVE, (RomanizationDict.Listener) CldrTransformsStore.CHANNEL);
+            RomanizationDict.download(URL, archive, ARCHIVE, listener);
         }
-        extract(archive, (RomanizationDict.Listener) CldrTransformsStore.CHANNEL);
+        extract(archive, listener);
         //noinspection ResultOfMethodCallIgnored
         archive.delete();
 
-        CldrTransformsStore.CHANNEL.onReady(entries());
+        listener.onReady(entries());
     }
 
     /**
@@ -204,7 +204,7 @@ public final class CldrTransformsStore {
                 if (content == null) {
                     throw new IOException("no " + entry + " in the CLDR archive");
                 }
-                writeTable(directory, transliteration[1], content);
+                writeTable(directory, transliteration[1], content, listener);
                 listener.onBuilding(50 + done++ * 50 / TRANSLITERATIONS.length);
             }
         }
@@ -212,7 +212,8 @@ public final class CldrTransformsStore {
     }
 
     /** Writes one script's literal rules, with the overrides folded in. */
-    private static void writeTable(File directory, String script, byte[] content) throws IOException {
+    private static void writeTable(File directory, String script, byte[] content,
+                                   RomanizationDict.Listener listener) throws IOException {
         Map<String, String> rules = parseRules(content, script);
 
         File built = new File(directory, tableName(script) + ".building");
@@ -381,7 +382,7 @@ public final class CldrTransformsStore {
 
     /** A variable value with its {@code \\uXXXX} escapes decoded, or the value whole. */
     private static String unescape(String value) {
-        if (!value.contains("\\u")) return value;
+        if (value.indexOf("\\u") < 0) return value;
         StringBuilder out = new StringBuilder(value.length());
         for (int i = 0; i < value.length(); i++) {
             char c = value.charAt(i);

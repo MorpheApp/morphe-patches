@@ -35,6 +35,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -70,6 +71,13 @@ public final class NavigationBar {
         onNavigationButtonChangedListeners.add(listener);
     }
 
+    /**
+     * Unregisters a listener from being notified when the navigation button changes.
+     */
+    public static void removeOnNavigationButtonChangedListener(OnNavigationButtonChangedListener listener) {
+        onNavigationButtonChangedListeners.remove(listener);
+    }
+
     private static void notifyNavigationButtonChangedListeners(@Nullable NavigationButton button) {
         for (OnNavigationButtonChangedListener listener : onNavigationButtonChangedListeners) {
             listener.onNavigationButtonChanged(button);
@@ -101,7 +109,6 @@ public final class NavigationBar {
                 }
                 if (view == searchBarResultsRef.get()) {
                     isSearchBarAttached = true;
-                    Logger.printVerbose(() -> "Search bar shown");
                 }
             }
 
@@ -114,7 +121,6 @@ public final class NavigationBar {
                 if (view == searchBarResultsRef.get()) {
                     // View#isShown() is still true while the detach listeners are called.
                     isSearchBarAttached = false;
-                    Logger.printVerbose(() -> "Search bar hidden");
                 }
             }
         });
@@ -191,7 +197,10 @@ public final class NavigationBar {
 
         Utils.runOnMainThreadDelayed(() -> {
             if (closingSearchBarResultsRef.get() == searchbarResults) {
-                Logger.printExceptionIfDebug(() -> "Search bar was not closed");
+                // Log as exception level, only if debug is enabled.
+                if (Settings.DEBUG.get()) {
+                    Logger.printException(() -> "Search bar was not closed");
+                }
                 closingSearchBarResultsRef = new WeakReference<>(null);
             }
         }, SEARCH_BAR_CLOSING_TIMEOUT_MILLISECONDS);
@@ -439,9 +448,12 @@ public final class NavigationBar {
                 }
             }
 
-            // Unknown tabs do no harm, and are only relevant to developers.
-            Logger.printExceptionIfDebug(() -> "Unknown tab: " + lastEnumName
-                    + " view: " + navigationButtonGroup.getClass());
+            // Log the unknown tab as exception level, only if debug is enabled.
+            // This is because unknown tabs do no harm, and it's only relevant to developers.
+            if (Settings.DEBUG.get()) {
+                Logger.printException(() -> "Unknown tab: " + lastEnumName
+                        + " view: " + navigationButtonGroup.getClass());
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "navigationTabLoaded failure", ex);
         }
@@ -474,7 +486,10 @@ public final class NavigationBar {
             NavigationButton oldButton = NavigationButton.selectedNavigationButton;
 
             if (button == null) { // An unknown tab was selected.
-                Logger.printExceptionIfDebug(() -> "Unknown navigation view selected: " + navButtonImageView);
+                // Show a toast only if debug mode is enabled.
+                if (BaseSettings.DEBUG.get()) {
+                    Logger.printException(() -> "Unknown navigation view selected: " + navButtonImageView);
+                }
 
                 NavigationButton.selectedNavigationButton = null;
                 openedFromNavigationButton = null;
@@ -624,9 +639,9 @@ public final class NavigationBar {
     @SuppressWarnings({"unchecked", "rawtypes"})
     public static void setCairoNotificationFilledIcon(EnumMap enumMap, Enum tabActivityCairo) {
         // Show a popup informing this fix is no longer needed to those who might care.
-        Logger.printExceptionIfDebug(() -> enumMap.containsKey(tabActivityCairo)
-                ? "YouTube fixed the notification icons"
-                : null);
+        if (BaseSettings.DEBUG.get() && enumMap.containsKey(tabActivityCairo)) {
+            Logger.printException(() -> "YouTube fixed the notification icons");
+        }
 
         enumMap.putIfAbsent(tabActivityCairo, fillBellCairoBlack);
     }

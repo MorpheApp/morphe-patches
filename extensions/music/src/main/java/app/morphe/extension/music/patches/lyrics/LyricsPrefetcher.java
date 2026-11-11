@@ -146,9 +146,7 @@ final class LyricsPrefetcher {
 
                 LyricsCache.put(track, LyricsMatch.cacheSourceFor(lyrics), lyrics, null);
                 Logger.printDebug(() -> "Lyrics prefetched: " + track + " via " + provider.name());
-                if (!Settings.LYRICS_WORD_SYNC.get() || LyricsRequests.syncRank(lyrics) == 2) {
-                    return;
-                }
+                return;
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
                 return;

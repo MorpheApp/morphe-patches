@@ -469,10 +469,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
                 if (setting != null) {
                     updatePreference(pref, setting, syncSettingValue, applySettingToPreference);
-                } else if (pref instanceof SwitchPreference
-                        || pref instanceof EditTextPreference || pref instanceof ListPreference) {
+                } else if (BaseSettings.DEBUG.get() && (pref instanceof SwitchPreference
+                        || pref instanceof EditTextPreference || pref instanceof ListPreference)) {
                     // Probably a typo in the patches preference declaration.
-                    Logger.printExceptionIfDebug(() -> "Preference key has no setting: " + key);
+                    Logger.printException(() -> "Preference key has no setting: " + key);
                 }
             }
         }
@@ -878,7 +878,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     private void exportToClipboard(String logsToExport) {
         try {
-            if (!Logger.isDebugEnabled()) {
+            if (!BaseSettings.DEBUG.get()) {
                 Utils.showToastShort(str("morphe_debug_logs_disabled"));
                 return;
             }
@@ -899,7 +899,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     }
 
     private void exportToFile(Collection<String> logsToExport) {
-        if (!Logger.isDebugEnabled() || logsToExport == null || logsToExport.isEmpty()) {
+        if (!BaseSettings.DEBUG.get() || logsToExport == null || logsToExport.isEmpty()) {
             Utils.showToastShort(str("morphe_debug_logs_none_found"));
             return;
         }
@@ -1023,7 +1023,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             }
 
             Context context = getContext();
-            if (!Logger.isDebugEnabled()) {
+            if (!BaseSettings.DEBUG.get()) {
                 Utils.showToastShort(str("morphe_debug_logs_disabled"));
                 return;
             }

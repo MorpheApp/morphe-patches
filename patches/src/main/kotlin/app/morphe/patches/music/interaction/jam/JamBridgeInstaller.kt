@@ -9,9 +9,10 @@ package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getMutableMethod
+import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
+import app.morphe.util.cloneMutable
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -525,22 +526,19 @@ private fun installQueueItemAccess(item: QueueItemAbi) {
 }
 
 private fun installQueueManagerCapture(queue: JamQueueAbi) {
-    installQueueConstructorCapture(queue.constructor, "$BRIDGE->capture($ACCESS)V")
-}
-
-/**
- * Calls [captureMethod] with the new queue manager before every return of its constructor.
- * The current mutable method is cloned, so a capture added by another patch is kept.
- */
-internal fun installQueueConstructorCapture(
-    constructorMethod: MethodReference,
-    captureMethod: String,
-) {
-    val constructor = constructorMethod.getMutableMethod().cloneParameters()
+    val original = queue.constructor.getMutableMethod()
+    val preservedThisRegister = requireNotNull(original.implementation).registerCount
+    val constructor =
+        original.cloneMutable(additionalRegisters = original.numberOfParameterRegisters + 1)
+    mutableClassDefBy(original.definingClass).methods.apply {
+        remove(original)
+        add(constructor)
+    }
+    constructor.addInstructions(0, "move-object/from16 v$preservedThisRegister, p0")
     constructor.findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
         constructor.addInstructions(
             index,
-            "invoke-static/range {p0 .. p0}, $captureMethod",
+            "invoke-static/range {v$preservedThisRegister .. v$preservedThisRegister}, $BRIDGE->capture($ACCESS)V",
         )
     }
 }

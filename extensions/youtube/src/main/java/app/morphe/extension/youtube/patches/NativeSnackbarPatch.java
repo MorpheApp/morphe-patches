@@ -125,7 +125,7 @@ public final class NativeSnackbarPatch {
                 offset = Math.max(0, Math.min(paddingBottom, roomBelow));
             }
 
-            offset -= YouTubeGlassNavigationBar.getAddedRoomOnScreen();
+            offset -= GlassNavigationBar.getAddedRoomOnScreen();
             if (offset == 0) {
                 return;
             }

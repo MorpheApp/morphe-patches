@@ -35,6 +35,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
+import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.settings.preference.NewIndicatorSpan;
 import app.morphe.extension.shared.settings.preference.URLLinkPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
@@ -224,6 +225,12 @@ public abstract class BaseSearchResultItem {
          * preference renders on its own screen.
          */
         private CharSequence getLiveSummary() {
+            if (preference instanceof CustomDialogListPreference customPref) {
+                String staticSum = customPref.getStaticSummary();
+                if (staticSum != null) {
+                    return staticSum;
+                }
+            }
             if (preference instanceof ListPreference listPref) {
                 String value = listPref.getValue();
                 CharSequence[] entries = listPref.getEntries();

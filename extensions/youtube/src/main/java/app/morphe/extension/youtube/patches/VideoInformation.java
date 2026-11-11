@@ -34,6 +34,7 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.Event;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
+import app.morphe.extension.youtube.shared.VideoState;
 
 /**
  * Hooking class for the current playing video.
@@ -722,12 +723,9 @@ public final class VideoInformation {
             final long videoLength = getVideoLength();
 
             // Prevent issues such as play/ pause button or autoplay not working.
-            // The video length is rounded to whole seconds, so the stream can end up to half a second
-            // before it. A seek closer to the end can land on the last frame, and the video never ends:
-            // the player keeps the pause button instead of the replay button and autoplay does not start.
-            final long adjustedSeekTime = Math.min(seekTime, videoLength - 1000);
+            final long adjustedSeekTime = Math.min(seekTime, videoLength - 250);
             if (videoTime <= seekTime && videoTime >= adjustedSeekTime) {
-                // Both the current video time and the seekTo are in the last second of the video.
+                // Both the current video time and the seekTo are in the last 250ms of the video.
                 // Ignore this seek call, otherwise if a video ends with multiple closely timed segments
                 // then seeking here can create an infinite loop of skip attempts.
                 Logger.printDebug(() -> "Ignoring seekTo call as video playback is almost finished. "
@@ -946,17 +944,23 @@ public final class VideoInformation {
     }
 
     /**
+     * @return The current non casting player time. Value is zero if casting.
+     */
+    private static long getPlayerVideoTime() {
+        PlaybackController controller = getPlayerVideo().playerControllerRef.get();
+        return controller != null
+                ? controller.patch_getVideoTime()
+                : -1;
+    }
+
+    /**
      * Playback time of the current video playing. Includes Shorts.
      * If casting then the time is always rounded down to the nearest whole second.
      *
      * @return The time of the video in milliseconds, or -1 if not the player is not available.
      */
     public static long getVideoTime() {
-        // The current non casting player time. Value is zero if casting.
-        PlaybackController playerController = getPlayerVideo().playerControllerRef.get();
-        final long playerTime = playerController != null
-                ? playerController.patch_getVideoTime()
-                : -1;
+        final long playerTime = getPlayerVideoTime();
         // If time is zero, then playback may be casting.
         if (playerTime > 0) {
             return playerTime;
@@ -973,6 +977,22 @@ public final class VideoInformation {
     }
 
     /**
+     * If video is playing in the background with no video visible,
+     * this always returns false (even if the video is actually at the end).
+     * <p>
+     * This is equivalent to checking for {@link VideoState#ENDED},
+     * but can give a more up-to-date result for code calling from some hooks.
+     *
+     * @return If the playback is at the end of the video.
+     * @see VideoState
+     */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    public static boolean isAtEndOfVideo() {
+        final long videoLength = getVideoLength();
+        return getVideoTime() >= videoLength && videoLength > 0;
+    }
+
+    /**
      * Forcefully changes the playback speed of the currently playing video.
      */
     public static void changePlaybackSpeed(float playbackSpeed) {
@@ -980,7 +1000,12 @@ public final class VideoInformation {
         Utils.verifyOnMainThread();
 
         if (currentPlaybackSpeedMenuInterface == null) {
-            Logger.printExceptionIfDebug(() -> "Debug: Cannot change playback speed, menu interface is null");
+            Logger.LogMessage logMessage = () -> "Debug: Cannot change playback speed, menu interface is null";
+            if (Settings.DEBUG.get()) {
+                Logger.printException(logMessage);
+            } else {
+                Logger.printDebug(logMessage);
+            }
             return;
         }
         if (playbackSpeed <= 0 || playbackSpeed > PLAYBACK_SPEED_MAXIMUM) {
@@ -1021,7 +1046,12 @@ public final class VideoInformation {
             exoPlayerInterface.patch_setPlaybackParameters(speed, pitch);
             Logger.printDebug(() -> "Video playbackParameters changed, speed: " + speed + " pitch: " + pitch);
         } else {
-            Logger.printExceptionIfDebug(() -> "Debug: Cannot change speed parameters, menu interface is null");
+            Logger.LogMessage logMessage = () -> "Debug: Cannot change speed parameters, menu interface is null";
+            if (Settings.DEBUG.get()) {
+                Logger.printException(logMessage);
+            } else {
+                Logger.printDebug(logMessage);
+            }
         }
     }
 

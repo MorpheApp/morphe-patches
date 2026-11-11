@@ -2,7 +2,6 @@ package app.morphe.extension.youtube.patches;
 
 import android.os.PowerManager;
 
-import app.morphe.extension.youtube.ambientlight.AmbientLightController;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -25,14 +24,21 @@ public final class AmbientModePatch {
      * Disable Ambient mode.
      */
     public static boolean disableAmbientMode(boolean original) {
-        return !Settings.DISABLE_AMBIENT_MODE.get() && !AmbientLightController.replacesAmbientMode() && original;
+        return !Settings.DISABLE_AMBIENT_MODE.get() && original;
+    }
+
+    /**
+     * Disable Ambient mode logic when entering fullscreen.
+     */
+    public static boolean disableAmbientModeInFullscreen() {
+        return !Settings.DISABLE_FULLSCREEN_AMBIENT_MODE.get();
     }
 
     /**
      * Injection point for fullscreen background color.
      */
     public static int getFullScreenBackgroundColor(int originalColor) {
-        if (Settings.DISABLE_FULLSCREEN_AMBIENT_MODE.get() || AmbientLightController.replacesAmbientMode()) {
+        if (Settings.DISABLE_FULLSCREEN_AMBIENT_MODE.get()) {
             return DIVIDER_ATTRIBUTES_COLOR_SYSTEM_DEFAULT;
         }
 
