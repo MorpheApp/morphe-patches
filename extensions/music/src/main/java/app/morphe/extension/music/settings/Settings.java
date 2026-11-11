@@ -53,6 +53,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_NEW_FROM_SHELF = new BooleanSetting("morphe_music_hide_new_from_shelf", FALSE, true);
     public static final BooleanSetting HIDE_PLAYLIST_SHELVES = new BooleanSetting("morphe_music_hide_playlist_shelves", FALSE, true);
     public static final BooleanSetting HIDE_SPEED_DIAL_SHELF = new BooleanSetting("morphe_music_hide_speed_dial_shelf", FALSE, true);
+    public static final BooleanSetting HIDE_YOU_MAY_ALSO_LIKE_SECTION = new BooleanSetting("morphe_music_hide_you_may_also_like_section", FALSE, true);
 
     // General (Layout)
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
@@ -249,14 +250,14 @@ public class Settings extends SharedYouTubeSettings {
     /**
      * The Rime word tables the user added, one per line, as
      * {@code subtag|label|url|charSource}. They are stored rather than shipped because a word
-     * list's licence and freshness are the user's to judge; the built-in Cantonese table is not
+     * list's license and freshness are the user's to judge; the built-in Cantonese table is not
      * listed here.
      */
     public static final StringSetting LYRICS_RIME_CUSTOM_DICTS = new StringSetting("morphe_music_lyrics_rime_custom_dicts", "", false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
 
     /**
      * The built-in word tables whose switch is on, as comma separated subtags. Empty means none,
-     * so a fresh install downloads nothing until a table is ticked.
+     * so a fresh installation downloads nothing until a table is ticked.
      */
     public static final StringSetting LYRICS_RIME_BUILTIN_SELECTED = new StringSetting("morphe_music_lyrics_rime_builtin_selected", "", false, parentsAll(parent(LYRICS_ENABLED), parent(LYRICS_SHOW_ROMANIZE_BUTTON)));
 
@@ -450,6 +451,7 @@ public class Settings extends SharedYouTubeSettings {
      * Before the switch existed a stored key alone turned QuickLRC on, so leaving the new switch
      * off would take the feature away from everyone who had configured it.
      */
+    @SuppressWarnings("ConstantValue")
     private static void migrateQuickLrcEnabled() {
         if (LYRICS_QUICKLRC_ENABLED.isSetToDefault()) {
             return;
