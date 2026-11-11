@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.2.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.2.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;202 patches total
+> **[v2.3.0-dev.1](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.3.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;204 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;114 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;115 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -110,6 +110,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Hide status bar](#hide-status-bar) | Adds an option to hide the system status bar. Swipe down from the top edge to show it for a moment. |  |
 | [Hide timestamp](#hide-timestamp) | Adds an option to hide the timestamp in the bottom left of the video player. |  |
 | [Hide video action buttons](#hide-video-action-buttons) | Adds options to hide video action buttons in fullscreen and portrait modes. |  |
+| [Loop count](#loop-count) | Adds a player settings menu item to choose how many times the app loops a video, before it plays the next video. In a playlist, the loop count is remembered for each video. |  |
 | [Loop video](#loop-video) | Adds an option to loop videos and display loop video button in the video player. |  |
 | [Media notification controls](#media-notification-controls) | Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls. |  |
 | [Miniplayer](#miniplayer) | Adds options to change the in-app minimized player. Patching 21.28.208 and lower has more miniplayer types to choose from. |  |
@@ -165,7 +166,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;51 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;52 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -186,6 +187,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Custom font](#custom-font) | Adds an option to show the app with the device system font or a custom TTF or OTF font file instead of YouTube Sans. |  |
 | [Disable DRC audio](#disable-drc-audio) | Adds an option to disable DRC (Dynamic Range Compression) audio. |  |
 | [Disable QUIC protocol](#disable-quic-protocol) | Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol. |  |
+| [Disable audio ducking](#disable-audio-ducking) | Adds an option to keep the volume unchanged when another app plays a short sound, such as a notification. |  |
 | [Disable dislike redirection](#disable-dislike-redirection) | Adds an option to prevent skipping to the next track when the dislike button is pressed. |  |
 | [Downloads](#downloads) | Adds support to download songs, albums and playlists using the in-app download button, either with an external downloader app or inside YouTube Music. |  |
 | [Enable audio/video switch](#enable-audio-video-switch) | Adds an option to switch between the audio and the video version of a track by redirecting videoId. |  |
@@ -204,7 +206,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Jam queue sharing](#jam-queue-sharing) | Shares the host queue and playback controls through an authenticated Jam bridge. Root installation is not supported. |  |
 | [Media notification controls](#media-notification-controls) | Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls. |  |
 | [Miniplayer previous and next buttons](#miniplayer-previous-and-next-buttons) | Adds options to show previous and next track buttons in the miniplayer. |  |
-| [Navigation bar](#navigation-bar) | Adds options to hide navigation bar, labels and buttons, and to show the navigation bar as glass. |  |
+| [Navigation bar](#navigation-bar) | Adds options to hide navigation bar, labels and buttons, and to show the navigation bar and miniplayer as glass. |  |
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices |  |
 | [Play albums songs](#play-albums-songs) | Adds an option to play the song version of album tracks instead of music videos. |  |
 | [Playback speed](#playback-speed) | Adds options to change the playback speed and pitch of tracks. |  |
