@@ -20,6 +20,7 @@ import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.ad.hideFullscreenAdsPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
@@ -40,12 +41,21 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.BuildClientContextBodyConstructorFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/components/AdsFilter;"
+
+/**
+ * Category of the activated ad slot triggers that expire the slot.
+ */
+private const val SLOT_EXPIRATION_TRIGGER_CATEGORY = 6
 
 private val hideAdsResourcePatch = patch {
     dependsOn(
@@ -95,19 +105,70 @@ val hideAdsPatch = patch(
     execute {
         // Hide video ads
 
-        setOf(
-            LoadVideoAdsFingerprint,
-            PlayerBytesAdLayoutFingerprint,
-        ).forEach { fingerprint ->
-            fingerprint.method.addInstructionsWithLabels(
+        PlayerBytesAdLayoutFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $EXTENSION_CLASS->hideVideoAds()Z
+                move-result v0
+                if-eqz v0, :show_video_ads
+                return-void
+                :show_video_ads
+                nop
+            """
+        )
+
+        // Only the triggers that expire the ad slots are handled, so no ad slot is entered.
+        // The slots are kept by the app until they expire, so without these triggers
+        // every video adds its ad slots to the slots that are kept until the app closes.
+        LoadVideoAdsFingerprint.let {
+            val categoryField = it.instructionMatches.first().fieldReference
+
+            val filterTriggersMethod = ImmutableMethod(
+                it.classDef.type,
+                "patch_filterVideoAdTriggers",
+                listOf(ImmutableMethodParameter("Ljava/util/List;", null, null)),
+                "Ljava/util/List;",
+                AccessFlags.PRIVATE.value or AccessFlags.STATIC.value,
+                null,
+                null,
+                MutableMethodImplementation(6),
+            ).toMutable().apply {
+                addInstructionsWithLabels(
+                    0,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->hideVideoAds()Z
+                        move-result v0
+                        if-eqz v0, :keep_triggers
+                        new-instance v0, Ljava/util/ArrayList;
+                        invoke-direct { v0 }, Ljava/util/ArrayList;-><init>()V
+                        invoke-interface { p0 }, Ljava/util/List;->iterator()Ljava/util/Iterator;
+                        move-result-object v1
+                        const/16 v4, $SLOT_EXPIRATION_TRIGGER_CATEGORY
+                        :next_trigger
+                        invoke-interface { v1 }, Ljava/util/Iterator;->hasNext()Z
+                        move-result v2
+                        if-eqz v2, :filtered_triggers
+                        invoke-interface { v1 }, Ljava/util/Iterator;->next()Ljava/lang/Object;
+                        move-result-object v2
+                        check-cast v2, ${categoryField.definingClass}
+                        iget v3, v2, $categoryField
+                        if-ne v3, v4, :next_trigger
+                        invoke-interface { v0, v2 }, Ljava/util/List;->add(Ljava/lang/Object;)Z
+                        goto :next_trigger
+                        :filtered_triggers
+                        return-object v0
+                        :keep_triggers
+                        return-object p0
+                    """
+                )
+            }
+            it.classDef.methods.add(filterTriggersMethod)
+
+            it.method.addInstructions(
                 0,
                 """
-                    invoke-static { }, $EXTENSION_CLASS->hideVideoAds()Z
-                    move-result v0
-                    if-eqz v0, :show_video_ads
-                    return-void
-                    :show_video_ads
-                    nop
+                    invoke-static/range { p1 .. p1 }, $filterTriggersMethod
+                    move-result-object p1
                 """
             )
         }
