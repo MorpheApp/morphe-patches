@@ -126,8 +126,9 @@ public final class AddToQueuePatch {
                 flyoutPanel,
                 queueButtonDrawable,
                 queueButtonName,
+                // Added to the end of the queue, as the item does not say otherwise.
                 v -> flyoutButtonClickLogic(
-                        queueButtonOriginalNames.get(0),
+                        queueButtonOriginalNames.get(1),
                         videoId
                 ),
                 index
@@ -369,7 +370,8 @@ public final class AddToQueuePatch {
 
                 Activity activity = Utils.getActivity();
                 if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
-                    PlaylistPatch.prepareDialogBuilder(activity, videoId);
+                    PlaylistPatch.prepareDialogBuilder(activity, videoId,
+                            queueButtonOriginalNames.get(0).equals(buttonName));
                 } else {
                     Logger.printException(() -> "Could not open queue flyout, activity is not available");
                 }

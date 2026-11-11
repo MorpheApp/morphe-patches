@@ -405,6 +405,11 @@ class QueueRuntimeBoundaryTest {
                     public enum QueueManager { OPEN_QUEUE; public final int drawableId = 0; }
                     public static int dialogs;
                     public static void prepareDialogBuilder(android.content.Context context, String video) { dialogs++; }
+                    public static boolean playNext;
+                    public static void prepareDialogBuilder(android.content.Context context, String video, boolean next) {
+                        dialogs++;
+                        playNext = next;
+                    }
                 }
             """,
             "LocalQueueSheet" to """
@@ -892,7 +897,8 @@ class QueueRuntimeBoundaryTest {
                             "Morphe must retain its exact native menu object");
                         require(AddToQueuePatch.flyoutButtonClickLogic("QUEUE_PLAY_NEXT", "ZYXWVUTSRQP"), "Morphe action");
                         require(app.morphe.extension.youtube.patches.utils.PlaylistPatch.dialogs == 1
-                                && LoadVideoPatch.opens == 0, "Morphe must retain its playlist dialog");
+                                && app.morphe.extension.youtube.patches.utils.PlaylistPatch.playNext
+                                && LoadVideoPatch.opens == 0, "Morphe must retain its playlist dialog, and Next adds next");
                         Settings.QUEUE_TYPE.value = QueueType.LOCAL;
                         require(QueueFlyoutActions.completeQueueMenu(originalMenu) == originalMenu,
                             "Local must retain its exact native menu object");
