@@ -86,7 +86,15 @@ public class EditPlaylistRequest {
                 ", playlistId: " + playlistId + ", setVideoId: " + setVideoId);
 
         try {
-            byte[] requestBody = PlaylistRoutes.editPlaylistBody(videoId, playlistId, setVideoId);
+            return sendRequest(PlaylistRoutes.editPlaylistBody(videoId, playlistId, setVideoId), requestHeader);
+        } finally {
+            Logger.printDebug(() -> "video: " + videoId + " took: " + (System.currentTimeMillis() - startTime) + "ms");
+        }
+    }
+
+    @Nullable
+    private static JSONObject sendRequest(byte[] requestBody, Map<String, String> requestHeader) {
+        try {
             HttpURLConnection connection = PlaylistRoutes.getConnection(PlaylistRoutes.EDIT_PLAYLIST, requestHeader);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
@@ -101,10 +109,31 @@ public class EditPlaylistRequest {
             handleConnectionError("Network error", ex);
         } catch (Exception ex) {
             Logger.printException(() -> "sendRequest failed", ex);
-        } finally {
-            Logger.printDebug(() -> "video: " + videoId + " took: " + (System.currentTimeMillis() - startTime) + "ms");
         }
         return null;
+    }
+
+    /**
+     * Moves an entry of a playlist. Must be called off the main thread.
+     *
+     * @param predecessorSetVideoId The entry to move the video after,
+     *                              or null to move the video to the start of the playlist.
+     * @return If the video was moved.
+     */
+    public static boolean moveVideo(
+            String playlistId,
+            String setVideoId,
+            @Nullable String predecessorSetVideoId,
+            Map<String, String> requestHeader
+    ) {
+        Utils.verifyOffMainThread();
+        JSONObject json = sendRequest(PlaylistRoutes.moveVideoBody(playlistId, setVideoId, predecessorSetVideoId),
+                requestHeader);
+        if (json != null && "STATUS_SUCCEEDED".equals(json.optString("status"))) {
+            return true;
+        }
+        Logger.printInfo(() -> "Could not move video in playlist: " + json);
+        return false;
     }
 
     @Nullable

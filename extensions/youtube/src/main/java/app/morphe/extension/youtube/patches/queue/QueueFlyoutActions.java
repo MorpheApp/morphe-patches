@@ -58,9 +58,12 @@ public final class QueueFlyoutActions {
                 return original;
             }
             FlyoutUtils.setNativeQueuePlaylistId(playlistId);
+            // Menus of Shorts in the feed have no stock queue items to replace.
+            final boolean addShortsItems = playlistId.isEmpty() && FlyoutUtils.isShortsFeedMenu();
             MenuRenderer completed = completeMenu(menu,
                     !playlistId.isEmpty() || NativePlaylistQueuePatch.canShowFlyoutLast(),
-                    str("morphe_native_playlist_queue_next"), str("morphe_native_playlist_queue_last"), playlistId);
+                    str("morphe_native_playlist_queue_next"), str("morphe_native_playlist_queue_last"), playlistId,
+                    addShortsItems);
             if (completed == menu) {
                 return original;
             }
@@ -78,11 +81,11 @@ public final class QueueFlyoutActions {
     }
 
     static MenuRenderer completeMenu(MenuRenderer menu, boolean allowLast, String nextLabel, String lastLabel) {
-        return completeMenu(menu, allowLast, nextLabel, lastLabel, "");
+        return completeMenu(menu, allowLast, nextLabel, lastLabel, "", false);
     }
 
     static MenuRenderer completeMenu(MenuRenderer menu, boolean allowLast, String nextLabel, String lastLabel,
-                                     String playlistId) {
+                                     String playlistId, boolean addIfMissing) {
         MenuItem next = null;
         MenuItem last = null;
         for (MenuItem item : menu.getItemsList()) {
@@ -97,7 +100,7 @@ public final class QueueFlyoutActions {
             }
         }
 
-        if (next == null && last == null && !PlaylistCardSource.isPlaylistId(playlistId)) {
+        if (next == null && last == null && !PlaylistCardSource.isPlaylistId(playlistId) && !addIfMissing) {
             return menu;
         }
         next = prepareLocalItem(next == null ? queueItem(YTIconType.QUEUE_PLAY_NEXT, nextLabel) : next);
@@ -146,7 +149,7 @@ public final class QueueFlyoutActions {
     public static PlaylistCardSource.Selection playlistSource(@Nullable Object source, @Nullable View sender) {
         boolean collection = false;
         try {
-            if (!NativePlaylistQueuePatch.canQueuePlaylist()) {
+            if (FlyoutUtils.isShortsFeedMenu() || !NativePlaylistQueuePatch.canQueuePlaylist()) {
                 return new PlaylistCardSource.Selection("", false);
             }
             collection = sender != null && FeedVideoCardsPatch.isPlaylistTap(sender);

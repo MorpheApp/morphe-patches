@@ -11,7 +11,6 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
-import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -58,18 +57,6 @@ public final class AddToQueuePatch {
         MORPHE,
         /** The Premium-style queue, stored on the device. */
         LOCAL
-    }
-
-    public static final class MorpheQueueAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            return Settings.QUEUE_TYPE.get() == QueueType.MORPHE;
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(Settings.QUEUE_TYPE);
-        }
     }
 
     public static final class NotLocalQueueAvailability implements Setting.Availability {
@@ -128,9 +115,10 @@ public final class AddToQueuePatch {
             return addLocalQueueButtons(flyoutPanel, index, videoId);
         }
 
-        if (!Settings.QUEUE_ADD_FLYOUT_MENU.get() ||
-                !FlyoutUtils.getFlyoutPlaylistId().isEmpty() ||
-                videoId.isEmpty()) {
+        // Only added if the menu has no queue item of the app, such as the menus of Shorts.
+        if (!FlyoutUtils.getFlyoutPlaylistId().isEmpty() || videoId.isEmpty()
+                || FlyoutUtils.hasVisibleFlyoutButton(queueButtonOriginalNames.get(0))
+                || FlyoutUtils.hasVisibleFlyoutButton(queueButtonOriginalNames.get(1))) {
             return index;
         }
 
@@ -138,8 +126,9 @@ public final class AddToQueuePatch {
                 flyoutPanel,
                 queueButtonDrawable,
                 queueButtonName,
+                // Added to the end of the queue, as the item does not say otherwise.
                 v -> flyoutButtonClickLogic(
-                        queueButtonOriginalNames.get(0),
+                        queueButtonOriginalNames.get(1),
                         videoId
                 ),
                 index
@@ -210,19 +199,10 @@ public final class AddToQueuePatch {
         }
     }
 
-    private static boolean hasFlyoutButton(String buttonName) {
-        for (Pair<String, Integer> button : FlyoutUtils.getVisibleFlyoutButtons()) {
-            if (button.first.equals(buttonName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     private static int addLocalQueueButtons(Object flyoutPanel, int index, String videoId) {
         final boolean feedFlyout = !FlyoutUtils.getFlyoutVideoId().isEmpty();
         if (feedFlyout && FlyoutUtils.getFlyoutPlaylistId().isEmpty()
-                && !hasFlyoutButton(queueButtonOriginalNames.get(0))) {
+                && !FlyoutUtils.hasVisibleFlyoutButton(queueButtonOriginalNames.get(0))) {
             index = FlyoutUtils.addFlyoutButton(
                     flyoutPanel,
                     queueButtonDrawable,
@@ -233,7 +213,7 @@ public final class AddToQueuePatch {
         }
 
         if (feedFlyout && FlyoutUtils.getFlyoutPlaylistId().isEmpty()
-                && !hasFlyoutButton(queueButtonOriginalNames.get(1))) {
+                && !FlyoutUtils.hasVisibleFlyoutButton(queueButtonOriginalNames.get(1))) {
             index = FlyoutUtils.addFlyoutButton(
                     flyoutPanel,
                     queueButtonDrawable,
@@ -390,7 +370,8 @@ public final class AddToQueuePatch {
 
                 Activity activity = Utils.getActivity();
                 if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
-                    PlaylistPatch.prepareDialogBuilder(activity, videoId);
+                    PlaylistPatch.prepareDialogBuilder(activity, videoId,
+                            queueButtonOriginalNames.get(0).equals(buttonName));
                 } else {
                     Logger.printException(() -> "Could not open queue flyout, activity is not available");
                 }
