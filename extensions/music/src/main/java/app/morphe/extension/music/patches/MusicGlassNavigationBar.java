@@ -10,16 +10,10 @@ package app.morphe.extension.music.patches;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.RecordingCanvas;
-import android.graphics.RenderEffect;
-import android.graphics.RenderNode;
-import android.graphics.Shader;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -43,9 +37,11 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.glass.GlassBackdrop;
 import app.morphe.extension.shared.ui.glass.GlassCapsuleDrawable;
 import app.morphe.extension.shared.ui.glass.GlassNavigationBarLayout;
 
@@ -88,29 +84,68 @@ public final class MusicGlassNavigationBar {
      * How opaque the glass is, from the opacity slider. At 50 the default alphas of the glass are kept,
      * and every alpha is scaled by it: 0 is fully clear, 100 doubles them. The slider is at 20 by default,
      * so the blurred page shows clearly through the glass.
+     * <p>
+     * The style and the size are read again when the app comes back from the settings, see {@link #readSettings()}.
      */
-    private static final float OPACITY_SCALE = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_OPACITY) / 50f;
+    private static float opacityScale;
+
+    /**
+     * How bright the rim is, from the slider: 50 keeps the default alphas, 0 draws no rim.
+     */
+    private static float rimScale;
+
+    /**
+     * How much the page behind the capsule is blurred, on Android 14 and later. 0 shows the page sharp
+     * through the glass.
+     */
+    private static float blurRadius;
 
     /**
      * If the glass is tinted white, a lighter and clearer glass.
      */
-    private static final boolean LIGHT_TINT = Settings.NAVIGATION_BAR_GLASS_LIGHT.get();
+    private static boolean lightTint;
+
+    /**
+     * If the glass is tinted with the color of the album art.
+     */
+    private static boolean albumTint;
+
+    /**
+     * If the selected button has a rounded indicator.
+     */
+    private static boolean indicatorShown;
 
     /**
      * Height of the capsule, in percent of the height of the buttons the app lays out,
      * or of the height their content needs, if it needs more.
      */
-    private static final int HEIGHT_PERCENT = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_HEIGHT);
+    private static int heightPercent;
 
     /**
      * The most width of the capsule, in percent of the width of the bar.
      */
-    private static final int WIDTH_PERCENT = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_WIDTH);
+    private static int widthPercent;
 
     /**
      * Room between the content (icon and label) of two buttons.
      */
-    private static final int BUTTON_SPACING = Dim.dp(SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_BUTTON_SPACING));
+    private static int buttonSpacing;
+
+    static {
+        readSettings();
+    }
+
+    private static void readSettings() {
+        opacityScale = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_OPACITY) / 50f;
+        rimScale = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_RIM) / 50f;
+        blurRadius = Dim.dp(SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_BLUR));
+        lightTint = Settings.NAVIGATION_BAR_GLASS_LIGHT.get();
+        albumTint = Settings.NAVIGATION_BAR_GLASS_ALBUM_TINT.get();
+        indicatorShown = !Settings.NAVIGATION_BAR_GLASS_HIDE_INDICATOR.get();
+        heightPercent = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_HEIGHT);
+        widthPercent = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_WIDTH);
+        buttonSpacing = Dim.dp(SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_BUTTON_SPACING));
+    }
 
     /**
      * The least room between the bottom of the capsule and the bottom of the screen,
@@ -137,11 +172,6 @@ public final class MusicGlassNavigationBar {
     public static final int MARGIN_HORIZONTAL = Dim.dp(16);
 
     /**
-     * How much the page behind the capsule is blurred, on Android 14 and later.
-     */
-    private static final float BLUR_RADIUS = Dim.dp(20);
-
-    /**
      * Buttons hidden because they do not fit in the width of the bar, shown again when they fit,
      * such as after a rotation.
      */
@@ -151,6 +181,13 @@ public final class MusicGlassNavigationBar {
      * The navigation bar the glass was last applied to.
      */
     private static WeakReference<View> currentPivotBar = new WeakReference<>(null);
+    private static WeakReference<GlassCapsuleDrawable> currentGlass = new WeakReference<>(null);
+
+    /**
+     * If the page is being recorded for a blurred backdrop. The page can hold the glass that is
+     * recording it, such as the glass miniplayer, which then draws no backdrop of its own.
+     */
+    private static boolean recordingBackdrop;
 
     private static final int PLAYER_PAGE = ResourceUtils.getIdentifier(ResourceType.ID, "player_page");
 
@@ -158,25 +195,6 @@ public final class MusicGlassNavigationBar {
      * The gradient the app draws behind the floating miniplayer, across the whole width of the screen.
      */
     private static final int MINIPLAYER_SCRIM = ResourceUtils.getIdentifier(ResourceType.ID, "mini_player_scrim");
-
-    /**
-     * The colors of the blurred page are made more vivid and slightly brighter, which looks like frosted
-     * glass. A blur alone makes the colors dull and gray.
-     */
-    private static final ColorMatrix FROSTED_GLASS_COLORS = createFrostedGlassColors();
-
-    private static ColorMatrix createFrostedGlassColors() {
-        ColorMatrix colors = new ColorMatrix();
-        colors.setSaturation(1.5f);
-        final float brightness = 15;
-        colors.postConcat(new ColorMatrix(new float[]{
-                1, 0, 0, 0, brightness,
-                0, 1, 0, 0, brightness,
-                0, 0, 1, 0, brightness,
-                0, 0, 0, 1, 0
-        }));
-        return colors;
-    }
 
     /**
      * If the glass is drawn, so the page is laid out behind the bar.
@@ -227,10 +245,39 @@ public final class MusicGlassNavigationBar {
      * Injection point.
      * <p>
      * The floating miniplayer of the app, a rounded card with room on its sides and below it,
-     * is used with the glass navigation bar.
+     * is used with the glass navigation bar and the glass miniplayer.
      */
     public static boolean useFloatingMiniplayer(boolean original) {
-        return ENABLED || original;
+        return ENABLED || MusicGlassMiniplayer.ENABLED || original;
+    }
+
+    /**
+     * @return If the glass navigation bar is drawn, and the page is laid out behind it.
+     */
+    static boolean isGlassActive() {
+        return glassActive;
+    }
+
+    /**
+     * Called when the color of the album art changes, or the player is closed.
+     */
+    public static void onAlbumColorChanged() {
+        GlassCapsuleDrawable glass = currentGlass.get();
+        if (glass != null) {
+            Utils.runOnMainThread(() -> glass.setTintColor(getTintColor()));
+        }
+    }
+
+    private static int getTintColor() {
+        return albumTint ? getAlbumColor() : 0;
+    }
+
+    /**
+     * @return The color of the album art of the song that plays, or 0 if none.
+     */
+    public static int getAlbumColor() {
+        Integer color = ChangeMiniplayerColorPatch.getLastMiniplayerColor();
+        return color == null ? 0 : color;
     }
 
 
@@ -242,13 +289,16 @@ public final class MusicGlassNavigationBar {
      * @param tabView The view of the button.
      */
     public static void navigationTabCreated(View tabView) {
-        if (!ENABLED) return;
+        if (!ENABLED && !MusicGlassMiniplayer.ENABLED) return;
 
         try {
             if (tabView.getParent() instanceof ViewGroup tabs
                     && tabs.getParent() instanceof ViewGroup pivotBar
                     && pivotBar.getId() == PIVOT_BAR) {
-                apply(pivotBar);
+                if (ENABLED) {
+                    apply(pivotBar);
+                }
+                MusicGlassMiniplayer.findMiniplayer(pivotBar);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "navigationTabCreated failure", ex);
@@ -265,13 +315,15 @@ public final class MusicGlassNavigationBar {
      * @return The height of the view, down to the bottom of the screen if the glass is drawn.
      */
     public static int getContentHeight(View content, int height) {
-        if (!ENABLED) return height;
+        if (!ENABLED && !MusicGlassMiniplayer.ENABLED) return height;
 
         try {
             if (currentContent.get() != content) {
                 currentContent = new WeakReference<>(content);
-                watchContent(content);
+                if (ENABLED) watchContent(content);
             }
+            // The glass miniplayer only blurs the page, which is not laid out behind it.
+            if (!ENABLED) return height;
 
             final int room = getContentRoom(content);
             // The keyboard covers the bottom of the page, and the app ends the page above it.
@@ -524,7 +576,8 @@ public final class MusicGlassNavigationBar {
         pivotBar.getLocationInWindow(location);
         final int barTop = location[1];
         playerPage.getLocationInWindow(location);
-        final int bottom = barTop - location[1];
+        // The glass miniplayer is a card with room below it, where the page shows as well.
+        final int bottom = Math.min(barTop - location[1], MusicGlassMiniplayer.getCollapsedBottom(playerPage));
 
         if (bottom >= playerPage.getHeight() || pivotBar.getVisibility() != View.VISIBLE) {
             if (playerPage.getClipBounds() != null) playerPage.setClipBounds(null);
@@ -625,7 +678,9 @@ public final class MusicGlassNavigationBar {
         currentPivotBar = new WeakReference<>(pivotBar);
 
         CapsuleHost capsuleHost = new CapsuleHost(pivotBar);
-        GlassCapsuleDrawable glass = new GlassCapsuleDrawable(pivotBar, capsuleHost, OPACITY_SCALE, LIGHT_TINT);
+        GlassCapsuleDrawable glass = new GlassCapsuleDrawable(pivotBar, capsuleHost, opacityScale, lightTint, rimScale);
+        glass.setTintColor(getTintColor());
+        currentGlass = new WeakReference<>(glass);
 
         // The background and the padding the app gave the navigation bar and its buttons,
         // put back if the bar holds no buttons or is not a horizontal bar at the bottom.
@@ -643,6 +698,15 @@ public final class MusicGlassNavigationBar {
             if (glassActive && currentPivotBar.get() == pivotBar && pivotBar.getBackground() == glass) {
                 pivotBar.invalidate();
             }
+        });
+
+        // The settings may have changed while the app was in the background or showed the settings.
+        pivotBar.getViewTreeObserver().addOnWindowFocusChangeListener(hasFocus -> {
+            if (!hasFocus || currentPivotBar.get() != pivotBar) return;
+            readSettings();
+            glass.setStyle(opacityScale, lightTint, rimScale);
+            glass.setTintColor(getTintColor());
+            pivotBar.requestLayout();
         });
 
         // The app hands the navigation bar its own background again, such as when the miniplayer
@@ -692,7 +756,7 @@ public final class MusicGlassNavigationBar {
                         // The width of the buttons comes from their content, and the buttons that do not fit
                         // in the width of the bar are hidden from the end, but never the selected one.
                         final int[] layout = GlassNavigationBarLayout.getButtonsLayout(pivotBar.getWidth(),
-                                buttons.views.size(), buttons.contentWidth, buttons.minWidth, WIDTH_PERCENT, BUTTON_SPACING,
+                                buttons.views.size(), buttons.contentWidth, buttons.minWidth, widthPercent, buttonSpacing,
                                 MARGIN_HORIZONTAL);
                         final int shown = layout[0];
                         if (GlassNavigationBarLayout.fitButtons(buttons.views, shown, selected, hiddenButtons)) {
@@ -728,7 +792,7 @@ public final class MusicGlassNavigationBar {
                         final int contentHeight = buttons.contentHeight();
                         final int contentTop = laidOutButton.getTop() + buttons.contentTop;
                         final int capsuleHeight = GlassNavigationBarLayout.getCapsuleHeight(
-                                buttonsHeight, contentHeight, HEIGHT_PERCENT);
+                                buttonsHeight, contentHeight, heightPercent);
                         final int capsuleTopInButtons = contentTop - (capsuleHeight - contentHeight) / 2;
                         final int paddingTop = Math.max(0, TOP_ROOM - capsuleTopInButtons);
                         final int capsuleTop = paddingTop + capsuleTopInButtons;
@@ -828,67 +892,63 @@ public final class MusicGlassNavigationBar {
         @Nullable
         @Override
         public View getSelectedTabView() {
-            return getSelectedTab(getTabs(pivotBar));
+            return indicatorShown ? getSelectedTab(getTabs(pivotBar)) : null;
         }
 
-        /**
-         * The page behind the bar, recorded and blurred.
-         */
         @Nullable
-        private Object blurNode;
-        private final int[] barLocation = new int[2];
-        private final int[] sourceLocation = new int[2];
+        private GlassBackdrop backdrop;
 
-        /**
-         * Draws the page behind the capsule blurred, on Android 14 and later with hardware acceleration.
-         * Like the blur of the YouTube navigation bar, it is left out on Android 12 and 13, where a blur
-         * render effect redrawn while the player moves can crash the app.
-         * The layout the page and the player are in is recorded again into a blurred render node, which
-         * only refers to the drawings of the views, so it is fast.
-         */
         @Override
         public void drawBackdrop(Canvas canvas) {
-            View content = currentContent.get();
-            if (!glassActive || content == null
-                    || !(content.getParent() instanceof View source) || source.getWidth() <= 0) return;
-
-            // The page has no background of its own, the layout it is in has. The blurred page is drawn
-            // over that background, or the blurred text would be mostly clear and the sharp text would show.
-            final int background = getPageBackgroundColor(source);
-
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE || !canvas.isHardwareAccelerated()) {
-                // Without the blur, the sharp page would show through the clear glass.
-                canvas.drawColor(background);
-                return;
+            if (glassActive) {
+                backdrop = drawPageBehind(canvas, pivotBar, blurRadius, false, backdrop, "GlassNavigationBar");
             }
-
-            final int width = pivotBar.getWidth();
-            final int height = pivotBar.getHeight();
-            if (width <= 0 || height <= 0) return;
-
-            RenderNode node;
-            if (blurNode instanceof RenderNode existing) {
-                node = existing;
-            } else {
-                node = new RenderNode("GlassNavigationBar");
-                node.setRenderEffect(RenderEffect.createChainEffect(
-                        RenderEffect.createColorFilterEffect(new ColorMatrixColorFilter(FROSTED_GLASS_COLORS)),
-                        RenderEffect.createBlurEffect(BLUR_RADIUS, BLUR_RADIUS, Shader.TileMode.CLAMP)));
-                blurNode = node;
-            }
-
-            pivotBar.getLocationInWindow(barLocation);
-            source.getLocationInWindow(sourceLocation);
-            node.setPosition(0, 0, width, height);
-            RecordingCanvas recording = node.beginRecording(width, height);
-            try {
-                recording.drawColor(background);
-                recording.translate(sourceLocation[0] - barLocation[0], sourceLocation[1] - barLocation[1]);
-                source.draw(recording);
-            } finally {
-                node.endRecording();
-            }
-            canvas.drawRenderNode(node);
         }
+    }
+
+    /**
+     * Draws the page behind a glass view blurred ({@link GlassBackdrop}), on Android 14 and later with hardware
+     * acceleration. Like the blur of the YouTube navigation bar, it is left out on Android 12 and 13, where a blur
+     * render effect redrawn while the player moves can crash the app. Without the blur, the page is covered by
+     * its background, or the sharp page would show through the clear glass. A blur radius of 0 instead draws
+     * nothing, so the page shows sharp through the glass.
+     *
+     * @param pagesOnly If only the pages are drawn, not the layout around them. The miniplayer is in the layout, and
+     *                  a render node that holds the node of the miniplayer, which then holds that node again,
+     *                  is a loop that overflows the stack of the render thread.
+     * @param backdrop  The backdrop this returned for the last frame, or null.
+     * @return The backdrop to pass for the next frame.
+     */
+    @Nullable
+    static GlassBackdrop drawPageBehind(Canvas canvas, View target, float blurRadius, boolean pagesOnly,
+                                        @Nullable GlassBackdrop backdrop, String name) {
+        if (blurRadius <= 0) return backdrop;
+
+        View content = currentContent.get();
+        if (recordingBackdrop || content == null
+                || !(content.getParent() instanceof View source) || source.getWidth() <= 0) return backdrop;
+
+        // The page has no background of its own, the layout it is in has. The blurred page is drawn
+        // over that background, or the blurred text would be mostly clear and the sharp text would show.
+        final int background = getPageBackgroundColor(source);
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE
+                || !canvas.isHardwareAccelerated()) {
+            canvas.drawColor(background);
+            return backdrop;
+        }
+
+        if (backdrop == null) {
+            backdrop = new GlassBackdrop(name, blurRadius);
+        } else {
+            backdrop.setBlurRadius(blurRadius);
+        }
+        recordingBackdrop = true;
+        try {
+            backdrop.draw(canvas, target, pagesOnly ? content : source, background);
+        } finally {
+            recordingBackdrop = false;
+        }
+        return backdrop;
     }
 }

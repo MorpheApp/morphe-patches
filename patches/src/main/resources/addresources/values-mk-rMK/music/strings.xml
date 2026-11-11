@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Овозможи прекинувач за аудио/видео</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Обидете се да ги смените аудио верзијата на траката и официјалното музичко видео</string>
+  <string name="morphe_music_auto_song_version_title">Секогаш пуштај ја верзијата на песната</string>
+  <string name="morphe_music_auto_song_version_summary">Ги заменува официјалните музички видеа во ретката со одговарачката песна. Потребно е поставката на апликацијата \'Не пуштај музички видеа\' да биде вклучена. Траките без точно совпаѓање остануваат непроменети</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Преземете музички видеа, подкасти или песни со апликации за преземање од трети страни</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Скриј копче за повторување</string>
   <string name="morphe_music_hide_shuffle_button_title">Скриј копче за Shuffle</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Скриј ја полицата \'Speed dial\'</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Скриј го делот „Можеби ќе ви се допадне и ова“</string>
   <string name="morphe_music_comments_screen_title">Коментари</string>
   <string name="morphe_music_comments_screen_summary">Изберете кои компоненти ќе се појавуваат во делот за коментари</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Скриј ги насоките за заедницата</string>
@@ -335,6 +338,9 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_playback_speed_title">Брзина на репродукција</string>
   <string name="morphe_music_playback_speed_summary">Брзина што се користи за сите песни. На 100% се користи брзината на апликацијата, како на пример брзината на репродукција на подкасти</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Променете го тонот со брзината</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Оневозможи го намалувањето на звукот</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Јачината на звукот нема да се намали кога друга апликација ќе пушти краток звук, како што е известување</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Оневозможи пренасочување при несакање</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Спречува прескокнување на следната песна кога е притиснато копчето за несакање</string>
@@ -492,16 +498,42 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_hide_navigation_bar_labels_title">Скриј ознаки на копчињата за навигација</string>
   <string name="morphe_music_navigation_bar_glass_title">Овозможи стаклена лента за навигација</string>
   <string name="morphe_music_navigation_bar_glass_summary">Ја прикажува лентата за навигација како лебдечка, заоблена, полупроѕирна капсула</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Проѕирност на стаклото</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Прилагодете го нивото на проѕирност на стаклената лента за навигација (0 е проѕирно, 100 е непроѕирно)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Светло стакло</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Ја бои стаклената лента за навигација во бело наместо во темно, за посветло и појасно стакло</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Големина на стаклената лента за навигација</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Прилагодете ја висината, ширината и размакот помеѓу копчињата на стаклената лента за навигација, со преглед. Копчињата што не се вчуклопуваат во ширината на екранот се skjени</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Големина и стил на стаклена лента за навигација</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Прилагодете ја висината, ширината, размакот на копчињата, проѕирностa и јакоста на работот на стаклената лента за навигација, со преглед. Копчињата што не се собираат во ширината на екранот се кријат</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Висина</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Максимална ширина</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Размак помеѓу копчињата</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Прикажани копчиња: %1$s од %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Непровидност</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Јакост на работот</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Стаклено заматовање</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Колку е заматена страницата зад стаклената лента за навигација (Android 14 и понови). На 0 страницата се гледа јасно, а пред Android 14 страницата е покриена</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Светло стакло</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Ја бои стаклената лента за навигација во бело наместо во темно, за посветло и појасно стакло</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Нијанса на сликата од албумот</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Ја нијансира стаклената лента за навигација со бојата на сликата од албумот на песната што се пушта</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Скриј го индикаторот за избраното копче</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Го крие заобленото осветлување зад избраното копче на стаклената лента за навигација</string>
+  <string name="morphe_music_miniplayer_screen_title">Миниплејер</string>
+  <string name="morphe_music_miniplayer_screen_summary">Променете го стилот, копчињата и гестурите на миниплејерот</string>
+  <string name="morphe_music_miniplayer_glass_title">Овозможи стаклен миниплејер</string>
+  <string name="morphe_music_miniplayer_glass_summary">Го прикажува лебтејќиот миниплејер како заоблена, проѕирна стаклена картичка</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Стил на стаклен миниплејер</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Прилагодете го радиусот на аголите, растојанието на сликата, јакоста на работот и проѕирностa на стаклениот миниплејер, со преглед</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Радиус на аголите</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Растојание на сликата</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Јакост на работот</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Непровидност</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Стаклено заматовање</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Колку е заматена страницата зад стаклениот миниплејер (Android 14 и понови). На 0 страницата се гледа јасно, а пред Android 14 страницата е покриена</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Светло стакло</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Го нијансира стаклениот миниплејер во бело наместо во темно, за посветло и појасно стакло</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Нијанса на сликата од албумот</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Го нијансира стаклениот миниплејер со бојата на сликата од албумот на песната што се пушта</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Слика што се врти</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Ја прави сликата на стаклениот миниплејер круг и ја врти како плоча додека се пушта песната</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Скриј ја лентата за напредок</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Ја крие лентата за напредок на дното на стаклениот миниплејер</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Почетно</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Примери</string>
@@ -634,7 +666,7 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_lyrics_rime_dict_no_table">Ниту еден список на Rime зборови не е означен за горенаведениот јазик. Допрете го ова име за да означите еден, или изберете јазик што има листа</string>
   <string name="morphe_music_lyrics_rime_dict_add">Додај</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Додај Rime список на зборови</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Датотека .dict.yaml, или zip архива која содржи таква, со линии како 字 ham и 典 din2. Листата се презема кога ќе ја штиклирате и ќе притиснете Save, а лиценцата е ваша одговорност да ја проверите</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Датотека .dict.yaml, или zip архива што содржи таква, со линии како 字 ham и 典 din2. Листата се презема кога ќе ја означите и ќе притиснете Зачувај, а ваша задача е да ја проверите нејзината лиценца</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Код на јазикот</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Две или три букви, како на пример hak или wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Име</string>
@@ -722,6 +754,8 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_lyrics_show_translate_button_summary">Допрете за да ја преклопите транслацијата; задржете за само транслација. Користи ги овозможените даватели на превод во нивниот наведен редослед</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Прикажи копче за романизација или транслитерација</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Допрете за да ја преклопите романизацијата или транслитерацијата; задржете за само романизација или транслитерација. Користи ги овозможените даватели на романизација во нивниот наведен редослед</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Прикажи копче за тековниот дел</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Додека рачно скролате низ текстот, прикажува копче кое се враќа на линијата што се пее во моментот</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Овозможи транслитерација</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Дозволи нелатински читања од изворот на текстот; кога е исклучено, се задржуваат само латински букви, акцентувани букви и цифри за тонови</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Ја чита секој збор од времениот текст (синхронизација на зборови вклучена); за корејски јазик не е потребно преземање; четиринаесет писма користат едно CLDR преземање; Han карактерите се читаат од Rime Wordlist кога табелата со зборови го покрива јазикот</string>
@@ -745,6 +779,12 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_lyrics_written_by">Напишано од: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Истакни синхронизирани зборови или слогови</string>
   <string name="morphe_music_lyrics_word_sync_summary">Дај приоритет на текстот збор-по-збор кога е достапен. Кога текстот има временски ознаки за зборовите, се истакнува секој збор или слог во синхронизација со музиката</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Користи „spring“ скролање</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Ги скрола текстовите со „spring“ физика и ја поместува секоја линија малку по онаа над неа. Исклучете го за да заштедите батерија на побавни уреди</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Прикажи точки за инструментална пауза</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Прикажува три точки помеѓу linemen за време на долга инструментална пауза, кои се полнат како што истекува паузата</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Повеќе затемни ги далечните линии</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Повеќе ја затемнува секоја неактивна линија колку што е подалеку од линијата што се пее. Кога е исклучено, секоја неактивна линија е затемнета исто</string>
   <string name="morphe_music_lyrics_line_scale_title">Смали ги неактивните линии</string>
   <string name="morphe_music_lyrics_line_scale_summary">Ја црта секоја линија која во моментот не се пее малку помала, покрај затемнувањето</string>
   <string name="morphe_music_lyrics_split_background_title">Прикажи ги придружните вокали посебно</string>
@@ -834,6 +874,7 @@ SABR репродукција (имитирање на видео стримов
   <string name="morphe_music_lyrics_romanize_only">Само романизирано</string>
   <string name="morphe_music_lyrics_dual_only">Двоен режим</string>
   <string name="morphe_music_lyrics_copied">Копирано во меморијата</string>
+  <string name="morphe_music_lyrics_current">Тековно</string>
   <string name="morphe_music_lyrics_refreshing">Освежување</string>
   <string name="morphe_music_lyrics_refreshed">Освежено</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API клуч</string>

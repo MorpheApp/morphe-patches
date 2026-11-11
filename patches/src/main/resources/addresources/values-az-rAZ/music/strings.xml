@@ -335,6 +335,7 @@ Onlar bir-bir yüklənir, uzun müddət çəkə bilər və təxminən %3$s boş 
   <string name="morphe_music_playback_speed_title">Oynatma sürəti</string>
   <string name="morphe_music_playback_speed_summary">Bütün treklər üçün istifadə olunan sürət. 100% olduqda tətbiqin sürəti, məsələn, podkastın oynatma sürəti istifadə olunur</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Ucalığı sürət ilə dəyiş</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Bəyənməmə yönləndirilməsini qapat</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Bəyənməmə düyməsi basıldıqda növbəti trekə keçməyə mane olur</string>
@@ -492,16 +493,17 @@ Onlar bir-bir yüklənir, uzun müddət çəkə bilər və təxminən %3$s boş 
   <string name="morphe_music_hide_navigation_bar_labels_title">Fəaliyyət düyməsi etiketlərini gizlət</string>
   <string name="morphe_music_navigation_bar_glass_title">Şüşə fəaliyyət cərgəsini aktivləşdir</string>
   <string name="morphe_music_navigation_bar_glass_summary">Fəaliyyət zolağını üzən, yuvarlaq, yarımşəffaf kapsul kimi göstərir</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Şüşə tutqunluğu</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Şüşə fəaliyyət cərgəsinin şəffaflıq dərəcəsini tənzimlə (0 şəffaf, 100 qeyri-şəffaf)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">İşıqlı şüşə</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Daha açıq və şəffaf şüşə üçün şüşə fəaliyyət zolağını qara əvəzinə ağa boyayır</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Şüşə fəaliyyət zolağının ölçüsü</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Şüşə fəaliyyət zolağının hündürlüyünü, enini və düymə boşluğunu önizləmə ilə tənzimlə. Ekranın eninə uyuşmayan düymələr gizlədilir</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Hündürlük</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Ən yüksək en</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Düymə boşluğu</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Göstərilən düymələr: %2$s ədəddən %1$s \'si</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Qeyri-şəffaflıq</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">İşıqlı şüşə</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Daha açıq və şəffaf şüşə üçün şüşə fəaliyyət zolağını qara əvəzinə ağa boyayır</string>
+  <string name="morphe_music_miniplayer_screen_title">Kiçik oynadıcı</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Künc radiusu</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Qeyri-şəffaflıq</string>
+  <string name="morphe_music_miniplayer_glass_light_title">İşıqlı şüşə</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Əsas səhifə</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Nümunələr</string>
@@ -634,7 +636,6 @@ Birinci sütun söz, ikincisi isə onun oxunuşudur; əlavə sütunlar və səhi
   <string name="morphe_music_lyrics_rime_dict_no_table">Yuxarıdakı dil üçün heç bir Rime söz siyahısı işarələnməyib. Birini işarələmək üçün bu ada toxunun və ya siyahısı olan dil seçin</string>
   <string name="morphe_music_lyrics_rime_dict_add">Əlavə et</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Rime Söz Siyahısı Əlavə Et</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">字 ham və 典 din2 kimi sətirləri olan .dict.yaml faylı və ya onu ehtiva edən zip arxivi. Siyahı siz onu işarələyib Saxlaya toxunduqda əldə edilir və lisenziyasını yoxlamaq sizə aiddir</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Dil kodu</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">İki və ya üç hərf, hak və ya wuu kimi</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Ad</string>

@@ -648,6 +648,24 @@ La teva clau API mai s'ha de compartir. Qualsevol persona amb accés a ella pot 
   <string name="morphe_loop_video_range_clear">Esborra</string>
   <string name="morphe_loop_video_range_toast_on">Repetint %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Interval de temps no vàlid</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Nombre de bucles</string>
+  <string name="morphe_loop_count_screen_summary">Tria quantes vegades es repeteix un vídeo abans del següent vídeo</string>
+  <string name="morphe_loop_count_title">Habilita el comptador de bucles</string>
+  <string name="morphe_loop_count_summary">El menú Més del reproductor mostra el Compte de bucles al costat de Bucle de vídeo, per triar quantes vegades es reprodua el vídeo abans del següent vídeo</string>
+  <string name="morphe_loop_count_playlists_title">Desar l\'estat dels bucles a les llistes de reproducció</string>
+  <string name="morphe_loop_count_playlists_summary">Cada vídeo d\'una llista de reproducció manté el compte de bucles que trieu, i Bucle de vídeo s\'activa quan la llista de reproducció el torna a reproduire. Si està desactivat, el compte de bucles és només per al vídeo que s\'està reproduint ara</string>
+  <string name="morphe_loop_count_clear_title">Esborrar els comptes de bucles desats</string>
+  <string name="morphe_loop_count_clear_summary">Oblida els comptes de bucles desats a les teves llistes de reproducció. Vídeos desats: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">No hi ha comptes de bucles desats</string>
+  <string name="morphe_loop_count_clear_dialog_title">Esborrar els comptes de bucles desats?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Els vídeos de les teves llistes de reproducció obliden el seu compte de bucles, i Bucle de vídeo ja no s\'activa quan una llista de reproducció els reprodueix</string>
+  <string name="morphe_loop_count_clear_done">Comptes de bucles desats esborrats</string>
+  <string name="morphe_loop_count_flyout_name">Nombre de bucles</string>
+  <string name="morphe_loop_count_dialog_message">Quantes vegades es reprodua el vídeo abans del següent vídeo, de %1$s a %2$s. Deixa\'ho buit per repetir el vídeo sense límit.</string>
+  <string name="morphe_loop_count_no_limit">Sense límit</string>
+  <string name="morphe_loop_count_decrease">Menys vegades</string>
+  <string name="morphe_loop_count_increase">Més vegades</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Mostrar el botó de Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Mostrar el menú de Picture-in-Picture</string>
@@ -1113,6 +1131,10 @@ Per mostrar el menú 'Audio Track', canvia 'Spoof video streams' a qualsevol cli
   <string name="morphe_enhanced_ambient_mode_summary">Il·lumina tota la pàgina de visionat i les barres negres amb el vídeo, en lloc del mode Ambient</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantenir el text llegible</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Atenueix la llum en els vídeos lluminosos perquè el text de la pàgina segueixi sent llegible</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Atenuar mentre es desplaça</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Atenua la llum mentre es desplaça o es toca la pàgina</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Durada de l\'atenuació</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Quant de temps es manté la llum atenuada després que s\'atura el desplaçament. Amb 0, només el desplaçament atenua la llum, i aquesta torna a la normalitat tan bon punt s\'atura el desplaçament</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ocultar les targetes d\'informació</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Per mostrar el menú 'Audio Track', canvia 'Spoof video streams' a qualsevol cli
   <string name="morphe_hide_shorts_subscriptions_title">Amagar al feed de Subscripcions</string>
   <string name="morphe_hide_shorts_video_description_title">Amagar a la descripció del vídeo</string>
   <string name="morphe_hide_shorts_history_title">Amagar a l\'historial de reproducció</string>
+  <string name="morphe_hide_shorts_notifications_title">Ocultar a les notificacions push</string>
   <string name="morphe_shorts_player_screen_title">Reproductor de Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Tria quins components apareixen al reproductor de Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Desactivar el toc doble per a M\'agrada</string>

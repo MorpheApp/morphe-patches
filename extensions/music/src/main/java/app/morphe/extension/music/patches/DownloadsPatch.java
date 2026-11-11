@@ -77,8 +77,8 @@ public final class DownloadsPatch {
      * with or without the 'VL' prefix of a playlist page.
      */
     public static final Pattern PLAYLIST_ID = Pattern.compile(
-            "(VL)?(LM|PL[A-Za-z0-9_-]{16,}|OLAK5uy_[A-Za-z0-9_-]{11,}|RD[A-Za-z0-9_-]{10,})"
-                    + "|MPRE[A-Za-z0-9_-]{8,}");
+            "(VL)?(LM|PL(?:[A-Za-z0-9_-]{11}|[A-Za-z0-9_-]{16,})"
+                    + "|OLAK5uy_[A-Za-z0-9_-]{11,}|RD[A-Za-z0-9_-]{10,})|MPRE[A-Za-z0-9_-]{8,}");
 
     private static volatile long lastFlyoutDownloadTime;
     private static volatile long lastPlaylistDownloadTime;

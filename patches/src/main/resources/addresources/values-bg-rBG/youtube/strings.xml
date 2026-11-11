@@ -648,6 +648,24 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">Изчистване</string>
   <string name="morphe_loop_video_range_toast_on">Повтаряне от %1$s до %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Невалиден времеви диапазон</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Брой повторения</string>
+  <string name="morphe_loop_count_screen_summary">Изберете колко пъти да се повтаря видеото, преди да премине към следващото</string>
+  <string name="morphe_loop_count_title">Активиране на брой повторения</string>
+  <string name="morphe_loop_count_summary">Менюто \"Още\" на плейъра показва Брой повторения до \"Повтори видео\", за да изберете колко пъти да се възпроизвежда видеото преди следващото</string>
+  <string name="morphe_loop_count_playlists_title">Запазване на броя повторения в плейлистите</string>
+  <string name="morphe_loop_count_playlists_summary">Всяко видео в плейлиста запазва избрания от вас брой повторения и \"Повтори видео\" се активира, когато плейлиста го възпроизведе отново. Ако е изключено, броят повторения се отнася само за видеото, което се възпроизвежда в момента</string>
+  <string name="morphe_loop_count_clear_title">Изтриване на запазените броеве повторения</string>
+  <string name="morphe_loop_count_clear_summary">Изтрийте броевете повторения, запазени във вашите плейлисти. Запазени видеа: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Няма запазени броеве повторения</string>
+  <string name="morphe_loop_count_clear_dialog_title">Изтриване на запазените броеве повторения?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Видеата във вашите плейлисти ще изтрият своя брой повторения и \"Повтори видео\" вече няма да се активира, когато плейлиста ги възпроизвежда</string>
+  <string name="morphe_loop_count_clear_done">Запазените броеве повторения бяха изтрити</string>
+  <string name="morphe_loop_count_flyout_name">Брой повторения</string>
+  <string name="morphe_loop_count_dialog_message">Колко пъти да се възпроизвежда видеото преди следващото, от %1$s до %2$s. Оставете празно, за да се повтаря видеото без ограничение.</string>
+  <string name="morphe_loop_count_no_limit">Без ограничение</string>
+  <string name="morphe_loop_count_decrease">По-малко пъти</string>
+  <string name="morphe_loop_count_increase">Повече пъти</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Показване на бутона за картина в картина</string>
   <string name="morphe_pip_button_flyout_title">Показване на менюто за картина в картина</string>
@@ -1113,6 +1131,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">Осветява цялата страница за гледане и черните ленти с цветовете на видеото, вместо стандартния Ambient режим</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Поддържане на четимостта на текста</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Затъмнява светлината при ярки видеоклипове, за да остане текстът на страницата четим</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Затъмняване при скролване</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Затъмнява светлината, докато страницата се скролва или се докосва</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Продължителност на затъмняването</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Колко дълго светлината остава затъмнена след спиране на скролването. При 0 само скролването затъмнява светлината и тя се възстановява веднага след спиране на скролването</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Скриване на информационните карти</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Скрий в емисиите от абонаменти</string>
   <string name="morphe_hide_shorts_video_description_title">Скрий в описанието на видеото</string>
   <string name="morphe_hide_shorts_history_title">Скрий в историята на гледане</string>
+  <string name="morphe_hide_shorts_notifications_title">Скриване в push известията</string>
   <string name="morphe_shorts_player_screen_title">Плейър на Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Изберете кои компоненти да се показват в плейъра на Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Деактивирай двойното докосване за харесване</string>

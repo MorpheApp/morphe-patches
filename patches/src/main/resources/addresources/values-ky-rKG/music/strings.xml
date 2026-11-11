@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Аудио/видео которууну күйгүзүү</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Аудио трегинин версиясын жана расмий музыкалык видеону алмаштырып көрүңүз</string>
+  <string name="morphe_music_auto_song_version_title">Ар дайым ырдын версиясын ойнотуу</string>
+  <string name="morphe_music_auto_song_version_summary">Кезектеги расмий музыкалык клиптерди тиешелүү ыр менен алмаштырат. Тиркеменин «Музыкалык клиптерди ойнотпоо» жөндөөсү күйгүзүлгөн болушу керек. Такык дал келбеген тректер өзгөрүлбөй калат</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Үчүнчү тараптын жүктөө колдонмолору менен музыкалык клиптерди, подкасттарды же ырларды жүктөп алуу</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Кайталоо баскычын жашыруу</string>
   <string name="morphe_music_hide_shuffle_button_title">Аралаштыруу баскычын жашыруу</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\"Тез чалуу\" текшесин жашыруу</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">\'Сизге ошондой эле жагышы мүмкүн\' бөлүмүн жашыруу</string>
   <string name="morphe_music_comments_screen_title">Пикирлер</string>
   <string name="morphe_music_comments_screen_summary">Комментарийлер бөлүмүндө кайсы компоненттер көрүнөрин тандаңыз</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Жамааттык эрежелерди жашыруу</string>
@@ -335,6 +338,9 @@ SABR ойнотуусу (Видео агымдарын имитациялоо ө
   <string name="morphe_music_playback_speed_title">Ойнотуу ылдамдыгы</string>
   <string name="morphe_music_playback_speed_summary">Бардык тректер үчүн колдонулган ылдамдык. 100% болгондо колдонмонун ылдамдыгы, мисалы, подкастты ойнотуу ылдамдыгы колдонулат</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Ылдамдык менен тембрди өзгөртүү</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Аудио duckingди өчүрүү</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Башка колдонмо кыска үндү, мисалы, билдирүүнү ойноткондо, үн төмөндөбөйт</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Жакпайт кайра багыттоосун өчүрүү</string>
   <string name="morphe_music_disable_dislike_redirection_summary">\"Жакпайт\" баскычы басылганда кийинки трекке өтүүнү алдын алат</string>
@@ -492,16 +498,42 @@ SABR ойнотуусу (Видео агымдарын имитациялоо ө
   <string name="morphe_music_hide_navigation_bar_labels_title">Навигация баскычтарынын жапкычтарын жашыруу</string>
   <string name="morphe_music_navigation_bar_glass_title">Айнек сыяктуу навигациялык панельди күйгүзүү</string>
   <string name="morphe_music_navigation_bar_glass_summary">Навигациялык панелдиK floating, тегеректелген, жарым-жартылай тунук капсула катары көрсөтөт</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Айнектин тунуктугу</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Айнек навигациялык панелдин тунуктук деңгээлин жөздөңүз (0 - тунук, 100 - коюу)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Жеңил айнек</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Жеңил жана тунугураак айнек үчүн навигациялык панелди караңгы эмес, ак түскө боёйт</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Айнек навигациялык панелдин өлчөмү</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Айнек навигациялык панелдин бийиктигин, туурасынан өлчөмүн жана баскычтардын аралыгын алдын ала көрүү менен жөздөңүз. Экрандын туурасына батпаган баскычтар жашырылат</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Айнек навигациялык панелдин өлчөмү жана стили</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Айнек навигациялык панелдин бийиктигин, туурасын, баскычтардын аралыгын, тунуктугун жана четтеринин жарыктыгын алдын ала көрүү мүмкүнчүлүгү менен жөнгө салыңыз. Экрандын туурайына сыймаган баскычтар жашырылат</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Бийиктиги</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Максималдуу туурасы</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Баскычтардын аралыгы</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Көрсөтүлгөн баскычтар: %1$s / %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Тунуктугу</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Четтеринин жарыктыгы</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Айнектин бүдөмүктөтүүсү</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Айнек навигациялык панелдин артындагы беттин канчалык бүдөмүктөлгөнү (Android 14 жана андан кийинки версиялар). 0 болгондо бет так көрүнөт, ал эми Android 14\'кө чейин бет жабылат</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Жеңил айнек</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Жеңил жана тунугураак айнек үчүн навигациялык панелди караңгы эмес, ак түскө боёйт</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Альбомдун сүрөтүнүн түсү</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Айнек навигациялык панелди ойноп жаткан ырдын альбом сүрөтүнүн түсү менен боёйт</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Тандалган баскычтын индикаторун жашыруу</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Айнек навигациялык панелдин тандалган баскычынын артындагы тегерек жогорку жарыкты жашырат</string>
+  <string name="morphe_music_miniplayer_screen_title">Миниплеер</string>
+  <string name="morphe_music_miniplayer_screen_summary">Миниплеердин стилин, баскычтарын жана жесттерин өзгөртүңүз</string>
+  <string name="morphe_music_miniplayer_glass_title">Айнек миниплеерди иштетүү</string>
+  <string name="morphe_music_miniplayer_glass_summary">Калкыган миниплеерди тегеректелген, жарым-жартылай тунук айнек карта катары көрсөтөт</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Айнек миниплеердин стили</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Айнек миниплеердин бурчтук радиусун, сүрөттүн четтеринин боштугун, четтеринин жарыктыгын жана тунуктугун алдын ала көрүү мүмкүнчүлүгү менен жөнгө салыңыз</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Бурчтун радиусу</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Сүрөттүн четтеринин боштугу</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Четтеринин жарыктыгы</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Тунуктугу</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Айнектин бүдөмүктөтүүсү</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Айнек миниплеердин артындагы беттин канчалык бүдөмүктөлгөнү (Android 14 жана андан кийинки версиялар). 0 болгондо бет так көрүнөт, ал эми Android 14\'кө чейин бет жабылат</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Жеңил айнек</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Жеңилирээк жана тазараак айнек үчүн айнек миниплеерди караңгы эмес, ак түс менен боёйт</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Альбомдун сүрөтүнүн түсү</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Айнек миниплеерди ойноп жаткан ырдын альбом сүрөтүнүн түсү менен боёйт</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Айланган сүрөт</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Айнек миниплеердин сүрөтүн тегерек кылат жана ыр ойноп жатканда аны пластинка сыяктуу айлантат</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Прогресс-барды жашыруу</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Айнек миниплеердин төмөндөгү прогресс-барын жашырат</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Башкы бет</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Үлгүлөр</string>
@@ -634,7 +666,7 @@ Rime Wordlist окуй турган тизмелерди белгилеңиз, �
   <string name="morphe_music_lyrics_rime_dict_no_table">Жогорудагы тил үчүн Rime сөздүк тизмеси белгиленген эмес. Бирөөнү белгилөө үчүн бул атты басыңыз же тизмеси бар тилди тандаңыз</string>
   <string name="morphe_music_lyrics_rime_dict_add">Кошуу</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Rime сөздүгүн кошуу</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml файлы же анын камтылган zip архиви, анда \"字 ham\" жана \"典 din2\" сыяктуу саптар болушу керек. Тизме сиз аны белгилеп, \"Сактоо\" баскычын басканда алынат, ал эми анын лицензиясын өзүңүз текшеришиңиз керек</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml файлы же аны камтыган zip архиви, анда 字 ham жана 典 din2 сыяктуу саптар болушу керек. Тизме сиз аны белгилеп, Сактоо баскычын басканда алынат, ал эми лицензиясын өзүңүз текшеришиңиз керек</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Тилдин коду</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Эки же үч тамга, мисалы, hak же wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Аты</string>
@@ -722,6 +754,8 @@ Rime Wordlist окуй турган тизмелерди белгилеңиз, �
   <string name="morphe_music_lyrics_show_translate_button_summary">Котормону күйгүзүү/өчүрүү үчүн басыңыз; котормону гана көрсөтүү үчүн узак басыңыз. Иштетилген котормо провайдерлери тизмеленген тартипте колдонулат</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Романизация же Транслитерация баскычын көрсөтүү</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Романизацияны же транслитерацияны күйгүзүү/өчүрүү үчүн басыңыз; романизацияны же транслитерацияны гана көрсөтүү үчүн узак басыңыз. Иштетилген романизация sağlayıcıлары тизмеленген тартипте колдонулат</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Учурдагы баскычын көрсөтүү</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Текстти кол менен жылдырганда, ырдалып жаткан сапка кайтып келүүчү баскычты көрсөтөт</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Транслитерацияны күйгүзүү</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Ыр тексттеринин булагынан латын эмес окууларга уруксат берүү; өчүрүлгөндө, латын тамгалары, акценттүү тамгалар жана тон цифрлары гана калат</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Убактысы белгиленген лириканын ар бир сөзүн окуйт (сөздөрдү синхрондоо күйүк); корей тили үчүн жүктөө талап кылынбайт; он төрт жазуу бир CLDR жүктөөнү колдонот; Хан белгилери, эгер анын сөз таблицасы тилди камтыса, Rime Wordlist тарабынан окулат</string>
@@ -745,6 +779,12 @@ Rime Wordlist окуй турган тизмелерди белгилеңиз, �
   <string name="morphe_music_lyrics_written_by">Жазган: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Синхрондолгон сөздөрдү же муунду белгилөө</string>
   <string name="morphe_music_lyrics_word_sync_summary">Мүмкүн болгон учурда сөз сайын берилген тексттерге артыкчылык бериңиз. Тексттерде сөздөрдүн убактысы көрсөтүлгөн учурда, ар бир сөз же муун музыка менен бирге белгиленет</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Пружина сыяктуу жылдырууну колдонуу</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Текстти пружина физикасы менен жылдырат жана ар бир сапты жогорудагы саптан бир аз жылдырат. Жай иштей турган түзүлүштөрдө батареяны үнөмдөө үчүн өчүрүңүз</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Инструменталдык тыныгуу чекиттерин көрсөтүү</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Узун инструменталдык тыныгуу учурунда саптардын ортосунда үч чекитти көрсөтөт, алар тыныгуу бүткөндө толоруу менен толтурат</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Алыскы саптарды көбүрөөк караңгылатуу</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Ар бир активдүү эмес сап ырдалып жаткан саптан канчалык алыс болсо, ошончолук караңгылана берет. Өчүрүлгөндө, ар бир активдүү эмес сап бирдей караңгыланат</string>
   <string name="morphe_music_lyrics_line_scale_title">Активдүү эмес саптарды кичирейтүү</string>
   <string name="morphe_music_lyrics_line_scale_summary">Учурда ырдалып жатпаган ар бир сапты караңгылатуу менен бирге бир аз кичирейтип көрсөтөт</string>
   <string name="morphe_music_lyrics_split_background_title">Фонодогу вокалды өзүнчө көрсөтүү</string>
@@ -834,6 +874,7 @@ Rime Wordlist окуй турган тизмелерди белгилеңиз, �
   <string name="morphe_music_lyrics_romanize_only">Тек гана романизация</string>
   <string name="morphe_music_lyrics_dual_only">Кош режим</string>
   <string name="morphe_music_lyrics_copied">Алмашуу буферине көчүрүлдү</string>
+  <string name="morphe_music_lyrics_current">Учурдагы</string>
   <string name="morphe_music_lyrics_refreshing">Жаңыртылууда</string>
   <string name="morphe_music_lyrics_refreshed">Жаңыртылды</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API ачкычы</string>

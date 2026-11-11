@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Включить переключение аудио/видео</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Пытаться переключать версию аудиодорожки и официальное музыкальное видео</string>
+  <string name="morphe_music_auto_song_version_title">Всегда воспроизводить версию песни</string>
+  <string name="morphe_music_auto_song_version_summary">Заменяет официальные музыкальные видео в очереди соответствующей песней. Требуется включенная настройка приложения «Не воспроизводить музыкальные видео». Треки без точного совпадения остаются без изменений</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Скачивайте музыкальные видео, подкасты или песни с помощью сторонних приложений для загрузки</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -335,6 +337,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_playback_speed_title">Скорость воспроизведения</string>
   <string name="morphe_music_playback_speed_summary">Скорость, используемая для всех треков. При значении 100 % используется скорость приложения, например скорость воспроизведения подкастов</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Изменять высоту тона вместе со скоростью</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Отключить перенаправление дизлайков</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Предотвращает переход к следующему треку при нажатии кнопки \"Не нравится\"</string>
@@ -492,16 +495,42 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_hide_navigation_bar_labels_title">Скрыть подписи кнопок навигации</string>
   <string name="morphe_music_navigation_bar_glass_title">Включить стеклянную панель навигации</string>
   <string name="morphe_music_navigation_bar_glass_summary">Отображает панель навигации в виде плавающей закругленной полупрозрачной капсулы</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Прозрачность стекла</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Настройте уровень прозрачности стеклянной панели навигации (0 — прозрачная, 100 — непрозрачная)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Светлое стекло</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Придает стеклянной панели навигации белый оттенок вместо темного для более светлого и чистого вида</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Размер стеклянной панели навигации</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Настройте высоту, ширину и расстояние между кнопками стеклянной панели навигации с предварительным просмотром. Кнопки, которые не помещаются в ширину экрана, скрываются</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Размер и стиль стеклянной панели навигации</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Настройте высоту, ширину, расстояние между кнопками, прозрачность и яркость кромки стеклянной панели навигации с предварительным просмотром. Кнопки, которые не помещаются по ширине экрана, скрываются</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Высота</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Максимальная ширина</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Расстояние между кнопками</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Показанные кнопки: %1$s из %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Непрозрачность</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Яркость кромки</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Размытие стекла</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Степень размытия страницы за стеклянной панелью навигации (Android 14 и новее). При значении 0 страница видна четко, а в версиях до Android 14 страница перекрыта</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Светлое стекло</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Придает стеклянной панели навигации белый оттенок вместо темного для более светлого и чистого вида</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Оттенок обложки альбома</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Окрашивает стеклянную панель навигации в цвет обложки альбома воспроизводимой песни</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Скрыть индикатор выбранной кнопки</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Скрывает скругленное выделение за выбранной кнопкой стеклянной панели навигации</string>
+  <string name="morphe_music_miniplayer_screen_title">Миниплеер</string>
+  <string name="morphe_music_miniplayer_screen_summary">Изменить стиль, кнопки и жесты миниплеера</string>
+  <string name="morphe_music_miniplayer_glass_title">Включить стеклянный миниплеер</string>
+  <string name="morphe_music_miniplayer_glass_summary">Отображает плавающий миниплеер в виде скругленной полупрозрачной стеклянной карточки</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Стиль стеклянного миниплеера</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Настройте радиус углов, отступы обложки, яркость кромки и прозрачность стеклянного миниплеера с предварительным просмотром</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Радиус углов</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Отступы обложки</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Яркость кромки</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Непрозрачность</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Размытие стекла</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Степень размытия страницы за стеклянным миниплеером (Android 14 и новее). При значении 0 страница видна четко, а в версиях до Android 14 страница перекрыта</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Светлое стекло</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Окрашивает стеклянный миниплеер в белый цвет вместо темного для создания более легкого и прозрачного эффекта стекла</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Оттенок обложки альбома</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Окрашивает стеклянный миниплеер в цвет обложки альбома воспроизводимой песни</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Вращающаяся обложка</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Делает обложку стеклянного миниплеера круглой и вращает её, как пластинку, во время воспроизведения песни</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Скрыть полосу прогресса</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Скрывает полосу прогресса в нижней части стеклянного миниплеера</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Главная</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Примеры</string>
@@ -634,7 +663,6 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_rime_dict_no_table">Для выбранного выше языка не отмечен ни один список слов Rime. Нажмите на это имя, чтобы отметить нужный список, или выберите язык, для которого есть список</string>
   <string name="morphe_music_lyrics_rime_dict_add">Добавить</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Добавить список слов Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Файл .dict.yaml или zip-архив, содержащий такой файл, со строками вида 字 ham и 典 din2. Список загружается при его отметке и нажатии кнопки Сохранить, а лицензию на него вы можете проверить самостоятельно</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Языковой код</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Две или три буквы, например hak или wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Имя</string>
@@ -722,6 +750,8 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_show_translate_button_summary">Нажмите для включения/выключения перевода; длительное нажатие показывает только перевод. Использует включенных провайдеров перевода в порядке их перечисления</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Показать кнопку романизации или транслитерации</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Нажмите для включения/выключения романизации или транслитерации; длительное нажатие включает только романизацию или только транслитерацию. Использует включенных провайдеров романизации/транслитерации в порядке их перечисления</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Показывать кнопку «Текущая строка»</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">При ручном прокручивании текста песни показывает кнопку, которая возвращает к поющей строке</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Включить транслитерацию</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Разрешить не латинские варианты произношения из источника текста песни; если отключено, оставляются только латинские буквы, буквы с диакритическими знаками и цифры тонов</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Читает каждое слово синхронизированного по времени текста (синхронизация слов включена); корейскому языку загрузка не нужна; четырнадцать письменностей используют одну загрузку CLDR; китайские иероглифы читаются через Rime Wordlist, если его таблица слов охватывает этот язык</string>
@@ -745,6 +775,12 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_written_by">Автор: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Подсвечивать синхронизированные слова или слоги</string>
   <string name="morphe_music_lyrics_word_sync_summary">Отдавать приоритет пословному тексту, когда он доступен. Когда в тексте есть тайминги слов, подсвечивать каждое слово или слог в такт музыке</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Использовать пружинную прокрутку</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Прокручивает текст песни с использованием физики пружины, при этом каждая строка смещается немного относительно предыдущей. Отключите для экономии заряда батареи на медленных устройствах</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Показывать точки инструментального проигрыша</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Показывает три точки между строками во время длительного инструментального проигрыша, которые заполняются по мере завершения перерыва</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Сильнее затемнять удаленные строки</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Затемняет каждую неактивную строку тем сильнее, чем дальше она находится от поющей строки. Если функция выключена, все неактивные строки затемняются одинаково</string>
   <string name="morphe_music_lyrics_line_scale_title">Сжимать неактивные строки</string>
   <string name="morphe_music_lyrics_line_scale_summary">Рисует каждую строку, которая в данный момент не исполняется, чуть меньше, поверх затемнения</string>
   <string name="morphe_music_lyrics_split_background_title">Показывать фоновый вокал отдельно</string>
@@ -834,6 +870,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_romanize_only">Только романизированный</string>
   <string name="morphe_music_lyrics_dual_only">Двойной режим</string>
   <string name="morphe_music_lyrics_copied">Скопировано в буфер обмена</string>
+  <string name="morphe_music_lyrics_current">Текущая</string>
   <string name="morphe_music_lyrics_refreshing">Обновление</string>
   <string name="morphe_music_lyrics_refreshed">Обновлено</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Ключ API QuickLRC</string>

@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Ενεργοποίηση εναλλαγής ήχου/βίντεο</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Προσπαθήστε να εναλλάξετε την έκδοση ηχητικού κομματιού και το επίσημο μουσικό βίντεο</string>
+  <string name="morphe_music_auto_song_version_title">Να αναπαράγεται πάντα η έκδοση του τραγουδιού</string>
+  <string name="morphe_music_auto_song_version_summary">Αντικαθιστά τα επίσημα μουσικά βίντεο στην ουρά με το αντίστοιχο τραγούδι. Απαιτεί η ρύθμιση της εφαρμογής \"Μην αναπαράγετε μουσικά βίντεο\" να είναι ενεργή. Τα κομμάτια χωρίς ακριβή αντιστοιχία παραμένουν αλλαγμένα</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Λήψη μουσικών βίντεο, podcast ή τραγουδιών με εφαρμογές λήψης τρίτων</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Απόκρυψη κουμπιού \"Επανάληψη\"</string>
   <string name="morphe_music_hide_shuffle_button_title">Απόκρυψη κουμπιού \"Ανακάτεμα\"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Απόκρυψη ραφιού «Γρήγορη κλήση»</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Απόκρυψη της ενότητας «Μπορεί να σας αρέσει επίσης»</string>
   <string name="morphe_music_comments_screen_title">Σχόλια</string>
   <string name="morphe_music_comments_screen_summary">Επιλέξτε ποια στοιχεία θα εμφανίζονται στην ενότητα σχολίων</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Απόκρυψη \"Οδηγιών Κοινότητας\"</string>
@@ -335,6 +338,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_title">Ταχύτητα αναπαραγωγής</string>
   <string name="morphe_music_playback_speed_summary">Ταχύτητα που χρησιμοποιείται για όλα τα κομμάτια. Στο 100% χρησιμοποιείται η ταχύτητα της εφαρμογής, όπως η ταχύτητα αναπαραγωγής podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Αλλαγή τόνου με την ταχύτητα</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Απενεργοποίηση της μείωσης έντασης ήχου</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Η ένταση δεν μειώνεται όταν μια άλλη εφαρμογή αναπαράγει έναν σύντομο ήχο, όπως μια ειδοποίηση</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Απενεργοποίηση ανακατεύθυνσης αποδοκιμασίας</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Αποτρέπει τη μετάβαση στο επόμενο κομμάτι όταν πατηθεί το κουμπί αποδοκιμασίας</string>
@@ -492,16 +498,42 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Απόκρυψη Ονομάτων κουμπιών Γραμμής Πλοήγησης</string>
   <string name="morphe_music_navigation_bar_glass_title">Ενεργοποίηση γυάλινης γραμμής πλοήγησης</string>
   <string name="morphe_music_navigation_bar_glass_summary">Εμφανίζει τη γραμμή πλοήγησης ως μια επιπλεόμενη, στρογγυλεμένη, ημιδιαφανής κάψουλα</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Αδιαφάνεια γυαλιού</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Ρυθμίστε το επίπεδο διαφάνειας της γυάλινης γραμμής πλοήγησης (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Φως γυαλιού</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Χιρώμα σε λευκό αντί για σκούρο τη γυάλινη γραμμή πλοήγησης, για ένα πιο ελαφρύ και καθαρό γυαλί</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Μέγεθος γυάλινης γραμμής πλοήγησης</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Ρυθμίστε το ύψος, το πλάτος και την απόσταση των κουμπιών της γυάλινης γραμμής πλοήγησης, με προεπισκόπηση. Τα κουμπιά που δεν χωράνε στο πλάτος της οθόνης κρύβονται</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Μέγεθος και στυλ γυάλινης γραμμής πλοήγησης</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Προσαρμόστε το ύψος, το πλάτος, την απόσταση των κουμπιών, τη διαφάνεια και τη φωτεινότητα του περιγράμματος της γυάλινης γραμμής πλοήγησης, με προεπισκόπηση. Τα κουμπιά που δεν χωράνε στο πλάτος της οθόνης κρύβονται</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Ύψος</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Μέγιστο πλάτος</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Απόσταση κουμπιών</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Εμφανιζόμενα κουμπιά: %1$s από %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Αδιαφάνεια</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Φωτεινότητα περιγράμματος</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Θόλωμα γυαλιού</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Πόσο θολруется η σελίδα πίσω από τη γυάλινη γραμμή πλοήγησης (Android 14 και μεταγενέστερα). Στο 0 η σελίδα εμφανίζεται καθαρά και πριν από το Android 14 η σελίδα καλύπτεται</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Φως γυαλιού</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Χιρώμα σε λευκό αντί για σκούρο τη γυάλινη γραμμή πλοήγησης, για ένα πιο ελαφρύ και καθαρό γυαλί</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Αποχρώμα εξώφυλλου άλμπουμ</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Χρωματίζει τη γυάλινη γραμμή πλοήγησης με το χρώμα του εξώφυλλου του τραγουδιού που αναπαράγεται</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Κρύψιμο δείκτη επιλεγμένου κουμπιού</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Κρύβει την and στρογγυλεμένη ανάδειξη πίσω από το επιλεγμένο κουμπί της γυάλινης γραμμής πλοήγησης</string>
+  <string name="morphe_music_miniplayer_screen_title">Ελαχιστοποιημένη οθόνη αναπαραγωγής</string>
+  <string name="morphe_music_miniplayer_screen_summary">Αλλαγή του στυλ, των κουμπιών και των κινήσεων του miniplayer</string>
+  <string name="morphe_music_miniplayer_glass_title">Ενεργοποίηση γυάλινου miniplayer</string>
+  <string name="morphe_music_miniplayer_glass_summary">Εμφανίζει το πλωτό miniplayer ως μια στρογγυλεμένη, ημιδιαφανής γυάλινη κάρτα</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Στυλ γυάλινου miniplayer</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Προσαρμόστε την ακτίνα γωνίας, την απόσταση του εξώφυλλου, τη φωτεινότητα του περιγράμματος και τη διαφάνεια του γυάλινου miniplayer, με προεπισκόπηση</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Ακτίνα γωνίας</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Απόσταση εξώφυλλου</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Φωτεινότητα περιγράμματος</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Αδιαφάνεια</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Θόλωμα γυαλιού</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Πόσο θολруется η σελίδα πίσω από το γυάλινο miniplayer (Android 14 και μεταγενέστερα). Στο 0 η σελίδα εμφανίζεται καθαρά και πριν από το Android 14 η σελίδα καλύπτεται</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Φως γυαλιού</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Χρωματίζει το γυάλινο miniplayer σε λευκό αντί για σκούρο, για ένα πιο ελαφρύ και καθαρό γυαλί</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Αποχρώμα εξώφυλλου άλμπουμ</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Χρωματίζει το γυάλινο miniplayer με το χρώμα του εξώφυλλου του τραγουδιού που αναπαράγεται</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Περιστρεφόμενο εξώφυλλο</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Κάνει το εξώφυλλο του γυάλινου miniplayer στρογγυλό και το περιστρέφει σαν δίσκο ενώ αναπαράγεται ένα τραγούδι</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Κρύψιμο μπάρας προόδου</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Κρύβει τη μπάρα προόδου στο κάτω μέρος του γυάλινου miniplayer</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Αρχική</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Δείγματα</string>
@@ -634,7 +666,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">Καμία λίστα λεξιλογίου Rime δεν έχει επιλεγεί για τη γλώσσα παραπάνω. Πιέστε αυτό το όνομα για να επιλέξετε μια, ή επιλέξτε μια γλώσσα που έχει λίστα</string>
   <string name="morphe_music_lyrics_rime_dict_add">Πρόσθεση</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Προσθήκη Λεξιλογίου Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Ένα αρχείο .dict.yaml ή ένα zip που περιέχει ένα, με γραμμές όπως 字 ham και 典 din2. Η λίστα ανακτάται όταν την επιλέξετε και πατήσετε Αποθήκευση, και η άδειά της είναι δική σας για να ελέγξετε</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Ένα αρχείο .dict.yaml, ή ένα αρχείο zip που περιέχει ένα τέτοιο, με γραμμές όπως 字 ham και 典 din2. Η λίστα ανακτάται όταν το επιλέγετε και πατάτε Αποθήκευση, και η άδεια χρήσης του είναι υπό την ευθύνη σας να την ελέγξετε</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Κωδικός γλώσσας</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Δύο ή τρία γράμματα, όπως στα hak ή wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Όνομα</string>
@@ -722,6 +754,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Πιέστε για εναλλαγή μετάφρασης· πατήστε παρατεταμένα για μόνο μετάφραση. Χρησιμοποιεί τους ενεργοποιημένους παρόχους μετάφρασης με τη σειρά που αναφέρονται</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Εμφάνιση κουμπιού Ρωμαϊσμού ή Μεταγραφής</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Πιέστε για εναλλαγή ρωμαϊσμού ή μεταγραφής· πατήστε παρατεταμένα για μόνο ρωμαϊσμό ή μεταγραφή. Χρησιμοποιεί τους ενεργοποιημένους παρόχους ρωμαϊσμού με τη σειρά που αναφέρονται</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Εμφάνιση κουμπιού «Τρέχον»</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Κατά τη χειροκίνητη κύλιση των στίχων, εμφανίζει ένα κουμπί που επιστρέφει στη γραμμή που τραγουδιέται</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Ενεργοποίηση μεταγραφής</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Να επιτρέπονται μη λατινικές αναγνώσεις από την πηγή στίχων· όταν είναι απενεργοποιημένη, διατηρήστε μόνο λατινικά γράμματα, τόνους και ψηφία τόνων</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Διαβάζει κάθε λέξη ενός στίχου χρονοβολημένου (συγχρονισμός λέξης ενεργός). Η Κορεάτικα δεν χρειάζεται λήψη; δεκατέσσερις γραφές μοιράζονται μία λήψη CLDR. Οι χαρακτήρες Han αναλύονται από το Λεξιλόγιο Rime όταν ο πίνακας λεξιλογίου του καλύπτει τη γλώσσα</string>
@@ -745,6 +779,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_written_by">Γράφτηκε από: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Επισήμανση συγχρονισμένων λέξεων ή συλλαβών</string>
   <string name="morphe_music_lyrics_word_sync_summary">Δώστε προτεραιότητα στους στίχους λέξη-λέξη όταν είναι διαθέσιμοι. Όταν οι στίχοι έχουν χρονισμό λέξεων, επισημαίνεται κάθε λέξη ή συλλαβή σε συγχρονισμό με τη μουσική.</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Χρήση κύλισης με ελατήριο</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Κυλίζει τους στίχους με φυσική ελατηρίου και μετατοπίζει κάθε γραμμή ελαφρώς μετά από την προηγούμενη. Απενεργοποιήστε για εξοικονόμηση μπαταρίας σε πιο αργές συσκευές</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Εμφάνιση τελειών διαλείμματος οργάνων</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Εμφανίζει τρεις τελείες ανάμεσα στις γραμμές κατά τη διάρκεια ενός μεγάλου διαλείμματος οργάνων, οι οποίες γεμίζουν καθώς τελειώνει το διάλειμμα</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Περισσότερο σκίασμα απομακρυνμένων γραμμών</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Σκιάζει περισσότερο κάθε ανενεργή γραμμή όσο πιο μακριά είναι από τη γραμμή που τραγουδιέται. Όταν είναι απενεργοποιημένο, κάθε ανενεργή γραμμή σκιάζεται με τον ίδιο τρόπο</string>
   <string name="morphe_music_lyrics_line_scale_title">Συστολή αδρανών γραμμών</string>
   <string name="morphe_music_lyrics_line_scale_summary">Σχεδιάζει κάθε γραμμή που δεν τραγουδιέται αυτή τη στιγμή ελαφρώς μικρότερη, εκτός από την αμαύρωσή της</string>
   <string name="morphe_music_lyrics_split_background_title">Εμφάνιση φωνητικών υποστήριξης ξεχωριστά</string>
@@ -834,6 +874,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanize_only">Μόνο σε λατινική γραφή</string>
   <string name="morphe_music_lyrics_dual_only">Διπλή λειτουργία</string>
   <string name="morphe_music_lyrics_copied">Αντιγράφηκε στο πρόχειρο</string>
+  <string name="morphe_music_lyrics_current">Τρέχον</string>
   <string name="morphe_music_lyrics_refreshing">Ανανέωση</string>
   <string name="morphe_music_lyrics_refreshed">Ανανεώθηκε</string>
   <string name="morphe_music_lyrics_transcribe_key_title">API κλειδί QuickLRC</string>

@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Միացնել աուդիո/վիդեո փոխարկիչը</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Փորձեք փոխել աուդիո տրեկի տարբերակը և պաշտոնական երաժշտական տեսահոլովակը</string>
+  <string name="morphe_music_auto_song_version_title">Միշտ նվագարկել երգի տարբերակը</string>
+  <string name="morphe_music_auto_song_version_summary">Հերթի պաշտոնական երաժշտական հոլովակները փոխարինում է համապատասխան երգով: Պահանջում է հավելվածի «Չնվագարկել երաժշտական հոլովակներ» կարգավորումը միացնված լինի: Առանց ճշգրիտ համընկնման գրկերը մնում են անփոփոխ</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Ներբեռնեք երաժշտական տեսահոլովակներ, փոդքասթներ կամ երգեր երրորդ կողմի ներբեռնման հավելվածների միջոցով</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Թաքցնել \"Կրկնել\" կոճակը</string>
   <string name="morphe_music_hide_shuffle_button_title">Թաքցնել \"Խառնել\" կոճակը</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Թաքցնել \"Արագ հավաքման\" դարակը</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Թաքցնել «Ձեզ դուր կարող է գալ նաև» բաժինը</string>
   <string name="morphe_music_comments_screen_title">Մեկնաբանություններ</string>
   <string name="morphe_music_comments_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն մեկնաբանությունների բաժնում</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Թաքցնել համայնքի ուղեցույցները</string>
@@ -335,6 +338,9 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_playback_speed_title">Վերարտադրման արագություն</string>
   <string name="morphe_music_playback_speed_summary">Արագությունը, որն օգտագործվում է բոլոր թրեկների համար: 100%-ի դեպքում օգտագործվում է հավելվածի արագությունը, օրինակ՝ փոդքասթի վերարտադրման արագությունը</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Փոխել տոնայնությունը արագության հետ</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Անջատել ձայնի ավտոմատ ցածրացումը</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Ձայնի մակարդակը չի ցածրացնի, երբ մեկ այլ հավելված նվագում է կարճ ձայն, օրինակ՝ ծանուցում</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Անջատել չհավանելու վերահասցեավորումը</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Կանխում է հաջորդ տրեկին անցումը, երբ սեղմվում է «Չհավանել» կոճակը</string>
@@ -492,16 +498,42 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_hide_navigation_bar_labels_title">Թաքցնել նավիգացիայի կոճակների պիտակները</string>
   <string name="morphe_music_navigation_bar_glass_title">Միացնել ապակյա նավիգացիոն վահանակը</string>
   <string name="morphe_music_navigation_bar_glass_summary">Ցույց է տալիս նավիգացիայի վահանակը որպես լողացող, կլորացված, կիսաթափանցիկ պատյան</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Ապակու թափանցիկություն</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Կարգավորեք ապակյա նավիգացիայի վահանակի թափանցիկության մակարդակը (0-ն թափանցիկ է, 100-ը՝ անթափանցիկ)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Լուսավոր ապակի</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Ներկում է ապակյա նավիգացիայի վահանակը սպիտակ՝ մուգի փոխարեն, ավելի լուսավոր և պարզ ապակու համար</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Ապակյա նավիգացիայի վահանակի չափսը</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Կարգավորեք ապակյա նավիգացիայի վահանակի բարձրությունը, լայնությունը և կոճակների միջև հեռավորությունը՝ նախնական դիտման հնարավորությամբ: Էկրանի լայնության մեջ չտեղավորվող կոճակները թաքցվում են</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Ապակե նավիգացիոն վահանակի չափսը և ոճը</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Կարգավորեք ապակե նավիգացիոն վահանակի բարձրությունը, լայնությունը, կոճակների հեռավորությունը, թափանցիկությունը և եզրերի պայծառությունը՝ նախնական դիտման հնարավորությամբ: Էկրանի լայնությանը չհամապատասխանող կոճակները թաքցվում են</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Բարձրություն</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Առավելագույն լայնություն</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Կոճակների հեռավորություն</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Ցուցադրվող կոճակներ՝ %1$s %2$s-ից</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Թափանցիկություն</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Եզրերի պայծառություն</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Ապակե լղոզում</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Որքան է լղոզվում էջը ապակե նավիգացիոն վահանակի հետևում (Android 14 և ավելի ուշ): 0-ի դեպքում էջը երևում է հստակ, իսկ մինչև Android 14-ը էջը ծածկված է</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Լուսավոր ապակի</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Ներկում է ապակյա նավիգացիայի վահանակը սպիտակ՝ մուգի փոխարեն, ավելի լուսավոր և պարզ ապակու համար</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Ալբոմի շապիկի երանգ</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Ապակե նավիգացիոն վահանակին հաղորդում է նվագարկվող երգի ալբոմի շապիկի գույնը</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Թաքցնել ընտրված կոճակի ցուցիչը</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Թաքցնում է կլորացված ընդգծումը ապակե նավիգացիոն վահանակի ընտրված կոճակի հետևում</string>
+  <string name="morphe_music_miniplayer_screen_title">Մինի-նվագիչ</string>
+  <string name="morphe_music_miniplayer_screen_summary">Փոխել մինի-նվագարկիչի ոճը, կոճակները և ժեստերը</string>
+  <string name="morphe_music_miniplayer_glass_title">Միացնել ապակե մինի-նվագարկիչը</string>
+  <string name="morphe_music_miniplayer_glass_summary">Ցուցադրում է լողացող մինի-նվագարկիչը որպես կլորացված, կիսաթափանցիկ ապակե քարտ</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Ապակե մինի-նվագարկիչի ոճը</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Կարգավորեք ապակե մինի-նվագարկիչի անկյունների շառកությունը, շապիկի ներդիրը, եզրերի պայծառությունը և թափանցիկությունը՝ նախնական դիտման հնարավորությամբ</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Անկյունների շառկություն</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Շապիկի ներդիր</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Եզրերի պայծառություն</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Թափանցիկություն</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Ապակե լղոզում</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Որքան է լղոզվում էջը ապակե մինի-նվագարկիչի հետևում (Android 14 և ավելի ուշ): 0-ի դեպքում էջը երևում է հստակ, իսկ մինչև Android 14-ը էջը ծածկված է</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Բաց ապակի</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Ապակե մինի-նվագարկիչին հաղորդում է սպիտակ երանգ՝ մուգի փոխարեն, ավելի թեթև և թափանցիկ ապակու համար</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Ալբոմի շապիկի երանգ</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Ապակե մինի-նվագարկիչին հաղորդում է նվագարկվող երգի ալբոմի շապիկի գույնը</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Պտտվող շապիկ</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Դարձնում է ապակե մինի-նվագարկիչի շապիկը կլոր և պտտում այն ինչպես and vinyl սկավառակը, երբ երգն է հնչում</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Թաքցնել առաջընթացի սահանակը</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Թաքցնում է առաջընթացի սահանակը ապակե մինի-նվագարկիչի ներքևի մասում</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Գլխավոր</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Նմուշներ</string>
@@ -722,6 +754,8 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_show_translate_button_summary">Սեղմեք թարգմանությունը միացնելու/անջատելու համար. երկար սեղմեք՝ միայն թարգմանության համար: Օգտագործվում են միացված թարգմանչի ծառայությունները՝ ըստ նշված հերթականության</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Ցույց տալ ռոմանիզացիայի կամ տառադարձման կոճակը</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Սեղմեք ռոմանիզացիան կամ տառադարձումը միացնելու/անջատելու համար. երկար սեղմեք՝ միայն ռոմանիզացիայի կամ տառադարձման համար: Օգտագործվում են միացված ռոմանիզացիայի ծառայությունները՝ ըստ նշված հերթականության</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Ցուցադրել «Ընթացիկը» կոճակը</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Երգի տեքստը ձեռքով թերթելիս ցուցադրում է կոճակ, որը վերադարձնում է երգվող տողին</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Միացնել տառադարձումը</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Թույլատրել ոչ լատինական ընթերցումները տեքստի աղբյուրից. անջատված լինելու դեպքում կպահպանվեն միայն լատինական տառերը, շեշտադրված տառերը և տոնային թվերը</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Կարդում է ժամանակագրված երգի յուրաքանչյուր բառը (բառերի սինխրոնացումը միացված է)․ կորեերենի համար ներբեռնում պետք չէ․ տասնչորս գրերի համակարգեր օգտագործում են մեկ CLDR ներբեռնում․ հան նիշերը կարդացվում են Rime Wordlist-ի կողմից, երբ դրա բառերի աղյուսակը ընդգրկում է տվյալ լեզուն</string>
@@ -745,6 +779,12 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_written_by">Գրված է՝ %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Ընդգծել սինխրոնացված բառերը կամ վանկերը</string>
   <string name="morphe_music_lyrics_word_sync_summary">Առաջնահերթություն տալ բառ առ բառ տեքստերին, երբ դրանք հասանելի են: Երբ տեքստերը ունեն բառերի ժամանակային տվյալներ, ընդգծվում է յուրաքանչյուր բառ կամ վանկ՝ համահունչ երաժշտությանը</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Օգտագործել զնբർկող թերթում</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Թերթում է երգի տեքստը զնբർկող ֆիզիկայի միջոցով և յուրաքանչյուր տողը մի փոքր տեղաշարժում է նախորդից հետո: Անջատեք՝ դանդաղ սարքերի վրա մարտկոցի ծախսը նվազեցնելու համար</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Ցույց տալ ինստրումենտալ դադարի կետերը</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Ցույց է տալիս երեք կետեր տողերի միջև երկար ինստրումենտալ դադարի ժամանակ, որոնք լցվում են դադարի ավարտի հետ մեկ ساتھ</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Ավելի մոռացնել հեռավոր տողերը</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Ավելի շատ մոռացնում է յուրաքանչյուր ոչ ակտիվ տողը, որքան այն հեռու է երգվող տողից: Անջատված լինելիս բոլոր ոչ ակտիվ տողերը մոռացվում են նույն չափով</string>
   <string name="morphe_music_lyrics_line_scale_title">Փոքրացնել ոչ ակտիվ տողերը</string>
   <string name="morphe_music_lyrics_line_scale_summary">Այն տողերը, որոնք տվյալ պահին չեն երգվում, դարձնում է մի փոքր ավելի փոքր և գունամոռացնում</string>
   <string name="morphe_music_lyrics_split_background_title">Ցուցադրել հետնապլանի վոկալը առանձին</string>
@@ -834,6 +874,7 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_romanize_only">Միայն տառադարձում</string>
   <string name="morphe_music_lyrics_dual_only">Երկակի ռեժիմ</string>
   <string name="morphe_music_lyrics_copied">Պատճենված է հիշողության մեջ</string>
+  <string name="morphe_music_lyrics_current">Ընթացիկ</string>
   <string name="morphe_music_lyrics_refreshing">Թարմացվում է</string>
   <string name="morphe_music_lyrics_refreshed">Թարմացված է</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API բանալին</string>

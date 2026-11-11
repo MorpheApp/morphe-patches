@@ -648,6 +648,25 @@ Tu clave API nunca debe compartirse. Cualquiera que tenga acceso a ella puede us
   <string name="morphe_loop_video_range_clear">Borrar</string>
   <string name="morphe_loop_video_range_toast_on">Repetición de %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Intervalo de tiempo no válido</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Recuento de bucles</string>
+  <string name="morphe_loop_count_screen_summary">Elige cuántas veces se repite un vídeo antes del siguiente</string>
+  <string name="morphe_loop_count_title">Activar recuento de bucles</string>
+  <string name="morphe_loop_count_summary">El menú «Más» del reproductor muestra el recuento de bucles junto a «Repetir vídeo» para elegir cuántas veces se reproduce el vídeo antes de pasar al siguiente.</string>
+  <string name="morphe_loop_count_playlists_title">Guardar recuento de bucles en listas de reproducción</string>
+  <string name="morphe_loop_count_playlists_summary">Cada vídeo de una lista de reproducción mantiene el recuento de bucles que elijas, y la opción «Repetir vídeo» se activa cuando la lista de reproducción lo vuelve a reproducir. Si está desactivado, el recuento de bucles solo se aplica al vídeo que se está reproduciendo en ese momento.</string>
+  <string name="morphe_loop_count_clear_title">Borrar recuentos de bucles guardados</string>
+  <string name="morphe_loop_count_clear_summary">Olvida los recuentos de bucles guardados en tus listas de reproducción. Vídeos guardados: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">No se han guardado recuentos de bucles</string>
+  <string name="morphe_loop_count_clear_dialog_title">¿Borrar recuentos de bucles guardados?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Los vídeos de tus listas de reproducción olvidan su recuento de bucles y el vídeo en bucle ya no se activa cuando una lista de reproducción los reproduce.</string>
+  <string name="morphe_loop_count_clear_done">Recuentos de bucles guardados borrados</string>
+  <string name="morphe_loop_count_flyout_name">Recuento de bucles</string>
+  <string name="morphe_loop_count_dialog_message">Cuántas veces se reproduce el vídeo antes del siguiente vídeo, de %1$s a %2$s. Déjalo en blanco para reproducir el vídeo en bucle sin límite.</string>
+  <string name="morphe_loop_count_times">%s veces</string>
+  <string name="morphe_loop_count_no_limit">Sin límite</string>
+  <string name="morphe_loop_count_decrease">Menos veces</string>
+  <string name="morphe_loop_count_increase">Más veces</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Mostrar botón de imagen en imagen</string>
   <string name="morphe_pip_button_flyout_title">Mostrar menú de imagen en imagen</string>
@@ -1113,6 +1132,10 @@ Para mostrar el menú 'Pista de audio', cambia 'Falsificar transmisiones de víd
   <string name="morphe_enhanced_ambient_mode_summary">Ilumina toda la página de reproducción y las barras negras con el vídeo, en lugar del Modo Ambiente</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantener el texto legible</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Atenúa la luz en vídeos brillantes para que el texto de la página siga siendo legible</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Atenuar al desplazar</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Atenúa la luz mientras se desplaza o se toca la página</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Duración de la atenuación</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Cuánto tiempo permanece atenuada la luz después de que se detiene el desplazamiento. Con 0, solo el desplazamiento atenúa la luz, y esta vuelve a su estado original tan pronto como se detiene el desplazamiento</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ocultar tarjetas de información</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Para mostrar el menú 'Pista de audio', cambia 'Falsificar transmisiones de víd
   <string name="morphe_hide_shorts_subscriptions_title">Ocultar en el feed de Suscripciones</string>
   <string name="morphe_hide_shorts_video_description_title">Ocultar en la descripción del vídeo</string>
   <string name="morphe_hide_shorts_history_title">Ocultar en historial de reproducciones</string>
+  <string name="morphe_hide_shorts_notifications_title">Ocultar en las notificaciones push</string>
   <string name="morphe_shorts_player_screen_title">Reproductor de Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Elige qué componentes aparecen en el reproductor de Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Desactivar doble toque para dar \'Me gusta\'</string>

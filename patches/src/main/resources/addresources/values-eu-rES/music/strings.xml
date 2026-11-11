@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Gaitu audio/bideo aldauntza</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Saiatu Audio Track bertsioa eta Musikako Bideo Ofiziala aldatzen</string>
+  <string name="morphe_music_auto_song_version_title">Joko beti abestu abestuaren bertsioa</string>
+  <string name="morphe_music_auto_song_version_summary">Kuean dauden musika bideo ofizialak dagokion abestuarekin ordezkatzen ditu. \'Ez jo musika bideoak\' aplikazioziozioa aktibatuta izan behar du. Zirrarik ez duten pistak aldatu gabe geratzen dira</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Deskargatu musika-bideoak, podcast-ak edo abestiak hirugarren aplikazioekin</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Bana-bana deskargatzen dira, eta horrek denbora asko har dezake eta %3$s espazio
   <string name="morphe_music_hide_repeat_button_title">Ezkutatu Errepikatu botoia</string>
   <string name="morphe_music_hide_shuffle_button_title">Ezkutatu nahasteko botoia</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Ezkutatu \'Speed dial\' estantea</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Ezkutatu \'Agian gustatuko zaizu\' atala</string>
   <string name="morphe_music_comments_screen_title">Komentarioak</string>
   <string name="morphe_music_comments_screen_summary">Aukeratu zein komponentek agertu behar duten komentarioen sekzioan</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Ezkutatu Komunitatearen gidalerroak</string>
@@ -335,6 +338,9 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <string name="morphe_music_playback_speed_title">Erreprodukzio abiadura</string>
   <string name="morphe_music_playback_speed_summary">Pista guztietan erabiltzen den abiadura. %100ean, aplikazioaren abiadura erabiltzen da, podcasten erreprodukzio abiadura bezalakoa</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Aldatu tonua abiadurarekin</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Desaktibu audio-ducking-a</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Bolumena ez da jaitsi beste aplikazio batek soinua labur bat txalgatu zuenean, adibidez, jakinarazpen bat</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Desaktibu ez-gustu bideratzea</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Ez-gustu botoia sakatzean hurrengo pistara salto egitea ekiditen du</string>
@@ -492,16 +498,42 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ezkutatu nabigazio-botoien etiketak</string>
   <string name="morphe_music_navigation_bar_glass_title">Gactivate nabigazio-barraren beirrotza</string>
   <string name="morphe_music_navigation_bar_glass_summary">Nabigazio-barra kapsula flotante, birbildu eta transluzentzatzat erakutsi</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Bertzuen opazitatea</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Doitu nabigazio-barra kristalaren transparenzia maila (0en garduna, 100en opakoa)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Kristal argia</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Nabigazio-barra kristala zuri kolorekoa egiten du iluna izateko ordez, kristal argiagoa eta garbiagoa lortzeko</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Nabigazio-barra kristalaren neurria</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Doitu nabigazio-barra kristalaren altura, zabalera eta botoien arteko espazioa, aurbizkiz. Pantailaren zabaleran nahi gabe botoiak ezkutatzen dira</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Nabigazio barra beiraren tamaina eta estiloa</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Doitu nabigazio barra beiraren altuera, zabalera, botoien arteko espazioa, opazitatea eta ertsaren distira, aurrebistarekin. Pantailaren zabalerara egokitzen ez diren botoiak ezkutatzen dira</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Altura</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Zabalera maximoa</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Botoiendistantzia</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Butkoiak erakutsita: %1$s / %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Opakutasuna</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Ertsaren distira</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Beiraren blurra</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Nabigazio barra beiraren atzean dagoen orrialdea zenbat blurratzen den (Android 14 eta berriagoak). 0-an orrialdea argi agertzen da, eta Android 14 aurretik orrialdea estaltzen da</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Kristal argia</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Nabigazio-barra kristala zuri kolorekoa egiten du iluna izateko ordez, kristal argiagoa eta garbiagoa lortzeko</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Album art kolorea</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Nabigazio-barrareko beirtea jokoan dagoen abestuaren albume-artearen kolorearekin tintatzen du</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Ezikuen botoiaren adiergazlea ezkutatu</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Nabigazio-barrareko beirtearen hautatutako botoiaren atzealdeko nabarmendu birbildua ezkutatzen du</string>
+  <string name="morphe_music_miniplayer_screen_title">Miniplayerra</string>
+  <string name="morphe_music_miniplayer_screen_summary">Aldatu miniplayerraren estiloa, botoiak eta kezturak</string>
+  <string name="morphe_music_miniplayer_glass_title">Gaitu beiramen miniplayer-a</string>
+  <string name="morphe_music_miniplayer_glass_summary">Flotante miniplayer-a beiramen txerto birribil eta garduna gisa erakusten du</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Beiramen miniplayer-aren estiloa</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Doitu beiramen miniplayer-aren gaineko ertzen raioa, artelanaren padding-a, ertzaren argitasuna eta opazitatea, aurbikusi batekin</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Izkinen erradioa</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Artelanaren padding-a</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Kanpoko ertzaren distira</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Opakutasuna</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Itsasaren blurra</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Itsas miniplayeraren atzean dagoen orria zenbat blurratzen den (Android 14 eta berriago). 0-an, orria zoztzez agertzen da, eta Android 14 aurretik, orria estaltzen da</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Itsas argia</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Itsas miniplayerari kolore zuria ematen dio iluna izan behinetsen, itsas argiago eta garbiago lortzeko</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Album-artearen tinta</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Miniplayerreko beirrotatinga soinutxoaren album-artearen kolorearekin tintatzen du</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Irudi rotatinga</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Miniplayerreko beirrotatingaren irudia birbildu eta, disko bat bezala birdura egiten dio abestia txalondoan dagoen bitartean</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Ezkutatu progresio barraa</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Miniplayerreko beirrotatingaren beheko progresio barraa ezkutatzen du</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Hasiera</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Lagoonak</string>
@@ -722,6 +754,8 @@ Beharrezko cookie-ak: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_translate_button_summary">Sakatu itzulpena aktibatzeko edo desaktibatzeko; sakatu luze itzulpen bakarrik egiteko. Aktibatutako itzulpen-hornitzaileak erabiltzen ditu zerrendatutako orden own</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Erakutsi Romanizatu edo Transliteratu botoia</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Sakatu romanizazioa edo transliterazioa aktibatzeko edo desaktibatzeko; sakatu luze romanizazioa edo transliterazioa bakarrik egiteko. Aktibatutako romanizazio-hornitzaileak erabiltzen ditu zerrendatutako orden own</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Erakutsi Gaur egungo botoia</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Letrak eskuz irakurtzean, abestu sedangoneko lerroari itzultzen den botoi bat erakusten du</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Aktibatu transliterazioa</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Permititu letra-iturritik datozen irakurketa ez-latineak; desaktibatuta dagoenean, letra latineak, axentsu duten letrak eta tonu-digitoak bakarrik gordetzen dira</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Letra sinkronizatuen hitz bakoitza irakurtzen du (hitz sinkronizazioa aktibatuta); koreerak ez du deskargarik behar; hamalau scriptek CLDR deskarga bat partekatzen dute; Han karaktereak Rime hitz-zerrendak irakurtzen ditu bere hitz-taulak hizkuntza hori estaltzen badu</string>
@@ -745,6 +779,12 @@ Beharrezko cookie-ak: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_written_by">Idatzi zuen: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Markatu sinkronizatutako hitzak edo silabak</string>
   <string name="morphe_music_lyrics_word_sync_summary">Lehenetsi hitzez hitzeko letrak eskuragarri daudenean. Letrek denbora-markak dituztenean, hitz edo silaba bakoitza musikarekin batera nabarmentzen du</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Erabili spring scrolling-a</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Letrak spring-fisikaz irakurtzen ditu, eta lerro guztiek gainean dagoenaren gainean pixka bat mugitzen dira. Desaktibu gailu motelagoetan bateria aurrezteko</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Erakutsi instrumentalaren atsedeneko puntuak</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Instrumentalaren atseden luze batean, lerroken artean hiru puntuak erakusten ditu, eta atsedena amaitzeurrenean betetzen dira</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Iluntasi gehiago urruneko lerroak</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Inaktibo dagoen lerroka iluntzi gehiago canto dagoen lerrotik urrunago dagoenほど. Desaktibatuta dagoenean, 모든 lerro inaktiboak berdin iluntzen dira</string>
   <string name="morphe_music_lyrics_line_scale_title">Txikitu lerro inaktiboak</string>
   <string name="morphe_music_lyrics_line_scale_summary">Uneko momentuan abestu ez den linearen guztiak apaltzeaz gain, pixka bat txikiago marrazten ditu</string>
   <string name="morphe_music_lyrics_split_background_title">Erakutsi atzeko ahizpak separatuta</string>
@@ -834,6 +874,7 @@ Bi mugei aplikatzen zaie. 1,75ean, lau zabalera osoko karaktere 7 gisa zenbatzen
   <string name="morphe_music_lyrics_romanize_only">Romanizatua soilik</string>
   <string name="morphe_music_lyrics_dual_only">Modu bikoitza</string>
   <string name="morphe_music_lyrics_copied">Arbelean kopiatu da</string>
+  <string name="morphe_music_lyrics_current">Oraingoa</string>
   <string name="morphe_music_lyrics_refreshing">Aktualizatzen</string>
   <string name="morphe_music_lyrics_refreshed">Aktualizatua</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API gakoa</string>

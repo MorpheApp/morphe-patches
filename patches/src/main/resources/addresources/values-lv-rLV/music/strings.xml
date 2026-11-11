@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Iespējot audio/video pārslēgumu</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Mēģiniet pārslēgties starp audio celiņa versiju un oficiālo mūzikas video</string>
+  <string name="morphe_music_auto_song_version_title">Vienmēr atskaņot dziesmas versiju</string>
+  <string name="morphe_music_auto_song_version_summary">Aizstāj oficiālos mūzikas video rindā ar atbilstošo dziesmu. aprasa: lietotnes iestatījumam \"Neatskaņot mūzikas video\" ir jābūt ieslēgtam. Dziesmas bez precīza atbilstošuma paliek nemainītas</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Lejupielādēt mūzikas video, podkastus vai dziesmas, izmantojot trešo pušu lejupielādes lietotnes</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Tie tiek lejupielādēti pa vienam, kas var aizņemt ilgu laiku un prasa aptuven
   <string name="morphe_music_hide_repeat_button_title">Slēpt atkārtošanas pogu</string>
   <string name="morphe_music_hide_shuffle_button_title">Slēpt nejaušas secības pogu</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Slēpt plauktu \"Ātrā izvēle\"</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Slēpt sadaļu \"Jums var patikt arī\"</string>
   <string name="morphe_music_comments_screen_title">Komentāri</string>
   <string name="morphe_music_comments_screen_summary">Izvēlieties, kuras komponentes rādīt komentāru sadaļā</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Slēpt kopienas noteikumus</string>
@@ -335,6 +338,9 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <string name="morphe_music_playback_speed_title">Atskaņošanas ātrums</string>
   <string name="morphe_music_playback_speed_summary">Ātrums, ko izmanto visiem trekiem. Pie 100% tiek izmantots lietotnes ātrums, piemēram, podkāstu atskaņošanas ātrums</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Mainīt toni līdz ar ātrumu</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Aizliegt audio dzīmēlēšanu</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Skaļums netiek samazināts, kad cita lietotne atskaņo īsu skaņu, piemēram, paziņojumu</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Atspējot novirzīšanu pēc \"Nepatīk\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Novērš pāreju uz nākamo treku, kad tiek nospiesta poga \"Nepatīk\"</string>
@@ -492,16 +498,42 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Slēpt navigācijas pogu etiķetes</string>
   <string name="morphe_music_navigation_bar_glass_title">Ienablekt stklaina navigācijas joslu</string>
   <string name="morphe_music_navigation_bar_glass_summary">Rāda navigācijas joslu kā pel floating, noapaļotas, puscaurspīdīgas kapsulas</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Stikla caurspīdums</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Regulē stikla navigācijas joslas caurspīduma līmeni (0 ir caurspīdīgs, 100 ir necaurspīdīgs)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Gaisšs stikls</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Sēroja stikla navigācijas joslu baltā, nevis tumšā krāsā, lai stikls būtu gaišāks un skaidrāks</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Stikla navigācijas joslas izmērs</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Regulē stikla navigācijas joslas augstumu, platumu un pogu atstātumu ar priekšskatu. Pogas, kas neiekļaujas ekrāna platumā, tiek slēptas</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Stikla navigācijas joslas izmērs un stils</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Sareguliet stikla navigācijas joslas augstumu, platumu, pogu atstarumu, caurspīdīgumu un malas spilgtumu ar priekšskatu. Pogas, kas nepieliekas ekrāna platumā, tiek slēptas</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Augstums</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Maksimālais platums</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Pogu atstājums</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Rādītas pogas: %1$s no %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Caurspīdīgums</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Malas spilgtums</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Stikla izpludinājums</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Cik stipri ir izpludināta lapa aiz stikla navigācijas joslas (Android 14 un jaunākajās versijās). Ja vērtība ir 0, lapa ir redzama skaidri, bet versijās pirms Android 14 lapa ir pārsegta</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Gaisšs stikls</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Sēroja stikla navigācijas joslu baltā, nevis tumšā krāsā, lai stikls būtu gaišāks un skaidrāks</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Albuma vārsta krāsainiņš</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Sapoša stikla navigācijas joslu ar atskaņātās dziesmas albuma vārsta krāsu</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Slēpt atlasētās pogas indicatoru</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Slēpj apaļo izcelumu aiz atlasētās stikla navigācijas joslas pogas</string>
+  <string name="morphe_music_miniplayer_screen_title">Miniatūrais atskaņotājs</string>
+  <string name="morphe_music_miniplayer_screen_summary">Mainīt miniatskaņotāja stilu, pogas un žestus</string>
+  <string name="morphe_music_miniplayer_glass_title">Iespējot stikla miniatskaņotāju</string>
+  <string name="morphe_music_miniplayer_glass_summary">Rāda peldošo miniatskaņotāju kā apaļu, puscaurspīdīgu stikla karti</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Stikla miniatskaņotāja stils</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Saregulējiet stikla miniatskaņotāja stūru radiusu, vārsta atstarumu, malas spilgtumu un caurspīdīgumu ar priekšskatu</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Stūra rādiuss</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Vārsta atstarums</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Malas spilgtums</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Caurspīdīgums</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Stikla izpludinājums</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Cik stipri ir izpludināta lapa aiz stikla miniatskaņotāja (Android 14 un jaunākajās versijās). Ja vērtība ir 0, lapa ir redzama skaidri, bet versijās pirms Android 14 lapa ir pārsegta</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Gaismazs stikls</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Sapoša stikla miniatskaņotāju baltā krāsā tā vietā par tumšā, lai stikls būtu gaišāks un skaidrāks</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Albuma vārsta krāsainiņš</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Sapoša stikla miniatskaņotāju ar atskaņātās dziesmas albuma vārsta krāsu</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Griezejošais vārsts</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Padara stikla miniatskaņotāja vārstu apaļMRP vai apaļu un groza to kā platplāti, kamēr atskaņā dziesma</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Slēpt progresa joslu</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Slēpj progresa joslu stikla miniatskaņotāja apakšdaļā</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Sākums</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Paraugi</string>
@@ -634,7 +666,7 @@ Pirmā kolonna ir vārds, otrā - tā izruna; papildu kolonnas un rindas bez tab
   <string name="morphe_music_lyrics_rime_dict_no_table">Augstāk minētajai valodai nav atlasīta Rime vārdu saraksta. Pieskarieties šim nosaukumam, lai atlasītu vienu, vai izvēlieties valodu, kurai ir saraksts</string>
   <string name="morphe_music_lyrics_rime_dict_add">Pievienot</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Pievienot Rime vārdu sarakstu</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml fails, vai zip arhīvs ar tādu failu, kurā ir rindas, piemēram, 字 ham un 典 din2. Saraksts tiek iegūts, kad jūs to atzīmējat un nospiežat Saglabāt, un tā licence ir jāpārbauda jums</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml fails vai zip arhīvs, kas to satur, ar rindām kā 字 ham un 典 din2. Saraksts tiek augūts, kad jūs to atzīmējat un nospiežat Saglabāt, un tā licence ir jūsu pārbaudei</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Valodas kods</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Divas vai trīs burts, piemēram, hak vai wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Nosaukums</string>
@@ -722,6 +754,8 @@ Obligātie sīkfaili: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_translate_button_summary">Nospiediet, lai pārslēgtu tulkošanu; ilgi nospiediet, lai rādītu tikai tulkošanu. Tiek izmantoti iespējotie tulkošanas pakalpojumu sniedzēji norādītajā secībā</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Rādīt romanizācijas vai transliterācijas pogu</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Nospiediet, lai pārslēgtu romanizāciju vai transliterāciju; ilgi nospiediet, lai rādītu tikai romanizāciju vai transliterāciju. Tiek izmantoti iespējotie romanizācijas pakalpojumu sniedzēji norādītajā secībā</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Rādīt pašreizējās pogu</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Rokas skrollēšanas laikā rāda pogu, kas atgriez ļoti ātri uz dziedātās rindas</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Iespējot transliterāciju</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Atļaut nelatinālu nolasīšanu no dziesmu teksta avota; ja šī opcija ir izslēgta, tiek saglabāti tikai latīņu burti, burti ar akcentiem un toņu cipari</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Nolasa katru vārdu laikā novērtētos dziesmas vārdos (vārdu sinhronizācija ieslēgta); korejiešu valodai lejupielāde nav nepieciešama; četrpadsmit rakstloki izmanto vienu CLDR lejupielādi; Han rakstzīmes nolasa Rime Wordlist, ja tā vārdu tabula aptver šo valodu</string>
@@ -745,6 +779,12 @@ Obligātie sīkfaili: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_written_by">Rakstījis: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Izcelt sinhronizētos vārdus vai zilbes</string>
   <string name="morphe_music_lyrics_word_sync_summary">Priekšroka tiek dota tekstiem vārds pa vārdam, ja tie ir pieejami. Ja tekstam ir vārdu laiki, katrs vārds vai zilbe tiek izcelta atbilstoši mūzikai</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Izmantot pildeņu skrollēšanu</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Skrollē dziesmas tekstu, izmantojot pildeņu fiziku, un katru rindu novaida nedaudz aiz tās, kas atrodas augšā. Izslēdziet, lai taupītu akumulatoru lēnpārāk ierīcēs</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Rādīt instrumentālo pauzes punktus</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Rāda trīs punktus starp rindām garas instrumentālas pauzes laikā, kas piepilda, kad pauze beidzas</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Vairāk aptumšināt tālākās rindas</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Vairāk aptumšina katru neaktīvu rindu, jo tā ir tālāk no dziedātās rindas. Ja šī funkcija ir izslēgta, visas neaktīvās rindas ir aptumšinātas vienādi</string>
   <string name="morphe_music_lyrics_line_scale_title">Samazināt neaktīvās rindas</string>
   <string name="morphe_music_lyrics_line_scale_summary">Zīmē katru rindu, kuru pašlaik nedzied, nedaudz mazāku, papildus tās izbalināšanai</string>
   <string name="morphe_music_lyrics_split_background_title">Rādīt background vokālus atsevišķi</string>
@@ -834,6 +874,7 @@ Sadalīt aizpildīto trekā formātu cikliski mainīgajos kadros. 0 izslēdz sad
   <string name="morphe_music_lyrics_romanize_only">Tikai romanizēts</string>
   <string name="morphe_music_lyrics_dual_only">Divvalodu režīms</string>
   <string name="morphe_music_lyrics_copied">Nokopēts starpliktuvē</string>
+  <string name="morphe_music_lyrics_current">Pašreizējais</string>
   <string name="morphe_music_lyrics_refreshing">Atjaunīšana</string>
   <string name="morphe_music_lyrics_refreshed">Atjaunots</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API atslēga</string>

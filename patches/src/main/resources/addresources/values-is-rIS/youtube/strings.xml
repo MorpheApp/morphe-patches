@@ -648,6 +648,24 @@ API lykillinn þinn ætti aldrei að deila. Hver sem hefur aðgang að honum get
   <string name="morphe_loop_video_range_clear">Hreinsa</string>
   <string name="morphe_loop_video_range_toast_on">Endurtek %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ógilt tímabil</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Fjöldi endurtekninga</string>
+  <string name="morphe_loop_count_screen_summary">Veldu hversu oft myndband endurtekist áður en næsta myndband hefst</string>
+  <string name="morphe_loop_count_title">Virkja fjölda endurtekninga</string>
+  <string name="morphe_loop_count_summary">Meira-valmynd spilara sýnir hringrásartíma við hliðina á \"Hringlaðu myndband\" til að velja hversu oft myndbandið spilar áður en næsta myndband hefst</string>
+  <string name="morphe_loop_count_playlists_title">Vista loop-fjölda í spilunalista</string>
+  <string name="morphe_loop_count_playlists_summary">Hvert myndband í spilunalista geymir þann loop-fjölda sem þú velur, og Loop-myndband virkist þegar spilunalistinn spilar því aftur. Ef það er slökkt er loop-fjöldinn aðeins fyrir myndbandið sem er að spilast núna</string>
+  <string name="morphe_loop_count_clear_title">Hreinsa vistuð loop-fjölda</string>
+  <string name="morphe_loop_count_clear_summary">Gleymdu loop-fjöldum sem vistuðu í spilunalistum þínum. Vistuð myndbönd: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Engir loop-fjöldar eru vistaðir</string>
+  <string name="morphe_loop_count_clear_dialog_title">Hreinsa vistuð loop-fjölda?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Myndböndin í spilunalistum þínum gleyma loop-fjölda sínum, og Loop-myndband virkist ekki lengur þegar spilunalisti spilar þeim</string>
+  <string name="morphe_loop_count_clear_done">Vistuð loop-fjöldar hreinsuð</string>
+  <string name="morphe_loop_count_flyout_name">Hringrásartíðni</string>
+  <string name="morphe_loop_count_dialog_message">Hvaðförn myndbandið spilar áður en næsta myndband hefst, frá %1$s til %2$s. Skildu tómt til að loopa myndbandið án takmarkana.</string>
+  <string name="morphe_loop_count_no_limit">Engin takmörkun</string>
+  <string name="morphe_loop_count_decrease">Færri sinnum</string>
+  <string name="morphe_loop_count_increase">Fleiri sinnum</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Sýna mynd-í-mynd-hnapp</string>
   <string name="morphe_pip_button_flyout_title">Sýna mynd-í-mynd valmynd</string>
@@ -1113,6 +1131,10 @@ Til að sýna valmyndina 'Hljóðrás', breyttu 'Falsa myndstrauma' í hvaða bi
   <string name="morphe_enhanced_ambient_mode_summary">Lýsir upp allri horfunsíðunni og svörtum ramma með litum myndbandsins í stað Ambient-stillingar</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Halda texta læsilegum</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dimmar ljósið á björtum myndböndum svo textinn á síðunni haldi sér læsilegum</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Dökkva við skrollingu</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Dökkvar ljósið þegar blaðrað er eða snert við</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Tíma dökknunar</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Hversu lengi ljósið helst dimmt eftir að skrollingu lýkur. Ef valið er 0 þá dökkvar aðrar skrollingar ljósið og það snýr aftur strax eftir að skrollingu lýkur</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Fela upplýsingaspjöld</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Til að sýna valmyndina 'Hljóðrás', breyttu 'Falsa myndstrauma' í hvaða bi
   <string name="morphe_hide_shorts_subscriptions_title">Fela í áskriftastraumi</string>
   <string name="morphe_hide_shorts_video_description_title">Fela í lýsingu myndskeiðs</string>
   <string name="morphe_hide_shorts_history_title">Fela í áhorfssögu</string>
+  <string name="morphe_hide_shorts_notifications_title">Fela í ýtiviltingum</string>
   <string name="morphe_shorts_player_screen_title">Síða Shorts-spilara</string>
   <string name="morphe_shorts_player_screen_summary">Veldu hvaða hlutar birtast í Shorts-spilaranum</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Slökkva á tvísmelli til að líka við</string>

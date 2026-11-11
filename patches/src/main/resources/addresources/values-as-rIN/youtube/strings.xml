@@ -648,6 +648,25 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_loop_video_range_clear">মচি পেলাওক</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s লুপিং হৈছে</string>
   <string name="morphe_loop_video_range_invalid_time">অবৈধ সময়ৰ সীমা</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">লুপৰ সংখ্যা</string>
+  <string name="morphe_loop_count_screen_summary">পিছৰ ভিডিঅ’টোৰ আগতে এটা ভিডিঅ’ কিমানবাৰ লুপ হ’ব সেয়া নিৰ্বাচন কৰক</string>
+  <string name="morphe_loop_count_title">লুপৰ সংখ্যা সক্ৰিয় কৰক</string>
+  <string name="morphe_loop_count_summary">প্লেয়াৰৰ More মেনুৱে Loop video-ৰ কাষত Loop count দেখুৱায়, যাৰ দ্বাৰা পিছৰ ভিডিঅ\'টোৰ আগতে ভিডিঅ\'টো কিমানবাৰ চলিব সেইটো বাছি ল\'ব পাৰি</string>
+  <string name="morphe_loop_count_playlists_title">প্লেলিষ্টত লুপ কাউণ্ট সংৰক্ষণ কৰক</string>
+  <string name="morphe_loop_count_playlists_summary">প্লেলিষ্টৰ প্ৰতিটো ভিডিঅ\'ই আপুনি বাছনি কৰা লুপ কাউণ্টটো ৰাখে, আৰু প্লেলিষ্টটোৱে ইয়াক পুনৰ প্লে কৰিলে Loop video অন হয়। যদি ইয়াক অফ কৰা হয়, তেন্তে লুপ কাউণ্টটো কেৱল বৰ্তমান চলি থকা ভিডিঅ\'টোৰ বাবেহে হ\'ব</string>
+  <string name="morphe_loop_count_clear_title">সংৰক্ষণ কৰা লুপ কাউণ্টবোৰ মচি পেলাওক</string>
+  <string name="morphe_loop_count_clear_summary">আপোনাৰ প্লেলিষ্টত সংৰক্ষণ কৰা লুপ কাউণ্টবোৰ পাহৰি যাওক। সংৰক্ষণ কৰা ভিডিঅ\': %s</string>
+  <string name="morphe_loop_count_clear_summary_none">কোনো লুপ কাউণ্ট সংৰক্ষণ কৰা হোৱা নাই</string>
+  <string name="morphe_loop_count_clear_dialog_title">সংৰক্ষণ কৰা লুপ কাউণ্টবোৰ মচি পেলাব নেকি?</string>
+  <string name="morphe_loop_count_clear_dialog_message">আপোনাৰ প্লেলিষ্টৰ ভিডিঅ\'বোৰে তেওঁলোকৰ লুপ কাউণ্ট পাহৰি যাব, আৰু প্লেলিষ্টটোৱে সেইবোৰ প্লে কৰোতে Loop video আৰু অন নহ\'ব</string>
+  <string name="morphe_loop_count_clear_done">সংৰক্ষণ কৰা লুপ কাউণ্টবোৰ মুছা হ\'ল</string>
+  <string name="morphe_loop_count_flyout_name">লুপৰ সংখ্যা</string>
+  <string name="morphe_loop_count_dialog_message">পিছৰ ভিডিঅ’টোৰ আগতে ভিডিঅ’টো কিমানবাৰ চলিব, %1$s ৰ পৰা %2$s লৈ। কোনো সীমা নোহোৱাকৈ ভিডিঅ’টো লুপ কৰিবলৈ খালী কৰি থওক।</string>
+  <string name="morphe_loop_count_times">%s বাৰ</string>
+  <string name="morphe_loop_count_no_limit">কোনো সীমা নাই</string>
+  <string name="morphe_loop_count_decrease">কমবাৰ</string>
+  <string name="morphe_loop_count_increase">বেছিবাৰ</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Picture-in-Picture বুটনটো দেখুৱাওক</string>
   <string name="morphe_pip_button_flyout_title">Picture-in-Picture মেনুটো দেখুৱাওক</string>
@@ -1113,6 +1132,10 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_enhanced_ambient_mode_summary">এম্বিয়েন্ট মোডৰ ঠাইত ভিডিঅ\'ৰ সৈতে সমগ্ৰ ৱাচ পেজ আৰু ক’লা বাৰবোৰ পোহৰ কৰে</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">টেক্সট পঢ়িব পৰা অৱস্থাত ৰাখক</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">উজ্জ্বল ভিডিঅ\'ৰ পোহৰ কম কৰে যাতে পৃষ্ঠাৰ টেক্সটবোৰ পঢ়িব পৰা হয়</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">স্ক্ৰল কৰাৰ সময়ত ডিম কৰক</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">পৃষ্ঠাটো স্ক্ৰল কৰিলে বা স্পৰ্শ কৰিলে পোহৰটো ডিম কৰে</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">ডিম স্থায়িত্ব</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">স্ক্ৰলিং বন্ধ হোৱাৰ পিছত পোহৰটো কিমান সময়লৈ ডিম হৈ থাকে। ০ থাকিলে কেৱল স্ক্ৰলিং কৰিলে পোহৰটো ডিম হয়, আৰু স্ক্ৰলিং বন্ধ হোৱাৰ লগে লগে ই পুনৰ ঘূৰি আহে</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">তথ্য কাৰ্ডসমূহ লুকুৱাওক</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Subscription ফিডত লুকুৱাওক</string>
   <string name="morphe_hide_shorts_video_description_title">ভিডিঅ\'ৰ বিৱৰণত লুকুৱাওক</string>
   <string name="morphe_hide_shorts_history_title">ৱাচ হিষ্টৰীত লুকুৱাওক</string>
+  <string name="morphe_hide_shorts_notifications_title">পুছ নোটিফিকেচনত লুকুৱাই ৰাখক</string>
   <string name="morphe_shorts_player_screen_title">Shorts প্লেয়াৰ</string>
   <string name="morphe_shorts_player_screen_summary">Shorts প্লেয়াৰত কোনবোৰ উপাদান দেখা যাব সেইটো বাছনি কৰক</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">লাইক কৰিবলৈ ডবল-ট্যাপ নিষ্ক্ৰিয় কৰক</string>

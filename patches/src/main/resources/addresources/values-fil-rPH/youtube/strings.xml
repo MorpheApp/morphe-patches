@@ -648,6 +648,25 @@ Hindi dapat ibahagi ang iyong API key. Sinumang may access dito ay maaaring guma
   <string name="morphe_loop_video_range_clear">Alisin</string>
   <string name="morphe_loop_video_range_toast_on">Pag-uulit %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Hindi balido ang saklaw ng oras</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Bilang ng loop</string>
+  <string name="morphe_loop_count_screen_summary">Piliin kung ilang beses mag-lo-loop ang isang video bago ang susunod na video</string>
+  <string name="morphe_loop_count_title">I-enable ang bilang ng loop</string>
+  <string name="morphe_loop_count_summary">Ang More menu ng player ay nagpapakita ng Loop count sa tabi ng Loop video, upang piliin kung ilang beses ipe-play ang video bago ang susunod na video</string>
+  <string name="morphe_loop_count_playlists_title">I-save ang loop count sa mga playlist</string>
+  <string name="morphe_loop_count_playlists_summary">Ang bawat video ng isang playlist ay nagpapanatili ng loop count na pinili mo, at bumubukas ang Loop video kapag ipe-play itong muli ng playlist. Kung naka-off, ang loop count ay para lamang sa video na pinu-play ngayon</string>
+  <string name="morphe_loop_count_clear_title">Burahin ang mga naka-save na loop count</string>
+  <string name="morphe_loop_count_clear_summary">Kalimutan ang mga loop count na naka-save sa iyong mga playlist. Mga naka-save na video: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Walang mga naka-save na loop count</string>
+  <string name="morphe_loop_count_clear_dialog_title">Burahin ang mga naka-save na loop count?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Ang mga video ng iyong mga playlist ay kakalimutan ang kanilang loop count, at ang Loop video ay hindi na bubukas kapag pinu-play sila ng isang playlist</string>
+  <string name="morphe_loop_count_clear_done">Nabura na ang mga naka-save na loop count</string>
+  <string name="morphe_loop_count_flyout_name">Bilang ng loop</string>
+  <string name="morphe_loop_count_dialog_message">Ilang beses i-pe-play ang video bago ang susunod na video, mula %1$s hanggang %2$s. Iwanang bakante para i-loop ang video nang walang limitasyon.</string>
+  <string name="morphe_loop_count_times">%s beses</string>
+  <string name="morphe_loop_count_no_limit">Walang limitasyon</string>
+  <string name="morphe_loop_count_decrease">Mas kaunting beses</string>
+  <string name="morphe_loop_count_increase">Mas maraming beses</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Ipakita ang button na Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Ipakita ang menu ng Picture-in-Picture</string>
@@ -1113,6 +1132,10 @@ Upang ipakita ang menu na 'Audio Track', baguhin ang 'I-spoof ang mga video stre
   <string name="morphe_enhanced_ambient_mode_summary">Nililiwanagan ang buong watch page at ang mga black bar kasabay ng video, bilang kapalit ng Ambient mode</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Panatilihing nababasa ang text</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Pinapahina ang liwanag sa mga maliwanag na video para manatiling nababasa ang text sa page</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Palamlam habang nag-i-scroll</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Pinapalamlam ang ilaw habang naitutulak o hinahawakan ang pahina</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Tagal ng paglamlam</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Kung gaano katagal mananatiling palamlam ang ilaw pagkatapos huminto ang pag-i-scroll. Kapag 0, pag-i-scroll lamang ang nagpapalamlam sa ilaw, at babalik ito agad kapag huminto ang pag-i-scroll</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Itago ang mga card ng impormasyon</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Upang ipakita ang menu na 'Audio Track', baguhin ang 'I-spoof ang mga video stre
   <string name="morphe_hide_shorts_subscriptions_title">Itago sa Subscriptions feed</string>
   <string name="morphe_hide_shorts_video_description_title">Itago sa video description</string>
   <string name="morphe_hide_shorts_history_title">Itago sa kasaysayan ng panonood</string>
+  <string name="morphe_hide_shorts_notifications_title">Itago sa mga push notification</string>
   <string name="morphe_shorts_player_screen_title">Player ng Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Pumili kung aling mga component ang lalabas sa Shorts player</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">I-disable ang double-tap to like</string>

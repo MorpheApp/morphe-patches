@@ -649,6 +649,24 @@ Ein API-Key sollte niemals weitergegeben werden! Jeder mit Zugriff darauf kann d
   <string name="morphe_loop_video_range_clear">Löschen</string>
   <string name="morphe_loop_video_range_toast_on">Wiederholung von %1$s bis %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ungültiger Zeitbereich</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Wiederholungszahl</string>
+  <string name="morphe_loop_count_screen_summary">Wählen Sie aus, wie oft ein Video wiederholt wird, bevor das nächste Video abgespielt wird</string>
+  <string name="morphe_loop_count_title">Wiederholungszahl aktivieren</string>
+  <string name="morphe_loop_count_summary">Das „Mehr“-Menü des Players zeigt die Loop-Anzahl neben „Video wiederholen“ an, um auszuwählen, wie oft das Video abgespielt wird, bevor das nächste Video startet</string>
+  <string name="morphe_loop_count_playlists_title">Loop-Anzahl in Playlists speichern</string>
+  <string name="morphe_loop_count_playlists_summary">Jedes Video einer Playlist behält die von Ihnen gewählte Loop-Anzahl bei, und „Video wiederholen“ wird aktiviert, wenn die Playlist es erneut abspielt. Wenn dies deaktiviert ist, gilt die Loop-Anzahl nur für das aktuell abgespielte Video</string>
+  <string name="morphe_loop_count_clear_title">Gespeicherte Loop-Anzahlen löschen</string>
+  <string name="morphe_loop_count_clear_summary">Vergessen Sie die in Ihren Playlists gespeicherten Loop-Anzahlen. Gespeicherte Videos: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Es sind keine Loop-Anzahlen gespeichert</string>
+  <string name="morphe_loop_count_clear_dialog_title">Gespeicherte Loop-Anzahlen löschen?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Die Videos Ihrer Playlists vergessen ihre Loop-Anzahl, und „Video wiederholen“ wird nicht mehr aktiviert, wenn eine Playlist sie abspielt</string>
+  <string name="morphe_loop_count_clear_done">Gespeicherte Loop-Anzahlen gelöscht</string>
+  <string name="morphe_loop_count_flyout_name">Loop-Anzahl</string>
+  <string name="morphe_loop_count_dialog_message">Wie oft das Video abgespielt wird, bevor das nächste Video startet, von %1$s bis %2$s. Leer lassen, um das Video ohne Limit zu loopen.</string>
+  <string name="morphe_loop_count_no_limit">Kein Limit</string>
+  <string name="morphe_loop_count_decrease">Weniger oft</string>
+  <string name="morphe_loop_count_increase">Häufiger</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Bild-im-Bild-Schaltfläche anzeigen</string>
   <string name="morphe_pip_button_flyout_title">Bild-im-Bild-Menü anzeigen</string>
@@ -1114,6 +1132,10 @@ Um das Menü anzuzeigen, ändere \"Video-Streams vortäuschen\" in einen beliebi
   <string name="morphe_enhanced_ambient_mode_summary">Beleuchtet die gesamte Wiedergabeseite und die schwarzen Balken mit dem Video anstelle des Ambient-Modus</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Text lesbar halten</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dimmt das Licht bei hellen Videos, damit der Text auf der Seite lesbar bleibt</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Beim Scrollen dimmen</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Dimmt das Licht, während die Seite gescrollt oder berührt wird</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Dimm-Dauer</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Wie lange das Licht nach dem Scrollstopp gedimmt bleibt. Bei 0 wird das Licht nur während des Scrollens gedimmt und kehrt sofort zurück, sobald das Scrollen stoppt</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Infokarten ausblenden</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1134,6 +1156,7 @@ Um das Menü anzuzeigen, ändere \"Video-Streams vortäuschen\" in einen beliebi
   <string name="morphe_hide_shorts_subscriptions_title">In Abos-Feed ausblenden</string>
   <string name="morphe_hide_shorts_video_description_title">In der Videobeschreibung ausblenden</string>
   <string name="morphe_hide_shorts_history_title">Im Wiedergabeverlauf ausblenden</string>
+  <string name="morphe_hide_shorts_notifications_title">In Push-Benachrichtigungen ausblenden</string>
   <string name="morphe_shorts_player_screen_title">Shorts-Player</string>
   <string name="morphe_shorts_player_screen_summary">Wählen Sie, welche Schaltflächen im Shorts-Player angezeigt werden sollen</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Doppeltippen zum Liken deaktivieren</string>

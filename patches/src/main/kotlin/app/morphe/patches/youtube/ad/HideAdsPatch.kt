@@ -33,6 +33,7 @@ import app.morphe.patches.youtube.misc.engagement.addEngagementPanelIdHook
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -105,6 +106,25 @@ val hideAdsPatch = patch(
                     move-result v0
                     if-eqz v0, :show_video_ads
                     return-void
+                    :show_video_ads
+                    nop
+                """
+            )
+        }
+
+        // The player defers the start of playback until the player bytes ad slot is
+        // scheduled. The hooks above stop the slot from ever being scheduled, so the
+        // deferral is never released and the video never starts. Skip the deferral.
+        if (is_21_25_or_greater) {
+            PlayerBytesAdSchedulingFingerprint.method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->hideVideoAds()Z
+                    move-result v0
+                    if-eqz v0, :show_video_ads
+                    invoke-static { }, Lj$/util/Optional;->empty()Lj$/util/Optional;
+                    move-result-object v0
+                    return-object v0
                     :show_video_ads
                     nop
                 """

@@ -648,6 +648,24 @@ La tua chiave API non deve mai essere condivisa. Chiunque vi abbia accesso può 
   <string name="morphe_loop_video_range_clear">Disattiva</string>
   <string name="morphe_loop_video_range_toast_on">Ripetizione impostata da %1$s a %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Intervallo di tempo non valido</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Conteggio ripetizioni</string>
+  <string name="morphe_loop_count_screen_summary">Scegli quante volte un video deve essere ripetuto prima del video successivo</string>
+  <string name="morphe_loop_count_title">Abilita conteggio ripetizioni</string>
+  <string name="morphe_loop_count_summary">Il menu Altro del player mostra il numero di loop accanto a Ripeti video, per scegliere quante volte il video deve essere riprodotto prima del video successivo</string>
+  <string name="morphe_loop_count_playlists_title">Salva il numero di loop nelle playlist</string>
+  <string name="morphe_loop_count_playlists_summary">Ogni video di una playlist mantiene il numero di loop scelto, e Ripeti video si attiva quando la playlist lo riproduce nuovamente. Se disattivato, il numero di loop è valido solo per il video in riproduzione</string>
+  <string name="morphe_loop_count_clear_title">Cancella i numeri di loop salvati</string>
+  <string name="morphe_loop_count_clear_summary">Rimuovi i numeri di loop salvati nelle tue playlist. Video salvati: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Nessun numero di loop salvato</string>
+  <string name="morphe_loop_count_clear_dialog_title">Cancella i numeri di loop salvati?</string>
+  <string name="morphe_loop_count_clear_dialog_message">I video delle tue playlist dimenticheranno il numero di loop e Ripeti video non si attiverà più quando una playlist li riprodurrà</string>
+  <string name="morphe_loop_count_clear_done">Numeri di loop salvati cancellati</string>
+  <string name="morphe_loop_count_flyout_name">Conteggio loop</string>
+  <string name="morphe_loop_count_dialog_message">Quante volte il video viene riprodotto prima del video successivo, da %1$s a %2$s. Lascia vuoto per riprodurre il video in loop senza limiti.</string>
+  <string name="morphe_loop_count_no_limit">Senza limiti</string>
+  <string name="morphe_loop_count_decrease">Meno volte</string>
+  <string name="morphe_loop_count_increase">Più volte</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Mostra il pulsante Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Mostra il menu Picture-in-Picture</string>
@@ -1113,6 +1131,10 @@ Per mostrare il menu 'Audio Track', cambia 'Falsificazione dei flussi video' in 
   <string name="morphe_enhanced_ambient_mode_summary">Illumina l\'intera pagina di riproduzione e le barre nere con il video, al posto della modalità Ambient</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantieni il testo leggibile</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Attenua la luce nei video luminosi affinché il testo sulla pagina rimanga leggibile</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Scurisci durante lo scorrimento</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Scurisce la luce mentre la pagina viene scorsa o toccata</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Durata oscuramento</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Quanto tempo la luce rimane attenuata dopo che lo scorrimento si interrompe. Con 0, solo lo scorrimento attenua la luce, che ritorna non appena lo scorrimento si ferma</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Nascondi schede informative</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Per mostrare il menu 'Audio Track', cambia 'Falsificazione dei flussi video' in 
   <string name="morphe_hide_shorts_subscriptions_title">Nascondi nel feed Iscrizioni</string>
   <string name="morphe_hide_shorts_video_description_title">Nascondi nella descrizione del video</string>
   <string name="morphe_hide_shorts_history_title">Nascondi nella cronologia visualizzazioni</string>
+  <string name="morphe_hide_shorts_notifications_title">Nascondi nelle notifiche push</string>
   <string name="morphe_shorts_player_screen_title">Player Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Scegli quali componenti mostrare nel lettore Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Disabilita il doppio tocco per mettere Mi piace</string>

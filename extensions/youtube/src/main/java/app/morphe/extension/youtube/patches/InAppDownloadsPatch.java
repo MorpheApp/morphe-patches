@@ -26,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerGestureConfig;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.shared.spoof.ClientType;
@@ -353,8 +354,16 @@ public final class InAppDownloadsPatch {
             OfflinePlayerConfig playerConfig = original.hasPlayerConfig()
                     ? original.getPlayerConfig()
                     : builder.getPlayerConfig();
-            builder.setPlayerConfig(playerConfig.toBuilder().setExoPlayerConfig(
-                    playerConfig.getExoPlayerConfig().toBuilder()
+            PlayerGestureConfig.Builder gestures = playerConfig.getPlayerGestureConfig().toBuilder();
+            if (!gestures.hasDownAndOutPortraitAllowed()) {
+                gestures.setDownAndOutPortraitAllowed(true);
+            }
+            if (!gestures.hasDownAndOutLandscapeAllowed()) {
+                gestures.setDownAndOutLandscapeAllowed(true);
+            }
+            builder.setPlayerConfig(playerConfig.toBuilder()
+                    .setPlayerGestureConfig(gestures)
+                    .setExoPlayerConfig(playerConfig.getExoPlayerConfig().toBuilder()
                             .setUseExoPlayer(true)
                             .setEnableVariableSpeedPlayback(true)));
 
@@ -410,6 +419,37 @@ public final class InAppDownloadsPatch {
                 .setPolicyLifetimeSeconds(OFFLINE_POLICY_LIFETIME_SECONDS)
                 .setAction(OfflineStateAction.OFFLINE_STATE_ACTION_OK)
                 .build();
+    }
+
+    /**
+     * Implemented by the app class that loads the player response of saved videos.
+     */
+    public interface OfflinePlaybackWorker {
+        /**
+         * Sets the start time of a saved video played from Downloads
+         * to the position saved in its Downloads entry.
+         *
+         * @param descriptor     Playback start descriptor.
+         * @param playerResponse Player response model of the saved video.
+         */
+        void patch_setDownloadStartTime(Object descriptor, @Nullable Object playerResponse);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the player response of a saved video is loaded. The play command of a Downloads card
+     * keeps the position from when the card was built, and the app can use an older position than the
+     * one saved in Downloads, so a saved video can start at 0:00 or at an older position.
+     */
+    public static void setDownloadStartTime(OfflinePlaybackWorker worker,
+                                            Object descriptor,
+                                            @Nullable Object playerResponse) {
+        try {
+            worker.patch_setDownloadStartTime(descriptor, playerResponse);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setDownloadStartTime failure", ex);
+        }
     }
 
     /**

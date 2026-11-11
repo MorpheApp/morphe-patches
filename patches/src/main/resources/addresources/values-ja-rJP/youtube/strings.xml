@@ -488,7 +488,7 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <!-- interaction.posttranslate.postTranslatePatch -->
   <string name="morphe_post_translate_title">投稿を翻訳</string>
   <string name="morphe_post_translate_summary">コンテンツ クリエイターの投稿を翻訳するためのフライアウト メニュー項目を追加します</string>
-  <string name="morphe_post_translate_language_title">投稿の翻訳言語</string>
+  <string name="morphe_post_translate_language_title">投稿を翻訳する先の言語</string>
   <string name="morphe_post_translate_flyout">翻訳</string>
   <string name="morphe_post_translate_flyout_original">原文を表示</string>
   <string name="morphe_post_translate_started">翻訳中…</string>
@@ -496,11 +496,11 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_post_translate_same_language">投稿はすでに翻訳先の言語で記述されています</string>
   <!-- interaction.onthego.onTheGoPatch -->
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_title">外出先で Morphe を有効にする</string>
+  <string name="morphe_on_the_go_title">Morphe の外出先モードを有効化</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_summary">プレーヤーのフライアウトにある「外出先で」を選択すると、Morphe のカスタムプレーヤーコントロールが開きます</string>
+  <string name="morphe_on_the_go_summary">プレーヤーのフライアウト メニューの「外出先」をタップしたときに、Morphe がカスタマイズした外出先モードのプレーヤー コントロールを開きます</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_panel_title">外出先で</string>
+  <string name="morphe_on_the_go_panel_title">外出先</string>
   <string name="morphe_on_the_go_audio_mode">オーディオモードに切り替える</string>
   <string name="morphe_on_the_go_video_mode">ビデオモードに切り替える</string>
   <string name="morphe_on_the_go_download">ダウンロード</string>
@@ -649,6 +649,25 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_loop_video_range_clear">消去</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s をリピートします</string>
   <string name="morphe_loop_video_range_invalid_time">無効なリピート区間です</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">ループ回数</string>
+  <string name="morphe_loop_count_screen_summary">次の動画に移動するまでに、動画を何回ループさせるかを選択してください</string>
+  <string name="morphe_loop_count_title">ループ回数を有効にする</string>
+  <string name="morphe_loop_count_summary">プレーヤーの「詳細」メニューの「動画をループ」の隣に「ループ回数」が表示され、次の動画に移動する前に動画を何回再生するかを選択できます</string>
+  <string name="morphe_loop_count_playlists_title">プレイリストにループ回数を保存</string>
+  <string name="morphe_loop_count_playlists_summary">プレイリストの各動画に選択したループ回数が保持され、プレイリストでその動画が再度再生されるときに「動画をループ」がオンになります。オフにした場合、ループ回数は現在再生中の動画にのみ適用されます</string>
+  <string name="morphe_loop_count_clear_title">保存済みのループ回数を消去</string>
+  <string name="morphe_loop_count_clear_summary">プレイリストに保存されたループ回数を消去します。保存済み動画数: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">保存されたループ回数はありません</string>
+  <string name="morphe_loop_count_clear_dialog_title">保存済みのループ回数を消去しますか？</string>
+  <string name="morphe_loop_count_clear_dialog_message">プレイリストの動画に保存されていたループ回数が消去され、プレイリストで再生されるときに「動画をループ」が自動的にオンにならなくなります</string>
+  <string name="morphe_loop_count_clear_done">保存済みのループ回数を消去しました</string>
+  <string name="morphe_loop_count_flyout_name">ループ回数</string>
+  <string name="morphe_loop_count_dialog_message">次の動画が再生されるまでに動画を何回再生するかを指定します。%1$sから%2$sまで。空欄にすると、制限なく動画をループ再生します</string>
+  <string name="morphe_loop_count_times">%s 回</string>
+  <string name="morphe_loop_count_no_limit">制限なし</string>
+  <string name="morphe_loop_count_decrease">回数を減らす</string>
+  <string name="morphe_loop_count_increase">回数を増やす</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">ピクチャー イン ピクチャー ボタンを表示</string>
   <string name="morphe_pip_button_flyout_title">「ピクチャー イン ピクチャーで再生」を表示</string>
@@ -1069,7 +1088,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_loop_video_title">「動画のループ再生」を非表示</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_on_the_go_title">「オーディオ」を非表示</string>
+  <string name="morphe_hide_player_flyout_on_the_go_title">「外出先」を非表示</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">「画質」を非表示</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">画質メニューの脚注を非表示</string>
@@ -1114,6 +1133,10 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_enhanced_ambient_mode_summary">アンビエント モードの代わりに、動画に合わせて再生ページ全体と黒いバーを照らします</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">テキストの可読性を維持</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">明るい動画の光を抑え、ページ上のテキストが読みやすい状態を維持します</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">スクロール中に暗くする</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">ページをスクロールまたはタッチしている間、ライトを暗くします</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">暗くする時間</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">スクロールが停止した後、ライトが暗いままになる時間です。0に設定すると、スクロール中のみライトが暗くなり、停止するとすぐに元の明るさに戻ります</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">プレーヤー画面の情報カードを非表示</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1134,6 +1157,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_shorts_subscriptions_title">登録チャンネル フィードで非表示</string>
   <string name="morphe_hide_shorts_video_description_title">動画の概要欄で非表示</string>
   <string name="morphe_hide_shorts_history_title">再生履歴で非表示</string>
+  <string name="morphe_hide_shorts_notifications_title">プッシュ通知で非表示にする</string>
   <string name="morphe_shorts_player_screen_title">ショート プレーヤー</string>
   <string name="morphe_shorts_player_screen_summary">ショート プレーヤーに表示するコンポーネントを設定します</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">ダブルタップによる高評価を無効化</string>
@@ -1838,9 +1862,9 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_live_chat_translate_exclude_summary">id、en のようにカンマで区切った言語コードを入力してください。これらの言語のメッセージは翻訳されません</string>
   <string name="morphe_live_chat_translate_provider_title">翻訳サービス</string>
   <string name="morphe_live_chat_translate_provider_google">Google 翻訳</string>
-  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
-  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL APIキー</string>
-  <string name="morphe_live_chat_translate_deepl_api_key_summary">DeepL APIキー。キーの月間制限に達した場合など、DeepLで失敗した場合はGoogle翻訳が使用されます</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL 翻訳</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API キー</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">DeepL API キーを入力してください。キーの月間利用制限に達した場合など、DeepL 翻訳が利用できないときは Google 翻訳が使用されます</string>
   <string name="morphe_live_chat_translate_copy_button_title">メッセージのコピーボタンを表示</string>
   <string name="morphe_live_chat_translate_copy_button_summary">すべてのチャットメッセージに小さなコピーボタンを追加します</string>
   <string name="morphe_live_chat_translate_copied">メッセージをクリップボードにコピーしました</string>

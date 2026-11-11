@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">የድምፅ/ቪዲዮ መቀያየሪያን አብራ</string>
   <string name="morphe_music_enable_audio_video_switch_summary">የድምፅ ትራክ ስሪት እና ይፋዊ የሙዚቃ ቪዲዮን ለመቀያየር ይሞክሩ</string>
+  <string name="morphe_music_auto_song_version_title">ሁልጊዜ የዘፈኑን ስሪት አጫውት</string>
+  <string name="morphe_music_auto_song_version_summary">በቅድሚያ በተደረጀው ዝርዝር ውስጥ ያሉ ይፋዊ የሙዚቃ ቪዲዮዎችን ተዛማጅ ከሆነው ዘፈን ይተካቸዋል። ይህ \'የሙዚቃ ቪዲዮዎችን አታጫውት\' የሚለው መተግበሪያ ቅንብር እንዲበራ ያደርጋል። ትክክለኛ ተዛማጅ የሌላቸው ትራኮች ሳይለወጡ ይቆያሉ</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">የሙዚቃ ቪዲዮዎችን፣ ፖድካስቶችን ወይም ዘፈኖችን በሶስተኛ ወገን ማውረጃ አፕሊኬሽኖች ያውርዱ</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">የድጋሚ ማጫወቻ ቁልፍን ደብቅ</string>
   <string name="morphe_music_hide_shuffle_button_title">የመቀላቀያ ቁልፍን ደብቅ</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">የ\'ፈጣን ጥሪ\' መደርደሪያን ደብቅ</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">\'ሊወዱ ይችላሉ\' የሚለውን ክፍል ደብቅ</string>
   <string name="morphe_music_comments_screen_title">አስተያየቶች</string>
   <string name="morphe_music_comments_screen_summary">በአስተያየት ክፍል ውስጥ የትኞቹ ክፍሎች እንዲታዩ እንደሚፈልጉ ይምረጡ</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">የማህበረሰብ መመሪያዎችን ደብቅ</string>
@@ -335,6 +338,9 @@ SABR የመጫወቻ ሂደት (የቪዲዮ ስትሪሞች ማስመሰል ጠ
   <string name="morphe_music_playback_speed_title">የማጫወት ፍጥነት</string>
   <string name="morphe_music_playback_speed_summary">ለሁሉም ትራኮች የሚያገለግል ፍጥነት። በ100% ላይ የመተግበሪያው ፍጥነት ጥቅም ላይ ይውላል፣ ለምሳሌ የፖድካስት ማጫወቻ ፍጥነት</string>
   <string name="morphe_music_playback_speed_change_pitch_title">ፒችን በፍጥነት ይቀይሩ</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">የድምፅ ዳኪንግን አጥፋ</string>
+  <string name="morphe_music_disable_audio_ducking_summary">ሌላ መተግበሪያ እንደ ማሳወቂያ ያለ አጭር ድምፅ ሲያጫውት የድምፅ መጠን አይቀንስም</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">የአለመውደድ ዝላይን አጥፋ</string>
   <string name="morphe_music_disable_dislike_redirection_summary">የማይወዱ ቁልፍ ሲጫን ወደ ቀጣዩ ሙዚቃ እንዳይዘለል ይከላከላል</string>
@@ -492,16 +498,42 @@ SABR የመጫወቻ ሂደት (የቪዲዮ ስትሪሞች ማስመሰል ጠ
   <string name="morphe_music_hide_navigation_bar_labels_title">የአሰሳ ቁልፍ ስሞችን ደብቅ</string>
   <string name="morphe_music_navigation_bar_glass_title">የመስታወት የናቪጌሽን ባርን ያብሩ</string>
   <string name="morphe_music_navigation_bar_glass_summary">የአሰሳ አሞሌውን እንደ ተንሳፋሪ፣ ክብ እና ግልጽ ካፕሱል ያሳያል</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">የብርጭቆ ጥርሙስ</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">የብርጭቆ አሰሳ አሞሌውን የግልጽነት ደረጃ ያስተካክሉ (0 ግልጽ ነው፣ 100 ደግሞ የማይበጥስ ነው)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">ቀለል ያለ ብርጭቆ</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">ለቀለል ያለ እና ጥራቱን የጠበቀ ብርጭቆ የብርጭቆ አሰሳ አሞሌውን ከጥቁር ይልቅ በነጭ ቀለም ይለውጣል</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">የብርጭቆ አሰሳ አሞሌ መጠን</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">የብርጭቆ አሰሳ አሞሌውን ቁመት፣ ስፋት እና የቁልፎች ክፍተት በቅድመ እይታ ያስተካክሉ፤ በስክሪኑ ስፋት ውስጥ የማይገቡ ቁልፎች ተደብቀዋል</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">የብርጭቆ ናቪጌሽን ባር መጠን እና ስታይል</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">የብርጭቆ ናቪጌሽን ባርን ቁመት፣ ስፋት፣ የቁልፎች ክፍተት፣ ግልጽነት እና የጠርዙን ብርሃን በቅድመ እይታ ያስተካክሉ። በስክሪኑ ስፋት ውስጥ የማይገቡ ቁልፎች ይደበቃሉ</string>
   <string name="morphe_music_navigation_bar_glass_size_height">ቁመት</string>
   <string name="morphe_music_navigation_bar_glass_size_width">ከፍተኛ ስፋት</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">የቁልፍ ክፍተት</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">የታዩ ቁልፎች፦ %1$s ከ %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">ግልጽነት</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">የጠርዝ ብርሃን</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">የብርጭቆ ብዥታ</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">ከብርጭቆ ናቪጌሽን ባር በስተጀርባ ያለው ገጽ ምን ያህል እንደሚደበዝዝ ይወስናል (Android 14 እና ከዚያ በላይ)። በ 0 ላይ ገጹ በግልጽ ይታያል፣ ከ Android 14 በፊት ግን ገጹ ተሸፍኗል</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">ቀለል ያለ ብርጭቆ</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">ለቀለል ያለ እና ጥራቱን የጠበቀ ብርጭቆ የብርጭቆ አሰሳ አሞሌውን ከጥቁር ይልቅ በነጭ ቀለም ይለውጣል</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">የአልበም ጥበብ ቀለም ቅብ</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">የብርጭቆ ናቪጌሽን ባርን በሚጫወተው ዘፈን የአልበም ጥበብ ቀለም ይቀባዋል</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">የተመረጠው ቁልፍ አመላካች ደብቅ</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">በብርጭቆ ናቪጌሽን ባር ከተመረጠው ቁልፍ በስተጀርባ ያለውን ክብ highlighting ያጠፋል</string>
+  <string name="morphe_music_miniplayer_screen_title">ሚኒፕሌየር</string>
+  <string name="morphe_music_miniplayer_screen_summary">የሚኒፕሌየሩን ስታይል፣ ቁልፎች እና የምልክት ትዕዛዞችን ይቀይሩ</string>
+  <string name="morphe_music_miniplayer_glass_title">የብርጭቆ ሚኒፕሌየርን አግብያ</string>
+  <string name="morphe_music_miniplayer_glass_summary">ተንሳፋፊውን ሚኒፕሌየር እንደ ክብ፣ ግልጽ የብርጭቆ ካርድ አድርጎ ያሳየዋል</string>
+  <string name="morphe_music_miniplayer_glass_style_title">የብርጭቆ ሚኒፕሌየር ስታይል</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">የብርጭቆ ሚኒፕሌየሩን የጥግ ክብነት፣ የጥበብ ስራ ክፍተት፣ የጠርዝ ብርሃን እና ግልጽነት በቅድመ እይታ ያስተካክሉ</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">የጥግ ራዲየስ</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">የጥበብ ስራ ክፍተት</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">የጠርዝ ብርሃን</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">ግልጽነት</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">የብርጭቆ ብዥታ</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">ከብርጭቆ ሚኒፕሌየር በስተጀርባ ያለው ገጽ ምን ያህል እንደሚደበዝዝ ይወስናል (Android 14 እና ከዚያ በላይ)። በ 0 ላይ ገጹ በግልጽ ይታያል፣ ከ Android 14 በፊት ግን ገጹ ተሸፍኗል</string>
+  <string name="morphe_music_miniplayer_glass_light_title">ቀላል ብርጭቆ</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">ለቀለል ያለ እና ጥርት ያለ ብርጭቆ እንዲሆን የብርጭቆ ሚኒፕሌየሩን ከጥቁር ይልቅ ነጭ ቀለም ይቀባዋል</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">የአልበም ጥበብ ቀለም ቅብ</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">የብርጭቆ ሚኒፕሌየሩን በሚጫወተው ዘፈን የአልበም ጥበብ ቀለም ይቀባዋል</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">ተሽከርካሪ የጥበብ ስራ</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">የብርጭቆ ሚኒፕሌየር የጥበብ ስራን ክብ ያደርገዋል፣ እና ዘፈን በሚጫወትበት ጊዜ እንደ ሪከርድ ያሽከረክረዋል</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">የሂደት አሞልል ስምበርን ደብቅ</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">በብርጭቆ ሚኒፕሌየር ታችኛው ክፍል ላይ ያለውን የሂደት አሞልል ስምበር ይደብቃል</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">መነሻ</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">ናሙናዎች</string>
@@ -722,6 +754,8 @@ Rime Wordlist ሊያነባቸው የሚገቡትን ዝርዝሮች ምልክት
   <string name="morphe_music_lyrics_show_translate_button_summary">ትርጉሙን ለማብራት/ለማጥፋት ይጫኑ፤ ለትርጉም ብቻ ለረጅም ጊዜ ተጭነው ይያዙ። በዚህ ዝርዝር መሰረት የነቁ የትርጉም አቅራቢዎችን ይጠቀማል</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">ሮማናይዝ ወይም ትራንስሊተሬት የሚለውን ቁልፍ አሳይ</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">ሮማናይዜሽንን ወይም ትራንስሊተሬሽንን ለማብራት/ለማጥፋት ይጫኑ፤ ለሮማናይዜሽን ወይም ለትራንስሊተሬሽን ብቻ ለረጅም ጊዜ ተጭነው ይያዙ። በዚህ ዝርዝር መሰረት የነቁ ሮማናይዜሽን አቅራቢዎችን ይጠቀማል</string>
+  <string name="morphe_music_lyrics_show_current_button_title">የአሁኑን ቁልፍ አሳይ</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">ግጥሞቹን በእጅ በሚያሸራትቱበት ጊዜ፣ ወደ እየተዘመረው መስመር የሚመልስ ቁልፍ ያሳያል</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">ትራንስሊተሬሽንን ያብሩ</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">ከግጥሞቹ ምንጭ የላቲን ያልሆኑ ንባቦችን ይፍቀዱ፤ ሲጠፋ የላቲን ፊደላትን፣ የድምፅ ምልክት ያላቸውን ፊደላት እና የድምፅ አሃዞችን ብቻ ያስቀራል</string>
   <string name="morphe_music_lyrics_local_romanization_summary">የተወሰነ ጊዜ ያላቸውን ግጥሞች እያንዳንዱን ቃል ያነባል (የቃል ማመሳሰል በርቷል)፤ ለኮሪያኛ ምንም ዓይነት ማውረድ አያስፈልግም፤ አሥራ አራት ስክሪፕቶች አንድ የ CLDR ማውረድን ይጠቀማሉ፤ የ Han ቁምፊዎች በ Rime Wordlist የቃላት ሰንጠረዥ ቋንቋውን በሚሸፍንበት ጊዜ ይነበባሉ</string>
@@ -745,6 +779,12 @@ Rime Wordlist ሊያነባቸው የሚገቡትን ዝርዝሮች ምልክት
   <string name="morphe_music_lyrics_written_by">በ%s የተጻፈ</string>
   <string name="morphe_music_lyrics_word_sync_title">የተቀናጁ ቃላትን ወይም የድምፅ ክፍሎችን አድምቀው ያሳዩ</string>
   <string name="morphe_music_lyrics_word_sync_summary">ቃላት በቃላት የሚገለጹ ግጥሞች በሚኖሩበት ጊዜ ቅድሚያ ይስጡ። ግጥሞቹ የቃላት ጊዜያትን የሚይዙ ከሆነ፣ እያንዳንዱን ቃል ወይም የድምፅ ክፍል ከሙዚቃው ጋር በተናበበ ጊዜ ያደምቃሉ</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">የስፕሪንግ ማሸራተትን ይጠቀሙ</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">ግጥሞቹን በስፕሪንግ ፊዚክስ ያሸራትታል፣ እና እያንዳንዱን መስመር ከላይ ካለው ትንሽ አግልሎ ያንቀሳቅሳል። ዝግተኛ በሆኑ መሳሪያዎች ላይ የባትሪ አጠቃቀምን ለመቀነስ ያጥፉት</string>
+  <string name="morphe_music_lyrics_gap_dots_title">የመሳሪያዎች የሙዚቃ እረፍት ነጥቦችን አሳይ дописавши ይመልከቱ</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">ረጅም የሙዚቃ እረፍት በሚኖርበት ጊዜ በመስመሮቹ መካከል ሶስት ነጥቦችን ያሳያል፣ እረፍቱ ሲያልቅም ነጥቦቹ ይሞላሉ</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">ርቀው የሚገኙ መስመሮችን የበለጠ አደበዝዝ</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">እያንዳንዱ ንቁ ያልሆነ መስመር ከሚዘመረው መስመር በራቀ ቁጥር የበለጠ ይደበዝዛል። ሲጠፋ ግን ሁሉም ንቁ ያልሆኑ መስመሮች በእኩል ይደበዝዛሉ</string>
   <string name="morphe_music_lyrics_line_scale_title">ንቁ ያልሆኑ መስመሮችን አሳንሱ</string>
   <string name="morphe_music_lyrics_line_scale_summary">በወቅቱ የማይዘመሩ መስመሮችን ሁሉ በትንሹ አሳንሶ ይስላል፣ እንዲሁም ብርሃናቸውን ያደበዝዛል</string>
   <string name="morphe_music_lyrics_split_background_title">የጀርባ ድምጾችን ለይቶ ያሳዩ</string>
@@ -834,6 +874,7 @@ Rime Wordlist ሊያነባቸው የሚገቡትን ዝርዝሮች ምልክት
   <string name="morphe_music_lyrics_romanize_only">ሮማናይዝ አድርገው ብቻ</string>
   <string name="morphe_music_lyrics_dual_only">ሁለገብ ሁነታ</string>
   <string name="morphe_music_lyrics_copied">ወደ ክሊፕቦርድ ተቀድቷል</string>
+  <string name="morphe_music_lyrics_current">አሁን ያለ</string>
   <string name="morphe_music_lyrics_refreshing">እየታደሰ ነው</string>
   <string name="morphe_music_lyrics_refreshed">ታድሷል</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API ቁልፍ</string>

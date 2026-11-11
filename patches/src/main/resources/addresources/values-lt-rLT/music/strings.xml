@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Įgalinti garso / vaizdo perjungimą</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Bandyti perjungti garso takelio versiją ir oficialų muzikinį vaizdo įrašą</string>
+  <string name="morphe_music_auto_song_version_title">Visada groti dainos versiją</string>
+  <string name="morphe_music_auto_song_version_summary">Pakeičia oficialius muzikos vaizdo įrašus eilėje atitinkama daina. Reikia, kad programos nustatymas „Negroti muzikos vaizdo įrašų“ būtų įjungtas. Takeliai be tikslaus sutapimo lieka nepakitinti</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Atsisiųskite muzikos vaizdo įrašus, tinklalaides ar dainas trečiųjų šalių atsisiuntimo programėlėmis</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -257,6 +259,7 @@ Jie atsisiunčiami po vieną, todėl tai gali užtrukti ilgai ir reikės apie %3
   <string name="morphe_music_hide_repeat_button_title">Slėpti kartojimo mygtuką</string>
   <string name="morphe_music_hide_shuffle_button_title">Slėpti maišymo mygtuką</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Slėpti „Spartusis rinkimas“ lentyną</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Slėpti skyrių „Jums taip pat gali patikti“</string>
   <string name="morphe_music_comments_screen_title">Komentarai</string>
   <string name="morphe_music_comments_screen_summary">Pasirinkite, kurie elementai rodomi komentarų skiltyje</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Slėpti bendruomenės gaires</string>
@@ -334,6 +337,9 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <string name="morphe_music_playback_speed_title">Atkūrimo greitis</string>
   <string name="morphe_music_playback_speed_summary">Greitis taikomas visiems kūriniams. Esant 100 % naudojamas programėlės greitis, pvz., tinklalaidės atkūrimo greitis</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Keisti garso aukštį kartu su greičiu</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Išjungti garso primalėjimą</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Garsas nepamažinamas, kai kita programėlė groja trumpą garsą, pavyzdžiui, pranešimą</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Išjungti „Nepatinka“ peradresavimą</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Neleidžia peršokti prie kito kūrinio paspaudus „Nepatinka“ mygtuką</string>
@@ -491,16 +497,42 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Slėpti naršymo mygtukų etiketes</string>
   <string name="morphe_music_navigation_bar_glass_title">Įjungti stiklo stiliaus navigacijos juostą</string>
   <string name="morphe_music_navigation_bar_glass_summary">Rodo naršymo juostą kaip plauviančią, apvalintą, permatogią kapsulę</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Stiklo opacumas</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Pakoreguokite stiklinės naršymo juostos skaidrumo lygį (0 yra skaidrus, 100 yra nepermatomas)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Šviesus stiklas</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Dažo stiklinę naršymo juostą balta, o ne tamsia, kad stiklas būtų šviesesnis ir skaidresnis</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Stiklinės naršymo juostos dydis</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Su peržiūra pakoreguokite stiklinės naršymo juostos aukštį, plotį ir mygtukų atstumą. Mygtukai, kurie netilpinasi į ekrano plotį, yra paslėpti</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Stiklo navigacijos juostos dydis ir stilius</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Sureguliuokite stiklo navigacijos juostos aukštį, plotį, mygtukų atstumą, skaidrumą ir kraštų ryškumą su peržiūra. Mygtukai, kurie netelpa į ekrano plotį, yra paslėpti</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Aukštis</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Maksimalus plotis</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Mygtukų atstumas</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Rodomi mygtukai: %1$s iš %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Skaidrumas</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Kraštų ryškumas</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Stiklo dulnumas</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Kiek puslapis už stiklo navigacijos juostos yra sudulintas (Android 14 ir vėlesnės versijos). Nustatant 0, puslapis matomas ryškiai, o prieš Android 14 puslapis yra uždengtas</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Šviesus stiklas</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Dažo stiklinę naršymo juostą balta, o ne tamsia, kad stiklas būtų šviesesnis ir skaidresnis</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Albumo viršelio atspalvis</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Stiklo navigacijos juosta įspalvinta grojamais albumo viršelio spalvomis</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Slėpti pasirinkto mygtuko rodiklį</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Slėpia apvalų paryškinimą už pasirinkto stiklo navigacijos juostos mygtuko</string>
+  <string name="morphe_music_miniplayer_screen_title">Mini grotuvas</string>
+  <string name="morphe_music_miniplayer_screen_summary">Keiskite mini grotuvo stilių, mygtukus ir gestus</string>
+  <string name="morphe_music_miniplayer_glass_title">Įjungti stiklo mini grotuvą</string>
+  <string name="morphe_music_miniplayer_glass_summary">Rodo plauriančią mini grotuvą kaip apvalią, pusiau skaidrią stiklo kortelę</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Stiklo mini grotuvo stilius</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Sureguliuokite stiklo mini grotuvo kampų radius, viršelio atstumus, kraštų ryškumą ir skaidrumą su peržiūra</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Kampų radius</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Viršelio atstumai</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Kraštų ryškumas</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Skaidrumas</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Stiklo dulnumas</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Kiek puslapis už stiklo mini grotuvo yra sudulintas (Android 14 ir vėlesnės versijos). Nustatant 0, puslapis matomas ryškiai, o prieš Android 14 puslapis yra uždengtas</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Šviesus stiklas</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Stiklo mini grotuvas įspalvinamas balta, o ne tamsia, kad stiklas būtų šviesesnis ir airesnis</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumo viršelio atspalvis</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Stiklo mini grotuvas įspalvinamas grojamais albumo viršelio spalvomis</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Sukinąsias viršelis</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Padaro stiklo mini grotuvo viršelį apvalų ir sukrinta jį kaip plokštuką dainai groti</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Slėpti eigos juostą</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Slėpia eigos juostą stiklo mini grotuvo apačioje</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Pradžia</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Pavyzdžiai</string>
@@ -633,7 +665,7 @@ Pirmas stulpelis yra žodis, antras – jo tarimas; papildomi stulpeliai ir eilu
   <string name="morphe_music_lyrics_rime_dict_no_table">Viršutinei kalbai nepažymėtas joks Rime žodžių sąrašas. Bakstelėkite šį pavadinimą, kad pažymėtumėte vieną, arba pasirinkite kalbą, turinčią sąrašą</string>
   <string name="morphe_music_lyrics_rime_dict_add">Pridėti</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Pridėti Rime žodžių sąrašą</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml failas arba zipas laikantis vieno, su eilėmis kaip 字 ham ir 典 din2. Sąrašas gaunamas, kai išrenkate jį ir spustelėkite Išsaugoti, ir licencija yra jūsų tikrinti</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml failas arba zip archyvas su juo, kuriame yra eiles kaip 字 ham ir 典 din2. Sąrašas gaunamas pažymėjus jį ir paspaudus „Išsaugoti“, o jo licenciją turite patikrinti patys</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Kalbos kodas</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Du ar trys raidės, pvz., hak arba wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Pavadinimas</string>
@@ -721,6 +753,8 @@ Reikalingi slapukai: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_translate_button_summary">Bakstelėkite, kad perjungtumėte vertimą; ilgai paspauskite, kad gautumėte tik vertimą. Naudoja įgalintus vertimo tiekėjus jų nustatytąja tvarka</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Rodyti Transkripcijos arba Transliteravimo mygtuką</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Bakstelėkite, kad perjungtumėte transliteravimą arba transliteraciją; ilgai paspauskite, kad gautumėte tik transliteravimą arba transliteraciją. Naudoja įgalintus transliteravimo tiekėjus jų nustatytąja tvarka</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Rodyti dabartinį mygtuką</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Rodo mygtuką, kuris grąžina prie dainuojamos eilutės, kai dainos žodžiai scrolls rankiniu būdu</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Įjungti transliteravimą</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Leisti ne lotyniškus tarimus iš teksto šaltinio; kai išjungta, paliekamos tik lotyniškos raidės, raidės su diakritiniais ženklais ir tonų skaitmenys</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Skaito kiekvieną laiku suderintą dainų teksto žodį (žodžių sinchronizavimas įjungtas); korėjiečiams atsisiųsti nereikia; keturiolika raštų naudoja vieną bendrą CLDR atsisiuntimą; Han rašmenis skaito Rime žodynas, kai jo žodžių lentelė apima kalbą</string>
@@ -744,6 +778,12 @@ Reikalingi slapukai: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Parašė: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Paryškinti sinchronizuotus žodžius ar skiemenis</string>
   <string name="morphe_music_lyrics_word_sync_summary">Teikti pirmenybę žodis po žodžio sinchronizuotiems dainų tekstams, kai jie prieinami. Kai dainų tekstai turi žodžių laiką, kiekvienas žodis ar skiemuo paryškinamas pagal muziką</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Naudoti „spring“ ritinimą</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Ritina dainos žodžius naudojant „spring“ fiziką ir kiek paslepia kiekvieną eilutę po viršutinės. Išjunkite, kad sutaupytumėte baterijos lėtesniuose įrenginiuose</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Rodyti instrumentalios pertraukos taškus</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Rodo tris taškus tarp eilučių ilgos instrumentalios pertraukos metu, kurie užsipildoma pertraukai baigiantis</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Labiau priglaistyti tolesnes eilutes</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Labiau priglaistoma kiekviena neaktyvi eilutė, kuo ji toliau nuo dainuojamos eilutės. Išjungus, visos neaktyvios eilutės priglaistomos vienodai</string>
   <string name="morphe_music_lyrics_line_scale_title">Sumažinti neaktyvias eilutes</string>
   <string name="morphe_music_lyrics_line_scale_summary">Kiekviena dabar nedainuojama eilutė piešiama šiek tiek mažesnė, be to, dar ir pritemdoma</string>
   <string name="morphe_music_lyrics_split_background_title">Rodyti foninę vokalinę atskirai</string>
@@ -833,6 +873,7 @@ Taikoma abiems riboms. Nustatant 1,75, keturi pilno pločio simboliai skaičiuoj
   <string name="morphe_music_lyrics_romanize_only">Tik romanizuota</string>
   <string name="morphe_music_lyrics_dual_only">Dvigubas režimas</string>
   <string name="morphe_music_lyrics_copied">Nukopijuota į iškarpinę</string>
+  <string name="morphe_music_lyrics_current">Šis</string>
   <string name="morphe_music_lyrics_refreshing">Atnaujinama</string>
   <string name="morphe_music_lyrics_refreshed">Atnaujinta</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API raktas</string>

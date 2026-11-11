@@ -648,6 +648,24 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">Очистити</string>
   <string name="morphe_loop_video_range_toast_on">Повтор %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Недійсний діапазон часу</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Кількість повторів</string>
+  <string name="morphe_loop_count_screen_summary">Виберіть, скільки разів відео має повторитися перед наступним відео</string>
+  <string name="morphe_loop_count_title">Увімкнути кількість повторів</string>
+  <string name="morphe_loop_count_summary">У меню «Більше» плеєра поруч із пунктом «Повтор відео» відображається Кількість повторів, щоб вибрати, скільки разів відео відтворюватиметься перед наступним відео</string>
+  <string name="morphe_loop_count_playlists_title">Зберігати кількість повторів у плейлистах</string>
+  <string name="morphe_loop_count_playlists_summary">Кожне відео в плейлисті зберігає обрану вами кількість повторів, і функція «Повторити відео» вмикається, коли плейлист відтворює його знову. Якщо цю функцію вимкнути, кількість повторів діятиме лише для відео, що відтворюється зараз</string>
+  <string name="morphe_loop_count_clear_title">Очистити збережені значення повторів</string>
+  <string name="morphe_loop_count_clear_summary">Забудьте про кількість повторів, збережену у ваших плейлистах. Збережено відео: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Збережених значень повторів немає</string>
+  <string name="morphe_loop_count_clear_dialog_title">Очистити збережені значення повторів?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Відео у ваших плейлистах «забудуть» кількість повторів, і функція «Повторити відео» більше не вмикатиметься під час їхнього відтворення в плейлисті</string>
+  <string name="morphe_loop_count_clear_done">Збережені значення повторів очищено</string>
+  <string name="morphe_loop_count_flyout_name">Кількість повторів</string>
+  <string name="morphe_loop_count_dialog_message">Скільки разів відео відтворюється перед наступним відео, від %1$s до %2$s. Залиште поле порожнім, щоб зациклити відео без обмежень.</string>
+  <string name="morphe_loop_count_no_limit">Без обмежень</string>
+  <string name="morphe_loop_count_decrease">Менше разів</string>
+  <string name="morphe_loop_count_increase">Більше разів</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Показувати кнопку «Картинка в картинці»</string>
   <string name="morphe_pip_button_flyout_title">Показувати меню «Картинка в картинці»</string>
@@ -1113,6 +1131,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">Підсвічує всю сторінку перегляду та чорні смуги кольорами відео замість кінематографічного освітлення</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Зберігати читабельність тексту</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Приглушує підсвічування на яскравих відео, щоб текст на сторінці залишався читабельним</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Приглушувати під час прокручування</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Приглушує світло, коли сторінка прокручується або торкається</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Тривалість приглушення</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Як довго світло залишатиметься приглушеним після припинення прокручування. Якщо встановити 0, світло приглушуватиметься лише під час прокручування й повертатиметься одразу після його припинення</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Приховати підказки</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Приховати у стрічці підписок</string>
   <string name="morphe_hide_shorts_video_description_title">Приховати в описі відео</string>
   <string name="morphe_hide_shorts_history_title">Приховати в історії переглядів</string>
+  <string name="morphe_hide_shorts_notifications_title">Приховати в push-сповіщеннях</string>
   <string name="morphe_shorts_player_screen_title">Плеєр Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Виберіть, які компоненти будуть показуватися у плеєрі Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Вимкнути подвійне натискання для вподобання</string>

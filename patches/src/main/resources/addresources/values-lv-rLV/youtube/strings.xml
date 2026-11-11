@@ -648,6 +648,24 @@ Jūsu API atslēgu nekad nedrīkst kopīgot. Ikviens, kam ir piekļuve tai, var 
   <string name="morphe_loop_video_range_clear">Notīrīt</string>
   <string name="morphe_loop_video_range_toast_on">Atkārtots %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Kļūda laika diapazonā</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Atkārtojumu skaits</string>
+  <string name="morphe_loop_count_screen_summary">Izvēlieties, cik reizes video jāatkārto pirms nākamā video</string>
+  <string name="morphe_loop_count_title">Iespējot atkārtojumu skaitu</string>
+  <string name="morphe_loop_count_summary">Skaītāja \"Vairāk\" izvēlnē blakus opcijai \"Atskaidīt video\" tiek rādīts atskaidīšanas reižu skaits, lai izvēlētos, cik reizes video jāatskaidīšanas pirms nākamā video</string>
+  <string name="morphe_loop_count_playlists_title">Saglabāt atkārtošanās reizi sarakstos</string>
+  <string name="morphe_loop_count_playlists_summary">Katra saraksta video saglabā jūsu izvēlēto atkārtošanās reizi, un \"Atkārtot video\" tiek ieslēgts, kad saraksts to atkal atskaņo. Ja šī funkcija ir izslēgta, atkārtošanās reizēm ir tikai pašlaik atskaņotajam video</string>
+  <string name="morphe_loop_count_clear_title">Notīrīt saglabātās atkārtošanās reizes</string>
+  <string name="morphe_loop_count_clear_summary">Aizmirst atkārtošanās reizes, kas saglabātas jūsu sarakstos. Saglabātie video: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Neviena atkārtošanās reize nav saglabāta</string>
+  <string name="morphe_loop_count_clear_dialog_title">Notīrīt saglabātās atkārtošanās reizes?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Jūsu sarakstu video \"aizmirst\" savu atkārtošanās reizi, un \"Atkārtot video\" vairs netiks ieslēgts, kad saraksts tos atskaņo</string>
+  <string name="morphe_loop_count_clear_done">Saglabātās atkārtošanās reizes notīrītas</string>
+  <string name="morphe_loop_count_flyout_name">Atskaite cilpas</string>
+  <string name="morphe_loop_count_dialog_message">Cik reizes video tiek atskaņots pirms nākamā video, no %1$s līdz %2$s. Atstājiet tukšu, lai atkārtotu video bez ierobežojuma.</string>
+  <string name="morphe_loop_count_no_limit">Bez ierobežojuma</string>
+  <string name="morphe_loop_count_decrease">Mazāk reizes</string>
+  <string name="morphe_loop_count_increase">Vairāk reizes</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Rādīt pogu \"Attēls attēlā\"</string>
   <string name="morphe_pip_button_flyout_title">Rādīt izvēlni \"Attēls attēlā\"</string>
@@ -1113,6 +1131,10 @@ Lai rādītu izvēlni 'Audio Track', mainiet 'Spoof video streams' uz jebkuru kl
   <string name="morphe_enhanced_ambient_mode_summary">Apgaismo visu skatīšanas lapu un melnās joslas ar video, Ambient režīma vietā</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Sagatavot tekstu lasīšanai</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dimdimo gaismu gaišos video, lai teksts lapā paliktu lasāms</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Zabtums skrolējot</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Zabtums gaismu, kamēr lapa tiek skrolēta vai pieskarusies</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Zabtuma ilgums</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Cik ilgi gaisma paliek Затемnīta pēc skrolēšanas apturēšanas. Ja norādīts 0, gaismu Затемnī tikai skrolēšana, un tā atgriežas tūlīt pēc skrolēšanas apturēšanas</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Slēpt info kartes</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Lai rādītu izvēlni 'Audio Track', mainiet 'Spoof video streams' uz jebkuru kl
   <string name="morphe_hide_shorts_subscriptions_title">Nerādīt abonementu plūdumā</string>
   <string name="morphe_hide_shorts_video_description_title">Nerādīt video aprakstā</string>
   <string name="morphe_hide_shorts_history_title">Nerādīt skatīšanās vēsturē</string>
+  <string name="morphe_hide_shorts_notifications_title">Slēpt push paziņojumos</string>
   <string name="morphe_shorts_player_screen_title">Shorts atskaņotājs</string>
   <string name="morphe_shorts_player_screen_summary">Izvēlieties, kuras komponentes parādās Shorts plejerā</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Aizliegt dubulto pieskārumu, lai patiktu</string>

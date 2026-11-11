@@ -78,7 +78,6 @@ val addToQueuePatch = patch(
                         entryValuesKey = "morphe_queue_type_legacy_entry_values"
                     )
                 },
-                SwitchPreference("morphe_queue_add_flyout_menu", summary = true),
                 SwitchPreference("morphe_native_queue_fetch_on_scroll", summary = true)
             )
         )

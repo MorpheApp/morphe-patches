@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Аудио/видео шилжүүлэгчийг идэвхжүүлэх</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Аудио трекий хувилбар болон албан ёсны хөгжмийн клипийг шилжүүлж үзэх</string>
+  <string name="morphe_music_auto_song_version_title">Үргэлж дууны хувилбарыг тоглуулах</string>
+  <string name="morphe_music_auto_song_version_summary">Дарааллын албан ёсны хөгжмийн бичлэгүүдийг тохирох дуугаар сольж солино. Үүний тулд апп-ын \'Хөгжмийн бичлэгүүдийг тоглуулахгүй\' гэсэн тохиргоо идэвхтэй байх шаардлагатай. Яг таарсан хувилбаргүй дуунууд өөрчлөгдөөгүй хэвээр үлдэнэ</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Гуравдагч талын татаж авах аппликейшн ашиглан хөгжмийн бичлэг, подкаст эсвэл дуу татаж авах</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Давтах товчийг нуух</string>
   <string name="morphe_music_hide_shuffle_button_title">Холих товчийг нуух</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\"Хурдан залгах\" талбайг нуух</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">\'Танд бас таалагдаж магадгүй\' хэсгийг нуух</string>
   <string name="morphe_music_comments_screen_title">Сэтгэгдэл</string>
   <string name="morphe_music_comments_screen_summary">Сэтгэгдэл хэсэгт аль хэсгүүдийг харуулахыг сонгох</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Олон нийтийн удирдамжийг нуух</string>
@@ -335,6 +338,9 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_playback_speed_title">Тоглуулах хурд</string>
   <string name="morphe_music_playback_speed_summary">Бүх трект ашиглагдах хурд. 100% дээр аппликейшны хурд, жишээ нь подкаст тоглуулах хурдыг ашиглана</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Хурдтай хамт өнгийг өөрчлөх</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Дууны дагналтыг идэвхгүй болгох</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Мэдэгдэл гэх мэт өөр аппликейшн богино хэмжээний дуу гаргах үед дууны хэмжээ буурахгүй</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Тааламжгүй гэх чиглүүлэлтийг идэвхгүй болгох</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Дуу таалагдахгүй товчийг дарахад дараагийн дуу руу шилжихээс сэргийлнэ</string>
@@ -492,16 +498,42 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_hide_navigation_bar_labels_title">Навигацийн товчлуурын шошгыг нуух</string>
   <string name="morphe_music_navigation_bar_glass_title">Шилэн навигацийн цуврайг идэвхжүүлэх</string>
   <string name="morphe_music_navigation_bar_glass_summary">Навигацийн панелийг х तैरэх, бөөрөнхий, хагас тунгалаг капсул хэлбэрээр харуулна</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Шилэн бүрхүүлийн бүрхэг байдал</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Шилэн навигацийн панелийн тунгалаг байдлыг тохируулна (0 нь тунгалаг, 100 нь бүрхэг)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Цайвар шилэн бүрхүүл</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Шилэн навигацийн панелийг илүү цайвар, тод харагдуулахын тулд бараан өнгөний оронд цагаан өнгөөр будна</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Шилэн навигацийн панелийн хэмжээ</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Шилэн навигацийн панелийн өндөр, өргөн болон товчлууруудын зайг урьдчилан харах боломжтойгоор тохируулна. Дэлгэцийн өргөн дэхээс давсан товчлуурууд нуугдана</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Шилэн навигацийн зур асны хэмжээ ба загвар</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Шилэн навигацийн зур асны өндөр, өргөн, товчлуурын зай, тунгалаг байдал болон ирмэгийн гэрэлтүүлгийг урьдчилан харах хэсэгтэйгээр тохируулна. Дэлгэцийн өргөнд багтахгүй товчлуурууд нуугдана</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Өндөр</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Хамгийн их өргөн</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Товчлууруудын зай</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Харагдах товчлуур: %1$s / %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Тунгалаг байдал</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Ирмэгийн гэрэлтүүлэг</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Шилэн бүдгэрүүлэлт</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Шилэн навигацийн зур асны ард байгаа хуудас хэр зэрэг бүдгэрсэн байхыг тохируулна (Android 14 ба түүнээс дээш). 0 дээр хуудас тод харагдах бөгөөд Android 14-өөс өмнөх хувилбаруудад хуудас бүрхэгдэнэ</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Цайвар шилэн бүрхүүл</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Шилэн навигацийн панелийг илүү цайвар, тод харагдуулахын тулд бараан өнгөний оронд цагаан өнгөөр будна</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Цомгийн зургийн өнгө</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Шилэн навигацийн зур асны өнгийг тоглуулагдаж буй дууны цомгийн зургийн өнгөөр бунаа</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Сонгосон товчлуурын заагчийг нуух</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Шилэн навигацийн зур асны сонгосон товчлуурын ард байх бөөрөнхий тод хэсгийг нууна</string>
+  <string name="morphe_music_miniplayer_screen_title">Мини-плеер</string>
+  <string name="morphe_music_miniplayer_screen_summary">Мини-плеерийн загвар, товчлуурууд болон дохиог өөрчлөх</string>
+  <string name="morphe_music_miniplayer_glass_title">Шилэн мини-плеерийг идэвхжүүлэх</string>
+  <string name="morphe_music_miniplayer_glass_summary">Хуягт мини-плеерийг бөөрөнхий, хагас тунгалаг шилэн карт хэлбэрээр харуулна</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Шилэн мини-плеерийн загвар</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Шилэн мини-плеерийн булангийн радиус, зургийн зай, ирмэгийн гэрэлтүүлэлт болон тунгалаг байдлыг урьдчилан харах хэсэгтэйгээр тохируулна</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Булангийн радиус</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Зургийн зай</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Ирмэгийн гэрэлтүүлэг</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Тунгалаг байдал</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Шилэн бүдгэрүүлэлт</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Шилэн мини-плеерийн ард байгаа хуудас хэр зэрэг бүдгэрсэн байхыг тохируулна (Android 14 ба түүнээс дээш). 0 дээр хуудас тод харагдах бөгөөд Android 14-өөс өмнөх хувилбаруудад хуудас бүрхэгдэнэ</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Цайвар шил</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Илүү цайвар, тод харагдуулахын тулд шилэн мини-плеерийг бараан өнгөний оронд цагаан өнгөөр бунаа</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Цомгийн зургийн өнгө</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Шилэн мини-плеерийн өнгийг тоглуулагдаж буй дууны цомгийн зургийн өнгөөр бунаа</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Эргэдэг зураг</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Шилэн мини-плеерийн зургийг бөөрөнхий болгож, дуу тоглуулах үед диск шиг эргэлдүүлнэ</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Прогресс барыг нуух</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Шилэн мини-плеерийн доод хэсэгт байрлах прогресс барыг нууна</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Нүүр</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Дээжүүд</string>
@@ -722,6 +754,8 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_show_translate_button_summary">Орчуулгыг идэвхжүүлэхийн тулд дарна уу; зөвхөн орчуулгыг харахын тулд удаан дарна уу. Идэвхжүүлсэн орчуулгын үйлчилгээ үзүүлэгчдийг жагсаалтын дагуу ашиглана</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Романизаци эсвэл Галигчлах товчийг харуулах</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Романизаци эсвэл галигчлалыг идэвхжүүлэхийн тулд дарна уу; зөвхөн романизаци эсвэл галигчлалыг харахын тулд удаан дарна уу. Идэвхжүүлсэн романизацийн үйлчилгээ үзүүлэгчдийг жагсаалтын дагуу ашиглана</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Одоогийн товчийг харуулах</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Дууны үгийг гараар гүйлгэх үед дуулж буй мөр рүү буцаан шилжүүлэх товчийг харуулна</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Галигчлалыг идэвхжүүлэх</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Дууны үгийн эх сурвалжаас Латин бус уншлагад зөвшөөрөл өгөх; унтраасан үед зөвхөн Латин үсэг, акценттэй үсэг болон тональ тоонуудыг хадгална</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Цагт тохируулсан дууны үг бүрийг уншина (үг синхрончлол асаалттай); Солонгос хэл татаж авах шаардлагагүй; арван дөрвөн бичигт нэг CLDR татаж авалт хамаарна; Хань ханзыг Rime Wordlist-ийн үгийн хүснэгт тухайн хэлийг дэмждэг тохиолдолд уншина</string>
@@ -745,6 +779,12 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_written_by">Зохиолч: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Цаг хугацааны синхрончлолтой үг эсвэл үеийг тодруулах</string>
   <string name="morphe_music_lyrics_word_sync_summary">Боломжтой үед үг бүрээрх дууны үгийг давуу эрхээр харуулна. Дууны үг нь үг бүрийн хугацааг агуулсан тохиолдолд хөгжимтэй зэрэгцэн үг эсвэл үе бүрийг тодруулна</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Пүршэн гүйлгэлтийг ашиглах</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Дууны үгийг пүршний физикээр гүйлгэж, мөр бүрийг дээрх мөрнөөсөө бага зэрэг залгаж харуулна. Удган төхөөрөмж дээр батерей хэмнэхийн тулд үүнийг унтраана уу</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Хөгжмийн зогсолт үеийн цэгүүдийг näyttэх</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Урт хөгжмийн зогсолтын үеэр мөрүүдийн хооронд гурав цэг харуулах бөгөөд зогсолт дуусах тусам эдгээр цэгүүд дүүрнэ</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Алс хол мөрүүдийг илүү бүдгэрүүлэх</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Дуулагдаж буй мөрнөөс хол байх тусам идэвхгүй мөр бүрийг илүү бүдгэрүүлнэ. Унтраасан үед бүх идэвхгүй мөр ижилхэн бүдгэрсэн байна</string>
   <string name="morphe_music_lyrics_line_scale_title">Идэвхгүй мөрүүдийг жижигсгэх</string>
   <string name="morphe_music_lyrics_line_scale_summary">Одоогоор дуулж байгаагүй бүх мөрийг бүдгэрүүлэхийн зэрэгцээ бага зэрэг жижигээр дүрсэлнэ</string>
   <string name="morphe_music_lyrics_split_background_title">Арын дууг тусад нь харуулах</string>
@@ -834,6 +874,7 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_romanize_only">Зөвхөн латин галиг</string>
   <string name="morphe_music_lyrics_dual_only">Хос горим</string>
   <string name="morphe_music_lyrics_copied">Санах ойд хуулагдлаа</string>
+  <string name="morphe_music_lyrics_current">Одоогийн</string>
   <string name="morphe_music_lyrics_refreshing">Шинэчилж байна</string>
   <string name="morphe_music_lyrics_refreshed">Шинэчиллээ</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API түлхүүр</string>

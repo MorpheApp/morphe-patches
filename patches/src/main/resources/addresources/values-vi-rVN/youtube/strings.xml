@@ -648,6 +648,25 @@ Tuyệt đối không được chia sẻ khoá API. Bởi vì, bất kỳ ai có
   <string name="morphe_loop_video_range_clear">Xóa</string>
   <string name="morphe_loop_video_range_toast_on">Lặp từ %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Thời gian đã đặt không hợp lệ</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Số lần lặp</string>
+  <string name="morphe_loop_count_screen_summary">Chọn số lần video lặp lại trước khi chuyển sang video tiếp theo</string>
+  <string name="morphe_loop_count_title">Bật số lần lặp</string>
+  <string name="morphe_loop_count_summary">Menu Thêm của trình phát hiển thị Số lần lặp bên cạnh Lặp video, để chọn số lần video phát trước khi chuyển sang video tiếp theo</string>
+  <string name="morphe_loop_count_playlists_title">Lưu số lần lặp trong danh sách phát</string>
+  <string name="morphe_loop_count_playlists_summary">Mỗi video trong danh sách phát sẽ giữ số lần lặp bạn chọn, và Lặp video sẽ được bật khi danh sách phát chạy lại video đó. Nếu tắt, số lần lặp sẽ chỉ áp dụng cho video đang phát hiện tại</string>
+  <string name="morphe_loop_count_clear_title">Xóa số lần lặp đã lưu</string>
+  <string name="morphe_loop_count_clear_summary">Quên số lần lặp đã lưu trong các danh sách phát của bạn. Số video đã lưu: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Không có số lần lặp nào được lưu</string>
+  <string name="morphe_loop_count_clear_dialog_title">Xóa số lần lặp đã lưu?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Các video trong danh sách phát của bạn sẽ quên số lần lặp của chúng, và Lặp video sẽ không còn tự động bật khi danh sách phát chạy các video đó</string>
+  <string name="morphe_loop_count_clear_done">Đã xóa số lần lặp đã lưu</string>
+  <string name="morphe_loop_count_flyout_name">Số lần lặp</string>
+  <string name="morphe_loop_count_dialog_message">Số lần video phát trước khi chuyển sang video tiếp theo, từ %1$s đến %2$s. Để trống để lặp video không giới hạn.</string>
+  <string name="morphe_loop_count_times">%s lần</string>
+  <string name="morphe_loop_count_no_limit">Không giới hạn</string>
+  <string name="morphe_loop_count_decrease">Ít lần hơn</string>
+  <string name="morphe_loop_count_increase">Nhiều lần hơn</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Hiển thị nút Hình trong hình</string>
   <string name="morphe_pip_button_flyout_title">Hiển thị menu Hình trong hình</string>
@@ -1113,6 +1132,10 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_enhanced_ambient_mode_summary">Chiếu sáng toàn bộ trang xem và các thanh đen theo video, thay thế cho Chế độ môi trường xung quanh</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Giữ cho văn bản dễ đọc</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Giảm độ sáng của các video sáng để văn bản trên trang vẫn dễ đọc</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Làm mờ khi cuộn</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Làm mờ đèn khi trang được cuộn hoặc chạm vào</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Thời gian làm mờ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Thời gian đèn giữ trạng thái mờ sau khi ngừng cuộn. Với giá trị 0, chỉ khi cuộn đèn mới mờ đi và sẽ sáng trở lại ngay khi ngừng cuộn</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ẩn thẻ thông tin</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_hide_shorts_subscriptions_title">Ẩn trong trang Kênh đăng ký</string>
   <string name="morphe_hide_shorts_video_description_title">Ẩn trong mô tả video</string>
   <string name="morphe_hide_shorts_history_title">Ẩn trong nhật ký xem</string>
+  <string name="morphe_hide_shorts_notifications_title">Ẩn trong thông báo đẩy</string>
   <string name="morphe_shorts_player_screen_title">Trình phát Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Chọn những thành phần sẽ hiển thị trên trình phát Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Tắt chạm hai lần để thích</string>

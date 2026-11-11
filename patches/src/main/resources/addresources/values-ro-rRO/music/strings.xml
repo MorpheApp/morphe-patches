@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Activează comutarea audio/video</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Încearcă să comute între versiunea audio și videoclipul muzical oficial</string>
+  <string name="morphe_music_auto_song_version_title">Redu întotdeauna versiunea melodiei</string>
+  <string name="morphe_music_auto_song_version_summary">Înlocuiește videoclipurile muzicale oficiale din coadă cu melodia corespunzătoare. Necesită ca setarea aplicației „Nu reda videoclipuri muzicale” să fie activată. Piesele fără o potrivire exactă rămân neschimbate</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Descarcă videoclipuri muzicale, podcasturi sau melodii folosind aplicații de descărcare terțe</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -335,6 +337,7 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <string name="morphe_music_playback_speed_title">Viteza de redare</string>
   <string name="morphe_music_playback_speed_summary">Viteza folosită pentru toate melodiile. La 100% se folosește viteza aplicației, cum ar fi viteza de redare a podcastului.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Schimbă tonalitatea odată cu viteza</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Dezactivează redirecționarea dislike</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Împiedică trecerea la următoarea melodie când este apăsat butonul dislike</string>
@@ -492,16 +495,42 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ascundeți etichetele butoanelor de navigare</string>
   <string name="morphe_music_navigation_bar_glass_title">Activează bara de navigare din sticlă</string>
   <string name="morphe_music_navigation_bar_glass_summary">Afișează bara de navigare ca o capsulă plutitoare, rotunjită și translucidă</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Opacitatea sticlei</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Ajustați nivelul de transparență al barei de navigare din sticlă (0 este transparent, 100 este opac)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Sticlă deschisă</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Colorează bara de navigare din sticlă în alb în loc de închis, pentru o sticlă mai deschisă și mai clară</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Dimensiunea barei de navigare din sticlă</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Ajustați înălțimea, lățimea și spațierea butoanelor barei de navigare din sticlă, cu o previzualizare. Butoanele care nu încap în lățimea ecranului sunt ascunse</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Dimensiunea și stilul barei de navigare din sticlă</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Ajustează înălțimea, lățimea, spațierea butoanelor, opacitatea și luminozitatea marginii barei de navigare din sticlă, cu o previzualizare. Butoanele care nu încap în lățimea ecranului sunt ascunse</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Înălțime</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Lățime maximă</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Spațierea butoanelor</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Butoane afișate: %1$s din %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Opacitate</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Luminozitatea marginii</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Efect de blur sticlat</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Cât de mult este blurată pagina din spatele barei de navigare din sticlă (Android 14 și ulterior). La 0 pagina apare clară, iar înainte de Android 14 pagina este acoperită</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Sticlă deschisă</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Colorează bara de navigare din sticlă în alb în loc de închis, pentru o sticlă mai deschisă și mai clară</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Nuanță copertă album</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Colorează bara de navigare din sticlă cu culoarea copertei albumului melodiei care se redă</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Ascunde indicatorul butonului selectat</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Ascunde evidențierea rotunjită din spatele butonului selectat al barei de navigare din sticlă</string>
+  <string name="morphe_music_miniplayer_screen_title">Minijucător</string>
+  <string name="morphe_music_miniplayer_screen_summary">Schimbă stilul, butoanele și gesturile miniplayerului</string>
+  <string name="morphe_music_miniplayer_glass_title">Activează miniplayerul din sticlă</string>
+  <string name="morphe_music_miniplayer_glass_summary">Afișează miniplayerul plutitor ca pe un card de sticlă rotunjit și translucid</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Stil miniplayer din sticlă</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Ajustează raza colțurilor, padding-ul copertii, luminozitatea marginii și opacitatea miniplayerului din sticlă, cu o previzualizare</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Raza colțurilor</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding copertă</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Luminozitatea marginii</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Opacitate</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Efect de blur sticlat</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Cât de mult este blurată pagina din spatele miniplayerului din sticlă (Android 14 și ulterior). La 0 pagina apare clară, iar înainte de Android 14 pagina este acoperită</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Sticlă deschisă</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Colorează miniplayerul din sticlă în alb în loc de închis, pentru o sticlă mai deschisă și mai clară</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Nuanță copertă album</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Colorează miniplayerul din sticlă cu culoarea copertei albumului melodiei care se redă</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Copertă care se rotește</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Face coperta miniplayerului din sticlă rotundă și o rotește ca pe o placă în timp ce se redă o melodie</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Ascunde bara de progres</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Ascunde bara de progres de la baza miniplayerului din sticlă</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Acasă</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Mostre</string>
@@ -634,7 +663,6 @@ Prima coloană este cuvântul, a doua citirea sa; coloanele suplimentare și lin
   <string name="morphe_music_lyrics_rime_dict_no_table">Nicio listă de cuvinte Rime nu este bifată pentru limba de mai sus. Apasați pe acest nume pentru a bifa una sau selectați o limbă care are o listă</string>
   <string name="morphe_music_lyrics_rime_dict_add">Adaugă</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Adăugați o listă de cuvinte Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Un fișier .dict.yaml sau o arhivă zip care conține unul, cu linii de forma 字 ham și 典 din2. Lista este preluată când o bifați și atingeți Salvare, iar licența acesteia vă aparține să o verificați</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Codul limbii</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Două sau trei litere, precum hak sau wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Nume</string>
@@ -717,6 +745,8 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_translate_button_summary">Atingeți pentru a comuta traducerea; apăsare lungă doar pentru traducere. Folosește furnizorii de traducere activati în ordinea listată</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Afișați butonul Romanizare sau Transliterare</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Atingeți pentru a comuta romanizarea sau transliterarea; apăsare lungă doar pentru romanizare sau transliterare. Folosește furnizorii de romanizare activati în ordinea listată</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Afișează butonul Actual</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">În timp ce derulezi versurile manual, afișează un buton care revine la linia cântată</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Activați transliterarea</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Permiteți citirile non-latine din sursa versurilor; când este dezactivat, păstrați doar litere latine, litere diacritice și cifre de ton</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Citește fiecare cuvânt dintr-un vers sincronizat (sincronizare pe cuvânt activată); Coreana nu necesită descărcare; paisprezece scrieri împart o singură descărcare CLDR; caracterele Han sunt citite de Lista de cuvinte Rime atunci când tabela sa de cuvinte acoperă limba</string>
@@ -740,6 +770,12 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Scris de: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Evidențiați cuvintele sau silabele sincronizate</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritizează versurile cuvânt cu cuvânt atunci când sunt disponibile. Când versurile au informații de timp pentru fiecare cuvânt, evidențiază fiecare cuvânt sau silabă în ritm cu melodia</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Utilizează derularea cu efect de spring</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Derulează versurile cu fizică de tip spring și deplasează fiecare linie puțin după cea de deasupra. Dezactivează pentru a economisi bateria pe dispozitivele mai lente</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Afișează puncte pentru pauzele instrumentale</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Afișează trei puncte între linii în timpul unei pauze instrumentale lungi, care se completează pe măsură ce pauza se apropie de sfârșit</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Stinge mai mult liniile îndepărtate</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Stinge fiecare linie inactivă mai mult pe măsur la ce este mai departe de linia cântată. Când este dezactivat, fiecare linie inactivă este stinsă la fel</string>
   <string name="morphe_music_lyrics_line_scale_title">Micșorați liniile inactive</string>
   <string name="morphe_music_lyrics_line_scale_summary">Desenează fiecare linie care nu este cântată în prezent puțin mai mică, suprapus peste estomparea acesteia</string>
   <string name="morphe_music_lyrics_split_background_title">Afișați vocalurile de fundal separat</string>
@@ -829,6 +865,7 @@ Se aplică ambelor limite. La 1,75, patru caractere cu lățime completă sunt c
   <string name="morphe_music_lyrics_romanize_only">Doar romanizat</string>
   <string name="morphe_music_lyrics_dual_only">Mod dual</string>
   <string name="morphe_music_lyrics_copied">Copiat în clipboard</string>
+  <string name="morphe_music_lyrics_current">Actual</string>
   <string name="morphe_music_lyrics_refreshing">Se încarcă…</string>
   <string name="morphe_music_lyrics_refreshed">Reîmprospătat</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Cheie API QuickLRC</string>

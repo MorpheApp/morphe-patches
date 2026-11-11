@@ -651,6 +651,25 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_loop_video_range_clear">مسح</string>
   <string name="morphe_loop_video_range_toast_on">تكرار ‎%1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">الوقت المحدد غير صحيح</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">عدد مرات التكرار</string>
+  <string name="morphe_loop_count_screen_summary">اختر عدد مرات تكرار الفيديو قبل الانتقال إلى الفيديو التالي</string>
+  <string name="morphe_loop_count_title">تمكين عدد مرات التكرار</string>
+  <string name="morphe_loop_count_summary">تعرض قائمة المزيد في المشغل عدد مرات التكرار بجوار تكرار الفيديو، لاختيار عدد مرات تشغيل الفيديو قبل الانتقال إلى الفيديو التالي</string>
+  <string name="morphe_loop_count_playlists_title">حفظ عدد مرات التكرار في قوائم التشغيل</string>
+  <string name="morphe_loop_count_playlists_summary">يحتفظ كل فيديو في قائمة التشغيل بعدد مرات التكرار الذي اخترته، ويتم تمكين تكرار الفيديو عندما تقوم قائمة التشغيل بتشغيله مرة أخرى. أما إذا تم إيقاف هذا الخيار، فسيكون عدد مرات التكرار للفيديو الذي يعمل حاليًا فقط</string>
+  <string name="morphe_loop_count_clear_title">مسح عدد مرات التكرار المحفوظة</string>
+  <string name="morphe_loop_count_clear_summary">تجاهل عدد مرات التكرار المحفوظة في قوائم التشغيل الخاصة بك. الفيديوهات المحفوظة: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">لم يتم حفظ أي عدد لمرات التكرار</string>
+  <string name="morphe_loop_count_clear_dialog_title">هل تريد مسح عدد مرات التكرار المحفوظة؟</string>
+  <string name="morphe_loop_count_clear_dialog_message">ستفقد الفيديوهات في قوائم التشغيل الخاصة بك عدد مرات التكرار المحددة لها، ولن يتم تمكين تكرار الفيديو تلقائيًا عندما تقوم قائمة التشغيل بتشغيلها</string>
+  <string name="morphe_loop_count_clear_done">تم مسح عدد مرات التكرار المحفوظة</string>
+  <string name="morphe_loop_count_flyout_name">عدد مرات التكرار</string>
+  <string name="morphe_loop_count_dialog_message">عدد مرات تشغيل الفيديو قبل الانتقال إلى الفيديو التالي، من %1$s إلى %2$s. اتركه فارغًا لتكرار الفيديو بدون حد.</string>
+  <string name="morphe_loop_count_times">%s مرة</string>
+  <string name="morphe_loop_count_no_limit">بلا حدود</string>
+  <string name="morphe_loop_count_decrease">مرات أقل</string>
+  <string name="morphe_loop_count_increase">مرات أكثر</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">عرض زر صورة داخل صورة</string>
   <string name="morphe_pip_button_flyout_title">عرض قائمة صورة داخل صورة</string>
@@ -1117,6 +1136,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_enhanced_ambient_mode_summary">يضيء صفحة المشاهدة بالكامل والأشرطة السوداء بما يتناسب مع الفيديو، بدلًا من وضع الإضاءة السينمائية</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">الحفاظ على وضوح النص</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">يخفف الإضاءة في الفيديوهات الساطعة بحيث يظل النص الموجود على الصفحة واضحًا للقراءة</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">تعتيم أثناء التمرير</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">يُخفّض الإضاءة أثناء تمرير الصفحة أو لمسها</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">مدة التعتيم</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">مدة بقاء الضوء خافتًا بعد توقف التمرير. عند ضبط القيمة على 0، يتسبب التمرير فقط في خفض الإضاءة، ويعود إلى شدته الطبيعية فور توقف التمرير</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">إخفاء بطاقات المعلومات</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1137,6 +1160,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_shorts_subscriptions_title">إخفاء في خلاصة الاشتراكات</string>
   <string name="morphe_hide_shorts_video_description_title">إخفاء في وصف الفيديو</string>
   <string name="morphe_hide_shorts_history_title">إخفاء في السجلّ</string>
+  <string name="morphe_hide_shorts_notifications_title">إخفاء في الإشعارات الفورية</string>
   <string name="morphe_shorts_player_screen_title">مشغل Shorts</string>
   <string name="morphe_shorts_player_screen_summary">اختر المكونات التي تظهر في مشغل Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">تعطيل النقر المزدوج للإعجاب في Shorts</string>

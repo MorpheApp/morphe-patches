@@ -77,37 +77,54 @@ public final class ClassicSubscriptionsLayoutPatch {
     private static final boolean DISABLE_TOOLBAR_NAVIGATION_TABS =
             Settings.DISABLE_TOOLBAR_NAVIGATION_TABS.get();
 
+    private static final boolean HIDE_FILTER_BAR_IN_FEED = Settings.HIDE_FILTER_BAR_IN_FEED.get();
+
     /**
      * Icon of the Subscriptions navigation button, with the same style of the Home button.
      */
     private static volatile YTIconType subscriptionsIconType = YTIconType.PIVOT_SUBSCRIPTIONS;
 
-    private static boolean isFeedTab(TabRenderer tabRenderer) {
-        String browseId = tabRenderer.getEndpoint().getBrowseEndpoint().getBrowseId();
-        if (browseId.isEmpty()) {
-            browseId = tabRenderer.getTabIdentifier();
-        }
-        return HOME_BROWSE_ID.equals(browseId) || SUBSCRIPTIONS_BROWSE_ID.equals(browseId);
-    }
-
     /**
      * Injection point.
+     * <p>
+     * The A/B layout with Subscriptions as a tab of Home shows tabs at the top of Home, such as
+     * "Home, Subscriptions, Music, Live, More". The other tabs replace the filter bar of Home,
+     * so only the Subscriptions tab is removed, which is a navigation button again, and the other tabs
+     * are removed if the filter bar of the feeds is hidden. The Subscriptions feed opened by its navigation
+     * button has the same tabs, with its own tab selected, and shows only its tab.
      *
      * @param tabs Tab protos of the browse response.
-     * @return Only the selected tab, if the tabs are the Home and Subscriptions feeds.
+     * @return The tabs that are shown.
      */
     public static List<Object> filterBrowseTabs(List<Object> tabs) {
-        if (!DISABLE_TOOLBAR_NAVIGATION_TABS || tabs == null || tabs.size() <= 1) return tabs;
+        if ((!DISABLE_TOOLBAR_NAVIGATION_TABS && !HIDE_FILTER_BAR_IN_FEED) || tabs == null || tabs.size() <= 1) {
+            return tabs;
+        }
 
         try {
-            int selectedIndex = 0;
+            final int size = tabs.size();
+            int selectedIndex = -1;
+            int subscriptionsIndex = -1;
+            boolean[] isFeedTab = new boolean[size];
             boolean isFeed = false;
-            for (int i = tabs.size() - 1; i >= 0; i--) {
+            for (int i = 0; i < size; i++) {
                 TabRenderer tabRenderer = BrowseTab.parseFrom(
                         ((MessageLite) tabs.get(i)).toByteArray()
                 ).getTabRenderer();
 
-                isFeed |= isFeedTab(tabRenderer);
+                String tabIdentifier = tabRenderer.getTabIdentifier();
+                String browseId = tabRenderer.getEndpoint().getBrowseEndpoint().getBrowseId();
+                if (browseId.isEmpty()) {
+                    browseId = tabIdentifier;
+                }
+                if (SUBSCRIPTIONS_BROWSE_ID.equals(browseId)) {
+                    subscriptionsIndex = i;
+                }
+                // The category tabs of Home also open the Home feed, but their tab identifier is the category,
+                // such as ATTRIBUTE_FILTER_TYPE_MUSIC_BROAD.
+                isFeedTab[i] = SUBSCRIPTIONS_BROWSE_ID.equals(browseId)
+                        || HOME_BROWSE_ID.equals(tabIdentifier.isEmpty() ? browseId : tabIdentifier);
+                isFeed |= isFeedTab[i];
                 if (tabRenderer.getSelected()) {
                     selectedIndex = i;
                 }
@@ -115,8 +132,20 @@ public final class ClassicSubscriptionsLayoutPatch {
             // Channels and other pages also use tabs.
             if (!isFeed) return tabs;
 
-            List<Object> filtered = new ArrayList<>(1);
-            filtered.add(tabs.get(selectedIndex));
+            List<Object> filtered = new ArrayList<>(size);
+            if (DISABLE_TOOLBAR_NAVIGATION_TABS && subscriptionsIndex >= 0 && subscriptionsIndex == selectedIndex) {
+                filtered.add(tabs.get(subscriptionsIndex));
+                return filtered;
+            }
+            for (int i = 0; i < size; i++) {
+                if (DISABLE_TOOLBAR_NAVIGATION_TABS && i == subscriptionsIndex) {
+                    continue;
+                }
+                if (HIDE_FILTER_BAR_IN_FEED && !isFeedTab[i] && i != selectedIndex) {
+                    continue;
+                }
+                filtered.add(tabs.get(i));
+            }
             return filtered;
         } catch (Exception ex) {
             Logger.printException(() -> "filterBrowseTabs failure", ex);

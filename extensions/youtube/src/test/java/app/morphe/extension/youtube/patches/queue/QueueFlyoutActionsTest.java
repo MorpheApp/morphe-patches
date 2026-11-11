@@ -28,7 +28,7 @@ public class QueueFlyoutActionsTest {
     public void playlistNextAndLastKeepTheirOwnCollectionTargetAfterSerialization() throws Exception {
         for (String playlist : java.util.List.of("PL-public", "PL-private", "WL", "LL", "RD-mix")) {
             var completed = QueueFlyoutActions.completeMenu(MenuRenderer.getDefaultInstance(), true,
-                    "Next", "Last", playlist);
+                    "Next", "Last", playlist, false);
             assertEquals(2, completed.getItemsCount());
             var rebound = MenuRenderer.parseFrom(completed.toByteArray());
             assertEquals(playlist, rebound.getItems(0).getMenuConditionalServiceItemRenderer()
@@ -123,6 +123,39 @@ public class QueueFlyoutActionsTest {
         var cleaned = QueueFlyoutActions.completeMenu(next, false, "Next", "Last");
         assertFalse(cleaned.getItems(0).getMenuConditionalServiceItemRenderer().hasSecondaryIcon());
         assertSame(cleaned, QueueFlyoutActions.completeMenu(cleaned, false, "Next", "Last"));
+    }
+
+    @Test public void shortsMenuAddsMissingLocalActionsWithoutChangingCastOrOtherItems() throws Exception {
+        var cast = conditional(251, 1);
+        var share = conditional(YTIconType.SHARE.getNumber(), 2);
+        var bytes = new ByteArrayOutputStream();
+        var output = CodedOutputStream.newInstance(bytes);
+        output.writeMessage(1, cast);
+        output.writeMessage(1, share);
+        output.writeString(80, "unknown menu field");
+        output.flush();
+        var menu = MenuRenderer.parseFrom(bytes.toByteArray());
+
+        for (boolean allowLast : new boolean[] {false, true}) {
+            assertSame(menu, QueueFlyoutActions.completeMenu(menu, allowLast, "Next", "Last", "", false));
+            var completed = QueueFlyoutActions.completeMenu(menu, allowLast, "Next", "Last", "", true);
+            final int added = allowLast ? 2 : 1;
+            assertEquals(added + 2, completed.getItemsCount());
+            var next = completed.getItems(0).getMenuConditionalServiceItemRenderer();
+            assertEquals(YTIconType.QUEUE_PLAY_NEXT, next.getIcon().getYtIconType());
+            assertFalse(next.hasServiceEndpoint());
+            assertEquals(2, next.getVisibility());
+            if (allowLast) {
+                var last = completed.getItems(1).getMenuConditionalServiceItemRenderer();
+                assertEquals(YTIconType.QUEUE_PLAY_LAST, last.getIcon().getYtIconType());
+                assertFalse(last.hasServiceEndpoint());
+            }
+            assertArrayEquals(cast.toByteArray(), completed.getItems(added).toByteArray());
+            assertArrayEquals(share.toByteArray(), completed.getItems(added + 1).toByteArray());
+            assertArrayEquals(menu.toBuilder().clearItems().build().toByteArray(),
+                    completed.toBuilder().clearItems().build().toByteArray());
+            assertSame(completed, QueueFlyoutActions.completeMenu(completed, allowLast, "Next", "Last", "", true));
+        }
     }
     @Test public void nativeNavigationAndServiceVariantsKeepTheirCommandsAndLoseOnlyTheBadge() throws Exception {
         int[][] variants = { { 66441108, 11 }, { 66441155, 9 }, { 77258115, 12 }, { 77262503, 0 } };

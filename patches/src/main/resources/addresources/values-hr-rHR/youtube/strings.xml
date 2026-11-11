@@ -648,6 +648,24 @@ Vaš API ključ nikada ne smijete dijeliti. Bilo tko s pristupom njemu može kor
   <string name="morphe_loop_video_range_clear">Izbriši</string>
   <string name="morphe_loop_video_range_toast_on">Petlja %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Neispravan vremenski raspon</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Broj ponavljanja</string>
+  <string name="morphe_loop_count_screen_summary">Odaberite koliko puta se video ponavlja prije sljedećeg videa</string>
+  <string name="morphe_loop_count_title">Omogući broj ponavljanja</string>
+  <string name="morphe_loop_count_summary">Izbornik Više u playeru prikazuje Broj ponavljanja pokraj opcije Ponovi video, kako biste odabrali koliko puta će se video reproducirati prije sljedećeg videa</string>
+  <string name="morphe_loop_count_playlists_title">Spremi broj ponavljanja u popisima pjesama</string>
+  <string name="morphe_loop_count_playlists_summary">Svaki video u popisu pjesama zadržava broj ponavljanja koji odaberete, a opcija Ponavljanje videa uključuje se kada popis pjesama ponovno pusti taj video. Ako je isključena, broj ponavljanja vrijedi samo za video koji se trenutno reproducira</string>
+  <string name="morphe_loop_count_clear_title">Obriši spremljene brojeve ponavljanja</string>
+  <string name="morphe_loop_count_clear_summary">Zaboravi brojeve ponavljanja spremljene u vašim popisima pjesama. Spremljeni videi: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Nisu spremljeni nikakvi brojevi ponavljanja</string>
+  <string name="morphe_loop_count_clear_dialog_title">Obrisati spremljene brojeve ponavljanja?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Videi u vašim popisima pjesama zaboravit će svoj broj ponavljanja, a opcija Ponavljanje videa više se neće uključivati kada ih popis pjesama reproducira</string>
+  <string name="morphe_loop_count_clear_done">Spremljeni brojevi ponavljanja su obrisani</string>
+  <string name="morphe_loop_count_flyout_name">Broj ponavljanja</string>
+  <string name="morphe_loop_count_dialog_message">Koliko puta će se video reproducirati prije sljedećeg videa, od %1$s do %2$s. Ostavite prazno za ponavljanje videa bez ograničenja.</string>
+  <string name="morphe_loop_count_no_limit">Bez ograničenja</string>
+  <string name="morphe_loop_count_decrease">Manje puta</string>
+  <string name="morphe_loop_count_increase">Više puta</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Prikaži gumb za sliku u slici</string>
   <string name="morphe_pip_button_flyout_title">Prikaži izbornik za sliku u slici</string>
@@ -1113,6 +1131,10 @@ Da biste prikazali izbornik audio zapisa, promijenite 'Parodija video streamova'
   <string name="morphe_enhanced_ambient_mode_summary">Osvjetljuje cijelu stranicu za gledanje i crne trake bojama videa, umjesto Ambient načina rada</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Očuvaj čitljivost teksta</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Prigušuje svjetlost kod svijetlih videa kako bi tekst na stranici ostao čitljiv</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Zatamni tijekom pomicanjaatrage</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Zatamnjuje svjetlo dok se stranica pomiče ili dodiruje</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Trajanje zatamnjivanja</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Koliko dugo svjetlo ostaje zatamnjeno nakon što pomicanje prestane. S vrijednošću 0 samo pomicanje zatamnjuje svjetlo, a ono se vraća čim pomicanje prestane</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Sakrij info kartice</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Da biste prikazali izbornik audio zapisa, promijenite 'Parodija video streamova'
   <string name="morphe_hide_shorts_subscriptions_title">Sakrij u feedu Pretplata</string>
   <string name="morphe_hide_shorts_video_description_title">Sakrij u opisu videozapisa</string>
   <string name="morphe_hide_shorts_history_title">Sakrij u povijesti gledanja</string>
+  <string name="morphe_hide_shorts_notifications_title">Sakrij u push obavijestima</string>
   <string name="morphe_shorts_player_screen_title">Player za Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Odaberite koje komponente se pojavljuju u Shorts playeru</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Onemogući dvostruki dodir za lajkanje</string>

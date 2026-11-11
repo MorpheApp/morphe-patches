@@ -648,6 +648,24 @@ API klíč by se nikdy neměl sdílet. Kdokoli s přístupem k němu může pou�
   <string name="morphe_loop_video_range_clear">Vymazat</string>
   <string name="morphe_loop_video_range_toast_on">Opakování %1$s – %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Neplatný časový rozsah</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Počet opakování</string>
+  <string name="morphe_loop_count_screen_summary">Vyberte, kolikrát se má video opakovat před přehráním dalšího videa</string>
+  <string name="morphe_loop_count_title">Povolit počet opakování</string>
+  <string name="morphe_loop_count_summary">Menu Více u přehrávače zobrazuje Počet opakování vedle položky Opakovat video, abyste si mohli vybrat, kolikrát se video přehrá, než se spustí následující video</string>
+  <string name="morphe_loop_count_playlists_title">Ukládat počet opakování v playlistech</string>
+  <string name="morphe_loop_count_playlists_summary">Každé video v playlistu si pamatuje zvolený počet opakování a funkce Opakovat video se zapne, když playlist video znovu přehrá. Pokud je tato funkce vypnutá, počet opakování platí pouze pro aktuálně přehrávané video</string>
+  <string name="morphe_loop_count_clear_title">Vymazat uložené počty opakování</string>
+  <string name="morphe_loop_count_clear_summary">Zapomeňte počty opakování uložené ve vašich playlistech. Uložená videa: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Žádné počty opakování nejsou uloženy</string>
+  <string name="morphe_loop_count_clear_dialog_title">Vymazat uložené počty opakování?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Videa ve vašich playlistech zapomenou svůj počet opakování a funkce Opakovat video se při jejich přehrávání z playlistu již nezapne</string>
+  <string name="morphe_loop_count_clear_done">Uložené počty opakování byly vymazány</string>
+  <string name="morphe_loop_count_flyout_name">Počet opakování</string>
+  <string name="morphe_loop_count_dialog_message">Kolikrát se video přehrálo před dalším videem, od %1$s do %2$s. ponechte prázdné pro opakování videa bez omezení.</string>
+  <string name="morphe_loop_count_no_limit">Bez omezení</string>
+  <string name="morphe_loop_count_decrease">Méně krát</string>
+  <string name="morphe_loop_count_increase">Více krát</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Zobrazit tlačítko pro obraz v obraze</string>
   <string name="morphe_pip_button_flyout_title">Zobrazit nabídku pro obraz v obraze</string>
@@ -1113,6 +1131,10 @@ Chcete-li zobrazit nabídku „Audio Track“, změňte možnost „Spoof video 
   <string name="morphe_enhanced_ambient_mode_summary">Osvětlí celou stránku sledování a černé pruhy barvami videa namísto Ambientního režimu</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Udržovat text čitelný</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Ztlumí světlo u jasných videí, aby text na stránce zůstal čitelný</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Ztmavit při posouvání</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Ztmaví světlo, když je stránka posuvána nebo dotknuta</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Doba ztmavení</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Jak dlouho zůstane světlo ztmavené po zastavení posouvání. Při hodnotě 0 světlo ztmavuje pouze samotné posouvání a vrátí se zpět ihned po jeho zastavení</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Skrýt informační karty</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Chcete-li zobrazit nabídku „Audio Track“, změňte možnost „Spoof video 
   <string name="morphe_hide_shorts_subscriptions_title">Skrýt v kanálu Odběry</string>
   <string name="morphe_hide_shorts_video_description_title">Skrýt v popisu videa</string>
   <string name="morphe_hide_shorts_history_title">Skrýt v historii sledování</string>
+  <string name="morphe_hide_shorts_notifications_title">Skrýt v push notifikacích</string>
   <string name="morphe_shorts_player_screen_title">Přehrávač Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Výběr prvků zobrazených v přehrávači Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Zakázat dvojité klepnutí pro lajk</string>

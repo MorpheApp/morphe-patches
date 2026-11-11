@@ -648,6 +648,24 @@ Teie API võtit ei tohi kunagi jagada. Kõik, kellel on sellele juurdepääs, sa
   <string name="morphe_loop_video_range_clear">Tühjenda</string>
   <string name="morphe_loop_video_range_toast_on">Korduv: %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Kehtetu ajavahemik</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Korduste arv</string>
+  <string name="morphe_loop_count_screen_summary">Valige, mitu korda video kordub enne järgmise video algust</string>
+  <string name="morphe_loop_count_title">Luba korduste arvu määramine</string>
+  <string name="morphe_loop_count_summary">Playeri lisamenüüs kuvatakse üksuse \"Loop video\" kõrval korduste arv, et valida, mitu korda video esitatakse enne järgmise videot</string>
+  <string name="morphe_loop_count_playlists_title">Salvesta tsüklite arv plaalistesse</string>
+  <string name="morphe_loop_count_playlists_summary">Iga plaalisti video säilitab teie poolt valitud tsüklite arvu ja \"Korda videot\" lülitub sisse, kui plaalist mängib seda uuesti. Kui see on välja lülitatud, kegustib tsüklite arv ainult praegu mängitava video kohta</string>
+  <string name="morphe_loop_count_clear_title">Tõrge salvestatud tsüklite arvud</string>
+  <string name="morphe_loop_count_clear_summary">Unusta teie plaalistesse salvestatud tsüklite arvud. Salvestatud videod: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Tsüklite arveid ei ole salvestatud</string>
+  <string name="morphe_loop_count_clear_dialog_title">Tõrgata salvestatud tsüklite arvud?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Teie plaalistite videod unustavad oma tsüklite arvu ja \"Korda videot\" ei lülitu enam sisse, kui plaalist neid mängib</string>
+  <string name="morphe_loop_count_clear_done">Salvestatud tsüklite arvud tõrgatud</string>
+  <string name="morphe_loop_count_flyout_name">Kordustuste arv</string>
+  <string name="morphe_loop_count_dialog_message">Kui palju kordi video esitatakse enne järgmise videot, vahemikus %1$s kuni %2$s. Jätke väli tühjaks, et video korduks piiramatult.</string>
+  <string name="morphe_loop_count_no_limit">Piiramatult</string>
+  <string name="morphe_loop_count_decrease">Vähem kordi</string>
+  <string name="morphe_loop_count_increase">Rohkem kordi</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Kuva pildis-pilt nupp</string>
   <string name="morphe_pip_button_flyout_title">Kuva pildis-pilt menüü</string>
@@ -1113,6 +1131,10 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvalise
   <string name="morphe_enhanced_ambient_mode_summary">Valgustab kogu vaatamislehte ja musti ribasid koos videoga, asendades Ümbritseva režiimi</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Hoidke tekst loetavana</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Hääldab heledate videote valgust, et lehel olev tekst püsiks loetavana</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Hägusta skrollimise ajal</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Hägustab valgust, kui lehte skrollitakse või puudutatakse</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Hägustamise kestus</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Kui kaua jääb valgust hägustatud pärast skrollimise lõppemist. Vääituse 0 korral hägustab valgust ainult skrollimine ja see taastub kohe pärast skrollimise lõppemist</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Peida infokaardid</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Menüü \"Audio Track\" kuvamiseks muutke \"Videovoogude imiteerimine\" suvalise
   <string name="morphe_hide_shorts_subscriptions_title">Peida Tellimuste voos</string>
   <string name="morphe_hide_shorts_video_description_title">Peida video kirjeldusest</string>
   <string name="morphe_hide_shorts_history_title">Peida vaatamisajalugus</string>
+  <string name="morphe_hide_shorts_notifications_title">Peita push-teavitustes</string>
   <string name="morphe_shorts_player_screen_title">Shorts pleier</string>
   <string name="morphe_shorts_player_screen_summary">Valige, millised komponendid Shortsi pleieris kuvatakse</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Keela kahekordselt puudutades meeldimise märgistamine</string>

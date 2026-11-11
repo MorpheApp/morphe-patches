@@ -648,6 +648,25 @@ A súa clave API nunca debe ser compartida. Calquera persoa con acceso a ela pod
   <string name="morphe_loop_video_range_clear">Limpar</string>
   <string name="morphe_loop_video_range_toast_on">Bucle %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Rango de tempo inválido</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Contaxe de bucles</string>
+  <string name="morphe_loop_count_screen_summary">Elixe cantas veces se repite un vídeo antes do seguinte</string>
+  <string name="morphe_loop_count_title">Activar o número de ciclos</string>
+  <string name="morphe_loop_count_summary">O menú Máis do reprodutor mostra o Número de repeticións xunto a Repetir vídeo, para elixir cantas veces se reproduz o vídeo antes do seguinte</string>
+  <string name="morphe_loop_count_playlists_title">Gardar o número de repeticións nas listas de reprodución</string>
+  <string name="morphe_loop_count_playlists_summary">Cada vídeo dunha lista de reprodución garda o número de repeticións que elixas, e Repetir vídeo actívase cando a lista o volve reproducir. Se está desactivado, o número de repeticións é só para o vídeo que se está reproducindo agora</string>
+  <string name="morphe_loop_count_clear_title">Limpar os números de repeticións gardados</string>
+  <string name="morphe_loop_count_clear_summary">Olvida os números de repeticións gardados nas túas listas de reprodución. Vídeos gardados: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Non hai números de repeticións gardados</string>
+  <string name="morphe_loop_count_clear_dialog_title">Limpar os números de repeticións gardados?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Os vídeos das túas listas de reprodución olvidan o seu número de repeticións, e Repetir vídeo xa non se activa cando unha lista os reproduce</string>
+  <string name="morphe_loop_count_clear_done">Números de repeticións gardados limpados</string>
+  <string name="morphe_loop_count_flyout_name">Contaxe de bucles</string>
+  <string name="morphe_loop_count_dialog_message">Cantas veces se reproduce o vídeo antes do seguinte vídeo, desde %1$s ata %2$s. Déixao baleiro para reproducir o vídeo en bucle sen límite.</string>
+  <string name="morphe_loop_count_times">%s veces</string>
+  <string name="morphe_loop_count_no_limit">Sen límite</string>
+  <string name="morphe_loop_count_decrease">Menos veces</string>
+  <string name="morphe_loop_count_increase">Máis veces</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Mostrar botón de imaxe en imaxe</string>
   <string name="morphe_pip_button_flyout_title">Amosar o menú de Picture-in-Picture</string>
@@ -1113,6 +1132,10 @@ Para amosar o menú 'Audio Track', cambie 'Spoof video streams' por calquera cli
   <string name="morphe_enhanced_ambient_mode_summary">Ilumina toda a páxina de visionado e as barras negras co vídeo, en lugar do modo Ambiente</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantener o texto lexible</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Atenúa a luz en vídeos brillantes para que o texto da páxina siga sendo lexible</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Atenuar ao desplazar</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Atenúa a luz mentres se despeza ou se toca a páxina</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Duración da atenuación</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Canto tempo permanece atenuada a luz despois de deixar de desplazar. Con 0, só o desplazamiento atenúa a luz, e esta volve ao normal en canto se detén o movemento</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Agochar tarxetas de información</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Para amosar o menú 'Audio Track', cambie 'Spoof video streams' por calquera cli
   <string name="morphe_hide_shorts_subscriptions_title">Ocultar no feed de Subscricións</string>
   <string name="morphe_hide_shorts_video_description_title">Ocultar na descrición do vídeo</string>
   <string name="morphe_hide_shorts_history_title">Ocultar no historial de visualización</string>
+  <string name="morphe_hide_shorts_notifications_title">Ocultar nas notificacións push</string>
   <string name="morphe_shorts_player_screen_title">Reproductor de Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Escolle que compoñentes aparecen no reprodutor de Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Desactivar o dobre toque para dar Like</string>

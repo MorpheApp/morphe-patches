@@ -75,6 +75,10 @@ public class PlaylistPatch {
             ? Settings.QUEUE_PLAYLIST_ID.get()
             : Settings.QUEUE_PLAYLIST_ID.resetToDefault();
     private static volatile String videoId = "";
+    /**
+     * If the video of the dialog plays next, instead of at the end of the queue.
+     */
+    private static volatile boolean playNext;
     private static volatile boolean syncStarted;
 
     @GuardedBy("itself")
@@ -84,7 +88,18 @@ public class PlaylistPatch {
      * Invoked by extension.
      */
     public static void prepareDialogBuilder(Context context, String currentVideoId) {
+        prepareDialogBuilder(context, currentVideoId, false);
+    }
+
+    /**
+     * Invoked by extension.
+     *
+     * @param playNext If the video is added after the playing video if it's in the queue,
+     *                 or else at the start of the queue, instead of at the end of the queue.
+     */
+    public static void prepareDialogBuilder(Context context, String currentVideoId, boolean playNext) {
         Utils.verifyOnMainThread();
+        PlaylistPatch.playNext = playNext;
 
         if (AuthUtils.isNotLoggedIn()) {
             handleCheckError(checkFailedAuth);
@@ -203,6 +218,8 @@ public class PlaylistPatch {
                                    boolean openVideo, boolean reload, boolean retry) {
         String currentPlaylistId = playlistId;
         String currentVideoId = videoId;
+        final boolean currentPlayNext = playNext;
+        String playingVideoId = PlayerType.getCurrent().isNoneOrHidden() ? "" : VideoInformation.getVideoId();
         Utils.runOnBackgroundThread(() -> {
             synchronized (lastVideoIds) {
                 if (currentPlaylistId.isEmpty()) {
@@ -259,6 +276,14 @@ public class PlaylistPatch {
 
                         lastVideoIds.putIfAbsent(currentVideoId, fetchedSetVideoId);
                         Logger.printDebug(() -> "Video added, setVideoId: " + fetchedSetVideoId);
+                        if (currentPlayNext) {
+                            // After the playing video if it's in the queue, or else at the start of the queue.
+                            String predecessorSetVideoId = playingVideoId.equals(currentVideoId)
+                                    ? null
+                                    : lastVideoIds.get(playingVideoId);
+                            EditPlaylistRequest.moveVideo(currentPlaylistId, fetchedSetVideoId,
+                                    predecessorSetVideoId, AuthUtils.getRequestHeader());
+                        }
                         showSnackbar(fetchSucceededAdd);
                         if (openPlaylist) {
                             openQueue(context, currentVideoId, openVideo, reload);

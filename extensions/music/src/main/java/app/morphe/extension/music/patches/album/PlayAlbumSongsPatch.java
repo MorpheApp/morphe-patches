@@ -45,12 +45,12 @@ public class PlayAlbumSongsPatch {
     }
 
     // YouTube Music album playlist ids share a stable "OLAK" prefix.
-    private static final String YOUTUBE_MUSIC_ALBUM_PREFIX = "OLAK";
+    public static final String YOUTUBE_MUSIC_ALBUM_PREFIX = "OLAK";
 
     /**
      * Key of the built-in 'Don't play music videos' setting.
      */
-    private static final String DONT_PLAY_VIDEO_SETTING_KEY = "pref_key_dont_play_video";
+    public static final String DONT_PLAY_VIDEO_SETTING_KEY = "pref_key_dont_play_video";
 
     private static final int NUMBER_OF_LAST_VIDEO_IDS_TO_TRACK = 10;
 
@@ -58,7 +58,7 @@ public class PlayAlbumSongsPatch {
      * The streams cannot be fetched until the album is known, so playback of the first track of an
      * album waits for it. Giving up leaves the music video playing.
      */
-    private static final long MAX_MILLISECONDS_TO_WAIT_FOR_ALBUM = 5000;
+    public static final long MAX_MILLISECONDS_TO_WAIT_FOR_ALBUM = 5000;
 
     /**
      * Album track the song streams of each music video came from.

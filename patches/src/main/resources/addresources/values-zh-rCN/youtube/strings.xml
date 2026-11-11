@@ -648,6 +648,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">清除</string>
   <string name="morphe_loop_video_range_toast_on">循环播放 %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">无效的时间范围</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">循环次数</string>
+  <string name="morphe_loop_count_screen_summary">选择在播放下一个视频之前，当前视频循环播放的次数</string>
+  <string name="morphe_loop_count_title">启用循环次数</string>
+  <string name="morphe_loop_count_summary">播放器的“更多”菜单在“循环播放视频”旁边显示“循环次数”，用于选择在播放下一个视频之前该视频播放多少次</string>
+  <string name="morphe_loop_count_playlists_title">在播放列表中保存循环次数</string>
+  <string name="morphe_loop_count_playlists_summary">播放列表中的每个视频都会保留您选择的循环次数，且当播放列表再次播放该视频时会自动开启“循环播放视频”。如果关闭此选项，循环次数仅适用于当前播放的视频</string>
+  <string name="morphe_loop_count_clear_title">清除已保存的循环次数</string>
+  <string name="morphe_loop_count_clear_summary">忘记播放列表中保存的循环次数。已保存的视频：%s</string>
+  <string name="morphe_loop_count_clear_summary_none">没有保存循环次数</string>
+  <string name="morphe_loop_count_clear_dialog_title">清除已保存的循环次数？</string>
+  <string name="morphe_loop_count_clear_dialog_message">播放列表中的视频将忘记其循环次数，且当播放列表播放这些视频时，“循环播放视频”将不再自动开启</string>
+  <string name="morphe_loop_count_clear_done">已清除保存的循环次数</string>
+  <string name="morphe_loop_count_flyout_name">循环次数</string>
+  <string name="morphe_loop_count_dialog_message">在播放下一个视频之前，该视频播放的次数，范围从 %1$s 到 %2$s。留空则无限制地循环播放该视频。</string>
+  <string name="morphe_loop_count_times">%s 次</string>
+  <string name="morphe_loop_count_no_limit">无限制</string>
+  <string name="morphe_loop_count_decrease">减少次数</string>
+  <string name="morphe_loop_count_increase">增加次数</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">显示画中画按钮</string>
   <string name="morphe_pip_button_flyout_title">显示画中画菜单</string>
@@ -1113,6 +1132,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">用视频颜色照亮整个观看页面和黑边，以替代氛围模式</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">保持文本可读</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">调暗亮色视频的光照，使页面上的文本保持可读</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">滚动时调暗</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">在滚动或触摸页面时调暗灯光</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">调暗时长</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">滚动停止后灯光保持调暗状态的时间。设置为 0 时，仅在滚动时调暗灯光，滚动停止后立即恢复</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">隐藏信息卡片</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">在订阅信息流中隐藏</string>
   <string name="morphe_hide_shorts_video_description_title">在视频说明中隐藏</string>
   <string name="morphe_hide_shorts_history_title">在观看历史记录中隐藏</string>
+  <string name="morphe_hide_shorts_notifications_title">在推送通知中隐藏</string>
   <string name="morphe_shorts_player_screen_title">Shorts 播放器</string>
   <string name="morphe_shorts_player_screen_summary">选择要在 Shorts 播放器上显示的组件</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">禁用双击点赞</string>

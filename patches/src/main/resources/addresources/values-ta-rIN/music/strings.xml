@@ -23,6 +23,8 @@ Second \"item\" text"</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_auto_song_version_title">எப்போதும் பாடல் பதிப்பையே இயக்கு</string>
+  <string name="morphe_music_auto_song_version_summary">வரிசையில் உள்ள அதிகாரப்பூர்வ இசை வீடியோக்களை அதற்குப் பொருத்தமான பாடலால் மாற்றும். இதற்கு செயலியின் அமைப்பில் \'இசை வீடியோக்களை இயக்காதே\' என்பது ஆன் செய்யப்பட வேண்டும். சரியான பொருத்தம் இல்லாத பாடல்கள் மாற்றப்படாமல் இருக்கும்</string>
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_music_downloads_summary">%1$s பாடல்கள் • %2$s MB</string>
@@ -95,6 +97,7 @@ Second \"item\" text"</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- video.speed.playbackSpeedPatch -->
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
@@ -158,16 +161,42 @@ Second \"item\" text"</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_navigation_bar_glass_title">கிளாஸ் நேவிகேஷன் பாரை இயக்கவும்</string>
   <string name="morphe_music_navigation_bar_glass_summary">வழிசெலுத்தல் பட்டையை மிதக்கும், உருண்டையான, ஒளிபுகும் கேப்சூலாகக் காட்டுகிறது</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">கிளாஸ் ஒளிபுகும் தன்மை</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">கிளாஸ் வழிசெலுத்தல் பட்டையின் வெளிப்படைத்தன்மை அளவை சரிசெய்யவும் (0 என்பது வெளிப்படையானது, 100 என்பது ஒளிபுகாதது)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">லேட் கிளாஸ்</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">லேசான மற்றும் தெளிவான கிளாஸுக்காக, கிளாஸ் வழிசெலுத்தல் பட்டையை இருண்ட நிறத்திற்குப் பதிலாக வெள்ளை நிறத்தில் மாற்றுகிறது</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">கிளாஸ் வழிசெலுத்தல் பட்டை அளவு</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">கிளாஸ் வழிசெலுத்தல் பட்டையின் உயரம், அகலம் மற்றும் பொத்தானுகளின் இடைவெளியை முன்னோட்டத்துடன் சரிசெய்யவும். திரையின் அகலத்தில் பொருந்தாத பொத்தான்கள் மறைக்கப்படும்</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">கண்ணாடி நேவிகேஷன் பார் அளவு மற்றும் பாணி</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">கிளாஸ் நேவிகேஷன் பாரின் உயரம், அகலம், பொத்தான்களின் இடைவெளி, ஒளிபுகும் தன்மை மற்றும் விளிம்பின் பிரகாசம் ஆகியவற்றை முன்கூட்டியே பார்த்து சரிசெய்யவும். திரையின் அகலத்திற்குள் பொருந்தாத பொத்தான்கள் மறைக்கப்படும்</string>
   <string name="morphe_music_navigation_bar_glass_size_height">உயரம்</string>
   <string name="morphe_music_navigation_bar_glass_size_width">அதிகபட்ச அகலம்</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">பொத்தான்களின் இடைவெளி</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">காட்டப்படும் பொத்தான்கள்: %2$s இல் %1$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">ஒளிபுகும் தன்மை</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">விளிம்பின் பிரகாசம்</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">கிளாஸ் மங்கலான தன்மை</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">கிளாஸ் நேவிகேஷன் பாரிற்கு பின்னால் உள்ள பக்கம் எவ்வளவு மங்கலாக இருக்க வேண்டும் (Android 14 மற்றும் அதற்குப் பிறகு). 0-இல் பக்கம் தெளிவாகத் தெரியும், Android 14-க்கு முன்பு பக்கம் மறைக்கப்பட்டிருக்கும்</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">லேட் கிளாஸ்</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">லேசான மற்றும் தெளிவான கிளாஸுக்காக, கிளாஸ் வழிசெலுத்தல் பட்டையை இருண்ட நிறத்திற்குப் பதிலாக வெள்ளை நிறத்தில் மாற்றுகிறது</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">ஆல்பம் கலை வண்ணம்</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">இயங்கும் பாடலின் ஆல்பம் கலை நிறத்தைக் கொண்டு கிளாஸ் நேவிகேஷன் பாரை வண்ணப்படுத்துகிறது</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">தேர்ந்தெடுக்கப்பட்ட பொத்தான் குறீயை மறை</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">கிளாஸ் நேவிகேஷன் பாரின் தேர்ந்தெடுக்கப்பட்ட பட்டனுக்குப் பின்னால் உள்ள வட்ட வடிவ ஹைலைட்டை மறைக்கிறது</string>
+  <string name="morphe_music_miniplayer_screen_title">மினிப்ளேயர்</string>
+  <string name="morphe_music_miniplayer_screen_summary">மினிப்ளேயரின் ஸ்டைல், பட்டன்கள் மற்றும் ஜஸ்டர்களை மாற்றவும்</string>
+  <string name="morphe_music_miniplayer_glass_title">கிளாஸ் மினிப்ளேயரை எனேபிள் செய்யவும்</string>
+  <string name="morphe_music_miniplayer_glass_summary">மிதக்கும் மினிப்ளேயரை வட்ட வடிவ, ஒளிஊடுருவும் கிளாஸ் கார்டாகக் காண்பிக்கிறது</string>
+  <string name="morphe_music_miniplayer_glass_style_title">கிளாஸ் மினிபிளேயர் ஸ்டைல்</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">கிளாஸ் மினிபிளேயரின் மூலை ஆரம், கலைப்படைப்பு இடைவெளி, விளிம்பு பிரகாசம் மற்றும் ஒளிபுகும் தன்மை ஆகியவற்றை முன்னோட்டத்துடன் சரிசெய்யவும்</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">மூலை ஆரம்</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">கலைப்படைப்பு இடைவெளி</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">விளிம்பு பிரகாசம்</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">ஒளிபுகும் தன்மை</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">கிளாஸ் மங்கலாக்கம்</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">கண்ணாடி மினிப்ளேயருக்குப் பின்னால் உள்ள பக்கம் எவ்வளவு மங்கலாக உள்ளது (Android 14 மற்றும் அதற்குப் பிறகு). 0-இல் பக்கம் தெளிவாகத் தெரியும், Android 14-க்கு முன் பக்கம் மறைக்கப்படும்</string>
+  <string name="morphe_music_miniplayer_glass_light_title">லேசான கண்ணாடி</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">லேசான மற்றும் தெளிவான கண்ணாடிக்கு, கண்ணாடி மினிப்ளேயரை இருண்ட நிறத்திற்குப் பதிலாக வெள்ளை நிறத்தில் மாற்றுகிறது</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">ஆல்பம் கலை வண்ணம்</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">இயங்கும் பாடலின் ஆல்பம் கலை வண்ணத்தைக் கொண்டு கண்ணாடி மினிப்ளேயரை வண்ணப்படுத்துகிறது</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">சுழலும் கலைப்படைப்பு</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">கிளாஸ் மினிப்ளேயரின் கலைப்படைப்பை வட்டமாக்கி, பாடல் இயங்கும்போது அதை ஒரு ரெக்கார்டு போல சுழலச் செய்கிறது</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">முன்னேற்றப் பட்டையை மறைக்கவும்</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">கிளாஸ் மினிப்ளேயரின் அடிப்பகுதியில் உள்ள முன்னேற்றப் பட்டையை மறைக்கிறது</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">முகப்பு</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">மாதிரிகள்</string>
@@ -238,7 +267,6 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_rime_dict_no_table">மேலே உள்ள மொழிக்கு Rime வார்த்தைப் பட்டியல் எதுவும் தேர்வு செய்யப்படவில்லை. ஒன்றைத் தேர்வு செய்ய இந்தப் பெயரைத் தட்டவும், அல்லது பட்டியல் உள்ள மொழியைத் தேர்வு செய்யவும்</string>
   <string name="morphe_music_lyrics_rime_dict_add">சேர்</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Rime வார்த்தைப் பட்டியலைச் சேர்</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">字 ham மற்றும் 典 din2 போன்ற வரிகளைக் கொண்ட ஒரு .dict.yaml கோப்பு, அல்லது அதை உள்ளடக்கிய ஒரு zip கோப்பு. நீங்கள் அதை டிக் செய்து சேமி-ஐத் தட்டும்போது பட்டியல் பெறப்படும், மேலும் அதன் உரிமத்தை நீங்கள் சரிபார்த்துக் கொள்ள வேண்டும்</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">மொழி குறியீடு</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Hak அல்லது wuu என்பது போல இரண்டு அல்லது மூன்று எழுத்துக்கள்</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">பெயர்</string>
@@ -268,6 +296,8 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_show_translate_button_summary">மொழிபெயர்ப்பை மாற்ற தட்டவும்; மொழிபெயர்ப்புக்கு மட்டும் நீண்ட நேரம் அழுத்தவும். பட்டியலிடப்பட்ட வரிசையில் செயல்படுத்தப்பட்ட மொழிபெயர்ப்பு வழங்குநர்களைப் பயன்படுத்துகிறது</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு பொத்தானைக் காட்டவும்</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பை மாற்ற தட்டவும்; ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்புக்கு மட்டும் நீண்ட நேரம் அழுத்தவும். பட்டியலிடப்பட்ட வரிசையில் செயல்படுத்தப்பட்ட ரோமமயமாக்கல் வழங்குநர்களைப் பயன்படுத்துகிறது</string>
+  <string name="morphe_music_lyrics_show_current_button_title">தற்போதைய பொத்தானைக் காட்டு</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">பாடலை கைமுறையாக நகர்த்தும்போது, பாடப்படும் வரிக்குத் திரும்பச் செல்லும் பொத்தானைக் காட்டுகிறது</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">ஒலிபெயர்ப்பைச் செயல்படுத்தவும்</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">பாடல்களின் மூலத்திலிருந்து லத்தீன் அல்லாத வாசிப்புகளை அனுமதிக்கவும்; ஆஃப் செய்யும்போது, லத்தீன் எழுத்துக்கள், உச்சரிப்புக்குறியீடு கொண்ட எழுத்துக்கள் மற்றும் டோன் எண்களை மட்டும் வைத்திருங்கள்</string>
   <string name="morphe_music_lyrics_local_romanization_summary">நேரம் நிர்ணயிக்கப்பட்ட பாடலின் ஒவ்வொரு வார்த்தையையும் வாசிக்கிறது (வார்த்தை ஒத்திசைவு ஆன்; கொரிய மொழிக்கு பதிவிறக்கம் தேவையில்லை; பதிநான்கு ஸ்கிரிப்டுகள் ஒரே CLDR பதிவிறக்கத்தைப் பகிர்ந்து கொள்கின்றன; ஹான் எழுத்துக்கள் Rime Wordlist-ஆல் வாசிக்கப்படுகின்றன, அதன் வார்த்தை அட்டவணை அந்த மொழியை உள்ளடக்கியிருக்கும் போது)</string>
@@ -280,6 +310,12 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">கிரேக்க, ஸ்லாவிக் சிரிலிக் (ரஷ்யன், உக்ரேனியன், பல்கேரியன், செர்பியன், பெலாரூசியன், மாகிடோனியன் உட்பட), ஜார்ஜியன், அர்மேனியன், ஹீப்ரு, அரபு, அம்ஹாரிக் மற்றும் சிரியாக் ஒலிபெயர்ப்பு (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">வாசிக்கப்படுகிறது %1$s: %2$s%%</string>
   <string name="morphe_music_lyrics_written_by">எழுதியவர்: %s</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">ஸ்பிரிங் ஸ்க்ரோலிங்கைப் பயன்படுத்தவும்</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">ஸ்பிரிங் இயற்பியலுடன் பாடலை நகர்த்துகிறது, மேலும் ஒவ்வொரு வரியையும் அதற்கு மேலே உள்ள வரிக்கு சற்றுப் பின்னால் நகர்த்துகிறது. மெதுவான சாதனங்களில் பேட்டரியைச் சேமிக்க இதை அணைக்கவும்</string>
+  <string name="morphe_music_lyrics_gap_dots_title">இசை இடைவெளிப் புள்ளிகளைக் காட்டு</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">நீண்ட இசை இடைவெளியின் போது வரிகளுக்கு இடையே மூன்று புள்ளிகளைக் காட்டும், இடைவெளி முடியும் போது அவை நிரம்பும்</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">தொலைதூர வரிகளை மேலும் மங்கலாக்கு</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">பாடும் வரியிலிருந்து எவ்வளவு தொலைவில் உள்ளதோ, அந்த அளவிற்கு ஒவ்வொரு செயலற்ற வரியும் மேலும் மங்கலாக்கப்படுகிறது. இது ஆஃப் செய்யப்பட்டிருக்கும்போது, அனைத்து செயலற்ற வரிகளும் ஒரே அளவில் மங்கலாக இருக்கும்</string>
   <string name="morphe_music_lyrics_line_scale_title">செயலில் இல்லாத வரிகளைக் குறுக்கவும்</string>
   <string name="morphe_music_lyrics_line_scale_summary">தற்போது பாடப்படாத ஒவ்வொரு வரியையும் சற்று சிறியதாக வரைந்து, அதே சமயம் மங்கலாகக் காட்டும்</string>
   <string name="morphe_music_lyrics_split_background_title">பின்னணி குரல்களைத் தனியாகக் காட்டவும்</string>
@@ -302,6 +338,7 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
 %s"</string>
   <string name="morphe_music_lyrics_romanize_language_none">எதுவுமில்லை</string>
   <string name="morphe_music_lyrics_ruby_language_title">ரூபி இலக்கு</string>
+  <string name="morphe_music_lyrics_current">தற்போதைய</string>
   <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC தற்போதைய பாடலுக்கான வரிகளைப் பிரதி எடுக்கிறது அல்லது நேரத்துடன் சீரமைக்கிறது</string>
   <string name="morphe_music_lyrics_about_summary">"பாடல்கள் தலைப்பு மற்றும் கலைஞரின் அடிப்படையில் பொருத்தப்படுகின்றன, அசாதாரண மெட்டாடேட்டா எதுவும் கிடைக்காமல் போகலாம் அல்லது தவறான பதிப்பைக் கண்டறியலாம். பதிப்புகளை மாற்ற refresh-ஐப் பயன்படுத்தவும். * குறியிடப்பட்ட வழங்குநர்களுக்கு டோக்கன் தேவை. செயல்படுத்தப்பட்ட அனைத்து வழங்குநர்களும் எப்போதும் உங்கள் வரிசையிலேயே கோரப்படுவதில்லை, ஆனால் அவர்களின் வேகத்தின் அடிப்படையில் பதிலளிக்கிறார்கள்.
 

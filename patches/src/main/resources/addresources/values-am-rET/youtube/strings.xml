@@ -648,6 +648,25 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_loop_video_range_clear">አጽዳ</string>
   <string name="morphe_loop_video_range_toast_on">ከ %1$s - %2$s በመደጋገም ላይ ነው</string>
   <string name="morphe_loop_video_range_invalid_time">የተሳሳተ የጊዜ ገደብ</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">የዙር ብዛት</string>
+  <string name="morphe_loop_count_screen_summary">ቀጣዩ ቪዲዮ ከመጀመሩ በፊት አንድ ቪዲዮ ስንት ጊዜ እንዲደጋገም እንደሚፈልጉ ይምረጡ</string>
+  <string name="morphe_loop_count_title">የዙር ብዛትን አግብ</string>
+  <string name="morphe_loop_count_summary">የተጫዋቹ More ሜኑ በሚቀጥለው ቪዲዮ ከመጫወቱ በፊት ቪዲዮው ስንት ጊዜ ይጫወት የሚለውን ለመምረጥ በLoop video አጠገብ Loop count ያሳያል</string>
+  <string name="morphe_loop_count_playlists_title">የሉፕ ብዛትን በፕሌይሊስቶች ውስጥ አስቀምጥ</string>
+  <string name="morphe_loop_count_playlists_summary">በፕሌይሊስት ውስጥ ያለ እያንዳንዱ ቪዲዮ የመረጥከውን የሉፕ ብዛት ያስቀምጣል፣ እና ፕሌይሊስቱ በድጋሚ ሲያጫወተው Loop video ይበራል። ከተጠፋ ግን የሉፕ ብዛቱ አሁን እየተጫወተ ላለው ቪዲዮ ብቻ ይሆናል</string>
+  <string name="morphe_loop_count_clear_title">የተቀመጡ የሉፕ ብዛቶችን አጽዳ</string>
+  <string name="morphe_loop_count_clear_summary">በፕሌይሊስቶቻችሁ ውስጥ የተቀመጡ የሉፕ ብዛቶችን አጥፋ። የተቀመጡ ቪዲዮዎች፡ %s</string>
+  <string name="morphe_loop_count_clear_summary_none">ምንም የተቀመጡ የሉፕ ብዛቶች የሉም</string>
+  <string name="morphe_loop_count_clear_dialog_title">የተቀመጡ የሉፕ ብዛቶችን ላጽዳ?</string>
+  <string name="morphe_loop_count_clear_dialog_message">የፕሌይሊስቶቻችሁ ቪዲዮዎች የሉፕ ብዛታቸውን ይረሳሉ፣ እና ፕሌይሊስቱ ሲያጫወታቸው Loop video በ longer አይበራም</string>
+  <string name="morphe_loop_count_clear_done">የተቀመጡ የሉፕ ብዛቶች ተጽድተዋል</string>
+  <string name="morphe_loop_count_flyout_name">የዙር ብዛት</string>
+  <string name="morphe_loop_count_dialog_message">ቀጣዩ ቪዲዮ ከመጀመሩ በፊት ቪዲዮው ስንት ጊዜ ይጫወት፣ ከ %1$s እስከ %2$s። ቪዲዮው ያለ ገደብ እንዲጫወት ክፍት አድርጉት።</string>
+  <string name="morphe_loop_count_times">%s ጊዜ</string>
+  <string name="morphe_loop_count_no_limit">ገደብ የለውም</string>
+  <string name="morphe_loop_count_decrease">ያነሰ ጊዜ</string>
+  <string name="morphe_loop_count_increase">የበለጠ ጊዜ</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">የስዕል በስዕል ቁልፉን አሳይ</string>
   <string name="morphe_pip_button_flyout_title">የስዕል በስዕል ሜኑን አሳይ</string>
@@ -1113,6 +1132,10 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_enhanced_ambient_mode_summary">በ Ambient ሞድ ፋንታ ሙሉውን የዕይታ ገጽ እና ጥቁር አጥሮችን በቪዲዮው ቀለም ያበራል</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">ጽሁፉን ለማንበብ እንዲመች አድርግ</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">በብሩህ ቪዲዮዎች ላይ ብርሃኑን ያደበዝዛል እና በገጹ ላይ ያለው ጽሁፍ ለማንበብ እንዲመች ያደርጋል</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">በማሸብለል ጊዜ ማደብዘዝ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">ገጹ በሚሸብለል ወይም በሚነካበት ጊዜ ብርሃኑን ያደብዝዛል</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">የማደብዘዝ ቆይታ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">ማሸብለል ካቆመ በኋላ ብርሃኑ ለምን ያህል ጊዜ ደብዘዝ ብሎ እንደሚቆይ ይወስናል። 0 ከሆነ ማሸብለል ብቻ ነው ብርሃኑን የሚያደብዝዘው፣ እና ማሸብለል ሲቆም ወዲያውኑ ይመለሳል</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">የመረጃ ካርዶችን ደብቅ</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_hide_shorts_subscriptions_title">በምዝገባዎች የይዘት ስርጭት ውስጥ ደብቅ</string>
   <string name="morphe_hide_shorts_video_description_title">በቪዲዮ መግለጫ ውስጥ ደብቅ</string>
   <string name="morphe_hide_shorts_history_title">በተመለከቱት ታሪክ ውስጥ ደብቅ</string>
+  <string name="morphe_hide_shorts_notifications_title">በፑሽ ማሳወቂያዎች ውስጥ ደብቅ</string>
   <string name="morphe_shorts_player_screen_title">የShorts ማጫወቻ</string>
   <string name="morphe_shorts_player_screen_summary">በShorts ፕሌየር ውስጥ የትኞቹ ክፍሎች እንደሚታዩ ይምረጡ</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">ለመውደድ የሁለት ጊዜ ንክኪን አጥፋ</string>

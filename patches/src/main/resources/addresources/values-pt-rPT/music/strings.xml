@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Ativar troca de áudio/vídeo</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Tentar alternar entre a versão da faixa de áudio e o videoclipe oficial</string>
+  <string name="morphe_music_auto_song_version_title">Sempre reproduzir a versão da música</string>
+  <string name="morphe_music_auto_song_version_summary">Substitui videoclipes oficiais na fila pela música correspondente. Requer que a configuração do app \"Não reproduzir videoclipes\" esteja ativada. Faixas sem correspondência exata permanecem inalteradas</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Descarregue vídeos musicais, podcasts ou músicas com aplicações de transferência de terceiros</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -335,6 +337,7 @@ Reprodução SABR (falsificação de streams de vídeo desativada)"</string>
   <string name="morphe_music_playback_speed_title">Velocidade de reprodução</string>
   <string name="morphe_music_playback_speed_summary">Velocidade usada em todas as faixas. A 100%, é usada a velocidade da aplicação, como a velocidade de reprodução de podcasts</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Alterar o tom com a velocidade</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Desativar redirecionamento de Não gosto</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Impede a passagem para a faixa seguinte quando o botão \'Não gosto\' é premido</string>
@@ -492,16 +495,42 @@ Reprodução SABR (falsificação de streams de vídeo desativada)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ocultar rótulos dos botões de navegação</string>
   <string name="morphe_music_navigation_bar_glass_title">Ativar barra de navegação de vidro</string>
   <string name="morphe_music_navigation_bar_glass_summary">Exibe a barra de navegação como uma cápsula flutuante, arredondada e translúcida</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Opacidade do vidro</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Ajusta o nível de transparência da barra de navegação de vidro (0 é transparente, 100 é opaco)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Vidro claro</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Tingiu a barra de navegação de vidro de branco em vez de escuro, para um vidro mais leve e claro</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Tamanho da barra de navegação de vidro</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Ajusta a altura, largura e espaçamento entre botões da barra de navegação de vidro, com uma pré-visualização. Botões que não se encaixam na largura da tela serão ocultos</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Tamanho e estilo da barra de navegação de vidro</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Ajusta a altura, a largura, o espaçamento entre botões, a opacidade e o brilho da borda da barra de navegação de vidro, com uma pré-visualização. Botões que não cabem na largura da tela são ocultos</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Altura</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Largura máxima</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Espaçãmento entre botões</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Botões disponíveis:  %1$s de %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Opacidade</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Brilho da borda</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Desfoque de vidro</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Quanto a página atrás da barra de navegação de vidro é desfocada (Android 14 e posterior). Em 0 a página aparece nítida e, antes do Android 14, a página fica coberta</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Vidro claro</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Tingiu a barra de navegação de vidro de branco em vez de escuro, para um vidro mais leve e claro</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Matiz da capa do álbum</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Aplica à barra de navegação de vidro a cor da capa do álbum da música que está tocando</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Ocultar indicador de botão selecionado</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Oculta o destaque arredondado atrás do botão selecionado na barra de navegação de vidro</string>
+  <string name="morphe_music_miniplayer_screen_title">Minijogador</string>
+  <string name="morphe_music_miniplayer_screen_summary">Alterar o estilo, os botões e os gestos do miniplayer</string>
+  <string name="morphe_music_miniplayer_glass_title">Ativar miniplayer de vidro</string>
+  <string name="morphe_music_miniplayer_glass_summary">Exibe o miniplayer flutuante como um cartão de vidro translúcido e arredondado</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Estilo do miniplayer de vidro</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Ajusta o raio do canto, o preenchimento da capa, o brilho da borda e a opacidade do miniplayer de vidro, com uma pré-visualização</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Arredondamento </string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Preenchimento da capa</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Brilho da borda</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Opacidade</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Desfoque de vidro</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Quanto a página atrás do miniplayer de vidro é desfocada (Android 14 e posterior). Em 0 a página aparece nítida e, antes do Android 14, a página fica coberta</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Vidro claro</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Aplica ao miniplayer de vidro a cor branca em vez de escura, para um vidro mais leve e claro</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Matiz da capa do álbum</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Aplica ao miniplayer de vidro a cor da capa do álbum da música que está tocando</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Capa giratória</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Torna a capa do miniplayer de vidro redonda e a faz girar como um disco enquanto a música toca</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Ocultar barra de progresso</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Oculta a barra de progresso na parte inferior do miniplayer de vidro</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Ecrã Principal</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Amostras</string>
@@ -634,7 +663,6 @@ A primeira coluna é a palavra, a segunda a sua leitura; colunas extras e linhas
   <string name="morphe_music_lyrics_rime_dict_no_table">Nenhuma lista de palavras Rime está marcada para o idioma acima. Toque neste nome para marcar uma, ou escolha um idioma que tenha uma lista</string>
   <string name="morphe_music_lyrics_rime_dict_add">Adicionar</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Adicionar uma Lista de Palavras Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Um ficheiro .dict.yaml, ou um zip que o contenha, com linhas como 字 ham e 典 din2. A lista é obtida quando a marca e toca em Guardar; a verificação da licença fica a seu cargo</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Código do idioma</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Duas ou três letras, como em hak ou wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Nome</string>
@@ -722,6 +750,8 @@ Cookies necessários: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_translate_button_summary">Toque para alternar tradução; mantenha premido apenas para tradução. Usa os fornecedores de tradução ativados na ordem listada</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Mostrar botão Romanizar ou Transliterar</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Toque para alternar romanização ou transliteração; mantenha premido apenas para romanização ou transliteração. Usa os fornecedores de romanização ativados na ordem listada</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Mostrar botão Atual</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Ao rolar a letra manualmente, mostra um botão que retorna para a linha que está sendo cantada</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Ativar transliteração</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Permitir leituras não latinas da fonte de letras; quando desligado, manter apenas letras latinas, letras acentuadas e dígitos de tom</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Lê cada palavra de uma letra sincronizada (sincronização de palavras ativada); o coreano não requer transferência; catorze scripts partilham uma transferência CLDR; caracteres Han são lidos pela Lista de Palavras Rime quando a sua tabela de palavras cobre o idioma</string>
@@ -745,6 +775,12 @@ Cookies necessários: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_written_by">Escrito por: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Destacar palavras ou sílabas sincronizadas</string>
   <string name="morphe_music_lyrics_word_sync_summary">Dá prioridade às letras palavra a palavra quando disponíveis. Quando as letras têm tempo por palavra, destaca cada palavra ou sílaba no ritmo da música</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Usar rolagem com mola</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Rola a letra com física de mola e move cada linha um pouco após a anterior. Desative para economizar bateria em dispositivos mais lentos</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Mostrar pontos de pausa instrumental</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Exibe três pontos entre as linhas durante uma pausa instrumental longa, que são preenchidos à medida que a pausa termina</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Escurecer mais as linhas distantes</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Escurece cada linha inativa proporcionalmente à sua distância da linha que está sendo cantada. Quando desativado, todas as linhas inativas são escurecidas da mesma forma</string>
   <string name="morphe_music_lyrics_line_scale_title">Encurtar linhas inativas</string>
   <string name="morphe_music_lyrics_line_scale_summary">Desenha cada linha que não está a ser cantada atualmente ligeiramente menor, além de escurecê-la</string>
   <string name="morphe_music_lyrics_split_background_title">Mostrar vocais de fundo separadamente</string>
@@ -834,6 +870,7 @@ Aplica-se a ambos os limites. Em 1,75, quatro caracteres de largura total contam
   <string name="morphe_music_lyrics_romanize_only">Apenas romanizado</string>
   <string name="morphe_music_lyrics_dual_only">Modo duplo</string>
   <string name="morphe_music_lyrics_copied">Copiado para a área de transferência</string>
+  <string name="morphe_music_lyrics_current">Atual</string>
   <string name="morphe_music_lyrics_refreshing">A atualizar</string>
   <string name="morphe_music_lyrics_refreshed">Atualizado</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Chave de API do QuickLRC</string>

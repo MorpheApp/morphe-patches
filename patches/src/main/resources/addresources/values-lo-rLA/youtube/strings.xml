@@ -648,6 +648,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">ລ້າງ</string>
   <string name="morphe_loop_video_range_toast_on">ກຳລັງວົນຊ້ຳ %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">ຊ່ວງເວລາບໍ່ຖືກຕ້ອງ</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">ຈຳນວນຮອບການວົນຊ້ຳ</string>
+  <string name="morphe_loop_count_screen_summary">ເລືອກຈຳນວນຄັ້ງທີ່ວິດີໂອຈະວົນຊ້ຳກ່ອນຈະໄປຫາວິດີໂອຖັດໄປ</string>
+  <string name="morphe_loop_count_title">ເປີດໃຊ້ງານຈຳນວນຮອບການວົນຊ້ຳ</string>
+  <string name="morphe_loop_count_summary">ເມນູ More ຂອງຕົວຫຼິ້ນຈະສະແດງ ຈຳນວນການວົນຊ້ຳ ຢູ່ຂ້າງ ວົນຊ້ຳວິດີໂອ, ເພື່ອເລືອກວ່າວິດີໂອຈະຫຼິ້ນຈັກຄັ້ງກ່ອນຈະໄປວິດີໂອຖັດໄປ</string>
+  <string name="morphe_loop_count_playlists_title">ບັນທຶກຈຳນວນການວົນຊ້ຳໃນລາຍການຫຼິ້ນ</string>
+  <string name="morphe_loop_count_playlists_summary">ແຕ່ລະວິດີໂອຂອງລາຍການຫຼິ້ນຈະເກັບຮັກສາຈຳນວນການວົນຊ້ຳທີ່ທ່ານເລືອກ, ແລະ ວົນຊ້ຳວິດີໂອ ຈະຖືກເປີດໃຊ້ເມື່ອລາຍການຫຼິ້ນຫຼິ້ນວິດີໂອນັ້ນອີກຄັ້ງ. ຖ້າປິດໃຊ້, ຈຳນວນການວົນຊ້ຳຈະມີຜົນສະເພາະວິດີໂອທີ່ກຳລັງຫຼິ້ນຢູ່ໃນຕອນນີ້ເທົ່ານັ້ນ</string>
+  <string name="morphe_loop_count_clear_title">ລຶບຈຳນວນການວົນຊ້ຳທີ່ບັນທຶກໄວ້</string>
+  <string name="morphe_loop_count_clear_summary">ລຶບຈຳນວນການວົນຊ້ຳທີ່ບັນທຶກໄວ້ໃນລາຍການຫຼິ້ນຂອງທ່ານ. ວິດີໂອທີ່ບັນທຶກໄວ້: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">ບໍ່ມີຈຳນວນການວົນຊ້ຳທີ່ຖືກບັນທຶກໄວ້</string>
+  <string name="morphe_loop_count_clear_dialog_title">ລຶບຈຳນວນການວົນຊ້ຳທີ່ບັນທຶກໄວ້ຫຼືບໍ່?</string>
+  <string name="morphe_loop_count_clear_dialog_message">ວິດີໂອໃນລາຍການຫຼິ້ນຂອງທ່ານຈະລຶບຈຳນວນການວົນຊ້ຳອອກ, ແລະ ວົນຊ້ຳວິດີໂອ ຈະບໍ່ຖືກເປີດໃຊ້ໂດຍອັດຕະໂນມັດເມື່ອລາຍການຫຼິ້ນຫຼິ້ນວິດີໂອເຫຼົ່ານັ້ນ</string>
+  <string name="morphe_loop_count_clear_done">ລຶບຈຳນວນການວົນຊ້ຳທີ່ບັນທຶກໄວ້ສຳເລັດແລ້ວ</string>
+  <string name="morphe_loop_count_flyout_name">ຈຳນວນການວົນຊ້ຳ</string>
+  <string name="morphe_loop_count_dialog_message">ຈຳນວນຄັ້ງທີ່ວິດີໂອຫຼິ້ນກ່ອນຈະໄປວິດີໂອຖັດໄປ, ຕັ້ງແຕ່ %1$s ຫາ %2$s. ປ່ອຍວ່າງໄວ້ເພື່ອວົນຊ້ຳວິດີໂອໂດຍບໍ່ມີຂີດຈຳກັດ.</string>
+  <string name="morphe_loop_count_times">%s ຄັ້ງ</string>
+  <string name="morphe_loop_count_no_limit">ບໍ່ມີຂີດຈຳກັດ</string>
+  <string name="morphe_loop_count_decrease">ຫຼຸດຈຳນວນຄັ້ງ</string>
+  <string name="morphe_loop_count_increase">ເພີ່ມຈຳນວນຄັ້ງ</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">ສະແດງປຸ່ມ Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">ສະແດງເມນູ Picture-in-Picture</string>
@@ -1113,6 +1132,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">ເຮັດໃຫ້ໜ້າເບິ່ງວິດີໂອທັງໝົດ ແລະ ແຖບສີດຳມີແສງຕາມວິດີໂອ ເພື່ອໃຊ້ແທນໂໝດ Ambient</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">ຮັກສາໃຫ້ຂໍ້ຄວາມອ່ານໄດ້ງ່າຍ</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">ຫຼຸດແສງໃນວິດີໂອທີ່ມີຄວາມສະຫວ່າງຫຼາຍ ເພື່ອໃຫ້ຂໍ້ຄວາມໃນໜ້າຍັງຄົງອ່ານໄດ້ງ່າຍ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">ຫຼຸດແສງໃນຂະນະທີ່ເລື່ອນ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">ຫຼຸດແສງໄຟໃນຂະນະທີ່ເລື່ອນໜ້າ ຫຼື ສຳຜັດ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">ໄລຍະເວລາຫຼຸດແສງ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">ໄລຍະເວລາທີ່ໄຟຍັງຄົງຫຼຸດແສງຫຼັງຈາກຢຸດເລື່ອນ. ຖ້າເປັນ 0 ຈະຫຼຸດແສງສະເພາະໃນຂະນະທີ່ເລື່ອນເທົ່ານັ້ນ ແລະ ຈະກັບມາສະຫວ່າງທັນທີທີ່ຢຸດເລື່ອນ</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">ເຊື່ອງບັດຂໍ້ມູນ</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">ເຊື່ອງໃນຟີດການຕິດຕາມ</string>
   <string name="morphe_hide_shorts_video_description_title">ເຊື່ອງໃນຄຳອະທິບາຍວິດີໂອ</string>
   <string name="morphe_hide_shorts_history_title">ເຊື່ອງໃນປະຫວັດການເບິ່ງ</string>
+  <string name="morphe_hide_shorts_notifications_title">ເຊື່ອງໃນການແຈ້ງເຕືອນແບບ push</string>
   <string name="morphe_shorts_player_screen_title">ເຄື່ອງຫຼິ້ນ Shorts</string>
   <string name="morphe_shorts_player_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ສະແດງໃນເຄື່ອງຫຼິ້ນ Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">ປິດການໃຊ້ງານການແຕະສອງຄັ້ງເພື່ອຖືກໃຈ</string>

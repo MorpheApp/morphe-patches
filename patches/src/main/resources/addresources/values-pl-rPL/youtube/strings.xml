@@ -70,7 +70,7 @@ Zmiany obejmują:
   <string name="morphe_hide_channel_buttons_summary">Ukrywa przyciski takie jak Subskrybuj, Wyświetl kanał, Społeczność i YouTube Music na profilach kanałów w wynikach wyszukiwania</string>
   <string name="morphe_hide_community_posts_title">Ukryj posty</string>
   <string name="morphe_post_buttons_screen_title">Przyciski postów</string>
-  <string name="morphe_post_buttons_screen_summary">Wybierz układ przycisków pod postami społeczności oraz określ, które przyciski mają być ukryte</string>
+  <string name="morphe_post_buttons_screen_summary">Zdecyduj, jaki ma być układ przycisków pod postami społeczności oraz które przyciski ukryć</string>
   <string name="morphe_post_buttons_layout_title">Układ przycisków postów</string>
   <string name="morphe_post_buttons_layout_entry_1">Serwerowy</string>
   <string name="morphe_post_buttons_layout_entry_2">Wymuszony</string>
@@ -648,6 +648,25 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_loop_video_range_clear">Wyczyść</string>
   <string name="morphe_loop_video_range_toast_on">Zapętlanie %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Nieprawidłowy zakres czasu</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Liczba zapętleń</string>
+  <string name="morphe_loop_count_screen_summary">Zdecyduj, ile razy film ma zostać zapętlony przed przejściem do następnego filmu</string>
+  <string name="morphe_loop_count_title">Włącz liczbę zapętleń</string>
+  <string name="morphe_loop_count_summary">Menu \"Więcej\" odtwarzacza wyświetla opcję \"Liczba zapętleń\" obok \"Odtwarzaj w pętli\", pozwalając wybrać, ile razy film ma zostać odtworzony przed przejściem do następnego</string>
+  <string name="morphe_loop_count_playlists_title">Zapisuj liczbę zapętleń na playlistach</string>
+  <string name="morphe_loop_count_playlists_summary">Każdy film na playliście zachowuje wybraną liczbę zapętleń, a opcja \"Odtwarzaj w pętli\" włącza się, gdy playlista odtworzy go ponownie. Po wyłączeniu liczba zapętleń dotyczy tylko aktualnie odtwarzanego filmu</string>
+  <string name="morphe_loop_count_clear_title">Wyczyść zapisaną liczbę zapętleń</string>
+  <string name="morphe_loop_count_clear_summary">Usuń liczby zapętleń zapisane na Twoich playlistach. Zapisane filmy: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Nie zapisano żadnych liczb zapętleń</string>
+  <string name="morphe_loop_count_clear_dialog_title">Wyczyścić zapisane liczby zapętleń?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Filmy z Twoich playlist zapomną swoją liczbę zapętleń, a opcja \"Odtwarzaj w pętli\" przestanie się włączać, gdy playlista będzie je odtwarzać</string>
+  <string name="morphe_loop_count_clear_done">Wyczyszczono zapisane liczby zapętleń</string>
+  <string name="morphe_loop_count_flyout_name">Liczba zapętleń</string>
+  <string name="morphe_loop_count_dialog_message">Ile razy film ma zostać odtworzony przed przejściem do następnego (od %1$s do %2$s). Pozostaw puste, aby zapętlać film bez limitu.</string>
+  <string name="morphe_loop_count_times">%s raz(y)</string>
+  <string name="morphe_loop_count_no_limit">Bez limitu</string>
+  <string name="morphe_loop_count_decrease">Mniej razy</string>
+  <string name="morphe_loop_count_increase">Więcej razy</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Pokaż przycisk obrazu w obrazie</string>
   <string name="morphe_pip_button_flyout_title">Pokaż menu obrazu w obrazie</string>
@@ -1113,6 +1132,10 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_enhanced_ambient_mode_summary">Podświetla całą stronę odtwarzania oraz czarne pasy kolorami z filmu, zastępując standardowy tryb oświetlenia kinowego</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Zachowaj czytelność tekstu</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Przyciemnia podświetlenie przy jasnych filmach, aby tekst na stronie pozostał czytelny</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Przyciemniaj podczas przewijania</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Przyciemnia światło podczas przewijania lub dotykania strony</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Czas przyciemnienia</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Jak długo światło pozostaje przyciemnione po zaprzestaniu przewijania. Przy wartości 0 tylko przewijanie przyciemnia światło, a ono wraca natychmiast po zaprzestaniu przewijania</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ukryj karty informacyjne</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_hide_shorts_subscriptions_title">Ukryj na stronie subskrypcji</string>
   <string name="morphe_hide_shorts_video_description_title">Ukryj w opisie filmów</string>
   <string name="morphe_hide_shorts_history_title">Ukryj w historii oglądania</string>
+  <string name="morphe_hide_shorts_notifications_title">Ukryj w powiadomieniach push</string>
   <string name="morphe_shorts_player_screen_title">Odtwarzacz Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Zdecyduj, które elementy będą wyświetlane w odtwarzaczu Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Wyłącz polubienie podwójnym dotknięciem</string>

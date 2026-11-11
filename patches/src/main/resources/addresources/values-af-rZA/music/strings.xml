@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Aktiveer oudio/video-skakelaar</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Probeer om tussen die oudiosnitweergawe en die amptelike musiekvideo te wissel</string>
+  <string name="morphe_music_auto_song_version_title">Speel altyd die liedjie-weergawe</string>
+  <string name="morphe_music_auto_song_version_summary">Vervang amptelike musiekvideo\'s in die touery met die ooreenstemmende liedjie. Vereis dat die app-instelling \'Moenie musiekvideo\'s speel nie\' aan is. Snystukkies sonder \'n presiese ooreenkoms bly onveranderd</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Laai musiekvideo\'s, podcasts of liedjies af met derdeparty-aflaai-programme</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Hulle word een-vir-een afgelaai, wat 'n lang tyd kan neem en ongeveer %3$s vrye 
   <string name="morphe_music_hide_repeat_button_title">Verberg Herhaal-knoppie</string>
   <string name="morphe_music_hide_shuffle_button_title">Verberg Skommel-knoppie</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Verberg \'Spoedskakel\'-rak</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Versteek \'Jy hou dalk ook van\'-afdeling</string>
   <string name="morphe_music_comments_screen_title">Kommentaar</string>
   <string name="morphe_music_comments_screen_summary">Kies watter komponente in die kommentaarafdeling verskyn</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Verberg Gemeenskapsriglyne</string>
@@ -335,6 +338,9 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_playback_speed_title">Afspeelspoed</string>
   <string name="morphe_music_playback_speed_summary">Spoed wat vir alle snitte gebruik word. Teen 100% word die toepassing se spoed gebruik, soos die podcast-afspeelspoed</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Verander toonhoogte saam met afspeelspoed</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Deaktiveer klank-ducking</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Volume word nie verlaag wanneer \'n ander toepassing \'n kort klank speel nie, soos \'n kennisgewing</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Deaktiveer die afkeur-omleiding</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Voorkom dat dit na die volgende snit spring wanneer die afkeur-knoppie gedruk word</string>
@@ -492,16 +498,42 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Versteek navigasieknoppie-etikette</string>
   <string name="morphe_music_navigation_bar_glass_title">Aktiveer glas-navigasiebalk</string>
   <string name="morphe_music_navigation_bar_glass_summary">Wys die navigasiebalk as \'n drywende, afgeronde, semi-deursigtige kapsule</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Glas-opasiteit</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Pas die deursigtigheidsvlak van die glas-navigasiebalk aan (0 is deursigtig, 100 is opaak)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Ligglas</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Kleur die glas-navigasiebalk wit in plaas van donker, vir \'n ligter en helderder glas</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Glas-navigasiebalk grootte</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Pas die hoogte, die breedte en die knoppie-spasiëring van die glas-navigasiebalk aan, met \'n voorbeeld. Knoppies wat nie in die breedte van die skerm pas nie, word versteek</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Glas-navigasiebalk-grootte en styl</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Pas die hoogte, die breedte, die knoppie-spasiëring, die opasiteit en die randhelderheid van die glas-navigasiebalk aan, met \'n voorbehoud. Knoppies wat nie in die breedte van die skerm pas nie, word versteek</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Hoogte</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Maksimum breedte</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Knoppie-spasiëring</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Knoppies gewys: %1$s van %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Dekking</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Randhelderheid</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Glas-waas</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Hoeveel die bladsy agter die glas-navigasiebalk gewaas is (Android 14 en later). By 0 is die bladsy skerp sigbaar, en voor Android 14 word die bladsy bedek</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Ligglas</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Kleur die glas-navigasiebalk wit in plaas van donker, vir \'n ligter en helderder glas</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Albumkunste-tint</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Tint die glas-navigasiebalk met die kleur van die albumkuns van die liedjie wat speel</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Steek geselekteerde knoppie-aanwyser weg</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Steek die afgeronde uitligging agter die geselekteerde knoppie van die glas-navigasiebalk weg</string>
+  <string name="morphe_music_miniplayer_screen_title">Mini-speler</string>
+  <string name="morphe_music_miniplayer_screen_summary">Verander die styl, die knoppies en die gebare van die mini-speler</string>
+  <string name="morphe_music_miniplayer_glass_title">Aktiveer glas mini-speler</string>
+  <string name="morphe_music_miniplayer_glass_summary">Wys die drywende mini-speler as \'n afgeronde, deursigtige glaskaart</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Glas mini-speler styl</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Pas die hoekradius, die kunswerk-padding, die randhelderheid en die opasiteit van die glas mini-speler aan, met \'n voorbehoud</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Hoekradius</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Kunswerk-padding</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Randhelderheid</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Dekking</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Glas-waas</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Hoeveel die bladsy agter die glas mini-speler gewaas is (Android 14 en later). By 0 is die bladsy skerp sigbaar, en voor Android 14 word die bladsy bedek</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Ligte glas</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Tint die glas mini-speler wit in plaas van donker, vir \'n ligter en helderder glas</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumkunste-tint</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Tint die glas mini-speler met die kleur van die albumkuns van die liedjie wat speel</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Draaiekunswerk</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Maak die kunswerk van die glas mini-speler rond, en laat dit soos \'n plaat draai terwyl \'n liedjie speel</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Steek vorderingsbalk weg</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Steek die vorderingsbalk onderaan die glas mini-speler weg</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Tuis</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Voorbeelde</string>
@@ -722,6 +754,8 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_show_translate_button_summary">Tik om vertaling te skakel; lang druk vir slegs vertaling. Gebruik die geaktiveerde vertaalverskaffers in hul lysvolgorde</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Wys Romaniseer- of Translitereer-knoppie</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Tik om romanisering of transliterasie te skakel; langdruk vir slegs romanisering of transliterasie. Gebruik die geaktiveerde romaniseringverskaffers in hul lysvolgorde</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Wys Huidige-knoppie</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Wys \'n knoppie wat terugspring na die reël wat gesing word terwyl die lirieke handmatig geskuif word</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Aktiveer transliterasie</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Laat nie-Latynse lesings toe vanaf die liriekbron; wanneer af, hou slegs Latynse letters, geaksenteerde letters en toonsiffers</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Lees elke woord van \'n gesinchroniseerde liriek (woordsinkronisasie aan); Koreaans benodig geen aflaai nie; veertien skrifte deel een CLDR-aflaai; Han-karakters word deur Rime-woordlys gelees wanneer sy woordetabel die taal dek</string>
@@ -745,6 +779,12 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_written_by">Geskryf deur: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Beklemtoon gesinchroniseerde woorde of lettergrepe</string>
   <string name="morphe_music_lyrics_word_sync_summary">Gee voorkeur aan woord-vir-woord-lirieke wanneer beskikbaar. Wanneer lirieke woordtydsberekening bevat, beklemtoon elke woord of lettergreep in tyd met die musiek</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Gebruik veer-skuif</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Skuif die lirieke met veer-fisika, en skuif elke reël \'n bietjie na die een bo dit. Skakel af om battery op stadiger toestelle te bespaar</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Wys instrumentele onderbreking-stippels</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Wys drie stippels tussen die lyne tydens \'n lang instrumentele onderbreking, wat opvul namate die onderbreking klaarmaak</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Dim verre lyne meer</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Dim elke onaktiewe lyn meer hoe verder dit van die lyn is wat gesing word. Wanneer af, word elke onaktiewe lyn dieselfde gedim</string>
   <string name="morphe_music_lyrics_line_scale_title">Krimp onaktiewe lyne</string>
   <string name="morphe_music_lyrics_line_scale_summary">Trek elke lyn wat tans nie gesing word nie effens kleiner, bo-op die vervaging daarvan</string>
   <string name="morphe_music_lyrics_split_background_title">Vertoon agtergrondvokale afsonderlik</string>
@@ -834,6 +874,7 @@ Word op beide limiete toegepas. By 1.75 tel vier volbreedte-karakters as 7."</st
   <string name="morphe_music_lyrics_romanize_only">Slegs geromaniseer</string>
   <string name="morphe_music_lyrics_dual_only">Dubbele modus</string>
   <string name="morphe_music_lyrics_copied">Na knipbord gekopieer</string>
+  <string name="morphe_music_lyrics_current">Huidig</string>
   <string name="morphe_music_lyrics_refreshing">Besig om te verfris</string>
   <string name="morphe_music_lyrics_refreshed">Verfris</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API-sleutel</string>

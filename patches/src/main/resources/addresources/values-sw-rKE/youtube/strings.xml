@@ -648,6 +648,25 @@ Ufunguo wako wa API usishirikishwe kamwe. Mtu yeyote mwenye ufikiaji nao anaweza
   <string name="morphe_loop_video_range_clear">Futa</string>
   <string name="morphe_loop_video_range_toast_on">Inarudia %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Kipindi cha muda kisicho sahihi</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Idadi ya mzunguko</string>
+  <string name="morphe_loop_count_screen_summary">Chagua ni mara ngapi video izunguke kabla ya video inayofuata</string>
+  <string name="morphe_loop_count_title">Washa idadi ya mzunguko</string>
+  <string name="morphe_loop_count_summary">Menyu ya Zaidi ya kinawiri inaonyesha Idadi ya mzunguko kando ya Rudia video, ili kuchagua ni mara ngapi video itacheza kabla ya video inayofuata</string>
+  <string name="morphe_loop_count_playlists_title">Hifadhi idadi ya mzunguko katika orodha za nyimbo</string>
+  <string name="morphe_loop_count_playlists_summary">Kila video ya orodha ya nyimbo huhifadhi idadi ya mzunguko uliyochagua, na Rudia video huwashwa wakati orodha ya nyimbo inapocheza tena. Ikiwa imezimwa, idadi ya mzunguko ni kwa ajili ya video inayocheza sasa tu</string>
+  <string name="morphe_loop_count_clear_title">Futa idadi za mzunguko zilizohifadhiwa</string>
+  <string name="morphe_loop_count_clear_summary">Sahau idadi za mzunguko zilizohifadhiwa katika orodha zako za nyimbo. Video zilizohifadhiwa: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Hakuna idadi za mzunguko zilizohifadhiwa</string>
+  <string name="morphe_loop_count_clear_dialog_title">Futa idadi za mzunguko zilizohifadhiwa?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Video za orodha zako za nyimbo husahau idadi yao ya mzunguko, na Rudia video haitawashwa tena wakati orodha ya nyimbo inapozicheza</string>
+  <string name="morphe_loop_count_clear_done">Idadi za mzunguko zilizohifadhiwa zimefutwa</string>
+  <string name="morphe_loop_count_flyout_name">Idadi ya mzunguko</string>
+  <string name="morphe_loop_count_dialog_message">Ni mara ngapi video inacheza kabla ya video inayofuata, kuanzia %1$s hadi %2$s. Acha wazi ili kurudia video bila kikomo.</string>
+  <string name="morphe_loop_count_times">%s mara</string>
+  <string name="morphe_loop_count_no_limit">Hakuna kikomo</string>
+  <string name="morphe_loop_count_decrease">Mara chache zaidi</string>
+  <string name="morphe_loop_count_increase">Mara nyingi zaidi</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Onyesha kitufe cha Picha-ndani-ya-Picha</string>
   <string name="morphe_pip_button_flyout_title">Onyesha menyu ya Picha-ndani-ya-Picha</string>
@@ -1113,6 +1132,10 @@ Ili kuonyesha menyu ya 'Audio Track', badilisha 'Spoof video streams' kuwa mteja
   <string name="morphe_enhanced_ambient_mode_summary">Huangaza ukurasa mzima wa kutazama na mipasuo myeusi kwa rangi ya video, badala ya Hali ya Ambient</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Weka maandishi yaweze kusomeka</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Hupunguza mwanga kwenye video zinazong\'aa ili maandishi kwenye ukurasa yaendelee kusomeka</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Fifisha wakati wa kusogeza</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Hufifisha mwanga wakati ukurasa unasogezwa au kuguswa</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Muda wa kufifisha</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Muda ambao mwanga unabaki kufifishwa baada ya kusogeza kukoma. Ukiwa 0, kusogeza pekee kunafifisha mwanga, na unarudi mara moja baada ya kusogeza kukoma</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ficha kadi za maelezo</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Ili kuonyesha menyu ya 'Audio Track', badilisha 'Spoof video streams' kuwa mteja
   <string name="morphe_hide_shorts_subscriptions_title">Ficha katika feed ya Usajili</string>
   <string name="morphe_hide_shorts_video_description_title">Ficha katika maelezo ya video</string>
   <string name="morphe_hide_shorts_history_title">Ficha katika historia ya kutazama</string>
+  <string name="morphe_hide_shorts_notifications_title">Ficha kwenye arifa za push</string>
   <string name="morphe_shorts_player_screen_title">Kicheza Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Chagua vipengele vinavyoonekana kwenye kichezaji cha Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Zima kugusa mara mbili ili kupenda</string>

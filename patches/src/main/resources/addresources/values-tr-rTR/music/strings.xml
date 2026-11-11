@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Ses/görüntü geçişini etkinleştir</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Ses Parçası Sürümü ile Resmi Müzik Videosu arasında geçiş yapmayı deneyin.</string>
+  <string name="morphe_music_auto_song_version_title">Her zaman şarkı versiyonunu oynat</string>
+  <string name="morphe_music_auto_song_version_summary">Kuyruktaki resmi müzik videolarını eşleşen şarkıyla değiştirir. Uygulama ayarlarındaki \'Müzik videolarını oynatma\' seçeneğinin açık olması gerekir. Tam eşleşmesi olmayan parçalar değiştirilmez</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Üçüncü taraf indirme uygulamalarıyla müzik videoları, podcast\'ler veya şarkılar indirin</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -335,6 +337,7 @@ SABR oynatma (video akışlarını taklit etme kapalı)"</string>
   <string name="morphe_music_playback_speed_title">Oynatma hızı</string>
   <string name="morphe_music_playback_speed_summary">Tüm parçalar için kullanılan hız. Yüzde 100\'de uygulama hızı kullanılır, örneğin podcast oynatma hızı gibi</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Hızla birlikte perdeyi değiştir</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Olumsuz oylama yönlendirmesini devre dışı bırak</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Olumsuz oy tuşuna basıldığında sonraki parçaya geçmeyi engeller</string>
@@ -492,16 +495,42 @@ SABR oynatma (video akışlarını taklit etme kapalı)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Gezinme düğmeleri etiketlerini gizle</string>
   <string name="morphe_music_navigation_bar_glass_title">Cam gezinme çubuğunu etkinleştir</string>
   <string name="morphe_music_navigation_bar_glass_summary">Gezinme çubuğunu yüzen, yuvarlak, yarı saydam bir kapsül olarak gösterir</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Cam opaklığı</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Cam gezinme çubuğunun şeffaflık düzeyini ayarlayın (0 şeffaf, 100 opak)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Açık renkli cam</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Daha açık ve net bir cam için, cam gezinme çubuğunu koyu yerine beyaza boyar</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Cam gezinme çubuğu boyutu</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Cam gezinme çubuğunun yüksekliğini, genişliğini ve düğme aralığını bir önizleme ile ayarlayın. Ekran genişliğine sığmayan düğmeler gizlenir</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Cam navigasyon çubuğu boyutu ve stili</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Cam navigasyon çubuğunun yüksekliğini, genişliğini, düğme aralığını, opaklığını ve kenar parlaklığını önizleme ile ayarlayın. Ekran genişliğine sığmayan düğmeler gizlenir</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Yükseklik</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Maksimum genişlik</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Düğme aralığı</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Gösterilen düğmeler: %2$s düğmeden %1$s tanesi</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Opaklık</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Kenar parlaklığı</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Cam bulanıklığı</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Cam navigasyon çubuğunun arkasındaki sayfanın ne kadar bulanık olacağı (Android 14 ve sonrası). 0 değerinde sayfa net görünür ve Android 14 öncesinde sayfa örtülür</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Açık renkli cam</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Daha açık ve net bir cam için, cam gezinme çubuğunu koyu yerine beyaza boyar</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Albüm kapağı rengi</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Cam navigasyon çubuğunu, çalan şarkının albüm kapağı rengiyle renklendirir</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Seçili düğme göstergesini gizle</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Cam navigasyon çubuğunun seçili düğmesinin arkasındaki yuvarlak vurguyu gizler</string>
+  <string name="morphe_music_miniplayer_screen_title">Mini oynatıcı</string>
+  <string name="morphe_music_miniplayer_screen_summary">Mini oynatıcının stilini, düğmelerini ve hareketlerini değiştirin</string>
+  <string name="morphe_music_miniplayer_glass_title">Cam mini oynatıcıyı etkinleştir</string>
+  <string name="morphe_music_miniplayer_glass_summary">Yüzer mini oynatıcıyı yuvarlak, yarı saydam bir cam kart olarak gösterir</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Cam mini oynatıcı stili</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Cam mini oynatıcının köşe yarıçapını, kapak resmi boşluğunu, kenar parlaklığını ve opaklığını önizleme ile ayarlayın</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Köşe yarıçapı</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Kapak resmi boşluğu</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Kenar parlaklığı</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Opaklık</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Cam bulanıklığı</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Cam mini oynatıcının arkasındaki sayfanın ne kadar bulanık olacağı (Android 14 ve sonrası). 0 değerinde sayfa net görünür ve Android 14 öncesinde sayfa örtülür</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Açık renk cam</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Daha hafif ve daha net bir cam için, cam mini oynatıcıyı koyu renk yerine beyaza boyar</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Albüm kapağı rengi</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Cam mini oynatıcıyı, çalan şarkının albüm kapağı rengiyle renklendirir</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Dönen kapak resmi</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Cam mini oynatıcının kapak resmini yuvarlak yapar ve bir şarkı çalarken bir plak gibi döndürür</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">İlerleme çubuğunu gizle</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Cam mini oynatıcının altındaki ilerleme çubuğunu gizler</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Ana Sayfa</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Örnekler</string>
@@ -634,7 +663,6 @@ Her liste sizin kelime-okuma tablonuz olan ve aşağıdaki gibi satırları içe
   <string name="morphe_music_lyrics_rime_dict_no_table">Yukarıdaki dil için seçilmiş hiç Rime kelime listesi yok. Bir tane seçmek için bu isme dokunun veya listesi olan başka bir dil seçin</string>
   <string name="morphe_music_lyrics_rime_dict_add">Ekle</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Rime Kelime Listesi ekle</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">字 ham ve 典 din2 gibi satırları içeren bir .dict.yaml dosyası veya bunu içeren bir zip. Liste, onu işaretlediğinizde ve Kaydet\'e tıkladığınızda çekilir ve lisansın kontrolünü sağlamak size kalmıştır</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Dil kodu</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">İki veya üç harf, örn. hak veya wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Ad</string>
@@ -722,6 +750,8 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_show_translate_button_summary">Çeviriyi açıp kapatmak için dokunun; yalnızca çeviri görmek için uzun basın. Etkin çeviri sağlayıcılarını sıralarına göre kullanır</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Romanize veya Transliterate et düğmesini göster</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Romanizasyonu veya transliterasyonu açıp kapatmak için dokunun; yalnızca romanizasyon veya transliterasyon yapmak için uzun basın. Etkin romanizasyon sağlayıcılarını sıralarına göre kullanır</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Şu Anki düğmesini göster</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Şarkı sözleri elle kaydırılırken, söylenen satıra geri dönen bir düğme gösterir</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Transliterasyonu etkinleştir</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Şarkı sözü kaynağından Latin olmayan okumalara izin ver; kapalıyken yalnızca Latin harflerini, aksanlı harfleri ve ses tonu rakamlarını koru</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Zamanlanmış şarkı sözünün her kelimesini okur (kelime senkronizasyonu açık); Korece için indirme gerekmez; on dört yazı sistemi tek bir CLDR indirmesini paylaşır; Han karakterleri Rime Kelime Listesi tarafından, kelime tablosu dili kapsadığında okunur</string>
@@ -745,6 +775,12 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_written_by">Yazan: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Senkronize kelimeleri veya heceleri vurgula</string>
   <string name="morphe_music_lyrics_word_sync_summary">Mümkün olduğunda kelime kelime şarkı sözlerine öncelik ver. Şarkı sözleri kelime zamanlaması içeriyorsa, her kelimeyi veya heceyi müzikle eş zamanlı olarak vurgular</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Yaylı kaydırmayı kullan</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Şarkı sözlerini yay yay fiziğiyle kaydırır ve her satırı bir üsttekinden biraz daha sonraya taşır. Yavaş cihazlarda pil tasarrufu yapmak için kapatın</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Enstrümantal ara noktalarını göster</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Uzun enstrümantal aralar sırasında satırlar arasında, ara bittikçe dolan üç nokta gösterir</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Uzak satırları daha fazla karart</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Söylenen satırdan ne kadar uzaksa, aktif olmayan her satırı o kadar fazla karartır. Kapalıyken, tüm aktif olmayan satırlar aynı şekilde karartılır</string>
   <string name="morphe_music_lyrics_line_scale_title">Etkin olmayan satırları küçült</string>
   <string name="morphe_music_lyrics_line_scale_summary">Şu an söylenmeyen her satırı biraz daha küçük çizer, üstüne karartma efekti uygular</string>
   <string name="morphe_music_lyrics_split_background_title">Arka plan vokallerini ayrı göster</string>
@@ -834,6 +870,7 @@ Her iki sınır için de geçerlidir. 1,75 değerinde, dört tam genişlikteki k
   <string name="morphe_music_lyrics_romanize_only">Sadece romanize</string>
   <string name="morphe_music_lyrics_dual_only">Çift mod</string>
   <string name="morphe_music_lyrics_copied">Panoya kopyalandı</string>
+  <string name="morphe_music_lyrics_current">Şu andaki</string>
   <string name="morphe_music_lyrics_refreshing">Yenileniyor</string>
   <string name="morphe_music_lyrics_refreshed">Yenilendi</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API anahtarı</string>

@@ -648,6 +648,24 @@ Je API-sleutel mag nooit worden gedeeld. Iedereen met toegang tot deze sleutel k
   <string name="morphe_loop_video_range_clear">Wissen</string>
   <string name="morphe_loop_video_range_toast_on">Herhalen %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ongeldige tijd opgegeven</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Aantal loops</string>
+  <string name="morphe_loop_count_screen_summary">Kies hoe vaak een video wordt herhaald voordat de volgende video begint</string>
+  <string name="morphe_loop_count_title">Loop-aantal inschakelen</string>
+  <string name="morphe_loop_count_summary">Het \'Meer\'-menu van de speler toont het aantal herhalingen naast \'Video herhalen\', om te kiezen hoe vaak de video wordt afgespeeld voordat de volgende video start</string>
+  <string name="morphe_loop_count_playlists_title">Aantal herhalingen opslaan in afspeellijsten</string>
+  <string name="morphe_loop_count_playlists_summary">Elke video van een afspeellijst behoudt het door u gekozen aantal herhalingen, en \'Video herhalen\' wordt ingeschakeld wanneer de afspeellijst deze opnieuw afspeelt. Als dit is uitgeschakeld, geldt het aantal herhalingen alleen voor de video die nu wordt afgespeeld</string>
+  <string name="morphe_loop_count_clear_title">Opgeslagen herhalingen wissen</string>
+  <string name="morphe_loop_count_clear_summary">Vergeet de herhalingen die zijn opgeslagen in uw afspeellijsten. Opgeslagen video\'s: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Er zijn geen herhalingen opgeslagen</string>
+  <string name="morphe_loop_count_clear_dialog_title">Opgeslagen herhalingen wissen?</string>
+  <string name="morphe_loop_count_clear_dialog_message">De video\'s in uw afspeellijsten vergeten hun aantal herhalingen, en \'Video herhalen\' wordt niet langer ingeschakeld wanneer een afspeellijst ze afspeelt</string>
+  <string name="morphe_loop_count_clear_done">Opgeslagen herhalingen gewist</string>
+  <string name="morphe_loop_count_flyout_name">Aantal loops</string>
+  <string name="morphe_loop_count_dialog_message">Hoe vaak de video wordt afgespeeld voordat de volgende video start, van %1$s tot %2$s. Laat dit leeg om de video zonder limiet te loopen.</string>
+  <string name="morphe_loop_count_no_limit">Geen limiet</string>
+  <string name="morphe_loop_count_decrease">Minder vaak</string>
+  <string name="morphe_loop_count_increase">Vaker</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Toon Picture-in-Picture-knop</string>
   <string name="morphe_pip_button_flyout_title">Toon Picture-in-Picture-menu</string>
@@ -1113,6 +1131,10 @@ Om het 'Audio Track'-menu weer te geven, wijzig 'Spoof video streams' naar elke 
   <string name="morphe_enhanced_ambient_mode_summary">Verlicht de hele videopagina en de zwarte balken met de video, in plaats van de sfeervolle modus</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Tekst leesbaar houden</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dimt het licht bij heldere video\'s zodat de tekst op de pagina leesbaar blijft</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Dimmen tijdens scrollen</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Dimt het licht terwijl de pagina wordt gescrold of aangeraakt</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Dimduur</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Hoe lang het licht gedimd blijft nadat het scrollen stopt. Bij 0 dimt alleen het scrollen het licht, en het komt direct terug zodra het scrollen stopt</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Verberg infokaarten</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Om het 'Audio Track'-menu weer te geven, wijzig 'Spoof video streams' naar elke 
   <string name="morphe_hide_shorts_subscriptions_title">Verbergen in Abonnementen-feed</string>
   <string name="morphe_hide_shorts_video_description_title">Verbergen in videobeschrijving</string>
   <string name="morphe_hide_shorts_history_title">Verbergen in kijkgeschiedenis</string>
+  <string name="morphe_hide_shorts_notifications_title">Verbergen in pushmeldingen</string>
   <string name="morphe_shorts_player_screen_title">Shorts-speler</string>
   <string name="morphe_shorts_player_screen_summary">Kies welke componenten verschijnen in de Shorts-speler</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Dubbeltikken om een like te geven uitschakelen</string>

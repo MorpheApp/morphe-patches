@@ -646,6 +646,24 @@ Sizning API kalitingiz hech kim bilan baham ko'rilmasligi kerak. Uni kirish huqu
   <string name="morphe_loop_video_range_clear">O\'chirish</string>
   <string name="morphe_loop_video_range_toast_on">Takrorlanmoqda %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Noto\'g\'ri vaqt diapazoni</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Takrorlanishlar soni</string>
+  <string name="morphe_loop_count_screen_summary">Keyingi videoga o\'tishdan oldin video necha marta takrorlanishini tanlang</string>
+  <string name="morphe_loop_count_title">Takrorlanishlar sonini yoqish</string>
+  <string name="morphe_loop_count_summary">Pleyerning \"Yana\" menyusida \"Videoni takrorlash\" yonida, keyingi videoga o\'tishdan oldin video necha marta ijro etilishini tanlash uchun \"Takrorlashlar soni\" ko\'rsatiladi</string>
+  <string name="morphe_loop_count_playlists_title">Pleylistlarda takrorlashlar sonini saqlash</string>
+  <string name="morphe_loop_count_playlists_summary">Pleylistning har bir videosi siz tanlagan takrorlashlar sonini saqlaydi va pleylist uni qayta ijro etganda \"Videoni takrorlash\" yoqiladi. Agar o\'chirilsa, takrorlashlar soni faqat hozir ijro etilayotgan video uchun amal qiladi</string>
+  <string name="morphe_loop_count_clear_title">Saqlangan takrorlashlar sonini tozalash</string>
+  <string name="morphe_loop_count_clear_summary">Pleylistlaringizda saqlangan takrorlashlar sonini o\'chiring. Saqlangan videolar: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Hech qanday takrorlashlar soni saqlanmagan</string>
+  <string name="morphe_loop_count_clear_dialog_title">Saqlangan takrorlashlar sonini tozalashni xohlaysizmi?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Pleylistlaringizdagi videolar o\'z takrorlashlar sonini unutadi va pleylist ularni ijro etganda \"Videoni takrorlash\" endi yoqilmaydi</string>
+  <string name="morphe_loop_count_clear_done">Saqlangan takrorlashlar soni tozalandi</string>
+  <string name="morphe_loop_count_flyout_name">Takrorlanishlar soni</string>
+  <string name="morphe_loop_count_dialog_message">Keyingi video boshlanishidan oldin video necha marta ijro etilishi, %1$s dan %2$s gacha. Videoni cheksiz takrorlash uchun bo\"sh qoldiring.</string>
+  <string name="morphe_loop_count_no_limit">Cheksiz</string>
+  <string name="morphe_loop_count_decrease">Kamroq marta</string>
+  <string name="morphe_loop_count_increase">Ko\"proq marta</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">\"Rasm rasmda\" tugmasini ko\'rsatish</string>
   <string name="morphe_pip_button_flyout_title">\"Rasm rasmda\" menyusini ko\'rsatish</string>
@@ -1111,6 +1129,10 @@ Sozlamalarga kirish uchun General → Toolbar → Show Settings button orqali So
   <string name="morphe_enhanced_ambient_mode_summary">Ambient rejimi o\'rniga butun tomosha sahifasini va qora panellarni video bilan yoritadi</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Matn o\'qilishini saqlab qolish</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Yorqin videolarda yorug\'likni pasaytiradi, shunda sahifadagi matn o\'qilishi oson bo\'ladi</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Harakatlantirganda xiralashtirish</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Sahifa harakatlantirilganda yoki tegilganda yorug\'likni xiralashtiradi</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Xiralashish davomiyligi</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Harakatlantirish to\'xtagandan so\'ng yorug\'lik qancha vaqt xiralashgan holda qolishi. 0 bo\'lganda faqat harakatlantirish yorug\'likni xiralashtiradi va harakat to\'xtashi bilan yorug\'lik qaytadi</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ma\'lumot kartalarini yashirish</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1131,6 +1153,7 @@ Sozlamalarga kirish uchun General → Toolbar → Show Settings button orqali So
   <string name="morphe_hide_shorts_subscriptions_title">Obunalar oziqlantirishida yashirish</string>
   <string name="morphe_hide_shorts_video_description_title">Video tavsifida yashirish</string>
   <string name="morphe_hide_shorts_history_title">Tomosha tarixida yashirish</string>
+  <string name="morphe_hide_shorts_notifications_title">Push-bildirishnomalarda yashirish</string>
   <string name="morphe_shorts_player_screen_title">Qisqa pleyer</string>
   <string name="morphe_shorts_player_screen_summary">Shorts pleyerida qaysi komponentlar ko\'rinishini tanlang</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Ikki marta bosib yoqtirishni o\'chirish</string>

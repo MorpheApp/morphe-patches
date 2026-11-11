@@ -35,7 +35,7 @@ val enableForcedMiniplayerPatch = patch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
+        PreferenceScreen.addMiniplayerPreferences(
             SwitchPreference("morphe_music_enable_forced_miniplayer", summary = true)
         )
 

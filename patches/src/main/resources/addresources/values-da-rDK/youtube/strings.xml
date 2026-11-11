@@ -648,6 +648,24 @@ Din API-nøgle bør aldrig deles. Enhver med adgang til den kan bruge dine OpenR
   <string name="morphe_loop_video_range_clear">Ryd</string>
   <string name="morphe_loop_video_range_toast_on">Gentager %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ugyldigt tidsinterval</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Loop-antal</string>
+  <string name="morphe_loop_count_screen_summary">Vælg hvor mange gange en video looper, før den næste video starter</string>
+  <string name="morphe_loop_count_title">Aktiver loop-antal</string>
+  <string name="morphe_loop_count_summary">Mere-menuen i afspilleren viser Loop-antal ved siden af Loop video, så du kan vælge, hvor mange gange videoen skal afspilles, før den næste video starter</string>
+  <string name="morphe_loop_count_playlists_title">Gem loop-antal i playlister</string>
+  <string name="morphe_loop_count_playlists_summary">Hver video i en playliste bevarer det loop-antal, du vælger, og Loop video aktiveres, når playlisten afspiller den igen. Hvis det er slået fra, gælder loop-antallet kun for den video, der afspilles nu</string>
+  <string name="morphe_loop_count_clear_title">Ryd gemte loop-antal</string>
+  <string name="morphe_loop_count_clear_summary">Glem de loop-antal, der er gemt i dine playlister. Gemte videoer: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Ingen loop-antal er gemt</string>
+  <string name="morphe_loop_count_clear_dialog_title">Ryd gemte loop-antal?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Videoerne i dine playlister glemmer deres loop-antal, og Loop video aktiveres ikke længere, når en playliste afspiller dem</string>
+  <string name="morphe_loop_count_clear_done">Gemte loop-antal er ryddet</string>
+  <string name="morphe_loop_count_flyout_name">Antal loops</string>
+  <string name="morphe_loop_count_dialog_message">Hvor mange gange videoen afspilles før den næste video, fra %1$s til %2$s. Lad feltet være tomt for at loope videoen uden begrænsning.</string>
+  <string name="morphe_loop_count_no_limit">Ingen begrænsning</string>
+  <string name="morphe_loop_count_decrease">Færre gange</string>
+  <string name="morphe_loop_count_increase">Flere gange</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Vis billede-i-billede-knappen</string>
   <string name="morphe_pip_button_flyout_title">Vis billede-i-billede-menuen</string>
@@ -1113,6 +1131,10 @@ For at vise 'Lydspor'-menuen skal du ændre 'Spoof video streams' til enhver kli
   <string name="morphe_enhanced_ambient_mode_summary">Oplyser hele afspilningssiden og de sorte bjælker med videoen i stedet for omsluttende tilstand</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Hold tekst læsbar</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dæmper lyset på lyse videoer, så teksten på siden forbliver læsbar</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Dæmp under rulning</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Dæmper lyset, mens siden rulles eller berøres</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Dæmpningens varighed</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Hvor længe lyset forbliver dæmpet efter rulning er stoppet. Ved 0 er det kun rulning, der dæmper lyset, og det vender tilbage, så snart rulningen stopper</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Skjul infokort</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ For at vise 'Lydspor'-menuen skal du ændre 'Spoof video streams' til enhver kli
   <string name="morphe_hide_shorts_subscriptions_title">Skjul i \'Abonnementer\'-feed</string>
   <string name="morphe_hide_shorts_video_description_title">Skjul i videobeskrivelse</string>
   <string name="morphe_hide_shorts_history_title">Skjul i seerhistorik</string>
+  <string name="morphe_hide_shorts_notifications_title">Skjul i push-meddelelser</string>
   <string name="morphe_shorts_player_screen_title">Shorts-afspiller</string>
   <string name="morphe_shorts_player_screen_summary">Vælg hvilke elementer der vises i Shorts-afspilleren</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Deaktiver dobbeltklik for at like</string>

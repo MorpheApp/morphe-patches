@@ -648,6 +648,24 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_loop_video_range_clear">खाली करें</string>
   <string name="morphe_loop_video_range_toast_on">%1$s से %2$s लूपिंग</string>
   <string name="morphe_loop_video_range_invalid_time">अमान्य समय सीमा</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">लूप काउंट</string>
+  <string name="morphe_loop_count_screen_summary">चुनें कि अगला वीडियो आने से पहले एक वीडियो कितनी बार लूप हो</string>
+  <string name="morphe_loop_count_title">लूप काउंट सक्षम करें</string>
+  <string name="morphe_loop_count_summary">प्लेयर का More मेनू, Loop video के बगल में Loop count दिखाता है, जिससे यह चुना जा सके कि अगला वीडियो चलने से पहले वर्तमान वीडियो कितनी बार चलेगा</string>
+  <string name="morphe_loop_count_playlists_title">प्लेलिस्ट में लूप काउंट सेव करें</string>
+  <string name="morphe_loop_count_playlists_summary">प्लेलिस्ट का प्रत्येक वीडियो आपके द्वारा चुने गए लूप काउंट को याद रखता है, और जब प्लेलिस्ट इसे दोबारा चलाती है तो Loop video चालू हो जाता है। यदि इसे बंद कर दिया जाता है, तो लूप काउंट केवल अभी चल रहे वीडियो के लिए होता है</string>
+  <string name="morphe_loop_count_clear_title">सेव किए गए लूप काउंट साफ़ करें</string>
+  <string name="morphe_loop_count_clear_summary">अपनी प्लेलिस्ट में सेव किए गए लूप काउंट हटा दें। सेव किए गए वीडियो: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">कोई लूप काउंट सेव नहीं है</string>
+  <string name="morphe_loop_count_clear_dialog_title">सेव किए गए लूप काउंट साफ़ करें?</string>
+  <string name="morphe_loop_count_clear_dialog_message">आपकी प्लेलिस्ट के वीडियो अपना लूप काउंट भूल जाएंगे, और जब कोई प्लेलिस्ट उन्हें चलाएगी तो Loop video अब चालू नहीं होगा</string>
+  <string name="morphe_loop_count_clear_done">सेव किए गए लूप काउंट साफ़ कर दिए गए</string>
+  <string name="morphe_loop_count_flyout_name">लूप काउंट</string>
+  <string name="morphe_loop_count_dialog_message">अगला वीडियो चलने से पहले वीडियो कितनी बार चलेगा, %1$s से %2$s तक। वीडियो को बिना किसी सीमा के लूप करने के लिए इसे खाली छोड़ दें।</string>
+  <string name="morphe_loop_count_no_limit">कोई सीमा नहीं</string>
+  <string name="morphe_loop_count_decrease">कम बार</string>
+  <string name="morphe_loop_count_increase">अधिक बार</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">पिक्चर-इन-पिक्चर बटन दिखाएँ</string>
   <string name="morphe_pip_button_flyout_title">पिक्चर-इन-पिक्चर मेनू दिखाएँ</string>
@@ -1113,6 +1131,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_enhanced_ambient_mode_summary">एम्बिएंट मोड के स्थान पर, पूरे वॉच पेज और ब्लैक बार को वीडियो के साथ रोशन करता है</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">टेक्स्ट को पढ़ने योग्य रखें</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">चमकदार वीडियो पर रोशनी को कम करता है ताकि पेज पर टेक्स्ट पढ़ने योग्य रहे</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">स्क्रॉल करते समय मंद करें</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">पेज को स्क्रॉल करने या छूने पर लाइट मंद हो जाती है</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">मंद अवधि</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">स्क्रॉलिंग रुकने के बाद लाइट कितनी देर तक मंद रहती है। 0 के साथ केवल स्क्रॉलिंग लाइट को मंद करती है, और स्क्रॉलिंग रुकते ही यह वापस आ जाती है</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">इन्फो कार्ड्स को छुपाएं</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hide_shorts_subscriptions_title">सदस्यता फ़ीड में छुपाएं</string>
   <string name="morphe_hide_shorts_video_description_title">वीडियो विवरण में छुपाएं</string>
   <string name="morphe_hide_shorts_history_title">इतिहास में छुपाएं</string>
+  <string name="morphe_hide_shorts_notifications_title">पुश नोटिफिकेशन में छुपाएं</string>
   <string name="morphe_shorts_player_screen_title">Shorts खिलाड़ी</string>
   <string name="morphe_shorts_player_screen_summary">Shorts प्लेयर में कौन‑कौन से घटक दिखाई दें, चुनें</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">डबल टैप से लाइक को अक्षम करें</string>

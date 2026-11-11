@@ -648,6 +648,24 @@ Jūsų API raktas niekada neturėtų būti dalijamas. Kiekvienas, turintis priei
   <string name="morphe_loop_video_range_clear">Išvalyti</string>
   <string name="morphe_loop_video_range_toast_on">Kartojama %1$s – %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Neteisingas laiko intervalas</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Kartotimų skaičius</string>
+  <string name="morphe_loop_count_screen_summary">Pasirinkite, kiek kartų vaizdo įrašas turi būti atkartotas prieš pradedant kitą vaizdo įrašą</string>
+  <string name="morphe_loop_count_title">Įjungti kartotimų skaičių</string>
+  <string name="morphe_loop_count_summary">Leidėjo „Daugiau“ meniu šalia parinkties „Kartoti vaizdo įrašą“ rodomas kartojimų skaičius, leidžiantis pasirinkti, kiek kartų vaizdo įrašas bus atkartotas prieš paleidžiant kitą</string>
+  <string name="morphe_loop_count_playlists_title">Išsaugoti ciklo skaičių grodomose sąrašo</string>
+  <string name="morphe_loop_count_playlists_summary">Kiekvienas grodomo sąrašo vaizdo įrašas išsaugo jūsų pasirinktą ciklo skaičių, o „Vaizdo įrašo ciklas“ įsijungia, kai grodomas sąrašas jį paleidžia iš naujo. Jei išjungta, ciklo skaičius taikomas tik dabar grojamam vaizdo įrašui</string>
+  <string name="morphe_loop_count_clear_title">Ištrinti išsaugotus ciklo skaičius</string>
+  <string name="morphe_loop_count_clear_summary">Pamiršti grodomuose sąrašo išsaugotus ciklo skaičius. Išsaugoti vaizdo įrašai: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Ciklo skaičiai nėra išsaugoti</string>
+  <string name="morphe_loop_count_clear_dialog_title">Ištrinti išsaugotus ciklo skaičius?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Jūsų grodomų sąrašų vaizdo įrašai pamirš savo ciklo skaičių, o „Vaizdo įrašo ciklas“ nebeįsijungs, kai grodomas sąrašas juos paleidžia</string>
+  <string name="morphe_loop_count_clear_done">Išsaugoti ciklo skaičiai ištrinti</string>
+  <string name="morphe_loop_count_flyout_name">Kila kiekis</string>
+  <string name="morphe_loop_count_dialog_message">Kiek kartų vaizdo įrašas turi būti paleistas prieš kitą vaizdo įrašą, nuo %1$s iki %2$s. Palikite tuščią, kad vaizdo įrašas būtų cikluose be apribojimų.</string>
+  <string name="morphe_loop_count_no_limit">Be apribojimų</string>
+  <string name="morphe_loop_count_decrease">Mažiau kartų</string>
+  <string name="morphe_loop_count_increase">Daugiau kartų</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Rodyti „Vaizdas vaizde“ mygtuką</string>
   <string name="morphe_pip_button_flyout_title">Rodyti „Vaizdas vaizde“ meniu</string>
@@ -1113,6 +1131,10 @@ Kad būtų rodomas meniu „Garso takelis“, parinktyje „Maskuoti vaizdo įra
   <string name="morphe_enhanced_ambient_mode_summary">Apšviečia visą peržiūros puslapį ir juostas vaizdo įrašo spalvomis vietoj aplinkos režimo</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Išlaikyti teksto įskaitomumą</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Pridimsta šviesą ryškiuose vaizdo įrašuose, kad puslapio tekstas išliktų įskaitomas</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title"> Prismenkit skroluojant</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Prislankina apšvietimą, kai puslapis yra skroluojamas arba paliečiamas</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Prislankymo trukmė</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Kiek ilgai šviesa išlieka prislankyta po to, kai skrolavimas nustoti. Nustatymui 0 reiškia, kad šviesą prislankina tik skrolavimas, ir ji grįžta iškart po skrolavimo nutraukimo</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Slėpti informacijos korteles</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Kad būtų rodomas meniu „Garso takelis“, parinktyje „Maskuoti vaizdo įra
   <string name="morphe_hide_shorts_subscriptions_title">Slėpti prenumeratų kanale</string>
   <string name="morphe_hide_shorts_video_description_title">Slėpti vaizdo įrašo aprašyme</string>
   <string name="morphe_hide_shorts_history_title">Slėpti žiūrėjimo istorijoje</string>
+  <string name="morphe_hide_shorts_notifications_title">Slėpti stumiamose pranešimuose</string>
   <string name="morphe_shorts_player_screen_title">„Shorts“ grotuvas</string>
   <string name="morphe_shorts_player_screen_summary">Pasirinkite, kurie komponentai rodomi „Shorts“ grotuve</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Išjungti dvigubą bakstelėjimą, kad būtų pažymėta „Patinka“</string>

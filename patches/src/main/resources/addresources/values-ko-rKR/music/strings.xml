@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">오디오/동영상 스위치 활성화하기</string>
   <string name="morphe_music_enable_audio_video_switch_summary">오디오 트랙 버전과 공식 뮤직비디오를 서로 전환할 수 있습니다</string>
+  <string name="morphe_music_auto_song_version_title">항상 곡 버전으로 재생</string>
+  <string name="morphe_music_auto_song_version_summary">대기열의 공식 뮤직비디오를 일치하는 곡으로 바꿉니다. 앱 설정의 \'뮤직비디오 재생 안 함\'이 켜져 있어야 합니다. 정확히 일치하는 곡이 없는 트랙은 그대로 유지됨</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">서드파티 다운로드 앱을 사용하여 뮤직비디오, 팟캐스트 또는 노래를 다운로드할 수 있습니다</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">반복 버튼 숨기기</string>
   <string name="morphe_music_hide_shuffle_button_title">셔플 버튼 숨기기</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">빠른 선곡 선반 숨기기</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">\'추천 콘텐츠\' 섹션 숨기기</string>
   <string name="morphe_music_comments_screen_title">댓글</string>
   <string name="morphe_music_comments_screen_summary">댓글 섹션에 표시할 구성 요소를 선택하세요</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">커뮤니티 가이드라인 숨기기</string>
@@ -335,6 +338,9 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_playback_speed_title">재생 속도</string>
   <string name="morphe_music_playback_speed_summary">모든 트랙에 사용되는 속도입니다. 100%로 설정하면 팟캐스트 재생 속도와 같은 앱 속도가 사용됩니다</string>
   <string name="morphe_music_playback_speed_change_pitch_title">속도에 따라 피치 변경하기</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">오디오 더킹 비활성화</string>
+  <string name="morphe_music_disable_audio_ducking_summary">알림과 같이 다른 앱에서 짧은 소리가 재생될 때 볼륨이 낮아지지 않습니다</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">싫어요 리다이렉션 비활성화하기</string>
   <string name="morphe_music_disable_dislike_redirection_summary">싫어요 버튼을 탭했을 경우에 다음 트랙으로 건너뛰는 것을 방지합니다</string>
@@ -492,16 +498,42 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_hide_navigation_bar_labels_title">하단바 버튼 라벨 숨기기</string>
   <string name="morphe_music_navigation_bar_glass_title">글래스 하단바 활성화하기</string>
   <string name="morphe_music_navigation_bar_glass_summary">탐색 바를 플로팅 형태의 둥글고 반투명한 캡슐 모양으로 표시합니다</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">글래스 불투명도</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">글래스 하단바의 투명도를 설정할 수 있습니다 (0: 완전 투명, 100: 완전 불투명)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">밝은 글래스</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">더 밝고 투명한 느낌을 위해 글래스 탐색 바의 색상을 어두운 색 대신 흰색으로 설정합니다</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">글래스 탐색 바 크기</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">미리보기를 통해 글래스 탐색 바의 높이, 너비 및 버튼 간격을 조정합니다. 화면 너비에 맞지 않는 버튼은 숨겨집니다</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">글래스 내비게이션 바 크기 및 스타일</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">글래스 내비게이션 바의 높이, 너비, 버튼 간격, 불투명도 및 테두리 밝기를 미리보기와 함께 조정합니다. 화면 너비에 맞지 않는 버튼은 숨겨짐</string>
   <string name="morphe_music_navigation_bar_glass_size_height">높이</string>
   <string name="morphe_music_navigation_bar_glass_size_width">최대 너비</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">버튼 간격</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">표시된 버튼: %2$s개 중 %1$s개</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">불투명도</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">테두리 밝기</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">글래스 블러</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">글래스 내비게이션 바 뒤의 페이지가 얼마나 블러 처리되는지 설정합니다(Android 14 이상). 0으로 설정하면 페이지가 선명하게 보이며, Android 14 이전 버전에서는 페이지가 가려짐</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">밝은 글래스</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">더 밝고 투명한 느낌을 위해 글래스 탐색 바의 색상을 어두운 색 대신 흰색으로 설정합니다</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">앨범 아트 색조</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">재생 중인 곡의 앨범 아트 색상으로 글래스 내비게이션 바에 색조를 입힘</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">선택된 버튼 표시기 숨기기</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">글래스 내비게이션 바에서 선택된 버튼 뒤의 둥근 강조 표시를 숨김</string>
+  <string name="morphe_music_miniplayer_screen_title">미니 플레이어</string>
+  <string name="morphe_music_miniplayer_screen_summary">미니 플레이어의 스타일, 버튼 및 제스처를 변경함</string>
+  <string name="morphe_music_miniplayer_glass_title">글래스 미니 플레이어 활성화</string>
+  <string name="morphe_music_miniplayer_glass_summary">플로팅 미니 플레이어를 둥글고 반투명한 글래스 카드로 표시함</string>
+  <string name="morphe_music_miniplayer_glass_style_title">글래스 미니 플레이어 스타일</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">글래스 미니 플레이어의 모서리 곡률, 아트워크 패딩, 테두리 밝기 및 불투명도를 미리보기와 함께 조정함</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">모서리 곡률</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">아트워크 패딩</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">테두리 밝기</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">불투명도</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">글래스 블러</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">글래스 미니 플레이어 뒤의 페이지가 얼마나 블러 처리되는지 설정합니다(Android 14 이상). 0으로 설정하면 페이지가 선명하게 보이며, Android 14 이전 버전에서는 페이지가 가려짐</string>
+  <string name="morphe_music_miniplayer_glass_light_title">밝은 글래스</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">글래스 미니 플레이어를 어두운 색 대신 흰색으로 색조를 입혀 더 밝고 투명한 글래스로 만듦</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">앨범 아트 색조</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">재생 중인 곡의 앨범 아트 색상으로 글래스 미니 플레이어에 색조를 입힘</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">회전하는 아트워크</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">글래스 미니 플레이어의 아트워크를 둥글게 만들고, 곡이 재생되는 동안 레코드처럼 회전시킴</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">진행 표시줄 숨기기</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">글래스 미니 플레이어 하단의 진행 표시줄을 숨김</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">홈</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">샘플</string>
@@ -724,6 +756,8 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">번역을 켜거나 끄려면 탭하세요; 번역만 표시하려면 길게 탭하세요. 활성화된 번역 제공자를 설정된 순서대로 사용합니다</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">로마자 표기 또는 음역 버튼 표시하기</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">로마자 표기 또는 음역 기능을 켜거나 끄려면 탭하세요; 로마자 표기 또는 음역 결과만 표시하려면 길게 탭하세요. 활성화된 로마자 표기 제공자를 설정된 순서대로 사용합니다</string>
+  <string name="morphe_music_lyrics_show_current_button_title">현재 위치 버튼 표시하기</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">가사를 직접 스크롤하는 동안, 현재 노래하고 있는 줄로 바로 이동하는 버튼을 표시합니다</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">음역 활성화하기</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">가사 소스에서 제공하는 비라틴 문자 발음을 허용합니다; 이 설정을 비활성화하면 라틴 문자, 악센트가 있는 문자 및 성조 숫자만 유지합니다</string>
   <string name="morphe_music_lyrics_local_romanization_summary">시간이 지정된 가사의 각 단어를 읽습니다 (단어 단위 동기화 활성화). 한국어는 별도의 다운로드가 필요하지 않습니다. 14개 문자 체계는 하나의 CLDR 다운로드 파일을 공유합니다. 한자는 Rime 단어 목록의 단어 표가 해당 언어를 지원하는 경우 읽을 수 있습니다</string>
@@ -747,6 +781,12 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_written_by">작성자: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">동기화된 단어 또는 음절 강조 표시하기</string>
   <string name="morphe_music_lyrics_word_sync_summary">가능한 경우 단어 단위로 표시되는 가사를 우선합니다. 가사에 단어별 타이밍 정보가 포함되어 있으면, 음악에 맞춰 각 단어 음절을 순서대로 강조 표시합니다</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">스프링 스크롤 사용</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">스프링 물리 효과를 사용하여 가사를 스크롤하며, 각 줄을 위쪽 줄보다 약간 뒤에 배치합니다. 성능이 낮은 기기에서 배터리를 절약하려면 이 기능을 끄십시오</string>
+  <string name="morphe_music_lyrics_gap_dots_title">간주 점 표시</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">긴 간주 동안 줄 사이에 세 개의 점을 표시하며, 간주가 끝날 때까지 점이 채워짐</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">먼 줄을 더 어둡게 표시</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">현재 노래하고 있는 줄에서 멀어질수록 비활성 줄을 더 어둡게 표시합니다. 껐을 때는 모든 비활성 줄이 동일하게 어둡게 표시됨</string>
   <string name="morphe_music_lyrics_line_scale_title">비활성 가사 줄 축소하기</string>
   <string name="morphe_music_lyrics_line_scale_summary">현재 노래가 재생되고 있지 않은 모든 가사 줄을 어둡게 표시하는 것에 더해, 글자 크기도 약간 작게 표시합니다</string>
   <string name="morphe_music_lyrics_split_background_title">백그라운드 보컬 별도 표시하기</string>
@@ -836,6 +876,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_romanize_only">로마자 표기만</string>
   <string name="morphe_music_lyrics_dual_only">듀얼 모드</string>
   <string name="morphe_music_lyrics_copied">클립보드에 복사하였습니다</string>
+  <string name="morphe_music_lyrics_current">현재</string>
   <string name="morphe_music_lyrics_refreshing">새로고침 중</string>
   <string name="morphe_music_lyrics_refreshed">새로고침됨</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API 키</string>

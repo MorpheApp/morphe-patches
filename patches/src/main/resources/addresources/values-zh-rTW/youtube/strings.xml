@@ -648,6 +648,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">清除</string>
   <string name="morphe_loop_video_range_toast_on">循環播放 %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">所選時間無效</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">循環次數</string>
+  <string name="morphe_loop_count_screen_summary">選擇在播放下一部影片前，影片循環播放的次數</string>
+  <string name="morphe_loop_count_title">啟用循環次數</string>
+  <string name="morphe_loop_count_summary">播放器的「更多」選單在「循環播放影片」旁邊顯示「循環次數」，可用以選擇在播放下一段影片前，該影片要播放多少次</string>
+  <string name="morphe_loop_count_playlists_title">在播放清單中儲存循環次數</string>
+  <string name="morphe_loop_count_playlists_summary">播放清單中的每段影片都會保留您選擇的循環次數，且當播放清單再次播放該影片時，會自動開啟「循環播放影片」。如果關閉此功能，循環次數將僅適用於目前播放的影片</string>
+  <string name="morphe_loop_count_clear_title">清除已儲存的循環次數</string>
+  <string name="morphe_loop_count_clear_summary">忘記儲存在播放清單中的循環次數。已儲存的影片：%s</string>
+  <string name="morphe_loop_count_clear_summary_none">未儲存任何循環次數</string>
+  <string name="morphe_loop_count_clear_dialog_title">清除已儲存的循環次數？</string>
+  <string name="morphe_loop_count_clear_dialog_message">您播放清單中的影片將忘記其循環次數，且當播放清單播放這些影片時，「循環播放影片」將不再自動開啟</string>
+  <string name="morphe_loop_count_clear_done">已清除儲存的循環次數</string>
+  <string name="morphe_loop_count_flyout_name">迴圈次數</string>
+  <string name="morphe_loop_count_dialog_message">在播放下一段影片前，此影片播放的次數，範圍從 %1$s 到 %2$s。留空則會無限制地迴圈播放影片。</string>
+  <string name="morphe_loop_count_times">%s 次</string>
+  <string name="morphe_loop_count_no_limit">無限制</string>
+  <string name="morphe_loop_count_decrease">減少次數</string>
+  <string name="morphe_loop_count_increase">增加次數</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">顯示子母畫面按鈕</string>
   <string name="morphe_pip_button_flyout_title">顯示子母畫面選單</string>
@@ -1111,6 +1130,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">使用影片色彩照亮整個觀看頁面及黑邊，以取代微光效果</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">保持文字可讀性</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">調低明亮影片的亮度，使頁面上的文字保持可讀</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">捲動時調暗</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">在捲動或觸碰頁面時調暗燈光</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">調暗持續時間</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">停止捲動後燈光保持調暗的時間。設定為 0 則僅在捲動時調暗燈光，停止捲動後立即恢復</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">隱藏資訊卡</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1131,6 +1154,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">在訂閱內容中隱藏</string>
   <string name="morphe_hide_shorts_video_description_title">在影片說明中隱藏</string>
   <string name="morphe_hide_shorts_history_title">在觀看記錄中隱藏</string>
+  <string name="morphe_hide_shorts_notifications_title">在推播通知中隱藏</string>
   <string name="morphe_shorts_player_screen_title">Shorts 播放器</string>
   <string name="morphe_shorts_player_screen_summary">選擇要在 Shorts 播放器中顯示哪些元件</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">停用兩下讚</string>

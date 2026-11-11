@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Aktivera ljud/videoväxling</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Försök att byta ljudspårsversion och officiell musikvideo</string>
+  <string name="morphe_music_auto_song_version_title">Spara alltid låtversionen</string>
+  <string name="morphe_music_auto_song_version_summary">Ersätter officiella musikvideor i kön med motsvarande låt. Kräver att appinställningen \'Spela inte musikvideor\' är aktiverad. Spår utan en exakt matchning förblir oförändrade</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Ladda ner musikvideor, poddar eller låtar med tredjeparts nedladdningsappar</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -335,6 +337,7 @@ SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <string name="morphe_music_playback_speed_title">Uppspelningshastighet</string>
   <string name="morphe_music_playback_speed_summary">Hastighet som används för alla spår. Vid 100 % används appens hastighet, till exempel uppspelningshastigheten för poddar.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Ändra tonhöjd med hastigheten</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Inaktivera omdirigering av ogilla</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Förhindrar att hoppa till nästa låt när ogilla-knappen trycks</string>
@@ -492,16 +495,42 @@ SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Dölj etiketter för navigeringsknappar</string>
   <string name="morphe_music_navigation_bar_glass_title">Aktivera glänsande navigeringsfält</string>
   <string name="morphe_music_navigation_bar_glass_summary">Visar navigeringsfältet som en flytande, rundad och genomskinlig kapsel</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Glasets opacitet</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Justera genomskinlighetsnivån för glasnavigeringsfältet (0 är genomskinligt, 100 är ogenomskinligt)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Ljust glas</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Gör glasnavigeringsfältet vitt istället för mörkt, för ett ljusare och klarare glas</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Glasnavigeringsfältets storlek</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Justera höjden, bredden och knappavståndet för glasnavigeringsfältet, med en förhandsvisning. Knappar som inte får plats inom skärmens bredd döljs</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Storlek och stil på glasnavigeringsfältet</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Justera höjden, bredden, knappavståndet, opaciteten och kantens ljusstyrka för glasnavigeringsfältet, med en förhandsvisning. Knappar som inte får plats inom skärmens bredd döljs</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Höjd</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Maximal bredd</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Knappavstånd</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Knappar som visas: %1$s av %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Opacitet</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Kantens ljusstyrka</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Glasoskärpa</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Hur mycket sidan bakom glasnavigeringsfältet är suddig (Android 14 och senare). Vid 0 visas sidan skarp, och före Android 14 är sidan täckt</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Ljust glas</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Gör glasnavigeringsfältet vitt istället för mörkt, för ett ljusare och klarare glas</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Albumbildstoning</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Tonar glasnavigeringsfältet med färgen från albumbilden för låten som spelas</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Dölj indikator för vald knapp</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Döljer den rundade markeringen bakom den valda knappen i glasnavigeringsfältet</string>
+  <string name="morphe_music_miniplayer_screen_title">Minispelare</string>
+  <string name="morphe_music_miniplayer_screen_summary">Ändra stil, knappar och gester för minispelaren</string>
+  <string name="morphe_music_miniplayer_glass_title">Aktivera glasminispelare</string>
+  <string name="morphe_music_miniplayer_glass_summary">Visar den flytande minispelaren som ett rundat, genomskinligt glaskort</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Stil för glasminispelare</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Justera hörnradien, utfyllnaden för albumomslaget, kantens ljusstyrka och opaciteten för glasminispelaren, med en förhandsvisning</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Hörnradie</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Utfyllnad för albumomslag</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Kantens ljusstyrka</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Opacitet</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Glasoskärpa</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Hur mycket sidan bakom glasminispelaren är suddig (Android 14 och senare). Vid 0 visas sidan skarp, och före Android 14 är sidan täckt</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Ljust glas</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Tonar glasminispelaren vit istället för mörk, för ett ljusare och klarare glas</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumbildstoning</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Tonar glasminispelaren med färgen från albumbilden för låten som spelas</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Sjunkande albumomslag</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Gör albumomslaget i glasminispelaren runt och roterar det som en skiva medan en låt spelas</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Dölj framstegsmätare</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Döljer framstegsmätaren längst ner i glasminispelaren</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Start</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Exempel</string>
@@ -634,7 +663,6 @@ Den första kolumnen är ordet, den andra dess läsning; extra kolumner och rade
   <string name="morphe_music_lyrics_rime_dict_no_table">Ingen Rime-ordlista är markerad för språket ovan. Tryck på detta namn för att markera en, eller välj ett språk som har en lista</string>
   <string name="morphe_music_lyrics_rime_dict_add">Lägg till</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Lägg till en Rime-ordlista</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">En .dict.yaml-fil, eller en zip med en sådan innehållande rader som 字 ham och 典 din2. Listan hämtas när du markerar den och trycker Spara, och licensen äger du att kontrollera</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Språkkod</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Två eller tre bokstäver, som t.ex. hak eller wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Namn</string>
@@ -717,6 +745,8 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_show_translate_button_summary">Tryck för att växla översättning; långtryck för endast översättning. Använder de aktiverade översättningstjänsterna i deras angivna ordning</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Visa knappen för romanisering eller translitterering</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Tryck för att växla romanisering eller translitterering; långtryck för endast romanisering eller translitterering. Använder de aktiverade romaniseringstjänsterna i deras angivna ordning</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Visa knappen Aktuell</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Visar en knapp som hoppar tillbaka till raden som sjungs när man scrollar genom texten manuellt</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Aktivera translitterering</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Tillåt icke-latinska utlägg från lyrics-källan; när avaktiverad behåll endast latinska bokstäver, bokstäver med diakritiska tecken och tonbitar</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Läser upp varje ord i en synkroniserad text (ordsynkronisering på); koreanska behöver ingen nedladdning; fjorton skript delar en CLDR-nedladdning; kinesiska tecken läses upp av Rime-ordlistan när dess ordtabell täcker språket</string>
@@ -740,6 +770,12 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_written_by">Skriven av: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Markera synkroniserade ord eller stavelser</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritera ord-för-ord-text när det finns. När texten har ordtajming markeras varje ord eller stavelse i takt med musiken.</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Använd fjädrande scrollning</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Scrollar texten med fjäderfysik och flyttar varje rad lite efter raden ovanför. Stäng av för att spara batteri på långsammare enheter</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Visa prickar för instrumentalpauser</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Visar tre prickar mellan raderna under en lång instrumentalpaus, vilka fylls i takt med att pausen går mot sitt slut</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Dimma avlägsna rader mer</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Dimmar varje inaktiv rad mer ju längre bort den är från raden som sjungs. När den är avstängd dimmas alla inaktiva rader lika mycket</string>
   <string name="morphe_music_lyrics_line_scale_title">Dra ihop inaktiva rader</string>
   <string name="morphe_music_lyrics_line_scale_summary">Ritar varje rad som inte sjungs just nu något mindre, ovanpå att dämpa den</string>
   <string name="morphe_music_lyrics_split_background_title">Visa bakgrundssång separat</string>
@@ -829,6 +865,7 @@ Gäller båda gränserna. Vid 1,75 räknas fyra helbreddstecken som 7."</string>
   <string name="morphe_music_lyrics_romanize_only">Endast romaniserad</string>
   <string name="morphe_music_lyrics_dual_only">Dubbel läge</string>
   <string name="morphe_music_lyrics_copied">Kopierad till urklipp</string>
+  <string name="morphe_music_lyrics_current">Aktuell</string>
   <string name="morphe_music_lyrics_refreshing">Uppdaterar</string>
   <string name="morphe_music_lyrics_refreshed">Uppdaterad</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API-nyckel</string>

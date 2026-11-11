@@ -648,6 +648,25 @@ Kunci API Anda tidak boleh dibagikan. Siapa pun yang memiliki akses ke kunci ter
   <string name="morphe_loop_video_range_clear">Hapus</string>
   <string name="morphe_loop_video_range_toast_on">Melakukan perulangan %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Rentang waktu tidak sah</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Jumlah pengulangan</string>
+  <string name="morphe_loop_count_screen_summary">Pilih berapa kali video diulang sebelum video berikutnya</string>
+  <string name="morphe_loop_count_title">Aktifkan jumlah pengulangan</string>
+  <string name="morphe_loop_count_summary">Menu Lainnya pada pemutar menampilkan Jumlah loop di samping Loop video, untuk memilih berapa kali video diputar sebelum video berikutnya</string>
+  <string name="morphe_loop_count_playlists_title">Simpan jumlah loop dalam daftar putar</string>
+  <string name="morphe_loop_count_playlists_summary">Setiap video dalam daftar putar menyimpan jumlah loop yang Anda pilih, dan Loop video akan aktif saat daftar putar memutarnya kembali. Jika dinonaktifkan, jumlah loop hanya berlaku untuk video yang sedang diputar sekarang</string>
+  <string name="morphe_loop_count_clear_title">Hapus jumlah loop yang tersimpan</string>
+  <string name="morphe_loop_count_clear_summary">Lupakan jumlah loop yang tersimpan dalam daftar putar Anda. Video tersimpan: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Tidak ada jumlah loop yang tersimpan</string>
+  <string name="morphe_loop_count_clear_dialog_title">Hapus jumlah loop yang tersimpan?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Video dalam daftar putar Anda akan melupakan jumlah loop-nya, dan Loop video tidak akan aktif lagi saat daftar putar memutarnya</string>
+  <string name="morphe_loop_count_clear_done">Jumlah loop yang tersimpan telah dihapus</string>
+  <string name="morphe_loop_count_flyout_name">Jumlah loop</string>
+  <string name="morphe_loop_count_dialog_message">Berapa kali video diputar sebelum video berikutnya, dari %1$s hingga %2$s. Biarkan kosong untuk memutar ulang video tanpa batas.</string>
+  <string name="morphe_loop_count_times">%s kali</string>
+  <string name="morphe_loop_count_no_limit">Tanpa batas</string>
+  <string name="morphe_loop_count_decrease">Kurangi jumlah putaran</string>
+  <string name="morphe_loop_count_increase">Tambah jumlah putaran</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Tampilkan tombol Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Tampilkan menu Picture-in-Picture</string>
@@ -1113,6 +1132,10 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <string name="morphe_enhanced_ambient_mode_summary">Menerangi seluruh halaman tontonan dan bilah hitam dengan video, sebagai pengganti Mode pencahayaan sinematik</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Jaga agar teks tetap terbaca</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Meredupkan cahaya pada video terang agar teks di halaman tetap terbaca</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Redupkan saat menggulir</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Meredupkan cahaya saat halaman digulir atau disentuh</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Durasi redup</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Berapa lama cahaya tetap redup setelah pengguliran berhenti. Dengan 0, hanya pengguliran yang meredupkan cahaya, dan cahaya akan kembali segera setelah pengguliran berhenti</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Sembunyikan kartu info</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <string name="morphe_hide_shorts_subscriptions_title">Sembunyikan di feed Subscription</string>
   <string name="morphe_hide_shorts_video_description_title">Sembunyikan di deskripsi video</string>
   <string name="morphe_hide_shorts_history_title">Sembunyikan di riwayat tontonan</string>
+  <string name="morphe_hide_shorts_notifications_title">Sembunyikan di notifikasi dorong</string>
   <string name="morphe_shorts_player_screen_title">Pemutar Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Pilih komponen mana yang muncul di pemutar Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Nonaktifkan ketuk dua kali untuk menyukai</string>
