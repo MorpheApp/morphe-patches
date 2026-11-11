@@ -613,8 +613,18 @@ public final class AmbientLightController {
     private static int[] videoInWindow(View video) {
         int[] location = new int[2];
         video.getLocationInWindow(location);
+        // Zooming the video scales a parent of the surface, and the surface keeps its size.
+        float scaleX = 1f;
+        float scaleY = 1f;
+        Object view = video;
+        while (view instanceof View scaled) {
+            scaleX *= scaled.getScaleX();
+            scaleY *= scaled.getScaleY();
+            view = scaled.getParent();
+        }
         return new int[]{location[0], location[1],
-                location[0] + video.getWidth(), location[1] + video.getHeight()};
+                location[0] + Math.round(video.getWidth() * scaleX),
+                location[1] + Math.round(video.getHeight() * scaleY)};
     }
 
     private static void addRect(List<int[]> rects, int left, int top, int right, int bottom) {
