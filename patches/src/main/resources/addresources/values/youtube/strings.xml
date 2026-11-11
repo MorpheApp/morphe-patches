@@ -1220,6 +1220,10 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_enhanced_ambient_mode_summary">Lights the whole watch page and black bars with the video, in place of Ambient mode</string>
     <string name="morphe_enhanced_ambient_mode_readable_text_title">Keep text readable</string>
     <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dims the light on bright videos so the text on the page stays readable</string>
+    <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Dim while scrolling</string>
+    <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Dims the light while the page is scrolled or touched</string>
+    <string name="morphe_enhanced_ambient_mode_dim_duration_title">Dim duration</string>
+    <string name="morphe_enhanced_ambient_mode_dim_duration_summary">How long the light stays dim after scrolling stops. With 0 only scrolling dims the light, and it comes back as soon as scrolling stops</string>
 
     <!-- layout.hide.infocards.hideInfocardsPatch -->
     <string name="morphe_hide_info_cards_title">Hide info cards</string>
