@@ -30,7 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import">Impor</string>
   <string name="morphe_settings_import_copy">Salin</string>
   <string name="morphe_settings_import_reset">Setelan Morphe diatur ke bawaan</string>
-  <string name="morphe_settings_import_success">%s Setelan diimpor</string>
+  <string name="morphe_settings_import_success">%s setelan diimpor</string>
   <string name="morphe_settings_import_failure_parse">Impor gagal: %s</string>
   <string name="morphe_settings_navigate_up">Navigasi ke atas</string>
   <string name="morphe_settings_search_hint">Cari setelan</string>
@@ -97,9 +97,10 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
   <string name="morphe_debug_screen_summary">Konfigurasikan pilihan pengembang lanjutan dan catatan diagnostik</string>
-  <string name="morphe_debug_title">Aktifkan pencatatan debug</string>
-  <string name="morphe_debug_stacktrace_title">Jejak stack catatan debug</string>
-  <string name="morphe_debug_stacktrace_summary">Menyertakan jejak stack dalam catatan debug untuk membantu mengidentifikasi kesalahan</string>
+  <string name="morphe_debug_level_title">Pencatatan debug</string>
+  <string name="morphe_debug_level_entry_disabled">Tidak aktif</string>
+  <string name="morphe_debug_level_entry_debug">Debug</string>
+  <string name="morphe_debug_level_entry_verbose">Verbose</string>
   <string name="morphe_debug_toast_on_error_title">Tampilkan pesan timbul pada kesalahan Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Mematikan pesan timbul kesalahan menyembunyikan semua pemberitahuan kesalahan Morphe.
 

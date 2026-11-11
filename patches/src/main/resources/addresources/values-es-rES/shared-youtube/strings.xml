@@ -98,7 +98,7 @@ Para cambiar el icono en todas partes, vuelve a parchear y cambia la opción de 
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">No mostrar de nuevo</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falsificar transmisiones de vídeo</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Falsifica las transmisiones de vídeo del cliente para evitar problemas de reproducción</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Configura la falsificación del cliente para evitar problemas de reproducción</string>
   <string name="morphe_spoof_video_streams_summary">"Corrige los problemas de reproducción para la mayoría de los usuarios solicitando una transmisión de vídeo compatible
 
 Si eres usuario de YouTube Premium, este ajuste puede no ser necesario"</string>
@@ -157,8 +157,8 @@ Para iniciar sesión, pulsa en Continuar"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Oculta los botones Anterior y Siguiente en la notificación multimedia, la pantalla de bloqueo y los controles de los auriculares</string>
   <string name="morphe_disable_notification_media_seekbar_title">Desactivar barra de progreso</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Impide arrastrar la barra de progreso en la pantalla de bloqueo y el panel de notificaciones</string>
-  <string name="morphe_seek_notification_media_prev_next_title">Buscar con los botones <b>Anterior y Siguiente</b></string>
-  <string name="morphe_seek_notification_media_prev_next_summary">Cambiar los controles de la notificación multimedia, pantalla de bloqueo y auriculares para buscar en lugar de cambiar los vídeos</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Buscar con los botones Anterior y Siguiente</string>
+  <string name="morphe_seek_notification_media_prev_next_summary">Cambia los controles de la notificación multimedia, la pantalla de bloqueo y los auriculares para buscar en lugar de cambiar de vídeo</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Longitud del retroceso</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Segundos para retroceder con el botón Anterior</string>
   <string name="morphe_seek_notification_media_fast_forward_length_title">Longitud del adelanto</string>
@@ -208,13 +208,15 @@ Para iniciar sesión, pulsa en Continuar"</string>
   <string name="morphe_replace_links_with_shortener_title">Cambiar enlaces compartidos a youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Fuerza a los vídeos a usar el formato de URL abreviada youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Búfer de protocolo de registro de depuración</string>
-  <string name="morphe_debug_protobuffer_summary">Añade información de registro adicional para que los desarrolladores identifiquen los componentes de la aplicación</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Si activas este ajuste, se registrarán datos de diseño adicionales, incluido el texto en pantalla de algunos componentes de la interfaz de usuario.
+  <string name="morphe_debug_litho_title">Registro de Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Desactivado</string>
+  <string name="morphe_debug_litho_entry_path">Ruta</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Ruta y búfer</string>
+  <string name="morphe_debug_litho_user_dialog_message">"El registro de Litho registra los componentes de diseño de la aplicación, incluido el texto en pantalla de algunos componentes de la interfaz de usuario.
 
 Esto puede ayudar a identificar componentes al crear filtros personalizados.
 
-Sin embargo, si activas esto, también se registrarán algunos datos del usuario, como tu dirección IP"</string>
+Sin embargo, también registrará algunos datos de usuario, como tu dirección IP."</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Filtro personalizado</string>
   <string name="morphe_custom_filter_screen_summary">Configura filtros personalizados para ocultar cualquier componente</string>
@@ -223,7 +225,7 @@ Sin embargo, si activas esto, también se registrarán algunos datos del usuario
   <string name="morphe_custom_filter_strings_summary">Lista de cadenas del constructor de rutas de componentes a filtrar, una por línea</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtro personalizado no válido: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
-  <string name="morphe_settings_menu_filter_screen_title">Filtro del menú de configuración</string>
+  <string name="morphe_settings_menu_filter_screen_title">Filtro del menú de ajustes</string>
   <string name="morphe_settings_menu_filter_screen_summary">Oculta elementos en la pantalla de configuración de la aplicación estándar por su nombre visible</string>
   <string name="morphe_settings_menu_filter_picker_empty">Abre la pantalla de configuración de la aplicación estándar una vez para completar la lista</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
@@ -296,9 +298,9 @@ Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación
   <string name="morphe_ryd_estimated_like_summary">Muestra una estimación del número de \'Me gusta\' en los vídeos donde el creador ha desactivado los \'Me gusta\'</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertas de error de conexión</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Muestra una notificación cuando el servidor de Return YouTube Dislike no está disponible</string>
-  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restaura los contadores de no me gusta que YouTube ocultó en 2021. Los contadores provienen de datos archivados antes de la eliminación y se estiman para videos más nuevos a partir de los votos de sus usuarios, por lo que son aproximados y se actualizan cada pocos días
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restaura los contadores de no me gusta que YouTube ocultó en 2021. Los contadores provienen de datos archivados antes de la eliminación y se estiman para vídeos más nuevos a partir de los votos de sus usuarios, por lo que son aproximados y se actualizan cada pocos días
 
-El ID del video que ves se envía a la API de Return YouTube Dislike, y tus me gusta y no me gusta se envían de forma anónima para mejorar las estimaciones"</string>
+El ID del vídeo que ves se envía a la API de Return YouTube Dislike, y tus me gusta y no me gusta se envían de forma anónima para mejorar las estimaciones"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Estadísticas de la API de Return YouTube Dislike de este dispositivo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Tiempo de respuesta de la API, promedio</string>
@@ -307,7 +309,7 @@ El ID del video que ves se envía a la API de Return YouTube Dislike, y tus me g
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Tiempo de respuesta de la API, último vídeo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Los \'No me gusta\' no están disponibles temporalmente: se ha alcanzado el límite de solicitudes de la API del cliente</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Obtención de votos de la API, número de llamadas</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">No hay llamadas de red realizadas</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">No se han realizado llamadas de red</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s llamadas de red realizadas</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Obtención de votos de la API, número de tiempos de espera agotados</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">No se agotó el tiempo de espera de ninguna llamada de red</string>

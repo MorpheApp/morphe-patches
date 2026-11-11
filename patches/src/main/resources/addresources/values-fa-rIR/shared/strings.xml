@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">اشکال‌زدایی</string>
   <string name="morphe_debug_screen_summary">گزینه‌های پیشرفتهٔ توسعه‌دهنده و گزارش‌های تشخیصی را پیکربندی کنید</string>
-  <string name="morphe_debug_title">فعال‌کردن ثبت گزارش اشکال‌زدایی</string>
-  <string name="morphe_debug_stacktrace_title">ردپای پشتهٔ گزارش اشکال‌زدایی</string>
-  <string name="morphe_debug_stacktrace_summary">ردپاهای پشته را در گزارش‌های اشکال‌زدایی قرار می‌دهد تا به شناسایی خطاها کمک کند</string>
+  <string name="morphe_debug_level_title">ثبت وقایع اشکال‌زدایی</string>
+  <string name="morphe_debug_level_entry_disabled">غیرفعال</string>
+  <string name="morphe_debug_level_entry_debug">اشکال‌زدایی</string>
+  <string name="morphe_debug_level_entry_verbose">با جزئیات</string>
   <string name="morphe_debug_toast_on_error_title">نمایش پیام کوتاه هنگام خطای Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"خاموش‌کردن پیام‌های کوتاه خطا، همهٔ اعلان‌های خطای Morphe را پنهان می‌کند.
 

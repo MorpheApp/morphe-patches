@@ -39,7 +39,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_no_results_summary">Pokušajte s drugom ključnom riječi</string>
   <string name="morphe_settings_search_recent_searches">Nedavne pretrage</string>
   <string name="morphe_settings_search_remove_message">Ukloniti iz povijesti pretraživanja?</string>
-  <string name="morphe_settings_search_remove">Ukloniti iz povijesti pretraživanja</string>
+  <string name="morphe_settings_search_remove">Ukloni iz povijesti pretraživanja</string>
   <string name="morphe_settings_search_clear_history">Izbriši povijest pretraživanja</string>
   <string name="morphe_settings_search_clear_history_message">Jeste li sigurni da želite izbrisati svu povijest pretraživanja?</string>
   <string name="morphe_settings_search_tips_title">Savjeti za pretraživanje</string>
@@ -82,7 +82,7 @@ Za prevođenje novih jezika ili poboljšanje postojećih prijevoda posjetite mor
   <string name="morphe_settings_about_links_header">Službene poveznice</string>
   <string name="morphe_settings_about_links_website">Web stranica</string>
   <string name="morphe_settings_about_links_donate">Donirajte</string>
-  <string name="morphe_settings_about_links_translations">Prijevod</string>
+  <string name="morphe_settings_about_links_translations">Prijevodi</string>
   <string name="morphe_settings_about_links_credits">Zasluge</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Ažurno</string>
   <string name="morphe_settings_about_links_dev_header_update_available">Dostupno ažuriranje</string>
@@ -93,13 +93,14 @@ Za prevođenje novih jezika ili poboljšanje postojećih prijevoda posjetite mor
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Obavijesti o licenci</string>
-  <string name="morphe_settings_about_licenses_loading">Samo trenutak…</string>
+  <string name="morphe_settings_about_licenses_loading">Učitavanje…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Otklanjanje pogrešaka</string>
   <string name="morphe_debug_screen_summary">Konfigurirajte napredne opcije za programere i dijagnostičke zapise</string>
-  <string name="morphe_debug_title">Omogući zapisivanje otklanjanja pogrešaka</string>
-  <string name="morphe_debug_stacktrace_title">Zapisnici o otklanjanju pogrešaka uključuju trag stoga</string>
-  <string name="morphe_debug_stacktrace_summary">Uključuje tragove stoga u ispisima za otklanjanje pogrešaka kako bi se pomoglo pri identificiranju pogrešaka</string>
+  <string name="morphe_debug_level_title">Zapisivanje otklanjanja grešaka</string>
+  <string name="morphe_debug_level_entry_disabled">Onemogućeno</string>
+  <string name="morphe_debug_level_entry_debug">Otklanjanje grešaka</string>
+  <string name="morphe_debug_level_entry_verbose">Detaljno</string>
   <string name="morphe_debug_toast_on_error_title">Prikaži obavijest o Morphe pogrešci</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Isključivanjem obavijesti o pogreškama skrivaju se sve Morphe obavijesti o pogreškama.
 
@@ -152,7 +153,7 @@ Nećete biti obaviješteni ni o kakvim neočekivanim događajima"</string>
 Polovica od %s zastavica je blokirana, a nakon svakog ponovnog pokretanja recite je li ponašanje i dalje prisutno.
 
 Ponovite ponašanje jednom prije početka, inače zastavice koje aplikacija još nije tražila nedostaju u pretraživanju."</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Početak</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Pokreni</string>
   <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Nema zastavica za pretraživanje.
 
 Samo zastavice koje je aplikacija koristila i koje trenutno nisu prisilno uključene mogu se koristiti u binarnom pretraživanju."</string>
@@ -183,7 +184,7 @@ Ponašanje je nestalo ranije u pretraživanju, pa je možda uključeno više zas
   <string name="gms_core_dialog_title">Potrebna je radnja</string>
   <string name="gms_core_dialog_outdated_message">"Vaša verzija MicroG-a v%1$s je zastarjela i može uzrokovati probleme.
 
-istsačite MicroG na najnoviju verziju v%2$s"</string>
+Ažurirajte MicroG na najnoviju verziju v%2$s"</string>
   <string name="gms_core_dialog_update_text">Ažuriraj</string>
   <string name="gms_core_dialog_ignore_text">Zanemari</string>
   <string name="gms_core_dialog_conflict_message">"Instalirani MicroG nije preporučen od strane Morphe-a:

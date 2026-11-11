@@ -97,9 +97,10 @@ Aby przetłumaczyć aplikację na nowe języki lub poprawić istniejące tłumac
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugowanie</string>
   <string name="morphe_debug_screen_summary">Skonfiguruj zaawansowane opcje programistyczne i logi diagnostyczne</string>
-  <string name="morphe_debug_title">Włącz logi debugowania</string>
-  <string name="morphe_debug_stacktrace_title">Zrzuty stosu w logach debugowania</string>
-  <string name="morphe_debug_stacktrace_summary">Dołącza zrzuty stosu do logów debugowania, aby pomóc w identyfikacji błędów</string>
+  <string name="morphe_debug_level_title">Logi debugowania</string>
+  <string name="morphe_debug_level_entry_disabled">Wyłączone</string>
+  <string name="morphe_debug_level_entry_debug">Debugowanie</string>
+  <string name="morphe_debug_level_entry_verbose">Szczegółowe</string>
   <string name="morphe_debug_toast_on_error_title">Pokaż powiadomienie o błędzie Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Wyłączenie tej opcji ukrywa wszystkie komunikaty o błędach Morphe.
 
@@ -152,7 +153,7 @@ Nie dostaniesz informacji o żadnych nieoczekiwanych zdarzeniach"</string>
 Połowa z %s flag jest zablokowana. Po każdym restarcie musisz określić, czy zachowanie nadal występuje.
 
 Odtwórz to zachowanie raz przed rozpoczęciem, w przeciwnym razie w wyszukiwaniu zabraknie flag, o które aplikacja jeszcze nie zapytała"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Początek</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Rozpocznij</string>
   <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Brak flag do przeszukania.
 
 W wyszukiwaniu binarnym można użyć tylko tych flag, o które aplikacja już zapytała i które nie są obecnie wymuszone"</string>

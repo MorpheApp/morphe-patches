@@ -25,7 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_splash_screen_style_entry_4">Monokroomne</string>
   <string name="morphe_splash_screen_style_entry_5">Morphe Monokroomne</string>
   <!-- misc.settings.settingsPatch -->
-  <string name="morphe_settings_new_indicator_days_title">Rõtusta uusi seadeid</string>
+  <string name="morphe_settings_new_indicator_days_title">Rõhuta uusi seadeid</string>
   <string name="morphe_settings_new_indicator_days_summary">Päevade arv, mille jooksul kuvatakse uuendusega lisatud seadete ja valikute kõrval punkt</string>
   <string name="morphe_settings_new_indicator_days_off">Väljas</string>
   <!-- misc.initialization.initializationPatch -->
@@ -88,7 +88,7 @@ See seade ei muuda ikooni järgmistes kohtades:
 • Rakenduse valija \"Ava rakendusega\"
 • Android Auto ikoon
 
-Ikooni kõikjal muutmiseks rakendage paigala uuesti ja muutke paigala valikut \"Rakenduse ikoon\""</string>
+Ikooni kõikjal muutmiseks rakendage pätš uuesti ja muutke pätsi valikut \"Rakenduse ikoon\""</string>
   <string name="morphe_custom_branding_notification_icon_title">Teavituse ikoon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Vastaava rakenduse ikoon</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe mäng</string>
@@ -112,11 +112,11 @@ Kas määrata %2$s vaikimisi kliendiks?"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Selle seade väljalülitamine võib põhjustada esituse tõrkeid</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Proovi aktiveerida: Videovoolude imiteerimine &gt; Android VR sisselogimine</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Proovige aktiveerida: Videovoolude imiteerimine &gt; Android VR sisselogimine</string>
   <string name="morphe_spoof_video_streams_client_type_title">Vaikimisi klient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR sisselogimine</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR nõuab eraldi sisselogimist. Jätkamiseks puudutage siid</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR nõuab eraldi sisselogimist. Jätkamiseks puudutage siin</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hetkel on sisse logitud Android VR-i kontole</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Selle funktsiooni kasutamiseks muutke \'Vaikimisi klient\' Android VR-iks</string>
@@ -208,13 +208,15 @@ Sisse logimiseks vajutage allpoolset nuppu Jätka"</string>
   <string name="morphe_replace_links_with_shortener_title">Muuda jagamislinkideks youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Sunnib videoid kasutama lühendatud youtu.be URL-i vormingut</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Veaotsingu logi protokollipuhver</string>
-  <string name="morphe_debug_protobuffer_summary">Lisab arendajatele täiendavat logiteavet rakenduse komponentide tuvastamiseks</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Selle seade aktiveerimine logib täiendavat paigutuse andmeid, sealhulgas mõne kasutajaliidese komponendi ekraaniteksti.
+  <string name="morphe_debug_litho_title">Litho logimine</string>
+  <string name="morphe_debug_litho_entry_disabled">Välja lülitatud</string>
+  <string name="morphe_debug_litho_entry_path">Tee</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Tee ja puhver</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho logimine registreerib rakenduse paigutuse komponentide logid, sealhulgas mõningate kasutajaliidesi komponentide ekraaniteksti.
 
 See võib aidata tuvastada komponente kohandatud filtrite loomisel.
 
-Kuid selle aktiveerimine logib ka mõningaid kasutajandmeid, näiteks teie IP-aadressi"</string>
+Kuid see logib ka mõningaid kasutajandmeid, näiteks teie IP-aadressi"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Kohandatud filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigureerige kohandatud filtreid, et peita soovitud komponendid</string>

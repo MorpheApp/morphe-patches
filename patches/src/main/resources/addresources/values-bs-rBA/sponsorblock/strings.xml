@@ -57,7 +57,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_guidelines_popup_content">Pročitajte SponsorBlock smjernice prije kreiranja novih segmenata</string>
   <string name="morphe_sb_guidelines_popup_already_read">Već pročitano</string>
   <string name="morphe_sb_guidelines_popup_open">Pokaži mi</string>
-  <string name="morphe_sb_general_title">Opširno</string>
+  <string name="morphe_sb_general_title">Opće</string>
   <string name="morphe_sb_offline_segments_title">Sačuvaj segmente preuzetih videozapisa</string>
   <string name="morphe_sb_offline_segments_summary">Omogućava preskakanje segmenata preuzetih videozapisa dok ste offline</string>
   <string name="morphe_sb_toast_on_connection_error_title">Prikaži upozorenja o grešci u povezivanju</string>
@@ -66,9 +66,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_track_skip_count_summary">Šalje broj preskakanja na SponsorBlock tabelu lidera kako bi se pratilo koliko je vremena uštedjeno</string>
   <string name="morphe_sb_min_segment_duration_title">Minimalno trajanje segmenta</string>
   <string name="morphe_sb_min_segment_duration_summary">Segmenti kraći od ove vrijednosti (u sekundama) neće biti prikazani niti preskočeni</string>
-  <string name="morphe_sb_min_segment_duration_invalid">Nevalidno trajanje vremena</string>
+  <string name="morphe_sb_min_segment_duration_invalid">Neispravno trajanje vremena</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_title">Vaš privatni korisnički ID</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Ovo treba ostati privatno. Ovo je kao lozinka i ne smije se dijeliti ni s kim. Ako neko posjeduje ovo, može se izdavati za vas</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Ovo treba ostati privatno. Ovo je kao lozinka i ne smije se dijeliti ni s kim. Ako neko posjeduje ovo, može se predstavljati kao vi</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">Privatni korisnički ID mora imati najmanje 30 znakova</string>
   <string name="morphe_sb_api_url_title">Promijeni API URL</string>
   <string name="morphe_sb_api_url_summary">Adresa koju SponsorBlock koristi za pozive serveru</string>
@@ -77,7 +77,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Obavijesti na kanalu s bijele liste</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Prikazuje obavijest kada je SponsorBlock onemogućen za kanal na bijeloj listi</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock je onemogućen za ovaj kanal</string>
-  <string name="morphe_sb_api_url_reset">Resetovanje API URL-a</string>
+  <string name="morphe_sb_api_url_reset">API URL je resetovan</string>
   <string name="morphe_sb_api_url_invalid">API URL je nevažeći</string>
   <string name="morphe_sb_api_url_changed">API URL je promijenjen</string>
   <string name="morphe_sb_settings_ie_title">Postavke uvoza / izvoza</string>
@@ -86,7 +86,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Vaša SponsorBlock JSON konfiguracija koja se može uvesti / izvesti u Morphe i druge SponsorBlock platforme
 
 Ovo uključuje vaš privatni korisnički ID. Budite oprezni s dijeljenjem ovih informacija"</string>
-  <string name="morphe_sb_settings_import_successful">Postavke su uspješno uvezeno</string>
+  <string name="morphe_sb_settings_import_successful">Postavke su uspješno uvezene</string>
   <string name="morphe_sb_settings_import_failed">Uvoz nije uspio: %s</string>
   <string name="morphe_sb_settings_export_failed">Izvoz nije uspio: %s</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Vaša podešavanja sadrže privatni SponsorBlock korisnički ID.
@@ -99,15 +99,15 @@ Vaš korisnički ID je kao lozinka i nikada ga ne biste trebali dijeliti"</strin
   <string name="morphe_sb_segments_selfpromo">Neplaćena / Samopromocija</string>
   <string name="morphe_sb_segments_selfpromo_summary">Slično kao Sponzor, osim da je za neplaćenu / samopromociju. Uključuje sekcije o prodaji robe, donacijama ili informacije o tome s kim su sarađivali</string>
   <string name="morphe_sb_segments_interaction">Podsjetnik na interakciju (Pretplata)</string>
-  <string name="morphe_sb_segments_interaction_summary">Kratki podsjetnik da zaprate, pretplate ili zaprate kreatora usred sadržaja. Ako je dugačak ili se odnosi na nešto specifično, trebao bi biti pod samopromocijom</string>
+  <string name="morphe_sb_segments_interaction_summary">Kratki podsjetnik da lajkujete, pretplatite se ili zapratite kreatora usred sadržaja. Ako je dugačak ili se odnosi na nešto specifično, trebao bi biti pod samopromocijom</string>
   <string name="morphe_sb_segments_highlight">Istaknuti dio</string>
   <string name="morphe_sb_segments_highlight_summary">Dio videa koji većina ljudi traži</string>
   <string name="morphe_sb_segments_intro">Intermezo / Uvodna animacija</string>
   <string name="morphe_sb_segments_intro_summary">Interval bez stvarnog sadržaja. Može biti pauza, statičan kadar ili ponavljajuća animacija. Ne uključuje prijelaze koji sadrže informacije</string>
-  <string name="morphe_sb_segments_outro">Završni ekrani / Kreditna imena</string>
+  <string name="morphe_sb_segments_outro">Završni ekrani / Odjavna špica</string>
   <string name="morphe_sb_segments_outro_summary">Krediti ili kada se pojave YouTube završne kartice. Ne za zaključke s informacijama</string>
   <string name="morphe_sb_segments_hook">Uvod / Pozdravi</string>
-  <string name="morphe_sb_segments_hook_summary">Pričani najavi za nadolazeći video, pozdravi i oproštaji. Ne uključuje sekcije koje dodaju dodatni sadržaj</string>
+  <string name="morphe_sb_segments_hook_summary">Pričane najave za nadolazeći video, pozdravi i oproštaji. Ne uključuje sekcije koje dodaju dodatni sadržaj</string>
   <string name="morphe_sb_segments_preview">Pregled / Rekapitulacija</string>
   <string name="morphe_sb_segments_preview_summary">Kolekcija isječaka koji pokazuju šta slijedi ili šta se dogodilo u videu ili u drugim videima serije, gdje su sve informacije ponovljene na drugom mjestu</string>
   <string name="morphe_sb_segments_filler">Tangente / Šale</string>
@@ -123,12 +123,12 @@ Vaš korisnički ID je kao lozinka i nikada ga ne biste trebali dijeliti"</strin
   <string name="morphe_sb_skip_button_intro_beginning">Preskoči uvod</string>
   <string name="morphe_sb_skip_button_intro_middle">Preskoči prekid</string>
   <string name="morphe_sb_skip_button_intro_end">Preskoči prekid</string>
-  <string name="morphe_sb_skip_button_outro">Preskoči završnice</string>
-  <string name="morphe_sb_skip_button_hook">Preskoči hook</string>
+  <string name="morphe_sb_skip_button_outro">Preskoči završetak</string>
+  <string name="morphe_sb_skip_button_hook">Preskoči pozdrave</string>
   <string name="morphe_sb_skip_button_preview_beginning">Preskoči pregled</string>
   <string name="morphe_sb_skip_button_preview_middle">Preskoči pregled</string>
   <string name="morphe_sb_skip_button_preview_end">Preskoči rezime</string>
-  <string name="morphe_sb_skip_button_filler">Preskoči tangent</string>
+  <string name="morphe_sb_skip_button_filler">Preskoči tangentu</string>
   <string name="morphe_sb_skip_button_nomusic">Preskoči nemuziku</string>
   <string name="morphe_sb_skip_button_unsubmitted">Preskoči segment</string>
   <string name="morphe_sb_skipped_sponsor">Preskočen sponzor</string>
@@ -140,18 +140,18 @@ Vaš korisnički ID je kao lozinka i nikada ga ne biste trebali dijeliti"</strin
   <string name="morphe_sb_skipped_intro_end">Preskočen predah</string>
   <string name="morphe_sb_skipped_outro">Preskočen završetak</string>
   <string name="morphe_sb_skipped_hook">Preskočen uvodni dio</string>
-  <string name="morphe_sb_skipped_preview_beginning">Preskočen pretpreview</string>
-  <string name="morphe_sb_skipped_preview_middle">Preskočen uvod</string>
+  <string name="morphe_sb_skipped_preview_beginning">Preskočen pregled</string>
+  <string name="morphe_sb_skipped_preview_middle">Preskočen pregled</string>
   <string name="morphe_sb_skipped_preview_end">Preskočen rezime</string>
   <string name="morphe_sb_skipped_filler">Preskočeno odstupanje</string>
   <string name="morphe_sb_skipped_nomusic">Preskočen odjeljak bez muzike</string>
-  <string name="morphe_sb_skipped_unsubmitted">Preskočen nepredati segment</string>
+  <string name="morphe_sb_skipped_unsubmitted">Preskočen nepredani segment</string>
   <string name="morphe_sb_skipped_multiple_segments">Preskočeno više segmenata</string>
   <string name="morphe_sb_skip_automatically">Preskači automatski</string>
   <string name="morphe_sb_skip_automatically_once">Preskači automatski jednom</string>
   <string name="morphe_sb_skip_showbutton">Prikaži dugme Preskoči</string>
   <string name="morphe_sb_skip_seekbaronly">Prikaži u traci trajanja</string>
-  <string name="morphe_sb_skip_ignore">Onemoguči</string>
+  <string name="morphe_sb_skip_ignore">Onemogući</string>
   <string name="morphe_sb_submit_failed_invalid">Nije moguće poslati segment: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock je privremeno nedostupan</string>
   <string name="morphe_sb_submit_failed_unknown_error">Nije moguće poslati segment (status: %1$s %2$s)</string>
@@ -161,10 +161,10 @@ Vaš korisnički ID je kao lozinka i nikada ga ne biste trebali dijeliti"</strin
 Već postoji"</string>
   <string name="morphe_sb_submit_succeeded">Segment je uspješno poslan</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock je privremeno nedostupan (API timeout)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock je privremeno nedostupan (isteklo je vrijeme za API)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock trenutno nije dostupan (status %s)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock je privremeno nedostupan</string>
-  <string name="morphe_sb_vote_failed_timeout">Nije moguće glasati za segment (API je istekao)</string>
+  <string name="morphe_sb_vote_failed_timeout">Nije moguće glasati za segment (isteklo je vrijeme za API)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Nije moguće glasovati za segment (status: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Nije moguće glasati za segment: %s</string>
   <string name="morphe_sb_vote_upvote">Glasaj za</string>
@@ -219,12 +219,12 @@ Ako ne šaljete istaknuti dio, dodirnite Otkaži i označite drugu lokaciju"</st
   <string name="morphe_sb_stats_submissions">Kreirali ste &lt;b&gt;%s&lt;/b&gt; segmenta</string>
   <string name="morphe_sb_stats_submissions_summary">Dodirnite ovdje da vidite svoje segmente</string>
   <string name="morphe_sb_stats_saved_zero">SponsorBlock tabela lidera</string>
-  <string name="morphe_sb_stats_saved">Sparingali ste ljude od &lt;b&gt;%s&lt;/b&gt; segmenata</string>
+  <string name="morphe_sb_stats_saved">Uštedjeli ste ljudima &lt;b&gt;%s&lt;/b&gt; segmenata</string>
   <string name="morphe_sb_stats_saved_summary_zero">Dodirnite ovdje da vidite globalnu statistiku i najbolje doprinosioce</string>
   <string name="morphe_sb_stats_saved_summary">To je &lt;b&gt;%s&lt;/b&gt; njihovih života.&lt;br&gt;Dodirnite ovdje da vidite tabelu lidera</string>
   <string name="morphe_sb_stats_self_saved">Preskočili ste &lt;b&gt;%s&lt;/b&gt; segmenata</string>
   <string name="morphe_sb_stats_self_saved_summary">To je &lt;b&gt;%s&lt;/b&gt;</string>
-  <string name="morphe_sb_stats_self_saved_reset_title">Resetujte brojač preskočenih segmenata?</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">Resetovati brojač preskočenih segmenata?</string>
   <string name="morphe_sb_stats_saved_hour_format">%1$s sati %2$s minuta</string>
   <string name="morphe_sb_stats_saved_minute_format">%1$s minuta %2$s sekundi</string>
   <string name="morphe_sb_stats_saved_second_format">%s sekundi</string>

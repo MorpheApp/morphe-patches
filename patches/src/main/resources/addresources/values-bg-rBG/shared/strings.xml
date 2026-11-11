@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Неуспешно импортиране: %s</string>
   <string name="morphe_settings_navigate_up">Навигация нагоре</string>
   <string name="morphe_settings_search_hint">Търсене на настройки</string>
-  <string name="morphe_settings_screen_info_title">Отношение</string>
+  <string name="morphe_settings_screen_info_title">Относно</string>
   <string name="morphe_settings_search_no_results_title">Не са открити резултати за \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Опитайте друга ключова дума</string>
   <string name="morphe_settings_search_recent_searches">Последни търсения</string>
@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Отстраняване на грешки</string>
   <string name="morphe_debug_screen_summary">Конфигуриране на разширени опции за разработчици и диагностични логове</string>
-  <string name="morphe_debug_title">Дневник за отчетените грешки</string>
-  <string name="morphe_debug_stacktrace_title">Запис на стека на отстраняване на грешки</string>
-  <string name="morphe_debug_stacktrace_summary">Включва стекове от извиквания в дебъг логовете, за да помогне за идентифицирането на грешки</string>
+  <string name="morphe_debug_level_title">Дневник за отчетените грешки</string>
+  <string name="morphe_debug_level_entry_disabled">Изключено</string>
+  <string name="morphe_debug_level_entry_debug">Отлӑчване</string>
+  <string name="morphe_debug_level_entry_verbose">Подробно</string>
   <string name="morphe_debug_toast_on_error_title">Показване на уведомление при грешка в Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Изключването на изскачащи съобщения за грешки крие всички известия за грешки на Morphe.
 
@@ -221,10 +222,10 @@ Second \"item\" text"</string>
   <string name="morphe_link_handling_step2_message">Отворете настройките на коригираното приложение и активирайте всички връзки към домейни</string>
   <string name="morphe_link_handling_open">Отворете настройки</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментална Обява 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментално предупреждение 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Използвате експериментална версия на приложението ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
-🔧 Очаквайте странно поведение на приложението или неидентифицирани бъгове, докато доусъвършенстваме корекциите за тази версия на приложението.
+🔧 Очаквайте странно поведение на приложението или неидентифицирани бъгове, докато усъвършенстваме кръпките за тази версия на приложението.
 &lt;br/&gt;&lt;br/&gt;
 Ако искате най-безпроблемното изживяване, тогава &lt;b&gt;премахнете&lt;/b&gt; това и актуализирайте препоръчителната версия на приложението ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Искам експериментална</string>

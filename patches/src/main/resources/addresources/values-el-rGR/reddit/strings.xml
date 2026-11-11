@@ -18,8 +18,8 @@ Second \"item\" text"</string>
 <resources>
   <string name="reddit_privacy_policy">Πολιτική απορρήτου Reddit</string>
   <string name="morphe_google_signin_not_available_toast">Η σύνδεση μέσω Google δεν είναι διαθέσιμη. Χρησιμοποιήστε email για να συνδεθείτε</string>
-  <string name="morphe_app_downgrade_dialog_title">Η αναβάθμιση σε παλαιότερη έκδοση δεν υποστηρίζεται</string>
-  <string name="morphe_app_downgrade_dialog_message">"Αυτή η εγκατάσταση του Reddit υποβημάθηκε από την έκδοση &lt;b&gt;%1$s&lt;/b&gt; στην έκδοση &lt;b&gt;%2$s&lt;/b&gt;
+  <string name="morphe_app_downgrade_dialog_title">Η υποβάθμιση σε παλαιότερη έκδοση δεν υποστηρίζεται</string>
+  <string name="morphe_app_downgrade_dialog_message">"Αυτή η εγκατάσταση του Reddit υποβαθμίστηκε από την έκδοση &lt;b&gt;%1$s&lt;/b&gt; στην έκδοση &lt;b&gt;%2$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 Τα δεδομένα της εφαρμογής από μια νεότερη έκδοση δεν λειτουργούν με παλαιότερες εκδόσεις και η εφαρμογή ενδέχεται να μην λειτουργεί σωστά.
 &lt;br/&gt;&lt;br/&gt;
@@ -43,26 +43,26 @@ Second \"item\" text"</string>
   <string name="morphe_screen_layout_title">Διάταξη</string>
   <string name="morphe_copy_text_title">Αντιγραφή κειμένου</string>
   <string name="morphe_copy_text_summary">Επιτρέπει την επιλογή και αντιγραφή κειμένου σε αναρτήσεις και σχόλια. Απενεργοποιεί τη σύμπτυξη σχολίων</string>
-  <string name="morphe_copy_text_user_dialog_message">Οι αναδιπλούμενες κειμενικές απαντήσεις θα σταματήσουν να λειτουργούν ενώ η επιλογή αντιγραφής κειμένου είναι ενεργή</string>
+  <string name="morphe_copy_text_user_dialog_message">Η σύμπτυξη σχολίων θα σταματήσει να λειτουργεί ενώ η επιλογή «Αντιγραφή κειμένου» είναι ενεργή</string>
   <string name="morphe_custom_font_title">Προσαρμοσμένη γραμματοσειρά</string>
-  <string name="morphe_custom_font_summary">Φόρτωση ενός προσαρμοσμένου αρχείου γραμματοσειράς TTF ή OTF από την παρακάτω διαδρομή. Η ενεργοποίηση αυτή απενεργοποιεί επίσης την Χρήση γραμματοσειράς συστήματος.</string>
+  <string name="morphe_custom_font_summary">Φόρτωση ενός προσαρμοσμένου αρχείου γραμματοσειράς TTF ή OTF από την παρακάτω διαδρομή. Η ενεργοποίηση αυτή απενεργοποιεί επίσης την Επιβολή γραμματοσειράς συστήματος.</string>
   <string name="morphe_custom_font_file_path_title">Αρχείο προσαρμοσμένης γραμματοσειράς</string>
   <string name="morphe_custom_font_file_path_summary">Πατήστε για να επιλέξετε ένα αρχείο γραμματοσειράς TTF ή OTF</string>
   <string name="morphe_custom_font_selected_font">Επιλεγμένη γραμματοσειρά - %s</string>
   <string name="morphe_custom_font_pick_file_first">Επιλέξτε πρώτα ένα προσαρμοσμένο αρχείο γραμματοσειράς.</string>
   <string name="morphe_custom_font_invalid_file">Παρακαλώ επιλέξτε ένα αρχείο γραμματοσειράς .ttf ή .otf.</string>
-  <string name="morphe_custom_font_failed_to_load">Αποfailedη φόρτωση της προσαρμοσμένης γραμματοσειράς. Επιλέξτε ένα διαφορετικό αρχείο.</string>
-  <string name="morphe_disable_modern_home_title">Απενεργοποίηση σύγχρονου περιβάλλοντος εργασίας</string>
+  <string name="morphe_custom_font_failed_to_load">Αποτυχία φόρτωσης της προσαρμοσμένης γραμματοσειράς. Επιλέξτε ένα διαφορετικό αρχείο.</string>
+  <string name="morphe_disable_modern_home_title">Απενεργοποίηση σύγχρονης διεπαφής αρχικής οθόνης</string>
   <string name="morphe_disable_screenshot_popup_title">Απενεργοποίηση αναδυόμενου παραθύρου στη λήψη στιγμιότυπου οθόνης</string>
   <string name="morphe_disable_screenshot_popup_summary">Απενεργοποιεί το αναδυόμενο παράθυρο που εμφανίζεται κατά τη λήψη στιγμιότυπου της οθόνης</string>
   <string name="morphe_force_system_font_title">Επιβολή γραμματοσειράς συστήματος</string>
   <string name="morphe_force_system_font_summary">Χρήση της γραμματοσειράς συστήματος της συσκευής αντί του Reddit Sans ή του Roboto. Η ενεργοποίηση αυτή απενεργοποιεί επίσης την Προσαρμοσμένη γραμματοσειρά.</string>
-  <string name="morphe_hide_ask_button_title">Απόκρυψη κουμπιού</string>
-  <string name="morphe_hide_ask_button_summary">Αποκρύπτει το κουμπί στην γραμμή αναζήτησης</string>
-  <string name="morphe_hide_communities_shelf_title">Απόκρυψη ράφιου κοινοτήτων</string>
+  <string name="morphe_hide_ask_button_title">Απόκρυψη κουμπιού Ask</string>
+  <string name="morphe_hide_ask_button_summary">Αποκρύπτει το κουμπί Ask στη γραμμή αναζήτησης</string>
+  <string name="morphe_hide_communities_shelf_title">Απόκρυψη ραφιού κοινοτήτων</string>
   <string name="morphe_hide_communities_shelf_summary">Αποκρύπτει το ράφι με τις σχετικές ή προτεινόμενες κοινότητες στα subreddits</string>
   <string name="morphe_hide_trending_shelves_title">Απόκρυψη δημοφιλών ραφιών</string>
-  <string name="morphe_hide_trending_shelves_summary">Απόκρυψη των προτεινόμενων κατηγοριών από τη ροή και τις προτάσεις αναζήτησης</string>
+  <string name="morphe_hide_trending_shelves_summary">Απόκρυψη των δημοφιλών ραφιών από τη ροή και τις προτάσεις αναζήτησης</string>
   <string name="morphe_remove_notification_dialog_title">Αφαίρεση του διαλόγου \"Προτεινόμενη Ειδοποίηση\"</string>
   <string name="morphe_remove_notification_dialog_summary">Απορρίπτει αυτόματα το παράθυρο διαλόγου υποδείξεων ειδοποιήσεων κατά την επίσκεψη σε ένα subreddit</string>
   <string name="morphe_high_quality_avatars_title">Avatar υψηλής ποιότητας</string>
@@ -103,18 +103,18 @@ Second \"item\" text"</string>
   <string name="morphe_download_location_summary_folder">Φάκελος: %s</string>
   <string name="morphe_download_location_summary_pattern">Όνομα αρχείου: %s</string>
   <string name="morphe_download_location_pattern_default">Ονόματα αρχείων του Reddit</string>
-  <string name="morphe_download_location_uses_all_summary">Χρήση \"Όλοι οι λογαριασμοί\"</string>
+  <string name="morphe_download_location_uses_all_summary">Χρήση «Όλοι οι λογαριασμοί»</string>
   <string name="morphe_download_location_own_title">Χρήση προσωπικής τοποθεσίας</string>
   <string name="morphe_download_location_folder_title">Αποθήκευση σε</string>
   <string name="morphe_download_location_folder_default">Προεπιλεγμένοι φάκελοι του Reddit</string>
   <string name="morphe_download_location_folder_default_short">Προεπιλογή</string>
-  <string name="morphe_download_location_subfolder_hint">Υπόφακας</string>
+  <string name="morphe_download_location_subfolder_hint">Υποφάκελος</string>
   <string name="morphe_download_location_subfolder_tree_hint">Προσθέστε υπόφακελους με / στο όνομα του αρχείου</string>
   <string name="morphe_download_location_browse">Περιήγηση…</string>
   <string name="morphe_download_location_no_picker">Δεν διατίθεται επιλογέας φακέλων σε αυτή τη συσκευή</string>
   <string name="morphe_download_location_pattern_title">Όνομα αρχείου</string>
   <string name="morphe_download_location_pattern_hint">Όνομα αρχείου του Reddit</string>
-  <string name="morphe_download_location_pattern_help">Πατήστε μια τιμή για να την εισάγετε. Το / δημιουργεί έναν υπόφακελο. Οι άγνωστες τιμές γίνονται \"unknown\"</string>
+  <string name="morphe_download_location_pattern_help">Πατήστε μια τιμή για να την εισάγετε. Το / δημιουργεί έναν υπόφακελο. Οι άγνωστες τιμές γίνονται «unknown»</string>
   <string name="morphe_download_location_example_images">Εικόνες: %s</string>
   <string name="morphe_download_location_example_videos">Βίντεο: %s</string>
   <string name="morphe_download_location_save">Αποθήκευση</string>
@@ -122,8 +122,8 @@ Second \"item\" text"</string>
   <string name="morphe_download_location_delete">Διαγραφή</string>
   <string name="morphe_download_location_reset_confirm">Επαναφορά της τοποθεσίας λήψης όλων των λογαριασμών στην προεπιλογή του Reddit;</string>
   <string name="morphe_download_location_delete_confirm">Διαγραφή της τοποθεσίας λήψης του %s;</string>
-  <string name="morphe_download_location_save_failed">Δεν ήταν δυνατή η αποθήκευση στη τοποθεσία λήψης. Αποθηκεύτηκε αντίστοιχα στον προεπιλεγμένο φάκελο του Reddit</string>
-  <string name="morphe_download_location_folder_unavailable">Ο φάκελος λήψης δεν είναι πλέον διαθέσιμος. Αποθηκεύτηκε αντίστοιχα στον προεπιλεγμένο φάκελο του Reddit</string>
+  <string name="morphe_download_location_save_failed">Δεν ήταν δυνατή η αποθήκευση στην τοποθεσία λήψης. Αποθηκεύτηκε στον προεπιλεγμένο φάκελο του Reddit</string>
+  <string name="morphe_download_location_folder_unavailable">Ο φάκελος λήψης δεν είναι πλέον διαθέσιμος. Αποθηκεύτηκε στον προεπιλεγμένο φάκελο του Reddit</string>
   <string name="morphe_download_location_video_failed">Δεν ήταν δυνατή η αποθήκευση του κατεβασμένου βίντεο</string>
   <string name="morphe_download_location_invalid_folder">Αυτός ο φάκελος δεν μπορεί να χρησιμοποιηθεί για λήψεις</string>
   <string name="morphe_download_location_account_current">%s (τρέχουσα)</string>

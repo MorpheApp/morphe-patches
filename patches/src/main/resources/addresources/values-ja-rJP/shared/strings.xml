@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">デバッグ</string>
   <string name="morphe_debug_screen_summary">診断ログなどの高度な開発者向けオプションを設定します</string>
-  <string name="morphe_debug_title">デバッグログを有効化</string>
-  <string name="morphe_debug_stacktrace_title">スタック トレースをデバッグログに追加</string>
-  <string name="morphe_debug_stacktrace_summary">エラーの特定に役立つスタック トレースをデバッグログに追加します</string>
+  <string name="morphe_debug_level_title">デバッグログを有効化</string>
+  <string name="morphe_debug_level_entry_disabled">無効</string>
+  <string name="morphe_debug_level_entry_debug">デバッグ</string>
+  <string name="morphe_debug_level_entry_verbose">詳細</string>
   <string name="morphe_debug_toast_on_error_title">Morphe のエラー時にトーストを表示</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"エラー通知をオフにすると、Morphe のすべてのエラー通知が表示されなくなります。
 

@@ -17,8 +17,8 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="reddit_privacy_policy">Kebijakan privasi Reddit</string>
-  <string name="morphe_google_signin_not_available_toast">Google login tidak tersedia. Gunakan email untuk login</string>
-  <string name="morphe_app_downgrade_dialog_title">Downgrade tidak didukung</string>
+  <string name="morphe_google_signin_not_available_toast">Masuk dengan Google tidak tersedia. Gunakan email untuk masuk</string>
+  <string name="morphe_app_downgrade_dialog_title">Penurunan versi tidak didukung</string>
   <string name="morphe_app_downgrade_dialog_message">"Instalasi Reddit ini diturunkan versinya dari &lt;b&gt;%1$s&lt;/b&gt; ke &lt;b&gt;%2$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 Data aplikasi dari versi yang lebih baru tidak berfungsi dengan versi yang lebih lama dan aplikasi mungkin tidak berjalan dengan benar.
@@ -142,5 +142,5 @@ Untuk menggunakan versi yang lebih lama, Anda harus &lt;b&gt;mencopot pemasangan
   <string name="morphe_app_icon_title">Ikon aplikasi</string>
   <string name="morphe_app_icon_choose_title">Pilih ikon aplikasi</string>
   <string name="morphe_app_icon_default">Bawaan</string>
-  <string name="morphe_app_icon_unknown">Tidak Diketahui</string>
+  <string name="morphe_app_icon_unknown">Tidak diketahui</string>
 </resources>

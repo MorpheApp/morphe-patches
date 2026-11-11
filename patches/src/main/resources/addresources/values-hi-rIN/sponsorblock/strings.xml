@@ -83,9 +83,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_ie_title">सेटिंग आयात / निर्यात करें</string>
   <string name="morphe_sb_settings_copy">कॉपी</string>
   <string name="morphe_sb_settings_ie_summary">आपका SponsorBlock JSON कॉन्फ़िगरेशन जिसे Morphe और अन्य SponsorBlock प्लेटफ़ॉर्म पर आयात / निर्यात किया जा सकता है</string>
-  <string name="morphe_sb_settings_ie_summary_warning">"आपका स्पोंसरब्लॉक JSON कॉन्फ़िगरेशन जिसे मोर्फे और अन्य स्पोंसरब्लॉक प्लेटफॉर्म पर आयात / निर्यात किया जा सकता है
+  <string name="morphe_sb_settings_ie_summary_warning">"आपका SponsorBlock JSON कॉन्फ़िगरेशन जिसे Morphe और अन्य SponsorBlock प्लेटफ़ॉर्म पर आयात / निर्यात किया जा सकता है
 
-इसमें आपकी निजी उपयोगकर्ता आईडी शामिल है। सुनिश्चित करें कि आप इसे बुद्धिमानी से साझा करें"</string>
+इसमें आपकी निजी उपयोगकर्ता आईडी शामिल है। सुनिश्चित करें कि आप इसे सोच-समझकर साझा करें"</string>
   <string name="morphe_sb_settings_import_successful">सेटिंग्स सफलतापूर्वक आयात की गईं</string>
   <string name="morphe_sb_settings_import_failed">आयात करने में विफल: %s</string>
   <string name="morphe_sb_settings_export_failed">निर्यात करने में विफल: %s</string>
@@ -95,7 +95,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">फिर से न दिखाएँ</string>
   <string name="morphe_sb_diff_segments_title">सेगमेंट व्यवहार बदलें</string>
   <string name="morphe_sb_segments_sponsor">प्रायोजक</string>
-  <string name="morphe_sb_segments_sponsor_summary">पेड प्रमोशन, पेड रेफ़रल और डायरेक्ट एडवरटाइजमेंट। स्व-प्रमोशन या उन कारणों / क्रिएटर / वेबसाइटों / उत्पादों को मुफ्त शआउटआउट के लिए नहीं</string>
+  <string name="morphe_sb_segments_sponsor_summary">पेड प्रमोशन, पेड रेफ़रल और डायरेक्ट विज्ञापन। स्व-प्रमोशन या उन कारणों, क्रिएटरों, वेबसाइटों या उत्पादों का मुफ़्त प्रचार नहीं जिन्हें वे पसंद करते हैं</string>
   <string name="morphe_sb_segments_selfpromo">अवैतनिक / स्वयं प्रचार</string>
   <string name="morphe_sb_segments_selfpromo_summary">स्पोंसर के समान, सिवाय अवैतनिक / स्व-प्रमोशन के। मर्चेंडाइज़, दान या उनके सहयोग के बारे में जानकारी के अनुभाग शामिल हैं</string>
   <string name="morphe_sb_segments_interaction">संवाद रिमाइंडर (सदस्यता लें)</string>
@@ -127,14 +127,14 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_button_hook">हुक छोड़ें</string>
   <string name="morphe_sb_skip_button_preview_beginning">पूर्वावलोकन छोड़ें</string>
   <string name="morphe_sb_skip_button_preview_middle">पूर्वावलोकन छोड़ें</string>
-  <string name="morphe_sb_skip_button_preview_end">पुनरावलोकन छोड़ें</string>
+  <string name="morphe_sb_skip_button_preview_end">सारांश छोड़ें</string>
   <string name="morphe_sb_skip_button_filler">टेंजेंट छोड़ें</string>
   <string name="morphe_sb_skip_button_nomusic">संगीत के अलावा छोड़ें</string>
   <string name="morphe_sb_skip_button_unsubmitted">खंड छोड़ें</string>
   <string name="morphe_sb_skipped_sponsor">प्रायोजक छोड़ दिया गया</string>
   <string name="morphe_sb_skipped_selfpromo">स्व-प्रचार छोड़ दिया गया</string>
-  <string name="morphe_sb_skipped_interaction">परेशान करने वाली अनुस्मारक छोड़ दी गई</string>
-  <string name="morphe_sb_skipped_highlight">मुख्य अंश को हाइलाइट करने के लिए छोड़ दिया गया</string>
+  <string name="morphe_sb_skipped_interaction">परेशान करने वाला अनुस्मारक छोड़ा गया</string>
+  <string name="morphe_sb_skipped_highlight">मुख्य अंश पर छोड़ दिया गया</string>
   <string name="morphe_sb_skipped_intro_beginning">परिचय छोड़ दिया गया</string>
   <string name="morphe_sb_skipped_intro_middle">विराम छोड़ दिया गया</string>
   <string name="morphe_sb_skipped_intro_end">विराम छोड़ दिया गया</string>
@@ -142,7 +142,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_hook">हुक छोड़ दिया गया</string>
   <string name="morphe_sb_skipped_preview_beginning">पूर्वावलोकन छोड़ दिया गया</string>
   <string name="morphe_sb_skipped_preview_middle">पूर्वावलोकन छोड़ दिया गया</string>
-  <string name="morphe_sb_skipped_preview_end">पुनरावृति छोड़ दिए गए</string>
+  <string name="morphe_sb_skipped_preview_end">सारांश छोड़ दिया गया</string>
   <string name="morphe_sb_skipped_filler">टेंजेंट छोड़ दिया गया</string>
   <string name="morphe_sb_skipped_nomusic">संगीत के अलावा एक खंड छोड़ दिया गया</string>
   <string name="morphe_sb_skipped_unsubmitted">जमा न किया गया खंड छोड़ दिया गया</string>
@@ -155,10 +155,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_submit_failed_invalid">खंड जमा करने में असमर्थ: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock अस्थायी रूप से डाउन है</string>
   <string name="morphe_sb_submit_failed_unknown_error">खंड जमा करने में असमर्थ (स्थिति: %1$s %2$s)</string>
-  <string name="morphe_sb_submit_failed_rate_limit">खंड जमा करने में असमर्थ। दर सीमित (समान उपयोगकर्ता या आईपी से बहुत ज्यादा)</string>
-  <string name="morphe_sb_submit_failed_forbidden">सीकमेंट सबमिट नहीं किया जा सकता: %s</string>
-  <string name="morphe_sb_submit_failed_duplicate">"सीकमेंट सबमिट नहीं किया जा सकता।
- पहले से मौजूद है"</string>
+  <string name="morphe_sb_submit_failed_rate_limit">खंड जमा करने में असमर्थ। दर सीमा लागू (एक ही उपयोगकर्ता या IP से बहुत अधिक)</string>
+  <string name="morphe_sb_submit_failed_forbidden">सेगमेंट सबमिट नहीं किया जा सकता: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"सेगमेंट सबमिट नहीं किया जा सकता।
+यह पहले से मौजूद है"</string>
   <string name="morphe_sb_submit_succeeded">खंड सफलतापूर्वक जमा कर दिया गया</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock अस्थायी रूप से अनुपलब्ध है (API समय समाप्त)</string>

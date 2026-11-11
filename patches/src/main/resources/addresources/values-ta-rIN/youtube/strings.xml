@@ -91,7 +91,7 @@ Second \"item\" text"</string>
   <string name="morphe_snackbar_screen_title">ஸ்நாக் பார்</string>
   <string name="morphe_snackbar_screen_summary">Snackbar-களை மறைக்கவும் அல்லது அவற்றின் நிறங்கள் மற்றும் வடிவத்தை மாற்றவும்</string>
   <string name="morphe_custom_snackbar_theme_title">தனிப்பயனாக்கப்பட்ட snackbar</string>
-  <string name="morphe_custom_snackbar_theme_summary">எதிர்மறை தீமின் வண்ணங்களுக்குப் பதிலாக, ஸ்நாக் பார்கள் கீழே உள்ள வண்ணங்கள் மற்றும் மூலை ஆரத்தைப் பயன்படுத்துகின்றன</string>
+  <string name="morphe_custom_snackbar_theme_summary">எதிர் தீமின் வண்ணங்களுக்குப் பதிலாக, ஸ்நாக் பார்கள் கீழே உள்ள வண்ணங்கள் மற்றும் மூலை ஆரத்தைப் பயன்படுத்துகின்றன</string>
   <string name="morphe_custom_snackbar_color_dark_title">டார்க் தீம் பின்னணி வண்ணம்</string>
   <string name="morphe_custom_snackbar_color_dark_summary">டார்க் தீமில் உள்ள ஸ்நாக் பார்களின் பின்னணி வண்ணம். வாசிப்பதற்கு எது எளிதாக இருக்குமோ, அதற்கேற்ப உரை கருப்பு அல்லது வெள்ளை நிறத்தில் இருக்கும்</string>
   <string name="morphe_custom_snackbar_color_light_title">லைட் தீம் பின்னணி வண்ணம்</string>
@@ -146,7 +146,7 @@ Second \"item\" text"</string>
   <!-- layout.feedviews.feedViewCountPatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- interaction.searchcomments.searchCommentsPatch -->
-  <string name="morphe_search_comments_summary">தேடப்பட்ட அனைத்து வார்த்தைகளையும் கொண்ட பதிவேற்றப்பட்ட கருத்துகளை மட்டும் காண்பிக்க, கருத்துகளில் உள்ள தேடல் பொத்தானைத் தட்டவும். ஒரு சொற்றொடரைத் தேட வார்த்தைகளை மேற்கோள் குறிக்குள் இடவும்</string>
+  <string name="morphe_search_comments_summary">தேடப்பட்ட அனைத்து வார்த்தைகளையும் கொண்ட ஏற்றப்பட்ட கருத்துகளை மட்டும் காண்பிக்க, கருத்துகளில் உள்ள தேடல் பொத்தானைத் தட்டவும். ஒரு சொற்றொடரைத் தேட வார்த்தைகளை மேற்கோள் குறிக்குள் இடவும்</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -169,11 +169,13 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_canceled">ஏற்றுமதி ரத்து செய்யப்பட்டது</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
-  <!-- interaction.watchlater.watchLaterPatch -->
-  <string name="morphe_watch_later_wide_drag_handles_title">Watch later டிராக் ஹேண்டில்களை விரிவுபடுத்துங்கள்</string>
-  <string name="morphe_watch_later_wide_drag_handles_summary">Watch later வீடியோக்களின் டிராக் ஹேண்டில்களை எளிதாகப் பிடிக்க முடியும்</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">Watch later நீக்குதல் ஸ்நாக்பாரை மறைக்கவும்</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_summary">Watch later-லிருந்து ஒரு வீடியோ நீக்கப்பட்ட பிறகு உறுதிப்படுத்தல் காட்டப்படாது</string>
+  <!-- interaction.playlist.playlistPatch -->
+  <string name="morphe_playlist_wide_drag_handles_title">ப்ளேலிஸ்ட் இழுக்கும் கைப்பிடிகளை அகலப்படுத்து</string>
+  <string name="morphe_playlist_wide_drag_handles_summary">ப்ளேலிஸ்ட் இழுக்கும் கைப்பிடிகளை எளிதாகப் பிடிக்க முடியும்</string>
+  <string name="morphe_playlist_hide_removal_snackbar_title">ப்ளேலிஸ்ட் நீக்க ஸ்நாக் பாரை மறை</string>
+  <string name="morphe_playlist_hide_removal_snackbar_summary">ஒரு வீடியோ ப்ளேலிஸ்டிலிருந்து நீக்கப்பட்ட பிறகு உறுதிப்படுத்தல் காட்டப்படாது</string>
+  <string name="morphe_playlist_long_press_drag_title">பிளேலிஸ்ட் வீடியோக்களை மறுவரிசைப்படுத்த நீண்ட நேரம் அழுத்தவும்</string>
+  <string name="morphe_playlist_long_press_drag_summary">உங்கள் பிளேலிஸ்ட்டில் உள்ள வீடியோவை ஒரு புதிய இடத்திற்கு இழுக்க, அதைத் தொட்டுப் பிடித்துக் கொள்ளுங்கள்</string>
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
@@ -339,6 +341,10 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
+  <string name="morphe_continue_watching_prompt_title">\'தொடர்ந்து பார்ப்பதற்கா?\' தூண்டல்</string>
+  <string name="morphe_continue_watching_prompt_entry_1">இயல்பானது</string>
+  <string name="morphe_continue_watching_prompt_entry_2">முடக்கப்பட்டது</string>
+  <string name="morphe_continue_watching_prompt_entry_3">முடக்கப்பட்டது, எப்போதும் தானாக இயங்கும் கவுண்ட்டவுனை காண்பிக்கவும்</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
@@ -476,7 +482,7 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_live_chat_translate_copy_button_summary">ஒவ்வொரு அரட்டை செய்திக்கும் ஒரு சிறிய நகலெடுக்கும் பொத்தானைச் சேர்க்கிறது</string>
   <string name="morphe_live_chat_translate_copied">செய்தி கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது</string>
   <string name="morphe_live_chat_translate_style_title">மொழிபெயர்ப்பு நடை</string>
-  <string name="morphe_live_chat_translate_style_translated_only">மொழிபெயர்ப்பப்பட்டது மட்டும்</string>
+  <string name="morphe_live_chat_translate_style_translated_only">மொழிபெயர்க்கப்பட்டது மட்டும்</string>
   <string name="morphe_live_chat_translate_style_original_and_translated">அசல் (மொழிபெயர்க்கப்பட்டது)</string>
   <string name="morphe_live_chat_translate_style_translated_and_original">(மொழிபெயர்க்கப்பட்டது) அசல்</string>
   <string name="morphe_live_chat_translate_bold_title">தடிமனான மொழிபெயர்க்கப்பட்ட உரை</string>

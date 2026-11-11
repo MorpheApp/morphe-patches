@@ -122,7 +122,7 @@ Vaše uživatelské ID je jako heslo a nikdy by nemělo být sdíleno"</string>
   <string name="morphe_sb_skip_button_intro_beginning">Přeskočit úvod</string>
   <string name="morphe_sb_skip_button_intro_middle">Přeskočit přestávku</string>
   <string name="morphe_sb_skip_button_intro_end">Přeskočit přestávku</string>
-  <string name="morphe_sb_skip_button_outro">Přeskočit zkrácenou verzi</string>
+  <string name="morphe_sb_skip_button_outro">Přeskočit závěr</string>
   <string name="morphe_sb_skip_button_hook">Přeskočit háček</string>
   <string name="morphe_sb_skip_button_preview_beginning">Přeskočit náhled</string>
   <string name="morphe_sb_skip_button_preview_middle">Přeskočit náhled</string>
@@ -131,10 +131,10 @@ Vaše uživatelské ID je jako heslo a nikdy by nemělo být sdíleno"</string>
   <string name="morphe_sb_skip_button_nomusic">Přeskočit nemuziku</string>
   <string name="morphe_sb_skip_button_unsubmitted">Přeskočit segment</string>
   <string name="morphe_sb_skipped_sponsor">Přeskočený sponzor</string>
-  <string name="morphe_sb_skipped_selfpromo">Přeskočena vlastní propagace</string>
+  <string name="morphe_sb_skipped_selfpromo">Přeskočená vlastní propagace</string>
   <string name="morphe_sb_skipped_interaction">Přeskočená otravná připomínka</string>
   <string name="morphe_sb_skipped_highlight">Přeskočeno pro zvýraznění</string>
-  <string name="morphe_sb_skipped_intro_beginning">Přeskočeno úvodní video</string>
+  <string name="morphe_sb_skipped_intro_beginning">Přeskočen úvod</string>
   <string name="morphe_sb_skipped_intro_middle">Přeskočená přestávka</string>
   <string name="morphe_sb_skipped_intro_end">Přeskočená přestávka</string>
   <string name="morphe_sb_skipped_outro">Přeskočená závěrečná sekvence</string>
@@ -144,7 +144,7 @@ Vaše uživatelské ID je jako heslo a nikdy by nemělo být sdíleno"</string>
   <string name="morphe_sb_skipped_preview_end">Přeskočené shrnutí</string>
   <string name="morphe_sb_skipped_filler">Přeskočená odbočka</string>
   <string name="morphe_sb_skipped_nomusic">Přeskočená část bez hudby</string>
-  <string name="morphe_sb_skipped_unsubmitted">Přeskočená nepodaná část</string>
+  <string name="morphe_sb_skipped_unsubmitted">Přeskočený neodeslaný segment</string>
   <string name="morphe_sb_skipped_multiple_segments">Přeskočeno více segmentů</string>
   <string name="morphe_sb_skip_automatically">Přeskočit automaticky</string>
   <string name="morphe_sb_skip_automatically_once">Přeskočit automaticky jednou</string>
@@ -154,7 +154,7 @@ Vaše uživatelské ID je jako heslo a nikdy by nemělo být sdíleno"</string>
   <string name="morphe_sb_submit_failed_invalid">Nelze odeslat segment: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock je dočasně nedostupný</string>
   <string name="morphe_sb_submit_failed_unknown_error">Nelze odeslat segment (stav: %1$s %2$s)</string>
-  <string name="morphe_sb_submit_failed_rate_limit">Nelze odeslat segment. Omezení sazby (příliš mnoho od stejného uživatele nebo IP)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Nelze odeslat segment. Omezení rychlosti (příliš mnoho od stejného uživatele nebo IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Nelze odeslat segment: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Nelze odeslat segment.
 Už existuje"</string>
@@ -167,13 +167,13 @@ Už existuje"</string>
   <string name="morphe_sb_vote_failed_unknown_error">Nelze hlasovat pro segment (stav: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Nelze hlasovat pro segment: %s</string>
   <string name="morphe_sb_vote_upvote">Hlas nahoru</string>
-  <string name="morphe_sb_vote_downvote">Odhlasovat</string>
+  <string name="morphe_sb_vote_downvote">Hlas dolů</string>
   <string name="morphe_sb_vote_category">Změnit kategorii</string>
   <string name="morphe_sb_vote_no_segments">Nejsou žádné segmenty, pro které můžete hlasovat</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
   <string name="morphe_sb_vote_segment_time_to_from">%1$s až %2$s</string>
   <string name="morphe_sb_new_segment_choose_category">Vyberte kategorii segmentu</string>
-  <string name="morphe_sb_new_segment_disabled_category">Kategória je vypnutá v nastaveniach. Aby ste mohli odoslať, zapnite kategóriu</string>
+  <string name="morphe_sb_new_segment_disabled_category">Kategorie je v nastavení vypnutá. Pro odeslání zapněte kategorii</string>
   <string name="morphe_sb_new_segment_title">Nová segmentace SponsorBlock</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">Stanovte %s jako začátek nebo konec nového segmentu?</string>
   <string name="morphe_sb_new_segment_mark_start">Začít</string>
@@ -218,7 +218,7 @@ Pokud neodesíláte zvýraznění, klepněte na Zrušit a označte druhou lokaci
   <string name="morphe_sb_stats_reputation">Vaše pověst je &lt;b&gt;%.2f&lt;/b&gt;</string>
   <string name="morphe_sb_stats_submissions">Vytvořili jste &lt;b&gt;%s&lt;/b&gt; segmentů</string>
   <string name="morphe_sb_stats_submissions_summary">Klepněte zde pro zobrazení vašich segmentů</string>
-  <string name="morphe_sb_stats_saved_zero">SponsorBlock leaderboard</string>
+  <string name="morphe_sb_stats_saved_zero">Žebříček SponsorBlock</string>
   <string name="morphe_sb_stats_saved">Zachránili jste lidi z &lt;b&gt;%s&lt;/b&gt; segmentů</string>
   <string name="morphe_sb_stats_saved_summary_zero">Klepněte zde pro zobrazení globálních statistik a nejlepších přispěvatelů</string>
   <string name="morphe_sb_stats_saved_summary">To je &lt;b&gt;%s&lt;/b&gt; z jejich životů.&lt;br&gt;Klepněte zde pro zobrazení žebříčku</string>

@@ -46,7 +46,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_video_length_without_segments_title">ສະແດງຄວາມຍາວຂອງວິດີໂອໂດຍບໍ່ມີສ່ວນທີ່ຖືກຕັດອອກ</string>
   <string name="morphe_sb_video_length_without_segments_summary">ລົບທຸກສ່ວນທີ່ຖືກຕັດອອກຈາກຄວາມຍາວທັງໝົດຂອງວິດີໂອທີ່ສະແດງໃນແຖບຊອກຫາ</string>
   <string name="morphe_sb_create_segment_category_title">ກໍາລັງສ້າງສ່ວນທີ່ຖືກຕັດອອກໃໝ່</string>
-  <string name="morphe_sb_create_new_segment_title">ສະແດງປຸ່ມ \'ສ້າງສ່ວນyໃໝ່\'</string>
+  <string name="morphe_sb_create_new_segment_title">ສະແດງປຸ່ມ \'ສ້າງສ່ວນໃໝ່\'</string>
   <string name="morphe_sb_create_new_segment_summary">ເພີ່ມປຸ່ມເຂົ້າໃນເຄື່ອງຫຼິ້ນວິດີໂອ ເພື່ອໃຫ້ທ່ານສາມາດສົ່ງສ່ວນ SponsorBlock ໃໝ່ໄດ້</string>
   <string name="morphe_sb_create_new_segment_step_title">ຂັ້ນຕອນການປັບເວລາ</string>
   <string name="morphe_sb_create_new_segment_step_summary">ຈຳນວນການເລື່ອນຂອງປຸ່ມປັບເວລາ (ເປັນມິນລິວິນາທີ)</string>
@@ -138,9 +138,9 @@ ID ຜູ້ໃຊ້ຂອງທ່ານປຽບດັ່ງລະຫັດ�
   <string name="morphe_sb_skipped_intro_beginning">ຂ້າມບົດນຳແລ້ວ</string>
   <string name="morphe_sb_skipped_intro_middle">ຂ້າມຊ່ວງພັກແລ້ວ</string>
   <string name="morphe_sb_skipped_intro_end">ຂ້າມຊ່ວງພັກແລ້ວ</string>
-  <string name="morphe_sb_skipped_outro">ຂ້າມບົດສະຫຼຸບແລ້ວ</string>
+  <string name="morphe_sb_skipped_outro">ຂ້າມຕອນຈົບແລ້ວ</string>
   <string name="morphe_sb_skipped_hook">ຂ້າມສ່ວນດຶງດູດຄວາມສົນໃຈແລ້ວ</string>
-  <string name="morphe_sb_skipped_preview_beginning">ຂ້າມການທຳນາຍ</string>
+  <string name="morphe_sb_skipped_preview_beginning">ຂ້າມຕົວຢ່າງແລ້ວ</string>
   <string name="morphe_sb_skipped_preview_middle">ຂ້າມຕົວຢ່າງແລ້ວ</string>
   <string name="morphe_sb_skipped_preview_end">ຂ້າມບົດສະຫຼຸບ</string>
   <string name="morphe_sb_skipped_filler">ຂ້າມເນື້ອຫາທີ່ບໍ່ກ່ຽວຂ້ອງ</string>
@@ -161,10 +161,10 @@ ID ຜູ້ໃຊ້ຂອງທ່ານປຽບດັ່ງລະຫັດ�
 ມີຂໍ້ມູນນີ້ຢູ່ແລ້ວ"</string>
   <string name="morphe_sb_submit_succeeded">ສົ່ງສ່ວນຂອງວິດີໂອສຳເລັດແລ້ວ</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ (API หมดເວລາ)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ (API ໝົດເວລາ)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ (ສະຖານະ %s)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock ບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ</string>
-  <string name="morphe_sb_vote_failed_timeout">ບໍ່ສາມາດລົງຄະແນນໃຫ້ຊ່ວງວິດີໂອໄດ້ (API หมดເວລາ)</string>
+  <string name="morphe_sb_vote_failed_timeout">ບໍ່ສາມາດລົງຄະແນນໃຫ້ຊ່ວງວິດີໂອໄດ້ (API ໝົດເວລາ)</string>
   <string name="morphe_sb_vote_failed_unknown_error">ບໍ່ສາມາດລົງຄະແນນໃຫ້ສ່ວນຂອງວິດີໂອໄດ້ (ສະຖານະ: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">ບໍ່ສາມາດລົງຄະແນນໃຫ້ຊ່ວງວິດີໂອ: %s</string>
   <string name="morphe_sb_vote_upvote">ໂຫວດໃຫ້</string>
@@ -208,7 +208,7 @@ ID ຜູ້ໃຊ້ຂອງທ່ານປຽບດັ່ງລະຫັດ�
   <string name="morphe_sb_new_segment_highlight_submit">ສົ່ງສ່ວນທີ່ສຳຄັນ</string>
   <string name="morphe_sb_stats_title">ສະຖິຕິ</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
-  <string name="morphe_sb_stats_connection_failure">ສະຖິຕິບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ (API ໃຊ້ການບໍ່ໄດ້)</string>
+  <string name="morphe_sb_stats_connection_failure">ສະຖິຕິບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ (API ບໍ່ສາມາດໃຊ້ງານໄດ້)</string>
   <string name="morphe_sb_stats_loading">ກຳລັງໂຫຼດ…</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock ຖືກປິດໃຊ້ງານ</string>
   <string name="morphe_sb_stats_username">ຊື່ຜູ້ໃຊ້ຂອງທ່ານ: &lt;b&gt;%s&lt;/b&gt;</string>

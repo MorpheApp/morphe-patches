@@ -405,6 +405,13 @@ internal fun sharedLithoFilterPatch(
                         }
                     }
 
+                // The element of an item of a grid, such as a Short of the grid of Shorts of the search results,
+                // has the position of the item in the grid, and the item is laid out for the column of its position.
+                // The items after a removed item move back by one position, also to another column.
+                val (elementItemType, elementBytesField) = ElementItemConstructorFingerprint.let { item ->
+                    item.classDef.type to item.instructionMatches[1].fieldReference
+                }
+
                 it.classDef.apply {
                     interfaces.add(EXTENSION_LIST_SECTION_INTERFACE)
 
@@ -417,19 +424,36 @@ internal fun sharedLithoFilterPatch(
                             AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
                             null,
                             null,
-                            MutableMethodImplementation(4),
+                            MutableMethodImplementation(9),
                         ).toMutable().apply {
                             addInstructionsWithLabels(
                                 0,
                                 """
                                     iget-object v0, p0, $itemsField
-                                    invoke-interface { v0, p1 }, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-                                    move-result v0
-                                    if-eqz v0, :done
+                                    invoke-interface { v0, p1 }, Ljava/util/List;->indexOf(Ljava/lang/Object;)I
+                                    move-result v2
+                                    const/4 v0, 0x0
+                                    if-ltz v2, :done
+                                    const/4 v0, 0x1
                                     invoke-direct { p0 }, $isGridMethod
                                     move-result v1
                                     invoke-virtual { p0, p1 }, $removeItemMethod
                                     if-eqz v1, :done
+                                    iget-object v3, p0, $itemsField
+                                    invoke-interface { v3 }, Ljava/util/List;->size()I
+                                    move-result v4
+                                    :move_back
+                                    if-ge v2, v4, :moved_back
+                                    invoke-interface { v3, v2 }, Ljava/util/List;->get(I)Ljava/lang/Object;
+                                    move-result-object v5
+                                    add-int/lit8 v2, v2, 0x1
+                                    instance-of v6, v5, $elementItemType
+                                    if-eqz v6, :move_back
+                                    check-cast v5, $elementItemType
+                                    iget-object v5, v5, $elementBytesField
+                                    invoke-static { v5 }, $EXTENSION_CLASS->moveGridItemBack([B)V
+                                    goto :move_back
+                                    :moved_back
                                     invoke-direct { p0 }, $isGridMethod
                                     move-result v1
                                     if-nez v1, :done

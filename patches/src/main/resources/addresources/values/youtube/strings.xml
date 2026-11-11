@@ -705,6 +705,26 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_loop_video_range_toast_on">Looping %1$s - %2$s</string>
     <string name="morphe_loop_video_range_invalid_time">Invalid time range</string>
 
+    <!-- interaction.loop.loopCountPatch -->
+    <string name="morphe_loop_count_screen_title">Loop count</string>
+    <string name="morphe_loop_count_screen_summary">Choose how many times a video loops before the next video</string>
+    <string name="morphe_loop_count_title">Enable loop count</string>
+    <string name="morphe_loop_count_summary">The More menu of the player shows Loop count next to Loop video, to choose how many times the video plays before the next video</string>
+    <string name="morphe_loop_count_playlists_title">Save loop count in playlists</string>
+    <string name="morphe_loop_count_playlists_summary">Each video of a playlist keeps the loop count you choose, and Loop video turns on when the playlist plays it again. If turned off, the loop count is only for the video playing now</string>
+    <string name="morphe_loop_count_clear_title">Clear saved loop counts</string>
+    <string name="morphe_loop_count_clear_summary">Forget the loop counts saved in your playlists. Saved videos: %s</string>
+    <string name="morphe_loop_count_clear_summary_none">No loop counts are saved</string>
+    <string name="morphe_loop_count_clear_dialog_title">Clear saved loop counts?</string>
+    <string name="morphe_loop_count_clear_dialog_message">The videos of your playlists forget their loop count, and Loop video no longer turns on when a playlist plays them</string>
+    <string name="morphe_loop_count_clear_done">Saved loop counts cleared</string>
+    <string name="morphe_loop_count_flyout_name">Loop count</string>
+    <string name="morphe_loop_count_dialog_message">How many times the video plays before the next video, from %1$s to %2$s. Leave empty to loop the video without a limit.</string>
+    <string name="morphe_loop_count_times">%s times</string>
+    <string name="morphe_loop_count_no_limit">No limit</string>
+    <string name="morphe_loop_count_decrease">Fewer times</string>
+    <string name="morphe_loop_count_increase">More times</string>
+
     <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
     <string name="morphe_pip_button_overlay_title">Show Picture-in-Picture button</string>
     <string name="morphe_pip_button_flyout_title">Show Picture-in-Picture menu</string>
@@ -1224,6 +1244,7 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_shorts_subscriptions_title">Hide in Subscriptions feed</string>
     <string name="morphe_hide_shorts_video_description_title">Hide in video description</string>
     <string name="morphe_hide_shorts_history_title">Hide in watch history</string>
+    <string name="morphe_hide_shorts_notifications_title">Hide in push notifications</string>
     <string name="morphe_shorts_player_screen_title">Shorts player</string>
     <string name="morphe_shorts_player_screen_summary">Choose which components appear in the Shorts player</string>
     <string name="morphe_disable_shorts_double_tap_to_like_title">Disable double-tap to like</string>

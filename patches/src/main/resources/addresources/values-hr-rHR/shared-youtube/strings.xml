@@ -56,7 +56,7 @@ Second \"item\" text"</string>
   <string name="morphe_download_mode_title">Način preuzimanja</string>
   <string name="morphe_download_mode_entry_default">Zadano</string>
   <string name="morphe_download_mode_entry_in_app">Preuzmi u aplikaciji</string>
-  <string name="morphe_download_mode_entry_external">Vanjski preuzimatelj</string>
+  <string name="morphe_download_mode_entry_external">Vanjski program za preuzimanje</string>
   <string name="morphe_external_downloader_name_title">Naziv paketa downloader-a</string>
   <string name="morphe_external_downloader_name_summary">Naziv paketa vaše instalirane vanjske aplikacije za preuzimanje</string>
   <string name="morphe_external_downloader_other_item_hint">Unesite naziv paketa</string>
@@ -70,10 +70,10 @@ Provjerite je li naziv paketa ispravan i je li aplikacija instalirana"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Prilagođeno</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacije</string>
-  <string name="morphe_custom_branding_icon_entry_1">Originalne APK datoteke</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
-  <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe light</string>
+  <string name="morphe_custom_branding_icon_entry_1">Originalno</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe crna</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe tamna</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe svijetla</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_5">Morphe play svijetla</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
@@ -93,7 +93,7 @@ Da biste promijenili ikonu svugdje, ponovno primijenite zakrpu i promijenite opc
   <string name="morphe_custom_branding_notification_icon_entry_1">Podudaranje ikone aplikacije</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
-  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe patches</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Obavijest Morphea</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Povijest gledanja se ne sprema.&lt;br&gt;&lt;br&gt;Ovo je najvjerojatnije uzrokovano DNS blokerom reklama ili mrežnim proxyjem.&lt;br&gt;&lt;br&gt;Da biste ovo ispravili, dodajte &lt;b&gt;s.youtube.com&lt;/b&gt; na bijelu listu ili onemogućite sve DNS blokere i proxyje</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj ponovno</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
@@ -112,7 +112,7 @@ Postavi %2$s kao zadani klijent?"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Isključivanje ove postavke može uzrokovati probleme s reprodukcijom</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Pokušajte omogućiti: Falsificiraj video toke > Prijava u Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Pokušajte omogućiti: Lažiraj video streamove > Prijava u Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standardni klijent</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava u Android VR</string>
@@ -121,18 +121,18 @@ Postavi %2$s kao zadani klijent?"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Da bi koristili ovu značajku, promijenite \"Standardni klijent\" u Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Prijava u Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijava na Android VR može riješiti problema s reprodukcijom za neka korisnika
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijava na Android VR može riješiti probleme s reprodukcijom kod nekih korisnika
 
-Za prijavu, pritisnite nastavak ispod"</string>
+Za prijavu pritisnite Nastavi ispod"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odjava</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Upute</string>
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kod za aktivaciju: %s
 
-1. Pritisnite \"Otvori web stranicu\" ispod da bi se otvorila stranica \"Poveži uređaj\"
-2. Iz klipiraj ili upišite kod za aktivaciju prikazan iznad
-3. Prijavite se na Google ako vam je to zapovijeđeno. Ako imate više računa, odaberite ovaj YouTube račun
-4. Pritisnite \"Dozvoli YouTube VR\" pristup
+1. Pritisnite \"Otvori web stranicu\" ispod da biste otvorili stranicu \"Poveži uređaj\"
+2. Iz međuspremnika zalijepite (ili upišite) kod za aktivaciju prikazan iznad
+3. Prijavite se na Google ako se to od vas traži. Ako imate više računa, odaberite ovaj YouTube račun
+4. Pritisnite \"Dozvoli pristup YouTube VR\"
 5. Vratite se u ovu aplikaciju nakon što se pojavi poruka \"Uređaj povezan\""</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Nije moguće izdati kod za aktivaciju</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Nije moguće izdati autentikacijski token</string>
@@ -157,7 +157,7 @@ Za prijavu, pritisnite nastavak ispod"</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Sakriva prethodne i sljedeće gumbe u medijskoj obavijesti, na zaključanom zaslonu i na kontrolama za slušalice</string>
   <string name="morphe_disable_notification_media_seekbar_title">Onemogući kliznu traku</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Sprječava povlačenje klizne trake na zaključanom zaslonu i ploči obavijesti</string>
-  <string name="morphe_seek_notification_media_prev_next_title">Traži s gumbima <b>&amp;</b> Prethodni i Sljedeći</string>
+  <string name="morphe_seek_notification_media_prev_next_title">Traži pomoću gumba Prethodni &amp; Sljedeći</string>
   <string name="morphe_seek_notification_media_prev_next_summary">Promjena kontrola za obavijest o mediju, zaključani zaslon i slušalice radi traženja umjesto promjene videa</string>
   <string name="morphe_seek_notification_media_rewind_length_title">Duljina prebacivanja unazad</string>
   <string name="morphe_seek_notification_media_rewind_length_summary">Broj sekundi za prebacivanje unazad pomoću gumba Prethodni</string>
@@ -165,11 +165,11 @@ Za prijavu, pritisnite nastavak ispod"</string>
   <string name="morphe_seek_notification_media_fast_forward_length_summary">Broj sekundi za prebacivanje unaprijed pomoću gumba Sljedeći</string>
   <string name="morphe_seek_notification_media_length_invalid">Duljina traženja mora biti između 1 i %s sekundi. Koristi se zadana vrijednost</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
-  <string name="morphe_disable_quic_protocol_title">Onemisliti protokol QUIC</string>
+  <string name="morphe_disable_quic_protocol_title">Onemogući QUIC protokol</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Onemogući DRC zvuk</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
-  <string name="morphe_force_original_audio_title">Sili originalni jezik zvuka</string>
+  <string name="morphe_force_original_audio_title">Forsiraj originalni jezik zvuka</string>
   <string name="morphe_force_original_audio_summary">Uvijek reproducira izvorni zvučni zapis videozapisa umjesto sinkronizirane verzije</string>
   <!-- misc.audio.silence.skipSilencePatch -->
   <string name="morphe_skip_silence_title">Preskoči tišinu</string>
@@ -208,19 +208,21 @@ Za prijavu, pritisnite nastavak ispod"</string>
   <string name="morphe_replace_links_with_shortener_title">Promijenite poveznice za dijeljenje na youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Prisiljava videozapise da koriste skraćeni youtu.be format poveznice</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Zapisnik debug protokola buffer-a</string>
-  <string name="morphe_debug_protobuffer_summary">Dodaje dodatne informacije o bilježenju za programere kako bi identificirali komponente aplikacije</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Omogućavanjem ove postavke zabilježit će se dodatni podaci o rasporedu, uključujući tekst na zaslonu za neke komponente korisničkog sučelja.
+  <string name="morphe_debug_litho_title">Litho zapisivanje</string>
+  <string name="morphe_debug_litho_entry_disabled">Onemogućeno</string>
+  <string name="morphe_debug_litho_entry_path">Putanja</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Putanja i međupomoćnik</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho zapisivanje bilježi komponente rasporeda aplikacije, uključujući tekst na zaslonu za neke komponente korisničkog sučelja.
 
 To može pomoći u identificiranju komponenti prilikom izrade prilagođenih filtera.
 
-Međutim, omogućavanjem ove postavke zabilježit će se i neki korisnički podaci poput vaše IP adrese"</string>
+Međutim, ovime će se zabilježiti i neki korisnički podaci, kao što je vaša IP adresa"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Prilagođeni filtar</string>
-  <string name="morphe_custom_filter_screen_summary">Konfigurirajte prilagođene filtre za skrivanje bilo kojeg komponenta</string>
+  <string name="morphe_custom_filter_screen_summary">Konfigurirajte prilagođene filtre za skrivanje bilo koje komponente</string>
   <string name="morphe_custom_filter_title">Omogući prilagođeni filtar</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Popis nizova alata za izradu putanja komponenti za filtriranje, odvojenih novim retcima</string>
+  <string name="morphe_custom_filter_strings_summary">Popis nizova za filtriranje putanja komponenti, odvojenih novim recima</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Nevaljan prilagođeni filtar: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Filtar izbornika postavki</string>
@@ -240,7 +242,7 @@ Ako ste korisnik usluge YouTube Premium, ova postavka možda neće biti potrebna
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_unavailable_summary">"Popravlja probleme s reprodukcijom pomoću vanjskog PoToken kovnice (Eksperimentalno)
 
-Da biste koristili ovu značajku, isključite 'Spoof video streamova'"</string>
+Da biste koristili ovu značajku, isključite 'Lažiranje video streamova'"</string>
   <string name="morphe_external_potoken_provider_user_dialog_message">Ako ne radi, pokušajte prisilno zatvoriti MicroG</string>
   <string name="morphe_external_potoken_provider_settings_summary">Otvori postavke PotHelpera</string>
   <string name="morphe_external_potoken_provider_about_summary">"Ova je značajka trenutačno u razvoju i možda neće raditi
@@ -305,15 +307,15 @@ ID videozapisa koji gledate šalje se u Return YouTube Dislike API, a vaša svi�
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">Minimalno vrijeme odziva API-ja</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Maksimalno vrijeme odziva API-ja</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Vrijeme odziva API-ja za zadnji medij</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislikeovi su privremeno nedostupni - na snazi je limit klijentkog API-ja</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Dislikeovi su privremeno nedostupni - na snazi je limit klijentskog API-ja</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">Preuzimanje glasova s API-ja, broj poziva</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Nema izvršenih mrežnih poziva</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%s mrežnih poziva obavljeno</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Preuzimanje glasova s API-ja, broj timeout-a</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Nema mrežnih poziva koji su istekli</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%s mrežnih poziva je isteklo vrijeme</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Limiti klijentkog API-ja</string>
-  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nisu naiđeni limiti klijentskog API-ja</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Limiti klijentskog API-ja</string>
+  <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_zero_summary">Nije zabilježen nijedan limit klijentskog API-ja</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_non_zero_summary">Limit rate klijenta zabilježen %s puta</string>
-  <string name="morphe_ryd_statistics_millisecond_text">%s  milisek.</string>
+  <string name="morphe_ryd_statistics_millisecond_text">%s ms</string>
 </resources>

@@ -396,6 +396,16 @@ internal fun spoofVideoStreamsPatch(
             )
         }
 
+        // Only the ranges of saved videos are shortened. A saved video is transferred through a priority
+        // data source, which continues from the last byte it got after the transfer is paused. Playback
+        // takes the pause as an error of the stream.
+        PriorityDataSourceOpenFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.last().index,
+                "invoke-static { }, $EXTENSION_CLASS->onPriorityDataSourceOpen()V"
+            )
+        }
+
         // A response with a shortened range ends before the requested range does. The app takes that
         // as the end of the stream, and a saved video would end there. Instead, the transfer is paused
         // like for a task of a higher priority, and the saved video continues from the last byte it got.

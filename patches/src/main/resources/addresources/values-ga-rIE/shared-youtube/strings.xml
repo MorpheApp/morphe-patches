@@ -116,7 +116,7 @@ An ndéanfaidh tú cliant réamhshocraithe de %2$s?"</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliant réamhshocraithe</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logáil isteach Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Teastaíonn cíomh-ionracadh ó Android VR. Tapáil anseo chun leanúint</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Teastaíonn logáil isteach ar leith le haghaidh Android VR. Tapáil anseo chun leanúint ar aghaidh</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Sínithe isteach i Android VR faoi láthair</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Chun an ghné seo a úsáid, athraigh \'Cliant réamhshocraithe\' go Android VR</string>
@@ -208,13 +208,15 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_replace_links_with_shortener_title">Athraigh naisc chomhroinnte chuig youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Éilíonn sé físeáin chun an fhormáid URL giorraithe youtu.be a úsáid</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Maolán prótacail loga dífhabhtaithe</string>
-  <string name="morphe_debug_protobuffer_summary">Cuireann sé faisnéis logála bhreise leis do fhorbróirí chun comhpháirteanna an aip a aithint</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Má chumasaíonn tú an socrú seo, logálfar sonraí breise leagain amach, lena n-áirítear téacs ar an scáileán do roinnt comhpháirteanna den Chomhéadan Úsáideora.
+  <string name="morphe_debug_litho_title">Logáil Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Díchumasaithe</string>
+  <string name="morphe_debug_litho_entry_path">Conair</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Conair agus maolán</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Déanann logáil Litho taifead ar chomhpháirteanna leagan amach an aip, lena n-áirítear téacs ar an scáileán do chomhpháirteanna comhéadain úsáideora áirithe.
 
 Is féidir leis seo cabhrú le comhpháirteanna a aithint agus scagairí saincheaptha á gcruthú.
 
-Mar sin féin, má chumasaíonn tú é seo, logálfar roinnt sonraí úsáideora freisin amhail do sheoladh IP."</string>
+Áfach, déanfar sonraí úsáideora áirithe a logáil freisin, mar shampla do sheoladh IP."</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Scagaire saincheaptha</string>
   <string name="morphe_custom_filter_screen_summary">Cumraigh scagairí saincheaptha chun aon chomhpháirt a cheilt</string>
@@ -250,7 +252,7 @@ Tapáil anseo chun PotHelper a íoslódáil"</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_expired_dialog_message">"Ní oibríonn an comhartha ionsuite sa leagan seo de PotHelper a thuilleadh
 
-Cuir 'Sruthanna físeáin a aithris' ar siúl chun athsheinm a dheisiú"</string>
+Cuir 'Sruthanna físe bréige' ar siúl chun athsheinm a dheisiú"</string>
   <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Cuir ar siúl</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Leagan aip bréige</string>
@@ -298,7 +300,7 @@ Má dhéantar é a mhúchadh níos déanaí, moltar sonraí an aip a ghlanadh ch
   <string name="morphe_ryd_toast_on_connection_error_summary">Taispeánann sé fógra nuair nach bhfuil an freastalaí Return YouTube Dislike ar fáil</string>
   <string name="morphe_ryd_attribution_summary">"Cuireann Return YouTube Dislike ar ais na comhaireamh nach dtaitníonn leo a cheiltigh YouTube in 2021. Tagann na comhaireamh ó shonraí a cartlannaíodh roimh an mbaint, agus déantar meastachán orthu d'fhíseáin níos nuaí ó vótaí a úsáideoirí, mar sin tá siad neasach agus déantar iad a nuashonrú gach cúpla lá
 
-Seoltar ID an fhíseáin a fhéachann tú chuig API Return YouTube Dislike, agus seoltar do chuid is maith leat agus nach maith leat go hanaithnid chun na meastacháin a fheabhsú.},"</string>
+Seoltar ID an fhíseáin a fhéachann tú chuig API Return YouTube Dislike, agus seoltar do chuid is maith leat agus nach maith leat go hanaithnid chun na meastacháin a fheabhsú."</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Staitisticí API YouTube Dislike don ghléas seo a thabhairt ar ais</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Am freagartha API, meán</string>

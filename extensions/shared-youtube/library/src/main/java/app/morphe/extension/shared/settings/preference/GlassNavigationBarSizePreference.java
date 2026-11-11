@@ -17,6 +17,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Picture;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.preference.Preference;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -283,6 +284,8 @@ public abstract class GlassNavigationBarSizePreference extends Preference {
             this.values = values;
             this.margin = margin;
             labelPaint.setTextAlign(Paint.Align.CENTER);
+            // Also the custom font of the Custom font patch, which a paint without a typeface does not use.
+            labelPaint.setTypeface(Typeface.DEFAULT);
             labelPaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, LABEL_SIZE_SP,
                     context.getResources().getDisplayMetrics()));
         }

@@ -214,7 +214,7 @@ Les changements incluent :
   <string name="morphe_hide_key_concepts_section_title">Masquer la section \'Concepts clés\'</string>
   <string name="morphe_hide_quizzes_section_title">Masquer la section \'Quiz\'</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Masquer la section \'Rechercher dans cette vidéo\'</string>
-  <string name="morphe_hide_subscribe_button_title">Masquer le bouton \'S\'abonner\'</string>
+  <string name="morphe_hide_subscribe_button_title">Masquer le bouton \'S’abonner\'</string>
   <string name="morphe_hide_transcript_section_title">Masquer la section \'Transcription\'</string>
   <string name="morphe_hide_video_details_section_title">Masquer la section \'Détails de la vidéo\'</string>
   <string name="morphe_hide_filter_bar_screen_title">Barre de filtres</string>
@@ -244,7 +244,7 @@ Les changements incluent :
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Masquer le bouton \'Boutique\'</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Masquer le bouton \'S\'abonner\'</string>
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">Masquer le bouton \'S’abonner\'</string>
   <string name="morphe_explore_menu_screen_title">Menu \'Explorer\'</string>
   <string name="morphe_explore_menu_screen_summary">Choisissez les composants qui apparaissent dans le menu \'Explorer\'</string>
   <string name="morphe_hide_courses_menu_title">Masquer le menu \'Cours\'</string>
@@ -284,7 +284,7 @@ Les changements incluent :
   <string name="morphe_hide_comments_section_in_home_feed_title">Masquer la section \'Commentaires\' sur la page d\'accueil</string>
   <string name="morphe_hide_comments_community_guidelines_title">Masquer les règles de la communauté</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Masquer le bouton \'Créer un Short\'</string>
-  <string name="morphe_hide_comments_dislike_button_title">Masquer le bouton \'Je n\'aime pas\'</string>
+  <string name="morphe_hide_comments_dislike_button_title">Masquer le bouton \'Je n’aime pas\'</string>
   <string name="morphe_hide_comments_emoji_button_title">Masquer le bouton \'Émoji\'</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Masquer les options de la barre de filtres</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Masque toutes les options de la barre de filtres, à l\'exception de \'Les plus populaires\' et \'Les plus récents\'</string>
@@ -624,11 +624,13 @@ Votre clé API ne doit jamais être partagée. Toute personne ayant accès à ce
   <string name="morphe_vot_mymemory_quota_message_no_email">Vous avez utilisé le quota gratuit de traduction MyMemory d\'aujourd\'hui (5,000 caractères). Ajoutez une adresse e-mail MyMemory dans les paramètres pour porter la limite quotidienne à 50,000 caractères, ou passez à un autre service de traduction</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Vous avez utilisé le quota de traduction MyMemory d\'aujourd\'hui (50,000 caractères). Passez à un autre service de traduction ou réessayez demain</string>
   <string name="morphe_vot_mymemory_error">La traduction via MyMemory a échoué (statut : %s).</string>
-  <!-- interaction.watchlater.watchLaterPatch -->
-  <string name="morphe_watch_later_wide_drag_handles_title">Élargir les poignées de déplacement de \'À regarder plus tard\'</string>
-  <string name="morphe_watch_later_wide_drag_handles_summary">Les poignées de déplacement des vidéos de \'À regarder plus tard\' sont plus faciles à saisir</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">Masquer la snackbar de suppression de \'À regarder plus tard\'</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_summary">La confirmation ne s\'affiche pas après la suppression d\'une vidéo de \'À regarder plus tard\'</string>
+  <!-- interaction.playlist.playlistPatch -->
+  <string name="morphe_playlist_wide_drag_handles_title">Élargir les poignées de déplacement de la playlist</string>
+  <string name="morphe_playlist_wide_drag_handles_summary">Les poignées de déplacement de la playlist sont plus faciles à saisir</string>
+  <string name="morphe_playlist_hide_removal_snackbar_title">Masquer la snackbar de suppression de playlist</string>
+  <string name="morphe_playlist_hide_removal_snackbar_summary">La confirmation ne s\'affiche pas après la suppression d\'une vidéo d\'une playlist</string>
+  <string name="morphe_playlist_long_press_drag_title">Appuyer longuement pour réorganiser les vidéos de la playlist</string>
+  <string name="morphe_playlist_long_press_drag_summary">Appuyez longuement sur une vidéo de votre playlist pour la faire glisser vers une nouvelle position</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Activer la lecture en boucle</string>
   <string name="morphe_do_not_remember_loop_video_title">Ne pas mémoriser la vidéo en boucle</string>
@@ -877,9 +879,9 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_action_buttons_screen_summary">Choisissez quels boutons d\'action apparaissent en mode portrait et en mode plein écran</string>
   <string name="morphe_portrait_buttons">Boutons en mode portrait</string>
   <string name="morphe_disable_like_subscribe_glow_title">Désactiver la lueur des \'J\'aime\' et \'S\'abonner\'</string>
-  <string name="morphe_disable_like_subscribe_glow_summary">Empêche les boutons \'J\'aime\' et \'S\'abonner\' de s\'illuminer lorsqu\'un créateur les mentionne</string>
+  <string name="morphe_disable_like_subscribe_glow_summary">Empêche les boutons \'J’aime\' et \'S’abonner\' de s\'illuminer lorsqu\'un créateur les mentionne</string>
   <string name="morphe_hide_action_bar_title">Masquer la barre d\'action</string>
-  <string name="morphe_hide_like_dislike_button_title">Masquer les boutons \'J\'aime\' et \'Je n\'aime pas\'</string>
+  <string name="morphe_hide_like_dislike_button_title">Masquer les boutons \'J’aime\' et \'Je n’aime pas\'</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_share_button_title">Masquer le bouton \'Partager\'</string>
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
@@ -907,7 +909,7 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_hide_ask_button_title">Masquer le bouton \'Posez une question\'</string>
   <string name="morphe_hide_channel_profile_button_title">Masquer la chaîne et le bouton \'S\'abonner\'</string>
   <string name="morphe_hide_channel_profile_button_summary">Masque l\'avatar de la chaîne et le bouton \'S\'abonner\' au début de la barre d\'actions</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Masquer le bouton \'S\'abonner\'</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Masquer le bouton \'S’abonner\'</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Masque les boutons \'S\'abonner\' et \'Rejoindre\' à côté de l\'avatar de la chaîne, au début de la barre d\'actions</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Masquer le bouton \'Clip\'</string>
@@ -918,8 +920,8 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_hide_save_button_title">Masquer le bouton \'Enregistrer\'</string>
   <string name="morphe_hide_more_button_title">Masquer le bouton \'Plus\'</string>
   <string name="morphe_fullscreen_buttons">Boutons en plein écran</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Masquer le bouton \'Je n\'aime pas\'</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Masquer le bouton \'J\'aime\'</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Masquer le bouton \'Je n’aime pas\'</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Masquer le bouton \'J’aime\'</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">Masquer le bouton \'Chat en direct\'</string>
   <string name="morphe_hide_quick_actions_mix_button_title">Masquer le bouton \'Mix\'</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">Masquer le bouton \'Plus de vidéos\'</string>
@@ -1194,7 +1196,10 @@ Paramètres → Lecture (ou Lecture automatique) → Lecture automatique de la v
   <string name="morphe_disable_playlist_autoplay_title">Désactiver la lecture automatique de la playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Empêche les playlists de passer automatiquement à la vidéo suivante</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-  <string name="morphe_disable_continue_watching_prompt_title">Désactiver l\'invite \'Continuer à regarder ?\'</string>
+  <string name="morphe_continue_watching_prompt_title">Invite \'Continuer à regarder ?\'</string>
+  <string name="morphe_continue_watching_prompt_entry_1">Par défaut</string>
+  <string name="morphe_continue_watching_prompt_entry_2">Désactivée</string>
+  <string name="morphe_continue_watching_prompt_entry_3">Désactivé, toujours afficher le compte à rebours de lecture automatique</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Quitter le mode plein écran à la fin de la vidéo</string>
   <string name="morphe_exit_fullscreen_entry_1">Désactivé</string>
@@ -1313,7 +1318,7 @@ Mise en page pour automobile
   <string name="morphe_shorts_autoplay_background_title">Lecture automatique en arrière-plan</string>
   <string name="morphe_shorts_autoplay_background_summary">Passe automatiquement au Short suivant lors de la lecture en arrière-plan</string>
   <string name="morphe_skip_live_shorts_title">Ignorer les Shorts en direct</string>
-  <string name="morphe_skip_live_shorts_summary">Ignore les Streams qui apparaissent dans le flux Short</string>
+  <string name="morphe_skip_live_shorts_summary">Passe les diffusions en direct qui apparaissent dans le flux Shorts</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_title">Lecture dans les flux</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Toujours activé</string>

@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Отладка</string>
   <string name="morphe_debug_screen_summary">Настроить расширенные параметры разработчика и журналы диагностики</string>
-  <string name="morphe_debug_title">Включить журналы отладки</string>
-  <string name="morphe_debug_stacktrace_title">Трассировка стека журнала отладки</string>
-  <string name="morphe_debug_stacktrace_summary">Включает трассировки стека в журналы отладки, чтобы помочь выявить ошибки</string>
+  <string name="morphe_debug_level_title">Включить журналы отладки</string>
+  <string name="morphe_debug_level_entry_disabled">Выключено</string>
+  <string name="morphe_debug_level_entry_debug">Отладка</string>
+  <string name="morphe_debug_level_entry_verbose">Подробно</string>
   <string name="morphe_debug_toast_on_error_title">Показать всплывающее уведомление при ошибке Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Отключение всплывающих уведомлений об ошибках скроет все сообщения об ошибках Morphe.
 
@@ -117,7 +118,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_logs_clear_toast">Журналы отладки очищены</string>
   <string name="morphe_debug_feature_flags_manager_title">Флаги функций Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управление логическими флагами функций</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Поиск флажков функций…</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Поиск флагов функций…</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_inactive">Отключено (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
@@ -152,7 +153,7 @@ Second \"item\" text"</string>
 Половина из %s флагов блокируется, и после каждого перезапуска вы сообщаете, сохраняется ли поведение.
 
 Воспроизведите поведение один раз перед началом поиска, иначе флаги, которые приложение ещё не запрашивало, не будут участвовать в поиске"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Начало</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Начать</string>
   <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Нет флагов функций для поиска.
 
 В бинарном поиске можно использовать только те флаги, с которыми приложение уже сталкивалось и которые в данный момент не включены принудительно"</string>
@@ -191,7 +192,7 @@ Second \"item\" text"</string>
 %s
 
 Нажмите, чтобы удалить её, затем снова откройте это приложение и установите MicroG RE"</string>
-  <string name="gms_core_dialog_uninstall_text">Деинсталяция</string>
+  <string name="gms_core_dialog_uninstall_text">Удалить</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"У MicroG нет разрешения на работу в фоновом режиме.
 

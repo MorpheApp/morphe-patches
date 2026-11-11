@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Не вдалося імпортувати: %s</string>
   <string name="morphe_settings_navigate_up">Перейти вгору</string>
   <string name="morphe_settings_search_hint">Пошук налаштувань</string>
-  <string name="morphe_settings_screen_info_title">Про сервіс</string>
+  <string name="morphe_settings_screen_info_title">Про застосунок</string>
   <string name="morphe_settings_search_no_results_title">За запитом \'%s\' нічого не знайдено</string>
   <string name="morphe_settings_search_no_results_summary">Спробуйте інше ключове слово</string>
   <string name="morphe_settings_search_recent_searches">Нещодавні пошуки</string>
@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Налагодження</string>
   <string name="morphe_debug_screen_summary">Налаштування розширених параметрів розробника та журналів діагностики</string>
-  <string name="morphe_debug_title">Увімкнути журнал налагодження</string>
-  <string name="morphe_debug_stacktrace_title">Журнал налагодження трасування стека</string>
-  <string name="morphe_debug_stacktrace_summary">Додає трасування стека до журналів налагодження для виявлення помилок</string>
+  <string name="morphe_debug_level_title">Журнал налагодження</string>
+  <string name="morphe_debug_level_entry_disabled">Вимкнена</string>
+  <string name="morphe_debug_level_entry_debug">Налагодження</string>
+  <string name="morphe_debug_level_entry_verbose">Детально</string>
   <string name="morphe_debug_toast_on_error_title">Показувати повідомлення про помилку Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Вимкнення повідомлень про помилки приховує всі сповіщення про помилки Morphe.
 

@@ -729,13 +729,29 @@ public final class FeedVideoActionsPatch {
      * the top of the list may not be found when it is laid out, and the card may not be laid
      * out again once it is shown.
      *
-     * @param videoId The video of the card, or null if the card is not a known video.
+     * @param videoId    The video of the card, or null if the card is not a known video.
+     * @param textsDrawn If the texts of the card are drawn. Litho mounts only the part of a card that is shown,
+     *                   so a card that enters from the bottom of the list shows its thumbnail before its texts.
      */
-    public static void onCardLaidOut(ComponentHost host, @Nullable String videoId) {
+    public static void onCardLaidOut(ComponentHost host, @Nullable String videoId, boolean textsDrawn) {
         if (!ENABLED) {
             return;
         }
         try {
+            // Litho reuses the host for other content, such as another video or a row of Shorts,
+            // which is known by its description before its texts are drawn.
+            VideoCard card = cards.get(host);
+            if (card != null && card.badgeAdded) {
+                String shownVideoId = FeedVideoCardsPatch.findVideoIdByDescription(host, false);
+                if (shownVideoId != null && !shownVideoId.equals(card.badge.videoId)) {
+                    card.removeBadge(host);
+                    cards.remove(host);
+                }
+            }
+            if (!textsDrawn) {
+                // The button is found once the texts are drawn.
+                return;
+            }
             if (updateCard(host) == null && videoId != null) {
                 FeedVideoCardsPatch.scheduleScrollCheck(host);
             }
@@ -973,7 +989,7 @@ public final class FeedVideoActionsPatch {
         // The texts of a card that is not fully shown may not be drawn.
         return cardVideoId != null && VIDEO_ID_PATTERN.matcher(cardVideoId).matches()
                 ? cardVideoId
-                : FeedVideoCardsPatch.findVideoIdByDescription(host);
+                : FeedVideoCardsPatch.findVideoIdByDescription(host, false);
     }
 
     /**

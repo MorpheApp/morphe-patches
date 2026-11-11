@@ -56,7 +56,7 @@ Second \"item\" text"</string>
   <string name="morphe_download_mode_title">Режим на преземање</string>
   <string name="morphe_download_mode_entry_default">Стандардно</string>
   <string name="morphe_download_mode_entry_in_app">Преземи во апликацијата</string>
-  <string name="morphe_download_mode_entry_external">Насловен преземач</string>
+  <string name="morphe_download_mode_entry_external">Надворешен преземач</string>
   <string name="morphe_external_downloader_name_title">Име на пакетот на преземачот</string>
   <string name="morphe_external_downloader_name_summary">Име на пакетот на вашата инсталирана надворешна апликација за преземање</string>
   <string name="morphe_external_downloader_other_item_hint">Внесете го името на пакетот</string>
@@ -143,7 +143,7 @@ Second \"item\" text"</string>
 • Ако оваа апликација не се користи 6 месеци, Google ќе го отстрани ова одобрување.
 • Ќе треба повторно да се најавите ако ја промените вашата Google лозинка или го откажете овој уред од вашите поставки на Google."</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 е привремено недостапен (истекот на рокот на API)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Истечен пријава во Android VR, обидете се да се најавите во VR повторно</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Пријавата за Android VR е истечена, обидете се повторно да се најавите во VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 е привремено недоступен (статус %s)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 е привремено недостапен</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">Не може да се најавите во VR, одобрувањето на веб-страницата не е одобрено</string>
@@ -170,7 +170,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_drc_audio_title">Исклучи DRC аудио</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Принудно оригинално аудио</string>
-  <string name="morphe_force_original_audio_summary">Секогаш пуштај оригинален аудио трак за видео наместо добликан верзија</string>
+  <string name="morphe_force_original_audio_summary">Секогаш пуштај оригинален аудио трак за видеото наместо дублирана верзија</string>
   <!-- misc.audio.silence.skipSilencePatch -->
   <string name="morphe_skip_silence_title">Прескокни тишина</string>
   <string name="morphe_skip_silence_summary">Автоматски ги прескокнува тивките паузи во аудиото на видеото</string>
@@ -208,19 +208,21 @@ Second \"item\" text"</string>
   <string name="morphe_replace_links_with_shortener_title">Промени линковите за споделување на youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Принудува видеата да го користат скратениот формат на URL youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Протокол пуфер за дебаг лог</string>
-  <string name="morphe_debug_protobuffer_summary">Додава дополнителни информации за евидентира ње за програмери за да ги идентификуваат компонентите на апликацијата</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Активирањето на оваа поставка ќе запише дополнителни податоци за распоредот, вклучително и текст на екранот за некои UI компоненти.
+  <string name="morphe_debug_litho_title">Litho логгирање</string>
+  <string name="morphe_debug_litho_entry_disabled">Оневозможено</string>
+  <string name="morphe_debug_litho_entry_path">Патка</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Патка и бафер</string>
+  <string name="morphe_debug_litho_user_dialog_message">"Litho логирањето ги запишува компонентите за распоред на апликацијата, вклучувајќи го и текстот на екранот за некои UI компоненти.
 
-Ова може да помогне во идентификувањето на компонентите при креирање на прилагодени филтри.
+Ова може да помогне при идентификување на компонентите при креирање на прилагобени филтри.
 
-Сепак, активирањето на ова ќе запише и некои кориснички податоци, како на пример вашата IP адреса"</string>
+Сепак, со ова ќе се логираат и некои кориснички податоци, како што е вашата IP адреса"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Прилагоден филтер</string>
-  <string name="morphe_custom_filter_screen_summary">Конфигурирајте прилагодени филтри за да skjкриете која било компонента</string>
+  <string name="morphe_custom_filter_screen_summary">Конфигурирајте прилагодени филтри за да скриете која било компонента</string>
   <string name="morphe_custom_filter_title">Овозможи прилагоден филтер</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">Листа на низоци за градење на патеката до компонентата за филтрирање, одделене со нови редови</string>
+  <string name="morphe_custom_filter_strings_summary">Листа на низи за градење на патеката до компонентата за филтрирање, одделени со нови редови</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Невалиден прилагоден филтер: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
   <string name="morphe_settings_menu_filter_screen_title">Филтер за менито за подесувања</string>
@@ -238,7 +240,7 @@ Second \"item\" text"</string>
 Ако сте корисник на YouTube Premium, ова поставување може да не биде потребно"</string>
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
-  <string name="morphe_external_potoken_provider_unavailable_summary">"Зачувува проблеми со репродукцијата со користење на надворешен PoToken minter (Експериментално)
+  <string name="morphe_external_potoken_provider_unavailable_summary">"Поправа проблеми со репродукцијата со користење на надворешен PoToken minter (Експериментално)
 
 За да ја користите оваа функција, исклучете ја опцијата 'Лажирај видео стримови'"</string>
   <string name="morphe_external_potoken_provider_user_dialog_message">Ако не работи, обидете се присилно да го затворите MicroG</string>
@@ -281,9 +283,9 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_failed_to_load">Прилагодениот фонт не можеше да се вчита и е исклучен</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_ryd_failure_connection_timeout">Непадувањата привремено не се достапни (истечен тајмер на API)</string>
+  <string name="morphe_ryd_failure_connection_timeout">Несимпатиите привремено не се достапни (истечен тајмер на API)</string>
   <string name="morphe_ryd_failure_connection_status_code">Несимпатиите не се достапни (статус %s)</string>
-  <string name="morphe_ryd_failure_client_rate_limit_requested">Непадувањата не се достапни (лимит на клиентскиот API)</string>
+  <string name="morphe_ryd_failure_client_rate_limit_requested">Несимпатиите не се достапни (лимит на клиентскиот API)</string>
   <string name="morphe_ryd_failure_generic">Нелајковите не се достапни (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Скриено од сопственикот</string>
@@ -296,7 +298,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Прикажува процена на бројот на лајкови кај видеата каде што креаторот ги оневозможил лајковите</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Прикажи известувања за грешка при поврзување</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Прикажува известување кога серверот Return YouTube Dislike не е достапен</string>
-  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike ги враќа бројниците на несимпатии што YouTube ги сокри во 2021 година. Бројките доаѓаат од податоци архивирани пред removing-то и се проценуваат за поновите видеа врз основа на гласата на неговите корисници, па затоа се приближни и се ажурираат на неколку дена
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike ги враќа бројниците на несимпатии што YouTube ги сокри во 2021 година. Бројките доаѓаат од податоци архивирани пред отстранувањето и се проценуваат за поновите видеа врз основа на гласата на неговите корисници, па затоа се приближни и се ажурираат на неколку дена
 
 ID-то на видеото што го гледате се испраќа до Return YouTube Dislike API-то, а вашите симпатии и несимпатии се испраќаат анонимно за да се подобрат проценките"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->

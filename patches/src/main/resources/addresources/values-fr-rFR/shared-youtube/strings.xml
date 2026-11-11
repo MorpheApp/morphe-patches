@@ -208,13 +208,15 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_replace_links_with_shortener_title">Changer les liens de partage vers youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Force les vidéos à utiliser le format d\'URL raccourcie youtu.be</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Journal de débogage du protocol buffer</string>
-  <string name="morphe_debug_protobuffer_summary">Ajoute des informations de journalisation supplémentaires pour permettre aux développeurs d\'identifier les composants de l\'application</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"L'activation de ce paramètre enregistrera des données supplémentaires sur la mise en page, y compris le texte affiché à l'écran pour certains composants de l'interface.
+  <string name="morphe_debug_litho_title">Journalisation Litho</string>
+  <string name="morphe_debug_litho_entry_disabled">Désactivée</string>
+  <string name="morphe_debug_litho_entry_path">Chemin</string>
+  <string name="morphe_debug_litho_entry_path_and_buffer">Chemin et tampon</string>
+  <string name="morphe_debug_litho_user_dialog_message">"La journalisation Litho enregistre les composants de mise en page de l'application, y compris le texte affiché à l'écran pour certains composants de l'interface utilisateur.
 
 Cela peut aider à identifier les composants lors de la création de filtres personnalisés.
 
-Cependant, activer cette option entraînera également l'enregistrement de certaines données utilisateur, telles que votre adresse IP"</string>
+Cependant, cela enregistrera également certaines données utilisateur, telles que votre adresse IP"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Filtre personnalisé</string>
   <string name="morphe_custom_filter_screen_summary">Configurez des filtres personnalisés pour masquer n\'importe quel composant</string>
@@ -290,10 +292,10 @@ Si cette option est désactivée ultérieurement, il est recommandé d'effacer l
   <string name="morphe_ryd_accessibility_dislike_count">Je n\'aime pas cette vidéo, comme %s autres personnes</string>
   <string name="morphe_ryd_accessibility_dislike_percentage">Je n\'aime pas cette vidéo, %s des votes sont des \'Je n\'aime pas\'</string>
   <string name="morphe_ryd_enabled_title">Activer Return YouTube Dislike</string>
-  <string name="morphe_ryd_dislike_percentage_title">Afficher les \'Je n\'aime pas\' en pourcentage</string>
-  <string name="morphe_ryd_dislike_percentage_summary">Affiche les \'Je n\'aime pas\' en pourcentage du nombre de \'J\'aime\' au lieu d\'un nombre</string>
-  <string name="morphe_ryd_estimated_like_title">Afficher les \'J\'aime\' estimés</string>
-  <string name="morphe_ryd_estimated_like_summary">Affiche un nombre estimé de \'J\'aime\' sur les vidéos où le créateur a désactivé les \'J\'aime\'</string>
+  <string name="morphe_ryd_dislike_percentage_title">Afficher les \'Je n’aime pas\' en pourcentage</string>
+  <string name="morphe_ryd_dislike_percentage_summary">Affiche les \'Je n’aime pas\' en pourcentage du nombre de \'J’aime\' au lieu d\'un nombre</string>
+  <string name="morphe_ryd_estimated_like_title">Afficher les \'J’aime\' estimés</string>
+  <string name="morphe_ryd_estimated_like_summary">Affiche un nombre estimé de \'J’aime\' sur les vidéos où le créateur a désactivé les \'J’aime\'</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Afficher les alertes d\'erreur de connexion</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Affiche une notification lorsque le serveur Return YouTube Dislike est indisponible</string>
   <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike rétablit le nombre de 'Je n'aime pas' que YouTube a masqué en 2021. Les chiffres proviennent de données archivées avant la suppression et sont estimés pour les vidéos plus récentes à partir des votes de ses utilisateurs. Ils sont donc approximatifs et sont mis à jour tous les quelques jours

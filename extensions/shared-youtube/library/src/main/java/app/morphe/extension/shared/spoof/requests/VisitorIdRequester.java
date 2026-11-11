@@ -202,7 +202,7 @@ public final class VisitorIdRequester {
                     }
                 }
             } else if (clientType.supportsOAuth2) {
-                String oauth2Authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
+                String oauth2Authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded(true);
                 if (!AuthUtils.isNotLoggedIn() && Utils.isNotEmpty(oauth2Authorization)) {
                     connection.setRequestProperty("Authorization", oauth2Authorization);
                 }

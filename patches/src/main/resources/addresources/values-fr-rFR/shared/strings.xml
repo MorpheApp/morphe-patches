@@ -98,9 +98,10 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Débogage</string>
   <string name="morphe_debug_screen_summary">Configurer les options avancées de développement et les journaux de diagnostic</string>
-  <string name="morphe_debug_title">Activer la journalisation de débogage</string>
-  <string name="morphe_debug_stacktrace_title">Journal de débogage de trace de pile</string>
-  <string name="morphe_debug_stacktrace_summary">Inclut les traces de pile dans les journaux de débogage pour aider à identifier les erreurs</string>
+  <string name="morphe_debug_level_title">Journaux de débogage</string>
+  <string name="morphe_debug_level_entry_disabled">Désactivée</string>
+  <string name="morphe_debug_level_entry_debug">Débogage</string>
+  <string name="morphe_debug_level_entry_verbose">Détaillé</string>
   <string name="morphe_debug_toast_on_error_title">Afficher une notification en cas d\'erreur de Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Désactiver les notifications toast d'erreur masque toutes les notifications d'erreur de Morphe.
 

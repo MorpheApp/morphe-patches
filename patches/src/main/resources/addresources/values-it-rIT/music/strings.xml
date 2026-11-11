@@ -130,7 +130,8 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Utilizza un downloader esterno per il menu Download</string>
   <string name="morphe_external_downloader_menu_summary">L\'opzione Download dei menu apre il tuo downloader esterno al posto di quello predefinito</string>
   <string name="morphe_music_downloads_screen_title">Download</string>
-  <string name="morphe_music_downloads_empty">"Nessun download\nLe tracce scaricate appaiono qui"</string>
+  <string name="morphe_music_downloads_empty">"Nessun download
+Le tracce scaricate appaiono qui"</string>
   <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
   <string name="morphe_music_downloads_summary">%1$s tracce • %2$s MB</string>
   <string name="morphe_music_downloads_search_hint">Cerca download</string>
@@ -168,7 +169,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_new_button">Nuova playlist</string>
   <string name="morphe_music_downloads_playlist_selected">Selezionati (%s)</string>
   <string name="morphe_music_downloads_playlist_select_first">Seleziona prima i brani</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Cancella selezione</string>
+  <string name="morphe_music_downloads_playlist_clear_selection">Annulla selezione</string>
   <string name="morphe_music_downloads_playlist_create">Crea playlist</string>
   <string name="morphe_music_downloads_playlist_create_button">Crea</string>
   <string name="morphe_music_downloads_playlist_add">Aggiungi alla playlist</string>
@@ -453,7 +454,7 @@ Riproduzione SABR (simulazione dei flussi video disattivata)"</string>
   <string name="morphe_change_start_page_entry_explore">Esplora</string>
   <string name="morphe_change_start_page_entry_history">Cronologia</string>
   <string name="morphe_change_start_page_entry_library">Libreria</string>
-  <string name="morphe_change_start_page_entry_liked_music">Musica piaciuta</string>
+  <string name="morphe_change_start_page_entry_liked_music">Brani che ti piacciono</string>
   <string name="morphe_change_start_page_entry_playlists">Playlist</string>
   <string name="morphe_change_start_page_entry_search">Cerca</string>
   <string name="morphe_change_start_page_entry_subscriptions">Iscrizioni</string>
@@ -515,7 +516,7 @@ Riproduzione SABR (simulazione dei flussi video disattivata)"</string>
   <string name="morphe_music_scrobbling_now_playing_title">Invia stato \'In riproduzione\'</string>
   <string name="morphe_music_scrobbling_min_song_duration_title">Durata minima della canzone</string>
   <!-- 'scrobbled' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_min_song_duration_summary">Le canzoni più brevi di questa durata non verranno scrobbled</string>
+  <string name="morphe_music_scrobbling_min_song_duration_summary">Le canzoni più brevi di questa durata non verranno scrobblate</string>
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_percent_title">Percentuale di ritardo dello scrobble</string>
   <!-- 'scrobble' must be kept untranslated -->
@@ -540,7 +541,7 @@ Riproduzione SABR (simulazione dei flussi video disattivata)"</string>
   <string name="morphe_music_listenbrainz_token_toast_saved">Token salvato</string>
   <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Avviso: il token salvato non è valido!</string>
   <string name="morphe_music_lastfm_love_on_like_title">Aggiungi ai brani preferiti le tracce piaciute</string>
-  <string name="morphe_music_lastfm_love_on_like_summary">Aggiungi automaticamente ai brani preferiti su Last.fm le tracce che ti piacciono su YouTube Music (e rimuovi dai preferiti quando non ti piacciono o non ti piacciono)</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Aggiungi automaticamente ai brani preferiti su Last.fm le tracce che ti piacciono su YouTube Music (e rimuovi dai preferiti quando togli il Mi piace o metti il Non mi piace)</string>
   <string name="morphe_music_lastfm_token_title">Account Last.fm</string>
   <string name="morphe_music_lastfm_token_summary_logged_in">Accesso effettuato come %s. Tocca per gestire l\'account</string>
   <string name="morphe_music_lastfm_token_dialog_instruction">Inserisci le credenziali Last.fm per accedere</string>
@@ -573,7 +574,7 @@ Per garantire che lo scrobbling sia sincronizzato durante la riproduzione in bac
   <string name="morphe_music_soundproof_show_button_summary">Mostra un pulsante nella barra superiore del player per vedere e inviare i voti della community per l\'artista corrente</string>
   <string name="morphe_music_soundproof_skip_ai_artists_title">Salta artisti IA</string>
   <string name="morphe_music_soundproof_skip_ai_artists_summary">Salta automaticamente i brani il cui artista raggiunge la soglia AI indicata di seguito</string>
-  <string name="morphe_music_soundproof_toast_on_skip_title">Mostra notifica annulla salto</string>
+  <string name="morphe_music_soundproof_toast_on_skip_title">Mostra notifica di salto</string>
   <string name="morphe_music_soundproof_toast_on_skip_summary">Mostra una notifica quando un brano viene saltato automaticamente</string>
   <string name="morphe_music_soundproof_threshold_title">Soglia di rilevamento</string>
   <string name="morphe_music_soundproof_minimum_ai_percent_title">Voti AI minimi</string>
@@ -737,16 +738,16 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_search_no_providers">Nessuno dei provider abilitati può cercare altri brani</string>
   <string name="morphe_music_lyrics_saved">Salvato</string>
   <string name="morphe_music_lyrics_written_by">Scritto da: %s</string>
-  <string name="morphe_music_lyrics_word_sync_title">Lingua dei testi</string>
+  <string name="morphe_music_lyrics_word_sync_title">Evidenzia le parole o le sillabe sincronizzate</string>
   <string name="morphe_music_lyrics_word_sync_summary">Dà priorità ai testi parola per parola quando disponibili. Se i testi includono la temporizzazione delle parole, evidenzia ogni parola o sillaba a tempo con la musica</string>
   <string name="morphe_music_lyrics_line_scale_title">Riduci le righe inattive</string>
-  <string name="morphe_music_lyrics_line_scale_summary">Disegna ogni riga che non sta venendo cantata al momento leggermente più piccola, sopra l\'annerirla</string>
+  <string name="morphe_music_lyrics_line_scale_summary">Disegna ogni riga che non sta venendo cantata al momento leggermente più piccola, oltre ad attenuarla</string>
   <string name="morphe_music_lyrics_split_background_title">Mostra vocali di sottofondo separatamente</string>
   <string name="morphe_music_lyrics_split_background_summary">Separa le vocali di sottofondo e l\'armonia dalla linea principale. Sposta una voce di sottofondo scritta tra parentesi, come \"(Oh) voglio te\", fuori dalla linea cantata in una propria linea più scura</string>
-  <string name="morphe_music_lyrics_hide_played_title">Testi sincronizzati</string>
+  <string name="morphe_music_lyrics_hide_played_title">Nascondi i testi già riprodotti</string>
   <string name="morphe_music_lyrics_hide_played_summary">Nascondi le righe dei testi sopra la riga attualmente in riproduzione</string>
-  <string name="morphe_music_lyrics_hide_unplayed_title">Copia i testi</string>
-  <string name="morphe_music_lyrics_hide_unplayed_summary">Salva il file sorgente dei testi</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">Nascondi i testi non ancora riprodotti</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">Nascondi le righe dei testi sotto la riga in riproduzione</string>
   <string name="morphe_music_lyrics_dynamic_background_title">Sfondo dinamico</string>
   <string name="morphe_music_lyrics_dynamic_background_summary">Mostra uno sfondo sfocato creato dalla copertina dell\'album dietro i testi</string>
   <string name="morphe_music_lyrics_dynamic_background_animated_title">Anima sfondo dinamico</string>
@@ -821,7 +822,7 @@ Si applica a entrambi i limiti. A 1,75, quattro caratteri a larghezza intera con
   <string name="morphe_music_lyrics_romanize_hide">Romanizzato</string>
   <string name="morphe_romanize_language_DEFAULT">Automatico</string>
   <string name="morphe_music_lyrics_romanizing">Romanizzazione…</string>
-  <string name="morphe_music_lyrics_romanize_failed">Nessun testo trovato</string>
+  <string name="morphe_music_lyrics_romanize_failed">Impossibile romanizzare i testi</string>
   <string name="morphe_music_lyrics_romanize_language_none">Nessuna</string>
   <string name="morphe_music_lyrics_ruby_language_title">Destinazione Ruby</string>
   <string name="morphe_music_lyrics_translate_only">Solo traduzione</string>
@@ -852,7 +853,7 @@ Si applica a entrambi i limiti. A 1,75, quattro caratteri a larghezza intera con
 I testi provengono da servizi di terze parti che non sono affiliati, sponsorizzati o approvati da Morphe. Ciascuno viene utilizzato così com'è: i testi, la loro disponibilità e la relativa licenza rimangono di proprietà di tali servizi e dei loro concessori di licenza, e il loro utilizzo può essere soggetto ai loro termini di servizio. Ciò che viene inviato a un servizio abilitato è solo la ricerca richiesta - il titolo, l'artista e, dove necessario per quel servizio, l'ID del video. L'endpoint opzionale AI e la trascrizione QuickLRC vengono eseguiti solo dopo la loro configurazione e ricevono il testo della canzone o l'URL del video della traccia."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Abilita solo i provider che utilizzi, oppure mantieni le impostazioni predefinite — richieste costanti possono sovraccaricare i siti di testi della community</string>
   <string name="morphe_music_lyrics_hide_info_title">Nascondi la riga dei crediti</string>
-  <string name="morphe_music_lyrics_hide_info_summary">Caricamento testi...</string>
+  <string name="morphe_music_lyrics_hide_info_summary">Nascondi la riga dei crediti mostrata sotto i testi</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Scambia traduzione e romanizzazione</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Sposta la traduzione sopra i testi; la lettura e la romanizzazione rimangono sotto</string>
   <string name="morphe_music_lyrics_force_center_title">Centra sempre i testi</string>

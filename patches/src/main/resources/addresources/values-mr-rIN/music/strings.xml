@@ -272,11 +272,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">क्रॉसफेड</string>
   <string name="morphe_music_crossfade_screen_summary">ट्रॅक एकमेकांमध्ये सहजपणे मिसळा</string>
   <string name="morphe_music_crossfade_enabled_title">क्रॉसफेड सक्षम करा</string>
-  <string name="morphe_music_crossfade_curve_title"> curve</string>
+  <string name="morphe_music_crossfade_curve_title">फेड वक्र</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">समान शक्ती</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">हलकासा वेळ</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">सौम्य सहजता</string>
-  <string name="morphe_music_crossfade_curve_entry_smoothstep">स्मूथ एस- curve</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">स्मूथ एस-वक्र</string>
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_curve_preview_outgoing">आउटगोइंग</string>
   <string name="morphe_music_crossfade_curve_preview_incoming">इनकमिंग</string>
@@ -429,7 +429,7 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <string name="morphe_music_hide_flyout_menu_go_to_podcast_title">\'पॉडकास्टवर जा\' मेनू लपवा</string>
   <string name="morphe_music_hide_flyout_menu_help_title">मदत मेनू लपवा</string>
   <string name="morphe_music_hide_flyout_menu_mark_episode_as_played_title">\'एपिसोड ऐकलेला म्हणून चिन्हांकित करा\' मेनू लपवा</string>
-  <string name="morphe_music_hide_flyout_menu_not_interested_title">\' Min मध्ये रस नाही\' मेनू लपवा</string>
+  <string name="morphe_music_hide_flyout_menu_not_interested_title">\'स्वारस्य नाही\' मेनू लपवा</string>
   <string name="morphe_music_hide_flyout_menu_pin_to_speed_dial_title">\'स्पीड डायलमध्ये पिन करा\' मेनू लपवा</string>
   <string name="morphe_music_hide_flyout_menu_play_next_title">\'पुढे प्ले करा\' मेनू लपवा</string>
   <string name="morphe_music_hide_flyout_menu_quality_title">क्वालिटी मेनू लपवा</string>
@@ -483,7 +483,7 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_samples_button_title">नमुने बटण लपवा</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title"> explore बटण लपवा</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">एक्सप्लोर बटण लपवा</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_library_button_title">लायब्ररी बटण लपवा</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -540,8 +540,8 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <string name="morphe_music_listenbrainz_token_toast_cleared">टोकन साफ केले</string>
   <string name="morphe_music_listenbrainz_token_toast_saved">टोकन जतन केले</string>
   <string name="morphe_music_listenbrainz_token_toast_invalid_warning">इशारा: जतन केलेले टोकन अवैध आहे!</string>
-  <string name="morphe_music_lastfm_love_on_like_title">लास्ट.एफएम वर आवडलेली गाणी पसंत करा</string>
-  <string name="morphe_music_lastfm_love_on_like_summary">जेव्हा तुम्ही YouTube Music वर गाणी पसंत करता तेव्हा Last.fm वर आपोआप गाणी आवडवा (आणि नापसंत केल्यावर किंवा नापसंत केल्यावर आवड काढली जाईल)</string>
+  <string name="morphe_music_lastfm_love_on_like_title">आवडलेली गाणी Last.fm वर आवडवा</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">जेव्हा तुम्ही YouTube Music वर गाणी पसंत करता तेव्हा Last.fm वर आपोआप गाणी आवडवा (आणि नापसंत केल्यावर आवड काढून टाकली जाईल)</string>
   <string name="morphe_music_lastfm_token_title">लास्ट.एफएम खाते</string>
   <string name="morphe_music_lastfm_token_summary_logged_in">%s म्हणून लॉग इन केले. खाते व्यवस्थापित करण्यासाठी टॅप करा</string>
   <string name="morphe_music_lastfm_token_dialog_instruction">लॉग इन करण्यासाठी तुमचे लास्ट.एफएम क्रेडेन्शियल्स प्रविष्ट करा</string>
@@ -554,10 +554,10 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <string name="morphe_music_lastfm_token_status_no_session">लास्ट.एफएम कडून सत्र मिळविण्यात अयशस्वी</string>
   <string name="morphe_music_lastfm_token_status_failed">लॉग इन करण्यात अयशस्वी: %s</string>
   <string name="morphe_music_lastfm_token_toast_saved">लास्ट.एफएम क्रेडेन्शियल्स जतन केले!</string>
-  <string name="morphe_settings_music_scrobbling_metadata_title"> metadata स्वच्छता</string>
-  <string name="morphe_music_scrobbling_metadata_cleanup_title">metadata स्वच्छ करा</string>
+  <string name="morphe_settings_music_scrobbling_metadata_title">मेटाडेटा स्वच्छता</string>
+  <string name="morphe_music_scrobbling_metadata_cleanup_title">मेटाडेटा स्वच्छ करा</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">स्क्रबलिंग करण्यापूर्वी शीर्षके, कलाकार आणि अल्बममधून सामान्य गोंधळ (जसे की \"अधिकृत व्हिडिओ\", \"रीमास्टर\", \"लाइव्ह\") आपोआप स्वच्छ करा</string>
-  <string name="morphe_music_scrobbling_custom_regex_title">Custom regex स्वच्छता</string>
+  <string name="morphe_music_scrobbling_custom_regex_title">कस्टम रेजेक्स स्वच्छता</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">एक सानुकूल रेग्युलर एक्सप्रेशन एंटर करा जेणेकरून गाण्याचे शीर्षक, कलाकार किंवा अल्बममधून अतिरिक्त मजकूर काढता येईल. उदाहरण: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">शीर्षकावरून कलाकार आणि ट्रॅक पार्स करा</string>
   <string name="morphe_music_scrobbling_parse_title_summary">व्हिडिओ शीर्षकामधून \" - \" विभाजक वापरून कलाकार आणि ट्रॅकचे नाव वेगळे करा. रि-अपलोड केलेल्या कंटेंटसाठी उपयुक्त आहे जिथे चॅनेलचे नाव कलाकार म्हणून वापरले जाऊ शकते</string>
@@ -613,8 +613,8 @@ SABR प्लेबॅक (Spoof व्हिडिओ स्ट्रीम्
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">तृतीय-पक्ष गीतांचा वापर करा</string>
   <string name="morphe_music_lyrics_enabled_summary">तृतीय-पक्ष सेवेतून गीत दर्शवते, जेव्हा कोणतेही गीत उपलब्ध नसेल तेव्हा अंगभूत गीतांवर परत येते</string>
-  <string name="morphe_music_lyrics_keep_screen_on_title">गिते पाहताना स्क्रीन सुरू ठेवा</string>
-  <string name="morphe_music_lyrics_keep_screen_on_summary">गितेंचे पॅनेल उघडे असताना डिस्प्ले बंद होण्यापासून रोखते</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">गीते पाहताना स्क्रीन सुरू ठेवा</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">गीतांचे पॅनेल उघडे असताना डिस्प्ले बंद होण्यापासून रोखते</string>
   <string name="morphe_music_lyrics_section_service_title">लिरिक्स सेवा</string>
   <string name="morphe_music_lyrics_section_display_title">डिस्प्ले</string>
   <string name="morphe_music_lyrics_section_sync_title">सिंक्रोनाइझेशन</string>
@@ -651,7 +651,7 @@ Rime Wordlist ने कोणत्या याद्या वाचाव्
   <string name="morphe_music_lyrics_rime_dict_bad_url">पत्ता https:// ने सुरू झाला पाहिजे</string>
   <string name="morphe_music_lyrics_rime_dict_bad_field">नाव आणि पत्त्यामध्ये व्हर्टिकल बार असू शकत नाही</string>
   <string name="morphe_music_lyrics_rime_dict_duplicate">%s कडे आधीपासूनच शब्द तक्ता आहे</string>
-  <string name="morphe_music_lyrics_rime_dict_reserved">%s अंगभूत रोमनयझरद्वारे वाचले जाते आणि शब्द सूची घेऊ शकत नाही</string>
+  <string name="morphe_music_lyrics_rime_dict_reserved">%s अंगभूत रोमनायझरद्वारे वाचले जाते आणि शब्द सूची घेऊ शकत नाही</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">वापरले नाही: या भाषेचे स्वतःचे वाचन आधीच आहे, त्यामुळे ते काढून टाकण्यासाठी अनटिक करा</string>
   <string name="morphe_music_lyrics_rime_dict_added">%s जोडले - ते डाउनलोड करण्यासाठी टिक करा आणि Save वर टॅप करा</string>
   <string name="morphe_music_lyrics_rime_dict_ready">शब्दांच्या याद्या तयार आहेत</string>

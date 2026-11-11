@@ -13,6 +13,9 @@ package app.morphe.extension.shared.patches.components;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.protobuf.CodedInputStream;
+import com.google.protobuf.WireFormat;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -176,6 +179,12 @@ public final class LithoFilterPatch {
      * Sections of the lists, such as the feed or the related videos, that hold the items.
      */
     private static final List<WeakReference<ListSectionInterface>> listSections = new ArrayList<>();
+
+    /**
+     * Path of the position of an item in its grid in the element of the item, such as a Short of the grid of Shorts
+     * of the search results (shorts_video_cell.eml). The element lays the item out for the column of its position.
+     */
+    private static final int[] GRID_ITEM_POSITION_PATH = {1, 168777401, 5, 519005951, 17, 16};
 
     private static final StringTrieSearch contextSearchTree = new StringTrieSearch();
     private static final StringTrieSearch pathSearchTree = new StringTrieSearch();
@@ -397,6 +406,60 @@ public final class LithoFilterPatch {
             }
         } catch (Exception ex) {
             Logger.printException(() -> "removeFilteredElementListItem failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * Called for each item after an item that is removed from a grid, on the main thread.
+     * <p>
+     * The item moves back by one position, and can move to another column. The position is changed
+     * in the bytes of its element, which the item is laid out with again when the grid lays out its rows again.
+     * Otherwise the item keeps the spacing of its old column, such as a Short of the left column
+     * with the spacing of the right column.
+     */
+    public static void moveGridItemBack(@Nullable byte[] element) {
+        if (element == null) {
+            return;
+        }
+        try {
+            int start = 0;
+            int end = element.length;
+            for (int depth = 0; depth < GRID_ITEM_POSITION_PATH.length; depth++) {
+                final int field = GRID_ITEM_POSITION_PATH[depth];
+                final boolean isPosition = depth == GRID_ITEM_POSITION_PATH.length - 1;
+                CodedInputStream input = CodedInputStream.newInstance(element, start, end - start);
+                int messageStart = -1;
+                while (!input.isAtEnd()) {
+                    final int tag = input.readTag();
+                    final int wireType = WireFormat.getTagWireType(tag);
+                    if (WireFormat.getTagFieldNumber(tag) != field) {
+                        input.skipField(tag);
+                    } else if (isPosition && wireType == WireFormat.WIRETYPE_VARINT) {
+                        final int positionStart = start + input.getTotalBytesRead();
+                        final long position = input.readRawVarint64();
+                        // Positions start at 0. A position of one byte stays one byte, so it's changed in place.
+                        if (position > 0 && start + input.getTotalBytesRead() == positionStart + 1) {
+                            element[positionStart] = (byte) (position - 1);
+                            Logger.printDebug(() -> "Moved grid item back to position: " + (position - 1));
+                        }
+                        return;
+                    } else if (!isPosition && wireType == WireFormat.WIRETYPE_LENGTH_DELIMITED) {
+                        final int length = input.readRawVarint32();
+                        messageStart = start + input.getTotalBytesRead();
+                        end = messageStart + length;
+                        break;
+                    } else {
+                        input.skipField(tag);
+                    }
+                }
+                if (messageStart < 0) {
+                    return;
+                }
+                start = messageStart;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "moveGridItemBack failure", ex);
         }
     }
 

@@ -72,8 +72,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_updating">잼을 업데이트하는 중…</string>
   <string name="morphe_music_jam_finding_host">Wi-Fi에서 호스트를 찾는 중…</string>
   <string name="morphe_music_jam_waiting_people">참여자를 기다리는 중</string>
-  <string name="morphe_music_jam_one_connected">%s 명 연결됨</string>
-  <string name="morphe_music_jam_many_connected">%s 명 연결됨</string>
+  <string name="morphe_music_jam_one_connected">%s명 연결됨</string>
+  <string name="morphe_music_jam_many_connected">%s명 연결됨</string>
   <string name="morphe_music_jam_code_expires">이 코드를 근처 기기에 입력하세요. Wi-Fi Aware는 지원되는 경우 서로 다른 LAN에서도 작동합니다. %s 분 후에 만료됩니다</string>
   <string name="morphe_music_jam_seek_to">%s으로 이동할까요?</string>
   <string name="morphe_music_jam_edits_open">편집 열기</string>
@@ -84,7 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_unsupported">잼 중 지원되지 않음</string>
   <string name="morphe_music_jam_cancelled">참여 취소됨</string>
   <string name="morphe_music_jam_reconnecting_host">호스트에 다시 연결하는 중…</string>
-  <string name="morphe_music_jam_share_prompt">재생목록을 공유하세요. 모두가 노래를 추가할 수 있도록 하세요</string>
+  <string name="morphe_music_jam_share_prompt">재생목록을 공유하세요. 모두가 노래를 추가할 수 있게 하세요</string>
   <string name="morphe_music_jam_invite_people">참여자 초대</string>
   <string name="morphe_music_jam_guest_edits">게스트는 재생목록을 편집할 수 있습니다</string>
   <string name="morphe_music_jam_end_jam">잼 종료</string>
@@ -216,13 +216,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_playlist_download_complete">%s 다운로드됨</string>
   <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s개 다운로드됨, %2$s개 다운로드 실패</string>
   <string name="morphe_music_downloads_playlist_download_already_running">재생목록 다운로드가 이미 진행 중입니다</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">계정 정보가 아직 확인되지 않았습니다. 잠시 후 다시 시도하십시오</string>
+  <string name="morphe_music_downloads_playlist_download_needs_account">잠시 후 다시 시도하세요</string>
   <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s개 목록화됨, 모두 이미 다운로드됨</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">재생목록의 일부만 가져올 수 있었습니다. 나중에 다시 다운로드 탭을 눌러 나머지를 가져오십시오</string>
+  <string name="morphe_music_downloads_playlist_download_incomplete">재생목록의 일부만 가져올 수 있었습니다. 나중에 다운로드 탭을 눌러 나머지를 가져오세요</string>
   <string name="morphe_music_downloads_playlist_download_started">백그라운드에서 %s 다운로드 중</string>
   <string name="morphe_music_downloads_playlist_download_no_network">네트워크 연결 없음</string>
   <string name="morphe_music_downloads_playlist_download_waiting_network">네트워크 대기 중…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">%2$s개 중 %1$s개에서 중단되었습니다. 계속하려면 다시 다운로드 탭을 누르십시오</string>
+  <string name="morphe_music_downloads_playlist_download_stopped">%2$s개 중 %1$s개에서 중단되었습니다. 계속하려면 다시 다운로드 탭을 누르세요</string>
   <string name="morphe_music_downloads_mark_title">다운로드한 노래 표시하기</string>
   <string name="morphe_music_downloads_mark_summary">이미 다운로드한 노래는 재생목록, 앨범 및 검색 결과에서 곡 정보 앞에 표시가 나타납니다</string>
   <!-- misc.settings.settingsPatch -->
@@ -344,7 +344,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">선택한 트랙만 재생</string>
   <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">선택한 트랙을 현재 재생목록에 추가</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
-  <string name="morphe_music_playlist_track_tap_added_to_queue">현재 재생목록에 추가하였습니다</string>
+  <string name="morphe_music_playlist_track_tap_added_to_queue">대기열에 추가되었습니다</string>
   <!-- layout.playlisttags.playlistTagsPatch -->
   <string name="morphe_music_playlist_tags_screen_title">재생목록 태그</string>
   <string name="morphe_music_playlist_tags_screen_summary">재생목록에 태그를 지정하고 태그별로 라이브러리를 필터링하세요</string>
@@ -395,7 +395,7 @@ SABR 프로토콜을 사용하여 재생하는 경우 (동영상 스트림 속�
   <string name="morphe_music_action_buttons_screen_title">작업 버튼</string>
   <string name="morphe_music_action_buttons_screen_summary">플레이어 아래에 표시할 작업 버튼을 설정하세요</string>
   <string name="morphe_music_hide_action_bar_title">작업 버튼 바 숨기기</string>
-  <string name="morphe_music_hide_like_dislike_button_title">‘좋아요’ 및 ‘싫어요’ 버튼 숨기기</string>
+  <string name="morphe_music_hide_like_dislike_button_title">\'좋아요\' 및 \'싫어요\' 버튼 숨기기</string>
   <string name="morphe_music_hide_comments_button_title">댓글 버튼 숨기기</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">\'실시간 채팅 다시보기\' 버튼 숨기기</string>

@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_duration_2s">2 秒</string>
   <string name="morphe_sb_duration_3s">3 秒</string>
   <string name="morphe_sb_duration_4s">4 秒</string>
-  <string name="morphe_sb_duration_5s">5秒</string>
+  <string name="morphe_sb_duration_5s">5 秒</string>
   <string name="morphe_sb_duration_6s">6 秒</string>
   <string name="morphe_sb_duration_7s">7 秒</string>
   <string name="morphe_sb_duration_8s">8 秒</string>
@@ -173,7 +173,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_vote_segment_time_to_from">%1$s 到 %2$s</string>
   <string name="morphe_sb_new_segment_choose_category">选择片段的类别</string>
   <string name="morphe_sb_new_segment_disabled_category">类别在设置中已禁用。启用类别以提交</string>
-  <string name="morphe_sb_new_segment_title">新的 SpongorBlock 片段</string>
+  <string name="morphe_sb_new_segment_title">新的 SponsorBlock 片段</string>
   <string name="morphe_sb_new_segment_mark_time_as_question">将 %s 设置为新片段的开始或结束？</string>
   <string name="morphe_sb_new_segment_mark_start">开始</string>
   <string name="morphe_sb_new_segment_mark_end">结束</string>
@@ -181,14 +181,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_new_segment_time_start">片段开始时间</string>
   <string name="morphe_sb_new_segment_time_end">片段结束时间</string>
   <string name="morphe_sb_new_segment_confirm_title">时间是否正确？</string>
-  <string name="morphe_sb_new_segment_confirm_content">"视频片段
-
-由
+  <string name="morphe_sb_new_segment_confirm_content">"片段从
 
 %1$s
-
-直到
-
+到
 %2$s
 
 (%3$s)

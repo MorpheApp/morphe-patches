@@ -35,7 +35,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_navigate_up">الانتقال لأعلى</string>
   <string name="morphe_settings_search_hint">بحث الإعدادات</string>
   <string name="morphe_settings_screen_info_title">لمحة</string>
-  <string name="morphe_settings_search_no_results_title">لم يتم العثور على نتائج لـ \".%s\"</string>
+  <string name="morphe_settings_search_no_results_title">لم يتم العثور على نتائج لـ \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">جرّب كلمة مفتاحية أخرى</string>
   <string name="morphe_settings_search_recent_searches">عمليات البحث الأخيرة</string>
   <string name="morphe_settings_search_remove_message">إزالة من سجل البحث؟</string>
@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">تصحيح الأخطاء</string>
   <string name="morphe_debug_screen_summary">تكوين خيارات المطور المتقدمة وسجلات التشخيص</string>
-  <string name="morphe_debug_title">تمكين سجلات التصحيح</string>
-  <string name="morphe_debug_stacktrace_title">مسار التتبع في سجل التصحيح</string>
-  <string name="morphe_debug_stacktrace_summary">تتضمن سجلات تصحيح الأخطاء Stack Traces للمساعدة في تحديد الأخطاء</string>
+  <string name="morphe_debug_level_title">تسجيل تصحيح الأخطاء</string>
+  <string name="morphe_debug_level_entry_disabled">معطّل</string>
+  <string name="morphe_debug_level_entry_debug">Debug</string>
+  <string name="morphe_debug_level_entry_verbose">مفصل</string>
   <string name="morphe_debug_toast_on_error_title">عرض ملاحظة عند وجود خطأ في Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"يؤدي إيقاف تشغيل ملاحظات الأخطاء إلى إخفاء كافة إشعارات أخطاء Morphe.
 

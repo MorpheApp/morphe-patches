@@ -140,7 +140,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_downloads_sort_title">Сортувати за назвою</string>
   <string name="morphe_music_downloads_sort_size">Сортувати  за розміром</string>
   <string name="morphe_music_downloads_delete_all">Видалити всі завантаження</string>
-  <string name="morphe_music_downloads_delete_all_title">Видалити всi завантаження?</string>
+  <string name="morphe_music_downloads_delete_all_title">Видалити всі завантаження?</string>
   <string name="morphe_music_downloads_delete_all_message">Усі завантажені треки буде видалено з цього пристрою</string>
   <string name="morphe_music_downloads_all_deleted">Завантаження видалено</string>
   <string name="morphe_music_downloads_nothing_found">Нічого не знайдено</string>
@@ -679,7 +679,7 @@ Second \"item\" text"</string>
 1. Увійдіть на open.spotify.com
 2. Відкрийте DevTools → Application → Cookies → open.spotify.com
 3. Скопіюйте значення \"sp_dc\""</string>
-  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc збережено.</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc збережено</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc очищено</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: недійсний sp_dc - перевірте і спробуйте ще раз</string>
   <string name="morphe_music_apple_token_optional_hint">Токен Apple Music необов\'язковий. Без нього як резервний варіант буде використано Lyrically</string>
@@ -841,7 +841,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">Ключ QuickLRC збережено. Скористайтеся кнопкою вирівнювання в діалозі пошуку тексту пісні або запитом на панелі, коли для треку немає тексту</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">Ключ API QuickLRC збережено</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRC не прийняв цей ключ</string>
-  <string name="morphe_music_lyrics_transcribe_key_cleared">Ключ API QuickLRTC очищено</string>
+  <string name="morphe_music_lyrics_transcribe_key_cleared">Ключ API QuickLRC очищено</string>
   <string name="morphe_music_lyrics_transcribe_key_dialog_instruction">QuickLRC додає таймінги до текстів, у яких їх немає, або транскрибує їх із треку, витрачаючи кредити. Якщо ключ вказано, для треків без тексту пропонується транскрипція, а в діалозі пошуку з\'являється кнопка вирівнювання</string>
   <string name="morphe_music_lyrics_transcribe_align">Запросити вирівнювання QuickLRC</string>
   <string name="morphe_music_lyrics_transcribe_aligning">Вирівнювання</string>

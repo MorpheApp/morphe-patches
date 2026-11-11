@@ -17,9 +17,9 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_enabled_title">Activar SponsorBlock</string>
-  <string name="morphe_sb_enabled_summary">SponsorBlock é un sistema baseado en crowdsourcing para saltar as partes molestas dos vídeos de YouTube</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock é un sistema colaborativo para saltar as partes molestas dos vídeos de YouTube</string>
   <string name="morphe_sb_appearance_category_title">Apariencia</string>
-  <string name="morphe_sb_voting_button_title">Mostrar botón de votación</string>
+  <string name="morphe_sb_voting_button_title">Amosar botón de votación</string>
   <string name="morphe_sb_voting_button_summary">Engade un botón para votar a favor ou en contra de segmentos</string>
   <string name="morphe_sb_square_layout_title">Usar deseño cadrado</string>
   <string name="morphe_sb_square_layout_summary">Usa esquinas cuadradas para os botóns e controls de SponsorBlock</string>
@@ -29,8 +29,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Oculta o botón de Saltar pasados uns segundos en vez de mantelo visible durante todo o segmento</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Duración do botón de Saltar</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Define canto tempo permanece visible o botón de Saltar</string>
-  <string name="morphe_sb_toast_on_skip_title">Mostrar notificación de salto</string>
-  <string name="morphe_sb_toast_on_skip_summary">Mostra unha notificación cando un segmento se salta automaticamente</string>
+  <string name="morphe_sb_toast_on_skip_title">Amosar notificación de salto</string>
+  <string name="morphe_sb_toast_on_skip_summary">Amosa unha notificación cando un segmento se salta automaticamente</string>
   <string name="morphe_sb_toast_on_skip_duration_title">Duración da notificación de salto</string>
   <string name="morphe_sb_toast_on_skip_duration_summary">Define canto tempo permanece visible a notificación de desfacer</string>
   <string name="morphe_sb_duration_1s">1 segundo</string>
@@ -53,8 +53,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_create_new_segment_step_invalid">O valor debe ser un número positivo</string>
   <string name="morphe_sb_guidelines_title">Directrices de envío</string>
   <string name="morphe_sb_guidelines_summary">As directrices contén regras e consellos para crear novos segmentos</string>
-  <string name="morphe_sb_guidelines_popup_title">Siga as directrices</string>
-  <string name="morphe_sb_guidelines_popup_content">Lea as directrices de SponsorBlock antes de crear novos segmentos</string>
+  <string name="morphe_sb_guidelines_popup_title">Segue as directrices</string>
+  <string name="morphe_sb_guidelines_popup_content">Le as directrices de SponsorBlock antes de crear novos segmentos</string>
   <string name="morphe_sb_guidelines_popup_already_read">Xa lido</string>
   <string name="morphe_sb_guidelines_popup_open">Amósame</string>
   <string name="morphe_sb_general_title">Xeneral</string>
@@ -68,14 +68,14 @@ Second \"item\" text"</string>
   <string name="morphe_sb_min_segment_duration_summary">Os segmentos máis curtos que este valor (en segundos) non se amosarán nin se saltarán</string>
   <string name="morphe_sb_min_segment_duration_invalid">Duración de tempo inválida</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_title">O seu ID de usuario privado</string>
-  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Isto debe mantense privado. É como unha contrasinal e non debe compartirse con ninguén. Se alguén ten isto, pode suplantalo</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">Isto debe manterse privado. É como unha contrasinal e non debe compartirse con ninguén. Se alguén ten isto, pode suplantalo</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">O ID de usuario privado debe ter polo menos 30 caracteres</string>
   <string name="morphe_sb_api_url_title">Cambiar URL da API</string>
   <string name="morphe_sb_api_url_summary">A dirección que SponsorBlock usa para facer chamadas ao servidor</string>
   <string name="morphe_sb_channel_whitelist_title">Lista branca de canles</string>
-  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock está desactivado para os canles da lista branca</string>
-  <string name="morphe_sb_toast_on_whitelisted_channel_title">Notificar en canle na lista branca</string>
-  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Mostra unha notificación cando SponsorBlock está desactivado para unha canle na lista branca</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock está desactivado para as canles da lista branca</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_title">Notificar nunha canle da lista branca</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">Amosa unha notificación cando SponsorBlock está desactivado para unha canle da lista branca</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock desactivado para esta canle</string>
   <string name="morphe_sb_api_url_reset">URL da API restablecida</string>
   <string name="morphe_sb_api_url_invalid">A URL da API non é válida</string>
@@ -140,7 +140,7 @@ O teu ID de usuario é como unha contrasinal, e nunca debe compartirse"</string>
   <string name="morphe_sb_skipped_intro_end">Saltado o intermedio</string>
   <string name="morphe_sb_skipped_outro">Saltada a outro</string>
   <string name="morphe_sb_skipped_hook">Saltado o gancho</string>
-  <string name="morphe_sb_skipped_preview_beginning">Saltou a anticipación</string>
+  <string name="morphe_sb_skipped_preview_beginning">Saltou a vista previa</string>
   <string name="morphe_sb_skipped_preview_middle">Saltou a vista previa</string>
   <string name="morphe_sb_skipped_preview_end">Saltou o resumo</string>
   <string name="morphe_sb_skipped_filler">Saltou a digresión</string>
@@ -155,7 +155,7 @@ O teu ID de usuario é como unha contrasinal, e nunca debe compartirse"</string>
   <string name="morphe_sb_submit_failed_invalid">Imposible enviar o segmento: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock está temporalmente fora de servizo</string>
   <string name="morphe_sb_submit_failed_unknown_error">Imposible enviar o segmento (estado: %1$s %2$s)</string>
-  <string name="morphe_sb_submit_failed_rate_limit">Imposible enviar o segmento. Límite de solicitudes alcanzado (demasiadas vanuit do mesmo usuario ou IP)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Imposible enviar o segmento. Límite de solicitudes alcanzado (demasiadas solicitudes do mesmo usuario ou IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Non se pode enviar o segmento: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Non se pode enviar o segmento.
 Xa existe"</string>
@@ -219,7 +219,7 @@ Se non estás enviando un destacado, toca en Cancelar e marca a segunda localiza
   <string name="morphe_sb_stats_submissions">Creaste &lt;b&gt;%s&lt;/b&gt; segmentos</string>
   <string name="morphe_sb_stats_submissions_summary">Toca aquí para ver os teus segmentos</string>
   <string name="morphe_sb_stats_saved_zero">Clasificación de SponsorBlock</string>
-  <string name="morphe_sb_stats_saved">Ahoubraste a xente de &lt;b&gt;%s&lt;/b&gt; segmentos</string>
+  <string name="morphe_sb_stats_saved">Aforraches a xente de &lt;b&gt;%s&lt;/b&gt; segmentos</string>
   <string name="morphe_sb_stats_saved_summary_zero">Toca aquí para ver as stats globais e os principais contribuidores</string>
   <string name="morphe_sb_stats_saved_summary">Iso son &lt;b&gt;%s&lt;/b&gt; das súas vidas.&lt;br&gt;Toca aquí para ver a clasificación</string>
   <string name="morphe_sb_stats_self_saved">Saltaste &lt;b&gt;%s&lt;/b&gt; segmentos</string>
@@ -230,7 +230,7 @@ Se non estás enviando un destacado, toca en Cancelar e marca a segunda localiza
   <string name="morphe_sb_stats_saved_second_format">%s segundos</string>
   <string name="morphe_sb_color_opacity_label">Opacidade:</string>
   <string name="morphe_sb_color_dot_label">Cor:</string>
-  <string name="morphe_sb_about_api_summary">"SponsorBlock é unha base de datos colaborativa de segmentos de vídeo como patroinios, intros, outros e lembranzas de subscrición. Os segmentos son enviados e votados pola comunidade, e a base de datos é aberta e gratuíta para descargar
+  <string name="morphe_sb_about_api_summary">"SponsorBlock é unha base de datos colaborativa de segmentos de vídeo como patrocinios, intros, outros e lembretes de subscrición. Os segmentos son enviados e votados pola comunidade, e a base de datos é aberta e gratuíta para descargar
 
 O ID do vídeo que ves envíase á API de SponsorBlock para obter os seus segmentos"</string>
 </resources>

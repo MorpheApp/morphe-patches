@@ -342,9 +342,9 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <string name="morphe_music_playlist_track_tap_action_title">Tindakan ketik trek senarai main</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Mainkan senarai main</string>
   <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Mainkan trek yang dipilih sahaja</string>
-  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Tambah trek yang dipilih ke dalam barisan</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Tambah trek yang dipilih ke dalam giliran</string>
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
-  <string name="morphe_music_playlist_track_tap_added_to_queue">Ditambah ke barisan</string>
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Ditambah ke giliran</string>
   <!-- layout.playlisttags.playlistTagsPatch -->
   <string name="morphe_music_playlist_tags_screen_title">Tag senarai main</string>
   <string name="morphe_music_playlist_tags_screen_summary">Tag senarai main dan tapis Perpustakaan mengikut tag</string>
@@ -516,7 +516,7 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <string name="morphe_music_scrobbling_now_playing_title">Hantar status \'Sedang Dimainkan\'</string>
   <string name="morphe_music_scrobbling_min_song_duration_title">Tempoh minimum lagu</string>
   <!-- 'scrobbled' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_min_song_duration_summary">Lagu yang lebih pendek daripada ini tidak akan discrobble</string>
+  <string name="morphe_music_scrobbling_min_song_duration_summary">Lagu yang lebih pendek daripada ini tidak akan di-scrobble</string>
   <!-- 'scrobble' must be kept untranslated -->
   <string name="morphe_music_scrobbling_delay_percent_title">Peratusan kelewatan scrobble</string>
   <!-- 'scrobble' must be kept untranslated -->
@@ -881,7 +881,7 @@ Lirik datang daripada perkhidmatan pihak ketiga yang tidak bergabung, ditaja, at
   <string name="morphe_music_lyrics_ai_config_toast_reset">Tetapan ditetapkan semula ke lalai</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL asas mesti bermula dengan http:// atau https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Tetapan tidak lengkap atau ditolak oleh penyedia</string>
-  <string name="morphe_music_lyrics_ai_config_status_validating">Menyahkan sambungan…</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Mengesahkan sambungan…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Tersambung! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Sambungan gagal. Semak tetapan.</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_key">Masukkan kunci API terlebih dahulu</string>

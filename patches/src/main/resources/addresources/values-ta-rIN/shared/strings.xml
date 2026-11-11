@@ -20,6 +20,10 @@ Second \"item\" text"</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <!-- String is also duplicated in Reddit about preference -->
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_level_title">பிழைத்திருத்தப் பதிவு</string>
+  <string name="morphe_debug_level_entry_disabled">முடக்கப்பட்டது</string>
+  <string name="morphe_debug_level_entry_debug">பிழைத்திருத்தம்</string>
+  <string name="morphe_debug_level_entry_verbose">விரிவான விவரங்கள்</string>
   <!-- Keep short, four of these are shown in one row. -->
   <!-- Keep short, four of these are shown in one row. -->
   <!-- Keep short, four of these are shown in one row. -->

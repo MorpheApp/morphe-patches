@@ -23,14 +23,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset">초기화</string>
   <string name="morphe_settings_reset_color">색상 초기화</string>
   <string name="morphe_settings_color_invalid">잘못된 색상입니다</string>
-  <string name="morphe_settings_restart_title">다시 시작하세요</string>
+  <string name="morphe_settings_restart_title">다시 시작 필요</string>
   <string name="morphe_settings_restart_dialog_message">이 변경 사항을 적용하려면 앱을 다시 시작하세요</string>
   <string name="morphe_settings_restart">다시 시작</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">가져오기</string>
   <string name="morphe_settings_import_copy">복사</string>
   <string name="morphe_settings_import_reset">Morphe 설정을 기본값으로 초기화합니다</string>
-  <string name="morphe_settings_import_success">%s 개의 설정을 가져왔습니다</string>
+  <string name="morphe_settings_import_success">설정 %s개를 가져왔습니다</string>
   <string name="morphe_settings_import_failure_parse">설정을 가져올 수 없습니다: %s</string>
   <string name="morphe_settings_navigate_up">위로 이동</string>
   <string name="morphe_settings_search_hint">설정 검색</string>
@@ -97,9 +97,10 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">디버그</string>
   <string name="morphe_debug_screen_summary">고급 개발자 옵션 및 진단 로그를 설정할 수 있습니다</string>
-  <string name="morphe_debug_title">디버그 로그 활성화하기</string>
-  <string name="morphe_debug_stacktrace_title">디버그 로그 스택 트레이스</string>
-  <string name="morphe_debug_stacktrace_summary">오류를 식별하는 데 도움이 되도록 디버그 로그에 스택 트레이스를 포함합니다</string>
+  <string name="morphe_debug_level_title">디버그 로그</string>
+  <string name="morphe_debug_level_entry_disabled">사용 안함</string>
+  <string name="morphe_debug_level_entry_debug">디버그</string>
+  <string name="morphe_debug_level_entry_verbose">상세히</string>
   <string name="morphe_debug_toast_on_error_title">Morphe 오류 메시지 표시하기</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"오류 메시지를 비활성화하면 모든 Morphe 오류 알림이 숨겨집니다.
 

@@ -128,7 +128,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_subscribed_channels_bar_names_summary">Abunə olunmuş kanallar cərgəsində kanal adlarını gizlədir</string>
   <string name="morphe_hide_surveys_title">Təftişləri gizlət</string>
   <string name="morphe_hide_surveys_summary">Axın tövsiyəsi dəqiqliyi haqqında təftişləri və xatırlatmaları gizlət</string>
-  <string name="morphe_hide_ticket_shelf_title">Bilet bölməsin gizlət</string>
+  <string name="morphe_hide_ticket_shelf_title">Bilet bölməsini gizlət</string>
   <!-- 'Unavailable videos are hidden' should be translated using the same localized wording YouTube displays for the banner in playlists. -->
   <string name="morphe_hide_unavailable_videos_hidden_banner_title">\"Əlçatmaz videolar gizlidir\" panelini gizlət</string>
   <string name="morphe_hide_unavailable_videos_hidden_banner_summary">Pleylistlərdə \"Əlçatmaz videolar gizlidir\" panelini gizlədir</string>
@@ -500,6 +500,8 @@ Məhdudiyyətlər:
   <string name="morphe_on_the_go_summary">Oynadıcının açılan \'Yolda rejimi\' Morphe fərdi oynadıcı idarəetmələrini açır</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Hərəkət zamanı</string>
+  <string name="morphe_on_the_go_audio_mode">Səs rejiminə keç</string>
+  <string name="morphe_on_the_go_video_mode">Video rejiminə keç</string>
   <string name="morphe_on_the_go_download">Yüklə</string>
   <string name="morphe_on_the_go_queue">Növbə</string>
   <!-- interaction.ask.askFlyoutMenuPatch -->
@@ -622,11 +624,13 @@ API açarınız heç vaxt paylaşılmamalıdır. Buna girişi olan hər bir kəs
   <string name="morphe_vot_mymemory_quota_message_no_email">Bugünkü pulsuz MyMemory tərcümə normasını (5.000 simvol) istifadə etmisiniz. Gündəlik limiti 50.000 simvola artırmaq üçün tənzimləmələrdə MyMemory e-poçtunu əlavə edin və ya fərqli tərcümə xidmətinə keçin</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Bugünkü MyMemory tərcümə normasını (50.000 simvol) istifadə etmisiniz. Başqa tərcümə xidmətinə keçin və ya sabah təkrar cəhd edin</string>
   <string name="morphe_vot_mymemory_error">MyMemory tərcüməsi uğursuz oldu (status %s)</string>
-  <!-- interaction.watchlater.watchLaterPatch -->
-  <string name="morphe_watch_later_wide_drag_handles_title">Sonra izləyin sürükləmə tutacaqlarını genişləndir</string>
-  <string name="morphe_watch_later_wide_drag_handles_summary">Sonra izləyin videolarının sürükləmə tutacaqlarını tutmaq daha asandır</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_title">Sonra izləyindən silinmə bildiriş cizgisin gizlət</string>
-  <string name="morphe_watch_later_hide_removal_snackbar_summary">Video \"Sonra izləyindən\" silindikdən sonra təsdiqləmə göstərilmir</string>
+  <!-- interaction.playlist.playlistPatch -->
+  <string name="morphe_playlist_wide_drag_handles_title">Pleylist sürükləmə tutacaqlarını genişlət</string>
+  <string name="morphe_playlist_wide_drag_handles_summary">Pleylist sürükləmə tutacaqlarını tutmaq daha asandır</string>
+  <string name="morphe_playlist_hide_removal_snackbar_title">Pleylist silinmə bildirişini gizlət</string>
+  <string name="morphe_playlist_hide_removal_snackbar_summary">Video pleylistdən silindikdən sonra təsdiqləmə göstərilmir</string>
+  <string name="morphe_playlist_long_press_drag_title">Pleylist videolarını yenidən sıralamaq üçün uzun bas</string>
+  <string name="morphe_playlist_long_press_drag_summary">Pleylistinizin videosunu yeni mövqeyə sürükləmək üçün toxunub saxla</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Video təkrarlamanı aktivləşdir</string>
   <string name="morphe_do_not_remember_loop_video_title">Video təkrarlanmasını xatırlamasın</string>
@@ -753,6 +757,8 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_queue_manager_open_queue">Növbəni aç</string>
   <string name="morphe_queue_manager_save_queue">Növbəni pleylistdə saxla</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_fetch_on_scroll_title">Sürüşdürmədə növbə səhifələrini yüklə</string>
+  <string name="morphe_native_queue_fetch_on_scroll_summary">Növbənin sonuna yaxın sürüşdürüldükdə daha çox pleylist videosu yüklənilir</string>
   <string name="morphe_native_playlist_queue_saved">Pleylist saxlanıldı</string>
   <string name="morphe_native_playlist_queue_saved_to">%s da saxlanıldı</string>
   <string name="morphe_native_playlist_queue_clear">Növbəni təmizlə</string>
@@ -1025,7 +1031,7 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_navigation_bar_glass_size_height">Hündürlük</string>
   <string name="morphe_navigation_bar_glass_size_width">Ən yüksək en</string>
   <string name="morphe_navigation_bar_glass_size_button_spacing">Düymə boşluğu</string>
-  <string name="morphe_navigation_bar_glass_size_buttons_shown">Göstərilən düymələr: %2$s ədəddən %1$s \'si</string>
+  <string name="morphe_navigation_bar_glass_size_buttons_shown">Göstərilən düymələr: %1$s / %2$s</string>
   <string name="morphe_toolbar_screen_title">Alət cərgəsi</string>
   <string name="morphe_toolbar_screen_summary">Alətlər zolağında hansı elementlər görünür seç</string>
   <string name="morphe_hide_toolbar_chat_button_title">Söhbət düyməsin gizlət</string>
@@ -1103,6 +1109,10 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_bypass_ambient_mode_restrictions_summary">Ambient rejimini batareya qənaətçisi rejimində işlək saxlamağa icazə verir</string>
   <string name="morphe_disable_ambient_mode_title">Ambient rejimini qapat</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Tam ekranda Ambient rejimini qapat</string>
+  <string name="morphe_enhanced_ambient_mode_title">Təkmilləşdirilmiş Ambient rejimi</string>
+  <string name="morphe_enhanced_ambient_mode_summary">Ambient rejimini əvəzləyərək bütün baxış səhifəsini və qara zolaqları video ilə işıqlandırır</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_title">Mətni oxunaqlı saxla</string>
+  <string name="morphe_enhanced_ambient_mode_readable_text_summary">Səhifədəki mətnin oxunaqlı qalması üçün parlaq videolarda işığı azaldır</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Məlumat kartlarını gizlət</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1185,7 +1195,10 @@ Ayarlar→ Oxunuş (və ya Avtomatik oxunuş) → Növbəti videonu avtomatik ox
   <string name="morphe_disable_playlist_autoplay_title">Pleylist avtomatik oynatmasını qapat</string>
   <string name="morphe_disable_playlist_autoplay_summary">Pleylistlərin növbəti videoya avtomatik keçməsinin qarşısını alır</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
-  <string name="morphe_disable_continue_watching_prompt_title">\"İzləməyə davam edilsin?\" sorğusunu qapat</string>
+  <string name="morphe_continue_watching_prompt_title">\"İzləməyə davam edilsin?\" sorğusu</string>
+  <string name="morphe_continue_watching_prompt_entry_1">İlkin</string>
+  <string name="morphe_continue_watching_prompt_entry_2">Qapalıdı</string>
+  <string name="morphe_continue_watching_prompt_entry_3">Qapalı, həmişə avtomatik oynatma geri sayımını göstər</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Video bitdikdə tam ekran rejimini sonlandır</string>
   <string name="morphe_exit_fullscreen_entry_1">Qapalı</string>
@@ -1618,7 +1631,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_video_action_bar_layout_user_dialog_message">Məhdudiyyət: Klassik tərtibatlar köhnə üslubda \"Daha çox video\" örtüyünə qayıdır</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Oynadıcı simvol üslubu</string>
-  <string name="morphe_player_icon_style_entry_auto">Birbaşa</string>
+  <string name="morphe_player_icon_style_entry_auto">Avtomatik</string>
   <string name="morphe_player_icon_style_entry_default">İlkin</string>
   <string name="morphe_player_icon_style_entry_regular">Nazik</string>
   <string name="morphe_player_icon_style_entry_bold">Qalın</string>

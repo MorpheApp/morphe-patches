@@ -81,7 +81,7 @@ For å oversette nye språk eller forbedre de eksisterende oversettelsene, besø
   <string name="morphe_settings_about_links_dev_body">Denne versjonen er en forhåndsutgivelse, og du kan oppleve uventede problemer</string>
   <string name="morphe_settings_about_links_header">Offisielle lenker</string>
   <string name="morphe_settings_about_links_website">Nettsted</string>
-  <string name="morphe_settings_about_links_donate">Doner</string>
+  <string name="morphe_settings_about_links_donate">Støtt</string>
   <string name="morphe_settings_about_links_translations">Oversettelser</string>
   <string name="morphe_settings_about_links_credits">Kreditter</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Oppdatert</string>
@@ -97,9 +97,10 @@ For å oversette nye språk eller forbedre de eksisterende oversettelsene, besø
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Feilsøking</string>
   <string name="morphe_debug_screen_summary">Konfigurer avanserte utvikleralternativer og diagnostikklogger</string>
-  <string name="morphe_debug_title">Aktiver feilsøkingslogging</string>
-  <string name="morphe_debug_stacktrace_title">Feilsøkingslogg stakkspor</string>
-  <string name="morphe_debug_stacktrace_summary">Inkluderer stakksporing i feilsøkingslogger for å hjelpe med å identifisere feil</string>
+  <string name="morphe_debug_level_title">Feilsøkingslogging</string>
+  <string name="morphe_debug_level_entry_disabled">Deaktivert</string>
+  <string name="morphe_debug_level_entry_debug">Feilsøking</string>
+  <string name="morphe_debug_level_entry_verbose">Detaljert</string>
   <string name="morphe_debug_toast_on_error_title">Vis toast ved Morphe-feil</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Å deaktivere feil-varsler skjuler alle Morphe-feilvarsler.
 

@@ -42,3 +42,21 @@ internal object NativeNavigationStateFingerprint : Fingerprint(
         opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately()),
     ),
 )
+
+/**
+ * Constructor of the navigation request, which has the navigation intent and the video to play.
+ */
+internal fun navigationRequestFingerprint(enumType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf(enumType, "L", "L")
+)
+
+/**
+ * Each implementation of the navigation method. These share no common instructions
+ * (some are empty or only delegate), so the request parameter is what identifies them.
+ */
+internal fun navigationMethodFingerprint(requestType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(requestType)
+)

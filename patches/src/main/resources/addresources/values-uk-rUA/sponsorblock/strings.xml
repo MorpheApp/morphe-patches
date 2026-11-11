@@ -167,8 +167,8 @@ Second \"item\" text"</string>
   <string name="morphe_sb_vote_failed_timeout">Не вдалося проголосувати за сегмент (тайм-аут API)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Не вдалося проголосувати за сегмент (статус: %1$s %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Не вдалося проголосувати за сегмент: %s</string>
-  <string name="morphe_sb_vote_upvote">Проголосувати \"за\"</string>
-  <string name="morphe_sb_vote_downvote">Проголосувати \"проти\"</string>
+  <string name="morphe_sb_vote_upvote">Голосувати за</string>
+  <string name="morphe_sb_vote_downvote">Голосувати проти</string>
   <string name="morphe_sb_vote_category">Змінити категорію</string>
   <string name="morphe_sb_vote_no_segments">Немає сегментів для голосування</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
