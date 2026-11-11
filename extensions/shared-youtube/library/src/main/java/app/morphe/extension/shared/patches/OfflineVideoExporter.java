@@ -52,6 +52,7 @@ import java.nio.ByteBuffer;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -160,6 +161,11 @@ public final class OfflineVideoExporter {
     private static final class ExportCanceledException extends IOException {
     }
 
+    /**
+     * If all saved videos are being exported. Set on the main thread, cleared when the exports end.
+     */
+    private static volatile boolean exportingAll;
+
     private OfflineVideoExporter() {
     }
 
@@ -174,31 +180,119 @@ public final class OfflineVideoExporter {
         Utils.showToastShort(str("morphe_export_download_started"));
 
         Utils.runOnBackgroundThread(() -> {
-            ExportNotification notification = null;
-            try {
-                SavedVideo video = getSavedVideo(videoId);
-                if (video == null) {
-                    throw new IllegalStateException("Video is not saved: " + videoId);
-                }
-
-                notification = new ExportNotification(videoId, video.title());
-                ExportResult result = export(videoId, video, notification);
-                String text = str("morphe_export_download_saved", result.location());
-                notification.showResult(text, result.uri(), result.mimeType());
-                Utils.showToastLong(text);
-            } catch (ExportCanceledException ex) {
-                Logger.printDebug(() -> "Export canceled: " + videoId);
-                notification.dismiss();
-                Utils.showToastShort(str("morphe_export_download_canceled"));
-            } catch (Exception ex) {
-                Logger.printException(() -> "exportVideo failure", ex);
-                String text = str("morphe_export_download_failed");
-                if (notification != null) {
-                    notification.showResult(text, null, null);
-                }
-                Utils.showToastLong(text);
+            ExportStatus status = exportSavedVideo(videoId);
+            if (status.outcome() == ExportOutcome.CANCELED) {
+                Utils.showToastShort(status.text());
+            } else {
+                Utils.showToastLong(status.text());
             }
         });
+    }
+
+    /**
+     * @param limit The most videos to look for.
+     * @return The videos that are fully saved and can be exported.
+     */
+    public static List<String> getExportableVideoIds(int limit) {
+        Set<String> videoIds = new LinkedHashSet<>();
+        for (File database : getDatabases()) {
+            try (SQLiteDatabase db = SQLiteDatabase.openDatabase(
+                    database.getPath(), null, SQLiteDatabase.OPEN_READONLY);
+                 Cursor cursor = db.query(true, "streams", new String[]{"video_id"},
+                         null, null, null, null, null, null)) {
+                while (cursor.moveToNext()) {
+                    if (videoIds.size() >= limit) {
+                        return new ArrayList<>(videoIds);
+                    }
+                    String videoId = cursor.getString(0);
+                    if (videoId != null && getSavedStreams(db, videoId) != null) {
+                        videoIds.add(videoId);
+                    }
+                }
+            }
+        }
+        return new ArrayList<>(videoIds);
+    }
+
+    /**
+     * Exports all saved videos, one after another. Canceling one of the exports stops the others too.
+     */
+    public static void exportAllVideos() {
+        if (exportingAll) {
+            Utils.showToastShort(str("morphe_export_download_all_running"));
+            return;
+        }
+        exportingAll = true;
+        Utils.showToastShort(str("morphe_export_download_all_started"));
+
+        Utils.runOnBackgroundThread(() -> {
+            try {
+                List<String> videoIds = getExportableVideoIds(Integer.MAX_VALUE);
+                int exported = 0;
+                for (String videoId : videoIds) {
+                    ExportStatus status = exportSavedVideo(videoId);
+                    if (status.outcome() == ExportOutcome.CANCELED) {
+                        Utils.showToastShort(status.text());
+                        return;
+                    }
+                    if (status.outcome() == ExportOutcome.EXPORTED) {
+                        exported++;
+                    }
+                }
+
+                final int exportedCount = exported;
+                Logger.printDebug(() -> "Exported " + exportedCount + " of " + videoIds.size() + " videos");
+                Utils.showToastLong(str("morphe_export_download_all_saved",
+                        exportedCount, videoIds.size(), getFolderName()));
+            } catch (Exception ex) {
+                Logger.printException(() -> "exportAllVideos failure", ex);
+                Utils.showToastLong(str("morphe_export_download_failed"));
+            } finally {
+                exportingAll = false;
+            }
+        });
+    }
+
+    private enum ExportOutcome {
+        EXPORTED,
+        CANCELED,
+        FAILED
+    }
+
+    /**
+     * @param text The text shown to the user when the export ends.
+     */
+    private record ExportStatus(ExportOutcome outcome, String text) {
+    }
+
+    /**
+     * Called on a background thread. The notification of the export shows its progress and its result.
+     */
+    private static ExportStatus exportSavedVideo(String videoId) {
+        ExportNotification notification = null;
+        try {
+            SavedVideo video = getSavedVideo(videoId);
+            if (video == null) {
+                throw new IllegalStateException("Video is not saved: " + videoId);
+            }
+
+            notification = new ExportNotification(videoId, video.title());
+            ExportResult result = export(videoId, video, notification);
+            String text = str("morphe_export_download_saved", result.location());
+            notification.showResult(text, result.uri(), result.mimeType());
+            return new ExportStatus(ExportOutcome.EXPORTED, text);
+        } catch (ExportCanceledException ex) {
+            Logger.printDebug(() -> "Export canceled: " + videoId);
+            notification.dismiss();
+            return new ExportStatus(ExportOutcome.CANCELED, str("morphe_export_download_canceled"));
+        } catch (Exception ex) {
+            Logger.printException(() -> "exportSavedVideo failure: " + videoId, ex);
+            String text = str("morphe_export_download_failed");
+            if (notification != null) {
+                notification.showResult(text, null, null);
+            }
+            return new ExportStatus(ExportOutcome.FAILED, text);
+        }
     }
 
     /**
@@ -645,11 +739,16 @@ public final class OfflineVideoExporter {
             values.put(MediaStore.MediaColumns.RELATIVE_PATH, folder);
             values.put(MediaStore.MediaColumns.IS_PENDING, 1);
 
-            // The media store renames a file whose name is taken, but not if the file was deleted
-            // without the media store knowing, such as by a file manager. Then the insert fails.
+            // The media store renames a file whose name is taken, but Android 10 adds the number
+            // after the extension, so a free name is picked first. The insert fails if the file
+            // was deleted without the media store knowing, such as by a file manager.
             Uri uri = null;
             for (int attempt = 0; uri == null && attempt < MAX_FILE_NAME_ATTEMPTS; attempt++) {
-                values.put(MediaStore.MediaColumns.DISPLAY_NAME, getNumberedName(name, extension, attempt));
+                String fileName = getNumberedName(name, extension, attempt);
+                if (isMediaStoreNameTaken(resolver, folder, fileName)) {
+                    continue;
+                }
+                values.put(MediaStore.MediaColumns.DISPLAY_NAME, fileName);
                 uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
             }
             if (uri == null) {
@@ -661,6 +760,20 @@ public final class OfflineVideoExporter {
                 throw new IOException("No file descriptor for: " + uri);
             }
             return new OutputFile(uri, false, null, descriptor, folder);
+        }
+
+        /**
+         * Only the files the app created can be found, as other files are not visible to the app.
+         */
+        private static boolean isMediaStoreNameTaken(ContentResolver resolver, String folder, String fileName) {
+            try (Cursor cursor = resolver.query(MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                    new String[]{MediaStore.MediaColumns._ID},
+                    MediaStore.MediaColumns.RELATIVE_PATH + " = ? AND "
+                            + MediaStore.MediaColumns.DISPLAY_NAME + " = ?",
+                    new String[]{folder + File.separator, fileName},
+                    null)) {
+                return cursor != null && cursor.moveToFirst();
+            }
         }
 
         private static String getNumberedName(String name, String extension, int number) {

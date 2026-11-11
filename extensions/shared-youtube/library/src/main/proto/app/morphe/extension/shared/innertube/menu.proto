@@ -23,6 +23,8 @@ message MenuNavigationItemRenderer {
     // Not a field of the app, the app keeps it as an unknown field.
     // Marks the export item added by Morphe, with the video it exports.
     optional string morpheExportVideoId = 536870911;
+    // Not a field of the app. Marks the export all item added by Morphe.
+    optional bool morpheExportAll = 536870910;
 }
 
 message MenuText {

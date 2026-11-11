@@ -152,6 +152,10 @@ Export folder: %s"</string>
     <string name="morphe_export_download_notification_channel">Download exports</string>
     <string name="morphe_export_download_saved">Download exported to %s</string>
     <string name="morphe_export_download_failed">Could not export the download</string>
+    <string name="morphe_export_download_all_flyout_title">Export all to device</string>
+    <string name="morphe_export_download_all_started">Exporting all downloads</string>
+    <string name="morphe_export_download_all_running">Downloads are already being exported</string>
+    <string name="morphe_export_download_all_saved">Exported %1$s of %2$s downloads to %3$s</string>
 
     <!-- misc.settings.settingsPatch -->
 

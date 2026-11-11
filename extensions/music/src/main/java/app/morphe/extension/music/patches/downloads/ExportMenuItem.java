@@ -23,8 +23,8 @@ import app.morphe.extension.shared.innertube.Menu.MenuTextRun;
 import app.morphe.extension.shared.patches.OfflineVideoExporter;
 
 /**
- * Adds an item to the menus of the songs and videos saved by the app, such as the menus
- * of the downloads list, that exports the song or video to a file on the device.
+ * Adds items to the menus of the songs and videos saved by the app, such as the menus
+ * of the downloads list, that export the song or video, or all of them, to files on the device.
  */
 @SuppressWarnings("unused")
 public final class ExportMenuItem {
@@ -34,6 +34,8 @@ public final class ExportMenuItem {
      */
     private static final int ICON_TYPE_OFFLINE_DOWNLOAD = 147;
 
+    private static final byte[][] NO_ITEMS = new byte[0][];
+
     private ExportMenuItem() {
     }
 
@@ -42,34 +44,50 @@ public final class ExportMenuItem {
      * Called on the main thread when the items of a menu are created.
      *
      * @param menu The menu renderer, which has a remove download item if the song or video is saved.
-     * @return The menu item renderer of the export item, or null if the menu gets no export item.
+     * @return The menu item renderers of the export items, which are none if the menu gets no export items.
      */
-    @Nullable
-    public static byte[] getExportMenuItem(@Nullable Object menu) {
+    public static byte[][] getExportMenuItems(@Nullable Object menu) {
         try {
             if (!(menu instanceof MessageLite message)) {
-                return null;
+                return NO_ITEMS;
             }
 
             String videoId = getSavedVideoId(MenuRenderer.parseFrom(message.toByteArray()));
             if (videoId == null || !OfflineVideoExporter.isExportable(videoId)) {
-                return null;
+                return NO_ITEMS;
             }
 
-            // The item has no command, so the app only closes the menu when it is clicked.
-            return MenuItem.newBuilder()
-                    .setMenuNavigationItemRenderer(MenuNavigationItemRenderer.newBuilder()
-                            .setText(MenuText.newBuilder()
-                                    .addRuns(MenuTextRun.newBuilder()
-                                            .setText(str("morphe_export_download_flyout_title"))))
-                            .setIcon(MenuIcon.newBuilder().setIconType(ICON_TYPE_OFFLINE_DOWNLOAD))
-                            .setMorpheExportVideoId(videoId))
-                    .build()
-                    .toByteArray();
+            byte[] exportItem = toMenuItem(createItem(str("morphe_export_download_flyout_title"))
+                    .setMorpheExportVideoId(videoId));
+            // Exporting all is only shown if there is more than this song or video to export.
+            if (OfflineVideoExporter.getExportableVideoIds(2).size() < 2) {
+                return new byte[][]{exportItem};
+            }
+
+            byte[] exportAllItem = toMenuItem(createItem(str("morphe_export_download_all_flyout_title"))
+                    .setMorpheExportAll(true));
+            return new byte[][]{exportItem, exportAllItem};
         } catch (Exception ex) {
-            Logger.printException(() -> "getExportMenuItem failure", ex);
-            return null;
+            Logger.printException(() -> "getExportMenuItems failure", ex);
+            return NO_ITEMS;
         }
+    }
+
+    /**
+     * The items have no command, so the app only closes the menu when they are clicked.
+     */
+    private static MenuNavigationItemRenderer.Builder createItem(String text) {
+        return MenuNavigationItemRenderer.newBuilder()
+                .setText(MenuText.newBuilder()
+                        .addRuns(MenuTextRun.newBuilder().setText(text)))
+                .setIcon(MenuIcon.newBuilder().setIconType(ICON_TYPE_OFFLINE_DOWNLOAD));
+    }
+
+    private static byte[] toMenuItem(MenuNavigationItemRenderer.Builder renderer) {
+        return MenuItem.newBuilder()
+                .setMenuNavigationItemRenderer(renderer)
+                .build()
+                .toByteArray();
     }
 
     /**
@@ -104,6 +122,8 @@ public final class ExportMenuItem {
                     .getMenuNavigationItemRenderer();
             if (renderer.hasMorpheExportVideoId()) {
                 OfflineVideoExporter.exportVideo(renderer.getMorpheExportVideoId());
+            } else if (renderer.getMorpheExportAll()) {
+                OfflineVideoExporter.exportAllVideos();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onMenuItemClick failure", ex);

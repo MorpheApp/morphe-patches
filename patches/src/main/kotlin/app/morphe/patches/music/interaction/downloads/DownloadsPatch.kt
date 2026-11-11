@@ -326,7 +326,7 @@ val downloadsPatch = patch(
 
         // region Export to device.
 
-        // Add the export item to the menus of the songs and videos the app saved.
+        // Add the export items to the menus of the songs and videos the app saved.
         MusicMenuBottomSheetItemsFingerprint.let {
             val menuField = it.instructionMatches.first().fieldReference
             val menuItemType = it.instructionMatches[3].instruction.getReference<TypeReference>()!!.type
@@ -335,7 +335,7 @@ val downloadsPatch = patch(
 
             val addExportMenuItemMethod = ImmutableMethod(
                 it.classDef.type,
-                "patch_addExportMenuItem",
+                "patch_addExportMenuItems",
                 listOf(
                     ImmutableMethodParameter(itemsType, null, null),
                     ImmutableMethodParameter("Ljava/lang/Object;", null, null)
@@ -344,19 +344,25 @@ val downloadsPatch = patch(
                 AccessFlags.PRIVATE.value or AccessFlags.STATIC.value,
                 null,
                 null,
-                MutableMethodImplementation(4),
+                MutableMethodImplementation(7),
             ).toMutable().apply {
                 addInstructionsWithLabels(
                     0,
                     """
-                        invoke-static { p1 }, $EXPORT_MENU_ITEM->getExportMenuItem(Ljava/lang/Object;)[B
+                        invoke-static { p1 }, $EXPORT_MENU_ITEM->getExportMenuItems(Ljava/lang/Object;)[[B
                         move-result-object v0
-                        if-eqz v0, :no_export_item
-                        sget-object v1, ${protoDefaultInstance(menuItemType)}
-                        invoke-static { v1, v0 }, ${parseByteArrayMethodRef.get()!!}
-                        move-result-object v0
-                        invoke-virtual { p0, v0 }, $addItemMethod
-                        :no_export_item
+                        array-length v1, v0
+                        const/4 v2, 0x0
+                        sget-object v3, ${protoDefaultInstance(menuItemType)}
+                        :next_item
+                        if-ge v2, v1, :no_more_items
+                        aget-object v4, v0, v2
+                        invoke-static { v3, v4 }, ${parseByteArrayMethodRef.get()!!}
+                        move-result-object v4
+                        invoke-virtual { p0, v4 }, $addItemMethod
+                        add-int/lit8 v2, v2, 0x1
+                        goto :next_item
+                        :no_more_items
                         return-void
                     """
                 )
@@ -381,7 +387,7 @@ val downloadsPatch = patch(
             }
         }
 
-        // The export item has no command, so the app only closes the menu when it is clicked.
+        // The export items have no command, so the app only closes the menu when one is clicked.
         MenuItemClickFingerprint.let {
             val menuItemField = it.instructionMatches.first().fieldReference
 
