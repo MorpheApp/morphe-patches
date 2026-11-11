@@ -69,8 +69,8 @@ val lyricsPatch = patch(
         lithoFilterPatch,
         mediaSessionHookPatch,
         musicVideoInformationPatch,
-        // The copy and romanize buttons need their icons whether the patches
-        // that own these resources are applied.
+        // The copy, romanize, and jump-to-current buttons need their icons whether
+        // the patches that own these resources are applied.
         patch {
             execute {
                 copyResources(
@@ -80,6 +80,10 @@ val lyricsPatch = patch(
                 copyResources(
                     "romanisationbutton",
                     ResourceGroup("drawable", "morphe_yt_romanize.xml")
+                )
+                copyResources(
+                    "lyricscurrentbutton",
+                    ResourceGroup("drawable", "morphe_yt_crosshair.xml")
                 )
             }
         }

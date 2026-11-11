@@ -38,8 +38,11 @@ final class LyricsScrollEngine {
 
     interface Callback {
         boolean isUserScrolling();
+
         void setProgrammaticScrolling(boolean isProgrammatic);
+
         void onRecomputeAndScroll(int referenceIndex);
+
         /** {@return where to scroll to keep this row in place after a reflow, or -1} */
         int computeReflowScrollTarget(@Nullable View targetRow);
     }
@@ -445,7 +448,8 @@ final class LyricsScrollEngine {
     }
 
     private void handlePreDrawReflowAndSync() {
-        if (!springScrollEnabled || scrollView.getHeight() <= 0 || linesContainer.getChildCount() <= 0) return;
+        if (!springScrollEnabled || scrollView.getHeight() <= 0 || linesContainer.getChildCount() <= 0)
+            return;
 
         int viewportH = scrollView.getHeight();
         int linesH = linesContainer.getHeight();
@@ -643,10 +647,10 @@ final class LyricsScrollEngine {
     }
 
     /**
-     * @param targetEndView  The last row of the group of lines sung together that starts at the
-     *                       target, which moves along with it.
-     * @param referenceView  The row the scroll comes from, which the delays count from.
-     * @param timeGapMs      The pause before the target line, which sets the spring's damping.
+     * @param targetEndView The last row of the group of lines sung together that starts at the
+     *                      target, which moves along with it.
+     * @param referenceView The row the scroll comes from, which the delays count from.
+     * @param timeGapMs     The pause before the target line, which sets the spring's damping.
      */
     void scrollTo(int targetY,
                   @Nullable View targetView,

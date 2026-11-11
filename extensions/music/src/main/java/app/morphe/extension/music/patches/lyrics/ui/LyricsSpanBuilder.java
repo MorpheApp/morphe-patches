@@ -24,6 +24,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
@@ -144,6 +145,7 @@ public final class LyricsSpanBuilder {
             this.spacing = spacing;
             this.blockSplitOffset = blockSplitOffset;
         }
+
         @Override
         public void chooseHeight(CharSequence text, int start, int end, int spanstartv, int v,
                                  Paint.FontMetricsInt fm) {
@@ -212,7 +214,7 @@ public final class LyricsSpanBuilder {
         return line.isBG() || LyricsBracketSplitter.isBracketedVocal(line.text());
     }
 
-    /** The text a line is drawn with: a background vocal sits on a line of its own, so it loses its brackets. */
+    /** Brackets stripped for a background vocal. */
     static String displayLineText(LyricsLine line) {
         String raw = line.text();
         return isSecondaryLine(line) ? LyricsBracketSplitter.stripAllBrackets(raw).trim() : raw;
@@ -499,7 +501,8 @@ public final class LyricsSpanBuilder {
 
             if (wholeRoman != null && !wholeRoman.trim().isEmpty()) {
                 String[] aligned = LocalRomanizer.allocateReading(
-                        stripBidiControls(wholeRoman).trim(), n, guides);
+                        stripBidiControls(wholeRoman).trim(), n, guides,
+                        LocalRomanizer.hasCjkWord(ownWords));
                 for (int i = 0; i < n; i++) {
                     if (isLatinWord[i]) {
                         romTexts[i] = "";
@@ -902,41 +905,112 @@ public final class LyricsSpanBuilder {
         return false;
     }
 
-    /** Where each word of a line begins and ends, counted the way it is said. */
     private static int[] wordBoundaries(String text) {
-        List<Integer> bounds = new ArrayList<>();
-        int runStart = -1;
-        for (int i = 0; i < text.length(); ) {
-            final int codePoint = text.codePointAt(i);
-            final int charCount = Character.charCount(codePoint);
-            if (isCjkCodePoint(codePoint)) {
-                if (runStart >= 0) {
-                    bounds.add(runStart);
-                    bounds.add(i);
-                    runStart = -1;
+        final boolean spaced = hasWhitespace(text);
+        final BreakIterator words = BreakIterator.getWordInstance(Locale.ROOT);
+
+        List<int[]> spans = new ArrayList<>();
+        int worded = 0;
+        if (words != null) {
+            words.setText(text);
+            int start = words.first();
+            int opening = -1;
+            for (int end = words.next(); end != BreakIterator.DONE; start = end, end = words.next()) {
+                final String piece = text.substring(start, end);
+                if (!hasNonWhitespace(piece)) continue;
+                final boolean letters = hasLetterOrDigit(piece);
+                final boolean joined = start > 0 && !isWhitespace(text.codePointBefore(start));
+                if (!letters && isOpening(piece) && !(spaced && joined && !spans.isEmpty())) {
+                    if (opening < 0) opening = start;
+                    continue;
                 }
-                bounds.add(i);
-                bounds.add(i + charCount);
-            } else if (Character.isWhitespace(codePoint)) {
-                if (runStart >= 0) {
-                    bounds.add(runStart);
-                    bounds.add(i);
-                    runStart = -1;
+                final int from = opening >= 0 ? opening : start;
+                opening = -1;
+                if (!spans.isEmpty() && joined && from == start && (spaced || !letters)) {
+                    final int[] previous = spans.remove(spans.size() - 1);
+                    spans.add(new int[]{previous[0], end});
+                } else {
+                    spans.add(new int[]{from, end});
+                    if (letters) worded++;
                 }
-            } else if (runStart < 0) {
-                runStart = i;
             }
-            i += charCount;
+            if (opening >= 0) {
+                if (spans.isEmpty()) spans.add(new int[]{opening, text.length()});
+                else {
+                    final int[] previous = spans.remove(spans.size() - 1);
+                    spans.add(new int[]{previous[0], text.length()});
+                }
+            }
         }
-        if (runStart >= 0) {
-            bounds.add(runStart);
-            bounds.add(text.length());
+
+        if (worded < 2 || hasCjkCodePoint(text)) {
+            // ICU found no dictionary words, or the text is CJK: split on CJK code points
+            // and whitespace. Each CJK character is one syllable, so it needs its own word
+            // boundary for per-syllable Romanization alignment.
+            spans.clear();
+            int runStart = -1;
+            for (int i = 0; i < text.length(); ) {
+                final int codePoint = text.codePointAt(i);
+                final int charCount = Character.charCount(codePoint);
+                if (isCjkCodePoint(codePoint)) {
+                    if (runStart >= 0) {
+                        spans.add(new int[]{runStart, i});
+                        runStart = -1;
+                    }
+                    spans.add(new int[]{i, i + charCount});
+                } else if (isWhitespace(codePoint)) {
+                    if (runStart >= 0) {
+                        spans.add(new int[]{runStart, i});
+                        runStart = -1;
+                    }
+                } else if (runStart < 0) {
+                    runStart = i;
+                }
+                i += charCount;
+            }
+            if (runStart >= 0) {
+                spans.add(new int[]{runStart, text.length()});
+            }
+        }
+
+        List<Integer> bounds = new ArrayList<>(spans.size() * 2);
+        for (int[] span : spans) {
+            bounds.add(span[0]);
+            bounds.add(span[1]);
         }
         int[] result = new int[bounds.size()];
         for (int i = 0; i < bounds.size(); i++) {
             result[i] = bounds.get(i);
         }
         return result;
+    }
+
+    private static boolean hasWhitespace(String text) {
+        return text.codePoints().anyMatch(LyricsSpanBuilder::isWhitespace);
+    }
+
+    private static boolean hasCjkCodePoint(String text) {
+        return text.codePoints().anyMatch(LyricsSpanBuilder::isCjkCodePoint);
+    }
+
+    private static boolean hasLetterOrDigit(String text) {
+        return text.codePoints().anyMatch(Character::isLetterOrDigit);
+    }
+
+    private static boolean hasNonWhitespace(String text) {
+        return text.codePoints().anyMatch(cp -> !isWhitespace(cp));
+    }
+
+    private static boolean isWhitespace(int cp) {
+        return Character.isWhitespace(cp) || Character.isSpaceChar(cp);
+    }
+
+    private static boolean isOpening(String piece) {
+        return piece.codePoints().allMatch(cp -> {
+            final int type = Character.getType(cp);
+            return type == Character.START_PUNCTUATION || type == Character.INITIAL_QUOTE_PUNCTUATION
+                    || cp == '"' || cp == '\'' || cp == '„' || cp == '‚' || cp == '¿' || cp == '¡';
+        });
     }
 
     private static List<WordTiming> synthesizeLineChars(String text, long startMs, long endMs) {
@@ -976,29 +1050,14 @@ public final class LyricsSpanBuilder {
     }
 
     private static int countWords(String text) {
+        int[] bounds = wordBoundaries(text);
         int words = 0;
-        boolean inWord = false;
-        for (int i = 0; i < text.length(); ) {
-            final int codePoint = text.codePointAt(i);
-            i += Character.charCount(codePoint);
-            if (Character.isWhitespace(codePoint)) {
-                if (inWord) {
-                    words++;
-                    inWord = false;
-                }
-                continue;
-            }
-            if (isCjkCodePoint(codePoint)) {
-                if (inWord) {
-                    words++;
-                    inWord = false;
-                }
+        for (int i = 0; i + 1 < bounds.length; i++) {
+            if (isWord(text, bounds[i], bounds[i + 1])) {
                 words++;
-                continue;
             }
-            inWord = true;
         }
-        return words + (inWord ? 1 : 0);
+        return words;
     }
 
     /** The ranges live in {@link ScriptDetector}, so a syllable here is a syllable there too. */
@@ -1282,19 +1341,11 @@ public final class LyricsSpanBuilder {
             return;
         }
 
-        // Collect non-whitespace tokens inside the untimed gap
+        int[] gapBounds = wordBoundaries(gap);
         List<int[]> spans = new ArrayList<>(2);
-        int i = gapStart;
-        while (i < gapEnd) {
-            while (i < gapEnd && Character.isWhitespace(text.charAt(i))) {
-                i++;
-            }
-            final int s = i;
-            while (i < gapEnd && !Character.isWhitespace(text.charAt(i))) {
-                i++;
-            }
-            if (i > s) {
-                spans.add(new int[]{s, i});
+        for (int i = 0; i + 1 < gapBounds.length; i++) {
+            if (isWord(gap, gapBounds[i], gapBounds[i + 1])) {
+                spans.add(new int[]{gapStart + gapBounds[i], gapStart + gapBounds[i + 1]});
             }
         }
         if (spans.isEmpty()) {
@@ -1415,7 +1466,7 @@ public final class LyricsSpanBuilder {
             } else {
                 boolean isRtl = isRtlText(dual);
                 dual.setSpan(new AlignmentSpan.Standard(
-                        resolveAlignment(isRtl, isRightAligned, centered)),
+                                resolveAlignment(isRtl, isRightAligned, centered)),
                         0, dual.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             attachUniformSpacing(dual, spacing);
@@ -1702,15 +1753,17 @@ public final class LyricsSpanBuilder {
         if (lineTimings == null || lineTimings.isEmpty()) {
             return null;
         }
-        int[][] tokens = LocalRomanizer.readingTokens(whole);
-        if (tokens.length == 0) {
-            return null;
-        }
         List<Word> words = wordsAt(text, lineTimings);
         if (words.isEmpty()) {
             return null;
         }
-        int[][] spread = LocalRomanizer.spreadReading(words, whole);
+        // A packed CJK reading is split into syllables when that makes it fit the words.
+        String effective = LocalRomanizer.readingForWords(words, whole);
+        int[][] tokens = LocalRomanizer.readingTokens(effective);
+        if (tokens.length == 0) {
+            return null;
+        }
+        int[][] spread = LocalRomanizer.spreadReading(words, effective);
         if (spread == null) {
             return null;
         }

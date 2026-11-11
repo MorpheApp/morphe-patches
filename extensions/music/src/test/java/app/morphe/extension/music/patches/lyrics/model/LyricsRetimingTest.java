@@ -24,9 +24,9 @@ public class LyricsRetimingTest {
         Assert.assertEquals(1, retimed.size());
 
         LyricsRetiming.RetimedEntry entry = retimed.get(0);
-        Assert.assertEquals(1000, entry.startMs);
-        Assert.assertTrue("actualEndTimeMs must cover last word endMs", entry.actualEndTimeMs >= 2450);
-        Assert.assertTrue("adjustedEndTimeMs must cover last word endMs", entry.adjustedEndTimeMs >= 2450);
+        Assert.assertEquals(1000, entry.startMs());
+        Assert.assertTrue("actualEndTimeMs must cover last word endMs", entry.actualEndTimeMs() >= 2450);
+        Assert.assertTrue("adjustedEndTimeMs must cover last word endMs", entry.adjustedEndTimeMs() >= 2450);
     }
 
     @Test

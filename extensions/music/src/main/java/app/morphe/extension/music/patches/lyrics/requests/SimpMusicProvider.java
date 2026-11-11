@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -122,6 +123,11 @@ public final class SimpMusicProvider implements LyricsProvider {
         return "SimpMusic";
     }
 
+    @Override
+    public boolean hasCandidates() {
+        return true;
+    }
+
     @Nullable
     @Override
     public FetchResult fetch(TrackInfo track) {
@@ -130,6 +136,68 @@ public final class SimpMusicProvider implements LyricsProvider {
             return null;
         }
         return FetchResult.of(fetchByVideoId(videoId));
+    }
+
+    @Override
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+        final String videoId = VideoInformation.getVideoId();
+        if (videoId.isEmpty()) {
+            return Collections.emptyList();
+        }
+        HttpURLConnection connection = null;
+        try {
+            final String url = BASE_URL + LyricsRequests.encode(videoId);
+            connection = LyricsRequests.openConnection(url);
+            connection.setRequestProperty("User-Agent", CLIENT_USER_AGENT);
+            connection.setRequestProperty("Accept", "application/json");
+
+            final int code = connection.getResponseCode();
+            if (code == 404) {
+                connection.disconnect();
+                return Collections.emptyList();
+            }
+            if (code != 200) {
+                LyricsRequests.logFailure(name(), connection);
+                return Collections.emptyList();
+            }
+
+            JSONObject root = Requester.parseJSONObject(connection);
+            if (!root.optBoolean("success", false)) {
+                return Collections.emptyList();
+            }
+            final JSONArray data = root.optJSONArray("data");
+            if (data == null || data.length() == 0) {
+                return Collections.emptyList();
+            }
+
+            List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+            for (int i = 0; i < data.length(); i++) {
+                JSONObject entry = data.optJSONObject(i);
+                if (entry == null) {
+                    continue;
+                }
+                Lyrics lyrics = parseEntry(entry, videoId);
+                if (lyrics == null || lyrics.isEmpty()) {
+                    continue;
+                }
+                final int vote = entry.optInt("vote", 0);
+                int score = LyricsRequests.VIDEO_ID_TRUST
+                        + LyricsRequests.syncRank(lyrics) * 10
+                        + Math.min(vote, 9);
+                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
+            }
+            Lyrics.sortScoredByScore(scored);
+            return scored.size() > LyricsRequests.MAX_CANDIDATES
+                    ? new ArrayList<>(scored.subList(0, LyricsRequests.MAX_CANDIDATES))
+                    : scored;
+        } catch (IOException | JSONException ex) {
+            Logger.printDebug(() -> "Could not fetch SimpMusic candidates", ex);
+            return Collections.emptyList();
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
     }
 
     @Nullable

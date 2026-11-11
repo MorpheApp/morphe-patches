@@ -732,7 +732,7 @@ public final class LyricsRomanizer {
             globalSyllableIndex += count;
 
             List<String> alignedChunks = List.of(LocalRomanizer.allocateReading(
-                    fullLineRom, count, romanizedGuides));
+                    fullLineRom, count, romanizedGuides, LocalRomanizer.hasCjkWord(origWords)));
 
             List<Word> romanizedWords = new ArrayList<>(count);
             StringBuilder lineRomBuilder = new StringBuilder();
@@ -741,7 +741,6 @@ public final class LyricsRomanizer {
                 Word w = origWords.get(wIdx);
                 String rom = (wIdx < alignedChunks.size() && alignedChunks.get(wIdx) != null) ? alignedChunks.get(wIdx) : "";
                 romanizedWords.add(new Word(w.startMs(), w.endMs(), w.text(), rom, w.endsWithSpace(), w.ruby()));
-                //noinspection SizeReplaceableByIsEmpty
                 if (lineRomBuilder.length() > 0 && lineRomBuilder.charAt(lineRomBuilder.length() - 1) != ' ') {
                     lineRomBuilder.append(' ');
                 }
@@ -1231,7 +1230,8 @@ public final class LyricsRomanizer {
             }
             List<Word> origWords = orig.words();
             List<String> alignedChunks = List.of(LocalRomanizer.allocateReading(
-                    fullRoma, origWords.size(), guidesForWords(origWords, fullRoma)));
+                    fullRoma, origWords.size(), guidesForWords(origWords, fullRoma),
+                    LocalRomanizer.hasCjkWord(origWords)));
             List<Word> rWords = new ArrayList<>(origWords.size());
             for (int w = 0; w < origWords.size(); w++) {
                 Word ow = origWords.get(w);

@@ -11,21 +11,59 @@ import static app.morphe.extension.music.settings.preference.LyricsFieldsDialog.
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 
 /** Edits both line limits and their shared full-width character weight together. */
 @SuppressWarnings({"unused", "deprecation"})
-public class LyricsLineLimitsPreference extends Preference {
+public class LyricsLineLimitsPreference extends Preference
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final int MAX_CHAR_LIMIT = 10000;
 
     public LyricsLineLimitsPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         setPersistent(false);
+    }
+
+    @Override
+    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
+        super.onAttachedToHierarchy(preferenceManager);
+        try {
+            SharedPreferences prefs = preferenceManager.getSharedPreferences();
+            if (prefs != null) {
+                prefs.registerOnSharedPreferenceChangeListener(this);
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "onAttachedToHierarchy failure", ex);
+        }
+        updateAvailability();
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (Settings.LYRICS_ENABLED.key.equals(key)
+                || Settings.LYRICS_MINIPLAYER.key.equals(key)
+                || Settings.LYRICS_MEDIASESSION.key.equals(key)) {
+            updateAvailability();
+        }
+    }
+
+    private void updateAvailability() {
+        // Read raw SharedPreferences: this listener fires before the cache syncs, so get() can be stale.
+        setEnabled(Setting.preferences.getBoolean(Settings.LYRICS_ENABLED.key,
+                        Settings.LYRICS_ENABLED.defaultValue)
+                && (Setting.preferences.getBoolean(Settings.LYRICS_MINIPLAYER.key,
+                        Settings.LYRICS_MINIPLAYER.defaultValue)
+                || Setting.preferences.getBoolean(Settings.LYRICS_MEDIASESSION.key,
+                        Settings.LYRICS_MEDIASESSION.defaultValue)));
     }
 
     @Override

@@ -7,6 +7,8 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.graphics.Bitmap;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
@@ -61,6 +63,7 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.BaseSettings;
 
 /**
  * Fetches lyrics for the current track and tracks playback position.
@@ -2223,6 +2226,12 @@ public final class LyricsManager {
         return SkipSegments.remapTimestamp(lyricTimeMs, segs);
     }
 
+    /** Segments for export: same latch logic as display, read fresh each call. */
+    @Nullable
+    public List<SkipSegments.Seg> exportSegs() {
+        return syncSegs();
+    }
+
     /**
      * Filters out credit lines and text the user asked to hide, then normalizes the timings
      * of synced lyrics, consulting the short-lived cache of already filtered results.
@@ -2231,11 +2240,19 @@ public final class LyricsManager {
         final boolean splitBackground = Settings.LYRICS_SPLIT_BACKGROUND.get();
         String cacheKey = null;
         if (lyrics != null && lyrics != Lyrics.NOT_FOUND && !lyrics.isEmpty()) {
-            // The split changes the lines, so it belongs in the key or toggling it hands back
-            // the other result.
-            StringBuilder sb = new StringBuilder(lyrics.providerName())
-                    .append(splitBackground ? "|bg" : "|");
+            // Split and section labels change the output, so both belong in the cache key.
             List<LyricsLine> lines = lyrics.lines();
+            boolean hasSections = false;
+            for (LyricsLine line : lines) {
+                String part = line.songPart();
+                if (part != null && !part.isEmpty()) {
+                    hasSections = true;
+                    break;
+                }
+            }
+            StringBuilder sb = new StringBuilder(lyrics.providerName())
+                    .append(splitBackground ? "|bg" : "|")
+                    .append(hasSections ? "|sec" : "|nosec");
             int limit = Math.min(3, lines.size());
             for (int i = 0; i < limit; i++) {
                 sb.append('|').append(lines.get(i).text());
@@ -2378,7 +2395,18 @@ public final class LyricsManager {
                     }
                     Lyrics shown = currentLyrics;
                     boolean stillShowing = shown != null && fingerprint.equals(LyricsMatch.fingerprint(shown));
-                    if (sections == null || !stillShowing || currentTrack != track) {
+                    if (sections == null) {
+                        // A track change or a newer request cancels it; neither is a failure.
+                        if (stillShowing && currentTrack == track) {
+                            Logger.printDebug(() -> "AI section detection returned no sections for "
+                                    + track.title() + " - " + track.artist());
+                            if (BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
+                                Utils.showToastShort(str("morphe_music_lyrics_ai_section_failed"));
+                            }
+                        }
+                        return;
+                    }
+                    if (!stillShowing || currentTrack != track) {
                         return;
                     }
                     setState(State.LOADED, SectionDetector.applySections(shown, sections));

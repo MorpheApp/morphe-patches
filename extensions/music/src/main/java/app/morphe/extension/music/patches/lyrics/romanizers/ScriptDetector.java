@@ -188,10 +188,12 @@ public final class ScriptDetector {
         return c >= 0xAC00 && c <= 0xD7A3;
     }
 
-    /** A code point written as a syllable of its own: Han, Hangul or kana. */
     public static boolean isCjkCodePoint(int cp) {
         return cp <= Character.MAX_VALUE
-                && (isHan((char) cp) || isKana((char) cp) || isHangul((char) cp));
+                && (isHan((char) cp) || isKana((char) cp) || isHangul((char) cp)
+                || isThai((char) cp) || isLao((char) cp)
+                || isMyanmar((char) cp) || isKhmer((char) cp)
+                || isTibetan((char) cp));
     }
 
     /** Hangul syllables, jamo and compatibility jamo, which is every way Korean is spelled. */
@@ -254,6 +256,22 @@ public final class ScriptDetector {
 
     public static boolean isThai(char c) {
         return c >= 0x0E00 && c <= 0x0E7F;
+    }
+
+    public static boolean isLao(char c) {
+        return c >= 0x0E80 && c <= 0x0EFF;
+    }
+
+    public static boolean isMyanmar(char c) {
+        return c >= 0x1000 && c <= 0x109F;
+    }
+
+    public static boolean isKhmer(char c) {
+        return c >= 0x1780 && c <= 0x17FF;
+    }
+
+    public static boolean isTibetan(char c) {
+        return c >= 0x0F00 && c <= 0x0FFF;
     }
 
     public enum Script {

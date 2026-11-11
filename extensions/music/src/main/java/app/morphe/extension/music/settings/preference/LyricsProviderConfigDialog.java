@@ -153,7 +153,7 @@ final class LyricsProviderConfigDialog {
                 Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid_url"));
                 return;
             }
-            test(() -> OpenAIClient.validateConfig(url,
+            test(context, () -> OpenAIClient.validateConfig(url,
                     tokenInput.getText().toString().trim(),
                     modelInput.getText().toString().trim()) ? List.of("ok") : null,
                     ProcessingProviders.OPENAI_COMPATIBLE_LABEL);
@@ -224,8 +224,7 @@ final class LyricsProviderConfigDialog {
     }
 
     /** The prompt box and the setting behind it; a no-op pair when the service takes no prompt. */
-    @SuppressWarnings("ClassCanBeRecord")
-    private static final class PromptField {
+    static final class PromptField {
         @Nullable
         private final StringSetting setting;
         @Nullable
@@ -261,7 +260,7 @@ final class LyricsProviderConfigDialog {
     }
 
     /** The prompt box for a list whose service reads one; null for both members otherwise. */
-    private static PromptField addPromptSection(LinearLayout content,
+    static PromptField addPromptSection(LinearLayout content,
                                                 @Nullable StringSetting prompt,
                                                 String labelKey) {
         if (prompt == null) {
@@ -347,8 +346,7 @@ final class LyricsProviderConfigDialog {
         return content;
     }
 
-    @SuppressWarnings("SameParameterValue")
-    private static void test(Supplier<List<String>> request, String label) {
+    static void test(Activity context, Supplier<List<String>> request, String label) {
         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
         Utils.runOnBackgroundThread(() -> {
             List<String> result;
@@ -373,7 +371,7 @@ final class LyricsProviderConfigDialog {
     }
 
     /** The endpoint box and its preset button, added at the top of the form. */
-    private static EditText addBaseUrlInput(LinearLayout section, String value,
+    static EditText addBaseUrlInput(LinearLayout section, String value,
                                            Consumer<ProcessingProviders.EndpointPreset> onPresetPicked) {
         final Context context = section.getContext();
         EditText input = ThemedInput.create(context);
@@ -538,7 +536,7 @@ final class LyricsProviderConfigDialog {
                 }).show();
     }
 
-    private static void addTestButton(Context context, LinearLayout section, Runnable onTest) {
+    static void addTestButton(Context context, LinearLayout section, Runnable onTest) {
         Button testButton = Glyph.PLAY.create(context);
         testButton.setContentDescription(str("morphe_music_lyrics_ai_config_test_connection"));
         testButton.setOnClickListener(v -> onTest.run());

@@ -58,18 +58,6 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
                         }
                     }
                     text = sb.toString();
-                } else {
-                    List<Word> updated = new ArrayList<>(words.size());
-                    StringBuilder sb = new StringBuilder();
-                    for (int i = 0; i < words.size(); i++) {
-                        Word w = words.get(i);
-                        if (i > 0) sb.append(' ');
-                        sb.append(w.text());
-                        boolean sp = (i < words.size() - 1);
-                        updated.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), sp, w.ruby()));
-                    }
-                    words = updated;
-                    text = sb.toString();
                 }
             } else if (!hasEndedWithSpace) {
                 List<Word> updated = new ArrayList<>(words.size());
@@ -83,7 +71,10 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
                         sp = (end < text.length() && Character.isWhitespace(text.charAt(end)));
                         cursor = end;
                     } else {
-                        sp = (i < words.size() - 1);
+                        // A reading line's CJK words were never space-separated; only a non-CJK word may assume one.
+                        sp = w.endsWithSpace()
+                                || (!ScriptDetector.containsCjk(w.text())
+                                && i < words.size() - 1);
                     }
                     updated.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), sp, w.ruby()));
                 }

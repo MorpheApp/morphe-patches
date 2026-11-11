@@ -54,7 +54,7 @@ public final class LyricsMatch {
         return providerName;
     }
 
-    static String fingerprint(Lyrics lyrics) {
+    public static String fingerprint(Lyrics lyrics) {
         if (lyrics == null) return "";
         String provider = lyrics.providerName();
         String raw = lyrics.rawFormat();

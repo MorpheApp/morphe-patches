@@ -9,35 +9,30 @@ package app.morphe.extension.music.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.preference.SwitchPreference;
-import android.text.InputType;
 import android.util.AttributeSet;
 import android.util.Pair;
-import android.util.TypedValue;
-import android.view.Gravity;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
+import app.morphe.extension.music.patches.lyrics.derive.ProcessingProviders;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.StringSetting;
-import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
-import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -120,56 +115,86 @@ public class LyricsAiPromptPreference extends SwitchPreference {
             return;
         }
 
-        LinearLayout content = new LinearLayout(context);
-        content.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout content = LyricsProviderConfigDialog.createContent(context);
 
-        EditText promptInput = CustomDialog.createEditText(context);
-        promptInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-        promptInput.setSingleLine(false);
-        promptInput.setMinLines(4);
-        promptInput.setMaxLines(8);
-        promptInput.setVerticalScrollBarEnabled(true);
-        String currentPrompt = promptSetting.get();
-        if (!currentPrompt.isEmpty()) {
-            promptInput.setText(currentPrompt);
-            promptInput.setSelection(currentPrompt.length());
-        }
-        content.addView(promptInput, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-
-        LinearLayout.LayoutParams reasoningParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        reasoningParams.topMargin = Dim.dp16;
-        content.addView(createReasoningRow(context), reasoningParams);
-
-        content.addView(LyricsProviderConfigDialog.createHint(context,
-                "morphe_music_lyrics_ai_prompt_dialog_hint"));
+        EditText tokenInput = LyricsProviderConfigDialog.addInput(content,
+                "morphe_music_lyrics_ai_config_api_token_label",
+                Settings.LYRICS_AI_API_TOKEN.get(), true);
+        final EditText[] urlBox = new EditText[1];
+        EditText modelInput = LyricsProviderConfigDialog.addModelInput(content,
+                Settings.LYRICS_AI_MODEL.get(),
+                () -> urlBox[0] == null ? Collections.emptyList()
+                        : OpenAIClient.fetchModels(urlBox[0].getText().toString().trim(),
+                                tokenInput.getText().toString().trim()));
+        EditText extraHeadersInput = LyricsProviderConfigDialog.addInput(content,
+                "morphe_music_lyrics_ai_config_extra_headers_label",
+                Settings.LYRICS_AI_EXTRA_HEADERS.get(), false);
+        LyricsProviderConfigDialog.makeMultiLine(extraHeadersInput, 2, 5);
+        LyricsProviderConfigDialog.setHint(extraHeadersInput,
+                "morphe_music_lyrics_ai_config_extra_headers_hint");
+        EditText extraBodyInput = LyricsProviderConfigDialog.addInput(content,
+                "morphe_music_lyrics_ai_config_extra_body_label",
+                Settings.LYRICS_AI_EXTRA_BODY.get(), false);
+        LyricsProviderConfigDialog.makeMultiLine(extraBodyInput, 2, 5);
+        LyricsProviderConfigDialog.setHint(extraBodyInput,
+                "morphe_music_lyrics_ai_config_extra_body_hint");
+        urlBox[0] = LyricsProviderConfigDialog.addBaseUrlInput(content,
+                Settings.LYRICS_AI_BASE_URL.get(), preset -> {
+                    modelInput.setText(preset.model());
+                });
+        final EditText urlInput = urlBox[0];
+        LyricsProviderConfigDialog.addTestButton(context, content, () -> {
+            final String url = urlInput.getText().toString().trim();
+            if (url.isEmpty()) {
+                Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid_url"));
+                return;
+            }
+            LyricsProviderConfigDialog.test(activity, () -> OpenAIClient.validateConfig(url,
+                    tokenInput.getText().toString().trim(),
+                    modelInput.getText().toString().trim()) ? List.of("ok") : null,
+                    ProcessingProviders.OPENAI_COMPATIBLE_LABEL);
+        });
+        final LyricsProviderConfigDialog.PromptField promptField = LyricsProviderConfigDialog.addPromptSection(content,
+                promptSetting, "morphe_music_lyrics_ai_config_prompt_label");
 
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
-                str("morphe_music_lyrics_ai_prompt_dialog_title"),
+                ProcessingProviders.OPENAI_COMPATIBLE_LABEL,
                 null,
                 null,
                 str("morphe_settings_save"),
                 () -> {
-                    String prompt = promptInput.getText().toString().trim();
-                    if (prompt.isEmpty()) {
-                        promptSetting.resetToDefault();
-                        prompt = promptSetting.get();
+                    final String extraBody = extraBodyInput.getText().toString().trim();
+                    final String extraHeaders = extraHeadersInput.getText().toString().trim();
+                    final String baseUrl = urlInput.getText().toString().trim();
+                    if (!OpenAIClient.isValidExtraBody(extraBody)
+                            || !OpenAIClient.isValidExtraHeaders(extraHeaders)) {
+                        Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid"));
+                        return;
                     }
-                    // Saved before anything is asked of the network, so a feature that cannot run
-                    // yet does not cost the user the prompt they just wrote.
-                    promptSetting.save(prompt);
+                    if (baseUrl.isEmpty()
+                            || (!baseUrl.startsWith("http://") && !baseUrl.startsWith("https://"))) {
+                        Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid_url"));
+                        return;
+                    }
+                    Settings.LYRICS_AI_EXTRA_BODY.save(extraBody);
+                    Settings.LYRICS_AI_EXTRA_HEADERS.save(extraHeaders);
+                    Settings.LYRICS_AI_BASE_URL.save(baseUrl);
+                    Settings.LYRICS_AI_API_TOKEN.save(tokenInput.getText().toString().trim());
+                    Settings.LYRICS_AI_MODEL.save(modelInput.getText().toString().trim());
+                    promptField.save();
                     enableAfterValidation(switchSetting);
                 },
                 null,
                 str("morphe_settings_reset"),
                 () -> {
-                    promptSetting.resetToDefault();
-                    promptInput.setText(promptSetting.get());
-                    Utils.showToastShort(str("morphe_music_lyrics_ai_prompt_toast_reset"));
+                    Settings.LYRICS_AI_BASE_URL.resetToDefault();
+                    Settings.LYRICS_AI_API_TOKEN.resetToDefault();
+                    Settings.LYRICS_AI_MODEL.resetToDefault();
+                    Settings.LYRICS_AI_EXTRA_BODY.resetToDefault();
+                    Settings.LYRICS_AI_EXTRA_HEADERS.resetToDefault();
+                    promptField.reset();
+                    Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_reset"));
                 },
                 false
         );
@@ -193,7 +218,7 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         try {
             dialog.show();
         } catch (WindowManager.BadTokenException ex) {
-            Logger.printException(() -> "Could not show the AI prompt dialog", ex);
+            Logger.printException(() -> "Could not show the AI section dialog", ex);
             dialogShowing = false;
         }
     }
@@ -218,7 +243,6 @@ public class LyricsAiPromptPreference extends SwitchPreference {
                 }
                 switchSetting.save(true);
                 setCheckedSilently(true);
-                Utils.showToastShort(str("morphe_music_lyrics_ai_prompt_toast_saved"));
             });
         });
     }
@@ -226,78 +250,6 @@ public class LyricsAiPromptPreference extends SwitchPreference {
     private static final ExecutorService VALIDATION = Executors.newSingleThreadExecutor(
             runnable -> {
                 final Thread thread = new Thread(runnable, "lyrics-ai-validate");
-                thread.setDaemon(true);
-                return thread;
-            });
-
-    /**
-     * The reasoning effort sent with each request. Which levels exist belongs to the endpoint, so the
-     * row stays hidden until it has asked: an endpoint that names no levels takes no effort from us,
-     * and showing a fixed list would offer choices the model cannot honor.
-     */
-    @SuppressLint("SetTextI18n")
-    private View createReasoningRow(Context context) {
-        LinearLayout row = new LinearLayout(context);
-        row.setOrientation(LinearLayout.HORIZONTAL);
-        row.setGravity(Gravity.CENTER_VERTICAL);
-        row.setBackground(CustomDialog.createRoundedBackground(Dim.dp8,
-                ThemeUtils.getAppBackgroundColor() & 0x33FFFFFF));
-
-        TextView label = new TextView(context);
-        label.setText("Reasoning");
-        label.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-        label.setTextColor(ThemeUtils.getAppForegroundColor());
-        row.addView(label, new LinearLayout.LayoutParams(0,
-                LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-
-        TextView value = new TextView(context);
-        value.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-        value.setTextColor(ThemeUtils.getAppForegroundColor() & 0xAAFFFFFF);
-        row.addView(value, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-
-        row.setPadding(Dim.dp12, Dim.dp10, Dim.dp12, Dim.dp10);
-        row.setVisibility(View.GONE);
-
-        final String stored = Settings.LYRICS_AI_REASONING_EFFORT.get();
-        value.setText(display(stored));
-        MODEL_QUERY.execute(() -> {
-            final String[] efforts = OpenAIClient.fetchReasoningEfforts(
-                    Settings.LYRICS_AI_BASE_URL.get(), Settings.LYRICS_AI_API_TOKEN.get(),
-                    Settings.LYRICS_AI_MODEL.get());
-            Utils.runOnMainThread(() -> {
-                if (efforts.length == 0) {
-                    return;
-                }
-                row.setVisibility(View.VISIBLE);
-                final CharSequence[] labels = new CharSequence[efforts.length];
-                for (int i = 0; i < efforts.length; i++) {
-                    labels[i] = display(efforts[i]);
-                }
-                row.setOnClickListener(v -> CustomDialogListPreference.createListDialog(context,
-                                "Reasoning effort", labels, efforts,
-                                Settings.LYRICS_AI_REASONING_EFFORT.get(), index -> {
-                                    final String chosen = efforts[index];
-                                    Settings.LYRICS_AI_REASONING_EFFORT.save(chosen);
-                                    value.setText(display(chosen));
-                                })
-                        .show());
-            });
-        });
-        return row;
-    }
-
-    private static String display(String effort) {
-        if (effort == null || effort.isEmpty()) {
-            return "Default";
-        }
-        return Character.toUpperCase(effort.charAt(0)) + effort.substring(1);
-    }
-
-    private static final ExecutorService MODEL_QUERY = Executors.newSingleThreadExecutor(
-            runnable -> {
-                final Thread thread = new Thread(runnable, "lyrics-ai-models");
                 thread.setDaemon(true);
                 return thread;
             });

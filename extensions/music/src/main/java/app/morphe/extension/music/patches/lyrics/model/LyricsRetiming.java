@@ -41,21 +41,8 @@ public final class LyricsRetiming {
     private static final float SCROLL_DELAY_INCREMENT_RATIO = 0.1f;
     public static final long HIGHLIGHT_LOOK_AHEAD_MS = 190L;
 
-    @SuppressWarnings("ClassCanBeRecord")
-    public static final class RetimedEntry {
-        public final LyricsLine line;
-        public final long startMs;
-        public final long actualEndTimeMs;
-        public final long adjustedEndTimeMs;
-        public final boolean isSecondary;
-
-        public RetimedEntry(LyricsLine line, long startMs, long actualEndTimeMs, long adjustedEndTimeMs, boolean isSecondary) {
-            this.line = line;
-            this.startMs = startMs;
-            this.actualEndTimeMs = actualEndTimeMs;
-            this.adjustedEndTimeMs = adjustedEndTimeMs;
-            this.isSecondary = isSecondary;
-        }
+    public record RetimedEntry(LyricsLine line, long startMs, long actualEndTimeMs,
+                               long adjustedEndTimeMs, boolean isSecondary) {
 
         public long effectiveEndMs() {
             return Math.max(actualEndTimeMs, adjustedEndTimeMs);

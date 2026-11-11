@@ -20,8 +20,6 @@ import java.util.List;
 
 public class ScriptDetectorTest {
 
-    // ── detect(String) ──
-
     @Test
     public void detectNullReturnsNull() {
         String nullLine = null;
@@ -96,8 +94,6 @@ public class ScriptDetectorTest {
         assertEquals(ScriptDetector.Script.KOREAN, ScriptDetector.detect("사랑해 사랑"));
     }
 
-    // ── detect(List<String>) ──
-
     @Test
     public void detectListMixedLines() {
         List<String> lines = List.of("Hello", "こんにちは", "사랑해");
@@ -119,8 +115,6 @@ public class ScriptDetectorTest {
         lines.add(null);
         assertEquals(ScriptDetector.Script.OTHER, ScriptDetector.detect(lines));
     }
-
-    // ── contains ──
 
     @Test
     public void containsNullReturnsFalse() {
@@ -153,8 +147,6 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.contains("Hello", Character.UnicodeScript.HAN));
     }
 
-    // ── containsKana ──
-
     @Test
     public void containsKanaHiragana() {
         assertTrue(ScriptDetector.containsKana("こんにちは"));
@@ -180,8 +172,6 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.containsKana(null));
     }
 
-    // ── containsCjk ──
-
     @Test
     public void containsCjkHan() {
         assertTrue(ScriptDetector.containsCjk("你好"));
@@ -202,8 +192,6 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.containsCjk("Hello"));
     }
 
-    // ── containsRtl ──
-
     @Test
     public void containsRtlArabic() {
         assertTrue(ScriptDetector.containsRtl("مرحبا"));
@@ -223,8 +211,6 @@ public class ScriptDetectorTest {
     public void containsRtlNull() {
         assertFalse(ScriptDetector.containsRtl(null));
     }
-
-    // ── isLineRtl ──
 
     @Test
     public void isLineRtlArabic() {
@@ -263,8 +249,6 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.isLineRtl(null));
     }
 
-    // ── isHan ──
-
     @Test
     public void isHanBasic() {
         assertTrue(ScriptDetector.isHan('你'));
@@ -278,8 +262,6 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.isHan('あ'));
         assertFalse(ScriptDetector.isHan('사'));
     }
-
-    // ── isKana ──
 
     @Test
     public void isKanaHiragana() {
@@ -299,8 +281,6 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.isKana('你'));
         assertFalse(ScriptDetector.isKana('사'));
     }
-
-    // ── isCjkCodePoint ──
 
     @Test
     public void isCjkCodePointHan() {
@@ -322,7 +302,32 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.isCjkCodePoint('A'));
     }
 
-    // ── isAnyHangul ──
+    @Test
+    public void isCjkCodePointThai() {
+        assertTrue(ScriptDetector.isCjkCodePoint('ก'));
+        assertTrue(ScriptDetector.isCjkCodePoint('ั'));
+        assertTrue(ScriptDetector.isCjkCodePoint('ำ'));
+    }
+
+    @Test
+    public void isCjkCodePointLao() {
+        assertTrue(ScriptDetector.isCjkCodePoint('ງ'));
+    }
+
+    @Test
+    public void isCjkCodePointMyanmar() {
+        assertTrue(ScriptDetector.isCjkCodePoint('က'));
+    }
+
+    @Test
+    public void isCjkCodePointKhmer() {
+        assertTrue(ScriptDetector.isCjkCodePoint('ក'));
+    }
+
+    @Test
+    public void isCjkCodePointTibetan() {
+        assertTrue(ScriptDetector.isCjkCodePoint('ག'));
+    }
 
     @Test
     public void isAnyHangulSyllable() {
@@ -345,8 +350,6 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.isAnyHangul('你'));
     }
 
-    // ── isGreek ──
-
     @Test
     public void isGreekBasic() {
         assertTrue(ScriptDetector.isGreek('Γ'));
@@ -358,8 +361,6 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.isGreek('A'));
     }
 
-    // ── isGeorgian ──
-
     @Test
     public void isGeorgianBasic() {
         assertTrue(ScriptDetector.isGeorgian('გ'));
@@ -369,8 +370,6 @@ public class ScriptDetectorTest {
     public void isGeorgianNotGeorgian() {
         assertFalse(ScriptDetector.isGeorgian('A'));
     }
-
-    // ── isArmenian ──
 
     @Test
     public void isArmenianBasic() {
@@ -382,8 +381,6 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.isArmenian('A'));
     }
 
-    // ── isHebrew ──
-
     @Test
     public void isHebrewBasic() {
         assertTrue(ScriptDetector.isHebrew('ש'));
@@ -393,8 +390,6 @@ public class ScriptDetectorTest {
     public void isHebrewNotHebrew() {
         assertFalse(ScriptDetector.isHebrew('A'));
     }
-
-    // ── isLatin ──
 
     @Test
     public void isLatinBasic() {
@@ -409,16 +404,60 @@ public class ScriptDetectorTest {
         assertFalse(ScriptDetector.isLatin('こ'));
     }
 
-    // ── isThai ──
-
     @Test
     public void isThaiBasic() {
         assertTrue(ScriptDetector.isThai('ก'));
+        assertTrue(ScriptDetector.isThai('ำ'));
     }
 
     @Test
     public void isThaiNotThai() {
         assertFalse(ScriptDetector.isThai('A'));
+        assertFalse(ScriptDetector.isThai('ກ'));
+    }
+
+    @Test
+    public void isLaoBasic() {
+        assertTrue(ScriptDetector.isLao('ງ'));
+    }
+
+    @Test
+    public void isLaoNotLao() {
+        assertFalse(ScriptDetector.isLao('A'));
+        assertFalse(ScriptDetector.isLao('ก'));
+    }
+
+    @Test
+    public void isMyanmarBasic() {
+        assertTrue(ScriptDetector.isMyanmar('က'));
+    }
+
+    @Test
+    public void isMyanmarNotMyanmar() {
+        assertFalse(ScriptDetector.isMyanmar('A'));
+        assertFalse(ScriptDetector.isMyanmar('ก'));
+    }
+
+    @Test
+    public void isKhmerBasic() {
+        assertTrue(ScriptDetector.isKhmer('ក'));
+    }
+
+    @Test
+    public void isKhmerNotKhmer() {
+        assertFalse(ScriptDetector.isKhmer('A'));
+        assertFalse(ScriptDetector.isKhmer('ก'));
+    }
+
+    @Test
+    public void isTibetanBasic() {
+        assertTrue(ScriptDetector.isTibetan('ག'));
+    }
+
+    @Test
+    public void isTibetanNotTibetan() {
+        assertFalse(ScriptDetector.isTibetan('A'));
+        assertFalse(ScriptDetector.isTibetan('ก'));
     }
 
     // Helper
