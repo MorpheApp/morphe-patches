@@ -170,8 +170,9 @@ public final class FeedEngagementCountsPatch {
         if (!ENABLED) {
             return;
         }
+        // The video passed, as a card that enters the list can still be known as the video it showed before.
         if (videoId != null && host instanceof ComponentHost componentHost
-                && (FeedVideoCardsPatch.isInDialog(componentHost) || FeedVideoCardsPatch.isLiveCard(componentHost))) {
+                && (FeedVideoCardsPatch.isInDialog(componentHost) || FeedVideoCardsPatch.isLiveVideo(videoId))) {
             videoId = null;
         }
         CountsBadge badge = badges.get(host);
