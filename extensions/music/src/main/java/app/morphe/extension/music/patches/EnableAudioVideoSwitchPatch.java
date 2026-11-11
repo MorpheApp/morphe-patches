@@ -82,8 +82,13 @@ public final class EnableAudioVideoSwitchPatch {
 
     private static final String OEMBED_URL = "https://www.youtube.com/oembed?format=json&url="
             + "https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D";
-    static final String SEARCH_URL =
-            "https://music.youtube.com/youtubei/v1/search?key=AIzaSyAOghZGza2MQSZkY_zfZ370N-PUdXEo8AI";
+    static final String INNERTUBE_URL = "https://music.youtube.com/youtubei/v1/";
+    /**
+     * Public InnerTube API key of the YouTube Music Android app (ANDROID_MUSIC client).
+     * It is not a secret and is the same for every user.
+     */
+    static final String INNERTUBE_KEY_QUERY ="?key=AIzaSyAOghZGza2MQSZkY_zfZ370N-PUdXEo8AI";
+    static final String SEARCH_URL = INNERTUBE_URL + "search" + INNERTUBE_KEY_QUERY;
     private static final String USER_AGENT =
             "com.google.android.apps.youtube.music/7.27.52 (Linux; U; Android 14)";
 
@@ -109,10 +114,6 @@ public final class EnableAudioVideoSwitchPatch {
     private static final long MAX_WAIT_FOR_QUEUE_CHANGE_MILLISECONDS = 100;
 
     private static final Object queueChanged = new Object();
-
-    static {
-        AutoSongVersionPatch.register();
-    }
 
     private EnableAudioVideoSwitchPatch() {
     }

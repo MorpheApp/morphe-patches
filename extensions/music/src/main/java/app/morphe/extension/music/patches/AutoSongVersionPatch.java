@@ -8,6 +8,8 @@
 package app.morphe.extension.music.patches;
 
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.AUDIO_TYPE;
+import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.INNERTUBE_KEY_QUERY;
+import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.INNERTUBE_URL;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.SEARCH_URL;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.SONG_VERSIONS_TO_REMEMBER;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.VIDEO_TYPE;
@@ -21,6 +23,9 @@ import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.rem
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.runOnQueueExecutor;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.switchInQueue;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.videoAt;
+import static app.morphe.extension.music.patches.album.PlayAlbumSongsPatch.DONT_PLAY_VIDEO_SETTING_KEY;
+import static app.morphe.extension.music.patches.album.PlayAlbumSongsPatch.MAX_MILLISECONDS_TO_WAIT_FOR_ALBUM;
+import static app.morphe.extension.music.patches.album.PlayAlbumSongsPatch.YOUTUBE_MUSIC_ALBUM_PREFIX;
 
 import android.content.SharedPreferences;
 import android.os.SystemClock;
@@ -80,8 +85,8 @@ public final class AutoSongVersionPatch {
     private record LateInsert(String songId, String playingVideoId) {
     }
 
-    private static final String NEXT_URL = SEARCH_URL.replace("/search?", "/next?");
-    private static final String PLAYER_URL = SEARCH_URL.replace("/search?", "/player?");
+    private static final String NEXT_URL = INNERTUBE_URL + "next" + INNERTUBE_KEY_QUERY;
+    private static final String PLAYER_URL = INNERTUBE_URL + "player" + INNERTUBE_KEY_QUERY;
     private static final String WEB_CLIENT_VERSION = "1.20260914.01.00";
     private static final long DAY_MILLISECONDS = 86_400_000L;
     private static final int CONNECT_TIMEOUT_MILLISECONDS = 5_000;
@@ -96,11 +101,8 @@ public final class AutoSongVersionPatch {
     private static final Pattern VARIANT_WORDS = Pattern.compile(
             "\\b(remix|live|acoustic|instrumental|sped up|slowed|edit|extended|karaoke|cover)\\b");
 
-    private static final String ALBUM_PLAYLIST_PREFIX = "OLAK";
-    private static final long MAX_MILLISECONDS_TO_WAIT_FOR_ALBUM = 5_000;
     private static final int RECENT_ALBUMS_TO_SEARCH = 5;
 
-    private static final String DONT_PLAY_VIDEO_SETTING_KEY = "pref_key_dont_play_video";
     private static final long MAX_HOLD_MILLISECONDS = 1_500;
     private static final long WAIT_FOR_CURRENT_TRACK_MILLISECONDS = 1_000;
     private static final long WAIT_FOR_INSERT_MILLISECONDS = 4_000;
@@ -111,7 +113,7 @@ public final class AutoSongVersionPatch {
     /** Albums played recently, oldest first. */
     private static final Set<String> recentAlbums = new LinkedHashSet<>();
 
-    /** Song version per video, or NO_SONG_VERSION if theres none. */
+    /** Song version per video, or NO_SONG_VERSION if there is none. */
     private static final Map<String, String> songVersions = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(SONG_VERSIONS_TO_REMEMBER));
 
@@ -134,12 +136,12 @@ public final class AutoSongVersionPatch {
     @Nullable
     private static volatile SharedPreferences accountPreferences;
 
-    private AutoSongVersionPatch() {
-    }
-
-    static void register() {
+    static {
         VideoInformation.addVideoIdListener(AutoSongVersionPatch::autoSwitchToSongVersion);
         StreamingDataRequest.setFetchGate(AutoSongVersionPatch::holdMusicVideo);
+    }
+
+    private AutoSongVersionPatch() {
     }
 
     /**
@@ -160,10 +162,10 @@ public final class AutoSongVersionPatch {
      */
     public static void trackPlaylist(String videoId, String playlistId, int playlistIndex) {
         try {
-            if (!Settings.AUTO_SONG_VERSION.get()) return;
+            if (!shouldPlaySongVersions()) return;
             prepareQueue();
 
-            if (playlistId == null || !playlistId.startsWith(ALBUM_PLAYLIST_PREFIX)) {
+            if (playlistId == null || !playlistId.startsWith(YOUTUBE_MUSIC_ALBUM_PREFIX)) {
                 // Don't forget the album here, a song we queued starts with its own playlist
                 // while the album is still playing.
                 return;
@@ -556,7 +558,7 @@ public final class AutoSongVersionPatch {
         if (wantedTitle.isEmpty() || wantedArtist.isEmpty()) return NO_SONG_VERSION;
 
         // Labels flip between OMV and UGC. If an album lists a different track with this
-        // title and artist its the right one either way.
+        // title and artist it is the right one either way.
         String albumSongId = findInRecentAlbums(videoId, title, wantedTitle, wantedArtist);
         if (!albumSongId.isEmpty()) return albumSongId;
 

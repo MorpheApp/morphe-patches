@@ -22,8 +22,6 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/EnableAudioVideoSwitchPatch;"
 private const val ACCESS =
     $$"Lapp/morphe/extension/music/patches/EnableAudioVideoSwitchPatch$QueueAccess;"
-private const val AUTO_SONG_VERSION_CLASS =
-    "Lapp/morphe/extension/music/patches/AutoSongVersionPatch;"
 private const val QUEUE_LISTENER =
     $$"Lapp/morphe/extension/music/patches/AutoSongVersionPatch$QueueListener;"
 

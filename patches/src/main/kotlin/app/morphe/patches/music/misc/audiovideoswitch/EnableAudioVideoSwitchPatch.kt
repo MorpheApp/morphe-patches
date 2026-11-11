@@ -26,7 +26,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/EnableAudioVideoSwitchPatch;"
-private const val AUTO_SONG_VERSION_CLASS =
+internal const val AUTO_SONG_VERSION_CLASS =
     "Lapp/morphe/extension/music/patches/AutoSongVersionPatch;"
 
 @Suppress("unused")

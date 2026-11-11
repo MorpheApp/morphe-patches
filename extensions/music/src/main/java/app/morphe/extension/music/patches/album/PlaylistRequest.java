@@ -145,11 +145,11 @@ public final class PlaylistRequest {
      * Waits for the album to be fetched, and returns at once if it already is.
      * Must not be called from the main thread.
      *
-     * @return The album track at the given position, or null if the album could not be
+     * @return The album tracks indexed by their position, or null if the album could not be
      *         fetched in time.
      */
     @Nullable
-    public Song awaitSong(int playlistIndex, long timeoutMilliseconds) {
+    private Song[] awaitAlbum(long timeoutMilliseconds) {
         try {
             if (!fetchCompleted.await(timeoutMilliseconds, TimeUnit.MILLISECONDS)) {
                 Logger.printDebug(() -> "Timed out waiting for album: " + playlistId);
@@ -159,8 +159,16 @@ public final class PlaylistRequest {
             Thread.currentThread().interrupt();
             return null;
         }
+        return songs;
+    }
 
-        Song[] albumSongs = songs;
+    /**
+     * @return The album track at the given position, or null if the album could not be
+     *         fetched in time.
+     */
+    @Nullable
+    public Song awaitSong(int playlistIndex, long timeoutMilliseconds) {
+        Song[] albumSongs = awaitAlbum(timeoutMilliseconds);
         if (albumSongs == null || playlistIndex < 0 || playlistIndex >= albumSongs.length) {
             return null;
         }
@@ -168,21 +176,10 @@ public final class PlaylistRequest {
     }
 
     /**
-     * Waits for the album to be fetched. Must not be called from the main thread.
-     *
      * @return The album tracks, or an empty array if the album could not be fetched in time.
      */
-    @NonNull
     public Song[] awaitSongs(long timeoutMilliseconds) {
-        try {
-            if (!fetchCompleted.await(timeoutMilliseconds, TimeUnit.MILLISECONDS)) {
-                return NO_SONGS;
-            }
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-            return NO_SONGS;
-        }
-        Song[] albumSongs = songs;
+        Song[] albumSongs = awaitAlbum(timeoutMilliseconds);
         return albumSongs == null ? NO_SONGS : albumSongs;
     }
 
