@@ -901,7 +901,7 @@ public final class MusicGlassNavigationBar {
         @Override
         public void drawBackdrop(Canvas canvas) {
             if (glassActive) {
-                backdrop = drawPageBehind(canvas, pivotBar, blurRadius, backdrop, "GlassNavigationBar");
+                backdrop = drawPageBehind(canvas, pivotBar, blurRadius, false, backdrop, "GlassNavigationBar");
             }
         }
     }
@@ -913,11 +913,14 @@ public final class MusicGlassNavigationBar {
      * its background, or the sharp page would show through the clear glass. A blur radius of 0 instead draws
      * nothing, so the page shows sharp through the glass.
      *
-     * @param backdrop The backdrop this returned for the last frame, or null.
+     * @param pagesOnly If only the pages are drawn, not the layout around them. The miniplayer is in the layout, and
+     *                  a render node that holds the node of the miniplayer, which then holds that node again,
+     *                  is a loop that overflows the stack of the render thread.
+     * @param backdrop  The backdrop this returned for the last frame, or null.
      * @return The backdrop to pass for the next frame.
      */
     @Nullable
-    static GlassBackdrop drawPageBehind(Canvas canvas, View target, float blurRadius,
+    static GlassBackdrop drawPageBehind(Canvas canvas, View target, float blurRadius, boolean pagesOnly,
                                         @Nullable GlassBackdrop backdrop, String name) {
         if (blurRadius <= 0) return backdrop;
 
@@ -942,7 +945,7 @@ public final class MusicGlassNavigationBar {
         }
         recordingBackdrop = true;
         try {
-            backdrop.draw(canvas, target, source, background);
+            backdrop.draw(canvas, target, pagesOnly ? content : source, background);
         } finally {
             recordingBackdrop = false;
         }

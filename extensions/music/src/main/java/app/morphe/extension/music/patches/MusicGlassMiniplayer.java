@@ -600,7 +600,8 @@ public final class MusicGlassMiniplayer {
         public void drawBackdrop(Canvas canvas) {
             // At the top of the open player, the player is behind the miniplayer.
             if (styled) {
-                backdrop = MusicGlassNavigationBar.drawPageBehind(canvas, miniplayer, blurRadius, backdrop, "GlassMiniplayer");
+                backdrop = MusicGlassNavigationBar.drawPageBehind(canvas, miniplayer, blurRadius, true, backdrop,
+                        "GlassMiniplayer");
             }
         }
     }
