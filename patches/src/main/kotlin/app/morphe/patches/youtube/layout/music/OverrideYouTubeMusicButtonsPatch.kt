@@ -73,6 +73,20 @@ val overrideYouTubeMusicButtonsPatch = patch(
             )
         )
 
+        // Before Android 11, the deep link is opened only if YouTube Music is installed,
+        // otherwise the Play Store page of YouTube Music is opened instead.
+        AppDeepLinkEndpointFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+
+                replaceInstruction(
+                    index,
+                    "invoke-static { ${fiveRegisters(index)} }, $EXTENSION_CLASS->" +
+                            "getApplicationInfo(Landroid/content/pm/PackageManager;Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;"
+                )
+            }
+        }
+
         arrayOf(
             "Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;"
                     to "overrideSetPackage(Landroid/content/Intent;Ljava/lang/String;)Landroid/content/Intent;",
