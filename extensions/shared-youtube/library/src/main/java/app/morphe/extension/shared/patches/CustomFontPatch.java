@@ -167,8 +167,7 @@ public final class CustomFontPatch {
             Logger.printException(() -> "importFontFile failure", ex);
             return false;
         } finally {
-            //noinspection ResultOfMethodCallIgnored
-            tempFile.delete();
+            Utils.deleteQuietly(tempFile);
         }
     }
 

@@ -37,7 +37,6 @@ import app.morphe.extension.shared.Utils;
 public final class LyricsTestEnv {
 
     private static boolean bootstrapped;
-    private static File filesDir;
 
     private LyricsTestEnv() {
     }
@@ -51,6 +50,7 @@ public final class LyricsTestEnv {
         if (bootstrapped) {
             return;
         }
+        File filesDir;
         try {
             filesDir = java.nio.file.Files.createTempDirectory("morphe-lyrics-test").toFile();
         } catch (Exception ex) {
@@ -62,13 +62,6 @@ public final class LyricsTestEnv {
         // which Settings pulls in. Pin the value so no static initializer hits the system resources.
         Utils.setIsDarkModeEnabled(false);
         bootstrapped = true;
-    }
-
-    /** The temp directory backing {@link FakeContext#getFilesDir()}. */
-    @SuppressWarnings("unused")
-    public static File filesDir() {
-        bootstrap();
-        return filesDir;
     }
 
     static final class FakeContext extends ContextWrapper {

@@ -17,7 +17,7 @@ import app.morphe.extension.shared.patches.spans.SpanType;
 import app.morphe.extension.shared.patches.spans.StringSpanFilterGroup;
 import app.morphe.extension.youtube.settings.Settings;
 
-@SuppressWarnings({"unused", "FieldCanBeLocal"})
+@SuppressWarnings("unused")
 public final class SanitizeVideoSubtitleFilter extends SpanFilter {
 
     public SanitizeVideoSubtitleFilter() {

@@ -216,7 +216,7 @@ public final class PostTranslatePatch {
      * Called when an element is parsed. The element is not changed.
      */
     public static byte[] onElementLoaded(byte[] bytes) {
-        if (!ENABLED || bytes == null || !FeedVideoCardsPatch.emlTextMayContain(bytes, POST)) {
+        if (!ENABLED || bytes == null || FeedVideoCardsPatch.emlTextLacks(bytes, POST)) {
             return bytes;
         }
         try {

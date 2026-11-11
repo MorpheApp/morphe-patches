@@ -83,6 +83,7 @@ public final class StableCaptionBlocks {
     public interface Cue {
         int patch_getCaptionId();
 
+        @SuppressWarnings("BooleanMethodIsAlwaysInverted")
         boolean patch_isCaptionVisible();
 
         // Methods are added during patching.
@@ -294,7 +295,7 @@ public final class StableCaptionBlocks {
      * Injection point.
      * Called instead of the caption sampler, if the timeline has a block state.
      */
-    @SuppressWarnings("DataFlowIssue")
+    @SuppressWarnings({"DataFlowIssue", "SizeReplaceableByIsEmpty"})
     public static List<?> present(Timeline timeline, long time) {
         List<?> original = timeline.patch_getOriginalCaptions(time);
         try {

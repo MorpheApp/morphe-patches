@@ -34,6 +34,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.view.WindowInsets;
@@ -46,6 +47,7 @@ import android.widget.TextView;
 import android.window.OnBackInvokedCallback;
 import android.window.OnBackInvokedDispatcher;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
@@ -244,7 +246,7 @@ final class OnTheGoSheet {
         LinearLayout top = new LinearLayout(context);
         top.setOrientation(LinearLayout.VERTICAL);
         top.setOnTouchListener(new DragToDismissListener());
-        panel.addView(top, matchWidth(0, 0));
+        panel.addView(top, matchWidth(0));
 
         View handle = new View(context);
         ShapeDrawable handleBackground = new ShapeDrawable(new RoundRectShape(Dim.roundedCorners(4), null, null));
@@ -270,31 +272,13 @@ final class OnTheGoSheet {
         setIcon(closeButton, "accessibility_bottom_sheet_close_button",
                 "yt_outline_experimental_x_vd_theme_24", "yt_outline_x_white_24", "quantum_ic_close_white_24");
         header.addView(closeButton);
-        top.addView(header, matchWidth(0, 0));
+        top.addView(header, matchWidth(0));
 
         View divider = new View(context);
         divider.setBackgroundColor(buttonBackgroundColor);
         panel.addView(divider, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Dim.dp1));
 
-        ScrollView scrollView = new ScrollView(context) {
-            @Override
-            protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-                thumbnailMaxHeight = Integer.MAX_VALUE;
-                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-                // In audio mode the thumbnail is made smaller if the controls do not fit,
-                // so the controls stay visible without scrolling.
-                if (getChildCount() > 0 && thumbnail.getVisibility() == View.VISIBLE) {
-                    final int overflow = getChildAt(0).getMeasuredHeight() - getMeasuredHeight();
-                    if (overflow > 0) {
-                        thumbnailMaxHeight = Math.max(0, thumbnail.getMeasuredHeight() - overflow);
-                        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-                    }
-                }
-            }
-        };
-        scrollView.setVerticalScrollBarEnabled(false);
-        // Stretches the content to the panel height, so the controls are at the bottom.
-        scrollView.setFillViewport(true);
+        ScrollView scrollView = createScrollView(context);
         panel.addView(scrollView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1));
 
         LinearLayout body = new LinearLayout(context);
@@ -327,7 +311,7 @@ final class OnTheGoSheet {
             }
         });
         thumbnail.setClipToOutline(true);
-        LinearLayout.LayoutParams thumbnailParams = matchWidth(0, Dim.dp16);
+        LinearLayout.LayoutParams thumbnailParams = matchWidth(Dim.dp16);
         thumbnailParams.gravity = Gravity.CENTER_HORIZONTAL;
         body.addView(thumbnail, thumbnailParams);
 
@@ -337,14 +321,14 @@ final class OnTheGoSheet {
         titleView.setTypeface(titleView.getTypeface(), Typeface.BOLD);
         titleView.setMaxLines(3);
         titleView.setEllipsize(TextUtils.TruncateAt.END);
-        body.addView(titleView, matchWidth(0, Dim.dp4));
+        body.addView(titleView, matchWidth(Dim.dp4));
 
         channelView = new TextView(context);
         channelView.setTextColor(mutedColor);
         channelView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
         channelView.setSingleLine(true);
         channelView.setEllipsize(TextUtils.TruncateAt.END);
-        body.addView(channelView, matchWidth(0, 0));
+        body.addView(channelView, matchWidth(0));
 
         // Takes the free height of the panel in audio mode.
         View spacer = new View(context);
@@ -354,7 +338,7 @@ final class OnTheGoSheet {
         timeView = new TextView(context);
         timeView.setTextColor(foregroundColor);
         timeView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-        body.addView(timeView, matchWidth(0, Dim.dp4));
+        body.addView(timeView, matchWidth(Dim.dp4));
 
         timeBar = new SeekBar(context);
         // The custom seekbar color, if the seekbar color patch is included and the color is used.
@@ -394,7 +378,7 @@ final class OnTheGoSheet {
             }
         });
         // Move the padding into the side padding of the panel, so the bar lines up with the text.
-        LinearLayout.LayoutParams timeBarParams = matchWidth(0, Dim.dp24);
+        LinearLayout.LayoutParams timeBarParams = matchWidth(Dim.dp24);
         final int timeBarMargin = -Math.min(thumbOffset, CONTENT_SIDE_PADDING);
         timeBarParams.leftMargin = timeBarMargin;
         timeBarParams.rightMargin = timeBarMargin;
@@ -429,7 +413,7 @@ final class OnTheGoSheet {
         setIcon(nextButton, "accessibility_next",
                 "yt_fill_experimental_skip_next_vd_theme_24", "quantum_ic_skip_next_white_24");
         addCell(controls, nextButton);
-        body.addView(controls, matchWidth(0, Dim.dp20));
+        body.addView(controls, matchWidth(Dim.dp20));
 
         LinearLayout actions = new LinearLayout(context);
         actions.setOrientation(LinearLayout.HORIZONTAL);
@@ -453,18 +437,18 @@ final class OnTheGoSheet {
                     "yt_outline_experimental_queue_vd_theme_24", "yt_outline_list_view_black_24");
             addCell(actions, queueButton);
         }
-        body.addView(actions, matchWidth(0, 0));
+        body.addView(actions, matchWidth(0));
 
 
         current = new WeakReference<>(this);
         showing = true;
         panel.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
             @Override
-            public void onViewAttachedToWindow(View view) {
+            public void onViewAttachedToWindow(@NonNull View view) {
             }
 
             @Override
-            public void onViewDetachedFromWindow(View view) {
+            public void onViewDetachedFromWindow(@NonNull View view) {
                 onPanelRemoved(root);
             }
         });
@@ -481,6 +465,33 @@ final class OnTheGoSheet {
         OnTheGoPatch.setOnTheGoActive(true);
         update();
         handler.postDelayed(updater, UPDATE_INTERVAL_MILLISECONDS);
+    }
+
+    /**
+     * @return The scroll view of the body, which stretches it to the panel height,
+     *         and makes the thumbnail smaller if the controls do not fit.
+     */
+    private ScrollView createScrollView(Context context) {
+        ScrollView scrollView = new ScrollView(context) {
+            @Override
+            protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+                thumbnailMaxHeight = Integer.MAX_VALUE;
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                // In audio mode the thumbnail is made smaller if the controls do not fit,
+                // so the controls stay visible without scrolling.
+                if (getChildCount() > 0 && thumbnail.getVisibility() == View.VISIBLE) {
+                    final int overflow = getChildAt(0).getMeasuredHeight() - getMeasuredHeight();
+                    if (overflow > 0) {
+                        thumbnailMaxHeight = Math.max(0, thumbnail.getMeasuredHeight() - overflow);
+                        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                    }
+                }
+            }
+        };
+        scrollView.setVerticalScrollBarEnabled(false);
+        // Stretches the content to the panel height, so the controls are at the bottom.
+        scrollView.setFillViewport(true);
+        return scrollView;
     }
 
     /**
@@ -645,6 +656,8 @@ final class OnTheGoSheet {
      */
     private final class DragToDismissListener implements View.OnTouchListener {
         private float startY;
+        /** If the finger moved more than the touch slop, so the touch is not a tap. */
+        private boolean dragged;
         @Nullable
         private VelocityTracker velocityTracker;
 
@@ -660,6 +673,7 @@ final class OnTheGoSheet {
                 switch (event.getActionMasked()) {
                     case MotionEvent.ACTION_DOWN -> {
                         startY = event.getRawY();
+                        dragged = false;
                         panel.animate().cancel();
                         if (velocityTracker != null) {
                             velocityTracker.recycle();
@@ -670,6 +684,10 @@ final class OnTheGoSheet {
                     case MotionEvent.ACTION_MOVE -> {
                         if (velocityTracker != null) {
                             velocityTracker.addMovement(screenEvent);
+                        }
+                        if (Math.abs(event.getRawY() - startY)
+                                > ViewConfiguration.get(view.getContext()).getScaledTouchSlop()) {
+                            dragged = true;
                         }
                         panel.setTranslationY(Math.max(0, event.getRawY() - startY));
                     }
@@ -687,6 +705,11 @@ final class OnTheGoSheet {
                             dismiss();
                         } else {
                             panel.animate().translationY(0).setDuration(ANIMATION_DURATION_MILLISECONDS).start();
+                        }
+                        if (event.getActionMasked() == MotionEvent.ACTION_UP && !dragged) {
+                            // A tap. The header has no click action, so this only reports the click
+                            // to accessibility services, as any view does.
+                            view.performClick();
                         }
                     }
                 }
@@ -802,29 +825,26 @@ final class OnTheGoSheet {
 
     /**
      * Sets the first icon of the app that exists.
-     *
-     * @return If an icon was set.
      */
-    private static boolean setIcon(ImageView button, String descriptionName, String... drawableNames) {
+    private static void setIcon(ImageView button, String descriptionName, String... drawableNames) {
         button.setContentDescription(str(descriptionName));
-        return setFirstIcon(button, drawableNames);
+        setFirstIcon(button, drawableNames);
     }
 
     /**
      * Sets the first icon of the app that exists, without changing the content description.
      */
-    private static boolean setFirstIcon(ImageView button, String... drawableNames) {
+    private static void setFirstIcon(ImageView button, String... drawableNames) {
         for (String name : drawableNames) {
             if (ResourceUtils.getDrawableIdentifier(name) != 0) {
                 Drawable icon = ResourceUtils.getDrawable(name);
                 if (icon != null) {
                     button.setImageDrawable(icon);
-                    return true;
+                    return;
                 }
             }
         }
         Logger.printException(() -> "Could not find any icon of: " + Arrays.toString(drawableNames));
-        return false;
     }
 
     /**
@@ -871,10 +891,10 @@ final class OnTheGoSheet {
         row.addView(cell, params);
     }
 
-    private static LinearLayout.LayoutParams matchWidth(int topMargin, int bottomMargin) {
+    private static LinearLayout.LayoutParams matchWidth(int bottomMargin) {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.setMargins(0, topMargin, 0, bottomMargin);
+        params.setMargins(0, 0, 0, bottomMargin);
         return params;
     }
 

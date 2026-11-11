@@ -50,18 +50,17 @@ public final class PlaylistPageFilter extends Filter {
             "panel_header."
     );
 
-    @SuppressWarnings("FieldCanBeLocal")
-    private final StringFilterGroup menuCarousel = new StringFilterGroup(
-            null,
-            "tile_button_carousel."
-    );
-
     private final ByteArrayFilterGroup downloadButton = new ByteArrayFilterGroup(
             null,
             "music_download_button."
     );
 
     public PlaylistPageFilter() {
+        StringFilterGroup menuCarousel = new StringFilterGroup(
+                null,
+                "tile_button_carousel."
+        );
+
         addIdentifierCallbacks(pageHeader, menuHeader, menuCarousel);
     }
 

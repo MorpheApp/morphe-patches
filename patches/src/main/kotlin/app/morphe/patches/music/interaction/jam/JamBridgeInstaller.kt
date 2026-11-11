@@ -133,7 +133,6 @@ private fun installQueueItemMetadata(
     installNativeAccessor(manager, "patch_jamItemId", item.persistentId, opaqueReceiver = true)
 }
 
-@Suppress("UnusedReceiverParameter")
 private fun installQueueCreation(manager: MutableClass, queue: JamQueueAbi) {
     val item = queue.item
     manager.addBridge(

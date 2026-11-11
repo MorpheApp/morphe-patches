@@ -35,6 +35,7 @@ import java.util.zip.ZipInputStream;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 
 /**
  * The word readings for the languages a Rime dictionary knows, taken from Rime word lists,
@@ -209,12 +210,9 @@ public final class RimeDictStore {
         if (directory == null) {
             return;
         }
-        //noinspection ResultOfMethodCallIgnored
-        new File(directory, lang.tableName).delete();
-        //noinspection ResultOfMethodCallIgnored
-        new File(directory, lang.archive).delete();
-        //noinspection ResultOfMethodCallIgnored
-        new File(directory, lang.archive + ".part").delete();
+        Utils.deleteQuietly(new File(directory, lang.tableName));
+        Utils.deleteQuietly(new File(directory, lang.archive));
+        Utils.deleteQuietly(new File(directory, lang.archive + ".part"));
     }
 
     /** Forgets the cached tables and the parsed settings, so the next read sees a change. */
@@ -908,8 +906,9 @@ public final class RimeDictStore {
     }
 
     /**
-     * A line reader whose memory is bounded by the line length, not by the stream: {@link
-     * BufferedReader#readLine} would grow a line as long as a decompression bomb says.
+     * A line reader whose memory is bounded by the line length, not by the stream:
+     * {@link java.io.BufferedReader#readLine()} would grow a line as long as a decompression
+     * bomb says.
      */
     private static final class LineReader implements Closeable {
         private final Reader reader;

@@ -8,7 +8,6 @@
 package app.morphe.extension.shared.patches;
 
 public class AppCheckPatch {
-    @SuppressWarnings("SameParameterValue")
     private static boolean classExists(String className) {
         boolean classExists = false;
         try {

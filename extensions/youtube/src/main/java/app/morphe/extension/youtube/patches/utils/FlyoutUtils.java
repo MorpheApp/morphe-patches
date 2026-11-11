@@ -817,7 +817,7 @@ public final class FlyoutUtils {
      */
     private static void onFlyoutListBound(Object flyoutPanel) {
         try {
-            FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel, 0);
+            FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel);
             if (menuInfo == null) {
                 return;
             }
@@ -875,7 +875,6 @@ public final class FlyoutUtils {
         return 0;
     }
 
-    @SuppressWarnings("SameParameterValue")
     public static int addFlyoutButton(
             Object flyoutPanel,
             Drawable icon,
@@ -887,7 +886,7 @@ public final class FlyoutUtils {
     }
 
     /**
-     * Adds a save item, which is removed if the app menu binds its own save item afterwards.
+     * Adds a save item, which is removed if the app menu binds its own save item afterward.
      */
     public static int addFlyoutSaveButton(
             Object flyoutPanel,
@@ -955,7 +954,7 @@ public final class FlyoutUtils {
             boolean enabled
     ) {
         try {
-            FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel, 0);
+            FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel);
             if (menuInfo == null) {
                 return -1;
             }
@@ -1097,7 +1096,7 @@ public final class FlyoutUtils {
 
         visibleFlyoutButtons.add(new Pair<>(currentButtonName, currentButtonIndex));
         //noinspection SizeReplaceableByIsEmpty
-        if (buttonText != null && buttonText.length() > 0) {
+        if (buttonText.length() > 0) {
             visibleFlyoutButtonTexts.putIfAbsent(currentButtonName, buttonText.toString());
         }
     }
@@ -1122,12 +1121,11 @@ public final class FlyoutUtils {
         currentButtonIndex = 0;
     }
 
-    @SuppressWarnings("SameParameterValue")
     @Nullable
-    private static FlyoutMenuInfo getFlyoutMenuInfo(Object flyoutPanel, int initialIndex) {
+    private static FlyoutMenuInfo getFlyoutMenuInfo(Object flyoutPanel) {
         LinearLayout menuContainer = null;
         PopupWindow popupWindow = null;
-        int adjustedIndex = initialIndex;
+        int adjustedIndex = 0;
 
         if (flyoutPanel instanceof PopupWindow checkedPopupWindow) {
             popupWindow = checkedPopupWindow;

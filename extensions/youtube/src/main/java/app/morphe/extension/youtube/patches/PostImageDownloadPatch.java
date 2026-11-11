@@ -296,7 +296,7 @@ public final class PostImageDownloadPatch {
      * Called when an element is parsed. The element is not changed.
      */
     public static byte[] onElementLoaded(byte[] bytes) {
-        if (!ENABLED || bytes == null || !FeedVideoCardsPatch.emlTextMayContain(bytes, POST)
+        if (!ENABLED || bytes == null || FeedVideoCardsPatch.emlTextLacks(bytes, POST)
                 || !(FeedVideoCardsPatch.contains(bytes, GGPHT_BYTES)
                 || FeedVideoCardsPatch.contains(bytes, GOOGLE_USER_CONTENT_BYTES))) {
             return bytes;
@@ -784,6 +784,7 @@ public final class PostImageDownloadPatch {
         public void setColorFilter(@Nullable ColorFilter colorFilter) {
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;

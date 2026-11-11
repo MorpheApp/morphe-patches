@@ -65,7 +65,7 @@ import app.morphe.extension.shared.ui.glass.GlassNavigationBarLayout;
  * The floating miniplayer of the app (9.39+) is used, with the same room on its sides as the capsule
  * and the page.
  */
-@SuppressWarnings({"unused", "deprecation"})
+@SuppressWarnings("unused")
 public final class MusicGlassNavigationBar {
 
     private static final int PIVOT_BAR = ResourceUtils.getIdentifier(ResourceType.ID, "pivot_bar");
@@ -502,6 +502,7 @@ public final class MusicGlassNavigationBar {
         public void setColorFilter(@Nullable ColorFilter colorFilter) {
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;
@@ -913,7 +914,7 @@ public final class MusicGlassNavigationBar {
      * its background, or the sharp page would show through the clear glass. A blur radius of 0 instead draws
      * nothing, so the page shows sharp through the glass.
      *
-     * @param pagesOnly If only the pages are drawn, not the layout around them. The miniplayer is in the layout, and
+     * @param pagesOnly If only the pages are drawn, not the surrounding layout. The miniplayer is in the layout, and
      *                  a render node that holds the node of the miniplayer, which then holds that node again,
      *                  is a loop that overflows the stack of the render thread.
      * @param backdrop  The backdrop this returned for the last frame, or null.

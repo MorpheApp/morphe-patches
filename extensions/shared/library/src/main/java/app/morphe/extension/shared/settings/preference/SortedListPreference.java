@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.util.Pair;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import app.morphe.extension.shared.Utils;
@@ -65,9 +66,7 @@ public class SortedListPreference extends CustomDialogListPreference {
             }
         }
 
-        //noinspection ComparatorCombinators
-        lastEntries.sort((pair1, pair2)
-                -> pair1.first.compareTo(pair2.first));
+        lastEntries.sort(Comparator.comparing(pair -> pair.first));
 
         CharSequence[] sortedEntries = new CharSequence[entrySize];
         CharSequence[] sortedEntryValues = new CharSequence[entrySize];

@@ -18,13 +18,13 @@ import app.morphe.extension.shared.patches.spans.SpanType;
 import app.morphe.extension.shared.patches.spans.StringSpanFilterGroup;
 import app.morphe.extension.youtube.settings.Settings;
 
-@SuppressWarnings({"unused", "FieldCanBeLocal"})
+@SuppressWarnings("unused")
 public final class SearchLinksFilter extends SpanFilter {
 
     /**
      * Located in front of the search icon.
      */
-    private final String WORD_JOINER_CHARACTER = "\u2060";
+    private static final String WORD_JOINER_CHARACTER = "\u2060";
 
     public SearchLinksFilter() {
         addCallbacks(

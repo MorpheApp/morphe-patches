@@ -21,6 +21,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Mandarin word readings from pinyin-pro, which knows words the {@link UniDictStore} character
@@ -74,8 +75,7 @@ public final class PinyinDictStore {
         WORDS.clear();
         File file = WORDS.file();
         if (file != null && file.exists()) {
-            //noinspection ResultOfMethodCallIgnored
-            file.delete();
+            Utils.deleteQuietly(file);
         }
     }
 

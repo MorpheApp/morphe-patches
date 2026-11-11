@@ -9,7 +9,6 @@ package app.morphe.extension.shared.sponsorblock;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -61,7 +60,6 @@ import app.morphe.extension.shared.ui.Dim;
  * <p>
  * Class is not thread safe. All methods must be called on the main thread unless otherwise specified.
  */
-@SuppressLint("NewApi")
 public class SegmentPlaybackController {
 
     /**

@@ -136,7 +136,7 @@ public final class NavigationBarPatch {
     /**
      * The glass navigation bar floats over the pages, so the pages are laid out behind it also where it does not
      * cover the system navigation buttons, such as before Android 12, where the window is not drawn behind them,
-     * or without the edge to edge top bar before Android 15. Otherwise the room around the capsule is an empty band
+     * or without the edge to edge top bar before Android 15. Otherwise, the room around the capsule is an empty band
      * (<a href="https://github.com/MorpheApp/morphe-patches/issues/4413">...</a>).
      * Only the pages are laid out behind it: the navigation bar still covers the system navigation buttons only
      * where the window is drawn behind them, see {@link #isNavigationBarBehindSystemButtons(boolean)}.
@@ -932,24 +932,22 @@ public final class NavigationBarPatch {
     /**
      * Saves a button that is seen for the first time, or whose label changed,
      * so the order setting can show it.
+     * The caller holds the lock of {@code buttons}, which the settings also lock to read it.
      */
     private static void discoverButton(StringSetting setting, Map<String, String> buttons,
                                        String id, @Nullable String label) {
         if (label == null || label.isEmpty()) label = id;
+        if (label.equals(buttons.get(id))) return;
+        buttons.put(id, label);
 
-        synchronized (buttons) {
-            if (label.equals(buttons.get(id))) return;
-            buttons.put(id, label);
-
-            try {
-                JSONArray array = new JSONArray();
-                for (Map.Entry<String, String> button : buttons.entrySet()) {
-                    array.put(new JSONObject().put("id", button.getKey()).put("label", button.getValue()));
-                }
-                setting.save(array.toString());
-            } catch (Exception ex) {
-                Logger.printException(() -> "discoverButton failure", ex);
+        try {
+            JSONArray array = new JSONArray();
+            for (Map.Entry<String, String> button : buttons.entrySet()) {
+                array.put(new JSONObject().put("id", button.getKey()).put("label", button.getValue()));
             }
+            setting.save(array.toString());
+        } catch (Exception ex) {
+            Logger.printException(() -> "discoverButton failure", ex);
         }
     }
 
@@ -982,7 +980,9 @@ public final class NavigationBarPatch {
             if (info == null || info.id().isEmpty()) continue;
 
             ids[i] = info.id();
-            discoverButton(Settings.NAVIGATION_BUTTONS_DISCOVERED, discoveredNavigationButtons, info.id(), info.label());
+            synchronized (discoveredNavigationButtons) {
+                discoverButton(Settings.NAVIGATION_BUTTONS_DISCOVERED, discoveredNavigationButtons, info.id(), info.label());
+            }
         }
 
         // The buttons in the order setting are sorted in the positions they take in the list.
@@ -1100,8 +1100,7 @@ public final class NavigationBarPatch {
      * The app has no selected icon for the Watch later icon, so the outline icon is shown
      * when the Watch later button is selected.
      */
-    @SuppressWarnings({"unchecked", "rawtypes"})
-    public static void setWatchLaterSelectedIcon(EnumMap icons, Enum watchLaterIcon) {
+    public static <E extends Enum<E>> void setWatchLaterSelectedIcon(EnumMap<E, Integer> icons, E watchLaterIcon) {
         if (SHOW_WATCH_LATER_BUTTON) {
             icons.put(watchLaterIcon, ResourceUtils.getIdentifier(
                     ResourceType.DRAWABLE, "morphe_watch_later_selected"));
@@ -1127,7 +1126,7 @@ public final class NavigationBarPatch {
     public static final String SETTING_BUTTON_ENUM_NAME = "SETTINGS_CAIRO";
 
     /**
-     * The toolbar of some pages, such as the You tab, comes from their own response, which still has
+     * The toolbar of some pages, such as the 'You' tab, comes from their own response, which still has
      * the notifications button, so it is replaced with the create button of the toolbar of another page.
      */
     @Nullable
@@ -1135,7 +1134,7 @@ public final class NavigationBarPatch {
 
     /**
      * The swap has effect only if the server added the notifications tab to the navigation bar.
-     * Otherwise the toolbar button is the only way to open the notifications.
+     * Otherwise, the toolbar button is the only way to open the notifications.
      */
     private static volatile boolean notificationsTabCreated;
 
@@ -1264,7 +1263,7 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      * Called when a toolbar button is created, on any page, also on the pages whose toolbar comes
-     * from their own response, such as the channel pages and the You tab.
+     * from their own response, such as the channel pages and the 'You' tab.
      * <p>
      * The toolbar create button of the Android Automotive layout, which swaps the create button with the
      * notifications button, opens a bottom sheet whose video button uses the upload endpoint, which the app
@@ -1433,7 +1432,7 @@ public final class NavigationBarPatch {
     }
 
     /**
-     * @return Id of the toolbar button: the page it opens, or its icon.
+     * @return ID of the toolbar button: the page it opens, or its icon.
      */
     private static String getToolbarButtonId(ButtonRenderer buttonRenderer) {
         String iconName = buttonRenderer.getIcon().getYtIconType().name();
@@ -1481,7 +1480,7 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      * The order of the menu items sets the order of the buttons of every toolbar,
-     * including the toolbars that are not created from the toolbar of the guide, such as of the You tab.
+     * including the toolbars that are not created from the toolbar of the guide, such as of the 'You' tab.
      *
      * @param original       Order of the button, from the order the buttons were created in.
      * @param buttonRenderer ButtonRenderer of the toolbar button.
@@ -1490,8 +1489,10 @@ public final class NavigationBarPatch {
         try {
             ButtonRenderer renderer = ButtonRenderer.parseFrom(buttonRenderer.toByteArray());
             String id = getToolbarButtonId(renderer);
-            discoverButton(Settings.TOOLBAR_BUTTONS_DISCOVERED, discoveredToolbarButtons,
-                    id, renderer.getButtonRendererAccessibilityData().getLabel());
+            synchronized (discoveredToolbarButtons) {
+                discoverButton(Settings.TOOLBAR_BUTTONS_DISCOVERED, discoveredToolbarButtons,
+                        id, renderer.getButtonRendererAccessibilityData().getLabel());
+            }
 
             final int rank = TOOLBAR_BUTTONS_ORDER.indexOf(id);
             if (rank >= 0) {

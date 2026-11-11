@@ -43,27 +43,20 @@ final class SeeThroughPage {
             ResourceUtils.getIdentifier(ResourceType.ID, "watch_panel_scrim"),
             ResourceUtils.getIdentifier(ResourceType.ID, "video_info_loading_layout"),
     };
-    private static final String[] SYSTEM_BAR_BACKGROUNDS = {
-            "statusBarBackground", "navigationBarBackground"
+    private static final int[] SYSTEM_BAR_BACKGROUND_IDS = {
+            android.R.id.statusBarBackground, android.R.id.navigationBarBackground
     };
     private static final int MAX_DEPTH = 48;
     /** Holds the list of the watch page and the headers that stick to its top, such as the filter chips. */
     private static final int STICKY_HEADER_CONTAINER_ID =
             ResourceUtils.getIdentifier(ResourceType.ID, "sticky_header_container");
 
-    private static final class Saved {
-        final Drawable drawable;
-        final int alpha;
-
-        Saved(Drawable drawable, int alpha) {
-            this.drawable = drawable;
-            this.alpha = alpha;
-        }
+    private record Saved(Drawable drawable, int alpha) {
     }
 
     private static final IdentityHashMap<View, Saved> cleared = new IdentityHashMap<>();
-    @Nullable
-    private static View host;
+    /** The page whose background was replaced. Weak, so a closed page is not kept. */
+    private static WeakReference<View> hostRef = new WeakReference<>(null);
     @Nullable
     private static Drawable hostBackground;
     private static WeakReference<ViewGroup> stickyHeaderContainerRef = new WeakReference<>(null);
@@ -74,9 +67,9 @@ final class SeeThroughPage {
      * Clears the page around {@code player}. Run again when the page has changed.
      */
     static void apply(View page, View player, int pageColor) {
-        if (host != page) {
+        if (hostRef.get() != page) {
             restore();
-            host = page;
+            hostRef = new WeakReference<>(page);
             hostBackground = page.getBackground();
             page.setBackground(new PunchThroughDrawable());
         }
@@ -92,9 +85,8 @@ final class SeeThroughPage {
             clear((View) parent);
         }
         View root = page.getRootView();
-        for (String name : SYSTEM_BAR_BACKGROUNDS) {
-            final int id = root.getResources().getIdentifier(name, "id", "android");
-            if (id != 0) clear(root.findViewById(id));
+        for (int id : SYSTEM_BAR_BACKGROUND_IDS) {
+            clear(root.findViewById(id));
         }
     }
 
@@ -172,11 +164,12 @@ final class SeeThroughPage {
         cleared.clear();
         setListClip(null, 0);
         stickyHeaderContainerRef = new WeakReference<>(null);
+        View host = hostRef.get();
         if (host != null) {
             host.setBackground(hostBackground);
-            host = null;
-            hostBackground = null;
         }
+        hostRef = new WeakReference<>(null);
+        hostBackground = null;
     }
 
     private static void clearBackgrounds(View view, View player, int minWidth, int pageColor, int depth) {
@@ -186,8 +179,7 @@ final class SeeThroughPage {
         if (background != null && view.getWidth() >= minWidth && isPageBackground(view, background, pageColor)) {
             clear(view);
         }
-        if (view instanceof ViewGroup) {
-            ViewGroup group = (ViewGroup) view;
+        if (view instanceof ViewGroup group) {
             for (int i = 0; i < group.getChildCount(); i++) {
                 clearBackgrounds(group.getChildAt(i), player, minWidth, pageColor, depth + 1);
             }
@@ -236,6 +228,7 @@ final class SeeThroughPage {
         public void setColorFilter(@Nullable ColorFilter colorFilter) {
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSPARENT;

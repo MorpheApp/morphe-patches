@@ -48,7 +48,6 @@ public class CheckWatchHistoryDomainNameResolutionPatch {
      * <p>
      * Checks if YouTube watch history endpoint cannot be reached.
      */
-    @SuppressWarnings("deprecation")
     public static void checkDnsResolver(Activity context) {
         if (!Utils.isNetworkConnected() || !SharedYouTubeSettings.CHECK_WATCH_HISTORY_DOMAIN_NAME.get()) return;
 
@@ -81,7 +80,7 @@ public class CheckWatchHistoryDomainNameResolutionPatch {
                     Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                             context,
                             str("morphe_check_watch_history_domain_name_dialog_title"), // Title.
-                            Html.fromHtml(str("morphe_check_watch_history_domain_name_dialog_message")), // Message (HTML).
+                            Html.fromHtml(str("morphe_check_watch_history_domain_name_dialog_message"), Html.FROM_HTML_MODE_LEGACY), // Message (HTML).
                             null, // No EditText.
                             null, // OK button text.
                             () -> {}, // OK button action (just dismiss).

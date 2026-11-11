@@ -110,7 +110,7 @@ public class GmsCoreSupportPatch {
             "android.intent.extra.UNINSTALL_ALL_USERS";
 
     /**
-     * Delay between two uninstall requests, so the system can show each of them.
+     * Delay between two uninstallation requests, so the system can show each of them.
      */
     private static final long UNINSTALL_PROMPT_DELAY_MILLIS = 1500;
 
@@ -243,7 +243,7 @@ public class GmsCoreSupportPatch {
             }
 
             // Find every MicroG install and verify the installed MicroG-RE is signed by the
-            // official key, since an install signed by another key cannot be updated.
+            // official key, since an installation signed by another key cannot be updated.
             List<VariantPackage> variants = findMicroGVariants(context);
             List<VariantPackage> conflicts = new ArrayList<>();
             boolean officialGmsCoreInstalled = false;
@@ -296,13 +296,13 @@ public class GmsCoreSupportPatch {
 
                 // The download page is opened only after every confirmation dialog was sent to the
                 // user. Opening it earlier would put the page in front of the dialogs and leave the
-                // uninstall requests unconfirmed.
+                // uninstallation requests unconfirmed.
                 Utils.runOnMainThreadDelayed(() -> open(context, getGmsCoreDownload()),
                         UNINSTALL_PROMPT_DELAY_MILLIS * (installedPackageNames.size() + 1));
                 return;
             }
 
-            // Check if GmsCore is outdated. An install signed by a different key cannot be
+            // Check if GmsCore is outdated. An installation signed by a different key cannot be
             // updated by installing a MicroG-RE release, so it is not asked to update.
             if (officialGmsCoreInstalled) {
                 checkForMicroGUpdate(context);
@@ -784,7 +784,7 @@ public class GmsCoreSupportPatch {
 
     /**
      * Compares two MicroG version names such as "7.1.0-dev.2".
-     * @return A negative value if a is older than b, zero if equal, a positive value if newer.
+     * @return A negative value if {@code a} is older than {@code b}, zero if equal, a positive value if newer.
      */
     private static int compareVersions(String a, String b) {
         int[] av = parseVersion(a);
@@ -872,11 +872,6 @@ public class GmsCoreSupportPatch {
      * @return If GmsCore is not whitelisted from battery optimizations.
      */
     private static boolean batteryOptimizationsEnabled(Context context) {
-        //noinspection ObsoleteSdkInt
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            // Android 5.0 does not have battery optimization settings.
-            return false;
-        }
         var powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         return !powerManager.isIgnoringBatteryOptimizations(GMS_CORE_PACKAGE_NAME);
     }

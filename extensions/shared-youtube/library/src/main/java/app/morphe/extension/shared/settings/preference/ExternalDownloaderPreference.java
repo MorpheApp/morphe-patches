@@ -201,10 +201,10 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
     }
 
     /**
-     * @return If the downloader was opened.
+     * Opens the downloader, or a dialog if it is not installed.
      */
-    public static boolean launchExternalDownloader(String videoId, @Nullable Context context, String url) {
-        return launchExternalDownloader(videoId, context, url, null);
+    public static void launchExternalDownloader(String videoId, @Nullable Context context, String url) {
+        launchExternalDownloader(videoId, context, url, null);
     }
 
     /**
@@ -232,7 +232,6 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
                 return false;
             }
 
-            //noinspection ExtractMethodRecommender
             Intent intent = new Intent("android.intent.action.SEND");
             intent.setType("text/plain");
             intent.setPackage(downloaderPackageName);

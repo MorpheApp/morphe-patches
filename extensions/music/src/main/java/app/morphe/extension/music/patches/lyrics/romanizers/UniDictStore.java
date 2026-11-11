@@ -28,6 +28,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * One reading per Han character, from the Unicode Han Database, for each language that reads a
@@ -85,13 +86,10 @@ public final class UniDictStore {
         File directory = RomanizationDict.directory();
         if (directory == null) return;
         for (ReadingTable table : TABLES) {
-            //noinspection ResultOfMethodCallIgnored
-            new File(directory, table.tableName).delete();
+            Utils.deleteQuietly(new File(directory, table.tableName));
         }
-        //noinspection ResultOfMethodCallIgnored
-        new File(directory, ARCHIVE).delete();
-        //noinspection ResultOfMethodCallIgnored
-        new File(directory, ARCHIVE + ".part").delete();
+        Utils.deleteQuietly(new File(directory, ARCHIVE));
+        Utils.deleteQuietly(new File(directory, ARCHIVE + ".part"));
     }
 
     /** Starts a build if any table is missing. Safe to call whenever the setting is on. */
@@ -201,8 +199,7 @@ public final class UniDictStore {
             RomanizationDict.download(URL, archive, ARCHIVE, (RomanizationDict.Listener) UniDictStore.CHANNEL);
         }
         extract(archive, (RomanizationDict.Listener) UniDictStore.CHANNEL);
-        //noinspection ResultOfMethodCallIgnored
-        archive.delete();
+        Utils.deleteQuietly(archive);
 
         UniDictStore.CHANNEL.onReady(entries());
     }
