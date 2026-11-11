@@ -493,8 +493,9 @@ public class TTMLGeneratorTest {
         String ttml = TTMLGenerator.generate(lyrics, new TrackInfo("Song", "Artist", null, 0),
                 null, null, romanized, null, null);
         assertNotNull(ttml);
+        String body = ttml.substring(ttml.indexOf("<body>"), ttml.indexOf("</body>"));
         assertFalse("CJK reading characters must not be separated by spaces in the body",
-                ttml.contains("</span> <span begin="));
+                body.contains("</span> <span begin="));
         assertTrue(ttml.contains(
                 "<span ttm:role=\"x-roman\" xml:lang=\"romaji\">chéng cháng de shěn tòng</span>"));
     }

@@ -320,9 +320,12 @@ public final class TTMLGenerator {
 
     private void appendTimedRomaji(int key, List<Word> words) {
         sb.append("<text for=\"L").append(key).append("\">");
+        boolean first = true;
         for (Word word : words) {
             final String romaji = romajiOf(word);
             if (romaji != null) {
+                if (!first) sb.append(' ');
+                first = false;
                 sb.append("<span").append(timing(word.startMs(), word.endMs())).append('>')
                         .append(escapeText(convertHan(romaji))).append("</span>");
             }
@@ -568,6 +571,9 @@ public final class TTMLGenerator {
     }
 
     private void appendRoleSpan(String role, String language, String text) {
+        if (sb.length() > 0 && sb.charAt(sb.length() - 1) != ' ') {
+            sb.append(' ');
+        }
         sb.append("<span ttm:role=\"").append(role).append("\" xml:lang=\"")
                 .append(escapeAttr(language)).append("\">")
                 .append(escapeText(formatLine(text))).append("</span>");
