@@ -22,6 +22,7 @@ import android.icu.text.CompactDecimalFormat;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -41,8 +42,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
+import java.util.StringJoiner;
 import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
@@ -87,7 +88,7 @@ public final class FeedViewCountPatch {
      * A no-break space is used inside a view count, such as "4.7 M", so it is not a delimiter.
      */
     private static final Pattern SEGMENT_DELIMITER_PATTERN =
-            Pattern.compile("[ \\t]{2,}|[ \\t\u00A0\u202F]*[\u00B7\u2022][ \\t\u00A0\u202F]*");
+            Pattern.compile("[ \\t]{2,}|[ \\t\u00A0\u202F]*[·•][ \\t\u00A0\u202F]*");
     private static final int MAX_SUBTITLE_LENGTH = 150;
     private static final int MAX_SEGMENT_LENGTH = 40;
     /** The title and the text below it. */
@@ -97,7 +98,7 @@ public final class FeedViewCountPatch {
      * A number, such as 457, 4,7 or 1 234. Some languages show words before it.
      */
     private static final Pattern NUMBER_PATTERN =
-            Pattern.compile("\\p{Nd}+(?:[.,'\u2019\u066B\u066C\u00A0\u202F ]\\p{Nd}+)*");
+            Pattern.compile("\\p{Nd}+(?:[.,'’٫٬\u00A0\u202F ]\\p{Nd}+)*");
 
     /** Different words of view counts that were seen, such as "views" and "watching". */
     private static final int MAX_VIEW_WORDS = 8;
@@ -203,31 +204,11 @@ public final class FeedViewCountPatch {
      * Shortened view count attached to the texts below the title. Not a {@link android.text.NoCopySpan},
      * so it is copied with the text. Equal by value, so texts with it are still equal
      * to the same texts created again.
+     *
+     * @param path    Elements of the Litho path of the text, or null if not known yet.
+     * @param removed If the view count was removed from the text.
      */
-    private static final class ViewCountSpan {
-        final String viewCount;
-        /** Elements of the Litho path of the text, or null if not known yet. */
-        @Nullable
-        final String path;
-        /** If the view count was removed from the text. */
-        final boolean removed;
-
-        ViewCountSpan(String viewCount, @Nullable String path, boolean removed) {
-            this.viewCount = viewCount;
-            this.path = path;
-            this.removed = removed;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            return obj instanceof ViewCountSpan other && other.viewCount.equals(viewCount)
-                    && Objects.equals(other.path, path) && other.removed == removed;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(viewCount, path, removed);
-        }
+    private record ViewCountSpan(String viewCount, @Nullable String path, boolean removed) {
     }
 
     /**
@@ -281,22 +262,20 @@ public final class FeedViewCountPatch {
             return null;
         }
         StringBuilder path = contextInterface.patch_getPathBuilder();
-        if (path == null || path.length() == 0) {
+        if (TextUtils.isEmpty(path)) {
             return null;
         }
-        StringBuilder elements = new StringBuilder();
+        StringJoiner elements = new StringJoiner("|");
         for (String part : path.toString().split("\\|")) {
             if (part.indexOf('.') > 0) {
-                if (elements.length() > 0) {
-                    elements.append('|');
-                }
-                elements.append(part);
+                elements.add(part);
             }
         }
-        if (elements.length() == 0 || elements.length() > MAX_PATH_LENGTH) {
+        String joined = elements.toString();
+        if (joined.isEmpty() || joined.length() > MAX_PATH_LENGTH) {
             return null;
         }
-        return elements.toString();
+        return joined;
     }
 
     // region view count text
@@ -308,11 +287,11 @@ public final class FeedViewCountPatch {
             for (CompactDecimalFormat.CompactStyle style : CompactDecimalFormat.CompactStyle.values()) {
                 try {
                     CompactDecimalFormat format = CompactDecimalFormat.getInstance(locale, style);
-                    // 1 thousand up to 1 quadrillion.
+                    // From a thousand up to a quadrillion.
                     long value = 1_000;
                     for (int i = 0; i < 13; i++) {
                         // Units of more words keep the space between them, such as thousand crore.
-                        String unit = format.format(value).replaceAll("[\\p{Nd}.,'\u2019]", "")
+                        String unit = format.format(value).replaceAll("[\\p{Nd}.,'’]", "")
                                 .replaceAll("[\\s\u00A0\u202F]+", " ").trim();
                         if (!unit.isEmpty()) {
                             found.add(unit);
@@ -327,7 +306,7 @@ public final class FeedViewCountPatch {
             found.add("K");
             found.add("M");
             found.add("B");
-            // English (India) shows lakh and crore, but its short units are L and Cr.
+            // English (India) shows lakh and crore, but abbreviates them as L and Cr.
             found.add("lakh");
             found.add("crore");
             List<String> list = new ArrayList<>(found);
@@ -358,14 +337,7 @@ public final class FeedViewCountPatch {
      * Result of {@link #parseViewCount}: the shortened count, such as 4,7Mn, and the words of it,
      * such as "views", which are the same for every video.
      */
-    private static final class ParsedViewCount {
-        final String count;
-        final String words;
-
-        ParsedViewCount(String count, String words) {
-            this.count = count;
-            this.words = words;
-        }
+    private record ParsedViewCount(String count, String words) {
     }
 
     /**
@@ -428,16 +400,7 @@ public final class FeedViewCountPatch {
     /**
      * A part of the texts below the title, such as the channel, the view count or the upload time.
      */
-    private static final class Segment {
-        final String text;
-        final int start;
-        final int end;
-
-        Segment(String text, int start, int end) {
-            this.text = text;
-            this.start = start;
-            this.end = end;
-        }
+    private record Segment(String text, int start, int end) {
 
         boolean startsWithNumber() {
             return !text.isEmpty() && Character.isDigit(text.charAt(0));
@@ -474,7 +437,7 @@ public final class FeedViewCountPatch {
     }
 
     /**
-     * Adds the text without the spaces around it, such as the space after an icon.
+     * Adds the text without the surrounding spaces, such as the space after an icon.
      */
     private static void addSegment(String text, int start, int end, List<Segment> segments) {
         while (start < end && isSeparator(text.charAt(start))) {
@@ -509,33 +472,38 @@ public final class FeedViewCountPatch {
             }
         }
 
-        int index = -1;
-        for (int i = 0; i < size; i++) {
-            // Words of view counts that were seen before, such as "views".
-            if (parsed[i] != null && !parsed[i].words.isEmpty() && isViewWords(parsed[i].words)) {
-                index = i;
-                break;
-            }
-        }
-        if (index < 0) {
-            if (size == 3) {
-                // The channel, the view count and the upload time.
-                if (parsed[1] != null && segments.get(2).hasNumber()) {
-                    index = 1;
-                }
-            } else if (parsed[0] != null && segments.get(0).startsWithNumber()
-                    && segments.get(1).hasNumber()) {
-                // The view count and the upload time, such as on the channel page and on the cards.
-                // Some languages show a word before the number of the upload time,
-                // such as "vor 2 Tagen" in German.
-                index = 0;
-            }
-        }
+        final int index = findViewCountIndex(segments, parsed);
         if (index < 0) {
             return null;
         }
         addViewWords(parsed[index].words);
         return new ViewCountMatch(segments, index, parsed[index]);
+    }
+
+    /**
+     * @return Index of the segment that is the view count, or -1 if none is.
+     */
+    private static int findViewCountIndex(List<Segment> segments, ParsedViewCount[] parsed) {
+        final int size = segments.size();
+        for (int i = 0; i < size; i++) {
+            // Words of view counts that were seen before, such as "views".
+            if (parsed[i] != null && !parsed[i].words.isEmpty() && isViewWords(parsed[i].words)) {
+                return i;
+            }
+        }
+        if (size == 3) {
+            // The channel, the view count and the upload time.
+            if (parsed[1] != null && segments.get(2).hasNumber()) {
+                return 1;
+            }
+        } else if (parsed[0] != null && segments.get(0).startsWithNumber()
+                && segments.get(1).hasNumber()) {
+            // The view count and the upload time, such as on the channel page and on the cards.
+            // Some languages show a word before the number of the upload time,
+            // such as "vor 2 Tagen" in German.
+            return 0;
+        }
+        return -1;
     }
 
     /**
@@ -547,7 +515,7 @@ public final class FeedViewCountPatch {
         final int runStart = index == 0 ? 0 : segments.get(index - 1).end;
         final int runEnd = segments.get(index).start;
         String run = text.subSequence(runStart, runEnd).toString();
-        if (run.indexOf('\u00B7') >= 0 || run.indexOf('\u2022') >= 0) {
+        if (run.indexOf('·') >= 0 || run.indexOf('•') >= 0) {
             return -1;
         }
         int iconStart = -1;
@@ -756,8 +724,8 @@ public final class FeedViewCountPatch {
                 // The text of the count alone is only in the command that opens the video,
                 // which some accounts and videos don't get. Else the text that accessibility services
                 // read is used, such as "Channel, 4.7 million views, 2 days ago": it has each segment,
-                // or else its number, in the same order. It is not a copy of this text, such as the
-                // label of the menu, which has the title. A count written in words, such as "thousand",
+                // or else it's number, in the same order. It is not a copy of this text, such as the
+                // label of the menu, which has the title. A count written in words, such as "a thousand",
                 // is found only by the text of the count alone.
                 boolean spoken = false;
                 if (!hasCountText) {
@@ -773,7 +741,7 @@ public final class FeedViewCountPatch {
                         Matcher otherNumber = NUMBER_PATTERN.matcher(otherText);
                         int from = 0;
                         for (Segment segment : segments) {
-                            // The same segment, such as the channel, or else its number, such as of "4.7M".
+                            // The same segment, such as the channel, or else it's number, such as of "4.7M".
                             // Both must be whole words, not a part of a longer word or number, such as of a URL.
                             String part = segment.text;
                             int found = otherText.indexOf(part, from);
@@ -915,16 +883,7 @@ public final class FeedViewCountPatch {
         }
     }
 
-    private static final class PlacedText {
-        final String text;
-        final int top;
-        final int left;
-
-        PlacedText(String text, int top, int left) {
-            this.text = text;
-            this.top = top;
-            this.left = left;
-        }
+    private record PlacedText(String text, int top, int left) {
     }
 
     private static void findCardInfo(ComponentHost root, View view, CardInfo info, Rect rect) {
@@ -1097,30 +1056,19 @@ public final class FeedViewCountPatch {
 
     /**
      * Where the duration badge and the thumbnail of a card are, relative to the card.
+     *
+     * @param duration  The duration badge, or null if not found.
+     * @param thumbnail The thumbnail, or null if not found.
+     * @param estimated If the duration badge is placed as high as it can be, because what it's placed from is not drawn yet,
+     *                  such as the title of a Short that is only partly shown. It is placed again once that is drawn.
      */
-    public static final class ThumbnailFrame {
-        /** The duration badge, or null if not found. */
-        @Nullable
-        public final Rect duration;
-        /** The thumbnail, or null if not found. */
-        @Nullable
-        public final Rect thumbnail;
-        /**
-         * If the duration badge is placed as high as it can be, because what it's placed from is not drawn yet,
-         * such as the title of a Short that is only partly shown. It is placed again once that is drawn.
-         */
-        public final boolean estimated;
-
-        public ThumbnailFrame(@Nullable Rect duration, @Nullable Rect thumbnail, boolean estimated) {
-            this.duration = duration;
-            this.thumbnail = thumbnail;
-            this.estimated = estimated;
-        }
+        public record ThumbnailFrame(@Nullable Rect duration, @Nullable Rect thumbnail,
+                                     boolean estimated) {
     }
 
     /**
      * Finds the duration badge and the thumbnail of a card, the same way as for the view count badge.
-     * Also used by the like count badge of the Return YouTube Dislike patch, so both badges are placed
+     * The like count badge of the Return YouTube Dislike patch uses it too. So both badges are placed
      * on cards whose thumbnail is inset from their edges, such as the shelves of a channel,
      * or is below other content, such as the video of a channel post.
      * Must be called on the main thread.
@@ -1144,7 +1092,7 @@ public final class FeedViewCountPatch {
      * @param videoId     The video of the card, or null if the host is not a video card
      *                    or its video is not known.
      * @param shortsFrame If the host is the card of a Short, its thumbnail and the row above its title,
-     *                    as the duration badge at the end of the row. Otherwise null.
+     *                    as the duration badge at the end of the row. Null for any other card.
      */
     public static void onCardLaidOut(ComponentHost host, @Nullable String videoId,
                                      @Nullable ThumbnailFrame shortsFrame) {
@@ -1232,7 +1180,7 @@ public final class FeedViewCountPatch {
                     // The texts can be drawn after the layout of the card. Once the text below the title
                     // is drawn there is nothing to wait for, so the loading spinner is not shown, even if
                     // the card is checked again. Rows below the part of the card that is shown are not
-                    // drawn yet, such as the view count below the channel of the cards layout.
+                    // drawn yet, such as the view count below the channel of the cards' layout.
                     final Rect shown = new Rect();
                     loading = FeedVideoCardsPatch.scheduleRetry(host) && (info.texts.size() < MIN_DRAWN_TEXTS
                             || !host.getLocalVisibleRect(shown) || shown.bottom < host.getHeight());
@@ -1490,6 +1438,7 @@ public final class FeedViewCountPatch {
         public void setColorFilter(@Nullable ColorFilter colorFilter) {
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;

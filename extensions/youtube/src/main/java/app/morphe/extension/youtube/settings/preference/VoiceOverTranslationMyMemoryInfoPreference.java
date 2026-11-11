@@ -31,7 +31,6 @@ public class VoiceOverTranslationMyMemoryInfoPreference extends URLLinkPreferenc
     }
 
     private void updateUI() {
-        //noinspection deprecation
         setEnabled(Settings.VOT_ENABLED.get()
                 && Settings.VOT_TRANSLATION_SERVICE.get().equals(TRANSLATION_SERVICE_MY_MEMORY));
     }

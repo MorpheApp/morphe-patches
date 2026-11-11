@@ -19,6 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import app.morphe.extension.music.patches.lyrics.LyricsDirectories;
+import app.morphe.extension.shared.Utils;
 
 /**
  * What the two reading dictionaries have in common: how they are fetched and how the settings row
@@ -117,8 +118,7 @@ public final class RomanizationDict {
         } finally {
             if (connection != null) connection.disconnect();
             if (partial.exists()) {
-                //noinspection ResultOfMethodCallIgnored
-                partial.delete();
+                Utils.deleteQuietly(partial);
             }
         }
     }

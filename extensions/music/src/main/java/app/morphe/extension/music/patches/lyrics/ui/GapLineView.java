@@ -11,6 +11,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
@@ -28,7 +30,9 @@ import app.morphe.extension.shared.ui.Dim;
 /**
  * Three dots in the place of the next line during a long instrumental break, which fill up one
  * after another as the break runs out. Open, it takes a row of its own in the lyrics.
+ * Created in code with its break, and never inflated from a layout, so it has no layout constructors.
  */
+@SuppressLint("ViewConstructor")
 final class GapLineView extends View {
     /**
      * @param endMs            When the dots are full and start to close.
@@ -135,15 +139,22 @@ final class GapLineView extends View {
                     resetImmediate();
                 }
             } else if (exitAnimator != null && exitAnimator.isRunning()) {
-                if (currentPos < interval.startMs() || currentPos >= interval.nextStartMs()) {
+                if (isOutsideBreak(currentPos)) {
                     resetImmediate();
                 }
             } else if (isOpen && !isExiting && currentPos >= interval.endMs() && currentPos < interval.nextStartMs()) {
                 startExitAnimation();
-            } else if (isOpen && (currentPos < interval.startMs() || currentPos >= interval.nextStartMs())) {
+            } else if (isOpen && isOutsideBreak(currentPos)) {
                 resetImmediate();
             }
         }
+    }
+
+    /**
+     * @return If the position is before the break, or at or after the line that follows it.
+     */
+    private boolean isOutsideBreak(long currentPos) {
+        return currentPos < interval.startMs() || currentPos >= interval.nextStartMs();
     }
 
     /**
@@ -210,7 +221,7 @@ final class GapLineView extends View {
         updateLayoutState();
 
         final long remaining = Math.max(150L, interval.nextStartMs() - LyricsManager.getInstance().getPositionMs());
-        final long duration = Math.min(GAP_CLOSE_MS, Math.max((long) GAP_ENDED_MS, remaining));
+        final long duration = Math.min(GAP_CLOSE_MS, Math.max(GAP_ENDED_MS, remaining));
         final float timeScale = (float) GAP_CLOSE_MS / (float) duration;
 
         exitAnimator = ValueAnimator.ofFloat(0.0f, (float) duration);
@@ -328,7 +339,7 @@ final class GapLineView extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
         if ((!isOpen && !isExiting) || getHeight() <= 0 || groupAlpha <= 0f || groupScale <= 0f) {
             return;
@@ -392,7 +403,7 @@ final class GapLineView extends View {
             } else if (currentTime < sylStart) {
                 dotFillAlpha = (float) INTERVAL_SECONDARY_ALPHA;
             } else {
-                float t = (float) (currentTime - sylStart) / Math.max(1f, syllableDuration);
+                float t = (currentTime - sylStart) / Math.max(1f, syllableDuration);
                 t = Math.max(0f, Math.min(1f, t));
                 float interpolated = GAP_EASE.getInterpolation(t);
                 dotFillAlpha = INTERVAL_SECONDARY_ALPHA + (INTERVAL_PRIMARY_ALPHA - INTERVAL_SECONDARY_ALPHA) * interpolated;

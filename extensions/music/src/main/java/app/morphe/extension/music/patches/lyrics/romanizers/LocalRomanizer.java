@@ -37,7 +37,7 @@ public final class LocalRomanizer {
     /** No syllables at all, and a word said with none of them. */
     private static final int[][] NO_TOKENS = new int[0][];
     private static final int[] NO_SYLLABLES = {0, 0};
-    /** Words ending in er where er is a word of its own, not the erhua suffix. */
+    /** Words ending in 'er' where 'er' is a word of its own, not the erhua suffix. */
     private static final Set<String> PLAIN_ERHUA = new HashSet<>(Arrays.asList(
             "女儿", "男儿", "婴儿", "幼儿", "孤儿", "少儿", "胎儿", "健儿", "残儿", "弃儿",
             "新生儿", "低能儿", "弱智儿", "托儿", "孕儿"));
@@ -135,15 +135,11 @@ public final class LocalRomanizer {
         return aligned ? result : null;
     }
 
-    /** Null when not one word could be read, leaving the line to {@link #splitReading}. */
-    @SuppressWarnings("unused")
-    @Nullable
-    private static List<Word> exactReadings(List<Word> words, @Nullable Script script,
-                                            boolean rime) {
-        return exactReadings(words, script, rime, null);
-    }
-
-    /** @param line The line the words sit in, or null when only the words are known. */
+    /**
+     * Null when not one word could be read, leaving the line to {@link #splitReading}.
+     *
+     * @param line The line the words sit in, or null when only the words are known.
+     */
     @Nullable
     private static List<Word> exactReadings(List<Word> words, @Nullable Script script,
                                             boolean rime, @Nullable String line) {
@@ -407,8 +403,8 @@ public final class LocalRomanizer {
         }
         if (characters == 0) return letters > 0 ? 1 : 0;
         // The erhua suffix rides on the syllable before it, so such a word is said one fewer
-        // than written, unless er is a word of its own: anything else beside it keeps its
-        // syllable, or the er has none.
+        // than written, unless 'er' is a word of its own: anything else beside it keeps its
+        // syllable, or the 'er' has none.
         if (characters > 1 && letters > 0 && word.endsWith("儿") && !PLAIN_ERHUA.contains(word)) {
             characters--;
         }

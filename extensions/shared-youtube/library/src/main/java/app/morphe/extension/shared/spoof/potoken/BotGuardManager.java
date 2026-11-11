@@ -202,13 +202,11 @@ public final class BotGuardManager {
                             name.startsWith(INTERPRETER_FILE_PREFIX) && !name.equals(file.getName()));
                     if (files != null) {
                         for (File old : files) {
-                            //noinspection ResultOfMethodCallIgnored
-                            old.delete();
+                            Utils.deleteQuietly(old);
                         }
                     }
                 } else {
-                    //noinspection ResultOfMethodCallIgnored
-                    temp.delete();
+                    Utils.deleteQuietly(temp);
                 }
             }
         } catch (Exception ex) {

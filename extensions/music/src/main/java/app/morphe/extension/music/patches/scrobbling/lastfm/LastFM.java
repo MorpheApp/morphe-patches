@@ -257,8 +257,6 @@ public class LastFM {
             if (root.has("scrobbles")) {
                 JSONObject scrobbles = root.getJSONObject("scrobbles");
                 JSONObject attr = scrobbles.optJSONObject("@attr");
-                @SuppressWarnings("unused")
-                int accepted = attr != null ? attr.optInt("accepted", 0) : 0;
                 int ignored = attr != null ? attr.optInt("ignored", 0) : 0;
 
                 if (ignored > 0) {

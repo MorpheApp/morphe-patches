@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.InputStream;
@@ -35,6 +36,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -67,7 +69,7 @@ final class NiconicoCommentsOverlayView extends View {
     private final float backgroundPadding;
     private final float backgroundRadius;
 
-    private volatile int emojiGeneration;
+    private final AtomicInteger emojiGeneration = new AtomicInteger();
     private String videoId = "";
     private boolean overlayActive;
     private boolean videoPlaying;
@@ -89,7 +91,8 @@ final class NiconicoCommentsOverlayView extends View {
         super(context);
 
         density = context.getResources().getDisplayMetrics().density;
-        scaledDensity = context.getResources().getDisplayMetrics().scaledDensity;
+        final float fontScale = context.getResources().getConfiguration().fontScale;
+        scaledDensity = density * (fontScale != 0 ? fontScale : 1.0f);
         backgroundPadding = 4 * density;
         backgroundRadius = 3 * density;
 
@@ -113,7 +116,7 @@ final class NiconicoCommentsOverlayView extends View {
             return;
         }
         videoId = nextVideoId;
-        emojiGeneration++;
+        emojiGeneration.incrementAndGet();
         emojiImageCache.clear();
         clearComments();
     }
@@ -244,7 +247,7 @@ final class NiconicoCommentsOverlayView extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
         if (!overlayActive || videoId.isEmpty()) {
             setHighFrameRate(false);
@@ -473,13 +476,13 @@ final class NiconicoCommentsOverlayView extends View {
 
         EmojiImageCache.Entry<Bitmap> state = emojiImageCache.beginLoad(imageUrl, neededEmojiUrls);
         if (state == null) return null;
-        final int generation = emojiGeneration;
+        final int generation = emojiGeneration.get();
         EMOJI_EXECUTOR.execute(() -> loadEmojiImage(imageUrl, state, generation));
         return state;
     }
 
     private void loadEmojiImage(String imageUrl, EmojiImageCache.Entry<Bitmap> state, int generation) {
-        if (generation != emojiGeneration) return;
+        if (generation != emojiGeneration.get()) return;
         HttpURLConnection connection = null;
         Bitmap bitmap = null;
         try {
@@ -503,7 +506,7 @@ final class NiconicoCommentsOverlayView extends View {
 
         Bitmap loadedBitmap = bitmap;
         post(() -> {
-            if (generation == emojiGeneration && emojiImageCache.complete(imageUrl, state, loadedBitmap)) {
+            if (generation == emojiGeneration.get() && emojiImageCache.complete(imageUrl, state, loadedBitmap)) {
                 requestNextFrame();
             }
         });

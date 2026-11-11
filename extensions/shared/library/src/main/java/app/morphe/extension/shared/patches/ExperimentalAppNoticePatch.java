@@ -13,7 +13,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 
-@SuppressWarnings({"deprecation", "unused"})
+@SuppressWarnings("unused")
 public class ExperimentalAppNoticePatch {
 
     public static boolean experimentalNoticeShouldBeShown() {
@@ -47,7 +47,7 @@ public class ExperimentalAppNoticePatch {
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     activity,
                     str("morphe_experimental_app_version_dialog_title"), // Title.
-                    Html.fromHtml(str("morphe_experimental_app_version_dialog_message", appVersionName, recommendedAppVersion)), // Message.
+                    Html.fromHtml(str("morphe_experimental_app_version_dialog_message", appVersionName, recommendedAppVersion), Html.FROM_HTML_MODE_LEGACY), // Message.
                     null, // No EditText.
                     str("morphe_experimental_app_version_dialog_open_homepage"), // OK button text.
                     () -> {

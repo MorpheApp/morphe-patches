@@ -176,8 +176,7 @@ public final class PickedFolderVideos {
             Logger.printException(() -> "onDownloadComplete failure", ex);
             Utils.showToastLong(str("morphe_download_location_video_failed"));
         } finally {
-            //noinspection ResultOfMethodCallIgnored
-            video.file.delete();
+            Utils.deleteQuietly(video.file);
         }
     }
 

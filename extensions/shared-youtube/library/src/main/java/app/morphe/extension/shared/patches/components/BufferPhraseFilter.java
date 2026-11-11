@@ -81,7 +81,6 @@ public abstract class BufferPhraseFilter extends Filter {
     /**
      * Substrings that are never at the start of the path.
      */
-    @SuppressWarnings("FieldCanBeLocal")
     protected final StringFilterGroup containsFilter = new StringFilterGroup(
             null,
             "modern_type_shelf_header_content.e",

@@ -306,6 +306,7 @@ public final class FeedVideoActionsPatch {
         public void setColorFilter(@Nullable ColorFilter colorFilter) {
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;
@@ -1098,7 +1099,7 @@ public final class FeedVideoActionsPatch {
      * Runs the command of the app that its own menu items run, with the video of the card.
      *
      * @param saveToPlaylist If the Save to playlist panel is opened.
-     *                       Otherwise the video is saved to Watch later, or removed if it's saved.
+     *                       Otherwise, the video is saved to Watch later, or removed if it's saved.
      */
     private static void runVideoCommand(ComponentHost host, boolean saveToPlaylist) {
         final String videoId = findCardVideoId(host);

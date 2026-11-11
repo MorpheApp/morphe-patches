@@ -1942,7 +1942,6 @@ public class CrossfadePatch {
      * The player swap flickers the MediaSession state, which receivers get as pause and
      * play commands, and strict ones drop the connection (#1549).
      */
-    @SuppressWarnings({"deprecation", "RedundantSuppression"})
     private static boolean isAudioRoutedToCast() {
         if (Build.VERSION.SDK_INT < 28) return false;
 

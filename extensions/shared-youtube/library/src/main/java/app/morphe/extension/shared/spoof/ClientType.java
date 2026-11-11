@@ -20,7 +20,7 @@ import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 
-@SuppressWarnings({"ConstantLocale", "deprecation"})
+@SuppressWarnings("ConstantLocale")
 public enum ClientType {
     /**
      * Video not playable: None.
@@ -425,7 +425,7 @@ public enum ClientType {
     public final String osVersion;
 
     /**
-     * Android SDK version, equivalent to {@link Build.VERSION#SDK} (System property: ro.build.version.sdk)
+     * Android SDK version, equivalent to {@code Build.VERSION.SDK} (System property: ro.build.version.sdk)
      * Field is empty if not applicable.
      */
     @NonNull

@@ -38,6 +38,7 @@ import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Two level lyrics store: an in memory map for the current session, and on disk so that replaying
@@ -297,8 +298,8 @@ public final class LyricsCache {
 
     /**
      * Writes the preference file and the translations and romanization that go with it. The
-     * sidecars are dropped first, so a write that only gets as far as the file leaves the
-     * content without them instead of with the ones of an older, differently filtered lyric.
+     * sidecars are dropped first. If writing stops after the file, the content is left without
+     * them instead of with the ones of an older, differently filtered lyric.
      */
     private static void writePreference(@Nullable String videoId, TrackInfo track,
                                         @Nullable File file, List<String> fileLines,
@@ -414,21 +415,10 @@ public final class LyricsCache {
 
     @Nullable
     public static List<String> getTranslationAI(TrackInfo track, String source,
-                                                String language, List<String> sourceLines) {
-        return getTranslationAI(track, source, language, sourceLines, null);
-    }
-
-    @Nullable
-    public static List<String> getTranslationAI(TrackInfo track, String source,
                                                 String language, List<String> sourceLines, @Nullable String provider) {
         File file = aiTranslationFile(track, source, language, sourceLines, provider);
         List<String> raw = readStringList(file, sourceLines);
         return sanitizeTranslationList(raw, file);
-    }
-
-    public static void putTranslationAI(TrackInfo track, String source,
-                                        String language, List<String> sourceLines, List<String> lines) {
-        putTranslationAI(track, source, language, sourceLines, lines, null);
     }
 
     public static void putTranslationAI(TrackInfo track, String source,
@@ -470,20 +460,9 @@ public final class LyricsCache {
 
     @Nullable
     public static List<LyricsLine> getRomanizationAI(TrackInfo track, String source,
-                                                     List<String> sourceLines) {
-        return getRomanizationAI(track, source, sourceLines, null);
-    }
-
-    @Nullable
-    public static List<LyricsLine> getRomanizationAI(TrackInfo track, String source,
                                                      List<String> sourceLines, @Nullable String provider) {
         return readLyricsLineList(
                 aiRomanizationFile(track, source, sourceLines, provider), sourceLines);
-    }
-
-    public static void putRomanizationAI(TrackInfo track, String source,
-                                         List<String> sourceLines, List<LyricsLine> lines) {
-        putRomanizationAI(track, source, sourceLines, lines, null);
     }
 
     public static void putRomanizationAI(TrackInfo track, String source,
@@ -1175,7 +1154,7 @@ public final class LyricsCache {
      * Empties the stored lyrics.
      *
      * <p>The dictionaries sit beside them and cost tens of megabytes and a download apiece to have
-     * back, so they are left alone. A track asked for afterwards fetches as it did the first time.
+     * back, so they are left alone. A track asked for afterward fetches as it did the first time.
      *
      * @return how many bytes were freed.
      */
@@ -1185,8 +1164,7 @@ public final class LyricsCache {
         final File[] files = directory == null ? null : directory.listFiles();
         if (files != null) {
             for (File file : files) {
-                //noinspection ResultOfMethodCallIgnored
-                file.delete();
+                Utils.deleteQuietly(file);
             }
         }
         memoryCache.clear();

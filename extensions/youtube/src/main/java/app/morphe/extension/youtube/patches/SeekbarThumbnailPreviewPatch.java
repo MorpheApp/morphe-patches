@@ -238,7 +238,7 @@ public class SeekbarThumbnailPreviewPatch {
     }
 
     // Border is a filled rounded rect + padding (not a stroke) to keep outer/inner corners concentric.
-    @SuppressWarnings({"SameParameterValue", "SuspiciousNameCombination"})
+    @SuppressWarnings("SuspiciousNameCombination")
     private static FrameLayout createPreviewFrame(Context context) {
         GradientDrawable frameBackground = new GradientDrawable();
         frameBackground.setColor(semitransparentWhiteBackgroundColor);
@@ -256,7 +256,6 @@ public class SeekbarThumbnailPreviewPatch {
         return previewFrame;
     }
 
-    @SuppressWarnings("SameParameterValue")
     private static ImageView createThumbnailImageView(Context context) {
         ImageView thumbnailPreview = new ImageView(context);
         thumbnailPreview.setScaleType(ImageView.ScaleType.CENTER_CROP);

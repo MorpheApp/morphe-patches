@@ -46,21 +46,20 @@ import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
-@SuppressWarnings({"unused", "FieldCanBeLocal"})
+@SuppressWarnings("unused")
 public final class ShortsFilter extends Filter {
-    private static final String COMPONENT_TYPE = "ComponentType";
     private static final boolean HIDE_SHORTS_NAVIGATION_BAR = Settings.HIDE_SHORTS_NAVIGATION_BAR.get();
-    private final String REEL_CHANNEL_BAR_PATH = "reel_channel_bar.e";
+    private static final String REEL_CHANNEL_BAR_PATH = "reel_channel_bar.e";
 
     /**
      * For paid promotion label and subscribe button that appears in the channel bar.
      */
-    private final String REEL_METAPANEL_PATH = "reel_metapanel.e";
+    private static final String REEL_METAPANEL_PATH = "reel_metapanel.e";
 
     /**
      * For paid promotion label and subscribe button that appears in the channel bar.
      */
-    private final String REEL_PLAYER_OVERLAY_PATH = "reel_player_overlay.e";
+    private static final String REEL_PLAYER_OVERLAY_PATH = "reel_player_overlay.e";
 
     /**
      * Tags that appears when opening the Shorts player.
@@ -641,7 +640,10 @@ public final class ShortsFilter extends Filter {
             case SUBSCRIPTIONS -> hideShortsInFeed(component, "subscriptions tab",
                     Settings.HIDE_SHORTS_SUBSCRIPTIONS, buffer, rootComponent);
             case LIBRARY -> hideShortsInFeed(component, "library tab", Settings.HIDE_SHORTS_HISTORY, buffer, rootComponent);
-            default -> logDecision(component, false, "other tab: " + selectedNavButton);
+            default -> {
+                logDecision(component, false, "other tab: " + selectedNavButton);
+                yield false;
+            }
         };
     }
 

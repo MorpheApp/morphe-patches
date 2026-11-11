@@ -82,12 +82,11 @@ public final class PlayerButtonIcons {
 
     /**
      * Injection point.
-     * Replaces {@link Resources#getDrawable(int)} where the app loads an icon to tint it before setting it.
+     * Replaces {@code Resources.getDrawable(int)} where the app loads an icon to tint it before setting it.
      */
-    @SuppressWarnings("deprecation")
     public static Drawable getDrawable(Resources resources, int resId) {
         Drawable icon = styledIcon(resId);
-        return icon != null ? icon : resources.getDrawable(resId);
+        return icon != null ? icon : resources.getDrawable(resId, null);
     }
 
     /**

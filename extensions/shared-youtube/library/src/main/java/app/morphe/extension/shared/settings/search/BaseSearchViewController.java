@@ -44,6 +44,7 @@ import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -463,8 +464,7 @@ public abstract class BaseSearchViewController {
         }
 
         if (!filteredSearchItems.isEmpty()) {
-            //noinspection ComparatorCombinators
-            filteredSearchItems.sort((o1, o2) -> o1.navigationPath.compareTo(o2.navigationPath));
+            filteredSearchItems.sort(Comparator.comparing(item -> item.navigationPath));
             List<BaseSearchResultItem> displayItems = new ArrayList<>();
             String currentPath = null;
             for (BaseSearchResultItem item : filteredSearchItems) {
