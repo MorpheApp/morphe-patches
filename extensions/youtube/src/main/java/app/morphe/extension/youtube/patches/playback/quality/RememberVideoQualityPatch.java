@@ -158,6 +158,14 @@ public class RememberVideoQualityPatch {
             regularSelectedQualityResolution = resolution;
             regularSelectedQualityVideoId = videoId;
         }
+        if (VideoInformation.isLiveStream()) {
+            // A live stream buffers only a few seconds after the playback time. Clearing them makes
+            // the player buffer again from the live edge and catch up with the audio, so the video
+            // stutters. The selected quality is played once the video already buffered was played.
+            clearVideoBufferVideoId = "";
+            clearVideoBufferTimeUs = -1;
+            return;
+        }
         clearVideoBufferVideoId = videoId;
         // The playback time is read on the main thread,
         // as the player may set the video formats on another thread.
