@@ -648,6 +648,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">ล้าง</string>
   <string name="morphe_loop_video_range_toast_on">กำลังทำซ้ำ %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">ช่วงเวลาไม่ถูกต้อง</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">จำนวนรอบการเล่นซ้ำ</string>
+  <string name="morphe_loop_count_screen_summary">เลือกจำนวนครั้งที่วิดีโอจะเล่นซ้ำก่อนที่จะเปลี่ยนไปวิดีโอถัดไป</string>
+  <string name="morphe_loop_count_title">เปิดใช้งานจำนวนรอบการเล่นซ้ำ</string>
+  <string name="morphe_loop_count_summary">เมนูเพิ่มเติมของผู้เล่นจะแสดงจำนวนรอบการวนซ้ำถัดจาก วนซ้ำวิดีโอ เพื่อเลือกจำนวนครั้งที่วิดีโอจะเล่นก่อนจะเริ่มวิดีโอถัดไป</string>
+  <string name="morphe_loop_count_playlists_title">บันทึกจำนวนรอบการวนซ้ำในเพลย์ลิสต์</string>
+  <string name="morphe_loop_count_playlists_summary">วิดีโอแต่ละรายการในเพลย์ลิสต์จะจำจำนวนรอบการวนซ้ำที่คุณเลือก และจะเปิดใช้งาน วนซ้ำวิดีโอ เมื่อเพลย์ลิสต์เล่นวิดีโอนั้นอีกครั้ง หากปิดใช้งาน จำนวนรอบการวนซ้ำจะมีผลเฉพาะกับวิดีโอที่กำลังเล่นอยู่ในขณะนี้เท่านั้น</string>
+  <string name="morphe_loop_count_clear_title">ล้างจำนวนรอบการวนซ้ำที่บันทึกไว้</string>
+  <string name="morphe_loop_count_clear_summary">ลบจำนวนรอบการวนซ้ำที่บันทึกไว้ในเพลย์ลิสต์ของคุณ วิดีโอที่บันทึกไว้: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">ไม่มีจำนวนรอบการวนซ้ำที่บันทึกไว้</string>
+  <string name="morphe_loop_count_clear_dialog_title">ล้างจำนวนรอบการวนซ้ำที่บันทึกไว้หรือไม่?</string>
+  <string name="morphe_loop_count_clear_dialog_message">วิดีโอในเพลย์ลิสต์ของคุณจะลบจำนวนรอบการวนซ้ำ และ วนซ้ำวิดีโอ จะไม่ถูกเปิดใช้งานอีกต่อไปเมื่อเพลย์ลิสต์เล่นวิดีโอเหล่านั้น</string>
+  <string name="morphe_loop_count_clear_done">ล้างจำนวนรอบการวนซ้ำที่บันทึกไว้เรียบร้อยแล้ว</string>
+  <string name="morphe_loop_count_flyout_name">จำนวนรอบการวนซ้ำ</string>
+  <string name="morphe_loop_count_dialog_message">วิดีโอจะเล่นกี่ครั้งก่อนที่จะเปลี่ยนเป็นวิดีโอถัดไป ตั้งแต่ %1$s ถึง %2$s เว้นว่างไว้เพื่อวนซ้ำวิดีโอโดยไม่จำกัดจำนวนครั้ง</string>
+  <string name="morphe_loop_count_times">%s ครั้ง</string>
+  <string name="morphe_loop_count_no_limit">ไม่จำกัด</string>
+  <string name="morphe_loop_count_decrease">จำนวนครั้งน้อยลง</string>
+  <string name="morphe_loop_count_increase">จำนวนครั้งมากขึ้น</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">แสดงปุ่มภาพซ้อนภาพ</string>
   <string name="morphe_pip_button_flyout_title">แสดงเมนูภาพซ้อนภาพ</string>
@@ -1113,6 +1132,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">ทำให้หน้าการรับชมและแถบสีดำทั้งหมดสว่างขึ้นตามวิดีโอ แทนที่โหมดแอมเบียนท์</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">รักษาข้อความให้อ่านออก</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">ลดแสงสว่างในวิดีโอที่สว่างเกินไปเพื่อให้ข้อความบนหน้ายังคงอ่านออก</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">หรี่ไฟขณะเลื่อน</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">หรี่แสงไฟในขณะที่เลื่อนหน้าหรือสัมผัสหน้าจอ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">ระยะเวลาการหรี่ไฟ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">ระยะเวลาที่แสงไฟจะยังคงหรี่อยู่หลังจากหยุดเลื่อน หากตั้งค่าเป็น 0 แสงไฟจะหรี่เฉพาะตอนเลื่อน และจะกลับมาสว่างทันทีที่หยุดเลื่อน</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">ซ่อนการ์ดข้อมูล</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">ซ่อนในฟีดการติดตาม</string>
   <string name="morphe_hide_shorts_video_description_title">ซ่อนในคำอธิบายวิดีโอ</string>
   <string name="morphe_hide_shorts_history_title">ซ่อนในประวัติการเข้าชม</string>
+  <string name="morphe_hide_shorts_notifications_title">ซ่อนในการแจ้งเตือนแบบพุช</string>
   <string name="morphe_shorts_player_screen_title">เครื่องเล่น Shorts</string>
   <string name="morphe_shorts_player_screen_summary">เลือกส่วนประกอบที่จะแสดงในเครื่องเล่น Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">ปิดใช้งานการแตะสองครั้งเพื่อกดชอบ</string>

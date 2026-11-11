@@ -648,6 +648,25 @@ Din API-nyckel ska aldrig delas. Alla som har åtkomst till den kan använda din
   <string name="morphe_loop_video_range_clear">Rensa</string>
   <string name="morphe_loop_video_range_toast_on">Upprepar %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ogiltigt tidsintervall</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Antal loopar</string>
+  <string name="morphe_loop_count_screen_summary">Välj hur många gånger en video loopas innan nästa video spelas upp</string>
+  <string name="morphe_loop_count_title">Aktivera antal loopar</string>
+  <string name="morphe_loop_count_summary">Spelarens More-meny visar Loop-antal bredvid Loop-video, för att välja hur många gånger videon ska spelas innan nästa video startar</string>
+  <string name="morphe_loop_count_playlists_title">Spara loop-antal i spellistor</string>
+  <string name="morphe_loop_count_playlists_summary">Varje video i en spellista behåller det antal loopar du väljer, och \"Loopa video\" aktiveras när spellistan spelar den igen. Om den är avstängd gäller antalet loopar endast för videon som spelas nu</string>
+  <string name="morphe_loop_count_clear_title">Rensa sparade loop-antal</string>
+  <string name="morphe_loop_count_clear_summary">Glöm loop-antal som sparats i dina spellistor. Sparade videor: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Inga loop-antal är sparade</string>
+  <string name="morphe_loop_count_clear_dialog_title">Rensa sparade loop-antal?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Videorna i dina spellistor glömmer sitt loop-antal, och \"Loopa video\" aktiveras inte längre när en spellista spelar dem</string>
+  <string name="morphe_loop_count_clear_done">Sparade loop-antal rensade</string>
+  <string name="morphe_loop_count_flyout_name">Loop-antal</string>
+  <string name="morphe_loop_count_dialog_message">Hur många gånger videon spelas innan nästa video, från %1$s till %2$s. Lämna tomt för att loopa videon utan gräns.</string>
+  <string name="morphe_loop_count_times">%s gånger</string>
+  <string name="morphe_loop_count_no_limit">Ingen gräns</string>
+  <string name="morphe_loop_count_decrease">Färre gånger</string>
+  <string name="morphe_loop_count_increase">Fler gånger</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Visa bild-i-bild-knappen</string>
   <string name="morphe_pip_button_flyout_title">Visa bild-i-bild-menyn</string>
@@ -1113,6 +1132,10 @@ För att visa menyn 'Ljudspår', ändra 'Förfalska videostreamar' till valfri k
   <string name="morphe_enhanced_ambient_mode_summary">Lyser upp hela visningssidan och svarta fält med videon, istället för Ambientljus</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Behåll texten läsbar</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dämpar ljuset på ljusa videor så att texten på sidan förblir läsbar</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Dämpa vid rullning</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Dämpar ljuset när sidan rullas eller vid beröring</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Dämpningens varaktighet</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Hur länge ljuset förblir dämpat efter att rullningen upphör. Med 0 dämpas ljuset endast vid rullning och återgår så snart rullningen upphör</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Dölj infokort</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ För att visa menyn 'Ljudspår', ändra 'Förfalska videostreamar' till valfri k
   <string name="morphe_hide_shorts_subscriptions_title">Dölj i prenumerationsflödet</string>
   <string name="morphe_hide_shorts_video_description_title">Dölj i videobeskrivningen</string>
   <string name="morphe_hide_shorts_history_title">Dölj i visningshistoriken</string>
+  <string name="morphe_hide_shorts_notifications_title">Dölj i pushmeddelanden</string>
   <string name="morphe_shorts_player_screen_title">Shorts-spelare</string>
   <string name="morphe_shorts_player_screen_summary">Välj vilka komponenter som visas i Shorts-spelaren</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Inaktivera dubbeltryck för att gilla</string>

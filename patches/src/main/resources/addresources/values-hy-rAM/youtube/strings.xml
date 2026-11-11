@@ -648,6 +648,24 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">Մաքրել</string>
   <string name="morphe_loop_video_range_toast_on">Կրկնվում է %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Անվավեր ժամանակային միջակայք</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Կրկնությունների քանակը</string>
+  <string name="morphe_loop_count_screen_summary">Ընտրեք, թե քանի անգամ կրկնվի տեսանյութը նախքան հաջորդ տեսանյութի անցումը</string>
+  <string name="morphe_loop_count_title">Միացնել կրկնությունների քանակը</string>
+  <string name="morphe_loop_count_summary">Համարիչի «Էլի» մենյուն ցույց է տալիս «Կրկնել տեսանյութը» տարբերակի կողքին կրկնությունների քանակը, որպեսզի ընտրեք, թե քանի անգամ պետք է նվագարկվի տեսանյութը հաջորդին անցնելուց առաջ</string>
+  <string name="morphe_loop_count_playlists_title">Պահպանել կրկնությունների քանակը ցուցակներում</string>
+  <string name="morphe_loop_count_playlists_summary">Ցուցակի յուրաքանչյուր տեսանյութ պահպանում է ձեր ընտրած կրկնությունների քանակը, և «Կրկնել տեսանյութը» տարբերակն ակտիվանում է, երբ ցուցակը կրկին նվագարկում է այն: Եթե անջատված է, ապա կրկնությունների քանակը վերաբերում է միայն ներկայումս նվագարկվող տեսանյութին</string>
+  <string name="morphe_loop_count_clear_title">Մաքրել պահպանված կրկնությունների քանակը</string>
+  <string name="morphe_loop_count_clear_summary">Ջնջել ձեր ցուցակներում պահպանված կրկնությունների քանակը: Պահպանված տեսանյութեր՝ %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Պահպանված կրկնությունների քանակ չկա</string>
+  <string name="morphe_loop_count_clear_dialog_title">Մաքրե՞լ պահպանված կրկնությունների քանակը։</string>
+  <string name="morphe_loop_count_clear_dialog_message">Ձեր ցուցակների տեսանյութերը կկորցնեն իրենց կրկնությունների քանակը, և «Կրկնել տեսանյութը» տարբերակն այլևս չի ակտիվանա, երբ ցուցակը նվագարկի դրանք</string>
+  <string name="morphe_loop_count_clear_done">Պահպանված կրկնությունների քանակը մաքրվել է</string>
+  <string name="morphe_loop_count_flyout_name">Կրկնությունների քանակը</string>
+  <string name="morphe_loop_count_dialog_message">Թե քանի անգամ է տեսանյութը նվագարկվում հաջորդ տեսանյութից առաջ, %1$s-ից մինչև %2$s: Թողեք դատարկ, որպեսզի տեսանյութը կրկնվի առանց սահմանափակման:</string>
+  <string name="morphe_loop_count_no_limit">Առանց սահմանափակման</string>
+  <string name="morphe_loop_count_decrease">Ավելի քիչ անգամ</string>
+  <string name="morphe_loop_count_increase">Ավելի շատ անգամ</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Ցուցադրել «Պատկերը պատկերի մեջ» կոճակը</string>
   <string name="morphe_pip_button_flyout_title">Ցուցադրել «Պատկերը պատկերի մեջ» մենյուն</string>
@@ -1113,6 +1131,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">Լուսավորում է դիտման ողջ էջը և սև զողերը տեսանյութի գույներով՝ փոխարինելով Ambient ռեժիմին</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Պահպանել տեքստի ընթեռնելիությունը</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Մարում է լույսը պայծառ տեսանյութերի դեպքում, որպեսզի էջի տեքստը մնա ընթեռնելի</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Մարմարել թռչարկման ժամանակ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Մարմարում է լույսը, երբ էջը թռչարկվում է կամ դիպչում է</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Մարմարման տևողությունը</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Թե ինչքան ժամանակ լույսը մնում է մարմարած թռչարկումը դադարելուց հետո: 0 արժեքի դեպքում միայն թռչարկումն է մարմարում լույսը, և այն վերականգնվում է հենց թռչարկումը դադարում է</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Թաքցնել տեղեկատվական քարտերը</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Թաքցնել «Բաժանորդագրություններ» լրացուցիչում</string>
   <string name="morphe_hide_shorts_video_description_title">Թաքցնել տեսանյութի նկարագրության մեջ</string>
   <string name="morphe_hide_shorts_history_title">Թաքցնել դիտման պատմության մեջ</string>
+  <string name="morphe_hide_shorts_notifications_title">Թաքցնել հրդապիղ ծանուցումներում</string>
   <string name="morphe_shorts_player_screen_title">Shorts-ի նվագիչ</string>
   <string name="morphe_shorts_player_screen_summary">Ընտրեք, թե որ բաղադրիչները հայտնվեն Shorts-ի նվագարկիչում</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Անջատել կրկնակի հպումը՝ հավանելու համար</string>

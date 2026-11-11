@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">ເປີດໃຊ້ການສະຫຼັບສຽງ/ວິດີໂອ</string>
   <string name="morphe_music_enable_audio_video_switch_summary">ລອງປ່ຽນເວີຊັນຂອງແທຣັກສຽງ ແລະ ມິວສິກວິດີໂອທາງການ</string>
+  <string name="morphe_music_auto_song_version_title">ຫຼິ້ນເວີຊັນຂອງເພງສະເໝີ</string>
+  <string name="morphe_music_auto_song_version_summary">ປ່ຽນວິດີໂອເພງທາງການໃນລາຍການຖັດໄປດ້ວຍເພງທີ່ກົງກັນ. ຕ້ອງເປີດການຕັ້ງຄ່າແອັບ \'ບໍ່ຫຼິ້ນວິດີໂອເພງ\'. ເພງທີ່ບໍ່ມີຄູ່ທີ່ກົງກັນຈະບໍ່ມີການປ່ຽນແປງ</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">ດາວໂຫຼດວິດີໂອເພງ, ພອດແຄສ, ຫຼື ເພງ ດ້ວຍແອັບດາວໂຫຼດຂອງບຸກຄົນທີສາມ</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">ເຊື່ອງປຸ່ມຫຼິ້ນຊ້ຳ</string>
   <string name="morphe_music_hide_shuffle_button_title">ເຊື່ອງປຸ່ມສຸ່ມເພງ</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">ເຊື່ອງຊັ້ນ \'ໂທດ່ວນ\'</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">ເຊື່ອງພາກສ່ວນ \'ທ່ານອາດຈະມັກ\'</string>
   <string name="morphe_music_comments_screen_title">ຄຳຄິດເຫັນ</string>
   <string name="morphe_music_comments_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ສະແດງໃນພາກສ່ວນຄຳຄິດເຫັນ</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">ເຊື່ອງຄຳແນະນຳຂອງຊຸມຊົນ</string>
@@ -335,6 +338,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_title">ຄວາມໄວໃນການຫຼິ້ນ</string>
   <string name="morphe_music_playback_speed_summary">ຄວາມໄວທີ່ໃຊ້ສຳລັບທຸກແທຣັກ. ທີ່ 100% ຈະໃຊ້ຄວາມໄວຂອງແອັບ, ເຊັ່ນ ຄວາມໄວໃນການຫຼິ້ນພອດແຄສ</string>
   <string name="morphe_music_playback_speed_change_pitch_title">ປ່ຽນລະດັບສຽງຕາມຄວາມໄວ</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">ປິດການຫຼຸດສຽງອັດຕະໂນມັດ</string>
+  <string name="morphe_music_disable_audio_ducking_summary">ລະດັບສຽງຈະບໍ່ຫຼຸດລົງ ເມື່ອແອັບອື່ນຫຼິ້ນສຽງສັ້ນໆ ເຊັ່ນ: ການແຈ້ງເຕືອນ</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ປິດການປ່ຽນເສັ້ນທາງການບໍ່ມັກ</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ປ້ອງກັນການຂ້າມໄປແທຣັກຖັດໄປເມື່ອມີການກົດປຸ່ມບໍ່ມັກ</string>
@@ -492,16 +498,42 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ເຊື່ອງປ້າຍຊື່ປຸ່ມນຳທາງ</string>
   <string name="morphe_music_navigation_bar_glass_title">ເປີດໃຊ້ແຖບນຳທາງແບບແກ້ວ</string>
   <string name="morphe_music_navigation_bar_glass_summary">ສະແດງແຖບການນຳທາງເປັນແຄັບຊູນໂປ່ງແສງ, ມົນ ແລະ ລອຍຕົວ</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">ຄວາມທຶບຂອງແກ້ວ</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">ປັບລະດັບຄວາມໂປ່ງໃສຂອງແຖບການນຳທາງແບບແກ້ວ (0 ແມ່ນໂປ່ງໃສ, 100 ແມ່ນທຶບ)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">ແກ້ວສີແຈ້ງ</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">ປ່ຽນສີແຖບການນຳທາງແບບແກ້ວເປັນສີຂາວແທນສີເຂັ້ມ ເພື່ອໃຫ້ແກ້ວເບິ່ງສີແຈ້ງ ແລະ ໃສຂຶ້ນ</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">ຂະໜາດແຖບການນຳທາງແບບແກ້ວ</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">ປັບຄວາມສູງ, ຄວາມກວ້າງ ແລະ ໄລຍະຫ່າງຂອງປຸ່ມຂອງແຖບການນຳທາງແບບແກ້ວ ພ້ອມກັບການ xem ຕົວຢ່າງ. ປຸ່ມທີ່ບໍ່ພໍກັບຄວາມກວ້າງຂອງໜ້າຈໍຈະຖືກເຊື່ອງໄວ້</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">ຂະໜາດ ແລະ ຮູບແບບຂອງແຖບນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">ປັບຄວາມສູງ, ຄວາມກວ້າງ, ໄລຍະຫ່າງຂອງປຸ່ມ, ຄວາມໂປ່ງໃສ ແລະ ຄວາມສະຫວ່າງຂອງຂອບແຖບນຳທາງແບບແກ້ວ, ພ້ອມດ້ວຍການເບິ່ງຕົວຢ່າງ. ປຸ່ມທີ່ບໍ່ພໍກັບຄວາມກວ້າງຂອງໜ້າຈໍຈະຖືກເຊື່ອງໄວ້</string>
   <string name="morphe_music_navigation_bar_glass_size_height">ຄວາມສູງ</string>
   <string name="morphe_music_navigation_bar_glass_size_width">ຄວາມກວ້າງສູງສຸດ</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">ໄລຍະຫ່າງຂອງປຸ່ມ</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">ປຸ່ມທີ່ສະແດງ: %1$s ຈາກ %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">ຄວາມໂປ່ງໃສ</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">ຄວາມສະຫວ່າງຂອງຂອບ</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">ຄວາມມົວຂອງແກ້ວ</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">ລະດັບຄວາມມົວຂອງໜ້າທີ່ຢູ່ຫຼັງແຖບນຳທາງແບບແກ້ວ (Android 14 ແລະ ຫຼັງຈາກນັ້ນ). ທີ່ 0 ໜ້າຈະສະແດງຜ່ານຢ່າງຊັດເຈນ, ແລະ ກ່ອນ Android 14 ໜ້າຈະຖືກປິດທັບ</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">ແກ້ວສີແຈ້ງ</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">ປ່ຽນສີແຖບການນຳທາງແບບແກ້ວເປັນສີຂາວແທນສີເຂັ້ມ ເພື່ອໃຫ້ແກ້ວເບິ່ງສີແຈ້ງ ແລະ ໃສຂຶ້ນ</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">ສີຍ້ອມຂອງຮູບປົກອັລບັ້ມ</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">ຍ້ອມແຖບນຳທາງແບບແກ້ວດ້ວຍສີຂອງຮູບປົກອັລບັ້ມຂອງເພງທີ່ກຳລັງຫຼິ້ນ</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">ເຊື່ອງຕົວບອກປຸ່ມທີ່ເລືອກ</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">ເຊື່ອງໄຮໄລ້ຮູບຊົງມົນ ທີ່ຢູ່ຫຼັງປຸ່ມທີ່ເລືອກຂອງແຖບນຳທາງແບບແກ້ວ</string>
+  <string name="morphe_music_miniplayer_screen_title">ມິນິເພລເຍີ</string>
+  <string name="morphe_music_miniplayer_screen_summary">ປ່ຽນຮູບແບບ, ປຸ່ມ ແລະ ທ່າທາງຂອງມິນິເພລເຍີ</string>
+  <string name="morphe_music_miniplayer_glass_title">ເປີດໃຊ້ງານມິນິເພລເຍີແບບແກ້ວ</string>
+  <string name="morphe_music_miniplayer_glass_summary">ສະແດງມິນິເພລເຍີແບບລອຍເປັນບັດແກ້ວໂປ່ງໃສຮູບຊົງມົນ</string>
+  <string name="morphe_music_miniplayer_glass_style_title">ຮູບແບບມິນິເພລເຍີແບບແກ້ວ</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">ປັບຄວາມມົນຂອງມຸມ, ໄລຍະຫ່າງຂອງຮູບປົກ, ຄວາມສະຫວ່າງຂອງຂອບ ແລະ ຄວາມໂປ່ງໃສຂອງມິນິເພລເຍີແບບແກ້ວ, ພ້ອມດ້ວຍການເບິ່ງຕົວຢ່າງ</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">ຄວາມມົນຂອງມຸມ</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">ໄລຍະຫ່າງຂອງຮູບປົກ</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">ຄວາມສະຫວ່າງຂອງຂອບ</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">ຄວາມໂປ່ງໃສ</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">ຄວາມມົວຂອງແກ້ວ</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">ລະດັບຄວາມມົວຂອງໜ້າທີ່ຢູ່ຫຼັງມິນິເພລເຍີແບບແກ້ວ (Android 14 ແລະ ຫຼັງຈາກນັ້ນ). ທີ່ 0 ໜ້າຈະສະແດງຜ່ານຢ່າງຊັດເຈນ, ແລະ ກ່ອນ Android 14 ໜ້າຈະຖືກປິດທັບ</string>
+  <string name="morphe_music_miniplayer_glass_light_title">ແກ້ວສີແຈ້ງ</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">ຍ້ອມມິນິເພລເຍີແບບແກ້ວເປັນສີຂາວແທນສີເຂັ້ມ, ເພື່ອໃຫ້ແກ້ວເບິ່ງສີແຈ້ງ ແລະ ໃສຂຶ້ນ</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">ສີຍ້ອມຂອງຮູບປົກອັລບັ້ມ</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">ຍ້ອມມິນິເພລເຍີແບບແກ້ວດ້ວຍສີຂອງຮູບປົກອັລບັ້ມຂອງເພງທີ່ກຳລັງຫຼິ້ນ</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">ຮູບປົກໝູນໄດ້</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">ເຮັດໃຫ້ຮູບປົກຂອງມິນິເພລເຍີແບບແກ້ວເປັນຮູບຊົງມົນ, ແລະ ໝູນຄືກັບແຜ່ນຮາຍນຳໃນຂະນະທີ່ເພງກຳລັງຫຼິ້ນ</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">ເຊື່ອງແຖບຄວາມຄືບໜ້າ</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">ເຊື່ອງແຖບຄວາມຄືບໜ້າ ທີ່ຢູ່ດ້ານລຸ່ມຂອງມິນິເພລເຍີແບບແກ້ວ</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">ໜ້າຫຼັກ</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">ຕົວຢ່າງ</string>
@@ -634,7 +666,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">ບໍ່ມີລາຍຊື່ຄຳສັບ Rime ທີ່ຖືກໝາຍໄວ້ສຳລັບພາສາດັ່ງກ່າວ. ແຕະທີ່ຊື່ນີ້ເພື່ອໝາຍລາຍການໃດໜຶ່ງ, ຫຼື ເລືອກພາສາທີ່ມີລາຍຊື່</string>
   <string name="morphe_music_lyrics_rime_dict_add">ເພີ່ມ</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">ເພີ່ມລາຍຊື່ຄຳສັບ Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">ໄຟລ໌ .dict.yaml, ຫຼື ໄຟລ໌ zip ທີ່ບັນຈຸໄຟລ໌ດັ່ງກ່າວ, ທີ່ມີບັນທັດຄືກັບ 字 ham ແລະ 典 din2. ລາຍການຈະຖືກດຶງມາເມື່ອທ່ານຕິກມັນ ແລະ ແຕະ ບັນທຶກ, ແລະ ທ່ານຕ້ອງກວດສອບໃບອະນຸຍາດຂອງມັນດ້ວຍຕົນເອງ</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">ໄຟລ໌ .dict.yaml ຫຼື ໄຟລ໌ zip ທີ່ມີໄຟລ໌ດັ່ງກ່າວ, ພ້ອມດ້ວຍບັນທັດເຊັ່ນ 字 ham ແລະ 典 din2. ລາຍການຈະຖືກດຶງມາເມື່ອທ່ານໝາຍຕິກ ແລະ ແຕະ ບັນທຶກ, ແລະ ທ່ານສາມາດກວດສອບໃບອະນຸຍາດຂອງມັນໄດ້</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">ລະຫັດພາສາ</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">ຕົວອັກສອນສອງ ຫຼື ສາມຕົວ, ເຊັ່ນ hak ຫຼື wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">ຊື່</string>
@@ -722,6 +754,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">ແຕະເພື່ອສະຫຼັບການແປ; ກົດຄ້າງໄວ້ເພື່ອໃຫ້ສະແດງສະເພາະການແປ. ໃຊ້ຜູ້ໃຫ້ບໍລິການແປພາສາທີ່ເປີດໃຊ້ງານຕາມລໍາດັບທີ່ລະບຸໄວ້</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">ສະແດງປຸ່ມ Romanize ຫຼື Transliterate</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">ແຕະເພື່ອສະຫຼັບການທຳເປັນອັກສອນໂຣມັນ ຫຼື ການຖອດອັກສອນ; ກົດຄ້າງໄວ້ເພື່ອໃຫ້ສະແດງສະເພາະການທຳເປັນອັກສອນໂຣມັນ ຫຼື ການຖອດອັກສອນ. ໃຊ້ຜູ້ໃຫ້ບໍລິການ Romanization ທີ່ເປີດໃຊ້ງານຕາມລໍາດັບທີ່ລະບຸໄວ້</string>
+  <string name="morphe_music_lyrics_show_current_button_title">ສະແດງປຸ່ມປັດຈຸບັນ</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">ໃນຂະນະທີ່ເລື່ອນເນື້ອເພງດ້ວຍມື, ຈະສະແດງປຸ່ມທີ່ຂ້າມກັບຄືນໄປຫາແຖວທີ່ກຳລັງຮ້ອງຢູ່</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">ເປີດໃຊ້ການຖອດອັກສອນ</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">ອະນຸຍາດໃຫ້ມີການອ່ານທີ່ບໍ່ແມ່ນອັກສອນລະຕິນຈາກແຫຼ່ງເນື້ອເພງ; ເມື່ອປິດ, ຈະເກັບໄວ້ສະເພາະຕົວອັກສອນລະຕິນ, ຕົວອັກສອນທີ່ມີເຄື່ອງໝາຍກຳກັບ ແລະ ຕົວເລກບອກສຽງວັນນະຍຸດ</string>
   <string name="morphe_music_lyrics_local_romanization_summary">ອ່ານແຕ່ລະຄຳຂອງເນື້ອເພງແບບກຳນົດເວລາ (ເປີດການຊິງຄ໌ຄຳ); ພາສາເກົາຫຼີບໍ່ຈຳເປັນຕ້ອງດາວໂຫຼດ; ສິບສີ່ລະບົບການຂຽນໃຊ້ການດາວໂຫຼດ CLDR ຮ່ວມກັນ; ຕົວອັກສອນ Han ຖືກອ່ານໂດຍ Rime Wordlist ເມື່ອຕາຕະລາງຄຳສັບຂອງມັນຄອບຄຸມພາສານັ້ນ</string>
@@ -745,6 +779,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_written_by">ຂຽນໂດຍ: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">ເນັ້ນຄຳສັບ ຫຼື ພະຍາງທີ່ຊິງຄ໌ແລ້ວ</string>
   <string name="morphe_music_lyrics_word_sync_summary">ໃຫ້ບຸລິມະສິດແກ່ເນື້ອເພງແບບຄຳຕໍ່ຄຳເມື່ອມີໃຫ້. ເມື່ອເນື້ອເພງມີການກຳນົດເວລາຂອງຄຳສັບ, ມັນຈະເນັ້ນແຕ່ລະຄຳ ຫຼື ພະຍາງໃຫ້ຕົງກັບຈັງຫວະເພງ</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">ໃຊ້ການເລື່ອນແບບ spring</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">ເລື່ອນເນື້ອເພງດ້ວຍຟີຊິກແບບ spring, ແລະ ເຄື່ອນຍ້າຍແຕ່ລະແຖວໜ້ອຍໜຶ່ງຫຼັງຈາກແຖວທີ່ຢູ່ເທິງມັນ. ປິດເພື່ອປະຢັດແບັດເຕີຣີໃນອຸປະກອນທີ່ຊ້າກວ່າ</string>
+  <string name="morphe_music_lyrics_gap_dots_title">ສະແດງຈຸດພັກເຄື່ອງດົນຕີ</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">ສະແດງສາມຈຸດລະຫວ່າງແຖວໃນຊ່ວງພັກເຄື່ອງດົນຕີທີ່ຍາວ, ເຊິ່ງຈະເຕັມຂຶ້ນໃນຂະນະທີ່ການພັກສິ້ນສຸດລົງ</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">ເຮັດໃຫ້ແຖວທີ່ຢູ່ໄກອອກໄປມົວລົງຕື່ມ</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">ເຮັດໃຫ້ແຕ່ລະແຖວທີ່ບໍ່ໄດ້ໃຊ້ງານມົວລົງຕື່ມ ຍິ່ງຢູ່ໄກຈາກແຖວທີ່ກຳລັງຮ້ອງ. ເມື່ອປິດ, ທຸກໆແຖວທີ່ບໍ່ໄດ້ໃຊ້ງານຈະມົວໃນລະດັບດຽວກັນ</string>
   <string name="morphe_music_lyrics_line_scale_title">ຫຍໍ້ແຖວທີ່ບໍ່ໄດ້ໃຊ້ງານ</string>
   <string name="morphe_music_lyrics_line_scale_summary">ແຕ້ມທຸກໆແຖວທີ່ບໍ່ໄດ້ກຳລັງຮ້ອງຢູ່ໃນປະຈຸບັນໃຫ້ມີຂະໜາດນ້ອຍລົງເລັກນ້ອຍ, ພ້ອມທັງເຮັດໃຫ້ມັນມົວລົງ</string>
   <string name="morphe_music_lyrics_split_background_title">ສະແດງສຽງຮ້ອງພື້ນຫຼັງແຍກຕ່າງຫາກ</string>
@@ -834,6 +874,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanize_only">ຖອດສຽງເປັນອັກສອນໂຣມັນເທົ່ານັ້ນ</string>
   <string name="morphe_music_lyrics_dual_only">ໂໝດຄູ່</string>
   <string name="morphe_music_lyrics_copied">ຄັດລອກໄປທີ່ຄລິບບອດແລ້ວ</string>
+  <string name="morphe_music_lyrics_current">ປັດຈຸບັນ</string>
   <string name="morphe_music_lyrics_refreshing">ກຳລັງຣີເຟຣຊ</string>
   <string name="morphe_music_lyrics_refreshed">ຣີເຟຣຊແລ້ວ</string>
   <string name="morphe_music_lyrics_transcribe_key_title">ຄີ API ຂອງ QuickLRC</string>

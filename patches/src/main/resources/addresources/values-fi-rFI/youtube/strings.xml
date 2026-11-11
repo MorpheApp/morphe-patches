@@ -648,6 +648,24 @@ API-avaintasi ei saa koskaan jakaa. Kuka tahansa, jolla on pääsy siihen, voi k
   <string name="morphe_loop_video_range_clear">Tyhjennä</string>
   <string name="morphe_loop_video_range_toast_on">Toisto %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Annettu aika on virheellinen</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Toistokertojen määrä</string>
+  <string name="morphe_loop_count_screen_summary">Valitse, kuinka monta kertaa video toistetaan ennen seuraavaa videota</string>
+  <string name="morphe_loop_count_title">Ota toistokertojen määrä käyttöön</string>
+  <string name="morphe_loop_count_summary">Soittimen Lisää-valikossa näkyy Toistokerrat kohdan Toista video vieressä, jotta voit valita, kuinka monta kertaa video toistetaan ennen seuraavaa videota</string>
+  <string name="morphe_loop_count_playlists_title">Tallenna toistokerrat soittolistoihin</string>
+  <string name="morphe_loop_count_playlists_summary">Jokainen soittolistan video säilyttää valitsemasi toistokerrat, ja Toista video kytkeytyy päälle, kun soittolista toistaa videon uudelleen. Jos tämä on pois päältä, toistokerrat koskevat vain parhaillaan toistuvaa videota</string>
+  <string name="morphe_loop_count_clear_title">Tyhjennä tallennetut toistokerrat</string>
+  <string name="morphe_loop_count_clear_summary">Unohda soittolistoihisi tallennetut toistokerrat. Tallennettuja videoita: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Toistokertoja ei ole tallennettu</string>
+  <string name="morphe_loop_count_clear_dialog_title">Tyhjennäkö tallennetut toistokerrat?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Soittolistojesi videot unohtavat toistokertansa, eikä Toista video kytkeydy enää päälle, kun soittolista toistaa niitä</string>
+  <string name="morphe_loop_count_clear_done">Tallennetut toistokerrat tyhjennetty</string>
+  <string name="morphe_loop_count_flyout_name">Toistokertojen määrä</string>
+  <string name="morphe_loop_count_dialog_message">Kuinka monta kertaa video toistetaan ennen seuraavaa videota, välillä %1$s–%2$s. Jätä tyhjäksi toistaaksesi videon rajattomasti.</string>
+  <string name="morphe_loop_count_no_limit">Ei rajoitusta</string>
+  <string name="morphe_loop_count_decrease">Vähemmän kertoja</string>
+  <string name="morphe_loop_count_increase">Lisää kertoja</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Näytä kuva kuvassa -painike</string>
   <string name="morphe_pip_button_flyout_title">Näytä kuva kuvassa -valikko</string>
@@ -1113,6 +1131,10 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <string name="morphe_enhanced_ambient_mode_summary">Valaisee koko katselusivun ja mustat palkit videon mukaan Elokuvatilan sijaan</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Pidä teksti luettavana</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Hämmentää valoa kirkkaissa videoissa, jotta sivun teksti pysyy luettavana</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Himmennä vierittäessä</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Himmennetään valoa, kun sivua vieritetään tai kosketetaan</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Himmennyskesto</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Kuinka kauan valo pysyy himmenevänä vierityksen päätyttyä. Arvolla 0 vain vieritys himmentää valon, ja se palaa normaaliksi heti vierityksen päätyttyä</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Piilota infokortit</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <string name="morphe_hide_shorts_subscriptions_title">Piilotetaan Tilausten syötteessä</string>
   <string name="morphe_hide_shorts_video_description_title">Piilotetaan videon kuvauksesta</string>
   <string name="morphe_hide_shorts_history_title">Piilota katseluhistoriassa</string>
+  <string name="morphe_hide_shorts_notifications_title">Piilota push-ilmoituksista</string>
   <string name="morphe_shorts_player_screen_title">Shorts-soitin</string>
   <string name="morphe_shorts_player_screen_summary">Valitse Shorts-soittimen näkyvät osat</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Poista kaksoisnapautus tykkäämiseksi käytöstä</string>

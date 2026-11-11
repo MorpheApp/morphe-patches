@@ -648,6 +648,24 @@ A API kulcsodat soha nem szabad megosztani. Bárki, akinek hozzáférése van ho
   <string name="morphe_loop_video_range_clear">Törlés</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s ciklusban</string>
   <string name="morphe_loop_video_range_invalid_time">Érvénytelen idő van megadva</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Ismétlésszám</string>
+  <string name="morphe_loop_count_screen_summary">Válassza ki, hányszor ismétlődjön a videó a következő videó előtt</string>
+  <string name="morphe_loop_count_title">Ismétlésszám engedélyezése</string>
+  <string name="morphe_loop_count_summary">A lejátszó További menüje a Videó ismétlése mellett egy Ismétlésszám opciót jelenít meg, amelyben kiválaszthatod, hányszor játszon le a videó a következő videó előtt</string>
+  <string name="morphe_loop_count_playlists_title">Ismétlésszám mentése a lejátszabásokban</string>
+  <string name="morphe_loop_count_playlists_summary">A lejátszási lista minden videója megjegyzi a választott ismétlésszámot, és a Videó ismétlése bekapcsol, amikor a lista újra lejátsza azt. Ha kikapcsolva van, az ismétlésszám csak az aktuálisan lejátszott videóra vonatkozik</string>
+  <string name="morphe_loop_count_clear_title">Mentett ismétlésszámok törlése</string>
+  <string name="morphe_loop_count_clear_summary">Töröld a lejátszási listáidban mentett ismétlésszámokat. Mentett videók: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Nincs mentett ismétlésszám</string>
+  <string name="morphe_loop_count_clear_dialog_title">Töröljük a mentett ismétlésszámokat?</string>
+  <string name="morphe_loop_count_clear_dialog_message">A lejátszabásaid videói elfelejtik az ismétlésszámukat, és a Videó ismétlése többé nem kapcsol be, amikor a lista lejátsza őket</string>
+  <string name="morphe_loop_count_clear_done">A mentett ismétlésszámok törölve lettek</string>
+  <string name="morphe_loop_count_flyout_name">Ismétlésszám</string>
+  <string name="morphe_loop_count_dialog_message">Hány alkalommal játszon le a videó a következő videó előtt, %1$s-tól %2$s-ig. Hagyja üresen, ha korlát nélkül szeretné ismételni a videót.</string>
+  <string name="morphe_loop_count_no_limit">Nincs korlát</string>
+  <string name="morphe_loop_count_decrease">Kevesebb alkalommal</string>
+  <string name="morphe_loop_count_increase">Több alkalommal</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Kép a képben gomb megjelenítése</string>
   <string name="morphe_pip_button_flyout_title">Kép a képben menü megjelenítése</string>
@@ -1113,6 +1131,10 @@ Az 'Audio Track' menü megjelenítéséhez állítsa a 'Videóstream-ek megtéve
   <string name="morphe_enhanced_ambient_mode_summary">A Mozifilmes világítás helyett a videó színei világítják meg az egész megtekintési oldalt és a fekete sávokat</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">A szöveg olvashatósága megőrzése</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Csökkenti a fényt a világos videóknál, hogy az oldalon lévő szöveg olvasható maradjon</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Sötkítse görgetés közben</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Sötkíti a fényt, amíg az oldal görgetve vagy érintve van</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Sötkitési időtartam</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Meddig marad sötétebb a fény a görgetés leállása után. A 0 értékkel csak a görgetés sötkíti a fényt, és amint a görgetés megáll, a fény visszatér a korábbi állapotába</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Infó kártyák elrejtése</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Az 'Audio Track' menü megjelenítéséhez állítsa a 'Videóstream-ek megtéve
   <string name="morphe_hide_shorts_subscriptions_title">Elrejtve a Feliratkozások hírcsatornából</string>
   <string name="morphe_hide_shorts_video_description_title">Elrejteni a videó leírásában</string>
   <string name="morphe_hide_shorts_history_title">Elrejtés az előzményekben</string>
+  <string name="morphe_hide_shorts_notifications_title">Elrejtés a push értesítésekben</string>
   <string name="morphe_shorts_player_screen_title">Shorts lejátszó</string>
   <string name="morphe_shorts_player_screen_summary">Válassza ki, mely elemek jelenjenek meg a Shorts lejátszón</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">A dupla koppintásos lájkolás letiltása</string>

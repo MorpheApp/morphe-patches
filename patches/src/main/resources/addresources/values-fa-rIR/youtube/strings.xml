@@ -648,6 +648,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">پاک‌کردن</string>
   <string name="morphe_loop_video_range_toast_on">تکرار %1$s تا %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">محدودهٔ زمانی نامعتبر</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">تعداد دفعات تکرار</string>
+  <string name="morphe_loop_count_screen_summary">انتخاب کنید که یک ویدئو پیش از ویدئوی بعدی چند بار تکرار شود</string>
+  <string name="morphe_loop_count_title">فعال‌کردن تعداد تکرار</string>
+  <string name="morphe_loop_count_summary">منوی More در پخش‌کننده، تعداد تکرار را در کنار تکرار ویدیو نمایش می‌دهد تا انتخاب کنید ویدیو چند بار پخش شود و سپس به ویدیوی بعدی برود</string>
+  <string name="morphe_loop_count_playlists_title">ذخیره تعداد تکرار در لیست‌های پخش</string>
+  <string name="morphe_loop_count_playlists_summary">هر ویدیو در یک لیست پخش، تعداد تکرار انتخابی شما را حفظ می‌کند و هنگام پخش مجدد توسط لیست پخش، گزینه تکرار ویدیو فعال می‌شود. در صورت غیرفعال بودن، تعداد تکرار فقط برای ویدیویی که اکنون در حال پخش است اعمال می‌شود</string>
+  <string name="morphe_loop_count_clear_title">پاک کردن تعداد تکرارهای ذخیره‌شده</string>
+  <string name="morphe_loop_count_clear_summary">فراموش کردن تعداد تکرارهای ذخیره‌شده در لیست‌های پخش شما. ویدیوهای ذخیره‌شده: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">هیچ تعداد تکراری ذخیره نشده است</string>
+  <string name="morphe_loop_count_clear_dialog_title">پاک کردن تعداد تکرارهای ذخیره‌شده؟</string>
+  <string name="morphe_loop_count_clear_dialog_message">ویدیوهای لیست‌های پخش شما تعداد تکرار خود را فراموش می‌کنند و هنگام پخش توسط لیست پخش، تکرار ویدیو دیگر فعال نمی‌شود</string>
+  <string name="morphe_loop_count_clear_done">تعداد تکرارهای ذخیره‌شده پاک شدند</string>
+  <string name="morphe_loop_count_flyout_name">تعداد تکرار</string>
+  <string name="morphe_loop_count_dialog_message">تعداد دفعاتی که ویدیو قبل از ویدیوی بعدی پخش شود، از %1$s تا %2$s. برای پخش نامحدود ویدیو، این قسمت را خالی بگذارید.</string>
+  <string name="morphe_loop_count_times">{%s, plural, one {# بار} other {# بار}}</string>
+  <string name="morphe_loop_count_no_limit">بدون محدودیت</string>
+  <string name="morphe_loop_count_decrease">تعداد کمتر</string>
+  <string name="morphe_loop_count_increase">تعداد بیشتر</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">نمایش دکمه تصویر در تصویر</string>
   <string name="morphe_pip_button_flyout_title">نمایش منوی تصویر در تصویر</string>
@@ -1113,6 +1132,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">به جای حالت محیطی، تمام صفحه تماشا و نوارهای سیاه را با رنگ ویدیو روشن می‌کند</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">خوانا نگه داشتن متن</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">شدت نور در ویدیوهای روشن را کاهش می‌دهد تا متن‌های صفحه خوانا باقی بمانند</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">کم‌نور شدن هنگام پیمایش</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">هنگام پیمایش یا لمس صفحه، نور را کم می‌کند</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">مدت زمان کم‌نوری</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">مدت زمانی که نور پس از توقف پیمایش کم‌نور می‌ماند. با مقدار 0، فقط هنگام پیمایش نور کم می‌شود و به محض توقف پیمایش، به حالت قبل برمی‌گردد</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">پنهان‌کردن کارت‌های اطلاعاتی</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">پنهان‌کردن در خوراک اشتراک‌ها</string>
   <string name="morphe_hide_shorts_video_description_title">پنهان‌کردن در توضیحات ویدئو</string>
   <string name="morphe_hide_shorts_history_title">پنهان‌کردن در سابقهٔ تماشا</string>
+  <string name="morphe_hide_shorts_notifications_title">پنهان کردن در اعلان‌های فشاری</string>
   <string name="morphe_shorts_player_screen_title">پخش‌کنندهٔ Shorts</string>
   <string name="morphe_shorts_player_screen_summary">انتخاب کنید کدام مؤلفه‌ها در پخش‌کنندهٔ Shorts نمایش داده شوند</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">غیرفعال‌کردن دو ضربه برای پسندیدن</string>

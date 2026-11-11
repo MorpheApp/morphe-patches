@@ -648,6 +648,24 @@ Cheia API nu trebuie niciodată distribuită. Oricine are acces la aceasta poate
   <string name="morphe_loop_video_range_clear">Golește</string>
   <string name="morphe_loop_video_range_toast_on">Buclează %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Interval de timp invalid</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Număr de repetări</string>
+  <string name="morphe_loop_count_screen_summary">Alege de câte ori să se repete un videoclip înainte de următorul videoclip</string>
+  <string name="morphe_loop_count_title">Activează numărul de repetări</string>
+  <string name="morphe_loop_count_summary">Meniul Mai multe al playerului afișează Număr repetări lângă Repetă videoclipul, pentru a alege de câte ori să fie redat videoclipul înainte de următorul videoclip</string>
+  <string name="morphe_loop_count_playlists_title">Salvează numărul de repetări în playlist-uri</string>
+  <string name="morphe_loop_count_playlists_summary">Fiecare videoclip dintr-un playlist păstrează numărul de repetări ales, iar Repetă videoclipul se activează atunci când playlist-ul îl redă din nou. Dacă este dezactivat, numărul de repetări se aplică doar pentru videoclipul redat în prezent</string>
+  <string name="morphe_loop_count_clear_title">Șterge numărul de repetări salvate</string>
+  <string name="morphe_loop_count_clear_summary">Uită numărul de repetări salvate în playlist-urile tale. Videoclipuri salvate: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Nu există număr de repetări salvate</string>
+  <string name="morphe_loop_count_clear_dialog_title">Șterge numărul de repetări salvate?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Videoclipurile din playlist-urile tale vor uita numărul de repetări, iar Repetă videoclipul nu se mai activează atunci când un playlist le redă</string>
+  <string name="morphe_loop_count_clear_done">Numărul de repetări salvate a fost șters</string>
+  <string name="morphe_loop_count_flyout_name">Număr de repetiții</string>
+  <string name="morphe_loop_count_dialog_message">De câte ori să fie redat videoclipul înainte de următorul, de la %1$s la %2$s. Lăsați gol pentru a repeta videoclipul fără limită.</string>
+  <string name="morphe_loop_count_no_limit">Fără limită</string>
+  <string name="morphe_loop_count_decrease">Mai puține ori</string>
+  <string name="morphe_loop_count_increase">Mai multe ori</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Afișează butonul Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Afișează meniul Picture-in-Picture</string>
@@ -1113,6 +1131,10 @@ Pentru a afișa meniul 'Audio Track', schimbați 'Spoof video streams' în orice
   <string name="morphe_enhanced_ambient_mode_summary">Iluminează întreaga pagină de vizionare și barele negre cu videoclipul, în locul modului Ambient</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Menține textul lizibil</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Reduce luminozitatea videoclipurilor luminoase pentru ca textul de pe pagină să rămână lizibil</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Diminuarea luminii în timpul defilării</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Diminuează lumina în timp ce pagina este defilată sau atinsă</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Durata diminuării</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Cât de mult timp rămâne lumina diminuată după ce defilarea se oprește. Cu valoarea 0, doar defilarea diminuează lumina, iar aceasta revine imediat ce defilarea se oprește</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ascunde cardurile cu informații</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Pentru a afișa meniul 'Audio Track', schimbați 'Spoof video streams' în orice
   <string name="morphe_hide_shorts_subscriptions_title">Ascunde în fluxul Abonamente</string>
   <string name="morphe_hide_shorts_video_description_title">Ascunde în descrierea video</string>
   <string name="morphe_hide_shorts_history_title">Ascunde în istoricul de vizionare</string>
+  <string name="morphe_hide_shorts_notifications_title">Ascunde în notificările push</string>
   <string name="morphe_shorts_player_screen_title">Player Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Alege care componente apar în playerul Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Dezactivează dubla atingere pentru a aprecia</string>

@@ -648,6 +648,25 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_loop_video_range_clear">지우기</string>
   <string name="morphe_loop_video_range_toast_on">\'%1$s ~ %2$s\' 연속 재생</string>
   <string name="morphe_loop_video_range_invalid_time">잘못된 시간 범위입니다</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">반복 횟수</string>
+  <string name="morphe_loop_count_screen_summary">다음 동영상이 재생되기 전까지 동영상을 몇 번 반복할지 선택하세요</string>
+  <string name="morphe_loop_count_title">반복 횟수 활성화</string>
+  <string name="morphe_loop_count_summary">플레이어의 더보기 메뉴에 \'동영상 반복 재생\' 옆에 \'반복 횟수\'가 표시되어, 다음 동영상으로 넘어가기 전까지 동영상을 몇 번 재생할지 선택할 수 있습니다</string>
+  <string name="morphe_loop_count_playlists_title">재생목록에 반복 횟수 저장</string>
+  <string name="morphe_loop_count_playlists_summary">재생목록의 각 동영상은 선택한 반복 횟수를 유지하며, 재생목록에서 해당 동영상을 다시 재생할 때 \'동영상 반복 재생\'이 켜집니다. 이 옵션을 끄면 반복 횟수는 현재 재생 중인 동영상에만 적용됩니다</string>
+  <string name="morphe_loop_count_clear_title">저장된 반복 횟수 삭제</string>
+  <string name="morphe_loop_count_clear_summary">재생목록에 저장된 반복 횟수를 삭제합니다. 저장된 동영상: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">저장된 반복 횟수가 없습니다</string>
+  <string name="morphe_loop_count_clear_dialog_title">저장된 반복 횟수를 삭제하시겠습니까?</string>
+  <string name="morphe_loop_count_clear_dialog_message">재생목록의 동영상에 저장된 반복 횟수가 삭제되며, 재생목록에서 해당 동영상을 재생할 때 \'동영상 반복 재생\'이 더 이상 자동으로 켜지지 않습니다</string>
+  <string name="morphe_loop_count_clear_done">저장된 반복 횟수가 삭제되었습니다</string>
+  <string name="morphe_loop_count_flyout_name">루프 횟수</string>
+  <string name="morphe_loop_count_dialog_message">다음 비디오가 재생되기 전까지 비디오가 재생되는 횟수이며, %1$s에서 %2$s까지 설정 가능합니다. 제한 없이 루프하려면 비워 두세요.</string>
+  <string name="morphe_loop_count_times">%s회</string>
+  <string name="morphe_loop_count_no_limit">제한 없음</string>
+  <string name="morphe_loop_count_decrease">횟수 감소</string>
+  <string name="morphe_loop_count_increase">횟수 증가</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">PIP 모드 버튼 표시하기</string>
   <string name="morphe_pip_button_flyout_title">PIP 모드 메뉴 표시하기</string>
@@ -1115,6 +1134,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_enhanced_ambient_mode_summary">앰비언트 모드 대신 동영상에 맞춰 시청 페이지 전체와 검은색 바에 조명을 비춥니다</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">텍스트 가독성 유지</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">밝은 동영상의 조명을 낮춰 페이지의 텍스트 가독성을 유지합니다</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">스크롤 중 어둡게 하기</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">페이지를 스크롤하거나 터치하는 동안 조명을 어둡게 합니다</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">어둡게 유지 시간</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">스크롤이 멈춘 후 조명이 어두운 상태로 유지되는 시간입니다. 0으로 설정하면 스크롤하는 동안에만 조명이 어두워지며, 스크롤이 멈추는 즉시 원래 상태로 돌아옵니다</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">정보 카드 숨기기</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1135,6 +1158,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_hide_shorts_subscriptions_title">구독 피드에서 숨기기</string>
   <string name="morphe_hide_shorts_video_description_title">동영상 설명에서 숨기기</string>
   <string name="morphe_hide_shorts_history_title">시청 기록에서 숨기기</string>
+  <string name="morphe_hide_shorts_notifications_title">푸시 알림에서 숨기기</string>
   <string name="morphe_shorts_player_screen_title">Shorts 플레이어</string>
   <string name="morphe_shorts_player_screen_summary">Shorts 플레이어에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">두 번 탭하여 좋아요 표시 비활성화하기</string>

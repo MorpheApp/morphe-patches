@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Уключаць пераключальнік аўдыё/відэа</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Спрабуйце пераключыць версію аўдыятрэка і афіцыйны музычны кліп</string>
+  <string name="morphe_music_auto_song_version_title">Заўсёды праўцяваць версію песні</string>
+  <string name="morphe_music_auto_song_version_summary">Замяняе афіцыйныя музычныя кліпы ў чарзе на адпаведную песню. Патрабуецца, каб настройка праграмы \"Не праўцяляць музычныя кліпы\" была ўключана. Трэкі без дакладнага супадання застаюцца нязменнымі</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Спампоўвайце музыкальныя кліпы, падкасты або песні з дапамогай старонніх праграм для спампоўкі</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Схаваць кнопку \"Паўтор\"</string>
   <string name="morphe_music_hide_shuffle_button_title">Схаваць кнопку \"Перамешаць\"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Схаваць паліцу \"Хуткі набор\"</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Схаваць раздзел \"Вам таксама можа спадабацца\"</string>
   <string name="morphe_music_comments_screen_title">Каментары</string>
   <string name="morphe_music_comments_screen_summary">Выберыце, якія кампаненты будуць адлюстроўвацца ў раздзеле каментараў</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Схаваць правілы супольнасці</string>
@@ -335,6 +338,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_title">Хуткасць прайгравання</string>
   <string name="morphe_music_playback_speed_summary">Хуткасць, якая выкарыстоўваецца для ўсіх трэкаў. Пры 100% выкарыстоўваецца хуткасць праграмы, напрыклад, хуткасць прайгравання падкастаў</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Змяняць вышыню тону разам з хуткасцю</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Адхіліць прыглушэнне аўдыё</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Гучнасць не будзе зніжацца, калі іншая праграма праграе кароткі гук, напрыклад, паведамленне</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Адключаць перанакіраванне пры націсканні \"Не падабаецца\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Запабігае пераскаку на наступны трэк пры націсканні кнопкі \"не падабаецца\"</string>
@@ -492,16 +498,42 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Схаваць подпісы кнопак навігацыі</string>
   <string name="morphe_music_navigation_bar_glass_title">Уключаць шклопадобную панэль навігацыі</string>
   <string name="morphe_music_navigation_bar_glass_summary">Паказвае панэль навігацыі як плаваючую закругленую празрыстую капсулу</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Непразрачнасць шкла</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Наладзіце ўзровень празрыстасці шклападобнай панэлі навігацыі (0 — празрысты, 100 — непразрысты)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Святлое шкло</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Зафарбоўвае шклападобную панэль навігацыі ў белы колер замест цёмнага, каб шкло было святлейшым і чысцейшым</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Памер шклападобнай панэлі навігацыі</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Наладзіце вышыню, шырыню і адлегласць паміж кнопкамі шклападобнай панэлі навігацыі з папярэднім праглядам. Кнопкі, якія не ўмешчаюцца ў шырыню экрана, схаваны</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Памер і стыль шклянай панэлі навігацыі</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Рэгулюйце вышыню, шырыню, інтэрвал паміж кнопкамі, празрыстасць і яркасць краю шклянай панэлі навігацыі з папярэднім праглядам. Кнопкі, якія не ўмяшчаюцца ў шырыню экрана, схаваныя</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Вышыня</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Максімальная шырыня</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Адлегласць паміж кнопкамі</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Паказваецца кнопак: %1$s з %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Непразрыстасць</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Яркасць краю</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Размыццё шкла</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Насколько размыта старонка за шклянай панэллю навігацыі (Android 14 і пазнейшыя). Пры значэнні 0 старонка відаць выразна, а да Android 14 старонка перакрыта</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Святлое шкло</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Зафарбоўвае шклападобную панэль навігацыі ў белы колер замест цёмнага, каб шкло было святлейшым і чысцейшым</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Адцені обложка альбома</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Зафарбоўвае шкляную панэль навігацыі ў колер обложка альбома песні, якая праўцяецца</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Схаваць індыкатар выбранай кнопкі</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Схавае закругленае падсвечванне за выбранай кнопкай шклянай панэлі навігацыі</string>
+  <string name="morphe_music_miniplayer_screen_title">Мініплэер</string>
+  <string name="morphe_music_miniplayer_screen_summary">Змяніце стыль, кнопкі і жэсты мініплэера</string>
+  <string name="morphe_music_miniplayer_glass_title">Уключыць шкляны мініплэер</string>
+  <string name="morphe_music_miniplayer_glass_summary">Паказвае плаваючы мініплэер у выглядзе закругленай празрыстай шклянай карткі</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Стыль шклянага мініплэера</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Рэгулюйце радыус закруглення, адступы обложка, яркасць краю і празрыстасць шклянага мініплэера з папярэднім праглядам</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Радыус закруглення</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Адступы обложка</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Яркасць краю</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Непразрыстасць</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Размыццё шкла</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Насколько размыта старонка за шкляным мініплэерам (Android 14 і пазнейшыя). Пры значэнні 0 старонка відаць выразна, а да Android 14 старонка перакрыта</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Святлое шкло</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Зафарбоўвае шкляны мініплэер у белы колер замест цёмнага для больш святлога і чыстага эфекту шкла</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Адцені обложка альбома</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Зафарбоўвае шкляны мініплэер у колер обложка альбома песні, якая праўцяецца</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Кручэнне обложка</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Робіць обложку шклянага мініплэера круглой і круціць яе, як запіс, пакуль праўцяецца песня</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Схаваць палосу прагрэсу</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Схавае палосу прагрэсу ў ніжняй частцы шклянага мініплэера</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Галоўная</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Узоры</string>
@@ -634,7 +666,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">Для пазначанай вышэй мовы не выбраны спісы слоў Rime. Націсніце на гэтую назву, каб выбраць спіс, або выберыце мову, якая мае спіс</string>
   <string name="morphe_music_lyrics_rime_dict_add">Дадаць</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Дадаць спіс слоў Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Файл .dict.yaml або архіў zip, які яго змяшчае, з радкамі напрыклад 字 ham і 典 din2. Спіс загружаецца, калі вы ставіце адметку і націскаеце \"Захаваць\", а яго ліцэнзію вы праверяеце самастойна</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Файл .dict.yaml або zip-архіў з ім, які змяшчае радкі накшталт 字 ham і 典 din2. Спіс загружаецца пры адзначанні пункту і націсканні \"Захаваць\", а ліцэнзію вы можаце праверыць самастойна</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Код мовы</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Дзве ці тры літары, як у hak або wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Назва</string>
@@ -722,6 +754,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">Націсніце, каб пераключаць пераклад; доўгае націсканне — толькі для перакладу. Выкарыстоўвае ўключаныя пастаўшчыкі перакладу ў паслядоўнасці іх спісу</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Паказваць кнопку раманізацыі або транслітарацыі</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Націсніце, каб пераключаць раманізацыю або транслітарацыю; доўгае націсканне — толькі для раманізацыі або транслітарацыі. Выкарыстоўвае ўключаныя пастаўшчыкі раманізацыі ў паслядоўнасці іх спісу</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Паказваць кнопку \"Паказаць бягучы радок\"</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Пры ручной пракрутцы тэксту паказваецца кнопка, якая вяртае да радка, што выконваецца ў дадзены момант</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Уключаць транслітарацыю</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Дазволіць нелацінскае чытанне з крыніцы тэкстаў; калі выключана, застаюцца толькі лацінскія літары, літары з акцэнтамі і лічбы тонаў</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Чытае кожнае слова тэксту з часовымі меткамі (сінхранізацыя слоў уключана); карэйская мова не патрабуе загрузкі; чатырнаццаць пісьмовых сістэм выкарыстоўваюць адну загрузку CLDR; іерогліфы хань чытаюцца праз Rime Wordlist, калі яго табліца слоў пакрывае гэтую мову</string>
@@ -745,6 +779,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_written_by">Напісаў: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Выдзяляць сінхранізаваныя словы або склады</string>
   <string name="morphe_music_lyrics_word_sync_summary">Аддаваць прыярытэт тэксту па словах, калі ён даступны. Калі тэкст мае часовыя меткі для слоў, кожнае слова або склад будзе выдзяляцца ў такт з музыкай</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Выкарыстоўваць пружынную пракрутку</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Пракручвае тэкст з выкарыстаннем пружыннай фізікі і трохі зсувае кожны радок адносна папярэдняга. Вымкніце гэтую функцыю, каб захаваць зарад батарэі на павольных прыладах</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Паказваць кропкі інструментальных перабіваў</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Паказвае тры кропкі паміж радкамі падчас доўгага інструментальнага перабіву, якія заўпоўніваюцца па меры яго завяршэння</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Больш прыглушаць далёкія радкі</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Больш прыглушае кожны неактыўны радок, чым далей ён знаходзіцца ад радка, які спяваюць. Калі функцыя выключана, кожны неактыўны радок прыглушаецца еднакова</string>
   <string name="morphe_music_lyrics_line_scale_title">Сціснуць неактыўныя радкі</string>
   <string name="morphe_music_lyrics_line_scale_summary">Малюе кожную лінію, якая ў дадзены момант не спявається, трохі меншай, а таксама прыглушае яе</string>
   <string name="morphe_music_lyrics_split_background_title">Паказваць бэк-вакал асобна</string>
@@ -834,6 +874,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanize_only">Толькі раманізацыя</string>
   <string name="morphe_music_lyrics_dual_only">Двойны рэжым</string>
   <string name="morphe_music_lyrics_copied">Скапіравана ў буфер абмену</string>
+  <string name="morphe_music_lyrics_current">Бягучы</string>
   <string name="morphe_music_lyrics_refreshing">Абнаўленне</string>
   <string name="morphe_music_lyrics_refreshed">Абнаўлена</string>
   <string name="morphe_music_lyrics_transcribe_key_title">API-ключ QuickLRC</string>

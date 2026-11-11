@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">הפעל החלפת אודיו/וידאו</string>
   <string name="morphe_music_enable_audio_video_switch_summary">נסה להחליף בין גרסת רצועת האודיו לבין הקליפ המוזיקלי הרשמי</string>
+  <string name="morphe_music_auto_song_version_title">נגן תמיד את גרסת השיר.</string>
+  <string name="morphe_music_auto_song_version_summary">מחליף סרטוני מוזיקה רשמיים בתור בשיר התואם. דורש שהגדרת האפליקציה \'אל תנגן סרטוני מוזיקה\' תהיה מופעלת. רצועות ללא התאמה מדויקת נשארות ללא שינוי.</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">הורד קליפי מוזיקה, פודקאסטים או שירים באמצעות אפליקציות הורדה של צד שלישי</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">הסתר לחצן חזרה</string>
   <string name="morphe_music_hide_shuffle_button_title">הסתר לחצן ערבוב</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">הסתר מדף \'חיוג מהיר\'</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">הסתר את סעיף \'אולי תאהב גם\'</string>
   <string name="morphe_music_comments_screen_title">תגובות</string>
   <string name="morphe_music_comments_screen_summary">בחר אילו רכיבים יוצגו בסעיף התגובות</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">הסתר הנחיות קהילה</string>
@@ -335,6 +338,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_title">מהירות השמעה</string>
   <string name="morphe_music_playback_speed_summary">המהירות המשמשת לכל הרצועות. ב-100% נעשה שימוש במהירות האפליקציה, כמו מהירות השמעת הפודקאסט</string>
   <string name="morphe_music_playback_speed_change_pitch_title">שנה גובה צליל עם המהירות</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">השבת הנמכת שמע</string>
+  <string name="morphe_music_disable_audio_ducking_summary">העוצמה לא תונמך כאשר אפליקציה אחרת משמיעה צליל קצר, כגון התראה</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ביטול הפנייה בלחיצה על \"דיסלייק\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">מניעת דילוג רצועה כאשר לוחצים על \"דיסלייק\"</string>
@@ -491,16 +497,42 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">הסתר תוויות לחצני ניווט</string>
   <string name="morphe_music_navigation_bar_glass_title">הפעל שורת ניווט מזכוכית</string>
   <string name="morphe_music_navigation_bar_glass_summary">מציג את סרגל הניווט כקפסולה שקופה, מעוגלת וצפה</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">אטימות הזכוכית</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">התאם את רמת השקיפות של סרגל הניווט מזכוכית (0 הוא שקוף, 100 הוא אטום)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">זכוכית בהירה</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">צובע את סרגל הניווט מזכוכית בלבן במקום כהה, למראה זכוכית בהירה וצלולה יותר</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">גודל סרגל הניווט מזכוכית</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">התאם את הגובה, הרוחב ואת המרווח בין הכפתורים של סרגל הניווט מזכוכית, עם תצוגה מקדימה. כפתורים שאינם נכנסים ברוחב המסך מוסתרים</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">גודל וסגנון של סרגל ניווט זכוכית.</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">התאם את הגובה, הרוחב, המרווחים בין הכפתורים, השקיפות ובהירות השוליים של סרגל ניווט הזכוכית, כולל תצוגה מקדימה. כפתורים שאינם נכנסים ברוחב המסך מוסתרים.</string>
   <string name="morphe_music_navigation_bar_glass_size_height">גובה</string>
   <string name="morphe_music_navigation_bar_glass_size_width">רוחב מקסימלי</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">מרווח בין כפתורים</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">כפתורים מוצגים: %1$s מתוך %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">אטימות</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">בהירות השוליים</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">טשטוש זכוכית</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">עד כמה הדף מאחורי סרגל ניווט הזכוכית מטושטש (Android 14 ומעלה). ב-0 הדף נראה חד, ולפני Android 14 הדף מכוסה.</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">זכוכית בהירה</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">צובע את סרגל הניווט מזכוכית בלבן במקום כהה, למראה זכוכית בהירה וצלולה יותר</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">גוון עטיפת אלבום</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">צובע את סרגל ניווט הזכוכית בגוון של עטיפת האלבום של השיר שמתנגן.</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">הסתר מחוון כפתור נבחר</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">מסתיר את ההדגשה המעוגלת מאחורי הכפתור הנבחר של סרגל ניווט הזכוכית.</string>
+  <string name="morphe_music_miniplayer_screen_title">מיני-נגן</string>
+  <string name="morphe_music_miniplayer_screen_summary">שנה את הסגנון, הכפתורים והמחוות של המיני-פלייר.</string>
+  <string name="morphe_music_miniplayer_glass_title">הפעל מיני-פלייר זכוכית</string>
+  <string name="morphe_music_miniplayer_glass_summary">מציג את המיני-פלייר הצף ככרטיס זכוכית מעוגל ושקוף.</string>
+  <string name="morphe_music_miniplayer_glass_style_title">סגנון מיני-פלייר זכוכית</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">התאם את רדיוס הפינות, את המרווח של העטיפה, את בהירות השוליים ואת השקיפות של מיני-פלייר הזכוכית, כולל תצוגה מקדימה.</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">רדיוס פינות</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">מרווח עטיפה</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">בהירות השוליים</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">אטימות</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">טשטוש זכוכית</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">עד כמה הדף מאחורי מיני-פלייר הזכוכית מטושטש (Android 14 ומעלה). ב-0 הדף נראה חד, ולפני Android 14 הדף מכוסה.</string>
+  <string name="morphe_music_miniplayer_glass_light_title">זכוכית בהירה</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">צובע את מיני-פלייר הזכוכית בלבן במקום בכהה, למראה זכוכית בהירה וצלולה יותר.</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">גוון עטיפת אלבום</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">צובע את מיני-פלייר הזכוכית בגוון של עטיפת האלבום של השיר שמתנגן.</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">עטיפה מסתובבת</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">הופך את העטיפה של מיני-פלייר הזכוכית לעגולה, ומסובב אותה כמו תקליט בזמן ששיר מתנגן.</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">הסתר סרגל התקדמות</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">מסתיר את סרגל ההתקדמות בתחתית מיני-פלייר הזכוכית.</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">בית</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">דגימות</string>
@@ -630,7 +662,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">לא מסומנת אף רשימת מילים של Rime לשפה למעלה. הקש על השם כדי לסמן אחת, או בחר שפה שיש לה רשימה</string>
   <string name="morphe_music_lyrics_rime_dict_add">הוסף</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">הוסף רשימת מילים של Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">קובץ .dict.yaml, או ארכיון zip המחזיק בו, עם שורות כמו 字 ham ו-典 din2. הרשימה נשלפת כאשר מסמנים אותה ולוחצים על שמור, והרישיון שלה בידיך לבדוק</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">קובץ .dict.yaml, או קובץ zip המכיל אחד כזה, עם שורות כגון 字 ham ו-典 din2. הרשימה נשלפת כאשר מסמנים אותה ולוחצים על שמירה, והרישיונות שלה הם לבדיקתך</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">קוד שפה</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">שתי או שלוש אותיות, כמו ב-hak או wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">שם</string>
@@ -718,6 +750,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">הקש כדי להפעיל/לכבות תרגום; לחיצה ארוכה לתרגום בלבד. משתמש בספקי התרגום המופעלים לפי הסדר המפורט</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">הצג כפתור רומניזציה או האברה</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">הקש כדי להפעיל/לכבות רומניזציה או האברה; לחיצה ארוכה לרומניזציה או האברה בלבד. משתמש בספקי הרומניזציה המופעלים לפי הסדר המפורט</string>
+  <string name="morphe_music_lyrics_show_current_button_title">הצג לחצן שורה נוכחית</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">בזמן גלילה ידנית של המילים, מציג לחצן שחוזר לשורה המושמעת כעת</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">הפעל האברה</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">אפשר הגיות שאינן לטיניות ממקור המילים; כאשר הוא כבוי, שמור רק על אותיות לטיניות, אותיות עם הטעמה וספרות טון</string>
   <string name="morphe_music_lyrics_local_romanization_summary">קורא כל מילה של מילים עם תזמון (סינכרון מילים פעיל); קוריאנית אינה דורשת הורדה; ארבע-עשרה כתבים חולקים הורדה CLDR אחת; תווי Han נקראים על ידי רשימת מילים של Rime כאשר טבלת המילים שלה מכסה את השפה</string>
@@ -741,6 +775,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_written_by">נכתב על ידי: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">הדגש מילים או הברות מסונכרנות</string>
   <string name="morphe_music_lyrics_word_sync_summary">תעדף מילים מילה-מילה כשהן זמינות. כשמילות השיר כוללות תזמון מילים, הדגש כל מילה או הברה בקצב המוזיקה</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">השתמש בגלילת קפיץ</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">גולל את המילים באמצעות פיזיקה של קפיץ, ומזיז כל שורה מעט אחרי השורה שמעליה. כבה כדי לחסוך בסוללה במכשירים איטיים יותר</string>
+  <string name="morphe_music_lyrics_gap_dots_title">הצג נקודות הפסקה אינסטרומנטלית.</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">מציג שלוש נקודות בין השורות במהלך הפסקה אינסטרומנטלית ארוכה, אשר מתמלאות ככל שההפסקה מסתיימת.</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">החשך שורות רחוקות יותר.</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">מחשיך כל שורה שאינה פעילה יותר ככל שהיא רחוקה מהשורה המושרת. כאשר האפשרות כבויה, כל שורה שאינה פעילה מוחשכת באותה מידה.</string>
   <string name="morphe_music_lyrics_line_scale_title">כווץ קווים לא פעילים</string>
   <string name="morphe_music_lyrics_line_scale_summary">מקטין מעט כל קו שאינו נשר כרגע, בנוסף לעמעומו</string>
   <string name="morphe_music_lyrics_split_background_title">הצג שירה ברקע בנפרד</string>
@@ -830,6 +870,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanize_only">רומניזציה בלבד</string>
   <string name="morphe_music_lyrics_dual_only">מצב דואלי</string>
   <string name="morphe_music_lyrics_copied">הועתק ללוח הגזירים</string>
+  <string name="morphe_music_lyrics_current">נוכחי</string>
   <string name="morphe_music_lyrics_refreshing">מרענן</string>
   <string name="morphe_music_lyrics_refreshed">רוענן</string>
   <string name="morphe_music_lyrics_transcribe_key_title">מפתח API של QuickLRC</string>

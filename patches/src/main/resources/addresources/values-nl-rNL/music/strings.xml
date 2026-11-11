@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Audio/video-omschakeling inschakelen</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Probeer over te schakelen tussen audiotrackversie en officiële muziekvideo</string>
+  <string name="morphe_music_auto_song_version_title">Altijd de songversie afspelen</string>
+  <string name="morphe_music_auto_song_version_summary">Vervangt officiële muziekvideo\'s in de wachtrij door het bijbehorende nummer. Vereist dat de app-instelling \'Muziekvideo\'s niet afspelen\' is ingeschakeld. Nummers zonder exacte match blijven ongewijzigd</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Download muziekvideo\'s, podcasts of nummers met apps van derden</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Ze worden één voor één gedownload, wat lang kan duren en ongeveer %3$s vrije
   <string name="morphe_music_hide_repeat_button_title">Herhaal-knop verbergen</string>
   <string name="morphe_music_hide_shuffle_button_title">Shuffle-knop verbergen</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\"Speed dial\"-plank verbergen</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Sectie \'Misschien vind je dit ook leuk\' verbergen</string>
   <string name="morphe_music_comments_screen_title">Reacties</string>
   <string name="morphe_music_comments_screen_summary">Kies welke onderdelen er in de sectie reacties verschijnen</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Communityrichtlijnen verbergen</string>
@@ -335,6 +338,9 @@ SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
   <string name="morphe_music_playback_speed_title">Afspeelsnelheid</string>
   <string name="morphe_music_playback_speed_summary">Snelheid gebruikt voor alle nummers. Bij 100% wordt de app-snelheid gebruikt, zoals de afspeelsnelheid van podcasts.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Toonhoogte wijzigen met snelheid</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Audio-ducking uitschakelen</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Het volume wordt niet verlaagd wanneer een andere app een kort geluid afspeelt, zoals een melding</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Schakel dislike omleiding uit</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Voorkomt dat naar het volgende nummer wordt gesprongen wanneer op de dislike-knop wordt gedrukt</string>
@@ -492,16 +498,42 @@ SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Labels van navigatieknoppen verbergen</string>
   <string name="morphe_music_navigation_bar_glass_title">Glazen navigatiebalk inschakelen</string>
   <string name="morphe_music_navigation_bar_glass_summary">Toont de navigatiebalk als een zwevende, afgeronde, doorschijnende capsule</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Dekking van het glas</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Pas het transparantieniveau van de glazen navigatiebalk aan (0 is transparant, 100 is ondoorzichtig)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Licht glas</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Kleurt de glazen navigatiebalk wit in plaats van donker, voor een lichter en helderder glas</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Grootte glazen navigatiebalk</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Pas de hoogte, breedte en knopafstand van de glazen navigatiebalk aan, inclusief een voorbeeld. Knoppen die niet binnen de schermbreedte passen, worden verborgen</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Grootte en stijl van glazen navigatiebalk</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Pas de hoogte, breedte, knopafstand, opaciteit en randhelderheid van de glazen navigatiebalk aan, inclusief voorbeeld. Knoppen die niet in de schermbreedte passen, worden verborgen</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Hoogte</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Maximale breedte</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Knopafstand</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Getoonde knoppen: %1$s van %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Ondoorzichtigheid</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Randhelderheid</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Glasblur</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Hoeveel de pagina achter de glazen navigatiebalk is vervaagd (Android 14 en later). Bij 0 is de pagina scherp zichtbaar, en vóór Android 14 is de pagina bedekt</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Licht glas</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Kleurt de glazen navigatiebalk wit in plaats van donker, voor een lichter en helderder glas</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Tint albumhoes</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Tint de glazen navigatiebalk met de kleur van de albumhoes van het nummer dat wordt afgespeeld</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Indicator geselecteerde knop verbergen</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Verbergt de afgeronde markering achter de geselecteerde knop van de glazen navigatiebalk</string>
+  <string name="morphe_music_miniplayer_screen_title">Minispeler</string>
+  <string name="morphe_music_miniplayer_screen_summary">Wijzig de stijl, de knoppen en de gebaren van de miniplayer</string>
+  <string name="morphe_music_miniplayer_glass_title">Glazen miniplayer inschakelen</string>
+  <string name="morphe_music_miniplayer_glass_summary">Toont de zwevende miniplayer als een afgeronde, doorschijnende glazen kaart</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Stijl glazen miniplayer</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Pas de hoekstraal, de padding van de hoes, de randhelderheid en de opaciteit van de glazen miniplayer aan, inclusief voorbeeld</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Hoekstraal</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding albumhoes</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Randhelderheid</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Ondoorzichtigheid</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Glasblur</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Hoeveel de pagina achter de glazen miniplayer is vervaagd (Android 14 en later). Bij 0 is de pagina scherp zichtbaar, en vóór Android 14 is de pagina bedekt</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Licht glas</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Tint de glazen miniplayer wit in plaats van donker, voor een lichter en helderder glas</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Tint albumhoes</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Tint de glazen miniplayer met de kleur van de albumhoes van het nummer dat wordt afgespeeld</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Draaiende albumhoes</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Maakt de albumhoes van de glazen miniplayer rond en laat deze draaien als een plaat terwijl een nummer wordt afgespeeld</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Voortgangsbalk verbergen</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Verbergt de voortgangsbalk onderaan de glazen miniplayer</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Home</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Samples</string>
@@ -634,7 +666,7 @@ De eerste kolom is het woord, de tweede de uitspraak; extra kolommen en regels z
   <string name="morphe_music_lyrics_rime_dict_no_table">Er is geen Rime-woordlijst aangevinkt voor de taal hierboven. Tik op deze naam om er een aan te vinken, of kies een taal die een lijst heeft</string>
   <string name="morphe_music_lyrics_rime_dict_add">Toevoegen</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Rime-woordlijst toevoegen</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Een .dict.yaml-bestand, of een zip die er één bevat, met regels zoals 字 ham en 典 din2. De lijst wordt opgehaald zodra je hem aanvinkt en op Opslaan tikt, en de licentie kun je zelf controleren</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Een .dict.yaml-bestand, of een zip-bestand dat dit bevat, met regels zoals 字 ham en 典 din2. De lijst wordt opgehaald wanneer u deze aanvinkt en op Opslaan tikt, en de licentie kunt u zelf controleren</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Taalcode</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Twee of drie letters, bijvoorbeeld hak of wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Naam</string>
@@ -722,6 +754,8 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_show_translate_button_summary">Tik om vertaling in-/uit te schakelen; lang indrukken alleen voor vertaling. Gebruikt de ingeschakelde vertaaldiensten in de volgorde zoals vermeld</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Knop voor romanisering of transliteratie tonen</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Tik om romanisatie of transliteratie in-/uit te schakelen; lang indrukken alleen voor romanisatie of transliteratie. Gebruikt de ingeschakelde romaniseerders in de volgorde zoals vermeld</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Toon Huidige-knop</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Toont een knop die terugspringt naar de regel die wordt gezongen terwijl de songtekst handmatig wordt gescrold</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Transliteratie inschakelen</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Toestaan dat uitspraken uit de lyricsonderdeel niet-latinisch zijn; indien uitgeschakeld worden alleen latinische letters, getekende letters en toongedigitalen behouden</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Lees elk woord uit een getimed lyric (woorden-synchronisatie ingeschakeld); Koreaans vereist geen download; veertien scripts delen één CLDR-download; Han-karakters worden uitgelezen door de Rime-woordlijst wanneer de woordenlijst de taal ondersteunt</string>
@@ -745,6 +779,12 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_written_by">Geschreven door: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Gesynchroniseerde woorden of lettergrepen markeren</string>
   <string name="morphe_music_lyrics_word_sync_summary">Geef prioriteit aan woord-voor-woord songteksten wanneer beschikbaar. Wanneer songteksten woordtiming bevatten, wordt elk woord of elke lettergreep gemarkeerd in de maat met de muziek</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Spring-scrolling gebruiken</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Scrollt de songtekst met springfysica en verschuift elke regel een beetje ten opzichte van de regel erboven. Schakel dit uit om batterij te besparen op tragere apparaten</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Instrumentale break-stippen tonen</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Toont drie stippen tussen de regels tijdens een lange instrumentale break, die vollopen naarmate de break afloopt</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Verre regels sterker dimmen</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Dimt elke inactieve regel sterker naarmate deze verder van de gezongen regel af staat. Wanneer uitgeschakeld, wordt elke inactieve regel gelijkmatig gedimd</string>
   <string name="morphe_music_lyrics_line_scale_title">Inactieve regels verkleinen</string>
   <string name="morphe_music_lyrics_line_scale_summary">Maakt elke regel die momenteel niet wordt gezongen iets kleiner, naast het verdonkeren</string>
   <string name="morphe_music_lyrics_split_background_title">Achtergrondzang apart tonen</string>
@@ -834,6 +874,7 @@ Van toepassing op beide limieten. Bij 1,75 tellen vier tekens van volledige bree
   <string name="morphe_music_lyrics_romanize_only">Alleen geromaniseerd</string>
   <string name="morphe_music_lyrics_dual_only">Dubbele modus</string>
   <string name="morphe_music_lyrics_copied">Gekopieerd naar klembord</string>
+  <string name="morphe_music_lyrics_current">Huidig</string>
   <string name="morphe_music_lyrics_refreshing">Vernieuwen</string>
   <string name="morphe_music_lyrics_refreshed">Vernieuwd</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API-sleutel</string>

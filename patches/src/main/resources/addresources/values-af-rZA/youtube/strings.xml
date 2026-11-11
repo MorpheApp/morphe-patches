@@ -648,6 +648,25 @@ Jou API-sleutel moet nooit gedeel word nie. Enigeen met toegang daartoe kan jou 
   <string name="morphe_loop_video_range_clear">Klar</string>
   <string name="morphe_loop_video_range_toast_on">Lus %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ongeldige tydperk</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Lus-telling</string>
+  <string name="morphe_loop_count_screen_summary">Kies hoeveel keer \'n video lus voordat die volgende video begin</string>
+  <string name="morphe_loop_count_title">Aktiveer lus-telling</string>
+  <string name="morphe_loop_count_summary">Die \'Meer\'-kieslys van die speler wys Loop-telling langs \'Loop video\', om te kies hoeveel keer die video speel voordat die volgende video begin</string>
+  <string name="morphe_loop_count_playlists_title">Stoor loop-telling in speellyste</string>
+  <string name="morphe_loop_count_playlists_summary">Elke video van \'n speellys behou die loop-telling wat jy kies, en \'Loop video\' word aangeskakel wanneer die speellys dit weer speel. As dit afgeskakel is, is die loop-telling slegs vir die video wat nou speel</string>
+  <string name="morphe_loop_count_clear_title">Vee gestoorde loop-tellings uit</string>
+  <string name="morphe_loop_count_clear_summary">Vergeet die loop-tellings wat in jou speellyste gestoor is. Gestoorde video\'s: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Geen loop-tellings is gestoor nie</string>
+  <string name="morphe_loop_count_clear_dialog_title">Vee gestoorde loop-tellings uit?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Die video\'s van jou speellyste vergeet hul loop-telling, en \'Loop video\' word nie meer aangeskakel wanneer \'n speellys hulle speel nie</string>
+  <string name="morphe_loop_count_clear_done">Gestoorde loop-tellings is uitgevee</string>
+  <string name="morphe_loop_count_flyout_name">Lus-telling</string>
+  <string name="morphe_loop_count_dialog_message">Hoeveel keer die video speel voordat die volgende video begin, vanaf %1$s tot %2$s. Los leeg om die video sonder \'n limiet te lus.</string>
+  <string name="morphe_loop_count_times">%s keer</string>
+  <string name="morphe_loop_count_no_limit">Geen limiet</string>
+  <string name="morphe_loop_count_decrease">Minder keer</string>
+  <string name="morphe_loop_count_increase">Meer keer</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Wys die prent-in-prent-knoppie</string>
   <string name="morphe_pip_button_flyout_title">Wys die prent-in-prent-kieslys</string>
@@ -1113,6 +1132,10 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <string name="morphe_enhanced_ambient_mode_summary">Verlig die hele kykbladsy en swart Stroke met die video, in plaas van Ambient-modus</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Hou teks leesbaar</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dim die lig op helder video\'s sodat die teks op die bladsy leesbaar bly</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Dim terwyl daar geskrol word</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Dim die lig terwyl die bladsy geskrol of aangeraak word</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Dim-duur</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Hoe lank die lig dim bly nadat die skrol ophou. Met 0 dim slegs skrol die lig, en dit keer terug sodra die skrol ophou</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Verberg infokaarte</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <string name="morphe_hide_shorts_subscriptions_title">Verberg in Inskrywingsvoer</string>
   <string name="morphe_hide_shorts_video_description_title">Verberg in videobeskrywing</string>
   <string name="morphe_hide_shorts_history_title">Verberg in kykgeskiedenis</string>
+  <string name="morphe_hide_shorts_notifications_title">Steek weg in stootkennisgewings</string>
   <string name="morphe_shorts_player_screen_title">Shorts-speler</string>
   <string name="morphe_shorts_player_screen_summary">Kies watter komponente in die Shorts-speler verskyn</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Deaktiveer dubbeltik om te like</string>

@@ -648,6 +648,24 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">Обриши</string>
   <string name="morphe_loop_video_range_toast_on">Понављање %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Неважећи временски опсег</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Број понављања</string>
+  <string name="morphe_loop_count_screen_summary">Изаберите колико пута ће се видео понављати пре следећег видеа</string>
+  <string name="morphe_loop_count_title">Омогући број понављања</string>
+  <string name="morphe_loop_count_summary">Мени „Више” плејера приказује Број пуштања поред опције Понови видео, како бисте изабрали колико пута ће се видео репродуковати пре следећег видеа</string>
+  <string name="morphe_loop_count_playlists_title">Сачувај број пуштања у петљи у плейлистама</string>
+  <string name="morphe_loop_count_playlists_summary">Сваки видео у плейлисти задржава број пуштања у петљи који одаберете, а опција „Видео у петљи” се укључује када плейлиста поново пусти тај видео. Ако је искључена, број пуштања у петљи важи само за видео који се тренутно пушта</string>
+  <string name="morphe_loop_count_clear_title">Обриши сачуване бројеве пуштања у петљи</string>
+  <string name="morphe_loop_count_clear_summary">Заборави бројеве пуштања у петљи сачуване у вашим плейлистама. Сачувани видеи: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Ниједни број пуштања у петљи није сачуван</string>
+  <string name="morphe_loop_count_clear_dialog_title">Обрисати сачуване бројеве пуштања у петљи?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Видеи у вашим плейлистама заборављају свој број пуштања у петљи, а опција „Видео у петљи” се више не укључује када их плейлиста пушта</string>
+  <string name="morphe_loop_count_clear_done">Сачувани бројеви пуштања у петљи су обрисани</string>
+  <string name="morphe_loop_count_flyout_name">Број пуштања</string>
+  <string name="morphe_loop_count_dialog_message">Колико пута ће се видео пустити пре следећег видеа, од %1$s до %2$s. Оставите празно да би се видео пуштао без ограничења.</string>
+  <string name="morphe_loop_count_no_limit">Без ограничења</string>
+  <string name="morphe_loop_count_decrease">Мање пута</string>
+  <string name="morphe_loop_count_increase">Више пута</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Прикажи дугме за слику у слици</string>
   <string name="morphe_pip_button_flyout_title">Прикажи мени за слику у слици</string>
@@ -1113,6 +1131,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">Осветљава целу страницу за гледање и црне траке у складу са видео-записом, уместо амбијенталног режима</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Задржи читљивост текста</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Пригушује светлост код светлих видео-записа како би текст на страници остао читљив</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Затамни током скроловања</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Затамњује светлост док се страница скролује или дотире</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Трајање затамњења</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Колико дуго светлост остаје затамњена након што се скроловање заустави. Са 0 само скроловање затамњује светлост, и она се враћа чим се скроловање заустави</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Сакриј картице са информацијама</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Сакриј у фиду „Претплате”</string>
   <string name="morphe_hide_shorts_video_description_title">Сакриј у опису видеа</string>
   <string name="morphe_hide_shorts_history_title">Сакриј у историји гледања</string>
+  <string name="morphe_hide_shorts_notifications_title">Сакриј у пуш обавештењима</string>
   <string name="morphe_shorts_player_screen_title">Shorts плејер</string>
   <string name="morphe_shorts_player_screen_summary">Изаберите компоненте које се појављују у Shorts плејеру</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Онемогући двапут додир за свиђање</string>

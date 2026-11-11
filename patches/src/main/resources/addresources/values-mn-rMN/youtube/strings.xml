@@ -648,6 +648,24 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_loop_video_range_clear">Цэвэрлэх</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s хэсгийг давтаж байна</string>
   <string name="morphe_loop_video_range_invalid_time">Хугацааны интервал буруу байна</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Давталтын тоо</string>
+  <string name="morphe_loop_count_screen_summary">Дараагийн бичлэг эхлэхээс өмнө бичлэгийг хэдэн удаа давтахыг сонгоно уу</string>
+  <string name="morphe_loop_count_title">Давталтын тоог идэвхжүүлэх</string>
+  <string name="morphe_loop_count_summary">Тоглуулагчийн \"Илүү\" цэсэнд \"Видеог давтах\" хэсгийн хажууд \"Давтах тоо\" харагдах бөгөөд үүгээр дараагийн видео руу шилжихээс өмнө видеог хэдэн удаа тоглуулахыг сонгоно</string>
+  <string name="morphe_loop_count_playlists_title">Жагсаалтад давтах тоог хадгалах</string>
+  <string name="morphe_loop_count_playlists_summary">Жагсаалтын видео бүр таны сонгосон давтах тоог хадгалах бөгөөд жагсаалт дахин тоглуулах үед \"Видеог давтах\" функц идэвхжинэ. Хэрэв үүнийг унтраавал давтах тоо зөвхөн одоо тоглуулагдаж буй видеод үйлчилнэ</string>
+  <string name="morphe_loop_count_clear_title">Хадгалсан давтах тоог устгах</string>
+  <string name="morphe_loop_count_clear_summary">Жагсаалтад хадгалсан давтах тоог устгах. Хадгалсан видео: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Хадгалсан давтах тоо байхгүй байна</string>
+  <string name="morphe_loop_count_clear_dialog_title">Хадгалсан давтах тоог устгах уу?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Таны жагсаалтын видеонууд давтах тоогоо мартаж, жагсаалт тоглуулах үед \"Видеог давтах\" функц дахин идэвхжихгүй болно</string>
+  <string name="morphe_loop_count_clear_done">Хадгалсан давтах тоог устгалаа</string>
+  <string name="morphe_loop_count_flyout_name">Давталтын тоо</string>
+  <string name="morphe_loop_count_dialog_message">Дараагийн видеог тоглуулахын өмнө видео хэдэн удаа давтагдахыг %1$s-аас %2$s хүртэл тохируулна. Хязгааргүй давтахын тулд хоосон орхино уу.</string>
+  <string name="morphe_loop_count_no_limit">Хязгааргүй</string>
+  <string name="morphe_loop_count_decrease">Цөөн удаа</string>
+  <string name="morphe_loop_count_increase">Илүү удаа</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Дүрсийг дүрсийн дотор харуулах товчийг харуулах</string>
   <string name="morphe_pip_button_flyout_title">Дүрсийг дүрсийн дотор харуулах цэсийг харуулах</string>
@@ -1113,6 +1131,10 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_enhanced_ambient_mode_summary">Ambient горимын оронд видеог ашиглан үзлэлтийн хуудас болон хар хэсгүүдийг бүхэлд нь гэрэлтүүлнэ</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Текстийг уншигдахуйц байлгах</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Гэрэлтэй видео дээр гэрлийг бүдгэрүүлж, хуудас дээрх текстийг уншигдахуйц байлгана</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Гүйлгэх үед бүдгэрүүлэх</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Хуудас гүйлгэх эсвэл хүрэх үед гэрлийг бүдгэрүүлнэ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Бүдгэрэх хугацаа</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Гүйлгэх зогссоны дараа гэрэл хэр удахыг бүдгэрээснээ байхыг заана. 0 дээр зөвхөн гүйлгэх үед бүдгэрч, гүйлгэх зогсох үед шууд хэвэндээ шилжинэ</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Мэдээллийн картуудыг нуух</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Бүртгэлтэй feed-ээс нуух</string>
   <string name="morphe_hide_shorts_video_description_title">Видео тайлбараас нуух</string>
   <string name="morphe_hide_shorts_history_title">Үзсэн түүхээс нуух</string>
+  <string name="morphe_hide_shorts_notifications_title">Push мэдэгдлээс нуух</string>
   <string name="morphe_shorts_player_screen_title">Shorts тоглуулагч</string>
   <string name="morphe_shorts_player_screen_summary">Shorts тоглуулагчид аль бүрэлдэхүүн хэсгүүдийг харуулахыг сонгох</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Хоёр удаа товшлон лайк дарахыг идэвхгүй болгох</string>

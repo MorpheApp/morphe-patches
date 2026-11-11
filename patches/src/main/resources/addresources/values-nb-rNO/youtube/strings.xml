@@ -648,6 +648,24 @@ API-nøkkelen din bør aldri deles. Alle med tilgang til den kan bruke OpenRoute
   <string name="morphe_loop_video_range_clear">Tøm</string>
   <string name="morphe_loop_video_range_toast_on">Gjentar %1$s – %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ugyldig tidsperiode</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Antall løkker</string>
+  <string name="morphe_loop_count_screen_summary">Velg hvor mange ganger en video skal gå i loop før neste video</string>
+  <string name="morphe_loop_count_title">Aktiver antall løkker</string>
+  <string name="morphe_loop_count_summary">«Mer»-menyen i spilleren viser løkkantall ved siden av «Løkk video» for å velge hvor mange ganger videoen skal spilles av før neste video</string>
+  <string name="morphe_loop_count_playlists_title">Lagre løkkantall i spillelister</string>
+  <string name="morphe_loop_count_playlists_summary">Hver video i en spilleliste beholder løkkantallet du velger, og «Løkk video» slås på når spillelisten spiller den på nytt. Hvis dette er slått av, gjelder løkkantallet kun for videoen som spilles av nå</string>
+  <string name="morphe_loop_count_clear_title">Slett lagrede løkkantall</string>
+  <string name="morphe_loop_count_clear_summary">Glem løkkantallene som er lagret i spillelistene dine. Lagrede videoer: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Ingen løkkantall er lagret</string>
+  <string name="morphe_loop_count_clear_dialog_title">Slette lagrede løkkantall?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Videoene i spillelistene dine glemmer løkkantallet sitt, og «Løkk video» slås ikke lenger på når en spilleliste spiller dem</string>
+  <string name="morphe_loop_count_clear_done">Lagrede løkkantall er slettet</string>
+  <string name="morphe_loop_count_flyout_name">Løkkantall</string>
+  <string name="morphe_loop_count_dialog_message">Hvor mange ganger videoen spilles før neste video, fra %1$s til %2$s. La feltet være tomt for å loope videoen uten begrensning.</string>
+  <string name="morphe_loop_count_no_limit">Ingen begrensning</string>
+  <string name="morphe_loop_count_decrease">Færre ganger</string>
+  <string name="morphe_loop_count_increase">Flere ganger</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Vis bilde-i-bilde-knappen</string>
   <string name="morphe_pip_button_flyout_title">Vis bilde-i-bilde-menyen</string>
@@ -1113,6 +1131,10 @@ For å vise 'Audio Track'-menyen, endre 'Forfalsk videostrømmer' til en hvilken
   <string name="morphe_enhanced_ambient_mode_summary">Lyser opp hele se-siden og svarte felt med videoen, i stedet for omgivelsesmodus</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Hold tekst lesbar</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Demper lyset på lyse videoer slik at teksten på siden forblir lesbar</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Demp ved rulling</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Demper lyset mens siden rulles eller berøres</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Dempevarighet</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Hvor lenge lyset forblir dempet etter at rullingen stopper. Med 0 er det bare rulling som demper lyset, og det kommer tilbake så snart rullingen stopper</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Skjul infokort</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ For å vise 'Audio Track'-menyen, endre 'Forfalsk videostrømmer' til en hvilken
   <string name="morphe_hide_shorts_subscriptions_title">Skjul i Abonnement-feed</string>
   <string name="morphe_hide_shorts_video_description_title">Skjul i videobeskrivelsen</string>
   <string name="morphe_hide_shorts_history_title">Skjul i visningshistorikk</string>
+  <string name="morphe_hide_shorts_notifications_title">Skjul i push-varsler</string>
   <string name="morphe_shorts_player_screen_title">Shorts-spiller</string>
   <string name="morphe_shorts_player_screen_summary">Velg hvilke komponenter som vises i Shorts-spilleren</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Deaktiver dobbelttrykk for å like</string>

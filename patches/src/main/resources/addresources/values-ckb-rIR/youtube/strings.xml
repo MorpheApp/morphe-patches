@@ -649,6 +649,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">سڕینەوە</string>
   <string name="morphe_loop_video_range_toast_on">دووبارەبوونەوەی %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">مەودای کاتی نادروستە</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">ژمارەی دوبارەبوونەوە</string>
+  <string name="morphe_loop_count_screen_summary">دیاری بکە ڤیدیۆکە چەند جار دوبارە ببێتەوە پێش ئەوەی بچێت بۆ ڤیدیۆکەی داهاتوو</string>
+  <string name="morphe_loop_count_title">ژمارەی دوبارەبوونەوە چالاک بکە</string>
+  <string name="morphe_loop_count_summary">مینوێی \"زیاتر\"ی پلەیەرەکە ژمارەی دووبارەبوونەوە لە تەنیشت \"دووبارەکردنەوەی ڤیدیۆ\" پیشان دەدات، بۆ ئەوەی هەڵبژێریت کە ڤیدیۆکە چەند جار دووبارە بێتەوە پێش ئەوەی ڤیدیۆی داهاتوو لێبکەوێت</string>
+  <string name="morphe_loop_count_playlists_title">پاشکەوتکردنی ژمارەی دووبارەبوونەوە لە لیستەکانی ڕەپەڕ</string>
+  <string name="morphe_loop_count_playlists_summary">هەر ڤیدیۆیەک لە لیستێکی ڕەپەڕ ئەو ژمارەی دووبارەبوونەوەیەی هەڵبژاردووتە دەپارێزێت، و \"دووبارەکردنەوەی ڤیدیۆ\" چالاک دەبێت کاتێک لیستەکە دووبارە لێی دەدات. ئەگەر ناچالاک بکرێت، ژمارەی دووبارەبوونەوە تەنها بۆ ئەو ڤیدیۆیەیە کە ئێستا لێدەدات</string>
+  <string name="morphe_loop_count_clear_title">سڕینەوەی ژمارەکانی دووبارەبوونەوەی پاشکەوتکراو</string>
+  <string name="morphe_loop_count_clear_summary">ژمارەکانی دووبارەبوونەوەی پاشکەوتکراو لە لیستەکانی ڕەپەڕەکەتدا بسڕەوە. ڤیدیۆکانی پاشکەوتکراو: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">هیچ ژمارەیەکی دووبارەبوونەوە پاشکەوت نەکراوە</string>
+  <string name="morphe_loop_count_clear_dialog_title">ژمارەکانی دووبارەبوونەوەی پاشکەوتکراو بسڕینەوە؟</string>
+  <string name="morphe_loop_count_clear_dialog_message">ڤیدیۆکانی لیستەکانی ڕەپەڕەکەت ژمارەی دووبارەبوونەوەکانیان دەسڕێتەوە، و \"دووبارەکردنەوەی ڤیدیۆ\" ئیتر چالاک نابێت کاتێک لیستەکە لێیان دەدات</string>
+  <string name="morphe_loop_count_clear_done">ژمارەکانی دووبارەبوونەوەی پاشکەوتکراو سڕانەوە</string>
+  <string name="morphe_loop_count_flyout_name">ژمارەی دووبارەبوونەوە</string>
+  <string name="morphe_loop_count_dialog_message">چەند جار ڤیدیۆکە لێبدریت پێش دەستپێکردنی ڤیدیۆی داهاتوو، لە %1$s بۆ %2$s. بۆ ئەوەی ڤیدیۆکە بێ سنوور دووبارەبێتەوە، بەتاڵىى بهێڵە.</string>
+  <string name="morphe_loop_count_times">%s جار</string>
+  <string name="morphe_loop_count_no_limit">بێ سنوور</string>
+  <string name="morphe_loop_count_decrease">کەمتر</string>
+  <string name="morphe_loop_count_increase">زیاتر</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">پیشاندانی دوگمەی وێنە-لە-ناو-وێنە</string>
   <string name="morphe_pip_button_flyout_title">پیشاندانی مینیۆی وێنە-لە-ناو-وێنە</string>
@@ -1114,6 +1133,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">تەواوی لاپەڕەی بینین و شریتە ڕەشەکان بە ڕەنگی ڤیدیۆکەوە ڕوون دەکاتەوە، لە جیاتی مۆدی Ambient</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">تێکستی readable بهێڵەوە</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">ڕووناکیی ڤیدیۆکانی گەش کەمدەکاتەوە بۆ ئەوەی تێکستەکانی لاپەڕەکە بە ڕوونی بخوێندرێن</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">تاریکی لە کاتی سکرۆڵکردن</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">ڕووناکییەکە تاریك دەکات لە کاتێکدا لاپەڕەکە سکرۆڵ دەکرێت یان دەست لێ دەدرێت</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">ماوەی تاریکی</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">ئەو مایەی کە ڕووناکییەکە تاریك دەمێنێتەوە دوای ئەوەی سکرۆڵکردن دەوەستێت. بە 0 تەنها سکرۆڵکردن ڕووناکییەکە تاریك دەکات، و هەر کە سکرۆڵکردن دەوەستێت دەگەڕێتەوە</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">شاردنەوەی کارتەکانی زانیاری</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1134,6 +1157,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">شاردنەوە لە فییدی بەشدارکەرییەکان</string>
   <string name="morphe_hide_shorts_video_description_title">شاردنەوە لە وەسفی ڤیدیۆکە</string>
   <string name="morphe_hide_shorts_history_title">شاردنەوە لە مێژووی بینین</string>
+  <string name="morphe_hide_shorts_notifications_title">شاردنەوە لە ئاگادارکردنەوەکانی پاڵنەر</string>
   <string name="morphe_shorts_player_screen_title">لێدەری Shorts</string>
   <string name="morphe_shorts_player_screen_summary">دیاری بکە کام پێکهاتەکان لە پلەیەری Shorts دەردەکەون</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">ناچالاککردنی دووجار کلیککردن بۆ لایک</string>

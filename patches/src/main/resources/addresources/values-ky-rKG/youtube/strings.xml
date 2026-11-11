@@ -648,6 +648,24 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_loop_video_range_clear">Тазалоо</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s аралыгы кайталанууда</string>
   <string name="morphe_loop_video_range_invalid_time">Убакыттын туура эмес аралыгы</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Айлануу саны</string>
+  <string name="morphe_loop_count_screen_summary">Кийинки видео башталганга чейин видео канча жолу кайталанышын тандаңыз</string>
+  <string name="morphe_loop_count_title">Кайталануу санын күйгүзүү</string>
+  <string name="morphe_loop_count_summary">Плеердин \"Көбүрөөгү\" менюсунда \"Видеону кайталоо\" жанында кайталоо саны көрсөтүлөт, ал жерден кийинки видео башталардан мурун видео канча жолу ойнолорун тандасаңыз болот</string>
+  <string name="morphe_loop_count_playlists_title">Плейлисттерде кайталоо санын сактоо</string>
+  <string name="morphe_loop_count_playlists_summary">Плейлисттин ар бир видеосу сиз тандаган кайталоо санын сактайт жана плейлист аны кайра oynatканда \"Видеону кайталоо\" күйөт. Эгер өчүрүлгөн болсо, кайталоо саны учурда ойноп жаткан видео үчүн гана колдонулат</string>
+  <string name="morphe_loop_count_clear_title">Сакталган кайталоо сандарын тазалоо</string>
+  <string name="morphe_loop_count_clear_summary">Плейлисттериңизде сакталган кайталоо сандарын өчүрүңүз. Сакталган видеолор: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Эч кандай кайталоо сандары сакталган эмес</string>
+  <string name="morphe_loop_count_clear_dialog_title">Сакталган кайталоо сандарын тазалоо керекпи?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Плейлисттериңиздеги видеолор кайталоо сандарын унутат жана плейлист аларды ойноткондо \"Видеону кайталоо\" эми күйбөйт</string>
+  <string name="morphe_loop_count_clear_done">Сакталган кайталоо сандары тазаланды</string>
+  <string name="morphe_loop_count_flyout_name">Кайталануу саны</string>
+  <string name="morphe_loop_count_dialog_message">Кийинки видео башталардан мурун видео канча жолу ойнолору, %1$s дан %2$s чейин. Чектешсиз кайталоо үчүн бош калтырыңыз.</string>
+  <string name="morphe_loop_count_no_limit">Чектелбейт</string>
+  <string name="morphe_loop_count_decrease">Аз жолу</string>
+  <string name="morphe_loop_count_increase">Көп жолу</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Сүрөттө сүрөт баскычын көрсөтүү</string>
   <string name="morphe_pip_button_flyout_title">Сүрөттө сүрөт менюсун көрсөтүү</string>
@@ -1113,6 +1131,10 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_enhanced_ambient_mode_summary">Ambient режиминин ордуна бүткүл көрүү бетин жана кара тилкелерди видео менен жарыктандырат</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Текстти окула турган кылып сактоо</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Жарык видеолордогу жарыкты азайтып, беттеги тексттин окула турган болушун камсыздайт</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Скроллинг учурунда карартуу</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Баракчаны сыртка чыгарганда же тийгенде жарыкты карартат</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Карартуу узатылышы</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Скроллинг токтогондон кийин жарык канча убакытка караңгы бойдон калат. 0 болсо, жарык скроллинг учурунда гана карартат жана скроллинг токтосо дароо калыбына келет</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Маалымат карталарын жашыруу</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_hide_shorts_subscriptions_title">Жазылуулар лентасында жашыруу</string>
   <string name="morphe_hide_shorts_video_description_title">Видеонун сүрөттөөсүндө жашыруу</string>
   <string name="morphe_hide_shorts_history_title">Көрүлгөн видеолордун тарыхында жашыруу</string>
+  <string name="morphe_hide_shorts_notifications_title">Пуш-билдирүүлөрдө жашыруу</string>
   <string name="morphe_shorts_player_screen_title">Shorts ойноткучу</string>
   <string name="morphe_shorts_player_screen_summary">Shorts плееринде кайсы компоненттер көрүнөрүн тандаңыз</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Жактоо үчүн эки жолу басуу функциясын өчүрүү</string>

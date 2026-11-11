@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Omogući prebacivanje audio/video</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Pokušaj prebacivanja između audio verzije pjesme i službenog muzičkog videa</string>
+  <string name="morphe_music_auto_song_version_title">Uvijek pusti verziju pjesme</string>
+  <string name="morphe_music_auto_song_version_summary">Zamjenjuje zvanične muzičke spotove u redu čeka-njem odgovarajućom pjesmom. Zahtijeva da postavka aplikacije \'Ne pusti muzičke spotove\' bude uključena. Trake bez tačnog poklapanja ostaju nepromijenjene</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Preuzmi muzičke spotove, podkaste ili pjesme pomoću aplikacija trećih strana za preuzimanje</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Preuzimaju se jedna po jedna, što može potrajati i zahtijeva oko %3$s slobodno
   <string name="morphe_music_hide_repeat_button_title">Sakrij dugme za ponavljanje</string>
   <string name="morphe_music_hide_shuffle_button_title">Sakrij dugme za nasumično puštanje</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Sakrij policu \"Brzo biranje\"</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Sakrij sekciju \"Možda će vam se svidjeti\"</string>
   <string name="morphe_music_comments_screen_title">Komentari</string>
   <string name="morphe_music_comments_screen_summary">Odaberite koje komponente se pojavljuju u odjeljku sa komentarima</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Sakrij smjernice zajednice</string>
@@ -335,6 +338,9 @@ SABR reprodukcija (isključeni spoof video streamovi)"</string>
   <string name="morphe_music_playback_speed_title">Brzina reprodukcije</string>
   <string name="morphe_music_playback_speed_summary">Brzina koja se koristi za sve pjesme. Na 100% koristi se brzina aplikacije, kao što je brzina reprodukcije podkasta</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Promijeni visinu tona s brzinom</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Onemogući prigušivanje zvuka</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Glasnoća se neće smanjiti kada druga aplikacija pusti kratak zvuk, kao što je obavijest</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Onemogući preusmjeravanje pri ocjeni Ne sviđa mi se</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Sprečava preskakanje na sljedeću pjesmu kada se pritisne dugme Ne sviđa mi se</string>
@@ -492,16 +498,42 @@ SABR reprodukcija (isključeni spoof video streamovi)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Sakrij oznake navigacijskih dugmadi</string>
   <string name="morphe_music_navigation_bar_glass_title">Omogući staklenu navigacijsku traku</string>
   <string name="morphe_music_navigation_bar_glass_summary">Prikazuje navigacijsku traku kao plutajuću, zaobljenu, polutransparentnu kapsulu</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Neprozirnost stakla</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Prilagodite razinu transparentnosti staklene navigacijske trake (0 je transparentno, 100 je neprozirno)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Svijetlo staklo</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Boja staklene navigacijske trake postaje bijela umjesto tamna, za svjetlije i jasnije staklo</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Veličina staklene navigacijske trake</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Prilagodite visinu, širinu i razmak između gumba staklene navigacijske trake, uz prethodni pregled. Gumbi koji ne stanu u širinu ekrana su skriveni</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Veličina i stil staklene navigacijske trake</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Prilagodite visinu, širinu, razmak između dugmadi, prozirnost i svjetlinu ruba staklene navigacijske trake, uz pregled. Dugmad koja ne stanu u širinu ekrana su skrivena</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Visina</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Maksimalna širina</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Razmak između dugmadi</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Prikazani gumbi: %1$s od %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Prozirnost</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Svjetlina ruba</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Zamućenje stakla</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Koliko je stranica iza staklene navigacijske trake zamućena (Android 14 i noviji). Na 0 stranica se vidi jasno, a prije Androida 14 stranica je prekrivena</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Svijetlo staklo</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Boja staklene navigacijske trake postaje bijela umjesto tamna, za svjetlije i jasnije staklo</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Nijansa omota albuma</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Boji staklenu navigacijsku traku bojom omota albuma pjesme koja se pušta</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Sakrij indikator odabrane komande</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Sakriva zaobljeno istaknute područje iza odabrane komande staklene navigacijske trake</string>
+  <string name="morphe_music_miniplayer_screen_title">Mini-plejer</string>
+  <string name="morphe_music_miniplayer_screen_summary">Promijenite stil, komande i gestove mini-plejera</string>
+  <string name="morphe_music_miniplayer_glass_title">Omogući stakleni mini-plejer</string>
+  <string name="morphe_music_miniplayer_glass_summary">Prikazuje plutajući mini-plejer kao zaobljenu, polutropsku staklenu karticu</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Stil staklenog mini-plejera</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Prilagodite radijus uglova, razmak omota, svjetlinu ruba i prozirnost staklenog mini-plejera, uz pregled</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Radijus uglova</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Razmak omota</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Svjetlina ruba</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Prozirnost</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Zamućenje stakla</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Koliko je stranica iza staklenog mini-plejera zamućena (Android 14 i noviji). Na 0 stranica se vidi jasno, a prije Androida 14 stranica je prekrivena</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Svijetlo staklo</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Boji stakleni mini-plejer u bijelo umjesto u tamno, za svjetlije i bistrije staklo</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Nijansa omota albuma</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Boji stakleni mini-plejer bojom omota albuma pjesme koja se pušta</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Rotirajući omot</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Čini omot staklenog mini-plejera okruglim i rotira ga kao ploču dok pjesma traje</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Sakrij traku napretka</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Sakriva traku napretka na dnu staklenog mini-plejera</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Početna</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Uzorki</string>
@@ -722,6 +754,8 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_translate_button_summary">Dodirnite za prebacivanje prijevoda; dugo pritisnite samo za prijevod. Koristi omogućene pružaoce prijevoda prema njihovom navedenom redoslijedu</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Prikaži dugme Romanizuj ili Transliteruj</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Dodirnite za prebacivanje romanizacije ili transliteracije; dugo pritisnite samo za romanizaciju ili transliteraciju. Koristi omogućene pružaoce romanizacije prema njihovom navedenom redoslijedu</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Prikaži trenutno dugme</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Dok ručno skrolujete tekst pjesme, prikazuje dugme koje vraća na liniju koja se trenutno pjeva</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Omogući transliteraciju</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Dozvoli ne-latinička čitanja iz izvora teksta pjesama; kada je isključeno, zadržavaju se samo latinična slova, slova s akcentima i cifre tona</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Čita svaku riječ vremenski usklađenog teksta pjesme (sinkronizacija riječi uključena); korejski ne zahtijeva preuzimanje; četrnaest pisama dijeli jedno CLDR preuzimanje; Han znakove čita Rime Wordlist kada njegova tabela riječi pokriva jezik</string>
@@ -745,6 +779,12 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Napisao: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Istakni sinhronizovane riječi ili slogove</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritizuj tekst pjesme riječ po riječ kada je dostupan. Kada tekst ima vremensko markiranje riječi, ističe svaku riječ ili slog u skladu s muzikom</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Koristi spring skrolovanje</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Skroluje tekst pjesme pomoću spring fizike i pomjera svaku liniju malo nakon one iznad nje. Isključite kako biste uštedjeli bateriju na sporijim uređajima</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Prikaži tačke instrumentalnog prelaza</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Prikazuje tri tačke između redova tokom dugog instrumentalnog prelaza, koje se popunjavaju kako prelaz traje</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Jače zatamni udaljene redove</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Jače zatamnjuje svaki neaktivni red što je on dalje od reda koji se pjeva. Kada je isključeno, svaki neaktivni red je podjednako zatamnjenu</string>
   <string name="morphe_music_lyrics_line_scale_title">Smanji neaktivne linije</string>
   <string name="morphe_music_lyrics_line_scale_summary">Svaki red koji se trenutno ne pjeva prikazuje se nešto manjim, uz prigušivanje boje</string>
   <string name="morphe_music_lyrics_split_background_title">Prikaži prateće vokale odvojeno</string>
@@ -833,6 +873,7 @@ Primjenjuje se na oba ograničenja. Na 1.75, četiri karaktera pune širine rač
   <string name="morphe_music_lyrics_romanize_only">Samo romanizovano</string>
   <string name="morphe_music_lyrics_dual_only">Dualni režim</string>
   <string name="morphe_music_lyrics_copied">Kopirano u međuspremnik</string>
+  <string name="morphe_music_lyrics_current">Trenutno</string>
   <string name="morphe_music_lyrics_refreshing">Osvježavanje</string>
   <string name="morphe_music_lyrics_refreshed">Osvježeno</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API ključ</string>

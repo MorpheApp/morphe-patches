@@ -648,6 +648,8 @@ API açarınız heç vaxt paylaşılmamalıdır. Buna girişi olan hər bir kəs
   <string name="morphe_loop_video_range_clear">Təmizlə</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s arası təkrarlama</string>
   <string name="morphe_loop_video_range_invalid_time">Etibarsız vaxt aralığı</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_no_limit">Limitsiz</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Şəkil içində şəkil düyməsini göstər</string>
   <string name="morphe_pip_button_flyout_title">Şəkil içində şəkil menyusunu göstər</string>

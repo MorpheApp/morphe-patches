@@ -648,6 +648,24 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">נקה</string>
   <string name="morphe_loop_video_range_toast_on">חזרה על %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">ניתן זמן לא חוקי</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">מספר לולאות</string>
+  <string name="morphe_loop_count_screen_summary">בחר כמה פעמים סרטון יחזור בלולאה לפני הסרטון הבא</string>
+  <string name="morphe_loop_count_title">הפעל ספירת לולאות</string>
+  <string name="morphe_loop_count_summary">תפריט \'עוד\' של הנגן מציג את מספר הלולאות לצד \'חזור על סרטון\', כדי לבחור כמה פעמים הסרטון יופעל לפני הסרטון הבא</string>
+  <string name="morphe_loop_count_playlists_title">שמור את מספר הלולאות בפלייליסטים</string>
+  <string name="morphe_loop_count_playlists_summary">כל סרטון בפלייליסט שומר את מספר הלולאות שבחרת, ו\'לולאת וידאו\' נדלקת כאשר הפלייליסט משמיע אותו שוב. אם היא כבויה, מספר הלולאות תקף רק לסרטון שמתנגן כעת</string>
+  <string name="morphe_loop_count_clear_title">נקה מספר לולאות שמור</string>
+  <string name="morphe_loop_count_clear_summary">שכח את מספר הלולאות שנשמרו בפלייליסטים שלך. סרטונים שמורים: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">לא נשמרו מספרי לולאות</string>
+  <string name="morphe_loop_count_clear_dialog_title">לנקות מספרי לולאות שמורים?</string>
+  <string name="morphe_loop_count_clear_dialog_message">הסרטונים בפלייליסטים שלך ישכחו את מספר הלולאות שלהם, ו\'לולאת וידאו\' לא תופעל יותר כאשר פלייליסט משמיע אותם</string>
+  <string name="morphe_loop_count_clear_done">מספרי לולאות שמורים נוקו</string>
+  <string name="morphe_loop_count_flyout_name">מספר לולאות</string>
+  <string name="morphe_loop_count_dialog_message">כמה פעמים הסרטון יתנגן לפני הסרטון הבא, מ-%1$s עד %2$s. השאר ריק כדי להפעיל את הסרטון בלולאה ללא הגבלה.</string>
+  <string name="morphe_loop_count_no_limit">ללא הגבלה</string>
+  <string name="morphe_loop_count_decrease">פחות פעמים</string>
+  <string name="morphe_loop_count_increase">יותר פעמים</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">הצג כפתור תמונה בתוך תמונה</string>
   <string name="morphe_pip_button_flyout_title">הצג תפריט תמונה בתוך תמונה</string>
@@ -1113,6 +1131,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">מאיר את כל דף הצפייה ואת הפסים השחורים באמצעות הסרטון, במקום מצב תאורת אווירה</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">שמירה על קריאות הטקסט</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">מעמעם את התאורה בסרטונים בהירים כדי שהטקסט בדף יישאר קריא</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">החשכה בזמן גלילה</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">מחשיך את התאורה כאשר הדף נגלל או ננגע</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">משך ההחשכה</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">כמה זמן התאורה תישאר חשוכה לאחר הפסקת הגלילה. כאשר הערך הוא 0, רק הגלילה תחשיך את התאורה, והיא תחזור מיד עם הפסקת הגלילה</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">הסתר כרטיסי מידע</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">הסתר בפיד המנויים</string>
   <string name="morphe_hide_shorts_video_description_title">הסתר בתיאור הסרטון</string>
   <string name="morphe_hide_shorts_history_title">הסתר בהיסטוריית הצפייה</string>
+  <string name="morphe_hide_shorts_notifications_title">הסתר בהודעות דחיפה</string>
   <string name="morphe_shorts_player_screen_title">נגן Shorts</string>
   <string name="morphe_shorts_player_screen_summary">בחר אילו רכיבים יופיעו בנגן Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">השבת לייק בהקשה כפולה</string>

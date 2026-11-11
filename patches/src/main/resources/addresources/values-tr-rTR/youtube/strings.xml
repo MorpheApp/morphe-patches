@@ -649,6 +649,24 @@ API anahtarınız asla paylaşılmamalıdır. Ona erişimi olan herkes OpenRoute
   <string name="morphe_loop_video_range_clear">Temizle</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s arasında döngü</string>
   <string name="morphe_loop_video_range_invalid_time">Geçersiz zaman aralığı</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Döngü sayısı</string>
+  <string name="morphe_loop_count_screen_summary">Bir sonraki videodan önce bir videonun kaç kez döngüye gireceğini seçin</string>
+  <string name="morphe_loop_count_title">Döngü sayısını etkinleştir</string>
+  <string name="morphe_loop_count_summary">Oynatıcının Daha Fazla menüsü, bir sonraki videoya geçmeden önce videonun kaç kez oynatılacağını seçmeniz için Videoyu Döngüye Al seçeneğinin yanında Döngü sayısını gösterir</string>
+  <string name="morphe_loop_count_playlists_title">Döngü sayısını çalma listelerinde kaydet</string>
+  <string name="morphe_loop_count_playlists_summary">Bir çalma listesindeki her video seçtiğiniz döngü sayısını korur ve çalma listesi videoyu tekrar oynattığında Videoyu Döngüye Al seçeneği açılır. Kapalıysa, döngü sayısı yalnızca şu an oynatılan video için geçerlidir</string>
+  <string name="morphe_loop_count_clear_title">Kaydedilen döngü sayılarını temizle</string>
+  <string name="morphe_loop_count_clear_summary">Çalma listelerinizde kaydedilen döngü sayılarını unutun. Kaydedilen videolar: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Kaydedilen döngü sayısı yok</string>
+  <string name="morphe_loop_count_clear_dialog_title">Kaydedilen döngü sayıları temizlensin mi?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Çalma listelerinizdeki videolar döngü sayılarını unutur ve bir çalma listesi bunları oynattığında Videoyu Döngüye Al seçeneği artık açılmaz</string>
+  <string name="morphe_loop_count_clear_done">Kaydedilen döngü sayıları temizlendi</string>
+  <string name="morphe_loop_count_flyout_name">Döngü sayısı</string>
+  <string name="morphe_loop_count_dialog_message">Videonun bir sonraki videodan önce kaç kez oynatılacağı, %1$s ile %2$s arası. Sınırsız döngü için boş bırakın.</string>
+  <string name="morphe_loop_count_no_limit">Limitsiz</string>
+  <string name="morphe_loop_count_decrease">Daha az kez</string>
+  <string name="morphe_loop_count_increase">Daha fazla kez</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Resim içinde resim düğmesini göster</string>
   <string name="morphe_pip_button_flyout_title">Resim içinde resim menüsünü göster</string>
@@ -1114,6 +1132,10 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_enhanced_ambient_mode_summary">Videoyla birlikte tüm izleme sayfasını ve siyah çubukları aydınlatır, Ambiyans modunun yerini alır</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Metni okunabilir tut</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Parlak videolarda sayfadaki metnin okunabilir kalması için ışığı kısar</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Kaydırırken karart</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Sayfa kaydırıldığında veya dokunulduğunda ışığı karartır</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Karartma süresi</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Kaydırma durduktan sonra ışığın ne kadar süre karartılı kalacağı. 0 değeriyle, ışık yalnızca kaydırma sırasında kararır ve kaydırma durur durmaz eski haline döner</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Bilgi kartlarını gizle</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1134,6 +1156,7 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_hide_shorts_subscriptions_title">Abonelikler akışında gizle</string>
   <string name="morphe_hide_shorts_video_description_title">Video açıklamasında gizle</string>
   <string name="morphe_hide_shorts_history_title">İzleme geçmişinde gizle</string>
+  <string name="morphe_hide_shorts_notifications_title">Anlık bildirimlerde gizle</string>
   <string name="morphe_shorts_player_screen_title">Shorts oynatıcı</string>
   <string name="morphe_shorts_player_screen_summary">Shorts oynatıcısında hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Çift dokunarak beğenmeyi devre dışı bırak</string>

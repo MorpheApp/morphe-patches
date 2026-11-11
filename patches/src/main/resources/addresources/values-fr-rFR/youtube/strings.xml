@@ -648,6 +648,25 @@ Votre clé API ne doit jamais être partagée. Toute personne ayant accès à ce
   <string name="morphe_loop_video_range_clear">Effacer</string>
   <string name="morphe_loop_video_range_toast_on">Lecture en boucle de %1$s à %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Plage horaire invalide</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Nombre de boucles</string>
+  <string name="morphe_loop_count_screen_summary">Choisissez combien de fois une vidéo doit être lue en boucle avant de passer à la suivante</string>
+  <string name="morphe_loop_count_title">Activer le nombre de boucles</string>
+  <string name="morphe_loop_count_summary">Le menu \'Plus\' du lecteur affiche \'Nombre de boucles\' à côté de \'Lecture en boucle\', pour choisir combien de fois une vidéo doit être lue en boucle avant de passer à la suivante</string>
+  <string name="morphe_loop_count_playlists_title">Enregistrer le nombre de boucles dans les playlists</string>
+  <string name="morphe_loop_count_playlists_summary">Chaque vidéo d\'une playlist conserve le nombre de boucles que vous avez défini, et \'Lecture en boucle\' s\'active lorsque la playlist lit à nouveau cette vidéo. Si cette option est désactivée, le nombre de boucles s\'applique uniquement à la vidéo en cours de lecture</string>
+  <string name="morphe_loop_count_clear_title">Effacer les nombres de boucles enregistrés</string>
+  <string name="morphe_loop_count_clear_summary">Effacer les nombres de boucles enregistrés dans vos playlists. Vidéos enregistrées : %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Aucun nombre de boucles n\'est enregistré</string>
+  <string name="morphe_loop_count_clear_dialog_title">Effacer les nombres de boucles enregistrés ?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Les vidéos de vos playlists perdent leur nombre de boucles enregistré, et \'Lecture en boucle\' ne s\'active plus lorsque la playlist les lit</string>
+  <string name="morphe_loop_count_clear_done">Nombres de boucles enregistrés effacés</string>
+  <string name="morphe_loop_count_flyout_name">Nombre de boucles</string>
+  <string name="morphe_loop_count_dialog_message">Nombre de fois que la vidéo est lue avant de passer à la suivante, de %1$s à %2$s. Laissez vide pour lire la vidéo en boucle sans limite.</string>
+  <string name="morphe_loop_count_times">%s fois</string>
+  <string name="morphe_loop_count_no_limit">Sans limite</string>
+  <string name="morphe_loop_count_decrease">Moins de fois</string>
+  <string name="morphe_loop_count_increase">Plus de fois</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Afficher un bouton \'Image dans l\'image\'</string>
   <string name="morphe_pip_button_flyout_title">Afficher un menu \'Image dans l\'image\'</string>
@@ -1113,6 +1132,10 @@ Pour afficher le menu 'Piste audio', changez 'Falsifier les flux vidéo' et sél
   <string name="morphe_enhanced_ambient_mode_summary">Illumine toute la page de lecture ainsi que les bandes noires autour de la vidéo, à la place du mode Ambiant</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Garder le texte lisible</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Atténue la luminosité des vidéos très lumineuses afin que le texte de la page reste lisible</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Graduer lors du défilement</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Gradue la lumière lorsque la page est défilée ou touchée</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Durée de graduation</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Durée pendant laquelle la lumière reste graduée après l\'arrêt du défilement. Avec 0, seul le défilement gradue la lumière, et elle revient dès que le défilement s\'arrête</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Masquer les fiches info</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Pour afficher le menu 'Piste audio', changez 'Falsifier les flux vidéo' et sél
   <string name="morphe_hide_shorts_subscriptions_title">Masquer dans le flux \'Abonnements\'</string>
   <string name="morphe_hide_shorts_video_description_title">Masquer dans la description vidéo</string>
   <string name="morphe_hide_shorts_history_title">Masquer dans l\'historique de visionnage</string>
+  <string name="morphe_hide_shorts_notifications_title">Masquer dans les notifications push</string>
   <string name="morphe_shorts_player_screen_title">Lecteur Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Choisissez les composants qui apparaissent dans le lecteur Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Désactiver le double appui pour aimer</string>

@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Cumasaigh athrú fuaime/físe</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Féach le haistriú idir Leagan an Rian Fuaime agus an Físeán Ceoil Oifigiúil</string>
+  <string name="morphe_music_auto_song_version_title">Seinn leagan an amhráin i gcónaí</string>
+  <string name="morphe_music_auto_song_version_summary">Cuireann sé an t-amhrán comhfhreagrach in áit físeáin cheoil oifigiúla sa scuaine. Éilíonn sé go mbeadh an socrú aip \'Ná seinn físeáin cheoil\' curtha ar siúl. Ní dhéantar aon athrú ar rianta nach bhfuil comhoiriúnach go díreach leo.</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Íoslódáil físeáin ceoil, podchraoltaí, nó amhráin le haipeanna íoslódála tríú páirtí</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Feictear rianta íoslódáilte anseo"</string>
   <string name="morphe_music_hide_repeat_button_title">Folaigh an cnaipe Athdhéanamh</string>
   <string name="morphe_music_hide_shuffle_button_title">Folaigh an cnaipe Suaitheadh</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Folaigh an seilf \'Diailigh luas\'</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Folaigh an rannán \"B’fhéidir go mbeadh suim agat ann\"</string>
   <string name="morphe_music_comments_screen_title">Tráchtanna</string>
   <string name="morphe_music_comments_screen_summary">Roghnaigh cé na comhpháirteanna a thaispeánfar sa chuid tuairimí</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Folaigh Treoirlínte an Phobail</string>
@@ -301,7 +304,7 @@ Feictear rianta íoslódáilte anseo"</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Traschéimniú ar uath-dhul chun cinn</string>
   <string name="morphe_music_crossfade_on_auto_advance_summary">Cuireann sé an éifeacht traschéimnithe i bhfeidhm nuair a chríochnaíonn rian go nádúrtha</string>
   <string name="morphe_music_crossfade_session_control_title">Rialú seisiúin</string>
-  <string name="morphe_music_crossfade_session_control_summary">Brúigh go fada ar an gcnaipe suaitheadh chun croschéimniú a chur ar sos nó a atosú</string>
+  <string name="morphe_music_crossfade_session_control_summary">Brúigh agus coinnigh an cnaipe measctha chun an trasfháedáil a chur ar sos nó a atosú</string>
   <string name="morphe_music_crossfade_paused_toast">Traschéimniú curtha ar sos don seisiún seo</string>
   <string name="morphe_music_crossfade_resumed_toast">Atosaíodh traschéimniú</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Níl mód físe ar fáil agus traschéimniú cumasaithe</string>
@@ -335,6 +338,9 @@ Athsheinm SABR (sruthanna físeáin bréagaithe as)"</string>
   <string name="morphe_music_playback_speed_title">Luas athsheinm</string>
   <string name="morphe_music_playback_speed_summary">An luas a úsáidtear do gach rian. Ag 100%, úsáidtear luas an aip, mar shampla luas athsheinm an phodchraolta.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Athraigh an airde le luas</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Díchumasaigh laghdú fuaime</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Ní laghdaítear an toirt nuair a sheinneann aip eile fuaim ghearr, ar nós fógra</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Díchumasaigh atreorú \"díomá\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Coscann sé léim go dtí an chéad rian eile nuair a bhrúitear an cnaipe \'Ní maith liom\'</string>
@@ -492,16 +498,42 @@ Athsheinm SABR (sruthanna físeáin bréagaithe as)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Folaigh lipéid cnaipí nascleanúna</string>
   <string name="morphe_music_navigation_bar_glass_title">Cumasaigh barra nascleanúna gloine</string>
   <string name="morphe_music_navigation_bar_glass_summary">Taispeánann sé an barra nascleanúna mar chapsúl ar snámh, cruinn agus tréshoilseach</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Teimhneacht ghloine</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Coigeartaigh leibhéal trédhearcachta an bharra nascleanúna ghloine (is trédhearcach é 0, agus is teimhneach é 100)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Gloine éadrom</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Cuireann dath bán, seachas dath dorcha, ar an mbarra nascleanúna gloine, rud a fhágann go bhfuil an ghloine níos gile agus níos soiléire.</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Méid an bharra nascleanúna gloine</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Coigeartaigh airde, leithead agus spásáil cnaipí an bharra nascleanúna ghloine, agus féach ar réamhamharc. Déantar cnaipí nach n-oireann laistigh de leithead an scáileáin a cheilt.</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Méid agus stíl an bharra loingseoireachta ghloine</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Coigeartaigh airde, leithead, spásáil na gcnaipe, teimhneacht agus gile imeall an bharra nascleanúna ghloine, agus féach ar réamhamharc. Déantar cnaipí nach n-oireann laistigh de leithead an scáileáin a cheilt</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Airde</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Leithead uasta</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Spásáil cnaipí</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Cnaipí ar taispeáint: %1$s as %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Teimhneacht</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Gile an imeall</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Doiléire ghloine</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">An méid doiléire a chuirtear ar an leathanach atá taobh thiar den bharra nascleanúna gloine (Android 14 agus níos déanaí). Ag luach 0, feictear an leathanach go soiléir tríd an mbarra; roimh Android 14, áfach, bíonn an leathanach clúdaithe.</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Gloine éadrom</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Cuireann dath bán, seachas dath dorcha, ar an mbarra nascleanúna gloine, rud a fhágann go bhfuil an ghloine níos gile agus níos soiléire.</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Dathú ealaín an albaim</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Cuireann sé dath ealaín albaim an amhráin atá á sheinm ar an mbarra nascleanúna gloine.</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Folaigh táscaire an chnaipe roghnaithe</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Folaíonn sé an aibhsiú cruinn taobh thiar den chnaipe roghnaithe ar an mbarra nascleanúna gloine</string>
+  <string name="morphe_music_miniplayer_screen_title">Mionimreoir</string>
+  <string name="morphe_music_miniplayer_screen_summary">Athraigh stíl, cnaipí agus gothaí an mhini-imreora</string>
+  <string name="morphe_music_miniplayer_glass_title">Cumasaigh an mionimreoir gloine</string>
+  <string name="morphe_music_miniplayer_glass_summary">Taispeánann sé an mionimreoir ar snámh mar chárta gloine tréshoilseach le coirnéil chothromaithe</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Stíl mhini-imreora ghloine</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Coigeartaigh ga na gcúinne, an spásáil timpeall an tsaothair ealaíne, gile an imill agus teimhneacht an mhini-imreora ghloine, agus féach ar réamhamharc</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Ga an chúinne</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Stuáil saothair ealaíne</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Gile an imeall</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Teimhneacht</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Doiléire ghloine</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">An méid doiléire atá ar an leathanach taobh thiar den mion-imreoir gloine (Android 14 agus níos déanaí). Ag 0, feictear an leathanach go soiléir; roimh Android 14, áfach, bíonn an leathanach clúdaithe</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Gloine éadrom</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Cuireann dath bán ar an mionimreoir gloine in áit dath dorcha, rud a fhágann go bhfuil an ghloine níos gile agus níos soiléire</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Dathú ealaín an albaim</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Cuireann dath ealaín albaim an amhráin atá á sheinm ar an mion-imreoir gloine</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Saothar ealaíne ag sníomh</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Déanann sé saothar ealaíne an mion-imreora ghloine cruinn, agus casann sé é ar nós ceirnín fad is atá amhrán á sheinm</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Folaigh an barra dul chun cinn</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Folaíonn sé an barra dul chun cinn ag bun an mhini-imreora ghloine</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Baile</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Samplaí</string>
@@ -558,15 +590,15 @@ Athsheinm SABR (sruthanna físeáin bréagaithe as)"</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_title">Glan suas meiteashonraí</string>
   <string name="morphe_music_scrobbling_metadata_cleanup_summary">Glan praiseach coitianta (cosúil le \"Físeán Oifigiúil\", \"Athmháistreacht\", \"Beo\") go huathoibríoch ó theidil, ealaíontóirí agus albaim sula ndéantar scrobáil air.</string>
   <string name="morphe_music_scrobbling_custom_regex_title">Glanadh regex saincheaptha</string>
-  <string name="morphe_music_scrobbling_custom_regex_summary">Cuir isteach slonn rialta saincheaptha chun téacs breise a bhaint as teidil, ealaíontóirí, nó albaim. Sampla: (?i)\\s*\\((clean|explicit)\\)</string>
+  <string name="morphe_music_scrobbling_custom_regex_summary">Cuir isteach slonn rialta saincheaptha chun téacs breise a bhaint de theidil amhrán, d’ealaíontóirí, nó d’albam. Sampla: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Parsáil an t-ealaíontóir agus an rian ón teideal</string>
   <string name="morphe_music_scrobbling_parse_title_summary">Bain ainm an ealaíontóra agus an riain as teideal an fhíseáin ag baint úsáide as an deighilteoir \"-\". Úsáideach le haghaidh ábhar ath-uaslódáilte ina bhféadfaí ainm an chainéil a úsáid mar an t-ealaíontóir</string>
   <string name="morphe_music_scrobbling_guess_album_title">Líon isteach an t-albam atá ar iarraidh</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Mura bhfuil albam sa cheol, féach air ar Last.fm ionas go mbeidh do scrobble críochnaithe.</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_summary">"Sioncronaíonn scrobbling úsáid YouTube Music go huathoibríoch le do phróifíl Last.fm nó ListenBrainz
+  <string name="morphe_music_scrobbling_about_summary">"Déanann 'scrobbling' sioncronú uathoibríoch ar an úsáid a bhaineann tú as YouTube Music le do phróifíl Last.fm nó ListenBrainz.
 
-Chun a chinntiú go bhfuil scrobbling sioncronaithe le linn athsheinm sa chúlra, cinntigh go bhfuil úsáid batair aipe YouTube Music socraithe go \"Gan teorainn\""</string>
+Chun a chinntiú go ndéantar sioncronú le linn athsheinm sa chúlra, cinntigh go bhfuil úsáid ceallraí aip YouTube Music socraithe ar \"Gan srian\"."</string>
   <!-- interaction.soundproof.soundProofPatch -->
   <!-- 'SoundProof' must be kept untranslated -->
   <string name="morphe_music_soundproof_screen_summary">Scipeáil rianta d’ealaíontóirí a thuairiscigh an pobal mar AI</string>
@@ -634,7 +666,7 @@ Is é an chéad cholún an focal, is é an dara ceann a léitheoireacht; déanta
   <string name="morphe_music_lyrics_rime_dict_no_table">Níl aon liosta focal Rime tictha don teanga thuas. Cliceáil ar an ainm seo chun ceann a thicáil nó roghnaigh teanga a bhfuil liosta aici</string>
   <string name="morphe_music_lyrics_rime_dict_add">Cuir leis</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Cuir Liosta focal Rime leis</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Comhad .dict.yaml, nó zip ag coinneáil amháin, le línte mar 字 ham agus 典 din2. Faightear an liosta nuair a chuireann tú tic air agus tapáil Sábháil, agus is ort féin atá an ceadúnas a sheiceáil</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Comhad .dict.yaml, nó comhad zip ina bhfuil ceann acu, ina bhfuil línte ar nós 字 ham agus 典 din2. Faightear an liosta nuair a chuireann tú tic leis agus nuair a chliceálann tú ar \'Sábháil\'; is ortsa atá an cúram a cheadúnas a sheiceáil</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Cód teanga</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dá o litreacha nó trí o litreacha, mar shamla hak nó wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Ainm</string>
@@ -649,7 +681,7 @@ Is é an chéad cholún an focal, is é an dara ceann a léitheoireacht; déanta
   <string name="morphe_music_lyrics_rime_dict_incomplete">Líon isteach an cóid, ainm agus seoladh</string>
   <string name="morphe_music_lyrics_rime_dict_bad_code">The code must be two or three letters, as in hak</string>
   <string name="morphe_music_lyrics_rime_dict_bad_url">Ní mór an seoladh tosú le https://</string>
-  <string name="morphe_music_lyrics_rime_dict_bad_field">Ní féidir barra ingearach (|) a bheith san ainm nó sa seoladh</string>
+  <string name="morphe_music_lyrics_rime_dict_bad_field">Ní féidir barra ingearach a bheith san ainm ná sa seoladh</string>
   <string name="morphe_music_lyrics_rime_dict_duplicate">Tá tábla focal ag %s cheana féin</string>
   <string name="morphe_music_lyrics_rime_dict_reserved">Léann an uirlis ionsuite um thiontú go script Rómhánach %s, agus ní féidir liosta focal a úsáid leis.</string>
   <string name="morphe_music_lyrics_rime_dict_reserved_row">Níl sé úsáidte: Tá a léamh féin ag an teanga seo cheana, mar sin bain tic uaidh chun é a bhaint as</string>
@@ -722,6 +754,8 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_show_translate_button_summary">Tapáil chun an t-aistriúchán a scoránaigh; brúigh fada chun an t-aistriúchán amháin a fháil. Úsáidtear na soláthraithe aistriúcháin atá cumasaithe, san ord ina bhfuil siad liostaithe</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Taispeáin an cnaipe Rómhánaithe nó Traslitrithe</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Cliceáil chun an romhánú nó traslitriú a scoránaigh; brúigh fada chun an romhánú nó traslitriú amháin a fháil. Úsáideann sé soláthraithe romhánaithe cumasaithe as a ord liostaithe</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Taispeáin an cnaipe Reatha</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Agus na liricí á scrollú de láimh, taispeántar cnaipe a léimeann ar ais go dtí an líne atá á canadh</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Cumasaigh traslitriú</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Ceadaigh léamha neamh-Laidineacha ón bhfoinse liricí; nuair atá sé seo díchumasaithe, coinnigh litreacha Laidineacha, litreacha le haicinn, agus digití tonacha amháin.</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Léitear gach focal de liricí a bhfuil uainiú ag gabháil leo (sioncronú focal curtha ar siúl); ní gá aon rud a íoslódáil don Chóiréais; roinneann ceóthar script déag íoslódáil amháin de chuid CLDR; léann an córas \'Rime Wordlist\' carachtair Han nuair a chuimsíonn a thábla focal an teanga sin.</string>
@@ -745,6 +779,12 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_written_by">Scríofa ag: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Aibhsigh focail nó siollaí sioncronaithe</string>
   <string name="morphe_music_lyrics_word_sync_summary">Tabhair tosaíocht do liricí a chuirtear i láthair focal ar fhocal nuair a bhíonn siad ar fáil. Nuair a bhíonn uainiú focal ag gabháil leis na liricí, déantar gach focal nó siolla a aibhsiú i gcomhthráth leis an gceol</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Úsáid scrollú earraigh</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Scrollaíonn sé na liricí ag baint úsáide as fisic an earraigh, agus bogann sé gach líne beagán i ndiaidh na líne os a cionn. Múch é seo chun ceallraí a shábháil ar fheistí níos moille</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Taispeáin poncanna don bhriseadh uirlise</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Taispeántar trí phonc idir na línte le linn sos uirlise fada; líontar na poncanna de réir mar a bhíonn an sos ag druidim chun deiridh.</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Línte i bhfad i gcéin, níos doiléire fós</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Déantar gach líne neamhghníomhach a mhaolú níos mó dá fhaide atá sí ón líne atá á canadh. Nuair a bhíonn sé múchta, déantar gach líne neamhghníomhach a mhaolú ar an gcaoi chéanna.</string>
   <string name="morphe_music_lyrics_line_scale_title">Línte neamhghníomhacha a laghdú</string>
   <string name="morphe_music_lyrics_line_scale_summary">Tarraingíonn sé gach líne nach bhfuil á canadh faoi láthair beagán níos lú, chomh maith le í a dhéanamh níos doiléire</string>
   <string name="morphe_music_lyrics_split_background_title">Taispeáin guthanna tacaíochta ar leithligh</string>
@@ -786,7 +826,7 @@ Baineann sé leis an dá theorainn. Ag 1.75, comhairtear ceithre charachtar lán
   <string name="morphe_music_lyrics_mini_next_offset_ms_summary">Athraíonn sé an tráth a thaispeántar an chéad líne eile sa Mhini-imreoir agus sa MediaSession. Úsáid luach diúltach má thaispeántar na línte ró-dhéanach, mar shampla ar an scáileán glasála.</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Scagairí</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex meiteashonraí</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Cuirtear slonn rialta i bhfeidhm ar theidil, ar ealaíontóirí, agus ar albaim roimh liricí a lorg agus nuair a dhéantar scóráil chun a chinneadh an meaitseálann dhá theideal. Fág folamh é chun an dá cheann a dhíchumasú. Baineann an réamhshocrú amach an tranglam coitianta ar nós \"Official Video\", \"Remaster\", \"【插曲】\", agus \"- Topic\".</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Slonn rialta a chuirtear i bhfeidhm ar theidil, ar ealaíontóirí agus ar albaim sula ndéantar cuardach ar liricí, agus nuair a bhíonn scór á chinneadh maidir le cé chomh maith is a thagann dhá theideal le chéile. Fág folamh é chun an dá fheidhm a dhíchumasú. De réir réamhshocraithe, baintear ábhar neamhriachtanach coitianta amach, mar shampla \"Official Video\", \"Remaster\", \"【插曲】\", agus \"- Topic\".</string>
   <string name="morphe_music_lyrics_text_filter_title">Regex scagaire liricí</string>
   <string name="morphe_music_lyrics_text_filter_summary">Slonn rialta a chuirtear i bhfeidhm ar théacs bunaidh na liricí amháin (ní ar aistriúcháin ná ar leaganacha rómánaithe). Fág folamh é chun é a dhíchumasú</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Marcóirí na líne eolais</string>
@@ -834,6 +874,7 @@ Baineann sé leis an dá theorainn. Ag 1.75, comhairtear ceithre charachtar lán
   <string name="morphe_music_lyrics_romanize_only">Rómhánú amháin</string>
   <string name="morphe_music_lyrics_dual_only">Mód déach</string>
   <string name="morphe_music_lyrics_copied">Cóipeáilte chuig an ghearrthaisce</string>
+  <string name="morphe_music_lyrics_current">Reatha</string>
   <string name="morphe_music_lyrics_refreshing">Athnuachanach</string>
   <string name="morphe_music_lyrics_refreshed">Athnuachana</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Eochair API QuickLRC</string>

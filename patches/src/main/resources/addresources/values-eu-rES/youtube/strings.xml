@@ -648,6 +648,25 @@ Zure API gakoa ez litzateke inoiz partekatu behar. Hura duen edonork zure OpenRo
   <string name="morphe_loop_video_range_clear">Garbitu</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s artean errepikatzen</string>
   <string name="morphe_loop_video_range_invalid_time">Denbora-tarte baliogabea</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Errepikazio kopurua</string>
+  <string name="morphe_loop_count_screen_summary">Aukeratu bideo bat zenbat gangeran errepikatu behar den hurrengo bideoa hasten den arte</string>
+  <string name="morphe_loop_count_title">Gaitu errepikazio kopurua</string>
+  <string name="morphe_loop_count_summary">Se reproducinglearen Gehiago menuan, Bideoa errepika aukeraren ondoan Errepika kopurua agertzen da, hurrengo bideoa joku aurre bideoa zenbat aldiz jokatuko den aukeratzeko</string>
+  <string name="morphe_loop_count_playlists_title">Gorde errepika kopurua zerrendetan</string>
+  <string name="morphe_loop_count_playlists_summary">Zerrendako bideo bakoitzak aukeratutako errepika kopurua gordetzen du, eta Bideoa errepika aktibatzen da zerrendak berriz jokatzean. Desaktibatuta badago, errepika kopurua orain jokatzen ari den bideoarentzat besterik ez da</string>
+  <string name="morphe_loop_count_clear_title">Garbitu gordetako errepika kopuruak</string>
+  <string name="morphe_loop_count_clear_summary">Ahaztu zerrendetan gordetako errepika kopuruak. Bideo gordetuveak: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Ez da errepika kopuruik gordetuta</string>
+  <string name="morphe_loop_count_clear_dialog_title">Gordetako errepika kopuruak garbitu?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Zure zerrendetako bideoek beren errepika kopurua ahazten dute, eta Bideoa errepika ez da aktibatuko zerrendak jokatzean</string>
+  <string name="morphe_loop_count_clear_done">Gordetako errepika kopuruak garbituta</string>
+  <string name="morphe_loop_count_flyout_name">Bezkontu kopurua</string>
+  <string name="morphe_loop_count_dialog_message">Hurtrengoko bideoa jokatzeren aurrebizera, zenbatetan jokatzen den bideoa, %1$s-tik %2$s-ra. Utzi hutsik bideoa mugarik gabe bezkontzeko.</string>
+  <string name="morphe_loop_count_times">%s {one,behin,other,behin}}</string>
+  <string name="morphe_loop_count_no_limit">Muga gabe</string>
+  <string name="morphe_loop_count_decrease">Behin gutxiago</string>
+  <string name="morphe_loop_count_increase">Behin gehiago</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Erakutsi irudian-irudia botoia</string>
   <string name="morphe_pip_button_flyout_title">Erakutsi irudian-irudia menua</string>
@@ -1113,6 +1132,10 @@ Konfigurazioa atzitzeko, gaitu Konfigurazio botoia Orokorra → Tresna-barra →
   <string name="morphe_enhanced_ambient_mode_summary">Ikusi-orrialde osoa eta barra beltzak bideoarekin argitzen ditu, Ambient moduko ordez</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantendu testua irakurgarria</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Bideo argi等etan argia gutxitzen du orrialdeko testua irakurgarri izaten jarraitzeko</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Iluntatu scroll egitean</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Argia iluntatzen du orrialdia scroll egiten denean edo ukitzen denean</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Iluntze-iraupena</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Scroll egitea stop egin ondoren argia zenbat denboran geratzen den iluntuta. 0 sailatuta, scroll egiteak bakarrik iluntatzen du argia, eta scroll egitea stop egin bezain cordless itzultzen da</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ezkutatu informazio-txartelak</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Konfigurazioa atzitzeko, gaitu Konfigurazio botoia Orokorra → Tresna-barra →
   <string name="morphe_hide_shorts_subscriptions_title">Ezkutatu Harpidetzen feed-ean</string>
   <string name="morphe_hide_shorts_video_description_title">Ezkutatu bideoaren deskribapenean</string>
   <string name="morphe_hide_shorts_history_title">Ezkutatu ikustaldien historian</string>
+  <string name="morphe_hide_shorts_notifications_title">Ezagutarazi ez push jakinarazpenetan</string>
   <string name="morphe_shorts_player_screen_title">Shorts erreproduktorea</string>
   <string name="morphe_shorts_player_screen_summary">Aukeratu zein osagai agertzen diren Shorts erreproduktorean</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Desaktibatu bi-sakatzea gustuko izateko</string>

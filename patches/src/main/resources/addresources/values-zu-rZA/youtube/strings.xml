@@ -648,6 +648,24 @@ Okhiye wakho we-API akufanele wabelane nakube yikuphi. Noma ubani onokufinyelela
   <string name="morphe_loop_video_range_clear">Sula</string>
   <string name="morphe_loop_video_range_toast_on">Kuphindaphinda %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Isikhathi esingafanele</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Isibalo se-loop</string>
+  <string name="morphe_loop_count_screen_summary">Khetha ukuthi ividiyo iphinde kangaki ngaphambi kwevidiyo elandelayo</string>
+  <string name="morphe_loop_count_title">Vula isibalo se-loop</string>
+  <string name="morphe_loop_count_summary">Imenyu ye-More yomdlali ikhombisa i-Loop count eduze kwe-Loop video, ukuze ukhethe ukuthi ividiyo idlale zingaki izikhathi ngaphambi kwevida lalandelayo</string>
+  <string name="morphe_loop_count_playlists_title">Gcina i-loop count ohlelweni lwe-playlists</string>
+  <string name="morphe_loop_count_playlists_summary">Ividiyo ngayinye ye-playlist igcina i-loop count oyikhethile, futhi i-Loop video ivulwa lapho i-playlist iyidlala futhi. Uma icishwe, i-loop count isetshenziselwa ividiyo edlalayo manje kuphela</string>
+  <string name="morphe_loop_count_clear_title">Sula ama-loop count agcinwe</string>
+  <string name="morphe_loop_count_clear_summary">Khohlwa ama-loop count agcinwe ohlelweni lwakho lwe-playlists. Amavidiyo agcinwe: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Ayikho ama-loop count agcinwe</string>
+  <string name="morphe_loop_count_clear_dialog_title">Sula ama-loop count agcinwe?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Amavidiyo e-playlists yakho akhohlwa i-loop count yawo, futhi i-Loop video ayisavulwa lapho i-playlist iyidlala</string>
+  <string name="morphe_loop_count_clear_done">Ama-loop count agcinwe asuliwe</string>
+  <string name="morphe_loop_count_flyout_name">Isibalo sokudlala kaningi</string>
+  <string name="morphe_loop_count_dialog_message">Ukuthi ividiyo idlalwe kangaki ngaphambi kwevidiyo elandelayo, kusukela ku-%1$s kuya ku-%2$s. Shiya kuyisikhala ukuze ividiyo idlale kaningi ngaphandle komkhawulo.</string>
+  <string name="morphe_loop_count_no_limit">Ayikho imingcele</string>
+  <string name="morphe_loop_count_decrease">Izikhathi ezimbalwa</string>
+  <string name="morphe_loop_count_increase">Izikhathi eziningi</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Khombisa inkinobho ye-Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Khombisa imenyu ye-Picture-in-Picture</string>
@@ -1113,6 +1131,10 @@ Ukuze ubonise imenyu ye-'Audio Track', shintsha 'Spoof video streams' kube yikla
   <string name="morphe_enhanced_ambient_mode_summary">Khanyisa ikhasi lonke lokubuka kanye nemigqa emnyama ngevidiyo, esikhundleni se-Ambient mode</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Gcina umbhalo ufundeka</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Cishisela ukukhanya kumavidiyo akhanyayo ukuze umbhalo ekhasini uhlale ufundeka</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Khombisa kancane ngenkathi uskrola</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Kunciphisa ukukhanya ngenkathi ikhasi liskrolwa noma lithintwe</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Isikhathi sokukhanya kancane</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Isikhathi ukukhanya okuhlala kuncane ngemuva kokuma kokuskrola. Uma ku-0, ukuskrola kuphela okunciphisa ukukhanya, futhi kubuyela ngokujwayelekile masinyane lapho ukuskrola kunqikiza</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Fihla amakhadi wolwazi</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Ukuze ubonise imenyu ye-'Audio Track', shintsha 'Spoof video streams' kube yikla
   <string name="morphe_hide_shorts_subscriptions_title">Fihla ku-feed lwe-Subscriptions</string>
   <string name="morphe_hide_shorts_video_description_title">Fihla encazelweni yevidiyo</string>
   <string name="morphe_hide_shorts_history_title">Fihla emlandweni wokubuka</string>
+  <string name="morphe_hide_shorts_notifications_title">Fihla kwezaziso zokuthumela</string>
   <string name="morphe_shorts_player_screen_title">Umdlali we-Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Khetha ukuthi yiziphi izinto okumele zivela ku-Shorts player</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Khubaza ukuthinta kabili ukuze uthande</string>

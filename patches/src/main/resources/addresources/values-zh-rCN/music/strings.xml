@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">启用音频/视频切换</string>
   <string name="morphe_music_enable_audio_video_switch_summary">尝试切换音轨版本和官方音乐视频</string>
+  <string name="morphe_music_auto_song_version_title">始终播放歌曲版本</string>
+  <string name="morphe_music_auto_song_version_summary">将队列中的官方音乐视频替换为匹配的歌曲。需要开启应用设置中的“不播放音乐视频”。没有精确匹配的曲目将保持不变</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">使用第三方下载应用下载音乐视频、播客或歌曲</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">隐藏重复播放按钮</string>
   <string name="morphe_music_hide_shuffle_button_title">隐藏随机播放按钮</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">隐藏“快速拨号”区域</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">隐藏“猜你喜欢”板块</string>
   <string name="morphe_music_comments_screen_title">评论</string>
   <string name="morphe_music_comments_screen_summary">选择评论区中显示哪些组件</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">隐藏社区规范</string>
@@ -335,6 +338,9 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_playback_speed_title">播放速度</string>
   <string name="morphe_music_playback_speed_summary">用于所有曲目的速度。在 100% 时，使用应用速度，例如播客播放速度。</string>
   <string name="morphe_music_playback_speed_change_pitch_title">随速度改变音调</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">禁用音频避让</string>
+  <string name="morphe_music_disable_audio_ducking_summary">当其他应用播放短促声音（如通知）时，音量不会降低</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">禁用不喜欢重定向</string>
   <string name="morphe_music_disable_dislike_redirection_summary">防止按下不喜欢按钮时跳转到下一曲</string>
@@ -492,16 +498,42 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">隐藏导航按钮标签</string>
   <string name="morphe_music_navigation_bar_glass_title">启用玻璃质感导航栏</string>
   <string name="morphe_music_navigation_bar_glass_summary">将导航栏显示为浮动的、圆角的、半透明的胶囊形</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">玻璃不透明度</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">调整玻璃导航栏的透明度级别（0 为透明，100 为不透明）</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">浅色玻璃</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">将玻璃导航栏染成白色而非深色，以获得更轻盈、更清晰的玻璃效果</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">玻璃导航栏尺寸</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">调整玻璃导航栏的高度、宽度和按钮间距，并提供预览。超出屏幕宽度的按钮将被隐藏</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">玻璃导航栏尺寸与样式</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">调整玻璃导航栏的高度、宽度、按钮间距、不透明度和边缘亮度，并可实时预览。超出屏幕宽度的按钮将被隐藏</string>
   <string name="morphe_music_navigation_bar_glass_size_height">高度</string>
   <string name="morphe_music_navigation_bar_glass_size_width">最大宽度</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">按钮间距</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">显示按钮：%1$s / %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">不透明度</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">边缘亮度</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">玻璃模糊</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">玻璃导航栏后方页面的模糊程度（Android 14 及更高版本）。设置为 0 时页面清晰可见，Android 14 之前则页面被遮盖</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">浅色玻璃</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">将玻璃导航栏染成白色而非深色，以获得更轻盈、更清晰的玻璃效果</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">专辑封面着色</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">使用当前播放歌曲的专辑封面颜色为玻璃导航栏着色</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">隐藏选中按钮指示器</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">隐藏玻璃导航栏选中按钮背后的圆角高亮</string>
+  <string name="morphe_music_miniplayer_screen_title">小型播放器</string>
+  <string name="morphe_music_miniplayer_screen_summary">更改迷你播放器的样式、按钮和手势</string>
+  <string name="morphe_music_miniplayer_glass_title">启用玻璃迷你播放器</string>
+  <string name="morphe_music_miniplayer_glass_summary">将浮动迷你播放器显示为圆角半透明玻璃卡片</string>
+  <string name="morphe_music_miniplayer_glass_style_title">玻璃迷你播放器样式</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">调整玻璃迷你播放器的圆角半径、封面内边距、边缘亮度和不透明度，并可实时预览</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">圆角半径</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">封面内边距</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">边缘亮度</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">不透明度</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">玻璃模糊</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">玻璃迷你播放器后方页面的模糊程度（Android 14 及更高版本）。设置为 0 时页面清晰可见，Android 14 之前则页面被遮盖</string>
+  <string name="morphe_music_miniplayer_glass_light_title">浅色玻璃</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">将玻璃迷你播放器着色为白色而非深色，使玻璃效果更轻盈、更清晰</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">专辑封面着色</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">使用当前播放歌曲的专辑封面颜色为玻璃迷你播放器着色</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">旋转封面</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">将玻璃迷你播放器的封面变为圆形，并在播放歌曲时像唱片一样旋转</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">隐藏进度条</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">隐藏玻璃迷你播放器底部的进度条</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">首页</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">样本</string>
@@ -634,7 +666,7 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_rime_dict_no_table">上方语言未勾选任何Rime词表。点击此名称以勾选一个，或选择一个有词表的语言</string>
   <string name="morphe_music_lyrics_rime_dict_add">添加</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">添加Rime词表</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml 文件，或包含此类文件的压缩包，其中包含类似 字 ham 和 典 din2 的行。当您勾选列表并点击保存时，将获取该列表，您可以自行检查其许可协议</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">一个 .dict.yaml 文件或包含该文件的 zip 压缩包，其中包含类似 字 ham 和 典 din2 的行。当你勾选并点击保存时将获取该列表，其许可证由你自行核查</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">语言代码</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">两三个字母，如hak或wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">名称</string>
@@ -722,6 +754,8 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_show_translate_button_summary">点击切换翻译；长按仅翻译。使用按顺序排列的已启用翻译提供商</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">显示罗马化或意译按钮</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">点击切换罗马化或意译；长按仅进行罗马化或意译。使用按顺序排列的已启用罗马化提供商</string>
+  <string name="morphe_music_lyrics_show_current_button_title">显示当前按钮</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">在手动滚动歌词时，显示一个可跳转回当前演唱行的按钮</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">启用意译</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">允许来自歌词源的非拉丁读音；关闭时，仅保留拉丁字母、带重音的字母和声调数字</string>
   <string name="morphe_music_lyrics_local_romanization_summary">读取时间对齐歌词（词同步开启）中的每个词；韩语无需下载；十四个脚本共享一个CLDR下载；当Rime词表的词表覆盖该语言时，汉字由Rime词表读取</string>
@@ -745,6 +779,12 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_written_by">作者：%s</string>
   <string name="morphe_music_lyrics_word_sync_title">高亮显示同步的单词或音节</string>
   <string name="morphe_music_lyrics_word_sync_summary">优先考虑可用逐字歌词。当歌词带有时间标志，随着音乐及时高亮每个单词或音节</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">使用弹簧滚动</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">使用弹簧物理效果滚动歌词，并使每行相对于上一行稍有偏移。在低端设备上可将其关闭以节省电量</string>
+  <string name="morphe_music_lyrics_gap_dots_title">显示乐器间奏点</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">在较长的乐器间奏期间，行之间显示三个点，随着间奏接近结束，这些点会逐渐填满</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">进一步调暗远处行</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">非活跃行距离当前演唱行越远，则调暗程度越高。关闭后，所有非活跃行的调暗程度相同</string>
   <string name="morphe_music_lyrics_line_scale_title">收缩非活动行</string>
   <string name="morphe_music_lyrics_line_scale_summary">将当前未演唱的每行稍微缩小，并在变暗的基础上绘制</string>
   <string name="morphe_music_lyrics_split_background_title">单独显示背景人声</string>
@@ -834,6 +874,7 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_romanize_only">仅罗马音</string>
   <string name="morphe_music_lyrics_dual_only">双模式</string>
   <string name="morphe_music_lyrics_copied">复制到剪贴板</string>
+  <string name="morphe_music_lyrics_current">当前</string>
   <string name="morphe_music_lyrics_refreshing">正在刷新</string>
   <string name="morphe_music_lyrics_refreshed">已刷新</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API 密钥</string>

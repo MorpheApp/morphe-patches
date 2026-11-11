@@ -648,6 +648,24 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">Διαγραφή</string>
   <string name="morphe_loop_video_range_toast_on">Επανάληψη %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Δόθηκε μη έγκυρος χρόνος</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Αριθμός επαναλήψεων</string>
+  <string name="morphe_loop_count_screen_summary">Επιλέξτε πόσες φορές θα επαναλαμβάνεται ένα βίντεο πριν από το επόμενο βίντεο</string>
+  <string name="morphe_loop_count_title">Ενεργοποίηση αριθμού επαναλήψεων</string>
+  <string name="morphe_loop_count_summary">Το μενού «Περισσότερα» του παίκτη εμφανίζει τον αριθμό επαναλήψεων δίπλα στην επιλογή «Επανάληψη βίντεο», για να επιλέξετε πόσες φορές θα αναπαραχθεί το βίντεο πριν από το επόμενο βίντεο</string>
+  <string name="morphe_loop_count_playlists_title">Αποθήκευση αριθμού επαναλήψεων σε λίστες αναπαραγωγής</string>
+  <string name="morphe_loop_count_playlists_summary">Κάθε βίντεο μιας λίστας αναπαραγωγής διατηρεί τον αριθμό επαναλήψεων που επιλέξατε και η λειτουργία \"Επανάληψη βίντεου\" ενεργοποιείται όταν η λίστα αναπαραγωγής το αναπαράγει ξανά. Εάν είναι απενεργοποιημένη, ο αριθμός επαναλήψεων ισχύει μόνο για το βίντεο που αναπαράγεται τώρα</string>
+  <string name="morphe_loop_count_clear_title">Καθαρισμός αποθηκευμένων αριθμών επαναλήψεων</string>
+  <string name="morphe_loop_count_clear_summary">Διαγραφή των αριθμών επαναλήψεων που αποθηκεύτηκαν στις λίστες αναπαραγωγής σας. Αποθηκευμένα βίντεο: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Δεν έχουν αποθηκευτεί αριθμοί επαναλήψεων</string>
+  <string name="morphe_loop_count_clear_dialog_title">Καθαρισμός αποθηκευμένων αριθμών επαναλήψεων;</string>
+  <string name="morphe_loop_count_clear_dialog_message">Τα βίντεο των λιστών αναπαραγωγής σας διαγράφουν τον αριθμό επαναλήψεων και η λειτουργία \"Επανάληψη βίντεου\" δεν ενεργοποιείται πλέον όταν μια λίστα αναπαραγωγής τα αναπαράγει</string>
+  <string name="morphe_loop_count_clear_done">Οι αποθηκευμένοι αριθμοί επαναλήψεων καθαρίστηκαν</string>
+  <string name="morphe_loop_count_flyout_name">Αριθμός επαναλήψεων</string>
+  <string name="morphe_loop_count_dialog_message">Πόσες φορές αναπαράγεται το βίντεο πριν από το επόμενο βίντεο, από %1$s έως %2$s. Αφήστε το κενό για να αναπαράγεται το βίντεο χωρίς περιορισμό.</string>
+  <string name="morphe_loop_count_no_limit">Χωρίς όριο</string>
+  <string name="morphe_loop_count_decrease">Λιγότερες φορές</string>
+  <string name="morphe_loop_count_increase">Περισσότερες φορές</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Εμφάνιση του κουμπιού Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Εμφάνιση του μενού Picture-in-Picture</string>
@@ -1113,6 +1131,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">Φωτίζει ολόκληρη τη σελίδα προβολής και τις μαύρες μπάρες με το βίντεο, αντί για τη Λειτουργία περιβάλλοντος</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Διατήρηση αναγνώσιμου κειμένου</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Μειώνει τη φωτεινότητα σε φωτεινά βίντεο ώστε το κείμενο στη σελίδα να παραμένει αναγνώσιμο</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Σκότωση κατά τη διάρκεια κύλισης</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Σκότνει το φως ενώ η σελίδα κυλίζεται ή αγγίζεται</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Διάρκεια σκ затемnienia</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Για πόσο χρόνο παραμένει το φως χαμηλό αφού σταματήσει η κύλιση. Με τιμή 0, μόνο η κύλιση σκέμπνει το φως και αυτό επανέρχεται μόλις σταματήσει η κύλιση</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Κάρτες πληροφοριών</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Κρύψτε στη ροή εγγραφών</string>
   <string name="morphe_hide_shorts_video_description_title">Κρύψτε στην περιγραφή βίντεο</string>
   <string name="morphe_hide_shorts_history_title">Απόκρυψη στο ιστορικό παρακολούθησης</string>
+  <string name="morphe_hide_shorts_notifications_title">Απόκρυψη στις ειδοποιήσεις push</string>
   <string name="morphe_shorts_player_screen_title">Οθόνη αναπαραγωγής Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στον προβολέα Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Απενεργοποιήστε το διπλό άγγιγμα για like</string>

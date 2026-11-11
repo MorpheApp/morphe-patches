@@ -648,6 +648,24 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">Ачысціць</string>
   <string name="morphe_loop_video_range_toast_on">Цыклаванне %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Няправільны часовы дыяпазон</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Колькасць паўтораў</string>
+  <string name="morphe_loop_count_screen_summary">Выберыце, колькі разоў відэа павінна паўтарыцца перад наступным відэа</string>
+  <string name="morphe_loop_count_title">Уключаць колькасць паўтораў</string>
+  <string name="morphe_loop_count_summary">У меню «Яшчэ» плеера побач з пунктам «Паўтор відэа» паказваецца колькасць паўтораў, каб выбраць, колькі разоў відэа будзе праіграна перад наступным відэа</string>
+  <string name="morphe_loop_count_playlists_title">Захаваць колькасць паўтораў у плейлістах</string>
+  <string name="morphe_loop_count_playlists_summary">Кожнае відэа ў плейлісце захоўвае выбраную вамі колькасць паўтораў, а функцыя «Паўтор відэа» ўключаецца, калі плейліст праігрывае яго зноў. Калі яна выключана, колькасць паўтораў дзейнічае толькі для відэа, якое праігрываецца зараз</string>
+  <string name="morphe_loop_count_clear_title">Ачысціць захаваныя колькасці паўтораў</string>
+  <string name="morphe_loop_count_clear_summary">Забыць колькасці паўтораў, захаваныя ў вашых плейлістах. Захаваныя відэа: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Колькасці паўтораў не захаваныя</string>
+  <string name="morphe_loop_count_clear_dialog_title">Ачысціць захаваныя колькасці паўтораў?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Відэа ў вашых плейлістах забудуць сваю колькасць паўтораў, і функцыя «Паўтор відэа» больш не будзе ўключацца, калі плейліст праігрывае іх</string>
+  <string name="morphe_loop_count_clear_done">Захаваныя колькасці паўтораў ачышчаны</string>
+  <string name="morphe_loop_count_flyout_name">Колькасць цыклаў</string>
+  <string name="morphe_loop_count_dialog_message">Колькі разоў відэа праіграецца перад наступным відэа, ад %1$s да %2$s. Застаўце поле пустым, каб зацыкліць відэа без абмежавання.</string>
+  <string name="morphe_loop_count_no_limit">Без абмежавання</string>
+  <string name="morphe_loop_count_decrease">Менш разоў</string>
+  <string name="morphe_loop_count_increase">Больш разоў</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Паказваць кнопку \"Карцінка ў карцінцы\"</string>
   <string name="morphe_pip_button_flyout_title">Паказваць меню \"Карцінка ў карцінцы\"</string>
@@ -1113,6 +1131,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">Падсвечвае ўсю старонку прагляду і чорныя палосы колерам відэа замест рэжыму Ambient</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Забеспечыць чытальнасць тэксту</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Зменшвае яркасць святла на яркіх відэа, каб тэкст на старонцы заставаўся чытальным</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Ціміраванне пры пракручванні</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Ціміруе святло, пакуль старонка пракручваецца або да яе датыкаюцца</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Працяглосць ціміравання</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Колькі часу святло застаецца прыглушаным пасля спынення пракручвання. Пры значэнні 0 святло ціміруецца толькі падчас пракручвання і вяртаецца адразу пасля яго спынення</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Схаваць інфармацыйныя карткі</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">Схаваць у стужцы \"Падпіскі\"</string>
   <string name="morphe_hide_shorts_video_description_title">Схаваць у апісанні відэа</string>
   <string name="morphe_hide_shorts_history_title">Схаваць у гісторыі праглядаў</string>
+  <string name="morphe_hide_shorts_notifications_title">Схаваць у push-апавяшчэннях</string>
   <string name="morphe_shorts_player_screen_title">Прайгравальнік Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Выбірайце, якія кампаненты будуць адлюстроўвацца ў плееры Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Адключаць пастаўленне лайка па двайным націсканні</string>

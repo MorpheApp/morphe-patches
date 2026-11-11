@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Hang/videó váltás engedélyezése</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Próbálja meg átváltani az audioverzió és a hivatalos videóklip között</string>
+  <string name="morphe_music_auto_song_version_title">Mindig a dal verzióját játssza le</string>
+  <string name="morphe_music_auto_song_version_summary">A sorban lévő hivatalos videóklipeket a megfelelő dalszámmal cseréli. Ehhez az alkalmazásbeállításban a „Ne játsszon videóklipeket” opciójának be kell swimmerne. Azok a számok, amelyeknek nincs pontos egyezése, változatlanok maradnak</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Töltsön le zenei videókat, podcastokat vagy dalokat külső letöltő alkalmazásokkal</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Egyenként töltjük le őket, ami hosszú ideig tarthat, és körülbelül %3$s
   <string name="morphe_music_hide_repeat_button_title">Ismétlés gomb elrejtése</string>
   <string name="morphe_music_hide_shuffle_button_title">Véletlenszerű lejátszás gomb elrejtése</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\"Gyorshívó\" polc elrejtése</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">„Ezek is érdekelhetnek” szakasz elrejtése</string>
   <string name="morphe_music_comments_screen_title">Megjegyzések</string>
   <string name="morphe_music_comments_screen_summary">Válaszd ki, mely elemek jelenjenek meg a megjegyzések szekcióban</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Közösségi irányelvek elrejtése</string>
@@ -335,6 +338,9 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <string name="morphe_music_playback_speed_title">Lejátszási sebesség</string>
   <string name="morphe_music_playback_speed_summary">Az összes számra használt sebesség. 100%-nál az alkalmazás sebessége használatos, például a podcast lejátszási sebessége</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Hangmagasság változtatása a sebességgel</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Audio ducking letiltása</string>
+  <string name="morphe_music_disable_audio_ducking_summary">A hangerő nem csökken, amikor egy másik alkalmazás rövid hangot, például értesítést játszik le</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">A nemtetszés-átirányítás letiltása</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Megakadályozza, hogy a nemtetszés gomb megnyomása esetén a következő számra ugorjon</string>
@@ -492,16 +498,42 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Navigációs gombok feliratainak elrejtése</string>
   <string name="morphe_music_navigation_bar_glass_title">Üveg navigációs sáv engedélyezése</string>
   <string name="morphe_music_navigation_bar_glass_summary">Úgy jeleníti meg a navigációs sávot, mint egy lebegő, lekerekített, áttetsző kapszulát</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Üveg átlátszósága</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Állítsa be az üveg navigációs sáv átlátszatosságának szintjét (0 átlátszó, 100 teljesen áttetsző)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Világos üveg</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Fehérre színezi az üveg navigációs sávot a sötét helyett, egy világosabb és tisztább üvegérzet érdekében</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Üveg navigációs sáv mérete</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Állítsa be az üveg navigációs sáv magasságát, szélességét és a gombok közötti távolságot, előnézettel. A képernyő szélességébe nem férő gombok rejtve maradnak</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Üveg navigációs sáv mérete és stílusa</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Állítsa be az üveg navigációs sáv magasságát, szélességét, a gombok közötti távolságot, az átlátszóságot és a szegély fényerőjét, előnézettel. A képernyő szélességébe nem férő gombok el lesznek rejtve</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Magasság</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Maximális szélesség</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Gombok közötti távolság</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Megjelenített gombok: %1$s a %2$s-ből</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Áttetszőség</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Szegély fényerője</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Üveg elmosódás</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Mennyire legyen elmosódva az üveg navigációs sáv mögött lévő oldal (Android 14 és újabb verziók). 0 esetén az oldal élesen látszik, Android 14 előtt az oldal takarva marad</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Világos üveg</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Fehérre színezi az üveg navigációs sávot a sötét helyett, egy világosabb és tisztább üvegérzet érdekében</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Albumborító árnyalása</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Az üveg navigációs sávot a lejárzó dal albumborítójának színével árnyalja</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Kijelölt gomb indikátoránakrejtése</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Elrejti a kerekletű kiemelést az üveg navigációs sáv kijelölt gombja mögött</string>
+  <string name="morphe_music_miniplayer_screen_title">Minilejátszó</string>
+  <string name="morphe_music_miniplayer_screen_summary">A minilejátszó stílusának, gombjainak és gesztusainak módosítása</string>
+  <string name="morphe_music_miniplayer_glass_title">Üveg minilejátszó engedélyezése</string>
+  <string name="morphe_music_miniplayer_glass_summary">A lebeglő minilejátszó egy kerekletű, áttetsző üvegkártyaként jelenik meg</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Üveg minilejátszó stílusa</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Állítsa be az üveg minilejátszó sarkainak gömöléset, a borítók paddingjét, a szegély fényerőjét és az átlátszóságot, előnézettel</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Sarkok gömölése</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Borítók paddingje</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Szegély fényerője</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Áttetszőség</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Üveg elmosódás</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Mennyire legyen elmosódva az üveg minilejátszó mögött lévő oldal (Android 14 és újabb verziók). 0 esetén az oldal élesen látszik, Android 14 előtt az oldal takarva marad</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Világos üveg</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Az üveg minilejátsót fehérre árnyalja a sötétszín helyett, egy világosabb és tisztább üveghatás érdekében</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumborító árnyalása</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Az üveg minilejáts sót a lejárzó dal albumborítójának színével árnyalja</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Forgó albumborító</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Az üveg minilejátszó borítóját körre teszi, és egy lemez처럼 forgatja a dal lejátszása közben</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Haladási sáv elrejtése</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Elrejti az üveg minilejátszó alján található haladási sávot</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Főoldal</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Minták</string>
@@ -634,7 +666,7 @@ Az első oszlop a szó, a második a hangzása; a további oszlopok és a tabul�
   <string name="morphe_music_lyrics_rime_dict_no_table">A fenti nyelvhez nincs kijelölve Rime szótárlista. Koppintson erre a névre egy lista kijelöléséhez, vagy válasszon olyan nyelvet, amelyhez rendelkezik listával</string>
   <string name="morphe_music_lyrics_rime_dict_add">Hozzáadás</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Rime szótárlista hozzáadása</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Egy .dict.yaml fájl, vagy egy zip, amely tartalmaz ilyet, olyan sorokkal, mint a 字 ham és a 典 din2. A listát akkor veszi át, amikor kijelöli és megnyomja a Mentést, és a licenc ellenőrzése az Ön dolga</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Egy .dict.yaml fájl, vagy egy ilyen fájlt tartalmazó zip fájl, olyan sorokkal, mint a 字 ham és a 典 din2. A lista akkor kerül betöltésre, amikor bepipálja és megnyomja a Mentés gombot, a licencét pedig önnek kell ellenőriznie</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Nyelvkód</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Két vagy három betű, például hak vagy wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Név</string>
@@ -722,6 +754,8 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_translate_button_summary">Koppintson a fordítás váltásához; hosszú érintés a fordítás kizárólagos megjelenítéséhez. Az engedélyezett fordítószolgáltatókat azok felsorolási sorrendjében használja</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Átirat vagy ábécésítési gomb megjelenítése</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Koppintson az ábécésítés vagy átirat váltásához; hosszú érintés az ábécésítés vagy átirat kizárólagos megjelenítéséhez. Az engedélyezett ábécésítőszolgáltatókat azok felsorolási sorrendjében használja</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Aktuális sor gombjának megjelenítése</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">A dalszöveg kézi görgetése közben megjelenít egy gombot, amely visszaugrat a éppen énekelt sorra</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Átirat engedélyezése</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Engedélyezi a nem Latin ábécés írásjelekkel való kiejtések megjelenítését; kikapcsoláskor csak a Latin betűket, az ékezetes betűket és a hangjegy számokat tartja meg</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Felolvassa a időzített dalszöveg minden szavát (szó szinkron be van kapcsolva); Koreához nem szükséges letöltés; tizennégy írások egyetlen CLDR letöltéssel osztják meg az ábécésítést; Han karaktereket a Rime szótár olvas fel, ha a szótárában szerepel a nyelv</string>
@@ -745,6 +779,12 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_written_by">Szerző: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Szinkronizált szavak vagy szótagok kiemelése</string>
   <string name="morphe_music_lyrics_word_sync_summary">Előnyben részesíti a szavankénti dalszövegeket, ha elérhetők. Ha a dalszöveg szószintű időzítést tartalmaz, a zene ütemére emeli ki az egyes szavakat vagy szótagokat.</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Rugós görgetés használata</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Rugós fizikával görgeti a dalszöveget, és minden sort egy kicsivel eltolja a felette lévővel szemben. Kapcsolja ki a lassabb eszközökön az akkumulátor kímélése érdekében</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Instrumentális szünet pontjainak megjelenítése</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Ház három pontot jelenít meg a sorok között egy hosszú instrumentális szünet során, amelyek töltődnek a szünet végéig</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Távolabb lévő sorok erősebb Затемítése</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Minden inaktív sor csak egyre jobban lesz Затемítve, mintek távolabb kerülnek az éppen énekelt sortól. Ha ki van kapcsolva, minden inaktív sor egyformán lesz Затемítve</string>
   <string name="morphe_music_lyrics_line_scale_title">Tükrözze a nem éneklő sorokat</string>
   <string name="morphe_music_lyrics_line_scale_summary">Minden nem éppen énekelt sort kicsinyebb méretben ábrázol, továbbá halványítja őket</string>
   <string name="morphe_music_lyrics_split_background_title">Háttérénekelt külön jelenjen meg</string>
@@ -834,6 +874,7 @@ Mindkét limitre vonatkozik. 1,75 esetén négy teljes szélességű karakter 7-
   <string name="morphe_music_lyrics_romanize_only">Csak romanizált</string>
   <string name="morphe_music_lyrics_dual_only">Kettős mód</string>
   <string name="morphe_music_lyrics_copied">Másolva a vágólapra</string>
+  <string name="morphe_music_lyrics_current">Aktuális</string>
   <string name="morphe_music_lyrics_refreshing">Frissítés</string>
   <string name="morphe_music_lyrics_refreshed">Frissítve</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API kulcs</string>

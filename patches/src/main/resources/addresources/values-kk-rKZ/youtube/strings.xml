@@ -648,6 +648,24 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_loop_video_range_clear">Тазалау</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s аралығы қайталанып жатыр</string>
   <string name="morphe_loop_video_range_invalid_time">Уақыт аралығы дұрыс емес</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Қайталау саны</string>
+  <string name="morphe_loop_count_screen_summary">Келесі бейнехат алдында бейнехаттың неше рет қайталанатынын таңдаңыз</string>
+  <string name="morphe_loop_count_title">Қайталау санын қосу</string>
+  <string name="morphe_loop_count_summary">Плеердің \"Көбірек\" мәзірінде \"Бейнені қайталау\" жанында бейне келесі бейнеге өтпес бұрын неше рет ойнатылатынын таңдау үшін \"Қайталау саны\" көрсетіледі</string>
+  <string name="morphe_loop_count_playlists_title">Плейлисттердегі қайталау санын сақтау</string>
+  <string name="morphe_loop_count_playlists_summary">Плейлисттегі әрбір бейнебаян сіз таңдаған қайталау санын сақтайды, ал плейлист оны қайта ойнатқанда \"Бейнебаянды қайталау\" қосылады. Егер өшірілсе, қайталау саны тек қазір ойнатылып жатқан бейнебаян үшін ғана қолданылады</string>
+  <string name="morphe_loop_count_clear_title">Сақталған қайталау сандарын тазалау</string>
+  <string name="morphe_loop_count_clear_summary">Плейлисттеріңізде сақталған қайталау сандарын жою. Сақталған бейнебаяндар: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Сақталған қайталау сандары жоқ</string>
+  <string name="morphe_loop_count_clear_dialog_title">Сақталған қайталау сандарын тазалау керек пе?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Плейлисттеріңіздегі бейнебаяндар өз қайталау сандарын жояды және плейлист оларды ойнатқанда \"Бейнебаянды қайталау\" енді қосылмайды</string>
+  <string name="morphe_loop_count_clear_done">Сақталған қайталау сандары тазаланды</string>
+  <string name="morphe_loop_count_flyout_name">Цикл саны</string>
+  <string name="morphe_loop_count_dialog_message">Келесі бейнебаянға өтпес бұрын бейнебаянның қанша рет ойнатылатыны, %1$s-тан %2$s-қа дейін. Бейнебаянды шексіз қайталау үшін бос қалдырыңыз.</string>
+  <string name="morphe_loop_count_no_limit">Шектеу жоқ</string>
+  <string name="morphe_loop_count_decrease">Азайту</string>
+  <string name="morphe_loop_count_increase">Көбейту</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Суретті суретте көрсету түймесін көрсету</string>
   <string name="morphe_pip_button_flyout_title">Суретті суретте көрсету мәзінін көрсету</string>
@@ -1113,6 +1131,10 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_enhanced_ambient_mode_summary">Ambient режимінің орнына бүкіл сағат бетін және видеодағы қара жолақтарды жарықтандырады</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Мәтінді оқылатын күйде сақтау</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Беттегі мәтін оқылатын болуы үшін жарық видеолардағы жарықты азайтады</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Скроллинг кезінде күңгіртету</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Бет скролл жасалғанда немесе тийгенде жарықты күңгіртіледі</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Күңгіртету ұзақтығы</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Скроллинг тоқтағаннан кейін жарық қанша уақыт күңгірт болып тұрады. 0 мәнімен тек скроллинг кезінде жарық күңгірттеледі және скроллинг тоқтаған бойда қайтады</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ақпараттық карточкаларды жасыру</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_hide_shorts_subscriptions_title">Жазылымдар лентасында жасыру</string>
   <string name="morphe_hide_shorts_video_description_title">Бейне сипаттамасында жасыру</string>
   <string name="morphe_hide_shorts_history_title">Көру тарихында жасыру</string>
+  <string name="morphe_hide_shorts_notifications_title">Push-хабарламаларда жасыру</string>
   <string name="morphe_shorts_player_screen_title">Shorts плееры</string>
   <string name="morphe_shorts_player_screen_summary">Shorts плеерінде қай компоненттер пайда болатынын таңдаңыз</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Лайк қою үшін екі рет түртуді өшіру</string>

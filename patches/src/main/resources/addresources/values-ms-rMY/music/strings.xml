@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Dayakan suis audio/video</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Cuba tukar Versi Trek Audio dan Video Muzik Rasmi</string>
+  <string name="morphe_music_auto_song_version_title">Sentiasa mainkan versi lagu</string>
+  <string name="morphe_music_auto_song_version_summary">Menggantikan video muzik rasmi dalam barisan dengan lagu yang sepadan. Memerlukan tetapan aplikasi \'Jangan mainkan video muzik\' diaktifkan. Trek tanpa padanan tepat tidak akan diubah</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Muat turun video muzik, podcast, atau lagu dengan aplikasi muat turun pihak ketiga</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Ia dimuat turun satu demi satu, yang mungkin mengambil masa yang lama dan memerl
   <string name="morphe_music_hide_repeat_button_title">Sorokkan butang Ulang</string>
   <string name="morphe_music_hide_shuffle_button_title">Sorokkan butang Rawak</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Sorokkan laci \'Dail pantas\'</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Sembunyikan bahagian \'Anda mungkin juga suka\'</string>
   <string name="morphe_music_comments_screen_title">Komen</string>
   <string name="morphe_music_comments_screen_summary">Pilih komponen yang akan muncul dalam bahagian komen</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Sorokkan Garis Panduan Komuniti</string>
@@ -335,6 +338,9 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <string name="morphe_music_playback_speed_title">Kelajuan main balik</string>
   <string name="morphe_music_playback_speed_summary">Kelajuan yang digunakan untuk semua trek. Pada 100%, kelajuan aplikasi digunakan, seperti kelajuan main balik podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Tukar pic dengan kelajuan</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Nyahaktifkan penurunan audio</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Kelantangan tidak dikurangkan apabila aplikasi lain memainkan bunyi singkat, seperti pemberitahuan</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Nyahaktifkan penghalaan tidak suka</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Menghalang peralihan ke trek seterusnya apabila butang tidak suka ditekan</string>
@@ -492,16 +498,42 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Sorokkan label butang pandu arah</string>
   <string name="morphe_music_navigation_bar_glass_title">Dayakan bar navigasi kaca</string>
   <string name="morphe_music_navigation_bar_glass_summary">Menunjukkan bar pandu arah sebagai kapsul lut sinar, bulat dan terapung</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Kelegapan kaca</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Melaraskan tahap kelutsinaran bar pandu arah kaca (0 ialah lut sinar, 100 ialah legap)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Kaca cerah</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Mewarnakan bar pandu arah kaca dengan warna putih berbanding gelap, untuk kaca yang lebih cerah dan jelas</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Saiz bar pandu arah kaca</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Melaraskan ketinggian, lebar dan jarak antara butang bar pandu arah kaca, dengan pratonton. Butang yang tidak muat dalam lebar skrin akan disembunyikan</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Saiz dan gaya bar navigasi kaca</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Laraskan ketinggian, lebar, jarak butang, kelegapan dan kecerahan rim bar navigasi kaca, dengan pratonton. Butang yang tidak muat dalam lebar skrin akan disembunyikan</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Ketinggian</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Lebar maksimum</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Jarak antara butang</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Butang dipaparkan: %1$s daripada %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Kelegapan</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Kecerahan rim</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Kekaburan kaca</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Tahap kekaburan halaman di belakang bar navigasi kaca (Android 14 dan versi kemudian). Pada 0 halaman dipaparkan dengan tajam, dan sebelum Android 14 halaman tersebut tertutup</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Kaca cerah</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Mewarnakan bar pandu arah kaca dengan warna putih berbanding gelap, untuk kaca yang lebih cerah dan jelas</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Kewarnaan seni album</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Mewarnakan bar navigasi kaca dengan warna seni album lagu yang sedang dimainkan</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Sembunyikan penunjuk butang terpilih</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Menyembunyikan sorotan bulat di belakang butang terpilih pada bar navigasi kaca</string>
+  <string name="morphe_music_miniplayer_screen_title">Pemain mini</string>
+  <string name="morphe_music_miniplayer_screen_summary">Tukar gaya, butang dan gerak isyarat pemain mini</string>
+  <string name="morphe_music_miniplayer_glass_title">Dayakan pemain mini kaca</string>
+  <string name="morphe_music_miniplayer_glass_summary">Menunjukkan pemain mini terapung sebagai kad kaca lutsinar yang bulat</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Gaya pemain mini kaca</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Laraskan radius bucu, padding karya seni, kecerahan rim dan kelegapan pemain mini kaca, dengan pratonton</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Radius bucu</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding karya seni</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Kecerahan rim</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Kelegapan</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Kekaburan kaca</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Tahap kekaburan halaman di belakang pemain mini kaca (Android 14 dan versi kemudian). Pada 0 halaman dipaparkan dengan tajam, dan sebelum Android 14 halaman tersebut tertutup</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Kaca terang</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Mewarnakan pemain mini kaca dengan warna putih berbanding gelap, untuk kaca yang lebih terang dan jelas</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Kewarnaan seni album</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Mewarnakan pemain mini kaca dengan warna seni album lagu yang sedang dimainkan</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Karya seni berputar</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Menjadikan karya seni pemain mini kaca berbentuk bulat, dan memutarkannya seperti piring hitam semasa lagu dimainkan</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Sembunyikan bar kemajuan</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Menyembunyikan bar kemajuan di bahagian bawah pemain mini kaca</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Utama</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Sampel</string>
@@ -634,7 +666,7 @@ Lajur pertama adalah perkataan, yang kedua adalah bacaannya; lajur tambahan dan 
   <string name="morphe_music_lyrics_rime_dict_no_table">Tiada senarai perkataan Rime ditanda untuk bahasa di atas. Ketik nama ini untuk menandakan satu, atau pilih bahasa yang mempunyai senarai</string>
   <string name="morphe_music_lyrics_rime_dict_add">Tambah</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Tambah Senarai Perkataan Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Fail .dict.yaml, atau fail zip yang mengandungi satu fail tersebut, dengan baris seperti 字 ham dan 典 din2. Senarai tersebut diambil apabila anda menandakannya dan mengetik Simpan, dan lesennya adalah untuk anda semak</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Fail .dict.yaml, atau zip yang mengandungi fail tersebut, dengan baris seperti 字 ham dan 典 din2. Senarai tersebut diambil apabila anda menandakannya dan mengetik Simpan, dan lesennya adalah untuk anda semak</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Kod bahasa</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dua atau tiga huruf, seperti dalam hak atau wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Nama</string>
@@ -722,6 +754,8 @@ Kuki yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_translate_button_summary">Ketik untuk tukar terjemahan; tekan lama untuk terjemahan sahaja. Menggunakan penyedia terjemahan yang didayakan mengikut urutan yang disenaraikan</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Tunjukkan butang Romanize atau Transliterate</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Ketik untuk tukar romanisasi atau transliterasi; tekan lama untuk romanisasi atau transliterasi sahaja. Menggunakan penyedia romanisasi yang didayakan mengikut urutan yang disenaraikan</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Butang Tunjuk Semasa</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Semasa menatal lirik secara manual, menunjukkan butang yang melompat kembali ke baris yang sedang dinyanyikan</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Dayakan transliterasi</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Benarkan bacaan bukan Latin daripada sumber lirik; apabila dimatikan, hanya kekalkan huruf Latin, huruf beraksen dan digit nada</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Membaca setiap perkataan lirik bermasa (sinkronisasi perkataan dihidupkan); Korea tidak memerlukan muat turun; empat belas skrip berkongsi satu muat turun CLDR; aksara Han dibaca oleh Rime Wordlist apabila jadual perkataannya meliputi bahasa tersebut</string>
@@ -745,6 +779,12 @@ Kuki yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_written_by">Ditulis oleh: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Serlahkan perkataan atau suku kata yang disinkronkan</string>
   <string name="morphe_music_lyrics_word_sync_summary">Utamakan lirik perkataan demi perkataan jika tersedia. Apabila lirik membawa pemasaan perkataan, ia akan menyerlahkan setiap perkataan atau suku kata mengikut masa muzik</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Gunakan tatalan spring</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Menatal lirik dengan fizik spring, dan menggerakkan setiap baris sedikit selepas baris di atasnya. Matikan untuk menjimatkan bateri pada peranti yang lebih perlahan</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Tunjukkan titik jeda instrumental</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Menunjukkan tiga titik di antara baris semasa jeda instrumental yang panjang, yang akan terisi apabila jeda berakhir</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Malapkan baris jauh dengan lebih banyak</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Memalapkan setiap baris tidak aktif dengan lebih banyak bergantung kepada sejauh mana ia dari baris yang sedang dinyanyikan. Apabila dimatikan, setiap baris tidak aktif dimalapkan pada tahap yang sama</string>
   <string name="morphe_music_lyrics_line_scale_title">Kecilkan baris tidak aktif</string>
   <string name="morphe_music_lyrics_line_scale_summary">Melukis setiap baris yang tidak sedang dinyanyikan sedikit lebih kecil, selain daripada memalapkannya</string>
   <string name="morphe_music_lyrics_split_background_title">Tunjukkan vokal latar secara berasingan</string>
@@ -834,6 +874,7 @@ Terpakai untuk kedua-dua had. Pada 1.75, empat aksara lebar penuh dikira sebagai
   <string name="morphe_music_lyrics_romanize_only">Diromankan sahaja</string>
   <string name="morphe_music_lyrics_dual_only">Mod dwi</string>
   <string name="morphe_music_lyrics_copied">Disalin ke papan keratan</string>
+  <string name="morphe_music_lyrics_current">Semasa</string>
   <string name="morphe_music_lyrics_refreshing">Menyegarkan</string>
   <string name="morphe_music_lyrics_refreshed">Disegarkan</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Kunci API QuickLRC</string>

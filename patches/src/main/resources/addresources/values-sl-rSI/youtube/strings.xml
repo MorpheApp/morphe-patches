@@ -648,6 +648,24 @@ Vaš API ključ nikoli ne smete deliti. Kdorkoli, ki ima dostop do njega, lahko 
   <string name="morphe_loop_video_range_clear">Počisti</string>
   <string name="morphe_loop_video_range_toast_on">Zanka %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Neveljaven časovni razpon</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Število ponovitev</string>
+  <string name="morphe_loop_count_screen_summary">Izberite, kaçkrati se video ponovi pred naslednjim videom</string>
+  <string name="morphe_loop_count_title">Omogoči število ponovitev</string>
+  <string name="morphe_loop_count_summary">Meni Več predvajalnika ob možnosti Ponovi video prikazuje število ponovitev, s katerim izberete, kolikokrat se video predvaja pred naslednjim videom</string>
+  <string name="morphe_loop_count_playlists_title">Shrani število ponovitev v seznamih predvajanja</string>
+  <string name="morphe_loop_count_playlists_summary">Vsak video v seznamu predvajanja ohrani izbrano število ponovitev, možnost Ponovi video pa se vklopi, ko seznam predvajanja video ponovno predvaja. Če je ta možnost izklopljena, velja število ponovitev samo za trenutno predvajani video</string>
+  <string name="morphe_loop_count_clear_title">Počisti shranjene številke ponovitev</string>
+  <string name="morphe_loop_count_clear_summary">Pozabi shranjena števila ponovitev v vaših seznamih predvajanja. Shranjeni videi: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Ni shranjenih števil ponovitev</string>
+  <string name="morphe_loop_count_clear_dialog_title">Počistiti shranjene številke ponovitev?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Videi v vaših seznamih predvajanja pozabijo svoje število ponovitev, možnost Ponovi video pa se pri predvajanju iz seznama predvajanja več ne vklopi</string>
+  <string name="morphe_loop_count_clear_done">Shranjena števila ponovitev so počisčena</string>
+  <string name="morphe_loop_count_flyout_name">Število ponovitev</string>
+  <string name="morphe_loop_count_dialog_message">Kolikokrat se pred naslednjim videom predvo video, od %1$s do %2$s. Pustite prazno, da se video ponavlja brez omejitve.</string>
+  <string name="morphe_loop_count_no_limit">Brez omejitve</string>
+  <string name="morphe_loop_count_decrease">Manj ponovitev</string>
+  <string name="morphe_loop_count_increase">Več ponovitev</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Prikaži gumb za sliko v sliki</string>
   <string name="morphe_pip_button_flyout_title">Prikaži meni za sliko v sliki</string>
@@ -1113,6 +1131,10 @@ Za prikaz menija 'Audio Track' spremenite 'Spoofanje video tokov' v katerega kol
   <string name="morphe_enhanced_ambient_mode_summary">Namesto okoljskega načina osvetli celotno stran s posnetkom in črne robove z videoposnetkom</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Ohrani berljivost besedila</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Zniža svetlost pri svetlih videoposnetkih, da ostane besedilo na strani berljivo</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Zatemni pri pomikanju</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Zatemni luč med pomikanjem strani ali dotikom</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Trajanje zatemnjenja</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Koliko dolgo luč ostane zatemnjena po停止 pomikanja. Če izberete 0, luč zatemni le pomikanje in se vrne takoj, ko pomikanje prenehate</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Skrijte infokartice</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Za prikaz menija 'Audio Track' spremenite 'Spoofanje video tokov' v katerega kol
   <string name="morphe_hide_shorts_subscriptions_title">Skrij v viru naročnin</string>
   <string name="morphe_hide_shorts_video_description_title">Skrij v opisu videa</string>
   <string name="morphe_hide_shorts_history_title">Skrij v zgodovini ogledov</string>
+  <string name="morphe_hide_shorts_notifications_title">Skrij v potisnih obvestilih</string>
   <string name="morphe_shorts_player_screen_title">Predvajalnik Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Izberite, katere komponente se pojavijo v predvajalniku Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Onemogoči dvojni dotik za všeček</string>

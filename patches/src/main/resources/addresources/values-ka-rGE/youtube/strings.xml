@@ -648,6 +648,24 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">გასუფთავება</string>
   <string name="morphe_loop_video_range_toast_on">ციკლური განმეორება %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">დროის არასწორი დიაპაზონი</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">ციკლის რაოდენობა</string>
+  <string name="morphe_loop_count_screen_summary">აირჩიეთ, რამდენჯერ განმეორდეს ვიდეო შემდეგ ვიდეომდე</string>
+  <string name="morphe_loop_count_title">ჩართეთ ციკლის რაოდენობა</string>
+  <string name="morphe_loop_count_summary">პლეერის „მეტი“ მენიუში, „ვიდეოს განმეორების“ გვერდით ჩანს განმეორების რაოდენობა, რათა აირჩიოთ, რამდენჯერ გაირთვას ვიდეო შემდეგ ვიდეომდე</string>
+  <string name="morphe_loop_count_playlists_title">განმეორების რაოდენობის შენახვა ფლეილისტებში</string>
+  <string name="morphe_loop_count_playlists_summary">ფლეილისტის თითოეული ვიდეო ინახავს თქვენ მიერ არჩეულ განმეორების რაოდენობას და „ვიდეოს განმეორება“ ჩირთვება, როდესაც ფლეილისტი მას კვლავ ასვამს. თუ გამორთულია, განმეორების რაოდენობა მხოლოდ ამჟამად გამართული ვიდეოსთვის მოქმედებს</string>
+  <string name="morphe_loop_count_clear_title">შენახული განმეორებების რაოდენობის გასუფთავება</string>
+  <string name="morphe_loop_count_clear_summary">წაშალეთ თქვენს ფლეილისტებში შენახული განმეორებების რაოდენობა. შენახული ვიდეოები: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">შენახული განმეორებების რაოდენობა არ არის</string>
+  <string name="morphe_loop_count_clear_dialog_title">გსურთ შენახული განმეორებების რაოდენობის გასუფთავება?</string>
+  <string name="morphe_loop_count_clear_dialog_message">თქვენი ფლეილისტების ვიდეოები „დაივიწყებენ“ განმეორების რაოდენობას და „ვიდეოს განმეორება“ აღარ ჩირთვება, როდესაც ფლეილისტი მათ ასვამს</string>
+  <string name="morphe_loop_count_clear_done">შენახული განმეორებების რაოდენობა გასუფთავებულია</string>
+  <string name="morphe_loop_count_flyout_name">ციკლის რაოდენობა</string>
+  <string name="morphe_loop_count_dialog_message">რამდენჯერ განათავსებს ვიდეო შემდეგ ვიდეომდე, %1$s-დან %2$s-მდე. დატოვეთ ცარიელი ვიდეოს შეუზღუდავად გასამეორებლად.</string>
+  <string name="morphe_loop_count_no_limit">შეზღუდვის გარეშე</string>
+  <string name="morphe_loop_count_decrease">ნაკლებიჯერ</string>
+  <string name="morphe_loop_count_increase">მეტიჯერ</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">სურათის სურათში ღილაკის ჩვენება</string>
   <string name="morphe_pip_button_flyout_title">სურათის სურათში მენიუს ჩვენება</string>
@@ -1113,6 +1131,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">Ambient რეჟიმის ნაცვლად, ვიდეოს ფერებში განანათებს მთელ გვერდსა და შავ ზოლებს</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">ტექსტის წაკითხვადი დატოვება</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">აკორრიფებს განათებას კაშკაშა ვიდეოების დროს, რათა გვერდზე ტექსტი წაკითხვადი დარჩეს</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">გაბინდვა სქროლვისას</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">აშინებს განათებას გვერდის სქროლვისას ან შეხებისას</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">გაბინდვის ხანგრძლივობა</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">რა ያ kadar რჩება განათება დაბინდული სქროლვის შეწყვეტის შემდეგ. 0-ის შემთხვევაში, განათება მხოლოდ სქროლვისას ბინდდება და დაუბრუნდება ჩვეულებრივ მდგომარეობას სქროლვის შეწყვეტისთანავე</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">ინფორმაციული ბარათების დამალვა</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">დამალვა გამოწერების ფიდში</string>
   <string name="morphe_hide_shorts_video_description_title">დამალეთ ვიდეოს აღწერაში</string>
   <string name="morphe_hide_shorts_history_title">დამალეთ ნახვის ისტორიაში</string>
+  <string name="morphe_hide_shorts_notifications_title">დამალეთ push შეტყობინებებში</string>
   <string name="morphe_shorts_player_screen_title">Shorts-ის პლეერი</string>
   <string name="morphe_shorts_player_screen_summary">აირჩიეთ, რომელი კომპონენტები გამოჩნდეს Shorts-ის პლეერში</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">გამოთიშეთ ორჯერ დაჭერით მოწონება</string>

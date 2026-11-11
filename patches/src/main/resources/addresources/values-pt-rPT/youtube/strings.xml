@@ -648,6 +648,24 @@ A sua chave de API nunca deve ser partilhada. Qualquer pessoa com acesso a ela p
   <string name="morphe_loop_video_range_clear">Limpar</string>
   <string name="morphe_loop_video_range_toast_on">A repetir %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Intervalo de tempo inválido</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Contagem de loops</string>
+  <string name="morphe_loop_count_screen_summary">Escolha quantas vezes um vídeo é repetido antes do próximo vídeo</string>
+  <string name="morphe_loop_count_title">Ativar contagem de loops</string>
+  <string name="morphe_loop_count_summary">O menu Mais do player mostra a Contagem de repetições ao lado de Repetir vídeo, para escolher quantas vezes o vídeo é reproduzido antes do próximo vídeo</string>
+  <string name="morphe_loop_count_playlists_title">Salvar contagem de repetições em playlists</string>
+  <string name="morphe_loop_count_playlists_summary">Cada vídeo de uma playlist mantém a contagem de repetições que você escolheu, e Repetir vídeo é ativado quando a playlist o reproduz novamente. Se desativado, a contagem de repetições serve apenas para o vídeo que está sendo reproduzido agora</string>
+  <string name="morphe_loop_count_clear_title">Limpar contagens de repetições salvas</string>
+  <string name="morphe_loop_count_clear_summary">Esquecer as contagens de repetições salvas em suas playlists. Vídeos salvos: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Nenhuma contagem de repetição está salva</string>
+  <string name="morphe_loop_count_clear_dialog_title">Limpar contagens de repetições salvas?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Os vídeos de suas playlists esquecem sua contagem de repetições, e Repetir vídeo não será mais ativado quando uma playlist os reproduzir</string>
+  <string name="morphe_loop_count_clear_done">Contagens de repetições salvas limpas</string>
+  <string name="morphe_loop_count_flyout_name">Contagem de loop</string>
+  <string name="morphe_loop_count_dialog_message">Quantas vezes o vídeo é reproduzido antes do próximo vídeo, de %1$s a %2$s. Deixe vazio para repetir o vídeo sem limite.</string>
+  <string name="morphe_loop_count_no_limit">Sem limite</string>
+  <string name="morphe_loop_count_decrease">Menos vezes</string>
+  <string name="morphe_loop_count_increase">Mais vezes</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Mostrar botão Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Mostrar menu Picture-in-Picture</string>
@@ -1113,6 +1131,10 @@ Para mostrar o menu 'Faixa de áudio', altere 'Falsificar fluxos de vídeo' para
   <string name="morphe_enhanced_ambient_mode_summary">Ilumina toda a página de exibição e as barras pretas com o vídeo, em vez do Modo ambiente</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Manter o texto legível</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Suaviza a luz em vídeos brilhantes para que o texto na página permaneça legível</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Escurecer ao rolar</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Escurece a luz enquanto a página é rolada ou tocada</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Duração do escurecimento</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Quanto tempo a luz permanece escurecida após a rolagem parar. Com 0, apenas a rolagem escurece a luz, e ela retorna assim que a rolagem para</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ocultar cartões de informação</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Para mostrar o menu 'Faixa de áudio', altere 'Falsificar fluxos de vídeo' para
   <string name="morphe_hide_shorts_subscriptions_title">Ocultar no feed de Subscrições</string>
   <string name="morphe_hide_shorts_video_description_title">Ocultar na descrição do vídeo</string>
   <string name="morphe_hide_shorts_history_title">Ocultar no histórico de visualização</string>
+  <string name="morphe_hide_shorts_notifications_title">Ocultar nas notificações push</string>
   <string name="morphe_shorts_player_screen_title">Reprodutor de Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Escolher quais componentes aparecem no reprodutor de Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Desativar toque duplo para gostar</string>

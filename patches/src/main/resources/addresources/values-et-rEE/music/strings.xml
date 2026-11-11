@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Luba heli/video lüliti</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Proovi vahetada heliriba versiooni ja ametlikku muusikavideot</string>
+  <string name="morphe_music_auto_song_version_title">Mängi alati laulu versiooni</string>
+  <string name="morphe_music_auto_song_version_summary">Asendab ametlikud muusikavideod kolejuhis vastava lauluga. Nõuab rakenduse seadet \"Ära mängi muusikavideoid\". Täpselt ühise vastuse puudumisel jäävad raidad muutmata</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Laadi kolmandate osapoolte allalaadimisrakenduste abil alla muusikavideoid, taskuhäälingusaateid või laule</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Need laaditakse alla ükshaaval, mis võib võtta kaua ja nõuab umbes %3$s vaba
   <string name="morphe_music_hide_repeat_button_title">Peida kordusnupp</string>
   <string name="morphe_music_hide_shuffle_button_title">Peida juhuesituse nuppu</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Peida kiirvaliku riba</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Peida jaotis „Võite pidada huvitavaks ka“</string>
   <string name="morphe_music_comments_screen_title">Kommentaarid</string>
   <string name="morphe_music_comments_screen_summary">Vali, millised komponendid kommentaaride jaotises kuvatakse</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Peida kogukonnajuhised</string>
@@ -335,6 +338,9 @@ SABR-taasesitus (videovoogude imiteerimine välja lülitatud)"</string>
   <string name="morphe_music_playback_speed_title">Taasesituskiirus</string>
   <string name="morphe_music_playback_speed_summary">Kiirus, mida rakendatakse kõigi lugude puhul. 100% juures kasutatakse rakenduse kiirust, näiteks taskuhäälingusaadete taasesituskiirust</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Muuda helikõrgust koos kiirusega</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Keela helitugevuse automaatne allakeldamine</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Helitugevust ei alandata, kui mõni teine rakendus esitab lühikest heli, näiteks teavitust</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Keela mittemeeldimise ümbersuunamine</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Takistab järgmisele palale liikumist, kui vajutatakse mittemeeldimise nuppu</string>
@@ -492,16 +498,42 @@ SABR-taasesitus (videovoogude imiteerimine välja lülitatud)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Peida navigeerimisnuppude sildid</string>
   <string name="morphe_music_navigation_bar_glass_title">Luba klaasist navigeerimisriba</string>
   <string name="morphe_music_navigation_bar_glass_summary">Kuvab navigeerimisiriba kui hõljuval, ümarate nurkadega poolläbipaatva kapslina</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Klaasi läbipaistmatus</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Reguleeri klaasist navigeerimisriba läbipaistvust (0 on läbipaistev, 100 on läbipaistmatu)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Hele klaas</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Värvab klaasist navigeerimisriba tumeda asemel valgeks, et saada hele ja selgem klaas</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Klaasise navigeerimisriba suurus</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Reguleerige klaasise navigeerimisriba kõrgust, laialgust ja nuppude vahemaad koos eelvaatega. Nupud, mis ei mahu ekraani laialgusse, on peidetud</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Klaasise navigeerimisriba suurus ja stiil</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Reguleerige klaasise navigeerimisriba kõrgust, laialgust, nuppude vahemaad, läbipaistvust ja serva heledust koos eelvaatega. Nupud, mis ei mahu ekraani laialgusse, on peidetud</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Kõrgus</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Maksimaalne laius</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Nuppude vahe</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Kuvatud nupud: %1$s est %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Läbipaistvus</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Serva heledus</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Klaasihõgu</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Kui palju on klaasise navigeerimisriba taga olev lehk hägustatud (Android 14 ja uuem). Väärtuse 0 juures on lehekuva terav ning enne Android 14 on lehekuv covered</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Hele klaas</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Värvab klaasist navigeerimisriba tumeda asemel valgeks, et saada hele ja selgem klaas</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Albumi kaane toon</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Värvab klaasise navigeerimisriba mängivat laulu albumikaane värviga</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Peida valitud nupu indikaator</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Peidab klaasise navigeerimisriba valitud nupu taga olevat ümarat ristikust</string>
+  <string name="morphe_music_miniplayer_screen_title">Minipleier</string>
+  <string name="morphe_music_miniplayer_screen_summary">Muutke minipleieri stiili, nuppe ja žeste</string>
+  <string name="morphe_music_miniplayer_glass_title">Luba klaasise minipleier</string>
+  <string name="morphe_music_miniplayer_glass_summary">Näitab ujuv minipleierit kui ümarat, poolläbipaistvat klaasikaarti</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Klaasise minipleieri stiil</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Reguleerige klaasise minipleieri nurga raadiust, kaane paddingut, serva heledust ja läbipaistvust koos eelvaatega</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Nurga raadius</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Kaane padding</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Serva heledus</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Läbipaistvus</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Klaasihõgu</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Kui palju on klaasise minipleieri taga olev lehk hägustatud (Android 14 ja uuem). Väärtuse 0 juures on lehekuva terav ning enne Android 14 on lehekuv covered</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Hele klaas</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Värvab klaasise minipleieri tumeda asemel valgeks, et saada hele ja selgem klaas</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumi kaane toon</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Värvab klaasise minipleieri mängivat laulu albumikaane värviga</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Kevitav albumikaan</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Muudab klaasise minipleieri albumikaane ümaraks ja pöörab seda laulu ajal nagu plaati</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Peida edendumisriba</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Peidab klaasise minipleieri allosas asuvat edendumisribat</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Avaleht</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Proovid</string>
@@ -723,6 +755,8 @@ Nõutavad küpsised: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_translate_button_summary">Puudutage tõlke sisse- või väljalülitamiseks; pikalt vajutades lülitatakse sisse ainult tõlke režiim. Kasutatakse aktiveeritud tõlketeenuse pakkujaid loetletud järjekorras</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Kuva romaniseerimise või transliteratsiooni nupp</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Puudutage romaniseerimise või transliteratsiooni sisse- või väljalülitamiseks; pikalt vajutades lülitatakse sisse ainult romaniseerimise või transliteratsiooni režiim. Kasutatakse aktiveeritud romaniseerimisteenuse pakkujaid loetletud järjekorras</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Kuva praegune nupp</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Kuva nupp, mis hüppab tagasi lauldale rea juurde, kui lyricsi käsitsi keritakse</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Luba transliteratsioon</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Luba laulutekstide allikast pärinevate mitteladina tähtede lugemine; kui see seade on välja lülitatud, jäta alles ainult ladina tähed, diakriitiliste märkidega tähed ja tooninumbrid</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Loeb ajastatud lauluteksti iga sõna (sõnade sünkroonimine on sisse lülitatud); korea keele jaoks pole allalaadimist vaja; neljateistkümne kirjasüsteemi jaoks on vaja ühte CLDR-i allalaadimist; Hani märke loeb Rime\'i sõnastik, kui selle sõnastik toetab vastavat keelt</string>
@@ -746,6 +780,12 @@ Nõutavad küpsised: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_written_by">Kirjutaja: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Tõsta esile sünkroonitud sõnad või silbid</string>
   <string name="morphe_music_lyrics_word_sync_summary">Eelista sõna-sõnalt esitatud laulusõnu, kui need on saadaval. Kui laulusõnad sisaldavad ajastust, tõstetakse iga sõna või silp esile muusikaga samas taktis</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Kasuta vedru-kerimist</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Kerib lyricsi vedrufüüsika abil ja liigutab iga rea veidi üle eelmise rea. Lülita välja, et säästa aegsemate seadmete akut</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Näita instrumentaalset vaheosa punkte</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Näitab pika instrumentaalsete vaheosade ajal rideva lõigude vahel kolme punkti, mis täituvad koos vaheosa lõpuga</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Hägusta kaugesema rea rohkem</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Hägustab iga inaktiivset rida rohkem, mida kaugemal see on lauldetavast realt. Kui funktsioon on väljas, on kõik inaktiivsed read samalaadi hägustusega</string>
   <string name="morphe_music_lyrics_line_scale_title">Lühenda mitteaktiivsed read</string>
   <string name="morphe_music_lyrics_line_scale_summary">Joonistab hetkel mittelauldavad read veidi väiksemalt ning muudab need ka tumedamaks</string>
   <string name="morphe_music_lyrics_split_background_title">Kuva taustahääled eraldi</string>
@@ -835,6 +875,7 @@ Kehtib mõlema piirmäära puhul. Väärtuse 1,75 korral arvestatakse nelja täi
   <string name="morphe_music_lyrics_romanize_only">Ainult romaniseeritud</string>
   <string name="morphe_music_lyrics_dual_only">Kaksirežiim</string>
   <string name="morphe_music_lyrics_copied">Kopeeritud lõikelauale</string>
+  <string name="morphe_music_lyrics_current">Käesolev</string>
   <string name="morphe_music_lyrics_refreshing">Värskendamine</string>
   <string name="morphe_music_lyrics_refreshed">Värskendatud</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API võti</string>

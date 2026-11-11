@@ -648,6 +648,25 @@ API key ya te tu carî nabe parve kirin. Kesê ku bigihe wê dikare krediyên Op
   <string name="morphe_loop_video_range_clear">Paqij bike</string>
   <string name="morphe_loop_video_range_toast_on">Dubarekirin %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Rêza demê nederbasdar e</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Hejmara dubarekirinê</string>
+  <string name="morphe_loop_count_screen_summary">Hêlbijêre ka vîdyoyek çend caran dubare bibe berî vîdyoya din</string>
+  <string name="morphe_loop_count_title">Hejmara dubarekirinê çalak bike</string>
+  <string name="morphe_loop_count_summary">Menûya \"Zêdetir\" a playerî li cem \"Vîdyoyê loop bike\", Hejmara loopan nîşan dide, da ku hûn hilbijêrin vîdyo çend caran bêlîze berî vîdyoya din</string>
+  <string name="morphe_loop_count_playlists_title">Hejmara loopan di playlistan de save bike</string>
+  <string name="morphe_loop_count_playlists_summary">Her vîdyoyek a playlistekê hejmara loopan a ku we hilbijartiye diparêze, û gava playlist vîdyoyê dîsa lîstîne, \"Vîdyoyê loop bike\" tê vekirin. Ger were girtin, hejmara loopan tenê ji bo vîdyoya ku niha tê lîstîn e</string>
+  <string name="morphe_loop_count_clear_title">Hejmarên loopan ên savekirî paqij bike</string>
+  <string name="morphe_loop_count_clear_summary">Hejmarên loopan ên ku di playlistên we de hatine savekirin ji bîr bike. Vîdyoyên savekirî: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Tu hejmarên loopan nayên savekirin</string>
+  <string name="morphe_loop_count_clear_dialog_title">Hejmarên loopan ên savekirî paqij bike?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Vîdyoyên playlistên we hejmara loopan a xwe ji bîr dikin, û gava playlist wan lîstîne, \"Vîdyoyê loop bike\" êdî nayê vekirin</string>
+  <string name="morphe_loop_count_clear_done">Hejmarên loopan ên savekirî hatin paqijkirin</string>
+  <string name="morphe_loop_count_flyout_name">Hejmara loop-ê</string>
+  <string name="morphe_loop_count_dialog_message">Çend caran vîdyo berî vîdyoya din bê lîstkirin, ji %1$s heta %2$s. Bo vala bihêle da ku vîdyo bêyî sînor li ser xwe bigerîye.</string>
+  <string name="morphe_loop_count_times">%s car</string>
+  <string name="morphe_loop_count_no_limit">Sînor tune</string>
+  <string name="morphe_loop_count_decrease">Kêmtir caran</string>
+  <string name="morphe_loop_count_increase">Zêdetir caran</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Bişkoja Picture-in-Picture nîşan bide</string>
   <string name="morphe_pip_button_flyout_title">Menuya Picture-in-Picture nîşan bide</string>
@@ -1113,6 +1132,10 @@ Ji bo nîşandana menûya 'Audio Track', 'Spoof video streams' biguherîne her c
   <string name="morphe_enhanced_ambient_mode_summary">Li şûna moda Ambient, hemû rûpela temaşe û şirîtên reş bi vîdyoyê ronî dike</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Têkst xwendinê hêsan bihêle</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Ronahiya vîdyoyên ronî kêm dike da ku têksta li ser rûpelê xwendinê hêsan be</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Tarikirinê dema xwendinê</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Dema rûpel tê xwendin an dest lê tê xistin, ronahiyê tarik dike</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Demdirêjiya tarikirinê</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Ka ronahî heta çi demê tarik dimîne piştî ku xwendin raweste. Bi 0 tenê xwendin ronahiyê tarik dike, û her saniye piştî xwendin raweste ronahî vedigere</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Kartên agahdariyê veşêre</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Ji bo nîşandana menûya 'Audio Track', 'Spoof video streams' biguherîne her c
   <string name="morphe_hide_shorts_subscriptions_title">Di feeda Aboneman de veşêre</string>
   <string name="morphe_hide_shorts_video_description_title">Di danasîna vîdyoyê de veşêre</string>
   <string name="morphe_hide_shorts_history_title">Di dîroka temaşeyê de veşêre</string>
+  <string name="morphe_hide_shorts_notifications_title">Di agahdariyên push de veşêre</string>
   <string name="morphe_shorts_player_screen_title">Lîstikera Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Hilbijêre kîjan pêkhate di lîstikvana Shorts de xuya bibin</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Hezkirina bi du-tikandinê asteng bike</string>

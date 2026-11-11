@@ -648,6 +648,25 @@ Kunci API anda tidak seharusnya dikongsi. Sesiapa yang mempunyai akses kepadanya
   <string name="morphe_loop_video_range_clear">Kosongkan</string>
   <string name="morphe_loop_video_range_toast_on">Mengulang %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Julat masa tidak sah</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Bilangan gelung</string>
+  <string name="morphe_loop_count_screen_summary">Pilih berapa kali video diulang sebelum video seterusnya</string>
+  <string name="morphe_loop_count_title">Dayakan bilangan gelung</string>
+  <string name="morphe_loop_count_summary">Menu Lebih pada pemain memaparkan Bilangan gelung bersebelahan Gelung video, untuk memilih berapa kali video dimainkan sebelum video seterusnya</string>
+  <string name="morphe_loop_count_playlists_title">Simpan jumlah gelung dalam senarai main</string>
+  <string name="morphe_loop_count_playlists_summary">Setiap video dalam senarai main mengekalkan jumlah gelung yang anda pilih, dan Gelung video dihidupkan apabila senarai main memainkannya semula. Jika dimatikan, jumlah gelung hanya untuk video yang sedang dimainkan sekarang</string>
+  <string name="morphe_loop_count_clear_title">Kosongkan jumlah gelung yang disimpan</string>
+  <string name="morphe_loop_count_clear_summary">Lupakan jumlah gelung yang disimpan dalam senarai main anda. Video yang disimpan: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Tiada jumlah gelung yang disimpan</string>
+  <string name="morphe_loop_count_clear_dialog_title">Kosongkan jumlah gelung yang disimpan?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Video dalam senarai main anda melupakan jumlah gelungnya, dan Gelung video tidak lagi dihidupkan apabila senarai main memainkannya</string>
+  <string name="morphe_loop_count_clear_done">Jumlah gelung yang disimpan telah dikosongkan</string>
+  <string name="morphe_loop_count_flyout_name">Bilangan gelung</string>
+  <string name="morphe_loop_count_dialog_message">Berapa kali video dimainkan sebelum video seterusnya, dari %1$s hingga %2$s. Biarkan kosong untuk mengulang video tanpa had.</string>
+  <string name="morphe_loop_count_times">%s kali</string>
+  <string name="morphe_loop_count_no_limit">Tiada had</string>
+  <string name="morphe_loop_count_decrease">Kurangkan kali</string>
+  <string name="morphe_loop_count_increase">Lebihkan kali</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Tunjukkan butang Gambar dalam Gambar</string>
   <string name="morphe_pip_button_flyout_title">Tunjukkan menu Gambar dalam Gambar</string>
@@ -1113,6 +1132,10 @@ Untuk memaparkan menu 'Audio Track', tukar 'Spoof video streams' kepada mana-man
   <string name="morphe_enhanced_ambient_mode_summary">Menerangi keseluruhan halaman tontonan dan bar hitam dengan video, bagi menggantikan mod Ambien</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Kekalkan teks boleh dibaca</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Memalapkan cahaya pada video yang terang supaya teks pada halaman tetap boleh dibaca</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Malapkan semasa menatal</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Malapkan lampu semasa halaman ditatal atau disentuh</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Tempoh malap</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Berapa lama lampu kekal malap selepas tatalan berhenti. Dengan 0, hanya tatalan yang malapkan lampu, dan ia akan kembali terang sebaik sahaja tatalan berhenti</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Sorokkan kad info</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1156,7 @@ Untuk memaparkan menu 'Audio Track', tukar 'Spoof video streams' kepada mana-man
   <string name="morphe_hide_shorts_subscriptions_title">Sorokkan dalam suapan Langganan</string>
   <string name="morphe_hide_shorts_video_description_title">Sorokkan dalam penerangan video</string>
   <string name="morphe_hide_shorts_history_title">Sorokkan dalam sejarah tontonan</string>
+  <string name="morphe_hide_shorts_notifications_title">Sembunyikan dalam pemberitahuan tolak</string>
   <string name="morphe_shorts_player_screen_title">Pemain Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Pilih komponen yang muncul dalam pemain Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Matkan ketik dua kali untuk suka</string>

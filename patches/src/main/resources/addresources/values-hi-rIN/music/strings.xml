@@ -124,6 +124,8 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">ऑडियो/वीडियो स्विच चालू करें</string>
   <string name="morphe_music_enable_audio_video_switch_summary">ऑडियो ट्रैक और ऑफ़िशियल म्यूज़िक वीडियो के बीच स्विच करने की कोशिश करें</string>
+  <string name="morphe_music_auto_song_version_title">हमेशा गाने का वर्शन चलाएं</string>
+  <string name="morphe_music_auto_song_version_summary">कतार में आधिकारिक संगीत वीडियो को मिलते-जुलते गाने से बदल देता है। इसके लिए ऐप सेटिंग \'संगीत वीडियो न चलाएं\' का चालू होना आवश्यक है। बिना सटीक मिलान वाले ट्रैक अपरिवर्तित रहते हैं</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">थर्ड-पार्टी डाउनलोडर ऐप्स से म्यूज़िक वीडियो, पॉडकास्ट या गाने डाउनलोड करें</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
@@ -258,6 +260,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">दोहराव बटन छुपाएं</string>
   <string name="morphe_music_hide_shuffle_button_title">शफल बटन छुपाएं</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\'स्पीड डायल\' शेल्फ छुपाएं</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">\'आपको पसंद हो सकता है\' अनुभाग छुपाएं</string>
   <string name="morphe_music_comments_screen_title">टिप्पणियाँ</string>
   <string name="morphe_music_comments_screen_summary">टिप्पणी अनुभाग में कौन से घटक दिखाई दें, चुनें</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">समुदाय दिशानिर्देश छुपाएं</string>
@@ -335,6 +338,9 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_playback_speed_title">प्लेबैक गति</string>
   <string name="morphe_music_playback_speed_summary">सभी ट्रैक के लिए उपयोग की जाने वाली गति। 100% पर ऐप की गति उपयोग की जाती है, जैसे पॉडकास्ट प्लेबैक गति।</string>
   <string name="morphe_music_playback_speed_change_pitch_title">गति के साथ पिच बदलें</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">ऑडियो डकिंग अक्षम करें</string>
+  <string name="morphe_music_disable_audio_ducking_summary">जब कोई अन्य ऐप छोटी ध्वनि बजाता है, जैसे कि अधिसूचना, तो वॉल्यूम कम नहीं होता है</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">डिसलाइक पुनर्निर्देशन अक्षम करें</string>
   <string name="morphe_music_disable_dislike_redirection_summary">जब डिसलाइक बटन दबाया जाता है तो अगले ट्रैक पर जाने से रोकता है</string>
@@ -492,16 +498,42 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_hide_navigation_bar_labels_title">नेविगेशन बटन लेबल छिपाएं</string>
   <string name="morphe_music_navigation_bar_glass_title">ग्लास नेविगेशन बार सक्षम करें</string>
   <string name="morphe_music_navigation_bar_glass_summary">नेविगेशन बार को एक फ्लोटिंग, राउंडेड, ट्रांसलूसेंट कैप्सूल के रूप में दिखाता है</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">ग्लास ओपेसिटी</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">ग्लास नेविगेशन बार के पारदर्शिता स्तर को समायोजित करें (0 पारदर्शी है, 100 अपारदर्शी है)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">लाइट ग्लास</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">हल्के और स्पष्ट ग्लास के लिए ग्लास नेविगेशन बार को गहरे रंग के बजाय सफेद रंग देता है</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">ग्लास नेविगेशन बार का आकार</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">पूर्वावलोकन के साथ, ग्लास नेविगेशन बार की ऊंचाई, चौड़ाई और बटन स्पेसिंग को समायोजित करें। जो बटन स्क्रीन की चौड़ाई में फिट नहीं होते उन्हें छिपा दिया जाता है</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">ग्लास नेविगेशन बार का आकार और स्टाइल</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">ग्लास नेविगेशन बार की ऊंचाई, चौड़ाई, बटन स्पेसिंग, अपारदर्शिता और रिम ब्राइटनेस को प्रिव्यू के साथ एडजस्ट करें। वे बटन जो स्क्रीन की चौड़ाई में फिट नहीं होते, वे छिप जाते हैं</string>
   <string name="morphe_music_navigation_bar_glass_size_height">ऊंचाई</string>
   <string name="morphe_music_navigation_bar_glass_size_width">अधिकतम चौड़ाई</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">बटन स्पेसिंग</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">दिखाए गए बटन: %1$s में से %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">अपारदर्शिता</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">रिम ब्राइटनेस</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">ग्लास ब्लर</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">ग्लास नेविगेशन बार के पीछे का पेज कितना धुंधला है (Android 14 और उसके बाद)। 0 पर पेज स्पष्ट दिखता है, और Android 14 से पहले पेज ढका रहता है</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">लाइट ग्लास</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">हल्के और स्पष्ट ग्लास के लिए ग्लास नेविगेशन बार को गहरे रंग के बजाय सफेद रंग देता है</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">एल्बम आर्ट टिंट</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">चल रहे गाने के एल्बम आर्ट के रंग से ग्लास नेविगेशन बार को टिंट करता है</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">चुने हुए बटन संकेतक को छिपाएं</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">ग्लास नेविगेशन बार के चुने हुए बटन के पीछे के राउंडेड हाईलाइट को छिपा देता है</string>
+  <string name="morphe_music_miniplayer_screen_title">मिनीप्लेयर</string>
+  <string name="morphe_music_miniplayer_screen_summary">मिनीप्लेयर के स्टाइल, बटन और जेस्चर बदलें</string>
+  <string name="morphe_music_miniplayer_glass_title">ग्लास मिनीप्लेयर सक्षम करें</string>
+  <string name="morphe_music_miniplayer_glass_summary">फ्लोटिंग मिनीप्लेयर को एक राउंडेड, ट्रांसलूसेंट ग्लास कार्ड के रूप में दिखाता है</string>
+  <string name="morphe_music_miniplayer_glass_style_title">ग्लास मिनीप्लेयर स्टाइल</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">ग्लास मिनीप्लेयर के कॉर्नर रेडियस, आर्टवर्क पैडिंग, रिम ब्राइटनेस और अपारदर्शिता को प्रिव्यू के साथ एडजस्ट करें</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">कॉर्नर रेडियस</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">आर्टवर्क पैडिंग</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">रिम ब्राइटनेस</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">अपारदर्शिता</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">ग्लास ब्लर</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">ग्लास मिनीप्लेयर के पीछे का पेज कितना धुंधला है (Android 14 और उसके बाद)। 0 पर पेज स्पष्ट दिखता है, और Android 14 से पहले पेज ढका रहता है</string>
+  <string name="morphe_music_miniplayer_glass_light_title">लाइट ग्लास</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">हल्के और स्पष्ट ग्लास के लिए, ग्लास मिनीप्लेयर को डार्क के बजाय सफेद टिंट करता है</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">एल्बम आर्ट टिंट</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">चल रहे गाने के एल्बम आर्ट के रंग से ग्लास मिनीप्लेयर को टिंट करता है</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">घूमता हुआ आर्टवर्क</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">ग्लास मिनीप्लेयर के आर्टवर्क को गोल बनाता है, और गाना बजने के दौरान इसे रिकॉर्ड की तरह घुमाता है</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">प्रोग्रेस बार छिपाएं</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">ग्लास मिनीप्लेयर के नीचे के प्रोग्रेस बार को छिपा देता है</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">होम</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">सैंपल्स</string>
@@ -717,6 +749,8 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_show_translate_button_summary">टॉगल करने के लिए टैप करें; केवल अनुवाद के लिए लंबे समय तक दबाएं। सक्षम अनुवाद प्रदाताओं का उपयोग उनके सूचीबद्ध क्रम में करता है</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">रोमाइज़ या ट्रान्सलिटरेशन बटन दिखाएं</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">रोमाइजेशन या ट्रान्सलिटरेशन टॉगल करने के लिए टैप करें; केवल रोमाइज़ेशन या ट्रान्सलिटरेशन के लिए लंबे समय तक दबाएं। सक्षम रोमाइज़ेशन प्रदाताओं का उपयोग उनके सूचीबद्ध क्रम में करता है</string>
+  <string name="morphe_music_lyrics_show_current_button_title">वर्तमान बटन दिखाएं</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">हाथ से लिरिक्स को स्क्रॉल करते समय, एक बटन दिखाता है जो गाई जा रही लाइन पर वापस ले जाता है</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">ट्रान्सलिटरेशन सक्षम करें</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">लिरिक्स स्रोत से गैर-लैटिन उच्चारण की अनुमति दें; बंद होने पर केवल लैटिन अक्षर, एक्सेंट वाले अक्षर और टोन अंक रखे जाएँ</string>
   <string name="morphe_music_lyrics_local_romanization_summary">हर शब्द को पढ़ता है (शब्द सिंक चालू होने पर); कोरियाई के लिए कोई डाउनलोड आवश्यक नहीं; चौदह स्क्रिप्ट्स एक CLDR डाउनलोड साझा करती हैं; चीनी अक्षरों को राइम शब्द सूची द्वारा पढ़ा जाता है जब इसकी शब्द सारणी भाषा को कवर करती है</string>
@@ -740,6 +774,12 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_written_by">लेखक: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">सिंक किए गए शब्दों या अक्षरों को हाइलाइट करें</string>
   <string name="morphe_music_lyrics_word_sync_summary">जब उपलब्ध हों तो शब्द-दर-शब्द गीतों को प्राथमिकता दें। जब गीतों में शब्द टाइमिंग होती है, तो संगीत के साथ समय पर प्रत्येक शब्द या अक्षर को हाइलाइट करता है</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">स्प्रिंग स्क्रॉलिंग का उपयोग करें</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">स्प्रिंग फिजिक्स के साथ लिरिक्स को स्क्रॉल करता है, और प्रत्येक लाइन को उसके ऊपर वाली लाइन के थोड़ा बाद ले जाता है। धीमी डिवाइस पर बैटरी बचाने के लिए इसे बंद करें</string>
+  <string name="morphe_music_lyrics_gap_dots_title">इंस्ट्रुमेंटल ब्रेक डॉट्स दिखाएं</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">लंबे इंस्ट्रुमेंटल ब्रेक के दौरान लाइनों के बीच तीन डॉट्स दिखाता है, जो ब्रेक खत्म होने के साथ भर जाते हैं</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">दूर की लाइनों को और धुंधला करें</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">गायी जा रही लाइन से जितनी दूर कोई निष्क्रिय लाइन होगी, वह उतनी ही अधिक धुंधली होगी। बंद होने पर, हर निष्क्रिय लाइन एक समान धुंधली होती है</string>
   <string name="morphe_music_lyrics_line_scale_title">निष्क्रिय रेखाओं को संकुचित करें</string>
   <string name="morphe_music_lyrics_line_scale_summary">वर्तमान में न गाई जा रही प्रत्येक रेखा को धुंधला करने के अलावा थोड़ा छोटा दिखाता है</string>
   <string name="morphe_music_lyrics_split_background_title">पृष्ठभूमि वोकल्स अलग से दिखाएं</string>
@@ -829,6 +869,7 @@ SABR प्लेबैक (स्पूफ वीडियो स्ट्र�
   <string name="morphe_music_lyrics_romanize_only">केवल रोमनीकृत</string>
   <string name="morphe_music_lyrics_dual_only">दोहरा मोड</string>
   <string name="morphe_music_lyrics_copied">क्लिपबोर्ड में कॉपी किया गया</string>
+  <string name="morphe_music_lyrics_current">वर्तमान</string>
   <string name="morphe_music_lyrics_refreshing">रिफ़्रेश हो रहा है</string>
   <string name="morphe_music_lyrics_refreshed">रिफ़्रेश किया गया</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API कुंजी</string>
