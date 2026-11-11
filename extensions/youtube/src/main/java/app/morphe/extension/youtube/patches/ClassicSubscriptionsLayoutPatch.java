@@ -112,14 +112,18 @@ public final class ClassicSubscriptionsLayoutPatch {
                         ((MessageLite) tabs.get(i)).toByteArray()
                 ).getTabRenderer();
 
+                String tabIdentifier = tabRenderer.getTabIdentifier();
                 String browseId = tabRenderer.getEndpoint().getBrowseEndpoint().getBrowseId();
                 if (browseId.isEmpty()) {
-                    browseId = tabRenderer.getTabIdentifier();
+                    browseId = tabIdentifier;
                 }
                 if (SUBSCRIPTIONS_BROWSE_ID.equals(browseId)) {
                     subscriptionsIndex = i;
                 }
-                isFeedTab[i] = SUBSCRIPTIONS_BROWSE_ID.equals(browseId) || HOME_BROWSE_ID.equals(browseId);
+                // The category tabs of Home also open the Home feed, but their tab identifier is the category,
+                // such as ATTRIBUTE_FILTER_TYPE_MUSIC_BROAD.
+                isFeedTab[i] = SUBSCRIPTIONS_BROWSE_ID.equals(browseId)
+                        || HOME_BROWSE_ID.equals(tabIdentifier.isEmpty() ? browseId : tabIdentifier);
                 isFeed |= isFeedTab[i];
                 if (tabRenderer.getSelected()) {
                     selectedIndex = i;
