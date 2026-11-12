@@ -688,7 +688,8 @@ public final class AmbientLightController {
             final int failures = captureFailures.get();
             final boolean failing = failures >= CAPTURE_FAILURES_BEFORE_BACKOFF;
             if (failing && !playing) return;
-            if (failing && failures % CAPTURE_FAILURES_BEFORE_BACKOFF == 0) findVideoAgain();
+            // The surface that is read is not shown, so the video can be on another surface by now.
+            if (video.getAlpha() == 0 || (failing && failures % CAPTURE_FAILURES_BEFORE_BACKOFF == 0)) findVideoAgain();
 
             final long interval = failing ? FAILED_CAPTURE_INTERVAL_MS
                     : stillCaptures.get() >= STILL_CAPTURES_BEFORE_SLOWDOWN ? STILL_CAPTURE_INTERVAL_MS : CAPTURE_INTERVAL_MS;
@@ -1081,6 +1082,18 @@ public final class AmbientLightController {
         return false;
     }
 
+    /**
+     * On some devices the player holds two surfaces of the same size, and YouTube shows only one
+     * of them. The other one is fully transparent and never gets a picture.
+     *
+     * @return If the surface is a better match for the video than the best one found so far.
+     */
+    private static boolean isBetterSurface(View surface, long area, View best) {
+        final boolean shown = surface.getAlpha() > 0;
+        if (shown != best.getAlpha() > 0) return shown;
+        return area > (long) best.getWidth() * best.getHeight();
+    }
+
     @Nullable
     private static View findSurface(View view, float x, float y, @Nullable View best) {
         if (view.getVisibility() != View.VISIBLE) return best;
@@ -1091,7 +1104,7 @@ public final class AmbientLightController {
             final boolean contains = x >= location[0] && x <= location[0] + view.getWidth()
                     && y >= location[1] && y <= location[1] + view.getHeight();
             final long area = (long) view.getWidth() * view.getHeight();
-            if (contains && area > 0 && (best == null || area > (long) best.getWidth() * best.getHeight())) {
+            if (contains && area > 0 && (best == null || isBetterSurface(view, area, best))) {
                 best = view;
             }
         }
