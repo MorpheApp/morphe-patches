@@ -176,7 +176,7 @@ final class SeeThroughPage {
         if (view == player || depth > MAX_DEPTH || view.getVisibility() != View.VISIBLE) return;
 
         Drawable background = view.getBackground();
-        if (background != null && view.getWidth() >= minWidth && isPageBackground(view, background, pageColor)) {
+        if (background != null && isPageBackground(view, background, minWidth, pageColor)) {
             clear(view);
         }
         if (view instanceof ViewGroup group) {
@@ -186,16 +186,17 @@ final class SeeThroughPage {
         }
     }
 
-    private static boolean isPageBackground(View view, Drawable background, int pageColor) {
+    /**
+     * @param minWidth A page colored background that is narrower belongs to a small view, and stays.
+     */
+    private static boolean isPageBackground(View view, Drawable background, int minWidth, int pageColor) {
         if (background instanceof PunchThroughDrawable) return false;
-        if (background instanceof ColorDrawable
-                && AmbientLightMath.seeThroughColor(((ColorDrawable) background).getColor(), pageColor) == 0) {
-            return true;
-        }
+        // The second column of the watch page of a tablet is narrower than a third of the page.
         for (int id : SCRIM_IDS) {
             if (id != 0 && view.getId() == id) return true;
         }
-        return false;
+        return view.getWidth() >= minWidth && background instanceof ColorDrawable
+                && AmbientLightMath.seeThroughColor(((ColorDrawable) background).getColor(), pageColor) == 0;
     }
 
     private static void clear(@Nullable View view) {
