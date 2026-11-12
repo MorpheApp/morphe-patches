@@ -52,7 +52,7 @@ public final class LyricsPanelInstaller {
     /** Holds the tab strip and the pages of the player tabs. */
     private static final String TABBED_VIEW_ID = "bottom_sheet_tabbed_view";
 
-    private static final int TAB_CONTENT_ID = ResourceUtils.getIdentifier(
+    static final int TAB_CONTENT_ID = ResourceUtils.getIdentifier(
             ResourceType.ID, "elements_component_holder");
 
     private static final String LYRICS_TITLE_RESOURCE = "lyrics_tab_title";
@@ -84,7 +84,9 @@ public final class LyricsPanelInstaller {
                 if (key == null || !key.startsWith("morphe_music_lyrics")) {
                     return;
                 }
-                Utils.runOnMainThreadNowOrLater(() -> onLyricsSettingChanged(key));
+                // Posted, because the settings screen may only update the setting values in
+                // its own listener, which can be called after this one.
+                Utils.runOnMainThread(() -> onLyricsSettingChanged(key));
             };
     private static boolean settingsListenerRegistered;
     private static long lastEnableButtonWalkUptimeMs;
@@ -111,8 +113,8 @@ public final class LyricsPanelInstaller {
                     }
                     LyricsManager.getInstance().reloadAfterSettingsChange();
                 } else {
-                    app.morphe.extension.music.patches.DeviceLyricsTab.onDisabled();
                     uninstallLyricsPanel();
+                    DeviceLyricsTab.removeTabs();
                 }
                 MiniplayerLyrics.onSettingsChanged();
                 return;
@@ -757,7 +759,7 @@ public final class LyricsPanelInstaller {
      * leave a stale answer behind.
      */
     @Nullable
-    private static String lyricsTitle(Context context) {
+    static String lyricsTitle(Context context) {
         final int id = ResourceUtils.getStringIdentifier(LYRICS_TITLE_RESOURCE);
         if (id == 0) {
             Logger.printException(() -> "App is missing: " + LYRICS_TITLE_RESOURCE);
