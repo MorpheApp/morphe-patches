@@ -931,34 +931,34 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
 
     <!-- video.audio.audioFxProfilesPatch -->
     <string name="morphe_music_audio_fx_screen_title">Audio FX profiles</string>
-    <string name="morphe_music_audio_fx_screen_summary">Configure real-time Audio FX profiles, 8D spatial rotation, and custom DSP sliders</string>
+    <string name="morphe_music_audio_fx_screen_summary">Real-time audio profiles and custom DSP controls</string>
     <string name="morphe_music_audio_fx_enabled_title">Enable Audio FX</string>
-    <string name="morphe_music_audio_fx_enabled_summary">Enables real-time Audio FX processing for online and offline playback</string>
-    <string name="morphe_music_audio_fx_show_player_tab_title">Show FX button next to Lyrics</string>
-    <string name="morphe_music_audio_fx_show_player_tab_summary">Adds an inline FX button right beside the Lyrics tab in the full-screen player</string>
+    <string name="morphe_music_audio_fx_enabled_summary">Enables real-time audio effects</string>
+    <string name="morphe_music_audio_fx_show_player_tab_title">Show FX button in player</string>
+    <string name="morphe_music_audio_fx_show_player_tab_summary">Shows quick FX selector button in the player</string>
     <string name="morphe_music_audio_fx_profile_title">Active Audio FX profile</string>
-    <string name="morphe_music_audio_fx_profile_entry_default">Default (Off)</string>
-    <string name="morphe_music_audio_fx_profile_entry_nightcore">Nightcore (High energy &amp; pitch)</string>
-    <string name="morphe_music_audio_fx_profile_entry_slowed_reverb">Slowed + Reverb (Midnight drive)</string>
-    <string name="morphe_music_audio_fx_profile_entry_muffled_next_room">Muffled / Next Room (Party wall)</string>
-    <string name="morphe_music_audio_fx_profile_entry_lofi_study">Lo-Fi Study (Warm analog tape)</string>
-    <string name="morphe_music_audio_fx_profile_entry_daycore">Daycore (Deep pitch &amp; slow)</string>
-    <string name="morphe_music_audio_fx_profile_entry_vaporwave">Vaporwave (80s aesthetic retro)</string>
-    <string name="morphe_music_audio_fx_profile_entry_live_concert">Live Concert (Stadium arena)</string>
-    <string name="morphe_music_audio_fx_profile_entry_audio_8d">8D Audio (360° Binaural rotation)</string>
-    <string name="morphe_music_audio_fx_profile_entry_bass_boosted">Bass Boosted (Subwoofer punch)</string>
-    <string name="morphe_music_audio_fx_profile_entry_custom">Custom (Use sliders below)</string>
-    <string name="morphe_music_audio_fx_customization_category_title">Fine-tuning &amp; 8D Audio customization</string>
-    <string name="morphe_music_audio_fx_custom_speed_title">Speed multiplier</string>
-    <string name="morphe_music_audio_fx_custom_speed_summary">Adjusts profile playback tempo (100% = profile default)</string>
-    <string name="morphe_music_audio_fx_custom_pitch_title">Pitch multiplier</string>
-    <string name="morphe_music_audio_fx_custom_pitch_summary">Adjusts profile vocal pitch (100% = profile default)</string>
-    <string name="morphe_music_audio_fx_bass_level_title">Bass boost intensity</string>
-    <string name="morphe_music_audio_fx_bass_level_summary">Scales sub-bass punch across active profiles</string>
-    <string name="morphe_music_audio_fx_reverb_level_title">Reverb room size</string>
-    <string name="morphe_music_audio_fx_reverb_level_summary">Adjusts acoustic reverb intensity and room depth</string>
-    <string name="morphe_music_audio_fx_8d_speed_title">8D rotation cycle duration</string>
-    <string name="morphe_music_audio_fx_8d_speed_summary">Seconds per full 360° left-right rotation around the head (lower = faster)</string>
-    <string name="morphe_music_audio_fx_8d_depth_title">8D spatial panning depth</string>
-    <string name="morphe_music_audio_fx_8d_depth_summary">Strength of left-right channel separation during 8D rotation</string>
+    <string name="morphe_music_audio_fx_profile_entry_default">Default</string>
+    <string name="morphe_music_audio_fx_profile_entry_nightcore">Nightcore</string>
+    <string name="morphe_music_audio_fx_profile_entry_slowed_reverb">Slowed + Reverb</string>
+    <string name="morphe_music_audio_fx_profile_entry_muffled_next_room">Muffled / Next Room</string>
+    <string name="morphe_music_audio_fx_profile_entry_lofi_study">Lo-Fi Study</string>
+    <string name="morphe_music_audio_fx_profile_entry_daycore">Daycore</string>
+    <string name="morphe_music_audio_fx_profile_entry_vaporwave">Vaporwave</string>
+    <string name="morphe_music_audio_fx_profile_entry_live_concert">Live Concert</string>
+    <string name="morphe_music_audio_fx_profile_entry_audio_8d">8D Audio</string>
+    <string name="morphe_music_audio_fx_profile_entry_bass_boosted">Bass Boosted</string>
+    <string name="morphe_music_audio_fx_profile_entry_custom">Custom</string>
+    <string name="morphe_music_audio_fx_customization_category_title">Custom profile &amp; 8D settings</string>
+    <string name="morphe_music_audio_fx_custom_speed_title">Custom speed</string>
+    <string name="morphe_music_audio_fx_custom_speed_summary">Playback speed for Custom profile</string>
+    <string name="morphe_music_audio_fx_custom_pitch_title">Custom pitch</string>
+    <string name="morphe_music_audio_fx_custom_pitch_summary">Vocal pitch for Custom profile</string>
+    <string name="morphe_music_audio_fx_bass_level_title">Custom bass boost</string>
+    <string name="morphe_music_audio_fx_bass_level_summary">Bass intensity for Custom profile</string>
+    <string name="morphe_music_audio_fx_reverb_level_title">Custom reverb</string>
+    <string name="morphe_music_audio_fx_reverb_level_summary">Reverb depth for Custom profile</string>
+    <string name="morphe_music_audio_fx_8d_speed_title">8D rotation speed</string>
+    <string name="morphe_music_audio_fx_8d_speed_summary">Seconds per full rotation</string>
+    <string name="morphe_music_audio_fx_8d_depth_title">8D panning depth</string>
+    <string name="morphe_music_audio_fx_8d_depth_summary">Left-right stereo rotation depth</string>
 </resources>

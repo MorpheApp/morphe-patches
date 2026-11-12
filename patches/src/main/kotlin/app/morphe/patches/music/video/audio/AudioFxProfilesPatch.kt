@@ -8,7 +8,6 @@ package app.morphe.patches.music.video.audio
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.string
@@ -19,9 +18,6 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.speed.playbackSpeedPatch
-import app.morphe.patches.shared.misc.audio.silence.ApplySkipSilenceFingerprint
-import app.morphe.patches.shared.misc.audio.silence.SilenceSkippingProcessorQueueInputFingerprint
-import app.morphe.patches.shared.misc.audio.silence.setSkipSilenceEnabledFingerprint
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
@@ -29,8 +25,9 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/AudioFxProfilesPatch;"
@@ -41,7 +38,7 @@ private const val SEEK_BAR_TAG =
 @Suppress("unused")
 val audioFxProfilesPatch = patch(
     name = "Audio FX profiles",
-    description = "Adds customizable real-time DSP audio profiles (Nightcore, Slowed + Reverb, Muffled, Lo-Fi, Daycore, Vaporwave, Live Concert, 8D Audio, Bass Boosted) with an FX button right next to Lyrics in the full-screen player.",
+    description = "Adds real-time DSP audio profiles (Nightcore, Slowed + Reverb, Muffled, Lo-Fi, Daycore, Vaporwave, Live Concert, 8D Audio, Bass Boosted, Custom).",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -106,8 +103,7 @@ val audioFxProfilesPatch = patch(
             )
         )
 
-        // Hook both TabbedView constructor and tab selection so the FX button is placed
-        // directly next to the LYRICS tab button in the horizontal tab strip.
+        // Hook player TabbedView constructor and tab selection.
         TabbedViewTabSelectedFingerprint.classDef.methods.filter { method ->
             AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
         }.forEach { ctor ->
@@ -123,31 +119,36 @@ val audioFxProfilesPatch = patch(
             "invoke-static { p0 }, $EXTENSION_CLASS->onTabSelected(Landroid/view/ViewGroup;)V"
         )
 
-        // Hook ExoPlayer PCM ByteBuffer processor for real-time 8D binaural stereo rotation.
+        // Hook AudioTrack.write(ByteBuffer, int, int) inside DefaultAudioSink / AudioTrackAudioOutput
+        // so 8D Audio processes every PCM frame and updates hardware stereo panning in real time.
         runCatching {
-            val skipSilenceField = ApplySkipSilenceFingerprint.instructionMatches[1].fieldReference
-            ApplySkipSilenceFingerprint.apply {
-                val match = instructionMatches[1]
-                val booleanRegister = match.getInstruction<TwoRegisterInstruction>().registerA
-                method.addInstructions(
-                    match.index + 1,
-                    """
-                        invoke-static { v$booleanRegister }, $EXTENSION_CLASS->shouldKeepAudioProcessorActive(Z)Z
-                        move-result v$booleanRegister
-                    """
+            Fingerprint(
+                filters = listOf(
+                    methodCall(smali = "Landroid/media/AudioTrack;->write(Ljava/nio/ByteBuffer;II)I")
                 )
+            ).matchAll().forEach { match ->
+                match.instructionMatches.reversed().forEach { instMatch ->
+                    val inst = instMatch.instruction
+                    if (inst is FiveRegisterInstruction) {
+                        val trackReg = inst.registerC
+                        val bufReg = inst.registerD
+                        val sizeReg = inst.registerE
+                        match.method.addInstruction(
+                            instMatch.index,
+                            "invoke-static { v$trackReg, v$bufReg, v$sizeReg }, " +
+                                "$EXTENSION_CLASS->onAudioTrackWrite(Landroid/media/AudioTrack;Ljava/nio/ByteBuffer;I)V"
+                        )
+                    } else if (inst is RegisterRangeInstruction && inst.registerCount >= 3) {
+                        val start = inst.startRegister
+                        val end = start + 2
+                        match.method.addInstruction(
+                            instMatch.index,
+                            "invoke-static/range { v$start .. v$end }, " +
+                                "$EXTENSION_CLASS->onAudioTrackWrite(Landroid/media/AudioTrack;Ljava/nio/ByteBuffer;I)V"
+                        )
+                    }
+                }
             }
-            setSkipSilenceEnabledFingerprint(skipSilenceField).method.addInstructions(
-                0,
-                """
-                    invoke-static { p1 }, $EXTENSION_CLASS->shouldKeepAudioProcessorActive(Z)Z
-                    move-result p1
-                """
-            )
-            SilenceSkippingProcessorQueueInputFingerprint.method.addInstruction(
-                0,
-                "invoke-static { p1 }, $EXTENSION_CLASS->processAudioBuffer(Ljava/nio/ByteBuffer;)V"
-            )
         }
 
         // Hook all audio effect session methods (open/update session ID) in YouTube Music's
@@ -163,7 +164,7 @@ val audioFxProfilesPatch = patch(
             )
         }
 
-        // Also fallback-hook AudioTrack.getAudioSessionId() inside AudioTrackAudioOutput if present.
+        // Fallback-hook AudioTrack.getAudioSessionId() inside AudioTrackAudioOutput if present.
         runCatching {
             Fingerprint(
                 classFingerprint = Fingerprint(

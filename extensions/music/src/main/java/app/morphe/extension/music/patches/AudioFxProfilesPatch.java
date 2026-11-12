@@ -16,6 +16,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
+import android.media.AudioTrack;
 import android.media.audiofx.BassBoost;
 import android.media.audiofx.Equalizer;
 import android.media.audiofx.LoudnessEnhancer;
@@ -33,6 +34,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.nio.ByteBuffer;
+import java.util.Collections;
+import java.util.Set;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
@@ -47,9 +51,8 @@ import app.morphe.extension.shared.ui.SheetBottomDialog;
  * Real-time DSP and AudioFX profile engine for YouTube Music.
  * Works across both online streaming and offline playback by hooking:
  * 1) ExoPlayer PlaybackParameters (tempo & pitch),
- * 2) ExoPlayer PCM ByteBuffer queueInput (for real-time 8D binaural stereo rotation),
+ * 2) AudioTrack.write(ByteBuffer, int, int) & AudioTrack.setStereoVolume (for real-time 8D binaural rotation),
  * 3) Android hardware AudioTrack session DSPs (Reverb, BassBoost, Equalizer, Virtualizer, Loudness).
- * Also places an inline "FX" button directly beside the "LYRICS" tab button in the full-screen player.
  */
 @SuppressWarnings("unused")
 public final class AudioFxProfilesPatch {
@@ -57,7 +60,7 @@ public final class AudioFxProfilesPatch {
     public enum AudioProfile {
         DEFAULT(
                 "morphe_music_audio_fx_profile_entry_default",
-                "Off",
+                "Default",
                 1.0f, 1.0f, PresetReverb.PRESET_NONE, (short) 0, (short) 0, 0
         ),
         NIGHTCORE(
@@ -98,7 +101,7 @@ public final class AudioFxProfilesPatch {
         AUDIO_8D(
                 "morphe_music_audio_fx_profile_entry_audio_8d",
                 "8D Audio",
-                1.0f, 1.0f, PresetReverb.PRESET_MEDIUMHALL, (short) 300, (short) 1000, 150
+                1.0f, 1.0f, PresetReverb.PRESET_LARGEHALL, (short) 350, (short) 1000, 150
         ),
         BASS_BOOSTED(
                 "morphe_music_audio_fx_profile_entry_bass_boosted",
@@ -156,7 +159,10 @@ public final class AudioFxProfilesPatch {
     private static final String TABBED_VIEW_ID = "bottom_sheet_tabbed_view";
     private static final String FX_TAB_TAG = "morphe_audio_fx_tab_button";
 
-    // 8D Audio real-time LFO state (runs on the ExoPlayer audio processor thread)
+    // Active AudioTrack instances for hardware stereo panning and PCM rotation
+    private static final Set<AudioTrack> activeAudioTracks =
+            Collections.synchronizedSet(Collections.newSetFromMap(new WeakHashMap<>()));
+
     private static final int ASSUMED_SAMPLE_RATE = 48000;
     private static double lfoPhase = 0.0;
     @Nullable
@@ -204,6 +210,7 @@ public final class AudioFxProfilesPatch {
 
     public static void selectProfile(@NonNull AudioProfile profile) {
         Settings.AUDIO_FX_PROFILE.save(profile);
+        resetStereoBalanceIfNeeded();
         applyActiveProfileEffects();
         PlaybackSpeedPatch.setVideoTime(0L);
         Utils.runOnMainThreadNowOrLater(AudioFxProfilesPatch::refreshPlayerTabButton);
@@ -213,44 +220,102 @@ public final class AudioFxProfilesPatch {
         return getActiveProfile() != AudioProfile.DEFAULT;
     }
 
+    /**
+     * Preset profiles (Nightcore, Slowed + Reverb, etc.) use their exact built-in speed.
+     * The custom speed slider ONLY applies when the CUSTOM profile is selected.
+     */
     public static float getEffectiveSpeed(float baseSpeed) {
         AudioProfile profile = getActiveProfile();
         if (profile == AudioProfile.DEFAULT) {
             return baseSpeed;
         }
-        float customMultiplier = SeekBarPreference.clampToRange(Settings.AUDIO_FX_CUSTOM_SPEED) / 100f;
         if (profile == AudioProfile.CUSTOM) {
-            return customMultiplier;
+            return SeekBarPreference.clampToRange(Settings.AUDIO_FX_CUSTOM_SPEED) / 100f;
         }
-        return profile.speed * customMultiplier;
+        return profile.speed;
     }
 
+    /**
+     * Preset profiles use their exact built-in pitch.
+     * The custom pitch slider ONLY applies when the CUSTOM profile is selected.
+     */
     public static float getEffectivePitch(float basePitch) {
         AudioProfile profile = getActiveProfile();
         if (profile == AudioProfile.DEFAULT) {
             return basePitch;
         }
-        float customMultiplier = SeekBarPreference.clampToRange(Settings.AUDIO_FX_CUSTOM_PITCH) / 100f;
         if (profile == AudioProfile.CUSTOM) {
-            return customMultiplier;
+            return SeekBarPreference.clampToRange(Settings.AUDIO_FX_CUSTOM_PITCH) / 100f;
         }
-        return profile.pitch * customMultiplier;
+        return profile.pitch;
     }
 
     /**
-     * Ensures ExoPlayer keeps the SilenceSkippingAudioProcessor active in the pipeline
-     * when 8D Audio is selected so that processAudioBuffer() receives every PCM frame.
+     * Injection point: captures newly created or active AudioTrack instances and processes
+     * 8D Audio stereo rotation before AudioTrack.write(ByteBuffer, int, int) sends PCM to hardware.
      */
-    public static boolean shouldKeepAudioProcessorActive(boolean original) {
-        if (getActiveProfile() == AudioProfile.AUDIO_8D) {
-            return true;
+    @SuppressWarnings("deprecation")
+    public static void onAudioTrackWrite(@Nullable AudioTrack track, @Nullable ByteBuffer buffer, int sizeInBytes) {
+        if (track == null) {
+            return;
         }
-        return original;
+        try {
+            activeAudioTracks.add(track);
+            int sessionId = track.getAudioSessionId();
+            if (sessionId > 0 && sessionId != activeSessionId) {
+                onAudioSessionId(sessionId);
+            }
+
+            if (getActiveProfile() != AudioProfile.AUDIO_8D) {
+                return;
+            }
+
+            // Update hardware left/right channel panning smoothly via LFO
+            final int cycleSeconds = Math.max(2, SeekBarPreference.clampToRange(Settings.AUDIO_FX_8D_SPEED));
+            final float depth = SeekBarPreference.clampToRange(Settings.AUDIO_FX_8D_DEPTH) / 100f;
+
+            // Advance LFO phase proportional to the written byte chunk (4 bytes per 48kHz stereo frame)
+            int frames = Math.max(256, sizeInBytes / 4);
+            double phaseStep = (2.0 * Math.PI * frames) / (cycleSeconds * ASSUMED_SAMPLE_RATE);
+            lfoPhase += phaseStep;
+            if (lfoPhase >= 2.0 * Math.PI) {
+                lfoPhase -= 2.0 * Math.PI;
+            }
+
+            float pan = (float) Math.sin(lfoPhase) * depth;
+            // Smooth equal-power stereo panning across Left and Right speakers/earcups
+            float leftVol = pan <= 0f ? 1.0f : Math.max(0.08f, 1.0f - pan * 0.92f);
+            float rightVol = pan >= 0f ? 1.0f : Math.max(0.08f, 1.0f + pan * 0.92f);
+            track.setStereoVolume(leftVol, rightVol);
+
+            // Also apply in-place PCM crossfeed/panning if buffer is writable
+            if (buffer != null && !buffer.isReadOnly()) {
+                processAudioBuffer(buffer);
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "onAudioTrackWrite 8D failure: " + ex.getMessage());
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    private static void resetStereoBalanceIfNeeded() {
+        if (getActiveProfile() == AudioProfile.AUDIO_8D) {
+            return;
+        }
+        synchronized (activeAudioTracks) {
+            for (AudioTrack track : activeAudioTracks) {
+                if (track != null) {
+                    try {
+                        track.setStereoVolume(1.0f, 1.0f);
+                    } catch (Exception ignored) {
+                    }
+                }
+            }
+        }
     }
 
     /**
      * Real-time 16-bit stereo PCM processor for 8D Audio binaural LFO panning.
-     * Rotates the stereo soundstage smoothly between Left and Right ear channels.
      */
     public static void processAudioBuffer(@Nullable ByteBuffer input) {
         if (input == null || getActiveProfile() != AudioProfile.AUDIO_8D) {
@@ -259,7 +324,6 @@ public final class AudioFxProfilesPatch {
         try {
             final int position = input.position();
             final int limit = input.limit();
-            // Avoid double-processing if the downstream sink only partially consumed the buffer
             if (input == lastProcessedBuffer && limit == lastProcessedLimit && position > lastProcessedPosition) {
                 lastProcessedPosition = position;
                 return;
@@ -277,26 +341,22 @@ public final class AudioFxProfilesPatch {
             final double phaseStep = (2.0 * Math.PI) / (cycleSeconds * ASSUMED_SAMPLE_RATE);
             double phase = lfoPhase;
 
-            // Process 16-bit little-endian stereo frames (4 bytes per stereo frame: L_lo, L_hi, R_lo, R_hi)
             final int end = limit - 3;
             for (int i = position; i < end; i += 4) {
                 short left = (short) ((input.get(i) & 0xFF) | (input.get(i + 1) << 8));
                 short right = (short) ((input.get(i + 2) & 0xFF) | (input.get(i + 3) << 8));
 
-                // Sine LFO in [-1, 1]
                 float pan = (float) Math.sin(phase) * depth;
                 phase += phaseStep;
                 if (phase >= 2.0 * Math.PI) {
                     phase -= 2.0 * Math.PI;
                 }
 
-                // Equal-power / binaural crossfeed panning so the sound circles around the head
-                float leftGain = pan <= 0f ? 1.0f : Math.max(0.12f, 1.0f - pan * 0.88f);
-                float rightGain = pan >= 0f ? 1.0f : Math.max(0.12f, 1.0f + pan * 0.88f);
+                float leftGain = pan <= 0f ? 1.0f : Math.max(0.08f, 1.0f - pan * 0.92f);
+                float rightGain = pan >= 0f ? 1.0f : Math.max(0.08f, 1.0f + pan * 0.92f);
 
-                // Subtle cross-channel bleed for realistic spatialization
-                float mixedLeft = (left * 0.85f + right * 0.15f) * leftGain;
-                float mixedRight = (right * 0.85f + left * 0.15f) * rightGain;
+                float mixedLeft = (left * 0.88f + right * 0.12f) * leftGain;
+                float mixedRight = (right * 0.88f + left * 0.12f) * rightGain;
 
                 int outL = Math.max(Short.MIN_VALUE, Math.min(Short.MAX_VALUE, Math.round(mixedLeft)));
                 int outR = Math.max(Short.MIN_VALUE, Math.min(Short.MAX_VALUE, Math.round(mixedRight)));
@@ -321,8 +381,7 @@ public final class AudioFxProfilesPatch {
     }
 
     /**
-     * Injection point called when a player TabbedView is selected or updated,
-     * and scheduled on track changes to ensure the FX tab button sits inline next to LYRICS.
+     * Injection point called when a player TabbedView is selected or updated.
      */
     public static void onTabSelected(ViewGroup tabbedView) {
         try {
@@ -404,10 +463,6 @@ public final class AudioFxProfilesPatch {
         }
     }
 
-    /**
-     * Locates the horizontal ViewGroup holding the tab items (UP NEXT | LYRICS | RELATED)
-     * inside bottom_sheet_tabbed_view so our FX button is added right next to LYRICS/RELATED.
-     */
     @Nullable
     private static ViewGroup findTabRowContainer(View view) {
         if (view instanceof ViewGroup group) {
@@ -539,6 +594,7 @@ public final class AudioFxProfilesPatch {
     }
 
     private static synchronized void applyActiveProfileEffects() {
+        resetStereoBalanceIfNeeded();
         if (activeSessionId <= 0) {
             return;
         }
@@ -562,8 +618,20 @@ public final class AudioFxProfilesPatch {
 
     private static void applyReverb(@NonNull AudioProfile profile) {
         try {
-            int reverbScale = SeekBarPreference.clampToRange(Settings.AUDIO_FX_REVERB_LEVEL);
-            if (profile.reverbPreset == PresetReverb.PRESET_NONE || reverbScale <= 0) {
+            short targetPreset = profile.reverbPreset;
+            if (profile == AudioProfile.CUSTOM) {
+                int reverbScale = SeekBarPreference.clampToRange(Settings.AUDIO_FX_REVERB_LEVEL);
+                if (reverbScale <= 0) {
+                    targetPreset = PresetReverb.PRESET_NONE;
+                } else if (reverbScale < 35) {
+                    targetPreset = PresetReverb.PRESET_SMALLROOM;
+                } else if (reverbScale < 70) {
+                    targetPreset = PresetReverb.PRESET_MEDIUMHALL;
+                } else {
+                    targetPreset = PresetReverb.PRESET_LARGEHALL;
+                }
+            }
+            if (targetPreset == PresetReverb.PRESET_NONE) {
                 if (reverbEffect != null) {
                     reverbEffect.setEnabled(false);
                 }
@@ -571,12 +639,6 @@ public final class AudioFxProfilesPatch {
             }
             if (reverbEffect == null) {
                 reverbEffect = new PresetReverb(0, activeSessionId);
-            }
-            short targetPreset = profile.reverbPreset;
-            if (reverbScale < 40) {
-                targetPreset = PresetReverb.PRESET_SMALLROOM;
-            } else if (reverbScale < 75 && targetPreset == PresetReverb.PRESET_LARGEHALL) {
-                targetPreset = PresetReverb.PRESET_MEDIUMHALL;
             }
             reverbEffect.setPreset(targetPreset);
             reverbEffect.setEnabled(true);
@@ -587,9 +649,12 @@ public final class AudioFxProfilesPatch {
 
     private static void applyBassBoost(@NonNull AudioProfile profile) {
         try {
-            float bassMultiplier = SeekBarPreference.clampToRange(Settings.AUDIO_FX_BASS_LEVEL) / 100f;
-            short scaledStrength = (short) Math.min(1000, Math.round(profile.bassStrength * bassMultiplier));
-            if (scaledStrength <= 0) {
+            short targetStrength = profile.bassStrength;
+            if (profile == AudioProfile.CUSTOM) {
+                int bassScale = SeekBarPreference.clampToRange(Settings.AUDIO_FX_BASS_LEVEL);
+                targetStrength = (short) Math.min(1000, bassScale * 5);
+            }
+            if (targetStrength <= 0) {
                 if (bassBoostEffect != null) {
                     bassBoostEffect.setEnabled(false);
                 }
@@ -599,7 +664,7 @@ public final class AudioFxProfilesPatch {
                 bassBoostEffect = new BassBoost(0, activeSessionId);
             }
             if (bassBoostEffect.getStrengthSupported()) {
-                bassBoostEffect.setStrength(scaledStrength);
+                bassBoostEffect.setStrength(targetStrength);
             }
             bassBoostEffect.setEnabled(true);
         } catch (Exception ex) {
@@ -657,14 +722,14 @@ public final class AudioFxProfilesPatch {
             }
             short minLevel = range[0];
             short maxLevel = range[1];
-            float bassMultiplier = SeekBarPreference.clampToRange(Settings.AUDIO_FX_BASS_LEVEL) / 100f;
+            float customBassMultiplier = SeekBarPreference.clampToRange(Settings.AUDIO_FX_BASS_LEVEL) / 100f;
 
             for (short band = 0; band < bands; band++) {
                 int centerFreqMilliHz = equalizerEffect.getCenterFreq(band);
                 int freqHz = centerFreqMilliHz / 1000;
                 short targetLevel = computeBandLevel(profile, freqHz, minLevel, maxLevel);
-                if (freqHz <= 200 && targetLevel > 0) {
-                    targetLevel = (short) Math.min(maxLevel, Math.round(targetLevel * bassMultiplier));
+                if (profile == AudioProfile.CUSTOM && freqHz <= 200) {
+                    targetLevel = (short) Math.min(maxLevel, Math.round((maxLevel * 0.5f) * customBassMultiplier));
                 }
                 equalizerEffect.setBandLevel(band, targetLevel);
             }
@@ -705,10 +770,10 @@ public final class AudioFxProfilesPatch {
                 if (freqHz >= 1500) return (short) (maxLevel * 0.3f);
                 return (short) (maxLevel * 0.15f);
             case BASS_BOOSTED:
-            case CUSTOM:
                 if (freqHz <= 120) return maxLevel;
                 if (freqHz <= 250) return (short) (maxLevel * 0.6f);
                 return 0;
+            case CUSTOM:
             case DEFAULT:
             default:
                 return 0;
