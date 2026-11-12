@@ -20,7 +20,6 @@ import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 
 @SuppressWarnings("unused")
 public class PlaybackSpeedPatch {
-
     private static final float DEFAULT_PLAYBACK_SPEED = 1.0f;
 
     /**
@@ -31,7 +30,17 @@ public class PlaybackSpeedPatch {
             Collections.synchronizedMap(new WeakHashMap<>());
 
     private static float getPlaybackSpeed() {
-        return SeekBarPreference.clampToRange(Settings.PLAYBACK_SPEED) / 100f;
+        float baseSpeed = SeekBarPreference.clampToRange(Settings.PLAYBACK_SPEED) / 100f;
+        return AudioFxProfilesPatch.getEffectiveSpeed(baseSpeed);
+    }
+
+    private static float getPlaybackPitch(float baseSpeed) {
+        if (AudioFxProfilesPatch.isProfileActive()) {
+            return AudioFxProfilesPatch.getEffectivePitch(DEFAULT_PLAYBACK_SPEED);
+        }
+        return Settings.PLAYBACK_SPEED_CHANGE_PITCH.get()
+                ? baseSpeed
+                : DEFAULT_PLAYBACK_SPEED;
     }
 
     /**
@@ -66,6 +75,9 @@ public class PlaybackSpeedPatch {
      * @param pitch Playback pitch the app is setting.
      */
     public static float overridePlaybackPitch(float speed, float pitch) {
+        if (AudioFxProfilesPatch.isProfileActive()) {
+            return AudioFxProfilesPatch.getEffectivePitch(pitch);
+        }
         return Settings.PLAYBACK_SPEED_CHANGE_PITCH.get()
                 ? overridePlaybackSpeed(speed)
                 : pitch;
@@ -78,9 +90,7 @@ public class PlaybackSpeedPatch {
     public static void setVideoTime(long time) {
         try {
             final float speed = getPlaybackSpeed();
-            final float pitch = Settings.PLAYBACK_SPEED_CHANGE_PITCH.get()
-                    ? speed
-                    : DEFAULT_PLAYBACK_SPEED;
+            final float pitch = getPlaybackPitch(speed);
 
             List<Map.Entry<ExoPlayerInterface, float[]>> entries;
             synchronized (players) {
@@ -93,11 +103,9 @@ public class PlaybackSpeedPatch {
                 if (player == null || (applied[0] == speed && applied[1] == pitch)) {
                     continue;
                 }
-
                 // Set before applying, so a failure is not retried every second.
                 applied[0] = speed;
                 applied[1] = pitch;
-
                 Logger.printDebug(() -> "Changing playback speed to: " + speed + " pitch: " + pitch);
                 player.patch_setPlaybackParameters(speed, pitch);
             }

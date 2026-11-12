@@ -928,4 +928,17 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disable bold icons</string>
     <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Restore Player Up next, Lyrics, and Related tabs</string>
 
+
+    <!-- video.audio.audioFxProfilesPatch -->
+    <string name="morphe_music_audio_fx_profile_title">Audio FX profile</string>
+    <string name="morphe_music_audio_fx_profile_entry_default">Default (Off)</string>
+    <string name="morphe_music_audio_fx_profile_entry_nightcore">Nightcore (High energy &amp; pitch)</string>
+    <string name="morphe_music_audio_fx_profile_entry_slowed_reverb">Slowed + Reverb (Midnight drive)</string>
+    <string name="morphe_music_audio_fx_profile_entry_muffled_next_room">Muffled / Next Room (Party wall)</string>
+    <string name="morphe_music_audio_fx_profile_entry_lofi_study">Lo-Fi Study (Warm analog tape)</string>
+    <string name="morphe_music_audio_fx_profile_entry_daycore">Daycore (Deep pitch &amp; slow)</string>
+    <string name="morphe_music_audio_fx_profile_entry_vaporwave">Vaporwave (80s aesthetic retro)</string>
+    <string name="morphe_music_audio_fx_profile_entry_live_concert">Live Concert (Stadium arena)</string>
+    <string name="morphe_music_audio_fx_profile_entry_audio_8d">8D Audio (Spatial surround)</string>
+    <string name="morphe_music_audio_fx_profile_entry_bass_boosted">Bass Boosted (Subwoofer punch)</string>
 </resources>

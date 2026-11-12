@@ -10,6 +10,7 @@ import static app.morphe.extension.shared.settings.Setting.parentsAny;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.IGNORE;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
 
+import app.morphe.extension.music.patches.AudioFxProfilesPatch.AudioProfile;
 import app.morphe.extension.music.patches.ChangeHeaderPatch.HeaderLogo;
 import app.morphe.extension.music.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.music.patches.CrossfadePatch.CrossFadeDuration;
@@ -121,6 +122,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting MINIPLAYER_PREVIOUS_BUTTON = new BooleanSetting("morphe_music_miniplayer_previous_button", TRUE, true);
     public static final IntegerSetting PLAYBACK_SPEED = new IntegerSetting("morphe_music_playback_speed", 100);
     public static final BooleanSetting PLAYBACK_SPEED_CHANGE_PITCH = new BooleanSetting("morphe_music_playback_speed_change_pitch", FALSE);
+    public static final EnumSetting<AudioProfile> AUDIO_FX_PROFILE = new EnumSetting<>("morphe_music_audio_fx_profile", AudioProfile.DEFAULT);
     public static final BooleanSetting AB_LOOP = new BooleanSetting("morphe_music_ab_loop", FALSE);
     public static final EnumSetting<TapAction> PLAYLIST_TRACK_TAP_ACTION = new EnumSetting<>("morphe_music_playlist_track_tap_action", TapAction.DEFAULT);
 
