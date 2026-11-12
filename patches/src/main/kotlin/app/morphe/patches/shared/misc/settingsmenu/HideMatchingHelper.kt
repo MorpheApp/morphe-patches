@@ -30,9 +30,7 @@ internal const val HIDE_MATCHING_METHOD =
  */
 internal fun injectSettingsMenuFilterHook(extensionClass: String) {
     val setVisible = PreferenceSetVisibleFingerprint.method
-    val visibleField = PreferenceSetVisibleFingerprint.let {
-        it.instructionMatches.first().fieldReference
-    }
+    val visibleField = PreferenceSetVisibleFingerprint.instructionMatches.first().fieldReference
 
     PreferenceSetTitleFingerprint.method.apply {
         addInstructionsWithLabels(
@@ -69,14 +67,10 @@ internal fun injectSettingsMenuFilterHook(extensionClass: String) {
  * subclass method on PreferenceGroup cannot access them otherwise.
  */
 internal fun injectHideMatchingHelper() {
-    val listField = PreferenceGroupGetPreferenceFingerprint.let {
-        it.instructionMatches.last().fieldReference
-    }
+    val listField = PreferenceGroupGetPreferenceFingerprint.instructionMatches.last().fieldReference
     val setVisible = PreferenceSetVisibleFingerprint.method
     // mVisible: guards against duplicate work + drives the self-hide-when-all-children-invisible rule.
-    val visibleField = PreferenceSetVisibleFingerprint.let {
-        it.instructionMatches.first().fieldReference
-    }
+    val visibleField = PreferenceSetVisibleFingerprint.instructionMatches.first().fieldReference
 
     val preferenceClass = mutableClassDefByOrNull(PREFERENCE_CLASS)
         ?: throw PatchException("Class not found in target: $PREFERENCE_CLASS")

@@ -302,13 +302,13 @@ internal fun stickyHeaderCreateFingerprint(stickyHeadersType: String) = Fingerpr
         ),
         // Binds the position to the view holder.
         methodCall(returnType = "V", parameters = listOf("L", "I"), location = MatchAfterImmediately()),
-        // Id of the current header.
+        // ID of the current header.
         methodCall(returnType = "J", parameters = listOf(), location = MatchAfterImmediately())
     )
 )
 
 /**
- * Id of the current sticky header, read from its entry in the list of headers.
+ * ID of the current sticky header, read from its entry in the list of headers.
  */
 internal fun stickyHeaderCurrentIdFingerprint(headerListType: String, methodName: String) = Fingerprint(
     definingClass = headerListType,

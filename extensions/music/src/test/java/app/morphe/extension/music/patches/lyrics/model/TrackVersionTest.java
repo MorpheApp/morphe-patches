@@ -20,7 +20,7 @@ public class TrackVersionTest {
         assertEquals("Remix", TrackVersion.clean("- Remix"));
         assertEquals("2026 Remaster", TrackVersion.clean("\"2026 Remaster\""));
         assertEquals("Acoustic", TrackVersion.clean("(Acoustic)"));
-        assertEquals("Acoustic", TrackVersion.clean("\u201CAcoustic\u201D"));
+        assertEquals("Acoustic", TrackVersion.clean("“Acoustic”"));
     }
 
     @Test

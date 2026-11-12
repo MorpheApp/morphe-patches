@@ -24,7 +24,6 @@ import app.morphe.util.setExtensionIsPatchIncluded
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FeedVideoActionsPatch;"
 
-@Suppress("unused")
 val feedVideoActionsPatch = patch(
     name = "Feed video actions",
     description = "Adds a Watch later button to video thumbnails in feeds, " +

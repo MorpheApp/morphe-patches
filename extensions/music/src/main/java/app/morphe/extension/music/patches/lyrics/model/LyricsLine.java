@@ -77,7 +77,7 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
                 for (int i = 0; i < words.size(); i++) {
                     Word w = words.get(i);
                     int idx = text.indexOf(w.text(), cursor);
-                    boolean sp = false;
+                    boolean sp;
                     if (idx >= 0) {
                         int end = idx + w.text().length();
                         sp = (end < text.length() && Character.isWhitespace(text.charAt(end)));

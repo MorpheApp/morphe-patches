@@ -13,6 +13,7 @@ package app.morphe.extension.youtube.swipecontrols.controller.gesture.core;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider;
@@ -27,6 +28,7 @@ import app.morphe.extension.youtube.swipecontrols.misc.Point;
  * The common base of all {@link GestureController} classes.
  * Handles most of the boilerplate code needed for gesture detection.
  */
+@SuppressWarnings("unused")
 public abstract class BaseGestureController extends GestureDetector.SimpleOnGestureListener
         implements GestureController {
 
@@ -140,7 +142,7 @@ public abstract class BaseGestureController extends GestureDetector.SimpleOnGest
     }
 
     @Override
-    public boolean onScroll(@Nullable MotionEvent from, MotionEvent to, float distanceX, float distanceY) {
+    public boolean onScroll(@Nullable MotionEvent from, @NonNull MotionEvent to, float distanceX, float distanceY) {
         if (from == null) {
             return false;
         }

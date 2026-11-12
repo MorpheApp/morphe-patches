@@ -343,13 +343,12 @@ public class BaseInAppDownloadsPatch {
      */
     protected static OfflineCommand savePlaylistCommand(
             String playlistId,
-            OfflinePlaylistAction action,
             List<OfflineFormat> formats
     ) {
         String normalizedId = playlistId.startsWith("VL") ? playlistId.substring(2) : playlistId;
         OfflinePlaylistEndpoint endpoint = OfflinePlaylistEndpoint.newBuilder()
                 .setPlaylistId(normalizedId)
-                .setAction(action)
+                .setAction(OfflinePlaylistAction.OFFLINE_PLAYLIST_ACTION_ADD)
                 .setOfflineability(offlineability(formats))
                 .build();
         return OfflineCommand.newBuilder().setOfflinePlaylistEndpoint(endpoint).build();

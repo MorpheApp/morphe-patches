@@ -22,7 +22,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val PLAYBACK_BUFFER_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/PlaybackBufferPatch;"
 
-@Suppress("unused")
 val playbackBufferPatch = patch( // TODO: Make this an internal patch of "Video quality" patch?
     name = "Playback buffer",
     description = "Adds an option to change the video playback buffer size."

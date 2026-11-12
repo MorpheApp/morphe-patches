@@ -13,6 +13,7 @@ import android.media.session.PlaybackState;
 import java.lang.ref.WeakReference;
 
 /** Only YouTube's own in-process media session; never a global media key. */
+@SuppressWarnings("unused")
 public final class PlaybackSession {
     private static volatile WeakReference<MediaSession> current = new WeakReference<>(null);
 

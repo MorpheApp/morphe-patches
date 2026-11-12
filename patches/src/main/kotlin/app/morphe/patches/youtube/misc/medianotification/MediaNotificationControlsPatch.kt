@@ -22,7 +22,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-@Suppress("unused")
 val mediaNotificationControlsPatchYouTube = mediaNotificationControlsPatch(
     block = {
         dependsOn(
@@ -57,8 +56,8 @@ val mediaNotificationControlsPatchYouTube = mediaNotificationControlsPatch(
             )
         }
 
-        // Previous and Next can rewind and fast forward instead,
-        // using the same seek as the media session rewind and fast forward actions.
+        // Previous and Next can rewind and fast-forward instead,
+        // using the same seek as the media session rewind and fast-forward actions.
         seekInsteadOfSkip(MediaSessionSkipToNextFingerprint, MediaSessionFastForwardFingerprint)
         seekInsteadOfSkip(MediaSessionSkipToPreviousFingerprint, MediaSessionRewindFingerprint)
     }

@@ -99,7 +99,7 @@ final class ThumbnailLoader {
     }
 
     /**
-     * Lets go of the cached thumbnails, for when the page showing them closes. The player keeps the
+     * Releases the cached thumbnails, for when the page showing them closes. The player keeps the
      * app running in the background, where the thumbnails would otherwise stay for as long as it
      * plays.
      */

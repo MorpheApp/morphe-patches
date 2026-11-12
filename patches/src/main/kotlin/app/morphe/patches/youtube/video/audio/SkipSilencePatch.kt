@@ -15,7 +15,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-@Suppress("unused")
 val skipSilencePatch = skipSilencePatch(
     block = {
         dependsOn(

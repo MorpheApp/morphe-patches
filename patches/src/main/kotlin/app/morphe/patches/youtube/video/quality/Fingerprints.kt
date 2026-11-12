@@ -81,7 +81,7 @@ internal fun getVideoQualitySettingFingerprint(
 ) {}
 
 internal const val CLIENT_ABR_STATE_CLASS =
-    "Lcom/google/android/apps/youtube/proto/ClientAbrStateOuterClass\$ClientAbrState;"
+    $$"Lcom/google/android/apps/youtube/proto/ClientAbrStateOuterClass$ClientAbrState;"
 
 /**
  * Client ABR state of the SABR requests sent while the video plays.
@@ -93,7 +93,7 @@ internal object ClientAbrStateFingerprint : Fingerprint(
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
             definingClass = CLIENT_ABR_STATE_CLASS,
-            type = "Lcom/google/android/apps/youtube/proto/streaming/MediaCapabilitiesOuterClass\$MediaCapabilities;"
+            type = $$"Lcom/google/android/apps/youtube/proto/streaming/MediaCapabilitiesOuterClass$MediaCapabilities;"
         )
     )
 )
@@ -417,7 +417,7 @@ internal object PlaybackStartParametersInitialResolutionFingerprint : Fingerprin
             opcode = Opcode.IGET_OBJECT,
             reference = { initialResolutionField() }
         ),
-        methodCall(smali = "Lj\$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;"),
+        methodCall(smali = "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;"),
         checkCast("Ljava/lang/Integer;")
     )
 )

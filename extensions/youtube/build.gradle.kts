@@ -5,6 +5,7 @@ plugins {
 }
 
 dependencies {
+    implementation(libs.annotation)
     testImplementation(libs.junit)
     testImplementation(libs.json)
     testImplementation(libs.morphe.extensions.library)

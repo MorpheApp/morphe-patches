@@ -43,7 +43,6 @@ private const val CUSTOM_FILTER =
 private const val LAYOUT_COMPONENTS_FILTER =
     "Lapp/morphe/extension/music/patches/components/LayoutComponentsFilter;"
 
-@Suppress("unused")
 val hideLayoutComponentsPatch = patch(
     name = "Hide layout components",
     description = "Adds options to hide general layout components."

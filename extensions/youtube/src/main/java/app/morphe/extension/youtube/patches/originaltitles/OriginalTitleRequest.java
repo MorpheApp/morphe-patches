@@ -47,6 +47,7 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
  * DeArrow titles can be used only for some navigations, such as only for the search results,
  * so the title that replaces the title is chosen when the title is shown.
  */
+@SuppressWarnings("unused")
 final class OriginalTitleRequest {
 
     private static final int CONNECTION_TIMEOUT_MILLISECONDS = 5000;
@@ -225,7 +226,7 @@ final class OriginalTitleRequest {
     /**
      * Fetches the original title if it was not fetched before, such as when original titles are not restored.
      *
-     * @return The original title, or null if the video has no available title or it failed to fetch.
+     * @return The original title, or null if the video has no available title, or it failed to fetch.
      */
     static CompletableFuture<String> fetchOriginalTitleIfNeeded(String videoId) {
         OriginalVideo original = originalVideos.get(videoId);

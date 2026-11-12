@@ -31,7 +31,6 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/LoopVideoPatch;"
 
-@Suppress("unused")
 val loopVideoPatch = patch(
     name = "A-B loop",
     description = "Adds an option to loop part of a song by long-pressing the seekbar to set the loop start and end.",
@@ -106,7 +105,7 @@ val loopVideoPatch = patch(
         TimeBarDrawFingerprint.let {
             it.method.apply {
                 // Show the time labels with milliseconds while dragging.
-                // Hook the later elapsed label first, so the remaining label index stays valid.
+                // Hook the latter elapsed label first, so the remaining label index stays valid.
                 listOf(
                     6 to "formatElapsedTime",
                     3 to "formatRemainingTime",

@@ -62,6 +62,7 @@ import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
  * or play a video again from a response it got earlier. Then the streams are fetched when the app builds
  * the streams of the video, unless the streams fetched earlier are recent enough.
  */
+@SuppressWarnings("unused")
 public class StreamingDataRequest {
 
     /**
@@ -700,7 +701,7 @@ public class StreamingDataRequest {
      * It does not tell how the video is played inline, such as a muted preview in the feed,
      * and it buffers as the player of the client app does, which can start a video later
      * (such as after 2.5 seconds of media, instead of 1.6 seconds with the app player config).
-     *
+     * <p>
      * The quality menu belongs to the app, so the app player config also tells if the quality selected
      * in the quality menu is used only for the video it was selected for. Without it, the quality selected
      * is also used for the next videos.
@@ -840,7 +841,7 @@ public class StreamingDataRequest {
             StreamData streamingData = buildPlayerResponseBuffer(clientType, connection, videoId);
 
             if ((clientType == ClientType.TV_SABR || clientType == ClientType.TV_SABR_WII_U)
-                    && fallbackWithTVDashOnThread.get()) {
+                    && Boolean.TRUE.equals(fallbackWithTVDashOnThread.get())) {
                 fallbackWithTVDashOnThread.set(false);
                 clientType = ClientType.TV_DASH;
                 HttpURLConnection fallBackConnection =

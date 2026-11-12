@@ -271,8 +271,8 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
         boolean isEnabled = liveState == LiveState.READY && !manager.isVoting();
         Optional<VoteSide> myVote = manager.getMyVote();
         LinearLayout buttons = horizontalLayout();
-        buttons.addView(voteButton(VoteSide.HUMAN, myVote, isEnabled), weighted(1, 0));
-        buttons.addView(voteButton(VoteSide.AI, myVote, isEnabled), weighted(1, dp(12)));
+        buttons.addView(voteButton(VoteSide.HUMAN, myVote.orElse(null), isEnabled), weighted(1, 0));
+        buttons.addView(voteButton(VoteSide.AI, myVote.orElse(null), isEnabled), weighted(1, dp(12)));
         LinearLayout section = verticalLayout();
         section.addView(buttons, barParams(0, dp(44)));
         return section;
@@ -282,10 +282,10 @@ final class SoundProofSheet implements SoundProofManager.StateListener {
      * Tinted when not voted for. The side voted for gets a check mark and an outline, and a tap
      * on it removes the vote.
      */
-    private View voteButton(VoteSide side, Optional<VoteSide> myVote, boolean isEnabled) {
+    private View voteButton(VoteSide side, @Nullable VoteSide myVote, boolean isEnabled) {
         boolean isHuman = side == VoteSide.HUMAN;
         int color = isHuman ? StatusAppearance.HUMAN_COLOR : StatusAppearance.AI_COLOR;
-        boolean isVoted = myVote.map(side::equals).orElse(false);
+        boolean isVoted = side == myVote;
         String label = str(isHuman ? "morphe_music_soundproof_sheet_vote_human" : "morphe_music_soundproof_sheet_vote_ai");
 
         TextView button = text(isVoted ? CHECK_MARK + label : label, 15, color, true);

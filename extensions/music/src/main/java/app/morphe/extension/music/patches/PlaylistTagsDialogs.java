@@ -41,6 +41,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -280,13 +281,13 @@ public final class PlaylistTagsDialogs {
                 }
                 List<Map.Entry<String, String>> sorted = new ArrayList<>(playlists.entrySet());
                 sorted.sort((a, b) -> {
-                    boolean aTagged = !playlistTags.get(a.getKey()).isEmpty();
-                    boolean bTagged = !playlistTags.get(b.getKey()).isEmpty();
+                    boolean aTagged = !Objects.requireNonNull(playlistTags.get(a.getKey())).isEmpty();
+                    boolean bTagged = !Objects.requireNonNull(playlistTags.get(b.getKey())).isEmpty();
                     if (aTagged != bTagged) return aTagged ? -1 : 1;
                     return a.getValue().compareToIgnoreCase(b.getValue());
                 });
                 for (Map.Entry<String, String> playlist : sorted) {
-                    String summary = describeTags(playlistTags.get(playlist.getKey()));
+                    String summary = describeTags(Objects.requireNonNull(playlistTags.get(playlist.getKey())));
                     content.addView(createListRow(context, playlist.getValue(), summary,
                             () -> {
                                 managerDialog[0].dismiss();
@@ -370,6 +371,7 @@ public final class PlaylistTagsDialogs {
     }
 
     @ColorInt
+    @SuppressWarnings("SameParameterValue")
     private static int withAlpha(@ColorInt int color, float alpha) {
         return Color.argb(Math.round(255 * alpha), Color.red(color), Color.green(color), Color.blue(color));
     }
@@ -391,7 +393,7 @@ public final class PlaylistTagsDialogs {
         int identifier = drawableName == null ? 0 : ResourceUtils.getDrawableIdentifier(drawableName);
         if (identifier != 0) {
             // From the activity context, because some icons are filled with a theme attribute.
-            Drawable drawable = context.getDrawable(identifier).mutate();
+            Drawable drawable = Objects.requireNonNull(context.getDrawable(identifier)).mutate();
             drawable.setTint(foregroundColor);
             ImageView image = new ImageView(context);
             image.setImageDrawable(drawable);

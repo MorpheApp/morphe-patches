@@ -38,7 +38,7 @@ internal fun installPlaylistCardSource() {
     check(owner.definingClass == nodeClick.type) { "Native click owner must belong to its mounted handler" }
 
     mutableClassDefBy(nodeType).apply {
-        interfaces.add("$CARD_SOURCE\$TapActions;")
+        interfaces.add($$"$$CARD_SOURCE$TapActions;")
         addBridgeMethod(
             "patch_getPlaylistTapActions",
             emptyList(),
@@ -61,7 +61,7 @@ internal fun installPlaylistCardSource() {
         )
     }
     mutableClassDefBy(future.definingClass).apply {
-        interfaces.add("$CARD_SOURCE\$TapCommand;")
+        interfaces.add($$"$$CARD_SOURCE$TapCommand;")
         addBridgeMethod(
             "patch_getPlaylistTapCommand",
             emptyList(),

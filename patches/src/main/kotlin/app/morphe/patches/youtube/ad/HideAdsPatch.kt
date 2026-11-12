@@ -86,7 +86,6 @@ private val hideAdsResourcePatch = patch {
     }
 }
 
-@Suppress("unused")
 val hideAdsPatch = patch(
     name = "Hide ads",
     description = "Adds options to hide general ads, Premium promotions and video ads."

@@ -9,6 +9,7 @@ import android.os.RemoteException;
 import androidx.annotation.NonNull;
 
 /** Versioned, bounded JSON commands; every call is caller- and capability-checked. */
+@SuppressWarnings("unused")
 public interface IJamBridge extends IInterface {
     /** Default implementation for IJamBridge. */
     class Default implements IJamBridge {
@@ -17,7 +18,7 @@ public interface IJamBridge extends IInterface {
         public String call(
             String capability,
             String request
-        ) throws RemoteException {
+        ) {
             return null;
         }
 
@@ -34,7 +35,6 @@ public interface IJamBridge extends IInterface {
     {
 
         /** Construct the stub and attach it to the interface. */
-        @SuppressWarnings("this-escape")
         public Stub() {
             this.attachInterface(this, DESCRIPTOR);
         }
@@ -43,7 +43,6 @@ public interface IJamBridge extends IInterface {
          * Cast an IBinder object into an IJamBridge interface,
          * generating a proxy if needed.
          */
-        @SuppressWarnings("unused")
         public static IJamBridge asInterface(
             IBinder obj
         ) {
@@ -97,8 +96,8 @@ public interface IJamBridge extends IInterface {
                         return mRemote;
                     }
 
-                    @SuppressWarnings({"FinalMethodInFinalClass", "unused"})
-                    public final String getInterfaceDescriptor() {
+                    @SuppressWarnings("SameReturnValue")
+                    public String getInterfaceDescriptor() {
                         return DESCRIPTOR;
                     }
 
@@ -114,7 +113,7 @@ public interface IJamBridge extends IInterface {
                             _data.writeInterfaceToken(DESCRIPTOR);
                             _data.writeString(capability);
                             _data.writeString(request);
-                            @SuppressWarnings("unused") boolean _status = mRemote.transact(
+                            boolean _status = mRemote.transact(
                                     Stub.TRANSACTION_call,
                                     _data,
                                     _reply,

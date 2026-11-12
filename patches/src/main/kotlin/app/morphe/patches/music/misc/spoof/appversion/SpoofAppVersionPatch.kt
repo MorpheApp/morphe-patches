@@ -14,7 +14,6 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.spoof.appversion.baseSpoofAppVersionPatch
 
-@Suppress("unused")
 val spoofAppVersionPatch = baseSpoofAppVersionPatch(
     defaultTargetString = { "8.23.51" },
     preferenceScreen = PreferenceScreen.GENERAL,

@@ -8,11 +8,13 @@
 package app.morphe.extension.music.patches.jam;
 
 import java.io.ByteArrayOutputStream;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 
 import app.morphe.extension.music.shared.VideoInformation;
 
 /** Sanitized native display model: content ID and public display metadata only. */
+@SuppressWarnings("unused")
 public final class QueueModel {
 
     // Protobuf field numbers verified against the YT Music 9.15.51 InnerTube wire schema.
@@ -68,7 +70,7 @@ public final class QueueModel {
 
     public static String thumbnail(String url, String video) {
         if (url != null && url.length() < 2048) try {
-            java.net.URI uri = java.net.URI.create(url);
+            URI uri = URI.create(url);
             String host = uri.getHost();
             if (
                 "https".equals(uri.getScheme()) &&

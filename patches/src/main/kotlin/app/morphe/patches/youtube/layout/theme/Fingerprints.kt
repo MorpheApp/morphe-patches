@@ -256,7 +256,7 @@ internal object RiveReadRawResourceFingerprint : Fingerprint(
  */
 internal object RiveCanvasSessionSetLatestBitmapFingerprint : Fingerprint(
     definingClass = "Lapp/rive/RiveCanvasSession;",
-    name = "access\$setLatestBitmap\$p",
+    name = $$"access$setLatestBitmap$p",
     returnType = "V",
     parameters = listOf("Lapp/rive/RiveCanvasSession;", "Landroid/graphics/Bitmap;")
 )

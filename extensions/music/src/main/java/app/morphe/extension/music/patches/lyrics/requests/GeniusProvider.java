@@ -40,6 +40,7 @@ import app.morphe.extension.shared.Logger;
  * is needed. The search answers JSON; the lyrics only exist in the page markup, which makes this
  * the one provider that has to read HTML.
  */
+@SuppressWarnings("unused")
 public final class GeniusProvider implements LyricsProvider {
 
     private static final String SEARCH = "https://genius.com/api/search/multi?q=";

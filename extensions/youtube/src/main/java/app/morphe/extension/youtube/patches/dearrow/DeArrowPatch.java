@@ -470,6 +470,7 @@ public final class DeArrowPatch {
     /**
      * Changed during patching, so other patches only use DeArrow if this patch is included.
      */
+    @SuppressWarnings("SameReturnValue")
     private static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

@@ -11,7 +11,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisablePlayerPopupPanelsPatch;"
 
-@Suppress("unused")
 val disablePlayerPopupPanelsPatch = patch(
     name = "Disable player popup panels",
     description = "Adds an option to disable panels (such as live chat) from opening automatically.",

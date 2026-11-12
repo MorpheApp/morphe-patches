@@ -12,6 +12,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import androidx.annotation.NonNull;
+
 import org.junit.Test;
 
 import java.util.List;
@@ -36,6 +38,7 @@ public class ScoredSongProviderTest {
             this.songs = songs;
         }
 
+        @NonNull
         @Override
         protected List<ScoredSong> fetchScoredSongs(TrackInfo track) {
             return songs;

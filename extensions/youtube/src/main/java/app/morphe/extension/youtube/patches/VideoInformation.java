@@ -223,6 +223,7 @@ public final class VideoInformation extends BaseVideoInformation {
         playerVideo.videoIdSet = false;
     }
 
+    @SuppressWarnings("SameReturnValue")
     private static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }

@@ -506,7 +506,7 @@ final class AmbientLightMath {
      * Writes the square root of the light into {@code encoded}, for the cells that can be seen.
      * That is what an extended sRGB bitmap expects.
      *
-     * @return The largest change of any of those cells from {@code presented}.
+     * @return The largest change among those cells from {@code presented}.
      */
     static float encodeVisible(float[] light, float[] encoded, float[] presented, int width, int height, float[] picture) {
         final int hiddenFrom = hiddenFrom(picture);
@@ -535,6 +535,7 @@ final class AmbientLightMath {
     /**
      * Writes the visible cells as half floats. Alpha is left alone: {@link #fillAlpha} sets it once.
      */
+    @SuppressWarnings("SameParameterValue")
     static void toHalfFloats(float[] encoded, short[] halfFloats, int width, int height, float[] picture) {
         final int hiddenFrom = hiddenFrom(picture);
         final int hiddenTo = hiddenTo(picture, width);
@@ -627,7 +628,7 @@ final class AmbientLightMath {
 
         final int difference = luma(color) - luma(pageColor);
         final boolean darkPage = luma(pageColor) < 128;
-        // Pure black on a dark grey page and pure white on an off-white page are page too.
+        // Pure black on a dark gray page and pure white on an off-white page are page too.
         if (Math.abs(difference) <= PAGE_LUMA_TOLERANCE || darkPage == (difference < 0)) return 0;
         if (Math.abs(difference) > MAX_RAISED_LUMA_DIFFERENCE) return color;
 

@@ -62,7 +62,7 @@ public class LyricsCryptoTest {
     @Test
     public void aesEcbEncryptProducesValidHex() {
         String cipherHex = LyricsCrypto.aesEcbPkcs5EncryptHex("hello world", AES_KEY);
-        // ECB with PKCS5 on a 11-byte string pads to 16 bytes -> 32 hex chars.
+        // ECB with PKCS5 on an 11-byte string pads to 16 bytes -> 32 hex chars.
         assertEquals(32, cipherHex.length());
         // All hex chars.
         assertTrue(cipherHex.matches("[0-9a-f]+"));

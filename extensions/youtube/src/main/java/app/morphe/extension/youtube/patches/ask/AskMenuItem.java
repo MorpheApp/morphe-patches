@@ -194,7 +194,7 @@ final class AskMenuItem {
     }
 
     /**
-     * @return The icon type of a menu item of any renderer, or -1 if it has none.
+     * @return The icon type of menu item of any renderer, or -1 if it has none.
      */
     private static int getIconType(byte[] menuItem) {
         List<Field> item = AskPanelCommand.parse(menuItem);

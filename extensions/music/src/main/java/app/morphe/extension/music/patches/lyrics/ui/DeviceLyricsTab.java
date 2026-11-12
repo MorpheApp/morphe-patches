@@ -39,6 +39,7 @@ import app.morphe.extension.shared.Utils;
  * Its page only holds the third-party lyrics panel, which {@link LyricsPanelInstaller} installs
  * the same way as in the lyrics tab of other tracks.
  */
+@SuppressWarnings("unused")
 public final class DeviceLyricsTab {
 
     /** Field of the tab renderer in a tab of the watch next response. */
@@ -148,6 +149,7 @@ public final class DeviceLyricsTab {
         for (Map.Entry<Object, Object> entry : addedTabs.entrySet()) {
             removeTab(entry.getKey(), entry.getValue());
         }
+        //noinspection RedundantOperationOnEmptyContainer
         addedTabs.clear();
     }
 

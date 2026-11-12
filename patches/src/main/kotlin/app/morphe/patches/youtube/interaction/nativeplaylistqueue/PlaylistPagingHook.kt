@@ -13,8 +13,8 @@ import app.morphe.patcher.patch.mutableClassDefBy
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val PAGING_OWNER = "$EXTENSION_PACKAGE/NativePlaylistQueuePatch\$PagingOwner;"
-private const val LOADING_VIEW = "$EXTENSION_PACKAGE/NativePlaylistQueuePatch\$LoadingView;"
+private const val PAGING_OWNER = $$"$$EXTENSION_PACKAGE/NativePlaylistQueuePatch$PagingOwner;"
+private const val LOADING_VIEW = $$"$$EXTENSION_PACKAGE/NativePlaylistQueuePatch$LoadingView;"
 
 // LoadingFrameLayout's native states: 1 is progress and 2 is bound content.
 private const val PROGRESS_STATE = 1

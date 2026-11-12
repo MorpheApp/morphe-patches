@@ -21,10 +21,6 @@ public class SkipSegmentsTest {
         return new SkipSegments.Seg(start, end, "sponsor", 0);
     }
 
-    private static SkipSegments.Seg seg(long start, long end, String category) {
-        return new SkipSegments.Seg(start, end, category, 0);
-    }
-
     // ---- effectiveDurationMs ----
 
     @Test

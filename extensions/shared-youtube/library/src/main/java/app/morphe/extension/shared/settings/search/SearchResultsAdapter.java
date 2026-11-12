@@ -61,7 +61,7 @@ import app.morphe.extension.shared.ui.Dim;
 /**
  * Adapter for displaying search results in overlay ListView with ViewHolder pattern.
  */
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"unused", "deprecation"})
 public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
     protected final LayoutInflater inflater;
     protected final BaseSearchViewController.BasePreferenceFragment fragment;

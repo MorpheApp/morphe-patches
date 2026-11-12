@@ -76,7 +76,6 @@ private const val ELEMENTS_RESOURCE_PROCESSOR_ACCESS_INTERFACE =
 
 private const val EXTENSION_REGISTRY_CLASS = "Lcom/google/protobuf/ExtensionRegistryLite;"
 
-@Suppress("unused")
 val askFlyoutMenuPatch = patch(
     name = "Ask flyout menu",
     description = "Adds a video menu entry that opens Ask for the video and summarizes the video. " +
@@ -225,7 +224,7 @@ val askFlyoutMenuPatch = patch(
             )
         }
 
-        addSummarizeItemToMenu(protos)
+        addSummarizeItemToMenu()
 
         addElementsResourceLoading(protos)
 
@@ -278,7 +277,7 @@ private fun defaultInstanceField(type: String) = classDefBy(type).fields.first {
  * Adds the summarize item to the menu of a video as one of the app's own items, so the menu bottom sheet
  * and the menu popup show it in their own list. The extension updates the row of the item and handles its tap.
  */
-private fun addSummarizeItemToMenu(protos: Protos) {
+private fun addSummarizeItemToMenu() {
     val menuFragmentClass = MenuBottomSheetFragmentFactoryFingerprint.classDef
     // The factory takes the menu after the theme.
     val menuClass = MenuBottomSheetFragmentFactoryFingerprint.method.parameterTypes[1].toString()
@@ -577,17 +576,17 @@ private fun restoreMenuRowTextConstraints() {
         // -1 is unset, as the layout of the row does not set them.
         it.method.addInstructionsWithLabels(
             0,
-            """
+            $$"""
                 move-object/from16 v0, p0
-                iget-object v0, v0, $textContainerField
+                iget-object v0, v0, $$textContainerField
                 if-eqz v0, :no_text_container
-                invoke-virtual { v0 }, Landroid/widget/LinearLayout;->getLayoutParams()Landroid/view/ViewGroup${'$'}LayoutParams;
+                invoke-virtual { v0 }, Landroid/widget/LinearLayout;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
                 move-result-object v1
-                check-cast v1, $constraintsClass
+                check-cast v1, $$constraintsClass
                 const/4 v2, -0x1
-                iput v2, v1, ${startConstraintFields[0]}
-                iput v2, v1, ${startConstraintFields[1]}
-                invoke-virtual { v0, v1 }, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup${'$'}LayoutParams;)V
+                iput v2, v1, $${startConstraintFields[0]}
+                iput v2, v1, $${startConstraintFields[1]}
+                invoke-virtual { v0, v1 }, Landroid/widget/LinearLayout;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
                 :no_text_container
                 nop
             """

@@ -15,7 +15,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/SoundBoostPatch;"
 
-@Suppress("unused")
 val soundBoostPatch = patch(
     description = "Adds an option to swipe the volume above the maximum level."
 ) {

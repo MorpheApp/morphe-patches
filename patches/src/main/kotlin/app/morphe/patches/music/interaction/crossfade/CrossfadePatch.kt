@@ -109,7 +109,6 @@ private fun MutableClass.addFieldSetter(methodName: String, fieldRef: FieldRefer
     addBridge(methodName, listOf("Ljava/lang/Object;"), "V", 2, "check-cast p1, ${fieldRef.type}\n$write\nreturn-void")
 }
 
-@Suppress("unused")
 val crossfadePatch = patch(
     name = "Crossfade",
     description = "Adds a true dual-player crossfade between consecutive tracks.",

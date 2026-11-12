@@ -49,7 +49,6 @@ private const val FILTER_LIBRARY_ITEMS =
 private const val FILTER_GRID_ITEMS =
     "$EXTENSION_CLASS->filterGridItems(Ljava/util/List;)Ljava/util/List;"
 
-@Suppress("unused")
 val playlistTagsPatch = patch(
     name = "Playlist tags",
     description = "Adds an option to tag playlists from their menu, and to filter the Library playlists by tag.",

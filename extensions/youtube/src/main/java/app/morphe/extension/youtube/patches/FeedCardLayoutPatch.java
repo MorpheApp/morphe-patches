@@ -28,6 +28,7 @@ import android.view.TextureView;
 import android.view.ViewParent;
 import android.view.ViewOutlineProvider;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.facebook.litho.ComponentHost;
@@ -77,9 +78,7 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CardLayou
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CapabilitiesSubscriptionConfig;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ChannelAvatar;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ClientResource;
-import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CollectionPrimaryThumbnail;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CollectionStackColors;
-import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CollectionThumbnailViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CommandContext;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CompactPlaylistData;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.CompactPlaylistModel;
@@ -133,7 +132,6 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.Thumbnail
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailBottomOverlayViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailElementOverlay;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailOverlay;
-import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailOverlayBadgeViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailOverlayProgressBar;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailOverlayProgressBarViewModel;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ThumbnailViewModel;
@@ -374,7 +372,7 @@ public class FeedCardLayoutPatch {
     private static final char NO_INLINE_PLAYBACK_CARD_LABEL_MARKER = '\u2062';
     /**
      * Invisible character before the marker of the Shorts, in the label of the Shorts of the Shorts shelf
-     * of the channel home, whose rows fill the width of the list.
+     * of the channel home, whose rows fill the width with the list.
      */
     private static final char SHORTS_PIVOT_CELL_LABEL_MARKER = '\u2063';
     /**
@@ -702,6 +700,7 @@ public class FeedCardLayoutPatch {
     /**
      * Icons of the action buttons. The bold icons are not available on older versions of the app.
      */
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class Icons {
         final String like;
         final String liked;
@@ -1177,7 +1176,7 @@ public class FeedCardLayoutPatch {
                 } else if (isTemplate(uri, SHORTS_PIVOT_ITEM_TEMPLATE) && model.hasShortsPivotItemModel()) {
                     // The Shorts of the Shorts shelf of the channel home, below its header, are found the same way,
                     // so the shelf is a card with the header and the Shorts, like the Shorts shelf of the feed.
-                    // Their rows fill the width of the list, and are scaled down inside the card when drawn.
+                    // Their rows fill the width with the list, and are scaled down inside the card when drawn.
                     ShortsPivotItemModel item = model.getShortsPivotItemModel();
                     ShortsVideoCellData data = item.getData();
                     if (!data.getAccessibilityText().isEmpty()) {
@@ -1213,6 +1212,7 @@ public class FeedCardLayoutPatch {
                         for (ByteString text : List.of(metadata.getTitle(), metadata.getSubtitle(),
                                 video.getData().getThumbnail().getCollectionCountText(), metadata.getDetails())) {
                             if (!text.isEmpty()) {
+                                //noinspection SizeReplaceableByIsEmpty
                                 if (texts.length() > 0) {
                                     texts.append(" - ");
                                 }
@@ -1312,6 +1312,7 @@ public class FeedCardLayoutPatch {
                                 if (partContent.isEmpty()) {
                                     continue;
                                 }
+                                //noinspection SizeReplaceableByIsEmpty
                                 if (content.length() > 0) {
                                     content.append("   ");
                                 }
@@ -1324,6 +1325,7 @@ public class FeedCardLayoutPatch {
                                 String partLabel = part.getAccessibilityLabel().isEmpty()
                                         ? partContent.trim()
                                         : part.getAccessibilityLabel();
+                                //noinspection SizeReplaceableByIsEmpty
                                 if (label.length() > 0) {
                                     label.append(", ");
                                 }
@@ -1724,7 +1726,7 @@ public class FeedCardLayoutPatch {
      * but they are cards with a shelf header.
      */
     private static boolean isChipBar(View item) {
-        return hasNestedList(item, 0) && !isShelfHeader(item);
+        return hasNestedList(item) && !isShelfHeader(item);
     }
 
     private static void setCardOutline(View view, @Nullable CardOutlineProvider outline) {
@@ -2002,7 +2004,7 @@ public class FeedCardLayoutPatch {
      * Injection point.
      * Called when a RecyclerView draws below its items.
      * The header of the Shorts shelf has the background of the cards, with the rounded top corners,
-     * and the Shorts below it fill the rest of the card. The horizontal shelves are cards.
+     * and the Shorts below it fill the rest with the card. The horizontal shelves are cards.
      * The background is drawn by the list, because the views of the elements reset their own background.
      */
     public static void onListDraw(RecyclerView list, Canvas canvas) {
@@ -2023,7 +2025,7 @@ public class FeedCardLayoutPatch {
                     continue;
                 }
 
-                // The Shorts of the Shorts shelf of the channel home fill the width of the list,
+                // The Shorts of the Shorts shelf of the channel home fill the width with the list,
                 // and the card of the shelf is around them like the Shorts shelf of the feed.
                 if (isShortsPivotRow(item)) {
                     final float scale = 1f - 2f * cardPx(CARD_HORIZONTAL_PADDING_DP) / item.getWidth();
@@ -2107,6 +2109,7 @@ public class FeedCardLayoutPatch {
                     continue;
                 }
 
+                //noinspection UnnecessaryLocalVariable
                 View header = item;
                 final boolean shelfHeader = isShelfHeader(header);
                 final boolean cardWithoutBackground = isCardWithoutBackground(item);
@@ -2117,7 +2120,7 @@ public class FeedCardLayoutPatch {
                 // The horizontal shelves have the header and the videos in the same list item,
                 // which is a card like the videos of the feed. The header is not mounted while
                 // it is scrolled out of the list, and the item is then found by its element.
-                if (cardWithoutBackground || hasNestedList(header, 0)) {
+                if (cardWithoutBackground || hasNestedList(header)) {
                     setCardOutline(header, CARD_OUTLINE);
                     final float x = header.getX();
                     final float y = header.getY();
@@ -2150,6 +2153,7 @@ public class FeedCardLayoutPatch {
             }
 
             for (View row : scaledShelfRows.keySet().toArray(new View[0])) {
+                //noinspection EqualsBetweenInconvertibleTypes
                 if (row != null && row.getParent() == list && !scaledRows.contains(row)) {
                     scaledShelfRows.remove(row);
                     row.setScaleX(1);
@@ -2181,7 +2185,7 @@ public class FeedCardLayoutPatch {
      *
      * @param above The list item above the first row of Shorts, or null if the item above it is not in the list.
      */
-    private static void drawShortsShelfCard(RecyclerView list, @Nullable View above, View firstRow,
+    private static void drawShortsShelfCard(RecyclerView list, @Nullable View above, @NonNull View firstRow,
                                             @Nullable Canvas canvas) {
         // The Shorts shelf header or another shelf header above the Shorts,
         // or null if the item above the Shorts is not a shelf header.
@@ -2235,7 +2239,7 @@ public class FeedCardLayoutPatch {
         // The outer Shorts have rounded outer corners: the top corners in the first row,
         // also below the header, and the bottom corners of the card in the last row.
         // The first row in the list is the first row of the shelf only if an item is above it,
-        // or if the list is scrolled to the top. Otherwise the rows above it are scrolled out of the list.
+        // or if the list is scrolled to the top. Otherwise, the rows above it are scrolled out of the list.
         final boolean firstRowOfShelf = above != null || !list.canScrollVertically(-1);
         for (int i = 0; i < rows.size(); i++) {
             final boolean topRow = i == 0 && firstRowOfShelf;
@@ -2354,7 +2358,7 @@ public class FeedCardLayoutPatch {
     }
 
     /**
-     * @return If the item is a row of the Shorts shelf of the channel home, whose Shorts fill the width of the list.
+     * @return If the item is a row of the Shorts shelf of the channel home, whose Shorts fill the width with the list.
      */
     private static boolean isShortsPivotRow(View item) {
         CharSequence label = findLabelMarker(item, SHORTS_CELL_LABEL_MARKER, 0);
@@ -2439,8 +2443,8 @@ public class FeedCardLayoutPatch {
         }
     }
 
-    private static boolean hasNestedList(View view, int depth) {
-        return findNestedList(view, depth) != null;
+    private static boolean hasNestedList(View view) {
+        return findNestedList(view, 0) != null;
     }
 
     @Nullable
@@ -2533,6 +2537,7 @@ public class FeedCardLayoutPatch {
     /**
      * The labels of the shelf header and of the Shorts are on views inside the list item.
      */
+    @SuppressWarnings("SameParameterValue")
     private static boolean hasLabelMarker(View view, char marker, int depth) {
         return findLabelMarker(view, marker, depth) != null;
     }
@@ -2547,7 +2552,7 @@ public class FeedCardLayoutPatch {
         if (endsWith(label, marker)) {
             return label;
         }
-        if (depth < 4 && view instanceof ViewGroup group && !(view instanceof RecyclerView)) {
+        if (depth < 4 && view instanceof ViewGroup group) {
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
                 CharSequence childLabel = findLabelMarker(group.getChildAt(i), marker, depth + 1);
                 if (childLabel != null) {
@@ -2590,6 +2595,7 @@ public class FeedCardLayoutPatch {
     }
 
     private static boolean endsWith(@Nullable CharSequence text, char c) {
+        //noinspection SizeReplaceableByIsEmpty
         return text != null && text.length() > 0 && text.charAt(text.length() - 1) == c;
     }
 

@@ -17,6 +17,7 @@ import app.morphe.extension.shared.ByteTrieSearch;
  * {@link ByteArrayFilterGroup#check(byte[])} as it uses BMH which is faster
  * than a prefix tree to search for only 1 pattern.
  */
+@SuppressWarnings("unused")
 public class ByteArrayFilterGroupList extends FilterGroupList<byte[], ByteArrayFilterGroup> {
     protected ByteTrieSearch createSearchGraph() {
         return new ByteTrieSearch();

@@ -322,6 +322,7 @@ public final class LocalQueuePatch {
         return started;
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean canStartPlayback() {
         Activity activity = Utils.getActivity();
         // Android blocks starting an activity from the background, so a video can only be started
@@ -334,6 +335,7 @@ public final class LocalQueuePatch {
     /**
      * Android blocks starting an activity from the background, but the running activity can still be handed the intent.
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean canDeliverInProcess() {
         Activity activity = Utils.getActivity();
         return activity != null && !activity.isFinishing() && !activity.isDestroyed()
@@ -489,6 +491,7 @@ public final class LocalQueuePatch {
 
     @Nullable
     private static JSONObject fetchOEmbed(String videoId) throws IOException, JSONException {
+        //noinspection CharsetObjectCanBeUsed
         String watchUrl = URLEncoder.encode("https://www.youtube.com/watch?v=" + videoId, "UTF-8");
         HttpURLConnection connection = Requester.openConnection(
                 "https://www.youtube.com/oembed?format=json&url=" + watchUrl);

@@ -44,6 +44,7 @@ import app.morphe.extension.shared.Utils;
  * <p>
  * Pending videos are stored, because the app can be closed before a download completes.
  */
+@SuppressWarnings("unused")
 public final class PickedFolderVideos {
 
     private static final String PREFERENCES_NAME = "morphe_download_location";

@@ -27,7 +27,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstructio
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableShortsResumingOnStartupPatch;"
 
-@Suppress("unused")
 val disableShortsResumingOnStartupPatch = patch(
     name = "Disable Shorts resuming on startup",
     description = "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",

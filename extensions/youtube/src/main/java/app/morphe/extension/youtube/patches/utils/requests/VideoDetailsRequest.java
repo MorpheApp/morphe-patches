@@ -32,6 +32,7 @@ import app.morphe.extension.shared.Utils;
  * The exact publish date, view count, length, description and tags of videos, one request per video.
  * Only used for search results that the uploads of the channel do not tell about.
  */
+@SuppressWarnings("unused")
 public final class VideoDetailsRequest {
 
     public static final class VideoDetails {
@@ -85,7 +86,7 @@ public final class VideoDetailsRequest {
     public interface Callback {
         /**
          * Called on a background thread after some of the details arrived, and once
-         * more when all of them did or the fetch was cancelled.
+         * more when all of them did or the fetch was canceled.
          */
         void onProgress(boolean isComplete);
     }

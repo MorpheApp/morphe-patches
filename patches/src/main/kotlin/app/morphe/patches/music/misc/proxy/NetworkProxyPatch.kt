@@ -19,7 +19,6 @@ import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.proxy.EXTENSION_CLASS
 import app.morphe.patches.shared.misc.proxy.baseNetworkProxyPatch
 
-@Suppress("unused")
 val networkProxyPatch = baseNetworkProxyPatch(
     preferenceScreen = PreferenceScreen.MISC,
     targetUsesProxyListInt = {

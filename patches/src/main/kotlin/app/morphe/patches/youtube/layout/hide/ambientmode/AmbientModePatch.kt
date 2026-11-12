@@ -88,7 +88,6 @@ private const val DEFAULT_CINEMATIC_CONTAINER_RENDERER =
             "AIA/PQAAgkNFmpmZP00AAMA/VQAAgD9YAWpSDQAAIEAVAAAgQB0AACBAJQAAIEAyPBIREPeAqpsDHQAAAAAI94CqmwMSERCA" +
             "gICYAx0AAIA/CICAgJgDCAIdAAAAPyUAAAA/LQAAgD81AACAPw=="
 
-@Suppress("unused")
 val ambientModePatch = patch(
     name = "Ambient mode",
     description = "Adds Enhanced Ambient mode and options to force Ambient mode on, bypass its power saving restrictions, and disable it entirely or in fullscreen.",

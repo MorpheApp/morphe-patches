@@ -2,6 +2,7 @@ package app.morphe.extension.shared.spoof.js.nsigsolver.runtime;
 
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public class ResponseData {
     private String type;
     private String error;

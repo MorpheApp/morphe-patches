@@ -39,7 +39,6 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/RememberShuffleStatePatch;"
 
-@Suppress("unused")
 val rememberShuffleStatePatch = patch(
     name = "Remember shuffle state",
     description = "Adds an option to remember the shuffle state when playing a new track or playlist."

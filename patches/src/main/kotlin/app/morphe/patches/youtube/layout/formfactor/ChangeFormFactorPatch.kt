@@ -31,7 +31,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ChangeFormFactorPatch;"
 
-@Suppress("unused")
 val changeFormFactorPatch = patch(
     name = "Change form factor",
     description = "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",

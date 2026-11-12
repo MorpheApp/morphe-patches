@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -140,7 +141,7 @@ public final class JapaneseDictStore {
         int seen = 0;
 
         try (ZipInputStream zip = new ZipInputStream(
-                new BufferedInputStream(new java.io.FileInputStream(archive), 1 << 16))) {
+                new BufferedInputStream(new FileInputStream(archive), 1 << 16))) {
             ZipEntry entry;
             while ((entry = zip.getNextEntry()) != null) {
                 if (entry.isDirectory()) continue;

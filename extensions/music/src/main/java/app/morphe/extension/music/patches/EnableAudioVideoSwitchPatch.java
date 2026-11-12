@@ -61,6 +61,7 @@ public final class EnableAudioVideoSwitchPatch {
         void patch_atvMove(int from, int to);
         Object patch_atvPrimaryLane();
         void patch_atvAddListener(Object lane, Object listener);
+        @SuppressWarnings("BooleanMethodIsAlwaysInverted")
         boolean patch_atvLocal();
     }
 
@@ -356,7 +357,6 @@ public final class EnableAudioVideoSwitchPatch {
     /**
      * Waits for the condition, checks again whenever the queue changes.
      */
-    @SuppressWarnings({"BooleanMethodIsAlwaysInverted", "WaitWhileNotSynced"})
     static boolean await(Condition condition, long timeoutMs) {
         long deadline = SystemClock.uptimeMillis() + timeoutMs;
         while (true) {

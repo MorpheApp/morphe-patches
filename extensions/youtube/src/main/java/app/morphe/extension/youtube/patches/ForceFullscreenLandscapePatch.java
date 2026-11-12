@@ -74,7 +74,7 @@ public final class ForceFullscreenLandscapePatch {
 
             String name = playerType.name();
             // The player slides between maximized and fullscreen in both directions,
-            // and the gesture can still be cancelled. Wait until the player settles.
+            // and the gesture can still be canceled. Wait until the player settles.
             if (SLIDING_MAXIMIZED_FULLSCREEN.equals(name)) return;
 
             // Cannot use PlayerType.getCurrent() because this hook can run

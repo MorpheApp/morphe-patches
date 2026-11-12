@@ -15,6 +15,7 @@ import java.nio.ByteBuffer;
  * Reads a UMP response for its stream protection status and whether it has media. Media parts
  * are skipped without copying them, and parts and headers can be split across any number of chunks.
  */
+@SuppressWarnings("unused")
 public final class SabrResponseReader {
 
     public interface PartListener {

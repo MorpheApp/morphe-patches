@@ -19,6 +19,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.innertube.queue.fullscreen.QueueFullscreenRenderer;
 
 /** Supplies only the playlist action to YouTube's existing fullscreen renderer. */
+@SuppressWarnings("unused")
 public final class QueueFullscreenActions {
     public interface Controller {
         Object patch_parseQuickActions(byte[] bytes);

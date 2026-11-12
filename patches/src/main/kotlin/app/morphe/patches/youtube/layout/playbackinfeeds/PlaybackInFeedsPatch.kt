@@ -31,7 +31,6 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_CONTROLLER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/PlaybackInFeedsPatch$PlaybackInFeedsController;"
 
-@Suppress("unused")
 val playbackInFeedsPatch = patch(
     name = "Playback in feeds",
     description = "Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, " +

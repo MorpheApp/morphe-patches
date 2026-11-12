@@ -22,10 +22,9 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
-@Suppress("unused")
 val customBrandingPatch = baseCustomBrandingPatch(
     // The launcher icon the app declares in its manifest. Before 21.45 the unused
-    // 'ic_launcher' is the pre-2024 icon and does not match what an unpatched install shows.
+    // 'ic_launcher' is the pre-2024 icon and does not match what an unpatched installation shows.
     originalLauncherIconName = {
         if (is_21_45_or_greater) "ic_launcher" else "ringo2_ic_launcher"
     },

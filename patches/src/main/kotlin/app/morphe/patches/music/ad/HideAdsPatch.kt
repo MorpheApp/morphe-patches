@@ -32,7 +32,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val ADS_FILTER = "Lapp/morphe/extension/music/patches/components/AdsFilter;"
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideAdsPatch;"
 
-@Suppress("unused")
 val hideAdsPatch = patch(
     name = "Hide ads",
     description = "Adds options to hide fullscreen ads, Premium promotions and video ads."

@@ -273,6 +273,7 @@ final class TTSPrefetcher {
     }
 
     @GuardedBy("lock")
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isCurrentSnapshot(String videoId, List<TranscriptSegment> segments) {
         return videoId.equals(currentVideoId) && segments == currentSegments;
     }

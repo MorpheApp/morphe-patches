@@ -56,9 +56,9 @@ internal fun installPlaylistRepeat(
     val restoreShuffleListener = if (is_21_20_or_greater) {
         val listener = playlistShuffleListenerFingerprint(binding.originalMethod, shuffleView)
             .instructionMatches[2].fieldReference
-        """
-            iget-object v1, p0, $listener
-            invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View${'$'}OnClickListener;)V
+        $$"""
+            iget-object v1, p0, $$listener
+            invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
         """
     } else ""
 

@@ -366,7 +366,6 @@ public final class LRCParser {
             } else if (lastPersonSpeaker == null) {
                 isDuet = false;
                 lastPersonSpeaker = sp;
-                lastPersonIsDuet = false;
             } else if (sp.equalsIgnoreCase(lastPersonSpeaker)) {
                 isDuet = lastPersonIsDuet;
             } else {
@@ -441,7 +440,7 @@ public final class LRCParser {
 
         if (!pending.toString().trim().isEmpty()) {
             addWord(words, pendingStart, pending.toString());
-        } else if (pendingStart != LyricsLine.NO_TIME && !words.isEmpty()) {
+        } else if (!words.isEmpty()) {
             int lastIdx = words.size() - 1;
             Word last = words.get(lastIdx);
             if (pendingStart > last.startMs()) {

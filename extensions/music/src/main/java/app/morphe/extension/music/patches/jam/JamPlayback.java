@@ -11,6 +11,7 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.res.Resources;
 import android.view.View;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -243,7 +244,7 @@ public final class JamPlayback {
         if (view == null) return "";
         try {
             return view.getResources().getResourceEntryName(view.getId());
-        } catch (android.content.res.Resources.NotFoundException ignored) {
+        } catch (Resources.NotFoundException ignored) {
             // Some native controls have IDs without a resource entry name.
         }
         return "";

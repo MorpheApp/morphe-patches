@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.lyrics.session;
 
 import android.media.MediaMetadata;
 import android.media.session.MediaSession;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
@@ -116,7 +117,7 @@ public final class MiniplayerLyrics {
             rawDisplayTitle = title;
             rawDisplayArtist = artist;
 
-            android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
+            Uri mediaUri = LyricsManager.parseMediaUri(original);
             LyricsManager.getInstance().onDisplayedTrackChanged(title, artist, mediaUri);
             onSettingsChanged();
         } catch (Exception ex) {

@@ -53,7 +53,7 @@ public final class RedditAccounts {
     /**
      * Reads the store on every call, because the account can change while the app is running.
      *
-     * @return The account name, or null if logged out or it's unknown.
+     * @return The account name, or null if logged out, or it's unknown.
      */
     @Nullable
     public static String getActive() {
@@ -111,6 +111,7 @@ public final class RedditAccounts {
      * @return The string value of a key in a serialized PreferenceMap, or null if it's not found.
      */
     @Nullable
+    @SuppressWarnings("SameParameterValue")
     private static String readStringPreference(byte[] data, String key) {
         int[] position = {0};
         while (position[0] < data.length) {

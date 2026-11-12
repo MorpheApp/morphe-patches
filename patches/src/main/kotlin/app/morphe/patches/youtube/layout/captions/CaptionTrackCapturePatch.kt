@@ -26,10 +26,10 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/CaptionTracks;"
 
 private const val EXTENSION_HANDLER_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/CaptionTracks\$CaptionTrackHandlerInterface;"
+    $$"Lapp/morphe/extension/youtube/patches/CaptionTracks$CaptionTrackHandlerInterface;"
 
 private const val EXTENSION_UPLOADED_CALLBACK_CLASS =
-    "Lapp/morphe/extension/youtube/patches/CaptionTracks\$UploadedCaptionCallback;"
+    $$"Lapp/morphe/extension/youtube/patches/CaptionTracks$UploadedCaptionCallback;"
 
 /**
  * Observes the selected caption track and its loaded results, including cached results.
@@ -143,7 +143,7 @@ internal val captionTrackCapturePatch = patch(
 
         handlerResult.method.apply {
             // The original code reuses the parameter registers. Call a copy of it,
-            // so the request and the installed result are available afterwards.
+            // so the request and the installed result are available afterward.
             val applyResult = cloneMutable(name = "patch_applyCaptionResult")
             handlerResult.classDef.methods.add(applyResult)
 

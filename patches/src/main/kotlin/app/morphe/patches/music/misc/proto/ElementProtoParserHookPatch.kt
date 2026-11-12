@@ -10,5 +10,4 @@ package app.morphe.patches.music.misc.proto
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.shared.misc.proto.createElementProtoParserHookPatch
 
-@Suppress("unused")
 val elementProtoParserHookPatch = createElementProtoParserHookPatch(sharedExtensionPatch)

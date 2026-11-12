@@ -94,7 +94,7 @@ internal object SetPivotBarVisibilityFingerprint : Fingerprint(
         // Needs additional check to be unique.
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = $$"Lj$/util/Optional;->isPresent()Z",
+            smali = "Lj$/util/Optional;->isPresent()Z",
             location = MatchAfterWithin(20) // Near start of the method.
         ),
         checkCast("Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;")

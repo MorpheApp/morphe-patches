@@ -29,6 +29,7 @@ import androidx.annotation.RequiresApi;
  * while the player moves can crash the app.
  */
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+@SuppressWarnings("unused")
 public final class GlassBackdrop {
 
     /**

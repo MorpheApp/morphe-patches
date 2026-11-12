@@ -33,7 +33,6 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideRelatedVideosPatch;"
 
-@Suppress("unused")
 val hideRelatedVideosPatch = patch(
     name = "Hide related videos",
     description = "Adds options to hide related videos."

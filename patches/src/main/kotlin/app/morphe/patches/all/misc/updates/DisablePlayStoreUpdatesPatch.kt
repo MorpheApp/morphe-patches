@@ -46,7 +46,6 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/all/versioncode/Disab
 
 private var originalVersionCode: Int = 0
 
-@Suppress("unused")
 private val disablePlayStoreUpdatesResourcePatch = patch {
     execute {
         resourceXml("AndroidManifest.xml").use { manifest ->
@@ -62,7 +61,6 @@ private val disablePlayStoreUpdatesResourcePatch = patch {
     }
 }
 
-@Suppress("unused")
 internal val disablePlayStoreUpdatesPatch = patch(
     name = "Disable Play Store updates",
     description = "Disables Play Store updates by setting the version code to the maximum allowed. " +

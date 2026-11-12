@@ -24,12 +24,15 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
@@ -50,7 +53,7 @@ public final class LyricsRequests {
 
     public static final String SIMPLIFIED_CHINESE = "zh-Hans";
     /**
-     * For the endpoints that turn away an unrecognised client. Providers that answer only
+     * For the endpoints that turn away an unrecognized client. Providers that answer only
      * to a mobile agent keep one of their own.
      */
     public static final String CHROME_DESKTOP_USER_AGENT =
@@ -66,7 +69,7 @@ public final class LyricsRequests {
     private static final int READ_TIMEOUT_MILLISECONDS = 5 * 1000;
     private static volatile boolean customMatchMode;
     private static volatile String decorationRegexSource;
-    private static volatile java.util.regex.Pattern decorationPattern;
+    private static volatile Pattern decorationPattern;
 
     private LyricsRequests() {
     }
@@ -192,7 +195,7 @@ public final class LyricsRequests {
         }
         final Locale device = Requester.getAppLocale();
         final String script = device.getScript();
-        if (script != null && !script.isEmpty()) {
+        if (!script.isEmpty()) {
             return script;
         }
         final String country = chineseScriptOfRegion(device.getCountry());
@@ -303,7 +306,7 @@ public final class LyricsRequests {
      * User-Agent header, and rate limits requests that do not.
      */
     static HttpURLConnection openConnection(String url) throws IOException {
-        // A cancelled lookup may still be finishing one blocking request.
+        // A canceled lookup may still be finishing one blocking request.
         if (Thread.currentThread().isInterrupted()) {
             throw new InterruptedIOException("Lyrics lookup cancelled");
         }
@@ -320,7 +323,7 @@ public final class LyricsRequests {
      */
     static HttpURLConnection openConnection(String url,
                                             Map<String, String> headers) throws IOException {
-        // A cancelled lookup may still be finishing one blocking request.
+        // A canceled lookup may still be finishing one blocking request.
         if (Thread.currentThread().isInterrupted()) {
             throw new InterruptedIOException("Lyrics lookup cancelled");
         }
@@ -366,7 +369,7 @@ public final class LyricsRequests {
 
     private static HttpURLConnection postConnection(String url, String body, String contentType,
                                                     Map<String, String> headers) throws IOException {
-        // A cancelled lookup may still be finishing one blocking request.
+        // A canceled lookup may still be finishing one blocking request.
         if (Thread.currentThread().isInterrupted()) {
             throw new InterruptedIOException("Lyrics lookup cancelled");
         }
@@ -518,7 +521,7 @@ public final class LyricsRequests {
         if (s.isEmpty()) {
             return "";
         }
-        s = java.text.Normalizer.normalize(s, java.text.Normalizer.Form.NFKC);
+        s = Normalizer.normalize(s, Normalizer.Form.NFKC);
         s = s.toLowerCase(Locale.ROOT);
         // Providers spell metadata Traditional or Simplified, so both are compared. ICU does
         // not map 妳 to 你, so that observed title variant is folded explicitly.
@@ -534,10 +537,10 @@ public final class LyricsRequests {
         if (regex.trim().isEmpty()) {
             return s;
         }
-        java.util.regex.Pattern pattern = decorationPattern;
+        Pattern pattern = decorationPattern;
         if (pattern == null || !regex.equals(decorationRegexSource)) {
             try {
-                pattern = java.util.regex.Pattern.compile(regex);
+                pattern = Pattern.compile(regex);
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Invalid lyrics decoration regex", ex);
                 return s;
@@ -605,8 +608,8 @@ public final class LyricsRequests {
     }
 
     static double jaccard(String a, String b) {
-        final java.util.Set<String> ta = tokens(a);
-        final java.util.Set<String> tb = tokens(b);
+        final Set<String> ta = tokens(a);
+        final Set<String> tb = tokens(b);
         if (ta.isEmpty() || tb.isEmpty()) {
             return 0;
         }
@@ -620,8 +623,8 @@ public final class LyricsRequests {
         return union == 0 ? 0 : (double) inter / union;
     }
 
-    private static java.util.Set<String> tokens(String s) {
-        final java.util.Set<String> out = new java.util.LinkedHashSet<>();
+    private static Set<String> tokens(String s) {
+        final Set<String> out = new LinkedHashSet<>();
         final StringBuilder cur = new StringBuilder();
         for (int i = 0; i < s.length(); ) {
             final int cp = s.codePointAt(i);

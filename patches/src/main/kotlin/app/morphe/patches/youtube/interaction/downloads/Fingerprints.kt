@@ -118,7 +118,7 @@ internal fun offlinePlaybackEntryFingerprint(workerType: String) = Fingerprint(
  * Copies the position of a Downloads entry to the playback position record (entity type 76).
  */
 internal fun offlineDownloadPositionCopyFingerprint(entryType: String) = Fingerprint(
-    returnType = $$"Lj$/util/Optional;",
+    returnType = "Lj$/util/Optional;",
     parameters = listOf(entryType),
     filters = listOf(
         literal(76),

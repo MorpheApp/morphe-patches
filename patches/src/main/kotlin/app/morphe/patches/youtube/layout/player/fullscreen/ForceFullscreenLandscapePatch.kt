@@ -20,7 +20,6 @@ import app.morphe.patches.youtube.shared.getPlayerTypeFingerprint
 private const val EXTENSION_CLASS_FORCE_LANDSCAPE =
     "Lapp/morphe/extension/youtube/patches/ForceFullscreenLandscapePatch;"
 
-@Suppress("unused")
 val forceFullscreenLandscapePatch = patch(
     name = "Force fullscreen landscape",
     description = "Adds an option to rotate the player to landscape when entering fullscreen mode " +

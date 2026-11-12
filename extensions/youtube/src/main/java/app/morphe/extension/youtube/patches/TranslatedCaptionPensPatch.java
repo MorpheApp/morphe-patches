@@ -56,7 +56,7 @@ public class TranslatedCaptionPensPatch {
     /**
      * Injection point.
      *
-     * Called before a request response or a cached caption file is parsed.
+     * <p>Called before a request response or a cached caption file is parsed.
      *
      * @param request Caption request, or any other request handled by the same code.
      */
@@ -87,7 +87,7 @@ public class TranslatedCaptionPensPatch {
     /**
      * Injection point.
      *
-     * Called before a caption track file is decoded.
+     * <p>Called before a caption track file is decoded.
      */
     public static InputStream repairInput(@Nullable InputStream input) throws IOException {
         boolean repair = Boolean.TRUE.equals(isTranslatedAutomaticTrack.get());
@@ -116,7 +116,7 @@ public class TranslatedCaptionPensPatch {
     /**
      * Injection point.
      *
-     * Auto-translated tracks keep the pen ids of the original track, but the translated text
+     * <p>Auto-translated tracks keep the pen ids of the original track, but the translated text
      * does not line up with the original styled segments. Channels that use an invisible pen
      * for padding characters can end up with the entire translated line using that pen,
      * which shows only the caption background.

@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class TranslatedCaptionPensPatchTest {
     private static final int DEFAULT_PEN = Integer.MIN_VALUE;
 
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class Track implements PreferredCaptionLanguagePatch.CaptionTrackInterface {
         final String vss;
         Track(String vss) { this.vss = vss; }
@@ -24,6 +25,7 @@ public class TranslatedCaptionPensPatchTest {
         @Override public String patch_getVssId() { return vss; }
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class Request implements TranslatedCaptionPensPatch.CaptionRequestInterface {
         final Object track;
         Request(Object track) { this.track = track; }

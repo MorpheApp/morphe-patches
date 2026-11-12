@@ -116,7 +116,7 @@ fun addLithoFilter(classDescriptor: String) {
  * @param overrideUpbFeatureFlag Whether to override the A/B feature flag that enables Upb-native
  *                               protobuf parsing (only present on older YouTube; absent in Music).
  * @param removeFilteredListItems Whether to remove the items of the lists (such as the feed) whose
- *                                whole element is filtered. Otherwise the grids, such as the feed
+ *                                whole element is filtered. Otherwise, the grids, such as the feed
  *                                of the tablet layout, show an empty cell in their place.
  * @param block Callback to add app-specific dependencies (sharedExtensionPatch, conversionContextPatch,
  *              versionCheckPatch, and any app-specific fixes).

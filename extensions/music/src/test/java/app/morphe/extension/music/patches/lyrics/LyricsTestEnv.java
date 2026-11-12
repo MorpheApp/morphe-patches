@@ -14,6 +14,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -52,7 +53,7 @@ public final class LyricsTestEnv {
         }
         File filesDir;
         try {
-            filesDir = java.nio.file.Files.createTempDirectory("morphe-lyrics-test").toFile();
+            filesDir = Files.createTempDirectory("morphe-lyrics-test").toFile();
         } catch (Exception ex) {
             throw new RuntimeException("Could not create the lyrics test files dir", ex);
         }

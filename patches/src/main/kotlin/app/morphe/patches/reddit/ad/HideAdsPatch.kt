@@ -27,7 +27,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideAdsPatch;"
 
-@Suppress("unused")
 val hideAdsPatch = patch(
     name = "Hide ads",
     description = "Adds options to hide ads."
