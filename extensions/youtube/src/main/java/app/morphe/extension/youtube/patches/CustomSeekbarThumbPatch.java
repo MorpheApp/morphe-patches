@@ -36,8 +36,11 @@ import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
@@ -47,6 +50,16 @@ import app.morphe.extension.youtube.settings.Settings;
  */
 @SuppressWarnings("unused")
 public final class CustomSeekbarThumbPatch {
+
+    public enum ThumbType {
+        PLAY_ARROW,
+        INFINITY_LOGO,
+        M_ANIMATED,
+        M_STATIC,
+        WAVE,
+        DNA,
+        CUSTOM
+    }
 
     public enum ThumbScaleType {
         FIT_SEEKBAR,
@@ -83,7 +96,7 @@ public final class CustomSeekbarThumbPatch {
         @Override
         public void invalidateDrawable(@NonNull Drawable who) {
             View view = seekbarViewRef.get();
-            if (view != null) {
+            if (view != null && view.isShown()) {
                 view.postInvalidate();
             }
         }
@@ -110,6 +123,9 @@ public final class CustomSeekbarThumbPatch {
     @Nullable
     private static Drawable thumbDrawable;
 
+    @Nullable
+    private static ThumbType loadedThumbType;
+
     /**
      * File name setting of {@link #thumbDrawable}, or null if the thumb must be loaded.
      */
@@ -133,19 +149,32 @@ public final class CustomSeekbarThumbPatch {
     @Nullable
     public static Drawable createSeekBarThumb() {
         try {
-            if (!isPatchIncluded() || !Settings.CUSTOM_SEEKBAR_THUMB.get()
-                    || Settings.CUSTOM_SEEKBAR_THUMB_FILE.get().isEmpty()) {
+            if (!isPatchIncluded() || !Settings.CUSTOM_SEEKBAR_THUMB.get()) {
                 return null;
             }
 
-            File file = getThumbFile(Utils.getContext());
-            if (!file.isFile()) {
-                // The player seekbar shows a message and resets the setting.
-                Logger.printDebug(() -> "Custom seekbar thumb file not found");
-                return null;
+            ThumbType thumbType = Settings.CUSTOM_SEEKBAR_THUMB_TYPE.get();
+            Context context = Utils.getContext();
+            Drawable thumb = null;
+
+            if (thumbType != ThumbType.CUSTOM) {
+                String resName = getPresetResourceName(thumbType);
+                if (resName != null) {
+                    int resId = ResourceUtils.getIdentifier(ResourceType.RAW, resName);
+                    if (resId != 0) {
+                        thumb = decodeThumb(context, resId);
+                    }
+                }
+            } else {
+                if (Settings.CUSTOM_SEEKBAR_THUMB_FILE.get().isEmpty()) {
+                    return null;
+                }
+                File file = getThumbFile(context);
+                if (file.isFile()) {
+                    thumb = decodeThumb(file);
+                }
             }
 
-            Drawable thumb = decodeThumb(file);
             if (thumb == null) {
                 return null;
             }
@@ -266,11 +295,21 @@ public final class CustomSeekbarThumbPatch {
      */
     public static void drawCircle(Canvas canvas, float cx, float cy, float radius, Paint paint) {
         try {
-            if (Settings.CUSTOM_SEEKBAR_THUMB.get() && radius >= Dim.dp(MIN_RADIUS_DP)) {
+            if (Settings.CUSTOM_SEEKBAR_THUMB.get()) {
+                boolean showThumb = radius >= Dim.dp(MIN_RADIUS_DP);
                 Drawable thumb = getThumbDrawable();
                 if (thumb != null) {
-                    drawThumb(canvas, thumb, cx, cy, radius);
-                    return;
+                    if (thumb instanceof Animatable animatable) {
+                        if (showThumb && !animatable.isRunning()) {
+                            animatable.start();
+                        } else if (!showThumb && animatable.isRunning()) {
+                            animatable.stop();
+                        }
+                    }
+                    if (showThumb) {
+                        drawThumb(canvas, thumb, cx, cy, radius);
+                        return;
+                    }
                 }
             }
         } catch (Exception ex) {
@@ -302,10 +341,14 @@ public final class CustomSeekbarThumbPatch {
 
     @Nullable
     private static Drawable getThumbDrawable() {
+        ThumbType thumbType = Settings.CUSTOM_SEEKBAR_THUMB_TYPE.get();
         String fileName = Settings.CUSTOM_SEEKBAR_THUMB_FILE.get();
-        if (!fileName.equals(loadedFileName)) {
+
+        if (thumbType != loadedThumbType || !Objects.equals(fileName, loadedFileName)) {
+            loadedThumbType = thumbType;
             loadedFileName = fileName;
-            setThumbDrawable(fileName.isEmpty() ? null : loadThumbDrawable());
+            boolean hasThumb = thumbType != ThumbType.CUSTOM || !fileName.isEmpty();
+            setThumbDrawable(hasThumb ? loadThumbDrawable() : null);
         }
         return thumbDrawable;
     }
@@ -328,7 +371,25 @@ public final class CustomSeekbarThumbPatch {
 
     @Nullable
     private static Drawable loadThumbDrawable() {
-        File file = getThumbFile(Utils.getContext());
+        Context context = Utils.getContext();
+        ThumbType thumbType = Settings.CUSTOM_SEEKBAR_THUMB_TYPE.get();
+
+        if (thumbType != ThumbType.CUSTOM) {
+            String resName = getPresetResourceName(thumbType);
+            if (resName != null) {
+                int resId = ResourceUtils.getIdentifier(ResourceType.RAW, resName);
+                if (resId != 0) {
+                    try {
+                        return decodeThumb(context, resId);
+                    } catch (Exception ex) {
+                        Logger.printException(() -> "Failed to decode preset thumb: " + resName, ex);
+                    }
+                }
+            }
+            return null;
+        }
+
+        File file = getThumbFile(context);
         if (!file.isFile()) {
             // Settings were imported from a different installation.
             Logger.printInfo(() -> "Custom seekbar thumb file not found");
@@ -345,6 +406,19 @@ public final class CustomSeekbarThumbPatch {
             Logger.printException(() -> "loadThumbDrawable failure", ex);
             return null;
         }
+    }
+
+    @Nullable
+    private static String getPresetResourceName(ThumbType type) {
+        return switch (type) {
+            case PLAY_ARROW -> "morphe_custom_seekbar_thumb_play_arrow";
+            case INFINITY_LOGO -> "morphe_custom_seekbar_thumb_infinity_logo";
+            case M_ANIMATED -> "morphe_custom_seekbar_thumb_m_animated";
+            case M_STATIC -> "morphe_custom_seekbar_thumb_m_static";
+            case WAVE -> "morphe_custom_seekbar_thumb_wave";
+            case DNA -> "morphe_custom_seekbar_thumb_dna";
+            default -> null;
+        };
     }
 
     /**
@@ -383,6 +457,40 @@ public final class CustomSeekbarThumbPatch {
         options.inJustDecodeBounds = false;
 
         Bitmap bitmap = BitmapFactory.decodeFile(file.getPath(), options);
+        return bitmap == null ? null : new BitmapDrawable(null, bitmap);
+    }
+
+    @Nullable
+    private static Drawable decodeThumb(Context context, int resId) throws IOException {
+        final int maxSize = Dim.dp(MAX_THUMB_SIZE_DP);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            ImageDecoder.Source source = ImageDecoder.createSource(context.getResources(), resId);
+            return ImageDecoder.decodeDrawable(source, (decoder, info, imageSource) -> {
+                // Hardware bitmaps cannot be drawn to a software canvas.
+                decoder.setAllocator(ImageDecoder.ALLOCATOR_SOFTWARE);
+
+                Size size = info.getSize();
+                final float scale = Math.min(1, (float) maxSize / Math.max(size.getWidth(), size.getHeight()));
+                decoder.setTargetSize(
+                        Math.max(1, Math.round(size.getWidth() * scale)),
+                        Math.max(1, Math.round(size.getHeight() * scale))
+                );
+            });
+        }
+
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(context.getResources(), resId, options);
+
+        final int largestSide = Math.max(options.outWidth, options.outHeight);
+        options.inSampleSize = 1;
+        while (largestSide / (options.inSampleSize * 2) >= maxSize) {
+            options.inSampleSize *= 2;
+        }
+        options.inJustDecodeBounds = false;
+
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), resId, options);
         return bitmap == null ? null : new BitmapDrawable(null, bitmap);
     }
 
@@ -432,6 +540,7 @@ public final class CustomSeekbarThumbPatch {
      * Loads the thumb file again on the next draw.
      */
     public static void reloadThumb() {
+        loadedThumbType = null;
         loadedFileName = null;
 
         View view = seekbarViewRef.get();

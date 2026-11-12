@@ -19,6 +19,8 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
+import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 import app.morphe.util.fiveRegisters
 import app.morphe.util.setExtensionIsPatchIncluded
 
@@ -37,9 +39,23 @@ val customSeekbarThumbPatch = patch(
     execute {
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
+        copyResources(
+            "customseekbarthumb",
+            ResourceGroup(
+                "raw",
+                "morphe_custom_seekbar_thumb_play_arrow.gif",
+                "morphe_custom_seekbar_thumb_infinity_logo.webp",
+                "morphe_custom_seekbar_thumb_m_animated.webp",
+                "morphe_custom_seekbar_thumb_m_static.webp",
+                "morphe_custom_seekbar_thumb_wave.gif",
+                "morphe_custom_seekbar_thumb_dna.gif"
+            )
+        )
+
         PreferenceScreen.SEEKBAR.addPreferences(
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference("morphe_custom_seekbar_thumb", summary = true),
+                ListPreference("morphe_custom_seekbar_thumb_type"),
                 NonInteractivePreference(
                     key = "morphe_custom_seekbar_thumb_file",
                     tag = "app.morphe.extension.youtube.settings.preference.CustomSeekbarThumbPreference",

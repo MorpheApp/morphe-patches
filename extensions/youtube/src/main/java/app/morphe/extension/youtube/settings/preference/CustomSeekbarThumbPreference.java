@@ -107,6 +107,7 @@ public class CustomSeekbarThumbPreference extends Preference {
                 return;
             }
 
+            Settings.CUSTOM_SEEKBAR_THUMB_TYPE.save(CustomSeekbarThumbPatch.ThumbType.CUSTOM);
             Settings.CUSTOM_SEEKBAR_THUMB_FILE.save(fileName);
 
             CustomSeekbarThumbPreference preference = shownPreference.get();
