@@ -617,6 +617,7 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
 The database is licensed under the ODC Open Database License (ODbL). Entries from Soul Over AI by xoundbyte are licensed under CC BY 4.0. Not affiliated with or endorsed by SoundProof or Soul Over AI."</string>
 
     <!-- layout.lyrics.lyricsPatch -->
+    <string name="morphe_music_lyrics_device_unavailable">Lyrics are not available for this device file.</string>
     <string name="morphe_music_lyrics_enabled_title">Use third-party lyrics</string>
     <string name="morphe_music_lyrics_enabled_summary">Shows lyrics from a third-party service, falling back to the built-in lyrics when none are found</string>
     <string name="morphe_music_lyrics_keep_screen_on_title">Keep screen on while viewing lyrics</string>

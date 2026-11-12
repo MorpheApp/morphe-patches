@@ -111,6 +111,7 @@ public final class LyricsPanelInstaller {
                     }
                     LyricsManager.getInstance().reloadAfterSettingsChange();
                 } else {
+                    app.morphe.extension.music.patches.DeviceLyricsTab.onDisabled();
                     uninstallLyricsPanel();
                 }
                 MiniplayerLyrics.onSettingsChanged();

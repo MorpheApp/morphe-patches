@@ -264,6 +264,8 @@ val lyricsPatch = patch(
         // lyrics component is the earliest signal that the opened panel is the lyrics one.
         addLithoFilter(LYRICS_PANEL_FILTER)
 
+        addDeviceLyricsHooks()
+
         // Some accounts get lyrics as a player tab instead of an engagement panel. A tab page can
         // be built long before it is selected, so the litho filter alone can't install the panel.
         TabbedViewTabSelectedFingerprint.method.addInstruction(
