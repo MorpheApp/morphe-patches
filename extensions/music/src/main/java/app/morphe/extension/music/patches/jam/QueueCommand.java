@@ -10,6 +10,8 @@ package app.morphe.extension.music.patches.jam;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 
+import app.morphe.extension.music.shared.VideoInformation;
+
 /**
  * Minimal protobuf adapter for the native YT Music queue endpoints used by Jam.
  *
@@ -51,7 +53,7 @@ public final class QueueCommand {
             field(watch, 2);
             byte[] video = field(watch, VIDEO_ID_FIELD);
             String id = new String(video, StandardCharsets.US_ASCII);
-            return id.matches("[A-Za-z0-9_-]{11}") ? id : null;
+            return VideoInformation.isVideoId(id) ? id : null;
         } catch (RuntimeException e) {
             return null;
         }
@@ -71,7 +73,7 @@ public final class QueueCommand {
 
     public static byte[] watch(String video) {
         if (
-            video == null || !video.matches("[A-Za-z0-9_-]{11}")
+            !VideoInformation.isVideoId(video)
         ) throw new IllegalArgumentException("Invalid video ID");
         ByteArrayOutputStream body = new ByteArrayOutputStream(),
             endpoint = new ByteArrayOutputStream();
@@ -83,7 +85,7 @@ public final class QueueCommand {
     /** Native music/get_queue context used to load the selected track's participant-side options. */
     public static byte[] menuRequest(String video) {
         if (
-            video == null || !video.matches("[A-Za-z0-9_-]{11}")
+            !VideoInformation.isVideoId(video)
         ) throw new IllegalArgumentException("Invalid video ID");
         ByteArrayOutputStream context = new ByteArrayOutputStream(),
             request = new ByteArrayOutputStream(),
@@ -111,7 +113,7 @@ public final class QueueCommand {
             byte[] video = field(target, VIDEO_ID_FIELD);
             if (video == null) return null;
             String id = new String(video, StandardCharsets.US_ASCII);
-            if (!id.matches("[A-Za-z0-9_-]{11}")) return null;
+            if (!VideoInformation.isVideoId(id)) return null;
             int mode = integer(operation, QUEUE_EDIT_MODE_FIELD);
             return mode == MODE_PLAY_NEXT || mode == MODE_ADD
                 ? new String[] {
@@ -181,7 +183,7 @@ public final class QueueCommand {
     }
 
     public static byte[] encode(String videoId, boolean playNext) {
-        if (videoId == null || !videoId.matches("[A-Za-z0-9_-]{11}")) {
+        if (!VideoInformation.isVideoId(videoId)) {
             throw new IllegalArgumentException(
                 "Enter an 11-character YouTube video ID"
             );

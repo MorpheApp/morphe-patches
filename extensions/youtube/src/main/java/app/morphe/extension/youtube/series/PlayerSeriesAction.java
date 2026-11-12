@@ -32,7 +32,7 @@ final class PlayerSeriesAction {
         if (activity == null || activity.isFinishing() || activity.isDestroyed()) return;
         if (pending.get() == activity) return;
         String video = activeVideo();
-        if (!video.matches("[A-Za-z0-9_-]{11}")) {
+        if (!VideoInformation.isVideoId(video)) {
             HistoryUi.open(activity);
             return;
         }

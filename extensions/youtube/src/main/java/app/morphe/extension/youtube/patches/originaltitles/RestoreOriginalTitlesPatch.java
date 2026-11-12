@@ -57,6 +57,7 @@ import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowTitleIcon;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
@@ -142,8 +143,6 @@ public final class RestoreOriginalTitlesPatch {
      */
     private static final String SHORTS_VIDEO_LINK_ID = "id.reel_multi_format_link";
 
-    private static final Pattern VIDEO_ID_PATTERN = Pattern.compile("^[A-Za-z0-9_-]{11}$");
-
     /**
      * Video id encoded in a key as any of the first fields, such as the key of a hashtag of a description.
      */
@@ -226,9 +225,8 @@ public final class RestoreOriginalTitlesPatch {
     private static final char TITLE_MARKER_FIRST_DIGIT = '\u2061'; // Invisible operators U+2061 to U+2064.
     private static final String VIDEO_ID_CHARACTERS =
             "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
-    private static final int VIDEO_ID_LENGTH = 11;
     private static final int TITLE_MARKER_DIGITS_PER_CHARACTER = 3;
-    private static final int TITLE_MARKER_LENGTH = 1 + VIDEO_ID_LENGTH * TITLE_MARKER_DIGITS_PER_CHARACTER;
+    private static final int TITLE_MARKER_LENGTH = 1 + VideoInformation.VIDEO_ID_LENGTH * TITLE_MARKER_DIGITS_PER_CHARACTER;
 
     /**
      * Minimum length of a translated title that is replaced inside other texts,
@@ -1561,9 +1559,9 @@ public final class RestoreOriginalTitlesPatch {
      */
     @Nullable
     private static String decodeTitleMarker(CharSequence text, int markerStart) {
-        char[] videoId = new char[VIDEO_ID_LENGTH];
+        char[] videoId = new char[VideoInformation.VIDEO_ID_LENGTH];
         int index = markerStart + 1;
-        for (int i = 0; i < VIDEO_ID_LENGTH; i++) {
+        for (int i = 0; i < VideoInformation.VIDEO_ID_LENGTH; i++) {
             int value = 0;
             for (int digit = 0; digit < TITLE_MARKER_DIGITS_PER_CHARACTER; digit++) {
                 final int digitValue = text.charAt(index++) - TITLE_MARKER_FIRST_DIGIT;
@@ -1609,7 +1607,7 @@ public final class RestoreOriginalTitlesPatch {
         StringBuilder builder = new StringBuilder(nodeText.length() + TITLE_MARKER_LENGTH)
                 .append(nodeText)
                 .append(TITLE_MARKER_START);
-        for (int i = 0; i < VIDEO_ID_LENGTH; i++) {
+        for (int i = 0; i < VideoInformation.VIDEO_ID_LENGTH; i++) {
             final int value = VIDEO_ID_CHARACTERS.indexOf(videoId.charAt(i));
             for (int shift = 2 * (TITLE_MARKER_DIGITS_PER_CHARACTER - 1); shift >= 0; shift -= 2) {
                 builder.append((char) (TITLE_MARKER_FIRST_DIGIT + ((value >> shift) & 3)));
@@ -2507,7 +2505,7 @@ public final class RestoreOriginalTitlesPatch {
             ProtoNode videoIdNode = null;
             for (int j = i - 2; j >= Math.max(0, i - 1 - LINK_MAX_TEXTS_BEFORE_TITLE); j--) {
                 ProtoNode candidate = textNodes.get(j);
-                if (VIDEO_ID_PATTERN.matcher(candidate.getText().trim()).matches()) {
+                if (VideoInformation.isVideoId(candidate.getText().trim())) {
                     videoIdNode = candidate;
                     break;
                 }

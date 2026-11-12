@@ -26,6 +26,7 @@ import java.util.Map;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.youtube.patches.VideoInformation;
 
 /**
  * Loads public video thumbnails. No account credentials are sent.
@@ -56,7 +57,7 @@ final class ThumbnailLoader {
         Utils.verifyOnMainThread();
         view.setTag(videoId);
         // The id is part of the url.
-        if (videoId == null || !videoId.matches("[A-Za-z0-9_-]{11}")) return;
+        if (!VideoInformation.isVideoId(videoId)) return;
 
         Bitmap cached = cache.get(videoId);
         if (cached != null) {

@@ -300,7 +300,6 @@ public final class FlyoutUtils {
         }
     }
 
-    private static final int VIDEO_ID_LENGTH = 11;
     private static final byte[] PLAYLIST_ID_PREFIX_BYTES =
             getAsciiBytes("playlist?list=");
     private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
@@ -453,10 +452,10 @@ public final class FlyoutUtils {
         byte[] prefix = VIDEO_ID_PREFIXES_BYTES.get(0);
         final int index = byteIndexOf(buffer, prefix);
         final int videoIdStart = index + prefix.length;
-        if (index < 0 || videoIdStart + VIDEO_ID_LENGTH > buffer.length) {
+        if (index < 0 || videoIdStart + VideoInformation.VIDEO_ID_LENGTH > buffer.length) {
             return "";
         }
-        return new String(buffer, videoIdStart, VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
+        return new String(buffer, videoIdStart, VideoInformation.VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
     }
 
     public static boolean hasVisibleFlyoutButton(String buttonName) {
@@ -1588,12 +1587,12 @@ public final class FlyoutUtils {
 
             if (index >= 0) {
                 final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
-                final int videoIdEnd = videoIdStart + VIDEO_ID_LENGTH;
+                final int videoIdEnd = videoIdStart + VideoInformation.VIDEO_ID_LENGTH;
                 if (videoIdEnd <= buffer.length) {
                     flyoutVideoId = new String(
                             buffer,
                             videoIdStart,
-                            VIDEO_ID_LENGTH,
+                            VideoInformation.VIDEO_ID_LENGTH,
                             StandardCharsets.US_ASCII
                     );
 

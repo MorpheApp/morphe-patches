@@ -29,6 +29,8 @@ import java.util.function.LongSupplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.youtube.patches.VideoInformation;
+
 /** On-demand public discovery. Search results are candidates, never proof of membership. */
 final class PlaylistDiscovery {
     static final int MAX_REQUESTS = 18, MAX_BYTES = 16 * 1024 * 1024, MAX_CANDIDATES = 8;
@@ -71,7 +73,7 @@ final class PlaylistDiscovery {
     }
 
     List<Match> find(String video) throws IOException {
-        if (!video.matches("[A-Za-z0-9_-]{11}")) return Collections.emptyList();
+        if (!VideoInformation.isVideoId(video)) return Collections.emptyList();
         synchronized (cache) {
             Cached saved = cache.get(video);
             if (saved != null && clock.getAsLong() < saved.until()) return saved.matches();

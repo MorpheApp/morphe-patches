@@ -12,9 +12,9 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.regex.Pattern;
 
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.youtube.patches.VideoInformation;
 
 /** Immutable playlist presentation; selection and repeat mirror the native playback queue. */
 public final class PlaylistQueue {
@@ -22,8 +22,6 @@ public final class PlaylistQueue {
     public static final int REPEAT_OFF = 0;
     public static final int REPEAT_ALL = 1;
     public static final int REPEAT_ONE = 2;
-
-    private static final Pattern VIDEO_ID = Pattern.compile("[A-Za-z0-9_-]{11}");
 
     /** Original source occurrence, independent of edits to the local queue order. */
     record SourcePosition(PlaylistPage.Anchor anchor, Object origin) {}
@@ -281,12 +279,8 @@ public final class PlaylistQueue {
         return new PlaylistQueue(updated, 0, repeatMode, source, totalCount, unavailableVideosMessage);
     }
 
-    public static boolean isVideoId(String videoId) {
-        return videoId != null && VIDEO_ID.matcher(videoId).matches();
-    }
-
     private static void requireVideoId(String videoId) {
-        if (!isVideoId(videoId)) {
+        if (!VideoInformation.isVideoId(videoId)) {
             throw new IllegalArgumentException("Invalid YouTube video ID");
         }
     }

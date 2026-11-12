@@ -47,7 +47,6 @@ public final class AutoTranslateCaptionsPatch {
     }
 
     private static final Pattern LANGUAGE_CODE_PATTERN = Pattern.compile("[a-z]{2,8}(-[A-Za-z0-9]{2,8})*");
-    private static final Pattern VIDEO_ID_PATTERN = Pattern.compile("[A-Za-z0-9_-]{11}");
     private static final Pattern VSS_ID_SUFFIX_PATTERN = Pattern.compile("[A-Za-z0-9_-]{1,128}");
 
     /**
@@ -373,7 +372,7 @@ public final class AutoTranslateCaptionsPatch {
         if (parameters == null || parameters.containsKey("tlang")) return null;
         String video = parameters.get("v"), sourceLanguage = parameters.get("lang");
         String kind = parameters.get("kind");
-        return video != null && VIDEO_ID_PATTERN.matcher(video).matches()
+        return VideoInformation.isVideoId(video)
                 && sourceLanguage != null && LANGUAGE_CODE_PATTERN.matcher(sourceLanguage).matches()
                 && getLanguageKey(language).equals(getLanguageKey(sourceLanguage))
                 && (asr ? "asr".equals(kind) : kind == null || kind.isEmpty())

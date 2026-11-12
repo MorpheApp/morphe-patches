@@ -64,8 +64,6 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
     private static final int UPSELL_PLAYLIST_ITEM = 10;
     private static final int UPSELL_PLAYLIST_ID = 3;
 
-    private static final Pattern VIDEO_ID = Pattern.compile("[A-Za-z0-9_-]{11}");
-
     /**
      * Liked music, user and editorial playlists, mixes, album playlists and album pages,
      * with or without the 'VL' prefix of a playlist page.
@@ -244,7 +242,7 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                 if (value.isEmpty()) {
                     return null;
                 }
-                if (VIDEO_ID.matcher(value).matches()) {
+                if (VideoInformation.isVideoId(value)) {
                     return insideDialog
                             ? menuVideoDownload(value)
                             : videoDownload(value, useExternalDownloader(false));
@@ -276,7 +274,7 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
                 OfflineVideoEndpoint endpoint = offlineCommand.getOfflineVideoEndpoint();
                 String videoId = endpoint.getVideoId();
                 if (endpoint.getAction() == OfflineVideoAction.OFFLINE_VIDEO_ACTION_ADD
-                        && VIDEO_ID.matcher(videoId).matches()
+                        && VideoInformation.isVideoId(videoId)
                         && useExternalDownloader(insideDialog)) {
                     return videoDownload(videoId, true);
                 }
@@ -382,7 +380,7 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
     private static String getOfflineUpsellVideoId(ProtoMessage parameters) {
         try {
             String videoId = parameters.stringField(UPSELL_PARAMETERS_VIDEO_ID);
-            return VIDEO_ID.matcher(videoId).matches() ? videoId : null;
+            return VideoInformation.isVideoId(videoId) ? videoId : null;
         } catch (IllegalArgumentException ex) {
             // The parameters of an album or a playlist hold other fields at this number.
             Logger.printDebug(() -> "Offline upsell parameters are not those of a song", ex);

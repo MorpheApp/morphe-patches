@@ -1419,7 +1419,7 @@ public final class NativePlaylistQueuePatch {
             // The active-ID hook and accepted controller must agree. Prefetched
             // responses and Shorts cannot insert entries; account playlists win above.
             PlayerType type = PlayerType.getCurrent();
-            if (!PlaylistQueue.isVideoId(videoId) || type.isNoneOrHidden()
+            if (!VideoInformation.isVideoId(videoId) || type.isNoneOrHidden()
                     || type == PlayerType.INLINE_MINIMAL || hasForeignPlaybackPlaylist()) {
                 return;
             }
@@ -2763,7 +2763,7 @@ public final class NativePlaylistQueuePatch {
     }
 
     public static boolean canQueueFlyoutVideo(String videoId) {
-        return AddToQueuePatch.isNativeQueueEnabled() && PlaylistQueue.isVideoId(videoId);
+        return AddToQueuePatch.isNativeQueueEnabled() && VideoInformation.isVideoId(videoId);
     }
 
     /** A playing playlist can become a queue without replacing its current video. */

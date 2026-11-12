@@ -20,6 +20,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -119,8 +120,6 @@ final class AskPanelCommand {
     private static final int WIRE_TYPE_FIXED64 = 1;
     static final int WIRE_TYPE_LENGTH_DELIMITED = 2;
     private static final int WIRE_TYPE_FIXED32 = 5;
-
-    private static final int VIDEO_ID_LENGTH = 11;
 
     /**
      * The tokens nest base64 at most a few times.
@@ -650,7 +649,7 @@ final class AskPanelCommand {
 
         String saved = Settings.ASK_PANEL_TEMPLATE.get();
         final int separator = saved.indexOf(TEMPLATE_SEPARATOR);
-        if (separator != VIDEO_ID_LENGTH) {
+        if (separator != VideoInformation.VIDEO_ID_LENGTH) {
             return false;
         }
 
@@ -723,7 +722,7 @@ final class AskPanelCommand {
 
         String retargeted = result.toString();
         for (int index = retargeted.indexOf(fromVideoId); index >= 0;
-             index = retargeted.indexOf(fromVideoId, index + VIDEO_ID_LENGTH)) {
+             index = retargeted.indexOf(fromVideoId, index + VideoInformation.VIDEO_ID_LENGTH)) {
             replacements[0]++;
         }
         return retargeted.replace(fromVideoId, toVideoId);

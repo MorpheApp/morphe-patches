@@ -38,6 +38,7 @@ import java.nio.charset.StandardCharsets;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
+import app.morphe.extension.shared.patches.BaseVideoInformation;
 
 /**
  * Abstract base for Litho filters that scan the protocol buffer for phrase matches
@@ -338,9 +339,6 @@ public abstract class BufferPhraseFilter extends Filter {
         public static final Source[] VALUES = values();
     }
 
-    /** YouTube video IDs are 11 chars from the base64-url alphabet. */
-    private static final int VIDEO_ID_LENGTH = 11;
-
     /** Byte sequence that precedes the video ID inside the buffer's thumbnail URL. */
     private static final byte[] THUMBNAIL_URL_PREFIX =
             "https://i.ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII);
@@ -356,24 +354,15 @@ public abstract class BufferPhraseFilter extends Filter {
         final byte[] prefix = THUMBNAIL_URL_PREFIX;
         final int prefixLen = prefix.length;
         outer:
-        for (int i = 0, max = buffer.length - prefixLen - VIDEO_ID_LENGTH; i <= max; i++) {
+        for (int i = 0, max = buffer.length - prefixLen - BaseVideoInformation.VIDEO_ID_LENGTH; i <= max; i++) {
             for (int j = 0; j < prefixLen; j++) {
                 if (buffer[i + j] != prefix[j]) continue outer;
             }
             int start = i + prefixLen;
-            for (int k = 0; k < VIDEO_ID_LENGTH; k++) {
-                if (!isVideoIdChar(buffer[start + k])) continue outer;
-            }
-            return new String(buffer, start, VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
+            if (!BaseVideoInformation.isVideoId(buffer, start)) continue;
+            return new String(buffer, start, BaseVideoInformation.VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
         }
         return null;
-    }
-
-    private static boolean isVideoIdChar(byte b) {
-        return (b >= 'A' && b <= 'Z')
-                || (b >= 'a' && b <= 'z')
-                || (b >= '0' && b <= '9')
-                || b == '-' || b == '_';
     }
 
     /**

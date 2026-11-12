@@ -10,6 +10,8 @@ package app.morphe.extension.music.patches.jam;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 
+import app.morphe.extension.music.shared.VideoInformation;
+
 /** Sanitized native display model: content ID and public display metadata only. */
 public final class QueueModel {
 
@@ -90,7 +92,7 @@ public final class QueueModel {
         String picture
     ) {
         if (
-            !video.matches("[A-Za-z0-9_-]{11}")
+            !VideoInformation.isVideoId(video)
         ) throw new IllegalArgumentException("Invalid video ID");
         /*
          * Native music-responsive-list-item shape used by the queue-item

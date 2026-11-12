@@ -17,8 +17,11 @@ import android.util.Base64;
 
 import androidx.annotation.Nullable;
 
+import java.util.List;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -28,7 +31,6 @@ public class OverrideYouTubeMusicButtonsPatch {
     private static final String MORPHE_MUSIC_PACKAGE_NAME = "app.morphe.android.apps.youtube.music";
     private static final String HIJACK_FLAG = "morphe_hijacked";
     private static final String YOUTUBE_MUSIC_WATCH_URL = "https://music.youtube.com/watch?v=";
-    private static final int VIDEO_ID_LENGTH = 11;
 
     private static String getTargetPackageName() {
         String target = Settings.CUSTOM_MUSIC_PACKAGE_NAME.get().trim();
@@ -104,7 +106,7 @@ public class OverrideYouTubeMusicButtonsPatch {
 
     /**
      * YouTube links to a song as 'vnd.youtube.music://music.youtube.com/?ybp=...',
-     * where 'ybp' is a Base64 encoded protobuf message containing the video id.
+     * where 'ybp' is a Base64 encoded proto message containing the video id.
      *
      * @return The regular YouTube Music link of the song, or null if the link has no video id.
      */
@@ -115,87 +117,22 @@ public class OverrideYouTubeMusicButtonsPatch {
             String ybp = data.getQueryParameter("ybp");
             if (ybp == null) return null;
 
+            // Decode both the URL safe and the regular Base64 alphabet.
             byte[] bytes = Base64.decode(ybp.replace('-', '+').replace('_', '/'), Base64.DEFAULT);
-            String videoId = findVideoId(bytes, 0, bytes.length, 0);
-            return videoId == null ? null : Uri.parse(YOUTUBE_MUSIC_WATCH_URL + videoId);
+            List<ProtoNode> message = ProtoNode.parse(bytes);
+            if (message == null) return null;
+
+            for (ProtoNode node : ProtoNode.textNodes(message)) {
+                String text = node.getText();
+                if (VideoInformation.isVideoId(text)) {
+                    return Uri.parse(YOUTUBE_MUSIC_WATCH_URL + text);
+                }
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "getWatchUri failure", ex);
-            return null;
-        }
-    }
-
-    /**
-     * @return The first length delimited field of the protobuf message that is a video id.
-     */
-    @Nullable
-    private static String findVideoId(byte[] bytes, int start, int end, int depth) {
-        if (depth > 8) return null;
-
-        int position = start;
-        while (position < end) {
-            long[] tag = readVarint(bytes, position, end);
-            if (tag == null) return null;
-            position = (int) tag[1];
-
-            switch ((int) (tag[0] & 0x7)) {
-                case 0 -> { // Varint.
-                    long[] value = readVarint(bytes, position, end);
-                    if (value == null) return null;
-                    position = (int) value[1];
-                }
-                case 1 -> position += 8; // Fixed 64 bit.
-                case 5 -> position += 4; // Fixed 32 bit.
-                case 2 -> { // Length delimited.
-                    long[] length = readVarint(bytes, position, end);
-                    if (length == null || length[0] < 0 || length[0] > end - length[1]) return null;
-                    int fieldStart = (int) length[1];
-                    int fieldEnd = fieldStart + (int) length[0];
-
-                    if (isVideoId(bytes, fieldStart, fieldEnd)) {
-                        return new String(bytes, fieldStart, VIDEO_ID_LENGTH);
-                    }
-                    String videoId = findVideoId(bytes, fieldStart, fieldEnd, depth + 1);
-                    if (videoId != null) return videoId;
-
-                    position = fieldEnd;
-                }
-                default -> {
-                    return null;
-                }
-            }
         }
 
         return null;
-    }
-
-    /**
-     * @return The value and the position after it, or null if the varint is malformed.
-     */
-    @Nullable
-    private static long[] readVarint(byte[] bytes, int position, int end) {
-        long value = 0;
-        for (int shift = 0; shift < 64 && position < end; shift += 7) {
-            byte b = bytes[position++];
-            value |= (long) (b & 0x7F) << shift;
-            if ((b & 0x80) == 0) {
-                return new long[]{value, position};
-            }
-        }
-
-        return null;
-    }
-
-    private static boolean isVideoId(byte[] bytes, int start, int end) {
-        if (end - start != VIDEO_ID_LENGTH) return false;
-
-        for (int i = start; i < end; i++) {
-            char c = (char) bytes[i];
-            if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '-' || c == '_')) {
-                return false;
-            }
-        }
-
-        return true;
     }
 
     /**
