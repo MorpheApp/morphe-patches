@@ -19,7 +19,7 @@ public class CharReadingTableTest {
 
     @Test
     public void loadAndReadFinding() throws Exception {
-        // File must be in code point order for binary search: 一 (U+4E00) < 中 (U+4E2D) < 好 (U+597D)
+        // File must be in code point order for binary search: U+4E00 < U+4E2D < U+597D
         File file = tempFile("一 yi\n中 hanzi\n好 hao\n");
         CharReadingTable table = CharReadingTable.load(file);
         assertEquals(3, table.size());
@@ -40,13 +40,13 @@ public class CharReadingTableTest {
     public void readingFirstCharReturnsNull() throws Exception {
         File file = tempFile("中 hanzi\n");
         CharReadingTable table = CharReadingTable.load(file);
-        // 'X' (U+0058) is not in the table and is before '中' (U+4E2D)
+        // 'X' (U+0058) is not in the table and is before U+4E2D
         assertNull(table.reading('X'));
     }
 
     @Test
     public void loadSkipsShortLines() throws Exception {
-        // File must be in code point order: 一 (U+4E00) < 中 (U+4E2D)
+        // File must be in code point order: U+4E00 < U+4E2D
         File file = tempFile("一 yi\nxy\n中 hanzi\n");
         CharReadingTable table = CharReadingTable.load(file);
         assertEquals(2, table.size());

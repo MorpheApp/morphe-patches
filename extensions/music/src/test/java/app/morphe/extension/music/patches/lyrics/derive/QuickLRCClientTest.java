@@ -110,7 +110,7 @@ public class QuickLRCClientTest {
 
     @Test
     public void dropCjkSeparatorsKeepsCjkPunctuationGap() throws Exception {
-        // Punctuation like ，is CJK and should have its gap dropped
+        // Full-width punctuation is CJK and should have its gap dropped
         assertEquals("我，靠", callDropCjkSeparators("我 ， 靠"));
     }
 

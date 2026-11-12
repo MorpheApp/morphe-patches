@@ -602,7 +602,8 @@ public final class LocalRomanizer {
     }
 
     private static boolean isOnePerSyllable(char c) {
-        return ScriptDetector.isCjkCodePoint(c);
+        return ScriptDetector.isHan(c) || ScriptDetector.isKana(c)
+                || ScriptDetector.isHangul(c);
     }
 
     /** A word of nothing but punctuation has no reading of its own, so it rides on the one before. */

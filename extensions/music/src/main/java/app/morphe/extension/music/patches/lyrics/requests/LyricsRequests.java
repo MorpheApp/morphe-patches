@@ -26,6 +26,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
@@ -695,6 +696,25 @@ public final class LyricsRequests {
             return 2;
         }
         return Math.max(v.score(), 5);
+    }
+
+    /** A lyric a provider has for the video id, with the votes its users gave it. */
+    record VotedLyrics(int votes, Lyrics lyrics) {
+    }
+
+    /**
+     * Candidates found by video id, which match the track equally, so they are scored like any
+     * video id match. The best synced and then the most voted of them are kept.
+     */
+    static List<Lyrics.ScoredLyrics> videoIdCandidates(List<VotedLyrics> found) {
+        found.sort(Comparator.comparingInt((VotedLyrics v) -> syncRank(v.lyrics()))
+                .thenComparingInt(VotedLyrics::votes).reversed());
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (VotedLyrics voted : found.subList(0, Math.min(found.size(), MAX_CANDIDATES))) {
+            scored.add(new Lyrics.ScoredLyrics(VIDEO_ID_TRUST + syncRank(voted.lyrics()),
+                    voted.lyrics()));
+        }
+        return scored;
     }
 
     public static int syncRank(Lyrics lyrics) {

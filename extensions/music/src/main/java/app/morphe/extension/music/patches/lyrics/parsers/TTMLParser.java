@@ -156,15 +156,13 @@ public final class TTMLParser {
                         } else if ("itunesmetadata".equalsIgnoreCase(local)) {
                             inItunesMetadata = true;
                         } else if (inItunesMetadata && "audio".equals(local)) {
-                            // <audio lyricOffset="0.940" role="base"/> inside <iTunesMetadata>
-                            String offsetAttr = getAttr(p, NS_ITUNES, "lyricOffset", null);
-                            if (offsetAttr == null) {
-                                offsetAttr = getAttr(p, null, "lyricOffset", null);
-                            }
-                            if (offsetAttr != null) {
+                            // <audio lyricOffset="0.940" role="base"/>: seconds every timing is late by.
+                            final String offset = getAttr(p, NS_ITUNES, "lyricOffset", null);
+                            if (offset != null) {
                                 try {
-                                    offsetMs = (int) Math.round(Double.parseDouble(offsetAttr) * 1000);
-                                } catch (NumberFormatException ignored) {
+                                    offsetMs = (int) Math.round(Double.parseDouble(offset) * 1000);
+                                } catch (NumberFormatException ex) {
+                                    Logger.printDebug(() -> "Invalid TTML lyricOffset: " + offset, ex);
                                 }
                             }
                         } else {

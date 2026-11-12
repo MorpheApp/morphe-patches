@@ -253,6 +253,20 @@ public class LyricsSpanBuilderExtrasTest {
         return (int) m.invoke(null, text);
     }
 
+    @Test
+    public void thaiWordsKeepTheirMarks() throws Exception {
+        final String text = "ฉันรักคุณ";
+        int[] bounds = invokeWordBoundaries(text);
+        assertEquals(0, bounds[0]);
+        assertEquals(text.length(), bounds[bounds.length - 1]);
+        for (int bound : bounds) {
+            if (bound < text.length()) {
+                assertTrue("A word never starts at a combining mark: " + bound,
+                        Character.getType(text.charAt(bound)) != Character.NON_SPACING_MARK);
+            }
+        }
+    }
+
     private static boolean invokeHasCjkCodePoint(String text) throws Exception {
         Method m = LyricsSpanBuilder.class.getDeclaredMethod("hasCjkCodePoint", String.class);
         m.setAccessible(true);
@@ -261,7 +275,7 @@ public class LyricsSpanBuilderExtrasTest {
 
     @Test
     public void cjkWordBoundariesSplitPerCharacter() throws Exception {
-        // "今天天气很好" = 6 CJK characters → 6 spans → 12 bound values
+        // 6 CJK characters: 6 spans, so 12 bound values.
         int[] bounds = invokeWordBoundaries("今天天气很好");
         assertEquals(12, bounds.length);
     }
@@ -274,7 +288,7 @@ public class LyricsSpanBuilderExtrasTest {
 
     @Test
     public void cjkWordBoundariesEachCharacterOwnSpan() throws Exception {
-        // "你好" → bounds: [0,1, 1,2] — each character is its own span
+        // Each CJK character is its own span: [0,1, 1,2].
         int[] bounds = invokeWordBoundaries("你好");
         assertEquals(4, bounds.length);
         assertEquals(0, bounds[0]);
@@ -295,13 +309,13 @@ public class LyricsSpanBuilderExtrasTest {
 
     @Test
     public void cjkWithSpaceCountWords() throws Exception {
-        // "你好 世界" → 4 CJK chars, space separates them
+        // 4 CJK characters, a space between the pairs.
         assertEquals(4, invokeCountWords("你好 世界"));
     }
 
     @Test
     public void latinWordBoundariesProduceTwoWords() throws Exception {
-        // "hello world" → 2 spans → 4 bound values
+        // "hello world": 2 spans, so 4 bound values.
         int[] bounds = invokeWordBoundaries("hello world");
         assertEquals(4, bounds.length);
     }
@@ -318,32 +332,32 @@ public class LyricsSpanBuilderExtrasTest {
 
     @Test
     public void mixedCjkLatinSplitsCjkPerCharacter() throws Exception {
-        // "你好hello" → 你, 好, hello → 3 spans → 6 bound values
+        // Two CJK characters and "hello": 3 spans, so 6 bound values.
         int[] bounds = invokeWordBoundaries("你好hello");
         assertEquals(6, bounds.length);
     }
 
     @Test
     public void mixedCjkLatinCountWords() throws Exception {
-        // 你, 好, hello → 3 words
+        // Two CJK characters and "hello": 3 words.
         assertEquals(3, invokeCountWords("你好hello"));
     }
 
     @Test
     public void mixedCjkLatinWithSpace() throws Exception {
-        // "你好 hello" → 你, 好, hello → 3 words
+        // Two CJK characters, a space and "hello": 3 words.
         assertEquals(3, invokeCountWords("你好 hello"));
     }
 
     @Test
     public void japaneseKanaSplitsPerCharacter() throws Exception {
-        // "こんにちは" = 5 kana → 5 words
+        // 5 kana: 5 words.
         assertEquals(5, invokeCountWords("こんにちは"));
     }
 
     @Test
     public void koreanHangulSplitsPerSyllable() throws Exception {
-        // "안녕하세요" = 5 Hangul syllables → 5 words
+        // 5 Hangul syllables: 5 words.
         assertEquals(5, invokeCountWords("안녕하세요"));
     }
 

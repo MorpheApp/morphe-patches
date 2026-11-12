@@ -71,10 +71,8 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
                         sp = (end < text.length() && Character.isWhitespace(text.charAt(end)));
                         cursor = end;
                     } else {
-                        // A reading line's CJK words were never space-separated; only a non-CJK word may assume one.
-                        sp = w.endsWithSpace()
-                                || (!ScriptDetector.containsCjk(w.text())
-                                && i < words.size() - 1);
+                        // CJK words are written without spaces, so only other words can assume one.
+                        sp = i < words.size() - 1 && !ScriptDetector.containsCjk(w.text());
                     }
                     updated.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), sp, w.ruby()));
                 }

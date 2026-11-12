@@ -214,7 +214,7 @@ public final class LyricsSpanBuilder {
         return line.isBG() || LyricsBracketSplitter.isBracketedVocal(line.text());
     }
 
-    /** Brackets stripped for a background vocal. */
+    /** The text a line is drawn with: a background vocal sits on a line of its own, so it loses its brackets. */
     static String displayLineText(LyricsLine line) {
         String raw = line.text();
         return isSecondaryLine(line) ? LyricsBracketSplitter.stripAllBrackets(raw).trim() : raw;
@@ -905,100 +905,93 @@ public final class LyricsSpanBuilder {
         return false;
     }
 
+    /**
+     * Where each word of a line begins and ends, counted the way it is said. A CJK character is a
+     * syllable, so it is a word of its own. Other text is split at its word breaks, so a script
+     * written without spaces such as Thai still splits into words, and punctuation stays on the
+     * word it touches.
+     */
     private static int[] wordBoundaries(String text) {
-        final boolean spaced = hasWhitespace(text);
-        final BreakIterator words = BreakIterator.getWordInstance(Locale.ROOT);
-
-        List<int[]> spans = new ArrayList<>();
-        int worded = 0;
-        if (words != null) {
-            words.setText(text);
-            int start = words.first();
-            int opening = -1;
-            for (int end = words.next(); end != BreakIterator.DONE; start = end, end = words.next()) {
-                final String piece = text.substring(start, end);
-                if (!hasNonWhitespace(piece)) continue;
-                final boolean letters = hasLetterOrDigit(piece);
-                final boolean joined = start > 0 && !isWhitespace(text.codePointBefore(start));
-                if (!letters && isOpening(piece) && !(spaced && joined && !spans.isEmpty())) {
-                    if (opening < 0) opening = start;
-                    continue;
-                }
-                final int from = opening >= 0 ? opening : start;
-                opening = -1;
-                if (!spans.isEmpty() && joined && from == start && (spaced || !letters)) {
-                    final int[] previous = spans.remove(spans.size() - 1);
-                    spans.add(new int[]{previous[0], end});
-                } else {
-                    spans.add(new int[]{from, end});
-                    if (letters) worded++;
-                }
-            }
-            if (opening >= 0) {
-                if (spans.isEmpty()) spans.add(new int[]{opening, text.length()});
-                else {
-                    final int[] previous = spans.remove(spans.size() - 1);
-                    spans.add(new int[]{previous[0], text.length()});
-                }
-            }
-        }
-
-        if (worded < 2 || hasCjkCodePoint(text)) {
-            // ICU found no dictionary words, or the text is CJK: split on CJK code points
-            // and whitespace. Each CJK character is one syllable, so it needs its own word
-            // boundary for per-syllable Romanization alignment.
-            spans.clear();
-            int runStart = -1;
-            for (int i = 0; i < text.length(); ) {
-                final int codePoint = text.codePointAt(i);
-                final int charCount = Character.charCount(codePoint);
-                if (isCjkCodePoint(codePoint)) {
-                    if (runStart >= 0) {
-                        spans.add(new int[]{runStart, i});
-                        runStart = -1;
-                    }
-                    spans.add(new int[]{i, i + charCount});
-                } else if (isWhitespace(codePoint)) {
-                    if (runStart >= 0) {
-                        spans.add(new int[]{runStart, i});
-                        runStart = -1;
-                    }
-                } else if (runStart < 0) {
-                    runStart = i;
-                }
-                i += charCount;
-            }
-            if (runStart >= 0) {
-                spans.add(new int[]{runStart, text.length()});
-            }
-        }
-
-        List<Integer> bounds = new ArrayList<>(spans.size() * 2);
-        for (int[] span : spans) {
-            bounds.add(span[0]);
-            bounds.add(span[1]);
-        }
-        int[] result = new int[bounds.size()];
-        for (int i = 0; i < bounds.size(); i++) {
-            result[i] = bounds.get(i);
+        final List<int[]> spans = hasCjkCodePoint(text) ? cjkWordSpans(text) : wordBreakSpans(text);
+        int[] result = new int[spans.size() * 2];
+        for (int i = 0; i < spans.size(); i++) {
+            result[2 * i] = spans.get(i)[0];
+            result[2 * i + 1] = spans.get(i)[1];
         }
         return result;
     }
 
-    private static boolean hasWhitespace(String text) {
-        return text.codePoints().anyMatch(LyricsSpanBuilder::isWhitespace);
+    /** Splits at whitespace and around every CJK character. */
+    private static List<int[]> cjkWordSpans(String text) {
+        List<int[]> spans = new ArrayList<>();
+        int runStart = -1;
+        for (int i = 0; i < text.length(); ) {
+            final int codePoint = text.codePointAt(i);
+            final int charCount = Character.charCount(codePoint);
+            if (isCjkCodePoint(codePoint)) {
+                if (runStart >= 0) {
+                    spans.add(new int[]{runStart, i});
+                    runStart = -1;
+                }
+                spans.add(new int[]{i, i + charCount});
+            } else if (isWhitespace(codePoint)) {
+                if (runStart >= 0) {
+                    spans.add(new int[]{runStart, i});
+                    runStart = -1;
+                }
+            } else if (runStart < 0) {
+                runStart = i;
+            }
+            i += charCount;
+        }
+        if (runStart >= 0) {
+            spans.add(new int[]{runStart, text.length()});
+        }
+        return spans;
+    }
+
+    /**
+     * Splits at the word breaks of the text. In text with spaces only a space ends a word, as
+     * the breaks inside a word such as "don't" are not where it is said apart. Opening
+     * punctuation joins the word after it, and other punctuation the word before it.
+     */
+    private static List<int[]> wordBreakSpans(String text) {
+        final boolean spaced = text.codePoints().anyMatch(LyricsSpanBuilder::isWhitespace);
+        final java.text.BreakIterator breaks = java.text.BreakIterator.getWordInstance(Locale.ROOT);
+        breaks.setText(text);
+
+        List<int[]> spans = new ArrayList<>();
+        int opening = -1;
+        int start = breaks.first();
+        for (int end = breaks.next(); end != java.text.BreakIterator.DONE; start = end, end = breaks.next()) {
+            final String piece = text.substring(start, end);
+            if (piece.codePoints().allMatch(LyricsSpanBuilder::isWhitespace)) continue;
+            final boolean letters = piece.codePoints().anyMatch(Character::isLetterOrDigit);
+            final boolean joined = start > 0 && !isWhitespace(text.codePointBefore(start));
+            final boolean joinsPrevious = joined && !spans.isEmpty() && (spaced || !letters);
+            if (!letters && isOpening(piece) && !(spaced && joinsPrevious)) {
+                if (opening < 0) opening = start;
+                continue;
+            }
+            if (opening < 0 && joinsPrevious) {
+                spans.get(spans.size() - 1)[1] = end;
+            } else {
+                spans.add(new int[]{opening >= 0 ? opening : start, end});
+            }
+            opening = -1;
+        }
+        if (opening >= 0) {
+            if (spans.isEmpty()) {
+                spans.add(new int[]{opening, text.length()});
+            } else {
+                spans.get(spans.size() - 1)[1] = text.length();
+            }
+        }
+        return spans;
     }
 
     private static boolean hasCjkCodePoint(String text) {
         return text.codePoints().anyMatch(LyricsSpanBuilder::isCjkCodePoint);
-    }
-
-    private static boolean hasLetterOrDigit(String text) {
-        return text.codePoints().anyMatch(Character::isLetterOrDigit);
-    }
-
-    private static boolean hasNonWhitespace(String text) {
-        return text.codePoints().anyMatch(cp -> !isWhitespace(cp));
     }
 
     private static boolean isWhitespace(int cp) {
@@ -1466,7 +1459,7 @@ public final class LyricsSpanBuilder {
             } else {
                 boolean isRtl = isRtlText(dual);
                 dual.setSpan(new AlignmentSpan.Standard(
-                                resolveAlignment(isRtl, isRightAligned, centered)),
+                        resolveAlignment(isRtl, isRightAligned, centered)),
                         0, dual.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             attachUniformSpacing(dual, spacing);

@@ -60,8 +60,8 @@ public final class LyricsTestEnv {
         FakeContext fakeContext = new FakeContext(filesDir);
         // Set Utils.context via reflection BEFORE calling Utils.setContext().
         // Utils.setContext() calls Logger.printInfo() which triggers
-        // includeStackTrace() → DEBUG_STACKTRACE.get() → BaseSettings.<clinit>
-        // → Setting.<clinit> → SharedPrefCategory → Utils.getContext().
+        // includeStackTrace() -> DEBUG_STACKTRACE.get() -> BaseSettings.<clinit>
+        // -> Setting.<clinit> -> SharedPrefCategory -> Utils.getContext().
         // If context is null at that point, SharedPrefCategory's Objects.requireNonNull NPEs.
         // Pre-setting context breaks the chicken-and-egg deadlock.
         try {

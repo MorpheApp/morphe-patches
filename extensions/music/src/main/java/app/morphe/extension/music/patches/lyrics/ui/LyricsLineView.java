@@ -1630,7 +1630,7 @@ final class LyricsLineView extends TextView {
             final float sungReadingAlphaFactor = lineLookInitialized
                     ? lookCurReadingAlpha
                     : (lineAlpha * (activeLine ? LyricsColors.ACTIVE_READING_ALPHA
-                                    : (Color.alpha(LyricsColors.secondaryTextColor()) / 255f)));
+                       : (Color.alpha(LyricsColors.secondaryTextColor()) / 255f)));
             final int baseRgb = LyricsColors.lineTextColor() & 0x00FFFFFF;
             final int lyricColor = baseRgb | (alpha255(sungMainAlphaFactor) << 24);
             final int readingColor = baseRgb | (alpha255(sungReadingAlphaFactor) << 24);

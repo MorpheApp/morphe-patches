@@ -85,10 +85,10 @@ public class LyricsSpanBuilderDisplayTest {
     }
 
     @Test
-    public void thaiCharsAreCjkAndNotWordContinuation() {
-        assertTrue(LyricsSpanBuilder.isCjkCodePoint('ก'));
-        assertTrue(LyricsSpanBuilder.isCjkCodePoint('ั'));
-        assertTrue(LyricsSpanBuilder.isCjkCodePoint('ำ'));
+    public void thaiCharsAreNotSyllablesOfTheirOwn() {
+        assertFalse(LyricsSpanBuilder.isCjkCodePoint('ก'));
+        assertFalse(LyricsSpanBuilder.isCjkCodePoint('ั'));
+        assertFalse(LyricsSpanBuilder.isCjkCodePoint('ำ'));
     }
 
     @Test

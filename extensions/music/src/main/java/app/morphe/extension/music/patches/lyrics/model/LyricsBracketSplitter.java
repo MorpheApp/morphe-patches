@@ -221,7 +221,10 @@ public final class LyricsBracketSplitter {
         return out;
     }
 
-    /** A head run is a vocal of its own when followed by whitespace, a CJK char, or the line end. */
+    /**
+     * A run running straight into a word is not a vocal of its own, unless the script has no
+     * spaces between words.
+     */
     @Nullable
     private static Run headRun(String text) {
         int open = 0;
@@ -239,7 +242,7 @@ public final class LyricsBracketSplitter {
         return isWide(text.charAt(run.open()))
                 || after == text.length()
                 || Character.isWhitespace(text.charAt(after))
-                || ScriptDetector.isCjkCodePoint(text.codePointAt(after)) ? run : null;
+                || ScriptDetector.isUnspacedCodePoint(text.codePointAt(after)) ? run : null;
     }
 
     @Nullable
@@ -255,11 +258,10 @@ public final class LyricsBracketSplitter {
         if (run == null) {
             return null;
         }
-        final int before = run.open() - 1;
         return isWide(text.charAt(run.open()))
                 || run.open() == 0
-                || Character.isWhitespace(text.charAt(before))
-                || ScriptDetector.isCjkCodePoint(text.codePointBefore(run.open())) ? run : null;
+                || Character.isWhitespace(text.charAt(run.open() - 1))
+                || ScriptDetector.isUnspacedCodePoint(text.codePointBefore(run.open())) ? run : null;
     }
 
     /** A full-width bracket stands on a cell of its own, so it needs no space around it. */

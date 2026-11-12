@@ -164,7 +164,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     /** Shows the pronunciation above each line, which the app's own romanize icon does. */
     private static final String APP_ROMANIZE_ICON = "morphe_yt_romanize";
 
-    /** No app targeting icon exists. */
+    /** Own icon, because the app ships no crosshair icon of its own. */
     private static final String APP_TARGET_ICON = "morphe_yt_crosshair";
 
     private static final String REFRESH_ICON = "ic_mtrl_arrow_circle";
@@ -1423,8 +1423,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 lv.setIsRightAligned(lineRightAligned[i]);
                 lv.setIsCentered(Settings.LYRICS_FORCE_CENTER.get()
                         || (isSecFlags[i] && curParentForAlign >= 0
-                        ? newLyrics.lines().get(curParentForAlign).isCentered()
-                        : l.isCentered()));
+                            ? newLyrics.lines().get(curParentForAlign).isCentered()
+                            : l.isCentered()));
                 lv.setGravity((lineRightAligned[i] ? Gravity.END : Gravity.START) | Gravity.TOP);
             }
         }
@@ -1432,7 +1432,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         currentSourceUrl = newLyrics.sourceUrl();
         updateFooter();
         restoreToolbarButtons();
-        buttonRow.setVisibility(buttonRow.getChildCount() > 0 ? VISIBLE : GONE);
+        updateButtonRowVisibility();
         updateTranslateLabel();
         updateRomanizeLabel();
 
@@ -1768,8 +1768,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             // A vocal shares its lead line's row and centres with it.
             lineView.setIsCentered(Settings.LYRICS_FORCE_CENTER.get()
                     || (isSec && curParentForAlign >= 0
-                    ? newLyrics.lines().get(curParentForAlign).isCentered()
-                    : line.isCentered()));
+                        ? newLyrics.lines().get(curParentForAlign).isCentered()
+                        : line.isCentered()));
             // Plain text first so the panel paints immediately; the karaoke spans are added on a
             // background thread (see the LINE_BUILDER_EXECUTOR pass below). A hide rebuild keeps
             // the surviving regions so its first frame matches the shrunken layout exactly, and a
@@ -1810,9 +1810,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             final int effectiveLeadIdx = isSec ? currentParentIdx : i;
             final boolean initialActive = !newLyrics.synced()
                     || (reusePrevious && (prevActiveSet.contains(i)
-                    || prevActiveSet.contains(effectiveLeadIdx)
-                    || effectiveLeadIdx == prevHighlighted
-                    || i == prevHighlighted));
+                        || prevActiveSet.contains(effectiveLeadIdx)
+                        || effectiveLeadIdx == prevHighlighted
+                        || i == prevHighlighted));
             styleLineView(lineView, line, isSec, initialActive, textSize, foregroundColor,
                     isSynced, contentInBuild);
 
@@ -2351,7 +2351,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         footerContainer.setVisibility(VISIBLE);
         footerView.setVisibility(VISIBLE);
         restoreToolbarButtons();
-        buttonRow.setVisibility(buttonRow.getChildCount() > 0 ? VISIBLE : GONE);
+        updateButtonRowVisibility();
         updateTranslateLabel();
         updateRomanizeLabel();
     }
@@ -3683,6 +3683,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
     }
 
+    /** Every toolbar button can be turned off, and an empty row would still take up space. */
     private void updateButtonRowVisibility() {
         buttonRow.setVisibility(buttonRow.getChildCount() > 0 ? VISIBLE : GONE);
     }
@@ -4461,12 +4462,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     private void showJumpToCurrentButton() {
-        if (!Settings.LYRICS_SHOW_CURRENT_BUTTON.get() || lyrics == null || !lyrics.synced())
-            return;
+        if (!Settings.LYRICS_SHOW_CURRENT_BUTTON.get() || lyrics == null || !lyrics.synced()) return;
         jumpToCurrentView.bringToFront();
         jumpToCurrentView.animate().cancel();
-        if (jumpToCurrentView.getVisibility() == VISIBLE && jumpToCurrentView.getAlpha() == 1f)
-            return;
+        if (jumpToCurrentView.getVisibility() == VISIBLE && jumpToCurrentView.getAlpha() == 1f) return;
         jumpToCurrentView.setAlpha(0f);
         jumpToCurrentView.setVisibility(VISIBLE);
         jumpToCurrentView.animate().alpha(1f).setDuration(JUMP_BUTTON_FADE_MS).start();
@@ -4987,7 +4986,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
             List<Integer> mainPredActiveList = (!inGapBreak && !retimedLyrics.isEmpty())
                     ? leadLineIndices(LyricsRetiming.findActiveRetimedLineIndices(
-                    retimedLyrics, retimedAdjustedEndMax, predictiveTime, 50L))
+                            retimedLyrics, retimedAdjustedEndMax, predictiveTime, 50L))
                     : Collections.emptyList();
 
             Set<Integer> newActiveSet = inGapBreak
@@ -5697,7 +5696,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         buttonRow.removeAllViews();
         hiddenToolbarButtons.clear();
         createToolbarButtons();
-        updateButtonRowVisibility();
+        // The row is shown with the lyrics, so a rebuild while they are loading leaves it hidden.
+        if (footerContainer.getVisibility() == VISIBLE) {
+            updateButtonRowVisibility();
+        }
         updateTranslateLabel();
         updateRomanizeLabel();
         updateRefreshLabel();

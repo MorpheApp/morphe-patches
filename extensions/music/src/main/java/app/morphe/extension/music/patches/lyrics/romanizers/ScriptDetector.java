@@ -188,12 +188,22 @@ public final class ScriptDetector {
         return c >= 0xAC00 && c <= 0xD7A3;
     }
 
+    /** A code point written as a syllable of its own: Han, Hangul or kana. */
     public static boolean isCjkCodePoint(int cp) {
         return cp <= Character.MAX_VALUE
-                && (isHan((char) cp) || isKana((char) cp) || isHangul((char) cp)
-                || isThai((char) cp) || isLao((char) cp)
-                || isMyanmar((char) cp) || isKhmer((char) cp)
-                || isTibetan((char) cp));
+                && (isHan((char) cp) || isKana((char) cp) || isHangul((char) cp));
+    }
+
+    /**
+     * A code point of a script written without spaces between words, so a word can end right
+     * before or after it. Thai, Lao, Myanmar, Khmer and Tibetan letters are not syllables of their
+     * own, unlike {@link #isCjkCodePoint}.
+     */
+    public static boolean isUnspacedCodePoint(int cp) {
+        if (isCjkCodePoint(cp)) return true;
+        if (cp > Character.MAX_VALUE) return false;
+        final char c = (char) cp;
+        return isThai(c) || isLao(c) || isMyanmar(c) || isKhmer(c) || isTibetan(c);
     }
 
     /** Hangul syllables, jamo and compatibility jamo, which is every way Korean is spelled. */

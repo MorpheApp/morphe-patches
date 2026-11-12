@@ -2226,7 +2226,7 @@ public final class LyricsManager {
         return SkipSegments.remapTimestamp(lyricTimeMs, segs);
     }
 
-    /** Segments for export: same latch logic as display, read fresh each call. */
+    /** The segments a saved file is timed against, the same ones the lyrics are shown with. */
     @Nullable
     public List<SkipSegments.Seg> exportSegs() {
         return syncSegs();
@@ -2395,18 +2395,16 @@ public final class LyricsManager {
                     }
                     Lyrics shown = currentLyrics;
                     boolean stillShowing = shown != null && fingerprint.equals(LyricsMatch.fingerprint(shown));
-                    if (sections == null) {
-                        // A track change or a newer request cancels it; neither is a failure.
-                        if (stillShowing && currentTrack == track) {
-                            Logger.printDebug(() -> "AI section detection returned no sections for "
-                                    + track.title() + " - " + track.artist());
-                            if (BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
-                                Utils.showToastShort(str("morphe_music_lyrics_ai_section_failed"));
-                            }
-                        }
+                    // A track change or a newer request cancels it; neither is a failure.
+                    if (!stillShowing || currentTrack != track) {
                         return;
                     }
-                    if (!stillShowing || currentTrack != track) {
+                    if (sections == null) {
+                        Logger.printDebug(() -> "AI section detection returned no sections for "
+                                + track.title() + " - " + track.artist());
+                        if (BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
+                            Utils.showToastShort(str("morphe_music_lyrics_ai_section_failed"));
+                        }
                         return;
                     }
                     setState(State.LOADED, SectionDetector.applySections(shown, sections));

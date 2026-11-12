@@ -206,9 +206,17 @@ public class LyricsTargetLanguagePreference extends Preference {
                 || RubyGenerator.isJapaneseRubyLanguage(value);
     }
 
-    /** The two kana ruby styles: hidden until the Japanese dictionary is downloaded. */
-    private static boolean isKanaRubyStyle(String value) {
-        return "ja-Hira".equalsIgnoreCase(value) || "ja-Kana".equalsIgnoreCase(value);
+    /**
+     * Hidden until what it needs is downloaded: Syriac needs the CLDR transforms, and the two
+     * kana ruby styles need the Japanese dictionary.
+     */
+    private static boolean isWaitingForDownload(String value) {
+        if (SYRIAC.equals(value)) {
+            return !CldrTransformsStore.isReady();
+        }
+        final boolean kanaRubyStyle = "ja-Hira".equalsIgnoreCase(value)
+                || "ja-Kana".equalsIgnoreCase(value);
+        return kanaRubyStyle && !JapaneseDictStore.isReady();
     }
 
     private static boolean isAddedByUser(String value) {
@@ -279,12 +287,7 @@ public class LyricsTargetLanguagePreference extends Preference {
         final List<CharSequence> merged = new ArrayList<>(base.length + 1);
         for (int i = 0; i < base.length; i++) {
             final String value = values[i].toString();
-            // Syriac is hidden until the CLDR transforms are downloaded.
-            if (!CldrTransformsStore.isReady() && SYRIAC.equals(value)) {
-                continue;
-            }
-            // The two kana ruby styles are hidden until the Japanese dictionary is downloaded.
-            if (!JapaneseDictStore.isReady() && isKanaRubyStyle(value)) {
+            if (isWaitingForDownload(value)) {
                 continue;
             }
             if (RubyGenerator.isJapaneseRubyLanguage(value) && JapaneseDictStore.isReady()) {
@@ -314,11 +317,7 @@ public class LyricsTargetLanguagePreference extends Preference {
         }
         final List<CharSequence> merged = new ArrayList<>(base.length + 1);
         for (CharSequence entry : base) {
-            final String value = entry.toString();
-            if (!CldrTransformsStore.isReady() && SYRIAC.equals(value)) {
-                continue;
-            }
-            if (!JapaneseDictStore.isReady() && isKanaRubyStyle(value)) {
+            if (isWaitingForDownload(entry.toString())) {
                 continue;
             }
             merged.add(entry);

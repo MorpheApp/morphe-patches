@@ -540,7 +540,7 @@ public class TTMLGeneratorTest {
         Lyrics lyrics = singleLineLyrics();
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, 0);
+        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, 0, null);
         assertNotNull(ttml);
         assertFalse("Zero offset must not create an empty iTunesMetadata block",
                 ttml.contains("iTunesMetadata"));
@@ -553,7 +553,7 @@ public class TTMLGeneratorTest {
         Lyrics lyrics = singleLineLyrics();
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, 940);
+        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, 940, null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("begin=\"00:01.940\""));
         assertTrue(ttml.contains("end=\"00:02.440\""));
@@ -565,7 +565,7 @@ public class TTMLGeneratorTest {
         Lyrics lyrics = singleLineLyrics();
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
 
-        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, -1500);
+        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, -1500, null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("begin=\"00:00.000\""));
     }

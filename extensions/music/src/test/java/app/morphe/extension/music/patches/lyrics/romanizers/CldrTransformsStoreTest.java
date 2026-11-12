@@ -229,7 +229,7 @@ public class CldrTransformsStoreTest {
 
     @Test
     public void parseRulesSkipsVariableDefinitions() throws Exception {
-        // A variable definition without ';' is not stored, so $x is unknown and a→$x fails to expand.
+        // A variable definition without ';' is not stored, so $x is unknown and a -> $x fails to expand.
         String content = "$x = hello\na→$x\n";
         Map<String, String> rules = callParseRules(content, "test");
         assertEquals(0, rules.size());
@@ -237,7 +237,7 @@ public class CldrTransformsStoreTest {
 
     @Test
     public void parseRulesSkipsReverseRules() throws Exception {
-        // Latin on the left with ← is a reverse rule, should be skipped
+        // Latin on the left of a reverse arrow is a reverse rule, which is skipped
         String content = "b←a\n";
         Map<String, String> rules = callParseRules(content, "test");
         assertTrue(rules.isEmpty());
@@ -255,7 +255,7 @@ public class CldrTransformsStoreTest {
         // Capital letter rules are skipped; the small letter's rule reads both
         String content = "A→b\na→c\n";
         Map<String, String> rules = callParseRules(content, "test");
-        // "A→b" is skipped (uppercase), but "a→c" is kept (lowercase)
+        // "A -> b" is skipped (uppercase), but "a -> c" is kept (lowercase)
         assertEquals(1, rules.size());
         assertEquals("c", rules.get("a"));
     }
@@ -265,7 +265,7 @@ public class CldrTransformsStoreTest {
         // The OVERRIDES table has entries for "greek", "cyrillic", etc.
         String content = "β→beta\n";
         Map<String, String> rules = callParseRules(content, "greek");
-        // β is overridden to "v" for greek
+        // Greek beta is overridden to "v"
         assertEquals("v", rules.get("β"));
     }
 

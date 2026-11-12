@@ -136,115 +136,66 @@ public final class UnisonProvider implements LyricsProvider {
     }
 
     @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws IOException {
         final String videoId = VideoInformation.getVideoId();
-        if (videoId.isEmpty()) {
+        final JSONObject root = videoId.isEmpty() ? null
+                : request(BASE_URL + "/variants/" + LyricsRequests.encode(videoId));
+        final JSONArray data = root == null ? null : root.optJSONArray("data");
+        if (data == null) {
             return Collections.emptyList();
         }
-        HttpURLConnection connection = null;
-        try {
-            final String url = BASE_URL + "/variants/" + LyricsRequests.encode(videoId);
-            connection = LyricsRequests.openConnection(url);
-            connection.setRequestProperty("X-Key-ID", getKeyId());
-            final int code = connection.getResponseCode();
-            if (code == 404) {
-                connection.disconnect();
-                return Collections.emptyList();
+        List<LyricsRequests.VotedLyrics> found = new ArrayList<>();
+        for (int i = 0; i < data.length(); i++) {
+            JSONObject variant = data.optJSONObject(i);
+            if (variant == null || variant.optBoolean("hidden", false)) {
+                continue;
             }
-            if (code != 200) {
-                LyricsRequests.logFailure(name(), connection);
-                return Collections.emptyList();
-            }
-            JSONObject root = Requester.parseJSONObject(connection);
-            JSONArray data = root.optJSONArray("data");
-            if (data == null || data.length() == 0) {
-                return Collections.emptyList();
-            }
-            List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
-            for (int i = 0; i < data.length(); i++) {
-                JSONObject variant = data.optJSONObject(i);
-                if (variant == null || variant.optBoolean("hidden", false)) {
-                    continue;
-                }
-                final String format = LyricsRequests.optString(variant, "format");
-                final String lyricsText = LyricsRequests.optString(variant, "lyrics");
-                if (format == null || lyricsText == null) {
-                    continue;
-                }
-                final JSONObject submitter = variant.optJSONObject("submitter");
-                final String submitterName = submitter != null
-                        ? LyricsRequests.optString(submitter, "displayName")
-                        : null;
-                Lyrics lyrics = parseLyrics(format, lyricsText, videoId, submitterName);
-                if (lyrics == null || lyrics.isEmpty()) {
-                    continue;
-                }
-                final int votes = variant.optInt("voteCount", 0);
-                int score = LyricsRequests.VIDEO_ID_TRUST
-                        + LyricsRequests.syncRank(lyrics) * 10
-                        + Math.min(votes, 9);
-                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
-            }
-            Lyrics.sortScoredByScore(scored);
-            return scored.size() > LyricsRequests.MAX_CANDIDATES
-                    ? new ArrayList<>(scored.subList(0, LyricsRequests.MAX_CANDIDATES))
-                    : scored;
-        } catch (IOException | JSONException ex) {
-            Logger.printDebug(() -> "Could not fetch Unison variants", ex);
-            return Collections.emptyList();
-        } finally {
-            if (connection != null) {
-                connection.disconnect();
+            Lyrics lyrics = parseVariant(variant, videoId);
+            if (lyrics != null && !lyrics.isEmpty()) {
+                found.add(new LyricsRequests.VotedLyrics(variant.optInt("voteCount", 0), lyrics));
             }
         }
+        return LyricsRequests.videoIdCandidates(found);
     }
 
     @Nullable
     private Lyrics fetchByVideoId(String videoId, String title, String artist,
-                                  int duration, String album) {
+                                  int duration, String album) throws IOException {
+        final StringBuilder url = new StringBuilder(BASE_URL)
+                .append("?v=").append(LyricsRequests.encode(videoId));
+        if (!title.isEmpty()) {
+            url.append("&song=").append(LyricsRequests.encode(title));
+        }
+        if (!artist.isEmpty()) {
+            url.append("&artist=").append(LyricsRequests.encode(artist));
+        }
+        if (duration > 0) {
+            url.append("&duration=").append(duration);
+        }
+        if (album != null && !album.isEmpty()) {
+            url.append("&album=").append(LyricsRequests.encode(album));
+        }
+        final JSONObject root = request(url.toString());
+        final JSONObject data = root == null ? null : root.optJSONObject("data");
+        return data == null ? null : parseVariant(data, videoId);
+    }
+
+    /** The response of the API, or null when it has nothing for the video. */
+    @Nullable
+    private JSONObject request(String url) {
         HttpURLConnection connection = null;
         try {
-            final StringBuilder url = new StringBuilder(BASE_URL)
-                    .append("?v=").append(LyricsRequests.encode(videoId));
-            if (!title.isEmpty()) {
-                url.append("&song=").append(LyricsRequests.encode(title));
-            }
-            if (!artist.isEmpty()) {
-                url.append("&artist=").append(LyricsRequests.encode(artist));
-            }
-            if (duration > 0) {
-                url.append("&duration=").append(duration);
-            }
-            if (album != null && !album.isEmpty()) {
-                url.append("&album=").append(LyricsRequests.encode(album));
-            }
-
-            connection = LyricsRequests.openConnection(url.toString());
+            connection = LyricsRequests.openConnection(url);
             connection.setRequestProperty("X-Key-ID", getKeyId());
             final int code = connection.getResponseCode();
             if (code == 404) {
-                connection.disconnect();
                 return null;
             }
             if (code != 200) {
                 LyricsRequests.logFailure(name(), connection);
                 return null;
             }
-            JSONObject root = Requester.parseJSONObject(connection);
-            JSONObject data = root.optJSONObject("data");
-            if (data == null) {
-                return null;
-            }
-            final String format = LyricsRequests.optString(data, "format");
-            final String lyrics = LyricsRequests.optString(data, "lyrics");
-            if (format == null || lyrics == null) {
-                return null;
-            }
-            final JSONObject submitter = data.optJSONObject("submitter");
-            final String submitterName = submitter != null
-                    ? LyricsRequests.optString(submitter, "displayName")
-                    : null;
-            return parseLyrics(format, lyrics, videoId, submitterName);
+            return Requester.parseJSONObject(connection);
         } catch (IOException | JSONException ex) {
             Logger.printDebug(() -> "Could not fetch Unison lyrics", ex);
             return null;
@@ -253,6 +204,21 @@ public final class UnisonProvider implements LyricsProvider {
                 connection.disconnect();
             }
         }
+    }
+
+    /** One submitted lyric, in the format it was submitted in. */
+    @Nullable
+    private Lyrics parseVariant(JSONObject variant, String videoId) {
+        final String format = LyricsRequests.optString(variant, "format");
+        final String lyrics = LyricsRequests.optString(variant, "lyrics");
+        if (format == null || lyrics == null) {
+            return null;
+        }
+        final JSONObject submitter = variant.optJSONObject("submitter");
+        final String submitterName = submitter != null
+                ? LyricsRequests.optString(submitter, "displayName")
+                : null;
+        return parseLyrics(format, lyrics, videoId, submitterName);
     }
 
     @Nullable

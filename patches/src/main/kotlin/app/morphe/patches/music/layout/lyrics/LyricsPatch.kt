@@ -224,11 +224,12 @@ val lyricsPatch = patch(
                         tag = "app.morphe.extension.music.settings.preference.LyricsEncapsulationPreference"
                     ),
                     NonInteractivePreference(
-                        key = "morphe_music_lyrics_mini_line_limits",
+                        // Keyed by one of the limits it edits, so it is available when they are.
+                        key = "morphe_music_lyrics_mini_char_limit",
+                        titleKey = "morphe_music_lyrics_mini_line_limits_title",
                         summaryKey = "morphe_music_lyrics_mini_line_limits_summary",
                         tag = "app.morphe.extension.music.settings.preference.LyricsLineLimitsPreference",
-                        selectable = true,
-                        dependency = "morphe_music_lyrics_enabled"
+                        selectable = true
                     ),
                     TextPreference(
                         key = "morphe_music_lyrics_mini_instrumental",

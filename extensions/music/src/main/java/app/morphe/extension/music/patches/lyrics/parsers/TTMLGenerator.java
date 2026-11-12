@@ -106,18 +106,11 @@ public final class TTMLGenerator {
                 translatedLang, romanizedLang, 0, null);
     }
 
-    @Nullable
-    public static String generate(@Nullable Lyrics lyrics, @Nullable TrackInfo track,
-                                  @Nullable CreditInfo creditInfo,
-                                  @Nullable List<String> translatedLines,
-                                  @Nullable List<LyricsLine> romanizedLines,
-                                  @Nullable String translatedLang,
-                                  @Nullable String romanizedLang,
-                                  int lyricOffsetMs) {
-        return generate(lyrics, track, creditInfo, translatedLines, romanizedLines,
-                translatedLang, romanizedLang, lyricOffsetMs, null);
-    }
-
+    /**
+     * @param lyricOffsetMs How much later than its timestamps the lyrics are shown.
+     * @param segs          The segments the video has beyond the released audio, so the file
+     *                      follows the video timeline.
+     */
     @Nullable
     public static String generate(@Nullable Lyrics lyrics, @Nullable TrackInfo track,
                                   @Nullable CreditInfo creditInfo,
@@ -586,15 +579,14 @@ public final class TTMLGenerator {
         }
     }
 
+    /** The timing attributes of an element. Unsynced lyrics have none to give. */
     private String timing(long beginMs, long endMs) {
         if (!lyrics.synced()) return "";
-        long begin = beginMs + lyricOffsetMs;
-        long end = endMs + lyricOffsetMs;
-        if (segs != null && !segs.isEmpty()) {
-            begin = SkipSegments.remapTimestamp(begin, segs);
-            end = SkipSegments.remapTimestamp(end, segs);
-        }
-        return " begin=\"" + formatTime(begin) + "\" end=\"" + formatTime(end) + '"';
+        return " begin=\"" + formatTime(videoTime(beginMs)) + "\" end=\"" + formatTime(videoTime(endMs)) + '"';
+    }
+
+    private long videoTime(long lyricMs) {
+        return SkipSegments.remapTimestamp(lyricMs + lyricOffsetMs, segs);
     }
 
     private static String formatTime(long ms) {

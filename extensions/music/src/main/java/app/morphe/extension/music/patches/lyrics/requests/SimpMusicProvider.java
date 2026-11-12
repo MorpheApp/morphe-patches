@@ -139,69 +139,35 @@ public final class SimpMusicProvider implements LyricsProvider {
     }
 
     @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) {
         final String videoId = VideoInformation.getVideoId();
-        if (videoId.isEmpty()) {
+        final JSONArray data = videoId.isEmpty() ? null : fetchEntries(videoId);
+        if (data == null) {
             return Collections.emptyList();
         }
-        HttpURLConnection connection = null;
-        try {
-            final String url = BASE_URL + LyricsRequests.encode(videoId);
-            connection = LyricsRequests.openConnection(url);
-            connection.setRequestProperty("User-Agent", CLIENT_USER_AGENT);
-            connection.setRequestProperty("Accept", "application/json");
-
-            final int code = connection.getResponseCode();
-            if (code == 404) {
-                connection.disconnect();
-                return Collections.emptyList();
+        List<LyricsRequests.VotedLyrics> found = new ArrayList<>();
+        for (int i = 0; i < data.length(); i++) {
+            JSONObject entry = data.optJSONObject(i);
+            if (entry == null) {
+                continue;
             }
-            if (code != 200) {
-                LyricsRequests.logFailure(name(), connection);
-                return Collections.emptyList();
-            }
-
-            JSONObject root = Requester.parseJSONObject(connection);
-            if (!root.optBoolean("success", false)) {
-                return Collections.emptyList();
-            }
-            final JSONArray data = root.optJSONArray("data");
-            if (data == null || data.length() == 0) {
-                return Collections.emptyList();
-            }
-
-            List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
-            for (int i = 0; i < data.length(); i++) {
-                JSONObject entry = data.optJSONObject(i);
-                if (entry == null) {
-                    continue;
-                }
-                Lyrics lyrics = parseEntry(entry, videoId);
-                if (lyrics == null || lyrics.isEmpty()) {
-                    continue;
-                }
-                final int vote = entry.optInt("vote", 0);
-                int score = LyricsRequests.VIDEO_ID_TRUST
-                        + LyricsRequests.syncRank(lyrics) * 10
-                        + Math.min(vote, 9);
-                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
-            }
-            Lyrics.sortScoredByScore(scored);
-            return scored.size() > LyricsRequests.MAX_CANDIDATES
-                    ? new ArrayList<>(scored.subList(0, LyricsRequests.MAX_CANDIDATES))
-                    : scored;
-        } catch (IOException | JSONException ex) {
-            Logger.printDebug(() -> "Could not fetch SimpMusic candidates", ex);
-            return Collections.emptyList();
-        } finally {
-            if (connection != null) {
-                connection.disconnect();
+            Lyrics lyrics = parseEntry(entry, videoId);
+            if (lyrics != null && !lyrics.isEmpty()) {
+                found.add(new LyricsRequests.VotedLyrics(entry.optInt("vote", 0), lyrics));
             }
         }
+        return LyricsRequests.videoIdCandidates(found);
     }
 
     @Nullable
     private Lyrics fetchByVideoId(String videoId) {
+        final JSONArray data = fetchEntries(videoId);
+        return data == null ? null : pickBestEntry(data, videoId);
+    }
+
+    /** Every lyric the API has for the video, or null when it has none. */
+    @Nullable
+    private JSONArray fetchEntries(String videoId) {
         HttpURLConnection connection = null;
         try {
             final String url = BASE_URL + LyricsRequests.encode(videoId);
@@ -223,10 +189,7 @@ public final class SimpMusicProvider implements LyricsProvider {
                 return null;
             }
             final JSONArray data = root.optJSONArray("data");
-            if (data == null || data.length() == 0) {
-                return null;
-            }
-            return pickBestEntry(data, videoId);
+            return data == null || data.length() == 0 ? null : data;
         } catch (IOException | JSONException ex) {
             Logger.printDebug(() -> "Could not query SimpMusic API", ex);
             return null;

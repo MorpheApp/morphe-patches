@@ -303,30 +303,31 @@ public class ScriptDetectorTest {
     }
 
     @Test
-    public void isCjkCodePointThai() {
-        assertTrue(ScriptDetector.isCjkCodePoint('ก'));
-        assertTrue(ScriptDetector.isCjkCodePoint('ั'));
-        assertTrue(ScriptDetector.isCjkCodePoint('ำ'));
+    public void isUnspacedCodePointThai() {
+        assertFalse(ScriptDetector.isCjkCodePoint('ก'));
+        assertTrue(ScriptDetector.isUnspacedCodePoint('ก'));
+        assertTrue(ScriptDetector.isUnspacedCodePoint('ั'));
+        assertTrue(ScriptDetector.isUnspacedCodePoint('ำ'));
     }
 
     @Test
-    public void isCjkCodePointLao() {
-        assertTrue(ScriptDetector.isCjkCodePoint('ງ'));
+    public void isUnspacedCodePointLao() {
+        assertTrue(ScriptDetector.isUnspacedCodePoint('ງ'));
     }
 
     @Test
-    public void isCjkCodePointMyanmar() {
-        assertTrue(ScriptDetector.isCjkCodePoint('က'));
+    public void isUnspacedCodePointMyanmar() {
+        assertTrue(ScriptDetector.isUnspacedCodePoint('က'));
     }
 
     @Test
-    public void isCjkCodePointKhmer() {
-        assertTrue(ScriptDetector.isCjkCodePoint('ក'));
+    public void isUnspacedCodePointKhmer() {
+        assertTrue(ScriptDetector.isUnspacedCodePoint('ក'));
     }
 
     @Test
-    public void isCjkCodePointTibetan() {
-        assertTrue(ScriptDetector.isCjkCodePoint('ག'));
+    public void isUnspacedCodePointTibetan() {
+        assertTrue(ScriptDetector.isUnspacedCodePoint('ག'));
     }
 
     @Test

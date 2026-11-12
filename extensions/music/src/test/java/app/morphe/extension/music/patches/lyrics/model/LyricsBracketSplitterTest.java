@@ -104,7 +104,7 @@ public class LyricsBracketSplitterTest {
 
     @Test
     public void bracketAtStartWithoutSpaceSplitsWhenCjkFollows() {
-        // "(oh)你好" — no space, but CJK follows, so it is a background run.
+        // No space, but CJK follows, so it is a background run.
         Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "(oh)你好"));
         Lyrics result = LyricsBracketSplitter.apply(lyrics);
         assertEquals(2, result.lines().size());
@@ -116,7 +116,7 @@ public class LyricsBracketSplitterTest {
 
     @Test
     public void bracketAtEndWithoutSpaceSplitsWhenCjkPrecedes() {
-        // "你好(oh)" — no space, but CJK precedes, so it is a background run.
+        // No space, but CJK precedes, so it is a background run.
         Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "你好(oh)"));
         Lyrics result = LyricsBracketSplitter.apply(lyrics);
         assertEquals(2, result.lines().size());
@@ -128,7 +128,7 @@ public class LyricsBracketSplitterTest {
 
     @Test
     public void bracketsAtBothEndsWithoutSpaceSplitWhenCjkBetween() {
-        // "(oh)你好(ah)" — no spaces, but CJK between, so both are background runs.
+        // No spaces, but CJK between, so both are background runs.
         Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "(oh)你好(ah)"));
         Lyrics result = LyricsBracketSplitter.apply(lyrics);
         assertEquals(2, result.lines().size());
@@ -140,7 +140,7 @@ public class LyricsBracketSplitterTest {
 
     @Test
     public void cjkBracketContentWithoutSpaceSplits() {
-        // "(哦)你好" — bracket content is CJK, no space after, but CJK follows.
+        // Bracket content is CJK, no space after, but CJK follows.
         Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "(哦)你好"));
         Lyrics result = LyricsBracketSplitter.apply(lyrics);
         assertEquals(2, result.lines().size());
@@ -152,7 +152,7 @@ public class LyricsBracketSplitterTest {
 
     @Test
     public void hangulBracketWithoutSpaceSplits() {
-        // "(오)안녕" — Hangul follows the bracket, so it is a background run.
+        // Hangul follows the bracket, so it is a background run.
         Lyrics lyrics = LyricsFixtures.synced(new LyricsLine(0, "(오)안녕"));
         Lyrics result = LyricsBracketSplitter.apply(lyrics);
         assertEquals(2, result.lines().size());
