@@ -22,6 +22,7 @@ import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
+import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -229,13 +230,19 @@ public class SpoofVideoStreamsPatch {
     private record OfflineCheck(WeakReference<Object> playerProto, boolean offline) {}
 
     /**
-     * Last checked player response and its result. The app can create the player response model
-     * twice from the same player response. Checking serializes the player response, which caches
-     * its size, and patch_setStreamingData then sets the player config of that same response.
-     * Serializing it again fails because the cached size no longer matches.
+     * Number of recently checked player responses to remember.
+     * Inline feed playback can check several responses before checking the first one again.
      */
-    @Nullable
-    private static volatile OfflineCheck lastOfflineCheck;
+    private static final int OFFLINE_CHECKS_TO_REMEMBER = 16;
+
+    /**
+     * Recently checked player responses and their results, newest first. The app can create the
+     * player response model again from a response that was already checked. Checking serializes
+     * the player response, which caches its size, and patch_setStreamingData then sets the player
+     * config of that same response. Serializing it again fails because the cached size no longer
+     * matches. Every response patch_setStreamingData changes was checked first, so it is in here.
+     */
+    private static final ArrayDeque<OfflineCheck> offlineChecks = new ArrayDeque<>(OFFLINE_CHECKS_TO_REMEMBER);
 
     /**
      * @return If the player response is of a video that is saved and can be played,
@@ -247,9 +254,12 @@ public class SpoofVideoStreamsPatch {
                 return false;
             }
 
-            OfflineCheck lastCheck = lastOfflineCheck;
-            if (lastCheck != null && lastCheck.playerProto().get() == playerProto) {
-                return lastCheck.offline();
+            synchronized (offlineChecks) {
+                for (OfflineCheck check : offlineChecks) {
+                    if (check.playerProto().get() == playerProto) {
+                        return check.offline();
+                    }
+                }
             }
 
             SavedPlayerResponse response = SavedPlayerResponse.parseFrom(message.toByteArray());
@@ -259,7 +269,13 @@ public class SpoofVideoStreamsPatch {
                 Logger.printDebug(() -> "Offline state action is not OK: "
                         + response.getOfflineState().getActionValue() + " for: " + videoId);
             }
-            lastOfflineCheck = new OfflineCheck(new WeakReference<>(playerProto), offline);
+            synchronized (offlineChecks) {
+                offlineChecks.removeIf(check -> check.playerProto().get() == null);
+                if (offlineChecks.size() >= OFFLINE_CHECKS_TO_REMEMBER) {
+                    offlineChecks.removeLast();
+                }
+                offlineChecks.addFirst(new OfflineCheck(new WeakReference<>(playerProto), offline));
+            }
             return offline;
         } catch (Exception ex) {
             Logger.printException(() -> "isOfflinePlayerResponse failure", ex);
