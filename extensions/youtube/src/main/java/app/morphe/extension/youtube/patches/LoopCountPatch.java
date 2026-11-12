@@ -196,10 +196,10 @@ public class LoopCountPatch {
     }
 
     /**
-     * @return If the app loops the current video.
+     * @return If the app or the loop video button loops the current video.
      */
     public static boolean isLoopVideoEnabled() {
-        return repeatMode == REPEAT_MODE_VIDEO;
+        return repeatMode == REPEAT_MODE_VIDEO || Settings.LOOP_VIDEO.get();
     }
 
     /**
@@ -369,6 +369,14 @@ public class LoopCountPatch {
      */
     public static boolean isLoopCountReached() {
         return loopCountReached;
+    }
+
+    /**
+     * The loop video button seeks to the start without a new player status,
+     * so the next end of the video is counted too.
+     */
+    public static synchronized void onVideoLooped() {
+        videoEnded = false;
     }
 
     private static Map<String, Integer> getSavedLoopCounts() {

@@ -113,6 +113,7 @@ public class LoopVideoPatch {
                     return false;
                 }
 
+                LoopCountPatch.onVideoLooped();
                 return VideoInformation.seekTo(isRangeActive()
                         // Fallback: if the video truly ended while range is active (videoTimeChanged was too slow),
                         // seek to range start so the end screen is dismissed.
