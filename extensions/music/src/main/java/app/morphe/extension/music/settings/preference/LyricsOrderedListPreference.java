@@ -9,11 +9,13 @@ package app.morphe.extension.music.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Pair;
@@ -27,6 +29,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -35,6 +38,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import androidx.annotation.Nullable;
 
@@ -207,7 +211,7 @@ public final class LyricsOrderedListPreference extends Preference {
     /** The star marks a row that needs a token before it can be on, as in the source list. */
     private static boolean isQuickLrcKeyMissing() {
         final String key = Settings.LYRICS_TRANSCRIBE_KEY.get();
-        return key == null || key.trim().isEmpty();
+        return key.trim().isEmpty();
     }
 
     /** Providers whose settings are entered in a dialog when their name is tapped. */
@@ -232,7 +236,7 @@ public final class LyricsOrderedListPreference extends Preference {
     }
 
     private void showConfigDialog(String id) {
-        if (!(getContext() instanceof android.app.Activity activity)
+        if (!(getContext() instanceof Activity activity)
                 || activity.isFinishing() || activity.isDestroyed()) {
             return;
         }
@@ -298,7 +302,7 @@ public final class LyricsOrderedListPreference extends Preference {
         }
 
         final Context context = getContext();
-        if (!(context instanceof android.app.Activity activity)
+        if (!(context instanceof Activity activity)
                 || activity.isFinishing() || activity.isDestroyed()) {
             onRefused.run();
             return;
@@ -318,7 +322,7 @@ public final class LyricsOrderedListPreference extends Preference {
     /** The name opens the same chooser the switch asks with, without turning the row on. */
     private void showLocalSettings() {
         final Context context = getContext();
-        if (!(context instanceof android.app.Activity activity)
+        if (!(context instanceof Activity activity)
                 || activity.isFinishing() || activity.isDestroyed()) {
             return;
         }
@@ -332,7 +336,7 @@ public final class LyricsOrderedListPreference extends Preference {
      */
     private void showRimeSettings() {
         final Context context = getContext();
-        if (!(context instanceof android.app.Activity activity)
+        if (!(context instanceof Activity activity)
                 || activity.isFinishing() || activity.isDestroyed()) {
             return;
         }
@@ -384,7 +388,7 @@ public final class LyricsOrderedListPreference extends Preference {
     private void enableRime(Switch switchV, TextView name, Runnable onEnabled, Runnable onRefused) {
         if (!RimeDictStore.isActive()) {
             final Context context = getContext();
-            if (!(context instanceof android.app.Activity activity)
+            if (!(context instanceof Activity activity)
                     || activity.isFinishing() || activity.isDestroyed()) {
                 onRefused.run();
                 return;
@@ -394,7 +398,7 @@ public final class LyricsOrderedListPreference extends Preference {
                 if (turnedOn[0] || !RimeDictStore.isActive()) {
                     return;
                 }
-                // The dialog's Save already fetches every ticked table, this language's
+                // The dialog's "Save" already fetches every ticked table, this language's
                 // included, so the row is turned on beside that fetch rather than by another.
                 turnedOn[0] = true;
                 enableRow(switchV, name);
@@ -495,7 +499,7 @@ public final class LyricsOrderedListPreference extends Preference {
 
         final Dialog dialog = pair.first;
         final LinearLayout mainLayout = pair.second;
-        final android.widget.ScrollView scrollView = new android.widget.ScrollView(context);
+        final ScrollView scrollView = new ScrollView(context);
         scrollView.addView(content, new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         LinearLayout.LayoutParams scrollParams = new LinearLayout.LayoutParams(
@@ -506,7 +510,7 @@ public final class LyricsOrderedListPreference extends Preference {
         // Save writes the choice and closes; the download runs in the background and answers with
         // a toast. Cancel closes without changing anything, and the dismiss listener puts the row
         // back if the dialog went away without an agreed choice.
-        final Button ok = ThemedInput.findButton(mainLayout, str("morphe_settings_save"));
+        final Button ok = Objects.requireNonNull(ThemedInput.findButton(mainLayout, str("morphe_settings_save")));
         ok.setOnClickListener(v -> {
             // Saving with nothing ticked is a choice of its own: the rules alone.
             LyricsLocalRomanizationDownloads.saveChoice(
@@ -524,7 +528,7 @@ public final class LyricsOrderedListPreference extends Preference {
             }
             dialog.dismiss();
             LyricsLocalRomanizationDownloads.resetForUserDownload();
-            enableRow(switchV, name);
+            enableRow(switchV, Objects.requireNonNull(name));
             // Started before the row is saved, so the "dictionaries are missing" repair that
             // save runs does not turn the row back off while its download is running.
             LyricsLocalRomanizationDownloads.ensure();
@@ -609,7 +613,7 @@ public final class LyricsOrderedListPreference extends Preference {
     }
 
     @Override
-    protected void onAttachedToHierarchy(android.preference.PreferenceManager preferenceManager) {
+    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
         super.onAttachedToHierarchy(preferenceManager);
         // Keep the summary correct before the first draw.
         try {
@@ -724,12 +728,8 @@ public final class LyricsOrderedListPreference extends Preference {
         if (kind() == Kind.TRANSLATION && ProcessingProviders.DEEPL.equals(id)) {
             return Settings.LYRICS_DEEPL_API_KEY.get().isBlank();
         }
-        return switch (id) {
-            case ProcessingProviders.OPENAI_COMPATIBLE ->
-                    Settings.LYRICS_AI_BASE_URL.get().isBlank()
-                            || Settings.LYRICS_AI_MODEL.get().isBlank();
-            default -> false;
-        };
+        return ProcessingProviders.OPENAI_COMPATIBLE.equals(id)
+                && (Settings.LYRICS_AI_BASE_URL.get().isBlank() || Settings.LYRICS_AI_MODEL.get().isBlank());
     }
 
     private static boolean isTokenRequired(String id) {
@@ -806,7 +806,7 @@ public final class LyricsOrderedListPreference extends Preference {
         if (!locked) {
             name.setClickable(true);
             name.setOnClickListener(v -> LyricsTranscribeKeyPreference.showKeyDialog(
-                    context, () -> rebuildRows()));
+                    context, this::rebuildRows));
         }
 
         Switch switchV = new Switch(context);
@@ -1062,7 +1062,7 @@ public final class LyricsOrderedListPreference extends Preference {
     private void loadItems() {
         items.clear();
         String stored = providerSetting().get();
-        if (isLyricsSource() && (stored == null || !stored.contains(","))) {
+        if (isLyricsSource() && !stored.contains(",")) {
             // Match LyricsProviders, which treats a legacy single source as the default order.
             stored = Settings.DEFAULT_LYRICS_ORDER;
         }

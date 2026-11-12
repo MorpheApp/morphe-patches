@@ -17,7 +17,6 @@ import app.morphe.util.setExtensionIsPatchIncluded
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/OpenLinksExternallyPatch;"
 
-@Suppress("unused")
 val openLinksExternallyPatch = patch(
     name = "Open links externally",
     description = "Adds an option to always open links in your browser instead of with the in-app-browser."

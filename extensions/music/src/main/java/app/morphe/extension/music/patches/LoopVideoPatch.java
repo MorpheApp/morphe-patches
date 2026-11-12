@@ -76,6 +76,7 @@ public class LoopVideoPatch {
         return paint;
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isRangeActive() {
         return rangeStartMs >= 0 && rangeEndMs > rangeStartMs;
     }
@@ -91,6 +92,7 @@ public class LoopVideoPatch {
         return Math.max(rangeStartMs, Math.min(rangeEndMs, timeMs));
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean hasSeekbarBounds() {
         return seekbarBounds.right > seekbarBounds.left;
     }

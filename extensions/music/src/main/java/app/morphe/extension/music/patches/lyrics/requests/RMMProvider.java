@@ -226,7 +226,7 @@ public final class RMMProvider implements LyricsProvider {
     }
 
     @Nullable
-    private static Lyrics buildLyrics(JSONObject root, long trackId) {
+    private static Lyrics buildLyrics(JSONObject root) {
         if (!root.optBoolean("hasLyrics", false)) {
             return null;
         }
@@ -301,7 +301,7 @@ public final class RMMProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) {
         List<JSONObject> candidates = searchItunesCandidates(track);
         if (candidates.isEmpty()) {
             return null;
@@ -315,7 +315,7 @@ public final class RMMProvider implements LyricsProvider {
         if (root == null) {
             return null;
         }
-        Lyrics lyrics = buildLyrics(root, trackId);
+        Lyrics lyrics = buildLyrics(root);
         if (lyrics == null) {
             return null;
         }
@@ -327,7 +327,7 @@ public final class RMMProvider implements LyricsProvider {
     }
 
     @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) {
         List<JSONObject> candidates = searchItunesCandidates(track);
         List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
         for (JSONObject item : candidates) {
@@ -343,7 +343,7 @@ public final class RMMProvider implements LyricsProvider {
                 if (root == null) {
                     continue;
                 }
-                Lyrics lyrics = buildLyrics(root, trackId);
+                Lyrics lyrics = buildLyrics(root);
                 if (lyrics == null) {
                     continue;
                 }

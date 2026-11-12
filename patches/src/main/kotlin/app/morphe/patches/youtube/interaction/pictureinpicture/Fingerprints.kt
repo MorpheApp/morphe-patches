@@ -16,7 +16,7 @@ import app.morphe.patcher.methodCall
 internal object SetPipActionsFingerprint : Fingerprint(
     filters = listOf(
         methodCall(
-            smali = "Landroid/app/PictureInPictureParams\$Builder;->setActions(Ljava/util/List;)Landroid/app/PictureInPictureParams\$Builder;"
+            smali = $$"Landroid/app/PictureInPictureParams$Builder;->setActions(Ljava/util/List;)Landroid/app/PictureInPictureParams$Builder;"
         )
     )
 )

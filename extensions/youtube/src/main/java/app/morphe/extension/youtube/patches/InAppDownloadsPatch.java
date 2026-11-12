@@ -349,6 +349,7 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
      * @return The interaction logger of the app that logs nothing.
      */
     @Nullable
+    @SuppressWarnings("SameReturnValue")
     private static Object getNoOpInteractionLogger() {
         return null; // Modified during patching.
     }

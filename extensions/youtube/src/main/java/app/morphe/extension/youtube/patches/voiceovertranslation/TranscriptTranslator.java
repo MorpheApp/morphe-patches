@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -686,7 +687,7 @@ public final class TranscriptTranslator {
     }
 
     private static String readErrorBody(HttpURLConnection conn) {
-        try (java.io.InputStream es = conn.getErrorStream()) {
+        try (InputStream es = conn.getErrorStream()) {
             if (es == null) return "";
             StringBuilder sb = new StringBuilder();
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(es, StandardCharsets.UTF_8))) {

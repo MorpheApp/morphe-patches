@@ -120,7 +120,6 @@ private const val GET_GENERATED_REGISTRY =
 private fun protoDefaultInstance(messageType: String) =
     protoDefaultInstanceFingerprint(messageType).instructionMatches.first().fieldReference
 
-@Suppress("unused")
 val downloadsPatch = patch(
     name = "Downloads",
     description = "Adds support to download videos with an external downloader app " +

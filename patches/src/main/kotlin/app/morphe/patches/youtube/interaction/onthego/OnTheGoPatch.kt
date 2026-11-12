@@ -44,7 +44,6 @@ private const val EXTENSION_STATE_INTERFACE =
 private const val EXTENSION_SEEK_LENGTH_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/onthego/OnTheGoPatch$SeekLength;"
 
-@Suppress("unused")
 val onTheGoPatch = patch(
     name = "On-the-go player",
     description = "Adds an option to open a panel with large playback controls " +

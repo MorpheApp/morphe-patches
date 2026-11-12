@@ -27,8 +27,7 @@ final class CaptionViewportPolicy {
     }
 
     synchronized void record(String videoId, int width, int height) {
-        if (videoId == null
-                || !VideoInformation.isVideoId(videoId)
+        if (!VideoInformation.isVideoId(videoId)
                 || width <= 0
                 || height <= 0
                 || width > 16384

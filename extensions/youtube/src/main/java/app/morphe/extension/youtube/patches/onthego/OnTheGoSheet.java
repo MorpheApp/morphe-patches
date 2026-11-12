@@ -83,6 +83,7 @@ import app.morphe.extension.youtube.shared.VideoState;
  * The buttons of the player are used for the previous, play/pause and next actions,
  * so they work the same as in the player, such as in playlists and with the queue.
  */
+@SuppressWarnings("unused")
 final class OnTheGoSheet {
 
     @Nullable
@@ -228,6 +229,7 @@ final class OnTheGoSheet {
     }
 
     @SuppressLint("ClickableViewAccessibility")
+    @SuppressWarnings("WrongThread")
     private void create() {
         Context context = activity;
         if (!(activity.findViewById(android.R.id.content) instanceof FrameLayout root)) {

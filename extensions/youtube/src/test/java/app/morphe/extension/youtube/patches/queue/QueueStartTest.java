@@ -44,7 +44,7 @@ public class QueueStartTest {
         assertTrue(start.isSupersededBy("ZYXWVUTSRQP"));
     }
 
-    @Test public void closedPlayerStartPreservesSelectedDuplicateAndUsesSavedTime() throws Exception {
+    @Test public void closedPlayerStartPreservesSelectedDuplicateAndUsesSavedTime() {
         var queue = start.candidate().playLast("ZYXWVUTSRQP").playLast("abcdefghijk")
                 .select(2).withRepeatMode(PlaylistQueue.REPEAT_ONE);
         var restore = new QueueStart(queue, "", 75_432);

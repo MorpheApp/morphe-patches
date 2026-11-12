@@ -206,6 +206,7 @@ public final class FeedViewCountPatch {
     private FeedViewCountPatch() {
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

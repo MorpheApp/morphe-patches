@@ -15,6 +15,7 @@ public final class HideMediaViewerComponentsPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
@@ -23,6 +24,7 @@ public final class HideMediaViewerComponentsPatch {
      * @return If hiding the media viewer overlay was included during patching.
      *         It requires a newer app version than the rest of this patch.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isHideOverlayIncluded() {
         return false;  // Modified during patching.
     }

@@ -27,6 +27,7 @@ import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
 
+@SuppressWarnings("unused")
 public final class PlayerRoutes {
 
     private static final Route.CompiledRoute GET_PLAYER_STREAMING_DATA = new Route(

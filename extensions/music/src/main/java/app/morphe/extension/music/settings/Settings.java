@@ -33,6 +33,7 @@ import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.spoof.ClientType;
 
+@SuppressWarnings("unused")
 public class Settings extends SharedYouTubeSettings {
 
     // Jam queue sharing

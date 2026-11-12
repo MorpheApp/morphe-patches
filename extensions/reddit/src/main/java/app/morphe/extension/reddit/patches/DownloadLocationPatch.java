@@ -79,7 +79,7 @@ public final class DownloadLocationPatch {
 
         final StringSetting setting;
         /**
-         * Key in the per account JSON object.
+         * Key in the per-account JSON object.
          */
         final String accountKey;
 
@@ -164,6 +164,7 @@ public final class DownloadLocationPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
@@ -406,7 +407,7 @@ public final class DownloadLocationPatch {
     }
 
     /**
-     * Key in the per account JSON object, for if the account options are used.
+     * Key in the per-account JSON object, for if the account options are used.
      */
     private static final String ACCOUNT_ENABLED_KEY = "enabled";
 

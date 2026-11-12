@@ -67,6 +67,7 @@ fun setOrGetFallbackPackageName(fallbackPackageName: String): String {
 /**
  * Selectively changes usage of Context.getPackageName() to the original package name.
  */
+@Suppress("SameParameterValue")
 private fun applyGetPackageName(oldPackageName: String, classToChange: String) {
     val filter = methodCall(
         opcode = Opcode.INVOKE_VIRTUAL,
@@ -98,7 +99,6 @@ private fun applyGetPackageName(oldPackageName: String, classToChange: String) {
     }
 }
 
-@Suppress("unused")
 val cloneAppPatch = patch(
     name = "Clone app",
     description = "Changes the app package name to allow installing the same app multiple times. " +

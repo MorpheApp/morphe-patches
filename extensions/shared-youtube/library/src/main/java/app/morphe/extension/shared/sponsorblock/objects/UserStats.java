@@ -10,6 +10,7 @@ import app.morphe.extension.shared.sponsorblock.SponsorBlockHelpers;
 /**
  * SponsorBlock user stats
  */
+@SuppressWarnings("unused")
 public class UserStats {
     /**
      * How long to cache user stats objects.

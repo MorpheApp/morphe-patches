@@ -41,7 +41,7 @@ public class ChangePipActionsPatch {
     private static final String FAST_FORWARD_ACTION = "app.morphe.extension.youtube.PIP_FAST_FORWARD";
 
     /**
-     * Matches the 10 seconds shown by the rewind and fast forward icons.
+     * Matches the 10 seconds shown by the rewind and fast-forward icons.
      */
     private static final long SEEK_LENGTH_MILLISECONDS = 10_000;
 

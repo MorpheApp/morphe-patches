@@ -7,7 +7,6 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
-@file:Suppress("SpellCheckingInspection")
 
 package app.morphe.patches.youtube.video.information
 
@@ -315,7 +314,7 @@ internal object VideoQualityFingerprint : Fingerprint(
     parameters = listOf(
         "I", // Resolution.
         "L",
-        "Ljava/lang/String;", // Human readable resolution: "480p", "1080p Premium", etc
+        "Ljava/lang/String;", // Human-readable resolution: "480p", "1080p Premium", etc
         "Z",
         "L"
     )

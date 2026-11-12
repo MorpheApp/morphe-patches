@@ -193,7 +193,7 @@ public class LyricsTokenDialogPreference extends Preference {
         }
 
         final String storedToken = setting.get();
-        final boolean configured = storedToken != null && !storedToken.isBlank();
+        final boolean configured = !storedToken.isBlank();
 
         LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);

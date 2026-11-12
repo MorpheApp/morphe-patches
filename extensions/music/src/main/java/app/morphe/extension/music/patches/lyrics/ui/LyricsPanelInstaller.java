@@ -41,6 +41,7 @@ import app.morphe.extension.shared.settings.Setting;
  * <p>It is laid over the built-in content rather than replacing it, so that a track
  * without third party lyrics still shows the built-in ones.
  */
+@SuppressWarnings("unused")
 public final class LyricsPanelInstaller {
 
     /** Container the built-in panel content lives in. */
@@ -72,7 +73,7 @@ public final class LyricsPanelInstaller {
     private static WeakReference<LyricsPanelView> panelReference = new WeakReference<>(null);
     /** Panel the app currently has in the engagement panel container. */
     private static volatile WeakReference<Object> currentPanelReference = new WeakReference<>(null);
-    /** Identifier of the current panel, or null when it has none or it could not be read. */
+    /** Identifier of the current panel, or null when it has none, or it could not be read. */
     @Nullable
     private static volatile String currentPanelIdentifier;
     /** Panel the lyrics were last built into, kept to recognize it when it comes back. */
@@ -244,6 +245,7 @@ public final class LyricsPanelInstaller {
      * @return Identifier of the panel, or null when it has none or the patch did not find the helper.
      */
     @Nullable
+    @SuppressWarnings("SameReturnValue")
     private static String getPanelIdentifier(Object panel) {
         return null;
     }
@@ -259,7 +261,6 @@ public final class LyricsPanelInstaller {
      *
      * @param panel Panel put in the engagement panel container, or null when it was given up.
      */
-    @SuppressWarnings("unused")
     public static void onEngagementPanelChanged(@Nullable Object panel) {
         try {
             final String identifier = panel == null ? null : getPanelIdentifier(panel);
@@ -480,7 +481,6 @@ public final class LyricsPanelInstaller {
     /**
      * Injection point. Called for every tabbed view of the app.
      */
-    @SuppressWarnings("unused")
     public static void onTabSelected(ViewGroup tabbedView) {
         try {
             if (!Settings.LYRICS_ENABLED.get()

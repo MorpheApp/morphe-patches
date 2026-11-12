@@ -55,40 +55,26 @@ final class LyricsScrollEngine {
     private static final float MIN_FLIP_DISTANCE_PX = 0.5f;
     private static final int SHIFT_RING = 32;
 
-    private static final class FlipLayer {
-        final float offset;
-        final float startMs;
-        final float waitMs;
-        final float remainingMs;
-        final float skipMs;
-        final LyricsSpring spring;
-
-        FlipLayer(float offset, float startMs, float waitMs, float remainingMs, float skipMs, LyricsSpring spring) {
-            this.offset = offset;
-            this.startMs = startMs;
-            this.waitMs = waitMs;
-            this.remainingMs = remainingMs;
-            this.skipMs = skipMs;
-            this.spring = spring;
-        }
+    private record FlipLayer(float offset, float startMs, float waitMs, float remainingMs,
+                             float skipMs, LyricsSpring spring) {
 
         float progress(float nowMs) {
-            float elapsed = nowMs - startMs;
-            if (elapsed <= waitMs) return 0f;
-            float active = elapsed - waitMs;
-            if (active >= remainingMs) return 1f;
-            float f = active / Math.max(1f, remainingMs);
-            return spring.value(skipMs + f * remainingMs);
-        }
+                float elapsed = nowMs - startMs;
+                if (elapsed <= waitMs) return 0f;
+                float active = elapsed - waitMs;
+                if (active >= remainingMs) return 1f;
+                float f = active / Math.max(1f, remainingMs);
+                return spring.value(skipMs + f * remainingMs);
+            }
 
-        boolean isDone(float nowMs) {
-            return (nowMs - startMs) >= (waitMs + remainingMs);
-        }
+            boolean isDone(float nowMs) {
+                return (nowMs - startMs) >= (waitMs + remainingMs);
+            }
 
-        float translation(float nowMs) {
-            return offset * (1f - progress(nowMs));
+            float translation(float nowMs) {
+                return offset * (1f - progress(nowMs));
+            }
         }
-    }
 
     static final class LyricsItemFlip {
         float lastTop = Float.NaN;
@@ -124,10 +110,10 @@ final class LyricsScrollEngine {
             layers.clear();
         }
 
-        private void add(float nowMs, float offset, float delayMs, LyricsSpring spring, float elapsedMs) {
+        private void add(float nowMs, float offset, float delayMs, LyricsSpring spring) {
             if (Math.abs(offset) < MIN_FLIP_DISTANCE_PX) return;
-            float skip = Math.max(0f, elapsedMs - delayMs);
-            float wait = Math.max(0f, delayMs - elapsedMs);
+            float skip = Math.max(0f, (float) 0.0 - delayMs);
+            float wait = Math.max(0f, delayMs - (float) 0.0);
             if (skip >= spring.totalMs) return;
             float remaining = Math.max(1f, spring.totalMs - skip);
             layers.add(new FlipLayer(offset, nowMs, wait, remaining, skip, spring));
@@ -154,7 +140,7 @@ final class LyricsScrollEngine {
             }
             layers.clear();
             if (Math.abs(totalDelta) < MIN_FLIP_DISTANCE_PX) return;
-            add(nowMs, totalDelta, effectiveDelay, spring, 0f);
+            add(nowMs, totalDelta, effectiveDelay, spring);
         }
     }
 
@@ -197,20 +183,14 @@ final class LyricsScrollEngine {
     @Nullable
     private ValueAnimator forcedScrollAnimator = null;
 
-    private final Choreographer.FrameCallback frameCallback = new Choreographer.FrameCallback() {
-        @Override
-        public void doFrame(long frameTimeNanos) {
-            frameCallbackScheduled = false;
-            updateFlipTranslations();
-        }
+    private final Choreographer.FrameCallback frameCallback = frameTimeNanos -> {
+        frameCallbackScheduled = false;
+        updateFlipTranslations();
     };
 
-    private final ViewTreeObserver.OnPreDrawListener preDrawListener = new ViewTreeObserver.OnPreDrawListener() {
-        @Override
-        public boolean onPreDraw() {
-            handlePreDrawReflowAndSync();
-            return true;
-        }
+    private final ViewTreeObserver.OnPreDrawListener preDrawListener = () -> {
+        handlePreDrawReflowAndSync();
+        return true;
     };
 
     LyricsScrollEngine(ScrollView scrollView, LinearLayout linesContainer,
@@ -692,21 +672,21 @@ final class LyricsScrollEngine {
 
         List<View> validRows = collectValidRows();
         int totalRows = validRows.size();
-        int resolvedTargetRowIdx = resolveRowIndex(validRows, targetView, targetIndex);
-        if (resolvedTargetRowIdx >= 0) {
-            targetView = validRows.get(resolvedTargetRowIdx);
+        int targetRowIdx = resolveRowIndex(validRows, targetView, targetIndex);
+        if (targetRowIdx >= 0) {
+            targetView = validRows.get(targetRowIdx);
         }
         int resolvedEndRowIdx = (targetEndView != null || targetEndIndex != targetIndex)
                 ? resolveRowIndex(validRows, targetEndView, targetEndIndex)
-                : resolvedTargetRowIdx;
-        if (resolvedEndRowIdx < resolvedTargetRowIdx) {
-            resolvedEndRowIdx = resolvedTargetRowIdx;
+                : targetRowIdx;
+        if (resolvedEndRowIdx < targetRowIdx) {
+            resolvedEndRowIdx = targetRowIdx;
         }
 
         if (forceInstant) {
             suppress(0L);
             reset();
-            rememberTarget(resolvedTargetRowIdx, targetView);
+            rememberTarget(targetRowIdx, targetView);
             programmaticScrollTo(target);
             if (springScrollEnabled) {
                 syncPlacedPositions(false, validRows);
@@ -715,13 +695,13 @@ final class LyricsScrollEngine {
         }
 
         if (Math.abs(requestedDelta) <= 1.0f) {
-            rememberTarget(resolvedTargetRowIdx, targetView);
+            rememberTarget(targetRowIdx, targetView);
             return;
         }
 
         if (!springScrollEnabled) {
             reset();
-            rememberTarget(resolvedTargetRowIdx, targetView);
+            rememberTarget(targetRowIdx, targetView);
             final int duration = Math.min(PLAIN_SCROLL_MAX_MS,
                     Math.max(PLAIN_SCROLL_MIN_MS, (int) (Math.abs(requestedDelta) * 0.5f)));
             startScrollAnimator(currentScrollY, target, duration, false);
@@ -737,7 +717,7 @@ final class LyricsScrollEngine {
         if (Math.abs(requestedDelta) > scrollView.getHeight() * FAR_JUMP_VIEWPORTS) {
             suppress(FORCED_SCROLL_MS);
             reset();
-            rememberTarget(resolvedTargetRowIdx, targetView);
+            rememberTarget(targetRowIdx, targetView);
             startScrollAnimator(currentScrollY, target, FORCED_SCROLL_MS, true);
             return;
         }
@@ -755,7 +735,6 @@ final class LyricsScrollEngine {
             }
         }
 
-        int targetRowIdx = resolvedTargetRowIdx;
         int refRowIdx = (lastTargetRowIdx >= 0)
                 ? Math.max(0, Math.min(lastTargetRowIdx, totalRows - 1))
                 : resolveRowIndex(validRows, referenceView, referenceIndex);
@@ -768,7 +747,7 @@ final class LyricsScrollEngine {
                 : requestedDelta >= 0f;
         // Every line of the group sung together moves first, the lines after it follow.
         final int staggerAfterRowIdx = scrollingDown
-                ? Math.max(refRowIdx, Math.max(targetRowIdx, resolvedEndRowIdx))
+                ? resolvedEndRowIdx
                 : refRowIdx;
         armStagger(validRows, scrollingDown, refRowIdx, staggerAfterRowIdx,
                 LyricsRetiming.calculateScrollDuration(lookAheadMs));

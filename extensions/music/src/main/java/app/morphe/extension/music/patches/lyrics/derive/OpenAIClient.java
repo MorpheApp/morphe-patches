@@ -406,7 +406,6 @@ public final class OpenAIClient {
      */
     private static void applyExtraHeaders(HttpURLConnection conn) {
         final String extra = Settings.LYRICS_AI_EXTRA_HEADERS.get();
-        if (extra == null) return;
         final String trimmed = extra.trim();
         if (trimmed.isEmpty()) return;
 
@@ -434,7 +433,6 @@ public final class OpenAIClient {
      */
     private static void applyExtraBody(JSONObject body) {
         final String extra = Settings.LYRICS_AI_EXTRA_BODY.get();
-        if (extra == null) return;
         final String trimmed = extra.trim();
         if (trimmed.isEmpty()) return;
 
@@ -621,10 +619,10 @@ public final class OpenAIClient {
             if (line.isEmpty()) continue;
             Matcher m = NUMBERED_LINE_PATTERN.matcher(line);
             if (m.matches()) {
-                int idx = Integer.parseInt(m.group(1)) - 1;
+                int idx = Integer.parseInt(Objects.requireNonNull(m.group(1))) - 1;
                 if (idx >= 0 && idx < expectedCount) {
                     matchedNumberedCount++;
-                    String val = m.group(2).trim();
+                    String val = Objects.requireNonNull(m.group(2)).trim();
                     if (isSkipToken(val)) {
                         byIndex[idx] = "";
                     } else {

@@ -360,6 +360,7 @@ public class RememberVideoQualityPatch {
      *
      * @return If the video must not be opened, always false.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean onVideoIntentLoaded(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
         if (!regularSelectedQualityVideoId.equals(videoId)) {
             // Another video is opened. The video ID of the player is updated only once
@@ -378,6 +379,7 @@ public class RememberVideoQualityPatch {
      *
      * @return If the Short must not be opened, always false.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean onShortsIntentLoaded(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
         shortsOpened = true;
         if (!shortsSelectedQualityVideoId.equals(videoId)) {

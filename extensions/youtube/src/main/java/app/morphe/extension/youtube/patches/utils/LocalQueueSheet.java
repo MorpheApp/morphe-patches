@@ -59,6 +59,7 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.shared.PlayerType;
 
+@SuppressWarnings("unused")
 public final class LocalQueueSheet {
 
     @Nullable
@@ -740,6 +741,7 @@ public final class LocalQueueSheet {
         }
 
         @Override
+        @SuppressWarnings("EmptyMethod")
         public boolean performClick() {
             return super.performClick();
         }
@@ -848,6 +850,7 @@ public final class LocalQueueSheet {
         }
 
         @Override
+        @SuppressWarnings("EmptyMethod")
         public boolean performClick() {
             return super.performClick();
         }

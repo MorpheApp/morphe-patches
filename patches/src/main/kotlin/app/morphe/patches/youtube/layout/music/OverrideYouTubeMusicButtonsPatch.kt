@@ -57,7 +57,6 @@ private fun overrideYouTubeMusicManifestPatch() = patch{
     }
 }
 
-@Suppress("unused")
 val overrideYouTubeMusicButtonsPatch = patch(
     name = "Override YouTube Music buttons",
     description = "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client.",

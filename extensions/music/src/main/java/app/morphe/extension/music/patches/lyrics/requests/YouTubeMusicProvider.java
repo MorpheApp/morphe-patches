@@ -13,7 +13,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -302,9 +304,9 @@ public final class YouTubeMusicProvider implements LyricsProvider {
         conn.setRequestProperty("Origin", "https://music.youtube.com");
         conn.setDoOutput(true);
 
-        final byte[] bytes = jsonBody.getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        final byte[] bytes = jsonBody.getBytes(StandardCharsets.UTF_8);
         conn.setFixedLengthStreamingMode(bytes.length);
-        try (java.io.OutputStream out = conn.getOutputStream()) {
+        try (OutputStream out = conn.getOutputStream()) {
             out.write(bytes);
         }
         return conn;

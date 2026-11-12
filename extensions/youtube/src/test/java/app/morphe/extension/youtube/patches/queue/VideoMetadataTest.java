@@ -13,6 +13,8 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
+import java.util.Objects;
+
 import app.morphe.extension.youtube.innertube.queue.QueueCardRenderer.AttributedText;
 import app.morphe.extension.youtube.innertube.queue.QueueCardRenderer.Avatar;
 import app.morphe.extension.youtube.innertube.queue.QueueCardRenderer.CardModel;
@@ -58,11 +60,11 @@ public class VideoMetadataTest {
         parsed = parsed.withChannelName(channel);
         return new String[]{parsed.videoId(), parsed.title(), parsed.channelName(), parsed.videoInfo()};
     }
-    private static String[] merge(String json, String videoId, String title) throws Exception {
-        var card = new VideoMetadata(videoId, title, "Starbound Extra", "157 views · 46 minutes ago", "29:04", false);
-        var lookup = VideoMetadata.fromSearch(new org.json.JSONObject(json), videoId);
+    private static String[] merge(String json, String title) throws Exception {
+        var card = new VideoMetadata("waZyE4Xl6bo", title, "Starbound Extra", "157 views · 46 minutes ago", "29:04", false);
+        var lookup = VideoMetadata.fromSearch(new org.json.JSONObject(json), "waZyE4Xl6bo");
         var merged = card.withLookup(lookup).withCapture(card).withChannelName("Starbound Extra");
-        var reverse = lookup.withCapture(card).withChannelName("Starbound Extra");
+        var reverse = Objects.requireNonNull(lookup).withCapture(card).withChannelName("Starbound Extra");
         merged = merged.withLookup(card);
         return new String[]{Boolean.toString(card.isComplete()), merged.channelName(),
             reverse.channelName(), merged.title(), Boolean.toString(merged.isComplete())};
@@ -89,10 +91,10 @@ public class VideoMetadataTest {
                 .setModel(CardModel.newBuilder().setVideoWithContextModel(contextual)))).build();
         var captured = VideoMetadata.fromElement(colored.toByteArray());
         var fetched = new VideoMetadata("abcdefghijk", "Lookup title", "Channel", "10 views", "1:23", true);
-        var metadata = captured.withLookup(fetched);
+        var metadata = Objects.requireNonNull(captured).withLookup(fetched);
 
-        assertEquals(light.getBaseBackground(), metadata.lightColorPalette().getSection4Color());
-        assertEquals(dark.getBaseBackground(), metadata.darkColorPalette().getSection4Color());
+        assertEquals(light.getBaseBackground(), Objects.requireNonNull(metadata.lightColorPalette()).getSection4Color());
+        assertEquals(dark.getBaseBackground(), Objects.requireNonNull(metadata.darkColorPalette()).getSection4Color());
         assertEquals(dark.getTextPrimary(), metadata.darkColorPalette().getPrimaryTitleColor());
         assertEquals(dark.getTextPrimary(), metadata.darkColorPalette().getSecondaryTitleColor());
 
@@ -100,7 +102,7 @@ public class VideoMetadataTest {
                 .setModel(CardModel.newBuilder().setVideoWithContextModel(contextual.setVideoWithContextData(
                         data.clearLightThemePalette().setDarkThemePalette(dark.toBuilder().clearTextPrimary())))))).build();
         var fallback = VideoMetadata.fromElement(incomplete.toByteArray());
-        assertEquals("abcdefghijk", fallback.videoId());
+        assertEquals("abcdefghijk", Objects.requireNonNull(fallback).videoId());
         assertNull(fallback.lightColorPalette());
         assertNull(fallback.darkColorPalette());
     }
@@ -171,11 +173,11 @@ public class VideoMetadataTest {
                 """;
         assertArrayEquals(new String[]{"false", "Starbound Extra and Starbound HFY",
                 "Starbound Extra and Starbound HFY", "Native title", "true"},
-                merge(response, "waZyE4Xl6bo", "Native title"));
+                merge(response, "Native title"));
         for (String title : new String[]{"", "   ", "waZyE4Xl6bo"}) {
             assertArrayEquals(new String[]{"false", "Starbound Extra and Starbound HFY",
                     "Starbound Extra and Starbound HFY", "Search title", "true"},
-                    merge(response, "waZyE4Xl6bo", title));
+                    merge(response, title));
         }
     }
 

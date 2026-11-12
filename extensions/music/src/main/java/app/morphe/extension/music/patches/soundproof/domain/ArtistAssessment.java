@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.soundproof.domain;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Optional;
@@ -57,6 +58,7 @@ public final class ArtistAssessment {
     }
 
     @Override
+    @NonNull
     public String toString() {
         return "ArtistAssessment{" + status + ", " + artist + "}";
     }

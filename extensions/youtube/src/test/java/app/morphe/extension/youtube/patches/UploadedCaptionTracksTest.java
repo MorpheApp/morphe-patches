@@ -9,7 +9,9 @@ package app.morphe.extension.youtube.patches;
 
 import static org.junit.Assert.*;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Locale;
 import org.junit.Test;
 
 public class UploadedCaptionTracksTest {
@@ -38,7 +40,7 @@ public class UploadedCaptionTracksTest {
             CaptionTracks.observe(
                 CaptionXml.read(
                     "<timedtext format='3'><body><p t='1000' d='1000'>Original</p></body></timedtext>"
-                        .getBytes(java.nio.charset.StandardCharsets.UTF_8)),
+                        .getBytes(StandardCharsets.UTF_8)),
                 state);
             assertNotNull("cached prefetch must remain capturable when selected later", state.captured);
             assertNotNull(state.policy);
@@ -146,7 +148,7 @@ public class UploadedCaptionTracksTest {
     public void appDefaultCanUseGenericUploadedLanguage() {
         var english = authored("en");
         assertSame(english, track(CaptionTracks.findUploadedTrack(
-            List.of(english), java.util.Locale.US.toLanguageTag(), true)));
+            List.of(english), Locale.US.toLanguageTag(), true)));
         var turkish = authored("tr");
         assertSame(turkish, track(CaptionTracks.findUploadedTrack(List.of(turkish), "tr-TR", true)));
     }

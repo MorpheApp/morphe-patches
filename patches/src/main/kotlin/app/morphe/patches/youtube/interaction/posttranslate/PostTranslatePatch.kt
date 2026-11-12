@@ -62,7 +62,6 @@ private fun MutableClass.addPatchMethod(
     )
 }
 
-@Suppress("unused")
 val postTranslatePatch = patch(
     name = "Translate posts",
     description = "Adds a menu item to translate the text of posts.",

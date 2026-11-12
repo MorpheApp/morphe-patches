@@ -26,11 +26,14 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
+import android.text.Editable;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.util.Pair;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -594,7 +597,7 @@ public class CustomDialog {
 
         searchBar.setCompoundDrawables(searchIcon, null, null, null);
 
-        searchBar.addTextChangedListener(new android.text.TextWatcher() {
+        searchBar.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
                 searchBar.setCompoundDrawables(searchIcon, null,
@@ -603,11 +606,11 @@ public class CustomDialog {
                     onQueryChanged.accept(s.toString());
                 }
             }
-            @Override public void afterTextChanged(android.text.Editable s) {}
+            @Override public void afterTextChanged(Editable s) {}
         });
 
         searchBar.setOnTouchListener((v, event) -> {
-            if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+            if (event.getAction() == MotionEvent.ACTION_UP) {
                 Drawable[] drawables = searchBar.getCompoundDrawables();
                 if (drawables[2] != null && event.getRawX() >=
                         (searchBar.getRight() - drawables[2].getBounds().width() - searchBar.getPaddingRight())) {

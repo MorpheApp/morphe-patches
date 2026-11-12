@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
 /**
  * Reads playlist ids and titles from the serialized protos of Library grid items and flyout menus.
  */
+@SuppressWarnings("unused")
 final class PlaylistTagsProto {
 
     // Fields of the Library grid item (MusicTwoRowItemRenderer).
@@ -159,8 +160,7 @@ final class PlaylistTagsProto {
         final Set<String> texts = new LinkedHashSet<>();
 
         void add(String playlistId, int score) {
-            Integer current = scores.get(playlistId);
-            scores.put(playlistId, current == null ? score : current + score);
+            scores.merge(playlistId, score, Integer::sum);
         }
     }
 
@@ -293,17 +293,14 @@ final class PlaylistTagsProto {
          *
          * @return False if the value is malformed or is a group.
          */
+        @SuppressWarnings("BooleanMethodIsAlwaysInverted")
         boolean skipValue(int wireType) {
-            switch (wireType) {
-                case WireFormat.WIRETYPE_VARINT:
-                    return readVarint32() >= 0;
-                case WireFormat.WIRETYPE_FIXED64:
-                    return skipBytes(8);
-                case WireFormat.WIRETYPE_FIXED32:
-                    return skipBytes(4);
-                default:
-                    return false;
-            }
+            return switch (wireType) {
+                case WireFormat.WIRETYPE_VARINT -> readVarint32() >= 0;
+                case WireFormat.WIRETYPE_FIXED64 -> skipBytes(8);
+                case WireFormat.WIRETYPE_FIXED32 -> skipBytes(4);
+                default -> false;
+            };
         }
 
         private boolean skipBytes(int count) {

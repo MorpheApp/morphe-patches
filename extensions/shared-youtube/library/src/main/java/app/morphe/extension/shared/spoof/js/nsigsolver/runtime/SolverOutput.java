@@ -2,6 +2,7 @@ package app.morphe.extension.shared.spoof.js.nsigsolver.runtime;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class SolverOutput {
     private String type;
     private String error;

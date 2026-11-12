@@ -37,6 +37,7 @@ public class PictureinPictureButtonPatch {
     private static final float MAX_ASPECT_RATIO = 2.39f;
     private static final float MIN_ASPECT_RATIO = 1 / MAX_ASPECT_RATIO;
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

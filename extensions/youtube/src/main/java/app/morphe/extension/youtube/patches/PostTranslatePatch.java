@@ -177,6 +177,7 @@ public final class PostTranslatePatch {
         void patch_setText(CharSequence text);
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -570,7 +571,6 @@ public final class PostTranslatePatch {
                     continue;
                 }
                 // The text of the post is the first text below the header, such as above a poll.
-                //noinspection ConstantConditions
                 if (best == null || bounds.top < best.shown().bounds().top) {
                     best = candidate;
                 }
@@ -583,6 +583,7 @@ public final class PostTranslatePatch {
         Logger.printDebug(() -> {
             StringBuilder builder = new StringBuilder();
             for (PostText candidate : candidates) {
+                //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) builder.append('\n');
                 builder.append(candidate == chosen ? "Post text: " : "Other post text: ")
                         .append(candidate.shown().bounds())

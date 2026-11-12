@@ -28,6 +28,7 @@ import app.morphe.extension.youtube.patches.LocalQueuePatch;
 /**
  * Small anonymous thumbnails for the queue sheet. Must be used from the main thread.
  */
+@SuppressWarnings("unused")
 final class QueueThumbnails {
 
     private static final int CACHE_BYTES = 4 * 1024 * 1024;

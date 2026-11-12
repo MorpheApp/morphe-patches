@@ -56,7 +56,6 @@ private val changeHeaderBytecodePatch = patch {
     }
 }
 
-@Suppress("unused")
 val changeHeaderPatch = baseChangeHeaderPatch(
     targetResourceDirectoryNames = targetResourceDirectoryNames,
     variants = variants,

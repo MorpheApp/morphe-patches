@@ -110,6 +110,7 @@ public class LoopCountPatch {
     private static String unsavedLoopCountVideoId = "";
     private static int unsavedLoopCount;
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -247,8 +248,9 @@ public class LoopCountPatch {
     /**
      * Injection point.
      *
-     * @return Always false, as the navigation is never cancelled.
+     * @return Always false, as the navigation is never canceled.
      */
+    @SuppressWarnings("SameReturnValue")
     public static synchronized boolean onNavigation(Enum<?> navigationIntent) {
         // The app navigates with the autoplay intent when a video ends, also to play the same video again
         // if the app loops the video. Any other navigation is chosen by the user,
@@ -420,6 +422,7 @@ public class LoopCountPatch {
     /**
      * @return If the loop count of a video is saved, so it applies again every time the playlist plays the video.
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isLoopCountSaved(String playlistId) {
         return !playlistId.isEmpty() && Settings.LOOP_COUNT_PLAYLISTS.get();
     }

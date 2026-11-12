@@ -146,7 +146,7 @@ public final class AutoSongVersionPatch {
     /**
      * Injection point.
      */
-    public static void setAccountPreferences(SharedPreferences preferences) {
+    public static void setAccountPreferences(@Nullable SharedPreferences preferences) {
         accountPreferences = preferences;
     }
 
@@ -270,6 +270,7 @@ public final class AutoSongVersionPatch {
         }
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isCurrentTrack(QueueAccess access, String videoId, long waitMilliseconds) {
         return await(() -> videoId.equals(videoAt(access, access.patch_atvCurrentIndex())), waitMilliseconds);
     }
@@ -352,6 +353,7 @@ public final class AutoSongVersionPatch {
     }
 
     /** Only while the stock 'Don't play music videos' is on, that's when Premium does it. */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean shouldPlaySongVersions() {
         if (!Settings.AUTO_SONG_VERSION.get()) return false;
 
@@ -359,7 +361,7 @@ public final class AutoSongVersionPatch {
         return preferences != null && preferences.getBoolean(DONT_PLAY_VIDEO_SETTING_KEY, false);
     }
 
-    /** Replaces upcoming music videos so the queue shows songs and they never start as the video. */
+    /** Replaces upcoming music videos so the queue shows songs, and they never start as the video. */
     private static void replaceUpcomingMusicVideos(QueueAccess access, String currentId) throws Exception {
         final int index = access.patch_atvCurrentIndex();
 

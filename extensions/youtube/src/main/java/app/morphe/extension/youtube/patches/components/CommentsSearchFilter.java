@@ -35,6 +35,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.WeakHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -122,7 +123,7 @@ public final class CommentsSearchFilter extends Filter {
     /**
      * The comment of each thread is laid out from its outermost component to its innermost.
      * Each component has a buffer of its own, and only the buffer of the outermost component
-     * holds all of the comment, such as its author and its text. The comment is shown or hidden
+     * holds the whole comment, such as its author and its text. The comment is shown or hidden
      * as a whole by the outermost component, and its inner components are never hidden alone.
      * <p>
      * Litho lays out on more than one thread, so each thread keeps its own comment.
@@ -166,11 +167,6 @@ public final class CommentsSearchFilter extends Filter {
         }
     }
 
-    private final StringFilterGroup commentThread = new StringFilterGroup(
-            Settings.SEARCH_COMMENTS,
-            COMMENT_THREAD_PATH
-    );
-
     /**
      * The button that shows the replies of a comment is not inside the comment.
      */
@@ -180,6 +176,10 @@ public final class CommentsSearchFilter extends Filter {
     );
 
     public CommentsSearchFilter() {
+        StringFilterGroup commentThread = new StringFilterGroup(
+                Settings.SEARCH_COMMENTS,
+                COMMENT_THREAD_PATH
+        );
         addPathCallbacks(commentThread, commentReplies);
     }
 
@@ -345,7 +345,7 @@ public final class CommentsSearchFilter extends Filter {
             String term = phrase != null
                     ? phrase.trim().replaceAll("\\s+", " ")
                     // An unclosed quote is ignored.
-                    : matcher.group(2).replace("\"", "");
+                    : Objects.requireNonNull(matcher.group(2)).replace("\"", "");
             if (!term.isEmpty()) {
                 terms.add(term);
             }
@@ -398,6 +398,7 @@ public final class CommentsSearchFilter extends Filter {
      *
      * @return If the list is reloaded.
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean reloadPanelList(View searchButton) {
         SectionListAccess sectionList = findPanelList(searchButton);
         if (sectionList == null) {

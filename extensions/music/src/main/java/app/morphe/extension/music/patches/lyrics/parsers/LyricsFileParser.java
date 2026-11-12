@@ -138,7 +138,7 @@ public final class LyricsFileParser {
                 String wordString = wordText instanceof String ? (String) wordText : "";
                 long start = asLong(wordMap.get("start_ms"));
                 // A word with no start of its own has nothing to be lit by, and the ends its
-                // neighbours lend it would be counted off a number that is not a time. The
+                // neighbors lend it would be counted off a number that is not a time. The
                 // line keeps its own timing and is sung in one go instead. The text is rebuilt
                 // from the words below, so the words are only given up after that has happened.
                 if (start < 0) {

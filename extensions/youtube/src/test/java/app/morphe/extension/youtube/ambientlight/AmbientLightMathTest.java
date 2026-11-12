@@ -45,6 +45,7 @@ public class AmbientLightMathTest {
         assertEquals(RED, target[0]);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static int[] pictureWithBars(int width, int height, int barX, int barY) {
         int[] pixels = new int[width * height];
         for (int y = 0; y < height; y++) {
@@ -78,6 +79,7 @@ public class AmbientLightMathTest {
         for (int y = 47; y < 54; y++) {
             for (int x = 20; x < 76; x++) pixels[y * 96 + x] = 0xFFFFFFFF;
         }
+        //noinspection DataFlowIssue
         assertArrayEquals(new int[]{0, 0, 96, 54}, AmbientLightMath.withoutOneSidedBars(
                 AmbientLightMath.pictureBounds(pixels, 96, 54), 96, 54));
     }
@@ -187,6 +189,7 @@ public class AmbientLightMathTest {
         assertTrue(veil >>> 24 > 0 && veil >>> 24 < 0xFF);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static float[] flatLight(int width, int height, float gammaBrightness) {
         float[] light = new float[3 * width * height];
         Arrays.fill(light, gammaBrightness * gammaBrightness);
@@ -201,7 +204,7 @@ public class AmbientLightMathTest {
     @Test
     public void brightLightIsCoveredDownToAReadableBrightnessOnADarkPage() {
         float cover = AmbientLightMath.readabilityCover(flatLight(10, 10, 1f), 10, 10, 0, true);
-        assertEquals(0.5f, 1f * (1f - cover), 0.02f);
+        assertEquals(0.5f, 1f - cover, 0.02f);
     }
 
     @Test

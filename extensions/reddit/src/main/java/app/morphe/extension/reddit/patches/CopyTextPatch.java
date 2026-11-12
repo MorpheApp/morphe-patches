@@ -46,6 +46,7 @@ public final class CopyTextPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
@@ -107,6 +108,7 @@ public final class CopyTextPatch {
      * Invokes the original rich text renderer with the given arguments, but with the composer
      * of the SelectionContainer content.
      */
+    @SuppressWarnings("EmptyMethod")
     private static void invokeRichText(Object[] args, Object composer) {
         // Modified during patching.
     }
@@ -250,7 +252,7 @@ public final class CopyTextPatch {
                     }
                     tapCandidate = false;
                     break;
-                default: // Cancelled or another finger touched the screen.
+                default: // Canceled or another finger touched the screen.
                     tapCandidate = false;
             }
         } catch (Exception ex) {

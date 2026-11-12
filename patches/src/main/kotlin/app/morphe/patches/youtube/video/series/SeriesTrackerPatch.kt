@@ -69,7 +69,6 @@ private val seriesTrackerResourcesPatch = patch {
     }
 }
 
-@Suppress("unused")
 val seriesTrackerPatch = patch(
     name = "Series tracking",
     description = "Adds a series library to History with local progress and episode continuation. " +

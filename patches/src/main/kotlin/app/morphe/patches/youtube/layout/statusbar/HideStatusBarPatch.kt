@@ -25,7 +25,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/HideStatusBarPatch;"
 
-@Suppress("unused")
 val hideStatusBarPatch = patch(
     name = "Hide status bar",
     description = "Adds an option to hide the system status bar. Swipe down from the top edge to show it for a moment.",

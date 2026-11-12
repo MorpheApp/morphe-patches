@@ -5,8 +5,6 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-@file:Suppress("unused")
-
 package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -29,9 +27,6 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val OBJECT = "Ljava/lang/Object;"
-private const val OPTIONAL = "Lj$/util/Optional;"
-private const val MAP = "Ljava/util/Map;"
-private const val VIEW = "Landroid/view/View;"
 
 internal data class JamUiAbi(
     val clock: ClockAbi,

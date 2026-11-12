@@ -92,6 +92,7 @@ public final class DownloadPathPattern {
             if (segment.isEmpty() || segment.equals(".")) continue;
             if (segment.equals("..")) return null;
 
+            //noinspection SizeReplaceableByIsEmpty
             if (normalized.length() == 0) {
                 segment = getRootFolder(segment);
                 if (segment == null) return null;
@@ -102,6 +103,7 @@ public final class DownloadPathPattern {
             normalized.append(segment);
         }
 
+        //noinspection SizeReplaceableByIsEmpty
         return normalized.length() == 0 ? null : normalized.toString();
     }
 
@@ -118,6 +120,7 @@ public final class DownloadPathPattern {
             segment = sanitizeName(segment);
             if (segment.isEmpty() || segment.equals(".") || segment.equals("..")) continue;
 
+            //noinspection SizeReplaceableByIsEmpty
             if (path.length() > 0) path.append('/');
             path.append(segment);
         }

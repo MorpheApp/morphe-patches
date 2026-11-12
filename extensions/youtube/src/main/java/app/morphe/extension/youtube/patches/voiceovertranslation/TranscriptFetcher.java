@@ -270,7 +270,6 @@ final class TranscriptFetcher {
                 text.append(segs.getJSONObject(j).optString("utf8", ""));
             }
 
-            //noinspection ExtractMethodRecommender
             String textStr = text.toString()
                     .replace('\n', ' ')
                     .replace(">>", "")

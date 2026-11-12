@@ -112,7 +112,7 @@ internal fun installPlaylistRowPlayback(
     // view callback, and disappears with that object. No native model is retained
     // in an extension cache, and protobuf equality/serialization stay unchanged.
     val video = mutableClassDefBy(videoType)
-    video.interfaces.add("Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils\$FlyoutMenuVideoIdInterface;")
+    video.interfaces.add($$"Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils$FlyoutMenuVideoIdInterface;")
     video.addBridgeMethod(
         "patch_getVideoId",
         emptyList(),

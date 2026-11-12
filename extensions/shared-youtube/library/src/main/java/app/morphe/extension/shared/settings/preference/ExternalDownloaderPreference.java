@@ -138,6 +138,7 @@ public class ExternalDownloaderPreference extends CustomDialogListPreference {
             this(name, packageName, downloadUrl, false, false, false);
         }
 
+        @SuppressWarnings("SameParameterValue")
         Downloader(String name, @Nullable String packageName, @Nullable String downloadUrl, boolean isPreferred) {
             this(name, packageName, downloadUrl, isPreferred, false, false);
         }

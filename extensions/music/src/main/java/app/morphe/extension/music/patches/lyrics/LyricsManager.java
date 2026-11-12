@@ -17,12 +17,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletionService;
 import java.util.concurrent.ConcurrentHashMap;
@@ -104,7 +106,7 @@ public final class LyricsManager {
     private final PriorityQueue<ScoredCandidate> candidateQueue = new PriorityQueue<>();
     private final Set<String> shownFingerprints = ConcurrentHashMap.newKeySet();
     private final Map<String, Lyrics> filteredCache =
-            java.util.Collections.synchronizedMap(Utils.createSizeRestrictedMap(32));
+            Collections.synchronizedMap(Utils.createSizeRestrictedMap(32));
     @Nullable
     private volatile TrackInfo currentTrack;
 
@@ -256,7 +258,7 @@ public final class LyricsManager {
     }
 
     private <T> Future<T> submitFetch(int id, CompletionService<T> service,
-                                      java.util.concurrent.Callable<T> fetch) {
+                                      Callable<T> fetch) {
         Future<T> future = service.submit(() -> id == requestId.get() ? fetch.call() : null);
         activeFetches.add(future);
         // The track can change between submission and registration.
@@ -314,7 +316,7 @@ public final class LyricsManager {
 
     /**
      * Looks up the track's version on Deezer, only when the miniplayer or the media session
-     * show the track format and it has {v}. If the lookup fails, the title shows without {v}.
+     * show the track format, and it has {v}. If the lookup fails, the title shows without {v}.
      */
     private void requestVersion(TrackInfo track) {
         if (!Settings.LYRICS_ENABLED.get()
@@ -719,6 +721,7 @@ public final class LyricsManager {
     }
 
     /** Injection point; main thread. */
+    @SuppressWarnings("StatementWithEmptyBody")
     public void onSetPlaybackState(@Nullable PlaybackState playbackState) {
         Utils.verifyOnMainThread();
         if (playbackState == null) {
@@ -1529,11 +1532,7 @@ public final class LyricsManager {
             }
         }
         if (queryTrack == null && notFoundCached >= providers.size()) {
-            if (cachedFallback != null) {
-                publishFromLookup(id, cachedFallback);
-            } else {
-                publishFromLookup(id, Lyrics.NOT_FOUND);
-            }
+            publishFromLookup(id, Objects.requireNonNullElse(cachedFallback, Lyrics.NOT_FOUND));
             return;
         }
 

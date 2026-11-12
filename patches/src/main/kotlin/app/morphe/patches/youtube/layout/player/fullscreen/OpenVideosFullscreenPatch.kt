@@ -11,7 +11,6 @@ import app.morphe.patches.youtube.video.information.playerStatusHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.setExtensionIsPatchIncluded
 
-@Suppress("unused")
 val openVideosFullscreenPatch = patch(
     name = "Open videos fullscreen",
     description = "Adds options to automatically open videos in fullscreen portrait or landscape mode."

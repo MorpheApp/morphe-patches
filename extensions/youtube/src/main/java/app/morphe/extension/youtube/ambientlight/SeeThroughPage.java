@@ -33,6 +33,7 @@ import app.morphe.extension.shared.ResourceUtils;
  * Litho backgrounds change color in {@link AmbientLightController#getLithoColor}.
  * This class handles the backgrounds of regular views.
  */
+@SuppressWarnings("unused")
 final class SeeThroughPage {
     private SeeThroughPage() {
     }

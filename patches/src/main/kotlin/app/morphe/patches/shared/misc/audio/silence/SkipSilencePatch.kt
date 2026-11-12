@@ -20,7 +20,6 @@ import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/SkipSilencePatch;"
 
-@Suppress("unused")
 internal fun skipSilencePatch(
     block: PatchDefinition.() -> Unit,
     targetCompatible: PatchDefinition.() -> Boolean = { true },

@@ -415,7 +415,7 @@ public final class LithoFilterPatch {
      * <p>
      * The item moves back by one position, and can move to another column. The position is changed
      * in the bytes of its element, which the item is laid out with again when the grid lays out its rows again.
-     * Otherwise the item keeps the spacing of its old column, such as a Short of the left column
+     * Otherwise, the item keeps the spacing of its old column, such as a Short of the left column
      * with the spacing of the right column.
      */
     public static void moveGridItemBack(@Nullable byte[] element) {

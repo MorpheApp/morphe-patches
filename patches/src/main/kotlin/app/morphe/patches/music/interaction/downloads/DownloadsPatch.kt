@@ -94,7 +94,6 @@ private val downloadsResourcePatch = patch {
     }
 }
 
-@Suppress("unused")
 val downloadsPatch = patch(
     name = "Downloads",
     description = "Adds support to download songs, albums, and playlists using the in-app " +

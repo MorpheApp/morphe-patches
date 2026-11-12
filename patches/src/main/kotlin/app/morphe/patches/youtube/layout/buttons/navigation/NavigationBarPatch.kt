@@ -804,7 +804,7 @@ val navigationBarPatch = patch(
             )
         )
 
-        // Some pages have their own toolbar, such as the You tab and the channel pages, which the swap
+        // Some pages have their own toolbar, such as the 'You' tab and the channel pages, which the swap
         // of the create button and the fix of its upload button do not change in the toolbar of the guide.
         // The toolbar buttons of all pages are created with their renderer.
         ToolBarButtonFingerprint.let {

@@ -18,7 +18,7 @@ import com.android.tools.smali.dexlib2.Opcode
  * Touch listener of the drag handle of a list row.
  */
 internal object DragHandleTouchListenerFingerprint : Fingerprint(
-    interfaces = listOf("Landroid/view/View\$OnTouchListener;"),
+    interfaces = listOf($$"Landroid/view/View$OnTouchListener;"),
     name = "<init>",
     parameters = listOf("Landroid/view/View;", "L", "L", "Landroid/os/Handler;", "I"),
     filters = listOf(

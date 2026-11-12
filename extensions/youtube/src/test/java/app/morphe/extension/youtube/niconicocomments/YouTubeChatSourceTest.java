@@ -22,6 +22,7 @@ import org.junit.Test;
 
 import java.util.List;
 
+@SuppressWarnings("ConstantValue")
 public class YouTubeChatSourceTest {
     @Test
     public void parsesWatchPageConfigAndBalancedJson() throws Exception {
@@ -111,15 +112,15 @@ public class YouTubeChatSourceTest {
         List<NiconicoComment> comments = YouTubeChatSource.parseComments(actions);
 
         assertEquals(2, comments.size());
-        assertEquals("hello :wave:", comments.get(0).text);
-        assertTrue(comments.get(0).membership);
-        assertEquals(2, comments.get(0).segments.size());
-        assertFalse(comments.get(0).segments.get(0).isEmoji());
-        assertTrue(comments.get(0).segments.get(1).isEmoji());
-        assertEquals("https://emoji-large", comments.get(0).segments.get(1).imageUrl);
-        assertEquals(-1, comments.get(0).videoOffsetMs);
-        assertEquals("thank you", comments.get(1).text);
-        assertEquals(0x6100ff00, comments.get(1).backgroundColor);
+        assertEquals("hello :wave:", comments.get(0).text());
+        assertTrue(comments.get(0).membership());
+        assertEquals(2, comments.get(0).segments().size());
+        assertFalse(comments.get(0).segments().get(0).isEmoji());
+        assertTrue(comments.get(0).segments().get(1).isEmoji());
+        assertEquals("https://emoji-large", comments.get(0).segments().get(1).imageUrl);
+        assertEquals(-1, comments.get(0).videoOffsetMs());
+        assertEquals("thank you", comments.get(1).text());
+        assertEquals(0x6100ff00, comments.get(1).backgroundColor());
     }
 
     @Test
@@ -135,14 +136,14 @@ public class YouTubeChatSourceTest {
                 new JSONArray("[" + status + "," + text + "]"));
 
         assertEquals(1, live.size());
-        assertEquals("hello", live.get(0).text);
+        assertEquals("hello", live.get(0).text());
 
         YouTubeChatSource.ReplayParseResult replay = YouTubeChatSource.parseReplayComments(new JSONArray(
                 "[{\"replayChatItemAction\":{\"videoOffsetTimeMsec\":\"0\",\"actions\":[" + status + "]}},"
                         + "{\"replayChatItemAction\":{\"videoOffsetTimeMsec\":\"1000\",\"actions\":[" + text + "]}}]"));
 
         assertEquals(1, replay.comments.size());
-        assertEquals("hello", replay.comments.get(0).text);
+        assertEquals("hello", replay.comments.get(0).text());
     }
 
     @Test
@@ -158,8 +159,8 @@ public class YouTubeChatSourceTest {
 
         assertEquals(7_449, result.maxVideoOffsetMs);
         assertEquals(1, result.comments.size());
-        assertEquals(7_449, result.comments.get(0).videoOffsetMs);
-        assertEquals("at seven seconds", result.comments.get(0).text);
+        assertEquals(7_449, result.comments.get(0).videoOffsetMs());
+        assertEquals("at seven seconds", result.comments.get(0).text());
     }
 
     @Test
@@ -179,8 +180,8 @@ public class YouTubeChatSourceTest {
 
         assertEquals(0, result.maxVideoOffsetMs);
         assertEquals(1, result.comments.size());
-        assertEquals("zero", result.comments.get(0).id);
-        assertEquals(0, result.comments.get(0).videoOffsetMs);
+        assertEquals("zero", result.comments.get(0).id());
+        assertEquals(0, result.comments.get(0).videoOffsetMs());
     }
 
     @Test

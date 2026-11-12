@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 // Used only while compiling; YouTube Music provides the real class at runtime.
+@SuppressWarnings("unused")
 public final class MediaDescriptionCompat {
     public MediaDescriptionCompat(
             String mediaId,

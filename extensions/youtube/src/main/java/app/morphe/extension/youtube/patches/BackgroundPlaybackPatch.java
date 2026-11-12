@@ -82,9 +82,7 @@ public class BackgroundPlaybackPatch {
                 }
             }, filter);
 
-            VideoState.getOnChange().addObserver(state -> {
-                onVideoStateChanged(state);
-            });
+            VideoState.getOnChange().addObserver(BackgroundPlaybackPatch::onVideoStateChanged);
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
         } finally {
@@ -216,7 +214,7 @@ public class BackgroundPlaybackPatch {
     /**
      * Injection point.
      */
-    public static void setBackgroundPlaybackSetting(BackgroundPlaybackSetting setting) {
+    public static void setBackgroundPlaybackSetting(@Nullable BackgroundPlaybackSetting setting) {
         backgroundPlaybackSetting = setting;
     }
 

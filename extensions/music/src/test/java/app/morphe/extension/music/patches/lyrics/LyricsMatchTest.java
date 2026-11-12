@@ -39,6 +39,7 @@ public class LyricsMatchTest {
                 null, null, null, null, null, null, null);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static Lyrics lyricsWithRaw(String provider, String rawFormat, LyricsLine... lines) {
         return new Lyrics(List.of(lines), provider, true,
                 null, null, null, null, rawFormat, "lrc", null);

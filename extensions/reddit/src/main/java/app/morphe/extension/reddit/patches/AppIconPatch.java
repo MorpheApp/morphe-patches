@@ -165,6 +165,7 @@ public class AppIconPatch {
     // Cannot use hardcoded package name or icon picker is broken with cloned apps.
     private static final String PACKAGE = Utils.getContext().getPackageName();
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return true;
     }

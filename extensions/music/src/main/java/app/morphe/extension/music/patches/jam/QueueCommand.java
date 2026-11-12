@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.jam;
 
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 import app.morphe.extension.music.shared.VideoInformation;
 
@@ -153,7 +154,7 @@ public final class QueueCommand {
                 if (
                     length < 0 || length > data.length - at[0]
                 ) throw new IllegalArgumentException();
-                if (number == wanted) value = java.util.Arrays.copyOfRange(
+                if (number == wanted) value = Arrays.copyOfRange(
                     data,
                     at[0],
                     at[0] + (int) length

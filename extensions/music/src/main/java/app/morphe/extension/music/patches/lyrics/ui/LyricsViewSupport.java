@@ -26,11 +26,9 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.PathInterpolator;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -76,7 +74,7 @@ final class LyricsViewSupport {
     private LyricsViewSupport() {
     }
 
-    /** Bolds a paint for lyrics; a typeface set on it afterwards undoes the weight. */
+    /** Bolds a paint for lyrics; a typeface set on it afterward undoes the weight. */
     static void applyLyricsBoldPaint(Paint paint) {
         paint.setTypeface(Typeface.DEFAULT_BOLD);
         paint.setFlags(paint.getFlags()
@@ -134,7 +132,7 @@ final class LyricsViewSupport {
      * The words the karaoke pass paints for one line.
      *
      * <p>An only mode drops the original and measures its reading against the text it draws, so the
-     * reading's words already sit on the {@code originalStart} base and the original's are not in that text
+     * reading's words already sit on the {@code originalStart} base and the originals are not in that text
      * at all; a plain mode keeps the original, which is the base {@link #withReading} moves the reading's
      * onto. Deciding by the reading alone would rob a plain mode of the words it paints.
      */
@@ -176,7 +174,7 @@ final class LyricsViewSupport {
         return combined;
     }
 
-    /** Eases the highlight between lines the way the built-in panel does, shrinking the dimmed ones. */
+    /* Eases the highlight between lines the way the built-in panel does, shrinking the dimmed ones. */
     /** {@return the alpha of an inactive line this many lines from the sung one, in spotlight mode} */
     static float spotlightAlpha(int distance) {
         return switch (distance) {
@@ -258,8 +256,7 @@ final class LyricsViewSupport {
         final int w = view.getWidth();
         final int h = view.getHeight();
         if (w > 0) {
-            final boolean isEnd = view.isRightAligned()
-                    || (view.getGravity() & Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.END;
+            final boolean isEnd = view.isRightAligned();
             view.setPivotX(view.isCentered() ? w / 2f : (isEnd ? w - view.getPaddingRight() : view.getPaddingLeft()));
         }
         if (h > 0) {
@@ -427,7 +424,7 @@ final class LyricsViewSupport {
                 } else if (romanizedFromAI && romanizedAiModel != null) {
                     source = String.format(str("morphe_music_lyrics_romanized_by_ai"), romanizedAiModel);
                 } else if (romanizedLocalDictionary != null) {
-                    // Named and nothing more: the licences are in the licenses dialog.
+                    // Named and nothing more: the licenses are in the licenses dialog.
                     source = String.format(str("morphe_music_lyrics_romanized_by_local"),
                             romanizedLocalDictionary);
                 } else if (romanizedFromEmbedded && rubyProvider != null) {
@@ -451,12 +448,12 @@ final class LyricsViewSupport {
         final int end = out.length();
         out.setSpan(new ClickableSpan() {
             @Override
-            public void onClick(View widget) {
+            public void onClick(@NonNull View widget) {
                 if (onSource != null) onSource.run();
             }
 
             @Override
-            public void updateDrawState(TextPaint ds) {
+            public void updateDrawState(@NonNull TextPaint ds) {
                 ds.setUnderlineText(false);
             }
         }, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

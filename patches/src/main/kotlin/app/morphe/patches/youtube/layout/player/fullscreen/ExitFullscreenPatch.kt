@@ -23,7 +23,6 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 private const val EXIT_FULLSCREEN_CLASS =
     "Lapp/morphe/extension/youtube/patches/ExitFullscreenPatch;"
 
-@Suppress("unused")
 internal val exitFullscreenPatch = patch(
     name = "Exit fullscreen mode",
     description = "Adds options to automatically exit fullscreen mode when a video reaches the end."

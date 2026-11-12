@@ -15,6 +15,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ScriptDetectorTest {
@@ -24,6 +25,7 @@ public class ScriptDetectorTest {
     @Test
     public void detectNullReturnsNull() {
         String nullLine = null;
+        //noinspection ConstantValue
         assertNull(ScriptDetector.detect(nullLine));
     }
 
@@ -111,7 +113,7 @@ public class ScriptDetectorTest {
 
     @Test
     public void detectListNullElements() {
-        java.util.ArrayList<String> lines = new java.util.ArrayList<>();
+        ArrayList<String> lines = new ArrayList<>();
         lines.add(null);
         lines.add("Hello");
         lines.add(null);

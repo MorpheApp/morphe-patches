@@ -334,7 +334,7 @@ public class SeekbarThumbnailPreviewPatch {
         chapterPreview.setPadding(Dim.dp6, Dim.dp2, Dim.dp6, Dim.dp2);
         chapterPreview.setMaxWidth(THUMBNAIL_PREVIEW_LONG_SIDE);
         chapterPreview.setSingleLine(true);
-        chapterPreview.setEllipsize(android.text.TextUtils.TruncateAt.END);
+        chapterPreview.setEllipsize(TextUtils.TruncateAt.END);
         chapterPreview.setGravity(Gravity.CENTER_HORIZONTAL);
         chapterPreview.setBackground(labelBackground());
         chapterPreview.setLayoutParams(params);

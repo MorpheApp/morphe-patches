@@ -182,13 +182,12 @@ public final class KanaRomanizer {
     }
 
     private static void repeatVowel(StringBuilder out) {
-        for (int i = out.length() - 1; i >= 0; i--) {
-            char c = out.charAt(i);
-            if (!isConsonant(c)) {
-                out.append(c);
-                return;
-            }
+        if (out.length() == 0) {
             return;
+        }
+        char c = out.charAt(out.length() - 1);
+        if (!isConsonant(c)) {
+            out.append(c);
         }
     }
 
@@ -223,6 +222,7 @@ public final class KanaRomanizer {
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isConsonant(char c) {
         return c >= 'a' && c <= 'z' && !isVowel(c);
     }

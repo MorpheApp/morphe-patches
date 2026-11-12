@@ -1357,7 +1357,7 @@ val hideLayoutComponentsPatch = patch(
         TapAndHoldSpeedFingerprint.let {
             it.clearMatch()
             // The class that overrides the speed, and restores it when tap and hold ends.
-            var speedControllerType = it.instructionMatches[6].fieldReference.type
+            val speedControllerType = it.instructionMatches[6].fieldReference.type
 
             // Right after the "already speeding up" check.
             it.method.addInstructionsAtControlFlowLabel(

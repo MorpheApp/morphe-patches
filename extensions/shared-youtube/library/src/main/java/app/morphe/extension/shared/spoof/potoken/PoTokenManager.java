@@ -12,6 +12,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.requests.VisitorIdRequester;
 
+@SuppressWarnings("unused")
 public final class PoTokenManager {
     private static volatile PoTokenResult poTokenResult;
 

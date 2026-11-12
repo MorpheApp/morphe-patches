@@ -66,6 +66,7 @@ public final class UniDictStore {
     }
 
     /** Whether the tables are being downloaded or built right now. */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean isRunning() {
         return RUNNING.get();
     }

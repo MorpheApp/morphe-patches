@@ -27,7 +27,7 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"unused", "deprecation"})
 public abstract class OAuth2Preference extends Preference implements Preference.OnPreferenceClickListener {
 
     {

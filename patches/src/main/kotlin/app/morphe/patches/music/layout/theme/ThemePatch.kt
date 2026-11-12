@@ -70,7 +70,6 @@ private val headerFadeResourcePatch = patch(
     }
 }
 
-@Suppress("unused")
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
     useModernLithoColorHook = {
