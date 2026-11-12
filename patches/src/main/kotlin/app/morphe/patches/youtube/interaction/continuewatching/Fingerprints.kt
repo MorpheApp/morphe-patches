@@ -51,7 +51,6 @@ internal object AutoplayInactivityLimitFingerprint : Fingerprint(
         ),
         // Autoplay block check.
         methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
             parameters = listOf(),
             returnType = "Z",
             location = MatchAfterWithin(3)

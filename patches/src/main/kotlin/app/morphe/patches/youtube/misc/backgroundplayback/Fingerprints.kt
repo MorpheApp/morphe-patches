@@ -189,7 +189,25 @@ internal object AutomaticPlaybackPausedInFlyoutFeatureFlagFingerprint : Fingerpr
     )
 )
 
+/**
+ * 21.46+
+ */
 internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("I", "Z", "Z", "Z", "L"),
+    filters = listOf(
+        opcode(Opcode.IGET),
+        literal(5, location = MatchAfterWithin(8)),
+        literal(2, location = MatchAfterWithin(5)),
+        literal(3, location = MatchAfterWithin(8)),
+        literal(0x13, location = MatchAfterWithin(12)),
+    )
+)
+
+/**
+ * 21.45 and older.
+ */
+internal object KidsBackgroundPlaybackPolicyControllerLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "L", "L"),

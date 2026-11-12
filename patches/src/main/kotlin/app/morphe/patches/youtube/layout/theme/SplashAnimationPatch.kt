@@ -38,6 +38,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_46_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -276,10 +277,25 @@ val splashAnimationPatch = patch {
 
             // The system splash screen is kept until the glow animation has drawn,
             // otherwise a blank screen is shown while the animation loads.
-            RiveCanvasSessionSetLatestBitmapFingerprint.method.addInstruction(
-                0,
-                "invoke-static { }, $EXTENSION_CLASS->onRiveFrameAvailable()V"
-            )
+            if (is_21_46_or_greater) {
+                RiveCanvasSessionFrameAvailableFingerprint.let {
+                    // The bitmap store and the frame signal. The last instruction is hooked first.
+                    listOf(
+                        it.instructionMatches.last().index,
+                        it.instructionMatches.first().index
+                    ).forEach { index ->
+                        it.method.addInstruction(
+                            index,
+                            "invoke-static { }, $EXTENSION_CLASS->onRiveFrameAvailable()V"
+                        )
+                    }
+                }
+            } else {
+                RiveCanvasSessionSetLatestBitmapLegacyFingerprint.method.addInstruction(
+                    0,
+                    "invoke-static { }, $EXTENSION_CLASS->onRiveFrameAvailable()V"
+                )
+            }
 
             SplashScreenOnStopFingerprint.method.addInstruction(
                 0,

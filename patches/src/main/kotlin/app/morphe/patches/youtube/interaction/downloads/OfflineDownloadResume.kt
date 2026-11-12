@@ -7,17 +7,24 @@
 
 package app.morphe.patches.youtube.interaction.downloads
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
+import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.shared.misc.bridge.addBridge
+import app.morphe.patches.youtube.misc.playservice.is_21_46_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -80,16 +87,34 @@ internal fun hookOfflineDownloadResume() {
     ).toMutable()
     descriptor.classDef.fields.add(startTimeMsField)
 
-    val worker = offlinePlaybackWorkerFingerprint(descriptorType)
-    val entryGetter = offlinePlaybackEntryFingerprint(worker.classDef.type).method
+    val worker: Fingerprint
+    val workerClassDef: MutableClass
+    val entryGetter: MethodReference
+    val entryGetterOpcode: String
+    val successMatchIndex: Int
+    if (is_21_46_or_greater) {
+        // The worker loads the saved player response in a Runnable, and its methods are public.
+        worker = offlinePlaybackWorkerRunnableFingerprint(descriptorType)
+        val entryGetterMatch = worker.instructionMatches[1]
+        entryGetter = entryGetterMatch.methodReference
+        entryGetterOpcode = entryGetterMatch.instruction.opcode.name
+        workerClassDef = mutableClassDefBy(entryGetter.definingClass)
+        successMatchIndex = 2
+    } else {
+        worker = offlinePlaybackWorkerLegacyFingerprint(descriptorType)
+        entryGetter = offlinePlaybackEntryLegacyFingerprint(worker.classDef.type).method
+        entryGetterOpcode = Opcode.INVOKE_DIRECT.name
+        workerClassDef = worker.classDef
+        successMatchIndex = 0
+    }
     val savedPositionSeconds = offlineDownloadPositionCopyFingerprint(entryGetter.returnType)
         .instructionMatches[2].fieldReference
     val calculateStartTimeSeconds = OfflineDownloadCardCommandFingerprint.instructionMatches.first().methodReference
     val durationSecondsGetter = offlineDownloadDurationFingerprint(playerResponseModelClass)
         .instructionMatches[1].methodReference.name
 
-    worker.classDef.interfaces.add(OFFLINE_PLAYBACK_WORKER_INTERFACE)
-    worker.classDef.addBridge(
+    workerClassDef.interfaces.add(OFFLINE_PLAYBACK_WORKER_INTERFACE)
+    workerClassDef.addBridge(
         "patch_setDownloadStartTime",
         listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
         "V",
@@ -114,7 +139,7 @@ internal fun hookOfflineDownloadResume() {
             if-nez v1, :done
 
             # Downloads entry of the current account, or null if the video is not saved.
-            invoke-direct { p0, v0 }, $entryGetter
+            $entryGetterOpcode { p0, v0 }, $entryGetter
             move-result-object v0
             if-eqz v0, :done
             iget-wide v0, v0, $savedPositionSeconds
@@ -144,18 +169,56 @@ internal fun hookOfflineDownloadResume() {
     )
 
     // Read the Downloads entry when the worker has loaded the saved player response.
-    worker.method.cloneParameters().apply {
-        val success = worker.instructionMatches.first()
-        val responseRegister = success.instruction.registersUsed[2]
+    val success = worker.instructionMatches[successMatchIndex]
+    val responseRegister = success.instruction.registersUsed[2]
+    val setDownloadStartTime =
+        "$EXTENSION_IN_APP_DOWNLOADS_CLASS->setDownloadStartTime(${OFFLINE_PLAYBACK_WORKER_INTERFACE}Ljava/lang/Object;Ljava/lang/Object;)V"
 
-        // The parameter registers of the cloned method are not used by the original code.
-        addInstructionsAtControlFlowLabel(
-            success.index + numberOfParameterRegistersLogical,
-            """
-                move-object/from16 p2, v$responseRegister
-                invoke-static/range { p0 .. p2 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->setDownloadStartTime(${OFFLINE_PLAYBACK_WORKER_INTERFACE}Ljava/lang/Object;Ljava/lang/Object;)V
-            """
-        )
+    if (is_21_46_or_greater) {
+        val descriptorField = worker.instructionMatches.first().fieldReference
+        val workerField = offlinePlaybackRunnableWorkerFingerprint(workerClassDef.type)
+            .match(worker.method).instructionMatches.first().fieldReference
+
+        val helperMethod = ImmutableMethod(
+            worker.classDef.type,
+            "patch_setDownloadStartTime",
+            listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
+            "V",
+            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+            null,
+            null,
+            MutableMethodImplementation(4),
+        ).toMutable().apply {
+            addInstructions(
+                0,
+                """
+                    iget-object v0, p0, $workerField
+                    iget-object v1, p0, $descriptorField
+                    invoke-static { v0, v1, p1 }, $setDownloadStartTime
+                    return-void
+                """
+            )
+        }
+        worker.classDef.methods.add(helperMethod)
+
+        // The original code changes the register of the Runnable, so the parameters are cloned.
+        worker.method.cloneParameters().apply {
+            addInstructionsAtControlFlowLabel(
+                success.index + numberOfParameterRegistersLogical,
+                "invoke-virtual { p0, v$responseRegister }, $helperMethod"
+            )
+        }
+    } else {
+        worker.method.cloneParameters().apply {
+            // The parameter registers of the cloned method are not used by the original code.
+            addInstructionsAtControlFlowLabel(
+                success.index + numberOfParameterRegistersLogical,
+                """
+                    move-object/from16 p2, v$responseRegister
+                    invoke-static/range { p0 .. p2 }, $setDownloadStartTime
+                """
+            )
+        }
     }
 
     applyDownloadStartTime(playerResponseModelType, descriptorType, startTimeMsField)
