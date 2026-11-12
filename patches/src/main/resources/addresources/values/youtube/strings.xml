@@ -1685,20 +1685,10 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_video_delay_dialog_input_hint">Delay in milliseconds</string>
 
     <!-- video.quality.rememberVideoQualityPatch -->
-    <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-    <string name="morphe_video_quality_default_entry_1">Auto</string>
-    <string name="morphe_remember_video_quality_last_selected_title">Remember video quality</string>
-    <string name="morphe_remember_video_quality_last_selected_summary">Applies your manual quality selection to all future videos</string>
-    <string name="morphe_remember_video_quality_last_selected_toast_title">Quality change notifications</string>
-    <string name="morphe_remember_video_quality_last_selected_toast_summary">Shows a notification when a new default quality is saved</string>
-    <string name="morphe_video_quality_default_wifi_title">Default video quality on Wi-Fi network</string>
-    <string name="morphe_video_quality_default_mobile_title">Default video quality on mobile network</string>
     <string name="morphe_remember_shorts_quality_last_selected_title">Remember Shorts quality</string>
     <string name="morphe_remember_shorts_quality_last_selected_summary">Applies your manual quality selection to all future Shorts</string>
     <string name="morphe_shorts_quality_default_wifi_title">Default Shorts quality on Wi-Fi network</string>
     <string name="morphe_shorts_quality_default_mobile_title">Default Shorts quality on mobile network</string>
-    <string name="morphe_remember_video_quality_toast_mobile">Changed default mobile quality to: %s</string>
-    <string name="morphe_remember_video_quality_toast_wifi">Changed default Wi-Fi quality to: %s</string>
     <string name="morphe_remember_video_quality_toast_shorts_mobile">Changed Shorts mobile quality to: %s</string>
     <string name="morphe_remember_video_quality_toast_shorts_wifi">Changed Shorts Wi-Fi quality to: %s</string>
 
