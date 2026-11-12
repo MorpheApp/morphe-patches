@@ -1790,6 +1790,9 @@ Video playback with AV1 may stutter or drop frames"</string>
     <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stable volume is not available</string>
     <string name="morphe_spoof_video_streams_about_end_early">• Playback may end 1 second early</string>
     <string name="morphe_spoof_video_streams_about_js">• If deobfuscation fails, playback may fail</string>
+    <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+    <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView is turned off or not installed. Turn it on and update it, or playback may fail</string>
+    <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView is out of date. Update it, or playback may fail</string>
     <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
     <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Sign in to Android VR is required</string>

@@ -131,6 +131,20 @@ If you are a YouTube Premium user, this setting may not be required"</string>
 Make %2$s the default client?"</string>
     <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Switch</string>
     <string name="morphe_spoof_video_streams_user_dialog_message">Turning off this setting may cause playback issues</string>
+    <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+    <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+    <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView is turned off or not installed.
+
+Video playback needs Android System WebView. Turn it on and update it to the latest version.
+
+Tap OK to open Android System WebView."</string>
+    <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView is out of date (version %s).
+
+Video playback may fail until Android System WebView is updated to the latest version.
+
+Tap OK to open Android System WebView."</string>
+    <string name="morphe_spoof_video_streams_webview_dialog_ignore">Do not show again</string>
+    <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView is not installed. Install it to fix video playback</string>
     <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
     <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Try enabling: Spoof video streams > Android VR sign in</string>
