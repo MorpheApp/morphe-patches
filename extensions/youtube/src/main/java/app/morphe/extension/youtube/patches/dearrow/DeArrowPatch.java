@@ -242,6 +242,13 @@ public final class DeArrowPatch {
             Collections.synchronizedMap(Utils.createSizeRestrictedMap(1000));
 
     /**
+     * Added to the image model of the original thumbnail of a video whose DeArrow icon was tapped,
+     * so the image cache does not show the replaced thumbnail cached for the same URL.
+     * The image URL hook removes it, so the thumbnail is fetched and cached on disk by its URL.
+     */
+    private static final String ORIGINAL_THUMBNAIL_MARKER = "#morphe_original_thumbnail";
+
+    /**
      * If non-zero, then the system time of when DeArrow API calls can resume.
      */
     private static volatile long timeToResumeDeArrowAPICalls;
@@ -330,6 +337,14 @@ public final class DeArrowPatch {
                 Settings.DEARROW_TITLES_SUBSCRIPTIONS,
                 Settings.DEARROW_TITLES_LIBRARY
         );
+    }
+
+    /**
+     * @return If thumbnails are replaced for any navigation, with DeArrow thumbnails or still captures.
+     */
+    static boolean replacesThumbnailsAnywhere() {
+        return DeArrowThumbnailsAvailability.usingDeArrowThumbnailsAnywhere()
+                || StillImagesAvailability.usingStillImagesAnywhere();
     }
 
     /**
@@ -465,7 +480,49 @@ public final class DeArrowPatch {
      * @param originalURL Image URL for all URL images loaded, including video thumbnails.
      */
     public static String overrideImageURL(String originalURL) {
+        if (originalURL.endsWith(ORIGINAL_THUMBNAIL_MARKER)) {
+            // The original thumbnail of a video whose DeArrow icon was tapped.
+            return originalURL.substring(0, originalURL.length() - ORIGINAL_THUMBNAIL_MARKER.length());
+        }
         return replaceImageURL(originalURL, thumbnailOptionForCurrentNavigation());
+    }
+
+    /**
+     * Injection point. Called when an image is loaded, with its image model, such as the URL of the image.
+     * <p>
+     * Images are cached by the image model, which is the URL before it's replaced. The original thumbnail of
+     * a video whose DeArrow icon was tapped is loaded with a marked URL instead, so it's not the replaced
+     * thumbnail cached for the URL, and the replaced thumbnail is shown again from the cache when tapped again.
+     */
+    public static Object getImageModel(Object model) {
+        try {
+            if (!DeArrowTitleIcon.isAnyOriginalBrandingSelected()) {
+                return model;
+            }
+            if (model instanceof String url) {
+                return isSelectedOriginalThumbnail(url) ? url + ORIGINAL_THUMBNAIL_MARKER : model;
+            }
+            if (model instanceof Uri uri) {
+                String url = uri.toString();
+                return isSelectedOriginalThumbnail(url) ? Uri.parse(url + ORIGINAL_THUMBNAIL_MARKER) : model;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getImageModel failure", ex);
+        }
+        return model;
+    }
+
+    /**
+     * @return If the URL is of a thumbnail replaced for the current navigation,
+     *         of a video whose DeArrow icon was tapped to show the original thumbnail.
+     */
+    private static boolean isSelectedOriginalThumbnail(String url) {
+        if (url.endsWith(ORIGINAL_THUMBNAIL_MARKER)) {
+            return false;
+        }
+        DecodedThumbnailURL decodedURL = DecodedThumbnailURL.decodeImageURL(url);
+        return decodedURL != null && DeArrowTitleIcon.isOriginalBrandingSelected(decodedURL.videoId)
+                && thumbnailOptionForCurrentNavigation() != ThumbnailOption.ORIGINAL;
     }
 
     /**
@@ -492,6 +549,9 @@ public final class DeArrowPatch {
             final var decodedURL = DecodedThumbnailURL.decodeImageURL(originalURL);
             if (decodedURL == null) {
                 return originalURL; // Not a thumbnail.
+            }
+            if (DeArrowTitleIcon.isOriginalBrandingSelected(decodedURL.videoId)) {
+                return originalURL; // The DeArrow icon of the video was tapped to show the original thumbnail.
             }
 
             Logger.printDebug(() -> "Original URL: " + decodedURL.sanitizedURL);

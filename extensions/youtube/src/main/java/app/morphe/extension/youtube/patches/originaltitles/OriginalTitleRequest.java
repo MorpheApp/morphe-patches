@@ -150,7 +150,7 @@ final class OriginalTitleRequest {
                             if (originalTitle == null && deArrow.needsOriginalTitle()) {
                                 originalTitle = fetchOriginalTitle(videoId);
                             }
-                            Titles titles = new Titles(deArrow.titleFor(originalTitle), fetchedTitles.originalTitle());
+                            Titles titles = new Titles(deArrow.titleFor(videoId, originalTitle), fetchedTitles.originalTitle());
                             FeedVideoCardsPatch.addVideoText(videoId, titles.deArrowTitle());
                             // Not replaced if the titles were fetched again meanwhile.
                             cache.replace(videoId, fetchedFuture, CompletableFuture.completedFuture(titles));
@@ -173,7 +173,7 @@ final class OriginalTitleRequest {
                                 originalTitle = fetchOriginalTitle(videoId);
                                 originalFetched = true;
                             }
-                            deArrowTitle = deArrow.titleFor(originalTitle);
+                            deArrowTitle = deArrow.titleFor(videoId, originalTitle);
                         } catch (DeArrowBrandingRequest.DeArrowException ex) {
                             // The DeArrow title is fetched again later, and the original title is used meanwhile.
                             retryTimes.put(videoId, System.currentTimeMillis() + FAILED_FETCH_RETRY_MILLISECONDS);
@@ -220,6 +220,19 @@ final class OriginalTitleRequest {
     @Nullable
     static OriginalVideo getOriginalIfFetched(String videoId) {
         return originalVideos.get(videoId);
+    }
+
+    /**
+     * Fetches the original title if it was not fetched before, such as when original titles are not restored.
+     *
+     * @return The original title, or null if the video has no available title or it failed to fetch.
+     */
+    static CompletableFuture<String> fetchOriginalTitleIfNeeded(String videoId) {
+        OriginalVideo original = originalVideos.get(videoId);
+        if (original != null) {
+            return CompletableFuture.completedFuture(original.title());
+        }
+        return CompletableFuture.supplyAsync(() -> fetchOriginalTitle(videoId), Utils::runOnBackgroundThread);
     }
 
     /**

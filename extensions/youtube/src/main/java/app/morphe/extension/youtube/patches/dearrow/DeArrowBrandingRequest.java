@@ -92,12 +92,13 @@ public final class DeArrowBrandingRequest {
         }
 
         /**
+         * @param videoId       The video id of this title.
          * @param originalTitle The original title, or null if not needed or it failed to fetch.
          * @return The DeArrow title, or null if the video has no DeArrow title, DeArrow keeps
          *         the original title, or casual mode shows the original title.
          */
         @Nullable
-        public String titleFor(@Nullable String originalTitle) {
+        public String titleFor(String videoId, @Nullable String originalTitle) {
             if (title == null) {
                 return null;
             }
@@ -106,7 +107,7 @@ public final class DeArrowBrandingRequest {
                 Logger.printDebug(() -> "Casual mode shows the original title instead of: " + title);
                 return null;
             }
-            fetchedTitles.add(title);
+            fetchedTitles.put(title, videoId);
             return title;
         }
     }
@@ -129,20 +130,21 @@ public final class DeArrowBrandingRequest {
             Collections.synchronizedMap(Utils.createSizeRestrictedMap(1000));
 
     /**
-     * DeArrow titles that were fetched. Titles replaced before they are laid out
-     * are only known by their text.
+     * DeArrow title -> video id, of the DeArrow titles that were fetched.
+     * Titles replaced before they are laid out are only known by their text.
      */
-    private static final Set<String> fetchedTitles = Collections.newSetFromMap(
-            Collections.synchronizedMap(Utils.createSizeRestrictedMap(1000)));
+    private static final Map<String, String> fetchedTitles =
+            Collections.synchronizedMap(Utils.createSizeRestrictedMap(1000));
 
     private DeArrowBrandingRequest() {
     }
 
     /**
-     * @return If the title is a DeArrow title that was fetched.
+     * @return The video id of the DeArrow title, or null if the title is not a DeArrow title that was fetched.
      */
-    public static boolean isDeArrowTitle(String title) {
-        return fetchedTitles.contains(title);
+    @Nullable
+    public static String getVideoIdOfTitle(String title) {
+        return fetchedTitles.get(title);
     }
 
     /**
