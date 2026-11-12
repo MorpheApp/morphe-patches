@@ -28,6 +28,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
         hidePlayServicesCastRoutes()
         sendQueueMovesToReceiver()
         skipQueueRestorationWhileCasting()
+        searchDeviceFilesWithMediaProvider()
     },
 ) {
     dependsOn(
