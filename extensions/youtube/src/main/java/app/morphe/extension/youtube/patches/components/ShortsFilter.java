@@ -45,6 +45,7 @@ import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationEndpoint;
 import app.morphe.extension.youtube.innertube.PushNotification.PushNotificationSupportedRenderers;
 import app.morphe.extension.youtube.patches.LayoutReloadObserverPatch;
+import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -533,6 +534,48 @@ public final class ShortsFilter extends Filter {
         } catch (Exception ex) {
             Logger.printException(() -> "hideEmptyBottomActionBar failure", ex);
         }
+    }
+
+    /**
+     * If the Short whose page is created shows the bar below it, such as the comment bar.
+     */
+    private static volatile boolean shortShowsBottomActionBar;
+
+    /**
+     * Injection point.
+     * Called with the configuration of a Shorts page right before its navigation bar mode is read.
+     */
+    public static void setReelWatchConfig(@Nullable MessageLite config) {
+        boolean showsBottomActionBar = false;
+        if (Settings.HIDE_SHORTS_PREVIEW_COMMENT.get() && config != null) {
+            try {
+                List<ProtoNode> fields = ProtoNode.parse(config.toByteArray());
+                if (fields != null) {
+                    // Field 8 holds the bar below the Short, its field 1 turns the bar on.
+                    ProtoNode enabled = ProtoNode.field(ProtoNode.message(fields, 8), 1);
+                    showsBottomActionBar = enabled != null && Long.valueOf(1).equals(enabled.getVarint());
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "setReelWatchConfig failure", ex);
+            }
+        }
+        shortShowsBottomActionBar = showsBottomActionBar;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The Shorts opened from a channel show the comment bar below them instead of the navigation bar.
+     * When the comment bar is hidden, the navigation bar is kept.
+     *
+     * @param original The navigation bar mode: 1 shows it, 2 hides it,
+     *                 3 hides it if the Short fits the screen without it.
+     */
+    public static int getNavigationBarMode(int original) {
+        if (shortShowsBottomActionBar && (original == 2 || original == 3)) {
+            return 1;
+        }
+        return original;
     }
 
     @Override

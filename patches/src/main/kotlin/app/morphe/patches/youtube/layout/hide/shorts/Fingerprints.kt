@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.layout.hide.shorts
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -22,6 +23,35 @@ import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+
+/**
+ * Reads from the configuration of a Shorts page whether the navigation bar is hidden.
+ * The first instruction match is the field of the navigation bar settings in the configuration,
+ * and the fourth one is the mode of the navigation bar.
+ */
+internal object ShortsNavigationBarModeFingerprint : Fingerprint(
+    classFingerprint = Fingerprint(
+        filters = listOf(
+            resourceLiteral(ResourceType.LAYOUT, "reel_watch_fragment")
+        )
+    ),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        opcode(Opcode.SGET_OBJECT, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("I"),
+            returnType = "I",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        opcode(Opcode.CONST_4, location = MatchAfterImmediately()),
+        opcode(Opcode.ADD_INT_LIT8, location = MatchAfterImmediately())
+    )
+)
 
 internal object ShortsBottomBarContainerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
