@@ -316,6 +316,69 @@ internal object UpdateOfflineVideoPolicyFingerprint : Fingerprint(
 )
 
 /**
+ * The offline setting category of YouTube Settings > Background & downloads.
+ */
+internal object OfflineSettingCategoryToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string("OfflineSettingCategory{isFullHdFormatOptionAvailable=")
+    )
+)
+
+/**
+ * Parameters are in the order of the fields in [OfflineSettingCategoryToStringFingerprint].
+ */
+internal object OfflineSettingCategoryConstructorFingerprint : Fingerprint(
+    classFingerprint = OfflineSettingCategoryToStringFingerprint,
+    name = "<init>",
+    parameters = listOf(
+        "Z", // Full HD format option is available.
+        "Z", // Recommendations are enabled.
+        "Z", // Download quality is enabled.
+        "Z", // Smart downloads are displayed.
+        "L",
+        "L",
+        "L"
+    )
+)
+
+/**
+ * Creates the offline setting category from the setting category of the server.
+ */
+internal fun offlineSettingCategoryFromProtoFingerprint(offlineSettingCategoryType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = offlineSettingCategoryType,
+    parameters = listOf("L")
+)
+
+/**
+ * Creates the setting categories of YouTube Settings from the settings of the server,
+ * for both kinds of settings the settings response has.
+ */
+internal object SettingCategoriesFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "Ljava/util/List;",
+    parameters = listOf("[Ljava/lang/Object;", "L"),
+    filters = listOf(
+        opcode(Opcode.ARRAY_LENGTH),
+        // Setting categories of a setting.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Ljava/lang/Object;"),
+            returnType = "Ljava/lang/Object;"
+        ),
+        checkCast("Ljava/util/Collection;", location = MatchAfterWithin(3)),
+        methodCall(
+            smali = "Ljava/util/List;->addAll(Ljava/util/Collection;)Z",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.RETURN_OBJECT)
+    )
+)
+
+/**
  * Creates a player response model from the bytes of a player response.
  */
 internal fun playerResponseModelFromBytesFingerprint(playerResponseModel: String) = Fingerprint(

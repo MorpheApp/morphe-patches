@@ -22,8 +22,6 @@ import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.patches.BaseInAppDownloadsPatch;
-import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.innertube.Offline.ButtonCommand;
 import app.morphe.extension.shared.innertube.Offline.DownloadButtonColor;
 import app.morphe.extension.shared.innertube.Offline.DownloadButtonLayout;
@@ -40,6 +38,8 @@ import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistAction;
 import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistEndpoint;
 import app.morphe.extension.shared.innertube.Offline.PlaylistDownloadButtonViewModel;
 import app.morphe.extension.shared.innertube.Offline.PlaylistDownloadStatusEntityId;
+import app.morphe.extension.shared.patches.BaseInAppDownloadsPatch;
+import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
@@ -110,6 +110,46 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
             Logger.printException(() -> "replaceDownloadActionCommand failure", ex);
             return null;
         }
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param settingCategories            Setting categories of the server.
+     * @param offlineSettingCategoryClass  Class of the offline setting category.
+     * @return If the offline setting category must be added to the setting categories.
+     */
+    public static boolean needsOfflineSettingCategory(List<?> settingCategories,
+                                                      Class<?> offlineSettingCategoryClass) {
+        try {
+            if (!isInAppDownloadMode()) {
+                return false;
+            }
+
+            for (Object settingCategory : settingCategories) {
+                if (offlineSettingCategoryClass.isInstance(settingCategory)) {
+                    return false;
+                }
+            }
+
+            Logger.printDebug(() -> "Adding offline setting category");
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "needsOfflineSettingCategory failure", ex);
+            return false;
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the offline setting category is created, for the download quality setting
+     * and its 1080p quality, which the server can turn off.
+     *
+     * @param original If the server enables the setting.
+     */
+    public static boolean unlockOfflineSetting(boolean original) {
+        return original || isInAppDownloadMode();
     }
 
     /**

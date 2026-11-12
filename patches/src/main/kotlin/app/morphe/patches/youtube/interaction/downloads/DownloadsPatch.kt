@@ -41,6 +41,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -355,6 +356,75 @@ val downloadsPatch = patch(
                 )
             }
         }
+
+        // Show the download settings in YouTube Settings > Background & downloads.
+        // Without the offline setting category, the settings are hidden until a video is saved.
+        val offlineSettingCategoryClass = OfflineSettingCategoryToStringFingerprint.classDef
+        val offlineSettingCategoryType = offlineSettingCategoryClass.type
+        val offlineSettingCategoryFromProto =
+            offlineSettingCategoryFromProtoFingerprint(offlineSettingCategoryType).method
+
+        val addOfflineSettingCategoryMethod = ImmutableMethod(
+            offlineSettingCategoryType,
+            "patch_addOfflineSettingCategory",
+            listOf(ImmutableMethodParameter("Ljava/util/List;", null, null)),
+            "Ljava/util/List;",
+            AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+            null,
+            null,
+            MutableMethodImplementation(3),
+        ).toMutable().apply {
+            addInstructionsWithLabels(
+                0,
+                """
+                    const-class v0, $offlineSettingCategoryType
+                    invoke-static { p0, v0 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->needsOfflineSettingCategory(Ljava/util/List;Ljava/lang/Class;)Z
+                    move-result v0
+                    if-eqz v0, :keep_setting_categories
+
+                    # Category with the settings of the server all off.
+                    sget-object v0, ${protoDefaultInstance(offlineSettingCategoryFromProto.parameterTypes.first().toString())}
+                    invoke-static { v0 }, $offlineSettingCategoryFromProto
+                    move-result-object v0
+
+                    # The original list can be immutable.
+                    new-instance v1, Ljava/util/ArrayList;
+                    invoke-direct { v1, p0 }, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+                    invoke-virtual { v1, v0 }, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+                    return-object v1
+
+                    :keep_setting_categories
+                    return-object p0
+                """
+            )
+        }
+        offlineSettingCategoryClass.methods.add(addOfflineSettingCategoryMethod)
+
+        SettingCategoriesFingerprint.let {
+            val returnMatch = it.instructionMatches.last()
+            val categoriesRegister = returnMatch.instruction.registersUsed.first()
+
+            it.method.addInstructionsAtControlFlowLabel(
+                returnMatch.index,
+                """
+                    invoke-static { v$categoriesRegister }, $addOfflineSettingCategoryMethod
+                    move-result-object v$categoriesRegister
+                """
+            )
+        }
+
+        OfflineSettingCategoryConstructorFingerprint.method.addInstructions(
+            0,
+            """
+                # Full HD format option is available.
+                invoke-static { p1 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->unlockOfflineSetting(Z)Z
+                move-result p1
+
+                # Download quality is enabled.
+                invoke-static { p3 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->unlockOfflineSetting(Z)Z
+                move-result p3
+            """
+        )
 
         // Commands run by the extension have no interaction logger, which saving a video
         // can use without checking it is set. The logger interface has a logger that logs nothing.
