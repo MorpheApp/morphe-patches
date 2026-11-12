@@ -29,6 +29,7 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
 val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     extensionClass = "Lapp/morphe/extension/youtube/patches/spoof/SpoofVideoStreamsPatch;",
+    mainActivityFingerprint = YouTubeActivityOnCreateFingerprint,
     mainActivityOnCreateFingerprints = listOf(
         YouTubeActivityOnCreateFingerprint,
         YouTubeApplicationInitFingerprint

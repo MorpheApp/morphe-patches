@@ -29,6 +29,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
@@ -61,6 +62,9 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
+private const val EXTENSION_WEBVIEW_CHECK_CLASS =
+    "Lapp/morphe/extension/shared/spoof/WebViewCheck;"
+
 /**
  * Status of the server error a stream response fails with, when it is a SABR error.
  */
@@ -77,6 +81,14 @@ internal fun addMediaSessionOverride(extension: String) {
 
 private val spoofVideoStreamsResourcePatch = patch {
     execute {
+        // Allows checking if the WebView and the Play Store are installed on Android 11+.
+        resourceXml("AndroidManifest.xml").use { manifest ->
+            val queries = manifest.elements("queries").firstOrNull() ?: manifest.root.appendChild("queries")
+            setOf("com.google.android.webview", "com.android.vending").forEach { packageName ->
+                queries.appendChild("package") { setAttribute("android:name", packageName) }
+            }
+        }
+
         // region copy the ejs wrapper.
 
         copyResources(
@@ -98,6 +110,7 @@ private val spoofVideoStreamsResourcePatch = patch {
 
 internal fun spoofVideoStreamsPatch(
     extensionClass: String,
+    mainActivityFingerprint: Fingerprint,
     mainActivityOnCreateFingerprints: List<Fingerprint>,
     fixParsePlaybackResponseFeatureFlag: PatchDefinition.() -> Boolean,
     fixMediaSessionFeatureFlag: PatchDefinition.() -> Boolean,
@@ -119,6 +132,11 @@ internal fun spoofVideoStreamsPatch(
     )
 
     execute {
+        mainActivityFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_WEBVIEW_CHECK_CLASS->showDialogIfNeeded(Landroid/app/Activity;)V"
+        )
+
         mainActivityOnCreateFingerprints.forEach { fingerprint ->
             fingerprint.method.addInstruction(
                 0,
