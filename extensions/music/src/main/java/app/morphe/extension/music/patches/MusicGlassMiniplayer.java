@@ -41,10 +41,11 @@ import app.morphe.extension.shared.ui.glass.GlassCapsuleDrawable;
  * Draws the floating miniplayer of YouTube Music (9.39+) as a rounded, translucent glass card
  * ({@link GlassCapsuleDrawable}), with the page behind it blurred like the glass navigation bar.
  * <p>
- * While the player is collapsed into the miniplayer, the artwork is rounded with corners that follow the card,
- * or is round and spins while a song plays, the progress bar of the player ends before the rounded corners,
- * and the background of the player around the card is faded out, so the page shows around it.
- * Everything is put back when the player opens.
+ * While the player is collapsed into the miniplayer (either at the bottom of the screen or pinned
+ * at the top while the lyrics, comments, or queue sheets are open), the artwork is rounded with
+ * corners that follow the card, or is round and spins while a song plays, the progress bar of the
+ * player ends before the rounded corners, and the background of the player around the card is
+ * faded out, so the page shows around it. Everything is put back when the full player opens.
  */
 @SuppressWarnings("unused")
 public final class MusicGlassMiniplayer {
@@ -80,9 +81,7 @@ public final class MusicGlassMiniplayer {
      * The least room between the buttons and the end of the card.
      */
     private static final int BUTTONS_END_ROOM = Dim.dp8;
-
     private static final int MIN_ARTWORK_RADIUS = Dim.dp(6);
-
     private static final long SPIN_MILLISECONDS = 10_000;
 
     /**
@@ -169,6 +168,7 @@ public final class MusicGlassMiniplayer {
         final boolean nowPlaying = state.getState() == PlaybackState.STATE_PLAYING;
         if (nowPlaying == playing) return;
         playing = nowPlaying;
+
         Utils.runOnMainThread(MusicGlassMiniplayer::updateSpinning);
     }
 
@@ -210,12 +210,13 @@ public final class MusicGlassMiniplayer {
 
     /**
      * @return The bottom of the collapsed miniplayer in the coordinates of the player page,
-     *         or {@link Integer#MAX_VALUE} if the player is not collapsed into a glass miniplayer.
+     *         or {@link Integer#MAX_VALUE} if the player is not collapsed into a glass miniplayer
+     *         at the bottom of the screen.
      */
     static int getCollapsedBottom(View playerPage) {
         if (!styled) return Integer.MAX_VALUE;
         View miniplayer = currentMiniplayer.get();
-        if (miniplayer == null) return Integer.MAX_VALUE;
+        if (miniplayer == null || !isAtBottom(miniplayer)) return Integer.MAX_VALUE;
 
         miniplayer.getLocationInWindow(miniplayerLocation);
         playerPage.getLocationInWindow(location);
@@ -232,6 +233,7 @@ public final class MusicGlassMiniplayer {
         glass.setTintColor(getTintColor());
         currentGlass = new WeakReference<>(glass);
         miniplayer.setBackground(glass);
+
         Logger.printDebug(() -> "Glass miniplayer applied");
 
         float[] lastPlayerPosition = {Float.NaN};
@@ -249,15 +251,15 @@ public final class MusicGlassMiniplayer {
             readSettings();
             glass.setStyle(opacityScale, lightTint, rimScale);
             glass.setTintColor(getTintColor());
-            restore();
+            if (styled) {
+                style(miniplayer, getPlayerPage(miniplayer));
+            }
             miniplayer.invalidate();
         });
 
         miniplayer.getViewTreeObserver().addOnPreDrawListener(() -> {
+            if (currentMiniplayer.get() != miniplayer) return true;
             try {
-                if (currentMiniplayer.get() != miniplayer) return true;
-
-                // The app hands the miniplayer its own background again, such as when the color changes.
                 if (miniplayer.getBackground() != glass) {
                     miniplayer.setBackground(glass);
                 }
@@ -268,6 +270,7 @@ public final class MusicGlassMiniplayer {
                 } else {
                     restore();
                 }
+
                 fadePlayerBackground(miniplayer, playerPage);
 
                 // The blurred page is drawn again while the player moves.
@@ -300,18 +303,18 @@ public final class MusicGlassMiniplayer {
     }
 
     /**
-     * @return If the player is collapsed into the miniplayer at the bottom of the screen. The miniplayer is also
-     *         shown at the top of the open player, such as while the lyrics or the queue are open.
+     * @return If the player is collapsed into the miniplayer (either at the bottom of the screen
+     *         or pinned at the top while the lyrics, comments, or queue sheets are open).
+     *         Keeping the miniplayer styled while pinned at the top prevents the artwork from
+     *         reverting to its unscaled square layout and overflowing the top glass capsule.
      */
     private static boolean isCollapsed(View miniplayer) {
-        if (!miniplayer.isShown() || miniplayer.getAlpha() < 0.9f) return false;
-        miniplayer.getLocationInWindow(miniplayerLocation);
-        return miniplayerLocation[1] > miniplayer.getRootView().getHeight() / 2;
+        return miniplayer.isShown() && miniplayer.getAlpha() >= 0.85f && miniplayer.getHeight() > 0;
     }
 
     /**
-     * The background of the player is behind the card, and is faded out while the player is collapsed,
-     * so the page shows around the rounded corners. It is opaque again while the player opens.
+     * The background of the player is behind the card, and is faded out while the player is collapsed
+     * at the bottom, so the page shows around the rounded corners. It is opaque again while the player opens.
      */
     private static void fadePlayerBackground(View miniplayer, @Nullable View playerPage) {
         if (playerPage == null) return;
@@ -320,6 +323,7 @@ public final class MusicGlassMiniplayer {
         final int alpha = miniplayer.isShown() && isAtBottom(miniplayer)
                 ? Math.round((1 - Math.min(1, miniplayer.getAlpha())) * 255)
                 : 255;
+
         for (ViewParent parent = miniplayer.getParent(); parent instanceof View view; parent = view.getParent()) {
             Drawable background = view.getBackground();
             if (background != null) {
@@ -340,7 +344,7 @@ public final class MusicGlassMiniplayer {
 
         // Without the glass navigation bar, the player is cut at the bottom of the card.
         if (!MusicGlassNavigationBar.isGlassActive()) {
-            if (styled) {
+            if (styled && isAtBottom(miniplayer)) {
                 final int bottom = getCollapsedBottom(playerPage);
                 Rect clip = playerPage.getClipBounds();
                 if (clip == null || clip.bottom != bottom || clip.right != playerPage.getWidth()) {
@@ -358,6 +362,10 @@ public final class MusicGlassMiniplayer {
         return miniplayerLocation[1] > miniplayer.getRootView().getHeight() / 2;
     }
 
+    private static boolean isRtl(View view) {
+        return view.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+    }
+
     /**
      * Styles the artwork, the buttons and the progress bar for the collapsed player.
      */
@@ -368,23 +376,25 @@ public final class MusicGlassMiniplayer {
         final int height = miniplayer.getHeight();
         final float cardRadius = getCornerRadius(cornerRadius, height);
         final int horizontalInset = getHorizontalInset(miniplayer);
+        final boolean rtl = isRtl(miniplayer);
 
         View root = playerPage != null ? playerPage : miniplayer.getRootView();
         for (int id : ARTWORKS) {
             View artwork = id == 0 ? null : root.findViewById(id);
             if (artwork != null && artwork.getWidth() > 0) {
-                fitArtwork(miniplayer, artwork, horizontalInset);
+                fitArtwork(miniplayer, artwork, horizontalInset, rtl);
                 roundArtwork(artwork, getArtworkRadius(cardRadius, artworkPadding));
             }
         }
+
         updateSpinning();
 
-        // The buttons stay away from the rounded end of the card.
+        // The buttons stay away from the rounded end of the card (right in LTR, left in RTL).
+        final float shift = (rtl ? 1f : -1f) * (horizontalInset + BUTTONS_END_ROOM);
         for (int id : BUTTONS) {
             View button = id == 0 ? null : miniplayer.findViewById(id);
-            if (button != null) {
-                final float shift = -(horizontalInset + BUTTONS_END_ROOM);
-                if (button.getTranslationX() != shift) button.setTranslationX(shift);
+            if (button != null && button.getTranslationX() != shift) {
+                button.setTranslationX(shift);
             }
         }
 
@@ -416,9 +426,9 @@ public final class MusicGlassMiniplayer {
 
     /**
      * The artwork is made as tall as the card without the padding, and is moved to the padding from the start
-     * of the card. It is scaled around its middle, which it also spins around.
+     * of the card (left in LTR, right in RTL). It is scaled around its middle, which it also spins around.
      */
-    private static void fitArtwork(View miniplayer, View artwork, int horizontalInset) {
+    private static void fitArtwork(View miniplayer, View artwork, int horizontalInset, boolean rtl) {
         final int width = artwork.getWidth();
         final float scale = Math.min(1, Math.max(Dim.dp(24), miniplayer.getHeight() - 2f * artworkPadding)
                 / artwork.getHeight());
@@ -426,12 +436,17 @@ public final class MusicGlassMiniplayer {
         // Where the start of the artwork is without the move, the scale and the spin.
         if (!(artwork.getParent() instanceof View parent)) return;
         parent.getLocationInWindow(location);
-        final float left = location[0] + artwork.getLeft();
+        final float unscaledLeft = location[0] + artwork.getLeft();
         miniplayer.getLocationInWindow(miniplayerLocation);
-        final float translation = miniplayerLocation[0] + horizontalInset + artworkPadding
-                - (left + width * (1 - scale) / 2);
+
+        final float targetScaledLeft = rtl
+                ? miniplayerLocation[0] + miniplayer.getWidth() - horizontalInset - artworkPadding - width * scale
+                : miniplayerLocation[0] + horizontalInset + artworkPadding;
+        final float currentScaledLeftWithoutTranslation = unscaledLeft + width * (1 - scale) / 2f;
+        final float translation = targetScaledLeft - currentScaledLeftWithoutTranslation;
 
         if (artwork.getScaleX() == scale && Math.abs(artwork.getTranslationX() - translation) < 0.5f) return;
+
         movedArtworks.put(artwork, true);
         artwork.setPivotX(width / 2f);
         artwork.setPivotY(artwork.getHeight() / 2f);
@@ -524,6 +539,7 @@ public final class MusicGlassMiniplayer {
             artwork.setTranslationX(0);
         }
         movedArtworks.clear();
+
         updateSpinning();
 
         View miniplayer = currentMiniplayer.get();
@@ -598,8 +614,8 @@ public final class MusicGlassMiniplayer {
 
         @Override
         public void drawBackdrop(Canvas canvas) {
-            // At the top of the open player, the player is behind the miniplayer.
-            if (styled) {
+            // Only blur the underlying browse page when the miniplayer is at the bottom of the screen.
+            if (styled && isAtBottom(miniplayer)) {
                 backdrop = MusicGlassNavigationBar.drawPageBehind(canvas, miniplayer, blurRadius, true, backdrop,
                         "GlassMiniplayer");
             }
