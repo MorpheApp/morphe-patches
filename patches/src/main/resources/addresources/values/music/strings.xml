@@ -930,9 +930,13 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
 
 
     <!-- video.audio.audioFxProfilesPatch -->
-    <string name="morphe_music_audio_fx_enabled_title">Audio FX profiles</string>
-    <string name="morphe_music_audio_fx_enabled_summary">Shows real-time Audio FX profile options (Nightcore, Slowed + Reverb, Lo-Fi, 8D, etc.) next to Lyrics in the full-screen player</string>
-    <string name="morphe_music_audio_fx_profile_title">Audio FX profile</string>
+    <string name="morphe_music_audio_fx_screen_title">Audio FX profiles</string>
+    <string name="morphe_music_audio_fx_screen_summary">Configure real-time Audio FX profiles, 8D spatial rotation, and custom DSP sliders</string>
+    <string name="morphe_music_audio_fx_enabled_title">Enable Audio FX</string>
+    <string name="morphe_music_audio_fx_enabled_summary">Enables real-time Audio FX processing for online and offline playback</string>
+    <string name="morphe_music_audio_fx_show_player_tab_title">Show FX button next to Lyrics</string>
+    <string name="morphe_music_audio_fx_show_player_tab_summary">Adds an inline FX button right beside the Lyrics tab in the full-screen player</string>
+    <string name="morphe_music_audio_fx_profile_title">Active Audio FX profile</string>
     <string name="morphe_music_audio_fx_profile_entry_default">Default (Off)</string>
     <string name="morphe_music_audio_fx_profile_entry_nightcore">Nightcore (High energy &amp; pitch)</string>
     <string name="morphe_music_audio_fx_profile_entry_slowed_reverb">Slowed + Reverb (Midnight drive)</string>
@@ -941,6 +945,20 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_audio_fx_profile_entry_daycore">Daycore (Deep pitch &amp; slow)</string>
     <string name="morphe_music_audio_fx_profile_entry_vaporwave">Vaporwave (80s aesthetic retro)</string>
     <string name="morphe_music_audio_fx_profile_entry_live_concert">Live Concert (Stadium arena)</string>
-    <string name="morphe_music_audio_fx_profile_entry_audio_8d">8D Audio (Spatial surround)</string>
+    <string name="morphe_music_audio_fx_profile_entry_audio_8d">8D Audio (360° Binaural rotation)</string>
     <string name="morphe_music_audio_fx_profile_entry_bass_boosted">Bass Boosted (Subwoofer punch)</string>
+    <string name="morphe_music_audio_fx_profile_entry_custom">Custom (Use sliders below)</string>
+    <string name="morphe_music_audio_fx_customization_category">Fine-tuning &amp; 8D Audio customization</string>
+    <string name="morphe_music_audio_fx_custom_speed_title">Speed multiplier</string>
+    <string name="morphe_music_audio_fx_custom_speed_summary">Adjusts profile playback tempo (100% = profile default)</string>
+    <string name="morphe_music_audio_fx_custom_pitch_title">Pitch multiplier</string>
+    <string name="morphe_music_audio_fx_custom_pitch_summary">Adjusts profile vocal pitch (100% = profile default)</string>
+    <string name="morphe_music_audio_fx_bass_level_title">Bass boost intensity</string>
+    <string name="morphe_music_audio_fx_bass_level_summary">Scales sub-bass punch across active profiles</string>
+    <string name="morphe_music_audio_fx_reverb_level_title">Reverb room size</string>
+    <string name="morphe_music_audio_fx_reverb_level_summary">Adjusts acoustic reverb intensity and room depth</string>
+    <string name="morphe_music_audio_fx_8d_speed_title">8D rotation cycle duration</string>
+    <string name="morphe_music_audio_fx_8d_speed_summary">Seconds per full 360° left-right rotation around the head (lower = faster)</string>
+    <string name="morphe_music_audio_fx_8d_depth_title">8D spatial panning depth</string>
+    <string name="morphe_music_audio_fx_8d_depth_summary">Strength of left-right channel separation during 8D rotation</string>
 </resources>

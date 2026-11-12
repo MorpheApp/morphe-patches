@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.ui.Dim.dp;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -20,14 +21,10 @@ import android.media.audiofx.Equalizer;
 import android.media.audiofx.LoudnessEnhancer;
 import android.media.audiofx.PresetReverb;
 import android.media.audiofx.Virtualizer;
-import android.text.TextUtils;
-import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -35,20 +32,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.nio.ByteBuffer;
+
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 
 /**
  * Real-time DSP and AudioFX profile engine for YouTube Music.
- * Works across both online streaming and offline playback by hooking ExoPlayer
- * PlaybackParameters (tempo & pitch) and Android hardware AudioTrack session DSPs.
- * Also provides an in-player Audio FX tab button right next to the Lyrics tab
- * and a sleek profile selector strip/sheet in the full-screen player.
+ * Works across both online streaming and offline playback by hooking:
+ * 1) ExoPlayer PlaybackParameters (tempo & pitch),
+ * 2) ExoPlayer PCM ByteBuffer queueInput (for real-time 8D binaural stereo rotation),
+ * 3) Android hardware AudioTrack session DSPs (Reverb, BassBoost, Equalizer, Virtualizer, Loudness).
+ * Also places an inline "FX" button directly beside the "LYRICS" tab button in the full-screen player.
  */
 @SuppressWarnings("unused")
 public final class AudioFxProfilesPatch {
@@ -103,6 +104,11 @@ public final class AudioFxProfilesPatch {
                 "morphe_music_audio_fx_profile_entry_bass_boosted",
                 "Bass Boosted",
                 1.0f, 1.0f, PresetReverb.PRESET_NONE, (short) 1000, (short) 250, 350
+        ),
+        CUSTOM(
+                "morphe_music_audio_fx_profile_entry_custom",
+                "Custom",
+                1.0f, 1.0f, PresetReverb.PRESET_MEDIUMHALL, (short) 500, (short) 500, 100
         );
 
         public final String labelKey;
@@ -150,13 +156,20 @@ public final class AudioFxProfilesPatch {
     private static final String TABBED_VIEW_ID = "bottom_sheet_tabbed_view";
     private static final String FX_TAB_TAG = "morphe_audio_fx_tab_button";
 
+    // 8D Audio real-time LFO state (runs on the ExoPlayer audio processor thread)
+    private static final int ASSUMED_SAMPLE_RATE = 48000;
+    private static double lfoPhase = 0.0;
+    @Nullable
+    private static ByteBuffer lastProcessedBuffer;
+    private static int lastProcessedPosition;
+    private static int lastProcessedLimit;
+
     private static final SharedPreferences.OnSharedPreferenceChangeListener PREF_LISTENER =
             (prefs, key) -> {
-                if (Settings.AUDIO_FX_ENABLED.key.equals(key)
-                        || Settings.AUDIO_FX_PROFILE.key.equals(key)) {
+                if (key != null && key.startsWith("morphe_music_audio_fx")) {
                     applyActiveProfileEffects();
                     PlaybackSpeedPatch.setVideoTime(0L);
-                    Utils.runOnMainThreadNowOrLater(AudioFxBar::refreshAll);
+                    Utils.runOnMainThreadNowOrLater(AudioFxProfilesPatch::refreshPlayerTabButton);
                 }
             };
 
@@ -193,7 +206,7 @@ public final class AudioFxProfilesPatch {
         Settings.AUDIO_FX_PROFILE.save(profile);
         applyActiveProfileEffects();
         PlaybackSpeedPatch.setVideoTime(0L);
-        Utils.runOnMainThreadNowOrLater(AudioFxBar::refreshAll);
+        Utils.runOnMainThreadNowOrLater(AudioFxProfilesPatch::refreshPlayerTabButton);
     }
 
     public static boolean isProfileActive() {
@@ -202,12 +215,102 @@ public final class AudioFxProfilesPatch {
 
     public static float getEffectiveSpeed(float baseSpeed) {
         AudioProfile profile = getActiveProfile();
-        return profile != AudioProfile.DEFAULT ? profile.speed : baseSpeed;
+        if (profile == AudioProfile.DEFAULT) {
+            return baseSpeed;
+        }
+        float customMultiplier = SeekBarPreference.clampToRange(Settings.AUDIO_FX_CUSTOM_SPEED) / 100f;
+        if (profile == AudioProfile.CUSTOM) {
+            return customMultiplier;
+        }
+        return profile.speed * customMultiplier;
     }
 
     public static float getEffectivePitch(float basePitch) {
         AudioProfile profile = getActiveProfile();
-        return profile != AudioProfile.DEFAULT ? profile.pitch : basePitch;
+        if (profile == AudioProfile.DEFAULT) {
+            return basePitch;
+        }
+        float customMultiplier = SeekBarPreference.clampToRange(Settings.AUDIO_FX_CUSTOM_PITCH) / 100f;
+        if (profile == AudioProfile.CUSTOM) {
+            return customMultiplier;
+        }
+        return profile.pitch * customMultiplier;
+    }
+
+    /**
+     * Ensures ExoPlayer keeps the SilenceSkippingAudioProcessor active in the pipeline
+     * when 8D Audio is selected so that processAudioBuffer() receives every PCM frame.
+     */
+    public static boolean shouldKeepAudioProcessorActive(boolean original) {
+        if (getActiveProfile() == AudioProfile.AUDIO_8D) {
+            return true;
+        }
+        return original;
+    }
+
+    /**
+     * Real-time 16-bit stereo PCM processor for 8D Audio binaural LFO panning.
+     * Rotates the stereo soundstage smoothly between Left and Right ear channels.
+     */
+    public static void processAudioBuffer(@Nullable ByteBuffer input) {
+        if (input == null || getActiveProfile() != AudioProfile.AUDIO_8D) {
+            return;
+        }
+        try {
+            final int position = input.position();
+            final int limit = input.limit();
+            // Avoid double-processing if the downstream sink only partially consumed the buffer
+            if (input == lastProcessedBuffer && limit == lastProcessedLimit && position > lastProcessedPosition) {
+                lastProcessedPosition = position;
+                return;
+            }
+            lastProcessedBuffer = input;
+            lastProcessedPosition = position;
+            lastProcessedLimit = limit;
+
+            if (input.isReadOnly() || limit - position < 4) {
+                return;
+            }
+
+            final int cycleSeconds = Math.max(2, SeekBarPreference.clampToRange(Settings.AUDIO_FX_8D_SPEED));
+            final float depth = SeekBarPreference.clampToRange(Settings.AUDIO_FX_8D_DEPTH) / 100f;
+            final double phaseStep = (2.0 * Math.PI) / (cycleSeconds * ASSUMED_SAMPLE_RATE);
+            double phase = lfoPhase;
+
+            // Process 16-bit little-endian stereo frames (4 bytes per stereo frame: L_lo, L_hi, R_lo, R_hi)
+            final int end = limit - 3;
+            for (int i = position; i < end; i += 4) {
+                short left = (short) ((input.get(i) & 0xFF) | (input.get(i + 1) << 8));
+                short right = (short) ((input.get(i + 2) & 0xFF) | (input.get(i + 3) << 8));
+
+                // Sine LFO in [-1, 1]
+                float pan = (float) Math.sin(phase) * depth;
+                phase += phaseStep;
+                if (phase >= 2.0 * Math.PI) {
+                    phase -= 2.0 * Math.PI;
+                }
+
+                // Equal-power / binaural crossfeed panning so the sound circles around the head
+                float leftGain = pan <= 0f ? 1.0f : Math.max(0.12f, 1.0f - pan * 0.88f);
+                float rightGain = pan >= 0f ? 1.0f : Math.max(0.12f, 1.0f + pan * 0.88f);
+
+                // Subtle cross-channel bleed for realistic spatialization
+                float mixedLeft = (left * 0.85f + right * 0.15f) * leftGain;
+                float mixedRight = (right * 0.85f + left * 0.15f) * rightGain;
+
+                int outL = Math.max(Short.MIN_VALUE, Math.min(Short.MAX_VALUE, Math.round(mixedLeft)));
+                int outR = Math.max(Short.MIN_VALUE, Math.min(Short.MAX_VALUE, Math.round(mixedRight)));
+
+                input.put(i, (byte) (outL & 0xFF));
+                input.put(i + 1, (byte) ((outL >> 8) & 0xFF));
+                input.put(i + 2, (byte) (outR & 0xFF));
+                input.put(i + 3, (byte) ((outR >> 8) & 0xFF));
+            }
+
+            lfoPhase = phase;
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "8D PCM processing skipped: " + ex.getMessage());
+        }
     }
 
     private static void ensureListenerRegistered() {
@@ -218,8 +321,8 @@ public final class AudioFxProfilesPatch {
     }
 
     /**
-     * Injection point called when a player TabbedView is selected or updated.
-     * Ensures the "FX" button sits right next to the Lyrics tab in the full-screen player.
+     * Injection point called when a player TabbedView is selected or updated,
+     * and scheduled on track changes to ensure the FX tab button sits inline next to LYRICS.
      */
     public static void onTabSelected(ViewGroup tabbedView) {
         try {
@@ -235,6 +338,20 @@ public final class AudioFxProfilesPatch {
         }
     }
 
+    public static void refreshPlayerTabButton() {
+        try {
+            Activity activity = Utils.getActivity();
+            if (activity == null) return;
+            View root = activity.getWindow().getDecorView();
+            int id = ResourceUtils.getIdentifier(ResourceType.ID, TABBED_VIEW_ID);
+            if (id != 0 && root.findViewById(id) instanceof ViewGroup tabbedView) {
+                installTabStripButton(tabbedView);
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "refreshPlayerTabButton failure: " + ex.getMessage());
+        }
+    }
+
     static void installTabStripButton(ViewGroup tabbedView) {
         if (tabbedView.getChildCount() == 0) return;
         View firstChild = tabbedView.getChildAt(0);
@@ -242,7 +359,8 @@ public final class AudioFxProfilesPatch {
         if (tabStrip == null) return;
 
         View existing = tabStrip.findViewWithTag(FX_TAB_TAG);
-        if (!isEnabled()) {
+        boolean shouldShow = isEnabled() && Settings.AUDIO_FX_SHOW_PLAYER_TAB.get();
+        if (!shouldShow) {
             if (existing != null) {
                 existing.setVisibility(View.GONE);
             }
@@ -281,19 +399,28 @@ public final class AudioFxProfilesPatch {
             fxButton.setText("FX");
             fxButton.setTextColor(0xB3FFFFFF);
         } else {
-            fxButton.setText("FX • " + active.shortName);
+            fxButton.setText("FX: " + active.shortName);
             fxButton.setTextColor(0xFFFF4E45);
         }
     }
 
+    /**
+     * Locates the horizontal ViewGroup holding the tab items (UP NEXT | LYRICS | RELATED)
+     * inside bottom_sheet_tabbed_view so our FX button is added right next to LYRICS/RELATED.
+     */
     @Nullable
     private static ViewGroup findTabRowContainer(View view) {
-        if (view instanceof LinearLayout linear && linear.getOrientation() == LinearLayout.HORIZONTAL) {
-            if (linear.getChildCount() >= 2) {
-                return linear;
-            }
-        }
         if (view instanceof ViewGroup group) {
+            int textOrTabChildren = 0;
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                View child = group.getChildAt(i);
+                if (child instanceof TextView || hasTextViewChild(child)) {
+                    textOrTabChildren++;
+                }
+            }
+            if (textOrTabChildren >= 2 && group instanceof LinearLayout) {
+                return group;
+            }
             for (int i = 0, count = group.getChildCount(); i < count; i++) {
                 ViewGroup found = findTabRowContainer(group.getChildAt(i));
                 if (found != null) {
@@ -302,6 +429,18 @@ public final class AudioFxProfilesPatch {
             }
         }
         return null;
+    }
+
+    private static boolean hasTextViewChild(View view) {
+        if (view instanceof TextView) return true;
+        if (view instanceof ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                if (hasTextViewChild(group.getChildAt(i))) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -380,130 +519,12 @@ public final class AudioFxProfilesPatch {
     }
 
     /**
-     * Horizontal chip bar placed directly alongside the player bottom sheet tabs
-     * (Up Next / Lyrics / Related) so profiles can be switched with one tap.
-     */
-    public static final class AudioFxBar extends LinearLayout {
-        private static final int BAR_HEIGHT_DP = 42;
-        private static AudioFxBar activeInstance;
-        private final LinearLayout chipContainer;
-
-        public AudioFxBar(Context context, AttributeSet attrs) {
-            super(context, attrs);
-            ensureListenerRegistered();
-            setOrientation(HORIZONTAL);
-            setGravity(Gravity.CENTER_VERTICAL);
-            setPadding(dp(12), dp(4), dp(12), dp(4));
-
-            HorizontalScrollView scroll = new HorizontalScrollView(context);
-            scroll.setHorizontalScrollBarEnabled(false);
-            scroll.setOverScrollMode(OVER_SCROLL_NEVER);
-
-            chipContainer = new LinearLayout(context);
-            chipContainer.setOrientation(HORIZONTAL);
-            chipContainer.setGravity(Gravity.CENTER_VERTICAL);
-
-            scroll.addView(chipContainer, new LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-            ));
-            addView(scroll, new LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    dp(BAR_HEIGHT_DP)
-            ));
-
-            renderChips();
-        }
-
-        static void refreshAll() {
-            if (activeInstance != null) {
-                activeInstance.renderChips();
-                ViewParent parent = activeInstance.getParent();
-                if (parent instanceof ViewGroup group) {
-                    View tabbed = group.findViewById(
-                            ResourceUtils.getIdentifier(ResourceType.ID, TABBED_VIEW_ID)
-                    );
-                    if (tabbed instanceof ViewGroup tg) {
-                        installTabStripButton(tg);
-                    }
-                }
-            }
-        }
-
-        private void renderChips() {
-            if (!isEnabled()) {
-                setVisibility(GONE);
-                return;
-            }
-            setVisibility(VISIBLE);
-            chipContainer.removeAllViews();
-
-            Context c = getContext();
-            AudioProfile active = getActiveProfile();
-
-            for (AudioProfile profile : AudioProfile.values()) {
-                boolean selected = (profile == active);
-                TextView chip = new TextView(c);
-                chip.setText(profile.shortName);
-                chip.setSingleLine(true);
-                chip.setEllipsize(TextUtils.TruncateAt.END);
-                chip.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-                chip.setTypeface(selected ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
-                chip.setTextColor(selected ? Color.WHITE : 0xCCFFFFFF);
-                chip.setGravity(Gravity.CENTER);
-                chip.setPadding(dp(12), dp(5), dp(12), dp(5));
-
-                GradientDrawable bg = new GradientDrawable();
-                bg.setCornerRadius(dp(16));
-                if (selected) {
-                    bg.setColor(0xFFFF4E45);
-                } else {
-                    bg.setColor(0x22FFFFFF);
-                    bg.setStroke(dp(1), 0x33FFFFFF);
-                }
-                chip.setBackground(bg);
-                chip.setOnClickListener(v -> selectProfile(profile));
-
-                LayoutParams lp = new LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                );
-                lp.setMarginEnd(dp(8));
-                chipContainer.addView(chip, lp);
-            }
-        }
-
-        @Override
-        protected void onAttachedToWindow() {
-            super.onAttachedToWindow();
-            activeInstance = this;
-            renderChips();
-            // Also attach the FX button next to Lyrics in the sibling TabbedView
-            if (getParent() instanceof ViewGroup parentGroup) {
-                parentGroup.post(() -> {
-                    int id = ResourceUtils.getIdentifier(ResourceType.ID, TABBED_VIEW_ID);
-                    if (id != 0 && parentGroup.findViewById(id) instanceof ViewGroup tabbedView) {
-                        installTabStripButton(tabbedView);
-                    }
-                });
-            }
-        }
-
-        @Override
-        protected void onDetachedFromWindow() {
-            if (activeInstance == this) {
-                activeInstance = null;
-            }
-            super.onDetachedFromWindow();
-        }
-    }
-
-    /**
      * Injection point called when ExoPlayer initializes or switches AudioTrack session ID.
      */
     public static synchronized void onAudioSessionId(int sessionId) {
         try {
             ensureListenerRegistered();
+            Utils.runOnMainThreadNowOrLater(AudioFxProfilesPatch::refreshPlayerTabButton);
             if (sessionId <= 0) {
                 return;
             }
@@ -541,7 +562,8 @@ public final class AudioFxProfilesPatch {
 
     private static void applyReverb(@NonNull AudioProfile profile) {
         try {
-            if (profile.reverbPreset == PresetReverb.PRESET_NONE) {
+            int reverbScale = SeekBarPreference.clampToRange(Settings.AUDIO_FX_REVERB_LEVEL);
+            if (profile.reverbPreset == PresetReverb.PRESET_NONE || reverbScale <= 0) {
                 if (reverbEffect != null) {
                     reverbEffect.setEnabled(false);
                 }
@@ -550,7 +572,13 @@ public final class AudioFxProfilesPatch {
             if (reverbEffect == null) {
                 reverbEffect = new PresetReverb(0, activeSessionId);
             }
-            reverbEffect.setPreset(profile.reverbPreset);
+            short targetPreset = profile.reverbPreset;
+            if (reverbScale < 40) {
+                targetPreset = PresetReverb.PRESET_SMALLROOM;
+            } else if (reverbScale < 75 && targetPreset == PresetReverb.PRESET_LARGEHALL) {
+                targetPreset = PresetReverb.PRESET_MEDIUMHALL;
+            }
+            reverbEffect.setPreset(targetPreset);
             reverbEffect.setEnabled(true);
         } catch (Exception ex) {
             Logger.printDebug(() -> "PresetReverb unavailable: " + ex.getMessage());
@@ -559,7 +587,9 @@ public final class AudioFxProfilesPatch {
 
     private static void applyBassBoost(@NonNull AudioProfile profile) {
         try {
-            if (profile.bassStrength <= 0) {
+            float bassMultiplier = SeekBarPreference.clampToRange(Settings.AUDIO_FX_BASS_LEVEL) / 100f;
+            short scaledStrength = (short) Math.min(1000, Math.round(profile.bassStrength * bassMultiplier));
+            if (scaledStrength <= 0) {
                 if (bassBoostEffect != null) {
                     bassBoostEffect.setEnabled(false);
                 }
@@ -569,7 +599,7 @@ public final class AudioFxProfilesPatch {
                 bassBoostEffect = new BassBoost(0, activeSessionId);
             }
             if (bassBoostEffect.getStrengthSupported()) {
-                bassBoostEffect.setStrength(profile.bassStrength);
+                bassBoostEffect.setStrength(scaledStrength);
             }
             bassBoostEffect.setEnabled(true);
         } catch (Exception ex) {
@@ -627,11 +657,15 @@ public final class AudioFxProfilesPatch {
             }
             short minLevel = range[0];
             short maxLevel = range[1];
+            float bassMultiplier = SeekBarPreference.clampToRange(Settings.AUDIO_FX_BASS_LEVEL) / 100f;
 
             for (short band = 0; band < bands; band++) {
                 int centerFreqMilliHz = equalizerEffect.getCenterFreq(band);
                 int freqHz = centerFreqMilliHz / 1000;
                 short targetLevel = computeBandLevel(profile, freqHz, minLevel, maxLevel);
+                if (freqHz <= 200 && targetLevel > 0) {
+                    targetLevel = (short) Math.min(maxLevel, Math.round(targetLevel * bassMultiplier));
+                }
                 equalizerEffect.setBandLevel(band, targetLevel);
             }
             equalizerEffect.setEnabled(true);
@@ -671,6 +705,7 @@ public final class AudioFxProfilesPatch {
                 if (freqHz >= 1500) return (short) (maxLevel * 0.3f);
                 return (short) (maxLevel * 0.15f);
             case BASS_BOOSTED:
+            case CUSTOM:
                 if (freqHz <= 120) return maxLevel;
                 if (freqHz <= 250) return (short) (maxLevel * 0.6f);
                 return 0;

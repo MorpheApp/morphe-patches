@@ -123,7 +123,14 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting PLAYBACK_SPEED = new IntegerSetting("morphe_music_playback_speed", 100);
     public static final BooleanSetting PLAYBACK_SPEED_CHANGE_PITCH = new BooleanSetting("morphe_music_playback_speed_change_pitch", FALSE);
     public static final BooleanSetting AUDIO_FX_ENABLED = new BooleanSetting("morphe_music_audio_fx_enabled", TRUE, true);
-    public static final EnumSetting<AudioProfile> AUDIO_FX_PROFILE = new EnumSetting<>("morphe_music_audio_fx_profile", AudioProfile.DEFAULT, false);
+    public static final BooleanSetting AUDIO_FX_SHOW_PLAYER_TAB = new BooleanSetting("morphe_music_audio_fx_show_player_tab", TRUE, parent(AUDIO_FX_ENABLED));
+    public static final EnumSetting<AudioProfile> AUDIO_FX_PROFILE = new EnumSetting<>("morphe_music_audio_fx_profile", AudioProfile.DEFAULT, parent(AUDIO_FX_ENABLED));
+    public static final IntegerSetting AUDIO_FX_CUSTOM_SPEED = new IntegerSetting("morphe_music_audio_fx_custom_speed", 100, parent(AUDIO_FX_ENABLED));
+    public static final IntegerSetting AUDIO_FX_CUSTOM_PITCH = new IntegerSetting("morphe_music_audio_fx_custom_pitch", 100, parent(AUDIO_FX_ENABLED));
+    public static final IntegerSetting AUDIO_FX_BASS_LEVEL = new IntegerSetting("morphe_music_audio_fx_bass_level", 100, parent(AUDIO_FX_ENABLED));
+    public static final IntegerSetting AUDIO_FX_REVERB_LEVEL = new IntegerSetting("morphe_music_audio_fx_reverb_level", 100, parent(AUDIO_FX_ENABLED));
+    public static final IntegerSetting AUDIO_FX_8D_SPEED = new IntegerSetting("morphe_music_audio_fx_8d_speed", 8, parent(AUDIO_FX_ENABLED));
+    public static final IntegerSetting AUDIO_FX_8D_DEPTH = new IntegerSetting("morphe_music_audio_fx_8d_depth", 85, parent(AUDIO_FX_ENABLED));
     public static final BooleanSetting AB_LOOP = new BooleanSetting("morphe_music_ab_loop", FALSE);
     public static final EnumSetting<TapAction> PLAYLIST_TRACK_TAP_ACTION = new EnumSetting<>("morphe_music_playlist_track_tap_action", TapAction.DEFAULT);
 
@@ -450,6 +457,18 @@ public class Settings extends SharedYouTubeSettings {
                 -2000, 2000, 100, "ms"));
         SeekBarPreference.register(new SeekBarConfig(PLAYBACK_SPEED,
                 25, 300, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(AUDIO_FX_CUSTOM_SPEED,
+                50, 200, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(AUDIO_FX_CUSTOM_PITCH,
+                50, 200, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(AUDIO_FX_BASS_LEVEL,
+                0, 200, 10, "%"));
+        SeekBarPreference.register(new SeekBarConfig(AUDIO_FX_REVERB_LEVEL,
+                0, 100, 10, "%"));
+        SeekBarPreference.register(new SeekBarConfig(AUDIO_FX_8D_SPEED,
+                2, 20, 1, "s"));
+        SeekBarPreference.register(new SeekBarConfig(AUDIO_FX_8D_DEPTH,
+                10, 100, 5, "%"));
 
         // Must run before any code reads a SegmentCategory setting.
         MusicSponsorBlockConfig.install();
