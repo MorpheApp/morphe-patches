@@ -426,6 +426,15 @@ val downloadsPatch = patch(
             """
         )
 
+        // Offer 1080p on screens that are less than 1080 pixels wide.
+        OfflineSettingsConstructorFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p3 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->getMaxDownloadQualityHeight(I)I
+                move-result p3
+            """
+        )
+
         // Commands run by the extension have no interaction logger, which saving a video
         // can use without checking it is set. The logger interface has a logger that logs nothing.
         // Everything reading the logger from a context uses the same type, so any match will do.

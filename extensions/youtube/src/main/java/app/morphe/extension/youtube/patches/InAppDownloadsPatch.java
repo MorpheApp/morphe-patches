@@ -75,6 +75,11 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     private static final String PLAYLIST_DOWNLOAD_BUTTON_IDENTIFIER = "playlist-download-button";
 
     /**
+     * Height of the 1080p download quality.
+     */
+    private static final int FULL_HD_QUALITY_HEIGHT = 1080;
+
+    /**
      * Injection point.
      * <p>
      * Called for every command the app resolves.
@@ -150,6 +155,20 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
      */
     public static boolean unlockOfflineSetting(boolean original) {
         return original || isInAppDownloadMode();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called once when the offline settings are created. The app hides the download qualities
+     * that are taller than the shorter side of the screen, so a 720p screen can only save 720p.
+     *
+     * @param maxHeight Height of the highest download quality the app offers.
+     */
+    public static int getMaxDownloadQualityHeight(int maxHeight) {
+        return isInAppDownloadMode()
+                ? Math.max(maxHeight, FULL_HD_QUALITY_HEIGHT)
+                : maxHeight;
     }
 
     /**

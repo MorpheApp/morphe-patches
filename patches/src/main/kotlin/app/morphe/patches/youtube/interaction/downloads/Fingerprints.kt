@@ -344,6 +344,28 @@ internal object OfflineSettingCategoryConstructorFingerprint : Fingerprint(
     )
 )
 
+internal object OfflineSettingsFingerprint : Fingerprint(
+    filters = listOf(
+        string("[Offline] Failed to set hasTransfersForOffline.")
+    )
+)
+
+/**
+ * The offline settings keep only the download qualities up to the height of the screen,
+ * which the picker of the download quality and the download quality setting show.
+ */
+internal object OfflineSettingsConstructorFingerprint : Fingerprint(
+    classFingerprint = OfflineSettingsFingerprint,
+    name = "<init>",
+    parameters = listOf(
+        "Landroid/content/SharedPreferences;",
+        "L",
+        "I", // Height of the highest download quality.
+        "L",
+        "L"
+    )
+)
+
 /**
  * Creates the offline setting category from the setting category of the server.
  */
