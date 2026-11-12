@@ -319,9 +319,9 @@ Guherînên ku tê de hene:
   <string name="morphe_hide_keyword_content_search_title">Encamên lêgerînê bi şêwaziyan veşêre</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Vîdyoyên tabeya aboneyan bi şêwaziyan veşêre</string>
   <string name="morphe_hide_keyword_content_phrases_title">Şêwaziyên veşerê</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Kliyan û peyvên wekî keyword binivîse da ku wan veşêrî bikî, bi rêxên nû ve cudakirin
+  <string name="morphe_hide_keyword_content_phrases_summary">"Peyvên sereke û hevokên veşartî binivîse, bi xetên nû ve jêyê bike
 
-Keyword dikarin her nivîseke ku di nav navên vîdyoyan yan jî navên kanalan de hebe bin"</string>
+Peyvên sereke dikarin her nivîseke ku di naڤê vîdyoyan de hebe bin. Peyva sereke ya @NavêKarbiker hemû naveroka afirînerên taybet veşire"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Sêrutin / Abonament / Lêgerîn / Koment hatine filtrekirin da ku naveroka ku li gorî peyvên keywordan e veşêrî bibe
 
 Sînor:
@@ -331,7 +331,6 @@ Sînor:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Nêçirandin şêwaziyê/ji aşîqê bi pêlên dobel ve, pêvajo bibe ku ne hemî sêwirên navan û kanalê tên neseranden&lt;br&gt;&lt;br&gt;Bo nimûne,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; vîdyoya: &lt;b&gt;Ka AI kî wa dîtin?&lt;/b&gt; veşêre&lt;br&gt;lê &lt;b&gt;Ferqa ku fermanskeriya çekebeweşana raya çawa dîtin?&lt;/b&gt; neserandin.</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Şêwazî dlya îqdi is ihtilafî dajan: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Şêwazî xeçk di, wan pêl dahiya: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Şêwazî hemû vîdyoyên veşêre: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Malper: %1$s
@@ -559,18 +558,11 @@ Piştî ku vîdyoyeke bi bişkoja Ask carekê hate vekirin, ev taybetmendî bi h
   <string name="morphe_export_download_folder_summary">"Vîdyoyên li hundurê aplikasyonê yên savekirî bi rêya menyuya daxezan a li hundurê aplikasyonê bi storage'a amûrê xwe ve exporters bike. Ji bo guhartina foldera exportê lê bitikîne
 
 Foldera exportê: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Foldera eksportê</string>
-  <string name="morphe_export_download_folder_change">Folderê biguherîne</string>
-  <string name="morphe_export_download_folder_changed">Foldera eksportê hat guhertin</string>
-  <string name="morphe_export_download_folder_reset">Foldera eksportê hat resetkirin</string>
-  <string name="morphe_export_download_folder_missing">Folderê exportê %s nehat dîtin</string>
-  <string name="morphe_export_download_flyout_title">Eksport bike ser amûrê</string>
   <string name="morphe_export_download_started">Eksportkirina vîdyoyê</string>
   <string name="morphe_export_download_progress">Eksporta vîdyoyê: %s%%</string>
   <string name="morphe_export_download_notification_channel">Eksportên vîdyoyê</string>
   <string name="morphe_export_download_saved">Vîdyo hate eksportkirin bo %s</string>
   <string name="morphe_export_download_failed">Nexweş bû eksportkirina vîdyoyê</string>
-  <string name="morphe_export_download_canceled">Eksport hat betalkirin</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Wergera bi deng</string>
   <string name="morphe_vot_screen_summary">Binnivîsên vîdyoyê bi deng bixwîne, bi teknolojiya deng-ji-nivîsê ya amûrê, bi lîstinê re hevdeng</string>
@@ -729,8 +721,6 @@ Agahî: Dibe ku li ser weşanên zindî nexebite"</string>
   <string name="morphe_queue_type_entry_2">Rêza xwerû</string>
   <string name="morphe_queue_type_entry_3">Rêza Morphe</string>
   <string name="morphe_queue_type_entry_4">Client side ya rêza Morphe</string>
-  <string name="morphe_queue_add_flyout_menu_title">Bendeka rêza menuya flyout a feedê zêde bike</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Bendekeke flyout-ê ya ekstra zêde dike. Heke \"Add to queue\" nayê nîşandan, vê çalak bike.</string>
   <string name="morphe_local_queue_sheet_title">Rêz</string>
   <string name="morphe_local_queue_open">Rêz (%s)</string>
   <string name="morphe_local_queue_clear">Hemû paqij bike</string>
@@ -1463,7 +1453,7 @@ Layouta otomotîvê
   <string name="morphe_dearrow_titles_player_title">Lîsteyên lêdanê &amp; pêşniyarên lîstikvanê</string>
   <string name="morphe_dearrow_titles_search_title">Encamên lêgerînê</string>
   <string name="morphe_dearrow_titles_icon_title">Îkona DeArrow nîşan bide</string>
-  <string name="morphe_dearrow_titles_icon_summary">Îkona DeArrow li ser navên vîdyoyên ji aliyê civakê ve hatine amadekirin nîşan dide</string>
+  <string name="morphe_dearrow_titles_icon_summary">Îkona DeArrow li ser navên vîdyoyên crowdsourced nîşan dide. Ji bo nîşandana nav û thumbnailê orjînal, li îkonê bitikîne</string>
   <string name="morphe_dearrow_casual_mode_title">Moda asayî</string>
   <string name="morphe_dearrow_casual_mode_summary">Heke bikarhênerên DeArrow ji sernavê orjînal hez dikin, li şûna sernavê DeArrow sernavê orjînal nîşan dide</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Hejmara kêmtirîn dengên moda asayî ji bo nîşandana sernavê orjînal</string>
@@ -1639,6 +1629,9 @@ Lîstina vîdyoyê bi AV1 dibe ku lêdan bide an çarçoveyan winda bike"</strin
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Dengê stabîl tune ye</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Lîstin dibe ku 1 saniye zûtir bi dawî bibe</string>
   <string name="morphe_spoof_video_streams_about_js">• Ger deobfuscation têk çû, lîstin dibe ku têk biçe</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView hati vekirin an nehati sazkirin. Wê veke û nû bike, an dibe ku lîstona vîdyoyê bi ser nekeve</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView kevin e. Wê nû bike, an dibe ku lîstona vîdyoyê bi ser nekeve</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Zorkirina dengê orjînal tune ye</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Têketina Android VR pêdivî ye</string>

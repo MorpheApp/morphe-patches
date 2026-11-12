@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Új beállítások kiemelése</string>
   <string name="morphe_settings_new_indicator_days_summary">Napok száma, amelyek alatt egy pont jelenik meg a frissítéssel hozzáadott beállítások és opciók mellett</string>
   <string name="morphe_settings_new_indicator_days_off">Ki</string>
+  <string name="morphe_settings_new_indicator_clear_title">Minden beállítást jelölj meg látottnak</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Távolítsa el a pontot az összes új beállításból és opcióból</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Jelölje az összes beállítást láttaknak?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">A pont eltűnik az összes új beállításból és opcióból. A jövőbeli frissítések által hozzáadott beállítások továbbra is ki lesznek emelve.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Indítsa újra a beállítások befejezéséhez</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."</string>
   <string name="morphe_external_downloader_empty_warning">A csomagnév nem lehet üres</string>
+  <string name="morphe_export_download_folder_dialog_title">Exportációs mappa</string>
+  <string name="morphe_export_download_folder_change">Mappa megváltoztatása</string>
+  <string name="morphe_export_download_folder_changed">Export mappája megváltoztatva</string>
+  <string name="morphe_export_download_folder_reset">Export mappa visszaállítva</string>
+  <string name="morphe_export_download_folder_missing">Nem található az exportmappa: %s</string>
+  <string name="morphe_export_download_flyout_title">Exportálás a készülékre</string>
+  <string name="morphe_export_download_canceled">Exportálás törölve</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Egyéni</string>
   <string name="morphe_custom_branding_icon_title">Alkalmazás ikonja</string>
@@ -110,6 +121,20 @@ Ha YouTube Premium-felhasználó vagy, ez a beállítás nem feltétlenül szük
 Legyen %2$s az alapértelmezett kliens?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Váltás</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ennek a beállításnak a kikapcsolása lejátszási problémákat okozhat</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Az Android System WebView ki van kapcsolva vagy nincs telepítve.
+
+A videólejátszáshoz szükség van az Android System WebView-re. Kapcsolja be és frissítse a legújabb verzióra.
+
+Koppintson az OK gombra az Android System WebView megnyitásához."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Az Android System WebView verziója elavult (%s).
+
+A videólejátszás esetleg nem működik, amíg az Android System WebView nem frissül a legújabb verzióra.
+
+Koppintson az OK gombra az Android System WebView megnyitásához."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ne jelenjen meg többet</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Az Android System WebView nincs telepítve. Telepítse a videólejátszás javításához</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Próbálja meg a következők engedélyezését: Videófolyamok hamisítása &gt; Android VR bejelentkezés</string>

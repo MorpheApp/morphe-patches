@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Erabili deskargatzaile kanpora Download menurako</string>
   <string name="morphe_external_downloader_menu_summary">Menuetako Download aukerak zure kanpoko deskargatzailea irekiko du horren ordez</string>
-  <string name="morphe_music_downloads_screen_title">Deskargak</string>
-  <string name="morphe_music_downloads_empty">"Ez dago deskargarik
-Deskargatutako pistak hemen agertuko dira"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s pista • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Bilatu deskargak</string>
-  <string name="morphe_music_downloads_sort">Ordenatu</string>
-  <string name="morphe_music_downloads_sort_artist">Artista arabera ordenatu</string>
-  <string name="morphe_music_downloads_sort_title">Izenaren arabera ordenatu</string>
-  <string name="morphe_music_downloads_sort_size">Tamainaren arabera ordenatu</string>
-  <string name="morphe_music_downloads_delete_all">Ezabatu deskarga guztiak</string>
-  <string name="morphe_music_downloads_delete_all_title">Deskarga guztiak ezabatu?</string>
-  <string name="morphe_music_downloads_delete_all_message">Deskargatutako pista guztiak ezabatuko dira gailu honetatik</string>
-  <string name="morphe_music_downloads_all_deleted">Deskargak ezabatu dira</string>
-  <string name="morphe_music_downloads_nothing_found">Ezer ez da aurkitu</string>
-  <string name="morphe_music_downloads_actions_for">%s-ren ekintzak</string>
-  <string name="morphe_music_downloads_play">Erreproduzitu</string>
-  <string name="morphe_music_downloads_play_pause">Erreproduzitu edo pausatu</string>
-  <string name="morphe_music_downloads_previous">Aurrekoa</string>
-  <string name="morphe_music_downloads_next">Hurrengoa</string>
-  <string name="morphe_music_downloads_pause">Pausatu</string>
-  <string name="morphe_music_downloads_shuffle">Nahasi</string>
-  <string name="morphe_music_downloads_repeat">Errepikatu</string>
-  <string name="morphe_music_downloads_minimize">Txikitu</string>
-  <string name="morphe_music_downloads_close">Itxi</string>
-  <string name="morphe_music_downloads_delete">Ezabatu</string>
-  <string name="morphe_music_downloads_delete_track">Ezabatu deskarga</string>
-  <string name="morphe_music_downloads_delete_track_title">Deskargatua ezabatu?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s gailu honetatik ezabatuko da</string>
-  <string name="morphe_music_downloads_track_deleted">Deskarga ezabatu da</string>
-  <string name="morphe_music_downloads_track_delete_failed">Ezin izan da deskargatua ezabatu</string>
-  <string name="morphe_music_downloads_play_failed">Ezin izan da deskargatua erreproduzitu</string>
-  <string name="morphe_music_downloads_playlists">Zerrendak</string>
-  <string name="morphe_music_downloads_playlists_section">Sortutako zerrendak (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Ez dago oraindik zerrenda lokalik</string>
-  <string name="morphe_music_downloads_playlists_hide">Ezkutatu zerrendak ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Zerrenda berria</string>
-  <string name="morphe_music_downloads_playlist_new_button">Zerrenda berria</string>
-  <string name="morphe_music_downloads_playlist_selected">Hautatuta (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Hautatu lehenik abestiak</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Garbitu hautaketa</string>
-  <string name="morphe_music_downloads_playlist_create">Sortu zerrenda</string>
-  <string name="morphe_music_downloads_playlist_create_button">Sortu</string>
-  <string name="morphe_music_downloads_playlist_add">Gehitu zerrendara</string>
-  <string name="morphe_music_downloads_playlist_added">%s zerrendara gehituta</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Zerrendaren izena</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Zerrendaren izena ezin da hutsik utzi</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Ezin izan da zerrenda gorde</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s abesti</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 abesti</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Zerrenda honetan ez dago abestirik</string>
-  <string name="morphe_music_downloads_playlist_play">Erreproduzitu zerrenda</string>
-  <string name="morphe_music_downloads_playlist_play_all">Erreproduzitu guztiak</string>
-  <string name="morphe_music_downloads_playlist_rename">Berrizendatu</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Berrizendatu zerrenda</string>
-  <string name="morphe_music_downloads_playlist_save">Gorde</string>
-  <string name="morphe_music_downloads_playlist_delete">Ezabatu zerrenda</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Zerrenda ezabatu?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s ezabatuko da. Deskargatutako abestiak gordeko dira</string>
-  <string name="morphe_music_downloads_playlist_deleted">Zerrenda ezabatu da</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Kendu zerrendatik</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Arrastatu ordenatzeko</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Arrastatu heldulekua ordenatzeko</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Eginda</string>
-  <string name="morphe_music_downloads_notification_channel">Audio deskargak</string>
-  <string name="morphe_music_downloads_playback_channel">Offline erreprodukzioa</string>
-  <string name="morphe_music_downloads_unknown_track">Ezin da deskargatu beharreko pista identifikatu</string>
-  <string name="morphe_music_downloads_already_running">Deskarga martxan dago</string>
-  <string name="morphe_music_downloads_already_saved">Deskargatuta dago</string>
-  <string name="morphe_music_downloads_started">Deskarga hasita</string>
-  <string name="morphe_music_downloads_starting">Deskarga hasten ari da…</string>
-  <string name="morphe_music_downloads_progress">Deskargatzen %s%%</string>
-  <string name="morphe_music_downloads_complete">Deskarga osatua</string>
-  <string name="morphe_music_downloads_failed">Deskarga huts egin du</string>
-  <string name="morphe_music_downloads_playlist_download_title">Zerrenda deskarga</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Abestiak zerrendatzen…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s zerrendatu dira…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Zerrendaren abestiak ezin izan dira zerrendatu</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Dagoeneko deskargatuta: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"Zerrenda honetan %1$s abesti, %2$s oraindik deskargatu gabe.
+  <string name="morphe_export_download_folder_title">Deskargak esportatu</string>
+  <string name="morphe_export_download_folder_summary">"Aplikazioak deskargatako abestak eta bideoak zure gailuaren biltegian esportatu deskargaren menuaren bidez. Sakatu esportazio karpeta aldatzeko
 
-Bana-bana deskargatzen dira, eta horrek denbora asko har dezake eta %3$s espazio libre behar du"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Deskargatu</string>
-  <string name="morphe_music_downloads_playlist_download_progress">%2$s abestitik %1$s deskargatzen</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s deskargatu da</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s deskargatu da, %2$s ezin izan dira deskargatu</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Zerrendaren deskarga dagoeneko martxan dago</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Zure kontua oraindik ez da ezagutzen. Saiatu berriro une batean</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s zerrendatu da, guztiak dagoeneko deskargatuta</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Zerrendaren zati bat soilik zerrendatu ahal izan da. Sakatu Deskargatu berriro geroago gainerakoa lortzeko</string>
-  <string name="morphe_music_downloads_playlist_download_started">%s atzeko planoan deskargatzen</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Ez dago sare konexiorik</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Sarearen zain…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">%2$s abestitik %1$s-(e)an gelditu da. Sakatu Deskargatu berriro jarraitzeko</string>
-  <string name="morphe_music_downloads_mark_title">Markatu deskargatutako abestiak</string>
-  <string name="morphe_music_downloads_mark_summary">Dagoeneko deskargatutako abestiek marka bat erakusten dute zerrendetan, albumetan eta bilaketa emaitzetan, xehetasunen aurretik</string>
+Esportazio karpeta: %s"</string>
+  <string name="morphe_export_download_started">Deskarga esportatzen</string>
+  <string name="morphe_export_download_progress">Deskarga esportatzen: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Deskarga esportazioak</string>
+  <string name="morphe_export_download_saved">Deskarga %s-ra esportatu da</string>
+  <string name="morphe_export_download_failed">Ezin izan da deskarga esportatu</string>
+  <string name="morphe_export_download_all_flyout_title">Guztiak gailura esportatu</string>
+  <string name="morphe_export_download_all_started">Deskarga guztiak esportatzen ari zara</string>
+  <string name="morphe_export_download_all_running">Deskargak esportatzen ari dira behera</string>
+  <string name="morphe_export_download_all_saved">%2$s deskargatik %1$s esportatu dira %3$s-ra</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Honi buruz</string>
@@ -261,6 +178,7 @@ Bana-bana deskargatzen dira, eta horrek denbora asko har dezake eta %3$s espazio
   <string name="morphe_music_hide_shuffle_button_title">Ezkutatu nahasteko botoia</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Ezkutatu \'Speed dial\' estantea</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">Ezkutatu \'Agian gustatuko zaizu\' atala</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Ezagutu \'Zure deskargak\' estantea</string>
   <string name="morphe_music_comments_screen_title">Komentarioak</string>
   <string name="morphe_music_comments_screen_summary">Aukeratu zein komponentek agertu behar duten komentarioen sekzioan</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Ezkutatu Komunitatearen gidalerroak</string>
@@ -344,6 +262,12 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Desaktibu ez-gustu bideratzea</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Ez-gustu botoia sakatzean hurrengo pistara salto egitea ekiditen du</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">A-B loopa</string>
+  <string name="morphe_music_ab_loop_summary">Lutsu sakatu seekbar-a loop-aren hasiera ezartzeko, berriz loop-aren amaiera ezartzeko, eta berriz loop-a garbitzeko</string>
+  <string name="morphe_music_ab_loop_toast_start">Loop-aren hasiera %s-tik hasita</string>
+  <string name="morphe_music_ab_loop_toast_end">Loop-aren amaiera %s-tik hasita</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Loopa garbituta</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Playlisteko trackean sakatzeko ekintza</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Playlista erreproduzi</string>

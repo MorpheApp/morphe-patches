@@ -319,9 +319,9 @@ Muutoksiin kuuluvat:
   <string name="morphe_hide_keyword_content_search_title">Piilota hakutuloksia avainsanojen mukaan</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Piilota Tilaukset-videoita avainsanojen mukaan</string>
   <string name="morphe_hide_keyword_content_phrases_title">Piilotettavat avainsanat</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Syötä piilotettavat avainsanat ja ilmaukset rivinvaihdolla erotettuna
+  <string name="morphe_hide_keyword_content_phrases_summary">"Syötä piilotettavat avainsanat ja fraasit riviväleillä erotettuna
 
-Avainsanoina voi olla mikä tahansa teksti, joka näkyy videoiden otsikoissa tai kanavien nimissä"</string>
+Avainsanat voivat olla mitä tahansa videoiden otsikoissa näkyvää tekstiä. @Käyttäjänimi-avainsana piilottaa kaiken sisällön tiettyjen tekijöiden kohdalla"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Etusivu / Tilaukset / Haku / Kommentit suodatetaan niin, että avainsanoja vastaava sisältö piilotetaan
 
 Rajoitukset:
@@ -331,7 +331,6 @@ Rajoitukset:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Avainsanan tai lauseen ympäröiminen lainausmerkeillä estää osittaiset osumat videoiden otsikoissa ja kanavien nimissä&lt;br&gt;&lt;br&gt;Esimerkiksi,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;  piilottaa videon: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;mutta ei piilota videota: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Avainsanalla on ristiriitaisia määrityksiä: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Avainsana on liian lyhyt ja vaatii lainausmerkkejä: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Avainsana piilottaa kaikki videot: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Kotisivu: %1$s
@@ -559,18 +558,11 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <string name="morphe_export_download_folder_summary">"Vie sovelluksen sisälle tallennetut videot laitteesi tallennustilaan latausten pikavalikon avulla. Napauta vaihtaaksesi viekansionin
 
 Viekansio: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Viekansio</string>
-  <string name="morphe_export_download_folder_change">Vaihda kansio</string>
-  <string name="morphe_export_download_folder_changed">Viekansio muutettu</string>
-  <string name="morphe_export_download_folder_reset">Viekansio nollattu</string>
-  <string name="morphe_export_download_folder_missing">Vienti-kansiota %s ei löytynyt</string>
-  <string name="morphe_export_download_flyout_title">Vie laitteeseen</string>
   <string name="morphe_export_download_started">Viedään video</string>
   <string name="morphe_export_download_progress">Videon vienti: %s%%</string>
   <string name="morphe_export_download_notification_channel">Videon vienti</string>
   <string name="morphe_export_download_saved">Video vietiin kohteeseen %s</string>
   <string name="morphe_export_download_failed">Videon vienti epäonnistui</string>
-  <string name="morphe_export_download_canceled">Vienti peruttu</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Äänikäännös</string>
   <string name="morphe_vot_screen_summary">Lue videon tekstitykset ääneen laitteen tekstistä puheeksi -toiminnolla, synkronoitu toiston kanssa</string>
@@ -728,8 +720,6 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_queue_type_entry_2">Alkuperäinen jono</string>
   <string name="morphe_queue_type_entry_3">Morphen jono</string>
   <string name="morphe_queue_type_entry_4">Morphen jono asiakaspuolella</string>
-  <string name="morphe_queue_add_flyout_menu_title">Lisää valikkokohta syötejonon ponnahdusvalikkoon</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Lisää ylimääräisen ponnahdusvalikkokohdan. Ota tämä käyttöön, jos \"Lisää jonoon\" ei näy.</string>
   <string name="morphe_local_queue_sheet_title">Jono</string>
   <string name="morphe_local_queue_open">Jono (%s)</string>
   <string name="morphe_local_queue_clear">Tyhjennä kaikki</string>
@@ -1462,7 +1452,7 @@ Auton asettelu
   <string name="morphe_dearrow_titles_player_title">Soittimen soittolistat ja suositukset</string>
   <string name="morphe_dearrow_titles_search_title">Hakutulokset</string>
   <string name="morphe_dearrow_titles_icon_title">Näytä DeArrow-kuvake</string>
-  <string name="morphe_dearrow_titles_icon_summary">Näyttää DeArrow-kuvakkeen yhteisön tuottamissa video-otsikoissa</string>
+  <string name="morphe_dearrow_titles_icon_summary">Näyttää DeArrow-kuvakkeen yhteisön tuottamien videoiden otsikoissa. Napauta kuvaketta näyttääksesi alkuperäisen otsikon ja pikkukuvan</string>
   <string name="morphe_dearrow_casual_mode_title">Rento tila</string>
   <string name="morphe_dearrow_casual_mode_summary">Näyttää alkuperäisen otsikon DeArrow-otsikon sijaan, jos DeArrow-käyttäjät äänestivät pitävänsä alkuperäisestä otsikosta</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Vähimmäismäärä casual-ääniä alkuperäisen otsikon näyttämiseen</string>
@@ -1638,6 +1628,9 @@ AV1-videon toisto saattaa pätkiä"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Tasainen äänenvoimakkuus ei ole käytettävissä</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Toisto voi päättyä 1 sekunnin etuajassa</string>
   <string name="morphe_spoof_video_streams_about_js">• Jos deobfuskointi epäonnistuu, toistaminen saattaa epäonnistua</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView on pois päältä tai sitä ei ole asennettu. Ota se käyttöön ja päivitä se, muutoin toisto voi epäonnistua</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView on vanhentunut. Päivitä se, muutoin toisto voi epäonnistua</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Pakota alkuperäinen ääni ei ole käytettävissä</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Kirjautuminen Android VR -tilaan on pakollista</string>

@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">برجسته کردن تنظیمات جدید</string>
   <string name="morphe_settings_new_indicator_days_summary">تعداد روزهایی که یک نقطه در کنار تنظیمات و گزینه‌های اضافه‌شده توسط به‌روزرسانی نمایش داده می‌شود</string>
   <string name="morphe_settings_new_indicator_days_off">خاموش</string>
+  <string name="morphe_settings_new_indicator_clear_title">تمام تنظیمات را به‌عنوان دیده‌شده علامت‌گذاری کن</string>
+  <string name="morphe_settings_new_indicator_clear_summary">حذف نقطه از تمام تنظیمات و گزینه‌های جدید</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">تمام تنظیمات به‌عنوان دیده‌شده علامت‌گذاری شوند؟</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">نقطه از تمام تنظیمات و گزینه‌های جدید حذف می‌شود. تنظیماتی که در به‌روزرسانی‌های آینده اضافه شوند، همچنان برجسته خواهند بود.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">برای پایان راه‌اندازی، مجدداً راه‌اندازی کنید</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 درست‌بودن نام بسته و نصب‌بودن برنامه را بررسی کنید"</string>
   <string name="morphe_external_downloader_empty_warning">نام بسته نمی‌تواند خالی باشد</string>
+  <string name="morphe_export_download_folder_dialog_title">پوشه خروجی</string>
+  <string name="morphe_export_download_folder_change">تغییر پوشه</string>
+  <string name="morphe_export_download_folder_changed">پوشه خروجی تغییر کرد</string>
+  <string name="morphe_export_download_folder_reset">پوشه خروجی بازنشانی شد</string>
+  <string name="morphe_export_download_folder_missing">پوشه خروجی %s پیدا نشد</string>
+  <string name="morphe_export_download_flyout_title">صادر کردن به دستگاه</string>
+  <string name="morphe_export_download_canceled">خروجی لغو شد</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">سفارشی</string>
   <string name="morphe_custom_branding_icon_title">آیکون برنامه</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 %2$s را کلاینت پیش‌فرض کنیم؟"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">تعویض</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">خاموش‌کردن این تنظیم ممکن است باعث مشکلات پخش شود</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView خاموش است یا نصب نشده است.
+
+پخش ویدیو به Android System WebView نیاز دارد. آن را فعال کرده و به آخرین نسخه به‌روزرسانی کنید.
+
+برای باز کردن Android System WebView روی OK ضربه بزنید."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView قدیمی است (نسخه %s).
+
+پخش ویدیو ممکن است تا زمانی که Android System WebView به آخرین نسخه به‌روزرسانی نشود، با خطا مواجه شود.
+
+برای باز کردن Android System WebView روی OK ضربه بزنید."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">دوباره نمایش نده</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView نصب نیست. برای رفع مشکل پخش ویدیو، آن را نصب کنید</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">سعی کنید فعال کنید: جعل جریان‌های ویدئویی &gt; ورود به Android VR</string>

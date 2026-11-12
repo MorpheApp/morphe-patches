@@ -321,7 +321,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">Λέξεις-κλειδιά για απόκρυψη</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Εισαγάγετε λέξεις-κλειδιά και φράσεις για απόκρυψη, χωρισμένες με νέες γραμμές
 
-Οι λέξεις-κλειδιά μπορούν να είναι οποιοδήποτε κείμενο εμφανίζεται στους τίτλους των βίντεο ή στα ονόματα των καναλιών"</string>
+Οι λέξεις-κλειδιά μπορούν να είναι οποιοδήποτε κείμενο εμφανίζεται στους τίτλους των βίντεο. Η λέξη-κλειδί @ΌνομαΧρήστη κρύβει όλο το περιεχόμενο από συγκεκριμένους δημιουργούς"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Αρχική / Εγγραφές / Αναζήτηση / Σχόλια φιλτράρονται για απόκρυψη περιεχομένου που ταιριάζει με λέξεις-κλειδιά
 
 Περιορισμοί:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Περιβάλλοντας μια λέξη-κλειδί / φράση με διπλά εισαγωγικά θα αποτρέψει μερικές αντιστοιχίες των τίτλων βίντεο και των ονομάτων καναλιών&lt;br&gt;&lt;br&gt;Για παράδειγμα,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; θα κρύψει το βίντεο: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;αλλά δεν θα κρύψει: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Λέξη-κλειδί έχει αντικρουόμενες δηλώσεις: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Η λέξη-κλειδί είναι πολύ σύντομη και απαιτεί εισαγωγικά: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Θα κρυφτούν όλα τα βίντεο με τη λέξη-κλειδί: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Αρχική: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"Εξαγάγετε τα βίντεο που αποθηκεύτηκαν στην εφαρμογή στη μνήμη της συσκευής σας χρησιμοποιώντας το αναδυόμενο μενού λήψεων της εφαρμογής. Πατήστε για να αλλάξετε τον φάκελο εξαγωγής
 
 Φάκελος εξαγωγής: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Φάκελος εξαγωγής</string>
-  <string name="morphe_export_download_folder_change">Αλλαγή φακέλου</string>
-  <string name="morphe_export_download_folder_changed">Ο φάκελος εξαγωγής άλλαξε</string>
-  <string name="morphe_export_download_folder_reset">Επαναφορά φακέλου εξαγωγής</string>
-  <string name="morphe_export_download_folder_missing">Δεν βρέθηκε ο φάκελος εξαγωγής %s</string>
-  <string name="morphe_export_download_flyout_title">Εξαγωγή στη συσκευή</string>
   <string name="morphe_export_download_started">Εξαγωγή βίντεο</string>
   <string name="morphe_export_download_progress">Εξαγωγή βίντεο: %s%%</string>
   <string name="morphe_export_download_notification_channel">Εξαγωγές βίντεο</string>
   <string name="morphe_export_download_saved">Το βίντεο εξήχθη στο %s</string>
   <string name="morphe_export_download_failed">Δεν ήταν δυνατή η εξαγωγή του βίντεο</string>
-  <string name="morphe_export_download_canceled">Η εξαγωγή ακυρώθηκε</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Μετάφραση φωνής</string>
   <string name="morphe_vot_screen_summary">Διαβάστε τις λεζάντες του βίντεο δυνατά χρησιμοποιώντας το text-to-speech της συσκευής, συγχρονισμένα με την αναπαραγωγή</string>
@@ -728,8 +720,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">Ενσωματωμένη ουρά</string>
   <string name="morphe_queue_type_entry_3">Ουρά Morphe</string>
   <string name="morphe_queue_type_entry_4">Ουρά Morphe από την πλευρά του πελάτη</string>
-  <string name="morphe_queue_add_flyout_menu_title">Προσθήκη στοιχείου μενού αναδυόμενου παραθύρου ροής</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Προσθέτει ένα επιπλέον στοιχείο αναδυόμενου παραθύρου. Ενεργοποιήστε αυτό εάν δεν εμφανίζεται η \"Προσθήκη στην ουρά\"</string>
   <string name="morphe_local_queue_sheet_title">Ουρά</string>
   <string name="morphe_local_queue_open">Ουρά (%s)</string>
   <string name="morphe_local_queue_clear">Εκκαθάριση όλων</string>
@@ -1462,7 +1452,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">Λίστες αναπαραγωγής &amp; προτάσεις</string>
   <string name="morphe_dearrow_titles_search_title">Αποτελέσματα αναζήτησης</string>
   <string name="morphe_dearrow_titles_icon_title">Εμφάνιση εικονιδίου DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Εμφανίζει το εικονίδιο DeArrow σε τίτλους βίντεο από το πλήθος</string>
+  <string name="morphe_dearrow_titles_icon_summary">Εμφανίζει το εικονίδιο DeArrow στους τίτλους βίντεο που βασίζονται σε crowdsourcing. Πατήστε το εικονίδιο για να εμφανίσετε τον αρχικό τίτλο και τη μικρογραφία</string>
   <string name="morphe_dearrow_casual_mode_title">Χαλαρή λειτουργία</string>
   <string name="morphe_dearrow_casual_mode_summary">Εμφανίζει τον αρχικό τίτλο αντί για τον τίτλο DeArrow, αν οι χρήστες του DeArrow ψήφισαν ότι τους αρέσει ο αρχικός τίτλος</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Ελάχιστος αριθμός ψήφων casual για την εμφάνιση του αρχικού τίτλου</string>
@@ -1638,6 +1628,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Η λειτουργία «Σταθερή ένταση» δεν είναι διαθέσιμη</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Η αναπαραγωγή ενδέχεται να τελειώσει 1 δευτερόλεπτο νωρίτερα</string>
   <string name="morphe_spoof_video_streams_about_js">• Εάν η αποκωδικοποίηση αποτύχει, η αναπαραγωγή μπορεί να αποτύχει</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Το Android System WebView είναι απενεργοποιημένο ή δεν είναι εγκατεστημένο. Ενεργοποιήστε το και ενημερώστε το, διαφορετικά η αναπαραγωγή ενδέχεται να αποτύχει</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Το Android System WebView είναι παλαιό. Ενημερώστε το, διαφορετικά η αναπαραγωγή ενδέχεται να αποτύχει</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Ο εξαναγκασμός αρχικής γλώσσας ήχου δεν είναι διαθέσιμος</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Απαιτείται είσοδος στο Android VR</string>

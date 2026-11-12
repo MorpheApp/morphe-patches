@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Destacar novas definições</string>
   <string name="morphe_settings_new_indicator_days_summary">Número de dias que um ponto é exibido ao lado de definições e opções adicionadas por uma atualização</string>
   <string name="morphe_settings_new_indicator_days_off">Desativado</string>
+  <string name="morphe_settings_new_indicator_clear_title">Marcar todas as configurações como vistas</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Remover o ponto de todas as novas configurações e opções</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Marcar todas as configurações como vistas?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">O ponto é removido de todas as novas configurações e opções. Configurações adicionadas por atualizações futuras continuarão destacadas.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reinicie para concluir a configuração</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Verifique se o nome do pacote está correto e se a aplicação está instalada"</string>
   <string name="morphe_external_downloader_empty_warning">O nome do pacote não pode estar vazio</string>
+  <string name="morphe_export_download_folder_dialog_title">Pasta de exportação</string>
+  <string name="morphe_export_download_folder_change">Alterar pasta</string>
+  <string name="morphe_export_download_folder_changed">Pasta de exportação alterada</string>
+  <string name="morphe_export_download_folder_reset">Pasta de exportação redefinida</string>
+  <string name="morphe_export_download_folder_missing">Não foi possível encontrar a pasta de exportação %s</string>
+  <string name="morphe_export_download_flyout_title">Exportar para o dispositivo</string>
+  <string name="morphe_export_download_canceled">Exportação cancelada</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalizado</string>
   <string name="morphe_custom_branding_icon_title">Ícone da aplicação</string>
@@ -110,6 +121,21 @@ Se é utilizador do YouTube Premium, esta definição pode não ser necessária"
 Definir %2$s como cliente padrão?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Trocar</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Desativar esta definição pode causar problemas de reprodução</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Vista Web do sistema Android</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"A Vista Web do sistema Android está desativada ou não está instalada.
+
+A reprodução de vídeo requer que ative e atualize para a aplicação para a versão mais recente.
+
+Toque em OK para abrir a Vista Web do sistema Android.
+"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Vista Web do sistema Android está desatualizada (versão %s).
+
+A reprodução de vídeo pode falhar até que atualize a aplicação para a versão mais recente.
+
+Toque em OK para abrir a Vista Web do sistema Android."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Não mostrar de novo</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">A Vista Web do sistema Android não está instalada. Instale-a para corrigir a reprodução de vídeo</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Experimente ativar: Spoof video streams > Android VR sign in</string>

@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Sử dụng trình tải xuống bên ngoài cho menu Tải xuống</string>
   <string name="morphe_external_downloader_menu_summary">Tùy chọn Tải xuống trong các menu sẽ mở trình tải xuống bên ngoài của bạn thay thế</string>
-  <string name="morphe_music_downloads_screen_title">Tải xuống</string>
-  <string name="morphe_music_downloads_empty">"Không có bản tải xuống
-Các bài hát đã tải sẽ xuất hiện ở đây"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s bài hát • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Tìm kiếm bản tải xuống</string>
-  <string name="morphe_music_downloads_sort">Sắp xếp</string>
-  <string name="morphe_music_downloads_sort_artist">Sắp xếp theo nghệ sĩ</string>
-  <string name="morphe_music_downloads_sort_title">Sắp xếp theo tên bài hát</string>
-  <string name="morphe_music_downloads_sort_size">Sắp xếp theo kích thước</string>
-  <string name="morphe_music_downloads_delete_all">Xóa tất cả bản tải xuống</string>
-  <string name="morphe_music_downloads_delete_all_title">Xóa tất cả bản tải xuống?</string>
-  <string name="morphe_music_downloads_delete_all_message">Tất cả các bài hát đã tải sẽ bị xóa khỏi thiết bị này</string>
-  <string name="morphe_music_downloads_all_deleted">Đã xóa bản tải xuống</string>
-  <string name="morphe_music_downloads_nothing_found">Không tìm thấy gì</string>
-  <string name="morphe_music_downloads_actions_for">Hành động cho %s</string>
-  <string name="morphe_music_downloads_play">Phát</string>
-  <string name="morphe_music_downloads_play_pause">Phát hoặc tạm dừng</string>
-  <string name="morphe_music_downloads_previous">Trước</string>
-  <string name="morphe_music_downloads_next">Tiếp</string>
-  <string name="morphe_music_downloads_pause">Tạm dừng</string>
-  <string name="morphe_music_downloads_shuffle">Phát ngẫu nhiên</string>
-  <string name="morphe_music_downloads_repeat">Lặp lại</string>
-  <string name="morphe_music_downloads_minimize">Thu nhỏ</string>
-  <string name="morphe_music_downloads_close">Đóng</string>
-  <string name="morphe_music_downloads_delete">Xoá</string>
-  <string name="morphe_music_downloads_delete_track">Xóa bản tải xuống</string>
-  <string name="morphe_music_downloads_delete_track_title">Xóa bản tải xuống?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s sẽ bị xóa khỏi thiết bị này</string>
-  <string name="morphe_music_downloads_track_deleted">Đã xóa bản tải xuống</string>
-  <string name="morphe_music_downloads_track_delete_failed">Không thể xóa bản tải xuống</string>
-  <string name="morphe_music_downloads_play_failed">Không thể phát bản tải xuống</string>
-  <string name="morphe_music_downloads_playlists">Danh sách phát</string>
-  <string name="morphe_music_downloads_playlists_section">Danh sách phát đã tạo (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Chưa có danh sách phát cục bộ nào</string>
-  <string name="morphe_music_downloads_playlists_hide">Ẩn danh sách phát ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Danh sách phát mới</string>
-  <string name="morphe_music_downloads_playlist_new_button">Danh sách phát mới</string>
-  <string name="morphe_music_downloads_playlist_selected">Đã chọn (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Hãy chọn bài hát trước</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Xóa lựa chọn</string>
-  <string name="morphe_music_downloads_playlist_create">Tạo danh sách phát</string>
-  <string name="morphe_music_downloads_playlist_create_button">Tạo</string>
-  <string name="morphe_music_downloads_playlist_add">Thêm vào danh sách phát</string>
-  <string name="morphe_music_downloads_playlist_added">Đã thêm vào %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Tên danh sách phát</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Tên danh sách phát không được để trống</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Không thể lưu danh sách phát</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s bài hát</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 bài hát</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Không có bài hát nào trong danh sách phát này</string>
-  <string name="morphe_music_downloads_playlist_play">Phát danh sách phát</string>
-  <string name="morphe_music_downloads_playlist_play_all">Phát tất cả</string>
-  <string name="morphe_music_downloads_playlist_rename">Đổi tên</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Đổi tên danh sách phát</string>
-  <string name="morphe_music_downloads_playlist_save">Lưu</string>
-  <string name="morphe_music_downloads_playlist_delete">Xóa danh sách phát</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Xóa danh sách phát?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s sẽ bị xóa. Các bài hát đã tải xuống sẽ được giữ lại</string>
-  <string name="morphe_music_downloads_playlist_deleted">Danh sách phát đã xóa</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Xóa khỏi danh sách phát</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Kéo để sắp xếp lại</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Kéo tay cầm để sắp xếp lại</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Xong</string>
-  <string name="morphe_music_downloads_notification_channel">Tải xuống âm thanh</string>
-  <string name="morphe_music_downloads_playback_channel">Phát lại ngoại tuyến</string>
-  <string name="morphe_music_downloads_unknown_track">Không thể xác định bài hát để tải xuống</string>
-  <string name="morphe_music_downloads_already_running">Bản tải xuống đang tiến hành</string>
-  <string name="morphe_music_downloads_already_saved">Đã tải xuống</string>
-  <string name="morphe_music_downloads_started">Đã bắt đầu tải xuống</string>
-  <string name="morphe_music_downloads_starting">Đang bắt đầu tải xuống…</string>
-  <string name="morphe_music_downloads_progress">Đang tải xuống %s%%</string>
-  <string name="morphe_music_downloads_complete">Tải xuống hoàn tất</string>
-  <string name="morphe_music_downloads_failed">Tải xuống thất bại</string>
-  <string name="morphe_music_downloads_playlist_download_title">Tải về danh sách phát</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Đang liệt kê các bản nhạc…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s đã được liệt kê…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Không thể liệt kê các bản nhạc trong danh sách phát</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Đã tải về: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"Có %1$s trong danh sách phát này, %2$s chưa được tải về.
+  <string name="morphe_export_download_folder_title">Xuất nội dung tải xuống</string>
+  <string name="morphe_export_download_folder_summary">"Xuất các bài hát và video được tải xuống bởi ứng dụng vào bộ nhớ thiết bị của bạn bằng menu của mục tải xuống. Nhấn để thay đổi thư mục xuất
 
-Chúng sẽ được tải về lần lượt, việc này có thể mất nhiều thời gian và cần khoảng %3$s dung lượng trống"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Tải về</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Đang tải bản nhạc %1$s trên %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s đã được tải về</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s đã được tải về, %2$s không thể tải về</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Quá trình tải về danh sách phát đang diễn ra</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Tài khoản của bạn chưa được nhận diện. Vui lòng thử lại sau giây lát</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s đã được liệt kê, tất cả đều đã tải về</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Chỉ một phần của danh sách phát có thể được liệt kê. Hãy nhấn Tải về lần nữa sau đó để nhận phần còn lại</string>
-  <string name="morphe_music_downloads_playlist_download_started">Đang tải %s trong nền</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Không có kết nối mạng</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Đang chờ kết nối mạng…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Đã dừng sau %1$s trên %2$s. Nhấn Tải về lần nữa để tiếp tục</string>
-  <string name="morphe_music_downloads_mark_title">Đánh dấu các bài hát đã tải xuống</string>
-  <string name="morphe_music_downloads_mark_summary">Các bài hát đã được tải xuống sẽ hiển thị dấu đánh dấu trước chi tiết của chúng trong danh sách phát, album và kết quả tìm kiếm</string>
+Thư mục xuất: %s"</string>
+  <string name="morphe_export_download_started">Đang xuất nội dung tải xuống</string>
+  <string name="morphe_export_download_progress">Đang xuất nội dung tải xuống: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Xuất tải xuống</string>
+  <string name="morphe_export_download_saved">Nội dung tải xuống đã được xuất đến %s</string>
+  <string name="morphe_export_download_failed">Không thể xuất nội dung tải xuống</string>
+  <string name="morphe_export_download_all_flyout_title">Xuất tất cả ra thiết bị</string>
+  <string name="morphe_export_download_all_started">Đang xuất tất cả các bản tải xuống</string>
+  <string name="morphe_export_download_all_running">Các bản tải xuống đang được xuất</string>
+  <string name="morphe_export_download_all_saved">Đã xuất %1$s trên %2$s bản tải xuống vào %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Giới thiệu</string>
@@ -260,6 +177,8 @@ Chúng sẽ được tải về lần lượt, việc này có thể mất nhi�
   <string name="morphe_music_hide_repeat_button_title">Ẩn nút Lặp lại</string>
   <string name="morphe_music_hide_shuffle_button_title">Ẩn nút Trộn bài</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Ẩn kệ \'Phát nhanh\'</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Ẩn phần \"Bạn cũng có thể thích\"</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Ẩn kệ \'Nhạc đã tải về\'</string>
   <string name="morphe_music_comments_screen_title">Bình luận</string>
   <string name="morphe_music_comments_screen_summary">Chọn những thành phần sẽ hiển thị trong phần bình luận</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Ẩn Nguyên tắc cộng đồng</string>
@@ -338,9 +257,17 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_playback_speed_summary">Tốc độ dùng cho tất cả các bản nhạc. Ở mức 100%, tốc độ của ứng dụng sẽ được dùng, chẳng hạn như tốc độ phát podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Thay đổi cao độ theo tốc độ</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Tắt giảm âm thanh</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Âm lượng sẽ không bị giảm khi một ứng dụng khác phát âm thanh ngắn, chẳng hạn như thông báo</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Tắt chuyển bài khi bấm không thích</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Không chuyển sang bài tiếp theo khi bạn bấm nút Không thích</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">Vòng lặp A-B</string>
+  <string name="morphe_music_ab_loop_summary">Nhấn giữ thanh tìm kiếm để đặt điểm bắt đầu vòng lặp, nhấn lần nữa để đặt điểm kết thúc vòng lặp, và nhấn lần nữa để xóa vòng lặp</string>
+  <string name="morphe_music_ab_loop_toast_start">Điểm bắt đầu vòng lặp được đặt thành %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Điểm kết thúc vòng lặp được đặt thành %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Đã xóa vòng lặp</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Hành động khi chạm vào bài hát trong danh sách phát</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Phát danh sách phát</string>
@@ -663,6 +590,7 @@ Cột đầu tiên là từ, cột thứ hai là cách đọc; các cột và d�
   <string name="morphe_music_lyrics_rime_dict_no_table">Không có danh sách từ Rime nào được chọn cho ngôn ngữ ở trên. Nhấn tên này để chọn một danh sách, hoặc chọn một ngôn ngữ có danh sách</string>
   <string name="morphe_music_lyrics_rime_dict_add">Thêm</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Thêm Danh sách từ Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Một tệp .dict.yaml, hoặc một tệp zip chứa tệp đó, với các dòng như 字 ham và 典 din2. Danh sách sẽ được tải khi bạn đánh dấu chọn và nhấn Lưu, và bạn có thể tự kiểm tra giấy phép của tệp đó</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Mã ngôn ngữ</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Hai hoặc ba chữ cái, như hak hoặc wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Tên</string>

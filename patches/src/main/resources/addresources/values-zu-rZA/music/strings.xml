@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Sebenzisa isilandisi sangaphandle kumenyu ye-Download</string>
   <string name="morphe_external_downloader_menu_summary">Inketho ye-Download emenywini ivula isilandisi sakho sangaphandle esikhundleni salokhu</string>
-  <string name="morphe_music_downloads_screen_title">Okulandiwe</string>
-  <string name="morphe_music_downloads_empty">"Alukho ukulandwa
-Amaculo alandiwe azovela lapha"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s amaculo • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Sesha okulandwe</string>
-  <string name="morphe_music_downloads_sort">Hlela</string>
-  <string name="morphe_music_downloads_sort_artist">Hlela ngokomculi</string>
-  <string name="morphe_music_downloads_sort_title">Hlela ngokwesihloko</string>
-  <string name="morphe_music_downloads_sort_size">Hlela ngosayizi</string>
-  <string name="morphe_music_downloads_delete_all">Susa zonke izinto ezilandwe</string>
-  <string name="morphe_music_downloads_delete_all_title">Susa zonke izinto ezilandwe?</string>
-  <string name="morphe_music_downloads_delete_all_message">Zonke izingoma ezilandiwe zizosuswa kule device</string>
-  <string name="morphe_music_downloads_all_deleted">Okulandwe kususiwe</string>
-  <string name="morphe_music_downloads_nothing_found">Akukho okutholakele</string>
-  <string name="morphe_music_downloads_actions_for">Izenzo ze %s</string>
-  <string name="morphe_music_downloads_play">Dlala</string>
-  <string name="morphe_music_downloads_play_pause">Dlala noma ume</string>
-  <string name="morphe_music_downloads_previous">Okwangaphambili</string>
-  <string name="morphe_music_downloads_next">Okulandelayo</string>
-  <string name="morphe_music_downloads_pause">Yema</string>
-  <string name="morphe_music_downloads_shuffle">Hlanganisa</string>
-  <string name="morphe_music_downloads_repeat">Phinda</string>
-  <string name="morphe_music_downloads_minimize">Nciphisa</string>
-  <string name="morphe_music_downloads_close">Vala</string>
-  <string name="morphe_music_downloads_delete">Susa</string>
-  <string name="morphe_music_downloads_delete_track">Susa ukulanda</string>
-  <string name="morphe_music_downloads_delete_track_title">Susa ukulanda?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s kuzosuswa kuleli device</string>
-  <string name="morphe_music_downloads_track_deleted">Ukulanda kususwe</string>
-  <string name="morphe_music_downloads_track_delete_failed">Kukwazalukanga ukususa ukulanda</string>
-  <string name="morphe_music_downloads_play_failed">Kukwazalukanga ukudlalisa ukulanda</string>
-  <string name="morphe_music_downloads_playlists">Uhlu lwezingoma</string>
-  <string name="morphe_music_downloads_playlists_section">Uhlu lwezingoma oludalwe (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Ayikho uhlu lwezingoma lendawo okwamanje</string>
-  <string name="morphe_music_downloads_playlists_hide">Fihla uhlu lwezingoma ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Uhlu lwezingoma olusha</string>
-  <string name="morphe_music_downloads_playlist_new_button">Uhlu lwezingoma olusha</string>
-  <string name="morphe_music_downloads_playlist_selected">Kukhethiwe (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Khetha izingoma kuqala</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Susa okukhethiwe</string>
-  <string name="morphe_music_downloads_playlist_create">Dala uhlu lwezingoma</string>
-  <string name="morphe_music_downloads_playlist_create_button">Dala</string>
-  <string name="morphe_music_downloads_playlist_add">Yengeza ohlwini lwezingoma</string>
-  <string name="morphe_music_downloads_playlist_added">Kwenyeziwe ku-%s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Igama le-playlist</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Igama le-playlist alikwazi ukuba lingenalutho</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Kukwazekile ukulondoloza i-playlist</string>
-  <string name="morphe_music_downloads_playlist_track_count">ama-track %s</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">itrekhi 1</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Azikho izingoma kule playlist</string>
-  <string name="morphe_music_downloads_playlist_play">Dlala i-playlist</string>
-  <string name="morphe_music_downloads_playlist_play_all">Dlala konke</string>
-  <string name="morphe_music_downloads_playlist_rename">Shintsha igama</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Gudanisa igama le-playlist</string>
-  <string name="morphe_music_downloads_playlist_save">Gcina</string>
-  <string name="morphe_music_downloads_playlist_delete">Susa i-playlist</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Susa i-playlist?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s izosuswa. Izingoma ezilandwe ziyahlala</string>
-  <string name="morphe_music_downloads_playlist_deleted">I-playlist isuswe</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Susa ku-playlist</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Hweba ukuze uhlele kabusha</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Hweba ukuze uhlele kabusha</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Kuqedile</string>
-  <string name="morphe_music_downloads_notification_channel">Ukulandwa kwe-audio</string>
-  <string name="morphe_music_downloads_playback_channel">Ukudlala ngaphandle kwe-internet</string>
-  <string name="morphe_music_downloads_unknown_track">Kwehlulekile ukuthola ingoma okumele ilandwe</string>
-  <string name="morphe_music_downloads_already_running">Ukulandwa sekuyaqala</string>
-  <string name="morphe_music_downloads_already_saved">Selulandwe</string>
-  <string name="morphe_music_downloads_started">Ukulandwa kuqale</string>
-  <string name="morphe_music_downloads_starting">Kuqala ukulanda…</string>
-  <string name="morphe_music_downloads_progress">Kulandwa %s%%</string>
-  <string name="morphe_music_downloads_complete">Ukulanda kuphothulwe</string>
-  <string name="morphe_music_downloads_failed">Ukulanda kuhleleke</string>
-  <string name="morphe_music_downloads_playlist_download_title">Ukulanda uhlu lwezingoma</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Kuhlistwa izingoma…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s kuhlistwe…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Kuhlulekile ukulista izingoma zohlu lwezingoma</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Sekulandiwe: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s kulolu hlu lwezingoma, %2$s azikalandwa.
+  <string name="morphe_export_download_folder_title">Thumela ama-download ngaphandle</string>
+  <string name="morphe_export_download_folder_summary">"Thumela izingoma namavidiyo alandiwe uhlelo lwe-app ku-storage lwedivayisi yakho usebenzisa imenyu yoku-download. Thinta ukuze ushintshe ifolda yokuthumela ngaphandle
 
-Zilandwa ngesisodwa ngesisodwa, okungathatha isikhathi eside futhi kudinga cishe %3$s wesikhala esikhululekile"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Landa</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Kudownloadwa ingoma %1$s kwe %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s kudownloadwe</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s kudownloadwe, %2$s kwezoningoma kukhona okungekabi kudownloadwe</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Ukulanda uhlu lwezingoma sekuqhubeka</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">I-akhawunti yakho ayisaziwe okwamanje. Zama futhi emva kwesikhashana</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s kuhlistwe, konke sekulandiwe</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Ingxenye kuphela yohlu lwezingoma eyakwazi ukulistwa. Chofoza Download futhi emva kwesikhashana ukuze uthole esisasele</string>
-  <string name="morphe_music_downloads_playlist_download_started">Kulandwa %s ngemuva</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Akukho uxhumano lukanethiwekhi</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Kulindwe unethiwekhi…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Kumiwe emva kwe-%1$s kwe-%2$s. Chofoza Download futhi ukuze uqhubeke</string>
-  <string name="morphe_music_downloads_mark_title">Phawula amaculo alandiwe</string>
-  <string name="morphe_music_downloads_mark_summary">Amaculo asevele alandiwe akhombisa uphawu phambi kwemininingwane yawo ohlwini lwezingoma, kuma-album nasemiphumeleni yokusesha</string>
+Ifolda yokuthumela ngaphandle: %s"</string>
+  <string name="morphe_export_download_started">Kuthunyelwa i-download ngaphandle</string>
+  <string name="morphe_export_download_progress">Kuthunyelwa i-download ngaphandle: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Ukuthunyelwa kwe-download ngaphandle</string>
+  <string name="morphe_export_download_saved">I-download ithunyelwe ngaphandle ku %s</string>
+  <string name="morphe_export_download_failed">Kukwazekile ukuthumela i-download ngaphandle</string>
+  <string name="morphe_export_download_all_flyout_title">Thumela konke ngaphandle kudivayisi</string>
+  <string name="morphe_export_download_all_started">Kuthunyelwa zonke izinto ezilandiwe ngaphandle</string>
+  <string name="morphe_export_download_all_running">Ama-downloads asevele ethunyelwa ngaphandle</string>
+  <string name="morphe_export_download_all_saved">Kukhiqizwe u-%1$s we-%2$s okudownloadwe kuya ku-%3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Mayelana neMorphe</string>
@@ -260,6 +177,8 @@ Zilandwa ngesisodwa ngesisodwa, okungathatha isikhathi eside futhi kudinga cishe
   <string name="morphe_music_hide_repeat_button_title">Fihla inkinobho ye-Repeat</string>
   <string name="morphe_music_hide_shuffle_button_title">Fihla inkinobho ye-Shuffle</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Fihla i-shelf ye-\'Speed dial\'</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Fihla isigaba esithi \'Mhlawumbe ungakuthanda futhi\'</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Fihla ishelfu ethi \'Okulandishwe kwakho\'</string>
   <string name="morphe_music_comments_screen_title">Imibono</string>
   <string name="morphe_music_comments_screen_summary">Khetha ukuthi yiziphi izinto ezivela esigabeni semibono</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Fihla Imithetho yoMphakathi</string>
@@ -338,9 +257,17 @@ Ukudlala kwe-SABR (I-Spoof video streams icishiwe)"</string>
   <string name="morphe_music_playback_speed_summary">Isivinini esisetshenziswa kuzo zonke izingoma. Ku-100% isivinini se-app siyasetshenziswa, njengesivinini sokudlala i-podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Shintsha ipitch ngesivinini</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Khubaza i-audio ducking</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Ivoliyumu ayihleliwe lapho omunye uhlelo ludlala umsindo omfishane, njengesaziso</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Khansela ukuqondiswa kokungajabuli</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Kuvimbela ukuqhuba komculo owulandelayo lapho kuchotshozwa inkinobho yokungajabuli</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">I-loop ye-A-B</string>
+  <string name="morphe_music_ab_loop_summary">Cindezela isikhangiso sesikhathi isikhathi eside ukuze ubeke ukuqala kwe-loop, uphinde ucindeze ukuze ubeke ukuphela kwe-loop, bese ucindezela futhi ukuze ususe i-loop</string>
+  <string name="morphe_music_ab_loop_toast_start">Ukuqala kwe-loop kubekwe ku- %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Ukuphela kwe-loop kubekwe ku- %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">I-loop isuliwe</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Isenzo sokuthinta ithrekhi ohlelweni lwezingoma</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Dlala uhlelo lwezingoma</string>
@@ -663,6 +590,7 @@ Inxuba yokuqala igama, yesibili ukufundwa kwalo; izinkhumu ezengeziwe nemigqa en
   <string name="morphe_music_lyrics_rime_dict_no_table">Ayikho uhlu lwamagama lwe-Rime olukhethiwe olulimi olungenhla. Thinta leli gama ukuze ukhethe olulodwa, noma ukhethe ulimi olunohlu</string>
   <string name="morphe_music_lyrics_rime_dict_add">Engeza</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Yengeza uhlu lwamagama lwe-Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Ifayela le-.dict.yaml, noma i-zip enalo, emugqeni efana ne-字 ham kanye ne-典 din2. Uhlu lutholakala lapho ukukutika bese uchofoza u-Save, kanti i-license yalo uwuhlola wena</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Ikhodi yolimi</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Izinhlamvu ezimbili noma ezintathu, njengokuthi hak noma wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Igama</string>

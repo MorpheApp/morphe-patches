@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Külső letöltő használata a Letöltés menüben</string>
   <string name="morphe_external_downloader_menu_summary">A menük Letöltés lehetősége a külső letöltőt nyitja meg</string>
-  <string name="morphe_music_downloads_screen_title">Letöltések</string>
-  <string name="morphe_music_downloads_empty">"Nincs letöltés
-A letöltött számok itt jelennek meg"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s szám • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Letöltések keresése</string>
-  <string name="morphe_music_downloads_sort">Rendezés</string>
-  <string name="morphe_music_downloads_sort_artist">Rendezés előadó szerint</string>
-  <string name="morphe_music_downloads_sort_title">Rendezés cím szerint</string>
-  <string name="morphe_music_downloads_sort_size">Rendezés méret szerint</string>
-  <string name="morphe_music_downloads_delete_all">Összes letöltés törlése</string>
-  <string name="morphe_music_downloads_delete_all_title">Törlöd az összes letöltést?</string>
-  <string name="morphe_music_downloads_delete_all_message">Az összes letöltött szám törlődik erről az eszközről</string>
-  <string name="morphe_music_downloads_all_deleted">Letöltések törölve</string>
-  <string name="morphe_music_downloads_nothing_found">Nincs találat</string>
-  <string name="morphe_music_downloads_actions_for">%s műveletei</string>
-  <string name="morphe_music_downloads_play">Lejátszás</string>
-  <string name="morphe_music_downloads_play_pause">Lejátszás vagy szünet</string>
-  <string name="morphe_music_downloads_previous">Előző</string>
-  <string name="morphe_music_downloads_next">Következő</string>
-  <string name="morphe_music_downloads_pause">Szünet</string>
-  <string name="morphe_music_downloads_shuffle">Véletlenszerű</string>
-  <string name="morphe_music_downloads_repeat">Ismétlés</string>
-  <string name="morphe_music_downloads_minimize">Minimalizálás</string>
-  <string name="morphe_music_downloads_close">Bezárás</string>
-  <string name="morphe_music_downloads_delete">Törlés</string>
-  <string name="morphe_music_downloads_delete_track">Letöltés törlése</string>
-  <string name="morphe_music_downloads_delete_track_title">Törlöd a letöltést?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s törlődik erről az eszközről</string>
-  <string name="morphe_music_downloads_track_deleted">Letöltés törölve</string>
-  <string name="morphe_music_downloads_track_delete_failed">Nem sikerült törölni a letöltést</string>
-  <string name="morphe_music_downloads_play_failed">Nem sikerült lejátszani a letöltést</string>
-  <string name="morphe_music_downloads_playlists">Lejátszási listák</string>
-  <string name="morphe_music_downloads_playlists_section">Létrehozott lejátszási listák (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Még nincsenek helyi lejátszási listák</string>
-  <string name="morphe_music_downloads_playlists_hide">Lejátszási listák elrejtése ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Új lejátszási lista</string>
-  <string name="morphe_music_downloads_playlist_new_button">Új lejátszási lista</string>
-  <string name="morphe_music_downloads_playlist_selected">Kiválasztott (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Válasszon először dalokat</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Kiválasztás törlése</string>
-  <string name="morphe_music_downloads_playlist_create">Lejátszási lista létrehozása</string>
-  <string name="morphe_music_downloads_playlist_create_button">Létrehozás</string>
-  <string name="morphe_music_downloads_playlist_add">Hozzáadás lejátszási listához</string>
-  <string name="morphe_music_downloads_playlist_added">Hozzáadva a(z) %s listához</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Lejátszási lista neve</string>
-  <string name="morphe_music_downloads_playlist_name_empty">A lejátszási lista neve nem lehet üres</string>
-  <string name="morphe_music_downloads_playlist_save_failed">A lejátszási lista nem menthető el</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s szám</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 szám</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Nincsenek számok ebben a lejátszási listában</string>
-  <string name="morphe_music_downloads_playlist_play">Lejátszási lista lejátszása</string>
-  <string name="morphe_music_downloads_playlist_play_all">Összes lejátszása</string>
-  <string name="morphe_music_downloads_playlist_rename">Átnevezés</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Lejátszási lista átnevezése</string>
-  <string name="morphe_music_downloads_playlist_save">Mentés</string>
-  <string name="morphe_music_downloads_playlist_delete">Lejátszási lista törlése</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Töröljük a lejátszási listát?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">A(z) %s törlésre kerül. A letöltött számok megmaradnak</string>
-  <string name="morphe_music_downloads_playlist_deleted">Lejátszási lista törölve</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Eltávolítás a lejátszási listából</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Húzd át a sorrend módosításához</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Húzd a fogantyút a sorrend módosításához</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Kész</string>
-  <string name="morphe_music_downloads_notification_channel">Audió-letöltések</string>
-  <string name="morphe_music_downloads_playback_channel">Offline lejátszás</string>
-  <string name="morphe_music_downloads_unknown_track">Nem sikerült azonosítani a letöltendő számot</string>
-  <string name="morphe_music_downloads_already_running">A letöltés már folyamatban van</string>
-  <string name="morphe_music_downloads_already_saved">Már letöltve</string>
-  <string name="morphe_music_downloads_started">Letöltés elindítva</string>
-  <string name="morphe_music_downloads_starting">Letöltés indítása…</string>
-  <string name="morphe_music_downloads_progress">Letöltés: %s%%</string>
-  <string name="morphe_music_downloads_complete">Letöltés befejezve</string>
-  <string name="morphe_music_downloads_failed">Letöltés sikertelen</string>
-  <string name="morphe_music_downloads_playlist_download_title">Lejátszási lista letöltése</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Számok listázása…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s listázva…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Nem sikerült listázni a lejátszási lista számait</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Már letöltve: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s szám van ebben a lejátszási listában, %2$s még nincs letöltve.
+  <string name="morphe_export_download_folder_title">Letöltések exportálása</string>
+  <string name="morphe_export_download_folder_summary">"Exportálja az alkalmazással letöltött dalokat és videókat a készülék tárolójába a letöltés menüjén keresztül. Koppintson a export mappa módosításához
 
-Egyenként töltjük le őket, ami hosszú ideig tarthat, és körülbelül %3$s szabad hely szükséges"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Letöltés</string>
-  <string name="morphe_music_downloads_playlist_download_progress">%1$s. szám letöltése %2$s-ból</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s letöltve</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s letöltve, %2$s nem lett letöltve</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">A lejátszási lista letöltése már folyamatban van</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">A fiókod még nem ismert. Próbáld újra egy pillanat múlva</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listázva, mind letöltve</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">A lejátszási lista csak egy része listázható. Koppints a Letöltésre később a maradékért</string>
-  <string name="morphe_music_downloads_playlist_download_started">%s letöltése a háttérben</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Nincs hálózati kapcsolat</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Hálózatra várva…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">%2$s közül %1$s után megállítva. Koppintson a Letöltésre a folytatáshoz</string>
-  <string name="morphe_music_downloads_mark_title">Letöltött dalok jelölése</string>
-  <string name="morphe_music_downloads_mark_summary">A már letöltött dalok előtt egy jelzés jelenik meg a lejátszási listákban, albumokban és a keresési eredményekben</string>
+Export mappa: %s"</string>
+  <string name="morphe_export_download_started">Letöltés exportálása</string>
+  <string name="morphe_export_download_progress">Letöltés exportálása: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Letöltések exportálása</string>
+  <string name="morphe_export_download_saved">Letöltés exportálva a következőbe: %s</string>
+  <string name="morphe_export_download_failed">Nem sikerült exportálni a letöltést</string>
+  <string name="morphe_export_download_all_flyout_title">Összes letöltés exportálása a készülékre</string>
+  <string name="morphe_export_download_all_started">Összes letöltés exportálása</string>
+  <string name="morphe_export_download_all_running">A letöltések exportálása már folyamatban van</string>
+  <string name="morphe_export_download_all_saved">%2$s letöltésből %1$s exportálva a következőbe: %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Névjegy</string>
@@ -261,6 +178,7 @@ Egyenként töltjük le őket, ami hosszú ideig tarthat, és körülbelül %3$s
   <string name="morphe_music_hide_shuffle_button_title">Véletlenszerű lejátszás gomb elrejtése</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\"Gyorshívó\" polc elrejtése</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">„Ezek is érdekelhetnek” szakasz elrejtése</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">\"Letöltéseim\" polc elrejtése</string>
   <string name="morphe_music_comments_screen_title">Megjegyzések</string>
   <string name="morphe_music_comments_screen_summary">Válaszd ki, mely elemek jelenjenek meg a megjegyzések szekcióban</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Közösségi irányelvek elrejtése</string>
@@ -344,6 +262,12 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">A nemtetszés-átirányítás letiltása</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Megakadályozza, hogy a nemtetszés gomb megnyomása esetén a következő számra ugorjon</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">A-B ciklus</string>
+  <string name="morphe_music_ab_loop_summary">Hosszan nyomja a keresősávot a loop kezdete beállításához, újra a loop vége beállításához, és még egyszer a loop törléséhez</string>
+  <string name="morphe_music_ab_loop_toast_start">A loop kezdete beállítva: %s</string>
+  <string name="morphe_music_ab_loop_toast_end">A loop vége beállítva: %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Loop törölve</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Lejátszási lista számának koppintási művelete</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Lejátszási lista lejátszása</string>

@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">새 설정 강조 표시하기</string>
   <string name="morphe_settings_new_indicator_days_summary">업데이트로 추가된 설정 및 옵션 옆에 점이 표시되는 기간을 지정할 수 있습니다 (일수)</string>
   <string name="morphe_settings_new_indicator_days_off">사용 안함</string>
+  <string name="morphe_settings_new_indicator_clear_title">모든 설정을 확인됨으로 표시하기</string>
+  <string name="morphe_settings_new_indicator_clear_summary">모든 새 설정 및 옵션에서 점을 제거합니다</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">모든 설정을 확인됨으로 표시하시겠습니까?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">모든 새 설정 및 옵션에 점이 제거됩니다. 향후 업데이트로 추가되는 설정에는 다시 점이 표시됩니다</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">설정을 완료하려면 다시 시작하세요</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 패키지명이 올바른지 앱이 설치되어 있는지 확인하세요"</string>
   <string name="morphe_external_downloader_empty_warning">앱 패키지명은 비워 둘 수 없습니다</string>
+  <string name="morphe_export_download_folder_dialog_title">내보내기 폴더</string>
+  <string name="morphe_export_download_folder_change">폴더 변경</string>
+  <string name="morphe_export_download_folder_changed">내보내기 폴더를 변경하였습니다</string>
+  <string name="morphe_export_download_folder_reset">내보내기 폴더를 초기화하였습니다</string>
+  <string name="morphe_export_download_folder_missing">내보내기 폴더 \'%s\'를 찾을 수 없습니다</string>
+  <string name="morphe_export_download_flyout_title">기기로 내보내기</string>
+  <string name="morphe_export_download_canceled">내보내기를 취소하였습니다</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">사용자 정의</string>
   <string name="morphe_custom_branding_icon_title">앱 아이콘</string>
@@ -110,6 +121,20 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
 %2$s를 기본 클라이언트로 설정하시겠습니까?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">전환</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">이 설정을 비활성화하면 재생 문제가 발생할 수 있습니다</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView가 비활성화되어 있거나 설치되어 있지 않습니다
+
+동영상을 재생하려면 Android System WebView가 필요합니다. 해당 기능을 활성화하고 최신 버전으로 업데이트하세요
+
+'확인'을 탭하면 Android 시스템 WebView를 열 수 있습니다"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView가 최신 버전이 아닙니다 (버전 %s)
+
+Android System WebView를 최신 버전으로 업데이트하지 않으면 동영상 재생에 문제가 발생할 수 있습니다
+
+'확인'을 탭하면 Android System WebView를 열 수 있습니다"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">다시 보지 않기</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView가 설치되어 있지 않습니다. 동영상 재생 문제를 해결하려면 Android System WebView를 설치하세요</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">다음을 활성화해 보세요: 동영상 스트림 속이기 &gt; Android VR에 로그인하기</string>

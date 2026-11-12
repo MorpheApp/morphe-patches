@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Paryškinti naujus nustatymus</string>
   <string name="morphe_settings_new_indicator_days_summary">Kelių dienų laikotarpiu šalia nustatymų ir parinkčių, pridėtų atnaujinimo metu, bus rodomas taškas</string>
   <string name="morphe_settings_new_indicator_days_off">Išjungta</string>
+  <string name="morphe_settings_new_indicator_clear_title">Pažymėti visus nustatymus kaip peržiūrėtus</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Pašalinti tašką iš visų naujų nustatymų ir parinkčių</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Pažymėti visus nustatymus kaip peržiūrėtus?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Taškas pašalintas iš visų naujų nustatymų ir parinkčių. Ateities atnaujinimais pridėti nustatymai vis tiek bus išryškinti.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Paleiskite iš naujo, kad užbaigtumėte sąranką</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Patikrinkite, ar paketo pavadinimas teisingas ir ar programa įdiegta"</string>
   <string name="morphe_external_downloader_empty_warning">Paketo pavadinimas negali būti tuščias</string>
+  <string name="morphe_export_download_folder_dialog_title">Eksportavimo aplankas</string>
+  <string name="morphe_export_download_folder_change">Pakeisti aplanką</string>
+  <string name="morphe_export_download_folder_changed">Eksportavimo aplankas pakeistas</string>
+  <string name="morphe_export_download_folder_reset">Eksportavimo aplankas nustatytas iš naujo</string>
+  <string name="morphe_export_download_folder_missing">Nepavyko rasti eksportavimo aplanko %s</string>
+  <string name="morphe_export_download_flyout_title">Eksportuoti į įrenginį</string>
+  <string name="morphe_export_download_canceled">Eksportavimas atšauktas</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pasirinktinis</string>
   <string name="morphe_custom_branding_icon_title">Programos piktograma</string>
@@ -110,6 +121,20 @@ Jei esate „YouTube Premium“ vartotojas, šis nustatymas gali būti nereikali
 Padaryti %2$s numatytuoju klientu?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Perjungti</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Šio nustatymo išjungimas gali sukelti atkūrimo problemų</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"\"Android System WebView\" išjungta arba neįdiegta.
+
+Vaizdo įrašų atkūrimui reikia \"Android System WebView\". Įjunkite ją ir atnaujinkite iki naujausios versijos.
+
+Bakstelėkite „OK“, kad atidarytumėte \"Android System WebView\"."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"\"Android System WebView\" versija (%s) yra pasenusi.
+
+Vaizdo įrašų atkūrimas gali neveikti, kol \"Android System WebView\" nebus atnaujinta iki naujausios versijos.
+
+Bakstelėkite „OK“, kad atidarytumėte \"Android System WebView\"."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Rodyti daugiau nerodyti</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">\"Android System WebView\" neįdiegta. Įdiegkite ją, kad sutvarkytumėte vaizdo įrašų atkūrimą</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bandykite įjungti: Maskuoti vaizdo įrašų srautus &gt; Prisijungti prie Android VR</string>

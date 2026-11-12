@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">پنهان‌کردن نتایج جست‌وجو بر اساس کلمه‌های کلیدی</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">پنهان‌کردن ویدئوهای اشتراک‌ها بر اساس کلمه‌های کلیدی</string>
   <string name="morphe_hide_keyword_content_phrases_title">کلمه‌های کلیدی برای پنهان‌کردن</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"کلمات و عبارت‌های کلیدی مورد نظر برای پنهان‌سازی را وارد کنید و آن‌ها را با خط جدید از هم جدا کنید
+  <string name="morphe_hide_keyword_content_phrases_summary">"کلمات کلیدی و عبارت‌هایی را که می‌خواهید پنهان شوند، با خطوط جدید از هم جدا کرده و وارد کنید
 
-کلمات کلیدی می‌توانند هر متنی باشند که در عناوین ویدیوها یا نام کانال‌ها نمایش داده می‌شود"</string>
+کلمات کلیدی می‌توانند هر متنی باشند که در عناوین ویدیو نمایش داده می‌شود. کلمه کلیدی @UserName تمام محتوای سازندگان خاصی را پنهان می‌کند"</string>
   <string name="morphe_hide_keyword_content_about_summary">"خانه / اشتراک‌ها / جست‌وجو / دیدگاه‌ها فیلتر می‌شوند تا محتوای منطبق با عبارت‌های کلیدی پنهان شود
 
 محدودیت‌ها:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">قرار دادن کلمه یا عبارت کلیدی درون گیومهٔ دوتایی، از مطابقت جزئی با عنوان ویدئو و نام کانال جلوگیری می‌کند&lt;br&gt;&lt;br&gt;برای مثال،&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ویدئوی &lt;b&gt;هوش مصنوعی چگونه کار می‌کند؟&lt;/b&gt; را پنهان می‌کند&lt;br&gt;اما این مورد را پنهان نمی‌کند: &lt;b&gt;منظور از استفادهٔ منصفانه چیست؟&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">کلمهٔ کلیدی اعلان‌های متناقض دارد: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">کلمهٔ کلیدی خیلی کوتاه است و به گیومه نیاز دارد: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">کلمهٔ کلیدی همهٔ ویدئوها را پنهان می‌کند: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• خانه: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"ویدیوهای ذخیره‌شده در برنامه را با استفاده از منوی شناور دانلودها به حافظه دستگاه خود صادر کنید. برای تغییر پوشهٔ صادرکردن ضربه بزنید
 
 پوشهٔ صادرکردن: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">پوشهٔ صادرکردن</string>
-  <string name="morphe_export_download_folder_change">تغییر پوشه</string>
-  <string name="morphe_export_download_folder_changed">پوشهٔ صادرکردن تغییر یافت</string>
-  <string name="morphe_export_download_folder_reset">پوشهٔ صادرکردن بازنشانی شد</string>
-  <string name="morphe_export_download_folder_missing">پوشه خروجی %s یافت نشد</string>
-  <string name="morphe_export_download_flyout_title">صادرکردن به دستگاه</string>
   <string name="morphe_export_download_started">در حال خروجی گرفتن از ویدیو</string>
   <string name="morphe_export_download_progress">در حال خروجی گرفتن از ویدیو: %s%%</string>
   <string name="morphe_export_download_notification_channel">صادر کردن ویدیوها</string>
   <string name="morphe_export_download_saved">ویدیو در %s صادر شد</string>
   <string name="morphe_export_download_failed">صادر کردن ویدیو امکان‌پذیر نبود</string>
-  <string name="morphe_export_download_canceled">صادرکردن لغو شد</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">ترجمهٔ صوتی</string>
   <string name="morphe_vot_screen_summary">زیرنویس‌های ویدئو را با تبدیل متن به گفتار روی دستگاه و همگام با پخش، بلند می‌خواند</string>
@@ -729,8 +721,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">صف بومی</string>
   <string name="morphe_queue_type_entry_3">صف Morphe</string>
   <string name="morphe_queue_type_entry_4">کلاینت صف Morphe</string>
-  <string name="morphe_queue_add_flyout_menu_title">افزودن مورد منوی صف به منوی بازشوی خوراک</string>
-  <string name="morphe_queue_add_flyout_menu_summary">یک مورد بازشوی اضافی اضافه می‌کند. اگر «افزودن به صف» نمایش داده نمی‌شود، این گزینه را فعال کنید</string>
   <string name="morphe_local_queue_sheet_title">صف</string>
   <string name="morphe_local_queue_open">صف (%s)</string>
   <string name="morphe_local_queue_clear">پاک کردن همه</string>
@@ -1462,7 +1452,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">فهرست‌های پخش و پیشنهادها در پخش‌کننده</string>
   <string name="morphe_dearrow_titles_search_title">نتایج جستجو</string>
   <string name="morphe_dearrow_titles_icon_title">نمایش آیکون DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">آیکون DeArrow را روی عنوان‌های ویدیویی جمع‌سپاری‌شده نمایش می‌دهد</string>
+  <string name="morphe_dearrow_titles_icon_summary">آیکون DeArrow را روی عنوان ویدیوهای crowdsourced نمایش می‌دهد. برای نمایش عنوان و تصویر بندانگشتی اصلی روی آیکون ضربه بزنید</string>
   <string name="morphe_dearrow_casual_mode_title">حالت غیررسمی</string>
   <string name="morphe_dearrow_casual_mode_summary">اگر کاربران DeArrow رای داده باشند که عنوان اصلی را می‌پسندند، عنوان اصلی را به‌جای عنوان DeArrow نشان می‌دهد</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">حداقل تعداد رای‌های غیررسمی برای نمایش عنوان اصلی</string>
@@ -1638,6 +1628,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• بلندی صدای پایدار در دسترس نیست</string>
   <string name="morphe_spoof_video_streams_about_end_early">• پخش ممکن است ۱ ثانیه زودتر تمام شود</string>
   <string name="morphe_spoof_video_streams_about_js">• اگر رفع ابهام شکست بخورد، پخش ممکن است با شکست مواجه شود</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView خاموش است یا نصب نشده است. آن را فعال و به‌روزرسانی کنید، در غیر این صورت ممکن است پخش ویدیو با خطا مواجه شود</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView قدیمی است. آن را به‌روزرسانی کنید، در غیر این صورت ممکن است پخش ویدیو با خطا مواجه شود</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• اجبار صدای اصلی در دسترس نیست</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• ورود به Android VR لازم است</string>

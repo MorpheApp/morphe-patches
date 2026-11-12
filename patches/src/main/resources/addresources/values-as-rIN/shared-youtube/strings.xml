@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">নতুন ছেটিংছ হাইলাইট কৰক</string>
   <string name="morphe_settings_new_indicator_days_summary">আপডেটৰ দ্বাৰা যোগ কৰা ছেটিংছ আৰু বিকল্পসমূহৰ কাষত কেইদিনলৈ এটা ডট দেখুৱাব</string>
   <string name="morphe_settings_new_indicator_days_off">বন্ধ</string>
+  <string name="morphe_settings_new_indicator_clear_title">সকলো ছেটিংছক দেখা বুলি চিহ্নিত কৰক</string>
+  <string name="morphe_settings_new_indicator_clear_summary">সকলো নতুন ছেটিংছ আৰু বিকল্পৰ পৰা ডটটো আঁতৰ কৰক</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">সকলো ছেটিংছক দেখা বুলি চিহ্নিত কৰিব নেকি?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">সকলো নতুন ছেটিংছ আৰু বিকল্পৰ পৰা ডটটো আঁতৰ কৰা হৈছে। ভৱিষ্যতৰ আপডেটৰ দ্বাৰা যোগ কৰা ছেটিংছসমূহত এতিয়াও হাইলাইট কৰা থাকিব।</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">ছেটআপ সম্পূৰ্ণ কৰিবলৈ পুনৰ আৰম্ভ কৰক</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 পেকেজ নামটো সঠিক আৰু এপ্লিকেচনটো সংস্থাপন কৰা হৈছে নে নাই পৰীক্ষা কৰক"</string>
   <string name="morphe_external_downloader_empty_warning">পেকেজৰ নাম খালী হ\'ব নোৱাৰে</string>
+  <string name="morphe_export_download_folder_dialog_title">এক্সপোর্ট ফোল্ডাৰ</string>
+  <string name="morphe_export_download_folder_change">ফ’ল্ডাৰ সলনি কৰক</string>
+  <string name="morphe_export_download_folder_changed">এক্সপোর্ট ফোল্ডাৰ সলনি কৰা হৈছে</string>
+  <string name="morphe_export_download_folder_reset">এক্সপোর্ট ফোল্ডাৰ ৰিছেট কৰা হৈছে</string>
+  <string name="morphe_export_download_folder_missing">এক্সপোর্ট ফোল্ডাৰ %s বিচাৰি পোৱা নগ\'ল</string>
+  <string name="morphe_export_download_flyout_title">ডিভাইসলৈ এক্সপোর্ট কৰক</string>
+  <string name="morphe_export_download_canceled">এক্সপোর্ট বাতিল কৰা হৈছে</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">কষ্টম</string>
   <string name="morphe_custom_branding_icon_title">এপ আইকন</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 %2$s-ক ডিফল্ট ক্লায়েন্ট হিচাপে নিৰ্ধাৰণ কৰিবনে?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">সুইচ কৰক</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">এই ছেটিংটো বন্ধ কৰিলে প্লেবেকত সমস্যা হ\'ব পাৰে</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView বন্ধ হৈ আছে বা সংস্থাপন কৰা হোৱা নাই।
+
+ভিডিঅ’ প্লেবেকৰ বাবে Android System WebView প্ৰয়োজন। ইয়াক অন কৰক আৰু শেৰিত সংস্কৰণলৈ আপডেট কৰক।
+
+Android System WebView খুলিবলৈ OK টিপক।"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView ৰ সংস্কৰণটো পুৰণি (সংস্কৰণ %s)।
+
+Android System WebView শেৰিত সংস্কৰণলৈ আপডেট নকৰা পৰ্যন্ত ভিডিঅ’ প্লেবেক বিফল হ’ব পাৰে।
+
+Android System WebView খুলিবলৈ OK টিপক।"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">পুনৰ দেখুৱাব নালাগে</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView সংস্থাপন কৰা হোৱা নাই। ভিডিঅ’ প্লেবেক ঠিক কৰিবলৈ ইয়াক সংস্থাপন কৰক</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">এনেদৰে চেষ্টা কৰক: Spoof video streams &gt; Android VR sign in</string>

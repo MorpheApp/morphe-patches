@@ -140,7 +140,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_thumbnail_title">동영상 썸네일 숨기기</string>
   <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_labels_title">동영상 라벨 숨기기</string>
-  <string name="morphe_hide_video_labels_summary">다음 동영상 라벨이 숨겨집니다:\n자동 더빙 / 더빙, 수수료 지급, 하이프 관련 라벨, 제품 n개, 시청자가 이 동영상도 시청함, 내가 좋아할 만한 동영상</string>
+  <string name="morphe_hide_video_labels_summary">다음 동영상 라벨이 숨겨집니다:\n자동 더빙 / 더빙, 수수료 지급, 하이프 관련 라벨, 제품 n개, 시청자가 이 동영상도 시청함, 내가 좋아할 만한 동영상 및 새 동영상 (Shorts 선반)</string>
   <string name="morphe_hide_view_count_title">조회수 숨기기</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"제한 사항:
@@ -272,7 +272,7 @@ Second \"item\" text"</string>
   <string name="morphe_comments_screen_title">댓글</string>
   <string name="morphe_comments_screen_summary">댓글 섹션에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_comments_carousel_title">댓글 좌우 슬라이드 필터 활성화하기</string>
-  <string name="morphe_hide_comments_carousel_summary">"• 키워드 또는 전체 이름을 입력하세요 (예시: 질문하기, 커뮤니티, 하이프, 감상하기)
+  <string name="morphe_hide_comments_carousel_summary">"• 키워드 또는 전체 이름을 입력하세요 (예시: 질문하기, 커뮤니티, 하이프, 감상하기, 멤버십)
 • 모든 항목을 숨기면 전체 댓글 섹션이 숨겨집니다"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">댓글 좌우 슬라이드 필터</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">필터링할 댓글 좌우 슬라이드 이름을 줄바꿈으로 구분하여 설정하세요</string>
@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">키워드로 검색 결과 숨기기</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">키워드로 구독 동영상 숨기기</string>
   <string name="morphe_hide_keyword_content_phrases_title">키워드 필터</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"숨기려는 키워드와 문구를 줄바꿈으로 구분하어 설정하세요
+  <string name="morphe_hide_keyword_content_phrases_summary">"숨길 키워드와 문구를 줄바꿈으로 구분하여 설정하세요
 
-키워드는 동영상 제목이나 채널 이름에 표시되는 모든 텍스트일 수 있습니다"</string>
+키워드는 동영상 제목에 표시되는 모든 텍스트일 수 있습니다. @사용자이름 키워드는 특정 제작자의 모든 콘텐츠를 숨깁니다"</string>
   <string name="morphe_hide_keyword_content_about_summary">"홈 / 구독 / 검색 결과 / 댓글 섹션에서 키워드 구문과 일치하는 콘텐츠가 필터링되어 숨겨집니다
 
 제한 사항:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">필터링할 키워드 및 구문을 큰따옴표로 묶으면 동영상 제목과 채널 이름이 부분적으로 일치하지 않도록 방지할 수 있습니다&lt;br&gt;&lt;br&gt;예를 들어&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;는 다음 동영상을 숨김: &lt;b&gt;AI 커리어 완벽 가이드&lt;/b&gt;&lt;br&gt;하지만 다음 동영상을 숨기지 못함: &lt;b&gt;생성형AI가 바꿔놓은 세계&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">키워드에 충돌하는 선언이 있습니다: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">키워드가 너무 짧아서 따옴표가 필요합니다: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">키워드가 모든 동영상을 숨길 것입니다: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• 홈: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"앱 내 '오프라인 저장' 메뉴를 사용하여 앱에 저장된 동영상을 기기 저장소로 내보낼 수 있습니다. 내보내기 폴더를 변경하려면 여기를 탭하세요
 
 내보내기 폴더: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">내보내기 폴더</string>
-  <string name="morphe_export_download_folder_change">폴더 변경</string>
-  <string name="morphe_export_download_folder_changed">내보내기 폴더를 변경하였습니다</string>
-  <string name="morphe_export_download_folder_reset">내보내기 폴더를 초기화하였습니다</string>
-  <string name="morphe_export_download_folder_missing">내보내기 폴더 \'%s\'를 찾을 수 없습니다</string>
-  <string name="morphe_export_download_flyout_title">기기로 내보내기</string>
   <string name="morphe_export_download_started">동영상을 내보내는 중</string>
   <string name="morphe_export_download_progress">동영상을 내보내는 중: %s%%</string>
   <string name="morphe_export_download_notification_channel">동영상 내보내기</string>
   <string name="morphe_export_download_saved">동영상을 \'%s\'로 내보냈습니다</string>
   <string name="morphe_export_download_failed">동영상을 내보낼 수 없습니다</string>
-  <string name="morphe_export_download_canceled">내보내기를 취소하였습니다</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">음성 번역</string>
   <string name="morphe_vot_screen_summary">기기의 텍스트 음성 변환(TTS)을 사용하여 재생에 맞춰 동기화된 동영상 자막을 읽어줍니다</string>
@@ -649,21 +641,21 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_loop_video_range_toast_on">\'%1$s ~ %2$s\' 연속 재생</string>
   <string name="morphe_loop_video_range_invalid_time">잘못된 시간 범위입니다</string>
   <!-- interaction.loop.loopCountPatch -->
-  <string name="morphe_loop_count_screen_title">반복 횟수</string>
-  <string name="morphe_loop_count_screen_summary">다음 동영상이 재생되기 전까지 동영상을 몇 번 반복할지 선택하세요</string>
-  <string name="morphe_loop_count_title">반복 횟수 활성화</string>
-  <string name="morphe_loop_count_summary">플레이어의 더보기 메뉴에 \'동영상 반복 재생\' 옆에 \'반복 횟수\'가 표시되어, 다음 동영상으로 넘어가기 전까지 동영상을 몇 번 재생할지 선택할 수 있습니다</string>
-  <string name="morphe_loop_count_playlists_title">재생목록에 반복 횟수 저장</string>
-  <string name="morphe_loop_count_playlists_summary">재생목록의 각 동영상은 선택한 반복 횟수를 유지하며, 재생목록에서 해당 동영상을 다시 재생할 때 \'동영상 반복 재생\'이 켜집니다. 이 옵션을 끄면 반복 횟수는 현재 재생 중인 동영상에만 적용됩니다</string>
-  <string name="morphe_loop_count_clear_title">저장된 반복 횟수 삭제</string>
-  <string name="morphe_loop_count_clear_summary">재생목록에 저장된 반복 횟수를 삭제합니다. 저장된 동영상: %s</string>
-  <string name="morphe_loop_count_clear_summary_none">저장된 반복 횟수가 없습니다</string>
-  <string name="morphe_loop_count_clear_dialog_title">저장된 반복 횟수를 삭제하시겠습니까?</string>
-  <string name="morphe_loop_count_clear_dialog_message">재생목록의 동영상에 저장된 반복 횟수가 삭제되며, 재생목록에서 해당 동영상을 재생할 때 \'동영상 반복 재생\'이 더 이상 자동으로 켜지지 않습니다</string>
-  <string name="morphe_loop_count_clear_done">저장된 반복 횟수가 삭제되었습니다</string>
-  <string name="morphe_loop_count_flyout_name">루프 횟수</string>
-  <string name="morphe_loop_count_dialog_message">다음 비디오가 재생되기 전까지 비디오가 재생되는 횟수이며, %1$s에서 %2$s까지 설정 가능합니다. 제한 없이 루프하려면 비워 두세요.</string>
-  <string name="morphe_loop_count_times">%s회</string>
+  <string name="morphe_loop_count_screen_title">연속 횟수</string>
+  <string name="morphe_loop_count_screen_summary">다음 동영상이 재생되기 전까지 동영상을 몇 번 연속할지 선택하세요</string>
+  <string name="morphe_loop_count_title">연속 횟수 활성화하기</string>
+  <string name="morphe_loop_count_summary">플레이어의 더보기 메뉴에서 \'동영상 연속 재생\' 옆에 있는 \'연속 횟수\'를 선택하면, 다음 동영상이 재생되기 전까지 현재 동영상을 몇 번 연속 재생할지 설정할 수 있습니다</string>
+  <string name="morphe_loop_count_playlists_title">재생목록에 연속 횟수 저장하기</string>
+  <string name="morphe_loop_count_playlists_summary">재생목록의 각 동영상에는 설정한 연속 횟수가 그대로 적용되며, 해당 동영상이 재생목록에서 다시 재생될 때 동영상 연속 재생 기능이 자동으로 활성화됩니다. 이 기능을 비활성화하명 설정한 연속 횟수는 현재 재생 중인 동영상에만 적용됩니다</string>
+  <string name="morphe_loop_count_clear_title">저장된 연속 횟수 지우기</string>
+  <string name="morphe_loop_count_clear_summary">재생목록에 저장된 연속 횟수를 지웁니다. 저장된 동영상: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">저장된 연속 횟수가 없습니다</string>
+  <string name="morphe_loop_count_clear_dialog_title">저장된 연속 횟수를 삭제하시겠습니까?</string>
+  <string name="morphe_loop_count_clear_dialog_message">재생목록에 있는 동영상의 연속 횟수 설정이 초기화되며, 재생목록에서 해당 동영상이 재생될 때 동영상 연속 재생 기능이 더 이상 자동으로 활성화되지 않습니다</string>
+  <string name="morphe_loop_count_clear_done">저장된 연속 횟수가 지워졌습니다</string>
+  <string name="morphe_loop_count_flyout_name">연속 횟수</string>
+  <string name="morphe_loop_count_dialog_message">다음 동영상이 재생되기 전까지 현재 동영상을 재생할 횟수입니다. %1$s 회부터 %2$s 회까지 설정할 수 있습니다. 비워 두면 제한 없이 연속 재생됩니다</string>
+  <string name="morphe_loop_count_times">%s 회</string>
   <string name="morphe_loop_count_no_limit">제한 없음</string>
   <string name="morphe_loop_count_decrease">횟수 감소</string>
   <string name="morphe_loop_count_increase">횟수 증가</string>
@@ -731,8 +723,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_queue_type_entry_2">기본 현재 재생목록</string>
   <string name="morphe_queue_type_entry_3">Morohe 현재 재생목록</string>
   <string name="morphe_queue_type_entry_4">Morohe 현재 재생목록 클라이언트 사이드</string>
-  <string name="morphe_queue_add_flyout_menu_title">\'현재 재생목록\' 메뉴 항목 추가하기</string>
-  <string name="morphe_queue_add_flyout_menu_summary">추가적인 메뉴 구성요소 항목을 추가합니다. \'현재 재생목록에서 다음 순서로 재생\' 메뉴가 표시되지 않는 경우에 이 옵션을 활성화하세요</string>
   <string name="morphe_local_queue_sheet_title">현재 재생목록</string>
   <string name="morphe_local_queue_open">현재 재생목록 (%s)</string>
   <string name="morphe_local_queue_clear">모두 지우기</string>
@@ -1464,7 +1454,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_dearrow_titles_player_title">플레이어 재생목록 &amp; 추천 동영상</string>
   <string name="morphe_dearrow_titles_search_title">검색 결과</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow 아이콘 표시하기</string>
-  <string name="morphe_dearrow_titles_icon_summary">크라우드소싱된 동영상 제목에 DeArrow 아이콘을 표시합니다</string>
+  <string name="morphe_dearrow_titles_icon_summary">크라우드소싱된 동영상 제목에 DeArrow 아이콘을 표시합니다. 아이콘을 탭하면 원본 제목과 썸네일을 표시합니다</string>
   <string name="morphe_dearrow_casual_mode_title">캐주얼 모드</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow 사용자들이 원본 제목을 더 좋아한다고 투표한 경우, DeArrow 제목 대신 원본 제목을 표시합니다</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">원본 제목을 표시하기 위한 최소 캐주얼 투표 수</string>
@@ -1640,6 +1630,9 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• 안정적인 볼륨을 사용할 수 없습니다</string>
   <string name="morphe_spoof_video_streams_about_end_early">• 재생이 1초 일찍 종료될 수 있습니다</string>
   <string name="morphe_spoof_video_streams_about_js">• 복호화에 실패하면 재생이 실패할 수 있습니다</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView가 꺼져 있거나 설치되어 있지 않습니다. 이를 켜고 업데이트하지 않으면 재생에 실패할 수 있습니다</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView 버전이 오래되었습니다. 업데이트하지 않으면 재생에 실패할 수 있습니다</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 원본 오디오를 강제로 활성화할 수 없습니다</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR에 로그인해야 합니다</string>

@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Destacar els nous ajustos</string>
   <string name="morphe_settings_new_indicator_days_summary">Nombre de dies que es mostra un punt al costat dels ajustos i opcions afegits per una actualització</string>
   <string name="morphe_settings_new_indicator_days_off">Desactivat</string>
+  <string name="morphe_settings_new_indicator_clear_title">Marcar tots els ajustos com a vistos</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Elimina el punt de tots els ajustos i opcions nous</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Marcar tots els ajustos com a vistos?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">El punt s\'elimina de tots els ajustos i opcions nous. Els ajustos afegits en futures actualitzacions es seguiran resaltant.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reinicia per acabar la configuració</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Verifiqueu que el nom del paquet sigui correcte i que l'aplicació estigui instal·lada"</string>
   <string name="morphe_external_downloader_empty_warning">El nom del paquet no es pot deixar buit</string>
+  <string name="morphe_export_download_folder_dialog_title">Carpeta d\'exportació</string>
+  <string name="morphe_export_download_folder_change">Canviar carpeta</string>
+  <string name="morphe_export_download_folder_changed">Carpeta d\'exportació canviada</string>
+  <string name="morphe_export_download_folder_reset">Carpeta d\'exportació restablerta</string>
+  <string name="morphe_export_download_folder_missing">No s\'ha pogut trobar la carpeta d\'exportació %s</string>
+  <string name="morphe_export_download_flyout_title">Exportar al dispositiu</string>
+  <string name="morphe_export_download_canceled">Exportació cancel·lada</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalitzat</string>
   <string name="morphe_custom_branding_icon_title">Icona de l\'aplicació</string>
@@ -110,6 +121,20 @@ Si sou un usuari de YouTube Premium, potser aquest ajust no sigui necessari"</st
 Defineix %2$s com el client per defecte?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Canviar</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Desactivar aquest ajust pot causar problemes de reproducció</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView està desactivat o no està instal·lat.
+
+La reproducció de vídeo requereix Android System WebView. Activeu-lo i actualitzeu'l a la versió més recent.
+
+Toqueu OK per obrir Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView està desactualitzat (versió %s).
+
+És possible que la reproducció de vídeo falli fins que Android System WebView s'actualitzi a la versió més recent.
+
+Toqueu OK per obrir Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">No tornis a mostrar</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView no està instal·lat. Instal·la\'l per solucionar la reproducció de vídeo</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Proveu d\'activar: Simular fluxos de vídeo &gt; Iniciar sessió a Android VR</string>

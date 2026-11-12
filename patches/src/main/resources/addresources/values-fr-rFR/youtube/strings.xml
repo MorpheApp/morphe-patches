@@ -321,7 +321,7 @@ Les changements incluent :
   <string name="morphe_hide_keyword_content_phrases_title">Mots-clés à masquer</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Entrez les mots-clés et les expressions à masquer, séparés par des sauts de ligne
 
-Les mots-clés peuvent être n'importe quel texte apparaissant dans les titres des vidéos ou les noms des chaînes"</string>
+Les mots-clés peuvent être n'importe quel texte apparaissant dans les titres des vidéos. Le mot-clé @NomUtilisateur masque tout le contenu provenant de créateurs spécifiques"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Accueil / Abonnements / Recherche / Les commentaires sont filtrés pour masquer le contenu correspondant aux expressions-clés
 
 Limitations : 
@@ -331,7 +331,6 @@ Limitations :
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Mettre un mot-clé ou une expression entre guillemets permet d\'éviter les correspondances partielles avec le titre des vidéos et les noms de chaîne&lt;br&gt;&lt;br&gt;Par exemple,&lt;br&gt;&lt;b&gt;\"ia\"&lt;/b&gt; masquera la vidéo : &lt;b&gt;Comment fonctionnent les IA ?&lt;/b&gt;&lt;br&gt;mais ne masquera pas : &lt;b&gt;Quelles études pour devenir commercial ?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Le mot-clé présente des déclarations conflictuelles : %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Le mot-clé est trop court et nécessite des guillemets : %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ce mot-clé va masquer toutes les vidéos : %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Accueil : %1$s
@@ -559,18 +558,11 @@ Après avoir ouvert une fois une vidéo avec le bouton 'Posez une question', la 
   <string name="morphe_export_download_folder_summary">"Exportez les vidéos enregistrées dans l'application vers le stockage de votre appareil à l'aide du menu déroulant de téléchargement dans l'application. Appuyez pour changer le dossier d'exportation
 
 Dossier d'exportation : %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Dossier d\'exportation</string>
-  <string name="morphe_export_download_folder_change">Changer de dossier</string>
-  <string name="morphe_export_download_folder_changed">Dossier d\'exportation changé</string>
-  <string name="morphe_export_download_folder_reset">Dossier d\'exportation réinitialisé</string>
-  <string name="morphe_export_download_folder_missing">Impossible de trouver le dossier d\'exportation %s</string>
-  <string name="morphe_export_download_flyout_title">Exporter vers l\'appareil</string>
   <string name="morphe_export_download_started">Exportation de la vidéo</string>
   <string name="morphe_export_download_progress">Exportation de la vidéo : %s%%</string>
   <string name="morphe_export_download_notification_channel">Exportations de vidéos</string>
   <string name="morphe_export_download_saved">Vidéo exportée vers %s</string>
   <string name="morphe_export_download_failed">Impossible d\'exporter la vidéo</string>
-  <string name="morphe_export_download_canceled">Exportation annulée</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traduction en voix off</string>
   <string name="morphe_vot_screen_summary">Lisez les sous-titres de la vidéo à voix haute à l\'aide de la synthèse vocale sur l\'appareil, synchronisée avec la lecture</string>
@@ -729,8 +721,6 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_queue_type_entry_2">File d\'attente native</string>
   <string name="morphe_queue_type_entry_3">File d\'attente Morphe</string>
   <string name="morphe_queue_type_entry_4">File d\'attente Morphe côté client</string>
-  <string name="morphe_queue_add_flyout_menu_title">Ajouter l\'élément file d\'attente au menu déroulant du flux</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Ajoute un élément supplémentaire au menu déroulant. Activez cette option si \'Ajouter à la file d’attente\' n\'est pas affiché</string>
   <string name="morphe_local_queue_sheet_title">File d\'attente</string>
   <string name="morphe_local_queue_open">File d\'attente (%s)</string>
   <string name="morphe_local_queue_clear">Tout effacer</string>
@@ -1132,10 +1122,10 @@ Pour afficher le menu 'Piste audio', changez 'Falsifier les flux vidéo' et sél
   <string name="morphe_enhanced_ambient_mode_summary">Illumine toute la page de lecture ainsi que les bandes noires autour de la vidéo, à la place du mode Ambiant</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Garder le texte lisible</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Atténue la luminosité des vidéos très lumineuses afin que le texte de la page reste lisible</string>
-  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Graduer lors du défilement</string>
-  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Gradue la lumière lorsque la page est défilée ou touchée</string>
-  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Durée de graduation</string>
-  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Durée pendant laquelle la lumière reste graduée après l\'arrêt du défilement. Avec 0, seul le défilement gradue la lumière, et elle revient dès que le défilement s\'arrête</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Atténuer pendant le défilement</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Atténue la luminosité lorsque la page défile ou est touchée</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Durée de l\'atténuation</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Durée pendant laquelle la luminosité reste atténuée après l\'arrêt du défilement. Avec une valeur de 0, la luminosité est atténuée uniquement pendant le défilement et revient à la normale dès que celui-ci s\'arrête</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Masquer les fiches info</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1464,7 +1454,7 @@ Mise en page pour automobile
   <string name="morphe_dearrow_titles_player_title">Lecteur de playlists &amp; recommandations</string>
   <string name="morphe_dearrow_titles_search_title">Résultats de recherche</string>
   <string name="morphe_dearrow_titles_icon_title">Afficher l\'icône DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Affiche l\'icône DeArrow sur les titres des vidéos proposés par la communauté</string>
+  <string name="morphe_dearrow_titles_icon_summary">Affiche l\'icône DeArrow sur les titres de vidéos provenant du crowdsourcing. Appuyez sur l\'icône pour afficher le titre et la miniature originaux</string>
   <string name="morphe_dearrow_casual_mode_title">Mode décontracté</string>
   <string name="morphe_dearrow_casual_mode_summary">Affiche le titre d\'origine à la place du titre DeArrow si les utilisateurs de DeArrow ont voté en faveur du titre d\'origine</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Nombre minimum de votes en mode décontracté pour afficher le titre d\'origine</string>
@@ -1640,6 +1630,9 @@ La lecture de vidéos en AV1 peut présenter des saccades ou des pertes d'images
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Le volume stable n\'est pas disponible</string>
   <string name="morphe_spoof_video_streams_about_end_early">• La lecture peut se terminer 1 seconde plus tôt</string>
   <string name="morphe_spoof_video_streams_about_js">• Si la désobfuscation échoue, la lecture peut échouer</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView est désactivé ou n\'est pas installé. Activez-le et mettez-le à jour, sinon la lecture peut échouer</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView n\'est pas à jour. Mettez-le à jour, sinon la lecture peut échouer</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forcer la langue audio d\'origine n\'est pas disponible</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• La connexion à Android VR est nécessaire</string>

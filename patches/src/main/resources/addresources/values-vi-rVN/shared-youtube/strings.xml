@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Làm nổi bật các cài đặt mới</string>
   <string name="morphe_settings_new_indicator_days_summary">Số ngày hiển thị dấu chấm bên cạnh các cài đặt và tùy chọn được thêm vào thông qua bản cập nhật</string>
   <string name="morphe_settings_new_indicator_days_off">Tắt</string>
+  <string name="morphe_settings_new_indicator_clear_title">Đánh dấu tất cả cài đặt là đã xem</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Xóa dấu chấm khỏi tất cả các cài đặt và tùy chọn mới</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Đánh dấu tất cả cài đặt là đã xem?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Dấu chấm sẽ được xóa khỏi tất cả các cài đặt và tùy chọn mới. Các cài đặt được thêm vào trong các bản cập nhật tương lai vẫn sẽ được làm nổi bật.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Khởi động lại để hoàn tất thiết lập</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Kiểm tra xem tên gói có chính xác không và ứng dụng đã được cài đặt chưa"</string>
   <string name="morphe_external_downloader_empty_warning">Không được để trống tên gói</string>
+  <string name="morphe_export_download_folder_dialog_title">Thư mục xuất</string>
+  <string name="morphe_export_download_folder_change">Thay đổi thư mục</string>
+  <string name="morphe_export_download_folder_changed">Đã thay đổi thư mục xuất</string>
+  <string name="morphe_export_download_folder_reset">Đã đặt lại thư mục xuất</string>
+  <string name="morphe_export_download_folder_missing">Không tìm thấy thư mục xuất %s</string>
+  <string name="morphe_export_download_flyout_title">Xuất ra thiết bị</string>
+  <string name="morphe_export_download_canceled">Đã hủy xuất</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Tùy chỉnh</string>
   <string name="morphe_custom_branding_icon_title">Biểu tượng ứng dụng</string>
@@ -110,6 +121,20 @@ Nếu bạn đã mua gói Premium, có thể không cần thiết phải bật c
 Đặt %2$s làm máy khách mặc định?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Chuyển</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Tắt cài đặt này có thể gây ra lỗi khi phát</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView đã bị tắt hoặc chưa được cài đặt.
+
+Việc phát video cần có Android System WebView. Hãy bật và cập nhật ứng dụng lên phiên bản mới nhất.
+
+Nhấn OK để mở Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView đã lỗi thời (phiên bản %s).
+
+Việc phát video có thể bị lỗi cho đến khi Android System WebView được cập nhật lên phiên bản mới nhất.
+
+Nhấn OK để mở Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Không hiện lại nữa</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView chưa được cài đặt. Hãy cài đặt ứng dụng để khắc phục lỗi phát video</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Hãy thử bật: Giả mạo luồng phát video &gt; Đăng nhập Android VR</string>

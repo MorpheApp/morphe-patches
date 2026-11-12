@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">ເນັ້ນການຕັ້ງຄ່າໃໝ່</string>
   <string name="morphe_settings_new_indicator_days_summary">ຈຳນວນມື້ທີ່ຈຸດຈະສະແດງຂ້າງໆການຕັ້ງຄ່າ ແລະ ຕົວເລືອກທີ່ເພີ່ມເຂົ້າມາໂດຍການອັບເດດ</string>
   <string name="morphe_settings_new_indicator_days_off">ປິດ</string>
+  <string name="morphe_settings_new_indicator_clear_title">ໝາຍການຕັ້ງຄ່າທັງໝົດວ່າເຫັນແລ້ວ</string>
+  <string name="morphe_settings_new_indicator_clear_summary">ລົບຈຸດອອກຈາກການຕັ້ງຄ່າ ແລະ ຕົວເລືອກໃໝ່ທັງໝົດ</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">ໝາຍການຕັ້ງຄ່າທັງໝົດວ່າເຫັນແລ້ວບໍ?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">ຈຸດຖືກລົບອອກຈາກການຕັ້ງຄ່າ ແລະ ຕົວເລືອກໃໝ່ທັງໝົດ. ການຕັ້ງຄ່າທີ່ເພີ່ມເຂົ້າມາໃນການອັບເດດໃນອະນາຄົດຈະຍັງຄົງຖືກເນັ້ນໄວ້.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">ເລີ່ມແອັບໃໝ່ເພື່ອຕັ້ງຄ່າໃຫ້ສຳເລັດ</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 ກະລຸນາກວດສອບວ່າຊື່ແພັກເກັດຖືກຕ້ອງ ແລະ ແອັບໄດ້ຖືກຕິດຕັ້ງແລ້ວ"</string>
   <string name="morphe_external_downloader_empty_warning">ຊື່ແພັກເກດບໍ່ສາມາດວ່າງໄດ້</string>
+  <string name="morphe_export_download_folder_dialog_title">ໂຟນເດີສົ່ງອອກ</string>
+  <string name="morphe_export_download_folder_change">ປ່ຽນໂຟນເດີ</string>
+  <string name="morphe_export_download_folder_changed">ປ່ຽນໂຟນເດີສົ່ງອອກແລ້ວ</string>
+  <string name="morphe_export_download_folder_reset">ຣີເຊັດໂຟນເດີສົ່ງອອກແລ້ວ</string>
+  <string name="morphe_export_download_folder_missing">ບໍ່ສາມາດຊອກຫາໂຟນເດີສົ່ງອອກ %s ໄດ້</string>
+  <string name="morphe_export_download_flyout_title">ສົ່ງອອກໄປຍັງອຸປະກອນ</string>
+  <string name="morphe_export_download_canceled">ຍົກເລີກການສົ່ງອອກແລ້ວ</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">ກຳນົດເອງ</string>
   <string name="morphe_custom_branding_icon_title">ໄອຄອນແອັບ</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 ຕັ້ງຄ່າ %2$s ໃຫ້ເປັນຄລາຍເອັນເລີ່ມຕົ້ນບໍ?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">ປ່ຽນ</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">ການປິດການຕັ້ງຄ່ານີ້ອາດເຮັດໃຫ້ເກີດບັນຫາໃນການຫຼິ້ນວິດີໂອ</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView ຖືກປິດ ຫຼື ບໍ່ໄດ້ຕິດຕັ້ງ.
+
+ການຫຼິ້ນວິດີໂອຕ້ອງໃຊ້ Android System WebView. ກະລຸນາເປີດໃຊ້ ແລະ ອັບເດດໃຫ້ເປັນເວີຊັນຫຼ້າສຸດ.
+
+ແຕະ ຕົກລົງ ເພື່ອເປີດ Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView ເກົ່າເກີນໄປ (ເວີຊັນ %s).
+
+ການຫຼິ້ນວິດີໂອອາດຈະລົ້ມເຫຼວ ຈົນກວ່າ Android System WebView ຈະຖືກອັບເດດເປັນເວີຊັນຫຼ້າສຸດ.
+
+ແຕະ ຕົກລົງ ເພື່ອເປີດ Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">ບໍ່ໃຫ້ສະແດງອີກ</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView ບໍ່ໄດ້ຕິດຕັ້ງ. ຕິດຕັ້ງເພື່ອແກ້ໄຂການຫຼິ້ນວິດີໂອ</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">ລອງເປີດໃຊ້: Spoof video streams &gt; ການເຂົ້າສູ່ລະບົບ Android VR</string>

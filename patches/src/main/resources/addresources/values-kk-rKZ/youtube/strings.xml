@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">Іздеу нәтижелерін кілт сөздер бойынша жасыру</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Жазылымдардағы бейнелерді кілт сөздер бойынша жасыру</string>
   <string name="morphe_hide_keyword_content_phrases_title">Жасырылатын кілт сөздер</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Жасыру қажеті бар кілт сөздер мен тіркестерді жаңа жолдармен бөліп енгізіңіз
+  <string name="morphe_hide_keyword_content_phrases_summary">"Жасыру үшін жаңа жолдармен бөлінген кілт сөздер мен тіркестерді енгізіңіз
 
-Кілт сөздер бейнебаян тақырыптарында немесе арна атауларында көрсетілетін кез келген мәтін болуы мүмкін"</string>
+Кілт сөздер бейнеролик тақырыптарында көрсетілетін кез келген мәтін болуы мүмкін. @UserName кілт сөзі нақты авторлардың барлық контентін жасырады"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Басты бет / Жазылымдар / Іздеу / Пікірлер бөлімдерінде кілт сөз тіркестеріне сәйкес келетін мазмұнды жасыру үшін сүзгі қойылған
 
 Шектеулер:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Кілт сөзді/фразаны қос тырнақшаға алу видео тақырыптары мен арна атауларының ішінара сәйкес келуін болдырмайды&lt;br&gt;&lt;br&gt;Мысалы,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; келесі видеоны жасырады: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;бірақ мынаны жасырмайды: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Кілт сөзде қайшылықты декларациялар бар: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Кілт сөз тым қысқа, тырнақшалар қажет: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Кілт сөз барлық бейнелерді жасырады: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Басты бет: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"Қосымшада сақталған видеоларды жүктеу мәзірі арқылы құрылғыңыздың жадына экспорттаңыз. Экспорттау папкасын өзгерту үшін түртіңіз
 
 Экспорттау папкасы: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Экспорттау папкасы</string>
-  <string name="morphe_export_download_folder_change">Папканы өзгерту</string>
-  <string name="morphe_export_download_folder_changed">Экспорттау папкасы өзгертілді</string>
-  <string name="morphe_export_download_folder_reset">Экспорттау папкасы қайта орнатылды</string>
-  <string name="morphe_export_download_folder_missing">Экспорттау папкасы %s табылмады</string>
-  <string name="morphe_export_download_flyout_title">Құрылғыға экспорттау</string>
   <string name="morphe_export_download_started">Видео экспортталуда</string>
   <string name="morphe_export_download_progress">Бейне экспортталуда: %s%%</string>
   <string name="morphe_export_download_notification_channel">Видео экспорттары</string>
   <string name="morphe_export_download_saved">Бейне %s жеріне экспортталды</string>
   <string name="morphe_export_download_failed">Бейнені экспорттау мүмкін болмады</string>
-  <string name="morphe_export_download_canceled">Экспорт тоқтатылды</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Дауыстық аударма</string>
   <string name="morphe_vot_screen_summary">Видео субтитрлерін құрылғыдағы сөйлеу синтезімен дауыстап оқиды, ойнатумен синхрондалады</string>
@@ -728,8 +720,6 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_queue_type_entry_2">Түпнұсқа кезек</string>
   <string name="morphe_queue_type_entry_3">Morphe кезегі</string>
   <string name="morphe_queue_type_entry_4">Morphe кезегі (клиент жағында)</string>
-  <string name="morphe_queue_add_flyout_menu_title">Ашылмалы мәзірдің кезек элементін қосу</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Қосымша апайылма элементін қосады. Егер «Кезекке қосу» көрсетілмесе, осыны қосыңыз</string>
   <string name="morphe_local_queue_sheet_title">Кезек</string>
   <string name="morphe_local_queue_open">Кезек (%s)</string>
   <string name="morphe_local_queue_clear">Барлығын тазалау</string>
@@ -1462,7 +1452,7 @@ API кілтін ешқашан бөліспеңіз. Оған қолжетім�
   <string name="morphe_dearrow_titles_player_title">Плеер плейлистері &amp; ұсыныстары</string>
   <string name="morphe_dearrow_titles_search_title">Іздеу нәтижелері</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow белгішесін көрсету</string>
-  <string name="morphe_dearrow_titles_icon_summary">Көпшіліктің қатысуымен жасалған бейнебаяндардың тақырыптарында DeArrow белгішесін көрсетеді</string>
+  <string name="morphe_dearrow_titles_icon_summary">Көпшілікке негізделген бейнебаян тақырыптарында DeArrow белгішесін көрсетеді. Түпнұсқа тақырып пен мұқабаны көрсету үшін белгішені түртіңіз</string>
   <string name="morphe_dearrow_casual_mode_title">Еркін режим</string>
   <string name="morphe_dearrow_casual_mode_summary">Егер DeArrow пайдаланушылары түпнұсқа тақырыпты ұнатты деп дауыстаса, DeArrow тақырыбының орнына түпнұсқа тақырыпты көрсетеді</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Түпнұсқа атауды көрсету үшін қажетті минималды еркін дауыстар саны</string>
@@ -1638,6 +1628,9 @@ AV1-мен бейнеойнату кезінде секірулер болуы �
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Тұрақты дыбыс деңгейі қолжетімді емес</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Ойнату 1 секунд ерте аяқталуы мүмкін</string>
   <string name="morphe_spoof_video_streams_about_js">• Деобфускация сәтсіз аяқталса, ойнату істемеуі мүмкін</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView өшірілген немесе орнатылмаған. Оны қосыңыз және жаңартыңыз, әйтпесе ойнату сәтсіз аяқталуы мүмкін</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView ескірген. Оны жаңартыңыз, әйтпесе ойнату сәтсіз аяқталуы мүмкін</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Түпнұсқа аудионы күштеу қолжетімді емес</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR-ге кіру талап етіледі</string>

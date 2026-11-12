@@ -321,7 +321,7 @@ Izmaiņas ietver:
   <string name="morphe_hide_keyword_content_phrases_title">Atslēgvārdi, kas jāslēpj</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Ievadiet atslēgvārdus un frāzes, kuras vēlaties slēpt, atdalot tās ar jaunām rindām
 
-Atslēgvārdi var būt jebkurš teksts, kas parādās video nosaukumos vai kanālu nosaukumos"</string>
+Atslēgvārdi var būt jebkurš teksts, kas redzams video nosaukumos. Atslēgvārds @Lietotājvārds slēpj visu saturu no konkrētiem izveidotājiem"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Sākums / Pierakstīšanās / Meklēšana / Komentāri tiek filtrēti, lai slēptu saturu, kas atbilst atslēgvārdu frāzēm
 
 ierobežojumi:
@@ -331,7 +331,6 @@ ierobežojumi:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Ietverot atslēgvārdu/frāzi pēdiņās, tiks novērstas video nosaukumu un kanālu nosaukumu daļējas sakritības&lt;br&gt;&lt;br&gt;Piemēram,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; slēps video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;bet neslēps: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Atslēgvārdam ir pretrunīgas deklarācijas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Atslēgvārds ir pārāk īss un tam nepieciešamas quotation markas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Atslēgvārds slēps visus video: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Sākums: %1$s
@@ -559,18 +558,11 @@ Kad videoklips ar pogu Uzdot jautājumu ir atvērts vienreiz, šī funkcija darb
   <string name="morphe_export_download_folder_summary">"Eksportējiet lietotnē saglabātos video uz ierīces atmiņu, izmantojot lietotnes lejupielādes izlaiduma izvēlni. Pieskarieties, lai mainītu eksportēšanas mapi
 
 Eksportēšanas mappa: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Eksportēšanas mappa</string>
-  <string name="morphe_export_download_folder_change">Mainīt mapi</string>
-  <string name="morphe_export_download_folder_changed">Eksportēšanas mapa mainīta</string>
-  <string name="morphe_export_download_folder_reset">Eksportēšanas mapa atiestatīta</string>
-  <string name="morphe_export_download_folder_missing">Nevarēja atrast eksportēšanas mapi %s</string>
-  <string name="morphe_export_download_flyout_title">Eksportēt uz ierīci</string>
   <string name="morphe_export_download_started">Eksportē video</string>
   <string name="morphe_export_download_progress">Eksportē video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Video eksportēšana</string>
   <string name="morphe_export_download_saved">Video eksportēts uz %s</string>
   <string name="morphe_export_download_failed">Neizdevās eksportēt video</string>
-  <string name="morphe_export_download_canceled">Eksportēšana atcelta</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Balss tulkojums</string>
   <string name="morphe_vot_screen_summary">Lasīt video titrus skaļā, izmantojot ierīces teksta sintēzi, sinhronizēti ar atskaņošanu</string>
@@ -728,8 +720,6 @@ Info: Var nedarboties tiešraidēs"</string>
   <string name="morphe_queue_type_entry_2">Dzimtā rinda</string>
   <string name="morphe_queue_type_entry_3">Morphe rinda</string>
   <string name="morphe_queue_type_entry_4">Morphe rinda klienta pusē</string>
-  <string name="morphe_queue_add_flyout_menu_title">Pievienot plūsmas izlaiduma rindas izvēlnes vienumu</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Pievieno papildu izlaiduma vienumu. Iespējojiet to, ja \"Pievienot rindai\" netiek rādīts</string>
   <string name="morphe_local_queue_sheet_title">Rinda</string>
   <string name="morphe_local_queue_open">Rinda (%s)</string>
   <string name="morphe_local_queue_clear">Notīrīt visu</string>
@@ -1462,7 +1452,7 @@ Automašīnas izkārtojums
   <string name="morphe_dearrow_titles_player_title">Atskaņotāja atskaņošanas saraksti un ieteikumi</string>
   <string name="morphe_dearrow_titles_search_title">Meklēšanas rezultāti</string>
   <string name="morphe_dearrow_titles_icon_title">Rādīt DeArrow ikonu</string>
-  <string name="morphe_dearrow_titles_icon_summary">Rāda DeArrow ikonu kopīgi izveidotiem video nosaukumiem</string>
+  <string name="morphe_dearrow_titles_icon_summary">Rāda DeArrow ikonu kopīgos video nosaukumos. Pieskarieties ikonai, lai redzētu oriģinālo nosaukumu un miniatures</string>
   <string name="morphe_dearrow_casual_mode_title">Neformālais režīms</string>
   <string name="morphe_dearrow_casual_mode_summary">Rāda oriģinālo nosaukumu DeArrow nosaukuma vietā, ja DeArrow lietotāji ir balsojuši, ka viņiem patīk oriģinālais nosaukums</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimālais neformālo balsu skaits oriģinālā nosaukuma rādīšanai</string>
@@ -1638,6 +1628,9 @@ Video atskaņošana ar AV1 var kļūt neregulāra vai var izkrist kadri"</string
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilais skaļums nav pieejams</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Atskaņošana var beigties 1 sekundi agrāk</string>
   <string name="morphe_spoof_video_streams_about_js">• Ja deobfuskācija neizdodas, atskaņošana var neveikties</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView ir izslēgts vai nav instalēts. Ieslēdziet un atjaunojiet to, pretējā atskaņošana var neveiksmīgi beigties</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView versija ir novecotēja. Atjaunojiet to, pretējā atskaņošana var neveiksmīgi beigties</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Piespiedtais oriģinālais audio nav pieejams</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Nepieciešams pieslēgties Android VR</string>

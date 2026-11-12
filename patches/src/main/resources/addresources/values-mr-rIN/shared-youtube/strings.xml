@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">नवीन सेटिंग्ज हायलाइट करा</string>
   <string name="morphe_settings_new_indicator_days_summary">अपडेटद्वारे जोडलेल्या सेटिंग्ज आणि पर्यायांच्या शेजारी किती दिवस डॉट दिसावा याची संख्या</string>
   <string name="morphe_settings_new_indicator_days_off">बंद</string>
+  <string name="morphe_settings_new_indicator_clear_title">सर्व सेटिंग्ज पाहिल्या म्हणून मार्क करा</string>
+  <string name="morphe_settings_new_indicator_clear_summary">सर्व नवीन सेटिंग्ज आणि पर्यायांवरील डॉट काढून टाका</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">सर्व सेटिंग्ज पाहिल्या म्हणून मार्क करायच्या आहेत?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">सर्व नवीन सेटिंग्ज आणि पर्यायांवरील डॉट काढून टाकले आहेत. भविष्यातील अपडेट्सद्वारे जोडल्या जाणाऱ्या सेटिंग्ज अजूनही हायलाइट केल्या जातील.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">सेटअप पूर्ण करण्यासाठी रीस्टार्ट करा</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 पॅकेज नाव बरोबर आहे आणि ॲप इन्स्टॉल केलेले आहे का ते तपासा."</string>
   <string name="morphe_external_downloader_empty_warning">पॅकेजचे नाव रिकामे असू शकत नाही</string>
+  <string name="morphe_export_download_folder_dialog_title">एक्सपोर्ट फोल्डर</string>
+  <string name="morphe_export_download_folder_change">फोल्डर बदला</string>
+  <string name="morphe_export_download_folder_changed">एक्सपोर्ट फोल्डर बदलले</string>
+  <string name="morphe_export_download_folder_reset">एक्सपोर्ट फोल्डर रीसेट केले</string>
+  <string name="morphe_export_download_folder_missing">एक्सपोर्ट फोल्डर %s सापडले नाही</string>
+  <string name="morphe_export_download_flyout_title">डिव्हाइसवर एक्सपोर्ट करा</string>
+  <string name="morphe_export_download_canceled">एक्सपोर्ट रद्द केले</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">सानुकूल</string>
   <string name="morphe_custom_branding_icon_title">ॲप चिन्ह</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 %2$s ला डिफॉल्ट क्लायंट बनवायचे का?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">बदला</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">ही सेटिंग बंद केल्यामुळे प्लेबॅक समस्या उद्भवू शकतात</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView बंद आहे किंवा इंस्टॉल केलेले नाही.
+
+व्हिडिओ प्लेबॅकसाठी Android System WebView आवश्यक आहे. ते सुरू करा आणि नवीनतम आवृत्तीमध्ये अपडेट करा.
+
+Android System WebView उघडण्यासाठी OK वर टॅप करा."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView ची आवृत्ती जुनी आहे (आवृत्ती %s).
+
+Android System WebView नवीनतम आवृत्तीमध्ये अपडेट करेपर्यंत व्हिडिओ प्लेबॅक अयशस्वी होऊ शकतो.
+
+Android System WebView उघडण्यासाठी OK वर टॅप करा."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">पुन्हा दाखवू नका</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView इंस्टॉल केलेले नाही. व्हिडिओ प्लेबॅक दुरुस्त करण्यासाठी ते इंस्टॉल करा</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">सक्षम करण्याचा प्रयत्न करा: व्हिडिओ स्ट्रीम्सचा देखावा करा &gt; Android VR साइन इन</string>

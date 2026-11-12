@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Маркиране на нови настройки</string>
   <string name="morphe_settings_new_indicator_days_summary">Брой дни, през които се показва точка до настройките и опциите, добавени чрез актуализация</string>
   <string name="morphe_settings_new_indicator_days_off">Изкл</string>
+  <string name="morphe_settings_new_indicator_clear_title">Маркирай всички настройки като видени</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Премахни точката от всички нови настройки и опции</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Маркирай всички настройки като видени?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Точката се премахва от всички нови настройки и опции. Настройките, добавени с бъдещи актуализации, все още ще бъдат подчертани.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Рестартирайте, за да завършите настройката</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Проверете дали името на пакета е правилно и приложението е инсталирано"</string>
   <string name="morphe_external_downloader_empty_warning">Името на пакета не може да е празно</string>
+  <string name="morphe_export_download_folder_dialog_title">Папка за експорт</string>
+  <string name="morphe_export_download_folder_change">Промяна на папката</string>
+  <string name="morphe_export_download_folder_changed">Папката за експорт е променена</string>
+  <string name="morphe_export_download_folder_reset">Папката за експорт е възстановена</string>
+  <string name="morphe_export_download_folder_missing">Папката за експорт %s не можа да бъде намерена</string>
+  <string name="morphe_export_download_flyout_title">Експорт към устройството</string>
+  <string name="morphe_export_download_canceled">Експортът е отменен</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">По избор</string>
   <string name="morphe_custom_branding_icon_title">Икона на приложението</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 Да направим ли %2$s клиент по подразбиране?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Превключване</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Изключването на тази настройка може да причини проблеми при възпроизвеждане</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView е изключен или не е инсталиран.
+
+Възпроизвеждането на видео изисква Android System WebView. Включете го и го актуализирайте до последната версия.
+
+Докоснете OK, за да отворите Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView е остарял (версия %s).
+
+Възпроизвеждането на видео може да не успее, докато Android System WebView не бъде актуализиран до последната версия.
+
+Докоснете OK, за да отворите Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Да не се показва отново</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView не е инсталиран. Инсталирайте го, за да поправите възпроизвеждането на видео</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Пробвайте да вкл. Подправяне на видеопотокове &gt; Вход в Android VR</string>

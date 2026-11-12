@@ -319,9 +319,9 @@ Perubahan mencakup:
   <string name="morphe_hide_keyword_content_search_title">Sembunyikan hasil pencarian berdasarkan kata kunci</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Sembunyikan video subscription dengan kata kunci</string>
   <string name="morphe_hide_keyword_content_phrases_title">Kata kunci yang ingin disembunyikan</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Masukkan kata kunci dan frasa untuk disembunyikan, dipisahkan dengan baris baru
+  <string name="morphe_hide_keyword_content_phrases_summary">"Masukkan kata kunci dan frasa yang akan disembunyikan, dipisahkan dengan baris baru
 
-Kata kunci dapat berupa teks apa pun yang ditampilkan dalam judul video atau nama channel"</string>
+Kata kunci dapat berupa teks apa pun yang muncul dalam judul video. Kata kunci @NamaPengguna menyembunyikan semua konten dari kreator tertentu"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Beranda / Subscription / Pencarian / Komentar disaring untuk menyembunyikan konten yang cocok dengan frasa kata kunci
 
 Batasan:
@@ -331,7 +331,6 @@ Batasan:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Melingkupi kata kunci/frasa dengan tanda kutip ganda akan mencegah pencocokan sebagian judul video dan nama saluran&lt;br&gt;&lt;br&gt;Misalnya,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; akan menyembunyikan video: &lt;b&gt;Bagaimana cara kerja AI?&lt;/b&gt;&lt;br&gt;tetapi tidak akan menyembunyikan: &lt;b&gt;Apa arti fair use?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Kata kunci punya keterangan yang berkonflik: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kata kunci terlalu pendek dan butuh tanda kutip: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kata kunci akan menyembunyikan semua video: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Beranda: %1$s
@@ -559,18 +558,11 @@ Setelah video dengan tombol Tanya dibuka satu kali, fitur ini berfungsi untuk se
   <string name="morphe_export_download_folder_summary">"Ekspor video yang disimpan di dalam aplikasi ke penyimpanan perangkat Anda menggunakan menu flyout unduhan dalam aplikasi. Ketuk untuk mengganti folder ekspor
 
 Folder ekspor: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Folder ekspor</string>
-  <string name="morphe_export_download_folder_change">Ganti folder</string>
-  <string name="morphe_export_download_folder_changed">Folder ekspor diganti</string>
-  <string name="morphe_export_download_folder_reset">Atur ulang folder ekspor</string>
-  <string name="morphe_export_download_folder_missing">Tidak dapat menemukan folder ekspor %s</string>
-  <string name="morphe_export_download_flyout_title">Ekspor ke perangkat</string>
   <string name="morphe_export_download_started">Mengekspor video</string>
   <string name="morphe_export_download_progress">Mengekspor video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Ekspor video</string>
   <string name="morphe_export_download_saved">Video diekspor ke %s</string>
   <string name="morphe_export_download_failed">Tidak dapat mengekspor video</string>
-  <string name="morphe_export_download_canceled">Ekspor dibatalkan</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Terjemahan sulih suara</string>
   <string name="morphe_vot_screen_summary">Baca teks keterangan video dengan suara keras menggunakan fitur text-to-speech bawaan perangkat, yang disinkronkan dengan pemutaran video</string>
@@ -729,8 +721,6 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_queue_type_entry_2">Antrean Native</string>
   <string name="morphe_queue_type_entry_3">Antrean Morphe</string>
   <string name="morphe_queue_type_entry_4">Antrean Morphe sisi klien</string>
-  <string name="morphe_queue_add_flyout_menu_title">Tambahkan item menu antrean feed flyout</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Menambahkan item flyout tambahan. Aktifkan ini jika \"Tambahkan ke antrean\" tidak ditampilkan</string>
   <string name="morphe_local_queue_sheet_title">Antrean</string>
   <string name="morphe_local_queue_open">Antrean (%s)</string>
   <string name="morphe_local_queue_clear">Bersihkan semua</string>
@@ -1462,7 +1452,7 @@ Tata letak Otomotif
   <string name="morphe_dearrow_titles_player_title">Daftar putar &amp; rekomendasi pemutar</string>
   <string name="morphe_dearrow_titles_search_title">Hasil pencarian</string>
   <string name="morphe_dearrow_titles_icon_title">Tampilkan ikon DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Menampilkan ikon DeArrow pada judul video kontribusi pengguna</string>
+  <string name="morphe_dearrow_titles_icon_summary">Menampilkan ikon DeArrow pada judul video crowdsourced. Ketuk ikon untuk menampilkan judul dan thumbnail asli</string>
   <string name="morphe_dearrow_casual_mode_title">Mode kasual</string>
   <string name="morphe_dearrow_casual_mode_summary">Menampilkan judul asli, bukan judul DeArrow, jika pengguna DeArrow memberikan suara bahwa mereka menyukai judul asli</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Jumlah minimum suara kasual untuk menampilkan judul asli</string>
@@ -1638,6 +1628,9 @@ Pemutaran video dengan AV1 dapat tersendat atau kehilangan frame"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volume stabil tidak tersedia</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Pemutaran mungkin berakhir 1 detik lebih awal</string>
   <string name="morphe_spoof_video_streams_about_js">• Jika proses pembukaan kode terenkripsi gagal, pemutaran mungkin gagal</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView dimatikan atau tidak terinstal. Aktifkan dan perbarui, atau pemutaran mungkin gagal</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView sudah kedaluwarsa. Perbarui, atau pemutaran mungkin gagal</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Paksa audio asli tidak tersedia</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Masuk ke Android VR diperlukan</string>

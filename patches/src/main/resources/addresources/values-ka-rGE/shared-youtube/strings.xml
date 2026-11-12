@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">ახალი პარამეტრების გამოყოფა</string>
   <string name="morphe_settings_new_indicator_days_summary">დღეების რაოდენობა, რომლის განმავლობაშიც განახლებით დამატებულ პარამეტრებთან და ოფციებთან გამოჩნდება წერტილი</string>
   <string name="morphe_settings_new_indicator_days_off">გამორთული</string>
+  <string name="morphe_settings_new_indicator_clear_title">მონიშნეთ ყველა პარამეტრის ნახვრა</string>
+  <string name="morphe_settings_new_indicator_clear_summary">წაშალეთ წერტილი ყველა ახალი პარამეტრიდან და ოფციიდან</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">მონიშნოთ ყველა პარამეტრის ნახვრა?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">წერტილი წაშლილია ყველა ახალი პარამეტრიდან და ოფციიდან. მომავალ განახლებებში დამატებული პარამეტრები კვლავ იქნება მონიშნული.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">გადატვირთეთ კონფიგურაციის დასასრულებლად</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 შეამოწმეთ, რომ პაკეტის სახელი სწორია და აპლიკაცია დაინსტალირებულია"</string>
   <string name="morphe_external_downloader_empty_warning">პაკეტის სახელი არ შეიძლება იყოს ცარიელი</string>
+  <string name="morphe_export_download_folder_dialog_title">ექსპორტის საქაღალდე</string>
+  <string name="morphe_export_download_folder_change">საქაღალდის შეცვლა</string>
+  <string name="morphe_export_download_folder_changed">ექსპორტის საქაღალდე შეიცვალა</string>
+  <string name="morphe_export_download_folder_reset">ექსპორტის საქაღალდე ნაგულისხმევზე დაბრუნდა</string>
+  <string name="morphe_export_download_folder_missing">ვერ მოხერხდა ექსპორტის საქაღალდის %s პოვნა</string>
+  <string name="morphe_export_download_flyout_title">ექსპორტი მოწყობილობაზე</string>
+  <string name="morphe_export_download_canceled">ექსპორტი გაუქმდა</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">საკუთარი</string>
   <string name="morphe_custom_branding_icon_title">აპლიკაციის ხატულა</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 გსურთ %2$s გახდეს ნაგულისხმევი კლიენტი?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">გადართვა</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">ამ პარამეტრის გამორთვამ შესაძლოა გამოიწვიოს დაკვრის პრობლემები</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView გამორთულია ან არ არის დაინსტალირებული.
+
+ვიდეოს მოსათამაშებლად საჭიროა Android System WebView. ჩართეთ იგი და განაახლეთ ბოლო ვერსიამდე.
+
+დააჭირეთ OK-ს Android System WebView-ის გახსნელად."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView მოძველებულია (ვერსია %s).
+
+ვიდეოს გაშვება შესაძლოა ვერ მოხერხდეს, სანამ Android System WebView არ განახლდება ბოლო ვერსიამდე.
+
+დააჭირეთ OK-ს Android System WebView-ის გახსნელად."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">აღარ გამოჩნდეს</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView არ არის დაინსტალირებული. დააინსტალირეთ ვიდეოს დაკვრის პრობლემის გამოსასწორებლად</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">სცადეთ ჩართვა: ვიდეო სტრიმების იმიტაცია &gt; Android VR-ზე ავტორიზაცია</string>

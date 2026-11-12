@@ -321,7 +321,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">الكلمات المفتاحية المراد إخفاؤها</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"أدخل الكلمات والعبارات الرئيسية المراد إخفاؤها، مفصولة بأسطر جديدة
 
-يمكن أن تكون الكلمات الرئيسية أي نص يظهر في عناوين الفيديوهات أو أسماء القنوات"</string>
+يمكن أن تكون الكلمات الرئيسية أي نص يظهر في عناوين الفيديوهات. وتعمل الكلمة الرئيسية @UserName على إخفاء كل المحتويات من منشئي محتوى محددين"</string>
   <string name="morphe_hide_keyword_content_about_summary">"تتم تصفية الصفحة الرئيسية / الاشتراكات / البحث / التعليقات لإخفاء المحتوى الذي يطابق عبارات الكلمات الرئيسية
 
 القيود:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">سيؤدي وضع علامة اقتباس مزدوجة حول كلمة رئيسية/عبارة إلى منع التطابقات الجزئية لعناوين الفيديو وأسماء القنوات&lt;br&gt;&lt;br&gt;على سبيل المثال،&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; سيخفي الفيديو: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ولكن لن يخفي: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">الكلمة المفتاحية بها تعريفات متعارضة: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">الكلمة المفتاحية قصيرة جدًا وتتطلب اقتباسات: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">الكلمة المفتاحية سوف تخفي جميع الفيديوهات: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• الصفحة الرئيسية: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"تصدير الفيديوهات المحفوظة داخل التطبيق إلى تخزين جهازك باستخدام التنزيل داخل التطبيق بالقائمة المنبثقة. انقر لتغيير مجلد التصدير
 
 مجلد التصدير: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">مجلد التصدير</string>
-  <string name="morphe_export_download_folder_change">تغيير المجلد</string>
-  <string name="morphe_export_download_folder_changed">تم تغيير مجلد التصدير</string>
-  <string name="morphe_export_download_folder_reset">إعادة تعيين مجلد التصدير</string>
-  <string name="morphe_export_download_folder_missing">تعذر العثور على مجلد التصدير %s</string>
-  <string name="morphe_export_download_flyout_title">تصدير إلى جهاز</string>
   <string name="morphe_export_download_started">جارٍ تصدير الفيديو</string>
   <string name="morphe_export_download_progress">تصدير الفيديو: %s%%</string>
   <string name="morphe_export_download_notification_channel">تصدير الفيديو</string>
   <string name="morphe_export_download_saved">تم تصدير الفيديو إلى %s</string>
   <string name="morphe_export_download_failed">تعذر تصدير الفيديو</string>
-  <string name="morphe_export_download_canceled">تم إلغاء التصدير</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">الترجمة الصوتية</string>
   <string name="morphe_vot_screen_summary">قراءة نصوص ترجمة الفيديو بصوت عالٍ باستخدام تحويل النص إلى كلام على الجهاز، بالتزامن مع التشغيل</string>
@@ -733,8 +725,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_queue_type_entry_2">قائمة المحتوى التالي الأصلية</string>
   <string name="morphe_queue_type_entry_3">قائمة المحتوى التالي الخاصة بـ Morphe</string>
   <string name="morphe_queue_type_entry_4">قائمة المحتوى التالي الخاصة بـ Morphe جانب العميل</string>
-  <string name="morphe_queue_add_flyout_menu_title">إضافة خيار قائمة المحتوى التالي إلى قائمة الخلاصة المنبثقة</string>
-  <string name="morphe_queue_add_flyout_menu_summary">يضيف خيارًا إضافيًا إلى القائمة المنبثقة. فعّل هذا الخيار إذا لم تظهر \"إضافة إلى قائمة المحتوى التالي\"</string>
   <string name="morphe_local_queue_sheet_title">قائمة المحتوى التالي</string>
   <string name="morphe_local_queue_open">قائمة المحتوى التالي (%s)</string>
   <string name="morphe_local_queue_clear">مسح الكل</string>
@@ -1467,7 +1457,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_dearrow_titles_player_title">قوائم تشغيل المشغل &amp; الاقتراحات</string>
   <string name="morphe_dearrow_titles_search_title">نتائج البحث</string>
   <string name="morphe_dearrow_titles_icon_title">عرض أيقونة DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">يُظهر أيقونة DeArrow على عناوين الفيديو المُقدَّمة من المجتمع</string>
+  <string name="morphe_dearrow_titles_icon_summary">يظهر أيقونة DeArrow على عناوين الفيديوهات التي تم الحصول عليها من مصادر جماعية. اضغط على الأيقونة لإظهار العنوان والصورة المصغرة الأصليين</string>
   <string name="morphe_dearrow_casual_mode_title">الوضع العادي</string>
   <string name="morphe_dearrow_casual_mode_summary">يعرض العنوان الأصلي بدلًا من عنوان DeArrow إذا صَوَّت مستخدمو DeArrow بأنهم يفضلون العنوان الأصلي</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">الحد الأدنى من الأصوات العادية لإظهار العنوان الأصلي</string>
@@ -1643,6 +1633,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• مستوى الصوت الثابت غير متاح</string>
   <string name="morphe_spoof_video_streams_about_end_early">• قد ينتهي التشغيل قبل ثانية واحدة</string>
   <string name="morphe_spoof_video_streams_about_js">• إذا فشل فك التشفير، قد يفشل التشغيل</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView متوقف أو غير مثبت. قم بتشغيله وتحديثه، وإلا فقد يفشل التشغيل</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView قديم. قم بتحديثه، وإلا فقد يفشل التشغيل</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• فرض الصوت الأصلي غير متاح</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• يلزم تسجيل الدخول إلى Android VR</string>

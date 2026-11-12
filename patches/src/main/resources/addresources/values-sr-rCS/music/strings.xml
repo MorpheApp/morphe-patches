@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Koristi spoljni program za preuzimanje u meniju „Preuzmi”</string>
   <string name="morphe_external_downloader_menu_summary">Opcija Preuzmi u menijima umesto toga otvara vaš spoljni program za preuzimanje</string>
-  <string name="morphe_music_downloads_screen_title">Preuzimanja</string>
-  <string name="morphe_music_downloads_empty">"Nema preuzimanja
-Preuzete numere se pojavljuju ovde"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s numera • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Pretraži preuzimanja</string>
-  <string name="morphe_music_downloads_sort">Sortiraj</string>
-  <string name="morphe_music_downloads_sort_artist">Sortiraj po izvođaču</string>
-  <string name="morphe_music_downloads_sort_title">Sortiraj po naslovu</string>
-  <string name="morphe_music_downloads_sort_size">Sortiraj po veličini</string>
-  <string name="morphe_music_downloads_delete_all">Obriši sva preuzimanja</string>
-  <string name="morphe_music_downloads_delete_all_title">Obrisati sva preuzimanja?</string>
-  <string name="morphe_music_downloads_delete_all_message">Sve preuzete numere biće obrisane sa ovog uređaja</string>
-  <string name="morphe_music_downloads_all_deleted">Preuzimanja su obrisana</string>
-  <string name="morphe_music_downloads_nothing_found">Ništa nije pronađeno</string>
-  <string name="morphe_music_downloads_actions_for">Radnje za %s</string>
-  <string name="morphe_music_downloads_play">Reprodukuj</string>
-  <string name="morphe_music_downloads_play_pause">Reprodukuj ili pauziraj</string>
-  <string name="morphe_music_downloads_previous">Prethodna</string>
-  <string name="morphe_music_downloads_next">Sledeća</string>
-  <string name="morphe_music_downloads_pause">Pauziraj</string>
-  <string name="morphe_music_downloads_shuffle">Nasumično</string>
-  <string name="morphe_music_downloads_repeat">Ponovi</string>
-  <string name="morphe_music_downloads_minimize">Smanji</string>
-  <string name="morphe_music_downloads_close">Zatvori</string>
-  <string name="morphe_music_downloads_delete">Obriši</string>
-  <string name="morphe_music_downloads_delete_track">Obriši preuzimanje</string>
-  <string name="morphe_music_downloads_delete_track_title">Obrisati preuzimanje?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s će biti obrisano sa ovog uređaja</string>
-  <string name="morphe_music_downloads_track_deleted">Preuzimanje je obrisano</string>
-  <string name="morphe_music_downloads_track_delete_failed">Preuzimanje nije moglo da se obriše</string>
-  <string name="morphe_music_downloads_play_failed">Preuzimanje nije moglo da se reprodukuje</string>
-  <string name="morphe_music_downloads_playlists">Plejliste</string>
-  <string name="morphe_music_downloads_playlists_section">Kreirane plejliste (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Još uvek nema lokalnih plejlista</string>
-  <string name="morphe_music_downloads_playlists_hide">Sakrij plejliste ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Nova plejlista</string>
-  <string name="morphe_music_downloads_playlist_new_button">Nova plejlista</string>
-  <string name="morphe_music_downloads_playlist_selected">Izabrano (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Prvo izaberite pesme</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Poništi izbor</string>
-  <string name="morphe_music_downloads_playlist_create">Kreiraj plejlistu</string>
-  <string name="morphe_music_downloads_playlist_create_button">Kreiraj</string>
-  <string name="morphe_music_downloads_playlist_add">Dodaj na plejlistu</string>
-  <string name="morphe_music_downloads_playlist_added">Dodato u %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Naziv plejliste</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Naziv plejliste ne može biti prazan</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Nije bilo moguće sačuvati plejlistu</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s numera</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 numera</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Nema numera u ovoj plejlisti</string>
-  <string name="morphe_music_downloads_playlist_play">Pusti plejlistu</string>
-  <string name="morphe_music_downloads_playlist_play_all">Pusti sve</string>
-  <string name="morphe_music_downloads_playlist_rename">Preimenuj</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Preimenuj plejlistu</string>
-  <string name="morphe_music_downloads_playlist_save">Sačuvaj</string>
-  <string name="morphe_music_downloads_playlist_delete">Obriši plejlistu</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Obrisati plejlistu?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s će biti obrisano. Preuzete pesme će biti zadržane</string>
-  <string name="morphe_music_downloads_playlist_deleted">Plejlista je obrisana</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Ukloni iz plejliste</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Prevuci za promenu redosleda</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Prevucite ručicu za promenu redosleda</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Gotovo</string>
-  <string name="morphe_music_downloads_notification_channel">Audio preuzimanja</string>
-  <string name="morphe_music_downloads_playback_channel">Vanmrežna reprodukcija</string>
-  <string name="morphe_music_downloads_unknown_track">Nije moguće identifikovati numeru za preuzimanje</string>
-  <string name="morphe_music_downloads_already_running">Preuzimanje je već u toku</string>
-  <string name="morphe_music_downloads_already_saved">Već preuzeto</string>
-  <string name="morphe_music_downloads_started">Preuzimanje je počelo</string>
-  <string name="morphe_music_downloads_starting">Pokretanje preuzimanja…</string>
-  <string name="morphe_music_downloads_progress">Preuzimanje: %s%%</string>
-  <string name="morphe_music_downloads_complete">Preuzimanje je završeno</string>
-  <string name="morphe_music_downloads_failed">Preuzimanje nije uspelo</string>
-  <string name="morphe_music_downloads_playlist_download_title">Preuzimanje plejliste</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Izlistavanje numera…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s izlistano…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Nije moguće izlistati numere iz plejliste</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Već preuzeto: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s u ovoj plejlisti, %2$s još nije preuzeto.
+  <string name="morphe_export_download_folder_title">Izvezi preuzimanja</string>
+  <string name="morphe_export_download_folder_summary">"Izvezite pesme i video zapise koje je aplikacija preuzela u memoriju vašeg uređaja koristeći meni preuzimanja. Dodirnite da biste promenili folder za izvoz
 
-Numere se preuzimaju jedna po jedna, što može potrajati i zahteva oko %3$s slobodnog prostora"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Preuzmi</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Preuzimanje numere %1$s od %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s preuzeto</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s preuzeto, %2$s nije bilo moguće preuzeti</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Preuzimanje plejliste je već u toku</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Vaš nalog još nije poznat. Pokušajte ponovo za trenutak</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s izlistano, sve je već preuzeto</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Samo deo plejliste je mogao biti izlistan. Dodirnite Preuzmi ponovo kasnije da dobijete ostatak</string>
-  <string name="morphe_music_downloads_playlist_download_started">Preuzimanje %s u pozadini</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Nema mrežne veze</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Čekanje na mrežu…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Zaustavljeno nakon %1$s od %2$s. Dodirnite Preuzmi ponovo da nastavite</string>
-  <string name="morphe_music_downloads_mark_title">Obeleži preuzete pesme</string>
-  <string name="morphe_music_downloads_mark_summary">Pesme koje su već preuzete prikazuju oznaku ispred svojih detalja u plejlistama, albumima i rezultatima pretrage</string>
+Folder za izvoz: %s"</string>
+  <string name="morphe_export_download_started">Izvoz preuzimanja</string>
+  <string name="morphe_export_download_progress">Izvoz preuzimanja: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Izvoz preuzimanja</string>
+  <string name="morphe_export_download_saved">Preuzimanje je izvezeno u %s</string>
+  <string name="morphe_export_download_failed">Nije moguće izvesti preuzimanje</string>
+  <string name="morphe_export_download_all_flyout_title">Izvezi sve na uređaj</string>
+  <string name="morphe_export_download_all_started">Izvoz svih preuzimanja</string>
+  <string name="morphe_export_download_all_running">Preuzimanja se već izvoze</string>
+  <string name="morphe_export_download_all_saved">Izvezeno %1$s od %2$s preuzimanja u %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O programu</string>
@@ -260,6 +177,8 @@ Numere se preuzimaju jedna po jedna, što može potrajati i zahteva oko %3$s slo
   <string name="morphe_music_hide_repeat_button_title">Sakrij dugme za ponavljanje</string>
   <string name="morphe_music_hide_shuffle_button_title">Sakrij dugme za nasumičan red</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Sakrij policu „Brzo biranje”</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Sakrij odeljak „Moguće vam se sviđati”</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Sakrij policu „Vaše preuzimanja”</string>
   <string name="morphe_music_comments_screen_title">Komentari</string>
   <string name="morphe_music_comments_screen_summary">Odaberite koje komponente se pojavljuju u sekciji komentara</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Sakrij smernice zajednice</string>
@@ -338,9 +257,17 @@ SABR reprodukcija (imitiranje video strimova isključeno)"</string>
   <string name="morphe_music_playback_speed_summary">Brzina koja se koristi za sve numere. Na 100% koristi se brzina aplikacije, kao što je brzina reprodukcije podkasta</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Promeni visinu tona sa brzinom</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Onemogući prigušivanje zvuka</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Jačina zvuka se neće smanjiti kada neka druga aplikacija pusti kratak zvuk, kao što je obaveštenje</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Onemogući preusmeravanje pri nesviđanju</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Sprečava preskakanje na sledeću numeru kada se pritisne dugme za nesviđanje</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">A-B petlja</string>
+  <string name="morphe_music_ab_loop_summary">Dugo pritisnite traku za pretraživanje da biste postavili početak petlje, ponovo da biste postavili kraj petlje i još jednom da biste obrisali petlju</string>
+  <string name="morphe_music_ab_loop_toast_start">Početak petlje je postavljen na %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Kraj petlje je postavljen na %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Petlja je obrisana</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Radnja pri dodiru na numeru u listi reprodukcije</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Reprodukuj plejlistu</string>
@@ -663,6 +590,7 @@ Prva kolona je reč, druga je njen priručnik; dodatne kolone i linije bez tabul
   <string name="morphe_music_lyrics_rime_dict_no_table">Ni jedna Rime lista reči nije štiklirana za gornji jezik. Dodirnite ovo ime da biste štiklirali jednu ili izaberite jezik koji ima listu</string>
   <string name="morphe_music_lyrics_rime_dict_add">Dodaj</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Dodaj Rime listu reči</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml fajl, ili zip koji sadrži jedan, sa linijama poput 字 ham i 典 din2. Lista se dohvaća kada je označite i dodirnete Sačuvaj, a njena licenca je vaša da proverite</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Oznaka jezika</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dve ili tri slova, kao što su hak ili wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Ime</string>

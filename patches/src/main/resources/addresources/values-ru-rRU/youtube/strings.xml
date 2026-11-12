@@ -321,7 +321,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ключевые слова для скрытия</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Введите ключевые слова и фразы для скрытия, разделяя их новыми строками
 
-Ключевыми словами может быть любой текст, отображаемый в названиях видео или именах каналов"</string>
+Ключевыми словами может быть любой текст из названий видео. Ключевое слово @ИмяПользователя скрывает весь контент конкретных авторов"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Вкладки \"Главная\", \"Подписки\", поиск и комментарии фильтруются для скрытия контента, соответствующего ключевым фразам
 
 Ограничения:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Заключение ключевого слова/фразы в двойные кавычки предотвратит частичное совпадение названий видео и каналов&lt;br&gt;&lt;br&gt;Например,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; скроет видео: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;но не скроет: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключевое слово содержит конфликтующие заявления: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключевое слово слишком короткое и требует кавычки: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключевое слово скроет все видео: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Главная: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"Экспортируйте видео, сохраненные в приложении, в память вашего устройства с помощью выпадающего меню загрузок. Нажмите, чтобы изменить папку экспорта
 
 Папка экспорта: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Папка экспорта</string>
-  <string name="morphe_export_download_folder_change">Изменить папку</string>
-  <string name="morphe_export_download_folder_changed">Папка экспорта изменена</string>
-  <string name="morphe_export_download_folder_reset">Папка экспорта сброшена</string>
-  <string name="morphe_export_download_folder_missing">Не удалось найти папку экспорта %s</string>
-  <string name="morphe_export_download_flyout_title">Экспорт на устройство</string>
   <string name="morphe_export_download_started">Экспорт видео</string>
   <string name="morphe_export_download_progress">Экспорт видео: %s%%</string>
   <string name="morphe_export_download_notification_channel">Экспорт видео</string>
   <string name="morphe_export_download_saved">Видео экспортировано в %s</string>
   <string name="morphe_export_download_failed">Не удалось экспортировать видео</string>
-  <string name="morphe_export_download_canceled">Экспорт отменен</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Перевод озвучивания</string>
   <string name="morphe_vot_screen_summary">Читайте субтитры видео вслух с помощью встроенного преобразования текста в речь, синхронизированного с воспроизведением</string>
@@ -663,6 +655,7 @@ Second \"item\" text"</string>
   <string name="morphe_loop_count_clear_done">Сохраненные повторы очищены</string>
   <string name="morphe_loop_count_flyout_name">Количество повторов</string>
   <string name="morphe_loop_count_dialog_message">Сколько раз воспроизвести видео перед следующим, от %1$s до %2$s. Оставьте поле пустым, чтобы зациклить видео без ограничений.</string>
+  <string name="morphe_loop_count_times">%s раза</string>
   <string name="morphe_loop_count_no_limit">Без ограничений</string>
   <string name="morphe_loop_count_decrease">Меньше раз</string>
   <string name="morphe_loop_count_increase">Больше раз</string>
@@ -728,8 +721,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">Системная очередь</string>
   <string name="morphe_queue_type_entry_3">Очередь Morphe</string>
   <string name="morphe_queue_type_entry_4">Клиентская очередь Morphe</string>
-  <string name="morphe_queue_add_flyout_menu_title">Добавить пункт меню очереди во всплывающее меню ленты</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Добавляет дополнительный элемент всплывающего меню. Включите это, если пункт \"Добавить в очередь\" не отображается.</string>
   <string name="morphe_local_queue_sheet_title">Очередь</string>
   <string name="morphe_local_queue_open">Очередь (%s)</string>
   <string name="morphe_local_queue_clear">Очистить всё</string>
@@ -1462,7 +1453,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">Плеер, плейлисты и рекомендации</string>
   <string name="morphe_dearrow_titles_search_title">Результаты поиска</string>
   <string name="morphe_dearrow_titles_icon_title">Показывать значок DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Показывает значок DeArrow на названиях видео, созданных сообществом</string>
+  <string name="morphe_dearrow_titles_icon_summary">Отображает значок DeArrow в названиях видео с краудсорсингом. Нажмите на значок, чтобы показать оригинальное название и миниатюру</string>
   <string name="morphe_dearrow_casual_mode_title">Казуальный режим</string>
   <string name="morphe_dearrow_casual_mode_summary">Показывает оригинальное название вместо названия DeArrow, если пользователи DeArrow проголосовали за то, что им нравится оригинальное название</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Минимальное количество казуальных голосов для показа оригинального названия</string>
@@ -1638,6 +1629,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Постоянный уровень громкости недоступен </string>
   <string name="morphe_spoof_video_streams_about_end_early">• Воспроизведение может закончиться на 1 секунду раньше</string>
   <string name="morphe_spoof_video_streams_about_js">Если деобфускация не удастся, воспроизведение может не работать</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView выключен или не установлен. Включите и обновите его, иначе воспроизведение может не сработать</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView устарел. Обновите его, иначе воспроизведение может не сработать</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Принудительная оригинальная звуковая дорожка недоступна</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Требуется вход в Android VR</string>

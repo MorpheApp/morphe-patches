@@ -320,9 +320,9 @@ Folgende Änderungen sind enthalten:
   <string name="morphe_hide_keyword_content_search_title">Suchergebnisse nach Stichwörtern ausblenden</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Videos im Abo-Tab nach Stichwörtern ausblenden</string>
   <string name="morphe_hide_keyword_content_phrases_title">Auszublendende Stichwörter</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Geben Sie Stichworte und Phrasen zum Ausblenden ein, getrennt durch Zeilenumbrüche
+  <string name="morphe_hide_keyword_content_phrases_summary">"Geben Sie Schlüsselwörter und Phrasen ein, die Sie ausblenden möchten, getrennt durch neue Zeilen
 
-Stichworte können beliebige Texte sein, die in Videotiteln oder Kanalnamen angezeigt werden"</string>
+Schlüsselwörter können beliebige Texte sein, die in Videotiteln angezeigt werden. Das Schlüsselwort @Benutzername blendet alle Inhalte bestimmter Ersteller aus"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Startseite / Abonnements / Suche / Kommentare werden gefiltert, um Inhalte auszublenden, die mit Stichwortphrasen übereinstimmen
 
 Einschränkungen:
@@ -332,7 +332,6 @@ Einschränkungen:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Durch das Umschließen eines Stichwortes / einer Wortgruppe mit doppelten Anführungszeichen werden unvollständige Übereinstimmungen bei Videotiteln und Kanalnamen verhindert&lt;br&gt;&lt;br&gt;Beispielsweise wird &lt;br&gt;&lt;b&gt;\"ki\"&lt;/b&gt; das folgende Video ausblenden: &lt;b&gt;Wie KI funktioniert&lt;/b&gt;&lt;br&gt;, aber nicht: &lt;b&gt;Wie lebten die  Wikinger?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Stichwort enthält widersprüchliche Angaben: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Stichwort ist zu kurz und benötigt Anführungszeichen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Stichwort wird alle Videos ausblenden: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Startseite: %1$s
@@ -560,18 +559,11 @@ Nachdem ein Video mit der Ask-Schaltfläche einmal geöffnet wurde, funktioniert
   <string name="morphe_export_download_folder_summary">"Exportiere in der App gespeicherte Videos über das Download-Flyout-Menü auf deinen Gerätespeicher. Tippe hier, um den Export-Ordner zu ändern
 
 Export-Ordner: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Export-Ordner</string>
-  <string name="morphe_export_download_folder_change">Ordner ändern</string>
-  <string name="morphe_export_download_folder_changed">Export-Ordner geändert</string>
-  <string name="morphe_export_download_folder_reset">Export-Ordner zurückgesetzt</string>
-  <string name="morphe_export_download_folder_missing">Exportordner %s konnte nicht gefunden werden</string>
-  <string name="morphe_export_download_flyout_title">Auf Gerät exportieren</string>
   <string name="morphe_export_download_started">Video wird exportiert</string>
   <string name="morphe_export_download_progress">Video wird exportiert: %s%%</string>
   <string name="morphe_export_download_notification_channel">Video-Exporte</string>
   <string name="morphe_export_download_saved">Video nach %s exportiert</string>
   <string name="morphe_export_download_failed">Video konnte nicht exportiert werden</string>
-  <string name="morphe_export_download_canceled">Export abgebrochen</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Sprachausgabe-Übersetzung</string>
   <string name="morphe_vot_screen_summary">Lies die Videountertitel laut mithilfe der Text-to-Speech-Funktion des Geräts, synchronisiert mit der Wiedergabe.</string>
@@ -729,8 +721,6 @@ Info: Funktioniert möglicherweise nicht bei Livestreams"</string>
   <string name="morphe_queue_type_entry_2">Integrierte Warteschlange</string>
   <string name="morphe_queue_type_entry_3">Morphe-Warteschlange</string>
   <string name="morphe_queue_type_entry_4">Clientseitige Morphe-Warteschlange</string>
-  <string name="morphe_queue_add_flyout_menu_title">Menüpunkt für Flyout-Warteschlange im Feed hinzufügen</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Fügt einen zusätzlichen Flyout-Eintrag hinzu. Aktiviere diese Option, wenn \"Zur Warteschlange hinzufügen\" nicht angezeigt wird</string>
   <string name="morphe_local_queue_sheet_title">Warteschlange</string>
   <string name="morphe_local_queue_open">Warteschlange (%s)</string>
   <string name="morphe_local_queue_clear">Alle löschen</string>
@@ -1463,7 +1453,7 @@ Automobil-Layout
   <string name="morphe_dearrow_titles_player_title">Player-Wiedergabelisten &amp; Empfehlungen</string>
   <string name="morphe_dearrow_titles_search_title">Suchergebnisse</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow-Symbol anzeigen</string>
-  <string name="morphe_dearrow_titles_icon_summary">Zeigt das DeArrow-Symbol bei crowdsourcierten Videotiteln an</string>
+  <string name="morphe_dearrow_titles_icon_summary">Zeigt das DeArrow-Symbol bei Crowdsourcing-Videotiteln an. Tippen Sie auf das Symbol, um den Originaltitel und das Vorschaubild anzuzeigen</string>
   <string name="morphe_dearrow_casual_mode_title">Gelegenheitsmodus</string>
   <string name="morphe_dearrow_casual_mode_summary">Zeigt den ursprünglichen Titel anstelle des DeArrow-Titels, wenn DeArrow-Benutzer abgestimmt haben, dass ihnen der ursprüngliche Titel gefällt</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Mindestanzahl an Gelegenheitsstimmen, um den Originaltitel anzuzeigen</string>
@@ -1639,6 +1629,9 @@ Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabile Lautstärke ist nicht verfügbar</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Die Wiedergabe endet möglicherweise 1 Sekunde früher.</string>
   <string name="morphe_spoof_video_streams_about_js">• Wenn die Deobfuskation fehlschlägt, kann die Wiedergabe fehlschlagen</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView ist deaktiviert oder nicht installiert. Aktivieren und aktualisieren Sie es, andernfalls kann die Wiedergabe fehlschlagen</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView ist veraltet. Aktualisieren Sie es, andernfalls kann die Wiedergabe fehlschlagen</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Originalton erzwingen ist nicht verfügbar</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Die Anmeldung bei Android VR ist erforderlich</string>

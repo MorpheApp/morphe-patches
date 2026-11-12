@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Επισήμανση νέων ρυθμίσεων</string>
   <string name="morphe_settings_new_indicator_days_summary">Αριθμός ημερών που εμφανίζεται μια τελεία δίπλα στις ρυθμίσεις και τις επιλογές που προστέθηκαν μέσω μιας ενημέρωσης</string>
   <string name="morphe_settings_new_indicator_days_off">Ανενεργό</string>
+  <string name="morphe_settings_new_indicator_clear_title">Σημάδειτε όλες τις ρυθμίσεις ως προθεαされた</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Αφαίρετε την τελεία από όλες τις νέες ρυθμίσεις και επιλογές</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Να σημειωθούν όλες οι ρυθμίσεις ως προθεαされた;</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Η τελεία αφαιρείται από όλες τις νέες ρυθμίσεις και επιλογές. Οι ρυθμίσεις που θα προστεθούν σε μελλοντικές ενημερώσεις θα εξακολουθούν να είναι επισημειωμένες.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Επανεκκινήστε για να ολοκληρωθεί η διαδικασία</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Επαληθεύστε ότι το όνομα πακέτου είναι σωστό και ότι η εφαρμογή είναι εγκατεστημένη"</string>
   <string name="morphe_external_downloader_empty_warning">Το όνομα πακέτου δεν μπορεί να είναι κενό</string>
+  <string name="morphe_export_download_folder_dialog_title">Φάκελος εξαγωγής</string>
+  <string name="morphe_export_download_folder_change">Αλλαγή φακέλου</string>
+  <string name="morphe_export_download_folder_changed">Ο φάκελος εξαγωγής άλλαξε</string>
+  <string name="morphe_export_download_folder_reset">Ο φάκελος εξαγωγής επαναφέρθηκε</string>
+  <string name="morphe_export_download_folder_missing">Δεν βρέθηκε ο φάκελος εξαγωγής %s</string>
+  <string name="morphe_export_download_flyout_title">Εξαγωγή στη συσκευή</string>
+  <string name="morphe_export_download_canceled">Η εξαγωγή ακυρώθηκε</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Προσαρμοσμένο</string>
   <string name="morphe_custom_branding_icon_title">Εικονίδιο εφαρμογής</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 Να οριστεί το %2$s ως προεπιλεγμένος πελάτης;"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Εναλλαγή</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Η απενεργοποίηση αυτής της ρύθμισης ενδέχεται να προκαλέσει προβλήματα αναπαραγωγής</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Το Android System WebView είναι απενεργοποιημένο ή δεν είναι εγκατεστημένο.
+
+Η αναπαραγωγή βίντεο απαιτεί το Android System WebView. Ενεργοποιήστε το και ενημερώστε το στην τελευταία έκδοση.
+
+Πατήστε OK για να ανοίξετε το Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Το Android System WebView είναι παλαιό (έκδοση %s).
+
+Η αναπαραγωγή βίντεο ενδέχεται να αποτύχει μέχρι το Android System WebView να ενημερωθεί στην τελευταία έκδοση.
+
+Πατήστε OK για να ανοίξετε το Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Να μην εμφανιστεί ξανά</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Το Android System WebView δεν είναι εγκατεστημένο. Εγκαταστήστε το για να διορθώσετε την αναπαραγωγή βίντεο</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Δοκιμάστε να ενεργοποιήσετε: Μίμηση ροής βίντεο &gt; Είσοδος με Android VR</string>

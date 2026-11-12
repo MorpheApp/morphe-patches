@@ -319,9 +319,9 @@ Modificările includ:
   <string name="morphe_hide_keyword_content_search_title">Ascunde rezultatele căutării după cuvinte cheie</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ascunde videoclipurile din Abonamente după cuvintele cheie</string>
   <string name="morphe_hide_keyword_content_phrases_title">Cuvinte cheie de ascuns</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Introduceți cuvinte-cheie și expresii de ascuns, separate prin linii noi
+  <string name="morphe_hide_keyword_content_phrases_summary">"Introduceți cuvinte cheie și fraze de ascuns, separate prin linii noi
 
-Cuvintele-cheie pot fi orice text afișat în titlurile videoclipurilor sau în numele canalelor"</string>
+Cuvintele cheie pot fi orice text afișat în titlurile videoclipurilor. Cuvântul cheie @UserName ascunde tot conținutul de la creatori specifici"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Pagina de pornire / Abonamente / Căutare / Comentariile sunt filtrate pentru a ascunde conținutul care corespunde unor expresii formate din cuvinte-cheie
 
 Limitări:
@@ -331,7 +331,6 @@ Limitări:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Înconjurarea unui cuvânt cheie/frază cu ghilimele va împiedica potrivirile parțiale ale titlurilor videoclipurilor și numelor de canale&lt;br&gt;&lt;br&gt;De exemplu,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; va ascunde videoclipul: &lt;b&gt;Cum funcționează AI?&lt;/b&gt;&lt;br&gt;dar nu va ascunde: &lt;b&gt;Ce înseamnă fair use?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Cuvântul-cheie are declarații contradictorii: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Cuvântul-cheie este prea scurt și necesită ghilimele: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Cuvântul-cheie va ascunde toate videoclipurile: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Acasă: %1$s
@@ -559,18 +558,11 @@ După ce un videoclip cu butonul Ask este deschis o dată, funcția funcționeaz
   <string name="morphe_export_download_folder_summary">"Exportă videoclipurile salvate în aplicație în stocarea dispozitivului tău folosind meniul de descărcări din aplicație. Atinge pentru a schimba dosarul de export
 
 Dosar de export: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Dosar de export</string>
-  <string name="morphe_export_download_folder_change">Schimbă dosarul</string>
-  <string name="morphe_export_download_folder_changed">Dosarul de export a fost schimbat</string>
-  <string name="morphe_export_download_folder_reset">Dosarul de export a fost resetat</string>
-  <string name="morphe_export_download_folder_missing">Nu s-a putut găsi folderul de export %s</string>
-  <string name="morphe_export_download_flyout_title">Exportă pe dispozitiv</string>
   <string name="morphe_export_download_started">Se exportă videoclipul</string>
   <string name="morphe_export_download_progress">Exportare video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Exporturi video</string>
   <string name="morphe_export_download_saved">Videoclip exportat în %s</string>
   <string name="morphe_export_download_failed">Nu s-a putut exporta videoclipul</string>
-  <string name="morphe_export_download_canceled">Export anulat</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducere cu voce peste</string>
   <string name="morphe_vot_screen_summary">Citește cu voce tare subtitrările video folosind text-to-speech pe dispozitiv, sincronizat cu redarea</string>
@@ -728,8 +720,6 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_queue_type_entry_2">Coadă nativă</string>
   <string name="morphe_queue_type_entry_3">Coadă Morphe</string>
   <string name="morphe_queue_type_entry_4">Coadă Morphe client</string>
-  <string name="morphe_queue_add_flyout_menu_title">Adaugă element de meniu pentru coada flyout de feed</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Adaugă un element suplimentar de flyout. Activează această opțiune dacă \"Adaugă în coadă\" nu este afișat.</string>
   <string name="morphe_local_queue_sheet_title">Coadă</string>
   <string name="morphe_local_queue_open">Coda (%s)</string>
   <string name="morphe_local_queue_clear">Șterge tot</string>
@@ -1462,7 +1452,7 @@ Aspect pentru automotive
   <string name="morphe_dearrow_titles_player_title">Liste de redare player &amp; recomandări</string>
   <string name="morphe_dearrow_titles_search_title">Rezultatele căutării</string>
   <string name="morphe_dearrow_titles_icon_title">Afișează pictograma DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Afișează pictograma DeArrow pe titlurile video de la comunitate</string>
+  <string name="morphe_dearrow_titles_icon_summary">Afișează pictograma DeArrow pe titlurile videoclipurilor provenite din crowdsourcing. Apasă pictograma pentru a afișa titlul și imaginea miniatură originale</string>
   <string name="morphe_dearrow_casual_mode_title">Modul casual</string>
   <string name="morphe_dearrow_casual_mode_summary">Afișează titlul original în locul titlului DeArrow dacă utilizatorii DeArrow au votat că le place titlul original</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Voturi casual minime pentru afișarea titlului original</string>
@@ -1638,6 +1628,9 @@ Redarea video cu AV1 poate sacada sau pierde cadre"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volumul stabil nu este disponibil</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Redarea se poate încheia cu 1 secundă mai devreme.</string>
   <string name="morphe_spoof_video_streams_about_js">• Dacă deobfuscarea eșuează, reproducerea poate eșua</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView este dezactivat sau nu este instalat. Activați-l și actualizați-l, altfel redarea poate eșua</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView este învechit. Actualizați-l, altfel redarea poate eșua</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forțarea sunetului original nu este disponibilă</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Este necesară conectarea la Android VR</string>

@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">ໃຊ້ໂປຣແກຣມດາວໂຫຼດພາຍນອກສຳລັບເມນູ ດາວໂຫຼດ</string>
   <string name="morphe_external_downloader_menu_summary">ຕົວເລືອກ ດາວໂຫຼດ ຂອງເມນູຈະເປີດໂປຣແກຣມດາວໂຫຼດພາຍນອກຂອງທ່ານແທນ</string>
-  <string name="morphe_music_downloads_screen_title">ການດາວໂຫຼດ</string>
-  <string name="morphe_music_downloads_empty">"ບໍ່ມີການດາວໂຫຼດ
-ເພງທີ່ດາວໂຫຼດແລ້ວຈະປາກົດຢູ່ທີ່ນີ້"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s ເພງ • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">ຄົ້ນຫາການດາວໂຫຼດ</string>
-  <string name="morphe_music_downloads_sort">ຈັດລຽງ</string>
-  <string name="morphe_music_downloads_sort_artist">ຈັດລຽງຕາມສິລະປິນ</string>
-  <string name="morphe_music_downloads_sort_title">ຈັດລຽງຕາມຊື່</string>
-  <string name="morphe_music_downloads_sort_size">ຈັດລຽງຕາມຂະໜາດ</string>
-  <string name="morphe_music_downloads_delete_all">ລຶບທັງໝົດທີ່ດາວໂຫຼດ</string>
-  <string name="morphe_music_downloads_delete_all_title">ລຶບທັງໝົດທີ່ດາວໂຫຼດບໍ?</string>
-  <string name="morphe_music_downloads_delete_all_message">ແທຣັກທັງໝົດທີ່ດາວໂຫຼດຈະຖືກລຶບອອກຈາກອຸປະກອນນີ້</string>
-  <string name="morphe_music_downloads_all_deleted">ລຶບລາຍການດາວໂຫຼດແລ້ວ</string>
-  <string name="morphe_music_downloads_nothing_found">ບໍ່ພົບຂໍ້ມູນ</string>
-  <string name="morphe_music_downloads_actions_for">ການດຳເນີນການສຳລັບ %s</string>
-  <string name="morphe_music_downloads_play">ຫຼິ້ນ</string>
-  <string name="morphe_music_downloads_play_pause">ຫຼິ້ນ ຫຼື ຢຸດຊົ່ວຄາວ</string>
-  <string name="morphe_music_downloads_previous">ກ່ອນໜ້ານີ້</string>
-  <string name="morphe_music_downloads_next">ຖັດໄປ</string>
-  <string name="morphe_music_downloads_pause">ຢຸດຊົ່ວຄາວ</string>
-  <string name="morphe_music_downloads_shuffle">ສຸ່ມ</string>
-  <string name="morphe_music_downloads_repeat">ຫຼິ້ນຊ້ຳ</string>
-  <string name="morphe_music_downloads_minimize">ຫຍໍ້ໜ້າຈໍ</string>
-  <string name="morphe_music_downloads_close">ປິດ</string>
-  <string name="morphe_music_downloads_delete">ລຶບ</string>
-  <string name="morphe_music_downloads_delete_track">ລຶບໄຟລ໌ທີ່ດາວໂຫຼດ</string>
-  <string name="morphe_music_downloads_delete_track_title">ລຶບໄຟລ໌ທີ່ດາວໂຫຼດບໍ?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s ຈະຖືກລຶບອອກຈາກອຸປະກອນນີ້</string>
-  <string name="morphe_music_downloads_track_deleted">ລຶບໄຟລ໌ທີ່ດາວໂຫຼດແລ້ວ</string>
-  <string name="morphe_music_downloads_track_delete_failed">ບໍ່ສາມາດລຶບໄຟລ໌ທີ່ດາວໂຫຼດໄດ້</string>
-  <string name="morphe_music_downloads_play_failed">ບໍ່ສາມາດຫຼິ້ນໄຟລ໌ທີ່ດາວໂຫຼດໄດ້</string>
-  <string name="morphe_music_downloads_playlists">ລາຍການເພງ</string>
-  <string name="morphe_music_downloads_playlists_section">ລາຍການເພງທີ່ສ້າງຂຶ້ນ (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">ຍັງບໍ່ມີລາຍການເພງໃນເຄື່ອງ</string>
-  <string name="morphe_music_downloads_playlists_hide">ເຊື່ອງລາຍການເພງ ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ ລາຍການເພງໃໝ່</string>
-  <string name="morphe_music_downloads_playlist_new_button">ລາຍການເພງໃໝ່</string>
-  <string name="morphe_music_downloads_playlist_selected">ເລືອກແລ້ວ (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">ກະລຸນາເລືອກເພງກ່ອນ</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">ລຶບການເລືອກ</string>
-  <string name="morphe_music_downloads_playlist_create">ສ້າງລາຍການເພງ</string>
-  <string name="morphe_music_downloads_playlist_create_button">ສ້າງ</string>
-  <string name="morphe_music_downloads_playlist_add">ເພີ່ມໃນລາຍການຫຼິ້ນ</string>
-  <string name="morphe_music_downloads_playlist_added">ເພີ່ມໃນ %s ແລ້ວ</string>
-  <string name="morphe_music_downloads_playlist_name_hint">ຊື່ລາຍການຫຼິ້ນ</string>
-  <string name="morphe_music_downloads_playlist_name_empty">ຊື່ລາຍການຫຼິ້ນຫ້າມວ່າງເປົ່າ</string>
-  <string name="morphe_music_downloads_playlist_save_failed">ບໍ່ສາມາດບັນທຶກລາຍການຫຼິ້ນໄດ້</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s ເພງ</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 ເພງ</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">ບໍ່ມີເພງໃນລາຍການຫຼິ້ນນີ້</string>
-  <string name="morphe_music_downloads_playlist_play">ຫຼິ້ນລາຍການຫຼິ້ນ</string>
-  <string name="morphe_music_downloads_playlist_play_all">ຫຼິ້ນທັງໝົດ</string>
-  <string name="morphe_music_downloads_playlist_rename">ປ່ຽນຊື່</string>
-  <string name="morphe_music_downloads_playlist_rename_title">ປ່ຽນຊື່ລາຍຊື່ເພງ</string>
-  <string name="morphe_music_downloads_playlist_save">ບັນທຶກ</string>
-  <string name="morphe_music_downloads_playlist_delete">ລຶບລາຍຊື່ເພງ</string>
-  <string name="morphe_music_downloads_playlist_delete_title">ລຶບລາຍຊື່ເພງບໍ?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s ຈະຖືກລຶບ. ເພງທີ່ດາວໂຫຼດໄວ້ຈະຍັງຄົງຢູ່</string>
-  <string name="morphe_music_downloads_playlist_deleted">ລຶບລາຍຊື່ເພງແລ້ວ</string>
-  <string name="morphe_music_downloads_playlist_remove_track">ເອົາອອກຈາກລາຍຊື່ເພງ</string>
-  <string name="morphe_music_downloads_playlist_drag_track">ລາກເພື່ອຈັດລຳດັບໃໝ່</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • ລາກທີ່ປຸ່ມຈັດການເພື່ອຈັດລຳດັບໃໝ່</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">ສຳເລັດ</string>
-  <string name="morphe_music_downloads_notification_channel">ດາວໂຫຼດສຽງ</string>
-  <string name="morphe_music_downloads_playback_channel">ການຫຼິ້ນແບບອອຟລາຍ</string>
-  <string name="morphe_music_downloads_unknown_track">ບໍ່ສາມາດລະບຸເພງທີ່ຈະດາວໂຫຼດໄດ້</string>
-  <string name="morphe_music_downloads_already_running">ກຳລັງດາວໂຫຼດຢູ່</string>
-  <string name="morphe_music_downloads_already_saved">ດາວໂຫຼດແລ້ວ</string>
-  <string name="morphe_music_downloads_started">ເລີ່ມການດາວໂຫຼດແລ້ວ</string>
-  <string name="morphe_music_downloads_starting">ກຳລັງເລີ່ມດາວໂຫຼດ…</string>
-  <string name="morphe_music_downloads_progress">ກຳລັງດາວໂຫຼດ %s%%</string>
-  <string name="morphe_music_downloads_complete">ດາວໂຫຼດສຳເລັດແລ້ວ</string>
-  <string name="morphe_music_downloads_failed">ດາວໂຫຼດຫຼົ້ມເຫຼວ</string>
-  <string name="morphe_music_downloads_playlist_download_title">ດາວໂຫຼດລາຍການເພງ</string>
-  <string name="morphe_music_downloads_playlist_download_listing">ກຳລັງດຶງລາຍຊື່ເພງ…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">ໄດ້ລາຍຊື່ %s ແລ້ວ…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">ບໍ່ສາມາດດຶງລາຍຊື່ເພງຂອງລາຍການເພງນີ້ໄດ້</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">ດາວໂຫຼດແລ້ວ: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"ມີ %1$s ໃນລາຍການເພງນີ້, %2$s ຍັງບໍ່ທັນໄດ້ດາວໂຫຼດ.
+  <string name="morphe_export_download_folder_title">ສົ່ງອອກລາຍການດາວໂຫຼດ</string>
+  <string name="morphe_export_download_folder_summary">"ສົ່ງອອກເພງ ແລະ ວິດີໂອທີ່ດາວໂຫຼດໂດຍແອັບ ໄປຍັງບ່ອນເກັບຂໍ້ມູນຂອງອຸປະກອນຂອງທ່ານ ໂດຍໃຊ້ເມນູຂອງການດາວໂຫຼດ. ແຕະເພື່ອປ່ຽນໂຟນເດີສົ່ງອອກ
 
-ພວກມັນຈະຖືກດາວໂຫຼດເທື່ອລະເພງ, ເຊິ່ງອາດຈະໃຊ້ເວລາດົນ ແລະ ຕ້ອງການພື້ນທີ່ຫວ່າງປະມານ %3$s"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">ດາວໂຫຼດ</string>
-  <string name="morphe_music_downloads_playlist_download_progress">ກຳລັງດາວໂຫຼດເພງທີ %1$s ຈາກ %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">ດາວໂຫຼດ %s ແລ້ວ</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">ດາວໂຫຼດ %1$s ແລ້ວ, %2$s ບໍ່ສາມາດດາວໂຫຼດໄດ້</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">ການດາວໂຫຼດລາຍການເພງກຳລັງດຳເນີນການຢູ່</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">ບັນຊີຂອງທ່ານຍັງບໍ່ເປັນທີ່ຮູ້ຈັກ. ກະລຸນາລອງໃໝ່ອີກຄັ້ງໃນອີກສັກຄາວ</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">ລາຍຊື່ %s, ທັງໝົດຖືກດາວໂຫຼດແລ້ວ</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">ສາມາດລາຍຊື່ໄດ້ພຽງແຕ່ບາງສ່ວນຂອງລາຍການເພງ. ແຕະ ດາວໂຫຼດ ອີກຄັ້ງໃນພາຍຫຼັງເພື່ອຮັບສ່ວນທີ່ເຫຼືອ</string>
-  <string name="morphe_music_downloads_playlist_download_started">ກຳລັງດາວໂຫຼດ %s ໃນພື້ນຫຼັງ</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">ບໍ່ມີການເຊື່ອມຕໍ່ເຄືອຂ່າຍ</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">ກຳລັງລໍຖ້າເຄືອຂ່າຍ…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">ຢຸດຫຼັງຈາກ %1$s ຈາກ %2$s. ແຕະ ດາວໂຫຼດ ອີກຄັ້ງເພື່ອດຳເນີນການຕໍ່</string>
-  <string name="morphe_music_downloads_mark_title">ໝາຍເພງທີ່ດາວໂຫຼດແລ້ວ</string>
-  <string name="morphe_music_downloads_mark_summary">ເພງທີ່ດາວໂຫຼດແລ້ວຈະສະແດງເຄື່ອງໝາຍກ່ອນລາຍລະອຽດໃນລາຍການເພງ, ອາລະບຳ ແລະ ຜົນການຄົ້ນຫາ</string>
+ໂຟນເດີສົ່ງອອກ: %s"</string>
+  <string name="morphe_export_download_started">ກຳລັງສົ່ງອອກລາຍການດາວໂຫຼດ</string>
+  <string name="morphe_export_download_progress">ກຳລັງສົ່ງອອກລາຍການດາວໂຫຼດ: %s%%</string>
+  <string name="morphe_export_download_notification_channel">ສົ່ງອອກລາຍການດາວໂຫຼດ</string>
+  <string name="morphe_export_download_saved">ສົ່ງອອກລາຍການດາວໂຫຼດໄປຍັງ %s ແລ້ວ</string>
+  <string name="morphe_export_download_failed">ບໍ່ສາມາດສົ່ງອອກລາຍການດາວໂຫຼດໄດ້</string>
+  <string name="morphe_export_download_all_flyout_title">ສົ່ງອອກທັງໝົດໄປຍັງອຸປະກອນ</string>
+  <string name="morphe_export_download_all_started">ກຳລັງສົ່ງອອກລາຍການດາວໂຫຼດທັງໝົດ</string>
+  <string name="morphe_export_download_all_running">ລາຍການດາວໂຫຼດກຳລັງຖືກສົ່ງອອກຢູ່ແລ້ວ</string>
+  <string name="morphe_export_download_all_saved">ສົ່ງອອກ %1$s ຈາກທັງໝົດ %2$s ການດາວໂຫຼດ ໄປยัง %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">ກ່ຽວກັບ Morphe</string>
@@ -261,6 +178,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_shuffle_button_title">ເຊື່ອງປຸ່ມສຸ່ມເພງ</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">ເຊື່ອງຊັ້ນ \'ໂທດ່ວນ\'</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">ເຊື່ອງພາກສ່ວນ \'ທ່ານອາດຈະມັກ\'</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">ເຊື່ອງຊັ້ນ \'ລາຍການດາວໂຫຼດຂອງທ່ານ\'</string>
   <string name="morphe_music_comments_screen_title">ຄຳຄິດເຫັນ</string>
   <string name="morphe_music_comments_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ສະແດງໃນພາກສ່ວນຄຳຄິດເຫັນ</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">ເຊື່ອງຄຳແນະນຳຂອງຊຸມຊົນ</string>
@@ -344,6 +262,12 @@ Second \"item\" text"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ປິດການປ່ຽນເສັ້ນທາງການບໍ່ມັກ</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ປ້ອງກັນການຂ້າມໄປແທຣັກຖັດໄປເມື່ອມີການກົດປຸ່ມບໍ່ມັກ</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">ລູບ A-B</string>
+  <string name="morphe_music_ab_loop_summary">ກົດແຕ່ and ຄ້າງທີ່ແຖບຊອກຫາເພື່ອຕັ້ງຈຸດເລີ່ມຕົ້ນຂອງການລູບ, ກົດອີກຄັ້ງເພື່ອຕັ້ງຈຸດສິ້ນສຸດຂອງການລູບ, ແລະ ກົດອີກຄັ້ງເພື່ອລຶບການລູບອອກ</string>
+  <string name="morphe_music_ab_loop_toast_start">ຕັ້ງຈຸດເລີ່ມຕົ້ນຂອງການລູບເປັນ %s</string>
+  <string name="morphe_music_ab_loop_toast_end">ຕັ້ງຈຸດສິ້ນສຸດຂອງການລູບເປັນ %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">ລ້າງການວົນຊ້ຳແລ້ວ</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">ການເຮັດວຽກເມື່ອແຕະແທຣັກໃນລາຍການຫຼິ້ນ</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">ຫຼິ້ນລາຍການຫຼິ້ນ</string>

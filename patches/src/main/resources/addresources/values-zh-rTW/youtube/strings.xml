@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">依關鍵字隱藏搜尋結果</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">依關鍵字隱藏訂閱內容影片</string>
   <string name="morphe_hide_keyword_content_phrases_title">要隱藏的關鍵字</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"輸入要隱藏的關鍵字和詞組，請用換行分隔
+  <string name="morphe_hide_keyword_content_phrases_summary">"輸入要隱藏的關鍵字和短語，請用換行符號分隔
 
-關鍵字可以是影片標題或頻道名稱中顯示的任何文字"</string>
+關鍵字可以是影片標題中顯示的任何文字。使用 @使用者名稱 關鍵字可隱藏特定創作者的所有內容"</string>
   <string name="morphe_hide_keyword_content_about_summary">"「首頁 / 訂閱 / 搜尋 / 留言」將會篩選內容，以隱藏符合關鍵字詞組的內容
 
 限制：
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">將關鍵字或詞組用雙引號括起來，可以防止影片標題和頻道名稱的部份相符&lt;br&gt;&lt;br&gt;例如：&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; 會隱藏影片：&lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;但不會隱藏：&lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">關鍵字存在衝突宣告：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">關鍵字過短，需要加上引號：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">關鍵字將隱藏所有影片：%s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• 首頁：%1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"使用應用程式內下載彈出式選單，將應用程式內儲存的影片匯出到裝置儲存空間。點選即可更改匯出資料夾
 
 匯出資料夾：%s"</string>
-  <string name="morphe_export_download_folder_dialog_title">匯出資料夾</string>
-  <string name="morphe_export_download_folder_change">更改資料夾</string>
-  <string name="morphe_export_download_folder_changed">匯出資料夾已更改</string>
-  <string name="morphe_export_download_folder_reset">重設匯出資料夾</string>
-  <string name="morphe_export_download_folder_missing">找不到匯出資料夾 %s</string>
-  <string name="morphe_export_download_flyout_title">匯出到裝置</string>
   <string name="morphe_export_download_started">正在匯出影片</string>
   <string name="morphe_export_download_progress">匯出影片進度： %s%%</string>
   <string name="morphe_export_download_notification_channel">匯出影片</string>
   <string name="morphe_export_download_saved">影片匯出進度 %s</string>
   <string name="morphe_export_download_failed">無法匯出影片</string>
-  <string name="morphe_export_download_canceled">取消匯出</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">語音旁白翻譯</string>
   <string name="morphe_vot_screen_summary">使用裝置上的文字轉語音功能朗讀影片字幕，並與播放同步</string>
@@ -727,8 +719,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">原生佇列</string>
   <string name="morphe_queue_type_entry_3">Morphe 佇列</string>
   <string name="morphe_queue_type_entry_4">Morphe 佇列用戶端</string>
-  <string name="morphe_queue_add_flyout_menu_title">新增動態消息彈出式佇列選單項目</string>
-  <string name="morphe_queue_add_flyout_menu_summary">新增額外的彈出式項目。若未顯示「加入佇列」，請啟用此選項</string>
   <string name="morphe_local_queue_sheet_title">佇列</string>
   <string name="morphe_local_queue_open">佇列 (%s)</string>
   <string name="morphe_local_queue_clear">全部清除</string>
@@ -1461,7 +1451,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">播放器的播放清單與推薦影片</string>
   <string name="morphe_dearrow_titles_search_title">搜尋結果</string>
   <string name="morphe_dearrow_titles_icon_title">顯示 DeArrow 圖示</string>
-  <string name="morphe_dearrow_titles_icon_summary">在群眾外包的影片標題上顯示 DeArrow 圖示</string>
+  <string name="morphe_dearrow_titles_icon_summary">在群眾外包的影片標題上顯示 DeArrow 圖示。點擊圖示可顯示原始標題和縮圖</string>
   <string name="morphe_dearrow_casual_mode_title">休閒模式</string>
   <string name="morphe_dearrow_casual_mode_summary">如果 DeArrow 使用者投票表示喜歡原始標題，則顯示原始標題而非 DeArrow 標題</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">顯示原始標題所需的最低休閒票數</string>
@@ -1636,6 +1626,9 @@ AV1 影片播放可能會卡頓或丟格"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• 無法使用平衡音量</string>
   <string name="morphe_spoof_video_streams_about_end_early">• 播放可能會提早 1 秒結束</string>
   <string name="morphe_spoof_video_streams_about_js">• 如果解密失敗，播放可能會失敗</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView 已關閉或未安裝。請將其開啟並更新，否則播放可能會失敗</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView 版本過舊。請更新，否則播放可能會失敗</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 強制原始音訊不可用</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• 必須登入 Android VR</string>

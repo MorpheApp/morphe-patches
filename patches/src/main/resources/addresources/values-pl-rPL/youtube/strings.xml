@@ -321,7 +321,7 @@ Zmiany obejmują:
   <string name="morphe_hide_keyword_content_phrases_title">Słowa do ukrycia</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Wprowadź słowa i frazy do ukrycia, rozdzielając je nowymi wierszami
 
-​Słowem może być dowolny tekst widoczny w tytułach filmów lub nazwach kanałów"</string>
+​Słowem może być dowolny tekst widoczny w tytułach filmów lub nazwach kanałów. Słowo @NazwaUżytkownika ukrywa wszystkie treści od określonych twórców"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Strona główna / Subskrypcje / Wyszukiwanie / Komentarze są filtrowane, aby ukryć treści pasujące do podanych słów i fraz
 
 ​Ograniczenia:
@@ -331,7 +331,6 @@ Zmiany obejmują:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Otoczenie słowa/frazy cudzysłowem zapobiegnie częściowym dopasowaniom w tytułach filmów i nazwach kanałów&lt;br&gt;&lt;br&gt;Na przykład,&lt;br&gt;&lt;b&gt;\"kot\"&lt;/b&gt; ukryje film: &lt;b&gt;Jak zachowuje się kot?&lt;/b&gt;&lt;br&gt;lecz nie ukryje: &lt;b&gt;Wielki bojkot znanej marki&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Słowo zawiera sprzeczne deklaracje: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Słowo jest za krótkie i wymaga użycia cudzysłowu: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Słowo ukryje wszystkie filmy: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Strona główna: %1$s
@@ -559,18 +558,11 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_export_download_folder_summary">"Eksportuj filmy zapisane w aplikacji do pamięci urządzenia za pomocą menu w sekcji Pobrane. Dotknij, aby zmienić folder eksportu
 
 ​Folder eksportu: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Folder eksportu</string>
-  <string name="morphe_export_download_folder_change">Zmień folder</string>
-  <string name="morphe_export_download_folder_changed">Zmieniono folder eksportu</string>
-  <string name="morphe_export_download_folder_reset">Zresetowano folder eksportu</string>
-  <string name="morphe_export_download_folder_missing">Nie udało się znaleźć folderu eksportu %s</string>
-  <string name="morphe_export_download_flyout_title">Eksportuj na urządzenie</string>
   <string name="morphe_export_download_started">Eksportowanie filmu</string>
   <string name="morphe_export_download_progress">Eksportowanie filmu: %s%%</string>
   <string name="morphe_export_download_notification_channel">Eksportowanie filmów</string>
   <string name="morphe_export_download_saved">Wyeksportowano film do %s</string>
   <string name="morphe_export_download_failed">Nie udało się wyeksportować filmu</string>
-  <string name="morphe_export_download_canceled">Anulowano eksportowanie</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tłumaczenie głosowe</string>
   <string name="morphe_vot_screen_summary">Czyta napisy na głos przy użyciu wbudowanego syntezatora mowy, synchronizując je z odtwarzaniem obrazu</string>
@@ -729,8 +721,6 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_queue_type_entry_2">Natywna kolejka</string>
   <string name="morphe_queue_type_entry_3">Kolejka Morphe</string>
   <string name="morphe_queue_type_entry_4">Kolejka Morphe (po stronie klienta)</string>
-  <string name="morphe_queue_add_flyout_menu_title">Dodaj opcję dodawania do kolejki w wysuwanym menu</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Dodaje dodatkową pozycję w wysuwanym menu. Włącz tę opcję, jeśli \"Dodaj do kolejki\" nie jest wyświetlane</string>
   <string name="morphe_local_queue_sheet_title">Kolejka</string>
   <string name="morphe_local_queue_open">Kolejka (%s)</string>
   <string name="morphe_local_queue_clear">Wyczyść wszystko</string>
@@ -1133,9 +1123,9 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Zachowaj czytelność tekstu</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Przyciemnia podświetlenie przy jasnych filmach, aby tekst na stronie pozostał czytelny</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Przyciemniaj podczas przewijania</string>
-  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Przyciemnia światło podczas przewijania lub dotykania strony</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Przyciemnia podświetlenie podczas przewijania lub dotykania strony</string>
   <string name="morphe_enhanced_ambient_mode_dim_duration_title">Czas przyciemnienia</string>
-  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Jak długo światło pozostaje przyciemnione po zaprzestaniu przewijania. Przy wartości 0 tylko przewijanie przyciemnia światło, a ono wraca natychmiast po zaprzestaniu przewijania</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Określa, jak długo podświetlenie pozostaje przyciemnione po zakończeniu przewijania. Przy wartości 0 przyciemnienie działa tylko w trakcie przewijania i ustępuje natychmiast po jego zatrzymaniu</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ukryj karty informacyjne</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1462,7 +1452,7 @@ Układ samochodowy
   <string name="morphe_dearrow_titles_player_title">Playlisty i rekomendacje w odtwarzaczu</string>
   <string name="morphe_dearrow_titles_search_title">Wyniki wyszukiwania</string>
   <string name="morphe_dearrow_titles_icon_title">Pokaż ikonę DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Wyświetla ikonę DeArrow przy społecznościowych tytułach filmów</string>
+  <string name="morphe_dearrow_titles_icon_summary">Wyświetla ikonę DeArrow przy tytułach filmów z crowdsourcingu. Dotknij ikony, aby wyświetlić oryginalny tytuł i miniaturę</string>
   <string name="morphe_dearrow_casual_mode_title">Tryb swobodny</string>
   <string name="morphe_dearrow_casual_mode_summary">Wyświetla oryginalny tytuł zamiast tytułu DeArrow, jeśli użytkownicy DeArrow zagłosowali, że podoba im się oryginał</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalna liczba głosów, aby pokazać oryginalny tytuł</string>
@@ -1638,6 +1628,9 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilna głośność nie jest dostępna</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Odtwarzanie może zakończyć się sekundę wcześniej</string>
   <string name="morphe_spoof_video_streams_about_js">• Jeśli odszyfrowywanie zawiedzie, odtwarzanie może nie działać</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView jest wyłączony lub nie jest zainstalowany. Włącz go i zaktualizuj, w przeciwnym razie odtwarzanie może nie działać</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView jest nieaktualny. Zaktualizuj go, w przeciwnym razie odtwarzanie może nie działać</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Wymuszanie oryginalnej ścieżki dźwiękowej nie działa</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Wymagane zalogowanie do Android VR</string>

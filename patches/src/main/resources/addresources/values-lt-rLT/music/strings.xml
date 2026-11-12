@@ -131,101 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Naudoti išorinę atsisiuntimo programą meniu „Atsisiųsti“</string>
   <string name="morphe_external_downloader_menu_summary">Meniu parinktis „Atsisiųsti“ atveria jūsų išorinę atsisiuntimo programą vietoje</string>
-  <string name="morphe_music_downloads_screen_title">Atsisiuntimai</string>
-  <string name="morphe_music_downloads_empty">"Atsisiuntimų nėra
-Atsisiųsti kūriniai rodomi čia"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s takelių • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Ieškoti atsisiuntimų</string>
-  <string name="morphe_music_downloads_sort">Rūšiuoti</string>
-  <string name="morphe_music_downloads_sort_artist">Rūšiuoti pagal atlikėją</string>
-  <string name="morphe_music_downloads_sort_title">Rūšiuoti pagal pavadinimą</string>
-  <string name="morphe_music_downloads_sort_size">Rūšiuoti pagal dydį</string>
-  <string name="morphe_music_downloads_delete_all">Ištrinti visus atsisiuntimus</string>
-  <string name="morphe_music_downloads_delete_all_title">Ištrinti visus atsisiuntimus?</string>
-  <string name="morphe_music_downloads_delete_all_message">Visi atsisiųsti kūriniai bus ištrinti iš šio įrenginio</string>
-  <string name="morphe_music_downloads_all_deleted">Atsisiuntimai ištrinti</string>
-  <string name="morphe_music_downloads_nothing_found">Nieko nerasta</string>
-  <string name="morphe_music_downloads_actions_for">Veiksmai su %s</string>
-  <string name="morphe_music_downloads_play">Groti</string>
-  <string name="morphe_music_downloads_play_pause">Groti arba pristabdyti</string>
-  <string name="morphe_music_downloads_previous">Ankstesnis</string>
-  <string name="morphe_music_downloads_next">Kitas</string>
-  <string name="morphe_music_downloads_pause">Pristabdyti</string>
-  <string name="morphe_music_downloads_shuffle">Maišyti</string>
-  <string name="morphe_music_downloads_repeat">Pakartoti</string>
-  <string name="morphe_music_downloads_minimize">Sumažinti</string>
-  <string name="morphe_music_downloads_close">Uždaryti</string>
-  <string name="morphe_music_downloads_delete">Ištrinti</string>
-  <string name="morphe_music_downloads_delete_track">Ištrinti atsisiuntimą</string>
-  <string name="morphe_music_downloads_delete_track_title">Ištrinti atsisiuntimą?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s bus ištrintas iš šio įrenginio</string>
-  <string name="morphe_music_downloads_track_deleted">Atsisiuntimas ištrintas</string>
-  <string name="morphe_music_downloads_track_delete_failed">Nepavyko ištrinti atsisiuntimo</string>
-  <string name="morphe_music_downloads_play_failed">Nepavyko atkurti atsisiuntimo</string>
-  <string name="morphe_music_downloads_playlists">Grojaraščiai</string>
-  <string name="morphe_music_downloads_playlists_section">Sukurti grojarašiai (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Kol kas nėra vietinių grojaraščių</string>
-  <string name="morphe_music_downloads_playlists_hide">Slėpti grojaraščius ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Naujas grojaraštis</string>
-  <string name="morphe_music_downloads_playlist_new_button">Naujas grojaraštis</string>
-  <string name="morphe_music_downloads_playlist_selected">Pasirinkta (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Pirmiausia pasirinkite dainas</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Išvalyti pasirinkimą</string>
-  <string name="morphe_music_downloads_playlist_create">Kurti grojaraštį</string>
-  <string name="morphe_music_downloads_playlist_create_button">Sukurti</string>
-  <string name="morphe_music_downloads_playlist_add">Pridėti į grojaraštį</string>
-  <string name="morphe_music_downloads_playlist_added">Pridėta į %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Grojaraščio pavadinimas</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Grojaraščio pavadinimas negali būti tuščias</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Nepavyko išsaugoti grojaraščio</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 takelis</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Šiame grojaraštyje nėra takelių</string>
-  <string name="morphe_music_downloads_playlist_play">Leisti grojaraštį</string>
-  <string name="morphe_music_downloads_playlist_play_all">Leisti viską</string>
-  <string name="morphe_music_downloads_playlist_rename">Pervardyti</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Pervardyti grojaraštį</string>
-  <string name="morphe_music_downloads_playlist_save">Išsaugoti</string>
-  <string name="morphe_music_downloads_playlist_delete">Ištrinti grojaraštį</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Ištrinti grojaraštį?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s bus ištrintas. Atsisiųstos dainos bus išsaugytos</string>
-  <string name="morphe_music_downloads_playlist_deleted">Grojaraštis ištrintas</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Pašalinti iš grojaraščio</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Nutempkite norint pertvarkyti</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Vilkite rankenelę, kad pakeistumėte tvarką</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Baigta</string>
-  <string name="morphe_music_downloads_notification_channel">Garso atsisiuntimai</string>
-  <string name="morphe_music_downloads_playback_channel">Atkūrimas neprisijungus</string>
-  <string name="morphe_music_downloads_unknown_track">Nepavyko nustatyti, kurį kūrinį atsisiųsti</string>
-  <string name="morphe_music_downloads_already_running">Atsisiuntimas jau vykdomas</string>
-  <string name="morphe_music_downloads_already_saved">Jau atsisiųsta</string>
-  <string name="morphe_music_downloads_started">Atsisiuntimas pradėtas</string>
-  <string name="morphe_music_downloads_starting">Pradedamas atsisiuntimas…</string>
-  <string name="morphe_music_downloads_progress">Atsisiunčiama %s%%</string>
-  <string name="morphe_music_downloads_complete">Atsisiuntimas baigtas</string>
-  <string name="morphe_music_downloads_failed">Atsisiuntimas nepavyko</string>
-  <string name="morphe_music_downloads_playlist_download_title">Grojaraščio atsisiuntimas</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Surašomi takeliai…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s surašyta…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Nepavyko surašyti grojaraščio takelių</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Jau atsisiųsta: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s šiame grojaraštyje, %2$s dar neatsisiųsta.
+  <string name="morphe_export_download_folder_title">Eksportuoti atsisiuntimus</string>
+  <string name="morphe_export_download_folder_summary">"Eksportuokite programėlės atsisiuntusias dainas ir vaizdo įrašus į savo įrenginio atmintį naudodamiesi atsisiuntimo meniu. Bakstelėkite, kad pakeistumėte eksportavimo aplanką
 
-Jie atsisiunčiami po vieną, todėl tai gali užtrukti ilgai ir reikės apie %3$s laisvos vietos"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Atsisiųsti</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Atsisiunčiamas takelis %1$s iš %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s atsisiųsta</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s atsisiųsta, %2$s nepavyko atsisiųsti</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Grojaraščio atsisiuntimas jau vyksta</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Jūsų paskyros dar neatpažinta. Bandykite dar kartą po akimirkos</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s surašyta, visi jau atsisiųsti</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Tik dalį grojaraščio pavyko surašyti. Vėliau dar kartą bakstelėkite „Atsisiųsti“, kad gautumėte likusią dalį</string>
-  <string name="morphe_music_downloads_playlist_download_started">Fone atsisiunčiamas %s</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Nėra tinklo ryšio</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Laukiama tinklo…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Sustopta po %1$s iš %2$s. Bakstelėkite „Atsisiųsti“ dar kartą, kad tęstumėte</string>
-  <string name="morphe_music_downloads_mark_title">Žymėti atsisiųstas dainas</string>
-  <string name="morphe_music_downloads_mark_summary">Jau atsisiųstų dainų šalia informacijos grosežiuose, albumuose ir paieškos rezultatuose rodoma žyma</string>
+Eksportavimo aplankas: %s"</string>
+  <string name="morphe_export_download_started">Eksportuojamas atsisiuntimas</string>
+  <string name="morphe_export_download_progress">Eksportuojamas atsisiuntimas: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Atsisiuntimų eksportavimas</string>
+  <string name="morphe_export_download_saved">Atsisiuntimas eksportuotas į %s</string>
+  <string name="morphe_export_download_failed">Nepavyko eksportuoti atsisiuntimo</string>
+  <string name="morphe_export_download_all_flyout_title">Eksportuoti viską į įrenginį</string>
+  <string name="morphe_export_download_all_started">Eksportuojami visi atsisiuntimai</string>
+  <string name="morphe_export_download_all_running">Atsisiuntimai jau eksportuojami</string>
+  <string name="morphe_export_download_all_saved">Eksportuota %1$s iš %2$s atsisiuntimų į %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Apie</string>
@@ -260,6 +178,7 @@ Jie atsisiunčiami po vieną, todėl tai gali užtrukti ilgai ir reikės apie %3
   <string name="morphe_music_hide_shuffle_button_title">Slėpti maišymo mygtuką</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Slėpti „Spartusis rinkimas“ lentyną</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">Slėpti skyrių „Jums taip pat gali patikti“</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Slėpti „Jūsų atsisiuntinimai“ sekciją</string>
   <string name="morphe_music_comments_screen_title">Komentarai</string>
   <string name="morphe_music_comments_screen_summary">Pasirinkite, kurie elementai rodomi komentarų skiltyje</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Slėpti bendruomenės gaires</string>
@@ -343,6 +262,12 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Išjungti „Nepatinka“ peradresavimą</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Neleidžia peršokti prie kito kūrinio paspaudus „Nepatinka“ mygtuką</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">A-B ciklas</string>
+  <string name="morphe_music_ab_loop_summary">Ilgai paspauskite ieškomąją juostą, kad nustatytumėte ciklo pradžią, dar kartą – ciklo pabaigą, o dar kartą – norėdami ciklo ištrinti</string>
+  <string name="morphe_music_ab_loop_toast_start">Ciklo pradžia nustatyta %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Ciklo pabaiga nustatyta %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Loop išvalytas</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Grojaraščio kūrinio bakstelėjimo veiksmas</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Groti grojaraštį</string>

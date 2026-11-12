@@ -90,7 +90,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_entry_3">隐藏全部</string>
   <string name="morphe_hide_floating_microphone_button_title">隐藏浮动麦克风按钮</string>
   <string name="morphe_hide_floating_microphone_button_summary">隐藏在搜索建议屏幕右下角的悬浮麦克风按钮</string>
-  <string name="morphe_hide_get_premium_button_title">隐藏“获取高级版”按钮</string>
+  <string name="morphe_hide_get_premium_button_title">隐藏「获取 Premium」按钮</string>
   <string name="morphe_hide_history_shelf_title">隐藏历史记录板块</string>
   <string name="morphe_hide_horizontal_shelves_title">隐藏横排展示架</string>
   <string name="morphe_hide_horizontal_shelves_summary">隐藏诸如“突发新闻”、“你可能喜欢的社区帖子”、“继续观看”、“探索更多频道”、“探索更多话题”、“为你推荐”、“最新视频”、“最相关”、“创作者社区帖子”、“购物”和“再次观看”等横向内容架</string>
@@ -321,7 +321,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">要隐藏的关键字</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"输入要隐藏的关键词和短语，用换行符分隔
 
-关键词可以是视频标题或频道名称中显示的任何文本"</string>
+关键词可以是视频标题中显示的任何文本。@UserName 关键词可隐藏特定创作者的所有内容"</string>
   <string name="morphe_hide_keyword_content_about_summary">"首页 / 订阅 / 搜索 / 评论将经过过滤，以隐藏与关键词短语匹配的内容
 
 限制：
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">使用带双引号的关键字/短语来防止过滤掉只有部分匹配的视频标题和频道名称&lt;br&gt;&lt;br&gt;例如，&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; 将隐藏视频： &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;但不会隐藏： &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">关键词存在冲突声明：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">关键词过短，需要加上引号：%s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">关键词将隐藏所有视频：%s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• 首页：%1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"使用应用内下载弹出菜单将应用内保存的视频导出到设备存储空间。点击以更改导出文件夹
 
 导出文件夹：%s"</string>
-  <string name="morphe_export_download_folder_dialog_title">导出文件夹</string>
-  <string name="morphe_export_download_folder_change">更改文件夹</string>
-  <string name="morphe_export_download_folder_changed">导出文件夹已更改</string>
-  <string name="morphe_export_download_folder_reset">导出文件夹已重置</string>
-  <string name="morphe_export_download_folder_missing">找不到导出文件夹 %s</string>
-  <string name="morphe_export_download_flyout_title">导出至设备</string>
   <string name="morphe_export_download_started">正在导出视频</string>
   <string name="morphe_export_download_progress">正在导出视频：%s%%</string>
   <string name="morphe_export_download_notification_channel">视频导出</string>
   <string name="morphe_export_download_saved">视频已导出至 %s</string>
   <string name="morphe_export_download_failed">无法导出视频</string>
-  <string name="morphe_export_download_canceled">导出已取消</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">语音旁白翻译</string>
   <string name="morphe_vot_screen_summary">使用设备上的文本转语音功能朗读视频字幕，并与播放同步</string>
@@ -729,8 +721,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">原生队列</string>
   <string name="morphe_queue_type_entry_3">Morphe 队列</string>
   <string name="morphe_queue_type_entry_4">Morphe 客户端队列</string>
-  <string name="morphe_queue_add_flyout_menu_title">添加信息流弹出菜单项</string>
-  <string name="morphe_queue_add_flyout_menu_summary">添加额外的弹出菜单项。如果未显示“添加到队列”，请启用此选项</string>
   <string name="morphe_local_queue_sheet_title">队列</string>
   <string name="morphe_local_queue_open">队列 (%s)</string>
   <string name="morphe_local_queue_clear">全部清除</string>
@@ -1463,7 +1453,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">播放器播放列表&amp;推荐</string>
   <string name="morphe_dearrow_titles_search_title">搜索结果</string>
   <string name="morphe_dearrow_titles_icon_title">显示DeArrow图标</string>
-  <string name="morphe_dearrow_titles_icon_summary">在众包视频标题上显示DeArrow图标</string>
+  <string name="morphe_dearrow_titles_icon_summary">在众包视频标题上显示 DeArrow 图标。点击该图标可显示原始标题和缩略图</string>
   <string name="morphe_dearrow_casual_mode_title">休闲模式</string>
   <string name="morphe_dearrow_casual_mode_summary">如果DeArrow用户投票赞成原标题，则显示原标题而不是DeArrow标题</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">显示原标题所需的最低休闲票数</string>
@@ -1639,6 +1629,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• 稳定音量不可用</string>
   <string name="morphe_spoof_video_streams_about_end_early">• 播放可能提前 1 秒结束</string>
   <string name="morphe_spoof_video_streams_about_js">• 如果去混淆失败，播放可能会失败</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView 已关闭或未安装。请将其开启并更新，否则播放可能会失败</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView 版本过旧。请将其更新，否则播放可能会失败</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 强制原始音频不可用</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• 需要登录 Android VR</string>

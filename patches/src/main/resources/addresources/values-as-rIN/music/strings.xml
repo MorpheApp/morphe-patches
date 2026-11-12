@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Download মেনুৰ বাবে বাহ্যিক ডাউনলোডাৰ ব্যৱহাৰ কৰক</string>
   <string name="morphe_external_downloader_menu_summary">মেনুৰ Download বিকল্পটোৱে তাৰ পৰিৱৰ্তে আপোনাৰ বাহ্যিক ডাউনলোডাৰটো খুলিব</string>
-  <string name="morphe_music_downloads_screen_title">ডাউনলোডসমূহ</string>
-  <string name="morphe_music_downloads_empty">"কোনো ডাউনলোড নাই
-ডাউনলোড কৰা ট্ৰেকসমূহ ইয়াত দেখুৱাব"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s ট্ৰেক • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">ডাউনলোডসমূহৰ বাবে সন্ধান কৰক</string>
-  <string name="morphe_music_downloads_sort">ক্ৰমবিন্যাস</string>
-  <string name="morphe_music_downloads_sort_artist">শিল্পী অনুসৰি সৰ্ট কৰক</string>
-  <string name="morphe_music_downloads_sort_title">শিৰোনাম অনুসৰি সৰ্ট কৰক</string>
-  <string name="morphe_music_downloads_sort_size">আকাৰ অনুসৰি সৰ্ট কৰক</string>
-  <string name="morphe_music_downloads_delete_all">সকলো ডাউনলোড মচি পেলাওক</string>
-  <string name="morphe_music_downloads_delete_all_title">সকলো ডাউনলোড মচি পেলাব নেকি?</string>
-  <string name="morphe_music_downloads_delete_all_message">এই ডিভাইচৰ পৰা সকলো ডাউনলোড কৰা ট্ৰেক মচি পেলোৱা হ\'ব</string>
-  <string name="morphe_music_downloads_all_deleted">ডাউনলোডবোৰ মচি পেলোৱা হৈছে</string>
-  <string name="morphe_music_downloads_nothing_found">একো পোৱা নগ\'ল</string>
-  <string name="morphe_music_downloads_actions_for">%s ৰ বাবে কাৰ্যসমূহ</string>
-  <string name="morphe_music_downloads_play">চলাওক</string>
-  <string name="morphe_music_downloads_play_pause">প্লে বা পজ কৰক</string>
-  <string name="morphe_music_downloads_previous">পূৰ্বৱৰ্তী</string>
-  <string name="morphe_music_downloads_next">পিছৰটো</string>
-  <string name="morphe_music_downloads_pause">পজ কৰক</string>
-  <string name="morphe_music_downloads_shuffle">শ্বাফেল</string>
-  <string name="morphe_music_downloads_repeat">পুনৰাবৃত্তি</string>
-  <string name="morphe_music_downloads_minimize">মিনিমাইজ কৰক</string>
-  <string name="morphe_music_downloads_close">বন্ধ কৰক</string>
-  <string name="morphe_music_downloads_delete">মচি পেলাও</string>
-  <string name="morphe_music_downloads_delete_track">ডাউনলোড মচি পেলাওক</string>
-  <string name="morphe_music_downloads_delete_track_title">ডাউনলোডটো মচি পেলাব নেকি?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s এই ডিভাইচৰ পৰা মচি পেলোৱা হ\'ব</string>
-  <string name="morphe_music_downloads_track_deleted">ডাউনলোডটো মচি পেলোৱা হ\'ল</string>
-  <string name="morphe_music_downloads_track_delete_failed">ডাউনলোডটো মচিব নোৱাৰিল</string>
-  <string name="morphe_music_downloads_play_failed">ডাউনলোডটো বজাব নোৱাৰিল</string>
-  <string name="morphe_music_downloads_playlists">প্লেলিষ্টসমূহ</string>
-  <string name="morphe_music_downloads_playlists_section">তৈৰী কৰা প্লেলিষ্টসমূহ (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">এতিয়াও কোনো স্থানীয় প্লেলিষ্ট নাই</string>
-  <string name="morphe_music_downloads_playlists_hide">প্লেলিষ্টসমূহ লুকুৱাওক ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ নতুন প্লেলিষ্ট</string>
-  <string name="morphe_music_downloads_playlist_new_button">নতুন প্লেলিষ্ট</string>
-  <string name="morphe_music_downloads_playlist_selected">নিৰ্বাচিত (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">প্ৰথমে গানসমূহ নিৰ্বাচিত কৰক</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">নিৰ্বাচন মুছক</string>
-  <string name="morphe_music_downloads_playlist_create">প্লেলিষ্ট তৈৰী কৰক</string>
-  <string name="morphe_music_downloads_playlist_create_button">তৈৰী কৰক</string>
-  <string name="morphe_music_downloads_playlist_add">প্লেলিষ্টলৈ যোগ কৰক</string>
-  <string name="morphe_music_downloads_playlist_added">%s লৈ যোগ কৰা হৈছে</string>
-  <string name="morphe_music_downloads_playlist_name_hint">প্লেলিষ্টৰ নাম</string>
-  <string name="morphe_music_downloads_playlist_name_empty">প্লেলিষ্টৰ নাম খালী হ\'ব নোৱাৰে</string>
-  <string name="morphe_music_downloads_playlist_save_failed">প্লেলিষ্টটো সংৰক্ষণ কৰিব নোৱাৰিল</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s টা ট্ৰেক</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">১ টা ট্ৰেক</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">এই প্লেলিষ্টত কোনো ট্ৰেক নাই</string>
-  <string name="morphe_music_downloads_playlist_play">প্লেলিষ্টটো প্লে কৰক</string>
-  <string name="morphe_music_downloads_playlist_play_all">সকলোবোৰ প্লে কৰক</string>
-  <string name="morphe_music_downloads_playlist_rename">নাম সলনি কৰক</string>
-  <string name="morphe_music_downloads_playlist_rename_title">প্লেলিষ্টৰ নাম সলনি কৰক</string>
-  <string name="morphe_music_downloads_playlist_save">সংৰক্ষণ কৰক</string>
-  <string name="morphe_music_downloads_playlist_delete">প্লেলিষ্টটো মচি পেলাওক</string>
-  <string name="morphe_music_downloads_playlist_delete_title">প্লেলিষ্টটো মচি পেলাব নেকি?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s মচি পেলোৱা হ\'ব। ডাউনলোড কৰা গানবোৰ থাকিব</string>
-  <string name="morphe_music_downloads_playlist_deleted">প্লেলিষ্টটো মচি পেলোৱা হ\'ল</string>
-  <string name="morphe_music_downloads_playlist_remove_track">প্লেলিষ্টৰ পৰা আঁতৰ কৰক</string>
-  <string name="morphe_music_downloads_playlist_drag_track">ক্ৰম সলনি কৰিবলৈ টানি লওক</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • ক্ৰম সলনি কৰিবলৈ ড্ৰেগ হেণ্ডেলটো টানি লওক</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">সম্পন্ন</string>
-  <string name="morphe_music_downloads_notification_channel">অডিঅ ডাউনলোড</string>
-  <string name="morphe_music_downloads_playback_channel">অফলাইন প্লেবেক</string>
-  <string name="morphe_music_downloads_unknown_track">ডাউনলোড কৰিবলগীয়া ট্ৰেকটো চিনাক্ত কৰিব নোৱাৰিল</string>
-  <string name="morphe_music_downloads_already_running">ডাউনলোড ইতিমধ্যে চলি আছে</string>
-  <string name="morphe_music_downloads_already_saved">ইতিমধ্যে ডাউনলোড কৰা হৈছে</string>
-  <string name="morphe_music_downloads_started">ডাউনলোড আৰম্ভ হৈছে</string>
-  <string name="morphe_music_downloads_starting">ডাউনলোড আৰম্ভ কৰা হৈছে…</string>
-  <string name="morphe_music_downloads_progress">ডাউনলোড হৈছে %s%%</string>
-  <string name="morphe_music_downloads_complete">ডাউনলোড সম্পূৰ্ণ হৈছে</string>
-  <string name="morphe_music_downloads_failed">ডাউনলোড বিফল হৈছে</string>
-  <string name="morphe_music_downloads_playlist_download_title">প্লেলিষ্ট ডাউনলোড</string>
-  <string name="morphe_music_downloads_playlist_download_listing">ট্ৰেকসমূহ তালিকাভুক্ত কৰা হৈছে…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s তালিকাভুক্ত কৰা হৈছে…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">প্লেলিষ্টৰ ট্ৰেকসমূহ তালিকাভুক্ত কৰিব নোৱাৰিল</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">ইতিমধ্যে ডাউনলোড কৰা হৈছে: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"এই প্লেলিষ্টত %1$s টা আছে, যাৰ ভিতৰত %2$s টা এতিয়াও ডাউনলোড কৰা হোৱা নাই।
+  <string name="morphe_export_download_folder_title">ডাউনলোডসমূহ এক্সপোর্ট কৰক</string>
+  <string name="morphe_export_download_folder_summary">"ডাউনলোডৰ মেনু ব্যৱহাৰ কৰি এপটোৰ দ্বাৰা ডাউনলোড কৰা গান আৰু ভিডিঅ'সমূহ আপোনাৰ ডিভাইচৰ ষ্টোৰেজলৈ এক্সপোর্ট কৰক। এক্সপোর্ট ফোল্ডাৰটো সলনি কৰিবলৈ টেপ কৰক
 
-এইবোৰ এটা এটাকৈ ডাউনলোড কৰা হয়, যাৰ বাবে বহু সময় লাগিব পাৰে আৰু প্ৰায় %3$s খালী ঠাইৰ প্ৰয়োজন"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">ডাউনলোড</string>
-  <string name="morphe_music_downloads_playlist_download_progress">%2$s ৰ ভিতৰত %1$s নং ট্ৰেক ডাউনলোড কৰা হৈছে</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s ডাউনলোড কৰা হ\'ল</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s ডাউনলোড কৰা হৈছে, %2$s ডাউনলোড কৰিব পৰা নগ’ল</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">প্লেলিষ্ট ডাউনলোড ইতিমধ্যে চলি আছে</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">আপোনাৰ একাউণ্টটো এতিয়াও চিনাক্ত কৰা হোৱা নাই। কিছু সময়ৰ পিছত পুনৰ চেষ্টা কৰক</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s তালিকাভুক্ত কৰা হৈছে, সকলোবোৰ ইতিমধ্যে ডাউনলোড কৰা হৈছে</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">প্লেলিষ্টটোৰ কিছু অংশহে তালিকাভুক্ত কৰিব পৰা গৈছে। বাকী অংশবোৰ পাবলৈ পিছত পুনৰ ডাউনলোডত টেপ কৰক</string>
-  <string name="morphe_music_downloads_playlist_download_started">বেকগ্ৰাউণ্ডত %s ডাউনলোড কৰা হৈছে</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">নেটৱৰ্ক সংযোগ নাই</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">নেটৱৰ্কৰ বাবে অপেক্ষা কৰা হৈছে…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">%2$s ৰ ভিতৰত %1$s ৰ পিছত বন্ধ হৈছে। অব্যাহত ৰাখিবলৈ পুনৰ ডাউনলোডত টেপ কৰক</string>
-  <string name="morphe_music_downloads_mark_title">ডাউনলোড কৰা গানসমূহ চিহ্নিত কৰক</string>
-  <string name="morphe_music_downloads_mark_summary">আগতে ডাউনলোড কৰা গানবোৰৰ বিৱৰণৰ আগত প্লেলিষ্ট, এলবাম আৰু সন্ধানৰ ফলাফলত এটা চিহ্ন দেখুৱাব</string>
+এক্সপোর্ট ফোল্ডাৰ: %s"</string>
+  <string name="morphe_export_download_started">ডাউনলোড এক্সপোর্ট কৰা হৈছে</string>
+  <string name="morphe_export_download_progress">ডাউনলোড এক্সপোর্ট কৰা হৈছে: %s%%</string>
+  <string name="morphe_export_download_notification_channel">ডাউনলোড এক্সপোর্ট</string>
+  <string name="morphe_export_download_saved">ডাউনলোডটো %s ত এক্সপোর্ট কৰা হৈছে</string>
+  <string name="morphe_export_download_failed">ডাউনলোডটো এক্সপোর্ট কৰিব পৰা নগ\'ল</string>
+  <string name="morphe_export_download_all_flyout_title">সকলোবোৰ ডিভাইসলৈ এক্সপোর্ট কৰক</string>
+  <string name="morphe_export_download_all_started">সকলো ডাউনলোড এক্সপোর্ট কৰা হৈছে</string>
+  <string name="morphe_export_download_all_running">ডাউনলোডসমূহ ইতিমধ্যে এক্সপোর্ট কৰা হৈছে</string>
+  <string name="morphe_export_download_all_saved">%2$s টা ডাউনলোডৰ ভিতৰত %1$s টা %3$s ত এক্সপোর্ট কৰা হৈছে</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Morpheৰ বিষয়ে</string>
@@ -261,6 +178,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_shuffle_button_title">শ্বাফেল বুটামটো লুকুৱাওক</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\'স্পীড ডায়েল\' শ্বেল্ফটো লুকুৱাওক</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">\'আপুনি ভাল পাব পাৰে\' অংশটো লুকুৱাওক</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">\'আপোনাৰ ডাউনলোডসমূহ\' শ্বেলটো লুকুৱাওক</string>
   <string name="morphe_music_comments_screen_title">মন্তব্য</string>
   <string name="morphe_music_comments_screen_summary">মন্তব্য অংশত কোনবোৰ উপাদান দেখা যাব তাৰ বাবে বাছনি কৰক</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">কমিউনিটি গাইডলাইনসমূহ লুকুৱাওক</string>
@@ -344,6 +262,12 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ডিসলাইক ৰিডাইৰেকচন নিষ্ক্ৰিয় কৰক</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ডিসলাইক বুটামটো টিপিলে পৰৱৰ্তী ট্ৰেকলৈ যোৱাটো প্ৰতিৰোধ কৰে</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">A-B লুপ</string>
+  <string name="morphe_music_ab_loop_summary">লুপ আৰম্ভটো নিৰ্ধাৰণ কৰিবলৈ seekbar-ত লং-প্ৰেছ কৰক, লুপৰ শেষটো নিৰ্ধাৰণ কৰিবলৈ পুনৰ লং-প্ৰেছ কৰক, আৰু লুপটো মুছিবলৈ পুনৰ লং-প্ৰেছ কৰক</string>
+  <string name="morphe_music_ab_loop_toast_start">লুপ আৰম্ভ %s লৈ নিৰ্ধাৰণ কৰা হৈছে</string>
+  <string name="morphe_music_ab_loop_toast_end">লুপৰ শেষ %s লৈ নিৰ্ধাৰণ কৰা হৈছে</string>
+  <string name="morphe_music_ab_loop_toast_cleared">লুপ মচি পেলোৱা হৈছে</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">প্লেলিষ্ট ট্ৰেক টেপ একচন</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">প্লেলিষ্টটো বজাওক</string>

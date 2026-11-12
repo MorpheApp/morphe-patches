@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">השתמש במוריד חיצוני לתפריט ההורדות</string>
   <string name="morphe_external_downloader_menu_summary">אפשרות ההורדה בתפריטים תפתח את המוריד החיצוני שלך במקום</string>
-  <string name="morphe_music_downloads_screen_title">הורדות</string>
-  <string name="morphe_music_downloads_empty">"אין הורדות
-השירים שהורדו יופיעו כאן"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s שירים • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">חיפוש בהורדות</string>
-  <string name="morphe_music_downloads_sort">מיין</string>
-  <string name="morphe_music_downloads_sort_artist">מיין לפי אמן</string>
-  <string name="morphe_music_downloads_sort_title">מיין לפי כותרת</string>
-  <string name="morphe_music_downloads_sort_size">מיין לפי גודל</string>
-  <string name="morphe_music_downloads_delete_all">מחק את כל ההורדות</string>
-  <string name="morphe_music_downloads_delete_all_title">למחוק את כל ההורדות?</string>
-  <string name="morphe_music_downloads_delete_all_message">כל השירים שהורדו יימחקו מהמכשיר הזה</string>
-  <string name="morphe_music_downloads_all_deleted">ההורדות נמחקו</string>
-  <string name="morphe_music_downloads_nothing_found">לא נמצא דבר</string>
-  <string name="morphe_music_downloads_actions_for">פעולות עבור %s</string>
-  <string name="morphe_music_downloads_play">הפעל</string>
-  <string name="morphe_music_downloads_play_pause">הפעל או השהה</string>
-  <string name="morphe_music_downloads_previous">הקודם</string>
-  <string name="morphe_music_downloads_next">הבא</string>
-  <string name="morphe_music_downloads_pause">השהה</string>
-  <string name="morphe_music_downloads_shuffle">ערבוב</string>
-  <string name="morphe_music_downloads_repeat">חזור</string>
-  <string name="morphe_music_downloads_minimize">מזער</string>
-  <string name="morphe_music_downloads_close">סגור</string>
-  <string name="morphe_music_downloads_delete">מחק</string>
-  <string name="morphe_music_downloads_delete_track">מחק הורדה</string>
-  <string name="morphe_music_downloads_delete_track_title">למחוק את ההורדה?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s יימחק מהמכשיר הזה</string>
-  <string name="morphe_music_downloads_track_deleted">ההורדה נמחקה</string>
-  <string name="morphe_music_downloads_track_delete_failed">לא ניתן היה למחוק את ההורדה</string>
-  <string name="morphe_music_downloads_play_failed">לא ניתן היה להפעיל את ההורדה</string>
-  <string name="morphe_music_downloads_playlists">פלייליסטים</string>
-  <string name="morphe_music_downloads_playlists_section">פלייליסטים שנוצרו (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">אין עדיין פלייליסטים מקומיים</string>
-  <string name="morphe_music_downloads_playlists_hide">הסתר פלייליסטים ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ פלייליסט חדש</string>
-  <string name="morphe_music_downloads_playlist_new_button">פלייליסט חדש</string>
-  <string name="morphe_music_downloads_playlist_selected">נבחר (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">בחר שירים תחילה</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">נקה בחירה</string>
-  <string name="morphe_music_downloads_playlist_create">צור פלייליסט</string>
-  <string name="morphe_music_downloads_playlist_create_button">צור</string>
-  <string name="morphe_music_downloads_playlist_add">הוסף לפלייליסט</string>
-  <string name="morphe_music_downloads_playlist_added">נוסף ל-%s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">שם הפלייליסט</string>
-  <string name="morphe_music_downloads_playlist_name_empty">שם הפלייליסט לא יכול להיות ריק</string>
-  <string name="morphe_music_downloads_playlist_save_failed">לא ניתן לשמור את הפלייליסט</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s רצועות</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 רצועה</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">אין רצועות בפלייליסט זה</string>
-  <string name="morphe_music_downloads_playlist_play">נגן פלייליסט</string>
-  <string name="morphe_music_downloads_playlist_play_all">נגן הכל</string>
-  <string name="morphe_music_downloads_playlist_rename">שנה שם</string>
-  <string name="morphe_music_downloads_playlist_rename_title">שנה שם פלייליסט</string>
-  <string name="morphe_music_downloads_playlist_save">שמור</string>
-  <string name="morphe_music_downloads_playlist_delete">מחק פלייליסט</string>
-  <string name="morphe_music_downloads_playlist_delete_title">מחיקת פלייליסט?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s יימחק. שירים שהורדו יישמרו</string>
-  <string name="morphe_music_downloads_playlist_deleted">הפלייליסט נמחק</string>
-  <string name="morphe_music_downloads_playlist_remove_track">הסר מהפלייליסט</string>
-  <string name="morphe_music_downloads_playlist_drag_track">גרור כדי לשנות את הסדר</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • גרור את ידית הגרירה כדי לשנות את הסדר</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">בוצע</string>
-  <string name="morphe_music_downloads_notification_channel">הורדות אודיו</string>
-  <string name="morphe_music_downloads_playback_channel">השמעה לא מקוונת</string>
-  <string name="morphe_music_downloads_unknown_track">לא ניתן היה לזהות את השיר להורדה</string>
-  <string name="morphe_music_downloads_already_running">הורדה כבר מתבצעת</string>
-  <string name="morphe_music_downloads_already_saved">כבר הורד</string>
-  <string name="morphe_music_downloads_started">ההורדה החלה</string>
-  <string name="morphe_music_downloads_starting">מתחיל הורדה…</string>
-  <string name="morphe_music_downloads_progress">מוריד %s%%</string>
-  <string name="morphe_music_downloads_complete">ההורדה הושלמה</string>
-  <string name="morphe_music_downloads_failed">ההורדה נכשלה</string>
-  <string name="morphe_music_downloads_playlist_download_title">הורדת פלייליסט</string>
-  <string name="morphe_music_downloads_playlist_download_listing">מביא רשימת רצועות...</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s רשומים…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">לא ניתן היה להביא את רשימת הרצועות של הפלייליסט</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">כבר הורדו: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s רצועות בפלייליסט זה, %2$s עדיין לא הורדו.
+  <string name="morphe_export_download_folder_title">ייצוא הורדות</string>
+  <string name="morphe_export_download_folder_summary">"ייצוא שירים וסרטונים שהורדו על ידי האפליקציה לאחסון במכשיר שלך באמצעות תפריט ההורדה. הקש כדי לשנות את תיקיית הייצוא
 
-הן מורדות אחת אחת, מה שיכול לקחת זמן רב ודורש כ-%3$s של שטח פנוי"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">הורדה</string>
-  <string name="morphe_music_downloads_playlist_download_progress">מוריד רצועה %1$s מתוך %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s הורדו</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s הורדו, %2$s לא ניתן היה להוריד</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">הורדת פלייליסט כבר נמצאת בתהליך</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">חשבונך עדיין אינו מוכר. נסה שוב בעוד רגע</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s רצועות הוכנסו לרשימה, כולן כבר הורדו</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">ניתן היה להביא רק חלק מהפלייליסט. הקש שוב על הורדה מאוחר יותר כדי לקבל את השאר</string>
-  <string name="morphe_music_downloads_playlist_download_started">מוריד %s ברקע</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">אין חיבור לרשת</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">ממתין לרשת...</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">נעצר לאחר %1$s מתוך %2$s. הקש שוב על הורדה כדי להמשיך</string>
-  <string name="morphe_music_downloads_mark_title">סמן שירים שהורדו</string>
-  <string name="morphe_music_downloads_mark_summary">שירים שכבר הורדו יציגו סימון לפני פרטיהם ברשימות השמעה, באלבומים ובתוצאות חיפוש</string>
+תיקיית ייצוא: %s"</string>
+  <string name="morphe_export_download_started">מייצא הורדה</string>
+  <string name="morphe_export_download_progress">מייצא הורדה: %s%%</string>
+  <string name="morphe_export_download_notification_channel">הורדת ייצואים</string>
+  <string name="morphe_export_download_saved">ההורדה יוצאה ל-%s</string>
+  <string name="morphe_export_download_failed">לא ניתן היה לייצא את ההורדה</string>
+  <string name="morphe_export_download_all_flyout_title">ייצוא הכל למכשיר</string>
+  <string name="morphe_export_download_all_started">מייצא את כל ההורדות</string>
+  <string name="morphe_export_download_all_running">ההורדות כבר נמצאות בתהליך ייצוא</string>
+  <string name="morphe_export_download_all_saved">יוצאו %1$s מתוך %2$s הורדות ל-%3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">אודות</string>
@@ -261,6 +178,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_shuffle_button_title">הסתר לחצן ערבוב</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">הסתר מדף \'חיוג מהיר\'</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">הסתר את סעיף \'אולי תאהב גם\'</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">הסתר מדף \'ההורדות שלך\'</string>
   <string name="morphe_music_comments_screen_title">תגובות</string>
   <string name="morphe_music_comments_screen_summary">בחר אילו רכיבים יוצגו בסעיף התגובות</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">הסתר הנחיות קהילה</string>
@@ -344,6 +262,12 @@ Second \"item\" text"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ביטול הפנייה בלחיצה על \"דיסלייק\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">מניעת דילוג רצועה כאשר לוחצים על \"דיסלייק\"</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">לולאת A-B</string>
+  <string name="morphe_music_ab_loop_summary">לחץ לחיצה ארוכה על סרגל ההתקדמות כדי להגדיר את תחילת הלולאה, שוב כדי להגדיר את סוף הלולאה, ושוב כדי לבטל את הלולאה</string>
+  <string name="morphe_music_ab_loop_toast_start">תחילת הלולאה הוגדרה ל-%s</string>
+  <string name="morphe_music_ab_loop_toast_end">סוף הלולאה הוגדר ל-%s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">הלופ נוקה</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">פעולת הקשה על שיר ברשימת השמעה</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">הפעל את רשימת ההשמעה</string>

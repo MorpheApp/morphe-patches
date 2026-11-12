@@ -24,10 +24,21 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">புதிய அமைப்புகளை முன்னிலைப்படுத்து</string>
   <string name="morphe_settings_new_indicator_days_summary">ஒரு புதுப்பிப்பின் மூலம் சேர்க்கப்பட்ட அமைப்புகள் மற்றும் விருப்பங்களுக்கு அருகில் எத்தனை நாட்களுக்கு ஒரு புள்ளி காட்டப்பட வேண்டும்</string>
   <string name="morphe_settings_new_indicator_days_off">ஆஃப்</string>
+  <string name="morphe_settings_new_indicator_clear_title">அனைத்து அமைப்புகளையும் பார்த்ததாகக் குறிக்கவும்</string>
+  <string name="morphe_settings_new_indicator_clear_summary">அனைத்து புதிய அமைப்புகள் மற்றும் விருப்பங்களிலிருந்து புள்ளியை நீக்கவும்</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">அனைத்து அமைப்புகளையும் பார்த்ததாகக் குறிக்க வேண்டுமா?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">அனைத்து புதிய அமைப்புகள் மற்றும் விருப்பங்களிலிருந்து புள்ளி நீக்கப்பட்டது. எதிர்கால புதுப்பிப்புகள் மூலம் சேர்க்கப்படும் அமைப்புகள் இன்னும் முன்னிலைப்படுத்தப்படும்.</string>
   <!-- misc.initialization.initializationPatch -->
   <!-- layout.branding.baseCustomBrandingPatch -->
   <!-- layout.theme.baseThemePatch -->
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_export_download_folder_dialog_title">ஏற்றுமதி கோப்புறை</string>
+  <string name="morphe_export_download_folder_change">கோப்புறையை மாற்றவும்</string>
+  <string name="morphe_export_download_folder_changed">ஏற்றுமதி கோப்புறை மாற்றப்பட்டது</string>
+  <string name="morphe_export_download_folder_reset">ஏற்றுமதி கோப்புறை மீட்டமைக்கப்பட்டது</string>
+  <string name="morphe_export_download_folder_missing">ஏற்றுமதி கோப்புறை %s-ஐக் கண்டறிய முடியவில்லை</string>
+  <string name="morphe_export_download_flyout_title">சாதனத்திற்கு ஏற்றுமதி செய்யவும்</string>
+  <string name="morphe_export_download_canceled">ஏற்றுமதி ரத்து செய்யப்பட்டது</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
@@ -35,6 +46,20 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView முடக்கப்பட்டுள்ளது அல்லது நிறுவப்படவில்லை.
+
+வீடியோ பிளேபேக்கிற்கு Android System WebView தேவை. அதை இயக்கி சமீபத்திய பதிப்பிற்குப் புதுப்பிக்கவும்.
+
+Android System WebView-ஐத் திறக்க OK-வைத் தட்டவும்."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView காலாவதியானது (பதிப்பு %s).
+
+Android System WebView சமீபத்திய பதிப்பிற்குப் புதுப்பிக்கப்படும் வரை வீடியோ பிளேபேக் தோல்வியடையக்கூடும்.
+
+Android System WebView-ஐத் திறக்க OK-வைத் தட்டவும்."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">மீண்டும் காட்ட வேண்டாம்</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView நிறுவப்படவில்லை. வீடியோ பிளேபேக்கைச் சரிசெய்ய அதை நிறுவவும்</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->

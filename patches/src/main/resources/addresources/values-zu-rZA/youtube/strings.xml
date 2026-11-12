@@ -319,9 +319,9 @@ Izinguquko zihlanganisa:
   <string name="morphe_hide_keyword_content_search_title">Fihla imiphumela yokusesha ngamagama angukhiye</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Fihla amavidiyo e-Subscriptions ngamagama angukhiye</string>
   <string name="morphe_hide_keyword_content_phrases_title">Amagama angukhiye okufihla</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Faka amagama angukhiye namagama okufihla, ahlukaniswe imigqa emisha
+  <string name="morphe_hide_keyword_content_phrases_summary">"Faka amagama angukhiye namasizinda ofuna ukuwafihla, ahlukaniswe imigqa emisha
 
-Amagama angukhiye angaba yinyupha ethile ebonakala ezihloko zezividiyo noma emagameni amasizinda"</string>
+Amagama angukhiye angaba yinoma iyiphi imibhalo ebonakala ezihloko zezividiyo. Igama elithi @UserName lifihla konke okuvela kubadali abathile"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Ikhaya / Izisayinsiza / Ukusesha / Imibhalo ihlukaniswe ukuze kufihle okuqukethwe okuhambisana namagama angukhiye
 
 Imingcele:
@@ -331,7 +331,6 @@ Imingcele:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Ukuvala igama elibalulekile/isisho ngezimpawu zokuqondisa ezimbili (double-quotes) kuzovimbela ukutholakala kwezingxenye zezihloko ze-video namagama ama-channel&lt;br&gt;&lt;br&gt;Isibonelo,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; kuzofihla i-video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;kodwa ngeke ifihle: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Igama elibalulekile linemimiso ephikisanayo: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Igama elibalulekile lifushane kakhulu futhi lidinga izinto zokuqondisa: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Igama elizofihla zonke izividiyo: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Ikhaya: %1$s
@@ -559,18 +558,11 @@ Ngemuva kokuvulwa kwevidiyo enenkinobho ethi Buza kanye, le mpawu isebenza kuzo 
   <string name="morphe_export_download_folder_summary">"Exportha amavidiyo agcinwe ohlelweni kudivayisi yakho usebenzisa imenyu ye-downloads. Thinta ukuze ushintshe ifolda ye-export
 
 Ifolda ye-export: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Ifolda ye-export</string>
-  <string name="morphe_export_download_folder_change">Shintsha ifolda</string>
-  <string name="morphe_export_download_folder_changed">Ifolda ye-export ishintshiwe</string>
-  <string name="morphe_export_download_folder_reset">Ifolda ye-export isethwe kabusha</string>
-  <string name="morphe_export_download_folder_missing">Akukwazanga ukutholakala ifolda yokukhipha %s</string>
-  <string name="morphe_export_download_flyout_title">Exportha kudivayisi</string>
   <string name="morphe_export_download_started">Kuyexporthwa ividiyo</string>
   <string name="morphe_export_download_progress">Kukhiphelwa phandle ividiyo: %s%%</string>
   <string name="morphe_export_download_notification_channel">I-export yamavidiyo</string>
   <string name="morphe_export_download_saved">Ividiyo i-exportwe ku %s</string>
   <string name="morphe_export_download_failed">Kukwazekanga uku-exporta ividiyo</string>
-  <string name="morphe_export_download_canceled">I-export icancelwe</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ukuhumusha ngezwi</string>
   <string name="morphe_vot_screen_summary">Funda imibhalo yevidiyo ngokuzwakalayo usebenzisa i-text-to-speech edivaisini, ihambisana nokudlalwa kwevidiyo</string>
@@ -728,8 +720,6 @@ Ulwazi: Kungase kungasebenzi kuma-live streams"</string>
   <string name="morphe_queue_type_entry_2">Uhlu lwemveli</string>
   <string name="morphe_queue_type_entry_3">Uhlu lwe-Morphe</string>
   <string name="morphe_queue_type_entry_4">Uhlu lwe-Morphe ohlangeni lomsebenzisi</string>
-  <string name="morphe_queue_add_flyout_menu_title">Yenge i-item yemenyu yohlelo lwe-queue lwe-flyout lwe-feed</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Yenge i-item ye-flyout eyengeziwe. Vumela lokhu uma \"Yenge ku-queue\" ingabonakali</string>
   <string name="morphe_local_queue_sheet_title">Uhlu lokulandelana</string>
   <string name="morphe_local_queue_open">Uhlu (%s)</string>
   <string name="morphe_local_queue_clear">Sula konke</string>
@@ -1462,7 +1452,7 @@ Indlela yokuhlela yezimoto
   <string name="morphe_dearrow_titles_player_title">Uhlu lwezingoma lomdlali &amp; okuncoma</string>
   <string name="morphe_dearrow_titles_search_title">Imiphumela yokusesha</string>
   <string name="morphe_dearrow_titles_icon_title">Khombisa i-icon ye-DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Khombisa i-icon ye-DeArrow ezihloko zezividiyo ezisuselelwe emsithweni</string>
+  <string name="morphe_dearrow_titles_icon_summary">Ikhombisa i-icon ye-DeArrow kuma-titles amavidiyo aqoshwe ngumphakathi. Thinta i-icon ukuze ubonise i-title yokuqala ne-thumbnail</string>
   <string name="morphe_dearrow_casual_mode_title">Imodi yokuziphethela</string>
   <string name="morphe_dearrow_casual_mode_summary">Ikhombisa isihloko sokuqala esikhundleni sesihloko seDeArrow uma abasebenzisi beDeArrow bevota ukuthi bayasithanda isihloko sokuqala</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Imivoti embalwa kakhulu yokuziphethela ukuze kukhonyiswe isihloko sokuqala</string>
@@ -1638,6 +1628,9 @@ Ukudlalwa kwevidiyo nge-AV1 kungase kuphazamiseke noma kuwele ama-frames"</strin
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Ivolyumi elizinzile alitholakali</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Ukudlala kungaphela imizuzwana eyi-1 ngaphambi kwesikhathi</string>
   <string name="morphe_spoof_video_streams_about_js">• Uma i-deobfuscation ihluleka, ukudlala kungahluleka</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView icishwe noma ayifakwile. Iyikhanyise futhi uyivuselele, kungenzeka ukuthi ukudlala kwevidiyo kungahluleka</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView isedlule. Uyivuselele, kungenzeka ukuthi ukudlala kwevidiyo kungahluleka</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Ukunqamula umsindo wokuqala akutholakali</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Kudingeka ungene ku-Android VR</string>

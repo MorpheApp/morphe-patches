@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Истакни ги новите поставки</string>
   <string name="morphe_settings_new_indicator_days_summary">Број на денови во кои точката се прикажува покрај поставките и опциите додадени со ажурирањето</string>
   <string name="morphe_settings_new_indicator_days_off">Исклучено</string>
+  <string name="morphe_settings_new_indicator_clear_title">Означи ги сите поставки како видени</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Отстрани ја точката од сите нови поставки и опции</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Означи ги сите поставки како видени?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Точката е отстранета од сите нови поставки и опции. Поставките додадени со идни ажурирања сè уште ќе бидат истакнати.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Рестартирај за да завршиш со поставување</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Проверете дали името на пакетот е точно и дали апликацијата е инсталирана"</string>
   <string name="morphe_external_downloader_empty_warning">Името на пакетот не може да биде празно</string>
+  <string name="morphe_export_download_folder_dialog_title">Фолдер за извоз</string>
+  <string name="morphe_export_download_folder_change">Промени го фолдерот</string>
+  <string name="morphe_export_download_folder_changed">Фолдерот за извоз е променет</string>
+  <string name="morphe_export_download_folder_reset">Фолдерот за извоз е ресетиран</string>
+  <string name="morphe_export_download_folder_missing">Не може да се најде фолдерот за извоз %s</string>
+  <string name="morphe_export_download_flyout_title">Извоз кон уредот</string>
+  <string name="morphe_export_download_canceled">Извозот е откажан</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Прилагодено</string>
   <string name="morphe_custom_branding_icon_title">Икона на апликацијата</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 Дали да го поставите %2$s како стандардни клиент?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Префрли</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Исклучувањето на оваа поставка може да предизвика проблеми со репродукцијата</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView е исклучен или не е инсталиран.
+
+За репродукција на видеа е потребен Android System WebView. Вклучете го и ажурирајте го на најновата верзија.
+
+Допрете OK за да го отворите Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView е застарен (верзија %s).
+
+Репродукцијата на видеата може да не успее додека Android System WebView не се ажурира на најновата верзија.
+
+Допрете OK за да го отворите Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Не ме прашувај повторно</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView не е инсталиран. Инсталирајте го за да ја поправите репродукцијата на видеата</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Обидете се да го овозможите: Лажирај видео стримови &gt; Пријава во Android VR</string>

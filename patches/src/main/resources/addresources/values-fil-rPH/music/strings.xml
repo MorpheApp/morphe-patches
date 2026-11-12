@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Gumamit ng panlabas na downloader para sa Download menu</string>
   <string name="morphe_external_downloader_menu_summary">Ang opsyong Download ng mga menu ay magbubukas sa iyong panlabas na downloader sa halip</string>
-  <string name="morphe_music_downloads_screen_title">Mga Download</string>
-  <string name="morphe_music_downloads_empty">"Walang download
-Lalabas dito ang mga na-download na track"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s track • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Maghanap ng mga download</string>
-  <string name="morphe_music_downloads_sort">Ayusin</string>
-  <string name="morphe_music_downloads_sort_artist">Ayusin ayon sa artist</string>
-  <string name="morphe_music_downloads_sort_title">Ayusin ayon sa pamagat</string>
-  <string name="morphe_music_downloads_sort_size">Ayusin ayon sa laki</string>
-  <string name="morphe_music_downloads_delete_all">Tanggalin ang lahat ng mga download</string>
-  <string name="morphe_music_downloads_delete_all_title">Tanggalin ang lahat ng mga download?</string>
-  <string name="morphe_music_downloads_delete_all_message">Tatanggalin mula sa device na ito ang lahat ng mga na-download na track</string>
-  <string name="morphe_music_downloads_all_deleted">Natanggal ang mga download</string>
-  <string name="morphe_music_downloads_nothing_found">Walang nahanap</string>
-  <string name="morphe_music_downloads_actions_for">Mga aksyon para sa %s</string>
-  <string name="morphe_music_downloads_play">I-play</string>
-  <string name="morphe_music_downloads_play_pause">I-play o i-pause</string>
-  <string name="morphe_music_downloads_previous">Nakaraan</string>
-  <string name="morphe_music_downloads_next">Sunod</string>
-  <string name="morphe_music_downloads_pause">I-pause</string>
-  <string name="morphe_music_downloads_shuffle">I-shuffle</string>
-  <string name="morphe_music_downloads_repeat">Ulitin</string>
-  <string name="morphe_music_downloads_minimize">I-minimize</string>
-  <string name="morphe_music_downloads_close">Isara</string>
-  <string name="morphe_music_downloads_delete">Burahin</string>
-  <string name="morphe_music_downloads_delete_track">Tanggalin ang download</string>
-  <string name="morphe_music_downloads_delete_track_title">Tanggalin ang download?</string>
-  <string name="morphe_music_downloads_delete_track_message">Tatanggalin ang %s mula sa device na ito</string>
-  <string name="morphe_music_downloads_track_deleted">Natanggal ang download</string>
-  <string name="morphe_music_downloads_track_delete_failed">Hindi matanggal ang download</string>
-  <string name="morphe_music_downloads_play_failed">Hindi ma-play ang download</string>
-  <string name="morphe_music_downloads_playlists">Talatugtugin</string>
-  <string name="morphe_music_downloads_playlists_section">Mga nilikhang playlist (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Wala pang mga lokal na playlist</string>
-  <string name="morphe_music_downloads_playlists_hide">Itago ang mga playlist ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Bagong playlist</string>
-  <string name="morphe_music_downloads_playlist_new_button">Bagong playlist</string>
-  <string name="morphe_music_downloads_playlist_selected">Napili (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Pumili muna ng mga kanta</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Linisin ang pinili</string>
-  <string name="morphe_music_downloads_playlist_create">Gumawa ng playlist</string>
-  <string name="morphe_music_downloads_playlist_create_button">Gumawa</string>
-  <string name="morphe_music_downloads_playlist_add">Idagdag sa playlist</string>
-  <string name="morphe_music_downloads_playlist_added">Naidagdag sa %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Pangalan ng playlist</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Hindi maaaring walang pangalan ang playlist</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Hindi ma-save ang playlist</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s na track</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 track</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Walang mga track sa playlist na ito</string>
-  <string name="morphe_music_downloads_playlist_play">Patugtugin ang playlist</string>
-  <string name="morphe_music_downloads_playlist_play_all">Patugtugin lahat</string>
-  <string name="morphe_music_downloads_playlist_rename">Palitan</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Palitan ang pangalan ng playlist</string>
-  <string name="morphe_music_downloads_playlist_save">I-save</string>
-  <string name="morphe_music_downloads_playlist_delete">Burahin ang playlist</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Burahin ang playlist?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">Buburahin ang %s. Mananatili ang mga na-download na kanta</string>
-  <string name="morphe_music_downloads_playlist_deleted">Nabura na ang playlist</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Alisin mula sa playlist</string>
-  <string name="morphe_music_downloads_playlist_drag_track">I-drag para baguhin ang pagkakasunod-sunod</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • I-drag ang handle para baguhin ang pagkakasunod-sunod</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Tapos</string>
-  <string name="morphe_music_downloads_notification_channel">Mga audio download</string>
-  <string name="morphe_music_downloads_playback_channel">Offline na playback</string>
-  <string name="morphe_music_downloads_unknown_track">Hindi matukoy ang track na i-download</string>
-  <string name="morphe_music_downloads_already_running">Mayroon nang download na nagaganap</string>
-  <string name="morphe_music_downloads_already_saved">Na-download na</string>
-  <string name="morphe_music_downloads_started">Nagsimula ang download</string>
-  <string name="morphe_music_downloads_starting">Sinisimulan ang download…</string>
-  <string name="morphe_music_downloads_progress">Dina-download ang %s%%</string>
-  <string name="morphe_music_downloads_complete">Nakumpleto ang download</string>
-  <string name="morphe_music_downloads_failed">Nabigo ang download</string>
-  <string name="morphe_music_downloads_playlist_download_title">Pag-download ng playlist</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Inililista ang mga track…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s ang nailista…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Hindi ma-listahan ang mga track ng playlist</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Na-download na: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s sa playlist na ito, %2$s ay hindi pa na-download.
+  <string name="morphe_export_download_folder_title">I-export ang mga download</string>
+  <string name="morphe_export_download_folder_summary">"I-export ang mga kanta at video na na-download ng app sa storage ng iyong device gamit ang menu ng download. I-tap para baguhin ang export folder
 
-I-da-download ang mga ito nang isa-isa, na maaaring magtagal at nangangailangan ng humigit-kumulang %3$s na libreng espasyo"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">I-download</string>
-  <string name="morphe_music_downloads_playlist_download_progress">I-da-download ang track %1$s ng %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s ang na-download</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s ang na-download, %2$s ang hindi ma-download</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Kasalukuyang nag-da-download na ng playlist</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Hindi pa kilala ang iyong account. Subukan muli mamaya</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s ang nailista, lahat ay na-download na</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Bahagi lamang ng playlist ang nailista. I-tap muli ang Download mamaya para makuha ang iba pa</string>
-  <string name="morphe_music_downloads_playlist_download_started">I-da-download ang %s sa background</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Walang koneksyon sa network</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Naghihintay para sa network…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Tumigil pagkatapos ng %1$s ng %2$s. I-tap muli ang Download para magpatuloy</string>
-  <string name="morphe_music_downloads_mark_title">Markahan ang mga na-download na kanta</string>
-  <string name="morphe_music_downloads_mark_summary">Ang mga kantang na-download na ay magpapakita ng marka bago ang kanilang mga detalye sa mga playlist, album at resulta ng paghahanap</string>
+Export folder: %s"</string>
+  <string name="morphe_export_download_started">Inie-export ang download</string>
+  <string name="morphe_export_download_progress">Inie-export ang download: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Mga export ng download</string>
+  <string name="morphe_export_download_saved">Na-export ang download sa %s</string>
+  <string name="morphe_export_download_failed">Hindi ma-export ang download</string>
+  <string name="morphe_export_download_all_flyout_title">I-export ang lahat sa device</string>
+  <string name="morphe_export_download_all_started">Inie-export ang lahat ng download</string>
+  <string name="morphe_export_download_all_running">Kasalukuyan nang ine-export ang mga download</string>
+  <string name="morphe_export_download_all_saved">Na-export ang %1$s mula sa %2$s na mga download sa %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tungkol sa</string>
@@ -261,6 +178,7 @@ I-da-download ang mga ito nang isa-isa, na maaaring magtagal at nangangailangan 
   <string name="morphe_music_hide_shuffle_button_title">Itago ang Shuffle button</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Itago ang \'Speed dial\' shelf</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">Itago ang seksyon na \'Baka magustuhan mo rin\'</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Itago ang \"Your downloads\" shelf</string>
   <string name="morphe_music_comments_screen_title">Mga Komento</string>
   <string name="morphe_music_comments_screen_summary">Piliin kung aling mga bahagi ang lalabas sa seksyon ng mga komento</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Itago ang mga Alituntunin ng Komunidad</string>
@@ -344,6 +262,12 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Huwag paganahin ang dislike redirection</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Pinipigilan ang paglaktaw sa susunod na track kapag pinindot ang dislike button</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">A-B loop</string>
+  <string name="morphe_music_ab_loop_summary">I-long-press ang seekbar para itakda ang simula ng loop, ulitin para itakda ang dulo ng loop, at ulitin muli para burahin ang loop</string>
+  <string name="morphe_music_ab_loop_toast_start">Ang simula ng loop ay itinakda sa %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Ang dulo ng loop ay itinakda sa %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Inalis ang loop</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Aksyon sa pag-tap sa track sa playlist</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">I-play ang playlist</string>

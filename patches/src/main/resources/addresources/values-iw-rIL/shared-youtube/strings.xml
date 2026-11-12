@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">הדגשת הגדרות חדשות</string>
   <string name="morphe_settings_new_indicator_days_summary">מספר הימים שבהם נקודה תוצג לצד הגדרות ואפשרויות שנוספו בעדכון</string>
   <string name="morphe_settings_new_indicator_days_off">כבוי</string>
+  <string name="morphe_settings_new_indicator_clear_title">סמן את כל ההגדרות כנראות</string>
+  <string name="morphe_settings_new_indicator_clear_summary">הסר את הנקודה מכל ההגדרות והאפשרויות החדשות</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">סמן את כל ההגדרות כנראות?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">הנקודה מוסרת מכל ההגדרות והאפשרויות החדשות. הגדרות שיתווספו בעדכונים עתידיים עדיין יסומנו.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">הפעל מחדש כדי לסיים את ההגדרות</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 ודא ששם החבילה נכון והאפליקציה מותקנת"</string>
   <string name="morphe_external_downloader_empty_warning">שם החבילה לא יכול להיות ריק</string>
+  <string name="morphe_export_download_folder_dialog_title">תיקיית ייצוא</string>
+  <string name="morphe_export_download_folder_change">שינוי תיקייה</string>
+  <string name="morphe_export_download_folder_changed">תיקיית הייצוא שונתה</string>
+  <string name="morphe_export_download_folder_reset">תיקיית הייצוא אופסה</string>
+  <string name="morphe_export_download_folder_missing">לא ניתן למצוא את תיקיית הייצוא %s</string>
+  <string name="morphe_export_download_flyout_title">ייצוא למכשיר</string>
+  <string name="morphe_export_download_canceled">הייצוא בוטל</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">מותאם אישית</string>
   <string name="morphe_custom_branding_icon_title">אייקון האפליקציה</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 להפוך את %2$s ללקוח ברירת המחדל?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">החלף</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">כיבוי הגדרה זו עלול לגרום לבעיות השמעה</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView כבוי או שאינו מותקן.
+
+הפעלת וידאו דורשת את Android System WebView. הפעל אותו ועדכן אותו לגרסה העדכנית ביותר.
+
+הקש על אישור כדי לפתוח את Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView אינו מעודכן (גרסה %s).
+
+הפעלת הווידאו עלולה להיכשל עד ש-Android System WebView יעודכן לגרסה העדכנית ביותר.
+
+הקש על אישור כדי לפתוח את Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">אל תציג שוב</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView אינו מותקן. התקן אותו כדי לתקן את הפעלת הווידאו</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">נסה להפעיל: זיוף זרמי וידאו > כניסה ל-Android VR</string>

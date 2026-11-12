@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">ძიების შედეგების დამალვა საკვანძო სიტყვების მიხედვით</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">გამოწერების ვიდეოების დამალვა საკვანძო სიტყვების მიხედვით</string>
   <string name="morphe_hide_keyword_content_phrases_title">საკვანძო სიტყვები დასამალად</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"შეიყვანეთ სას隐藏ო საკვანძო სიტყვები და ფრაზები, რომლებიც განყოფილ იქნება ახალი ხაზებით
+  <string name="morphe_hide_keyword_content_phrases_summary">"შეიყვანეთ ახალ ხაზზე გამოყოფილი საკვანძო სიტყვები და ფრაზები დასამალად
 
-საკვანძო სიტყვები შეიძლება იყოს ნებისმიერი ტექსტი, რომელიც ჩანს ვიდეოს სათაურებში ან არხის სახელებში"</string>
+საკვანძო სიტყვები შეიძლება იყოს ნებისმიერი ტექსტი, რომელიც ჩანს ვიდეოების სათაურებში. @UserName საკვანძო სიტყვა მალავს ყველა კონტენტს კონკრეტული ავტორებისგან"</string>
   <string name="morphe_hide_keyword_content_about_summary">"მთავარი / გამოსწერები / ძებნა / კომენტარები ფილტრდება იმ კონტენტის დასამალად, რომელიც შეესაბამება საკვანძო ფრაზებს
 
 შეზღუდვები:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">საკვანძო სიტყვის/ფრაზის მოყვანა ბრჭყალებში გამორიცხავს ვიდეოს სათაურებისა და არხების სახელების ნაწილობრივ დამთხვევებს&lt;br&gt;&lt;br&gt;მაგალითად,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; დამალავს ვიდეოს: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;მაგრამ არ დამალავს: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">საკვანძო სიტყვას აქვს ურთიერთგამომრიცხავი დეკლარაციები: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">საკვანძო სიტყვა ძალიან მოკლეა და საჭიროებს ბრჭყალებს: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">საკვანძო სიტყვა დამალავს ყველა ვიდეოს: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• მთავარი: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"გადაიტანეთ აპლიკაციაში შენახული ვიდეოები თქვენი მოწყობილობის მეხსიერებაში ჩამოტვირთვის მენიუს გამოყენებით. ექსპორტის საქაღალდის შესაცვლელად შეეხეთ.
 
 ექსპორტის საქაღალდე: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">ექსპორტის საქაღალდე</string>
-  <string name="morphe_export_download_folder_change">საქაღალდის შეცვლა</string>
-  <string name="morphe_export_download_folder_changed">ექსპორტის საქაღალდე შეიცვალა</string>
-  <string name="morphe_export_download_folder_reset">ექსპორტის საქაღალდე ნაგულისხმევზე დაბრუნდა</string>
-  <string name="morphe_export_download_folder_missing">ექსპორტის საქაღალდე %s ვერ მოიძებნა</string>
-  <string name="morphe_export_download_flyout_title">ექსპორტი მოწყობილობაში</string>
   <string name="morphe_export_download_started">ვიდეოს ექსპორტირება</string>
   <string name="morphe_export_download_progress">ვიდეოს ექსპორტირება: %s%%</string>
   <string name="morphe_export_download_notification_channel">ვიდეოების ექსპორტი</string>
   <string name="morphe_export_download_saved">ვიდეო ექსპორტირებულია %s-ში</string>
   <string name="morphe_export_download_failed">ვიდეოს ექსპორტირება ვერ მოხერხდა</string>
-  <string name="morphe_export_download_canceled">ექსპორტი გაუქმებულია</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">ხმოვანი თარგმანი</string>
   <string name="morphe_vot_screen_summary">წაიკითხეთ ვიდეოს სუბტიტრები ხმამაღლა მოწყობილობის ტექსტის მეტყველების ფუნქციით, დაკვრასთან სინქრონულად</string>
@@ -728,8 +720,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">ნატიური რიგი</string>
   <string name="morphe_queue_type_entry_3">Morphe რიგი</string>
   <string name="morphe_queue_type_entry_4">Morphe რიგი კლიენტის მხარეს</string>
-  <string name="morphe_queue_add_flyout_menu_title">დაამატეთ ფიდის გასაშლელი მენიუს რიგის ელემენტი</string>
-  <string name="morphe_queue_add_flyout_menu_summary">ამატებს დამატებით გასაშლელ მენიუს ელემენტს. ჩართეთ ეს, თუ „რიგში დამატება“ არ ჩანს</string>
   <string name="morphe_local_queue_sheet_title">რიგი</string>
   <string name="morphe_local_queue_open">რიგი (%s)</string>
   <string name="morphe_local_queue_clear">ყველას გასუფთავება</string>
@@ -1462,7 +1452,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">პლეიერის ფლეილისტები &amp; რეკომენდაციები</string>
   <string name="morphe_dearrow_titles_search_title">ძებნის შედეგები</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow ხატულის ჩვენება</string>
-  <string name="morphe_dearrow_titles_icon_summary">აჩვენებს DeArrow-ის ხატულას კრაუდსორსინგის ვიდეოების სათაურებზე</string>
+  <string name="morphe_dearrow_titles_icon_summary">აჩვენებს DeArrow-ის ხატულას crowdsourced ვიდეოების სათაურებში. შეეხებით ხატულას სათაურის და მინიატურის ორიგინალის სანახავად</string>
   <string name="morphe_dearrow_casual_mode_title">არაფორმალური რეჟიმი</string>
   <string name="morphe_dearrow_casual_mode_summary">აჩვენებს ორიგინალ სათაურს DeArrow-ის სათაურის ნაცვლად, თუ DeArrow-ის მომხმარებლებმა ხმა მისცეს, რომ ორიგინალი სათაური მოსწონთ</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">არაფორმალური ხმების მინიმუმი ორიგინალი სათაურის საჩვენებლად</string>
@@ -1638,6 +1628,9 @@ AV1-ით ვიდეოს დაკვრა შესაძლოა იყ
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• სტაბილური ხმის დონე მიუწვდომელია</string>
   <string name="morphe_spoof_video_streams_about_end_early">• შესაძლოა დაკვრა 1 წამით ადრე დასრულდეს</string>
   <string name="morphe_spoof_video_streams_about_js">• თუ დეობფუსკაცია ჩაიშალა, დაკვრა შესაძლოა ვერ მოხერხდეს</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView გამორთულია ან არ არის დაინსტალირებული. ჩართეთ და განაახლეთ იგი, წინააღმდეგ შემთხვევაში შესაძლოა დაკვრის შეფერხება მოხდეს</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView მოძველებულია. განაახლეთ იგი, წინააღმდეგ შემთხვევაში შესაძლოა დაკვრის შეფერხება მოხდეს</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• \"ორიგინალი აუდიოს იძულება\" მიუწვდომელია</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• საჭიროა Android VR-ში შესვლა</string>

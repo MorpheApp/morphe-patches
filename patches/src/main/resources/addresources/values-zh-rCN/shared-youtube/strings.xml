@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">高亮显示新设置</string>
   <string name="morphe_settings_new_indicator_days_summary">在更新添加的设置和选项旁边显示圆点的天数</string>
   <string name="morphe_settings_new_indicator_days_off">关闭</string>
+  <string name="morphe_settings_new_indicator_clear_title">将所有设置标记为已读</string>
+  <string name="morphe_settings_new_indicator_clear_summary">移除所有新设置和选项上的圆点</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">将所有设置标记为已读吗？</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">所有新设置和选项上的圆点将被移除。未来更新中添加的设置仍会高亮显示。</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">重启以完成设置</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 请验证包名是否正确以及该应用是否已安装。"</string>
   <string name="morphe_external_downloader_empty_warning">包名不能为空</string>
+  <string name="morphe_export_download_folder_dialog_title">导出文件夹</string>
+  <string name="morphe_export_download_folder_change">更改文件夹</string>
+  <string name="morphe_export_download_folder_changed">导出文件夹已更改</string>
+  <string name="morphe_export_download_folder_reset">导出文件夹已重置</string>
+  <string name="morphe_export_download_folder_missing">找不到导出文件夹 %s</string>
+  <string name="morphe_export_download_flyout_title">导出到设备</string>
+  <string name="morphe_export_download_canceled">导出已取消</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">自定义</string>
   <string name="morphe_custom_branding_icon_title">应用图标</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 要将 %2$s 设为默认客户端吗？"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">切换</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">关闭此设置可能会导致播放问题</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView 已关闭或未安装。
+
+视频播放需要 Android System WebView。请将其开启并更新至最新版本。
+
+点击“确定”以打开 Android System WebView。"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView 版本过旧（版本 %s）。
+
+在 Android System WebView 更新至最新版本前，视频播放可能会失败。
+
+点击“确定”以打开 Android System WebView。"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">不再显示</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView 未安装。请安装它以修复视频播放</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">请尝试启用：欺骗视频流 &gt; 登录 Android VR</string>
