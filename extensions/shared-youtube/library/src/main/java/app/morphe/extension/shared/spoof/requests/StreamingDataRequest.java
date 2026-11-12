@@ -527,7 +527,7 @@ public class StreamingDataRequest {
                 }
             }
             // These clients can play videos without the auth header:
-            // TV_SABR, TV_SIMPLY, VISIONOS_1_02 (VISIONOS_1_03).
+            // TV_SABR, TV_SIMPLY, VISIONOS_1_02 (VISIONOS_1_03), VISIONOS_1_06.
             else {
                 Logger.printDebug(() -> "Do not set auth header: " + clientType + ", videoId: " + videoId);
             }
