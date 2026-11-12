@@ -5,6 +5,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -22,5 +23,19 @@ internal object CanScrollVerticallyFingerprint : Fingerprint(
     filters = listOf(
         methodCall(smali = "Landroid/view/View;->canScrollVertically(I)Z"),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Scrolls the watch page list to the related videos when the video ends.
+ * YouTube 21.33+.
+ */
+internal object ScrollToRelatedItemsOnVideoEndFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45825801L),
+        literal(45825802L),
+        string("related-items")
     )
 )
