@@ -930,6 +930,8 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
 
 
     <!-- video.audio.audioFxProfilesPatch -->
+    <string name="morphe_music_audio_fx_enabled_title">Audio FX profiles</string>
+    <string name="morphe_music_audio_fx_enabled_summary">Shows real-time Audio FX profile options (Nightcore, Slowed + Reverb, Lo-Fi, 8D, etc.) next to Lyrics in the full-screen player</string>
     <string name="morphe_music_audio_fx_profile_title">Audio FX profile</string>
     <string name="morphe_music_audio_fx_profile_entry_default">Default (Off)</string>
     <string name="morphe_music_audio_fx_profile_entry_nightcore">Nightcore (High energy &amp; pitch)</string>

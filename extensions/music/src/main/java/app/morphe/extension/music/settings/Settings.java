@@ -122,7 +122,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting MINIPLAYER_PREVIOUS_BUTTON = new BooleanSetting("morphe_music_miniplayer_previous_button", TRUE, true);
     public static final IntegerSetting PLAYBACK_SPEED = new IntegerSetting("morphe_music_playback_speed", 100);
     public static final BooleanSetting PLAYBACK_SPEED_CHANGE_PITCH = new BooleanSetting("morphe_music_playback_speed_change_pitch", FALSE);
-    public static final EnumSetting<AudioProfile> AUDIO_FX_PROFILE = new EnumSetting<>("morphe_music_audio_fx_profile", AudioProfile.DEFAULT);
+    public static final BooleanSetting AUDIO_FX_ENABLED = new BooleanSetting("morphe_music_audio_fx_enabled", TRUE, true);
+    public static final EnumSetting<AudioProfile> AUDIO_FX_PROFILE = new EnumSetting<>("morphe_music_audio_fx_profile", AudioProfile.DEFAULT, false);
     public static final BooleanSetting AB_LOOP = new BooleanSetting("morphe_music_ab_loop", FALSE);
     public static final EnumSetting<TapAction> PLAYLIST_TRACK_TAP_ACTION = new EnumSetting<>("morphe_music_playlist_track_tap_action", TapAction.DEFAULT);
 

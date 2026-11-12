@@ -298,30 +298,4 @@
         <item>NONE</item>
     </string-array>
 
-
-    <!-- video.audio.audioFxProfilesPatch -->
-    <string-array name="morphe_music_audio_fx_profile_entries">
-        <item>@string/morphe_music_audio_fx_profile_entry_default</item>
-        <item>@string/morphe_music_audio_fx_profile_entry_nightcore</item>
-        <item>@string/morphe_music_audio_fx_profile_entry_slowed_reverb</item>
-        <item>@string/morphe_music_audio_fx_profile_entry_muffled_next_room</item>
-        <item>@string/morphe_music_audio_fx_profile_entry_lofi_study</item>
-        <item>@string/morphe_music_audio_fx_profile_entry_daycore</item>
-        <item>@string/morphe_music_audio_fx_profile_entry_vaporwave</item>
-        <item>@string/morphe_music_audio_fx_profile_entry_live_concert</item>
-        <item>@string/morphe_music_audio_fx_profile_entry_audio_8d</item>
-        <item>@string/morphe_music_audio_fx_profile_entry_bass_boosted</item>
-    </string-array>
-    <string-array name="morphe_music_audio_fx_profile_entry_values">
-        <item>DEFAULT</item>
-        <item>NIGHTCORE</item>
-        <item>SLOWED_REVERB</item>
-        <item>MUFFLED_NEXT_ROOM</item>
-        <item>LOFI_STUDY</item>
-        <item>DAYCORE</item>
-        <item>VAPORWAVE</item>
-        <item>LIVE_CONCERT</item>
-        <item>AUDIO_8D</item>
-        <item>BASS_BOOSTED</item>
-    </string-array>
 </resources>
