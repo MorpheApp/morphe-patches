@@ -500,6 +500,7 @@ public final class LyricsSpanBuilder {
             }
 
             if (wholeRoman != null && !wholeRoman.trim().isEmpty()) {
+                final String readingKey = readingKey(wholeRoman);
                 String[] aligned = LocalRomanizer.allocateReading(
                         stripBidiControls(wholeRoman).trim(), n, guides,
                         LocalRomanizer.hasCjkWord(ownWords));
@@ -512,10 +513,14 @@ public final class LyricsSpanBuilder {
                     String chunk = i < aligned.length && aligned[i] != null ? aligned[i] : "";
                     final boolean chunkTrailingSpace = chunk.endsWith(" ");
                     chunk = chunk.trim();
-                    if (chunk.isEmpty() || (!allowTransliteration && ScriptDetector.containsCjk(chunk))
+                    final boolean hole = chunk.isEmpty();
+                    if (hole || (!allowTransliteration && ScriptDetector.containsCjk(chunk))
                             || chunk.equalsIgnoreCase(ownWords[i])) {
-                        // The source read this line, so a hole it left stays a hole.
-                        chunk = embeddedReading ? "" : guides.get(i);
+                        final String guide = guides.get(i);
+                        // A hole stays a hole when the line's reading already says this syllable somewhere:
+                        // the guide is then a tail of a word the allocator placed in another slot.
+                        chunk = embeddedReading || (hole && readingKey.contains(readingKey(guide)))
+                                ? "" : guide;
                     }
                     // Korean without spaces reads as one word
                     if (!ownWords[i].contains(" ") && chunk.contains(" ")
@@ -683,6 +688,22 @@ public final class LyricsSpanBuilder {
         if (lastSlot >= 0 && previous < reading.length()) {
             romTexts[lastSlot] = (romTexts[lastSlot] + reading.substring(previous)).trim();
         }
+    }
+
+    /** Normalized so a guide can be matched against a reading without spacing, case or punctuation. */
+    private static String readingKey(@Nullable String text) {
+        if (text == null) {
+            return "";
+        }
+        StringBuilder out = new StringBuilder(text.length());
+        for (int i = 0; i < text.length(); ) {
+            final int cp = text.codePointAt(i);
+            if (Character.isLetterOrDigit(cp)) {
+                out.appendCodePoint(Character.toLowerCase(cp));
+            }
+            i += Character.charCount(cp);
+        }
+        return out.toString();
     }
 
     /** Whether a slot is written with something a reading can belong to, not just punctuation. */
@@ -1056,6 +1077,11 @@ public final class LyricsSpanBuilder {
     /** The ranges live in {@link ScriptDetector}, so a syllable here is a syllable there too. */
     static boolean isCjkCodePoint(int codePoint) {
         return ScriptDetector.isCjkCodePoint(codePoint);
+    }
+
+    /** A break may fall before or after it, since the script has no word spaces. */
+    static boolean isUnspacedCodePoint(int codePoint) {
+        return ScriptDetector.isUnspacedCodePoint(codePoint);
     }
 
     private static int indexOfIgnoreCase(String haystack, String needle, int fromIndex) {

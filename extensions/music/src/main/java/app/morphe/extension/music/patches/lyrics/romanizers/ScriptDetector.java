@@ -142,6 +142,13 @@ public final class ScriptDetector {
                 Character.UnicodeScript.KATAKANA, Character.UnicodeScript.HANGUL);
     }
 
+    public static boolean containsUnspaced(@Nullable CharSequence text) {
+        return containsCjk(text)
+                || contains(text, Character.UnicodeScript.THAI, Character.UnicodeScript.LAO,
+                Character.UnicodeScript.MYANMAR, Character.UnicodeScript.KHMER,
+                Character.UnicodeScript.TIBETAN);
+    }
+
     public static boolean containsRtl(@Nullable CharSequence text) {
         return contains(text, Character.UnicodeScript.ARABIC, Character.UnicodeScript.HEBREW);
     }

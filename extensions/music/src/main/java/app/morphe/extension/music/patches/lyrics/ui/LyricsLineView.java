@@ -2269,17 +2269,17 @@ final class LyricsLineView extends TextView {
             }
         }
 
-        final boolean atCjkBoundary =
-                (before == ' ' || LyricsSpanBuilder.isCjkCodePoint(before))
-                        && (at == null || at == ' ' || LyricsSpanBuilder.isCjkCodePoint(at) || LyricsSpanBuilder.isCjkCodePoint(before));
+        final boolean atUnspacedBoundary =
+                (before == null || before == ' ' || LyricsSpanBuilder.isUnspacedCodePoint(before))
+                        && (at == null || at == ' ' || LyricsSpanBuilder.isUnspacedCodePoint(at) || LyricsSpanBuilder.isUnspacedCodePoint(before));
 
         int candidate = rawBreakAt;
-        if (!atCjkBoundary) {
+        if (!atUnspacedBoundary) {
             int i = rawBreakAt;
             while (i > lineStartOffset) {
                 final char c = mainText.charAt(i - 1);
                 Character next = i < mainText.length() ? mainText.charAt(i) : null;
-                if (c == ' ' || LyricsSpanBuilder.isCjkCodePoint(c) || (next != null && LyricsSpanBuilder.isCjkCodePoint(next))) {
+                if (c == ' ' || LyricsSpanBuilder.isUnspacedCodePoint(c) || (next != null && LyricsSpanBuilder.isUnspacedCodePoint(next))) {
                     candidate = i;
                     break;
                 }
@@ -2293,10 +2293,11 @@ final class LyricsLineView extends TextView {
         while (candidate > lineStartOffset
                 && candidate < mainText.length()
                 && isProhibitedLineStart(mainText.charAt(candidate))) {
-            do {
+            candidate--;
+            while (candidate > lineStartOffset
+                    && !(mainText.charAt(candidate - 1) == ' ' || LyricsSpanBuilder.isUnspacedCodePoint(mainText.charAt(candidate - 1)))) {
                 candidate--;
-            } while (candidate > lineStartOffset
-                    && !(mainText.charAt(candidate - 1) == ' ' || LyricsSpanBuilder.isCjkCodePoint(mainText.charAt(candidate - 1))));
+            }
         }
 
         return candidate > lineStartOffset ? candidate : null;

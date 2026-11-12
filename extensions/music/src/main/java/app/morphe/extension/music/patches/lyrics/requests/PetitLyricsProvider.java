@@ -440,7 +440,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                                 boolean canMerge = false;
                                 if (!mergedWords.isEmpty()) {
                                     Word prev = mergedWords.get(mergedWords.size() - 1);
-                                    if (!prev.endsWithSpace() && !ScriptDetector.containsCjk(s) && !ScriptDetector.containsCjk(prev.text())) {
+                                    if (!prev.endsWithSpace() && !ScriptDetector.containsUnspaced(s) && !ScriptDetector.containsUnspaced(prev.text())) {
                                         canMerge = true;
                                     }
                                 }

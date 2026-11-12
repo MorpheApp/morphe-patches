@@ -116,6 +116,11 @@ public final class LyricsManager {
     @Nullable
     private volatile String sectionsPendingFingerprint;
 
+    @Nullable
+    private volatile List<String> pendingSections;
+
+    private volatile boolean sectionDetecting;
+
     @NonNull
     private String currentVideoId = "";
 
@@ -2411,6 +2416,67 @@ public final class LyricsManager {
                 });
     }
 
+    public void requestSectionDetection() {
+        if (!Settings.LYRICS_USE_AI_SECTION.get()) {
+            return;
+        }
+        Lyrics lyrics = currentLyrics;
+        TrackInfo track = currentTrack;
+        if (lyrics == null || track == null || !SectionDetector.needsDetection(lyrics)) {
+            return;
+        }
+        if (sectionDetecting) {
+            return;
+        }
+        final String fingerprint = LyricsMatch.fingerprint(lyrics);
+        sectionDetecting = true;
+        notifySectionDetectionStateChanged();
+        SectionDetector.detect(track, lyrics,
+                () -> sectionDetecting, sections -> {
+                    sectionDetecting = false;
+                    Lyrics shown = currentLyrics;
+                    if (shown == null || !fingerprint.equals(LyricsMatch.fingerprint(shown))) {
+                        notifySectionDetectionStateChanged();
+                        return;
+                    }
+                    if (sections != null) {
+                        pendingSections = sections;
+                    }
+                    notifySectionDetectionStateChanged();
+                });
+    }
+
+    private void notifySectionDetectionStateChanged() {
+        for (Listener listener : new ArrayList<>(listeners)) {
+            try {
+                listener.onSectionDetectionStateChanged();
+            } catch (Exception ex) {
+                Logger.printException(() -> "Section detection listener failure", ex);
+            }
+        }
+    }
+
+    public void applyPendingSections() {
+        List<String> sections = pendingSections;
+        if (sections == null) {
+            return;
+        }
+        pendingSections = null;
+        Lyrics shown = currentLyrics;
+        if (shown == null) {
+            return;
+        }
+        setState(State.LOADED, SectionDetector.applySections(shown, sections));
+    }
+
+    public boolean hasPendingSections() {
+        return pendingSections != null;
+    }
+
+    public boolean isSectionDetecting() {
+        return sectionDetecting;
+    }
+
     public boolean areLyricsSynced() {
         Lyrics lyrics = currentLyrics;
         return lyrics != null && lyrics.synced() && !lyrics.isEmpty();
@@ -2444,6 +2510,8 @@ public final class LyricsManager {
 
         /** Called on the main thread whenever the state or the lyrics change. */
         void onLyricsChanged(State state, @Nullable Lyrics lyrics);
+
+        default void onSectionDetectionStateChanged() {}
     }
 
     record ScoredCandidate(int score, int rank, Lyrics lyrics)

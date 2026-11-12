@@ -80,6 +80,7 @@ import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.derive.LyricsTranslator;
 import app.morphe.extension.music.patches.lyrics.derive.ProcessingProviders;
 import app.morphe.extension.music.patches.lyrics.derive.QuickLRCClient;
+import app.morphe.extension.music.patches.lyrics.derive.SectionDetector;
 import app.morphe.extension.music.patches.lyrics.model.CreditInfo;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
@@ -258,6 +259,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     // Held so its label can follow the run rather than freezing at open time.
     @Nullable
     private TextView dialogAlignButton;
+
+    @Nullable
+    private TextView dialogSectionButton;
 
     enum OnlyMode {NONE, TRANS, ROMA, BOTH}
 
@@ -1091,6 +1095,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         } catch (Exception ex) {
             Logger.printException(() -> "onLyricsChanged failure", ex);
         }
+    }
+
+    @Override
+    public void onSectionDetectionStateChanged() {
+        updateSectionButton();
     }
 
     private static boolean sameLinesExceptSongPart(@NonNull Lyrics a, @NonNull Lyrics b) {
@@ -3831,6 +3840,22 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                       ? str("morphe_music_lyrics_transcribe_aligning")
                       : str("morphe_music_lyrics_transcribe_align"));
         }
+        updateSectionButton();
+    }
+
+    private void updateSectionButton() {
+        TextView button = dialogSectionButton;
+        if (button == null) {
+            return;
+        }
+        LyricsManager manager = LyricsManager.getInstance();
+        if (manager.hasPendingSections()) {
+            button.setText(str("morphe_music_lyrics_ai_section_apply"));
+        } else if (manager.isSectionDetecting()) {
+            button.setText(str("morphe_music_lyrics_ai_section_detecting"));
+        } else {
+            button.setText(str("morphe_music_lyrics_use_ai_section_title"));
+        }
     }
 
     /**
@@ -3890,6 +3915,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         artistParams.topMargin = Dim.dp8;
         content.addView(artistInput, artistParams);
 
+        final Dialog[] dialogRef = new Dialog[1];
+
         // Sits with the terms rather than in the button row, which this dialog leaves empty: it
         // reuses the same two fields rather than searching on its own. Read at open time, so the
         // button follows the key on disk rather than whatever was there when the class loaded.
@@ -3912,6 +3939,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             transcribeButton.setOnClickListener(view -> {
                 if (pendingAlignment != null) {
                     applyPendingAlignment();
+                    if (dialogRef[0] != null) dialogRef[0].dismiss();
                     return;
                 }
                 if (QuickLRCClient.isRunning()) {
@@ -3929,6 +3957,34 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     text = null;
                 }
                 startTranscription(text);
+            });
+        }
+
+        // Lets the user detect sections when automatic detection missed them or was off when the track loaded.
+        if (Settings.LYRICS_USE_AI_SECTION.get() && SectionDetector.needsDetection(lyrics)) {
+            TextView sectionButton = new TextView(context);
+            applyButtonStyle(sectionButton, null);
+            LinearLayout.LayoutParams sectionParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+            sectionParams.topMargin = Dim.dp16;
+            content.addView(sectionButton, sectionParams);
+
+            dialogSectionButton = sectionButton;
+            updateSectionButton();
+
+            sectionButton.setOnClickListener(view -> {
+                if (manager.hasPendingSections()) {
+                    manager.applyPendingSections();
+                    if (dialogRef[0] != null) dialogRef[0].dismiss();
+                } else {
+                    Lyrics current = lyrics;
+                    if (current == null || current.isEmpty() || current == Lyrics.NOT_FOUND) {
+                        Utils.showToastShort(str("morphe_music_lyrics_ai_section_no_text"));
+                    } else {
+                        manager.requestSectionDetection();
+                    }
+                }
             });
         }
 
@@ -3959,11 +4015,13 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         );
 
         Dialog dialog = dialogPair.first;
+        dialogRef[0] = dialog;
         LinearLayout mainLayout = dialogPair.second;
         // Dropped first so nothing touches a detached view. Only a run still going is cut: a
         // result already back is kept, since reopening the dialog still offers it.
         dialog.setOnDismissListener(d -> {
             dialogAlignButton = null;
+            dialogSectionButton = null;
             if (transcribeBusy || QuickLRCClient.isRunning()) {
                 cancelTranscription(false);
             }
