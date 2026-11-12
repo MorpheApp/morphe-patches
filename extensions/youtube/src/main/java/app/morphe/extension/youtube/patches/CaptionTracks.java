@@ -214,8 +214,7 @@ public final class CaptionTracks {
 
         Map<String, String> fields = AutoTranslateCaptionsPatch.captionParameters(track.patch_getUrl());
         if (fields == null
-                || fields.get("v") == null
-                || !fields.get("v").matches("[A-Za-z0-9_-]{11}")
+                || !VideoInformation.isVideoId(fields.get("v"))
                 || fields.get("lang") == null
                 || !fields.get("lang").matches("[A-Za-z]{2,8}(-[A-Za-z0-9]{2,8})*")) {
             return null;

@@ -25,6 +25,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 
 /** Reads only the selected collection's identity, never a thumbnail's first video. */
@@ -60,7 +61,7 @@ public final class PlaylistCardSource {
     /** A generated Mix start, rather than a position in an already playing list. */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     static boolean isMixStart(PlaylistQueueRenderer.WatchEndpoint watch) {
-        return PlaylistQueue.isVideoId(watch.getVideoId())
+        return VideoInformation.isVideoId(watch.getVideoId())
                 && watch.getPlaylistId().startsWith(NativePlaylistQueuePatch.MIX_PLAYLIST_ID_PREFIX)
                 && !watch.hasIndex() && watch.getPlaylistSetVideoId().isEmpty();
     }
@@ -209,7 +210,7 @@ public final class PlaylistCardSource {
                     return "";
                 }
                 case "v" -> {
-                    if (!videoId.isEmpty() || pair.length != 2 || !PlaylistQueue.isVideoId(pair[1])) {
+                    if (!videoId.isEmpty() || pair.length != 2 || !VideoInformation.isVideoId(pair[1])) {
                         return "";
                     }
                     videoId = pair[1];

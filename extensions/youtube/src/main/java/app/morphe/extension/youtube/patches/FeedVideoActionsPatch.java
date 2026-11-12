@@ -142,7 +142,6 @@ public final class FeedVideoActionsPatch {
     private static final Pattern BADGE_PATTERN = Pattern.compile("^\\p{Lu}{2,12}$");
     private static final Pattern NOT_LETTERS_PATTERN = Pattern.compile("[^\\p{L}]+");
     private static final Pattern LETTERS_PATTERN = Pattern.compile("\\p{L}{2,}");
-    private static final Pattern VIDEO_ID_PATTERN = Pattern.compile("^[\\w-]{11}$");
 
     /**
      * The videos saved from this device are known right away, so
@@ -988,7 +987,7 @@ public final class FeedVideoActionsPatch {
     private static String findCardVideoId(ComponentHost host) {
         String cardVideoId = FeedVideoCardsPatch.findVideoId(host);
         // The texts of a card that is not fully shown may not be drawn.
-        return cardVideoId != null && VIDEO_ID_PATTERN.matcher(cardVideoId).matches()
+        return VideoInformation.isVideoId(cardVideoId)
                 ? cardVideoId
                 : FeedVideoCardsPatch.findVideoIdByDescription(host, false);
     }

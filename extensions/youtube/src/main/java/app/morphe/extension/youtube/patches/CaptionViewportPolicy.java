@@ -23,12 +23,12 @@ final class CaptionViewportPolicy {
     private String selected;
 
     synchronized void select(String videoId) {
-        selected = videoId != null && videoId.matches("[A-Za-z0-9_-]{11}") ? videoId : null;
+        selected = VideoInformation.isVideoId(videoId) ? videoId : null;
     }
 
     synchronized void record(String videoId, int width, int height) {
         if (videoId == null
-                || !videoId.matches("[A-Za-z0-9_-]{11}")
+                || !VideoInformation.isVideoId(videoId)
                 || width <= 0
                 || height <= 0
                 || width > 16384

@@ -447,6 +447,9 @@ class QueueRuntimeBoundaryTest {
                     public static String getVideoTitle() { return "Current video"; }
                     public static String getChannelName() { return "Channel"; }
                     public static long getVideoTime() { return time; }
+                    public static boolean isVideoId(String text) {
+                        return text != null && text.matches("[A-Za-z0-9_-]{11}");
+                    }
                 }
             """,
             "LoadVideoPatch" to """

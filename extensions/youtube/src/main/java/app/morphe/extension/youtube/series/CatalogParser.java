@@ -19,6 +19,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import app.morphe.extension.youtube.patches.VideoInformation;
+
 /** Explicit playlist containers only: recommendations and other shelves are never traversed. */
 public final class CatalogParser {
     public static final class Page {
@@ -149,7 +151,7 @@ public final class CatalogParser {
             JSONObject video = item.optJSONObject("playlistVideoRenderer");
             if (video != null) {
                 String id = video.optString("videoId");
-                if (!id.matches("[A-Za-z0-9_-]{11}")) id = "";
+                if (!VideoInformation.isVideoId(id)) id = "";
                 String title = text(video.optJSONObject("title"));
                 // Keep absent titles empty; the UI selects a fallback in the current locale.
                 long duration = video.optLong("lengthSeconds") * 1000;

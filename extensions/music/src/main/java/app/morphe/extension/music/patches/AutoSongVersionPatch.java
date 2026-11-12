@@ -15,7 +15,7 @@ import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.SON
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.VIDEO_TYPE;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.await;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.capturedQueue;
-import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.isVideoId;
+import static app.morphe.extension.music.shared.VideoInformation.isVideoId;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.musicVideoType;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.normalize;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.notifyQueueChanged;

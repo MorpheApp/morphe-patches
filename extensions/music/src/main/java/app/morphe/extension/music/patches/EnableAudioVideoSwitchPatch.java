@@ -181,13 +181,13 @@ public final class EnableAudioVideoSwitchPatch {
             try {
                 QueueAccess access = queue.get();
                 String currentId = currentQueueVideoId(access);
-                if (!isVideoId(currentId)) {
+                if (!VideoInformation.isVideoId(currentId)) {
                     Logger.printDebug(() -> "audio/video switch: no current video");
                     return;
                 }
                 String known = switchedVersions.get(currentId);
                 String targetId = known != null ? known : resolveCounterpart(currentId);
-                if (targetId == null || !isVideoId(targetId) || targetId.equals(currentId)) {
+                if (!VideoInformation.isVideoId(targetId) || targetId.equals(currentId)) {
                     Logger.printDebug(
                             () -> "audio/video switch: no counterpart for " + currentId);
                     return;
@@ -529,7 +529,7 @@ public final class EnableAudioVideoSwitchPatch {
 
     private static void addEndpoint(JSONObject endpoint, String nearestTitle, Map<String, Item> out) {
         String videoId = endpoint.optString("videoId", "");
-        if (!isVideoId(videoId)) return;
+        if (!VideoInformation.isVideoId(videoId)) return;
         String type = musicVideoType(endpoint);
 
         Item existing = out.get(videoId);
@@ -618,22 +618,5 @@ public final class EnableAudioVideoSwitchPatch {
             return Requester.parseJSONObject(connection);
         }
         return new JSONObject(Requester.parseErrorString(connection));
-    }
-
-    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
-    static boolean isVideoId(String value) {
-        final int length = value.length();
-        if (length != 11) {
-            return false;
-        }
-        for (int i = 0; i < length; i++) {
-            char c = value.charAt(i);
-            boolean valid = (c >= 'a' && c <= 'z')
-                    || (c >= 'A' && c <= 'Z')
-                    || (c >= '0' && c <= '9')
-                    || c == '_' || c == '-';
-            if (!valid) return false;
-        }
-        return true;
     }
 }
