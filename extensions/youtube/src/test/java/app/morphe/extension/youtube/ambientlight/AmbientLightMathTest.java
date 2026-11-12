@@ -240,7 +240,7 @@ public class AmbientLightMathTest {
         float[] light = {0.25f, 4f, 0f};
         float[] encoded = new float[3];
         float[] presented = {0.5f, 0.75f, 0f};
-        float change = AmbientLightMath.encodeVisible(light, encoded, presented, 1, 1, new float[]{5f, 5f, 6f, 6f});
+        float change = AmbientLightMath.encode(light, encoded, presented, 1, 1, new float[]{5f, 5f, 6f, 6f});
 
         assertEquals(0.5f, encoded[0], 0f);
         assertEquals(1f, encoded[1], 0f);
@@ -255,10 +255,21 @@ public class AmbientLightMathTest {
         Arrays.fill(presented, 1f);
         // Only the middle cell is hidden behind this picture.
         presented[(5 * 10 + 5) * 3] = 0f;
-        float change = AmbientLightMath.encodeVisible(light, new float[light.length], presented, 10, 10,
+        float change = AmbientLightMath.encode(light, new float[light.length], presented, 10, 10,
                 new float[]{2f, 2f, 8f, 8f});
 
         assertEquals(0f, change, 0f);
+    }
+
+    @Test
+    public void hiddenCellsAreEncodedToo() {
+        float[] light = new float[3 * 10 * 10];
+        Arrays.fill(light, 0.25f);
+        float[] encoded = new float[light.length];
+        AmbientLightMath.encode(light, encoded, new float[light.length], 10, 10, new float[]{2f, 2f, 8f, 8f});
+
+        // The middle cell is behind the picture, and comes into view when the picture moves.
+        assertEquals(0.5f, encoded[(5 * 10 + 5) * 3], 0f);
     }
 
     /** A picture with dark and bright parts, where every channel is different. */
