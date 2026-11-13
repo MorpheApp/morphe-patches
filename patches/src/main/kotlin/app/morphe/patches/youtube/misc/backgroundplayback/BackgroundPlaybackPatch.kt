@@ -147,13 +147,7 @@ val backgroundPlaybackPatch = patch(
             // of the account so the video resumes when the app returns to the foreground
             // (https://github.com/MorpheApp/morphe-patches/issues/4639).
             // The extension reads the setting with a method added to the setting class.
-            backgroundPlaybackSettingConstructorFingerprint(
-                settingClassType = BackgroundPlaybackSettingFingerprint.originalClassDef.type,
-                settingStoreType = BackgroundPlaybackSettingFingerprint.instructionMatches.first()
-                    .methodReference.definingClass,
-                audioManagerType = BackgroundPlaybackSettingAllowedFingerprint.originalMethod
-                    .parameterTypes[1].toString()
-            ).let {
+            BackgroundPlaybackSettingConstructorFingerprint.let {
                 // After the super constructor call, before the register of 'this' can be reused.
                 it.method.addInstruction(
                     it.instructionMatches.first().index + 1,

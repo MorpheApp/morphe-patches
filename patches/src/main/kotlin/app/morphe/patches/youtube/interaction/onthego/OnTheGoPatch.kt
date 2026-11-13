@@ -55,18 +55,16 @@ internal val onTheGoStateHookPatch = patch {
             return@execute
         }
 
-        val stateClass = OnTheGoSkipToNextActionConstructorFingerprint.method.parameterTypes.first().toString()
-
-        getOnTheGoStateConstructorFingerprint(stateClass).let {
+        OnTheGoStateConstructorFingerprint.let {
             it.method.addInstruction(
                 it.instructionMatches.first().index + 1,
                 "invoke-static { p0 }, $EXTENSION_CLASS->setOnTheGoState($EXTENSION_STATE_INTERFACE)V"
             )
         }
 
-        val stateGetter = getOnTheGoStateGetterFingerprint(stateClass).method
+        val stateGetter = OnTheGoStateGetterFingerprint.method
 
-        getOnTheGoStateSetterFingerprint(stateClass).let {
+        OnTheGoStateSetterFingerprint.let {
             it.classDef.apply {
                 addPatchInterfaceMethod(
                     EXTENSION_STATE_INTERFACE,

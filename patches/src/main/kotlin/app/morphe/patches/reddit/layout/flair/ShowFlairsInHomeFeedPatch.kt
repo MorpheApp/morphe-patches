@@ -72,10 +72,7 @@ val showFlairsInHomeFeedPatch = patch(
         val titleSectionType = FeedPostTitleSectionToStringFingerprint.classDef.type
 
         val (presentationModelConstructor, persistentListOfMethod, flairsElementConstructor) =
-            postFlairsElementMapperFingerprint(
-                presentationModelType,
-                flairsElementType
-            ).instructionMatches.let { matches ->
+            PostFlairsElementMapperFingerprint.instructionMatches.let { matches ->
                 listOf(matches[0], matches[1], matches[3]).map {
                     it.getInstruction<ReferenceInstruction>().reference
                 }
@@ -115,13 +112,12 @@ val showFlairsInHomeFeedPatch = patch(
         // Add flairs to post preview elements.
         //
 
-        val postPreviewType = PostPreviewFeedElementToStringFingerprint.classDef.type
         val (previewLinkIdField, previewUniqueIdField, previewIdentifierField, previewChildrenField) =
             PostPreviewFeedElementConstructorFingerprint.instructionMatches.let { matches ->
                 listOf(matches[0], matches[1], matches[3], matches[6]).map { it.fieldReference }
             }
 
-        val previewCopyFingerprint = postPreviewFeedElementCopyFingerprint(postPreviewType, flairsElementType)
+        val previewCopyFingerprint = PostPreviewFeedElementCopyFingerprint
         val previewCopyMethod = previewCopyFingerprint.method
         val previewFlairsField = previewCopyFingerprint.instructionMatches.last().fieldReference
         // Copy method bit mask where all values except the flairs element are copied from the original.

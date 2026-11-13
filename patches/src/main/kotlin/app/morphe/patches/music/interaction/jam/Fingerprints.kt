@@ -67,14 +67,14 @@ internal object MediaSessionStateFingerprint : Fingerprint(
  * The now-playing presenter writes a bitmap into YouTube Music's stable artwork view. The field
  * access ties the call to the presenter itself rather than a reusable image helper.
  */
-internal fun nowPlayingArtworkFingerprint(imageType: String) = Fingerprint(
+internal object NowPlayingArtworkFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/graphics/Bitmap;"),
     filters = listOf(
-        fieldAccess(definingClass = "this", type = imageType, opcode = Opcode.IGET_OBJECT),
+        fieldAccess(definingClass = "this", type = { ArtworkCropFingerprint.originalClassDef.type }, opcode = Opcode.IGET_OBJECT),
         methodCall(
             opcodes = listOf(Opcode.INVOKE_VIRTUAL, Opcode.INVOKE_VIRTUAL_RANGE),
-            definingClass = imageType,
+            definingClass = { ArtworkCropFingerprint.originalClassDef.type },
             name = "setImageBitmap",
             parameters = listOf("Landroid/graphics/Bitmap;"),
             returnType = "V"

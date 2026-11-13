@@ -68,7 +68,7 @@ internal fun installPlaylistPaging() {
         )
     }
 
-    val scroll = playlistNativeScrollFingerprint(listType).match()
+    val scroll = PlaylistNativeScrollFingerprint.match()
     val read = scroll.instructionMatches.last()
     val receiver = read.getInstruction<TwoRegisterInstruction>().registerA
     scroll.method.addInstruction(

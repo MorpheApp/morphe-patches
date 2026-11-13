@@ -61,9 +61,8 @@ val rememberVideoQualityPatch = patch(
             )
         )
 
-        val videoQualityType = VideoQualityFingerprint.classDef.type
-        val itemOnClickFingerprint = getVideoQualityItemOnClickFingerprint(videoQualityType)
-        val setQualitiesFingerprint = getVideoQualityMenuSetQualitiesFingerprint(videoQualityType)
+        val itemOnClickFingerprint = VideoQualityItemOnClickFingerprint
+        val setQualitiesFingerprint = VideoQualityMenuSetQualitiesFingerprint
 
         // Add an interface to the quality, to get its resolution in the extension.
         val resolutionField = itemOnClickFingerprint.instructionMatches[0].fieldReference

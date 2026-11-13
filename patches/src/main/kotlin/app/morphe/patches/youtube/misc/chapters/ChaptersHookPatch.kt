@@ -28,9 +28,7 @@ val chaptersHookPatch = patch {
     execute {
         hookVideoId("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")
 
-        getTimelineMarkersArrayFingerprint(
-            TimelineMarkerFingerprint.classDef.type
-        ).let {
+        TimelineMarkersArrayFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA

@@ -20,9 +20,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 /** Publish queue capabilities before native notification actions and playback state are built. */
 internal fun installPlaylistNotificationControls(ownerType: String) {
-    val modelType = NotificationSkipActionsFingerprint
-        .instructionMatches.first().fieldReference.type
-    val setter = notificationCapabilitiesSetterFingerprint(modelType).originalMethod
+    val setter = NotificationCapabilitiesSetterFingerprint.originalMethod
 
     // The original adapter returns V. The newer adapter returns its change flags.
     val adapters = notificationCapabilitiesFingerprint(setter).matchAll()

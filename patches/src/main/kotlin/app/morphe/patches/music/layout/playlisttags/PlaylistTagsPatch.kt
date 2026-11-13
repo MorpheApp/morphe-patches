@@ -86,8 +86,7 @@ val playlistTagsPatch = patch(
 
         // region Library: forget the tags of deleted playlists.
 
-        val deleteEventType = HandleDeletePlaylistEventFingerprint.method.parameterTypes.first().toString()
-        deletePlaylistEventConstructorFingerprint(deleteEventType).method.addInstruction(
+        DeletePlaylistEventConstructorFingerprint.method.addInstruction(
             0,
             "invoke-static { p2 }, $EXTENSION_CLASS->onPlaylistRemoved(Ljava/lang/String;)V"
         )
@@ -201,7 +200,7 @@ private fun hookLibraryListPresenter() {
     val itemsMethod = GridRendererItemsFingerprint.method
     itemsMethod.filterReturnedItems(FILTER_LIBRARY_ITEMS)
 
-    val bindFingerprint = libraryListBindFingerprint(GridRendererItemsFingerprint.originalMethod)
+    val bindFingerprint = LibraryListBindFingerprint
     val bindMethod = bindFingerprint.method
     val rendererField = bindFingerprint.instructionMatches.first().fieldReference
     val itemsField = bindFingerprint.instructionMatches.last().fieldReference

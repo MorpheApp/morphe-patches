@@ -13,11 +13,10 @@ import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.p0Register
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.youtube.layout.shortsautoplay.ReelEnumConstructorFingerprint
 import app.morphe.patches.youtube.layout.shortsautoplay.ReelPlaybackFingerprint
 import app.morphe.patches.youtube.layout.shortsautoplay.ReelPlaybackLegacyFingerprint
 import app.morphe.patches.youtube.layout.shortsautoplay.getInstanceFieldGetFingerprint
-import app.morphe.patches.youtube.layout.shortsautoplay.reelPlaybackRepeatFingerprint
+import app.morphe.patches.youtube.layout.shortsautoplay.ReelPlaybackRepeatFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_24_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_42_or_greater
@@ -94,7 +93,7 @@ val skipLiveShortsPatch = patch(
         }
 
         // Hand the Shorts player to extension code.
-        val reelPlaybackRepeat = reelPlaybackRepeatFingerprint(ReelEnumConstructorFingerprint.originalClassDef.type)
+        val reelPlaybackRepeat = ReelPlaybackRepeatFingerprint
         val reelPlayerField = getInstanceFieldGetFingerprint(reelPlaybackFingerprint.classDef.type)
             .match(reelPlaybackRepeat.originalMethod)
             .instructionMatches.first().fieldReference

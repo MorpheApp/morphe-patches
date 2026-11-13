@@ -15,7 +15,7 @@ private const val CARD_SOURCE = "$EXTENSION_PACKAGE/PlaylistCardSource"
 
 /** Read the mounted card's native tap command without invoking or replacing its listener. */
 internal fun installPlaylistCardSource() {
-    val nodeType = playlistNodeStoreFingerprint().instructionMatches.single().fieldReference.type
+    val nodeType = PlaylistNodeStoreFingerprint.instructionMatches.single().fieldReference.type
     val click = PlaylistClickListenerFingerprint.originalMethod
     val handler = playlistClickFieldFingerprint(click.definingClass, Opcode.IGET_OBJECT)
         .instructionMatches.single().fieldReference

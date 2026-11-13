@@ -12,6 +12,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patches.youtube.video.information.VideoQualityFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -19,15 +20,15 @@ import com.android.tools.smali.dexlib2.Opcode
  * Sets the qualities of the quality menu and the index of the quality playing.
  * Called when the format of the video stream changes, with the 'Auto' quality first.
  */
-internal fun getVideoQualityMenuSetQualitiesFingerprint(videoQualityType: String) = Fingerprint(
+internal object VideoQualityMenuSetQualitiesFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("[$videoQualityType", "I", "Z"),
+    parameters = { listOf("[${VideoQualityFingerprint.originalClassDef.type}", "I", "Z") },
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
             definingClass = "this",
-            type = "[$videoQualityType",
+            type = { "[${VideoQualityFingerprint.originalClassDef.type}" },
             location = MatchFirst()
         ),
         fieldAccess(
@@ -49,7 +50,7 @@ internal fun getVideoQualityMenuSetQualitiesFingerprint(videoQualityType: String
  * The item click listener of the quality menu,
  * which sets the resolution of the selected quality with the listener of the menu.
  */
-internal fun getVideoQualityItemOnClickFingerprint(videoQualityType: String) = Fingerprint(
+internal object VideoQualityItemOnClickFingerprint : Fingerprint(
     name = "onItemClick",
     returnType = "V",
     parameters = listOf(
@@ -61,7 +62,7 @@ internal fun getVideoQualityItemOnClickFingerprint(videoQualityType: String) = F
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET,
-            definingClass = videoQualityType,
+            definingClass = { VideoQualityFingerprint.originalClassDef.type },
             type = "I"
         ),
         methodCall(

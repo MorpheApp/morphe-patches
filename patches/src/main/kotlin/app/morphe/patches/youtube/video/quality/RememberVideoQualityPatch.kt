@@ -42,7 +42,6 @@ import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_INTERFACE
 import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_MENU_INTERFACE
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
-import app.morphe.patches.youtube.video.information.SetVideoQualityFingerprint
 import app.morphe.patches.youtube.video.information.VideoQualityFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -406,9 +405,7 @@ val rememberVideoQualityPatch = patch {
         // The Shorts quality menu sets the selected quality by its resolution, which YouTube can get
         // wrong, such as 720 for the 480p quality of some Shorts, so another quality is played.
         // The quality selected is set instead, as the quality menu of regular videos does.
-        val setResolutionMethod = getSetVideoQualityResolutionFingerprint(
-            SetVideoQualityFingerprint.instructionMatches[1].fieldReference.type
-        ).matchSingle().method
+        val setResolutionMethod = SetVideoQualityResolutionFingerprint.matchSingle().method
 
         getVideoQualityItemSetResolutionFingerprint(setResolutionMethod).matchAll().forEach {
             it.method.apply {

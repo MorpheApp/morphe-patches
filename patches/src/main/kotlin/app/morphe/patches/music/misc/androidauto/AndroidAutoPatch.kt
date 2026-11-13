@@ -220,9 +220,7 @@ private fun addLibraryPaginationRequestMethod(
     phoneBrowseRequestType: String,
     sendPhoneBrowseRequestMethod: MethodReference,
 ) {
-    val getGridPaginationCommandsMethod = gridPaginationCommandsFingerprint(
-        GridRendererItemsFingerprint.originalMethod,
-    ).originalMethod
+    val getGridPaginationCommandsMethod = GridPaginationCommandsFingerprint.originalMethod
 
     // The pagination request accepts the command type created by getGridPaginationCommandsMethod.
     val paginationReaderReturnTypes =
@@ -433,7 +431,7 @@ private fun addPhoneBrowseTabInterface() {
 /** Exposes Library item renderers and pagination commands from YTM's GridRenderer container. */
 private fun addGridRendererInterface() {
     val getItemsMethod = GridRendererItemsFingerprint.originalMethod
-    val getPaginationCommandsMethod = gridPaginationCommandsFingerprint(getItemsMethod).originalMethod
+    val getPaginationCommandsMethod = GridPaginationCommandsFingerprint.originalMethod
     // The getters below call these private methods from the GridRenderer class.
     listOf(getItemsMethod, getPaginationCommandsMethod).forEach { method ->
         mutableClassDefBy(method.definingClass).findMutableMethodOf(method).apply {

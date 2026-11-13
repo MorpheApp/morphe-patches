@@ -15,7 +15,7 @@ import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.getPlayerTypeFingerprint
+import app.morphe.patches.youtube.shared.PlayerTypeFingerprint
 
 private const val EXTENSION_CLASS_FORCE_LANDSCAPE =
     "Lapp/morphe/extension/youtube/patches/ForceFullscreenLandscapePatch;"
@@ -38,7 +38,7 @@ val forceFullscreenLandscapePatch = patch(
             SwitchPreference("morphe_force_fullscreen_landscape", summary = true)
         )
 
-        getPlayerTypeFingerprint().method.addInstruction(
+        PlayerTypeFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS_FORCE_LANDSCAPE->" +
                     "onPlayerTypeChanged(Ljava/lang/Enum;)V"

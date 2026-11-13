@@ -90,8 +90,7 @@ internal fun installQueueSaveFeedback(endpointType: String) {
 
 /** Use the native builder and scheduler for owned Save and queue-clear confirmations. */
 internal fun installQueueSaveConfirmationDuration() {
-    val builderType = QueueSnackbarModernFactoryFingerprint.originalMethod.returnType
-    val durationSetter = queueSnackbarDurationFingerprint(builderType).match()
+    val durationSetter = QueueSnackbarDurationFingerprint.match()
         .instructionMatches[4].methodReference
 
     // Keep the input renderer even when the native factory reuses its parameters.

@@ -243,7 +243,7 @@ internal val preferredCaptionLanguagePatch = patch(
         // so the subtitle manager instance is available.
         val trackType = DefaultCaptionTrackFingerprint.method.returnType
 
-        preferredCaptionsTrackFingerprint().let {
+        PreferredCaptionsTrackFingerprint.let {
             val subtitleManagerRegister = it.instructionMatches[0]
                 .getInstruction<FiveRegisterInstruction>().registerC
             val moveResultIndex = it.instructionMatches[1].index

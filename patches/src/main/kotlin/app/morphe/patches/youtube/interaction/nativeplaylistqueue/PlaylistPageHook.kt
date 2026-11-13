@@ -41,7 +41,7 @@ internal fun installPlaylistPages() {
     val paramsSetter = NativeRequestStringSetterFingerprint(requestType, params.name).originalMethod
     val tracking = NativeBaseRequestDescriptionFingerprint.instructionMatches[1]
         .fieldReference
-    val factory = playlistPageFactoryFingerprint(requestType).originalMethod
+    val factory = PlaylistPageFactoryFingerprint.originalMethod
     val entryId = playlistPagePreparationFingerprint(requestType, factory, paramsSetter)
         .instructionMatches[3].fieldReference
     check(entryId != playlist) { "Native playlist entry ID must be distinct from playlist ID" }

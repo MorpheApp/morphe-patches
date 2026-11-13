@@ -332,8 +332,7 @@ private fun resolveNowPlaying(
 }
 
 private fun resolveArtwork(): ArtworkAbi {
-    val imageType = ArtworkCropFingerprint.originalClassDef.type
-    val match = nowPlayingArtworkFingerprint(imageType).match()
+    val match = NowPlayingArtworkFingerprint.match()
     val image = match.instructionMatches[0].fieldReference
     return ArtworkAbi(match.originalClassDef.type, match.originalMethod, image)
 }

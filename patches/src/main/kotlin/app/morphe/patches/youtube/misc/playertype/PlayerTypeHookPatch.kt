@@ -9,7 +9,7 @@ import app.morphe.patcher.patch.patch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.shared.getPlayerTypeFingerprint
+import app.morphe.patches.youtube.shared.PlayerTypeFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -22,7 +22,7 @@ val playerTypeHookPatch = patch(
     dependsOn(sharedExtensionPatch)
 
     execute {
-        getPlayerTypeFingerprint().method.addInstruction(
+        PlayerTypeFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->setPlayerType(Ljava/lang/Enum;)V",
         )

@@ -21,7 +21,6 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object CheckCertificateFingerprint : Fingerprint(
@@ -301,17 +300,17 @@ internal object GridRendererItemsFingerprint : Fingerprint(
 )
 
 /** Returns the commands YTM uses to request more Library items or refresh the Library. */
-internal fun gridPaginationCommandsFingerprint(getGridItemsMethod: Method) = Fingerprint(
-    definingClass = getGridItemsMethod.definingClass,
+internal object GridPaginationCommandsFingerprint : Fingerprint(
+    definingClass = { GridRendererItemsFingerprint.originalMethod.definingClass },
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
-    returnType = "Ljava/util/List;",
-    parameters = getGridItemsMethod.parameterTypes.map(CharSequence::toString),
+    returnType = { "Ljava/util/List;" },
+    parameters = { GridRendererItemsFingerprint.originalMethod.parameterTypes },
     filters = listOf(
         // These flags indicate whether pagination (NEXT) or refresh (RELOAD) commands are present.
         literal(NEXT_COMMAND_PRESENT_FLAG),
         literal(RELOAD_COMMAND_PRESENT_FLAG)
     ),
-    custom = { method, _ -> method != getGridItemsMethod }
+    custom = { method, _ -> method != GridRendererItemsFingerprint.originalMethod }
 )
 
 /** Extracts the Library grid returned by pagination, directly from the response or from its first section. */

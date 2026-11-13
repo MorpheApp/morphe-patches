@@ -32,8 +32,8 @@ import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.shared.misc.videoinformation.PlaybackParametersToStringFingerprint
 import app.morphe.patches.shared.misc.videoinformation.PlayerControllerSetTimeReferenceFingerprint
-import app.morphe.patches.shared.misc.videoinformation.getExoPlayerImplFingerprint
-import app.morphe.patches.shared.misc.videoinformation.getPlaybackParametersSetterFingerprint
+import app.morphe.patches.shared.misc.videoinformation.ExoPlayerImplConstructorFingerprint
+import app.morphe.patches.shared.misc.videoinformation.PlaybackParametersSetterFingerprint
 import app.morphe.patches.shared.misc.videoinformation.seekSourceUnknownField
 import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -197,9 +197,7 @@ val videoInformationPatch = patch(
         }
 
         playerStatusMethodRef = WeakReference(
-            getPlayerStatusFingerprint(
-                PlayerStatusEnumFingerprint.originalClassDef.type
-            ).method
+            PlayerStatusFingerprint.method
         )
 
         // region Inject call for video IDs.
@@ -574,8 +572,7 @@ internal fun addExoPlayerHooks(extensionClass: String) {
         playbackParametersPitchField = it.last().fieldReference
     }
 
-    val setPlaybackParametersFingerprint = getPlaybackParametersSetterFingerprint(playbackParametersType)
-    val setPlaybackParametersMethod = setPlaybackParametersFingerprint.method
+    val setPlaybackParametersMethod = PlaybackParametersSetterFingerprint.method
 
     // A reference to the setPlaybackParameters implementation, to call from the helper method.
     val setPlaybackParametersReference = "${setPlaybackParametersMethod.definingClass}->" +
@@ -599,7 +596,7 @@ internal fun addExoPlayerHooks(extensionClass: String) {
 
     // Capture each ExoPlayerImpl instance at its constructor.
     // More than one instance can be active at the same time, such as when crossfading.
-    getExoPlayerImplFingerprint(playbackParametersType).matchAll().forEach {
+    ExoPlayerImplConstructorFingerprint.matchAll().forEach {
         val firstInstructionMatch = it.instructionMatches.first()
         val register = firstInstructionMatch.getInstruction<FiveRegisterInstruction>().registerC
         it.method.addInstruction(
@@ -609,7 +606,7 @@ internal fun addExoPlayerHooks(extensionClass: String) {
         )
     }
 
-    setPlaybackParametersFingerprint.classDef.apply {
+    PlaybackParametersSetterFingerprint.classDef.apply {
         // Add interface and helper method to allow extension code
         // to directly set the ExoPlayer playback parameters.
 

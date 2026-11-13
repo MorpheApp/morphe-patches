@@ -566,7 +566,7 @@ internal fun sharedLithoFilterPatch(
             ListSaveScrollPositionFingerprint.let {
                 val observerType = it.instructionMatches[0].fieldReference.type
 
-                val notifyItemsRemoved = observableListRemoveFingerprint(ObservableListConstructorFingerprint.classDef.type)
+                val notifyItemsRemoved = ObservableListRemoveFingerprint
                     .matchSingle().instructionMatches.first().methodReference.let { notify ->
                         if (notify.parameterTypes.size == 2) {
                             notify
