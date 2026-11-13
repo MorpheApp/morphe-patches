@@ -112,7 +112,7 @@ public class CustomDialog {
     public static EditText createEditText(Context context) {
         EditText editText = new EditText(context);
         editText.setTextSize(16);
-        editText.setTextColor(ThemeUtils.getAppForegroundColor());
+        editText.setTextColor(ThemeUtils.getDialogTextColor());
 
         ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
                 Dim.roundedCorners(10), null, null));
@@ -187,7 +187,7 @@ public class CustomDialog {
         titleView.setText(title);
         titleView.setTypeface(Typeface.DEFAULT_BOLD);
         titleView.setTextSize(18);
-        titleView.setTextColor(ThemeUtils.getAppForegroundColor());
+        titleView.setTextColor(ThemeUtils.getDialogTitleColor());
         titleView.setGravity(Gravity.CENTER);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -228,7 +228,7 @@ public class CustomDialog {
             ViewGroup parent = (ViewGroup) editText.getParent();
             if (parent != null) parent.removeView(editText);
             // Style the EditText to match the dialog theme.
-            editText.setTextColor(ThemeUtils.getAppForegroundColor());
+            editText.setTextColor(ThemeUtils.getDialogTextColor());
             editText.setBackgroundColor(Color.TRANSPARENT);
             editText.setPadding(0, 0, 0, 0);
             contentContainer.addView(editText, new LinearLayout.LayoutParams(
@@ -240,7 +240,7 @@ public class CustomDialog {
             // Supports Spanned (HTML).
             messageView.setText(message);
             messageView.setTextSize(16);
-            messageView.setTextColor(ThemeUtils.getAppForegroundColor());
+            messageView.setTextColor(ThemeUtils.getDialogTextColor());
             // Enable HTML link clicking if the message contains links.
             if (message instanceof Spanned) {
                 messageView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -347,9 +347,9 @@ public class CustomDialog {
                 ? ThemeUtils.getOkButtonBackgroundColor()
                 : ThemeUtils.getCancelOrNeutralButtonBackgroundColor()));
 
-        button.setTextColor(Utils.isDarkModeEnabled()
-                ? (isOkButton ? Color.BLACK : Color.WHITE)
-                : (isOkButton ? Color.WHITE : Color.BLACK));
+        button.setTextColor(isOkButton
+                ? ThemeUtils.getOkButtonTextColor()
+                : ThemeUtils.getCancelOrNeutralButtonTextColor());
 
         ViewAnimations.applyPressEffect(button);
 
@@ -572,7 +572,7 @@ public class CustomDialog {
         searchBar.setTextSize(16);
         searchBar.setHint(hint);
         searchBar.setSingleLine(true);
-        searchBar.setTextColor(ThemeUtils.getAppForegroundColor());
+        searchBar.setTextColor(ThemeUtils.getDialogTextColor());
         searchBar.setHapticFeedbackEnabled(false);
         searchBar.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
         searchBar.setCompoundDrawablePadding(Dim.dp8);
@@ -586,13 +586,13 @@ public class CustomDialog {
         Drawable searchIcon = context.getDrawable(searchIconResId);
         if (searchIcon != null) {
             searchIcon.setBounds(0, 0, Dim.dp20, Dim.dp20);
-            searchIcon.setTint(ThemeUtils.getAppForegroundColor());
+            searchIcon.setTint(ThemeUtils.getDialogTextColor());
         }
 
         Drawable clearIcon = context.getDrawable(clearIconResId);
         if (clearIcon != null) {
             clearIcon.setBounds(0, 0, Dim.dp20, Dim.dp20);
-            clearIcon.setTint(ThemeUtils.getAppForegroundColor());
+            clearIcon.setTint(ThemeUtils.getDialogTextColor());
         }
 
         searchBar.setCompoundDrawables(searchIcon, null, null, null);

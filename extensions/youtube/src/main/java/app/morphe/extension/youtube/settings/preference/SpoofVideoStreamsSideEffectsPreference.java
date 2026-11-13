@@ -104,9 +104,8 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
                             + '\n' + str("morphe_spoof_video_streams_about_sign_in_to_vr_required");
             case VISIONOS_1_02, VISIONOS_1_03, VISIONOS_1_06 ->
                     summary = str("morphe_spoof_video_streams_about_failure")
-                            + '\n' + str("morphe_spoof_video_streams_about_end_early")
-                            + '\n' + str("morphe_spoof_video_streams_about_no_stable_volume");
-            case TV_SABR, TV_SABR_WII_U, TV_DASH, TV_SIMPLY -> {
+                            + '\n' + str("morphe_spoof_video_streams_about_end_early");
+            case TV_SABR, TV_SABR_WII_U, TV_DASH, TV_SIMPLY, MWEB -> {
                 summary = str("morphe_spoof_video_streams_about_js");
                 switch (WebViewCheck.getStatus()) {
                     case MISSING -> summary += '\n' + str("morphe_spoof_video_streams_about_webview_missing");

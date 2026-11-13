@@ -83,6 +83,11 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         tag = "app.morphe.extension.youtube.settings.preference.SpoofVideoStreamsSignInPreference",
                         selectable = true,
                     ),
+                    NonInteractivePreference(
+                        key = "morphe_spoof_video_streams_sign_in_mweb_about",
+                        tag = "app.morphe.extension.youtube.settings.preference.SpoofVideoStreamsMwebSignInPreference",
+                        selectable = true,
+                    ),
                     SwitchPreference("morphe_spoof_video_streams_av1", summary = true),
                     ListPreference("morphe_spoof_video_streams_player_js_variant"),
                     SwitchPreference("morphe_spoof_video_streams_stats_for_nerds"),

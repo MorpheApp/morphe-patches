@@ -12,7 +12,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.preference.SwitchPreference;
 import android.util.AttributeSet;
 import android.view.WindowManager;
 
@@ -25,9 +24,10 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.StringSetting;
+import app.morphe.extension.shared.settings.preference.BooleanSettingPreference;
 
 @SuppressWarnings({"unused", "deprecation"})
-public class LyricsAiPromptPreference extends SwitchPreference {
+public class LyricsAiPromptPreference extends BooleanSettingPreference {
 
     private boolean dialogShowing = false;
     private boolean settingFromCode = false;
