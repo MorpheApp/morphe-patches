@@ -402,6 +402,52 @@ public class BaseInAppDownloadsPatch {
         return unlocked;
     }
 
+    /**
+     * @return The formats with the default types added that the server omitted, sorted highest first,
+     * or null if the server already lists every default type.
+     */
+    @Nullable
+    protected static List<OfflineFormat> mergeMissingFormatTypes(List<OfflineFormat> formats) {
+        boolean hasMissingType = false;
+        for (OfflineFormatType type : DEFAULT_FORMAT_TYPES) {
+            if (indexOfFormatType(formats, type) < 0) {
+                hasMissingType = true;
+                break;
+            }
+        }
+        if (!hasMissingType) {
+            return null;
+        }
+
+        List<OfflineFormat> merged = new ArrayList<>(formats.size() + DEFAULT_FORMAT_TYPES.length);
+        List<OfflineFormat> remaining = new ArrayList<>(formats);
+        for (int i = 0; i < DEFAULT_FORMAT_TYPES.length; i++) {
+            OfflineFormatType type = DEFAULT_FORMAT_TYPES[i];
+            int index = indexOfFormatType(remaining, type);
+            if (index >= 0) {
+                merged.add(remaining.remove(index));
+            } else {
+                merged.add(OfflineFormat.newBuilder()
+                        .setName(OfflineFormatLabel.newBuilder().setSimpleText(DEFAULT_FORMAT_LABELS[i]))
+                        .setFormatType(type)
+                        .setAvailability(OfflineFormatAvailability.OFFLINE_FORMAT_AVAILABILITY_FREE)
+                        .build());
+            }
+        }
+        // Types the server gives that are not part of the default ladder, such as audio only.
+        merged.addAll(remaining);
+        return merged;
+    }
+
+    private static int indexOfFormatType(List<OfflineFormat> formats, OfflineFormatType type) {
+        for (int i = 0; i < formats.size(); i++) {
+            if (formats.get(i).getFormatType() == type) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     protected static boolean isLocked(OfflineFormat format) {
         return format.getAvailability() == OfflineFormatAvailability.OFFLINE_FORMAT_AVAILABILITY_PREMIUM_LOCKED;
     }
