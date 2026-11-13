@@ -14,7 +14,7 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings("unused")
-public class ShuffleButtonAsLoopPatch {
+public class ReplaceShuffleWithLoopButtonPatch {
 
     /**
      * The loop button replaces the shuffle button in the same slot of the media controls, so it
@@ -22,10 +22,10 @@ public class ShuffleButtonAsLoopPatch {
      * buttons. The option is greyed out instead of being
      * turned off, so the user keeps the value they picked.
      */
-    public static final class ShuffleButtonAsLoopAvailability implements Setting.Availability {
+    public static final class ReplaceShuffleWithLoopButtonAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return isShuffleButtonAsLoopAvailable();
+            return isReplaceShuffleWithLoopButtonAvailable();
         }
 
         @Override
@@ -34,7 +34,7 @@ public class ShuffleButtonAsLoopPatch {
         }
     }
 
-    private static boolean isShuffleButtonAsLoopAvailable() {
+    private static boolean isReplaceShuffleWithLoopButtonAvailable() {
         // To minimize confusion, it works only when 'Hide previous & next buttons' is turned off.
         return !SharedYouTubeSettings.HIDE_NOTIFICATION_MEDIA_PREV_NEXT.get();
     }
@@ -45,6 +45,6 @@ public class ShuffleButtonAsLoopPatch {
      * @return If the shuffle control of the media session should be replaced with the loop control.
      */
     public static boolean replaceShuffleWithLoop() {
-        return Settings.SHUFFLE_BUTTON_AS_LOOP.get() && isShuffleButtonAsLoopAvailable();
+        return Settings.REPLACE_SHUFFLE_WITH_LOOP_BUTTON.get() && isReplaceShuffleWithLoopButtonAvailable();
     }
 }

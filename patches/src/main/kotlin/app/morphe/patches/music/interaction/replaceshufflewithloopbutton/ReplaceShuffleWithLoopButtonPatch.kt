@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
-package app.morphe.patches.music.interaction.shuffleloop
+package app.morphe.patches.music.interaction.replaceshufflewithloopbutton
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
@@ -14,10 +14,11 @@ import app.morphe.patches.music.misc.medianotification.mediaNotificationControls
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ShuffleButtonAsLoopPatch;"
+private const val EXTENSION_CLASS =
+    "Lapp/morphe/extension/music/patches/ReplaceShuffleWithLoopButtonPatch;"
 
 @Suppress("unused")
-val shuffleButtonAsLoopPatch = bytecodePatch(
+val replaceShuffleWithLoopButtonPatch = bytecodePatch(
     name = "Replace shuffle with loop button",
     description = "Replaces the shuffle button with the loop button in the media controls notification"
 ) {

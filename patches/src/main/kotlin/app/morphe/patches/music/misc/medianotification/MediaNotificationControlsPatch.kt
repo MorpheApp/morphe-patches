@@ -28,6 +28,6 @@ val mediaNotificationControlsPatchMusic = mediaNotificationControlsPatch(
     additionalPreferences = setOf(
         // The lock screen and notification shade buttons are the media controls,
         // so the option that changes one of them belongs in this screen.
-        SwitchPreference("morphe_music_shuffle_button_as_loop", summary = true)
+        SwitchPreference("morphe_music_replace_shuffle_with_loop_button", summary = true)
     )
 )
