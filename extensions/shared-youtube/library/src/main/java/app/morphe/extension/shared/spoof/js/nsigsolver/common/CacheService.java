@@ -71,9 +71,9 @@ public class CacheService {
     public void save(String section, String key, CachedData content) throws CacheError {
         SharedPrefCategory pref = getSharedPrefs(getPrefsName(section));
 
-        pref.saveString(getCodeKey(key), content.getCode());
-        pref.saveString(getVersionKey(key), content.getVersion());
-        pref.saveString(getVariantKey(key), content.getVariant());
+        pref.saveString(getCodeKey(key), content.code());
+        pref.saveString(getVersionKey(key), content.version());
+        pref.saveString(getVariantKey(key), content.variant());
     }
 
     private SharedPrefCategory getSharedPrefs(String name) {

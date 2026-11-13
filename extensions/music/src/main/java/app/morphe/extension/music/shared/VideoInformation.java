@@ -49,7 +49,7 @@ public final class VideoInformation extends BaseVideoInformation {
     }
 
     /**
-     * Id of the current video playing.
+     * ID of the current video playing.
      *
      * @return The id of the video. Empty string if not set yet.
      */

@@ -45,6 +45,7 @@ import app.morphe.extension.shared.theme.ThemeUtils;
  * An item is only an index entry. Nothing about the current appearance is stored here, so
  * preferences that update themselves at runtime stay correct in the results.
  */
+@SuppressWarnings("unused")
 public abstract class BaseSearchResultItem {
     public enum ViewType {
         REGULAR,
@@ -194,6 +195,7 @@ public abstract class BaseSearchResultItem {
          */
         private void appendText(StringBuilder builder, CharSequence text) {
             if (!TextUtils.isEmpty(text)) {
+                //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) {
                     builder.append(" ");
                 }

@@ -78,7 +78,6 @@ internal const val MINIMAL_EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patc
 internal const val MINIMAL_BOUNDS_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/MinimalMiniplayerPatch$MiniplayerBoundsController;"
 
-@Suppress("unused")
 val miniplayerPatch = patch(
     name = "Miniplayer",
     description = "Adds options to change the in-app minimized player. " +

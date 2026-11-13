@@ -38,7 +38,6 @@ private const val EXTENSION_ACTION_SHEET_CONTROLLER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/OpenSystemShareSheetPatch$ActionSheetControllerInterface;"
 
 
-@Suppress("unused")
 internal fun openSystemShareSheetPatch(
 ) = patch(
     name = "Open system share sheet",

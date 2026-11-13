@@ -183,6 +183,7 @@ public class SharedYouTubeSettings extends BaseSettings {
         migrateOldSettingToNew(DEPRECATED_SPLASH_SCREEN_ANIMATION_STYLE, SPLASH_SCREEN_STYLE);
     }
 
+    @SuppressWarnings("SameReturnValue")
     private static String getDefaultSpoofAppVersionTarget() {
         return ""; // Modified during patching.
     }

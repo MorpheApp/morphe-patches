@@ -34,6 +34,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_23_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_46_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -227,7 +228,11 @@ val backgroundPlaybackPatch = patch(
         }
 
         // Force allowing background play for videos labeled for kids.
-        KidsBackgroundPlaybackPolicyControllerFingerprint.method.addIsPatchEnabledHook()
+        if (is_21_46_or_greater) {
+            KidsBackgroundPlaybackPolicyControllerFingerprint
+        } else {
+            KidsBackgroundPlaybackPolicyControllerLegacyFingerprint
+        }.method.addIsPatchEnabledHook()
 
         // Force allowing background play for Shorts.
         ShortsBackgroundPlaybackFeatureFlagFingerprint.addFeatureFlagOverride("enableFeatureFlag")

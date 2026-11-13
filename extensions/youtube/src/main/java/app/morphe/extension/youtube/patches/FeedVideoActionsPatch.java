@@ -204,6 +204,7 @@ public final class FeedVideoActionsPatch {
      */
     private static final AtomicInteger savedVideosChanges = new AtomicInteger();
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

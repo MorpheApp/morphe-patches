@@ -51,7 +51,6 @@ internal object AutoplayInactivityLimitFingerprint : Fingerprint(
         ),
         // Autoplay block check.
         methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
             parameters = listOf(),
             returnType = "Z",
             location = MatchAfterWithin(3)
@@ -119,7 +118,7 @@ internal object AutoplayConfirmDialogEnabledFingerprint : Fingerprint(
         ),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            definingClass = $$"Lj$/util/Optional;",
+            definingClass = "Lj$/util/Optional;",
             name = "isPresent",
             location = MatchAfterWithin(6)
         )
@@ -148,7 +147,7 @@ internal object AutoplayConfirmDialogEnabledLegacyFingerprint : Fingerprint(
         ),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            definingClass = $$"Lj$/util/Optional;",
+            definingClass = "Lj$/util/Optional;",
             name = "isPresent",
             location = MatchAfterWithin(6)
         )

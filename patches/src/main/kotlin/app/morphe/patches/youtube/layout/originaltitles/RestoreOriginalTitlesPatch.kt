@@ -14,7 +14,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-@Suppress("unused")
 val restoreOriginalTitlesPatch = patch(
     name = "Restore original titles",
     description = "Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones.",

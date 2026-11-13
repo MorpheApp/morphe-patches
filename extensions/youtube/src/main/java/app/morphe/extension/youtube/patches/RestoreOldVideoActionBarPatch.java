@@ -43,7 +43,6 @@ import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleBut
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.ToggleButtonViewModelHolder;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarItem;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarItemContent;
-import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLayoutConfig;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLikeCount;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarLikeDislike;
 import app.morphe.extension.youtube.innertube.FeedCardLayoutOuterClass.VideoActionBarOverflow;
@@ -882,6 +881,7 @@ public class RestoreOldVideoActionBarPatch {
      * @return If the serialized protocol buffer message has a top level field with the given number.
      *         If the message cannot be read, true is returned.
      */
+    @SuppressWarnings("SameParameterValue")
     private static boolean hasTopLevelField(byte[] message, int fieldNumber) {
         int position = 0;
         final int end = message.length;

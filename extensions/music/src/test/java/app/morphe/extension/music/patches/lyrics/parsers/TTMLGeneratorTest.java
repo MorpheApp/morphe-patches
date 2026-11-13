@@ -253,8 +253,16 @@ public class TTMLGeneratorTest {
                 new Word(1000, 1500, "Hello", null, false, null));
         List<LyricsLine> lines = List.of(
                 new LyricsLine(1000, 1500, "Hello", words1, null, false, false, null));
-        String rawFormat = "[ti:Test Song]\n[ar:Test Artist]\n[al:Test Album]\n"
-                + "[by:Uploader]\n[length:180]\n[re:Remastered]\n[kana:カナ]\n[ve:1.0]\n";
+        String rawFormat = """
+                [ti:Test Song]
+                [ar:Test Artist]
+                [al:Test Album]
+                [by:Uploader]
+                [length:180]
+                [re:Remastered]
+                [kana:カナ]
+                [ve:1.0]
+                """;
         Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
                 null, null, null, null, rawFormat, "lrc", null, null, null);
         TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
@@ -279,8 +287,12 @@ public class TTMLGeneratorTest {
                 new Word(1000, 1500, "Hello", null, false, null));
         List<LyricsLine> lines = List.of(
                 new LyricsLine(1000, 1500, "Hello", words1, null, false, false, null));
-        String rawFormat = "[ti:Lrc Title]\n[ar:Lrc Artist]\n[al:Lrc Album]\n"
-                + "[au:Submitter]\n";
+        String rawFormat = """
+                [ti:Lrc Title]
+                [ar:Lrc Artist]
+                [al:Lrc Album]
+                [au:Submitter]
+                """;
         Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
                 null, null, null, null, rawFormat, "lrc", null, null, null);
         TrackInfo track = new TrackInfo(null, null, null, 180);

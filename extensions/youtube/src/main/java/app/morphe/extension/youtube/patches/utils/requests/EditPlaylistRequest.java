@@ -118,9 +118,8 @@ public class EditPlaylistRequest {
      *
      * @param predecessorSetVideoId The entry to move the video after,
      *                              or null to move the video to the start of the playlist.
-     * @return If the video was moved.
      */
-    public static boolean moveVideo(
+    public static void moveVideo(
             String playlistId,
             String setVideoId,
             @Nullable String predecessorSetVideoId,
@@ -130,10 +129,9 @@ public class EditPlaylistRequest {
         JSONObject json = sendRequest(PlaylistRoutes.moveVideoBody(playlistId, setVideoId, predecessorSetVideoId),
                 requestHeader);
         if (json != null && "STATUS_SUCCEEDED".equals(json.optString("status"))) {
-            return true;
+            return;
         }
         Logger.printInfo(() -> "Could not move video in playlist: " + json);
-        return false;
     }
 
     @Nullable

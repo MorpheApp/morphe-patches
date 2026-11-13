@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -156,7 +157,7 @@ public final class NewSettingsIndicator {
 
         SeekBarPreference.SeekBarConfig config =
                 SeekBarPreference.configFor(SharedYouTubeSettings.SETTINGS_NEW_INDICATOR_DAYS);
-        final long expiredBefore = now - TimeUnit.DAYS.toMillis(config.max());
+        final long expiredBefore = now - TimeUnit.DAYS.toMillis(Objects.requireNonNull(config).max());
         for (Map.Entry<String, ?> entry : preferences.getAll().entrySet()) {
             String key = entry.getKey();
             if (!key.startsWith(FIRST_SEEN_KEY_PREFIX)) continue;

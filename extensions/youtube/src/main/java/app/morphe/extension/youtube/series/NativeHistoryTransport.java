@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.series;
 
+import android.os.SystemClock;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.CancellationException;
@@ -19,6 +21,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 
 /** Account-bound native browse requests. No credentials, HTTP client, or player prefetch. */
+@SuppressWarnings("unused")
 public final class NativeHistoryTransport {
     public interface Source {
         Future<?> patch_seriesTrackerHistory(String continuation, Executor executor);
@@ -44,7 +47,7 @@ public final class NativeHistoryTransport {
             this.request = request;
             this.generation = generation;
             startedAt = System.currentTimeMillis();
-            elapsed = android.os.SystemClock.elapsedRealtime();
+            elapsed = SystemClock.elapsedRealtime();
         }
     }
 
@@ -104,7 +107,7 @@ public final class NativeHistoryTransport {
             if (!continuation.isEmpty()
                     || value == null
                     || value.ticket().generation != generation
-                    || android.os.SystemClock.elapsedRealtime() - value.ticket().elapsed > maxAgeMs
+                    || SystemClock.elapsedRealtime() - value.ticket().elapsed > maxAgeMs
                     || value.future().isCancelled()) value = null;
         }
         boolean owned = value == null;

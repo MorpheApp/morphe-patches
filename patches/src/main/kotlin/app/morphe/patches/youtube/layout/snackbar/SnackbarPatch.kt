@@ -37,7 +37,6 @@ private const val COLOR_PICKER_PREFERENCE =
 private const val COLOR_PICKER_WITH_OPACITY_PREFERENCE =
     "app.morphe.extension.shared.settings.preference.ColorPickerWithOpacitySliderPreference"
 
-@Suppress("unused")
 val snackbarPatch = patch(
     name = "Snackbar",
     description = "Adds options to hide the snackbar or change its colors and shape."

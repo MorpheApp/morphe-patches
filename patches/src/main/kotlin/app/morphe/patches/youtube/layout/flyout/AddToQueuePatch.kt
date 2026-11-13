@@ -46,7 +46,6 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_LOCAL_QUEUE_CLASS =
     "Lapp/morphe/extension/youtube/patches/LocalQueuePatch;"
 
-@Suppress("unused")
 val addToQueuePatch = patch(
     name = "Add to queue",
     description = "Adds a video queue to the feed flyout menu, using either the Morphe queue " +

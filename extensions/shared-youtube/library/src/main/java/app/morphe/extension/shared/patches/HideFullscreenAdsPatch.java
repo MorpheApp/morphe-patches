@@ -10,8 +10,11 @@ package app.morphe.extension.shared.patches;
 import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE;
 
 import android.app.Dialog;
+import android.os.Build;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
@@ -39,6 +42,7 @@ public class HideFullscreenAdsPatch {
     /**
      * Rest of the implementation added by patch.
      */
+    @SuppressWarnings("EmptyMethod")
     private static void closeDialog(Object customDialog) {
         // Casting customDialog to 'android.app.Dialog' and calling [dialog.onBackPressed()] also works with limitations.
         // If the targetSDKVersion is 36+ and the device is running Android 16+, this method will most likely not work.
@@ -84,10 +88,10 @@ public class HideFullscreenAdsPatch {
                     window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED);
 
                     // Restore decorView visibility
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-                        android.view.WindowInsetsController insetsController = window.getInsetsController();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        WindowInsetsController insetsController = window.getInsetsController();
                         if (insetsController != null) {
-                            insetsController.show(android.view.WindowInsets.Type.systemBars());
+                            insetsController.show(WindowInsets.Type.systemBars());
                         }
                     } else {
                         View decorView = window.getDecorView();

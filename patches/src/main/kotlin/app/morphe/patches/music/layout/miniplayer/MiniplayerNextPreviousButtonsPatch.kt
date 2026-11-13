@@ -89,7 +89,6 @@ private val miniplayerButtonsResourcePatch = patch(
     }
 }
 
-@Suppress("unused")
 val miniplayerPreviousNextButtonsPatch = patch(
     name = "Miniplayer previous and next buttons",
     description = "Adds options to show previous and next track buttons in the miniplayer."

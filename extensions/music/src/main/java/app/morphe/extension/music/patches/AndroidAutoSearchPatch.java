@@ -66,7 +66,7 @@ public final class AndroidAutoSearchPatch {
     private AndroidAutoSearchPatch() {}
 
     /** Injection point. Saves YTM's search client when its Android Auto service starts. */
-    public static void setPhoneSearchClient(PhoneSearchClient client) {
+    public static void setPhoneSearchClient(@Nullable PhoneSearchClient client) {
         phoneSearchClient = client;
     }
 

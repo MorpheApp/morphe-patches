@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Dialog;
 import android.content.Context;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.WindowManager;
 
@@ -80,7 +81,7 @@ public class LyricsTargetLanguagePreference extends Preference {
     }
 
     @Override
-    protected void onAttachedToHierarchy(android.preference.PreferenceManager preferenceManager) {
+    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
         super.onAttachedToHierarchy(preferenceManager);
         refreshSummary();
     }
@@ -141,7 +142,7 @@ public class LyricsTargetLanguagePreference extends Preference {
         showLanguageDialog(context, translation, false, onPicked);
     }
 
-    /** @param ruby Whether to show the ruby languages, a part of the romanization list. */
+    /** @param ruby Whether to show the Ruby languages, a part of the romanization list. */
     private static void showLanguageDialog(Context context, boolean translation, boolean ruby,
             @Nullable Runnable onPicked) {
         final CharSequence[] allEntries = buildEntries(translation);
@@ -257,7 +258,6 @@ public class LyricsTargetLanguagePreference extends Preference {
      * The list to show, which also names the summary: the shipped array plus, for
      * romanization, one row per language the user added a Rime word table for.
      */
-    @Nullable
     private static CharSequence[] buildEntries(boolean translation) {
         final CharSequence[] base;
         if (translation) {
@@ -268,7 +268,7 @@ public class LyricsTargetLanguagePreference extends Preference {
         final CharSequence[] values = translation
                 ? ResourceUtils.getStringArray("morphe_language_entry_values")
                 : ResourceUtils.getStringArray(KEY_ROMANIZE_LANGUAGE + "_entry_values");
-        if (translation || base == null || values == null || base.length != values.length) {
+        if (translation || base.length != values.length) {
             return base;
         }
         final List<CharSequence> merged = new ArrayList<>(base.length + 1);
@@ -293,7 +293,6 @@ public class LyricsTargetLanguagePreference extends Preference {
         return merged.toArray(new CharSequence[0]);
     }
 
-    @Nullable
     private static CharSequence[] buildValues(boolean translation) {
         final CharSequence[] base;
         if (translation) {
@@ -301,7 +300,7 @@ public class LyricsTargetLanguagePreference extends Preference {
         } else {
             base = ResourceUtils.getStringArray(KEY_ROMANIZE_LANGUAGE + "_entry_values");
         }
-        if (translation || base == null) {
+        if (translation) {
             return base;
         }
         final List<CharSequence> merged = new ArrayList<>(base.length + 1);

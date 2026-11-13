@@ -31,6 +31,7 @@ import app.morphe.extension.shared.Utils;
 /**
  * All methods must be called on main thread.
  */
+@SuppressWarnings("unused")
 public class ScrobbleManager {
     private static ScrobbleManager instance;
 

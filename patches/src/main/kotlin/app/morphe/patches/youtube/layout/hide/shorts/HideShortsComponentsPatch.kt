@@ -163,7 +163,6 @@ private val hideShortsComponentsResourcePatch = patch {
 
 private const val EXTENSION_FILTER = "Lapp/morphe/extension/youtube/patches/components/ShortsFilter;"
 
-@Suppress("unused")
 val hideShortsComponentsPatch = patch(
     name = "Hide Shorts components",
     description = "Adds options to hide components related to Shorts."

@@ -144,6 +144,7 @@ public final class CatalogParser {
             }
     }
 
+    @SuppressWarnings("StatementWithEmptyBody")
     private void items(JSONArray items) throws JSONException {
         for (int i = 0; i < items.length(); i++) {
             JSONObject item = items.optJSONObject(i);

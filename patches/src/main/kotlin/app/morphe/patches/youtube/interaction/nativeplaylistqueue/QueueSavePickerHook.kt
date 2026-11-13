@@ -37,7 +37,7 @@ internal fun installQueueSavePicker(endpointType: String) {
         "Native playlist queue: picker must serialize its original endpoint after constructing arguments"
     }
 
-    // p1 is overwritten by the serialized bytes immediately afterwards. Transfer the
+    // p1 is overwritten by the serialized bytes immediately afterward. Transfer the
     // owned snapshot before that write, on both the existing/new Bundle branches.
     factory.method.addInstructionsAtControlFlowLabel(
         serialize.index,

@@ -31,6 +31,7 @@ import java.util.Locale;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
+@SuppressWarnings("unused")
 public class Requester {
     /**
      * Response code of a successful API call.

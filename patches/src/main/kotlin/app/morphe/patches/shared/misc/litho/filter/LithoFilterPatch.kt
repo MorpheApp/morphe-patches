@@ -19,6 +19,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.classDefBy
@@ -116,7 +117,7 @@ fun addLithoFilter(classDescriptor: String) {
  * @param overrideUpbFeatureFlag Whether to override the A/B feature flag that enables Upb-native
  *                               protobuf parsing (only present on older YouTube; absent in Music).
  * @param removeFilteredListItems Whether to remove the items of the lists (such as the feed) whose
- *                                whole element is filtered. Otherwise the grids, such as the feed
+ *                                whole element is filtered. Otherwise, the grids, such as the feed
  *                                of the tablet layout, show an empty cell in their place.
  * @param block Callback to add app-specific dependencies (sharedExtensionPatch, conversionContextPatch,
  *              versionCheckPatch, and any app-specific fixes).
@@ -576,6 +577,60 @@ internal fun sharedLithoFilterPatch(
                             iget v$positionRegister, v$headerListRegister, $entryPositionField
                             :saved_position
                             nop
+                        """
+                    )
+                }
+            }
+
+            // endregion
+
+            // region Scroll position
+
+            // A list, such as the search results, saves its scroll position when it is left, such as when a video
+            // is opened, and shows it again when the list is loaded again. The position is not saved if an item
+            // before it was removed or changed since the list was loaded, and the list is then shown from the top.
+            // The removed items of the filtered elements are such items. The list is loaded again with them,
+            // so the saved position is moved by the items removed before it.
+            ListSaveScrollPositionFingerprint.let {
+                val observerType = it.instructionMatches[0].fieldReference.type
+
+                val notifyItemsRemoved = observableListRemoveFingerprint(ObservableListConstructorFingerprint.classDef.type)
+                    .matchSingle().instructionMatches.first().methodReference.let { notify ->
+                        if (notify.parameterTypes.size == 2) {
+                            notify
+                        } else {
+                            listNotifyItemRemovedFingerprint(notify.definingClass, notify.name)
+                                .matchSingle().instructionMatches.first().methodReference
+                        }
+                    }
+                val itemsRemovedMethodName = listNotifyItemsRemovedFingerprint(
+                    notifyItemsRemoved.definingClass,
+                    notifyItemsRemoved.name
+                ).matchSingle().instructionMatches.first().methodReference.name
+
+                listObserverItemsRemovedFingerprint(observerType, itemsRemovedMethodName)
+                    .matchSingle().method.addInstruction(
+                        0,
+                        "invoke-static { p0, p1, p2 }, $EXTENSION_CLASS->onListItemsRemoved(Ljava/lang/Object;II)V"
+                    )
+
+                listObserverReloadFingerprint(observerType).matchSingle().method.addInstruction(
+                    0,
+                    "invoke-static { p0 }, $EXTENSION_CLASS->onListReloaded(Ljava/lang/Object;)V"
+                )
+
+                it.method.apply {
+                    val observerIndex = it.instructionMatches[0].index
+                    val observerRegister = getInstruction<TwoRegisterInstruction>(observerIndex).registerA
+                    val notSavedIndex = it.instructionMatches[3].index
+                    val positionRegister = getInstruction<OneRegisterInstruction>(notSavedIndex).registerA
+
+                    replaceInstruction(notSavedIndex, "nop")
+                    addInstructions(
+                        observerIndex + 1,
+                        """
+                            invoke-static { v$observerRegister, v$positionRegister }, $EXTENSION_CLASS->getScrollPosition(Ljava/lang/Object;I)I
+                            move-result v$positionRegister
                         """
                     )
                 }

@@ -150,6 +150,7 @@ public abstract class BufferPhraseFilter extends Filter {
     /**
      * Optional hook invoked when a hide is confirmed. Subclasses can override to record stats.
      */
+    @SuppressWarnings("EmptyMethod")
     protected void onHideConfirmed(String matched) {
         // Default no-op.
     }

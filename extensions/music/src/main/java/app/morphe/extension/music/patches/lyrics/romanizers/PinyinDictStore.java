@@ -29,6 +29,7 @@ import app.morphe.extension.shared.Utils;
  * store only adds how a word is read. Downloaded, since the patch merges only XML resources and
  * a word list goes stale as the source moves on.
  */
+@SuppressWarnings("unused")
 public final class PinyinDictStore {
 
     public static final String VERSION = "18.0.0";

@@ -278,7 +278,7 @@ internal fun nativeQueueAutoplayFingerprint(navigator: FieldReference, switchNav
 internal fun nativeQueueAutoplayConstructorFingerprint(autoplayType: String) = Fingerprint(
     definingClass = autoplayType,
     name = "<init>",
-    parameters = List(3) { "Lj\$/util/Optional;" }
+    parameters = List(3) { "Lj$/util/Optional;" }
 )
 
 /** The wrapper disposes its active navigator. */
@@ -563,7 +563,7 @@ internal fun playlistContentsFingerprint(panelType: String, factory: MethodRefer
  * then logging decorates the bound endpoint before dispatching it.
  */
 internal object PlaylistRowClickFingerprint : Fingerprint(
-    interfaces = listOf("Landroid/view/View\$OnClickListener;"),
+    interfaces = listOf($$"Landroid/view/View$OnClickListener;"),
     name = "onClick",
     returnType = "V",
     parameters = listOf("Landroid/view/View;"),
@@ -624,7 +624,7 @@ internal fun playlistEndpointUnbindFingerprint(endpoint: FieldReference) = Finge
 
 /** The standard button click context retains the native enclosing row identity. */
 internal object NativeButtonContextFingerprint : Fingerprint(
-    interfaces = listOf("Landroid/view/View\$OnClickListener;"),
+    interfaces = listOf($$"Landroid/view/View$OnClickListener;"),
     returnType = "Ljava/util/Map;",
     parameters = listOf("L", "Z"),
     filters = listOf(string("anchor_view"))
@@ -660,7 +660,7 @@ internal fun playlistRowMenuOpenFingerprint(videoType: String) = Fingerprint(
 
 /** The native menu sheet dispatches its endpoint callback immediately before dismissing itself. */
 internal fun playlistMenuDispatchFingerprint(callbackType: String) = Fingerprint(
-    interfaces = listOf("Landroid/widget/AdapterView\$OnItemClickListener;"),
+    interfaces = listOf($$"Landroid/widget/AdapterView$OnItemClickListener;"),
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
@@ -765,8 +765,8 @@ internal object PlaylistDragUnbindFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
-        methodCall("Landroid/view/View;->setOnTouchListener(Landroid/view/View\$OnTouchListener;)V"),
-        methodCall("Landroid/view/View;->setOnLongClickListener(Landroid/view/View\$OnLongClickListener;)V")
+        methodCall($$"Landroid/view/View;->setOnTouchListener(Landroid/view/View$OnTouchListener;)V"),
+        methodCall($$"Landroid/view/View;->setOnLongClickListener(Landroid/view/View$OnLongClickListener;)V")
     )
 )
 
@@ -818,7 +818,7 @@ internal object PlaylistControlsCreationFingerprint : Fingerprint(
         // The collapsed panel view.
         fieldAccess(definingClass = "this", type = "Landroid/view/View;", opcode = Opcode.IGET_OBJECT),
         methodCall(
-            "Landroid/view/View;->setOnClickListener(Landroid/view/View\$OnClickListener;)V",
+            $$"Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V",
             location = MatchAfterWithin(3)
         ),
         // The navigator provider.
@@ -1026,12 +1026,12 @@ internal fun playlistShuffleListenerFingerprint(binder: Method, shuffleView: Fie
         methodCall("Landroid/widget/ImageView;->setVisibility(I)V", location = MatchAfterWithin(3)),
         fieldAccess(
             definingClass = "this",
-            type = "Landroid/view/View\$OnClickListener;",
+            type = $$"Landroid/view/View$OnClickListener;",
             opcode = Opcode.IGET_OBJECT,
             location = MatchAfterImmediately()
         ),
         methodCall(
-            "Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View\$OnClickListener;)V",
+            $$"Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View$OnClickListener;)V",
             location = MatchAfterImmediately()
         )
     )
@@ -1039,7 +1039,7 @@ internal fun playlistShuffleListenerFingerprint(binder: Method, shuffleView: Fie
 
 /** Observe the native notification before it compares old state or notifies either control. */
 internal fun notificationSkipCallbackFingerprint(callbackName: String) = Fingerprint(
-    superclass = "Landroid/media/session/MediaSession\$Callback;",
+    superclass = $$"Landroid/media/session/MediaSession$Callback;",
     name = callbackName,
     returnType = "V",
     parameters = emptyList(),
@@ -1302,7 +1302,7 @@ private fun queuePlayerDismissMethod() =
 
 /** The mini player's close click, rather than programmatic reloads using the same dismiss API. */
 internal object QueuePlayerCloseClickFingerprint : Fingerprint(
-    interfaces = listOf("Landroid/view/View\$OnClickListener;"),
+    interfaces = listOf($$"Landroid/view/View$OnClickListener;"),
     name = "onClick",
     parameters = listOf("Landroid/view/View;"),
     returnType = "V",
@@ -1372,7 +1372,7 @@ internal object QueueSnackbarModernFactoryFingerprint : Fingerprint(
             parameters = List(4) { "Ljava/lang/Object;" } + listOf("I", "[S")
         ),
         methodCall(
-            parameters = listOf("Ljava/lang/CharSequence;", "Landroid/view/View\$OnClickListener;"),
+            parameters = listOf("Ljava/lang/CharSequence;", $$"Landroid/view/View$OnClickListener;"),
             returnType = "V"
         ),
         opcode(Opcode.RETURN_OBJECT, location = MatchAfterImmediately())
@@ -1568,7 +1568,7 @@ internal fun playlistPageNavigationSelectorFingerprint(navigationType: String) =
 )
 
 internal const val ELEMENTS_TAP_COMMAND =
-    "Lcom/google/protos/youtube/elements/CommandOuterClass\$Command;"
+    $$"Lcom/google/protos/youtube/elements/CommandOuterClass$Command;"
 
 /** Litho preserves NodeInfo on each mounted host under this named view tag. */
 internal object PlaylistNodeInfoFingerprint : Fingerprint(
@@ -1581,7 +1581,7 @@ internal object PlaylistNodeInfoFingerprint : Fingerprint(
 
 /** The native OnClickListener identifies both its event and the handler's owner field. */
 internal object PlaylistClickListenerFingerprint : Fingerprint(
-    interfaces = listOf("Landroid/view/View\$OnClickListener;"),
+    interfaces = listOf($$"Landroid/view/View$OnClickListener;"),
     name = "onClick",
     parameters = listOf("Landroid/view/View;"),
     returnType = "V",
@@ -1602,7 +1602,7 @@ internal fun playlistClickMountFingerprint(nodeType: String, listenerType: Strin
             location = MatchAfterWithin(3)
         ),
         methodCall(
-            smali = "Landroid/view/View;->setOnClickListener(Landroid/view/View\$OnClickListener;)V",
+            smali = $$"Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V",
             location = MatchAfterImmediately()
         )
     )

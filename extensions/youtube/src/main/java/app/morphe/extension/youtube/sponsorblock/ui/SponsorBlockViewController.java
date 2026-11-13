@@ -22,6 +22,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.ButtonVisibility;
 
+@SuppressWarnings("unused")
 public class SponsorBlockViewController {
     public static final int ROUNDED_LAYOUT_MARGIN = 12;
 
@@ -38,9 +39,7 @@ public class SponsorBlockViewController {
     private static SponsorSegment skipSegment;
 
     static {
-        PlayerType.getOnChange().addObserver((PlayerType type) -> {
-            playerTypeChanged(type);
-        });
+        PlayerType.getOnChange().addObserver(SponsorBlockViewController::playerTypeChanged);
     }
 
     public static Context getOverLaysViewGroupContext() {

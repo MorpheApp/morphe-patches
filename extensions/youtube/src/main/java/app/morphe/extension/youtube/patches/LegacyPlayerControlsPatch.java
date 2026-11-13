@@ -45,6 +45,7 @@ public class LegacyPlayerControlsPatch {
     /**
      * Injection point.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean useNullBottomGradient() {
         return RESTORE_OLD_PLAYER_BUTTONS;
     }
@@ -67,6 +68,7 @@ public class LegacyPlayerControlsPatch {
     /**
      * Injection point.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean forcePlayerSeekbar(boolean original) {
         if (!original) {
             Logger.printDebug(() -> "Player seekbar feature flag is off");
@@ -82,6 +84,7 @@ public class LegacyPlayerControlsPatch {
     /**
      * Injection point.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean disableNewPlayerOverlays(boolean original) {
         newPlayerOverlaysOriginal = original;
         return false;
@@ -100,8 +103,9 @@ public class LegacyPlayerControlsPatch {
      * <p>
      * The elevated player shows the video metadata over the ambient mode colors of the player,
      * and the light theme text can not be read over the dark colors, so the elevated player is turned off
-     * (https://github.com/MorpheApp/morphe-patches/issues/3703).
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/3703">issue 3703</a>).
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean useElevatedPlayer(boolean original) {
         if (original) {
             elevatedPlayerTurnedOff = true;
@@ -119,10 +123,11 @@ public class LegacyPlayerControlsPatch {
      * with the dark theme text colors, which are drawn over the dark colors of the elevated player.
      * The elevated player is turned off, so with the light theme the text is drawn over the light
      * background of the watch page and can not be read
-     * (https://github.com/MorpheApp/morphe-patches/issues/3809).
+     * (<a href="https://github.com/MorpheApp/morphe-patches/issues/3809">issue 3809</a>).
      *
      * @return If the dark theme text colors of the video metadata panel must be replaced.
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean fixMetapanelTextColors() {
         return elevatedPlayerTurnedOff && !Utils.isDarkModeEnabled();
     }
@@ -227,6 +232,7 @@ public class LegacyPlayerControlsPatch {
     /**
      * Injection point.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean useModernPlayerTopControls(boolean original) {
         if (original) {
             Logger.printDebug(() -> "useModernPlayerTopControls is set on");

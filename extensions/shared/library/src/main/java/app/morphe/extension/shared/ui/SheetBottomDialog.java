@@ -488,6 +488,7 @@ public class SheetBottomDialog {
          * Cancels the dialog, triggering a dismissal animation.
          */
         @Override
+        @SuppressWarnings("EmptyMethod")
         public void cancel() {
             super.cancel();
         }

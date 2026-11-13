@@ -23,7 +23,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/RememberRepeatStatePatch;"
 
-@Suppress("unused")
 val rememberRepeatStatePatch = patch(
     name = "Remember repeat state",
     description = "Adds an option to remember the repeat state when playing a new track or playlist."

@@ -22,7 +22,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/EnableForcedMiniplayerPatch;"
 
-@Suppress("unused")
 val enableForcedMiniplayerPatch = patch(
     name = "Enable forced miniplayer",
     description = "Adds an option to enable forced miniplayer when switching between music videos, podcasts, or songs."

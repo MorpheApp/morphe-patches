@@ -26,7 +26,6 @@ import app.morphe.patches.shared.misc.settingsmenu.injectSettingsMenuFilterHook
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/SettingsMenuFilterPatch;"
 
-@Suppress("unused")
 val hideSettingsMenuFilterPatch = patch(
     name = "Settings menu filter",
     description = "Adds an option to hide items on the standard YouTube Music settings screen by their visible name."

@@ -16,7 +16,6 @@ import app.morphe.util.setExtensionIsPatchIncluded
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/SanitizeSharingLinksPatch;"
 
-@Suppress("unused")
 val sanitizeSharingLinksPatch = patch(
     name = "Sanitize sharing links",
     description = "Adds an option to sanitize sharing links by removing tracking query parameters."

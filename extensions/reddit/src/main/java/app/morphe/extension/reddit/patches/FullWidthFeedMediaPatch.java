@@ -17,6 +17,7 @@ public final class FullWidthFeedMediaPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
@@ -85,6 +86,7 @@ public final class FullWidthFeedMediaPatch {
     /**
      * @return The content of post details content props.
      */
+    @SuppressWarnings("SameReturnValue")
     public static Object getPostContent(Object props) {
         return null;  // Modified during patching.
     }
@@ -92,6 +94,7 @@ public final class FullWidthFeedMediaPatch {
     /**
      * @return If post content is a GIF or video.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isVideoContent(Object content) {
         return false;  // Modified during patching.
     }

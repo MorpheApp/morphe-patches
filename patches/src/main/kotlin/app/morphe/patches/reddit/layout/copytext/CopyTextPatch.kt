@@ -41,7 +41,6 @@ private const val EXTENSION_SELECTION_MANAGER_INTERFACE =
 // Arbitrary Compose group key of the lambda passed to SelectionContainer.
 private const val SELECTION_CONTENT_LAMBDA_KEY = 0x4D4F5250
 
-@Suppress("unused")
 val copyTextPatch = patch(
     name = "Copy text",
     description = "Adds an option to make post and comment text selectable and copyable. " +

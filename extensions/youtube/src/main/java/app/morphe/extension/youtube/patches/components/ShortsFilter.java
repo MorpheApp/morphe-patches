@@ -491,7 +491,7 @@ public final class ShortsFilter extends Filter {
                     ArrayDeque<View> views = new ArrayDeque<>();
                     views.add(container);
                     while (!views.isEmpty()) {
-                        View view = views.poll();
+                        View view = views.remove();
                         if (view.getVisibility() != View.VISIBLE) {
                             continue;
                         }
@@ -503,10 +503,9 @@ public final class ShortsFilter extends Filter {
                         } else if (!(view instanceof ViewGroup)) {
                             return true;
                         }
-                        if (view instanceof ViewGroup group) {
-                            for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                                views.add(group.getChildAt(i));
-                            }
+                        ViewGroup group = (ViewGroup) view;
+                        for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                            views.add(group.getChildAt(i));
                         }
                     }
                     container.setVisibility(View.GONE);

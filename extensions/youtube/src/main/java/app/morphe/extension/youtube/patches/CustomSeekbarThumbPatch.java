@@ -118,6 +118,7 @@ public final class CustomSeekbarThumbPatch {
 
     private CustomSeekbarThumbPatch() {}
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

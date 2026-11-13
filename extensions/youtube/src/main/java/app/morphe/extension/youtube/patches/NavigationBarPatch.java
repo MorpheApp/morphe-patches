@@ -174,6 +174,7 @@ public final class NavigationBarPatch {
             ? ResourceUtils.getIdentifier(ResourceType.ID, "new_content_dot")
             : 0;
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;
     }
@@ -1091,6 +1092,7 @@ public final class NavigationBarPatch {
      * @param pivotBarItem Navigation bar item proto.
      */
     @Nullable
+    @SuppressWarnings("SameReturnValue")
     private static Object buildPivotBarItem(byte[] pivotBarItem) {
         return null;
     }
@@ -1249,6 +1251,7 @@ public final class NavigationBarPatch {
      *
      * @param message Message of the class to parse.
      */
+    @SuppressWarnings("SameReturnValue")
     private static MessageLite parseWithRegistry(MessageLite message, byte[] bytes, ExtensionRegistryLite registry) {
         return null; // Modified during patching.
     }
@@ -1256,6 +1259,7 @@ public final class NavigationBarPatch {
     /**
      * @return The extension registry of the app.
      */
+    @SuppressWarnings("SameReturnValue")
     private static ExtensionRegistryLite getGeneratedRegistry() {
         return null; // Modified during patching.
     }

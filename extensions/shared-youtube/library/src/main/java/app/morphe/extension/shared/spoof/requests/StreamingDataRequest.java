@@ -12,6 +12,8 @@ package app.morphe.extension.shared.spoof.requests;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -38,6 +40,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.AndroidMedialibConfig;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.ExoPlayerConfig;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.Format;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.MediaCommonConfig;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayabilityStatus;
 import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerConfig;
@@ -62,6 +65,7 @@ import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
  * or play a video again from a response it got earlier. Then the streams are fetched when the app builds
  * the streams of the video, unless the streams fetched earlier are recent enough.
  */
+@SuppressWarnings("unused")
 public class StreamingDataRequest {
 
     /**
@@ -197,6 +201,18 @@ public class StreamingDataRequest {
      * A fetch runs on a single thread, and other fetches running at the same time must not see this.
      */
     private static final ThreadLocal<Boolean> fallbackWithTVDashOnThread = ThreadLocal.withInitial(() -> false);
+
+    /**
+     * If the last visionOS response built on the thread is of a visitor id in the attestation A/B test,
+     * so the client is fetched again with another visitor id.
+     * A fetch runs on a single thread, and other fetches running at the same time must not see this.
+     */
+    private static final ThreadLocal<Boolean> newVisitorIdOnThread = ThreadLocal.withInitial(() -> false);
+
+    /**
+     * Fetches of a visionOS client, each with another visitor id, before the next client is used.
+     */
+    private static final int VISITOR_ID_ATTEMPTS = 3;
 
     /**
      * Headers of the latest InnerTube request of the app, which name the account it uses.
@@ -526,7 +542,7 @@ public class StreamingDataRequest {
                 }
             }
             // These clients can play videos without the auth header:
-            // TV_SABR, TV_SIMPLY, VISIONOS_1_02 (VISIONOS_1_03).
+            // TV_SABR, TV_SIMPLY, VISIONOS_1_02 (VISIONOS_1_03), VISIONOS_1_06.
             else {
                 Logger.printDebug(() -> "Do not set auth header: " + clientType + ", videoId: " + videoId);
             }
@@ -649,6 +665,22 @@ public class StreamingDataRequest {
                 return null;
             }
 
+            // Every response of visionOS has an attestation challenge, which the app answers on the device
+            // and the spoofed client cannot. The server puts some visitor ids in an A/B test whose streams
+            // need the answer, and playback can then stop after about a minute. The urls of their streams
+            // have 'pcm2=yes', which is signed and cannot be changed, so another visitor id is used instead.
+            if (clientType.clientName.equals(ClientType.VISIONOS_1_02.clientName)) {
+                for (Format format : streamingData.getAdaptiveFormatsList()) {
+                    if ("yes".equals(Uri.parse(format.getUrl()).getQueryParameter("pcm2"))) {
+                        Logger.printDebug(() -> "Visitor id is in the attestation A/B test: " + clientType
+                                + ", videoId: " + videoId);
+                        VisitorIdRequester.discardVisitorId(clientType);
+                        newVisitorIdOnThread.set(true);
+                        return null;
+                    }
+                }
+            }
+
             if (clientType.requireJS) {
                 String poToken = clientType.requirePoToken
                         ? PoTokenManager.getStreamingPoToken(clientType, videoId)
@@ -700,7 +732,7 @@ public class StreamingDataRequest {
      * It does not tell how the video is played inline, such as a muted preview in the feed,
      * and it buffers as the player of the client app does, which can start a video later
      * (such as after 2.5 seconds of media, instead of 1.6 seconds with the app player config).
-     *
+     * <p>
      * The quality menu belongs to the app, so the app player config also tells if the quality selected
      * in the quality menu is used only for the video it was selected for. Without it, the quality selected
      * is also used for the next videos.
@@ -837,10 +869,18 @@ public class StreamingDataRequest {
             HttpURLConnection connection =
                     send(clientType, videoId, authorization, showErrorToast, includeVideoDetails);
             fallbackWithTVDashOnThread.set(false);
+            newVisitorIdOnThread.set(false);
             StreamData streamingData = buildPlayerResponseBuffer(clientType, connection, videoId);
 
+            for (int attempt = 1; attempt < VISITOR_ID_ATTEMPTS && Boolean.TRUE.equals(newVisitorIdOnThread.get()); attempt++) {
+                newVisitorIdOnThread.set(false);
+                streamingData = buildPlayerResponseBuffer(clientType,
+                        send(clientType, videoId, authorization, showErrorToast, includeVideoDetails), videoId);
+            }
+            newVisitorIdOnThread.set(false);
+
             if ((clientType == ClientType.TV_SABR || clientType == ClientType.TV_SABR_WII_U)
-                    && fallbackWithTVDashOnThread.get()) {
+                    && Boolean.TRUE.equals(fallbackWithTVDashOnThread.get())) {
                 fallbackWithTVDashOnThread.set(false);
                 clientType = ClientType.TV_DASH;
                 HttpURLConnection fallBackConnection =

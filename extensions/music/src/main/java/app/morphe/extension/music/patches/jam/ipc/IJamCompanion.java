@@ -8,6 +8,7 @@ import android.os.RemoteException;
 
 import androidx.annotation.NonNull;
 
+@SuppressWarnings("unused")
 public interface IJamCompanion extends IInterface {
     /** Default implementation for IJamCompanion. */
     class Default implements IJamCompanion {
@@ -16,7 +17,7 @@ public interface IJamCompanion extends IInterface {
         public String call(
             String capability,
             String request
-        ) throws RemoteException {
+        ) {
             return null;
         }
 
@@ -68,7 +69,7 @@ public interface IJamCompanion extends IInterface {
                 @NonNull Parcel data,
                 Parcel reply,
                 int flags
-        ) throws android.os.RemoteException {
+        ) throws RemoteException {
             if (
                 code >= IBinder.FIRST_CALL_TRANSACTION &&
                 code <= IBinder.LAST_CALL_TRANSACTION
@@ -97,7 +98,7 @@ public interface IJamCompanion extends IInterface {
                         return mRemote;
                     }
 
-                    @SuppressWarnings("unused")
+                    @SuppressWarnings({"unused", "SameReturnValue"})
                     public String getInterfaceDescriptor() {
                         return DESCRIPTOR;
                     }

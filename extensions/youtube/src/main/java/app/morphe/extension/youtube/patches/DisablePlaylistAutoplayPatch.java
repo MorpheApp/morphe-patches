@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.patches;
 
+import app.morphe.extension.youtube.series.SeriesTrackerPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -24,10 +25,19 @@ public class DisablePlaylistAutoplayPatch {
      * Injection point.
      */
     public static boolean shouldSkipPlaylistAutoplay(Enum<?> navigationIntent) {
-        return Settings.DISABLE_PLAYLIST_AUTOPLAY.get() && "AUTOPLAY".equals(navigationIntent.name())
-                // YouTube also uses AUTOPLAY to repeat the current video.
-                && !isRepeating
-                // The queue plays its next video instead, and its hook may run after this one.
-                && !LocalQueuePatch.hasQueuedVideos();
+        // YouTube also uses AUTOPLAY to repeat the current video, and the local queue plays its
+        // next video instead (its hook may run after this one): never skip either.
+        if (isRepeating || LocalQueuePatch.hasQueuedVideos()) {
+            return false;
+        }
+        if (Settings.AUTOPLAY_CONTROL.get()) {
+            // An episode opened from the series library: Series tracking picks the next episode
+            // (its hook may run after this one) and reads Autoplay control mode Off itself.
+            if (SeriesTrackerPatch.hasActiveSession()) {
+                return false;
+            }
+            return AutoplayControlPatch.shouldSkip(navigationIntent.name());
+        }
+        return Settings.DISABLE_PLAYLIST_AUTOPLAY.get() && "AUTOPLAY".equals(navigationIntent.name());
     }
 }

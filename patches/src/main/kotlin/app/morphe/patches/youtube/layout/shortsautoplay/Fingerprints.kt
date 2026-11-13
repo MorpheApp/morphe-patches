@@ -34,7 +34,7 @@ internal object ReelEnumConstructorFingerprint : Fingerprint(
 private object ReelPlaybackRepeatParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
-        methodCall($$"Lj$/time/Instant;->toEpochMilli()J"),
+        methodCall("Lj$/time/Instant;->toEpochMilli()J"),
         string("r_tr")
     )
 )
@@ -50,7 +50,7 @@ internal fun reelPlaybackRepeatFingerprint(reelEnumClass: String) = Fingerprint(
     filters = listOf(
         anyInstruction(
             methodCall(smali = "Lcom/google/common/util/concurrent/ListenableFuture;->isDone()Z"),
-            methodCall(smali = $$"Lj$/util/Optional;->ofNullable(Ljava/lang/Object;)Lj$/util/Optional;") // 21.17+
+            methodCall(smali = "Lj$/util/Optional;->ofNullable(Ljava/lang/Object;)Lj$/util/Optional;") // 21.17+
         ),
         methodCall(returnType = reelEnumClass)
     )

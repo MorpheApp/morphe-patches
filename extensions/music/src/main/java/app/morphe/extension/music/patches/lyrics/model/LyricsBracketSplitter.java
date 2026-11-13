@@ -116,7 +116,7 @@ public final class LyricsBracketSplitter {
                 inBackground += Math.max(0, to - Math.max(from, tail.open()));
             }
 
-            if (inSung <= 0 && inBackground <= 0) {
+            if (inSung == 0 && inBackground == 0) {
                 continue;
             }
             // Halving a straddling word would cost it its timing, so it goes whole to the bigger side.
@@ -262,7 +262,7 @@ public final class LyricsBracketSplitter {
         return c == '（' || c == '）';
     }
 
-    /** Nesting is counted so an inner bracket does not close the run early; "(oh]" is no run at all. */
+    /** Nesting is counted so an inner bracket does not close the run early; "(oh]" is a no run at all. */
     @Nullable
     private static Run match(String text, int from, int toward, boolean forward) {
         final char first = text.charAt(from);
@@ -297,28 +297,23 @@ public final class LyricsBracketSplitter {
     }
 
     private static char closerOf(char open) {
-        switch (open) {
-            case '(':
-                return ')';
-            case '（':
-                return '）';
-            default:
-                return 0;
-        }
+        return switch (open) {
+            case '(' -> ')';
+            case '（' -> '）';
+            default -> 0;
+        };
     }
 
     private static char openerOf(char close) {
-        switch (close) {
-            case ')':
-                return '(';
-            case '）':
-                return '（';
-            default:
-                return 0;
-        }
+        return switch (close) {
+            case ')' -> '(';
+            case '）' -> '（';
+            default -> 0;
+        };
     }
 
     /** A repeat count or section name is bracketed too, but it is not sung. */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean sung(String text) {
         if (text == null) {
             return false;
@@ -385,6 +380,7 @@ public final class LyricsBracketSplitter {
     }
 
     /** Lenticular brackets hold a title or credit tag, never a vocal. */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean hasTagBrackets(String text) {
         return text.indexOf('【') >= 0 || text.indexOf('】') >= 0;
     }

@@ -143,7 +143,7 @@ public final class AddOnApi {
 
     /**
      * Creates a button in the legacy (old style) player controls, using one of the button slots
-     * the legacy player controls patch adds to the bottom controls layout.
+     * the legacy player controls patch adds to the bottom controls' layout.
      * <p>
      * The same {@code addOnId} always uses the same slot, and the number of slots is limited.
      * Call this from a {@link #addLegacyPlayerControlsListener} listener.

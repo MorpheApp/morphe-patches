@@ -95,7 +95,7 @@ public class ShortsAutoplayPatch {
                     : Settings.SHORTS_AUTOPLAY.get();
 
             // Like the app's own auto advance, a Short with a panel open, such as the comments,
-            // is repeated. Otherwise the Short behind the panel keeps the layout of the open panel,
+            // is repeated. Otherwise, the Short behind the panel keeps the layout of the open panel,
             // and its overlay is out of place when going back to it.
             if (autoplay && !inBackgroundPiP) {
                 String panelId = EngagementPanel.getLastOpenedPanelId();

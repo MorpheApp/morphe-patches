@@ -31,6 +31,7 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRoutes;
  * and counts an upcoming stream as live. Videos of lists are known without a request,
  * from {@link app.morphe.extension.youtube.patches.components.AskLiveStatusFilter}.
  */
+@SuppressWarnings("unused")
 public final class LiveStatusRequest {
     /**
      * Without an answer by then, the video is treated as not live.
@@ -46,6 +47,7 @@ public final class LiveStatusRequest {
         this.future = Utils.submitOnBackgroundThread(() -> fetch(videoId));
     }
 
+    @SuppressWarnings("SameParameterValue")
     private LiveStatusRequest(boolean isLive) {
         this.future = CompletableFuture.completedFuture(isLive);
     }

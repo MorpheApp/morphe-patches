@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -98,11 +99,11 @@ public final class AutoTranslateCaptionsPatch {
         CaptionTrackInterface template = tracks.get(0);
         String identity = translationSourceIdentity(template);
         if (identity == null) return tracks;
-        String video = captionParameters(template.patch_getUrl()).get("v");
+        String video = Objects.requireNonNull(captionParameters(template.patch_getUrl())).get("v");
         for (CaptionTrackInterface track : tracks) {
             String otherIdentity = translationSourceIdentity(track);
             if (otherIdentity == null || !identity.equals(otherIdentity)
-                    && (video == null || !video.equals(captionParameters(track.patch_getUrl()).get("v")))) {
+                    && (video == null || !video.equals(Objects.requireNonNull(captionParameters(track.patch_getUrl())).get("v")))) {
                 return tracks;
             }
         }
@@ -113,7 +114,7 @@ public final class AutoTranslateCaptionsPatch {
         String vssIdPrefix = vssId.substring(0, vssId.length() - templateCode.length());
         String urlPrefix = templateUrl.substring(0, targetAt);
         String urlSuffix = templateUrl.substring(targetAt + templateCode.length());
-        String sourceLanguage = captionParameters(templateUrl).get("lang");
+        String sourceLanguage = Objects.requireNonNull(captionParameters(templateUrl)).get("lang");
 
         Set<String> existingLanguages = new HashSet<>();
         for (CaptionTrackInterface track : tracks) {
@@ -184,8 +185,8 @@ public final class AutoTranslateCaptionsPatch {
     }
 
     /**
-     * Prefer the source YouTube uses for translations (or its default caption track)
-     * within this audio's originals, otherwise retain their order.
+     * Prefer the original track YouTube uses for translations (or its default
+     * caption track) when available; otherwise, preserve the original order.
      */
     static CaptionTrackInterface findFallbackSource(
             List<? extends PreferredCaptionLanguagePatch.CaptionTrackInterface> tracks,
@@ -299,9 +300,11 @@ public final class AutoTranslateCaptionsPatch {
             for (String part : uri.getRawQuery().split("&", -1)) {
                 int split = part.indexOf('=');
                 String rawKey = split < 0 ? part : part.substring(0, split);
+                //noinspection CharsetObjectCanBeUsed
                 String key = URLDecoder.decode(rawKey, "UTF-8");
                 if (!List.of("v", "lang", "kind", "name", "tlang").contains(key)) continue;
                 if (!key.equals(rawKey) || fields.containsKey(key)) return null;
+                //noinspection CharsetObjectCanBeUsed
                 fields.put(key, URLDecoder.decode(split < 0 ? "" : part.substring(split + 1), "UTF-8"));
             }
             return fields;
@@ -346,6 +349,7 @@ public final class AutoTranslateCaptionsPatch {
             int equal = parameter.indexOf('=');
             String rawKey = equal < 0 ? parameter : parameter.substring(0, equal);
             try {
+                //noinspection CharsetObjectCanBeUsed
                 if ("tlang".equals(URLDecoder.decode(rawKey, "UTF-8"))) {
                     if (found >= 0 || !rawKey.equals("tlang")
                             || !parameter.equals("tlang=" + language)) return -1;

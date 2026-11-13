@@ -41,6 +41,7 @@ import app.morphe.extension.youtube.settings.Settings;
  * <p>
  * The title and the thumbnail of a video are fetched with a single request.
  */
+@SuppressWarnings("unused")
 public final class DeArrowBrandingRequest {
 
     /**
@@ -93,7 +94,7 @@ public final class DeArrowBrandingRequest {
 
         /**
          * @param videoId       The video id of this title.
-         * @param originalTitle The original title, or null if not needed or it failed to fetch.
+         * @param originalTitle The original title, or null if not needed, or it failed to fetch.
          * @return The DeArrow title, or null if the video has no DeArrow title, DeArrow keeps
          *         the original title, or casual mode shows the original title.
          */

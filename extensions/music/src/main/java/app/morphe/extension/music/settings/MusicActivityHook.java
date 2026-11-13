@@ -10,8 +10,6 @@
 
 package app.morphe.extension.music.settings;
 
-import static app.morphe.extension.shared.StringRef.str;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.BlendMode;

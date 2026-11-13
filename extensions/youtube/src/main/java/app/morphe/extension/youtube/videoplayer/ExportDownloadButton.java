@@ -36,6 +36,7 @@ public final class ExportDownloadButton {
     private ExportDownloadButton() {
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

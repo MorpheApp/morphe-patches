@@ -32,7 +32,6 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
-import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -59,7 +58,6 @@ private const val DEVICE_LYRICS_TAB_CLASS = "Lapp/morphe/extension/music/patches
 private const val LYRICS_PANEL_FILTER =
     "Lapp/morphe/extension/music/patches/components/LyricsPanelFilter;"
 
-@Suppress("unused")
 val lyricsPatch = patch(
     name = "Third-party lyrics",
     description = "Adds an option to show synced lyrics with experience enhancement from 19+ providers in the lyrics panel."

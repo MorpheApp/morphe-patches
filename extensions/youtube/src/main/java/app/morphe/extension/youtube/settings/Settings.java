@@ -42,6 +42,7 @@ import app.morphe.extension.youtube.patches.AddToQueuePatch.NativeQueueAvailabil
 import app.morphe.extension.youtube.patches.AddToQueuePatch.NotLocalQueueAvailability;
 import app.morphe.extension.youtube.patches.AddToQueuePatch.QueueType;
 import app.morphe.extension.youtube.patches.AutoCaptionsPatch.AutoCaptionsStyle;
+import app.morphe.extension.youtube.patches.AutoplayRule;
 import app.morphe.extension.youtube.patches.BackgroundPlaybackPatch.AutoPauseOnLockMode;
 import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.FormFactor;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
@@ -112,6 +113,7 @@ import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProv
 import app.morphe.extension.youtube.videoplayer.PlayAllButton.PlaylistIDPrefix;
 import app.morphe.extension.youtube.videoplayer.PlayerIcons;
 
+@SuppressWarnings("unused")
 public class Settings extends SharedYouTubeSettings {
     // Video
     public static final EnumSetting<PlaybackBufferSize> PLAYBACK_BUFFER_SIZE = new EnumSetting<>("morphe_playback_buffer_size", PlaybackBufferSize.DEFAULT, true);
@@ -294,7 +296,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_TAP_AND_HOLD = new BooleanSetting("morphe_disable_haptic_feedback_tap_and_hold", FALSE);
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_ZOOM = new BooleanSetting("morphe_disable_haptic_feedback_zoom", FALSE);
     public static final BooleanSetting DISABLE_PLAYER_POPUP_PANELS = new BooleanSetting("morphe_disable_player_popup_panels", FALSE);
-    public static final BooleanSetting DISABLE_PLAYLIST_AUTOPLAY = new BooleanSetting("morphe_disable_playlist_autoplay", FALSE);
+    public static final BooleanSetting FULLSCREEN_PLAYLIST_PANEL = new BooleanSetting("morphe_fullscreen_playlist_panel", FALSE);
+    public static final BooleanSetting AUTOPLAY_CONTROL = new BooleanSetting("morphe_autoplay_control", FALSE, true);
+    public static final BooleanSetting DISABLE_PLAYLIST_AUTOPLAY = new BooleanSetting("morphe_disable_playlist_autoplay", FALSE, parentNot(AUTOPLAY_CONTROL));
+    public static final EnumSetting<AutoplayRule.Mode> AUTOPLAY_MODE = new EnumSetting<>("morphe_autoplay_mode", AutoplayRule.Mode.AUTO, parent(AUTOPLAY_CONTROL));
+    public static final IntegerSetting AUTOPLAY_MIX_STOP_AFTER = new IntegerSetting("morphe_autoplay_mix_stop_after", 10, parent(AUTOPLAY_CONTROL));
     public static final EnumSetting<ContinueWatchingPromptMode> CONTINUE_WATCHING_PROMPT = new EnumSetting<>("morphe_continue_watching_prompt", ContinueWatchingPromptMode.DEFAULT);
     public static final BooleanSetting DISABLE_FULLSCREEN_PULLED_UP_GESTURE = new BooleanSetting("morphe_disable_fullscreen_pulled_up_gesture", FALSE);
     public static final BooleanSetting DISABLE_FULLSCREEN_SLIDING_GESTURE = new BooleanSetting("morphe_disable_fullscreen_sliding_down_gesture", FALSE);
@@ -361,8 +367,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting PLAY_ALL_BUTTON = new BooleanSetting("morphe_play_all_button", FALSE);
     public static final EnumSetting<PlaylistIDPrefix> PLAY_ALL_BUTTON_TYPE = new EnumSetting<>("morphe_play_all_button_type", PlaylistIDPrefix.ALL_CONTENTS_WITH_TIME_DESCENDING,  parent(PLAY_ALL_BUTTON));
     public static final BooleanSetting PLAYBACK_SPEED_DIALOG_BUTTON = new BooleanSetting("morphe_playback_speed_dialog_button", FALSE, true);
+    public static final BooleanSetting PLAYBACK_SPEED_BUTTON_CYCLE = new BooleanSetting("morphe_playback_speed_button_cycle", FALSE, parent(PLAYBACK_SPEED_DIALOG_BUTTON));
+    public static final StringSetting PLAYBACK_SPEED_BUTTON_CYCLE_SPEEDS = new StringSetting("morphe_playback_speed_button_cycle_speeds", "1.0\n1.5\n2.0", parent(PLAYBACK_SPEED_BUTTON_CYCLE));
     public static final EnumSetting<PlayerIcons.Style> PLAYER_ICON_STYLE = new EnumSetting<>("morphe_player_icon_style", PlayerIcons.Style.AUTO, true);
     public static final IntegerSetting PLAYER_OVERLAY_OPACITY = new IntegerSetting("morphe_player_overlay_opacity", 100, true);
+    public static final BooleanSetting PLAYLIST_PANEL_BUTTON = new BooleanSetting("morphe_playlist_panel_button", FALSE, true);
     public static final BooleanSetting RELOAD_VIDEO_BUTTON = new BooleanSetting("morphe_reload_video_button", FALSE);
     public static final BooleanSetting RESTORE_OLD_PLAYER_BUTTONS = new BooleanSetting("morphe_restore_old_player_buttons", FALSE, true, new RestoreOldPlayerButtonsAvailability());
     public static final BooleanSetting VIDEO_DELAY_OVERLAY_BUTTON = new BooleanSetting("morphe_video_delay_button_overlay", FALSE, true);

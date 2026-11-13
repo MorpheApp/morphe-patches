@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Base64;
 import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import app.morphe.extension.shared.Logger;
@@ -115,9 +116,9 @@ public final class JamArtwork {
                     if (encoded.length() > 180000) throw new IOException(
                         "Artwork too large"
                     );
-                    bytes = android.util.Base64.decode(
+                    bytes = Base64.decode(
                         encoded,
-                        android.util.Base64.DEFAULT
+                        Base64.DEFAULT
                     );
                 } else {
                     HttpURLConnection connection = Requester.openConnection(

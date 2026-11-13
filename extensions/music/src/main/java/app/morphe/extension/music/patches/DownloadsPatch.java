@@ -359,7 +359,7 @@ public final class DownloadsPatch extends BaseInAppDownloadsPatch {
             return EMPTY_COMMAND;
         }
         if (isInAppDownloadMode()) {
-            return savePlaylistCommand(playlistId, OfflinePlaylistAction.OFFLINE_PLAYLIST_ACTION_ADD, List.of())
+            return savePlaylistCommand(playlistId, List.of())
                     .toByteArray();
         }
         return null;

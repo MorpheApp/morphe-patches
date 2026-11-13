@@ -58,6 +58,7 @@ public final class StableCaptionBlocks {
 
     private StableCaptionBlocks() {}
 
+    @SuppressWarnings("SameReturnValue")
     private static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -71,6 +72,7 @@ public final class StableCaptionBlocks {
         List<?> patch_getOriginalCaptions(long time);
 
         @Nullable
+        @SuppressWarnings("SameReturnValue")
         State patch_getBlockState();
 
         void patch_setBlockState(State state);

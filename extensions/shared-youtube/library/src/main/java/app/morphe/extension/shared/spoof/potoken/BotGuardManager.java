@@ -39,6 +39,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
+@SuppressWarnings("unused")
 public final class BotGuardManager {
 
     /**

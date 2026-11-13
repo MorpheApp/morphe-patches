@@ -20,7 +20,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/DisableAudioDuckingPatch;"
 
-@Suppress("unused")
 val disableAudioDuckingPatch = patch(
     name = "Disable audio ducking",
     description = "Adds an option to keep the volume unchanged when another app plays " +
