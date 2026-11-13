@@ -283,6 +283,10 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_playback_speed_summary">Speed used for all tracks. At 100% the app speed is used, such as the podcast playback speed</string>
     <string name="morphe_music_playback_speed_change_pitch_title">Change pitch with speed</string>
 
+    <!-- layout.captions.disableAutoCaptionsPatch -->
+    <string name="morphe_music_disable_auto_captions_title">Disable auto captions</string>
+    <string name="morphe_music_disable_auto_captions_summary">Captions are not enabled automatically when a video starts, including captions the video enables by default</string>
+
     <!-- interaction.audioducking.disableAudioDuckingPatch -->
     <string name="morphe_music_disable_audio_ducking_title">Disable audio ducking</string>
     <string name="morphe_music_disable_audio_ducking_summary">Volume is not lowered when another app plays a short sound, such as a notification</string>
