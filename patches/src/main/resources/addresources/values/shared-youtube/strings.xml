@@ -252,6 +252,18 @@ To sign in, press continue below"</string>
     <string name="morphe_replace_links_with_shortener_title">Change share links to youtu.be</string>
     <string name="morphe_replace_links_with_shortener_summary">Forces videos to use the shortened youtu.be URL format</string>
 
+    <!-- video.quality.rememberVideoQualityPatch -->
+    <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+    <string name="morphe_video_quality_default_entry_1">Auto</string>
+    <string name="morphe_remember_video_quality_last_selected_title">Remember video quality</string>
+    <string name="morphe_remember_video_quality_last_selected_summary">Applies your manual quality selection to all future videos</string>
+    <string name="morphe_remember_video_quality_last_selected_toast_title">Quality change notifications</string>
+    <string name="morphe_remember_video_quality_last_selected_toast_summary">Shows a notification when a new default quality is saved</string>
+    <string name="morphe_video_quality_default_wifi_title">Default video quality on Wi-Fi network</string>
+    <string name="morphe_video_quality_default_mobile_title">Default video quality on mobile network</string>
+    <string name="morphe_remember_video_quality_toast_mobile">Changed default mobile quality to: %s</string>
+    <string name="morphe_remember_video_quality_toast_wifi">Changed default Wi-Fi quality to: %s</string>
+
     <!-- misc.sharesheet.openSystemShareSheetPatch -->
     <string name="morphe_open_system_share_sheet_title">Open system share sheet</string>
     <string name="morphe_open_system_share_sheet_summary">Opens the system share sheet instead of the in-app one when sharing content</string>
