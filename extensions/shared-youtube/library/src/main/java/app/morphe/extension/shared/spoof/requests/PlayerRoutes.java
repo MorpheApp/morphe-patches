@@ -23,6 +23,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.MwebSignIn;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 import app.morphe.extension.shared.spoof.potoken.PoTokenManager;
@@ -59,6 +60,12 @@ public final class PlayerRoutes {
     ).compile();
 
     private static final String YT_API_URL = "https://youtubei.googleapis.com/youtubei/v1/";
+
+    /**
+     * InnerTube of the website. The API host ignores the cookies of a web sign in,
+     * so a signed in web client uses the website host, as the website does.
+     */
+    private static final String WEB_API_URL = MwebSignIn.ORIGIN + "/youtubei/v1/";
 
     private PlayerRoutes() {
     }
@@ -170,11 +177,15 @@ public final class PlayerRoutes {
     }
 
     static HttpURLConnection getPlayerResponseConnectionFromRoute(ClientType clientType) throws IOException {
-        return getPlayerResponseConnectionFromRoute(clientType, false);
+        return getPlayerResponseConnectionFromRoute(clientType, false, false);
     }
 
+    /**
+     * @param webSignIn If the request is made with the cookies of a web sign in.
+     */
     static HttpURLConnection getPlayerResponseConnectionFromRoute(ClientType clientType,
-                                                                  boolean includeVideoDetails) throws IOException {
+                                                                  boolean includeVideoDetails,
+                                                                  boolean webSignIn) throws IOException {
         Route.CompiledRoute route;
         if (!clientType.usePlayerEndpoint) {
             route = includeVideoDetails
@@ -185,7 +196,8 @@ public final class PlayerRoutes {
                     ? GET_PLAYER_STREAMING_DATA_WITH_DETAILS
                     : GET_PLAYER_STREAMING_DATA;
         }
-        HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(YT_API_URL, route);
+        HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(
+                webSignIn ? WEB_API_URL : YT_API_URL, route);
 
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setRequestProperty("User-Agent", clientType.getUserAgent());

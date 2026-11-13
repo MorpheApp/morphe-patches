@@ -13,6 +13,8 @@ package app.morphe.extension.shared.spoof.requests;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.net.Uri;
+import android.util.Base64;
+import android.util.Base64InputStream;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -151,9 +153,11 @@ public class StreamingDataRequest {
 
     private static final String AUTHORIZATION_HEADER = "Authorization"; // Available only to logged-in users.
     /**
-     * Origin of the InnerTube requests of the web clients, as the website makes them.
+     * Asks the website host to encode a response that a browser could run as a script, such as a proto response.
+     * The response then has {@link #SAFETY_ENCODING_HEADER}.
      */
-    private static final String WEB_API_ORIGIN = "https://www.youtube.com";
+    private static final String ENCODE_RESPONSE_HEADER = "X-Goog-Encode-Response-If-Executable";
+    private static final String SAFETY_ENCODING_HEADER = "X-Goog-Safety-Encoding";
     private static final String API_FORMAT_VERSION_HEADER = "X-GOOG-API-FORMAT-VERSION";
     private static final String VISITOR_ID_HEADER = "X-Goog-Visitor-Id";
 
@@ -551,30 +555,35 @@ public class StreamingDataRequest {
         final boolean authHeadersIncludes = Utils.isNotEmpty(authorization);
 
         try {
-            HttpURLConnection connection =
-                    PlayerRoutes.getPlayerResponseConnectionFromRoute(clientType, includeVideoDetails);
+            // Web clients accept only the cookies of a web sign in, and not the access token of the app:
+            // MWEB. Without a web sign in, the client is used signed out, as the website is.
+            // The session of the account is in the authorization.
+            String webCookies = clientType.isWebClient() && MwebSignIn.isSignedIn() && MwebSignIn.getDataSyncId() != null
+                    ? MwebSignIn.getCookieHeader()
+                    : null;
+            String webAuthorization = webCookies == null ? null : MwebSignIn.getAuthorization(MwebSignIn.ORIGIN);
+
+            HttpURLConnection connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(
+                    clientType, includeVideoDetails, webAuthorization != null);
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
 
             authHeadersOverrides = false;
 
-            // Web clients accept only the cookies of a web sign in, and not the access token of the app:
-            // MWEB. Without a web sign in, the client is used signed out, as the website is.
             if (clientType.isWebClient()) {
-                // The session of the account is in the authorization.
-                String cookies = MwebSignIn.isSignedIn() && MwebSignIn.getDataSyncId() != null
-                        ? MwebSignIn.getCookieHeader()
-                        : null;
-                String webAuthorization = cookies == null ? null : MwebSignIn.getAuthorization(WEB_API_ORIGIN);
                 if (webAuthorization == null) {
                     Logger.printDebug(() -> "Not signed in to the website, using signed out: " + clientType
                             + ", videoId: " + videoId);
                 } else {
-                    connection.setRequestProperty("Cookie", cookies);
+                    connection.setRequestProperty("Cookie", webCookies);
                     connection.setRequestProperty(AUTHORIZATION_HEADER, webAuthorization);
-                    // The authorization is made for this origin. The "Origin" header is not set,
-                    // because the API host refuses an origin of another host.
-                    connection.setRequestProperty("X-Origin", WEB_API_ORIGIN);
+                    // The request is made to the website host, as the website makes it.
+                    // The authorization is made for this origin.
+                    connection.setRequestProperty("Origin", MwebSignIn.ORIGIN);
+                    connection.setRequestProperty("X-Origin", MwebSignIn.ORIGIN);
+                    // The website host refuses a proto response, which a browser could run as a script,
+                    // unless it is encoded. See buildPlayerResponseBuffer.
+                    connection.setRequestProperty(ENCODE_RESPONSE_HEADER, "base64");
                     connection.setRequestProperty("X-Goog-AuthUser", "0");
                     connection.setRequestProperty("X-Youtube-Bootstrap-Logged-In", "true");
                     String delegatedSessionId = MwebSignIn.getDelegatedSessionId();
@@ -703,7 +712,9 @@ public class StreamingDataRequest {
             return null;
         }
 
-        try (InputStream inputStream = connection.getInputStream()) {
+        try (InputStream inputStream = "base64".equals(connection.getHeaderField(SAFETY_ENCODING_HEADER))
+                ? new Base64InputStream(connection.getInputStream(), Base64.DEFAULT)
+                : connection.getInputStream()) {
             PlayerResponse playerResponse;
 
             if (clientType.usePlayerEndpoint) {

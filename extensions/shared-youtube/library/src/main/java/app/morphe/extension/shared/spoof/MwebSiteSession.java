@@ -64,6 +64,14 @@ public final class MwebSiteSession {
     private static final String WATCH_URL = "https://m.youtube.com/watch?v=";
 
     /**
+     * The page of an age-restricted video shows a warning ("I understand and wish to proceed"),
+     * and its player does not start. With these parameters the page is opened as the website opens it
+     * after the warning: 'has_verified' for the age check and 'bpctr' for the content check.
+     * Other videos are not changed.
+     */
+    private static final String WATCH_URL_VERIFIED_PARAMETERS = "&has_verified=1&bpctr=9999999999";
+
+    /**
      * The cookie of the cookie consent of YouTube, with all cookies rejected, as the "Reject all" button sets it.
      * Without a consent, the page shows the consent dialog, and its player does not start.
      */
@@ -88,8 +96,15 @@ public final class MwebSiteSession {
      */
     private static final long STALLED_PLAYER_MILLISECONDS = 7000;
 
+    /**
+     * Starts the player of the page, or reports a video that the player of the page cannot play.
+     */
     private static final String START_PLAYER_SCRIPT = "(function(){var p=document.getElementById('movie_player');"
-            + "if(p&&p.playVideo){p.playVideo();" + JS_INTERFACE + ".onLog('player started');}"
+            + "var r=null;try{r=p&&p.getPlayerResponse&&p.getPlayerResponse();}catch(e){}"
+            + "var s=r&&r.playabilityStatus&&r.playabilityStatus.status;"
+            + "if(s&&s!=='OK'){var v='';try{v=new URL(location.href).searchParams.get('v')||'';}catch(e){}"
+            + JS_INTERFACE + ".onUnplayable(String(s),v);}"
+            + "else if(p&&p.playVideo){p.playVideo();" + JS_INTERFACE + ".onLog('player started');}"
             + "else{" + JS_INTERFACE + ".onLog('no player in the page');}})();";
 
     /**
@@ -618,7 +633,7 @@ public final class MwebSiteSession {
             // All cookies of YouTube are always rejected in the cookie consent.
             CookieManager.getInstance().setCookie("https://m.youtube.com", CONSENT_REJECTED_COOKIE);
             // A new page for each video: the player of an open page plays the next video much later.
-            webView.loadUrl(WATCH_URL + Uri.encode(videoId));
+            webView.loadUrl(WATCH_URL + Uri.encode(videoId) + WATCH_URL_VERIFIED_PARAMETERS);
             mainHandler.removeCallbacks(watchdog);
             mainHandler.postDelayed(watchdog, WATCHDOG_INTERVAL_MILLISECONDS);
             return future;
@@ -697,6 +712,24 @@ public final class MwebSiteSession {
             } catch (Exception ex) {
                 future.completeExceptionally(ex);
             }
+        }
+
+        /**
+         * The player of the page cannot play the video, for example an age-restricted video
+         * of an account whose age is not verified, so the website gives no session for it.
+         * The session fails now, instead of after the timeout, and the next client is used.
+         *
+         * @param status      Playability status of the player of the page.
+         * @param pageVideoId Video of the page address, or empty.
+         */
+        @JavascriptInterface
+        public void onUnplayable(String status, String pageVideoId) {
+            CompletableFuture<Session> future = page.pending;
+            if (future == null || future.isDone() || !pageVideoId.equals(page.pendingVideoId)) {
+                return;
+            }
+            Logger.printDebug(() -> "Website session: the page cannot play the video, status: " + status);
+            future.completeExceptionally(new IllegalStateException("The page cannot play the video: " + status));
         }
 
         @JavascriptInterface
