@@ -907,6 +907,10 @@ public final class LyricsManager {
                 }
             }
 
+            if (wrapToEmbeddedLyrics(id, searchTrack)) {
+                return;
+            }
+
             Utils.runOnMainThread(() -> {
                 if (id != requestId.get()) {
                     return;
@@ -919,6 +923,46 @@ public final class LyricsManager {
                 }
             });
         });
+    }
+
+    /**
+     * Starts the refresh cycle over at the embedded lyrics once the provider candidates run out.
+     * The embedded lyrics are not a provider and never enter the candidate queue, so without this
+     * the last provider result would stay on screen and the file's own lyrics could not be reached
+     * again. Resetting the shown set also makes the providers eligible again on the next refresh,
+     * so repeated taps keep cycling instead of stopping at the last provider.
+     */
+    private boolean wrapToEmbeddedLyrics(int id, TrackInfo track) {
+        if (id != requestId.get() || !Settings.LYRICS_USE_EMBEDDED.get()) {
+            return false;
+        }
+        Uri embeddedUri = localUriFor(track);
+        if (embeddedUri == null) {
+            return false;
+        }
+        Lyrics embedded = LocalLyricsFetcher.fetch(embeddedUri);
+        if (embedded == null || embedded.isEmpty()) {
+            return false;
+        }
+
+        final String fingerprint = LyricsMatch.fingerprint(embedded);
+        // The cycle starts over here, so every provider becomes reachable again on the next tap.
+        shownFingerprints.clear();
+        shownFingerprints.add(fingerprint);
+        if (!shouldWrapToLocal(currentLyrics, embedded)) {
+            return false;
+        }
+        publishFromLookup(id, embedded);
+        return true;
+    }
+
+    /** Whether refresh has a local lyric to loop back to that is not already on screen. */
+    static boolean shouldWrapToLocal(@Nullable Lyrics current, @Nullable Lyrics local) {
+        if (local == null || local.isEmpty()) {
+            return false;
+        }
+        return current == null
+                || !LyricsMatch.fingerprint(current).equals(LyricsMatch.fingerprint(local));
     }
 
     private boolean pollAndPublishNext(int id, TrackInfo track) {
@@ -2422,7 +2466,7 @@ public final class LyricsManager {
         }
         Lyrics lyrics = currentLyrics;
         TrackInfo track = currentTrack;
-        if (lyrics == null || track == null || !SectionDetector.needsDetection(lyrics)) {
+        if (track == null || !SectionDetector.needsDetection(lyrics)) {
             return;
         }
         if (sectionDetecting) {
@@ -2511,7 +2555,8 @@ public final class LyricsManager {
         /** Called on the main thread whenever the state or the lyrics change. */
         void onLyricsChanged(State state, @Nullable Lyrics lyrics);
 
-        default void onSectionDetectionStateChanged() {}
+        default void onSectionDetectionStateChanged() {
+        }
     }
 
     record ScoredCandidate(int score, int rank, Lyrics lyrics)

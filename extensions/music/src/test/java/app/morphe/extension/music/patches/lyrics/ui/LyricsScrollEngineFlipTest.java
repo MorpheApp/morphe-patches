@@ -46,7 +46,7 @@ public class LyricsScrollEngineFlipTest {
     @Test
     public void translationWithActiveLayerIsNonZero() throws Exception {
         LyricsScrollEngine.LyricsItemFlip flip = new LyricsScrollEngine.LyricsItemFlip();
-        addLayer(flip, 0f, 100f, 0f, 200f);
+        addLayer(flip, 0f, 100f, 0f);
         float translation = flip.translation(0f);
         assertTrue(Math.abs(translation - 100f) < 1f);
     }
@@ -54,24 +54,24 @@ public class LyricsScrollEngineFlipTest {
     @Test
     public void hasActiveLayersTrueAfterAdd() throws Exception {
         LyricsScrollEngine.LyricsItemFlip flip = new LyricsScrollEngine.LyricsItemFlip();
-        addLayer(flip, 0f, 100f, 0f, 200f);
+        addLayer(flip, 0f, 100f, 0f);
         assertTrue(flip.hasActiveLayers(0f));
     }
 
     @Test
     public void translationRemovesDoneLayers() throws Exception {
         LyricsScrollEngine.LyricsItemFlip flip = new LyricsScrollEngine.LyricsItemFlip();
-        addLayer(flip, 0f, 100f, 0f, 200f);
-        float translation = flip.translation(300f);
+        addLayer(flip, 0f, 100f, 0f);
+        float translation = flip.translation(600f);
         assertEquals(0f, translation, 0.001f);
-        assertFalse(flip.hasActiveLayers(300f));
+        assertFalse(flip.hasActiveLayers(600f));
     }
 
     @Test
     public void translationSumsMultipleLayers() throws Exception {
         LyricsScrollEngine.LyricsItemFlip flip = new LyricsScrollEngine.LyricsItemFlip();
-        addLayer(flip, 0f, 50f, 0f, 200f);
-        addLayer(flip, 0f, 30f, 0f, 200f);
+        addLayer(flip, 0f, 50f, 0f);
+        addLayer(flip, 0f, 30f, 0f);
         float translation = flip.translation(0f);
         assertTrue(Math.abs(translation - 80f) < 2f);
     }
@@ -79,7 +79,7 @@ public class LyricsScrollEngineFlipTest {
     @Test
     public void addSkipsSmallOffset() throws Exception {
         LyricsScrollEngine.LyricsItemFlip flip = new LyricsScrollEngine.LyricsItemFlip();
-        addLayer(flip, 0f, 0.4f, 0f, 200f);
+        addLayer(flip, 0f, 0.4f, 0f);
         assertEquals(0f, flip.translation(0f), 0.001f);
         assertFalse(flip.hasActiveLayers(0f));
     }
@@ -88,7 +88,7 @@ public class LyricsScrollEngineFlipTest {
     public void addSkipsAlreadyFinished() throws Exception {
         LyricsScrollEngine.LyricsItemFlip flip = new LyricsScrollEngine.LyricsItemFlip();
         SpringEasing.LyricsSpring spring = new SpringEasing.LyricsSpring(100f);
-        addLayerRaw(flip, 0f, 100f, 0f, spring, spring.totalMs + 1);
+        addLayerRaw(flip, 0f, 100f, -(spring.totalMs + 1), spring);
         assertFalse(flip.hasActiveLayers(0f));
     }
 
@@ -100,19 +100,19 @@ public class LyricsScrollEngineFlipTest {
     }
 
     private static void addLayer(LyricsScrollEngine.LyricsItemFlip flip,
-                                 float nowMs, float offset, float delayMs, float elapsedMs)
+                                 float nowMs, float offset, float delayMs)
             throws Exception {
         SpringEasing.LyricsSpring spring = new SpringEasing.LyricsSpring(200f);
-        addLayerRaw(flip, nowMs, offset, delayMs, spring, elapsedMs);
+        addLayerRaw(flip, nowMs, offset, delayMs, spring);
     }
 
     private static void addLayerRaw(LyricsScrollEngine.LyricsItemFlip flip,
                                     float nowMs, float offset, float delayMs,
-                                    SpringEasing.LyricsSpring spring, float elapsedMs)
+                                    SpringEasing.LyricsSpring spring)
             throws Exception {
         Method method = LyricsScrollEngine.LyricsItemFlip.class.getDeclaredMethod(
-                "add", float.class, float.class, float.class, SpringEasing.LyricsSpring.class, float.class);
+                "add", float.class, float.class, float.class, SpringEasing.LyricsSpring.class);
         method.setAccessible(true);
-        method.invoke(flip, nowMs, offset, delayMs, spring, elapsedMs);
+        method.invoke(flip, nowMs, offset, delayMs, spring);
     }
 }

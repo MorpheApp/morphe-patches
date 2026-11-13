@@ -202,6 +202,14 @@ public final class ScriptDetector {
     }
 
     /**
+     * Han or kana only, since Hangul is written with spaces between its words and so a space
+     * between two Hangul syllables must never be read as display noise.
+     */
+    public static boolean isHanOrKana(int cp) {
+        return cp <= Character.MAX_VALUE && (isHan((char) cp) || isKana((char) cp));
+    }
+
+    /**
      * A code point of a script written without spaces between words, so a word can end right
      * before or after it. Thai, Lao, Myanmar, Khmer and Tibetan letters are not syllables of their
      * own, unlike {@link #isCjkCodePoint}.

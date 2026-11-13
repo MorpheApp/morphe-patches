@@ -288,7 +288,7 @@ public final class DeezerProvider extends ScoredSongProvider {
 
     /** The writers field is a string on some tracks and a list on others. */
     @Nullable
-    private static String flatten(@Nullable Object value) {
+    static String flatten(@Nullable Object value) {
         if (value instanceof String string) {
             return string.trim().isEmpty() ? null : string.trim();
         }

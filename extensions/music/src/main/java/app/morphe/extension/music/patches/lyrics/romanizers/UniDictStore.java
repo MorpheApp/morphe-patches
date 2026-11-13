@@ -197,9 +197,9 @@ public final class UniDictStore {
         File archive = tableFile(ARCHIVE);
         if (archive == null) throw new IOException("no cache directory");
         if (!archive.isFile()) {
-            RomanizationDict.download(URL, archive, ARCHIVE, (RomanizationDict.Listener) UniDictStore.CHANNEL);
+            RomanizationDict.download(URL, archive, ARCHIVE, UniDictStore.CHANNEL);
         }
-        extract(archive, (RomanizationDict.Listener) UniDictStore.CHANNEL);
+        extract(archive, UniDictStore.CHANNEL);
         Utils.deleteQuietly(archive);
 
         UniDictStore.CHANNEL.onReady(entries());

@@ -125,9 +125,9 @@ public final class JapaneseDictStore {
             File archive = new File(directory, source);
             if (!archive.isFile()) {
                 RomanizationDict.download(BASE_URL + VERSION + "/" + source, archive,
-                        displayName(source), (RomanizationDict.Listener) JapaneseDictStore.CHANNEL);
+                        displayName(source), JapaneseDictStore.CHANNEL);
             }
-            addSource(builder, archive, (RomanizationDict.Listener) JapaneseDictStore.CHANNEL);
+            addSource(builder, archive, JapaneseDictStore.CHANNEL);
             Utils.deleteQuietly(archive);
         }
         builder.finish(Integer.parseInt(VERSION));

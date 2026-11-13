@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
@@ -77,7 +78,7 @@ public final class UnisonProvider implements LyricsProvider {
         }
     }
 
-    private static String base64Url(BigInteger value) {
+    static String base64Url(BigInteger value) {
         final byte[] bytes = value.toByteArray();
         final byte[] coordinate = new byte[32];
         int srcPos = 0;
@@ -90,7 +91,7 @@ public final class UnisonProvider implements LyricsProvider {
                 Base64.URL_SAFE | Base64.NO_PADDING | Base64.NO_WRAP);
     }
 
-    private static String toHex(byte[] bytes) {
+    static String toHex(byte[] bytes) {
         final StringBuilder builder = new StringBuilder(bytes.length * 2);
         for (byte b : bytes) {
             builder.append(Character.forDigit((b >> 4) & 0xF, 16));
@@ -99,7 +100,7 @@ public final class UnisonProvider implements LyricsProvider {
         return builder.toString();
     }
 
-    private static String sourceUrl(String videoId) {
+    static String sourceUrl(String videoId) {
         return "https://unison.boidu.dev/song/" + videoId;
     }
 
@@ -160,20 +161,26 @@ public final class UnisonProvider implements LyricsProvider {
 
     @Nullable
     private Lyrics fetchByVideoId(String videoId, String title, String artist,
-                                  int duration, String album) throws IOException {
-        final StringBuilder url = new StringBuilder(BASE_URL)
-                .append("?v=").append(LyricsRequests.encode(videoId));
-        if (!title.isEmpty()) {
-            url.append("&song=").append(LyricsRequests.encode(title));
-        }
-        if (!artist.isEmpty()) {
-            url.append("&artist=").append(LyricsRequests.encode(artist));
-        }
-        if (duration > 0) {
-            url.append("&duration=").append(duration);
-        }
-        if (album != null && !album.isEmpty()) {
-            url.append("&album=").append(LyricsRequests.encode(album));
+                                  int duration, String album) {
+        final StringBuilder url = new StringBuilder();
+        try {
+            url.append(BASE_URL)
+                    .append("?v=").append(LyricsRequests.encode(videoId));
+            if (!title.isEmpty()) {
+                url.append("&song=").append(LyricsRequests.encode(title));
+            }
+            if (!artist.isEmpty()) {
+                url.append("&artist=").append(LyricsRequests.encode(artist));
+            }
+            if (duration > 0) {
+                url.append("&duration=").append(duration);
+            }
+            if (album != null && !album.isEmpty()) {
+                url.append("&album=").append(LyricsRequests.encode(album));
+            }
+        } catch (UnsupportedEncodingException ex) {
+            Logger.printDebug(() -> name() + " encode failure", ex);
+            return null;
         }
         final JSONObject root = request(url.toString());
         final JSONObject data = root == null ? null : root.optJSONObject("data");

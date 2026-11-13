@@ -7,8 +7,8 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -129,5 +129,14 @@ public class LyricsProvidersTest {
     @Test
     public void isProviderEnabledQQDefault() {
         assertTrue(LyricsProviders.isProviderEnabled("QQ"));
+    }
+
+    @Test
+    public void allProvidersDisabledReturnsEmpty() {
+        StringBuilder order = new StringBuilder();
+        for (String id : LyricsProviders.PROVIDER_ORDER) {
+            order.append('-').append(id).append(',');
+        }
+        assertTrue(LyricsProviders.providersInOrder(order.toString()).isEmpty());
     }
 }

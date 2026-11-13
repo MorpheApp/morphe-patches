@@ -30,43 +30,43 @@ public class LyricsSpanBuilderDisplayTest {
     @Test
     public void thaiDisplayKeepsSpaces() {
         LyricsLine line = new LyricsLine(0, "ฉัน รัก คุณ");
-        assertEquals("ฉัน รัก คุณ", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("ฉัน รัก คุณ", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void thaiDisplayKeepsMultipleSpaces() {
         LyricsLine line = new LyricsLine(0, "ฉัน  รัก   คุณ");
-        assertEquals("ฉัน  รัก   คุณ", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("ฉัน  รัก   คุณ", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void thaiDisplayWithoutSpacesUnchanged() {
         LyricsLine line = new LyricsLine(0, "ฉันรักคุณ");
-        assertEquals("ฉันรักคุณ", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("ฉันรักคุณ", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void thaiDisplayKeepsLatinSpaces() {
         LyricsLine line = new LyricsLine(0, "ฉัน love รัก");
-        assertEquals("ฉัน love รัก", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("ฉัน love รัก", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void thaiDisplayLatinOnlyUnchanged() {
         LyricsLine line = new LyricsLine(0, "Hello world");
-        assertEquals("Hello world", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("Hello world", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void cjkDisplayUnchanged() {
         LyricsLine line = new LyricsLine(0, "你好世界");
-        assertEquals("你好世界", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("你好世界", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void cjkDisplayWithLatinUnchanged() {
         LyricsLine line = new LyricsLine(0, "Hello 世界");
-        assertEquals("Hello 世界", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("Hello 世界", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
@@ -78,7 +78,7 @@ public class LyricsSpanBuilderDisplayTest {
                         new Word(333, 666, "รัก"),
                         new Word(666, 1000, "คุณ")
                 ));
-        String display = LyricsSpanBuilder.displayLineText(line);
+        String display = LyricsTextUtils.displayLineText(line);
         assertEquals(0, display.indexOf("ฉัน"));
         assertEquals(4, display.indexOf("รัก"));
         assertEquals(8, display.indexOf("คุณ"));
@@ -86,145 +86,145 @@ public class LyricsSpanBuilderDisplayTest {
 
     @Test
     public void thaiCharsAreNotSyllablesOfTheirOwn() {
-        assertFalse(LyricsSpanBuilder.isCjkCodePoint('ก'));
-        assertFalse(LyricsSpanBuilder.isCjkCodePoint('ั'));
-        assertFalse(LyricsSpanBuilder.isCjkCodePoint('ำ'));
+        assertFalse(LyricsWordBoundaries.isCjkCodePoint('ก'));
+        assertFalse(LyricsWordBoundaries.isCjkCodePoint('ั'));
+        assertFalse(LyricsWordBoundaries.isCjkCodePoint('ำ'));
     }
 
     @Test
     public void laoDisplayKeepsSpaces() {
         LyricsLine line = new LyricsLine(0, "ສະ ບາ ດີ");
-        assertEquals("ສະ ບາ ດີ", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("ສະ ບາ ດີ", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void khmerDisplayKeepsSpaces() {
         LyricsLine line = new LyricsLine(0, "សួ ស្តី");
-        assertEquals("សួ ស្តី", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("សួ ស្តី", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void myanmarDisplayKeepsSpaces() {
         LyricsLine line = new LyricsLine(0, "မင်း သာ လို");
-        assertEquals("မင်း သာ လို", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("မင်း သာ လို", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void tibetanDisplayKeepsSpaces() {
         LyricsLine line = new LyricsLine(0, "བཀྲ་ཤིས བདེ་ ལེགས་ ཤོག");
-        assertEquals("བཀྲ་ཤིས བདེ་ ལེགས་ ཤོག", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("བཀྲ་ཤིས བདེ་ ལེགས་ ཤོག", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void koreanDisplayKeepsSpaces() {
         LyricsLine line = new LyricsLine(0, "사랑해 친구들");
-        assertEquals("사랑해 친구들", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("사랑해 친구들", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void koreanDisplayUnchanged() {
         LyricsLine line = new LyricsLine(0, "사랑해");
-        assertEquals("사랑해", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("사랑해", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void japaneseDisplayUnchanged() {
         LyricsLine line = new LyricsLine(0, "愛してる");
-        assertEquals("愛してる", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("愛してる", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void thaiWithCjkUnchanged() {
         LyricsLine line = new LyricsLine(0, "ฉันรักคุณ 世界");
-        assertEquals("ฉันรักคุณ 世界", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("ฉันรักคุณ 世界", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void thaiSpacesAndCjkMixed() {
         LyricsLine line = new LyricsLine(0, "ฉัน รัก 世界");
-        assertEquals("ฉัน รัก 世界", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("ฉัน รัก 世界", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void emptyLineReturnsEmpty() {
         LyricsLine line = new LyricsLine(0, "");
-        assertEquals("", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void bracketedVocalStripsBrackets() {
         LyricsLine line = new LyricsLine(0, "(oh)");
-        assertEquals("oh", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("oh", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void bracketedThaiStripsBrackets() {
         LyricsLine line = new LyricsLine(0, "(โอ้)");
-        assertEquals("โอ้", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("โอ้", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void bracketedThaiWithSpacesStripsBrackets() {
         LyricsLine line = new LyricsLine(0, "(โอ้ ฉัน รัก คุณ)");
-        assertEquals("โอ้ ฉัน รัก คุณ", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("โอ้ ฉัน รัก คุณ", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void bgFlagStripsBrackets() {
         LyricsLine line = new LyricsLine(0, "(ah)la la", List.of(), null, false, true);
-        assertEquals("ahla la", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("ahla la", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void bgFlagWithoutBracketsUnchanged() {
         LyricsLine line = new LyricsLine(0, "la la", List.of(), null, false, true);
-        assertEquals("la la", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("la la", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void tagBracketsNotStripped() {
         // Lenticular brackets hold section labels, never a vocal, so the text is kept as-is.
         LyricsLine line = new LyricsLine(0, "【Verse】Hello");
-        assertEquals("【Verse】Hello", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("【Verse】Hello", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void bracketedVocalWithCjkStripsBrackets() {
         LyricsLine line = new LyricsLine(0, "(oh你好世界)");
-        assertEquals("oh你好世界", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("oh你好世界", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void nonBracketedTextUnchanged() {
         // Text with unbalanced brackets is not a bracketed vocal, so it stays as-is.
         LyricsLine line = new LyricsLine(0, "hello)world(");
-        assertEquals("hello)world(", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("hello)world(", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void bracketedVocalWithSpacesInsideStripsBrackets() {
         LyricsLine line = new LyricsLine(0, "(oh yeah)");
-        assertEquals("oh yeah", LyricsSpanBuilder.displayLineText(line));
+        assertEquals("oh yeah", LyricsTextUtils.displayLineText(line));
     }
 
     @Test
     public void isSecondaryLineWithBrackets() {
-        assertTrue(LyricsSpanBuilder.isSecondaryLine(new LyricsLine(0, "(oh)")));
+        assertTrue(LyricsTextUtils.isSecondaryLine(new LyricsLine(0, "(oh)")));
     }
 
     @Test
     public void isSecondaryLineWithBgFlag() {
-        assertTrue(LyricsSpanBuilder.isSecondaryLine(
+        assertTrue(LyricsTextUtils.isSecondaryLine(
                 new LyricsLine(0, "hello", List.of(), null, false, true)));
     }
 
     @Test
     public void isSecondaryLineNormal() {
-        assertFalse(LyricsSpanBuilder.isSecondaryLine(new LyricsLine(0, "hello")));
+        assertFalse(LyricsTextUtils.isSecondaryLine(new LyricsLine(0, "hello")));
     }
 
     @Test
     public void isSecondaryLineTagBrackets() {
-        assertFalse(LyricsSpanBuilder.isSecondaryLine(new LyricsLine(0, "【Verse】hello")));
+        assertFalse(LyricsTextUtils.isSecondaryLine(new LyricsLine(0, "【Verse】hello")));
     }
 }

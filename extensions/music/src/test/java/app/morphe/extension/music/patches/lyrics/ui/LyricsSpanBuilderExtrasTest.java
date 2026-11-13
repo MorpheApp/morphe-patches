@@ -9,12 +9,13 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
-
-import java.lang.reflect.Method;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.lang.reflect.Method;
 
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 
@@ -27,136 +28,136 @@ public class LyricsSpanBuilderExtrasTest {
 
     @Test
     public void zeroWidthSpaceIsInvisible() {
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u200B'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u200B'));
     }
 
     @Test
     public void bidiControlsAreInvisible() {
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u202A'));
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u202B'));
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u202C'));
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u202D'));
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u202E'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u202A'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u202B'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u202C'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u202D'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u202E'));
     }
 
     @Test
     public void directionalityOverridesAreInvisible() {
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u2066'));
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u2067'));
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u2068'));
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u2069'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u2066'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u2067'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u2068'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u2069'));
     }
 
     @Test
     public void bomIsInvisible() {
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\uFEFF'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\uFEFF'));
     }
 
     @Test
     public void zeroWidthJoinerIsInvisible() {
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u200C'));
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u200D'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u200C'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u200D'));
     }
 
     @Test
     public void lrmAndRlmAreInvisible() {
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u200E'));
-        assertTrue(LyricsSpanBuilder.isBidiOrInvisible('\u200F'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u200E'));
+        assertTrue(LyricsTextUtils.isBidiOrInvisible('\u200F'));
     }
 
     @Test
     public void regularCharsAreNotInvisible() {
-        assertFalse(LyricsSpanBuilder.isBidiOrInvisible('a'));
-        assertFalse(LyricsSpanBuilder.isBidiOrInvisible('\u4F60'));
-        assertFalse(LyricsSpanBuilder.isBidiOrInvisible(' '));
-        assertFalse(LyricsSpanBuilder.isBidiOrInvisible('\n'));
+        assertFalse(LyricsTextUtils.isBidiOrInvisible('a'));
+        assertFalse(LyricsTextUtils.isBidiOrInvisible('\u4F60'));
+        assertFalse(LyricsTextUtils.isBidiOrInvisible(' '));
+        assertFalse(LyricsTextUtils.isBidiOrInvisible('\n'));
     }
 
     @Test
     public void stripBidiRemovesZeroWidthSpace() {
-        assertEquals("helloworld", LyricsSpanBuilder.stripBidiControls("hello\u200Bworld"));
+        assertEquals("helloworld", LyricsTextUtils.stripBidiControls("hello\u200Bworld"));
     }
 
     @Test
     public void stripBidiRemovesMultipleInvisibleChars() {
-        assertEquals("abc", LyricsSpanBuilder.stripBidiControls("a\u200Bb\uFEFFc"));
+        assertEquals("abc", LyricsTextUtils.stripBidiControls("a\u200Bb\uFEFFc"));
     }
 
     @Test
     public void stripBidiRemovesBidiControls() {
-        assertEquals("helloworld", LyricsSpanBuilder.stripBidiControls("hello\u202A\u202Bworld"));
+        assertEquals("helloworld", LyricsTextUtils.stripBidiControls("hello\u202A\u202Bworld"));
     }
 
     @Test
     public void stripBidiLeavesCleanTextUnchanged() {
-        assertEquals("hello world", LyricsSpanBuilder.stripBidiControls("hello world"));
+        assertEquals("hello world", LyricsTextUtils.stripBidiControls("hello world"));
     }
 
     @Test
     public void stripBidiNullReturnsEmpty() {
-        assertEquals("", LyricsSpanBuilder.stripBidiControls(null));
+        assertEquals("", LyricsTextUtils.stripBidiControls(null));
     }
 
     @Test
     public void stripBidiEmptyReturnsEmpty() {
-        assertEquals("", LyricsSpanBuilder.stripBidiControls(""));
+        assertEquals("", LyricsTextUtils.stripBidiControls(""));
     }
 
     @Test
     public void stripBidiAllInvisibleReturnsEmpty() {
-        assertEquals("", LyricsSpanBuilder.stripBidiControls("\u200B\uFEFF\u202E\u202C"));
+        assertEquals("", LyricsTextUtils.stripBidiControls("\u200B\uFEFF\u202E\u202C"));
     }
 
     @Test
     public void arabicContainsJoiningScript() {
-        assertTrue(LyricsSpanBuilder.containsJoiningScript("\u0645\u0631\u062D\u0628\u0627"));
+        assertTrue(LyricsTextUtils.containsJoiningScript("\u0645\u0631\u062D\u0628\u0627"));
     }
 
     @Test
     public void persianContainsJoiningScript() {
-        assertTrue(LyricsSpanBuilder.containsJoiningScript("\u0633\u0644\u0627\u0645"));
+        assertTrue(LyricsTextUtils.containsJoiningScript("\u0633\u0644\u0627\u0645"));
     }
 
     @Test
     public void zwjTriggersJoiningScript() {
-        assertTrue(LyricsSpanBuilder.containsJoiningScript("a\u200Db"));
+        assertTrue(LyricsTextUtils.containsJoiningScript("a\u200Db"));
     }
 
     @Test
     public void zwnjTriggersJoiningScript() {
-        assertTrue(LyricsSpanBuilder.containsJoiningScript("a\u200Cb"));
+        assertTrue(LyricsTextUtils.containsJoiningScript("a\u200Cb"));
     }
 
     @Test
     public void latinDoesNotContainJoiningScript() {
-        assertFalse(LyricsSpanBuilder.containsJoiningScript("hello world"));
+        assertFalse(LyricsTextUtils.containsJoiningScript("hello world"));
     }
 
     @Test
     public void cjkDoesNotContainJoiningScript() {
-        assertFalse(LyricsSpanBuilder.containsJoiningScript("\u4F60\u597D\u4E16\u754C"));
+        assertFalse(LyricsTextUtils.containsJoiningScript("\u4F60\u597D\u4E16\u754C"));
     }
 
     @Test
     public void devanagariWithCombiningMarksContainsJoiningScript() {
         // Devanagari virama and vowel signs are NON_SPACING_MARK.
-        assertTrue(LyricsSpanBuilder.containsJoiningScript("\u0928\u092E\u0938\u094D\u0947\u0924\u0947"));
+        assertTrue(LyricsTextUtils.containsJoiningScript("\u0928\u092E\u0938\u094D\u0947\u0924\u0947"));
     }
 
     @Test
     public void devanagariConsonantsOnlyDoNotContainJoiningScript() {
         // Pure Devanagari consonants without combining marks are just LETTER category.
-        assertFalse(LyricsSpanBuilder.containsJoiningScript("\u0928\u092E"));
+        assertFalse(LyricsTextUtils.containsJoiningScript("\u0928\u092E"));
     }
 
     @Test
     public void emptyDoesNotContainJoiningScript() {
-        assertFalse(LyricsSpanBuilder.containsJoiningScript(""));
+        assertFalse(LyricsTextUtils.containsJoiningScript(""));
     }
 
     @Test
     public void nullDoesNotContainJoiningScript() {
-        assertFalse(LyricsSpanBuilder.containsJoiningScript(null));
+        assertFalse(LyricsTextUtils.containsJoiningScript(null));
     }
 
     @Test
@@ -206,49 +207,49 @@ public class LyricsSpanBuilderExtrasTest {
 
     @Test
     public void skipNewlinesAtStart() {
-        assertEquals(2, LyricsSpanBuilder.skipNewlines("\n\nhello", 0));
+        assertEquals(2, LyricsTextUtils.skipNewlines("\n\nhello", 0));
     }
 
     @Test
     public void skipNewlinesCrLf() {
-        assertEquals(2, LyricsSpanBuilder.skipNewlines("\r\nhello", 0));
+        assertEquals(2, LyricsTextUtils.skipNewlines("\r\nhello", 0));
     }
 
     @Test
     public void skipNewlinesMixedCrAndLf() {
-        assertEquals(3, LyricsSpanBuilder.skipNewlines("\r\n\rhello", 0));
+        assertEquals(3, LyricsTextUtils.skipNewlines("\r\n\rhello", 0));
     }
 
     @Test
     public void skipNewlinesNoNewlines() {
-        assertEquals(0, LyricsSpanBuilder.skipNewlines("hello", 0));
+        assertEquals(0, LyricsTextUtils.skipNewlines("hello", 0));
     }
 
     @Test
     public void skipNewlinesAtOffset() {
-        assertEquals(4, LyricsSpanBuilder.skipNewlines("he\n\nllo", 2));
+        assertEquals(4, LyricsTextUtils.skipNewlines("he\n\nllo", 2));
     }
 
     @Test
     public void skipNewlinesAllNewlines() {
-        assertEquals(3, LyricsSpanBuilder.skipNewlines("\n\n\n", 0));
+        assertEquals(3, LyricsTextUtils.skipNewlines("\n\n\n", 0));
     }
 
     @Test
     public void skipNewlinesAtEnd() {
-        assertEquals(6, LyricsSpanBuilder.skipNewlines("hello\n", 5));
+        assertEquals(6, LyricsTextUtils.skipNewlines("hello\n", 5));
     }
 
     // --- CJK per-syllable word boundary tests (regression fix for 81e1b9a) ---
 
     private static int[] invokeWordBoundaries(String text) throws Exception {
-        Method m = LyricsSpanBuilder.class.getDeclaredMethod("wordBoundaries", String.class);
+        Method m = LyricsWordBoundaries.class.getDeclaredMethod("wordBoundaries", String.class);
         m.setAccessible(true);
         return (int[]) m.invoke(null, text);
     }
 
     private static int invokeCountWords(String text) throws Exception {
-        Method m = LyricsSpanBuilder.class.getDeclaredMethod("countWords", String.class);
+        Method m = LyricsWordBoundaries.class.getDeclaredMethod("countWords", String.class);
         m.setAccessible(true);
         return (int) m.invoke(null, text);
     }
@@ -261,14 +262,13 @@ public class LyricsSpanBuilderExtrasTest {
         assertEquals(text.length(), bounds[bounds.length - 1]);
         for (int bound : bounds) {
             if (bound < text.length()) {
-                assertTrue("A word never starts at a combining mark: " + bound,
-                        Character.getType(text.charAt(bound)) != Character.NON_SPACING_MARK);
+                assertNotSame("A word never starts at a combining mark: " + bound, Character.getType(text.charAt(bound)), Character.NON_SPACING_MARK);
             }
         }
     }
 
     private static boolean invokeHasCjkCodePoint(String text) throws Exception {
-        Method m = LyricsSpanBuilder.class.getDeclaredMethod("hasCjkCodePoint", String.class);
+        Method m = LyricsWordBoundaries.class.getDeclaredMethod("hasCjkCodePoint", String.class);
         m.setAccessible(true);
         return (boolean) m.invoke(null, text);
     }

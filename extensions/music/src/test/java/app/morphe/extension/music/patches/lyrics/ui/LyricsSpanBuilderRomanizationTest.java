@@ -8,11 +8,11 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -25,17 +25,17 @@ public class LyricsSpanBuilderRomanizationTest {
     }
 
     /** No reading on the timings, so the whole-line reading path runs. */
-    private static List<LyricsSpanBuilder.WordTiming> perCharacterTimings(String text) {
-        List<LyricsSpanBuilder.WordTiming> timings = new ArrayList<>();
+    private static List<WordTiming> perCharacterTimings(String text) {
+        List<WordTiming> timings = new ArrayList<>();
         for (int i = 0; i < text.length(); i++) {
-            timings.add(new LyricsSpanBuilder.WordTiming(i, i + 1, 0, 1, null, false));
+            timings.add(new WordTiming(i, i + 1, 0, 1, null, false));
         }
         return timings;
     }
 
-    private static String joinedRomaji(List<LyricsSpanBuilder.WordTiming> timings) {
+    private static String joinedRomaji(List<WordTiming> timings) {
         StringBuilder out = new StringBuilder();
-        for (LyricsSpanBuilder.WordTiming timing : timings) {
+        for (WordTiming timing : timings) {
             String romaji = timing.romaji();
             if (romaji == null || romaji.trim().isEmpty()) {
                 continue;
@@ -48,7 +48,7 @@ public class LyricsSpanBuilderRomanizationTest {
         return out.toString();
     }
 
-    private static List<LyricsSpanBuilder.WordTiming> syllableRomanized(
+    private static List<WordTiming> syllableRomanized(
             String original, String wholeRoman) {
         LyricsLine line = new LyricsLine(0, original);
         List<LyricsLine> romanized = List.of(new LyricsLine(0, wholeRoman));
@@ -60,7 +60,7 @@ public class LyricsSpanBuilderRomanizationTest {
     public void japaneseOkuriganaDoesNotRepeatReadingTails() {
         // The whole reading has fewer tokens than the line's syllables, so the allocator leaves
         // holes. Their local guides are tails of words already in the reading and must not be filled.
-        List<LyricsSpanBuilder.WordTiming> result = syllableRomanized("遠回りしてでも", "Toomawari shite demo");
+        List<WordTiming> result = syllableRomanized("遠回りしてでも", "Toomawari shite demo");
         assertEquals("Toomawari shite demo", joinedRomaji(result));
     }
 
@@ -68,7 +68,7 @@ public class LyricsSpanBuilderRomanizationTest {
     public void japaneseOkuriganaDoesNotRepeatReadingTailsOnLongerLine() {
         // A line with kanji whose local guide is absent and kana holes whose guides are tails of
         // the words already in the reading; the tails must not be filled in again.
-        List<LyricsSpanBuilder.WordTiming> result =
+        List<WordTiming> result =
                 syllableRomanized("走り抜ける", "hashiri nukeru");
         assertEquals("hashiri nukeru", joinedRomaji(result));
     }
@@ -76,7 +76,7 @@ public class LyricsSpanBuilderRomanizationTest {
     @Test
     public void missingSyllableStillGetsLocalGuide() {
         // A syllable the reading left out is a genuine gap, so the local guide still fills it.
-        List<LyricsSpanBuilder.WordTiming> result = syllableRomanized("あいう", "a i");
+        List<WordTiming> result = syllableRomanized("あいう", "a i");
         assertEquals("a i u", joinedRomaji(result));
     }
 }
