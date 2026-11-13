@@ -349,6 +349,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SB_ENABLED = new BooleanSetting("morphe_sb_enabled", TRUE);
     public static final BooleanSetting SB_TOAST_ON_SKIP = new BooleanSetting("morphe_sb_toast_on_skip", TRUE, parent(SB_ENABLED));
     public static final BooleanSetting SB_TOAST_ON_CONNECTION_ERROR = new BooleanSetting("morphe_sb_toast_on_connection_error", TRUE, parent(SB_ENABLED));
+    public static final BooleanSetting SB_OFFLINE_SEGMENTS = new BooleanSetting("morphe_sb_offline_segments", TRUE, parent(SB_ENABLED));
     public static final StringSetting SB_API_URL = new StringSetting("morphe_sb_api_url", "https://sponsor.ajay.app", parent(SB_ENABLED));
     /** Generated on the first segment submission. Not shown in the settings. */
     public static final StringSetting SB_PRIVATE_USER_ID = new StringSetting("morphe_sb_private_user_id_Do_Not_Share", "");
