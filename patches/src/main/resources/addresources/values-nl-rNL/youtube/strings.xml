@@ -695,6 +695,9 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_play_all_button_type_entry_11">Alleen leden-Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Alleen leden live streams</string>
   <string name="morphe_play_all_button_not_available_toast">Kan geen afspeellijst genereren vanwege verkeerd kanaal-ID</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Toon Afspeellijst-knop</string>
+  <string name="morphe_playlist_panel_button_summary">Tik om het afspeellijstpaneel te openen. Alleen zichtbaar bij het afspelen van een afspeellijst</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Toon Video opnieuw laden-knop</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-ID is niet beschikbaar. Laad de video handmatig opnieuw</string>
@@ -1204,9 +1207,24 @@ Instellingen → Weergave (of automatisch afspelen) → Volgende video automatis
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Pop-uppanelen van speler uitschakelen</string>
   <string name="morphe_disable_player_popup_panels_summary">Schakelt het automatisch openen van playlist- en livechatpanelen uit</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Afspeellijstpaneel tonen in volledig scherm</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Afspeellijstpaneel opent over de speler in volledig scherm</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Afspeellijstpaneel verlaat volledig scherm op tablets</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Schakel automatisch afspelen van afspeellijsten uit</string>
   <string name="morphe_disable_playlist_autoplay_summary">Voorkomt dat afspeellijsten automatisch doorgaan naar de volgende video</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Autoplay-bediening</string>
+  <string name="morphe_autoplay_control_summary">Voegt een spelersknop en een regel toe voor de volgende video. Afspeellijsten en wachtrijen lopen door, een Mix stopt na een aantal video\'s, een gesuggereerde video wordt nooit afgespeeld. Tik op de knop voor de volgende modus, tik en houd vast voor de lijst</string>
+  <string name="morphe_autoplay_mode_title">Autoplay-modus</string>
+  <string name="morphe_autoplay_mode_entry_1">Automatisch</string>
+  <string name="morphe_autoplay_mode_entry_2">Enkel</string>
+  <string name="morphe_autoplay_mode_entry_3">Uit</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Mix-lengte</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">In de modus Auto stopt een Mix na dit aantal video\'s. 0 = geen limiet</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s video\'s</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: geen limiet</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Verder kijken?\"-prompt</string>
   <string name="morphe_continue_watching_prompt_entry_1">Standaard</string>
@@ -1282,9 +1300,6 @@ Auto-indeling
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel oude opslaan in afspeellijst</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Uitschakelen van vetgedrukte pictogrammen</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Herstel kanaalnaam onder videospeler</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Systeemdeelblad openen</string>
-  <string name="morphe_open_system_share_sheet_summary">Opent het systeemdeelblad i.p.v. het ingebouwde deelblad bij het delen van content</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube-muziekknopen overschrijven</string>
   <string name="morphe_override_youtube_music_buttons_summary">Opent je voorkeursmuziekapp in plaats van de standaard YouTube Music-app</string>
@@ -1478,7 +1493,6 @@ Video's worden opgevraagd via een kort voorvoegsel van de gehashte video-ID, zod
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow is tijdelijk niet beschikbaar (statuscode: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow is tijdelijk niet beschikbaar</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Oude spelerknopstijl herstellen</string>
   <string name="morphe_restore_old_player_buttons_summary">Zet de vetgedrukte bedieningselementen van de videospeler terug naar de oudere, dunnere visuele stijl</string>
@@ -1518,25 +1532,20 @@ Video's worden opgevraagd via een kort voorvoegsel van de gehashte video-ID, zod
   <string name="morphe_video_delay_button_flyout_title">Menu voor videovertraging tonen</string>
   <string name="morphe_video_delay_dialog_input_hint">Vertraging in milliseconden</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automatisch</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Onthoud video kwaliteit</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Past je handmatige kwaliteitselectie toe op alle toekomstige video’s</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Meldingen bij wijziging van kwaliteit</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Toont een melding wanneer een nieuwe standaard kwaliteit is opgeslagen</string>
-  <string name="morphe_video_quality_default_wifi_title">Standaard videokwaliteit op Wi-Fi-netwerk</string>
-  <string name="morphe_video_quality_default_mobile_title">Standaard videokwaliteit op mobiel netwerk</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Onthoud Shorts kwaliteit</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Past je handmatige kwaliteitselectie toe op alle toekomstige Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Standaardkwaliteit voor Shorts op wifi-netwerk</string>
   <string name="morphe_shorts_quality_default_mobile_title">Standaardkwaliteit voor Shorts op mobiel netwerk</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Standaard mobiele kwaliteit gewijzigd naar: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Standaard Wi-Fi kwaliteit gewijzigd naar: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">De Shorts mobiele kwaliteit is gewijzigd in: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">De Shorts Wi-Fi kwaliteit is gewijzigd in: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Toon de \'Afspeelsnelheid\'-knop</string>
   <string name="morphe_playback_speed_dialog_button_summary">Tik en houd vast om de snelheid naar de standaard terug te zetten</string>
+  <string name="morphe_playback_speed_button_cycle_title">Tik op de knop Afspeelsnelheid om door snelheden te wisselen</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Tikken gaat naar de volgende snelheid in de lijst. Tikken en vasthouden opent het snelheidsmenu</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Snelheden knop Afspeelsnelheid</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Snelheden waar doorheen wordt gewisseld door te tikken, één per regel. Na de laatste snelheid gaat een tik terug naar de eerste</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Ongeldige lijst met snelheids cycli, teruggezet naar standaard</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Toon de \'Kwaliteit\'-knop</string>
   <string name="morphe_video_quality_dialog_button_summary">Tik en houd vast om de kwaliteit naar de vooraf ingestelde waarde terug te zetten</string>

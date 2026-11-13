@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">ডাউনলোড মেনুর জন্য বহিঃস্থ ডাউনলোডার ব্যবহার করুন</string>
   <string name="morphe_external_downloader_menu_summary">মেনুগুলোর ডাউনলোড অপশন আপনার বহিঃস্থ ডাউনলোডার খুলবে</string>
   <string name="morphe_export_download_folder_title">ডাউনলোড এক্সপোর্ট করুন</string>
-  <string name="morphe_export_download_folder_summary">"ডাউনলোডের মেনু ব্যবহার করে অ্যাপের মাধ্যমে ডাউনলোড করা গান এবং ভিডিওগুলি আপনার ডিভাইসের স্টোরেজে এক্সপোর্ট করুন। এক্সপোর্ট ফোল্ডার পরিবর্তন করতে ট্যাপ করুন
+  <string name="morphe_export_download_folder_summary">"ইন-অ্যাপ ডাউনলোড ফ্লাইআউট মেনু ব্যবহার করে অ্যাপে সেভ করা গান এবং ভিডিওগুলি আপনার ডিভাইসের স্টোরেজে এক্সপোর্ট করুন। এক্সপোর্ট ফোল্ডার পরিবর্তন করতে ট্যাপ করুন
 
 এক্সপোর্ট ফোল্ডার: %s"</string>
   <string name="morphe_export_download_started">ডাউনলোড এক্সপোর্ট করা হচ্ছে</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">%2$sটি ডাউনলোডের মধ্যে %1$sটি %3$s-এ এক্সপোর্ট করা হয়েছে</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">মর্ফ সম্পর্কে</string>
-  <string name="morphe_settings_music_screen_1_ads_title">বিজ্ঞাপন</string>
-  <string name="morphe_settings_music_screen_2_feed_title">ফিড</string>
-  <string name="morphe_settings_music_screen_3_general_title">সাধারণ</string>
-  <string name="morphe_settings_music_screen_4_player_title">প্লেয়ার</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">লিরিক্স</string>
-  <string name="morphe_settings_music_screen_9_misc_title">বিবিধ</string>
+  <string name="morphe_settings_music_screen_00_about_title">সম্পর্কে</string>
+  <string name="morphe_settings_music_screen_01_ads_title">বিজ্ঞাপন</string>
+  <string name="morphe_settings_music_screen_02_feed_title">ফিড</string>
+  <string name="morphe_settings_music_screen_03_general_title">সাধারণ</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">লিরিক্স</string>
+  <string name="morphe_settings_music_screen_05_misc_title">বিবিধ</string>
+  <string name="morphe_settings_music_screen_06_player_title">প্লেয়ার</string>
+  <string name="morphe_settings_music_screen_10_video_title">ভিডিও</string>
   <string name="morphe_music_app_language_title">YouTube Music ভাষা</string>
   <string name="morphe_music_app_language_summary_default">সিস্টেম ভাষা</string>
   <string name="morphe_music_app_language_summary_unsupported">Android 13 বা তার পরবর্তী সংস্করণ প্রয়োজন</string>
@@ -256,6 +257,9 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_playback_speed_title">প্লেব্যাক গতি</string>
   <string name="morphe_music_playback_speed_summary">সকল ট্র্যাকের জন্য ব্যবহৃত গতি। 100% হলে অ্যাপের গতি ব্যবহৃত হয়, যেমন পডকাস্ট প্লেব্যাকের গতি।</string>
   <string name="morphe_music_playback_speed_change_pitch_title">গতির সাথে পিচ পরিবর্তন করুন</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">স্বয়ংক্রিয় ক্যাপশন বন্ধ করুন</string>
+  <string name="morphe_music_disable_auto_captions_summary">ভিডিও শুরু হওয়ার সময় ক্যাপশনগুলো স্বয়ংক্রিয়ভাবে সক্রিয় হবে না, যার মধ্যে ভিডিওতে ডিফল্টভাবে সক্রিয় থাকা ক্যাপশনগুলোও অন্তর্ভুক্ত</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">অডিও ডাকিং বন্ধ করুন</string>
   <string name="morphe_music_disable_audio_ducking_summary">অন্য কোনো অ্যাপ থেকে ছোট শব্দ, যেমন নোটিফিকেশন বাজলে ভলিউম কমানো হবে না</string>
@@ -567,6 +571,7 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
 
 ডেটাবেসটি ODC Open Database License (ODbL) এর অধীনে লাইসেন্সপ্রাপ্ত। xoundbyte-এর Soul Over AI থেকে প্রাপ্ত এন্ট্রিগুলো CC BY 4.0 এর অধীনে লাইসেন্সপ্রাপ্ত। SoundProof বা Soul Over AI-এর সাথে কোনো সংশ্লিষ্টতা বা সমর্থন নেই।"</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">এই ডিভাইস ফাইলের জন্য লিরিক্স উপলব্ধ নেই।</string>
   <string name="morphe_music_lyrics_enabled_title">তৃতীয় পক্ষের লিরিক্স ব্যবহার করুন</string>
   <string name="morphe_music_lyrics_enabled_summary">একটি তৃতীয় পক্ষের পরিষেবা থেকে লিরিক্স দেখায়, যদি কিছু খুঁজে না পাওয়া যায় তবে অন্তর্নির্মিত লিরিক্সে ফিরে যায়</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">গানের কথা দেখার সময় স্ক্রিন চালু রাখুন</string>
@@ -698,6 +703,7 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_search_title_hint">গানের শিরোনাম</string>
   <string name="morphe_music_lyrics_search_artist_hint">শিল্পী</string>
   <string name="morphe_music_lyrics_search_empty">একটি গানের শিরোনাম এবং একজন শিল্পীর নাম লিখুন</string>
+  <string name="morphe_music_lyrics_search_google">Google-এর মাধ্যমে খুঁজুন</string>
   <string name="morphe_music_lyrics_search_no_providers">সক্রিয় কোনো প্রোভাইডারই অন্য গানের জন্য অনুসন্ধান করতে পারে না</string>
   <string name="morphe_music_lyrics_saved">সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_lyrics_written_by">লিখিত: %s</string>
@@ -777,7 +783,6 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_romanized_by_ai">রোমানাইজ করেছেন %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">রোমানাইজ করেছেন %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s সহ)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Rime দ্বারা রোমানাইজড (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">অনুবাদ করা হয়েছে</string>
   <string name="morphe_music_lyrics_translation_language_title">অনুবাদের ভাষা</string>
@@ -837,19 +842,15 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_use_ai_section_title">AI দিয়ে বিভাগ সনাক্ত করুন</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">শুধুমাত্র তখনই ব্যবহৃত হয় যখন প্রদানকারীর কাছে কোনো বিভাগ লেবেল যেমন Chorus বা Verse থাকে না, যা আপনার OpenAI-সঙ্গতিপন্ন মডেল তখন সনাক্ত করে। সারি সম্পাদনা করাও এর প্রম্পট খোলে</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API এন্ডপয়েন্ট URL (উদাহরণস্বরূপ https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">প্রম্পট টেমপ্লেট</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">প্লেসহোল্ডারগুলি: {task}, {language}, {title}, {artist}, {count}, {lines}। অজানাগুলি টাইপ করা অনুযায়ী রাখা হয়েছে</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">প্রম্পট সংরক্ষিত হয়েছে</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">প্রম্পট সংরক্ষিত হয়েছে, কিন্তু AI এন্ডপয়েন্ট এখনও ব্যবহারযোগ্য নয়। প্রথমে এটি AI সেটিংস-এ কনফিগার করুন</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">প্রম্পট রিসেট করা হয়েছে</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">অনুবাদ &amp; রোমানাইজেশন সেটিংস সংরক্ষিত হয়েছে</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">সেটিংস সংরক্ষিত হয়েছে, তবে AI এন্ডপয়েন্টটি এখনও ব্যবহারযোগ্য নয়</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">সেটিংস সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">সেটিংস ডিফল্টে রিসেট করা হয়েছে</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">বেস URL http:// বা https:// দিয়ে শুরু হতে হবে</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">সেটিংস অসম্পূর্ণ বা প্রদানকারীর দ্বারা প্রত্যাখ্যাত</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">সংযোগ যাচাই করা হচ্ছে…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: সংযুক্ত! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: সংযোগ ব্যর্থ হয়েছে। সেটিংস চেক করুন।</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">প্রথমে API কী লিখুন</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">সংযোগ পরীক্ষা করুন</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">মডেলগুলি ফেচ করা হচ্ছে…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">মডেলগুলি আনুন</string>
@@ -866,7 +867,14 @@ SABR প্লেব্যাক (ভিডিও স্ট্রিম স্�
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">অতিরিক্ত অনুরোধ হেডার (ঐচ্ছিক JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">নাম এবং মান উদ্ধৃতি চিহ্নের মধ্যে লিখুন, যেমন {\"api-key\": \"abc\"}। / : বা সংখ্যা সম্বলিত উদ্ধৃতি চিহ্নহীন মান প্রত্যাখ্যাত হয়। একটি খালি মান হেডারটি সরিয়ে দেয়।</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">নাম এবং মান উদ্ধৃতি চিহ্নের মধ্যে লিখুন, যেমন {\"temperature\": 0.3}। / বা : সম্বলিত উদ্ধৃতি চিহ্নহীন মান প্রত্যাখ্যাত হয়। মডেল এবং বার্তা এখানে সেট করা যায় না।</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">তর্কের প্রচেষ্টা</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">ডিফল্ট</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">অথেন্টিকেশন কী (ফ্রি বা প্রো)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI এই ট্র্যাকটির জন্য কোনো সেকশন সনাক্ত করতে পারেনি</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">সনাক্ত করা হচ্ছে</string>
+  <string name="morphe_music_lyrics_ai_section_apply">সেকশনগুলো প্রয়োগ করুন</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">সনাক্তকরণ বাতিল করা হয়েছে</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">সেকশন সনাক্ত করার জন্য কোনো লিরিক্স নেই</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - বোল্ড আইকন নিষ্ক্রিয় করুন</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - প্লেয়ার আপ নেক্সট, লিরিক্স এবং সম্পর্কিত ট্যাব পুনরুদ্ধার করুন</string>

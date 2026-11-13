@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">在“下载”菜单中使用外部下载器</string>
   <string name="morphe_external_downloader_menu_summary">菜单中的下载选项将打开你的外部下载器</string>
   <string name="morphe_export_download_folder_title">导出下载内容</string>
-  <string name="morphe_export_download_folder_summary">"使用下载菜单将应用下载的歌曲和视频导出到设备存储空间。点击以更改导出文件夹
+  <string name="morphe_export_download_folder_summary">"使用应用内下载的弹出菜单，将应用内保存的歌曲和视频导出到您的设备存储空间。点击以更改导出
 
 导出文件夹：%s"</string>
   <string name="morphe_export_download_started">正在导出下载内容</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">已将 %2$s 个下载内容中的 %1$s 个导出到 %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">关于</string>
-  <string name="morphe_settings_music_screen_1_ads_title">广告</string>
-  <string name="morphe_settings_music_screen_2_feed_title">订阅源</string>
-  <string name="morphe_settings_music_screen_3_general_title">常规</string>
-  <string name="morphe_settings_music_screen_4_player_title">播放器</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">歌词</string>
-  <string name="morphe_settings_music_screen_9_misc_title">其他</string>
+  <string name="morphe_settings_music_screen_00_about_title">关于</string>
+  <string name="morphe_settings_music_screen_01_ads_title">广告</string>
+  <string name="morphe_settings_music_screen_02_feed_title">订阅源</string>
+  <string name="morphe_settings_music_screen_03_general_title">常规</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">歌词</string>
+  <string name="morphe_settings_music_screen_05_misc_title">其他</string>
+  <string name="morphe_settings_music_screen_06_player_title">播放器</string>
+  <string name="morphe_settings_music_screen_10_video_title">视频</string>
   <string name="morphe_music_app_language_title">YouTube Music 语言</string>
   <string name="morphe_music_app_language_summary_default">系统语言</string>
   <string name="morphe_music_app_language_summary_unsupported">需要 Android 13 或更高版本</string>
@@ -256,6 +257,9 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_playback_speed_title">播放速度</string>
   <string name="morphe_music_playback_speed_summary">用于所有曲目的速度。在 100% 时，使用应用速度，例如播客播放速度。</string>
   <string name="morphe_music_playback_speed_change_pitch_title">随速度改变音调</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">禁用自动字幕</string>
+  <string name="morphe_music_disable_auto_captions_summary">视频开始时不会自动启用字幕，包括视频默认启用的字幕</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">禁用音频避让</string>
   <string name="morphe_music_disable_audio_ducking_summary">当其他应用播放短促声音（如通知）时，音量不会降低</string>
@@ -264,7 +268,7 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">防止按下不喜欢按钮时跳转到下一曲</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">A-B 循环</string>
-  <string name="morphe_music_ab_loop_summary">长按进度条可设置循环起点，再次长按设置循环终点，再次长按则清除循环</string>
+  <string name="morphe_music_ab_loop_summary">长按进度条设置起点，再次长按设置终点，并在起点与终点之间循环播放，再次长按则取消循环</string>
   <string name="morphe_music_ab_loop_toast_start">循环起点已设置为 %s</string>
   <string name="morphe_music_ab_loop_toast_end">循环终点已设置为 %s</string>
   <string name="morphe_music_ab_loop_toast_cleared">循环已清除</string>
@@ -567,6 +571,7 @@ SABR 播放（模拟视频流已关闭）"</string>
 
 该数据库根据 ODC 开放数据库许可 (ODbL) 授权。来自 xoundbyte 的 Soul Over AI 的条目根据 CC BY 4.0 授权。不隶属于或由 SoundProof 或 Soul Over AI 背书。"</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">此设备文件不支持歌词。</string>
   <string name="morphe_music_lyrics_enabled_title">使用第三方歌词</string>
   <string name="morphe_music_lyrics_enabled_summary">从第三方服务获取歌词，如果找不到则回退到内置歌词</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">查看歌词时保持屏幕常亮</string>
@@ -698,6 +703,7 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_search_title_hint">歌曲标题</string>
   <string name="morphe_music_lyrics_search_artist_hint">歌手</string>
   <string name="morphe_music_lyrics_search_empty">输入歌曲标题和歌手</string>
+  <string name="morphe_music_lyrics_search_google">使用 Google 搜索</string>
   <string name="morphe_music_lyrics_search_no_providers">已启用的提供商均无法搜索其他歌曲</string>
   <string name="morphe_music_lyrics_saved">已保存</string>
   <string name="morphe_music_lyrics_written_by">作者：%s</string>
@@ -777,7 +783,6 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">由 %s 音译</string>
   <string name="morphe_music_lyrics_romanized_by_local">由 %s 罗马化</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s（含 %2$s）</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">由Rime罗马化（%s）</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">翻译</string>
   <string name="morphe_music_lyrics_translation_language_title">翻译目标语言</string>
@@ -837,19 +842,15 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">使用AI检测段落</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">仅在提供商未提供诸如副歌或主歌等段落标签时使用，然后由你的兼容OpenAI模型进行检测。编辑该行也会打开其提示词</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API端点URL（例如 https://api.openai.com/v1/chat/completions，https://api.anthropic.com/v1/chat/completions，https://generativelanguage.googleapis.com/v1beta/openai/chat/completions）</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">提示词模板</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">占位符：{task}、{language}、{title}、{artist}、{count}、{lines}。未知占位符将按原样保留</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">提示词已保存</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">提示词已保存，但 AI 端点尚不可用。请先在 AI 设置中进行配置</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">提示词已重置</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">翻译 &amp; 罗马化设置已保存</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">设置已保存，但 AI 端点尚不可用</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">设置已保存</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">设置已重置为默认</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">基础 URL 必须以 http:// 或 https:// 开头</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">设置不完整或被提供商拒绝</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">正在验证连接…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s：已连接！（%2$s）</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s：连接失败。请检查设置。</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">请先输入API密钥</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">测试连接</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">正在获取模型……</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">获取模型</string>
@@ -866,7 +867,14 @@ SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">额外请求头（可选JSON）</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">引号名称和值，例如 {\"api-key\": \"abc\"}。包含/ : 或数字的未引用值将被拒绝。空值将移除标头。</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">引号名称和值，例如 {\"temperature\": 0.3}。包含/或: 的未引用值将被拒绝。模型和消息不能在此处设置。</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">推理强度</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">默认</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">身份验证密钥（免费版或专业版）</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI 无法检测到此曲目的段落</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">检测中</string>
+  <string name="morphe_music_lyrics_ai_section_apply">应用段落</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">检测已取消</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">没有可检测段落的歌词</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - 禁用粗体图标</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 恢复播放器的「接下来播放」「歌词」和「相关」标签页</string>

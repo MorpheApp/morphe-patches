@@ -695,6 +695,9 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_play_all_button_type_entry_11">Doar Shorts pentru membri</string>
   <string name="morphe_play_all_button_type_entry_12">Doar transmisiuni în direct pentru membri</string>
   <string name="morphe_play_all_button_not_available_toast">Nu s-a putut genera playlist-ul din cauza nepotrivirii ID-ului canalului</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Afișează butonul Listă de redare</string>
+  <string name="morphe_playlist_panel_button_summary">Apasă pentru a deschide panoul listei de redare. Se afișează doar în timpul redării unei liste de redare</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Afișează butonul Reîncărcare videoclip</string>
   <string name="morphe_dismiss_player_not_available_toast">ID-ul video nu este disponibil. Vă rugăm să reîncărcați manual videoclipul</string>
@@ -1204,9 +1207,24 @@ Setări → Redare (sau Redare automată) → Redare automată următorul videoc
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title"> Dezactivați panourile pop-up ale jucătorului</string>
   <string name="morphe_disable_player_popup_panels_summary">Dezactivează deschiderea automată a panelurilor de listă de redare și chat live</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Afișare panou playlist în full screen</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Panoul de playlist se deschide peste player-ul full screen</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Panoul de playlist părăsește modul full screen pe tablete</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Dezactivează redarea automată a playlistului</string>
   <string name="morphe_disable_playlist_autoplay_summary">Împiedică avansarea automată a playlisturilor la videoclipul următor</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Control redare automată</string>
+  <string name="morphe_autoplay_control_summary">Adaugă un buton de redare și o regulă pentru următorul videoclip. Playlist-urile și cozile continuă, un Mix se oprește după un număr de videoclipuri, un videoclip sugerat nu se redă niciodată. Apasă butonul pentru următorul mod, apasă și menține pentru listă</string>
+  <string name="morphe_autoplay_mode_title">Mod redare automată</string>
+  <string name="morphe_autoplay_mode_entry_1">Automat</string>
+  <string name="morphe_autoplay_mode_entry_2">Singur</string>
+  <string name="morphe_autoplay_mode_entry_3">Oprit</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Lungimea Mix-ului</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">În modul Auto, un Mix se oprește după acest număr de videoclipuri. 0 = fără limită</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s videoclipuri</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: fără limită</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Solicitare \"Continuați vizionarea\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Implicit</string>
@@ -1282,9 +1300,6 @@ Aspect pentru automotive
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurează vechea salvare în lista de redare</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Dezactivează pictogramele aldine</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaurează numele canalului sub playerul video</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Deschide meniul de partajare al sistemului</string>
-  <string name="morphe_open_system_share_sheet_summary">Deschide foaia de partajare a sistemului în loc de cea din aplicație când partajați conținut</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Suprascrie butoanele YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Deschide aplicația preferată de muzică în locul aplicației standard YouTube Music</string>
@@ -1478,7 +1493,6 @@ Videoclipurile sunt solicitate printr-un prefix scurt al ID-ului video cu hash, 
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow nu este disponibil temporar (cod de stare: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow nu este disponibil temporar</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Restaurare stil butoane player vechi</string>
   <string name="morphe_restore_old_player_buttons_summary">Restabilește comenzile playerului video îndrăznețe la stilul vizual mai vechi, mai subțire</string>
@@ -1518,25 +1532,20 @@ Videoclipurile sunt solicitate printr-un prefix scurt al ID-ului video cu hash, 
   <string name="morphe_video_delay_button_flyout_title">Afișați meniul de întârziere video</string>
   <string name="morphe_video_delay_dialog_input_hint">Întârziere în milisecunde</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automat</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Reține calitatea video</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Aplică selecția manuală a calității pentru toate videoclipurile viitoare</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Notificări de schimbare a calității</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Afișează o notificare când se salvează o calitate implicită nouă</string>
-  <string name="morphe_video_quality_default_wifi_title">Calitate video implicită în rețeaua Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Calitatea video implicită în rețeaua mobilă</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Reține calitatea Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Aplică selecția manuală de calitate pentru toate Shorts viitoare</string>
   <string name="morphe_shorts_quality_default_wifi_title">Calitatea implicită a Shorts în rețeaua Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Calitatea implicită a Shorts în rețeaua mobilă</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Calitate mobilă implicită modificată la: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Calitate Wi-Fi implicită modificată la: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Calitatea Shorts mobilă a fost modificată la: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Calitatea Shorts Wi-Fi a fost modificată la: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Afișează butonul de viteză de redare</string>
   <string name="morphe_playback_speed_dialog_button_summary">Atinge și menține apăsat pentru a reseta viteza la valoarea implicită</string>
+  <string name="morphe_playback_speed_button_cycle_title">Apasă butonul de Viteză de redare pentru a comuta vitezele</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Apasarea trece la următoarea viteză din listă. Apasă și menține pentru a deschide meniul de viteze</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Vitezele butonului de viteză de redare</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Vitezele între care se comută prin atingere, una pe rând. După ultima viteză, o atingere revine la prima</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Listă de cycle viteze invalidă, resetare la implicit</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Afișează butonul Calitate</string>
   <string name="morphe_video_quality_dialog_button_summary">Atinge și menține apăsat pentru a reseta calitatea la valoarea implicită</string>

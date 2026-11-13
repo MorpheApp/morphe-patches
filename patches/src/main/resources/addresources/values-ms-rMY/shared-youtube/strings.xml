@@ -232,6 +232,20 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_replace_music_with_youtube_summary">Menggantikan music.youtube.com kepada youtube.com dalam pautan yang dikongsi</string>
   <string name="morphe_replace_links_with_shortener_title">Tukar pautan kongsi kepada youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Memaksa video menggunakan format URL youtu.be yang dipendekkan</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatik</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Ingat kualiti video</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Gunakan pilihan kualiti manual anda untuk semua video akan datang</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Notifikasi perubahan kualiti</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Paparkan notifikasi apabila kualiti lalai baharu disimpan</string>
+  <string name="morphe_video_quality_default_wifi_title">Kualiti video lalai pada rangkaian Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Kualiti video lalai pada rangkaian mudah alih</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Tukar kualiti mudah alih lalai kepada: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Tukar kualiti Wi-Fi lalai kepada: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Buka helaian perkongsian sistem</string>
+  <string name="morphe_open_system_share_sheet_summary">Membuka helaian perkongsian sistem berbanding helaian dalam aplikasi apabila berkongsi kandungan</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Log Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Dilumpuhkan</string>

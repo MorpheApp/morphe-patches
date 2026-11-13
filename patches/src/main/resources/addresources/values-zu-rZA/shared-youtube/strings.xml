@@ -232,6 +232,20 @@ Ukuze ungene, cindezela qhubeka ngezansi"</string>
   <string name="morphe_replace_music_with_youtube_summary">Shintsha i-music.youtube.com ibe yi-youtube.com ema-links ahlanganyelwe</string>
   <string name="morphe_replace_links_with_shortener_title">Shintsha ama-link okwabelana abe ngu youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Yenza amavidiyo ukuba asebenzise ifomathi ye-URL efishane ye-youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Okuzenzakalayo</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Khumbula ikhwalithi yevidiyo</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Kusebenzisa ukukhetha kwakho kwekhwalithi ngesandla kuwo wonke amavidiyo azayo</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Izaziso zoshintsho lwekhwalithi</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Ikhombisa isaziso lapho kulondolozwa ikhwalithi ejwayelekile entsha</string>
+  <string name="morphe_video_quality_default_wifi_title">Ikhwalithi yevidiyo evamile kunethiwekhi ye-Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Ikhwalithi yevidiyo evamile kunethiwekhi yeselula</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Kushintshwe izinga elijwayelekile le-mobile libe ngu: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Kushintshwe izinga elijwayelekile le-Wi-Fi libe ngu: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Vula i-share sheet ehleliwe yesistimu</string>
+  <string name="morphe_open_system_share_sheet_summary">Ivula i-share sheet yesistimu kunaleyo esehlala phakathi kwe-app lapho wabelana ngokuqukethwe</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Ukubhala ama-log e-Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Kukhishwa</string>

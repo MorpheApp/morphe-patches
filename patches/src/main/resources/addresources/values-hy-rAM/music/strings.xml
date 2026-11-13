@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Օգտագործել արտաքին ներբեռնիչ «Ներբեռնում» մենյուի համար</string>
   <string name="morphe_external_downloader_menu_summary">Մենյուների «Ներբեռնում» տարբերակը փոխարենը կբացի ձեր արտաքին ներբեռնիչը</string>
   <string name="morphe_export_download_folder_title">Արտահանել ներբեռնումները</string>
-  <string name="morphe_export_download_folder_summary">"Արտահանեք հավելվածի միջոցով ներբեռնված երգերն ու տեսանյութերը ձեր սարքի հիշողության մեջ՝ օգտագործելով ներբեռնման ընտրացանկը: Հպեք՝ արտահանման թղթապանակը փոխելու համար
+  <string name="morphe_export_download_folder_summary">"Արտահանեք հավելվածում պահպանված երգերը և տեսանյութերը ձեր սարքի հիշողության մեջ՝ օգտագործելով ներբեռնումների լողացող ընտրացանկը: Հպեք՝ արտահանման թղթապանակը փոխելու համար
 
 Արտահանման թղթապանակ՝ %s"</string>
   <string name="morphe_export_download_started">Ներբեռնման արտահանում</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">Արտահանվեց %2$s ներբեռնումներից %1$s-ը դեպի %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Morphe-ի մասին</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Գովազդներ</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Լրահոս</string>
-  <string name="morphe_settings_music_screen_3_general_title">Ընդհանուր</string>
-  <string name="morphe_settings_music_screen_4_player_title">Նվագարկիչ</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Բառեր</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Տարբեր</string>
+  <string name="morphe_settings_music_screen_00_about_title">Morphe-ի մասին</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Գովազդներ</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Լրահոս</string>
+  <string name="morphe_settings_music_screen_03_general_title">Ընդհանուր</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Բառեր</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Տարբեր</string>
+  <string name="morphe_settings_music_screen_06_player_title">Նվագարկիչ</string>
+  <string name="morphe_settings_music_screen_10_video_title">Տեսանյութ</string>
   <string name="morphe_music_app_language_title">YouTube Music-ի լեզուն</string>
   <string name="morphe_music_app_language_summary_default">Համակարգի լեզուն</string>
   <string name="morphe_music_app_language_summary_unsupported">Պահանջվում է Android 13 կամ ավելի նոր տարբերակ</string>
@@ -256,6 +257,9 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_playback_speed_title">Վերարտադրման արագություն</string>
   <string name="morphe_music_playback_speed_summary">Արագությունը, որն օգտագործվում է բոլոր թրեկների համար: 100%-ի դեպքում օգտագործվում է հավելվածի արագությունը, օրինակ՝ փոդքասթի վերարտադրման արագությունը</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Փոխել տոնայնությունը արագության հետ</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Անջատել ավտոմատ սուբտիտրերը</string>
+  <string name="morphe_music_disable_auto_captions_summary">Տեսանյութի սկզբնության պահին սուբտիտրերը չեն միացվում ավտոմատ կերպով, ներառյալ այն սուբտիտրերը, որոնք տեսանյութը միացնում է լռելյայն</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Անջատել ձայնի ավտոմատ ցածրացումը</string>
   <string name="morphe_music_disable_audio_ducking_summary">Ձայնի մակարդակը չի ցածրացնի, երբ մեկ այլ հավելված նվագում է կարճ ձայն, օրինակ՝ ծանուցում</string>
@@ -567,6 +571,7 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
 
 Տվյալների բազան լիցենզավորված է ODC Open Database License (ODbL)-ով: xoundbyte-ի Soul Over AI-ից վերցված գրառումները լիցենզավորված են CC BY 4.0-ով: Կապված չէ և չի հաստատվել SoundProof-ի կամ Soul Over AI-ի կողմից:"</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Տեքստերը հասանելի չեն այս սարքի ֆայլի համար:</string>
   <string name="morphe_music_lyrics_enabled_title">Օգտագործել երրորդ կողմի բառերը</string>
   <string name="morphe_music_lyrics_enabled_summary">Ցուցադրում է բառերը երրորդ կողմի ծառայությունից, անցում է ներկառուցված բառերին, եթե ոչինչ չի գտնվել</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Պահել էկրանը միացված տեքստերը դիտելիս</string>
@@ -698,6 +703,7 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_search_title_hint">Երգի վերնագիր</string>
   <string name="morphe_music_lyrics_search_artist_hint">Արտիստ</string>
   <string name="morphe_music_lyrics_search_empty">Մուտքագրեք երգի վերնագիրը և արտիստին</string>
+  <string name="morphe_music_lyrics_search_google">Փնտրել Google-ով</string>
   <string name="morphe_music_lyrics_search_no_providers">Ակտիվացված մատակարարներից ոչ մեկը չի կարող փնտրել այլ երգեր</string>
   <string name="morphe_music_lyrics_saved">Պահպանված է</string>
   <string name="morphe_music_lyrics_written_by">Գրված է՝ %s</string>
@@ -777,7 +783,6 @@ SABR վերարտադրում (Spoof տեսանյութերի հոսքերը ա�
   <string name="morphe_music_lyrics_romanized_by_ai">Տրանսլիտերացված է %s-ի կողմից</string>
   <string name="morphe_music_lyrics_romanized_by_local">Ռոմանիզացված է %s-ի կողմից</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s-ի միջոցով)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Ռոմանիզացված է Rime-ի կողմից (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Թարգմանված</string>
   <string name="morphe_music_lyrics_translation_language_title">Թարգմանության լեզուն</string>
@@ -837,19 +842,15 @@ Lyrics-ները տրամադրվում են երրորդ կողմի ծառայո
   <string name="morphe_music_lyrics_use_ai_section_title">Հայտնաբերել հատվածները AI-ի միջոցով</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Օգտագործվում է միայն այն դեպքում, երբ մատակարարը չի տրամադրում հատվածների պիտակներ, ինչպիսիք են Կրկներգը կամ Տունը, որոնք այնուհետև հայտնաբերվում են ձեր OpenAI-համատեղելի մոդելի կողմից: Տողի խմբագրումը նաև բացում է դրա հուշումը</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint-ի URL-ը (օրինակ՝ https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Հուշման կաղապար</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Տեղապահներ՝ {task}, {language}, {title}, {artist}, {count}, {lines}: Անհայտները թողնվում են այնպես, ինչպես գրված են</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Հուշումը պահպանված է</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Հուշումը պահվեց, սակայն AI վերջնակետը դեռ հասանելի չէ: Նախ կարգավորեք այն AI կարգավորումներում</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Հուշումը վերակայացված է</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Թարգմանության և ռոմանիզացիայի կարգավորումները պահպանված են</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Կարգավորումները պահվեցին, բայց AI վերջնակետը դեռ հասանելի չէ</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Կարգավորումները պահվեցին</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Կարգավորումները վերականգնվեցին լռելյայն արժեքներին</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Հիմնական URL-ը պետք է սկսվի http:// կամ https://-ով</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Կարգավորումները թերի են կամ մերժվել են մատակարարի կողմից</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Կապի ստուգում...</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Միացված է: (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s. Միացումը ձախողվեց: Ստուգեք կարգավորումները:</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Նախ մուտքագրեք API բանալին</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Ստուգել կապը</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Մոդելների բեռնում…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Ստանալ մոդելները</string>
@@ -866,7 +867,14 @@ Lyrics-ները տրամադրվում են երրորդ կողմի ծառայո
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Հարցման լրացուցիչ վերնագրեր (կամընտիր JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Չակերտներով նշեք անվանումները և արժեքները, օրինակ՝ {\"api-key\": \"abc\"}: Առանց չակերտների / կամ : պարունակող արժեքը կամ թիվը կմերժվի: Դատարկ արժեքը հեռացնում է վերնագիրը:</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Չակերտներով նշեք անվանումները և արժեքները, օրինակ՝ {\"temperature\": 0.3}: Առանց չակերտների / կամ : պարունակող արժեքը կմերժվի: Մոդելը և հաղորդագրությունները չեն կարող սահմանվել այստեղ:</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Դատողական ջ andսերտություն</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Լռելյայն</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Ավտորիզացիայի բանալի (Free կամ Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI-ն չկարողացավ հայտնաբերել հատվածները այս թրեկի համար</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Հայտնաբերում է</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Կիրառել հատվածները</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Հայտնաբերումը չեղարկվեց</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Չկան բառեր հատվածների հայտնաբերման համար</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Անջատել թավ տառերով սիմվոլները</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">Վերականգնել նվագարկիչի «Հաջորդը», «Լիրիկան» և «Կապված» ներդիրները</string>

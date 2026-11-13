@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Koristi eksterni preuzimač za meni Preuzmi</string>
   <string name="morphe_external_downloader_menu_summary">Opcija Preuzmi u menijima otvara vaš eksterni preuzimač</string>
   <string name="morphe_export_download_folder_title">Izvoz preuzimanja</string>
-  <string name="morphe_export_download_folder_summary">"Izvežite pjesme i videozapise koje je aplikacija preuzela u memoriju vašeg uređaja koristeći meni preuzimanja. Dodirnite da promijenite folder za izvoz
+  <string name="morphe_export_download_folder_summary">"Izvežite u aplikaciji sačuvane pjesme i videozapise u memoriju vašeg uređaja koristeći iskačući meni za preuzimanja u aplikaciji. Dodirnite da promijenite folder za izvoz
 
 Folder za izvoz: %s"</string>
   <string name="morphe_export_download_started">Izvoz preuzimanja</string>
@@ -146,13 +146,14 @@ Folder za izvoz: %s"</string>
   <string name="morphe_export_download_all_saved">Izvezeno %1$s od %2$s preuzimanja u %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">O Morphe</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Reklame</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
-  <string name="morphe_settings_music_screen_3_general_title">Opšte</string>
-  <string name="morphe_settings_music_screen_4_player_title">Plejer</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Tekstovi pjesama</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Razno</string>
+  <string name="morphe_settings_music_screen_00_about_title">O Morphe</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Reklame</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_03_general_title">Opšte</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Tekst pjesme</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Razno</string>
+  <string name="morphe_settings_music_screen_06_player_title">Plejer</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">Jezik YouTube Music-a</string>
   <string name="morphe_music_app_language_summary_default">Sistemski jezik</string>
   <string name="morphe_music_app_language_summary_unsupported">Zahtijeva Android 13 ili noviji</string>
@@ -256,6 +257,9 @@ SABR reprodukcija (isključeni spoof video streamovi)"</string>
   <string name="morphe_music_playback_speed_title">Brzina reprodukcije</string>
   <string name="morphe_music_playback_speed_summary">Brzina koja se koristi za sve pjesme. Na 100% koristi se brzina aplikacije, kao što je brzina reprodukcije podkasta</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Promijeni visinu tona s brzinom</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Onemogući automatske titlove</string>
+  <string name="morphe_music_disable_auto_captions_summary">Titlovi se neće automatski uključiti pri početku videozapisa, uključujući i titlove koje videozapisi omogućuju po zadanim postavkama</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Onemogući prigušivanje zvuka</string>
   <string name="morphe_music_disable_audio_ducking_summary">Glasnoća se neće smanjiti kada druga aplikacija pusti kratak zvuk, kao što je obavijest</string>
@@ -567,6 +571,7 @@ Kako biste osigurali da se scrobbling sinhronizuje tokom reprodukcije u pozadini
 
 Baza podataka je licencirana pod ODC Open Database License (ODbL). Unosi iz Soul Over AI od xoundbyte-a licencirani su pod CC BY 4.0. Nema povezanosti niti odobrenja od strane SoundProof-a ili Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Tekst pjesme nije dostupan za ovu datoteku uređaja.</string>
   <string name="morphe_music_lyrics_enabled_title">Koristi tekstove pjesama trećih strana</string>
   <string name="morphe_music_lyrics_enabled_summary">Prikazuje tekstove pjesama sa usluge trećih strana, vraćajući se na ugrađene tekstove kada nijedan nije pronađen</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Drži ekran uključenim tokom pregledavanja teksta pjesme</string>
@@ -698,6 +703,7 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_search_title_hint">Naslov pjesme</string>
   <string name="morphe_music_lyrics_search_artist_hint">Izvođač</string>
   <string name="morphe_music_lyrics_search_empty">Unesite naziv pjesme i izvođača</string>
+  <string name="morphe_music_lyrics_search_google">Pretraži pomoću Google-a</string>
   <string name="morphe_music_lyrics_search_no_providers">Nijedan od omogućenih pružalaca usluga ne može pretražiti druge pjesme</string>
   <string name="morphe_music_lyrics_saved">Sačuvano</string>
   <string name="morphe_music_lyrics_written_by">Napisao: %s</string>
@@ -776,7 +782,6 @@ Primjenjuje se na oba ograničenja. Na 1.75, četiri karaktera pune širine rač
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizovao %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romanizirao %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (sa %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Romanizirao Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Prevedeno</string>
   <string name="morphe_music_lyrics_translation_language_title">Jezik prevoda</string>
@@ -836,19 +841,15 @@ Tekstovi pjesama dolaze iz usluga trećih strana koje nisu povezane sa Morphe, s
   <string name="morphe_music_lyrics_use_ai_section_title">Detektuj sekcije pomoću AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Koristi se samo kada pružalac ne šalje oznake sekcija kao što su Refren ili Strofa, koje zatim detektuje vaš OpenAI kompatibilni model. Uređivanje reda takođe otvara njegov prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (npr. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Šablon prompta</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholderi: {task}, {language}, {title}, {artist}, {count}, {lines}. Nepoznati ostaju onakvi kakvi su upisani</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt je sačuvan</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt je sačuvan, ali AI krajnja tačka još uvijek nije upotrebljiva. Prvo je konfigurišite u AI postavkama</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt je resetovan</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Postavke prevoda &amp; romanizacije su sačuvane</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Postavke su sačuvane, ali AI krajnja tačka još uvijek nije upotrebljiva</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Postavke su sačuvane</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Postavke su vraćene na zadane vrijednosti</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Bazni URL mora početi sa http:// ili https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Postavke su nepotpune ili odbijene od strane pružaoca</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Provjera veze…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Povezano! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Veza nije uspostavljena. Provjerite postavke.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Prvo unesite API ključ</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Testiraj vezu</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Preuzimanje modela…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Preuzmi modele</string>
@@ -865,7 +866,14 @@ Tekstovi pjesama dolaze iz usluga trećih strana koje nisu povezane sa Morphe, s
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Dodatna zaglavlja zahtjeva (opcionalni JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Navodnicima označite nazive i vrijednosti, npr. {\"api-key\": \"abc\"}. Vrijednost bez navodnika koja sadrži / : ili broj bit će odbijena. Prazna vrijednost uklanja zaglavlje.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Navodnicima označite nazive i vrijednosti, npr. {\"temperature\": 0.3}. Vrijednost bez navodnika koja sadrži / ili : bit će odbijena. Model i poruke ovdje ne mogu biti postavljeni.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Napora razmišljanja</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Zadana</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Autentikacijski ključ (Besplatni ili Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI nije mogao detektovati sekcije za ovu pjesmu</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Detektovanje</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Primijeni sekcije</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Detektovanje otkazano</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Nema teksta pjesme za detektovanje sekcija</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Onemogući podebljene ikone</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Vrati kartice Sljedeće, Tekstovi pjesama i Srodno u plejeru</string>

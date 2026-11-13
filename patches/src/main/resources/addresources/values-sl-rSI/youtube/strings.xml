@@ -695,6 +695,9 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_play_all_button_type_entry_11">Samo Shorts za člane</string>
   <string name="morphe_play_all_button_type_entry_12">Samo pretočni videoposnetki za člane</string>
   <string name="morphe_play_all_button_not_available_toast">Ni mogoče ustvariti seznama predvajanja zaradi neusklajenega ID-ja kanala</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Prikaži gumb za seznam predvajanja</string>
+  <string name="morphe_playlist_panel_button_summary">Tapnite za odprtje panela s seznamom predvajanja. Prikaže se samo med predvajanjem seznama predvajanja</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Prikaži gumb \'Ponovno naloži videoposnetek\'</string>
   <string name="morphe_dismiss_player_not_available_toast">ID videa ni na voljo. Ponovno naložite video ročno</string>
@@ -1204,9 +1207,23 @@ Nastavitve → Predvajanje (ali Samodejno predvajanje) → Samodejno predvajanje
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Onemogoči pojavne okenske plošče predvajalnika</string>
   <string name="morphe_disable_player_popup_panels_summary">Onemogoči samodejno odpiranje plošč s seznamom predvajanja in klepetom v živo</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Prikaži ploščo seznama predvajanja v polnem zaslonu</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Plošča seznama predvajanja se odpre čez predvajalnik v polnem zaslonu</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Plošča seznama predvajanja zapre poln zaslon na tabletah</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Onemogoči samodejno predvajanje v predvajalnih seznamih</string>
   <string name="morphe_disable_playlist_autoplay_summary">Preprečuje samodejno napredovanje na naslednji video v predvajalnih seznamih</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Kontrola samodejnega predvajanja</string>
+  <string name="morphe_autoplay_control_summary">Dodaja gumb predvajalnika in pravilo za naslednji video. Seznami predvajanja in vrste se nadaljujejo, Mix se ustavi po določenem številu videov, predlagani video pa se nikoli ne predvaja. Dotaknite se gumba za naslednji način, pridržite pa ga za seznam</string>
+  <string name="morphe_autoplay_mode_title">Način samodejnega predvajanja</string>
+  <string name="morphe_autoplay_mode_entry_1">Avto</string>
+  <string name="morphe_autoplay_mode_entry_2">Enovi</string>
+  <string name="morphe_autoplay_mode_entry_3">Izklop</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Dolžina Mixa</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">V načinu Avto se Mix ustavi po toliko videovih. 0 = brez omejitve</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: brez omejitev</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Poziv \"Nadaljujte z ogledom\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Privzeto</string>
@@ -1282,9 +1299,6 @@ Razporeditev za avtomobile
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnovi staro shranjevanje v seznam predvajanja</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Onemogoči krepke ikone</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Povrni ime kanala pod predvajalnikom videa</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Odpri sistemsko okno za deljenje</string>
-  <string name="morphe_open_system_share_sheet_summary">Odpre sistemsko okno za deljenje namesto vgrajenega pri deljenju vsebine</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Prekrivanje gumbov za YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Odpre vašo želeno glasbeno aplikacijo namesto običajne aplikacije YouTube Music</string>
@@ -1478,7 +1492,6 @@ Videoposnetki so zahtevani s kratko predpono zgoščenega ID-ja videoposnetka, t
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow je začasno nedostopen (koda stanja: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow je začasno nedostopen</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Obnovi star slog gumbov predvajalnika</string>
   <string name="morphe_restore_old_player_buttons_summary">Povrne drzne gumbe predvajalnika videa v starejši, tanjši vizualni slog</string>
@@ -1518,25 +1531,20 @@ Videoposnetki so zahtevani s kratko predpono zgoščenega ID-ja videoposnetka, t
   <string name="morphe_video_delay_button_flyout_title">Prikaži meni za zakasnitev videa</string>
   <string name="morphe_video_delay_dialog_input_hint">Zakasnitev v milisekundah</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Samodejno</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Zapomni si kakovost videa</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Uporabi vašo ročno izbrano kakovost za vse prihodnje videoposnetke</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Obvestila o spremembi kvalitete</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Prikaže obvestilo, ko se shrani nova privzeta kakovost</string>
-  <string name="morphe_video_quality_default_wifi_title">Privzeta kakovost videa na omrežju Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Privzeta kakovost videa na mobilnem omrežju</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Zapomni si kvaliteto Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Uporabi vašo ročno izbrano kakovost za vse prihodnje Shortse</string>
   <string name="morphe_shorts_quality_default_wifi_title">Privzeta kakovost Shorts na omrežju Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Privzeta kakovost Shorts na mobilnem omrežju</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Sprememba privzete kakovosti za mobilno omrežje: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Sprememba privzete kakovosti za Wi-Fi: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Sprememba kakovosti za Shorts za mobilno omrežje: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Sprememba kakovosti za Shorts za Wi-Fi: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Pokaži gumb za hitrost predvajanja</string>
   <string name="morphe_playback_speed_dialog_button_summary">Tapnite in pridržite, da ponastavite hitrost v privzeto</string>
+  <string name="morphe_playback_speed_button_cycle_title">Dotaknite se gumba za hitrost predvajanja za menjavo hitrosti</string>
+  <string name="morphe_playback_speed_button_cycle_summary">S dotikom prejdete na naslednjo hitrost na seznamu. Pridrživanjem odprete meni hitrosti</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Hitrosti gumba za hitrost predvajanja</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Hitrosti, skozi katere preklopite s taktom, ena po vrstici. Po zadnji hitrosti takt ponovno vrne k prvi</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Neveljavn seznam ciklov hitrosti, ponastavljeno na privzeto</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Pokaži gumb za kakovost</string>
   <string name="morphe_video_quality_dialog_button_summary">Tapnite in pridržite, da ponastavite kakovost v privzeto</string>

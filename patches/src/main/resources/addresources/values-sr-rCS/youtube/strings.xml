@@ -695,6 +695,9 @@ Napomena: Možda neće raditi na direktnim prenosima"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts samo članova</string>
   <string name="morphe_play_all_button_type_entry_12">Strimevi samo članova</string>
   <string name="morphe_play_all_button_not_available_toast">Nije moguće generisati listu zbog neslaganja ID-ja kanala</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Prikaži dugme za plejlistu</string>
+  <string name="morphe_playlist_panel_button_summary">Dodirnite da otvorite panel plejliste. Prikazuje se samo tokom reprodukcije plejliste</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Prikaži dugme za ponovno učitavanje videa</string>
   <string name="morphe_dismiss_player_not_available_toast">ID videa nije dostupan. Ručno ponovo učitajte video</string>
@@ -1204,9 +1207,24 @@ Postavke → Reprodukcija (ili Automatsko puštanje) → Automatski pusti slede�
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Onemogući panele koji iskaču u plejeru</string>
   <string name="morphe_disable_player_popup_panels_summary">Onemogućava automatsko otvaranje panela za listu reprodukcije i ćaskanje uživo</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Prikaži panel plejliste u punom ekranu</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Panel plejliste se otvara preko plejera u punom ekranu</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Panel plejliste izlazi iz punog ekrana na tabletima</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Sprečava automatsko prelaženje na sledeći video u plejlisti</string>
   <string name="morphe_disable_playlist_autoplay_summary">Sprečava da se liste reprodukcije automatski prebacuju na sledeći video</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Kontrola autopleja</string>
+  <string name="morphe_autoplay_control_summary">Dodaje dugme za plejer i pravilo za sledeći video. Plejliste i redovi za reprodukciju se nastavljaju, Miks se zaustavlja nakon određenog broja videa, a sugerisani video se nikada ne pušta. Dodirnite dugme za sledeći režim, pritisnite i zadržite za listu</string>
+  <string name="morphe_autoplay_mode_title">Režim autopleja</string>
+  <string name="morphe_autoplay_mode_entry_1">Automatski</string>
+  <string name="morphe_autoplay_mode_entry_2">Pojedinačno</string>
+  <string name="morphe_autoplay_mode_entry_3">Isključen</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Dužina miksa</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">U režimu Auto, Miks se zaustavlja nakon ovog broja videa. 0 = bez ograničenja</string>
+  <string name="morphe_autoplay_mix_length">Miks: %s videa</string>
+  <string name="morphe_autoplay_mix_no_limit">Miks: bez ograničenja</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Upit \"Nastavite sa gledanjem\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Подразумеван</string>
@@ -1282,9 +1300,6 @@ Automotive raspored
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Vraća staro čuvanje na listu za reprodukciju</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Onemogući podebljane ikone</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Vrati naziv kanala ispod plejera videa</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Otvori okvir za deljenje sistema</string>
-  <string name="morphe_open_system_share_sheet_summary">Otvara sistemski listu deljenja umesto unutar aplikacije prilikom deljenja sadržaja</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Prekrivač YouTube Music dugmadi</string>
   <string name="morphe_override_youtube_music_buttons_summary">Otvara vašu omiljenu muzičku aplikaciju umesto standardne YouTube Music aplikacije</string>
@@ -1478,7 +1493,6 @@ Video snimci se zahtevaju kratkim prefiksom hešovanog ID-ja, tako da server ne 
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow privremeno nije dostupan (kôd statusa: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow privremeno nije dostupan</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Vraćanje starog stila dugmadi plejera</string>
   <string name="morphe_restore_old_player_buttons_summary">Vraća podebljane kontrole video plejera u stariji, tanji vizuelni stil</string>
@@ -1518,25 +1532,20 @@ Video snimci se zahtevaju kratkim prefiksom hešovanog ID-ja, tako da server ne 
   <string name="morphe_video_delay_button_flyout_title">Prikaži meni za kašnjenje videa</string>
   <string name="morphe_video_delay_dialog_input_hint">Kašnjenje u milisekundama</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automatski</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Zapamti kvalitet videa</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Primena ručne selekcije kvaliteta na sve buduće video zapise</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Obaveštenja o promeni kvaliteta</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Prikazuje obaveštenje kada je sačuvana nova podrazumevana kvaliteta</string>
-  <string name="morphe_video_quality_default_wifi_title">Podrazumevani kvalitet videa na Wi-Fi mreži</string>
-  <string name="morphe_video_quality_default_mobile_title">Podrazumevani kvalitet videa na mobilnoj mreži</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Zapamti kvalitet Shorts videa</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Primena ručne selekcije kvaliteta na sve buduće Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Podrazumevani kvalitet Shorts videa na Wi-Fi mreži</string>
   <string name="morphe_shorts_quality_default_mobile_title">Podrazumevani kvalitet Shorts videa na mobilnoj mreži</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Kvalitet na mobilnom je promenjen na: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Kvalitet na Wi-Fi mreži je promenjen na: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Kvalitet Shorts videa na mobilnom je promenjen na: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Kvalitet Shorts videa na Wi-Fi mreži je promenjen na: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Prikaži dugme za brzinu reprodukcije</string>
   <string name="morphe_playback_speed_dialog_button_summary">Dodirnite i zadržite da biste vratili brzinu na podrazumevanu</string>
+  <string name="morphe_playback_speed_button_cycle_title">Dodirnite dugme za brzinu reprodukcije da biste menjali brzine</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Dodir prebacuje na sledeću brzinu na listi. Pritisak i držanje otvara meni brzina</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Brzine dugmeta za brzinu reprodukcije</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Brzine kroz koje se prelazi dodirom, jedna po redu. Nakon poslednje brzine, dodir vraća na prvu</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Nevalidna lista ciklusa brzina, resetovano na podrazumevano</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Prikaži dugme kvaliteta</string>
   <string name="morphe_video_quality_dialog_button_summary">Dodirnite i zadržite da biste vratili kvalitet na podrazumevanu</string>

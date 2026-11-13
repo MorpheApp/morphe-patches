@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">השתמש במוריד חיצוני לתפריט ההורדות</string>
   <string name="morphe_external_downloader_menu_summary">אפשרות ההורדה בתפריטים תפתח את המוריד החיצוני שלך במקום</string>
   <string name="morphe_export_download_folder_title">ייצוא הורדות</string>
-  <string name="morphe_export_download_folder_summary">"ייצוא שירים וסרטונים שהורדו על ידי האפליקציה לאחסון במכשיר שלך באמצעות תפריט ההורדה. הקש כדי לשנות את תיקיית הייצוא
+  <string name="morphe_export_download_folder_summary">"ייצוא שירים וסרטונים שנשמרו באפליקציה לאחסון במכשיר באמצעות תפריט ההורדות באפליקציה. הקש לשינוי תיקיית הייצוא
 
 תיקיית ייצוא: %s"</string>
   <string name="morphe_export_download_started">מייצא הורדה</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">יוצאו %1$s מתוך %2$s הורדות ל-%3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">אודות</string>
-  <string name="morphe_settings_music_screen_1_ads_title">מודעות</string>
-  <string name="morphe_settings_music_screen_2_feed_title">פיד</string>
-  <string name="morphe_settings_music_screen_3_general_title">כללי</string>
-  <string name="morphe_settings_music_screen_4_player_title">נגן</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">מילים</string>
-  <string name="morphe_settings_music_screen_9_misc_title">שונות</string>
+  <string name="morphe_settings_music_screen_00_about_title">אודות</string>
+  <string name="morphe_settings_music_screen_01_ads_title">מודעות</string>
+  <string name="morphe_settings_music_screen_02_feed_title">פיד</string>
+  <string name="morphe_settings_music_screen_03_general_title">כללי</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">מילים</string>
+  <string name="morphe_settings_music_screen_05_misc_title">שונות</string>
+  <string name="morphe_settings_music_screen_06_player_title">נגן</string>
+  <string name="morphe_settings_music_screen_10_video_title">סרטון</string>
   <string name="morphe_music_app_language_title">שפת YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">שפת המערכת</string>
   <string name="morphe_music_app_language_summary_unsupported">דורש Android 13 ומעלה</string>
@@ -256,6 +257,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_title">מהירות השמעה</string>
   <string name="morphe_music_playback_speed_summary">המהירות המשמשת לכל הרצועות. ב-100% נעשה שימוש במהירות האפליקציה, כמו מהירות השמעת הפודקאסט</string>
   <string name="morphe_music_playback_speed_change_pitch_title">שנה גובה צליל עם המהירות</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">השבת כתוביות אוטומטיות</string>
+  <string name="morphe_music_disable_auto_captions_summary">כתוביות אינן מופעלות באופן אוטומטי עם תחילת סרטון, כולל כתוביות שמופעלות כברירת מחדל בסרטון</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">השבת הנמכת שמע</string>
   <string name="morphe_music_disable_audio_ducking_summary">העוצמה לא תונמך כאשר אפליקציה אחרת משמיעה צליל קצר, כגון התראה</string>
@@ -563,6 +567,7 @@ Second \"item\" text"</string>
 
 מסד הנתונים מוגן תחת רישיון ODC Open Database License (ODbL). רשומות מ-Soul Over AI מאת xoundbyte מוגנות תחת רישיון CC BY 4.0. לא קשור ל-SoundProof או ל-Soul Over AI ולא נתמך על ידיהם."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">מילים אינן זמינות עבור קובץ מכשיר זה.</string>
   <string name="morphe_music_lyrics_enabled_title">השתמש במילות שירים של צד שלישי</string>
   <string name="morphe_music_lyrics_enabled_summary">מציג מילים משירות צד שלישי, עם מעבר למילים המובנות כאשר לא נמצאו מילים</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">שמור מסך דלוק בזמן צפייה במילות השיר</string>
@@ -694,6 +699,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_title_hint">שם השיר</string>
   <string name="morphe_music_lyrics_search_artist_hint">אמן</string>
   <string name="morphe_music_lyrics_search_empty">הזן שם שיר ואמן</string>
+  <string name="morphe_music_lyrics_search_google">חיפוש באמצעות Google</string>
   <string name="morphe_music_lyrics_search_no_providers">אף אחד מהספקים המופעלים אינו יכול לחפש שירים אחרים</string>
   <string name="morphe_music_lyrics_saved">נשמר</string>
   <string name="morphe_music_lyrics_written_by">נכתב על ידי: %s</string>
@@ -773,7 +779,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">רומניזציה על ידי %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">רומניזציה על ידי %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (עם %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">רומניזציה על ידי Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">תרגום</string>
   <string name="morphe_music_lyrics_translation_language_title">שפת התרגום</string>
@@ -833,19 +838,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">גלה קטעים עם AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">משמש רק כאשר הספק לא מכיל תוויות קטע כמו Chorus או Verse, שהמודל התואם OpenAI שלך מאתר לאחר מכן. עריכת השורה פותחת גם את הפקודה שלו</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL נקודת API (למשל https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">תבנית הנחיה</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ממלאי מקום: {task}, {language}, {title}, {artist}, {count}, {lines}. אלו שאינם מוכרים יישארו כפי שהוקלדו</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">ההנחיה נשמרה</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">ההנחיה נשמרה, אך נקודת הקצה של AI אינה ניתנת לשימוש עדיין. הגדר אותה קודם בהגדרות AI</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">ההנחיה אופסה</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">הגדרות תרגום &amp; רומניזציה נשמרו</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">ההגדרות נשמרו, אך נקודת הקצה של ה-AI עדיין אינה זמינה לשימוש</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">ההגדרות נשמרו</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">הגדרות אופסו לברירת מחדל</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">כתובת ה-URL הבסיסית חייבת להתחיל ב-http:// או ב-https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">הגדרות חסרות או נדחו על ידי הספק</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">מאמת חיבור…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: מחובר! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: החיבור נכשל. בדוק את ההגדרות.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">הזן את מפתח ה-API קודם</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">בדיקת חיבור</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">מביא מודלים...</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">הבאת מודלים</string>
@@ -862,7 +863,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">כותרות בקשה נוספות (JSON אפשרי)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">הקף שמות וערכים בגרשיים, למשל {\"api-key\": \"abc\"}. ערך לא מוקף המכיל / : או מספר יידחה. ערך ריק מוריד כותרת.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">הקף שמות וערכים בגרשיים, למשל {\"temperature\": 0.3}. ערך לא מוקף המכיל / או : יידחה. מודל והודעות לא יכולים להיות מוגדרים כאן.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">מאמץ הסקה</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">ברירת מחדל</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">מפתח אימות (חינמי או Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">ה-AI לא הצליח לזהות מקטעים עבור רצועה זו</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">מזהה</string>
+  <string name="morphe_music_lyrics_ai_section_apply">החל מקטעים</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">הזיהוי בוטל</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">אין מילים להגדרת מקטעים</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - השבת אייקונים מודגשים</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - שחזור לשוניות הבא בתור, מילים, וקשורות בנגן</string>

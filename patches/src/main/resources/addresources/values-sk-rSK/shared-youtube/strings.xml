@@ -232,6 +232,20 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
   <string name="morphe_replace_music_with_youtube_summary">Nahrádza music.youtube.com na youtube.com v zdieľaných odkazoch.</string>
   <string name="morphe_replace_links_with_shortener_title">Zmeniť odkazy na zdieľanie na youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Prinúti videá používať skrátený formát URL youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Auto</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Zapamätať kvalitu videa</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Váš manuálny výber kvality sa aplikuje na všetky budúce videá</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Oznamrenia o zmene kvality</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Zobrazí oznámenie, keď sa uloží nová predvolená kvalita</string>
+  <string name="morphe_video_quality_default_wifi_title">Predvolená kvalita videa v Wi-Fi sieti</string>
+  <string name="morphe_video_quality_default_mobile_title">Predvolená kvalita videa v mobilnej sieti</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Predvolená mobilná kvalita bola zmenená na: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Predvolená kvalita Wi-Fi bola zmenená na: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Otvormy systémové menu zdieľania</string>
+  <string name="morphe_open_system_share_sheet_summary">Pri zdieľaní obsahu otvára systémový zdieľací panel namiesto vstavaného</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Zaznamenávanie Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Vypnutý</string>

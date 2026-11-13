@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">ໃຊ້ໂປຣແກຣມດາວໂຫຼດພາຍນອກສຳລັບເມນູ ດາວໂຫຼດ</string>
   <string name="morphe_external_downloader_menu_summary">ຕົວເລືອກ ດາວໂຫຼດ ຂອງເມນູຈະເປີດໂປຣແກຣມດາວໂຫຼດພາຍນອກຂອງທ່ານແທນ</string>
   <string name="morphe_export_download_folder_title">ສົ່ງອອກລາຍການດາວໂຫຼດ</string>
-  <string name="morphe_export_download_folder_summary">"ສົ່ງອອກເພງ ແລະ ວິດີໂອທີ່ດາວໂຫຼດໂດຍແອັບ ໄປຍັງບ່ອນເກັບຂໍ້ມູນຂອງອຸປະກອນຂອງທ່ານ ໂດຍໃຊ້ເມນູຂອງການດາວໂຫຼດ. ແຕະເພື່ອປ່ຽນໂຟນເດີສົ່ງອອກ
+  <string name="morphe_export_download_folder_summary">"ສົ່ງອອກເພງ ແລະ ວິດີໂອທີ່ບັນທຶກໄວ້ໃນແອັບ ໄປຍັງບ່ອນເກັບຂໍ້ມູນຂອງອຸປະກອນຂອງທ່ານ ໂດຍໃຊ້ເມນູ flyout ຂອງການດາວໂຫລດໃນແອັບ. ແຕະເພື່ອປ່ຽນ
 
 ໂຟນເດີສົ່ງອອກ: %s"</string>
   <string name="morphe_export_download_started">ກຳລັງສົ່ງອອກລາຍການດາວໂຫຼດ</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">ສົ່ງອອກ %1$s ຈາກທັງໝົດ %2$s ການດາວໂຫຼດ ໄປยัง %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">ກ່ຽວກັບ Morphe</string>
-  <string name="morphe_settings_music_screen_1_ads_title">ໂຄສະນາ</string>
-  <string name="morphe_settings_music_screen_2_feed_title">ຟີດ</string>
-  <string name="morphe_settings_music_screen_3_general_title">ທົ່ວໄປ</string>
-  <string name="morphe_settings_music_screen_4_player_title">ເຄື່ອງຫຼິ້ນ</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">ເນື້ອເພງ</string>
-  <string name="morphe_settings_music_screen_9_misc_title">ອື່ນໆ</string>
+  <string name="morphe_settings_music_screen_00_about_title">ກ່ຽວກັບ Morphe</string>
+  <string name="morphe_settings_music_screen_01_ads_title">ໂຄສະນາ</string>
+  <string name="morphe_settings_music_screen_02_feed_title">ຟີດ</string>
+  <string name="morphe_settings_music_screen_03_general_title">ທົ່ວໄປ</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">ເນື້ອເພງ</string>
+  <string name="morphe_settings_music_screen_05_misc_title">ອື່ນໆ</string>
+  <string name="morphe_settings_music_screen_06_player_title">ເຄື່ອງຫຼິ້ນເພງ</string>
+  <string name="morphe_settings_music_screen_10_video_title">ວິດີໂອ</string>
   <string name="morphe_music_app_language_title">ພາສາຂອງ YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">ພາສາຂອງລະບົບ</string>
   <string name="morphe_music_app_language_summary_unsupported">ຕ້ອງໃຊ້ Android 13 ຫຼື ໃໝ່ກວ່ານັ້ນ</string>
@@ -256,6 +257,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_title">ຄວາມໄວໃນການຫຼິ້ນ</string>
   <string name="morphe_music_playback_speed_summary">ຄວາມໄວທີ່ໃຊ້ສຳລັບທຸກແທຣັກ. ທີ່ 100% ຈະໃຊ້ຄວາມໄວຂອງແອັບ, ເຊັ່ນ ຄວາມໄວໃນການຫຼິ້ນພອດແຄສ</string>
   <string name="morphe_music_playback_speed_change_pitch_title">ປ່ຽນລະດັບສຽງຕາມຄວາມໄວ</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">ປິດການໃຊ້ຄຳບັນຍາຍອັດຕະໂນມັດ</string>
+  <string name="morphe_music_disable_auto_captions_summary">ຄຳບັນຍາຍຈະບໍ່ຖືກເປີດໃຊ້ໂດຍອັດຕະໂນມັດເມື່ອວິດີໂອເລີ່ມຕົ້ນ, ລວມທັງຄຳບັນຍາຍທີ່ວິດີໂອເປີດໃຊ້ເປັນຄ່າເລີ່ມຕົ້ນ</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">ປິດການຫຼຸດສຽງອັດຕະໂນມັດ</string>
   <string name="morphe_music_disable_audio_ducking_summary">ລະດັບສຽງຈະບໍ່ຫຼຸດລົງ ເມື່ອແອັບອື່ນຫຼິ້ນສຽງສັ້ນໆ ເຊັ່ນ: ການແຈ້ງເຕືອນ</string>
@@ -567,6 +571,7 @@ Second \"item\" text"</string>
 
 ຖານຂໍ້ມູນນີ້ໄດ້ຮັບອະນຸຍາດພາຍໃຕ້ ODC Open Database License (ODbL). ລາຍການຈາກ Soul Over AI ໂດຍ xoundbyte ໄດ້ຮັບອະນຸຍາດພາຍໃຕ້ CC BY 4.0. ບໍ່ມີສ່ວນກ່ຽວຂ້ອງ ຫຼື ໄດ້ຮັບການຮັບຮອງໂດຍ SoundProof ຫຼື Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">ເນື້ອເພງບໍ່ມີໃຫ້ໃຊ້ສຳລັບໄຟລ໌ຂອງອຸປະກອນນີ້.</string>
   <string name="morphe_music_lyrics_enabled_title">ໃຊ້ເນື້ອເພງຈາກບຸກຄົນທີສາມ</string>
   <string name="morphe_music_lyrics_enabled_summary">ສະແດງເນື້ອເພງຈາກບໍລິການຂອງບຸກຄົນທີສາມ, ໂດຍຈະກັບໄປໃຊ້ເນື້ອເພງທີ່ຕິດຕັ້ງມາໃນຕົວເຄື່ອງເມື່ອບໍ່ພົບເນື້ອເພງ</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">ເປີດໜ້າຈໍໄວ້ໃນຂະນະທີ່ເບິ່ງເນື້ອເພງ</string>
@@ -698,6 +703,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_title_hint">ຊື່ເພງ</string>
   <string name="morphe_music_lyrics_search_artist_hint">ສິລະປິນ</string>
   <string name="morphe_music_lyrics_search_empty">ປ້ອນຊື່ເພງ ແລະ ສິລະປິນ</string>
+  <string name="morphe_music_lyrics_search_google">ຄົ້ນຫາດ້ວຍ Google</string>
   <string name="morphe_music_lyrics_search_no_providers">ບໍ່ມີຜູ້ໃຫ້ບໍລິການທີ່ເປີດໃຊ້ງານໃດສາມາດຄົ້ນຫາເພງອື່ນໄດ້</string>
   <string name="morphe_music_lyrics_saved">ບັນທຶກແລ້ວ</string>
   <string name="morphe_music_lyrics_written_by">ຂຽນໂດຍ: %s</string>
@@ -777,7 +783,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">ຖອດສຽງເປັນອັກສອນໂຣມັນໂດຍ %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">ຖອດສຽງເປັນອັກສອນໂຣມັນໂດຍ %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (ພ້ອມກັບ %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">ຖອດເປັນອັກສອນໂຣມັນໂດຍ Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">ແປແລ້ວ</string>
   <string name="morphe_music_lyrics_translation_language_title">ພາສາໃນການແປ</string>
@@ -837,19 +842,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">ກວດຫາພາກສ່ວນດ້ວຍ AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">ໃຊ້ສະເພາະໃນກໍລະນີທີ່ຜູ້ໃຫ້ບໍລິການບໍ່ໄດ້ສົ່ງປ້າຍກຳກັບພາກສ່ວນ ເຊັ່ນ Chorus ຫຼື Verse, ເຊິ່ງໂມເດລທີ່ເຂົ້າກັນໄດ້ກັບ OpenAI ຂອງທ່ານຈະກວດຫາໃຫ້. ການແກ້ໄຂແຖວນີ້ຍັງຈະເປີດ prompt ຂອງມັນນຳອີກ</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ຂອງ API endpoint (ຕົວຢ່າງ https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">ແມ່ແບບພຣອມພ໌</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ຕົວໝາຍບ່ອນວ່າງ: {task}, {language}, {title}, {artist}, {count}, {lines}. ຕົວທີ່ບໍ່ຮູ້ຈັກຈະຖືກປະໄວ້ຕາມທີ່ພິມ</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">ບັນທຶກພຣອມພ໌ແລ້ວ</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">ບັນທຶກ Prompt ແລ້ວ, ແຕ່ endpoint ຂອງ AI ຍັງບໍ່ທັນສາມາດນຳໃຊ້ໄດ້. ກະລຸນາຕັ້ງຄ່າໃນ AI Settings ກ່ອນ</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">ຣີເຊັດພຣອມພ໌ແລ້ວ</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">ບັນທຶກການຕັ້ງຄ່າການແປ &amp; ການທັບສັບແລ້ວ</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">ບັນທຶກການຕັ້ງຄ່າແລ້ວ, ແຕ່ຈຸດປາຍ AI ຍັງບໍ່ທັນສາມາດນຳໃຊ້ໄດ້</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">ບັນທຶກການຕັ້ງຄ່າແລ້ວ</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">ຣີເຊັດການຕັ້ງຄ່າເປັນຄ່າເລີ່ມຕົ້ນແລ້ວ</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL ຕ້ອງເລີ່ມຕົ້ນດ້ວຍ http:// ຫຼື https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">ການຕັ້ງຄ່າບໍ່ສົມບູນ ຫຼື ຖືກປະຕິເສດໂດຍຜູ້ໃຫ້ບໍລິການ</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">ກຳລັງກວດສອບການເຊື່ອມຕໍ່…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: ເຊື່ອມຕໍ່ແລ້ວ! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: ການເຊື່ອມຕໍ່ລົ້ມເຫຼວ. ກະລຸນາກວດສອບການຕັ້ງຄ່າ.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">ກະລຸນາປ້ອນ API key ກ່ອນ</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">ທົດສອບການເຊື່ອມຕໍ່</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">ກຳລັງດຶງຂໍ້ມູນໂມເດລ…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">ດຶງຂໍ້ມູນໂມເດລ</string>
@@ -866,7 +867,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Request headers ເພີ່ມເຕີມ (JSON ທາງເລືອກ)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">ໃສ່ເຄື່ອງໝາຍຄຳເວົ້າໃຫ້ຊື່ ແລະ ຄ່າ, ຕົວຢ່າງ {\"api-key\": \"abc\"}. ຄ່າທີ່ບໍ່ມີເຄື່ອງໝາຍຄຳເວົ້າເຊິ່ງມີ / : ຫຼື ຕົວເລກ ຈະຖືກປະຕິເສດ. ຄ່າທີ່ວ່າງເປົ່າຈະເປັນການລົບ header ອອກ.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">ໃສ່ເຄື່ອງໝາຍຄຳເວົ້າໃຫ້ຊື່ ແລະ ຄ່າ, ຕົວຢ່າງ {\"temperature\": 0.3}. ຄ່າທີ່ບໍ່ມີເຄື່ອງໝາຍຄຳເວົ້າເຊິ່ງມີ / ຫຼື : ຈະຖືກປະຕິເສດ. Model ແລະ ຂໍ້ຄວາມ ບໍ່ສາມາດຕັ້ງຄ່າໄດ້ຢູ່ທີ່ນີ້.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">ຄວາມພະຍາຍາມໃນການຫາເຫດຜົນ</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">ຄ່າເລີ່ມຕົ້ນ</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">ລະຫັດຢືນຢັນຕົວຕົນ (ຟຣີ ຫຼື Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI ບໍ່ສາມາດກວດຫາພາກສ່ວນສຳລັບເພງນີ້ໄດ້</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">ກຳລັງກວດຫາ</string>
+  <string name="morphe_music_lyrics_ai_section_apply">ນຳໃຊ້ພາກສ່ວນ</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">ຍົກເລີກການກວດຫາແລ້ວ</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">ບໍ່ມີເນື້ອເພງເພື່ອໃຫ້ກວດຫາພາກສ່ວນ</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - ປິດການໃຊ້ງານໄອຄອນຕົວເຂັ້ມ</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - ກູ້ຄືນແທັບ ຫຼັງຈາກນີ້, ເນື້ອເພງ, ແລະ ທີ່ກ່ຽວຂ້ອງ ຂອງເຄື່ອງຫຼິ້ນ</string>

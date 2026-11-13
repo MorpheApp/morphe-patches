@@ -233,6 +233,20 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
   <string name="morphe_replace_music_with_youtube_summary">Хуваалцсан холбоосууд дахь music.youtube.com-ыг youtube.com-оор сольно</string>
   <string name="morphe_replace_links_with_shortener_title">Хуваалцах холбоосуудыг youtu.be болгож өөрчлөх</string>
   <string name="morphe_replace_links_with_shortener_summary">Видеог youtu.be богино URL форматаар ашиглахыг шаардана</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Автомат</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Видео чанарыг санаалах</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Таны гараар сонгосон чанарыг цаашдаа бүх видеод хэрэглэнэ</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Чанар өөрчлөлтийн мэдэгдэл</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Шинээр үндсэн чанар хадгалагдах үед мэдэгдэл харуулах</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi сүлжээн дэх видеоны үндсэн чанар</string>
+  <string name="morphe_video_quality_default_mobile_title">Мобайл сүлжээн дэх видеоны үндсэн чанар</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Мобайл сүлжээний үндсэн чанарыг %s болгож өөрчиллөө</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi сүлжээний үндсэн чанарыг %s болгож өөрчиллөө</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Системийн хуваалцах цэсийг нээх</string>
+  <string name="morphe_open_system_share_sheet_summary">Агуулга хуваалгах үед апп доторх цэсний оронд системийн хуваалцах цэсийг нээнэ</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho лог бүртгэл</string>
   <string name="morphe_debug_litho_entry_disabled">Идэвхгүй</string>

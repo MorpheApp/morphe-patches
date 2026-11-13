@@ -76,6 +76,20 @@ Android System WebView-ஐத் திறக்க OK-வைத் தட்ட
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">தானியங்கி</string>
+  <string name="morphe_remember_video_quality_last_selected_title">வீடியோ தரத்தை நினைவில் கொள்க</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">உங்களது கைமுறை தரத் தேர்வை எதிர்கால வீடியோக்கள் அனைத்திற்கும் பயன்படுத்துகிறது</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">தரம் மாற்ற அறிவிப்புகள்</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">புதிய இயல்பான தரம் சேமிக்கப்படும்போது ஒரு அறிவிப்பைக் காட்டுகிறது</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi நெட்வொர்க்கில் இயல்பான வீடியோ தரம்</string>
+  <string name="morphe_video_quality_default_mobile_title">மொபைல் நெட்வொர்க்கில் இயல்பான வீடியோ தரம்</string>
+  <string name="morphe_remember_video_quality_toast_mobile">இயல்பான மொபைல் தரம் இதாக மாற்றப்பட்டது: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">இயல்பான Wi-Fi தரம் இதாக மாற்றப்பட்டது: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">சிஸ்டம் பகிர்வுத் தாளைத் திற</string>
+  <string name="morphe_open_system_share_sheet_summary">உள்ளடக்கத்தைப் பகிரும் போது, செயலியின் பகிர்வுப் பட்டியலுக்குப் பதிலாக கணினியின் பகிர்வுப் பட்டியலைத் திறக்கும்</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho பதிவு செய்தல்</string>
   <string name="morphe_debug_litho_entry_disabled">முடக்கப்பட்டது</string>

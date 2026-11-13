@@ -232,6 +232,20 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_replace_music_with_youtube_summary">Ersetzt music.youtube.com durch youtube.com in geteilten Links</string>
   <string name="morphe_replace_links_with_shortener_title">Freigabe-Links zu youtu.be ändern</string>
   <string name="morphe_replace_links_with_shortener_summary">Sorgt dafür, dass geteilte Links das kürzere youtu.be URL-Format nutzen</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Auto</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Videoqualität merken</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Wendet deine manuelle Qualitätsauswahl auf alle zukünftigen Videos an</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Benachrichtigungen bei Qualitätsänderung</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Zeigt eine Benachrichtigung an, wenn eine neue Standardqualität gespeichert wurde</string>
+  <string name="morphe_video_quality_default_wifi_title">Standard-Videoqualität im WLAN-Netzwerk</string>
+  <string name="morphe_video_quality_default_mobile_title">Standard-Videoqualität im Mobilfunknetz</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Standardqualität für Mobilfunk geändert zu: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Standardqualität für Wi-Fi geändert zu: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Systemfreigabe öffnen</string>
+  <string name="morphe_open_system_share_sheet_summary">Öffnet die systemeigene Freigabeansicht anstelle der In-App-Ansicht, wenn du Inhalte teilst</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-Protokollierung</string>
   <string name="morphe_debug_litho_entry_disabled">Deaktiviert</string>

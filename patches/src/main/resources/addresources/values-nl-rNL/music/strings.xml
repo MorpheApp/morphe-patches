@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Externe downloader gebruiken voor menu \'Downloads\'</string>
   <string name="morphe_external_downloader_menu_summary">De optie Download in menu\'s opent je externe downloader</string>
   <string name="morphe_export_download_folder_title">Downloads exporteren</string>
-  <string name="morphe_export_download_folder_summary">"Exporteer nummers en video's die door de app zijn gedownload naar de opslag van je apparaat via het menu van de download. Tik om de exportmap te wijzigen
+  <string name="morphe_export_download_folder_summary">"Exporteer in de app opgeslagen nummers en video's naar de opslag van je apparaat via het menu voor downloads in de app. Tik om de exportmap te wijzigen:
 
 Exportmap: %s"</string>
   <string name="morphe_export_download_started">Download exporteren</string>
@@ -146,13 +146,14 @@ Exportmap: %s"</string>
   <string name="morphe_export_download_all_saved">%1$s van de %2$s downloads geëxporteerd naar %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Over</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Advertenties</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
-  <string name="morphe_settings_music_screen_3_general_title">Algemeen</string>
-  <string name="morphe_settings_music_screen_4_player_title">Speler</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Songteksten</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Diversen</string>
+  <string name="morphe_settings_music_screen_00_about_title">Over</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Advertenties</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_03_general_title">Algemeen</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Songteksten</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Diversen</string>
+  <string name="morphe_settings_music_screen_06_player_title">Speler</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">YouTube Music-taal</string>
   <string name="morphe_music_app_language_summary_default">Systeemtaal</string>
   <string name="morphe_music_app_language_summary_unsupported">Vereist Android 13 of hoger</string>
@@ -256,6 +257,9 @@ SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
   <string name="morphe_music_playback_speed_title">Afspeelsnelheid</string>
   <string name="morphe_music_playback_speed_summary">Snelheid gebruikt voor alle nummers. Bij 100% wordt de app-snelheid gebruikt, zoals de afspeelsnelheid van podcasts.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Toonhoogte wijzigen met snelheid</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Automatische ondertitels uitschakelen</string>
+  <string name="morphe_music_disable_auto_captions_summary">Ondertiteling wordt niet automatisch ingeschakeld wanneer een video start, inclusief ondertiteling die de video standaard inschakelt</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Audio-ducking uitschakelen</string>
   <string name="morphe_music_disable_audio_ducking_summary">Het volume wordt niet verlaagd wanneer een andere app een kort geluid afspeelt, zoals een melding</string>
@@ -567,6 +571,7 @@ Om ervoor te zorgen dat scrobbling tijdens het afspelen op de achtergrond wordt 
 
 De database is gelicentieerd onder de ODC Open Database License (ODbL). Vermeldingen van Soul Over AI door xoundbyte zijn gelicentieerd onder CC BY 4.0. Niet gelieerd aan of onderschreven door SoundProof of Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Songteksten zijn niet beschikbaar voor dit apparaatbestand.</string>
   <string name="morphe_music_lyrics_enabled_title">Gebruik songteksten van derden</string>
   <string name="morphe_music_lyrics_enabled_summary">Toont songteksten van een externe dienst, waarbij indien geen songteksten worden gevonden, wordt teruggevallen op de ingebouwde songteksten.</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Scherm aanhouden tijdens het bekijken van songteksten</string>
@@ -698,6 +703,7 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_search_title_hint">Songtitel</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artiest</string>
   <string name="morphe_music_lyrics_search_empty">Voer een songtitel en een artiest in</string>
+  <string name="morphe_music_lyrics_search_google">Zoeken met Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Geen van de ingeschakelde providers kan naar andere nummers zoeken</string>
   <string name="morphe_music_lyrics_saved">Opgeslagen</string>
   <string name="morphe_music_lyrics_written_by">Geschreven door: %s</string>
@@ -777,7 +783,6 @@ Van toepassing op beide limieten. Bij 1,75 tellen vier tekens van volledige bree
   <string name="morphe_music_lyrics_romanized_by_ai">Geromaniseerd door %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Getranslitereerd door %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (met %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Geromaniseerd door Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Vertaald</string>
   <string name="morphe_music_lyrics_translation_language_title">Vertalingstaal</string>
@@ -837,19 +842,15 @@ Songteksten komen van derde-dienstverleners die niet gelieerd zijn aan, gesponso
   <string name="morphe_music_lyrics_use_ai_section_title">Secties detecteren met AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Alleen gebruikt wanneer de aanbieder geen sectielabels zoals Refrein of Strofe levert; je OpenAI-compatibele model detecteert die dan. Het bewerken van de rij opent ook de prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt-URL (bijv. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt-sjabloon</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Plaatshouders: {task}, {language}, {title}, {artist}, {count}, {lines}. Onbekende plaatshouders blijven ongewijzigd</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt opgeslagen</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt opgeslagen, maar het AI-endpoint is nog niet bruikbaar. Configureer het eerst onder AI-instellingen</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt gereset</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Instellingen voor vertaling &amp; romanisatie opgeslagen</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Instellingen opgeslagen, maar het AI-eindpunt is nog niet bruikbaar</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Instellingen opgeslagen</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Instellingen zijn teruggezet naar de standaardinstellingen</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Basis-URL moet beginnen met http:// of https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Instellingen onvolledig of afgewezen door de aanbieder</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Verbinding valideren…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Verbonden! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Verbinding mislukt. Controleer de instellingen.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Voer eerst de API-sleutel in</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Verbinding testen</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Modellen ophalen…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Modellen ophalen</string>
@@ -866,7 +867,14 @@ Songteksten komen van derde-dienstverleners die niet gelieerd zijn aan, gesponso
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Extra verzoekheaders (optionele JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Citeer namen en waarden, bijv. {\"api-key\": \"abc\"}. Een niet-geciteerde waarde die / : of een cijfer bevat, wordt afgewezen. Een lege waarde verwijdert een header.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Citeer namen en waarden, bijv. {\"temperature\": 0.3}. Een niet-geciteerde waarde die / of : bevat, wordt afgewezen. Model en berichten kunnen hier niet worden ingesteld.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Redeneerinspanning</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Standaard</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Authenticatiesleutel (Gratis of Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI kon geen secties detecteren voor dit nummer</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Detecteren</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Secties toepassen</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Detectie geannuleerd</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Geen songteksten om secties voor te detecteren</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Vetgedrukte pictogrammen uitschakelen</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Herstel Player Up next, Lyrics en Related tabbladen</string>

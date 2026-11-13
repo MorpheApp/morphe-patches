@@ -232,6 +232,20 @@ Android System WebView খুলিবলৈ OK টিপক।"</string>
   <string name="morphe_replace_music_with_youtube_summary">শেয়াৰ কৰা লিংকবোৰত music.youtube.com ৰ ঠাইত youtube.com প্ৰতিস্থাপন কৰে</string>
   <string name="morphe_replace_links_with_shortener_title">শেয়াৰ লিংকসমূহ youtu.be লৈ সলনি কৰক</string>
   <string name="morphe_replace_links_with_shortener_summary">ভিডিঅ\'সমূহক চুটি youtu.be URL ফৰ্মেট ব্যৱহাৰ কৰিবলৈ বাধ্য কৰে</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">অটো</string>
+  <string name="morphe_remember_video_quality_last_selected_title">ভিডিঅ\'ৰ গুণগতমান মনত ৰাখক</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">আপুনি হাতেৰে বাছনি কৰা গুণগতমানটো ভৱিষ্যতৰ সকলো ভিডিঅ\'ত প্ৰয়োগ কৰে</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">গুণগতমান পৰিৱৰ্তনৰ জাননী</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">এটা নতুন ডিফল্ট কোৱালিটি সংৰক্ষণ কৰিলে এটা জাননী দেখুৱায়</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi নেটৱৰ্কত ডিফল্ট ভিডিঅ\' কোৱালিটি</string>
+  <string name="morphe_video_quality_default_mobile_title">মবাইল নেটৱৰ্কত ডিফল্ট ভিডিঅ\' কোৱালিটি</string>
+  <string name="morphe_remember_video_quality_toast_mobile">ডিফল্ট মবাইল কোৱালিটিলৈ সলনি কৰা হৈছে: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">ডিফল্ট Wi-Fi কোৱালিটিলৈ সলনি কৰা হৈছে: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">ছিষ্টেম শ্বেয়াৰ শ্বীট খোলক</string>
+  <string name="morphe_open_system_share_sheet_summary">সামগ্ৰী শ্বেয়াৰ কৰাৰ সময়ত ইন-এপৰ পৰিৱৰ্তে ছিষ্টেম শ্বেয়াৰ শ্বীট খোলক</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">লিথো লগিং</string>
   <string name="morphe_debug_litho_entry_disabled">অক্ষম কৰা হৈছে</string>

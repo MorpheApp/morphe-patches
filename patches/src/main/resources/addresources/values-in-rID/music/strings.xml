@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Gunakan pengunduh eksternal untuk menu Unduh</string>
   <string name="morphe_external_downloader_menu_summary">Opsi Unduh pada menu akan membuka pengunduh eksternal Anda</string>
   <string name="morphe_export_download_folder_title">Ekspor unduhan</string>
-  <string name="morphe_export_download_folder_summary">"Ekspor lagu dan video yang diunduh oleh aplikasi ke penyimpanan perangkat Anda menggunakan menu unduhan. Ketuk untuk mengganti folder ekspor
+  <string name="morphe_export_download_folder_summary">"Ekspor lagu dan video yang disimpan di dalam aplikasi ke penyimpanan perangkat Anda menggunakan menu flyout unduhan di dalam aplikasi. Ketuk untuk mengganti folder ekspor
 
 Folder ekspor: %s"</string>
   <string name="morphe_export_download_started">Mengekspor unduhan</string>
@@ -146,13 +146,14 @@ Folder ekspor: %s"</string>
   <string name="morphe_export_download_all_saved">Mengekspor %1$s dari %2$s unduhan ke %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Tentang</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Iklan</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
-  <string name="morphe_settings_music_screen_3_general_title">Umum</string>
-  <string name="morphe_settings_music_screen_4_player_title">Pemutar</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Lirik</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Lain-lain</string>
+  <string name="morphe_settings_music_screen_00_about_title">Tentang</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Iklan</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_03_general_title">Umum</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Lirik</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Lain-lain</string>
+  <string name="morphe_settings_music_screen_06_player_title">Pemutar</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">Bahasa YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Bahasa sistem</string>
   <string name="morphe_music_app_language_summary_unsupported">Memerlukan Android 13 atau lebih baru</string>
@@ -256,6 +257,9 @@ Pemutaran SABR (Spoof aliran video dimatikan)"</string>
   <string name="morphe_music_playback_speed_title">Kecepatan pemutaran</string>
   <string name="morphe_music_playback_speed_summary">Kecepatan yang digunakan untuk semua trek. Pada 100%, kecepatan aplikasi digunakan, seperti kecepatan pemutaran podcast.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Ubah nada sesuai kecepatan</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Matikan teks otomatis</string>
+  <string name="morphe_music_disable_auto_captions_summary">Keterangan tidak diaktifkan secara otomatis saat video dimulai, termasuk keterangan yang diaktifkan video secara default</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Nonaktifkan audio ducking</string>
   <string name="morphe_music_disable_audio_ducking_summary">Volume tidak akan diturunkan saat aplikasi lain memutar suara singkat, seperti notifikasi</string>
@@ -567,6 +571,7 @@ Untuk memastikan scrobbling disinkronkan selama pemutaran latar belakang, pastik
 
 Basis data ini dilisensikan di bawah ODC Open Database License (ODbL). Entri dari Soul Over AI oleh xoundbyte dilisensikan di bawah CC BY 4.0. Tidak terafiliasi dengan atau didukung oleh SoundProof atau Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Lirik tidak tersedia untuk file perangkat ini.</string>
   <string name="morphe_music_lyrics_enabled_title">Gunakan lirik pihak ketiga</string>
   <string name="morphe_music_lyrics_enabled_summary">Menampilkan lirik dari layanan pihak ketiga, beralih menggunakan lirik bawaan jika tidak ditemukan</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Biarkan layar tetap menyala saat menampilkan lirik</string>
@@ -698,6 +703,7 @@ Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_search_title_hint">Judul lagu</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artis</string>
   <string name="morphe_music_lyrics_search_empty">Masukkan judul lagu dan artis</string>
+  <string name="morphe_music_lyrics_search_google">Cari dengan Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Tidak ada penyedia yang diaktifkan yang dapat mencari lagu lain.</string>
   <string name="morphe_music_lyrics_saved">Tersimpan</string>
   <string name="morphe_music_lyrics_written_by">Ditulis oleh: %s</string>
@@ -777,7 +783,6 @@ Berlaku untuk kedua batas. Pada 1,75, empat karakter lebar penuh dihitung sebaga
   <string name="morphe_music_lyrics_romanized_by_ai">Diromanisasi oleh %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Diromanisasi oleh %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (dengan %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Diromanisasi oleh Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Diterjemahkan</string>
   <string name="morphe_music_lyrics_translation_language_title">Bahasa terjemahan</string>
@@ -837,19 +842,15 @@ Lirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau
   <string name="morphe_music_lyrics_use_ai_section_title">Deteksi bagian dengan AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Hanya digunakan ketika penyedia tidak menyertakan label bagian seperti Refrain atau Strofa, yang kemudian dideteksi oleh model kompatibel OpenAI Anda. Mengedit baris juga membuka prompt-nya</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL titik akhir API (mis. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Templat Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder: {task}, {language}, {title}, {artist}, {count}, {lines}. Yang tidak dikenal akan tetap seperti yang diketik</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt disimpan</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt disimpan, tetapi endpoint AI belum dapat digunakan. Konfigurasikan terlebih dahulu di Pengaturan AI</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt diatur ulang</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Setelan Terjemahan &amp; Romanisasi disimpan</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Pengaturan disimpan, tetapi titik akhir AI belum dapat digunakan</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Pengaturan disimpan</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Setelan diatur ke bawaan</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL dasar harus diawali dengan http:// atau https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Pengaturan tidak lengkap atau ditolak oleh penyedia</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Memvalidasi koneksi…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Terhubung! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Koneksi gagal. Periksa pengaturan.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Masukkan kunci API terlebih dahulu</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Uji koneksi</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Mengambil model…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Ambil model</string>
@@ -866,7 +867,14 @@ Lirik berasal dari layanan pihak ketiga yang tidak berafiliasi, disponsori, atau
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Header permintaan ekstra (JSON opsional)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Beri nama dan nilai tanda kutip, mis. {\"api-key\": \"abc\"}. Nilai tanpa tanda kutip yang mengandung / : atau angka ditolak. Nilai kosong menghapus header.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Beri nama dan nilai tanda kutip, mis. {\"temperature\": 0.3}. Nilai tanpa tanda kutip yang mengandung / atau : ditolak. Model dan pesan tidak dapat diatur di sini.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Upaya penalaran</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Bawaan</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Kunci autentikasi (Gratis atau Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI tidak dapat mendeteksi bagian untuk trek ini</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Mendeteksi</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Terapkan bagian</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Deteksi dibatalkan</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Tidak ada lirik untuk dideteksi bagiannya</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Nonaktifkan ikon tebal</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Kembalikan tab Pemutar Berikutnya, Lirik, dan Terkait</string>

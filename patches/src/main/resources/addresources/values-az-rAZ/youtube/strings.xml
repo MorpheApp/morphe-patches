@@ -319,6 +319,9 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_keyword_content_search_title">Axtarış nəticələrini açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Abunəlik videolarını açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_phrases_title">Gizlədiləcək açar sözlər</string>
+  <string name="morphe_hide_keyword_content_phrases_summary">"Gizlədiləcək açar sözləri və ifadələri yeni sətirlərlə ayıraraq daxil edin
+
+Açar sözlər video başlıqlarında görünən istənilən mətn ola bilər. @İstifadəçiAdı açar sözü müəyyən yaradıcıların bütün məzmununu gizlədir"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Ev / Abunəliklər / Axtarış / Şərhlər açar söz ifadələrinə uyğun məzmunu gizlətmək üçün filtrlənir
 
 Məhdudiyyətlər:
@@ -493,7 +496,7 @@ Məhdudiyyətlər:
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_title">Morphe hərəkət zamanındanı aktivləşdir</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_summary">Oynadıcının açılan \'Yolda rejimi\' Morphe fərdi oynadıcı idarəetmələrini açır</string>
+  <string name="morphe_on_the_go_summary">Oynadıcının açılan \'Yolüstü rejimi\' Morphe fərdi oynadıcı idarəetmələrini açır</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_on_the_go_panel_title">Hərəkət zamanı</string>
   <string name="morphe_on_the_go_audio_mode">Səs rejiminə keç</string>
@@ -638,7 +641,24 @@ API açarınız heç vaxt paylaşılmamalıdır. Buna girişi olan hər bir kəs
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s arası təkrarlama</string>
   <string name="morphe_loop_video_range_invalid_time">Etibarsız vaxt aralığı</string>
   <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Təkrar sayı</string>
+  <string name="morphe_loop_count_screen_summary">Növbəti videodan əvvəl videonun neçə dəfə təkrarlanacağını seç</string>
+  <string name="morphe_loop_count_title">Təkrarlama sayını aktivləşdir</string>
+  <string name="morphe_loop_count_summary">Oynadıcının Daha Çox menyusu növbəti videodan əvvəl videonun neçə dəfə oynadılacağını seçmək üçün Videonu təkrarlanın yanında Təkrarlanma sayını göstərir</string>
+  <string name="morphe_loop_count_playlists_title">Təkrar sayını pleylistlərdə saxla</string>
+  <string name="morphe_loop_count_playlists_summary">Pleylistin hər bir videosu seçdiyiniz təkrarlanma sayını saxlayır və pleylist onu təkrar oynatdıqda Videonu təkrarla aktivləşir. Qapalı olduqda təkrarlanma sayı yalnız hazırda oynadılan videoya şamil olunur</string>
+  <string name="morphe_loop_count_clear_title">Saxlanılan təkrar saylarını sil</string>
+  <string name="morphe_loop_count_clear_summary">Pleylistlərinizdə saxlanılan təkrar sayını unudun. Saxlanılan videolar: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Təkrar sayı saxlanılmayıb</string>
+  <string name="morphe_loop_count_clear_dialog_title">Saxlanılan təkrar saylarını silsin?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Pleylistinizdəki videolar təkrarlanma sayını unudur və pleylist onları yenidən oynatdıqda Videonu təkrarla artıq aktivləşmir</string>
+  <string name="morphe_loop_count_clear_done">Saxlanılan təkrar sayı silindi</string>
+  <string name="morphe_loop_count_flyout_name">Təkrar sayı</string>
+  <string name="morphe_loop_count_dialog_message">Videonun növbəti videodan əvvəl neçə dəfə oxudulduğu, %1$s-dən %2$s-ə qədər. Videonu limitsiz təkrarlamaq üçün boş qoy.</string>
+  <string name="morphe_loop_count_times">%s dəfə</string>
   <string name="morphe_loop_count_no_limit">Limitsiz</string>
+  <string name="morphe_loop_count_decrease">Daha az dəfə</string>
+  <string name="morphe_loop_count_increase">Daha çox dəfə</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Şəkil içində şəkil düyməsini göstər</string>
   <string name="morphe_pip_button_flyout_title">Şəkil içində şəkil menyusunu göstər</string>
@@ -676,6 +696,9 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_play_all_button_type_entry_11">Üzvlərə məxsus Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Üzvlərə məxsus canlı yayımlar</string>
   <string name="morphe_play_all_button_not_available_toast">Kanal ID uyuşmazlığına görə pleylist yaratmaq olmur</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Pleylist düyməsini göstər</string>
+  <string name="morphe_playlist_panel_button_summary">Pleylist panelini açmaq üçün toxun. Yalnız pleylisti oynatdıqda göstərilir</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Videonu Təkrar yüklə düyməsini göstər</string>
   <string name="morphe_dismiss_player_not_available_toast">Video ID-si əlçatmazdır. Xahiş olunur, videonu əl ilə təkrar yüklə</string>
@@ -1057,7 +1080,7 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_loop_video_title">\"Videonu təkrar oxudun\" seçimin gizlət</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_on_the_go_title">\"Yolda\" menyusunu gizlət</string>
+  <string name="morphe_hide_player_flyout_on_the_go_title">\"Yolüstü\" menyusunu gizlət</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Keyfiyyət seçimin gizlət</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Keyfiyyət seçimi alt yazısın gizlət</string>
@@ -1102,6 +1125,10 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_enhanced_ambient_mode_summary">Ambient rejimini əvəzləyərək bütün baxış səhifəsini və qara zolaqları video ilə işıqlandırır</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Mətni oxunaqlı saxla</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Səhifədəki mətnin oxunaqlı qalması üçün parlaq videolarda işığı azaldır</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Sürüşdürərkən solğunlaşdır</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Səhifə sürüşdürülərkən və ya toxunularkən işığı zəiflədir</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Zəifləmə müddəti</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Sürüşdürmə dayandıqdan sonra işığın nə qədər müddət zəif qalacağı. 0 olduqda yalnız sürüşdürərkən işıq zəifləyir və sürüşdürmə dayanan kimi dərhal standarta qayıdır</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Məlumat kartlarını gizlət</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1122,6 +1149,7 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_hide_shorts_subscriptions_title">Abunəliklər axınında gizlət</string>
   <string name="morphe_hide_shorts_video_description_title">Video təsvirində gizlət</string>
   <string name="morphe_hide_shorts_history_title">Baxış tarixçəsində gizlət</string>
+  <string name="morphe_hide_shorts_notifications_title">Təkan bildirişlərində gizlət</string>
   <string name="morphe_shorts_player_screen_title">Shorts oynadıcı</string>
   <string name="morphe_shorts_player_screen_summary">Shorts oynadıcıda hansı elementlər görünür seç</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Bəyənmək üçün cüt toxunuşu qapat</string>
@@ -1180,9 +1208,24 @@ Ayarlar→ Oxunuş (və ya Avtomatik oxunuş) → Növbəti videonu avtomatik ox
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Oynadıcı açılan pəncərə panellərini qapat</string>
   <string name="morphe_disable_player_popup_panels_summary">Pleylist və canlı söhbət panellərinin avtomatik açılmasını qapadır</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Pleylist panelini tam ekranda göstər</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Pleylist paneli tam ekran oynadıcı üzərində açılır</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Pleylist paneli planşetlərdə tam ekrandan çıxır</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Pleylist avtomatik oynatmasını qapat</string>
   <string name="morphe_disable_playlist_autoplay_summary">Pleylistlərin növbəti videoya avtomatik keçməsinin qarşısını alır</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Avtomatik oynatma nəzarəti</string>
+  <string name="morphe_autoplay_control_summary">Oynadıcıya düymə və növbəti video üçün qayda əlavə edir. Pleylistlər və növbələr davam edir, Miks müəyyən sayda videodan sonra dayanır, təklif olunan video isə heç vaxt oynadılmır. Növbəti rejim üçün düyməyə toxunun, siyahı üçün toxunub saxlayın</string>
+  <string name="morphe_autoplay_mode_title">Avtomatik oynatma rejimi</string>
+  <string name="morphe_autoplay_mode_entry_1">Avtomatik</string>
+  <string name="morphe_autoplay_mode_entry_2">Tək</string>
+  <string name="morphe_autoplay_mode_entry_3">Qapalı</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Miks uzunluğu</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Avtomatik rejimdə Miks bu sayda videodan sonra dayanır. 0 = limit yoxdur</string>
+  <string name="morphe_autoplay_mix_length">Miks: %s video</string>
+  <string name="morphe_autoplay_mix_no_limit">Miks: limit yoxdur</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"İzləməyə davam edilsin?\" sorğusu</string>
   <string name="morphe_continue_watching_prompt_entry_1">İlkin</string>
@@ -1258,9 +1301,6 @@ Avtomobil tərtibatı
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Köhnə pleylistdə saxlanı bərpa et</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Qalın simvolları qeyri-aktiv et</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Video oynadıcı aşağısında kanal adını bərpa et</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım səhifəsin aç</string>
-  <string name="morphe_open_system_share_sheet_summary">Məzmun paylaşanda tətbiqdaxili menyu əvəzinə sistem paylaşım cildini açır</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music düymələrini nəzərə alma</string>
   <string name="morphe_override_youtube_music_buttons_summary">Əsas YouTube Music tətbiqi əvəzinə üstünlük verdiyiniz musiqi tətbiqini açır</string>
@@ -1428,6 +1468,7 @@ Avtomobil tərtibatı
   <string name="morphe_dearrow_titles_player_title">Oynadıcı pleylistləri &amp; tövsiyələri</string>
   <string name="morphe_dearrow_titles_search_title">Axtarış nəticələri</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow işarəsini göstər</string>
+  <string name="morphe_dearrow_titles_icon_summary">İcma mənbəli video başlıqlarında DeArrow nişanını göstərir. Orijinal başlığı və miniatürü görmək üçün simvola toxunun</string>
   <string name="morphe_dearrow_casual_mode_title">Təsadüfi rejim</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow istifadəçiləri orijinal başlığı bəyəndikləri təqdirdə DeArrow başlığı əvəzinə orijinal başlığı göstərir</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Orijinal başlığı göstərmək üçün ən az adi səslər</string>
@@ -1437,7 +1478,7 @@ Avtomobil tərtibatı
   <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow &amp; Orijinal miniatürlər</string>
   <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; Durğun kadr çəkilişləri</string>
   <string name="morphe_dearrow_thumbnail_options_entry_4">Durğun kadr çəkilişləri</string>
-  <string name="morphe_dearrow_about_summary">"DeArrow diqqətçəkən başlıqları və miniatürləri daha dəqiq və daha az sensasiyalı olan kütləvi variantlarla əvəzləyir. Başlıqlar icma tərəfindən yazılır və səsverməyə qoyulur, miniatürlər isə videodan götürülmüş kadrlar olur
+  <string name="morphe_dearrow_about_summary">"DeArrow diqqətçəkən başlıqları və miniatürləri daha dəqiq və daha az sensasiyalı olan ictimai variantlarla əvəzləyir. Başlıqlar icma tərəfindən yazılır və səsverməyə qoyulur, miniatürlər isə videodan götürülmüş kadrlar olur
 
 ​Videolar parçalanmış video ID-sinin qısa prefiksi vasitəsilə sorğulanır, beləliklə server tam olaraq hansı videoya baxdığınızı bilə bilmir. Əgər videonun DeArrow miniatürü yoxdursa, orijinal və ya kadr çəkilişi göstərilir"</string>
   <string name="morphe_dearrow_connection_toast_title">Bağlantı xətası xəbərdarlıqlarını göstər</string>
@@ -1453,7 +1494,6 @@ Avtomobil tərtibatı
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow müvəqqəti mövcud deyil (status kodu: %s) </string>
   <string name="morphe_dearrow_error_generic">DeArrow müvəqqəti olaraq mövcud deyil</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Köhnə oynadıcı düymə üslubunu bərpa et</string>
   <string name="morphe_restore_old_player_buttons_summary">Qalın video oynadıcı tənzimləyicilərin köhnə, daha nazik görüntü üslubuna qaytarır</string>
@@ -1493,25 +1533,20 @@ Avtomobil tərtibatı
   <string name="morphe_video_delay_button_flyout_title">Video gecikməsi menyusunu göstər</string>
   <string name="morphe_video_delay_dialog_input_hint">Millisaniyə ilə gecikmə</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Avtomatik</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Video keyfiyyətin xatırla</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Əl ilə keyfiyyət seçiminizi bütün gələcək videolara tətbiq edir</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Keyfiyyət dəyişikliyi bildirişləri</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Yeni ilkin keyfiyyət saxlanıldıqda bildiriş göstərir</string>
-  <string name="morphe_video_quality_default_wifi_title">Wi-Fi şəbəkəsində ilkin video keyfiyyəti</string>
-  <string name="morphe_video_quality_default_mobile_title">Mobil şəbəkədə ilkin video keyfiyyəti</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts keyfiyyətin xatırla</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Əl ilə keyfiyyət seçiminizi bütün gələcək Shorts-lara tətbiq edir</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi şəbəkəsində ilkin Shorts keyfiyyəti</string>
   <string name="morphe_shorts_quality_default_mobile_title">Mobil şəbəkədə ilkin Shorts keyfiyyəti</string>
-  <string name="morphe_remember_video_quality_toast_mobile">İlkin mobil keyfiyyət %s olaraq dəyişdirildi</string>
-  <string name="morphe_remember_video_quality_toast_wifi">İlkin Wi-Fi keyfiyyəti %s olaraq dəyişdirildi</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts mobil keyfiyyəti %s olaraq dəyişdirildi</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts Wi-Fi keyfiyyəti %s olaraq dəyişdirildi</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Oynatma sürəti düyməsini göstər</string>
   <string name="morphe_playback_speed_dialog_button_summary">Sürəti ilkin vəziyyətə qaytarmaq üçün toxun və saxla</string>
+  <string name="morphe_playback_speed_button_cycle_title">Sürətlər arasında keçmək üçün Oynatma sürəti düyməsinə toxun</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Toxunduqda siyahıdakı növbəti sürətə keçir. Toxunub saxladıqda isə sürət menyusunu açır</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Oynatma sürəti düyməsinin sürətləri</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Hər sətirdə biri olmaqla toxunduqda ardıcıl dəyişən sürətlər. Sonuncu sürətdən sonra toxunma yenidən birinciyə qayıdır</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Yanlış sürət dövrü siyahısı, standarta sıfırlandı</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Keyfiyyət düyməsini göstər</string>
   <string name="morphe_video_quality_dialog_button_summary">Keyfiyyəti ilkin vəziyyətə qaytarmaq üçün toxun və saxla</string>
@@ -1604,6 +1639,8 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Oynatma 1 saniyə tez bitə bilər</string>
   <string name="morphe_spoof_video_streams_about_js">• Deobfuscation pozularsa, oynatma uğursuz ola bilər</string>
   <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView bağlanıb və ya quraşdırılmayıb. Onu aktivləşdirin və yeniləyin, əks halda oynatma uğursuz ola bilər</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView köhnəlib. Yeniləyin, əks halda oynatma uğursuz ola bilər</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Orijinal səsi zorla əlçatan deyil</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR-a daxil olmaq tələb olunur</string>

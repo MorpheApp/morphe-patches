@@ -655,6 +655,7 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_loop_count_clear_done">Хадгалсан давтах тоог устгалаа</string>
   <string name="morphe_loop_count_flyout_name">Давталтын тоо</string>
   <string name="morphe_loop_count_dialog_message">Дараагийн видеог тоглуулахын өмнө видео хэдэн удаа давтагдахыг %1$s-аас %2$s хүртэл тохируулна. Хязгааргүй давтахын тулд хоосон орхино уу.</string>
+  <string name="morphe_loop_count_times">%s удаа</string>
   <string name="morphe_loop_count_no_limit">Хязгааргүй</string>
   <string name="morphe_loop_count_decrease">Цөөн удаа</string>
   <string name="morphe_loop_count_increase">Илүү удаа</string>
@@ -695,6 +696,9 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_play_all_button_type_entry_11">Зөвхөн гишүүдэд зориулсан Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Зөвхөн гишүүдэд зориулсан шууд дамжуулалтууд</string>
   <string name="morphe_play_all_button_not_available_toast">Сувгийн ID зөрүүтэй байгаа тул тоглолтын жагсаалт үүсгэх боломжгүй байна</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Жагсаалтыг харах товчлуур</string>
+  <string name="morphe_playlist_panel_button_summary">Жагсаалтын панелийг нээхийн тулд товшино. Зөвхөн жагсаалт тоглуулах үед харагддаг</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Видеог дахин ачаалах товчийг харуулах</string>
   <string name="morphe_dismiss_player_not_available_toast">Видео ID-г олж чадсангүй. Видеог гараар дахин ачааллана уу</string>
@@ -1204,9 +1208,24 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Тоглуулагчийн поп-ап панелуудыг идэвхгүй болгох</string>
   <string name="morphe_disable_player_popup_panels_summary">Жагсаалт болон шууд чатын панелыг автоматаар нээгдэхээс сэргийлнэ</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Бүрэн дэлгэц дээр тоглуулах жагсаалтын хэсгийг харуулах</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Тоглуулах жагсаалтын хэсэг бүрэн дэлгэц тоглуулагчийн дээр нээгдэнэ</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Планшет дээр тоглуулах жагсаалтын хэсэг бүрэн дэлгэцээс гарна</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Жагсаалтын автоматаар тоглуулалтыг идэвхгүй болгох</string>
   <string name="morphe_disable_playlist_autoplay_summary">Жагсаалтыг дараагийн видео руу автоматаар шилжүүлэхээс сэргийлнэ</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Автоматаар тоглуулах удирдлага</string>
+  <string name="morphe_autoplay_control_summary">Тоглуулагчийн товчлуур болон дараагийн бичлэгт зориулсан дүрэм нэмнэ. Тоглуулах жагсаалт болон дараалал үргэлжлэн, Mix-ийн хувьд тодорхой тооны бичлэгийн дараа зогсоно, санал болгосон бичлэг хэзээ ч тоглогдохгүй. Дараагийн горилыг сонгохын тулд товчлуурыг дарж, жагсаалтыг харахын тулд удаан дарна уу.</string>
+  <string name="morphe_autoplay_mode_title">Автоматаар тоглуулах горим</string>
+  <string name="morphe_autoplay_mode_entry_1">Авто</string>
+  <string name="morphe_autoplay_mode_entry_2">Ганцаараа</string>
+  <string name="morphe_autoplay_mode_entry_3">Унтраах</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Mix-ийн урт</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Авто горимд Mix нь энэ тооны бичлэгийн дараа зогсоно. 0 = хязгааргүй</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s бичлэг</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: хязгааргүй</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Үргэлжлүүлэн үзэх үү?\" гэсэн сануулга</string>
   <string name="morphe_continue_watching_prompt_entry_1">Өгөгдлийн</string>
@@ -1282,9 +1301,6 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Хуучин хадгалалтыг тоглолтын жагсаалтад сэргээх</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Тод дүрсгүүдийг идэвхгүй болгох</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Видео тоглуулагчийн доор сувгийн нэрийг сэргээх</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Системийн хуваалцах цэсийг нээх</string>
-  <string name="morphe_open_system_share_sheet_summary">Агуулга хуваалцах үед апп доторх цэсний оронд системийн хуваалцах цэсийг нээнэ</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music-ийн товчнуудыг даромжлуулах</string>
   <string name="morphe_override_youtube_music_buttons_summary">Үндсэн YouTube Music апп-ын оронд таны илүүд үзэх хөгжмийн апп-ыг нээнэ</string>
@@ -1478,7 +1494,6 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow түр хугацаагаар боломжгүй байна (төлөвийн код: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow түр хугацаагаар боломжгүй байна</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Тоглуулагчийн хуучин товчлуурын загварыг сэргээх</string>
   <string name="morphe_restore_old_player_buttons_summary">Видео тоглуулагчийн товчлууруудыг өмнөх нарийн загвар руу буцаана</string>
@@ -1518,25 +1533,20 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_video_delay_button_flyout_title">Видео хоцролтын цэс харуулах</string>
   <string name="morphe_video_delay_dialog_input_hint">Хоцролтыг миллисекундээр</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Автомат</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Видео чанарыг санахаа</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Таны гараар сонгосон чанарыг цаашдаа бүх видеонд хэрэглэнэ</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Чанарын өөрчлөлтийн мэдэгдэл</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Шинэ үндсэн чанар хадгалагдсан үед мэдэгдэл харуулах</string>
-  <string name="morphe_video_quality_default_wifi_title">Wi-Fi сүлжээ дээрх видеоны стандарт чанар</string>
-  <string name="morphe_video_quality_default_mobile_title">Мобайл сүлжээний видеоны үндсэн чанар</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts чанарыг санахаа</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Таны гараар сонгосон чанарыг цаашдын бүх Shorts-д хэрэглэнэ</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi сүлжээний Shorts-ын үндсэн чанар</string>
   <string name="morphe_shorts_quality_default_mobile_title">Мобайл сүлжээний Shorts-ын үндсэн чанар</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Мобайл төхөөрөмжийн үндсэн чанарыг %s болгож өөрчиллөө</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi-ийн үндсэн чанарыг %s болгож өөрчиллөө</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts-ийн мобайл чанарыг %s болгож өөрчиллөө</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts-ийн Wi-Fi чанарыг %s болгож өөрчиллөө</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Тоглуулах хурдны товчийг харуулах</string>
   <string name="morphe_playback_speed_dialog_button_summary">Хурдыг анхны утгаар нь сэргээхийн тулд даран удаан барина уу</string>
+  <string name="morphe_playback_speed_button_cycle_title">Хурдыг өөрчлөхийн тулд Тоглуулах хурдны товчлуурыг дарна уу</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Дарвал жагсаалтын дараагийн хурд руу шилжинэ. Удаан дарвал хурдны цэс нээгдэнэ</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Тоглуулах хурдны товчлуурын хурднууд</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Дарж шилжих хурднууд, мөр бүрт нэг. Сүүлчийн хурдны дараа дарснаар эхнийх рүү буцаана</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Хурдны циклийн жагсаалт буруу байна, үндсэн утга руу шилжүүлэв</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Чанарын товчийг харуулах</string>
   <string name="morphe_video_quality_dialog_button_summary">Чанарыг анхны утгаар нь сэргээхийн тулд даран удаан барина уу</string>

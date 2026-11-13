@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Жүктеу мәзірі үшін сыртқы жүктегішті пайдалану</string>
   <string name="morphe_external_downloader_menu_summary">Мәзірдің Жүктеу опциясы оның орнына сыртқы жүктегішіңізді ашады</string>
   <string name="morphe_export_download_folder_title">Жүктеулерді экспорттау</string>
-  <string name="morphe_export_download_folder_summary">"Қосымша арқылы жүктелген әндер мен видеоларды жүктеу мәзірі арқылы құрылғыңыздың жадына экспорттаңыз. Экспорттау папкасын өзгерту үшін түртіңіз
+  <string name="morphe_export_download_folder_summary">"Қосымшада сақталған әндер мен видеоларды жүктеу мәзірі арқылы құрылғыңыздың жадына экспорттаңыз. Экспорттау папкасын өзгерту үшін түртіңіз
 
 Экспорттау папкасы: %s"</string>
   <string name="morphe_export_download_started">Жүктеу экспортталуда</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">%2$s жүктеменің %1$s бөлігі %3$s жеріне экспортталды</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Morphe туралы</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Жарнамалар</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Лента</string>
-  <string name="morphe_settings_music_screen_3_general_title">Жалпы</string>
-  <string name="morphe_settings_music_screen_4_player_title">Плеер</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Мәтіндер</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Әртүрлі</string>
+  <string name="morphe_settings_music_screen_00_about_title">Туралы</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Жарнамалар</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Лента</string>
+  <string name="morphe_settings_music_screen_03_general_title">Жалпы</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Мәтіндер</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Әртүрлі</string>
+  <string name="morphe_settings_music_screen_06_player_title">Плеер</string>
+  <string name="morphe_settings_music_screen_10_video_title">Бейне</string>
   <string name="morphe_music_app_language_title">YouTube Music тілі</string>
   <string name="morphe_music_app_language_summary_default">Жүйе тілі</string>
   <string name="morphe_music_app_language_summary_unsupported">Android 13 немесе одан кейінгі нұсқасы қажет</string>
@@ -256,6 +257,9 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
   <string name="morphe_music_playback_speed_title">Ойнату жылдамдығы</string>
   <string name="morphe_music_playback_speed_summary">Барлық тректер үшін қолданылатын жылдамдық. 100% кезінде қолданбаның жылдамдығы, мысалы, подкастты ойнату жылдамдығы қолданылады</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Жылдамдықпен бірге тонды өзгерту</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Автосубтитрлерді өшіру</string>
+  <string name="morphe_music_disable_auto_captions_summary">Бейнебаян басталғанда субтитрлер, соның ішінде бейнебаян бойынша әдепкі бойынша қосылатын субтитрлер автоматты түрде қосылмайды</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Аудио ducking-ді өшіру</string>
   <string name="morphe_music_disable_audio_ducking_summary">Басқа қолданба хабарландыру сияқты қысқа дыбыс шығарғанда, дыбыс деңгейі төмендетілмейді</string>
@@ -567,6 +571,7 @@ SABR ойнатылымы (Видео ағындарын имитациялау 
 
 Деректер қоры ODC Open Database License (ODbL) лицензиясы бойынша берілген. xoundbyte жасаған Soul Over AI жазбалары CC BY 4.0 лицензиясы бойынша берілген. SoundProof немесе Soul Over AI ұйымдарымен байланысы жоқ және олардың қолдауымен жасалмаған."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Бұл құрылғы файлы үшін мәтіндер қолжетімді емес.</string>
   <string name="morphe_music_lyrics_enabled_title">Үшінші тарап мәтіндерін қолдану</string>
   <string name="morphe_music_lyrics_enabled_summary">Үшінші тарап сервисінен мәтіндерді көрсетеді, егер мәтіндер табылмаса, кірістірілген мәтіндерге ауысады</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Мәтінді қарағанда экранды қосып ұстау</string>
@@ -698,6 +703,7 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_search_title_hint">Ән атауы</string>
   <string name="morphe_music_lyrics_search_artist_hint">Орындаушы</string>
   <string name="morphe_music_lyrics_search_empty">Ән атауы мен орындаушыны енгізіңіз</string>
+  <string name="morphe_music_lyrics_search_google">Google арқылы іздеу</string>
   <string name="morphe_music_lyrics_search_no_providers">Қосылған провайдерлердің ешқайсысы басқа әндерді іздей алмайды</string>
   <string name="morphe_music_lyrics_saved">Сақталды</string>
   <string name="morphe_music_lyrics_written_by">Жазған: %s</string>
@@ -777,7 +783,6 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_romanized_by_ai">%s романизациялады</string>
   <string name="morphe_music_lyrics_romanized_by_local">Романизациясы: %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s-пен)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Rime арқылы романизацияланды (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Аударылды</string>
   <string name="morphe_music_lyrics_translation_language_title">Аударма тілі</string>
@@ -837,19 +842,15 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_use_ai_section_title">Бөлімдерді AI арқылы анықтау</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Тек провайдер Припев немесе Шумақ сияқты бөлім белгілерін жібермеген жағдайда қолданылады, оларды OpenAI-мен үйлесімді моделіңіз анықтайды. Жолды өңдеу оның промптын ашады</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (мысалы, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Промпт үлгісі</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Плейсхолдерлер: {task}, {language}, {title}, {artist}, {count}, {lines}. Белгісіз плейсхолдерлер жазылған күйінде қалдырылады</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Промпт сақталды</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Нұсқау сақталды, бірақ AI endpoint әлі қолжетімді емес. Алдымен оны AI баптаулары бөлімінде баптаңыз</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Промпт қалпына келтірілді</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Аударма &amp; романизация баптаулары сақталды</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Баптаулар сақталды, бірақ AI нүктесі әлі қолжетімді емес</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Баптаулар сақталды</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Баптаулар әдепті мәнге қайтарылды</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Базалық URL http:// немесе https:// басталуы керек</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Баптаулар толық емес немесе провайдермен қабылданбады</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Байланыс тексерілуде…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Қосылды! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Байланыс орнатылмады. Параметрлерді тексеріңіз.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Алдымен API кілтін енгізіңіз</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Байланысты тексеру</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Модельдер алынуда…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Модельдерді алу</string>
@@ -866,7 +867,14 @@ Rime Wordlist оқуы тиіс тізімдерді белгілеңіз, со�
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Қосымша сұраныс тақырыптары (міндетті емес JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Атаулар мен мәндерді тырнақшаға алыңыз, мысалы: {\"api-key\": \"abc\"}. / : белгілері бар немесе саннан тұратын тырнақшасыз мән қабылданбайды. Бос мән тақырыпты жояды.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Атаулар мен мәндерді тырнақшаға алыңыз, мысалы: {\"temperature\": 0.3}. / немесе : белгілері бар тырнақшасыз мән қабылданбайды. Модель мен хабарламаларды мұнда орнату мүмкін емес.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Пайындалған күш</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Әдепкі</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Аутентификация кілті (Free немесе Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI бұл трек үшін бөлімдерді анықтай алмады</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Анықталуда</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Бөлімдерді қолдану</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Анықтау тоқтатылды</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Бөлімдерді анықтайтын мәтіндер жоқ</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Қалың белгілерді өшіру</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Плеердің «Келесі», «Мәтіндер» және «Ұқсас» қойындыларын қалпына келтіру</string>

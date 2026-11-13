@@ -695,6 +695,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_play_all_button_type_entry_11">केवल सदस्यों के लिए Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">केवल सदस्यों के लाइव स्ट्रीम</string>
   <string name="morphe_play_all_button_not_available_toast">चैनल आईडी मिसमैच के कारण प्लेलिस्ट जेनरेट करने में असमर्थ</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">प्लेलिस्ट बटन दिखाएं</string>
+  <string name="morphe_playlist_panel_button_summary">प्लेलिस्ट पैनल खोलने के लिए टैप करें। केवल प्लेलिस्ट चलाते समय दिखाया जाता है</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">रीलोड वीडियो बटन दिखाएं</string>
   <string name="morphe_dismiss_player_not_available_toast">वीडियो आईडी अनुपलब्ध है। कृपया वीडियो को मैन्युअल रूप से रीलोड करें</string>
@@ -1204,9 +1207,24 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">प्लेयर पॉपअप पैनल्स अक्षम करें</string>
   <string name="morphe_disable_player_popup_panels_summary">प्लेलिस्ट और लाइव चैट पैनल को स्वचालित रूप से खुलने से अक्षम करता है</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">फुलस्क्रीन में प्लेलिस्ट पैनल दिखाएं</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">प्लेलिस्ट पैनल फुलस्क्रीन प्लेयर के ऊपर खुलता है</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">टैबलेट पर प्लेलिस्ट पैनल फुलस्क्रीन से बाहर निकल जाता है</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">प्लेलिस्ट ऑटोप्ले अक्षम करें</string>
   <string name="morphe_disable_playlist_autoplay_summary">प्लेलिस्ट को अगले वीडियो पर स्वचालित रूप से आगे बढ़ने से रोकता है</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">ऑटोप्ले कंट्रोल</string>
+  <string name="morphe_autoplay_control_summary">अगले वीडियो के लिए एक प्लेयर बटन और एक नियम जोड़ता है। प्लेलिस्ट और कतारें चलती रहती हैं, एक मिक्स वीडियो की एक निश्चित संख्या के बाद रुक जाता है, और सुझाया गया वीडियो कभी नहीं चलता है। अगले मोड के लिए बटन पर टैप करें, सूची के लिए टैप करके रखें</string>
+  <string name="morphe_autoplay_mode_title">ऑटोप्ले मोड</string>
+  <string name="morphe_autoplay_mode_entry_1">स्वचालित</string>
+  <string name="morphe_autoplay_mode_entry_2">एकल</string>
+  <string name="morphe_autoplay_mode_entry_3">बंद</string>
+  <string name="morphe_autoplay_mix_stop_after_title">मिक्स की लंबाई</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">ऑटो मोड में, एक मिक्स इतने वीडियो के बाद रुक जाता है। 0 = कोई सीमा नहीं</string>
+  <string name="morphe_autoplay_mix_length">मिक्स: %s वीडियो</string>
+  <string name="morphe_autoplay_mix_no_limit">मिक्स: कोई सीमा नहीं</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\'देखना जारी रखें?\' प्रॉम्प्ट</string>
   <string name="morphe_continue_watching_prompt_entry_1">डिफ़ॉल्ट</string>
@@ -1282,9 +1300,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुराना \'प्लेलिस्ट में सहेजें\' पुनर्स्थापित करें</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - बोल्ड आइकॉन बंद करें</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - वीडियो प्लेयर के नीचे चैनल का नाम पुनर्स्थापित करें</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">शेयरशीट खोलें</string>
-  <string name="morphe_open_system_share_sheet_summary">सामग्री साझा करते समय इन-ऐप एक के बजाय सिस्टम शेयर शीट खोलता है</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music बटन ओवरराइड करें</string>
   <string name="morphe_override_youtube_music_buttons_summary">आपके पसंदीदा संगीत ऐप को खोलता है, डिफ़ॉल्ट YouTube Music ऐप के बजाय</string>
@@ -1478,7 +1493,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow अस्थायी रूप से उपलब्ध नहीं है (स्थिति कोड: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow अस्थायी रूप से उपलब्ध नहीं है</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">पुराने प्लेयर बटन स्टाइल पुनर्स्थापित करें</string>
   <string name="morphe_restore_old_player_buttons_summary">पुराने, पतले दृश्य शैली में बोल्ड वीडियो प्लेयर नियंत्रण को पुनर्स्थापित करता है</string>
@@ -1518,25 +1532,20 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_video_delay_button_flyout_title">वीडियो विलंब मेनू दिखाएं</string>
   <string name="morphe_video_delay_dialog_input_hint">मिलीसेकंड में विलंब</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">स्वचालित</string>
-  <string name="morphe_remember_video_quality_last_selected_title">वीडियो गुणवत्ता याद रखें</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">अपनी मैन्युअल गुणवत्ता चयन को सभी भविष्य के वीडियो पर लागू करता है</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">गुणवत्ता परिवर्तन सूचनाएं</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">जब एक नई डिफ़ॉल्ट गुणवत्ता सहेजी जाती है तो एक सूचना दिखाता है</string>
-  <string name="morphe_video_quality_default_wifi_title">Wi-Fi नेटवर्क पर डिफ़ॉल्ट वीडियो गुणवत्ता</string>
-  <string name="morphe_video_quality_default_mobile_title">मोबाइल नेटवर्क पर डिफ़ॉल्ट वीडियो गुणवत्ता</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">शॉर्ट्स गुणवत्ता याद रखें</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">सभी भविष्य के शॉर्ट्स पर अपनी मैन्युअल गुणवत्ता चयन लागू करता है</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi नेटवर्क पर डिफ़ॉल्ट Shorts गुणवत्ता</string>
   <string name="morphe_shorts_quality_default_mobile_title">मोबाइल नेटवर्क पर डिफ़ॉल्ट Shorts गुणवत्ता</string>
-  <string name="morphe_remember_video_quality_toast_mobile">डिफ़ॉल्ट मोबाइल गुणवत्ता बदलकर: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">डिफ़ॉल्ट वाई-फ़ाई गुणवत्ता बदलकर: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">शॉर्ट्स मोबाइल गुणवत्ता बदलकर: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">शॉर्ट्स वाई-फ़ाई गुणवत्ता बदलकर: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">प्लेबैक स्पीड बटन दिखाएं</string>
   <string name="morphe_playback_speed_dialog_button_summary">डिफ़ॉल्ट पर गति को रीसेट करने के लिए टैप और होल्ड करें</string>
+  <string name="morphe_playback_speed_button_cycle_title">गति बदलने के लिए प्लेबैक स्पीड बटन पर टैप करें</string>
+  <string name="morphe_playback_speed_button_cycle_summary">टैप करने पर सूची में अगली गति पर जाएं। टैप करके होल्ड करने पर गति मेनू खुलता है</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">प्लेबैक गति बटन की गतियाँ</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">वे गतियाँ जिनमें टैप करने पर चक्र चलता है, प्रति पंक्ति एक। अंतिम गति के बाद, टैप करने पर वापस पहली गति पर आ जाता है</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">अमान्य गति चक्र सूची, डिफॉल्ट पर रीसेट करें</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">गुणवत्ता बटन दिखाएं</string>
   <string name="morphe_video_quality_dialog_button_summary">डिफ़ॉल्ट पर गुणवत्ता को रीसेट करने के लिए टैप और होल्ड करें</string>

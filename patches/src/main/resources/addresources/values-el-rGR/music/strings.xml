@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Χρησιμοποιήστε εξωτερική εφαρμογή λήψης για το μενού Λήψης</string>
   <string name="morphe_external_downloader_menu_summary">Η επιλογή Λήψη στα μενού ανοίγει την εξωτερική σας εφαρμογή λήψης αντί</string>
   <string name="morphe_export_download_folder_title">Εξαγωγή λήψεων</string>
-  <string name="morphe_export_download_folder_summary">"Εξαγάγετε τραγούδια και βίντεο που λήθηκαν από την εφαρμογή στην αποθήκη της συσκευής σας χρησιμοποιώντας το μενού της λήψης. Πατήστε για να αλλάξετε τον φάκελο εξαγωγής
+  <string name="morphe_export_download_folder_summary">"Εξάγετε τα τραγούδια και τα βίντεο που αποθηκεύτηκαν εντός της εφαρμογής στην αποθήκη της συσκευής σας χρησιμοποιώντας το αναδυόμενο μενού λήψιμο εντός της εφαρμογής. Πατήξτε για να αλλάξετε τον φάκελο εξαγωγής
 
 Φάκελος εξαγωγής: %s"</string>
   <string name="morphe_export_download_started">Εξαγωγή λήψης</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">Εξήχθησαν %1$s από τις %2$s λήψεις στο %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Πληροφορίες για το</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Διαφημίσεις</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Ροή</string>
-  <string name="morphe_settings_music_screen_3_general_title">Γενικά</string>
-  <string name="morphe_settings_music_screen_4_player_title">Πρόγραμμα αναπαραγωγής</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Στίχοι</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Διάφορα</string>
+  <string name="morphe_settings_music_screen_00_about_title">Πληροφορίες</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Διαφημίσεις</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Ροή</string>
+  <string name="morphe_settings_music_screen_03_general_title">Γενικά</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Στίχοι</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Διάφορα</string>
+  <string name="morphe_settings_music_screen_06_player_title">Πρόγραμμα αναπαραγωγής</string>
+  <string name="morphe_settings_music_screen_10_video_title">Βίντεο</string>
   <string name="morphe_music_app_language_title">Γλώσσα YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Γλώσσα συστήματος</string>
   <string name="morphe_music_app_language_summary_unsupported">Απαιτείται Android 13 ή μεταγενέστερη έκδοση</string>
@@ -256,6 +257,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_title">Ταχύτητα αναπαραγωγής</string>
   <string name="morphe_music_playback_speed_summary">Ταχύτητα που χρησιμοποιείται για όλα τα κομμάτια. Στο 100% χρησιμοποιείται η ταχύτητα της εφαρμογής, όπως η ταχύτητα αναπαραγωγής podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Αλλαγή τόνου με την ταχύτητα</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Απενεργοποίηση αυτόματων υπότιτλων</string>
+  <string name="morphe_music_disable_auto_captions_summary">Οι υπότιτλοι δεν ενεργοποιούνται αυτόματα όταν ξεκινά ένα βίντεο, συμπεριλαμβανομένων των υπότιτλων που ενεργοποιεί το βίντεο εξ الاρχής</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Απενεργοποίηση της μείωσης έντασης ήχου</string>
   <string name="morphe_music_disable_audio_ducking_summary">Η ένταση δεν μειώνεται όταν μια άλλη εφαρμογή αναπαράγει έναν σύντομο ήχο, όπως μια ειδοποίηση</string>
@@ -567,6 +571,7 @@ Second \"item\" text"</string>
 
 Η βάση δεδομένων είναι αδειοδοτημένη υπό την Άδεια Ανοικτής Βάσης Δεδομένων ODC (ODbL). Οι εγγραφές από το Soul Over AI του xoundbyte είναι αδειοδοτημένες υπό την CC BY 4.0. Δεν συνδέεται με το SoundProof ή το Soul Over AI ούτε υποστηρίζεται από αυτά."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Οι στίχοι δεν είναι διαθέσιμοι για το αρχείο αυτής της συσκευής.</string>
   <string name="morphe_music_lyrics_enabled_title">Χρήση στίχων από τρίτους</string>
   <string name="morphe_music_lyrics_enabled_summary">Εμφανίζει στίχους από μια υπηρεσία τρίτου μέρους, επιστρέφοντας στους ενσωματωμένους στίχους όταν δεν βρεθούν.</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Να παραμένει η οθόνη ανοιχτή κατά την προβολή στίχων</string>
@@ -698,6 +703,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_title_hint">Τίτλος τραγουδιού</string>
   <string name="morphe_music_lyrics_search_artist_hint">Καλλιτέχνης</string>
   <string name="morphe_music_lyrics_search_empty">Εισαγάγετε τίτλο τραγουδιού και καλλιτέχνη</string>
+  <string name="morphe_music_lyrics_search_google">Αναζήτηση με την Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Κανένας από τους ενεργοποιημένους παρόχους δεν μπορεί να αναζητήσει άλλα τραγούδια</string>
   <string name="morphe_music_lyrics_saved">Αποθηκεύτηκε</string>
   <string name="morphe_music_lyrics_written_by">Γράφτηκε από: %s</string>
@@ -777,7 +783,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Μεταγράφηκε σε λατινικούς χαρακτήρες από %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Μεταγράφηκε από %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (με %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Μεταγράφηκε από το Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Μεταφρασμένο</string>
   <string name="morphe_music_lyrics_translation_language_title">Γλώσσα μετάφρασης</string>
@@ -837,19 +842,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Ανίχνευση τμημάτων με AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Χρησιμοποιείται μόνο όταν ο πάροχος δεν παρέχει ετικέτες τμημάτων όπως Ρεφρέν ή Κουπλέ, τις οποίες τότε εντοπίζει το μοντέλο συμβατό με OpenAI. Η επεξεργασία της γραμμής ανοίγει επίσης το prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL τελικού σημείου API (π.χ. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Πρότυπο Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Μεταβλητές: {task}, {language}, {title}, {artist}, {count}, {lines}. Όσες δεν αναγνωρίζονται παραμένουν όπως πληκτρολογήθηκαν</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Το prompt αποθηκεύτηκε</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Το prompt αποθηκεύτηκε, αλλά το τελικό σημείο AI δεν είναι ακόμα διαθέσιμο. Ρυθμίστε το πρώτα στις Ρυθμίσεις AI</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Το prompt επαναφέρθηκε</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Αποθηκεύτηκαν οι ρυθμίσεις μετάφρασης &amp; μεταγραφής</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Οι ρυθμίσεις αποθηκεύτηκαν, αλλά το endpoint του AI δεν είναι ακόμα διαθέσιμο</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Οι ρυθμίσεις αποθηκεύτηκαν</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Οι ρυθμίσεις επαναφέρθηκαν στις προεπιλεγμένες</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Το βασικό URL πρέπει να ξεκινά με http:// ή https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Ρυθμίσεις μη συμπληρωμένες ή απορριφθείσες από τον πάροχο</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Έλεγχος σύνδεσης…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Συνδέθηκε! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Η σύνδεση απέτυχε. Ελέγξτε τις ρυθμίσεις.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Εισάγετε πρώτα το κλειδί API</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Δοκιμή σύνδεσης</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Ανάκτηση μοντέλων…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Ανάκτηση μοντέλων</string>
@@ -866,7 +867,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Επιπρόσθετες κεφαλίδες αιτήματος (προαιρετικό JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Παράθεση ονομάτων και τιμών, π.χ. {\"api-key\": \"abc\"}. Μια μη παρατιθέμενη τιμή που περιέχει / : ή αριθμό απορρίπτεται. Μια κενή τιμή αφαιρεί μια κεφαλίδα.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Παράθεση ονομάτων και τιμών, π.χ. {\"temperature\": 0.3}. Μια μη παρατιθέμενη τιμή που περιέχει / ή : απορρίπτεται. Δεν μπορούν να οριστούν εδώ το Model και τα messages.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Προσπάθεια συλλογισμού</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Προεπιλογή</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Κλειδί αυθεντικοποίησης (Free ή Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">Το AI δεν μπόρεσε να ανιχνεύσει ενότητες για αυτό το κομμάτι</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Ανίχνευση</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Εφαρμογή ενοτήτων</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Η ανίχνευση ακυρώθηκε</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Δεν υπάρχουν στίχοι για ανίχνευση ενοτήτων</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Απενεργοποίηση έντονων εικονιδίων</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Επαναφορά καρτελών Up next, Στίχοι και Σχετικά του Player</string>

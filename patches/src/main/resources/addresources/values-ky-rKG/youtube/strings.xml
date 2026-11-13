@@ -695,6 +695,9 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_play_all_button_type_entry_11">Жардамчылар үчүн гана Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Мүчөлөр үчүн гана түз эфирлер</string>
   <string name="morphe_play_all_button_not_available_toast">Каналдын ID-си дал келбегендиктен плейлистти түзүү мүмкүн болбоду</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Плейлистти көрсөтүү баскычы</string>
+  <string name="morphe_playlist_panel_button_summary">Плейлист панелин ачуу үчүн басыңыз. Плейлистти ойнотуп жатканда гана көрсөтүлөт</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Видеону кайра жүктөө баскычын көрсөтүү</string>
   <string name="morphe_dismiss_player_not_available_toast">Видеонун ID-си жеткиликсиз. Сураныч, видеону кол менен кайра жүктөңүз</string>
@@ -1204,9 +1207,24 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Плеердин терезе панелдерин өчүрүү</string>
   <string name="morphe_disable_player_popup_panels_summary">Плейлист жана түз эфирдеги чат панелдеринин автоматтык түрдө ачылышын өчүрөт</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Плейлист панелин толук экранда көрсөтүү</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Плейлист панели толук экрандуу плеердин үстүнө ачылат</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Планшеттерде плейлист панели толук экрандан чыгат</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Плейлисттин автоплейин өчүрүү</string>
   <string name="morphe_disable_playlist_autoplay_summary">Плейлисттердин кийинки видеого автоматтык түрдө өтүшүн алдын алат</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Автоплейди башкаруу</string>
+  <string name="morphe_autoplay_control_summary">Плеердин баскычын жана кийинки видео үчүн эрежени кошот. Плейлисттер жана кезектер улана берет, Микс видеолордун санынан кийин токтотот, сунушталган видео эч качан ойнолбойт. Кийинки режимге өтүү үчүн баскычты басыңыз, тизмени көрүү үчүн басып кармаңыз</string>
+  <string name="morphe_autoplay_mode_title">Автоплей режими</string>
+  <string name="morphe_autoplay_mode_entry_1">Авто</string>
+  <string name="morphe_autoplay_mode_entry_2">Бир жолу</string>
+  <string name="morphe_autoplay_mode_entry_3">Өчүк</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Микстин узундугу</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Авто режиминде Микс ушул көптүктөгү видеолордон кийин токтотот. 0 = чектөө жок</string>
+  <string name="morphe_autoplay_mix_length">Микс: %s видео</string>
+  <string name="morphe_autoplay_mix_no_limit">Микс: чектөө жок</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Көрүүгө улантуу?\" суроосу</string>
   <string name="morphe_continue_watching_prompt_entry_1">Ыйык</string>
@@ -1282,9 +1300,6 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Плейлистке сактоонун эски вариантын калыбына келтирүү</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Калың белгилерди өчүрүү</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Видео ойноткучтун төмөнүндө каналдын атын калыбына келтирүү</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Системалык бөлүшүү баракчасын ачуу</string>
-  <string name="morphe_open_system_share_sheet_summary">Мазмунду бөлүшкөндө колдонмонун ичиндеги эмес, системалык бөлүшүү баракчасын ачат</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music баскычтарын алмаштыруу</string>
   <string name="morphe_override_youtube_music_buttons_summary">Стандарттык YouTube Music колдонмосунун ордуна сиз тандаган музыкалык колдонмону ачат</string>
@@ -1478,7 +1493,6 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow убактылуу жеткиликсиз (статус коду: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow убактылуу жеткиликсиз</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Плеердин баскычтарынын эски стилин калыбына келтирүү</string>
   <string name="morphe_restore_old_player_buttons_summary">Видео плеердин калың башкаруу баскычтарын мурунку жука визуалдык стилге кайтарат</string>
@@ -1518,25 +1532,20 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_video_delay_button_flyout_title">Видео кечиктирүү менюсун көрсөтүү</string>
   <string name="morphe_video_delay_dialog_input_hint">Миллисекундалар менен кечиктирүү</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Авто</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Видео сапатын эстеп калуу</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Сиз тандаган сапатты кийинки бардык видеолорго колдонот</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Сапаттын өзгөрүшү жөнүндө билдирүүлөр</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Жаңы стандарттуу сапат сакталгандыгында билдирүү көрсөтөт</string>
-  <string name="morphe_video_quality_default_wifi_title">Wi-Fi тармагындагы видеонун стандарттуу сапаты</string>
-  <string name="morphe_video_quality_default_mobile_title">Мобилдик тармактагы видеонун стандарттуу сапаты</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts сапатын эстеп калтыруу</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Сиз тандаган сапатты кийинки бардык Shorts видеолоруна колдонот</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi тармагындагы Shorts стандарттуу сапаты</string>
   <string name="morphe_shorts_quality_default_mobile_title">Мобилдик тармактагы Shorts стандарттык деңгээли</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Мобилдик байланыш үчүн стандарттуу сапат %s болуп өзгөрдү</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi үчүн стандарттуу сапат %s болуп өзгөрдү</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts мобилдик сапаты %s болуп өзгөрдү</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts Wi-Fi сапаты %s кылып өзгөртүлдү</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Ойнотуу ылдамдыгы баскычын көрсөтүү</string>
   <string name="morphe_playback_speed_dialog_button_summary">Ылдамдыкты стандарттуу абалга кайтаруу үчүн басып кармаңыз</string>
+  <string name="morphe_playback_speed_button_cycle_title">Ылдамдыктарды алмаштыруу үчүн Оynatу ылдамдыгы баскычын басыңыз</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Басуу тизмедеги кийинки ылдамдыкка өткөрөт. Басып кармоо ылдамдык менюсун ачат</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Оynatу ылдамдыгы баскычынын ылдамдыктары</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Басуу аркылуу алмаштырылуучу ылдамдыктар, ар бир сапка бирден. Акыркы ылдамдыктан кийин басуу биринчисине кайтарат</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Жарамсыз ылдамдыктар тизмеси, стандарттууга кайтарылды</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Сапат баскычын көрсөтүү</string>
   <string name="morphe_video_quality_dialog_button_summary">Сапатын стандарттуу абалга келтирүү үчүн басып тургула</string>

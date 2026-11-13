@@ -232,6 +232,20 @@ Pritisnite \"nadaljujte\", da se prijavite"</string>
   <string name="morphe_replace_music_with_youtube_summary">Nadomešča music.youtube.com z youtube.com v skupnih povezavah.</string>
   <string name="morphe_replace_links_with_shortener_title">Spremenite povezave za deljenje v youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Prisilno uporablja skrajšano obliko URL-jev youtu.be za videe</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Samodejno</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Zapomni si kvaliteto videa</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Vaše ročno izbrano nastavitv kvalitete se uporabi za vse prihodnje videe</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Obvestila o spremembi kvalitete</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Prikaže obvestilo, ko se shrani nova privzeta kvaliteta</string>
+  <string name="morphe_video_quality_default_wifi_title">Privzeta kvaliteta videa v Wi-Fi omrežju</string>
+  <string name="morphe_video_quality_default_mobile_title">Privzeta kvaliteta videa v mobilnem omrežju</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Privzeta mobilna kvaliteta spremenjena v: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Privzeta Wi-Fi kvaliteta spremenjena v: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Odpri sistemsko okno za deljenje</string>
+  <string name="morphe_open_system_share_sheet_summary">Odpre sistemsko okno za deljenje namesto vgrajenega pri deljenju vsebine</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho zapisovanje</string>
   <string name="morphe_debug_litho_entry_disabled">Onemogočeno</string>

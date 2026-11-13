@@ -232,6 +232,20 @@ Til að skrá þig inn ýttu á Halda áfram hér að neðan"</string>
   <string name="morphe_replace_music_with_youtube_summary">Breytir music.youtube.com í youtube.com í deilitenglum</string>
   <string name="morphe_replace_links_with_shortener_title">Breyta deilitenglum í youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Neyðir myndbönd til að nota styttri youtu.be-vefslóðarsnið</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Sjálfvirkt</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Muna gæði myndskeiðs</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Beitir handvöldu gæðavali á öll næstu myndskeið</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Tilkynningar um gæðabreytingar</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Sýnir tilkynningu þegar nýtt sjálfgefið gæði er vistað</string>
+  <string name="morphe_video_quality_default_wifi_title">Sjálfgefin myndgæði á Wi-Fi neti</string>
+  <string name="morphe_video_quality_default_mobile_title">Sjálfgefin myndgæði á farsímaneti</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Breytt sjálfgefin gæði fyrir farsíma í: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Breytt sjálfgefin Wi-Fi gæði í: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Opna deilingarvalmynd kerfisins</string>
+  <string name="morphe_open_system_share_sheet_summary">Opnar deilingarvalmynd kerfisins í stað innbyggðrar þegar efni er deilt</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-skráning</string>
   <string name="morphe_debug_litho_entry_disabled">Óvirkt</string>

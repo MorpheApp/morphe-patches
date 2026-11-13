@@ -28,9 +28,9 @@ Second \"item\" text"</string>
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_export_download_folder_title">பதிவிறக்கங்களை ஏற்றுமதி செய்</string>
-  <string name="morphe_export_download_folder_summary">"ஆப்பினால் பதிவிறக்கப்பட்ட பாடல்கள் மற்றும் வீடியோக்களை பதிவிறக்க மெனுவைப் பயன்படுத்தி உங்கள் சாதன சேமிப்பகத்திற்கு ஏற்றுமதி செய்யவும். ஏற்றுமதி கோப்புறையை மாற்ற தட்டவும்
+  <string name="morphe_export_download_folder_summary">"ஆப்-இன் டவுன்லோட்கள் flyout மெனுவைப் பயன்படுத்தி ஆப்பில் சேமிக்கப்பட்ட பாடல்கள் மற்றும் வீடியோக்களை உங்கள் சாதனச் சேமிப்பகத்திற்கு ஏற்றுமதி செய்யவும். ஏற்றுமதி
 
-ஏற்றுமதி கோப்புறை: %s"</string>
+ஏற்றுமதி கோப்புறையை மாற்ற தட்டவும்: %s"</string>
   <string name="morphe_export_download_started">பதிவிறக்கத்தை ஏற்றுமதி செய்கிறது</string>
   <string name="morphe_export_download_progress">பதிவிறக்கத்தை ஏற்றுமதி செய்கிறது: %s%%</string>
   <string name="morphe_export_download_notification_channel">பதிவிறக்க ஏற்றுமதிகள்</string>
@@ -42,6 +42,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">%2$s பதிவிறக்கங்களில் %1$s பதிவிறக்கங்கள் %3$s-க்கு ஏற்றுமதி செய்யப்பட்டன</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_00_about_title">Morphe பற்றி</string>
+  <string name="morphe_settings_music_screen_01_ads_title">விளம்பரங்கள்</string>
+  <string name="morphe_settings_music_screen_02_feed_title">ஃபீட்</string>
+  <string name="morphe_settings_music_screen_03_general_title">பொதுவானவை</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">பாடல் வரிகள்</string>
+  <string name="morphe_settings_music_screen_05_misc_title">இதரவை</string>
+  <string name="morphe_settings_music_screen_06_player_title">பிளேயர்</string>
+  <string name="morphe_settings_music_screen_10_video_title">வீடியோ</string>
   <!-- ad.hideAdsPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_you_may_also_like_section_title">\'உங்களுக்கு இதுவும் பிடிக்கலாம்\' பகுதியை மறைக்கவும்</string>
@@ -54,6 +62,7 @@ Second \"item\" text"</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- video.speed.playbackSpeedPatch -->
+  <!-- layout.captions.disableAutoCaptionsPatch -->
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">ஆடியோ டக்கிங்கை முடக்கு</string>
   <string name="morphe_music_disable_audio_ducking_summary">அறிவிப்பு போன்ற சிறிய ஒலியை மற்றொரு ஆப் இயக்கும்போது, வால்யூம் குறைக்கப்படாது</string>
@@ -220,6 +229,7 @@ Second \"item\" text"</string>
 
 தரவுத்தளம் ODC Open Database License (ODbL) கீழ் உரிமம் பெற்றுள்ளது. xoundbyte-ன் Soul Over AI-லிருந்து பெறப்பட்ட பதிவுகள் CC BY 4.0 கீழ் உரிமம் பெற்றுள்ளன. SoundProof அல்லது Soul Over AI உடன் இணைக்கப்படவில்லை அல்லது அங்கீகரிக்கப்படவில்லை."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">இந்த சாதனக் கோப்பிற்கு பாடல் வரிகள் கிடைக்கவில்லை.</string>
   <string name="morphe_music_lyrics_rime_dict_title">Rime வார்த்தைப் பட்டியல்</string>
   <string name="morphe_music_lyrics_rime_dict_empty">"Rime Wordlist-க்கு UniDict-ம் தேவை: ஆஃப்லைன் அகராதி வழங்குநரில் (Offline Dictionary provider), \"Chinese and Cantonese characters (UniDict)\"-ஐ டிக் செய்து, அது பதிவிறக்கம் செய்து முடிக்கும் வரை காத்திருக்கவும். இது இல்லையெனில், எழுத்துக்களை வாசிக்கும் பட்டியல் எந்த வாசிப்பையும் வழங்காது.
 
@@ -275,6 +285,7 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_local_romanization_dict_chinese">சீன வார்த்தைகள் (pinyin-pro, ~17 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_cldr">கிரேக்க, ஸ்லாவிக் சிரிலிக் (ரஷ்யன், உக்ரேனியன், பல்கேரியன், செர்பியன், பெலாரூசியன், மாகிடோனியன் உட்பட), ஜார்ஜியன், அர்மேனியன், ஹீப்ரு, அரபு, அம்ஹாரிக் மற்றும் சிரியாக் ஒலிபெயர்ப்பு (CLDR, ~0.5 MB)</string>
   <string name="morphe_music_lyrics_local_romanization_dict_building">வாசிக்கப்படுகிறது %1$s: %2$s%%</string>
+  <string name="morphe_music_lyrics_search_google">Google மூலம் தேடுங்கள்</string>
   <string name="morphe_music_lyrics_written_by">எழுதியவர்: %s</string>
   <string name="morphe_music_lyrics_spring_scroll_title">ஸ்பிரிங் ஸ்க்ரோலிங்கைப் பயன்படுத்தவும்</string>
   <string name="morphe_music_lyrics_spring_scroll_summary">ஸ்பிரிங் இயற்பியலுடன் பாடலை நகர்த்துகிறது, மேலும் ஒவ்வொரு வரியையும் அதற்கு மேலே உள்ள வரிக்கு சற்றுப் பின்னால் நகர்த்துகிறது. மெதுவான சாதனங்களில் பேட்டரியைச் சேமிக்க இதை அணைக்கவும்</string>
@@ -295,7 +306,6 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_han_form_summary">இதை ஆன் செய்யும் போது, பாடல்களை எளிய மற்றும் பாரம்பரிய எழுத்துக்களுக்கு இடையே மாற்ற உங்கள் மொழிபெயர்ப்பு இலக்கு மொழியைப் பின்பற்றுகிறது</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s உடன்)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Rime-ஆல் ரோமனிஸ்டு செய்யப்பட்டது (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_romanize_language_title">ரோமமயமாக்கல் அல்லது ஒலிபெயர்ப்பு மொழி</string>
   <string name="morphe_music_lyrics_translation_target_language">"மொழிபெயர்ப்பு இலக்கு மொழி:
@@ -322,10 +332,11 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_use_ai_section_summary">Chorus அல்லது Verse போன்ற பிரிவு லேபிள்களை வழங்குநர் அனுப்பாதபோது மட்டுமே இது பயன்படுத்தப்படும், அவற்றை உங்கள் OpenAI-க்கு இணக்கமான மாடல் கண்டறியும். வரிசையைத் திருத்துவது அதன் தூண்டுதலையும் திறக்கும்</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (உதாரணமாக https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholders: {task}, {language}, {title}, {artist}, {count}, {lines}. தெரியாதவை தட்டச்சு செய்யப்பட்டவாறே விடப்படும்</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">அமைப்புகள் சேமிக்கப்பட்டன, ஆனால் AI எண்ட் பாயிண்ட் இன்னும் பயன்படுத்தக்கூடியதாக இல்லை</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">அமைப்புகள் சேமிக்கப்பட்டன</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">அமைப்புகள் முழுமையற்றவை அல்லது வழங்குநரால் நிராகரிக்கப்பட்டன</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: இணைக்கப்பட்டது! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: இணைப்பு தோல்வியுற்றது. அமைப்புகளைச் சரிபார்க்கவும்.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">முதலில் API விசையை உள்ளிடவும்</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">இணைப்பைச் சோதிக்கவும்</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">மாடல்களைப் பெறவும்</string>
   <string name="morphe_music_lyrics_ai_config_prompt_label">தூண்டுதல்</string>
@@ -335,5 +346,12 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">கூடுதல் கோரிக்கை தலைப்புகள் (விருப்பமான JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">பெயர்கள் மற்றும் மதிப்புகளை மேற்கோள் குறிகளுக்குள் இடவும், எ.கா. {\"api-key\": \"abc\"}. / : அல்லது எண்ணைக் கொண்ட மேற்கோள் இல்லாத மதிப்பு நிராகரிக்கப்படும். காலியான மதிப்பு ஒரு தலைப்பை நீக்கும்.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">பெயர்கள் மற்றும் மதிப்புகளை மேற்கோள் குறிகளுக்குள் இடவும், எ.கா. {\"temperature\": 0.3}. / அல்லது : ஐக் கொண்ட மேற்கோள் இல்லாத மதிப்பு நிராகரிக்கப்படும். மாடல் மற்றும் செய்திகளை இங்கே அமைக்க முடியாது.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">தருக்க முயற்சி</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">இயல்பானது</string>
+  <string name="morphe_music_lyrics_ai_section_failed">இந்தப் பாடலுக்கான பிரிவுகளை AI-ஆல் கண்டறிய முடியவில்லை</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">கண்டறிகிறது</string>
+  <string name="morphe_music_lyrics_ai_section_apply">பிரிவுகளைப் பயன்படுத்து</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">கண்டறிதல் ரத்து செய்யப்பட்டது</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">பகுதிகளைக் கண்டறிய பாடல் வரிகள் இல்லை</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>
