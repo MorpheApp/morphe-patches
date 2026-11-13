@@ -106,7 +106,7 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
                     summary = str("morphe_spoof_video_streams_about_failure")
                             + '\n' + str("morphe_spoof_video_streams_about_end_early")
                             + '\n' + str("morphe_spoof_video_streams_about_no_stable_volume");
-            case TV_SABR, TV_SABR_WII_U, TV_DASH, TV_SIMPLY -> {
+            case TV_SABR, TV_SABR_WII_U, TV_DASH, TV_SIMPLY, MWEB -> {
                 summary = str("morphe_spoof_video_streams_about_js");
                 switch (WebViewCheck.getStatus()) {
                     case MISSING -> summary += '\n' + str("morphe_spoof_video_streams_about_webview_missing");

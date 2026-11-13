@@ -13,12 +13,17 @@ package app.morphe.extension.shared.spoof;
 import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
 
 import android.os.Build;
+import android.webkit.WebSettings;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("ConstantLocale")
 public enum ClientType {
@@ -336,6 +341,32 @@ public enum ClientType {
             "TV Simply"
     ),
     /**
+     * Mobile web (m.youtube.com), as the Chrome browser of the device.
+     * The user agent is of the Chrome version of the WebView, which opens the website (see {@link #getUserAgent()}).
+     * Requires a web sign in. Its SABR media requests use the PoToken and the streaming session that the website
+     * makes for the video (see {@link MwebSiteSession}), so the player request has no PoToken.
+     */
+    MWEB(
+            2,
+            "MWEB",
+            "Google",
+            "K",
+            "Android",
+            "10",
+            "2.20261110.07.00",
+            "MOBILE",
+            String.format(Locale.ENGLISH, ClientType.WEB_USER_AGENT_FORMAT, "142"),
+            // Uses the cookies of a web sign in, and not the access token of the app. See MwebSignIn.
+            false,
+            false,
+            true,
+            false,
+            true,
+            false,
+            true,
+            "Mobile Web"
+    ),
+    /**
      * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
      * AV1 codec available.
      * May stop working at any time.
@@ -520,6 +551,66 @@ public enum ClientType {
      * Friendly name displayed in stats for nerds.
      */
     public final String friendlyName;
+
+    /**
+     * User agent of Chrome on Android, with the version and the device hidden as Chrome sends it.
+     */
+    private static final String WEB_USER_AGENT_FORMAT = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36"
+            + " (KHTML, like Gecko) Chrome/%s.0.0.0 Mobile Safari/537.36";
+
+    @Nullable
+    private static volatile String webUserAgent;
+
+    @Nullable
+    private static volatile String chromeMajorVersion;
+
+    /**
+     * @return The major version of Chrome of the WebView, or a recent version if it is not known.
+     */
+    private static String getChromeMajorVersion() {
+        String version = chromeMajorVersion;
+        if (version == null) {
+            version = "142";
+            try {
+                Matcher matcher = Pattern.compile("Chrome/(\\d+)")
+                        .matcher(WebSettings.getDefaultUserAgent(Utils.getContext()));
+                if (matcher.find()) {
+                    version = matcher.group(1);
+                }
+            } catch (Exception ex) {
+                // WebView is missing or broken.
+                Logger.printInfo(() -> "Could not read the WebView user agent", ex);
+            }
+            chromeMajorVersion = version;
+        }
+        return version;
+    }
+
+    /**
+     * The user agent of the client.
+     * <p>
+     * A web client is the Chrome browser of the device, with the Chrome version of the WebView.
+     * The website opens in the WebView, so the requests name the same browser as the website session.
+     */
+    public String getUserAgent() {
+        if (!isWebClient()) {
+            return userAgent;
+        }
+        String agent = webUserAgent;
+        if (agent == null) {
+            agent = String.format(Locale.ENGLISH, WEB_USER_AGENT_FORMAT, getChromeMajorVersion());
+            webUserAgent = agent;
+        }
+        return agent;
+    }
+
+    /**
+     * If the client is a client of the YouTube website. A web client signs in with the cookies of the website
+     * (see {@link MwebSignIn}), and its PoTokens are made by the website (see {@link MwebSiteSession}).
+     */
+    public boolean isWebClient() {
+        return this == MWEB;
+    }
 
     /**
      * Android constructor.

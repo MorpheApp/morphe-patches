@@ -29,6 +29,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -53,6 +54,9 @@ import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.MwebSignIn;
+import app.morphe.extension.shared.spoof.MwebSiteSession;
+import app.morphe.extension.shared.spoof.MwebStreamGuard;
 import app.morphe.extension.shared.spoof.PreferredClientCheck;
 import app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
@@ -146,6 +150,10 @@ public class StreamingDataRequest {
     }
 
     private static final String AUTHORIZATION_HEADER = "Authorization"; // Available only to logged-in users.
+    /**
+     * Origin of the InnerTube requests of the web clients, as the website makes them.
+     */
+    private static final String WEB_API_ORIGIN = "https://www.youtube.com";
     private static final String API_FORMAT_VERSION_HEADER = "X-GOOG-API-FORMAT-VERSION";
     private static final String VISITOR_ID_HEADER = "X-Goog-Visitor-Id";
 
@@ -419,6 +427,45 @@ public class StreamingDataRequest {
     }
 
     /**
+     * Videos whose streams of the Mobile Web client could not be played, so their next fetch uses the next client.
+     */
+    private static final Set<String> webClientFailedVideos = Collections.synchronizedSet(
+            Collections.newSetFromMap(Utils.createSizeRestrictedMap(100)));
+
+    /**
+     * Called when the streams of the Mobile Web client of a video cannot be played.
+     * The fetch of the video is not reused, so the video is played with the next client when it is loaded again.
+     * Only that fetch skips the client: the video uses it again when it is opened later.
+     */
+    public static void onWebClientFailed(String videoId, String reason) {
+        if (!webClientFailedVideos.add(videoId)) {
+            return;
+        }
+        Logger.printDebug(() -> "Mobile Web cannot play: " + videoId + " reason: " + reason);
+        synchronized (cache) {
+            StreamingDataRequest request = cache.get(videoId);
+            if (request != null && request.future.isDone()) {
+                StreamData stream = request.getStream();
+                if (stream != null && stream.client().isWebClient()) {
+                    cache.remove(videoId);
+                }
+            }
+        }
+    }
+
+    /**
+     * @return If the Mobile Web client is not used for this fetch of the video,
+     *         since its streams could not be played just before.
+     */
+    private static boolean skipWebClient(ClientType client, String videoId) {
+        if (client.isWebClient() && webClientFailedVideos.remove(videoId)) {
+            Logger.printDebug(() -> "Skipping Mobile Web for this fetch, since it could not play: " + videoId);
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Called when a media response asks the player to load the player response of its video again.
      * The fetches started before are not reused, since they can hold the streams the player is asked to replace.
      * This does not know the video, but a reload is rare.
@@ -511,9 +558,36 @@ public class StreamingDataRequest {
 
             authHeadersOverrides = false;
 
+            // Web clients accept only the cookies of a web sign in, and not the access token of the app:
+            // MWEB. Without a web sign in, the client is used signed out, as the website is.
+            if (clientType.isWebClient()) {
+                // The session of the account is in the authorization.
+                String cookies = MwebSignIn.isSignedIn() && MwebSignIn.getDataSyncId() != null
+                        ? MwebSignIn.getCookieHeader()
+                        : null;
+                String webAuthorization = cookies == null ? null : MwebSignIn.getAuthorization(WEB_API_ORIGIN);
+                if (webAuthorization == null) {
+                    Logger.printDebug(() -> "Not signed in to the website, using signed out: " + clientType
+                            + ", videoId: " + videoId);
+                } else {
+                    connection.setRequestProperty("Cookie", cookies);
+                    connection.setRequestProperty(AUTHORIZATION_HEADER, webAuthorization);
+                    // The authorization is made for this origin. The "Origin" header is not set,
+                    // because the API host refuses an origin of another host.
+                    connection.setRequestProperty("X-Origin", WEB_API_ORIGIN);
+                    connection.setRequestProperty("X-Goog-AuthUser", "0");
+                    connection.setRequestProperty("X-Youtube-Bootstrap-Logged-In", "true");
+                    String delegatedSessionId = MwebSignIn.getDelegatedSessionId();
+                    if (delegatedSessionId != null) {
+                        // A brand account.
+                        connection.setRequestProperty("X-Goog-PageId", delegatedSessionId);
+                    }
+                    Logger.printDebug(() -> "Set web sign in: " + clientType + ", videoId: " + videoId);
+                }
+            }
             // Auth header is required, but the user is not logged in. These clients are skipped:
             // ANDROID_CREATOR, ANDROID_MUSIC_REEL, ANDROID_MUSIC_NO_SDK.
-            if (clientType.canLogin && clientType.requireLogin && !authHeadersIncludes) {
+            else if (clientType.canLogin && clientType.requireLogin && !authHeadersIncludes) {
                 Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
                         + ", videoId: " + videoId);
                 return null;
@@ -553,6 +627,13 @@ public class StreamingDataRequest {
             // To prevent this, each client uses a different visitorId.
             // See: https://github.com/MorpheApp/morphe-patches/issues/2283.
             String visitorId = VisitorIdRequester.getVisitorId(clientType);
+            // A signed in web client uses the visitor of its website session.
+            if (clientType.isWebClient() && MwebSignIn.isSignedIn() && MwebSignIn.getDataSyncId() != null) {
+                String sessionVisitorData = MwebSignIn.getVisitorData();
+                if (sessionVisitorData != null) {
+                    visitorId = sessionVisitorData;
+                }
+            }
             if (Utils.isNotEmpty(visitorId)) {
                 connection.setRequestProperty(VISITOR_ID_HEADER, visitorId);
             } else {
@@ -569,7 +650,17 @@ public class StreamingDataRequest {
             connection.getOutputStream().write(requestBody);
 
             final int responseCode = connection.getResponseCode();
+            if (clientType.isWebClient()) {
+                // The website session renews some of its cookies with each response.
+                MwebSignIn.saveResponseCookies(connection);
+            }
             if (responseCode == HttpURLConnection.HTTP_OK) return connection;
+
+            if (clientType.isWebClient() && (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED
+                    || responseCode == HttpURLConnection.HTTP_FORBIDDEN)) {
+                // The sign in is checked again with the next fetch.
+                MwebSignIn.onSignInRefused();
+            }
 
             // This situation likely means the patches are outdated.
             // Use a toast message that suggests updating.
@@ -693,6 +784,20 @@ public class StreamingDataRequest {
                     return null;
                 }
                 responseBuilder.setStreamingData(deobfuscatedStreamingDataBuilder);
+            }
+
+            if (clientType.isWebClient()) {
+                // The media requests use the streaming session that the website made for the video,
+                // so the PoToken of the session is made by the website itself.
+                MwebSiteSession.Session siteSession = MwebSiteSession.fetch(videoId);
+                if (siteSession == null) {
+                    Logger.printDebug(() -> "Skipping client since the website gave no streaming session: "
+                            + clientType + ", videoId: " + videoId);
+                    return null;
+                }
+                responseBuilder.setStreamingData(responseBuilder.getStreamingData().toBuilder()
+                        .setServerAbrStreamingUrl(siteSession.serverAbrStreamingUrl));
+                MwebStreamGuard.onStreams(Uri.parse(siteSession.serverAbrStreamingUrl).getQueryParameter("id"), videoId);
             }
 
             byte[] streamingDataBuffer = responseBuilder.build().toByteArray();
@@ -854,7 +959,7 @@ public class StreamingDataRequest {
         // Retry with different client if empty response body is received.
         int i = 0;
         for (ClientType clientType : clientOrder) {
-            if (skipClient(clientType)) {
+            if (skipClient(clientType) || skipWebClient(clientType, videoId)) {
                 continue;
             }
 
@@ -864,6 +969,10 @@ public class StreamingDataRequest {
 
             if (clientType.requireJS) {
                 JavaScriptManager.warmUpInBackground();
+            }
+            if (clientType.isWebClient()) {
+                // The website makes the streaming session while the player request is made.
+                MwebSiteSession.start(videoId);
             }
 
             HttpURLConnection connection =

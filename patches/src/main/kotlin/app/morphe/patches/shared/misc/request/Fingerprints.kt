@@ -50,6 +50,7 @@ internal object BuildRequestFingerprint : Fingerprint(
 private const val MEDIA_INTERFACES = "Lcom/google/android/libraries/youtube/media/interfaces/"
 
 internal const val HTTP_REQUEST_CLASS_TYPE = "${MEDIA_INTERFACES}HttpRequest;"
+internal const val HTTP_HEADER_CLASS_TYPE = "${MEDIA_INTERFACES}HttpHeader;"
 
 /**
  * The parameters depend on the app version. Newer versions also take a boolean.

@@ -72,22 +72,30 @@ public final class PlayerRoutes {
             JSONObject context = new JSONObject();
 
             JSONObject client = new JSONObject();
-            client.put("deviceMake", clientType.deviceMake);
-            client.put("deviceModel", clientType.deviceModel);
+            // The website names only its client and its browser.
+            final boolean web = clientType.isWebClient();
+            if (!web) {
+                client.put("deviceMake", clientType.deviceMake);
+                client.put("deviceModel", clientType.deviceModel);
+            }
             client.put("clientName", clientType.clientName);
             client.put("clientVersion", clientType.clientVersion);
             if (!TextUtils.isEmpty(visitorId)) {
                 client.put("visitorData", visitorId);
             }
-            client.put("osName", clientType.osName);
-            client.put("osVersion", clientType.osVersion);
+            if (web) {
+                client.put("userAgent", clientType.getUserAgent());
+            } else {
+                client.put("osName", clientType.osName);
+                client.put("osVersion", clientType.osVersion);
+            }
 
             String androidSdkVersion = clientType.androidSdkVersion;
             if (!TextUtils.isEmpty(androidSdkVersion)) {
                 client.put("androidSdkVersion", androidSdkVersion);
             }
 
-            String platform = clientType.clientPlatform;
+            String platform = web ? null : clientType.clientPlatform;
             if (!TextUtils.isEmpty(platform)) {
                 client.put("platform", platform);
             }
@@ -123,7 +131,9 @@ public final class PlayerRoutes {
                 JSONObject contentPlaybackContext = new JSONObject();
                 contentPlaybackContext.put(
                         "referer",
-                        String.format("https://www.youtube.com/tv#/watch?v=%s", videoId)
+                        String.format(clientType == ClientType.MWEB
+                                ? "https://m.youtube.com/watch?v=%s"
+                                : "https://www.youtube.com/tv#/watch?v=%s", videoId)
                 );
                 contentPlaybackContext.put("html5Preference", "HTML5_PREF_WANTS");
                 Integer signatureTimestamp = JavaScriptManager.getSignatureTimestamp();
@@ -178,7 +188,7 @@ public final class PlayerRoutes {
         HttpURLConnection connection = Requester.getConnectionFromCompiledRoute(YT_API_URL, route);
 
         connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("User-Agent", clientType.userAgent);
+        connection.setRequestProperty("User-Agent", clientType.getUserAgent());
         // Not a typo. "Client-Name" uses the client type id.
         connection.setRequestProperty("X-YouTube-Client-Name", String.valueOf(clientType.id));
         connection.setRequestProperty("X-YouTube-Client-Version", clientType.clientVersion);

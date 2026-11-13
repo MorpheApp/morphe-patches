@@ -22,7 +22,8 @@ import java.util.Locale;
  * even when it plays the streams of another client.
  */
 public final class SabrRequestBody {
-    // VideoPlaybackAbrRequest.streamerContext.
+    // VideoPlaybackAbrRequest.videoPlaybackUstreamerConfig and VideoPlaybackAbrRequest.streamerContext.
+    static final int REQUEST_USTREAMER_CONFIG_FIELD = 5;
     static final int REQUEST_STREAMER_CONTEXT_FIELD = 19;
     // StreamerContext.clientInfo and StreamerContext.poToken.
     static final int STREAMER_CONTEXT_CLIENT_INFO_FIELD = 1;
@@ -64,10 +65,16 @@ public final class SabrRequestBody {
     }
 
     /**
-     * Replaces the client of the request, and removes the PoToken of the app.
+     * Replaces the client of the request, and the PoToken of the app with the PoToken of the client.
      * The other fields are kept as they are.
+     *
+     * @param poToken         PoToken of the client, or null if the client has none.
+     * @param sabrContexts    SABR contexts the request must send back, or null if the client has none.
+     * @param ustreamerConfig Streaming config of the session of the client, or null to keep the one of the app.
      */
-    static byte[] replaceClientInfo(byte[] body, byte[] clientInfo) throws IOException {
+    static byte[] replaceClientInfo(byte[] body, byte[] clientInfo, @Nullable byte[] poToken,
+                                    @Nullable SabrContexts.ToSend sabrContexts,
+                                    @Nullable byte[] ustreamerConfig) throws IOException {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream(body.length + clientInfo.length);
         CodedOutputStream output = CodedOutputStream.newInstance(bytes);
         CodedInputStream input = CodedInputStream.newInstance(body);
@@ -79,7 +86,10 @@ public final class SabrRequestBody {
             }
             if (isMessageField(tag, REQUEST_STREAMER_CONTEXT_FIELD)) {
                 output.writeByteArray(REQUEST_STREAMER_CONTEXT_FIELD,
-                        replaceStreamerContextClient(input.readByteArray(), clientInfo));
+                        replaceStreamerContextClient(input.readByteArray(), clientInfo, poToken, sabrContexts));
+            } else if (ustreamerConfig != null && isMessageField(tag, REQUEST_USTREAMER_CONFIG_FIELD)) {
+                input.skipField(tag);
+                output.writeByteArray(REQUEST_USTREAMER_CONFIG_FIELD, ustreamerConfig);
             } else {
                 copyField(body, start, input, tag, output);
             }
@@ -88,7 +98,9 @@ public final class SabrRequestBody {
         return bytes.toByteArray();
     }
 
-    private static byte[] replaceStreamerContextClient(byte[] streamerContext, byte[] clientInfo) throws IOException {
+    private static byte[] replaceStreamerContextClient(byte[] streamerContext, byte[] clientInfo,
+                                                       @Nullable byte[] poToken,
+                                                       @Nullable SabrContexts.ToSend sabrContexts) throws IOException {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream(streamerContext.length + clientInfo.length);
         CodedOutputStream output = CodedOutputStream.newInstance(bytes);
         CodedInputStream input = CodedInputStream.newInstance(streamerContext);
@@ -106,7 +118,9 @@ public final class SabrRequestBody {
                     output.writeByteArray(STREAMER_CONTEXT_CLIENT_INFO_FIELD, clientInfo);
                     clientInfoWritten = true;
                 }
-            } else if (field == STREAMER_CONTEXT_PO_TOKEN_FIELD) {
+            } else if (field == STREAMER_CONTEXT_PO_TOKEN_FIELD
+                    || (sabrContexts != null && (field == SabrContexts.STREAMER_CONTEXT_SABR_CONTEXTS_FIELD
+                    || field == SabrContexts.STREAMER_CONTEXT_UNSENT_SABR_CONTEXTS_FIELD))) {
                 input.skipField(tag);
             } else {
                 copyField(streamerContext, start, input, tag, output);
@@ -114,6 +128,17 @@ public final class SabrRequestBody {
         }
         if (!clientInfoWritten) {
             output.writeByteArray(STREAMER_CONTEXT_CLIENT_INFO_FIELD, clientInfo);
+        }
+        if (poToken != null) {
+            output.writeByteArray(STREAMER_CONTEXT_PO_TOKEN_FIELD, poToken);
+        }
+        if (sabrContexts != null) {
+            for (byte[] sabrContext : sabrContexts.contexts()) {
+                output.writeByteArray(SabrContexts.STREAMER_CONTEXT_SABR_CONTEXTS_FIELD, sabrContext);
+            }
+            for (int type : sabrContexts.unsentTypes()) {
+                output.writeInt32(SabrContexts.STREAMER_CONTEXT_UNSENT_SABR_CONTEXTS_FIELD, type);
+            }
         }
         output.flush();
         return bytes.toByteArray();
