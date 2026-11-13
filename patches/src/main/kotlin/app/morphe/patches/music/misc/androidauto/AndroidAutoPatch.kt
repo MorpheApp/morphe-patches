@@ -13,18 +13,18 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.util.addFreeRegisters
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.returnEarly
-import app.morphe.patches.music.interaction.jam.addBridge
 import app.morphe.patches.music.interaction.jam.decode
 import app.morphe.patches.music.interaction.jam.implementsType
 import app.morphe.patches.music.interaction.jam.installNativeAccessor
@@ -151,7 +151,6 @@ private fun patchPhoneBrowseClient() {
     val phoneBrowseClientType = createPhoneBrowseRequestMethod.definingClass
 
     val phoneBrowseClientClass = mutableClassDefBy(phoneBrowseClientType)
-    phoneBrowseClientClass.interfaces.add(PHONE_BROWSE_CLIENT)
     addPhoneBrowseRequestMethod(
         phoneBrowseClientClass,
         createPhoneBrowseRequestMethod,
@@ -182,13 +181,10 @@ private fun addPhoneBrowseRequestMethod(
     initializeTrackingMethod: MethodReference,
     sendPhoneBrowseRequestMethod: MethodReference,
 ) {
-    phoneBrowseClientClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            PHONE_BROWSE_CLIENT,
-            "patch_requestBrowse",
-        ),
-        registerCount = 4,
-        instructions = """
+    phoneBrowseClientClass.addPatchInterfaceMethod(
+        PHONE_BROWSE_CLIENT,
+        "patch_requestBrowse",
+        """
             invoke-virtual { p0 }, $createPhoneBrowseRequestMethod
             move-result-object v0
             invoke-virtual { v0, p1 }, $setRequestBrowseIdMethod
@@ -201,13 +197,10 @@ private fun addPhoneBrowseRequestMethod(
 
     val continuationField = phoneBrowseContinuationFingerprint(createPhoneBrowseRequestMethod.returnType)
         .instructionMatches.last().fieldReference
-    phoneBrowseClientClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            PHONE_BROWSE_CLIENT,
-            "patch_requestBrowseContinuation",
-        ),
-        registerCount = 4,
-        instructions = """
+    phoneBrowseClientClass.addPatchInterfaceMethod(
+        PHONE_BROWSE_CLIENT,
+        "patch_requestBrowseContinuation",
+        """
             invoke-virtual { p0 }, $createPhoneBrowseRequestMethod
             move-result-object v0
             iput-object p1, v0, $continuationField
@@ -245,13 +238,10 @@ private fun addLibraryPaginationRequestMethod(
     val paginationCommandType = createPaginationRequestMethod
         .parameterTypes.single().toString()
 
-    phoneBrowseClientClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            PHONE_BROWSE_CLIENT,
-            "patch_requestLibraryPagination",
-        ),
-        registerCount = 3,
-        instructions = """
+    phoneBrowseClientClass.addPatchInterfaceMethod(
+        PHONE_BROWSE_CLIENT,
+        "patch_requestLibraryPagination",
+        """
             check-cast p1, $paginationCommandType
             invoke-virtual { p0, p1 }, $createPaginationRequestMethod
             move-result-object p1
@@ -382,32 +372,30 @@ private fun addPhoneBrowseResponseInterface() {
         decodePaginatedLibraryGridMethod,
     )
     val phoneBrowseResponseClass = mutableClassDefBy(getTabsMethod.definingClass)
-    phoneBrowseResponseClass.interfaces.add(PHONE_BROWSE_RESPONSE)
     val responseFields = getTabsMethod.instructions
         .mapNotNull { it.getReference<FieldReference>() }
         .filter { it.definingClass == phoneBrowseResponseClass.type }
         .distinct()
     val responseProto = responseFields.single { implementsType(it.type, "Lcom/google/protobuf/MessageLite;") }
-    phoneBrowseResponseClass.addInterfaceMethod(
-        findInterfaceMethod(PHONE_BROWSE_RESPONSE, "patch_responseBytes"), 1, """
+    phoneBrowseResponseClass.addPatchInterfaceMethod(
+        PHONE_BROWSE_RESPONSE,
+        "patch_responseBytes",
+        """
             iget-object p0, p0, $responseProto
             invoke-virtual { p0 }, ${responseProto.type}->toByteArray()[B
             move-result-object p0
             return-object p0
-        """,
+        """
     )
     installNativeAccessor(
         phoneBrowseResponseClass, "patch_getTabs", getTabsMethod,
         resultType = findInterfaceMethod(PHONE_BROWSE_RESPONSE, "patch_getTabs").returnType,
     )
 
-    phoneBrowseResponseClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            PHONE_BROWSE_RESPONSE,
-            "patch_getPaginatedLibraryGrid",
-        ),
-        registerCount = 2,
-        instructions = """
+    phoneBrowseResponseClass.addPatchInterfaceMethod(
+        PHONE_BROWSE_RESPONSE,
+        "patch_getPaginatedLibraryGrid",
+        """
             invoke-virtual { p0 }, $getLibraryPaginationResponseProtoMethod
             move-result-object p0
             const/4 v0, 0x0
@@ -425,14 +413,10 @@ private fun addPhoneBrowseTabInterface() {
         .instructionMatches.filter { it.instruction.opcode == Opcode.INVOKE_VIRTUAL }
         .map { it.methodReference }
     val phoneBrowseTabClass = mutableClassDefBy(getSectionListMethod.definingClass)
-    phoneBrowseTabClass.interfaces.add(PHONE_BROWSE_TAB)
-    phoneBrowseTabClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            PHONE_BROWSE_TAB,
-            "patch_getSectionContents",
-        ),
-        registerCount = 1,
-        instructions = """
+    phoneBrowseTabClass.addPatchInterfaceMethod(
+        PHONE_BROWSE_TAB,
+        "patch_getSectionContents",
+        """
             invoke-virtual { p0 }, $getSectionListMethod
             move-result-object p0
             if-eqz p0, :no_sections
@@ -459,14 +443,17 @@ private fun addGridRendererInterface() {
 
     val gridRendererType = getItemsMethod.parameterTypes.single().toString()
     val gridRendererClass = mutableClassDefBy(gridRendererType)
-    gridRendererClass.interfaces.add(GRID_RENDERER)
     mapOf("patch_getItems" to getItemsMethod, "patch_getPaginationCommands" to getPaginationCommandsMethod)
         .forEach { (name, getter) ->
-            gridRendererClass.addInterfaceMethod(findInterfaceMethod(GRID_RENDERER, name), 1, """
-                invoke-static { p0 }, $getter
-                move-result-object p0
-                return-object p0
-            """)
+            gridRendererClass.addPatchInterfaceMethod(
+                GRID_RENDERER,
+                name,
+                """
+                    invoke-static { p0 }, $getter
+                    move-result-object p0
+                    return-object p0
+                """
+            )
         }
 }
 
@@ -523,19 +510,19 @@ private fun patchPhoneBrowseItem(): MethodReference {
     val phoneBrowseItemClass = mutableClassDefBy(phoneBrowseItemType)
     phoneBrowseItemClass.interfaces.add(PHONE_BROWSE_ITEM)
     phoneBrowseItemClass.addPlaylistBrowseIdGetter(
-        findInterfaceMethod(PHONE_BROWSE_ITEM, "patch_getPlaylistBrowseId"),
+        "patch_getPlaylistBrowseId",
         commandFields[0],
         commandFields[1],
         commandToBrowseEndpointMethod,
         browseIdField,
     )
     phoneBrowseItemClass.addTextGetter(
-        findInterfaceMethod(PHONE_BROWSE_ITEM, "patch_getTitle"),
+        "patch_getTitle",
         titleField,
         formatTextMethod,
     )
     phoneBrowseItemClass.addTextGetter(
-        findInterfaceMethod(PHONE_BROWSE_ITEM, "patch_getSubtitle"),
+        "patch_getSubtitle",
         subtitleField,
         formatTextMethod,
     )
@@ -545,17 +532,17 @@ private fun patchPhoneBrowseItem(): MethodReference {
 
 /** Reads both tap actions so conflicting playlist browse IDs can be rejected. */
 private fun MutableClass.addPlaylistBrowseIdGetter(
-    interfaceMethod: Method,
+    interfaceMethodName: String,
     firstCommandField: FieldReference,
     secondCommandField: FieldReference,
     commandToBrowseEndpointMethod: Method,
     browseIdField: FieldReference,
 ) {
     // YTM throws if the command does not open a page. collectPlaylistsFromGrid catches this and skips the item.
-    addInterfaceMethod(
-        interfaceMethod = interfaceMethod,
-        registerCount = 4,
-        instructions = """
+    addPatchInterfaceMethod(
+        PHONE_BROWSE_ITEM,
+        interfaceMethodName,
+        """
             const/4 v0, 0x0
             iget-object v2, p0, $firstCommandField
             if-eqz v2, :check_second_command
@@ -583,14 +570,14 @@ private fun MutableClass.addPlaylistBrowseIdGetter(
 
 /** Titles and subtitles are stored as YTM text objects; use its formatter to read them. */
 private fun MutableClass.addTextGetter(
-    interfaceMethod: Method,
+    interfaceMethodName: String,
     textField: FieldReference,
     formatTextMethod: Method,
 ) {
-    addInterfaceMethod(
-        interfaceMethod = interfaceMethod,
-        registerCount = 3,
-        instructions = """
+    addPatchInterfaceMethod(
+        PHONE_BROWSE_ITEM,
+        interfaceMethodName,
+        """
             iget-object v0, p0, $textField
             # No separate pronunciation text is needed for the title or subtitle.
             const/4 v1, 0x0
@@ -611,13 +598,10 @@ private fun addArtworkUriGetter(
     val decodeArtworkPayloadMethod = decodeThumbnailFingerprint(
         artworkContainerField.type,
     ).originalMethod
-    itemClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            PHONE_BROWSE_ITEM,
-            "patch_getArtworkUri",
-        ),
-        registerCount = 2,
-        instructions = """
+    itemClass.addPatchInterfaceMethod(
+        PHONE_BROWSE_ITEM,
+        "patch_getArtworkUri",
+        """
             iget-object v0, p0, $artworkContainerField
             invoke-static { v0 }, $decodeArtworkPayloadMethod
             move-result-object v0
@@ -674,27 +658,20 @@ private fun addBrowseRequestInterface(
                 method.parameterTypes.last().toString().startsWith("L")
     }
 
-    requestClass.interfaces.add(BROWSE_REQUEST)
-    requestClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            BROWSE_REQUEST,
-            "patch_getRequestedMediaId",
-        ),
-        registerCount = 1,
-        instructions = """
+    requestClass.addPatchInterfaceMethod(
+        BROWSE_REQUEST,
+        "patch_getRequestedMediaId",
+        """
             iget-object p0, p0, $requestedMediaIdHolderField
             iget-object p0, p0, $requestedMediaIdField
             return-object p0
         """
     )
 
-    requestClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            BROWSE_REQUEST,
-            "patch_deliverBrowseItems",
-        ),
-        registerCount = 3,
-        instructions = """
+    requestClass.addPatchInterfaceMethod(
+        BROWSE_REQUEST,
+        "patch_deliverBrowseItems",
+        """
             const/4 v0, 0x0
             invoke-virtual { p0, p1, v0 }, $deliverItemsMethod
             return-void
@@ -793,13 +770,10 @@ private fun addRequestConnectionGetter(reloadMethod: Method) {
 
     folderResultClass.accessFlags = folderResultClass.accessFlags.toPublicAccessFlags()
     resultConnectionField.accessFlags = resultConnectionField.accessFlags.toPublicAccessFlags()
-    requestClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            BROWSE_REQUEST,
-            "patch_getBrowserConnection",
-        ),
-        registerCount = 3,
-        instructions = """
+    requestClass.addPatchInterfaceMethod(
+        BROWSE_REQUEST,
+        "patch_getBrowserConnection",
+        """
             iget-object v0, p0, $requestResultField
             instance-of v1, v0, ${folderResultClass.type}
             if-eqz v1, :unknown_connection
@@ -821,14 +795,10 @@ private fun addFolderReload(
 ) {
     val connectionType = reloadMethod.parameterTypes[1].toString()
     val baseServiceClass = mutableClassDefBy(baseServiceType)
-    baseServiceClass.interfaces.add(FOLDER_RELOAD)
-    baseServiceClass.addInterfaceMethod(
-        interfaceMethod = findInterfaceMethod(
-            FOLDER_RELOAD,
-            "patch_reloadFolder",
-        ),
-        registerCount = 4,
-        instructions = """
+    baseServiceClass.addPatchInterfaceMethod(
+        FOLDER_RELOAD,
+        "patch_reloadFolder",
+        """
             check-cast p2, $connectionType
             invoke-virtual { p0, p1, p2, p3 }, $reloadMethod
             return-void
@@ -975,18 +945,5 @@ internal fun findInterfaceMethod(
     name: String,
 ) = classDefBy(interfaceType).methods.singleOrNull { method -> method.name == name }
     ?: throw PatchException("Could not resolve $name in $interfaceType")
-
-/** Copies the interface signature so calls reach the method added to the YTM class. */
-internal fun MutableClass.addInterfaceMethod(
-    interfaceMethod: Method,
-    registerCount: Int,
-    instructions: String,
-) = addBridge(
-    name = interfaceMethod.name,
-    parameters = interfaceMethod.parameterTypes.map(CharSequence::toString),
-    returnType = interfaceMethod.returnType,
-    registers = registerCount,
-    body = instructions,
-)
 
 // endregion

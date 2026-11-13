@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patches.youtube.layout.originaltitles.PlaylistPanelVideoBindFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -65,11 +66,9 @@ internal fun installPlaylistRowPlayback(
         .instructionMatches.first().fieldReference
 
     val controller = mutableClassDefBy(modelField.definingClass)
-    controller.addBridgeMethod(
+    controller.addPatchInterfaceMethod(
+        CONTROLLER_INTERFACE,
         "patch_findQueueRow",
-        listOf("Ljava/lang/Object;"),
-        "I",
-        6,
         """
             iget-object v0, p0, $modelField
             if-eqz v0, :missing
@@ -112,12 +111,9 @@ internal fun installPlaylistRowPlayback(
     // view callback, and disappears with that object. No native model is retained
     // in an extension cache, and protobuf equality/serialization stay unchanged.
     val video = mutableClassDefBy(videoType)
-    video.interfaces.add($$"Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils$FlyoutMenuVideoIdInterface;")
-    video.addBridgeMethod(
+    video.addPatchInterfaceMethod(
+        $$"Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils$FlyoutMenuVideoIdInterface;",
         "patch_getVideoId",
-        emptyList(),
-        "Ljava/lang/String;",
-        1,
         """
             iget-object v0, p0, $videoIdField
             return-object v0
@@ -128,17 +124,7 @@ internal fun installPlaylistRowPlayback(
         videoType, "patch_queueOwned", "Z", AccessFlags.PUBLIC.value, null, null, null
     ).toMutable()
     video.fields.add(ownedField)
-    video.interfaces.add(QUEUE_ROW_INTERFACE)
-    video.addBridgeMethod(
-        "patch_isQueueOwned",
-        emptyList(),
-        "Z",
-        1,
-        """
-            iget-boolean v0, p0, $ownedField
-            return v0
-        """
-    )
+    video.addPatchInterfaceMethod(QUEUE_ROW_INTERFACE, "patch_isQueueOwned", ownedField)
 
     // Retain ownership on old header models too, so a stale Clear action is consumed
     // instead of falling through to YouTube's ordinary Hide command.
@@ -147,23 +133,11 @@ internal fun installPlaylistRowPlayback(
         panel.type, "patch_queueOwned", "Z", AccessFlags.PUBLIC.value, null, null, null
     ).toMutable()
     panel.fields.add(panelOwned)
-    panel.interfaces.add(QUEUE_PANEL_INTERFACE)
-    panel.addBridgeMethod(
-        "patch_isQueueOwned",
-        emptyList(),
-        "Z",
-        1,
-        """
-            iget-boolean v0, p0, $panelOwned
-            return v0
-        """
-    )
+    panel.addPatchInterfaceMethod(QUEUE_PANEL_INTERFACE, "patch_isQueueOwned", panelOwned)
 
-    controller.addBridgeMethod(
+    controller.addPatchInterfaceMethod(
+        CONTROLLER_INTERFACE,
         "patch_markQueueRows",
-        emptyList(),
-        "V",
-        4,
         """
             iget-object v0, p0, $modelField
             if-eqz v0, :done
@@ -199,12 +173,9 @@ internal fun installPlaylistRowPlayback(
         listenerType, "patch_queueEndpoint", "Ljava/lang/Object;", AccessFlags.PRIVATE.value, null, null, null
     ).toMutable()
     listener.fields.add(boundEndpoint)
-    listener.interfaces.add(ROW_CLICK_INTERFACE)
-    listener.addBridgeMethod(
+    listener.addPatchInterfaceMethod(
+        ROW_CLICK_INTERFACE,
         "patch_getQueueEndpoint",
-        emptyList(),
-        "Ljava/lang/Object;",
-        1,
         """
             iget-object v0, p0, $boundEndpoint
             return-object v0

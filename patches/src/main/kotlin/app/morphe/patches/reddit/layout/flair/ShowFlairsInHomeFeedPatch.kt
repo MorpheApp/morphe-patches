@@ -10,6 +10,7 @@ package app.morphe.patches.reddit.layout.flair
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -301,27 +302,13 @@ private fun MutableClass.addCachedPostMethods(
     registerCount: Int,
     addHomeFlairSmali: String
 ) {
-    interfaces.add(CACHED_POST_INTERFACE)
-
-    methods.add(
-        ImmutableMethod(
-            type,
-            "patch_getLinkId",
-            emptyList(),
-            "Ljava/lang/String;",
-            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-            emptySet(),
-            null,
-            MutableMethodImplementation(2)
-        ).toMutable().apply {
-            addInstructions(
-                0,
-                """
-                    iget-object v0, p0, $linkIdField
-                    return-object v0
-                """
-            )
-        }
+    addPatchInterfaceMethod(
+        CACHED_POST_INTERFACE,
+        "patch_getLinkId",
+        """
+            iget-object v0, p0, $linkIdField
+            return-object v0
+        """
     )
 
     methods.add(

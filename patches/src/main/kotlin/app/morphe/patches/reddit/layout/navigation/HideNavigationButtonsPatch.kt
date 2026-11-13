@@ -7,14 +7,13 @@
 
 package app.morphe.patches.reddit.layout.navigation
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_25_0_or_greater
@@ -22,11 +21,8 @@ import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideNavigationButtonsPatch;"
@@ -52,32 +48,11 @@ val hideNavigationButtonsPatch = patch(
 
             mutableClassDefBy(navigationButtonInnerMethod.definingClass).apply {
                 // Add interface and helper methods to allow extension code to call obfuscated methods.
-                interfaces.add(EXTENSION_HEADER_ITEM_INTERFACE)
                 // Add methods to access obfuscated navigation button fields.
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_getLabel",
-                        listOf(),
-                        "Ljava/lang/String;",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        val labelField = fields.single { field ->
-                            field.type == "Ljava/lang/String;"
-                        }
-
-                        addInstructions(
-                            0,
-                            """
-                                iget-object v0, p0, $labelField
-                                return-object v0
-                            """
-                        )
-                    }
-                )
+                val labelField = fields.single { field ->
+                    field.type == "Ljava/lang/String;"
+                }
+                addPatchInterfaceMethod(EXTENSION_HEADER_ITEM_INTERFACE, "patch_getLabel", labelField)
             }
 
             BottomNavScreenResourceBuilderLegacyFingerprint.method.apply {

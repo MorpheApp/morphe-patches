@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patches.youtube.misc.contexthook.NextEndpointParentFingerprint
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
 import app.morphe.patches.youtube.video.series.NativeBaseRequestDescriptionFingerprint
@@ -94,7 +95,6 @@ internal fun installPlaylistPages() {
     val accountType = account.type
     val requestIdentity = NativeRequestIdentityFingerprint(accountType).originalMethod
 
-    service.interfaces.add(SOURCE)
     service.addBridgeMethod(
         "patch_playlistAccount",
         listOf(requestType),
@@ -118,11 +118,9 @@ internal fun installPlaylistPages() {
             return-object v0
         """
     )
-    service.addBridgeMethod(
+    service.addPatchInterfaceMethod(
+        SOURCE,
         "patch_getPlaylistAccount",
-        emptyList(),
-        ACCOUNT,
-        2,
         """
             $loadFactory
             const/4 v1, 0x0
@@ -133,11 +131,9 @@ internal fun installPlaylistPages() {
             return-object v0
         """
     )
-    service.addBridgeMethod(
+    service.addPatchInterfaceMethod(
+        SOURCE,
         "patch_requestPlaylistPage",
-        listOf("Ljava/lang/String;", "Ljava/lang/String;", "I", "Ljava/lang/String;", "Ljava/lang/String;", "[B", ACCOUNT),
-        "Ljava/util/concurrent/Future;",
-        4,
         """
             $loadFactory
             invoke-virtual {v0, p2}, $factory

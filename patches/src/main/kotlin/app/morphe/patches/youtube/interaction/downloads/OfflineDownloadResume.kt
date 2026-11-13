@@ -11,13 +11,13 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
-import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.youtube.misc.playservice.is_21_46_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -113,12 +113,9 @@ internal fun hookOfflineDownloadResume() {
     val durationSecondsGetter = offlineDownloadDurationFingerprint(playerResponseModelClass)
         .instructionMatches[1].methodReference.name
 
-    workerClassDef.interfaces.add(OFFLINE_PLAYBACK_WORKER_INTERFACE)
-    workerClassDef.addBridge(
+    workerClassDef.addPatchInterfaceMethod(
+        OFFLINE_PLAYBACK_WORKER_INTERFACE,
         "patch_setDownloadStartTime",
-        listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
-        "V",
-        8,
         """
             check-cast p1, $descriptorType
             const/4 v0, 0x0

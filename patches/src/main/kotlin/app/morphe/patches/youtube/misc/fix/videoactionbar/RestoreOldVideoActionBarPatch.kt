@@ -14,6 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
@@ -22,9 +23,9 @@ import app.morphe.patches.shared.BuildInnerTubeProtoRequestUriLegacyFingerprint
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
 import app.morphe.patches.shared.misc.fix.proto.mutableCopyMethodRef
+import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.request.buildRequestPatch
 import app.morphe.patches.shared.misc.request.hookBuildRequest
-import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.spoof.addMediaSessionOverride
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.parseProtoInstructions
@@ -206,28 +207,14 @@ internal val restoreOldVideoActionBarPatch = patch(
                 }
 
                 uriMatch.classDef.apply {
-                    interfaces.add(EXTENSION_REQUEST_INTERFACE)
-
-                    methods.add(
-                        ImmutableMethod(
-                            type,
-                            "patch_getEndpoint",
-                            listOf(),
-                            "Ljava/lang/String;",
-                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                            null,
-                            null,
-                            MutableMethodImplementation(2),
-                        ).toMutable().apply {
-                            addInstructions(
-                                0,
-                                """
-                                    iget-object v0, p0, $requestField
-                                    iget-object v0, v0, $endpointField
-                                    return-object v0
-                                """
-                            )
-                        }
+                    addPatchInterfaceMethod(
+                        EXTENSION_REQUEST_INTERFACE,
+                        "patch_getEndpoint",
+                        """
+                            iget-object v0, p0, $requestField
+                            iget-object v0, v0, $endpointField
+                            return-object v0
+                        """
                     )
                 }
 
@@ -264,36 +251,13 @@ internal val restoreOldVideoActionBarPatch = patch(
 
             getConfigInfoFingerprint(configInfoClass).let {
                 it.classDef.apply {
-                    interfaces.add(EXTENSION_CONFIG_INFO_INTERFACE)
-
                     mapOf(
                         0 to "patch_setColdConfigData",
                         1 to "patch_setColdHashData"
                     ).forEach { (matchIndex, interfaceMethodName) ->
                         val coldDataField = it.instructionMatches[matchIndex].fieldReference
 
-                        methods.add(
-                            ImmutableMethod(
-                                type,
-                                interfaceMethodName,
-                                listOf(
-                                    ImmutableMethodParameter("Ljava/lang/String;", null, null)
-                                ),
-                                "V",
-                                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                                null,
-                                null,
-                                MutableMethodImplementation(3),
-                            ).toMutable().apply {
-                                addInstructions(
-                                    0,
-                                    """
-                                        iput-object p1, p0, $coldDataField
-                                        return-void
-                                    """
-                                )
-                            }
-                        )
+                        addPatchInterfaceMethod(EXTENSION_CONFIG_INFO_INTERFACE, interfaceMethodName, coldDataField)
                     }
                 }
             }

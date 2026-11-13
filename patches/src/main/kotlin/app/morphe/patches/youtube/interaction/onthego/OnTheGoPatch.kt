@@ -9,10 +9,9 @@
 package app.morphe.patches.youtube.interaction.onthego
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -29,10 +28,6 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/onthego/OnTheGoPatch;"
 
@@ -73,49 +68,23 @@ internal val onTheGoStateHookPatch = patch {
 
         getOnTheGoStateSetterFingerprint(stateClass).let {
             it.classDef.apply {
-                interfaces.add(EXTENSION_STATE_INTERFACE)
-
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_setOnTheGoActive",
-                        listOf(ImmutableMethodParameter("Z", null, null)),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-virtual { p0, p1 }, ${it.method}
-                                return-void
-                            """
-                        )
-                    }
+                addPatchInterfaceMethod(
+                    EXTENSION_STATE_INTERFACE,
+                    "patch_setOnTheGoActive",
+                    """
+                        invoke-virtual { p0, p1 }, ${it.method}
+                        return-void
+                    """
                 )
 
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_isOnTheGoActive",
-                        listOf(),
-                        "Z",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-virtual { p0 }, $stateGetter
-                                move-result v0
-                                return v0
-                            """
-                        )
-                    }
+                addPatchInterfaceMethod(
+                    EXTENSION_STATE_INTERFACE,
+                    "patch_isOnTheGoActive",
+                    """
+                        invoke-virtual { p0 }, $stateGetter
+                        move-result v0
+                        return v0
+                    """
                 )
             }
         }
@@ -187,30 +156,16 @@ val onTheGoPatch = patch(
                 )
 
                 it.classDef.apply {
-                    interfaces.add(EXTENSION_SEEK_LENGTH_INTERFACE)
-
-                    methods.add(
-                        ImmutableMethod(
-                            type,
-                            "patch_getSeekLengthMilliseconds",
-                            listOf(),
-                            "J",
-                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                            null,
-                            null,
-                            MutableMethodImplementation(3),
-                        ).toMutable().apply {
-                            addInstructions(
-                                0,
-                                """
-                                    iget-object v0, p0, $seekLengthField
-                                    check-cast v0, $durationType
-                                    invoke-virtual { v0 }, $durationType->toMillis()J
-                                    move-result-wide v0
-                                    return-wide v0
-                                """
-                            )
-                        }
+                    addPatchInterfaceMethod(
+                        EXTENSION_SEEK_LENGTH_INTERFACE,
+                        "patch_getSeekLengthMilliseconds",
+                        """
+                            iget-object v0, p0, $seekLengthField
+                            check-cast v0, $durationType
+                            invoke-virtual { v0 }, $durationType->toMillis()J
+                            move-result-wide v0
+                            return-wide v0
+                        """
                     )
                 }
             }

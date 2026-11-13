@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.misc.commandrouter
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patches.shared.misc.bridge.addBridge
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.parseProtoInstructions
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 
@@ -32,9 +32,9 @@ internal val commandRouterHookPatch = patch(
             val executeCommandMethod = CommandRouterExecuteCommandFingerprint.method
             val commandClass = executeCommandMethod.parameterTypes.first().toString()
 
-            routerClass.interfaces.add(EXTENSION_COMMAND_ROUTER_INTERFACE)
-            routerClass.addBridge(
-                "patch_executeCommand", listOf("[B", "Ljava/util/Map;"), "V", 5,
+            routerClass.addPatchInterfaceMethod(
+                EXTENSION_COMMAND_ROUTER_INTERFACE,
+                "patch_executeCommand",
                 """
                     ${parseProtoInstructions(commandClass, bytes = "p1", result = "v0", registry = "v1")}
                     check-cast v0, $commandClass

@@ -9,6 +9,7 @@ package app.morphe.patches.music.misc.audiovideoswitch
 
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patches.music.interaction.jam.addBridge
 import app.morphe.patches.music.interaction.jam.addReferenceGetter
@@ -34,18 +35,14 @@ private const val LISTENER_LOCAL_REGISTERS = 3
  */
 internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
     val manager = mutableClassDefBy(queue.managerType)
-    manager.interfaces.add(ACCESS)
 
-    manager.addBridge(
+    manager.addPatchInterfaceMethod(
+        ACCESS,
         "patch_atvEnqueue",
-        listOf("[B"),
-        "V",
-        4,
-        body =
-            queue.command.decode("p1", "v0") + """
-            ${invokeKind(queue.enqueue)} {p0, v0}, ${queue.enqueue}
-            return-void
-        """
+        queue.command.decode("p1", "v0") + """
+        ${invokeKind(queue.enqueue)} {p0, v0}, ${queue.enqueue}
+        return-void
+    """
     )
     manager.addReferenceGetter("patch_atvExecutor", queue.executor)
     installNativeAccessor(
@@ -54,12 +51,10 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
         queue.storage.currentIndex,
         receiverField = queue.storage.field,
     )
-    manager.addBridge(
+    manager.addPatchInterfaceMethod(
+        ACCESS,
         "patch_atvItems",
-        emptyList(),
-        "[Ljava/lang/Object;",
-        3,
-        body = """
+        """
             iget-object v0, p0, ${queue.storage.field}
             const/4 v1, 0x0
             ${invokeKind(queue.storage.items)} {v0, v1}, ${queue.storage.items}
@@ -75,23 +70,19 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
         queue.videoId,
         opaqueReceiver = true,
     )
-    manager.addBridge(
+    manager.addPatchInterfaceMethod(
+        ACCESS,
         "patch_atvRemove",
-        listOf("Ljava/lang/Object;"),
-        "V",
-        2,
-        body = """
+        """
             check-cast p1, ${queue.itemType}
             ${invokeKind(queue.remove)} {p0, p1}, ${queue.remove}
             return-void
         """
     )
-    manager.addBridge(
+    manager.addPatchInterfaceMethod(
+        ACCESS,
         "patch_atvMove",
-        listOf("I", "I"),
-        "V",
-        5,
-        body = """
+        """
             iget-object v0, p0, ${queue.storage.field}
             const/4 v1, 0x0
             ${invokeKind(queue.storage.lane)} {v0, v1}, ${queue.storage.lane}
@@ -100,12 +91,10 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
             return-void
         """
     )
-    manager.addBridge(
+    manager.addPatchInterfaceMethod(
+        ACCESS,
         "patch_atvPrimaryLane",
-        emptyList(),
-        "Ljava/lang/Object;",
-        3,
-        body = """
+        """
             iget-object v0, p0, ${queue.storage.field}
             const/4 v1, 0x0
             ${invokeKind(queue.storage.lane)} {v0, v1}, ${queue.storage.lane}
@@ -113,24 +102,20 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
             return-object v0
         """
     )
-    manager.addBridge(
+    manager.addPatchInterfaceMethod(
+        ACCESS,
         "patch_atvAddListener",
-        listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
-        "V",
-        3,
-        body = """
+        """
             check-cast p1, ${queue.storage.laneType}
             check-cast p2, ${queue.storage.listenerType}
             ${invokeKind(queue.storage.attachListener)} {p1, p2}, ${queue.storage.attachListener}
             return-void
         """
     )
-    manager.addBridge(
+    manager.addPatchInterfaceMethod(
+        ACCESS,
         "patch_atvLocal",
-        emptyList(),
-        "Z",
-        3,
-        body = """
+        """
             iget-object v0, p0, ${queue.storage.field}
             ${invokeKind(queue.storage.mode)} {v0}, ${queue.storage.mode}
             move-result-object v0

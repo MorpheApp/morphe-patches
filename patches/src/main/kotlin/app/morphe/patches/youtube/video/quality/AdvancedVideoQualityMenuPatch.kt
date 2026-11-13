@@ -11,11 +11,10 @@
 package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -23,9 +22,6 @@ import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.recyclerviewtree.addRecyclerViewTreeHook
 import app.morphe.patches.youtube.misc.recyclerviewtree.recyclerViewTreeHookPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/AdvancedVideoQualityMenuFilter;"
@@ -74,28 +70,14 @@ internal val advancedVideoQualityMenuPatch = patch {
 
         ShortsQualityConstructorFingerprint.let {
             it.classDef.apply {
-                interfaces.add(EXTENSION_SHORTS_QUALITY_MENU_INTERFACE)
-
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_showShortsQualityMenu",
-                        listOf(),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        annotations,
-                        null,
-                        MutableMethodImplementation(3),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                const/4 v0, 0x1
-                                invoke-virtual { p0, v0 }, ${ShortsQualityMenuFingerprint.method}
-                                return-void
-                            """
-                        )
-                    }
+                addPatchInterfaceMethod(
+                    EXTENSION_SHORTS_QUALITY_MENU_INTERFACE,
+                    "patch_showShortsQualityMenu",
+                    """
+                        const/4 v0, 0x1
+                        invoke-virtual { p0, v0 }, ${ShortsQualityMenuFingerprint.method}
+                        return-void
+                    """
                 )
             }
 

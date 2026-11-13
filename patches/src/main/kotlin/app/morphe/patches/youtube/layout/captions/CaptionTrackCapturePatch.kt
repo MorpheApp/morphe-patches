@@ -12,6 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -93,14 +94,10 @@ internal val captionTrackCapturePatch = patch(
         }
 
         handlerSelect.classDef.apply {
-            interfaces.add(EXTENSION_HANDLER_INTERFACE)
-
-            addHelperMethod(
+            addPatchInterfaceMethod(
+                EXTENSION_HANDLER_INTERFACE,
                 "patch_fetchCaption",
-                "V",
-                parameters = listOf("Ljava/lang/Object;", EXTENSION_UPLOADED_CALLBACK_CLASS),
-                freeRegisters = 2,
-                smali = """
+                """
                     check-cast p1, $trackType
                     new-instance v0, ${requestTrack.definingClass}
                     invoke-direct { v0, p1 }, ${requestTrack.definingClass}-><init>($trackType)V
@@ -111,10 +108,10 @@ internal val captionTrackCapturePatch = patch(
                 """
             )
 
-            addHelperMethod(
+            addPatchInterfaceMethod(
+                EXTENSION_HANDLER_INTERFACE,
                 "patch_reloadCaption",
-                "V",
-                smali = """
+                """
                     iget-object v0, p0, $subtitleManagerField
                     iget-object v0, v0, $selectedTrackField
                     invoke-virtual { p0, v0 }, ${handlerSelect.method}
@@ -122,11 +119,10 @@ internal val captionTrackCapturePatch = patch(
                 """
             )
 
-            addHelperMethod(
+            addPatchInterfaceMethod(
+                EXTENSION_HANDLER_INTERFACE,
                 "patch_updateCaption",
-                "V",
-                parameters = listOf("J", "F"),
-                smali = """
+                """
                     invoke-virtual/range { p0 .. p3 }, ${CaptionTrackHandlerTimeFingerprint.method}
                     return-void
                 """

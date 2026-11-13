@@ -9,9 +9,9 @@ package app.morphe.patches.youtube.interaction.shorts
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.p0Register
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.shortsautoplay.ReelEnumConstructorFingerprint
 import app.morphe.patches.youtube.layout.shortsautoplay.ReelPlaybackFingerprint
@@ -26,9 +26,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/SkipLiveShortsPatch;"
@@ -81,32 +78,18 @@ val skipLiveShortsPatch = patch(
 
         // Add the interface and the helper method to the Shorts player.
         reelPlaybackFingerprint.classDef.apply {
-            interfaces.add(EXTENSION_CONTROLLER_INTERFACE)
-
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_skipToNextShort",
-                    listOf(),
-                    "V",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(4),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            new-instance v0, ${userActionMethodReference.definingClass}
-                            const/4 v1, 0x3
-                            const/4 v2, 0x0
-                            invoke-direct { v0, $userActionParameterRegisters }, $userActionMethodReference
-                            $getReelSequenceControllerInstruction
-                            invoke-virtual { v1, v0 }, $reelSequenceControllerMethodReference
-                            return-void
-                        """
-                    )
-                }
+            addPatchInterfaceMethod(
+                EXTENSION_CONTROLLER_INTERFACE,
+                "patch_skipToNextShort",
+                """
+                    new-instance v0, ${userActionMethodReference.definingClass}
+                    const/4 v1, 0x3
+                    const/4 v2, 0x0
+                    invoke-direct { v0, $userActionParameterRegisters }, $userActionMethodReference
+                    $getReelSequenceControllerInstruction
+                    invoke-virtual { v1, v0 }, $reelSequenceControllerMethodReference
+                    return-void
+                """
             )
         }
 

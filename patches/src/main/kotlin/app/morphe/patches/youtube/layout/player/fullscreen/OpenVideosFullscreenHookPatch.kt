@@ -17,15 +17,13 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patches.youtube.layout.shortsplayer.openShortsInRegularPlayerPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenVideosFullscreenHookPatch;"
@@ -48,27 +46,13 @@ internal val openVideosFullscreenHookPatch = patch {
 
         // Implement fullscreen interface.
         mutableClassDefBy(fullScreenDefiningClass).apply {
-            interfaces.add(EXTENSION_FULLSCREEN_INTERFACE)
-
-            fun addInterfaceMethod(name: String, methodCall: String) = methods.add(
-                ImmutableMethod(
-                    type,
-                    name,
-                    listOf(),
-                    "V",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(1),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-virtual { p0 }, $methodCall
-                            return-void
-                        """
-                    )
-                }
+            fun addInterfaceMethod(name: String, methodCall: String) = addPatchInterfaceMethod(
+                EXTENSION_FULLSCREEN_INTERFACE,
+                name,
+                """
+                    invoke-virtual { p0 }, $methodCall
+                    return-void
+                """
             )
 
             addInterfaceMethod("patch_exitFullscreen", "$fullScreenMethod")

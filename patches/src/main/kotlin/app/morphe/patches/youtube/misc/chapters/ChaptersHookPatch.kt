@@ -8,18 +8,14 @@
 package app.morphe.patches.youtube.misc.chapters
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.findFieldFromToString
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChaptersHookPatch;"
 
@@ -48,72 +44,34 @@ val chaptersHookPatch = patch {
 
         TimelineMarkerFingerprint.let {
             it.classDef.apply {
-                interfaces.add(EXTENSION_TIMELINE_MARKER_INTERFACE)
-
                 val startMillis = it.method.findFieldFromToString("startMillis=")
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_getStartMillis",
-                        listOf(),
-                        "J",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructionsWithLabels(
-                            0,
-                            """
-                                iget-wide v0, p0, $startMillis
-                                return-wide v0
-                            """
-                        )
-                    }
+                addPatchInterfaceMethod(
+                    EXTENSION_TIMELINE_MARKER_INTERFACE,
+                    "patch_getStartMillis",
+                    """
+                        iget-wide v0, p0, $startMillis
+                        return-wide v0
+                    """
                 )
 
                 val endMillis = it.method.findFieldFromToString("endMillis=")
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_getEndMillis",
-                        listOf(),
-                        "J",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructionsWithLabels(
-                            0,
-                            """
-                                iget-wide v0, p0, $endMillis
-                                return-wide v0
-                            """
-                        )
-                    }
+                addPatchInterfaceMethod(
+                    EXTENSION_TIMELINE_MARKER_INTERFACE,
+                    "patch_getEndMillis",
+                    """
+                        iget-wide v0, p0, $endMillis
+                        return-wide v0
+                    """
                 )
 
                 val title = it.method.findFieldFromToString("title=")
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_getTitle",
-                        listOf(),
-                        "Ljava/lang/CharSequence;",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructionsWithLabels(
-                            0,
-                            """
-                                iget-object v0, p0, $title
-                                return-object v0
-                            """
-                        )
-                    }
+                addPatchInterfaceMethod(
+                    EXTENSION_TIMELINE_MARKER_INTERFACE,
+                    "patch_getTitle",
+                    """
+                        iget-object v0, p0, $title
+                        return-object v0
+                    """
                 )
             }
         }

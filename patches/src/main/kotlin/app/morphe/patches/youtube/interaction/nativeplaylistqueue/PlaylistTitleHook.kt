@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFieldFromToString
@@ -28,23 +29,18 @@ internal fun installPlaylistTitle() {
     val panel = binding.instructionMatches.single().fieldReference
 
     mutableClassDefBy(headerType).apply {
-        interfaces.add(PLAYLIST_TITLE_INTERFACE)
-        addBridgeMethod(
+        addPatchInterfaceMethod(
+            PLAYLIST_TITLE_INTERFACE,
             "patch_getPanel",
-            emptyList(),
-            "Ljava/lang/Object;",
-            1,
             """
                 iget-object v0, p0, $panel
                 return-object v0
             """
         )
 
-        addBridgeMethod(
+        addPatchInterfaceMethod(
+            PLAYLIST_TITLE_INTERFACE,
             "patch_getTitle",
-            emptyList(),
-            "Landroid/widget/TextView;",
-            1,
             """
                 iget-object v0, p0, $title
                 return-object v0

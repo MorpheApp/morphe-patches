@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
@@ -38,23 +39,18 @@ internal fun installFullscreenPlaylist() {
         accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL)
     ).originalMethod
     val controller = mutableClassDefBy(controllerType)
-    controller.interfaces.add(FULLSCREEN_CONTROLLER_INTERFACE)
-    controller.addBridgeMethod(
+    controller.addPatchInterfaceMethod(
+        FULLSCREEN_CONTROLLER_INTERFACE,
         "patch_parseQuickActions",
-        listOf("[B"),
-        "Ljava/lang/Object;",
-        2,
         """
             ${parseProtoInstructions(modelType, bytes = "p1", result = "v0", registry = "v1")}
             return-object v0
         """
     )
 
-    controller.addBridgeMethod(
+    controller.addPatchInterfaceMethod(
+        FULLSCREEN_CONTROLLER_INTERFACE,
         "patch_refreshQuickActions",
-        listOf("Ljava/lang/Object;"),
-        "V",
-        2,
         """
             const/4 v0, 0x0
             # The native reset also releases the presenter's cached component tree.

@@ -14,9 +14,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.getReference
-import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -44,12 +43,9 @@ import app.morphe.util.transformMethods
 import app.morphe.util.traverseClassHierarchy
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/swipecontrols/SwipeControlsHostActivity;"
 
@@ -285,16 +281,15 @@ private fun addSeekbarScrubber() {
     }
 
     SlideSeekbarHandlerConstructorFingerprint.classDef.apply {
-        interfaces.add(EXTENSION_SCRUBBER_INTERFACE)
-
         val getTimeBar = """
             iget-object v0, p0, $controllerField
             iget-object v0, v0, $scrubStateField
             iget-object v0, v0, $timeBarField
         """
 
-        addScrubberMethod(
-            "patch_startScrub", listOf(), "I", 3,
+        addPatchInterfaceMethod(
+            EXTENSION_SCRUBBER_INTERFACE,
+            "patch_startScrub",
             """
                 iget-object v0, p0, $controllerField
                 iget-object v0, v0, $scrubStateField
@@ -308,8 +303,9 @@ private fun addSeekbarScrubber() {
                 return v2
             """
         )
-        addScrubberMethod(
-            "patch_moveScrub", listOf("I"), "J", 2,
+        addPatchInterfaceMethod(
+            EXTENSION_SCRUBBER_INTERFACE,
+            "patch_moveScrub",
             """
                 $getTimeBar
                 invoke-interface { v0, p1 }, $moveScrubMethod
@@ -318,8 +314,9 @@ private fun addSeekbarScrubber() {
                 return-wide v0
             """
         )
-        addScrubberMethod(
-            "patch_completeScrub", listOf("I"), "V", 1,
+        addPatchInterfaceMethod(
+            EXTENSION_SCRUBBER_INTERFACE,
+            "patch_completeScrub",
             """
                 $getTimeBar
                 invoke-interface { v0, p1 }, $completeScrubMethod
@@ -327,28 +324,4 @@ private fun addSeekbarScrubber() {
             """
         )
     }
-}
-
-private fun MutableClass.addScrubberMethod(
-    name: String,
-    parameters: List<String>,
-    returnType: String,
-    localRegisters: Int,
-    smali: String,
-) {
-    methods.add(
-        ImmutableMethod(
-            type,
-            name,
-            parameters.map { ImmutableMethodParameter(it, null, null) },
-            returnType,
-            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-            null,
-            null,
-            // Locals, this, and the parameters.
-            MutableMethodImplementation(localRegisters + 1 + parameters.size),
-        ).toMutable().apply {
-            addInstructions(0, smali)
-        }
-    )
 }

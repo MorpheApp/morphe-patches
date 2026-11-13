@@ -8,17 +8,13 @@
 
 package app.morphe.patches.shared.misc.litho.context
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.util.findFieldFromToString
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 const val EXTENSION_CONTEXT_INTERFACE =
     "Lapp/morphe/extension/shared/patches/components/ContextInterface;"
@@ -86,50 +82,13 @@ val conversionContextPatch = patch(
 
         conversionContextClassDef.apply {
             // Add interface and helper methods to allow extension code to call obfuscated methods.
-            interfaces.add(EXTENSION_CONTEXT_INTERFACE)
-
-            arrayOf(
-                Triple(
-                    "patch_getIdentifier",
-                    "Ljava/lang/String;",
-                    identifierField
-                ),
-                Triple(
-                    "patch_getPathBuilder",
-                    "Ljava/lang/StringBuilder;",
-                    stringBuilderField
-                ),
-                Triple(
-                    "patch_getHorizontalCollectionSwipeProtector",
-                    "Ljava/lang/Object;",
-                    horizontalSwipeField
-                ),
-                Triple(
-                    "patch_getHeightConstraint",
-                    "Ljava/lang/Integer;",
-                    heightConstraint
-                )
-            ).forEach { (interfaceMethodName, interfaceMethodReturnType, classFieldReference) ->
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        interfaceMethodName,
-                        listOf(),
-                        interfaceMethodReturnType,
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                iget-object v0, p0, $classFieldReference
-                                return-object v0
-                            """
-                        )
-                    }
-                )
+            mapOf(
+                "patch_getIdentifier" to identifierField,
+                "patch_getPathBuilder" to stringBuilderField,
+                "patch_getHorizontalCollectionSwipeProtector" to horizontalSwipeField,
+                "patch_getHeightConstraint" to heightConstraint,
+            ).forEach { (interfaceMethodName, classFieldReference) ->
+                addPatchInterfaceMethod(EXTENSION_CONTEXT_INTERFACE, interfaceMethodName, classFieldReference)
             }
         }
     }

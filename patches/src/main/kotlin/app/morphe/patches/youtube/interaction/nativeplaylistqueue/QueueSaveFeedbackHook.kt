@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.p0Register
@@ -26,37 +27,30 @@ internal fun installQueueSaveFeedback(endpointType: String) {
     val success = queueSaveEditSuccessFingerprint(callbackType).match()
     val responseType = success.originalMethod.parameterTypes.single().toString()
     val callback = mutableClassDefBy(callbackType)
-    callback.interfaces.add(SAVE_CALLBACK_INTERFACE)
     val selection = ImmutableField(callbackType, "patch_queueSaveSelection", SAVE_SELECTION_CLASS,
         AccessFlags.PRIVATE.value, null, null, null).toMutable()
     callback.fields.add(selection)
-    callback.addBridgeMethod(
+    callback.addPatchInterfaceMethod(
+        SAVE_CALLBACK_INTERFACE,
         "patch_getQueueSaveSelection",
-        emptyList(),
-        SAVE_SELECTION_CLASS,
-        1,
         """
             iget-object v0, p0, $selection
             return-object v0
         """
     )
 
-    callback.addBridgeMethod(
+    callback.addPatchInterfaceMethod(
+        SAVE_CALLBACK_INTERFACE,
         "patch_setQueueSaveSelection",
-        listOf(SAVE_SELECTION_CLASS),
-        "V",
-        0,
         """
             iput-object p1, p0, $selection
             return-void
         """
     )
 
-    callback.addBridgeMethod(
+    callback.addPatchInterfaceMethod(
+        SAVE_CALLBACK_INTERFACE,
         "patch_parseQueueSaveResult",
-        listOf("[B"),
-        "Lcom/google/protobuf/MessageLite;",
-        2,
         """
             ${parseProtoInstructions(responseType, bytes = "p1", result = "v0", registry = "v1")}
             return-object v0

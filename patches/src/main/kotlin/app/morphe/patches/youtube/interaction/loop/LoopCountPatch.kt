@@ -11,10 +11,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.youtube.interaction.nativeplaylistqueue.addBridgeMethod
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.layout.playlistautoplay.NativeNavigationStateFingerprint
 import app.morphe.patches.youtube.layout.playlistautoplay.NavigationIntentEnumFingerprint
@@ -82,12 +82,9 @@ val loopCountPatch = patch(
         // The menu that shows the loop count stays open after the loop video item is tapped,
         // so the loop count can be chosen right after.
         BottomSheetMenuCloseFingerprint.let {
-            it.classDef.interfaces.add(EXTENSION_MENU_INTERFACE)
-            it.classDef.addBridgeMethod(
+            it.classDef.addPatchInterfaceMethod(
+                EXTENSION_MENU_INTERFACE,
                 "patch_closeMenu",
-                emptyList(),
-                "V",
-                0,
                 """
                     invoke-virtual { p0 }, ${it.originalMethod}
                     return-void
@@ -142,12 +139,9 @@ val loopCountPatch = patch(
                 navigatorCanNavigateFingerprint(requestType).match(navigatorClass)
                     .method.addInstruction(0, setNavigatorInstruction)
 
-                navigatorClass.interfaces.add(EXTENSION_NAVIGATOR_INTERFACE)
-                navigatorClass.addBridgeMethod(
+                navigatorClass.addPatchInterfaceMethod(
+                    EXTENSION_NAVIGATOR_INTERFACE,
                     "patch_setNavigatorRepeatMode",
-                    listOf("I"),
-                    "V",
-                    0,
                     """
                         invoke-interface { p0, p1 }, $setRepeatMode
                         return-void

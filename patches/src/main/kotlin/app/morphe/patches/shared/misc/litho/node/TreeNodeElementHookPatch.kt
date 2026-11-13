@@ -8,21 +8,17 @@
 package app.morphe.patches.shared.misc.litho.node
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.Patch
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import java.lang.ref.WeakReference
 
 internal const val EXTENSION_CLASS =
@@ -82,26 +78,13 @@ internal fun createTreeNodeElementHookPatch(
             reference: FieldReference
         ) {
             clazz.apply {
-                interfaces.add(EXTENSION_LITHO_CONTAINER_INTERFACE)
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_getContainer",
-                        listOf(),
-                        "Ljava/lang/Object;",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                iget-object v0, p0, $reference
-                                return-object v0
-                            """
-                        )
-                    }
+                addPatchInterfaceMethod(
+                    EXTENSION_LITHO_CONTAINER_INTERFACE,
+                    "patch_getContainer",
+                    """
+                        iget-object v0, p0, $reference
+                        return-object v0
+                    """
                 )
             }
         }

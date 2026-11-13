@@ -15,6 +15,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -125,46 +126,47 @@ internal val stableCaptionBlocksPatch = patch(
         // Frame spans retain source metadata in native mode. Only block layouts use
         // the default placement; ordinary captions keep the authored settings.
         mutableClassDefBy(cueType).apply {
-            interfaces.add(EXTENSION_CUE_INTERFACE)
-
-            addHelperMethod(
-                "patch_getCaptionId", "I",
-                smali = """
+            addPatchInterfaceMethod(
+                EXTENSION_CUE_INTERFACE,
+                "patch_getCaptionId",
+                """
                     iget v0, p0, $idField
                     return v0
                 """
             )
 
-            addHelperMethod(
-                "patch_isCaptionVisible", "Z",
-                smali = """
+            addPatchInterfaceMethod(
+                EXTENSION_CUE_INTERFACE,
+                "patch_isCaptionVisible",
+                """
                     iget-object v0, p0, $settingsField
                     iget-boolean v0, v0, $visibleSettingsField
                     return v0
                 """
             )
 
-            addHelperMethod(
+            addPatchInterfaceMethod(
+                EXTENSION_CUE_INTERFACE,
                 "patch_getOriginalCaptionVisible",
-                "Ljava/lang/CharSequence;",
-                smali = """
+                """
                     iget-object v0, p0, $visibleTextField
                     return-object v0
                 """
             )
 
-            addHelperMethod(
-                "patch_getOriginalCaptionFull", "Ljava/lang/CharSequence;",
-                smali = """
+            addPatchInterfaceMethod(
+                EXTENSION_CUE_INTERFACE,
+                "patch_getOriginalCaptionFull",
+                """
                     iget-object v0, p0, $fullTextField
                     return-object v0
                 """
             )
 
-            addHelperMethod(
+            addPatchInterfaceMethod(
+                EXTENSION_CUE_INTERFACE,
                 "patch_getBlockFrame",
-                EXTENSION_FRAME_CLASS,
-                smali = """
+                """
                     iget-object v0, p0, $fullTextField
                     invoke-static { v0 }, $EXTENSION_CLASS->frameOf(Ljava/lang/CharSequence;)$EXTENSION_FRAME_CLASS
                     move-result-object v0
@@ -172,12 +174,10 @@ internal val stableCaptionBlocksPatch = patch(
                 """
             )
 
-            addHelperMethod(
+            addPatchInterfaceMethod(
+                EXTENSION_CUE_INTERFACE,
                 "patch_copyBlockFrame",
-                "Ljava/lang/Object;",
-                parameters = listOf(EXTENSION_FRAME_CLASS),
-                freeRegisters = 7,
-                smali = """
+                """
                     iget-object v6, p0, $settingsField
                     invoke-virtual { p1 }, $EXTENSION_FRAME_CLASS->usesBlockLayout()Z
                     move-result v0
@@ -216,23 +216,20 @@ internal val stableCaptionBlocksPatch = patch(
         // Row used to measure caption text.
         val rowType = CaptionRowLayoutFingerprint.classDef.type
         mutableClassDefBy(rowType).apply {
-            interfaces.add(EXTENSION_ROW_INTERFACE)
-
-            addHelperMethod(
+            addPatchInterfaceMethod(
+                EXTENSION_ROW_INTERFACE,
                 "patch_getCaptionLayout",
-                "Landroid/text/StaticLayout;",
-                smali = """
+                """
                     invoke-virtual { p0 }, ${CaptionRowLayoutFingerprint.method}
                     move-result-object v0
                     return-object v0
                 """
             )
 
-            addHelperMethod(
+            addPatchInterfaceMethod(
+                EXTENSION_ROW_INTERFACE,
                 "patch_setCaptionText",
-                "V",
-                parameters = listOf("Ljava/lang/CharSequence;"),
-                smali = """
+                """
                     invoke-virtual { p0, p1 }, ${CaptionRowSetTextFingerprint.method}
                     return-void
                 """
@@ -270,23 +267,20 @@ internal val stableCaptionBlocksPatch = patch(
             val backgroundCall = if (backgroundColor.accessFlags and AccessFlags.PRIVATE.value != 0)
                 "invoke-direct" else "invoke-virtual"
             mutableClassDefBy(SUBTITLE_WINDOW_VIEW_CLASS).apply {
-                interfaces.add(EXTENSION_WINDOW_INTERFACE)
-
-                addHelperMethod(
+                addPatchInterfaceMethod(
+                    EXTENSION_WINDOW_INTERFACE,
                     "patch_getCaptionBackgroundColor",
-                    "I",
-                    smali = """
+                    """
                         $backgroundCall { p0 }, $backgroundColor
                         move-result v0
                         return v0
                     """
                 )
 
-                addHelperMethod(
+                addPatchInterfaceMethod(
+                    EXTENSION_WINDOW_INTERFACE,
                     "patch_setCaptionMeasuredSize",
-                    "V",
-                    parameters = listOf("I", "I"),
-                    smali = """
+                    """
                         invoke-virtual { p0, p1, p2 }, Landroid/view/View;->setMeasuredDimension(II)V
                         return-void
                     """
@@ -355,8 +349,6 @@ internal val stableCaptionBlocksPatch = patch(
             val stateField = "$timelineType->patch_blockState:$EXTENSION_STATE_CLASS"
 
             mutableClassDefBy(timelineType).apply {
-                interfaces.add(EXTENSION_TIMELINE_INTERFACE)
-
                 instanceFields.add(
                     ImmutableField(
                         type,
@@ -369,19 +361,19 @@ internal val stableCaptionBlocksPatch = patch(
                     ).toMutable()
                 )
 
-                addHelperMethod(
+                addPatchInterfaceMethod(
+                    EXTENSION_TIMELINE_INTERFACE,
                     "patch_getBlockState",
-                    EXTENSION_STATE_CLASS,
-                    smali = """
+                    """
                         iget-object v0, p0, $stateField
                         return-object v0
                     """
                 )
 
-                addHelperMethod(
-                    "patch_setBlockState", "V",
-                    parameters = listOf(EXTENSION_STATE_CLASS),
-                    smali = """
+                addPatchInterfaceMethod(
+                    EXTENSION_TIMELINE_INTERFACE,
+                    "patch_setBlockState",
+                    """
                         iput-object p1, p0, $stateField
                         return-void
                     """
@@ -402,22 +394,20 @@ internal val stableCaptionBlocksPatch = patch(
                 val sampler = samplerFingerprint.method
                 val windows = samplerFingerprint.instructionMatches[0].fieldReference
                 val events = it.instructionMatches.last().fieldReference
-                addHelperMethod(
+                addPatchInterfaceMethod(
+                    EXTENSION_TIMELINE_INTERFACE,
                     "patch_getCaptionEventTimes",
-                    "Ljava/util/List;",
-                    smali = """
+                    """
                         iget-object v0, p0, $events
                         return-object v0
                     """
                 )
 
                 // New timeline with the windows of both timelines, and the block state of this timeline.
-                addHelperMethod(
-                    "patch_mergeWith",
+                addPatchInterfaceMethod(
                     EXTENSION_TIMELINE_INTERFACE,
-                    parameters = listOf(EXTENSION_TIMELINE_INTERFACE),
-                    freeRegisters = 3,
-                    smali = """
+                    "patch_mergeWith",
+                    """
                         check-cast p1, $timelineType
                         new-instance v0, Ljava/util/ArrayList;
                         invoke-direct { v0 }, Ljava/util/ArrayList;-><init>()V

@@ -7,12 +7,8 @@
 
 package app.morphe.patches.youtube.interaction.posttranslate
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.addPatchInterfaceMethod
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -27,10 +23,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/PostTranslatePatch;"
@@ -40,27 +32,6 @@ private const val EXTENSION_COMPONENT_HOST_INTERFACE =
 
 private const val EXTENSION_TEXT_DRAWABLE_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/PostTranslatePatch$TextDrawableInterface;"
-
-private fun MutableClass.addPatchMethod(
-    name: String,
-    parameters: List<String>,
-    returnType: String,
-    registers: Int,
-    block: MutableMethod.() -> Unit
-) {
-    methods.add(
-        ImmutableMethod(
-            type,
-            name,
-            parameters.map { ImmutableMethodParameter(it, null, null) },
-            returnType,
-            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-            null,
-            null,
-            MutableMethodImplementation(registers),
-        ).toMutable().apply(block)
-    )
-}
 
 val postTranslatePatch = patch(
     name = "Translate posts",
@@ -103,32 +74,30 @@ val postTranslatePatch = patch(
             val contentField = matches[4].fieldReference
 
             it.classDef.apply {
-                interfaces.add(EXTENSION_COMPONENT_HOST_INTERFACE)
-                addPatchMethod("patch_getMountedContents", listOf(), "Ljava/util/List;", 6) {
-                    addInstructionsWithLabels(
-                        0,
-                        """
-                            invoke-virtual { p0 }, $ensureMountItems
-                            iget-object v0, p0, $mountItemsField
-                            invoke-virtual { v0 }, $sizeMethod
-                            move-result v1
-                            new-instance v2, Ljava/util/ArrayList;
-                            invoke-direct { v2, v1 }, Ljava/util/ArrayList;-><init>(I)V
-                            const/4 v3, 0x0
-                            :loop
-                            if-ge v3, v1, :done
-                            invoke-virtual { v0, v3 }, $valueAtMethod
-                            move-result-object v4
-                            check-cast v4, ${contentField.definingClass}
-                            iget-object v4, v4, $contentField
-                            invoke-interface { v2, v4 }, Ljava/util/List;->add(Ljava/lang/Object;)Z
-                            add-int/lit8 v3, v3, 0x1
-                            goto :loop
-                            :done
-                            return-object v2
-                        """
-                    )
-                }
+                addPatchInterfaceMethod(
+                    EXTENSION_COMPONENT_HOST_INTERFACE,
+                    "patch_getMountedContents",
+                    """
+                        invoke-virtual { p0 }, $ensureMountItems
+                        iget-object v0, p0, $mountItemsField
+                        invoke-virtual { v0 }, $sizeMethod
+                        move-result v1
+                        new-instance v2, Ljava/util/ArrayList;
+                        invoke-direct { v2, v1 }, Ljava/util/ArrayList;-><init>(I)V
+                        const/4 v3, 0x0
+                        :loop
+                        if-ge v3, v1, :done
+                        invoke-virtual { v0, v3 }, $valueAtMethod
+                        move-result-object v4
+                        check-cast v4, ${contentField.definingClass}
+                        iget-object v4, v4, $contentField
+                        invoke-interface { v2, v4 }, Ljava/util/List;->add(Ljava/lang/Object;)Z
+                        add-int/lit8 v3, v3, 0x1
+                        goto :loop
+                        :done
+                        return-object v2
+                    """
+                )
             }
         }
 
@@ -138,29 +107,12 @@ val postTranslatePatch = patch(
             val layoutField = it.instructionMatches.first().fieldReference
 
             it.classDef.apply {
-                interfaces.add(EXTENSION_TEXT_DRAWABLE_INTERFACE)
-                arrayOf(
-                    Triple("Layout", "Landroid/text/Layout;", layoutField),
-                    Triple("Text", "Ljava/lang/CharSequence;", textField)
-                ).forEach { (name, fieldType, field) ->
-                    addPatchMethod("patch_get$name", listOf(), fieldType, 2) {
-                        addInstructions(
-                            0,
-                            """
-                                iget-object v0, p0, $field
-                                return-object v0
-                            """
-                        )
-                    }
-                    addPatchMethod("patch_set$name", listOf(fieldType), "V", 2) {
-                        addInstructions(
-                            0,
-                            """
-                                iput-object p1, p0, $field
-                                return-void
-                            """
-                        )
-                    }
+                mapOf(
+                    "Layout" to layoutField,
+                    "Text" to textField
+                ).forEach { (name, field) ->
+                    addPatchInterfaceMethod(EXTENSION_TEXT_DRAWABLE_INTERFACE, "patch_get$name", field)
+                    addPatchInterfaceMethod(EXTENSION_TEXT_DRAWABLE_INTERFACE, "patch_set$name", field)
                 }
             }
         }
