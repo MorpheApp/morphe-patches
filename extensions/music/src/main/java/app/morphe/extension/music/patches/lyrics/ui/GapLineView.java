@@ -35,9 +35,9 @@ import app.morphe.extension.shared.ui.Dim;
 @SuppressLint("ViewConstructor")
 final class GapLineView extends View {
     /**
-     * @param endMs            When the dots are full and start to close.
-     * @param nextStartMs      When the line after the break starts.
-     * @param beforeLineIndex  The line the break comes before.
+     * @param endMs           When the dots are full and start to close.
+     * @param nextStartMs     When the line after the break starts.
+     * @param beforeLineIndex The line the break comes before.
      */
     record GapInterval(
             long startMs,
@@ -207,7 +207,7 @@ final class GapLineView extends View {
      * Animates exit transition when instrumental gap ends:
      * - Scale keyframes over 800ms (GAP_ENDED_MS): 0% -> 1.0, 35% -> 1.2, 100% -> 0.0
      * - Alpha waits 500ms (GAP_HIDE_FADE_DELAY_MS) then fades 1.0 -> 0.0 over 200ms (GAP_FADE_MS)
-     *   so the 800ms exit bounce is never clipped and the upcoming active lyric line never jumps later.
+     * so the 800ms exit bounce is never clipped and the upcoming active lyric line never jumps later.
      */
     private void startExitAnimation() {
         if (expandAnimator != null) expandAnimator.cancel();

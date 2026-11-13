@@ -56,13 +56,13 @@ public final class PetitLyricsProvider implements LyricsProvider {
     private static final int LSY_MAX_LINES = 10_000;
     private static final int LSY_WRAP_CS = 65_536;
 
-    private static int scoreOf(Song song, TrackInfo track) {
+    static int scoreOf(Song song, TrackInfo track) {
         return LyricsRequests.scoreTrackCandidate(
                 song.title, song.artist, song.durationMs / 1000, track);
     }
 
     @Nullable
-    private static String sourceUrl(@Nullable String lyricsId) {
+    static String sourceUrl(@Nullable String lyricsId) {
         if (lyricsId == null || lyricsId.trim().isEmpty()) {
             return null;
         }
@@ -70,7 +70,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
     }
 
     /** Composer is a credit line, not a songwriter name. */
-    private static List<String> creditsOf(Song song) {
+    static List<String> creditsOf(Song song) {
         List<String> credits = new ArrayList<>(1);
         addCredit(credits, "Composer", song.composer);
         return credits;
@@ -78,7 +78,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
 
     /** Writer names from the API are actual songwriters, not credit lines. */
     @Nullable
-    private static List<String> songwritersOf(Song song) {
+    static List<String> songwritersOf(Song song) {
         if (song.writer == null) {
             return null;
         }
@@ -92,8 +92,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return names.isEmpty() ? null : names;
     }
 
-    @SuppressWarnings("SameParameterValue")
-    private static void addCredit(List<String> credits, String label, @Nullable String value) {
+    static void addCredit(List<String> credits, String label, @Nullable String value) {
         if (value == null) {
             return;
         }
@@ -105,8 +104,8 @@ public final class PetitLyricsProvider implements LyricsProvider {
     }
 
     @Nullable
-    private static List<String> mergeCredits(@Nullable List<String> primary,
-                                             @Nullable List<String> secondary) {
+    static List<String> mergeCredits(@Nullable List<String> primary,
+                                     @Nullable List<String> secondary) {
         if (primary == null || primary.isEmpty()) {
             return secondary == null || secondary.isEmpty() ? null : secondary;
         }
@@ -124,7 +123,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
     }
 
     @Nullable
-    private static Response parseResponse(String xml) {
+    static Response parseResponse(String xml) {
         try {
             XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
             parser.setInput(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)),
@@ -200,7 +199,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
     }
 
-    private static int classifyPayload(byte[] raw) {
+    static int classifyPayload(byte[] raw) {
         byte[] root = xmlRootPrefix(raw);
         if (root.length >= 4 && root[0] == '<' && root[1] == 'w' && root[2] == 's'
                 && root[3] == 'y') {
@@ -212,7 +211,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return TIER_UNSYNCED;
     }
 
-    private static byte[] xmlRootPrefix(byte[] raw) {
+    static byte[] xmlRootPrefix(byte[] raw) {
         int i = 0;
         if (raw.length >= 3 && (raw[0] & 0xFF) == 0xEF && (raw[1] & 0xFF) == 0xBB
                 && (raw[2] & 0xFF) == 0xBF) {
@@ -248,7 +247,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return rest;
     }
 
-    private static int indexOf(byte[] haystack, byte[] needle, int from) {
+    static int indexOf(byte[] haystack, byte[] needle, int from) {
         outer:
         for (int i = from; i <= haystack.length - needle.length; i++) {
             for (int j = 0; j < needle.length; j++) {
@@ -261,7 +260,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return -1;
     }
 
-    private static boolean containsNul(byte[] raw) {
+    static boolean containsNul(byte[] raw) {
         for (byte b : raw) {
             if (b == 0) {
                 return true;
@@ -270,7 +269,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return false;
     }
 
-    private static boolean isValidUtf8(byte[] raw) {
+    static boolean isValidUtf8(byte[] raw) {
         try {
             StandardCharsets.UTF_8.decode(ByteBuffer.wrap(raw));
             return true;
@@ -279,7 +278,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
     }
 
-    private static boolean isWhitespaceToken(@Nullable String s) {
+    static boolean isWhitespaceToken(@Nullable String s) {
         if (s == null || s.isEmpty()) return true;
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
@@ -290,16 +289,15 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return true;
     }
 
-    private static boolean hasOpen(@Nullable String s) {
+    static boolean hasOpen(@Nullable String s) {
         return s != null && (s.contains("(") || s.contains("（") || s.contains("["));
     }
 
-    private static boolean hasClose(@Nullable String s) {
+    static boolean hasClose(@Nullable String s) {
         return s != null && (s.contains(")") || s.contains("）") || s.contains("]"));
     }
 
-    @SuppressWarnings("SameParameterValue")
-    private static int indexOfAny(@Nullable String s, String chars) {
+    static int indexOfAny(@Nullable String s, String chars) {
         if (s == null) return -1;
         for (int i = 0; i < s.length(); i++) {
             if (chars.indexOf(s.charAt(i)) >= 0) return i;
@@ -307,8 +305,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return -1;
     }
 
-    @SuppressWarnings("SameParameterValue")
-    private static int lastIndexOfAny(@Nullable String s, String chars) {
+    static int lastIndexOfAny(@Nullable String s, String chars) {
         if (s == null) return -1;
         for (int i = s.length() - 1; i >= 0; i--) {
             if (chars.indexOf(s.charAt(i)) >= 0) return i;
@@ -316,7 +313,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return -1;
     }
 
-    private static void addSanitizedLine(List<LyricsLine> lines, String text, List<Word> words, boolean isBg) {
+    static void addSanitizedLine(List<LyricsLine> lines, String text, List<Word> words, boolean isBg) {
         if (text.isEmpty() || words.isEmpty()) {
             return;
         }
@@ -357,7 +354,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         lines.add(new LyricsLine(start, endMs, text, new ArrayList<>(words), null, false, isBg, null));
     }
 
-    private static List<LyricsLine> parseWsy(byte[] payload) {
+    static List<LyricsLine> parseWsy(byte[] payload) {
         try {
             XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
             parser.setInput(new ByteArrayInputStream(payload), "UTF-8");
@@ -440,7 +437,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                                 boolean canMerge = false;
                                 if (!mergedWords.isEmpty()) {
                                     Word prev = mergedWords.get(mergedWords.size() - 1);
-                                    if (!prev.endsWithSpace() && !ScriptDetector.containsCjk(s) && !ScriptDetector.containsCjk(prev.text())) {
+                                    if (!prev.endsWithSpace() && !ScriptDetector.containsUnspaced(s) && !ScriptDetector.containsUnspaced(prev.text())) {
                                         canMerge = true;
                                     }
                                 }
@@ -592,7 +589,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
     }
 
-    private static long parseLong(String value) {
+    static long parseLong(String value) {
         try {
             return Long.parseLong(value.trim());
         } catch (Exception ex) {
@@ -600,7 +597,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
     }
 
-    private static List<Long> decodeLsyTimings(byte[] raw) {
+    static List<Long> decodeLsyTimings(byte[] raw) {
         if (raw.length < LSY_MIN_HEADER_LEN) {
             return List.of();
         }
@@ -638,7 +635,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return out;
     }
 
-    private static int deriveLsyKey(int protectionId, boolean switchFlag) {
+    static int deriveLsyKey(int protectionId, boolean switchFlag) {
         if (!switchFlag) {
             return protectionId;
         }
@@ -652,7 +649,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                 | (protectionId & 0xc000);
     }
 
-    private static List<LyricsLine> zipLineSync(List<Long> timingsCs, String text) {
+    static List<LyricsLine> zipLineSync(List<Long> timingsCs, String text) {
         String normalized = text.replace("\r\n", "\n");
         String[] rows = normalized.split("\n", -1);
         int count = rows.length;
@@ -691,7 +688,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return lines;
     }
 
-    private static String buildLrc(List<LyricsLine> lines) {
+    static String buildLrc(List<LyricsLine> lines) {
         StringBuilder sb = new StringBuilder(50 * lines.size());
         for (LyricsLine line : lines) {
             sb.append(LRCParser.formatLine(line))
@@ -700,7 +697,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return sb.toString();
     }
 
-    private static String toUtf8(byte[] payload) {
+    static String toUtf8(byte[] payload) {
         try {
             return new String(payload, StandardCharsets.UTF_8).trim();
         } catch (Exception ex) {
@@ -708,7 +705,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
     }
 
-    private static String toUtf8Raw(byte[] payload) {
+    static String toUtf8Raw(byte[] payload) {
         try {
             return new String(payload, StandardCharsets.UTF_8);
         } catch (Exception ex) {

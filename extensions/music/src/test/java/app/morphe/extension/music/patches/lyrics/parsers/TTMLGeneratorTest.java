@@ -7,10 +7,10 @@
 
 package app.morphe.extension.music.patches.lyrics.parsers;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.BeforeClass;
@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.music.patches.lyrics.LyricsTestEnv;
+import app.morphe.extension.music.patches.lyrics.SkipSegments;
 import app.morphe.extension.music.patches.lyrics.model.CreditInfo;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -33,8 +34,6 @@ public class TTMLGeneratorTest {
     public static void setUp() {
         LyricsTestEnv.bootstrap();
     }
-
-    // ── generate basic ──
 
     @Test
     public void generateBasicSyncedLyrics() {
@@ -68,8 +67,6 @@ public class TTMLGeneratorTest {
                 null, null, null, null, null, null, null, null, null);
         assertNull(TTMLGenerator.generate(lyrics, null, null));
     }
-
-    // ── generate with credit info ──
 
     @Test
     public void generateWithCreditInfo() {
@@ -109,8 +106,6 @@ public class TTMLGeneratorTest {
         assertTrue(ttml.contains("Jane Smith"));
     }
 
-    // ── generate with translations ──
-
     @Test
     public void generateWithTranslations() {
         List<Word> words1 = List.of(
@@ -132,8 +127,6 @@ public class TTMLGeneratorTest {
         assertTrue(ttml.contains("Hola"));
     }
 
-    // ── generate with ruby ──
-
     @Test
     public void generateWithRuby() {
         List<Word> words1 = List.of(
@@ -150,8 +143,6 @@ public class TTMLGeneratorTest {
         assertTrue(ttml.contains("漢字"));
         assertTrue(ttml.contains("カンジ"));
     }
-
-    // ── generate with background vocals ──
 
     @Test
     public void generateWithBgVocals() {
@@ -172,8 +163,6 @@ public class TTMLGeneratorTest {
         assertTrue(ttml.contains("world"));
     }
 
-    // ── generate unsynced lyrics ──
-
     @Test
     public void generateUnsyncedLyrics() {
         List<LyricsLine> lines = List.of(
@@ -188,8 +177,6 @@ public class TTMLGeneratorTest {
         assertTrue(ttml.contains("Hello world"));
         assertTrue(ttml.contains("This is a test"));
     }
-
-    // ── generate with multiple songParts ──
 
     @Test
     public void generateWithMultipleSongParts() {
@@ -210,8 +197,6 @@ public class TTMLGeneratorTest {
         assertTrue(ttml.contains("itunes:songPart=\"Chorus\""));
     }
 
-    // ── generate with source URL ──
-
     @Test
     public void generateWithSourceUrl() {
         List<Word> words1 = List.of(
@@ -228,8 +213,6 @@ public class TTMLGeneratorTest {
         assertTrue(ttml.contains("https://example.com"));
     }
 
-    // ── generate with about ──
-
     @Test
     public void generateWithAbout() {
         List<Word> words1 = List.of(
@@ -244,8 +227,6 @@ public class TTMLGeneratorTest {
         assertNotNull(ttml);
         assertTrue(ttml.contains("About text"));
     }
-
-    // ── generate with LRC metadata ──
 
     @Test
     public void generateWithLrcMetadata() {
@@ -331,8 +312,6 @@ public class TTMLGeneratorTest {
         assertFalse(ttml.contains("<songwriters>"));
     }
 
-    // ── generate with agents ──
-
     @Test
     public void generateWithAgents() {
         List<Word> words1 = List.of(
@@ -409,7 +388,29 @@ public class TTMLGeneratorTest {
                 ttml.contains(">can</span>"));
     }
 
-    // ── unsynced lyrics ──
+    @Test
+    public void thaiWordSpansPreserveEndsWithSpace() {
+        // Thai words with endsWithSpace=true must keep the space between spans,
+        // matching Apple Music's reference TTML output.
+        List<Word> words = List.of(
+                new Word(1000, 1500, "\u0e17\u0e33", null, false, null),
+                new Word(1500, 2000, "\u0e19\u0e23\u0e40\u0e01\u0e2d\u0e25", null, true, null),
+                new Word(2000, 2500, "\u0e19\u0e07\u0e2d\u0e1a", null, false, null));
+        List<LyricsLine> lines = List.of(
+                new LyricsLine(1000, 2500, "\u0e17\u0e33 \u0e19\u0e23\u0e40\u0e01\u0e2d\u0e25 \u0e19\u0e07\u0e2d\u0e1a", words, null, false, false, null));
+        Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
+                null, null, null, null, null, "lrc", null, null, null);
+        TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
+
+        String ttml = TTMLGenerator.generate(lyrics, track, null);
+        assertNotNull(ttml);
+        assertTrue("Thai word with endsWithSpace should produce a space between spans",
+                ttml.contains("\u0e19\u0e23\u0e40\u0e01\u0e2d\u0e25</span> <span"));
+        assertTrue("First Thai word without endsWithSpace should not have trailing space",
+                ttml.contains("\u0e17\u0e33</span><span"));
+        assertTrue("Last Thai word should not have trailing space",
+                ttml.contains("\u0e19\u0e07\u0e2d\u0e1a</span>"));
+    }
 
     @Test
     public void unsyncedLyricsCarryNoTimes() {
@@ -423,8 +424,6 @@ public class TTMLGeneratorTest {
         assertTrue(ttml.contains("itunes:timing=\"None\""));
         assertFalse("A line without a time must not be written at zero", ttml.contains("begin="));
     }
-
-    // ── sections ──
 
     @Test
     public void lineWithoutSectionStaysInTheSectionBeforeIt() {
@@ -452,8 +451,6 @@ public class TTMLGeneratorTest {
         assertFalse(ttml.contains("songPart"));
     }
 
-    // ── readings ──
-
     @Test
     public void wordSyncedLineKeepsItsWholeLineReading() {
         List<Word> words = List.of(new Word(1000, 1500, "愛", null, false));
@@ -466,6 +463,41 @@ public class TTMLGeneratorTest {
         String ttml = TTMLGenerator.generate(lyrics, new TrackInfo("Song", "Artist", null, 0), null);
         assertNotNull(ttml);
         assertTrue(ttml.contains("<span ttm:role=\"x-roman\" xml:lang=\"romaji\">ai</span>"));
+    }
+
+    @Test
+    public void cjkReadingDoesNotSeparateBodyWordSpans() {
+        // A word-synced Chinese line keeps its characters together in the body even when
+        // the reading is per syllable; only the romanization carries the spaces.
+        List<Word> words = List.of(
+                new Word(0, 100, "成"),
+                new Word(100, 200, "長"),
+                new Word(200, 300, "的"),
+                new Word(300, 400, "沈"),
+                new Word(400, 500, "痛"));
+        List<LyricsLine> lines = List.of(
+                new LyricsLine(0, 500, "成長的沈痛", words, null, false, false, null));
+
+        List<Word> readingWords = List.of(
+                new Word(0, 100, "成", "chéng", false),
+                new Word(100, 200, "長", "cháng", false),
+                new Word(200, 300, "的", "de", false),
+                new Word(300, 400, "沈", "shěn", false),
+                new Word(400, 500, "痛", "tòng", false));
+        List<LyricsLine> romanized = List.of(
+                new LyricsLine(0, 500, "chéng cháng de shěn tòng", readingWords,
+                        null, false, false, null));
+
+        Lyrics lyrics = new Lyrics(lines, "TestProvider", true,
+                null, null, null, null, null, null, null);
+        String ttml = TTMLGenerator.generate(lyrics, new TrackInfo("Song", "Artist", null, 0),
+                null, null, romanized, null, null);
+        assertNotNull(ttml);
+        String body = ttml.substring(ttml.indexOf("<body>"), ttml.indexOf("</body>"));
+        assertFalse("CJK reading characters must not be separated by spaces in the body",
+                body.contains("</span> <span begin="));
+        assertTrue(ttml.contains(
+                "<span ttm:role=\"x-roman\" xml:lang=\"romaji\">chéng cháng de shěn tòng</span>"));
     }
 
     @Test
@@ -482,8 +514,6 @@ public class TTMLGeneratorTest {
         assertFalse(ttml.contains("bgreading"));
     }
 
-    // ── credits ──
-
     @Test
     public void copyrightCreditFillsTheCopyrightField() {
         List<LyricsLine> lines = List.of(
@@ -495,5 +525,93 @@ public class TTMLGeneratorTest {
         assertNotNull(ttml);
         assertTrue(ttml.contains("<copyright>Label</copyright>"));
         assertFalse(ttml.contains("morphe:credits"));
+    }
+
+    private static Lyrics singleLineLyrics() {
+        List<Word> words = List.of(new Word(1000, 1500, "Hello", null, false, null));
+        List<LyricsLine> lines = List.of(
+                new LyricsLine(1000, 1500, "Hello", words, null, false, false, null));
+        return new Lyrics(lines, "TestProvider", true,
+                null, null, null, null, null, "lrc", null, null, null);
+    }
+
+    @Test
+    public void zeroTemporaryOffsetOmitsTheAudioElement() {
+        Lyrics lyrics = singleLineLyrics();
+        TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
+
+        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, 0, null);
+        assertNotNull(ttml);
+        assertFalse("Zero offset must not create an empty iTunesMetadata block",
+                ttml.contains("iTunesMetadata"));
+        assertFalse("No audio tag should remain",
+                ttml.contains("<audio"));
+    }
+
+    @Test
+    public void temporaryOffsetShiftsTimestamps() {
+        Lyrics lyrics = singleLineLyrics();
+        TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
+
+        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, 940, null);
+        assertNotNull(ttml);
+        assertTrue(ttml.contains("begin=\"00:01.940\""));
+        assertTrue(ttml.contains("end=\"00:02.440\""));
+        assertFalse("No audio tag should remain", ttml.contains("<audio"));
+    }
+
+    @Test
+    public void negativeOffsetClampedToZero() {
+        Lyrics lyrics = singleLineLyrics();
+        TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
+
+        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, -1500, null);
+        assertNotNull(ttml);
+        assertTrue(ttml.contains("begin=\"00:00.000\""));
+    }
+
+    @Test
+    public void sponsorBlockSegmentsRemapTimestamps() {
+        Lyrics lyrics = singleLineLyrics();
+        TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
+        List<SkipSegments.Seg> segs = List.of(new SkipSegments.Seg(0, 2000, "sponsor", 0));
+
+        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, 0, segs);
+        assertNotNull(ttml);
+        assertTrue(ttml.contains("begin=\"00:03.000\""));
+        assertTrue(ttml.contains("end=\"00:03.500\""));
+    }
+
+    @Test
+    public void offsetAndSponsorBlockCombined() {
+        Lyrics lyrics = singleLineLyrics();
+        TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
+        List<SkipSegments.Seg> segs = List.of(new SkipSegments.Seg(0, 2000, "sponsor", 0));
+
+        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, 940, segs);
+        assertNotNull(ttml);
+        assertTrue(ttml.contains("begin=\"00:03.940\""));
+        assertTrue(ttml.contains("end=\"00:04.440\""));
+    }
+
+    @Test
+    public void nullSegmentsGracefulDegradation() {
+        Lyrics lyrics = singleLineLyrics();
+        TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
+
+        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, 940, null);
+        assertNotNull(ttml);
+        assertTrue(ttml.contains("begin=\"00:01.940\""));
+    }
+
+    @Test
+    public void offsetAloneDoesNotCreateItunesMetadata() {
+        Lyrics lyrics = singleLineLyrics();
+        TrackInfo track = new TrackInfo("Test Song", "Test Artist", "Test Album", 180);
+
+        String ttml = TTMLGenerator.generate(lyrics, track, null, null, null, null, null, 940, null);
+        assertNotNull(ttml);
+        assertFalse("Offset alone must not create iTunesMetadata",
+                ttml.contains("iTunesMetadata"));
     }
 }

@@ -167,9 +167,9 @@ public final class CldrTransformsStore {
 
         File archive = new File(directory, ARCHIVE);
         if (!archive.isFile()) {
-            RomanizationDict.download(URL, archive, ARCHIVE, (RomanizationDict.Listener) CldrTransformsStore.CHANNEL);
+            RomanizationDict.download(URL, archive, ARCHIVE, CldrTransformsStore.CHANNEL);
         }
-        extract(archive, (RomanizationDict.Listener) CldrTransformsStore.CHANNEL);
+        extract(archive, CldrTransformsStore.CHANNEL);
         Utils.deleteQuietly(archive);
 
         CldrTransformsStore.CHANNEL.onReady(entries());

@@ -37,8 +37,6 @@ public class LocalRomanizerTest {
         }
     }
 
-    // ── readingTokens ──
-
     @Test
     public void readingTokensMultipleTokens() {
         assertTokens(new int[][]{{0, 1}, {2, 3}, {4, 5}}, LocalRomanizer.readingTokens("a b c"));
@@ -61,8 +59,6 @@ public class LocalRomanizerTest {
         assertEquals(0, LocalRomanizer.readingTokens("").length);
         assertEquals(0, LocalRomanizer.readingTokens("   ").length);
     }
-
-    // ── spreadReading ──
 
     @Test
     public void spreadReadingOneSyllablePerCharacter() {
@@ -94,8 +90,6 @@ public class LocalRomanizerTest {
         assertNull(LocalRomanizer.spreadReading(new ArrayList<>(), "a b"));
     }
 
-    // ── allocateReading ──
-
     @Test
     public void allocateReadingSpreadsWithGuides() {
         // The trailing space after "a" in the source is preserved by joinTokens.
@@ -122,7 +116,116 @@ public class LocalRomanizerTest {
         assertArrayEquals(new String[0], LocalRomanizer.allocateReading("a", 0, null));
     }
 
-    // ── romanize ──
+    @Test
+    public void splitPinyinSeparatesPackedSyllables() {
+        assertEquals(List.of("nǐ", "hǎo"), LocalRomanizer.splitPinyin("nǐhǎo"));
+        assertEquals(List.of("nǐ", "hǎo", "shì", "jiè"),
+                LocalRomanizer.splitPinyin("nǐhǎoshìjiè"));
+        assertEquals(List.of("zhong", "guo"), LocalRomanizer.splitPinyin("zhongguo"));
+    }
+
+    @Test
+    public void splitPinyinKeepsAdjacentVowelsAsSeparateSyllables() {
+        // A greedy run of vowels would make "woain" + "i"; the known finals keep "wo ai ni".
+        assertEquals(List.of("wo", "ai", "ni"), LocalRomanizer.splitPinyin("woaini"));
+        assertEquals(List.of("wǒ", "ài", "nǐ"), LocalRomanizer.splitPinyin("wǒàinǐ"));
+    }
+
+    @Test
+    public void splitPinyinKeepsOneSyllableWhole() {
+        assertEquals(List.of("nǐ"), LocalRomanizer.splitPinyin("nǐ"));
+        assertEquals(List.of("xian"), LocalRomanizer.splitPinyin("xian"));
+        assertEquals(List.of("er"), LocalRomanizer.splitPinyin("er"));
+    }
+
+    @Test
+    public void splitPinyinHandlesNumericTones() {
+        assertEquals(List.of("ni3", "hao3"), LocalRomanizer.splitPinyin("ni3hao3"));
+    }
+
+    @Test
+    public void splitPinyinRejectsNonPinyin() {
+        // Korean and Japanese romanization do not follow pinyin syllable shape.
+        assertEquals(List.of(), LocalRomanizer.splitPinyin("annyeon"));
+        assertEquals(List.of(), LocalRomanizer.splitPinyin("kyou"));
+        assertEquals(List.of(), LocalRomanizer.splitPinyin("tsunami"));
+        assertEquals(List.of(), LocalRomanizer.splitPinyin("hello"));
+        assertEquals(List.of(), LocalRomanizer.splitPinyin(""));
+        assertEquals(List.of(), LocalRomanizer.splitPinyin(null));
+    }
+
+    @Test
+    public void expandPinyinReadingSpacesSyllables() {
+        assertEquals("nǐ hǎo", LocalRomanizer.expandPinyinReading("nǐhǎo"));
+        assertEquals("nǐ hǎo shì jiè", LocalRomanizer.expandPinyinReading("nǐhǎoshìjiè"));
+    }
+
+    @Test
+    public void expandPinyinReadingLeavesFittingAndNonPinyin() {
+        assertEquals("nǐ hǎo", LocalRomanizer.expandPinyinReading("nǐ hǎo"));
+        assertEquals("annyeon", LocalRomanizer.expandPinyinReading("annyeon"));
+        assertEquals("nǐ hǎo annyeon", LocalRomanizer.expandPinyinReading("nǐhǎo annyeon"));
+        assertEquals("", LocalRomanizer.expandPinyinReading(""));
+        assertNull(LocalRomanizer.expandPinyinReading(null));
+    }
+
+    @Test
+    public void readingForWordsSplitsPackedCjkReading() {
+        List<Word> words = List.of(new Word(0, 1000, "你"), new Word(1000, 2000, "好"));
+        assertEquals("nǐ hǎo", LocalRomanizer.readingForWords(words, "nǐhǎo"));
+    }
+
+    @Test
+    public void readingForWordsKeepsReadingThatAlreadyFits() {
+        List<Word> words = List.of(new Word(0, 1000, "你"), new Word(1000, 2000, "好"));
+        assertEquals("nǐ hǎo", LocalRomanizer.readingForWords(words, "nǐ hǎo"));
+        List<Word> oneWord = List.of(new Word(0, 2000, "你好"));
+        assertEquals("nǐhǎo", LocalRomanizer.readingForWords(oneWord, "nǐhǎo"));
+    }
+
+    @Test
+    public void readingForWordsFallsBackWhenSplitDoesNotFit() {
+        List<Word> words = List.of(new Word(0, 1000, "你"), new Word(1000, 2000, "好"),
+                new Word(2000, 3000, "嗎"));
+        assertEquals("nǐhǎo", LocalRomanizer.readingForWords(words, "nǐhǎo"));
+        // Non-pinyin stays whole, so the caller can fall back.
+        List<Word> hangul = List.of(new Word(0, 1000, "안"), new Word(1000, 2000, "녕"));
+        assertEquals("annyeon", LocalRomanizer.readingForWords(hangul, "annyeon"));
+    }
+
+    @Test
+    public void spreadReadingAfterPinyinExpansionFitsPerCharacter() {
+        List<Word> words = List.of(new Word(0, 1000, "你"), new Word(1000, 2000, "好"));
+        String effective = LocalRomanizer.readingForWords(words, "nǐhǎo");
+        assertTokens(new int[][]{{0, 1}, {1, 2}}, LocalRomanizer.spreadReading(words, effective));
+    }
+
+    @Test
+    public void allocateReadingSplitsPackedCjkWhenOnePerSlot() {
+        String[] out = LocalRomanizer.allocateReading("nǐhǎo", 2, List.of("nǐ", "hǎo"), true);
+        assertArrayEquals(new String[]{"nǐ ", "hǎo"}, out);
+    }
+
+    @Test
+    public void allocateReadingDoesNotSplitWhenCountDoesNotFit() {
+        // Three slots, two syllables: keep the packed token rather than guess a boundary.
+        String[] out = LocalRomanizer.allocateReading("nǐhǎo", 3, null, true);
+        assertArrayEquals(new String[]{"nǐhǎo", "", ""}, out);
+    }
+
+    @Test
+    public void allocateReadingSplitsPackedCjkWithGuidesWhenSlotsOutnumberSyllables() {
+        // Three slots, two syllables: the guides place the split, so the reading must
+        // start at slot 0 instead of landing later and leaving its guide to fill slot 0.
+        String[] out = LocalRomanizer.allocateReading("anjing", 3, List.of("an", "jing", ""), true);
+        assertArrayEquals(new String[]{"an ", "jing", ""}, out);
+    }
+
+    @Test
+    public void allocateReadingWithoutFlagKeepsPackedToken() {
+        String[] out = LocalRomanizer.allocateReading("nǐhǎo", 2, null, false);
+        assertArrayEquals(new String[]{"nǐhǎo", ""}, out);
+    }
 
     @Test
     public void romanizeKoreanChanges() {
@@ -158,8 +261,6 @@ public class LocalRomanizerTest {
         assertNull(LocalRomanizer.romanize(null));
     }
 
-    // ── romanizeRime ──
-
     @Test
     public void romanizeRimeHanUnchangedReturnsNull() {
         // Rime word table not ready: Han passes through unchanged.
@@ -175,8 +276,6 @@ public class LocalRomanizerTest {
         assertEquals("Built-in Romanization", result.dictionary);
     }
 
-    // ── syllableReading ──
-
     @Test
     public void syllableReadingKorean() {
         assertEquals("ga", LocalRomanizer.syllableReading("가", "가나다"));
@@ -189,8 +288,6 @@ public class LocalRomanizerTest {
         assertNull(LocalRomanizer.syllableReading("", null));
         assertNull(LocalRomanizer.syllableReading("A", null));
     }
-
-    // ── alignWords ──
 
     @Test
     public void alignWordsMismatchedSizesReturnsNull() {

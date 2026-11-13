@@ -131,7 +131,7 @@ public final class PinyinDictStore {
         File directory = RomanizationDict.directory();
         if (directory == null) throw new IOException("no cache directory");
 
-        WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, PinyinDictStore::addWords, (RomanizationDict.Listener) PinyinDictStore.CHANNEL);
+        WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, PinyinDictStore::addWords, PinyinDictStore.CHANNEL);
         PinyinDictStore.CHANNEL.onReady(entries());
     }
 

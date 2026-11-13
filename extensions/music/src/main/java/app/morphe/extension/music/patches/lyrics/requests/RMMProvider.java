@@ -35,7 +35,7 @@ public final class RMMProvider implements LyricsProvider {
 
     private static final int HIGH_MATCH_SCORE = 10;
 
-    private static String lrcFormat(List<LyricsLine> lines) {
+    static String lrcFormat(List<LyricsLine> lines) {
         StringBuilder sb = new StringBuilder();
         for (LyricsLine line : lines) {
             sb.append(LRCParser.formatLine(line)).append('\n');
@@ -135,7 +135,7 @@ public final class RMMProvider implements LyricsProvider {
 
     /** SpicyLyrics hands the url over without a scheme, which nothing can open. */
     @Nullable
-    private static String usableUrl(@Nullable String url) {
+    static String usableUrl(@Nullable String url) {
         if (url == null) {
             return null;
         }

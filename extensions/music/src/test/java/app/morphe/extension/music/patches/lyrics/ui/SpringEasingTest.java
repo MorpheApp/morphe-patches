@@ -102,16 +102,16 @@ public class SpringEasingTest {
     @Test
     public void testSkipNewlines() {
         String singleLf = "hello\nworld";
-        Assert.assertEquals(6, LyricsSpanBuilder.skipNewlines(singleLf, 5));
-        Assert.assertEquals(0, LyricsSpanBuilder.skipNewlines(singleLf, 0));
+        Assert.assertEquals(6, LyricsTextUtils.skipNewlines(singleLf, 5));
+        Assert.assertEquals(0, LyricsTextUtils.skipNewlines(singleLf, 0));
 
         String multiLf = "line1\n\nline2";
-        Assert.assertEquals(7, LyricsSpanBuilder.skipNewlines(multiLf, 5));
+        Assert.assertEquals(7, LyricsTextUtils.skipNewlines(multiLf, 5));
 
         String crLf = "line1\r\nline2";
-        Assert.assertEquals(7, LyricsSpanBuilder.skipNewlines(crLf, 5));
+        Assert.assertEquals(7, LyricsTextUtils.skipNewlines(crLf, 5));
 
         String trailingLf = "line1\n";
-        Assert.assertEquals(6, LyricsSpanBuilder.skipNewlines(trailingLf, 5));
+        Assert.assertEquals(6, LyricsTextUtils.skipNewlines(trailingLf, 5));
     }
 }

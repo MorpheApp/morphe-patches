@@ -1,7 +1,7 @@
 package app.morphe.extension.music.patches.lyrics.parsers;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -26,12 +26,11 @@ public class LRCParserSyncedDetectionTest {
      * Ordinary LRC with line timestamps but no word-level (karaoke) timestamps.
      * This is the common case for MP3 files with ID3 USLT frames.
      */
-    @Test public void lineTimestampsWithoutWordTimestampsAreSynced() {
-        String lrc = """
-                [00:12.34]Hello world
-                [00:15.67]This is a line
-                [00:19.01]With line timestamps only
-                """;
+    @Test
+    public void lineTimestampsWithoutWordTimestampsAreSynced() {
+        String lrc = "[00:12.34]Hello world\n"
+                + "[00:15.67]This is a line\n"
+                + "[00:19.01]With line timestamps only\n";
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lrc);
 
@@ -55,11 +54,10 @@ public class LRCParserSyncedDetectionTest {
      * Enhanced LRC with word-level (karaoke) timestamps inside angle brackets.
      * These should also be detected as synced.
      */
-    @Test public void wordLevelTimestampsAreSynced() {
-        String lrc = """
-                [00:12.34]<00:12.34>Hello<00:12.80> world<00:13.50>
-                [00:15.67]Second line with words
-                """;
+    @Test
+    public void wordLevelTimestampsAreSynced() {
+        String lrc = "[00:12.34]<00:12.34>Hello<00:12.80> world<00:13.50>\n"
+                + "[00:15.67]Second line with words\n";
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lrc);
 
@@ -75,7 +73,8 @@ public class LRCParserSyncedDetectionTest {
     /**
      * Empty input should produce an empty result, meaning not synced.
      */
-    @Test public void emptyLyricsAreNotSynced() {
+    @Test
+    public void emptyLyricsAreNotSynced() {
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines("");
         assertTrue("Empty input should produce empty lines", result.lines.isEmpty());
 
@@ -86,7 +85,8 @@ public class LRCParserSyncedDetectionTest {
     /**
      * Null input should produce an empty result, meaning not synced.
      */
-    @Test public void nullLyricsAreNotSynced() {
+    @Test
+    public void nullLyricsAreNotSynced() {
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(null);
         assertTrue("Null input should produce empty lines", result.lines.isEmpty());
 
@@ -98,7 +98,8 @@ public class LRCParserSyncedDetectionTest {
      * Plain text without any timestamps should produce an empty synced result.
      * The fallback to plain lyrics is handled by LocalLyricsFetcher, not the parser.
      */
-    @Test public void unsynchronizedPlainTextHasNoSyncedLines() {
+    @Test
+    public void unsynchronizedPlainTextHasNoSyncedLines() {
         String plain = "Hello world\nThis is plain text\nNo timestamps here\n";
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(plain);
@@ -113,7 +114,8 @@ public class LRCParserSyncedDetectionTest {
     /**
      * LRC metadata tags (title, artist, etc.) without any timestamped content lines.
      */
-    @Test public void metadataOnlyWithoutTimestampsIsNotSynced() {
+    @Test
+    public void metadataOnlyWithoutTimestampsIsNotSynced() {
         String lrc = "[ti:Song Title]\n[ar:Artist Name]\n[al:Album]\n[by:Uploader]\n";
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lrc);
@@ -132,14 +134,11 @@ public class LRCParserSyncedDetectionTest {
     /**
      * LRC with a mix of metadata and timestamped lines.
      */
-    @Test public void metadataPlusTimestampedLinesIsSynced() {
-        String lrc = """
-                [ti:Song Title]
-                [ar:Artist]
-                [by:Uploader]
-                [00:05.00]First lyric line
-                [00:08.50]Second lyric line
-                """;
+    @Test
+    public void metadataPlusTimestampedLinesIsSynced() {
+        String lrc = "[ti:Song Title]\n[ar:Artist]\n[by:Uploader]\n"
+                + "[00:05.00]First lyric line\n"
+                + "[00:08.50]Second lyric line\n";
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lrc);
 
@@ -156,11 +155,10 @@ public class LRCParserSyncedDetectionTest {
      * Verifies that the old hasWords()-based check would have failed for ordinary LRC.
      * This documents why the fix was necessary.
      */
-    @Test public void oldHasWordsCheckFailsForOrdinaryLrc() {
-        String lrc = """
-                [00:12.34]Hello world
-                [00:15.67]This is a line
-                """;
+    @Test
+    public void oldHasWordsCheckFailsForOrdinaryLrc() {
+        String lrc = "[00:12.34]Hello world\n"
+                + "[00:15.67]This is a line\n";
 
         LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lrc);
 

@@ -374,7 +374,6 @@ public final class LrcRedProvider implements LyricsProvider {
         // is how a native title pairs with a romanized artist, or the other way round.
         boolean titleExact = false;
 
-        // Title.
         if (!targetFullTitle.isEmpty() && targetFullTitle.equals(itemFullTitle)) {
             score += 50;
             titleExact = true;
@@ -389,7 +388,6 @@ public final class LrcRedProvider implements LyricsProvider {
             }
         }
 
-        // Artist.
         if (!targetArtist.isEmpty() && !itemArtist.isEmpty()) {
             if (targetArtist.equals(itemArtist)) {
                 score += 30;
@@ -418,7 +416,6 @@ public final class LrcRedProvider implements LyricsProvider {
             }
         }
 
-        // Album.
         if (!targetAlbum.isEmpty() && !itemAlbum.isEmpty()) {
             if (targetAlbum.equals(itemAlbum)) {
                 score += 35;
@@ -435,7 +432,6 @@ public final class LrcRedProvider implements LyricsProvider {
             }
         }
 
-        // Duration.
         if (targetDuration > 0 && itemDuration > 0) {
             int diff = Math.abs(itemDuration - targetDuration);
             if (diff == 0) {
@@ -463,7 +459,7 @@ public final class LrcRedProvider implements LyricsProvider {
         return score;
     }
 
-    private static String normalize(String str) {
+    static String normalize(String str) {
         if (str == null) {
             return "";
         }
@@ -473,7 +469,7 @@ public final class LrcRedProvider implements LyricsProvider {
                 .trim();
     }
 
-    private static String cleanBaseTitle(String str) {
+    static String cleanBaseTitle(String str) {
         if (str == null) {
             return "";
         }
@@ -483,7 +479,7 @@ public final class LrcRedProvider implements LyricsProvider {
         return normalize(s);
     }
 
-    private static List<String> extractArtists(String str) {
+    static List<String> extractArtists(String str) {
         if (str == null || str.isEmpty()) {
             return Collections.emptyList();
         }

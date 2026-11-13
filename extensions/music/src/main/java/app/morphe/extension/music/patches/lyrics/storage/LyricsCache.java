@@ -823,7 +823,7 @@ public final class LyricsCache {
                     if (wt != null && !wt.isEmpty()) {
                         totalTokens++;
                         if (wt.length() == 1 && Character.isLetter(wt.charAt(0))
-                                && !ScriptDetector.containsCjk(wt)) {
+                                && !ScriptDetector.containsUnspaced(wt)) {
                             singleLetterTokens++;
                         }
                     }
