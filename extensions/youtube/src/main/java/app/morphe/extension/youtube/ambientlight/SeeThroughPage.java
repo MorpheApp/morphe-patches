@@ -56,6 +56,11 @@ final class SeeThroughPage {
      */
     private static final int PAGE_CONTENT_ID = ResourceUtils.getIdentifier(ResourceType.ID, "video_metadata_layout");
     /**
+     * Holds what is below the player in the first column of a tablet, where the content of the
+     * page is the second column only. YouTube draws black under it in the same way.
+     */
+    private static final int PAGE_INFO_PANEL_ID = ResourceUtils.getIdentifier(ResourceType.ID, "watch_info_panel");
+    /**
      * Holds the controls of the miniplayer. While the player is on its way to the miniplayer or
      * back, YouTube can stretch it over the page as a backdrop of one color, under the player
      * and the content of the page, starting a few frames before the player moves. It hides the
@@ -78,6 +83,9 @@ final class SeeThroughPage {
     private static WeakReference<View> pageContentRef = new WeakReference<>(null);
     @Nullable
     private static Drawable pageContentBackground;
+    private static WeakReference<View> pageInfoPanelRef = new WeakReference<>(null);
+    @Nullable
+    private static Drawable pageInfoPanelBackground;
     /** If the content of the page is fading, which is when YouTube draws black under it. */
     private static boolean pageContentFading;
     private static boolean pageContentVisible = true;
@@ -105,6 +113,7 @@ final class SeeThroughPage {
         cleared.keySet().removeIf(view -> !view.isAttachedToWindow());
         clearBackgrounds(page, player, page.getWidth() / 3, pageColor, 0);
         lightPageContent(page);
+        lightPageInfoPanel(page);
         lightPageBackdrop(page, player);
 
         if (STICKY_HEADER_CONTAINER_ID != 0 && page.findViewById(STICKY_HEADER_CONTAINER_ID) instanceof ViewGroup container
@@ -139,6 +148,23 @@ final class SeeThroughPage {
         if (content != null) content.setBackground(pageContentBackground);
         pageContentRef = new WeakReference<>(null);
         pageContentBackground = null;
+    }
+
+    private static void lightPageInfoPanel(View page) {
+        View panel = PAGE_INFO_PANEL_ID == 0 ? null : page.findViewById(PAGE_INFO_PANEL_ID);
+        if (panel == null || panel.getBackground() instanceof LightDrawable) return;
+
+        restorePageInfoPanel();
+        pageInfoPanelRef = new WeakReference<>(panel);
+        pageInfoPanelBackground = panel.getBackground();
+        panel.setBackground(new LightDrawable(panel));
+    }
+
+    private static void restorePageInfoPanel() {
+        View panel = pageInfoPanelRef.get();
+        if (panel != null) panel.setBackground(pageInfoPanelBackground);
+        pageInfoPanelRef = new WeakReference<>(null);
+        pageInfoPanelBackground = null;
     }
 
     private static void lightPageBackdrop(View page, View player) {
@@ -263,6 +289,8 @@ final class SeeThroughPage {
         if (host != null) host.invalidate();
         View content = pageContentRef.get();
         if (content != null) content.invalidate();
+        View panel = pageInfoPanelRef.get();
+        if (panel != null) panel.invalidate();
         invalidateBackdropLight();
     }
 
@@ -282,6 +310,7 @@ final class SeeThroughPage {
     static void invalidateMovedLight() {
         invalidateIfMoved(hostRef.get());
         invalidateIfMoved(pageContentRef.get());
+        invalidateIfMoved(pageInfoPanelRef.get());
     }
 
     private static void invalidateIfMoved(@Nullable View view) {
@@ -388,6 +417,7 @@ final class SeeThroughPage {
         pageContentFading = false;
         pageContentVisible = true;
         restorePageContent();
+        restorePageInfoPanel();
         restorePageBackdrop();
         setListClip(null, 0);
         stickyHeaderContainerRef = new WeakReference<>(null);
@@ -442,9 +472,9 @@ final class SeeThroughPage {
     /**
      * Shows the light in a view. While the surfaces show the light, it removes what was drawn
      * below the view, such as the home feed below the page. While the player moves, it draws
-     * the light itself. The page has it as its background, and so has the content of the page,
-     * as YouTube draws black under the content while the page changes. The backdrop of the
-     * page has it over what it draws.
+     * the light itself. The page has it as its background, and so have the content of the page
+     * and the panel below the player of a tablet, as YouTube draws black under them while the
+     * page changes. The backdrop of the page has it over what it draws.
      */
     private static final class LightDrawable extends Drawable {
         private final View view;
@@ -471,9 +501,10 @@ final class SeeThroughPage {
             View backdrop = backdropLight == null ? null : backdropLight.view;
             // The content fades by itself, with its light. Where it shows all of its own light,
             // the page under it does not draw.
-            final float alpha = view == content ? 1f : pageLightAlpha;
+            final boolean fadesByItself = view == content || view == pageInfoPanelRef.get();
+            final float alpha = fadesByItself ? 1f : pageLightAlpha;
             Rect covered;
-            if (view == content) {
+            if (fadesByItself) {
                 covered = null;
             } else if (this == backdropLight) {
                 if (!fillsPage(view)) return;
