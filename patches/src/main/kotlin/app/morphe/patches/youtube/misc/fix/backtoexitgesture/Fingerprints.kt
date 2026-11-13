@@ -13,7 +13,6 @@ package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -35,6 +34,9 @@ internal object ScrollPositionFingerprint : Fingerprint(
 /**
  * Back pressed in the feed, when there is no pane left to go back to.
  * Scrolls the feed to the top, and returns whether back was handled.
+ *
+ * The first match is the call that scrolls. Its interface has several implementations
+ * that do the same, but this method is the only caller.
  */
 internal object RecyclerViewTopScrollingCallingMethodFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -50,28 +52,6 @@ internal object RecyclerViewTopScrollingCallingMethodFingerprint : Fingerprint(
         literal(45414493L)
     )
 )
-
-// FIXME? There exists at least two 100% identical methods in the same class, but each method
-//        is called by different code even though the called methods are 100% the same.
-//        Fingerprint also matches a nearly identical third or fourth method in the same class
-//        but has slightly different behavior.
-internal fun recyclerViewTopScrollingFingerprint() = object : Fingerprint(
-    name = RecyclerViewTopScrollingCallingMethodFingerprint.instructionMatches.first().getMethodCalled().name,
-    interfaces = listOf(
-        RecyclerViewTopScrollingCallingMethodFingerprint.instructionMatches.first().getMethodCalled().definingClass
-    ),
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        methodCall(smali = "Ljava/util/Iterator;->next()Ljava/lang/Object;"),
-        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately()),
-        checkCast("Landroid/support/v7/widget/RecyclerView;", MatchAfterImmediately()),
-        literal(0, location = MatchAfterImmediately()),
-        methodCall(definingClass = "Landroid/support/v7/widget/RecyclerView;", location = MatchAfterImmediately()),
-        opcode(Opcode.GOTO, MatchAfterImmediately())
-    )
-) {}
 
 /**
  * 21.44 and lower.

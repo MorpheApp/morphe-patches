@@ -27,7 +27,6 @@ import app.morphe.patches.youtube.misc.playservice.is_21_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
@@ -51,11 +50,12 @@ internal val fixBackToExitGesturePatch = patch(
             SwitchPreference("morphe_back_button_always_exits_feed", summary = true)
         )
 
-        // FIXME? Originally this only changed the first match, but this now matches
-        //        up to 3 identical methods in different classes (21.45+ has 3 tab controllers).
-        recyclerViewTopScrollingFingerprint().matchAll(1..3).forEach {
-            it.method.addInstructionsAtControlFlowLabel(
-                it.instructionMatches.last().index + 1,
+        // Hooked after the call that scrolls the feed to the top, not in the called method,
+        // because the call goes through an interface with several identical implementations.
+        // Must be done before the code added at the start of the same method below.
+        RecyclerViewTopScrollingCallingMethodFingerprint.let {
+            it.method.addInstruction(
+                it.instructionMatches.first().index + 1,
                 "invoke-static { }, $EXTENSION_CLASS->onTopView()V"
             )
         }
