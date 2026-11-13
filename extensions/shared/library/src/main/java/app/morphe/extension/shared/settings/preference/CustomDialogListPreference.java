@@ -207,13 +207,13 @@ public class CustomDialogListPreference extends ListPreference implements Settin
 
             CharSequence itemText = getItem(position);
             holder.itemText.setText(itemText);
-            holder.itemText.setTextColor(ThemeUtils.getAppForegroundColor());
+            holder.itemText.setTextColor(ThemeUtils.getDialogTextColor());
 
             // Show or hide checkmark and placeholder.
             String currentValue = entryValues[position].toString();
             boolean isSelected = currentValue.equals(selectedValue);
             holder.checkIcon.setVisibility(isSelected ? View.VISIBLE : View.GONE);
-            holder.checkIcon.setColorFilter(ThemeUtils.getAppForegroundColor());
+            holder.checkIcon.setColorFilter(ThemeUtils.getDialogTextColor());
             holder.placeholder.setVisibility(isSelected ? View.GONE : View.VISIBLE);
 
             return view;

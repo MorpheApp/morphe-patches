@@ -12,6 +12,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
@@ -54,7 +55,90 @@ internal object GoogleSignInFunctionFingerprint : Fingerprint(
     )
 )
 
-// 2026.25.0+
+internal const val USER_SETTINGS_SECTION_CLASS =
+    "Lcom/reddit/settings/usersettings/UserSettingsSection;"
+
+/**
+ * Constructor of the Compose settings row "Privacy policy", which becomes the Morphe settings row.
+ * The class is shared with other rows of the About section, such as "User agreement".
+ *
+ * 2026.30.0+
+ */
+internal object PrivacyPolicySettingRowConstructorFingerprint : Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    filters = listOf(
+        string("key_pref_privacy_policy"),
+        // Field of the row key.
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Composable content of the "Privacy policy" settings row.
+ *
+ * 2026.30.0+
+ */
+internal object PrivacyPolicySettingRowContentFingerprint : Fingerprint(
+    classFingerprint = PrivacyPolicySettingRowConstructorFingerprint,
+    returnType = "V",
+    parameters = listOf("L", "L", "I"),
+    filters = listOf(
+        resourceLiteral(ResourceType.STRING, "label_privacy_policy"),
+        // Settings row composable.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC_RANGE,
+            returnType = "V",
+            parameters = listOf(
+                "Ljava/lang/String;", // Title.
+                "Lkotlin/jvm/functions/Function0;", // On click.
+                "L", // Modifier.
+                "Z",
+                "Ljava/lang/String;", // Subtitle.
+                "Lkotlin/jvm/functions/Function2;", // Leading icon.
+                "Lkotlin/jvm/functions/Function2;", // Trailing content.
+                "L",
+                "Z",
+                "L", // Composer.
+                "I",
+                "I"
+            )
+        )
+    )
+)
+
+/**
+ * Icon data of the Reddit icon set, a vector drawable resource and its size.
+ * The constructor is (packed size, drawable resource id, auto mirrored).
+ *
+ * 2026.30.0+
+ */
+internal object IconDataToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string("Icon(resourceId=")
+    )
+)
+
+/**
+ * Icon composable of the Reddit icon set.
+ * (icon, content description, modifier, tint, ?, composer, changed, defaults)
+ *
+ * 2026.30.0+
+ */
+internal class IconComposableFingerprint(iconDataType: String) : Fingerprint(
+    isStatic = true,
+    returnType = "V",
+    parameters = listOf(iconDataType, "Ljava/lang/String;", "L", "J", "Z", "L", "I", "I")
+)
+
+// 2026.25.0 - 2026.29.0, and the fallback if the Compose settings row is not found.
 internal object StartUrlActivityFingerprint : Fingerprint(
     isStatic = true,
     parameters = listOf(
