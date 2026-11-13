@@ -8,7 +8,6 @@ import app.morphe.patcher.xml.XmlElement
  *  @param name The name of the array resource.
  *  @param items The items of the array resource.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class ArrayResource(
     name: String,
     val items: List<String>,

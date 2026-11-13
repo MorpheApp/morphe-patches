@@ -17,6 +17,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -346,7 +347,7 @@ public class SponsorBlockUtils {
                     spannableBuilder.append(toFromString);
                 }
 
-                spannableBuilder.setSpan(new StyleSpan(android.graphics.Typeface.BOLD),
+                spannableBuilder.setSpan(new StyleSpan(Typeface.BOLD),
                         0, spannableBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                 titleList.add(spannableBuilder);

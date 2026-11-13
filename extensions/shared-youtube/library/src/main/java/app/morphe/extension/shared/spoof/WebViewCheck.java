@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.provider.Settings;
 import android.util.Pair;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
@@ -115,7 +116,7 @@ public final class WebViewCheck {
             Logger.printInfo(() -> "WebView status: " + status + " package: " + packageName
                     + (webView == null ? "" : " version: " + webView.versionName));
 
-            String message = status == WebViewStatus.MISSING
+            String message = status == WebViewStatus.MISSING || webView == null
                     ? str("morphe_spoof_video_streams_webview_dialog_message_missing")
                     : str("morphe_spoof_video_streams_webview_dialog_message_outdated", webView.versionName);
 
@@ -159,6 +160,8 @@ public final class WebViewCheck {
                     .setPackage(PLAY_STORE_PACKAGE)
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             // Check first, because YouTube shows its own error toast when an activity is not found.
+            // Package visibility comes from the manifest of the app, not of the extension.
+            //noinspection QueryPermissionsNeeded
             if (playStore.resolveActivity(packageManager) != null) {
                 context.startActivity(playStore);
                 return;
@@ -174,7 +177,7 @@ public final class WebViewCheck {
             }
 
             Logger.printInfo(() -> "No Play Store, opening app info of: " + packageName);
-            Intent appInfo = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+            Intent appInfo = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                     Uri.fromParts("package", packageName, null))
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(appInfo);

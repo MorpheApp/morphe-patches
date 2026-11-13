@@ -22,6 +22,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
@@ -51,7 +52,7 @@ public final class LrcRedProvider implements LyricsProvider {
     private static final String ALBUM_PREFIX = "Album: ";
     private static final String ARTIST_PREFIX = "Artist: ";
     private static final int SYNC_CONNECT_TIMEOUT_MS = 10_000;
-    /** The model answers in 0.5s to 15s, past the shared five second read timeout. */
+    /** The model answers in 0.5s to 15s, past the shared five-second read timeout. */
     private static final int SYNC_READ_TIMEOUT_MS = 60_000;
     /** The service rate limits clients that fire requests back to back. */
     private static final long SYNC_MIN_INTERVAL_MS = 1_000;
@@ -208,7 +209,7 @@ public final class LrcRedProvider implements LyricsProvider {
         final List<String> names = new ArrayList<>();
         final Matcher matcher = SONGWRITER_TAG.matcher(ttml);
         while (matcher.find()) {
-            final String name = matcher.group(1).trim();
+            final String name = Objects.requireNonNull(matcher.group(1)).trim();
             if (!name.isEmpty()) {
                 names.add(name);
             }
@@ -439,9 +440,9 @@ public final class LrcRedProvider implements LyricsProvider {
             int diff = Math.abs(itemDuration - targetDuration);
             if (diff == 0) {
                 score += 25;
-            } else if (diff <= 1) {
+            } else if (diff == 1) {
                 score += 20;
-            } else if (diff <= 2) {
+            } else if (diff == 2) {
                 score += 15;
             } else if (diff <= 5) {
                 score += 5;
@@ -611,9 +612,12 @@ public final class LrcRedProvider implements LyricsProvider {
         }
 
         final String cleanTitle = cleanBaseTitle(track.title());
-        if (!cleanTitle.isEmpty() && !cleanTitle.equalsIgnoreCase(normalize(track.title()))) {
-            hits = matchApi(new TrackInfo(cleanTitle, track.artist(),
-                    track.album(), track.durationSeconds()));
+        final boolean hasCleanTitle = !cleanTitle.isEmpty()
+                && !cleanTitle.equalsIgnoreCase(normalize(track.title()));
+        final TrackInfo cleanTrack = new TrackInfo(cleanTitle, track.artist(),
+                track.album(), track.durationSeconds());
+        if (hasCleanTitle) {
+            hits = matchApi(cleanTrack);
             if (!hits.isEmpty()) {
                 return hits;
             }
@@ -633,10 +637,7 @@ public final class LrcRedProvider implements LyricsProvider {
             return hits;
         }
 
-        return cleanTitle.isEmpty() || cleanTitle.equalsIgnoreCase(normalize(track.title()))
-                ? Collections.emptyList()
-                : searchApi(new TrackInfo(cleanTitle, track.artist(),
-                track.album(), track.durationSeconds()));
+        return hasCleanTitle ? searchApi(cleanTrack) : Collections.emptyList();
     }
 
     private List<SearchHit> matchApi(TrackInfo track) throws UnsupportedEncodingException {
@@ -690,7 +691,7 @@ public final class LrcRedProvider implements LyricsProvider {
         return sorted;
     }
 
-    /** One the search turned up, normalised from either wording before scoring. */
+    /** One the search turned up, normalized from either wording before scoring. */
     private record SearchHit(String isrc, String title, String artist, String album,
                              double durationSeconds) {
     }

@@ -18,7 +18,6 @@ import java.util.logging.Logger
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/SpoofSignaturePatch;"
 
-@Suppress("unused")
 val spoofSignaturePatch = patch(
     name = "Spoof signature",
     description = "Spoofs the signature of the app to fix notification issues."

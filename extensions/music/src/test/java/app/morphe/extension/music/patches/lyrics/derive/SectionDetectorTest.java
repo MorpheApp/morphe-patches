@@ -14,12 +14,14 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.LyricsFixtures;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 
+@SuppressWarnings("DataFlowIssue")
 public class SectionDetectorTest {
 
     // ── needsDetection ──
@@ -80,7 +82,7 @@ public class SectionDetectorTest {
                 new LyricsLine(0, "first line"),
                 new LyricsLine(1000, "second line"),
                 new LyricsLine(2000, "third line"));
-        List<String> sections = java.util.Arrays.asList("Verse", null, "Chorus");
+        List<String> sections = Arrays.asList("Verse", null, "Chorus");
         Lyrics result = SectionDetector.applySections(lyrics, sections);
         assertEquals("Verse", result.lines().get(0).songPart());
         assertNull(result.lines().get(1).songPart());

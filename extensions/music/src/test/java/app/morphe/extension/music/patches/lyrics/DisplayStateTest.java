@@ -51,16 +51,16 @@ public class DisplayStateTest {
         return LyricsFixtures.synced(LyricsFixtures.line(0, "hello world"));
     }
 
-    private static ProviderFetch highMatch(Lyrics lyrics, int matchScore) {
-        return new ProviderFetch(lyrics, matchScore, true, false, 0);
+    private static ProviderFetch highMatch(Lyrics lyrics) {
+        return new ProviderFetch(lyrics, 80, true, false, 0);
     }
 
-    private static ProviderFetch blindFetch(Lyrics lyrics, int matchScore) {
-        return new ProviderFetch(lyrics, matchScore, false, true, 0);
+    private static ProviderFetch blindFetch(Lyrics lyrics) {
+        return new ProviderFetch(lyrics, 70, false, true, 0);
     }
 
-    private static ProviderFetch neither(Lyrics lyrics, int matchScore) {
-        return new ProviderFetch(lyrics, matchScore, false, false, 0);
+    private static ProviderFetch neither(Lyrics lyrics) {
+        return new ProviderFetch(lyrics, 80, false, false, 0);
     }
 
     // ── accept: gating ──
@@ -77,7 +77,7 @@ public class DisplayStateTest {
     public void nonHighMatchNonBlindReturnsFalse() {
         DisplayState state = new DisplayState(false, false);
         List<ScoredCandidate> candidates = new ArrayList<>();
-        assertFalse(state.accept(neither(syncedLyrics(), 80), candidates, true));
+        assertFalse(state.accept(neither(syncedLyrics()), candidates, true));
         assertTrue(candidates.isEmpty());
     }
 
@@ -98,7 +98,7 @@ public class DisplayStateTest {
         List<ScoredCandidate> candidates = new ArrayList<>();
         Lyrics lyrics = syncedLyrics();
         // Non-wordSync, non-exhaustive, rank 1: returns true only if stage12 is true.
-        assertTrue(state.accept(highMatch(lyrics, 80), candidates, true));
+        assertTrue(state.accept(highMatch(lyrics), candidates, true));
         assertEquals(1, candidates.size());
         ScoredCandidate sc = candidates.get(0);
         // composite = 80*10 + 1 - 0 = 801, rank = 1
@@ -115,7 +115,7 @@ public class DisplayStateTest {
         DisplayState state = new DisplayState(false, false);
         List<ScoredCandidate> candidates = new ArrayList<>();
         Lyrics lyrics = syncedLyrics();
-        assertFalse(state.accept(highMatch(lyrics, 80), candidates, true));
+        assertFalse(state.accept(highMatch(lyrics), candidates, true));
         assertEquals(1, candidates.size());
         // composite = 80*10 + 1 - 0 = 801; both bestFallback and bestResult update by composite
         assertSame(lyrics, state.bestFallback);
@@ -130,7 +130,7 @@ public class DisplayStateTest {
         DisplayState state = new DisplayState(true, false);
         List<ScoredCandidate> candidates = new ArrayList<>();
         Lyrics lyrics = wordTimedLyrics();
-        assertFalse(state.accept(highMatch(lyrics, 80), candidates, true));
+        assertFalse(state.accept(highMatch(lyrics), candidates, true));
         assertSame(lyrics, state.bestResult);
     }
 
@@ -142,7 +142,7 @@ public class DisplayStateTest {
         List<ScoredCandidate> candidates = new ArrayList<>();
         Lyrics lyrics = syncedLyrics();
         // Blind fetch passes the gate (blind=true) but returns false before updating bestFallback.
-        assertFalse(state.accept(blindFetch(lyrics, 70), candidates, true));
+        assertFalse(state.accept(blindFetch(lyrics), candidates, true));
         assertEquals(1, candidates.size());
         assertNull(state.bestFallback);
         assertNull(state.bestResult);
@@ -155,7 +155,7 @@ public class DisplayStateTest {
         DisplayState state = new DisplayState(true, false);
         List<ScoredCandidate> candidates = new ArrayList<>();
         Lyrics lyrics = wordTimedLyrics();
-        assertTrue(state.accept(highMatch(lyrics, 80), candidates, true));
+        assertTrue(state.accept(highMatch(lyrics), candidates, true));
         assertSame(lyrics, state.bestResult);
         assertSame(lyrics, state.bestFallback);
         assertEquals(2, state.bestFallbackRank);
@@ -166,7 +166,7 @@ public class DisplayStateTest {
         DisplayState state = new DisplayState(true, true);
         List<ScoredCandidate> candidates = new ArrayList<>();
         Lyrics lyrics = wordTimedLyrics();
-        assertFalse(state.accept(highMatch(lyrics, 80), candidates, true));
+        assertFalse(state.accept(highMatch(lyrics), candidates, true));
         assertSame(lyrics, state.bestResult);
     }
 
@@ -175,7 +175,7 @@ public class DisplayStateTest {
         DisplayState state = new DisplayState(true, false);
         List<ScoredCandidate> candidates = new ArrayList<>();
         Lyrics lyrics = syncedLyrics();
-        assertFalse(state.accept(highMatch(lyrics, 80), candidates, true));
+        assertFalse(state.accept(highMatch(lyrics), candidates, true));
         assertNull(state.bestResult);
         assertSame(lyrics, state.bestFallback);
         assertEquals(1, state.bestFallbackRank);
@@ -188,7 +188,7 @@ public class DisplayStateTest {
         DisplayState state = new DisplayState(false, false);
         List<ScoredCandidate> candidates = new ArrayList<>();
         Lyrics lyrics = syncedLyrics();
-        assertTrue(state.accept(highMatch(lyrics, 80), candidates, true));
+        assertTrue(state.accept(highMatch(lyrics), candidates, true));
         assertSame(lyrics, state.bestResult);
         assertEquals(1, state.bestDisplayRank);
         assertSame(lyrics, state.bestFallback);
@@ -200,7 +200,7 @@ public class DisplayStateTest {
         DisplayState state = new DisplayState(false, true);
         List<ScoredCandidate> candidates = new ArrayList<>();
         Lyrics lyrics = syncedLyrics();
-        assertFalse(state.accept(highMatch(lyrics, 80), candidates, true));
+        assertFalse(state.accept(highMatch(lyrics), candidates, true));
         // bestResult is still set even though the return is false.
         assertSame(lyrics, state.bestResult);
     }
@@ -210,7 +210,7 @@ public class DisplayStateTest {
         DisplayState state = new DisplayState(false, false);
         List<ScoredCandidate> candidates = new ArrayList<>();
         Lyrics lyrics = LyricsFixtures.plain("hello world");
-        assertFalse(state.accept(highMatch(lyrics, 80), candidates, true));
+        assertFalse(state.accept(highMatch(lyrics), candidates, true));
         // rank 0 sets bestResult (0 > -2) but returns false because rank != 1.
         assertSame(lyrics, state.bestResult);
         assertEquals(0, state.bestDisplayRank);

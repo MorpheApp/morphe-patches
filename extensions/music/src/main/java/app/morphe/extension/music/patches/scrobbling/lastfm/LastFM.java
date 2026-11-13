@@ -30,6 +30,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
+@SuppressWarnings("unused")
 public class LastFM {
     private static final String BASE_URL = "https://ws.audioscrobbler.com/2.0/";
     private static final String USER_AGENT = "Morphe/" + Utils.getPatchesReleaseVersion()

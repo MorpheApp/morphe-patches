@@ -54,26 +54,10 @@ public final class LyricsSpanBuilder {
                              @Nullable String ruby, boolean averaged) {
 
         public WordTiming(int start, int end, long startMs, long endMs,
-                          @Nullable String romaji, boolean hasTrailingSpace,
-                          @Nullable String ruby) {
-            this(start, end, startMs, endMs, romaji, hasTrailingSpace, ruby, false);
-        }
-
-        public WordTiming(int start, int end, long startMs, long endMs,
                           @Nullable String romaji, boolean hasTrailingSpace, boolean averaged) {
             this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, averaged);
         }
 
-        /** A reading ending in a space stands for the space after its word. */
-        WordTiming(int start, int end, long startMs, long endMs, @Nullable String romaji) {
-            this(start, end, startMs, endMs, romaji,
-                    romaji != null && romaji.endsWith(" "), null, false);
-        }
-
-        public WordTiming(int start, int end, long startMs, long endMs,
-                          @Nullable String romaji, boolean hasTrailingSpace) {
-            this(start, end, startMs, endMs, romaji, hasTrailingSpace, null, false);
-        }
     }
 
     /**
@@ -87,6 +71,7 @@ public final class LyricsSpanBuilder {
                        @Nullable List<WordTiming> readingSpans, boolean smallRunHoldsWords,
                        boolean showSyllableRomanization, int originalStart) {
 
+        @SuppressWarnings("SameParameterValue")
         BuildResult(Spannable text, @Nullable ForegroundColorSpan unsungSpan,
                     int transStart, int transEnd, int romaStart, int romaEnd) {
             this(text, unsungSpan, transStart, transEnd, romaStart, romaEnd, null);
@@ -264,6 +249,7 @@ public final class LyricsSpanBuilder {
 
     /** Arabic script or combining marks, whose letters join up and break apart under letter spacing. */
     static boolean containsJoiningScript(@Nullable CharSequence text) {
+        //noinspection SizeReplaceableByIsEmpty
         if (text == null || text.length() == 0) {
             return false;
         }
@@ -361,6 +347,7 @@ public final class LyricsSpanBuilder {
      * @return Null when the line has no reading to split up this way.
      */
     @Nullable
+    @SuppressWarnings("DataFlowIssue")
     static List<WordTiming> buildSyllableRomanizedTimings(
             LyricsLine line, int index,
             @Nullable List<LyricsLine> romanizedLines,
@@ -477,6 +464,7 @@ public final class LyricsSpanBuilder {
                             if (isSecondaryLine(line)) {
                                 r = LyricsBracketSplitter.stripAllBrackets(r);
                             }
+                            //noinspection SizeReplaceableByIsEmpty
                             if (sb.length() > 0 && sb.charAt(sb.length() - 1) != ' ') {
                                 sb.append(' ');
                             }
@@ -769,6 +757,7 @@ public final class LyricsSpanBuilder {
         return !spellsSyllable(previous) && !spellsSyllable(current);
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean spellsSyllable(String piece) {
         return !piece.isEmpty() && (isCjkAt(piece, 0) || isCjkAt(piece, piece.length() - 1));
     }
@@ -1028,7 +1017,7 @@ public final class LyricsSpanBuilder {
         return -1;
     }
 
-    /** The line's own word timings, with any text they leave out lit along with its neighbours. */
+    /** The line's own word timings, with any text they leave out lit along with its neighbors. */
     private static List<WordTiming> computeWordTimingsFromWords(LyricsLine line) {
         final boolean hasRealTimings = line.hasWordTimings();
         if (!hasRealTimings && !hasAnyRuby(line)) {
@@ -1266,7 +1255,7 @@ public final class LyricsSpanBuilder {
         timings.add(new WordTiming(start, end, atMs, atMs + 1L, null, trailSpace, null, averaged));
     }
 
-    /** A CJK glyph spells a word on its own, so a neighbouring one is not part of a longer word. */
+    /** A CJK glyph spells a word on its own, so a neighboring one is not part of a longer word. */
     private static boolean isWordContinuation(char c) {
         return Character.isLetterOrDigit(c) && !isCjkCodePoint(c);
     }
@@ -1400,7 +1389,7 @@ public final class LyricsSpanBuilder {
             text.setSpan(new AlignmentSpan.Standard(
                             resolveAlignment(isRtlText(content), isRightAligned, centered)),
                     0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            // No bounds reported paints the whole line the lyric colour, and none of the reading's fade.
+            // No bounds reported paints the whole line the lyric color, and none of the reading's fade.
             List<WordTiming> spans = readsNothing ? timings : roma.spans();
             return new BuildResult(text, null, -1, -1, -1, -1, spans);
         }
@@ -1414,10 +1403,10 @@ public final class LyricsSpanBuilder {
             SpannableString dual = new SpannableString(mainAndSmall.text());
             final int smallStart = mainAndSmall.smallStart();
             final int smallEnd = mainAndSmall.smallEnd();
-            // The small run is the side that is not the main one, and the reading's when it landed there.
+            // The small run is the side that is not the main one, and the readings when it landed there.
             final boolean smallIsRoma = mainAndSmall.smallIsRoma();
             if (smallStart >= 0) {
-                // Without this the small run keeps the main size and colour, so the two lines
+                // Without this the small run keeps the main size and color, so the two lines
                 // are told apart only by where they sit.
                 applySpans(dual, Collections.emptyList(), 0, smallStart - 1,
                         smallIsRoma ? -1 : smallStart, smallIsRoma ? -1 : smallEnd,
@@ -1431,9 +1420,9 @@ public final class LyricsSpanBuilder {
             }
             attachUniformSpacing(dual, spacing);
             // A small run carrying the word timings is what is sung, and keeps the reading's
-            // colour, which is what tells it apart: the lyric's colour would leave the two lines
+            // color, which is what tells it apart: the lyric's color would leave the two lines
             // looking alike. A reading that never arrived leaves the words on the lyric itself,
-            // and a lyric in its own colour is what makes them light up.
+            // and a lyric in its own color is what makes them light up.
             List<WordTiming> dualSpans = mainAndSmall.wordSpans();
             return new BuildResult(dual, null,
                     smallIsRoma ? -1 : smallStart,
@@ -1613,7 +1602,7 @@ public final class LyricsSpanBuilder {
         return shifted;
     }
 
-    /** The line's own translation, null when it has none or it only repeats the original. */
+    /** The line's own translation, null when it has none, or it only repeats the original. */
     @Nullable
     public static String translationAt(LyricsLine line, int index,
                                        @Nullable List<String> translatedLines) {
@@ -1818,6 +1807,7 @@ public final class LyricsSpanBuilder {
      * <p>Only a lyric the user asked to be romanized reports per-word readings, so joining
      * those up cannot put a reading on a line the user never asked for one on.
      */
+    @SuppressWarnings("unused")
     @Nullable
     static String lineReading(LyricsLine line, int index,
                               @Nullable List<LyricsLine> romanizedLines, boolean perWordRomaji) {
@@ -1880,6 +1870,7 @@ public final class LyricsSpanBuilder {
     }
 
     static boolean isRtlText(@Nullable CharSequence text) {
+        //noinspection SizeReplaceableByIsEmpty
         if (text == null || text.length() == 0) {
             return false;
         }

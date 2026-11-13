@@ -430,9 +430,9 @@ final class YouTubeChatSource implements Runnable {
         List<NiconicoComment> takeNearby(long videoTimeMs) {
             List<NiconicoComment> nearby = new ArrayList<>();
             for (NiconicoComment comment : comments) {
-                if (comment.videoOffsetMs >= videoTimeMs - REPLAY_START_MARGIN_MS
-                        && comment.videoOffsetMs <= videoTimeMs + REPLAY_LOOKAHEAD_MS
-                        && passedOnIds.add(comment.id)) {
+                if (comment.videoOffsetMs() >= videoTimeMs - REPLAY_START_MARGIN_MS
+                        && comment.videoOffsetMs() <= videoTimeMs + REPLAY_LOOKAHEAD_MS
+                        && passedOnIds.add(comment.id())) {
                     nearby.add(comment);
                 }
             }
@@ -458,6 +458,7 @@ final class YouTubeChatSource implements Runnable {
     }
 
     private PageState fetchPageState() throws IOException, JSONException {
+        //noinspection CharsetObjectCanBeUsed
         String watchUrl = YOUTUBE_ORIGIN + "/watch?v="
                 + URLEncoder.encode(videoId, StandardCharsets.UTF_8.name())
                 + "&hl=en&bpctr=9999999999&has_verified=1";
@@ -582,7 +583,8 @@ final class YouTubeChatSource implements Runnable {
     }
 
     private Continuation fetchAllMessagesReplayContinuation(String continuation)
-            throws IOException, JSONException {
+            throws IOException {
+        //noinspection CharsetObjectCanBeUsed
         String url = YOUTUBE_ORIGIN + "/live_chat_replay?continuation="
                 + URLEncoder.encode(continuation, StandardCharsets.UTF_8.name())
                 + "&hl=en";
@@ -695,6 +697,7 @@ final class YouTubeChatSource implements Runnable {
      */
     private JSONObject postInnertube(PageState state, String path, JSONObject body)
             throws IOException, JSONException {
+        //noinspection CharsetObjectCanBeUsed
         String endpoint = YOUTUBE_ORIGIN + "/youtubei/v1/" + path + "?key="
                 + URLEncoder.encode(state.apiKey, StandardCharsets.UTF_8.name())
                 + "&prettyPrint=false";
@@ -757,11 +760,11 @@ final class YouTubeChatSource implements Runnable {
     private List<NiconicoComment> deduplicate(List<NiconicoComment> comments) {
         List<NiconicoComment> result = new ArrayList<>();
         for (NiconicoComment comment : comments) {
-            if (comment.id != null && !comment.id.isEmpty()) {
-                if (!seenIds.add(comment.id)) {
+            if (comment.id() != null && !comment.id().isEmpty()) {
+                if (!seenIds.add(comment.id())) {
                     continue;
                 }
-                seenIdOrder.addLast(comment.id);
+                seenIdOrder.addLast(comment.id());
                 while (seenIdOrder.size() > MAX_SEEN_IDS) {
                     seenIds.remove(seenIdOrder.removeFirst());
                 }
@@ -897,10 +900,9 @@ final class YouTubeChatSource implements Runnable {
         if (value instanceof String) {
             return (String) value;
         }
-        if (!(value instanceof JSONObject)) {
+        if (!(value instanceof JSONObject object)) {
             return "";
         }
-        JSONObject object = (JSONObject) value;
         String text = extractText(object);
         if (!text.isEmpty()) {
             return text;
@@ -913,7 +915,7 @@ final class YouTubeChatSource implements Runnable {
 
     /**
      * Premieres carry live broadcast details like a live stream, but are not live content.
-     * The broadcast end time then tells a running premiere from one that has ended.
+     * The broadcast end time then tells a running Premiere from one that has ended.
      */
     static VideoType getVideoType(@Nullable JSONObject playerResponse) {
         JSONObject videoDetails = getObjectPath(playerResponse, "videoDetails");
@@ -962,8 +964,7 @@ final class YouTubeChatSource implements Runnable {
         if (value == null || value == JSONObject.NULL) {
             return null;
         }
-        if (value instanceof JSONArray) {
-            JSONArray array = (JSONArray) value;
+        if (value instanceof JSONArray array) {
             for (int index = 0; index < array.length(); index++) {
                 Continuation found = findContinuation(array.opt(index), keys);
                 if (found != null) {
@@ -972,11 +973,10 @@ final class YouTubeChatSource implements Runnable {
             }
             return null;
         }
-        if (!(value instanceof JSONObject)) {
+        if (!(value instanceof JSONObject object)) {
             return null;
         }
 
-        JSONObject object = (JSONObject) value;
         for (String key : keys) {
             JSONObject continuationData = object.optJSONObject(key);
             if (continuationData == null) {
@@ -1272,6 +1272,7 @@ final class YouTubeChatSource implements Runnable {
         }
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class ParsedMessage {
         final String text;
         final List<NiconicoComment.Segment> segments;
@@ -1285,27 +1286,24 @@ final class YouTubeChatSource implements Runnable {
     enum VideoType {
         /** A live stream or the replay of one. */
         LIVE_STREAM,
-        /** A premiere while it is being shown. */
+        /** A Premiere while it is being shown. */
         LIVE_PREMIERE,
-        /** A premiere that has ended, which plays like a regular video with a chat replay. */
+        /** A Premiere that has ended, which plays like a regular video with a chat replay. */
         ENDED_PREMIERE,
         /** The player response did not say. Comments stay on, as before this setting existed. */
         UNKNOWN;
 
         boolean isShown() {
-            switch (this) {
-                case LIVE_STREAM:
-                    return Settings.NICONICO_COMMENTS_LIVE_STREAMS.get();
-                case LIVE_PREMIERE:
-                    return Settings.NICONICO_COMMENTS_LIVE_PREMIERES.get();
-                case ENDED_PREMIERE:
-                    return Settings.NICONICO_COMMENTS_ENDED_PREMIERES.get();
-                default:
-                    return true;
-            }
+            return switch (this) {
+                case LIVE_STREAM -> Settings.NICONICO_COMMENTS_LIVE_STREAMS.get();
+                case LIVE_PREMIERE -> Settings.NICONICO_COMMENTS_LIVE_PREMIERES.get();
+                case ENDED_PREMIERE -> Settings.NICONICO_COMMENTS_ENDED_PREMIERES.get();
+                default -> true;
+            };
         }
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class PageState {
         final String apiKey;
         final String clientVersion;
@@ -1345,6 +1343,7 @@ final class YouTubeChatSource implements Runnable {
         }
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class ChatPage {
         final List<NiconicoComment> comments;
         final Continuation continuation;
@@ -1361,6 +1360,7 @@ final class YouTubeChatSource implements Runnable {
         }
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     static final class ReplayParseResult {
         final List<NiconicoComment> comments;
         final long maxVideoOffsetMs;
@@ -1371,6 +1371,7 @@ final class YouTubeChatSource implements Runnable {
         }
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     static final class Continuation {
         final String value;
         final long timeoutMs;

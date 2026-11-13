@@ -35,6 +35,7 @@ import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -120,7 +121,6 @@ private const val GET_GENERATED_REGISTRY =
 private fun protoDefaultInstance(messageType: String) =
     protoDefaultInstanceFingerprint(messageType).instructionMatches.first().fieldReference
 
-@Suppress("unused")
 val downloadsPatch = patch(
     name = "Downloads",
     description = "Adds support to download videos with an external downloader app " +
@@ -135,7 +135,8 @@ val downloadsPatch = patch(
         fixProtoLibraryPatch,
         elementProtoParserHookPatch,
         flyoutPatch,
-        commandRouterHookPatch
+        commandRouterHookPatch,
+        versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -422,6 +423,15 @@ val downloadsPatch = patch(
 
                 # Download quality is enabled.
                 invoke-static { p3 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->unlockOfflineSetting(Z)Z
+                move-result p3
+            """
+        )
+
+        // Offer 1080p on screens that are less than 1080 pixels wide.
+        OfflineSettingsConstructorFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p3 }, $EXTENSION_IN_APP_DOWNLOADS_CLASS->getMaxDownloadQualityHeight(I)I
                 move-result p3
             """
         )

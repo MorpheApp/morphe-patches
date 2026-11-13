@@ -10,6 +10,7 @@ import app.morphe.extension.youtube.settings.Settings;
 /**
  * Abuse LithoFilter for {@link CustomPlaybackSpeedPatch}.
  */
+@SuppressWarnings("unused")
 public final class PlaybackSpeedMenuFilter extends Filter {
 
     /**

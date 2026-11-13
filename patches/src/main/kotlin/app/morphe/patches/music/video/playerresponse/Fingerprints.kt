@@ -23,10 +23,7 @@ internal object PlayerParameterBuilderFingerprint : Fingerprint(
     returnType = "L",
     custom = { method, _ ->
         val parameterTypes = method.parameterTypes
-        if (parameterTypes.size < 13) {
-            false
-        } else {
+        parameterTypes.size >= 13 &&
             parameterTypes.take(5).map { it.toString() } == PLAYER_PARAMETER_STARTS_WITH_PARAMETER_LIST
-        }
     }
 )

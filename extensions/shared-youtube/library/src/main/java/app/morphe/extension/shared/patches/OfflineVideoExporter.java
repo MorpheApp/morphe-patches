@@ -78,6 +78,7 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
  * and the video and audio streams are muxed into one file. A single stream, such as
  * the audio of a song, is saved as it is.
  */
+@SuppressWarnings("unused")
 public final class OfflineVideoExporter {
 
     private static final String KEY_PREFERENCES_NAME = "youtube";

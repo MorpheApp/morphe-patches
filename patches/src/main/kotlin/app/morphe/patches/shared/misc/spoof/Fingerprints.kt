@@ -284,7 +284,7 @@ internal object ReelItemWatchResponseFeatureFlagFingerprint : Fingerprint(
  * Builds a Cronet url request, which every network request of the app is made with.
  */
 internal object CronetUrlRequestBuildFingerprint : Fingerprint(
-    superclass = "Lorg/chromium/net/ExperimentalUrlRequest\$Builder;",
+    superclass = $$"Lorg/chromium/net/ExperimentalUrlRequest$Builder;",
     name = "build",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Lorg/chromium/net/ExperimentalUrlRequest;",
@@ -299,7 +299,7 @@ internal object CronetUrlRequestSetHttpMethodFingerprint : Fingerprint(
     classFingerprint = CronetUrlRequestBuildFingerprint,
     name = "setHttpMethod",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Lorg/chromium/net/ExperimentalUrlRequest\$Builder;",
+    returnType = $$"Lorg/chromium/net/ExperimentalUrlRequest$Builder;",
     parameters = listOf("Ljava/lang/String;"),
     filters = listOf(
         fieldAccess(
@@ -377,7 +377,7 @@ internal object CronetDataSourceReadBufferFingerprint : Fingerprint(
 )
 
 /**
- * Exception of a response with an HTTP error status. For a server error, the app requests
+ * Exception to a response with an HTTP error status. For a server error, the app requests
  * the stream again from a fallback host.
  */
 internal object InvalidResponseCodeExceptionFingerprint : Fingerprint(
@@ -406,7 +406,7 @@ internal object PriorityTooLowExceptionFingerprint : Fingerprint(
 )
 
 /**
- * Throws the exception of [PriorityTooLowExceptionFingerprint] if a task of a higher priority is running.
+ * Throws the exception to [PriorityTooLowExceptionFingerprint] if a task of a higher priority is running.
  */
 internal object PriorityTaskManagerProceedOrThrowFingerprint : Fingerprint(
     returnType = "V",

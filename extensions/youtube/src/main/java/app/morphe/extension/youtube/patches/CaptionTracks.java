@@ -17,6 +17,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
@@ -101,6 +102,7 @@ public final class CaptionTracks {
 
     private CaptionTracks() {}
 
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class Track {
         final String source, language, video;
         @Nullable
@@ -122,6 +124,7 @@ public final class CaptionTracks {
         }
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     static final class Captured {
         final Track track;
         final StableCaptionBlockPolicy policy;
@@ -167,8 +170,9 @@ public final class CaptionTracks {
             Settings.DUAL_CAPTIONS_ENABLED.save(enabled);
             for (WeakReference<StableCaptionBlocks.State> reference : translatedStates) {
                 StableCaptionBlocks.State state = reference.get();
-                if (state != null && state.captured != null && state.translation != null) {
-                    cached.put(state, playbackTime >= 0 ? playbackTime : state.translation.playbackTime());
+                CaptionSession translation = state == null ? null : state.translation;
+                if (state != null && state.captured != null && translation != null) {
+                    cached.put(state, playbackTime >= 0 ? playbackTime : translation.playbackTime());
                 }
             }
             invalidateTranslation();
@@ -180,13 +184,15 @@ public final class CaptionTracks {
             for (Map.Entry<StableCaptionBlocks.State, Long> entry : cached.entrySet()) {
                 StableCaptionBlocks.State state = entry.getKey();
                 Captured captured = state.captured;
+                if (captured == null) continue;
                 Track previous = captured.track;
                 if (!isCurrent(previous) || (enabled && previous.translated)) continue;
 
                 Track next = previous.withSecondary(secondaryLanguage());
                 state.captured = new Captured(next, captured.policy);
                 attachTranslation(next, captured.policy, state);
-                state.translation.demand(entry.getValue());
+                CaptionSession translation = state.translation;
+                if (translation != null) translation.demand(entry.getValue());
             }
             translationChanged(translatedToken);
             for (StableCaptionBlocks.State state : cached.keySet()) {
@@ -213,10 +219,11 @@ public final class CaptionTracks {
         if (track == null) return null;
 
         Map<String, String> fields = AutoTranslateCaptionsPatch.captionParameters(track.patch_getUrl());
+        String lang = fields == null ? null : fields.get("lang");
         if (fields == null
                 || !VideoInformation.isVideoId(fields.get("v"))
-                || fields.get("lang") == null
-                || !fields.get("lang").matches("[A-Za-z]{2,8}(-[A-Za-z0-9]{2,8})*")) {
+                || lang == null
+                || !lang.matches("[A-Za-z]{2,8}(-[A-Za-z0-9]{2,8})*")) {
             return null;
         }
 
@@ -236,7 +243,7 @@ public final class CaptionTracks {
                 .equals(AutoTranslateCaptionsPatch.getLanguageKey(track.patch_getLanguageCode()))) {
             return null;
         }
-        if (!vss.matches("(?:a)?\\.[A-Za-z0-9_-]+(?:\\.[A-Za-z0-9_-]+)*")) return null;
+        if (!vss.matches("a?\\.[A-Za-z0-9_-]+(?:\\.[A-Za-z0-9_-]+)*")) return null;
 
         final boolean asr = vss.startsWith("a.");
         String vssLanguage = vss.substring(asr ? 2 : 1).split("\\.", 2)[0];
@@ -260,7 +267,7 @@ public final class CaptionTracks {
             String key = sourceIdentity(track);
             if (key == null) return null;
 
-            var parameters = AutoTranslateCaptionsPatch.captionParameters(track.patch_getUrl());
+            var parameters = Objects.requireNonNull(AutoTranslateCaptionsPatch.captionParameters(track.patch_getUrl()));
             final boolean translated = parameters.containsKey("tlang");
             String secondary = secondaryLanguage();
             // A single language keeps the text and clock of the track. A translated response
@@ -354,7 +361,8 @@ public final class CaptionTracks {
         }
         invalidateTranslation();
         for (StableCaptionBlocks.State state : cached) {
-            attachTranslation(selected, state.captured.policy, state);
+            Captured captured = state.captured;
+            if (captured != null) attachTranslation(selected, captured.policy, state);
         }
         translationChanged(translatedToken);
         return true;
@@ -449,8 +457,11 @@ public final class CaptionTracks {
                         if (dualCaptionEnabled()) return;
                     } else if (state.nativePair != null) {
                         if (!isCurrentNativePair(state.nativePair)) return;
-                    } else if (state.translation == null || state.translation != translatedSession
-                            || !state.translation.isActive()) return;
+                    } else {
+                        CaptionSession translation = state.translation;
+                        if (translation == null || translation != translatedSession
+                                || !translation.isActive()) return;
+                    }
                 }
                 final long time = VideoInformation.getVideoTime();
                 if (time >= 0) {
@@ -547,7 +558,8 @@ public final class CaptionTracks {
         if (secondary != null && captured.track.translated) return false;
 
         attachTranslation(captured.track.withSecondary(secondary), captured.policy, state);
-        return state.translation != null && state.translation.isActive();
+        CaptionSession translation = state.translation;
+        return translation != null && translation.isActive();
     }
 
     private static void invalidateTranslation() {
@@ -803,7 +815,7 @@ public final class CaptionTracks {
 
         try {
             if (!(result instanceof StableCaptionBlocks.Timeline timeline) || !hasUploadedTracks()) return result;
-            if (nativeWindows(uploaded.first()) || nativeWindows(uploaded.second())) {
+            if (nativeWindows(Objects.requireNonNull(uploaded).first()) || nativeWindows(uploaded.second())) {
                 // Keep uploaded windows native; a missing output uses a separate translated window.
                 // Cached windows and event lists remain unchanged.
                 StableCaptionBlocks.Timeline sourceTimeline = timeline;
@@ -838,6 +850,7 @@ public final class CaptionTracks {
         return state == null || state.nativeSource;
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     static synchronized boolean isCurrentNativePair(NativeCaptionPair pair) {
         return uploadedEnabled() && uploaded == pair.tracks;
     }

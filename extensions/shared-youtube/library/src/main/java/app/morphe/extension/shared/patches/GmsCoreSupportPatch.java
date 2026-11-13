@@ -120,6 +120,7 @@ public class GmsCoreSupportPatch {
     @Nullable
     private static volatile Boolean DONT_KILL_MY_APP_MANUFACTURER_SUPPORTED;
 
+    @SuppressWarnings("SameReturnValue")
     private static String getOriginalPackageName() {
         return null; // Modified during patching.
     }
@@ -884,6 +885,7 @@ public class GmsCoreSupportPatch {
         };
     }
 
+    @SuppressWarnings("SameReturnValue")
     private static String getGmsCoreVendorGroupId() {
         return "app.revanced"; // Modified during patching.
     }

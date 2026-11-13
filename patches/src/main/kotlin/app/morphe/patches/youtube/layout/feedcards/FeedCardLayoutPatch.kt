@@ -85,7 +85,6 @@ private fun MutableClass.hookViewGroupMethod(name: String, parameterType: String
     )
 }
 
-@Suppress("unused")
 val feedCardLayoutPatch = patch(
     name = "Feed card layout",
     description = "Adds an option to show or hide the card layout of feed videos, which YouTube sends as an A/B test."

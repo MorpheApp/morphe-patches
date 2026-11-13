@@ -27,7 +27,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChannelSearchPatch;"
 
-@Suppress("unused")
 val channelSearchPatch = patch(
     name = "Channel search",
     description = "Adds an option to search inside the channel that is currently open " +

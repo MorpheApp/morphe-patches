@@ -18,6 +18,7 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.provider.Settings;
+import android.text.Layout;
 import android.view.View;
 import android.view.animation.PathInterpolator;
 import android.widget.LinearLayout;
@@ -177,7 +178,7 @@ final class HistorySwitcher extends LinearLayout {
         @Override
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
-            android.text.Layout text = getLayout();
+            Layout text = getLayout();
             if (text == null) return;
             boolean rtl = Utils.isRightToLeftLocale();
             float edge = rtl ? 0 : getWidth();

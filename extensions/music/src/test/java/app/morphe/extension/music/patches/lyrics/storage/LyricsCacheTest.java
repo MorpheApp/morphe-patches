@@ -15,6 +15,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.LyricsFixtures;
@@ -23,6 +24,7 @@ import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 
+@SuppressWarnings("unused")
 public class LyricsCacheTest {
 
     private TrackInfo track;
@@ -108,7 +110,7 @@ public class LyricsCacheTest {
     @Test
     public void sectionAIPutThenGetRoundTrip() {
         List<String> sourceLines = List.of("line1", "line2", "line3");
-        List<String> sections = java.util.Arrays.asList("Verse", null, "Chorus");
+        List<String> sections = Arrays.asList("Verse", null, "Chorus");
         LyricsCache.putSectionAI(track, "TestProvider", sourceLines, sections);
         List<String> result = LyricsCache.getSectionAI(track, "TestProvider", sourceLines);
         assertNotNull(result);

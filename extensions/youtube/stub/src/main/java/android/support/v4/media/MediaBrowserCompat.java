@@ -3,6 +3,7 @@ package android.support.v4.media;
 import android.os.Parcel;
 
 // Used only while compiling; YouTube Music provides the real class at runtime.
+@SuppressWarnings("unused")
 public class MediaBrowserCompat {
     public static class MediaItem {
         public static final int FLAG_BROWSABLE = 1;

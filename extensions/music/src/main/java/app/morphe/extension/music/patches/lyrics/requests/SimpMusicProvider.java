@@ -124,7 +124,7 @@ public final class SimpMusicProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) {
         final String videoId = VideoInformation.getVideoId();
         if (videoId.isEmpty()) {
             return null;

@@ -27,7 +27,6 @@ private val hideEndScreenCardsResourcePatch = patch {
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideEndScreenCardsPatch;"
 
-@Suppress("unused")
 val hideEndScreenCardsPatch = patch(
     name = "Hide end screen cards",
     description = "Adds an option to hide suggested video cards at the end of videos.",

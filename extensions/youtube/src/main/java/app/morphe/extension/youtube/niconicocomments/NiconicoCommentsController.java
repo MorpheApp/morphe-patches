@@ -341,7 +341,7 @@ public final class NiconicoCommentsController {
     }
 
     static double sanitizePlaybackRate(double rate) {
-        return rate > 0.0 && !Double.isNaN(rate) && !Double.isInfinite(rate) ? rate : 1.0;
+        return rate > 0.0 && !Double.isInfinite(rate) ? rate : 1.0;
     }
 
     /**

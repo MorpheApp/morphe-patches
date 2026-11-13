@@ -103,6 +103,7 @@ final class AlphabetRomanizer {
     }
 
     interface Script {
+        @SuppressWarnings("BooleanMethodIsAlwaysInverted")
         boolean contains(char c);
     }
 }

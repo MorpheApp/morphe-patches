@@ -242,7 +242,7 @@ public final class ClassicSubscriptionsLayoutPatch {
     }
 
     /**
-     * @return Index of the You button, or the size of the list if it's missing.
+     * @return Index of the 'You' button, or the size of the list if it's missing.
      */
     static int indexOfLibraryButton(List<Object> list) {
         for (int i = 0, size = list.size(); i < size; i++) {
@@ -308,7 +308,7 @@ public final class ClassicSubscriptionsLayoutPatch {
         if (subscriptionsItem == null) return list;
 
         // Classic layout: Subscriptions is before You (after Create, if the server sends it),
-        // or the last button if You is missing.
+        // or the last button if 'You' is missing.
         List<Object> newList = new ArrayList<>(list);
         newList.add(indexOfLibraryButton(list), subscriptionsItem);
         return newList;

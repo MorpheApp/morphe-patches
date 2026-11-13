@@ -29,6 +29,7 @@ import android.view.KeyEvent;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -2220,7 +2221,7 @@ public class CrossfadePatch {
             "overlay_queue_shuffle_button_view"
     };
 
-    private static android.view.ViewTreeObserver.OnGlobalLayoutListener longPressLayoutListener;
+    private static ViewTreeObserver.OnGlobalLayoutListener longPressLayoutListener;
     private static WeakReference<View> longPressLayoutListenerHost = new WeakReference<>(null);
 
     /**

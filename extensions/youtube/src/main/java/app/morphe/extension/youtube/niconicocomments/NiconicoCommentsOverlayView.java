@@ -269,7 +269,7 @@ final class NiconicoCommentsOverlayView extends View {
         boolean hasActiveOrUpcomingComment = false;
         boolean hasVisibleComment = false;
         for (CommentSchedule.ScheduledComment scheduled : schedule.comments()) {
-            long elapsedMs = videoTimeMs - scheduled.startTimeMs;
+            long elapsedMs = videoTimeMs - scheduled.startTimeMs();
             if (elapsedMs < 0) {
                 hasActiveOrUpcomingComment = true;
                 continue;
@@ -277,14 +277,14 @@ final class NiconicoCommentsOverlayView extends View {
 
             hasActiveOrUpcomingComment = true;
             hasVisibleComment = true;
-            NiconicoComment comment = scheduled.comment;
+            NiconicoComment comment = scheduled.comment();
             float commentWidth = measureCommentWidth(comment);
             float progress = (float) elapsedMs / schedule.getCommentDurationMs();
             float x = getWidth() - (progress * (getWidth() + commentWidth));
-            float y = firstBaseline + (Math.floorMod(scheduled.lane, laneCount) * laneHeight);
+            float y = firstBaseline + (Math.floorMod(scheduled.lane(), laneCount) * laneHeight);
 
-            if (comment.backgroundColor != Color.TRANSPARENT) {
-                backgroundPaint.setColor(applyOpacity(comment.backgroundColor));
+            if (comment.backgroundColor() != Color.TRANSPARENT) {
+                backgroundPaint.setColor(applyOpacity(comment.backgroundColor()));
                 canvas.drawRoundRect(
                         x - backgroundPadding,
                         y + fontMetrics.ascent - backgroundPadding,
@@ -297,7 +297,7 @@ final class NiconicoCommentsOverlayView extends View {
             }
 
             fillPaint.setColor(applyOpacity(
-                    comment.membership ? MEMBERSHIP_COLOR : Color.WHITE
+                    comment.membership() ? MEMBERSHIP_COLOR : Color.WHITE
             ));
             strokePaint.setColor(applyOpacity(Color.BLACK));
             drawCommentSegments(canvas, comment, x, y);
@@ -416,7 +416,7 @@ final class NiconicoCommentsOverlayView extends View {
 
     private float measureCommentWidth(NiconicoComment comment) {
         float width = 0;
-        for (NiconicoComment.Segment segment : comment.segments) {
+        for (NiconicoComment.Segment segment : comment.segments()) {
             width += segment.isEmoji() ? fillPaint.getTextSize() : fillPaint.measureText(segment.text);
         }
         return width;
@@ -429,7 +429,7 @@ final class NiconicoCommentsOverlayView extends View {
             float baseline
     ) {
         float x = startX;
-        for (NiconicoComment.Segment segment : comment.segments) {
+        for (NiconicoComment.Segment segment : comment.segments()) {
             if (!segment.isEmoji()) {
                 canvas.drawText(segment.text, x, baseline, strokePaint);
                 canvas.drawText(segment.text, x, baseline, fillPaint);
@@ -459,8 +459,8 @@ final class NiconicoCommentsOverlayView extends View {
     private void updateEmojiDemand(long videoTimeMs) {
         neededEmojiUrls.clear();
         for (CommentSchedule.ScheduledComment scheduled : schedule.comments()) {
-            if (scheduled.startTimeMs > videoTimeMs + EMOJI_PREFETCH_MS) continue;
-            for (NiconicoComment.Segment segment : scheduled.comment.segments) {
+            if (scheduled.startTimeMs() > videoTimeMs + EMOJI_PREFETCH_MS) continue;
+            for (NiconicoComment.Segment segment : scheduled.comment().segments()) {
                 if (segment.isEmoji()) neededEmojiUrls.add(segment.imageUrl);
             }
         }

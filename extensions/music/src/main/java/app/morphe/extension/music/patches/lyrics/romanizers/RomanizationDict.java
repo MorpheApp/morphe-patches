@@ -25,6 +25,7 @@ import app.morphe.extension.shared.Utils;
  * What the two reading dictionaries have in common: how they are fetched and how the settings row
  * hears about it. Where they are kept is {@link LyricsDirectories}' business.
  */
+@SuppressWarnings("unused")
 public final class RomanizationDict {
 
     private static final String DOWNLOAD_SUFFIX = ".part";

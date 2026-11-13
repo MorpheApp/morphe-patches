@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import com.google.protobuf.MessageLite;
 
 import java.util.List;
+import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -83,6 +84,7 @@ public final class AddToQueuePatch {
         }
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -356,7 +358,7 @@ public final class AddToQueuePatch {
                 && queueButtonOriginalNames.contains(buttonName);
         try {
             if (nativeAction) {
-                getNativeQueueAction(buttonName, videoId).run();
+                Objects.requireNonNull(getNativeQueueAction(buttonName, videoId)).run();
                 return true;
             }
             if (queueButtonOriginalNames.contains(buttonName)) {

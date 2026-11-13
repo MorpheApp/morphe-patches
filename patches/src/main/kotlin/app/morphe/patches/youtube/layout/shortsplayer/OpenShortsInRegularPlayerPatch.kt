@@ -26,7 +26,6 @@ import app.morphe.patches.youtube.shared.openVideoIntentPatch
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenShortsInRegularPlayerPatch;"
 
-@Suppress("unused")
 val openShortsInRegularPlayerPatch = patch(
     name = "Open Shorts in regular player",
     description = "Adds options to open Shorts in the regular video player.",

@@ -22,6 +22,7 @@ import androidx.annotation.Nullable;
  * Draws a drawable inline with text, tinted with the color of the text.
  * The drawable is replaced over the characters the span is applied to.
  */
+@SuppressWarnings("unused")
 public final class IconSpan extends ReplacementSpan {
 
     private final Drawable drawable;

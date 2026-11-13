@@ -15,7 +15,7 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val NAVIGATOR = "$EXTENSION_PACKAGE/NativePlaylistQueuePatch\$PlaylistNavigator;"
+private const val NAVIGATOR = $$"$$EXTENSION_PACKAGE/NativePlaylistQueuePatch$PlaylistNavigator;"
 
 /** Defer the original intent before either native service commits its target. */
 internal fun installPlaylistPagingNavigation(

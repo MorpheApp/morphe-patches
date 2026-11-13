@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches.lyrics.session;
 import android.media.MediaMetadata;
 import android.media.session.MediaSession;
 import android.media.session.PlaybackState;
+import android.net.Uri;
 import android.os.SystemClock;
 
 import androidx.annotation.Nullable;
@@ -123,7 +124,7 @@ public final class LockScreenLyrics {
                 return;
             }
 
-            android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
+            Uri mediaUri = LyricsManager.parseMediaUri(original);
             LyricsManager.getInstance().onDisplayedTrackChanged(rt, ra, mediaUri);
             LyricsManager.getInstance().addListener(lyricsListener);
             lastPushedTitle = null;

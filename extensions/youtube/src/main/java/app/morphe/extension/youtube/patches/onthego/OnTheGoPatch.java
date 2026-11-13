@@ -99,6 +99,7 @@ public final class OnTheGoPatch {
     @Nullable
     private static volatile SeekLength seekLength;
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -106,14 +107,14 @@ public final class OnTheGoPatch {
     /**
      * Injection point.
      */
-    public static void setOnTheGoState(OnTheGoState state) {
+    public static void setOnTheGoState(@Nullable OnTheGoState state) {
         onTheGoState = state;
     }
 
     /**
      * Injection point.
      */
-    public static void setSeekLength(SeekLength length) {
+    public static void setSeekLength(@Nullable SeekLength length) {
         seekLength = length;
     }
 
@@ -248,7 +249,7 @@ public final class OnTheGoPatch {
 
         final int paramsLength = bytes[paramsTagIndex + 1];
         final int end = paramsTagIndex + 2 + paramsLength;
-        if (paramsLength <= 0 || paramsLength > MAX_SINGLE_BYTE_LENGTH || end > bytes.length) {
+        if (paramsLength <= 0 || end > bytes.length) {
             return null;
         }
 

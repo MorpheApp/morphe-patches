@@ -40,7 +40,7 @@ public class CommentScheduleTest {
 
         assertEquals(1_001, schedule.comments().size());
         assertTrue(schedule.comments().stream()
-                .anyMatch(scheduled -> "active".equals(scheduled.comment.id)));
+                .anyMatch(scheduled -> "active".equals(scheduled.comment().id())));
     }
 
     @Test
@@ -54,9 +54,9 @@ public class CommentScheduleTest {
         schedule.addComments(comments, 1_000, 250, 10);
 
         assertEquals(35, CommentSchedule.calculateLiveSpreadStepMs(10, 250));
-        assertEquals(1_000, schedule.comments().get(0).startTimeMs);
-        assertEquals(1_035, schedule.comments().get(1).startTimeMs);
-        assertEquals(1_315, schedule.comments().get(9).startTimeMs);
+        assertEquals(1_000, schedule.comments().get(0).startTimeMs());
+        assertEquals(1_035, schedule.comments().get(1).startTimeMs());
+        assertEquals(1_315, schedule.comments().get(9).startTimeMs());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class CommentScheduleTest {
         Set<Integer> usedLanes = new HashSet<>();
         boolean differsFromSequentialOrder = false;
         for (int index = 0; index < schedule.comments().size(); index++) {
-            int lane = schedule.comments().get(index).lane;
+            int lane = schedule.comments().get(index).lane();
             usedLanes.add(lane);
             differsFromSequentialOrder |= lane != index;
         }
@@ -82,8 +82,8 @@ public class CommentScheduleTest {
         schedule.redistributeLanes(2);
         Set<Integer> resizedLanes = new HashSet<>();
         for (CommentSchedule.ScheduledComment comment : schedule.comments()) {
-            assertTrue(comment.lane >= 0 && comment.lane < 2);
-            resizedLanes.add(comment.lane);
+            assertTrue(comment.lane() >= 0 && comment.lane() < 2);
+            resizedLanes.add(comment.lane());
         }
         assertEquals(2, resizedLanes.size());
     }
@@ -113,9 +113,9 @@ public class CommentScheduleTest {
         schedule.addComments(live, 10_000, 250, 12);
 
         assertEquals(1_001, schedule.comments().stream()
-                .filter(scheduled -> scheduled.comment.videoOffsetMs >= 0).count());
+                .filter(scheduled -> scheduled.comment().videoOffsetMs() >= 0).count());
         assertEquals(CommentSchedule.MAX_LIVE_COMMENTS, schedule.comments().stream()
-                .filter(scheduled -> scheduled.comment.videoOffsetMs < 0).count());
+                .filter(scheduled -> scheduled.comment().videoOffsetMs() < 0).count());
     }
 
     @Test
@@ -140,8 +140,8 @@ public class CommentScheduleTest {
         schedule.addComments(comments, 1_000, 0, 2);
 
         assertEquals(2, schedule.comments().size());
-        assertNotEquals(schedule.comments().get(0).lane, schedule.comments().get(1).lane);
-        assertEquals(1_000, schedule.comments().get(1).startTimeMs);
+        assertNotEquals(schedule.comments().get(0).lane(), schedule.comments().get(1).lane());
+        assertEquals(1_000, schedule.comments().get(1).startTimeMs());
     }
 
     @Test
@@ -153,10 +153,11 @@ public class CommentScheduleTest {
         List<NiconicoComment> comments = new ArrayList<>();
         for (int index = 0; index < 50; index++) {
             NiconicoComment comment = comment("comment-" + index, 1_000 + random.nextInt(2_000));
-            widths.put(comment.id, 50f + random.nextInt(550));
+            widths.put(comment.id(), 50f + random.nextInt(550));
             comments.add(comment);
         }
-        schedule.setLayout(1_000, 10, comment -> widths.get(comment.id));
+        //noinspection DataFlowIssue
+        schedule.setLayout(1_000, 10, comment -> widths.get(comment.id()));
         schedule.setHideCrowdedComments(true);
 
         schedule.addComments(comments, 1_000, 0, 8);
@@ -165,11 +166,11 @@ public class CommentScheduleTest {
         assertTrue(scheduled.size() > 8);
         for (CommentSchedule.ScheduledComment first : scheduled) {
             for (CommentSchedule.ScheduledComment second : scheduled) {
-                if (first == second || first.lane != second.lane || first.startTimeMs > second.startTimeMs) {
+                if (first == second || first.lane() != second.lane() || first.startTimeMs() > second.startTimeMs()) {
                     continue;
                 }
-                assertTrue(CommentSchedule.canFollow(first.startTimeMs, first.width,
-                        second.startTimeMs, second.width, 1_000, 7_000, 10));
+                assertTrue(CommentSchedule.canFollow(first.startTimeMs(), first.width(),
+                        second.startTimeMs(), second.width(), 1_000, 7_000, 10));
             }
         }
     }
@@ -183,7 +184,7 @@ public class CommentScheduleTest {
         schedule.addComments(comments, 1_000, 0, 1);
 
         assertEquals(2, schedule.comments().size());
-        assertEquals(1_750, schedule.comments().get(1).startTimeMs);
+        assertEquals(1_750, schedule.comments().get(1).startTimeMs());
     }
 
     @Test
@@ -194,7 +195,7 @@ public class CommentScheduleTest {
         CommentSchedule overlapping = scheduleWithLayout(8);
         overlapping.addComments(comments, 1_000, 0, 1);
         assertEquals(3, overlapping.comments().size());
-        assertEquals(1_000, overlapping.comments().get(2).startTimeMs);
+        assertEquals(1_000, overlapping.comments().get(2).startTimeMs());
 
         CommentSchedule hiding = scheduleWithLayout(8);
         hiding.setHideCrowdedComments(true);
@@ -216,8 +217,8 @@ public class CommentScheduleTest {
 
         Set<Integer> lanes = new HashSet<>();
         for (CommentSchedule.ScheduledComment scheduled : schedule.comments()) {
-            assertEquals(100, scheduled.width, 0);
-            lanes.add(scheduled.lane);
+            assertEquals(100, scheduled.width(), 0);
+            lanes.add(scheduled.lane());
         }
         assertEquals(4, lanes.size());
     }

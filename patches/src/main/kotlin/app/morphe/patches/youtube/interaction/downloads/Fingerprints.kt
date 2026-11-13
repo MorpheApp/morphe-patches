@@ -80,9 +80,48 @@ internal object PlaybackStartDescriptorIdsFingerprint : Fingerprint(
 )
 
 /**
+ * 21.46+
+ *
+ * Runnable of the worker that loads the saved player response of a saved video
+ * and returns it to the callback.
+ */
+internal fun offlinePlaybackWorkerRunnableFingerprint(descriptorType: String) = Fingerprint(
+    name = "run",
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = descriptorType),
+        // Returns the Downloads entry of a video ID from the store of the current account.
+        methodCall(parameters = listOf("Ljava/lang/String;"), returnType = "L"),
+        // Callback with the player response, after which the method returns.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+            returnType = "V"
+        ),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately()),
+        string("Unplayable Video")
+    )
+)
+
+/**
+ * 21.46+
+ *
+ * Reads the worker of its Runnable.
+ * Must be matched against the method of [offlinePlaybackWorkerRunnableFingerprint].
+ */
+internal fun offlinePlaybackRunnableWorkerFingerprint(workerType: String) = Fingerprint(
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = workerType)
+    )
+)
+
+/**
+ * 21.45 and older.
+ *
  * Loads the saved player response of a saved video and returns it to the callback.
  */
-internal fun offlinePlaybackWorkerFingerprint(descriptorType: String) = Fingerprint(
+internal fun offlinePlaybackWorkerLegacyFingerprint(descriptorType: String) = Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(descriptorType, "L"),
@@ -99,9 +138,11 @@ internal fun offlinePlaybackWorkerFingerprint(descriptorType: String) = Fingerpr
 )
 
 /**
+ * 21.45 and older.
+ *
  * Returns the Downloads entry of a video ID from the store of the current account.
  */
-internal fun offlinePlaybackEntryFingerprint(workerType: String) = Fingerprint(
+internal fun offlinePlaybackEntryLegacyFingerprint(workerType: String) = Fingerprint(
     definingClass = workerType,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "L",
@@ -118,7 +159,7 @@ internal fun offlinePlaybackEntryFingerprint(workerType: String) = Fingerprint(
  * Copies the position of a Downloads entry to the playback position record (entity type 76).
  */
 internal fun offlineDownloadPositionCopyFingerprint(entryType: String) = Fingerprint(
-    returnType = $$"Lj$/util/Optional;",
+    returnType = "Lj$/util/Optional;",
     parameters = listOf(entryType),
     filters = listOf(
         literal(76),
@@ -339,6 +380,28 @@ internal object OfflineSettingCategoryConstructorFingerprint : Fingerprint(
         "Z", // Download quality is enabled.
         "Z", // Smart downloads are displayed.
         "L",
+        "L",
+        "L"
+    )
+)
+
+internal object OfflineSettingsFingerprint : Fingerprint(
+    filters = listOf(
+        string("[Offline] Failed to set hasTransfersForOffline.")
+    )
+)
+
+/**
+ * The offline settings keep only the download qualities up to the height of the screen,
+ * which the picker of the download quality and the download quality setting show.
+ */
+internal object OfflineSettingsConstructorFingerprint : Fingerprint(
+    classFingerprint = OfflineSettingsFingerprint,
+    name = "<init>",
+    parameters = listOf(
+        "Landroid/content/SharedPreferences;",
+        "L",
+        "I", // Height of the highest download quality.
         "L",
         "L"
     )

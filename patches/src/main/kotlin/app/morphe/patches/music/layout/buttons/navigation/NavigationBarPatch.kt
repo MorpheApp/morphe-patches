@@ -22,16 +22,14 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/NavigationBarPatch;"
 private const val EXTENSION_GLASS_CLASS = "Lapp/morphe/extension/music/patches/MusicGlassNavigationBar;"
 private const val EXTENSION_GLASS_MINIPLAYER_CLASS = "Lapp/morphe/extension/music/patches/MusicGlassMiniplayer;"
-private const val EXTENSION_TIME_BAR_INTERFACE = "Lapp/morphe/extension/music/patches/MusicGlassMiniplayer\$TimeBar;"
+private const val EXTENSION_TIME_BAR_INTERFACE = $$"Lapp/morphe/extension/music/patches/MusicGlassMiniplayer$TimeBar;"
 private const val MUSIC_PLAYBACK_CONTROLS_TIME_BAR_CLASS =
     "Lcom/google/android/apps/youtube/music/watchpage/MusicPlaybackControlsTimeBar;"
 
-@Suppress("unused")
 val navigationBarPatch = patch(
     name = "Navigation bar",
     description = "Adds options to hide navigation bar, labels and buttons, and to show the navigation bar and miniplayer as glass."
@@ -165,7 +163,6 @@ val navigationBarPatch = patch(
 
                 // Hide navigation labels.
                 val labelIndex = it.instructionMatches[3].index
-                val targetParameter = getInstruction<ReferenceInstruction>(labelIndex).reference
                 val targetRegister = getInstruction<OneRegisterInstruction>(labelIndex).registerA
 
                 addInstruction(

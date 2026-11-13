@@ -16,6 +16,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -42,7 +43,7 @@ public final class TTMLGenerator {
     private static final String NS_TTS = "http://www.w3.org/ns/ttml#styling";
     private static final String NS_MORPHE = "https://morphe.software/ttml";
 
-    private static final Pattern LRC_META = Pattern.compile("\\[([^\\]]+):\\s*([^\\]]*)\\]");
+    private static final Pattern LRC_META = Pattern.compile("\\[([^]]+):\\s*([^]]*)]");
     private static final Pattern COPYRIGHT_LABEL = Pattern.compile("(?i)^copyright\\s*[:：]\\s*");
 
     private static final String LRC_FORMAT_TYPE = "lrc";
@@ -191,9 +192,9 @@ public final class TTMLGenerator {
         }
         final Matcher matcher = LRC_META.matcher(lyrics.rawFormat());
         while (matcher.find()) {
-            final String value = matcher.group(2).trim();
+            final String value = Objects.requireNonNull(matcher.group(2)).trim();
             if (!value.isEmpty()) {
-                tags.putIfAbsent(matcher.group(1).trim().toLowerCase(Locale.ROOT), value);
+                tags.putIfAbsent(Objects.requireNonNull(matcher.group(1)).trim().toLowerCase(Locale.ROOT), value);
             }
         }
         return tags;

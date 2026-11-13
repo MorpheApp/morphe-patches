@@ -101,7 +101,7 @@ public final class SectionDotsMotion {
      */
     private static long inferredEndMs(LyricsLine line) {
         final int chars = Math.min(line.text().length(), INFERRED_MAX_CHARS);
-        if (chars <= 0) {
+        if (chars == 0) {
             return LyricsLine.NO_TIME;
         }
         return line.startTimeMs() + Math.min(

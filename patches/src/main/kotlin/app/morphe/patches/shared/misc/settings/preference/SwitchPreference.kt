@@ -10,7 +10,6 @@ package app.morphe.patches.shared.misc.settings.preference
  * @param tag The preference tag.
  * @param summary Whether to use a summary.
  */
-@Suppress("MemberVisibilityCanBePrivate")
 class SwitchPreference(
     key: String? = null,
     titleKey: String = "${key}_title",

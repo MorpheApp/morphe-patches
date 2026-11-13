@@ -302,13 +302,13 @@ internal fun stickyHeaderCreateFingerprint(stickyHeadersType: String) = Fingerpr
         ),
         // Binds the position to the view holder.
         methodCall(returnType = "V", parameters = listOf("L", "I"), location = MatchAfterImmediately()),
-        // Id of the current header.
+        // ID of the current header.
         methodCall(returnType = "J", parameters = listOf(), location = MatchAfterImmediately())
     )
 )
 
 /**
- * Id of the current sticky header, read from its entry in the list of headers.
+ * ID of the current sticky header, read from its entry in the list of headers.
  */
 internal fun stickyHeaderCurrentIdFingerprint(headerListType: String, methodName: String) = Fingerprint(
     definingClass = headerListType,
@@ -341,3 +341,85 @@ internal fun stickyHeaderEntryCompareFingerprint(entryType: String) = Fingerprin
 )
 
 // endregion
+
+/**
+ * Saves the scroll position of a list, such as the feed or the search results, when the list is left.
+ * The position is -1 if an item before it was removed or changed since the list was loaded,
+ * and the list is then shown again from the top.
+ */
+internal object ListSaveScrollPositionFingerprint : Fingerprint(
+    returnType = "Landroid/os/Bundle;",
+    parameters = listOf(),
+    filters = listOf(
+        // The observer of the changes of the list, and the first position that changed.
+        fieldAccess(opcode = Opcode.IGET_OBJECT),
+        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchAfterImmediately()),
+        opcode(Opcode.IF_GE, location = MatchAfterImmediately()),
+        literal(-1L, location = MatchAfterImmediately()),
+        string("scroll_position", location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Removes an item from an observable list, and notifies the observers of the list.
+ */
+internal fun observableListRemoveFingerprint(listType: String) = Fingerprint(
+    definingClass = listType,
+    name = "remove",
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("I"),
+    filters = listOf(
+        // The notification of the removed range, or before YouTube 21.30 of the removed position,
+        // which notifies the removed range.
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = "V")
+    )
+)
+
+/**
+ * Notifies the observers of a list that the item at a position was removed. Inlined since YouTube 21.30.
+ */
+internal fun listNotifyItemRemovedFingerprint(notifierType: String, methodName: String) = Fingerprint(
+    definingClass = notifierType,
+    name = methodName,
+    parameters = listOf("I"),
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = "V", parameters = listOf("I", "I"))
+    )
+)
+
+/**
+ * Notifies the observers of a list that items were removed.
+ */
+internal fun listNotifyItemsRemovedFingerprint(notifierType: String, methodName: String) = Fingerprint(
+    definingClass = notifierType,
+    name = methodName,
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_INTERFACE, returnType = "V", parameters = listOf("I", "I"))
+    )
+)
+
+/**
+ * Called on the observer of the changes of a list when items are removed from the list.
+ */
+internal fun listObserverItemsRemovedFingerprint(observerType: String, methodName: String) = Fingerprint(
+    definingClass = observerType,
+    name = methodName,
+    returnType = "V",
+    parameters = listOf("I", "I")
+)
+
+/**
+ * Called on the observer of the changes of a list when all the items of the list are loaded again.
+ * No position of the list changed since then.
+ */
+internal fun listObserverReloadFingerprint(observerType: String) = Fingerprint(
+    definingClass = observerType,
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        // The item count of the list.
+        methodCall(opcode = Opcode.INVOKE_INTERFACE, returnType = "I", parameters = listOf()),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IPUT, type = "I", location = MatchAfterImmediately())
+    )
+)

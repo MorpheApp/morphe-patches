@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 /** Keeps bilingual native windows in language order, retaining each effect layer. */
+@SuppressWarnings("unused")
 final class NativeCaptionPlacement {
     private record Scale(float x, float y) {}
     private static final Map<View, Scale> compacted = new WeakHashMap<>();
@@ -24,7 +25,7 @@ final class NativeCaptionPlacement {
         boolean overlaps(Bounds other) {
             return left < other.right && right > other.left && top < other.bottom && bottom > other.top;
         }
-        Bounds shifted(int dy) { return new Bounds(left, top + dy, right, bottom + dy); }
+
         Bounds scaled(float factor) {
             int width = Math.round((right - left) * factor), height = Math.round((bottom - top) * factor);
             int x = left + (right - left - width) / 2, y = top + (bottom - top - height) / 2;

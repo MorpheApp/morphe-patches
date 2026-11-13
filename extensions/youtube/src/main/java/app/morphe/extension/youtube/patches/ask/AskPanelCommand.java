@@ -16,6 +16,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,6 +33,7 @@ import app.morphe.extension.youtube.settings.Settings;
  * so the panel of another video is built from the panel of any video, without rewriting
  * the length prefixes of the protobuf messages.
  */
+@SuppressWarnings("unused")
 final class AskPanelCommand {
 
     private static final String ASK_PANEL_ID = "PAyouchat";
@@ -163,6 +165,7 @@ final class AskPanelCommand {
      * The command that shows the Ask panel of a video,
      * and the tokens of the requests that the panel can make first.
      */
+    @SuppressWarnings("ClassCanBeRecord")
     static final class Panel {
         final byte[] command;
         /**
@@ -244,6 +247,7 @@ final class AskPanelCommand {
         Logger.printDebug(() -> "Saved Ask panel of video: " + videoId + " size: " + panel.length);
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     static boolean hasTemplate() {
         return loadTemplate();
     }
@@ -456,7 +460,9 @@ final class AskPanelCommand {
                 continue;
             }
             if (tokens[1] == null && getSuggestionIcon(field) == SUGGESTION_ICON_SUMMARIZE) {
-                for (Field suggestionField : parse(field.value)) {
+                List<Field> suggestionFields = parse(field.value);
+                if (suggestionFields == null) continue;
+                for (Field suggestionField : suggestionFields) {
                     if (suggestionField.number == SUGGESTION_TOKEN_FIELD) {
                         tokens[1] = latin1(suggestionField.value);
                     } else if (suggestionField.number == SUGGESTION_SELECTION_ID_FIELD
@@ -602,7 +608,7 @@ final class AskPanelCommand {
     @Nullable
     private static byte[] decodeToken(String token) {
         Matcher padding = BASE64_PADDING.matcher(token);
-        return padding.matches() ? decodeBase64(padding.group(1)) : null;
+        return padding.matches() ? decodeBase64(Objects.requireNonNull(padding.group(1))) : null;
     }
 
     /**
@@ -623,6 +629,7 @@ final class AskPanelCommand {
         return reader.isMalformed ? null : fields;
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     static final class Field {
         final int number;
         final int wireType;
@@ -684,7 +691,7 @@ final class AskPanelCommand {
             if (!padding.matches()) {
                 continue;
             }
-            String body = padding.group(1);
+            String body = Objects.requireNonNull(padding.group(1));
             for (int offset = 0; offset < 4 && body.length() - offset >= 16; offset++) {
                 byte[] decoded = decodeBase64(body.substring(offset));
                 if (decoded != null) {
@@ -744,7 +751,7 @@ final class AskPanelCommand {
         if (!padding.matches()) {
             return run;
         }
-        String body = padding.group(1);
+        String body = Objects.requireNonNull(padding.group(1));
         String pad = padding.group(2);
 
         final int maxTrim = depth == 0 ? 3 : 0;

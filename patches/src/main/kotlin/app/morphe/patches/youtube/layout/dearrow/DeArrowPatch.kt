@@ -37,7 +37,6 @@ import app.morphe.util.setExtensionIsPatchIncluded
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowPatch;"
 
-@Suppress("unused")
 val deArrowPatch = patch(
     name = "DeArrow",
     description = "Adds options to replace video thumbnails and titles using the DeArrow API, " +

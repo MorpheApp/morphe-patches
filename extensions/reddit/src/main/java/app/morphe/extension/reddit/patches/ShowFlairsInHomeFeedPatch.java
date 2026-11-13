@@ -59,6 +59,7 @@ public final class ShowFlairsInHomeFeedPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
@@ -162,6 +163,7 @@ public final class ShowFlairsInHomeFeedPatch {
     /**
      * Caches the flair data, and adds the flair to the posts waiting for it.
      */
+    @SuppressWarnings("SameParameterValue")
     private static void onFlairData(String fullId, String[] data, String source) {
         FLAIRS.put(fullId, data);
 

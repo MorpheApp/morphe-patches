@@ -31,6 +31,7 @@ import app.morphe.extension.shared.ui.CustomDialog;
 /**
  * Manager for search history functionality.
  */
+@SuppressWarnings("unused")
 public class SearchHistoryManager {
     /**
      * Interface for handling history item selection.

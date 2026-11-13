@@ -21,6 +21,7 @@ import java.util.Base64;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 
 public class PlaylistPageTest {
+    @SuppressWarnings("SameParameterValue")
     private static PlaylistQueueRenderer.Video video(String playlist, String video, int index) {
         return PlaylistQueueRenderer.Video.newBuilder().setVideoId(video)
                 .setTitle(PlaylistQueueRenderer.Text.newBuilder().setSimpleText("Title"))
@@ -61,6 +62,7 @@ public class PlaylistPageTest {
 
         assertEquals(1, page.rows().size());
         assertEquals(2, page.totalCount());
+        //noinspection DataFlowIssue
         assertFalse(page.unavailableVideosMessage().hasVideo());
         assertArrayEquals(footer.toByteArray(), page.unavailableVideosMessage().toByteArray());
     }

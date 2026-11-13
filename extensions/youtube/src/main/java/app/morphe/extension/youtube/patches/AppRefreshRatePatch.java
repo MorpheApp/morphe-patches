@@ -24,13 +24,11 @@ public final class AppRefreshRatePatch {
             return;
         }
 
-        VideoState.getOnChange().addObserver((VideoState state) -> {
-            updatePlayerIsActive(PlayerType.getCurrent(), state);
-        });
+        VideoState.getOnChange().addObserver((VideoState state) ->
+                updatePlayerIsActive(PlayerType.getCurrent(), state));
 
-        PlayerType.getOnChange().addObserver((PlayerType type) -> {
-            updatePlayerIsActive(type, VideoState.getCurrent());
-        });
+        PlayerType.getOnChange().addObserver((PlayerType type) ->
+                updatePlayerIsActive(type, VideoState.getCurrent()));
     }
 
     private static void updatePlayerIsActive(PlayerType type, VideoState state) {

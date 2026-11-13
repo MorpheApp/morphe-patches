@@ -35,7 +35,6 @@ private val videoIntentContextHooks = mutableListOf<Pair<String, String>>()
 private val videoIntentCommandTransforms = mutableListOf<Pair<String, String>>()
 private val videoIntentInterceptors = mutableListOf<Pair<String, String>>()
 
-@Suppress("unused")
 val openVideoIntentPatch = patch(
     description = "Provides hooks into intent components to open videos for extension filtering."
 ) {
@@ -54,15 +53,15 @@ val openVideoIntentPatch = patch(
         VideoPlaybackIntentFingerprint.let {
             it.method.apply {
                 val match = it.instructionMatches[1]
-                var moveResultRegister = match.getInstruction<OneRegisterInstruction>().registerA
+                val moveResultRegister = match.getInstruction<OneRegisterInstruction>().registerA
                 val insertIndex = match.index + 1
                 val registerProvider = getFreeRegisterProvider(
                     insertIndex,
                     2,
                     moveResultRegister
                 )
-                var free1 = registerProvider.getFreeRegister()
-                var free2 = registerProvider.getFreeRegister()
+                val free1 = registerProvider.getFreeRegister()
+                val free2 = registerProvider.getFreeRegister()
 
                 videoPlaybackIntentMethod = WeakReference(this)
                 videoPlaybackIntentInsertIndex = insertIndex

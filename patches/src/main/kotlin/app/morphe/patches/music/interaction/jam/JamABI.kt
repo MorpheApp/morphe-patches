@@ -164,7 +164,7 @@ internal fun resolveJamQueueAbi(): JamQueueAbi {
     val executor =
         manager.fields.singleOrNull { it.type == EXECUTOR }
             ?: error("Missing or ambiguous â€“ Jam queue executor")
-    val storage = resolveStorage(manager, enqueue)
+    val storage = resolveStorage(manager)
     val displays = resolveDisplays(manager, managerConstructor, storage)
     val remove = queueRemovalFingerprint(manager.type, displays).originalMethod
     val item = resolveItem(manager, remove, command)
@@ -211,8 +211,6 @@ internal fun resolveProto(type: String?, concept: String): ProtoAbi {
 
 internal fun resolveStorage(
     manager: ClassDef,
-    @Suppress("unused")
-    enqueue: Method,
 ): QueueStorageAbi {
     // Start at manager-owned snapshot methods, then resolve their lane contracts.
     val (snapshot, lanes) =
@@ -767,4 +765,5 @@ private fun ClassDef.isThumbnailEntry(): Boolean {
         instanceFields.all { it.type == STRING || it.type == "I" }
 }
 
+@Suppress("SameParameterValue")
 private fun <T> T?.requireValue(concept: String): T = this ?: error("Unable to resolve $concept")

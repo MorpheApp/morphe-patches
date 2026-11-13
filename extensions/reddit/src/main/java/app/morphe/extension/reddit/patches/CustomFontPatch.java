@@ -39,6 +39,7 @@ public final class CustomFontPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }

@@ -36,7 +36,6 @@ private const val EXTENSION_NAVIGATOR_INTERFACE =
 private const val EXTENSION_MENU_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/LoopCountPatch$BottomSheetMenu;"
 
-@Suppress("unused")
 val loopCountPatch = patch(
     name = "Loop count",
     description = "Adds a player settings menu item to choose how many times the app loops a video, " +

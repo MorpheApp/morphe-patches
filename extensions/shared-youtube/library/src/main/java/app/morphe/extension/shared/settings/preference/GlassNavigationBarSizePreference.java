@@ -83,6 +83,7 @@ public abstract class GlassNavigationBarSizePreference extends SeekBarsPreviewPr
         int selected;
         boolean showLabels;
 
+        @SuppressWarnings("BooleanMethodIsAlwaysInverted")
         public boolean isEmpty() {
             return labels.isEmpty();
         }

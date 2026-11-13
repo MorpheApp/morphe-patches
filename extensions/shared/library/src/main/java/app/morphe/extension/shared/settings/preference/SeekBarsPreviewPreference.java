@@ -21,6 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -104,7 +106,7 @@ public abstract class SeekBarsPreviewPreference extends Preference {
             titleRow.addView(value, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
             SeekBar seekBar = new SeekBar(context);
-            seekBar.setMax((config.max() - config.min()) / config.step());
+            seekBar.setMax((Objects.requireNonNull(config).max() - config.min()) / config.step());
             seekBar.setProgress(SeekBarPreference.valueToProgress(config, pending[i]));
             seekBar.setProgressTintList(ColorStateList.valueOf(accentColor));
             seekBar.setThumbTintList(ColorStateList.valueOf(accentColor));
@@ -145,7 +147,7 @@ public abstract class SeekBarsPreviewPreference extends Preference {
                 () -> {
                     for (int i = 0; i < settings.length; i++) {
                         seekBars[i].setProgress(SeekBarPreference.valueToProgress(
-                                SeekBarPreference.configFor(settings[i]), settings[i].defaultValue));
+                                Objects.requireNonNull(SeekBarPreference.configFor(settings[i])), settings[i].defaultValue));
                     }
                 },
                 false

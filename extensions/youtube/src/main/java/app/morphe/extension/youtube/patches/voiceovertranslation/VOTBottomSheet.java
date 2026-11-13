@@ -59,6 +59,7 @@ import app.morphe.extension.youtube.shared.PipDismissHelper;
  * translation service, TTS engine/voice, plus sliders for volumes and speech rate cap.
  * Sub-pickers (language, voice, service) slide up over this sheet as separate dialogs.
  */
+@SuppressWarnings("unused")
 public final class VOTBottomSheet {
 
     private static final int DRAWABLE_CHEVRON_RIGHT = ResourceUtils.getIdentifier(

@@ -100,14 +100,12 @@ final class EdgeTtsV2Token {
         w[15] = bigEndian(data, 3);
         for (int i = 16; i < 30; i++) {
             int value = PARTIAL_SCHEDULE[i - 16];
-            if (i - 2 >= 14) {
-                int x = sigma1(w[i - 2]);
-                value += (i == 16 ? x ^ 0x000B92C0 : x);
-            }
+            int x1 = sigma1(w[i - 2]);
+            value += (i == 16 ? x1 ^ 0x000B92C0 : x1);
             if (i - 7 >= 14) value += w[i - 7];
             if (i - 15 >= 14) {
                 int x = sigma0(w[i - 15]);
-                value += (i == 29 ? x ^ 0x059C0B80 : x);
+                value += x ^ 0x059C0B80;
             }
             w[i] = value;
         }

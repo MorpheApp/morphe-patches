@@ -37,7 +37,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val DISABLE_FULLSCREEN_GESTURES_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableFullscreenGesturesPatch;"
 
-@Suppress("unused")
 val disableFullscreenGesturesPatch = patch(
     name = "Disable fullscreen gestures",
     description = "Adds options to selectively disable gestures for entering and exiting fullscreen mode, and to disable pinch-to-zoom.",

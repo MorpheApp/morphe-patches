@@ -16,11 +16,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.preference.PreferenceFragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toolbar;
+import android.window.OnBackInvokedDispatcher;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -82,10 +84,10 @@ public abstract class BaseActivityHook extends Activity {
                 return;
             }
 
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
                     && !ENABLE_PREDICTIVE_BACK_ANIMATION) {
                 activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
-                        android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+                        OnBackInvokedDispatcher.PRIORITY_DEFAULT,
                         () -> closeSettings(activity)
                 );
             }
@@ -164,6 +166,7 @@ public abstract class BaseActivityHook extends Activity {
     /**
      * Returns the resource ID for the content view layout.
      */
+    @SuppressWarnings("SameReturnValue")
     protected int getContentViewResourceId() {
         return LAYOUT_MORPHE_SETTINGS_WITH_TOOLBAR;
     }

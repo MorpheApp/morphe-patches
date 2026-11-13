@@ -23,7 +23,10 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.text.InputFilter;
+import android.util.Base64;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,9 +54,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
+import java.util.function.IntConsumer;
 import org.json.JSONObject;
 
 /** Player-integrated UI, with one live shared-state feed per YTM process. */
+@SuppressWarnings("unused")
 public final class JamUI {
 
     private static final boolean ENABLED = Settings.JAM_ENABLED.get();
@@ -556,7 +561,7 @@ public final class JamUI {
             Context c,
             String title,
             String[] labels,
-            java.util.function.IntConsumer selected
+            IntConsumer selected
     ) {
         Pair<Dialog, LinearLayout> ui = createDialog(
                 c,
@@ -654,8 +659,8 @@ public final class JamUI {
         input.setTextSize(22);
         input.setTypeface(Typeface.MONOSPACE);
         input.setInputType(4097);
-        input.setFilters(new android.text.InputFilter[] {
-                new android.text.InputFilter.LengthFilter(512),
+        input.setFilters(new InputFilter[] {
+                new InputFilter.LengthFilter(512),
         });
         content.addView(input, new LinearLayout.LayoutParams(-1, dp(c, 56)));
         Pair<Dialog, LinearLayout> ui = createDialog(
@@ -719,8 +724,8 @@ public final class JamUI {
                 TextView text = new TextView(c);
                 text.setText(code);
                 text.setTextSize(32);
-                text.setTypeface(android.graphics.Typeface.MONOSPACE);
-                text.setGravity(android.view.Gravity.CENTER);
+                text.setTypeface(Typeface.MONOSPACE);
+                text.setGravity(Gravity.CENTER);
                 text.setPadding(24, 32, 24, 32);
                 text.setTextIsSelectable(true);
                 long minutes = Math.max(
@@ -766,9 +771,9 @@ public final class JamUI {
     }
 
     private static void showQr(Context c, JSONObject r) {
-        byte[] bytes = android.util.Base64.decode(
+        byte[] bytes = Base64.decode(
                 r.optString("qr"),
-                android.util.Base64.DEFAULT
+                Base64.DEFAULT
         );
         ImageView image = new ImageView(c);
         image.setImageBitmap(
@@ -796,7 +801,6 @@ public final class JamUI {
         ui.first.show();
     }
 
-    @SuppressWarnings("unused")
     public static boolean offer(YouTubeMusicBridge.QueueAccess access, byte[] bytes) {
         try {
             return offerQueueCommand(access, bytes);

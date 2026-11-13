@@ -28,7 +28,7 @@ public final class PlaylistQueue {
 
     public record Entry(String videoId, String title, @Nullable VideoMetadata metadata,
                         @Nullable SourcePosition sourcePosition) {
-        public Entry(String videoId, String title, @Nullable VideoMetadata metadata) {
+        Entry(String videoId, String title, @Nullable VideoMetadata metadata) {
             this(videoId, title, metadata, null);
         }
 
@@ -92,7 +92,7 @@ public final class PlaylistQueue {
                 page.totalCount(), page.unavailableVideosMessage());
     }
 
-    /** A Mix is a complete generated batch; preserve duplicate occurrences and native display data. */
+    /** A Mix is a complete-generated batch; preserve duplicate occurrences and native display data. */
     static PlaylistQueue fromMetadata(List<VideoMetadata> videos) {
         if (videos.isEmpty()) {
             throw new IllegalArgumentException("Playlist has no playable videos");

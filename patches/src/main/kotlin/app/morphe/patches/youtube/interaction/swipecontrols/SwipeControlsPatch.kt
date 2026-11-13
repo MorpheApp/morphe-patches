@@ -173,7 +173,6 @@ private val swipeControlsResourcePatch = patch {
     }
 }
 
-@Suppress("unused")
 val swipeControlsPatch = patch(
     name = "Swipe controls",
     description = "Adds options to enable and configure volume and brightness swipe controls."

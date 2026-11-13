@@ -33,7 +33,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/scrobbling/ScrobblePatch;"
 
-@Suppress("unused")
 val scrobblingPatch = patch(
     name = "Scrobbling",
     description = "Adds options to add played tracks to Last.fm and ListenBrainz."

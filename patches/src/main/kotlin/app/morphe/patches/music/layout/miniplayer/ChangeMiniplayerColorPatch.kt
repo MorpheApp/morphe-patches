@@ -133,7 +133,6 @@ internal val miniplayerColorHookPatch = patch {
     }
 }
 
-@Suppress("unused")
 val changeMiniplayerColorPatch = patch(
     name = "Change miniplayer color",
     description = "Adds an option to change the miniplayer background color to match the fullscreen player."

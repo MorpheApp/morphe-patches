@@ -22,6 +22,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -32,6 +35,7 @@ import java.util.function.LongSupplier;
 import app.morphe.extension.shared.Logger;
 
 /** Bounded unauthenticated browse adapter. Only complete recognized catalogs are returned. */
+@SuppressWarnings("unused")
 public final class CatalogClient {
     static final String CLIENT_VERSION = "20.26.46";
     static final int PAGE_BYTES = 5 * 1024 * 1024,
@@ -155,11 +159,11 @@ public final class CatalogClient {
             delay = Long.parseLong(value) * 1000;
         } else {
             try {
-                delay = java.time.ZonedDateTime.parse(
-                                value, java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME)
+                delay = ZonedDateTime.parse(
+                                value, DateTimeFormatter.RFC_1123_DATE_TIME)
                         .toInstant()
                         .toEpochMilli() - now;
-            } catch (java.time.format.DateTimeParseException ex) {
+            } catch (DateTimeParseException ex) {
                 Logger.printDebug(() -> "Unknown Retry-After: " + value, ex);
                 return 30000;
             }

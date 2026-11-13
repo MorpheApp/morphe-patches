@@ -47,10 +47,12 @@ public class TreeNodeElementPatch {
         }
     }
 
+    @SuppressWarnings("EmptyMethod")
     private static void onComponentLoaded(CharSequence path, List<Object> treeNodeResultList) {
         // Code added during patching.
     }
 
+    @SuppressWarnings("EmptyMethod")
     private static void onLazilyConvertedElementLoaded(CharSequence identifier, List<Object> treeNodeResultList) {
         // Code added during patching.
     }

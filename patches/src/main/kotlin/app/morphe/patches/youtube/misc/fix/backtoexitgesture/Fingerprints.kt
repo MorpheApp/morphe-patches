@@ -96,7 +96,7 @@ internal object BackToRefreshFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf(),
     filters = listOf(
-        methodCall(smali = "Lj\$/util/OptionalInt;->getAsInt()I"),
+        methodCall(smali = "Lj$/util/OptionalInt;->getAsInt()I"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             returnType = "Z",

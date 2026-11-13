@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.SharedSettings;
 
+@SuppressWarnings("unused")
 abstract class Check {
     private static final int NUMBER_OF_TIMES_TO_IGNORE_WARNING_BEFORE_DISABLING = 2;
 

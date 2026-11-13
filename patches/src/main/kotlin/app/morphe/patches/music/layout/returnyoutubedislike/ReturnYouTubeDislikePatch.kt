@@ -63,7 +63,6 @@ private val returnYouTubeDislikeResourcePatch = patch {
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/ReturnYouTubeDislikePatch;"
 
-@Suppress("unused")
 val returnYouTubeDislikePatch = patch(
     name = "Return YouTube Dislike",
     description = "Adds an option to show the dislike count of tracks with Return YouTube Dislike.",

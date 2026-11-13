@@ -7,11 +7,13 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
 import java.text.Normalizer;
@@ -174,6 +176,7 @@ public final class LunaBeatProvider extends ScoredSongProvider {
         return "LunaBeat";
     }
 
+    @NonNull
     @Override
     protected List<ScoredSong> fetchScoredSongs(TrackInfo track) {
         ensureIndexLoaded();
@@ -238,7 +241,7 @@ public final class LunaBeatProvider extends ScoredSongProvider {
 
             StringBuilder sb = new StringBuilder();
             byte[] buf = new byte[8192];
-            java.io.InputStream in = conn.getInputStream();
+            InputStream in = conn.getInputStream();
             int n;
             while ((n = in.read(buf)) != -1) {
                 sb.append(new String(buf, 0, n, StandardCharsets.UTF_8));
