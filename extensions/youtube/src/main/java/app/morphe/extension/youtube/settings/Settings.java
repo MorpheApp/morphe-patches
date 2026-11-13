@@ -775,8 +775,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting CUSTOM_SNACKBAR_CORNER_RADIUS = new IntegerSetting("morphe_custom_snackbar_corner_radius", 8, true, parentsAll(parentNot(HIDE_SNACKBAR), parent(CUSTOM_SNACKBAR_THEME)));
 
     // Miscellaneous
-    public static final BooleanSetting ANNOUNCEMENTS = new BooleanSetting("morphe_announcements", TRUE);
-    public static final IntegerSetting ANNOUNCEMENT_LAST_ID = new IntegerSetting("morphe_announcement_last_id", -1, false, false);
     public static final BooleanSetting BACK_BUTTON_ALWAYS_EXITS_FEED = new BooleanSetting("morphe_back_button_always_exits_feed", TRUE, true);
     public static final BooleanSetting DISABLE_SCROLLING_SPEED = new BooleanSetting("morphe_disable_scrolling_speed_limit", TRUE, true);
 
