@@ -18,9 +18,8 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/Shuffle
 
 @Suppress("unused")
 val shuffleButtonAsLoopPatch = bytecodePatch(
-    name = "Use loop button instead of shuffle",
-    description = "Adds an option to replace the shuffle button of the media controls " +
-            "(notification shade and lock screen) with the loop button."
+    name = "Replace shuffle with loop button",
+    description = "Replaces the shuffle button with the loop button in the media controls notification and dynamic island."
 ) {
     dependsOn(
         sharedExtensionPatch,

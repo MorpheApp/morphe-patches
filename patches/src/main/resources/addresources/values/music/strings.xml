@@ -279,8 +279,8 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_remember_shuffle_state_title">Remember shuffle state</string>
 
     <!-- interaction.shuffleloop.shuffleButtonAsLoopPatch -->
-    <string name="morphe_music_shuffle_button_as_loop_title">Replace shuffle with loop button in media controls</string>
-    <string name="morphe_music_shuffle_button_as_loop_summary">Replaces the shuffle button of the media controls on the lock screen and notification shade with the loop button</string>
+    <string name="morphe_music_shuffle_button_as_loop_title">Replace shuffle with loop button</string>
+    <string name="morphe_music_shuffle_button_as_loop_summary">Replaces the shuffle button with the loop button in the media controls notification and dynamic island.</string>
 
     <!-- video.speed.playbackSpeedPatch -->
     <string name="morphe_music_playback_speed_title">Playback speed</string>
