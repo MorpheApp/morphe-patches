@@ -34,7 +34,7 @@ final class AmbientLightMath {
     // Reused between frames. The light is only computed on one thread.
     private static float[] nearRows = new float[0];
     private static float[] farRows = new float[0];
-    /** Cells of the light this far inside the picture are never shown. */
+    /** Cells of the light this far inside the picture are behind it, and only show while the player moves. */
     private static final float HIDDEN_MARGIN = 2f;
     private static final short HALF_ONE = 0x3C00;
     private static final int SMALLEST_NORMAL_HALF_BITS = 0x38800000;
@@ -503,12 +503,13 @@ final class AmbientLightMath {
     }
 
     /**
-     * Writes the square root of the light into {@code encoded}, for the cells that can be seen.
-     * That is what an extended sRGB bitmap expects.
+     * Writes the square root of the light into {@code encoded}. That is what an extended sRGB
+     * bitmap expects. The cells behind the picture get the colors of the picture: when the
+     * player moves, they are in view until the light is made for the new place.
      *
-     * @return The largest change among those cells from {@code presented}.
+     * @return The largest change from {@code presented} of any of the cells that can be seen.
      */
-    static float encodeVisible(float[] light, float[] encoded, float[] presented, int width, int height, float[] picture) {
+    static float encode(float[] light, float[] encoded, float[] presented, int width, int height, float[] picture) {
         final int hiddenFrom = hiddenFrom(picture);
         final int hiddenTo = hiddenTo(picture, width);
         float largestChange = 0f;
@@ -516,15 +517,11 @@ final class AmbientLightMath {
         for (int y = 0; y < height; y++) {
             final boolean hiddenRow = hiddenFrom < hiddenTo && isHiddenRow(y, picture);
             for (int x = 0; x < width; x++) {
-                if (hiddenRow && x == hiddenFrom) {
-                    index += (hiddenTo - hiddenFrom) * 3;
-                    x = hiddenTo - 1;
-                    continue;
-                }
+                final boolean hidden = hiddenRow && x >= hiddenFrom && x < hiddenTo;
                 for (int channel = 0; channel < 3; channel++) {
                     final float value = (float) Math.sqrt(Math.min(1f, light[index]));
                     encoded[index] = value;
-                    largestChange = Math.max(largestChange, Math.abs(value - presented[index]));
+                    if (!hidden) largestChange = Math.max(largestChange, Math.abs(value - presented[index]));
                     index++;
                 }
             }
@@ -533,29 +530,13 @@ final class AmbientLightMath {
     }
 
     /**
-     * Writes the visible cells as half floats. Alpha is left alone: {@link #fillAlpha} sets it once.
+     * Writes the cells as half floats. Alpha is left alone: {@link #fillAlpha} sets it once.
      */
-    @SuppressWarnings("SameParameterValue")
-    static void toHalfFloats(float[] encoded, short[] halfFloats, int width, int height, float[] picture) {
-        final int hiddenFrom = hiddenFrom(picture);
-        final int hiddenTo = hiddenTo(picture, width);
-        int source = 0;
-        int target = 0;
-        for (int y = 0; y < height; y++) {
-            final boolean hiddenRow = hiddenFrom < hiddenTo && isHiddenRow(y, picture);
-            for (int x = 0; x < width; x++) {
-                if (hiddenRow && x == hiddenFrom) {
-                    source += (hiddenTo - hiddenFrom) * 3;
-                    target += (hiddenTo - hiddenFrom) * 4;
-                    x = hiddenTo - 1;
-                    continue;
-                }
-                halfFloats[target] = encodeHalf(encoded[source]);
-                halfFloats[target + 1] = encodeHalf(encoded[source + 1]);
-                halfFloats[target + 2] = encodeHalf(encoded[source + 2]);
-                source += 3;
-                target += 4;
-            }
+    static void toHalfFloats(float[] encoded, short[] halfFloats) {
+        for (int source = 0, target = 0; source < encoded.length; source += 3, target += 4) {
+            halfFloats[target] = encodeHalf(encoded[source]);
+            halfFloats[target + 1] = encodeHalf(encoded[source + 1]);
+            halfFloats[target + 2] = encodeHalf(encoded[source + 2]);
         }
     }
 
