@@ -179,6 +179,8 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
      * YouTube override of the base unlock, which additionally adds the default download types
      * the server omitted. The recommended downloads of the Downloads page list only 360p and 144p,
      * since the server omits the qualities it would not automatically download.
+     * This also applies to the unlock of the base, which unlocks Premium locked formats
+     * but keeps the entries of the server.
      * The same shared save method shows the quality picker of every download entry point,
      * so this keeps every entry point saving with the same qualities.
      * <p>
@@ -195,24 +197,22 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
             }
 
             byte[] unlocked = BaseInAppDownloadsPatch.unlockOfflineability(offlineability);
-            if (unlocked != null) {
-                return unlocked;
+            byte[] source = unlocked;
+            if (source == null && offlineability instanceof MessageLite message) {
+                // The base kept the original: the server lists formats and none are Premium locked.
+                source = message.toByteArray();
             }
-
-            // The base kept the original: the server lists formats and none are Premium locked.
-            // The types the server omitted are added, so the picker shows every quality.
-            if (!(offlineability instanceof MessageLite message)) {
-                return null;
-            }
-            OfflineabilityRenderer renderer = OfflineabilityRenderer.parseFrom(message.toByteArray());
-            List<OfflineFormat> formats = renderer.getFormatsList();
-            if (formats.isEmpty()) {
+            if (source == null) {
                 return null;
             }
 
-            List<OfflineFormat> merged = mergeMissingFormatTypes(unlockedFormats(formats));
+            // The base may have unlocked the Premium locked formats, but it always keeps the
+            // entries of the server. The types the server omitted are added as well,
+            // so the picker shows every quality.
+            OfflineabilityRenderer renderer = OfflineabilityRenderer.parseFrom(source);
+            List<OfflineFormat> merged = mergeMissingFormatTypes(renderer.getFormatsList());
             if (merged == null) {
-                return null;
+                return unlocked;
             }
 
             Logger.printDebug(() -> "Adding offline formats the server omitted");
