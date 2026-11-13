@@ -1307,6 +1307,11 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_disable_player_popup_panels_title">Disable player popup panels</string>
     <string name="morphe_disable_player_popup_panels_summary">Disables playlist and live chat panels from opening automatically</string>
 
+    <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+    <string name="morphe_fullscreen_playlist_panel_title">Show playlist panel in fullscreen</string>
+    <string name="morphe_fullscreen_playlist_panel_summary_on">Playlist panel opens over the fullscreen player</string>
+    <string name="morphe_fullscreen_playlist_panel_summary_off">Playlist panel exits fullscreen on tablets</string>
+
     <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
     <string name="morphe_disable_playlist_autoplay_title">Disable playlist autoplay</string>
     <string name="morphe_disable_playlist_autoplay_summary">Prevents playlists from automatically advancing to the next video</string>
