@@ -23,20 +23,16 @@ import com.google.protobuf.MessageLite;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.innertube.SavedVideo.OfflineStateAction;
 import app.morphe.extension.shared.innertube.SavedVideo.SavedPlayerResponse;
 import app.morphe.extension.shared.patches.DownloadMode;
-import app.morphe.extension.shared.patches.MediaHttpHeader;
 import app.morphe.extension.shared.patches.MediaHttpRequest;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.Setting;
@@ -591,7 +587,8 @@ public class SpoofVideoStreamsPatch {
      * <p>
      * Called off the main thread when native code starts a media request.
      * The app makes the requests of SABR streams itself, and names itself and the device it runs on,
-     * even when the streams are from a TV client. These requests name the TV client instead.
+     * even when the streams are from a TV client. These requests name the TV client instead,
+     * and the requests of the Mobile Web client use the streaming session of the website (see {@link MwebStream}).
      *
      * @param callbacks Native callbacks of the request, which are also given the response.
      * @return The request to start.
@@ -617,31 +614,10 @@ public class SpoofVideoStreamsPatch {
                 // The other TV clients that use SABR are the same client on another device.
                 if (ClientType.TV_SABR.clientName.equals(urlClient)) {
                     byte[] clientInfo = SabrRequestBody.buildClientInfo(ClientType.TV_SABR, getLocaleOverride());
-                    requestToStart = request.patch_withBody(SabrRequestBody.replaceClientInfo(body, clientInfo, null, null, null));
-                } else if (ClientType.MWEB.clientName.equals(urlClient)) {
-                    // The request uses the streaming session that the website made for the video:
-                    // its client, its PoToken and its config. The server sends the media only with them,
-                    // and with the contexts the previous responses gave.
-                    String streamId = Objects.toString(uri.getQueryParameter("id"), "");
-                    MwebSiteSession.Session siteSession = MwebSiteSession.getSession(MwebStreamGuard.getVideoId(streamId));
-                    MwebStreamGuard.onRequest(streamId, uri, siteSession != null);
-                    byte[] clientInfo = siteSession != null && siteSession.clientInfo != null
-                            ? siteSession.clientInfo
-                            : SabrRequestBody.buildClientInfo(ClientType.MWEB, getLocaleOverride());
                     requestToStart = request.patch_withBodyAndHeaders(
-                            SabrRequestBody.replaceClientInfo(body, clientInfo,
-                                    siteSession == null ? null : siteSession.poToken,
-                                    SabrContexts.getContextsToSend(streamId),
-                                    siteSession == null ? null : siteSession.ustreamerConfig),
-                            getWebMediaHeaders(request));
-                    webResponseReaders.put(callbacks, new WebStreamReader(streamId, new SabrResponseReader(
-                            (partType, part) -> {
-                                SabrContexts.onPart(streamId, partType, part);
-                                MwebStreamGuard.onPart(streamId, partType, part);
-                            },
-                            SabrContexts.PART_SABR_CONTEXT_UPDATE, SabrContexts.PART_SABR_CONTEXT_SENDING_POLICY,
-                            MwebStreamGuard.PART_MEDIA_HEADER, MwebStreamGuard.PART_SABR_ERROR,
-                            MwebStreamGuard.PART_NEXT_REQUEST_POLICY)));
+                            SabrRequestBody.replaceClientInfo(body, clientInfo), request.patch_getHeaders());
+                } else if (ClientType.MWEB.clientName.equals(urlClient)) {
+                    requestToStart = MwebStream.onMediaRequest(request, uri, body, callbacks, getLocaleOverride());
                 }
             }
 
@@ -655,37 +631,6 @@ public class SpoofVideoStreamsPatch {
         }
     }
 
-    private record WebStreamReader(String streamId, SabrResponseReader reader) {
-    }
-
-    /**
-     * Readers of the media responses of the web clients, by the native callbacks of their request.
-     */
-    private static final Map<Object, WebStreamReader> webResponseReaders =
-            Collections.synchronizedMap(new WeakHashMap<>());
-
-    /**
-     * Headers that name the browser of the web client and its website,
-     * instead of the app that makes the request.
-     */
-    private static ArrayList<Object> getWebMediaHeaders(MediaHttpRequest request) {
-        ArrayList<Object> headers = new ArrayList<>();
-        ArrayList<Object> appHeaders = request.patch_getHeaders();
-        if (appHeaders != null) {
-            for (Object header : appHeaders) {
-                String name = ((MediaHttpHeader) header).patch_getName();
-                if (!"User-Agent".equalsIgnoreCase(name) && !"Origin".equalsIgnoreCase(name)
-                        && !"Referer".equalsIgnoreCase(name)) {
-                    headers.add(header);
-                }
-            }
-        }
-        headers.add(request.patch_newHeader("User-Agent", ClientType.MWEB.getUserAgent()));
-        headers.add(request.patch_newHeader("Origin", MwebSignIn.ORIGIN));
-        headers.add(request.patch_newHeader("Referer", MwebSignIn.ORIGIN + "/"));
-        return headers;
-    }
-
     /**
      * Injection point.
      * Called with each chunk of a media response, before native code reads it.
@@ -695,17 +640,7 @@ public class SpoofVideoStreamsPatch {
             return;
         }
         try {
-            if (!webResponseReaders.isEmpty()) {
-                WebStreamReader webReader = webResponseReaders.get(callbacks);
-                if (webReader != null) {
-                    try {
-                        MwebStreamGuard.onStatus(webReader.streamId, webReader.reader.read(chunk));
-                    } catch (Exception ex) {
-                        webResponseReaders.remove(callbacks);
-                        Logger.printInfo(() -> "Could not read media response", ex);
-                    }
-                }
-            }
+            MwebStream.onMediaResponseChunk(callbacks, chunk);
             SabrMediaLogger.onResponseChunk(callbacks, chunk);
         } catch (Exception ex) {
             Logger.printException(() -> "onMediaResponseChunk failure", ex);

@@ -146,13 +146,13 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
                 null,
                 // OK button text.
                 str(signedIn
-                        ? "morphe_spoof_video_streams_sign_in_mweb_dialog_sign_out"
+                        ? "morphe_spoof_video_streams_sign_in_android_vr_dialog_reset"
                         : "gms_core_dialog_continue_text"),
                 // OK button action.
                 signedIn
                         ? () -> {
                             MwebSignIn.signOut();
-                            // The cookies are removed on the main thread after this.
+                            // After the cookie store has handled the removed cookies.
                             Utils.runOnMainThread(this::updateUI);
                         }
                         : this::showSignInDialog,
@@ -325,7 +325,7 @@ public abstract class MwebSignInPreference extends Preference implements Prefere
         CustomDialog.create(
                 getContext(),
                 // Title.
-                str("morphe_spoof_video_streams_sign_in_mweb_success_dialog_title"),
+                str("morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title"),
                 // Message.
                 BulletPointPreference.formatIntoBulletPoints(
                         str("morphe_spoof_video_streams_sign_in_mweb_success_dialog_message")

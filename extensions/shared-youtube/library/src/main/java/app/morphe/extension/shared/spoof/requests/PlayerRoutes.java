@@ -138,9 +138,9 @@ public final class PlayerRoutes {
                 JSONObject contentPlaybackContext = new JSONObject();
                 contentPlaybackContext.put(
                         "referer",
-                        String.format(clientType == ClientType.MWEB
-                                ? "https://m.youtube.com/watch?v=%s"
-                                : "https://www.youtube.com/tv#/watch?v=%s", videoId)
+                        web
+                                ? MwebSignIn.ORIGIN + "/watch?v=" + videoId
+                                : String.format("https://www.youtube.com/tv#/watch?v=%s", videoId)
                 );
                 contentPlaybackContext.put("html5Preference", "HTML5_PREF_WANTS");
                 Integer signatureTimestamp = JavaScriptManager.getSignatureTimestamp();

@@ -7,7 +7,7 @@
 
 package app.morphe.extension.shared.spoof;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.GuardedBy;
 
 import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.CodedOutputStream;
@@ -16,16 +16,14 @@ import com.google.protobuf.WireFormat;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 
 /**
- * SABR contexts of the web clients.
+ * SABR contexts of a stream of a web client.
  * <p>
  * The media responses of a web client can have a context, that the following requests must send back.
  * Until a request has it, the server answers with only a new context and a delay before the next request,
@@ -54,12 +52,6 @@ final class SabrContexts {
     private static final int CONTEXT_TYPE_FIELD = 1;
     private static final int CONTEXT_VALUE_FIELD = 2;
 
-    /**
-     * Streams whose contexts are kept. A few, so the contexts of the last videos are not lost
-     * while their player is still open.
-     */
-    private static final int MAX_STREAMS = 5;
-
     private static final class Context {
         byte[] value;
         boolean send;
@@ -71,13 +63,10 @@ final class SabrContexts {
     }
 
     /**
-     * Contexts by stream (the 'id' parameter of the stream url), then by type.
+     * Contexts by type.
      */
-    private static final Map<String, Map<Integer, Context>> contextsByStream =
-            Utils.createSizeRestrictedMap(MAX_STREAMS, true);
-
-    private SabrContexts() {
-    }
+    @GuardedBy("this")
+    private final Map<Integer, Context> contexts = new LinkedHashMap<>();
 
     /**
      * @param contexts    SabrContext messages to send.
@@ -89,11 +78,7 @@ final class SabrContexts {
     /**
      * @return The contexts to send with the next request of the stream.
      */
-    static synchronized ToSend getContextsToSend(String streamId) throws IOException {
-        Map<Integer, Context> contexts = contextsByStream.get(streamId);
-        if (contexts == null) {
-            return new ToSend(Collections.emptyList(), Collections.emptyList());
-        }
+    synchronized ToSend toSend() throws IOException {
         List<byte[]> messages = new ArrayList<>(contexts.size());
         List<Integer> unsentTypes = new ArrayList<>();
         for (Map.Entry<Integer, Context> entry : contexts.entrySet()) {
@@ -113,21 +98,22 @@ final class SabrContexts {
     }
 
     /**
-     * Called with the parts of the media responses of a stream of a web client.
+     * Called with the parts of the media responses of the stream.
      */
-    static synchronized void onPart(String streamId, long partType, byte[] part) {
+    synchronized void onPart(long partType, byte[] part) {
         try {
             if (partType == PART_SABR_CONTEXT_UPDATE) {
-                onContextUpdate(streamId, part);
+                onContextUpdate(part);
             } else if (partType == PART_SABR_CONTEXT_SENDING_POLICY) {
-                onSendingPolicy(streamId, part);
+                onSendingPolicy(part);
             }
         } catch (IOException ex) {
             Logger.printInfo(() -> "Could not read SABR context part: " + partType, ex);
         }
     }
 
-    private static void onContextUpdate(String streamId, byte[] part) throws IOException {
+    @GuardedBy("this")
+    private void onContextUpdate(byte[] part) throws IOException {
         int type = -1;
         byte[] value = null;
         boolean sendByDefault = false;
@@ -153,11 +139,6 @@ final class SabrContexts {
             return;
         }
 
-        Map<Integer, Context> contexts = contextsByStream.get(streamId);
-        if (contexts == null) {
-            contexts = new LinkedHashMap<>();
-            contextsByStream.put(streamId, contexts);
-        }
         Context existing = contexts.get(type);
         if (existing != null && writePolicy == WRITE_POLICY_KEEP_EXISTING) {
             return;
@@ -171,11 +152,8 @@ final class SabrContexts {
         Logger.printDebug(() -> "SABR context updated: " + updatedType);
     }
 
-    private static void onSendingPolicy(String streamId, byte[] part) throws IOException {
-        Map<Integer, Context> contexts = contextsByStream.get(streamId);
-        if (contexts == null) {
-            return;
-        }
+    @GuardedBy("this")
+    private void onSendingPolicy(byte[] part) throws IOException {
         CodedInputStream input = CodedInputStream.newInstance(part);
         for (int tag; (tag = input.readTag()) != 0; ) {
             final int field = WireFormat.getTagFieldNumber(tag);

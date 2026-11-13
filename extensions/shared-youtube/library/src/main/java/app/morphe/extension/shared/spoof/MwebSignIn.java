@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -64,6 +67,15 @@ public final class MwebSignIn {
     private static final String SAPISID_COOKIE = "SAPISID";
 
     /**
+     * Each authorization scheme of the website, and the cookie it hashes.
+     */
+    private static final String[][] AUTHORIZATION_SCHEMES = {
+            {"SAPISIDHASH", SAPISID_COOKIE},
+            {"SAPISID1PHASH", "__Secure-1PAPISID"},
+            {"SAPISID3PHASH", "__Secure-3PAPISID"},
+    };
+
+    /**
      * DELEGATED_SESSION_ID||USER_SESSION_ID for a brand account, or USER_SESSION_ID|| for the main account.
      */
     private static final Pattern DATA_SYNC_ID_PATTERN = Pattern.compile("\"DATASYNC_ID\":\"([^\"]+)");
@@ -72,9 +84,15 @@ public final class MwebSignIn {
      */
     private static final Pattern LOGGED_OUT_PATTERN = Pattern.compile("\"LOGGED_IN\":false");
     private static final Pattern VISITOR_DATA_PATTERN = Pattern.compile("\"VISITOR_DATA\":\"([^\"]+)");
+    private static final String DATA_SYNC_ID_SEPARATOR = "||";
 
     private static final int HTTP_TIMEOUT_MILLISECONDS = 10 * 1000;
 
+    /**
+     * Held while the DataSyncId is fetched, so it is fetched once at a time.
+     * The state below has its own lock, so the main thread never waits for the fetch.
+     */
+    private static final Object fetchLock = new Object();
 
     /**
      * Id of the signed in account, with the session of the user that the authorization names.
@@ -113,180 +131,178 @@ public final class MwebSignIn {
         return connection;
     }
 
+    /**
+     * @return The cookies of the website, or null if there are none.
+     */
     @Nullable
-    private static String getCookieValue(String name) {
+    private static String getCookies() {
         try {
-            String cookies = CookieManager.getInstance().getCookie(ORIGIN);
-            if (cookies == null) {
-                return null;
-            }
-            for (String cookie : cookies.split(";")) {
-                String trimmed = cookie.trim();
-                if (trimmed.startsWith(name + "=")) {
-                    String value = trimmed.substring(name.length() + 1);
-                    return value.isEmpty() ? null : value;
-                }
-            }
+            return CookieManager.getInstance().getCookie(ORIGIN);
         } catch (Exception ex) {
             // WebView is missing or broken.
             Logger.printInfo(() -> "Could not read the cookies", ex);
+            return null;
+        }
+    }
+
+    @Nullable
+    private static String getCookieValue(@Nullable String cookies, String name) {
+        if (cookies == null) {
+            return null;
+        }
+        for (String cookie : cookies.split(";")) {
+            String trimmed = cookie.trim();
+            if (trimmed.startsWith(name + "=")) {
+                String value = trimmed.substring(name.length() + 1);
+                return value.isEmpty() ? null : value;
+            }
         }
         return null;
     }
 
     public static boolean isSignedIn() {
-        return getCookieValue(SAPISID_COOKIE) != null;
+        return getCookieValue(getCookies(), SAPISID_COOKIE) != null;
     }
 
     /**
-     * @return The cookies of the sign in, or null if signed out.
+     * The headers of an InnerTube request of the website host with the web sign in, as the website makes it.
+     * Blocking call, and must be made off the main thread.
+     *
+     * @return The headers, or null if signed out or the account could not be fetched.
      */
     @Nullable
-    public static String getCookieHeader() {
-        if (!isSignedIn()) {
+    public static Map<String, String> getRequestHeaders() {
+        Utils.verifyOffMainThread();
+
+        String cookies = getCookies();
+        String id = getDataSyncId(cookies);
+        if (id == null) {
             return null;
         }
-        try {
-            return CookieManager.getInstance().getCookie(ORIGIN);
-        } catch (Exception ex) {
-            Logger.printInfo(() -> "Could not read the cookies", ex);
+
+        // The id is the session of the user for the main account,
+        // or the session of the brand account and then the session of the user.
+        final int separator = id.indexOf(DATA_SYNC_ID_SEPARATOR);
+        String userSessionId = id;
+        String delegatedSessionId = null;
+        if (separator >= 0) {
+            String afterSeparator = id.substring(separator + DATA_SYNC_ID_SEPARATOR.length());
+            if (afterSeparator.isEmpty()) {
+                userSessionId = id.substring(0, separator);
+            } else {
+                userSessionId = afterSeparator;
+                delegatedSessionId = id.substring(0, separator);
+            }
+        }
+
+        String authorization = getAuthorization(cookies, userSessionId);
+        if (authorization == null) {
             return null;
         }
+
+        Map<String, String> headers = new LinkedHashMap<>();
+        headers.put("Cookie", cookies);
+        headers.put("Authorization", authorization);
+        // The authorization is made for this origin.
+        headers.put("Origin", ORIGIN);
+        headers.put("X-Origin", ORIGIN);
+        headers.put("X-Goog-AuthUser", "0");
+        headers.put("X-Youtube-Bootstrap-Logged-In", "true");
+        if (delegatedSessionId != null) {
+            // A brand account.
+            headers.put("X-Goog-PageId", delegatedSessionId);
+        }
+        return headers;
     }
 
     /**
      * The authorization of a web request, as the website makes it:
      * a hash of each SAPISID cookie with the origin and the session of the account.
      *
-     * @param origin The origin the request is made from, which is also sent in the 'X-Origin' header.
      * @return The authorization, or null if signed out.
      */
     @Nullable
-    public static String getAuthorization(String origin) {
-        String[][] schemes = {
-                {"SAPISIDHASH", SAPISID_COOKIE},
-                {"SAPISID1PHASH", "__Secure-1PAPISID"},
-                {"SAPISID3PHASH", "__Secure-3PAPISID"},
-        };
-        String userSessionId = getUserSessionId();
+    private static String getAuthorization(String cookies, String userSessionId) {
         final long seconds = System.currentTimeMillis() / 1000;
         StringBuilder authorization = new StringBuilder();
         try {
             MessageDigest sha1 = MessageDigest.getInstance("SHA-1");
-            for (String[] scheme : schemes) {
-                String sid = getCookieValue(scheme[1]);
+            for (String[] scheme : AUTHORIZATION_SCHEMES) {
+                String sid = getCookieValue(cookies, scheme[1]);
                 if (sid == null) {
                     continue;
                 }
-                String hashInput = (userSessionId == null ? "" : userSessionId + " ")
-                        + seconds + " " + sid + " " + origin;
+                String hashInput = userSessionId + " " + seconds + " " + sid + " " + ORIGIN;
                 byte[] digest = sha1.digest(hashInput.getBytes(StandardCharsets.UTF_8));
                 if (authorization.length() > 0) {
                     authorization.append(' ');
                 }
                 authorization.append(scheme[0]).append(' ').append(seconds).append('_');
                 for (byte b : digest) {
-                    authorization.append(String.format("%02x", b));
+                    authorization.append(Character.forDigit((b >> 4) & 0xF, 16))
+                            .append(Character.forDigit(b & 0xF, 16));
                 }
-                if (userSessionId != null) {
-                    authorization.append("_u");
-                }
+                authorization.append("_u");
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "Could not make the authorization", ex);
+            Logger.printException(() -> "getAuthorization failure", ex);
             return null;
         }
         return authorization.length() == 0 ? null : authorization.toString();
     }
 
     /**
-     * @return The session of the brand account the user is signed in as, or null if it is the main account
-     *         or {@link #getDataSyncId()} was not fetched.
-     */
-    @Nullable
-    public static String getDelegatedSessionId() {
-        String[] parts = splitDataSyncId();
-        return parts == null || parts[1].isEmpty() ? null : parts[0];
-    }
-
-    @Nullable
-    private static String getUserSessionId() {
-        String[] parts = splitDataSyncId();
-        if (parts == null) {
-            return null;
-        }
-        return parts[1].isEmpty() ? parts[0] : parts[1];
-    }
-
-    @Nullable
-    private static String[] splitDataSyncId() {
-        String id;
-        synchronized (MwebSignIn.class) {
-            id = dataSyncId;
-        }
-        if (id == null) {
-            return null;
-        }
-        final int separator = id.indexOf("||");
-        return separator < 0
-                ? new String[]{id, ""}
-                : new String[]{id.substring(0, separator), id.substring(separator + 2)};
-    }
-
-    /**
      * The id of the signed in account, with the session of the user that the authorization names.
-     * Blocking call, and must be made off the main thread.
      *
      * @return The id, or null if signed out or it could not be fetched.
      */
     @Nullable
-    public static String getDataSyncId() {
-        Utils.verifyOffMainThread();
-
-        String sapisid = getCookieValue(SAPISID_COOKIE);
+    private static String getDataSyncId(@Nullable String cookies) {
+        String sapisid = getCookieValue(cookies, SAPISID_COOKIE);
         if (sapisid == null) {
             return null;
         }
 
-        synchronized (MwebSignIn.class) {
-            if (dataSyncId != null && sapisid.equals(dataSyncIdSapisid)) {
-                return dataSyncId;
+        synchronized (fetchLock) {
+            synchronized (MwebSignIn.class) {
+                if (dataSyncId != null && sapisid.equals(dataSyncIdSapisid)) {
+                    return dataSyncId;
+                }
             }
 
             HttpURLConnection connection = null;
             try {
-                String cookies = getCookieHeader();
-                if (cookies == null) {
-                    return null;
-                }
                 connection = openWebConnection(ORIGIN + "/", cookies);
 
-                if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                    final int responseCode = connection.getResponseCode();
+                final int responseCode = connection.getResponseCode();
+                if (responseCode != HttpURLConnection.HTTP_OK) {
                     Logger.printDebug(() -> "Could not fetch the DataSyncId: " + responseCode);
                     return null;
                 }
 
                 String page = Requester.parseString(connection);
                 Matcher matcher = DATA_SYNC_ID_PATTERN.matcher(page);
-                if (!matcher.find() || matcher.group(1).isEmpty()) {
+                if (!matcher.find()) {
                     // The page is of a signed out user, so the sign in is no longer valid.
                     // Any other page, as a page about unusual traffic, keeps the sign in.
                     final boolean signedOutPage = LOGGED_OUT_PATTERN.matcher(page).find();
                     Logger.printDebug(() -> "No DataSyncId in the page, signed out page: " + signedOutPage);
                     if (signedOutPage) {
-                        Utils.runOnBackgroundThread(MwebSignIn::onSignInExpired);
+                        onSignInExpired();
                     }
                     return null;
                 }
 
                 saveResponseCookies(connection);
                 Matcher visitorDataMatcher = VISITOR_DATA_PATTERN.matcher(page);
-                visitorData = visitorDataMatcher.find() ? visitorDataMatcher.group(1) : null;
-                dataSyncId = matcher.group(1);
-                dataSyncIdSapisid = sapisid;
+                String id = matcher.group(1);
+                synchronized (MwebSignIn.class) {
+                    dataSyncId = id;
+                    dataSyncIdSapisid = sapisid;
+                    visitorData = visitorDataMatcher.find() ? visitorDataMatcher.group(1) : null;
+                }
                 Logger.printDebug(() -> "DataSyncId fetched");
-                return dataSyncId;
+                return id;
             } catch (IOException ex) {
                 Logger.printInfo(() -> "Could not fetch the DataSyncId", ex);
             } catch (Exception ex) {
@@ -301,13 +317,11 @@ public final class MwebSignIn {
     }
 
     /**
-     * @return The visitor of the website session, or null if it was not fetched with {@link #getDataSyncId()}.
+     * @return The visitor of the website session, or null if it was not fetched with the sign in.
      */
     @Nullable
-    public static String getVisitorData() {
-        synchronized (MwebSignIn.class) {
-            return visitorData;
-        }
+    public static synchronized String getVisitorData() {
+        return visitorData;
     }
 
     /**
@@ -316,7 +330,7 @@ public final class MwebSignIn {
      */
     public static void saveResponseCookies(HttpURLConnection connection) {
         try {
-            java.util.List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
+            List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
             if (cookies == null || cookies.isEmpty()) {
                 return;
             }
@@ -331,15 +345,17 @@ public final class MwebSignIn {
         }
     }
 
+    private static synchronized void clearAccount() {
+        dataSyncId = null;
+        dataSyncIdSapisid = null;
+        visitorData = null;
+    }
+
     /**
-     * Called when the user has signed in. The streams fetched signed out, and the open page, are not used again.
+     * Called when the user has signed in. The streams fetched signed out, and the open pages, are not used again.
      */
     public static void onSignedIn() {
-        synchronized (MwebSignIn.class) {
-            dataSyncId = null;
-            dataSyncIdSapisid = null;
-            visitorData = null;
-        }
+        clearAccount();
         MwebSiteSession.reset();
     }
 
@@ -355,10 +371,7 @@ public final class MwebSignIn {
         }
     }
 
-    public static void onSignInExpired() {
-        if (!isSignedIn()) {
-            return;
-        }
+    private static void onSignInExpired() {
         Logger.printDebug(() -> "Mobile Web sign in is no longer valid");
         clearAll();
         Utils.showToastLong(str("morphe_spoof_video_streams_sign_in_mweb_toast_expired"));
@@ -366,16 +379,15 @@ public final class MwebSignIn {
 
     /**
      * Signs out on the server, then removes the cookies and everything made from them.
-     * Safe to call from any thread.
+     * Main thread only.
      */
     public static void signOut() {
-        String cookies = getCookieHeader();
-        Utils.runOnBackgroundThread(() -> {
-            if (cookies != null) {
+        String cookies = getCookies();
+        if (cookies != null) {
+            Utils.runOnBackgroundThread(() -> {
                 HttpURLConnection connection = null;
                 try {
                     connection = openWebConnection(SIGN_OUT_URL, cookies);
-                    connection.setInstanceFollowRedirects(true);
                     final int responseCode = connection.getResponseCode();
                     Logger.printDebug(() -> "Mobile Web sign out response: " + responseCode);
                 } catch (Exception ex) {
@@ -385,21 +397,16 @@ public final class MwebSignIn {
                         connection.disconnect();
                     }
                 }
-            }
-        });
-        // Clear now so the UI is up to date.
+            });
+        }
         clearAll();
         Utils.showToastShort(str("morphe_spoof_video_streams_sign_in_mweb_toast_signed_out"));
     }
 
     private static void clearAll() {
-        synchronized (MwebSignIn.class) {
-            dataSyncId = null;
-            dataSyncIdSapisid = null;
-            visitorData = null;
-        }
+        clearAccount();
         MwebSiteSession.reset();
-        Utils.runOnMainThread(() -> {
+        Utils.runOnMainThreadNowOrLater(() -> {
             try {
                 CookieManager cookieManager = CookieManager.getInstance();
                 WebStorage webStorage = WebStorage.getInstance();

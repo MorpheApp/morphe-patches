@@ -61,7 +61,7 @@ public final class MwebSiteSession {
 
     private static final String JS_INTERFACE = "MorpheMwebSite";
 
-    private static final String WATCH_URL = "https://m.youtube.com/watch?v=";
+    private static final String WATCH_URL = MwebSignIn.ORIGIN + "/watch?v=";
 
     /**
      * The page of an age-restricted video shows a warning ("I understand and wish to proceed"),
@@ -215,12 +215,17 @@ public final class MwebSiteSession {
      */
     public static final class Session {
         public final String serverAbrStreamingUrl;
+        /**
+         * The 'id' parameter of the stream url.
+         */
         @Nullable
-        public final byte[] clientInfo;
+        final String streamId;
         @Nullable
-        public final byte[] poToken;
+        final byte[] clientInfo;
         @Nullable
-        public final byte[] ustreamerConfig;
+        final byte[] poToken;
+        @Nullable
+        final byte[] ustreamerConfig;
 
         /**
          * @param requestUrl  Url of a SABR request of the website.
@@ -236,6 +241,7 @@ public final class MwebSiteSession {
                 }
             }
             this.serverAbrStreamingUrl = builder.build().toString();
+            this.streamId = uri.getQueryParameter("id");
             this.ustreamerConfig = SabrRequestBody.readMessageField(requestBody,
                     SabrRequestBody.REQUEST_USTREAMER_CONFIG_FIELD);
             byte[] streamerContext = SabrRequestBody.readMessageField(requestBody,
@@ -265,12 +271,6 @@ public final class MwebSiteSession {
     private static final Map<String, StartedFetch> startedFetches =
             Collections.synchronizedMap(Utils.createSizeRestrictedMap(10));
 
-    /**
-     * The last session of each video, used by its media requests.
-     */
-    private static final Map<String, Session> sessions =
-            Collections.synchronizedMap(Utils.createSizeRestrictedMap(20));
-
     private static final Handler mainHandler = new Handler(Looper.getMainLooper());
 
     private static final Runnable closeIdlePages = MwebSiteSession::closeFreePages;
@@ -284,25 +284,17 @@ public final class MwebSiteSession {
     /**
      * Pages made before a reset are closed when they are no longer used.
      */
-    private static volatile int generation;
+    private static final AtomicInteger generation = new AtomicInteger();
 
     private MwebSiteSession() {
     }
 
     /**
-     * @return The last session of the video, or null if there is none.
-     */
-    @Nullable
-    public static Session getSession(@Nullable String videoId) {
-        return videoId == null ? null : sessions.get(videoId);
-    }
-
-    /**
      * Forgets the sessions and closes the pages, for example after a sign in or a sign out.
      */
-    public static void reset() {
-        generation++;
-        sessions.clear();
+    static void reset() {
+        generation.incrementAndGet();
+        MwebStream.clear();
         startedFetches.clear();
         Utils.runOnMainThread(MwebSiteSession::closeFreePages);
     }
@@ -377,7 +369,6 @@ public final class MwebSiteSession {
             final long remaining = TIMEOUT_MILLISECONDS - (System.currentTimeMillis() - start);
             Session session = pageLoad.session.get(Math.max(remaining, 0), TimeUnit.MILLISECONDS);
             pageWorks = true;
-            sessions.put(videoId, session);
             final int blocked = page.blockedRequests.getAndSet(0);
             Logger.printDebug(() -> "Website session of " + videoId + " in "
                     + (System.currentTimeMillis() - start) + " ms, PoToken bytes: "
@@ -415,7 +406,7 @@ public final class MwebSiteSession {
         }
         if (page == null) {
             Logger.printDebug(() -> "Website session: making a new page");
-            page = new Page(generation);
+            page = new Page(generation.get());
         }
         page.attachToCurrentActivity();
         return page;
@@ -426,7 +417,7 @@ public final class MwebSiteSession {
      */
     private static void releasePage(Page page, boolean keep) {
         page.finishLoad();
-        if (keep && page.generation == generation && !page.rendererGone) {
+        if (keep && page.generation == generation.get() && !page.rendererGone) {
             synchronized (freePages) {
                 freePages.add(page);
             }
@@ -631,7 +622,7 @@ public final class MwebSiteSession {
             loggedErrors.set(0);
             openTime = SystemClock.elapsedRealtime();
             // All cookies of YouTube are always rejected in the cookie consent.
-            CookieManager.getInstance().setCookie("https://m.youtube.com", CONSENT_REJECTED_COOKIE);
+            CookieManager.getInstance().setCookie(MwebSignIn.ORIGIN, CONSENT_REJECTED_COOKIE);
             // A new page for each video: the player of an open page plays the next video much later.
             webView.loadUrl(WATCH_URL + Uri.encode(videoId) + WATCH_URL_VERIFIED_PARAMETERS);
             mainHandler.removeCallbacks(watchdog);

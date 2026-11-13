@@ -11,12 +11,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -25,6 +24,32 @@ private const val EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE =
 
 private const val EXTENSION_MEDIA_HTTP_HEADER_INTERFACE =
     "Lapp/morphe/extension/shared/patches/MediaHttpHeader;"
+
+/**
+ * Adds a method that returns the value of a field.
+ */
+private fun MutableClass.addGetter(methodName: String, field: FieldReference) {
+    methods.add(
+        ImmutableMethod(
+            type,
+            methodName,
+            listOf(),
+            field.type,
+            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+            null,
+            null,
+            MutableMethodImplementation(2),
+        ).toMutable().apply {
+            addInstructions(
+                0,
+                """
+                    iget-object v0, p0, $field
+                    return-object v0
+                """
+            )
+        }
+    )
+}
 
 /**
  * Lets the extension read the media requests that native code starts, and replace them.
@@ -41,101 +66,46 @@ internal val mediaRequestPatch = patch(
             val bodyField = instanceFields.single { field -> field.type == "[B" }
             val headersField = instanceFields.single { field -> field.type == "Ljava/util/ArrayList;" }
 
-            mapOf(
-                "patch_getUrl" to urlField,
-                "patch_getBody" to bodyField,
-                "patch_getHeaders" to headersField,
-            ).forEach { (methodName, field) ->
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        methodName,
-                        listOf(),
-                        field.type,
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                iget-object v0, p0, $field
-                                return-object v0
-                            """
-                        )
-                    }
-                )
-            }
+            addGetter("patch_getUrl", urlField)
+            addGetter("patch_getBody", bodyField)
+            addGetter("patch_getHeaders", headersField)
 
             // The constructor takes each field, and each field has its own type.
             val constructor = HttpRequestConstructorFingerprint.originalMethod
             val constructorParameters = constructor.parameterTypes.map(CharSequence::toString)
+            val loadConstructorParameters = constructorParameters.mapIndexed { index, parameterType ->
+                // Register v0 is the new request.
+                val register = "v${index + 1}"
+                val field = instanceFields.single { field -> field.type == parameterType }
+                when (parameterType) {
+                    bodyField.type -> "move-object $register, p1"
+                    headersField.type -> "move-object $register, p2"
+                    "Z" -> "iget-boolean $register, p0, $field"
+                    else -> "iget-object $register, p0, $field"
+                }
+            }.joinToString("\n")
 
-            /**
-             * @param replacedFields Fields whose value is a parameter of the new method, in the order of its parameters.
-             */
-            fun addCopyMethod(methodName: String, replacedFields: List<String>) {
-                val loadConstructorParameters = constructorParameters.mapIndexed { index, parameterType ->
-                    // Register v0 is the new request.
-                    val register = "v${index + 1}"
-                    val field = instanceFields.single { field -> field.type == parameterType }
-                    val replacedIndex = replacedFields.indexOf(parameterType)
-                    when {
-                        replacedIndex >= 0 -> "move-object $register, p${replacedIndex + 1}"
-                        parameterType == "Z" -> "iget-boolean $register, p0, $field"
-                        else -> "iget-object $register, p0, $field"
-                    }
-                }.joinToString("\n")
-
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        methodName,
-                        replacedFields.map { fieldType -> ImmutableMethodParameter(fieldType, null, null) },
-                        EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE,
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        // The new request, its parameters, and the parameters of this method.
-                        MutableMethodImplementation(1 + constructorParameters.size + 1 + replacedFields.size),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                new-instance v0, $type
-                                $loadConstructorParameters
-                                invoke-direct/range { v0 .. v${constructorParameters.size} }, $constructor
-                                return-object v0
-                            """
-                        )
-                    }
-                )
-            }
-
-            addCopyMethod("patch_withBody", listOf(bodyField.type))
-            addCopyMethod("patch_withBodyAndHeaders", listOf(bodyField.type, headersField.type))
-
-            // A new header, which the extension cannot make itself.
             methods.add(
                 ImmutableMethod(
                     type,
-                    "patch_newHeader",
+                    "patch_withBodyAndHeaders",
                     listOf(
-                        ImmutableMethodParameter("Ljava/lang/String;", null, null),
-                        ImmutableMethodParameter("Ljava/lang/String;", null, null),
+                        ImmutableMethodParameter(bodyField.type, null, null),
+                        ImmutableMethodParameter(headersField.type, null, null),
                     ),
-                    "Ljava/lang/Object;",
+                    EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE,
                     AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
                     null,
                     null,
-                    MutableMethodImplementation(4),
+                    // The new request, its parameters, and the 3 parameters of this method.
+                    MutableMethodImplementation(1 + constructorParameters.size + 3),
                 ).toMutable().apply {
                     addInstructions(
                         0,
                         """
-                            new-instance v0, $HTTP_HEADER_CLASS_TYPE
-                            invoke-direct { v0, p1, p2 }, $HTTP_HEADER_CLASS_TYPE-><init>(Ljava/lang/String;Ljava/lang/String;)V
+                            new-instance v0, $type
+                            $loadConstructorParameters
+                            invoke-direct/range { v0 .. v${constructorParameters.size} }, $constructor
                             return-object v0
                         """
                     )
@@ -146,40 +116,10 @@ internal val mediaRequestPatch = patch(
         mutableClassDefBy(HTTP_HEADER_CLASS_TYPE).apply {
             interfaces.add(EXTENSION_MEDIA_HTTP_HEADER_INTERFACE)
 
-            // The constructor takes the name and then the value, and sets their fields in the same order.
-            val constructor = methods.single { method ->
-                method.name == "<init>" && method.parameterTypes == listOf("Ljava/lang/String;", "Ljava/lang/String;")
-            }
-            val setFields = constructor.implementation!!.instructions
-                .filter { instruction -> instruction.opcode == Opcode.IPUT_OBJECT }
-                .map { instruction -> (instruction as ReferenceInstruction).reference as FieldReference }
-            check(setFields.size == 2) { "Unexpected HttpHeader constructor" }
-
-            mapOf(
-                "patch_getName" to setFields[0],
-                "patch_getValue" to setFields[1],
-            ).forEach { (methodName, field) ->
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        methodName,
-                        listOf(),
-                        "Ljava/lang/String;",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                iget-object v0, p0, $field
-                                return-object v0
-                            """
-                        )
-                    }
-                )
-            }
+            val (nameField, valueField) = HttpHeaderConstructorFingerprint.instructionMatches
+                .map { match -> match.fieldReference }
+            addGetter("patch_getName", nameField)
+            addGetter("patch_getValue", valueField)
         }
     }
 }

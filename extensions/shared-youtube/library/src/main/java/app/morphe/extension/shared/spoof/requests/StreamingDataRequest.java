@@ -58,7 +58,7 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.MwebSignIn;
 import app.morphe.extension.shared.spoof.MwebSiteSession;
-import app.morphe.extension.shared.spoof.MwebStreamGuard;
+import app.morphe.extension.shared.spoof.MwebStream;
 import app.morphe.extension.shared.spoof.PreferredClientCheck;
 import app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
@@ -158,6 +158,7 @@ public class StreamingDataRequest {
      */
     private static final String ENCODE_RESPONSE_HEADER = "X-Goog-Encode-Response-If-Executable";
     private static final String SAFETY_ENCODING_HEADER = "X-Goog-Safety-Encoding";
+    private static final String BASE64_ENCODING = "base64";
     private static final String API_FORMAT_VERSION_HEADER = "X-GOOG-API-FORMAT-VERSION";
     private static final String VISITOR_ID_HEADER = "X-Goog-Visitor-Id";
 
@@ -555,42 +556,32 @@ public class StreamingDataRequest {
         final boolean authHeadersIncludes = Utils.isNotEmpty(authorization);
 
         try {
-            // Web clients accept only the cookies of a web sign in, and not the access token of the app:
-            // MWEB. Without a web sign in, the client is used signed out, as the website is.
-            // The session of the account is in the authorization.
-            String webCookies = clientType.isWebClient() && MwebSignIn.isSignedIn() && MwebSignIn.getDataSyncId() != null
-                    ? MwebSignIn.getCookieHeader()
+            // Web clients accept only the cookies of a web sign in, and not the access token of the app.
+            // Without a web sign in, the client is used signed out, as the website is.
+            Map<String, String> webSignInHeaders = clientType.isWebClient()
+                    ? MwebSignIn.getRequestHeaders()
                     : null;
-            String webAuthorization = webCookies == null ? null : MwebSignIn.getAuthorization(MwebSignIn.ORIGIN);
 
             HttpURLConnection connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(
-                    clientType, includeVideoDetails, webAuthorization != null);
+                    clientType, includeVideoDetails, webSignInHeaders != null);
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
 
             authHeadersOverrides = false;
 
+            // The web sign in is used, and the request is made to the website host, as the website makes it:
+            // MWEB.
             if (clientType.isWebClient()) {
-                if (webAuthorization == null) {
+                if (webSignInHeaders == null) {
                     Logger.printDebug(() -> "Not signed in to the website, using signed out: " + clientType
                             + ", videoId: " + videoId);
                 } else {
-                    connection.setRequestProperty("Cookie", webCookies);
-                    connection.setRequestProperty(AUTHORIZATION_HEADER, webAuthorization);
-                    // The request is made to the website host, as the website makes it.
-                    // The authorization is made for this origin.
-                    connection.setRequestProperty("Origin", MwebSignIn.ORIGIN);
-                    connection.setRequestProperty("X-Origin", MwebSignIn.ORIGIN);
+                    for (Map.Entry<String, String> header : webSignInHeaders.entrySet()) {
+                        connection.setRequestProperty(header.getKey(), header.getValue());
+                    }
                     // The website host refuses a proto response, which a browser could run as a script,
                     // unless it is encoded. See buildPlayerResponseBuffer.
-                    connection.setRequestProperty(ENCODE_RESPONSE_HEADER, "base64");
-                    connection.setRequestProperty("X-Goog-AuthUser", "0");
-                    connection.setRequestProperty("X-Youtube-Bootstrap-Logged-In", "true");
-                    String delegatedSessionId = MwebSignIn.getDelegatedSessionId();
-                    if (delegatedSessionId != null) {
-                        // A brand account.
-                        connection.setRequestProperty("X-Goog-PageId", delegatedSessionId);
-                    }
+                    connection.setRequestProperty(ENCODE_RESPONSE_HEADER, BASE64_ENCODING);
                     Logger.printDebug(() -> "Set web sign in: " + clientType + ", videoId: " + videoId);
                 }
             }
@@ -637,7 +628,7 @@ public class StreamingDataRequest {
             // See: https://github.com/MorpheApp/morphe-patches/issues/2283.
             String visitorId = VisitorIdRequester.getVisitorId(clientType);
             // A signed in web client uses the visitor of its website session.
-            if (clientType.isWebClient() && MwebSignIn.isSignedIn() && MwebSignIn.getDataSyncId() != null) {
+            if (webSignInHeaders != null) {
                 String sessionVisitorData = MwebSignIn.getVisitorData();
                 if (sessionVisitorData != null) {
                     visitorId = sessionVisitorData;
@@ -712,7 +703,7 @@ public class StreamingDataRequest {
             return null;
         }
 
-        try (InputStream inputStream = "base64".equals(connection.getHeaderField(SAFETY_ENCODING_HEADER))
+        try (InputStream inputStream = BASE64_ENCODING.equals(connection.getHeaderField(SAFETY_ENCODING_HEADER))
                 ? new Base64InputStream(connection.getInputStream(), Base64.DEFAULT)
                 : connection.getInputStream()) {
             PlayerResponse playerResponse;
@@ -808,7 +799,7 @@ public class StreamingDataRequest {
                 }
                 responseBuilder.setStreamingData(responseBuilder.getStreamingData().toBuilder()
                         .setServerAbrStreamingUrl(siteSession.serverAbrStreamingUrl));
-                MwebStreamGuard.onStreams(Uri.parse(siteSession.serverAbrStreamingUrl).getQueryParameter("id"), videoId);
+                MwebStream.onStreams(videoId, siteSession);
             }
 
             byte[] streamingDataBuffer = responseBuilder.build().toByteArray();

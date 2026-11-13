@@ -9,6 +9,8 @@ package app.morphe.extension.shared.patches;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.libraries.youtube.media.interfaces.HttpHeader;
+
 import java.util.ArrayList;
 
 /**
@@ -23,25 +25,11 @@ public interface MediaHttpRequest {
     @Nullable
     byte[] patch_getBody();
 
-    /**
-     * @return The headers of the request, each a {@link MediaHttpHeader}.
-     */
     @Nullable
-    ArrayList<Object> patch_getHeaders();
+    ArrayList<HttpHeader> patch_getHeaders();
 
     /**
-     * @return A copy of this request with another body.
-     */
-    MediaHttpRequest patch_withBody(byte[] body);
-
-    /**
-     * @param headers Headers made with {@link #patch_newHeader(String, String)}, or of a request.
      * @return A copy of this request with another body and other headers.
      */
-    MediaHttpRequest patch_withBodyAndHeaders(byte[] body, ArrayList<Object> headers);
-
-    /**
-     * @return A new header of the type the requests have.
-     */
-    Object patch_newHeader(String name, String value);
+    MediaHttpRequest patch_withBodyAndHeaders(byte[] body, @Nullable ArrayList<HttpHeader> headers);
 }

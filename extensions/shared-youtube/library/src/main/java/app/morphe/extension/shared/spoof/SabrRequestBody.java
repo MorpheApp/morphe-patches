@@ -65,6 +65,14 @@ public final class SabrRequestBody {
     }
 
     /**
+     * Replaces the client of the request, and removes the PoToken of the app.
+     * The other fields are kept as they are.
+     */
+    static byte[] replaceClientInfo(byte[] body, byte[] clientInfo) throws IOException {
+        return replaceClientInfo(body, clientInfo, null, null, null);
+    }
+
+    /**
      * Replaces the client of the request, and the PoToken of the app with the PoToken of the client.
      * The other fields are kept as they are.
      *

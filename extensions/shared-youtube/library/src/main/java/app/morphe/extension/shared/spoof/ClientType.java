@@ -343,8 +343,9 @@ public enum ClientType {
     /**
      * Mobile web (m.youtube.com), as the Chrome browser of the device.
      * The user agent is of the Chrome version of the WebView, which opens the website (see {@link #getUserAgent()}).
-     * Requires a web sign in. Its SABR media requests use the PoToken and the streaming session that the website
-     * makes for the video (see {@link MwebSiteSession}), so the player request has no PoToken.
+     * Uses the web sign in if there is one (see {@link MwebSignIn}), and is used signed out otherwise.
+     * Its SABR media requests use the PoToken and the streaming session that the website makes for the video
+     * (see {@link MwebStream}), so the player request has no PoToken.
      */
     MWEB(
             2,
@@ -355,8 +356,8 @@ public enum ClientType {
             "10",
             "2.20261110.07.00",
             "MOBILE",
-            String.format(Locale.ENGLISH, ClientType.WEB_USER_AGENT_FORMAT, "142"),
-            // Uses the cookies of a web sign in, and not the access token of the app. See MwebSignIn.
+            String.format(Locale.ENGLISH, ClientType.WEB_USER_AGENT_FORMAT, ClientType.DEFAULT_CHROME_MAJOR_VERSION),
+            // Uses the cookies of the web sign in, and not the access token of the app.
             false,
             false,
             true,
@@ -558,33 +559,15 @@ public enum ClientType {
     private static final String WEB_USER_AGENT_FORMAT = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36"
             + " (KHTML, like Gecko) Chrome/%s.0.0.0 Mobile Safari/537.36";
 
+    /**
+     * A recent major version of Chrome, used if the version of the WebView is not known.
+     */
+    private static final String DEFAULT_CHROME_MAJOR_VERSION = "142";
+
+    private static final Pattern CHROME_MAJOR_VERSION_PATTERN = Pattern.compile("Chrome/(\\d+)");
+
     @Nullable
     private static volatile String webUserAgent;
-
-    @Nullable
-    private static volatile String chromeMajorVersion;
-
-    /**
-     * @return The major version of Chrome of the WebView, or a recent version if it is not known.
-     */
-    private static String getChromeMajorVersion() {
-        String version = chromeMajorVersion;
-        if (version == null) {
-            version = "142";
-            try {
-                Matcher matcher = Pattern.compile("Chrome/(\\d+)")
-                        .matcher(WebSettings.getDefaultUserAgent(Utils.getContext()));
-                if (matcher.find()) {
-                    version = matcher.group(1);
-                }
-            } catch (Exception ex) {
-                // WebView is missing or broken.
-                Logger.printInfo(() -> "Could not read the WebView user agent", ex);
-            }
-            chromeMajorVersion = version;
-        }
-        return version;
-    }
 
     /**
      * The user agent of the client.
@@ -598,7 +581,18 @@ public enum ClientType {
         }
         String agent = webUserAgent;
         if (agent == null) {
-            agent = String.format(Locale.ENGLISH, WEB_USER_AGENT_FORMAT, getChromeMajorVersion());
+            String version = DEFAULT_CHROME_MAJOR_VERSION;
+            try {
+                Matcher matcher = CHROME_MAJOR_VERSION_PATTERN
+                        .matcher(WebSettings.getDefaultUserAgent(Utils.getContext()));
+                if (matcher.find()) {
+                    version = matcher.group(1);
+                }
+            } catch (Exception ex) {
+                // WebView is missing or broken.
+                Logger.printInfo(() -> "Could not read the WebView user agent", ex);
+            }
+            agent = String.format(Locale.ENGLISH, WEB_USER_AGENT_FORMAT, version);
             webUserAgent = agent;
         }
         return agent;
