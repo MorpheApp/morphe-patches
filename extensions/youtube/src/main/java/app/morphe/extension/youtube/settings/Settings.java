@@ -55,6 +55,7 @@ import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch;
 import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch.VideoCodec;
 import app.morphe.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
 import app.morphe.extension.youtube.patches.FeedCardLayoutPatch.FeedCardLayout;
+import app.morphe.extension.youtube.patches.FeedEngagementCountsPatch.FeedCountsPosition;
 import app.morphe.extension.youtube.patches.ForceAnimationsPatch.AnimationsMode;
 import app.morphe.extension.youtube.patches.ForceFullscreenLandscapePatch.LargeScreenAvailability;
 import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch.VideoScaleMode;
@@ -419,6 +420,7 @@ public class Settings extends SharedYouTubeSettings {
     // Return YouTube Dislike, feed videos
     public static final BooleanSetting RYD_FEED_LIKE_COUNT = new BooleanSetting("morphe_ryd_feed_like_count", FALSE, true, parent(RYD_ENABLED));
     public static final BooleanSetting RYD_FEED_LIKE_RATIO = new BooleanSetting("morphe_ryd_feed_like_ratio", FALSE, true, parent(RYD_ENABLED));
+    public static final EnumSetting<FeedCountsPosition> RYD_FEED_COUNTS_POSITION = new EnumSetting<>("morphe_ryd_feed_counts_position", FeedCountsPosition.NEXT_TO_VIEW_COUNT, true, parent(RYD_ENABLED));
 
     // Quick actions
     public static final BooleanSetting HIDE_QUICK_ACTIONS = new BooleanSetting("morphe_hide_quick_actions", FALSE);
