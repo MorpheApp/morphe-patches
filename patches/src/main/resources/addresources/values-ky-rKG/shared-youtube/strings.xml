@@ -232,6 +232,20 @@ Android System WebView колдонмосун ачуу үчүн OK баскыч�
   <string name="morphe_replace_music_with_youtube_summary">Бөлүшүлгөн шилтемелерде music.youtube.com дарегин youtube.com менен алмаштырат</string>
   <string name="morphe_replace_links_with_shortener_title">Бөлүшүү шилтемелерин youtu.be шилтемелерине алмаштыруу</string>
   <string name="morphe_replace_links_with_shortener_summary">Видеолорду кыскартылган youtu.be URL форматын колдонууга мажбурлайт</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Автоматтык</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Видео сапатын эстеп калуу</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Сиз тандаган сапаты бардык кийинки видеолорго колдонулат</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Сапаттын өзгөрүүсү жөнүндө билдирүүлөр</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Жаңы стандарттык сапат сакталгандыкта билдирүүнү көрсөтөт</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi тармагындагы видеонун стандарттык сапаты</string>
+  <string name="morphe_video_quality_default_mobile_title">Мобилдик тармактагы видеонун стандарттык сапаты</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Мобилдик тармак үчүн стандарттык сапат %s болуп өзгөртүлдү</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi үчүн стандарттык сапат %s болуп өзгөртүлдү</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Системалык бөлүшүү баракчасын ачуу</string>
+  <string name="morphe_open_system_share_sheet_summary">Мазмунду бөлүшүүдө колдонмонун ичиндеги баракчанын ордуна системалык бөлүшүү баракчасын ачат</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho логгоо</string>
   <string name="morphe_debug_litho_entry_disabled">Иштен чыгарылган</string>

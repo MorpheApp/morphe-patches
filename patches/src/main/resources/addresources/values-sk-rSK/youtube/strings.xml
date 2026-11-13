@@ -693,6 +693,9 @@ Poznámka: Možno nebude fungovať na živých prenosoch"</string>
   <string name="morphe_play_all_button_type_entry_11">Iba Shorts členov</string>
   <string name="morphe_play_all_button_type_entry_12">Iba živé prenosy členov</string>
   <string name="morphe_play_all_button_not_available_toast">Nepodarilo sa vygenerovať zoznam skladieb kvôli nezhode ID kanála</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Zobraziť tlačidlo Playlist</string>
+  <string name="morphe_playlist_panel_button_summary">Ťuknutím otvorte panel playlists. Zobrazuje sa iba pri prehrávaní playlistu</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Zobraziť tlačidlo Obnoviť video</string>
   <string name="morphe_dismiss_player_not_available_toast">ID videa nie je k dispozícii. Obnovte video ručne</string>
@@ -1202,9 +1205,23 @@ Nastavenia → Prehrávanie (alebo Automatické prehrávanie) → Automaticky pr
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Zakázať vyskakovacie panely prehrávača</string>
   <string name="morphe_disable_player_popup_panels_summary">Zakáže automatické otváranie panelov zoznamu skladieb a živého chatu</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Zobraziť panel playlistu v plnej obrazovke</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Panel playlistu sa otvorí cez prehrávač v plnej obrazovke</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Panel playlistu opúšťa režim plnej obrazovky na tabletoch</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Vypnúť automatické prehrávanie zoznamu skladieb</string>
   <string name="morphe_disable_playlist_autoplay_summary">Zabraňuje automatickému prechodu na ďalšie video v zoznamoch skladieb</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Ovládanie automatického prehrávania</string>
+  <string name="morphe_autoplay_control_summary">Pridá tlačidlo prehrávača a pravidlo pre ďalšie video. Playlisty a fronty pokračujú, Mix sa zastaví po určitém počte videí, odporúčané video sa nikdy neprehrá. Ťuknutím na tlačidlo prepnete režim, podržaním otvoríte zoznam</string>
+  <string name="morphe_autoplay_mode_title">Režim automatického prehrávania</string>
+  <string name="morphe_autoplay_mode_entry_1">Auto</string>
+  <string name="morphe_autoplay_mode_entry_2">Jediný</string>
+  <string name="morphe_autoplay_mode_entry_3">Vypnuté</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Dĺžka Mixu</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">V režime Automaticky sa Mix zastaví po tomto počte videí. 0 = bez limitu</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: bez limitu</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Výzva \"Pokračovať v sledovaní\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Predvolený</string>
@@ -1280,9 +1297,6 @@ Rozloženie pre automobil
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré ukladanie do zoznamu videí</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 – zakázať tučné ikony</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Obnoviť názov kanála pod prehrávačom videa</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Otvoriť systémový panel zdieľania</string>
-  <string name="morphe_open_system_share_sheet_summary">Pri zdieľaní obsahu otvára systémový zdieľací panel namiesto vstavaného</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Prepísať tlačidlá YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Otvorenie vašej preferovanej hudobnej aplikácie namiesto vstavanej aplikácie YouTube Music</string>
@@ -1476,7 +1490,6 @@ Videá sú vyžadované krátkym prefixom hashed video ID, takže server nemôž
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow je dočasne nedostupný (kód stavu: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow je dočasne nedostupný</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Obnoviť predchádzajúci štýl tlačidiel prehrávača</string>
   <string name="morphe_restore_old_player_buttons_summary">Obnoví tučné ovládacie prvky prehrávača videa do staršieho, tenšieho vizuálneho štýlu</string>
@@ -1516,25 +1529,20 @@ Videá sú vyžadované krátkym prefixom hashed video ID, takže server nemôž
   <string name="morphe_video_delay_button_flyout_title">Zobraziť ponuku Oneskorenie videa</string>
   <string name="morphe_video_delay_dialog_input_hint">Oneskorenie v milisekundách</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Auto</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Zapamätať kvalitu videa</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Použije vašu manuálnu voľbu kvality na všetky budúce videá</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Upozornenia na zmenu kvality</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Zobrazí upozornenie, keď sa uloží nová predvolená kvalita</string>
-  <string name="morphe_video_quality_default_wifi_title">Predvolená kvalita videa na Wi-Fi sieti</string>
-  <string name="morphe_video_quality_default_mobile_title">Predvolená kvalita videa v mobilnej sieti</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Zapamätať kvalitu Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Použije vašu manuálnu voľbu kvality na všetky budúce videá Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Predvolená kvalita Shorts na Wi-Fi sieti</string>
   <string name="morphe_shorts_quality_default_mobile_title">Predvolená kvalita Shorts v mobilnej sieti</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Predvolená kvalita mobilného pripojenia bola zmenená na: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Predvolená kvalita Wi-Fi pripojenia bola zmenená na: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Kvalita Shorts pri mobilnom pripojení bola zmenená na: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Kvalita Shorts pri Wi-Fi pripojení bola zmenená na: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Zobraziť tlačidlo rýchlosti prehrávania</string>
   <string name="morphe_playback_speed_dialog_button_summary">Ťuknutím a podržaním resetujete rýchlosť na predvolenú</string>
+  <string name="morphe_playback_speed_button_cycle_title">Ťuknutím na tlačidlo Rýchlosť prehrávania prepínajte rýchlosti</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Ťuknutie prejde na ďalšiu rýchlosť v zozname. Podržaním sa otvorí menu rýchlostí</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Rýchlosti tlačidla Rýchlosť prehrávania</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Rýchlosti, medzi ktorými sa ťuknutím prepína, jedna na riadok. Po poslednej rýchlosti sa ťuknutím vráti na prvú</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Kód zoznamu cyklu rýchlostí je neplatný, resetovanie na predvolené nastavenia</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Zobraziť tlačidlo Kvality</string>
   <string name="morphe_video_quality_dialog_button_summary">Ťuknutím a podržaním resetujete kvalitu na predvolenú</string>

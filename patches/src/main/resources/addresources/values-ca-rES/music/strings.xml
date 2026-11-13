@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Utilitza un descarregador extern per al menú de Descàrrega</string>
   <string name="morphe_external_downloader_menu_summary">L\'opció de Descàrrega dels menus obre el teu descarregador extern en el seu lloc</string>
   <string name="morphe_export_download_folder_title">Exportar descàrregues</string>
-  <string name="morphe_export_download_folder_summary">"Exporta les cançons i els vídeos descarregats per l'app a l'emmagatzematge del teu dispositiu mitjançant el menú de la descàrrega. Toca per canviar la carpeta d'exportació
+  <string name="morphe_export_download_folder_summary">"Exporta les cançons i els vídeos descarregats a l'estoratge del teu dispositiu mitjançant el menú desplegable de descàrregues de l'aplicació. Toca per canviar la carpeta d'exportació
 
 Carpeta d'exportació: %s"</string>
   <string name="morphe_export_download_started">Exportant la descàrrega</string>
@@ -146,13 +146,14 @@ Carpeta d'exportació: %s"</string>
   <string name="morphe_export_download_all_saved">S\'han exportat %1$s de %2$s descàrregues a %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Sobre Morphe</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Publicitat</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Canal</string>
-  <string name="morphe_settings_music_screen_3_general_title">General</string>
-  <string name="morphe_settings_music_screen_4_player_title">Reproductor</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Lletres</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Miscel·lània</string>
+  <string name="morphe_settings_music_screen_00_about_title">Quant a</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Publicitat</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Canal</string>
+  <string name="morphe_settings_music_screen_03_general_title">General</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Lletres</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Miscel·lània</string>
+  <string name="morphe_settings_music_screen_06_player_title">Reproductor</string>
+  <string name="morphe_settings_music_screen_10_video_title">Vídeo</string>
   <string name="morphe_music_app_language_title">Idioma de YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Idioma del sistema</string>
   <string name="morphe_music_app_language_summary_unsupported">Requireix Android 13 o posterior</string>
@@ -256,6 +257,9 @@ Reproducció SABR (fluxos de vídeo simulats desactivats)"</string>
   <string name="morphe_music_playback_speed_title">Velocitat de reproducció</string>
   <string name="morphe_music_playback_speed_summary">Velocitat utilitzada per a totes les pistes. Al 100% s\'utilitza la velocitat de l\'aplicació, com la velocitat de reproducció del podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Canvia l\'afinació amb la velocitat </string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Desactivar els subtítols automàtics</string>
+  <string name="morphe_music_disable_auto_captions_summary">Els subtítols no s\'activen automàticament quan comença un vídeo, inclosos els subtítols que el vídeo activa per defecte</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Desactiva l\'atenuació d\'àudio</string>
   <string name="morphe_music_disable_audio_ducking_summary">El volum no baixa quan una altra aplicació reprodua un so curt, com una notificació</string>
@@ -567,6 +571,7 @@ Per assegurar que el scrobbling es sincronitzi durant la reproducció en segon p
 
 La base de dades està llicenciada sota la llicència ODC Open Database License (ODbL). Les entrades de Soul Over AI de xoundbyte estan llicenciades sota CC BY 4.0. No està afiliat ni recolzat per SoundProof o Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">La lletra no està disponible per a aquest arxiu del dispositiu.</string>
   <string name="morphe_music_lyrics_enabled_title">Utilitzar lletres de tercers</string>
   <string name="morphe_music_lyrics_enabled_summary">Mostra les lletres d\'un servei de tercers, revertint a les lletres integrades quan no se\'n troba cap</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Mantenir la pantalla encesa mentre es veuen les lletres</string>
@@ -698,6 +703,7 @@ Cookies requerides: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_search_title_hint">Títol de la cançó</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artista</string>
   <string name="morphe_music_lyrics_search_empty">Introdueix un títol de la cançó i un artista</string>
+  <string name="morphe_music_lyrics_search_google">Cerca amb Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Cap dels proveïdors habilitats pot cercar altres cançons</string>
   <string name="morphe_music_lyrics_saved">Desat</string>
   <string name="morphe_music_lyrics_written_by">Escrit per: %s</string>
@@ -777,7 +783,6 @@ S'aplica a ambdós límits. A 1,75, quatre caràcters de ple ampleur compten com
   <string name="morphe_music_lyrics_romanized_by_ai">Romanitzat per %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romanitzat per %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (amb %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Romanitzat per Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Traduït</string>
   <string name="morphe_music_lyrics_translation_language_title">Idioma de traducció</string>
@@ -837,19 +842,15 @@ Les lletres provenen de serveis de tercers que no estan afiliats, patrocinats ni
   <string name="morphe_music_lyrics_use_ai_section_title">Detectar seccions amb IA</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Només s\'utilitza quan el proveïdor no envia etiquetes de secció com Estribi o Vers, que el teu model compatible amb OpenAI detectarà. Editar la fila també obre el seu prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL de l\'endpoint de l\'API (per exemple, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Plantilla del prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Marcadors de posició: {task}, {language}, {title}, {artist}, {count}, {lines}. Els desconeguts es deixen tal com s\'han escrit</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt desat</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt guardat, però l\'endpoint de la IA encara no és utilitzable. Configura\'l primer a l\'apartat de Configuració de la IA</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt reiniciat</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Configuració de traducció &amp; romanització guardada</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">S\'han desat els ajustos, però el punt final de la IA encara no s\'està utilitzant</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Ajustos desats</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Configuració restablerta als valors predeterminats</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">L\'URL base ha de començar per http:// o https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Configuració incompleta o rebutjada pel proveïdor</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Validant la connexió…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Connectat! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Error de connexió. Comprova la configuració.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Introdueix primer la clau de l\'API</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Prova la connexió</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Obtint models…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Obtenir models</string>
@@ -866,7 +867,14 @@ Les lletres provenen de serveis de tercers que no estan afiliats, patrocinats ni
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Capçaleres de sol·licitud addicionals (JSON opcional)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Posa cometes als noms i valors, per exemple {\"api-key\": \"abc\"}. Es rebutja qualsevol valor sense cometes que contingui / : o un número. Un valor buit elimina una capçalera.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Posa cometes als noms i valors, per exemple {\"temperature\": 0.3}. Es rebutja qualsevol valor sense cometes que contingui / o :. El model i els missatges no es poden configurar aquí.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Esforç de raonament</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Per defecte</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Clau d\'autenticació (Gratuïta o Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">La IA no ha pogut detectar seccions per a aquesta cançó</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Detectant</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Aplica seccions</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Detecció cancel·lada</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">No hi ha lletres per detectar seccions</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Desactiva les icones en negreta</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Restaura les pestanyes A continuació del reproductor, Lletres i Relacionats</string>

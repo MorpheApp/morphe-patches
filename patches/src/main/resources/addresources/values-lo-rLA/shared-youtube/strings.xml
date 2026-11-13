@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">ປ່ຽນ music.youtube.com ເປັນ youtube.com ໃນລິ້ງທີ່ແບ່ງປັນ</string>
   <string name="morphe_replace_links_with_shortener_title">ປ່ຽນລິ້ງແບ່ງປັນເປັນ youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">ບັງຄັບໃຫ້ວິດີໂອໃຊ້ຮູບແບບ URL youtu.be ທີ່ສັ້ນລົງ</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">ອັດຕະໂນມັດ</string>
+  <string name="morphe_remember_video_quality_last_selected_title">ຈື່ຄຸນນະພາບວິດີໂອ</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">ນຳໃຊ້ການເລືອກຄຸນນະພາບດ້ວຍຕົນເອງຂອງທ່ານໃຫ້ກັບທຸກວິດີໂອໃນອະນາຄົດ</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">ການແຈ້ງເຕືອນການປ່ຽນແປງຄຸນນະພາບ</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອມີການບັນທຶກຄຸນນະພາບເລີ່ມຕົ້ນໃໝ່</string>
+  <string name="morphe_video_quality_default_wifi_title">ຄຸນນະພາບວິດີໂອເລີ່ມຕົ້ນໃນເຄືອຂ່າຍ Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">ຄຸນນະພາບວິດີໂອເລີ່ມຕົ້ນໃນເຄືອຂ່າຍມືຖື</string>
+  <string name="morphe_remember_video_quality_toast_mobile">ປ່ຽນຄຸນນະພາບມືຖືເລີ່ມຕົ້ນເປັນ: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">ປ່ຽນຄຸນນະພາບ Wi-Fi ເລີ່ມຕົ້ນເປັນ: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">ເປີດແຜງແບ່ງປັນຂອງລະບົບ</string>
+  <string name="morphe_open_system_share_sheet_summary">ເປີດແຜງແບ່ງປັນຂອງລະບົບ ແທນທີ່ຈະເປັນຂອງໃນແອັບ ເມື່ອແບ່ງປັນເນື້ອຫາ</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">ການບັນທຶກ Litho</string>
   <string name="morphe_debug_litho_entry_disabled">ປິດການໃຊ້ງານ</string>

@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">Կիսվող հղումներում music.youtube.com-ը փոխարինում է youtube.com-ով</string>
   <string name="morphe_replace_links_with_shortener_title">Փոխել կիսման հղումները youtu.be-ի</string>
   <string name="morphe_replace_links_with_shortener_summary">Ստիպում է տեսանյութերին օգտագործել youtu.be կարճ URL ձևաչափը</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Ավտոմատ</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Հիշել տեսանյութի որակը</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Կիրառում է ձեր կողմից ընտրված որակը բոլոր հաջորդ տեսանյութերի համար</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Որակի փոփոխության ծանուցումներ</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Ցուցադրում է ծանուցում, երբ պահպանվում է նոր լռlots-որակը</string>
+  <string name="morphe_video_quality_default_wifi_title">Տեսանյութի լռlots-որակը Wi-Fi ցանցերում</string>
+  <string name="morphe_video_quality_default_mobile_title">Տեսանյութի լռlots-որակը բջջային ցանցերում</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Բջջային կապի լռlots-որակը փոխվեց՝ %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi-ի լռlots-որակը փոխվեց՝ %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Բացել համակարգային կիսման պատուհանը</string>
+  <string name="morphe_open_system_share_sheet_summary">Բովանդակությունը կիսելիս բացում է համակարգային կիսման պատուհանը՝ հավելվածի ներքին պատուհանի փոխարեն</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho լոգավորում</string>
   <string name="morphe_debug_litho_entry_disabled">Անջատված</string>

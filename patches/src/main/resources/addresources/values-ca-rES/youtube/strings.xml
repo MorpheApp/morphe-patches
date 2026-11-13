@@ -695,6 +695,9 @@ Info: Potser no funcioni en les retransmissions en directe"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts només per a membres</string>
   <string name="morphe_play_all_button_type_entry_12">Transmissions en directe només per a membres</string>
   <string name="morphe_play_all_button_not_available_toast">No s\'ha pogut generar la llista de reproducció per a una incoherència de l\'ID del canal</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Botó de Mostrar llista de reproducció</string>
+  <string name="morphe_playlist_panel_button_summary">Toca per obrir el panell de la llista de reproducció. S\'mostra només quan es reprodua una llista de reproducció</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Mostra el botó de Recarregar vídeo</string>
   <string name="morphe_dismiss_player_not_available_toast">L\'ID del vídeo no està disponible. Si us plau, recarrega el vídeo manualment</string>
@@ -1204,9 +1207,24 @@ Configuració → Reproducció (o Reproducció automàtica) → Reproducció aut
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Desactivar els panells pop-up del reproductor</string>
   <string name="morphe_disable_player_popup_panels_summary">Desactiva l\'obertura automàtica dels panells de llista de reproducció i xat en viu</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Mostrar el panell de la llista de reproducció en pantalla completa</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">El panell de la llista de reproducció s\'obre sobre el reproductor a pantalla completa</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">El panell de la llista de reproducció surt de la pantalla completa a les tabletes</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Desactiva la reproducció automàtica de la llista de reproducció</string>
   <string name="morphe_disable_playlist_autoplay_summary">Evita que les llistes de reproducció avancin automàticament al vídeo següent</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Control de la reproducció automàtica</string>
+  <string name="morphe_autoplay_control_summary">Afegeix un botó de reproductor i una regla per al vídeo següent. Les llistes de reproducció i les cues continuen, un Mix s\'atura després d\'un nombre de vídeos i un vídeo suggerit mai s\'executa. Toqueu el botó per canviar al mode següent, manteniu premut per veure la llista</string>
+  <string name="morphe_autoplay_mode_title">Mode de reproducció automàtica</string>
+  <string name="morphe_autoplay_mode_entry_1">Auto</string>
+  <string name="morphe_autoplay_mode_entry_2">Únic</string>
+  <string name="morphe_autoplay_mode_entry_3">Desactivat</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Longitud del Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">En el mode Auto, un Mix s\'atura després d\'aquest nombre de vídeos. 0 = sense límit</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s vídeos</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: sense límit</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Avís de \"Vols continuar mirant\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Per defecte</string>
@@ -1282,9 +1300,6 @@ Disseny d'automoció
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar l\'opció antiga de desar a la llista de reproducció</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desactivar icones en negreta</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restaurar el nom del canal sota el reproductor de vídeo</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Obrir el full de compartició del sistema</string>
-  <string name="morphe_open_system_share_sheet_summary">Obre el menú de compartir del sistema en lloc del de l\'aplicació en compartir contingut</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Anular els botons de YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Obre la teva aplicació de música preferida en lloc de l\'aplicació YouTube Music predeterminada</string>
@@ -1478,7 +1493,6 @@ Els vídeos es sol·liciten mitjançant un prefix curt de l'ID del vídeo hashat
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow no està disponible temporalment (codi d\'estat: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow no està disponible temporalment</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Restaura l\'estil antic dels botons del reproductor</string>
   <string name="morphe_restore_old_player_buttons_summary">Reverteix els controls en negreta del reproductor de vídeo a l\'estil visual antic i més prim</string>
@@ -1518,25 +1532,20 @@ Els vídeos es sol·liciten mitjançant un prefix curt de l'ID del vídeo hashat
   <string name="morphe_video_delay_button_flyout_title">Mostrar el menú de retard de vídeo</string>
   <string name="morphe_video_delay_dialog_input_hint">Retard en mil·lisegons</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automàtic</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Recordar la qualitat del vídeo</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Aplica la teva selecció manual de qualitat a tots els vídeos futurs</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Notificacions de canvi de qualitat</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Mostra una notificació quan es desava una nova qualitat per defecte</string>
-  <string name="morphe_video_quality_default_wifi_title">Qualitat de vídeo per defecte en xarxa Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Qualitat de vídeo per defecte en xarxa mòbil</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Recorda la qualitat dels Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Aplica la teva selecció manual de qualitat a tots els Shorts futurs</string>
   <string name="morphe_shorts_quality_default_wifi_title">Qualitat de Shorts per defecte en xarxa Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Qualitat de Shorts per defecte en xarxa mòbil</string>
-  <string name="morphe_remember_video_quality_toast_mobile">S\'ha canviat la qualitat mòbil per defecte a: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">S\'ha canviat la qualitat de Wi-Fi per defecte a: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">S\'ha canviat la qualitat de Shorts per a mòbil a: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">S\'ha canviat la qualitat de Shorts per a Wi-Fi a: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Mostra el botó de velocitat de reproducció</string>
   <string name="morphe_playback_speed_dialog_button_summary">Mantén premut per restablir la velocitat per defecte</string>
+  <string name="morphe_playback_speed_button_cycle_title">Toqueu el botó de velocitat de reproducció per alternar les velocitats</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Si toqueu, anirà a la velocitat següent de la llista. Si manteniu premut, s\'obrirà el menú de velocitats</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Velocitats del botó de velocitat de reproducció</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Velocitats per les quals s\'alterna amb un toc, una per línia. Després de l\'última velocitat, un toc torna a la primera</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Llista de cicles de velocitat invàlida, es restableix per defecte</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Mostra el botó de qualitat</string>
   <string name="morphe_video_quality_dialog_button_summary">Mantén premut per restablir la qualitat per defecte</string>

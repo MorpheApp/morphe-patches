@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">แทนที่ music.youtube.com ด้วย youtube.com ในลิงก์ที่แชร์</string>
   <string name="morphe_replace_links_with_shortener_title">เปลี่ยนลิงก์การแชร์เป็น youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">บังคับให้วิดีโอใช้รูปแบบ URL แบบสั้น youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">อัตโนมัติ</string>
+  <string name="morphe_remember_video_quality_last_selected_title">จำคุณภาพวิดีโอ</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">ใช้การเลือกคุณภาพด้วยตนเองของคุณกับวิดีโอทั้งหมดในอนาคต</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">การแจ้งเตือนการเปลี่ยนคุณภาพ</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">แสดงการแจ้งเตือนเมื่อบันทึกคุณภาพเริ่มต้นใหม่</string>
+  <string name="morphe_video_quality_default_wifi_title">คุณภาพวิดีโอเริ่มต้นบนเครือข่าย Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">คุณภาพวิดีโอเริ่มต้นบนเครือข่ายมือถือ</string>
+  <string name="morphe_remember_video_quality_toast_mobile">เปลี่ยนคุณภาพมือถือเริ่มต้นเป็น: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">เปลี่ยนคุณภาพ Wi-Fi เริ่มต้นเป็น: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">เปิดแผ่นแชร์ระบบ</string>
+  <string name="morphe_open_system_share_sheet_summary">เปิดแผ่นแชร์ของระบบแทนแผ่นในแอปเมื่อแชร์เนื้อหา</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">การบันทึก Litho</string>
   <string name="morphe_debug_litho_entry_disabled">ปิดการใช้งาน</string>

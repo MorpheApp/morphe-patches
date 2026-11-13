@@ -125,14 +125,14 @@ Définir %2$s comme client par défaut ?"</string>
   <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
   <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView est désactivé ou n'est pas installé.
 
-La lecture vidéo nécessite Android System WebView. Activez-le et mettez-le à jour vers la dernière version.
+La lecture des vidéos nécessite Android System WebView. Activez-le et mettez-le à jour vers la dernière version.
 
-Appuyez sur OK pour ouvrir Android System WebView."</string>
+Appuyez sur 'OK' pour ouvrir Android System WebView."</string>
   <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView n'est pas à jour (version %s).
 
-La lecture vidéo peut échouer tant qu'Android System WebView n'est pas mis à jour vers la dernière version.
+La lecture des vidéos risque de ne pas fonctionner tant qu'Android System WebView n'aura pas été mis à jour vers la dernière version.
 
-Appuyez sur OK pour ouvrir Android System WebView."</string>
+Appuyez sur 'OK' pour ouvrir Android System WebView."</string>
   <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ne plus afficher</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView n\'est pas installé. Installez-le pour corriger la lecture vidéo</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
@@ -232,6 +232,20 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_replace_music_with_youtube_summary">Remplace music.youtube.com par youtube.com dans les liens partagés</string>
   <string name="morphe_replace_links_with_shortener_title">Changer les liens de partage vers youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Force les vidéos à utiliser le format d\'URL raccourcie youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Auto</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Mémoriser la qualité vidéo</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Applique votre sélection de qualité manuelle à toutes les vidéos futures</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Notifications de changement de qualité</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Affiche une notification lorsqu\'une nouvelle qualité par défaut est enregistrée</string>
+  <string name="morphe_video_quality_default_wifi_title">Qualité vidéo par défaut sur le réseau Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Qualité vidéo par défaut sur les données mobiles</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Qualité mobile par défaut définie sur : %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Qualité Wi-Fi par défaut définie sur : %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Ouverture du menu \'Partager\' du système</string>
+  <string name="morphe_open_system_share_sheet_summary">Ouvre la feuille de partage du système au lieu de celle de l\'application lors du partage de contenu</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Journalisation Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Désactivée</string>

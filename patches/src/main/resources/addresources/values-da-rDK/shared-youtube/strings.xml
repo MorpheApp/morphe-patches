@@ -232,6 +232,20 @@ For at logge ind, tryk på fortsæt nedenfor"</string>
   <string name="morphe_replace_music_with_youtube_summary">Erstatter music.youtube.com med youtube.com i delte links.</string>
   <string name="morphe_replace_links_with_shortener_title">Skift delingslinks til youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Tvinger videoer til at bruge det forkortede youtu.be URL-format</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatisk</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Husk videokvalitet</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Anvender dit manuelle valg af kvalitet på alle fremtidige videoer</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Meddelelser om ændring af kvalitet</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Viser en meddelelse, når en ny standardkvalitet gemmes</string>
+  <string name="morphe_video_quality_default_wifi_title">Standard videokvalitet på Wi-Fi-netværk</string>
+  <string name="morphe_video_quality_default_mobile_title">Standard videokvalitet på mobilnetværk</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Ændrede standard mobilkvalitet til: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Ændrede standard Wi-Fi-kvalitet til: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Åbn systemets delingsark</string>
+  <string name="morphe_open_system_share_sheet_summary">Åbner systemets delingsmenu i stedet for den i appen, når der deles indhold</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-logning</string>
   <string name="morphe_debug_litho_entry_disabled">Deaktiveret</string>

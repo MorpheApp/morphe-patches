@@ -697,6 +697,9 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_play_all_button_type_entry_11">メンバー限定ショート動画</string>
   <string name="morphe_play_all_button_type_entry_12">メンバー限定ライブ配信</string>
   <string name="morphe_play_all_button_not_available_toast">チャンネル ID が一致しないためプレイリストを生成できません</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">「プレイリストを表示」ボタンを表示</string>
+  <string name="morphe_playlist_panel_button_summary">タップしてプレイリストパネルを開きます。プレイリストを再生しているときのみ表示されます</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">動画の再読み込みボタンを表示</string>
   <string name="morphe_dismiss_player_not_available_toast">動画 ID が利用できません。手動で動画を再度開いてください</string>
@@ -1206,9 +1209,24 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">プレーヤー ポップアップ パネルを無効化</string>
   <string name="morphe_disable_player_popup_panels_summary">プレイリストやライブ配信のチャット欄の自動表示を無効にします</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">全画面表示でプレイリストパネルを表示</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">全画面プレイヤーの上にプレイリストパネルが開きます</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">タブレットでプレイリストパネルがフルスクリーンを解除します</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">プレイリストの自動再生を無効化</string>
   <string name="morphe_disable_playlist_autoplay_summary">プレイリストの次の動画を自動的に再生する機能を無効にします</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">自動再生コントロール</string>
+  <string name="morphe_autoplay_control_summary">次ビデオの再生ボタンとルールを追加します。プレイリストやキューはそのまま継続され、ミックスは指定した本数のビデオ後に停止し、おすすめのビデオは再生されません。ボタンをタップして次のモードに切り替え、長押しでリストを表示します</string>
+  <string name="morphe_autoplay_mode_title">自動再生モード</string>
+  <string name="morphe_autoplay_mode_entry_1">自動</string>
+  <string name="morphe_autoplay_mode_entry_2">シングル</string>
+  <string name="morphe_autoplay_mode_entry_3">オフ</string>
+  <string name="morphe_autoplay_mix_stop_after_title">ミックスの長さ</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">自動モードでは、ミックスはこの本数のビデオ後に停止します。0 = 無制限</string>
+  <string name="morphe_autoplay_mix_length">ミックス: %s 本のビデオ</string>
+  <string name="morphe_autoplay_mix_no_limit">ミックス: 無制限</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">「続きを視聴しますか？」ポップアップ</string>
   <string name="morphe_continue_watching_prompt_entry_1">デフォルト</string>
@@ -1284,9 +1302,6 @@ Automotive レイアウト
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 -「再生リストに保存」を旧仕様に戻す</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - アイコンの太字表示を無効化</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 動画プレーヤー下のチャンネル名表示を復元</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
-  <string name="morphe_open_system_share_sheet_summary">コンテンツを共有するときにアプリ内の共有メニューではなくシステムの共有メニューを開きます</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music ボタンの動作を上書き</string>
   <string name="morphe_override_youtube_music_buttons_summary">YouTube Music ボタンの呼び出し先を、「純正 YouTube Music アプリ」から「設定した音楽アプリ」に変更します</string>
@@ -1480,7 +1495,6 @@ Automotive レイアウト
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow は一時的に利用できません (ステータスコード: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow は一時的に利用できません</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">以前のプレーヤー ボタンのデザインに戻す</string>
   <string name="morphe_restore_old_player_buttons_summary">動画プレーヤーのコントロールのデザインを、現在の太字デザインから以前の細字デザインに戻します</string>
@@ -1520,25 +1534,20 @@ Automotive レイアウト
   <string name="morphe_video_delay_button_flyout_title">ビデオ遅延メニューを表示</string>
   <string name="morphe_video_delay_dialog_input_hint">ミリ秒単位の遅延</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">自動</string>
-  <string name="morphe_remember_video_quality_last_selected_title">画質を保存</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">画質メニューでの画質の変更を、設定の [デフォルトの画質] に反映し、すべての動画に適用します</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">画質変更の通知</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">設定の [デフォルトの画質] または [ショートのデフォルトの画質] に新しい値が保存されたときに通知を表示します</string>
-  <string name="morphe_video_quality_default_wifi_title">デフォルトの画質 (Wi-Fi)</string>
-  <string name="morphe_video_quality_default_mobile_title">デフォルトの画質 (モバイル)</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">ショートの画質を保存</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">画質メニューでの画質の変更を、設定の [ショートのデフォルトの画質] に反映し、すべてのショート動画に適用します</string>
   <string name="morphe_shorts_quality_default_wifi_title">ショートのデフォルトの画質 (Wi-Fi)</string>
   <string name="morphe_shorts_quality_default_mobile_title">ショートのデフォルトの画質 (モバイル)</string>
-  <string name="morphe_remember_video_quality_toast_mobile">デフォルトの画質 (モバイル): %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">デフォルトの画質 (Wi-Fi): %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">ショートの画質 (モバイル): %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">ショートの画質 (Wi-Fi): %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">再生速度ボタンを表示</string>
   <string name="morphe_playback_speed_dialog_button_summary">長押しすると、再生速度をデフォルトの値にリセットします</string>
+  <string name="morphe_playback_speed_button_cycle_title">再生速度ボタンをタップして速度を切り替える</string>
+  <string name="morphe_playback_speed_button_cycle_summary">タップするとリストの次の速度に切り替わります。長押しすると速度メニューが開きます</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">再生速度ボタンの速度設定</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">タップすると、1行につき1つの速度で切り替わります。最後の速度に達した後、タップすると最初の速度に戻ります</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">速度切り替えリストが無効です。デフォルトにリセットします</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">画質ボタンを表示</string>
   <string name="morphe_video_quality_dialog_button_summary">長押しすると、画質をデフォルトの値にリセットします</string>

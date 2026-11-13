@@ -232,6 +232,20 @@ Android System WebView қолданбасын ашу үшін OK түймесі�
   <string name="morphe_replace_music_with_youtube_summary">Бөлісілген сілтемелерде music.youtube.com мекенжайын youtube.com мекенжайына ауыстырады</string>
   <string name="morphe_replace_links_with_shortener_title">Бөлісу сілтемелерін youtu.be-ге өзгерту</string>
   <string name="morphe_replace_links_with_shortener_summary">Бейнероликтер үшін қысқартылған youtu.be URL форматын қолдануды мәжбүрлейді</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Автоматты</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Видео сапасын есте сақтау</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Сіздің қолмен таңдаған сапаңыз барлық алдағы видеоларға қолданылады</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Сапаның өзгергені туралы хабарламалар</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Жаңа стандартты сапа сақталғанда хабарламаны көрсетеді</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi желісіндегі стандартты видео сапасы</string>
+  <string name="morphe_video_quality_default_mobile_title">Мобильді желідегі стандартты видео сапасы</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Әдепкі мобильді сапа мынаға өзгертілді: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Әдепкі Wi-Fi сапасы мынаға өзгертілді: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Жүйелік бөлісу парағын ашу</string>
+  <string name="morphe_open_system_share_sheet_summary">Мазмұнмен бөліскен кезде қолданбадағының орнына жүйелік бөлісу парағын ашады</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho логгау</string>
   <string name="morphe_debug_litho_entry_disabled">Өшірілген</string>

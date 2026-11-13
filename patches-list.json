@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "2.3.0-dev.2",
+  "version": "2.3.0-dev.3",
   "patches": [
     {
       "name": "A-B loop",
@@ -387,6 +387,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -395,13 +402,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -580,6 +580,85 @@
     {
       "name": "Ask flyout menu",
       "description": "Adds a video menu entry that opens Ask for the video and summarizes the video. This patch works with YouTube 21.16.256 and newer.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": [
+            "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
+            "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "21.45.82",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.44.528",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.43.523",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.30.216",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.28.208",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.23.492",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.26.46",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Autoplay control",
+      "description": "Adds a player button and a rule for the next video: playlists and queues go on, a Mix stops after a number of videos, a suggested video never plays.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -1806,6 +1885,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -1814,13 +1900,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2311,6 +2390,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -2319,13 +2405,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2452,6 +2531,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -2460,13 +2546,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -2674,6 +2753,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -2682,13 +2768,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -3177,6 +3256,71 @@
     {
       "name": "Disable audio ducking",
       "description": "Adds an option to keep the volume unchanged when another app plays a short sound, such as a notification.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.youtube.music",
+          "name": "YouTube Music",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0000",
+          "signatures": [
+            "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
+            "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "9.45.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "9.44.52",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.43.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.30.53",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.20.53",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.15.51",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Disable auto captions",
+      "description": "Adds an option to disable captions from being automatically enabled.",
       "default": true,
       "category": null,
       "compatiblePackages": [
@@ -3796,6 +3940,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -3804,13 +3955,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -4097,6 +4241,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -4105,13 +4256,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -4477,6 +4621,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -4485,13 +4636,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5326,6 +5470,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -5334,13 +5485,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5915,6 +6059,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -5923,13 +6074,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -5979,6 +6123,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -5987,13 +6138,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6018,6 +6162,85 @@
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 28,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Fullscreen playlist panel",
+      "description": "Adds an option to show the playlist panel over the fullscreen player on tablets, instead of exiting fullscreen.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": [
+            "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
+            "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "21.45.82",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.44.528",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.43.523",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.30.216",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.28.208",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.23.492",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.26.46",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
               "description": null
             }
           ]
@@ -6266,6 +6489,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -6274,13 +6504,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6330,6 +6553,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -6338,13 +6568,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6492,6 +6715,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -6500,13 +6730,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6621,6 +6844,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -6629,13 +6859,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -6908,6 +7131,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -6916,13 +7146,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7418,6 +7641,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -7426,13 +7656,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7547,6 +7770,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -7555,13 +7785,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -7927,6 +8150,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -7935,13 +8165,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8228,6 +8451,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -8236,13 +8466,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8357,6 +8580,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -8365,13 +8595,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8723,6 +8946,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -8731,13 +8961,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -8787,6 +9010,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -8795,13 +9025,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9697,6 +9920,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -9705,13 +9935,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9761,6 +9984,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -9769,13 +9999,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -9876,6 +10099,71 @@
             },
             {
               "version": "20.26.46",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Open system share sheet",
+      "description": "Adds an option to always open the system share sheet instead of the in-app share sheet.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.youtube.music",
+          "name": "YouTube Music",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0000",
+          "signatures": [
+            "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
+            "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "9.45.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "9.44.52",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.43.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.30.53",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.20.53",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.15.51",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 26,
@@ -10746,6 +11034,85 @@
       ]
     },
     {
+      "name": "Playlist button",
+      "description": "Adds an option to display a button in the video player that opens the playlist panel.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.youtube",
+          "name": "YouTube",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0033",
+          "signatures": [
+            "5aad2bee6db95d17e05a08d7d1e64c10a1511879154483916b6ae6c7fd9cb0c6",
+            "3d7a1223019aa39d9ea0e3436ab7c0896bfb4fb679f4de5fe7c23f326c8f994a"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "21.45.82",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.44.528",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.43.523",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.30.216",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.28.208",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 29,
+              "description": null
+            },
+            {
+              "version": "21.23.492",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.51.39",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "20.26.46",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Playlist improvements",
       "description": "Adds options to widen playlist drag handles, reorder videos by long press, and hide removal confirmations.",
       "default": true,
@@ -11116,6 +11483,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -11124,13 +11498,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -11259,6 +11626,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -11267,13 +11641,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -11515,6 +11882,71 @@
       "options": []
     },
     {
+      "name": "Remember video quality",
+      "description": "Adds options to set default video qualities and remember the last selected video quality.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.youtube.music",
+          "name": "YouTube Music",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0000",
+          "signatures": [
+            "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
+            "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
+          ],
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "9.45.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 28,
+              "description": null
+            },
+            {
+              "version": "9.44.52",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.43.51",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.30.53",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.20.53",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.15.51",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
       "name": "Remove background playback restrictions",
       "description": "Removes restrictions on background playback, including playing kids videos in the background.",
       "default": true,
@@ -11676,6 +12108,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -11684,13 +12123,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -12172,6 +12604,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -12180,13 +12619,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -13008,6 +13440,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -13016,13 +13455,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -13814,6 +14246,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -13822,13 +14261,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,
@@ -14029,6 +14461,13 @@
           "formFactor": "MOBILE",
           "targets": [
             {
+              "version": "2026.46.0",
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": 29,
+              "description": null
+            },
+            {
               "version": "2026.45.0",
               "versionCodes": null,
               "isExperimental": true,
@@ -14037,13 +14476,6 @@
             },
             {
               "version": "2026.44.0",
-              "versionCodes": null,
-              "isExperimental": true,
-              "minSdk": 29,
-              "description": null
-            },
-            {
-              "version": "2026.43.0",
               "versionCodes": null,
               "isExperimental": true,
               "minSdk": 29,

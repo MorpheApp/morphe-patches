@@ -232,6 +232,20 @@ Lai pieslēgtos, zemāk nospiediet pogu Turpināt"</string>
   <string name="morphe_replace_music_with_youtube_summary">Kopīgotajās saitēs aizstāj music.youtube.com ar youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Mainīt kopīgošanas saites uz youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Piespiež video izmantot saīsināto youtu.be URL formātu</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automātiski</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Atcerēties video kvalitāti</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Pielieto jūsu manuālo kvalitātes izvēli visiem turpmākajiem video</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Paziņojumi par kvalitātes maiņu</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Rāda paziņojumu, kad tiek saglabāta jaunā noklusējuma kvalitāte</string>
+  <string name="morphe_video_quality_default_wifi_title">Noklusējuma video kvalitāte Wi-Fi tīklā</string>
+  <string name="morphe_video_quality_default_mobile_title">Noklusējuma video kvalitāte mobilajā tīklā</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Mainīta noklusējuma mobilā kvalitāte uz: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Mainīta noklusējuma Wi-Fi kvalitāte uz: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Atvērt sistēmas kopīgošanas logu</string>
+  <string name="morphe_open_system_share_sheet_summary">Satura kopīgošanai izmantot sistēmas kopīgošanas izvēlni neatkarībā no lietotnes iekšējās izvēlnes</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho žurnālošana</string>
   <string name="morphe_debug_litho_entry_disabled">Atspējots</string>

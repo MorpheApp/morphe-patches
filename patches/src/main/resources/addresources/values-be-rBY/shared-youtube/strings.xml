@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">Замяняе music.youtube.com на youtube.com у падзеленых спасылках</string>
   <string name="morphe_replace_links_with_shortener_title">Змяніць спасылкі для падзелу на youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Прымушае відэа выкарыстоўваць скарочаны фармат URL youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Аўтаматычна</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Запамятаць якасць відэа</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Прымяняе ваш ручны выбар якасці да ўсіх будучых відэа</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Апавешчаньні аб змене якасці</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Паказвае апавешчаньне, калі захаваны новы стандартны ўзровень якасці</string>
+  <string name="morphe_video_quality_default_wifi_title">Стандартная якасць відэа ў сетцы Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Стандартная якасць відэа ў мабільнай сетцы</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Стандартная мабільная якасць зменена на: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Стандартная якасць Wi-Fi зменена на: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Адкрыць сістэмнае акно «Паділіцца»</string>
+  <string name="morphe_open_system_share_sheet_summary">Адкрывае сістэмнае панэль пашырэння замест унутрапрыламінай пры пашырэнні кантэнту</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Лагаванне Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Адключана</string>

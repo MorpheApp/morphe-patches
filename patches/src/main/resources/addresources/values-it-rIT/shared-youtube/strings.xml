@@ -232,6 +232,20 @@ Per accedere, premi su Continua di seguito"</string>
   <string name="morphe_replace_music_with_youtube_summary">Sostituisce music.youtube.com con youtube.com nei link condivisi.</string>
   <string name="morphe_replace_links_with_shortener_title">Cambia i link di condivisione in youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Forza i video a utilizzare il formato URL abbreviato youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatico</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Ricorda la qualità del video</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Applica la tua selezione manuale della qualità a tutti i video futuri</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Notifiche di modifica della qualità</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Mostra una notifica quando viene salvata una nuova qualità predefinita</string>
+  <string name="morphe_video_quality_default_wifi_title">Qualità video predefinita sulla rete Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Qualità video predefinita sulla rete mobile</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Qualità predefinita mobile modificata in: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Qualità predefinita Wi-Fi modificata in: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Apri il pannello di condivisione di sistema</string>
+  <string name="morphe_open_system_share_sheet_summary">Apre il pannello di condivisione di sistema anziché quello integrato durante la condivisione di un contenuto</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Log di Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Disattivato</string>

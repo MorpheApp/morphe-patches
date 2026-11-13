@@ -132,9 +132,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Izmantot ārējo lejupielādētāju Lejupielādēt izvēlnē</string>
   <string name="morphe_external_downloader_menu_summary">Izvēlnes Lejupielādēt opcija tā vietā atvērs jūsu ārējo lejupielādētāju</string>
   <string name="morphe_export_download_folder_title">Eksportēt lejupielādes</string>
-  <string name="morphe_export_download_folder_summary">"Eksportējiet ar lietotni lejupielādētās dziesmas un video uz ierīces atmiņu, izmantojot lejupielādes izvēlni. Pieskarieties, lai mainītu eksporta mapi
+  <string name="morphe_export_download_folder_summary">"Eksportēj lietotnē saglabātās dziesmas un video uz ierīces paziņojumu, izmantojot lietotnes lejupielādēšanas izvēlni. Pieskarieties, lai mainītu eksporta
 
-Eksporta mappa: %s"</string>
+Eksporta mapi: %s"</string>
   <string name="morphe_export_download_started">Eksportē lejupielādi</string>
   <string name="morphe_export_download_progress">Eksportē lejupielādi: %s%%</string>
   <string name="morphe_export_download_notification_channel">Lejupielāžu eksports</string>
@@ -146,13 +146,14 @@ Eksporta mappa: %s"</string>
   <string name="morphe_export_download_all_saved">Eksportēts %1$s no %2$s lejupielādēm uz %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Par Morphe</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Reklāmas</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Plūsma</string>
-  <string name="morphe_settings_music_screen_3_general_title">Vispārīgi</string>
-  <string name="morphe_settings_music_screen_4_player_title">Atskaņotājs</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Dziesmu teksti</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Dažādi</string>
+  <string name="morphe_settings_music_screen_00_about_title">Par</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Reklāmas</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Plūsma</string>
+  <string name="morphe_settings_music_screen_03_general_title">Vispārīgi</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Sārudze</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Dažādi</string>
+  <string name="morphe_settings_music_screen_06_player_title">Atskaņotājs</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">YouTube Music valoda</string>
   <string name="morphe_music_app_language_summary_default">Sistēmas valoda</string>
   <string name="morphe_music_app_language_summary_unsupported">Nepieciešams Android 13 vai jaunāka versija</string>
@@ -256,6 +257,9 @@ SABR atskaņošana (Video straumem imitēšana izslēgta)"</string>
   <string name="morphe_music_playback_speed_title">Atskaņošanas ātrums</string>
   <string name="morphe_music_playback_speed_summary">Ātrums, ko izmanto visiem trekiem. Pie 100% tiek izmantots lietotnes ātrums, piemēram, podkāstu atskaņošanas ātrums</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Mainīt toni līdz ar ātrumu</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Atslēgt automātiskos subtitrus</string>
+  <string name="morphe_music_disable_auto_captions_summary">Sākot skatīt video, subtitrus neieslēgt automātiski, tostarp tādus subtitrus, kurus video ieslēg pēc noklusējuma</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Aizliegt audio dzīmēlēšanu</string>
   <string name="morphe_music_disable_audio_ducking_summary">Skaļums netiek samazināts, kad cita lietotne atskaņo īsu skaņu, piemēram, paziņojumu</string>
@@ -567,6 +571,7 @@ Lai nodrošinātu, ka scrobbling tiek sinhronizēts fona atskaņošanas laikā, 
 
 Datubāze ir licencēta saskaņā ar ODC Open Database License (ODbL). Soul Over AI (autors xoundbyte) ieraksti ir licencēti saskaņā ar CC BY 4.0. Nav saistīts ar SoundProof vai Soul Over AI un nav to apstiprināts."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Dziesmu teksti šai ierīces failam nav pieejami.</string>
   <string name="morphe_music_lyrics_enabled_title">Izmantot trešo pušu dziesmu tekstus</string>
   <string name="morphe_music_lyrics_enabled_summary">Rāda dziesmu tekstus no trešo pušu pakalpojuma; ja tie netiek atrasti, tiek izmantoti iebūvētie teksti</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Turēt ekrānu ieslēgtu dziesmu tekstu skatīšanas laikā</string>
@@ -698,6 +703,7 @@ Obligātie sīkfaili: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_search_title_hint">Dziesmas nosaukums</string>
   <string name="morphe_music_lyrics_search_artist_hint">Mākslinieks</string>
   <string name="morphe_music_lyrics_search_empty">Ievadiet dziesmas nosaukumu un mākslinieku</string>
+  <string name="morphe_music_lyrics_search_google">Meklēt ar Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Neviens no iespējotajiem pakalpojumu sniedzējiem nevar meklēt citas dziesmas</string>
   <string name="morphe_music_lyrics_saved">Saglabāts</string>
   <string name="morphe_music_lyrics_written_by">Rakstījis: %s</string>
@@ -777,7 +783,6 @@ Sadalīt aizpildīto trekā formātu cikliski mainīgajos kadros. 0 izslēdz sad
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizēja %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romanizējis %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (ar %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Romanizējis Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Tulkots</string>
   <string name="morphe_music_lyrics_translation_language_title">Tulkojuma valoda</string>
@@ -837,19 +842,15 @@ Dziesmu teksti nāk no trešo pušu pakalpojumiem, kas nav saistīti ar Morphe, 
   <string name="morphe_music_lyrics_use_ai_section_title">Atklāt sadaļas ar AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Tiek izmantots tikai tad, ja pakalpojumu sniedzējs nenosūta sadaļu apzīmējumus, piemēram, Pants vai Piedziedājums, kurus pēc tam nosaka jūsu OpenAI saderīgais modelis. Labojot rindu, tiek atvērta arī tās uzvedne</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API gala punkta URL (piem., https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Uzvednes šablons</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Vietturi: {task}, {language}, {title}, {artist}, {count}, {lines}. Nezināmie tiek atstāti tā, kā ievadīti</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Uzvedne saglabāta</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Aicinājums saglabāts, taču AI gala punkts vēl nav izmantojams. Vispirms konfigurējiet to AI iestatījumos</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Uzvedne atiestatīta</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Tulkojuma &amp; romanizācijas iestatījumi saglabāti</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Iestatījumi saglabāti, taču AI gala punkts vēl nav izmantojams</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Iestatījumi saglabāti</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Iestatījumi atiestatīti uz noklusējumu</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Pamata URL adresei jāsāk ar http:// vai https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Iestatījumi ir nepilnīgi vai pakalpojumu sniedzējs tos ir noraidījis</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Savienojuma pārbaude…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Savienots! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Savienojums neveiksmīgs. Pārbaudiet iestatījumus.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Vispirms ievadiet API atslēgu</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Testēt savienojumu</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Modeļi tiek ieguvti…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Iegūt modeļus</string>
@@ -866,7 +867,14 @@ Dziesmu teksti nāk no trešo pušu pakalpojumiem, kas nav saistīti ar Morphe, 
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Papildu pieprasījuma galvenes (neobligāts JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Ietveriet nosaukumus un vērtības pēdiņās, piemēram, {\"api-key\": \"abc\"}. Vērtība bez pēdiņām, kas satur / : vai skaitli, tiks noraidīta. Tukša vērtība noņem galveni.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Ietveriet nosaukumus un vērtības pēdiņās, piemēram, {\"temperature\": 0.3}. Vērtība bez pēdiņām, kas satur / vai :, tiks noraidīta. Modelis un ziņojumi šeit nav jānorāda.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Spēkumu pielades līmenis</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Noklusējuma</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Autentifikācijas atslēga (Free vai Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI nevarēja noteikt sadaļas šim trekam</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Sadaļu noteikšana</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Pieliet sadaļas</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Noteikšana atcelta</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Nav teksta, kuram noteikt sadaļas</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Atslēgt treknās ikonas</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Atjaunot atskaņotāja cilnes Tālāk, Dziesmu teksti un Saistītie</string>

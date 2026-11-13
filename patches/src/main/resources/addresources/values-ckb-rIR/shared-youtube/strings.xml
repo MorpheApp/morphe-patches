@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">music.youtube.com دەگۆڕێت بۆ youtube.com لە لینکە هاوبەشکراوەکاندا</string>
   <string name="morphe_replace_links_with_shortener_title">گۆڕینی لینکەکانی هاوبەشکردن بۆ youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">ڤیدیۆکان ناچار دەکات بۆ بەکارهێنانی فۆرماتی کورتکراوەی youtu.be URL</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">خۆکار</string>
+  <string name="morphe_remember_video_quality_last_selected_title">بیرهێنانەوەی کوالیتی ڤیدیۆ</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Applies your manual quality selection to all future videos</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Quality change notifications</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">کاتێک کوالێتییەکی بنەڕەتی نوێ پاشکەوت دەکرێت، ئاگادارکردنەوەک یەک دەردەکەوێت</string>
+  <string name="morphe_video_quality_default_wifi_title">کوالێتییە بنەڕەتیی ڤیدیۆ لە تۆڕی Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">کوالێتییە بنەڕەتیی ڤیدیۆ لە تۆڕی مۆبایل</string>
+  <string name="morphe_remember_video_quality_toast_mobile">کوالێتییە بنەڕەتیی مۆبایلەکە گۆڕدرا بۆ: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">کوالێتییە بنەڕەتیی Wi-Fiـەکە گۆڕدرا بۆ: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">کردنەوەی شیتی بەشکردنی سیستەم</string>
+  <string name="morphe_open_system_share_sheet_summary">Opens the system share sheet instead of the in-app one when sharing content</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">لۆگینگی Litho</string>
   <string name="morphe_debug_litho_entry_disabled">لەکارخراو</string>

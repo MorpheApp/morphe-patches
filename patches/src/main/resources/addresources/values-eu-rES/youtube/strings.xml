@@ -696,6 +696,9 @@ Info: Agian ez da funtzionatuko zuzeneko emankizunetan"</string>
   <string name="morphe_play_all_button_type_entry_11">Kideentzako Shorts soilik</string>
   <string name="morphe_play_all_button_type_entry_12">Kideentzako zuzeneko emisioak soilik</string>
   <string name="morphe_play_all_button_not_available_toast">Ezin izan da playlist-a sortu kanalaren ID bat ez etortzearen ondorioz</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Erakutsi Playlist botoia</string>
+  <string name="morphe_playlist_panel_button_summary">Sakatu playlist panela irekitzeko. Playlist bat erreproduzitzen denean soilik agertzen da</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Erakutsi \'Bideoa berkargatu\' botoia</string>
   <string name="morphe_dismiss_player_not_available_toast">Bideo ID-a ez dago erabilgarri. Kargatu bideoa berriro eskuz</string>
@@ -1205,9 +1208,24 @@ Ezarpenak → Erreprodukzioa (edo Autoplay) → Hurrengo bideoa automatikoki err
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Desaktibatu erreproduzigailuaren popup panelak</string>
   <string name="morphe_disable_player_popup_panels_summary">Playlist eta txat zuzeneko paneleak automatikoki irekitzea desaktibatzen du</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Erakutsi playlist-panelua pantaila osoan</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Playlist-panelua pantaila osoko erreproduzitzailearen gainean irekitzen da</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Playlist panelua pantaila osoa uzten du tabletetan</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Desaktibatu playlisten autoerreprodukzioa</string>
   <string name="morphe_disable_playlist_autoplay_summary">Playlisteek hurrengo bideora automatikoki pasatzea saihesten du</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Erreprodukzio automatikoaren kontrola</string>
+  <string name="morphe_autoplay_control_summary">Kudaketa-botoi bat eta hurrengo bideorako arau bat gehitzen ditu. Playlista eta herramendia jarraitzen dira, Mix bat bideo kopuru baten ondoren gelditzen da, eta bideo suggested bat ez da inoiz erreproduzitakoa. Sakatu botoia hurrengo modura joateko, edo sakatu eta mantendu zerrenda ikusteko</string>
+  <string name="morphe_autoplay_mode_title">Erreprodukzio automatikoaren moda</string>
+  <string name="morphe_autoplay_mode_entry_1">Automatiko</string>
+  <string name="morphe_autoplay_mode_entry_2">Bakarka</string>
+  <string name="morphe_autoplay_mode_entry_3">Itzalita</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Mixren luzera</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Auto moduan, Mix bat bideo kopuru honen ondoren gelditzen da. 0 = mugaikertzatua</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s bideo</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: mugarik gabe</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Jarraitu ikusten?\" gomendioa</string>
   <string name="morphe_continue_watching_prompt_entry_1">Lehenagoa</string>
@@ -1283,9 +1301,6 @@ Automobilen diseinua
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Berrezarri gorde playlistera zaharra</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desaktibatu ikono lodiak</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Berrezarri kanalaren izena bideo erreproduktorearen azpian</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Ireki sistemaren partekatze panela</string>
-  <string name="morphe_open_system_share_sheet_summary">Edukia partekatzean, aplikazioaren ordez sistemaren partekatze panela irekitzen du</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Gainidatzi YouTube Music botoiak</string>
   <string name="morphe_override_youtube_music_buttons_summary">Zure hobetsitako musika aplikazioa irekitzen du YouTube Music aplikazio lehenetsiaren ordez</string>
@@ -1479,7 +1494,6 @@ Bideoak bideo-ID hash-atutako prefixo labur baten bidez eskatzen dira, beraz, ze
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow aldi baterako ez dago erabilgarri (egoera kodea: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow aldi baterako ez dago erabilgarri</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Berrezarri erreproduzigailu botoien estilo zaharra</string>
   <string name="morphe_restore_old_player_buttons_summary">Bideo erreproduktorearen kontrol lodiak lehengo, meheagoko estilo bisualera itzultzen ditu</string>
@@ -1519,25 +1533,20 @@ Bideoak bideo-ID hash-atutako prefixo labur baten bidez eskatzen dira, beraz, ze
   <string name="morphe_video_delay_button_flyout_title">Erakutsi bideo-atzerapen menua</string>
   <string name="morphe_video_delay_dialog_input_hint">Atzerapena milisegundotan</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automatikoki</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Gogoratu bideo-kalitatea</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Eskuz hautatutako kalitatea etorkizuneko bideo guztietan aplikatzen da</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Kalitate aldaketa jakinarazpenak</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Kalitate lehenetsi berri bat gordetzen denean jakinarazpen bat erakusten du</string>
-  <string name="morphe_video_quality_default_wifi_title">Bideo kalitate lehenetsia Wi-Fi sarean</string>
-  <string name="morphe_video_quality_default_mobile_title">Bideo kalitate lehenetsia sare mugikorrean</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Gogoratu Shorts kalitatea</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Eskuz hautatutako kalitatea etorkizuneko Shorts guztietan aplikatzen da</string>
   <string name="morphe_shorts_quality_default_wifi_title">Shorts kalitate lehenetsia Wi-Fi sarean</string>
   <string name="morphe_shorts_quality_default_mobile_title">Shorts kalitate lehenetsia sare mugikorrean</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Lehenetsitako mugikorreko kalitatea aldatu da: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Lehenetsitako Wi-Fi kalitatea aldatu da: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts-en mugikorreko kalitatea aldatu da: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts-en Wi-Fi kalitatea aldatu da: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Erakutsi erreprodukzio abiadura botoia</string>
   <string name="morphe_playback_speed_dialog_button_summary">Sakatu eta eutsi abiadura lehenetsira berrezartzeko</string>
+  <string name="morphe_playback_speed_button_cycle_title">Sakatu Erreprodukzio-abialetako botoia abialduen artean altxakatzeko</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Sakatu zerrendako hurrengo abialdua lortzeko. Sakatu eta mantendu abialduen menua irekitzeko</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Erreprodukzio-abialetako botoiaren abialduak</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Sakatu baten bidez altxakatzen diren abialduak, bat lerroka. Azken abialduaren ondoren, sakatu baten bidez lehenengoera itzuliko da</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Abialduen zirkulazio-zerrenda baligabea, berreskuratu lehenesteko</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Erakutsi kalitate botoia</string>
   <string name="morphe_video_quality_dialog_button_summary">Sakatu eta eutsi kalitatea lehenetsira berrezartzeko</string>

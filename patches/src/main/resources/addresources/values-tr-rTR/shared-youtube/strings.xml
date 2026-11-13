@@ -231,6 +231,20 @@ Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_replace_music_with_youtube_summary">Paylaşılan bağlantılarda music.youtube.com adresini youtube.com ile değiştirir</string>
   <string name="morphe_replace_links_with_shortener_title">Paylaşım bağlantılarını youtu.be olarak değiştir</string>
   <string name="morphe_replace_links_with_shortener_summary">Videoları kısaltılmış youtu.be URL formatını kullanmaya zorlar</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Oto</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Video kalitesini hatırla</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Manuel kalite seçiminizi gelecekteki tüm videolara uygular</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Kalite değişikliği bildirimleri</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Yeni bir varsayılan kalite kaydedildiğinde bir bildirim gösterir</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi ağındaki varsayılan video kalitesi</string>
+  <string name="morphe_video_quality_default_mobile_title">Mobil ağdaki varsayılan video kalitesi</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Varsayılan mobil kalite şuna değiştirildi: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Varsayılan Wi-Fi kalitesi şuna değiştirildi: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım sayfasını aç</string>
+  <string name="morphe_open_system_share_sheet_summary">İçerik paylaşılırken uygulama içi paylaşım ekranı yerine sistem paylaşım ekranı açılır</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho kayıtları</string>
   <string name="morphe_debug_litho_entry_disabled">Devre dışı</string>

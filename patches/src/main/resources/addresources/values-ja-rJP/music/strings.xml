@@ -132,9 +132,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">「ダウンロード」メニューで外部ダウンローダーを使用する</string>
   <string name="morphe_external_downloader_menu_summary">メニューの[ダウンロード]オプションは、代わりに外部ダウンローダーを開きます</string>
   <string name="morphe_export_download_folder_title">ダウンロードをエクスポート</string>
-  <string name="morphe_export_download_folder_summary">"アプリでダウンロードした曲やビデオを、ダウンロードメニューを使用してデバイスのストレージにエクスポートします。タップしてエクスポート先フォルダを変更してください。
+  <string name="morphe_export_download_folder_summary">"アプリ内ダウンロードのフライアウトメニューを使用して、アプリ内で保存した曲やビデオをデバイスのストレージに書き出します。タップして書き出し
 
-エクスポート先フォルダ: %s"</string>
+書き出しフォルダを変更してください: %s"</string>
   <string name="morphe_export_download_started">ダウンロードをエクスポート中</string>
   <string name="morphe_export_download_progress">ダウンロードをエクスポート中: %s%%</string>
   <string name="morphe_export_download_notification_channel">ダウンロードのエクスポート</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">%2$s件のダウンロードのうち%1$s件を%3$sに書き出しました</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Morphe について</string>
-  <string name="morphe_settings_music_screen_1_ads_title">広告</string>
-  <string name="morphe_settings_music_screen_2_feed_title">フィード</string>
-  <string name="morphe_settings_music_screen_3_general_title">全般</string>
-  <string name="morphe_settings_music_screen_4_player_title">プレーヤー</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">歌詞</string>
-  <string name="morphe_settings_music_screen_9_misc_title">その他</string>
+  <string name="morphe_settings_music_screen_00_about_title">このフィルタについて</string>
+  <string name="morphe_settings_music_screen_01_ads_title">広告</string>
+  <string name="morphe_settings_music_screen_02_feed_title">フィード</string>
+  <string name="morphe_settings_music_screen_03_general_title">その他</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">歌詞</string>
+  <string name="morphe_settings_music_screen_05_misc_title">その他</string>
+  <string name="morphe_settings_music_screen_06_player_title">プレーヤー</string>
+  <string name="morphe_settings_music_screen_10_video_title">動画</string>
   <string name="morphe_music_app_language_title">YouTube Music の言語</string>
   <string name="morphe_music_app_language_summary_default">デバイスの言語</string>
   <string name="morphe_music_app_language_summary_unsupported">Android 13 以降が必要です</string>
@@ -256,6 +257,9 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_playback_speed_title">再生速度</string>
   <string name="morphe_music_playback_speed_summary">すべてのトラックに使用される速度です。100%の場合、ポッドキャストの再生速度など、アプリの速度が使用されます</string>
   <string name="morphe_music_playback_speed_change_pitch_title">速度に合わせてピッチを変更</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">自動字幕表示を無効化</string>
+  <string name="morphe_music_disable_auto_captions_summary">ビデオ開始時に字幕が自動的に有効にならなくなります。ビデオでデフォルトで有効に設定されている字幕も含まれます</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">オーディオダッキングを無効化</string>
   <string name="morphe_music_disable_audio_ducking_summary">通知などの短い音が他のアプリで再生されたときに、音量が下がらなくなります</string>
@@ -567,6 +571,7 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
 
 データベースはODC Open Database License (ODbL)の下でライセンスされています。xoundbyteによるSoul Over AIからのエントリはCC BY 4.0の下でライセンスされています。SoundProofまたはSoul Over AIとの提携や承認を受けているものではありません。"</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">このデバイスファイルでは歌詞を利用できません。</string>
   <string name="morphe_music_lyrics_enabled_title">外部サービスの歌詞を使用</string>
   <string name="morphe_music_lyrics_enabled_summary">外部の歌詞配信サービスから歌詞を取得して表示します。見つからない場合は、アプリの歌詞を表示します</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">歌詞表示中は画面を常にオン</string>
@@ -698,6 +703,7 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_search_title_hint">曲名</string>
   <string name="morphe_music_lyrics_search_artist_hint">アーティスト</string>
   <string name="morphe_music_lyrics_search_empty">曲名とアーティストを入力してください</string>
+  <string name="morphe_music_lyrics_search_google">Google で検索</string>
   <string name="morphe_music_lyrics_search_no_providers">有効なプロバイダーのどれも、他の曲を検索できません</string>
   <string name="morphe_music_lyrics_saved">保存しました</string>
   <string name="morphe_music_lyrics_written_by">作詞: %s</string>
@@ -777,14 +783,13 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">ローマ字: %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">ローマ字: %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s を使用)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">ローマ字: Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">翻訳済み</string>
   <string name="morphe_music_lyrics_translation_language_title">翻訳言語</string>
-  <string name="morphe_music_lyrics_romanize_language_title">ローマ字変換または音訳の言語</string>
-  <string name="morphe_music_lyrics_translation_target_language">"翻訳先の言語：
+  <string name="morphe_music_lyrics_romanize_language_title">ローマ字 / 発音表示元の言語</string>
+  <string name="morphe_music_lyrics_translation_target_language">"翻訳先の言語:
 %s"</string>
-  <string name="morphe_music_lyrics_romanization_target_language">"ローマ字変換または音訳の対象言語：
+  <string name="morphe_music_lyrics_romanization_target_language">"ローマ字表記または発音表記への変換元となる言語:
 %s"</string>
   <string name="morphe_music_lyrics_translating">翻訳中…</string>
   <string name="morphe_music_lyrics_translate_failed">歌詞を翻訳できませんでした</string>
@@ -802,7 +807,7 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_refreshing">更新中</string>
   <string name="morphe_music_lyrics_refreshed">更新済み</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC APIキー</string>
-  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC は現在のトラックの歌詞を文字起こしまたは時間軸合わせを行います</string>
+  <string name="morphe_music_lyrics_transcribe_key_summary">QuickLRC は、再生中の楽曲の歌詞の文字起こしや同期のためのタイミングの調整を行います</string>
   <string name="morphe_music_lyrics_transcribe_key_set_summary">QuickLRCキーが保存されました。歌詞検索ダイアログのアラインボタン、またはトラックに歌詞がない場合のパネルプロンプトで使用してください</string>
   <string name="morphe_music_lyrics_transcribe_key_saved">QuickLRC APIキーが保存されました</string>
   <string name="morphe_music_lyrics_transcribe_key_rejected">QuickLRCがそのキーを受け入れませんでした</string>
@@ -837,19 +842,15 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">AI でパートを検出</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">プロバイダーがコーラスやヴァースなどのセクションラベルを提供しない場合にのみ使用されます。その後、あなたの OpenAI 互換モデルが検出します。行を編集するとプロンプトも開きます</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API エンドポイント URL（例：https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions）</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">プロンプト テンプレート</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">プレースホルダー: {task}, {language}, {title}, {artist}, {count}, {lines}。それ以外は入力したままになります</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">プロンプトを保存しました</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">プロンプトは保存されましたが、AIエンドポイントはまだ使用できません。まずAI設定で構成してください</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">プロンプトをリセットしました</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">翻訳 &amp; ローマ字表記の設定を保存しました</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">設定は保存されましたが、AIエンドポイントはまだ利用できません</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">設定を保存しました</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">設定をデフォルトにリセットしました</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">ベース URL は http:// または https:// で始まる必要があります</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">設定が不完全またはプロバイダーによって拒否されました</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">接続を確認中…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s：接続済み！（%2$s）</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: 接続に失敗しました。設定を確認してください。</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">先に API キーを入力してください</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">接続テスト</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">モデルを取得中…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">モデルを取得</string>
@@ -866,7 +867,14 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">追加のリクエストヘッダー（オプションの JSON）</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">名前と値を引用符で囲んでください。例：{\"api-key\": \"abc\"}。引用符のない / : または数字を含む値は拒否されます。空の値はヘッダーを削除します。</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">名前と値を引用符で囲んでください。例：{\"temperature\": 0.3}。引用符のない / または : を含む値は拒否されます。モデルとメッセージはここで設定できません。</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">推論への注力</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">デフォルト</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">認証キー（FreeまたはPro）</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AIはこのトラックのセクションを検出できませんでした</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">検出中</string>
+  <string name="morphe_music_lyrics_ai_section_apply">セクションを適用</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">検出をキャンセルしました</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">セクションを検出するための歌詞がありません</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - アイコンの太字表示を無効化</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - プレーヤーの「次のコンテンツ」「歌詞」「関連コンテンツ」タブを復元</string>

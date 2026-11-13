@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Folosește descărcător extern pentru meniul Descărcări</string>
   <string name="morphe_external_downloader_menu_summary">Opțiunea Descărcare din meniuri deschide descărcătorul extern al dvs.</string>
   <string name="morphe_export_download_folder_title">Exportă descărcările</string>
-  <string name="morphe_export_download_folder_summary">"Exportați melodiile și videoclipurile descărcate de aplicație în memoria dispozitivului folosind meniul descărcării. Atingeți pentru a schimba folderul de export
+  <string name="morphe_export_download_folder_summary">"Exportați melodiile și videoclipurile salvate în aplicație în memoria dispozitivului folosind meniul derulant de descărcări din aplicație. Atingeți pentru a schimba folderul de export
 
 Folder de export: %s"</string>
   <string name="morphe_export_download_started">Se exportă descărcarea</string>
@@ -143,15 +143,17 @@ Folder de export: %s"</string>
   <string name="morphe_export_download_all_flyout_title">Exportați totul pe dispozitiv</string>
   <string name="morphe_export_download_all_started">Se exportă toate descărcările</string>
   <string name="morphe_export_download_all_running">Descărcările sunt deja în curs de export</string>
+  <string name="morphe_export_download_all_saved">S-au exportat %1$s din %2$s descărcări în %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Despre</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Anunțuri</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Flux</string>
-  <string name="morphe_settings_music_screen_3_general_title">Generalități</string>
-  <string name="morphe_settings_music_screen_4_player_title">Player</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Versuri</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Diverse</string>
+  <string name="morphe_settings_music_screen_00_about_title">Despre</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Reclame</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Flux</string>
+  <string name="morphe_settings_music_screen_03_general_title">Generalități</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Versuri</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Diverse</string>
+  <string name="morphe_settings_music_screen_06_player_title">Player</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">Limba YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Limba sistemului</string>
   <string name="morphe_music_app_language_summary_unsupported">Necesită Android 13 sau o versiune ulterioară</string>
@@ -255,6 +257,9 @@ Redarea SABR (fluxurile video simulate dezactivate)"</string>
   <string name="morphe_music_playback_speed_title">Viteza de redare</string>
   <string name="morphe_music_playback_speed_summary">Viteza folosită pentru toate melodiile. La 100% se folosește viteza aplicației, cum ar fi viteza de redare a podcastului.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Schimbă tonalitatea odată cu viteza</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Dezactivează subtitrările automate</string>
+  <string name="morphe_music_disable_auto_captions_summary">Subtitrările nu sunt activate automat la începutul unui videoclip, inclusiv subtitrările activate implicit de acesta</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Dezactivează diminuarea audio</string>
   <string name="morphe_music_disable_audio_ducking_summary">Volumul nu este scăzut atunci când o altă aplicație redă un sunet scurt, cum ar fi o notificare</string>
@@ -566,6 +571,7 @@ Pentru a vă asigura că scrobbling-ul este sincronizat în timpul redării în 
 
 Baza de date este licențiată sub Licența de Bază de Date Deschisă ODC (ODbL). Intrările de la Soul Over AI de xoundbyte sunt licențiate sub CC BY 4.0. Neafiliat și neaprobat de SoundProof sau Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Versurile nu sunt disponibile pentru acest fișier de pe dispozitiv.</string>
   <string name="morphe_music_lyrics_enabled_title">Utilizați versuri de la terți</string>
   <string name="morphe_music_lyrics_enabled_summary">Afișează versurile de la un serviciu terț, revenind la versurile integrate dacă nu se găsesc niciunul</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Menține ecranul pornit cât timp vizualizați versurile</string>
@@ -692,6 +698,7 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_search_title_hint">Titlul melodiei</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artist</string>
   <string name="morphe_music_lyrics_search_empty">Introduceți un titlu de melodie și un artist</string>
+  <string name="morphe_music_lyrics_search_google">Căutare cu Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Niciunul dintre furnizorii activați nu poate căuta alte melodii</string>
   <string name="morphe_music_lyrics_saved">Salvat</string>
   <string name="morphe_music_lyrics_written_by">Scris de: %s</string>
@@ -771,7 +778,6 @@ Se aplică ambelor limite. La 1,75, patru caractere cu lățime completă sunt c
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizat de %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romanizat de %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (cu %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Romanizat de Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Tradus</string>
   <string name="morphe_music_lyrics_translation_language_title">Limba de traducere</string>
@@ -831,19 +837,15 @@ Versurile provin de la servicii terțe care nu sunt afiliate, sponsorizate sau s
   <string name="morphe_music_lyrics_use_ai_section_title">Detectarea secțiunilor cu AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Utilizat doar atunci când furnizorul nu furnizează etichete de secțiuni precum Refren sau Vers, pe care modelul compatibil OpenAI le detectează. Editarea rândului deschide și promptul său</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-ul endpoint-ului API (de ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Șablon de Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder-e: {task}, {language}, {title}, {artist}, {count}, {lines}. Cele necunoscute sunt lăsate așa cum au fost tastate</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt salvat</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt salvat, dar endpoint-ul AI nu este încă utilizabil. Configurați-l mai întâi din Setări AI</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt resetat</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Setările de traducere &amp; romanizare au fost salvate</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Setările au fost salvate, dar endpoint-ul AI nu este încă utilizabil</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Setări salvate</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Setările au fost resetate la valorile implicite</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL-ul de bază trebuie să înceapă cu http:// sau https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Setările incomplete sau respinse de furnizor</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Se validează conexiunea…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Conectat! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Conexiunea a eșuat. Verificați setările.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Introduceți mai întâi cheia API</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Testați conexiunea</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Se preiau modelele…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Preluare modele</string>
@@ -860,7 +862,14 @@ Versurile provin de la servicii terțe care nu sunt afiliate, sponsorizate sau s
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Antete suplimentare de cerere (JSON opțional)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Cotați numele și valorile, de ex. {\"api-key\": \"abc\"}. O valoare necotată care conține / : sau o cifră este respinsă. O valoare goală elimină un antet.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Cotați numele și valorile, de ex. {\"temperature\": 0.3}. O valoare necotată care conține / sau : este respinsă. Modelul și mesajele nu pot fi setate aici.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Efort de raționament</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Implicit</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Cheie de autentificare (Free sau Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI nu a putut detecta secțiunile pentru această piesă</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Detectare</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Aplică secțiunile</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Detectarea a fost anulată</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Nu există versuri pentru detectarea secțiunilor</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Dezactivează pictogramele aldine</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Restaurează filele Up next, Versuri și Conexe din player</string>

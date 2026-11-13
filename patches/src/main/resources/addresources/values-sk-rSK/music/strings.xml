@@ -132,9 +132,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Použiť externý sťahovač pre menu Sťahovanie</string>
   <string name="morphe_external_downloader_menu_summary">Možnosť stiahnuť v menu otvorí váš externý sťahovač</string>
   <string name="morphe_export_download_folder_title">Exportovať stiahnuté súbory</string>
-  <string name="morphe_export_download_folder_summary">"Exportujte skladby a videá stiahnuté aplikáciou do úložiska vášho zariadenia pomocou ponuky sťahovania. Ťuknutím zmeníte priečinok pre export
+  <string name="morphe_export_download_folder_summary">"Exportujte v aplikácii uložené skladby a videá do úložiska vášho zariadenia pomocou vysúvacieho menu s sťahovačkami v aplikácii. Ťuknutím zmeníte export
 
-Priečinok pre export: %s"</string>
+Priečinok na export: %s"</string>
   <string name="morphe_export_download_started">Exportovanie sťahovania</string>
   <string name="morphe_export_download_progress">Exportovanie sťahovania: %s%%</string>
   <string name="morphe_export_download_notification_channel">Exporty sťahovaní</string>
@@ -146,13 +146,14 @@ Priečinok pre export: %s"</string>
   <string name="morphe_export_download_all_saved">Exportovaných %1$s z %2$s sťahovaní do %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">O aplikácii</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Reklamy</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Obsah</string>
-  <string name="morphe_settings_music_screen_3_general_title">Všeobecné</string>
-  <string name="morphe_settings_music_screen_4_player_title">Prehrávač</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Texty</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Ostatné</string>
+  <string name="morphe_settings_music_screen_00_about_title">O aplikácii</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Reklamy</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_03_general_title">Všeobecné</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Texty piesní</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Ostatné</string>
+  <string name="morphe_settings_music_screen_06_player_title">Prehrávač</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">Jazyk YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Jazyk systému</string>
   <string name="morphe_music_app_language_summary_unsupported">Vyžaduje Android 13 alebo novší</string>
@@ -256,6 +257,9 @@ Prehrávanie SABR (spoofovanie video streamov vypnuté)"</string>
   <string name="morphe_music_playback_speed_title">Rýchlosť prehrávania</string>
   <string name="morphe_music_playback_speed_summary">Rýchlosť použitá pre všetky skladby. Pri 100 % sa použije rýchlosť aplikácie, ako je rýchlosť prehrávania podcastu</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Zmeniť výšku tónu s rýchlosťou</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Zakázat automatické titulky</string>
+  <string name="morphe_music_disable_auto_captions_summary">Titulky sa pri spustení videa neaktivujú automaticky, vrátane titulkov, ktoré video aktivuje predvolene</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Zakázať znižovanie hlasitosti</string>
   <string name="morphe_music_disable_audio_ducking_summary">Hlasitosť sa nezníži, keď iná aplikácia prehrá krátky zvuk, napríklad oznámenie</string>
@@ -563,6 +567,7 @@ Na zabezpečenie synchronizácie scrobblingu počas prehrievania na pozadí sa u
 
 Databáza je licencovaná podľa ODC Open Database License (ODbL). Zápisy zo Soul Over AI od xoundbyte sú licencované podľa CC BY 4.0. Nie je pridružená k SoundProof ani Soul Over AI a nimi nie je podporovaná."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Pre súbor zariadenia nie sú k dispozícii texty piesní.</string>
   <string name="morphe_music_lyrics_enabled_title">Použiť texty od tretej strany</string>
   <string name="morphe_music_lyrics_enabled_summary">Zobrazuje texty od tretej strany, pričom ak sa žiadne nenájdu, prepne na vstavané texty.</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Ponechať obrazovku zapnutú pri prezeraní textu piesne</string>
@@ -694,6 +699,7 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_search_title_hint">Názov skladby</string>
   <string name="morphe_music_lyrics_search_artist_hint">Interpret</string>
   <string name="morphe_music_lyrics_search_empty">Zadajte názov skladby a interpreta.</string>
+  <string name="morphe_music_lyrics_search_google">Hľadať pomocou Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Žiadny z povolených poskytovateľov nevie vyhľadávať iné skladby.</string>
   <string name="morphe_music_lyrics_saved">Uložené</string>
   <string name="morphe_music_lyrics_written_by">Text napísal: %s</string>
@@ -773,7 +779,6 @@ Platí pre oba limity. Pri hodnote 1,75 sa štyri znaky plnej šírky započíta
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizované pomocou %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Latinizované pomocou %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (s %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Latinizované pomocou Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Preložené</string>
   <string name="morphe_music_lyrics_translation_language_title">Jazyk prekladu</string>
@@ -833,19 +838,15 @@ Texty piesní pochádzajú zo služieb tretích strán, ktoré nie sú spojené,
   <string name="morphe_music_lyrics_use_ai_section_title">Detekovať sekcie pomocou AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Používa sa len vtedy, keď poskytovateľ neposkytuje štítky sekcií ako Refrén alebo Sloha, ktoré následne deteguje váš kompatibilný model OpenAI. Úprava riadku tiež otvorí jeho výzvu</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL koncového bodu API (napr. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Šablóna promptu</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Zástupné znaky: {task}, {language}, {title}, {artist}, {count}, {lines}. Neznáme zostanú tak, ako boli napísané</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt uložený</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Výzva bola uložená, ale AI endpoint ešte nie je použiteľný. Najprv ho nakonfigurujte pod Nastaveniami AI</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt resetovaný</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Nastavenia prekladu &amp; romanizácie boli uložené</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Nastavenia boli uložené, ale koncový bod AI ešte nie je použiteľný</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Nastavenia uložené</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Nastavenia boli obnovené na predvolené</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Základná URL musí začínať s http:// alebo https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Nastavenia sú nekompletné alebo zamietnuté poskytovateľom</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Overuje sa pripojenie…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Pripojené! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Pripojenie zlyhalo. Skontrolujte nastavenia.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Najprv zadajte kľúč API</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Testovať pripojenie</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Načítavanie modelov…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Načítať modely</string>
@@ -862,7 +863,14 @@ Texty piesní pochádzajú zo služieb tretích strán, ktoré nie sú spojené,
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Dodatočné hlavičky požiadaviek (voliteľný JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Uveďte názvy a hodnoty v úvodzovkách, napr. {\"api-key\": \"abc\"}. Hodnota bez úvodzoviek obsahujúca / : alebo číslo je zamietnutá. Prázdna hodnota odoberá hlavičku.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Uveďte názvy a hodnoty v úvodzovkách, napr. {\"temperature\": 0.3}. Hodnota bez úvodzoviek obsahujúca / alebo : je zamietnutá. Model a správy sa tu nemôžu nastaviť.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Úsilie pri uvažovaní</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Predvolený</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Kľúč na autentifikáciu (Free alebo Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI nedokázala detekovať sekcie pre túto skladbu</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Detekovanie</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Aplikovať sekcie</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Detekovanie zrušené</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">K detekcii sekcií nie sú k dispozícii žiadne texty</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Zakázať tučné ikony</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 – Obnoviť karty Prehrávača: Ďalej, Texty a Súvisiace</string>

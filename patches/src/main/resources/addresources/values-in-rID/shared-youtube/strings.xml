@@ -232,6 +232,20 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_replace_music_with_youtube_summary">Mengganti music.youtube.com dengan youtube.com di tautan yang dibagikan</string>
   <string name="morphe_replace_links_with_shortener_title">Ubah tautan berbagi ke youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Memaksa video untuk menggunakan format pemendek URL youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Otomatis</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Ingat kualitas video</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Menerapkan pilihan kualitas manual Anda ke semua video mendatang</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Notifikasi perubahan kualitas</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Menampilkan notifikasi saat kualitas video bawaan baru disimpan</string>
+  <string name="morphe_video_quality_default_wifi_title">Kualitas video bawaan di jaringan Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Kualitas video bawaan di jaringan seluler</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Kualitas seluler bawaan diubah ke: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Kualitas Wi-Fi bawaan diubah ke: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Buka lembar berbagi sistem</string>
+  <string name="morphe_open_system_share_sheet_summary">Membuka lembar berbagi sistem alih-alih lembar berbagi dalam aplikasi saat berbagi konten</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Pencatatan Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Tidak aktif</string>

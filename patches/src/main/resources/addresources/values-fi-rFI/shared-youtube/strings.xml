@@ -232,6 +232,20 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <string name="morphe_replace_music_with_youtube_summary">Korvaa music.youtube.com osoitteella youtube.com jaetuissa linkeissä</string>
   <string name="morphe_replace_links_with_shortener_title">Muuta jakolinkit youtu.be-sivustoksi</string>
   <string name="morphe_replace_links_with_shortener_summary">Pakottaa videot käyttämään lyhennettyä youtu.be-URL-muotoa</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automaattinen</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Muista videolaatu</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Käyttää manuaalista laatuvalintaasi kaikkiin tuleviin videoihin</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Ilmoitukset laadun muutoksista</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Näyttää ilmoituksen, kun uusi oletuslaatu on tallennettu</string>
+  <string name="morphe_video_quality_default_wifi_title">Videon oletuslaatu Wi-Fi-verkossa</string>
+  <string name="morphe_video_quality_default_mobile_title">Videon oletuslaatu mobiiliverkossa</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Mobiiliverkon oletuslaatu muutettiin muotoon: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi-oletuslaatu muutettiin muotoon: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Avaa järjestelmän jakovalikko</string>
+  <string name="morphe_open_system_share_sheet_summary">Avaa järjestelmän jakovalikon sovelluksen oman valikon sijaan sisällön jakamiseksi</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-kirjaaminen</string>
   <string name="morphe_debug_litho_entry_disabled">Pois käytöstä</string>

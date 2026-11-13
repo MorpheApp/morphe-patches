@@ -695,6 +695,9 @@ Athugið: Virkar ekki alltaf í beinum streymum"</string>
   <string name="morphe_play_all_button_type_entry_11">Aðeins Shorts fyrir meðlimi</string>
   <string name="morphe_play_all_button_type_entry_12">Aðeins bein streymi fyrir meðlimi</string>
   <string name="morphe_play_all_button_not_available_toast">Ekki hægt að búa til spilunarlista vegna ósamræmis í auðkenni rásar</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Sýna Spilunarlista-hnappinn</string>
+  <string name="morphe_playlist_panel_button_summary">Snerta til að opna spilunarlistapanninn. Sýnt aðeins þegar spilunarlisti er í gangi</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Sýna hnappinn Endurhlaða myndskeið</string>
   <string name="morphe_dismiss_player_not_available_toast">Auðkenni myndskeiðs er ekki tiltækt. Endurhladdu myndskeiðinu handvirkt</string>
@@ -1204,9 +1207,24 @@ Stillingar → Spilun (eða Sjálfvirk spilun) → Sjálfvirk spilun næsta mynd
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Slökkva á sprettigluggum spilara</string>
   <string name="morphe_disable_player_popup_panels_summary">Kemur í veg fyrir að spilunarlista- og beinu spjallspjöld opnist sjálfkrafa</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Sýna spilunarlista í fullskjá</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Spilunarlisti opnast yfir fullskjáspilaranum</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Spilunarlisti fer út úr fullskjá á spjaldtölvum</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Slökkva á sjálfvirkri spilun spilunarlista</string>
   <string name="morphe_disable_playlist_autoplay_summary">Kemur í veg fyrir að spilunarlistar fari sjálfkrafa yfir á næsta myndskeið</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Stjórnun á sjálfspuni</string>
+  <string name="morphe_autoplay_control_summary">Bætir við spilarhnappi og reglu fyrir næsta myndband. Spilunslistar og raðir halda áfram, blanda stöðvast eftir ákveðnum fjölda myndbanda, mælt myndband spilar aldrei. Ýttu á hnappinn fyrir næsta ham, ýttu og haltuu inni fyrir listann</string>
+  <string name="morphe_autoplay_mode_title">Sjálfvirk spilun</string>
+  <string name="morphe_autoplay_mode_entry_1">Sjálfvirkt</string>
+  <string name="morphe_autoplay_mode_entry_2">Eitt</string>
+  <string name="morphe_autoplay_mode_entry_3">Slökkt</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Lengd blandu</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Í hamnum Sjálfvirkur stöðvast blanda eftir þessa fjölda myndbanda. 0 = engin takmörkun</string>
+  <string name="morphe_autoplay_mix_length">Blanda: %s myndbönd</string>
+  <string name="morphe_autoplay_mix_no_limit">Blanda: engin takmörkun</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">„Halda áfram að horfa?“ tilkynning</string>
   <string name="morphe_continue_watching_prompt_entry_1">Sjálfgefið</string>
@@ -1282,9 +1300,6 @@ Bílaútlit
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Endurheimta gamla vistun á spilunarlista</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Slökkva á feitum táknum</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Endurheimta rásarnafn undir myndspilara</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Opna deilingarvalmynd kerfisins</string>
-  <string name="morphe_open_system_share_sheet_summary">Opnar deilingarvalmynd kerfisins í stað innbyggðrar þegar efni er deilt</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Yfirskrifa hnappa í YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Opnar uppáhalds tónlistarforritið þitt í stað innbyggða YouTube Music forritsins</string>
@@ -1478,7 +1493,6 @@ Myndskeið eru beðin um með stuttu forskeyti af dulkóðuðu myndskeiðsauðke
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow er tímabundið ótiltækt (stöðukóði: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow er tímabundið ótiltækt</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Endurheimta gamlan stíl spilarahnappa</string>
   <string name="morphe_restore_old_player_buttons_summary">Skilar djörfum stjórntækjum spilarans í eldra, grennra útlit</string>
@@ -1518,25 +1532,20 @@ Myndskeið eru beðin um með stuttu forskeyti af dulkóðuðu myndskeiðsauðke
   <string name="morphe_video_delay_button_flyout_title">Sýna valmyndina Töf á myndskeiði</string>
   <string name="morphe_video_delay_dialog_input_hint">Töf í millisekúndum</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Sjálfvirkt</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Muna gæði myndskeiðs</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Beitir handvöldu gæðavali á öll næstu myndskeið</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Tilkynningar um breytingar á gæðum</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Sýnir tilkynningu þegar nýtt sjálfgefið gæði er vistað</string>
-  <string name="morphe_video_quality_default_wifi_title">Sjálfgefin myndgæði á Wi-Fi neti</string>
-  <string name="morphe_video_quality_default_mobile_title">Sjálfgefin myndgæði á farsímaneti</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Muna gæði Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Beitir handvöldu gæðavali á öll næstu Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Sjálfgefin Shorts gæði á Wi-Fi neti</string>
   <string name="morphe_shorts_quality_default_mobile_title">Sjálfgefin Shorts gæði á farsímaneti</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Breytt sjálfgefin gæði fyrir farsíma í: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Breytt sjálfgefin Wi-Fi gæði í: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Breytt gæði Shorts fyrir farsíma í: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Breytt gæði Shorts fyrir Wi-Fi í: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Sýna hnappinn Spilunarhraði</string>
   <string name="morphe_playback_speed_dialog_button_summary">Ýttu og haltu til að endurstilla hraða í sjálfgefið gildi</string>
+  <string name="morphe_playback_speed_button_cycle_title">Ýttu á hnapp fyrir spilunarhraða til að skipta á hraða</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Hvert smellið færir þig í næsta hraða á listanum. Ýttu og haltu inni til að opna hraðaval</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Hraðar fyrir hnapp spilunarhraða</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Hraðar sem skiptist á við hvert smell, einn á hverri línu. Eftir síðasta hraðann færir smellinn þig aftur í fyrsta</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Ógildur hraðalisti, endurstillt í sjálfgefið</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Sýna hnappinn Gæði</string>
   <string name="morphe_video_quality_dialog_button_summary">Ýttu og haltu til að endurstilla gæði í sjálfgefin</string>

@@ -232,6 +232,20 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_replace_music_with_youtube_summary">Thay music.youtube.com bằng youtube.com khi chia sẻ liên kết</string>
   <string name="morphe_replace_links_with_shortener_title">Đổi liên kết chia sẻ thành youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Buộc các video dùng định dạng youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Tự động</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Nhớ chất lượng video</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Áp dụng chất lượng video mà bạn đã chọn cho tất cả các video trong tương lai</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Thông báo thay đổi chất lượng</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Hiển thị thông báo khi lưu chất lượng video mặc định mới</string>
+  <string name="morphe_video_quality_default_wifi_title">Chất lượng video mặc định trên mạng Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Chất lượng video mặc định trên mạng di động</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Đã thay đổi chất lượng mặc định trên mạng di động thành: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Đã thay đổi chất lượng mặc định trên Wi-Fi thành: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Mở bảng chia sẻ của hệ thống</string>
+  <string name="morphe_open_system_share_sheet_summary">Mở bảng chia sẻ của hệ thống thay vì bảng chia sẻ của ứng dụng khi chia sẻ</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Nhật ký Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Đang tắt</string>

@@ -232,6 +232,20 @@ Norėdami prisijungti, žemiau bakstelėkite „Tęsti“"</string>
   <string name="morphe_replace_music_with_youtube_summary">Bendrinamose nuorodose pakeičia music.youtube.com į youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Keisti bendrinimo nuorodas į youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Priverčia vaizdo įrašus naudoti sutrumpintą youtu.be URL formatą</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatiniai</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Įsiminti vaizdo kokybę</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Jūsų rankenai pasirinkta kokybė bus taikoma visiems būsimiems vaizdo įrašams</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Pranešimai apie kokybės pakeitimą</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Rodo pranešimą, kai yra išsaugota nauja numatytinė kokybė</string>
+  <string name="morphe_video_quality_default_wifi_title">Numatytinė vaizdo kokybė naudojant Wi-Fi tinklą</string>
+  <string name="morphe_video_quality_default_mobile_title">Numatytinė vaizdo kokybė naudojant mobilųjį tinklą</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Numatytinė mobiliojo tinklo kokybė pakeista į: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Numatytinė Wi-Fi kokybė pakeista į: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Atidaryti sistemos bendrinimo langą</string>
+  <string name="morphe_open_system_share_sheet_summary">Bendrinant turinį, atidaro sistemos bendrinimo langą vietoj programėlės lango</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho žurnalo įrašai</string>
   <string name="morphe_debug_litho_entry_disabled">Išjungta</string>

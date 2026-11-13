@@ -695,6 +695,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts само за чланове</string>
   <string name="morphe_play_all_button_type_entry_12">Емитовани видео записи само за чланове</string>
   <string name="morphe_play_all_button_not_available_toast">Није могуће генерисати плејлисту због неусклађеног ID-ја канала</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Прикажи дугме „Плејлиста”</string>
+  <string name="morphe_playlist_panel_button_summary">Заطبيقните да отворите панел плејлисте. Приказује се само током репродукције плејлисте</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Прикажи дугме „Поново учитај видео”</string>
   <string name="morphe_dismiss_player_not_available_toast">ИД видеа није доступан. Молимо ручно поново учитајте видео</string>
@@ -1204,9 +1207,23 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Онемогући искачуће панеле плејера</string>
   <string name="morphe_disable_player_popup_panels_summary">Онемогућава панеле за отварање плејлиста и ћаскања</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Прикажи панел плејлисте у пуном екрану</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Панел плејлисте се отвара преко плејера у пуном екрану</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Панел плејлисте излази из пуног екрана на таблетима</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Онемогући аутоматску репродукцију плејлисте</string>
   <string name="morphe_disable_playlist_autoplay_summary">Спречава да плејлисте аутоматски прелазе на следећи видео</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Контрола аутоплеја</string>
+  <string name="morphe_autoplay_control_summary">Додаје дугме за плејер и правило за следећи видео. Плејлисте и реде наставка, Mix се зауставља након одређеног броја видеа, а препоручени видео се никада не пушта. Додирните дугме за следећи режим, додирните и држите за листу</string>
+  <string name="morphe_autoplay_mode_title">Режим аутоплеја</string>
+  <string name="morphe_autoplay_mode_entry_1">Аутоматски</string>
+  <string name="morphe_autoplay_mode_entry_2">Појединцем</string>
+  <string name="morphe_autoplay_mode_entry_3">Изаључено</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Дужина Mix-а</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">У режиму Auto, Mix се зауставља након овог броја видеа. 0 = нема ограничења</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: нема ограничења</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Подсетник \"Продужите са гледањем\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Подразумевано</string>
@@ -1282,9 +1299,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Враћа стари изглед дугмета за чување у плејлисту</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Искључи жирне иконе</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Враћа име канала испод плејера видео снимка</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Отвори системски панел за дељење</string>
-  <string name="morphe_open_system_share_sheet_summary">Отвара системски лист за дељење уместо уграђеног када делите садржај</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Замени дугмад YouTube Music-а</string>
   <string name="morphe_override_youtube_music_buttons_summary">Отвара вашу омиљену музичку апликацију уместо стандардне YouTube Music апликације</string>
@@ -1478,7 +1492,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow привремено није доступан (кôд статуса: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow привремено није доступан</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Врати стари стил дугмади плејера</string>
   <string name="morphe_restore_old_player_buttons_summary">Враћа контроле плејера видеа на старији, тањи визуелни стил</string>
@@ -1518,25 +1531,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">Прикажи мени за кашњење видеа</string>
   <string name="morphe_video_delay_dialog_input_hint">Кашњење у милисекундама</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Аутоматски</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Запамти квалитет видеа</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Примењује вашу ручну селекцију квалитета на све будуће видео снимке</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Обавештења о промени квалитета</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Приказује обавештење када се сачува нови подразумевани квалитет</string>
-  <string name="morphe_video_quality_default_wifi_title">Подразумевани квалитет видеа на Wi-Fi мрежи</string>
-  <string name="morphe_video_quality_default_mobile_title">Подразумевани квалитет видеа на мобилној мрежи</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Запамти квалитет Shorts видеа</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Примењује вашу ручну селекцију квалитета на све будуће Shorts видео снимке</string>
   <string name="morphe_shorts_quality_default_wifi_title">Подразумевани квалитет Shorts видеа на Wi-Fi мрежи</string>
   <string name="morphe_shorts_quality_default_mobile_title">Подразумевани квалитет Shorts видеа на мобилној мрежи</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Промењен квалитет мобилног преноса на: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Промењен квалитет Wi-Fi преноса на: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Промењен квалитет Shorts мобилног преноса на: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Промењен квалитет Shorts Wi-Fi преноса на: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Прикажи дугме за брзину репродукције</string>
   <string name="morphe_playback_speed_dialog_button_summary">Додирните и задржите да бисте вратили брзину на подразумевану</string>
+  <string name="morphe_playback_speed_button_cycle_title">Додирните дугме за брзину репродукције да бисте мењали брзине</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Додирните да пређете на следећу брзину на листи. Додирните и држите да отворите мени брзина</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Брзине дугмета за брзину репродукције</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Брзине кроз које се пролази додиром, једна по линији. Након последње брзине, додир враћа на прву</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Невалидна листа циклуса брзина, ресетовано на подразумевано</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Прикажи дугме квалитета</string>
   <string name="morphe_video_quality_dialog_button_summary">Додирните и задржите да бисте вратили квалитет на подразумевани</string>
