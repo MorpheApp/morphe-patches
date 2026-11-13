@@ -164,7 +164,7 @@ public final class LunaBeatProvider extends ScoredSongProvider {
         }
     }
 
-    private static String normalizeLunabeat(@Nullable String s) {
+    static String normalizeLunabeat(@Nullable String s) {
         if (s == null) return "";
         return Normalizer.normalize(s, Normalizer.Form.NFKC)
                 .toLowerCase(Locale.ROOT)

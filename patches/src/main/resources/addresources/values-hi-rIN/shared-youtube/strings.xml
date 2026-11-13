@@ -232,6 +232,20 @@ Android System WebView खोलने के लिए OK पर टैप क�
   <string name="morphe_replace_music_with_youtube_summary">साझा लिंक में music.youtube.com को youtube.com से बदलता है।</string>
   <string name="morphe_replace_links_with_shortener_title">youtu.be के साथ शेयर लिंक बदलें</string>
   <string name="morphe_replace_links_with_shortener_summary">वीडियो को संक्षिप्त youtu.be URL प्रारूप का उपयोग करने के लिए बाध्य करता है</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">स्वचालित</string>
+  <string name="morphe_remember_video_quality_last_selected_title">वीडियो क्वालिटी याद रखें</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">आपके मैन्युअल क्वालिटी चयन को सभी भविष्य के वीडियो पर लागू करता है</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">क्वालिटी बदलने के नोटिफ़िकेशन</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">जब एक नई डिफ़ॉल्ट क्वालिटी सेव की जाती है तब एक नोटिफ़िकेशन दिखाता है</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi नेटवर्क पर डिफ़ॉल्ट वीडियो क्वालिटी</string>
+  <string name="morphe_video_quality_default_mobile_title">मोबाइल नेटवर्क पर डिफ़ॉल्ट वीडियो क्वालिटी</string>
+  <string name="morphe_remember_video_quality_toast_mobile">डिफ़ॉल्ट मोबाइल क्वालिटी बदलकर %s कर दी गई</string>
+  <string name="morphe_remember_video_quality_toast_wifi">डिफ़ॉल्ट Wi-Fi क्वालिटी बदलकर %s कर दी गई</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">सिस्टम शेयर शीट खोलें</string>
+  <string name="morphe_open_system_share_sheet_summary">कंटेंट शेयर करते समय इन-ऐप शेयर शीट के बजाय सिस्टम शेयर शीट खोलता है</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">लिथो लॉगिंग</string>
   <string name="morphe_debug_litho_entry_disabled">बंद किया गया</string>

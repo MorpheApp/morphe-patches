@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Använd extern nedladdare för menyn Nedladdningar</string>
   <string name="morphe_external_downloader_menu_summary">Alternativet Nedladdning i menyer öppnar din externa nedladdare istället</string>
   <string name="morphe_export_download_folder_title">Exportera nedladdningar</string>
-  <string name="morphe_export_download_folder_summary">"Exportera låtar och videor som laddats ned av appen till enhetens lagring med hjälp av nedladdningsmenyn. Tryck för att ändra exportmappen
+  <string name="morphe_export_download_folder_summary">"Exportera sparade låtar och videor i appen till enhetens lagring med hjälp av menyn för nedladdningar i appen. Tryck för att ändra export
 
 Exportmapp: %s"</string>
   <string name="morphe_export_download_started">Exporterar nedladdning</string>
@@ -146,13 +146,14 @@ Exportmapp: %s"</string>
   <string name="morphe_export_download_all_saved">Exporterade %1$s av %2$s nedladdningar till %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Om</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Annonser</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Flöde</string>
-  <string name="morphe_settings_music_screen_3_general_title">Allmänt</string>
-  <string name="morphe_settings_music_screen_4_player_title">Spelare</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Sångtext</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Övrigt</string>
+  <string name="morphe_settings_music_screen_00_about_title">Om</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Annonser</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Flöde</string>
+  <string name="morphe_settings_music_screen_03_general_title">Allmänt</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Texter</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Övrigt</string>
+  <string name="morphe_settings_music_screen_06_player_title">Spelare</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">YouTube Music-språk</string>
   <string name="morphe_music_app_language_summary_default">Systemspråk</string>
   <string name="morphe_music_app_language_summary_unsupported">Kräver Android 13 eller senare</string>
@@ -256,6 +257,9 @@ SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <string name="morphe_music_playback_speed_title">Uppspelningshastighet</string>
   <string name="morphe_music_playback_speed_summary">Hastighet som används för alla spår. Vid 100 % används appens hastighet, till exempel uppspelningshastigheten för poddar.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Ändra tonhöjd med hastigheten</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Inaktivera automatisk textning</string>
+  <string name="morphe_music_disable_auto_captions_summary">Undertexter aktiveras inte automatiskt när en video startar, inklusive undertexter som videon aktiverar som standard</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Inaktivera ljudduckning</string>
   <string name="morphe_music_disable_audio_ducking_summary">Volymen sänks inte när en annan app spelar ett kort ljud, till exempel ett meddelande</string>
@@ -567,6 +571,7 @@ För att säkerställa att scrobbling synkroniseras under bakgrundsuppspelning, 
 
 Databasen är licensierad under ODC Open Database License (ODbL). Poster från Soul Over AI av xoundbyte är licensierade under CC BY 4.0. Inte ansluten till eller godkänd av SoundProof eller Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Texten är inte tillgänglig för den här enhetsfilen.</string>
   <string name="morphe_music_lyrics_enabled_title">Använd tredjeparts sångtexter</string>
   <string name="morphe_music_lyrics_enabled_summary">Visar sångtexter från en tredjepartstjänst, med fallback till de inbyggda sångtexterna när inga hittas</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Håll skärmen på medan du visar texten</string>
@@ -693,6 +698,7 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_search_title_hint">Låttitel</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artist</string>
   <string name="morphe_music_lyrics_search_empty">Ange en låttitel och en artist</string>
+  <string name="morphe_music_lyrics_search_google">Sök med Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Ingen av de aktiverade leverantörerna kan söka efter andra låtar.</string>
   <string name="morphe_music_lyrics_saved">Sparad</string>
   <string name="morphe_music_lyrics_written_by">Skriven av: %s</string>
@@ -772,7 +778,6 @@ Gäller båda gränserna. Vid 1,75 räknas fyra helbreddstecken som 7."</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romaniserad av %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romaniserat av %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (med %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Romaniserad av Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Översatt</string>
   <string name="morphe_music_lyrics_translation_language_title">Översättningsspråk</string>
@@ -832,19 +837,15 @@ Låttexter kommer från tredjeparts tjänster som inte är anslutna till, sponsr
   <string name="morphe_music_lyrics_use_ai_section_title">Identifiera sektioner med AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Används endast när tjänsten inte levererar sektionsetiketter som Refräng eller Vers, vilket din OpenAI-kompatibla modell då identifierar. Att redigera raden öppnar också dess prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-slutpunkts-URL (t.ex. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Mall för prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Platshållare: {task}, {language}, {title}, {artist}, {count}, {lines}. Okända lämnas som de är skrivna</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt sparad</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt sparad, men AI-slutpunkten är fortfarande inte användbar. Konfigurera den under AI-inställningar först</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt återställd</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Inställningar för översättning &amp; romanisering sparades</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Inställningarna har sparats, men AI-slutpunkten är inte användbar än</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Inställningar sparade</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Inställningarna återställdes till standard</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Bas-URL måste börja med http:// eller https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Inställningarna är ofullständiga eller har förkastats av tjänsten</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Validerar anslutning…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Ansluten! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Anslutningen misslyckades. Kontrollera inställningarna.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Ange API-nyckeln först</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Testa anslutning</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Hämtar modeller…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Hämta modeller</string>
@@ -861,7 +862,14 @@ Låttexter kommer från tredjeparts tjänster som inte är anslutna till, sponsr
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Extra förfrågningshuvuden (valfri JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Citera namn och värden, t.ex. {\"api-key\": \"abc\"}. Ett ociterat värde som innehåller / : eller ett nummer förkastas. Ett tomt värde tar bort en header.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Citera namn och värden, t.ex. {\"temperature\": 0.3}. Ett ociterat värde som innehåller / eller : förkastas. Modell och meddelanden kan inte ställas in här.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Resonemangsinsats</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Standard</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Autentiseringsnyckel (Free eller Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI kunde inte identifiera sektioner för det här spåret</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Identifierar</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Använd sektioner</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Identifieringen har avbrutits</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Inga texter att identifiera sektioner för</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 – Inaktivera ikoner i fet stil</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Återställ spelarens flikar Upp nästa, Sångtext och Relaterade</string>

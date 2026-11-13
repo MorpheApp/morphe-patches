@@ -24,6 +24,7 @@ import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import app.morphe.extension.music.patches.lyrics.SkipSegments;
 import app.morphe.extension.music.patches.lyrics.model.CreditInfo;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -49,10 +50,13 @@ public final class LyricsFileSaver {
                               @Nullable List<String> translatedLines,
                               @Nullable List<LyricsLine> romanizedLines,
                               @Nullable String translatedLang,
-                              @Nullable String romanizedLang) {
+                              @Nullable String romanizedLang,
+                              int lyricOffsetMs,
+                              @Nullable List<SkipSegments.Seg> segs) {
         try {
             return saveUnchecked(context, track, lyrics, creditInfo,
-                    translatedLines, romanizedLines, translatedLang, romanizedLang);
+                    translatedLines, romanizedLines, translatedLang, romanizedLang,
+                    lyricOffsetMs, segs);
         } catch (Exception ex) {
             Logger.printException(() -> "save failure", ex);
             return null;
@@ -65,14 +69,17 @@ public final class LyricsFileSaver {
                                         @Nullable List<String> translatedLines,
                                         @Nullable List<LyricsLine> romanizedLines,
                                         @Nullable String translatedLang,
-                                        @Nullable String romanizedLang) {
+                                        @Nullable String romanizedLang,
+                                        int lyricOffsetMs,
+                                        @Nullable List<SkipSegments.Seg> segs) {
         String primaryPath = saveSource(context, track, lyrics);
         if (primaryPath == null) {
             return null;
         }
 
         String ttmlContent = TTMLGenerator.generate(lyrics, track, creditInfo,
-                translatedLines, romanizedLines, translatedLang, romanizedLang);
+                translatedLines, romanizedLines, translatedLang, romanizedLang,
+                lyricOffsetMs, segs);
         if (ttmlContent != null && !ttmlContent.isEmpty()) {
             writeFile(context, track, lyrics, ttmlContent, "ttml", true);
         }

@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">Замењује music.youtube.com са youtube.com у дељеним линковима</string>
   <string name="morphe_replace_links_with_shortener_title">Промени линкове за дељење на youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Форсира видео записе да користе скраћени URL формат youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Аутоматски</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Запамти квалитет видеа</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Примењује ваш ручни избор квалитета на све будуће видео снимке</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Обавештења о промени квалитета</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Приказује обавештење када се сачува нови подразумевани квалитет</string>
+  <string name="morphe_video_quality_default_wifi_title">Подразумевани квалитет видеа на Wi-Fi мрежи</string>
+  <string name="morphe_video_quality_default_mobile_title">Подразумевани квалитет видеа на мобилној мрежи</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Подразумевани мобилни квалитет је промењен на: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Подразумевани Wi-Fi квалитет је промењен на: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Отвори системски панел за дељење</string>
+  <string name="morphe_open_system_share_sheet_summary">Отвора системски прозор за дељење уместо оног унутар апликације приликом дељења садржаја</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho евидентирање</string>
   <string name="morphe_debug_litho_entry_disabled">Онемогућен</string>

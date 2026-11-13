@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Татаж авах цэсэнд гаднах татаж авагчийг ашиглах</string>
   <string name="morphe_external_downloader_menu_summary">Цэсийн Татаж авах сонголт нь гаднах татаж авагчийг нээх болно</string>
   <string name="morphe_export_download_folder_title">Татаж авсан файлуудыг экспортлох</string>
-  <string name="morphe_export_download_folder_summary">"Аппликейшнаар татаж авсан дуу, видеог татаж авсан файлын цэс ашиглан төхөөрөмжийн санах ой руу экспортлох боломжтой. Экспортын хавтсыг өөрчлөхийн тулд товшино уу.
+  <string name="morphe_export_download_folder_summary">"Апп-ны татаж авсан цэс ашиглан апп-д хадгалсан дуу, видеог төхөөрөмжийн санах ой руу экспортлоно. Экспортын хавтасыг өөрчлөхийн тулд дарна уу
 
 Экспортын хавтас: %s"</string>
   <string name="morphe_export_download_started">Татаж авсан файлыг экспортлож байна</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">%2$s татаан авсан файлын %1$s-ыг %3$s руу экспортлолоо</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Morphe-ийн тухай</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Зар</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Мэдээ</string>
-  <string name="morphe_settings_music_screen_3_general_title">Ерөнхий</string>
-  <string name="morphe_settings_music_screen_4_player_title">Тоглуулагч</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Дууны үг</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Бусад</string>
+  <string name="morphe_settings_music_screen_00_about_title">Morphe-ийн тухай</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Зар</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Мэдээ</string>
+  <string name="morphe_settings_music_screen_03_general_title">Ерөнхий</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Дууны үг</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Бусад</string>
+  <string name="morphe_settings_music_screen_06_player_title">Тоглуулагч</string>
+  <string name="morphe_settings_music_screen_10_video_title">Видео</string>
   <string name="morphe_music_app_language_title">YouTube Music-ийн хэл</string>
   <string name="morphe_music_app_language_summary_default">Системийн хэл</string>
   <string name="morphe_music_app_language_summary_unsupported">Android 13 эсвэл түүнээс дээш хувилбар шаардлагатай</string>
@@ -256,6 +257,9 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
   <string name="morphe_music_playback_speed_title">Тоглуулах хурд</string>
   <string name="morphe_music_playback_speed_summary">Бүх трект ашиглагдах хурд. 100% дээр аппликейшны хурд, жишээ нь подкаст тоглуулах хурдыг ашиглана</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Хурдтай хамт өнгийг өөрчлөх</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Автоматаар хавсрааг идэвхгүй болгох</string>
+  <string name="morphe_music_disable_auto_captions_summary">Видео эхлэхэд хавсраа автоматаар идэвхжихгүй, үүнд видеоны анхнаас тохируулсан хавсраа багтана</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Дууны дагналтыг идэвхгүй болгох</string>
   <string name="morphe_music_disable_audio_ducking_summary">Мэдэгдэл гэх мэт өөр аппликейшн богино хэмжээний дуу гаргах үед дууны хэмжээ буурахгүй</string>
@@ -567,6 +571,7 @@ SABR тоглуулалт (Видео урсгалыг дуурайх функц
 
 Өгөгдлийн сан нь ODC Open Database License (ODbL) лицензийн дагуу зөвшөөрөгдсөн. xoundbyte-ийн Soul Over AI-аас авсан бичлэгүүд нь CC BY 4.0 лицензийн дагуу зөвшөөрөгдсөн. SoundProof болон Soul Over AI-тай холбогдоогүй, тэдгээрийн дэмжлэггүйгээр ажилладаг."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Энэ төхөөрөмжийн файлд дууны үг байхгүй байна.</string>
   <string name="morphe_music_lyrics_enabled_title">Гуравдагч талын дууны үг ашиглах</string>
   <string name="morphe_music_lyrics_enabled_summary">Гуравдагч талын үйлчилгээнээс дууны үг харуулна, хэрэв олдсонгүй бол суурилуулсан дууны үгийг ашиглана</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Дууны үгийг үзэж байх үед дэлгэцийг асаалттай байлгах</string>
@@ -698,6 +703,7 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_search_title_hint">Дууны нэр</string>
   <string name="morphe_music_lyrics_search_artist_hint">Уран бүтээлч</string>
   <string name="morphe_music_lyrics_search_empty">Дууны нэр болон уран бүтээлчийг оруулна уу</string>
+  <string name="morphe_music_lyrics_search_google">Google-ээр хайх</string>
   <string name="morphe_music_lyrics_search_no_providers">Идэвхжүүлсэн нийлүүлэгчдийн хэн нь ч бусад дууг хайж чадахгүй байна</string>
   <string name="morphe_music_lyrics_saved">Хадгалагдсан</string>
   <string name="morphe_music_lyrics_written_by">Зохиолч: %s</string>
@@ -777,7 +783,6 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_romanized_by_ai">%s-ээр романизаци хийсэн</string>
   <string name="morphe_music_lyrics_romanized_by_local">%s-ээр романизаци хийсэн</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s-тэй)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Rime-аар романизаци хийсэн (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Орчуулагдсан</string>
   <string name="morphe_music_lyrics_translation_language_title">Орчуулгын хэл</string>
@@ -837,19 +842,15 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_use_ai_section_title">AI ашиглан хэсгүүдийг тодорхойлох</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Зөвхөн нийлүүлэгч тал Дахилт эсвэл Бадаг гэх мэт хэсгийн шовгог илгээгээгүй тохиолдолд ашиглагдах бөгөөд OpenAI-тай нийцтэй модель тань тэдгээрийг тодорхойлно. Мөрөн дээр засвар хийхэд түүний prompt нээгдэнэ</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (ж.нь https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt загвар</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Танихгүй утгуудыг хэвээр үлдээнэ</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Промпт хадгалагдлаа</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Заавар хадгалагдсан боловч AI төгсгөл цэг хараахан ашиглах боломжгүй байна. Эхлээд AI тохиргоо хэсэгт тохируулна уу.</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Промптыг шинэчлэлээ</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Орчуулга &amp; Романизацийн тохиргоо хадгалагдлаа</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Тохиргоо хадгалагдлаа, гэвч AI endpoint хараахан ашиглах боломжгүй байна</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Тохиргоо хадгалагдлаа</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Тохиргоог анхны төлөвт нь буцаалаа</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Үндсэн URL нь http:// эсвэл https://-ээр эхлэх ёстой</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Тохиргоо дутуу эсвэл нийлүүлэгчээс татгалзсан</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Холболтыг шалгаж байна…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Холбогдлоо! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Холболт амжилтгүй боллоо. Тохиргоог шалгана уу.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Эхлээд API түлхүүрийг оруулна уу</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Холболтыг шалгах</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Загваруудыг татаж байна…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Загваруудыг татах</string>
@@ -866,7 +867,14 @@ Rime-ийн үгсийн жагсаалтад уншуулах жагсаалт�
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Нэмэлт хүсэлтийн толгой (сонгомжтой JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Нэр болон утгуудыг хашилт дотор бичнэ, жишээ нь: {\"api-key\": \"abc\"}. / : тэмдэгт эсвэл тоо агуулсан хашилтгүй утгыг хүлээж авахгүй. Хоосон утга нь толгойг устгана.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Нэр болон утгуудыг хашилт дотор бичнэ, жишээ нь: {\"temperature\": 0.3}. / эсвэл : тэмдэгт агуулсан хашилтгүй утгыг хүлээж авнагүй. Модель болон зурвасуудыг энд тохируулах боломжгүй.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Тунгаан бодох хүчин чармайлт</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Үндсэн</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Баталгаажуулалтын түлхүүр (Free эсвэл Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI энэ трекийн хэсгүүдийг тодорхойлж чадсангүй</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Тодорхойлж байна</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Хэсгүүдийг хэрэглэх</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Тодорхойлох үйлдлийг цуцалсан</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Хэсгүүдийг тодорхойлох дууны үг байхгүй байна</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Тод дүрсүүдийг идэвхгүй болгох</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Тоглуулагчийн Дараагийн, Дууны үг болон Холбоотой цэсүүдийг сэргээх</string>

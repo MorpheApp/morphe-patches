@@ -231,7 +231,7 @@ public class YouTubeActivityHook extends BaseActivityHook {
      * Injection point.
      */
     @SuppressWarnings({"unused", "SameReturnValue"})
-    public static boolean useBoldIcons() {
+    public static boolean useBoldIcons(boolean original) {
         return USE_BOLD_ICONS;
     }
 }

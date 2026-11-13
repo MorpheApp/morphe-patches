@@ -96,6 +96,33 @@ public class LyricsLineTest {
     }
 
     @Test
+    public void cjkReadingWordsAgainstLatinLineDoNotGainSpaces() {
+        // The Latin text cannot place a space between CJK characters that were never spaced.
+        List<Word> words = List.of(
+                new Word(0, 100, "成"),
+                new Word(100, 200, "長"),
+                new Word(200, 300, "的"),
+                new Word(300, 400, "沈"),
+                new Word(400, 500, "痛"));
+        LyricsLine line = new LyricsLine(0, 500, "chéng cháng de shěn tòng", words,
+                null, false, false, null);
+        for (Word word : line.words()) {
+            assertFalse(word.endsWithSpace());
+        }
+    }
+
+    @Test
+    public void latinLineStillDerivesSpacesFromText() {
+        List<Word> words = List.of(
+                new Word(0, 100, "hello"),
+                new Word(100, 200, "world"));
+        LyricsLine line = new LyricsLine(0, 200, "hello world", words,
+                null, false, false, null);
+        assertTrue(line.words().get(0).endsWithSpace());
+        assertFalse(line.words().get(1).endsWithSpace());
+    }
+
+    @Test
     public void wordConstructorVariants() {
         Word w1 = new Word(0, 100, "hi");
         assertNull(w1.romaji());

@@ -232,6 +232,20 @@ Ji bo têketinê, li jêr bitikîne 'Berdewam bike'"</string>
   <string name="morphe_replace_music_with_youtube_summary">Di lînkên parvekirî de music.youtube.com bi youtube.com biguherîne</string>
   <string name="morphe_replace_links_with_shortener_title">Lînkên parvekirinê biguherîne youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Vîdyoyan neçar dike ku forma URL-ya kurt a youtu.be bikar bînin</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Otomatîk</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Kêşiya vîdyoyê bi bîr bîne</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Hêlbijartina kêşiya we ya destan li hemû vîdyoyên pêşerojêyî biComposable dike</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Agahdariyên guherîna kêşiyê</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Dema kalîteya pêşdebir a nû tê tomarkirin agahdarî nîşan dide</string>
+  <string name="morphe_video_quality_default_wifi_title">Kêşiya vîdyoyê ya pêşdebir li ser torê ya Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Kêşiya vîdyoyê ya pêşdebir li ser torê ya mobaylê</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Kêşiya mobaylê ya pêşdebir hate guhertin bo: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Kêşiya Wi-Fi ya pêşdebir hate guhertin bo: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Panela parvekirinê ya sîstemê veke</string>
+  <string name="morphe_open_system_share_sheet_summary">Dema naverok parve dikî, panela parvekirinê ya sîstemê vedike li şûna ya appê</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Loggingê Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Vemirandî</string>

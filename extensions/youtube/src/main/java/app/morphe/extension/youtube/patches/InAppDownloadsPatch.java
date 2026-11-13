@@ -34,8 +34,10 @@ import app.morphe.extension.shared.innertube.Offline.FlexibleActionsViewModel;
 import app.morphe.extension.shared.innertube.Offline.OfflineCommand;
 import app.morphe.extension.shared.innertube.Offline.OfflineDownloadAction;
 import app.morphe.extension.shared.innertube.Offline.OfflineDownloadActionCommand;
+import app.morphe.extension.shared.innertube.Offline.OfflineFormat;
 import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistAction;
 import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistEndpoint;
+import app.morphe.extension.shared.innertube.Offline.OfflineabilityRenderer;
 import app.morphe.extension.shared.innertube.Offline.PlaylistDownloadButtonViewModel;
 import app.morphe.extension.shared.innertube.Offline.PlaylistDownloadStatusEntityId;
 import app.morphe.extension.shared.patches.BaseInAppDownloadsPatch;
@@ -169,6 +171,60 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
         return isInAppDownloadMode()
                 ? Math.max(maxHeight, FULL_HD_QUALITY_HEIGHT)
                 : maxHeight;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * YouTube override of the base unlock, which additionally adds the default download types
+     * the server omitted. The recommended downloads of the Downloads page list only 360p and 144p,
+     * since the server omits the qualities it would not automatically download.
+     * This also applies to the unlock of the base, which unlocks Premium locked formats
+     * but keeps the entries of the server.
+     * The same shared save method shows the quality picker of every download entry point,
+     * so this keeps every entry point saving with the same qualities.
+     * <p>
+     * YouTube Music keeps the formats of the server and does not use this method.
+     *
+     * @param offlineability Offlineability renderer of the video or playlist.
+     * @return The renderer with every quality available, or null to keep the original.
+     */
+    @Nullable
+    public static byte[] unlockOfflineability(@Nullable Object offlineability) {
+        try {
+            if (!isInAppDownloadMode()) {
+                return null;
+            }
+
+            byte[] unlocked = BaseInAppDownloadsPatch.unlockOfflineability(offlineability);
+            byte[] source = unlocked;
+            if (source == null && offlineability instanceof MessageLite message) {
+                // The base kept the original: the server lists formats and none are Premium locked.
+                source = message.toByteArray();
+            }
+            if (source == null) {
+                return null;
+            }
+
+            // The base may have unlocked the Premium locked formats, but it always keeps the
+            // entries of the server. The types the server omitted are added as well,
+            // so the picker shows every quality.
+            OfflineabilityRenderer renderer = OfflineabilityRenderer.parseFrom(source);
+            List<OfflineFormat> merged = mergeMissingFormatTypes(renderer.getFormatsList());
+            if (merged == null) {
+                return unlocked;
+            }
+
+            Logger.printDebug(() -> "Adding offline formats the server omitted");
+            return renderer.toBuilder()
+                    .clearFormats()
+                    .addAllFormats(merged)
+                    .build()
+                    .toByteArray();
+        } catch (Exception ex) {
+            Logger.printException(() -> "unlockOfflineability failure", ex);
+            return null;
+        }
     }
 
     /**

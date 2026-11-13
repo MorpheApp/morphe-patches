@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">Αντικαθιστά το music.youtube.com με το youtube.com σε κοινόχρηστους συνδέσμους.</string>
   <string name="morphe_replace_links_with_shortener_title">Αλλαγή συνδέσμων κοινοποίησης σε youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Επιβάλλει τη χρήση της συντομευμένης μορφής URL youtu.be για τα βίντεο</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Αυτόματη</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Απομνημόνευση ποιότητας βίντεο</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Εφαρμόζει τη χειροκίνητη επιλογή ποιότητας σε όλα τα μελλοντικά βίντεο</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Ειδοποιήσεις αλλαγής ποιότητας</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Εμφανίζει μια ειδοποίηση όταν αποθηκεύεται μια νέα προεπιλεγμένη ποιότητα</string>
+  <string name="morphe_video_quality_default_wifi_title">Προεπιλεγμένη ποιότητα βίντεο σε δίκτυο Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Προεπιλεγμένη ποιότητα βίντεο σε δίκτυο κινητής τηλεφωνίας</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Η προεπιλεγμένη ποιότητα κινητής τηλεφωνίας άλλαξε σε: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Η προεπιλεγμένη ποιότητα Wi-Fi άλλαξε σε: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Άνοιγμα φύλλου κοινής χρήσης συστήματος</string>
+  <string name="morphe_open_system_share_sheet_summary">Ανοίγει το φύλλο κοινής χρήσης του συστήματος αντί για αυτό της εφαρμογής κατά την κοινή χρήση περιεχομένου</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Καταγραφή Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Απενεργοποιημένο</string>

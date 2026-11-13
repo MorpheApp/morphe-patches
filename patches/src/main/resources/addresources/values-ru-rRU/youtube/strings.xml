@@ -696,6 +696,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">Short только для участников</string>
   <string name="morphe_play_all_button_type_entry_12">Прямые трансляции только для участников</string>
   <string name="morphe_play_all_button_not_available_toast">Не удалось создать плейлист из-за несоответствия ID канала</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Показать кнопку плейлиста</string>
+  <string name="morphe_playlist_panel_button_summary">Нажмите, чтобы открыть панель плейлиста. Отображается только при воспроизведении плейлиста</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Показать кнопку перезагрузки видео</string>
   <string name="morphe_dismiss_player_not_available_toast">Идентификатор видео недоступен. Пожалуйста, вручную обновите видео</string>
@@ -1205,9 +1208,23 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Отключить всплывающие панели плеера</string>
   <string name="morphe_disable_player_popup_panels_summary">Отключает автоматическое открытие панелей плейлистов и чата</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Показывать панель плейлиста в полноэкранном режиме</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Панель плейлиста открывается поверх полноэкранного плеера</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Панель плейлиста выходит из полноэкранного режима на планшетах</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Отключить автовоспроизведение плейлиста</string>
   <string name="morphe_disable_playlist_autoplay_summary">Отключает автоматический переход к следующему видео в плейлистах</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Управление автовоспроизведением</string>
+  <string name="morphe_autoplay_control_summary">Добавляет кнопку плеера и правило для следующего видео. Плейлисты и очереди продолжаются, Микс останавливается после определенного количества видео, рекомендованные видео никогда не воспроизводятся. Нажмите кнопку для переключения режима, нажмите и удерживайте для вызова списка</string>
+  <string name="morphe_autoplay_mode_title">Режим автовоспроизведения</string>
+  <string name="morphe_autoplay_mode_entry_1">Авто</string>
+  <string name="morphe_autoplay_mode_entry_2">Одиночное</string>
+  <string name="morphe_autoplay_mode_entry_3">Выключено</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Длина микса</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">В автоматическом режиме Микс останавливается после такого количества видео. 0 = без ограничений</string>
+  <string name="morphe_autoplay_mix_no_limit">Микс: без ограничений</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Запрос «Продолжить просмотр»</string>
   <string name="morphe_continue_watching_prompt_entry_1">По умолчанию</string>
@@ -1283,9 +1300,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Восстановить старое сохранение в список воспроизведения</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Отключить жирные значки</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Восстановить название канала под видеоплеером</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Открыть системное меню \"Поделиться\"</string>
-  <string name="morphe_open_system_share_sheet_summary">Открывает системное меню \"Поделиться\" вместо встроенного при отправке контента</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Переопределить кнопки YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Открывает предпочитаемое вами музыкальное приложение вместо стандартного приложения YouTube Music</string>
@@ -1479,7 +1493,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow временно недоступен (код статуса: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow временно недоступен</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Восстановить старый стиль кнопок плеера</string>
   <string name="morphe_restore_old_player_buttons_summary">Возвращает жирные элементы управления видеоплеером к старому, более тонкому визуальному стилю</string>
@@ -1519,25 +1532,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">Показать меню задержки видео</string>
   <string name="morphe_video_delay_dialog_input_hint">Задержка в миллисекундах</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Авто</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Запомнить качество видео</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Применяет выбранное вами качество вручную ко всем будущим видео</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Уведомления об изменении качества</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Показывает уведомление при сохранении нового качества видео по умолчанию</string>
-  <string name="morphe_video_quality_default_wifi_title">Качество видео по умолчанию в Wi-Fi сети</string>
-  <string name="morphe_video_quality_default_mobile_title">Качество видео по умолчанию в мобильной сети</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Запомнить качество Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Применяет выбранное вами качество вручную ко всем будущим Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Качество Shorts по умолчанию в Wi-Fi сети</string>
   <string name="morphe_shorts_quality_default_mobile_title">Качество Shorts по умолчанию в мобильной сети</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Качество мобильной сети изменено на: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Качество Wi-Fi изменено на: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Качество Shorts в мобильной сети изменено на: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Качество Shorts по Wi-Fi изменено на: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Показать кнопку скорости воспроизведения</string>
   <string name="morphe_playback_speed_dialog_button_summary">Нажмите и удерживайте, чтобы сбросить скорость до значения по умолчанию</string>
+  <string name="morphe_playback_speed_button_cycle_title">Нажимайте кнопку скорости воспроизведения для переключения скоростей</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Нажатие переключает на следующую скорость в списке. Нажатие и удержание открывает меню скоростей</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Скорости кнопки воспроизведения</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Скорости, между которыми происходит переключение при нажатии, по одной на строку. После последней скорости нажатие возвращает к первой</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Некорректный список цикла скоростей, сброшено до значений по умолчанию</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Показать кнопку качества</string>
   <string name="morphe_video_quality_dialog_button_summary">Нажмите и удерживайте, чтобы сбросить качество до значения по умолчанию</string>

@@ -232,6 +232,20 @@ Trykk på Fortsett nedenfor for å logge på"</string>
   <string name="morphe_replace_music_with_youtube_summary">Erstatter music.youtube.com med youtube.com i delte lenker</string>
   <string name="morphe_replace_links_with_shortener_title">Endre delingslenker til youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Tvinger videoer til å bruke den forkortede youtu.be URL-formatet</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatisk</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Husk videokvalitet</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Bruk ditt manuelle kvalitetsvalg på alle fremtidige videoer</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Varsler om kvalitetsendring</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Viser et varsel når en ny standardkvalitet er lagret</string>
+  <string name="morphe_video_quality_default_wifi_title">Standard videokvalitet i Wi-Fi-nettverk</string>
+  <string name="morphe_video_quality_default_mobile_title">Standard videokvalitet i mobilnettverk</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Endret standard mobilkvalitet til: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Endret standard Wi-Fi-kvalitet til: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Åpne systemets delingsmeny</string>
+  <string name="morphe_open_system_share_sheet_summary">Åpner systemets delingsmeny i stedet for appens egen når innhold deles</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-logging</string>
   <string name="morphe_debug_litho_entry_disabled">Deaktivert</string>

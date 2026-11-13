@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.music.patches.lyrics.utils.TextTrim;
 
 public final class LyricsBracketSplitter {
@@ -220,7 +221,10 @@ public final class LyricsBracketSplitter {
         return out;
     }
 
-    /** A run running straight into a word is not a vocal of its own. */
+    /**
+     * A run running straight into a word is not a vocal of its own, unless the script has no
+     * spaces between words.
+     */
     @Nullable
     private static Run headRun(String text) {
         int open = 0;
@@ -234,9 +238,11 @@ public final class LyricsBracketSplitter {
         if (run == null) {
             return null;
         }
+        final int after = run.close() + 1;
         return isWide(text.charAt(run.open()))
-                || run.close() + 1 == text.length()
-                || Character.isWhitespace(text.charAt(run.close() + 1)) ? run : null;
+                || after == text.length()
+                || Character.isWhitespace(text.charAt(after))
+                || ScriptDetector.isUnspacedCodePoint(text.codePointAt(after)) ? run : null;
     }
 
     @Nullable
@@ -254,7 +260,8 @@ public final class LyricsBracketSplitter {
         }
         return isWide(text.charAt(run.open()))
                 || run.open() == 0
-                || Character.isWhitespace(text.charAt(run.open() - 1)) ? run : null;
+                || Character.isWhitespace(text.charAt(run.open() - 1))
+                || ScriptDetector.isUnspacedCodePoint(text.codePointBefore(run.open())) ? run : null;
     }
 
     /** A full-width bracket stands on a cell of its own, so it needs no space around it. */

@@ -132,9 +132,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Выкарыстоўваць знешні загрузчык для меню \"Спампаваць\"</string>
   <string name="morphe_external_downloader_menu_summary">Пункт \"Спампаваць\" у меню будзе адкрываць ваш знешні загрузчык</string>
   <string name="morphe_export_download_folder_title">Экспарт загрузак</string>
-  <string name="morphe_export_download_folder_summary">"Экспартуйце песні і відэа, загружаныя праграмай, у памяць вашай прылады праз меню загрузкі. Націсніце, каб змяніць папку экспарту
+  <string name="morphe_export_download_folder_summary">"Экспартуйце захаваныя ў праграме песні і відэа ў памяць прылады, выкарыстоўваючы выпадаючыя меню загрузкі ў праграме. Націсніце, каб змяніць папку экспорту
 
-Папка экспарту: %s"</string>
+Папка экспорту: %s"</string>
   <string name="morphe_export_download_started">Экспартаванне загрузкі</string>
   <string name="morphe_export_download_progress">Экспартаванне загрузкі: %s%%</string>
   <string name="morphe_export_download_notification_channel">Экспарт загрузак</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">Экспартавана %1$s з %2$s загрузак у %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Пра Morphe</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Рэклама</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Струмень</string>
-  <string name="morphe_settings_music_screen_3_general_title">Агульныя</string>
-  <string name="morphe_settings_music_screen_4_player_title">Прайгравальнік</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Тэксты песень</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Разнастайнае</string>
+  <string name="morphe_settings_music_screen_00_about_title">Пра дапамозе</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Рэклама</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Стужка</string>
+  <string name="morphe_settings_music_screen_03_general_title">Агульныя</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Тэксты песень</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Разнастайнае</string>
+  <string name="morphe_settings_music_screen_06_player_title">Прайгравальнік</string>
+  <string name="morphe_settings_music_screen_10_video_title">Відэа</string>
   <string name="morphe_music_app_language_title">Мова YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Сістэмная мова</string>
   <string name="morphe_music_app_language_summary_unsupported">Патрабуецца Android 13 або больш новая версія</string>
@@ -256,6 +257,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_title">Хуткасць прайгравання</string>
   <string name="morphe_music_playback_speed_summary">Хуткасць, якая выкарыстоўваецца для ўсіх трэкаў. Пры 100% выкарыстоўваецца хуткасць праграмы, напрыклад, хуткасць прайгравання падкастаў</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Змяняць вышыню тону разам з хуткасцю</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Выключаць аўтаматычныя субтытры</string>
+  <string name="morphe_music_disable_auto_captions_summary">Субтытры не будуць уключацца аўтаматычна пры запуску відэа, уключаючы субтытры, якія ўключаюцца ў відэа па змаўчанні</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Адхіліць прыглушэнне аўдыё</string>
   <string name="morphe_music_disable_audio_ducking_summary">Гучнасць не будзе зніжацца, калі іншая праграма праграе кароткі гук, напрыклад, паведамленне</string>
@@ -567,6 +571,7 @@ Second \"item\" text"</string>
 
 База дадзеных ліцэнзіруецца па ліцэнзіі ODC Open Database License (ODbL). Запісы з Soul Over AI ад xoundbyte ліцэнзіруюцца па CC BY 4.0. Не звязана з SoundProof або Soul Over AI і не падтрымліваецца імі."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Тэксты песень недаступныя для гэтага файла прылады.</string>
   <string name="morphe_music_lyrics_enabled_title">Выкарыстоўваць тэксты іншых пастаўшчыкаў</string>
   <string name="morphe_music_lyrics_enabled_summary">Паказвае тэксты песень ад старонняй паслугі, а калі іх няма, выкарыстоўвае ўбудаваныя</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Трымаць экран уключаным пры праглядзе тэкстаў</string>
@@ -698,6 +703,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_title_hint">Назва песні</string>
   <string name="morphe_music_lyrics_search_artist_hint">Выканаўца</string>
   <string name="morphe_music_lyrics_search_empty">Увядзіце назву песні і выканаўцу</string>
+  <string name="morphe_music_lyrics_search_google">Пошук праз Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Ні адзін з уключаных пастаўшчыкаў не можа шукаць іншыя песні</string>
   <string name="morphe_music_lyrics_saved">Захавана</string>
   <string name="morphe_music_lyrics_written_by">Напісаў: %s</string>
@@ -777,7 +783,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Раманізавана %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Раманізавана %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (з %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Раманізавана Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Перакладзена</string>
   <string name="morphe_music_lyrics_translation_language_title">Мова перакладу</string>
@@ -837,19 +842,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Вызначэнне секцый з дапамогай AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Выкарыстоўваецца толькі ў выпадку, калі служба не пасылае пазначэнні секцый, такія як Прыспеў або Куплет, якія затым вызначае ваша сумяшчальная з OpenAI мадэль. Рэдагаванне радка таксама адкрывае яго прампт</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-адрас API endpoint (напрыклад, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Шаблон прампта</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Плейсхолдэры: {task}, {language}, {title}, {artist}, {count}, {lines}. Невядомыя застаюцца ў выглядзе тэксту</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Прампт захаваны</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Запыт захаваны, але эндпоінт AI пакуль недаступны. Спачатку наладзьце яго ў Наладках AI</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Прампт скінуты</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Налады перакладу &amp; раманізацыі захаваны</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Налады захаваны, але punkt AI пакуль недаступны</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Налады захаваны</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Налады скінуты да пачатковых</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Базавы URL павінен пачынацца з http:// або https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Налады няпоўныя або адхіленыя правайдэрам</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Праверка злучэння…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Падключана! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Памылка падключэння. Праверце налады.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Спачатку ўвядзіце ключ API</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Праверыць злучэнне</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Атрыманне мадэляў…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Атрымаць мадэлі</string>
@@ -866,7 +867,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Дадатковыя загалоўкі запыту (неабавязковы JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Заключайце назвы і значэнні ў лапкі, напрыклад {\"api-key\": \"abc\"}. Значэнне без лапак, якое змяшчае / : або лік, будзе адхілена. Пустое значэнне выдаляе загаловак.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Заключайце назвы і значэнні ў лапкі, напрыклад {\"temperature\": 0.3}. Значэнне без лапак, якое змяшчае / або :, будзе адхілена. Мадэль і паведамленні нельга ўсталяваць тут.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Паз same разумовых намаганняў</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Звычайны</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Ключ аўтэнтыфікацыі (Free або Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI не змог вызначыць часткі для гэтага трэка</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Вызначэнне</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Прымянаць часткі</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Вызначэнне скасавана</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Няма тэкстаў для вызначэння частак</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Адключаць тлустыя іконкі</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Аднавіць укладкі «Далей», «Тэксты песень» і «Падобнае»</string>

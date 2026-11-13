@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- video.speed.playbackSpeedPatch -->
+  <!-- layout.captions.disableAutoCaptionsPatch -->
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- interaction.loop.loopVideoPatch -->
@@ -91,5 +92,6 @@ Second \"item\" text"</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_romanize_language_none">કોઈપણ નહિ </string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">ડિફૉલ્ટ</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
 </resources>

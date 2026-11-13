@@ -65,7 +65,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
     }
 
     @Nullable
-    private static String extractLyricsBrowseId(JSONObject response) {
+    static String extractLyricsBrowseId(JSONObject response) {
         try {
             final JSONArray tabs = response
                     .getJSONObject("contents")
@@ -177,7 +177,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
     }
 
     @Nullable
-    private static String parseSourceProvider(String sourceMessage) {
+    static String parseSourceProvider(String sourceMessage) {
         if (sourceMessage.startsWith("Source: ")) {
             final String provider = sourceMessage.substring(8).trim();
             return provider.isEmpty() ? null : provider;
@@ -186,7 +186,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
     }
 
     @Nullable
-    private static JSONObject navigateTimedLyricsModel(JSONObject response) {
+    static JSONObject navigateTimedLyricsModel(JSONObject response) {
         try {
             return response
                     .getJSONObject("contents")
@@ -204,7 +204,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
     }
 
     @Nullable
-    private static String extractPlainTextLyrics(JSONObject response) {
+    static String extractPlainTextLyrics(JSONObject response) {
         try {
             final JSONArray sectionContents = response
                     .getJSONObject("contents")
@@ -241,7 +241,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
         return null;
     }
 
-    private static List<LyricsLine> parseTimedLyrics(JSONArray timedArray) {
+    static List<LyricsLine> parseTimedLyrics(JSONArray timedArray) {
         final List<LyricsLine> lines = new ArrayList<>();
         for (int i = 0; i < timedArray.length(); i++) {
             JSONObject entry = timedArray.optJSONObject(i);
@@ -260,7 +260,7 @@ public final class YouTubeMusicProvider implements LyricsProvider {
         return lines;
     }
 
-    private static long parseTimestamp(JSONObject cueRange, String key) {
+    static long parseTimestamp(JSONObject cueRange, String key) {
         if (cueRange == null) {
             return LyricsLine.NO_TIME;
         }

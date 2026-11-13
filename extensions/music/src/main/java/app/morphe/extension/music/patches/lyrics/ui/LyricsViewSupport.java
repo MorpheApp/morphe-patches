@@ -87,7 +87,7 @@ final class LyricsViewSupport {
 
     /** Draws a line a little tighter, except a joining script, which spacing would break apart. */
     static float lineLetterSpacing(@Nullable CharSequence text, float textSizeSp) {
-        return LyricsSpanBuilder.containsJoiningScript(text) ? 0f : -0.5f / Math.max(12f, textSizeSp);
+        return LyricsTextUtils.containsJoiningScript(text) ? 0f : -0.5f / Math.max(12f, textSizeSp);
     }
 
     static int leadingRegionSize(Layout layout, int start, int end) {
@@ -136,9 +136,9 @@ final class LyricsViewSupport {
      * at all; a plain mode keeps the original, which is the base {@link #withReading} moves the reading's
      * onto. Deciding by the reading alone would rob a plain mode of the words it paints.
      */
-    static List<LyricsSpanBuilder.WordTiming> wordSpansFor(
+    static List<WordTiming> wordSpansFor(
             LyricsSpanBuilder.BuildResult result, boolean only,
-            List<LyricsSpanBuilder.WordTiming> lineTimings) {
+            List<WordTiming> lineTimings) {
         if (!only) {
             // Syllable readings are drawn by the view from the same timings that light the lyric.
             if (result.showSyllableRomanization()) {
@@ -146,7 +146,7 @@ final class LyricsViewSupport {
             }
             return withReading(lineTimings, result);
         }
-        List<LyricsSpanBuilder.WordTiming> spans = result.readingSpans();
+        List<WordTiming> spans = result.readingSpans();
         return spans == null || spans.isEmpty() ? Collections.emptyList() : spans;
     }
 
@@ -155,19 +155,19 @@ final class LyricsViewSupport {
      * every offset it is given, and the reading sits elsewhere in the text, so its offsets move by the
      * difference.
      */
-    static List<LyricsSpanBuilder.WordTiming> withReading(
-            List<LyricsSpanBuilder.WordTiming> lineTimings,
+    static List<WordTiming> withReading(
+            List<WordTiming> lineTimings,
             LyricsSpanBuilder.BuildResult result) {
-        List<LyricsSpanBuilder.WordTiming> readingSpans = result.readingSpans();
+        List<WordTiming> readingSpans = result.readingSpans();
         if (readingSpans == null || readingSpans.isEmpty() || result.romaStart() < 0) {
             return lineTimings;
         }
         final int shift = result.romaStart() - result.originalStart();
-        List<LyricsSpanBuilder.WordTiming> combined =
+        List<WordTiming> combined =
                 new ArrayList<>(lineTimings.size() + readingSpans.size());
         combined.addAll(lineTimings);
-        for (LyricsSpanBuilder.WordTiming span : readingSpans) {
-            combined.add(new LyricsSpanBuilder.WordTiming(
+        for (WordTiming span : readingSpans) {
+            combined.add(new WordTiming(
                     span.start() + shift, span.end() + shift, span.startMs(), span.endMs(),
                     null, span.hasTrailingSpace(), null, span.averaged()));
         }
@@ -175,6 +175,7 @@ final class LyricsViewSupport {
     }
 
     /* Eases the highlight between lines the way the built-in panel does, shrinking the dimmed ones. */
+
     /** {@return the alpha of an inactive line this many lines from the sung one, in spotlight mode} */
     static float spotlightAlpha(int distance) {
         return switch (distance) {

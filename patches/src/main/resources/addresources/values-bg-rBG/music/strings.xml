@@ -132,9 +132,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Използвайте външен изтегляч за менюто Изтегляне</string>
   <string name="morphe_external_downloader_menu_summary">Опцията Изтегляне в менютата отваря вашия външен изтегляч вместо него</string>
   <string name="morphe_export_download_folder_title">Експортиране на изтегляния</string>
-  <string name="morphe_export_download_folder_summary">"Експортирайте песни и видеоклипове, изтеглени от приложението, в паметта на вашето устройство чрез менюто на изтеглянето. Докоснете, за да промените папката за експортиране
+  <string name="morphe_export_download_folder_summary">"Експортирайте запазените в приложението песни и видеоклипове в паметта на вашето устройство чрез менюто за изтегляния в приложението. Докоснете, за да промените папката за експорт
 
-Папка за експортиране: %s"</string>
+Папка за експорт: %s"</string>
   <string name="morphe_export_download_started">Експортиране на изтеглено съдържание</string>
   <string name="morphe_export_download_progress">Експортиране на изтеглено съдържание: %s%%</string>
   <string name="morphe_export_download_notification_channel">Експортиране на изтегляния</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">Експортирани са %1$s от %2$s изтегляния в %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Относно</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Реклами</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Емисия</string>
-  <string name="morphe_settings_music_screen_3_general_title">Основни</string>
-  <string name="morphe_settings_music_screen_4_player_title">Плейър</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Текстове</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Други</string>
+  <string name="morphe_settings_music_screen_00_about_title">Отношение</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Реклами</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Емисия </string>
+  <string name="morphe_settings_music_screen_03_general_title">Основни</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Текстове</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Други</string>
+  <string name="morphe_settings_music_screen_06_player_title">Плейър</string>
+  <string name="morphe_settings_music_screen_10_video_title">Видео</string>
   <string name="morphe_music_app_language_title">Език на YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Език на системата</string>
   <string name="morphe_music_app_language_summary_unsupported">Изисква Android 13 или по-нова версия</string>
@@ -256,6 +257,9 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_playback_speed_title">Скорост на възпроизвеждане</string>
   <string name="morphe_music_playback_speed_summary">Скорост, използвана за всички песни. При 100% се използва скоростта на приложението, като скоростта на възпроизвеждане на подкаст.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Промяна на височината на тона със скоростта</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Изключване на автоматичните субтитри</string>
+  <string name="morphe_music_disable_auto_captions_summary">Субтитрите не се активират автоматично при стартиране на видео, включително и субтитрите, които видеото активира по подразбиране</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Деактивиране на аудио затишаването</string>
   <string name="morphe_music_disable_audio_ducking_summary">Силата на звука не се намалява, когато друго приложение възпроизвежда кратък звук, например известие</string>
@@ -567,6 +571,7 @@ SABR възпроизвеждане (имитирането на видео по
 
 Базата данни е лицензирана по ODC Open Database License (ODbL). Записите от Soul Over AI на xoundbyte са лицензирани по CC BY 4.0. Не е свързано с или одобрено от SoundProof или Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Текстовете не са налични за този файл на устройството.</string>
   <string name="morphe_music_lyrics_enabled_title">Използване на текстове от трети страни</string>
   <string name="morphe_music_lyrics_enabled_summary">Показва текстове от външен източник, като се връща към вградените текстове, когато такива не бъдат намерени</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Дръжте екрана включен, докато преглеждате текстовете</string>
@@ -698,6 +703,7 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_lyrics_search_title_hint">Заглавие на песен</string>
   <string name="morphe_music_lyrics_search_artist_hint">Изпълнител</string>
   <string name="morphe_music_lyrics_search_empty">Въведете заглавие на песен и изпълнител</string>
+  <string name="morphe_music_lyrics_search_google">Търсене в Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Никой от активираните доставчици не може да търси други песни</string>
   <string name="morphe_music_lyrics_saved">Запазено</string>
   <string name="morphe_music_lyrics_written_by">Написано от: %s</string>
@@ -777,7 +783,6 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_lyrics_romanized_by_ai">Романизирано от %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Романизирано от %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (с %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Романизирано от Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Преведено</string>
   <string name="morphe_music_lyrics_translation_language_title">Език на превода</string>
@@ -837,19 +842,15 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_lyrics_use_ai_section_title">Разпознаване на секции чрез AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Използва се само когато доставчикът няма етикети за секции като Припев или Куплет, които тогава разпознава вашият модел, съвместим с OpenAI. Редактирането на реда също отваря неговата подсказка</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL адрес на API endpoint (напр. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Шаблон за подкана</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Заместители: {task}, {language}, {title}, {artist}, {count}, {lines}. Неизвестните се оставят така, както са въведени.</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Подканата е запазена</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Подканата е запазена, но AI крайната точка все още не може да се използва. Първо я конфигурирайте в настройките за AI</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Подканата е нулирана</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Настройките за превод &amp; романизация са запазени</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Настройките бяха запазени, но AI крайната точка все още не е използвана</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Настройките бяха запазени</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Настройките са възстановени по подразбиране</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Базовият URL трябва да започва с http:// или https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Настройките са непълни или отхвърлени от доставчика</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Проверка на връзката…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Свързан! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Връзката е неуспешна. Проверете настройките.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Първо въведете API ключ</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Тествай връзката</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Извличане на модели…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Зареди моделите</string>
@@ -866,7 +867,14 @@ SABR възпроизвеждане (имитирането на видео по
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Допълнителни заглавки за заявка (по желание JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Заключвайте имената и стойностите в кавички, напр. {\"api-key\": \"abc\"}. Незаключена стойност, съдържаща / : или число, се отхвърля. Празна стойност премахва заглавието.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Заключвайте имената и стойностите в кавички, напр. {\"temperature\": 0.3}. Незаключена стойност, съдържаща / или :, се отхвърля. Моделът и съобщенията не могат да бъдат задавани тук.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Усилие на разсъждението</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">По подразбиране</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Ключ за автентификация (Free или Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI не успя да открие секции за този трак</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Откриване</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Приложи секциите</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Откриването беше отменено</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Няма текстове, за които да се открият секции</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Деактивиране на удебелени икони</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Възстановяване на разделите Up next, Lyrics и Related</string>

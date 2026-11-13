@@ -696,6 +696,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts فقط اعضا</string>
   <string name="morphe_play_all_button_type_entry_12">پخش‌های زنده فقط اعضا</string>
   <string name="morphe_play_all_button_not_available_toast">به‌دلیل ناهماهنگی شناسهٔ کانال، ساخت فهرست پخش ممکن نیست</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">نمایش دکمهٔ فهرست پخش</string>
+  <string name="morphe_playlist_panel_button_summary">برای باز کردن پنل فهرست پخش ضربه بزنید. فقط هنگام پخش یک فهرست پخش نمایش داده می‌شود</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">نمایش دکمهٔ بارگذاری دوبارهٔ ویدئو</string>
   <string name="morphe_dismiss_player_not_available_toast">شناسهٔ ویدئو در دسترس نیست. لطفاً ویدئو را دستی دوباره بارگذاری کنید</string>
@@ -1205,9 +1208,24 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">غیرفعال‌کردن پنل‌های بازشوی پخش‌کننده</string>
   <string name="morphe_disable_player_popup_panels_summary">از بازشدن خودکار پنل‌های فهرست پخش و گفت‌وگوی زنده جلوگیری می‌کند</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">نمایش پنل لیست پخش در حالت تمام‌صفحه</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">پنل لیست پخش روی پخش‌کننده تمام‌صفحه باز می‌شود</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">پنل لیست پخش در تبلت‌ها از حالت تمام‌صفحه خارج می‌شود</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">غیرفعال‌کردن پخش خودکار فهرست پخش</string>
   <string name="morphe_disable_playlist_autoplay_summary">از رفتن خودکار فهرست‌های پخش به ویدئوی بعدی جلوگیری می‌کند</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">کنترل پخش خودکار</string>
+  <string name="morphe_autoplay_control_summary">یک دکمه پخش‌کننده و یک قانون برای ویدیوی بعدی اضافه می‌کند. لیست‌های پخش و صف‌ها ادامه می‌یابند، یک میکس پس از تعدادی ویدیو متوقف می‌شود و یک ویدیوی پیشنهادی هرگز پخش نمی‌شود. برای حالت بعدی روی دکمه ضربه بزنید و برای مشاهده لیست، ضربه زده و نگه دارید</string>
+  <string name="morphe_autoplay_mode_title">حالت پخش خودکار</string>
+  <string name="morphe_autoplay_mode_entry_1">خودکار</string>
+  <string name="morphe_autoplay_mode_entry_2">تک</string>
+  <string name="morphe_autoplay_mode_entry_3">خاموش</string>
+  <string name="morphe_autoplay_mix_stop_after_title">طول میکس</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">در حالت خودکار، یک میکس پس از این تعداد ویدیو متوقف می‌شود. ۰ = بدون محدودیت</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s ویدیو</string>
+  <string name="morphe_autoplay_mix_no_limit">میکس: بدون محدودیت</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">اعلان \"ادامه تماشا\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">پیش‌فرض</string>
@@ -1282,9 +1300,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - بازیابی ذخیره در فهرست پخش</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - غیرفعال‌کردن آیکون‌های پررنگ</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - بازگرداندن نام کانال به زیر پخش‌کنندهٔ ویدئو</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">بازکردن برگهٔ اشتراک‌گذاری سیستم</string>
-  <string name="morphe_open_system_share_sheet_summary">هنگام اشتراک‌گذاری محتوا، به‌جای برگهٔ درون‌برنامه‌ای، برگهٔ اشتراک‌گذاری سیستم را باز می‌کند</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">جایگزین‌کردن دکمه‌های YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">به‌جای برنامهٔ اصلی YouTube Music، برنامهٔ موسیقی دلخواه شما را باز می‌کند</string>
@@ -1478,7 +1493,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow موقتاً در دسترس نیست (کد وضعیت: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow موقتاً در دسترس نیست</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">بازیابی سبک قدیمی دکمه‌های پخش‌کننده</string>
   <string name="morphe_restore_old_player_buttons_summary">کنترل‌های پررنگ پخش‌کنندهٔ ویدئو را به سبک بصری قدیمی و باریک‌تر برمی‌گرداند</string>
@@ -1518,25 +1532,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">نمایش منوی تأخیر ویدئو</string>
   <string name="morphe_video_delay_dialog_input_hint">تأخیر بر حسب میلی‌ثانیه</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">خودکار</string>
-  <string name="morphe_remember_video_quality_last_selected_title">به‌خاطر سپردن کیفیت ویدئو</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">انتخاب دستی کیفیت شما را برای همهٔ ویدئوهای آینده اعمال می‌کند</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">اعلان‌های تغییر کیفیت</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">وقتی کیفیت پیش‌فرض جدیدی ذخیره شود، اعلانی نمایش می‌دهد</string>
-  <string name="morphe_video_quality_default_wifi_title">کیفیت پیش‌فرض ویدئو در شبکهٔ Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">کیفیت پیش‌فرض ویدئو در شبکهٔ تلفن همراه</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">به‌خاطر سپردن کیفیت Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">انتخاب دستی کیفیت شما را برای همهٔ Shortsهای آینده اعمال می‌کند</string>
   <string name="morphe_shorts_quality_default_wifi_title">کیفیت پیش‌فرض Shorts در شبکهٔ Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">کیفیت پیش‌فرض Shorts در شبکهٔ تلفن همراه</string>
-  <string name="morphe_remember_video_quality_toast_mobile">کیفیت پیش‌فرض تلفن همراه به این مقدار تغییر کرد: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">کیفیت پیش‌فرض Wi-Fi به این مقدار تغییر کرد: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">کیفیت Shorts در تلفن همراه به این مقدار تغییر کرد: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">کیفیت Shorts در Wi-Fi به این مقدار تغییر کرد: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">نمایش دکمهٔ سرعت پخش</string>
   <string name="morphe_playback_speed_dialog_button_summary">برای بازنشانی سرعت به مقدار پیش‌فرض، ضربه بزنید و نگه دارید</string>
+  <string name="morphe_playback_speed_button_cycle_title">برای چرخش بین سرعت‌ها روی دکمه سرعت پخش ضربه بزنید</string>
+  <string name="morphe_playback_speed_button_cycle_summary">با ضربه زدن به سرعت بعدی در لیست می‌رود. ضربه زدن و نگه داشتن، منوی سرعت را باز می‌کند</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">سرعت‌های دکمه سرعت پخش</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">سرعت‌هایی که با ضربه زدن بین آن‌ها جابه‌جا می‌شوید، هر کدام در یک خط. پس از آخرین سرعت، ضربه زدن دوباره به اولین سرعت بازمی‌گردد</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">لیست چرخش سرعت نامعتبر است، به حالت پیش‌فرض بازگردانده شد</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">نمایش دکمهٔ کیفیت</string>
   <string name="morphe_video_quality_dialog_button_summary">برای بازنشانی کیفیت به مقدار پیش‌فرض، ضربه بزنید و نگه دارید</string>

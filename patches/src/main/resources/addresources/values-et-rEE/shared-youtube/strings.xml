@@ -232,6 +232,20 @@ Sisse logimiseks vajutage allpoolset nuppu Jätka"</string>
   <string name="morphe_replace_music_with_youtube_summary">Asendab jagatud linkides aadressi music.youtube.com aadressiga youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Muuda jagamislinkideks youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Sunnib videoid kasutama lühendatud youtu.be URL-i vormingut</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automaatne</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Jäta meelde video kvaliteet</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Rakendab teie käsitsi valitud kvaliteeti kõigile tulevasele videolegile</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Kvaliteedi muutmiste teavitused</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Kuvab teavituse, kui uus vaikimiskvaliteet on salvestatud</string>
+  <string name="morphe_video_quality_default_wifi_title">Vaikimisi videokvaliteet Wi-Fi võrgus</string>
+  <string name="morphe_video_quality_default_mobile_title">Vaikimisi videokvaliteet mobiilvõrgus</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Vaikimisi mobiilikvaliteet on muutunud väärtuseks: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Vaikimisi Wi-Fi kvaliteet on muutunud väärtuseks: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Ava süsteemi jagamisakend</string>
+  <string name="morphe_open_system_share_sheet_summary">Sisu jagamisel avab rakenduse sise jagamisakna asemel süsteemi jagamisakna</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho logimine</string>
   <string name="morphe_debug_litho_entry_disabled">Välja lülitatud</string>

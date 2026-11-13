@@ -1632,12 +1632,6 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_dearrow_error">DeArrow is temporarily not available (status code: %s)</string>
     <string name="morphe_dearrow_error_generic">DeArrow is temporarily not available</string>
 
-    <!-- misc.announcements.announcementsPatch -->
-    <string name="morphe_announcements_title" translatable="false">Show Morphe announcements</string>
-    <string name="morphe_announcements_enabled_summary" translatable="false">Show announcements on startup</string>
-    <string name="morphe_announcements_connection_failed" translatable="false">Failed connecting to announcements provider</string>
-    <string name="morphe_announcements_dialog_dismiss" translatable="false">Dismiss</string>
-
     <!-- misc.playercontrols.playerControlsPatch -->
     <string name="morphe_restore_old_player_buttons_title">Restore old player button style</string>
     <string name="morphe_restore_old_player_buttons_summary">Reverts the bold video player controls to the older, thinner visual style</string>

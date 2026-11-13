@@ -206,6 +206,19 @@ public class LyricsTargetLanguagePreference extends Preference {
                 || RubyGenerator.isJapaneseRubyLanguage(value);
     }
 
+    /**
+     * Hidden until what it needs is downloaded: Syriac needs the CLDR transforms, and the two
+     * kana ruby styles need the Japanese dictionary.
+     */
+    private static boolean isWaitingForDownload(String value) {
+        if (SYRIAC.equals(value)) {
+            return !CldrTransformsStore.isReady();
+        }
+        final boolean kanaRubyStyle = "ja-Hira".equalsIgnoreCase(value)
+                || "ja-Kana".equalsIgnoreCase(value);
+        return kanaRubyStyle && !JapaneseDictStore.isReady();
+    }
+
     private static boolean isAddedByUser(String value) {
         for (String code : RimeDictStore.customLanguages()) {
             if (code.equalsIgnoreCase(value) && !RimeDictStore.isReserved(code)) {
@@ -273,11 +286,10 @@ public class LyricsTargetLanguagePreference extends Preference {
         }
         final List<CharSequence> merged = new ArrayList<>(base.length + 1);
         for (int i = 0; i < base.length; i++) {
-            if (!CldrTransformsStore.isReady()
-                    && SYRIAC.equals(values[i].toString())) {
+            final String value = values[i].toString();
+            if (isWaitingForDownload(value)) {
                 continue;
             }
-            final String value = values[i].toString();
             if (RubyGenerator.isJapaneseRubyLanguage(value) && JapaneseDictStore.isReady()) {
                 merged.add(base[i] + " (" + JAPANESE_DICTIONARY + ")");
             } else {
@@ -305,8 +317,7 @@ public class LyricsTargetLanguagePreference extends Preference {
         }
         final List<CharSequence> merged = new ArrayList<>(base.length + 1);
         for (CharSequence entry : base) {
-            if (!CldrTransformsStore.isReady()
-                    && SYRIAC.equals(entry.toString())) {
+            if (isWaitingForDownload(entry.toString())) {
                 continue;
             }
             merged.add(entry);

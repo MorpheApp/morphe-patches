@@ -16,6 +16,7 @@ import android.text.InputType;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -73,7 +74,7 @@ final class LyricsProviderConfigDialog {
         final Dialog dialog;
         try {
             dialog = switch (provider) {
-                case ProcessingProviders.OPENAI_COMPATIBLE -> compatibleDialog(context, prompt, rubyPrompt, onSaved);
+                case ProcessingProviders.OPENAI_COMPATIBLE -> compatibleDialog(context, prompt, rubyPrompt, onSaved, onSaved);
                 case ProcessingProviders.DEEPL -> deepLDialog(context, onSaved);
                 default -> null;
             };
@@ -122,9 +123,15 @@ final class LyricsProviderConfigDialog {
         }
     }
 
-    private static Dialog compatibleDialog(Activity context, @Nullable StringSetting prompt,
-                                           @Nullable StringSetting rubyPrompt,
-                                           Runnable onSaved) {
+    /**
+     * The OpenAI-compatible endpoint, shared by every feature that sends it requests.
+     *
+     * @param onSaved Runs after the settings are saved.
+     * @param onReset Runs after the settings are reset, or null for nothing.
+     */
+    static Dialog compatibleDialog(Activity context, @Nullable StringSetting prompt,
+                                   @Nullable StringSetting rubyPrompt,
+                                   Runnable onSaved, @Nullable Runnable onReset) {
         LinearLayout content = createContent(context);
         // The URL row is added last so the preset it triggers can fill the boxes above.
         EditText tokenInput = addInput(content,
@@ -153,11 +160,12 @@ final class LyricsProviderConfigDialog {
                 Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid_url"));
                 return;
             }
-            test(() -> OpenAIClient.validateConfig(url,
+            test(context, () -> OpenAIClient.validateConfig(url,
                     tokenInput.getText().toString().trim(),
                     modelInput.getText().toString().trim()) ? List.of("ok") : null,
                     ProcessingProviders.OPENAI_COMPATIBLE_LABEL);
         });
+        addReasoningRow(content);
         final PromptField promptField = addPromptSection(content, prompt,
                 "morphe_music_lyrics_ai_config_prompt_label");
         final PromptField rubyPromptField = addPromptSection(content, rubyPrompt,
@@ -165,7 +173,7 @@ final class LyricsProviderConfigDialog {
 
         return createDialog(context,
                 ProcessingProviders.OPENAI_COMPATIBLE_LABEL,
-                content, onSaved,
+                content,
                 () -> {
                     final String extraBody = extraBodyInput.getText().toString().trim();
                     Settings.LYRICS_AI_EXTRA_BODY.save(extraBody);
@@ -176,6 +184,7 @@ final class LyricsProviderConfigDialog {
                     Settings.LYRICS_AI_MODEL.save(modelInput.getText().toString().trim());
                     promptField.save();
                     rubyPromptField.save();
+                    onSaved.run();
                 },
                 () -> {
                     Settings.LYRICS_AI_BASE_URL.resetToDefault();
@@ -185,6 +194,9 @@ final class LyricsProviderConfigDialog {
                     Settings.LYRICS_AI_EXTRA_HEADERS.resetToDefault();
                     promptField.reset();
                     rubyPromptField.reset();
+                    if (onReset != null) {
+                        onReset.run();
+                    }
                 },
                 () -> !OpenAIClient.isValidExtraBody(
                         extraBodyInput.getText().toString().trim()),
@@ -217,14 +229,19 @@ final class LyricsProviderConfigDialog {
 
         return createDialog(context,
                 ProcessingProviders.DEEPL_LABEL,
-                content, onSaved,
-                () -> Settings.LYRICS_DEEPL_API_KEY.save(keyInput.getText().toString().trim()),
-                Settings.LYRICS_DEEPL_API_KEY::resetToDefault,
+                content,
+                () -> {
+                    Settings.LYRICS_DEEPL_API_KEY.save(keyInput.getText().toString().trim());
+                    onSaved.run();
+                },
+                () -> {
+                    Settings.LYRICS_DEEPL_API_KEY.resetToDefault();
+                    onSaved.run();
+                },
                 () -> keyInput.getText().toString().trim().isEmpty());
     }
 
     /** The prompt box and the setting behind it; a no-op pair when the service takes no prompt. */
-    @SuppressWarnings("ClassCanBeRecord")
     private static final class PromptField {
         @Nullable
         private final StringSetting setting;
@@ -293,7 +310,7 @@ final class LyricsProviderConfigDialog {
     }
 
     static Dialog createDialog(Activity context, String title, LinearLayout content,
-                               @Nullable Runnable onSaved, Runnable save, Runnable reset,
+                               Runnable save, Runnable reset,
                                @Nullable Validator... validators) {
         final Pair<Dialog, LinearLayout> pair = CustomDialog.create(
                 context,
@@ -312,18 +329,12 @@ final class LyricsProviderConfigDialog {
                         }
                     }
                     save.run();
-                    if (onSaved != null) {
-                        onSaved.run();
-                    }
                     Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_saved"));
                 },
                 null,
                 str("morphe_settings_reset"),
                 () -> {
                     reset.run();
-                    if (onSaved != null) {
-                        onSaved.run();
-                    }
                     Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_reset"));
                 },
                 true
@@ -347,8 +358,7 @@ final class LyricsProviderConfigDialog {
         return content;
     }
 
-    @SuppressWarnings("SameParameterValue")
-    private static void test(Supplier<List<String>> request, String label) {
+    private static void test(Activity context, Supplier<List<String>> request, String label) {
         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
         Utils.runOnBackgroundThread(() -> {
             List<String> result;
@@ -408,6 +418,72 @@ final class LyricsProviderConfigDialog {
         section.addView(row, 0);
         section.addView(createLabel(context, "morphe_music_lyrics_ai_config_base_url_label"), 0);
         return input;
+    }
+
+    /**
+     * The reasoning effort sent with each request. Which levels exist belongs to the endpoint, so the
+     * row stays hidden until it has asked: an endpoint that names no levels takes no effort from us,
+     * and showing a fixed list would offer choices the model cannot honor.
+     */
+    private static void addReasoningRow(LinearLayout section) {
+        final Context context = section.getContext();
+        final int fg = ThemeUtils.getAppForegroundColor();
+        LinearLayout row = new LinearLayout(context);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        row.setGravity(Gravity.CENTER_VERTICAL);
+        row.setBackground(CustomDialog.createRoundedBackground(Dim.dp8,
+                ThemeUtils.getAppBackgroundColor() & 0x33FFFFFF));
+        row.setPadding(Dim.dp12, Dim.dp10, Dim.dp12, Dim.dp10);
+        row.setVisibility(View.GONE);
+
+        TextView label = new TextView(context);
+        label.setText(str("morphe_music_lyrics_ai_config_reasoning_effort"));
+        label.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        label.setTextColor(fg);
+        row.addView(label, new LinearLayout.LayoutParams(0,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+
+        TextView value = new TextView(context);
+        value.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        value.setTextColor(fg & 0xAAFFFFFF);
+        value.setText(reasoningEffortLabel(Settings.LYRICS_AI_REASONING_EFFORT.get()));
+        row.addView(value, new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.topMargin = Dim.dp16;
+        section.addView(row, params);
+
+        Utils.runOnBackgroundThread(() -> {
+            final String[] efforts = OpenAIClient.fetchReasoningEfforts(
+                    Settings.LYRICS_AI_BASE_URL.get(), Settings.LYRICS_AI_API_TOKEN.get(),
+                    Settings.LYRICS_AI_MODEL.get());
+            if (efforts.length == 0) {
+                return;
+            }
+            Utils.runOnMainThread(() -> {
+                final CharSequence[] labels = new CharSequence[efforts.length];
+                for (int i = 0; i < efforts.length; i++) {
+                    labels[i] = reasoningEffortLabel(efforts[i]);
+                }
+                row.setVisibility(View.VISIBLE);
+                row.setOnClickListener(v -> CustomDialogListPreference.createListDialog(context,
+                        str("morphe_music_lyrics_ai_config_reasoning_effort"), labels, efforts,
+                        Settings.LYRICS_AI_REASONING_EFFORT.get(), index -> {
+                            final String chosen = efforts[index];
+                            Settings.LYRICS_AI_REASONING_EFFORT.save(chosen);
+                            value.setText(reasoningEffortLabel(chosen));
+                        }).show());
+            });
+        });
+    }
+
+    private static String reasoningEffortLabel(String effort) {
+        if (effort.isEmpty()) {
+            return str("morphe_music_lyrics_ai_config_reasoning_effort_default");
+        }
+        return Character.toUpperCase(effort.charAt(0)) + effort.substring(1);
     }
 
     static TextView createLabel(Context context, String textKey) {
@@ -507,6 +583,7 @@ final class LyricsProviderConfigDialog {
                 try {
                     models = fetchModels.get();
                 } catch (Exception ex) {
+                    Logger.printDebug(() -> "Could not fetch the models", ex);
                     models = null;
                 }
                 final List<String> fetched = models;

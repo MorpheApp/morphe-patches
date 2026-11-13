@@ -232,6 +232,20 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
   <string name="morphe_replace_music_with_youtube_summary">Inabadilisha music.youtube.com kuwa youtube.com katika viungo vilivyoshirikishwa</string>
   <string name="morphe_replace_links_with_shortener_title">Badilisha viunganishi vya kushiriki kuwa youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Inalazimisha video kutumia muundo mfupi wa URL wa youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Kiotomatiki</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Kumbuka ubora wa video</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Hutumia uteuzi wako wa ubora wa mwongozo kwa video zote zijazo</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Arifa za mabadiliko ya ubora</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Inaonyesha arifa wakati ubora mpya wa chaguo-asili unapohifadhiwa</string>
+  <string name="morphe_video_quality_default_wifi_title">Ubora wa video wa chaguo-asili kwenye mtandao wa Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Ubora wa video wa chaguo-asili kwenye mtandao wa simu</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Ubora wa chaguo-asili wa simu umebadilishwa kuwa: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Ubora wa chaguo-asili wa Wi-Fi umebadilishwa kuwa: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Fungua ukurasa wa kushiriki wa mfumo</string>
+  <string name="morphe_open_system_share_sheet_summary">Inafungua ukurasa wa kushiriki wa mfumo badala ya ule wa ndani ya programu wakati wa kushiriki maudhui</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Kurekodi kwa Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Zimwa</string>

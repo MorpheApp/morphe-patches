@@ -232,6 +232,20 @@ Pro přihlášení stiskněte pokračovat níže"</string>
   <string name="morphe_replace_music_with_youtube_summary">Nahrazuje music.youtube.com za youtube.com v sdílených odkazech.</string>
   <string name="morphe_replace_links_with_shortener_title">Změnit odkazy pro sdílení na youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Nutí videa používat zkrácený formát URL youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automaticky</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Pamatovat si kvalitu videa</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Vaše ruční nastavení kvality se aplikuje na všechna budoucí videa</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Upozornění o změně kvality</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Zobrazí oznámení, když je uložena nová výchozí kvalita</string>
+  <string name="morphe_video_quality_default_wifi_title">Výchozí kvalita videa v síti Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Výchozí kvalita videa v mobilní síti</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Výchozí mobilní kvalita byla změněna na: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Výchozí kvalita Wi-Fi byla změněna na: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Otevírat systémový panel sdílení</string>
+  <string name="morphe_open_system_share_sheet_summary">Při sdílení obsahu otevře systémové menu pro sdílení místo toho menu v aplikaci</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho záznamy</string>
   <string name="morphe_debug_litho_entry_disabled">Vypnuto</string>

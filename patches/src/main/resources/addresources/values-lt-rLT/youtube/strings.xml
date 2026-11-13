@@ -695,6 +695,9 @@ Informacija: gali neveikti tiesioginių transliacijų atveju"</string>
   <string name="morphe_play_all_button_type_entry_11">Narių „Shorts“</string>
   <string name="morphe_play_all_button_type_entry_12">Narių tiesioginės transliacijos</string>
   <string name="morphe_play_all_button_not_available_toast">Nepavyko sugeneruoti grojaraščio dėl kanalo ID neatitikimo</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Rodyti grojamąją sąrašą mygtuką</string>
+  <string name="morphe_playlist_panel_button_summary">Bakstelėkite, kad atidarytumėte grožinio skiltį. Rodoma tik tada, kai grožiamas grožinis</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Rodyti vaizdo įrašo perkrovimo mygtuką</string>
   <string name="morphe_dismiss_player_not_available_toast">Vaizdo įrašo ID nepasiekiamas. Prašome iš naujo įkelti vaizdo įrašą</string>
@@ -1204,9 +1207,24 @@ Nustatymai → Atkūrimas (arba Automatinis atkūrimas) → Automatiškai leisti
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Išjungti grotuvo iššokančiuosius skydelius</string>
   <string name="morphe_disable_player_popup_panels_summary">Išjungia grojaraščio ir tiesioginio pokalbio skydelių atidarymą automatiškai</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Rodyti grožimo sąrašo skiltį visame ekrane</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Grožimo sąrašo skiltis atsidaro virš grotuvo visame ekrane</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Planšetiniuose įrenginiuose grožimo sąrašo skiltis išeina iš pilno ekrano režimo</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Išjungti grojaraščio automatinį atkūrimą</string>
   <string name="morphe_disable_playlist_autoplay_summary">Neleidžia grojaraščiams automatiškai pereiti prie kito vaizdo įrašo</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Automatinio grozimo valdymas</string>
+  <string name="morphe_autoplay_control_summary">Prideda grotuvo mygtuką ir taisyklę kitam vaizdo įrašui. Grožimo sąrašai ir eilės tęsia veikimą, „Miksas“ sustoja po tam tikro kiekio vaizdo įrašų, rekomenduojami vaizdo įrašai niekada nėra grožami. Bakstelėkite mygtuką, kad pasirinktumėte kitą režimą, arba paspauskite ir laikykite, kad pamatytumėte sąrašą</string>
+  <string name="morphe_autoplay_mode_title">Automatinio grozimo režimas</string>
+  <string name="morphe_autoplay_mode_entry_1">Automatinis</string>
+  <string name="morphe_autoplay_mode_entry_2">Vienas</string>
+  <string name="morphe_autoplay_mode_entry_3">Išjungta</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Miksą trukmė</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Režime „Auto“ miksas sustoja po šio kiekio vaizdo įrašų. 0 = be apriboties</string>
+  <string name="morphe_autoplay_mix_length">Miksas: %s vaizdo įrašai</string>
+  <string name="morphe_autoplay_mix_no_limit">Miksas: be apriboties</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Tęsti žiūrėjimą?\" raginimas</string>
   <string name="morphe_continue_watching_prompt_entry_1">Numatytasis</string>
@@ -1282,9 +1300,6 @@ Automobilio išdėstymas
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 – atkurti senąjį išsaugojimą į grojaraštį</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 – išjungti paryškintas piktogramas</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 – atkurti kanalo pavadinimą po vaizdo grotuvu</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Atidaryti sistemos bendrinimo skydelį</string>
-  <string name="morphe_open_system_share_sheet_summary">Bendrinant turinį atidaro sistemos bendrinimo skydelį, o ne programos viduje esantį</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Perrašyti „YouTube Music“ mygtukus</string>
   <string name="morphe_override_youtube_music_buttons_summary">Atidaro jūsų pasirinktą muzikos programėlę vietoj standartinės „YouTube Music“ programėlės</string>
@@ -1478,7 +1493,6 @@ Vaizdo įrašai užklausiami pagal trumpą maišyto vaizdo įrašo ID priešdėl
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow laikinai nepasiekiamas (būsenos kodas: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow laikinai nepasiekiamas</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Atkurti senąjį grotuvo mygtukų stilių</string>
   <string name="morphe_restore_old_player_buttons_summary">Grąžina paryškintus vaizdo grotuvo valdiklius prie senesnio, plonesnio vaizdo stiliaus</string>
@@ -1518,25 +1532,20 @@ Vaizdo įrašai užklausiami pagal trumpą maišyto vaizdo įrašo ID priešdėl
   <string name="morphe_video_delay_button_flyout_title">Rodyti „Vaizdo delsimas“ meniu</string>
   <string name="morphe_video_delay_dialog_input_hint">Delsimas milisekundėmis</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automatiškai</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Įsiminti vaizdo kokybę</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Jūsų rankiniu būdu pasirinkta kokybė taikoma visiems būsimiems vaizdo įrašams</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Kokybės pakeitimų pranešimai</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Rodo pranešimą, kai išsaugoma nauja numatytoji kokybė</string>
-  <string name="morphe_video_quality_default_wifi_title">Numatytoji vaizdo kokybė „Wi-Fi“ tinkle</string>
-  <string name="morphe_video_quality_default_mobile_title">Numatytoji vaizdo kokybė mobiliojo ryšio tinkle</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Įsiminti „Shorts“ kokybę</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Jūsų rankiniu būdu pasirinkta kokybė taikoma visiems būsimiems „Shorts“ įrašams</string>
   <string name="morphe_shorts_quality_default_wifi_title">Numatytoji „Shorts“ kokybė „Wi-Fi“ tinkle</string>
   <string name="morphe_shorts_quality_default_mobile_title">Numatytoji „Shorts“ kokybė mobiliojo ryšio tinkle</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Numatytoji mobiliojo ryšio kokybė pakeista į: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Numatytoji „Wi-Fi“ kokybė pakeista į: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts mobiliojo ryšio kokybė pakeista į: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts „Wi-Fi“ kokybė pakeista į: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Rodyti atkūrimo greičio mygtuką</string>
   <string name="morphe_playback_speed_dialog_button_summary">Palietus ir palaikius atkuriamas numatytasis greitis</string>
+  <string name="morphe_playback_speed_button_cycle_title">Bakstelėkite mygtuką „Grozimo greitis“, kad keistumėte greitį</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Bakstelėjant pereikama prie kitos greitį sąraše. Paspaudus ir palaikius atsidaro greičio meniu</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Grozimo greities mygtuko greičiai</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Greičiai, kuriais cikliškai pereikama bakstelėjant, po vieną eilutėje. Pasiekus paskutinį greitį, bakstelėjant grįžtama į pirmąjį</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Netinkamas greičio ciklo sąrašas, atkelta į numatytąją nuostatą</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Rodyti kokybės mygtuką</string>
   <string name="morphe_video_quality_dialog_button_summary">Palietus ir palaikius atkuriama numatytoji kokybė</string>

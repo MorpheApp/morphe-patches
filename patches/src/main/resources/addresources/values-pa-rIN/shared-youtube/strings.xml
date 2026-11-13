@@ -46,6 +46,9 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- Custom filter -->
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->

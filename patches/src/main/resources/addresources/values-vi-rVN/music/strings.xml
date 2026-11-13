@@ -132,9 +132,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Sử dụng trình tải xuống bên ngoài cho menu Tải xuống</string>
   <string name="morphe_external_downloader_menu_summary">Tùy chọn Tải xuống trong các menu sẽ mở trình tải xuống bên ngoài của bạn thay thế</string>
   <string name="morphe_export_download_folder_title">Xuất nội dung tải xuống</string>
-  <string name="morphe_export_download_folder_summary">"Xuất các bài hát và video được tải xuống bởi ứng dụng vào bộ nhớ thiết bị của bạn bằng menu của mục tải xuống. Nhấn để thay đổi thư mục xuất
+  <string name="morphe_export_download_folder_summary">"Xuất các bài hát và video đã lưu trong ứng dụng vào bộ nhớ thiết bị bằng menu flyout tải xuống trong ứng dụng. Nhấn để thay đổi thư mục
 
-Thư mục xuất: %s"</string>
+Xuất: %s"</string>
   <string name="morphe_export_download_started">Đang xuất nội dung tải xuống</string>
   <string name="morphe_export_download_progress">Đang xuất nội dung tải xuống: %s%%</string>
   <string name="morphe_export_download_notification_channel">Xuất tải xuống</string>
@@ -146,13 +146,14 @@ Thư mục xuất: %s"</string>
   <string name="morphe_export_download_all_saved">Đã xuất %1$s trên %2$s bản tải xuống vào %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Giới thiệu</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Quảng cáo</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Trang video</string>
-  <string name="morphe_settings_music_screen_3_general_title">Chung</string>
-  <string name="morphe_settings_music_screen_4_player_title">Trình phát</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Lời nhạc</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Khác</string>
+  <string name="morphe_settings_music_screen_00_about_title">Giới thiệu</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Quảng cáo</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Trang video</string>
+  <string name="morphe_settings_music_screen_03_general_title">Chung</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Lời nhạc</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Khác</string>
+  <string name="morphe_settings_music_screen_06_player_title">Trình phát</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">Ngôn ngữ YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Ngôn ngữ hệ thống</string>
   <string name="morphe_music_app_language_summary_unsupported">Yêu cầu Android 13 trở lên</string>
@@ -256,6 +257,9 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_playback_speed_title">Tốc độ phát</string>
   <string name="morphe_music_playback_speed_summary">Tốc độ dùng cho tất cả các bản nhạc. Ở mức 100%, tốc độ của ứng dụng sẽ được dùng, chẳng hạn như tốc độ phát podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Thay đổi cao độ theo tốc độ</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Tắt phụ đề tự động</string>
+  <string name="morphe_music_disable_auto_captions_summary">Phụ đề sẽ không tự động bật khi video bắt đầu, bao gồm cả những phụ đề mà video tự động bật theo mặc định</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Tắt giảm âm thanh</string>
   <string name="morphe_music_disable_audio_ducking_summary">Âm lượng sẽ không bị giảm khi một ứng dụng khác phát âm thanh ngắn, chẳng hạn như thông báo</string>
@@ -567,6 +571,7 @@ Phát SABR (đã tắt giả lập luồng video)"</string>
 
 Cơ sở dữ liệu được cấp phép theo Giấy phép Cơ sở Dữ liệu Mở ODC (ODbL). Các mục từ Soul Over AI của xoundbyte được cấp phép theo CC BY 4.0. Không liên kết với hoặc được xác nhận bởi SoundProof hoặc Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Lời bài hát không khả dụng cho tệp thiết bị này.</string>
   <string name="morphe_music_lyrics_enabled_title">Dùng lời nhạc từ bên thứ ba</string>
   <string name="morphe_music_lyrics_enabled_summary">Hiển thị lời bài hát từ dịch vụ bên thứ ba. Nếu không thấy, lời bài hát có sẵn sẽ được hiển thị</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Giữ màn hình luôn bật khi xem lời bài hát</string>
@@ -698,6 +703,7 @@ Cookie bắt buộc: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_search_title_hint">Tên bài hát</string>
   <string name="morphe_music_lyrics_search_artist_hint">Nghệ sĩ</string>
   <string name="morphe_music_lyrics_search_empty">Nhập tên bài hát và nghệ sĩ</string>
+  <string name="morphe_music_lyrics_search_google">Tìm kiếm bằng Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Không có nhà cung cấp nào được bật có thể tìm kiếm các bài hát khác</string>
   <string name="morphe_music_lyrics_saved">Đã lưu</string>
   <string name="morphe_music_lyrics_written_by">Viết bởi: %s</string>
@@ -777,7 +783,6 @@ Chia định dạng bản nhạc đã điền thành các khung hình xoay vòng
   <string name="morphe_music_lyrics_romanized_by_ai">Phiên âm bởi %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Latin hóa bởi %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (với %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Latinh hóa bởi Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Đã dịch</string>
   <string name="morphe_music_lyrics_translation_language_title">Ngôn ngữ bản dịch</string>
@@ -837,19 +842,15 @@ Lời bài hát đến từ các dịch vụ bên thứ ba không liên quan, t�
   <string name="morphe_music_lyrics_use_ai_section_title">Phát hiện phần bằng AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Chỉ được sử dụng khi nhà cung cấp không gửi nhãn phần như Chorus hoặc Verse, do mô hình tương thích OpenAI của bạn phát hiện. Chỉnh sửa hàng cũng sẽ mở lời nhắc của nó</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL điểm cuối API (ví dụ: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Mẫu Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Trình giữ chỗ: {task}, {language}, {title}, {artist}, {count}, {lines}. Những trình giữ chỗ không xác định sẽ được giữ nguyên như khi nhập</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Đã lưu prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Đã lưu lời nhắc, nhưng điểm cuối AI vẫn chưa thể sử dụng. Hãy cấu hình nó trong Cài đặt AI trước</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Đã đặt lại prompt</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Đã lưu cài đặt Dịch thuật &amp; Phiên âm</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Đã lưu cài đặt, nhưng điểm cuối AI hiện chưa khả dụng</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Đã lưu cài đặt</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Đặt lại cài đặt về mặc định</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL cơ sở phải bắt đầu bằng http:// hoặc https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Cài đặt chưa đầy đủ hoặc bị nhà cung cấp từ chối</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Đang kiểm tra kết nối…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Đã kết nối! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Kết nối thất bại. Hãy kiểm tra cài đặt.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Nhập khóa API trước</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Kiểm tra kết nối</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Đang tải các mô hình…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Lấy danh sách mô hình</string>
@@ -866,7 +867,14 @@ Lời bài hát đến từ các dịch vụ bên thứ ba không liên quan, t�
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Tiêu đề yêu cầu bổ sung (JSON tùy chọn)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Trích dẫn tên và giá trị, ví dụ {\"api-key\": \"abc\"}. Giá trị không được trích dẫn chứa / : hoặc số sẽ bị từ chối. Giá trị rỗng sẽ xóa tiêu đề.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Trích dẫn tên và giá trị, ví dụ {\"temperature\": 0.3}. Giá trị không được trích dẫn chứa / hoặc : sẽ bị từ chối. Model và tin nhắn không thể được đặt ở đây.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Nỗ lực suy luận</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Mặc định</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Khóa xác thực (Miễn phí hoặc Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI không thể phát hiện các đoạn cho bản nhạc này</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Đang phát hiện</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Áp dụng các đoạn</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Đã hủy phát hiện</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Không có lời bài hát để phát hiện các đoạn</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Vô hiệu hóa biểu tượng đậm</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Khôi phục các tab Tiếp theo, Lời nhạc và Liên quan trong trình phát</string>

@@ -232,6 +232,20 @@ A bejelentkezéshez nyomd meg lent a folytatást"</string>
   <string name="morphe_replace_music_with_youtube_summary">A megosztott linkekben lecseréli a music.youtube.com-ot a youtube.com-ra</string>
   <string name="morphe_replace_links_with_shortener_title">Módosítsa a megosztási linkeket youtu.be-ra</string>
   <string name="morphe_replace_links_with_shortener_summary">Arra kényszeríti a videókat, hogy a rövidített youtu.be URL-formátumot használják</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatikus</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Videóminőség megjegyzése</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Az egyéni minőségválasztást alkalmazza minden jövőbeli videóra</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Minőségváltás értesítései</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Értesítést mutat, amikor egy új alapértelmezett minőség được mentve</string>
+  <string name="morphe_video_quality_default_wifi_title">Alapértelmezett videóminőség Wi-Fi hálózaton</string>
+  <string name="morphe_video_quality_default_mobile_title">Alapértelmezett videóminőség mobilhálózaton</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Alapértelmezett mobil minőség módosítva: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Alapértelmezett Wi-Fi minőség módosítva: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Rendszer megosztási lapjának megnyitása</string>
+  <string name="morphe_open_system_share_sheet_summary">Tartalom megosztásakor a rendszer megosztási lapját nyitja meg az alkalmazásbéli helyett</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho naplózás</string>
   <string name="morphe_debug_litho_entry_disabled">Kikapcsolva</string>

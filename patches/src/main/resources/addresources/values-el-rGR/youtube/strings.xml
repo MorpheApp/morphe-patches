@@ -695,6 +695,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">Μόνο Shorts μελών</string>
   <string name="morphe_play_all_button_type_entry_12">Μόνο ζωντανές μεταδόσεις μελών</string>
   <string name="morphe_play_all_button_not_available_toast">Δεν ήταν δυνατή η δημιουργία λίστας αναπαραγωγής λόγω ασυμφωνίας αναγνωριστικού καναλιού</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Εμφάνιση κουμπιού «Λίστα αναπαραγωγής»</string>
+  <string name="morphe_playlist_panel_button_summary">Πατήστε για να ανοίξετε το πάνελ της λίστας αναπαραγωγής. Εμφανίζεται μόνο κατά την αναπαραγωγή λίστας αναπαραγωγής</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Εμφάνιση κουμπιού επαναφόρτωσης βίντεο</string>
   <string name="morphe_dismiss_player_not_available_toast">Το ID του βίντεο δεν είναι διαθέσιμο. Παρακαλώ ανανεώστε το βίντεο χειροκίνητα</string>
@@ -1204,9 +1207,24 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Απενεργοποίηση αναδυόμενων πάνελ παίκτη</string>
   <string name="morphe_disable_player_popup_panels_summary">Απενεργοποιεί την αυτόματη εμφάνιση των πλαισίων λίστας αναπαραγωγής και ζωντανής συνομιλίας</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Εμφάνιση πίνακα λίστας αναπαραγωγής σε πλήρη οθόνη</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Ο πίνακας της λίστας αναπαραγωγής ανοίγει πάνω από τον πρόγραμμα αναπαραγωγής πλήρους οθόνης</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Το πάνελ της λίστας αναπαραγωγής εξέρχεται από την πλήρη οθόνη σε tablet</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Απενεργοποίηση αυτόματης αναπαραγωγής των λιστών αναπαραγωγής</string>
   <string name="morphe_disable_playlist_autoplay_summary">Αποτρέπει τις λίστες αναπαραγωγής από το να συνεχίζουν αυτόματα στο επόμενο βίντεο</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Έλεγχος αυτόματης αναπαραγωγής</string>
+  <string name="morphe_autoplay_control_summary">Προσθέτει ένα κουμπί αναπαραγωγής και έναν κανόνα για το επόμενο βίντεο. Οι λίστες αναπαραγωγής και οι ουρές συνεχίζονται, ένα Mix σταματά μετά από έναν αριθμό βίντεο, ένα προτεινόμενο βίντεο δεν αναπαράγεται ποτέ. Πατήστε το κουμπί για τον επόμενο τρόπο, πατήστε και κρατήστε για τη λίστα</string>
+  <string name="morphe_autoplay_mode_title">Τρόπος αυτόματης αναπαραγωγής</string>
+  <string name="morphe_autoplay_mode_entry_1">Αυτόματη</string>
+  <string name="morphe_autoplay_mode_entry_2">Μεμονωμένο</string>
+  <string name="morphe_autoplay_mode_entry_3">Ανενεργό</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Διάρκεια Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Στον Αυτόματο τρόπο, ένα Mix σταματά μετά από αυτόν τον αριθμό βίντεο. 0 = χωρίς όριο</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s βίντεο</string>
+  <string name="morphe_autoplay_mix_no_limit">Ανάμειξη: χωρίς όριο</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Ειδοποίηση \"Συνέχεια προβολής\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Προεπιλογή</string>
@@ -1282,9 +1300,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Επαναφορά παλιάς αποθήκευσης σε λίστα αναπαραγωγής</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Απενεργοποίηση έντονων εικονιδίων</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Επαναφορά ονόματος καναλιού κάτω από τον πρόγραμμα αναπαραγωγής βίντεο</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Άνοιγμα φύλλου κοινής χρήσης συστήματος</string>
-  <string name="morphe_open_system_share_sheet_summary">Ανοίγει το φύλλο κοινής χρήσης του συστήματος αντί για το ενσωματωμένο όταν κοινοποιείτε περιεχόμενο</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Υπέρβαση των κουμπιών YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Ανοίγει την προτιμώμενη εφαρμογή μουσικής αντί για την προεπιλεγμένη εφαρμογή YouTube Music</string>
@@ -1478,7 +1493,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow προσωρινά μη διαθέσιμο (κωδικός: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow προσωρινά μη διαθέσιμο</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Επαναφορά στυλ κουμπιών παλαιού αναπαραγωγού</string>
   <string name="morphe_restore_old_player_buttons_summary">Επαναφέρει τα έντονα χειριστήρια αναπαραγωγής βίντεο στο παλαιότερο, λεπτότερο οπτικό στυλ</string>
@@ -1518,25 +1532,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">Εμφάνιση μενού καθυστέρησης βίντεο</string>
   <string name="morphe_video_delay_dialog_input_hint">Καθυστέρηση σε χιλιοστά του δευτερολέπτου</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Αυτόματη</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Απομνημονεύει την ποιότητα βίντεο</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Εφαρμόζει την μη αυτόματη επιλογή ποιότητας σε όλα τα μελλοντικά βίντεο</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Ειδοποιήσεις αλλαγής ποιότητας</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Εμφανίζει μια ειδοποίηση όταν αποθηκεύεται μια νέα προεπιλεγμένη ποιότητα</string>
-  <string name="morphe_video_quality_default_wifi_title">Προεπιλεγμένη ποιότητα βίντεο σε δίκτυο Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Προεπιλεγμένη ποιότητα βίντεο με δεδομένα κινητής τηλεφωνίας</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Απομνημονεύει την ποιότητα Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Εφαρμόζει την μη αυτόματη επιλογή ποιότητας σε όλα τα μελλοντικά Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Προεπιλεγμένη ποιότητα Shorts σε δίκτυο Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Προεπιλεγμένη ποιότητα Shorts σε δίκτυο κινητής τηλεφωνίας</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Η προεπιλεγμένη ποιότητα κινητού άλλαξε σε: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Η προεπιλεγμένη ποιότητα Wi-Fi άλλαξε σε: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Η ποιότητα Shorts με κινητό άλλαξε σε: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Η ποιότητα Shorts με Wi-Fi άλλαξε σε: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Εμφάνιση κουμπιού ταχύτητας αναπαραγωγής</string>
   <string name="morphe_playback_speed_dialog_button_summary">Πατήστε και κρατήστε για επαναφορά στην προεπιλεγμένη ταχύτητα</string>
+  <string name="morphe_playback_speed_button_cycle_title">Πατήστε το κουμπί Ταχύτητα αναπαραγωγής για εναλλαγή ταχυτήτων</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Με ένα πάτημα μεταβαίνετε στην επόμενη ταχύτητα της λίστας. Με πάτημα και κράτημα ανοίγει το μενού ταχύτητας</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Ταχύτητες κουμπιού Ταχύτητα αναπαραγωγής</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Ταχύτητες μεταξύ των οποίων γίνεται εναλλαγή με ένα πάτημα, μία ανά γραμμή. Μετά την τελευταία ταχύτητα, ένα πάτημα επιστρέφει στην πρώτη</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Μη έγκυρη λίστα εναλλαγής ταχύτητας, επαναφορά στις προεπιλογές</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Εμφάνιση κουμπιού ποιότητας</string>
   <string name="morphe_video_quality_dialog_button_summary">Πατήστε και κρατήστε για επαναφορά στην προεπιλεγμένη ποιότητα</string>

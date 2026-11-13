@@ -232,6 +232,20 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_replace_music_with_youtube_summary">Ersätter music.youtube.com med youtube.com i delade länkar</string>
   <string name="morphe_replace_links_with_shortener_title">Ändra delningslänkar till youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Tvingar videor att använda det förkortade webbadressformatet youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatiskt</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Kom ihåg videokvalitet</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Tillämpar den kvalitet som du valt manuellt i alla framtida videor</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Meddelanden om kvalitetsändringar</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Visar ett meddelande när en ny standardkvalitet sparas</string>
+  <string name="morphe_video_quality_default_wifi_title">Standardvideokvalitet på Wi-Fi-nätverk</string>
+  <string name="morphe_video_quality_default_mobile_title">Standardvideokvalitet på mobilnätverk</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Ändrade standardkvalitet för mobilnät till: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Ändrade standardkvalitet för Wi-Fi till: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Öppna systemets delningsblad</string>
+  <string name="morphe_open_system_share_sheet_summary">Öppnar systemets delningsblad istället för appens när du delar innehåll</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-loggning</string>
   <string name="morphe_debug_litho_entry_disabled">Inaktiverad</string>

@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">გაზიარებულ ბმულებში music.youtube.com-ს ანაცვლებს youtube.com-ით</string>
   <string name="morphe_replace_links_with_shortener_title">გაზიარების ბმულების შეცვლა youtu.be-ით</string>
   <string name="morphe_replace_links_with_shortener_summary">აიძულებს ვიდეოებს გამოიყენონ youtu.be URL-ის შემოკლებული ფორმატი</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">ავტომატური</string>
+  <string name="morphe_remember_video_quality_last_selected_title">ვიდეოს ხარისხის დამახსოვრება</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">თქვენ მიერ ხელით არჩეული ხარისხი გავრცელდება ყველა მომავალ ვიდეოზე</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">შეტყობინებები ხარისხის ცვლილების შესახებ</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">აჩვენებს შეტყობინებას, როდესაც ახალი ნაგულისხმევი ხარისხი ინახება</string>
+  <string name="morphe_video_quality_default_wifi_title">ვიდეოს ნაგულისხმევი ხარისხი Wi-Fi ქსელში</string>
+  <string name="morphe_video_quality_default_mobile_title">ვიდეოს ნაგულისხმევი ხარისხი მობილურ ქსელში</string>
+  <string name="morphe_remember_video_quality_toast_mobile">მობილურისთვის ნაგულისხმევი ხარისხი შეიცვალა: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi-სთვის ნაგულისხმევი ხარისხი შეიცვალა: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">გახსნით სისტემური გაზიარების პანელი</string>
+  <string name="morphe_open_system_share_sheet_summary">კონტენტის გაზიარებისას გახსნის სისტემურ გაზიარების პანელს პროგრამის შიდა პანელის ნაცვლად</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-ლოგირება</string>
   <string name="morphe_debug_litho_entry_disabled">გამორთვას</string>

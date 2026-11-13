@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Käytä ulkoista lataussovellusta Lataukset-valikossa</string>
   <string name="morphe_external_downloader_menu_summary">Valikoiden Lataus-vaihtoehto avaa ulkoisen lataussovelluksen sen sijaan</string>
   <string name="morphe_export_download_folder_title">Vie lataukset</string>
-  <string name="morphe_export_download_folder_summary">"Vie sovelluksen lataamat kappaleet ja videot laitteen tallennustilaan latauksen valikon kautta. Napauta vaihtaaksesi vientikansiota
+  <string name="morphe_export_download_folder_summary">"Vie sovellukseen tallennetut kappaleet ja videot laitteesi tallennustilaan sovelluksen latausten valikon kautta. Napauta muuttaaksesi vientikansiota:
 
 Vientikansio: %s"</string>
   <string name="morphe_export_download_started">Latausta viえtään</string>
@@ -146,13 +146,14 @@ Vientikansio: %s"</string>
   <string name="morphe_export_download_all_saved">Vietiin %1$s / %2$s latausta kohteeseen %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Tietoja</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Mainokset</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Syöte</string>
-  <string name="morphe_settings_music_screen_3_general_title">Yleiset</string>
-  <string name="morphe_settings_music_screen_4_player_title">Soitin</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Lyriikat</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Sekalaiset</string>
+  <string name="morphe_settings_music_screen_00_about_title">Tietoja</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Mainokset</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Syöte</string>
+  <string name="morphe_settings_music_screen_03_general_title">Yleiset</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Sanoitukset</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Sekalaiset</string>
+  <string name="morphe_settings_music_screen_06_player_title">Soitin</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">YouTube Music -kieli</string>
   <string name="morphe_music_app_language_summary_default">Järjestelmän kieli</string>
   <string name="morphe_music_app_language_summary_unsupported">Vaatii Android 13:n tai uudemman</string>
@@ -256,6 +257,9 @@ SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <string name="morphe_music_playback_speed_title">Toistonopeus</string>
   <string name="morphe_music_playback_speed_summary">Nopeus, jota käytetään kaikille kappaleille. 100 %:n kohdalla käytetään sovelluksen nopeutta, kuten podcastin toistonopeutta.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Muuta sävelkorkeutta nopeuden mukaan</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Poista automaattiset tekstitykset käytöstä</string>
+  <string name="morphe_music_disable_auto_captions_summary">Kuvatekstejä ei oteta käyttöön automaattisesti videon alkaessa, mukaan lukien videot, joissa kuvatekstit ovat oletuksena käytössä</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Poista äänen vaimennus käytöstä</string>
   <string name="morphe_music_disable_audio_ducking_summary">Äänenvoimakkuutta ei alenneta, kun toinen sovellus toistaa lyhyen äänen, kuten ilmoituksen</string>
@@ -567,6 +571,7 @@ Varmistaaksesi, että scrobbling synkronoidaan taustatoiston aikana, varmista, e
 
 Tietokanta on lisensoitu ODC Open Database License (ODbL) -lisenssillä. xoundbyten Soul Over AI -merkinnät on lisensoitu CC BY 4.0 -lisenssillä. Ei liity SoundProofiin tai Soul Over AI:hin, eikä niillä ole tämän tukea."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Sanoituksia ei ole saatavilla tämän laitetyypin tiedostolle.</string>
   <string name="morphe_music_lyrics_enabled_title">Käytä kolmannen osapuolen lyriikoita</string>
   <string name="morphe_music_lyrics_enabled_summary">Näyttää lyriikoita kolmannen osapuolen palvelusta. Jos lyriikoita ei löydy, käytetään sisäänrakennettuja lyriikoita.</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Pidä näyttö päällä sanoituksia katseltaessa</string>
@@ -698,6 +703,7 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_search_title_hint">Kappaleen nimi</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artisti</string>
   <string name="morphe_music_lyrics_search_empty">Anna kappaleen nimi ja artisti</string>
+  <string name="morphe_music_lyrics_search_google">Hae Googlella</string>
   <string name="morphe_music_lyrics_search_no_providers">Mikään käytössä olevista palveluntarjoajista ei voi hakea muita kappaleita</string>
   <string name="morphe_music_lyrics_saved">Tallennettu</string>
   <string name="morphe_music_lyrics_written_by">Kirjoittanut: %s</string>
@@ -777,7 +783,6 @@ Koskee molempia rajoja. Arvolla 1,75 neljä täyslevyistä merkkiä lasketaan se
   <string name="morphe_music_lyrics_romanized_by_ai">Romanisoinut %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Latinisoinut %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (yhdessä %2$s kanssa)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Romanisoitu Rimen toimesta (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Käännetty</string>
   <string name="morphe_music_lyrics_translation_language_title">Käännöskieli</string>
@@ -837,19 +842,15 @@ Laulutekstit tulevat kolmannen osapuolen palveluista, jotka eivät ole Morphen a
   <string name="morphe_music_lyrics_use_ai_section_title">Tunnista osiot tekoälyn avulla</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Käytetään vain, kun palveluntarjoaja ei anna osiotunnisteita, kuten Kertosäe tai Säkeistö. OpenAI-yhteensopiva malli tunnistaa ne. Rivin muokkaaminen avaa myös sen kehotteen</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-päätepisteen URL (esim. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Kehotepohja</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Paikkamerkit: {task}, {language}, {title}, {artist}, {count}, {lines}. Tuntemattomat jätetään sellaisinaan</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Kehote tallennettu</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Kehote tallennettu, mutta tekoälypäätepiste ei ole vielä käytettävissä. Määritä se ensin tekoälyasetuksista</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Kehote nollattu</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Käännös- ja romanisointiasetukset tallennettu</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Asetukset tallennettu, mutta tekoälyn päätepiste ei ole vielä käytettävissä</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Asetukset tallennettu</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Asetukset nollattiin</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Perus-URL-osoitteen on alettava http:// tai https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Asetukset ovat puutteellisia tai provider hylkäsi ne</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Tarkistetaan yhteyttä…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Yhdistetty! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Yhteys epäonnistui. Tarkista asetukset.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Syötä ensin API-avain</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Testaa yhteys</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Haetaan malleja…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Hae mallit</string>
@@ -866,7 +867,14 @@ Laulutekstit tulevat kolmannen osapuolen palveluista, jotka eivät ole Morphen a
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Lisäotsikot (valinnainen JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Laita nimet ja arvot lainausmerkkeihin, esim. {\"api-key\": \"abc\"}. Lainausmerkittömät arvot, joissa on / tai : tai numero, hylätään. Tyhjä arvo poistaa otsikon.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Laita nimet ja arvot lainausmerkkeihin, esim. {\"temperature\": 0.3}. Lainausmerkittömät arvot, joissa on / tai :, hylätään. Mallia ja viestejä ei voi asettaa tässä.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Päättelyn vaivannäkö</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Oletus</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Autentikointiavain (Free tai Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">Tekoäly ei pystynyt tunnistamaan osioita tälle kappaleelle</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Tunnistetaan</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Käytä osioita</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Tunnistus peruttu</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Sanoituksia ei löytynyt osioiden tunnistamiseksi</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Poista lihavoidut kuvakkeet</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Palauta Playerin Seuraavaksi-, Sanoitukset- ja Liittyvät-välilehdet</string>

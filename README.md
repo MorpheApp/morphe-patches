@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v2.3.0-dev.2](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.3.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;205 patches total
+> **[v2.3.0-dev.3](https://github.com/MorpheApp/morphe-patches/releases/tag/v2.3.0-dev.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;211 patches total
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;53 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;56 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -60,6 +60,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Disable DRC audio](#disable-drc-audio) | Adds an option to disable DRC (Dynamic Range Compression) audio. |  |
 | [Disable QUIC protocol](#disable-quic-protocol) | Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol. |  |
 | [Disable audio ducking](#disable-audio-ducking) | Adds an option to keep the volume unchanged when another app plays a short sound, such as a notification. |  |
+| [Disable auto captions](#disable-auto-captions) | Adds an option to disable captions from being automatically enabled. |  |
 | [Disable dislike redirection](#disable-dislike-redirection) | Adds an option to prevent skipping to the next track when the dislike button is pressed. |  |
 | [Downloads](#downloads) | Adds support to download songs, albums, and playlists using the in-app download button, either inside YouTube Music or with an external downloader app, and exports songs and videos saved by the app to the device. |  |
 | [Enable audio/video switch](#enable-audio-video-switch) | Adds an option to switch between the audio and the video version of a track by redirecting videoId. |  |
@@ -80,6 +81,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Miniplayer previous and next buttons](#miniplayer-previous-and-next-buttons) | Adds options to show previous and next track buttons in the miniplayer. |  |
 | [Navigation bar](#navigation-bar) | Adds options to hide navigation bar, labels and buttons, and to show the navigation bar and miniplayer as glass. |  |
 | [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices |  |
+| [Open system share sheet](#open-system-share-sheet) | Adds an option to always open the system share sheet instead of the in-app share sheet. |  |
 | [Play albums songs](#play-albums-songs) | Adds an option to play the song version of album tracks instead of music videos. |  |
 | [Playback speed](#playback-speed) | Adds options to change the playback speed and pitch of tracks. |  |
 | [Playlist tags](#playlist-tags) | Adds an option to tag playlists from their menu, and to filter the Library playlists by tag. |  |
@@ -87,6 +89,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [PoToken provider](#potoken-provider) | Adds option to get PoToken using an external PoToken minter app. |  |
 | [Remember repeat state](#remember-repeat-state) | Adds an option to remember the repeat state when playing a new track or playlist. |  |
 | [Remember shuffle state](#remember-shuffle-state) | Adds an option to remember the shuffle state when playing a new track or playlist. |  |
+| [Remember video quality](#remember-video-quality) | Adds options to set default video qualities and remember the last selected video quality. |  |
 | [Remove background playback restrictions](#remove-background-playback-restrictions) | Removes restrictions on background playback, including playing kids videos in the background. |  |
 | [Remove viewer discretion dialog](#remove-viewer-discretion-dialog) | Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction. |  |
 | [Return YouTube Dislike](#return-youtube-dislike) | Adds an option to show the dislike count of tracks with Return YouTube Dislike. |  |
@@ -104,7 +107,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;115 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;118 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -119,6 +122,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Ambient mode](#ambient-mode) | Adds Enhanced Ambient mode and options to force Ambient mode on, bypass its power saving restrictions, and disable it entirely or in fullscreen. |  |
 | [App refresh rate](#app-refresh-rate) | Adds an option to change the app refresh rate. |  |
 | [Ask flyout menu](#ask-flyout-menu) | Adds a video menu entry that opens Ask for the video and summarizes the video. This patch works with YouTube 21.16.256 and newer. |  |
+| [Autoplay control](#autoplay-control) | Adds a player button and a rule for the next video: playlists and queues go on, a Mix stops after a number of videos, a suggested video never plays. |  |
 | [Bypass image region restrictions](#bypass-image-region-restrictions) | Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries. |  |
 | [Bypass link redirects](#bypass-link-redirects) | Adds an option to bypass redirects and open the original link directly. |  |
 | [Captions](#captions) | Adds options to disable captions from being automatically enabled, select a preferred and a secondary caption language, add more auto-translate languages, and show captions in stable blocks and in picture-in-picture. Stable blocks and bilingual captions work with YouTube 21.15 and newer, on Android 10 and newer. |  |
@@ -161,6 +165,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Force animations](#force-animations) | Adds an option to always turn on or off the app animations that YouTube can turn off, such as the player transitions. |  |
 | [Force fullscreen landscape](#force-fullscreen-landscape) | Adds an option to rotate the player to landscape when entering fullscreen mode on tablets and other large screen devices. |  |
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
+| [Fullscreen playlist panel](#fullscreen-playlist-panel) | Adds an option to show the playlist panel over the fullscreen player on tablets, instead of exiting fullscreen. |  |
 | [Fullscreen video scale](#fullscreen-video-scale) | Adds options to stretch or zoom videos to fill the screen in fullscreen mode. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
 | [Hide Shorts components](#hide-shorts-components) | Adds options to hide components related to Shorts. | • Hide Shorts app shortcut<br>• Hide Shorts widget |
@@ -198,6 +203,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Playback in feeds](#playback-in-feeds) | Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it. |  |
 | [Playback speed](#playback-speed) | Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player. |  |
 | [Player icon style](#player-icon-style) | Adds an option to change the style of the player button icons. | • Custom icons |
+| [Playlist button](#playlist-button) | Adds an option to display a button in the video player that opens the playlist panel. |  |
 | [Playlist improvements](#playlist-improvements) | Adds options to widen playlist drag handles, reorder videos by long press, and hide removal confirmations. |  |
 | [PoToken provider](#potoken-provider) | Adds option to get PoToken using an external PoToken minter app. |  |
 | [Reload video](#reload-video) | Adds an option to display reload video button in the video player. |  |
@@ -238,7 +244,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;2026.45.0 | 🧪&nbsp;2026.44.0 | 🧪&nbsp;2026.43.0 | 2026.40.0 | 2026.24.0 | 2026.10.0 |
+| 🧪&nbsp;2026.46.0 | 🧪&nbsp;2026.45.0 | 🧪&nbsp;2026.44.0 | 2026.40.0 | 2026.24.0 | 2026.10.0 |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |

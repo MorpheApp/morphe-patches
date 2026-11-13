@@ -232,6 +232,20 @@ Android System WebView খুলতে OK ট্যাপ করুন।"</stri
   <string name="morphe_replace_music_with_youtube_summary">শেয়ার করা লিঙ্কে music.youtube.com এর পরিবর্তে youtube.com ব্যবহার করা হয়।</string>
   <string name="morphe_replace_links_with_shortener_title">শেয়ার লিঙ্কগুলি youtu.be-এ পরিবর্তন করুন</string>
   <string name="morphe_replace_links_with_shortener_summary">ভিডিওগুলিকে সংক্ষেপিত youtu.be URL ফর্ম্যাট ব্যবহার করতে বাধ্য করে</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">স্বয়ংক্রিয়</string>
+  <string name="morphe_remember_video_quality_last_selected_title">ভিডিও গুণমান মনে রাখুন</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">ভবিষ্যতের সমস্ত ভিডিওর জন্য আপনার ম্যানুয়াল গুণমান নির্বাচন প্রযোজ্য হবে</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">গুণমান পরিবর্তনের বিজ্ঞপ্তি</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">একটি নতুন ডিফল্ট গুণমান সংরক্ষিত হলে একটি বিজ্ঞপ্তি দেখায়</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi নেটওয়ার্কে ডিফল্ট ভিডিও গুণমান</string>
+  <string name="morphe_video_quality_default_mobile_title">মোবাইল নেটওয়ার্কে ডিফল্ট ভিডিও গুণমান</string>
+  <string name="morphe_remember_video_quality_toast_mobile">ডিফল্ট মোবাইল গুণমান পরিবর্তন করা হয়েছে: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">ডিফল্ট Wi-Fi গুণমান পরিবর্তন করা হয়েছে: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">সিস্টেম শেয়ার শিট খুলুন</string>
+  <string name="morphe_open_system_share_sheet_summary">কন্টেন্ট শেয়ার করার সময় ইন-অ্যাপ শেয়ার শীটের পরিবর্তে সিস্টেম শেয়ার শীট খোলে</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">লিথো লগিং</string>
   <string name="morphe_debug_litho_entry_disabled">বন্ধ রাখুন</string>

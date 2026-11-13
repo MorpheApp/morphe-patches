@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Gebruik eksterne aflaaier vir Aflaai-kieslys</string>
   <string name="morphe_external_downloader_menu_summary">Die Aflaai-opsie in kieslyse open eerder jou eksterne aflaaier</string>
   <string name="morphe_export_download_folder_title">Voer aflaaiings uit</string>
-  <string name="morphe_export_download_folder_summary">"Voer liedjies en video's wat deur die toepassing afgelaai is uit na jou toestel se stoorplek deur die spyskaart van die aflaai te gebruik. Tik om die uitvoergids te verander
+  <string name="morphe_export_download_folder_summary">"Voer in-app gestoorde liedjies en video's uit na jou toestel se stoorplek deur die in-app aflaai-spyskaart te gebruik. Tik om die uitvoergids te verander
 
 Uitvoergids: %s"</string>
   <string name="morphe_export_download_started">Voer aflaai uit</string>
@@ -146,13 +146,14 @@ Uitvoergids: %s"</string>
   <string name="morphe_export_download_all_saved">Het %1$s van %2$s aflaaiings uitgevoer na %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Inligting</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Advertensies</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
-  <string name="morphe_settings_music_screen_3_general_title">Algemeen</string>
-  <string name="morphe_settings_music_screen_4_player_title">Speler</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Lirieke</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Diverse</string>
+  <string name="morphe_settings_music_screen_00_about_title">Oor</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Advertensies</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_03_general_title">Algemeen</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Lirieke</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Diverse</string>
+  <string name="morphe_settings_music_screen_06_player_title">Speler</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">YouTube Music-taal</string>
   <string name="morphe_music_app_language_summary_default">Stelseltaal</string>
   <string name="morphe_music_app_language_summary_unsupported">Vereis Android 13 of later</string>
@@ -256,6 +257,9 @@ SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_playback_speed_title">Afspeelspoed</string>
   <string name="morphe_music_playback_speed_summary">Spoed wat vir alle snitte gebruik word. Teen 100% word die toepassing se spoed gebruik, soos die podcast-afspeelspoed</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Verander toonhoogte saam met afspeelspoed</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Deaktiveer outomatiese onderskrifte</string>
+  <string name="morphe_music_disable_auto_captions_summary">Onderskrifte word nie outomaties geaktiveer wanneer \'n video begin nie, insluitend onderskrifte wat die video by verstaan geaktiveer</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Deaktiveer klank-ducking</string>
   <string name="morphe_music_disable_audio_ducking_summary">Volume word nie verlaag wanneer \'n ander toepassing \'n kort klank speel nie, soos \'n kennisgewing</string>
@@ -567,6 +571,7 @@ Om te verseker dat scrobbling tydens agtergrondweergawe gesinkroniseer word, ver
 
 Die databasis is gelisensieer onder die ODC Open Database License (ODbL). Inskrywings vanaf Soul Over AI deur xoundbyte is gelisensieer onder CC BY 4.0. Nie geaffilieerd met of goedgekeur deur SoundProof of Soul Over AI nie."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Lirieke is nie beskikbaar vir hierdie toestel-lêer nie.</string>
   <string name="morphe_music_lyrics_enabled_title">Gebruik derdeparty lirieke</string>
   <string name="morphe_music_lyrics_enabled_summary">Wys lirieke van \'n derdeparty diens, met terugval na die ingeboude lirieke wanneer nie gevind nie</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Hou skerm aan terwyl jy lirieke bekyk</string>
@@ -698,6 +703,7 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_search_title_hint">Liedtitel</string>
   <string name="morphe_music_lyrics_search_artist_hint">Kunstenaar</string>
   <string name="morphe_music_lyrics_search_empty">Voer \'n liedtitel en \'n kunstenaar in</string>
+  <string name="morphe_music_lyrics_search_google">Soek met Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Geen van die geaktiveerde verskaffers kan na ander liedjies soek nie</string>
   <string name="morphe_music_lyrics_saved">Gestoor</string>
   <string name="morphe_music_lyrics_written_by">Geskryf deur: %s</string>
@@ -777,7 +783,6 @@ Word op beide limiete toegepas. By 1.75 tel vier volbreedte-karakters as 7."</st
   <string name="morphe_music_lyrics_romanized_by_ai">Geromaniseer deur %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Geromaniseer deur %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (met %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Geromaniseer deur Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Vertaal</string>
   <string name="morphe_music_lyrics_translation_language_title">Vertalingstaal</string>
@@ -837,19 +842,15 @@ Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord
   <string name="morphe_music_lyrics_use_ai_section_title">Bespeur afdelings met AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Slegs gebruik wanneer die verskaffer geen afdelingsetikette soos Refrein of Strofe stuur nie, wat jou OpenAI-kompatibele model dan opspoor. Die wysiging van die ry open ook die aanwysing daarvan</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt-URL (bv. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Aanwysingtemplaat</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Plekhouers: {task}, {language}, {title}, {artist}, {count}, {lines}. Onbekendes word gelaat soos getik</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Aanwysing gestoor</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Aanwysing gestoor, maar die AI-eindpunt is nog nie bruikbaar nie. Stel dit eers onder AI-instellings in</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Aanwysing teruggestel</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Vertalings- &amp; Romanisering-instellings gestoor</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Instellings gestoor, maar die KI-stroompunt is nog nie bruikbaar nie</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Instellings gestoor</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Instellings is teruggesit na verstek</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Basis-URL moet met http:// of https:// begin</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Instellings onvolledig of deur die verskaffer verwerp</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Valideer verbinding…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Aangesluit! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Konneksie het misluk. Gaan die instellings na.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Voer die API-sleutel eers in</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Toets konneksie</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Haal modelle op…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Haal modelle op</string>
@@ -866,7 +867,14 @@ Liriek kom van derdeparty diensverskaffers wat nie aan Morphe gelink, gesponsord
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Ekstra versoekopskrifte (opsionele JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Plaas name en waardes tussen aanhalingstekens, bv. {\"api-key\": \"abc\"}. \'n Waarde sonder aanhalingstekens wat / : of \'n getal bevat, word verwerp. \'n Leë waarde verwyder \'n kopskrif.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Plaas name en waardes tussen aanhalingstekens, bv. {\"temperature\": 0.3}. \'n Waarde sonder aanhalingstekens wat / of : bevat, word verwerp. Model en berigte kan hier nie gestel word nie.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Redeneringspoging</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Verstek</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Outentiseringssleutel (Gratis of Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">KI kon nie sleutels vir hierdie snit bespeur nie</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Bespeur besig</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Pas sleutels toe</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Bespeuring gekanselleer</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Geen lirieke om sleutels vir te bespeur nie</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Deaktiveer vet ikone</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Herstel Speler Volgende, Lirieke en Verwante oortjies</string>

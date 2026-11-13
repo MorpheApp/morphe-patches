@@ -232,6 +232,20 @@ Kirish uchun quyida 'Davom etish' tugmasini bosing"</string>
   <string name="morphe_replace_music_with_youtube_summary">Ulash linklarida music.youtube.com ni youtube.com ga o\'zgartiradi</string>
   <string name="morphe_replace_links_with_shortener_title">Ulash manzillarini youtu.be ga o‘zgartirish</string>
   <string name="morphe_replace_links_with_shortener_summary">Videolarni qisqartirilgan youtu.be URL formatidan foydalanishga majbur qiladi</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Avtomatik</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Video sifatini eslab qolish</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Qo\'lda tanlagan sifatingizni kelajakdagi barcha videolarga qo\'llang</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Sifat o\'zgarishi haqidagi bildirishnomalar</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Yangi standart sifat saqlanganda bildirishnomani ko\'rsatadi</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi tarmog\'idagi odatiy video sifati</string>
+  <string name="morphe_video_quality_default_mobile_title">Mobil tarmoqdagi odatiy video sifati</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Standart mobil sifat: %s ga o\'zgartirildi</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Standart Wi-Fi sifati: %s ga o\'zgartirildi</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Tizim ulashish varag\'ini ochish</string>
+  <string name="morphe_open_system_share_sheet_summary">Ulashishda ilova ichidagi o\'rniga tizim ulashish varag\'ini ochadi</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Lito logging</string>
   <string name="morphe_debug_litho_entry_disabled">O\"chirilgan</string>

@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">გამოიყენეთ გარე ჩამტვირთავი Download მენიუსთვის</string>
   <string name="morphe_external_downloader_menu_summary">მენიუს Download ოფცია ამის ნაცვლად ხსნის თქვენს გარე ჩამტვირთავს</string>
   <string name="morphe_export_download_folder_title">ჩამოტვირთვის ექსპორტი</string>
-  <string name="morphe_export_download_folder_summary">"გადაიტანეთ აპლიკაციით ჩამოტვირთული სიმღერები და ვიდეოები თქვენი მოწყობილობის მეხსიერებაში ჩამოტვირთვის მენიუს გამოყენებით. ექსპორტის საქაღალდის შესაცვლელად შეეხეთ
+  <string name="morphe_export_download_folder_summary">"გადაიტანეთ აპლიკაციაში შენახული სიმღერები და ვიდეოები თქვენი მოწყობილობის მეხსიერებაში ჩამოტვირთვის მენიუს გამოყენებით. ექსპორტის საქაღალდის შესაცვლელად შეეხეთ.
 
 ექსპორტის საქაღალდე: %s"</string>
   <string name="morphe_export_download_started">ჩამოტვირთვების ექსპორტირება</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">%2$s ჩამოტვირთვიდან %1$s ექსპორტირებულია %3$s-ში</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Morphe-ის შესახებ</string>
-  <string name="morphe_settings_music_screen_1_ads_title">რეკლამები</string>
-  <string name="morphe_settings_music_screen_2_feed_title">ფიდი</string>
-  <string name="morphe_settings_music_screen_3_general_title">ზოგადი</string>
-  <string name="morphe_settings_music_screen_4_player_title">ფლეიერი</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">ტექსტები</string>
-  <string name="morphe_settings_music_screen_9_misc_title">სხვადასხვა</string>
+  <string name="morphe_settings_music_screen_00_about_title">Morphe-ს შესახებ</string>
+  <string name="morphe_settings_music_screen_01_ads_title">რეკლამები</string>
+  <string name="morphe_settings_music_screen_02_feed_title">ფიდი</string>
+  <string name="morphe_settings_music_screen_03_general_title">ზოგადი</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">ლირიკა</string>
+  <string name="morphe_settings_music_screen_05_misc_title">სხვა</string>
+  <string name="morphe_settings_music_screen_06_player_title">პლეიერი</string>
+  <string name="morphe_settings_music_screen_10_video_title">ვიდეო</string>
   <string name="morphe_music_app_language_title">YouTube Music-ის ენა</string>
   <string name="morphe_music_app_language_summary_default">სისტემის ენა</string>
   <string name="morphe_music_app_language_summary_unsupported">საჭიროა Android 13 ან უფრო ახალი ვერსია</string>
@@ -256,6 +257,9 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_playback_speed_title">დაკვრის სიჩქარე</string>
   <string name="morphe_music_playback_speed_summary">სიჩქარე, რომელიც გამოიყენება ყველა ტრეკისთვის. 100%-ის შემთხვევაში გამოიყენება აპლიკაციის სიჩქარე, მაგალითად, პოდკასტის დაკვრის სიჩქარე</string>
   <string name="morphe_music_playback_speed_change_pitch_title">ტონალობის შეცვლა სიჩქარესთან ერთად</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">ავტომატური სუბტიტრების გამორთვა</string>
+  <string name="morphe_music_disable_auto_captions_summary">ვიდეოს დაწყებისას სუბტიტრები ავტომატურად არ ჩაირთვება, მათ შორის ის სუბტიტრებიც, რომლებიც ვიდეოში ნაგულისხმევია</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">გათიშეთ აუდიო დაქინგი</string>
   <string name="morphe_music_disable_audio_ducking_summary">ხმა არ დაიკლებს, როდესაც სხვა აპლიკაცია გაიტანს მოკლე ბგერს, მაგალითად, შეტყობინებას</string>
@@ -567,6 +571,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
 
 მონაცემთა ბაზა ლიცენზირებულია ODC Open Database License (ODbL)-ით. Soul Over AI-ის (xoundbyte) ჩანაწერები ლიცენზირებულია CC BY 4.0-ით. არ არის დაკავშირებული და არ არის დამტკიცებული SoundProof-ის ან Soul Over AI-ს მიერ."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">ტექსტი ამ მოწყობილობის ფაილისთვის недоступებელია.</string>
   <string name="morphe_music_lyrics_enabled_title">მესამე მხარის ტექსტების გამოყენება</string>
   <string name="morphe_music_lyrics_enabled_summary">აჩვენებს ტექსტებს მესამე მხარის სერვისიდან; თუ ტექსტები ვერ მოიძებნა, გამოიყენება ჩაშენებული ტექსტები</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">ეკრანის ჩართვა ტექსტის ნახვისას</string>
@@ -698,6 +703,7 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_search_title_hint">სიმღერის სათაური</string>
   <string name="morphe_music_lyrics_search_artist_hint">მომღერალი</string>
   <string name="morphe_music_lyrics_search_empty">შეიყვანეთ სიმღერის სათაური და მომღერალი</string>
+  <string name="morphe_music_lyrics_search_google">ძებნა Google-ით</string>
   <string name="morphe_music_lyrics_search_no_providers">ჩართულ პროვაიდერებს არ შეუძლიათ სხვა სიმღერების ძიება</string>
   <string name="morphe_music_lyrics_saved">შენახულია</string>
   <string name="morphe_music_lyrics_written_by">დაწერა: %s</string>
@@ -777,7 +783,6 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_romanized_by_ai">რომანიზებულია %s-ის მიერ</string>
   <string name="morphe_music_lyrics_romanized_by_local">რომანიზებულია %s-ის მიერ</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s-ით)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">რომანიზებულია Rime-ის მიერ (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">თარგმნილია</string>
   <string name="morphe_music_lyrics_translation_language_title">თარგმანის ენა</string>
@@ -837,19 +842,15 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_use_ai_section_title">სექციების აღმოჩენა AI-ით</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">გამოიყენება მხოლოდ მაშინ, როდესაც პროვაიდერი არ გზავნის სექციების მარკირებებს, როგორიცაა Chorus ან Verse, რასაც შემდეგ თქვენი OpenAI-ს თავსებადი მოდელი აღმოაჩენს. სტრიქონის რედაქტირება ასევე ხსნის მის პრომპტს</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint-ის URL (მაგ. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">პრომპტის შაბლონი</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">ადგილმჭერები: {task}, {language}, {title}, {artist}, {count}, {lines}. უცნობი ადგილმჭერები უცვლელად რჩება</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">პრომპტი შენახულია</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">პრომპტი შენახულია, მაგრამ AI endpoint ჯერჯერობით მიუწვდომელია. ჯერ დააკონფიგურირეთ იგი AI პარამეტრებში</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">პრომპტი გასუფთავდა</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">თარგმანის &amp; რომანიზაციის პარამეტრები შენახულია</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">პარამეტრები შენახულია, თუმცა AI endpoint ჯერჯერობით მიუწვდომელია</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">პარამეტრები შენახულია</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">პარამეტრები დაბრუნდა ნაგულისხმევ მდგომარეობაში</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">ბაზისური URL უნდა იწყებოდეს http:// ან https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">პარამეტრები არასრულია ან პროვაიდერმა უარყო</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">კავშირის ვალიდაცია…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: დაკავშირებულია! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: კავშირი ვერ დამყარდა. შეამოწმეთ პარამეტრები.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">ჯერ შეიყვანეთ API გასაღები</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">კავშირის შემოწმება</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">მოდელების ჩატვირთვა…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">მოდელების ჩამოტვირთვა</string>
@@ -866,7 +867,14 @@ SABR დაკვრა (ვიდეო ნაკადების იმი�
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">მოთხოვნის დამატებითი ჰედერები (არასავალდებულო JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">სახელები და მნიშვნელობები ჩასვით ბრჭყალებში, მაგ. {\"api-key\": \"abc\"}. მნიშვნელობა ბრჭყალების გარეშე, რომელიც შეიცავს / : ან რიცხვს, იქნება უარყოფილი. ცარიელი მნიშვნელობა შლის ჰედერს.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">სახელები და მნიშვნელობები ჩასვით ბრჭყალებში, მაგ. {\"temperature\": 0.3}. მნიშვნელობა ბრჭყალების გარეშე, რომელიც შეიცავს / ან :, იქნება უარყოფილი. მოდელისა და შეტყობინებების განსაზღვრა აქ შეუძლებელია.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">მაკვსირების ძალისხმევა</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">ნაგულისხმები</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">ავთენტიფიკაციის გასაღები (Free ან Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI-მა ვერ აღმოაჩინა სექციები ამ ტრეკისთვის</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">აღმოჩენით</string>
+  <string name="morphe_music_lyrics_ai_section_apply">სექციების გამოყენება</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">აღმოჩენა გაუქმდა</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">ლირიკა სექციების გამოსაჩენად არ მოიპოვება</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - სქელი ხაზის ღილაკების გამორთვა</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - აღდგინეთ პლეერის შემდეგი, ტექსტებისა და დაკავშირებული ჩანართები</string>

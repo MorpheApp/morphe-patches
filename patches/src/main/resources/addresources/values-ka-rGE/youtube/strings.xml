@@ -695,6 +695,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">მხოლოდ წევრებისთვის განკუთვნილი Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">მხოლოდ წევრებისთვის განკუთვნილი პირდაპირი ჩართვები</string>
   <string name="morphe_play_all_button_not_available_toast">ფლეილისტის გენერირება შეუძლებელია არხის ID-ის შეუსაბამობის გამო</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">ფლეილისტის ღილაკის ჩვენება</string>
+  <string name="morphe_playlist_panel_button_summary">დააჭირეთ ფლეილისტის პანელის გასახსნელად. ჩანს მხოლოდ ფლეილისტის დაკვრისას</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">ვიდეოს გადატვირთვის ღილაკის ჩვენება</string>
   <string name="morphe_dismiss_player_not_available_toast">ვიდეოს ID მიუწვდომელია. გთხოვთ, ხელახლა ჩატვირთოთ ვიდეო</string>
@@ -1204,9 +1207,24 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">მოთამაშის ფანჯრის პანელების გამორთვა</string>
   <string name="morphe_disable_player_popup_panels_summary">გამორთავს პლეილისტისა და პირდაპირი ჩატის პანელების ავტომატურად გახსნას</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">პლეილისტის პანელის ჩვენება სრულად ეკრანზე</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">პლეილისტის პანელი იხსნება სრულად ეკრანზე მუშა პლეერის ზემოთ</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">პლეილისტის პანელი გამოდის სრული ეკრანიდან პლანშეტებზე</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">გამორთეთ პლეილისტის ავტომატური დაკვრა</string>
   <string name="morphe_disable_playlist_autoplay_summary">არ აძლევს პლეილისტებს საშუალებას, ავტომატურად გადავიდნენ შემდეგ ვიდეოზე</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">ავტომატური დაკვრის მართვა</string>
+  <string name="morphe_autoplay_control_summary">ამატებს დაკვრის ღილაკს და წესს შემდეგი ვიდეოსთვის. პლეილისტები და რიგები გრძელდება, მიქსი წყდება ვიდეოების გარკვეული რაოდენობის შემდეგ, რეკომენდებული ვიდეო კი აღარ ისვრება. შეეხლებით ღილაკს შემდეგი რეჟიმისთვის, დააჭირეთ და გეჭიროთ სიისთვის</string>
+  <string name="morphe_autoplay_mode_title">ავტომატური დაკვრის რეჟიმი</string>
+  <string name="morphe_autoplay_mode_entry_1">ავტო</string>
+  <string name="morphe_autoplay_mode_entry_2">ერთი</string>
+  <string name="morphe_autoplay_mode_entry_3">გამორთულია</string>
+  <string name="morphe_autoplay_mix_stop_after_title">მიქსის სიგრძე</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">ავტო რეჟიმში, მიქსი წყდება ამ რაოდენობის ვიდეოს შემდეგ. 0 = შეზღუდვა არ არის</string>
+  <string name="morphe_autoplay_mix_length">მიქსი: %s ვიდეო</string>
+  <string name="morphe_autoplay_mix_no_limit">მიქსი: შეზღუდვა არ არის</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"გაგრძელება ნახვა?\" შეტყობინება</string>
   <string name="morphe_continue_watching_prompt_entry_1">ნაგულისხმები</string>
@@ -1282,9 +1300,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - პლეილისტში შენახვის ძველი ვერსიის აღდგენა</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - სქელი ხატულების გამორთვა</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - აღადგინეთ არხის სახელი ვიდეო პლეერის ქვემოთ</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">სისტემური გაზიარების ფანჯრის გახსნა</string>
-  <string name="morphe_open_system_share_sheet_summary">კონტენტის გაზიარებისას ხსნის სისტემურ გაზიარების პანელს აპლიკაციის შიდა პანელის ნაცვლად</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music-ის ღილაკების ჩანაცვლება</string>
   <string name="morphe_override_youtube_music_buttons_summary">ხსნის თქვენს სასურველ მუსიკალურ აპლიკაციას YouTube Music-ის სტანდარტული აპლიკაციის ნაცვლად</string>
@@ -1478,7 +1493,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow დროებით მიუწვდომელია (სტატუსის კოდი: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow დროებით მიუწვდომელია</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">დააბრუნეთ მოთამაშის ღილაკების ძველი სტილი</string>
   <string name="morphe_restore_old_player_buttons_summary">აბრუნებს ვიდეო პლეერის მუქ მართვის ღილაკებს ძველ, უფრო თხელ ვიზუალურ სტილზე</string>
@@ -1518,25 +1532,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">ვიდეოს დაგვიანების მენიუს ჩვენება</string>
   <string name="morphe_video_delay_dialog_input_hint">დაგვიანება მილიწამებში</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">ავტომატური</string>
-  <string name="morphe_remember_video_quality_last_selected_title">ვიდეოს ხარისხის დამახსოვრება</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">თქვენ მიერ ხელით არჩეული ხარისხი გავრცელდება ყველა მომავალ ვიდეოზე</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">შეტყობინებები ხარისხის ცვლილების შესახებ</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">აჩვენებს შეტყობინებას, როდესაც ახალი ნაგულისხმევი ხარისხი შეინახება</string>
-  <string name="morphe_video_quality_default_wifi_title">ვიდეოს ნაგულისხმევი ხარისხი Wi-Fi ქსელში</string>
-  <string name="morphe_video_quality_default_mobile_title">ვიდეოს ნაგულისხმევი ხარისხი მობილურ ქსელში</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts-ის ხარისხის დამახსოვრება</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">თქვენ მიერ ხელით არჩეული ხარისხი გავრცელდება ყველა მომავალ Shorts-ზე</string>
   <string name="morphe_shorts_quality_default_wifi_title">Shorts-ის ნაგულისხმევი ხარისხი Wi-Fi ქსელში</string>
   <string name="morphe_shorts_quality_default_mobile_title">Shorts-ის ნაგულისხმევი ხარისხი მობილურ ქსელში</string>
-  <string name="morphe_remember_video_quality_toast_mobile">მობილური ქსელისთვის ნაგულისხმევი ხარისხი შეცვლილია შემდეგზე: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi-სთვის ნაგულისხმევი ხარისხი შეცვლილია შემდეგზე: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts-ის მობილური ხარისხი შეცვლილია შემდეგზე: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts-ის Wi-Fi ხარისხი შეცვლილია შემდეგზე: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">აჩვენეთ დაკვრის სიჩქარის ღილაკი</string>
   <string name="morphe_playback_speed_dialog_button_summary">დააჭირეთ და გეჭიროთ სიჩქარის ნაგულისხმევ მნიშვნელობაზე დასაბრუნებლად</string>
+  <string name="morphe_playback_speed_button_cycle_title">შეეხლებით დაკვრის სიჩქარის ღილაკს სიჩქარეების შესაცვლებლად</string>
+  <string name="morphe_playback_speed_button_cycle_summary">შეხება გადადის სიის შემდეგ სიჩქარეზე. დაჭერა ხსნის სიჩქარის მენიუს</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">დაკვრის სიჩქარის ღილაკის სიჩქარეები</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">სიჩქარეები, რომლებსაც შეხებით გადაირტყვით, თითო ერთხელ თითო ხაზზე. ბოლო სიჩქარის შემდეგ, შეხება კვლავ პირველზე დაბრუნდება</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">სიჩქარეების ციკლის არასწორი სია, დაბრუნდა დეფოლტზე</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">აჩვენეთ ხარისხის ღილაკი</string>
   <string name="morphe_video_quality_dialog_button_summary">დააჭირეთ და გეჭიროთ ხარისხის ნაგულისხმევ მნიშვნელობაზე დასაბრუნებლად</string>

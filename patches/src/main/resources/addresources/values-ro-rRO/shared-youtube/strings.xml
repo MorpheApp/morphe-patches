@@ -232,6 +232,20 @@ Pentru a te autentifica, apasă butonul Continuă de mai jos"</string>
   <string name="morphe_replace_music_with_youtube_summary">Înlocuiește music.youtube.com cu youtube.com în link-urile partajate</string>
   <string name="morphe_replace_links_with_shortener_title">Schimbați linkurile de partajare la youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Forțează clipurile video să utilizeze formatul URL scurtat youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automat</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Memorează calitatea video</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Aplică selecția manuală a calității pentru toate videoclipurile viitoare</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Notificări privind schimbarea calității</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Afișează o notificare atunci când este salvată o nouă calitate implicită</string>
+  <string name="morphe_video_quality_default_wifi_title">Calitatea video implicită în rețeaua Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Calitatea video implicită în rețeaua mobilă</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Calitate mobilă modificată implicit: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Calitate Wi-Fi modificată implicit: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Deschide panoul de partajare al sistemului</string>
+  <string name="morphe_open_system_share_sheet_summary">Deschide foaia de partajare a sistemului în loc de cea din aplicație când partajați conținut</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Jurnalizare Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Dezactivat</string>

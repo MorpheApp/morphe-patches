@@ -232,6 +232,20 @@ Om aan te meld, tik hieronder op Gaan voort"</string>
   <string name="morphe_replace_music_with_youtube_summary">Vervang music.youtube.com met youtube.com in gedeelde skakels</string>
   <string name="morphe_replace_links_with_shortener_title">Verander deelskakels na youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Dwing video\'s om die verkorte youtu.be URL-formaat te gebruik</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Outomaties</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Onthou videokwaliteit</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Pas jou handmatige kwaliteitskeuse op alle toekomstige video\'s toe</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Kennisgewing van kwaliteitsverandering</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Wys \'n kennisgewing wanneer \'n nuwe verstek kwaliteit gestoor word</string>
+  <string name="morphe_video_quality_default_wifi_title">Verstek video-kwaliteit op Wi-Fi-netwerk</string>
+  <string name="morphe_video_quality_default_mobile_title">Verstek video-kwaliteit op mobiele netwerk</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Verstek mobiele kwaliteit verander na: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Verstek Wi-Fi-kwaliteit verander na: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Maak stelsel-deelblad oop</string>
+  <string name="morphe_open_system_share_sheet_summary">Maak die stelsel se deelblad oop in plaas van die in-app-een wanneer inhoud gedeel word</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-logboek</string>
   <string name="morphe_debug_litho_entry_disabled">Deaktiveer</string>

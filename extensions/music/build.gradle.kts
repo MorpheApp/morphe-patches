@@ -6,6 +6,7 @@ dependencies {
     implementation(libs.annotation)
     testImplementation(libs.junit)
     testImplementation(libs.json)
+    testImplementation(libs.kxml2)
     testImplementation(project(":extensions:shared:library"))
     testImplementation(libs.morphe.extensions.library)
     testImplementation(project(":extensions:shared-youtube:library"))

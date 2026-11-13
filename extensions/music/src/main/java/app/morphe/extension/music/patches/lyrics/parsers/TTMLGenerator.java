@@ -22,6 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.LyricsPresentation;
+import app.morphe.extension.music.patches.lyrics.SkipSegments;
 import app.morphe.extension.music.patches.lyrics.model.CreditInfo;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -64,13 +65,18 @@ public final class TTMLGenerator {
     private final List<LyricsLine> romanizedLines;
     private final String translatedLang;
     private final String romanizedLang;
+    private final int lyricOffsetMs;
+    @Nullable
+    private final List<SkipSegments.Seg> segs;
     private final boolean stripPunctuation = Settings.LYRICS_STRIP_TRAILING_PUNCTUATION.get();
     private final int hanMode = LyricsPresentation.hanMode();
 
     private TTMLGenerator(Lyrics lyrics, @Nullable TrackInfo track, @Nullable CreditInfo creditInfo,
                           @Nullable List<String> translatedLines,
                           @Nullable List<LyricsLine> romanizedLines,
-                          @Nullable String translatedLang, @Nullable String romanizedLang) {
+                          @Nullable String translatedLang, @Nullable String romanizedLang,
+                          int lyricOffsetMs,
+                          @Nullable List<SkipSegments.Seg> segs) {
         this.lyrics = lyrics;
         this.lines = lyrics.lines();
         this.track = track;
@@ -79,12 +85,14 @@ public final class TTMLGenerator {
         this.romanizedLines = romanizedLines;
         this.translatedLang = translatedLang != null ? translatedLang : DEFAULT_LANGUAGE;
         this.romanizedLang = romanizedLang != null ? romanizedLang : ROMAJI_LANGUAGE;
+        this.lyricOffsetMs = lyricOffsetMs;
+        this.segs = segs;
     }
 
     @Nullable
     public static String generate(@Nullable Lyrics lyrics, @Nullable TrackInfo track,
                                   @Nullable CreditInfo creditInfo) {
-        return generate(lyrics, track, creditInfo, null, null, null, null);
+        return generate(lyrics, track, creditInfo, null, null, null, null, 0, null);
     }
 
     @Nullable
@@ -94,11 +102,29 @@ public final class TTMLGenerator {
                                   @Nullable List<LyricsLine> romanizedLines,
                                   @Nullable String translatedLang,
                                   @Nullable String romanizedLang) {
+        return generate(lyrics, track, creditInfo, translatedLines, romanizedLines,
+                translatedLang, romanizedLang, 0, null);
+    }
+
+    /**
+     * @param lyricOffsetMs How much later than its timestamps the lyrics are shown.
+     * @param segs          The segments the video has beyond the released audio, so the file
+     *                      follows the video timeline.
+     */
+    @Nullable
+    public static String generate(@Nullable Lyrics lyrics, @Nullable TrackInfo track,
+                                  @Nullable CreditInfo creditInfo,
+                                  @Nullable List<String> translatedLines,
+                                  @Nullable List<LyricsLine> romanizedLines,
+                                  @Nullable String translatedLang,
+                                  @Nullable String romanizedLang,
+                                  int lyricOffsetMs,
+                                  @Nullable List<SkipSegments.Seg> segs) {
         if (lyrics == null || lyrics.isEmpty()) {
             return null;
         }
         return new TTMLGenerator(lyrics, track, creditInfo, translatedLines, romanizedLines,
-                translatedLang, romanizedLang).build();
+                translatedLang, romanizedLang, lyricOffsetMs, segs).build();
     }
 
     private String build() {
@@ -287,9 +313,12 @@ public final class TTMLGenerator {
 
     private void appendTimedRomaji(int key, List<Word> words) {
         sb.append("<text for=\"L").append(key).append("\">");
+        boolean first = true;
         for (Word word : words) {
             final String romaji = romajiOf(word);
             if (romaji != null) {
+                if (!first) sb.append(' ');
+                first = false;
                 sb.append("<span").append(timing(word.startMs(), word.endMs())).append('>')
                         .append(escapeText(convertHan(romaji))).append("</span>");
             }
@@ -535,6 +564,9 @@ public final class TTMLGenerator {
     }
 
     private void appendRoleSpan(String role, String language, String text) {
+        if (sb.length() > 0 && sb.charAt(sb.length() - 1) != ' ') {
+            sb.append(' ');
+        }
         sb.append("<span ttm:role=\"").append(role).append("\" xml:lang=\"")
                 .append(escapeAttr(language)).append("\">")
                 .append(escapeText(formatLine(text))).append("</span>");
@@ -549,9 +581,12 @@ public final class TTMLGenerator {
 
     /** The timing attributes of an element. Unsynced lyrics have none to give. */
     private String timing(long beginMs, long endMs) {
-        return lyrics.synced()
-                ? " begin=\"" + formatTime(beginMs) + "\" end=\"" + formatTime(endMs) + '"'
-                : "";
+        if (!lyrics.synced()) return "";
+        return " begin=\"" + formatTime(videoTime(beginMs)) + "\" end=\"" + formatTime(videoTime(endMs)) + '"';
+    }
+
+    private long videoTime(long lyricMs) {
+        return SkipSegments.remapTimestamp(lyricMs + lyricOffsetMs, segs);
     }
 
     private static String formatTime(long ms) {

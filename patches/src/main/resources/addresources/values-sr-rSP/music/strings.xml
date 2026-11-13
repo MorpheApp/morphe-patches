@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Користите спољни преузимач за мени Преузимање</string>
   <string name="morphe_external_downloader_menu_summary">Опција Преузимање у менијима отвара ваш спољни преузимач</string>
   <string name="morphe_export_download_folder_title">Извези преузимања</string>
-  <string name="morphe_export_download_folder_summary">"Извезите песме и видео снимке које је апликација преузела у складиште вашег уређаја помоћу менија преузимања. Додирните да промените фолдер за извоз
+  <string name="morphe_export_download_folder_summary">"Извезите у апликацији сачуване песме и видеозаписе у складиште вашег уређаја помоћу flyout менија за преузимање у апликацији. Закуцајте да промените извоз
 
 Фолдер за извоз: %s"</string>
   <string name="morphe_export_download_started">Извоз преузимања у току</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">Извезено је %1$s од %2$s преузимања у %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">О програму</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Огласи</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Фид</string>
-  <string name="morphe_settings_music_screen_3_general_title">Опште</string>
-  <string name="morphe_settings_music_screen_4_player_title">Плејер</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Текстови песама</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Разно</string>
+  <string name="morphe_settings_music_screen_00_about_title">O programu</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Огласи</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Фид</string>
+  <string name="morphe_settings_music_screen_03_general_title">Опште</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Текст песме</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Разно</string>
+  <string name="morphe_settings_music_screen_06_player_title">Плејер</string>
+  <string name="morphe_settings_music_screen_10_video_title">Видео</string>
   <string name="morphe_music_app_language_title">Језик YouTube Music-а</string>
   <string name="morphe_music_app_language_summary_default">Језик система</string>
   <string name="morphe_music_app_language_summary_unsupported">Захтева Android 13 или новији</string>
@@ -256,6 +257,9 @@ SABR репродукција (када је лажирање видео стр�
   <string name="morphe_music_playback_speed_title">Брзина репродукције</string>
   <string name="morphe_music_playback_speed_summary">Брзина која се користи за све нумере. На 100% користи се брзина апликације, као што је брзина репродукције подкаста</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Промени висину тона са брзином</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Онемогући аутоматски титл</string>
+  <string name="morphe_music_disable_auto_captions_summary">Титлови се не омогућавају аутоматски када видео почне, укључујући и титлове које видео омогућава по подразумеваним подешавањима</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Онемогући пригушивање звука</string>
   <string name="morphe_music_disable_audio_ducking_summary">Јачина звука се не смањује када друга апликација пусти кратак звук, као што је обавештење</string>
@@ -563,6 +567,7 @@ SABR репродукција (када је лажирање видео стр�
 
 База података је лиценцирана под ODC Open Database License (ODbL). Уноси из Soul Over AI од xoundbyte-а су лиценцирани под CC BY 4.0. Није повезано нити одобрено од стране SoundProof или Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Текст песме није доступан за овај фајл на уређају.</string>
   <string name="morphe_music_lyrics_enabled_title">Користи текстове песама треће стране</string>
   <string name="morphe_music_lyrics_enabled_summary">Приказује текстове песама са сервиса треће стране, враћајући се на уграђене текстове песама када нису пронађени</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Држите екран укљученим док гледате текст песме</string>
@@ -694,6 +699,7 @@ SABR репродукција (када је лажирање видео стр�
   <string name="morphe_music_lyrics_search_title_hint">Наслов песме</string>
   <string name="morphe_music_lyrics_search_artist_hint">Извођач</string>
   <string name="morphe_music_lyrics_search_empty">Унесите наслов песме и извођача</string>
+  <string name="morphe_music_lyrics_search_google">Претражи са Google-ом</string>
   <string name="morphe_music_lyrics_search_no_providers">Ниједан од омогућених провајдера не може да претражује друге песме</string>
   <string name="morphe_music_lyrics_saved">Сачувано</string>
   <string name="morphe_music_lyrics_written_by">Написао: %s</string>
@@ -773,7 +779,6 @@ SABR репродукција (када је лажирање видео стр�
   <string name="morphe_music_lyrics_romanized_by_ai">Романизација: %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Романизовао/ла %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (са %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Романизовано од стране Рима (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Преведено</string>
   <string name="morphe_music_lyrics_translation_language_title">Језик превода</string>
@@ -833,19 +838,15 @@ SABR репродукција (када је лажирање видео стр�
   <string name="morphe_music_lyrics_use_ai_section_title">Откриј секције помоћу AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Користи се само када провајдер не испоручује ознаке секција као што су Припеви или Стихови, које онда открива ваш модел компатибилан са OpenAI. Уређивање реда отвара и његов позив</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL крајње тачке API-ја (нпр. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Шаблон промпта</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Заменители: {task}, {language}, {title}, {artist}, {count}, {lines}. Непознати се остављају такви какви јесу</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Промпт је сачуван</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Упутство је сачувано, али AI крајња тачка још увек није доступна. Подесите је прво у подешавањима AI-ја</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Промпт је ресетован</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Подешавања за превод &amp; романизацију су сачувана</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Подешавања су сачувана, али АИ крајња тачка још увек није употребљива</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Подешавања су сачувана</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Подешавања су враћена на подразумеване вредности</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL мора почети са http:// или https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Подешавања су непотпуна или одбијена од стране провајдера</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Проверавање везе…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Повезано! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Повезивање није успело. Проверите подешавања.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Прво унесите API кључ</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Тестирај везу</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Преузимање модела…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Преузми моделе</string>
@@ -862,7 +863,14 @@ SABR репродукција (када је лажирање видео стр�
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Додатна заглавља захтева (опционални JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Наведите имена и вредности у наводницима, нпр. {\"api-key\": \"abc\"}. Вредност без наводника која садржи / : или број је одбачена. Празна вредност уклања заглавље.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Наведите имена и вредности у наводницима, нпр. {\"temperature\": 0.3}. Вредност без наводника која садржи / или : је одбачена. Модел и поруке се не могу поставити овде.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Упорност закључивања</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Подразумевано</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Кључ за аутентификацију (Free или Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">АИ није могао да детектује делове за ову траку</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Детектовање</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Примени делове</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Детектовање је отказано</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Нема текста песме за детектовање делова</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Онемогући подебљане иконе</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 — Врати картице „Следеће”, „Текстови” и „Повезано” у плејеру</string>

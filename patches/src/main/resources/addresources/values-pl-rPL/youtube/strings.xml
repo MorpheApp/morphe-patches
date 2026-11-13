@@ -696,6 +696,9 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_play_all_button_type_entry_11">Filmy Short tylko dla wspierających</string>
   <string name="morphe_play_all_button_type_entry_12">Transmisje tylko dla wspierających</string>
   <string name="morphe_play_all_button_not_available_toast">Nie można wygenerować playlisty z powodu niezgodności identyfikatora kanału</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Pokaż przycisk Playlisty</string>
+  <string name="morphe_playlist_panel_button_summary">Dotknij, aby otworzyć panel playlisty. Wyświetlane tylko podczas odtwarzania playlisty</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Pokaż przycisk Odśwież film</string>
   <string name="morphe_dismiss_player_not_available_toast">Film jest niedostępny. Otwórz film ponownie ręcznie</string>
@@ -1204,9 +1207,23 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Wyłącz wyskakujące panele w odtwarzaczu</string>
   <string name="morphe_disable_player_popup_panels_summary">Wyłącza automatyczne otwieranie paneli playlisty i czatu na żywo</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Pokaż panel listy odtwarzania w pełnym ekranie</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Panel playlisty otwiera się nad odtwarzaczem w pełnym ekranie</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Panel playlisty wychodzi z pełnego ekranu na tabletach</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Wyłącz autoodtwarzanie playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Zapobiega automatycznemu przechodzeniu playlist do następnego filmu</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Sterowanie autoodtwarzaniem</string>
+  <string name="morphe_autoplay_control_summary">Dodaje przycisk odtwarzacza i regułę dla następnego filmu. Playlisty i kolejki są kontynuowane, Mix zatrzymuje się po określonej liczbie filmów, a sugerowany film nigdy nie jest odtwarzany. Dotknij przycisku, aby zmienić tryb, przytrzymaj go, aby wyświetlić listę</string>
+  <string name="morphe_autoplay_mode_title">Tryb autoodtwarzania</string>
+  <string name="morphe_autoplay_mode_entry_1">Auto</string>
+  <string name="morphe_autoplay_mode_entry_2">Pojedynczy</string>
+  <string name="morphe_autoplay_mode_entry_3">Wyłączone</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Długość Mixa</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">W trybie Auto Mix zatrzymuje się po takiej liczbie filmów. 0 = brak limitu</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: bez limitu</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Komunikat \"Oglądasz dalej?\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Domyślny</string>
@@ -1282,9 +1299,6 @@ Układ samochodowy
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Przywraca stare menu dodawania do playlisty</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Wyłącza pogrubione ikony</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Przywraca nazwę kanału pod odtwarzaczem</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Otwórz systemowe menu udostępniania</string>
-  <string name="morphe_open_system_share_sheet_summary">Otwiera systemowe menu udostępniania zamiast tego wbudowanego w aplikacji</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Zastąp przyciski YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Otwiera preferowaną aplikację muzyczną zamiast domyślnej aplikacji YouTube Music</string>
@@ -1452,7 +1466,7 @@ Układ samochodowy
   <string name="morphe_dearrow_titles_player_title">Playlisty i rekomendacje w odtwarzaczu</string>
   <string name="morphe_dearrow_titles_search_title">Wyniki wyszukiwania</string>
   <string name="morphe_dearrow_titles_icon_title">Pokaż ikonę DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Wyświetla ikonę DeArrow przy tytułach filmów z crowdsourcingu. Dotknij ikony, aby wyświetlić oryginalny tytuł i miniaturę</string>
+  <string name="morphe_dearrow_titles_icon_summary">Wyświetla ikonę DeArrow przy tytułach filmów zgłoszonych przez społeczność. Dotknij ikony, aby pokazać oryginalny tytuł i miniaturkę</string>
   <string name="morphe_dearrow_casual_mode_title">Tryb swobodny</string>
   <string name="morphe_dearrow_casual_mode_summary">Wyświetla oryginalny tytuł zamiast tytułu DeArrow, jeśli użytkownicy DeArrow zagłosowali, że podoba im się oryginał</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalna liczba głosów, aby pokazać oryginalny tytuł</string>
@@ -1478,7 +1492,6 @@ Układ samochodowy
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow jest niedostępny (kod statusu: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow jest niedostępny</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Przywróć stary styl przycisków odtwarzacza</string>
   <string name="morphe_restore_old_player_buttons_summary">Przywraca pogrubione elementy sterujące odtwarzaczem do starszego, cieńszego stylu wizualnego</string>
@@ -1518,25 +1531,20 @@ Układ samochodowy
   <string name="morphe_video_delay_button_flyout_title">Pokaż menu opóźnienia filmu</string>
   <string name="morphe_video_delay_dialog_input_hint">Opóźnienie w milisekundach</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automatyczna</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Zapamiętaj jakość filmu</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Stosuje ręcznie wybraną jakość do wszystkich kolejnych filmów</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Powiadomienia o zmianie jakości</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Wyświetla powiadomienie po zapisaniu nowej domyślnej jakości</string>
-  <string name="morphe_video_quality_default_wifi_title">Domyślna jakość filmu w sieci Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Domyślna jakość filmu w sieci komórkowej</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Zapamiętaj jakość filmów Short</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Stosuje ręcznie wybraną jakość do wszystkich kolejnych filmów Short</string>
   <string name="morphe_shorts_quality_default_wifi_title">Domyślna jakość filmów Short w sieci Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Domyślna jakość filmów Short w sieci komórkowej</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Zmieniono domyślną jakość (kom.) na: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Zmieniono domyślną jakość (Wi-Fi) na: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Zmieniono jakość filmów Short (kom.) na: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Zmieniono jakość filmów Short (Wi-Fi) na: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Pokaż przycisk Prędkość odtwarzania</string>
   <string name="morphe_playback_speed_dialog_button_summary">Przytrzymaj, aby zresetować prędkość do domyślnej</string>
+  <string name="morphe_playback_speed_button_cycle_title">Dotknij przycisku prędkości odtwarzania, aby przełączać prędkości</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Dotknięcie przenosi do następnej prędkości na liście. Przytrzymanie otwiera menu prędkości</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Prędkości przycisku prędkości odtwarzania</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Prędkości, przez które przełącza dotknięcie, jedna w linii. Po ostatniej prędkości dotknięcie wraca do pierwszej</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Nieprawidłowa lista cyklu prędkości, zresetowano do domyślnych</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Pokaż przycisk Jakość</string>
   <string name="morphe_video_quality_dialog_button_summary">Przytrzymaj, aby zresetować jakość do domyślnej</string>
@@ -1629,7 +1637,7 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_spoof_video_streams_about_end_early">• Odtwarzanie może zakończyć się sekundę wcześniej</string>
   <string name="morphe_spoof_video_streams_about_js">• Jeśli odszyfrowywanie zawiedzie, odtwarzanie może nie działać</string>
   <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
-  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView jest wyłączony lub nie jest zainstalowany. Włącz go i zaktualizuj, w przeciwnym razie odtwarzanie może nie działać</string>
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView jest wyłączony lub niezainstalowany. Włącz go i zaktualizuj, w przeciwnym razie odtwarzanie może nie działać</string>
   <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView jest nieaktualny. Zaktualizuj go, w przeciwnym razie odtwarzanie może nie działać</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Wymuszanie oryginalnej ścieżki dźwiękowej nie działa</string>

@@ -232,6 +232,20 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
   <string name="morphe_replace_music_with_youtube_summary">Vervangt music.youtube.com door youtube.com in gedeelde links</string>
   <string name="morphe_replace_links_with_shortener_title">Deelkoppelingen wijzigen naar youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Dwingt video\'s om het verkorte youtu.be URL-formaat te gebruiken</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatisch</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Videokwaliteit onthouden</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Past je handmatige kwaliteitsselectie toe op alle toekomstige video\'s</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Meldingen bij wijziging van kwaliteit</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Toont een melding wanneer een nieuwe standaardkwaliteit is opgeslagen</string>
+  <string name="morphe_video_quality_default_wifi_title">Standaard videokwaliteit op wifi-netwerk</string>
+  <string name="morphe_video_quality_default_mobile_title">Standaard videokwaliteit op mobiel netwerk</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Standaard mobiele kwaliteit gewijzigd naar: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Standaard wifi-kwaliteit gewijzigd naar: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Systeemdeelblad openen</string>
+  <string name="morphe_open_system_share_sheet_summary">Opent het systeemdeelblad i.p.v. het ingebouwde deelblad bij het delen van content</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho-logboek</string>
   <string name="morphe_debug_litho_entry_disabled">Uitgeschakeld</string>

@@ -696,6 +696,9 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts réservés aux membres uniquement</string>
   <string name="morphe_play_all_button_type_entry_12">Diffusion en direct réservé aux membres uniquement</string>
   <string name="morphe_play_all_button_not_available_toast">Impossible de générer la playlist en raison d\'une incompatibilité d\'identifiant de chaîne</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Afficher le bouton \'Playlist\'</string>
+  <string name="morphe_playlist_panel_button_summary">Appuyez pour ouvrir le panneau de la playlist. Affiché uniquement lors de la lecture d\'une playlist</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Afficher un bouton \'Recharger la vidéo\'</string>
   <string name="morphe_dismiss_player_not_available_toast">L\'identifiant de la vidéo est indisponible. Veuillez rouvrir la vidéo manuellement</string>
@@ -1206,9 +1209,24 @@ Paramètres → Lecture (ou Lecture automatique) → Lecture automatique de la v
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Désactiver les panneaux pop-up du lecteur</string>
   <string name="morphe_disable_player_popup_panels_summary">Empêche l\'ouverture automatique des panneaux de playlist et de chat en direct</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Afficher le panneau de la playlist en plein écran</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Le panneau de la playlist s\'ouvre sur le lecteur en plein écran</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Le panneau de la playlist quitte le plein écran sur les tablettes</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Désactiver la lecture automatique de la playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Empêche les playlists de passer automatiquement à la vidéo suivante</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Contrôle de la lecture auto</string>
+  <string name="morphe_autoplay_control_summary">Ajoute un bouton de lecture et une règle pour la vidéo suivante. Les playlists et les files d\'attente continuent, un Mix s\'arrête après un certain nombre de vidéos, une vidéo suggérée ne s\'est jamais lancée. Appuyez sur le bouton pour le mode suivant, maintenez appuyé pour la liste</string>
+  <string name="morphe_autoplay_mode_title">Mode de lecture auto</string>
+  <string name="morphe_autoplay_mode_entry_1">Auto</string>
+  <string name="morphe_autoplay_mode_entry_2">Unique</string>
+  <string name="morphe_autoplay_mode_entry_3">Désactivée</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Durée du Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">En mode Automatique, un Mix s\'arrête après ce nombre de vidéos. 0 = aucune limite</string>
+  <string name="morphe_autoplay_mix_length">Mix : %s vidéos</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix : aucune limite</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Invite \'Continuer à regarder ?\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">Par défaut</string>
@@ -1284,9 +1302,6 @@ Mise en page pour automobile
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaure l\'ancien enregistrement dans la playlist</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Désactive les icônes en gras</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 – Restaure le nom des chaînes sous le lecteur vidéo</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Ouverture du menu \'Partager\' du système</string>
-  <string name="morphe_open_system_share_sheet_summary">Ouvre la feuille de partage du système au lieu de celle de l\'application lors du partage de contenu</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Remplacer les boutons \'YouTube Music\'</string>
   <string name="morphe_override_youtube_music_buttons_summary">Ouvre votre application musicale préférée au lieu de l\'application YouTube Music par défaut</string>
@@ -1454,7 +1469,7 @@ Mise en page pour automobile
   <string name="morphe_dearrow_titles_player_title">Lecteur de playlists &amp; recommandations</string>
   <string name="morphe_dearrow_titles_search_title">Résultats de recherche</string>
   <string name="morphe_dearrow_titles_icon_title">Afficher l\'icône DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Affiche l\'icône DeArrow sur les titres de vidéos provenant du crowdsourcing. Appuyez sur l\'icône pour afficher le titre et la miniature originaux</string>
+  <string name="morphe_dearrow_titles_icon_summary">Affiche l\'icône DeArrow sur les titres des vidéos proposés par la communauté. Appuyez sur l\'icône pour afficher le titre et la miniature d\'origine</string>
   <string name="morphe_dearrow_casual_mode_title">Mode décontracté</string>
   <string name="morphe_dearrow_casual_mode_summary">Affiche le titre d\'origine à la place du titre DeArrow si les utilisateurs de DeArrow ont voté en faveur du titre d\'origine</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Nombre minimum de votes en mode décontracté pour afficher le titre d\'origine</string>
@@ -1480,7 +1495,6 @@ Les vidéos sont recherchées à l'aide d'un court préfixe de l'identifiant vid
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow est temporairement indisponible (statut : %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow est temporairement indisponible</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Restaurer l\'ancien style de bouton du lecteur</string>
   <string name="morphe_restore_old_player_buttons_summary">Rétablit les contrôles épaisses du lecteur vidéo dans leur ancien style visuel, plus fin</string>
@@ -1520,25 +1534,20 @@ Les vidéos sont recherchées à l'aide d'un court préfixe de l'identifiant vid
   <string name="morphe_video_delay_button_flyout_title">Afficher un menu \'Délai vidéo\'</string>
   <string name="morphe_video_delay_dialog_input_hint">Délai en millisecondes</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Auto</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Mémoriser la qualité vidéo</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Applique votre sélection de qualité manuelle à toutes les vidéos futures</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Notifications de changement de qualité</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Affiche une notification lorsqu\'une nouvelle qualité par défaut est enregistrée</string>
-  <string name="morphe_video_quality_default_wifi_title">Qualité vidéo par défaut sur le réseau Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Qualité vidéo par défaut sur le réseau mobile</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Mémoriser la qualité des Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Applique votre sélection de qualité manuelle à tous les Shorts futurs</string>
   <string name="morphe_shorts_quality_default_wifi_title">Qualité par défaut des Shorts sur le réseau Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Qualité par défaut des Shorts sur le réseau mobile</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Qualité mobile par défaut définie sur : %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Qualité Wi-Fi par défaut définie sur : %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Qualité mobile des Shorts définie sur : %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Qualité Wi-Fi des Shorts définie sur : %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Afficher un bouton de \'Vitesse de lecture\'</string>
   <string name="morphe_playback_speed_dialog_button_summary">Appuyez longuement pour réinitialiser la vitesse par défaut</string>
+  <string name="morphe_playback_speed_button_cycle_title">Appuyez sur le bouton Vitesse de lecture pour faire défiler les vitesses</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Un appui passe à la vitesse suivante de la liste. Un appui prolongé ouvre le menu des vitesses</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Vitesses du bouton Vitesse de lecture</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Vitesses défilées par appui, une par ligne. Après la dernière vitesse, un appui revient à la première</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Liste de cycle de vitesse invalide, réinitialisation aux valeurs par défaut</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Afficher un bouton \'Qualité\'</string>
   <string name="morphe_video_quality_dialog_button_summary">Appuyez longuement pour réinitialiser la qualité par défaut</string>
@@ -1631,8 +1640,8 @@ La lecture de vidéos en AV1 peut présenter des saccades ou des pertes d'images
   <string name="morphe_spoof_video_streams_about_end_early">• La lecture peut se terminer 1 seconde plus tôt</string>
   <string name="morphe_spoof_video_streams_about_js">• Si la désobfuscation échoue, la lecture peut échouer</string>
   <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
-  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView est désactivé ou n\'est pas installé. Activez-le et mettez-le à jour, sinon la lecture peut échouer</string>
-  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView n\'est pas à jour. Mettez-le à jour, sinon la lecture peut échouer</string>
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView est désactivé ou n\'est pas installé. Activez-le et mettez-le à jour, sinon la lecture risque de ne pas fonctionner</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView n\'est pas à jour. Mettez-le à jour, sinon la lecture risque de ne pas fonctionner</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forcer la langue audio d\'origine n\'est pas disponible</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• La connexion à Android VR est nécessaire</string>

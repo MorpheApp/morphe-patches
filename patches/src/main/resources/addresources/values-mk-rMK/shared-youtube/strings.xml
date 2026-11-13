@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">Ја заменува music.youtube.com со youtube.com во споделуваните линкови.</string>
   <string name="morphe_replace_links_with_shortener_title">Промени линковите за споделување на youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Принудува видеата да го користат скратениот формат на URL youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Автоматски</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Запомни ја квалитетот на видеото</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Ги применува вашите рачно избрани квалитети на сите идни видеа</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Известија за промена на квалитетот</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Прикажува известување кога е зачуван нов стандарден квалитет</string>
+  <string name="morphe_video_quality_default_wifi_title">Стандарден квалитет на видеото во Wi-Fi мрежа</string>
+  <string name="morphe_video_quality_default_mobile_title">Стандарден квалитет на видеото во мобилна мрежа</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Променен е стандардниот мобилен квалитет на: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Променен е стандардниот Wi-Fi квалитет на: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Отвори ја системската листа за споделување</string>
+  <string name="morphe_open_system_share_sheet_summary">Отвора системскиот мени за споделување наместо оној во апликацијата</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho логгирање</string>
   <string name="morphe_debug_litho_entry_disabled">Оневозможено</string>

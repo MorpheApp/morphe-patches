@@ -182,7 +182,7 @@ public final class SpotifyProvider implements LyricsProvider {
         return words;
     }
 
-    private static long parseStartTimeMs(JSONObject obj) {
+    static long parseStartTimeMs(JSONObject obj) {
         final String raw = LyricsRequests.optString(obj, "startTimeMs");
         if (raw == null || raw.isEmpty()) {
             return LyricsLine.NO_TIME;
@@ -268,7 +268,7 @@ public final class SpotifyProvider implements LyricsProvider {
         return null;
     }
 
-    private static String decimalStringFromInts(int[] values) {
+    static String decimalStringFromInts(int[] values) {
         final StringBuilder sb = new StringBuilder(values.length);
         for (int v : values) {
             sb.append(v);
@@ -288,7 +288,7 @@ public final class SpotifyProvider implements LyricsProvider {
                 Logger.printDebug(() -> "Could not parse Retry-After header", ex);
             }
         }
-        return 3000; // default 3 seconds
+        return 3000;
     }
 
     public static void invalidateToken() {

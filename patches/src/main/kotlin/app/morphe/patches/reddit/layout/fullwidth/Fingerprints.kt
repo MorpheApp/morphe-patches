@@ -191,6 +191,30 @@ internal fun postContentLambdaConstructorFingerprint(propsType: String) = Finger
         "L",
         "L",
         "L",
+        "Z",
+        "L",
+        "Z",
+        "Ljava/lang/Float;",
+        "Z",
+        "Z"
+    )
+)
+
+/**
+ * Lambda showing the content of a post in the post details, before 2026.46.0.
+ */
+internal fun postContentLambdaConstructorLegacyFingerprint(propsType: String) = Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    parameters = listOf(
+        propsType,
+        "L",
+        "L",
+        "L",
+        "Z",
+        "L",
+        "L",
+        "L",
         "L",
         "Z",
         "Ljava/lang/Float;",

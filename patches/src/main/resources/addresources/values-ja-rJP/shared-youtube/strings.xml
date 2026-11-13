@@ -232,6 +232,20 @@ Android System WebView を最新バージョンに更新するまで、ビデオ
   <string name="morphe_replace_music_with_youtube_summary">共有リンクの music.youtube.com を youtube.com に置き換えます</string>
   <string name="morphe_replace_links_with_shortener_title">共有リンクを youtu.be に変更</string>
   <string name="morphe_replace_links_with_shortener_summary">動画の共有 URL を短縮ドメインである youtu.be に固定します</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">自動</string>
+  <string name="morphe_remember_video_quality_last_selected_title">画質を保存</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">画質メニューでの画質の変更を、設定の [デフォルトの画質] に反映し、すべての動画に適用します</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">画質変更の通知</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">設定の [デフォルトの画質] または [ショートのデフォルトの画質] に新しい値が保存されたときに通知を表示します</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fiネットワークでのデフォルトの動画画質</string>
+  <string name="morphe_video_quality_default_mobile_title">モバイルネットワークでのデフォルトの動画画質</string>
+  <string name="morphe_remember_video_quality_toast_mobile">デフォルトの画質 (モバイル): %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">デフォルトの画質 (Wi-Fi): %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
+  <string name="morphe_open_system_share_sheet_summary">コンテンツを共有するときにアプリ内の共有メニューではなくシステムの共有メニューを開きます</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho ログ記録</string>
   <string name="morphe_debug_litho_entry_disabled">無効</string>

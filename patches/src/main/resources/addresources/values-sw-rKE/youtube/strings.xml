@@ -696,6 +696,9 @@ Info: Inaweza isifanye kazi kwenye mirutubisho ya moja kwa moja"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts za wanachama pekee</string>
   <string name="morphe_play_all_button_type_entry_12">Kurusha moja kwa moja kwa wanachama pekee</string>
   <string name="morphe_play_all_button_not_available_toast">Hatuwezi kutengeneza orodha ya kucheza kwa sababu ya kutofautiana kwa ID ya chaneli</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Onyesha kitufe cha Orodha ya Nyimbo</string>
+  <string name="morphe_playlist_panel_button_summary">Gusa ili kufungua paneli ya orodha ya nyimbo. Inaonyeshwa tu wakati unacheza orodha ya nyimbo</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Onyesha kitufe cha kuonyesha upya video</string>
   <string name="morphe_dismiss_player_not_available_toast">ID ya video haipatikani. Tafadhali onyesha upya video kwa mkono</string>
@@ -1205,9 +1208,24 @@ Settings → Playback (au Autoplay) → Autoplay next video"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Zima paneli za popup za kicheza</string>
   <string name="morphe_disable_player_popup_panels_summary">Huzima paneli za orodha ya kucheza na soga ya moja kwa moja zisifunguke kiotomatiki</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Onyesha paneli ya orodha ya nyimbo katika skrini nzima</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Paneli ya orodha ya nyimbo inafunguka juu ya kicheza cha skrini nzima</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Paneli ya orodha ya nyimbo inatoka kwenye skrini nzima kwenye tablet</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Zima uchezaji wa autoplay wa orodha ya nyimbo</string>
   <string name="morphe_disable_playlist_autoplay_summary">Huzuia orodha za nyimbo zisihamie kwenye video inayofuata kiotomatiki</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Udhibiti wa Autoplay</string>
+  <string name="morphe_autoplay_control_summary">Huongeza kitufe cha kicheza na sheria kwa video inayofuata. Orodha za nyimbo na foleni zinaendelea, Mix inasimama baada ya idadi fulani ya video, video inayopendekezwa haichezi kamwe. Gusa kitufe kwa modi inayofuata, gusa na ushikilie kwa ajili ya orodha</string>
+  <string name="morphe_autoplay_mode_title">Modi ya Autoplay</string>
+  <string name="morphe_autoplay_mode_entry_1">Kiotomatiki</string>
+  <string name="morphe_autoplay_mode_entry_2">Kimoja</string>
+  <string name="morphe_autoplay_mode_entry_3">Zima</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Urefu wa Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Katika modi ya Kiotomatiki, Mix inasimama baada ya idadi hii ya video. 0 = hakuna kikomo</string>
+  <string name="morphe_autoplay_mix_length">Mix: video %s</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: hakuna kikomo</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Ombi la \"Endelea kutazama\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Kawaida</string>
@@ -1283,9 +1301,6 @@ Mpangilio wa Automotive
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Rudisha hifadhi ya zamani kwenye orodha ya nyimbo</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Zima aikoni nzito</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Rudisha jina la chaneli chini ya kicheza video</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Fungua ukurasa wa kushiriki wa mfumo</string>
-  <string name="morphe_open_system_share_sheet_summary">Hufungua ukurasa wa kushiriki wa mfumo badala ya ule wa ndani ya programu wakati wa kushiriki maudhui</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Badili vitufe vya YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Hufungua programu yako ya muziki unayopendelea badala ya programu ya stock ya YouTube Music</string>
@@ -1479,7 +1494,6 @@ Video huombwa kwa kutumia kiambishi kifupi cha ID ya video iliyofichwa, hivyo se
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow haipatikani kwa muda (msimbo wa hali: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow haipatikani kwa muda</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Rejesha mtindo wa zamani wa kitufe cha kicheza</string>
   <string name="morphe_restore_old_player_buttons_summary">Hurudisha vidhibiti vya kidirisha cha video vilivyo nene kuwa mtindo wa zamani wa mwonekano mwembamba</string>
@@ -1519,25 +1533,20 @@ Video huombwa kwa kutumia kiambishi kifupi cha ID ya video iliyofichwa, hivyo se
   <string name="morphe_video_delay_button_flyout_title">Onyesha menyu ya kuchelewesha Video</string>
   <string name="morphe_video_delay_dialog_input_hint">Ucheleweshaji katika milisekunde</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Kiotomatiki</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Kumbuka ubora wa video</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Hutumia uteuzi wako wa ubora wa mwongozo kwa video zote zijazo</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Arifa za mabadiliko ya ubora</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Huonyesha taarifa wakati ubora mpya wa chaguo-msingi unapohifadhiwa</string>
-  <string name="morphe_video_quality_default_wifi_title">Ubora wa video wa kawaida kwenye mtandao wa Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Ubora wa video wa kawaida kwenye mtandao wa simu</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Kumbuka ubora wa Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Hutumia uchaguzi wako wa ubora wa mwongozo kwa Shorts zote zijazo</string>
   <string name="morphe_shorts_quality_default_wifi_title">Ubora wa kawaida wa Shorts kwenye mtandao wa Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Ubora wa kawaida wa Shorts kwenye mtandao wa simu</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Ubora wa kawaida wa mtandao wa simu umebadilishwa kuwa: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Ubora wa kawaida wa Wi-Fi umebadilishwa kuwa: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Ubora wa Shorts wa mtandao wa simu umebadilishwa kuwa: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Ubora wa Wi-Fi wa Shorts umebadilishwa kuwa: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Onyesha kitufe cha Kasi ya uchezaji</string>
   <string name="morphe_playback_speed_dialog_button_summary">Gusa na ushikilie ili kurudisha kasi kwenye chaguo-msingi</string>
+  <string name="morphe_playback_speed_button_cycle_title">Gusa kitufe cha Kasi ya uchezaji ili kubadili kasi</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Kugusa huenda kwenye kasi inayofuata katika orodha. Gusa na ushikilie ili kufungua menyu ya kasi</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Kasi za kitufe cha kasi ya uchezaji</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Kasi ambazo kugusa kunazipitisha, moja kwa kila mstari. Baada ya kasi ya mwisho, kugusa kunarudi kwenye ya kwanza</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Orodha ya mzunguko wa kasi si sahihi, rudi kwenye asili</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Onyesha kitufe cha Ubora</string>
   <string name="morphe_video_quality_dialog_button_summary">Gusa na ushikilie ili kurudisha ubora kwenye chaguo-msingi</string>
@@ -1730,6 +1739,7 @@ Kurekodi kiotomatiki kunasimama katika hali ya incognito, wakati utambulisho wa 
   <string name="morphe_series_tracker_undo">Ondoa</string>
   <string name="morphe_series_tracker_enable_short">Washa</string>
   <string name="morphe_series_tracker_new_episode">kipindi 1 kipya</string>
+  <string name="morphe_series_tracker_new_episodes">vipindi vipya %s</string>
   <string name="morphe_series_tracker_record_short">Rekodi maendeleo kwenye kifaa hiki</string>
   <string name="morphe_series_tracker_follow_consent">"Mfululizo na maendeleo yako yanabaki kwenye kifaa hiki, yakishirikishwa katika akaunti za YouTube. Vidhibiti vya historia ya YouTube havibadilishi mambo haya. Futa maendeleo kutoka kwenye menyu ya Mfululizo.
 

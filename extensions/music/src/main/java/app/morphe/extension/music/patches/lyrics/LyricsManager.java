@@ -7,6 +7,8 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.graphics.Bitmap;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
@@ -61,6 +63,7 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.BaseSettings;
 
 /**
  * Fetches lyrics for the current track and tracks playback position.
@@ -112,6 +115,11 @@ public final class LyricsManager {
 
     @Nullable
     private volatile String sectionsPendingFingerprint;
+
+    @Nullable
+    private volatile List<String> pendingSections;
+
+    private volatile boolean sectionDetecting;
 
     @NonNull
     private String currentVideoId = "";
@@ -899,6 +907,10 @@ public final class LyricsManager {
                 }
             }
 
+            if (wrapToEmbeddedLyrics(id, searchTrack)) {
+                return;
+            }
+
             Utils.runOnMainThread(() -> {
                 if (id != requestId.get()) {
                     return;
@@ -911,6 +923,46 @@ public final class LyricsManager {
                 }
             });
         });
+    }
+
+    /**
+     * Starts the refresh cycle over at the embedded lyrics once the provider candidates run out.
+     * The embedded lyrics are not a provider and never enter the candidate queue, so without this
+     * the last provider result would stay on screen and the file's own lyrics could not be reached
+     * again. Resetting the shown set also makes the providers eligible again on the next refresh,
+     * so repeated taps keep cycling instead of stopping at the last provider.
+     */
+    private boolean wrapToEmbeddedLyrics(int id, TrackInfo track) {
+        if (id != requestId.get() || !Settings.LYRICS_USE_EMBEDDED.get()) {
+            return false;
+        }
+        Uri embeddedUri = localUriFor(track);
+        if (embeddedUri == null) {
+            return false;
+        }
+        Lyrics embedded = LocalLyricsFetcher.fetch(embeddedUri);
+        if (embedded == null || embedded.isEmpty()) {
+            return false;
+        }
+
+        final String fingerprint = LyricsMatch.fingerprint(embedded);
+        // The cycle starts over here, so every provider becomes reachable again on the next tap.
+        shownFingerprints.clear();
+        shownFingerprints.add(fingerprint);
+        if (!shouldWrapToLocal(currentLyrics, embedded)) {
+            return false;
+        }
+        publishFromLookup(id, embedded);
+        return true;
+    }
+
+    /** Whether refresh has a local lyric to loop back to that is not already on screen. */
+    static boolean shouldWrapToLocal(@Nullable Lyrics current, @Nullable Lyrics local) {
+        if (local == null || local.isEmpty()) {
+            return false;
+        }
+        return current == null
+                || !LyricsMatch.fingerprint(current).equals(LyricsMatch.fingerprint(local));
     }
 
     private boolean pollAndPublishNext(int id, TrackInfo track) {
@@ -2223,6 +2275,12 @@ public final class LyricsManager {
         return SkipSegments.remapTimestamp(lyricTimeMs, segs);
     }
 
+    /** The segments a saved file is timed against, the same ones the lyrics are shown with. */
+    @Nullable
+    public List<SkipSegments.Seg> exportSegs() {
+        return syncSegs();
+    }
+
     /**
      * Filters out credit lines and text the user asked to hide, then normalizes the timings
      * of synced lyrics, consulting the short-lived cache of already filtered results.
@@ -2231,11 +2289,19 @@ public final class LyricsManager {
         final boolean splitBackground = Settings.LYRICS_SPLIT_BACKGROUND.get();
         String cacheKey = null;
         if (lyrics != null && lyrics != Lyrics.NOT_FOUND && !lyrics.isEmpty()) {
-            // The split changes the lines, so it belongs in the key or toggling it hands back
-            // the other result.
-            StringBuilder sb = new StringBuilder(lyrics.providerName())
-                    .append(splitBackground ? "|bg" : "|");
+            // Split and section labels change the output, so both belong in the cache key.
             List<LyricsLine> lines = lyrics.lines();
+            boolean hasSections = false;
+            for (LyricsLine line : lines) {
+                String part = line.songPart();
+                if (part != null && !part.isEmpty()) {
+                    hasSections = true;
+                    break;
+                }
+            }
+            StringBuilder sb = new StringBuilder(lyrics.providerName())
+                    .append(splitBackground ? "|bg" : "|")
+                    .append(hasSections ? "|sec" : "|nosec");
             int limit = Math.min(3, lines.size());
             for (int i = 0; i < limit; i++) {
                 sb.append('|').append(lines.get(i).text());
@@ -2378,11 +2444,81 @@ public final class LyricsManager {
                     }
                     Lyrics shown = currentLyrics;
                     boolean stillShowing = shown != null && fingerprint.equals(LyricsMatch.fingerprint(shown));
-                    if (sections == null || !stillShowing || currentTrack != track) {
+                    // A track change or a newer request cancels it; neither is a failure.
+                    if (!stillShowing || currentTrack != track) {
+                        return;
+                    }
+                    if (sections == null) {
+                        Logger.printDebug(() -> "AI section detection returned no sections for "
+                                + track.title() + " - " + track.artist());
+                        if (BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
+                            Utils.showToastShort(str("morphe_music_lyrics_ai_section_failed"));
+                        }
                         return;
                     }
                     setState(State.LOADED, SectionDetector.applySections(shown, sections));
                 });
+    }
+
+    public void requestSectionDetection() {
+        if (!Settings.LYRICS_USE_AI_SECTION.get()) {
+            return;
+        }
+        Lyrics lyrics = currentLyrics;
+        TrackInfo track = currentTrack;
+        if (track == null || !SectionDetector.needsDetection(lyrics)) {
+            return;
+        }
+        if (sectionDetecting) {
+            return;
+        }
+        final String fingerprint = LyricsMatch.fingerprint(lyrics);
+        sectionDetecting = true;
+        notifySectionDetectionStateChanged();
+        SectionDetector.detect(track, lyrics,
+                () -> sectionDetecting, sections -> {
+                    sectionDetecting = false;
+                    Lyrics shown = currentLyrics;
+                    if (shown == null || !fingerprint.equals(LyricsMatch.fingerprint(shown))) {
+                        notifySectionDetectionStateChanged();
+                        return;
+                    }
+                    if (sections != null) {
+                        pendingSections = sections;
+                    }
+                    notifySectionDetectionStateChanged();
+                });
+    }
+
+    private void notifySectionDetectionStateChanged() {
+        for (Listener listener : new ArrayList<>(listeners)) {
+            try {
+                listener.onSectionDetectionStateChanged();
+            } catch (Exception ex) {
+                Logger.printException(() -> "Section detection listener failure", ex);
+            }
+        }
+    }
+
+    public void applyPendingSections() {
+        List<String> sections = pendingSections;
+        if (sections == null) {
+            return;
+        }
+        pendingSections = null;
+        Lyrics shown = currentLyrics;
+        if (shown == null) {
+            return;
+        }
+        setState(State.LOADED, SectionDetector.applySections(shown, sections));
+    }
+
+    public boolean hasPendingSections() {
+        return pendingSections != null;
+    }
+
+    public boolean isSectionDetecting() {
+        return sectionDetecting;
     }
 
     public boolean areLyricsSynced() {
@@ -2418,6 +2554,9 @@ public final class LyricsManager {
 
         /** Called on the main thread whenever the state or the lyrics change. */
         void onLyricsChanged(State state, @Nullable Lyrics lyrics);
+
+        default void onSectionDetectionStateChanged() {
+        }
     }
 
     record ScoredCandidate(int score, int rank, Lyrics lyrics)

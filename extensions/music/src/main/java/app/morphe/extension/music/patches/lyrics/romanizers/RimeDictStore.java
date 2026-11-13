@@ -454,7 +454,7 @@ public final class RimeDictStore {
     @Nullable
     public static String builtinLabel(String code) {
         for (RimeLang lang : BUILTIN) {
-            if (lang.code.equals(code)) return lang.dictionaryName;
+            if (lang.code.equalsIgnoreCase(code)) return lang.dictionaryName;
         }
         return null;
     }
@@ -463,7 +463,7 @@ public final class RimeDictStore {
     @Nullable
     public static String customLabel(String code) {
         for (RimeLang lang : loaded().stored) {
-            if (lang.code.equals(code)) return lang.dictionaryName;
+            if (lang.code.equalsIgnoreCase(code)) return lang.dictionaryName;
         }
         return null;
     }

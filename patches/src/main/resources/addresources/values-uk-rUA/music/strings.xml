@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Використовувати зовнішній завантажувач для меню \"Завантажити\"</string>
   <string name="morphe_external_downloader_menu_summary">Пункт \"Завантажити\" в меню натомість відкриває ваш зовнішній завантажувач</string>
   <string name="morphe_export_download_folder_title">Експорт завантажень</string>
-  <string name="morphe_export_download_folder_summary">"Експортуйте пісні та відео, завантажені застосунком, до сховища вашого пристрою за допомогою меню завантаження. Натисніть, щоб змінити теку експорту
+  <string name="morphe_export_download_folder_summary">"Експортуйте збережені в застосунку пісні та відео до сховища пристрою через спливне меню завантажень у застосунку. Натисніть, щоб змінити теку експорту
 
 Тека експорту: %s"</string>
   <string name="morphe_export_download_started">Експорт завантаження</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">Експортовано %1$s із %2$s завантажень до %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Про Morphe</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Реклама</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Стрічка</string>
-  <string name="morphe_settings_music_screen_3_general_title">Загальні</string>
-  <string name="morphe_settings_music_screen_4_player_title">Плеєр</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Тексти пісень</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Різне</string>
+  <string name="morphe_settings_music_screen_00_about_title">Про застосунок</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Реклама</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Стрічка</string>
+  <string name="morphe_settings_music_screen_03_general_title">Загальні налаштування</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Тексти пісень</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Різне</string>
+  <string name="morphe_settings_music_screen_06_player_title">Плеєр</string>
+  <string name="morphe_settings_music_screen_10_video_title">Відео</string>
   <string name="morphe_music_app_language_title">Мова YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Мова системи</string>
   <string name="morphe_music_app_language_summary_unsupported">Потрібен Android 13 або новіший</string>
@@ -256,6 +257,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_playback_speed_title">Швидкість відтворення</string>
   <string name="morphe_music_playback_speed_summary">Швидкість, що використовується для всіх треків. При 100% використовується швидкість застосунку, наприклад швидкість відтворення подкасту</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Змінювати висоту тону разом зі швидкістю</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Вимкнути автоматичні субтитри</string>
+  <string name="morphe_music_disable_auto_captions_summary">Субтитри не вмикаються автоматично під час початку відтворення відео, зокрема й ті, що ввімкнені в самому відео за замовчуванням</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Вимкнути приглушення звуку</string>
   <string name="morphe_music_disable_audio_ducking_summary">Гучність не знижується, коли інший додаток відтворює короткий звук, наприклад, сповіщення</string>
@@ -567,6 +571,7 @@ Second \"item\" text"</string>
 
 Базу даних ліцензовано за ODC Open Database License (ODbL). Записи з Soul Over AI від xoundbyte ліцензовано за CC BY 4.0. Не пов'язано з SoundProof чи Soul Over AI і не схвалено ними."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Тексти пісень недоступні для цього файлу пристрою.</string>
   <string name="morphe_music_lyrics_enabled_title">Використовувати сторонні тексти пісень</string>
   <string name="morphe_music_lyrics_enabled_summary">Показує текст пісні зі стороннього сервісу, повертаючись до вбудованого тексту, якщо нічого не знайдено</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Тримати екран увімкненим під час перегляду тексту пісні</string>
@@ -698,6 +703,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_search_title_hint">Назва пісні</string>
   <string name="morphe_music_lyrics_search_artist_hint">Виконавець</string>
   <string name="morphe_music_lyrics_search_empty">Введіть назву пісні та виконавця</string>
+  <string name="morphe_music_lyrics_search_google">Пошук через Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Жоден з увімкнених постачальників не може шукати інші пісні</string>
   <string name="morphe_music_lyrics_saved">Збережено</string>
   <string name="morphe_music_lyrics_written_by">Автор: %s</string>
@@ -777,7 +783,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Романізовано %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Романізовано %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (з %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Романізовано Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Перекладено</string>
   <string name="morphe_music_lyrics_translation_language_title">Мова перекладу</string>
@@ -837,19 +842,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_use_ai_section_title">Визначати розділи за допомогою ШІ</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Використовується лише тоді, коли постачальник не надає позначок розділів, таких як \"Приспів\" або \"Куплет\", які тоді визначає ваша модель, сумісна з OpenAI. Редагування цього рядка також відкриває його запит</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-адреса кінцевої точки API (наприклад, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Шаблон запиту</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Заповнювачі: {task}, {language}, {title}, {artist}, {count}, {lines}. Невідомі залишаються як введено</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Запит збережено</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Запит збережено, але кінцева точка ШІ ще непридатна до використання. Спочатку налаштуйте її в розділі \"Налаштування ШІ\"</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Запит скинуто</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Налаштування перекладу та романізації збережено</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Налаштування збережено, але кінцева точка AI ще недоступна</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Налаштування збережено</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Налаштування скинуто до типових</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Базова URL-адреса має починатися з http:// або https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Налаштування неповні або відхилені постачальником</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Перевірка з\'єднання…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: підключено! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: не вдалося підключитися. Перевірте налаштування.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Спочатку введіть ключ API</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Перевірити з\'єднання</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Отримання моделей…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Отримати моделі</string>
@@ -866,7 +867,14 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Додаткові заголовки запиту (необов\'язковий JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Беріть назви та значення в лапки, наприклад {\"api-key\": \"abc\"}. Значення без лапок, яке містить / : або є числом, відхиляється. Порожнє значення видаляє заголовок.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Беріть назви та значення в лапки, наприклад {\"temperature\": 0.3}. Значення без лапок, яке містить / або :, відхиляється. Модель і повідомлення тут задати не можна.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Зусилля з міркування</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Типові</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Ключ автентифікації (Free або Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI не зміг визначити розділи для цього треку</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Визначення...</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Застосувати розділи</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Визначення скасовано</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Немає тексту пісні для визначення розділів</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Вимкнути товсті іконки</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Відновити вкладки \"Далі\", \"Текст\" та \"Схожі\" в плеєрі</string>

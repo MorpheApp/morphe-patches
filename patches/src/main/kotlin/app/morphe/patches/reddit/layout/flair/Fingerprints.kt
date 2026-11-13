@@ -243,13 +243,20 @@ internal object FeedPostSectionMapperFingerprint : Fingerprint(
 
 /**
  * Selects the feed posts that Reddit loads in full after a feed page is shown.
- * Post previews are never selected.
+ * Post previews are never selected. The last check is for the post preview class,
+ * or since 2026.46.0 for an obfuscated interface of all post preview classes.
  */
 internal object PostsToLoadFingerprint : Fingerprint(
     returnType = "Ljava/util/ArrayList;",
     parameters = listOf("Ljava/util/List;"),
     filters = listOf(
-        instanceOf(type = { PostPreviewFeedElementToStringFingerprint.classDef }),
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            smali = "Lcom/reddit/common/ThingType;->POST:Lcom/reddit/common/ThingType;"
+        ),
+        // Branch of the check before the post preview check.
+        opcode(Opcode.IF_NEZ),
+        opcode(Opcode.INSTANCE_OF, MatchAfterImmediately()),
         opcode(Opcode.IF_NEZ, MatchAfterImmediately())
     )
 )

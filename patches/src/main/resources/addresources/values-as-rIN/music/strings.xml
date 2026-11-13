@@ -132,9 +132,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Download মেনুৰ বাবে বাহ্যিক ডাউনলোডাৰ ব্যৱহাৰ কৰক</string>
   <string name="morphe_external_downloader_menu_summary">মেনুৰ Download বিকল্পটোৱে তাৰ পৰিৱৰ্তে আপোনাৰ বাহ্যিক ডাউনলোডাৰটো খুলিব</string>
   <string name="morphe_export_download_folder_title">ডাউনলোডসমূহ এক্সপোর্ট কৰক</string>
-  <string name="morphe_export_download_folder_summary">"ডাউনলোডৰ মেনু ব্যৱহাৰ কৰি এপটোৰ দ্বাৰা ডাউনলোড কৰা গান আৰু ভিডিঅ'সমূহ আপোনাৰ ডিভাইচৰ ষ্টোৰেজলৈ এক্সপোর্ট কৰক। এক্সপোর্ট ফোল্ডাৰটো সলনি কৰিবলৈ টেপ কৰক
+  <string name="morphe_export_download_folder_summary">"ইন-এপ ডাউনলোড ফ্লাইআউট মেনু ব্যৱহাৰ কৰি ইন-এপত সংৰক্ষিত গান আৰু ভিডিঅ’সমূহ আপোনাৰ ডিভাইচৰ ষ্টোৰেজলৈ এক্সপৰ্ট কৰক। এক্সপৰ্ট ফোল্ডাৰ সলনি কৰিবলৈ ট্যাপ কৰক
 
-এক্সপোর্ট ফোল্ডাৰ: %s"</string>
+এক্সপৰ্ট ফোল্ডাৰ: %s"</string>
   <string name="morphe_export_download_started">ডাউনলোড এক্সপোর্ট কৰা হৈছে</string>
   <string name="morphe_export_download_progress">ডাউনলোড এক্সপোর্ট কৰা হৈছে: %s%%</string>
   <string name="morphe_export_download_notification_channel">ডাউনলোড এক্সপোর্ট</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">%2$s টা ডাউনলোডৰ ভিতৰত %1$s টা %3$s ত এক্সপোর্ট কৰা হৈছে</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Morpheৰ বিষয়ে</string>
-  <string name="morphe_settings_music_screen_1_ads_title">বিজ্ঞাপন</string>
-  <string name="morphe_settings_music_screen_2_feed_title">ফিড</string>
-  <string name="morphe_settings_music_screen_3_general_title">সাধাৰণ</string>
-  <string name="morphe_settings_music_screen_4_player_title">প্লেয়াৰ</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">গীতৰ কথা</string>
-  <string name="morphe_settings_music_screen_9_misc_title">বিবিধ</string>
+  <string name="morphe_settings_music_screen_00_about_title">সম্পৰ্কে</string>
+  <string name="morphe_settings_music_screen_01_ads_title">বিজ্ঞাপন</string>
+  <string name="morphe_settings_music_screen_02_feed_title">ফিড</string>
+  <string name="morphe_settings_music_screen_03_general_title">সাধাৰণ</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">গীতৰ কথা</string>
+  <string name="morphe_settings_music_screen_05_misc_title">বিবিধ</string>
+  <string name="morphe_settings_music_screen_06_player_title">প্লেয়াৰ</string>
+  <string name="morphe_settings_music_screen_10_video_title">ভিডিঅ\'</string>
   <string name="morphe_music_app_language_title">YouTube Music ভাষা</string>
   <string name="morphe_music_app_language_summary_default">ছিষ্টেমৰ ভাষা</string>
   <string name="morphe_music_app_language_summary_unsupported">Android 13 বা তাৰ পিছৰ সংস্কৰণৰ প্ৰয়োজন</string>
@@ -256,6 +257,9 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
   <string name="morphe_music_playback_speed_title">প্লেবেকৰ গতি</string>
   <string name="morphe_music_playback_speed_summary">সকলো ট্ৰেকৰ বাবে ব্যৱহাৰ কৰা গতি। ১০০% ত এপৰ গতি ব্যৱহাৰ কৰা হয়, যেনে পডকাস্ট প্লেবেকৰ গতি</string>
   <string name="morphe_music_playback_speed_change_pitch_title">গতিৰ সৈতে পিচ পৰিৱৰ্তন কৰক</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">অটো কেপচনসমূহ বন্ধ কৰক</string>
+  <string name="morphe_music_disable_auto_captions_summary">ভিডিঅ\' আৰম্ভ হোৱাৰ সময়ত কেপচনসমূহ স্বয়ংক্ৰিয়াকৈ সক্ৰিয় নহয়, ইয়াৰ ভিতৰত ভিডিঅ\'টোৱে ডিফল্টৰূপে সক্ৰিয় কৰা কেপচনসমূহো অন্তৰ্ভুক্ত</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">অডিঅ’ ডাক্কিং নিষ্ক্ৰিয় কৰক</string>
   <string name="morphe_music_disable_audio_ducking_summary">যেতিয়া আন এটা এপ্লিকেচনে এটা চুটি শব্দ, যেনে জাননী বজাব, তেতিয়া ভলিউমটো কমাব নোৱাৰিব</string>
@@ -567,6 +571,7 @@ SABR প্লেবেক (স্পুফ ভিডিঅ’ ষ্ট্ৰ�
 
 ডেটাবেচটো ODC Open Database License (ODbL) ৰ অধীনত লাইচেন্সযুক্ত। xoundbyte-ৰ Soul Over AI ৰ এন্ট্ৰীসমূহ CC BY 4.0 ৰ অধীনত লাইচেন্সযুক্ত। SoundProof বা Soul Over AI ৰ সৈতে কোনো সম্পৰ্ক নাই বা তেওঁলোকৰ দ্বাৰা অনুমোদিত নহয়।"</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">এই ডিভাইচ ফাইলটোৰ বাবে গীতৰ কথা উপলব্ধ নহয়।</string>
   <string name="morphe_music_lyrics_enabled_title">তৃতীয়-পক্ষৰ গীতৰ কথা ব্যৱহাৰ কৰক</string>
   <string name="morphe_music_lyrics_enabled_summary">তৃতীয়-পক্ষৰ সেৱাৰ পৰা গীতৰ কথা দেখুৱায়, কোনোটো নোহোৱা হ\'লে বিল্ট-ইন গীতৰ কথালৈ উভতি যায়</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">গীতৰ কথা চাই থকাৰ সময়ত স্ক্ৰীনটো অন কৰি ৰাখক</string>
@@ -698,6 +703,7 @@ Rime Wordlist এ পঢ়িবলগীয়া তালিকা কেই
   <string name="morphe_music_lyrics_search_title_hint">গীতৰ শিৰোনাম</string>
   <string name="morphe_music_lyrics_search_artist_hint">শিল্পী</string>
   <string name="morphe_music_lyrics_search_empty">গীতৰ এটা শিৰোনাম আৰু এজন শিল্পীৰ নাম লিখক</string>
+  <string name="morphe_music_lyrics_search_google">Google ৰ সৈতে খোজোৱা</string>
   <string name="morphe_music_lyrics_search_no_providers">সক্ৰিয় কৰা কোনো প্ৰদানকাৰীয়েই আন গানৰ বাবে সন্ধান কৰিব নোৱাৰে</string>
   <string name="morphe_music_lyrics_saved">সংৰক্ষিত</string>
   <string name="morphe_music_lyrics_written_by">লিখেছে: %s</string>
@@ -777,7 +783,6 @@ Rime Wordlist এ পঢ়িবলগীয়া তালিকা কেই
   <string name="morphe_music_lyrics_romanized_by_ai">%s দ্বাৰা ৰোমানাইজ কৰা হৈছে</string>
   <string name="morphe_music_lyrics_romanized_by_local">%s ৰ দ্বাৰা ৰোমানাইজ কৰা হৈছে</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s ৰ সৈতে)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Rime দ্বাৰা ৰোমানাইজ কৰা হৈছে (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">অনুবাদ কৰা হৈছে</string>
   <string name="morphe_music_lyrics_translation_language_title">অনুবাদৰ ভাষা</string>
@@ -837,19 +842,15 @@ Rime Wordlist এ পঢ়িবলগীয়া তালিকা কেই
   <string name="morphe_music_lyrics_use_ai_section_title">AI ৰ সহায়ত সেকচনসমূহ ধৰি পেলাওক</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">কেৱল তেতিয়াহে ব্যৱহাৰ কৰা হয় যেতিয়া প্ৰদানকাৰীয়ে Chorus বা Verse ৰ দৰে কোনো সেকচন লেবেল নপঠায়; তেতিয়া আপোনাৰ OpenAI-সংগত মডেলটোৱে সেইবোৰ চিনাক্ত কৰে। শাৰীটো সম্পাদনা কৰিলে ইয়াৰ প্ৰম্পটটোও খোলা হয়</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API এণ্ডপয়েণ্ট URL (যেনে https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">প্ৰমপ্ট টেমপ্লেট</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">প্লেচহোল্ডাৰসমূহ: {task}, {language}, {title}, {artist}, {count}, {lines}। অজ্ঞাতবোৰ টাইপ কৰা ধৰণতে ৰখা হৈছে</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">প্ৰমপ্ট সংৰক্ষিত হৈছে</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">প্ৰম্পট সংৰক্ষণ কৰা হৈছে, কিন্তু AI এণ্ডপয়েণ্টটো এতিয়াও ব্যৱহাৰযোগ্য নহয়। প্ৰথমে ইয়াক AI Settings-ৰ অধীনত কনফিগাৰ কৰক</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">প্ৰমপ্ট ৰিছেট কৰা হৈছে</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">অনুবাদ আৰু ৰোমানাইজেশান ছেটিংছ সংৰক্ষণ কৰা হৈছে</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">ছেটিংছ সংৰক্ষিত হৈছে, কিন্তু AI এণ্ডপয়ণ্টটো এতিয়াও ব্যৱহাৰযোগ্য নহয়</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">ছেটিংছ সংৰক্ষিত হ\'ল</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">ছেটিংছবোৰ ডিফল্টত ৰিছেট কৰা হৈছে</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL টো http:// বা https:// ৰে আৰম্ভ হ\'ব লাগিব</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">ছেটিংছ অসম্পূৰ্ণ অথবা প্ৰদানকাৰীয়ে নাকচ কৰিছে</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">সংযোগ বৈধতা পৰীক্ষা কৰা হৈছে…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: সংযোগ হৈছে! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: সংযোগ বিফল হৈছে। ছেটিংছ পৰীক্ষা কৰক।</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">প্ৰথমে API কী প্ৰৱেশ কৰক</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">সংযোগ পৰীক্ষা কৰক</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">মডেলসমূহ আহৰণ কৰা হৈছে…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">মডেলসমূহ সংগ্ৰহ কৰক</string>
@@ -866,7 +867,14 @@ Rime Wordlist এ পঢ়িবলগীয়া তালিকা কেই
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">অতিৰিক্ত অনুৰোধ হেদাৰ (ঐচ্ছিক JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">নাম আৰু মানবোৰ উদ্ধৃত কৰক, উদাহৰণস্বৰূপে {\"api-key\": \"abc\"}। / : বা সংখ্যা অন্তৰ্গত উদ্ধৃত নকৰা মানটো নাকচ কৰা হয়। এটা খালী মানৰ দ্বাৰা হেদাৰটো আঁতৰাই দিয়া হয়।</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">নাম আৰু মানবোৰ উদ্ধৃত কৰক, উদাহৰণস্বৰূপে {\"temperature\": 0.3}। / বা : অন্তৰ্গত উদ্ধৃত নকৰা মানটো নাকচ কৰা হয়। মডেল আৰু বাৰ্তাসমূহ ইয়াত নিৰ্ধাৰণ কৰিব নোৱাৰি।</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">তৰ্কৰ প্ৰচেষ্টা</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">ডিফল্ট</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">প্ৰমাণীকৰণ কী (Free বা Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI-এ এই ট্ৰেকটোৰ বাবে বিভাগসমূহ ধৰনত পৰিছে</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">ধৰা হৈছে</string>
+  <string name="morphe_music_lyrics_ai_section_apply">বিভাগসমূহ প্ৰয়োগ কৰক</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">ধৰনৰ প্ৰক্ৰিয়া বাতিল কৰা হ\'ল</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">বিভাগসমূহ ধৰিবলৈ কোনো গীতৰ কথা নাই</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - বোল্ড আইকনসমূহ নিষ্ক্ৰিয় কৰক</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - প্লেয়াৰৰ Up next, Lyrics, আৰু Related টেবসমূহ পুনৰুদ্ধাৰ কৰক</string>

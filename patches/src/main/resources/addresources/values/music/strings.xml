@@ -283,6 +283,10 @@ SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_playback_speed_summary">Speed used for all tracks. At 100% the app speed is used, such as the podcast playback speed</string>
     <string name="morphe_music_playback_speed_change_pitch_title">Change pitch with speed</string>
 
+    <!-- layout.captions.disableAutoCaptionsPatch -->
+    <string name="morphe_music_disable_auto_captions_title">Disable auto captions</string>
+    <string name="morphe_music_disable_auto_captions_summary">Captions are not enabled automatically when a video starts, including captions the video enables by default</string>
+
     <!-- interaction.audioducking.disableAudioDuckingPatch -->
     <string name="morphe_music_disable_audio_ducking_title">Disable audio ducking</string>
     <string name="morphe_music_disable_audio_ducking_summary">Volume is not lowered when another app plays a short sound, such as a notification</string>
@@ -756,6 +760,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_search_title_hint">Song title</string>
     <string name="morphe_music_lyrics_search_artist_hint">Artist</string>
     <string name="morphe_music_lyrics_search_empty">Enter a song title and an artist</string>
+    <string name="morphe_music_lyrics_search_google">Search with Google</string>
     <string name="morphe_music_lyrics_search_no_providers">None of the enabled providers can search for other songs</string>
     <string name="morphe_music_lyrics_saved">Saved</string>
     <string name="morphe_music_lyrics_written_by">Written by: %s</string>
@@ -835,7 +840,6 @@ Applies to both limits. At 1.75, four full-width characters count as 7."</string
     <string name="morphe_music_lyrics_romanized_by_ai">Romanized by %s</string>
     <string name="morphe_music_lyrics_romanized_by_local">Romanized by %s</string>
     <string name="morphe_music_lyrics_with_ruby_provider">%1$s (with %2$s)</string>
-    <string name="morphe_music_lyrics_romanized_by_rime">Romanized by Rime (%s)</string>
     <!-- Tappable label under the lyrics that turns the translation on. -->
     <string name="morphe_music_lyrics_translate_hide">Translated</string>
     <string name="morphe_music_lyrics_translation_language_title">Translation language</string>
@@ -895,19 +899,15 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_use_ai_section_title">Detect sections with AI</string>
     <string name="morphe_music_lyrics_use_ai_section_summary">Only used when the provider ships no section labels such as Chorus or Verse, which your OpenAI-compatible model then detects. Editing the row also opens its prompt</string>
     <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (e.g. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-    <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt Template</string>
     <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholders: {task}, {language}, {title}, {artist}, {count}, {lines}. Unknown ones are left as typed</string>
-    <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt saved</string>
-    <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt saved, but the AI endpoint is not usable yet. Configure it under AI Settings first</string>
-    <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt reset</string>
-    <string name="morphe_music_lyrics_ai_config_toast_saved">Translation &amp; Romanization settings saved</string>
+    <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Settings saved, but the AI endpoint is not usable yet</string>
+    <string name="morphe_music_lyrics_ai_config_toast_saved">Settings saved</string>
     <string name="morphe_music_lyrics_ai_config_toast_reset">Settings reset to default</string>
     <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL must start with http:// or https://</string>
     <string name="morphe_music_lyrics_ai_config_status_invalid">Settings incomplete or rejected by the provider</string>
     <string name="morphe_music_lyrics_ai_config_status_validating">Validating connection…</string>
     <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Connected! (%2$s)</string>
     <string name="morphe_music_lyrics_ai_config_status_failed">%s: Connection failed. Check the settings.</string>
-    <string name="morphe_music_lyrics_ai_config_status_empty_key">Enter the API key first</string>
     <string name="morphe_music_lyrics_ai_config_test_connection">Test connection</string>
     <string name="morphe_music_lyrics_ai_config_fetching_models">Fetching models…</string>
     <string name="morphe_music_lyrics_ai_config_fetch_models">Fetch models</string>
@@ -924,7 +924,14 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_lyrics_ai_config_extra_headers_label">Extra request headers (optional JSON)</string>
     <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Quote names and values, e.g. {\"api-key\": \"abc\"}. An unquoted value containing / : or a number is rejected. An empty value removes a header.</string>
     <string name="morphe_music_lyrics_ai_config_extra_body_hint">Quote names and values, e.g. {\"temperature\": 0.3}. An unquoted value containing / or : is rejected. Model and messages cannot be set here.</string>
+    <string name="morphe_music_lyrics_ai_config_reasoning_effort">Reasoning effort</string>
+    <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Default</string>
     <string name="morphe_music_lyrics_ai_config_deepl_key_label">Authentication key (Free or Pro)</string>
+    <string name="morphe_music_lyrics_ai_section_failed">AI could not detect sections for this track</string>
+    <string name="morphe_music_lyrics_ai_section_detecting">Detecting</string>
+    <string name="morphe_music_lyrics_ai_section_apply">Apply sections</string>
+    <string name="morphe_music_lyrics_ai_section_cancelled">Detection cancelled</string>
+    <string name="morphe_music_lyrics_ai_section_no_text">No lyrics to detect sections for</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disable bold icons</string>

@@ -435,8 +435,8 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Kanalda ara</string>
   <string name="morphe_channel_search_summary">Kanal sayfalarına, yalnızca o kanalda arama yapmayı sağlayan ikinci bir arama düğmesi ekler.</string>
-  <string name="morphe_channel_search_hint">Kanal ara</string>
-  <string name="morphe_channel_search_results">Kanal arama sonuçları</string>
+  <string name="morphe_channel_search_hint">Kanalda ara</string>
+  <string name="morphe_channel_search_results">Kanalda arama sonuçları</string>
   <string name="morphe_channel_search_no_results">Bu kanalda sonuç bulunamadı</string>
   <string name="morphe_channel_search_failed">Bu kanalda arama yapılamadı</string>
   <string name="morphe_channel_search_videos">Videolar</string>
@@ -652,10 +652,11 @@ API anahtarınız asla paylaşılmamalıdır. Ona erişimi olan herkes OpenRoute
   <string name="morphe_loop_count_clear_summary">Çalma listelerinizde kaydedilen döngü sayılarını unutun. Kaydedilen videolar: %s</string>
   <string name="morphe_loop_count_clear_summary_none">Kaydedilen döngü sayısı yok</string>
   <string name="morphe_loop_count_clear_dialog_title">Kaydedilen döngü sayıları temizlensin mi?</string>
-  <string name="morphe_loop_count_clear_dialog_message">Çalma listelerinizdeki videolar döngü sayılarını unutur ve bir çalma listesi bunları oynattığında Videoyu Döngüye Al seçeneği artık açılmaz</string>
+  <string name="morphe_loop_count_clear_dialog_message">Oynatma listelerinizdeki videolar döngü sayılarını unutur ve bir oynatma listesi videoyu oynattığında Videoyu döngüye alma seçeneği açılmaz</string>
   <string name="morphe_loop_count_clear_done">Kaydedilen döngü sayıları temizlendi</string>
   <string name="morphe_loop_count_flyout_name">Döngü sayısı</string>
   <string name="morphe_loop_count_dialog_message">Videonun bir sonraki videodan önce kaç kez oynatılacağı, %1$s ile %2$s arası. Sınırsız döngü için boş bırakın.</string>
+  <string name="morphe_loop_count_times">%s kez</string>
   <string name="morphe_loop_count_no_limit">Limitsiz</string>
   <string name="morphe_loop_count_decrease">Daha az kez</string>
   <string name="morphe_loop_count_increase">Daha fazla kez</string>
@@ -696,6 +697,9 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_play_all_button_type_entry_11">Üyelere özel Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Üyelere özel canlı yayınlar</string>
   <string name="morphe_play_all_button_not_available_toast">Kanal kimliği uyuşmazlığı nedeniyle oynatma listesi oluşturulamadı</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Çalma Listesi düğmesini göster</string>
+  <string name="morphe_playlist_panel_button_summary">Çalma listesi panelini açmak için dokunun. Yalnızca bir çalma listesi oynatılırken gösterilir</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Videoyu yeniden yükle düğmesini göster</string>
   <string name="morphe_dismiss_player_not_available_toast">Video kimliği kullanılamıyor. Lütfen videoyu manuel olarak yeniden yükleyin</string>
@@ -1205,9 +1209,24 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Oynatıcı açılır panellerini devre dışı bırak</string>
   <string name="morphe_disable_player_popup_panels_summary">Oynatma listesi ve canlı sohbet panellerinin otomatik olarak açılmasını devre dışı bırakır</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Çalma listesi panelini tam ekranda göster</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Çalma listesi paneli tam ekran oynatıcının üzerinde açılır</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Çalma listesi paneli tabletlerde tam ekrandan çıkar</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Çalma listelerinin otomatik olarak sonraki videoya geçmesini engeller</string>
   <string name="morphe_disable_playlist_autoplay_summary">Çalma listelerinin otomatik olarak bir sonraki videoya geçmesini engeller</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Otomatik oynatma kontrolü</string>
+  <string name="morphe_autoplay_control_summary">Bir oynatıcı düğmesi ve sonraki video için bir kural ekler. Çalma listeleri ve kuyruklar devam eder, bir Mix belirli sayıda videodan sonra durur, önerilen bir video asla oynatılmaz. Sonraki mod için düğmeye dokunun, liste için basılı tutun</string>
+  <string name="morphe_autoplay_mode_title">Otomatik oynatma modu</string>
+  <string name="morphe_autoplay_mode_entry_1">Oto</string>
+  <string name="morphe_autoplay_mode_entry_2">Tekli</string>
+  <string name="morphe_autoplay_mode_entry_3">Kapalı</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Mix uzunluğu</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Otomatik modunda, bir Mix bu sayıdaki videodan sonra durur. 0 = sınır yok</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s video</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: sınır yok</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\'İzlemeye devam edilsin mi?\' istemi</string>
   <string name="morphe_continue_watching_prompt_entry_1">Varsayılan</string>
@@ -1283,9 +1302,6 @@ Otomotiv düzeni
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Oynatma listesine kaydetme için eski düzeni geri getir</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Kalın simgeleri devre dışı bırak</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Video oynatıcının altındaki kanal adını geri getir</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım çubuğunu aç</string>
-  <string name="morphe_open_system_share_sheet_summary">İçerik paylaşılırken uygulama içi paylaşım ekranı yerine sistem paylaşım ekranı açılır</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music düğmelerini değiştir</string>
   <string name="morphe_override_youtube_music_buttons_summary">Tercih ettiğiniz müzik uygulamasını, yerleşik YouTube Music uygulaması yerine açar</string>
@@ -1479,7 +1495,6 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow geçici olarak kullanılamıyor (durum kodu: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow geçici olarak kullanılamıyor</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Eski oynatıcı düğmesi stilini geri getir</string>
   <string name="morphe_restore_old_player_buttons_summary">Kalın video oynatıcı kontrollerini eski, daha ince görünüme geri döndürür</string>
@@ -1519,25 +1534,20 @@ Videolar, karma video kimliğinin kısa bir önekiyle istenir; bu nedenle sunucu
   <string name="morphe_video_delay_button_flyout_title">Video gecikmesi menüsünü göster</string>
   <string name="morphe_video_delay_dialog_input_hint">Milisaniye cinsinden gecikme</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Oto</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Video kalitesini hatırla</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Manuel kalite seçiminizi gelecekteki tüm videolara uygular</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Kalite değişikliği bildirimleri</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Yeni bir varsayılan kalite kaydedildiğinde bir bildirim gösterir</string>
-  <string name="morphe_video_quality_default_wifi_title">Wi-Fi ağındaki varsayılan video kalitesi</string>
-  <string name="morphe_video_quality_default_mobile_title">Mobil ağdaki varsayılan video kalitesi</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts kalitesini hatırla</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Manuel kalite seçiminizi gelecekteki tüm Shorts\'lara uygular</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi ağındaki varsayılan Shorts kalitesi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Mobil ağdaki varsayılan Shorts kalitesi</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Varsayılan mobil kalite şuna değiştirildi: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Varsayılan Wi-Fi kalitesi şuna değiştirildi: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts mobil kalite şuna değiştirildi: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts Wi-Fi kalitesi şuna değiştirildi: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Oynatma hızı düğmesini göster</string>
   <string name="morphe_playback_speed_dialog_button_summary">Hızı varsayılana sıfırlamak için dokunup basılı tutun</string>
+  <string name="morphe_playback_speed_button_cycle_title">Hızlar arasında geçiş yapmak için Oynatma hızı düğmesine dokunun</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Dokunmak listedeki bir sonraki hıza geçer. Basılı tutmak hız menüsünü açar</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Oynatma hızı düğmesi hızları</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Dokunulduğunda sırayla geçilen hızlar, her satırda bir tane. Son hızdan sonra dokunulduğunda başa döner</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Geçersiz hız döngüsü listesi, varsayılana sıfırlandı</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Kalite düğmesini göster</string>
   <string name="morphe_video_quality_dialog_button_summary">Kaliteyi varsayılana sıfırlamak için dokunup basılı tutun</string>

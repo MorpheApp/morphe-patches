@@ -46,7 +46,7 @@ public final class LunaProvider extends ScoredSongProvider {
     private static final long REQUEST_THROTTLE_MS = 250;
     private static final AtomicLong lastRequestTime = new AtomicLong(0);
 
-    private static String firstArtistName(JSONObject trackObj) {
+    static String firstArtistName(JSONObject trackObj) {
         JSONArray artists = trackObj.optJSONArray("artists");
         if (artists != null && artists.length() > 0) {
             JSONObject first = artists.optJSONObject(0);
@@ -72,7 +72,7 @@ public final class LunaProvider extends ScoredSongProvider {
                 durationMs > 0 ? durationMs / 1000 : 0, track);
     }
 
-    private static boolean isOriginalTrack(JSONObject trackObj) {
+    static boolean isOriginalTrack(JSONObject trackObj) {
         JSONObject label = trackObj.optJSONObject("label_info");
         return label != null && label.optBoolean("is_original", false);
     }

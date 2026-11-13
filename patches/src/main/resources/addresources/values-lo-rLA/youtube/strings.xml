@@ -696,6 +696,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts ສຳລັບສະມາຊິກເທົ່ານັ້ນ</string>
   <string name="morphe_play_all_button_type_entry_12">ການສະຕຣີມສົດສຳລັບສະມາຊິກເທົ່ານັ້ນ</string>
   <string name="morphe_play_all_button_not_available_toast">ບໍ່ສາມາດສ້າງລາຍການຫຼິ້ນໄດ້ ເນື່ອງຈາກ ID ຊ່ອງບໍ່ກົງກັນ</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">ປຸ່ມສະແດງລາຍການຫຼິ້ນ</string>
+  <string name="morphe_playlist_panel_button_summary">ແຕະເພື່ອເປີດແຜງລາຍການຫຼິ້ນ. ສະແດງສະເພາະເມື່ອຜັນລາຍການຫຼິ້ນເທົ່ານັ້ນ</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">ສະແດງປຸ່ມໂຫຼດວິດີໂອຄືນໃໝ່</string>
   <string name="morphe_dismiss_player_not_available_toast">ບໍ່ພົບ ID ຂອງວິດີໂອ. ກະລຸນາໂຫຼດວິດີໂອຄືນໃໝ່ດ້ວຍຕົນເອງ</string>
@@ -1205,9 +1208,24 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">ປິດໃຊ້ແຜງປັອບອັບຂອງເຄື່ອງຫຼິ້ນ</string>
   <string name="morphe_disable_player_popup_panels_summary">ປິດການເປີດແຜງລາຍການຫຼິ້ນ ແລະ ແຊັດສົດໂດຍອັດຕະໂນມັດ</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">ສະແດງແຜງລາຍການຫຼິ້ນໃນໜ້າຈໍເຕັມ</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">ແຜງລາຍການຫຼິ້ນຈະເປີດທັບເຄື່ອງຫຼິ້ນໜ້າຈໍເຕັມ</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">ແຜງລາຍການຫຼິ້ນຈະອອກຈາກໜ້າຈໍເຕັມໃນແທັບເລັດ</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">ປິດການຫຼິ້ນອັດຕະໂນມັດຂອງລາຍການຫຼິ້ນ</string>
   <string name="morphe_disable_playlist_autoplay_summary">ປ້ອງກັນບໍ່ໃຫ້ລາຍການຫຼິ້ນເພງເລື່ອນໄປວິດີໂອຖັດໄປໂດຍອັດຕະໂນມັດ</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">ການຄວບຄຸມການຫຼິ້ນອັດຕະໂນມັດ</string>
+  <string name="morphe_autoplay_control_summary">ເພີ່ມປຸ່ມເຄື່ອງຫຼິ້ນ ແລະ ກົດເກນສຳລັບວິດີໂອຖັດໄປ. ຫຼິ້ນລາຍການຫຼິ້ນ ແລະ ຄິວຕໍ່ໄປ, Mix ຈະຢຸດຫຼັງຈາກຈຳນວນວິດີໂອທີ່ກຳນົດ, ວິດີໂອທີ່ແນະນຳຈະບໍ່ຖືກຫຼິ້ນ. ແຕະປຸ່ມເພື່ອປ່ຽນໂໝດຖັດໄປ, ແຕະຄ້າງໄວ້ເພື່ອເບິ່ງລາຍການ</string>
+  <string name="morphe_autoplay_mode_title">ໂໝດການຫຼິ້ນອັດຕະໂນມັດ</string>
+  <string name="morphe_autoplay_mode_entry_1">ອັດຕະໂນມັດ</string>
+  <string name="morphe_autoplay_mode_entry_2">ດ່ຽວ</string>
+  <string name="morphe_autoplay_mode_entry_3">ປິດ</string>
+  <string name="morphe_autoplay_mix_stop_after_title">ຄວາມຍາວຂອງ Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">ໃນໂໝດອັດຕະໂນມັດ, Mix ຈະຢຸດຫຼັງຈາກວິດີໂອຈຳນວນນີ້. 0 = ບໍ່ມີຂີດຈຳກັດ</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s ວິດີໂອ</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: ບໍ່ມີຂີດຈຳກັດ</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">ຄຳແນະນຳ \'ເບິ່ງຕໍ່ ຫຼື ບໍ່?\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">ຄ່າເລີ່ມຕົ້ນ</string>
@@ -1283,9 +1301,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - ກູ້ຄືນການບັນທຶກເກົ່າໄປຍັງລາຍການຫຼິ້ນ</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - ປິດໄອຄອນຕົວໜາ</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - ຄືນຄ່າຊື່ຊ່ອງລຸ່ມເຄື່ອງຫຼິ້ນວິດີໂອ</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">ເປີດແຜ່ນແບ່ງປັນຂອງລະບົບ</string>
-  <string name="morphe_open_system_share_sheet_summary">ເປີດແຜງແບ່ງປັນຂອງລະບົບ ແທນທີ່ແຜງແບ່ງປັນພາຍໃນແອັບ ເມື່ອແບ່ງປັນເນື້ອຫາ</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">ປັບປ່ຽນປຸ່ມ YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">ເປີດແອັບເພງທີ່ທ່ານມັກ ແທນທີ່ແອັບ YouTube Music ທີ່ຕິດຕັ້ງມາພ້ອມກັບເຄື່ອງ</string>
@@ -1479,7 +1494,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ (ລະຫັດສະຖານະ: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">ກູ້ຄືນຮູບແບບປຸ່ມເຄື່ອງຫຼິ້ນແບບເກົ່າ</string>
   <string name="morphe_restore_old_player_buttons_summary">ປ່ຽນປຸ່ມຄວບຄຸມເຄື່ອງຫຼິ້ນວິດີໂອແບບໜາ ໃຫ້ກັບໄປເປັນຮູບແບບທີ່ບາງກວ່າໃນສະບັບກ່ອນ</string>
@@ -1519,25 +1533,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">ສະແດງເມນູໜ່ວງວິດີໂອ</string>
   <string name="morphe_video_delay_dialog_input_hint">ການໜ່ວງເປັນມິນລິວິນາທີ</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">ອັດຕະໂນມັດ</string>
-  <string name="morphe_remember_video_quality_last_selected_title">ຈື່ຄຸນນະພາບວິດີໂອ</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">ນຳໃຊ້ການເລືອກຄຸນນະພາບດ້ວຍຕົນເອງຂອງທ່ານກັບທຸກວິດີໂອໃນອະນາຄົດ</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">ການແຈ້ງເຕືອນການປ່ຽນແປງຄຸນນະພາບ</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອມີການບັນທຶກຄຸນນະພາບເລີ່ມຕົ້ນໃໝ່</string>
-  <string name="morphe_video_quality_default_wifi_title">ຄຸນນະພາບວິດີໂອເລີ່ມຕົ້ນໃນເຄືອຂ່າຍ Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">ຄຸນນະພາບວິດີໂອເລີ່ມຕົ້ນໃນເຄືອຂ່າຍມືຖື</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">ຈື່ຄຸນນະພາບ Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">ນຳໃຊ້ການເລືອກຄຸນນະພາບດ້ວຍຕົນເອງຂອງທ່ານກັບທຸກໆ Shorts ໃນອະນາຄົດ</string>
   <string name="morphe_shorts_quality_default_wifi_title">ຄຸນນະພາບ Shorts ເລີ່ມຕົ້ນໃນເຄືອຂ່າຍ Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">ຄຸນນະພາບ Shorts ເລີ່ມຕົ້ນໃນເຄືອຂ່າຍມືຖື</string>
-  <string name="morphe_remember_video_quality_toast_mobile">ປ່ຽນຄຸນນະພາບມືຖືເລີ່ມຕົ້ນເປັນ: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">ປ່ຽນຄຸນນະພາບ Wi-Fi ເລີ່ມຕົ້ນເປັນ: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">ປ່ຽນຄຸນນະພາບ Shorts ມືຖືເປັນ: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">ປ່ຽນຄຸນນະພາບ Wi-Fi ຂອງ Shorts ເປັນ: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">ສະແດງປຸ່ມຄວາມໄວໃນການຫຼິ້ນ</string>
   <string name="morphe_playback_speed_dialog_button_summary">ແຕະຄ້າງໄວ້ເພື່ອຣີເຊັດຄວາມໄວເປັນຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_playback_speed_button_cycle_title">ແຕະປຸ່ມຄວາມໄວໃນການຫຼິ້ນເພື່ອປ່ຽນຄວາມໄວ</string>
+  <string name="morphe_playback_speed_button_cycle_summary">ການແຕະຈະໄປຫາຄວາມໄວຖັດໄປໃນລາຍການ. ແຕະຄ້າງໄວ້ເພື່ອເປີດເມນູຄວາມໄວ</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">ຄວາມໄວຂອງປຸ່ມຄວາມໄວໃນການຫຼິ້ນ</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">ຄວາມໄວທີ່ການແຕະຈະປ່ຽນໄປ, ຫນຶ່ງຄວາມໄວຕໍ່ໜຶ່ງແຖວ. ຫຼັງຈາກຄວາມໄວສຸດທ້າຍ, ການແຕະຈະກັບໄປທີ່ຄວາມໄວທຳອິດ</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">ລາຍການວົງຈອນຄວາມໄວບໍ່ຖືກຕ້ອງ, ຣີເຊັດເປັນຄ່າເລີ່ມຕົ້ນ</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">ສະແດງປຸ່ມຄຸນນະພາບ</string>
   <string name="morphe_video_quality_dialog_button_summary">ແຕະຄ້າງໄວ້ເພື່ອຣີເຊັດຄຸນນະພາບເປັນຄ່າເລີ່ມຕົ້ນ</string>

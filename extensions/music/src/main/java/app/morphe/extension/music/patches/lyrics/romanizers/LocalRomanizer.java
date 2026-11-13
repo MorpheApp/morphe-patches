@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -177,8 +178,10 @@ public final class LocalRomanizer {
             return null;
         }
 
-        final int[][] tokens = readingTokens(wholeLine);
-        final int[][] spread = spreadReading(words, wholeLine);
+        // A packed CJK reading is split into syllables when that makes it fit the words.
+        final String effective = readingForWords(words, wholeLine);
+        final int[][] tokens = readingTokens(effective);
+        final int[][] spread = spreadReading(words, effective);
         if (tokens.length == 0 || spread == null) return null;
 
         final List<Word> read = new ArrayList<>(words.size());
@@ -192,7 +195,7 @@ public final class LocalRomanizer {
             final StringBuilder syllables = new StringBuilder();
             for (int at = range[0]; at < range[1]; at++) {
                 if (syllables.length() > 0) syllables.append(' ');
-                syllables.append(reading, tokens[at][0], tokens[at][1]);
+                syllables.append(effective, tokens[at][0], tokens[at][1]);
             }
             read.add(new Word(word.startMs(), word.endMs(), word.text(), syllables.toString(),
                     word.endsWithSpace(), word.ruby()));
@@ -221,13 +224,175 @@ public final class LocalRomanizer {
         return tokens.isEmpty() ? NO_TOKENS : tokens.toArray(new int[0][]);
     }
 
-    /**
-     * Which of those syllables each word is said with, as {@code [from, to)} token indices and an
-     * empty pair for a word of marks only. Null when the reading fits the words neither one
-     * syllable per spoken character nor one per word.
-     *
-     * <p>A caller holding only timings gets the same placement by handing over one word per timing.
-     */
+    private static final String PINYIN_INITIALS = "bpmfdtnlgkhjqxrzcsyw";
+    private static final Set<String> PINYIN_FINALS = new HashSet<>(Arrays.asList(
+            "a", "o", "e", "i", "u", "ü",
+            "ai", "ei", "ao", "ou", "an", "en", "ang", "eng", "er",
+            "ia", "ie", "iao", "iu", "ian", "in", "iang", "ing", "iong",
+            "ua", "uo", "uai", "ui", "uan", "un", "uang", "ueng", "ong",
+            "ue", "üe", "üan", "ün"));
+    private static final int MAX_PINYIN_SYLLABLE = 7;
+
+    private static boolean isPinyinInitial(char c) {
+        return PINYIN_INITIALS.indexOf(Character.toLowerCase(c)) >= 0;
+    }
+
+    private static boolean isTwoCharPinyinInitial(String token, int at) {
+        if (at + 1 >= token.length()) return false;
+        final char a = Character.toLowerCase(token.charAt(at));
+        final char b = Character.toLowerCase(token.charAt(at + 1));
+        return (a == 'z' && b == 'h') || (a == 'c' && b == 'h') || (a == 's' && b == 'h');
+    }
+
+    /** So finals compare without tones. */
+    private static char basePinyinChar(char c) {
+        switch (c) {
+            case 'ā':
+            case 'á':
+            case 'ǎ':
+            case 'à':
+                return 'a';
+            case 'ē':
+            case 'é':
+            case 'ě':
+            case 'è':
+                return 'e';
+            case 'ī':
+            case 'í':
+            case 'ǐ':
+            case 'ì':
+                return 'i';
+            case 'ō':
+            case 'ó':
+            case 'ǒ':
+            case 'ò':
+                return 'o';
+            case 'ū':
+            case 'ú':
+            case 'ǔ':
+            case 'ù':
+                return 'u';
+            case 'ǖ':
+            case 'ǘ':
+            case 'ǚ':
+            case 'ǜ':
+                return 'ü';
+            default:
+                return Character.toLowerCase(c);
+        }
+    }
+
+    private static boolean isValidPinyinSyllable(String token, int start, int end) {
+        int at = start;
+        int finalEnd = end;
+        if (finalEnd > at && Character.isDigit(token.charAt(finalEnd - 1))) finalEnd--;
+        if (finalEnd <= at) return false;
+        if (isTwoCharPinyinInitial(token, at)) {
+            at += 2;
+        } else if (isPinyinInitial(token.charAt(at))) {
+            at++;
+        }
+        if (at >= finalEnd) return false;
+        final StringBuilder finalPart = new StringBuilder(finalEnd - at);
+        for (int i = at; i < finalEnd; i++) {
+            finalPart.append(basePinyinChar(token.charAt(i)));
+        }
+        return PINYIN_FINALS.contains(finalPart.toString());
+    }
+
+    static List<String> splitPinyin(String token) {
+        if (token == null || token.isEmpty()) return Collections.emptyList();
+        final int length = token.length();
+        final List<List<String>> dp = new ArrayList<>(length + 1);
+        for (int i = 0; i <= length; i++) dp.add(null);
+        dp.set(length, new ArrayList<>());
+        for (int i = length - 1; i >= 0; i--) {
+            List<String> best = null;
+            final int maxEnd = Math.min(length, i + MAX_PINYIN_SYLLABLE);
+            for (int end = maxEnd; end > i; end--) {
+                if (!isValidPinyinSyllable(token, i, end)) continue;
+                final List<String> rest = dp.get(end);
+                if (rest == null) continue;
+                if (best == null || rest.size() + 1 < best.size()) {
+                    final List<String> candidate = new ArrayList<>(rest.size() + 1);
+                    candidate.add(token.substring(i, end));
+                    candidate.addAll(rest);
+                    best = candidate;
+                }
+            }
+            dp.set(i, best);
+        }
+        final List<String> split = dp.get(0);
+        return split != null ? split : Collections.emptyList();
+    }
+
+    @Nullable
+    public static String expandPinyinReading(@Nullable String reading) {
+        if (reading == null || reading.isEmpty()) return reading;
+        final StringBuilder out = new StringBuilder(reading.length() + 8);
+        int at = 0;
+        while (at < reading.length()) {
+            final int spaceStart = at;
+            while (at < reading.length() && Character.isWhitespace(reading.charAt(at))) at++;
+            out.append(reading, spaceStart, at);
+            if (at >= reading.length()) break;
+            final int tokenStart = at;
+            while (at < reading.length() && !Character.isWhitespace(reading.charAt(at))) at++;
+            final String token = reading.substring(tokenStart, at);
+            final List<String> syllables = splitPinyin(token);
+            if (syllables.size() > 1) {
+                for (int i = 0; i < syllables.size(); i++) {
+                    if (i > 0) out.append(' ');
+                    out.append(syllables.get(i));
+                }
+            } else {
+                out.append(token);
+            }
+        }
+        return out.toString();
+    }
+
+    public static boolean hasCjkWord(List<Word> words) {
+        for (Word word : words) {
+            final String text = word.text();
+            if (ScriptDetector.containsCjk(text)) return true;
+        }
+        return false;
+    }
+
+    public static boolean hasCjkWord(String[] words) {
+        if (words == null) return false;
+        for (String word : words) {
+            if (ScriptDetector.containsCjk(word)) return true;
+        }
+        return false;
+    }
+
+    /** A packed CJK reading is split apart when that makes it fit the words exactly. */
+    public static String readingForWords(List<Word> words, @Nullable String reading) {
+        if (reading == null || reading.trim().isEmpty() || words.isEmpty()) {
+            return reading;
+        }
+        final int[][] tokens = readingTokens(reading);
+        if (tokens.length == 0) return reading;
+        int syllables = 0;
+        int carried = 0;
+        for (Word word : words) {
+            final String text = word.text() != null ? word.text() : "";
+            final int count = units(text);
+            if (count > 0) carried++;
+            syllables += count;
+        }
+        if (tokens.length == syllables || tokens.length == carried) return reading;
+        if (!hasCjkWord(words)) return reading;
+        final String expanded = expandPinyinReading(reading);
+        final int[][] expandedTokens = readingTokens(expanded);
+        if (expandedTokens.length == syllables || expandedTokens.length == carried) {
+            return expanded;
+        }
+        return reading;
+    }
+
     @Nullable
     public static int[][] spreadReading(List<Word> words, @Nullable String reading) {
         final int[][] tokens = readingTokens(reading);
@@ -260,19 +425,36 @@ public final class LocalRomanizer {
     }
 
     /**
-     * Token-level only: spaces are word boundaries; never split inside a token.
      * Short readings spread (emptySlotCost > merge penalty) rather than pile up.
      */
     public static String[] allocateReading(String reading, int slots,
                                            @Nullable List<String> guides) {
+        return allocateReading(reading, slots, guides, false);
+    }
+
+    /** A packed CJK reading may be split to fill one syllable per slot. */
+    public static String[] allocateReading(String reading, int slots,
+                                           @Nullable List<String> guides, boolean splitCjk) {
         String[] out = new String[Math.max(0, slots)];
         Arrays.fill(out, "");
         if (out.length == 0 || reading == null) {
             return out;
         }
-        final int[][] tokens = readingTokens(reading);
+        int[][] tokens = readingTokens(reading);
         if (tokens.length == 0) {
             return out;
+        }
+        if (splitCjk && tokens.length < out.length) {
+            final String expanded = expandPinyinReading(reading);
+            final int[][] expandedTokens = readingTokens(expanded);
+            // With spare slots, split only when the guides place each syllable; otherwise the boundary is a guess.
+            final boolean exactFit = expandedTokens.length == out.length;
+            final boolean guidedSpread = expandedTokens.length > tokens.length
+                    && expandedTokens.length < out.length && hasAnyGuide(guides);
+            if (exactFit || guidedSpread) {
+                reading = expanded;
+                tokens = expandedTokens;
+            }
         }
         final int T = tokens.length;
         final int M = out.length;
@@ -356,6 +538,14 @@ public final class LocalRomanizer {
             }
         }
         return sb.toString();
+    }
+
+    private static boolean hasAnyGuide(@Nullable List<String> guides) {
+        if (guides == null) return false;
+        for (String guide : guides) {
+            if (guide != null && !guide.trim().isEmpty()) return true;
+        }
+        return false;
     }
 
     private static double tokenMatchCost(String piece, @Nullable String guide) {

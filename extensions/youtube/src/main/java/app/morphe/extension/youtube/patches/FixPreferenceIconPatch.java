@@ -13,7 +13,7 @@ import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 @SuppressWarnings("unused")
 public class FixPreferenceIconPatch {
     private static final boolean REMOVE_BROKEN_PREFERENCE_ICON =
-            Settings.RESTORE_OLD_SETTINGS_MENUS.get() || !YouTubeActivityHook.useBoldIcons();
+            Settings.RESTORE_OLD_SETTINGS_MENUS.get() || !YouTubeActivityHook.USE_BOLD_ICONS;
 
     /**
      * Injection point.

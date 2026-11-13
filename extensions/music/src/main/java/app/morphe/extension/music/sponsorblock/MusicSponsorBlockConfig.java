@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1842
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -17,6 +17,7 @@ import app.morphe.extension.music.patches.album.PlayAlbumSongsPatch;
 import app.morphe.extension.music.patches.album.PlaylistRequest;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
@@ -32,6 +33,7 @@ import app.morphe.extension.shared.sponsorblock.SponsorBlockApi.PlayerStateAdapt
 import app.morphe.extension.shared.sponsorblock.SponsorBlockApi.SettingsAdapter;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockApi.UiBridge;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockApi.VideoInformationAdapter;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
 import app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour;
 import app.morphe.extension.shared.sponsorblock.objects.SegmentCategory;
 
@@ -112,6 +114,36 @@ public final class MusicSponsorBlockConfig implements Configuration {
         SegmentPlaybackController.drawSegmentTimeBars(canvas);
     }
 
+    /**
+     * Injection point.
+     * <p>
+     * Called when a song or video is saved with the offline video endpoint.
+     */
+    @SuppressWarnings("unused")
+    public static void offlineVideoAdded(String videoId) {
+        try {
+            if (videoId.isEmpty()) return;
+
+            SponsorBlockOfflineStorage.fetchAndSaveSegments(videoId);
+        } catch (Exception ex) {
+            Logger.printException(() -> "offlineVideoAdded failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the app removes a saved song or video, after any prompt is confirmed.
+     */
+    @SuppressWarnings("unused")
+    public static void offlineVideoRemoved(String videoId) {
+        try {
+            SponsorBlockOfflineStorage.deleteSegments(videoId);
+        } catch (Exception ex) {
+            Logger.printException(() -> "offlineVideoRemoved failure", ex);
+        }
+    }
+
     private MusicSponsorBlockConfig() {}
 
     @Override public boolean undoToastEnabled()            { return false; }
@@ -154,7 +186,7 @@ public final class MusicSponsorBlockConfig implements Configuration {
         @Override public @NonNull BooleanSetting toastOnConnectionError()       { return Settings.SB_TOAST_ON_CONNECTION_ERROR; }
         @Override public @NonNull StringSetting  apiUrl()                       { return Settings.SB_API_URL; }
         @Override public @Nullable BooleanSetting videoLengthWithoutSegments()  { return null; }
-        @Override public @Nullable BooleanSetting offlineSegments()             { return null; }
+        @Override public @NonNull BooleanSetting offlineSegments()              { return Settings.SB_OFFLINE_SEGMENTS; }
         @Override public @Nullable BooleanSetting toastOnWhitelistedChannel()   { return null; }
         @Override public @Nullable BooleanSetting autoHideSkipButton()          { return null; }
         @Override public @Nullable BooleanSetting userIsVip()                   { return null; }

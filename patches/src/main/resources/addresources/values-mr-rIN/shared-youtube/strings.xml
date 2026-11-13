@@ -232,6 +232,20 @@ Android System WebView उघडण्यासाठी OK वर टॅप क
   <string name="morphe_replace_music_with_youtube_summary">सामायिक लिंक्समध्ये music.youtube.com ला youtube.com ने बदला.</string>
   <string name="morphe_replace_links_with_shortener_title">youtu.be वापरून शेअर लिंक्स बदला</string>
   <string name="morphe_replace_links_with_shortener_summary">व्हिडिओंना लहान youtu.be URL फॉरमॅट वापरण्यास भाग पाडते</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">स्वयंचलित</string>
+  <string name="morphe_remember_video_quality_last_selected_title">व्हिडिओ गुणवत्ता लक्षात ठेवा</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">तुमची मॅन्युअल गुणवत्ता निवड भविष्यातील सर्व व्हिडिओंना लागू होईल</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">गुणवत्ता बदल सूचना</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">जेव्हा नवीन डीफॉल्ट गुणवत्ता जतन केली जाते तेव्हा सूचना दाखवते</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi नेटवर्कवरील डीफॉल्ट व्हिडिओ गुणवत्ता</string>
+  <string name="morphe_video_quality_default_mobile_title">मोबाईल नेटवर्कवरील डीफॉल्ट व्हिडिओ गुणवत्ता</string>
+  <string name="morphe_remember_video_quality_toast_mobile">डीफॉल्ट मोबाईल गुणवत्ता बदलून %s केली</string>
+  <string name="morphe_remember_video_quality_toast_wifi">डीफॉल्ट Wi-Fi गुणवत्ता बदलून %s केली</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">सिस्टम शेअर शीट उघडा</string>
+  <string name="morphe_open_system_share_sheet_summary">कंटेंट शेअर करताना इन-अ‍ॅप शेअर शीटऐवजी सिस्टम शेअर शीट उघडते</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">लिथो लॉगिंग</string>
   <string name="morphe_debug_litho_entry_disabled">बंद आहे</string>
