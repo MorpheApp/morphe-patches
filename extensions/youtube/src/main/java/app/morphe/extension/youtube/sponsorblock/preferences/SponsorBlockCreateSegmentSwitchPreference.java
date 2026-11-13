@@ -13,12 +13,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.preference.SwitchPreference;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.LinearLayout;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -28,7 +28,7 @@ import app.morphe.extension.youtube.settings.Settings;
  * ({@code SB_SEEN_GUIDELINES}) the toggle behaves like a normal SwitchPreference.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public class SponsorBlockCreateSegmentSwitchPreference extends SwitchPreference {
+public class SponsorBlockCreateSegmentSwitchPreference extends BooleanSettingPreference {
 
     private static final Uri GUIDELINES_URI = Uri.parse("https://wiki.sponsor.ajay.app/w/Guidelines");
 

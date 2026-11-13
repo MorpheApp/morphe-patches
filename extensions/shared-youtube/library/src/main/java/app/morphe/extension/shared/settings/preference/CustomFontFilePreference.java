@@ -115,13 +115,8 @@ public class CustomFontFilePreference extends Preference {
             }
 
             // The font file can also be picked when the custom font is selected without a file.
-            AbstractPreferenceFragment.settingImportInProgress = true;
-            try {
-                SharedYouTubeSettings.CUSTOM_FONT_FILE.save(fileName);
-                SharedYouTubeSettings.CUSTOM_FONT_TYPE.save(FontType.CUSTOM);
-            } finally {
-                AbstractPreferenceFragment.settingImportInProgress = false;
-            }
+            SharedYouTubeSettings.CUSTOM_FONT_FILE.save(fileName);
+            SharedYouTubeSettings.CUSTOM_FONT_TYPE.save(FontType.CUSTOM);
 
             CustomFontFilePreference preference = shownPreference.get();
             if (preference != null) {

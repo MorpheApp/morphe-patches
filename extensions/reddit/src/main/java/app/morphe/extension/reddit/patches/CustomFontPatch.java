@@ -26,7 +26,6 @@ import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 @SuppressWarnings("unused")
 public final class CustomFontPatch {
@@ -184,14 +183,10 @@ public final class CustomFontPatch {
     }
 
     private static void disableCustomFont() {
-        // Suppress shared preference listener side effects for this programmatic write.
-        AbstractPreferenceFragment.settingImportInProgress = true;
         try {
             Settings.CUSTOM_FONT.save(false);
-        } catch (Exception ignored) {
-            // Ignore any preference write failures and keep fallback behavior.
-        } finally {
-            AbstractPreferenceFragment.settingImportInProgress = false;
+        } catch (Exception ex) {
+            Logger.printException(() -> "disableCustomFont failure", ex);
         }
     }
 }

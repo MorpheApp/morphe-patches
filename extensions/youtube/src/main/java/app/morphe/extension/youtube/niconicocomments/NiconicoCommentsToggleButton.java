@@ -99,6 +99,7 @@ public final class NiconicoCommentsToggleButton {
                     getOnLongClickListener()
             );
             View legacyButton = Utils.getChildViewByResourceName(controlsView, "morphe_niconico_comments_button");
+            legacyButton.setContentDescription(str("morphe_niconico_comments_screen_title"));
             PlayerOverlayButton.setToggleAccessibilityDelegate(
                     legacyButton, Settings.NICONICO_COMMENTS_SHOWN::get);
         } catch (Exception ex) {

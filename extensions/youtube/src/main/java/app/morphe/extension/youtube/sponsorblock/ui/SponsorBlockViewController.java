@@ -1,5 +1,7 @@
 package app.morphe.extension.youtube.sponsorblock.ui;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,11 +86,15 @@ public class SponsorBlockViewController {
             });
             youtubeOverlaysLayoutRef = new WeakReference<>(viewGroup);
 
-            skipHighlightButtonRef = new WeakReference<>(Objects.requireNonNull(layout.findViewById(
-                    ResourceUtils.getIdentifier(ResourceType.ID, "morphe_sb_skip_highlight_button"))));
+            SkipSponsorButton skipHighlightButton = Objects.requireNonNull(layout.findViewById(
+                    ResourceUtils.getIdentifier(ResourceType.ID, "morphe_sb_skip_highlight_button")));
+            skipHighlightButton.setContentDescription(str("morphe_sb_skip_button_compact_highlight"));
+            skipHighlightButtonRef = new WeakReference<>(skipHighlightButton);
 
-            skipSponsorButtonRef = new WeakReference<>(Objects.requireNonNull(layout.findViewById(
-                    ResourceUtils.getIdentifier(ResourceType.ID, "morphe_sb_skip_sponsor_button"))));
+            SkipSponsorButton skipSponsorButton = Objects.requireNonNull(layout.findViewById(
+                    ResourceUtils.getIdentifier(ResourceType.ID, "morphe_sb_skip_sponsor_button")));
+            skipSponsorButton.setContentDescription(str("morphe_sb_skip_button_compact"));
+            skipSponsorButtonRef = new WeakReference<>(skipSponsorButton);
 
             // Handles fading in/out with the player overlay.
             new LegacyPlayerControlButton(
