@@ -689,6 +689,7 @@ public final class AmbientLightController {
         onMoved();
         // The view draws the light around the video, and the video has moved in the view.
         if (playerLight != null) playerLight.invalidate();
+        SeeThroughPage.invalidateBackdropLight();
         scheduleTick();
     }
 
