@@ -332,9 +332,6 @@ public final class MwebSignIn {
     }
 
     /**
-     * Called when the server does not accept the sign in, which expires after some hours.
-     */
-    /**
      * Called when the user has signed in. The streams fetched signed out, and the open page, are not used again.
      */
     public static void onSignedIn() {
