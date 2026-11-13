@@ -572,9 +572,9 @@ public final class FeedEngagementCountsPatch {
             }
             // The smallest thumbnails, such as of the rows of a playlist, show only the like count.
             final Rect frameThumbnail = frame.thumbnail();
-            final int thumbnailWidth = frameThumbnail != null ? frameThumbnail.width() : host.getWidth();
+            final int frameWidth = frameThumbnail != null ? frameThumbnail.width() : host.getWidth();
             final DisplayMetrics metrics = host.getResources().getDisplayMetrics();
-            final boolean small = thumbnailWidth
+            final boolean small = frameWidth
                     < Math.min(metrics.widthPixels, metrics.heightPixels) * MAX_SMALL_THUMBNAIL_OF_SCREEN;
             ratioText = small && LIKE_COUNT ? null : videoRatioText;
 
