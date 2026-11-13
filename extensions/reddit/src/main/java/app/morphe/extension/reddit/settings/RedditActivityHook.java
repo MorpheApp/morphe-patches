@@ -31,8 +31,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import androidx.annotation.Nullable;
+
 import java.lang.reflect.Field;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import app.morphe.extension.reddit.settings.preference.RedditPreferenceFragment;
 import app.morphe.extension.reddit.settings.preference.RedditSettingsStyle;
@@ -55,10 +59,10 @@ public class RedditActivityHook {
             ResourceUtils.getString("privacy_policy_uri"));
 
     /**
-     * Key of the Compose settings row that is turned into the Morphe settings row.
+     * Key of the Compose settings row that is cloned as the Morphe settings row.
      * 2026.30.0+
      */
-    private static final String MORPHE_SETTING_ROW_KEY = "key_pref_privacy_policy";
+    private static final String MORPHE_SETTING_ROW_KEY = "key_pref_morphe";
     private static final String MORPHE_SETTINGS_DIALOG_TAG = "morphe_settings";
     private static final String MORPHE_SETTINGS_ICON_DRAWABLE = "morphe_settings_icon_reddit";
 
@@ -181,6 +185,53 @@ public class RedditActivityHook {
             return true;
         }
         return false;
+    }
+
+    @Nullable
+    private static Object morpheSettingItem;
+    private static boolean isCreatingMorpheItem = false;
+
+    /**
+     * Guard to prevent recursive instantiation during Compose setting item cloning.
+     */
+    public static boolean shouldCreateMorpheItem() {
+        if (morpheSettingItem != null || isCreatingMorpheItem) {
+            return false;
+        }
+        isCreatingMorpheItem = true;
+        return true;
+    }
+
+    /**
+     * Injection point.
+     * 2026.30.0+
+     */
+    public static void setMorpheSettingItem(Object item) {
+        morpheSettingItem = item;
+        isCreatingMorpheItem = false;
+    }
+
+    /**
+     * Injection point.
+     * 2026.30.0+
+     */
+    public static Set<Object> includeMorpheSettingItem(Set<Object> items) {
+        if (items == null || morpheSettingItem == null || items.contains(morpheSettingItem)) {
+            return items;
+        }
+        Set<Object> newItems = new LinkedHashSet<>(items.size() + 1);
+        newItems.addAll(items);
+        newItems.add(morpheSettingItem);
+        return newItems;
+    }
+
+    /**
+     * If true, Morphe hijacked the original Privacy Policy link to open Morphe settings,
+     * so Morphe settings must display a fallback "Reddit privacy policy" link.
+     * When Compose row cloning is active, both rows coexist in stock Settings, so no fallback is needed.
+     */
+    public static boolean usePrivacyPolicyFallback() {
+        return true;
     }
 
     /**

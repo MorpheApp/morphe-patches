@@ -112,6 +112,24 @@ internal object PrivacyPolicySettingRowContentFingerprint : Fingerprint(
 )
 
 /**
+ * Resolves the items set in `UserSettingsViewModel`, which feeds all settings rows into Compose.
+ *
+ * 2026.30.0+
+ */
+internal object UserSettingsViewModelItemsFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/screen/settings/usersettings/UserSettingsViewModel;",
+    isStatic = false,
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/util/Set;"
+        )
+    )
+)
+
+/**
  * Icon data of the Reddit icon set, a vector drawable resource and its size.
  * The constructor is (packed size, drawable resource id, auto mirrored).
  *

@@ -12,6 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.listDecodableFiles
 import app.morphe.patcher.patch.mutableClassDefBy
@@ -48,9 +49,11 @@ import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.util.MethodUtil
@@ -330,7 +333,7 @@ val settingsPatch = patch(
 }
 
 /**
- * Turns the "Privacy policy" row of the Compose settings into the Morphe settings row,
+ * Clones the \"Privacy policy\" row of the Compose settings to add the Morphe settings row,
  * with the Morphe title, icon and click action, at the top of the first section.
  *
  * Unlike relabeling the privacy policy string and intercepting its URL, this only changes the
@@ -343,7 +346,54 @@ val settingsPatch = patch(
 private fun hookComposeSettingRow(): Boolean {
     val constructorMatch = PrivacyPolicySettingRowConstructorFingerprint.matchOrNull() ?: return false
     val contentMatch = PrivacyPolicySettingRowContentFingerprint.matchOrNull() ?: return false
+    val viewModelMatch = UserSettingsViewModelItemsFingerprint.matchOrNull() ?: return false
     val keyField = constructorMatch.instructionMatches[1].fieldReference
+
+    // In UserSettingsViewModel, inject the cloned Morphe setting item into the items Set.
+    viewModelMatch.let {
+        val igetIndex = it.instructionMatches.first().index
+        it.method.apply {
+            val setRegister = getInstruction<TwoRegisterInstruction>(igetIndex).registerA
+            addInstructions(
+                igetIndex + 1,
+                """
+                    invoke-static { v$setRegister }, $EXTENSION_CLASS->includeMorpheSettingItem(Ljava/util/Set;)Ljava/util/Set;
+                    move-result-object v$setRegister
+                """
+            )
+        }
+    }
+
+    // In the Privacy Policy row constructor, instantiate a second instance with key = "key_pref_morphe".
+    constructorMatch.let {
+        val classType = it.classDef.type
+        val paramTypes = it.method.parameterTypes.joinToString("")
+        val navigatorType = it.method.parameterTypes.first()
+        val navigatorField = it.classDef.fields.single { field -> field.type == navigatorType }
+        val keyIndex = it.instructionMatches[1].index
+        val returnIndex = (keyIndex until it.method.instructions.size)
+            .first { idx -> it.method.instructions[idx].opcode == Opcode.RETURN_VOID }
+
+        it.method.apply {
+            addInstructionsWithLabels(
+                returnIndex,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->shouldCreateMorpheItem()Z
+                    move-result v1
+                    if-eqz v1, :skip_clone
+                    iget-object v1, v0, $navigatorField
+                    const/4 v2, 0x0
+                    new-instance v0, $classType
+                    invoke-direct { v0, v1, v2 }, $classType-><init>($paramTypes)V
+                    const-string v1, "key_pref_morphe"
+                    iput-object v1, v0, $keyField
+                    invoke-static { v0 }, $EXTENSION_CLASS->setMorpheSettingItem(Ljava/lang/Object;)V
+                    :skip_clone
+                    nop
+                """
+            )
+        }
+    }
 
     // Title, click action and icon.
     contentMatch.let {
@@ -366,20 +416,42 @@ private fun hookComposeSettingRow(): Boolean {
                 ""
             }
 
-            addInstructions(
+            val thisRegisterIndex = if (implementation!!.registerCount <= 16) {
+                p0Register
+            } else {
+                when (val first = instructions.first()) {
+                    is TwoRegisterInstruction -> first.registerA
+                    else -> 0
+                }
+            }
+
+            val free = findFreeRegister(
+                callIndex,
+                thisRegisterIndex,
+                titleRegister,
+                onClickRegister,
+                iconRegister
+            )
+            addInstructionsWithLabels(
                 callIndex,
                 """
+                    iget-object v$free, v$thisRegisterIndex, $keyField
+                    invoke-static { v$free }, $EXTENSION_CLASS->isMorpheSettingRow(Ljava/lang/String;)Z
+                    move-result v$free
+                    if-eqz v$free, :original_setting
                     invoke-static { }, $EXTENSION_CLASS->getSettingLabel()Ljava/lang/String;
                     move-result-object v$titleRegister
                     invoke-static/range { v$onClickRegister .. v$onClickRegister }, $EXTENSION_CLASS->getSettingOnClick(Lkotlin/jvm/functions/Function0;)Lkotlin/jvm/functions/Function0;
                     move-result-object v$onClickRegister
                     $iconInstructions
+                    :original_setting
+                    nop
                 """
             )
         }
     }
 
-    // Position. Rows are sorted by the order of the section, then by the order of the row.
+    // Position: Rows are sorted by the order of the section, then by the order of the row.
     constructorMatch.classDef.methods.let { methods ->
         fun MutableMethod.isGetter(returnType: String) = this.returnType == returnType &&
                 parameterTypes.isEmpty() && !AccessFlags.STATIC.isSet(accessFlags)
@@ -401,6 +473,11 @@ private fun hookComposeSettingRow(): Boolean {
             """
         ) ?: logger.warning("Could not find the order of the settings row")
     }
+
+    // Deactivate fallback link in MiscellaneousPreferenceCategory
+    mutableClassDefBy(EXTENSION_CLASS).methods
+        .single { it.name == "usePrivacyPolicyFallback" }
+        .returnEarly(false)
 
     return true
 }
