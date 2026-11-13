@@ -12,6 +12,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.database.ContentObserver;
 import android.media.AudioManager;
 import android.media.MediaMetadata;
@@ -26,6 +27,7 @@ import android.os.HandlerThread;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 
 /**
  * Pauses playback when the media volume is muted, and resumes it when the volume is raised again.
@@ -33,6 +35,10 @@ import app.morphe.extension.shared.Utils;
  * The volume is watched with the broadcasts the audio service sends, and with a settings observer
  * as a fallback. Both run on a dedicated thread, because callbacks posted to the main thread can
  * be delayed a lot while the app is in the background, and the pause would be delayed with them.
+ *
+ * The listeners are only registered while the setting is enabled, so no background work is done
+ * when the patch is not being used. The setting is also watched, so toggling it takes effect
+ * without restarting the app.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public final class PauseOnMutePatch {
@@ -45,17 +51,41 @@ public final class PauseOnMutePatch {
     private static final String ACTION_STREAM_MUTE_CHANGED = "android.media.STREAM_MUTE_CHANGED_ACTION";
     private static final String EXTRA_VOLUME_STREAM_TYPE = "android.media.EXTRA_VOLUME_STREAM_TYPE";
 
-    private static HandlerThread handlerThread;
-    private static Handler handler;
-
+    private static Context applicationContext;
     private static AudioManager audioManager;
+    private static SharedPreferences.OnSharedPreferenceChangeListener settingsListener;
+
+    private static HandlerThread handlerThread;
     private static BroadcastReceiver volumeReceiver;
     private static ContentObserver volumeObserver;
+
     private static volatile MediaSession capturedSession;
     private static volatile MediaController mediaController;
     private static volatile boolean initialized;
+    private static volatile boolean listening;
     private static volatile boolean muted;
     private static volatile boolean pausedByMute;
+
+    /**
+     * Clears the pending resume as soon as playback starts again after the pause that mute caused.
+     * Without this, a pause the user makes after resuming while still muted would be overridden
+     * when the volume is raised, as if it were still the pause this patch made.
+     */
+    private static final MediaController.Callback playbackCallback =
+            new MediaController.Callback() {
+                @Override
+                public void onPlaybackStateChanged(PlaybackState state) {
+                    if (state == null) {
+                        return;
+                    }
+                    int playbackState = state.getState();
+                    if (playbackState == PlaybackState.STATE_PLAYING
+                            || playbackState == PlaybackState.STATE_BUFFERING
+                            || playbackState == PlaybackState.STATE_CONNECTING) {
+                        pausedByMute = false;
+                    }
+                }
+            };
 
     private PauseOnMutePatch() {
     }
@@ -76,15 +106,92 @@ public final class PauseOnMutePatch {
                 return;
             }
 
+            applicationContext = context;
             audioManager = manager;
-            muted = isMuted(manager);
 
-            HandlerThread thread = new HandlerThread("MorphePauseOnMute");
-            thread.start();
-            Handler backgroundHandler = new Handler(thread.getLooper());
-            handlerThread = thread;
-            handler = backgroundHandler;
+            // Follows the setting, so enabling or disabling it only starts or stops the
+            // background listeners that the patch needs.
+            SharedPreferences.OnSharedPreferenceChangeListener listener = (preferences, key) -> {
+                if (Settings.PAUSE_ON_MUTE.key.equals(key)) {
+                    // Posted, because the settings screen may only update the setting values in
+                    // its own listener, which can be called after this one.
+                    Utils.runOnMainThread(PauseOnMutePatch::applySetting);
+                }
+            };
+            Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(listener);
+            settingsListener = listener;
 
+            initialized = true;
+            applySetting();
+        } catch (Exception ex) {
+            Logger.printException(() -> "Pause on mute: initialization failure", ex);
+        }
+    }
+
+    /**
+     * Injection point. Called right before YouTube Music runs {@code MediaSession.setMetadata}.
+     */
+    public static void onSetMetadata(MediaSession session, MediaMetadata metadata) {
+        if (session == null || session == capturedSession) {
+            return;
+        }
+        capturedSession = session;
+
+        Utils.runOnMainThread(() -> {
+            try {
+                MediaController controller = session.getController();
+                MediaController previous = mediaController;
+                if (previous == controller) {
+                    return;
+                }
+                if (previous != null) {
+                    try {
+                        previous.unregisterCallback(playbackCallback);
+                    } catch (Exception ex) {
+                        Logger.printException(() -> "Pause on mute: media session callback removal failure", ex);
+                    }
+                }
+                controller.registerCallback(playbackCallback);
+                mediaController = controller;
+            } catch (Exception ex) {
+                Logger.printException(() -> "Pause on mute: media session capture failure", ex);
+            }
+        });
+    }
+
+    private static void applySetting() {
+        try {
+            if (Settings.PAUSE_ON_MUTE.get()) {
+                startListening();
+            } else {
+                stopListening();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Pause on mute: setting application failure", ex);
+        }
+    }
+
+    private static synchronized void startListening() {
+        if (listening) {
+            return;
+        }
+        Context context = applicationContext;
+        AudioManager manager = audioManager;
+        if (context == null || manager == null) {
+            return;
+        }
+
+        HandlerThread thread = new HandlerThread("MorphePauseOnMute");
+        thread.start();
+        Handler backgroundHandler = new Handler(thread.getLooper());
+        handlerThread = thread;
+
+        // The volume is read before the listeners are registered, so a change made while they are
+        // being registered is still seen instead of being taken as the current state.
+        muted = isMuted(manager);
+        pausedByMute = false;
+
+        try {
             BroadcastReceiver receiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context receiverContext, Intent intent) {
@@ -129,28 +236,50 @@ public final class PauseOnMutePatch {
             );
             volumeObserver = observer;
 
-            initialized = true;
+            listening = true;
         } catch (Exception ex) {
-            Logger.printException(() -> "Pause on mute: initialization failure", ex);
+            Logger.printException(() -> "Pause on mute: listener registration failure", ex);
+            releaseListeners();
         }
     }
 
-    /**
-     * Injection point. Called right before YouTube Music runs {@code MediaSession.setMetadata}.
-     */
-    public static void onSetMetadata(MediaSession session, MediaMetadata metadata) {
-        if (session == null || session == capturedSession) {
+    private static synchronized void stopListening() {
+        if (!listening) {
             return;
         }
-        capturedSession = session;
+        listening = false;
+        releaseListeners();
+    }
 
-        Utils.runOnMainThread(() -> {
+    private static void releaseListeners() {
+        pausedByMute = false;
+
+        Context context = applicationContext;
+        BroadcastReceiver receiver = volumeReceiver;
+        volumeReceiver = null;
+        if (context != null && receiver != null) {
             try {
-                mediaController = session.getController();
+                context.unregisterReceiver(receiver);
             } catch (Exception ex) {
-                Logger.printException(() -> "Pause on mute: media session capture failure", ex);
+                Logger.printException(() -> "Pause on mute: receiver removal failure", ex);
             }
-        });
+        }
+
+        ContentObserver observer = volumeObserver;
+        volumeObserver = null;
+        if (context != null && observer != null) {
+            try {
+                context.getContentResolver().unregisterContentObserver(observer);
+            } catch (Exception ex) {
+                Logger.printException(() -> "Pause on mute: observer removal failure", ex);
+            }
+        }
+
+        HandlerThread thread = handlerThread;
+        handlerThread = null;
+        if (thread != null) {
+            thread.quitSafely();
+        }
     }
 
     private static boolean isMuted(AudioManager manager) {
@@ -161,6 +290,9 @@ public final class PauseOnMutePatch {
     }
 
     private static void onVolumeChanged() {
+        if (!listening) {
+            return;
+        }
         try {
             AudioManager manager = audioManager;
             if (manager == null) {
@@ -172,11 +304,6 @@ public final class PauseOnMutePatch {
                 return;
             }
             muted = stillMuted;
-
-            if (!Settings.PAUSE_ON_MUTE.get()) {
-                pausedByMute = false;
-                return;
-            }
 
             if (stillMuted) {
                 pausePlayback();
