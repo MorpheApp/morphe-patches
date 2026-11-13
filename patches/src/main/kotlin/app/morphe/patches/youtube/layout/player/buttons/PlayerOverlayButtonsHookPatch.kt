@@ -18,7 +18,6 @@ fun addPlayerBottomButton(extensionClass: String, extensionMethod: String = "ini
     // can insert code before the insertion point.
     ExploderUIFullscreenButtonFingerprint.let {
         it.clearMatch()
-        ExploderUIFullscreenButtonParentFingerprint.clearMatch() // FIXME: remove after bumping patcher.
         val lastMatch = it.instructionMatches.last()
         val register = lastMatch.getInstruction<OneRegisterInstruction>().registerA
 
