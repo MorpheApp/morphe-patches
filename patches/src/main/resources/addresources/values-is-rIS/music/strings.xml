@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Nota utanaðkomandi niðurhalara fyrir niðurhalsvalmynd</string>
   <string name="morphe_external_downloader_menu_summary">Niðurhalsvalkostur í valmyndum opnar utanaðkomandi niðurhalara í staðinn</string>
   <string name="morphe_export_download_folder_title">Flytja niðurhals út</string>
-  <string name="morphe_export_download_folder_summary">"Flytja lagi og myndbönd sem forritið hlaðir niður í geymslu tækisins með niðurhalsvalmyndinni. Ýttu til að breyta útflutningsmöppu
+  <string name="morphe_export_download_folder_summary">"Flytja út lög og myndbönd sem eru vistuð í forritinu í geymslu tækisins með niðurhalsvalmyndinni. Ýttu til að breyta útflutningsmöppu
 
 Útflutningsmappa: %s"</string>
   <string name="morphe_export_download_started">Útflutningur niðurhals</string>
@@ -146,13 +146,14 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_saved">Flutt %1$s af %2$s niðurhaldum út í %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Um Morphe</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Auglýsingar</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Straumur</string>
-  <string name="morphe_settings_music_screen_3_general_title">Almennt</string>
-  <string name="morphe_settings_music_screen_4_player_title">Spilari</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Textar</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Annað</string>
+  <string name="morphe_settings_music_screen_00_about_title">Um</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Auglýsingar</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Straumur</string>
+  <string name="morphe_settings_music_screen_03_general_title">Almennt</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Textar</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Ýmslegt</string>
+  <string name="morphe_settings_music_screen_06_player_title">Spilari</string>
+  <string name="morphe_settings_music_screen_10_video_title">Myndband</string>
   <string name="morphe_music_app_language_title">Tungumál YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Tungumál kerfisins</string>
   <string name="morphe_music_app_language_summary_unsupported">Krefst Android 13 eða nýrri</string>
@@ -256,6 +257,9 @@ SABR spilun (slökkt á spoofun myndbandsstrauma)"</string>
   <string name="morphe_music_playback_speed_title">Spilunarhraði</string>
   <string name="morphe_music_playback_speed_summary">Hraði sem notaður er fyrir öll lög. Við 100% er hraði forritsins notaður, eins og spilunarhraði hlaðvarpsins.</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Breyta tónhæð með hraðanum</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Slökkva á sjálfvirkum texta</string>
+  <string name="morphe_music_disable_auto_captions_summary">Textar verða ekki virkir sjálfkrafa þegar myndband hefst, þar á meðal textar sem myndbandið virkar sjálfgeims</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Öðugga hljóðlækkun</string>
   <string name="morphe_music_disable_audio_ducking_summary">Hljóðstyrkurinn lækkar ekki þegar önnur forrit spila stutt hljóð, eins og tilkynningar</string>
@@ -567,6 +571,7 @@ Til að tryggja að skrobbun samstillist við spilun í bakgrunni skaltu ganga �
 
 Gagnagrunnurinn er gefinn út undir ODC Open Database License (ODbL). Færslur frá Soul Over AI eftir xoundbyte eru með leyfi samkvæmt CC BY 4.0. Ekki tengt SoundProof eða Soul Over AI og ekki stutt af þeim."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Lög eru ekki aðgengileg fyrir þessa tækjatáknskrár.</string>
   <string name="morphe_music_lyrics_enabled_title">Nota texta frá þriðja aðila</string>
   <string name="morphe_music_lyrics_enabled_summary">Sýnir texta frá þriðja aðila og notar innbyggðu textana þegar engir finnast</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Haltu skjánum kveiktum meðan þú skoðar texta</string>
@@ -698,6 +703,7 @@ Nauðsynlegar vafrakökur: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_search_title_hint">Lagtitill</string>
   <string name="morphe_music_lyrics_search_artist_hint">Flytjandi</string>
   <string name="morphe_music_lyrics_search_empty">Sláðu inn lagtitil og flytjanda</string>
+  <string name="morphe_music_lyrics_search_google">Leita með Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Enginn af virkum þjónustuaðilum getur leitað að öðrum lögum.</string>
   <string name="morphe_music_lyrics_saved">Vistað</string>
   <string name="morphe_music_lyrics_written_by">Ritið af: %s</string>
@@ -777,7 +783,6 @@ Gildir fyrir bæði mörk. Við 1,75 teljast fjórar fullbreiddarteiknir sem 7."
   <string name="morphe_music_lyrics_romanized_by_ai">Rómanserað af %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Rómverjað af %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (með %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Rómverjað af Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Þýtt</string>
   <string name="morphe_music_lyrics_translation_language_title">Þýðingartungumál</string>
@@ -837,19 +842,15 @@ Textar koma frá þjónustum þriðja aðila sem hvorki tengjast, eru styrktar n
   <string name="morphe_music_lyrics_use_ai_section_title">Greina hluti með AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Aðeins notað þegar veitan sendir engin hlutaheiti eins og Chorus eða Verse, sem OpenAI-samhæft líkan greinir þá. Breyting á línunni opnar líka fyrirspurnina</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API enda punkts URL (t.d. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Sniðmát fyrir fyrirspurn</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Plássgaldrar: {task}, {language}, {title}, {artist}, {count}, {lines}. Óþekkt gildi eru látin óbreytt</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Fyrirspurn vistuð</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Fyrirspurn vistuð, en AI-endapunkturinn er ekki nothæfur enn. Stilltu hann undir AI-stillingum fyrst</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Fyrirspurn endurstillt</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Stillingar fyrir þýðingu &amp; rómverjun vistaðar</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Stillingum vistaðt, en AI endapunktur er ekki enn notátt</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Stillingum vistaðt</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Stillingar afturstilltar í upphafsvirðum</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Grunnslóð verður að byrja á http:// eða https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Stillingar ófullkomnar eða hafnaðar af veitunni</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Sannreyni tengingu…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Tengt! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Tenging mistókst. Athugaðu stillingarnar.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Sláðu inn API lykilinn fyrst</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Prófa tengingu</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Sæki líkön…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Sækja líkön</string>
@@ -866,7 +867,14 @@ Textar koma frá þjónustum þriðja aðila sem hvorki tengjast, eru styrktar n
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Auk beiðna hausar (valfrjálst JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Settu nöfn og gildi í gæsalappir, t.d. {\"api-key\": \"abc\"}. Gildi án gæsalappa sem innihalda / : eða tölu er hafnað. Tómt gildi fjarlægir haus.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Settu nöfn og gildi í gæsalappir, t.d. {\"temperature\": 0.3}. Gildi án gæsalappa sem innihalda / eða : er hafnað. Ekki er hægt að stilla líkan og skilaboð hér.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Rökrétt ákefni</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Sjálfgefið</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Aðgangslykill (Ókeypis eða Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI gat ekki greint hluta fyrir þetta lag</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Greini á</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Beita hlutum</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Greining hætt</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Engin texti til að greina hluta úr</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Slökkva á feitletruðum táknum</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">Endurheimta flipana Up next, Lyrics og Related</string>

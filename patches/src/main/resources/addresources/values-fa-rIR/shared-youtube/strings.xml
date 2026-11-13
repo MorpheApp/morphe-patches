@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">music.youtube.com را در پیوندهای اشتراک‌گذاری‌شده به youtube.com تبدیل می‌کند</string>
   <string name="morphe_replace_links_with_shortener_title">تغییر پیوندهای اشتراک‌گذاری به youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">ویدئوها را مجبور می‌کند از قالب پیوند کوتاه‌شدهٔ youtu.be استفاده کنند</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">خودکار</string>
+  <string name="morphe_remember_video_quality_last_selected_title">به‌خاطر سپردن کیفیت ویدئو</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">انتخاب دستی کیفیت شما را برای همهٔ ویدئوهای آینده اعمال می‌کند</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">اعلان‌های تغییر کیفیت</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">وقتی کیفیت پیش‌فرض جدیدی ذخیره شود، اعلانی نمایش می‌دهد</string>
+  <string name="morphe_video_quality_default_wifi_title">کیفیت پیش‌فرض ویدئو در شبکهٔ Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">کیفیت پیش‌فرض ویدئو در شبکهٔ تلفن همراه</string>
+  <string name="morphe_remember_video_quality_toast_mobile">کیفیت پیش‌فرض تلفن همراه به این مقدار تغییر کرد: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">کیفیت پیش‌فرض Wi-Fi به این مقدار تغییر کرد: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">بازکردن برگهٔ اشتراک‌گذاری سیستم</string>
+  <string name="morphe_open_system_share_sheet_summary">هنگام اشتراک‌گذاری محتوا، به‌جای برگهٔ درون‌برنامه‌ای، برگهٔ اشتراک‌گذاری سیستم را باز می‌کند</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">ثبت وقایع لیتو</string>
   <string name="morphe_debug_litho_entry_disabled">غیرفعال</string>

@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">מחליף את music.youtube.com ב-youtube.com בקישורים משותפים</string>
   <string name="morphe_replace_links_with_shortener_title">שנה קישורי שיתוף ל-youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">כופה על סרטונים להשתמש בפורמט הקיצור youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">אוטומטי</string>
+  <string name="morphe_remember_video_quality_last_selected_title">זכור איכות סרטון</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">מחילה את בחירת האיכות הידנית שלך על כל הסרטונים העתידיים</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">התראות על שינוי איכות</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">מציג התראה כאשר איכות ברירת מחדל חדשה נשמרת</string>
+  <string name="morphe_video_quality_default_wifi_title">איכות סרטון ברירת מחדל ברשת Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">איכות סרטון ברירת מחדל ברשת סלולרית</string>
+  <string name="morphe_remember_video_quality_toast_mobile">איכות סלולרית ברירת מחדל שונתה ל: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">איכות Wi-Fi ברירת מחדל שונתה ל: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">פתח את גיליון השיתוף של המערכת</string>
+  <string name="morphe_open_system_share_sheet_summary">פותח את גליון השיתוף של המערכת במקום את גליון השיתוף שבתוך האפליקציה בעת שיתוף תוכן</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">רישום Litho</string>
   <string name="morphe_debug_litho_entry_disabled">מושבת</string>

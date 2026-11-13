@@ -655,6 +655,7 @@ Din API-nøgle bør aldrig deles. Enhver med adgang til den kan bruge dine OpenR
   <string name="morphe_loop_count_clear_done">Gemte loop-antal er ryddet</string>
   <string name="morphe_loop_count_flyout_name">Antal loops</string>
   <string name="morphe_loop_count_dialog_message">Hvor mange gange videoen afspilles før den næste video, fra %1$s til %2$s. Lad feltet være tomt for at loope videoen uden begrænsning.</string>
+  <string name="morphe_loop_count_times">%s gange</string>
   <string name="morphe_loop_count_no_limit">Ingen begrænsning</string>
   <string name="morphe_loop_count_decrease">Færre gange</string>
   <string name="morphe_loop_count_increase">Flere gange</string>
@@ -695,6 +696,9 @@ Info: Virker muligvis ikke på live streams"</string>
   <string name="morphe_play_all_button_type_entry_11">Kun for medlemmer Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Kun for medlemmer live streams</string>
   <string name="morphe_play_all_button_not_available_toast">Kunne ikke generere playliste på grund af mismatch i kanal-id</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Vis knappen Playliste</string>
+  <string name="morphe_playlist_panel_button_summary">Tryk for at åbne playliste-panelet. Vises kun når en playliste afspilles</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Vis knappen Genindlæs video</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-ID er ikke tilgængeligt. Genindlæs venligst videoen manuelt</string>
@@ -1204,9 +1208,24 @@ Indstillinger → Afspilning (eller Automatisk afspilning) → Afspil næste vid
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Slå afspiller pop-up paneler fra</string>
   <string name="morphe_disable_player_popup_panels_summary">Deaktiverer automatisk åbning af playliste- og livechat-paneler</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Vis playlistepanel i fuldskærm</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Playlistepanelet åbnes over fuldskærmsafspilleren</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Playlistepanelet forlader fuldskærm på tablets</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Deaktiver automatisk afspilning af playlister</string>
   <string name="morphe_disable_playlist_autoplay_summary">Forhindrer playlister i automatisk at gå videre til næste video</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Styring af automatisk afspilning</string>
+  <string name="morphe_autoplay_control_summary">Tilføjer en afspillerknap og en regel for den næste video. Playlister og køer fortsætter, et Mix stopper efter et antal videoer, og en foreslået video afspilles aldrig. Tryk på knappen for næste tilstand, tryk og hold for listen</string>
+  <string name="morphe_autoplay_mode_title">Tilstand for automatisk afspilning</string>
+  <string name="morphe_autoplay_mode_entry_1">Automatisk</string>
+  <string name="morphe_autoplay_mode_entry_2">Enkelt</string>
+  <string name="morphe_autoplay_mode_entry_3">Fra</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Mix-længde</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">I tilstanden Auto stopper et Mix efter dette antal videoer. 0 = ingen grænse</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s videoer</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: ingen grænse</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Prompten \"Fortsæt med at se\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Standard</string>
@@ -1282,9 +1301,6 @@ Automotive-layout
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - gendan old save til spilleliste</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Deaktiver fede ikoner</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Gendan kanalnavn under videoplayer</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Åbn systemets delingsark</string>
-  <string name="morphe_open_system_share_sheet_summary">Åbner systemets delingsark i stedet for det indbyggede, når du deler indhold</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Omgå YouTube Music-knapper</string>
   <string name="morphe_override_youtube_music_buttons_summary">Åbner din foretrukne musik-app i stedet for den indbyggede YouTube Music-app</string>
@@ -1478,7 +1494,6 @@ Videoer anmodes ved hjælp af et kort præfiks af den hashede video-ID, så serv
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow er midlertidigt ikke tilgængelig (statuskode: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow er midlertidigt ikke tilgængelig</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Gendan knapstil fra den gamle afspiller</string>
   <string name="morphe_restore_old_player_buttons_summary">Genskaber de fed videoafspillerkontroller til den ældre, tyndere visuelle stil</string>
@@ -1518,25 +1533,20 @@ Videoer anmodes ved hjælp af et kort præfiks af den hashede video-ID, så serv
   <string name="morphe_video_delay_button_flyout_title">Vis videoforsinkelses-menu</string>
   <string name="morphe_video_delay_dialog_input_hint">Forsinkelse i millisekunder</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automatisk</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Husk videokvalitet</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Anvender din manuelle kvalitetsvalg på alle fremtidige videoer</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Kvalitetsændringsmeddelelser</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Viser en notifikation, når en ny standardkvalitet gemmes</string>
-  <string name="morphe_video_quality_default_wifi_title">Standard videokvalitet på Wi-Fi-netværk</string>
-  <string name="morphe_video_quality_default_mobile_title">Standard videokvalitet på mobilnetværk</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Husk Shorts kvalitet</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Anvender din manuelle kvalitetsvalg på alle fremtidige Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Standard Shorts-kvalitet på Wi-Fi-netværk</string>
   <string name="morphe_shorts_quality_default_mobile_title">Standard Shorts-kvalitet på mobilnetværk</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Ændrede standard mobilkvalitet til: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Ændrede standard Wi-Fi-kvalitet til: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Ændrede Shorts-mobilkvalitet til: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Ændrede Shorts Wi-Fi-kvalitet til: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Vis afspilningshastighedsknap</string>
   <string name="morphe_playback_speed_dialog_button_summary">Tryk og hold for at nulstille hastigheden til standard</string>
+  <string name="morphe_playback_speed_button_cycle_title">Tryk på knappen for afspilningshastighed for at skifte hastighed</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Et tryk går til den næste hastighed på listen. Tryk og hold for at åbne hastighedsmenuen</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Hastigheder for knap til afspilningshastighed</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Hastigheder, som et tryk skifter imellem, én pr. linje. Efter den sidste hastighed går et tryk tilbage til den første</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Ugyldig liste over hastighedscyklus, nulstil til standard</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Vis kvalitetsknap</string>
   <string name="morphe_video_quality_dialog_button_summary">Tryk og hold for at nulstille kvaliteten til standard</string>

@@ -132,9 +132,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Sebenzisa isilandisi sangaphandle kumenyu ye-Download</string>
   <string name="morphe_external_downloader_menu_summary">Inketho ye-Download emenywini ivula isilandisi sakho sangaphandle esikhundleni salokhu</string>
   <string name="morphe_export_download_folder_title">Thumela ama-download ngaphandle</string>
-  <string name="morphe_export_download_folder_summary">"Thumela izingoma namavidiyo alandiwe uhlelo lwe-app ku-storage lwedivayisi yakho usebenzisa imenyu yoku-download. Thinta ukuze ushintshe ifolda yokuthumela ngaphandle
+  <string name="morphe_export_download_folder_summary">"Thumela izingoma namavidiyo alondolwe ohlelweni ekhohlweni lwedivayisi yakho usebenzisa imenyu yokudownloada ohlelweni. Chiza ukuze ushintshe ifolder yokuthumela
 
-Ifolda yokuthumela ngaphandle: %s"</string>
+Ifolder yokuthumela: %s"</string>
   <string name="morphe_export_download_started">Kuthunyelwa i-download ngaphandle</string>
   <string name="morphe_export_download_progress">Kuthunyelwa i-download ngaphandle: %s%%</string>
   <string name="morphe_export_download_notification_channel">Ukuthunyelwa kwe-download ngaphandle</string>
@@ -146,13 +146,14 @@ Ifolda yokuthumela ngaphandle: %s"</string>
   <string name="morphe_export_download_all_saved">Kukhiqizwe u-%1$s we-%2$s okudownloadwe kuya ku-%3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Mayelana neMorphe</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Izikhangiso</string>
-  <string name="morphe_settings_music_screen_2_feed_title">I-feed</string>
-  <string name="morphe_settings_music_screen_3_general_title">Jikelele</string>
-  <string name="morphe_settings_music_screen_4_player_title">Umdlali</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Amazwi engoma</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Okunye</string>
+  <string name="morphe_settings_music_screen_00_about_title">Mayelana ne-Morphe</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Izikhangiso</string>
+  <string name="morphe_settings_music_screen_02_feed_title">I-Feed</string>
+  <string name="morphe_settings_music_screen_03_general_title">Jikelele</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Amazwi engoma</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Okunye</string>
+  <string name="morphe_settings_music_screen_06_player_title">Umdlali</string>
+  <string name="morphe_settings_music_screen_10_video_title">Ividiyo</string>
   <string name="morphe_music_app_language_title">Ulimi lwe-YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Ulimi lwesistimu</string>
   <string name="morphe_music_app_language_summary_unsupported">Kudingeka i-Android 13 noma entsha</string>
@@ -256,6 +257,9 @@ Ukudlala kwe-SABR (I-Spoof video streams icishiwe)"</string>
   <string name="morphe_music_playback_speed_title">Isivinini sokudlala</string>
   <string name="morphe_music_playback_speed_summary">Isivinini esisetshenziswa kuzo zonke izingoma. Ku-100% isivinini se-app siyasetshenziswa, njengesivinini sokudlala i-podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Shintsha ipitch ngesivinini</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Vala izincazelo zezwi ezizenzayo</string>
+  <string name="morphe_music_disable_auto_captions_summary">Izincazelo zezwi azivulwa ngokuzenzakalelayo lapho ividiyo iqala, kuhlanganise nezincazelo zezwi ividiyo evula ngokumiselwe</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Khubaza i-audio ducking</string>
   <string name="morphe_music_disable_audio_ducking_summary">Ivoliyumu ayihleliwe lapho omunye uhlelo ludlala umsindo omfishane, njengesaziso</string>
@@ -567,6 +571,7 @@ Ukuqinisekisa ukuthi i-scrobbling ihlanganiswa ngesikhathi sokudlala ngemuva, qi
 
 Idatha ibhaliswe ngaphansi kwe-ODC Open Database License (ODbL). Okubhalwe ku-Soul Over AI ngu-xoundbyte kubhaliswe ngaphansi kwe-CC BY 4.0. Ayihambisani noma ayisekelwa yi-SoundProof noma i-Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Amazwi awatholakali kule fayela ledivayisi.</string>
   <string name="morphe_music_lyrics_enabled_title">Sebenzisa amazwi angaphandle</string>
   <string name="morphe_music_lyrics_enabled_summary">Ikhombisa amazwi asuka kwenkonzo yangaphandle, abuyele kumazwi angaphakathi uma kungatholakali lutho</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Gcina isikrini sivuliwe ngenkathi ubuka amazwi engoma</string>
@@ -698,6 +703,7 @@ I-cookies ezidingekayo: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1P
   <string name="morphe_music_lyrics_search_title_hint">Isihloko sengoma</string>
   <string name="morphe_music_lyrics_search_artist_hint">Umculi</string>
   <string name="morphe_music_lyrics_search_empty">Faka isihloko sengoma nomculi</string>
+  <string name="morphe_music_lyrics_search_google">Sesha nge-Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Akukho mhlinzeki ovuliwe ongafuna ezinye izingoma</string>
   <string name="morphe_music_lyrics_saved">Kugcinwe</string>
   <string name="morphe_music_lyrics_written_by">Ibhalwe ngu: %s</string>
@@ -777,7 +783,6 @@ Sisebenza kuzo zombili izimiso. Ku-1.75, abalingiswa abane ababanikezelwe ububan
   <string name="morphe_music_lyrics_romanized_by_ai">I-romaniziwe ngu %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">I-Romanized ngu %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (no %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">I-Romanized ngu Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Ihunyushiwe</string>
   <string name="morphe_music_lyrics_translation_language_title">Ulimi lokuhumusha</string>
@@ -837,19 +842,15 @@ Amazwi ingoma avela ezinkundleni zangaphandle ezingahlobene ne-Morphe, ezingaxha
   <string name="morphe_music_lyrics_use_ai_section_title">Thola izigaba nge-AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Kusetshenziswa kuphela lapho umhlinzeki engithumeli izilabelo zezigaba njenge-Chorus noma i-Verse, okuzotholwa yi-model yakho ehambisana ne-OpenAI. Ukuhlela umugqa kuvula i-prompt yawo</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ye-API endpoint (isib. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Ithempulethi ye-Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Izindawo zokugcwalisa: {task}, {language}, {title}, {artist}, {count}, {lines}. Okungaziwa kushiywa njengoba kubhalwe</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">I-Prompt igcinwe</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">I-prompt igcinwe, kodwa i-AI endpoint ayikakulungeli ukusetshenziswa. Setha kuqala ngaphansi kwe-AI Settings</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">I-Prompt isethwe kabusha</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Izilungiselelo ze-Translation &amp; Romanization zigcinwe</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Izilungiselelo zigcinwe, kodwa i-AI endpoint ayikawukwazi ukuyisebenzisa</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Izilungiselelo zigcinwe</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Izilungiselelo zibuyiselwe ezimeni zokuqala</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">I-Base URL kufanele iqale ngo http:// noma https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Izilungiselelo aziphelele noma zinikelewe ngumhlinzeki</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Kuqinisekiswa ukuxhumana…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Kuxhunyiwe! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Ukuxhumana kwephutha. Hlola izilungiselelo.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Faka i-API key kuqala</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Hlola ukuxhumana</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Kutholwa amaModel…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Thola amamodeli</string>
@@ -866,7 +867,14 @@ Amazwi ingoma avela ezinkundleni zangaphandle ezingahlobene ne-Morphe, ezingaxha
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Ama-header esicelo engeziwe (i-JSON ekhethwayo)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Faka amagama nezinkalo kuziquizimo, isib. {\"api-key\": \"abc\"}. Inani elingenawo iziquizimo elilokhu / : noma inombolo liyaleleka. Inani elingenalutho lisusa i-header.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Faka amagama nezinkalo kuziquizimo, isib. {\"temperature\": 0.3}. Inani elingenawo iziquizimo elilokhu / noma : liyaleleka. I-Model nemiyalezo ngeke zilungiswe lapha.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Umzamo wokucabanga</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Okujwayelekile</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">I-key yokuqinisekisa (i-Free noma i-Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">I-AI ayikwazanga ukuthola izahluko zale thireki</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Kutholakwa</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Faka izahluko</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Ukutholakwa kukhanselwe</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Azikho izigqi zokutholakela izahluko</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Vala ama-icon agqamile</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Buyisela ama-tab e-Player Up next, Lyrics, kanye ne-Related</string>

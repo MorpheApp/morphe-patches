@@ -232,6 +232,20 @@ Para iniciar sesión, preme en continuar abaixo"</string>
   <string name="morphe_replace_music_with_youtube_summary">Substitúe music.youtube.com por youtube.com nos enlaces compartidos</string>
   <string name="morphe_replace_links_with_shortener_title">Cambiar os ligazóns de compartir a youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Obliga aos vídeos a usar o formato de URL acortado youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automático</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Recordar calidade do vídeo</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Aplica a túa selección de calidade manual a todos os vídeos futuros</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Notificacións de cambio de calidade</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Mostra unha notificación cando se garda unha nova calidade predefinida</string>
+  <string name="morphe_video_quality_default_wifi_title">Calidade de vídeo predefinida en rede Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Calidade de vídeo predefinida en rede móbil</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Cambiouse a calidade móbil predefinida a: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Cambiouse a calidade Wi-Fi predefinida a: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Abrir a folla de comparte do sistema</string>
+  <string name="morphe_open_system_share_sheet_summary">Abre a folla de comparte do sistema en lugar da da aplicación ao compartir contido</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Rexistro de Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Desactivado</string>

@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Ji bo menyuya Download daxînerê derve bikar bîne</string>
   <string name="morphe_external_downloader_menu_summary">Optiona Download a menyuyan li şûma wê daxînerê te yê derve vedike</string>
   <string name="morphe_export_download_folder_title">Exportkirina daxistinên</string>
-  <string name="morphe_export_download_folder_summary">"Stran û vîdyoyên ku ji hêla aplikasyonê ve hatine daxistin, bi rêya menyuya daxistinê ber bi storage-a amûrê ve export bike. Ji bo guhertina foldera exportê bitapîne
+  <string name="morphe_export_download_folder_summary">"Stran û vîdyoyên hatine savekirin di aplikasyonê de, bi rêya menyuya daxistinan a di hundurê aplikasyonê de, bo depoya amûrê xwe export bike. Bo guhertina foldera exportê
 
 Foldera exportê: %s"</string>
   <string name="morphe_export_download_started">Daxistin tê export kirin</string>
@@ -146,13 +146,14 @@ Foldera exportê: %s"</string>
   <string name="morphe_export_download_all_saved">%1$s ji %2$s daxistin hatin eksportkirin bo %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Derbar</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Reklam</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Xwarin</string>
-  <string name="morphe_settings_music_screen_3_general_title">Giştî</string>
-  <string name="morphe_settings_music_screen_4_player_title">Lêrîner</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Şarkî</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Dîsan</string>
+  <string name="morphe_settings_music_screen_00_about_title">Derbarê</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Reklaman</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_03_general_title">Giştî</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Gotinên stranê</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Hêmanên din</string>
+  <string name="morphe_settings_music_screen_06_player_title">Yarîker</string>
+  <string name="morphe_settings_music_screen_10_video_title">Vîdyo</string>
   <string name="morphe_music_app_language_title">Zimanê YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Zimanê sîstemê</string>
   <string name="morphe_music_app_language_summary_unsupported">Android 13 an nûtir dixwaze</string>
@@ -256,6 +257,9 @@ Lîstkirina SABR (stremên vîdyoyên spoof hatine guhertin)"</string>
   <string name="morphe_music_playback_speed_title">Leza lêdanê</string>
   <string name="morphe_music_playback_speed_summary">Leza ku ji bo hemû trakan tê bikaranîn. Li %100 leza sepanê tê bikaranîn, wekî leza lêdana podkastê</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Pitch bi lezê biguherîne</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Vegera nivîsên otomatîk asteng bike</string>
+  <string name="morphe_music_disable_auto_captions_summary">Dema vîdyoyek dest pê dike, nivîs nayên vekirin bi şêweyekî otomatîk, evle jî nivîsên ku vîdyoyê bi awayê defolt vekiriye têderdikevin</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Audio ducking bêkar bike</string>
   <string name="morphe_music_disable_audio_ducking_summary">Dema aplikasyoneke din dengê kurt dikişîne, wekî agahdarkirinê, sedan nayê kêmkirin</string>
@@ -567,6 +571,7 @@ Ji bo ku bêyî astengiyê scrobbling li ser lîstikên paşnavê were hevdengki
 
 Database bi lisansa ODC Open Database License (ODbL) ye. Tomarên ji Soul Over AI ji aliyê xoundbyte ve bi lisansa CC BY 4.0 in. Ne bi SoundProof an Soul Over AI ve girêdayî ye û ne jî ji aliyê wan ve hatiye pesendkirin."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Ji bo vê şopa amûrê, gotinên stranê nîn in.</string>
   <string name="morphe_music_lyrics_enabled_title">Şarkîyên partiyê sêyemîn bikar bîne</string>
   <string name="morphe_music_lyrics_enabled_summary">Şarkîyên ji karûbarê sêyemîn yê ku dîtin, wê demê vegere şarkîyên paşnavê yên di hundirê de</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Dema gotinên stranê tên nîşandan ekranê vekirî bihêle</string>
@@ -698,6 +703,7 @@ Kukiyên pêwîst: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_search_title_hint">Navê stranê</string>
   <string name="morphe_music_lyrics_search_artist_hint">Hunermend</string>
   <string name="morphe_music_lyrics_search_empty">Navê stranekê û hunermendekî binivîse</string>
+  <string name="morphe_music_lyrics_search_google">Bi Google lêbigere</string>
   <string name="morphe_music_lyrics_search_no_providers">Hîç yek ji daberên çalak nikarin li stranên din bigerin</string>
   <string name="morphe_music_lyrics_saved">Hat savekirin</string>
   <string name="morphe_music_lyrics_written_by">Ji rêveberê: %s</string>
@@ -777,7 +783,6 @@ Li her du sînoran tê sepandin. Li ser 1.75, çar karakterên tam-berz wekî 7 
   <string name="morphe_music_lyrics_romanized_by_ai">Ji hêla %s ve hatiye romanîkirin</string>
   <string name="morphe_music_lyrics_romanized_by_local">Ji hêla %s ve hatî romanîzekirin</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (bi %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Ji hêla Rime (%s) ve hatî romanîzekirin</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Hat wergerandin</string>
   <string name="morphe_music_lyrics_translation_language_title">Zimanê wergêranê</string>
@@ -837,19 +842,15 @@ Gotinên stranê ji xizmetên third-party tên ku bi Morphe ve girêdayî nîn i
   <string name="morphe_music_lyrics_use_ai_section_title">Beşan bi AI detekte bike</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Tenê tê bikaranîn gava dabinker tuyî nivîsên beşan wekî Chorus yan Verse nafiriste, ku modela we ya li gorî OpenAI piştrast dike. Edîtkirina rêyê her wiha prompta wê vekire</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-ê endpoint-ê API (mînak: https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Şablonê Promptê</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder: {task}, {language}, {title}, {artist}, {count}, {lines}. Yênên nezan hatine hiştin wekî ku hatine nivîsandin</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt hat tomar kirin</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt hat save kirin, lê endpointa AI hîşta neyê bikaranîn. Berê wê di Settingsên AI de configure bike</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt hat vegerandin</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Mîhengên wergerandinê &amp; Romanîzasyonê hatin savekirin</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Mîheng hate tomarkirin, lê xalê dawî yê AI hîn neyê bikaranîn</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Mîheng hate tomarkirin</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Mîheng hatin vegerandin ser default</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL-ê bingehîn divê bi http:// an https:// dest pê bike</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Mîhengên kêm in an ji hêla dabinker ve hatine redkirin</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Gihîştan tê kontrolkirin…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Hat girêdan! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Têkilî şikest. Mîhengên xwe kontrol bike.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Pêşî kîlîta API binivîse</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Taqîkirina girêdanê</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Hêvîkirina modelan…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Hêzana modelan</string>
@@ -866,7 +867,14 @@ Gotinên stranê ji xizmetên third-party tên ku bi Morphe ve girêdayî nîn i
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Sernavên daxwaza zêde (JSON-ê vebijartî)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Nav û nirxan bi nîşanên quote bike, mînak {\"api-key\": \"abc\"}. Nirxekî bê-quote ku / : yan jimareyek tê de hebe tê red kirin. Nirxek vala sernavê radike.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Nav û nirxan bi nîşanên quote bike, mînak {\"temperature\": 0.3}. Nirxekî bê-quote ku / yan : tê de hebe tê red kirin. Model û peyamning bi vî awayî nayên danîn.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Hevdengiya reasoning</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Bixweber</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Kîleya otentîkasyonê (Belaş an Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI nekarî beşan ji bo vê stranê bibîne</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Tê dîtin</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Beşan bingeh bike</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Dîtina beşan hate betandin</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Tu gotinên stranê tune ne ku beşên wan bên dîtin</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Îkonên stûr neçalak bike</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Vegerandina tabên Player ên \'Up next\', \'Lyrics\' û \'Related\'</string>

@@ -122,18 +122,18 @@ Ustawić %2$s jako domyślnego klienta?"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Wyłączenie tego ustawienia może powodować problemy z odtwarzaniem</string>
   <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
   <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView jest wyłączony lub nie został zainstalowany.
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView jest wyłączony lub niezainstalowany.
 
-Odtwarzanie wideo wymaga Android System WebView. Włącz go i zaktualizuj do najnowszej wersji.
+​Odtwarzanie wymaga Android System WebView. Włącz go i zaktualizuj do najnowszej wersji.
 
-Dotknij OK, aby otworzyć Android System WebView."</string>
+​Dotknij OK, aby otworzyć Android System WebView."</string>
   <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView jest nieaktualny (wersja %s).
 
-Odtwarzanie wideo może nie działać, dopóki Android System WebView nie zostanie zaktualizowany do najnowszej wersji.
+​Odtwarzanie może nie działać, dopóki Android System WebView nie zostanie zaktualizowany do najnowszej wersji.
 
-Dotknij OK, aby otworzyć Android System WebView."</string>
+​Dotknij OK, aby otworzyć Android System WebView."</string>
   <string name="morphe_spoof_video_streams_webview_dialog_ignore">Nie pokazuj ponownie</string>
-  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView nie jest zainstalowany. Zainstaluj go, aby naprawić odtwarzanie wideo</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView nie jest zainstalowany. Zainstaluj go, aby naprawić odtwarzanie</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Spróbuj włączyć: Fałszuj strumienie filmów i Logowanie Android VR</string>
@@ -231,6 +231,20 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_replace_music_with_youtube_summary">Zamienia music.youtube.com na youtube.com w udostępnianych linkach</string>
   <string name="morphe_replace_links_with_shortener_title">Zmień linki udostępniania na youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Wymusza używanie skróconych linków youtu.be dla filmów</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatyczna</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Zapamiętaj jakość filmu</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Stosuje ręcznie wybraną jakość do wszystkich kolejnych filmów</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Powiadomienia o zmianie jakości</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Wyświetla powiadomienie po zapisaniu nowej domyślnej jakości</string>
+  <string name="morphe_video_quality_default_wifi_title">Domyślna jakość filmu w sieci Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Domyślna jakość filmu w sieci komórkowej</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Zmieniono domyślną jakość (kom.) na: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Zmieniono domyślną jakość (Wi-Fi) na: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Otwórz systemowe menu udostępniania</string>
+  <string name="morphe_open_system_share_sheet_summary">Otwiera systemowe menu udostępniania zamiast tego wbudowanego w aplikacji</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Logowanie Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Wyłączone</string>

@@ -695,6 +695,9 @@ Info: Var nedarboties tiešraidēs"</string>
   <string name="morphe_play_all_button_type_entry_11">Tikai dalībniekiem paredzēti Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Tikai dalībniekiem paredzētas tiešraides</string>
   <string name="morphe_play_all_button_not_available_toast">Nevar izveidot atskaņojuma sarakstu kanāla ID neatbilstības dēļ</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Rādīt pogu Atskaņošanas saraksts</string>
+  <string name="morphe_playlist_panel_button_summary">Kārtā, lai atvērtu atskaņošanas saraksta paneli. Tiek rādīts tikai tad, kad tiek atskaņots atskaņošanas saraksts</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Rādīt pogu \"Atjaunot video\"</string>
   <string name="morphe_dismiss_player_not_available_toast">Video ID nav pieejams. Lūdzu, manuāli pārlādējiet video</string>
@@ -1204,9 +1207,24 @@ Iestatījumi → Atskaņošana (vai Automātiska atskaņošana) → Automātiski
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Aizliegt uznirstošos paneļus spēlētājā</string>
   <string name="morphe_disable_player_popup_panels_summary">Aizliegt saraksta un tiešraidēs tēla paneļu automātisko atvēršanu</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Rādīt atskaņošanas saraksta paneli pilnā ekrāna režīmā</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Atskaņošanas saraksta panelis atveras virs pilna ekrāna atskaņotāja</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Planšetdatoros atskaņošanas saraksta panelis izākļauj pilna ekrāna režīmu</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Aizliegt saraksta automātisku atskaņāšanu</string>
   <string name="morphe_disable_playlist_autoplay_summary">Novērs sarakstu automātisku pāreju uz nākamo video</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Autopilskaņošanas kontrole</string>
+  <string name="morphe_autoplay_control_summary">Pievieno atskaņotāja pogu un noteikumu nākamajam video. Atskaņošanas saraksti un rindas turpinās, Miksa apstājas pēc noteikta video skaita, ieteiktie video netiek atskaņoti. Pieskarie pogai, lai izvēlētos nākamo režīmu, vai nospiediet un aisturiet, lai redzētu sarakstu</string>
+  <string name="morphe_autoplay_mode_title">Autopilskaņošanas režīms</string>
+  <string name="morphe_autoplay_mode_entry_1">Automātiski</string>
+  <string name="morphe_autoplay_mode_entry_2">Viens</string>
+  <string name="morphe_autoplay_mode_entry_3">Izslēgts</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Miksa garums</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Režīmā Auto Miksa apstājas pēc šī daudzuma video. 0 = nav ierobežojuma</string>
+  <string name="morphe_autoplay_mix_length">Miksa: %s video</string>
+  <string name="morphe_autoplay_mix_no_limit">Miksa: nav ierobežojuma</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Azis \"Turpināt skatīties\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Noklusējums</string>
@@ -1282,9 +1300,6 @@ Automašīnas izkārtojums
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Atjaunot veco saglabājumu sarakstā</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">Atslēgt treknās ikonas</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Atjaunot kanāla nosaukumu zem video plejera</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Atvērt sistēmas kopīgošanas logu</string>
-  <string name="morphe_open_system_share_sheet_summary">Satura kopīgošanai atvērt sistēmas kopīgošanas logu vietā lietotnes logam</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Pārrakstīt YouTube Music pogas</string>
   <string name="morphe_override_youtube_music_buttons_summary">Atver jūsu izvēlēto mūzikas lietotni standarta YouTube Music lietotnes vietā</string>
@@ -1478,7 +1493,6 @@ Video tiek pieprasīti, izmantojot īsu hašēta video ID prefiksu, tādēļ ser
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow pagaidām nav pieejams (statuss: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow pagaidām nav pieejams</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Atjaunot veco atskaņotāja pogu stilu</string>
   <string name="morphe_restore_old_player_buttons_summary">Atgriež treknās video atskaņotāja vadības pogas vecākajā, plānākā vizuālajā stilā</string>
@@ -1518,25 +1532,20 @@ Video tiek pieprasīti, izmantojot īsu hašēta video ID prefiksu, tādēļ ser
   <string name="morphe_video_delay_button_flyout_title">Rādīt video aizkavējuma izvēlni</string>
   <string name="morphe_video_delay_dialog_input_hint">Aizkavējums milisekundēs</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automātiski</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Atcerēties video kvalitāti</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Pielieto jūsu manuālo kvalitātes izvēli visiem turpmākajiem video</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Paziņojumi par kvalitātes maiņu</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Rāda paziņojumu, kad tiek saglabāta jaunā noklusējuma kvalitāte</string>
-  <string name="morphe_video_quality_default_wifi_title">Noklusējuma video kvalitāte Wi-Fi tīklā</string>
-  <string name="morphe_video_quality_default_mobile_title">Video noklusējuma kvalitāte mobilajā tīklā</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Atcerēties Shorts kvalitāti</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Pielieto jūsu manuālo kvalitātes izvēli visiem turpmākajiem Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Īso video noklusējuma kvalitāte, kad izmanto bezvadu, Wi-Fi, tīklu</string>
   <string name="morphe_shorts_quality_default_mobile_title">Shorts noklusējuma kvalitāte mobilajā tīklā</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Mainīta noklusēta mobilā kvalitāte uz: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Mainīta noklusēta Wi-Fi kvalitāte uz: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Mainīta Shorts mobilā kvalitāte uz: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Mainīta Shorts Wi-Fi kvalitāte uz: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Rādīt atskaidzes ātruma pogu</string>
   <string name="morphe_playback_speed_dialog_button_summary">Pieskarieties un turiet, lai atiestatītu ātrumu uz noklusējumu</string>
+  <string name="morphe_playback_speed_button_cycle_title">Pieskarieties Atskaņošanas ātruma pogai, lai pārslēgtu ātrumus</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Pieskaršanās pārved uz nākamo ātrumu sarakstā. Nospiežot un aisturot, atveras ātruma izvēlne</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Atskaņošanas ātruma pogas ātrumi</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Ātrumi, caur kuriem tiek pārslēgts ar pieskaršanos, viens katrā rindā. Pēdējā ātruma sasniegšanas pēc pieskaršanās atgriežas pie pirmā</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Nepareizs ātrumu cikla saraksts, atstāts nokirsnējais</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Rādīt kvalitātes pogu</string>
   <string name="morphe_video_quality_dialog_button_summary">Pieskarieties un turiet, lai atiestatītu kvalitāti uz noklusējumu</string>

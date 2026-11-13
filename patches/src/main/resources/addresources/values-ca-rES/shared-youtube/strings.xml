@@ -232,6 +232,20 @@ Per iniciar la sessió, premeu continuar a continuació"</string>
   <string name="morphe_replace_music_with_youtube_summary">Substitueix music.youtube.com per youtube.com als enllaços compartits</string>
   <string name="morphe_replace_links_with_shortener_title">Canvia els enllaços de compartir a youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Força els vídeos a utilitzar el format d\'URL curt youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automàtic</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Recorda la qualitat del vídeo</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Aplica la teva selecció manual de qualitat a tots els vídeos futurs</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Notificacions de canvi de qualitat</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Mostra una notificació quan s\'ha desat una nova qualitat per defecte</string>
+  <string name="morphe_video_quality_default_wifi_title">Qualitat de vídeo per defecte a la xarxa Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Qualitat de vídeo per defecte a la xarxa mòbil</string>
+  <string name="morphe_remember_video_quality_toast_mobile">S\'ha canviat la qualitat mòbil per defecte a: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">S\'ha canviat la qualitat Wi-Fi per defecte a: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Obre el full de compartició del sistema</string>
+  <string name="morphe_open_system_share_sheet_summary">Obre el full de compartició del sistema en lloc de l\'internal de l\'aplicació en compartir contingut</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Registres de Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Deshabilitat</string>

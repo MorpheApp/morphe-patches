@@ -696,6 +696,9 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_play_all_button_type_entry_11">Mga Shorts ng miyembro lamang</string>
   <string name="morphe_play_all_button_type_entry_12">Mga live stream ng miyembro lamang</string>
   <string name="morphe_play_all_button_not_available_toast">Hindi maaaring buuin ang playlist dahil sa hindi tugmang ID ng channel</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Ipakita ang button ng Playlist</string>
+  <string name="morphe_playlist_panel_button_summary">I-tap para buksan ang playlist panel. Ipinapakita lamang kapag nagpapatugtog ng isang playlist</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Ipakita ang button na i-reload ang video</string>
   <string name="morphe_dismiss_player_not_available_toast">Hindi available ang Video ID. Pakisuyong i-reload nang manu-mano ang video</string>
@@ -1205,9 +1208,24 @@ Mga Setting → Playback (o Autoplay) → Autoplay ng susunod na video."</string
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">I-disable ang mga panel ng popup ng player</string>
   <string name="morphe_disable_player_popup_panels_summary">Hindi pinapayagan ang mga playlist at live chat panel na awtomatikong magbukas</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Ipakita ang playlist panel sa fullscreen</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Ang playlist panel ay bubukas sa ibabaw ng fullscreen player</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Ang playlist panel ay lalabas sa fullscreen sa mga tablet</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">I-disable ang autoplay ng playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Pinipigilan ang mga playlist na awtomatikong sumulong sa susunod na video</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Kontrol ng Autoplay</string>
+  <string name="morphe_autoplay_control_summary">Nagdaragdag ng button ng player at isang panuntunan para sa susunod na video. Magpapatuloy ang mga playlist at queue, hihinto ang Mix pagkatapos ng ilang video, at hindi kailanman magpe-play ang isang suggested video. I-tap ang button para sa susunod na mode, i-tap at i-hold para sa listahan</string>
+  <string name="morphe_autoplay_mode_title">Mode ng Autoplay</string>
+  <string name="morphe_autoplay_mode_entry_1">Awtomatiko</string>
+  <string name="morphe_autoplay_mode_entry_2">Isahan</string>
+  <string name="morphe_autoplay_mode_entry_3">Naka-off</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Haba ng Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Sa mode na Auto, hihinto ang Mix pagkatapos ng ganitong dami ng mga video. 0 = walang limitasyon</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s na mga video</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: walang limitasyon</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">prompt na \'Itutuloy ang panonood\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">Awtomatiko</string>
@@ -1283,9 +1301,6 @@ Automotive layout
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ibalik ang lumang save sa playlist</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - I-disable ang mga bold na icon</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Ibalik ang pangalan ng channel sa ibaba ng video player</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Buksan ang system share sheet</string>
-  <string name="morphe_open_system_share_sheet_summary">Binubuksan ang system share sheet sa halip na ang in-app na isa kapag nagbabahagi ng content</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">I-override ang mga button ng YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Binubuksan ang iyong gustong music app sa halip na ang default na YouTube Music app</string>
@@ -1479,7 +1494,6 @@ Ang mga video ay hinihiling ng isang maikling prefix ng hashed video ID, kaya hi
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">Ang DeArrow ay pansamantalang hindi magagamit (status code: %s)</string>
   <string name="morphe_dearrow_error_generic">Ang DeArrow ay pansamantalang hindi magagamit</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Ibalik ang lumang estilo ng button ng player</string>
   <string name="morphe_restore_old_player_buttons_summary">Ibabalik ang bold video player controls sa mas lumang, mas manipis na visual style</string>
@@ -1519,25 +1533,20 @@ Ang mga video ay hinihiling ng isang maikling prefix ng hashed video ID, kaya hi
   <string name="morphe_video_delay_button_flyout_title">Ipakita ang menu para sa pag-antala ng video</string>
   <string name="morphe_video_delay_dialog_input_hint">Antala sa milisegundo</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Auto</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Tandaan ang kalidad ng video</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Inilalapat ang iyong manual na pagpili ng kalidad sa lahat ng mga video sa hinaharap</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Mga notification ng pagbabago ng kalidad</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Nagpapakita ng notification kapag nai-save ang isang bagong default na kalidad</string>
-  <string name="morphe_video_quality_default_wifi_title">Default na kalidad ng video sa Wi-Fi network</string>
-  <string name="morphe_video_quality_default_mobile_title">Default na kalidad ng video sa mobile network</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Tandaan ang kalidad ng Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Inilalapat ang iyong manual na pagpili ng kalidad sa lahat ng Shorts sa hinaharap</string>
   <string name="morphe_shorts_quality_default_wifi_title">Default na kalidad ng Shorts sa Wi-Fi network</string>
   <string name="morphe_shorts_quality_default_mobile_title">Default na kalidad ng Shorts sa mobile network</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Binago ang default na kalidad ng mobile sa: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Binago ang default na kalidad ng Wi-Fi sa: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Binago ang kalidad ng mobile para sa Shorts sa: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Binago ang kalidad ng Wi-Fi para sa Shorts sa: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Ipakita ang Playback speed button</string>
   <string name="morphe_playback_speed_dialog_button_summary">I-tap at pindutin upang i-reset ang bilis sa default</string>
+  <string name="morphe_playback_speed_button_cycle_title">I-tap ang button ng Playback speed para magpalit-palit ng mga speed</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Ang pag-tap ay pupunta sa susunod na speed sa listahan. Ang pag-tap at pag-hold ay magbubukas ng menu ng speed</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Mga speed ng button ng Playback speed</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Mga speed na pinagpapalit-palit sa isang tap, isa bawat linya. Pagkatapos ng huling speed, ang tap ay babalik sa una</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Invalid na listahan ng speed cycle, ibinalik sa default</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Ipakita ang Quality button</string>
   <string name="morphe_video_quality_dialog_button_summary">I-tap at pindutin upang i-reset ang kalidad sa default</string>

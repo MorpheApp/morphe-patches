@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Yeni tənzimləmələri vurğula</string>
   <string name="morphe_settings_new_indicator_days_summary">Yeniləmə ilə əlavə edilən tənzimləmələr və seçimlər ilə yanaşı nöqtənin göstərildiyi günlərin sayı</string>
   <string name="morphe_settings_new_indicator_days_off">Qapalı</string>
+  <string name="morphe_settings_new_indicator_clear_title">Bütün tənzimləmələri görüldü kimi işarələ</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Bütün yeni tənzimləmələrdən və seçimlərdən nöqtəni sil</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Bütün tənzimləmələri görüldü kimi işarələsin?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Nöqtə bütün yeni tənzimləmələrdən və seçimlərdən silinir. Gələcək yeniləmələr tərəfindən əlavə edilən tənzimləmələr hələ də vurğulanır.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Tənzimləməni bitirmək üçün yenidən başlat</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -118,7 +122,19 @@ YouTube Premium istifadəçisisinizsə, bu tənzimləmə tələb olunmaya bilər
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Keçid</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Bu tənzimləməni qapatmaq oynatma problemlərinə səbəb ola bilər</string>
   <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView bağlanıb və ya quraşdırılmayıb.
+
+​Video oynatmaq Android System WebView tələb edir. Onu aktivləşdirin və ən son versiyaya yeniləyin.
+
+​Android System WebView-nu açmaq üçün \"Olduya\" toxunun."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView köhnəlib (%s versiyası).
+
+​Android System WebView ən son versiyaya yenilənənə qədər video oynatma uğursuz ola bilər.
+
+​Android System WebView-u açmaq üçün \"Olduya\" toxunun."</string>
   <string name="morphe_spoof_video_streams_webview_dialog_ignore">Təkrar göstərmə</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView quraşdırılmayıb. Video oynatmanı düzəltmək üçün onu quraşdır</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Aktivləşdirməyə cəhd edin: Video yayımların saxtalaşdır &gt; Android VR girişi</string>
@@ -216,6 +232,20 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_replace_music_with_youtube_summary">Paylaşılan linklərdə music.youtube.com- u youtube.com- a dəyişir</string>
   <string name="morphe_replace_links_with_shortener_title">Paylaşma keçidlərini youtu.be-yə dəyişdir</string>
   <string name="morphe_replace_links_with_shortener_summary">Videoları qısaldılan youtu.be URL formatın istifadə etməyə zorlayır</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Avtomatik</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Video keyfiyyətin xatırla</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Əl ilə keyfiyyət seçiminizi bütün gələcək videolara tətbiq edir</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Keyfiyyət dəyişikliyi bildirişləri</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Yeni ilkin keyfiyyət saxlanıldıqda bildiriş göstərir</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi şəbəkəsində ilkin video keyfiyyəti</string>
+  <string name="morphe_video_quality_default_mobile_title">Mobil şəbəkədə ilkin video keyfiyyəti</string>
+  <string name="morphe_remember_video_quality_toast_mobile">İlkin mobil keyfiyyət %s olaraq dəyişdirildi</string>
+  <string name="morphe_remember_video_quality_toast_wifi">İlkin Wi-Fi keyfiyyəti %s olaraq dəyişdirildi</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım səhifəsin aç</string>
+  <string name="morphe_open_system_share_sheet_summary">Məzmun paylaşanda tətbiqdaxili menyu əvəzinə sistem paylaşım cildini açır</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho qeydəalma</string>
   <string name="morphe_debug_litho_entry_disabled">Qapalıdı</string>

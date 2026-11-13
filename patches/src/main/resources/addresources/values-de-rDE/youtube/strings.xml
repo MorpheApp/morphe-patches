@@ -696,6 +696,9 @@ Info: Funktioniert möglicherweise nicht bei Livestreams"</string>
   <string name="morphe_play_all_button_type_entry_11">Nur Mitglieder-Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">Nur Mitglieder-Live-Streams</string>
   <string name="morphe_play_all_button_not_available_toast">Fehler beim Generieren der Playlist aufgrund von Kanal-ID-Diskrepanz</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Schaltfläche „Playlist anzeigen“ anzeigen</string>
+  <string name="morphe_playlist_panel_button_summary">Tippen, um das Playlist-Panel zu öffnen. Wird nur beim Abspielen einer Playlist angezeigt</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Schaltfläche „Video neu laden“ anzeigen</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-ID ist nicht verfügbar. Bitte lade das Video manuell neu</string>
@@ -1205,9 +1208,24 @@ Einstellungen → Wiedergabe (oder Automatische Wiedergabe) → Nächstes Video 
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Player-Popup-Panels deaktivieren</string>
   <string name="morphe_disable_player_popup_panels_summary">Deaktiviert das automatische Öffnen von Wiedergabelisten und Live-Chat-Panels</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Playlist-Panel im Vollbildmodus anzeigen</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Das Playlist-Panel öffnet sich über dem Vollbildplayer</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Playlist-Panel verlässt auf Tablets den Vollbildmodus</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Playlist-Autoplay deaktivieren</string>
   <string name="morphe_disable_playlist_autoplay_summary">Verhindert, dass Wiedergabelisten automatisch zum nächsten Video wechseln</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Autoplay-Steuerung</string>
+  <string name="morphe_autoplay_control_summary">Fügt eine Player-Schaltfläche und eine Regel für das nächste Video hinzu. Playlists und Warteschlangen laufen weiter, ein Mix stoppt nach einer bestimmten Anzahl von Videos, ein vorgeschlagenes Video wird nie abgespielt. Tippe auf die Schaltfläche für den nächsten Modus, halte sie gedrückt für die Liste</string>
+  <string name="morphe_autoplay_mode_title">Autoplay-Modus</string>
+  <string name="morphe_autoplay_mode_entry_1">Auto</string>
+  <string name="morphe_autoplay_mode_entry_2">Einzeln</string>
+  <string name="morphe_autoplay_mode_entry_3">Deaktiviert</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Mix-Länge</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Im Modus Automatisch stoppt ein Mix nach dieser Anzahl von Videos. 0 = kein Limit</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s Videos</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: kein Limit</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Weiter schauen?\"-Abfrage</string>
   <string name="morphe_continue_watching_prompt_entry_1">Standard</string>
@@ -1283,9 +1301,6 @@ Automobil-Layout
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Altes Speichern in Playlist wiederherstellen</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Fette Symbole deaktivieren</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Kanalname unter dem Videoplayer wiederherstellen</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Systemfreigabe öffnen</string>
-  <string name="morphe_open_system_share_sheet_summary">Öffnet die systemeigene Freigabeansicht anstelle der In-App-Ansicht, wenn du Inhalte teilst</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube-Music-Schaltfläche überschreiben</string>
   <string name="morphe_override_youtube_music_buttons_summary">Öffnet deine bevorzugte Musik-App anstelle der Standard-YouTube-Music-App</string>
@@ -1479,7 +1494,6 @@ Videos werden über ein kurzes Präfix der gehashten Video-ID angefordert, sodas
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow ist vorübergehend nicht verfügbar (Statuscode: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow ist vorübergehend nicht verfügbar</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Alten Player-Button-Stil wiederherstellen</string>
   <string name="morphe_restore_old_player_buttons_summary">Stellt die fettgedruckten Videoplayer-Schaltflächen in den älteren, dünneren visuellen Stil zurück</string>
@@ -1519,25 +1533,20 @@ Videos werden über ein kurzes Präfix der gehashten Video-ID angefordert, sodas
   <string name="morphe_video_delay_button_flyout_title">Menü \"Videoverzögerung\" anzeigen</string>
   <string name="morphe_video_delay_dialog_input_hint">Verzögerung in Millisekunden</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Auto</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Videoqualität speichern</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Wendet deine manuelle Qualitätsauswahl auf alle zukünftigen Videos an</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Benachrichtigungen über Qualitätsänderungen</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Zeigt eine Benachrichtigung an, wenn eine neue Standardqualität gespeichert wurde</string>
-  <string name="morphe_video_quality_default_wifi_title">Standard-Videoqualität im Wi-Fi-Netzwerk</string>
-  <string name="morphe_video_quality_default_mobile_title">Standard-Videoqualität im Mobilfunknetz</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts-Qualität merken</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Wendet deine manuelle Qualitätsauswahl auf alle zukünftigen Shorts an.</string>
   <string name="morphe_shorts_quality_default_wifi_title">Standardqualität für Shorts im WLAN</string>
   <string name="morphe_shorts_quality_default_mobile_title">Standardqualität für Shorts im Mobilfunknetz</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Standardqualität für Mobilfunk geändert zu: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Standardqualität für Wi-Fi geändert zu: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts-Mobilqualität geändert auf: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts-WLAN-Qualität geändert auf: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Schaltfläche für die Wiedergabegeschwindigkeit anzeigen</string>
   <string name="morphe_playback_speed_dialog_button_summary">Tippen und gedrückt halten, um die Geschwindigkeit auf den Standard zurückzusetzen</string>
+  <string name="morphe_playback_speed_button_cycle_title">Tippen Sie auf die Schaltfläche für die Abspielgeschwindigkeit, um die Geschwindigkeiten zu wechseln</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Ein Tippen führt zur nächsten Geschwindigkeit in der Liste. Tippen und Halten öffnet das Geschwindigkeitsmenü</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Geschwindigkeiten der Schaltfläche für die Abspielgeschwindigkeit</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Geschwindigkeiten, durch die ein Tippen wechselt, eine pro Zeile. Nach der letzten Geschwindigkeit führt ein Tippen zurück zur ersten</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Ungültige Liste der Geschwindigkeitszyklen, auf Standard zurückgesetzt</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Schaltfläche für die Wiedergabequalität anzeigen</string>
   <string name="morphe_video_quality_dialog_button_summary">Tippen und gedrückt halten, um die Qualität auf den Standard zurückzusetzen</string>

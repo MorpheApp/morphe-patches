@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">Заменя music.youtube.com с youtube.com в споделени връзки</string>
   <string name="morphe_replace_links_with_shortener_title">Сменете споделяните връзки на youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Принудително използва съкратения URL формат youtu.be за видеа</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Автоматично</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Запомни качеството на видеото</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Прилага вашия ръчен избор на качество към всички бъдещи видеа</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Известия при промяна на качеството</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Показва известие, когато се запише ново качество по подразбиране</string>
+  <string name="morphe_video_quality_default_wifi_title">Качество по подразбиране през Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Качество по подразбиране през мобилна мрежа</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Качеството по подразбиране за мобилни данни е променено на: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Качеството по подразбиране за Wi-Fi е променено на: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Отваряне на системния панел за споделяне</string>
+  <string name="morphe_open_system_share_sheet_summary">Отваря системния панел за споделяне вместо вградения при споделяне на съдържание</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Дневник за Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Изключено</string>

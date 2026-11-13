@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">Заменяет music.youtube.com на youtube.com в общих ссылках.</string>
   <string name="morphe_replace_links_with_shortener_title">Изменить ссылки для обмена на youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Принудительно использует сокращенный формат URL youtu.be для видео</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Авто</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Запоминать качество видео</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Применяет выбранное вами качество ко всем последующим видео</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Уведомления об изменении качества</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Показывает уведомление при сохранении нового качества по умолчанию</string>
+  <string name="morphe_video_quality_default_wifi_title">Качество видео по умолчанию в сети Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Качество видео по умолчанию в мобильной сети</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Качество в мобильной сети изменено на: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Качество в сети Wi-Fi изменено на: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Открыть системное меню «Поделиться»</string>
+  <string name="morphe_open_system_share_sheet_summary">Открывает системное меню \"Поделиться\" вместо встроенного при отправке контента</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Журналирование Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Выключено</string>

@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">Замінює music.youtube.com на youtube.com у поширених посиланнях</string>
   <string name="morphe_replace_links_with_shortener_title">Змінити посилання для поширення на youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Примусово використовує скорочений формат URL youtu.be для відео</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Авто</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Запам’ятовувати якість відео</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Застосовує вибраний рівень якості до всіх наступних відео</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Сповіщення про зміну якості</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Показує сповіщення при збереженні нової типової якості</string>
+  <string name="morphe_video_quality_default_wifi_title">Типова якість відео у мережі Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Типова якість відео у мобільній мережі</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Змінено типову якість для мобільної мережі на: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Змінено типову якість для Wi-Fi на: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Відкрити системний діалог поширення</string>
+  <string name="morphe_open_system_share_sheet_summary">Відкриває системне меню поширення замість вбудованого при поширенні контенту</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Журнал Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Вимкнена</string>

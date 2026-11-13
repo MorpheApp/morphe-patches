@@ -232,6 +232,20 @@ Android System WebView를 최신 버전으로 업데이트하지 않으면 동�
   <string name="morphe_replace_music_with_youtube_summary">공유 링크에서 music.youtube.com을 youtube.com으로 변경합니다</string>
   <string name="morphe_replace_links_with_shortener_title">공유 링크를 youtu.be로 변경하기</string>
   <string name="morphe_replace_links_with_shortener_summary">동영상이 단축된 youtu.be URL 형식을 사용하도록 강제합니다</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">자동</string>
+  <string name="morphe_remember_video_quality_last_selected_title">동영상 화질 저장하기</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">동영상 화질 값을 변경할 때마다 기본 동영상 화질으로 저장합니다</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">동영상 화질 변경 알림</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">기본 동영상 화질 값을 변경할 때마다 알림을 표시합니다</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi 이용 시 기본 동영상 화질</string>
+  <string name="morphe_video_quality_default_mobile_title">모바일 네트워크 이용 시 기본 동영상 화질</string>
+  <string name="morphe_remember_video_quality_toast_mobile">모바일 네트워크 이용 시 기본 동영상 화질 값을 %s 로 변경하였습니다</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi 이용 시 기본 동영상 화질 값을 %s 로 변경하였습니다</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">공유 시트 변경하기</string>
+  <string name="morphe_open_system_share_sheet_summary">콘텐츠를 공유할 경우에 앱 기본 공유 시트 대신 시스템 공유 시트를 실행합니다</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho 로깅</string>
   <string name="morphe_debug_litho_entry_disabled">사용 안함</string>

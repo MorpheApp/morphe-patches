@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Erabili deskargatzaile kanpora Download menurako</string>
   <string name="morphe_external_downloader_menu_summary">Menuetako Download aukerak zure kanpoko deskargatzailea irekiko du horren ordez</string>
   <string name="morphe_export_download_folder_title">Deskargak esportatu</string>
-  <string name="morphe_export_download_folder_summary">"Aplikazioak deskargatako abestak eta bideoak zure gailuaren biltegian esportatu deskargaren menuaren bidez. Sakatu esportazio karpeta aldatzeko
+  <string name="morphe_export_download_folder_summary">"Aplikazioan gordetako abestizak eta bideoak zure gailuaren biltegian esportatu aplikazioko deskargen flyout menuaren bidez. Sakatu esportazio karpeta aldatzeko
 
 Esportazio karpeta: %s"</string>
   <string name="morphe_export_download_started">Deskarga esportatzen</string>
@@ -146,13 +146,14 @@ Esportazio karpeta: %s"</string>
   <string name="morphe_export_download_all_saved">%2$s deskargatik %1$s esportatu dira %3$s-ra</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Honi buruz</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Iragarkiak</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Feed-a</string>
-  <string name="morphe_settings_music_screen_3_general_title">Orokorra</string>
-  <string name="morphe_settings_music_screen_4_player_title">Erreproduzigailua</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Letrak</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Bestelakoak</string>
+  <string name="morphe_settings_music_screen_00_about_title">Honi buruz</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Anunciak</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Feed-a</string>
+  <string name="morphe_settings_music_screen_03_general_title">Korrontal</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Letrak</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Bestelakoak</string>
+  <string name="morphe_settings_music_screen_06_player_title">Erreprodukzioa</string>
+  <string name="morphe_settings_music_screen_10_video_title">Bideoa</string>
   <string name="morphe_music_app_language_title">YouTube Music-en hizkuntza</string>
   <string name="morphe_music_app_language_summary_default">Sistemaren hizkuntza</string>
   <string name="morphe_music_app_language_summary_unsupported">Android 13 edo berriagoa behar du</string>
@@ -256,6 +257,9 @@ SABR erreprodukzioa (Bideo stream-en imitazioa desaktibatuta)"</string>
   <string name="morphe_music_playback_speed_title">Erreprodukzio abiadura</string>
   <string name="morphe_music_playback_speed_summary">Pista guztietan erabiltzen den abiadura. %100ean, aplikazioaren abiadura erabiltzen da, podcasten erreprodukzio abiadura bezalakoa</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Aldatu tonua abiadurarekin</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Desaktibatu bertakarizko azpianarriak</string>
+  <string name="morphe_music_disable_auto_captions_summary">Bideo bat hasten denean azpianarriak automatikoki aktibatuko ez dira, bideoak lehenetsi izaten dituen azpianarriak barne</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Desaktibu audio-ducking-a</string>
   <string name="morphe_music_disable_audio_ducking_summary">Bolumena ez da jaitsi beste aplikazio batek soinua labur bat txalgatu zuenean, adibidez, jakinarazpen bat</string>
@@ -567,6 +571,7 @@ Atzealdean erreproduktu duten bitartean scrobbling-a sinkronizatua dagoela ziurt
 
 Datu-basea ODC Open Database License (ODbL) lizentziapean dago. xoundbyte-ren Soul Over AI-ko sarrerak CC BY 4.0 lizentziapean daude. Ez dago SoundProof edo Soul Over AI-rekin lotura edo babesik."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Letrak ez daude eskuragarriak gailuko fitxamen honek.</string>
   <string name="morphe_music_lyrics_enabled_title">Erabili hirugarren aldeko letrak</string>
   <string name="morphe_music_lyrics_enabled_summary">Hirugarren aldeko zerbitzuaren letrak erakusten ditu; ez bada aurkitzen, integratutako letrak erabiltzen ditu</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Mantendu pantaila piztuta letrak ikusten ari zaren bitartean</string>
@@ -698,6 +703,7 @@ Beharrezko cookie-ak: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_search_title_hint">Abestuko izenburua</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artista</string>
   <string name="morphe_music_lyrics_search_empty">Sartu abestuko izenburua eta artista bat</string>
+  <string name="morphe_music_lyrics_search_google">Bilatu Google-en</string>
   <string name="morphe_music_lyrics_search_no_providers">Gaitutako hornitzaileetatik bakar batek ere ezin du beste abestirik bilatu</string>
   <string name="morphe_music_lyrics_saved">Gorde da</string>
   <string name="morphe_music_lyrics_written_by">Idatzi zuen: %s</string>
@@ -777,7 +783,6 @@ Bi mugei aplikatzen zaie. 1,75ean, lau zabalera osoko karaktere 7 gisa zenbatzen
   <string name="morphe_music_lyrics_romanized_by_ai">%s-ek romanizatua</string>
   <string name="morphe_music_lyrics_romanized_by_local">%s-ek romanizatua</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s-rekin)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Rime-k romanizatua (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Itzulitakoa</string>
   <string name="morphe_music_lyrics_translation_language_title">Itzulpen hizkuntza</string>
@@ -837,19 +842,15 @@ Letrak Morphe-rekin afiliatuta, babestuta edo onartuta ez dauden hirugarren zerb
   <string name="morphe_music_lyrics_use_ai_section_title">Atalak AI-rekin detektatu</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Hornitzaileak Chorus edo Verse bezalako atal-etiketarik bidaltzen ez duenean soilik erabiltzen da; zure OpenAI-compatible modeloak detektatzen ditu. Lerroa editatzeak bere prompt-a ere irekitzen du</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL-a (adib. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt-txantiloia</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Leku-markak: {task}, {language}, {title}, {artist}, {count}, {lines}. Ezagunak ez direnak idatzitako moduan geratzen dira</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompta gorde da</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompta gorde da, baina AI endpoint-a ez dago erabilgarri oraindik. Konfiguratu lehenik AI ezarpenetan</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompta berrezarri da</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Itzulpen eta romanizazio ezarpenak gorde dira</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Kumeak gorde dira, baina AI endpoint-a ez da erabilizkoa orain</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Konfigurazioa gorde da</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Ezarpenak lehenetsira berrezarri dira</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Oinarri URL-ak http:// edo https:// hasi behar du</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Konfigurazioa osatu gabe dago edo hornitzaileak onartu ez du</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Konexioa egiaztatzen...</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Konektatuta! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Konexioa huts egin du. Egiaztatu konfigurazioa.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Sartu lehenik API gakoa</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Konexioa probatu</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Modeloak eskuratzen…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Eskuratu modeloak</string>
@@ -866,7 +867,14 @@ Letrak Morphe-rekin afiliatuta, babestuta edo onartuta ez dauden hirugarren zerb
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Eskaeraren goiburu gehigarriak (JSON, aukerakoa)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Aipu-markak jarri izenen eta balioen inguruan, adibidez {\"api-key\": \"abc\"}. Aipatu gabeko balio batek / : edo zenbakia dituenean ez da onartzen. Balio hutsak goiburua ezabatzen du.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Aipu-markak jarri izenen eta balioen inguruan, adibidez {\"temperature\": 0.3}. Aipatu gabeko balio batek / edo : dituenean ez da onartzen. Modeloa eta mezuak ezin dira hemen ezarri.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Arrazoitze ahalorra</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Lehenetsia</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Autentifikazio-gakoa (Doakoa edo Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI-ak ezin izan ditu track honen atalak detektatu</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Detektatzen</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Atalak aplikatu</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Detekzioa bertan behera utzi da</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Ez daumet letrikarik atalak detektatzeko</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Desgaitu ikono lodiak</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Berrezarri erreproduzigailuaren Hurrengoak, Letrak eta Related fitxak</string>

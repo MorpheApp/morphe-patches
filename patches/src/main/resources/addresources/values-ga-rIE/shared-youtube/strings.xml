@@ -28,10 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Aibhsigh socruithe nua</string>
   <string name="morphe_settings_new_indicator_days_summary">Líon na laethanta a thaispeántar ponc in aice le socruithe agus roghanna a cuireadh leis trí nuashonrú</string>
   <string name="morphe_settings_new_indicator_days_off">As</string>
-  <string name="morphe_settings_new_indicator_clear_title">Marcáil gach socruithe mar fheicte</string>
-  <string name="morphe_settings_new_indicator_clear_summary">Bain an phuinte as gach socruithe agus roghanna nua</string>
-  <string name="morphe_settings_new_indicator_clear_dialog_title">Marcáil gach socruithe mar fheicte?</string>
-  <string name="morphe_settings_new_indicator_clear_dialog_message">Baintear an phuinte as gach socruithe agus roghanna nua. Leaorfaidh socruithe a chuirfidh nuashonruithe todhaoppers i láthair.</string>
+  <string name="morphe_settings_new_indicator_clear_title">Marcáil gach socrú mar rud feicthe</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Bain an ponc ó gach socrú agus rogha nua</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Marcáil gach socrú mar rud feicthe?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Baintear an ponc ó gach socrú agus rogha nua. Fanann socruithe a chuirtear leis trí nuashonruithe amach anseo aibhsithe.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Atosaigh chun an socrú a chríochnú</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -71,10 +71,10 @@ Second \"item\" text"</string>
 
 Seiceáil go bhfuil an t-ainm pacáiste ceart agus go bhfuil an aip suiteáilte"</string>
   <string name="morphe_external_downloader_empty_warning">Ní féidir ainm an phacáiste a fhágáil folamh</string>
-  <string name="morphe_export_download_folder_dialog_title">Fillteán easpórtála</string>
+  <string name="morphe_export_download_folder_dialog_title">Fillteán onnmhairithe</string>
   <string name="morphe_export_download_folder_change">Athraigh fillteán</string>
-  <string name="morphe_export_download_folder_changed">Athraíodh fillteán easpórtála</string>
-  <string name="morphe_export_download_folder_reset">Athshocraíodh fillteán easpórtála</string>
+  <string name="morphe_export_download_folder_changed">Athraíodh an fillteán onnmhairithe</string>
+  <string name="morphe_export_download_folder_reset">Fillteán onnmhairithe a athshocrú</string>
   <string name="morphe_export_download_folder_missing">Níorbh fhéidir an fillteán onnmhairithe %s a aimsiú</string>
   <string name="morphe_export_download_flyout_title">Easpórtáil chuig gléas</string>
   <string name="morphe_export_download_canceled">Cealaíodh an onnmhairiú</string>
@@ -123,18 +123,18 @@ An ndéanfaidh tú cliant réamhshocraithe de %2$s?"</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">D’fhéadfadh fadhbanna athsheinm a bheith mar thoradh ar an socrú seo a mhúchadh.</string>
   <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
   <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Tá Android System WebView múchta nó níl sé suite.
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Tá Android System WebView múchta nó gan a bheith suiteáilte.
 
-Tá Android System WebView ag teastáil le haghaidh seinnteanna físe. Cuir é in aonair agus nuasháilaigh é go dtí an leagan is déanaí.
+Tá gá le Android System WebView chun físeáin a sheinm. Cuir ar siúl é agus déan é a nuashonrú go dtí an leagan is déanaí.
 
-Tapáil Cead chun Android System WebView a oscailt."</string>
+Beartaigh OK chun Android System WebView a oscailt."</string>
   <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Tá Android System WebView as dáta (leagan %s).
 
-Seans go mbeidh fadhbanna ag seinnteanna físe go dtí go mbeidh Android System WebView nuasháilte go dtí an leagan is déanaí.
+D’fhéadfadh fadhbanna a bheith ann maidir le físeáin a sheinm go dtí go ndéantar Android System WebView a nuashonrú go dtí an leagan is déanaí.
 
-Tapáil Cead chun Android System WebView a oscailt."</string>
+Beartaigh OK chun Android System WebView a oscailt."</string>
   <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ná taispeáin arís</string>
-  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Níl Android System WebView suite. Suiteáil é chun seinnteanna físe a theasú</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Níl Android System WebView suiteáilte. Suiteáil é chun fadhbanna le hathsheinm físe a réiteach.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bain triail as na nithe seo a leanas a chumasú: Sruthanna físe bréige &gt; Sínigh isteach Android VR</string>
@@ -232,6 +232,20 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_replace_music_with_youtube_summary">Cuireann sé youtube.com in ionad music.youtube.com i naisc chomhroinnte</string>
   <string name="morphe_replace_links_with_shortener_title">Athraigh naisc chomhroinnte chuig youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Éilíonn sé físeáin chun an fhormáid URL giorraithe youtu.be a úsáid</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Uath</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Cuimhnigh ar cháilíocht an fhíseáin</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Cuireann sé do rogha cáilíochta láimhe i bhfeidhm ar gach físeán sa todhchaí</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Fógraí faoi athruithe cáilíochta</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Taispeánann sé fógra nuair a shábháiltear cáilíocht réamhshocraithe nua</string>
+  <string name="morphe_video_quality_default_wifi_title">Caighdeán físe réamhshocraithe ar líonra Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Caighdeán físe réamhshocraithe ar líonra soghluaiste</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Athraíodh an caighdeán réamhshocraithe soghluaiste go: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Athraíodh cáilíocht réamhshocraithe Wi-Fi go: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Oscail bileog roinnte an chórais</string>
+  <string name="morphe_open_system_share_sheet_summary">Osclaíonn sé bileog chomhroinnte an chórais, seachas an ceann atá laistigh den aip, nuair a bhíonn ábhar á roinnt</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Logáil Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Díchumasaithe</string>

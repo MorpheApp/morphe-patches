@@ -696,6 +696,9 @@ Info: Mungkin tidak berfungsi pada strim langsung"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts Ahli sahaja</string>
   <string name="morphe_play_all_button_type_entry_12">Penstriman langsung Ahli sahaja</string>
   <string name="morphe_play_all_button_not_available_toast">Tidak dapat menghasilkan senarai main kerana ketidakpadanan ID saluran</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Butang Tunjukkan Senarai Main</string>
+  <string name="morphe_playlist_panel_button_summary">Ketik untuk membuka panel senarai main. Hanya dipaparkan apabila memainkan senarai main</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Tunjukkan butang \'Muat semula video\'</string>
   <string name="morphe_dismiss_player_not_available_toast">ID Video tidak tersedia. Sila muat semula video secara manual</string>
@@ -1205,9 +1208,24 @@ Tetapan → Main balik (atau Main automatik) → Main automatik video seterusnya
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Nyahdayakan panel timbul pemain</string>
   <string name="morphe_disable_player_popup_panels_summary">Menyahaktifkan panel senarai main dan sembang langsung daripada dibuka secara automatik</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Tunjukkan panel senarai main dalam skrin penuh</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Panel senarai main dibuka di atas pemain skrin penuh</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Panel senarai main keluar dari skrin penuh pada tablet</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Nyahaktifkan putar automatik senarai main</string>
   <string name="morphe_disable_playlist_autoplay_summary">Menghalang senarai main daripada beralih ke video seterusnya secara automatik</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Kawalan Main automatik</string>
+  <string name="morphe_autoplay_control_summary">Menambah butang pemain dan peraturan untuk video seterusnya. Senarai main dan barisan akan diteruskan, Mix akan berhenti selepas beberapa video, video yang dicadangkan tidak akan dimainkan. Ketik butang untuk mod seterusnya, ketik dan tahan untuk senarai</string>
+  <string name="morphe_autoplay_mode_title">Mod Main automatik</string>
+  <string name="morphe_autoplay_mode_entry_1">Automatik</string>
+  <string name="morphe_autoplay_mode_entry_2">Tunggal</string>
+  <string name="morphe_autoplay_mode_entry_3">Matikan</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Panjang Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Dalam mod Auto, Mix akan berhenti selepas jumlah video ini. 0 = tiada had</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s video</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: tiada had</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Gesaan \'Teruskan menonton\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">Lalai</string>
@@ -1283,9 +1301,6 @@ Tata letak automotif
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Pulihkan simpanan lama ke senarai main</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Nyahaktifkan ikon tebal</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Pulihkan nama saluran di bawah pemain video</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Buka helaian kongsi sistem</string>
-  <string name="morphe_open_system_share_sheet_summary">Membuka helaian perkongsian sistem dan bukannya helaian dalam apl apabila berkongsi kandungan</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Atasi butang YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Membuka aplikasi muzik pilihan anda berbanding aplikasi stok YouTube Music</string>
@@ -1479,7 +1494,6 @@ Video diminta melalui awalan pendek ID video yang dihash, jadi pelayan tidak dap
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow tidak tersedia buat sementara waktu (kod status: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow tidak tersedia buat sementara waktu</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Pulihkan gaya butang pemain lama</string>
   <string name="morphe_restore_old_player_buttons_summary">Mengembalikan kawalan pemain video yang tebal kepada gaya visual lama yang lebih nipis</string>
@@ -1519,25 +1533,20 @@ Video diminta melalui awalan pendek ID video yang dihash, jadi pelayan tidak dap
   <string name="morphe_video_delay_button_flyout_title">Tunjukkan menu kelewatan Video</string>
   <string name="morphe_video_delay_dialog_input_hint">Kelewatan dalam milisaat</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automatik</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Ingat kualiti video</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Menggunakan pilihan kualiti manual anda untuk semua video masa hadapan</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Notifikasi perubahan kualiti</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Menunjukkan pemberitahuan apabila kualiti lalai baharu disimpan</string>
-  <string name="morphe_video_quality_default_wifi_title">Kualiti video lalai pada rangkaian Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Kualiti video lalai pada rangkaian mudah alih</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Ingat kualiti Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Gunakan pilihan kualiti manual anda untuk semua Shorts akan datang</string>
   <string name="morphe_shorts_quality_default_wifi_title">Kualiti Shorts lalai pada rangkaian Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Kualiti Shorts lalai pada rangkaian mudah alih</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Kualiti mudah alih lalai ditukar kepada: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Kualiti Wi-Fi lalai ditukar kepada: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Kualiti mudah alih Shorts ditukar kepada: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Kualiti Wi-Fi Shorts ditukar kepada: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Tunjukkan butang Kelajuan main balik</string>
   <string name="morphe_playback_speed_dialog_button_summary">Ketik dan tahan untuk tetapkan semula kelajuan ke lalai</string>
+  <string name="morphe_playback_speed_button_cycle_title">Ketik butang Kelajuan main balik untuk kitaran kelajuan</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Ketik untuk pergi ke kelajuan seterusnya dalam senarai. Ketik dan tahan untuk membuka menu kelajuan</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Kelajuan butang Kelajuan main balik</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Kelajuan yang dikitar melalui ketikan, satu bagi setiap baris. Selepas kelajuan terakhir, ketikan akan kembali ke yang pertama</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Senarai kitaran kelajuan tidak sah, ditetapkan semula ke lalai</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Tunjukkan butang Kualiti</string>
   <string name="morphe_video_quality_dialog_button_summary">Ketik dan tahan untuk tetapkan semula kualiti ke lalai</string>

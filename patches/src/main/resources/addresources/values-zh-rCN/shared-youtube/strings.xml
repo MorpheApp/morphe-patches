@@ -232,6 +232,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">将共享链接中的music.youtube.com替换为youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">将分享链接更改为 youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">强制视频使用缩短的 youtu.be URL 格式</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">自动</string>
+  <string name="morphe_remember_video_quality_last_selected_title">记住视频画质</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">将您的手动画质选择应用于所有未来的视频</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">画质更改通知</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">保存新的默认画质时显示通知</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi 网络上的默认视频画质</string>
+  <string name="morphe_video_quality_default_mobile_title">移动网络上的默认视频画质</string>
+  <string name="morphe_remember_video_quality_toast_mobile">已将默认移动网络画质更改为：%s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">已将默认 Wi-Fi 画质更改为：%s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">打开系统分享面板</string>
+  <string name="morphe_open_system_share_sheet_summary">在分享内容时，打开系统分享面板而非应用内分享面板</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho 日志</string>
   <string name="morphe_debug_litho_entry_disabled">已禁用</string>

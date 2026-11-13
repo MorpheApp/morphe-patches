@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Utilizza un downloader esterno per il menu Download</string>
   <string name="morphe_external_downloader_menu_summary">L\'opzione Download dei menu apre il tuo downloader esterno al posto di quello predefinito</string>
   <string name="morphe_export_download_folder_title">Esporta download</string>
-  <string name="morphe_export_download_folder_summary">"Esporta brani e video scaricati dall'app nella memoria del tuo dispositivo utilizzando il menu del download. Tocca per cambiare la cartella di esportazione
+  <string name="morphe_export_download_folder_summary">"Esporta brani e video salvati nell'app nella memoria del tuo dispositivo utilizzando il menu a comparsa dei download dell'app. Tocca per cambiare la cartella di esportazione
 
 Cartella di esportazione: %s"</string>
   <string name="morphe_export_download_started">Esportazione download in corso</string>
@@ -146,13 +146,14 @@ Cartella di esportazione: %s"</string>
   <string name="morphe_export_download_all_saved">Esportati %1$s di %2$s download in %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">A proposito</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Annunci</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
-  <string name="morphe_settings_music_screen_3_general_title">Generale</string>
-  <string name="morphe_settings_music_screen_4_player_title">Lettore</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Testi</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Varie</string>
+  <string name="morphe_settings_music_screen_00_about_title">A proposito di</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Pubblicità</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_03_general_title">Generale</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Testi</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Varie</string>
+  <string name="morphe_settings_music_screen_06_player_title">Lettore</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">Lingua di YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Lingua di sistema</string>
   <string name="morphe_music_app_language_summary_unsupported">Richiede Android 13 o versioni successive</string>
@@ -256,6 +257,9 @@ Riproduzione SABR (simulazione dei flussi video disattivata)"</string>
   <string name="morphe_music_playback_speed_title">Velocità di riproduzione</string>
   <string name="morphe_music_playback_speed_summary">Velocità usata per tutti i brani. Al 100% viene utilizzata la velocità dell\'app, come la velocità di riproduzione dei podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Cambia il tono con la velocità</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Disabilita i sottotitoli automatici </string>
+  <string name="morphe_music_disable_auto_captions_summary">I sottotitoli non vengono attivati automaticamente all\'avvio di un video, inclusi i sottotitoli attivati per impostazione predefinita dal video</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Disabilita l\'attenuazione audio</string>
   <string name="morphe_music_disable_audio_ducking_summary">Il volume non viene abbassato quando un\'altra app riproduce un suono breve, come una notifica</string>
@@ -567,6 +571,7 @@ Per garantire che lo scrobbling sia sincronizzato durante la riproduzione in bac
 
 Il database è rilasciato sotto la licenza ODC Open Database License (ODbL). Le voci di Soul Over AI di xoundbyte sono rilasciate sotto CC BY 4.0. Non affiliato né approvato da SoundProof o Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">I testi non sono disponibili per questo file del dispositivo.</string>
   <string name="morphe_music_lyrics_enabled_title">Usa testi di terze parti</string>
   <string name="morphe_music_lyrics_enabled_summary">Mostra testi da un servizio di terze parti, con fallback ai testi integrati se non vengono trovati</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Mantieni lo schermo acceso durante la visualizzazione dei testi</string>
@@ -693,6 +698,7 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_search_title_hint">Titolo del brano</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artista</string>
   <string name="morphe_music_lyrics_search_empty">Inserisci il titolo di un brano e un artista</string>
+  <string name="morphe_music_lyrics_search_google">Cerca con Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Nessuno dei provider abilitati può cercare altri brani</string>
   <string name="morphe_music_lyrics_saved">Salvato</string>
   <string name="morphe_music_lyrics_written_by">Scritto da: %s</string>
@@ -772,7 +778,6 @@ Si applica a entrambi i limiti. A 1,75, quattro caratteri a larghezza intera con
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizzato da %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romanizzato da %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (con %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Romanizzato da Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Tradotto</string>
   <string name="morphe_music_lyrics_translation_language_title">Lingua di traduzione</string>
@@ -832,19 +837,15 @@ I testi provengono da servizi di terze parti che non sono affiliati, sponsorizza
   <string name="morphe_music_lyrics_use_ai_section_title">Rileva sezioni con IA</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Utilizzato solo quando il provider non fornisce etichette di sezione come Ritornello o Strofa, che il tuo modello compatibile con OpenAI rileva. La modifica della riga apre anche il suo prompt</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL endpoint API (es. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Modello di prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Segnaposto: {task}, {language}, {title}, {artist}, {count}, {lines}. Quelli sconosciuti vengono lasciati come digitati</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt salvato</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Prompt salvato, ma l\'endpoint AI non è ancora utilizzabile. Configurarlo prima nelle Impostazioni AI</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt ripristinato</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Impostazioni di traduzione &amp; romanizzazione salvate</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Impostazioni salvate, ma l\'endpoint dell\'IA non è ancora utilizzabile</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Impostazioni salvate</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Impostazioni ripristinate ai valori predefiniti</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">L\'URL di base deve iniziare con http:// o https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Impostazioni incomplete o rifiutate dal provider</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Verifica della connessione…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Connesso! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Connessione fallita. Controlla le impostazioni.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Inserisci prima la chiave API</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Testa connessione</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Recupero modelli…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Recupera modelli</string>
@@ -861,7 +862,14 @@ I testi provengono da servizi di terze parti che non sono affiliati, sponsorizza
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Intestazioni richiesta extra (JSON opzionale)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Cita nomi e valori, es. {\"api-key\": \"abc\"}. Un valore non citato contenente / : o un numero viene rifiutato. Un valore vuoto rimuove un\'intestazione.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Cita nomi e valori, es. {\"temperature\": 0.3}. Un valore non citato contenente / o : viene rifiutato. Model e messages non possono essere impostati qui.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Sforzo di ragionamento</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Predefinita</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Chiave di autenticazione (Free o Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">L\'IA non è riuscita a rilevare le sezioni per questa traccia</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Rilevamento in corso</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Applica sezioni</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Rilevamento annullato</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Nessun testo per rilevare le sezioni</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disabilita icone in grassetto</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Ripristina le schede Successivo, Testi e Correlati del lettore</string>

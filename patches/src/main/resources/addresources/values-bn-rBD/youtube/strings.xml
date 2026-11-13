@@ -655,6 +655,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_loop_count_clear_done">সংরক্ষিত লুপ কাউন্ট মুছে ফেলা হয়েছে</string>
   <string name="morphe_loop_count_flyout_name">লুপ কাউন্ট</string>
   <string name="morphe_loop_count_dialog_message">পরবর্তী ভিডিও শুরু হওয়ার আগে ভিডিওটি কতবার চলবে, %1$s থেকে %2$s পর্যন্ত। কোনো সীমা ছাড়াই ভিডিওটি লুপ করতে খালি রাখুন।</string>
+  <string name="morphe_loop_count_times">%s বার</string>
   <string name="morphe_loop_count_no_limit">কোনো সীমা নেই</string>
   <string name="morphe_loop_count_decrease">কম বার</string>
   <string name="morphe_loop_count_increase">বেশি বার</string>
@@ -695,6 +696,9 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_play_all_button_type_entry_11">সদস্যদের জন্য শুধুমাত্র Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">সদস্যদের জন্য লাইভ স্ট্রীম</string>
   <string name="morphe_play_all_button_not_available_toast">চ্যানেল আইডি না মেলায় প্লেলিস্ট তৈরি করা যায়নি</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">প্লেলিস্ট বোতাম দেখান</string>
+  <string name="morphe_playlist_panel_button_summary">প্লেলিস্ট প্যানেল খুলতে ট্যাপ করুন। শুধুমাত্র প্লেলিস্ট চালানোর সময় প্রদর্শিত হয়</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">রিলোড ভিডিও বোতাম দেখান</string>
   <string name="morphe_dismiss_player_not_available_toast">ভিডিও আইডি পাওয়া যাচ্ছে না। অনুগ্রহ করে ম্যানুয়ালি ভিডিওটি রিলোড করুন</string>
@@ -1204,9 +1208,24 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">প্লেয়ার পপআপ প্যানেল নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_player_popup_panels_summary">প্লেলিস্ট এবং লাইভ চ্যাট প্যানেল স্বয়ংক্রিয়ভাবে খোলা বন্ধ করে</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">ফুলস্ক্রিনে প্লেলিস্ট প্যানেল দেখান</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">ফুলস্ক্রিন প্লেয়ারের উপর প্লেলিস্ট প্যানেল খোলে</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">ট্যাবলেটে প্লেলিস্ট প্যানেল ফুলস্ক্রিন থেকে এক্সিট করে</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">প্লেলিস্ট অটোপ্লে নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_playlist_autoplay_summary">প্লেলিস্টগুলিকে স্বয়ংক্রিয়ভাবে পরবর্তী ভিডিওতে অগ্রসর হতে বাধা দেয়</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">অটোপ্লে কন্ট্রোল</string>
+  <string name="morphe_autoplay_control_summary">একটি প্লেয়ার বোতাম এবং পরবর্তী ভিডিওর জন্য একটি নিয়ম যোগ করে। প্লেলিস্ট এবং কিউ চলতে থাকে, একটি মিক্স নির্দিষ্ট সংখ্যক ভিডিওর পর থেমে যায়, একটি সাজেস্টেড ভিডিও কখনোই চলে না। পরবর্তী মোডের জন্য বোতামটি ট্যাপ করুন, তালিকার জন্য ট্যাপ করে ধরে রাখুন</string>
+  <string name="morphe_autoplay_mode_title">অটোপ্লে মোড</string>
+  <string name="morphe_autoplay_mode_entry_1">স্বয়ংক্রিয়</string>
+  <string name="morphe_autoplay_mode_entry_2">সিঙ্গেল</string>
+  <string name="morphe_autoplay_mode_entry_3">বন্ধ</string>
+  <string name="morphe_autoplay_mix_stop_after_title">মিক্স দৈর্ঘ্য</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">অটো মোডে, একটি মিক্স এই সংখ্যক ভিডিওর পর থেমে যায়। ০ = কোনো সীমা নেই</string>
+  <string name="morphe_autoplay_mix_length">মিক্স: %s টি ভিডিও</string>
+  <string name="morphe_autoplay_mix_no_limit">মিক্স: কোনো সীমা নেই</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\'দেখা চালিয়ে যাবেন?\' প্রম্পট</string>
   <string name="morphe_continue_watching_prompt_entry_1">ডিফল্ট</string>
@@ -1282,9 +1301,6 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - প্লেলিস্টে পুরোনো সেভ করার অপশন ফিরিয়ে আনুন</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">২০.২৮.৪১ - বোল্ড আইকন নিষ্ক্রিয় করুন</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - ভিডিও প্লেয়ারের নিচে চ্যানেলের নাম পুনরুদ্ধার করুন</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">সিস্টেম শেয়ার শিট খুলুন</string>
-  <string name="morphe_open_system_share_sheet_summary">কন্টেন্ট শেয়ার করার সময় ইন-অ্যাপ শেয়ার শীটের পরিবর্তে সিস্টেম শেয়ার শীট খোলে</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">ইউটিউব মিউজিক বোতামগুলি প্রতিস্থাপন করুন</string>
   <string name="morphe_override_youtube_music_buttons_summary">স্টক ইউটিউব মিউজিক অ্যাপের পরিবর্তে আপনার পছন্দের মিউজিক অ্যাপ খোলে</string>
@@ -1478,7 +1494,6 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow সাময়িকভাবে উপলব্ধ নেই (স্ট্যাটাস কোড: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow সাময়িকভাবে উপলব্ধ নেই</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">পুরানো প্লেয়ারের বোতামের স্টাইল পুনরুদ্ধার করুন</string>
   <string name="morphe_restore_old_player_buttons_summary">মোটা ভিডিও প্লেয়ার কন্ট্রোলগুলিকে আগের, পাতলা ভিজ্যুয়াল শৈলীতে ফিরিয়ে আনে</string>
@@ -1518,25 +1533,20 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_video_delay_button_flyout_title">ভিডিও বিলম্ব মেনু দেখান</string>
   <string name="morphe_video_delay_dialog_input_hint">মিলিসেকেন্ডে বিলম্ব</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">স্বয়ংক্রিয়</string>
-  <string name="morphe_remember_video_quality_last_selected_title">ভিডিও গুণমান মনে রাখুন</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">আপনার ম্যানুয়াল গুণমান নির্বাচন ভবিষ্যতে সমস্ত ভিডিওতে প্রয়োগ করে</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">গুণমান পরিবর্তন বিজ্ঞপ্তি দেখান</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">যখন একটি নতুন ডিফল্ট গুণমান সঞ্চিত হয় তখন একটি বিজ্ঞপ্তি দেখায়।</string>
-  <string name="morphe_video_quality_default_wifi_title">ওয়াই-ফাই নেটওয়ার্কে ডিফল্ট ভিডিও গুণমান</string>
-  <string name="morphe_video_quality_default_mobile_title">মোবাইল নেটওয়ার্কে ডিফল্ট ভিডিও গুণমান</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts গুণমান মনে রাখুন</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">আপনার ম্যানুয়াল গুণমান নির্বাচন ভবিষ্যতে সমস্ত Shorts-এ প্রয়োগ করে</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi নেটওয়ার্কে ডিফল্ট Shorts গুণমান</string>
   <string name="morphe_shorts_quality_default_mobile_title">মোবাইল নেটওয়ার্কে ডিফল্ট Shorts গুণমান</string>
-  <string name="morphe_remember_video_quality_toast_mobile">ডিফল্ট মোবাইল গুণমান পরিবর্তন করা হয়েছে: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">ডিফল্ট Wi-Fi গুণমান পরিবর্তন করা হয়েছে: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts মোবাইল গুণমান পরিবর্তন করা হয়েছে: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts Wi-Fi গুণমান পরিবর্তন করা হয়েছে: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">প্লেব্যাক স্পিড বোতাম দেখান</string>
   <string name="morphe_playback_speed_dialog_button_summary">স্পিড রিসেট করতে ট্যাপ করুন এবং ধরে রাখুন</string>
+  <string name="morphe_playback_speed_button_cycle_title">স্পিড পরিবর্তন করতে প্লেব্যাক স্পিড বোতামটি ট্যাপ করুন</string>
+  <string name="morphe_playback_speed_button_cycle_summary">ট্যাপ করলে তালিকার পরবর্তী স্পিডে চলে যাবে। ট্যাপ করে ধরে রাখলে স্পিড মেনু খুলবে</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">প্লেব্যাক স্পিড বোতামের স্পিডসমূহ</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">ট্যাপের মাধ্যমে যে স্পিডগুলো পরিবর্তিত হবে, প্রতি লাইনে একটি করে। শেষ স্পিডের পর, ট্যাপ করলে পুনরায় প্রথমটিতে ফিরে যাবে</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">অবৈধ স্পিড সাইকেল তালিকা, ডিফল্টে রিসেট করা হয়েছে</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">গুণমান বোতাম দেখান</string>
   <string name="morphe_video_quality_dialog_button_summary">গুণমান রিসেট করতে ট্যাপ করুন এবং ধরে রাখুন</string>

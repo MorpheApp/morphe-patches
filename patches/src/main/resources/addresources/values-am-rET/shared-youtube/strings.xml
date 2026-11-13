@@ -232,6 +232,20 @@ Android System WebView ለመክፈት OKን ይንኩ።"</string>
   <string name="morphe_replace_music_with_youtube_summary">በተጋሩ ሊንኮች ውስጥ music.youtube.comን በ youtube.com ይተካል</string>
   <string name="morphe_replace_links_with_shortener_title">የማጋሪያ ሊንኮችን ወደ youtu.be ቀይር</string>
   <string name="morphe_replace_links_with_shortener_summary">ቪዲዮዎች አጭር የሆነውን youtu.be URL ፎርማትን እንዲጠቀሙ ያስገድዳል</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">ራስ-ሰር</string>
+  <string name="morphe_remember_video_quality_last_selected_title">የቪዲዮ ጥራትን አስታውስ</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">የመረጡትን የጥራት ደረጃ ለወደፊት ለሁሉም ቪዲዮዎች ይጠቀማል</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">የጥራት ለውጥ ማሳወቂያዎች</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">አዲስ መደበኛ የጥራት ደረጃ ሲቀመጥ ማሳወቂያ ያሳያል</string>
+  <string name="morphe_video_quality_default_wifi_title">በWi-Fi ኔትወርክ ላይ መደበኛ የቪዲዮ ጥራት</string>
+  <string name="morphe_video_quality_default_mobile_title">በሞባይል ኔትወርክ ላይ መደበኛ የቪዲዮ ጥራት</string>
+  <string name="morphe_remember_video_quality_toast_mobile">መደበኛ የሞባይል ጥራት ወደ %s ተቀይሯል</string>
+  <string name="morphe_remember_video_quality_toast_wifi">መደበኛ የWi-Fi ጥራት ወደ %s ተቀይሯል</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">የስርዓቱን የ பகிደት ዝርዝር ክፈት</string>
+  <string name="morphe_open_system_share_sheet_summary">ይዘቶችን ሲያጋሩ ከመተግበሪያው ውስጠኛ ማጋሪያ ይልቅ በምትኩ የሲስተም ማጋሪያ ገጹን ይከፍታል</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">የLitho ሎጊንግ</string>
   <string name="morphe_debug_litho_entry_disabled">ተዘግቷል</string>

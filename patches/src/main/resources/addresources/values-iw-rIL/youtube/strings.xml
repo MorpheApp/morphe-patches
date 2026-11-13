@@ -695,6 +695,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts של חברים בלבד</string>
   <string name="morphe_play_all_button_type_entry_12">שידורי חיים של חברים בלבד</string>
   <string name="morphe_play_all_button_not_available_toast">לא ניתן ליצור רשימת השמעה עקב אי התאמת מזהה ערוץ</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">הצג לחצן \'רשימת השמעה\'</string>
+  <string name="morphe_playlist_panel_button_summary">הקשה לפתיחת פאנל רשימת ההשמעה. מוצג רק בעת השמעת רשימת השמעה</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">הצג לחצן \'טען מחדש את הסרטון\'</string>
   <string name="morphe_dismiss_player_not_available_toast">מזהה הסרטון אינו זמין. נא לטעון מחדש את הסרטון באופן ידני</string>
@@ -1204,9 +1207,23 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">השבת לוחות קופצים בנגן</string>
   <string name="morphe_disable_player_popup_panels_summary">מונע מפאנלים של פלייליסט וצ\'אט חי להיפתח באופן אוטומטי</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">הצג את פאנל רשימת ההשמעה במסך מלא</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">חלונית רשימת ההשמעה נפתחת מעל נגן המסך המלא</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">חלונית רשימת ההשמעה יוצאת ממסך מלא בטאבלטים</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">השבת הפעלה אוטומטית של רשימת השמעה</string>
   <string name="morphe_disable_playlist_autoplay_summary">מונע מרשימות השמעה להתקדם אוטומטית לווידאו הבא</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">בקרת הפעלה אוטומטית</string>
+  <string name="morphe_autoplay_control_summary">מוסיף כפתור נגן וכלל לסרטון הבא. רשימות השמעה ותורים ממשיכים, Mix נעצר לאחר מספר סרטונים, וסרטון מוצע לא יופעל לעולם. הקשה על הכפתור למצב הבא, לחיצה ארוכה לרשימה</string>
+  <string name="morphe_autoplay_mode_title">מצב הפעלה אוטומטית</string>
+  <string name="morphe_autoplay_mode_entry_1">אוטומטי</string>
+  <string name="morphe_autoplay_mode_entry_2">בודד</string>
+  <string name="morphe_autoplay_mode_entry_3">כבוי</string>
+  <string name="morphe_autoplay_mix_stop_after_title">אורך ה-Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">במצב אוטומטי, Mix נעצר לאחר מספר זה של סרטונים. 0 = ללא הגבלה</string>
+  <string name="morphe_autoplay_mix_no_limit">מיקס: ללא הגבלה</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">הודעת \"המשך לצפות\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">ברירת מחדל</string>
@@ -1282,9 +1299,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - שחזר את התפריט הישן של שמירה לפלייליסט</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - השבת סמלים מודגשים</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - שחזר את שם הערוץ מתחת לנגן הווידאו</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">פתיחת תפריט שיתוף מערכת</string>
-  <string name="morphe_open_system_share_sheet_summary">פותח את גליון השיתוף של המערכת במקום את גליון השיתוף שבתוך האפליקציה בעת שיתוף תוכן</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">עקוף את לחצני YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">פותח את אפליקציית המוזיקה המועדפת עליך במקום אפליקציית YouTube Music הרגילה</string>
@@ -1478,7 +1492,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">השירות DeArrow אינו זמין באופן זמני (קוד מצב: %s)</string>
   <string name="morphe_dearrow_error_generic">השירות DeArrow אינו זמין באופן זמני</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">שחזר את סגנון כפתורי הנגן הישנים</string>
   <string name="morphe_restore_old_player_buttons_summary">מחזיר את כפתורי הנגן של הסרטון לסגנון הוויזואלי הישן והדק יותר</string>
@@ -1518,25 +1531,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">הצג תפריט עיכוב וידאו</string>
   <string name="morphe_video_delay_dialog_input_hint">עיכוב במילישניות</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">אוטומטי</string>
-  <string name="morphe_remember_video_quality_last_selected_title">זכור איכות וידאו</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">מחילה את בחירת האיכות הידנית שלך על כל הסרטונים העתידיים</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">התראות על שינוי איכות</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">מציג הודעה כאשר נשמרת איכות ברירת מחדל</string>
-  <string name="morphe_video_quality_default_wifi_title">איכות סרטון ברירת מחדל ברשת אלחוטית</string>
-  <string name="morphe_video_quality_default_mobile_title">איכות סרטון ברירת מחדל ברשת סלולרית</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">זכור איכות Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">מחילה את בחירת האיכות הידנית שלך על כל ה-Shorts העתידיים</string>
   <string name="morphe_shorts_quality_default_wifi_title">איכות Shorts ברירת מחדל ברשת אלחוטית</string>
   <string name="morphe_shorts_quality_default_mobile_title">איכות Shorts ברירת מחדל ברשת סלולרית</string>
-  <string name="morphe_remember_video_quality_toast_mobile">איכות ברירת המחדל של נייד שונתה ל: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">איכות ברירת המחדל של Wi-Fi שונתה ל: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">איכות Shorts בנייד שונתה ל: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">איכות Shorts ב-Wi-Fi שונתה ל: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">הצג כפתור מהירות הפעלה</string>
   <string name="morphe_playback_speed_dialog_button_summary">הקש והחזק כדי לאפס למהירות ברירת מחדל</string>
+  <string name="morphe_playback_speed_button_cycle_title">הקישו על כפתור מהירות ההפעלה כדי לעבור בין המהירויות</string>
+  <string name="morphe_playback_speed_button_cycle_summary">הקשה תעביר למהירות הבאה ברשימה. לחיצה ארוכה תפתח את תפריט המהירויות</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">מהירויות של כפתור מהירות ההפעלה</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">מהירויות שמעבר ביניהן מתבצע בהקשה, אחת בכל שורה. לאחר המהירות האחרונה, הקשה תחזיר לראשונה</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">רשימת מחזורי מהירות לא חוקית, איפוס לברירת המחדל</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">הצג כפתור איכות</string>
   <string name="morphe_video_quality_dialog_button_summary">הקש והחזק כדי לאפס לאיכות ברירת מחדל</string>

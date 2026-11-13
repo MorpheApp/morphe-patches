@@ -232,6 +232,20 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_replace_music_with_youtube_summary">Pinapalitan ang music.youtube.com sa youtube.com sa mga ibinahaging link</string>
   <string name="morphe_replace_links_with_shortener_title">Baguhin ang mga nakabahaging link sa youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Pinipilit ang mga video na gamitin ang pinaikling format ng URL na youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Awtomatiko</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Tandaan ang kalidad ng video</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Ilalapat ang iyong manwal na pagpili ng kalidad sa lahat ng mga susunod na video</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Mga notification sa pagbabago ng kalidad</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Nagpapakita ng notification kapag may na-save na bagong default na kalidad</string>
+  <string name="morphe_video_quality_default_wifi_title">Default na kalidad ng video sa Wi-Fi network</string>
+  <string name="morphe_video_quality_default_mobile_title">Default na kalidad ng video sa mobile network</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Binago ang default na kalidad ng mobile sa: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Binago ang default na kalidad ng Wi-Fi sa: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Buksan ang system share sheet</string>
+  <string name="morphe_open_system_share_sheet_summary">Binubuksan ang system share sheet sa halip na ang share sheet sa loob ng app kapag nagbabahagi ng content</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Tala ng Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Nakapatay</string>

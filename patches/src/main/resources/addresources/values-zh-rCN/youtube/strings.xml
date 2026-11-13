@@ -696,6 +696,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">会员专属 Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">会员专属直播</string>
   <string name="morphe_play_all_button_not_available_toast">由于频道ID不匹配，无法生成播放列表</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">显示播放列表按钮</string>
+  <string name="morphe_playlist_panel_button_summary">点击以打开播放列表面板。仅在播放播放列表时显示</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">显示重新加载视频按钮</string>
   <string name="morphe_dismiss_player_not_available_toast">视频 ID 不可用。请手动重新加载视频</string>
@@ -1205,9 +1208,24 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">禁用播放器弹出面板</string>
   <string name="morphe_disable_player_popup_panels_summary">禁用播放列表和直播聊天面板的自动打开</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">在全屏模式下显示播放列表面板</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">播放列表面板在全屏播放器上方打开</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">平板电脑上播放列表面板退出全屏</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">禁用播放列表自动播放</string>
   <string name="morphe_disable_playlist_autoplay_summary">防止播放列表自动跳转到下一个视频</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">自动播放控制</string>
+  <string name="morphe_autoplay_control_summary">添加一个播放器按钮和一条关于下一个视频的规则。播放列表和队列将继续播放，Mix 在播放一定数量的视频后停止，推荐视频则永不播放。点击按钮切换至下一个模式，长按显示列表</string>
+  <string name="morphe_autoplay_mode_title">自动播放模式</string>
+  <string name="morphe_autoplay_mode_entry_1">自动</string>
+  <string name="morphe_autoplay_mode_entry_2">单个</string>
+  <string name="morphe_autoplay_mode_entry_3">关闭</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Mix 长度</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">在自动模式下，Mix 在播放此数量的视频后停止。0 = 无限制</string>
+  <string name="morphe_autoplay_mix_length">Mix：%s 个视频</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix：无限制</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">“继续观看？”提示</string>
   <string name="morphe_continue_watching_prompt_entry_1">默认</string>
@@ -1283,9 +1301,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 恢复旧的保存到播放列表</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - 禁用粗体图标</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 恢复视频播放器下方的频道名称</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">打开系统分享面板</string>
-  <string name="morphe_open_system_share_sheet_summary">在共享内容时打开系统共享表，而不是应用内共享表</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">覆盖 YouTube Music 按钮</string>
   <string name="morphe_override_youtube_music_buttons_summary">打开您首选的音乐应用，而不是默认的YouTube Music应用</string>
@@ -1479,7 +1494,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow 暂时不可用（状态码：%s）</string>
   <string name="morphe_dearrow_error_generic">DeArrow 暂时不可用</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">恢复旧播放器按钮样式</string>
   <string name="morphe_restore_old_player_buttons_summary">将粗体视频播放器控件恢复为旧的、较薄的视觉样式</string>
@@ -1519,25 +1533,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">显示视频延迟菜单</string>
   <string name="morphe_video_delay_dialog_input_hint">以毫秒为单位的延迟</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">自动</string>
-  <string name="morphe_remember_video_quality_last_selected_title">记住视频画质</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">将您的手动画质选择应用于所有未来的视频</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">画质更改通知</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">保存新的默认质量时显示通知</string>
-  <string name="morphe_video_quality_default_wifi_title">WiFi网络的默认视频画质</string>
-  <string name="morphe_video_quality_default_mobile_title">移动网络的默认视频画质</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">记住 Shorts 画质</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">将您的手动画质选择应用于所有未来的 Shorts</string>
   <string name="morphe_shorts_quality_default_wifi_title">Wi-Fi 网络上的默认 Shorts 画质</string>
   <string name="morphe_shorts_quality_default_mobile_title">移动网络上的默认 Shorts 画质</string>
-  <string name="morphe_remember_video_quality_toast_mobile">已更改默认移动网络画质：%s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">已更改默认 Wi-Fi 画质：%s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">已将 Shorts 移动网络画质更改为：%s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">已将 Shorts Wi-Fi 画质更改为：%s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">显示播放速度按钮</string>
   <string name="morphe_playback_speed_dialog_button_summary">轻按并按住以重置为默认速度</string>
+  <string name="morphe_playback_speed_button_cycle_title">点击播放速度按钮以循环切换速度</string>
+  <string name="morphe_playback_speed_button_cycle_summary">点击将跳转到列表中的下一个速度。长按可打开速度菜单</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">播放速度按钮的速度</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">点击循环切换的速度，每行一个。到达最后一个速度后，点击将返回到第一个</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">速度循环列表无效，已重置为默认值</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">显示视频画质按钮</string>
   <string name="morphe_video_quality_dialog_button_summary">点按并按住以将画质重置为默认值</string>

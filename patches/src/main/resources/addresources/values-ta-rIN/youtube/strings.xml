@@ -204,6 +204,9 @@ Second \"item\" text"</string>
   <string name="morphe_pip_action_entry_play_pause">இயக்கு/நிறுத்து</string>
   <string name="morphe_pip_action_entry_background_playback">பின்னணி இயக்கம்</string>
   <!-- interaction.playall.playAllButtonPatch -->
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">பிளேலிஸ்ட்டைக் காட்டு பொத்தான்</string>
+  <string name="morphe_playlist_panel_button_summary">பிளேலிஸ்ட் பேனலைத் திறக்கத் தட்டவும். பிளேலிஸ்ட்டை இயக்கும்போது மட்டுமே இது காட்டப்படும்</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <!-- 'Play next in queue' should be translated using the same localized wording YouTube displays the feed flyout item. -->
@@ -355,7 +358,22 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">முழுத் திரையில் பிளேலிஸ்ட் பேனலைக் காட்டு</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">முழுத் திரை பிளேயருக்கு மேல் பிளேலிஸ்ட் பேனல் திறக்கும்</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">டேப்லெட்டுகளில் பிளேலிஸ்ட் பேனல் முழுத் திரையை விட்டு வெளியேறும்</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">தானியங்கி இயக்கக் கட்டுப்பாடு</string>
+  <string name="morphe_autoplay_control_summary">அடுத்த வீடியோவிற்கான பிளேயர் பொத்தானையும் விதியையும் சேர்க்கிறது. பிளேலிஸ்ட்கள் மற்றும் வரிசைகள் தொடரும், ஒரு மிக்ஸ் குறிப்பிட்ட எண்ணிக்கையிலான வீடியோக்களுக்குப் பிறகு நிறுத்தப்படும், பரிந்துரைக்கப்பட்ட வீடியோக்களோ ஒருபோதும் இயங்காது. அடுத்த பயன்முறைக்கு பொத்தானைத் தட்டவும், பட்டியலைப் பார்க்க தட்டிப் பிடிக்கவும்</string>
+  <string name="morphe_autoplay_mode_title">ஆட்டோபிளே பயன்முறை</string>
+  <string name="morphe_autoplay_mode_entry_1">ஆட்டோ</string>
+  <string name="morphe_autoplay_mode_entry_2">சிங்கிள்</string>
+  <string name="morphe_autoplay_mode_entry_3">ஆஃப்</string>
+  <string name="morphe_autoplay_mix_stop_after_title">மிக்ஸ் நீளம்</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">ஆட்டோ பயன்முறையில், ஒரு மிக்ஸ் இத்தனை வீடியோக்களுக்குப் பிறகு நிறுத்தப்படும். 0 = வரம்பு இல்லை</string>
+  <string name="morphe_autoplay_mix_length">மிக்ஸ்: %s வீடியோக்கள்</string>
+  <string name="morphe_autoplay_mix_no_limit">கலவை: வரம்பு இல்லை</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\'தொடர்ந்து பார்ப்பதற்கா?\' தூண்டல்</string>
   <string name="morphe_continue_watching_prompt_entry_1">இயல்பானது</string>
@@ -372,7 +390,6 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
@@ -408,7 +425,6 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_dearrow_titles_icon_summary">Crowdsourced வீடியோ தலைப்புகளில் DeArrow ஐகானைக் காட்டுகிறது. அசல் தலைப்பு மற்றும் தம்ப்னைலைக் காண ஐகானைத் தட்டுங்கள்</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
@@ -418,8 +434,12 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- video.buffer.playbackBufferPatch -->
   <!-- video.delay.videoDelayPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <!-- video.speed.button.playbackSpeedButtonPatch -->
+  <string name="morphe_playback_speed_button_cycle_title">வேகங்களை மாற்ற பிளேபேக் வேக பொத்தானை தட்டுங்கள்</string>
+  <string name="morphe_playback_speed_button_cycle_summary">தட்டுவது பட்டியலில் உள்ள அடுத்த வேகத்திற்குச் செல்லும். அழுத்திப் பிடிப்பது வேக மெனுவைத் திறக்கும்</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">பிளேபேக் வேக பொத்தானின் வேகங்கள்</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">தட்டுவதன் மூலம் சுழலும் வேகங்கள், ஒரு வரிக்கு ஒன்று. கடைசி வேகத்திற்குப் பிறகு, தட்டுவது மீண்டும் முதலாவதிற்குச் செல்லும்</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">தவறான வேக சுழற்சிப் பட்டியல், இயல்புநிலைக்கு மீட்டமைக்கப்பட்டது</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->

@@ -132,7 +132,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_menu_title">Gumamit ng panlabas na downloader para sa Download menu</string>
   <string name="morphe_external_downloader_menu_summary">Ang opsyong Download ng mga menu ay magbubukas sa iyong panlabas na downloader sa halip</string>
   <string name="morphe_export_download_folder_title">I-export ang mga download</string>
-  <string name="morphe_export_download_folder_summary">"I-export ang mga kanta at video na na-download ng app sa storage ng iyong device gamit ang menu ng download. I-tap para baguhin ang export folder
+  <string name="morphe_export_download_folder_summary">"I-export ang mga kanta at video na na-save sa app sa storage ng iyong device gamit ang in-app downloads flyout menu. I-tap para baguhin ang export
 
 Export folder: %s"</string>
   <string name="morphe_export_download_started">Inie-export ang download</string>
@@ -146,13 +146,14 @@ Export folder: %s"</string>
   <string name="morphe_export_download_all_saved">Na-export ang %1$s mula sa %2$s na mga download sa %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Tungkol sa</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Patalastas</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
-  <string name="morphe_settings_music_screen_3_general_title">Pangkalahatan</string>
-  <string name="morphe_settings_music_screen_4_player_title">Manlalaro</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Mga liriko</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Mga sari-sari</string>
+  <string name="morphe_settings_music_screen_00_about_title">Tungkol</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Patalastas</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_03_general_title">Pangkalahatan</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Mga Liriko</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Mga sari-sari</string>
+  <string name="morphe_settings_music_screen_06_player_title">Manlalaro</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">Wika ng YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Wika ng system</string>
   <string name="morphe_music_app_language_summary_unsupported">Nangangailangan ng Android 13 o mas bago</string>
@@ -256,6 +257,9 @@ Pag-playback ng SABR (Naka-off ang pag-spoof ng mga video stream)"</string>
   <string name="morphe_music_playback_speed_title">Bilis ng pag-playback</string>
   <string name="morphe_music_playback_speed_summary">Bilis na ginagamit para sa lahat ng mga track. Sa 100%, ginagamit ang bilis ng app, gaya ng bilis ng pag-playback ng podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Baguhin ang pitch ayon sa bilis</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">I-disable ang auto caption</string>
+  <string name="morphe_music_disable_auto_captions_summary">Hindi awtomatikong nai-enable ang mga caption kapag nagsimula ang isang video, kabilang ang mga caption na nai-enable ng video by default</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">I-disable ang audio ducking</string>
   <string name="morphe_music_disable_audio_ducking_summary">Hindi bababa ang volume kapag may ibang app na nagpatugtog ng maikling tunog, gaya ng notification</string>
@@ -567,6 +571,7 @@ Para matiyak na naka-sync ang scrobbling habang nagpe-play sa background, sigura
 
 Ang database ay lisensyado sa ilalim ng ODC Open Database License (ODbL). Ang mga entry mula sa Soul Over AI ni xoundbyte ay lisensyado sa ilalim ng CC BY 4.0. Hindi kaakibat o hindi sinusuportahan ng SoundProof o Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Hindi available ang lyrics para sa file ng device na ito.</string>
   <string name="morphe_music_lyrics_enabled_title">Gumamit ng mga liriko mula sa third-party</string>
   <string name="morphe_music_lyrics_enabled_summary">Nagpapakita ng mga liriko mula sa isang third-party service, babalik sa mga built-in na liriko kapag walang nakita</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Panatilihing naka-on ang screen habang tinitingnan ang mga lyrics</string>
@@ -693,6 +698,7 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_search_title_hint">Pamagat ng kanta</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artist</string>
   <string name="morphe_music_lyrics_search_empty">Ilagay ang pangalan ng kanta at ang kumanta nito</string>
+  <string name="morphe_music_lyrics_search_google">Mag-search gamit ang Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Wala sa mga pinaganang provider ang makakapaghanap ng iba pang mga kanta</string>
   <string name="morphe_music_lyrics_saved">Na-save</string>
   <string name="morphe_music_lyrics_written_by">Isinulat ni: %s</string>
@@ -772,7 +778,6 @@ Nalalapat sa parehong limitasyon. Sa 1.75, ang apat na full-width character ay m
   <string name="morphe_music_lyrics_romanized_by_ai">Isina-romanisa ni %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Napag-romanisan ni %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (kasama ang %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Romanized ng Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Isinalin</string>
   <string name="morphe_music_lyrics_translation_language_title">Wika ng pagsasalin</string>
@@ -832,19 +837,15 @@ Ang mga lyrics ay galing sa mga third-party service na hindi konektado sa, hindi
   <string name="morphe_music_lyrics_use_ai_section_title">Detektahin ang sections gamit ang AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Ginagamit lamang kapag ang provider ay walang label ng section tulad ng Chorus o Verse, na detektahin ng iyong OpenAI-compatible model pagkatapos. Ang pag-edit ng row ay bubukas din ng prompt nito</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (hal. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Template ng Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Mga Placeholder: {task}, {language}, {title}, {artist}, {count}, {lines}. Ang mga hindi kilala ay mananatili kung paano ito itinaype</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Nai-save na ang prompt</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Na-save ang prompt, ngunit hindi pa magagamit ang AI endpoint. I-configure muna ito sa ilalim ng AI Settings.</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Na-reset na ang prompt</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Na-save ang mga setting ng Translation &amp; Romanization</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Nailigtas ang mga setting, ngunit hindi pa magagamit ang AI endpoint</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Nailigtas ang mga setting</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Ibinalik sa default ang mga setting</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Ang Base URL ay dapat magsimula sa http:// o https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Hindi kumpleto ang settings o tinanggihan ng provider</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Tinitignan ang koneksyon…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Nakakonekta! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Nabigo ang koneksyon. I-check ang mga setting.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Ilagay muna ang API key</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">I-test ang koneksyon</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Kukuha ng mga modelo…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Kuhanin ang mga model</string>
@@ -861,7 +862,14 @@ Ang mga lyrics ay galing sa mga third-party service na hindi konektado sa, hindi
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Extra request headers (optional JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Lagyan ng quote ang mga pangalan at value, hal. {\"api-key\": \"abc\"}. Ang value na walang quote at may / : o numero ay tinatanggihan. Ang walang laman na value ay nag-aalis ng header.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Lagyan ng quote ang mga pangalan at value, hal. {\"temperature\": 0.3}. Ang value na walang quote at may / o : ay tinatanggihan. Hindi maaaring itakda ang Model at messages dito.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Pagsisikap sa pangangatwiran</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Default</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Authentication key (Free o Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">Hindi nakilala ng AI ang mga seksyon para sa track na ito</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Kinikilala</string>
+  <string name="morphe_music_lyrics_ai_section_apply">I-apply ang mga seksyon</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Kanselado ang pagkilala</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Walang liriko para kilalanin ang mga seksyon</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - I-disable ang mga bold na icon</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Ibalik ang Player Up next, Lyrics, at Related tabs</string>

@@ -232,6 +232,20 @@ Saioa hasteko, sakatu behean jarraitu"</string>
   <string name="morphe_replace_music_with_youtube_summary">Partekatutako esteketan music.youtube.com youtube.com-z ordezkatzen du</string>
   <string name="morphe_replace_links_with_shortener_title">Aldatu partekatze estekak youtu.be-ra</string>
   <string name="morphe_replace_links_with_shortener_summary">Bideoek youtu.be URL formatu laburtua erabiltzera behartzen ditu</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatiko</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Gogoratu bideo kalitatea</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Eskuz hautatutako kalitatea etorkizuneko bideo guztietan aplikatzen da</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Kalitate aldaketa jakinarazpenak</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Kalitate lehenetsi berri bat gordetzen denean jakinarazpen bat erakusten du</string>
+  <string name="morphe_video_quality_default_wifi_title">Bideo kalitate lehenetsia Wi-Fi sarean</string>
+  <string name="morphe_video_quality_default_mobile_title">Bideo kalitate lehenetsia sare mugikorrean</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Lehenetsitako mugikorreko kalitatea aldatu da: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Lehenetsitako Wi-Fi kalitatea aldatu da: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Ireki sistemaren partekatze panela</string>
+  <string name="morphe_open_system_share_sheet_summary">Edukia partekatzean, aplikazioaren ordez sistemaren partekatze panela irekitzen du</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho logeatzea</string>
   <string name="morphe_debug_litho_entry_disabled">Desaktibatuta</string>
