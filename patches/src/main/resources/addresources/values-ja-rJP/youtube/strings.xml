@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">検索結果の動画をキーワードで除外</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">登録チャンネルの動画をキーワードで除外</string>
   <string name="morphe_hide_keyword_content_phrases_title">キーワード</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"非表示にするキーワードやフレーズを、改行で区切って入力してください
+  <string name="morphe_hide_keyword_content_phrases_summary">"非表示にするキーワードやフレーズを改行区切りで入力してください
 
-キーワードは、動画のタイトルやチャンネル名に表示される任意のテキストを指定できます"</string>
+キーワードには動画タイトルに表示される任意のテキストを指定できます。@ユーザー名のキーワードを指定すると、特定のクリエイターによるすべてのコンテンツを非表示にします"</string>
   <string name="morphe_hide_keyword_content_about_summary">"ホーム / 登録チャンネル / 検索 / コメントでは、キーワードに合致するコンテンツを非表示にするようフィルタリングされます
 
 制限事項:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">キーワードを二重引用符で囲むことで、動画のタイトルやチャンネル名に含まれる単語の一部分とキーワードが合致しないようにできます&lt;br&gt;&lt;br&gt;例えば、&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;は、次の動画を除外します: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;しかし、次の動画は除外しません: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">矛盾する宣言があるキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">短すぎて引用符が必要なキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">全動画を除外するキーワード: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• ホーム: %1$s
@@ -560,18 +559,11 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_export_download_folder_summary">"アプリ内ダウンロードのフライアウトメニューを使用して、アプリ内で保存したビデオをデバイスのストレージにエクスポートします。タップしてエクスポートフォルダを変更してください
 
 エクスポートフォルダ: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">エクスポートフォルダ</string>
-  <string name="morphe_export_download_folder_change">フォルダを変更</string>
-  <string name="morphe_export_download_folder_changed">エクスポートフォルダが変更されました</string>
-  <string name="morphe_export_download_folder_reset">エクスポートフォルダをリセット</string>
-  <string name="morphe_export_download_folder_missing">エクスポートフォルダ %s が見つかりませんでした</string>
-  <string name="morphe_export_download_flyout_title">デバイスにエクスポート</string>
   <string name="morphe_export_download_started">ビデオをエクスポート中</string>
   <string name="morphe_export_download_progress">ビデオを書き出し中: %s%%</string>
   <string name="morphe_export_download_notification_channel">ビデオのエクスポート</string>
   <string name="morphe_export_download_saved">ビデオを %s にエクスポートしました</string>
   <string name="morphe_export_download_failed">ビデオをエクスポートできませんでした</string>
-  <string name="morphe_export_download_canceled">エクスポートをキャンセルしました</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">吹き替え翻訳</string>
   <string name="morphe_vot_screen_summary">動画字幕を翻訳し、デバイス上のテキスト読み上げ機能で字幕の翻訳を字幕に同期しながら読み上げます</string>
@@ -730,8 +722,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_queue_type_entry_2">ネイティブキュー</string>
   <string name="morphe_queue_type_entry_3">Morphe キュー</string>
   <string name="morphe_queue_type_entry_4">Morpheキュー（クライアント側）</string>
-  <string name="morphe_queue_add_flyout_menu_title">フィードのフライアウト メニューにキューの項目を追加</string>
-  <string name="morphe_queue_add_flyout_menu_summary">フィードのフライアウト メニューにキューの項目を追加します。「キューに追加」が表示されない場合に、この機能を有効にしてください</string>
   <string name="morphe_local_queue_sheet_title">キュー</string>
   <string name="morphe_local_queue_open">キュー (%s)</string>
   <string name="morphe_local_queue_clear">すべて消去</string>
@@ -1464,7 +1454,7 @@ Automotive レイアウト
   <string name="morphe_dearrow_titles_player_title">プレーヤーのプレイリスト &amp; 関連動画</string>
   <string name="morphe_dearrow_titles_search_title">検索結果</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow アイコンを表示</string>
-  <string name="morphe_dearrow_titles_icon_summary">クラウドソースされた動画タイトルに DeArrow アイコンを表示します</string>
+  <string name="morphe_dearrow_titles_icon_summary">クラウドソースされた動画タイトルにDeArrowアイコンを表示します。アイコンをタップすると、元のタイトルとサムネイルが表示されます</string>
   <string name="morphe_dearrow_casual_mode_title">カジュアル モード</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow ユーザーが元のタイトルを「いいね」と投票した場合、DeArrow のタイトルではなく元のタイトルが表示されます</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">元のタイトルを表示するためのカジュアル投票の最小数</string>
@@ -1640,6 +1630,9 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_spoof_video_streams_about_no_stable_volume">•「一定音量」が利用できない</string>
   <string name="morphe_spoof_video_streams_about_end_early">• 再生が 1 秒早く終了する場合がある</string>
   <string name="morphe_spoof_video_streams_about_js">• 難読化の解除に失敗した場合、再生に失敗する可能性がある</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView がオフになっているか、インストールされていません。オンにして更新してください。そうしないと、再生に失敗する可能性があります</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView が古くなっています。更新してください。そうしないと、再生に失敗する可能性があります</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• [オリジナルの音声を常に使用] が利用できない</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR にログインする必要がある</string>

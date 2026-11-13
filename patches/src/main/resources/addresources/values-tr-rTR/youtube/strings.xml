@@ -320,9 +320,9 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_keyword_content_search_title">Arama sonuçlarını anahtar kelimelerle gizle</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Aboneliklerdeki videoları anahtar kelimelerle gizle</string>
   <string name="morphe_hide_keyword_content_phrases_title">Gizlenecek anahtar kelimeler</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Gizlenecek anahtar kelimeleri ve ifadeleri yeni satırlarla ayrılmış olarak girin
+  <string name="morphe_hide_keyword_content_phrases_summary">"Gizlenecek anahtar kelimeleri ve ifadeleri satırlara ayrılmış olarak girin
 
-Anahtar kelimeler, video başlıklarında veya kanal adlarında gösterilen herhangi bir metin olabilir"</string>
+Anahtar kelimeler, video başlıklarında gösterilen herhangi bir metin olabilir. @KullanıcıAdı anahtar kelimesi, belirli oluşturucuların tüm içeriğini gizler"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Ana sayfa / Abonelikler / Arama / Yorumlar anahtar kelime ifadeleriyle eşleşen içeriği gizlemek için filtrelenir
 
 Kısıtlamalar:
@@ -332,7 +332,6 @@ Kısıtlamalar:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Bir anahtar kelimeyi veya ifadeyi tırnak işareti içine almak, video başlıkları ve kanal adlarının kısmi eşleşmelerini önleyecektir&lt;br&gt;&lt;br&gt;Örneğin,&lt;br&gt;&lt;b&gt;\"ağustos\"&lt;/b&gt;, &lt;b&gt;Ağustos ayında kardan adam yapmak!&lt;/b&gt; başlıklı videoyu gizleyecektir&lt;br&gt;ancak &lt;b&gt;Ağustosböcekleri hakkında bilgiler&lt;/b&gt; başlıklı videoyu gizlemeyecektir</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Anahtar kelimede çelişki var: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kelime kısa, tırnak içine alın: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kelime bütün videoları gizler: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Ana Sayfa: %1$s
@@ -560,18 +559,11 @@ Soru düğmesine sahip olan bir video bir kez açıldıktan sonra bu özellik, m
   <string name="morphe_export_download_folder_summary">"Uygulama içi indirmeler açılır menüsünü kullanarak uygulama içinde kaydedilen videoları cihaz depolama alanınıza dışa aktarın. Dışa aktarma klasörünü değiştirmek için dokunun
 
 Dışa aktarma klasörü: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Dışa aktarma klasörü</string>
-  <string name="morphe_export_download_folder_change">Klasörü değiştir</string>
-  <string name="morphe_export_download_folder_changed">Dışa aktarma klasörü değiştirildi</string>
-  <string name="morphe_export_download_folder_reset">Dışa aktarma klasörü sıfırlandı</string>
-  <string name="morphe_export_download_folder_missing">Dışa aktarma klasörü %s bulunamadı</string>
-  <string name="morphe_export_download_flyout_title">Cihaza dışa aktar</string>
   <string name="morphe_export_download_started">Video dışa aktarılıyor</string>
   <string name="morphe_export_download_progress">Video dışa aktarılıyor: %s%%</string>
   <string name="morphe_export_download_notification_channel">Video dışa aktarımları</string>
   <string name="morphe_export_download_saved">Video %s konumuna dışa aktarıldı</string>
   <string name="morphe_export_download_failed">Video dışa aktarılamadı</string>
-  <string name="morphe_export_download_canceled">Dışa aktarma iptal edildi</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Seslendirme çevirisi</string>
   <string name="morphe_vot_screen_summary">Cihaz üzerindeki metin-konuşma özelliğini kullanarak video altyazılarını oynatmayla senkronize bir şekilde yüksek sesle okuyun.</string>
@@ -729,8 +721,6 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_queue_type_entry_2">Yerel sıra</string>
   <string name="morphe_queue_type_entry_3">Morphe sırası</string>
   <string name="morphe_queue_type_entry_4">İstemci taraflı Morphe sırası</string>
-  <string name="morphe_queue_add_flyout_menu_title">Akış açılır menüsüne sıra öğesi ekle</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Ek bir açılır menü öğesi ekler. \"Kuyruğa ekle\" gösterilmiyorsa bunu etkinleştirin.</string>
   <string name="morphe_local_queue_sheet_title">Sıra</string>
   <string name="morphe_local_queue_open">Kuyruk (%s)</string>
   <string name="morphe_local_queue_clear">Tümünü temizle</string>
@@ -1463,7 +1453,7 @@ Otomotiv düzeni
   <string name="morphe_dearrow_titles_player_title">Oynatıcı çalma listeleri &amp; önerileri</string>
   <string name="morphe_dearrow_titles_search_title">Arama sonuçları</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow simgesini göster</string>
-  <string name="morphe_dearrow_titles_icon_summary">Kitle kaynaklı video başlıklarında DeArrow simgesini gösterir</string>
+  <string name="morphe_dearrow_titles_icon_summary">Kitle kaynaklı video başlıklarında DeArrow simgesini gösterir. Orijinal başlığı ve küçük resmi görmek için simgeye dokunun</string>
   <string name="morphe_dearrow_casual_mode_title">Gündelik mod</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow kullanıcıları orijinal başlığı beğendikleri yönünde oy kullandıysa, DeArrow başlığı yerine orijinal başlığı gösterir</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Orijinal başlığı göstermek için minimum gündelik oy sayısı</string>
@@ -1640,6 +1630,9 @@ AV1 ile video oynatma takılabilir veya kare atlayabilir"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit ses mevcut değil</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Oynatma 1 saniye erken sona erebilir</string>
   <string name="morphe_spoof_video_streams_about_js">• Eşleştirme başarısız olursa oynatma da başarısız olabilir</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView kapalı veya yüklü değil. Açın ve güncelleyin, aksi takdirde oynatma başarısız olabilir</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView güncel değil. Güncelleyin, aksi takdirde oynatma başarısız olabilir</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Orijinal sesi zorlama mevcut değil</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR\'da oturum açılması gereklidir</string>

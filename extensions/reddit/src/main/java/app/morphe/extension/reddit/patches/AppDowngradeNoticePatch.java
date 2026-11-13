@@ -26,7 +26,7 @@ import app.morphe.extension.shared.ui.CustomDialog;
  * Disable Play Store updates allows installing an older app version over a newer one,
  * but the app data of newer versions crashes older versions.
  */
-@SuppressWarnings({"deprecation", "unused"})
+@SuppressWarnings("unused")
 public class AppDowngradeNoticePatch {
 
     /**
@@ -50,7 +50,7 @@ public class AppDowngradeNoticePatch {
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     activity,
                     str("morphe_app_downgrade_dialog_title"), // Title.
-                    Html.fromHtml(str("morphe_app_downgrade_dialog_message", highestAppVersion, appVersionName)), // Message.
+                    Html.fromHtml(str("morphe_app_downgrade_dialog_message", highestAppVersion, appVersionName), Html.FROM_HTML_MODE_LEGACY), // Message.
                     null, // No EditText.
                     str("morphe_app_downgrade_dialog_open_app_info"), // OK button text.
                     () -> {

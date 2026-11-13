@@ -321,7 +321,7 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_keyword_content_phrases_title">Kľúčové slová na skrytie</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Zadajte kľúčové slová a frázy, ktoré chcete skryť, oddelené novými riadkami
 
-Kľúčové slová môžu byť akýkoľvek text zobrazený v názvoch videí alebo názvoch kanálov"</string>
+Kľúčové slová môžu byť akýkoľvek text zobrazený v názvoch videí. Kľúčové slovo @Používateľskomeno skryje všetok obsah od konkrétnych tvorcov"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Domov / Odobery / Vyhľadávanie / Komentáre sú filtrované tak, aby sa skryl obsah zodpovedajúci kľúčovým frázam
 
 Obmedzenia:
@@ -331,7 +331,6 @@ Obmedzenia:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Ohraničením kľúčového slova/frázy do úvodzoviek zabránite čiastočnej zhode titulov videí a názvov kanálov&lt;br&gt;&lt;br&gt;Napríklad,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; skryje video: &lt;b&gt;Ako funguje AI?&lt;/b&gt;&lt;br&gt;ale neskryje: &lt;b&gt;Čo znamená fair use?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Kľúčové slovo má konfliktné deklarácie: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kľúčové slovo je príliš krátke a vyžaduje úvodzovky: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kľúčové slovo skryje všetky videá: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Domov: %1$s
@@ -557,18 +556,11 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_export_download_folder_summary">"Exportujte videá uložené v aplikácii do úložiska zariadenia pomocou ponuky sťahovaní v aplikácii. Klepnutím zmeníte exportovaciu zložku
 
 Exportovacia zložka: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Exportovacia zložka</string>
-  <string name="morphe_export_download_folder_change">Zmeniť zložku</string>
-  <string name="morphe_export_download_folder_changed">Exportovacia zložka bola zmenená</string>
-  <string name="morphe_export_download_folder_reset">Exportovacia zložka bola resetovaná</string>
-  <string name="morphe_export_download_folder_missing">Nepodarilo sa nájsť exportný priečinok %s</string>
-  <string name="morphe_export_download_flyout_title">Exportovať do zariadenia</string>
   <string name="morphe_export_download_started">Exportovanie videa</string>
   <string name="morphe_export_download_progress">Exportovanie videa: %s%%</string>
   <string name="morphe_export_download_notification_channel">Exporty videí</string>
   <string name="morphe_export_download_saved">Video bolo exportované do %s</string>
   <string name="morphe_export_download_failed">Nepodarilo sa exportovať video</string>
-  <string name="morphe_export_download_canceled">Export zrušený</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Preklad hlasového komentára</string>
   <string name="morphe_vot_screen_summary">Nahlas prečítajte titulky videa pomocou text-to-speech priamo v zariadení, synchronizovane s prehrávaním</string>
@@ -726,8 +718,6 @@ Poznámka: Možno nebude fungovať na živých prenosoch"</string>
   <string name="morphe_queue_type_entry_2">Natívna rada</string>
   <string name="morphe_queue_type_entry_3">Rada Morphe</string>
   <string name="morphe_queue_type_entry_4">Klientská strana rady Morphe</string>
-  <string name="morphe_queue_add_flyout_menu_title">Pridať položku ponuky do rozbaľovacej ponuky fronty informačného kanála</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Pridá ďalšiu položku do rozbaľovacej ponuky. Povoľte, ak sa \"Pridať do frontu\" nezobrazuje</string>
   <string name="morphe_local_queue_sheet_title">Fronta</string>
   <string name="morphe_local_queue_open">Fronta (%s)</string>
   <string name="morphe_local_queue_clear">Vyčistiť všetko</string>
@@ -1460,7 +1450,7 @@ Rozloženie pre automobil
   <string name="morphe_dearrow_titles_player_title">Playlisty prehrávača &amp; odporúčania</string>
   <string name="morphe_dearrow_titles_search_title">Výsledky vyhľadávania</string>
   <string name="morphe_dearrow_titles_icon_title">Zobraziť ikonu DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Zobrazuje ikonu DeArrow pri crowdsourcovaných názvoch videí</string>
+  <string name="morphe_dearrow_titles_icon_summary">Zobrazuje ikonu DeArrow pri názvoch videí z crowdsourcingu. Klepnutím na ikonu zobrazíte pôvodný názov a miniaturu</string>
   <string name="morphe_dearrow_casual_mode_title">Bežný režim</string>
   <string name="morphe_dearrow_casual_mode_summary">Zobrazí pôvodný názov namiesto názvu DeArrow, ak používatelia DeArrow hlasovali, že sa im páči pôvodný názov</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimálny počet bežných hlasov na zobrazenie pôvodného názvu</string>
@@ -1636,6 +1626,9 @@ Pri prehrávaní pomocou AV1 sa video môže zasekávať alebo vynechávať sní
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilná hlasitosť nie je dostupná</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Prehrávanie môže skončiť o 1 sekundu skôr</string>
   <string name="morphe_spoof_video_streams_about_js">• Ak deobfuskácia zlyhá, prehrávanie nemusí fungovať</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView je vypnutý alebo nie je nainštalovaný. Zapnite ho a aktualizujte, inak môže prehrať zlyhať</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView je zastaraný. Aktualizujte ho, inak môže prehrať zlyhať</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Vynútenie pôvodného zvuku nie je k dispozícii</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Vyžaduje sa prihlásenie do Android VR</string>

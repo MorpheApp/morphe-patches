@@ -16,6 +16,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MiniLyricsGapTest {
     private static LyricsLine line(long start, long end, String text) {
@@ -88,26 +89,26 @@ public class MiniLyricsGapTest {
             assertTrue(text, MiniLyricsTimeline.isInstrumentalMarker(text));
         assertFalse(MiniLyricsTimeline.isInstrumentalMarker("♪ actual lyric ♪"));
         assertNull(timeline().at(20000).vocal());
-        assertEquals(15000, timeline().at(20000).gap().startMs());
-        assertEquals(45000, timeline().at(20000).gap().endMs());
+        assertEquals(15000, Objects.requireNonNull(timeline().at(20000).gap()).startMs());
+        assertEquals(45000, Objects.requireNonNull(timeline().at(20000).gap()).endMs());
     }
 
     @Test
     public void introVocalGapOutroAndBoundariesAreDistinct() {
         MiniLyricsTimeline t = timeline();
-        assertEquals(10000, t.at(0).gap().endMs());
-        assertNull(t.at(0).gap().previous());
-        assertEquals("first lyric", t.at(10000).vocal().line().text());
-        assertEquals("first lyric", t.at(15000).gap().previous().line().text());
-        assertEquals("second lyric", t.at(45000).vocal().line().text());
+        assertEquals(10000, Objects.requireNonNull(t.at(0).gap()).endMs());
+        assertNull(Objects.requireNonNull(t.at(0).gap()).previous());
+        assertEquals("first lyric", Objects.requireNonNull(t.at(10000).vocal()).line().text());
+        assertEquals("first lyric", Objects.requireNonNull(Objects.requireNonNull(t.at(15000).gap()).previous()).line().text());
+        assertEquals("second lyric", Objects.requireNonNull(t.at(45000).vocal()).line().text());
         assertNull(t.at(50000).gap());
     }
 
     @Test
     public void explicitVocalEndWorksWithoutAnyNoteMarker() {
         MiniLyricsTimeline t = new MiniLyricsTimeline(List.of(line(0, 5000, "one"), line(35000, 40000, "two")), 45000);
-        assertEquals(5000, t.at(15000).gap().startMs());
-        assertEquals(35000, t.at(15000).gap().endMs());
+        assertEquals(5000, Objects.requireNonNull(t.at(15000).gap()).startMs());
+        assertEquals(35000, Objects.requireNonNull(t.at(15000).gap()).endMs());
     }
 
     @Test
@@ -123,9 +124,9 @@ public class MiniLyricsGapTest {
     public void backgroundVocalsDoNotBecomeFalseInstrumentalGaps() {
         LyricsLine background = new LyricsLine(1800, 4000, "backing", List.of(), null, false, true, null);
         MiniLyricsTimeline t = new MiniLyricsTimeline(List.of(line(0, 2000, "lead"), background, line(10000, 15000, "next")), 20000);
-        assertEquals("lead", t.at(1900).vocal().line().text());
-        assertEquals("backing", t.at(3000).vocal().line().text());
-        assertEquals(4000, t.at(4000).gap().startMs());
+        assertEquals("lead", Objects.requireNonNull(t.at(1900).vocal()).line().text());
+        assertEquals("backing", Objects.requireNonNull(t.at(3000).vocal()).line().text());
+        assertEquals(4000, Objects.requireNonNull(t.at(4000).gap()).startMs());
     }
 
     @Test
@@ -144,7 +145,7 @@ public class MiniLyricsGapTest {
     public void markerOnlyTrackUsesItsExplicitInterval() {
         MiniLyricsTimeline t = new MiniLyricsTimeline(List.of(line(0, 30000, "♪♪♪")), 30000);
         assertNull(t.at(10000).vocal());
-        assertEquals(30000, t.at(10000).gap().endMs());
+        assertEquals(30000, Objects.requireNonNull(t.at(10000).gap()).endMs());
     }
 
     @Test
@@ -158,8 +159,8 @@ public class MiniLyricsGapTest {
         MiniLyricsTimeline t = new MiniLyricsTimeline(List.of(line(0, 5000, "one"), line(6500, 9000, "two"), line(10000, 12000, "three")), 20000);
         assertNull(t.at(5200).gap());
         assertNull(t.at(9500).gap());
-        assertEquals("one", t.at(5200).previous().line().text());
-        assertEquals("two", t.at(9500).previous().line().text());
+        assertEquals("one", Objects.requireNonNull(t.at(5200).previous()).line().text());
+        assertEquals("two", Objects.requireNonNull(t.at(9500).previous()).line().text());
     }
 
     @Test
@@ -177,6 +178,6 @@ public class MiniLyricsGapTest {
         var t = new MiniLyricsTimeline(lines, 20000);
         assertNull("The panel doesn't show dots at 5 seconds", t.at(5000).gap());
         assertNotNull(t.at(11000).gap());
-        assertEquals(10000, t.at(11000).gap().startMs());
+        assertEquals(10000, Objects.requireNonNull(t.at(11000).gap()).startMs());
     }
 }

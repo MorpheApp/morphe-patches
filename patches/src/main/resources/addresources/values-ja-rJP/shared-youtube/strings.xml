@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">新しい設定を強調表示</string>
   <string name="morphe_settings_new_indicator_days_summary">アップデートで追加された設定やオプションの横にドットが表示される日数</string>
   <string name="morphe_settings_new_indicator_days_off">オフ</string>
+  <string name="morphe_settings_new_indicator_clear_title">すべての設定を既読にする</string>
+  <string name="morphe_settings_new_indicator_clear_summary">すべての新しい設定とオプションからドットを削除します</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">すべての設定を既読にしますか？</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">すべての新しい設定とオプションからドットが削除されます。今後のアップデートで追加される設定は引き続きハイライトされます。</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">設定を完了するには再起動してください</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 パッケージ名が正しいこと、およびアプリがインストールされていることを確認してください"</string>
   <string name="morphe_external_downloader_empty_warning">パッケージ名は空欄にはできません</string>
+  <string name="morphe_export_download_folder_dialog_title">エクスポートフォルダ</string>
+  <string name="morphe_export_download_folder_change">フォルダを変更</string>
+  <string name="morphe_export_download_folder_changed">エクスポートフォルダが変更されました</string>
+  <string name="morphe_export_download_folder_reset">エクスポートフォルダをリセットしました</string>
+  <string name="morphe_export_download_folder_missing">エクスポートフォルダ %s が見つかりませんでした</string>
+  <string name="morphe_export_download_flyout_title">デバイスへエクスポート</string>
+  <string name="morphe_export_download_canceled">エクスポートをキャンセルしました</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">カスタム</string>
   <string name="morphe_custom_branding_icon_title">アプリアイコン</string>
@@ -110,6 +121,20 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
 %2$s をデフォルト クライアントにしますか？"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">切り替える</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">この設定をオフにすると、再生に問題が発生する可能性があります</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView がオフになっているか、インストールされていません。
+
+ビデオ再生には Android System WebView が必要です。オンにして最新バージョンに更新してください。
+
+[OK] をタップして Android System WebView を開きます。"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView のバージョンが古いです (バージョン %s)。
+
+Android System WebView を最新バージョンに更新するまで、ビデオ再生に失敗する可能性があります。
+
+[OK] をタップして Android System WebView を開きます。"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">今後表示しない</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView がインストールされていません。ビデオ再生を修正するにはインストールしてください</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">以下を試す: [動画ストリームを偽装] &gt; [Android VR (ログイン)] をオン</string>

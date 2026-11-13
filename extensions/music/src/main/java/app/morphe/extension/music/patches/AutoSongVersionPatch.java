@@ -15,7 +15,7 @@ import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.SON
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.VIDEO_TYPE;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.await;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.capturedQueue;
-import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.isVideoId;
+import static app.morphe.extension.music.shared.VideoInformation.isVideoId;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.musicVideoType;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.normalize;
 import static app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.notifyQueueChanged;
@@ -61,13 +61,12 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.EnableAudioVideoSwitchPatch.QueueAccess;
 import app.morphe.extension.music.patches.album.PlaylistRequest;
-import app.morphe.extension.music.patches.downloads.DownloadedMark;
 import app.morphe.extension.music.patches.jam.QueueCommand;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.patches.DownloadMode;
+import app.morphe.extension.shared.patches.OfflineVideoExporter;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
@@ -147,7 +146,7 @@ public final class AutoSongVersionPatch {
     /**
      * Injection point.
      */
-    public static void setAccountPreferences(SharedPreferences preferences) {
+    public static void setAccountPreferences(@Nullable SharedPreferences preferences) {
         accountPreferences = preferences;
     }
 
@@ -271,6 +270,7 @@ public final class AutoSongVersionPatch {
         }
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isCurrentTrack(QueueAccess access, String videoId, long waitMilliseconds) {
         return await(() -> videoId.equals(videoAt(access, access.patch_atvCurrentIndex())), waitMilliseconds);
     }
@@ -353,6 +353,7 @@ public final class AutoSongVersionPatch {
     }
 
     /** Only while the stock 'Don't play music videos' is on, that's when Premium does it. */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean shouldPlaySongVersions() {
         if (!Settings.AUTO_SONG_VERSION.get()) return false;
 
@@ -360,7 +361,7 @@ public final class AutoSongVersionPatch {
         return preferences != null && preferences.getBoolean(DONT_PLAY_VIDEO_SETTING_KEY, false);
     }
 
-    /** Replaces upcoming music videos so the queue shows songs and they never start as the video. */
+    /** Replaces upcoming music videos so the queue shows songs, and they never start as the video. */
     private static void replaceUpcomingMusicVideos(QueueAccess access, String currentId) throws Exception {
         final int index = access.patch_atvCurrentIndex();
 
@@ -511,8 +512,11 @@ public final class AutoSongVersionPatch {
         return !album.isEmpty() && !album.equals(wantedTitle);
     }
 
+    /**
+     * @return If the app saved the video, with any download mode.
+     */
     private static boolean isDownloaded(String videoId) {
-        return Settings.DOWNLOAD_MODE.get() == DownloadMode.IN_APP && DownloadedMark.isDownloaded(videoId);
+        return OfflineVideoExporter.isExportable(videoId);
     }
 
     private static String songVersionOf(String videoId) throws Exception {

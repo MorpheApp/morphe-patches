@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
@@ -22,6 +23,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * The Japanese reading dictionary, rebuilt whenever the upstream dictionary moves on.
@@ -74,8 +76,7 @@ public final class JapaneseDictStore {
         TABLE.clear();
         File file = TABLE.file();
         if (file != null && file.exists()) {
-            //noinspection ResultOfMethodCallIgnored
-            file.delete();
+            Utils.deleteQuietly(file);
         }
     }
 
@@ -117,8 +118,7 @@ public final class JapaneseDictStore {
         File target = TABLE.file();
         assert target != null;
         File built = new File(target.getPath() + ".building");
-        //noinspection ResultOfMethodCallIgnored
-        built.delete();
+        Utils.deleteQuietly(built);
 
         WordReadingTable.Builder builder = TABLE.newBuilder(built);
         for (String source : SOURCES) {
@@ -128,8 +128,7 @@ public final class JapaneseDictStore {
                         displayName(source), (RomanizationDict.Listener) JapaneseDictStore.CHANNEL);
             }
             addSource(builder, archive, (RomanizationDict.Listener) JapaneseDictStore.CHANNEL);
-            //noinspection ResultOfMethodCallIgnored
-            archive.delete();
+            Utils.deleteQuietly(archive);
         }
         builder.finish(Integer.parseInt(VERSION));
 
@@ -142,7 +141,7 @@ public final class JapaneseDictStore {
         int seen = 0;
 
         try (ZipInputStream zip = new ZipInputStream(
-                new BufferedInputStream(new java.io.FileInputStream(archive), 1 << 16))) {
+                new BufferedInputStream(new FileInputStream(archive), 1 << 16))) {
             ZipEntry entry;
             while ((entry = zip.getNextEntry()) != null) {
                 if (entry.isDirectory()) continue;

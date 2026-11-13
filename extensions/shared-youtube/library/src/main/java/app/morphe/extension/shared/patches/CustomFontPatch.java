@@ -102,6 +102,7 @@ public final class CustomFontPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -167,8 +168,7 @@ public final class CustomFontPatch {
             Logger.printException(() -> "importFontFile failure", ex);
             return false;
         } finally {
-            //noinspection ResultOfMethodCallIgnored
-            tempFile.delete();
+            Utils.deleteQuietly(tempFile);
         }
     }
 

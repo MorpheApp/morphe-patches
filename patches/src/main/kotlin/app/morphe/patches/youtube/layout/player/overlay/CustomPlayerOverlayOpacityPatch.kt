@@ -13,7 +13,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/CustomPlayerOverlayOpacityPatch;"
 
-@Suppress("unused")
 val customPlayerOverlayOpacityPatch = patch(
     name = "Custom player overlay opacity",
     description = "Adds an option to change the opacity of the video player background when player controls are visible.",

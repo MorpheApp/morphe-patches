@@ -9,13 +9,14 @@ package app.morphe.extension.youtube.series;
 
 import java.util.regex.Pattern;
 
+import app.morphe.extension.youtube.patches.VideoInformation;
+
 /** Android-independent validation. All persisted/domain times are milliseconds. */
 public record LaunchRequest(String videoId, String playlistId, long positionMs) {
-    private static final Pattern VIDEO_ID = Pattern.compile("[A-Za-z0-9_-]{11}");
     private static final Pattern PLAYLIST_ID = Pattern.compile("[A-Za-z0-9_-]{2,200}");
 
     public LaunchRequest {
-        if (videoId == null || !VIDEO_ID.matcher(videoId).matches()) {
+        if (!VideoInformation.isVideoId(videoId)) {
             throw new IllegalArgumentException("Enter an 11-character video ID.");
         }
         if (playlistId == null

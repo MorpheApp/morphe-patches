@@ -88,6 +88,10 @@ internal val restoreOldVideoActionBarPatch = patch(
         // do not depend on the layout that the server sends.
         hookElement("$EXTENSION_CLASS->setVideoActionBarLayout")
 
+        // The channel name below the title of the watch page opens the channel
+        // instead of the description, as the rest of the text below the title does.
+        hookElement("$EXTENSION_CLASS->removeSubtitleChannelCommand")
+
         // The two rows of the Classic Two-Rows layout are two elements, and the server sends one.
         watchNextResultsFingerprint(
             immutableMethodRef.get()!!.definingClass,

@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Tumia kipakuzi cha nje kwa menyu ya Pakua</string>
   <string name="morphe_external_downloader_menu_summary">Chaguo la Pakua la menyu litafungua kipakuzi chako cha nje badala yake</string>
-  <string name="morphe_music_downloads_screen_title">Pakua</string>
-  <string name="morphe_music_downloads_empty">"Hakuna vipakuliwa
-Nyimbo zilizopakuliwa zinaonekana hapa"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">nyimbo %1$s • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Tafuta vipakuliwa</string>
-  <string name="morphe_music_downloads_sort">Panga</string>
-  <string name="morphe_music_downloads_sort_artist">Panga kwa msanii</string>
-  <string name="morphe_music_downloads_sort_title">Panga kwa kichwa</string>
-  <string name="morphe_music_downloads_sort_size">Panga kwa ukubwa</string>
-  <string name="morphe_music_downloads_delete_all">Futa upakuaji wote</string>
-  <string name="morphe_music_downloads_delete_all_title">Futa upakuaji wote?</string>
-  <string name="morphe_music_downloads_delete_all_message">Nyimbo zote zilizopakuliwa zitafutwa kwenye kifaa hiki</string>
-  <string name="morphe_music_downloads_all_deleted">Upakuaji umefutwa</string>
-  <string name="morphe_music_downloads_nothing_found">Hakuna kilichopatikana</string>
-  <string name="morphe_music_downloads_actions_for">Hatua kwa %s</string>
-  <string name="morphe_music_downloads_play">Cheza</string>
-  <string name="morphe_music_downloads_play_pause">Cheza au pause</string>
-  <string name="morphe_music_downloads_previous">Iliyopita</string>
-  <string name="morphe_music_downloads_next">Inayofuata</string>
-  <string name="morphe_music_downloads_pause">Pause</string>
-  <string name="morphe_music_downloads_shuffle">Changanya</string>
-  <string name="morphe_music_downloads_repeat">Rudia</string>
-  <string name="morphe_music_downloads_minimize">Punguza</string>
-  <string name="morphe_music_downloads_close">Funga</string>
-  <string name="morphe_music_downloads_delete">Futa</string>
-  <string name="morphe_music_downloads_delete_track">Futa upakuaji</string>
-  <string name="morphe_music_downloads_delete_track_title">Futa upakuaji?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s itafutwa kutoka kwenye kifaa hiki</string>
-  <string name="morphe_music_downloads_track_deleted">Upakuaji umefutwa</string>
-  <string name="morphe_music_downloads_track_delete_failed">Hakuwezekana kufuta upakuaji</string>
-  <string name="morphe_music_downloads_play_failed">Hakuwezekana kucheza faili lililopakuliwa</string>
-  <string name="morphe_music_downloads_playlists">Orodha za nyimbo</string>
-  <string name="morphe_music_downloads_playlists_section">Orodha za nyimbo zilizoundwa (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Hakuna orodha za nyimbo za hapa bado</string>
-  <string name="morphe_music_downloads_playlists_hide">Ficha orodha za nyimbo ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Orodha mpya ya nyimbo</string>
-  <string name="morphe_music_downloads_playlist_new_button">Orodha mpya ya nyimbo</string>
-  <string name="morphe_music_downloads_playlist_selected">Zimechaguliwa (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Chagua nyimbo kwanza</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Futa uteuzi</string>
-  <string name="morphe_music_downloads_playlist_create">Unda orodha ya nyimbo</string>
-  <string name="morphe_music_downloads_playlist_create_button">Unda</string>
-  <string name="morphe_music_downloads_playlist_add">Ongeza kwenye orodha ya nyimbo</string>
-  <string name="morphe_music_downloads_playlist_added">Imeongezwa kwenye %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Jina la orodha ya nyimbo</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Jina la orodha ya nyimbo haliwezi kuwa tupu</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Hakuweza kuhifadhi orodha ya nyimbo</string>
-  <string name="morphe_music_downloads_playlist_track_count">nyimbo %s</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">wimbo 1</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Hakuna nyimbo katika orodha hii</string>
-  <string name="morphe_music_downloads_playlist_play">Cheza orodha ya nyimbo</string>
-  <string name="morphe_music_downloads_playlist_play_all">Cheza zote</string>
-  <string name="morphe_music_downloads_playlist_rename">Badilisha jina</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Badilisha jina la orodha ya nyimbo</string>
-  <string name="morphe_music_downloads_playlist_save">Hifadhi</string>
-  <string name="morphe_music_downloads_playlist_delete">Futa orodha ya nyimbo</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Futa orodha ya nyimbo?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s itafutwa. Nyimbo zilizopakuliwa zitabaki</string>
-  <string name="morphe_music_downloads_playlist_deleted">Orodha ya nyimbo imefutwa</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Ondoa kwenye orodha ya nyimbo</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Buruta ili kupanga upya</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Buruta mpini ili kupanga upya</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Tayari</string>
-  <string name="morphe_music_downloads_notification_channel">Pakua sauti</string>
-  <string name="morphe_music_downloads_playback_channel">Uchezaji wakiwa nje ya mtandao</string>
-  <string name="morphe_music_downloads_unknown_track">Hakuweza kutambua wimbo wa kupakua</string>
-  <string name="morphe_music_downloads_already_running">Upakuaji tayari unaendelea</string>
-  <string name="morphe_music_downloads_already_saved">Tayari imepakuliwa</string>
-  <string name="morphe_music_downloads_started">Upakuaji umeanza</string>
-  <string name="morphe_music_downloads_starting">Inaanza kupakua…</string>
-  <string name="morphe_music_downloads_progress">Inapakua %s%%</string>
-  <string name="morphe_music_downloads_complete">Upakuaji umekamilika</string>
-  <string name="morphe_music_downloads_failed">Upakuaji umeshindwa</string>
-  <string name="morphe_music_downloads_playlist_download_title">Pakua orodha ya nyimbo</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Orodha ya nyimbo inatafutwa…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s imeorodheshwa…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Hakuwezekana kuorodhesha nyimbo za orodha hii</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Tayari zimepakuliwa: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s katika orodha hii, %2$s bado hazijapakuliwa.
+  <string name="morphe_export_download_folder_title">Hamisha vipakuliwa</string>
+  <string name="morphe_export_download_folder_summary">"Hamisha nyimbo na video zilizopakuliwa na programu kwenye hifadhi ya kifaa chako kwa kutumia menyu ya upakuaji. Gusa ili kubadilisha folda ya uhamishaji
 
-Zinapakuliwa moja baada ya nyingine, jambo ambalo linaweza kuchukua muda mrefu na linahitaji nafasi takriban %3$s ya bure"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Pakua</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Inapakua wimbo %1$s kati ya %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s imepakuliwa</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s imepakuliwa, %2$s hazikuweza kupakuliwa</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Upakuaji wa orodha ya nyimbo tayari unaendelea</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Akaunti yako haijulikani bado. Jaribu tena baada ya muda mfupi</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s imeorodheshwa, zote tayari zimepakuliwa</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Sehemu tu ya orodha ya nyimbo iliweza kuorodheshwa. Gusa Pakua tena baadaye ili kupata zilizobaki</string>
-  <string name="morphe_music_downloads_playlist_download_started">Inapakua %s kwa nyuma</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Hakuna muunganisho wa mtandao</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Inasubiri mtandao…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Imesimama baada ya %1$s kati ya %2$s. Gusa Pakua tena ili kuendelea</string>
-  <string name="morphe_music_downloads_mark_title">Weka alama kwenye nyimbo zilizopakuliwa</string>
-  <string name="morphe_music_downloads_mark_summary">Nyimbo ambazo tayari zimepakuliwa zinaonyesha alama kabla ya maelezo yake katika orodha za nyimbo, albamu na matokeo ya utafutaji</string>
+Folda ya uhamishaji: %s"</string>
+  <string name="morphe_export_download_started">Inahamisha upakuaji</string>
+  <string name="morphe_export_download_progress">Inahamisha upakuaji: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Uhamishaji wa vipakuliwa</string>
+  <string name="morphe_export_download_saved">Upakuaji umehamishwa kwenda %s</string>
+  <string name="morphe_export_download_failed">Hakuwezekana kuhamisha upakuaji</string>
+  <string name="morphe_export_download_all_flyout_title">Hamisha vyote kwenye kifaa</string>
+  <string name="morphe_export_download_all_started">Inasafirisha upakuaji wote</string>
+  <string name="morphe_export_download_all_running">Upakuaji tayari unasafirishwa</string>
+  <string name="morphe_export_download_all_saved">Imesafirisha %1$s kati ya %2$s upakuaji kwenda %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Kuhusu Morphe</string>
@@ -260,6 +177,8 @@ Zinapakuliwa moja baada ya nyingine, jambo ambalo linaweza kuchukua muda mrefu n
   <string name="morphe_music_hide_repeat_button_title">Ficha kitufe cha Kurudia</string>
   <string name="morphe_music_hide_shuffle_button_title">Ficha kitufe cha Kuchanganya</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Ficha rafu ya \"Speed dial\"</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Ficha sehemu ya \'Pengine utapenda pia\'</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Ficha rafu ya \'Pakua zako\'</string>
   <string name="morphe_music_comments_screen_title">Maoni</string>
   <string name="morphe_music_comments_screen_summary">Chagua ni vipengele gani vionekane katika sehemu ya maoni</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Ficha Mwongozo wa Jumuiya</string>
@@ -338,9 +257,17 @@ Uchezaji wa SABR (mitiririko ya video inayofananishwa imezimwa)"</string>
   <string name="morphe_music_playback_speed_summary">Kasi inayotumika kwa nyimbo zote. Katika 100% kasi ya programu hutumiwa, kama vile kasi ya uchezaji wa podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Badilisha sauti kulingana na kasi</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Zima audio ducking</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Sauti haipunguzwi wakati programu nyingine inapocheza sauti fupi, kama vile taarifa</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Zima uelekezaji upya wa kutopenda</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Huzuia kurukia wimbo unaofuata wakati kitufe cha kutopenda kinapobonyezwa</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">Mzunguko wa A-B</string>
+  <string name="morphe_music_ab_loop_summary">Bonyeza na ushikilie seekbar ili kuweka mwanzo wa mzunguko, tena ili kuweka mwisho wa mzunguko, na tena ili kufuta mzunguko</string>
+  <string name="morphe_music_ab_loop_toast_start">Mwanzo wa mzunguko umewekwa kwenye %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Mwisho wa mzunguko umewekwa kwenye %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Loop imefutwa</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Kitendo cha kugusa wimbo wa orodha ya nyimbo</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Cheza orodha ya nyimbo</string>
@@ -663,6 +590,7 @@ Safu ya kwanza ni neno, ya pili ni usomaji wake; safu za ziada na mistari isiyo 
   <string name="morphe_music_lyrics_rime_dict_no_table">Hakuna orodha ya maneno ya Rime iliyochaguliwa kwa lugha hapo juu. Gusa jina hili ili kuchagua moja, au chagua lugha yenye orodha</string>
   <string name="morphe_music_lyrics_rime_dict_add">Ongeza</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Ongeza Orodha ya Maneno ya Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Faili la .dict.yaml, au zip inayoshikilia moja, yenye mistari kama 字 ham na 典 din2. Orodha hupatikana unapoiweka alama ya tiki na kugusa Hifadhi, na leseni yake ni yako kuikagua</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Kodi ya lugha</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Herufi mbili au tatu, kama vile hak au wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Jina</string>

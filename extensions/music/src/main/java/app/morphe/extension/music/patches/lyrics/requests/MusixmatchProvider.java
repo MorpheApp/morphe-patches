@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -222,6 +223,7 @@ public final class MusixmatchProvider extends ScoredSongProvider {
     }
 
     @Override
+    @NonNull
     protected List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
         final String token = ensureToken();
         if (token == null) {

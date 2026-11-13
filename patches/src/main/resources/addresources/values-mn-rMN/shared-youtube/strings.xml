@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Шинэ тохиргоог онцлох</string>
   <string name="morphe_settings_new_indicator_days_summary">Шинэчлэлтээр нэмэгдсэн тохиргоо болон сонголтуудын хажууд цэг харуулах хоногийн тоо</string>
   <string name="morphe_settings_new_indicator_days_off">Унтраах</string>
+  <string name="morphe_settings_new_indicator_clear_title">Бүх тохиргоог үзсэн гэж тэмдэглэх</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Бүх шинэ тохиргоо болон сонголтуудаас цэг тэмдгийг устгах</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Бүх тохиргоог үзсэн гэж тэмдэглэх үү?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Бүх шинэ тохиргоо болон сонголтуудаас цэг тэмдгийг устгалаа. Ирэх шинэчлэлтээр нэмэгдэх тохиргоонууд онцгойлсон хэвээр байх болно.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Тохиргоог дуусгахын тулд дахин ачаална уу</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Багцын нэр зөв эсэхийг болон апп суулгасан эсэхийг шалгана уу"</string>
   <string name="morphe_external_downloader_empty_warning">Багцын нэр хоосон байж болохгүй</string>
+  <string name="morphe_export_download_folder_dialog_title">Экспортын хавтас</string>
+  <string name="morphe_export_download_folder_change">Хавтсаа өөрчлөх</string>
+  <string name="morphe_export_download_folder_changed">Экспортын хавтас өөрчлөгдлөө</string>
+  <string name="morphe_export_download_folder_reset">Экспортын хавтсыг шинэчлэлээ</string>
+  <string name="morphe_export_download_folder_missing">Экспортын %s хавтсыг олж чадсангүй</string>
+  <string name="morphe_export_download_flyout_title">Төхөөрөмж рүү экспортлох</string>
+  <string name="morphe_export_download_canceled">Экспортыг цуцалсан</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Захиалгаар</string>
   <string name="morphe_custom_branding_icon_title">Аппликейшны дүрс</string>
@@ -111,6 +122,20 @@ Second \"item\" text"</string>
 %2$s-ийг үндсэн клиент болгох уу?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Сэлгэх</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Энэ тохиргоог унтраах нь тоглуулалтын алдаа үүсгэж болзошгүй</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView унтраагдсан эсвэл суuriгдсангүй.
+
+Видеог тоглуулахын тулд Android System WebView шаардлагатай. Үүнийг асааж, хамгийн сүүлийн хувилбар руу шинэчлээрэй.
+
+Android System WebView-ийг нээхийн тулд OK дээр дарна уу."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView-ийн хувилбар хуучирсан байна (%s).
+
+Android System WebView-ийг хамгийн сүүлийн хувилбар руу шинэчлэх хүртэл видео тоглуулалт амжилтгүй болж магадгүй.
+
+Android System WebView-ийг нээхийн тулд OK дээр дарна уу."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Дахин бүү харуулах</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView суулгаагүй байна. Видеог тоглуулахын тулд суулгаарай</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Дараах тохиргоог идэвхжүүлж үзнэ үү: Видео стрийм дуурайх &gt; Android VR-т нэвтрэх</string>

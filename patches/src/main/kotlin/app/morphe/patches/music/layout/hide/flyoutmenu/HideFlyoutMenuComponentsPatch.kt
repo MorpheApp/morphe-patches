@@ -34,7 +34,6 @@ private const val EXTENSION_CLASS =
 private const val PLAYER_FLYOUT_MENU_COMPONENTS_FILTER =
     "Lapp/morphe/extension/music/patches/components/PlayerFlyoutMenuComponentsFilter;"
 
-@Suppress("unused")
 val hideFlyoutMenuComponentsPatch = patch(
     name = "Hide flyout menu components",
     description = "Adds options to hide individual items from the player and queue flyout menus."

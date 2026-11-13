@@ -104,6 +104,17 @@ internal object AutomaticForegroundPlaybackResumeFeatureFlagFingerprint : Finger
 )
 
 /**
+ * Calls of the flag accessor of [AutomaticForegroundPlaybackResumeFeatureFlagFingerprint] in a class.
+ * 21.29 and older only.
+ */
+internal fun automaticForegroundPlaybackResumeFlagAccessorCallFingerprint(classType: String) = Fingerprint(
+    definingClass = classType,
+    filters = listOf(
+        methodCall(reference = { AutomaticForegroundPlaybackResumeFeatureFlagFingerprint.originalMethod })
+    )
+)
+
+/**
  * Saves and restores if the video was playing when the app went to the background. Its class and
  * the class of the main activity that restores it read the automatic foreground playback resume flag
  * when the app goes to the background and returns to the foreground.
@@ -114,13 +125,89 @@ internal object PlayingWhenBackgroundedFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Returns if the background playback setting of YouTube (Settings > Background & downloads) allows
+ * background playback now: always, or only with headphones and headphones are connected.
+ */
+internal object BackgroundPlaybackSettingAllowedFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Z",
+    parameters = listOf("L", "L", "L"),
+    filters = listOf(
+        methodCall(definingClass = "Landroid/media/AudioManager;", name = "isWiredHeadsetOn"),
+        methodCall(definingClass = "Landroid/media/AudioManager;", name = "isBluetoothA2dpOn"),
+        methodCall(definingClass = "Landroid/media/AudioManager;", name = "isBluetoothScoOn")
+    )
+)
+
+/**
+ * Reads the background playback setting of the account and calls [BackgroundPlaybackSettingAllowedFingerprint].
+ */
+internal object BackgroundPlaybackSettingFingerprint : Fingerprint(
+    classFingerprint = BackgroundPlaybackSettingAllowedFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        // Setting store of the account.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            returnType = "Lcom/google/protobuf/MessageLite;",
+            parameters = listOf()
+        ),
+        methodCall(reference = { BackgroundPlaybackSettingAllowedFingerprint.originalMethod })
+    )
+)
+
+/**
+ * Constructor of the class of [BackgroundPlaybackSettingFingerprint]. The class is merged with other classes,
+ * and this is the constructor that takes the setting store and the audio manager the setting method reads.
+ * The number of other parameters differs between app versions.
+ */
+internal fun backgroundPlaybackSettingConstructorFingerprint(
+    settingClassType: String,
+    settingStoreType: String,
+    audioManagerType: String
+) = Fingerprint(
+    definingClass = settingClassType,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        // Super constructor.
+        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+    ),
+    custom = { method, _ ->
+        val parameters = method.parameterTypes
+        parameters.size >= 2 &&
+                parameters[0].toString() == settingStoreType &&
+                parameters[1].toString() == audioManagerType
+    }
+)
+
 internal object AutomaticPlaybackPausedInFlyoutFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45741823L)
     )
 )
 
+/**
+ * 21.46+
+ */
 internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("I", "Z", "Z", "Z", "L"),
+    filters = listOf(
+        opcode(Opcode.IGET),
+        literal(5, location = MatchAfterWithin(8)),
+        literal(2, location = MatchAfterWithin(5)),
+        literal(3, location = MatchAfterWithin(8)),
+        literal(0x13, location = MatchAfterWithin(12)),
+    )
+)
+
+/**
+ * 21.45 and older.
+ */
+internal object KidsBackgroundPlaybackPolicyControllerLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "L", "L"),

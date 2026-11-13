@@ -23,13 +23,13 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -116,6 +116,7 @@ public final class PlaylistTagsPatch {
     private PlaylistTagsPatch() {
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isEnabled() {
         return Settings.PLAYLIST_TAGS.get();
     }
@@ -136,10 +137,9 @@ public final class PlaylistTagsPatch {
      * Adds a weak reference to a list, and removes the references to collected objects.
      */
     private static <T> void addWeakReference(List<WeakReference<T>> list, T object) {
+        //noinspection SynchronizationOnLocalVariableOrMethodParameter
         synchronized (list) {
-            for (Iterator<WeakReference<T>> refs = list.iterator(); refs.hasNext(); ) {
-                if (refs.next().get() == null) refs.remove();
-            }
+            list.removeIf(ref -> ref.get() == null);
             list.add(new WeakReference<>(object));
         }
     }
@@ -414,14 +414,14 @@ public final class PlaylistTagsPatch {
             // The button may be reused after the filter changed on another screen.
             button.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
                 @Override
-                public void onViewAttachedToWindow(View view) {
+                public void onViewAttachedToWindow(@NonNull View view) {
                     // The same sort button class is used for the dropdown title of the toolbar.
                     view.setVisibility(isInsideList(view) ? View.VISIBLE : View.GONE);
                     updateFilterButtonText((TextView) view);
                 }
 
                 @Override
-                public void onViewDetachedFromWindow(View view) {
+                public void onViewDetachedFromWindow(@NonNull View view) {
                 }
             });
             updateFilterButtonText(button);

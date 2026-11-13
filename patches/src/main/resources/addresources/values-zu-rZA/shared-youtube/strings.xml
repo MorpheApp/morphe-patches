@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Gqamisa izilungiselelo ezintsha</string>
   <string name="morphe_settings_new_indicator_days_summary">Isibalo sezinsuku lapho uchungechunge lubonakala eduze kwezilungiselelo nezinketho ezengeziwe ngoku-update</string>
   <string name="morphe_settings_new_indicator_days_off">Thisha</string>
+  <string name="morphe_settings_new_indicator_clear_title">Markha zonke izilungiselelo njengezibonwe</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Susa ichashaza kuzo zonke izilungiselelo nezinketho ezintsha</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Markha zonke izilungiselelo njengezibonwe?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Ichashaza isuswe kuzo zonke izilungiselelo nezinketho ezintsha. Izilungiselelo ezengeziwe ngokuvuselelwa kwezakhiwo ezizayo zisazogqamile.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Qala kabusha ukuze uqedele ukusetha</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Qinisekisa ukuthi igama lepakeji lilungile nokuthi i-app ifakiwe"</string>
   <string name="morphe_external_downloader_empty_warning">Igama lephakheji alikwazi ukuba lingena</string>
+  <string name="morphe_export_download_folder_dialog_title">Ifolda ye-export</string>
+  <string name="morphe_export_download_folder_change">Shintsha ifolda</string>
+  <string name="morphe_export_download_folder_changed">Ifolda ye-export ishintshiwe</string>
+  <string name="morphe_export_download_folder_reset">Ifolda ye-export isethwe kabusha</string>
+  <string name="morphe_export_download_folder_missing">Akukwazanga ukutholakala ifolda ye-export %s</string>
+  <string name="morphe_export_download_flyout_title">Export ku-device</string>
+  <string name="morphe_export_download_canceled">I-export icancelwe</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Okuhleliwe</string>
   <string name="morphe_custom_branding_icon_title">I-icon yohlelo</string>
@@ -110,6 +121,20 @@ Uma ungumsebenzisi we-YouTube Premium, le setting kungenzeka ingadingeki"</strin
 Ukwenza u-%2$s abe yi-client evamile?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Shintsha</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ukucisha leli setting kungadala izinkinga zokudlala</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView icishwe noma ayifakwanga.
+
+Ukudlala kwevidiyo kudinga i-Android System WebView. Yikhize bese uyivuselela kube yinguqulo yakamuva.
+
+Chofoza u-OK ukuze uvule i-Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"I-Android System WebView isele idala (inguqulo %s).
+
+Ukudlala kwevidiyo kungase kwehluleke kuze kube i-Android System WebView ivuselelwe kube yinguqulo yakamuva.
+
+Chofoza u-OK ukuze uvule i-Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ungayikhombisi futhi</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">I-Android System WebView ayifakwanga. Yifake ukuze ulungise ukudlala kwevidiyo</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Zama ukuvula: Spoof video streams &gt; Android VR sign in</string>

@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Ընդգծել նոր կարգավորումները</string>
   <string name="morphe_settings_new_indicator_days_summary">Օրերի քանակը, երբ կետը ցուցադրվում է թարմացման միջոցով ավելացված կարգավորումների և ընտրությունների կողքին</string>
   <string name="morphe_settings_new_indicator_days_off">Անջատված</string>
+  <string name="morphe_settings_new_indicator_clear_title">Նշել բոլոր կարգավորումները որպես տեսնված</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Հեռացնել կետը բոլոր նոր կարգավորումներից և տարբերակներից</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Նշե՞լ բոլոր կարգավորումները որպես տեսնված։</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Կետը հեռացվում է բոլոր նոր կարգավորումներից և տարբերակներից: Ապագա թարմացումների միջոցով ավելացված կարգավորումները կշարունակեն մնալ ընդգծված:</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Վերագործարկեք կարգավորումներն ավարտելու համար</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Համոզվեք, որ փաթեթի անվանումը ճիշտ է և հավելվածը տեղադրված է"</string>
   <string name="morphe_external_downloader_empty_warning">Փաթեթի անվանումը չի կարող լինել դատարկ</string>
+  <string name="morphe_export_download_folder_dialog_title">Արտահանման թղթապանակ</string>
+  <string name="morphe_export_download_folder_change">Փոխել թղթապանակը</string>
+  <string name="morphe_export_download_folder_changed">Արտահանման թղթապանակը փոխվել է</string>
+  <string name="morphe_export_download_folder_reset">Արտահանման թղթապանակը վերակայված է</string>
+  <string name="morphe_export_download_folder_missing">Չհաջողվեց գտնել արտահանման թղթապանակը %s</string>
+  <string name="morphe_export_download_flyout_title">Արտահանել սարքի մեջ</string>
+  <string name="morphe_export_download_canceled">Արտահանումը չեղիացվեց</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Անհատական</string>
   <string name="morphe_custom_branding_icon_title">Հավելվածի պատկերակ</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 Դարձնե՞նք %2$s-ը լռելյայն հաճախորդ:"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Փոխել</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Այս կարգավորման անջատումը կարող է առաջացնել վերարտադրման խնդիրներ</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView-ն անջատված է կամ տեղադրված չէ:
+
+Տեսանյութի հետևման համար անհրաժեշտ է Android System WebView-ն: Միացրեք այն և թարմացրեք մինչև վերջին տարբերակը:
+
+Սեղմեք OK՝ Android System WebView-ը բացելու համար:"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView-ն հնացած է (%s տարբերակ):
+
+Տեսանյութի հետևումը կարող է ձախողվել, մինչև Android System WebView-ը թարմացվի մինչև վերջին տարբերակը:
+
+Սեղմեք OK՝ Android System WebView-ը բացելու համար:"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Այլևս չցուցադրել</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView-ը տեղադրված չէ: Տեղադրեք այն՝ տեսանյութի հետևումը շտկելու համար</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Փորձեք միացնել. Տեսանյութերի հոսքերի կեղծում &gt; Մուտք Android VR</string>

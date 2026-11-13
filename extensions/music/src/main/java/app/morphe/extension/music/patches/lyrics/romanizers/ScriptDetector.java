@@ -19,7 +19,7 @@ import java.util.List;
  * <p>The counters are indexed by {@link Script}, so a new script only needs a line in {@link #classify}.
  *
  * <p>The per-character checks below are the only place these blocks are listed, so another reader
- * of scripts, such as {@link LyricsLanguageDetector}, counts them here rather than repeating them.
+ * of scripts, such as {@link app.morphe.extension.music.patches.lyrics.derive.LyricsLanguageDetector}, counts them here rather than repeating them.
  */
 public final class ScriptDetector {
 

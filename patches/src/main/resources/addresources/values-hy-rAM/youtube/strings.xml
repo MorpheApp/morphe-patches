@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">Թաքցնել որոնման արդյունքները ըստ բանալի բառերի</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Թաքցնել Բաժանորդագրությունների տեսանյութերը ըստ բանալի բառերի</string>
   <string name="morphe_hide_keyword_content_phrases_title">Թաքցնելու բանալի բառերը</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Մուտքագրեք թաքցնելու բանալի բառերը և արտահայտությունները՝ բաժանված նոր տողերով
+  <string name="morphe_hide_keyword_content_phrases_summary">"Մուտքագրեք թաքցնելու համար նախատեսված բանալի բառերն ու արտահայտությունները՝ բաժանելով դրանք նոր տողերով
 
-Բանալի բառերը կարող են լինել ցանկացած տեքստ, որը ցուցադրվում է տեսանյութերի վերնագրերում կամ ալիքների անվանումներում"</string>
+Բանալի բառերը կարող են լինել տեսանյութերի վերնագրերում ցուցադրվող ցանկացած տեքստ: @UserName բանալի բառը թաքցնում է կոնկրետ ստեղծողների ողջ բովանդակությունը"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Գլխավոր / Բաժանորդագրություններ / Որոնում / Մեկնաբանությունները զտվում են՝ թաքցնելու համար բանալի արտահայտություններին համապատասխանող բովանդակությունը
 
 Սահմանափակումներ
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Բանալի բառը/արտահայտությունը չակերտներով շրջելը կկանխի տեսանյութերի վերնագրերի և ալիքների անվանումների մասնակի համընկնումները&lt;br&gt;&lt;br&gt;Օրինակ՝&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;-ը կթաքցնի տեսանյութը՝ &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;բայց չի թաքցնի՝ &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Բանալի բառն ունի հակասող հայտարարություններ՝ %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Բանալի բառը չափազանց կարճ է և պահանջում է չակերտներ՝ %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Բանալի բառը կթաքցնի բոլոր տեսանյութերը՝ %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Գլխավոր էջ: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"Արտահանեք հավելվածում պահպանված տեսանյութերը ձեր սարքի հիշողության մեջ՝ օգտագործելով ներբեռնումների լողացող ընտրացանկը: Հպեք՝ արտահանման թղթապանակը փոխելու համար
 
 Արտահանման թղթապանակ՝ %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Արտահանման թղթապանակ</string>
-  <string name="morphe_export_download_folder_change">Փոխել թղթապանակը</string>
-  <string name="morphe_export_download_folder_changed">Արտահանման թղթապանակը փոփոխված է</string>
-  <string name="morphe_export_download_folder_reset">Արտահանման թղթապանակը վերակայված է</string>
-  <string name="morphe_export_download_folder_missing">Չհաջողվեց գտնել արտահանման թղթապանակը %s</string>
-  <string name="morphe_export_download_flyout_title">Արտահանել սարքի մեջ</string>
   <string name="morphe_export_download_started">Տեսանյութն արտահանվում է</string>
   <string name="morphe_export_download_progress">Տեսանյութի արտահանում: %s%%</string>
   <string name="morphe_export_download_notification_channel">Տեսանյութերի արտահանում</string>
   <string name="morphe_export_download_saved">Տեսանյութն արտահանվեց դեպի %s</string>
   <string name="morphe_export_download_failed">Չհաջողվեց արտահանել տեսանյութը</string>
-  <string name="morphe_export_download_canceled">Արտահանումը չեղարկվեց</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ձայնային թարգմանություն</string>
   <string name="morphe_vot_screen_summary">Բարձրաձայն կարդալ տեսանյութի ենթագրերը՝ օգտագործելով սարքի տեքստ-to-speech-ը, համաժամեցնելով նվագարկման հետ</string>
@@ -728,8 +720,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">YouTube-ի հերթ</string>
   <string name="morphe_queue_type_entry_3">Morphe հերթ</string>
   <string name="morphe_queue_type_entry_4">Morphe հերթ՝ հաճախորդի կողմից</string>
-  <string name="morphe_queue_add_flyout_menu_title">Ավելացնել feed-ի flyout հերթի մենյուի տարրը</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Ավելացնում է լրացուցիչ flyout տարր: Միացրեք սա, եթե \"Ավելացնել հերթի մեջ\"-ը չի ցուցադրվում</string>
   <string name="morphe_local_queue_sheet_title">Հերթ</string>
   <string name="morphe_local_queue_open">Հերթ (%s)</string>
   <string name="morphe_local_queue_clear">Մաքրել բոլորը</string>
@@ -1462,7 +1452,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">Նվագարկիչի պլեյլիստներ &amp; առաջարկություններ</string>
   <string name="morphe_dearrow_titles_search_title">Որոնման արդյունքները</string>
   <string name="morphe_dearrow_titles_icon_title">Ցուցադրել DeArrow-ի սիմվոլը</string>
-  <string name="morphe_dearrow_titles_icon_summary">Ցուցադրում է DeArrow-ի սիմվոլը հանրային ներդրումներով տեսանյութերի վերնագրերին</string>
+  <string name="morphe_dearrow_titles_icon_summary">Ցույց է տալիս DeArrow-ի պատկերակը հանրային ներդրմամբ տեսանյութերի վերնագրերին: Հպեք պատկերակին՝ բնօրինակ վերնագիրն ու նկարը տեսնելու համար</string>
   <string name="morphe_dearrow_casual_mode_title">Casual ռեժիմ</string>
   <string name="morphe_dearrow_casual_mode_summary">Ցույց է տալիս բնօրինակ վերնագիրը DeArrow-ի վերնագրի փոխարեն, եթե DeArrow-ի օգտատերերը քվեարկել են, որ նախընտրում են բնօրինակ վերնագիրը</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Բնօրինակ վերնագիրը ցույց տալու համար անհրաժեշտ casual քվեների նվազագույն քանակը</string>
@@ -1638,6 +1628,9 @@ AV1-ով տեսանյութի վերարտադրությունը կարող է �
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Կայուն ձայնայնությունը հասանելի չէ</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Վերարտադրությունը կարող է ավարտվել 1 վայրկյան շուտ</string>
   <string name="morphe_spoof_video_streams_about_js">• Եթե deobfuscation-ը ձախողվի, միացումը կարող է չաշխատել</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView-ն անջատված է կամ տեղադրված չէ: Միացրեք և թարմացրեք այն, այլապես վերարտադրումը կարող է ձախտվել</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView-ն հնացած է: Թարմացրեք այն, այլապես վերարտադրումը կարող է ձախտվել</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Բնօրինակ ձայնի պարտադրումը հասանելի չէ</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Պահանջվում է մուտք գործել Android VR</string>

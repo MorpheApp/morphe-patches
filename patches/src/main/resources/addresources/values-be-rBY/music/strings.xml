@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Выкарыстоўваць знешні загрузчык для меню \"Спампаваць\"</string>
   <string name="morphe_external_downloader_menu_summary">Пункт \"Спампаваць\" у меню будзе адкрываць ваш знешні загрузчык</string>
-  <string name="morphe_music_downloads_screen_title">Загрузкі</string>
-  <string name="morphe_music_downloads_empty">"Няма загрузак
-Загружаныя трэкі з'яўляюцца тут"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s МБ</string>
-  <string name="morphe_music_downloads_summary">%1$s трэкаў • %2$s МБ</string>
-  <string name="morphe_music_downloads_search_hint">Пошук у загрузках</string>
-  <string name="morphe_music_downloads_sort">Сартаваць</string>
-  <string name="morphe_music_downloads_sort_artist">Сартаваць па выканаўцы</string>
-  <string name="morphe_music_downloads_sort_title">Сартаваць па назве</string>
-  <string name="morphe_music_downloads_sort_size">Сартаваць па памеры</string>
-  <string name="morphe_music_downloads_delete_all">Выдаліць усе загрузкі</string>
-  <string name="morphe_music_downloads_delete_all_title">Выдаліць усе загрузкі?</string>
-  <string name="morphe_music_downloads_delete_all_message">Усе загружаныя трэкі будуць выдалены з гэтай прылады</string>
-  <string name="morphe_music_downloads_all_deleted">Загрузкі выдалены</string>
-  <string name="morphe_music_downloads_nothing_found">Нічога не знойдзена</string>
-  <string name="morphe_music_downloads_actions_for">Дзеянні для %s</string>
-  <string name="morphe_music_downloads_play">Прайграць</string>
-  <string name="morphe_music_downloads_play_pause">Прайграць або прыпыніць</string>
-  <string name="morphe_music_downloads_previous">Папярэдні</string>
-  <string name="morphe_music_downloads_next">Наступны</string>
-  <string name="morphe_music_downloads_pause">Прыпыніць</string>
-  <string name="morphe_music_downloads_shuffle">Перамешаць</string>
-  <string name="morphe_music_downloads_repeat">Паўтарыць</string>
-  <string name="morphe_music_downloads_minimize">Згарнуць</string>
-  <string name="morphe_music_downloads_close">Закрыць</string>
-  <string name="morphe_music_downloads_delete">Выдаліць</string>
-  <string name="morphe_music_downloads_delete_track">Выдаліць загрузку</string>
-  <string name="morphe_music_downloads_delete_track_title">Выдаліць загрузку?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s будзе выдалены з гэтай прылады</string>
-  <string name="morphe_music_downloads_track_deleted">Загрузка выдалена</string>
-  <string name="morphe_music_downloads_track_delete_failed">Не ўдалося выдаліць загрузку</string>
-  <string name="morphe_music_downloads_play_failed">Не ўдалося прайграць загрузку</string>
-  <string name="morphe_music_downloads_playlists">Плэйлісты</string>
-  <string name="morphe_music_downloads_playlists_section">Створаныя плэйлісты (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Лакальных плэйлістаў пакуль няма</string>
-  <string name="morphe_music_downloads_playlists_hide">Схаваць плэйлісты ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Новы плэйліст</string>
-  <string name="morphe_music_downloads_playlist_new_button">Новы плэйліст</string>
-  <string name="morphe_music_downloads_playlist_selected">Выбрана (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Спачатку выберыце песні</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Ачысціць выбар</string>
-  <string name="morphe_music_downloads_playlist_create">Стварыць плэйліст</string>
-  <string name="morphe_music_downloads_playlist_create_button">Стварыць</string>
-  <string name="morphe_music_downloads_playlist_add">Дадаць у плэйліст</string>
-  <string name="morphe_music_downloads_playlist_added">Дададзена ў %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Назва плэйліста</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Назва плэйліста не можа быць пустой</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Не ўдалося захаваць плэйліст</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s трэкаў</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 трэк</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">У гэтым плэйлісце няма трэкаў</string>
-  <string name="morphe_music_downloads_playlist_play">Прайграць плэйліст</string>
-  <string name="morphe_music_downloads_playlist_play_all">Прайграць усё</string>
-  <string name="morphe_music_downloads_playlist_rename">Перайменаваць</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Перайменаваць плэйліст</string>
-  <string name="morphe_music_downloads_playlist_save">Захаваць</string>
-  <string name="morphe_music_downloads_playlist_delete">Выдаліць плэйліст</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Выдаліць плэйліст?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s будзе выдалены. Спампаваныя песні застануцца</string>
-  <string name="morphe_music_downloads_playlist_deleted">Плэйліст выдалены</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Выдаліць з плэйліста</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Перацягніце, каб змяніць парадак</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Перацягніце маркер, каб змяніць парадак</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Гатова</string>
-  <string name="morphe_music_downloads_notification_channel">Загрузка аўдыя</string>
-  <string name="morphe_music_downloads_playback_channel">Афлайн-прайграванне</string>
-  <string name="morphe_music_downloads_unknown_track">Не ўдалося ідэнтыфікаваць трэк для загрузкі</string>
-  <string name="morphe_music_downloads_already_running">Загрузка ўжо выконваецца</string>
-  <string name="morphe_music_downloads_already_saved">Ужо загружана</string>
-  <string name="morphe_music_downloads_started">Загрузка пачата</string>
-  <string name="morphe_music_downloads_starting">Пачатак загрузкі…</string>
-  <string name="morphe_music_downloads_progress">Загрузка %s%%</string>
-  <string name="morphe_music_downloads_complete">Загрузка завершана</string>
-  <string name="morphe_music_downloads_failed">Загрузка не ўдалася</string>
-  <string name="morphe_music_downloads_playlist_download_title">Загрузка плэйліста</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Спіс трэкаў…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s спісана…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Не ўдалося скласці спіс трэкаў плэйліста</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Ужо загружана: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s у гэтым плейлісце, %2$s яшчэ не загружаны.
+  <string name="morphe_export_download_folder_title">Экспарт загрузак</string>
+  <string name="morphe_export_download_folder_summary">"Экспартуйце песні і відэа, загружаныя праграмай, у памяць вашай прылады праз меню загрузкі. Націсніце, каб змяніць папку экспарту
 
-Яны загружаюцца па адным, што можа заняць шмат часу і патрабуе прыблізна %3$s вольнага месца"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Загрузіць</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Загрузка трэка %1$s з %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s загружана</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s загружана, %2$s не ўдалося загрузіць</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Загрузка плэйліста ўжо ідзе</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Ваш уліковы запіс пакуль не вядомы. Паспрабуйце зноў праз імгненне</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s спісана, усе ўжо загружаны</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Ўдалося скласці спіс толькі часткі плейліста. Націсніце \"Загрузіць\" пазней, каб атрымаць астатняе</string>
-  <string name="morphe_music_downloads_playlist_download_started">Загрузка %s у фоне</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Няма падлучэння да сеткі</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Чаканне сеткі…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Спынена пасля %1$s з %2$s. Націсніце \"Загрузіць\" зноў, каб працягнуць</string>
-  <string name="morphe_music_downloads_mark_title">Пазначаць загружаныя песні</string>
-  <string name="morphe_music_downloads_mark_summary">Песні, якія ўжо загружаны, пазначаны адмысловым значком перад іх дэталямі ў плейлістах, альбомах і выніках пошуку</string>
+Папка экспарту: %s"</string>
+  <string name="morphe_export_download_started">Экспартаванне загрузкі</string>
+  <string name="morphe_export_download_progress">Экспартаванне загрузкі: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Экспарт загрузак</string>
+  <string name="morphe_export_download_saved">Загрузку экспартавана ў %s</string>
+  <string name="morphe_export_download_failed">Не ўдалося экспартаваць загрузку</string>
+  <string name="morphe_export_download_all_flyout_title">Экспартаваць усё на прыладу</string>
+  <string name="morphe_export_download_all_started">Экспартацыя ўсіх загрузак</string>
+  <string name="morphe_export_download_all_running">Загрузкі ўжо экспартуюцца</string>
+  <string name="morphe_export_download_all_saved">Экспартавана %1$s з %2$s загрузак у %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Пра Morphe</string>
@@ -261,6 +178,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_shuffle_button_title">Схаваць кнопку \"Перамешаць\"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Схаваць паліцу \"Хуткі набор\"</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">Схаваць раздзел \"Вам таксама можа спадабацца\"</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Схаваць паліцу \"Вашы загрузкі\"</string>
   <string name="morphe_music_comments_screen_title">Каментары</string>
   <string name="morphe_music_comments_screen_summary">Выберыце, якія кампаненты будуць адлюстроўвацца ў раздзеле каментараў</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Схаваць правілы супольнасці</string>
@@ -344,6 +262,12 @@ Second \"item\" text"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Адключаць перанакіраванне пры націсканні \"Не падабаецца\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Запабігае пераскаку на наступны трэк пры націсканні кнопкі \"не падабаецца\"</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">Цыкл A-B</string>
+  <string name="morphe_music_ab_loop_summary">Зацісніце паўзунок пракруткі, каб усталяваць пачатак цыкла, яшчэ раз — каб усталяваць канец цыкла, і яшчэ раз — каб сціраць цыкл</string>
+  <string name="morphe_music_ab_loop_toast_start">Пачатак цыкла усталяваны на %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Канец цыкла усталяваны на %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Цыкл ачышчаны</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Дзеянне пры націсканні на трэк у плэйлісце</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Прайграць плэйліст</string>

@@ -319,9 +319,6 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_keyword_content_search_title">Axtarış nəticələrini açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Abunəlik videolarını açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_phrases_title">Gizlədiləcək açar sözlər</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Gizlətmək üçün açar sözləri və ifadələri yeni sətirlərlə ayıraraq daxil edin
-
-​Açar sözlər video başlıqlarında və ya kanal adlarında görünən istənilən mətn ola bilər"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Ev / Abunəliklər / Axtarış / Şərhlər açar söz ifadələrinə uyğun məzmunu gizlətmək üçün filtrlənir
 
 Məhdudiyyətlər:
@@ -331,7 +328,6 @@ Məhdudiyyətlər:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">​Açar sözü/ifadəni qoşa dırnaq işarəsinə almaq, video başlıqlarının və kanal adlarının qismən uyğunlaşmasına mane olacaq&lt;br&gt;&lt;br&gt;Məsələn,&lt;b&gt;&lt;br&gt;\"ai\"&lt;/b&gt; bu videonu gizlədəcək: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ancaq bunu gizlətməyəcək: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Açar sözün ziddiyyətli hissəcikləri var: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Açar söz çox qısadır və dırnaq işarəsi tələb edir: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Açar söz bütün videoları gizlədəcək: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Ev: %1$s
@@ -559,18 +555,11 @@ Məhdudiyyətlər:
   <string name="morphe_export_download_folder_summary">"Tətbiqdaxili yükləmələr açılan menyusunu istifadə etməklə tətbiqdə saxlanılan videoları cihaz yaddaşınıza ixrac edin. İxrac qovluğunu dəyişdirmək üçün toxunun
 
 İxrac qovluğu: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">İxrac qovluğu</string>
-  <string name="morphe_export_download_folder_change">Qovluğu dəyişdir</string>
-  <string name="morphe_export_download_folder_changed">İxrac qovluğu dəyişdirildi</string>
-  <string name="morphe_export_download_folder_reset">İxrac qovluğu sıfırlandı</string>
-  <string name="morphe_export_download_folder_missing">%s ixrac qovluğu tapılmadı</string>
-  <string name="morphe_export_download_flyout_title">Cihaza köçür</string>
   <string name="morphe_export_download_started">Videonu ixrac edir</string>
   <string name="morphe_export_download_progress">İxrac olunan video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Video köçürmələri</string>
   <string name="morphe_export_download_saved">Video %s ünvanına ixrac edildi</string>
   <string name="morphe_export_download_failed">Videonu ixrac etmək olmadı</string>
-  <string name="morphe_export_download_canceled">İxrac ləğv edildi</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Səs üstələyici tərcümə</string>
   <string name="morphe_vot_screen_summary">Cihazdakı mətni nitqə çevirməni istifadə edərək video titrlərini oynatma ilə sinxronlaşdırıb ucadan oxu</string>
@@ -712,8 +701,6 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_queue_type_entry_2">Yerli növbə</string>
   <string name="morphe_queue_type_entry_3">Morphe növbəsi</string>
   <string name="morphe_queue_type_entry_4">Morphe növbəsinin müştəri tərəfi</string>
-  <string name="morphe_queue_add_flyout_menu_title">Axına açılan növbə menyusu elementini əlavə et</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Əlavə açılan elementi əlavə edir. \"Növbəyə əlavə et\" görünmürsə, bunu aktivləşdir</string>
   <string name="morphe_local_queue_sheet_title">Növbə</string>
   <string name="morphe_local_queue_open">Növbə (%s)</string>
   <string name="morphe_local_queue_clear">Hamısını təmizlə</string>
@@ -1441,7 +1428,6 @@ Avtomobil tərtibatı
   <string name="morphe_dearrow_titles_player_title">Oynadıcı pleylistləri &amp; tövsiyələri</string>
   <string name="morphe_dearrow_titles_search_title">Axtarış nəticələri</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow işarəsini göstər</string>
-  <string name="morphe_dearrow_titles_icon_summary">Kütləvi mənbəli video başlıqlarında DeArrow işarəsini göstərir</string>
   <string name="morphe_dearrow_casual_mode_title">Təsadüfi rejim</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow istifadəçiləri orijinal başlığı bəyəndikləri təqdirdə DeArrow başlığı əvəzinə orijinal başlığı göstərir</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Orijinal başlığı göstərmək üçün ən az adi səslər</string>
@@ -1617,6 +1603,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit səs səviyyəsi yoxdur</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Oynatma 1 saniyə tez bitə bilər</string>
   <string name="morphe_spoof_video_streams_about_js">• Deobfuscation pozularsa, oynatma uğursuz ola bilər</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Orijinal səsi zorla əlçatan deyil</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR-a daxil olmaq tələb olunur</string>

@@ -22,7 +22,7 @@ import java.util.List;
  * unexpected wire types for requested fields, or repeated singular fields.
  * Nested message contents are inspected only when their fields are read.
  */
-final class ProtoMessage {
+public final class ProtoMessage {
     private static final int WIRE_VARINT = WireFormat.WIRETYPE_VARINT;
     private static final int WIRE_FIXED64 = WireFormat.WIRETYPE_FIXED64;
     static final int WIRE_LENGTH_DELIMITED = WireFormat.WIRETYPE_LENGTH_DELIMITED;
@@ -32,7 +32,7 @@ final class ProtoMessage {
     private final int start;
     private final int end;
 
-    ProtoMessage(byte[] data) { this(data, 0, data.length); }
+    public ProtoMessage(byte[] data) { this(data, 0, data.length); }
 
     private ProtoMessage(byte[] data, int start, int end) {
         this.data = data;
@@ -42,7 +42,7 @@ final class ProtoMessage {
 
     boolean isEmpty() { return start == end; }
     String utf8Text() { return new String(data, start, end - start, StandardCharsets.UTF_8); }
-    String stringField(int fieldNumber) { return messageField(fieldNumber).utf8Text(); }
+    public String stringField(int fieldNumber) { return messageField(fieldNumber).utf8Text(); }
     byte[] serializedBytes() { return Arrays.copyOfRange(data, start, end); }
 
     ProtoMessage messagePath(int... fieldNumbers) {

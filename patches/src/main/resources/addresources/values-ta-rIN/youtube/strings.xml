@@ -69,9 +69,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_gif_button_title">GIF பொத்தானை மறைக்கவும்</string>
   <string name="morphe_hide_comments_gifs_and_images_title">GIF-கள் மற்றும் படங்களை மறைக்கவும்</string>
   <string name="morphe_hide_comments_gifs_and_images_summary">கருத்துகள் மற்றும் பதில்களில் இணைக்கப்பட்டுள்ள GIF-கள் மற்றும் படங்களை மறைக்கிறது</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"மறைக்க வேண்டிய முக்கிய வார்த்தைகள் மற்றும் சொற்றொடர்களைப் புதிய வரிகளால் பிரித்து உள்ளிடவும்
+  <string name="morphe_hide_keyword_content_phrases_summary">"மறைக்க வேண்டிய முக்கிய வார்த்தைகள் மற்றும் சொற்றொடர்களை புதிய வரிகளால் பிரித்து உள்ளிடவும்
 
-வீடியோ தலைப்புகள் அல்லது சேனல் பெயர்களில் காட்டப்படும் எந்தவொரு உரையையும் முக்கிய வார்த்தைகளாகப் பயன்படுத்தலாம்"</string>
+வீடியோ தலைப்புகளில் காட்டப்படும் எந்தவொரு உரையையும் முக்கிய வார்த்தைகளாகப் பயன்படுத்தலாம். @UserName முக்கிய வார்த்தை குறிப்பிட்ட படைப்பாளர்களிடமிருந்து அனைத்து உள்ளடக்கத்தையும் மறைக்கும்"</string>
   <string name="morphe_hide_keyword_content_about_summary">"முக்கிய வார்த்தை சொற்றொடர்களுடன் பொருந்தும் உள்ளடக்கத்தை மறைக்க முகப்பு / சந்தாக்கள் / தேடல் / கருத்துகள் வடிகட்டப்படுகின்றன
 
 கட்டுப்பாடுகள்:
@@ -155,18 +155,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"ஆப்பிற்குள் சேமிக்கப்பட்ட வீடியோக்களை, ஆப்பிற்குள் இருக்கும் பதிவிறக்கங்கள் flyout மெனுவைப் பயன்படுத்தி உங்கள் சாதன சேமிப்பகத்திற்கு ஏற்றுமதி செய்யவும். ஏற்றுமதி கோப்புறையை மாற்ற தட்டவும்
 
 ஏற்றுமதி கோப்புறை: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">ஏற்றுமதி கோப்புறை</string>
-  <string name="morphe_export_download_folder_change">கோப்புறையை மாற்றவும்</string>
-  <string name="morphe_export_download_folder_changed">ஏற்றுமதி கோப்புறை மாற்றப்பட்டது</string>
-  <string name="morphe_export_download_folder_reset">ஏற்றுமதி கோப்புறை மீட்டமைக்கப்பட்டது</string>
-  <string name="morphe_export_download_folder_missing">ஏற்றுமதி கோப்புறை %s ஐக் கண்டறிய முடியவில்லை</string>
-  <string name="morphe_export_download_flyout_title">சாதனத்திற்கு ஏற்றுமதி செய்</string>
   <string name="morphe_export_download_started">வீடியோ ஏற்றுமதி செய்யப்படுகிறது</string>
   <string name="morphe_export_download_progress">வீடியோ ஏற்றுமதி செய்யப்படுகிறது: %s%%</string>
   <string name="morphe_export_download_notification_channel">வீடியோ ஏற்றுமதிகள்</string>
   <string name="morphe_export_download_saved">வீடியோ %s-க்கு ஏற்றுமதி செய்யப்பட்டது</string>
   <string name="morphe_export_download_failed">வீடியோவை ஏற்றுமதி செய்ய முடியவில்லை</string>
-  <string name="morphe_export_download_canceled">ஏற்றுமதி ரத்து செய்யப்பட்டது</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
   <!-- interaction.playlist.playlistPatch -->
@@ -413,6 +406,7 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_icon_summary">Crowdsourced வீடியோ தலைப்புகளில் DeArrow ஐகானைக் காட்டுகிறது. அசல் தலைப்பு மற்றும் தம்ப்னைலைக் காண ஐகானைத் தட்டுங்கள்</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
@@ -436,6 +430,9 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView முடக்கப்பட்டுள்ளது அல்லது நிறுவப்படவில்லை. அதை ஆன் செய்து அப்டேட் செய்யவும், இல்லையெனில் பிளேபேக் தோல்வியடையக்கூடும்</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView பழைய பதிப்பாக உள்ளது. அதை அப்டேட் செய்யவும், இல்லையெனில் பிளேபேக் தோல்வியடையக்கூடும்</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <!-- Quality refers to video quality -->
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->

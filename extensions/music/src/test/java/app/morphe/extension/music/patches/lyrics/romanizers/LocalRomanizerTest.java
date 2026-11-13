@@ -68,6 +68,7 @@ public class LocalRomanizerTest {
     public void spreadReadingOneSyllablePerCharacter() {
         // Two words of one Han each, reading "ni hao": each word gets one token.
         List<Word> words = List.of(new Word(0, 1000, "你"), new Word(1000, 2000, "好"));
+        //noinspection DataFlowIssue
         assertTokens(new int[][]{{0, 1}, {1, 2}}, LocalRomanizer.spreadReading(words, "ni hao"));
     }
 
@@ -75,6 +76,7 @@ public class LocalRomanizerTest {
     public void spreadReadingOnePerWord() {
         // One word of two Han, reading with one token: the whole token goes to the word.
         List<Word> words = List.of(new Word(0, 2000, "你好"));
+        //noinspection DataFlowIssue
         assertTokens(new int[][]{{0, 1}}, LocalRomanizer.spreadReading(words, "nihao"));
     }
 

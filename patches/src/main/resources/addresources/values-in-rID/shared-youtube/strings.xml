@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Sorot setelan baru</string>
   <string name="morphe_settings_new_indicator_days_summary">Jumlah hari titik ditampilkan di samping setelan dan opsi yang ditambahkan oleh pembaruan</string>
   <string name="morphe_settings_new_indicator_days_off">Nonaktif</string>
+  <string name="morphe_settings_new_indicator_clear_title">Tandai semua pengaturan sebagai telah dilihat</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Hapus titik dari semua pengaturan dan opsi baru</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Tandai semua pengaturan sebagai telah dilihat?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Titik dihapus dari semua pengaturan dan opsi baru. Pengaturan yang ditambahkan oleh pembaruan mendatang akan tetap disorot.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Mulai ulang untuk menyelesaikan penyiapan</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Pastikan nama paket benar dan aplikasi sudah terpasang"</string>
   <string name="morphe_external_downloader_empty_warning">Nama paket tidak boleh kosong</string>
+  <string name="morphe_export_download_folder_dialog_title">Folder ekspor</string>
+  <string name="morphe_export_download_folder_change">Ganti folder</string>
+  <string name="morphe_export_download_folder_changed">Folder ekspor diganti</string>
+  <string name="morphe_export_download_folder_reset">Atur ulang folder ekspor</string>
+  <string name="morphe_export_download_folder_missing">Folder ekspor %s tidak ditemukan</string>
+  <string name="morphe_export_download_flyout_title">Ekspor ke perangkat</string>
+  <string name="morphe_export_download_canceled">Ekspor dibatalkan</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Kustom</string>
   <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
@@ -110,6 +121,20 @@ Jika Anda pengguna YouTube Premium, setelan ini mungkin tidak diperlukan"</strin
 Jadikan %2$s sebagai klien bawaan?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Ganti</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan setelan ini dapat menyebabkan masalah pemutaran</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView dinonaktifkan atau tidak terinstal.
+
+Pemutaran video memerlukan Android System WebView. Aktifkan dan perbarui ke versi terbaru.
+
+Ketuk OK untuk membuka Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView sudah usang (versi %s).
+
+Pemutaran video mungkin gagal sampai Android System WebView diperbarui ke versi terbaru.
+
+Ketuk OK untuk membuka Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Jangan tampilkan lagi</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView tidak terinstal. Instal untuk memperbaiki pemutaran video</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cobalah mengaktifkan: Palsukan aliran video &gt; Masuk Android VR</string>

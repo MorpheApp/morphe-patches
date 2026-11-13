@@ -23,7 +23,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableContinueWatchingPromptPatch;"
 
-@Suppress("unused")
 val disableContinueWatchingPromptPatch = patch(
     name = "Disable continue watching prompt",
     description = "Adds an option to keep autoplay going instead of pausing with a " +

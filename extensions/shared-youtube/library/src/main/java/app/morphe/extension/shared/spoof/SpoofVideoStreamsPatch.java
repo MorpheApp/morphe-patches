@@ -18,8 +18,11 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.protobuf.MessageLite;
+
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
+import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -27,6 +30,8 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.SavedVideo.OfflineStateAction;
+import app.morphe.extension.shared.innertube.SavedVideo.SavedPlayerResponse;
 import app.morphe.extension.shared.patches.DownloadMode;
 import app.morphe.extension.shared.patches.MediaHttpRequest;
 import app.morphe.extension.shared.settings.AppLanguage;
@@ -133,6 +138,7 @@ public class SpoofVideoStreamsPatch {
     /**
      * @return If this patch was included during patching.
      */
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false;  // Modified during patching.
     }
@@ -222,41 +228,56 @@ public class SpoofVideoStreamsPatch {
         }
     }
 
-    public interface OfflineResponseResolver {
-        boolean isOffline(@NonNull String videoId, @Nullable Object playerProto);
-    }
-
-    @Nullable
-    private static volatile OfflineResponseResolver offlineResponseResolver;
-
-    public static void setOfflineResponseResolver(@Nullable OfflineResponseResolver resolver) {
-        offlineResponseResolver = resolver;
-    }
-
     private record OfflineCheck(WeakReference<Object> playerProto, boolean offline) {}
 
     /**
-     * Last checked player response and its result. The app can create the player response model
-     * twice from the same player response. Checking serializes the player response, which caches
-     * its size, and patch_setStreamingData then sets the player config of that same response.
-     * Serializing it again fails because the cached size no longer matches.
+     * Number of recently checked player responses to remember.
+     * Inline feed playback can check several responses before checking the first one again.
      */
-    @Nullable
-    private static volatile OfflineCheck lastOfflineCheck;
+    private static final int OFFLINE_CHECKS_TO_REMEMBER = 16;
 
+    /**
+     * Recently checked player responses and their results, newest first. The app can create the
+     * player response model again from a response that was already checked. Checking serializes
+     * the player response, which caches its size, and patch_setStreamingData then sets the player
+     * config of that same response. Serializing it again fails because the cached size no longer
+     * matches. Every response patch_setStreamingData changes was checked first, so it is in here.
+     */
+    private static final ArrayDeque<OfflineCheck> offlineChecks = new ArrayDeque<>(OFFLINE_CHECKS_TO_REMEMBER);
+
+    /**
+     * @return If the player response is of a video that is saved and can be played,
+     *         such as a video the app is saving. Its streams are the streams the app saves.
+     */
     private static boolean isOfflinePlayerResponse(@NonNull String videoId, @Nullable Object playerProto) {
         try {
-            OfflineResponseResolver resolver = offlineResponseResolver;
-            if (resolver != null) {
-                OfflineCheck lastCheck = lastOfflineCheck;
-                if (playerProto != null && lastCheck != null && lastCheck.playerProto().get() == playerProto) {
-                    return lastCheck.offline();
-                }
-
-                final boolean offline = resolver.isOffline(videoId, playerProto);
-                lastOfflineCheck = new OfflineCheck(new WeakReference<>(playerProto), offline);
-                return offline;
+            if (!(playerProto instanceof MessageLite message)) {
+                return false;
             }
+
+            synchronized (offlineChecks) {
+                for (OfflineCheck check : offlineChecks) {
+                    if (check.playerProto().get() == playerProto) {
+                        return check.offline();
+                    }
+                }
+            }
+
+            SavedPlayerResponse response = SavedPlayerResponse.parseFrom(message.toByteArray());
+            final boolean offline = response.hasOfflineState()
+                    && response.getOfflineState().getAction() == OfflineStateAction.OFFLINE_STATE_ACTION_OK;
+            if (response.hasOfflineState() && !offline) {
+                Logger.printDebug(() -> "Offline state action is not OK: "
+                        + response.getOfflineState().getActionValue() + " for: " + videoId);
+            }
+            synchronized (offlineChecks) {
+                offlineChecks.removeIf(check -> check.playerProto().get() == null);
+                if (offlineChecks.size() >= OFFLINE_CHECKS_TO_REMEMBER) {
+                    offlineChecks.removeLast();
+                }
+                offlineChecks.addFirst(new OfflineCheck(new WeakReference<>(playerProto), offline));
+            }
+            return offline;
         } catch (Exception ex) {
             Logger.printException(() -> "isOfflinePlayerResponse failure", ex);
         }
@@ -500,8 +521,8 @@ public class SpoofVideoStreamsPatch {
                             Logger.printDebug(() -> "Overriding player config: " + videoId);
                             // This config replaces the whole config of the app, which tells how the
                             // video is played inline, such as a muted preview in the feed, and how it is buffered.
-                            return buffers.hasAndroidMedia() && appPlayerConfig != null
-                                    ? StreamingDataRequest.addAppPlayerConfig(config, appPlayerConfig)
+                            return appPlayerConfig != null
+                                    ? StreamingDataRequest.addAppPlayerConfig(config, appPlayerConfig, buffers.hasAndroidMedia())
                                     : config;
                         }
                     }

@@ -1,14 +1,18 @@
 /*
  * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/#3014
+ *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 package app.morphe.extension.music.patches.jam;
 
 import android.view.View;
-import app.morphe.extension.shared.Logger;
+
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.WeakHashMap;
+
+import app.morphe.extension.shared.Logger;
 
 /** Supplies host state to the native icon renderer, including its accessibility labels. */
 public final class JamPlayerState {

@@ -48,13 +48,14 @@ public final class ForceFullscreenLandscapePatch {
      * Phones and other small screens already open fullscreen in landscape,
      * and forcing the orientation fights with the app and endlessly rotates the screen.
      * <p>
-     * Android 16 and later ignore the orientation requested by an app that targets Android 16
-     * or later on a large screen, so the fullscreen player stays in portrait
+     * YouTube opts out of the large-screen orientation restrictions on Android 16.
+     * Android 17 and later remove that opt-out for apps targeting Android 17 or later,
+     * so the fullscreen player stays in portrait
      * (<a href="https://github.com/MorpheApp/morphe-patches/issues/3145">...</a>).
      */
     private static boolean canForceOrientation() {
-        return Utils.isTablet() && (Build.VERSION.SDK_INT < Build.VERSION_CODES.BAKLAVA
-                || Utils.getContext().getApplicationInfo().targetSdkVersion < Build.VERSION_CODES.BAKLAVA);
+        return Utils.isTablet() && (Build.VERSION.SDK_INT <= Build.VERSION_CODES.BAKLAVA
+                || Utils.getContext().getApplicationInfo().targetSdkVersion <= Build.VERSION_CODES.BAKLAVA);
     }
 
     public static final class LargeScreenAvailability implements Setting.Availability {
@@ -73,7 +74,7 @@ public final class ForceFullscreenLandscapePatch {
 
             String name = playerType.name();
             // The player slides between maximized and fullscreen in both directions,
-            // and the gesture can still be cancelled. Wait until the player settles.
+            // and the gesture can still be canceled. Wait until the player settles.
             if (SLIDING_MAXIMIZED_FULLSCREEN.equals(name)) return;
 
             // Cannot use PlayerType.getCurrent() because this hook can run

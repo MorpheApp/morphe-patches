@@ -16,7 +16,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_46_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.iface.ClassDef
+import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -31,46 +35,40 @@ internal val fixLikeButtonPatch = patch{
     dependsOn(
         sharedExtensionPatch,
         playerTypeHookPatch,
+        versionCheckPatch,
     )
 
     execute {
-        val (lottieAnimationUrlPrimaryFingerprint, lottieAnimationUrlSecondaryFingerprint) =
-            with(LottieAnimationViewTagFingerprint) {
-                val index = instructionMatches.first().index
-                val reference =
-                    method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
+        val lottieAnimationUrlFingerprints = with(LottieAnimationViewTagFingerprint) {
+            val index = instructionMatches.first().index
+            val reference =
+                method.getInstruction<ReferenceInstruction>(index).reference as MethodReference
 
-                val abstractClass = reference.definingClass
-                val lottieAnimationUrlMethodName = reference.name
+            fun lottieAnimationUrlFingerprint(custom: (Method, ClassDef) -> Boolean) = Fingerprint(
+                interfaces = listOf(reference.definingClass),
+                name = reference.name,
+                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+                returnType = "Ljava/lang/String;",
+                parameters = listOf(),
+                custom = custom
+            )
 
-                Pair(
-                    Fingerprint(
-                        interfaces = listOf(abstractClass),
-                        name = lottieAnimationUrlMethodName,
-                        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                        returnType = "Ljava/lang/String;",
-                        parameters = listOf(),
-                        custom = { method, _ ->
-                            method.implementation!!.instructions.count() > 7
-                        }
-                    ),
-                    Fingerprint(
-                        interfaces = listOf(abstractClass),
-                        name = lottieAnimationUrlMethodName,
-                        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                        returnType = "Ljava/lang/String;",
-                        parameters = listOf(),
-                        custom = { method, _ ->
-                            method.implementation!!.instructions.count() < 7
-                        }
-                    )
-                )
+            buildList {
+                // Model backed by native memory.
+                add(lottieAnimationUrlFingerprint { method, _ ->
+                    method.implementation!!.instructions.count() > 7
+                })
+
+                // Model that wraps a Java proto. Removed in 21.46.
+                if (!is_21_46_or_greater) {
+                    add(lottieAnimationUrlFingerprint { method, _ ->
+                        method.implementation!!.instructions.count() < 7
+                    })
+                }
             }
+        }
 
-        setOf(
-            lottieAnimationUrlPrimaryFingerprint,
-            lottieAnimationUrlSecondaryFingerprint
-        ).forEach { fingerprint ->
+        lottieAnimationUrlFingerprints.forEach { fingerprint ->
             fingerprint.method.apply {
                 val index = implementation!!.instructions.lastIndex
                 val register = getInstruction<OneRegisterInstruction>(index).registerA

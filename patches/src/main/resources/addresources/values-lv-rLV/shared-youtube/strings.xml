@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Izcelt jaunus iestatījumus</string>
   <string name="morphe_settings_new_indicator_days_summary">Dienu skaits, pēc kuras blakus atjauninājumā pievienotiem iestatījumiem un iespējām vairs netiks rādīts punkts</string>
   <string name="morphe_settings_new_indicator_days_off">Izslēgts</string>
+  <string name="morphe_settings_new_indicator_clear_title">Atzīmēt visus iestatījumus kā redzētus</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Noņemt punktu no visiem jaunajiem iestatījumiem un iespējām</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Atzīmēt visus iestatījumus kā redzētus?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Punktums tiek noņemts no visiem jaunajiem iestatījumiem un iespējām. Nākamajās atjauninājumā pievienotie iestatījumi joprojām tiks izcelti.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Restartējiet, lai pabeigtu konfigurēšanu</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Pārbaudiet, vai paketes nosaukums ir pareizs un vai lietotne ir instalēta"</string>
   <string name="morphe_external_downloader_empty_warning">Paketes nosaukums nevar būt tukšs</string>
+  <string name="morphe_export_download_folder_dialog_title">Eksporta mapē</string>
+  <string name="morphe_export_download_folder_change">Mainīt mapi</string>
+  <string name="morphe_export_download_folder_changed">Eksporta mape mainīta</string>
+  <string name="morphe_export_download_folder_reset">Eksporta mape atstādīta</string>
+  <string name="morphe_export_download_folder_missing">Neizdevās atrast eksporta mapē %s</string>
+  <string name="morphe_export_download_flyout_title">Eksportēt uz ierīci</string>
+  <string name="morphe_export_download_canceled">Eksports atcelta</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pielāgots</string>
   <string name="morphe_custom_branding_icon_title">Lietotnes ikona</string>
@@ -110,6 +121,20 @@ Ja esat YouTube Premium lietotājs, šis iestatījums var nebūt nepieciešams"<
 Izveidot %2$s par noklusējuma klientu?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Pārslēgt</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Šī iestatījuma izslēgšana var izraisīt atskaņošanas problēmas</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView ir izslēgts vai nav instalēts.
+
+Video atskaņošanai ir nepieciešams Android System WebView. Ieslēdziet to un atjauniniet līdz jaunākajai versijai.
+
+Nospiediet OK, lai atvērtu Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView versija ir novecotināja (%s).
+
+Video atskaņošana var neizdotities, līdz Android System WebView tiks atjaunināts līdz jaunākajai versijai.
+
+Nospiediet OK, lai atvērtu Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Nerādīt vairs</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView nav instalēts. Instalējiet to, lai labotu video atskaņošanu</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Mēģiniet iespējot: Viltot video straumes &gt; Android VR pieslēgšanās</string>

@@ -321,7 +321,7 @@ O'zgarishlar quyidagilarni o'z ichiga oladi:
   <string name="morphe_hide_keyword_content_phrases_title">Yashirish uchun kalit so\'zlar</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Yashirish uchun kalit so'zlar va iboralarni yangi qatorlar bilan ajratgan holda kiriting
 
-Kalit so'zlar video sarlavhalari yoki kanal nomlarida ko'rinadigan har qanday matn bo'lishi mumkin"</string>
+Kalit so'zlar video sarlavhalarida ko'rsatilgan har qanday matn bo'lishi mumkin. @UserName kalit so'zi ma'lum bir ijodkorlarning barcha kontentini yashiradi"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Bosh sahifa / Obunalar / Qidiruv / Izohlar bo'limlarida kalit so'zli iboralarga mos keladigan kontentni yashirish uchun filtrlar qo'llaniladi
 
 Cheklovlar:
@@ -331,7 +331,6 @@ Cheklovlar:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Kalit so\'z/iborani qo\'shtirnoqqa olish video sarlavhalari va kanal nomlarining qisman mos kelishini oldini oladi&lt;br&gt;&lt;br&gt;Masalan,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; videoni yashiradi: &lt;b&gt;AI qanday ishlaydi?&lt;/b&gt;&lt;br&gt;lekin yashirmaydi: &lt;b&gt;Adolatli foydalanish nimani anglatadi?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Kalit so\'zlar bir-biriga zid: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kalit so\'z juda qisqa, uni qo\'shtirnoqqa olish kerak: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kalit so\'z barcha videolarni yashiradi: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Bosh sahifa: %1$s
@@ -559,18 +558,11 @@ Hisobotlar ochiq va kanal ro'yxatga qo'shilishidan oldin ko'rib chiqiladi. O'chi
   <string name="morphe_export_download_folder_summary">"Ilova ichida saqlangan videolarni yuklab olish menyusi yordamida qurilmangiz xotirasiga eksport qiling. Eksport papkasini o'zgartirish uchun bosing
 
 Eksport papkasi: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Eksport papkasi</string>
-  <string name="morphe_export_download_folder_change">Papkani o\'zgartirish</string>
-  <string name="morphe_export_download_folder_changed">Eksport papkasi o\'zgartirildi</string>
-  <string name="morphe_export_download_folder_reset">Eksport papkasi qayta tiklandi</string>
-  <string name="morphe_export_download_folder_missing">Eksport papkasi %s topilmadi</string>
-  <string name="morphe_export_download_flyout_title">Qurilmaga eksport qilish</string>
   <string name="morphe_export_download_started">Video eksport qilinmoqda</string>
   <string name="morphe_export_download_progress">Video eksport qilinmoqda: %s%%</string>
   <string name="morphe_export_download_notification_channel">Video eksportlari</string>
   <string name="morphe_export_download_saved">Video %s manziliga eksport qilindi</string>
   <string name="morphe_export_download_failed">Videoni eksport qilib bo\'lmadi</string>
-  <string name="morphe_export_download_canceled">Eksport bekor qilindi</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ovozli tarjima</string>
   <string name="morphe_vot_screen_summary">O\'ynayotganda matnni ovozga aylantirish orqali video sarlavhalarini o\'qish, o\'ynatish bilan sinxronlashtirilgan</string>
@@ -726,8 +718,6 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <string name="morphe_queue_type_entry_2">Tizim navbati</string>
   <string name="morphe_queue_type_entry_3">Morphe navbati</string>
   <string name="morphe_queue_type_entry_4">Morphe navbatining mijoz tomoni</string>
-  <string name="morphe_queue_add_flyout_menu_title">Lenta ochiladigan menyusiga navbat bandini qo\'shish</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Qo\'shimcha ochiladigan menyu bandini qo\'shadi. Agar \"Navbatga qo\'shish\" ko\'rsatilmasa, buni yoqing</string>
   <string name="morphe_local_queue_sheet_title">Navbat</string>
   <string name="morphe_local_queue_open">Navbat (%s)</string>
   <string name="morphe_local_queue_clear">Barchasini tozalash</string>
@@ -1460,7 +1450,7 @@ Avtomobil maketi
   <string name="morphe_dearrow_titles_player_title">Pleer pleylistlari &amp; tavsiyalar</string>
   <string name="morphe_dearrow_titles_search_title">Qidiruv natijalari</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow belgisini ko‘rsatish</string>
-  <string name="morphe_dearrow_titles_icon_summary">Kroudsorsing orqali yaratilgan video sarlavhalarida DeArrow belgisini ko‘rsatadi</string>
+  <string name="morphe_dearrow_titles_icon_summary">Kroudsorsing yordamida tayyorlangan video sarlavhalarida DeArrow belgisini ko\'rsatadi. Asl sarlavha va kichik rasmni ko\'rish uchun belgini bosing</string>
   <string name="morphe_dearrow_casual_mode_title">Oddiy rejim</string>
   <string name="morphe_dearrow_casual_mode_summary">Agar DeArrow foydalanuvchilari asl sarlavhani yoqtirishgan bo\'lsalar, DeArrow sarlavhasi o\'rniga asl sarlavhani ko\'rsatadi</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Asl sarlavhani ko\'rsatish uchun minimal oddiy ovozlar soni</string>
@@ -1636,6 +1626,9 @@ AV1 bilan video ijrosi qotishi yoki kadrlar tushib qolishi mumkin"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Barqaror ovoz mavjud emas</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Ijro 1 soniya oldin tugashi mumkin</string>
   <string name="morphe_spoof_video_streams_about_js">• Agar deobfuskatsiya muvaffaqiyatsiz bo\'lsa, ijro etish ishlamasligi mumkin</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView o\"chirilgan yoki o\"rnatilmagan. Uni yoqing va yangilang, aks holda ijro etishda xatolik yuz berishi mumkin</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView eskirgan. Uni yangilang, aks holda ijro etishda xatolik yuz berishi mumkin</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Asl ovozni majburlash mavjud emas</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR-ga kirish talab qilinadi</string>

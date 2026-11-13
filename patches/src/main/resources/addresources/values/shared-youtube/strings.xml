@@ -28,6 +28,10 @@ Second \"item\" text"</string>
     <string name="morphe_settings_new_indicator_days_title">Highlight new settings</string>
     <string name="morphe_settings_new_indicator_days_summary">Number of days a dot is shown next to settings and options added by an update</string>
     <string name="morphe_settings_new_indicator_days_off">Off</string>
+    <string name="morphe_settings_new_indicator_clear_title">Mark all settings as seen</string>
+    <string name="morphe_settings_new_indicator_clear_summary">Remove the dot from all new settings and options</string>
+    <string name="morphe_settings_new_indicator_clear_dialog_title">Mark all settings as seen?</string>
+    <string name="morphe_settings_new_indicator_clear_dialog_message">The dot is removed from all new settings and options. Settings added by future updates are still highlighted.</string>
 
     <!-- misc.initialization.initializationPatch -->
     <string name="morphe_restart_first_run">Restart to finish setting up</string>
@@ -73,6 +77,13 @@ Second \"item\" text"</string>
 
 Verify the package name is correct and the app is installed"</string>
     <string name="morphe_external_downloader_empty_warning">Package name cannot be empty</string>
+    <string name="morphe_export_download_folder_dialog_title">Export folder</string>
+    <string name="morphe_export_download_folder_change">Change folder</string>
+    <string name="morphe_export_download_folder_changed">Export folder changed</string>
+    <string name="morphe_export_download_folder_reset">Export folder reset</string>
+    <string name="morphe_export_download_folder_missing">Could not find export folder %s</string>
+    <string name="morphe_export_download_flyout_title">Export to device</string>
+    <string name="morphe_export_download_canceled">Export canceled</string>
 
     <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
     <string name="morphe_custom_branding_name_entry_5">Custom</string>
@@ -120,6 +131,20 @@ If you are a YouTube Premium user, this setting may not be required"</string>
 Make %2$s the default client?"</string>
     <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Switch</string>
     <string name="morphe_spoof_video_streams_user_dialog_message">Turning off this setting may cause playback issues</string>
+    <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+    <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+    <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView is turned off or not installed.
+
+Video playback needs Android System WebView. Turn it on and update it to the latest version.
+
+Tap OK to open Android System WebView."</string>
+    <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView is out of date (version %s).
+
+Video playback may fail until Android System WebView is updated to the latest version.
+
+Tap OK to open Android System WebView."</string>
+    <string name="morphe_spoof_video_streams_webview_dialog_ignore">Do not show again</string>
+    <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView is not installed. Install it to fix video playback</string>
     <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
     <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Try enabling: Spoof video streams > Android VR sign in</string>

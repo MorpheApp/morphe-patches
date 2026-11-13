@@ -94,6 +94,11 @@ public final class LayoutComponentsFilter extends Filter {
                 "music_speed_dial_shelf.e"
         );
 
+        final StringFilterGroup yourDownloadsShelf = new StringFilterGroup(
+                Settings.HIDE_YOUR_DOWNLOADS_SHELF,
+                "music_downloads_shelf.e"
+        );
+
         addPathCallbacks(
                 downloadButton,
                 exploreShelf,
@@ -104,7 +109,8 @@ public final class LayoutComponentsFilter extends Filter {
                 lyricsTranslateButton,
                 newFromShelf,
                 playlistShelves,
-                speedDialShelf
+                speedDialShelf,
+                yourDownloadsShelf
         );
     }
 

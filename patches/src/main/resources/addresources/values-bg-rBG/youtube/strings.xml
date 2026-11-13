@@ -321,7 +321,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ключови думи за скриване</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Въведете ключови думи и фрази за скриване, разделени с нови редове
 
-Ключовите думи могат да бъдат исег текстом, показан в заглавията на видеоклиповете или имената на каналите"</string>
+Ключовите думи могат да бъдат всеки текст, показан в заглавията на видеоклиповете. Ключовата дума @ПотребителскоИме скрива цялото съдържание от конкретни създатели"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Начало / Абонаменти / Търсене / Коментари се филтрират, за да се скрие съдържание, което съответства на ключови фрази
 
 Ограничения:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Ограждането на ключова дума/фраза с двойни кавички ще предотврати частични съвпадения на заглавия на видеоклипове и имена на канали&lt;br&gt;&lt;br&gt;Например,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ще скрие видеоклипа: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;но няма да скрие: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключовата дума има противоречиви декларации: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключовата дума е твърде къса и изисква кавички: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключовата дума ще скрие всички видеа: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Начало: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"Експортирайте запазените в приложението видеоклипове в паметта на вашето устройство чрез изскачащото меню за изтегляне. Докоснете, за да промените папката за експортиране
 
 Папка за експортиране: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Папка за експортиране</string>
-  <string name="morphe_export_download_folder_change">Промяна на папката</string>
-  <string name="morphe_export_download_folder_changed">Папката за експортиране е променена</string>
-  <string name="morphe_export_download_folder_reset">Папката за експортиране е нулирана</string>
-  <string name="morphe_export_download_folder_missing">Експортната папка %s не можа да бъде намерена</string>
-  <string name="morphe_export_download_flyout_title">Експортиране към устройството</string>
   <string name="morphe_export_download_started">Експортиране на видеоклип</string>
   <string name="morphe_export_download_progress">Експортиране на видео: %s%%</string>
   <string name="morphe_export_download_notification_channel">Експортиране на видеоклипове</string>
   <string name="morphe_export_download_saved">Видеоклипът е експортиран в %s</string>
   <string name="morphe_export_download_failed">Неуспешно експортиране на видеоклипа</string>
-  <string name="morphe_export_download_canceled">Експортирането е отменено</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Превод на глас зад кадър</string>
   <string name="morphe_vot_screen_summary">Четете надписите на видеото на глас, използвайки вграден текстов говор, синхронизиран с възпроизвеждането</string>
@@ -659,8 +651,8 @@ Second \"item\" text"</string>
   <string name="morphe_loop_count_clear_summary">Изтрийте броевете повторения, запазени във вашите плейлисти. Запазени видеа: %s</string>
   <string name="morphe_loop_count_clear_summary_none">Няма запазени броеве повторения</string>
   <string name="morphe_loop_count_clear_dialog_title">Изтриване на запазените броеве повторения?</string>
-  <string name="morphe_loop_count_clear_dialog_message">Видеата във вашите плейлисти ще изтрият своя брой повторения и \"Повтори видео\" вече няма да се активира, когато плейлиста ги възпроизвежда</string>
-  <string name="morphe_loop_count_clear_done">Запазените броеве повторения бяха изтрити</string>
+  <string name="morphe_loop_count_clear_dialog_message">Видеоклиповете от вашите плейлисти забравят броя на повторенията си, а „Повтаряне на видеоклипа“ вече не се включва, когато плейлист ги възпроизвежда.</string>
+  <string name="morphe_loop_count_clear_done">Запазените броячи на повторения са изчистени</string>
   <string name="morphe_loop_count_flyout_name">Брой повторения</string>
   <string name="morphe_loop_count_dialog_message">Колко пъти да се възпроизвежда видеото преди следващото, от %1$s до %2$s. Оставете празно, за да се повтаря видеото без ограничение.</string>
   <string name="morphe_loop_count_no_limit">Без ограничение</string>
@@ -728,8 +720,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">Родна опашка</string>
   <string name="morphe_queue_type_entry_3">Morphe опашка</string>
   <string name="morphe_queue_type_entry_4">Morphe опашка от страна на клиента</string>
-  <string name="morphe_queue_add_flyout_menu_title">Добавяне на елемент от изскачащото меню на емисията</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Добавя допълнителен елемент в изскачащото меню. Активирайте това, ако „Добавяне към опашката“ не се показва</string>
   <string name="morphe_local_queue_sheet_title">Опашка</string>
   <string name="morphe_local_queue_open">Опашка (%s)</string>
   <string name="morphe_local_queue_clear">Изчисти всичко</string>
@@ -1462,7 +1452,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">Плейлисти &amp; препоръки в плейъра</string>
   <string name="morphe_dearrow_titles_search_title">Резултати от търсенето</string>
   <string name="morphe_dearrow_titles_icon_title">Показване на иконата на DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Показва иконата на DeArrow върху краудсорснати заглавия на видеоклипове</string>
+  <string name="morphe_dearrow_titles_icon_summary">Показва иконата на DeArrow при заглавия на видеоклипове, предоставени от общността. Докоснете иконата, за да видите оригиналното заглавие и миниатюра.</string>
   <string name="morphe_dearrow_casual_mode_title">Casual режим</string>
   <string name="morphe_dearrow_casual_mode_summary">Показва оригиналното заглавие вместо заглавието от DeArrow, ако потребителите на DeArrow са гласували, че оригиналното заглавие им харесва</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Минимален брой гласувания от тип Casual за показване на оригиналното заглавие</string>
@@ -1638,6 +1628,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Стабилната сила на звука не е налична</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Възпроизвеждането може да приключи 1 секунда по-рано</string>
   <string name="morphe_spoof_video_streams_about_js">• Ако деобфускацията се провали, възпроизвеждането може да не работи</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView е изключен или не е инсталиран. Включете го и го актуализирайте, иначе възпроизвеждането може да се провали</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView е остарял. Актуализирайте го, иначе възпроизвеждането може да се провали</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Опцията \"Принудително оригинално аудио\" не е налична</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Вход за Android VR е задължителен</string>

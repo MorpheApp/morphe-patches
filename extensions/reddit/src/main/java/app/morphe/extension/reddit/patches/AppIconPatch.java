@@ -136,14 +136,13 @@ public class AppIconPatch {
         }
 
         @Nullable
-        @SuppressWarnings("deprecation")
         public Drawable getIcon(Context context) {
             try {
                 PackageManager pm = context.getPackageManager();
                 Resources appRes = pm.getResourcesForApplication(PACKAGE);
                 PackageInfo pInfo = pm.getPackageInfo(
                         PACKAGE,
-                        PackageManager.GET_ACTIVITIES | PackageManager.GET_DISABLED_COMPONENTS);
+                        PackageManager.GET_ACTIVITIES | PackageManager.MATCH_DISABLED_COMPONENTS);
 
                 if (pInfo.activities != null) {
                     for (ActivityInfo aInfo : pInfo.activities) {
@@ -166,6 +165,7 @@ public class AppIconPatch {
     // Cannot use hardcoded package name or icon picker is broken with cloned apps.
     private static final String PACKAGE = Utils.getContext().getPackageName();
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return true;
     }

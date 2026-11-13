@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">কীওয়ার্ড ব্যবহার করে অনুসন্ধান ফলাফল লুকান</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">কীওয়ার্ড ব্যবহার করে সাবস্ক্রিপশন ভিডিও লুকান</string>
   <string name="morphe_hide_keyword_content_phrases_title">লুকানোর জন্য কীওয়ার্ড</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"লুকানোর জন্য কিওয়ার্ড এবং শব্দগুচ্ছ লিখুন, নিউ লাইন দিয়ে আলাদা করে
+  <string name="morphe_hide_keyword_content_phrases_summary">"লুকানোর জন্য কীওয়ার্ড এবং শব্দগুচ্ছ লিখুন, নিউ লাইন দিয়ে আলাদা করুন
 
-কিওয়ার্ড ভিডিওর শিরোনাম বা চ্যানেলের নামে প্রদর্শিত যেকোনো টেক্সট হতে পারে"</string>
+কীওয়ার্ড ভিডিও টাইটেলে প্রদর্শিত যেকোনো টেক্সট হতে পারে। @UserName কীওয়ার্ড নির্দিষ্ট ক্রিয়েটরদের সমস্ত কন্টেন্ট লুকিয়ে রাখে"</string>
   <string name="morphe_hide_keyword_content_about_summary">"হোম / সাবস্ক্রিপশন / সার্চ / কমেন্টগুলো ফিল্টার করা হয়েছে যাতে কীওয়ার্ড ফ্রেজের সাথে মেলে এমন কন্টেন্ট হাইড করা থাকে
 
 সীমাবদ্ধতা:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">ডাবল কোটের মধ্যে একটি কীওয়ার্ড/ফ্রেজ রাখলে ভিডিও শিরোনাম এবং চ্যানেলের নামের আংশিক মিল সনাক্ত করা বন্ধ হয়ে যাবে&lt;br&gt;&lt;br&gt;উদাহরণস্বরূপ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ভিডিওটি লুকিয়ে দেবে: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;কিন্তু লুকিয়ে দেবে না: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">কীওয়ার্ডের দ্বন্দ্বপূর্ণ ঘোষণা আছে: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">কীওয়ার্ড খুব ছোট এবং উদ্ধৃতি প্রয়োজন: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">কীওয়ার্ড সমস্ত ভিডিও লুকিয়ে রাখবে: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• হোম: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"অ্যাপের ভেতরে সংরক্ষিত ভিডিওগুলো ইন-অ্যাপ ডাউনলোড ফ্লাইআউট মেনু ব্যবহার করে আপনার ডিভাইসের স্টোরেজে এক্সপোর্ট করুন। এক্সপোর্ট ফোল্ডার পরিবর্তন করতে ট্যাপ করুন
 
 এক্সপোর্ট ফোল্ডার: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">এক্সপোর্ট ফোল্ডার</string>
-  <string name="morphe_export_download_folder_change">ফোল্ডার পরিবর্তন করুন</string>
-  <string name="morphe_export_download_folder_changed">এক্সপোর্ট ফোল্ডার পরিবর্তিত হয়েছে</string>
-  <string name="morphe_export_download_folder_reset">এক্সপোর্ট ফোল্ডার রিসেট করা হয়েছে</string>
-  <string name="morphe_export_download_folder_missing">এক্সপোর্ট ফোল্ডার %s পাওয়া যায়নি</string>
-  <string name="morphe_export_download_flyout_title">ডিভাইসে এক্সপোর্ট করুন</string>
   <string name="morphe_export_download_started">ভিডিও এক্সপোর্ট করা হচ্ছে</string>
   <string name="morphe_export_download_progress">ভিডিও এক্সপোর্ট করা হচ্ছে: %s%%</string>
   <string name="morphe_export_download_notification_channel">ভিডিও এক্সপোর্ট</string>
   <string name="morphe_export_download_saved">ভিডিওটি %s-এ এক্সপোর্ট করা হয়েছে</string>
   <string name="morphe_export_download_failed">ভিডিওটি এক্সপোর্ট করা সম্ভব হয়নি</string>
-  <string name="morphe_export_download_canceled">এক্সপোর্ট বাতিল করা হয়েছে</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">ভয়েস ওভার অনুবাদ</string>
   <string name="morphe_vot_screen_summary">ডিভাইসের টেক্সট-টু-স্পিচ ব্যবহার করে প্লেব্যাকের সাথে মিলিয়ে ভিডিও ক্যাপশন পড়ে শোনান</string>
@@ -728,8 +720,6 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_queue_type_entry_2">নেটিভ কিউ</string>
   <string name="morphe_queue_type_entry_3">Morphe কিউ</string>
   <string name="morphe_queue_type_entry_4">Morphe ক্লায়েন্ট সাইড কিউ</string>
-  <string name="morphe_queue_add_flyout_menu_title">ফিড ফ্লাইআউট কিউ মেনু আইটেম যুক্ত করুন</string>
-  <string name="morphe_queue_add_flyout_menu_summary">একটি অতিরিক্ত ফ্লাইআউট আইটেম যোগ করে। যদি \"কিউতে যোগ করুন\" দেখানো না হয় তবে এটি সক্ষম করুন।</string>
   <string name="morphe_local_queue_sheet_title">সারি</string>
   <string name="morphe_local_queue_open">সারি (%s)</string>
   <string name="morphe_local_queue_clear">সব মুছুন</string>
@@ -1462,7 +1452,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_dearrow_titles_player_title">প্লেয়ার প্লেলিস্ট &amp; সুপারিশ</string>
   <string name="morphe_dearrow_titles_search_title">অনুসন্ধানের ফলাফল</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow আইকন দেখান</string>
-  <string name="morphe_dearrow_titles_icon_summary">ক্রাউডসোর্সড ভিডিও শিরোনামে DeArrow আইকন দেখায়</string>
+  <string name="morphe_dearrow_titles_icon_summary">ক্রাউডসোর্সড ভিডিওর শিরোনামে DeArrow আইকন দেখায়। মূল শিরোনাম এবং থাম্বনেইল দেখতে আইকনে ট্যাপ করুন</string>
   <string name="morphe_dearrow_casual_mode_title">নৈমিত্তিক মোড</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow ব্যবহারকারীরা যদি মূল শিরোনামটি পছন্দ করে বলে ভোট দেন, তাহলে DeArrow শিরোনামের পরিবর্তে মূল শিরোনামটি দেখানো হয়</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">মূল শিরোনাম দেখানোর জন্য সর্বনিম্ন ক্যাজুয়াল ভোট</string>
@@ -1638,6 +1628,9 @@ AV1 দিয়ে ভিডিও প্লেব্যাকে ঝাঁক�
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• স্থিতিশীল ভলিউম উপলব্ধ নেই</string>
   <string name="morphe_spoof_video_streams_about_end_early">• প্লেব্যাক ১ সেকেন্ড আগে শেষ হতে পারে</string>
   <string name="morphe_spoof_video_streams_about_js">• ডিঅবফাসকেশন ব্যর্থ হলে প্লেব্যাকও ব্যর্থ হতে পারে</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView বন্ধ করা হয়েছে অথবা ইনস্টল করা নেই। এটি চালু করুন এবং আপডেট করুন, অন্যথায় প্লেব্যাক ব্যর্থ হতে পারে</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView পুরনো হয়ে গেছে। এটি আপডেট করুন, অন্যথায় প্লেব্যাক ব্যর্থ হতে পারে</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• মূল অডিও জোরপূর্বক উপলব্ধ নেই</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR-এ সাইন ইন প্রয়োজন</string>

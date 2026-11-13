@@ -54,8 +54,7 @@ private fun getFormatParameters(value: String): Set<String> {
  * Checks resource strings for invalid strings that will fail resource compilation,
  * and for translations that use different format parameters than the English string.
  */
-@Suppress("unused")
-internal fun main(args: Array<String>) {
+internal fun main(@Suppress("unused") args: Array<String>) {
     var stringsChecked = 0
 
     val exceptions = mutableListOf<Exception>()

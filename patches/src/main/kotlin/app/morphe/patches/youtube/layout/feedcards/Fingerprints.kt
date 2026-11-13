@@ -91,7 +91,7 @@ internal object EngagementPanelControllerOfSurfaceFingerprint : Fingerprint(
 )
 
 /**
- * Id of the panel that the engagement panel controller shows, or null.
+ * ID of the panel that the engagement panel controller shows, or null.
  */
 internal object EngagementPanelControllerShownPanelIdFingerprint : Fingerprint(
     classFingerprint = EngagementPanelControllerFingerprint,

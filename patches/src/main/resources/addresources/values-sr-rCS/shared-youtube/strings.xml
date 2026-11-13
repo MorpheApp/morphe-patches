@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Istakni nova podešavanja</string>
   <string name="morphe_settings_new_indicator_days_summary">Broj dana tokom kojih se tačka prikazuje pored podešavanja i opcija dodatih ažuriranjem</string>
   <string name="morphe_settings_new_indicator_days_off">Isključen</string>
+  <string name="morphe_settings_new_indicator_clear_title">Označi sva podešavanja kao viđena</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Ukloni tačku sa svih novih podešavanja i opcija</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Označiti sva podešavanja kao viđena?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Tačka je uklonjena sa svih novih podešavanja i opcija. Podešavanja dodata u budućim ažuriranjima i dalje će biti istaknuta.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Ponovo pokrenite da biste završili postavljanje</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Proverite da li je naziv paketa ispravan i da li je aplikacija instalirana"</string>
   <string name="morphe_external_downloader_empty_warning">Naziv paketa ne može biti prazan</string>
+  <string name="morphe_export_download_folder_dialog_title">Folder za izvoz</string>
+  <string name="morphe_export_download_folder_change">Promeni folder</string>
+  <string name="morphe_export_download_folder_changed">Folder za izvoz je promenjen</string>
+  <string name="morphe_export_download_folder_reset">Folder za izvoz je resetovan</string>
+  <string name="morphe_export_download_folder_missing">Folder za izvoz %s nije pronađen</string>
+  <string name="morphe_export_download_flyout_title">Izvezi na uređaj</string>
+  <string name="morphe_export_download_canceled">Izvoz otkazan</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Prilagođeno</string>
   <string name="morphe_custom_branding_icon_title">Ikonica aplikacije</string>
@@ -110,6 +121,20 @@ Ako ste korisnik YouTube Premium-a, ova opcija možda neće biti potrebna"</stri
 Postavi %2$s kao podrazumevani klijent?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Prebaci</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Isključivanje ovog podešavanja može izazvati probleme sa reprodukcijom</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView je isključen ili nije instaliran.
+
+Za reprodukciju video zapisa potreban je Android System WebView. Uključite ga i ažurirajte na najnoviju verziju.
+
+Dodirnite OK da otvorite Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView je zastareo (verzija %s).
+
+Reprodukcija video zapisa može biti onemogućena sve dok Android System WebView ne bude ažuriran na najnoviju verziju.
+
+Dodirnite OK da otvorite Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ne prikazuj ponovo</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView nije instaliran. Instalirajte ga kako biste popravili reprodukciju video zapisa</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Pokušajte da uključite: Lažirani video strimovi &gt; Prijava na Android VR</string>

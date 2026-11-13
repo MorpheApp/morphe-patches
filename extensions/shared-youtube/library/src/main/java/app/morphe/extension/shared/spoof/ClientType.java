@@ -20,7 +20,7 @@ import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 
-@SuppressWarnings({"ConstantLocale", "deprecation"})
+@SuppressWarnings("ConstantLocale")
 public enum ClientType {
     /**
      * Video not playable: None.
@@ -382,6 +382,30 @@ public enum ClientType {
             VISIONOS_1_03.requirePoToken,
             VISIONOS_1_03.requireSABR,
             "visionOS 1.02"
+    ),
+    /**
+     * Same as {@code VISIONOS_1_02} but with app version 1.06 and visionOS 27.2.
+     * The server can send other streams to a newer app version,
+     * so the version of {@code VISIONOS_1_02} is not updated.
+     */
+    VISIONOS_1_06(
+            VISIONOS_1_02.id,
+            VISIONOS_1_02.clientName,
+            VISIONOS_1_02.deviceMake,
+            VISIONOS_1_02.deviceModel,
+            VISIONOS_1_02.osName,
+            "27.2",
+            "1.06",
+            VISIONOS_1_02.clientPlatform,
+            "com.google.visionosyoutube/1.06 (RealityDevice14,1; U; CPU visionOS 27_2 like Mac OS X; en_US) gzip",
+            VISIONOS_1_02.canLogin,
+            VISIONOS_1_02.requireLogin,
+            VISIONOS_1_02.supportsMultiAudioTracks,
+            VISIONOS_1_02.supportsVRImmersiveMode,
+            VISIONOS_1_02.requireJS,
+            VISIONOS_1_02.requirePoToken,
+            VISIONOS_1_02.requireSABR,
+            "visionOS 1.06"
     );
 
     /**
@@ -425,7 +449,7 @@ public enum ClientType {
     public final String osVersion;
 
     /**
-     * Android SDK version, equivalent to {@link Build.VERSION#SDK} (System property: ro.build.version.sdk)
+     * Android SDK version, equivalent to {@code Build.VERSION.SDK} (System property: ro.build.version.sdk)
      * Field is empty if not applicable.
      */
     @NonNull

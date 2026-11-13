@@ -12,7 +12,7 @@ import app.morphe.extension.shared.Logger;
 
 /**
  * ReturnYouTubeDislike API estimated like/dislike/view counts.
- *
+ * <p>
  * ReturnYouTubeDislike does not guarantee when the counts are updated.
  * So these values may lag behind what YouTube shows.
  */
@@ -31,7 +31,7 @@ public final class RYDVoteData {
      * Like count can be hidden by video creator, but RYD still tracks the number
      * of like/dislikes it received through its browser extension and API.
      * The raw like/dislikes can be used to calculate a percentage.
-     *
+     * <p>
      * Raw values can be null, especially for older videos with little to no views.
      */
     @Nullable
@@ -75,7 +75,7 @@ public final class RYDVoteData {
 
     /**
      * Public like count of the video, as reported by YT when RYD last updated its data.
-     *
+     * <p>
      * If the likes were hidden by the video creator, then this returns an
      * estimated likes using the same extrapolation as the dislikes.
      */
@@ -92,7 +92,7 @@ public final class RYDVoteData {
 
     /**
      * Estimated percentage of likes for all votes.  Value has range of [0, 1]
-     *
+     * <p>
      * A video with 400 positive votes, and 100 negative votes, has a likePercentage of 0.8
      */
     public float getLikePercentage() {
@@ -101,7 +101,7 @@ public final class RYDVoteData {
 
     /**
      * Estimated percentage of dislikes for all votes. Value has range of [0, 1]
-     *
+     * <p>
      * A video with 400 positive votes, and 100 negative votes, has a dislikePercentage of 0.2
      */
     public float getDislikePercentage() {
@@ -112,20 +112,19 @@ public final class RYDVoteData {
         final int likesToAdd, dislikesToAdd;
 
         switch (vote) {
-            case LIKE:
+            case LIKE -> {
                 likesToAdd = 1;
                 dislikesToAdd = 0;
-                break;
-            case DISLIKE:
+            }
+            case DISLIKE -> {
                 likesToAdd = 0;
                 dislikesToAdd = 1;
-                break;
-            case LIKE_REMOVE:
+            }
+            case LIKE_REMOVE -> {
                 likesToAdd = 0;
                 dislikesToAdd = 0;
-                break;
-            default:
-                throw new IllegalStateException();
+            }
+            default -> throw new IllegalStateException();
         }
 
         // If a video has no public likes but RYD has raw like data,

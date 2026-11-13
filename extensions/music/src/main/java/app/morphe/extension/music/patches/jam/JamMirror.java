@@ -25,6 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /** Native adapters display authoritative state plus unacknowledged local gestures. */
+@SuppressWarnings("unused")
 public final class JamMirror {
 
     public interface AutoplayUi {
@@ -35,7 +36,6 @@ public final class JamMirror {
     private static final Set<AutoplayUi> autoplayViews =
             Collections.newSetFromMap(new WeakHashMap<>());
 
-    @SuppressWarnings("unused")
     public static void autoplayUi(AutoplayUi view) {
         autoplayViews.add(view);
         NativeQueueList lane = autoplay;
@@ -249,6 +249,7 @@ public final class JamMirror {
         return mirror != null;
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public static boolean move(Object list, int from, int to) {
         return (
                 (list == mirror || list == autoplay) &&
@@ -256,6 +257,7 @@ public final class JamMirror {
         );
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public static boolean remove(Object nativeItem) {
         if (
                 mirror == null ||

@@ -27,6 +27,7 @@ public class VideoDelayPatch {
     private static volatile boolean deviceCallbackRegistered;
     private static volatile int lastLoggedDelayMs;
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

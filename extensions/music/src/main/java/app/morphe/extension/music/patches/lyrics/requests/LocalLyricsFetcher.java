@@ -815,8 +815,7 @@ public final class LocalLyricsFetcher {
         if (!result.lines.isEmpty()) {
             // LRC line timestamps synchronize whole lines; word-level
             // (karaoke) timestamps are not required for synchronized lyrics.
-            final boolean synced = !result.lines.isEmpty();
-            return new Lyrics(result.lines, "Local", synced, null, null, null,
+            return new Lyrics(result.lines, "Local", true, null, null, null,
                     null, result.creditLines.isEmpty() ? null : result.creditLines,
                     raw, "lrc", null, null, null);
         }

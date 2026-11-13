@@ -27,68 +27,25 @@ Second \"item\" text"</string>
   <string name="morphe_music_auto_song_version_summary">வரிசையில் உள்ள அதிகாரப்பூர்வ இசை வீடியோக்களை அதற்குப் பொருத்தமான பாடலால் மாற்றும். இதற்கு செயலியின் அமைப்பில் \'இசை வீடியோக்களை இயக்காதே\' என்பது ஆன் செய்யப்பட வேண்டும். சரியான பொருத்தம் இல்லாத பாடல்கள் மாற்றப்படாமல் இருக்கும்</string>
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
-  <string name="morphe_music_downloads_summary">%1$s பாடல்கள் • %2$s MB</string>
-  <string name="morphe_music_downloads_shuffle">கலக்கவும்</string>
-  <string name="morphe_music_downloads_repeat">திரும்பச் செய்யவும்</string>
-  <string name="morphe_music_downloads_minimize">குறைக்கவும்</string>
-  <string name="morphe_music_downloads_playlists">பிளேலிஸ்ட்டுகள்</string>
-  <string name="morphe_music_downloads_playlists_section">உருவாக்கப்பட்ட பிளேலிஸ்ட்டுகள் (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">உள்ளூர் பிளேலிஸ்ட்டுகள் எதுவும் இல்லை</string>
-  <string name="morphe_music_downloads_playlists_hide">பிளேலிஸ்ட்டுகளை மறைக்கவும் ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ புதிய பிளேலிஸ்ட்</string>
-  <string name="morphe_music_downloads_playlist_new_button">புதிய பிளேலிஸ்ட்</string>
-  <string name="morphe_music_downloads_playlist_selected">தேர்ந்தெடுக்கப்பட்டது (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">முதலில் பாடல்களைத் தேர்ந்தெடுக்கவும்</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">தேர்வை நீக்கவும்</string>
-  <string name="morphe_music_downloads_playlist_create">பிளேலிஸ்ட்டை உருவாக்கவும்</string>
-  <string name="morphe_music_downloads_playlist_create_button">உருவாக்கு</string>
-  <string name="morphe_music_downloads_playlist_add">பிளேலிஸ்ட்டில் சேர்க்கவும்</string>
-  <string name="morphe_music_downloads_playlist_added">%s-ல் சேர்க்கப்பட்டது</string>
-  <string name="morphe_music_downloads_playlist_name_hint">பிளேலிஸ்ட் பெயர்</string>
-  <string name="morphe_music_downloads_playlist_name_empty">பிளேலிஸ்ட் பெயர் காலியாக இருக்கக்கூடாது</string>
-  <string name="morphe_music_downloads_playlist_save_failed">பிளேலிஸ்ட்டைச் சேமிக்க முடியவில்லை</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s டிரேக்குகள்</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 டிரேக்</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">இந்த பிளேலிஸ்ட்டில் டிரேக்குகள் எதுவும் இல்லை</string>
-  <string name="morphe_music_downloads_playlist_play">பிளேலிஸ்ட்டை இயக்கவும்</string>
-  <string name="morphe_music_downloads_playlist_play_all">அனைத்தையும் இயக்கவும்</string>
-  <string name="morphe_music_downloads_playlist_rename">பெயரை மாற்று</string>
-  <string name="morphe_music_downloads_playlist_rename_title">பிளேலிஸ்டை மறுபெயரிடு</string>
-  <string name="morphe_music_downloads_playlist_save">சேமி</string>
-  <string name="morphe_music_downloads_playlist_delete">பிளேலிஸ்டை நீக்கு</string>
-  <string name="morphe_music_downloads_playlist_delete_title">பிளேலிஸ்டை நீக்க வேண்டுமா?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s நீக்கப்படும். பதிவிறக்கம் செய்யப்பட்ட பாடல்கள் அப்படியே இருக்கும்</string>
-  <string name="morphe_music_downloads_playlist_deleted">பிளேலிஸ்ட் நீக்கப்பட்டது</string>
-  <string name="morphe_music_downloads_playlist_remove_track">பிளேலிஸ்டிலிருந்து நீக்கு</string>
-  <string name="morphe_music_downloads_playlist_drag_track">வரிசையை மாற்ற இழுக்கவும்</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • வரிசையை மாற்ற இழுக்கவும்</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">முடிந்தது</string>
-  <string name="morphe_music_downloads_playlist_download_title">ப்ளேலிஸ்ட் பதிவிறக்கம்</string>
-  <string name="morphe_music_downloads_playlist_download_listing">பாடல்கள் பட்டியலிடப்படுகின்றன…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s பட்டியலிடப்பட்டது…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">ப்ளேலிஸ்ட்டின் பாடல்களைப் பட்டியலிட முடியவில்லை</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">ஏற்கனவே பதிவிறக்கம் செய்யப்பட்டது: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"இந்த ப்ளேலிஸ்ட்டில் %1$s பாடல்கள் உள்ளன, %2$s இன்னும் பதிவிறக்கம் செய்யப்படவில்லை.
+  <string name="morphe_export_download_folder_title">பதிவிறக்கங்களை ஏற்றுமதி செய்</string>
+  <string name="morphe_export_download_folder_summary">"ஆப்பினால் பதிவிறக்கப்பட்ட பாடல்கள் மற்றும் வீடியோக்களை பதிவிறக்க மெனுவைப் பயன்படுத்தி உங்கள் சாதன சேமிப்பகத்திற்கு ஏற்றுமதி செய்யவும். ஏற்றுமதி கோப்புறையை மாற்ற தட்டவும்
 
-அவை ஒவ்வொன்றாகப் பதிவிறக்கம் செய்யப்படும், இதற்கு நீண்ட நேரம் ஆகலாம் மற்றும் சுமார் %3$s காலியிடம் தேவைப்படும்"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">பதிவிறக்கு</string>
-  <string name="morphe_music_downloads_playlist_download_progress">%2$s பாடல்களில் %1$s-வது பாடல் பதிவிறக்கம் செய்யப்படுகிறது</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s பதிவிறக்கம் செய்யப்பட்டது</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s பதிவிறக்கம் செய்யப்பட்டது, %2$s பதிவிறக்கம் செய்ய முடியவில்லை</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">प्लेலிஸ்ட் பதிவிறக்கம் ஏற்கனவே நடைபெற்றுக்கொண்டிருக்கிறது</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">உங்கள் கணக்கு இன்னும் அறியப்படவில்லை. சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s பட்டியலிடப்பட்டுள்ளது, அனைத்தும் ஏற்கனவே பதிவிறக்கம் செய்யப்பட்டுள்ளன</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">प्लेலிஸ்டின் ஒரு பகுதி மட்டுமே பட்டியலிட முடிந்தது. மீதமுள்ளவற்றைப் பெற சிறிது நேரம் கழித்து மீண்டும் பதிவிறக்கம் என்பதைத் தட்டவும்</string>
-  <string name="morphe_music_downloads_playlist_download_started">பின்னணியில் %s பதிவிறக்கம் செய்யப்படுகிறது</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">நெட்வொர்க் இணைப்பு இல்லை</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">நெட்வொர்க்குக்காக காத்திருக்கிறது…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">%2$s இல் %1$s முடிந்த பிறகு நிறுத்தப்பட்டது. தொடர மீண்டும் பதிவிறக்கம் என்பதைத் தட்டவும்</string>
-  <string name="morphe_music_downloads_mark_title">பதிவிறக்கம் செய்யப்பட்ட பாடல்களைக் குறிக்கவும்</string>
-  <string name="morphe_music_downloads_mark_summary">ஏற்கனவே பதிவிறக்கம் செய்யப்பட்ட பாடல்கள், பிளேலிஸ்ட்கள், ஆல்பங்கள் மற்றும் தேடல் முடிவுகளில் அவற்றின் விவரங்களுக்கு முன்னால் ஒரு குறியீட்டைக் காட்டும்</string>
+ஏற்றுமதி கோப்புறை: %s"</string>
+  <string name="morphe_export_download_started">பதிவிறக்கத்தை ஏற்றுமதி செய்கிறது</string>
+  <string name="morphe_export_download_progress">பதிவிறக்கத்தை ஏற்றுமதி செய்கிறது: %s%%</string>
+  <string name="morphe_export_download_notification_channel">பதிவிறக்க ஏற்றுமதிகள்</string>
+  <string name="morphe_export_download_saved">பதிவிறக்கம் %s-க்கு ஏற்றுமதி செய்யப்பட்டது</string>
+  <string name="morphe_export_download_failed">பதிவிறக்கத்தை ஏற்றுமதி செய்ய முடியவில்லை</string>
+  <string name="morphe_export_download_all_flyout_title">அனைத்தையும் சாதனத்திற்கு ஏற்றுமதி செய்</string>
+  <string name="morphe_export_download_all_started">அனைத்துப் பதிவிறக்கங்களையும் ஏற்றுமதி செய்கிறது</string>
+  <string name="morphe_export_download_all_running">பதிவிறக்கங்கள் ஏற்கனவே ஏற்றுமதி செய்யப்படுகின்றன</string>
+  <string name="morphe_export_download_all_saved">%2$s பதிவிறக்கங்களில் %1$s பதிவிறக்கங்கள் %3$s-க்கு ஏற்றுமதி செய்யப்பட்டன</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- ad.hideAdsPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
+  <string name="morphe_music_hide_you_may_also_like_section_title">\'உங்களுக்கு இதுவும் பிடிக்கலாம்\' பகுதியை மறைக்கவும்</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">\'உங்கள் பதிவிறக்கங்கள்\' அலமாரியை மறைக்கவும்</string>
   <string name="morphe_music_hide_comments_gif_button_title">GIF பொத்தானை மறைக்கவும்</string>
   <string name="morphe_music_hide_comments_gifs_and_images_title">GIF-கள் மற்றும் படங்களை மறைக்கவும்</string>
   <string name="morphe_music_hide_comments_gifs_and_images_summary">கருத்துகள் மற்றும் பதில்களில் இணைக்கப்பட்டுள்ள GIF-கள் மற்றும் படங்களை மறைக்கும்</string>
@@ -98,7 +55,15 @@ Second \"item\" text"</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">ஆடியோ டக்கிங்கை முடக்கு</string>
+  <string name="morphe_music_disable_audio_ducking_summary">அறிவிப்பு போன்ற சிறிய ஒலியை மற்றொரு ஆப் இயக்கும்போது, வால்யூம் குறைக்கப்படாது</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">A-B லூப்</string>
+  <string name="morphe_music_ab_loop_summary">லூப் தொடக்கத்தை அமைக்க சீக் பாரை நீண்ட நேரம் அழுத்தவும், லூப் முடிவை அமைக்க மீண்டும் அழுத்தவும், மேலும் லூப்பை நீக்க மீண்டும் அழுத்தவும்</string>
+  <string name="morphe_music_ab_loop_toast_start">லூப் தொடக்கம் %s என அமைக்கப்பட்டது</string>
+  <string name="morphe_music_ab_loop_toast_end">லூப் முடிவு %s என அமைக்கப்பட்டது</string>
+  <string name="morphe_music_ab_loop_toast_cleared">லூப் நீக்கப்பட்டது</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.playlisttags.playlistTagsPatch -->
@@ -267,6 +232,7 @@ Rime Wordlist வாசிக்க வேண்டிய பட்டியல�
   <string name="morphe_music_lyrics_rime_dict_no_table">மேலே உள்ள மொழிக்கு Rime வார்த்தைப் பட்டியல் எதுவும் தேர்வு செய்யப்படவில்லை. ஒன்றைத் தேர்வு செய்ய இந்தப் பெயரைத் தட்டவும், அல்லது பட்டியல் உள்ள மொழியைத் தேர்வு செய்யவும்</string>
   <string name="morphe_music_lyrics_rime_dict_add">சேர்</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Rime வார்த்தைப் பட்டியலைச் சேர்</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">字 ham மற்றும் 典 din2 போன்ற வரிகளைக் கொண்ட .dict.yaml கோப்பு அல்லது அதை உள்ளடக்கிய ஜிப் கோப்பு. நீங்கள் இதைத் தேர்ந்தெடுத்து சேமி என்பதைக் கிளிக் செய்யும்போது பட்டியல் பெறப்படும், மேலும் அதன் உரிமத்தை நீங்கள் சரிபார்த்துக் கொள்ளலாம்</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">மொழி குறியீடு</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Hak அல்லது wuu என்பது போல இரண்டு அல்லது மூன்று எழுத்துக்கள்</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">பெயர்</string>

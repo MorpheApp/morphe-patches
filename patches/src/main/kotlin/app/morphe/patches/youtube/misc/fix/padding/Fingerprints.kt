@@ -13,6 +13,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
@@ -43,6 +44,34 @@ internal object KeyboardHidesNavigationBarFeatureFlagFingerprint : Fingerprint(
  * otherwise the bottom of the window insets.
  */
 internal object PageBottomMarginFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Rect;", "Z"),
+    filters = listOf(
+        methodCall(smali = "Landroid/view/View;->findFocus()Landroid/view/View;"),
+        methodCall(
+            smali = "Landroid/view/View;->onCheckIsTextEditor()Z",
+            location = MatchAfterWithin(5)
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET,
+            definingClass = "Landroid/graphics/Rect;",
+            name = "bottom"
+        ),
+        // Keyboard height.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Landroid/view/View;"),
+            returnType = "I",
+            location = MatchAfterWithin(10)
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * 21.45 and older.
+ */
+internal object PageBottomMarginLegacyFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/graphics/Rect;"),
     filters = listOf(

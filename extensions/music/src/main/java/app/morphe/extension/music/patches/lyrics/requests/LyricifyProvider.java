@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,7 +51,7 @@ public final class LyricifyProvider implements LyricsProvider {
 
     private static HttpURLConnection openApi(String url) throws IOException {
         final HttpURLConnection conn =
-                (HttpURLConnection) new java.net.URL(url).openConnection();
+                (HttpURLConnection) new URL(url).openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("User-Agent", USER_AGENT);
         conn.setRequestProperty("Accept", "application/json");
@@ -66,7 +67,7 @@ public final class LyricifyProvider implements LyricsProvider {
         try {
             final String url = "https://api.credits.fm/v1/resolve/track";
             LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
-            connection = (HttpURLConnection) new java.net.URL(url).openConnection();
+            connection = (HttpURLConnection) new URL(url).openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("Accept", "application/json");

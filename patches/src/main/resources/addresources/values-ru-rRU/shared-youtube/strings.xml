@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Подсвечивать новые настройки</string>
   <string name="morphe_settings_new_indicator_days_summary">Количество дней, в течение которых точка отображается рядом с настройками и опциями, добавленными в обновлении</string>
   <string name="morphe_settings_new_indicator_days_off">Выключено</string>
+  <string name="morphe_settings_new_indicator_clear_title">Отметить все настройки как просмотренные</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Удалить точку из всех новых настроек и опций</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Отметить все настройки как просмотренные?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Точка будет удалена из всех новых настроек и опций. Настройки, добавленные в будущих обновлениях, все равно будут выделены.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Перезагрузите для завершения настройки</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Убедитесь, что имя пакета указано верно и приложение установлено"</string>
   <string name="morphe_external_downloader_empty_warning">Имя пакета не может быть пустым</string>
+  <string name="morphe_export_download_folder_dialog_title">Папка экспорта</string>
+  <string name="morphe_export_download_folder_change">Изменить папку</string>
+  <string name="morphe_export_download_folder_changed">Папка экспорта изменена</string>
+  <string name="morphe_export_download_folder_reset">Папка экспорта сброшена</string>
+  <string name="morphe_export_download_folder_missing">Не удалось найти папку экспорта %s</string>
+  <string name="morphe_export_download_flyout_title">Экспорт на устройство</string>
+  <string name="morphe_export_download_canceled">Экспорт отменен</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Пользовательское</string>
   <string name="morphe_custom_branding_icon_title">Иконка приложения</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 Сделать %2$s клиентом по умолчанию?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Переключить</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Выключение этой настройки может привести к возникновению проблем с воспроизведением</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView отключен или не установлен.
+
+Для воспроизведения видео требуется Android System WebView. Включите его и обновите до последней версии.
+
+Нажмите ОК, чтобы открыть Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Версия Android System WebView устарела (%s).
+
+Воспроизведение видео может быть недоступно до обновления Android System WebView до последней версии.
+
+Нажмите ОК, чтобы открыть Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Не показывать снова</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView не установлен. Установите его, чтобы исправить воспроизведение видео</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Попробуйте включить: Поддельные видео потоки &gt; Вход в Android VR</string>

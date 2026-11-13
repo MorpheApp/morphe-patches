@@ -25,7 +25,6 @@ import app.morphe.util.setExtensionIsPatchIncluded
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/PostImageDownloadPatch;"
 
-@Suppress("unused")
 val postImageDownloadPatch = patch(
     name = "Download post images",
     description = "Adds a button and a menu item to download the images and GIFs of posts.",

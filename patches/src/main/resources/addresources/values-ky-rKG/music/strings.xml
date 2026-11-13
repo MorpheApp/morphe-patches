@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">«Жүктөө» менюсу үчүн тышкы жүктөөчү колдонмосун колдонуу</string>
   <string name="morphe_external_downloader_menu_summary">Менюлардын «Жүктөө» опциясы анын ордуна сиздин тышкы жүктөөчү колдонмоңузду ачат</string>
-  <string name="morphe_music_downloads_screen_title">Жүктүрүүлөр</string>
-  <string name="morphe_music_downloads_empty">"Жүктүрүлгөн файлдар жок
-Жүктүрүлгөн тректер ушул жерде пайда болот"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s МБ</string>
-  <string name="morphe_music_downloads_summary">%1$s трек • %2$s МБ</string>
-  <string name="morphe_music_downloads_search_hint">Жүктүрүлгөн файлдарды издөө</string>
-  <string name="morphe_music_downloads_sort">Сортоо</string>
-  <string name="morphe_music_downloads_sort_artist">Артист боюнча сүзүү</string>
-  <string name="morphe_music_downloads_sort_title">Аталышы боюнча сүзүү</string>
-  <string name="morphe_music_downloads_sort_size">Көлөмү боюнча сүзүү</string>
-  <string name="morphe_music_downloads_delete_all">Бардык жүктүрүлгөн файлдарды өчүрүү</string>
-  <string name="morphe_music_downloads_delete_all_title">Бардык жүктүрүлгөн файлдарды өчүрөсүзбү?</string>
-  <string name="morphe_music_downloads_delete_all_message">Бул түзүлүштөн бардык жүктүрүлгөн тректер өчүрүлөт</string>
-  <string name="morphe_music_downloads_all_deleted">Жүктүрүлгөн файлдар өчүрүлдү</string>
-  <string name="morphe_music_downloads_nothing_found">Эч нерсе табылган жок</string>
-  <string name="morphe_music_downloads_actions_for">%s үчүн аракеттер</string>
-  <string name="morphe_music_downloads_play">Ойнотуу</string>
-  <string name="morphe_music_downloads_play_pause">Ойнотуу же токтотуу</string>
-  <string name="morphe_music_downloads_previous">Мурунку</string>
-  <string name="morphe_music_downloads_next">Кийинки</string>
-  <string name="morphe_music_downloads_pause">Токтотуу</string>
-  <string name="morphe_music_downloads_shuffle">Аралаштыруу</string>
-  <string name="morphe_music_downloads_repeat">Кайталоо</string>
-  <string name="morphe_music_downloads_minimize">Кичирейтүү</string>
-  <string name="morphe_music_downloads_close">Жабуу</string>
-  <string name="morphe_music_downloads_delete">Өчүрүү</string>
-  <string name="morphe_music_downloads_delete_track">Жүктүрүлгөн файлды өчүрүү</string>
-  <string name="morphe_music_downloads_delete_track_title">Жүктүрүлгөн файлды өчүрөсүзбү?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s бул түзмөктөн өчүрүлөт</string>
-  <string name="morphe_music_downloads_track_deleted">Жүктүрүлгөн файл өчүрүлдү</string>
-  <string name="morphe_music_downloads_track_delete_failed">Жүктүрүлгөн файлды өчүрүү мүмкүн болгон жок</string>
-  <string name="morphe_music_downloads_play_failed">Жүктүрүлгөн файлды ойнотуу мүмкүн болгон жок</string>
-  <string name="morphe_music_downloads_playlists">Плейлисттер</string>
-  <string name="morphe_music_downloads_playlists_section">Түзүлгөн плейлисттер (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Жергиликтүү плейлисттер жок</string>
-  <string name="morphe_music_downloads_playlists_hide">Плейлисттерди жашыруу ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Жаңы плейлист</string>
-  <string name="morphe_music_downloads_playlist_new_button">Жаңы плейлист</string>
-  <string name="morphe_music_downloads_playlist_selected">Тандалган (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Алгач ырларды тандаңыз</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Тандоону тазалоо</string>
-  <string name="morphe_music_downloads_playlist_create">Плейлист түзүү</string>
-  <string name="morphe_music_downloads_playlist_create_button">Түзүү</string>
-  <string name="morphe_music_downloads_playlist_add">Плейлистке кошуу</string>
-  <string name="morphe_music_downloads_playlist_added">%s плейлистине кошулду</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Плейлисттин аталышы</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Плейлисттин аталышы бош болушу мүмкүн эмес</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Плейлистти сактоо мүмкүн болгон жок</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s трек</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 трек</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Бул плейлистте тректер жок</string>
-  <string name="morphe_music_downloads_playlist_play">Плейлистти ойнотуу</string>
-  <string name="morphe_music_downloads_playlist_play_all">Баарын ойнотуу</string>
-  <string name="morphe_music_downloads_playlist_rename">Атын өзгөртүү</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Плейлистти кайра аттоо</string>
-  <string name="morphe_music_downloads_playlist_save">Сактоо</string>
-  <string name="morphe_music_downloads_playlist_delete">Плейлистти өчүрүү</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Плейлистти өчүрөсүзбү?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s өчүрүлөт. Жүктөлгөн ырлар сакталат</string>
-  <string name="morphe_music_downloads_playlist_deleted">Плейлист өчүрүлдү</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Плейлисттен алып салуу</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Тартипке келтирүү үчүн сүйрөңүз</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Тартипке келтирүү үчүн тутканы сүйрөңүз</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Даяр</string>
-  <string name="morphe_music_downloads_notification_channel">Аудио файлдарды жүктөө</string>
-  <string name="morphe_music_downloads_playback_channel">Офлайн ойнотуу</string>
-  <string name="morphe_music_downloads_unknown_track">Жүктөө үчүн трек аныкталган жок</string>
-  <string name="morphe_music_downloads_already_running">Жүктөө учурда жүрүп жатат</string>
-  <string name="morphe_music_downloads_already_saved">Жүктөөлгөн</string>
-  <string name="morphe_music_downloads_started">Жүктөө башталды</string>
-  <string name="morphe_music_downloads_starting">Жүктөө башталууда…</string>
-  <string name="morphe_music_downloads_progress">Жүктөлүү %s%%</string>
-  <string name="morphe_music_downloads_complete">Жүктөө аяктады</string>
-  <string name="morphe_music_downloads_failed">Жүктөө катасы</string>
-  <string name="morphe_music_downloads_playlist_download_title">Плейлистти жүктөө</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Тректер тизмеленип жатат…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s тизмеленди…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Плейлисттин тректерин тизмелеүү мүмкүн болбоду</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Мурун жүктөлгөн: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"Бул плейлистте %1$s трек бар, алардын %2$s треги али жүктөлгөн эмес.
+  <string name="morphe_export_download_folder_title">Жүктөөлөрдү экспорттоо</string>
+  <string name="morphe_export_download_folder_summary">"Тиркеме тарабынан жүктөлгөн ырларды жана видеолорду жүктөөнүн менюсун колдонуп, түзүлүшүңүздүн эс тутумуна экспорттоңуз. Экспорттоо папкасын өзгөртүү үчүн басыңыз
 
-Алар бирден жүктөлөт, бул узак убакытты алышы мүмкүн жана болжол менен %3$s бош орун талап кылынат"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Жүктөө</string>
-  <string name="morphe_music_downloads_playlist_download_progress">%2$s тректин %1$s-чиси жүктөлүүдө</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s жүктөлдү</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s жүктөлдү, %2$s жүктөлгөн жок</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Плейлистти жүктөө жүрүп жатат</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Сиздин аккаунтуңуз азырынча белгисиз. Бир аздан кийин кайра аракет кылып көрүңүз</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s тизмеленди, баары жүктөлгөн</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Плейлисттин бир бөлүгү гана тизмеленди. Калганын алуу үчүн кийинчерээк Жүктөө баскычын кайра басыңыз</string>
-  <string name="morphe_music_downloads_playlist_download_started">%s фондо жүктөлүп жатат</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Тармак менен байланыш жок</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Тармак күтүлүүдө…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">%1$s/%2$s жүктөлгөндөн кийин токтотулду. Улантуу үчүн Жүктөө баскычын кайра басыңыз</string>
-  <string name="morphe_music_downloads_mark_title">Жүктөлгөн ырларды белгилөө</string>
-  <string name="morphe_music_downloads_mark_summary">Жүктөлгөн ырлардын алдында плейлисттерде, альбомдордо жана издөө натыйжаларында белги көрүнөт</string>
+Экспорттоо папкасы: %s"</string>
+  <string name="morphe_export_download_started">Жүктөлгөн файл экспорттолуп жатат</string>
+  <string name="morphe_export_download_progress">Жүктөлгөн файл экспорттолуп жатат: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Жүктөөлөрдү экспорттоо</string>
+  <string name="morphe_export_download_saved">Жүктөлгөн файл %s папкасына экспорттолду</string>
+  <string name="morphe_export_download_failed">Жүктөлгөн файлды экспорттоого мүмкүн болгон жок</string>
+  <string name="morphe_export_download_all_flyout_title">Баарын түзүлүшкө экспорттоо</string>
+  <string name="morphe_export_download_all_started">Бардык жүктөлгөн файлдар экспорттолуп жатат</string>
+  <string name="morphe_export_download_all_running">Жүктөлгөн файлдар экспорттолуп жатат</string>
+  <string name="morphe_export_download_all_saved">%2$s жүктөөнүн %1$s бөлүгү %3$s дарекке экспорттолду</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Маалымат</string>
@@ -261,6 +178,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_shuffle_button_title">Аралаштыруу баскычын жашыруу</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\"Тез чалуу\" текшесин жашыруу</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">\'Сизге ошондой эле жагышы мүмкүн\' бөлүмүн жашыруу</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">\"Сиздин жүктөмөлөрүңүз\" текчесин жашыруу</string>
   <string name="morphe_music_comments_screen_title">Пикирлер</string>
   <string name="morphe_music_comments_screen_summary">Комментарийлер бөлүмүндө кайсы компоненттер көрүнөрин тандаңыз</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Жамааттык эрежелерди жашыруу</string>
@@ -344,6 +262,12 @@ SABR ойнотуусу (Видео агымдарын имитациялоо ө
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Жакпайт кайра багыттоосун өчүрүү</string>
   <string name="morphe_music_disable_dislike_redirection_summary">\"Жакпайт\" баскычы басылганда кийинки трекке өтүүнү алдын алат</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">A-B циклы</string>
+  <string name="morphe_music_ab_loop_summary">Циклдин башталышын белгилөө үчүн издөө панелин узак басыңыз, аягын белгилөө үчүн кайра басыңыз жана циклди жокко чыгаруу үчүн дагы бир жолу басыңыз</string>
+  <string name="morphe_music_ab_loop_toast_start">Циклдин башталышы %s белгиленди</string>
+  <string name="morphe_music_ab_loop_toast_end">Циклдин аягы %s белгиленди</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Цикл тазаланды</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Плейлисттин тректерин басуу аракети</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Плейлистти ойнотуу</string>

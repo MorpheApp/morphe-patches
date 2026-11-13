@@ -98,6 +98,7 @@ public final class MetapanelTextColorFilter extends SpanFilter {
         return (299 * Color.red(color) + 587 * Color.green(color) + 114 * Color.blue(color)) / 1000;
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean isLightColor(int color) {
         return getBrightness(color) > 127;
     }

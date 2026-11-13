@@ -61,7 +61,7 @@ public class CaptionBlockTranslatorTest {
                 new JSONArray().put(new org.json.JSONObject().put("text", value).put("to", "de"))));
         return out.toString();
     }
-    static String google(String value) throws Exception {
+    static String google(String value) {
         return new JSONArray().put(new JSONArray().put(value)).toString();
     }
     @Test public void googleSuccessDoesNotContactMicrosoft() throws Exception {
@@ -74,9 +74,9 @@ public class CaptionBlockTranslatorTest {
     @Test public void googleSendsEscapedTextWithExplicitSourceAndTarget() throws Exception {
         Fixture f = new Fixture(); Reply reply = f.add(200, google("eins"));
         assertEquals(List.of("eins"), f.translate("<one>&"));
-        assertEquals("[[[\"&lt;one&gt;&amp;\"],\"en\",\"de\"],\"wt_lib\"]", reply.sent.toString("UTF-8"));
+        assertEquals("[[[\"&lt;one&gt;&amp;\"],\"en\",\"de\"],\"wt_lib\"]", reply.sent.toString(StandardCharsets.UTF_8));
         assertEquals("application/json+protobuf", reply.headers.get("Content-Type"));
-        assertFalse(reply.headers.get("X-Goog-API-Key").isBlank());
+        assertFalse(Objects.requireNonNull(reply.headers.get("X-Goog-API-Key")).isBlank());
     }
     @Test public void googleAllowsInitialBurstThenReplenishesEightRequestsPerSecond() throws Exception {
         Fixture f = new Fixture();
@@ -108,28 +108,28 @@ public class CaptionBlockTranslatorTest {
     }
     @Test public void sameLanguageReturnsImmutableOriginalWithoutNetwork() throws Exception {
         Fixture f = new Fixture();
-        List<String> input = new ArrayList<>(Arrays.asList("hello"));
+        List<String> input = new ArrayList<>(Collections.singletonList("hello"));
         List<String> result = f.translator.translate("zh-Hant", "ZH-hant", input);
         input.set(0, "changed");
-        assertEquals(Arrays.asList("hello"), result);
+        assertEquals(Collections.singletonList("hello"), result);
         assertThrows(UnsupportedOperationException.class, () -> result.set(0, "bad"));
         assertTrue(f.urls.isEmpty());
     }
-    @Test public void validatesInputsBeforeAnyNetwork() throws Exception {
+    @Test public void validatesInputsBeforeAnyNetwork() {
         Fixture f = new Fixture();
         for (List<String> values : Arrays.asList(Collections.<String>emptyList(),
-                Arrays.asList((String)null), Arrays.asList("  "), Arrays.asList("x".repeat(513)),
+                Collections.singletonList((String)null), Collections.singletonList("  "), Collections.singletonList("x".repeat(513)),
                 Arrays.asList("1","2","3","4","5","6"))) {
             assertThrows(IOException.class, () -> f.translator.translate("en", "de", values));
         }
-        assertThrows(IOException.class, () -> f.translator.translate("en&key=x", "de", Arrays.asList("x")));
+        assertThrows(IOException.class, () -> f.translator.translate("en&key=x", "de", Collections.singletonList("x")));
         assertTrue(f.urls.isEmpty());
     }
     @Test public void preservesOrderEscapesRequestAndDecodesExactlyOnce() throws Exception {
         Fixture f = new Fixture(); f.add(500, "unavailable"); f.add(500, "unavailable");
         Reply r = f.add(200, ms("&amp;lt; &lt; &gt; &amp;", "zwei"));
         assertEquals(Arrays.asList("&lt; < > &", "zwei"), f.translate("<x>&", "two"));
-        assertEquals("[\"&lt;x&gt;&amp;\",\"two\"]", r.sent.toString("UTF-8"));
+        assertEquals("[\"&lt;x&gt;&amp;\",\"two\"]", r.sent.toString(StandardCharsets.UTF_8));
         assertEquals("POST", r.getRequestMethod());
         assertTrue(r.closed && r.outputClosed && r.disconnected);
         assertTrue(r.getConnectTimeout() > 0 && r.getConnectTimeout() <= 8000);
@@ -141,7 +141,7 @@ public class CaptionBlockTranslatorTest {
         assertEquals(List.of("ein zwei"), f.translate("one two"));
         assertEquals(2, f.urls.size());
         assertTrue(f.urls.get(1).startsWith("https://edge.microsoft.com/"));
-        assertEquals("[\"one two\"]", fallback.sent.toString("UTF-8"));
+        assertEquals("[\"one two\"]", fallback.sent.toString(StandardCharsets.UTF_8));
     }
     @Test public void googlePreservesWholeTranslationAndClosesConnection() throws Exception {
         Fixture f = new Fixture();
@@ -167,7 +167,7 @@ public class CaptionBlockTranslatorTest {
                 f.add(200, "[{\"translations\":[{\"text\":" + text + ",\"to\":" + language + "}]}]");
                 assertThrows(IOException.class, () -> f.translate("one"));
                 f.add(500, "Google unavailable"); f.add(200, ms("eins"));
-                assertEquals(Arrays.asList("eins"), f.translate("one"));
+                assertEquals(Collections.singletonList("eins"), f.translate("one"));
                 assertEquals(4, f.urls.size());
             }
         }
@@ -178,18 +178,18 @@ public class CaptionBlockTranslatorTest {
             f.add(500, "Microsoft unavailable");
             assertThrows(IOException.class, () -> f.translate("one"));
             f.add(200, google("eins"));
-            assertEquals(Arrays.asList("eins"), f.translate("one"));
+            assertEquals(Collections.singletonList("eins"), f.translate("one"));
             assertEquals(3, f.urls.size());
         }
     }
     @Test public void cacheIncludesSourceTargetAndEvictsOldestBeyond256() throws Exception {
         Fixture f = new Fixture(); f.add(200, google("eins")); f.translate("one");
-        assertEquals(Arrays.asList("eins"), f.translate("one")); assertEquals(1, f.urls.size());
-        f.add(200, google("anderes")); f.translator.translate("fr", "de", Arrays.asList("one"));
+        assertEquals(Collections.singletonList("eins"), f.translate("one")); assertEquals(1, f.urls.size());
+        f.add(200, google("anderes")); f.translator.translate("fr", "de", Collections.singletonList("one"));
         f.add(200, google("anders"));
-        f.translator.translate("en", "nl", Arrays.asList("one"));
+        f.translator.translate("en", "nl", Collections.singletonList("one"));
         for (int i = 0; i < 256; i++) { f.add(200, google("text")); f.translate("value" + i); }
-        f.add(200, google("neu")); assertEquals(Arrays.asList("neu"), f.translate("one"));
+        f.add(200, google("neu")); assertEquals(Collections.singletonList("neu"), f.translate("one"));
         assertEquals(260, f.urls.size());
     }
     @Test public void retryAfterDatesUseServerTimeAndRemainBounded() throws Exception {
@@ -282,8 +282,8 @@ public class CaptionBlockTranslatorTest {
         Fixture f = new Fixture();
         String source = "😀".repeat(512);
         Reply reply = f.add(200, google("😀".repeat(4096)));
-        assertEquals(8192, f.translator.translate("zh-Hant", "sr-Latn", Arrays.asList(source)).get(0).length());
-        JSONArray request = new JSONArray(reply.sent.toString("UTF-8")).getJSONArray(0);
+        assertEquals(8192, f.translator.translate("zh-Hant", "sr-Latn", Collections.singletonList(source)).get(0).length());
+        JSONArray request = new JSONArray(reply.sent.toString(StandardCharsets.UTF_8)).getJSONArray(0);
         assertEquals("zh-hant", request.getString(1));
         assertEquals("sr-latn", request.getString(2));
     }
@@ -315,7 +315,7 @@ public class CaptionBlockTranslatorTest {
         assertEquals(Arrays.asList("eins", null), f.translate("one", "two"));
         f.add(500, "unavailable"); Reply missing = f.add(200, ms("zwei"));
         assertEquals(List.of("eins", "zwei"), f.translate("one", "two"));
-        assertEquals("[\"two\"]", missing.sent.toString("UTF-8"));
+        assertEquals("[\"two\"]", missing.sent.toString(StandardCharsets.UTF_8));
     }
     @Test public void primaryProviderCooldownDoesNotBlockIndependentFallback() throws Exception {
         Fixture f = new Fixture(); f.add(429, "limited"); f.add(200, ms("eins"));
@@ -478,10 +478,10 @@ public class CaptionBlockTranslatorTest {
                 List.of(new NativeCaptionSourceTest.Cue("word","complete phrase")));
         var policy=StableCaptionBlockPolicy.fromNative(timeline,()->true);
         Fixture f=new Fixture();f.add(503,"unavailable");f.add(200,ms("ganzer Satz"));
-        var session=new CaptionSession(policy.sourceBlocks("en"),"en","tr","de",f.translator,
+        var session=new CaptionSession(Objects.requireNonNull(policy).sourceBlocks("en"),"en","tr","de",f.translator,
                 Runnable::run,()->{},()->{},false,true);
         session.demand(100);var frame=session.snapshot(100,true);
-        assertEquals("",frame.primary);assertEquals("ganzer Satz",frame.secondary);assertTrue(frame.complete);
+        assertEquals("", Objects.requireNonNull(frame).primary);assertEquals("ganzer Satz",frame.secondary);assertTrue(frame.complete);
         assertEquals(2,f.urls.size());assertTrue(f.urls.get(0).contains("googleapis.com"));
         assertTrue(f.urls.get(1).contains("edge.microsoft.com"));
     }

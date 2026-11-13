@@ -110,6 +110,7 @@ public class LoopCountPatch {
     private static String unsavedLoopCountVideoId = "";
     private static int unsavedLoopCount;
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -195,10 +196,10 @@ public class LoopCountPatch {
     }
 
     /**
-     * @return If the app loops the current video.
+     * @return If the app or the loop video button loops the current video.
      */
     public static boolean isLoopVideoEnabled() {
-        return repeatMode == REPEAT_MODE_VIDEO;
+        return repeatMode == REPEAT_MODE_VIDEO || Settings.LOOP_VIDEO.get();
     }
 
     /**
@@ -247,8 +248,9 @@ public class LoopCountPatch {
     /**
      * Injection point.
      *
-     * @return Always false, as the navigation is never cancelled.
+     * @return Always false, as the navigation is never canceled.
      */
+    @SuppressWarnings("SameReturnValue")
     public static synchronized boolean onNavigation(Enum<?> navigationIntent) {
         // The app navigates with the autoplay intent when a video ends, also to play the same video again
         // if the app loops the video. Any other navigation is chosen by the user,
@@ -369,6 +371,14 @@ public class LoopCountPatch {
         return loopCountReached;
     }
 
+    /**
+     * The loop video button seeks to the start without a new player status,
+     * so the next end of the video is counted too.
+     */
+    public static synchronized void onVideoLooped() {
+        videoEnded = false;
+    }
+
     private static Map<String, Integer> getSavedLoopCounts() {
         if (savedLoopCounts == null) {
             savedLoopCounts = loadSavedLoopCounts();
@@ -420,6 +430,7 @@ public class LoopCountPatch {
     /**
      * @return If the loop count of a video is saved, so it applies again every time the playlist plays the video.
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isLoopCountSaved(String playlistId) {
         return !playlistId.isEmpty() && Settings.LOOP_COUNT_PLAYLISTS.get();
     }

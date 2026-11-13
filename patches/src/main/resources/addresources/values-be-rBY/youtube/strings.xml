@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">Схаваць вынікі пошуку па ключавых словах</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Схаваць відэа ў Падпісках па ключавых словах</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ключавыя словы для схавання</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Увядзіце ключавыя словы і фразы для скравання, аддзеленыя новымі радками
+  <string name="morphe_hide_keyword_content_phrases_summary">"Увядзіце ключавыя словы і фразы для скрыцця, аддзеленыя новымі радкамі
 
-Ключавыя словы могуць быць любым тэкстам, які wyświetляецца ў назвах відэа або каналаў"</string>
+Ключавымі словамі можа быць любы тэкст, які wyświetляецца ў назвах відэа. Ключавое слова @ІмяКарыстальніка скрывае ўвесь кантэнт канкрэтных аўтараў"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Галоўная / Падпіскі / Пошук / Каментары фільтруюцца, каб скраваць кантэнт, які адпавядае ключавым фразам
 
 Абмежаванні:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Заключэнне ключавога слова/фразы ў двайныя лапкі прадухіляе частковыя супадзенні з назвамі відэа і каналаў&lt;br&gt;&lt;br&gt;Напрыклад,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; схавае відэа: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;але не схавае: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Ключавое слова мае супярэчлівыя дэкларацыі: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ключавое слова занадта кароткае і патрабуе лапак: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ключавое слова схавае ўсе відэа: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Галоўная: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"Экспартуйце відэа, захаваныя ў праграме, у памяць вашай прылады, выкарыстоўваючы выпадальнае меню загрузкі. Націсніце, каб змяніць папку экспарту
 
 Папка экспарту: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Папка экспарту</string>
-  <string name="morphe_export_download_folder_change">Змяніць папку</string>
-  <string name="morphe_export_download_folder_changed">Папка экспарту зменена</string>
-  <string name="morphe_export_download_folder_reset">Папка экспарту скінута</string>
-  <string name="morphe_export_download_folder_missing">Не ўдалося знайсці папку экспарту %s</string>
-  <string name="morphe_export_download_flyout_title">Экспартаваць на прыладу</string>
   <string name="morphe_export_download_started">Экспартаванне відэа</string>
   <string name="morphe_export_download_progress">Экспартаванне відэа: %s%%</string>
   <string name="morphe_export_download_notification_channel">Экспарт відэа</string>
   <string name="morphe_export_download_saved">Відэа экспартавана ў %s</string>
   <string name="morphe_export_download_failed">Не ўдалося экспартаваць відэа</string>
-  <string name="morphe_export_download_canceled">Экспарт скасаваны</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Галасовы пераклад</string>
   <string name="morphe_vot_screen_summary">Чытайце субтытры відэа ўголас з дапамогай сінтэзу мовы на прыладзе, сінхранізаванага з прайграваннем</string>
@@ -728,8 +720,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">Натыўная чарга</string>
   <string name="morphe_queue_type_entry_3">Чарга Morphe</string>
   <string name="morphe_queue_type_entry_4">Чарга Morphe на баку кліента</string>
-  <string name="morphe_queue_add_flyout_menu_title">Дадаць пункт меню чаргі ў ўсплывальнае акно стужкі</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Дадае дадатковы пункт у ўсплывальнае акно. Уключыце гэта, калі \"Дадаць у чаргу\" не паказваецца</string>
   <string name="morphe_local_queue_sheet_title">Чарга</string>
   <string name="morphe_local_queue_open">Чарга (%s)</string>
   <string name="morphe_local_queue_clear">Ачысціць усё</string>
@@ -1462,7 +1452,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">Плэйлісты &amp; рэкамендацыі плэера</string>
   <string name="morphe_dearrow_titles_search_title">Вынікі пошуку</string>
   <string name="morphe_dearrow_titles_icon_title">Паказваць іконку DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Паказвае іконку DeArrow ў загалоўках відэа з калектыўнага рэдагавання</string>
+  <string name="morphe_dearrow_titles_icon_summary">Паказвае значок DeArrow у загалоўках відэа з краудсорсингу. Націсніце на значок, каб паказаць арыгінальны загаловак і мініяцюру</string>
   <string name="morphe_dearrow_casual_mode_title">Нефармальны рэжым</string>
   <string name="morphe_dearrow_casual_mode_summary">Паказвае арыгінальны загаловак замест загалоўка DeArrow, калі карыстальнікі DeArrow прагаласавалі, што ім падабаецца арыгінальны загаловак</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Мінімальная колькасць \"нефармальных\" галасаў для паказу арыгінальнага загалоўка</string>
@@ -1638,6 +1628,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Стабільная гучнасць недаступная</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Прайграванне можа скончыцца на 1 секунду раней</string>
   <string name="morphe_spoof_video_streams_about_js">• Калі дэабфускацыя не ўдаецца, прайграванне можа не працаваць</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView выключаны або не ўсталяваны. Уключыце і абновіце яго, інакш прайграванне можа завяршыцца памылкай</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView састарэў. Абновіце яго, інакш прайграванне можа завяршыцца памылкай</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Выкарыстанне арыгінальнага аўдыё недаступна</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Патрабуецца ўваход у Android VR</string>

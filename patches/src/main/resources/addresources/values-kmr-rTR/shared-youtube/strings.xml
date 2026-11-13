@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Nîşandana mîhengên nû</string>
   <string name="morphe_settings_new_indicator_days_summary">Hejmara rojan ku xaleke li kêleka mîheng û vebijardeyên ku bi nûkirinekê hatine zêdekirin tê nîşandan</string>
   <string name="morphe_settings_new_indicator_days_off">Dabe</string>
+  <string name="morphe_settings_new_indicator_clear_title">Hemû mîhengê wek dîtî nîşan bike</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Xala ji hemû mîheng û vebijarkên nû rakirine</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Hemû mîheng wek dîtî nîşan bike?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Xal ji hemû mîheng û vebijarkên nû hat rakirin. Mîhengên ku bi nûkirinên paşerojê tên zêdekirin hîna tên nîşandan.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Dest pê bike ku sazkirinê temam bike</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Bi cih bike ku navê pakêtê rast e û serlêdan sazkirî ye"</string>
   <string name="morphe_external_downloader_empty_warning">Navê pakêtê nikare vala be</string>
+  <string name="morphe_export_download_folder_dialog_title">Peldanka exportê</string>
+  <string name="morphe_export_download_folder_change">Foldera biguherîne</string>
+  <string name="morphe_export_download_folder_changed">Foldera exportê hat guhertin</string>
+  <string name="morphe_export_download_folder_reset">Foldera exportê hat resetkirin</string>
+  <string name="morphe_export_download_folder_missing">Foldsra exportê %s nehat dîtin</string>
+  <string name="morphe_export_download_flyout_title">Export bike ber bi amûrê ve</string>
+  <string name="morphe_export_download_canceled">Export hat betalkirin</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Xwerî</string>
   <string name="morphe_custom_branding_icon_title">Îkonê</string>
@@ -110,6 +121,20 @@ Heke hûn bikarhênerê YouTube Premium bin, dibe ku ev mîheng ne hewce be"</st
 %2$s bike klîyentê default?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Guherîne</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Girtina vê mîhengê dibe ku bibe sedema pirsgirêkan di lîstina vîdyoyan de</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView hati veşartin an nehati sazkirin.
+
+Ji bo lîstkirina vîdyoyê Android System WebView pêwîst e. Wê veke û nû bikeye vêersiyona herî dawî.
+
+Ji bo vekirina Android System WebView li OK bitikîne."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView kevn e (versiyona %s).
+
+Heta Android System WebView neyê nûkirin, dibe ku lîstkirina vîdyoyê bi ser nekeve.
+
+Ji bo vekirina Android System WebView li OK bitikîne."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Dîsa nîşan nede</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView nehati sazkirin. Ji bo çareserkirina lîstkirina vîdyoyê wê sazkirin</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Biceribîne: Sextekirina streamên vîdyoyê > Têketina Android VR</string>

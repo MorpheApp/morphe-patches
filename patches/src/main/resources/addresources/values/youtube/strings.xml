@@ -334,7 +334,7 @@ Changes include:
     <string name="morphe_hide_keyword_content_phrases_title">Keywords to hide</string>
     <string name="morphe_hide_keyword_content_phrases_summary">"Enter keywords and phrases to hide, separated by new lines
 
-Keywords can be any text shown in video titles or channel names"</string>
+Keywords can be any text shown in video titles. @UserName keyword hides all content from specific creators"</string>
     <string name="morphe_hide_keyword_content_about_summary">"Home / Subscriptions / Search / Comments are filtered to hide content that matches keyword phrases
 
 Limitations:
@@ -344,7 +344,6 @@ Limitations:
     <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
     <string name="morphe_hide_keyword_content_about_whole_words_summary">Surrounding a keyword/phrase with double-quotes will prevent partial matches of video titles and channel names&lt;br>&lt;br>For example,&lt;br>&lt;b>\"ai\"&lt;/b> will hide the video: &lt;b>How does AI work?&lt;/b>&lt;br>but will not hide: &lt;b>What does fair use mean?&lt;/b></string>
     <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-    <string name="morphe_hide_keyword_toast_invalid_conflicting">Keyword has conflicting declarations: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_length">Keyword is too short and requires quotes: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
     <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %1$s
@@ -604,18 +603,11 @@ After a video with the Ask button is opened once, the feature works with all vid
     <string name="morphe_export_download_folder_summary">"Export in-app saved videos to your device storage using the in-app downloads flyout menu. Tap to change the export folder
 
 Export folder: %s"</string>
-    <string name="morphe_export_download_folder_dialog_title">Export folder</string>
-    <string name="morphe_export_download_folder_change">Change folder</string>
-    <string name="morphe_export_download_folder_changed">Export folder changed</string>
-    <string name="morphe_export_download_folder_reset">Export folder reset</string>
-    <string name="morphe_export_download_folder_missing">Could not find export folder %s</string>
-    <string name="morphe_export_download_flyout_title">Export to device</string>
     <string name="morphe_export_download_started">Exporting video</string>
     <string name="morphe_export_download_progress">Exporting video: %s%%</string>
     <string name="morphe_export_download_notification_channel">Video exports</string>
     <string name="morphe_export_download_saved">Video exported to %s</string>
     <string name="morphe_export_download_failed">Could not export the video</string>
-    <string name="morphe_export_download_canceled">Export canceled</string>
 
     <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
     <string name="morphe_vot_screen_title">Voice over translation</string>
@@ -764,6 +756,10 @@ Info: May not work on live streams"</string>
     <string name="morphe_play_all_button_type_entry_11">Members only Shorts</string>
     <string name="morphe_play_all_button_type_entry_12">Members only live streams</string>
     <string name="morphe_play_all_button_not_available_toast">Unable to generate playlist due to channel ID mismatch</string>
+
+    <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+    <string name="morphe_playlist_panel_button_title">Show Playlist button</string>
+    <string name="morphe_playlist_panel_button_summary">Tap to open the playlist panel. Shown only when playing a playlist</string>
 
     <!-- interaction.reload.reloadVideoPatch -->
     <string name="morphe_reload_video_button_title">Show Reload video button</string>
@@ -1320,6 +1316,18 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_disable_playlist_autoplay_title">Disable playlist autoplay</string>
     <string name="morphe_disable_playlist_autoplay_summary">Prevents playlists from automatically advancing to the next video</string>
 
+    <!-- interaction.autoplay.autoplayControlPatch -->
+    <string name="morphe_autoplay_control_title">Autoplay control</string>
+    <string name="morphe_autoplay_control_summary">Adds a player button and a rule for the next video. Playlists and queues go on, a Mix stops after a number of videos, a suggested video never plays. Tap the button for the next mode, tap and hold for the list</string>
+    <string name="morphe_autoplay_mode_title">Autoplay mode</string>
+    <string name="morphe_autoplay_mode_entry_1">Auto</string>
+    <string name="morphe_autoplay_mode_entry_2">Single</string>
+    <string name="morphe_autoplay_mode_entry_3">Off</string>
+    <string name="morphe_autoplay_mix_stop_after_title">Mix length</string>
+    <string name="morphe_autoplay_mix_stop_after_summary">In mode Auto, a Mix stops after this many videos. 0 = no limit</string>
+    <string name="morphe_autoplay_mix_length">Mix: %s videos</string>
+    <string name="morphe_autoplay_mix_no_limit">Mix: no limit</string>
+
     <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
     <string name="morphe_continue_watching_prompt_title">\'Continue watching?\' prompt</string>
     <string name="morphe_continue_watching_prompt_entry_1">Default</string>
@@ -1601,7 +1609,7 @@ Automotive layout
     <string name="morphe_dearrow_titles_player_title">Player playlists &amp; recommendations</string>
     <string name="morphe_dearrow_titles_search_title">Search results</string>
     <string name="morphe_dearrow_titles_icon_title">Show DeArrow icon</string>
-    <string name="morphe_dearrow_titles_icon_summary">Shows the DeArrow icon on crowdsourced video titles</string>
+    <string name="morphe_dearrow_titles_icon_summary">Shows the DeArrow icon on crowdsourced video titles. Tap the icon to show the original title and thumbnail</string>
     <string name="morphe_dearrow_casual_mode_title">Casual mode</string>
     <string name="morphe_dearrow_casual_mode_summary">Shows the original title instead of the DeArrow title if DeArrow users voted they like the original title</string>
     <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum casual votes to show original title</string>
@@ -1701,6 +1709,11 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <!-- video.speed.button.playbackSpeedButtonPatch -->
     <string name="morphe_playback_speed_dialog_button_title">Show Playback speed button</string>
     <string name="morphe_playback_speed_dialog_button_summary">Tap and hold to reset speed to default</string>
+    <string name="morphe_playback_speed_button_cycle_title">Tap Playback speed button to cycle speeds</string>
+    <string name="morphe_playback_speed_button_cycle_summary">Tap goes to the next speed in the list. Tap and hold opens the speed menu</string>
+    <string name="morphe_playback_speed_button_cycle_speeds_title">Playback speed button speeds</string>
+    <string name="morphe_playback_speed_button_cycle_speeds_summary">Speeds a tap cycles through, one per line. After the last speed, a tap goes back to the first</string>
+    <string name="morphe_playback_speed_button_cycle_speeds_invalid">Invalid speed cycle list, reset to default</string>
 
     <!-- video.quality.button.videoQualityDialogButtonPatch -->
     <string name="morphe_video_quality_dialog_button_title">Show Quality button</string>
@@ -1803,6 +1816,9 @@ Video playback with AV1 may stutter or drop frames"</string>
     <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stable volume is not available</string>
     <string name="morphe_spoof_video_streams_about_end_early">• Playback may end 1 second early</string>
     <string name="morphe_spoof_video_streams_about_js">• If deobfuscation fails, playback may fail</string>
+    <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+    <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView is turned off or not installed. Turn it on and update it, or playback may fail</string>
+    <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView is out of date. Update it, or playback may fail</string>
     <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
     <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Sign in to Android VR is required</string>

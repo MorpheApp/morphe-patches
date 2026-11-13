@@ -321,7 +321,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">छुपाने के लिए कीवर्ड</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"छिपाने के लिए कीवर्ड और वाक्यांश दर्ज करें, जिन्हें नई लाइनों द्वारा अलग किया गया हो
 
-कीवर्ड कोई भी टेक्स्ट हो सकता है जो वीडियो शीर्षक या चैनल नामों में दिखाई देता है"</string>
+कीवर्ड वीडियो शीर्षक में दिखाए गए किसी भी टेक्स्ट हो सकते हैं। @UserName कीवर्ड विशिष्ट क्रिएटर्स की सभी सामग्री को छिपा देता है"</string>
   <string name="morphe_hide_keyword_content_about_summary">"होम / सब्सक्रिप्शन / खोज / कमेंट्स को उन सामग्रियों को छिपाने के लिए फ़िल्टर किया गया है जो कीवर्ड वाक्यांशों से मेल खाती हैं
 
 सीमाएं:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">कीवर्ड/वाक्यांश को डबल-कोटेशन के साथ घेरने से वीडियो शीर्षकों और चैनल नामों के आंशिक मिलान को रोका जा सकेगा&lt;br&gt;&lt;br&gt;उदाहरण के लिए,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; वीडियो को छिपा देगा: &lt;b&gt;AI कैसे काम करता है?&lt;/b&gt;&lt;br&gt;लेकिन यह: &lt;b&gt;उचित उपयोग का क्या मतलब है?&lt;/b&gt; को नहीं छिपाएगा।</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">कीवर्ड की परिभाषाएँ आपस में टकरा रही हैं: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">कीवर्ड बहुत छोटा है, इसके लिए उद्धरण चिह्न चाहिए: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">कीवर्ड सभी वीडियो को छुपाएगा: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• होम: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"इन-ऐप डाउनलोड्स फ्लाईआउट मेनू का उपयोग करके इन-ऐप सेव किए गए वीडियो को अपने डिवाइस स्टोरेज में एक्सपोर्ट करें। एक्सपोर्ट फ़ोल्डर बदलने के लिए टैप करें
 
 एक्सपोर्ट फ़ोल्डर: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">एक्सपोर्ट फ़ोल्डर</string>
-  <string name="morphe_export_download_folder_change">फ़ोल्डर बदलें</string>
-  <string name="morphe_export_download_folder_changed">एक्सपोर्ट फ़ोल्डर बदल गया</string>
-  <string name="morphe_export_download_folder_reset">एक्सपोर्ट फ़ोल्डर रीसेट किया गया</string>
-  <string name="morphe_export_download_folder_missing">एक्सपोर्ट फ़ोल्डर %s नहीं मिल सका</string>
-  <string name="morphe_export_download_flyout_title">डिवाइस पर एक्सपोर्ट करें</string>
   <string name="morphe_export_download_started">वीडियो एक्सपोर्ट हो रहा है</string>
   <string name="morphe_export_download_progress">वीडियो एक्सपोर्ट किया जा रहा है: %s%%</string>
   <string name="morphe_export_download_notification_channel">वीडियो एक्सपोर्ट</string>
   <string name="morphe_export_download_saved">वीडियो %s पर एक्सपोर्ट किया गया</string>
   <string name="morphe_export_download_failed">वीडियो एक्सपोर्ट नहीं किया जा सका</string>
-  <string name="morphe_export_download_canceled">एक्सपोर्ट रद्द कर दिया गया</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">वॉइस ओवर अनुवाद</string>
   <string name="morphe_vot_screen_summary">डिवाइस पर टेक्स्ट-टू-स्पीच का उपयोग करके वीडियो कैप्शन को ज़ोर से पढ़ें, जो प्लेबैक के साथ सिंक्रनाइज़ किया गया है।</string>
@@ -728,8 +720,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_queue_type_entry_2">नेटिव कतार</string>
   <string name="morphe_queue_type_entry_3">Morphe कतार</string>
   <string name="morphe_queue_type_entry_4">Morphe क्लाइंट-साइड कतार</string>
-  <string name="morphe_queue_add_flyout_menu_title">फ़ीड फ़्लाईआउट कतार मेनू आइटम जोड़ें</string>
-  <string name="morphe_queue_add_flyout_menu_summary">एक अतिरिक्त फ़्लाईआउट आइटम जोड़ता है। यदि \"कतार में जोड़ें\" नहीं दिखाया गया है तो इसे सक्षम करें।</string>
   <string name="morphe_local_queue_sheet_title">कतार</string>
   <string name="morphe_local_queue_open">कतार (%s)</string>
   <string name="morphe_local_queue_clear">सभी साफ़ करें</string>
@@ -1462,7 +1452,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_dearrow_titles_player_title">प्लेयर प्लेलिस्ट &amp; सुझाव</string>
   <string name="morphe_dearrow_titles_search_title">खोज परिणाम</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow आइकन दिखाएँ</string>
-  <string name="morphe_dearrow_titles_icon_summary">क्राउडसोर्स्ड वीडियो टाइटल पर DeArrow आइकन दिखाता है</string>
+  <string name="morphe_dearrow_titles_icon_summary">क्राउडसोर्स किए गए वीडियो शीर्षकों पर DeArrow आइकन दिखाता है। मूल शीर्षक और थंबनेल दिखाने के लिए आइकन पर टैप करें</string>
   <string name="morphe_dearrow_casual_mode_title">कैज़ुअल मोड</string>
   <string name="morphe_dearrow_casual_mode_summary">यदि DeArrow उपयोगकर्ताओं ने वोट किया है कि उन्हें मूल शीर्षक पसंद है, तो DeArrow शीर्षक के बजाय मूल शीर्षक दिखाता है</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">मूल शीर्षक दिखाने के लिए न्यूनतम कैज़ुअल वोट</string>
@@ -1638,6 +1628,9 @@ AV1 के साथ वीडियो प्लेबैक में झट�
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• स्थिर वॉल्यूम उपलब्ध नहीं है</string>
   <string name="morphe_spoof_video_streams_about_end_early">• प्लेबैक 1 सेकंड पहले समाप्त हो सकता है</string>
   <string name="morphe_spoof_video_streams_about_js">• अगर डीक्रिप्शन विफल हो जाता है, तो प्लेबैक भी विफल हो सकता है।</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView बंद है या इंस्टॉल नहीं है। इसे चालू करें और अपडेट करें, अन्यथा प्लेबैक विफल हो सकता है</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView पुराना हो गया है। इसे अपडेट करें, अन्यथा प्लेबैक विफल हो सकता है</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• मूल ऑडियो ज़बरदस्ती लागू करना उपलब्ध नहीं है</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• एंड्रॉइड वीआर में साइन इन करना आवश्यक है</string>

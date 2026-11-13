@@ -97,19 +97,36 @@ public final class VisitorIdRequester {
 
         synchronized (cache) {
             cache.put(clientType, new VisitorData(visitorId, System.currentTimeMillis()));
-            JSONObject json = new JSONObject();
-            try {
-                for (Map.Entry<ClientType, VisitorData> entry : cache.entrySet()) {
-                    VisitorData visitor = entry.getValue();
-                    JSONObject data = new JSONObject()
-                            .put("visitorId", visitor.visitorId)
-                            .put("fetchedTime", visitor.fetchedTime);
-                    json.put(entry.getKey().name(), data);
-                }
-                SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_CLIENT_IDS.save(json.toString());
-            } catch (JSONException ex) {
-                Logger.printException(() -> "Failed to update visitor IDs", ex);
+            saveCache();
+        }
+    }
+
+    /**
+     * Removes the visitor id of a client, so a new one is fetched for its next request.
+     */
+    public static void discardVisitorId(ClientType clientType) {
+        Logger.printDebug(() -> "Discard visitorId for clientType: " + clientType);
+
+        synchronized (cache) {
+            cache.remove(clientType);
+            saveCache();
+        }
+    }
+
+    @GuardedBy("cache")
+    private static void saveCache() {
+        JSONObject json = new JSONObject();
+        try {
+            for (Map.Entry<ClientType, VisitorData> entry : cache.entrySet()) {
+                VisitorData visitor = entry.getValue();
+                JSONObject data = new JSONObject()
+                        .put("visitorId", visitor.visitorId)
+                        .put("fetchedTime", visitor.fetchedTime);
+                json.put(entry.getKey().name(), data);
             }
+            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_CLIENT_IDS.save(json.toString());
+        } catch (JSONException ex) {
+            Logger.printException(() -> "Failed to update visitor IDs", ex);
         }
     }
 

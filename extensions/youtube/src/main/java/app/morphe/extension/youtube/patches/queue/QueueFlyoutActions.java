@@ -29,6 +29,7 @@ import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 
 /** Adjusts native menu data before YouTube filters and binds its rows. */
+@SuppressWarnings("unused")
 public final class QueueFlyoutActions {
     private static final int MDX_CONNECTED = 1;
     private static final int MDX_DISCONNECTED = 2;
@@ -80,6 +81,7 @@ public final class QueueFlyoutActions {
                 && AddToQueuePatch.flyoutButtonClickLogic(icon.name(), FlyoutUtils.getFlyoutVideoId());
     }
 
+    @SuppressWarnings("SameParameterValue")
     static MenuRenderer completeMenu(MenuRenderer menu, boolean allowLast, String nextLabel, String lastLabel) {
         return completeMenu(menu, allowLast, nextLabel, lastLabel, "", false);
     }

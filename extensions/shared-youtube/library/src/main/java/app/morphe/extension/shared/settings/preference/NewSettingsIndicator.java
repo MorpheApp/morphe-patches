@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -156,7 +157,7 @@ public final class NewSettingsIndicator {
 
         SeekBarPreference.SeekBarConfig config =
                 SeekBarPreference.configFor(SharedYouTubeSettings.SETTINGS_NEW_INDICATOR_DAYS);
-        final long expiredBefore = now - TimeUnit.DAYS.toMillis(config.max());
+        final long expiredBefore = now - TimeUnit.DAYS.toMillis(Objects.requireNonNull(config).max());
         for (Map.Entry<String, ?> entry : preferences.getAll().entrySet()) {
             String key = entry.getKey();
             if (!key.startsWith(FIRST_SEEN_KEY_PREFIX)) continue;
@@ -281,6 +282,48 @@ public final class NewSettingsIndicator {
             }
         } catch (Exception ex) {
             Logger.printException(() -> "markSeen failure", ex);
+        }
+    }
+
+    /**
+     * Removes the dot of all new preferences, list entries and screens.
+     * Nothing currently in the settings is new again.
+     *
+     * @param screen The root screen of the settings.
+     */
+    public static void markAllSeen(PreferenceScreen screen) {
+        try {
+            Logger.printDebug(() -> "Marking all new settings as seen");
+
+            SharedPreferences.Editor editor = preferences.edit();
+            for (String key : preferences.getAll().keySet()) {
+                if (key.startsWith(FIRST_SEEN_KEY_PREFIX)) {
+                    editor.remove(key);
+                }
+            }
+            editor.apply();
+
+            removeDots(screen);
+        } catch (Exception ex) {
+            Logger.printException(() -> "markAllSeen failure", ex);
+        }
+    }
+
+    private static void removeDots(PreferenceGroup group) {
+        for (int i = 0, count = group.getPreferenceCount(); i < count; i++) {
+            Preference pref = group.getPreference(i);
+            if (pref instanceof PreferenceGroup subGroup) {
+                removeDots(subGroup);
+                // Categories have no dot of their own.
+                if (!(pref instanceof PreferenceScreen)) continue;
+            } else if (pref instanceof CustomDialogListPreference listPref) {
+                listPref.setNewEntryValues(null, DOT_COLOR);
+            }
+
+            CharSequence title = pref.getTitle();
+            if (NewIndicatorSpan.isIn(title)) {
+                pref.setTitle(NewIndicatorSpan.removeFrom(title));
+            }
         }
     }
 

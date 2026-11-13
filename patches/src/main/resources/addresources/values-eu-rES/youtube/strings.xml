@@ -319,9 +319,9 @@ Aldaketen artean daude:
   <string name="morphe_hide_keyword_content_search_title">Ezkutatu bilaketa-emaitzak gako-hitzen arabera</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ezkutatu Harpidetzetako bideoak gako-hitzen arabera</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ezkutatzeko gako-hitzak</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Sartu ezagutarri nahi dituzun gako-hitzak eta esaldiak, berri linesen bidez bereztuta
+  <string name="morphe_hide_keyword_content_phrases_summary">"Sartu ezkutuko gako-hitzak eta esaldiak, berriztertuerekta bereizita
 
-Gako-hitzak bideo-izenetan edo kanal-izenetan agertzen den edozein testu izan daitezke"</string>
+Gako-hitzak bideo-izenetan agertzen den edozein testu izan daitezke. @Erabiltzaile gako-hitzak sortzaile zehatzetako edukia guztia ezkutzen du"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Home / Subscriptions / Search / Comments filtrazten dira gako-hitz esaldiekin bat datorren edukia ezagutzeko
 
 Mugak:
@@ -331,7 +331,6 @@ Mugak:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Gako-hitz edo esaldi bat aipuen artean jartzeak bideo eta kanal izenen bat datozen zatiak saihestuko ditu&lt;br&gt;&lt;br&gt;Adibidez,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;k bideo hau ezkutatuko du: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;baina hau ez: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Gako-hitzak adierazpen gatazkatsuak ditu: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Gako-hitza laburregia da eta aipua behar du: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Gako-hitzak bideo guztiak ezkutuko ditu: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %1$s
@@ -559,18 +558,11 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <string name="morphe_export_download_folder_summary">"Aplikazioan gordetako bideoak zure gailuaren biltegian esportatu aplikazioko deskargen flyout menuaren bidez. Sakatu esportazio karpeta aldatzeko
 
 Esportazio karpeta: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Exportazio karpeta</string>
-  <string name="morphe_export_download_folder_change">Aldatu karpeta</string>
-  <string name="morphe_export_download_folder_changed">Exportazio karpeta aldatu da</string>
-  <string name="morphe_export_download_folder_reset">Exportazio karpeta berrezarri da</string>
-  <string name="morphe_export_download_folder_missing">Ezin izan da %s esportazio karpeta aurkitu</string>
-  <string name="morphe_export_download_flyout_title">Gailura esportatu</string>
   <string name="morphe_export_download_started">Bideoa esportatzen</string>
   <string name="morphe_export_download_progress">Bideoa esportatzen: %s%%</string>
   <string name="morphe_export_download_notification_channel">Bideo esportazioak</string>
   <string name="morphe_export_download_saved">Bideoa %s-ra esportatu da</string>
   <string name="morphe_export_download_failed">Ezin izan da bideoa esportatu</string>
-  <string name="morphe_export_download_canceled">Esportazioa bertan behera utzi da</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ahots gainjarritako itzulpena</string>
   <string name="morphe_vot_screen_summary">Irakurri bideo azpitituluak ozen, gailuaren testu-ahots sistemaren bidez, erreprodukzioarekin sinkronizatuta</string>
@@ -729,8 +721,6 @@ Info: Agian ez da funtzionatuko zuzeneko emankizunetan"</string>
   <string name="morphe_queue_type_entry_2">Ilara natiboa</string>
   <string name="morphe_queue_type_entry_3">Morphe ilara</string>
   <string name="morphe_queue_type_entry_4">Morphe ilara, bezeroaren aldetik</string>
-  <string name="morphe_queue_add_flyout_menu_title">Gehitu feed-eko flyout ilara menu elementua</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Flyout elementu gehigarri bat gehitzen du. Aktibatu hau \"Gehitu ilarara\" ez bada ikusten</string>
   <string name="morphe_local_queue_sheet_title">Ilara</string>
   <string name="morphe_local_queue_open">Ilara (%s)</string>
   <string name="morphe_local_queue_clear">Garbitu dena</string>
@@ -1463,7 +1453,7 @@ Automobilen diseinua
   <string name="morphe_dearrow_titles_player_title">Erreproduzigailuko zerrendak &amp; gomendioak</string>
   <string name="morphe_dearrow_titles_search_title">Bilaketa emaitzak</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow ikona erakutsi</string>
-  <string name="morphe_dearrow_titles_icon_summary">Erakusten du DeArrow ikona komunitateak egindako bideo izenburuetan</string>
+  <string name="morphe_dearrow_titles_icon_summary">Crowdsourcing bidean lortutako bideo-izenetan DeArrow ikonoa erakutsi. Ukitu ikonoa izen jatorrizkoa eta miniaturea ikusteko</string>
   <string name="morphe_dearrow_casual_mode_title">Modu informala</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow erabiltzaileek jatorrizko izenburua gustuko dutela bozkatu badute, DeArrow izenburuaren ordez jatorrizko izenburua erakusten du</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Jatorrizko izenburua erakusteko gutxieneko boto informalak</string>
@@ -1639,6 +1629,9 @@ AV1-ekin bideoaren erreprodukzioak trabak edo fotograma galerak izan ditzake"</s
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Bolumen egonkorra ez dago erabilgarri</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Erreprodukzioa 1 segundu lehenago amaitu daiteke</string>
   <string name="morphe_spoof_video_streams_about_js">• Deobfuskazioak huts egiten badu, erreprodukzioak huts egin dezake</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView tx tắt dago edo ez dago instalatuta. Aktibatu eta eguneratu, bestela erreprodukzioa huts egin dezake</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView zaharkituta dago. Eguneratu, bestela erreprodukzioa huts egin dezake</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Jatorrizko audioa behartzea ez dago erabilgarri</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR-n saioa hasi behar da</string>

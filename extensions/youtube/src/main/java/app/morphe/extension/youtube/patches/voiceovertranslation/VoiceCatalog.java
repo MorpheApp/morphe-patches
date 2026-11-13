@@ -156,33 +156,30 @@ final class VoiceCatalog {
         return voices.get(0).id;
     }
 
-    private static final class Snapshot {
-        final Map<String, Voice> byId;
-        final Map<String, List<Voice>> byLanguage;
-
-        private Snapshot(Map<String, Voice> byId, Map<String, List<Voice>> byLanguage) {
-            this.byId = Collections.unmodifiableMap(byId);
-            this.byLanguage = Collections.unmodifiableMap(byLanguage);
-        }
-
-        static Snapshot of(List<Voice> voices) {
-            Map<String, Voice> byId = new LinkedHashMap<>();
-            Map<String, List<Voice>> byLanguage = new HashMap<>();
-            List<Voice> multilingual = new ArrayList<>();
-
-            for (Voice voice : voices) {
-                if (byId.putIfAbsent(voice.id, voice) != null) continue;
-                byLanguage.computeIfAbsent(voice.languageTag, key -> new ArrayList<>()).add(voice);
-                if (voice.isMultilingual) multilingual.add(voice);
+    private record Snapshot(Map<String, Voice> byId, Map<String, List<Voice>> byLanguage) {
+            private Snapshot(Map<String, Voice> byId, Map<String, List<Voice>> byLanguage) {
+                this.byId = Collections.unmodifiableMap(byId);
+                this.byLanguage = Collections.unmodifiableMap(byLanguage);
             }
-            for (Map.Entry<String, List<Voice>> entry : byLanguage.entrySet()) {
-                List<Voice> candidates = entry.getValue();
-                for (Voice voice : multilingual) {
-                    if (!voice.languageTag.equals(entry.getKey())) candidates.add(voice);
+
+            static Snapshot of(List<Voice> voices) {
+                Map<String, Voice> byId = new LinkedHashMap<>();
+                Map<String, List<Voice>> byLanguage = new HashMap<>();
+                List<Voice> multilingual = new ArrayList<>();
+
+                for (Voice voice : voices) {
+                    if (byId.putIfAbsent(voice.id, voice) != null) continue;
+                    byLanguage.computeIfAbsent(voice.languageTag, key -> new ArrayList<>()).add(voice);
+                    if (voice.isMultilingual) multilingual.add(voice);
                 }
-                entry.setValue(Collections.unmodifiableList(candidates));
+                for (Map.Entry<String, List<Voice>> entry : byLanguage.entrySet()) {
+                    List<Voice> candidates = entry.getValue();
+                    for (Voice voice : multilingual) {
+                        if (!voice.languageTag.equals(entry.getKey())) candidates.add(voice);
+                    }
+                    entry.setValue(Collections.unmodifiableList(candidates));
+                }
+                return new Snapshot(byId, byLanguage);
             }
-            return new Snapshot(byId, byLanguage);
         }
-    }
 }

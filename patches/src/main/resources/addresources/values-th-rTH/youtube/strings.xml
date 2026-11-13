@@ -321,7 +321,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">คำสำคัญที่จะซ่อน</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"ป้อนคำสำคัญและวลีที่ต้องการซ่อน โดยแยกด้วยการขึ้นบรรทัดใหม่
 
-คำสำคัญสามารถเป็นข้อความใดก็ได้ที่แสดงในชื่อวิดีโอหรือชื่อช่อง"</string>
+คำสำคัญสามารถเป็นข้อความใดก็ได้ที่แสดงในชื่อวิดีโอ คำสำคัญ @UserName จะซ่อนเนื้อหาทั้งหมดจากครีเอเตอร์ที่ระบุ"</string>
   <string name="morphe_hide_keyword_content_about_summary">"หน้าแรก / การติดตาม / การค้นหา / ความคิดเห็น จะถูกกรองเพื่อซ่อนเนื้อหาที่ตรงกับวลีคำสำคัญ
 
 ข้อจำกัด:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">การล้อมรอบคีย์เวิร์ด/วลีด้วยเครื่องหมายคำพูดคู่จะป้องกันการจับคู่บางส่วนของชื่อวิดีโอและชื่อช่อง&lt;br&gt;&lt;br&gt;ตัวอย่างเช่น&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; จะซ่อนวิดีโอ: &lt;b&gt;AI ทำงานอย่างไร?&lt;/b&gt;&lt;br&gt;แต่จะไม่ซ่อน: &lt;b&gt;Fair use แปลว่าอะไร?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">คำสำคัญมีการประกาศที่ขัดแย้งกัน: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">คำสำคัญสั้นเกินไปและต้องใช้เครื่องหมายคำพูด: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">คำสำคัญจะซ่อนวิดีโอทั้งหมด: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• หน้าแรก: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"ส่งออกวิดีโอที่บันทึกไว้ในแอปไปยังที่เก็บข้อมูลในอุปกรณ์ของคุณโดยใช้เมนูดาวน์โหลดในแอป แตะเพื่อเปลี่ยนโฟลเดอร์ส่งออก
 
 โฟลเดอร์ส่งออก: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">โฟลเดอร์ส่งออก</string>
-  <string name="morphe_export_download_folder_change">เปลี่ยนโฟลเดอร์</string>
-  <string name="morphe_export_download_folder_changed">เปลี่ยนโฟลเดอร์ส่งออกแล้ว</string>
-  <string name="morphe_export_download_folder_reset">รีเซ็ตโฟลเดอร์ส่งออก</string>
-  <string name="morphe_export_download_folder_missing">ไม่พบโฟลเดอร์ส่งออก %s</string>
-  <string name="morphe_export_download_flyout_title">ส่งออกไปยังอุปกรณ์</string>
   <string name="morphe_export_download_started">กำลังส่งออกวิดีโอ</string>
   <string name="morphe_export_download_progress">กำลังส่งออกวิดีโอ: %s%%</string>
   <string name="morphe_export_download_notification_channel">การส่งออกวิดีโอ</string>
   <string name="morphe_export_download_saved">ส่งออกวิดีโอไปยัง %s แล้ว</string>
   <string name="morphe_export_download_failed">ไม่สามารถส่งออกวิดีโอได้</string>
-  <string name="morphe_export_download_canceled">ยกเลิกการส่งออก</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">การแปลเสียงบรรยาย</string>
   <string name="morphe_vot_screen_summary">อ่านคำบรรยายวิดีโอออกเสียงด้วยระบบแปลงข้อความเป็นเสียงบนอุปกรณ์ โดยซิงโครไนซ์กับการเล่น</string>
@@ -729,8 +721,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">คิวแบบเนทีฟ</string>
   <string name="morphe_queue_type_entry_3">คิว Morphe</string>
   <string name="morphe_queue_type_entry_4">คิว Morphe ฝั่งไคลเอนต์</string>
-  <string name="morphe_queue_add_flyout_menu_title">เพิ่มรายการคิวในเมนูแบบเลื่อนออกของฟีด</string>
-  <string name="morphe_queue_add_flyout_menu_summary">เพิ่มรายการเมนูแบบเลื่อนออกเพิ่มเติม เปิดใช้งานนี้หาก \"เพิ่มในคิว\" ไม่แสดง</string>
   <string name="morphe_local_queue_sheet_title">คิว</string>
   <string name="morphe_local_queue_open">คิว (%s)</string>
   <string name="morphe_local_queue_clear">ล้างทั้งหมด</string>
@@ -1463,7 +1453,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">เพลย์ลิสต์เครื่องเล่น &amp; คำแนะนำ</string>
   <string name="morphe_dearrow_titles_search_title">ผลลัพธ์การค้นหา</string>
   <string name="morphe_dearrow_titles_icon_title">แสดงไอคอน DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">แสดงไอคอน DeArrow บนชื่อวิดีโอที่มาจากคราวด์ซอร์ส</string>
+  <string name="morphe_dearrow_titles_icon_summary">แสดงไอคอน DeArrow บนชื่อวิดีโอที่ใช้ข้อมูลจาก crowdsource แตะที่ไอคอนเพื่อแสดงชื่อและภาพตัวอย่างต้นฉบับ</string>
   <string name="morphe_dearrow_casual_mode_title">โหมดทั่วไป</string>
   <string name="morphe_dearrow_casual_mode_summary">แสดงชื่อเรื่องต้นฉบับแทนชื่อเรื่อง DeArrow หากผู้ใช้ DeArrow โหวตว่าพวกเขาชอบชื่อเรื่องต้นฉบับ</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">จำนวนโหวตแบบทั่วไปขั้นต่ำเพื่อแสดงชื่อเรื่องต้นฉบับ</string>
@@ -1639,6 +1629,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• ระดับเสียงคงที่ไม่พร้อมใช้งาน</string>
   <string name="morphe_spoof_video_streams_about_end_early">• การเล่นอาจจบลงเร็วขึ้น 1 วินาที</string>
   <string name="morphe_spoof_video_streams_about_js">• ถ้า Deobfuscation ล้มเหลว การเล่นอาจล้มเหลว</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView ถูกปิดอยู่หรือไม่ได้รับการติดตั้ง โปรดเปิดใช้งานและอัปเดต มิฉะนั้นการเล่นวิดีโออาจล้มเหลว</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView ล้าสมัย โปรดอัปเดต มิฉะนั้นการเล่นวิดีโออาจล้มเหลว</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• บังคับใช้เสียงต้นฉบับไม่พร้อมใช้งาน</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• ต้องลงชื่อเข้าใช้ Android VR</string>

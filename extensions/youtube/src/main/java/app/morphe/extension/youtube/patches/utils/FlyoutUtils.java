@@ -300,7 +300,6 @@ public final class FlyoutUtils {
         }
     }
 
-    private static final int VIDEO_ID_LENGTH = 11;
     private static final byte[] PLAYLIST_ID_PREFIX_BYTES =
             getAsciiBytes("playlist?list=");
     private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
@@ -453,10 +452,10 @@ public final class FlyoutUtils {
         byte[] prefix = VIDEO_ID_PREFIXES_BYTES.get(0);
         final int index = byteIndexOf(buffer, prefix);
         final int videoIdStart = index + prefix.length;
-        if (index < 0 || videoIdStart + VIDEO_ID_LENGTH > buffer.length) {
+        if (index < 0 || videoIdStart + VideoInformation.VIDEO_ID_LENGTH > buffer.length) {
             return "";
         }
-        return new String(buffer, videoIdStart, VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
+        return new String(buffer, videoIdStart, VideoInformation.VIDEO_ID_LENGTH, StandardCharsets.US_ASCII);
     }
 
     public static boolean hasVisibleFlyoutButton(String buttonName) {
@@ -817,7 +816,7 @@ public final class FlyoutUtils {
      */
     private static void onFlyoutListBound(Object flyoutPanel) {
         try {
-            FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel, 0);
+            FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel);
             if (menuInfo == null) {
                 return;
             }
@@ -875,7 +874,6 @@ public final class FlyoutUtils {
         return 0;
     }
 
-    @SuppressWarnings("SameParameterValue")
     public static int addFlyoutButton(
             Object flyoutPanel,
             Drawable icon,
@@ -887,7 +885,7 @@ public final class FlyoutUtils {
     }
 
     /**
-     * Adds a save item, which is removed if the app menu binds its own save item afterwards.
+     * Adds a save item, which is removed if the app menu binds its own save item afterward.
      */
     public static int addFlyoutSaveButton(
             Object flyoutPanel,
@@ -955,7 +953,7 @@ public final class FlyoutUtils {
             boolean enabled
     ) {
         try {
-            FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel, 0);
+            FlyoutMenuInfo menuInfo = getFlyoutMenuInfo(flyoutPanel);
             if (menuInfo == null) {
                 return -1;
             }
@@ -1097,7 +1095,7 @@ public final class FlyoutUtils {
 
         visibleFlyoutButtons.add(new Pair<>(currentButtonName, currentButtonIndex));
         //noinspection SizeReplaceableByIsEmpty
-        if (buttonText != null && buttonText.length() > 0) {
+        if (buttonText.length() > 0) {
             visibleFlyoutButtonTexts.putIfAbsent(currentButtonName, buttonText.toString());
         }
     }
@@ -1122,12 +1120,11 @@ public final class FlyoutUtils {
         currentButtonIndex = 0;
     }
 
-    @SuppressWarnings("SameParameterValue")
     @Nullable
-    private static FlyoutMenuInfo getFlyoutMenuInfo(Object flyoutPanel, int initialIndex) {
+    private static FlyoutMenuInfo getFlyoutMenuInfo(Object flyoutPanel) {
         LinearLayout menuContainer = null;
         PopupWindow popupWindow = null;
-        int adjustedIndex = initialIndex;
+        int adjustedIndex = 0;
 
         if (flyoutPanel instanceof PopupWindow checkedPopupWindow) {
             popupWindow = checkedPopupWindow;
@@ -1590,12 +1587,12 @@ public final class FlyoutUtils {
 
             if (index >= 0) {
                 final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
-                final int videoIdEnd = videoIdStart + VIDEO_ID_LENGTH;
+                final int videoIdEnd = videoIdStart + VideoInformation.VIDEO_ID_LENGTH;
                 if (videoIdEnd <= buffer.length) {
                     flyoutVideoId = new String(
                             buffer,
                             videoIdStart,
-                            VIDEO_ID_LENGTH,
+                            VideoInformation.VIDEO_ID_LENGTH,
                             StandardCharsets.US_ASCII
                     );
 

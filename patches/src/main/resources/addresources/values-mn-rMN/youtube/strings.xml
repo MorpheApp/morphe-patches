@@ -321,7 +321,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">Нуух түлхүүр үгнүүд</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Нуух түлхүүр үг болон хэллэгийг шинэ мөрөөр тусгаарлан оруулна уу
 
-Түлхүүр үг нь видеоны гарчиг эсвэл сувгийн нэрэнд харагдах дурын текст байж болно"</string>
+Түлхүүр үг нь видеоны гарчигт харагдах дурын текст байж болно. @ХэрэглэгчийнНэр түлхүүр үг нь тухайн бүтээгчийн бүх контентыг нуух болно"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Нүүр / Бүртгэл / Хайлт / Сэтгэгдэл хэсгүүдэд түлхүүр хэллэгтэй таарч буй контентыг нуух шүүлтүүр хэрэглэгдэнэ
 
 Хязгаарлалт:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Түлхүүр үг/хэллэгийг давхар хашилтаар хүрээлбэл видеоны гарчиг болон сувгийн нэрс дээрх хэсэгчилсэн тохирлуудыг сэргийлнэ&lt;br&gt;&lt;br&gt;Жишээлбэл,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; гэвэл: &lt;b&gt;How does AI work?&lt;/b&gt; видеог нуух болно,&lt;br&gt;харин: &lt;b&gt;What does fair use mean?&lt;/b&gt; гэснийг нуухгүй</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Түлхүүр үг зөрчилтэй тодорхойлолттой байна: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Түлхүүр үг хэтэрхий богино тул хашилт шаардлагатай: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Түлхүүр үг бүх видеог нуух болно: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Нүүр: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"Апп дотор хадгалсан видеог татаж авах цэсийг ашиглан төхөөрөмжийнхээ санах ойд экспортлох. Экспортын хавтсыг өөрчлөхийн тулд дарна уу
 
 Экспортын хавтас: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Экспортлох хавтас</string>
-  <string name="morphe_export_download_folder_change">Хавтсыг өөрчлөх</string>
-  <string name="morphe_export_download_folder_changed">Экспортын хавтас өөрчлөгдлөө</string>
-  <string name="morphe_export_download_folder_reset">Экспортын хавтас шинэчлэгдлээ</string>
-  <string name="morphe_export_download_folder_missing">Экспортыг хийх хавтас %s-ийг олж чадсангүй</string>
-  <string name="morphe_export_download_flyout_title">Төхөөрөмж рүү экспортлох</string>
   <string name="morphe_export_download_started">Видеог экспортлож байна</string>
   <string name="morphe_export_download_progress">Видео гаргаж байна: %s%%</string>
   <string name="morphe_export_download_notification_channel">Видео гаргалт</string>
   <string name="morphe_export_download_saved">Видеог %s руу гаргалаа</string>
   <string name="morphe_export_download_failed">Видеог гаргаж чадсангүй</string>
-  <string name="morphe_export_download_canceled">Гаргалтыг цуцаллаа</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Дууг орчуулах</string>
   <string name="morphe_vot_screen_summary">Видеоны хадмал орчуулгыг төхөөрөмжийн текстээс яриа хөрвүүлэгчийг ашиглан, тоглуулалттай синхрончилж унших</string>
@@ -728,8 +720,6 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_queue_type_entry_2">Системийн дараалал</string>
   <string name="morphe_queue_type_entry_3">Morphe дараалал</string>
   <string name="morphe_queue_type_entry_4">Morphe queue клиент тал</string>
-  <string name="morphe_queue_add_flyout_menu_title">Feed-ийн хурдан цэсэнд дарааллын цэс нэмэх</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Нэмэлт хурдан цэсний зүйл нэмнэ. Хэрэв \"Дараалалд нэмэх\" гэсэн сонголт харагдахгүй бол үүнийг идэвхжүүлнэ</string>
   <string name="morphe_local_queue_sheet_title">Дарааллал</string>
   <string name="morphe_local_queue_open">Дараалал (%s)</string>
   <string name="morphe_local_queue_clear">Бүгдийг цэвэрлэх</string>
@@ -1462,7 +1452,7 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_dearrow_titles_player_title">Тоглуулагчийн жагсаалт &amp; санал болгох</string>
   <string name="morphe_dearrow_titles_search_title">Хайлтын үр дүн</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow дүрс тэмдгийг харуулах</string>
-  <string name="morphe_dearrow_titles_icon_summary">Олон нийтийн тусламжтайгаар бүтээсэн видео гарчиг дээр DeArrow дүрс тэмдгийг харуулна</string>
+  <string name="morphe_dearrow_titles_icon_summary">Олон нийтийн тусламжтайгаар зассан видео гарчиг дээр DeArrow дүрс тэмдгийг харуулна. Эх хувилбарын гарчиг болон miniature зургийг харахын тулд дүрс тэмдэг дээр дарна уу</string>
   <string name="morphe_dearrow_casual_mode_title">Чөлөөтэй горим</string>
   <string name="morphe_dearrow_casual_mode_summary">Хэрэв DeArrow-ийн хэрэглэгчид эх хувийн гарчиг нь илүү таалагдсан гэж санал илэрхийлсэн бол DeArrow-ийн гарчгийн оронд эх хувийн гарчгийг харуулна</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Эх хувийн гарчгийг харуулах хамгийн бага чөлөөтэй санал</string>
@@ -1638,6 +1628,9 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Тогтмол дууны түвшин боломжгүй</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Тоглуулалт 1 секундын өмнө дуусах магадлалтай</string>
   <string name="morphe_spoof_video_streams_about_js">• Хэрэв деобфускаци амжилтгүй болвол тоглуулах үйлдэл алдаа зааж болзошгүй</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView унтраагдсан эсвэл суурилуулаагүй байна. Үүнийг асааж, шинэчилнэ үү, эсвэл тоглуулах явцад алдаа гарж болзошгүй</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView-ийн хувилбар хуучирсан байна. Шинэчилнэ үү, эсвэл тоглуулах явцад алдаа гарж болзошгүй</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Эх хувилбарын аудиог албадах боломжгүй</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR-т нэвтрэх шаардлагатай</string>

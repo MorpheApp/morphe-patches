@@ -60,6 +60,7 @@ public class NavigationButtonsOrderPreference extends Preference {
         Map<String, String> discoveredButtons = toolbar
                 ? NavigationBarPatch.discoveredToolbarButtons
                 : NavigationBarPatch.discoveredNavigationButtons;
+        //noinspection SynchronizationOnLocalVariableOrMethodParameter
         synchronized (discoveredButtons) {
             discoveredButtons = new LinkedHashMap<>(discoveredButtons);
         }

@@ -28,6 +28,7 @@ import java.util.List;
  * <p>
  * All callbacks must be registered before the constructor completes.
  */
+@SuppressWarnings("unused")
 public abstract class Filter {
 
     public enum FilterContentType {

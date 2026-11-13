@@ -30,7 +30,6 @@ private val copyVideoLinkButtonResourcePatch = patch {
     }
 }
 
-@Suppress("unused")
 val copyVideoLinkButtonPatch = patch(
     name = "Copy video link",
     description = "Adds options to display buttons in the video player to copy video links.",

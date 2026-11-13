@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Жаңы жөндөөлөрдү белгилөө</string>
   <string name="morphe_settings_new_indicator_days_summary">Жаңыртуу аркылуу кошулган жөндөөлөрдүн жана параметрлердин жанында чекит көрсөтүлүүчү күндөрдүн саны</string>
   <string name="morphe_settings_new_indicator_days_off">Өчүк</string>
+  <string name="morphe_settings_new_indicator_clear_title">Бардык жөндөөлөрдү көрилгөн деп белгилөө</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Бардык жаңы жөндөөлөрдөн жана опциялардан чекитти алып salient</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Бардык жөндөөлөрдү көрилгөн деп белгилөө керекпи?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Бардык жаңы жөндөөлөрдөн жана опциялардан чекит алынды. Кийинки жаңыртуулар менен кошулган жөндөөлөр дагы деле белгилүү болот.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Орнотууну бүтүрүү үчүн кайра баштаңыз</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Пакеттин аталышы туура экенин жана тиркеме орнотулганын текшериңиз"</string>
   <string name="morphe_external_downloader_empty_warning">Пакеттин аты бош болбошу керек</string>
+  <string name="morphe_export_download_folder_dialog_title">Экспорттоо папкасы</string>
+  <string name="morphe_export_download_folder_change">Папканы өзгөртүү</string>
+  <string name="morphe_export_download_folder_changed">Экспорттоо папкасы өзгөртүлдү</string>
+  <string name="morphe_export_download_folder_reset">Экспорттоо папкасы кайтарылды</string>
+  <string name="morphe_export_download_folder_missing">Экспорттоо папкасын табуу мүмкүн болбоду: %s</string>
+  <string name="morphe_export_download_flyout_title">Түзмөктке экспорттоо</string>
+  <string name="morphe_export_download_canceled">Экспорттоо токтотулду</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Ыйыкталган</string>
   <string name="morphe_custom_branding_icon_title">Тиркеменин иконкасы</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 %2$sти стандарттуу клиент кылуу керекпи?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Алмаштыруу</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Бул жөндөөнү өчүрүү ойнотууда көйгөйлөргө алып келиши мүмкүн</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView өчүрүлгөн же орнотулган эмес.
+
+Видеону ойнотуу үчүн Android System WebView керек. Аны күйгүзүңүз жана акыркы версиясына чейин жаңыртыңыз.
+
+Android System WebView колдонмосун ачуу үчүн OK баскычын басыңыз."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView эскирген (версиясы %s).
+
+Android System WebView акыркы версиясына чейин жаңыртылмайынча, видеону ойнотуу мүмкүн болбой калышы мүмкүн.
+
+Android System WebView колдонмосун ачуу үчүн OK баскычын басыңыз."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Кайра көрсөтпө</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView орнотулган эмес. Видеону ойнотууну оңдоо үчүн аны орнотуңуз</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Төмөнкүнү иштетип көрүңүз: Видео агымдарын имитациялоо &gt; Android VR кириш</string>

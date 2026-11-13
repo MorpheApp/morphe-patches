@@ -23,7 +23,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/SettingsMenuFilterPatch;"
 
-@Suppress("unused")
 val hideSettingsMenuFilterPatch = patch(
     name = "Settings menu filter",
     description = "Adds an option to hide items on the standard YouTube settings screen by their visible name."

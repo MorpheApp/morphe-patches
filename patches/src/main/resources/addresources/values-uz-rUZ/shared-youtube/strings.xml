@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Yangi sozlamalarni belgilash</string>
   <string name="morphe_settings_new_indicator_days_summary">Yangilanish orqali qo\'shilgan sozlamalar va variantlar yonida nuqta ko\'rsatiladigan kunlar soni</string>
   <string name="morphe_settings_new_indicator_days_off">O\'chirilgan</string>
+  <string name="morphe_settings_new_indicator_clear_title">Barcha sozlamalarni ko\'rilgan deb belgilash</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Barcha yangi sozlamalar va variantlardan nuqtani olib tashlash</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Barcha sozlamalarni ko\'rilgan deb belgilash?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Barcha yangi sozlamalar va variantlardan nuqta olib tashlandi. Kelgusidagi yangilanishlar orqali qo\'shilgan sozlamalar hali ham belgilanadi.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Sozlashni tugatish uchun qayta ishga tushirish</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Paket nomi to'g'ri ekanligini va ilova o'rnatilganligini tekshiring"</string>
   <string name="morphe_external_downloader_empty_warning">Paket nomi bo\'sh bo\'lishi mumkin emas</string>
+  <string name="morphe_export_download_folder_dialog_title">Eksport papkasi</string>
+  <string name="morphe_export_download_folder_change">Papkani o\'zgartirish</string>
+  <string name="morphe_export_download_folder_changed">Eksport papkasi o\'zgartirildi</string>
+  <string name="morphe_export_download_folder_reset">Eksport papkasi tiklandi</string>
+  <string name="morphe_export_download_folder_missing">%s eksport papkasini topib bo\'lmadi</string>
+  <string name="morphe_export_download_flyout_title">Qurilmaga eksport qilish</string>
+  <string name="morphe_export_download_canceled">Eksport bekor qilindi</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Maxsus</string>
   <string name="morphe_custom_branding_icon_title">Ilova belgisi</string>
@@ -110,6 +121,20 @@ Agar siz YouTube Premium foydalanuvchisi bo'lsangiz, ushbu sozlash talab qilinma
 %2$s ni standart mijoz qilishni xohlaysizmi?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Almashtirish</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ushbu sozlamani o\'chirish ijro bilan bog\'liq muammolarga olib kelishi mumkin</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView o\"chirilgan yoki o\"rnatilmagan.
+
+Videoni ijro etish uchun Android System WebView kerak. Uni yoqing va eng so\"nggi versiyagacha yangilang.
+
+Android System WebView’ni ochish uchun OK tugmasini bosing."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView versiyasi eskirgan (%s versiya).
+
+Android System WebView eng so\"nggi versiyaga yangilanguniga qadar videoni ijro etishda xatoliklar yuz berishi mumkin.
+
+Android System WebView’ni ochish uchun OK tugmasini bosing."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Yana ko\'rsatmaslik</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView o\"rnatilmagan. Videoni ijro etishni tuzatish uchun uni o\"rnating</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Agar mijozlar topilmasa: Android VR ga kirish imkoniyatini sinab ko‘ring</string>

@@ -39,11 +39,25 @@ class JamQueueCommandTest {
                 }
                 .first { it.isFile }
         val output = createTempDirectory("jam-command-test").toFile()
+        // VideoInformation depends on Android classes, so only its video id check is provided.
+        val videoInformation = File(output, "VideoInformation.java").apply {
+            writeText(
+                """
+                package app.morphe.extension.music.shared;
+                public final class VideoInformation {
+                    public static boolean isVideoId(String text) {
+                        return text != null && text.matches("[A-Za-z0-9_-]{11}");
+                    }
+                }
+                """.trimIndent()
+            )
+        }
         try {
             assertEquals(
                 0,
                 ToolProvider.getSystemJavaCompiler()
-                    .run(null, null, null, "--release", "11", "-d", output.path, source.path),
+                    .run(null, null, null, "--release", "11", "-d", output.path,
+                        source.path, videoInformation.path),
             )
             URLClassLoader(arrayOf(output.toURI().toURL()), null).use { loader ->
                 val decoder = loader.loadClass("app.morphe.extension.music.patches.jam.QueueCommand")

@@ -30,7 +30,6 @@ private const val EXTENSION_CLASS =
 internal const val AUTO_SONG_VERSION_CLASS =
     "Lapp/morphe/extension/music/patches/AutoSongVersionPatch;"
 
-@Suppress("unused")
 val enableAudioVideoSwitchPatch = patch(
     name = "Enable audio/video switch",
     description = "Adds an option to switch between the audio and the video version of a track by redirecting videoId."
@@ -54,7 +53,7 @@ val enableAudioVideoSwitchPatch = patch(
 
         AudioVideoSwitchPillContainerFingerprint.matchAll().forEach { match ->
             match.method.apply {
-                var moveResultIndex = match.instructionMatches.last().index
+                val moveResultIndex = match.instructionMatches.last().index
                 val viewRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
 
                 addInstruction(

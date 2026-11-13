@@ -321,7 +321,7 @@ Perubahan termasuk:
   <string name="morphe_hide_keyword_content_phrases_title">Kata kunci untuk disorokkan</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Masukkan kata kunci dan frasa untuk disembunyikan, dipisahkan oleh baris baharu
 
-Kata kunci boleh jadi sebarang teks yang dipaparkan dalam tajuk video atau nama saluran"</string>
+Kata kunci boleh jadi sebarang teks yang dipaparkan dalam tajuk video. Kata kunci @NamaPengguna menyembunyikan semua kandungan daripada pencipta tertentu"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Laman Utama / Langganan / Carian / Komen ditapis untuk menyembunyikan kandungan yang sepadan dengan frasa kata kunci
 
 Had:
@@ -331,7 +331,6 @@ Had:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Mengelilingi kata kunci/frasa dengan tanda petik dua akan mengelakkan padanan separa tajuk video dan nama saluran&lt;br&gt;&lt;br&gt;Sebagai contoh,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; akan menyembunyikan video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;tetapi tidak akan menyembunyikan: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Kata kunci mempunyai pengisytiharan yang bercanggah: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kata kunci terlalu pendek dan memerlukan tanda petik: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kata kunci akan menyembunyikan semua video: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Utama: %1$s
@@ -559,18 +558,11 @@ Selepas video dengan butang Ask dibuka sekali, ciri ini berfungsi dengan semua v
   <string name="morphe_export_download_folder_summary">"Eksport video yang disimpan dalam aplikasi ke storan peranti anda menggunakan menu flyout muat turun dalam aplikasi. Ketik untuk menukar folder eksport
 
 Folder eksport: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Folder eksport</string>
-  <string name="morphe_export_download_folder_change">Tukar folder</string>
-  <string name="morphe_export_download_folder_changed">Folder eksport telah ditukar</string>
-  <string name="morphe_export_download_folder_reset">Tetapkan semula folder eksport</string>
-  <string name="morphe_export_download_folder_missing">Tidak dapat mencari folder eksport %s</string>
-  <string name="morphe_export_download_flyout_title">Eksport ke peranti</string>
   <string name="morphe_export_download_started">Mengeksport video</string>
   <string name="morphe_export_download_progress">Mengeksport video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Eksport video</string>
   <string name="morphe_export_download_saved">Video dieksport ke %s</string>
   <string name="morphe_export_download_failed">Tidak dapat mengeksport video</string>
-  <string name="morphe_export_download_canceled">Eksport dibatalkan</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Terjemahan alihan suara</string>
   <string name="morphe_vot_screen_summary">Baca sari kata video dengan kuat menggunakan teks-ke-ucapan peranti, diselaraskan dengan main balik</string>
@@ -729,8 +721,6 @@ Info: Mungkin tidak berfungsi pada strim langsung"</string>
   <string name="morphe_queue_type_entry_2">Baris gilir asli</string>
   <string name="morphe_queue_type_entry_3">Baris gilir Morphe</string>
   <string name="morphe_queue_type_entry_4">Baris gilir Morphe sebelah klien</string>
-  <string name="morphe_queue_add_flyout_menu_title">Tambah item menu giliran flyout suapan</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Menambah item flyout tambahan. Dayakan ini jika \"Tambah ke giliran\" tidak dipaparkan</string>
   <string name="morphe_local_queue_sheet_title">Giliran</string>
   <string name="morphe_local_queue_open">Barisan (%s)</string>
   <string name="morphe_local_queue_clear">Kosongkan semua</string>
@@ -1463,7 +1453,7 @@ Tata letak automotif
   <string name="morphe_dearrow_titles_player_title">Senarai main &amp; syor pemain</string>
   <string name="morphe_dearrow_titles_search_title">Hasil carian</string>
   <string name="morphe_dearrow_titles_icon_title">Tunjukkan ikon DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Menunjukkan ikon DeArrow pada tajuk video crowdsourced</string>
+  <string name="morphe_dearrow_titles_icon_summary">Menunjukkan ikon DeArrow pada tajuk video crowdsourced. Ketik ikon untuk menunjukkan tajuk dan imej kecil asal</string>
   <string name="morphe_dearrow_casual_mode_title">Mod santai</string>
   <string name="morphe_dearrow_casual_mode_summary">Menunjukkan tajuk asal dan bukannya tajuk DeArrow jika pengguna DeArrow mengundi bahawa mereka menyukai tajuk asal</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Undian santai minimum untuk menunjukkan tajuk asal</string>
@@ -1639,6 +1629,9 @@ Playback video dengan AV1 mungkin tersekat-sekat atau mengalami keguguran bingka
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volum stabil tidak tersedia</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Mainan balik mungkin berakhir 1 saat lebih awal</string>
   <string name="morphe_spoof_video_streams_about_js">• Jika penyahkaburan gagal, mainan balik mungkin gagal</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView dimatikan atau tidak dipasang. Hidupkan dan kemaskinikannya, atau main balik mungkin gagal</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView sudah lapuk. Kemaskinikannya, atau main balik mungkin gagal</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Paksa audio asal tidak tersedia</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Log masuk ke Android VR diperlukan</string>

@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Usa el descargador externo para el menú Descargar</string>
   <string name="morphe_external_downloader_menu_summary">La opción Descargar de los menús abre tu descargador externo en su lugar</string>
-  <string name="morphe_music_downloads_screen_title">Descargas</string>
-  <string name="morphe_music_downloads_empty">"No hay descargas
-Las pistas descargadas aparecen aquí"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s pistas • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Buscar descargas</string>
-  <string name="morphe_music_downloads_sort">Ordenar</string>
-  <string name="morphe_music_downloads_sort_artist">Ordenar por artista</string>
-  <string name="morphe_music_downloads_sort_title">Ordenar por título</string>
-  <string name="morphe_music_downloads_sort_size">Ordenar por tamaño</string>
-  <string name="morphe_music_downloads_delete_all">Eliminar todas las descargas</string>
-  <string name="morphe_music_downloads_delete_all_title">¿Eliminar todas las descargas?</string>
-  <string name="morphe_music_downloads_delete_all_message">Todas las pistas descargadas se eliminarán de este dispositivo</string>
-  <string name="morphe_music_downloads_all_deleted">Descargas eliminadas</string>
-  <string name="morphe_music_downloads_nothing_found">No se encontró nada</string>
-  <string name="morphe_music_downloads_actions_for">Acciones para %s</string>
-  <string name="morphe_music_downloads_play">Reproducir</string>
-  <string name="morphe_music_downloads_play_pause">Reproducir o pausar</string>
-  <string name="morphe_music_downloads_previous">Anterior</string>
-  <string name="morphe_music_downloads_next">Siguiente</string>
-  <string name="morphe_music_downloads_pause">Pausar</string>
-  <string name="morphe_music_downloads_shuffle">Aleatorio</string>
-  <string name="morphe_music_downloads_repeat">Repetir</string>
-  <string name="morphe_music_downloads_minimize">Minimizar</string>
-  <string name="morphe_music_downloads_close">Cerrar</string>
-  <string name="morphe_music_downloads_delete">Eliminar</string>
-  <string name="morphe_music_downloads_delete_track">Eliminar descarga</string>
-  <string name="morphe_music_downloads_delete_track_title">¿Eliminar descarga?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s se eliminará de este dispositivo</string>
-  <string name="morphe_music_downloads_track_deleted">Descarga eliminada</string>
-  <string name="morphe_music_downloads_track_delete_failed">No se pudo eliminar la descarga</string>
-  <string name="morphe_music_downloads_play_failed">No se pudo reproducir la descarga</string>
-  <string name="morphe_music_downloads_playlists">Listas de reproducción</string>
-  <string name="morphe_music_downloads_playlists_section">Listas de reproducción creadas (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Aún no hay listas de reproducción locales</string>
-  <string name="morphe_music_downloads_playlists_hide">Ocultar listas de reproducción ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Nueva lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_new_button">Nueva lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_selected">Seleccionado (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Selecciona primero las canciones</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Eliminar selección</string>
-  <string name="morphe_music_downloads_playlist_create">Crear lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_create_button">Crear</string>
-  <string name="morphe_music_downloads_playlist_add">Añadir a la lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_added">Añadido a %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Nombre de lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_name_empty">El nombre de la lista de reproducción no puede estar vacío</string>
-  <string name="morphe_music_downloads_playlist_save_failed">No se ha podido guardar la lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s pistas</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 pista</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">No hay pistas en esta lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_play">Reproducir lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_play_all">Reproducir todo</string>
-  <string name="morphe_music_downloads_playlist_rename">Renombrar</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Renombrar lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_save">Guardar</string>
-  <string name="morphe_music_downloads_playlist_delete">Eliminar lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_delete_title">¿Eliminar lista de reproducción?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">Se eliminará %s. Se conservan las canciones descargadas</string>
-  <string name="morphe_music_downloads_playlist_deleted">Lista de reproducción eliminada</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Quitar de la lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Arrastra para reordenar</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Arrastra el controlador para reordenar</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Listo</string>
-  <string name="morphe_music_downloads_notification_channel">Descargas de audio</string>
-  <string name="morphe_music_downloads_playback_channel">Reproducción sin conexión</string>
-  <string name="morphe_music_downloads_unknown_track">No se pudo identificar la pista que descargar</string>
-  <string name="morphe_music_downloads_already_running">Ya hay una descarga en curso</string>
-  <string name="morphe_music_downloads_already_saved">Ya descargada</string>
-  <string name="morphe_music_downloads_started">Descarga iniciada</string>
-  <string name="morphe_music_downloads_starting">Iniciando descarga…</string>
-  <string name="morphe_music_downloads_progress">Descargando %s%%</string>
-  <string name="morphe_music_downloads_complete">Descarga completada</string>
-  <string name="morphe_music_downloads_failed">Descarga fallida</string>
-  <string name="morphe_music_downloads_playlist_download_title">Descarga de lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Listando pistas…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s listados…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">No se pudieron listar las pistas de la lista de reproducción</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Ya descargado: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s en esta lista de reproducción, %2$s aún no se han descargado.
+  <string name="morphe_export_download_folder_title">Exportar descargas</string>
+  <string name="morphe_export_download_folder_summary">"Exporta las canciones y los vídeos descargados por la aplicación al almacenamiento de tu dispositivo utilizando el menú de la descarga. Pulsa para cambiar la carpeta de exportación
 
-Se descargan uno a uno, lo que puede llevar mucho tiempo y requiere aproximadamente %3$s de espacio libre"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Descargar</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Descargando pista %1$s de %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s descargado</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s descargados, %2$s no pudieron descargarse</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">La descarga de la lista de reproducción ya está en curso</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Aún no se conoce tu cuenta. Inténtalo de nuevo en un momento</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listados, todos ya descargados</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Solo se pudo listar una parte de la lista de reproducción. Toca Descargar más tarde para obtener el resto</string>
-  <string name="morphe_music_downloads_playlist_download_started">Descargando %s en segundo plano</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Sin conexión de red</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Esperando a la red…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Detenido después de %1$s de %2$s. Toca Descargar de nuevo para continuar</string>
-  <string name="morphe_music_downloads_mark_title">Marcar canciones descargadas</string>
-  <string name="morphe_music_downloads_mark_summary">Las canciones ya descargadas muestran una marca antes de sus detalles en las listas de reproducción, álbumes y resultados de búsqueda</string>
+Carpeta de exportación: %s"</string>
+  <string name="morphe_export_download_started">Exportando descarga</string>
+  <string name="morphe_export_download_progress">Exportando descarga: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Exportación de descarga</string>
+  <string name="morphe_export_download_saved">Descarga exportada a %s</string>
+  <string name="morphe_export_download_failed">No se ha podido exportar la descarga</string>
+  <string name="morphe_export_download_all_flyout_title">Exportar todo al dispositivo</string>
+  <string name="morphe_export_download_all_started">Exportando todas las descargas</string>
+  <string name="morphe_export_download_all_running">Las descargas ya se están exportando</string>
+  <string name="morphe_export_download_all_saved">Se han exportado %1$s de %2$s descargas a %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Acerca de</string>
@@ -260,6 +177,8 @@ Se descargan uno a uno, lo que puede llevar mucho tiempo y requiere aproximadame
   <string name="morphe_music_hide_repeat_button_title">Ocultar botón Repetir</string>
   <string name="morphe_music_hide_shuffle_button_title">Ocultar botón Aleatorio</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Ocultar estantería \'Acceso rápido\'</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Ocultar sección \'Quizás también te guste\'</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Ocultar estantería \"Tus descargas\"</string>
   <string name="morphe_music_comments_screen_title">Comentarios</string>
   <string name="morphe_music_comments_screen_summary">Elige qué componentes aparecen en la sección de comentarios</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Ocultar normas de la comunidad</string>
@@ -338,9 +257,17 @@ Reproducción SABR (con 'Falsificar transmisiones de vídeo' desactivado)"</stri
   <string name="morphe_music_playback_speed_summary">Velocidad usada para todas las pistas. Al 100% se usa la velocidad de la aplicación, como la velocidad de reproducción de pódcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Cambiar el tono con la velocidad</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Desactivar la atenuación de audio</string>
+  <string name="morphe_music_disable_audio_ducking_summary">El volumen no se reduce cuando otra aplicación reproduce un sonido corto, como una notificación</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Desactivar redirección de \'No me gusta\'</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Evita saltar a la siguiente pista cuando se pulsa el botón \'No me gusta\'</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">Bucle A-B</string>
+  <string name="morphe_music_ab_loop_summary">Mantén pulsada la barra de progreso para establecer el inicio del bucle, vuelve a pulsarla para establecer el final del bucle y, de nuevo, para eliminar el bucle.</string>
+  <string name="morphe_music_ab_loop_toast_start">Inicio del bucle establecido en %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Final del bucle establecido en %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Bucle borrado</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Acción al pulsar una pista de la lista de reproducción</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Reproducir la lista de reproducción</string>
@@ -663,6 +590,7 @@ La primera columna es la palabra, la segunda su lectura; se ignoran columnas adi
   <string name="morphe_music_lyrics_rime_dict_no_table">No hay ninguna lista de palabras Rime marcada para el idioma anterior. Toca este nombre para marcar una, o selecciona un idioma que tenga una lista</string>
   <string name="morphe_music_lyrics_rime_dict_add">Añadir</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Añadir una Lista de palabras Rime</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Un archivo .dict.yaml, o un zip que contenga uno, con líneas como 字 ham y 典 din2. La lista se obtiene al marcar la casilla y pulsar Guardar, y su licencia queda bajo su responsabilidad</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Código del idioma</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dos o tres letras, como en hak o wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Nombre</string>

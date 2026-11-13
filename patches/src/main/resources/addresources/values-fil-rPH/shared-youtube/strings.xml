@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">I-highlight ang mga bagong setting</string>
   <string name="morphe_settings_new_indicator_days_summary">Bilang ng mga araw na ipapakita ang tuldok sa tabi ng mga setting at opsyon na idinagdag ng isang update</string>
   <string name="morphe_settings_new_indicator_days_off">Naka-off</string>
+  <string name="morphe_settings_new_indicator_clear_title">Markahan ang lahat ng setting bilang nakita na</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Alisin ang tuldok mula sa lahat ng mga bagong setting at opsyon</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Markahan ang lahat ng setting bilang nakita na?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Inalis na ang tuldok mula sa lahat ng mga bagong setting at opsyon. Ang mga setting na idaragdag sa mga susunod na update ay mananatiling naka-highlight.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">I-restart upang tapusin ang pag-setup</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 I-verify na tama ang pangalan ng pakete at naka-install ang app"</string>
   <string name="morphe_external_downloader_empty_warning">Hindi maaaring blangko ang pangalan ng pakete</string>
+  <string name="morphe_export_download_folder_dialog_title">I-export ang folder</string>
+  <string name="morphe_export_download_folder_change">Baguhin ang folder</string>
+  <string name="morphe_export_download_folder_changed">Nabago ang export folder</string>
+  <string name="morphe_export_download_folder_reset">Na-reset ang export folder</string>
+  <string name="morphe_export_download_folder_missing">Hindi mahanap ang export folder %s</string>
+  <string name="morphe_export_download_flyout_title">I-export sa device</string>
+  <string name="morphe_export_download_canceled">Kinansela ang export</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pasadya</string>
   <string name="morphe_custom_branding_icon_title">Icon ng aplikasyon</string>
@@ -110,6 +121,20 @@ Kung ikaw ay isang gumagamit ng YouTube Premium, maaaring hindi na kailanganin a
 Gawing default na kliyente ang %2$s?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Lumipat</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Maaaring magdulot ng mga isyu sa playback ang pag-off ng setting na ito</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Naka-off ang Android System WebView o hindi ito naka-install.
+
+Kailangan ng Android System WebView para sa pag-play ng video. I-on ito at i-update sa pinakabagong bersyon.
+
+I-tap ang OK para buksan ang Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Luma na ang bersyon ng Android System WebView (bersyon %s).
+
+Maaaring magkaroon ng error sa pag-play ng video hanggang sa ma-update ang Android System WebView sa pinakabagong bersyon.
+
+I-tap ang OK para buksan ang Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Huwag nang ipakita muli</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Hindi naka-install ang Android System WebView. I-install ito para maayos ang pag-play ng video</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Subukang paganahin: Gayahin ang mga video stream &gt; Pag-sign in sa Android VR</string>

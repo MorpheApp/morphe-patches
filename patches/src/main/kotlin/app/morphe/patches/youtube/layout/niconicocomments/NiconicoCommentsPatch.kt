@@ -56,7 +56,6 @@ private val niconicoCommentsResourcePatch = patch {
     }
 }
 
-@Suppress("unused")
 val niconicoCommentsPatch = patch(
     name = "Niconico comments",
     description = "Adds an option to show live chat and chat replay as comments that scroll across the video."

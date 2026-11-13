@@ -214,7 +214,6 @@ private const val EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS =
 private const val EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/SponsorBlockViewController;"
 
-@Suppress("unused")
 val sponsorBlockPatch = patch(
     name = "SponsorBlock",
     description = "Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content."

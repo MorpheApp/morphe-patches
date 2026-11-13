@@ -76,7 +76,6 @@ private const val SUBTITLE_FIELD_NAME = "h"
  * Reuses YTM's phone requests and playback commands for Home, Library, and search in Android Auto.
  * Keeps native podcast folders in a Podcasts tab and refreshes folders after Library changes.
  */
-@Suppress("unused")
 val androidAutoPatch = patch(
     name = "Android Auto",
     description = "Bypasses certificate checks and restores YouTube Music Home recommendations, Library collections, and podcasts in Android Auto.",

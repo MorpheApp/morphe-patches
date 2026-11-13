@@ -319,9 +319,9 @@ A változások ezeket tartalmazzák:
   <string name="morphe_hide_keyword_content_search_title">Keresési találatok elrejtése kulcsszavak alapján</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Feliratkozások videóinak elrejtése kulcsszavak alapján</string>
   <string name="morphe_hide_keyword_content_phrases_title">Elrejtendő kulcsszavak</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Adj meg olyan kulcsszavakat és kifejezéseket az elrejtéshez, amelyeket új sorokkal választottál el
+  <string name="morphe_hide_keyword_content_phrases_summary">"Adja meg az elrejtendő kulcsszavakat és kifejezéseket, új sorokkal elválasztva
 
-A kulcsszavak bármilyen szöveg lehet, amely a videók cimkében vagy a csatornaneveiben szerepel"</string>
+A kulcsszavak bármilyen a videók címében szereplő szöveg lehet. Az @Felhasználónév kulcsszó egy adott alkotó összes tartalmát rejti el"</string>
   <string name="morphe_hide_keyword_content_about_summary">"A Főoldal, a Feliratkozások, a Keresés és a Kommentarok szűrve vannak a kulcsszavas kifejezésekkel egyező tartalmak elrejtéséhez
 
 Korlátok:
@@ -331,7 +331,6 @@ Korlátok:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Kulcsszavak vagy kifejezések idézőjelbe tételével elkerülhetők a részleges egyezések a videócímeknél és csatornaneveknél&lt;br&gt;&lt;br&gt; Például,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; el fogja rejteni ezt a videót: &lt;b&gt;Hogyan működik az AI?&lt;/b&gt;&lt;br&gt;de nem fogja elrejteni ezt: &lt;b&gt;Mit jelent a méltányos használat?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Ez a kulcsszó ütközik egy másik beállítással: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">A kulcsszó túl rövid, használatához tedd idézőjelbe: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ez a kulcsszó minden videót el fog rejteni: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Kezdőlap: %1$s
@@ -559,18 +558,11 @@ Egy alkalommal megnyitott, Ask gombbal ellátott videó esetén a funkció minde
   <string name="morphe_export_download_folder_summary">"Exportálja az alkalmazáson belül mentett videókat a készülék tárolójába a letöltések legördülő menüjével. Koppintson a mappa módosításához
 
 Export mappa: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Export mappája</string>
-  <string name="morphe_export_download_folder_change">Mappa megváltoztatása</string>
-  <string name="morphe_export_download_folder_changed">Export mappa megváltoztatva</string>
-  <string name="morphe_export_download_folder_reset">Export mappa visszaállítva</string>
-  <string name="morphe_export_download_folder_missing">Nem található az exportmappa: %s</string>
-  <string name="morphe_export_download_flyout_title">Exportálás a készülékre</string>
   <string name="morphe_export_download_started">Videó exportálása</string>
   <string name="morphe_export_download_progress">Videó exportálása: %s%%</string>
   <string name="morphe_export_download_notification_channel">Videó exportálások</string>
   <string name="morphe_export_download_saved">Videó exportálva: %s</string>
   <string name="morphe_export_download_failed">Nem sikerült exportálni a videót</string>
-  <string name="morphe_export_download_canceled">Exportálás törölve</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hangfelirat hangos felolvasása</string>
   <string name="morphe_vot_screen_summary">Olvassa fel a videó feliratait hangosan a készüléken található szöveg-beszéddé alakító segítségével, szinkronban a lejátszással.</string>
@@ -728,8 +720,6 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <string name="morphe_queue_type_entry_2">Beépített sor</string>
   <string name="morphe_queue_type_entry_3">Morphe sor</string>
   <string name="morphe_queue_type_entry_4">Morphe klienstoldali sor</string>
-  <string name="morphe_queue_add_flyout_menu_title">Sor menüelem hozzáadása a hírfolyam felugró menühöz</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Hozzáad egy további felugró menüelemet. Engedélyezze, ha a \"Hozzáadás a sorhoz\" nem jelenik meg.</string>
   <string name="morphe_local_queue_sheet_title">Várólista</string>
   <string name="morphe_local_queue_open">Sor (%s)</string>
   <string name="morphe_local_queue_clear">Összes törlése</string>
@@ -1462,7 +1452,7 @@ Autós elrendezés
   <string name="morphe_dearrow_titles_player_title">Lejátszó lejátszási listák &amp; ajánlások</string>
   <string name="morphe_dearrow_titles_search_title">Keresési eredmények</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow ikon megjelenítése</string>
-  <string name="morphe_dearrow_titles_icon_summary">Megjeleníti a DeArrow ikont a közösségi videócímeken</string>
+  <string name="morphe_dearrow_titles_icon_summary">Megjeleníti a DeArrow ikont a közösségi videocímeknél. Koppintson az ikonra az eredeti cím és a bélyegkép megjelenítéséhez</string>
   <string name="morphe_dearrow_casual_mode_title">Alkalmi mód</string>
   <string name="morphe_dearrow_casual_mode_summary">Az eredeti címet mutatja a DeArrow-cím helyett, ha a DeArrow-felhasználók arra szavaztak, hogy az eredeti cím tetszik nekik</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimális alkalmi szavazatszám az eredeti cím megjelenítéséhez</string>
@@ -1638,6 +1628,9 @@ Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil hangerő nem elérhető</string>
   <string name="morphe_spoof_video_streams_about_end_early">• A lejátszás 1 másodperccel korábban érhet véget</string>
   <string name="morphe_spoof_video_streams_about_js">• Ha a deobfuszkálás sikertelen, a lejátszás is megbomolhat</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Az Android System WebView ki van kapcsolva vagy nincs telepítve. Kapcsolja be és frissítse, különben a lejátszás sikertelen lehet</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Az Android System WebView verziója elavult. Frissítse, különben a lejátszás sikertelen lehet</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Eredeti hang kényszerítése nem érhető el</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Az Android VR-be való bejelentkezés szükséges.</string>

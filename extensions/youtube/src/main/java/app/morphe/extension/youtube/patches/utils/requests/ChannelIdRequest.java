@@ -125,7 +125,7 @@ public class ChannelIdRequest {
             openConnection = connection;
             // The fetch can start before the constructor sets the future.
             if (future != null && future.isCancelled()) {
-                return null; // Cancelled before the request was sent.
+                return null; // Canceled before the request was sent.
             }
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);

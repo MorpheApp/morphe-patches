@@ -45,6 +45,7 @@ public final class SabrRequestBody {
      * The client of the media requests, with only what the stream url already tells the server.
      * The app would otherwise name itself and the device it runs on.
      */
+    @SuppressWarnings("SameParameterValue")
     static byte[] buildClientInfo(ClientType client, Locale locale) throws IOException {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         CodedOutputStream output = CodedOutputStream.newInstance(bytes);

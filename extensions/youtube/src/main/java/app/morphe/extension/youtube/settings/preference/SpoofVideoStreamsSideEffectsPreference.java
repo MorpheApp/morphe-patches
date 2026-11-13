@@ -26,6 +26,7 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.BulletPointPreference;
 import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.WebViewCheck;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings({"deprecation", "unused"})
@@ -101,12 +102,18 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
             case ANDROID_VR_SABR, ANDROID_VR_EXPERIMENTAL, ANDROID_XR_SABR ->
                     summary = str("morphe_spoof_video_streams_about_no_stable_volume")
                             + '\n' + str("morphe_spoof_video_streams_about_sign_in_to_vr_required");
-            case VISIONOS_1_02, VISIONOS_1_03 ->
+            case VISIONOS_1_02, VISIONOS_1_03, VISIONOS_1_06 ->
                     summary = str("morphe_spoof_video_streams_about_failure")
                             + '\n' + str("morphe_spoof_video_streams_about_end_early")
                             + '\n' + str("morphe_spoof_video_streams_about_no_stable_volume");
-            case TV_SABR, TV_SABR_WII_U, TV_DASH, TV_SIMPLY ->
-                    summary = str("morphe_spoof_video_streams_about_js");
+            case TV_SABR, TV_SABR_WII_U, TV_DASH, TV_SIMPLY -> {
+                summary = str("morphe_spoof_video_streams_about_js");
+                switch (WebViewCheck.getStatus()) {
+                    case MISSING -> summary += '\n' + str("morphe_spoof_video_streams_about_webview_missing");
+                    case OUTDATED -> summary += '\n' + str("morphe_spoof_video_streams_about_webview_outdated");
+                    case OK -> {}
+                }
+            }
             default -> Logger.printException(() -> "Unknown client: " + clientType);
         }
 

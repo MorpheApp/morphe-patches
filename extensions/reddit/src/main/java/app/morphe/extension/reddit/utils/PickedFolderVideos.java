@@ -44,6 +44,7 @@ import app.morphe.extension.shared.Utils;
  * <p>
  * Pending videos are stored, because the app can be closed before a download completes.
  */
+@SuppressWarnings("unused")
 public final class PickedFolderVideos {
 
     private static final String PREFERENCES_NAME = "morphe_download_location";
@@ -136,7 +137,7 @@ public final class PickedFolderVideos {
     }
 
     // The exported flag is only required on Android 13 and newer.
-    @SuppressLint("UnspecifiedRegisterReceiverFlag")
+    @SuppressLint({"UnspecifiedRegisterReceiverFlag", "WrongConstant"})
     private static synchronized void registerDownloadCompleteReceiver() {
         if (downloadCompleteReceiver != null) return;
 
@@ -176,8 +177,7 @@ public final class PickedFolderVideos {
             Logger.printException(() -> "onDownloadComplete failure", ex);
             Utils.showToastLong(str("morphe_download_location_video_failed"));
         } finally {
-            //noinspection ResultOfMethodCallIgnored
-            video.file.delete();
+            Utils.deleteQuietly(video.file);
         }
     }
 

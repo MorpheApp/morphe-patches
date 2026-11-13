@@ -319,9 +319,9 @@ Nogle server-side layouts kan måske ikke gå tilbage.
   <string name="morphe_hide_keyword_content_search_title">Skjul søgeresultater via søgeord</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Skjul abonnementsvideoer via søgeord</string>
   <string name="morphe_hide_keyword_content_phrases_title">Nøgleord at skjule</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Indtast søgeord og sætninger, der skal skjules, adskilt af nye linjer
+  <string name="morphe_hide_keyword_content_phrases_summary">"Indtast nøgleord og vendinger, der skal skjules, adskilt af nye linjer
 
-Søgeord kan være enhver tekst, der vises i videotitler eller kanalnavne"</string>
+Nøgleord kan være enhver tekst, der vises i videotitler. Nøgleordet @Brugernavn skjuler alt indhold fra specifikke skabere"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Hjem / Abonnementer / Søg / Kommentarer filtreres for at skjule indhold, der matcher søgeordssætninger
 
 Begrænsninger:
@@ -331,7 +331,6 @@ Begrænsninger:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">At omringe et nøgleord/sætning med citationstegn vil forhindre delvise matches af videotitler og kanalnavne&lt;br&gt;&lt;br&gt;For eksempel&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; vil skjule videoen: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;, men skjuler ikke: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Nøgleord har modstridende erklæringer: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Søgeordet er for kort og kræver citationstegn: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Nøgleord vil skjule alle videoer: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Hjem: %1$s
@@ -559,18 +558,11 @@ Efter at en video med Ask-knappen er åbnet én gang, fungerer funktionen med al
   <string name="morphe_export_download_folder_summary">"Eksporter videoer gemt i appen til din enhedslager ved hjælp af menuen til downloads i appen. Tryk for at ændre eksportermappen
 
 Eksportermappe: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Eksportermappe</string>
-  <string name="morphe_export_download_folder_change">Skift mappe</string>
-  <string name="morphe_export_download_folder_changed">Eksportermappe ændret</string>
-  <string name="morphe_export_download_folder_reset">Eksportermappe nulstillet</string>
-  <string name="morphe_export_download_folder_missing">Kunne ikke finde eksportmappen %s</string>
-  <string name="morphe_export_download_flyout_title">Eksporter til enhed</string>
   <string name="morphe_export_download_started">Eksporterer video</string>
   <string name="morphe_export_download_progress">Eksporterer video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Videoeksport</string>
   <string name="morphe_export_download_saved">Video eksporteret til %s</string>
   <string name="morphe_export_download_failed">Kunne ikke eksportere videoen</string>
-  <string name="morphe_export_download_canceled">Eksportering annulleret</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Oplæsning af oversættelse</string>
   <string name="morphe_vot_screen_summary">Læs videoundertitler højt ved hjælp af tekst-til-tale på enheden, synkroniseret med afspilningen</string>
@@ -728,8 +720,6 @@ Info: Virker muligvis ikke på live streams"</string>
   <string name="morphe_queue_type_entry_2">Indbygget kø</string>
   <string name="morphe_queue_type_entry_3">Morphe-kø</string>
   <string name="morphe_queue_type_entry_4">Morphe-klientkø</string>
-  <string name="morphe_queue_add_flyout_menu_title">Tilføj feed-flyout-kø-menupunkt</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Tilføjer et ekstra flyout-element. Aktiver dette, hvis \"Tilføj til kø\" ikke vises.</string>
   <string name="morphe_local_queue_sheet_title">Kø</string>
   <string name="morphe_local_queue_open">Kø (%s)</string>
   <string name="morphe_local_queue_clear">Ryd alt</string>
@@ -1462,7 +1452,7 @@ Automotive-layout
   <string name="morphe_dearrow_titles_player_title">Afspilningslister &amp; anbefalinger i afspilleren</string>
   <string name="morphe_dearrow_titles_search_title">Søgeresultater</string>
   <string name="morphe_dearrow_titles_icon_title">Vis DeArrow-ikon</string>
-  <string name="morphe_dearrow_titles_icon_summary">Viser DeArrow-ikonet på crowdsourcede videotitler</string>
+  <string name="morphe_dearrow_titles_icon_summary">Viser DeArrow-ikonet på crowdsourcede videotitler. Tryk på ikonet for at vise den oprindelige titel og miniaturebillede</string>
   <string name="morphe_dearrow_casual_mode_title">Casual-tilstand</string>
   <string name="morphe_dearrow_casual_mode_summary">Viser den originale titel i stedet for DeArrow-titlen, hvis DeArrow-brugere har stemt, at de kan lide den originale titel</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum antal casual-stemmer for at vise den originale titel</string>
@@ -1638,6 +1628,9 @@ Videoafspilning med AV1 kan hakke eller tabe billeder"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil lydstyrke er ikke tilgængelig</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Afspilningen kan slutte 1 sekund for tidligt</string>
   <string name="morphe_spoof_video_streams_about_js">• Hvis deobfuskering mislykkes, kan afspilning mislykkes</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView er slået fra eller ikke installeret. Slå det til og opdater det, ellers kan afspilningen mislykke</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView er forældet. Opdater det, ellers kan afspilningen mislykke</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Tving original lyd er ikke tilgængelig</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Log ind på Android VR er påkrævet</string>

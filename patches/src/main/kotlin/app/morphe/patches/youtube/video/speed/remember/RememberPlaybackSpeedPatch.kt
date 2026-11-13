@@ -12,9 +12,13 @@ package app.morphe.patches.youtube.video.speed.remember
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resource.resourceId
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -27,18 +31,23 @@ import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
+import app.morphe.patches.youtube.video.speed.custom.EXTENSION_CLASS as CUSTOM_SPEED_EXTENSION_CLASS
 import app.morphe.patches.youtube.video.speed.settingsMenuShortsSpeedGroup
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstLiteralInstruction
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/speed/RememberPlaybackSpeedPatch;"
 
 /**
- * Plays faster while the screen is held, at 2.0x. Logs the gesture with its own id. 21.11+
+ * Plays a Short faster while the screen is held, at 2.0x, unless it already plays at 2.0x,
+ * and shows "2x" above the player. Logs the gesture with its own id. 21.11+
  */
 internal object SpeedmasterStartFingerprint : Fingerprint(
     filters = listOf(
@@ -109,12 +118,43 @@ internal val rememberPlaybackSpeedPatch = patch {
         hookPlayerResponseVideoId("$EXTENSION_CLASS->preloadMusicVideoFetch(Ljava/lang/String;Z)V")
 
         // The faster speed of a held Short is not replaced with the Shorts speed.
+        // A held Short plays at the tap and hold speed, the same as the regular player, instead of 2.0x.
         if (is_21_11_or_greater) {
             SpeedmasterStartFingerprint.let {
-                it.method.addInstructionsAtControlFlowLabel(
-                    it.instructionMatches.last().index,
-                    "invoke-static { }, $EXTENSION_CLASS->onSpeedmasterStarted()V"
-                )
+                it.method.apply {
+                    // The text above the player shows the speed.
+                    val textIndex = indexOfFirstLiteralInstruction(
+                        resourceId(ResourceType.STRING, "reel_speedmaster_indicator_text")
+                    )
+                    if (textIndex >= 0) {
+                        val textResultIndex = indexOfFirstInstructionOrThrow(textIndex, Opcode.MOVE_RESULT_OBJECT)
+                        val textRegister = getInstruction<OneRegisterInstruction>(textResultIndex).registerA
+
+                        addInstructions(
+                            textResultIndex + 1,
+                            """
+                                invoke-static { v$textRegister }, $CUSTOM_SPEED_EXTENSION_CLASS->getShortsTapAndHoldText(Ljava/lang/String;)Ljava/lang/String;
+                                move-result-object v$textRegister
+                            """
+                        )
+                    }
+
+                    addInstructionsAtControlFlowLabel(
+                        it.instructionMatches.last().index,
+                        "invoke-static { }, $EXTENSION_CLASS->onSpeedmasterStarted()V"
+                    )
+
+                    val speedIndex = it.instructionMatches[1].index
+                    val speedRegister = getInstruction<OneRegisterInstruction>(speedIndex).registerA
+
+                    addInstructions(
+                        speedIndex + 1,
+                        """
+                            invoke-static { }, $CUSTOM_SPEED_EXTENSION_CLASS->getTapAndHoldSpeed()F
+                            move-result v$speedRegister
+                        """
+                    )
+                }
             }
         }
 

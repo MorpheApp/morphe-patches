@@ -147,7 +147,6 @@ public final class VideoActionButtonsFilter extends Filter {
     private static final String MORE_BUTTON_PATH = "overflow_menu_button.e";
 
     private final StringFilterGroup actionBarGroup;
-    private final StringFilterGroup channelBarGroup;
     private final StringFilterGroup likeSubscribeGlow;
     private final StringFilterGroup moreButton;
     private final StringFilterGroup channelProfile;
@@ -161,7 +160,7 @@ public final class VideoActionButtonsFilter extends Filter {
                 VIDEO_ACTION_BAR_PREFIX
         );
         // Some layouts show the channel in its own bar above the action bar.
-        channelBarGroup = new StringFilterGroup(
+        StringFilterGroup channelBarGroup = new StringFilterGroup(
                 Settings.HIDE_CHANNEL_PROFILE_BUTTON,
                 COMPACT_CHANNEL_BAR_PREFIX
         );
@@ -340,6 +339,7 @@ public final class VideoActionButtonsFilter extends Filter {
         return shownActions;
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isHidden(VideoActionBarItemContent content) {
         // Some layouts have an Ask button that is not a plain button, so it is found by the panel it opens.
         if (ActionButton.ASK.shouldHide && new String(content.toByteArray(), StandardCharsets.ISO_8859_1)

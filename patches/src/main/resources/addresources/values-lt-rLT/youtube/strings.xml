@@ -319,9 +319,9 @@ Pakeitimai apima:
   <string name="morphe_hide_keyword_content_search_title">Slėpti paieškos rezultatus pagal raktinius žodžius</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Slėpti prenumeratų vaizdo įrašus pagal raktinius žodžius</string>
   <string name="morphe_hide_keyword_content_phrases_title">Raktiniai žodžiai slėpimui</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Įveskite raktinius žodžius ir frazes, kurias norite paslėpti, atskirdami jas naujomis eilutėmis
+  <string name="morphe_hide_keyword_content_phrases_summary">"Įveskite raktinius žodžius ir frazes, kurių norite paslėpti, atskirdami juos naujomis eilutėmis
 
-Raktiniai žodžiai gali būti bet koks tekstas, rodomas vaizdo įrašų pavadinimuose arba kanalų pavadinimuose"</string>
+Raktiniai žodžiai gali būti bet koks tekstas, rodomas vaizdo įrašų pavadinimuose. Raktinis žodis @VartotojoVardas paslepia visą turinį iš konkrečių kūrėjų"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Pradžia / Prenumeratos / Paieška / Komentarai yra filtruojami, kad būtų paslėptas turinys, atitinkantis raktines frazes
 
 Apribojimai:
@@ -331,7 +331,6 @@ Apribojimai:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Apsupę raktinį žodį / frazę dvigubomis kabutėmis išvengsite dalinių vaizdo įrašų pavadinimų ir kanalų pavadinimų atitikimų&lt;br&gt;&lt;br&gt;Pavyzdžiui,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; paslėps vaizdo įrašą: &lt;b&gt;Kaip veikia dirbtinis intelektas?&lt;/b&gt;&lt;br&gt;bet nepaslėps: &lt;b&gt;Ką reiškia sąžiningas naudojimas?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Raktinis žodis turi prieštaringas deklaracijas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Raktinis žodis per trumpas ir reikalauja kabučių: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Raktinis žodis paslėps visus vaizdo įrašus: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Pagrindinis: %1$s
@@ -559,18 +558,11 @@ Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais 
   <string name="morphe_export_download_folder_summary">"Eksportuokite programėlėje išsaugotus vaizdo įrašus į savo įrenginio atmintį naudodami programėlės atsisiuntimų išsiskleidžiamąjį meniu. Bakstelėkite, kad pakeitumėte eksportavimo aplanką
 
 Eksportavimo aplankas: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Eksportavimo aplankas</string>
-  <string name="morphe_export_download_folder_change">Pakeisti aplanką</string>
-  <string name="morphe_export_download_folder_changed">Eksportavimo aplankas pakeistas</string>
-  <string name="morphe_export_download_folder_reset">Eksportavimo aplankas nustatytas iš naujo</string>
-  <string name="morphe_export_download_folder_missing">Nepavyko rasti eksporto aplanko %s</string>
-  <string name="morphe_export_download_flyout_title">Eksportuoti į įrenginį</string>
   <string name="morphe_export_download_started">Vaizdo įrašas eksportuojamas</string>
   <string name="morphe_export_download_progress">Vaizdo įrašo eksportavimas: %s%%</string>
   <string name="morphe_export_download_notification_channel">Vaizdo įrašų eksportavimas</string>
   <string name="morphe_export_download_saved">Vaizdo įrašas eksportuotas į %s</string>
   <string name="morphe_export_download_failed">Nepavyko eksportuoti vaizdo įrašo</string>
-  <string name="morphe_export_download_canceled">Eksportavimas atšauktas</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Balso vertimas</string>
   <string name="morphe_vot_screen_summary">Skaito vaizdo įrašo subtitrus garsiai naudodamas įrenginio teksto į kalbą sintezatorių, sinchronizuotą su atkūrimu</string>
@@ -728,8 +720,6 @@ Informacija: gali neveikti tiesioginių transliacijų atveju"</string>
   <string name="morphe_queue_type_entry_2">Natūrali eilė</string>
   <string name="morphe_queue_type_entry_3">Morphe eilė</string>
   <string name="morphe_queue_type_entry_4">Morphe eilės klientinė pusė</string>
-  <string name="morphe_queue_add_flyout_menu_title">Pridėti meniu elementą „Eilė“ prie srauto išskleidžiamojo meniu</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Prideda papildomą išskleidžiamojo meniu elementą. Įgalinkite, jei „Pridėti į eilę“ nerodomas</string>
   <string name="morphe_local_queue_sheet_title">Eilė</string>
   <string name="morphe_local_queue_open">Eilė (%s)</string>
   <string name="morphe_local_queue_clear">Išvalyti viską</string>
@@ -1462,7 +1452,7 @@ Automobilio išdėstymas
   <string name="morphe_dearrow_titles_player_title">Grotuvo grojaraščiai &amp; rekomendacijos</string>
   <string name="morphe_dearrow_titles_search_title">Paieškos rezultatai</string>
   <string name="morphe_dearrow_titles_icon_title">Rodyti DeArrow piktogramą</string>
-  <string name="morphe_dearrow_titles_icon_summary">Rodo DeArrow piktogramą ant bendruomenės pasiūlytų vaizdo įrašų pavadinimų</string>
+  <string name="morphe_dearrow_titles_icon_summary">Rodo DeArrow piktogramą bendruomenės kuriamų vaizdo įrašų pavadinimų šalia. Bakstelėkite piktogramą, kad pamatytumėte originalų pavadinimą ir nuotrauką</string>
   <string name="morphe_dearrow_casual_mode_title">Kasdienis režimas</string>
   <string name="morphe_dearrow_casual_mode_summary">Rodo originalų pavadinimą vietoj DeArrow pavadinimo, jei DeArrow vartotojai balsuodami nurodė, kad jiems patinka originalus pavadinimas</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalus kasdienių balsų skaičius, kad būtų rodomas originalus pavadinimas</string>
@@ -1638,6 +1628,9 @@ Vaizdo įrašų atkūrimas su AV1 gali strigti arba praleisti kadrus"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilus garsas nepasiekiamas.</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Atkūrimas gali baigtis 1 sekundę anksčiau.</string>
   <string name="morphe_spoof_video_streams_about_js">• Jei deobfuskacija nepavyksta, atkūrimas gali nepavykti</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• \"Android System WebView\" išjungta arba neįdiegta. Įjunkite ir atnaujinkite ją, kitaip atkūrimas gali nepavykti</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• \"Android System WebView\" versija pasenusi. Atnaujinkite ją, kitaip atkūrimas gali nepavykti</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• „Priversti originalų garsą“ nepasiekiamas.</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Prisijungimas prie „Android VR“ privalomas.</string>

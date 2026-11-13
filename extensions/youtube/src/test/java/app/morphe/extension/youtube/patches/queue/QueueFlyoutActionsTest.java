@@ -18,6 +18,7 @@ import com.google.protobuf.CodedOutputStream;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuItem;
@@ -26,7 +27,7 @@ import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.MenuRe
 public class QueueFlyoutActionsTest {
     @Test
     public void playlistNextAndLastKeepTheirOwnCollectionTargetAfterSerialization() throws Exception {
-        for (String playlist : java.util.List.of("PL-public", "PL-private", "WL", "LL", "RD-mix")) {
+        for (String playlist : List.of("PL-public", "PL-private", "WL", "LL", "RD-mix")) {
             var completed = QueueFlyoutActions.completeMenu(MenuRenderer.getDefaultInstance(), true,
                     "Next", "Last", playlist, false);
             assertEquals(2, completed.getItemsCount());

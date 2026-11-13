@@ -28,6 +28,7 @@ import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -312,14 +313,14 @@ public class PlaylistPatch {
                 return;
             }
             Utils.runOnBackgroundThread(() -> {
-                Pair<String, String>[] playlists = request.getPlaylists();
+                List<Pair<String, String>> playlists = request.getPlaylists();
                 // Fetch again next time, so a failed request can be retried.
                 GetPlaylistsRequest.clear();
-                if (playlists == null || playlists.length == 0) return;
+                if (playlists == null || playlists.isEmpty()) return;
                 Utils.runOnMainThread(() -> {
                     SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
                             .createMainLayout(context, null);
-                    Map<View, Runnable> actionsMap = new LinkedHashMap<>(2 * playlists.length);
+                    Map<View, Runnable> actionsMap = new LinkedHashMap<>(2 * playlists.size());
                     int libraryIconId = QueueManager.SAVE_QUEUE.drawableId;
 
                     LinearLayout listContainer = new LinearLayout(context);

@@ -319,9 +319,9 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_keyword_content_search_title">Itago ang mga resulta ng paghahanap sa pamamagitan ng mga keyword</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Itago ang mga video sa Mga Subscription sa pamamagitan ng mga keyword</string>
   <string name="morphe_hide_keyword_content_phrases_title">Mga Keyword na itatago</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Maglagay ng mga keyword at parirala na itatago, na pinaghihiwalay ng mga bagong linya
+  <string name="morphe_hide_keyword_content_phrases_summary">"Maglagay ng mga keyword at parirala na itatago, ihiwalay gamit ang mga bagong linya
 
-Ang mga keyword ay maaaring anumang teksto na ipinapakita sa mga pamagat ng video o mga pangalan ng channel"</string>
+Ang mga keyword ay maaaring anumang text na ipinapakita sa mga titulo ng video. Itinatago ng keyword na @UserName ang lahat ng content mula sa mga partikular na creator"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Ang Home / Subscriptions / Search / Comments ay fini-filter upang itago ang nilalaman na tumutugma sa mga parirala ng keyword
 
 Mga Limitasyon:
@@ -331,7 +331,6 @@ Mga Limitasyon:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Mapipigilan ang mga bahagyang pagtutugma ng mga pamagat ng video at pangalan ng channel kung pinapaligiran ang isang keyword/parirala na may dobleng panipi&lt;br&gt;&lt;br&gt;Halimbawa, ang&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ay magtatago ng video: &lt;b&gt;Paano gumagana ang AI?&lt;/b&gt;&lt;br&gt;ngunit hindi magtatago:&lt;b&gt;Ano ang ibig sabihin ng patas na paggamit?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">May magkasalungat na deklarasyon ang keyword: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Masyadong maikli at kailangan ng mga panipi ang keyword: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Itatago lahat ng mga video ang keyword: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %1$s
@@ -559,18 +558,11 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <string name="morphe_export_download_folder_summary">"I-export ang mga na-save na video sa app sa storage ng iyong device gamit ang in-app downloads flyout menu. I-tap para baguhin ang export folder
 
 Export folder: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">I-export ang folder</string>
-  <string name="morphe_export_download_folder_change">Baguhin ang folder</string>
-  <string name="morphe_export_download_folder_changed">Nabago ang export folder</string>
-  <string name="morphe_export_download_folder_reset">Na-reset ang export folder</string>
-  <string name="morphe_export_download_folder_missing">Hindi mahanap ang export folder %s</string>
-  <string name="morphe_export_download_flyout_title">I-export sa device</string>
   <string name="morphe_export_download_started">Ine-export ang video</string>
   <string name="morphe_export_download_progress">Ineeksport ang video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Mga export ng video</string>
   <string name="morphe_export_download_saved">Na-export ang video sa %s</string>
   <string name="morphe_export_download_failed">Hindi ma-export ang video</string>
-  <string name="morphe_export_download_canceled">Kinansela ang export</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Pagsasalin ng boses</string>
   <string name="morphe_vot_screen_summary">Basahin nang malakas ang mga caption ng video gamit ang text-to-speech sa iyong device, na naka-synchronize sa pagpapatugtog</string>
@@ -729,8 +721,6 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_queue_type_entry_2">Katutubong pila</string>
   <string name="morphe_queue_type_entry_3">Pila ng Morphe</string>
   <string name="morphe_queue_type_entry_4">Pila ng Morphe client-side</string>
-  <string name="morphe_queue_add_flyout_menu_title">Idagdag ang feed flyout queue na menu item</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Nagdaragdag ng karagdagang flyout item. I-enable ito kung hindi ipinapakita ang \"Idagdag sa queue\".</string>
   <string name="morphe_local_queue_sheet_title">Pila</string>
   <string name="morphe_local_queue_open">Pila (%s)</string>
   <string name="morphe_local_queue_clear">Alisin lahat</string>
@@ -1463,7 +1453,7 @@ Automotive layout
   <string name="morphe_dearrow_titles_player_title">Mga playlist &amp; rekomendasyon ng player</string>
   <string name="morphe_dearrow_titles_search_title">Mga resulta ng paghahanap</string>
   <string name="morphe_dearrow_titles_icon_title">Ipakita ang icon ng DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Ipinapakita ang icon ng DeArrow sa mga pamagat ng video na mula sa karamihan</string>
+  <string name="morphe_dearrow_titles_icon_summary">Ipinapakita ang icon ng DeArrow sa mga crowdsourced video title. I-tap ang icon upang ipakita ang orihinal na pamagat at thumbnail</string>
   <string name="morphe_dearrow_casual_mode_title">Kaswal na mode</string>
   <string name="morphe_dearrow_casual_mode_summary">Ipinapakita ang orihinal na pamagat sa halip na pamagat ng DeArrow kung ang mga gumagamit ng DeArrow ay bumoto na gusto nila ang orihinal na pamagat</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum na kaswal na boto upang ipakita ang orihinal na pamagat</string>
@@ -1639,6 +1629,9 @@ Ang video playback na may AV1 ay maaaring mag-stutter o mag-drop ng frames"</str
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Hindi available ang matatag na volume</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Maaaring matapos nang 1 segundo nang maaga ang playback</string>
   <string name="morphe_spoof_video_streams_about_js">• Kung mabigo ang deobfuscation, maaaring mabigo ang playback</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Naka-off o hindi naka-install ang Android System WebView. I-on ito at i-update, kundi maaaring mabigo ang playback</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Luma na ang Android System WebView. I-update ito, kundi maaaring mabigo ang playback</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Hindi available ang Force original audio</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Mag-sign in sa Android VR ay kinakailangan</string>

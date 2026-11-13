@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">شاردنەوەی ئەنجامەکانی گەڕان بەپێی وشە کلیلییەکان</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">شاردنەوەی ڤیدیۆکانی بەشداربوون بەپێی وشە کلیلییەکان</string>
   <string name="morphe_hide_keyword_content_phrases_title">دەستەواژەکان بۆ شاردنەوە</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"وشە سەرەکییەکان و دەستەواژەکانی بۆ شاردنەوە بنوسە، بە دابەشکردنیان بە دێڕی نوێ
+  <string name="morphe_hide_keyword_content_phrases_summary">"وشە سەرەکی و دەستەواژەکانی بۆ شاردنەوە بنووسە، بە دێڕی نوێ جیاکەرەوە
 
-وشە سەرەکییەکان دەتوانن هەر دەقێک بن کە لە ناونیشانی ڤیدیۆکان یان ناوی کەناڵەکاندا دەردەکەوێت"</string>
+وشە سەرەکییەکان دەتوانن هەر دەقێک بن کە لە ناونیشانی ڤیدیۆکاندا دەردەکەوێت. وشەی سەرەکی @UserName هەموو ناوەڕۆکەکانی دروستکەرێکی دیاریکراو دەشارێتەوە"</string>
   <string name="morphe_hide_keyword_content_about_summary">"سەرەتا / بەشدارکەرییەکان / گەڕان / کۆمێنتەکان فلتەر دەکرێن بۆ شاردنەوەی ئەو ناوەڕۆکانەی کە لەگەڵ دەستەواژە وشە سەرەکییەکان دەگونجێن
 
 سەنگەکان:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">دانانی وشە یان دەستەواژەیەک لە نێوان نیشانەی هاوتایین (\"\") ڕێگری دەکات لە دۆزینەوەی بەشێکی ناو ناوی ڤیدیۆکان و ناوی کەناڵەکان&lt;br&gt;&lt;br&gt;بۆ نموونە،&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ڤیدیۆی : &lt;b&gt;How does AI work?&lt;/b&gt; دەشارێتەوە&lt;br&gt;بەڵام ئەمە ناشارێتەوە: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">دەستەواژە ڕاگەیاندنی ناکۆکی هەیە: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">دەستەواژە زۆر کورتە و پێویستی بە کۆتەیشن هەیە: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">دەستەواژە هەموو ڤیدیۆکان دەشارێتەوە: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• سەرەتا: %1$s
@@ -560,18 +559,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"ڤیدیۆ پاشکەوتکراوەکانی ناو ئەپ بۆ کۆگای ئامێرەکەت هەناردە بکە بە بەکارهێنانی مینیۆی داگرتنەکانی ناو ئەپەکە. کلیک بکە بۆ گۆڕینی فۆڵدەری هەناردان
 
 فۆڵدەری هەناردان: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">فۆڵدەری هەناردان</string>
-  <string name="morphe_export_download_folder_change">گۆڕینی فۆڵدەر</string>
-  <string name="morphe_export_download_folder_changed">فۆڵدەری هەناردان گۆڕدرا</string>
-  <string name="morphe_export_download_folder_reset">فۆڵدەری هەناردان ڕیست کرا</string>
-  <string name="morphe_export_download_folder_missing">نەتوانرا فۆڵدەری هەناردانی %s بدۆزرێتەوە</string>
-  <string name="morphe_export_download_flyout_title">گواستنەوە بۆ ئامێر</string>
   <string name="morphe_export_download_started">هەناردەکردنی ڤیدیۆ</string>
   <string name="morphe_export_download_progress">هەناردەکردنی ڤیدیۆ: %s%%</string>
   <string name="morphe_export_download_notification_channel">هەناردەکردنی ڤیدیۆکان</string>
   <string name="morphe_export_download_saved">ڤیدیۆکە گوازرایەوە بۆ %s</string>
   <string name="morphe_export_download_failed">نەتوانرا ڤیدیۆکە بگوازرێتەوە</string>
-  <string name="morphe_export_download_canceled">گواستنەوەکە هەڵوەشێنرا</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">وەرگێڕانی دەنگی</string>
   <string name="morphe_vot_screen_summary">ژێرنووسەکانی ڤیدیۆ بە دەنگ دەخوێنێتەوە بە بەکارهێنانی دەق-بۆ-دەنگی ئامێرەکە، هاوکات لەگەڵ لێدانەکە</string>
@@ -730,8 +722,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">ڕیزبەندی ڕەسەن</string>
   <string name="morphe_queue_type_entry_3">ڕیزبەندی Morphe</string>
   <string name="morphe_queue_type_entry_4">ڕیزبەندی Morphe لە لای کلاینت</string>
-  <string name="morphe_queue_add_flyout_menu_title">زیادکردنی بژاردەی ڕیزبەندی بۆ مێنیۆی فید</string>
-  <string name="morphe_queue_add_flyout_menu_summary">بژاردەیەکی flyout ی تر زیاد دەکات. ئەمە چالاک بکە ئەگەر \"Add to queue\" پیشان نەدرێت</string>
   <string name="morphe_local_queue_sheet_title">ڕیزبەندی</string>
   <string name="morphe_local_queue_open">ڕیزبەندی (%s)</string>
   <string name="morphe_local_queue_clear">سڕینەوەی هەموویان</string>
@@ -1464,7 +1454,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">لیستەکانی پلەیەر &amp; پێشنیارەکان</string>
   <string name="morphe_dearrow_titles_search_title">ئەنجامەکانی گەڕان</string>
   <string name="morphe_dearrow_titles_icon_title">نیشاندانی ئایکۆنی DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">ئایکۆنی DeArrow لەسەر ناونیشانەکانی ڤیدیۆی کۆمەڵانگاری نیشان دەدات</string>
+  <string name="morphe_dearrow_titles_icon_summary">ئایکۆنی DeArrow لەسەر ناونیشانەکانی ڤیدیۆی کۆمەڵگی نیشان دەدات. بۆ پیشاندانی ناونیشانی ڕەسەن و وێنەی پێشوەختە، کلیک لەسەر ئایکۆنەکە بکە</string>
   <string name="morphe_dearrow_casual_mode_title">مۆدی ئاسایی</string>
   <string name="morphe_dearrow_casual_mode_summary">ناونیشانی ئەسڵی نیشان دەدات لە جیاتی ناونیشانی DeArrow ئەگەر بەکارهێنەرانی DeArrow دەنگیان داوە کە ناونیشانی ئەسڵیان بەدڵە</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">کەمترین دەنگی ئاسایی بۆ نیشاندانی ناونیشانی ئەسڵی</string>
@@ -1640,6 +1630,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• دەنگی جێگیر بەردەست نییە</string>
   <string name="morphe_spoof_video_streams_about_end_early">• ڕەنگە پەخشکردن ١ چرکە پێش کاتی تەواوبوون کۆتایی بێت</string>
   <string name="morphe_spoof_video_streams_about_js">• ئەگەر deobfuscation سەرکەوتوو نەبوو، لێدان ڕەنگە شکست بهێنێت</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView کوژاوەتەوە یان دامەنەراوە. چالاکی بکە و نوێی بکەرەوە، ئەگەر نا ڕەنگە لایەنی نمایشکردن تووشی کێشە ببێت</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView کۆن بووە. نوێی بکەرەوە، ئەگەر نا ڕەنگە لایەنی نمایشکردن تووشی کێشە ببێت</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• دەنگی ڕەسەنی بەزۆر بەردەست نییە</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• چوونەژوورەوە بۆ Android VR پێویستە</string>

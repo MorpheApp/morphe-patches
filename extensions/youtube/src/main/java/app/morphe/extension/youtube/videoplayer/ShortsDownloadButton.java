@@ -47,6 +47,7 @@ public final class ShortsDownloadButton {
     private ShortsDownloadButton() {
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

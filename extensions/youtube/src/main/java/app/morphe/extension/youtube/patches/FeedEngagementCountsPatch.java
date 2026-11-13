@@ -41,7 +41,7 @@ import app.morphe.extension.youtube.patches.utils.FeedVideoCardsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Shows the like count and the like ratio of feed videos at the top left corner of their thumbnails.
+ * Shows the like count and the like ratio of feed videos in the top left corner of their thumbnails.
  * Part of the Return YouTube Dislike patch.
  * <p>
  * Feed videos do not include their like count, so it's fetched from the Return YouTube Dislike API,
@@ -170,8 +170,9 @@ public final class FeedEngagementCountsPatch {
         if (!ENABLED) {
             return;
         }
+        // The video passed, as a card that enters the list can still be known as the video it showed before.
         if (videoId != null && host instanceof ComponentHost componentHost
-                && (FeedVideoCardsPatch.isInDialog(componentHost) || FeedVideoCardsPatch.isLiveCard(componentHost))) {
+                && (FeedVideoCardsPatch.isInDialog(componentHost) || FeedVideoCardsPatch.isLiveVideo(videoId))) {
             videoId = null;
         }
         CountsBadge badge = badges.get(host);
@@ -443,7 +444,7 @@ public final class FeedEngagementCountsPatch {
         }
 
         /**
-         * Places the badge at the top left corner of the thumbnail.
+         * Places the badge in the top left corner of the thumbnail.
          */
         void place(View host) {
             final boolean loading = isLoading();
@@ -489,8 +490,8 @@ public final class FeedEngagementCountsPatch {
                 removeFromOverlay(host);
                 return;
             }
-            final Rect duration = frame.duration;
-            final Rect thumbnail = frame.thumbnail;
+            final Rect duration = frame.duration();
+            final Rect thumbnail = frame.thumbnail();
             // In right to left languages the duration badge is at the left.
             final boolean rtl = FeedViewCountPatch.isRtl(host);
             // The top of the duration badge, or of the row it would be in.
@@ -558,9 +559,9 @@ public final class FeedEngagementCountsPatch {
             final int top = thumbnailTop + margin;
             // The badge does not overlap the row of the duration badge, which can also have the view count.
             compact = top + height > bottom;
-            if (compact && this.frame != null && this.frame.estimated) {
-                // The row of the duration can be lower, where the full badge fits, so the badge waits for it
-                // instead of changing its layout.
+            if (compact && this.frame != null && this.frame.estimated()) {
+                // The row of the duration can move down to where the full badge fits, so the badge waits
+                // for it instead of changing its layout.
                 removeFromOverlay(host);
                 return;
             }
@@ -774,6 +775,7 @@ public final class FeedEngagementCountsPatch {
         public void setColorFilter(@Nullable ColorFilter colorFilter) {
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;

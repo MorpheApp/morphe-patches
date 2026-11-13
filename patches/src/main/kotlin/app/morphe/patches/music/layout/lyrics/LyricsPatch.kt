@@ -8,11 +8,17 @@
 
 package app.morphe.patches.music.layout.lyrics
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.registersUsed
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
@@ -26,7 +32,6 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
-import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -35,20 +40,24 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPatch;"
 internal const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/lyrics/ui/LyricsPanelInstaller;"
 private const val LOCKSCREEN_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/LockScreenLyrics;"
 private const val MINIPLAYER_LYRICS_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/MiniplayerLyrics;"
+private const val DEVICE_LYRICS_TAB_CLASS = "Lapp/morphe/extension/music/patches/lyrics/ui/DeviceLyricsTab;"
 
 private const val LYRICS_PANEL_FILTER =
     "Lapp/morphe/extension/music/patches/components/LyricsPanelFilter;"
 
-@Suppress("unused")
 val lyricsPatch = patch(
     name = "Third-party lyrics",
     description = "Adds an option to show synced lyrics with experience enhancement from 19+ providers in the lyrics panel."
@@ -263,6 +272,113 @@ val lyricsPatch = patch(
         // The panel content is built by Elements, so there is no view to hook. The timed
         // lyrics component is the earliest signal that the opened panel is the lyrics one.
         addLithoFilter(LYRICS_PANEL_FILTER)
+
+        // The app builds the watch next response of device files itself, with only a Songs tab,
+        // so there is no lyrics tab to show the panel in. A lyrics tab is added to that response,
+        // and the page of the tab is replaced with one that only holds the panel. The extension
+        // methods filled in here have only their parameter registers.
+        fun deviceLyricsTabMethod(name: String) =
+            Fingerprint(definingClass = DEVICE_LYRICS_TAB_CLASS, name = name).method
+
+        val tabRendererType = SideloadedWatchNextResponseFingerprint.instructionMatches[1]
+            .instruction.getReference<TypeReference>()!!.type
+
+        SideloadedWatchNextResponseFingerprint.let {
+            val tabType = it.instructionMatches.last().fieldReference.definingClass
+            val messageType = classDefBy(tabType).superclass!!
+
+            it.method.apply {
+                val tabDefaultInstance = getInstruction(
+                    indexOfFirstInstructionOrThrow(
+                        fieldAccess(opcode = Opcode.SGET_OBJECT, definingClass = tabType, type = tabType)
+                    )
+                ).getReference<FieldReference>()!!
+
+                // Only the Songs tab is added, in either of the paths that build the response.
+                val addTabIndices = findInstructionIndicesReversedOrThrow(
+                    methodCall(parameters = listOf(tabType), returnType = "V")
+                )
+                val addTabMethod = getInstruction(addTabIndices.first()).getReference<MethodReference>()!!
+                addTabIndices.forEach { index ->
+                    val builderRegister = getInstruction(index).registersUsed.first()
+                    addInstruction(
+                        index + 1,
+                        "invoke-static/range { v$builderRegister .. v$builderRegister }, " +
+                            "$DEVICE_LYRICS_TAB_CLASS->addTab(Ljava/lang/Object;)V"
+                    )
+                }
+
+                deviceLyricsTabMethod("defaultTab").addInstructions(
+                    0,
+                    """
+                        sget-object v0, $tabDefaultInstance
+                        return-object v0
+                    """
+                )
+                deviceLyricsTabMethod("parseTab").addInstructions(
+                    0,
+                    """
+                        check-cast p0, $messageType
+                        invoke-static { p0, p1 }, $messageType->parseFrom($messageType[B)$messageType
+                        move-result-object p0
+                        return-object p0
+                    """
+                )
+                deviceLyricsTabMethod("appendTab").addInstructions(
+                    0,
+                    """
+                        check-cast p0, ${addTabMethod.definingClass}
+                        check-cast p1, $tabType
+                        invoke-virtual { p0, p1 }, $addTabMethod
+                        return-void
+                    """
+                )
+            }
+        }
+
+        TabControllerAddTabFingerprint.let {
+            val tabbedViewField = it.instructionMatches[1].fieldReference
+            val tabModelType = it.method.parameterTypes.first().toString()
+            val tabRendererField = tabModelConstructorFingerprint(tabModelType, tabRendererType)
+                .instructionMatches.first().fieldReference
+
+            it.method.addInstructions(
+                0,
+                """
+                    iget-object v0, p0, $tabbedViewField
+                    invoke-static { v0, p0, p1, p3 }, $DEVICE_LYRICS_TAB_CLASS->onAddTab(Landroid/view/ViewGroup;Ljava/lang/Object;Ljava/lang/Object;Landroid/view/View;)Landroid/view/View;
+                    move-result-object p3
+                """
+            )
+
+            // Like the app, only check the tab renderer for null before casting it.
+            deviceLyricsTabMethod("serializeTabRenderer").addInstructionsWithLabels(
+                0,
+                """
+                    check-cast p0, $tabModelType
+                    iget-object p0, p0, $tabRendererField
+                    if-nez p0, :renderer
+                    const/4 p0, 0x0
+                    return-object p0
+                    :renderer
+                    check-cast p0, $tabRendererType
+                    invoke-virtual { p0 }, $tabRendererType->toByteArray()[B
+                    move-result-object p0
+                    return-object p0
+                """
+            )
+
+            val removeTabMethod = TabControllerRemoveTabFingerprint.originalMethod
+            deviceLyricsTabMethod("removeTab").addInstructions(
+                0,
+                """
+                    check-cast p0, ${removeTabMethod.definingClass}
+                    check-cast p1, $tabModelType
+                    invoke-virtual { p0, p1 }, $removeTabMethod
+                    return-void
+                """
+            )
+        }
 
         // Some accounts get lyrics as a player tab instead of an engagement panel. A tab page can
         // be built long before it is selected, so the litho filter alone can't install the panel.

@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">تمييز الإعدادات الجديدة</string>
   <string name="morphe_settings_new_indicator_days_summary">عدد الأيام التي تظهر فيها النقطة بجانب الإعدادات والخيارات التي أُضيفت بواسطة التحديث</string>
   <string name="morphe_settings_new_indicator_days_off">متوقف</string>
+  <string name="morphe_settings_new_indicator_clear_title">تحديد كل الإعدادات كمُشاهدة</string>
+  <string name="morphe_settings_new_indicator_clear_summary">إزالة النقطة من كل الإعدادات والخيارات الجديدة</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">تحديد كل الإعدادات كمُشاهدة؟</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">تتم إزالة النقطة من كل الإعدادات والخيارات الجديدة. ستظل الإعدادات المضافة في التحديثات المستقبلية مميزة.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">إعادة التشغيل لإنهاء الإعداد</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 تحقق من صحة اسم الحزمة وأن التطبيق مثبت"</string>
   <string name="morphe_external_downloader_empty_warning">لا يمكن أن يكون اسم الحزمة فارغًا</string>
+  <string name="morphe_export_download_folder_dialog_title">مجلد التصدير</string>
+  <string name="morphe_export_download_folder_change">تغيير المجلد</string>
+  <string name="morphe_export_download_folder_changed">تم تغيير مجلد التصدير</string>
+  <string name="morphe_export_download_folder_reset">إعادة تعيين مجلد التصدير</string>
+  <string name="morphe_export_download_folder_missing">تعذر العثور على مجلد التصدير %s</string>
+  <string name="morphe_export_download_flyout_title">تصدير إلى جهاز</string>
+  <string name="morphe_export_download_canceled">تم إلغاء التصدير</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">مُخصّص</string>
   <string name="morphe_custom_branding_icon_title">أيقونة التطبيق</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 هل ترغب في جعل %2$s هو العميل الافتراضي؟"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">تبديل</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">قد يؤدي إيقاف تشغيل هذا الإعداد إلى مشكلات في التشغيل</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView متوقف أو غير مثبت.
+
+تتطلب عملية تشغيل الفيديو وجود Android System WebView. يرجى تفعيله وتحديثه إلى أحدث إصدار.
+
+انقر على موافق لفتح Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"إصدار Android System WebView قديم (الإصدار %s).
+
+قد تفشل عملية تشغيل الفيديو حتى يتم تحديث Android System WebView إلى أحدث إصدار.
+
+انقر على موافق لفتح Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">لا تعرض مرة أخرى</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView غير مثبت. يرجى تثبيته لإصلاح تشغيل الفيديو</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">جرب تمكين: Spoof Video Streams &gt; تسجيل الدخول إلى Android VR</string>

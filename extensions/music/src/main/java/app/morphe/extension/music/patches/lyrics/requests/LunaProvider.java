@@ -7,12 +7,14 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -78,7 +80,7 @@ public final class LunaProvider extends ScoredSongProvider {
     @Nullable
     private static HttpURLConnection openConnection(String url, String userAgent) {
         try {
-            HttpURLConnection connection = (HttpURLConnection) new java.net.URL(url).openConnection();
+            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("User-Agent", userAgent);
             connection.setRequestProperty("Accept", "*/*");
@@ -102,6 +104,7 @@ public final class LunaProvider extends ScoredSongProvider {
         return "Luna";
     }
 
+    @NonNull
     @Override
     protected List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
         List<JSONObject> tracks = searchTracks(track);

@@ -321,7 +321,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_keyword_content_phrases_title">Keywords om te verbergen</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Voer trefwoorden en zinnen in om te verbergen, gescheiden door nieuwe regels
 
-Trefwoorden kunnen elke tekst zijn die wordt getoond in videotitels of kanaalnamen"</string>
+Trefwoorden kunnen elke tekst zijn die in videotitels wordt weergegeven. Het trefwoord @Gebruikersnaam verbergt alle inhoud van specifieke makers"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Home / Abonnementen / Zoeken / Reacties worden gefilterd om inhoud te verbergen die overeenkomt met trefwoordzinnen
 
 Beperkingen:
@@ -331,7 +331,6 @@ Beperkingen:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Een trefwoord of zin tussen dubbele aanhalingstekens zetten voorkomt deel-matches van videotitels en kanaalnamen&lt;br&gt;&lt;br&gt;Bijvoorbeeld,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; verbergt de video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;maar zal deze niet verbergen: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Keyword heeft tegenstrijdige verklaringen: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Keyword is te kort en vereist aanhalingstekens: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Keyword verbergt alle video\'s: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %1$s
@@ -559,18 +558,11 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <string name="morphe_export_download_folder_summary">"Exporteer in de app opgeslagen video's naar de opslag van je apparaat via het downloadmenu. Tik om de exportmap te wijzigen
 
 Exportmap: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Exportmap</string>
-  <string name="morphe_export_download_folder_change">Map wijzigen</string>
-  <string name="morphe_export_download_folder_changed">Exportmap gewijzigd</string>
-  <string name="morphe_export_download_folder_reset">Exportmap hersteld</string>
-  <string name="morphe_export_download_folder_missing">Exportmap %s kon niet worden gevonden</string>
-  <string name="morphe_export_download_flyout_title">Exporteren naar apparaat</string>
   <string name="morphe_export_download_started">Video exporteren</string>
   <string name="morphe_export_download_progress">Video exporteren: %s%%</string>
   <string name="morphe_export_download_notification_channel">Video-exports</string>
   <string name="morphe_export_download_saved">Video geëxporteerd naar %s</string>
   <string name="morphe_export_download_failed">Kon de video niet exporteren</string>
-  <string name="morphe_export_download_canceled">Export geannuleerd</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Spraakvertaling</string>
   <string name="morphe_vot_screen_summary">Lees ondertitels hardop voor met behulp van tekst-naar-spraak op het apparaat, gesynchroniseerd met het afspelen</string>
@@ -728,8 +720,6 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_queue_type_entry_2">Standaard wachtrij</string>
   <string name="morphe_queue_type_entry_3">Morphe-wachtrij</string>
   <string name="morphe_queue_type_entry_4">Wachtrijclient van Morphe</string>
-  <string name="morphe_queue_add_flyout_menu_title">Feed-flyoutmenu-item toevoegen</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Voegt een extra flyout-item toe. Schakel dit in als \"Toevoegen aan wachtrij\" niet wordt weergegeven</string>
   <string name="morphe_local_queue_sheet_title">Wachtrij</string>
   <string name="morphe_local_queue_open">Wachtrij (%s)</string>
   <string name="morphe_local_queue_clear">Alles wissen</string>
@@ -1462,7 +1452,7 @@ Auto-indeling
   <string name="morphe_dearrow_titles_player_title">Afspeellijsten en aanbevelingen in de speler</string>
   <string name="morphe_dearrow_titles_search_title">Zoekresultaten</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow-pictogram weergeven</string>
-  <string name="morphe_dearrow_titles_icon_summary">Geeft het DeArrow-pictogram weer op crowdsourced videotitels</string>
+  <string name="morphe_dearrow_titles_icon_summary">Toont het DeArrow-icoon bij crowdsourced videotitels. Tik op het icoon om de oorspronkelijke titel en thumbnail te tonen</string>
   <string name="morphe_dearrow_casual_mode_title">Casuele modus</string>
   <string name="morphe_dearrow_casual_mode_summary">Toont de originele titel in plaats van de DeArrow-titel als DeArrow-gebruikers hebben gestemd dat ze de originele titel leuk vinden</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum aantal casual stemmen om de originele titel te tonen</string>
@@ -1638,6 +1628,9 @@ Het afspelen van video met AV1 kan haperen of frames overslaan"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabiel volume is niet beschikbaar</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Het afspelen kan 1 seconde eerder eindigen</string>
   <string name="morphe_spoof_video_streams_about_js">• Als de-obfuscatie mislukt, kan afspelen mislukken</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView is uitgeschakeld of niet geïnstalleerd. Schakel het in en update het, anders kan het afspelen mislukken</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView is verouderd. Update het, anders kan het afspelen mislukken</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Oorspronkelijke audio forceren is niet beschikbaar</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Inloggen op Android VR is vereist</string>

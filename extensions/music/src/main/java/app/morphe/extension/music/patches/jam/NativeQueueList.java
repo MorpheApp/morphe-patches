@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** Patched to implement YTM's observable-list ABI. Items are genuine native queue models. */
+@SuppressWarnings("unused")
 public final class NativeQueueList extends AbstractList<Object> {
 
     private final List<Object> items = new ArrayList<>();
@@ -50,8 +51,7 @@ public final class NativeQueueList extends AbstractList<Object> {
     // JamMirror refreshes YTM's outer display list after replacing these items or
     // applying an optimistic edit. That native list notifies its own listeners;
     // this backing list must not send a second notification for the same update.
-    public void addListener(@SuppressWarnings("unused") Object listener) {}
+    @SuppressWarnings("EmptyMethod")
+    public void addListener() {}
 
-    @SuppressWarnings("unused")
-    public void removeListener(Object listener) {}
 }

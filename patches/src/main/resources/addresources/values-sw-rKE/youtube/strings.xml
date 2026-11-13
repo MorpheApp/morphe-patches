@@ -319,9 +319,9 @@ Mabadiliko ni pamoja na:
   <string name="morphe_hide_keyword_content_search_title">Ficha matokeo ya utafutaji kwa maneno muhimu</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ficha video za Usajili kwa maneno muhimu</string>
   <string name="morphe_hide_keyword_content_phrases_title">Maneno muhimu ya kuficha</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Ingiza maneno muhimu na mafungu ya maneno ya kuficha, yakitenganishwa na mistari mipya
+  <string name="morphe_hide_keyword_content_phrases_summary">"Ingiza maneno muhimu na virai vya kuficha, vikitenganishwa kwa mistari mipya
 
-Maneno muhimu yanaweza kuwa maandishi yoyote yanayoonekana katika vichwa vya video au majina ya chaneli"</string>
+Maneno muhimu yanaweza kuwa maandishi yoyote yanayoonekana katika vichwa vya habari vya video. Neno muhimu la @JinaLaMtumiaji huficha maudhui yote kutoka kwa waundaji maalum"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Nyumbani / Usajili / Tafuta / Maoni huchujwa ili kuficha maudhui yanayoendana na mafungu ya maneno muhimu
 
 Vikwazo:
@@ -331,7 +331,6 @@ Vikwazo:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Kuzunguka neno kuu/kirai kwa alama za nukuu mbili kutazuia ulinganifu wa sehemu ya vichwa vya video na majina ya chaneli&lt;br&gt;&lt;br&gt;Kwa mfano,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; itaficha video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;lakini haitaficha: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Neno kuu lina matamko yanayopingana: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Neno kuu ni fupi mno na linahitaji alama za nukuu: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Neno muhimu litaficha video zote: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Nyumbani: %1$s
@@ -559,18 +558,11 @@ Baada ya video yenye kitufe cha Ask kufunguliwa mara moja, kipengele hiki hufany
   <string name="morphe_export_download_folder_summary">"Hamisha video zilizohifadhiwa kwenye programu kwenda kwenye hifadhi ya kifaa chako ukitumia menyu ya downloads ya programu. Gusa ili kubadilisha folda ya uhamishaji
 
 Folda ya uhamishaji: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Folda ya export</string>
-  <string name="morphe_export_download_folder_change">Badilisha folda</string>
-  <string name="morphe_export_download_folder_changed">Folda ya export imebadilishwa</string>
-  <string name="morphe_export_download_folder_reset">Folda ya export imerejeshwa</string>
-  <string name="morphe_export_download_folder_missing">Imeshindwa kupata folda ya kuhamisha %s</string>
-  <string name="morphe_export_download_flyout_title">Export kwenda kwenye kifaa</string>
   <string name="morphe_export_download_started">Inasafirisha video</string>
   <string name="morphe_export_download_progress">Inasafirisha video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Usafirishaji wa video</string>
   <string name="morphe_export_download_saved">Video imesafirishwa kwenda %s</string>
   <string name="morphe_export_download_failed">Hakuwezekana kusafirisha video</string>
-  <string name="morphe_export_download_canceled">Usafirishaji umeghairiwa</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Tafsiri ya sauti</string>
   <string name="morphe_vot_screen_summary">Soma maelezo ya video kwa sauti kwa kutumia ubadilishaji wa maandishi kuwa sauti kwenye kifaa, ikiwa imesawazishwa na uchezaji</string>
@@ -729,8 +721,6 @@ Info: Inaweza isifanye kazi kwenye mirutubisho ya moja kwa moja"</string>
   <string name="morphe_queue_type_entry_2">Foleni asilia</string>
   <string name="morphe_queue_type_entry_3">Foleni ya Morphe</string>
   <string name="morphe_queue_type_entry_4">Foleni ya Morphe upande wa mteja</string>
-  <string name="morphe_queue_add_flyout_menu_title">Ongeza kipengele cha menyu ya foleni ya flyout ya feed</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Huongeza kipengele cha ziada cha flyout. Wezesha hii ikiwa \"Ongeza kwenye foleni\" haionekani</string>
   <string name="morphe_local_queue_sheet_title">Foleni</string>
   <string name="morphe_local_queue_open">Foleni (%s)</string>
   <string name="morphe_local_queue_clear">Futa zote</string>
@@ -1463,7 +1453,7 @@ Mpangilio wa Automotive
   <string name="morphe_dearrow_titles_player_title">Orodha za nyimbo za kicheza &amp; mapendekezo</string>
   <string name="morphe_dearrow_titles_search_title">Matokeo ya utafutaji</string>
   <string name="morphe_dearrow_titles_icon_title">Onyesha aikoni ya DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Huonyesha aikoni ya DeArrow kwenye vichwa vya video vilivyokusanywa kutoka kwa jamii</string>
+  <string name="morphe_dearrow_titles_icon_summary">Inaonyesha aikoni ya DeArrow kwenye vichwa vya video vilivyochangiawa na jamii. Gusa aikoni hiyo ili kuonyesha kichwa na picha ya awali</string>
   <string name="morphe_dearrow_casual_mode_title">Hali ya kawaida</string>
   <string name="morphe_dearrow_casual_mode_summary">Inaonyesha kichwa asilia badala ya kichwa cha DeArrow ikiwa watumiaji wa DeArrow walipiga kura kwamba wanapenda kichwa asilia</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Kura za chini za kawaida ili kuonyesha kichwa asilia</string>
@@ -1639,6 +1629,9 @@ Uchezaji wa video kwa AV1 unaweza kukwama au kupoteza fremu"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sauti thabiti haipatikani</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Uchezaji unaweza kuishia sekunde 1 mapema</string>
   <string name="morphe_spoof_video_streams_about_js">• Ikiwa deobfuscation itashindwa, uchezaji unaweza kushindwa</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView imezimwa au haijasakinishwa. Iwashe na uisasishe, la sivyo uchezaji unaweza kushindwa</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView imepitwa na wakati. Isasishe, la sivyo uchezaji unaweza kushindwa</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Kulazimisha sauti halisi haipatikani</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Kuingia kwenye Android VR kunahitajika</string>

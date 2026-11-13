@@ -11,9 +11,9 @@ public abstract class JsChallengeProvider {
     protected abstract List<JsChallengeType> getSupportedTypes();
 
     private void validateRequest(JsChallengeRequest request) throws JsChallengeProviderRejectedRequest {
-        if (!getSupportedTypes().contains(request.getType())) {
+        if (!getSupportedTypes().contains(request.type())) {
             throw new JsChallengeProviderRejectedRequest(
-                    "JS Challenge type " + request.getType() + " is not supported by the provider " + this.getClass().getSimpleName()
+                    "JS Challenge type " + request.type() + " is not supported by the provider " + this.getClass().getSimpleName()
             );
         }
     }

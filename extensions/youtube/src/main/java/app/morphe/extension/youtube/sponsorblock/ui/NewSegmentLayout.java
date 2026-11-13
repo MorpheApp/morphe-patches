@@ -200,6 +200,7 @@ public final class NewSegmentLayout extends FrameLayout {
      * Required when overriding {@link #onTouchEvent} - ensures accessibility services receive click events.
      */
     @Override
+    @SuppressWarnings("EmptyMethod")
     public boolean performClick() {
         return super.performClick();
     }

@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Aibhsigh socruithe nua</string>
   <string name="morphe_settings_new_indicator_days_summary">Líon na laethanta a thaispeántar ponc in aice le socruithe agus roghanna a cuireadh leis trí nuashonrú</string>
   <string name="morphe_settings_new_indicator_days_off">As</string>
+  <string name="morphe_settings_new_indicator_clear_title">Marcáil gach socruithe mar fheicte</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Bain an phuinte as gach socruithe agus roghanna nua</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Marcáil gach socruithe mar fheicte?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Baintear an phuinte as gach socruithe agus roghanna nua. Leaorfaidh socruithe a chuirfidh nuashonruithe todhaoppers i láthair.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Atosaigh chun an socrú a chríochnú</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Seiceáil go bhfuil an t-ainm pacáiste ceart agus go bhfuil an aip suiteáilte"</string>
   <string name="morphe_external_downloader_empty_warning">Ní féidir ainm an phacáiste a fhágáil folamh</string>
+  <string name="morphe_export_download_folder_dialog_title">Fillteán easpórtála</string>
+  <string name="morphe_export_download_folder_change">Athraigh fillteán</string>
+  <string name="morphe_export_download_folder_changed">Athraíodh fillteán easpórtála</string>
+  <string name="morphe_export_download_folder_reset">Athshocraíodh fillteán easpórtála</string>
+  <string name="morphe_export_download_folder_missing">Níorbh fhéidir an fillteán onnmhairithe %s a aimsiú</string>
+  <string name="morphe_export_download_flyout_title">Easpórtáil chuig gléas</string>
+  <string name="morphe_export_download_canceled">Cealaíodh an onnmhairiú</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Saincheaptha</string>
   <string name="morphe_custom_branding_icon_title">Deilbhín aip</string>
@@ -110,6 +121,20 @@ Mura n-úsáideoir YouTube Premium thú, b'fhéidir nach mbeidh an socrú seo ag
 An ndéanfaidh tú cliant réamhshocraithe de %2$s?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Athraigh</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">D’fhéadfadh fadhbanna athsheinm a bheith mar thoradh ar an socrú seo a mhúchadh.</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Tá Android System WebView múchta nó níl sé suite.
+
+Tá Android System WebView ag teastáil le haghaidh seinnteanna físe. Cuir é in aonair agus nuasháilaigh é go dtí an leagan is déanaí.
+
+Tapáil Cead chun Android System WebView a oscailt."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Tá Android System WebView as dáta (leagan %s).
+
+Seans go mbeidh fadhbanna ag seinnteanna físe go dtí go mbeidh Android System WebView nuasháilte go dtí an leagan is déanaí.
+
+Tapáil Cead chun Android System WebView a oscailt."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ná taispeáin arís</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Níl Android System WebView suite. Suiteáil é chun seinnteanna físe a theasú</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Bain triail as na nithe seo a leanas a chumasú: Sruthanna físe bréige &gt; Sínigh isteach Android VR</string>

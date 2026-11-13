@@ -41,6 +41,7 @@ import app.morphe.extension.shared.settings.Setting;
  * <p>It is laid over the built-in content rather than replacing it, so that a track
  * without third party lyrics still shows the built-in ones.
  */
+@SuppressWarnings("unused")
 public final class LyricsPanelInstaller {
 
     /** Container the built-in panel content lives in. */
@@ -52,7 +53,7 @@ public final class LyricsPanelInstaller {
     /** Holds the tab strip and the pages of the player tabs. */
     private static final String TABBED_VIEW_ID = "bottom_sheet_tabbed_view";
 
-    private static final int TAB_CONTENT_ID = ResourceUtils.getIdentifier(
+    static final int TAB_CONTENT_ID = ResourceUtils.getIdentifier(
             ResourceType.ID, "elements_component_holder");
 
     private static final String LYRICS_TITLE_RESOURCE = "lyrics_tab_title";
@@ -72,7 +73,7 @@ public final class LyricsPanelInstaller {
     private static WeakReference<LyricsPanelView> panelReference = new WeakReference<>(null);
     /** Panel the app currently has in the engagement panel container. */
     private static volatile WeakReference<Object> currentPanelReference = new WeakReference<>(null);
-    /** Identifier of the current panel, or null when it has none or it could not be read. */
+    /** Identifier of the current panel, or null when it has none, or it could not be read. */
     @Nullable
     private static volatile String currentPanelIdentifier;
     /** Panel the lyrics were last built into, kept to recognize it when it comes back. */
@@ -84,7 +85,9 @@ public final class LyricsPanelInstaller {
                 if (key == null || !key.startsWith("morphe_music_lyrics")) {
                     return;
                 }
-                Utils.runOnMainThreadNowOrLater(() -> onLyricsSettingChanged(key));
+                // Posted, because the settings screen may only update the setting values in
+                // its own listener, which can be called after this one.
+                Utils.runOnMainThread(() -> onLyricsSettingChanged(key));
             };
     private static boolean settingsListenerRegistered;
     private static long lastEnableButtonWalkUptimeMs;
@@ -112,6 +115,7 @@ public final class LyricsPanelInstaller {
                     LyricsManager.getInstance().reloadAfterSettingsChange();
                 } else {
                     uninstallLyricsPanel();
+                    DeviceLyricsTab.removeTabs();
                 }
                 MiniplayerLyrics.onSettingsChanged();
                 return;
@@ -241,6 +245,7 @@ public final class LyricsPanelInstaller {
      * @return Identifier of the panel, or null when it has none or the patch did not find the helper.
      */
     @Nullable
+    @SuppressWarnings("SameReturnValue")
     private static String getPanelIdentifier(Object panel) {
         return null;
     }
@@ -256,7 +261,6 @@ public final class LyricsPanelInstaller {
      *
      * @param panel Panel put in the engagement panel container, or null when it was given up.
      */
-    @SuppressWarnings("unused")
     public static void onEngagementPanelChanged(@Nullable Object panel) {
         try {
             final String identifier = panel == null ? null : getPanelIdentifier(panel);
@@ -477,7 +481,6 @@ public final class LyricsPanelInstaller {
     /**
      * Injection point. Called for every tabbed view of the app.
      */
-    @SuppressWarnings("unused")
     public static void onTabSelected(ViewGroup tabbedView) {
         try {
             if (!Settings.LYRICS_ENABLED.get()
@@ -756,7 +759,7 @@ public final class LyricsPanelInstaller {
      * leave a stale answer behind.
      */
     @Nullable
-    private static String lyricsTitle(Context context) {
+    static String lyricsTitle(Context context) {
         final int id = ResourceUtils.getStringIdentifier(LYRICS_TITLE_RESOURCE);
         if (id == 0) {
             Logger.printException(() -> "App is missing: " + LYRICS_TITLE_RESOURCE);

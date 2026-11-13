@@ -1,5 +1,6 @@
 package j$.util;
 
+@SuppressWarnings("unused")
 public final class Optional<T> {
 
     /**
@@ -11,6 +12,7 @@ public final class Optional<T> {
      * @return an {@code Optional} with the value present
      * @throws NullPointerException if value is {@code null}
      */
+    @SuppressWarnings("SameReturnValue")
     public static <T> Optional<T> of(T value) {
         return null;
     }
@@ -21,6 +23,7 @@ public final class Optional<T> {
      * @param <T> the type of the non-existent value
      * @return an empty {@code Optional}
      */
+    @SuppressWarnings("SameReturnValue")
     public static <T> Optional<T> empty() {
         return null;
     }

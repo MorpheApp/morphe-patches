@@ -6,7 +6,6 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.privacy.sanitizeSharingLinksPatch
 
-@Suppress("unused")
 val sanitizeSharingLinksPatch = sanitizeSharingLinksPatch(
     block = {
         dependsOn(

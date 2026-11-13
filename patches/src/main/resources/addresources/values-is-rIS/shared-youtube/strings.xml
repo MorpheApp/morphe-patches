@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Áhersla á nýjar stillingar</string>
   <string name="morphe_settings_new_indicator_days_summary">Fjöldi daga sem punktur birtist við stillingar og valkosti sem bættust við í uppfærslu</string>
   <string name="morphe_settings_new_indicator_days_off">Slökkt</string>
+  <string name="morphe_settings_new_indicator_clear_title">Merkt allar stillingar sem sínar</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Fjarlæg punktinn frá öllum nýjum stillingum og valkostum</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Merkja allar stillingar sem sínar?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Punkturinn er fjarlægður úr öllum nýjum stillingum og valkostum. Stillingar sem bættast við í framtíðaruppfærslum verða samt með áherslu.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Endurræstu til að ljúka uppsetningunni</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Staðfestu að pakkanafnið sé rétt og að forritið sé uppsett"</string>
   <string name="morphe_external_downloader_empty_warning">Pakkarnafn má ekki vera tómt</string>
+  <string name="morphe_export_download_folder_dialog_title">Útflutningsmappa</string>
+  <string name="morphe_export_download_folder_change">Breyta möppu</string>
+  <string name="morphe_export_download_folder_changed">Útflutningsmöppu breytt</string>
+  <string name="morphe_export_download_folder_reset">Útflutningsmöppu endurstillt</string>
+  <string name="morphe_export_download_folder_missing">Gat ekki fundið útflutningsmöppu %s</string>
+  <string name="morphe_export_download_flyout_title">Flytja í tæki</string>
+  <string name="morphe_export_download_canceled">Útflutningi hætt</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Sérsniðin</string>
   <string name="morphe_custom_branding_icon_title">Tákn forrits</string>
@@ -110,6 +121,20 @@ Ef þú ert YouTube Premium notandi gæti þessi stilling ekki verið nauðsynle
 Gera %2$s að sjálfgefnum biðlara?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Skipta</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Að slökkva á þessari stillingu gæti valdið spilunarvandamálum</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView er slökkað eða ekki sett upp.
+
+Myndspilun þarf Android System WebView. Kveiktu á því og uppfærið í nýjasta útgáfuna.
+
+Ýttu OK til að opna Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView er úrelt (útgáfa %s).
+
+Myndspilun gæti mistekist þar til Android System WebView er uppfært í nýjasta útgáfuna.
+
+Ýttu OK til að opna Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ekki sýna aftur</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView er ekki sett upp. Settu það upp til að laga myndspilun</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Reyndu að virkja: Spoof myndstreymi > Android VR innskráning</string>

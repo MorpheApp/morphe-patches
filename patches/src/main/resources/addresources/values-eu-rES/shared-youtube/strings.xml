@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Nabarmendu ezarpen berriak</string>
   <string name="morphe_settings_new_indicator_days_summary">Eguneratze batek gehitutako ezarpen eta aukeren ondoan puntua erakusten den egun kopurua</string>
   <string name="morphe_settings_new_indicator_days_off">Desaktibatu</string>
+  <string name="morphe_settings_new_indicator_clear_title">Markatu konfigurazio guztiak ikusitako gisa</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Kendu puntua konfigurazio eta aukera berri guztietatik</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Konfigurazio guztiak ikusitako gisa markatu?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Puntua konfigurazio eta aukera berri guztietatik kendu da. Etorkizuneko eguneratzeekin gehituzko konfigurazioak nabarmenduta egongo dira oraindik.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Berrabiarazi konfigurazioa amaitzeko</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Egiaztatu pakete-izena zuzena dela eta aplikazioa instalatuta dagoela"</string>
   <string name="morphe_external_downloader_empty_warning">Paketearen izena ezin da hutsik egon</string>
+  <string name="morphe_export_download_folder_dialog_title">Exportazio karpeta</string>
+  <string name="morphe_export_download_folder_change">Aldatu karpeta</string>
+  <string name="morphe_export_download_folder_changed">Exportazio karpeta aldatu da</string>
+  <string name="morphe_export_download_folder_reset">Exportazio karpeta berrezarri da</string>
+  <string name="morphe_export_download_folder_missing">Ezin izan da %s esportazio karpeta aurkitu</string>
+  <string name="morphe_export_download_flyout_title">Gailura esportatu</string>
+  <string name="morphe_export_download_canceled">Esportazioa bertan behera utzi da</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pertsonalizatua</string>
   <string name="morphe_custom_branding_icon_title">Aplikazioaren ikonoa</string>
@@ -110,6 +121,20 @@ YouTube Premium erabiltzailea bazara, agian ez da ezarpen hau behar"</string>
 %2$s bezero lehenetsia egin nahi duzu?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Aldatu</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ezarpen hau desaktibatzeak erreprodukzio arazoak eragin ditzake</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView txalrarik dago edo ez dago instalatuta.
+
+Bideoak erreproduziteko Android System WebView behar da. Aktibatu eta eguneratu azken bertsiora.
+
+Sakatu AD to Android System WebView irekitzeko."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView bertsio zaharra da (%s bertsioa).
+
+Bideoak erreproduzitea huts egin dezake Android System WebView azken bertsiora eguneratu arte.
+
+Sakatu AD to Android System WebView irekitzeko."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ez erakutsi berriz</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView ez dago instalatuta. Instalatu bideoak erreproduziteko arazoa konpontzeko</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Saiatu aktibatzen: Bideo-fluxuak imitatu &gt; Android VR saioa hasi</string>

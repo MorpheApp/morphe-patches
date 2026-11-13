@@ -321,7 +321,7 @@ Los cambios incluyen:
   <string name="morphe_hide_keyword_content_phrases_title">Palabras clave a ocultar</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Introduce las palabras clave y las frases que quieres ocultar, separadas por líneas nuevas.
 
-Las palabras clave pueden ser cualquier texto que aparezca en los títulos de los vídeos o en los nombres de los canales."</string>
+Las palabras clave pueden ser cualquier texto que aparezca en los títulos de los vídeos. La palabra clave @NombreDeUsuario oculta todo el contenido de creadores específicos."</string>
   <string name="morphe_hide_keyword_content_about_summary">"Inicio / Suscripciones / Búsqueda / Comentarios se filtran para ocultar el contenido que coincide con frases de palabras clave.
 
 Limitaciones:
@@ -331,7 +331,6 @@ Limitaciones:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Al rodear una palabra o frase clave con comillas dobles se evitarán las coincidencias parciales de títulos de vídeo y nombres de canales.&lt;br&gt;&lt;br&gt;Por ejemplo:&lt;br&gt;&lt;b&gt;\"ia\"&lt;/b&gt; ocultará el vídeo: &lt;b&gt;¿Cómo funciona la IA?&lt;/b&gt;&lt;br&gt;pero no ocultará: &lt;b&gt;¿Cómo funciona la justicia?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">La palabra clave tiene reglas en conflicto: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">La palabra clave es demasiado corta y requiere comillas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">La palabra clave ocultará todos los vídeos: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Inicio: %1$s
@@ -559,18 +558,11 @@ Después de abrir por primera vez un vídeo con el botón «Preguntar», la func
   <string name="morphe_export_download_folder_summary">"Exporta los vídeos guardados en la aplicación al almacenamiento de tu dispositivo utilizando el menú desplegable de descargas de la aplicación. Pulsa para cambiar la carpeta de exportación
 
 Carpeta de exportación: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Carpeta de exportación</string>
-  <string name="morphe_export_download_folder_change">Cambiar carpeta</string>
-  <string name="morphe_export_download_folder_changed">Carpeta de exportación cambiada</string>
-  <string name="morphe_export_download_folder_reset">Restablecer carpeta de exportación</string>
-  <string name="morphe_export_download_folder_missing">No se pudo encontrar la carpeta de exportación %s</string>
-  <string name="morphe_export_download_flyout_title">Exportar al dispositivo</string>
   <string name="morphe_export_download_started">Exportando vídeo</string>
   <string name="morphe_export_download_progress">Exportando vídeo: %s%%</string>
   <string name="morphe_export_download_notification_channel">Exportaciones de vídeos</string>
   <string name="morphe_export_download_saved">Vídeo exportado a %s</string>
   <string name="morphe_export_download_failed">No se ha podido exportar el vídeo</string>
-  <string name="morphe_export_download_canceled">Exportación cancelada</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducción con voz</string>
   <string name="morphe_vot_screen_summary">Lee en voz alta los subtítulos del vídeo mediante la síntesis de texto a voz del dispositivo, sincronizada con la reproducción</string>
@@ -729,8 +721,6 @@ Información: Puede que no funcione en transmisiones en directo"</string>
   <string name="morphe_queue_type_entry_2">Cola nativa</string>
   <string name="morphe_queue_type_entry_3">Cola de Morphe</string>
   <string name="morphe_queue_type_entry_4">Cola de Morphe del lado del servidor</string>
-  <string name="morphe_queue_add_flyout_menu_title">Añadir Cola al menú flotante del feed</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Añade un elemento adicional al menú flotante. Actívalo si no se muestra \'Añadir a la cola\'</string>
   <string name="morphe_local_queue_sheet_title">Cola</string>
   <string name="morphe_local_queue_open">Cola (%s)</string>
   <string name="morphe_local_queue_clear">Borrar todo</string>
@@ -1463,7 +1453,7 @@ Diseño para automóviles
   <string name="morphe_dearrow_titles_player_title">Listas de reproducción y recomendaciones del reproductor</string>
   <string name="morphe_dearrow_titles_search_title">Resultados de búsqueda</string>
   <string name="morphe_dearrow_titles_icon_title">Mostrar icono de DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Muestra el icono de DeArrow en los títulos de vídeo de la comunidad</string>
+  <string name="morphe_dearrow_titles_icon_summary">Muestra el icono de DeArrow en los títulos de vídeos colaborativos. Pulsa el icono para mostrar el título y la miniatura originales</string>
   <string name="morphe_dearrow_casual_mode_title">Modo casual</string>
   <string name="morphe_dearrow_casual_mode_summary">Muestra el título original en lugar del título de DeArrow si los usuarios de DeArrow votaron que les gusta el título original</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Votos casuales mínimos para mostrar el título original</string>
@@ -1639,6 +1629,9 @@ La reproducción de vídeo con AV1 puede ir a tirones o perder fotogramas"</stri
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volumen estable no disponible</string>
   <string name="morphe_spoof_video_streams_about_end_early">• La reproducción puede terminar 1 segundo antes</string>
   <string name="morphe_spoof_video_streams_about_js">• Si la desofuscación falla, la reproducción puede fallar</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView está desactivado o no está instalado. Actívalo y actualízalo, o es posible que la reproducción falle</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView está desactualizado. Actualízalo, o es posible que la reproducción falle</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forzar audio original no está disponible</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Es necesario iniciar sesión en Android VR</string>

@@ -321,7 +321,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">מילות מפתח להסתרה</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"הזינו מילות מפתח וביטויים להסתרה, מופרדים בשורות חדשות
 
-מילות מפתח יכולות להיות כל טקסט המופיע בכותרות סרטונים או בשמות ערוצים"</string>
+מילות מפתח יכולות להיות כל טקסט המופיע בכותרות של סרטונים. מילת המפתח @UserName מסתירה את כל התוכן של יוצרים ספציפיים"</string>
   <string name="morphe_hide_keyword_content_about_summary">"דף הבית / מינויים / חיפוש / תגובות מסוננים כדי להסתיר תוכן שתואם ביטויי מילות מפתח
 
 מגבלות:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">הקפת מילת מפתח/ביטוי עם מרכאות כפולות תמנע התאמות חלקיות של כותרות סרטונים ושמות ערוצים&lt;br&gt;&lt;br&gt;לדוגמא,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; יסתיר את הסרטון: &lt;b&gt;כיצד פועלת AI?&lt;/b&gt;&lt;br&gt;אבל אינו יסתיר את: &lt;b&gt;איך נשמעות ה-AirPods החדשות?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">למילת מפתח יש הצהרות סותרות: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">מילת מפתח קצרה מדי ודורשת מרכאות: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">מילת מפתח תסתיר את כל הסרטונים: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• דף הבית: %1$s
@@ -559,18 +558,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"ייצוא סרטונים שנשמרו באפליקציה לאחסון במכשיר באמצעות תפריט ההורדות באפליקציה. הקש לשינוי תיקיית הייצוא
 
 תיקיית ייצוא: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">תיקיית ייצוא</string>
-  <string name="morphe_export_download_folder_change">שינוי תיקייה</string>
-  <string name="morphe_export_download_folder_changed">תיקיית הייצוא שונתה</string>
-  <string name="morphe_export_download_folder_reset">תיקיית הייצוא אופסה</string>
-  <string name="morphe_export_download_folder_missing">לא ניתן למצוא את תיקיית הייצוא %s</string>
-  <string name="morphe_export_download_flyout_title">ייצוא למכשיר</string>
   <string name="morphe_export_download_started">מייצא סרטון</string>
   <string name="morphe_export_download_progress">ייצוא סרטון: %s%%</string>
   <string name="morphe_export_download_notification_channel">ייצוא סרטונים</string>
   <string name="morphe_export_download_saved">הסרטון נשמר ב-%s</string>
   <string name="morphe_export_download_failed">לא ניתן היה לייצא את הסרטון</string>
-  <string name="morphe_export_download_canceled">הייצוא בוטל</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">תרגום דיבוב</string>
   <string name="morphe_vot_screen_summary">קריאת כתוביות הסרטון בקול רם באמצעות טקסט לדיבור מקומי, בסנכרון עם ההפעלה</string>
@@ -728,8 +720,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">תור מקורי</string>
   <string name="morphe_queue_type_entry_3">תור Morphe</string>
   <string name="morphe_queue_type_entry_4">תור Morphe בצד הלקוח</string>
-  <string name="morphe_queue_add_flyout_menu_title">הוסף פריט תור לתפריט הנשלף בפיד</string>
-  <string name="morphe_queue_add_flyout_menu_summary">מוסיף פריט תפריט מוקפץ נוסף. הפעל זאת אם \'הוסף לתור\' אינו מוצג</string>
   <string name="morphe_local_queue_sheet_title">תור</string>
   <string name="morphe_local_queue_open">תור (%s)</string>
   <string name="morphe_local_queue_clear">נקה הכל</string>
@@ -1462,7 +1452,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">רשימות השמעה והמלצות בנגן</string>
   <string name="morphe_dearrow_titles_search_title">תוצאות חיפוש</string>
   <string name="morphe_dearrow_titles_icon_title">הצג סמל DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">מציג את סמל DeArrow על כותרות וידאו שמקורן בקהל</string>
+  <string name="morphe_dearrow_titles_icon_summary">מציג את סמל DeArrow בכותרות של סרטונים מבית הקהילה. הקש על הסמל כדי להציג את הכותרת והתמונה המקורית</string>
   <string name="morphe_dearrow_casual_mode_title">מצב קז\'ואל</string>
   <string name="morphe_dearrow_casual_mode_summary">מציג את הכותרת המקורית במקום כותרת DeArrow אם משתמשי DeArrow הצביעו שהם אוהבים את הכותרת המקורית</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">מינימום הצבעות קז\'ואל להצגת הכותרת המקורית</string>
@@ -1638,6 +1628,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• עוצמת קול יציבה אינה זמינה</string>
   <string name="morphe_spoof_video_streams_about_end_early">• ההשמעה עשויה להסתיים שנייה אחת מוקדם</string>
   <string name="morphe_spoof_video_streams_about_js">• אם ביטול ההסתרה ייכשל, ההשמעה עלולה להיכשל</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView כבוי או שאינו מותקן. הפעל אותו ועדכן אותו, אחרת ייתכן שההפעלה תיכשל</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView אינו מעודכן. עדכן אותו, אחרת ייתכן שההפעלה תיכשל</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• כפיית שמע מקורי אינה זמינה</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• נדרשת כניסה ל-Android VR</string>

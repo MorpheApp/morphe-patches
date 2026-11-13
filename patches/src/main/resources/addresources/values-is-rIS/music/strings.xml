@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Nota utanaðkomandi niðurhalara fyrir niðurhalsvalmynd</string>
   <string name="morphe_external_downloader_menu_summary">Niðurhalsvalkostur í valmyndum opnar utanaðkomandi niðurhalara í staðinn</string>
-  <string name="morphe_music_downloads_screen_title">Niðurhal</string>
-  <string name="morphe_music_downloads_empty">"Ekkert niðurhal
-Niðurhlaðin lög birtast hér"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s lög • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Leita í niðurhali</string>
-  <string name="morphe_music_downloads_sort">Raða</string>
-  <string name="morphe_music_downloads_sort_artist">Raða eftir flytjanda</string>
-  <string name="morphe_music_downloads_sort_title">Raða eftir titli</string>
-  <string name="morphe_music_downloads_sort_size">Raða eftir stærð</string>
-  <string name="morphe_music_downloads_delete_all">Eyða öllu niðurhali</string>
-  <string name="morphe_music_downloads_delete_all_title">Eyða öllu niðurhali?</string>
-  <string name="morphe_music_downloads_delete_all_message">Öllum niðurhlaðnum lögum verður eytt af þessu tæki</string>
-  <string name="morphe_music_downloads_all_deleted">Niðurhali eytt</string>
-  <string name="morphe_music_downloads_nothing_found">Ekkert fannst</string>
-  <string name="morphe_music_downloads_actions_for">Aðgerðir fyrir %s</string>
-  <string name="morphe_music_downloads_play">Spila</string>
-  <string name="morphe_music_downloads_play_pause">Spila eða gera hlé</string>
-  <string name="morphe_music_downloads_previous">Fyrra</string>
-  <string name="morphe_music_downloads_next">Næsta</string>
-  <string name="morphe_music_downloads_pause">Gera hlé</string>
-  <string name="morphe_music_downloads_shuffle">Stokka</string>
-  <string name="morphe_music_downloads_repeat">Endurtaka</string>
-  <string name="morphe_music_downloads_minimize">Lágmarka</string>
-  <string name="morphe_music_downloads_close">Loka</string>
-  <string name="morphe_music_downloads_delete">Eyða</string>
-  <string name="morphe_music_downloads_delete_track">Eyða niðurhali</string>
-  <string name="morphe_music_downloads_delete_track_title">Eyða niðurhali?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s verður eytt af þessu tæki</string>
-  <string name="morphe_music_downloads_track_deleted">Niðurhalinu var eytt</string>
-  <string name="morphe_music_downloads_track_delete_failed">Ekki tókst að eyða niðurhalinu</string>
-  <string name="morphe_music_downloads_play_failed">Ekki tókst að spila niðurhalið</string>
-  <string name="morphe_music_downloads_playlists">Spilunarlistar</string>
-  <string name="morphe_music_downloads_playlists_section">Búnir til spilunarlistar (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Engir staðbundnir spilunarlistar enn</string>
-  <string name="morphe_music_downloads_playlists_hide">Fela spilunarlista ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Nýr spilunarlisti</string>
-  <string name="morphe_music_downloads_playlist_new_button">Nýr spilunarlisti</string>
-  <string name="morphe_music_downloads_playlist_selected">Valið (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Veldu lög fyrst</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Hreinsa val</string>
-  <string name="morphe_music_downloads_playlist_create">Búa til spilunarlista</string>
-  <string name="morphe_music_downloads_playlist_create_button">Búa til</string>
-  <string name="morphe_music_downloads_playlist_add">Bæta í spilunarlista</string>
-  <string name="morphe_music_downloads_playlist_added">Bætt við %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Heiti spilunarlista</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Nafn spilunarlista má ekki vera autt</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Gat ekki vistað spilunarlistann</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s lög</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 lag</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Engin lög í þessum spilunarlista</string>
-  <string name="morphe_music_downloads_playlist_play">Spila spilunarlista</string>
-  <string name="morphe_music_downloads_playlist_play_all">Spila allt</string>
-  <string name="morphe_music_downloads_playlist_rename">Endurnefna</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Endurnefna spilunarlista</string>
-  <string name="morphe_music_downloads_playlist_save">Vista</string>
-  <string name="morphe_music_downloads_playlist_delete">Eyða spilunarlista</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Eyða spilunarlista?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s verður eytt. Lög sem hafa verið sótt haldast</string>
-  <string name="morphe_music_downloads_playlist_deleted">Spilunarlista eytt</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Fjarlægja af spilunarlista</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Dragðu til að raða upp á nýtt</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Dragðu handfangið til að raða upp á nýtt</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Lokið</string>
-  <string name="morphe_music_downloads_notification_channel">Hljóðniðurhal</string>
-  <string name="morphe_music_downloads_playback_channel">Afspilun án nettengingar</string>
-  <string name="morphe_music_downloads_unknown_track">Ekki tókst að bera kennsl á lagið til niðurhals</string>
-  <string name="morphe_music_downloads_already_running">Niðurhal er þegar í gangi</string>
-  <string name="morphe_music_downloads_already_saved">Þegar hlaðið niður</string>
-  <string name="morphe_music_downloads_started">Niðurhal hafið</string>
-  <string name="morphe_music_downloads_starting">Byrja niðurhal…</string>
-  <string name="morphe_music_downloads_progress">Hleð niður %s%%</string>
-  <string name="morphe_music_downloads_complete">Niðurhal lokið</string>
-  <string name="morphe_music_downloads_failed">Niðurhal mistókst</string>
-  <string name="morphe_music_downloads_playlist_download_title">Sækja spilunarlista</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Sæki upplýsingar um lög…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s skráð…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Ekki tókst að skrá lögin á spilunarlistanum</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Þegar sótt: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s lög eru á þessum spilunarlista, %2$s þeirra hafa ekki verið sótt.
+  <string name="morphe_export_download_folder_title">Flytja niðurhals út</string>
+  <string name="morphe_export_download_folder_summary">"Flytja lagi og myndbönd sem forritið hlaðir niður í geymslu tækisins með niðurhalsvalmyndinni. Ýttu til að breyta útflutningsmöppu
 
-Þau eru sótt eitt í einu, sem getur tekið langan tíma og þarf um %3$s af lausu plássi"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Sækja</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Sæki lag %1$s af %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s sótt</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s sótt, %2$s tókst ekki að sækja</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Niðurhal spilunarlista er þegar í gangi</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Reikningurinn þinn er ekki þekktur enn. Reyndu aftur eftir smá stund</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s skráð, öll þegar sótt</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Aðeins hluti spilunarlistans náðist. Ýttu aftur á Sækja síðar til að fá restina</string>
-  <string name="morphe_music_downloads_playlist_download_started">Sæki %s í bakgrunni</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Engin tenging við netið</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Bíð eftir nettengingu…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Stöðvað eftir %1$s af %2$s. Ýttu á Sækja aftur til að halda áfram</string>
-  <string name="morphe_music_downloads_mark_title">Merkja lög sem þegar eru sótt</string>
-  <string name="morphe_music_downloads_mark_summary">Lög sem hafa þegar verið sótt sýna merki fyrir framan upplýsingar um þau í spilunarlistum, plötum og leitarniðurstöðum</string>
+Útflutningsmappa: %s"</string>
+  <string name="morphe_export_download_started">Útflutningur niðurhals</string>
+  <string name="morphe_export_download_progress">Útflutningur niðurhals: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Útflutningur niðurhals</string>
+  <string name="morphe_export_download_saved">Niðurhaldið var flutt út í %s</string>
+  <string name="morphe_export_download_failed">Tókst ekki að flytja niðurhaldið út</string>
+  <string name="morphe_export_download_all_flyout_title">Flytja allt í tæki</string>
+  <string name="morphe_export_download_all_started">Villa að flytja öll niðurhald</string>
+  <string name="morphe_export_download_all_running">Niðurhald er þegar að vera flutt út</string>
+  <string name="morphe_export_download_all_saved">Flutt %1$s af %2$s niðurhaldum út í %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Um Morphe</string>
@@ -261,6 +178,7 @@ Niðurhlaðin lög birtast hér"</string>
   <string name="morphe_music_hide_shuffle_button_title">Fela handahófshnappinn</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Fela \'Speed dial\'-röðina</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">Fela hlutann „Þér gæti líkað“</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Fela „Þínar niðurhalingar“-hilluna</string>
   <string name="morphe_music_comments_screen_title">Athugasemdir</string>
   <string name="morphe_music_comments_screen_summary">Veldu hvaða þættir koma fram í athugasemdadeildinni</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Fela samfélagsreglur</string>
@@ -344,6 +262,12 @@ SABR spilun (slökkt á spoofun myndbandsstrauma)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Slökkva á endurbeiningu við mislíkun</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Kemur í veg fyrir að næsta lag spilist þegar smellt er á mislíkunarhnappinn</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">A-B lykkja</string>
+  <string name="morphe_music_ab_loop_summary">Haldu seekbar niðri til að stilla upphaf lykkju, aftur til að stilla lok lykkju og aftur til að hreinsa lykkjuna</string>
+  <string name="morphe_music_ab_loop_toast_start">Upphaf lykkju stillt á %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Lok lykkju stillt á %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Hringrás hreinsuð</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Aðgerð þegar smellt er á lag í spilunarlista</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Spila spilunarlistann</string>

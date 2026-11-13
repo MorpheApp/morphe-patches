@@ -321,7 +321,7 @@ Promjene uključuju:
   <string name="morphe_hide_keyword_content_phrases_title">Ključne riječi za skrivanje</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Unesite ključne riječi i fraze koje želite sakriti, razdvojene novim redovima
 
-Ključne riječi mogu biti bilo koji tekst prikazan u naslovima videozapisa ili nazivima kanala"</string>
+Ključne riječi mogu biti bilo koji tekst prikazan u naslovima videozapisa. Ključna riječ @KorisničkoIme sakriva sav sadržaj određenih kreatora"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Početna / Pretplata / Pretraga / Komentari su filtrirani kako bi se sakrio sadržaj koji odgovara ključnim frazama
 
 Ograničenja:
@@ -331,7 +331,6 @@ Ograničenja:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Stavljanje ključne riječi/fraze u navodnike spriječit će djelomična podudaranja naslova videozapisa i imena kanala&lt;br&gt;&lt;br&gt;Na primjer,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; će sakriti video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ali neće sakriti: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Ključna riječ ima suprotstavljene deklaracije: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Ključna riječ je prekratka i zahtijeva navodnike: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Ključna riječ će sakriti sve videozapise: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Početna: %1$s
@@ -559,18 +558,11 @@ Nakon što se jednom otvori video s dugmetom Pitaj, funkcija radi sa svim videim
   <string name="morphe_export_download_folder_summary">"Izvežite u aplikaciji sačuvane videozapise u memoriju vašeg uređaja koristeći iskačući meni za preuzimanja. Dodirnite da promijenite folder za izvoz
 
 Folder za izvoz: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Folder za izvoz</string>
-  <string name="morphe_export_download_folder_change">Promijeni folder</string>
-  <string name="morphe_export_download_folder_changed">Folder za izvoz promijenjen</string>
-  <string name="morphe_export_download_folder_reset">Folder za izvoz resetovan</string>
-  <string name="morphe_export_download_folder_missing">Nije moguće pronaći folder za izvoz %s</string>
-  <string name="morphe_export_download_flyout_title">Izvezi na uređaj</string>
   <string name="morphe_export_download_started">Izvoz videozapisa</string>
   <string name="morphe_export_download_progress">Izvoz videa: %s%%</string>
   <string name="morphe_export_download_notification_channel">Izvoz videozapisa</string>
   <string name="morphe_export_download_saved">Videozapis je izvezen u %s</string>
   <string name="morphe_export_download_failed">Videozapis nije moguće izvesti</string>
-  <string name="morphe_export_download_canceled">Izvoz otkazan</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Glasovni prevod</string>
   <string name="morphe_vot_screen_summary">Naglas čita titlove videa koristeći uređajnu pretvorbu teksta u govor, sinhronizovano sa reprodukcijom</string>
@@ -728,8 +720,6 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_queue_type_entry_2">Izvorni red</string>
   <string name="morphe_queue_type_entry_3">Morphe red čekanja</string>
   <string name="morphe_queue_type_entry_4">Morphe red čekanja na strani klijenta</string>
-  <string name="morphe_queue_add_flyout_menu_title">Dodaj stavku menija reda čekanja u iskačući prozor feed-a</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Dodaje dodatnu stavku u iskačući prozor. Omogući ovo ako \"Dodaj u red čekanja\" nije prikazano</string>
   <string name="morphe_local_queue_sheet_title">Red</string>
   <string name="morphe_local_queue_open">Red čekanja (%s)</string>
   <string name="morphe_local_queue_clear">Obriši sve</string>
@@ -1462,7 +1452,7 @@ Automobilski izgled
   <string name="morphe_dearrow_titles_player_title">Plejer liste reprodukcije &amp; preporuke</string>
   <string name="morphe_dearrow_titles_search_title">Rezultati pretrage</string>
   <string name="morphe_dearrow_titles_icon_title">Prikaži DeArrow ikonu</string>
-  <string name="morphe_dearrow_titles_icon_summary">Prikazuje DeArrow ikonu na naslovima videozapisa iz crowd-sourcinga</string>
+  <string name="morphe_dearrow_titles_icon_summary">Prikazuje DeArrow ikonu na naslovima videa koji su crowdsourcani. Dodirnite ikonu da prikažete originalni naslov i sličicu</string>
   <string name="morphe_dearrow_casual_mode_title">Casual način rada</string>
   <string name="morphe_dearrow_casual_mode_summary">Prikazuje originalni naslov umjesto DeArrow naslova ako su DeArrow korisnici glasali da im se više sviđa originalni naslov</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalan broj casual glasova za prikaz originalnog naslova</string>
@@ -1638,6 +1628,9 @@ Reprodukcija videa sa AV1-om može kočiti ili gubiti sličice"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilna glasnoća nije dostupna</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Reprodukcija može završiti 1 sekundu ranije</string>
   <string name="morphe_spoof_video_streams_about_js">• Ako deobfuskacija ne uspije, reprodukcija možda neće raditi</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView je isključen ili nije instaliran. Uključite ga i ažurirajte, inače reprodukcija može propasti</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView je zastario. Ažurirajte ga, inače reprodukcija može propasti</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Opcija „Prisili originalni audio“ nije dostupna</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Potrebna je prijava na Android VR</string>

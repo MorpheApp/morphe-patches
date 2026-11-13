@@ -43,7 +43,6 @@ private const val CUSTOM_FILTER =
 private const val LAYOUT_COMPONENTS_FILTER =
     "Lapp/morphe/extension/music/patches/components/LayoutComponentsFilter;"
 
-@Suppress("unused")
 val hideLayoutComponentsPatch = patch(
     name = "Hide layout components",
     description = "Adds options to hide general layout components."
@@ -67,7 +66,8 @@ val hideLayoutComponentsPatch = patch(
             SwitchPreference("morphe_music_hide_new_from_shelf"),
             SwitchPreference("morphe_music_hide_playlist_shelves"),
             SwitchPreference("morphe_music_hide_speed_dial_shelf"),
-            SwitchPreference("morphe_music_hide_you_may_also_like_section")
+            SwitchPreference("morphe_music_hide_you_may_also_like_section"),
+            SwitchPreference("morphe_music_hide_your_downloads_shelf")
         )
 
         PreferenceScreen.GENERAL.addPreferences(

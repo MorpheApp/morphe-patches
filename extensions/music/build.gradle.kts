@@ -1,6 +1,9 @@
+@file:Suppress("AvoidDuplicateDependencies")
+
 import com.android.build.api.dsl.ApplicationExtension
 
 dependencies {
+    implementation(libs.annotation)
     testImplementation(libs.junit)
     testImplementation(libs.json)
     testImplementation(project(":extensions:shared:library"))

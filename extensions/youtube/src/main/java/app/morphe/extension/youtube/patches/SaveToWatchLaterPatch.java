@@ -35,6 +35,7 @@ public final class SaveToWatchLaterPatch {
      */
     private static volatile SaveToWatchLaterRequest saveToWatchLaterRequest;
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

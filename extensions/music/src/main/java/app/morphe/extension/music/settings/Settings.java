@@ -33,7 +33,7 @@ import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.spoof.ClientType;
 
-@SuppressWarnings({"deprecation", "RedundantSuppression"})
+@SuppressWarnings("unused")
 public class Settings extends SharedYouTubeSettings {
 
     // Jam queue sharing
@@ -54,6 +54,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_PLAYLIST_SHELVES = new BooleanSetting("morphe_music_hide_playlist_shelves", FALSE, true);
     public static final BooleanSetting HIDE_SPEED_DIAL_SHELF = new BooleanSetting("morphe_music_hide_speed_dial_shelf", FALSE, true);
     public static final BooleanSetting HIDE_YOU_MAY_ALSO_LIKE_SECTION = new BooleanSetting("morphe_music_hide_you_may_also_like_section", FALSE, true);
+    public static final BooleanSetting HIDE_YOUR_DOWNLOADS_SHELF = new BooleanSetting("morphe_music_hide_your_downloads_shelf", FALSE, true);
 
     // General (Layout)
     public static final EnumSetting<StartPage> CHANGE_START_PAGE = new EnumSetting<>("morphe_change_start_page", StartPage.DEFAULT, true);
@@ -121,6 +122,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting MINIPLAYER_PREVIOUS_BUTTON = new BooleanSetting("morphe_music_miniplayer_previous_button", TRUE, true);
     public static final IntegerSetting PLAYBACK_SPEED = new IntegerSetting("morphe_music_playback_speed", 100);
     public static final BooleanSetting PLAYBACK_SPEED_CHANGE_PITCH = new BooleanSetting("morphe_music_playback_speed_change_pitch", FALSE);
+    public static final BooleanSetting AB_LOOP = new BooleanSetting("morphe_music_ab_loop", FALSE);
     public static final EnumSetting<TapAction> PLAYLIST_TRACK_TAP_ACTION = new EnumSetting<>("morphe_music_playlist_track_tap_action", TapAction.DEFAULT);
 
     // Playlist tags
@@ -130,10 +132,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting REMEMBER_REPEAT_STATE = new BooleanSetting("morphe_music_remember_repeat_state", FALSE, true, parentNot(HIDE_REPEAT_BUTTON));
     public static final BooleanSetting REMEMBER_SHUFFLE_STATE = new BooleanSetting("morphe_music_remember_shuffle_state", FALSE, true, parentNot(HIDE_SHUFFLE_BUTTON));
     public static final BooleanSetting SAVED_SHUFFLE_STATE = new BooleanSetting("morphe_music_saved_shuffle_state", FALSE, parent(REMEMBER_SHUFFLE_STATE));
-
-    // Downloads
-    public static final StringSetting DOWNLOADS_SORT = new StringSetting("morphe_music_downloads_sort", "ARTIST", false, false);
-    public static final BooleanSetting DOWNLOADS_MARK = new BooleanSetting("morphe_music_downloads_mark", TRUE, DOWNLOAD_MODE.availability(DownloadMode.IN_APP));
 
     // Action buttons
     public static final BooleanSetting HIDE_ACTION_BAR = new BooleanSetting("morphe_music_hide_action_bar", FALSE, true);

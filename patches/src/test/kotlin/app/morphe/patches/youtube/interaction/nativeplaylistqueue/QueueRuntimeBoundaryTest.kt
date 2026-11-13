@@ -416,10 +416,6 @@ class QueueRuntimeBoundaryTest {
                 package app.morphe.extension.youtube.patches.utils;
                 public class LocalQueueSheet { public static void show(android.app.Activity activity) {} }
             """,
-            "ChannelIdRequest" to """
-                package app.morphe.extension.youtube.patches.utils.requests;
-                public class ChannelIdRequest { public static String getVideoTitleIfAvailable(String video) { return video; } }
-            """,
             "PlayerType" to """
                 package app.morphe.extension.youtube.shared;
                 public enum PlayerType {
@@ -447,6 +443,9 @@ class QueueRuntimeBoundaryTest {
                     public static String getVideoTitle() { return "Current video"; }
                     public static String getChannelName() { return "Channel"; }
                     public static long getVideoTime() { return time; }
+                    public static boolean isVideoId(String text) {
+                        return text != null && text.matches("[A-Za-z0-9_-]{11}");
+                    }
                 }
             """,
             "LoadVideoPatch" to """
@@ -633,7 +632,7 @@ class QueueRuntimeBoundaryTest {
             """
         ).map { (name, source) -> File(output, "$name.java").apply { writeText(source.trimIndent()) } }
         val fixture = File(output, "RuntimeFixture.java").apply {
-            writeText("""
+            writeText($$"""
                 package app.morphe.extension.youtube.patches.queue;
                 import android.content.SharedPreferences;
                 import app.morphe.extension.shared.*;
@@ -676,7 +675,7 @@ class QueueRuntimeBoundaryTest {
                         field("nativePlaybackRef").set(null, new WeakReference<>(playback));
                         field("publishedModel").set(null, new Object());
                         field("pendingQueueStart").set(null, new QueueStart(queue, ""));
-                        Class<?> undo = Class.forName(owner.getName() + "${'$'}PendingUndo");
+                        Class<?> undo = Class.forName(owner.getName() + "$PendingUndo");
                         Constructor<?> create = undo.getDeclaredConstructors()[0]; create.setAccessible(true);
                         field("pendingUndo").set(null, create.newInstance("token", queue, new WeakReference<>(playback), null));
                         clears = 0; Logger.errors = 0; QueueFullscreenActions.refreshes = 0;
@@ -1057,7 +1056,7 @@ class QueueRuntimeBoundaryTest {
                         require(NativePlaylistQueuePatch.shouldIgnorePlaylistResponse(controller.playback, source)
                                 && NativePlaylistQueuePatch.shouldIgnorePlaylistModel(controller, () -> "PL-account"),
                             "Late source responses stay excluded after Clear on the same player");
-                        Class<?> undo = Class.forName(owner.getName() + "${'$'}PendingUndo");
+                        Class<?> undo = Class.forName(owner.getName() + "$PendingUndo");
                         Constructor<?> create = undo.getDeclaredConstructors()[0]; create.setAccessible(true);
                         field("pendingUndo").set(null, create.newInstance("converted", before,
                             new WeakReference<>(controller.playback), null));

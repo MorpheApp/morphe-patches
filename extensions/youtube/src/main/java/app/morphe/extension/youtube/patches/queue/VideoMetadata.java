@@ -19,6 +19,7 @@ import java.util.List;
 import app.morphe.extension.youtube.innertube.queue.QueueCardRenderer;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer.ColorPalette;
+import app.morphe.extension.youtube.patches.VideoInformation;
 
 /** Server-supplied display data for a native playlist row. */
 record VideoMetadata(String videoId, String title, String channelName, String videoInfo, String duration,
@@ -113,7 +114,7 @@ record VideoMetadata(String videoId, String title, String channelName, String vi
             return null;
         }
         String videoId = url.substring(WATCH_URL_PREFIX.length()).split("&", 2)[0];
-        if (!PlaylistQueue.isVideoId(videoId)) {
+        if (!VideoInformation.isVideoId(videoId)) {
             return null;
         }
 

@@ -32,6 +32,7 @@ import app.morphe.extension.music.patches.lyrics.romanizers.ScriptDetector;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
+@SuppressWarnings("unused")
 public final class PetitLyricsProvider implements LyricsProvider {
 
     private static final String API_URL = "https://p0.petitlyrics.com/api/GetPetitLyricsData.php";
@@ -91,6 +92,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return names.isEmpty() ? null : names;
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static void addCredit(List<String> credits, String label, @Nullable String value) {
         if (value == null) {
             return;
@@ -270,7 +272,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
 
     private static boolean isValidUtf8(byte[] raw) {
         try {
-            StandardCharsets.UTF_8.decode(java.nio.ByteBuffer.wrap(raw));
+            StandardCharsets.UTF_8.decode(ByteBuffer.wrap(raw));
             return true;
         } catch (Exception ex) {
             return false;
@@ -296,6 +298,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return s != null && (s.contains(")") || s.contains("）") || s.contains("]"));
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static int indexOfAny(@Nullable String s, String chars) {
         if (s == null) return -1;
         for (int i = 0; i < s.length(); i++) {
@@ -304,6 +307,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return -1;
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static int lastIndexOfAny(@Nullable String s, String chars) {
         if (s == null) return -1;
         for (int i = s.length() - 1; i >= 0; i--) {
@@ -638,15 +642,14 @@ public final class PetitLyricsProvider implements LyricsProvider {
         if (!switchFlag) {
             return protectionId;
         }
-        int k = protectionId;
-        return (k & 0x0003)
-                | ((k & 0x000c) << 2)
-                | ((k & 0x0030) >> 2)
-                | ((k & 0x00c0) << 2)
-                | ((k & 0x0300) >> 2)
-                | ((k & 0x0c00) << 2)
-                | ((k & 0x3000) >> 2)
-                | (k & 0xc000);
+        return (protectionId & 0x0003)
+                | ((protectionId & 0x000c) << 2)
+                | ((protectionId & 0x0030) >> 2)
+                | ((protectionId & 0x00c0) << 2)
+                | ((protectionId & 0x0300) >> 2)
+                | ((protectionId & 0x0c00) << 2)
+                | ((protectionId & 0x3000) >> 2)
+                | (protectionId & 0xc000);
     }
 
     private static List<LyricsLine> zipLineSync(List<Long> timingsCs, String text) {
@@ -720,7 +723,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) {
         Stash stash = new Stash();
 
         collectTier(track, TIER_WORD_SYNC, stash);

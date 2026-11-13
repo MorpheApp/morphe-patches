@@ -16,6 +16,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,15 +46,16 @@ public class QueueSaveActionsTest {
     // Write the native wire shape independently of our generated header
     // builder, which previously hid an incorrect field declaration.
     static QueueSaveHeader nativeHeader(SwipeAction button) throws Exception {
-        var bytes = new java.io.ByteArrayOutputStream();
+        var bytes = new ByteArrayOutputStream();
         var output = com.google.protobuf.CodedOutputStream.newInstance(bytes);
         output.writeMessage(2, button);
         output.writeMessage(3, Text.newBuilder().setSimpleText("New playlist").build());
         output.flush();
         return QueueSaveHeader.parseFrom(bytes.toByteArray());
     }
+    @SuppressWarnings("ClassCanBeRecord")
     static class Picker implements QueueSaveActions.Picker {
-        List<String> videoIds;
+        final List<String> videoIds;
         Picker(List<String> ids) { videoIds = ids; }
         public List<String> patch_getQueueSaveVideoIds() { return videoIds; }
         public com.google.protobuf.MessageLite patch_parseQueueSaveResponse(byte[] bytes) {
@@ -102,6 +104,7 @@ public class QueueSaveActionsTest {
         var saved = QueueSaveActions.copyVideoIds(copy);
         ids.clear();
         assertEquals(IDS, saved);
+        //noinspection DataFlowIssue
         saved.add(IDS.get(2));
         assertEquals(IDS, QueueSaveActions.copyVideoIds(copy));
         assertEquals(List.of(IDS.get(0), IDS.get(0)),
@@ -173,7 +176,7 @@ public class QueueSaveActionsTest {
     }
 
     @Test public void bindingPreservesUnknownNativeResponseFields() throws Exception {
-        var wire = new java.io.ByteArrayOutputStream();
+        var wire = new ByteArrayOutputStream();
         wire.write(response(createButton()).toByteArray());
         var output = com.google.protobuf.CodedOutputStream.newInstance(wire);
         output.writeInt32(127, 99);

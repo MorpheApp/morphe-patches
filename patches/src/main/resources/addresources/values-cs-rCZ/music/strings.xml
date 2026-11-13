@@ -131,102 +131,19 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Použít externí stahovač pro nabídku Stahování</string>
   <string name="morphe_external_downloader_menu_summary">Možnost Stahování v nabídkách místo toho otevře váš externí stahovač.</string>
-  <string name="morphe_music_downloads_screen_title">Stahování</string>
-  <string name="morphe_music_downloads_empty">"Žádné stažené skladby
-Stažené skladby se zobrazí zde"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">Počet skladeb: %1$s • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Hledat ve stažených skladbách</string>
-  <string name="morphe_music_downloads_sort">Seřadit</string>
-  <string name="morphe_music_downloads_sort_artist">Seřadit podle interpreta</string>
-  <string name="morphe_music_downloads_sort_title">Seřadit podle názvu</string>
-  <string name="morphe_music_downloads_sort_size">Seřadit podle velikosti</string>
-  <string name="morphe_music_downloads_delete_all">Smazat všechny stažené skladby</string>
-  <string name="morphe_music_downloads_delete_all_title">Smazat všechny stažené skladby?</string>
-  <string name="morphe_music_downloads_delete_all_message">Všechny stažené skladby budou z tohoto zařízení smazány</string>
-  <string name="morphe_music_downloads_all_deleted">Stažené skladby byly smazány</string>
-  <string name="morphe_music_downloads_nothing_found">Nic nebylo nalezeno</string>
-  <string name="morphe_music_downloads_actions_for">Akce pro %s</string>
-  <string name="morphe_music_downloads_play">Přehrát</string>
-  <string name="morphe_music_downloads_play_pause">Přehrát nebo pozastavit</string>
-  <string name="morphe_music_downloads_previous">Předchozí</string>
-  <string name="morphe_music_downloads_next">Další</string>
-  <string name="morphe_music_downloads_pause">Pozastavit</string>
-  <string name="morphe_music_downloads_shuffle">Náhodné pořadí</string>
-  <string name="morphe_music_downloads_repeat">Opakovat</string>
-  <string name="morphe_music_downloads_minimize">Minimalizovat</string>
-  <string name="morphe_music_downloads_close">Zavřít</string>
-  <string name="morphe_music_downloads_delete">Smazat</string>
-  <string name="morphe_music_downloads_delete_track">Smazat staženou skladbu</string>
-  <string name="morphe_music_downloads_delete_track_title">Smazat staženou skladbu?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s bude smazána z tohoto zařízení</string>
-  <string name="morphe_music_downloads_track_deleted">Stažená skladba byla smazána</string>
-  <string name="morphe_music_downloads_track_delete_failed">Staženou skladbu se nepodařilo smazat</string>
-  <string name="morphe_music_downloads_play_failed">Staženou skladbu se nepodařilo přehrát</string>
-  <string name="morphe_music_downloads_playlists">Playlisty</string>
-  <string name="morphe_music_downloads_playlists_section">Vytvořené seznamy skladeb (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Zatím žádné lokální seznamy skladeb</string>
-  <string name="morphe_music_downloads_playlists_hide">Skrýt seznamy skladeb ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Nový seznam skladeb</string>
-  <string name="morphe_music_downloads_playlist_new_button">Nový seznam skladeb</string>
-  <string name="morphe_music_downloads_playlist_selected">Vybráno (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Nejdříve vyberte skladby</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Vymazat výběr</string>
-  <string name="morphe_music_downloads_playlist_create">Vytvořit seznam skladeb</string>
-  <string name="morphe_music_downloads_playlist_create_button">Vytvořit</string>
-  <string name="morphe_music_downloads_playlist_add">Přidat do playlistu</string>
-  <string name="morphe_music_downloads_playlist_added">Přidáno do %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Název playlistu</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Název playlistu nemůže být prázdný</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Playlist se nepodařilo uložit</string>
-  <string name="morphe_music_downloads_playlist_track_count">Počet skladeb: %s</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 skladba</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">V tomto seznamu skladeb nejsou žádné skladby</string>
-  <string name="morphe_music_downloads_playlist_play">Přehrát seznam skladeb</string>
-  <string name="morphe_music_downloads_playlist_play_all">Přehrát vše</string>
-  <string name="morphe_music_downloads_playlist_rename">Přejmenovat</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Přejmenovat seznam skladeb</string>
-  <string name="morphe_music_downloads_playlist_save">Uložit</string>
-  <string name="morphe_music_downloads_playlist_delete">Smazat seznam skladeb</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Smazat seznam skladeb?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s bude smazáno. Stažené skladby zůstanou zachovány</string>
-  <string name="morphe_music_downloads_playlist_deleted">Seznam skladeb byl smazán</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Odebrat ze seznamu skladeb</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Přetáhněte pro změnu pořadí</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Přetáhněte za úchyt pro změnu pořadí</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Hotovo</string>
-  <string name="morphe_music_downloads_notification_channel">Stahování zvuku</string>
-  <string name="morphe_music_downloads_playback_channel">Offline přehrávání</string>
-  <string name="morphe_music_downloads_unknown_track">Nepodařilo se identifikovat skladbu ke stažení</string>
-  <string name="morphe_music_downloads_already_running">Stahování již probíhá</string>
-  <string name="morphe_music_downloads_already_saved">Již staženo</string>
-  <string name="morphe_music_downloads_started">Stahování spuštěno</string>
-  <string name="morphe_music_downloads_starting">Spouštím stahování…</string>
-  <string name="morphe_music_downloads_progress">Stahování %s%%</string>
-  <string name="morphe_music_downloads_complete">Stahování dokončeno</string>
-  <string name="morphe_music_downloads_failed">Stahování selhalo</string>
-  <string name="morphe_music_downloads_playlist_download_title">Stahování seznamu skladeb</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Vyhledávání skladeb…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s vypsáno…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Nepodařilo se vyhledat skladby seznamu skladeb</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Již staženo: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"V tomto seznamu je %1$s, %2$s zatím není staženo.
+  <string name="morphe_export_download_folder_title">Export stahování</string>
+  <string name="morphe_export_download_folder_summary">"Exportujte skladby a videa stažené aplikací do úložiště vašeho zařízení pomocí nabídky stahování. Klepnutím změníte složku pro export
 
-Stahují se postupně po jednom, což může trvat dlouho a vyžaduje přibližně %3$s volného místa"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Stáhnout</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Stahování skladby %1$s z %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s staženo</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s staženo, %2$s se nepodařilo stáhnout</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Stahování seznamu skladeb již probíhá</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Váš účet zatím není znám. Zkuste to prosím znovu za chvíli</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s vypsáno, vše již staženo</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Podařilo se vyhledat pouze část seznamu skladeb. Pro zbytek znovu klepněte na Stáhnout později</string>
-  <string name="morphe_music_downloads_playlist_download_started">Stahování %s na pozadí</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Žádné připojení k síti</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Čekání na připojení k síti…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Zastaveno po %1$s z %2$s. Pokračujte klepnutím na Stáhnout</string>
-  <string name="morphe_music_downloads_mark_title">Označit stažené skladby</string>
-  <string name="morphe_music_downloads_mark_summary">U již stažených skladeb se v playlistech, albumech a výsledcích vyhledávání zobrazí značka před detaily skladby</string>
+Složka pro export: %s"</string>
+  <string name="morphe_export_download_started">Export stahování probíhá</string>
+  <string name="morphe_export_download_progress">Export stahování: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Export stahování</string>
+  <string name="morphe_export_download_saved">Stahování bylo exportováno do %s</string>
+  <string name="morphe_export_download_failed">Nepodařilo se exportovat stahování</string>
+  <string name="morphe_export_download_all_flyout_title">Exportovat vše do zařízení</string>
+  <string name="morphe_export_download_all_started">Exportování všech stažených souborů</string>
+  <string name="morphe_export_download_all_running">Stažené soubory se již exportují</string>
+  <string name="morphe_export_download_all_saved">Exportováno %1$s z %2$s stažených souborů do %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O aplikaci</string>
@@ -261,6 +178,7 @@ Stahují se postupně po jednom, což může trvat dlouho a vyžaduje přibližn
   <string name="morphe_music_hide_shuffle_button_title">Skrýt tlačítko náhodného přehrávání</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Skrýt sekci rychlé volby</string>
   <string name="morphe_music_hide_you_may_also_like_section_title">Skrýt sekci „Mohlo by se vám líbit“</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Skrýt panel „Vaše stahované soubory“</string>
   <string name="morphe_music_comments_screen_title">Komentáře</string>
   <string name="morphe_music_comments_screen_summary">Vyberte, které prvky se mají zobrazovat v sekci komentářů</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Skrýt pokyny pro komunitu</string>
@@ -344,6 +262,12 @@ Přehrávání SABR (předstírání video streamů je vypnuté)"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Vypnout přesměrování dislajků</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Zabraňuje přeskoku na další skladbu po stisknutí tlačítka „Nelíbí se“.</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">Smyčka A-B</string>
+  <string name="morphe_music_ab_loop_summary">Dlouhým stisknutím posuvníku nastavte začátek smyčky, dalším stisknutím konec smyčky a dalším smyčku zrušte</string>
+  <string name="morphe_music_ab_loop_toast_start">Začátek smyčky nastaven na %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Konec smyčky nastaven na %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Smyčka vymazána</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Akce při klepnutí na skladbu v seznamu</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Přehrát seznam skladeb</string>

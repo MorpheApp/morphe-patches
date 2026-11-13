@@ -21,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -50,6 +51,7 @@ import app.morphe.extension.shared.ui.Dim;
  * The dialog behind a translation or romanization provider's name. Translation and romanization
  * share one configuration per service, so both lists open the same settings.
  */
+@SuppressWarnings("unused")
 final class LyricsProviderConfigDialog {
 
     private static final ExecutorService VALIDATION = Executors.newSingleThreadExecutor(
@@ -143,9 +145,7 @@ final class LyricsProviderConfigDialog {
                 Settings.LYRICS_AI_EXTRA_BODY.get(), false);
         makeMultiLine(extraBodyInput, 2, 5);
         setHint(extraBodyInput, "morphe_music_lyrics_ai_config_extra_body_hint");
-        urlBox[0] = addBaseUrlInput(content, Settings.LYRICS_AI_BASE_URL.get(), preset -> {
-            modelInput.setText(preset.model());
-        });
+        urlBox[0] = addBaseUrlInput(content, Settings.LYRICS_AI_BASE_URL.get(), preset -> modelInput.setText(preset.model()));
         final EditText urlInput = urlBox[0];
         addTestButton(context, content, () -> {
             final String url = urlInput.getText().toString().trim();
@@ -153,7 +153,7 @@ final class LyricsProviderConfigDialog {
                 Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_invalid_url"));
                 return;
             }
-            test(context, () -> OpenAIClient.validateConfig(url,
+            test(() -> OpenAIClient.validateConfig(url,
                     tokenInput.getText().toString().trim(),
                     modelInput.getText().toString().trim()) ? List.of("ok") : null,
                     ProcessingProviders.OPENAI_COMPATIBLE_LABEL);
@@ -219,11 +219,12 @@ final class LyricsProviderConfigDialog {
                 ProcessingProviders.DEEPL_LABEL,
                 content, onSaved,
                 () -> Settings.LYRICS_DEEPL_API_KEY.save(keyInput.getText().toString().trim()),
-                () -> Settings.LYRICS_DEEPL_API_KEY.resetToDefault(),
+                Settings.LYRICS_DEEPL_API_KEY::resetToDefault,
                 () -> keyInput.getText().toString().trim().isEmpty());
     }
 
     /** The prompt box and the setting behind it; a no-op pair when the service takes no prompt. */
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class PromptField {
         @Nullable
         private final StringSetting setting;
@@ -273,6 +274,7 @@ final class LyricsProviderConfigDialog {
         return new PromptField(prompt, input);
     }
 
+    @SuppressWarnings("SameParameterValue")
     static TextView createHint(Context context, String textKey) {
         final int fg = ThemeUtils.getAppForegroundColor();
         TextView hint = new TextView(context);
@@ -329,7 +331,7 @@ final class LyricsProviderConfigDialog {
 
         final Dialog dialog = pair.first;
         final LinearLayout mainLayout = pair.second;
-        final android.widget.ScrollView scrollView = new android.widget.ScrollView(context);
+        final ScrollView scrollView = new ScrollView(context);
         scrollView.addView(content, new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         LinearLayout.LayoutParams scrollParams = new LinearLayout.LayoutParams(
@@ -345,7 +347,8 @@ final class LyricsProviderConfigDialog {
         return content;
     }
 
-    private static void test(Activity context, Supplier<List<String>> request, String label) {
+    @SuppressWarnings("SameParameterValue")
+    private static void test(Supplier<List<String>> request, String label) {
         Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
         Utils.runOnBackgroundThread(() -> {
             List<String> result;
@@ -481,7 +484,7 @@ final class LyricsProviderConfigDialog {
         input.setVerticalScrollBarEnabled(true);
     }
 
-    /** A hint defaults to a fixed grey the dark theme leaves unreadable, so it follows the app. */
+    /** A hint defaults to a fixed gray the dark theme leaves unreadable, so it follows the app. */
     static void setHint(EditText input, String hintKey) {
         input.setHint(str(hintKey));
         input.setHintTextColor((0x99 << 24) | (ThemeUtils.getAppForegroundColor() & 0x00FFFFFF));

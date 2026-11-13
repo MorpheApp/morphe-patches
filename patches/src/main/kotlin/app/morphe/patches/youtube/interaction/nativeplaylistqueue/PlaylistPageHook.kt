@@ -24,8 +24,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val PAGES = "$EXTENSION_PACKAGE/PlaylistPages;"
-private const val SOURCE = "$EXTENSION_PACKAGE/PlaylistPages\$Source;"
-private const val ACCOUNT = "$EXTENSION_PACKAGE/PlaylistPage\$Account;"
+private const val SOURCE = $$"$$EXTENSION_PACKAGE/PlaylistPages$Source;"
+private const val ACCOUNT = $$"$$EXTENSION_PACKAGE/PlaylistPage$Account;"
 
 /** Fetch authenticated source windows without invoking the native player response handlers. */
 internal fun installPlaylistPages() {

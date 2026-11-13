@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 
 import app.morphe.extension.shared.settings.BooleanSetting;
 
+@SuppressWarnings("unused")
 public abstract class FilterGroup<T> {
     public final static class FilterGroupResult {
         private BooleanSetting setting;

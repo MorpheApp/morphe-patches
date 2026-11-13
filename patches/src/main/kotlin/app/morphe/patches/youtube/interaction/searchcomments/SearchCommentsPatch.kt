@@ -34,7 +34,6 @@ private const val EXTENSION_FILTER =
 private const val SECTION_LIST_ACCESS_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/components/CommentsSearchFilter$SectionListAccess;"
 
-@Suppress("unused")
 val searchCommentsPatch = patch(
     name = "Search comments",
     description = "Adds a button to the comments to show only the loaded comments that contain the searched words."

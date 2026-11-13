@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Angazia mipangilio mipya</string>
   <string name="morphe_settings_new_indicator_days_summary">Idadi ya siku ambazo nukta inaonekana kando ya mipangilio na chaguo zilizoongezwa na sasisho</string>
   <string name="morphe_settings_new_indicator_days_off">Zima</string>
+  <string name="morphe_settings_new_indicator_clear_title">Weka mipangilio yote kama iliyoonekana</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Ondoa nukta kwenye mipangilio na chaguzi zote mpya</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Weka mipangilio yote kama iliyoonekana?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Nukta imeondolewa kwenye mipangilio na chaguzi zote mpya. Mipangilio iliyoongezwa na sasisho za baadaye bado itaonyeshwa.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Anzisha upya ili kumalizia usanidi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Hakiki ikiwa jina la kifurushi ni sahihi na programu imesakinishwa"</string>
   <string name="morphe_external_downloader_empty_warning">Jina la kifurushi haliwezi kuwa tupu</string>
+  <string name="morphe_export_download_folder_dialog_title">Folda ya nje</string>
+  <string name="morphe_export_download_folder_change">Badilisha folda</string>
+  <string name="morphe_export_download_folder_changed">Folda ya eksporti imebadilishwa</string>
+  <string name="morphe_export_download_folder_reset">Folda ya eksporti imerejeshwa</string>
+  <string name="morphe_export_download_folder_missing">Folda ya eksporti %s haikuonekana</string>
+  <string name="morphe_export_download_flyout_title">Eksporti kwenda kwenye kifaa</string>
+  <string name="morphe_export_download_canceled">Eksporti imegatuliwa</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Maalum</string>
   <string name="morphe_custom_branding_icon_title">Aikoni ya programu</string>
@@ -110,6 +121,20 @@ Ikiwa wewe ni mtumiaji wa YouTube Premium, mpangilio huu unaweza usihitajike"</s
 Je, uiweke %2$s kuwa mteja chaguo-msingi?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Badilisha</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Kuzima mpangilio huu kunaweza kusababisha matatizo ya uchezaji</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView imezimwa au haijasakinishwa.
+
+Uchezaji wa video unahitaji Android System WebView. Iwashe na uisasishe hadi toleo la hivi karibuni.
+
+Gusa Sawa ili kufungua Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView imepitwa na wakati (toleo %s).
+
+Uchezaji wa video unaweza kushindwa hadi Android System WebView itakaposasishwa hadi toleo la hivi karibuni.
+
+Gusa Sawa ili kufungua Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Usionyeshe tena</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView haijasakinishwa. Isakinishe ili kurekebisha uchezaji wa video</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Jaribu kuwezesha: Ghushi mkondo wa video &gt; Ingia kwenye Android VR</string>

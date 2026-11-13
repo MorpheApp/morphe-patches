@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,6 +43,7 @@ final class TimedComments {
             "^[\\s\\p{Z}\\-–—|/・:：~〜]+|[\\s\\p{Z}\\-–—|/・:：~〜]+$");
     private static final String COMMENTS_SECTION_ID = "comment-item-section";
 
+    @SuppressWarnings("ClassCanBeRecord")
     static final class Page {
         final List<NiconicoComment> comments;
         @Nullable
@@ -53,6 +55,7 @@ final class TimedComments {
         }
     }
 
+    @SuppressWarnings("ClassCanBeRecord")
     private static final class TimeMatch {
         final int start;
         final int end;
@@ -181,8 +184,8 @@ final class TimedComments {
      * @return The time in milliseconds, or -1 if the minutes of a time with hours are not valid.
      */
     private static long parseTimeMs(Matcher matcher) {
-        long minutes = Long.parseLong(matcher.group(2));
-        long seconds = Long.parseLong(matcher.group(3));
+        long minutes = Long.parseLong(Objects.requireNonNull(matcher.group(2)));
+        long seconds = Long.parseLong(Objects.requireNonNull(matcher.group(3)));
         String hours = matcher.group(1);
         if (hours == null) {
             return (minutes * 60 + seconds) * 1000;

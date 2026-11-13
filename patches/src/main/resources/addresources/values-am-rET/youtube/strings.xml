@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">የፍለጋ ውጤቶችን በቁልፍ ቃላት ደብቅ</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">የደንበኝነት ምዝገባ ቪዲዮዎችን በቁልፍ ቃላት ደብቅ</string>
   <string name="morphe_hide_keyword_content_phrases_title">ሊደበቁ የሚፈልጉ ቁልፍ ቃላት</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"ሊደበቁ የሚፈልጓቸውን ቁልፍ ቃላት እና ሐረጎች በአዲስ መስመር በመለየት ያስገቡ
+  <string name="morphe_hide_keyword_content_phrases_summary">"ሊደበቁ የሚፈልጓቸውን ቁልፍ ቃላት እና ሐረጎች በአዲስ መስመሮች በመለየት ያስገቡ
 
-ቁልፍ ቃላት በቪዲዮ ርዕሶች ወይም በቻናል ስሞች ውስጥ የሚታዩ ማናቸውም ጽሁፎች ሊሆኑ ይችላሉ"</string>
+ቁልፍ ቃላት በቪዲዮ ርዕሶች ላይ የሚታዩ ማናቸውም ጽሑፎች ሊሆኑ ይችላሉ። የ@የተጠቃሚስም ቁልፍ ቃል ከተወሰኑ ፈጣሪዎች የሚመጡትን ሁሉንም ይዘቶች ይደብቃል"</string>
   <string name="morphe_hide_keyword_content_about_summary">"የመጀመሪያ ገጽ / የደንበኝነት ምዝገባዎች / ፍለጋ / አስተያየቶች ከቁልፍ ቃላት ሐረጎች ጋር የሚመሳሰሉ ይዘቶችን ለመደበቅ ተጣርተዋል
 
 ገደቦች፦
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">ቁልፍ ቃላትን/ሐረጎችን በድርብ ጥቅስ ውስጥ ማጠር የቪዲዮ ርዕሶችን እና የቻናል ስሞችን በከፊል ማዛመድን ይከላከላል&lt;br&gt;&lt;br&gt;ለምሳሌ፣&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; የሚለውን ቪዲዮ ይደብቃል፡ &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ነገር ግን ይህንን አይደብቅም፡ &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">ቁልፍ ቃሉ የሚጋጩ መግለጫዎች አሉት፡ %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">ቁልፍ ቃሉ በጣም አጭር ነው እና ጥቅሶችን ይፈልጋል፡ %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">ቁልፍ ቃሉ ሁሉንም ቪዲዮዎች ይደብቃል: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• መነሻ፡ %1$s
@@ -559,18 +558,11 @@ Ask የሚለው ቁልፍ ያለው ቪዲዮ አንዴ ከተከፈተ በኋ�
   <string name="morphe_export_download_folder_summary">"በመተግበሪያው ውስጥ ያሉትን የተቀመጡ ቪዲዮዎች በመተግበሪያው የውርድ ፍላይአውት ሜኑ በመጠቀም ወደ መሳሪያዎ ማከማቻ ይላኩ። የኤክስፖርት ፎልደሩን ለመቀየር ይጫኑ
 
 የኤክስፖርት ፎልደር፦ %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">የላክ ፎልደር</string>
-  <string name="morphe_export_download_folder_change">ፎልደር ቀይር</string>
-  <string name="morphe_export_download_folder_changed">የላክ ፎልደር ተቀይሯል</string>
-  <string name="morphe_export_download_folder_reset">የላክ ፎልደር ወደ መጀመሪያው ተመልሷል</string>
-  <string name="morphe_export_download_folder_missing">የኤክስፖርት ፎልደር %s ማግኘት አልተቻለም</string>
-  <string name="morphe_export_download_flyout_title">ወደ መሳሪያው ላክ</string>
   <string name="morphe_export_download_started">ቪዲዮ እየተላከ ነው</string>
   <string name="morphe_export_download_progress">ቪዲዮ እየተላከ ነው፡ %s%%</string>
   <string name="morphe_export_download_notification_channel">የቪዲዮ መላኪያዎች</string>
   <string name="morphe_export_download_saved">ቪዲዮው ወደ %s ተልኳል</string>
   <string name="morphe_export_download_failed">ቪዲዮውን መላክ አልተቻለም</string>
-  <string name="morphe_export_download_canceled">መላኩ ተሰርዟል</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">የድምፅ ትርጉም</string>
   <string name="morphe_vot_screen_summary">የቪዲዮውን የግርጌ ጽሑፎች በመሳሪያው ላይ ባለው የጽሑፍ-ወደ-ድምፅ አገልግሎት በመጠቀም ከቪዲዮው ጋር በተናበበ መልኩ በድምፅ ያንብቡ</string>
@@ -729,8 +721,6 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_queue_type_entry_2">የYouTube ተራ</string>
   <string name="morphe_queue_type_entry_3">የMorphe ተራ</string>
   <string name="morphe_queue_type_entry_4">የMorphe ተራ በደንበኛ በኩል</string>
-  <string name="morphe_queue_add_flyout_menu_title">የፊድ ፍላይአውት የቅድሚያ ተራ ሜኑ ንጥል አክል</string>
-  <string name="morphe_queue_add_flyout_menu_summary">ተጨማሪ ፍላይአውት ንጥል ይጨምራል። \"ወደ ቅድሚያ ተራ አክል\" ካልታየ ይህንን ያግብሩት</string>
   <string name="morphe_local_queue_sheet_title">ተረኛ</string>
   <string name="morphe_local_queue_open">ተራ (%s)</string>
   <string name="morphe_local_queue_clear">ሁሉንም አጥፋ</string>
@@ -1463,7 +1453,7 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_dearrow_titles_player_title">የተጫዋች ዝርዝሮች &amp; ምክሮች</string>
   <string name="morphe_dearrow_titles_search_title">የፍለጋ ውጤቶች</string>
   <string name="morphe_dearrow_titles_icon_title">የDeArrow አዶን አሳይ</string>
-  <string name="morphe_dearrow_titles_icon_summary">በሕዝብ የተሰበሰቡ የቪዲዮ ርዕሶች ላይ የDeArrow አዶን ያሳያል</string>
+  <string name="morphe_dearrow_titles_icon_summary">በህዝብ የተሰበሰቡ የቪዲዮ ርዕሶች ላይ የDeArrow ምልክትን ያሳያል። ዋናውን ርዕስ እና ታምብኔል ለማሳየት ምልክቱን ይጫኑ</string>
   <string name="morphe_dearrow_casual_mode_title">ቀለል ያለ ሁኔታ</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow ተጠቃሚዎች ዋናው ርዕስ እንደሚወዱት ድምጽ ከሰጡ፣ ከ DeArrow ርዕስ ይልቅ ዋናውን ርዕስ ያሳያል</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">ዋናውን ርዕስ ለማሳየት የሚያስፈልጉ ዝቅተኛ የቀለል ያሉ ድምጾች</string>
@@ -1639,6 +1629,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• የተረጋጋ የድምፅ መጠን አይገኝም</string>
   <string name="morphe_spoof_video_streams_about_end_early">• መልሶ ማጫወት 1 ሰከንድ ቀድሞ ሊያበቃ ይችላል</string>
   <string name="morphe_spoof_video_streams_about_js">• deobfuscation ካልተሳካ፣ ማጫወት ሊቋረጥ ይችላል</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView ጠፍቷል ወይም አልተጫነም። አብሩትና ያዘምኑት፣ ካልሆነ ግን መልማመጃው ሊቋረጥ ይችላል</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView ጊዜው አልፎበታል። ያዘምኑት፣ ካልሆነ ግን መልማመጃው ሊቋረጥ ይችላል</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• ኦሪጅናል ኦዲዮን አስገድድ አይገኝም</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• ወደ Android VR መግባት ያስፈልጋል</string>

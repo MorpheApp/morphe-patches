@@ -25,6 +25,7 @@ public final class DownloadsPatch {
      */
     private static final int OFFLINE_PLAYLIST_ACTION_ADD_ORDINAL = 1;
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }

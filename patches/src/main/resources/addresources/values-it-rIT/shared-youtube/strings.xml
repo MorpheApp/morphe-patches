@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Evidenzia nuove impostazioni</string>
   <string name="morphe_settings_new_indicator_days_summary">Numero di giorni in cui viene mostrato un punto accanto alle impostazioni e opzioni aggiunte tramite un aggiornamento</string>
   <string name="morphe_settings_new_indicator_days_off">Spento</string>
+  <string name="morphe_settings_new_indicator_clear_title">Segna tutte le impostazioni come viste</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Rimuove il punto da tutte le nuove impostazioni e opzioni</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Segnare tutte le impostazioni come viste?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Il punto viene rimosso da tutte le nuove impostazioni e opzioni. Le impostazioni aggiunte da futuri aggiornamenti rimarranno comunque evidenziate.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Riavvia per completare la configurazione</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Verifica che il nome del pacchetto sia corretto e che l'app sia installata"</string>
   <string name="morphe_external_downloader_empty_warning">Il nome del pacchetto non può essere vuoto</string>
+  <string name="morphe_export_download_folder_dialog_title">Cartella di esportazione</string>
+  <string name="morphe_export_download_folder_change">Cambia cartella</string>
+  <string name="morphe_export_download_folder_changed">Cartella di esportazione modificata</string>
+  <string name="morphe_export_download_folder_reset">Cartella di esportazione ripristinata</string>
+  <string name="morphe_export_download_folder_missing">Impossibile trovare la cartella di esportazione %s</string>
+  <string name="morphe_export_download_flyout_title">Esporta sul dispositivo</string>
+  <string name="morphe_export_download_canceled">Esportazione annullata</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalizzato</string>
   <string name="morphe_custom_branding_icon_title">Icona dell\'app</string>
@@ -110,6 +121,20 @@ Se sei un utente YouTube Premium, questa impostazione potrebbe non essere necess
 Vuoi rendere %2$s il client predefinito?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Cambia</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">La disattivazione di questa impostazione potrebbe causare problemi di riproduzione</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView è disattivato o non è installato.
+
+La riproduzione video richiede Android System WebView. Attivalo e aggiornalo all'ultima versione.
+
+Tocca OK per aprire Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView non è aggiornato (versione %s).
+
+La riproduzione video potrebbe non funzionare finché Android System WebView non sarà aggiornato all'ultima versione.
+
+Tocca OK per aprire Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Non mostrare più</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView non è installato. Installalo per risolvere i problemi di riproduzione video</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prova ad abilitare: Falsificazione dei flussi video > Accesso con Android VR</string>

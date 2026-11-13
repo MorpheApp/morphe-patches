@@ -26,6 +26,7 @@ public final class ReminderDialog {
      * @param lastShown When the dialog was last shown.
      * @return If the dialog was not shown within the last hour.
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean isDue(LongSetting lastShown) {
         final long now = System.currentTimeMillis();
         final long last = lastShown.get();

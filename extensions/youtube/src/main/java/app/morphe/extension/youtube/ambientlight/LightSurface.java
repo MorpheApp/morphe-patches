@@ -36,6 +36,15 @@ final class LightSurface extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     /**
+     * Places the surface in the media overlay layer, above the video surface, or in the
+     * media layer with the video. Android 16 deprecates this for setCompositionOrder, but
+     * that method is behind a feature flag, so this is still the call every version has.
+     */
+    void setAboveVideo(boolean aboveVideo) {
+        setZOrderMediaOverlay(aboveVideo);
+    }
+
+    /**
      * Draws the part of the light that this surface covers. The GPU scales the small light up
      * and dithers it, which is what keeps a dark gradient free of steps.
      * Must be called from the light's worker thread. The holder lock keeps the main thread

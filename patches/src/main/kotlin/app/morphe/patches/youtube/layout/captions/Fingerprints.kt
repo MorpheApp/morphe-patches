@@ -388,9 +388,8 @@ internal class CaptionTrackBuilderSetterFingerprint(nullValueMessage: String) : 
 )
 
 /**
- * Subtitle manager method that returns the direct caption tracks.
- *
- * @param directTracksMethod Caption tracks manager method that returns the direct tracks.
+ * Subtitle manager method that returns the direct caption tracks,
+ * by calling [CaptionTracksManagerDirectTracksFingerprint] of its caption tracks manager.
  */
 internal object SubtitleManagerDirectTracksFingerprint : Fingerprint(
     classFingerprint = SubtitleManagerFingerprintClassFingerprint,
@@ -822,7 +821,7 @@ internal object CaptionCueConstructorFingerprint : Fingerprint(
     parameters = listOf("I", "J", "Ljava/lang/CharSequence;", "Ljava/lang/CharSequence;", "L")
 )
 
-/** Caption window visibility is independent from its nonempty styled text. */
+/** Caption window visibility is independent of its nonempty styled text. */
 internal fun getCaptionSettingsVisibilityFingerprint(settingsType: String) = object : Fingerprint(
     definingClass = settingsType,
     name = "toString",

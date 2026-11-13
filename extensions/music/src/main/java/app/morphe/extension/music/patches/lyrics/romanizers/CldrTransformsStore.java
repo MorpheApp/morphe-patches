@@ -31,6 +31,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.zip.GZIPInputStream;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * The CLDR {@code -Latin} transliteration rules, fetched as one archive. Only literal rules are
@@ -123,13 +124,10 @@ public final class CldrTransformsStore {
         File directory = RomanizationDict.directory();
         if (directory == null) return;
         for (String[] transliteration : TRANSLITERATIONS) {
-            //noinspection ResultOfMethodCallIgnored
-            new File(directory, tableName(transliteration[1])).delete();
+            Utils.deleteQuietly(new File(directory, tableName(transliteration[1])));
         }
-        //noinspection ResultOfMethodCallIgnored
-        new File(directory, ARCHIVE).delete();
-        //noinspection ResultOfMethodCallIgnored
-        new File(directory, ARCHIVE + ".part").delete();
+        Utils.deleteQuietly(new File(directory, ARCHIVE));
+        Utils.deleteQuietly(new File(directory, ARCHIVE + ".part"));
     }
 
     /** Starts a fetch if the tables are not loaded. Safe to call whenever the setting is on. */
@@ -172,8 +170,7 @@ public final class CldrTransformsStore {
             RomanizationDict.download(URL, archive, ARCHIVE, (RomanizationDict.Listener) CldrTransformsStore.CHANNEL);
         }
         extract(archive, (RomanizationDict.Listener) CldrTransformsStore.CHANNEL);
-        //noinspection ResultOfMethodCallIgnored
-        archive.delete();
+        Utils.deleteQuietly(archive);
 
         CldrTransformsStore.CHANNEL.onReady(entries());
     }

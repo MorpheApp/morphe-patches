@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Fremhæv nye indstillinger</string>
   <string name="morphe_settings_new_indicator_days_summary">Antal dage en prik vises ved siden af indstillinger og valgmuligheder tilføjet af en opdatering</string>
   <string name="morphe_settings_new_indicator_days_off">Fra</string>
+  <string name="morphe_settings_new_indicator_clear_title">Marker alle indstillinger som sete</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Fjern prikken fra alle nye indstillinger og muligheder</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Marker alle indstillinger som sete?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Prikken fjernes fra alle nye indstillinger og muligheder. Indstillinger tilføjet via fremtidige opdateringer vil stadig være fremhævet.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Genstart for at færdiggøre opsætningen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Kontroller, at pakkenavnet er korrekt, og at appen er installeret"</string>
   <string name="morphe_external_downloader_empty_warning">Pakkenavnet må ikke være tomt</string>
+  <string name="morphe_export_download_folder_dialog_title">Eksporteringsmappe</string>
+  <string name="morphe_export_download_folder_change">Skift mappe</string>
+  <string name="morphe_export_download_folder_changed">Eksportmappe ændret</string>
+  <string name="morphe_export_download_folder_reset">Eksportmappe nulstillet</string>
+  <string name="morphe_export_download_folder_missing">Kunne ikke finde eksportmappe %s</string>
+  <string name="morphe_export_download_flyout_title">Eksporter til enhed</string>
+  <string name="morphe_export_download_canceled">Eksport annulleret</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Brugerdefineret</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>
@@ -110,6 +121,20 @@ Hvis du er en YouTube Premium-bruger, er denne indstilling muligvis ikke nødven
 Skal %2$s gøres til standardklient?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Skift</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Deaktivering af denne indstilling kan forårsage afspilningsproblemer</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView er slået fra eller ikke installeret.
+
+Videoafspilning kræver Android System WebView. Slå det til og opdater det til den nyeste version.
+
+Tryk på OK for at åbne Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView er forældet (version %s).
+
+Videoafspilning kan fejle, indtil Android System WebView er opdateret til den nyeste version.
+
+Tryk på OK for at åbne Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Vis ikke igen</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView er ikke installeret. Installer det for at løse problemet med videoafspilning</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prøv at aktivere: Spoof videostreams &gt; Android VR log ind</string>

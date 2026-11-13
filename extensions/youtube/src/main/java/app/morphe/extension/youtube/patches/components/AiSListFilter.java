@@ -45,12 +45,7 @@ public final class AiSListFilter extends BufferPhraseFilter {
     private static boolean keywordMatchIsWholeHandle(byte[] text, int keywordStartIndex, int keywordLength) {
         // No need to check before the mathc because handles starts with @ which is always the start.
         final Integer codePointAfter = getUtf8CodePointAt(text, keywordStartIndex + keywordLength);
-        //noinspection RedundantIfStatement
-        if (codePointAfter != null && isHandleCharacter(codePointAfter)) {
-            return false;
-        }
-
-        return true;
+        return codePointAfter == null || !isHandleCharacter(codePointAfter);
     }
 
     private static boolean isHandleCharacter(int codePoint) {
