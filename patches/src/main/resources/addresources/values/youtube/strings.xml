@@ -1311,6 +1311,18 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_disable_playlist_autoplay_title">Disable playlist autoplay</string>
     <string name="morphe_disable_playlist_autoplay_summary">Prevents playlists from automatically advancing to the next video</string>
 
+    <!-- interaction.autoplay.autoplayControlPatch -->
+    <string name="morphe_autoplay_control_title">Autoplay control</string>
+    <string name="morphe_autoplay_control_summary">Adds a player button and a rule for the next video. Playlists and queues go on, a Mix stops after a number of videos, a suggested video never plays. Tap the button for the next mode, tap and hold for the list</string>
+    <string name="morphe_autoplay_mode_title">Autoplay mode</string>
+    <string name="morphe_autoplay_mode_entry_1">Auto</string>
+    <string name="morphe_autoplay_mode_entry_2">Single</string>
+    <string name="morphe_autoplay_mode_entry_3">Off</string>
+    <string name="morphe_autoplay_mix_stop_after_title">Mix length</string>
+    <string name="morphe_autoplay_mix_stop_after_summary">In mode Auto, a Mix stops after this many videos. 0 = no limit</string>
+    <string name="morphe_autoplay_mix_length">Mix: %s videos</string>
+    <string name="morphe_autoplay_mix_no_limit">Mix: no limit</string>
+
     <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
     <string name="morphe_continue_watching_prompt_title">\'Continue watching?\' prompt</string>
     <string name="morphe_continue_watching_prompt_entry_1">Default</string>
