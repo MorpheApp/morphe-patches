@@ -46,23 +46,6 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_VOTE_BUTTON =
     "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowVoteButton;"
 
-private val deArrowVoteButtonResourcePatch = patch {
-    dependsOn(
-        settingsPatch,
-        legacyPlayerControlsPatch
-    )
-
-    execute {
-        copyPlayerButtonIcons("dearrowbutton", "morphe_yt_dearrow")
-
-        addTopControl(
-            "dearrowbutton",
-            "@+id/morphe_dearrow_vote_button",
-            "@+id/morphe_dearrow_vote_button"
-        )
-    }
-}
-
 val deArrowPatch = patch(
     name = "DeArrow",
     description = "Adds options to replace video thumbnails and titles using the DeArrow API, " +
@@ -77,10 +60,10 @@ val deArrowPatch = patch(
         lithoRelayoutPatch,
         // Titles are replaced by the same hooks that restore the original titles.
         videoTitlesHookPatch,
-        // Player button to vote on the titles of the video.
-        deArrowVoteButtonResourcePatch,
         legacyPlayerControlsPatch,
-        videoInformationPatch
+        videoInformationPatch,
+        settingsPatch,
+        legacyPlayerControlsPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -110,13 +93,13 @@ val deArrowPatch = patch(
                         summary = true,
                         tag = "app.morphe.extension.youtube.settings.preference.DeArrowVoteButtonSwitchPreference"
                     ),
+                    SwitchPreference("morphe_dearrow_casual_mode", summary = true),
+                    TextPreference("morphe_dearrow_casual_mode_min_votes", inputType = InputType.NUMBER),
                     NonInteractivePreference(
                         key = "morphe_dearrow_guidelines",
                         tag = "app.morphe.extension.youtube.settings.preference.DeArrowGuidelinesPreference",
                         selectable = true
-                    ),
-                    SwitchPreference("morphe_dearrow_casual_mode", summary = true),
-                    TextPreference("morphe_dearrow_casual_mode_min_votes", inputType = InputType.NUMBER)
+                    )
                 )
             ),
             PreferenceCategory(
@@ -190,6 +173,14 @@ val deArrowPatch = patch(
                 invoke-static { p1 }, $EXTENSION_CLASS->getImageModel(Ljava/lang/Object;)Ljava/lang/Object;
                 move-result-object p1
             """
+        )
+
+        copyPlayerButtonIcons("dearrowbutton", "morphe_yt_dearrow")
+
+        addTopControl(
+            "dearrowbutton",
+            "@+id/morphe_dearrow_vote_button",
+            "@+id/morphe_dearrow_vote_button"
         )
     }
 }
