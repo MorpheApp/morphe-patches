@@ -105,17 +105,28 @@ public final class FeedViewCountPatch {
     private static final int TOLERANCE_DP = 4;
     /** Space between the duration badge and the edges of the thumbnail, if the badge is not found. */
     private static final int FALLBACK_MARGIN_DP = 8;
-    /** A little more space than the duration badge has, so the count is not at the very edge. */
-    private static final int EXTRA_MARGIN_DP = 2;
+    /**
+     * Space of the badge from the edge of the thumbnail, in addition to the space of the duration badge.
+     * None, so both badges are as far from the edges.
+     */
+    public static final int EXTRA_MARGIN_DP = 0;
     /** A square thumbnail is this much taller than 16:9, at least. */
     private static final int SQUARE_MIN_EXTRA_DP = 40;
     /** Space between the thumbnail and the title. */
     private static final int THUMBNAIL_TEXT_GAP_DP = 12;
     private static final int FALLBACK_HEIGHT_DP = 20;
+    /** The duration badge, if it is estimated, see {@link #estimateDurationBadge(View, Rect, String)}. */
+    private static final float ESTIMATED_DURATION_TEXT_SP = 12f;
+    private static final int ESTIMATED_DURATION_PADDING_DP = 5;
+    private static final String ESTIMATED_DURATION_TEXT = "00:00";
+    /** Thumbnails of the rows of a list, which have the duration badge closer to their edges. */
+    private static final int SMALL_THUMBNAIL_WIDTH_DP = 240;
+    private static final int SMALL_THUMBNAIL_MARGIN_DP = 6;
     /** Cards of a grid of up to three columns, such as the feed in landscape. */
     private static final float MIN_GRID_CARD_WIDTH_OF_SCREEN = 0.3f;
     private static final int MIN_DURATION_HEIGHT_DP = 12;
-    private static final int PADDING_DP = 5;
+    /** Space between the edges of the badge and its content. */
+    public static final int PADDING_DP = 5;
     private static final int GAP_DP = 3;
     /** Same as the like count badge, close to the corners of the duration badge. */
     private static final int RADIUS_DP = 8;
@@ -942,6 +953,14 @@ public final class FeedViewCountPatch {
         Rect thumbnail;
         /** If the thumbnail is the host that shows the duration, not only the image. */
         boolean thumbnailShowsDuration;
+        /**
+         * The first duration or live badge that is not where it is on the thumbnails of the feed,
+         * such as of a row of a playlist, whose thumbnail is at the left of the card.
+         */
+        @Nullable
+        Rect rowBadge;
+        @Nullable
+        String rowBadgeText;
         /** Texts below the thumbnail, with their top and left. */
         final List<PlacedText> texts = new ArrayList<>();
         /** Texts above this are on the thumbnail, such as the duration. */
@@ -1000,8 +1019,15 @@ public final class FeedViewCountPatch {
                     }
                     info.addText(text, rect);
                     String badgeText = text.toString().trim();
-                    if (!FeedVideoCardsPatch.isVideoBadgeText(badgeText)
-                            || !FeedVideoCardsPatch.isThumbnailBadge(root, rect)) {
+                    if (!FeedVideoCardsPatch.isVideoBadgeText(badgeText)) {
+                        continue;
+                    }
+                    if (!FeedVideoCardsPatch.isThumbnailBadge(root, rect)) {
+                        // Such as the duration of a row of a playlist, whose thumbnail is at the left of the card.
+                        if (info.rowBadge == null) {
+                            info.rowBadge = new Rect(rect);
+                            info.rowBadgeText = badgeText;
+                        }
                         continue;
                     }
                     info.hasDuration = true;
@@ -1119,13 +1145,22 @@ public final class FeedViewCountPatch {
      * or at the bottom left in right to left languages.
      */
     private static boolean isDurationBadgeShaped(ComponentHost root, Rect rect) {
+        return isDurationBadgeShaped(root, rect, true);
+    }
+
+    /**
+     * @param atThumbnailEnd If the badge must be at the end of a thumbnail as wide as the card.
+     */
+    private static boolean isDurationBadgeShaped(ComponentHost root, Rect rect, boolean atThumbnailEnd) {
         final float density = root.getResources().getDisplayMetrics().density;
         // Thumbnails are 16:9 or square, such as of music videos.
         return rect.width() > 0
                 && rect.width() <= FeedVideoCardsPatch.MAX_DURATION_WIDTH_DP * density
                 && rect.height() >= MIN_DURATION_HEIGHT_DP * density
                 && rect.height() <= FeedVideoCardsPatch.MAX_DURATION_HEIGHT_DP * density
-                && (isRtl(root) ? rect.centerX() < root.getWidth() / 2 : rect.centerX() > root.getWidth() / 2)
+                && (!atThumbnailEnd || (isRtl(root)
+                ? rect.centerX() < root.getWidth() / 2
+                : rect.centerX() > root.getWidth() / 2))
                 && rect.bottom <= root.getWidth() + TOLERANCE_DP * density;
     }
 
@@ -1166,7 +1201,69 @@ public final class FeedViewCountPatch {
                 thumbnail = new Rect(0, 0, host.getWidth(), squareBottom);
             }
         }
-        return new ThumbnailFrame(info.duration, thumbnail, false);
+        Rect duration = info.duration;
+        if (duration == null && info.rowBadge != null
+                && (thumbnail == null || Rect.intersects(thumbnail, info.rowBadge))) {
+            // The thumbnail is at the left of the card, or at its right in right to left languages.
+            final float density = host.getResources().getDisplayMetrics().density;
+            final Rect badge = info.rowBadge;
+            final int margin = Math.round(SMALL_THUMBNAIL_MARGIN_DP * density);
+            if (isDurationBadgeShaped(host, badge, false)) {
+                // A host only as large as the badge.
+                duration = badge;
+            }
+            if (duration != null && thumbnail == null) {
+                final int bottom = badge.bottom + margin;
+                if (isRtl(host)) {
+                    final int left = badge.left - margin;
+                    final int width = host.getWidth() - left;
+                    thumbnail = new Rect(left, bottom - Math.round(width * FeedVideoCardsPatch.THUMBNAIL_RATIO),
+                            host.getWidth(), bottom);
+                } else {
+                    final int right = badge.right + margin;
+                    thumbnail = new Rect(0, bottom - Math.round(right * FeedVideoCardsPatch.THUMBNAIL_RATIO),
+                            right, bottom);
+                }
+            } else if (duration == null && badge.width() < host.getWidth()
+                    && badge.height() >= badge.width() * FeedVideoCardsPatch.THUMBNAIL_RATIO - TOLERANCE_DP * density) {
+                // The host of the whole thumbnail draws the duration.
+                if (thumbnail == null) {
+                    thumbnail = badge;
+                }
+                duration = estimateDurationBadge(host, thumbnail, info.rowBadgeText);
+            }
+        }
+        if (duration == null && info.hasDuration && thumbnail != null) {
+            // The host of the whole thumbnail draws the duration, such as on the small thumbnails of the
+            // rows of a playlist, so where it is is estimated, and the badges do not overlap it.
+            duration = estimateDurationBadge(host, thumbnail, info.badgeText);
+        }
+        return new ThumbnailFrame(duration, thumbnail, false);
+    }
+
+    /**
+     * Estimates where the duration badge of a thumbnail is, if it can not be found.
+     * Its size is estimated from its text, with the font size of the app, a little larger than it is.
+     *
+     * @param text The text of the duration badge, or null if not known.
+     */
+    public static Rect estimateDurationBadge(View view, Rect thumbnail, @Nullable String text) {
+        final float density = view.getResources().getDisplayMetrics().density;
+        final float fontScale = view.getResources().getConfiguration().fontScale;
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
+        paint.setTextSize(ESTIMATED_DURATION_TEXT_SP * density * fontScale);
+        Paint.FontMetrics metrics = paint.getFontMetrics();
+        final int width = Math.round(paint.measureText(text != null ? text : ESTIMATED_DURATION_TEXT)
+                + 2 * ESTIMATED_DURATION_PADDING_DP * density);
+        final int height = Math.max(Math.round(FALLBACK_HEIGHT_DP * density),
+                Math.round(metrics.descent - metrics.ascent + 2 * ESTIMATED_DURATION_PADDING_DP / 2f * density));
+        // Small thumbnails have the badge closer to their edges.
+        final int margin = Math.round((thumbnail.width() < SMALL_THUMBNAIL_WIDTH_DP * density
+                ? SMALL_THUMBNAIL_MARGIN_DP : FALLBACK_MARGIN_DP) * density);
+        final int bottom = thumbnail.bottom - margin;
+        final int left = isRtl(view) ? thumbnail.left + margin : thumbnail.right - margin - width;
+        return new Rect(left, bottom - height, left + width, bottom);
     }
 
     /**
@@ -1290,6 +1387,7 @@ public final class FeedViewCountPatch {
             if (badge != null) {
                 badge.detach(host);
                 badges.remove(host);
+                FeedEngagementCountsPatch.onViewCountBadgeChanged(host);
             }
             return;
         }
@@ -1298,6 +1396,40 @@ public final class FeedViewCountPatch {
             badges.put(host, badge);
         }
         badge.bind(host, viewCount, duration, thumbnail);
+        // The like count badge can be shown next to the view count.
+        FeedEngagementCountsPatch.onViewCountBadgeChanged(host);
+    }
+
+    /**
+     * @return The text size of a badge of this height, the same as of the view count badge.
+     */
+    public static float getBadgeTextSize(View view, int height) {
+        final float maxTextSize = TEXT_SP * view.getResources().getDisplayMetrics().density
+                * view.getResources().getConfiguration().fontScale;
+        return Math.min(maxTextSize, height * TEXT_SIZE_OF_HEIGHT);
+    }
+
+    /**
+     * @return Where the view count badge of a card is, relative to the card, or null if it's not shown.
+     * Must be called on the main thread.
+     */
+    @Nullable
+    public static Rect getBadgeBounds(View host) {
+        ViewCountBadge badge = badges.get(host);
+        return badge == null || !badge.added ? null : new Rect(badge.getBounds());
+    }
+
+    /**
+     * Sets if the like count badge of the Return YouTube Dislike patch is shown right after the view count badge,
+     * as one badge. Then the view count badge has no rounded corners on that side.
+     * Must be called on the main thread.
+     */
+    public static void setBadgeJoined(View host, boolean joined) {
+        ViewCountBadge badge = badges.get(host);
+        if (badge != null && badge.joined != joined) {
+            badge.joined = joined;
+            badge.invalidateSelf();
+        }
     }
 
     // endregion
@@ -1310,10 +1442,17 @@ public final class FeedViewCountPatch {
         private final Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint iconPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Path iconPath = new Path();
+        private final Path backgroundPath = new Path();
+        private final float[] radii = new float[8];
         private final RectF rect = new RectF();
         private final float density;
         private final float maxTextSize;
         private final WeakReference<ComponentHost> hostRef;
+        /**
+         * If the like count badge is shown right after this badge, at its right,
+         * or at its left in right to left languages.
+         */
+        private boolean joined;
 
         /**
          * False after the card was detached, such as when a list reuses it for something else.
@@ -1467,7 +1606,22 @@ public final class FeedViewCountPatch {
             Rect bounds = getBounds();
             final float radius = px(RADIUS_DP);
             rect.set(bounds);
-            canvas.drawRoundRect(rect, radius, radius, backgroundPaint);
+            if (joined) {
+                // The like count badge continues the badge on the joined side.
+                final boolean joinedAtLeft = host != null && isRtl(host);
+                final float left = joinedAtLeft ? 0 : radius;
+                final float right = joinedAtLeft ? radius : 0;
+                // Top left, top right, bottom right and bottom left corners.
+                radii[0] = radii[1] = left;
+                radii[2] = radii[3] = right;
+                radii[4] = radii[5] = right;
+                radii[6] = radii[7] = left;
+                backgroundPath.reset();
+                backgroundPath.addRoundRect(rect, radii, Path.Direction.CW);
+                canvas.drawPath(backgroundPath, backgroundPaint);
+            } else {
+                canvas.drawRoundRect(rect, radius, radius, backgroundPaint);
+            }
 
             final float centerY = bounds.exactCenterY();
             final float iconSize = textPaint.getTextSize() * ICON_SIZE_OF_TEXT;
