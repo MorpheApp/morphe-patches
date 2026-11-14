@@ -157,6 +157,10 @@ Export folder: %s"</string>
     <string name="morphe_export_download_all_running">Downloads are already being exported</string>
     <string name="morphe_export_download_all_saved">Exported %1$s of %2$s downloads to %3$s</string>
 
+    <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
+    <string name="morphe_music_replace_shuffle_with_loop_button_title">Replace Shuffle with Loop button</string>
+    <string name="morphe_music_replace_shuffle_with_loop_button_summary">Shows the Loop button instead of the Shuffle button in media notification and lock screen</string>
+
     <!-- misc.settings.settingsPatch -->
 
     <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
