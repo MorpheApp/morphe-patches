@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.misc.chapters
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
@@ -43,7 +43,7 @@ val chaptersHookPatch = patch {
         TimelineMarkerFingerprint.let {
             it.classDef.apply {
                 val startMillis = it.method.findFieldFromToString("startMillis=")
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_TIMELINE_MARKER_INTERFACE,
                     "patch_getStartMillis",
                     """
@@ -53,7 +53,7 @@ val chaptersHookPatch = patch {
                 )
 
                 val endMillis = it.method.findFieldFromToString("endMillis=")
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_TIMELINE_MARKER_INTERFACE,
                     "patch_getEndMillis",
                     """
@@ -63,7 +63,7 @@ val chaptersHookPatch = patch {
                 )
 
                 val title = it.method.findFieldFromToString("title=")
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_TIMELINE_MARKER_INTERFACE,
                     "patch_getTitle",
                     """

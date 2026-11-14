@@ -15,7 +15,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
@@ -79,7 +79,7 @@ private fun installPlaybackIcon(icon: PlaybackIconAbi) {
       return-void
       """,
     )
-    owner.addPatchInterfaceMethod(
+    owner.addPatchInterface(
         PLAYER_ICON,
         "patch_jamView",
         """
@@ -87,7 +87,7 @@ private fun installPlaybackIcon(icon: PlaybackIconAbi) {
             return-object v0
         """
     )
-    owner.addPatchInterfaceMethod(
+    owner.addPatchInterface(
         PLAYER_ICON,
         "patch_jamState",
         """
@@ -103,7 +103,7 @@ private fun installPlaybackIcon(icon: PlaybackIconAbi) {
             return-object v0
         """
     )
-    owner.addPatchInterfaceMethod(
+    owner.addPatchInterface(
         PLAYER_ICON,
         "patch_jamRender",
         """
@@ -153,7 +153,7 @@ private fun installClock(clock: ClockAbi) {
     )
 
     val timeBar = mutableClassDefBy(clock.timeBarType)
-    timeBar.addPatchInterfaceMethod(
+    timeBar.addPatchInterface(
         CLOCK_BAR,
         "patch_jamCreateModel",
         """
@@ -168,7 +168,7 @@ private fun installClock(clock: ClockAbi) {
             return-object v0
         """
     )
-    timeBar.addPatchInterfaceMethod(
+    timeBar.addPatchInterface(
         CLOCK_BAR,
         "patch_jamRestore",
         """
@@ -224,7 +224,7 @@ private fun installPalette(palette: PaletteAbi) {
     // 9.43+ palette source no longer keeps an extractor, so use the last one the app created.
     val loadExtractor = palette.extractor?.let { "iget-object v0, p0, $it" }
         ?: "sget-object v0, ${addExtractorInstanceField(palette.extract.definingClass)}"
-    source.addPatchInterfaceMethod(
+    source.addPatchInterface(
         PALETTE_SOURCE,
         "patch_jamExtract",
         """
@@ -234,7 +234,7 @@ private fun installPalette(palette: PaletteAbi) {
             return-object v0
         """
     )
-    source.addPatchInterfaceMethod(
+    source.addPatchInterface(
         PALETTE_SOURCE,
         "patch_jamPublish",
         """
@@ -293,7 +293,7 @@ private fun installPlayback(playback: PlaybackAbi) {
                 return-void
             """
         )
-        owner.addPatchInterfaceMethod(
+        owner.addPatchInterface(
             ROUTER_ACCESS,
             "patch_jamDispatch",
             """
@@ -303,7 +303,7 @@ private fun installPlayback(playback: PlaybackAbi) {
                 return-void
             """
         )
-        owner.addPatchInterfaceMethod(
+        owner.addPatchInterface(
             ROUTER_ACCESS,
             "patch_jamWatch",
             playback.command.decode("p1", "v0") + """
@@ -346,7 +346,7 @@ private fun installNowPlaying(now: NowPlayingAbi, item: QueueItemAbi) {
     val presenter = mutableClassDefBy(now.presenter.type)
     val entry = now.presenter.entry.getMutableMethod()
     entry.addInstructions(0, "invoke-static/range {p0 .. p0}, $PLAYBACK->observe($NOW_ACCESS)V")
-    presenter.addPatchInterfaceMethod(
+    presenter.addPatchInterface(
         NOW_ACCESS,
         "patch_jamRefreshNow",
         """
@@ -398,7 +398,7 @@ private fun installNowPlaying(now: NowPlayingAbi, item: QueueItemAbi) {
             0,
             "invoke-static/range {p0 .. p0}, $PLAYBACK->observe($NOW_ACCESS)V",
         )
-        owner.addPatchInterfaceMethod(
+        owner.addPatchInterface(
             NOW_ACCESS,
             "patch_jamRefreshNow",
             """
@@ -432,7 +432,7 @@ private fun installArtwork(artwork: ArtworkAbi) {
 
 private fun installQueueRow(row: QueueRowAbi, item: QueueItemAbi) {
     val owner = mutableClassDefBy(row.type)
-    owner.addPatchInterfaceMethod(
+    owner.addPatchInterface(
         MENU_ROW,
         "patch_jamMenuItem",
         """
@@ -440,7 +440,7 @@ private fun installQueueRow(row: QueueRowAbi, item: QueueItemAbi) {
             return-object v0
         """
     )
-    owner.addPatchInterfaceMethod(
+    owner.addPatchInterface(
         MENU_ROW,
         "patch_jamShowMenu",
         """
@@ -561,7 +561,7 @@ private fun installAutoplayUi(abi: AutoplayUiAbi) {
             return-void
         """
     )
-    owner.addPatchInterfaceMethod(
+    owner.addPatchInterface(
         contract,
         "patch_jamAutoplayLimit",
         """
@@ -574,7 +574,7 @@ private fun installAutoplayUi(abi: AutoplayUiAbi) {
             return-void
         """
     )
-    owner.addPatchInterfaceMethod(
+    owner.addPatchInterface(
         contract,
         "patch_jamRefreshAutoplayUi",
         """

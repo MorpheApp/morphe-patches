@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchSingle
@@ -49,7 +49,7 @@ internal fun installQueueSavePicker(endpointType: String) {
 
     val argumentsField = picker.instructionMatches.first().fieldReference
     val mutablePicker = mutableClassDefBy(picker.originalClassDef.type)
-    mutablePicker.addPatchInterfaceMethod(
+    mutablePicker.addPatchInterface(
         SAVE_PICKER_INTERFACE,
         "patch_getQueueSaveVideoIds",
         """
@@ -81,7 +81,7 @@ internal fun installQueueSavePicker(endpointType: String) {
         """
     )
 
-    mutablePicker.addPatchInterfaceMethod(
+    mutablePicker.addPatchInterface(
         SAVE_PICKER_INTERFACE,
         "patch_parseQueueSaveResponse",
         """

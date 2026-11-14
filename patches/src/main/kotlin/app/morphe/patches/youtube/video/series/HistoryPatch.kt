@@ -13,7 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
@@ -160,7 +160,7 @@ internal fun wireHistory() {
 
     // The playlist toolbar populates its own Menu, independently of the activity menu.
     ToolbarMenuFingerprint.let {
-        it.classDef.addPatchInterfaceMethod(
+        it.classDef.addPatchInterface(
             $$"$${SERIES_TRACKER_EXTENSION_PREFIX}PlaylistMenu$ToolbarSource;",
             "patch_seriesTrackerMenu",
             """

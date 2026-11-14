@@ -19,7 +19,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
@@ -315,7 +315,7 @@ val videoInformationPatch = patch(
                     )
                 }
 
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_PLAYBACK_SPEED_MENU_INTERFACE,
                     "patch_setSpeed",
                     """
@@ -378,7 +378,7 @@ val videoInformationPatch = patch(
                 }
 
                 // Add interface and helper methods to allow extension code to call obfuscated methods.
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_VIDEO_QUALITY_INTERFACE,
                     "patch_getQualityName",
                     """
@@ -387,7 +387,7 @@ val videoInformationPatch = patch(
                     """
                 )
 
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_VIDEO_QUALITY_INTERFACE,
                     "patch_getResolution",
                     """
@@ -399,7 +399,7 @@ val videoInformationPatch = patch(
                     """
                 )
 
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_VIDEO_QUALITY_INTERFACE,
                     "patch_getFormatIds",
                     """
@@ -428,7 +428,7 @@ val videoInformationPatch = patch(
                 method.parameterTypes.firstOrNull() == videoQualityClassType
             }
             // The parameter is cast to the obfuscated video quality class.
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_VIDEO_QUALITY_MENU_INTERFACE,
                 "patch_setQuality",
                 setQualityMenuIndexMethod
@@ -610,7 +610,7 @@ internal fun addExoPlayerHooks(extensionClass: String) {
         // Add interface and helper method to allow extension code
         // to directly set the ExoPlayer playback parameters.
 
-        addPatchInterfaceMethod(
+        addPatchInterface(
             EXTENSION_EXOPLAYER_INTERFACE,
             "patch_setPlaybackParameters",
             """
@@ -653,10 +653,10 @@ private fun addPlayerInterfaceMethods(
             "return-void"
         }
 
-        targetClass.addPatchInterfaceMethod(EXTENSION_PLAYER_INTERFACE, name, instructions)
+        targetClass.addPatchInterface(EXTENSION_PLAYER_INTERFACE, name, instructions)
     }
 
-    targetClass.addPatchInterfaceMethod(
+    targetClass.addPatchInterface(
         EXTENSION_PLAYER_INTERFACE,
         "patch_getVideoTime",
         """

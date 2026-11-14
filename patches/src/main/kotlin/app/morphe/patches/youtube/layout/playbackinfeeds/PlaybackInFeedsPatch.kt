@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.layout.playbackinfeeds
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -59,7 +59,7 @@ val playbackInFeedsPatch = patch(
         controllerClass.apply {
             // Add the interface and methods that extension calls.
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CONTROLLER_INTERFACE,
                 "patch_getPlaybackInFeedsMode",
                 """
@@ -69,7 +69,7 @@ val playbackInFeedsPatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CONTROLLER_INTERFACE,
                 "patch_setPlaybackInFeedsMode",
                 """

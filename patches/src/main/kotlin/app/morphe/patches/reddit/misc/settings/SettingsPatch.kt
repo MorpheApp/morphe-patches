@@ -18,7 +18,7 @@ import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.string
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.p0Register
@@ -344,7 +344,7 @@ private fun addComposeSettingRow() {
     PrivacyPolicySettingRowConstructorFingerprint.classDef.apply {
         interfaces.add("Ljava/lang/Cloneable;")
 
-        addPatchInterfaceMethod(
+        addPatchInterface(
             EXTENSION_SETTING_ROW_INTERFACE,
             "patch_getKey",
             """
@@ -354,7 +354,7 @@ private fun addComposeSettingRow() {
         )
 
         // A shallow copy keeps the section, the order and the content of the original row.
-        addPatchInterfaceMethod(
+        addPatchInterface(
             EXTENSION_SETTING_ROW_INTERFACE,
             "patch_copyWithKey",
             """

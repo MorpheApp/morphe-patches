@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.interaction.feedactions.FeedComponentHostLayoutFingerprint
 import app.morphe.patches.youtube.interaction.feedactions.FeedComponentHostTouchFingerprint
@@ -128,7 +128,7 @@ val playlistPatch = patch(
         val responseMethod = queueSaveEditSuccessFingerprint(playlistEditCallback.type).method
         val responseType = responseMethod.parameterTypes.single().toString()
 
-        playlistEditCallback.addPatchInterfaceMethod(
+        playlistEditCallback.addPatchInterface(
             PLAYLIST_EDIT_CALLBACK_INTERFACE,
             "patch_parsePlaylistEditResponse",
             """

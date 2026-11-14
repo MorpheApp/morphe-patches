@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patches.youtube.layout.originaltitles.PlaylistPanelVideoBindFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -66,7 +66,7 @@ internal fun installPlaylistRowPlayback(
         .instructionMatches.first().fieldReference
 
     val controller = mutableClassDefBy(modelField.definingClass)
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         CONTROLLER_INTERFACE,
         "patch_findQueueRow",
         """
@@ -111,7 +111,7 @@ internal fun installPlaylistRowPlayback(
     // view callback, and disappears with that object. No native model is retained
     // in an extension cache, and protobuf equality/serialization stay unchanged.
     val video = mutableClassDefBy(videoType)
-    video.addPatchInterfaceMethod(
+    video.addPatchInterface(
         $$"Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils$FlyoutMenuVideoIdInterface;",
         "patch_getVideoId",
         """
@@ -124,7 +124,7 @@ internal fun installPlaylistRowPlayback(
         videoType, "patch_queueOwned", "Z", AccessFlags.PUBLIC.value, null, null, null
     ).toMutable()
     video.fields.add(ownedField)
-    video.addPatchInterfaceMethod(QUEUE_ROW_INTERFACE, "patch_isQueueOwned", ownedField)
+    video.addPatchInterface(QUEUE_ROW_INTERFACE, "patch_isQueueOwned", ownedField)
 
     // Retain ownership on old header models too, so a stale Clear action is consumed
     // instead of falling through to YouTube's ordinary Hide command.
@@ -133,9 +133,9 @@ internal fun installPlaylistRowPlayback(
         panel.type, "patch_queueOwned", "Z", AccessFlags.PUBLIC.value, null, null, null
     ).toMutable()
     panel.fields.add(panelOwned)
-    panel.addPatchInterfaceMethod(QUEUE_PANEL_INTERFACE, "patch_isQueueOwned", panelOwned)
+    panel.addPatchInterface(QUEUE_PANEL_INTERFACE, "patch_isQueueOwned", panelOwned)
 
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         CONTROLLER_INTERFACE,
         "patch_markQueueRows",
         """
@@ -173,7 +173,7 @@ internal fun installPlaylistRowPlayback(
         listenerType, "patch_queueEndpoint", "Ljava/lang/Object;", AccessFlags.PRIVATE.value, null, null, null
     ).toMutable()
     listener.fields.add(boundEndpoint)
-    listener.addPatchInterfaceMethod(
+    listener.addPatchInterface(
         ROW_CLICK_INTERFACE,
         "patch_getQueueEndpoint",
         """

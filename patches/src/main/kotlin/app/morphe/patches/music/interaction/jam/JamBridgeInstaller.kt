@@ -9,7 +9,7 @@ package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
@@ -62,7 +62,7 @@ private fun installQueueAccess(queue: JamQueueAbi) {
             return-void
         """
     )
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_jamEnqueue",
         queue.command.decode("p1", "v0") + """
@@ -81,7 +81,7 @@ private fun installQueueAccess(queue: JamQueueAbi) {
 }
 
 private fun installQueueSnapshots(manager: MutableClass, queue: JamQueueAbi) {
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_jamLaneItems",
         """
@@ -99,7 +99,7 @@ private fun installQueueSnapshots(manager: MutableClass, queue: JamQueueAbi) {
         queue.storage.currentIndex,
         receiverField = queue.storage.field,
     )
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_jamLocal",
         """
@@ -128,7 +128,7 @@ private fun installQueueItemMetadata(
 
 private fun installQueueCreation(manager: MutableClass, queue: JamQueueAbi) {
     val item = queue.item
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_jamCreateItem",
         item.itemProto.decode("p1", "v1") + """
@@ -200,7 +200,7 @@ private fun installDisplayAccess(
         """
     )
     if (property == "DisplayedList") {
-        manager.addPatchInterfaceMethod(
+        manager.addPatchInterface(
             ACCESS,
             "patch_jamViewThread",
             """
@@ -279,7 +279,7 @@ private fun installQueueOperations(manager: MutableClass, queue: JamQueueAbi) {
             return-void
         """
     )
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_jamRemoveItem",
         """
@@ -288,7 +288,7 @@ private fun installQueueOperations(manager: MutableClass, queue: JamQueueAbi) {
             return-void
         """
     )
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_jamMoveLane",
         """
@@ -300,7 +300,7 @@ private fun installQueueOperations(manager: MutableClass, queue: JamQueueAbi) {
         """
     )
     val comparable = queue.mutation.move.parameters().first()
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_jamNotifyMove",
         """
@@ -317,7 +317,7 @@ private fun installQueueOperations(manager: MutableClass, queue: JamQueueAbi) {
 }
 
 private fun installQueueMenu(manager: MutableClass, queue: JamQueueAbi) {
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_jamRequestMenu",
         queue.command.decode("p1", "v0") + """
@@ -329,7 +329,7 @@ private fun installQueueMenu(manager: MutableClass, queue: JamQueueAbi) {
         return-object v0
     """
     )
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_jamMenuItems",
         """
@@ -469,7 +469,7 @@ private fun installQueueItemAccess(item: QueueItemAbi) {
             item.artwork,
             resultType = "Ljava/lang/Object;",
         )
-        nativeItem.addPatchInterfaceMethod(
+        nativeItem.addPatchInterface(
             ITEM_ACCESS,
             "patch_jamMenuPayload",
             """
@@ -479,7 +479,7 @@ private fun installQueueItemAccess(item: QueueItemAbi) {
         )
     }
     val artwork = mutableClassDefBy(item.artwork.returnType)
-    artwork.addPatchInterfaceMethod(
+    artwork.addPatchInterface(
         ARTWORK_ACCESS,
         "patch_jamThumbnailEntries",
         """

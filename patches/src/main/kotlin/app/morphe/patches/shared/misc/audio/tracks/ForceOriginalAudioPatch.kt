@@ -16,7 +16,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
@@ -168,7 +168,7 @@ internal fun forceOriginalAudioPatch(
                     3 to "patch_getIsDefault"
                 ).forEach { (matchIndex, methodName) ->
                     val fieldReference = instructionMatches[matchIndex].fieldReference
-                    classDef.addPatchInterfaceMethod(EXTENSION_AUDIO_TRACK_INTERFACE, methodName, fieldReference)
+                    classDef.addPatchInterface(EXTENSION_AUDIO_TRACK_INTERFACE, methodName, fieldReference)
                 }
 
                 definingClass

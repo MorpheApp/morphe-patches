@@ -11,7 +11,7 @@ package app.morphe.patches.youtube.interaction.onthego
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -66,7 +66,7 @@ internal val onTheGoStateHookPatch = patch {
 
         OnTheGoStateSetterFingerprint.let {
             it.classDef.apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_STATE_INTERFACE,
                     "patch_setOnTheGoActive",
                     """
@@ -75,7 +75,7 @@ internal val onTheGoStateHookPatch = patch {
                     """
                 )
 
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_STATE_INTERFACE,
                     "patch_isOnTheGoActive",
                     """
@@ -154,7 +154,7 @@ val onTheGoPatch = patch(
                 )
 
                 it.classDef.apply {
-                    addPatchInterfaceMethod(
+                    addPatchInterface(
                         EXTENSION_SEEK_LENGTH_INTERFACE,
                         "patch_getSeekLengthMilliseconds",
                         """

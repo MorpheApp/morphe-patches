@@ -28,7 +28,7 @@ import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.string
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchSingle
@@ -352,7 +352,7 @@ internal fun sharedLithoFilterPatch(
                 ).apply {
                     val dataField = fields.single { field -> field.type == dataType }
 
-                    addPatchInterfaceMethod(
+                    addPatchInterface(
                         EXTENSION_LIST_ITEM_DECORATOR_INTERFACE,
                         "patch_getListItem",
                         """
@@ -400,7 +400,7 @@ internal fun sharedLithoFilterPatch(
                 }
 
                 it.classDef.apply {
-                    addPatchInterfaceMethod(
+                    addPatchInterface(
                         EXTENSION_LIST_SECTION_INTERFACE,
                         "patch_removeListItem",
                         """

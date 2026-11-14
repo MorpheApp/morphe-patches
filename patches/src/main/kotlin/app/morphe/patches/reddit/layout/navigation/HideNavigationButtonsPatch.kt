@@ -12,7 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
@@ -52,7 +52,7 @@ val hideNavigationButtonsPatch = patch(
                 val labelField = fields.single { field ->
                     field.type == "Ljava/lang/String;"
                 }
-                addPatchInterfaceMethod(EXTENSION_HEADER_ITEM_INTERFACE, "patch_getLabel", labelField)
+                addPatchInterface(EXTENSION_HEADER_ITEM_INTERFACE, "patch_getLabel", labelField)
             }
 
             BottomNavScreenResourceBuilderLegacyFingerprint.method.apply {

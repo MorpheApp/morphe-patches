@@ -21,7 +21,7 @@ import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.classDefByOrNull
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.registersUsed
@@ -128,7 +128,7 @@ val askFlyoutMenuPatch = patch(
         val protos = Protos(messageClass)
 
         mutableClassDefBy(messageClass).apply {
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 MESSAGE_ACCESS_INTERFACE,
                 "patch_toByteArray",
                 """
@@ -138,7 +138,7 @@ val askFlyoutMenuPatch = patch(
                 """
             )
             // Any message of a type can be the default instance to parse a message of that type.
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 MESSAGE_ACCESS_INTERFACE,
                 "patch_parseSameType",
                 """
@@ -205,7 +205,7 @@ val askFlyoutMenuPatch = patch(
         mutableClassDefBy(tapHandlerMethod.definingClass).apply {
             val commandHolderField = fields.single { it.type == tapCommandMethod.definingClass }
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 TAP_HANDLER_ACCESS_INTERFACE,
                 "patch_getCommand",
                 """
@@ -215,7 +215,7 @@ val askFlyoutMenuPatch = patch(
                     return-object v0
                 """
             )
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 TAP_HANDLER_ACCESS_INTERFACE,
                 "patch_tap",
                 """
@@ -232,7 +232,7 @@ val askFlyoutMenuPatch = patch(
 
         // The command executor is an app interface, so its default method is inherited by every executor.
         mutableClassDefBy(commandExecutorClass).apply {
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 COMMAND_EXECUTOR_ACCESS_INTERFACE,
                 "patch_executeCommand",
                 """
@@ -342,7 +342,7 @@ private fun addSummarizeItemToMenu() {
     mutableClassDefBy(menuItemClass).interfaces.add(MENU_ITEM_ACCESS_INTERFACE)
 
     mutableClassDefBy(rowClass).apply {
-        addPatchInterfaceMethod(
+        addPatchInterface(
             MENU_ROW_ACCESS_INTERFACE,
             "patch_getMenuItem",
             """
@@ -358,7 +358,7 @@ private fun addSummarizeItemToMenu() {
     )
     for (menu in menus) {
         mutableClassDefBy(menu.type).apply {
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 MENU_ACCESS_INTERFACE,
                 "patch_getRows",
                 """
@@ -366,7 +366,7 @@ private fun addSummarizeItemToMenu() {
                     return-object v0
                 """
             )
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 MENU_ACCESS_INTERFACE,
                 "patch_createRow",
                 """
@@ -379,7 +379,7 @@ private fun addSummarizeItemToMenu() {
                     return-object v0
                 """
             )
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 MENU_ACCESS_INTERFACE,
                 "patch_dismissPopup",
                 if (menu.dismissMethod == null) {
@@ -542,7 +542,7 @@ private fun addElementsResourceLoading(protos: Protos) {
     }
 
     mutableClassDefBy(processorClass.type).apply {
-        addPatchInterfaceMethod(
+        addPatchInterface(
             ELEMENTS_RESOURCE_PROCESSOR_ACCESS_INTERFACE,
             "patch_processFrameworkUpdates",
             """
@@ -553,7 +553,7 @@ private fun addElementsResourceLoading(protos: Protos) {
                 return-void
             """
         )
-        addPatchInterfaceMethod(
+        addPatchInterface(
             ELEMENTS_RESOURCE_PROCESSOR_ACCESS_INTERFACE,
             "patch_getUsedResources",
             """

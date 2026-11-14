@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.p0Register
@@ -30,7 +30,7 @@ internal fun installQueueSaveFeedback(endpointType: String) {
     val selection = ImmutableField(callbackType, "patch_queueSaveSelection", SAVE_SELECTION_CLASS,
         AccessFlags.PRIVATE.value, null, null, null).toMutable()
     callback.fields.add(selection)
-    callback.addPatchInterfaceMethod(
+    callback.addPatchInterface(
         SAVE_CALLBACK_INTERFACE,
         "patch_getQueueSaveSelection",
         """
@@ -39,7 +39,7 @@ internal fun installQueueSaveFeedback(endpointType: String) {
         """
     )
 
-    callback.addPatchInterfaceMethod(
+    callback.addPatchInterface(
         SAVE_CALLBACK_INTERFACE,
         "patch_setQueueSaveSelection",
         """
@@ -48,7 +48,7 @@ internal fun installQueueSaveFeedback(endpointType: String) {
         """
     )
 
-    callback.addPatchInterfaceMethod(
+    callback.addPatchInterface(
         SAVE_CALLBACK_INTERFACE,
         "patch_parseQueueSaveResult",
         """

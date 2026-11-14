@@ -14,7 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -287,7 +287,7 @@ private fun addSeekbarScrubber() {
             iget-object v0, v0, $timeBarField
         """
 
-        addPatchInterfaceMethod(
+        addPatchInterface(
             EXTENSION_SCRUBBER_INTERFACE,
             "patch_startScrub",
             """
@@ -303,7 +303,7 @@ private fun addSeekbarScrubber() {
                 return v2
             """
         )
-        addPatchInterfaceMethod(
+        addPatchInterface(
             EXTENSION_SCRUBBER_INTERFACE,
             "patch_moveScrub",
             """
@@ -314,7 +314,7 @@ private fun addSeekbarScrubber() {
                 return-wide v0
             """
         )
-        addPatchInterfaceMethod(
+        addPatchInterface(
             EXTENSION_SCRUBBER_INTERFACE,
             "patch_completeScrub",
             """

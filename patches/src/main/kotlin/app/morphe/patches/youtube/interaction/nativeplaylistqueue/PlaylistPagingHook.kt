@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -27,7 +27,7 @@ internal fun installPlaylistPaging() {
     val controllerType = PlaylistControllerConstructorFingerprint.originalClassDef.type
     val controller = mutableClassDefBy(controllerType)
     val list = controller.fields.single { it.type == listType }
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         PAGING_OWNER,
         "patch_getPlaylistList",
         """
@@ -40,7 +40,7 @@ internal fun installPlaylistPaging() {
     val state = PlaylistLoadingStateFingerprint.originalMethod
     // The state setter is private in some app versions, and a private method cannot be called with invoke-virtual.
     val stateOpcode = if (AccessFlags.PRIVATE.isSet(state.accessFlags)) "invoke-direct" else "invoke-virtual"
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         PAGING_OWNER,
         "patch_getPlaylistLoadingView",
         """
@@ -53,7 +53,7 @@ internal fun installPlaylistPaging() {
         """
     )
     mutableClassDefBy(PLAYLIST_LOADING_FRAME).apply {
-        addPatchInterfaceMethod(
+        addPatchInterface(
             LOADING_VIEW,
             "patch_setPlaylistLoading",
             """

@@ -14,7 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
@@ -277,7 +277,7 @@ val copyTextPatch = patch(
         SelectionReleaseFingerprint.let {
             // The extension clears selections by calling the release method.
             it.classDef.apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_SELECTION_MANAGER_INTERFACE,
                     "patch_release",
                     """

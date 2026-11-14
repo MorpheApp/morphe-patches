@@ -10,7 +10,7 @@ package app.morphe.patches.music.video.quality
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -67,7 +67,7 @@ val rememberVideoQualityPatch = patch(
         // Add an interface to the quality, to get its resolution in the extension.
         val resolutionField = itemOnClickFingerprint.instructionMatches[0].fieldReference
         VideoQualityFingerprint.classDef.apply {
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_VIDEO_QUALITY_INTERFACE,
                 "patch_getResolution",
                 """
@@ -86,7 +86,7 @@ val rememberVideoQualityPatch = patch(
                 field.type == setQualityMethod.definingClass
             }
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_VIDEO_QUALITY_MENU_INTERFACE,
                 "patch_setQuality",
                 """

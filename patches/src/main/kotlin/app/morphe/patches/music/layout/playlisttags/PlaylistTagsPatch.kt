@@ -14,7 +14,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.findInstructionIndicesReversedOrThrow
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -209,7 +209,7 @@ private fun hookLibraryListPresenter() {
     // so bind the renderer the presenter holds again, as the constructor does. This also clears
     // the headers that binding adds again.
     val presenterClass = GridRendererItemsFingerprint.classDef
-    presenterClass.addPatchInterfaceMethod(
+    presenterClass.addPatchInterface(
         EXTENSION_LIBRARY_PRESENTER_INTERFACE,
         "patch_reloadLibrary",
         """
@@ -246,7 +246,7 @@ private fun hookLibraryGridPresenter() {
     val messageField = libraryGridItemWrapperConstructorFingerprint(wrapperType, messageType)
         .instructionMatches.first().fieldReference
     mutableClassDefBy(wrapperType).apply {
-        addPatchInterfaceMethod(
+        addPatchInterface(
             EXTENSION_MESSAGE_WRAPPER_INTERFACE,
             "patch_getMessage",
             """
@@ -273,7 +273,7 @@ private fun hookLibraryGridPresenter() {
     )
 
     val presenterClass = LibraryGridItemsFingerprint.classDef
-    presenterClass.addPatchInterfaceMethod(
+    presenterClass.addPatchInterface(
         EXTENSION_LIBRARY_GRID_PRESENTER_INTERFACE,
         "patch_rebindItems",
         """

@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.layout.playlistautoplay.NavigationIntentEnumFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -40,7 +40,7 @@ internal fun installPlaylistNavigation(
         val navigatorField = constructor.instructionMatches.single().fieldReference
         val controls = mutableClassDefBy(constructor.originalClassDef.type)
 
-        controls.addPatchInterfaceMethod(
+        controls.addPatchInterface(
             NAVIGATOR_OWNER_INTERFACE,
             "patch_getNavigator",
             """
@@ -50,7 +50,7 @@ internal fun installPlaylistNavigation(
         )
     }
 
-    mutableClassDefBy(controllerType).addPatchInterfaceMethod(
+    mutableClassDefBy(controllerType).addPatchInterface(
         CONTROLLER_INTERFACE,
         "patch_getNavigator",
         """

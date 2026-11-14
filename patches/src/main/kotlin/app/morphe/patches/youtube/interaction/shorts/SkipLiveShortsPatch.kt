@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.shorts
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.p0Register
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -77,7 +77,7 @@ val skipLiveShortsPatch = patch(
 
         // Add the interface and the helper method to the Shorts player.
         reelPlaybackFingerprint.classDef.apply {
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CONTROLLER_INTERFACE,
                 "patch_skipToNextShort",
                 """

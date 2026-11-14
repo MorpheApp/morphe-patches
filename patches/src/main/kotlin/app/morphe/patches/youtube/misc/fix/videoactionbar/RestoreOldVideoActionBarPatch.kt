@@ -14,7 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.registersUsed
@@ -207,7 +207,7 @@ internal val restoreOldVideoActionBarPatch = patch(
                 }
 
                 uriMatch.classDef.apply {
-                    addPatchInterfaceMethod(
+                    addPatchInterface(
                         EXTENSION_REQUEST_INTERFACE,
                         "patch_getEndpoint",
                         """
@@ -257,7 +257,7 @@ internal val restoreOldVideoActionBarPatch = patch(
                     ).forEach { (matchIndex, interfaceMethodName) ->
                         val coldDataField = it.instructionMatches[matchIndex].fieldReference
 
-                        addPatchInterfaceMethod(EXTENSION_CONFIG_INFO_INTERFACE, interfaceMethodName, coldDataField)
+                        addPatchInterface(EXTENSION_CONFIG_INFO_INTERFACE, interfaceMethodName, coldDataField)
                     }
                 }
             }

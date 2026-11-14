@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -83,7 +83,7 @@ val playlistTrackTapPatch = patch(
             val build = "$messageBuilderClass->build()$messageClass"
             val instanceField = "$messageBuilderClass->instance:$messageClass"
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_COMMAND_INTERFACE,
                 "patch_getWatchEndpoint",
                 """
@@ -103,7 +103,7 @@ val playlistTrackTapPatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_COMMAND_INTERFACE,
                 "patch_serializeWatchEndpoint",
                 """
@@ -115,7 +115,7 @@ val playlistTrackTapPatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_COMMAND_INTERFACE,
                 "patch_createSingleTrackCommand",
                 """
@@ -149,7 +149,7 @@ val playlistTrackTapPatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_COMMAND_INTERFACE,
                 "patch_createQueueAddCommand",
                 """

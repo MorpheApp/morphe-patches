@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
@@ -101,7 +101,7 @@ val fullscreenVideoScalePatch = patch(
             val videoViewField = it.instructionMatches.last().fieldReference
 
             it.classDef.apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_PLAYER_VIEW_INTERFACE,
                     "patch_getVideoView",
                     """

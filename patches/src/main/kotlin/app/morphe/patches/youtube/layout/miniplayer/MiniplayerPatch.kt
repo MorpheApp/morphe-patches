@@ -18,7 +18,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.numberOfParameterRegisters
@@ -682,7 +682,7 @@ val miniplayerPatch = patch(
         // pass that lays the player out, the plain one records the rect and nothing redraws.
         MiniplayerHorizontalRepositionFingerprint.let { fingerprint ->
             fingerprint.classDef.apply {
-                addPatchInterfaceMethod(MINIMAL_BOUNDS_INTERFACE, "patch_setBounds", fingerprint.method)
+                addPatchInterface(MINIMAL_BOUNDS_INTERFACE, "patch_setBounds", fingerprint.method)
             }
 
             fingerprint.method.addInstruction(

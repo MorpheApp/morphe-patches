@@ -10,7 +10,7 @@ package app.morphe.patches.reddit.layout.flair
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.p0Register
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -298,7 +298,7 @@ private fun MutableClass.addCachedPostMethods(
     registerCount: Int,
     addHomeFlairSmali: String
 ) {
-    addPatchInterfaceMethod(
+    addPatchInterface(
         CACHED_POST_INTERFACE,
         "patch_getLinkId",
         """

@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -27,7 +27,7 @@ internal fun installPlaylistPagingNavigation(
 ) {
     val intent = classDefBy(requestType).fields.single { it.type == enumType }
     val owner = mutableClassDefBy(type)
-    owner.addPatchInterfaceMethod(
+    owner.addPatchInterface(
         NAVIGATOR,
         "patch_getPlaylistIntent",
         """
@@ -36,7 +36,7 @@ internal fun installPlaylistPagingNavigation(
             return-object v0
         """
     )
-    owner.addPatchInterfaceMethod(
+    owner.addPatchInterface(
         NAVIGATOR,
         "patch_resumePlaylistNavigation",
         """

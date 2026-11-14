@@ -8,7 +8,7 @@
 package app.morphe.patches.music.layout.buttons.action
 
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.litho.node.treeNodeElementHookPatch
@@ -69,7 +69,7 @@ val hideMusicActionButtonsPatch = patch(
         ButtonProtoBufferGetterFingerprint.let {
             val getterMethod = it.method
             it.classDef.apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_BUTTON_PROTO_INTERFACE,
                     "patch_getBuffer",
                     """

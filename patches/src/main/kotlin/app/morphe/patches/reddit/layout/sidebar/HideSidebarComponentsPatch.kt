@@ -9,7 +9,7 @@ package app.morphe.patches.reddit.layout.sidebar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -48,7 +48,7 @@ val hideSidebarComponentsPatch = patch(
                 val headerItemField = fields.single { field ->
                     field.type == HEADER_ITEM_CLASS
                 }
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_HEADER_ITEM_INTERFACE,
                     "patch_getItemName",
                     """

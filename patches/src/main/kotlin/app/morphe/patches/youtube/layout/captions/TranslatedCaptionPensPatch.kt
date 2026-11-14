@@ -13,7 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -46,7 +46,7 @@ internal val translatedCaptionPensPatch = patch(
             val trackField = it.instructionMatches[1].fieldReference
 
             mutableClassDefBy(trackField.definingClass).apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_CAPTION_REQUEST_INTERFACE,
                     "patch_getCaptionTrack",
                     """

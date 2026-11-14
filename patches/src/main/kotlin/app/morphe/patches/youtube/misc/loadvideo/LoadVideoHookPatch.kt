@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.misc.loadvideo
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.returnEarly
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -49,7 +49,7 @@ internal val loadVideoHookPatch = patch(
         mutableClassDefBy(dismissPlayerInnerMethod.definingClass).apply {
             // Add interface and helper methods to allow extension code to call obfuscated methods.
             // Add methods to access obfuscated player methods.
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_PLAYER_INTERFACE,
                 "patch_dismissPlayer",
                 """
@@ -57,7 +57,7 @@ internal val loadVideoHookPatch = patch(
                     return-void
                 """
             )
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_PLAYER_INTERFACE,
                 "patch_getIntentParcelable",
                 """
@@ -89,7 +89,7 @@ internal val loadVideoHookPatch = patch(
                 "patch_blockInlinePlayback" to blockInlinePlaybackMethod,
                 "patch_unblockInlinePlayback" to unblockInlinePlaybackMethod
             ).forEach { (name, method) ->
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_INLINE_PLAYBACK_INTERFACE,
                     name,
                     """
@@ -114,7 +114,7 @@ internal val loadVideoHookPatch = patch(
 
         // Activity.onNewIntent() is protected, so the extension calls it through a public method.
         mutableClassDefBy(YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE).apply {
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_MAIN_ACTIVITY_INTERFACE,
                 "patch_onNewIntent",
                 """

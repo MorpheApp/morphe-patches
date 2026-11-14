@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.Patch
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -78,7 +78,7 @@ internal fun createTreeNodeElementHookPatch(
             reference: FieldReference
         ) {
             clazz.apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_LITHO_CONTAINER_INTERFACE,
                     "patch_getContainer",
                     """

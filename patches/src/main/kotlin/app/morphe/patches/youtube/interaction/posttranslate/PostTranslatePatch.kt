@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.posttranslate
 
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -74,7 +74,7 @@ val postTranslatePatch = patch(
             val contentField = matches[4].fieldReference
 
             it.classDef.apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_COMPONENT_HOST_INTERFACE,
                     "patch_getMountedContents",
                     """
@@ -111,8 +111,8 @@ val postTranslatePatch = patch(
                     "Layout" to layoutField,
                     "Text" to textField
                 ).forEach { (name, field) ->
-                    addPatchInterfaceMethod(EXTENSION_TEXT_DRAWABLE_INTERFACE, "patch_get$name", field)
-                    addPatchInterfaceMethod(EXTENSION_TEXT_DRAWABLE_INTERFACE, "patch_set$name", field)
+                    addPatchInterface(EXTENSION_TEXT_DRAWABLE_INTERFACE, "patch_get$name", field)
+                    addPatchInterface(EXTENSION_TEXT_DRAWABLE_INTERFACE, "patch_set$name", field)
                 }
             }
         }

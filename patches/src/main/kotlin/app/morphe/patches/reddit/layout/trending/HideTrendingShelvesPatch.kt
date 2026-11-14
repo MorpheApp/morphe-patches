@@ -12,7 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_11_0_or_greater
@@ -74,7 +74,7 @@ val hideTrendingShelvesPatch = patch(
 
             stateClassDef.apply {
                 val stringField = fields.first { it.type == "Ljava/lang/String;" }
-                addPatchInterfaceMethod(EXTENSION_TRENDING_INTERFACE, "patch_getTrendingLabel", stringField)
+                addPatchInterface(EXTENSION_TRENDING_INTERFACE, "patch_getTrendingLabel", stringField)
             }
         }
 

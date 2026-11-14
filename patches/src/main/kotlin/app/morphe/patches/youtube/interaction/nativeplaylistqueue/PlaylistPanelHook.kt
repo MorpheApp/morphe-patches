@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
@@ -73,7 +73,7 @@ internal fun installPlaylistPanel() {
     ) { "Native playlist queue: each model parameter must be stored directly" }
 
     mutableClassDefBy(modelType).apply {
-        addPatchInterfaceMethod(
+        addPatchInterface(
             PLAYLIST_MODEL_INTERFACE,
             "patch_getPlaylistId",
             """
@@ -85,7 +85,7 @@ internal fun installPlaylistPanel() {
 
     // A watch response can omit its video ID. Use the native stale-response guard's
     // active video instead of treating an optional response field as playback state.
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         CONTROLLER_INTERFACE,
         "patch_getVideoId",
         """
@@ -98,7 +98,7 @@ internal fun installPlaylistPanel() {
         """
     )
 
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         CONTROLLER_INTERFACE,
         "patch_getPlaylistId",
         """
@@ -115,7 +115,7 @@ internal fun installPlaylistPanel() {
         """
     )
 
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         CONTROLLER_INTERFACE,
         "patch_getModel",
         """
@@ -124,7 +124,7 @@ internal fun installPlaylistPanel() {
         """
     )
 
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         CONTROLLER_INTERFACE,
         "patch_getPanel",
         """
@@ -137,7 +137,7 @@ internal fun installPlaylistPanel() {
         """
     )
 
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         CONTROLLER_INTERFACE,
         "patch_isAttached",
         """
@@ -160,7 +160,7 @@ internal fun installPlaylistPanel() {
     }.joinToString("\n")
 
     // The model arguments use v5-v11. With 12 locals, p0 and p1 remain 4-bit registers.
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         CONTROLLER_INTERFACE,
         "patch_updatePanel",
         """
@@ -190,7 +190,7 @@ internal fun installPlaylistPanel() {
         """
     )
 
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         CONTROLLER_INTERFACE,
         "patch_restorePanel",
         """

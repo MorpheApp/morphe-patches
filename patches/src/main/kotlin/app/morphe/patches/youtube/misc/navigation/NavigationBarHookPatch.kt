@@ -21,7 +21,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -328,7 +328,7 @@ val navigationBarHookPatch = patch(description = "Hooks the active navigation or
         // Add interface for extensions code to call obfuscated methods.
         AppCompatToolbarBackButtonFingerprint.let {
             it.classDef.apply {
-                addPatchInterfaceMethod(EXTENSION_TOOLBAR_INTERFACE, "patch_getNavigationIcon", it.originalMethod)
+                addPatchInterface(EXTENSION_TOOLBAR_INTERFACE, "patch_getNavigationIcon", it.originalMethod)
             }
         }
 

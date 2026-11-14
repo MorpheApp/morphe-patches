@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
@@ -32,7 +32,7 @@ internal fun installNativeQueueWindow(
     val intent = queueNavigationIntentFieldFingerprint(requestType, enumType)
         .instructionMatches.single().fieldReference
     val owner = mutableClassDefBy(backend.definingClass)
-    owner.addPatchInterfaceMethod(
+    owner.addPatchInterface(
         DIRECT_NAVIGATOR_INTERFACE,
         "patch_getQueueNavigationIntent",
         """
@@ -41,7 +41,7 @@ internal fun installNativeQueueWindow(
             return-object v0
         """
     )
-    owner.addPatchInterfaceMethod(
+    owner.addPatchInterface(
         DIRECT_NAVIGATOR_INTERFACE,
         "patch_canNavigateNativeQueue",
         """

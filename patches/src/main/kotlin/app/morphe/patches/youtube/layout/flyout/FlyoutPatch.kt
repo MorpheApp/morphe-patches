@@ -16,7 +16,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.string
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -59,7 +59,7 @@ val flyoutPatch = patch(
             val bufferField = it.instructionMatches.last().fieldReference
 
             mutableClassDefBy(bufferField.definingClass).apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_PROTOCOL_BUFFER_INTERFACE,
                     "patch_getBuffer",
                     """
@@ -87,7 +87,7 @@ val flyoutPatch = patch(
             ).instructionMatches.last().fieldReference
 
             mutableClassDefBy(messageType).apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE,
                     "patch_getVideoId",
                     """

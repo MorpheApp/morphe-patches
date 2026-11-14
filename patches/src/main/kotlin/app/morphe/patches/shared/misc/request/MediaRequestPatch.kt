@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 
 private const val EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE =
     "Lapp/morphe/extension/shared/patches/MediaHttpRequest;"
@@ -37,7 +37,7 @@ internal val mediaRequestPatch = patch(
                 "patch_getBody" to bodyField,
                 "patch_getHeaders" to headersField,
             ).forEach { (methodName, field) ->
-                addPatchInterfaceMethod(EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE, methodName, field)
+                addPatchInterface(EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE, methodName, field)
             }
 
             // The constructor takes each field, and each field has its own type.
@@ -55,7 +55,7 @@ internal val mediaRequestPatch = patch(
                 }
             }.joinToString("\n")
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_MEDIA_HTTP_REQUEST_INTERFACE,
                 "patch_withBodyAndHeaders",
                 """
@@ -70,8 +70,8 @@ internal val mediaRequestPatch = patch(
         mutableClassDefBy(HTTP_HEADER_CLASS_TYPE).apply {
             val (nameField, valueField) = HttpHeaderConstructorFingerprint.instructionMatches
                 .map { match -> match.fieldReference }
-            addPatchInterfaceMethod(EXTENSION_MEDIA_HTTP_HEADER_INTERFACE, "patch_getName", nameField)
-            addPatchInterfaceMethod(EXTENSION_MEDIA_HTTP_HEADER_INTERFACE, "patch_getValue", valueField)
+            addPatchInterface(EXTENSION_MEDIA_HTTP_HEADER_INTERFACE, "patch_getName", nameField)
+            addPatchInterface(EXTENSION_MEDIA_HTTP_HEADER_INTERFACE, "patch_getValue", valueField)
         }
     }
 }

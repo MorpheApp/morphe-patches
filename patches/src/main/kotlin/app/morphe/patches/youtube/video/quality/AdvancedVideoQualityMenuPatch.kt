@@ -13,7 +13,7 @@ package app.morphe.patches.youtube.video.quality
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -70,7 +70,7 @@ internal val advancedVideoQualityMenuPatch = patch {
 
         ShortsQualityConstructorFingerprint.let {
             it.classDef.apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_SHORTS_QUALITY_MENU_INTERFACE,
                     "patch_showShortsQualityMenu",
                     """

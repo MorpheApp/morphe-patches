@@ -25,7 +25,7 @@ import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.util.addFreeRegisters
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.getReference
@@ -365,7 +365,7 @@ val navigationBarPatch = patch(
             val updateHeightMethod = matches[1].getMethodCalled()
 
             mutableClassDefBy(PIVOT_BAR_CLASS).apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     PIVOT_BAR_ACCESS_INTERFACE,
                     "patch_setSystemButtonsRoom",
                     """
@@ -374,7 +374,7 @@ val navigationBarPatch = patch(
                         return-void
                     """
                 )
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     PIVOT_BAR_ACCESS_INTERFACE,
                     "patch_getSystemButtonsRoom",
                     """
@@ -670,7 +670,7 @@ val navigationBarPatch = patch(
             ).forEach { (methodName, checkCastMatch) ->
                 val rendererType = checkCastMatch.instruction.getReference<TypeReference>()!!.type
 
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_PIVOT_BAR_ITEM_INTERFACE,
                     methodName,
                     """
@@ -904,7 +904,7 @@ val navigationBarPatch = patch(
                     1 -> ", v0"
                     else -> throw PatchException("Unpexpected number of parameters")
                 }
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_SETTING_INTERFACE,
                     "patch_openYouTubeSettings",
                     """

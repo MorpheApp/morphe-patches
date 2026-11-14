@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.video.format
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
@@ -58,7 +58,7 @@ val videoFormatPatch = patch(
                 val fieldInstruction = instructionMatches[1].instruction as Instruction22c
                 val returnOpcode = instructionMatches[2].instruction.opcode.name
 
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_FORMAT_INTERFACE,
                     patchInterfaceMethodName,
                     """

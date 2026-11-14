@@ -11,7 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
@@ -113,7 +113,7 @@ internal fun hookOfflineDownloadResume() {
     val durationSecondsGetter = offlineDownloadDurationFingerprint(playerResponseModelClass)
         .instructionMatches[1].methodReference.name
 
-    workerClassDef.addPatchInterfaceMethod(
+    workerClassDef.addPatchInterface(
         OFFLINE_PLAYBACK_WORKER_INTERFACE,
         "patch_setDownloadStartTime",
         """

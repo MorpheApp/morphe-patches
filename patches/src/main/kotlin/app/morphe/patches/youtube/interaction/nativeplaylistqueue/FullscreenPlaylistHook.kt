@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
@@ -39,7 +39,7 @@ internal fun installFullscreenPlaylist() {
         accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL)
     ).originalMethod
     val controller = mutableClassDefBy(controllerType)
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         FULLSCREEN_CONTROLLER_INTERFACE,
         "patch_parseQuickActions",
         """
@@ -48,7 +48,7 @@ internal fun installFullscreenPlaylist() {
         """
     )
 
-    controller.addPatchInterfaceMethod(
+    controller.addPatchInterface(
         FULLSCREEN_CONTROLLER_INTERFACE,
         "patch_refreshQuickActions",
         """

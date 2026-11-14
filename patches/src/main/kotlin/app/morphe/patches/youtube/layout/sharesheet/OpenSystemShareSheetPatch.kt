@@ -13,7 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.p0Register
@@ -63,7 +63,7 @@ internal fun openSystemShareSheetPatch(
             val optionalType = dismissActionSheetMethod.parameterTypes.first()
 
             it.classDef.apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_ACTION_SHEET_CONTROLLER_INTERFACE,
                     "patch_dismissActionSheet",
                     """

@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -80,7 +80,7 @@ val loopCountPatch = patch(
         // The menu that shows the loop count stays open after the loop video item is tapped,
         // so the loop count can be chosen right after.
         BottomSheetMenuCloseFingerprint.let {
-            it.classDef.addPatchInterfaceMethod(
+            it.classDef.addPatchInterface(
                 EXTENSION_MENU_INTERFACE,
                 "patch_closeMenu",
                 """
@@ -135,7 +135,7 @@ val loopCountPatch = patch(
                 navigatorCanNavigateFingerprint(requestType).match(navigatorClass)
                     .method.addInstruction(0, setNavigatorInstruction)
 
-                navigatorClass.addPatchInterfaceMethod(
+                navigatorClass.addPatchInterface(
                     EXTENSION_NAVIGATOR_INTERFACE,
                     "patch_setNavigatorRepeatMode",
                     """

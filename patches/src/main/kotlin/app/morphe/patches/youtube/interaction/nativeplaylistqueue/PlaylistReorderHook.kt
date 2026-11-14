@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.p0Register
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -39,7 +39,7 @@ internal fun installPlaylistReordering(videoType: String) {
         .instructionMatches.single().methodReference
 
     val adapter = mutableClassDefBy(adapterType)
-    adapter.addPatchInterfaceMethod(
+    adapter.addPatchInterface(
         REORDER_ITEMS_INTERFACE,
         "patch_getSize",
         """
@@ -49,7 +49,7 @@ internal fun installPlaylistReordering(videoType: String) {
         """
     )
 
-    adapter.addPatchInterfaceMethod(
+    adapter.addPatchInterface(
         REORDER_ITEMS_INTERFACE,
         "patch_getQueueRow",
         """

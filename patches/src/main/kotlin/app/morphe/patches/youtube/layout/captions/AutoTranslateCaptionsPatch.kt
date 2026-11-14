@@ -14,7 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.registersUsed
@@ -59,7 +59,7 @@ internal val autoTranslateCaptionsPatch = patch(
         // Add interface and helper methods to allow extension code to call obfuscated code.
         mutableClassDefBy(CaptionTrackBuilderBuildFingerprint.method.returnType).apply {
             // 20.x tracks are an abstract class, and the url field is in the subclass.
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CAPTION_TRACK_INTERFACE,
                 "patch_getUrl",
                 """
@@ -70,7 +70,7 @@ internal val autoTranslateCaptionsPatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CAPTION_TRACK_INTERFACE,
                 "patch_copyTranslation",
                 """

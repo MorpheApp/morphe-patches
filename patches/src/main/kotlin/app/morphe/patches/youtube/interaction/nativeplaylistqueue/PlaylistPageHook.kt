@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.youtube.misc.contexthook.NextEndpointParentFingerprint
 import app.morphe.patches.youtube.misc.playservice.is_21_44_or_greater
 import app.morphe.patches.youtube.video.series.NativeBaseRequestDescriptionFingerprint
@@ -118,7 +118,7 @@ internal fun installPlaylistPages() {
             return-object v0
         """
     )
-    service.addPatchInterfaceMethod(
+    service.addPatchInterface(
         SOURCE,
         "patch_getPlaylistAccount",
         """
@@ -131,7 +131,7 @@ internal fun installPlaylistPages() {
             return-object v0
         """
     )
-    service.addPatchInterfaceMethod(
+    service.addPatchInterface(
         SOURCE,
         "patch_requestPlaylistPage",
         """

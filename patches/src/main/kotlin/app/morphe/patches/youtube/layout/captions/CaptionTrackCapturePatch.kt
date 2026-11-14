@@ -12,7 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -94,7 +94,7 @@ internal val captionTrackCapturePatch = patch(
         }
 
         handlerSelect.classDef.apply {
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_HANDLER_INTERFACE,
                 "patch_fetchCaption",
                 """
@@ -108,7 +108,7 @@ internal val captionTrackCapturePatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_HANDLER_INTERFACE,
                 "patch_reloadCaption",
                 """
@@ -119,7 +119,7 @@ internal val captionTrackCapturePatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_HANDLER_INTERFACE,
                 "patch_updateCaption",
                 """

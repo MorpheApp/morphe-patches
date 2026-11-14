@@ -17,7 +17,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
@@ -157,7 +157,7 @@ val backgroundPlaybackPatch = patch(
             }
 
             BackgroundPlaybackSettingFingerprint.classDef.apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_BACKGROUND_PLAYBACK_SETTING_INTERFACE,
                     "patch_isBackgroundPlaybackAllowed",
                     """

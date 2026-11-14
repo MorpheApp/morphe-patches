@@ -13,7 +13,7 @@ package app.morphe.patches.youtube.interaction.loop
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -65,7 +65,7 @@ val loopVideoPatch = patch(
                 val endOfVideoEnumFieldRef = getInstruction<ReferenceInstruction>(sgetInstructionIndex).reference as FieldReference
 
                 SleepTimerCancelMethodFingerprint.classDef.apply {
-                    addPatchInterfaceMethod(
+                    addPatchInterface(
                         EXTENSION_SLEEP_TIMER_INTERFACE,
                         "patch_isSetToEndOfVideo",
                         """

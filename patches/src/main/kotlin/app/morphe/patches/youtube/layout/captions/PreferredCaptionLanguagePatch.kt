@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.layout.captions
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -83,7 +83,7 @@ internal val preferredCaptionLanguagePatch = patch(
                 }
             }
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CAPTION_TRACK_INTERFACE,
                 "patch_getLanguageCode",
                 """
@@ -92,7 +92,7 @@ internal val preferredCaptionLanguagePatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CAPTION_TRACK_INTERFACE,
                 "patch_getVssId",
                 """
@@ -190,7 +190,7 @@ internal val preferredCaptionLanguagePatch = patch(
             val tracksManagerField = SubtitleManagerDirectTracksFingerprint.instructionMatches[0].fieldReference
 
             fun addTracksGetter(name: String, tracksMethod: String) {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_SUBTITLE_MANAGER_INTERFACE,
                     name,
                     """
@@ -219,7 +219,7 @@ internal val preferredCaptionLanguagePatch = patch(
             )
 
             fun addSourceGetter(name: String, method: String) {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_SUBTITLE_MANAGER_INTERFACE,
                     name,
                     """
@@ -265,7 +265,7 @@ internal val preferredCaptionLanguagePatch = patch(
             val defaultReason = captionDefaultSelectionFingerprint(selector.parameterTypes[1].toString())
                 .instructionMatches.last().fieldReference
 
-            SetSubtitleTrackFingerprint.classDef.addPatchInterfaceMethod(
+            SetSubtitleTrackFingerprint.classDef.addPatchInterface(
                 EXTENSION_SUBTITLE_MANAGER_INTERFACE,
                 "patch_selectCaptionTrack",
                 """

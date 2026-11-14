@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.matchSingle
 import app.morphe.patcher.util.smali.ExternalLabel
@@ -21,7 +21,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 internal fun installQueueUndo(callback: MethodReference) {
     val endpointType = callback.parameterTypes.first().toString()
     val endpoint = mutableClassDefBy(endpointType)
-    endpoint.addPatchInterfaceMethod(
+    endpoint.addPatchInterface(
         UNDO_COMMAND_INTERFACE,
         "patch_parseQueueCommand",
         """

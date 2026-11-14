@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val CARD_SOURCE = "$EXTENSION_PACKAGE/PlaylistCardSource"
@@ -39,7 +39,7 @@ internal fun installPlaylistCardSource() {
     check(owner.definingClass == nodeClick.type) { "Native click owner must belong to its mounted handler" }
 
     mutableClassDefBy(nodeType).apply {
-        addPatchInterfaceMethod(
+        addPatchInterface(
             $$"$$CARD_SOURCE$TapActions;",
             "patch_getPlaylistTapActions",
             """
@@ -59,7 +59,7 @@ internal fun installPlaylistCardSource() {
         )
     }
     mutableClassDefBy(future.definingClass).apply {
-        addPatchInterfaceMethod(
+        addPatchInterface(
             $$"$$CARD_SOURCE$TapCommand;",
             "patch_getPlaylistTapCommand",
             """

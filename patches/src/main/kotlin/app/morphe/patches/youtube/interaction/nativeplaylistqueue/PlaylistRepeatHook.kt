@@ -8,7 +8,7 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -63,7 +63,7 @@ internal fun installPlaylistRepeat(
         """
     } else ""
 
-    header.addPatchInterfaceMethod(
+    header.addPatchInterface(
         REPEAT_HEADER_INTERFACE,
         "patch_getNavigator",
         """
@@ -72,7 +72,7 @@ internal fun installPlaylistRepeat(
         """
     )
 
-    header.addPatchInterfaceMethod(
+    header.addPatchInterface(
         REPEAT_HEADER_INTERFACE,
         "patch_getPanel",
         """
@@ -81,7 +81,7 @@ internal fun installPlaylistRepeat(
         """
     )
 
-    header.addPatchInterfaceMethod(
+    header.addPatchInterface(
         REPEAT_HEADER_INTERFACE,
         "patch_enableRepeat",
         """
@@ -95,7 +95,7 @@ internal fun installPlaylistRepeat(
     )
 
     // Reuse the native selected/loop-one drawable state after an owned panel bind.
-    header.addPatchInterfaceMethod(
+    header.addPatchInterface(
         REPEAT_HEADER_INTERFACE,
         "patch_setRepeatMode",
         """
@@ -105,7 +105,7 @@ internal fun installPlaylistRepeat(
         """
     )
 
-    header.addPatchInterfaceMethod(
+    header.addPatchInterface(
         REPEAT_HEADER_INTERFACE,
         "patch_setShuffleAvailable",
         """

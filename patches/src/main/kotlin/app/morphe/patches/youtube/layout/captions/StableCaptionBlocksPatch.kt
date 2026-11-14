@@ -15,7 +15,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -126,7 +126,7 @@ internal val stableCaptionBlocksPatch = patch(
         // Frame spans retain source metadata in native mode. Only block layouts use
         // the default placement; ordinary captions keep the authored settings.
         mutableClassDefBy(cueType).apply {
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_getCaptionId",
                 """
@@ -135,7 +135,7 @@ internal val stableCaptionBlocksPatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_isCaptionVisible",
                 """
@@ -145,7 +145,7 @@ internal val stableCaptionBlocksPatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_getOriginalCaptionVisible",
                 """
@@ -154,7 +154,7 @@ internal val stableCaptionBlocksPatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_getOriginalCaptionFull",
                 """
@@ -163,7 +163,7 @@ internal val stableCaptionBlocksPatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_getBlockFrame",
                 """
@@ -174,7 +174,7 @@ internal val stableCaptionBlocksPatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_CUE_INTERFACE,
                 "patch_copyBlockFrame",
                 """
@@ -216,7 +216,7 @@ internal val stableCaptionBlocksPatch = patch(
         // Row used to measure caption text.
         val rowType = CaptionRowLayoutFingerprint.classDef.type
         mutableClassDefBy(rowType).apply {
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_ROW_INTERFACE,
                 "patch_getCaptionLayout",
                 """
@@ -226,7 +226,7 @@ internal val stableCaptionBlocksPatch = patch(
                 """
             )
 
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 EXTENSION_ROW_INTERFACE,
                 "patch_setCaptionText",
                 """
@@ -267,7 +267,7 @@ internal val stableCaptionBlocksPatch = patch(
             val backgroundCall = if (backgroundColor.accessFlags and AccessFlags.PRIVATE.value != 0)
                 "invoke-direct" else "invoke-virtual"
             mutableClassDefBy(SUBTITLE_WINDOW_VIEW_CLASS).apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_WINDOW_INTERFACE,
                     "patch_getCaptionBackgroundColor",
                     """
@@ -277,7 +277,7 @@ internal val stableCaptionBlocksPatch = patch(
                     """
                 )
 
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_WINDOW_INTERFACE,
                     "patch_setCaptionMeasuredSize",
                     """
@@ -361,7 +361,7 @@ internal val stableCaptionBlocksPatch = patch(
                     ).toMutable()
                 )
 
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_TIMELINE_INTERFACE,
                     "patch_getBlockState",
                     """
@@ -370,7 +370,7 @@ internal val stableCaptionBlocksPatch = patch(
                     """
                 )
 
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_TIMELINE_INTERFACE,
                     "patch_setBlockState",
                     """
@@ -394,7 +394,7 @@ internal val stableCaptionBlocksPatch = patch(
                 val sampler = samplerFingerprint.method
                 val windows = samplerFingerprint.instructionMatches[0].fieldReference
                 val events = it.instructionMatches.last().fieldReference
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_TIMELINE_INTERFACE,
                     "patch_getCaptionEventTimes",
                     """
@@ -404,7 +404,7 @@ internal val stableCaptionBlocksPatch = patch(
                 )
 
                 // New timeline with the windows of both timelines, and the block state of this timeline.
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_TIMELINE_INTERFACE,
                     "patch_mergeWith",
                     """

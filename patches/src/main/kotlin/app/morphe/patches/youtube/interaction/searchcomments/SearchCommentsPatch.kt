@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.interaction.searchcomments
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
@@ -91,7 +91,7 @@ val searchCommentsPatch = patch(
         val listViewField = SectionListControllerConstructorFingerprint.instructionMatches.first().fieldReference
 
         mutableClassDefBy(listViewField.definingClass).apply {
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 SECTION_LIST_ACCESS_INTERFACE,
                 "patch_getListView",
                 """
@@ -99,7 +99,7 @@ val searchCommentsPatch = patch(
                     return-object v0
                 """
             )
-            addPatchInterfaceMethod(
+            addPatchInterface(
                 SECTION_LIST_ACCESS_INTERFACE,
                 "patch_reload",
                 """

@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -40,7 +40,7 @@ internal fun installPlaylistPlayerControls(
     val navigatorField = availability.first().second.instructionMatches[4]
         .fieldReference
 
-    controls.addPatchInterfaceMethod(
+    controls.addPatchInterface(
         PLAYER_CONTROLS_INTERFACE,
         "patch_getNavigator",
         """
@@ -50,7 +50,7 @@ internal fun installPlaylistPlayerControls(
     )
 
     // Recompute both cached enablement values, even when native history delegates are present.
-    controls.addPatchInterfaceMethod(
+    controls.addPatchInterface(
         PLAYER_CONTROLS_INTERFACE,
         "patch_refreshNavigation",
         availability.joinToString("\n") { (_, match) -> "invoke-direct {p0}, ${match.originalMethod}" } +

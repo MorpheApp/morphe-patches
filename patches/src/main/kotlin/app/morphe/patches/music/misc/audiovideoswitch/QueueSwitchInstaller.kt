@@ -9,7 +9,7 @@ package app.morphe.patches.music.misc.audiovideoswitch
 
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patches.music.interaction.jam.addBridge
 import app.morphe.patches.music.interaction.jam.addReferenceGetter
@@ -36,7 +36,7 @@ private const val LISTENER_LOCAL_REGISTERS = 3
 internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
     val manager = mutableClassDefBy(queue.managerType)
 
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_atvEnqueue",
         queue.command.decode("p1", "v0") + """
@@ -51,7 +51,7 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
         queue.storage.currentIndex,
         receiverField = queue.storage.field,
     )
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_atvItems",
         """
@@ -70,7 +70,7 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
         queue.videoId,
         opaqueReceiver = true,
     )
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_atvRemove",
         """
@@ -79,7 +79,7 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
             return-void
         """
     )
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_atvMove",
         """
@@ -91,7 +91,7 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
             return-void
         """
     )
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_atvPrimaryLane",
         """
@@ -102,7 +102,7 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
             return-object v0
         """
     )
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_atvAddListener",
         """
@@ -112,7 +112,7 @@ internal fun installAudioVideoSwitchQueue(queue: AudioVideoQueueAbi) {
             return-void
         """
     )
-    manager.addPatchInterfaceMethod(
+    manager.addPatchInterface(
         ACCESS,
         "patch_atvLocal",
         """

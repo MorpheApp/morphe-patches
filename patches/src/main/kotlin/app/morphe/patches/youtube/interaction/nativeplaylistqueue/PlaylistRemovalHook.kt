@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -61,7 +61,7 @@ internal fun installPlaylistSwipeBackground(listener: FieldReference) {
 
     // Before attachment there is no foreground yet; the native attachment
     // callback will initialize both fields normally. Never replace its drawable.
-    swipe.addPatchInterfaceMethod(
+    swipe.addPatchInterface(
         SWIPE_BACKGROUND_INTERFACE,
         "patch_refreshQueueSwipeBackground",
         """

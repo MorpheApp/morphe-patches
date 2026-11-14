@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.matchSingle
@@ -44,7 +44,7 @@ internal fun installPlaylistNotificationControls(ownerType: String) {
             }.distinct().single()
         } else null
 
-        adapter.addPatchInterfaceMethod(
+        adapter.addPatchInterface(
             NOTIFICATION_CONTROLS_INTERFACE,
             "patch_getQueueMediaControls",
             """
@@ -55,7 +55,7 @@ internal fun installPlaylistNotificationControls(ownerType: String) {
 
         // Recompute from the original adapter inputs on every refresh. Releasing
         // the queue therefore restores native capabilities without caching flags.
-        adapter.addPatchInterfaceMethod(
+        adapter.addPatchInterface(
             NOTIFICATION_CONTROLS_INTERFACE,
             "patch_refreshQueueNotification",
             """

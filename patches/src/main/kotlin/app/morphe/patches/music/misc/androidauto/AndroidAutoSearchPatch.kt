@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.mutableClassDefBy
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.music.interaction.jam.addReferenceGetter
@@ -80,7 +80,7 @@ internal fun patchSearch() {
         it.instruction.getReference<FieldReference>()
     }
 
-    clientClass.addPatchInterfaceMethod(
+    clientClass.addPatchInterface(
         PHONE_SEARCH_CLIENT,
         "patch_search",
         """
@@ -117,7 +117,7 @@ internal fun patchSearch() {
     val responseMessageType = responseConstructor.parameterTypes.single().toString()
     val responseClass = mutableClassDefBy(responseType)
     val responseMessageField = responseClass.instanceFields.single { it.type == responseMessageType }
-    responseClass.addPatchInterfaceMethod(
+    responseClass.addPatchInterface(
         PHONE_SEARCH_RESPONSE,
         "patch_responseBytes",
         """
@@ -144,7 +144,7 @@ private fun hookSearchRequests() {
     val searchRequestClass = mutableClassDefBy(deliverSearchResultsMethod.definingClass)
     val queryField = searchRequestClass.instanceFields.single { it.type == "Ljava/lang/String;" }
     searchRequestClass.addReferenceGetter("patch_query", queryField)
-    searchRequestClass.addPatchInterfaceMethod(
+    searchRequestClass.addPatchInterface(
         SEARCH_REQUEST,
         "patch_deliverSearchResults",
         """

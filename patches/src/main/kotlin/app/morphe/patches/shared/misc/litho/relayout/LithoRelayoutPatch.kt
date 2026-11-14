@@ -12,7 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -44,7 +44,7 @@ val lithoRelayoutPatch = patch(
             }
 
             it.classDef.apply {
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_LITHO_VIEW_INTERFACE,
                     "patch_forceRelayout",
                     """
@@ -57,7 +57,7 @@ val lithoRelayoutPatch = patch(
 
                 // Unmounting all content mounts it again with the next layout,
                 // which loads the images again.
-                addPatchInterfaceMethod(
+                addPatchInterface(
                     EXTENSION_LITHO_VIEW_INTERFACE,
                     "patch_forceRemount",
                     """

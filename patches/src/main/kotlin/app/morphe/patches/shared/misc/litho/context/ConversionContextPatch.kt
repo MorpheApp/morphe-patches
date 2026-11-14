@@ -10,7 +10,7 @@ package app.morphe.patches.shared.misc.litho.context
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.util.findFieldFromToString
@@ -88,7 +88,7 @@ val conversionContextPatch = patch(
                 "patch_getHorizontalCollectionSwipeProtector" to horizontalSwipeField,
                 "patch_getHeightConstraint" to heightConstraint,
             ).forEach { (interfaceMethodName, classFieldReference) ->
-                addPatchInterfaceMethod(EXTENSION_CONTEXT_INTERFACE, interfaceMethodName, classFieldReference)
+                addPatchInterface(EXTENSION_CONTEXT_INTERFACE, interfaceMethodName, classFieldReference)
             }
         }
     }

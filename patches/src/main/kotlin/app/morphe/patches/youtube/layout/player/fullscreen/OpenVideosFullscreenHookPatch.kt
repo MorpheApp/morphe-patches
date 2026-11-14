@@ -17,7 +17,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.youtube.layout.shortsplayer.openShortsInRegularPlayerPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.util.insertLiteralOverride
@@ -46,7 +46,7 @@ internal val openVideosFullscreenHookPatch = patch {
 
         // Implement fullscreen interface.
         mutableClassDefBy(fullScreenDefiningClass).apply {
-            fun addInterfaceMethod(name: String, methodCall: String) = addPatchInterfaceMethod(
+            fun addInterfaceMethod(name: String, methodCall: String) = addPatchInterface(
                 EXTENSION_FULLSCREEN_INTERFACE,
                 name,
                 """

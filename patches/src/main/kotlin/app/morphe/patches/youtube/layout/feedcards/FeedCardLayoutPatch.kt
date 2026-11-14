@@ -14,7 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.addPatchInterfaceMethod
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
@@ -151,7 +151,7 @@ val feedCardLayoutPatch = patch(
                 val elementBytesField = it.instructionMatches[1].fieldReference
 
                 it.classDef.apply {
-                    addPatchInterfaceMethod(
+                    addPatchInterface(
                         EXTENSION_ELEMENT_ITEM_INTERFACE,
                         "patch_getElementBytes",
                         """
