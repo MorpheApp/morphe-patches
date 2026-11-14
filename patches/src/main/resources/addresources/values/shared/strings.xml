@@ -119,6 +119,17 @@ You will not be notified of any unexpected events"</string>
     <string name="morphe_debug_logs_copied_to_clipboard">Debug logs copied</string>
     <string name="morphe_debug_logs_failed_to_export">Failed to export debug logs: %s</string>
     <string name="morphe_debug_logs_clear_toast">Debug logs cleared</string>
+    <string name="morphe_capture_push_notification_payloads_title">Capture push notification payloads</string>
+    <string name="morphe_capture_push_notification_payloads_summary">Stores incoming push notification payloads locally for debugging. May contain private notification content.</string>
+    <string name="morphe_export_push_notification_payloads_title">Export captured push payloads</string>
+    <string name="morphe_export_push_notification_payloads_summary">Save the capture as a text file; the local copy remains until you clear it</string>
+    <string name="morphe_clear_push_notification_payloads_title">Clear captured push payloads</string>
+    <string name="morphe_clear_push_notification_payloads_summary">Delete the locally stored payload capture</string>
+    <string name="morphe_push_notification_payloads_empty">No push payloads captured</string>
+    <string name="morphe_push_notification_payloads_exported">Payload capture exported</string>
+    <string name="morphe_push_notification_payloads_cleared">Payload capture cleared</string>
+    <string name="morphe_push_notification_payloads_export_failed">Could not export payload capture</string>
+    <string name="morphe_push_notification_payloads_clear_failed">Could not clear payload capture</string>
     <string name="morphe_debug_feature_flags_manager_title">Feature flags manager</string>
     <string name="morphe_debug_feature_flags_manager_summary">Manage boolean feature flags</string>
     <string name="morphe_debug_feature_flags_manager_search_hint">Search feature flags…</string>
