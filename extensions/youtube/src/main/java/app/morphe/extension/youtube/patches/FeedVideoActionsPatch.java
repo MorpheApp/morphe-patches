@@ -212,28 +212,36 @@ public final class FeedVideoActionsPatch {
         return false; // Modified during patching.
     }
 
-    private static final class VideoCard implements View.OnAttachStateChangeListener {
+    private static final class VideoCard {
         WeakReference<View> menuButtonRef = new WeakReference<>(null);
-        final WatchLaterBadge badge = new WatchLaterBadge();
-        boolean badgeAdded;
-        WeakReference<View> badgeOwnerRef = new WeakReference<>(null);
-        final int[] hostLocation = new int[2];
-        final int[] ownerLocation = new int[2];
+        final ThumbnailButtonContainer buttons = new ThumbnailButtonContainer();
         /** Top of the thumbnail in the host, or -1 if it is not known. */
         int thumbnailTop = -1;
-        WeakReference<View> sideThumbnailRef = new WeakReference<>(null);
 
         @Nullable
         View getMenuButton() {
             View menuButton = menuButtonRef.get();
             return menuButton != null && menuButton.isAttachedToWindow() ? menuButton : null;
         }
+    }
 
-        void placeBadge(ComponentHost host) {
+    /** Owns the thumbnail overlay and places its buttons in local coordinates. */
+    private static final class ThumbnailButtonContainer extends Drawable
+            implements Drawable.Callback, View.OnAttachStateChangeListener {
+        final WatchLaterBadge watchLater = new WatchLaterBadge();
+        boolean added;
+        WeakReference<View> ownerRef = new WeakReference<>(null);
+        final int[] hostLocation = new int[2];
+        final int[] ownerLocation = new int[2];
+
+        ThumbnailButtonContainer() {
+            watchLater.setCallback(this);
+        }
+
+        void place(ComponentHost host, @Nullable View side, int thumbnailTop) {
             final int size = dp(host, BADGE_SIZE_DP);
             int top = thumbnailTop + dp(host, BADGE_MARGIN_DP);
             int right = host.getWidth() - dp(host, BADGE_RIGHT_MARGIN_DP);
-            View side = sideThumbnailRef.get();
             View owner = side == null ? host : side;
             if (side != null) {
                 // The image, including its overlay, moves with the native swipe-to-remove row.
@@ -245,36 +253,36 @@ public final class FeedVideoActionsPatch {
                     right = thumbnail.right - dp(host, BADGE_RIGHT_MARGIN_DP);
                 }
             }
-            if (badgeOwnerRef.get() != owner) {
-                removeBadge();
-                badgeOwnerRef = new WeakReference<>(owner);
+            if (ownerRef.get() != owner) {
+                remove();
+                ownerRef = new WeakReference<>(owner);
                 owner.addOnAttachStateChangeListener(this);
             }
-            badge.setBounds(right - size, top, right, top + size);
-            badge.hostRef = new WeakReference<>(host);
-            if (!badgeAdded) {
-                owner.getOverlay().add(badge);
-                badgeAdded = true;
+            setBounds(right - size, top, right, top + size);
+            watchLater.hostRef = new WeakReference<>(host);
+            if (!added) {
+                owner.getOverlay().add(this);
+                added = true;
             }
         }
 
-        void removeBadge() {
-            View owner = badgeOwnerRef.get();
+        void remove() {
+            View owner = ownerRef.get();
             if (owner != null) {
-                owner.getOverlay().remove(badge);
+                owner.getOverlay().remove(this);
                 owner.removeOnAttachStateChangeListener(this);
             }
-            badgeAdded = false;
-            badgeOwnerRef.clear();
-            badge.setPressed(false);
+            added = false;
+            ownerRef.clear();
+            watchLater.setPressed(false);
         }
 
         @Override
         public void onViewDetachedFromWindow(@NonNull View view) {
-            view.getOverlay().remove(badge);
-            badgeAdded = false;
-            badge.setPressed(false);
-            if (gestureHostRef.get() == badge.hostRef.get()) {
+            view.getOverlay().remove(this);
+            added = false;
+            watchLater.setPressed(false);
+            if (gestureHostRef.get() == watchLater.hostRef.get()) {
                 resetGesture();
             }
         }
@@ -282,7 +290,7 @@ public final class FeedVideoActionsPatch {
         @Override
         public void onViewAttachedToWindow(@NonNull View view) {
             try {
-                ComponentHost host = badge.hostRef.get();
+                ComponentHost host = watchLater.hostRef.get();
                 // A pooled image must not carry a button belonging to its previous card.
                 for (View current = view; current != null;
                      current = current.getParent() instanceof View parent ? parent : null) {
@@ -291,15 +299,15 @@ public final class FeedVideoActionsPatch {
                         return;
                     }
                 }
-                removeBadge();
+                remove();
             } catch (Exception ex) {
                 Logger.printException(() -> "onViewAttachedToWindow failure", ex);
             }
         }
 
-        boolean isBadgeHit(ComponentHost host, float x, float y) {
-            View owner = badgeOwnerRef.get();
-            if (!badgeAdded || owner == null || !owner.isShown() || FeedVideoCardsPatch.isCardPlayingInline(host)
+        boolean isHit(ComponentHost host, float x, float y) {
+            View owner = ownerRef.get();
+            if (!added || owner == null || !owner.isShown() || FeedVideoCardsPatch.isCardPlayingInline(host)
                     || FeedVideoCardsPatch.isPlaylistCard(host)) {
                 return false;
             }
@@ -309,10 +317,55 @@ public final class FeedVideoActionsPatch {
                 x += hostLocation[0] - ownerLocation[0];
                 y += hostLocation[1] - ownerLocation[1];
             }
-            Rect bounds = badge.getBounds();
+            Rect bounds = getBounds();
             final int slop = dp(host, BADGE_TOUCH_SLOP_DP);
             return x >= bounds.left - slop && x <= bounds.right + slop
                     && y >= bounds.top - slop && y <= bounds.bottom + slop;
+        }
+
+        @Override
+        protected void onBoundsChange(Rect bounds) {
+            watchLater.setBounds(0, 0, bounds.width(), bounds.height());
+        }
+
+        @Override
+        public void draw(@NonNull Canvas canvas) {
+            Rect bounds = getBounds();
+            final int saveCount = canvas.save();
+            canvas.translate(bounds.left, bounds.top);
+            watchLater.draw(canvas);
+            canvas.restoreToCount(saveCount);
+        }
+
+        @Override
+        public void setAlpha(int alpha) {
+            watchLater.setAlpha(alpha);
+        }
+
+        @Override
+        public void setColorFilter(@Nullable ColorFilter colorFilter) {
+            watchLater.setColorFilter(colorFilter);
+        }
+
+        @Deprecated
+        @Override
+        public int getOpacity() {
+            return PixelFormat.TRANSLUCENT;
+        }
+
+        @Override
+        public void invalidateDrawable(@NonNull Drawable who) {
+            invalidateSelf();
+        }
+
+        @Override
+        public void scheduleDrawable(@NonNull Drawable who, @NonNull Runnable what, long when) {
+            scheduleSelf(what, when);
+        }
+
+        @Override
+        public void unscheduleDrawable(@NonNull Drawable who, @NonNull Runnable what) {
+            unscheduleSelf(what);
         }
     }
 
@@ -836,10 +889,10 @@ public final class FeedVideoActionsPatch {
                 // the thumbnail, such as of the classic layout, is not mounted while only the
                 // thumbnail is shown, as when the card leaves the screen. The button is kept
                 // until the card is fully shown and still has no menu button.
-                if (card.badgeAdded && isVideoShaped(host) && FeedVideoCardsPatch.scheduleScrollCheck(host)) {
+                if (card.buttons.added && isVideoShaped(host) && FeedVideoCardsPatch.scheduleScrollCheck(host)) {
                     return card;
                 }
-                card.removeBadge();
+                card.buttons.remove();
                 cards.remove(host);
             }
             return null;
@@ -852,7 +905,6 @@ public final class FeedVideoActionsPatch {
         final boolean sameMenuButton = card.menuButtonRef.get() == menuButton;
         card.menuButtonRef = new WeakReference<>(menuButton);
         if (WATCH_LATER_BUTTON) {
-            card.sideThumbnailRef = new WeakReference<>(sideThumbnail);
             final int thumbnailTop = sideThumbnail == null ? findThumbnailTop(host, menuButton) : 0;
             // Litho mounts only the part of a card that is shown, so the duration badge
             // may not be mounted. The thumbnail of the same video does not move.
@@ -860,15 +912,15 @@ public final class FeedVideoActionsPatch {
                 card.thumbnailTop = thumbnailTop;
             }
             if (card.thumbnailTop >= 0) {
-                card.placeBadge(host);
+                card.buttons.place(host, sideThumbnail, card.thumbnailTop);
                 final String videoId = findCardVideoId(host);
-                if (!TextUtils.equals(card.badge.videoId, videoId)) {
-                    card.badge.videoId = videoId;
-                    card.badge.invalidateSelf();
+                if (!TextUtils.equals(card.buttons.watchLater.videoId, videoId)) {
+                    card.buttons.watchLater.videoId = videoId;
+                    card.buttons.watchLater.invalidateSelf();
                 }
                 fetchSavedVideosIfNeeded();
             } else {
-                card.removeBadge();
+                card.buttons.remove();
             }
         }
         return card;
@@ -893,10 +945,10 @@ public final class FeedVideoActionsPatch {
             // Litho reuses the host for other content, such as another video or a row of Shorts,
             // which is known by its description before its texts are drawn.
             VideoCard card = cards.get(host);
-            if (card != null && card.badgeAdded) {
+            if (card != null && card.buttons.added) {
                 String shownVideoId = FeedVideoCardsPatch.findVideoIdByDescription(host, false);
-                if (shownVideoId != null && !shownVideoId.equals(card.badge.videoId)) {
-                    card.removeBadge();
+                if (shownVideoId != null && !shownVideoId.equals(card.buttons.watchLater.videoId)) {
+                    card.buttons.remove();
                     cards.remove(host);
                 }
             }
@@ -942,19 +994,19 @@ public final class FeedVideoActionsPatch {
                 case GESTURE_BADGE -> {
                     VideoCard card = cards.get(host);
                     if (action == MotionEvent.ACTION_MOVE && card != null
-                            && !card.isBadgeHit(host, event.getX(), event.getY())) {
+                            && !card.buttons.isHit(host, event.getX(), event.getY())) {
                         // Leaving the button cancels the tap and the long press.
-                        card.badge.setPressed(false);
+                        card.buttons.watchLater.setPressed(false);
                         gestureMode = GESTURE_CONSUMED;
                         handler.removeCallbacks(badgeLongPressRunnable);
                         return true;
                     }
                     if (gestureEnded) {
                         if (card != null) {
-                            card.badge.setPressed(false);
+                            card.buttons.watchLater.setPressed(false);
                             // Saves the video to Watch later.
                             if (action == MotionEvent.ACTION_UP
-                                    && card.isBadgeHit(host, event.getX(), event.getY())) {
+                                    && card.buttons.isHit(host, event.getX(), event.getY())) {
                                 vibrate(host, false);
                                 runVideoCommand(host, false);
                             }
@@ -1004,9 +1056,9 @@ public final class FeedVideoActionsPatch {
         downRawY = event.getRawY();
         host.getLocationOnScreen(downLocation);
 
-        if (WATCH_LATER_BUTTON && card.isBadgeHit(host, downX, downY)) {
+        if (WATCH_LATER_BUTTON && card.buttons.isHit(host, downX, downY)) {
             gestureMode = GESTURE_BADGE;
-            card.badge.setPressed(true);
+            card.buttons.watchLater.setPressed(true);
             // Tapping and holding the button opens the Save to playlist panel.
             handler.postDelayed(badgeLongPressRunnable, BADGE_LONG_PRESS_TIMEOUT_MS);
             return true;
@@ -1100,8 +1152,8 @@ public final class FeedVideoActionsPatch {
             if (card == null) {
                 return;
             }
-            card.badge.setPressed(false);
-            if (hasHostMoved(host) || !card.isBadgeHit(host, downX, downY)) {
+            card.buttons.watchLater.setPressed(false);
+            if (hasHostMoved(host) || !card.buttons.isHit(host, downX, downY)) {
                 return;
             }
             vibrate(host, true);
@@ -1192,7 +1244,7 @@ public final class FeedVideoActionsPatch {
 
     private static void updateWatchLaterBadges() {
         for (VideoCard card : cards.values()) {
-            card.badge.invalidateSelf();
+            card.buttons.watchLater.invalidateSelf();
         }
     }
 
