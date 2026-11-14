@@ -66,7 +66,7 @@ final class DeArrowVoteDialog {
     private static final int DOWNVOTE_ICON = ResourceUtils.getDrawableIdentifier("yt_outline_thumb_down_black_24");
 
     /**
-     * Opacity of the line under each title, which shows its votes.
+     * Opacity of the line under each title, which shows its score.
      */
     private static final float DETAILS_ALPHA = 0.7f;
 
@@ -92,10 +92,10 @@ final class DeArrowVoteDialog {
      * @param title     The title as submitted, or the original title if no one submitted it.
      * @param original  If the title is the original title.
      * @param submitted If the title was submitted, so it can be downvoted.
-     * @param votes     The votes of the title, if submitted.
+     * @param score     The score of the title, if submitted.
      * @param locked    If a VIP locked the title.
      */
-    private record ListedTitle(String title, boolean original, boolean submitted, int votes, boolean locked) {
+    private record ListedTitle(String title, boolean original, boolean submitted, int score, boolean locked) {
         String shownTitle() {
             return DeArrowBrandingRequest.formatTitle(title);
         }
@@ -107,10 +107,10 @@ final class DeArrowVoteDialog {
      * @param timestamp Time of the frame in seconds, as submitted. Not used for the original thumbnail.
      * @param original  If the thumbnail is the original thumbnail.
      * @param submitted If the thumbnail was submitted, so it can be downvoted.
-     * @param votes     The votes of the thumbnail, if submitted.
+     * @param score     The score of the thumbnail, if submitted.
      * @param locked    If a VIP locked the thumbnail.
      */
-    private record ListedThumbnail(double timestamp, boolean original, boolean submitted, int votes, boolean locked) {
+    private record ListedThumbnail(double timestamp, boolean original, boolean submitted, int score, boolean locked) {
     }
 
     private DeArrowVoteDialog() {
@@ -230,7 +230,7 @@ final class DeArrowVoteDialog {
         ListedTitle original = null;
         for (TitleSubmission submission : submissions) {
             ListedTitle title = new ListedTitle(submission.title(), submission.original(),
-                    true, submission.votes(), submission.locked());
+                    true, submission.score(), submission.locked());
             if (submission.original() && original == null) {
                 original = title;
             } else {
@@ -254,7 +254,7 @@ final class DeArrowVoteDialog {
         ListedThumbnail original = null;
         for (ThumbnailSubmission submission : submissions) {
             ListedThumbnail thumbnail = new ListedThumbnail(submission.timestamp(), submission.original(),
-                    true, submission.votes(), submission.locked());
+                    true, submission.score(), submission.locked());
             if (submission.original() && original == null) {
                 original = thumbnail;
             } else {
@@ -296,7 +296,7 @@ final class DeArrowVoteDialog {
         if (title.original()) {
             details.add(str("morphe_dearrow_vote_original_title"));
         }
-        addVoteDetails(details, title.submitted(), title.votes(), title.locked());
+        addVoteDetails(details, title.submitted(), title.score(), title.locked());
 
         return createRow(context, null, title.shownTitle(), details, title.submitted(), foregroundColor,
                 downvote -> vote(context, dialog, videoId, downvote, () -> DeArrowVoteRequest.voteTitle(
@@ -320,16 +320,16 @@ final class DeArrowVoteDialog {
                 ? str("morphe_dearrow_vote_original_thumbnail")
                 : str("morphe_dearrow_vote_thumbnail_time", formatTime(thumbnail.timestamp()));
         List<String> details = new ArrayList<>(2);
-        addVoteDetails(details, thumbnail.submitted(), thumbnail.votes(), thumbnail.locked());
+        addVoteDetails(details, thumbnail.submitted(), thumbnail.score(), thumbnail.locked());
 
         return createRow(context, imageView, text, details, thumbnail.submitted(), foregroundColor,
                 downvote -> vote(context, dialog, videoId, downvote, () -> DeArrowVoteRequest.voteThumbnail(
                         videoId, thumbnail.original(), thumbnail.timestamp(), downvote, videoLength)));
     }
 
-    private static void addVoteDetails(List<String> details, boolean submitted, int votes, boolean locked) {
+    private static void addVoteDetails(List<String> details, boolean submitted, int score, boolean locked) {
         if (submitted) {
-            details.add(str("morphe_dearrow_vote_votes", votes));
+            details.add(str("morphe_dearrow_vote_score", score));
         }
         if (locked) {
             details.add(str("morphe_dearrow_vote_locked"));

@@ -44,7 +44,7 @@ final class DeArrowVoteRequest {
 
     /**
      * The video id is sent, instead of the start of its hash, since the vote is for the video anyway.
-     * Titles with negative votes are included, such as the titles of new users that are not yet verified.
+     * Titles with a negative score are included, such as the titles of new users that are not yet verified.
      */
     private static final Route GET_BRANDING = new Route(Route.Method.GET,
             "/api/branding?videoID={video_id}&fetchAll=true");
@@ -63,11 +63,11 @@ final class DeArrowVoteRequest {
      *
      * @param title    The title as submitted, which is sent again to upvote it.
      * @param original If the title is the original title of the video.
-     * @param votes    The upvotes minus the downvotes, which is negative for the titles
-     *                 of users that are not yet verified.
+     * @param score    The upvotes minus the downvotes, minus one if the user who submitted it
+     *                 is not yet verified. A new title of a new user starts at -1, which is not a downvote.
      * @param locked   If a VIP locked the title.
      */
-    record TitleSubmission(String title, boolean original, int votes, boolean locked) {
+    record TitleSubmission(String title, boolean original, int score, boolean locked) {
         /**
          * @return The title as shown, without the formatting characters.
          */
@@ -82,14 +82,14 @@ final class DeArrowVoteRequest {
      * @param timestamp Time of the frame in seconds, which is sent again to upvote it.
      *                  Not used for the original thumbnail.
      * @param original  If the thumbnail is the original thumbnail of the video.
-     * @param votes     The upvotes minus the downvotes.
+     * @param score     The upvotes minus the downvotes.
      * @param locked    If a VIP locked the thumbnail.
      */
-    record ThumbnailSubmission(double timestamp, boolean original, int votes, boolean locked) {
+    record ThumbnailSubmission(double timestamp, boolean original, int score, boolean locked) {
     }
 
     /**
-     * The submissions of a video, sorted by the server with the locked submissions first and then by votes.
+     * The submissions of a video, sorted by the server with the locked submissions first and then by score.
      */
     record Branding(List<TitleSubmission> titles, List<ThumbnailSubmission> thumbnails) {
     }
