@@ -257,6 +257,12 @@ public class FeedCardLayoutPatch {
      */
     private static final int CARD_HORIZONTAL_PADDING_DP = 12;
     private static final int CARD_VERTICAL_PADDING_DP = 6;
+    private static final LockupPadding CARD_PADDING = LockupPadding.newBuilder()
+            .setStart(CARD_HORIZONTAL_PADDING_DP)
+            .setEnd(CARD_HORIZONTAL_PADDING_DP)
+            .setTop(CARD_VERTICAL_PADDING_DP)
+            .setBottom(CARD_VERTICAL_PADDING_DP)
+            .build();
     /**
      * The videos of the vertical shelves are laid out almost to the edges of the list, with the menu button
      * near the right edge, and their content starts this far beyond the spacing of the cards.
@@ -768,7 +774,10 @@ public class FeedCardLayoutPatch {
                         }
                     }
                 }
-                return bytes;
+                // The cards that YouTube sends are checked for their padding.
+                if (!CARD_LAYOUT || !elementText.contains(CARD_TEMPLATE)) {
+                    return bytes;
+                }
             }
 
             Element element = Element.parseFrom(bytes);
@@ -1116,11 +1125,7 @@ public class FeedCardLayoutPatch {
                                 .setViewModel(LockupViewModelHolder.newBuilder().setLockupViewModel(lockupViewModel))
                                 .setContext(setCardExperiments(classic.getContext(), true))
                                 .setEnvironment(classic.getEnvironment())
-                                .setPadding(LockupPadding.newBuilder()
-                                        .setStart(CARD_HORIZONTAL_PADDING_DP)
-                                        .setEnd(CARD_HORIZONTAL_PADDING_DP)
-                                        .setTop(CARD_VERTICAL_PADDING_DP)
-                                        .setBottom(CARD_VERTICAL_PADDING_DP))
+                                .setPadding(CARD_PADDING)
                                 .build();
 
                         converted = componentType.toBuilder()
@@ -1225,6 +1230,29 @@ public class FeedCardLayoutPatch {
                             .setModel(ElementModel.newBuilder().setGridVideoModel(video.toBuilder()
                                     .setAccessibilityText(label + VIDEO_SHELF_ROW_LABEL_MARKER)))
                             .build();
+                } else if (isTemplate(uri, CARD_TEMPLATE) && model.hasLockupModel()) {
+                    // The videos that YouTube sends as cards, to the accounts of a newer A/B test, have no padding
+                    // and fill the width of the list. They get the padding and the labels of the converted cards.
+                    LockupModel card = model.getLockupModel();
+                    LockupViewModel lockupViewModel = card.getViewModel().getLockupViewModel();
+                    final int contentType = lockupViewModel.getContentType();
+                    RendererContext rendererContext = lockupViewModel.getRendererContext();
+                    String label = rendererContext.getAccessibilityContext().getLabel();
+                    if (!card.hasPadding() && !label.isEmpty() && !isCardLabel(label)
+                            && (contentType == LOCKUP_CONTENT_TYPE_VIDEO || contentType == LOCKUP_CONTENT_TYPE_PLAYLIST)) {
+                        if (lockupViewModel.getInlinePlayback().getInlinePlayback().isEmpty()) {
+                            label += NO_INLINE_PLAYBACK_CARD_LABEL_MARKER;
+                        }
+                        converted = componentType.toBuilder()
+                                .setModel(model.toBuilder().setLockupModel(card.toBuilder()
+                                        .setPadding(CARD_PADDING)
+                                        .setViewModel(card.getViewModel().toBuilder()
+                                                .setLockupViewModel(lockupViewModel.toBuilder()
+                                                        .setRendererContext(rendererContext.toBuilder()
+                                                                .setAccessibilityContext(rendererContext.getAccessibilityContext().toBuilder()
+                                                                        .setLabel(label + CARD_LABEL_MARKER)))))))
+                                .build();
+                    }
                 } else if (isTemplate(uri, COMPACT_PLAYLIST_TEMPLATE) && model.hasCompactPlaylistModel()) {
                     // The playlists in a row of a vertical shelf are drawn on the card of the shelf too.
                     CompactPlaylistModel playlist = model.getCompactPlaylistModel();
@@ -1578,6 +1606,19 @@ public class FeedCardLayoutPatch {
             Logger.printException(() -> "getDividerItem failure", ex);
         }
         return item;
+    }
+
+    /**
+     * Injection point.
+     * Called when the layout of a section of a list is made.
+     *
+     * @param columnCount Columns of the section.
+     * @param rowGapDp    Gap between the rows of the section.
+     * @return The gap between the rows, which is removed from the sections of one column with the card layout,
+     *         as the cards have their own spacing.
+     */
+    public static float getSectionRowGap(int columnCount, float rowGapDp) {
+        return CARD_LAYOUT && columnCount == 1 ? 0 : rowGapDp;
     }
 
     /**
