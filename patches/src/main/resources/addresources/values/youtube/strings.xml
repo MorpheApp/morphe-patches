@@ -1125,6 +1125,8 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_navigation_bar_glass_summary">Shows the navigation bar as a floating, rounded, translucent capsule. Not available with the Opaque navigation bar style</string>
     <string name="morphe_navigation_bar_glass_opacity_title">Glass opacity</string>
     <string name="morphe_navigation_bar_glass_opacity_summary">Adjust the transparency level of the glass navigation bar (0 is transparent, 100 is opaque)</string>
+    <string name="morphe_navigation_bar_glass_round_title">Round glass navigation bar</string>
+    <string name="morphe_navigation_bar_glass_round_summary">Gives the glass navigation bar round ends, instead of corners like the glass miniplayer</string>
     <string name="morphe_navigation_bar_glass_size_title">Glass navigation bar size</string>
     <string name="morphe_navigation_bar_glass_size_summary">Adjust the height, the width and the button spacing of the glass navigation bar, with a preview. Buttons that do not fit in the width of the screen are hidden</string>
     <string name="morphe_navigation_bar_glass_size_height">Height</string>
@@ -1505,6 +1507,8 @@ Automotive layout
     <string name="morphe_miniplayer_swipe_up_expand_summary">Swiping the miniplayer up expands the player, instead of moving the miniplayer to the top of the screen</string>
     <string name="morphe_miniplayer_docked_title">Docked miniplayer</string>
     <string name="morphe_miniplayer_docked_summary">Attaches the miniplayer to the navigation bar and the sides of the screen, instead of floating above them</string>
+    <string name="morphe_miniplayer_glass_title">Glass miniplayer</string>
+    <string name="morphe_miniplayer_glass_summary">Shows the miniplayer as translucent glass with rounded corners, like the glass navigation bar. Requires the glass navigation bar</string>
     <string name="morphe_miniplayer_type_entry_0">Disabled</string>
     <string name="morphe_miniplayer_type_entry_1">Default</string>
     <string name="morphe_miniplayer_type_entry_2">Minimal</string>

@@ -310,7 +310,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting MINIPLAYER_NEXT_BUTTON = new BooleanSetting("morphe_music_miniplayer_next_button", TRUE, true);
     public static final BooleanSetting MINIPLAYER_PREVIOUS_BUTTON = new BooleanSetting("morphe_music_miniplayer_previous_button", TRUE, true);
     public static final BooleanSetting MINIPLAYER_GLASS = new BooleanSetting("morphe_music_miniplayer_glass", FALSE, true);
-    public static final IntegerSetting MINIPLAYER_GLASS_OPACITY = new IntegerSetting("morphe_music_miniplayer_glass_opacity", 25, false, parent(MINIPLAYER_GLASS));
+    public static final IntegerSetting MINIPLAYER_GLASS_OPACITY = new IntegerSetting("morphe_music_miniplayer_glass_opacity", 20, false, parent(MINIPLAYER_GLASS));
     public static final IntegerSetting MINIPLAYER_GLASS_BLUR = new IntegerSetting("morphe_music_miniplayer_glass_blur", 20, false, parent(MINIPLAYER_GLASS));
     public static final IntegerSetting MINIPLAYER_GLASS_RIM = new IntegerSetting("morphe_music_miniplayer_glass_rim", 50, false, parent(MINIPLAYER_GLASS));
     public static final BooleanSetting MINIPLAYER_GLASS_LIGHT = new BooleanSetting("morphe_music_miniplayer_glass_light", FALSE, false, parent(MINIPLAYER_GLASS));

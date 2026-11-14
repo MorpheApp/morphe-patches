@@ -18,9 +18,12 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.res.ColorStateList;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Insets;
+import android.graphics.Outline;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -35,6 +38,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.ViewOutlineProvider;
 import android.view.ViewTreeObserver;
 import android.view.WindowInsets;
 import android.view.animation.DecelerateInterpolator;
@@ -45,15 +49,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.ViewAnimations;
+import app.morphe.extension.shared.ui.glass.GlassBackdrop;
+import app.morphe.extension.shared.ui.glass.GlassCapsuleDrawable;
 import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -98,6 +106,39 @@ public final class MinimalMiniplayerPatch {
     private static final boolean DOCKED = ENABLED && Settings.MINIPLAYER_DOCKED.get();
 
     /**
+     * Drawn as translucent glass with rounded corners, like the glass navigation bar.
+     */
+    private static final boolean GLASS = ENABLED && Settings.MINIPLAYER_GLASS.get()
+            && YouTubeGlassNavigationBar.isEnabled();
+
+    /**
+     * A docked bar sits against the edges, so it has no rounded corners.
+     */
+    private static final int GLASS_CORNER_RADIUS = DOCKED ? 0 : Dim.dp16;
+
+    /**
+     * Room around the video of type 1, so it sits inside the rounded glass with corners that follow it.
+     * Type 2 has the video as the background of the glass.
+     */
+    private static final int GLASS_VIDEO_PADDING = GLASS && !DOCKED
+            && getCurrentMiniplayerType() == MINIMAL_BAR ? Dim.dp6 : 0;
+
+    /**
+     * The opacity of the glass navigation bar, so the bar and the navigation bar look the same.
+     */
+    private static final float GLASS_OPACITY_SCALE =
+            SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_OPACITY) / 50f;
+
+    private static final float GLASS_BLUR_RADIUS = Dim.dp20;
+
+    /**
+     * In landscape the glass bar is as wide as the capsule of the glass navigation bar, at least this wide,
+     * or this wide at most without the capsule, instead of spanning the whole screen.
+     */
+    private static final int GLASS_LANDSCAPE_MIN_WIDTH = Dim.dp(360);
+    private static final int GLASS_LANDSCAPE_MAX_WIDTH = Dim.dp(480);
+
+    /**
      * YouTube's own {@code floaty_bar_height}.
      */
     private static final int BAR_HEIGHT = Dim.dp(56);
@@ -106,7 +147,10 @@ public final class MinimalMiniplayerPatch {
      * Detached from the edges, so the rounded corners the miniplayer already has are visible.
      * A docked bar has no rounded corners, and sits against the edges.
      */
-    private static final int BAR_MARGIN = DOCKED ? 0 : Dim.dp8;
+    private static final int BAR_MARGIN = DOCKED
+            ? 0
+            // The same room to the sides of the screen as the glass navigation bar.
+            : GLASS ? YouTubeGlassNavigationBar.MARGIN_HORIZONTAL : Dim.dp8;
 
     /**
      * Type 2 draws the bar on the video, which is dimmed but never light, so the app colors
@@ -231,6 +275,33 @@ public final class MinimalMiniplayerPatch {
      * The last title and channel shown, kept while a new video has not loaded its own yet.
      */
     private static String videoTitle = "";
+
+    /**
+     * The glass the bar container is drawn with, and the background the container had before it.
+     */
+    private static WeakReference<GlassCapsuleDrawable> glassRef = new WeakReference<>(null);
+    private static WeakReference<View> glassContainerRef = new WeakReference<>(null);
+    @Nullable
+    private static Drawable glassOriginalBackground;
+    @Nullable
+    private static GlassBackdrop glassBackdrop;
+    private static boolean recordingBackdrop;
+    private static boolean backdropFailed;
+    private static final List<View> viewsBehind = new ArrayList<>();
+    private static final int[] glassPlayerLocation = new int[2];
+    private static final int[] glassContainerLocation = new int[2];
+    private static final int[] navigationCapsuleSpan = new int[2];
+    private static final int[] seekbarLocation = new int[2];
+
+    /**
+     * The player the video was rounded on, and the outline it had before.
+     */
+    private static WeakReference<View> roundedPlayerRef = new WeakReference<>(null);
+    @Nullable
+    private static ViewOutlineProvider playerOutline;
+    private static boolean playerClipToOutline;
+    private static final Rect videoOutlineBounds = new Rect();
+    private static float videoOutlineRadius;
     private static String channelName = "";
 
     /**
@@ -316,13 +387,17 @@ public final class MinimalMiniplayerPatch {
                 }
                 View barContainer = barContainerRef.get();
                 Drawable barBackground = barContainer != null ? barContainer.getBackground() : null;
+                if (barBackground instanceof GlassCapsuleDrawable) {
+                    barBackground = glassOriginalBackground;
+                }
                 if (barBackground != null && barBackground.getConstantState() != null) {
                     barFill = barBackground.getConstantState().newDrawable();
                 }
             } else {
                 // The contents sit on the video rather than beside it, so it is dimmed, and
                 // they take the overlay colors. The buttons alone have a backdrop of their own.
-                controlsLayout.setBackgroundColor(HIDE_TITLE ? Color.TRANSPARENT : OVERLAY_SCRIM_COLOR);
+                // The glass dims the video itself, with the rounded corners the scrim does not have.
+                controlsLayout.setBackgroundColor(HIDE_TITLE || GLASS ? Color.TRANSPARENT : OVERLAY_SCRIM_COLOR);
                 setOverlayTextColor(title, OVERLAY_PRIMARY_COLOR);
                 setOverlayTextColor(subtitle, OVERLAY_SECONDARY_COLOR);
                 setIconColor(playPause);
@@ -663,6 +738,10 @@ public final class MinimalMiniplayerPatch {
         barBounds.set(barSpan.left + BAR_MARGIN, bottom - BAR_HEIGHT,
                 barSpan.right - BAR_MARGIN, bottom);
 
+        if (GLASS && !DOCKED) {
+            fitLandscapeWidth(playerLayout);
+        }
+
         if (atTop) {
             // Below the status bar and the display cutout.
             barBounds.offsetTo(barBounds.left, barSpan.top + BAR_MARGIN);
@@ -784,7 +863,9 @@ public final class MinimalMiniplayerPatch {
                 // Always at the left edge. In a right-to-left layout YouTube mirrors the rect
                 // itself, which already puts the video at the end of the bar.
                 videoRect.set(currentBounds);
-                videoRect.right = videoRect.left + videoWidthFor(currentBounds.height());
+                final int padding = videoPadding(currentBounds.height());
+                videoRect.inset(padding, padding);
+                videoRect.right = videoRect.left + videoWidthFor(videoRect.height());
             } else {
                 // Type 2 spans the bar with the video. YouTube fits anything that is not 16:9
                 // inside the bar instead, and the miniplayer has no background of its own, so
@@ -1193,7 +1274,8 @@ public final class MinimalMiniplayerPatch {
 
         ViewGroup.LayoutParams params = view.getLayoutParams();
         if (params instanceof ViewGroup.MarginLayoutParams marginParams) {
-            marginParams.setMarginStart(videoWidthFor(BAR_HEIGHT));
+            marginParams.setMarginStart(GLASS_VIDEO_PADDING
+                    + videoWidthFor(BAR_HEIGHT - 2 * GLASS_VIDEO_PADDING));
             view.setLayoutParams(marginParams);
         }
     }
@@ -1224,7 +1306,8 @@ public final class MinimalMiniplayerPatch {
 
                         originalBarBackground = barContainer.getBackground();
                         // The video is the background, the controls on top of it already dim it.
-                        barContainer.setBackground(null);
+                        // The glass is drawn over the video instead, and dims it itself.
+                        barContainer.setBackground(GLASS ? glassFor(barContainer) : null);
                         parent.bringChildToFront(barContainer);
                     } else {
                         barContainer.setBackground(originalBarBackground);
@@ -1245,18 +1328,22 @@ public final class MinimalMiniplayerPatch {
             }
         }
 
+        updateGlass();
+
         final int height = currentBounds.height();
         final int width = currentBounds.width();
+        final float cornerRadius = glassCornerRadius(height);
 
         if (getCurrentMiniplayerType() == MINIMAL_BAR) {
-            final int videoWidth = videoWidthFor(height);
+            final int padding = videoPadding(height);
+            final int videoWidth = videoWidthFor(height - 2 * padding);
 
             updateBarFill(watchPlayer);
 
             // Only a bar is far wider than the video it holds. Going by the state instead would
             // uncover the video for as long as the player still holds the bar shape. Ads are
             // uncovered as well, their skip button is part of the overlay this hides.
-            boolean uncover = !inBarMode() || height <= 0 || width <= videoWidth;
+            boolean uncover = !inBarMode() || height <= 0 || width <= videoWidth + 2 * padding;
             if (!uncover) {
                 View skipAd = skipAdRef.get();
                 if (skipAd == null) {
@@ -1271,19 +1358,26 @@ public final class MinimalMiniplayerPatch {
 
             if (uncover) {
                 watchPlayer.setClipBounds(null);
+                roundVideo(watchPlayer, null, 0);
                 return;
             }
 
-            clipBounds.set(0, 0, videoWidth, height);
+            clipBounds.set(padding, padding, padding + videoWidth, height - padding);
             if (Utils.isRightToLeftLocale()) {
-                clipBounds.offset(width - videoWidth, 0);
+                clipBounds.offset(width - videoWidth - 2 * padding, 0);
             }
+
+            // The corners of the video follow the corners of the glass.
+            watchPlayer.setClipBounds(clipBounds);
+            roundVideo(watchPlayer, clipBounds, cornerRadius - padding);
+            return;
         } else {
             // Type 2 keeps the video as the background of the bar, and YouTube lays it out at
             // the full bar width in 16:9, far taller than the bar. Uncut it hangs over the
             // feed and the navigation bar.
             if (!inBarMode() || height <= 0) {
                 watchPlayer.setClipBounds(null);
+                roundVideo(watchPlayer, null, 0);
                 return;
             }
 
@@ -1291,7 +1385,288 @@ public final class MinimalMiniplayerPatch {
         }
 
         watchPlayer.setClipBounds(clipBounds);
+        roundVideo(watchPlayer, clipBounds, cornerRadius);
     }
+
+    /**
+     * Called from {@link MiniplayerPatch}.
+     */
+    static boolean isGlass() {
+        return GLASS;
+    }
+
+    /**
+     * The room around the video of type 1, only while the player holds the bar shape.
+     */
+    private static int videoPadding(int height) {
+        return GLASS_VIDEO_PADDING > 0 && inBarMode() && height > 4 * GLASS_VIDEO_PADDING
+                ? GLASS_VIDEO_PADDING
+                : 0;
+    }
+
+    private static float glassCornerRadius(float height) {
+        return GLASS ? Math.min(GLASS_CORNER_RADIUS, height / 2) : 0;
+    }
+
+    private static final ViewOutlineProvider VIDEO_OUTLINE = new ViewOutlineProvider() {
+        @Override
+        public void getOutline(View view, Outline outline) {
+            outline.setRoundRect(videoOutlineBounds, videoOutlineRadius);
+        }
+    };
+
+    /**
+     * Rounds the corners of the video to the corners of the glass, or puts back the outline the player had.
+     *
+     * @param clip The part of the player the video is drawn in, or null to put back the outline.
+     */
+    private static void roundVideo(View watchPlayer, @Nullable Rect clip, float radius) {
+        if (!GLASS) return;
+
+        View rounded = roundedPlayerRef.get();
+        if (clip == null || clip.isEmpty() || radius <= 0) {
+            if (rounded != null) {
+                rounded.setOutlineProvider(playerOutline);
+                rounded.setClipToOutline(playerClipToOutline);
+                roundedPlayerRef = new WeakReference<>(null);
+                playerOutline = null;
+            }
+            return;
+        }
+
+        if (rounded != watchPlayer) {
+            if (rounded != null) {
+                // A new watch page brings its own player.
+                roundVideo(rounded, null, 0);
+            }
+
+            playerOutline = watchPlayer.getOutlineProvider();
+            playerClipToOutline = watchPlayer.getClipToOutline();
+            roundedPlayerRef = new WeakReference<>(watchPlayer);
+            videoOutlineBounds.set(clip);
+            videoOutlineRadius = radius;
+            watchPlayer.setOutlineProvider(VIDEO_OUTLINE);
+            watchPlayer.setClipToOutline(true);
+            return;
+        }
+
+        if (!videoOutlineBounds.equals(clip) || videoOutlineRadius != radius) {
+            videoOutlineBounds.set(clip);
+            videoOutlineRadius = radius;
+            watchPlayer.invalidateOutline();
+        }
+    }
+
+    /**
+     * A bar across a landscape screen is too wide, so the glass bar is as wide as the capsule of the
+     * glass navigation bar and above it, at least {@link #GLASS_LANDSCAPE_MIN_WIDTH} wide.
+     * Without the capsule, such as with a navigation rail, it is at most {@link #GLASS_LANDSCAPE_MAX_WIDTH} wide.
+     */
+    private static void fitLandscapeWidth(@Nullable View playerLayout) {
+        View root = playerLayout != null ? playerLayout.getRootView() : null;
+        final int screenWidth = root != null ? root.getWidth() : Dim.getMetrics().widthPixels;
+        final int screenHeight = root != null ? root.getHeight() : Dim.getMetrics().heightPixels;
+        if (screenWidth <= screenHeight) return;
+
+        int width = GLASS_LANDSCAPE_MAX_WIDTH;
+        int center = barBounds.centerX();
+        if (YouTubeGlassNavigationBar.getCapsuleSpanInWindow(navigationCapsuleSpan)) {
+            // The bounds are relative to the layout that holds the player, not to the window.
+            int origin = 0;
+            if (playerLayout != null) {
+                playerLayout.getLocationInWindow(windowLocation);
+                origin = windowLocation[0];
+            }
+            width = Math.max(GLASS_LANDSCAPE_MIN_WIDTH, navigationCapsuleSpan[1] - navigationCapsuleSpan[0]);
+            center = (navigationCapsuleSpan[0] + navigationCapsuleSpan[1]) / 2 - origin;
+        }
+
+        if (width >= barBounds.width()) return;
+
+        final int left = Math.max(barBounds.left, Math.min(barBounds.right - width, center - width / 2));
+        barBounds.left = left;
+        barBounds.right = left + width;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called at the start of each frame the progress bar draws. Under the glass bar, the progress bar runs
+     * along its bottom edge, and is cut where the rounded corners of the glass begin, so it only covers
+     * the straight part of the edge. The clip is only for this draw of the progress bar.
+     */
+    public static void clipSeekbar(View seekbar, Canvas canvas) {
+        if (!GLASS || !inBarMode()) return;
+
+        try {
+            View player = watchPlayerRef.get();
+            if (player == null || player.getWidth() <= 0 || !player.isAttachedToWindow()) return;
+
+            final float radius = glassCornerRadius(player.getHeight());
+            if (radius <= 0) return;
+
+            player.getLocationInWindow(glassPlayerLocation);
+            seekbar.getLocationInWindow(seekbarLocation);
+            // The straight bottom edge of the glass, in the progress bar.
+            final float left = glassPlayerLocation[0] + radius - seekbarLocation[0];
+            final float right = glassPlayerLocation[0] + player.getWidth() - radius - seekbarLocation[0];
+            canvas.clipRect(left, -seekbar.getHeight(), Math.max(left, right), 2f * seekbar.getHeight());
+        } catch (Exception ex) {
+            Logger.printException(() -> "clipSeekbar failure", ex);
+        }
+    }
+
+    private static GlassCapsuleDrawable glassFor(View container) {
+        GlassCapsuleDrawable glass = glassRef.get();
+        if (glass != null && glassContainerRef.get() == container) return glass;
+
+        glass = new GlassCapsuleDrawable(container, GLASS_HOST, GLASS_OPACITY_SCALE);
+        glassRef = new WeakReference<>(glass);
+        glassContainerRef = new WeakReference<>(container);
+        glassOriginalBackground = null;
+
+        // The page behind the bar is blurred, so the glass is drawn again when the page scrolls.
+        container.getViewTreeObserver().addOnScrollChangedListener(() -> {
+            if (inBarMode() && container.getBackground() instanceof GlassCapsuleDrawable) {
+                container.invalidate();
+            }
+        });
+
+        Logger.printDebug(() -> "Glass miniplayer applied");
+        return glass;
+    }
+
+    /**
+     * Type 1 is drawn as glass while the player holds the bar shape, and has the background of the app
+     * otherwise. Type 2 gets the glass when its container is moved in front of the player.
+     */
+    private static void updateGlass() {
+        if (!GLASS) return;
+
+        View container = barContainerRef.get();
+        if (container == null) return;
+
+        GlassCapsuleDrawable glass = glassFor(container);
+        Drawable background = container.getBackground();
+        if (getCurrentMiniplayerType() == MINIMAL_BAR) {
+            if (inBarMode()) {
+                if (background != glass) {
+                    glassOriginalBackground = background;
+                    container.setBackground(glass);
+                }
+            } else if (background == glass) {
+                container.setBackground(glassOriginalBackground);
+                glassOriginalBackground = null;
+            }
+        }
+
+        if (container.getBackground() == glass) {
+            // The theme may have changed, and the glass follows the player while it moves.
+            glass.updateStyle();
+            container.invalidate();
+        }
+    }
+
+    /**
+     * The views drawn before the bar container, which are behind it, in the order they are drawn.
+     * The player is left out, its video is drawn over the glass.
+     */
+    private static void collectViewsBehind(View target, List<View> out) {
+        View player = watchPlayer();
+        View child = target;
+        for (ViewParent parent = target.getParent(); parent instanceof ViewGroup group; parent = group.getParent()) {
+            final int index = group.indexOfChild(child);
+            for (int i = index - 1; i >= 0; i--) {
+                View view = group.getChildAt(i);
+                if (view.getVisibility() == View.VISIBLE && view.getWidth() > 0 && view.getHeight() > 0
+                        && view.getAlpha() > 0 && !holds(view, player)) {
+                    out.add(0, view);
+                }
+            }
+            child = group;
+        }
+    }
+
+    private static boolean holds(View view, @Nullable View descendant) {
+        for (View current = descendant; current != null;
+             current = current.getParent() instanceof View parent ? parent : null) {
+            if (current == view) return true;
+        }
+        return false;
+    }
+
+    /**
+     * The glass is the bar, which is where the player is in the bar container.
+     */
+    private static final GlassCapsuleDrawable.Host GLASS_HOST = new GlassCapsuleDrawable.Host() {
+        @Override
+        public void getCapsule(Rect bounds, RectF capsule) {
+            View container = glassContainerRef.get();
+            View player = watchPlayer();
+            if (container == null || player == null || player.getWidth() <= 0 || player.getHeight() <= 0) {
+                capsule.set(bounds);
+                return;
+            }
+
+            player.getLocationInWindow(glassPlayerLocation);
+            container.getLocationInWindow(glassContainerLocation);
+            final float left = bounds.left + glassPlayerLocation[0] - glassContainerLocation[0];
+            final float top = bounds.top + glassPlayerLocation[1] - glassContainerLocation[1];
+            capsule.set(left, top, left + player.getWidth(), top + player.getHeight());
+            if (!capsule.intersect(bounds.left, bounds.top, bounds.right, bounds.bottom)) {
+                capsule.setEmpty();
+            }
+        }
+
+        @Nullable
+        @Override
+        public View getSelectedTabView() {
+            return null;
+        }
+
+        @Override
+        public boolean isOverVideo() {
+            return getCurrentMiniplayerType() == MINIMAL_BAR_2;
+        }
+
+        @Override
+        public float getCornerRadius(RectF capsule) {
+            return glassCornerRadius(capsule.height());
+        }
+
+        /**
+         * The page behind type 1 is blurred, on Android 14 and later like the glass navigation bar.
+         * Otherwise the page is covered by the background of the app, or the sharp page would show through.
+         */
+        @Override
+        public void drawBackdrop(Canvas canvas) {
+            View container = glassContainerRef.get();
+            if (container == null || getCurrentMiniplayerType() != MINIMAL_BAR) return;
+
+            final int background = ThemeUtils.getAppBackgroundColor();
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE || backdropFailed
+                    || recordingBackdrop || !canvas.isHardwareAccelerated()) {
+                canvas.drawColor(background);
+                return;
+            }
+
+            recordingBackdrop = true;
+            try {
+                collectViewsBehind(container, viewsBehind);
+                if (glassBackdrop == null) {
+                    glassBackdrop = new GlassBackdrop("GlassMinimalMiniplayer", GLASS_BLUR_RADIUS);
+                }
+                glassBackdrop.draw(canvas, container, viewsBehind, background);
+            } catch (Exception ex) {
+                backdropFailed = true;
+                Logger.printException(() -> "Glass miniplayer backdrop failure", ex);
+                canvas.drawColor(background);
+            } finally {
+                viewsBehind.clear();
+                recordingBackdrop = false;
+            }
+        }
+    };
 
     /**
      * While sliding the player is not clipped yet, and YouTube paints it black beside the video
@@ -1438,8 +1813,12 @@ public final class MinimalMiniplayerPatch {
         // Beside the video this follows the theme, so a custom app color carries into the bar.
         // On the video it is a translucent scrim instead, which the video shows through.
         // Without text the video is not dimmed, and a light circle is lost on a light video.
+        // On the glass it is a translucent shade of the text color, which the glass shows through.
+        final int appForeground = ThemeUtils.getAppForegroundColor();
         circle.setColor(overVideo
                 ? (HIDE_TITLE ? OVERLAY_DARK_BUTTON_COLOR : OVERLAY_BUTTON_COLOR)
+                : GLASS
+                ? Color.argb(28, Color.red(appForeground), Color.green(appForeground), Color.blue(appForeground))
                 : Utils.adjustColorBrightness(ThemeUtils.getAppBackgroundColor(), 0.9f, 1.25f));
 
         // 48dp is the touch target, 40dp the button, which also keeps the circles apart.

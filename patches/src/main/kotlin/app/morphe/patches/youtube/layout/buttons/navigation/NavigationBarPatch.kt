@@ -261,6 +261,7 @@ val navigationBarPatch = patch(
                 key = "morphe_navigation_bar_glass_opacity",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
+            SwitchPreference("morphe_navigation_bar_glass_round", summary = true),
             // Height, width and button spacing, with a preview.
             NonInteractivePreference(
                 key = "morphe_navigation_bar_glass_height",

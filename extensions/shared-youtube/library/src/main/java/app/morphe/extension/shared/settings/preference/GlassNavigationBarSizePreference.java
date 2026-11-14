@@ -170,9 +170,17 @@ public abstract class GlassNavigationBarSizePreference extends SeekBarsPreviewPr
         return true;
     }
 
+    /**
+     * @return The corner radius of the capsule, in parts of its height: 0.5 is round ends.
+     */
+    protected float getCornerRadiusFraction() {
+        return 0.5f;
+    }
+
     @Override
     protected View createPreview(Context context, int[] values) {
-        PreviewView preview = new PreviewView(context, getButtons(), values, getHorizontalMargin());
+        PreviewView preview = new PreviewView(context, getButtons(), values, getHorizontalMargin(),
+                getCornerRadiusFraction());
         TextView shownButtons = new TextView(context);
         shownButtons.setGravity(Gravity.CENTER);
         shownButtons.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
@@ -231,12 +239,13 @@ public abstract class GlassNavigationBarSizePreference extends SeekBarsPreviewPr
          * The least room between the ends of the capsule and the edges of the screen.
          */
         private final int margin;
+        private final float cornerRadiusFraction;
 
         private final GlassCapsuleDrawable glass;
         private final Rect capsule = new Rect();
         private boolean indicatorShown = true;
 
-        PreviewView(Context context, PreviewButtons buttons, int[] values, int margin) {
+        PreviewView(Context context, PreviewButtons buttons, int[] values, int margin, float cornerRadiusFraction) {
             super(context);
             this.labels = buttons.labels;
             this.icons = buttons.icons;
@@ -244,6 +253,7 @@ public abstract class GlassNavigationBarSizePreference extends SeekBarsPreviewPr
             this.showLabels = buttons.showLabels;
             this.values = values;
             this.margin = margin;
+            this.cornerRadiusFraction = cornerRadiusFraction;
             labelPaint.setTextAlign(Paint.Align.CENTER);
             // Also the custom font of the Custom font patch, which a paint without a typeface does not use.
             labelPaint.setTypeface(Typeface.DEFAULT);
@@ -270,6 +280,11 @@ public abstract class GlassNavigationBarSizePreference extends SeekBarsPreviewPr
         public View getSelectedTabView() {
             // The indicator is drawn by the preview, which has no buttons.
             return null;
+        }
+
+        @Override
+        public float getCornerRadius(RectF capsule) {
+            return capsule.height() * cornerRadiusFraction;
         }
 
         /**
@@ -340,7 +355,9 @@ public abstract class GlassNavigationBarSizePreference extends SeekBarsPreviewPr
                 final float selectedLeft = left + buttonWidth * selectedSlot;
                 paint.setColor(dark ? 0x26FFFFFF : 0x14000000);
                 rect.set(selectedLeft + inset, top + inset, selectedLeft + buttonWidth - inset, bottom - inset);
-                canvas.drawRoundRect(rect, (capsuleHeight - 2 * inset) / 2, (capsuleHeight - 2 * inset) / 2, paint);
+                final float indicatorRadius = GlassCapsuleDrawable.getIndicatorRadius(
+                        capsuleHeight * cornerRadiusFraction, capsuleHeight - 2 * inset);
+                canvas.drawRoundRect(rect, indicatorRadius, indicatorRadius, paint);
             }
 
             // The icon and the label of each button, in the middle of the capsule.
