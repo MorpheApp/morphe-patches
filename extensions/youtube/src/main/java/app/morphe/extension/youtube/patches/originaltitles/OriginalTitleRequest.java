@@ -201,6 +201,32 @@ final class OriginalTitleRequest {
     }
 
     /**
+     * Fetches the titles of the video again, including its DeArrow branding, such as after a vote on its titles.
+     */
+    static CompletableFuture<Titles> fetchAgain(String videoId) {
+        synchronized (cache) {
+            DeArrowBrandingRequest.removeFromCache(videoId);
+            cache.remove(videoId);
+            retryTimes.remove(videoId);
+            failedFetchCounts.remove(videoId);
+            return fetch(videoId);
+        }
+    }
+
+    /**
+     * Does not start fetching the titles.
+     *
+     * @return The titles of the video, or null if not fetched.
+     */
+    @Nullable
+    static Titles getIfFetched(String videoId) {
+        CompletableFuture<Titles> future = cache.get(videoId);
+        return future != null && future.isDone() && !future.isCompletedExceptionally()
+                ? future.getNow(null)
+                : null;
+    }
+
+    /**
      * Starts fetching the title if needed, and does not wait for it.
      *
      * @return The title that replaces the title of the video for the current navigation,
