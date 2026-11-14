@@ -1,4 +1,4 @@
-rootProject.name = "morphe-patches"
+rootProject.name = "com.wesh-s.patches"
 
 pluginManagement {
     repositories {
