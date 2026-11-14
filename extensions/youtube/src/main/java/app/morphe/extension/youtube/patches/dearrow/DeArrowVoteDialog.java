@@ -75,12 +75,6 @@ final class DeArrowVoteDialog {
      */
     private static final int NEW_TITLE_MAX_LINES = 4;
 
-    /**
-     * Share of the screen height of the list. Less than the default, since the sheet
-     * also has a title and buttons.
-     */
-    private static final int LIST_MAX_HEIGHT_PERCENT = 55;
-
     private static final int THUMBNAIL_WIDTH = Dim.dp(112);
     private static final int THUMBNAIL_HEIGHT = Dim.dp(63);
 
@@ -149,10 +143,12 @@ final class DeArrowVoteDialog {
         listLayout.setOrientation(LinearLayout.VERTICAL);
         listLayout.addView(createMessage(context, str("morphe_dearrow_vote_loading"), foregroundColor));
 
-        // Capped so the buttons below the list stay on screen, including in landscape.
-        ScrollView scrollView = SheetBottomDialog.createCappedScrollView(context, LIST_MAX_HEIGHT_PERCENT);
+        ScrollView scrollView = SheetBottomDialog.createCappedScrollView(context);
         scrollView.addView(listLayout);
-        contentLayout.addView(scrollView);
+        // The weight shrinks the list when the sheet does not fit on screen, such as in landscape,
+        // so the buttons below it stay visible.
+        contentLayout.addView(scrollView, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f));
         mainLayout.addView(contentLayout);
 
         SheetBottomDialog.SlideDialog dialog = SheetBottomDialog.createSlideDialog(
