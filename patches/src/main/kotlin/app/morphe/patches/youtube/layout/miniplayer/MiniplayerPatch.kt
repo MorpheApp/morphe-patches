@@ -18,12 +18,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.numberOfParameterRegisters
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -64,15 +64,12 @@ import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
 internal const val MINIMAL_EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/MinimalMiniplayerPatch;"
@@ -685,28 +682,7 @@ val miniplayerPatch = patch(
         // pass that lays the player out, the plain one records the rect and nothing redraws.
         MiniplayerHorizontalRepositionFingerprint.let { fingerprint ->
             fingerprint.classDef.apply {
-                interfaces.add(MINIMAL_BOUNDS_INTERFACE)
-
-                val setBounds = ImmutableMethod(
-                    type,
-                    "patch_setBounds",
-                    listOf(ImmutableMethodParameter("Landroid/graphics/Rect;", null, "bounds")),
-                    "V",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2)
-                ).toMutable()
-
-                setBounds.addInstructions(
-                    0,
-                    """
-                        invoke-virtual { p0, p1 }, ${fingerprint.method}
-                        return-void
-                    """
-                )
-
-                methods.add(setBounds)
+                addPatchInterface(MINIMAL_BOUNDS_INTERFACE, "patch_setBounds", fingerprint.method)
             }
 
             fingerprint.method.addInstruction(

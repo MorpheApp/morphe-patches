@@ -21,6 +21,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.getReference
@@ -1012,27 +1013,14 @@ val hideLayoutComponentsPatch = patch(
                 }
 
                 mutableClassDefBy(menuItemType).apply {
-                    interfaces.add(EXTENSION_FLYOUT_MENU_ITEM_INTERFACE)
-                    methods.add(
-                        ImmutableMethod(
-                            type,
-                            "patch_getFlyoutMenuItemTitle",
-                            listOf(),
-                            "Ljava/lang/CharSequence;",
-                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                            null,
-                            null,
-                            MutableMethodImplementation(2),
-                        ).toMutable().apply {
-                            addInstructions(
-                                0,
-                                """
-                                    invoke-static { p0 }, $menuItemTitleMethod
-                                    move-result-object v0
-                                    return-object v0
-                                """
-                            )
-                        }
+                    addPatchInterface(
+                        EXTENSION_FLYOUT_MENU_ITEM_INTERFACE,
+                        "patch_getFlyoutMenuItemTitle",
+                        """
+                            invoke-static { p0 }, $menuItemTitleMethod
+                            move-result-object v0
+                            return-object v0
+                        """
                     )
                 }
 

@@ -17,9 +17,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -46,12 +46,9 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.NarrowLiteralInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/BackgroundPlaybackPatch;"
@@ -150,13 +147,7 @@ val backgroundPlaybackPatch = patch(
             // of the account so the video resumes when the app returns to the foreground
             // (https://github.com/MorpheApp/morphe-patches/issues/4639).
             // The extension reads the setting with a method added to the setting class.
-            backgroundPlaybackSettingConstructorFingerprint(
-                settingClassType = BackgroundPlaybackSettingFingerprint.originalClassDef.type,
-                settingStoreType = BackgroundPlaybackSettingFingerprint.instructionMatches.first()
-                    .methodReference.definingClass,
-                audioManagerType = BackgroundPlaybackSettingAllowedFingerprint.originalMethod
-                    .parameterTypes[1].toString()
-            ).let {
+            BackgroundPlaybackSettingConstructorFingerprint.let {
                 // After the super constructor call, before the register of 'this' can be reused.
                 it.method.addInstruction(
                     it.instructionMatches.first().index + 1,
@@ -166,27 +157,14 @@ val backgroundPlaybackPatch = patch(
             }
 
             BackgroundPlaybackSettingFingerprint.classDef.apply {
-                interfaces.add(EXTENSION_BACKGROUND_PLAYBACK_SETTING_INTERFACE)
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_isBackgroundPlaybackAllowed",
-                        listOf(),
-                        "Z",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-virtual { p0 }, ${BackgroundPlaybackSettingFingerprint.method}
-                                move-result v0
-                                return v0
-                            """
-                        )
-                    }
+                addPatchInterface(
+                    EXTENSION_BACKGROUND_PLAYBACK_SETTING_INTERFACE,
+                    "patch_isBackgroundPlaybackAllowed",
+                    """
+                        invoke-virtual { p0 }, ${BackgroundPlaybackSettingFingerprint.method}
+                        move-result v0
+                        return v0
+                    """
                 )
             }
 

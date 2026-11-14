@@ -52,16 +52,11 @@ internal object MediaSessionStopFingerprint : Fingerprint(
 /**
  * Method of the player that starts the media session.
  */
-internal fun playerMediaSessionStartFingerprint(sessionClass: String, startMethodName: String) = Fingerprint(
+internal object PlayerMediaSessionStartFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
-        methodCall(
-            definingClass = sessionClass,
-            name = startMethodName,
-            parameters = listOf(),
-            returnType = "V"
-        )
+        methodCall(reference = { MediaSessionStartFingerprint.originalMethod })
     )
 )
 

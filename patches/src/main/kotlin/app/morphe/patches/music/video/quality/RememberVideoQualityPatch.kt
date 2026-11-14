@@ -9,9 +9,8 @@ package app.morphe.patches.music.video.quality
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -22,11 +21,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.video.information.VideoQualityFingerprint
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/RememberVideoQualityPatch;"
@@ -66,33 +61,19 @@ val rememberVideoQualityPatch = patch(
             )
         )
 
-        val videoQualityType = VideoQualityFingerprint.classDef.type
-        val itemOnClickFingerprint = getVideoQualityItemOnClickFingerprint(videoQualityType)
-        val setQualitiesFingerprint = getVideoQualityMenuSetQualitiesFingerprint(videoQualityType)
+        val itemOnClickFingerprint = VideoQualityItemOnClickFingerprint
+        val setQualitiesFingerprint = VideoQualityMenuSetQualitiesFingerprint
 
         // Add an interface to the quality, to get its resolution in the extension.
         val resolutionField = itemOnClickFingerprint.instructionMatches[0].fieldReference
         VideoQualityFingerprint.classDef.apply {
-            interfaces.add(EXTENSION_VIDEO_QUALITY_INTERFACE)
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_getResolution",
-                    listOf(),
-                    "I",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            iget v0, p0, $resolutionField
-                            return v0
-                        """
-                    )
-                }
+            addPatchInterface(
+                EXTENSION_VIDEO_QUALITY_INTERFACE,
+                "patch_getResolution",
+                """
+                    iget v0, p0, $resolutionField
+                    return v0
+                """
             )
         }
 
@@ -105,29 +86,16 @@ val rememberVideoQualityPatch = patch(
                 field.type == setQualityMethod.definingClass
             }
 
-            interfaces.add(EXTENSION_VIDEO_QUALITY_MENU_INTERFACE)
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_setQuality",
-                    listOf(ImmutableMethodParameter("I", null, null)),
-                    "V",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(3),
-                ).toMutable().apply {
-                    addInstructionsWithLabels(
-                        0,
-                        """
-                            iget-object v0, p0, $listenerField
-                            if-eqz v0, :no_listener
-                            invoke-interface { v0, p1 }, $setQualityMethod
-                            :no_listener
-                            return-void
-                        """
-                    )
-                }
+            addPatchInterface(
+                EXTENSION_VIDEO_QUALITY_MENU_INTERFACE,
+                "patch_setQuality",
+                """
+                    iget-object v0, p0, $listenerField
+                    if-eqz v0, :no_listener
+                    invoke-interface { v0, p1 }, $setQualityMethod
+                    :no_listener
+                    return-void
+                """
             )
         }
 

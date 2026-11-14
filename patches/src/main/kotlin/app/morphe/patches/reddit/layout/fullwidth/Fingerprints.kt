@@ -179,48 +179,52 @@ internal object GifAndVideoContentToStringFingerprint : Fingerprint(
  * Lambda showing the content of a post in the post details. Its 5th parameter pads
  * the content at the sides. Videos are padded by it, while images inset themselves.
  */
-internal fun postContentLambdaConstructorFingerprint(propsType: String) = Fingerprint(
+internal object PostContentLambdaConstructorFingerprint : Fingerprint(
     name = "<init>",
     returnType = "V",
-    parameters = listOf(
-        propsType,
-        "L",
-        "L",
-        "L",
-        "Z",
-        "L",
-        "L",
-        "L",
-        "Z",
-        "L",
-        "Z",
-        "Ljava/lang/Float;",
-        "Z",
-        "Z"
-    )
+    parameters = {
+        listOf(
+            PostContentPropsToStringFingerprint.originalClassDef.type,
+            "L",
+            "L",
+            "L",
+            "Z",
+            "L",
+            "L",
+            "L",
+            "Z",
+            "L",
+            "Z",
+            "Ljava/lang/Float;",
+            "Z",
+            "Z"
+        )
+    }
 )
 
 /**
  * Lambda showing the content of a post in the post details, before 2026.46.0.
  */
-internal fun postContentLambdaConstructorLegacyFingerprint(propsType: String) = Fingerprint(
+internal object PostContentLambdaConstructorLegacyFingerprint : Fingerprint(
     name = "<init>",
     returnType = "V",
-    parameters = listOf(
-        propsType,
-        "L",
-        "L",
-        "L",
-        "Z",
-        "L",
-        "L",
-        "L",
-        "L",
-        "Z",
-        "Ljava/lang/Float;",
-        "Z",
-        "Z"
-    )
+    parameters = {
+        listOf(
+            PostContentPropsToStringFingerprint.originalClassDef.type,
+            "L",
+            "L",
+            "L",
+            "Z",
+            "L",
+            "L",
+            "L",
+            "L",
+            "Z",
+            "Ljava/lang/Float;",
+            "Z",
+            "Z"
+        )
+    }
 )
 
 /**

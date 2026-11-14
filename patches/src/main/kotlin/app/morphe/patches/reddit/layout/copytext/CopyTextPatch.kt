@@ -11,9 +11,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
@@ -276,26 +277,13 @@ val copyTextPatch = patch(
         SelectionReleaseFingerprint.let {
             // The extension clears selections by calling the release method.
             it.classDef.apply {
-                interfaces.add(EXTENSION_SELECTION_MANAGER_INTERFACE)
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_release",
-                        listOf(),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(1)
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-virtual { p0 }, ${it.method}
-                                return-void
-                            """
-                        )
-                    }
+                addPatchInterface(
+                    EXTENSION_SELECTION_MANAGER_INTERFACE,
+                    "patch_release",
+                    """
+                        invoke-virtual { p0 }, ${it.method}
+                        return-void
+                    """
                 )
             }
 

@@ -22,6 +22,7 @@ import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.classDefForEach
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -95,18 +96,6 @@ private fun MutableClass.addBridge(
             MutableMethodImplementation(registers),
         ).toMutable().apply { addInstructions(0, smali) }
     )
-}
-
-private fun FieldReference.isStaticField() = (this as? Field)?.let { AccessFlags.STATIC.isSet(it.accessFlags) } == true
-
-private fun MutableClass.addFieldGetter(methodName: String, fieldRef: FieldReference) {
-    val read = if (fieldRef.isStaticField()) "sget-object v0, $fieldRef" else "iget-object v0, p0, $fieldRef"
-    addBridge(methodName, emptyList(), "Ljava/lang/Object;", 2, "$read\nreturn-object v0")
-}
-
-private fun MutableClass.addFieldSetter(methodName: String, fieldRef: FieldReference) {
-    val write = if (fieldRef.isStaticField()) "sput-object p1, $fieldRef" else "iput-object p1, p0, $fieldRef"
-    addBridge(methodName, listOf("Ljava/lang/Object;"), "V", 2, "check-cast p1, ${fieldRef.type}\n$write\nreturn-void")
 }
 
 val crossfadePatch = patch(
@@ -804,18 +793,34 @@ val crossfadePatch = patch(
             dltCallbackTypeOnShared,
         ).forEach(::makeFieldPublic)
 
-        coordinatorClass.interfaces.add(COORDINATOR_INTERFACE)
-        coordinatorClass.addFieldGetter("patch_getExoPlayer", exoPlayerField)
-        coordinatorClass.addFieldSetter("patch_setExoPlayer", exoPlayerField)
-        coordinatorClass.addFieldGetter("patch_getSession", sessionFieldRef)
-        coordinatorClass.addFieldGetter("patch_getLoadControl", loadControlField)
-        coordinatorClass.addFieldGetter("patch_getSharedState", sharedStateFieldRef)
-        coordinatorClass.addFieldGetter("patch_getSharedCallback", sharedCallbackFieldRef)
-        coordinatorClass.addFieldGetter("patch_getVideoSurface", videoSurfaceField)
+        coordinatorClass.addPatchInterface(COORDINATOR_INTERFACE, "patch_getExoPlayer", exoPlayerField)
+        coordinatorClass.addPatchInterface(COORDINATOR_INTERFACE, "patch_setExoPlayer", exoPlayerField)
+        coordinatorClass.addPatchInterface(COORDINATOR_INTERFACE, "patch_getSession", sessionFieldRef)
+        coordinatorClass.addPatchInterface(
+            COORDINATOR_INTERFACE,
+            "patch_getLoadControl",
+            loadControlField
+        )
+        coordinatorClass.addPatchInterface(
+            COORDINATOR_INTERFACE,
+            "patch_getSharedState",
+            sharedStateFieldRef
+        )
+        coordinatorClass.addPatchInterface(
+            COORDINATOR_INTERFACE,
+            "patch_getSharedCallback",
+            sharedCallbackFieldRef
+        )
+        coordinatorClass.addPatchInterface(
+            COORDINATOR_INTERFACE,
+            "patch_getVideoSurface",
+            videoSurfaceField
+        )
         val playerVolumeField = PlayerVolumeFingerprint.instructionMatches.last()
             .getInstruction<ReferenceInstruction>().getReference<FieldReference>()!!
-        coordinatorClass.addBridge(
-            "patch_getVolume", emptyList(), "F", 2,
+        coordinatorClass.addPatchInterface(
+            COORDINATOR_INTERFACE,
+            "patch_getVolume",
             "iget v0, p0, $playerVolumeField\nreturn v0"
         )
 
@@ -848,8 +853,9 @@ val crossfadePatch = patch(
                 "Coordinator player-transition method NOT found, patch_setPlayerWithBindings uses raw iput-object fallback"
         }
 
-        coordinatorClass.addBridge(
-            "patch_setPlayerWithBindings", listOf("Ljava/lang/Object;"), "V", 4,
+        coordinatorClass.addPatchInterface(
+            COORDINATOR_INTERFACE,
+            "patch_setPlayerWithBindings",
             if (coordinatorPlayerTransitionMethod != null) {
                 """
                     check-cast p1, $transitionParamType
@@ -878,8 +884,6 @@ val crossfadePatch = patch(
                 """
             }
         )
-
-        exoPlayerImplClass.interfaces.add(EXO_PLAYER_INTERFACE)
 
         fun addExoBridge(bridgeName: String, targetName: String, returnType: String, paramType: String? = null) {
             val parameters = listOfNotNull(paramType)
@@ -935,18 +939,27 @@ val crossfadePatch = patch(
             else log.fine { "9.x: coordinator listener field = $f" }
         }
 
-        exoPlayerImplClass.addBridge(
-            "patch_getListenerSet", emptyList(), "Ljava/lang/Object;", 2,
+        exoPlayerImplClass.addPatchInterface(
+            EXO_PLAYER_INTERFACE,
+            "patch_getListenerSet",
             """
                 iget-object v0, p0, $listenerWrapperField
                 iget-object v0, v0, $listenerSetInWrapper
                 return-object v0
             """
         )
-        exoPlayerImplClass.addFieldSetter("patch_setDltCallback", dltFieldOnExo)
+        exoPlayerImplClass.addPatchInterface(
+            EXO_PLAYER_INTERFACE,
+            "patch_setDltCallback",
+            dltFieldOnExo
+        )
 
         if (coordinatorListenerField != null) {
-            coordinatorClass.addFieldGetter("patch_getCoordinatorListener", coordinatorListenerField)
+            coordinatorClass.addPatchInterface(
+                COORDINATOR_INTERFACE,
+                "patch_getCoordinatorListener",
+                coordinatorListenerField
+            )
         }
 
         if (directListenerSetField != null) {
@@ -963,8 +976,9 @@ val crossfadePatch = patch(
         }
 
         if (eventDispatchField9x != null && exoPlayerCwhField9x != null) {
-            exoPlayerImplClass.addBridge(
-                "patch_detachCwhFromEventDispatch", emptyList(), "V", 3,
+            exoPlayerImplClass.addPatchInterface(
+                EXO_PLAYER_INTERFACE,
+                "patch_detachCwhFromEventDispatch",
                 """
                     iget-object v0, p0, $eventDispatchField9x
                     iget-object v1, p0, $exoPlayerCwhField9x
@@ -1034,8 +1048,7 @@ val crossfadePatch = patch(
             }
         }
 
-        sessionClass.interfaces.add(SESSION_INTERFACE)
-        sessionClass.addFieldGetter("patch_getFactory", factoryFieldRef)
+        sessionClass.addPatchInterface(SESSION_INTERFACE, "patch_getFactory", factoryFieldRef)
 
         factoryClass.interfaces.add(FACTORY_INTERFACE)
         val guardClearSmali = if (guardField != null) {
@@ -1060,23 +1073,36 @@ val crossfadePatch = patch(
             """
         )
 
-        sharedStateClass.interfaces.add(SHARED_STATE_INTERFACE)
-        sharedStateClass.addFieldGetter("patch_getTimeline", timelineField)
-        sharedStateClass.addFieldSetter("patch_setTimeline", timelineField)
+        sharedStateClass.addPatchInterface(SHARED_STATE_INTERFACE, "patch_getTimeline", timelineField)
+        sharedStateClass.addPatchInterface(SHARED_STATE_INTERFACE, "patch_setTimeline", timelineField)
 
-        sharedCallbackClass.interfaces.add(SHARED_CALLBACK_INTERFACE)
-        sharedCallbackClass.addFieldGetter("patch_getCqb", cqbField)
-        sharedCallbackClass.addFieldSetter("patch_setCqb", cqbField)
-        sharedCallbackClass.addFieldGetter("patch_getDlt", dltCallbackTypeOnShared)
-        sharedCallbackClass.addFieldSetter("patch_setDlt", dltCallbackTypeOnShared)
+        sharedCallbackClass.addPatchInterface(SHARED_CALLBACK_INTERFACE, "patch_getCqb", cqbField)
+        sharedCallbackClass.addPatchInterface(SHARED_CALLBACK_INTERFACE, "patch_setCqb", cqbField)
+        sharedCallbackClass.addPatchInterface(
+            SHARED_CALLBACK_INTERFACE,
+            "patch_getDlt",
+            dltCallbackTypeOnShared
+        )
+        sharedCallbackClass.addPatchInterface(
+            SHARED_CALLBACK_INTERFACE,
+            "patch_setDlt",
+            dltCallbackTypeOnShared
+        )
 
-        videoSurfaceClass.interfaces.add(VIDEO_SURFACE_INTERFACE)
-        videoSurfaceClass.addFieldSetter("patch_setPlayerReference", videoSurfaceExoField)
+        videoSurfaceClass.addPatchInterface(
+            VIDEO_SURFACE_INTERFACE,
+            "patch_setPlayerReference",
+            videoSurfaceExoField
+        )
 
-        medialibPlayerClass.interfaces.add(MEDIALIB_PLAYER_INTERFACE)
-        medialibPlayerClass.addFieldGetter("patch_getPlayerChain", playerChainField)
-        medialibPlayerClass.addBridge(
-            "patch_playNextInQueue", emptyList(), "V", 1,
+        medialibPlayerClass.addPatchInterface(
+            MEDIALIB_PLAYER_INTERFACE,
+            "patch_getPlayerChain",
+            playerChainField
+        )
+        medialibPlayerClass.addPatchInterface(
+            MEDIALIB_PLAYER_INTERFACE,
+            "patch_playNextInQueue",
             """
                 invoke-virtual { p0 }, $playNextInQueueMethod
                 return-void
@@ -1084,8 +1110,9 @@ val crossfadePatch = patch(
         )
         // Repeat-one reloads the cached descriptor instead of advancing the queue.
         val loadVideoMethod = LoadVideoFingerprint.method
-        medialibPlayerClass.addBridge(
-            "patch_loadVideoWith", listOf("Ljava/lang/Object;"), "V", 2,
+        medialibPlayerClass.addPatchInterface(
+            MEDIALIB_PLAYER_INTERFACE,
+            "patch_loadVideoWith",
             """
                 check-cast p1, ${loadVideoMethod.parameterTypes.first()}
                 invoke-virtual { p0, p1 }, $loadVideoMethod
@@ -1093,7 +1120,6 @@ val crossfadePatch = patch(
             """
         )
 
-        videoToggleClass.interfaces.add(VIDEO_TOGGLE_INTERFACE)
         // 9.28+ merges the audio/video state provider with unrelated classes, so it is found
         // by its enum getter and static mode checks instead of by field position.
         fun ClassDef.getStateMethodOrNull() = methods.firstOrNull { method ->
@@ -1126,8 +1152,9 @@ val crossfadePatch = patch(
                     && method.parameterTypes.map { it.toString() } == listOf(stateType)
         }.maxBy { it.implementation?.instructions?.count() ?: 0 }
 
-        videoToggleClass.addBridge(
-            "patch_isAudioMode", emptyList(), "Z", 3,
+        videoToggleClass.addPatchInterface(
+            VIDEO_TOGGLE_INTERFACE,
+            "patch_isAudioMode",
             """
                 iget-object v0, p0, $stateProviderField
                 invoke-virtual { v0 }, $getStateMethod
@@ -1257,7 +1284,7 @@ val crossfadePatch = patch(
         for ((delegateClass, delegateField) in delegateClasses) {
             delegateClass.apply {
                 interfaces.add(DELEGATE_INTERFACE)
-                addFieldGetter("patch_getDelegate", delegateField)
+                addPatchInterface(DELEGATE_INTERFACE, "patch_getDelegate", delegateField)
             }
         }
     }

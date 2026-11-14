@@ -21,10 +21,10 @@ import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.classDefByOrNull
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.registersUsed
-import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.FeedFlyoutBufferObjectFingerprint
@@ -128,9 +128,9 @@ val askFlyoutMenuPatch = patch(
         val protos = Protos(messageClass)
 
         mutableClassDefBy(messageClass).apply {
-            interfaces.add(MESSAGE_ACCESS_INTERFACE)
-            addBridge(
-                "patch_toByteArray", listOf(), "[B", 2,
+            addPatchInterface(
+                MESSAGE_ACCESS_INTERFACE,
+                "patch_toByteArray",
                 """
                     invoke-virtual { p0 }, $messageClass->toByteArray()[B
                     move-result-object v0
@@ -138,8 +138,9 @@ val askFlyoutMenuPatch = patch(
                 """
             )
             // Any message of a type can be the default instance to parse a message of that type.
-            addBridge(
-                "patch_parseSameType", listOf("[B"), MESSAGE_ACCESS_INTERFACE, 3,
+            addPatchInterface(
+                MESSAGE_ACCESS_INTERFACE,
+                "patch_parseSameType",
                 """
                     invoke-static { }, $EXTENSION_REGISTRY_CLASS->getGeneratedRegistry()$EXTENSION_REGISTRY_CLASS
                     move-result-object v0
@@ -204,9 +205,9 @@ val askFlyoutMenuPatch = patch(
         mutableClassDefBy(tapHandlerMethod.definingClass).apply {
             val commandHolderField = fields.single { it.type == tapCommandMethod.definingClass }
 
-            interfaces.add(TAP_HANDLER_ACCESS_INTERFACE)
-            addBridge(
-                "patch_getCommand", listOf(), MESSAGE_ACCESS_INTERFACE, 2,
+            addPatchInterface(
+                TAP_HANDLER_ACCESS_INTERFACE,
+                "patch_getCommand",
                 """
                     iget-object v0, p0, $commandHolderField
                     invoke-virtual { v0 }, $tapCommandMethod
@@ -214,8 +215,9 @@ val askFlyoutMenuPatch = patch(
                     return-object v0
                 """
             )
-            addBridge(
-                "patch_tap", listOf(), "V", 2,
+            addPatchInterface(
+                TAP_HANDLER_ACCESS_INTERFACE,
+                "patch_tap",
                 """
                     const/4 v0, 0x0
                     invoke-virtual { p0, v0, v0, v0 }, ${tapHandlerMethod.toReference()}
@@ -230,9 +232,9 @@ val askFlyoutMenuPatch = patch(
 
         // The command executor is an app interface, so its default method is inherited by every executor.
         mutableClassDefBy(commandExecutorClass).apply {
-            interfaces.add(COMMAND_EXECUTOR_ACCESS_INTERFACE)
-            addBridge(
-                "patch_executeCommand", listOf("[B"), "V", 4,
+            addPatchInterface(
+                COMMAND_EXECUTOR_ACCESS_INTERFACE,
+                "patch_executeCommand",
                 """
                     ${protos.parse(commandClass, bytes = "p1", result = "v0", registry = "v1")}
                     check-cast v0, $commandClass
@@ -240,8 +242,7 @@ val askFlyoutMenuPatch = patch(
                     invoke-direct { v1 }, Ljava/util/HashMap;-><init>()V
                     invoke-interface { p0, v0, v1 }, $executeCommandMethod
                     return-void
-                """,
-                accessFlags = AccessFlags.PUBLIC.value
+                """
             )
         }
     }
@@ -341,9 +342,9 @@ private fun addSummarizeItemToMenu() {
     mutableClassDefBy(menuItemClass).interfaces.add(MENU_ITEM_ACCESS_INTERFACE)
 
     mutableClassDefBy(rowClass).apply {
-        interfaces.add(MENU_ROW_ACCESS_INTERFACE)
-        addBridge(
-            "patch_getMenuItem", listOf(), MENU_ITEM_ACCESS_INTERFACE, 2,
+        addPatchInterface(
+            MENU_ROW_ACCESS_INTERFACE,
+            "patch_getMenuItem",
             """
                 iget-object v0, p0, $rowMenuItemField
                 return-object v0
@@ -357,16 +358,17 @@ private fun addSummarizeItemToMenu() {
     )
     for (menu in menus) {
         mutableClassDefBy(menu.type).apply {
-            interfaces.add(MENU_ACCESS_INTERFACE)
-            addBridge(
-                "patch_getRows", listOf(), "Ljava/util/List;", 2,
+            addPatchInterface(
+                MENU_ACCESS_INTERFACE,
+                "patch_getRows",
                 """
                     iget-object v0, p0, ${menu.rowsField}
                     return-object v0
                 """
             )
-            addBridge(
-                "patch_createRow", listOf(MENU_ITEM_ACCESS_INTERFACE), "Ljava/lang/Object;", 4,
+            addPatchInterface(
+                MENU_ACCESS_INTERFACE,
+                "patch_createRow",
                 """
                     check-cast p1, $menuItemClass
                     invoke-virtual { p0, p1 }, ${menu.createRowMethod.toReference()}
@@ -377,8 +379,9 @@ private fun addSummarizeItemToMenu() {
                     return-object v0
                 """
             )
-            addBridge(
-                "patch_dismissPopup", listOf(), "Z", 2,
+            addPatchInterface(
+                MENU_ACCESS_INTERFACE,
+                "patch_dismissPopup",
                 if (menu.dismissMethod == null) {
                     """
                         const/4 v0, 0x0
@@ -539,9 +542,9 @@ private fun addElementsResourceLoading(protos: Protos) {
     }
 
     mutableClassDefBy(processorClass.type).apply {
-        interfaces.add(ELEMENTS_RESOURCE_PROCESSOR_ACCESS_INTERFACE)
-        addBridge(
-            "patch_processFrameworkUpdates", listOf("[B"), "V", 4,
+        addPatchInterface(
+            ELEMENTS_RESOURCE_PROCESSOR_ACCESS_INTERFACE,
+            "patch_processFrameworkUpdates",
             """
                 ${protos.parse(frameworkUpdatesClass, bytes = "p1", result = "v0", registry = "v1")}
                 check-cast v0, $frameworkUpdatesClass
@@ -550,8 +553,9 @@ private fun addElementsResourceLoading(protos: Protos) {
                 return-void
             """
         )
-        addBridge(
-            "patch_getUsedResources", listOf(), "Ljava/util/Set;", 2,
+        addPatchInterface(
+            ELEMENTS_RESOURCE_PROCESSOR_ACCESS_INTERFACE,
+            "patch_getUsedResources",
             """
                 iget-object v0, p0, $usedResourcesField
                 return-object v0

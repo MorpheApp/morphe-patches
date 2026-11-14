@@ -12,12 +12,11 @@ package app.morphe.patches.shared.misc.audio.tracks
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchDefinition
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.getReference
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
@@ -33,7 +32,6 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -169,39 +167,10 @@ internal fun forceOriginalAudioPatch(
                     1 to "patch_getDisplayName",
                     3 to "patch_getIsDefault"
                 ).forEach { (matchIndex, methodName) ->
-                    val fieldInstruction = instructionMatches[matchIndex].instruction
-                    val fieldOpcode = fieldInstruction.opcode.name
-                    val fieldReference = fieldInstruction.getReference<FieldReference>()!!
-                    val fieldReturnType = fieldReference.type
-                    val operation = if (fieldReturnType == "Z") {
-                        "return v0"
-                    } else {
-                        "return-object v0"
-                    }
-
-                    val helperMethod = ImmutableMethod(
-                        definingClass,
-                        methodName,
-                        listOf(),
-                        fieldReturnType,
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                $fieldOpcode v0, p0, $fieldReference
-                                $operation
-                            """
-                        )
-                    }
-
-                    classDef.methods.add(helperMethod)
+                    val fieldReference = instructionMatches[matchIndex].fieldReference
+                    classDef.addPatchInterface(EXTENSION_AUDIO_TRACK_INTERFACE, methodName, fieldReference)
                 }
 
-                classDef.interfaces.add(EXTENSION_AUDIO_TRACK_INTERFACE)
                 definingClass
             }
 

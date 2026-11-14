@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.layout.captions
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -82,21 +83,19 @@ internal val preferredCaptionLanguagePatch = patch(
                 }
             }
 
-            interfaces.add(EXTENSION_CAPTION_TRACK_INTERFACE)
-
-            addHelperMethod(
+            addPatchInterface(
+                EXTENSION_CAPTION_TRACK_INTERFACE,
                 "patch_getLanguageCode",
-                "Ljava/lang/String;",
-                smali = """
+                """
                     ${getterSmali(isDisableOptionFingerprint, 1)}
                     return-object v0
                 """
             )
 
-            addHelperMethod(
+            addPatchInterface(
+                EXTENSION_CAPTION_TRACK_INTERFACE,
                 "patch_getVssId",
-                "Ljava/lang/String;",
-                smali = """
+                """
                     ${getterSmali(isAutoTranslatedFingerprint, 0)}
                     return-object v0
                 """
@@ -190,13 +189,11 @@ internal val preferredCaptionLanguagePatch = patch(
         DefaultCaptionTrackFingerprint.classDef.apply {
             val tracksManagerField = SubtitleManagerDirectTracksFingerprint.instructionMatches[0].fieldReference
 
-            interfaces.add(EXTENSION_SUBTITLE_MANAGER_INTERFACE)
-
             fun addTracksGetter(name: String, tracksMethod: String) {
-                addHelperMethod(
+                addPatchInterface(
+                    EXTENSION_SUBTITLE_MANAGER_INTERFACE,
                     name,
-                    "Ljava/util/List;",
-                    smali = """
+                    """
                         iget-object v0, p0, $tracksManagerField
                         if-eqz v0, :null
                         invoke-virtual { v0 }, $tracksMethod
@@ -222,10 +219,10 @@ internal val preferredCaptionLanguagePatch = patch(
             )
 
             fun addSourceGetter(name: String, method: String) {
-                addHelperMethod(
+                addPatchInterface(
+                    EXTENSION_SUBTITLE_MANAGER_INTERFACE,
                     name,
-                    EXTENSION_CAPTION_TRACK_INTERFACE,
-                    smali = """
+                    """
                         iget-object v0, p0, $tracksManagerField
                         if-eqz v0, :null
                         invoke-virtual { v0 }, $method
@@ -246,7 +243,7 @@ internal val preferredCaptionLanguagePatch = patch(
         // so the subtitle manager instance is available.
         val trackType = DefaultCaptionTrackFingerprint.method.returnType
 
-        preferredCaptionsTrackFingerprint().let {
+        PreferredCaptionsTrackFingerprint.let {
             val subtitleManagerRegister = it.instructionMatches[0]
                 .getInstruction<FiveRegisterInstruction>().registerC
             val moveResultIndex = it.instructionMatches[1].index
@@ -268,11 +265,10 @@ internal val preferredCaptionLanguagePatch = patch(
             val defaultReason = captionDefaultSelectionFingerprint(selector.parameterTypes[1].toString())
                 .instructionMatches.last().fieldReference
 
-            SetSubtitleTrackFingerprint.classDef.addHelperMethod(
+            SetSubtitleTrackFingerprint.classDef.addPatchInterface(
+                EXTENSION_SUBTITLE_MANAGER_INTERFACE,
                 "patch_selectCaptionTrack",
-                "V",
-                parameters = listOf(EXTENSION_CAPTION_TRACK_INTERFACE),
-                smali = """
+                """
                     sget-object v0, $defaultReason
                     check-cast p1, $trackType
                     invoke-virtual { p0, p1, v0 }, $selector

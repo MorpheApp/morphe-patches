@@ -43,8 +43,8 @@ internal object DislikeFingerprint : Fingerprint(
     )
 )
 
-internal fun requestParameterCheckFingerprint(definingClass: String) = object : Fingerprint(
-    definingClass = definingClass,
+internal object RequestParameterCheckFingerprint : Fingerprint(
+    definingClass = { DislikeFingerprint.originalClassDef.superclass!! },
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     parameters = listOf(),
     filters = listOf(
@@ -63,10 +63,10 @@ internal fun requestParameterCheckFingerprint(definingClass: String) = object : 
             type = "Ljava/lang/String;"
         )
     )
-) {}
+)
 
-internal fun likeEndpointParserFingerprint(definingClass: String) = object : Fingerprint(
-    definingClass = definingClass,
+internal object LikeEndpointParserFingerprint : Fingerprint(
+    definingClass = { DislikeFingerprint.originalClassDef.superclass!! },
     returnType = "V",
     filters = listOf(
         fieldAccess(
@@ -79,7 +79,7 @@ internal fun likeEndpointParserFingerprint(definingClass: String) = object : Fin
         ),
         string("")
     )
-) {}
+)
 
 internal object ComponentHostSetContentDescriptionFingerprint : Fingerprint(
     definingClass = COMPONENT_HOST_CLASS,

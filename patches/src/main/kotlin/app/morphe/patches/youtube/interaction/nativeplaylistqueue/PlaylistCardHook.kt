@@ -8,13 +8,14 @@
 package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val CARD_SOURCE = "$EXTENSION_PACKAGE/PlaylistCardSource"
 
 /** Read the mounted card's native tap command without invoking or replacing its listener. */
 internal fun installPlaylistCardSource() {
-    val nodeType = playlistNodeStoreFingerprint().instructionMatches.single().fieldReference.type
+    val nodeType = PlaylistNodeStoreFingerprint.instructionMatches.single().fieldReference.type
     val click = PlaylistClickListenerFingerprint.originalMethod
     val handler = playlistClickFieldFingerprint(click.definingClass, Opcode.IGET_OBJECT)
         .instructionMatches.single().fieldReference
@@ -38,12 +39,9 @@ internal fun installPlaylistCardSource() {
     check(owner.definingClass == nodeClick.type) { "Native click owner must belong to its mounted handler" }
 
     mutableClassDefBy(nodeType).apply {
-        interfaces.add($$"$$CARD_SOURCE$TapActions;")
-        addBridgeMethod(
+        addPatchInterface(
+            $$"$$CARD_SOURCE$TapActions;",
             "patch_getPlaylistTapActions",
-            emptyList(),
-            "Ljava/util/List;",
-            2,
             """
                 iget-object v0, p0, $nodeClick
                 if-eqz v0, :empty
@@ -61,12 +59,9 @@ internal fun installPlaylistCardSource() {
         )
     }
     mutableClassDefBy(future.definingClass).apply {
-        interfaces.add($$"$$CARD_SOURCE$TapCommand;")
-        addBridgeMethod(
+        addPatchInterface(
+            $$"$$CARD_SOURCE$TapCommand;",
             "patch_getPlaylistTapCommand",
-            emptyList(),
-            "Lcom/google/protobuf/MessageLite;",
-            1,
             """
                 iget-object v0, p0, $future
                 invoke-virtual {v0}, $decode

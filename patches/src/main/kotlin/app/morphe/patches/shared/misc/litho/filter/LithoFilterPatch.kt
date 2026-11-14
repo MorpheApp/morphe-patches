@@ -22,12 +22,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.patch.classDefBy
-import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.Patch
 import app.morphe.patcher.patch.PatchDefinition
+import app.morphe.patcher.patch.classDefBy
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.string
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getFreeRegisterProvider
 import app.morphe.patcher.util.getReference
 import app.morphe.patcher.util.matchSingle
@@ -48,7 +49,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
 import java.lang.ref.WeakReference
 
@@ -352,30 +352,16 @@ internal fun sharedLithoFilterPatch(
                 ).apply {
                     val dataField = fields.single { field -> field.type == dataType }
 
-                    interfaces.add(EXTENSION_LIST_ITEM_DECORATOR_INTERFACE)
-
-                    methods.add(
-                        ImmutableMethod(
-                            type,
-                            "patch_getListItem",
-                            listOf(),
-                            "Ljava/lang/Object;",
-                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                            null,
-                            null,
-                            MutableMethodImplementation(2),
-                        ).toMutable().apply {
-                            addInstructionsWithLabels(
-                                0,
-                                """
-                                    iget-object v0, p0, $dataField
-                                    if-eqz v0, :no_data
-                                    iget-object v0, v0, $itemField
-                                    :no_data
-                                    return-object v0
-                                """
-                            )
-                        }
+                    addPatchInterface(
+                        EXTENSION_LIST_ITEM_DECORATOR_INTERFACE,
+                        "patch_getListItem",
+                        """
+                            iget-object v0, p0, $dataField
+                            if-eqz v0, :no_data
+                            iget-object v0, v0, $itemField
+                            :no_data
+                            return-object v0
+                        """
                     )
                 }
             }
@@ -414,61 +400,47 @@ internal fun sharedLithoFilterPatch(
                 }
 
                 it.classDef.apply {
-                    interfaces.add(EXTENSION_LIST_SECTION_INTERFACE)
-
-                    methods.add(
-                        ImmutableMethod(
-                            type,
-                            "patch_removeListItem",
-                            listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, "item")),
-                            "Z",
-                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                            null,
-                            null,
-                            MutableMethodImplementation(9),
-                        ).toMutable().apply {
-                            addInstructionsWithLabels(
-                                0,
-                                """
-                                    iget-object v0, p0, $itemsField
-                                    invoke-interface { v0, p1 }, Ljava/util/List;->indexOf(Ljava/lang/Object;)I
-                                    move-result v2
-                                    const/4 v0, 0x0
-                                    if-ltz v2, :done
-                                    const/4 v0, 0x1
-                                    invoke-direct { p0 }, $isGridMethod
-                                    move-result v1
-                                    invoke-virtual { p0, p1 }, $removeItemMethod
-                                    if-eqz v1, :done
-                                    iget-object v3, p0, $itemsField
-                                    invoke-interface { v3 }, Ljava/util/List;->size()I
-                                    move-result v4
-                                    :move_back
-                                    if-ge v2, v4, :moved_back
-                                    invoke-interface { v3, v2 }, Ljava/util/List;->get(I)Ljava/lang/Object;
-                                    move-result-object v5
-                                    add-int/lit8 v2, v2, 0x1
-                                    instance-of v6, v5, $elementItemType
-                                    if-eqz v6, :move_back
-                                    check-cast v5, $elementItemType
-                                    iget-object v5, v5, $elementBytesField
-                                    invoke-static { v5 }, $EXTENSION_CLASS->moveGridItemBack([B)V
-                                    goto :move_back
-                                    :moved_back
-                                    invoke-direct { p0 }, $isGridMethod
-                                    move-result v1
-                                    if-nez v1, :done
-                                    iget-object v1, p0, $itemsField
-                                    invoke-interface { v1 }, Ljava/util/List;->isEmpty()Z
-                                    move-result v1
-                                    if-nez v1, :done
-                                    invoke-virtual { p0 }, $layOutRowsMethod
-                                    invoke-virtual { p0 }, $updateSectionMethod
-                                    :done
-                                    return v0
-                                """
-                            )
-                        }
+                    addPatchInterface(
+                        EXTENSION_LIST_SECTION_INTERFACE,
+                        "patch_removeListItem",
+                        """
+                            iget-object v0, p0, $itemsField
+                            invoke-interface { v0, p1 }, Ljava/util/List;->indexOf(Ljava/lang/Object;)I
+                            move-result v2
+                            const/4 v0, 0x0
+                            if-ltz v2, :done
+                            const/4 v0, 0x1
+                            invoke-direct { p0 }, $isGridMethod
+                            move-result v1
+                            invoke-virtual { p0, p1 }, $removeItemMethod
+                            if-eqz v1, :done
+                            iget-object v3, p0, $itemsField
+                            invoke-interface { v3 }, Ljava/util/List;->size()I
+                            move-result v4
+                            :move_back
+                            if-ge v2, v4, :moved_back
+                            invoke-interface { v3, v2 }, Ljava/util/List;->get(I)Ljava/lang/Object;
+                            move-result-object v5
+                            add-int/lit8 v2, v2, 0x1
+                            instance-of v6, v5, $elementItemType
+                            if-eqz v6, :move_back
+                            check-cast v5, $elementItemType
+                            iget-object v5, v5, $elementBytesField
+                            invoke-static { v5 }, $EXTENSION_CLASS->moveGridItemBack([B)V
+                            goto :move_back
+                            :moved_back
+                            invoke-direct { p0 }, $isGridMethod
+                            move-result v1
+                            if-nez v1, :done
+                            iget-object v1, p0, $itemsField
+                            invoke-interface { v1 }, Ljava/util/List;->isEmpty()Z
+                            move-result v1
+                            if-nez v1, :done
+                            invoke-virtual { p0 }, $layOutRowsMethod
+                            invoke-virtual { p0 }, $updateSectionMethod
+                            :done
+                            return v0
+                        """
                     )
 
                     // The released sections stop receiving the removed items.
@@ -594,7 +566,7 @@ internal fun sharedLithoFilterPatch(
             ListSaveScrollPositionFingerprint.let {
                 val observerType = it.instructionMatches[0].fieldReference.type
 
-                val notifyItemsRemoved = observableListRemoveFingerprint(ObservableListConstructorFingerprint.classDef.type)
+                val notifyItemsRemoved = ObservableListRemoveFingerprint
                     .matchSingle().instructionMatches.first().methodReference.let { notify ->
                         if (notify.parameterTypes.size == 2) {
                             notify

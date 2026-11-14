@@ -54,8 +54,7 @@ internal val fixMediaSessionStopPatch = patch {
         val sessionClass = MediaSessionStartFingerprint.originalClassDef.type
         val startMethodName = MediaSessionStartFingerprint.originalMethod.name
         val stopMethodName = MediaSessionStopFingerprint.originalMethod.name
-        val playerClass = playerMediaSessionStartFingerprint(sessionClass, startMethodName)
-            .originalClassDef.type
+        val playerClass = PlayerMediaSessionStartFingerprint.originalClassDef.type
 
         // The player reads the session from its field before it starts or stops the session.
         val playerSessionField = fieldAccess(

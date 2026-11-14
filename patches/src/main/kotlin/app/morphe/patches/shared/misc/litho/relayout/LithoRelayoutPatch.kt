@@ -8,18 +8,14 @@
 package app.morphe.patches.shared.misc.litho.relayout
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.classDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.getReference
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/LithoRelayoutPatch;"
@@ -48,52 +44,27 @@ val lithoRelayoutPatch = patch(
             }
 
             it.classDef.apply {
-                interfaces.add(EXTENSION_LITHO_VIEW_INTERFACE)
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_forceRelayout",
-                        listOf(),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                const/4 v0, 0x1
-                                iput-boolean v0, p0, $readFlag
-                                invoke-virtual { p0 }, $type->requestLayout()V
-                                return-void
-                            """
-                        )
-                    }
+                addPatchInterface(
+                    EXTENSION_LITHO_VIEW_INTERFACE,
+                    "patch_forceRelayout",
+                    """
+                        const/4 v0, 0x1
+                        iput-boolean v0, p0, $readFlag
+                        invoke-virtual { p0 }, $type->requestLayout()V
+                        return-void
+                    """
                 )
 
                 // Unmounting all content mounts it again with the next layout,
                 // which loads the images again.
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_forceRemount",
-                        listOf(),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(1),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-virtual { p0 }, $type->${LithoViewUnmountAllItemsFingerprint.method.name}()V
-                                invoke-virtual { p0 }, $type->requestLayout()V
-                                return-void
-                            """
-                        )
-                    }
+                addPatchInterface(
+                    EXTENSION_LITHO_VIEW_INTERFACE,
+                    "patch_forceRemount",
+                    """
+                        invoke-virtual { p0 }, $type->${LithoViewUnmountAllItemsFingerprint.method.name}()V
+                        invoke-virtual { p0 }, $type->requestLayout()V
+                        return-void
+                    """
                 )
             }
 

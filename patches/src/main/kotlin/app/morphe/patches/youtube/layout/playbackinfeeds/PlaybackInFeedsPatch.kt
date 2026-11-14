@@ -8,10 +8,9 @@
 package app.morphe.patches.youtube.layout.playbackinfeeds
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -19,11 +18,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private const val EXTENSION_CLASS =
@@ -63,49 +58,24 @@ val playbackInFeedsPatch = patch(
 
         controllerClass.apply {
             // Add the interface and methods that extension calls.
-            interfaces.add(EXTENSION_CONTROLLER_INTERFACE)
 
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_getPlaybackInFeedsMode",
-                    emptyList(),
-                    "I",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-virtual { p0 }, $getModeMethod
-                            move-result v0
-                            return v0
-                        """
-                    )
-                }
+            addPatchInterface(
+                EXTENSION_CONTROLLER_INTERFACE,
+                "patch_getPlaybackInFeedsMode",
+                """
+                    invoke-virtual { p0 }, $getModeMethod
+                    move-result v0
+                    return v0
+                """
             )
 
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_setPlaybackInFeedsMode",
-                    listOf(ImmutableMethodParameter("I", null, "mode")),
-                    "V",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-virtual { p0, p1 }, $setModeMethod
-                            return-void
-                        """
-                    )
-                }
+            addPatchInterface(
+                EXTENSION_CONTROLLER_INTERFACE,
+                "patch_setPlaybackInFeedsMode",
+                """
+                    invoke-virtual { p0, p1 }, $setModeMethod
+                    return-void
+                """
             )
 
             // Hook the end of the constructor, since the fields this class uses

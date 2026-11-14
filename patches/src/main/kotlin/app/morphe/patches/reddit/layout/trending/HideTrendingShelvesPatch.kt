@@ -12,8 +12,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.findFreeRegister
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_11_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_16_0_or_greater
@@ -21,9 +21,6 @@ import app.morphe.patches.reddit.misc.version.is_2026_21_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideTrendingShelvesPatch;"
@@ -76,30 +73,8 @@ val hideTrendingShelvesPatch = patch(
             val stateClassDef = mutableClassDefBy(stateParamType)
 
             stateClassDef.apply {
-                interfaces.add(EXTENSION_TRENDING_INTERFACE)
-
                 val stringField = fields.first { it.type == "Ljava/lang/String;" }
-
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_getTrendingLabel",
-                        emptyList(),
-                        "Ljava/lang/String;",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(1),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                iget-object v0, p0, $type->${stringField.name}:Ljava/lang/String;
-                                return-object v0
-                            """
-                        )
-                    }
-                )
+                addPatchInterface(EXTENSION_TRENDING_INTERFACE, "patch_getTrendingLabel", stringField)
             }
         }
 

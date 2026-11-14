@@ -51,11 +51,11 @@ internal object FullBleedChromeStateToStringFingerprint : Fingerprint(
 /**
  * Creates the media viewer chrome state of a post, when it is shown in the media viewer.
  */
-internal fun createFullBleedChromeStateFingerprint(chromeStateType: String) = Fingerprint(
-    returnType = chromeStateType,
+internal object CreateFullBleedChromeStateFingerprint : Fingerprint(
+    returnType = { FullBleedChromeStateToStringFingerprint.originalClassDef.type },
     parameters = listOf("Lcom/reddit/domain/model/Link;", "L", "Ljava/lang/String;", "Ljava/lang/String;"),
     filters = listOf(
-        newInstance(chromeStateType)
+        newInstance(type = { FullBleedChromeStateToStringFingerprint.originalClassDef.type })
     )
 )
 
