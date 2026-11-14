@@ -370,16 +370,19 @@ public final class DeArrowPatch {
     }
 
     /**
+     * The time is not sent as the official time, since the thumbnail cache then uses it
+     * for requests of the video without a time, and the thumbnail may not be the best one.
+     *
      * @param thumbnailTime Time in seconds of a submitted thumbnail.
-     * @return URL of the image of the thumbnail in the thumbnail cache, which has no image
-     *         if the thumbnail is not yet generated.
+     * @return URL of the image of the thumbnail in the thumbnail cache, which generates it
+     *         if needed. There is no image if it could not be generated in time.
      */
     static String getSubmittedThumbnailURL(String videoId, double thumbnailTime) {
         return dearrowAPIURI
                 .buildUpon()
                 .appendQueryParameter("videoID", videoId)
                 .appendQueryParameter("time", String.valueOf(thumbnailTime))
-                .appendQueryParameter("officialTime", "true")
+                .appendQueryParameter("generateNow", "true")
                 .build()
                 .toString();
     }
