@@ -16,8 +16,8 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.medianotification.mediaNotificationControlsPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 
-private const val EXTENSION_CLASS_REPLACE_SHUFFLE =
-    "Lapp/morphe/extension/music/patches/ReplaceShuffleWithLoopButtonPatch;"
+private const val EXTENSION_CLASS =
+    "Lapp/morphe/extension/music/patches/MusicMediaNotificationControlsPatch;"
 
 @Suppress("unused")
 val mediaNotificationControlsPatchMusic = mediaNotificationControlsPatch(
@@ -40,7 +40,7 @@ val mediaNotificationControlsPatchMusic = mediaNotificationControlsPatch(
         ShuffleActionShownFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static { }, $EXTENSION_CLASS_REPLACE_SHUFFLE->hideShuffleAction()Z
+                invoke-static { }, $EXTENSION_CLASS->hideShuffleAction()Z
                 move-result v0
                 if-eqz v0, :show_shuffle
                 const/4 v0, 0x0

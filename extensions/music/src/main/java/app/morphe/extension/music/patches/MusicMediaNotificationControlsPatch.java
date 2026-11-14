@@ -11,7 +11,7 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings("unused")
-public class ReplaceShuffleWithLoopButtonPatch {
+public class MusicMediaNotificationControlsPatch {
 
     /**
      * Without the previous and next buttons the media controls have room
