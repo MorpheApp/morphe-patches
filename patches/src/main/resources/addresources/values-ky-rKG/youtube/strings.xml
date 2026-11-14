@@ -522,6 +522,10 @@ AI жөнүндө гана талкуулаган же видеолорунун 
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Лентадагы миниатюралардын лайктарынын санын көрсөтүү</string>
   <string name="morphe_ryd_feed_like_ratio_title">Лентадагы миниатюралардын лайктарынын пайызын көрсөтүү</string>
+  <string name="morphe_ryd_feed_counts_position_title">Лентадагы миниатюранын лайк позициясы</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Көрүүлөр санынын жанында</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Ортоңку оң</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Жогорку сол</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Комментарийлерди издөө</string>
   <string name="morphe_search_comments_summary">Издөө сөздөрүнүн баарын камтыган жүктөлгөн комментарийлерди гана көрсөтүү үчүн комментарийлердеги издөө баскычын басыңыз. Фразаны издөө үчүн сөздөрдү тырмакчага алыңыз</string>
@@ -1037,6 +1041,8 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_navigation_bar_glass_summary">Навигациялык панельди тегеректелген, жартылай тунук капсула катары көрсөтөт. «Тунук эмес» навигациялык панель стили менен жеткиликтүү эмес</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Айнектин тунуктугу</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Айнек сыяктуу навигациялык панелдин тунуктугунун деңгээлин жөнгө салыңыз (0 - тунук, 100 - тунук эмес)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Тегерек айнек навигациялык панель</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Айнек мини-плеердеги бурчтардын ордуна, айнек навигациялык панелдин учтарын тегеректейтит</string>
   <string name="morphe_navigation_bar_glass_size_title">Айнек навигациялык панелинин өлчөмү</string>
   <string name="morphe_navigation_bar_glass_size_summary">Айнек навигациялык панелинин бийиктигин, туурасын жана баскычтардын аралыгын алдын ала көрүү менен жөнгө салыңыз. Экрандын туурасына батпаган баскычтар жашырылат</string>
   <string name="morphe_navigation_bar_glass_size_height">Бийиктиги</string>
@@ -1377,6 +1383,8 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_miniplayer_swipe_up_expand_summary">Мини-плеерди жогору сыйроо аны экрандын жогору жагына жылдыруунун ордуна, плеерди кеңейтет</string>
   <string name="morphe_miniplayer_docked_title">Бекитилген мини-плеер</string>
   <string name="morphe_miniplayer_docked_summary">Мини-плеерди экрандын үстүндө калтырбастан, аны навигациялык панелге жана экрандын жактарына бекитет</string>
+  <string name="morphe_miniplayer_glass_title">Айнек мини-плеер</string>
+  <string name="morphe_miniplayer_glass_summary">Мини-плеерди айнек навигациялык панел сыяктуу, бурчтары тегеректелген жарым-жартылай тунук айнек катары көрсөтөт. Айнек навигациялык панел талап кылынат</string>
   <string name="morphe_miniplayer_type_entry_0">Иштен чыгарылган</string>
   <string name="morphe_miniplayer_type_entry_1">Демейки</string>
   <string name="morphe_miniplayer_type_entry_2">Минималдык</string>
@@ -1812,6 +1820,8 @@ AV1 менен видео ойнотулганда үзгүлтүктөр бол
   <string name="morphe_niconico_comments_screen_title">Niconico комментарийлери</string>
   <string name="morphe_niconico_comments_screen_summary">Түз эфирдеги чатты жана чаттын кайталоосун видео боюнча жылган комментарийлер катары көрсөтүү</string>
   <string name="morphe_niconico_comments_summary">Видео плеерде үстүңкү баскычты көрсөтөт. Комментарийлерди көрсөтүү же жашыруу үчүн басыңыз, тез жөндөөлөр үчүн басып туруңуз</string>
+  <string name="morphe_niconico_comments_pip_title">Сүрөттө сүрөттө көрсөтүү</string>
+  <string name="morphe_niconico_comments_pip_summary">Комментарийлер терезеге ылайыктуу болушу үчүн кичирейтилген</string>
   <string name="morphe_niconico_comments_appearance_title">Сырткы көрүнүш</string>
   <string name="morphe_niconico_comments_portrait_category_title">Портрет</string>
   <string name="morphe_niconico_comments_video_types_title">Видео түрлөрү</string>

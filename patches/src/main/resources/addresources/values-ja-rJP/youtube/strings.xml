@@ -523,6 +523,10 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">フィードのサムネイルのいいね数を表示</string>
   <string name="morphe_ryd_feed_like_ratio_title">フィードのサムネイルのいいね比率を表示</string>
+  <string name="morphe_ryd_feed_counts_position_title">フィード サムネイルのいいねの位置</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">視聴回数の隣</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">中央右</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">左上</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">コメントを検索</string>
   <string name="morphe_search_comments_summary">コメント欄の検索ボタンをタップして、検索ワードをすべて含む読み込み済みコメントのみを表示します。フレーズで検索する場合は、単語を引用符で囲んでください</string>
@@ -1039,6 +1043,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_navigation_bar_glass_summary">ナビゲーション バーを、フローティングで角が丸い半透明のカプセル状に表示します。不透明なナビゲーション バーのスタイルでは利用できません</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ガラスの不透明度</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ガラス風ナビゲーション バーの透明度を設定します (0 は透明、100 は不透明)</string>
+  <string name="morphe_navigation_bar_glass_round_title">ラウンド ガラス ナビゲーション バー</string>
+  <string name="morphe_navigation_bar_glass_round_summary">ガラス ミニプレイヤーのような角ではなく、ガラス ナビゲーション バーの両端を丸くします</string>
   <string name="morphe_navigation_bar_glass_size_title">グラスナビゲーションバーのサイズ</string>
   <string name="morphe_navigation_bar_glass_size_summary">グラスナビゲーションバーの高さ、幅、ボタンの間隔をプレビューしながら調整します。画面幅に収まらないボタンは非表示になります</string>
   <string name="morphe_navigation_bar_glass_size_height">高さ</string>
@@ -1379,6 +1385,8 @@ Automotive レイアウト
   <string name="morphe_miniplayer_swipe_up_expand_summary">ミニプレーヤーを上にスワイプすると、ミニプレーヤーを画面上部に移動させるのではなく、プレーヤーが展開されます</string>
   <string name="morphe_miniplayer_docked_title">ドッキング済みミニプレーヤー</string>
   <string name="morphe_miniplayer_docked_summary">ミニプレーヤーを浮かせるのではなく、ナビゲーションバーや画面の端に固定します</string>
+  <string name="morphe_miniplayer_glass_title">ガラス ミニプレイヤー</string>
+  <string name="morphe_miniplayer_glass_summary">ガラス ナビゲーション バーのように、ミニプレイヤーを角が丸い半透明のガラスとして表示します。ガラス ナビゲーション バーが必要です</string>
   <string name="morphe_miniplayer_type_entry_0">無効</string>
   <string name="morphe_miniplayer_type_entry_1">デフォルト</string>
   <string name="morphe_miniplayer_type_entry_2">横長（旧タイプ）</string>
@@ -1815,6 +1823,8 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_niconico_comments_screen_title">ニコニコ風のコメント表示</string>
   <string name="morphe_niconico_comments_screen_summary">ライブ配信と配信のアーカイブのチャットを、映像を横切って流れるニコニコ風コメントとして表示します</string>
   <string name="morphe_niconico_comments_summary">プレーヤー オーバーレイにボタンを表示します。タップするとニコニコ風コメントの表示 / 非表示を切り替えます。長押しすると簡易設定メニューを表示します</string>
+  <string name="morphe_niconico_comments_pip_title">ピクチャー イン ピクチャーで表示</string>
+  <string name="morphe_niconico_comments_pip_summary">コメントはウィンドウに収まるように縮小されます</string>
   <string name="morphe_niconico_comments_appearance_title">外観</string>
   <string name="morphe_niconico_comments_portrait_category_title">縦画面</string>
   <string name="morphe_niconico_comments_video_types_title">ビデオタイプ</string>

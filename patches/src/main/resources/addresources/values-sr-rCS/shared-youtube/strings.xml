@@ -167,6 +167,28 @@ Da biste se prijavili, pritisnite „Nastavi” ispod"</string>
 • Vaša Morphe podešavanja neće uvoziti ili izvoziti autentikaciju za Android VR
 • Ako se ova aplikacija ne koristi 6 meseci, Google će ukloniti ovu autentikaciju
 • Morate ponovo da se prijavite ako promenite lozinku za Google ili uklonite ovaj uređaj iz Google podešavanja"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prijava putem mobilnog veba</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opciono: prijavite se na YouTube veb-sajt da biste reprodukovali video snimke pomoću svog naloga. Dodirnite ovde da nastavite</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Trenutno ste prijavljeni na mobilni veb</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Da biste koristili ovu funkciju, promenite \'Podrazumevani klijent\' na Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Prijavite se na Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web pušta video snimke bez prijave ili kada ste prijavljeni na YouTube veb-sajt
+
+• Kada ste prijavljeni, mogu se pustiti video snimci kojima je potreban nalog, kao što su video snimci sa ograničenjem starosti
+• Google stranica za prijavu otvara se u ovoj aplikaciji
+• Prijava se koristi samo za dobijanje video snimaka koje puštate
+• Prijava se čuva samo na ovom uređaju
+
+Da biste se prijavili, pritisnite „nastavi“ u nastavku"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Prijava je sačuvana
+
+• Vaša Morphe podešavanja neće uvesti/izvesti prijavu na mobilnom vebu
+• Ako Google prekine prijavu, video snimci će se puštati bez prijave dok se ponovo ne prijavite
+• Odjava takođe odjavljuje ovaj uređaj sa YouTube veb-sajta"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Prijava na mobilni veb je istekla, pokušajte ponovo da se prijavite na mobilni veb</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odjavljeno sa mobilnog veba</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView nije dostupan. Instalirajte ga ili omogućite kako biste se prijavili</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 privremeno nije dostupan (API istekao)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Prijavljivanje na Android VR je isteklo, pokušajte ponovo da se prijavite na VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 privremeno nije dostupan (status %s)</string>

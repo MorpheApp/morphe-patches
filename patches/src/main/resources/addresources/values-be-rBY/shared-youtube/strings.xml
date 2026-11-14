@@ -167,6 +167,28 @@ Second \"item\" text"</string>
 • Налады Morphe не будуць імпартаваць/экспартаваць аўтэнтыфікацыю Android VR
 • Калі гэтая праграма не будзе выкарыстоўвацца на працягу 6 месяцаў, Google выдаліць гэтую аўтэнтыфікацыю
 • Вам спатрэбіцца ўвайсці ў сістэму зноў, калі вы змяніце пароль Google або адключаце гэтую прыладу ў наладках Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Уваход праз мабільную версію сайта</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Неабавязкова: ўвойдзіце на 웹-сайт YouTube, каб праглядаць відэа са свайго ўліковага запісу. Націсніце тут, каб працягнуць</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">У дадзены момант вы ўвайшли ў Mobile Web</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Каб скарыстацца гэтай функцыяй, змяніце \"Кліент па змаўчанні\" на Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Увайсці ў Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web прайграе відэа без ўваходу ў сістэму або пры ўваходзе на вебсайт YouTube
+
+• Пры ўваходзе ў сістэму можна прайграваць відэа, для якіх патрабуецца ўлічавы запіс, напрыклад, відэа з абмежаваннем па ўзросце
+• Старонка ўваходу Google адкрываецца ў гэтай праграме
+• Уваход выкарыстоўваецца толькі для атрымання відэа, якія вы прайграваеце
+• Даныя ўваходу захаўваюцца толькі на гэтай прыладнасці
+
+Каб увайсці, націсніце \"Працягнуць"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Уваход захаваны
+
+• Налады Morphe не будуць імпартаваць/экспартаваць даныя ўваходу Mobile Web
+• Калі Google завершыць сесію ўваходу, відэа будуць прайгравацца без ўваходу, пакуль вы не ўвайдзеце зноў
+• Выхад з сістэмы таксама выведзе гэтую прыладнасць з вебсайта YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Тэрмін сесіі ў мабільнай вэб-версіі скончыўся, паспрабуйце ўвайсці ў мабільную вэб-версію зноў</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Вы выйшылі з мабільнай вэб-версіі</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView недаступны. Усталюйце або ўключыце яго, каб увайти ў сістэму</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 часова недаступны (таймаўт API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Тэрмін дзеяння сесіі Android VR скончыўся, паспрабуйце ўвайсці ў VR зноў</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 часова недаступны (статус %s)</string>

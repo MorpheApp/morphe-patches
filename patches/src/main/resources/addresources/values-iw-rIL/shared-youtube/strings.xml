@@ -167,6 +167,28 @@ Second \"item\" text"</string>
 • הגדרות Morphe לא ייובאו או ייוצאו עם אימות Android VR
 • אם לא תשתמש באפליקציה זו במשך 6 חודשים, Google תסיר את האימות
 • יהיה עליך להתחבר שוב אם תשנה את סיסמת Google שלך או תבטל את רישום המכשיר בהגדרות Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">התחברות דרך דפדפן בנייד</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">אופציונלי: התחבר לאתר YouTube כדי להפעיל סרטונים עם החשבון שלך. הקש כאן כדי להמשיך</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">כרגע מחובר לדפדפן בנייד</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">כדי להשתמש בתכונה זו, שנה את \'לקוח ברירת מחדל\' ל-Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">התחבר ל-Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web משמיעה סרטונים ללא התחברות, או לאחר התחברות לאתר YouTube
+
+• כאשר המשתמש מחובר, ניתן להשמיע סרטונים הדורשים חשבון, כגון סרטונים עם הגבלת גיל
+• דף ההתחברות של Google נפתח בתוך אפליקציה זו
+• ההתחברות משמשת רק כדי לקבל את הסרטונים שאתה משמיע
+• ההתחברות נשמרת במכשיר זה בלבד
+
+כדי להתחבר, לחץ על המשך למטה"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ההתחברות נשמרה
+
+• הגדרות ה-Morphe שלך לא ייבאו/יצאי את ההתחברות ל-Mobile Web
+• אם Google יסגור את ההתחברות, סרטונים יופעלו ללא התחברות עד שתתחבר שוב
+• התנתקות תנתק גם את המכשיר הזה מאתר YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ההתחברות ל-Mobile Web פגה, נסה להתחבר ל-Mobile Web שוב</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">התנתקת מ-Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView אינו זמין. התקן או הפעל אותו כדי להתחבר</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 אינו זמין כרגע (תם הזמן של ה-API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">ההתחברות ל-Android VR פגה, נסה להתחבר ל-VR שוב</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 אינו זמין זמנית (מצב %s)</string>

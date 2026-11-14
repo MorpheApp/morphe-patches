@@ -520,6 +520,10 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Zobraziť počítadlo lajkov pre náhľad feedu</string>
   <string name="morphe_ryd_feed_like_ratio_title">Zobraziť percento lajkov pre náhľad feedu</string>
+  <string name="morphe_ryd_feed_counts_position_title">Pozícia páčidla v prúde</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Vedľa počtu zhliadnutí</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Vpravo v strede</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Vľavo hore</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Vyhľadať v komentároch</string>
   <string name="morphe_search_comments_summary">Ťuknite na tlačidlo vyhľadávania v komentároch, aby sa zobrazili len načítané komentáre, ktoré obsahujú všetky hľadané slová. Slová dajte do úvodzoviek, aby ste hľadali konkrétnu frázu</string>
@@ -1035,6 +1039,8 @@ Ak chcete pristúpiť k Nastaveniam, zapnite tlačidlo Nastavenia cez Všeobecn�
   <string name="morphe_navigation_bar_glass_summary">Zobrazuje navigačný panel ako plávajúcu, zaoblenú a polopriehľadnú kapsulu. Nie je k dispozícii pri štýle nepriehľadného navigačného panelu</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Nepriehľadnosť skla</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Upravte úroveň priehľadnosti skleneného navigačného panelu (0 je priehľadné, 100 je nepriehľadné)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Okrúhly sklenený navigačný panel</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Sklenenému navigačnému panelu pridáva okrúhle konce namiesto rohov, ako má sklenený miniplayer</string>
   <string name="morphe_navigation_bar_glass_size_title">Veľkosť skleného navigačného panela</string>
   <string name="morphe_navigation_bar_glass_size_summary">Upravte výšku, šírku a rozostup tlačidiel skleného navigačného panela s náhľadom. Tlačidlá, ktoré sa nezmestia do šírky obrazovky, sa skryjú</string>
   <string name="morphe_navigation_bar_glass_size_height">Výška</string>
@@ -1374,6 +1380,8 @@ Rozloženie pre automobil
   <string name="morphe_miniplayer_swipe_up_expand_summary">Potiahnutím minimalizovaného prehrávača nahor sa prehrávač rozšíri namiesto presunu minimalizovaného prehrávača na hornú časť obrazovky</string>
   <string name="morphe_miniplayer_docked_title">Pripnutý minimalizovaný prehrávač</string>
   <string name="morphe_miniplayer_docked_summary">Pripne minimalizovaný prehrávač k navigačnej lište a okrajom obrazovky namiesto toho, aby nad nimi plával</string>
+  <string name="morphe_miniplayer_glass_title">Sklenený miniplayer</string>
+  <string name="morphe_miniplayer_glass_summary">Zobrazuje miniplayer ako polopriehľadné sklo s rounded rohmi, podobne ako sklenený navigačný panel. Vyžaduje sklenený navigačný panel</string>
   <string name="morphe_miniplayer_type_entry_0">Vypnutý</string>
   <string name="morphe_miniplayer_type_entry_1">Predvolený</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalistický</string>
@@ -1808,6 +1816,8 @@ Automatické zaznamenávanie je voliteľné. Zastaví sa v režime inkognito ale
   <string name="morphe_niconico_comments_screen_title">Komentáre Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Zobrazuje živý chat a opakovanie chatu ako komentáre, ktoré prechádzajú cez video</string>
   <string name="morphe_niconico_comments_summary">Zobrazuje tlačidlo v prehrávači videa. Klepnutím zobrazíte alebo skryjete komentáre, podržaním otvoríte rýchle nastavenia</string>
+  <string name="morphe_niconico_comments_pip_title">Zobraziť v režime obraz v obraze</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentáre sú zmenšené tak, aby sa zmestili do okna</string>
   <string name="morphe_niconico_comments_appearance_title">Vzhľad</string>
   <string name="morphe_niconico_comments_portrait_category_title">Na výšku</string>
   <string name="morphe_niconico_comments_video_types_title">Typy videí</string>

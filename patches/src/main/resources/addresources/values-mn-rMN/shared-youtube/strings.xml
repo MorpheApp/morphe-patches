@@ -168,6 +168,28 @@ Android System WebView-ийг нээхийн тулд OK дээр дарна у�
 • Таны Morphe тохиргоо Android VR баталгаажуулалтыг импортлах/экспортлохгүй
 • Хэрэв энэ аппликейшнийг 6 сарын турш ашиглаагүй бол Google энэ баталгаажуулалтыг устгах болно
 • Хэрэв та Google нууц үгээ сольсон эсвэл Google тохиргооноосоо энэ төхөөрөмжийг хассан бол дахин нэвтрэх шаардлагатай болно"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Мобайл вебээр нэвтрэх</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Сонголттой: Өөрийн бүртгэлээр видео үзэхийн тулд YouTube вэбсайтад нэвтрэнэ үү. Үргэлжлүүлэхийн тулд энд дарна уу</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Одоогоор Мобайл вебээр нэвтэрсэн байна</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Энэ функцийг ашиглахын тулд \'Үндсэн клиент\'-ийг Mobile Web болгож өөрчилнө үү</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-д нэвтрэх</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web нь нэвтрээгүй эсвэл YouTube вэбсайтад нэвтэрсэн үед видеог тоглуулдаг
+
+• Нэвтэрсэн үед насны хязгаарлалттай видео шиг бүртгэл шаардлагатай видеог тоглуулж болно
+• Google-ийн нэвтрэх хуудас энэ аппликейшн дээр нээгдэнэ
+• Нэвтрэхийг зөвхөн таны үзэх видеог авах зорилгоор ашиглана
+• Нэвтрэл зөвхөн энэ төхөөрөмж дээр хадгалагдана
+
+Нэвтрэхийн тулд доорх үргэлжлүүлэх товчийг дарна уу"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Нэвтрэлийг хадгаллаа
+
+• Таны Morphe тохиргоо Mobile Web-ийн нэвтрэлийг импортлох/экспортолохгүй
+• Хэрэв Google нэвтрэлийг дуусгавал, та дахин нэвтрэх хүртэл видеонууд нэвтрээгүй төлөвт тоглогдоно
+• Гарах нь мөн энэ төхөөрөмжийг YouTube вэбсайтаас гаргана"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Мобайл вэб нэвтрэх хугацаа дууслаа, дахин нэвтрэхийг оролдоно уу</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Мобайл вэбээс гарлаа</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView олдохгүй байна. Нэвтрэхийн тулд үүнийг суулгах эсвэл идэвхжүүлнэ үү</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 түр хугацаагаар боломжгүй байна (API-ийн хугацаа дууссан)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR нэвтрэх хугацаа дууссан байна, VR-т дахин нэвтрэхийг оролдоно уу</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 түр хугацаагаар боломжгүй байна (төлөв %s)</string>

@@ -167,6 +167,28 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
 • Vos paramètres Morphe n'importeront/exportent pas l'authentification Android VR
 • Si cette application reste inutilisée pendant 6 mois, Google supprimera cette authentification
 • Vous devrez vous reconnecter si vous changez votre mot de passe Google ou si vous dissociez cet appareil de vos paramètres Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Connexion via Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Facultatif : connectez-vous au site Web YouTube pour lire des vidéos avec votre compte. Appuyez ici pour continuer</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Actuellement connecté au Mobile Web</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Pour utiliser cette fonctionnalité, définissez \'Client par défaut\' sur Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Se connecter à Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web lit les vidéos sans être connecté, ou en étant connecté au site YouTube
+
+• Une fois connecté, les vidéos nécessitant un compte peuvent être lues, comme les vidéos soumises à une restriction d'âge
+• La page de connexion Google s'ouvre dans cette application
+• La connexion est utilisée uniquement pour obtenir les vidéos que vous lisez
+• La connexion est enregistrée uniquement sur cet appareil
+
+Pour vous connecter, appuyez sur continuer ci-dessous"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Connexion enregistrée
+
+• Vos paramètres Morphe n'importeront/exporteront pas la connexion à Mobile Web
+• Si Google met fin à votre connexion, les vidéos seront lues sans connexion jusqu'à ce que vous vous reconnectiez.
+• La déconnexion déconnecte également cet appareil du site web YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">La connexion Mobile Web a expiré, réessayez de vous connecter à Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Déconnecté de Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView n\'est pas disponible. Installez ou activez-le pour vous connecter</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 est temporairement indisponible (délai d\'attente de l\'API dépassé)</string>
   <string name="morphe_oauth2_connection_failure_status_400">La connexion à Android VR a expiré, réessayez de vous connecter à VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 est temporairement indisponible (statut %s)</string>
@@ -240,7 +262,7 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Notifications de changement de qualité</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary">Affiche une notification lorsqu\'une nouvelle qualité par défaut est enregistrée</string>
   <string name="morphe_video_quality_default_wifi_title">Qualité vidéo par défaut sur le réseau Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Qualité vidéo par défaut sur les données mobiles</string>
+  <string name="morphe_video_quality_default_mobile_title">Qualité vidéo par défaut sur le réseau mobile</string>
   <string name="morphe_remember_video_quality_toast_mobile">Qualité mobile par défaut définie sur : %s</string>
   <string name="morphe_remember_video_quality_toast_wifi">Qualité Wi-Fi par défaut définie sur : %s</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->

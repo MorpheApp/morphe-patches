@@ -167,6 +167,28 @@ Second \"item\" text"</string>
 • Οι ρυθμίσεις του Morphe δεν θα εισάγουν/εξάγουν την ταυτοποίηση Android VR
 • Εάν η εφαρμογή παραμείνει αχρησιμοποίητη για 6 μήνες, η Google θα αφαιρέσει αυτή την ταυτοποίηση
 • Θα χρειαστεί να συνδεθείτε ξανά, εάν αλλάξετε το κωδικό πρόσβασης της Google ή απεγράψετε αυτή την συσκευή από τις ρυθμίσεις της Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Είσοδος μέσω ιστότοπου για κινητά</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Προαιρετικά: συνδεθείτε στον ιστότοπο του YouTube για να αναπαράγετε βίντεο με τον λογαριασμό σας. Πατήστε εδώ για να συνεχίσετε</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Τρέχουσα σύνδεση σε Mobile Web</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Για να χρησιμοποιήσετε αυτή τη δυνατότητα, αλλάξτε το \'Προεπιλεγμένο πρόγραμμα κλייαντ\' σε Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Σύνδεση στο Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Το Mobile Web αναπαράγει βίντεο χωρίς σύνδεση ή με σύνδεση στον ιστότοπο του YouTube
+
+• Με σύνδεση, μπορούν να αναπαραχθούν βίντεο που απαιτούν λογαριασμό, όπως τα βίντεο με περιορισμό ηλικίας
+• Η σελίδα σύνδεσης του Google ανοίγει σε αυτήν την εφαρμογή
+• Η σύνδεση χρησιμοποιείται μόνο για τη λήψη των βίντεο που αναπαράγετε
+• Η σύνδεση αποθηκεύεται μόνο σε αυτή τη συσκευή
+
+Για να συνδεθείτε, πατήστε συνέχεια παρακάτω"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Η σύνδεση αποθηκεύτηκε
+
+• Οι ρυθμίσεις του Morphe δεν θα εισαγάγουν/εξαγάγουν τη σύνδεση στο Mobile Web
+• Εάν η Google τερματίσει τη σύνδεση, τα βίντεο αναπαράγονται χωρίς σύνδεση μέχρι να συνδεθείτε ξανά
+• Η αποσύνδεση αποσυνδέει επίσης αυτή τη συσκευή από τον ιστότοπο του YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Η σύνδεση στο Mobile Web έληξε, προσπαθήστε να συνδεθείτε ξανά στο Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Αποσυνδεθείτε από το Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Το Android System WebView δεν είναι διαθέσιμο. Εγκαταστήστε το ή ενεργοποιήστε το για να συνδεθείτε</string>
   <string name="morphe_oauth2_connection_failure_timeout">Το OAuth2 είναι προσωρινά μη διαθέσιμο (λήξη API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Η σύνδεση Android VR έληξε, προσπαθήστε να συνδεθείτε ξανά στο VR</string>
   <string name="morphe_oauth2_connection_failure_status">Το OAuth2 είναι προσωρινά μη διαθέσιμο (κατάσταση %s)</string>

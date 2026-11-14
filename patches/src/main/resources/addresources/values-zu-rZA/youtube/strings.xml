@@ -522,6 +522,10 @@ Ngemuva kokuvulwa kwevidiyo enenkinobho ethi Buza kanye, le mpawu isebenza kuzo 
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Khombisa isibalo se-like se-thumbnail ye-feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Khombisa iphesenti le-like se-thumbnail ye-feed</string>
+  <string name="morphe_ryd_feed_counts_position_title">Indawo yelayiki le-thumbnail ye-feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Eduze kwezinombolo zokubuka</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Phakathi kwasekunene</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Phezulu kwasekunxele</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Sesha emibhalweni</string>
   <string name="morphe_search_comments_summary">Thinta inkinobho yokusesha emaphawulweni ukuze ubonise kuphela imibono elayishiwe equkethe wonke amagama afunwayo. Faka amagama ezinkomiziyweni ukuze useshe umusho</string>
@@ -1038,6 +1042,8 @@ Ukuze ufike ku-Settings, vula inkinobho ye-Settings nge-General → Toolbar → 
   <string name="morphe_navigation_bar_glass_summary">Ikhombisa i-navigation bar njenge-capsule ehambayo, eyindilinga, futhi ecaca. Ayitholakali nendlela ye-Opaque navigation bar</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Ukuphazima kwe-glass</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Lungisa izinga lokucaca kwe-glass navigation bar (0 kucaca, 100 akucaci)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Ibha lokuzulazula lengilazi eliyindilinga</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Linika ibha lokuzulazula lengilazi iziphetho eziyindilinga, esikhundleni sezona njengokwenye i-miniplayer engilazi</string>
   <string name="morphe_navigation_bar_glass_size_title">Usayizi we-glass navigation bar</string>
   <string name="morphe_navigation_bar_glass_size_summary">Lungisa ubude, ububanzi nesikhala sezinkinobho se-glass navigation bar, ngokubona isibonelo. Izinobho ezingangeni kububanzi besikrini ziyacashwa</string>
   <string name="morphe_navigation_bar_glass_size_height">Ubude</string>
@@ -1378,6 +1384,8 @@ Indlela yokuhlela yezimoto
   <string name="morphe_miniplayer_swipe_up_expand_summary">Ukuswepha i-miniplayer phezulu kuvula umlali, kunokuba i-miniplayer ihambe iye phezulu kwesikrini</string>
   <string name="morphe_miniplayer_docked_title">I-miniplayer elokishwe</string>
   <string name="morphe_miniplayer_docked_summary">Inamathelisa i-miniplayer kuba yingxenye yebha yokuzungeza kanye nezinhlangothi zesikrini, kunokuba ihambe phezu kwawo</string>
+  <string name="morphe_miniplayer_glass_title">I-miniplayer engilazi</string>
+  <string name="morphe_miniplayer_glass_summary">Ibonisa i-miniplayer njengengilazi ebonakalayo enezona eziyindilinga, njengebha lokuzulazula lengilazi. Idinga ibha lokuzulazula lengilazi</string>
   <string name="morphe_miniplayer_type_entry_0">Kukhishwa</string>
   <string name="morphe_miniplayer_type_entry_1">Okujwayelekile</string>
   <string name="morphe_miniplayer_type_entry_2">Okuncane</string>
@@ -1814,6 +1822,8 @@ Ukuqopha ngokuzenzakalelayo kuyinketho. Kuyama ku-incognito noma lapho i-account
   <string name="morphe_niconico_comments_screen_title">Imibhalo ye-Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Khombisa i-live chat kanye ne-chat replay njengemibhalo ehambayo phakathi kwevidiyo</string>
   <string name="morphe_niconico_comments_summary">Khombisa inkinobho engaphezulu kwe-video player. Thinta ukuze ukhombise noma ufihle imibhalo, thinta ubambe ukuze uthole izilungiselelo ezisheshayo</string>
+  <string name="morphe_niconico_comments_pip_title">Khombisa esithombeni-esithombeni</string>
+  <string name="morphe_niconico_comments_pip_summary">Imibono incishiswa ukuze ihambisane newindi</string>
   <string name="morphe_niconico_comments_appearance_title">Ukubonakala</string>
   <string name="morphe_niconico_comments_portrait_category_title">I-Portrait</string>
   <string name="morphe_niconico_comments_video_types_title">Izinhlobo zezividiyo</string>

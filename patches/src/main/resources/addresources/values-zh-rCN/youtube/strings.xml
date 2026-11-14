@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">显示帖子缩略图点赞数</string>
   <string name="morphe_ryd_feed_like_ratio_title">显示帖子缩略图点赞比例</string>
+  <string name="morphe_ryd_feed_counts_position_title">Feed 缩略图点赞位置</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">观看次数旁边</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">右侧中间</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">左上角</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">搜索评论</string>
   <string name="morphe_search_comments_summary">点击评论区的搜索按钮，仅显示包含所有搜索词的已加载评论。将词组放入引号中以搜索短语</string>
@@ -1038,6 +1042,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">将导航栏显示为浮动的、圆角的半透明胶囊形状。在不透明导航栏样式下不可用</string>
   <string name="morphe_navigation_bar_glass_opacity_title">玻璃不透明度</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">调整玻璃导航栏的透明度级别（0 为透明，100 为不透明）</string>
+  <string name="morphe_navigation_bar_glass_round_title">圆角玻璃导航栏</string>
+  <string name="morphe_navigation_bar_glass_round_summary">使玻璃导航栏的两端呈圆弧形，而非像玻璃迷你播放器那样呈圆角</string>
   <string name="morphe_navigation_bar_glass_size_title">玻璃导航栏尺寸</string>
   <string name="morphe_navigation_bar_glass_size_summary">通过预览来调整玻璃导航栏的高度、宽度和按钮间距。超出屏幕宽度的按钮将被隐藏</string>
   <string name="morphe_navigation_bar_glass_size_height">高度</string>
@@ -1378,6 +1384,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">向上滑动迷你播放器将展开播放器，而不是将迷你播放器移动到屏幕顶部</string>
   <string name="morphe_miniplayer_docked_title">停靠迷你播放器</string>
   <string name="morphe_miniplayer_docked_summary">将迷你播放器附加到导航栏和屏幕边缘，而不是漂浮在上方</string>
+  <string name="morphe_miniplayer_glass_title">玻璃迷你播放器</string>
+  <string name="morphe_miniplayer_glass_summary">将迷你播放器显示为带有圆角的半透明玻璃效果，类似于玻璃导航栏。需要开启玻璃导航栏</string>
   <string name="morphe_miniplayer_type_entry_0">已禁用</string>
   <string name="morphe_miniplayer_type_entry_1">默认</string>
   <string name="morphe_miniplayer_type_entry_2">极简</string>
@@ -1814,6 +1822,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Niconico 弹幕</string>
   <string name="morphe_niconico_comments_screen_summary">将实时聊天和聊天回放以在视频上滚动弹幕的形式显示</string>
   <string name="morphe_niconico_comments_summary">在视频播放器中显示一个叠加按钮。点击以显示或隐藏弹幕，长按进入快速设置</string>
+  <string name="morphe_niconico_comments_pip_title">在画中画中显示</string>
+  <string name="morphe_niconico_comments_pip_summary">评论已缩放以适应窗口</string>
   <string name="morphe_niconico_comments_appearance_title">外观</string>
   <string name="morphe_niconico_comments_portrait_category_title">纵向显示</string>
   <string name="morphe_niconico_comments_video_types_title">视频类型</string>

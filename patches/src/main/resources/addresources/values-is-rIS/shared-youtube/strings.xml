@@ -167,6 +167,28 @@ Til að skrá þig inn ýttu á Halda áfram hér að neðan"</string>
 • Morphe stillingar flytja ekki út eða inn Android VR auðkenningu
 • Ef þetta forrit er ekki notað í 6 mánuði mun Google fjarlægja þessa auðkenningu
 • Þú þarft að skrá þig inn aftur ef þú breytir Google lykilorðinu þínu eða afskráir þetta tæki í Google stillingum þínum"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Innskráning í vefútgáfu fyrir farsíma</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valfrjáls: skráðu þig inn á YouTube vefsíðuna til að spila myndbönd með reikningnum þínum. Ýttu hér til að halda áfram</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in"> núna skráð inn á Mobile Web</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Til að nota þennan eiginleika skaltu breyta \'Sjálfgefnum biðlara\' í Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Skráðu þig inn á Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web spilar myndböndum án innskráningar eða þegar skráð er inn á YouTube vefsíðuna
+
+• Ef skráð er inn er hægt að spila myndbönd sem krefjast reiknings, svo sem aldurstakmörkuð myndbönd
+• Innskráningarsíða Google opnast í þessari forrit
+• Innskráningin er eingöngu notuð til að fá myndböndin sem þú spilar
+• Innskráningin er aðeins vistuð á þessu tæki
+
+Til að skrá þig inn skaltu ýta á halda áfram hér að neðan"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Innskráning vistuð
+
+• Stillingar Morphe munu ekki flytja inn/út innskráningu á farsímavefnum
+• Ef Google lýkur innskráningunni eru myndbönd spiluð án innskráningar þar til þú skráir þig inn aftur
+• Með því að skrá þig út skráir þú þessu tæki einnig út af YouTube vefsíðunni"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Innskráning á farsímavefnum er runnin út, reyndu að skrá þig inn á farsímavefnum aftur</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Útskráð af farsímavefnum</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView er ekki aðgengilegt. Uppsetja eða virkja það til að skrá þig inn</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er tímabundið ekki tiltækt (API rann út á tíma)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Innskráning á Android VR er runnin út, reyndu að skrá þig inn á VR aftur</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 er tímabundið ekki tiltækt (staða %s)</string>

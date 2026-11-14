@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">피드 썸네일에 좋아요 수 표시하기</string>
   <string name="morphe_ryd_feed_like_ratio_title">피드 썸네일에 좋아요 비율 표시하기</string>
+  <string name="morphe_ryd_feed_counts_position_title">피드 썸네일 좋아요 위치</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">조회수 옆</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">중앙 오른쪽</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">왼쪽 상단</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">댓글 검색</string>
   <string name="morphe_search_comments_summary">댓글에서 검색 버튼을 탭하면 현재 불러온 댓글 중 검색한 단어가 모두 포함된 댓글만 표시됩니다. 구문을 검색하려면 단어를 따옴표로 묶으세요</string>
@@ -1040,6 +1044,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_navigation_bar_glass_summary">하단바를 플로팅 형태의 둥근 반투명 캡슐 모양으로 표시합니다. 불투명 하단바 스타일에서는 사용할 수 없습니다</string>
   <string name="morphe_navigation_bar_glass_opacity_title">글래스 불투명도</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">글래스 하단바의 투명도를 설정할 수 있습니다 (0: 완전 투명, 100: 완전 불투명)</string>
+  <string name="morphe_navigation_bar_glass_round_title">라운드 글래스 하단바</string>
+  <string name="morphe_navigation_bar_glass_round_summary">글래스 미니 플레이어처럼 모서리가 있는 대신, 글래스 하단바의 양 끝을 둥글게 만듭니다</string>
   <string name="morphe_navigation_bar_glass_size_title">글래스 내비게이션 바 크기</string>
   <string name="morphe_navigation_bar_glass_size_summary">미리보기를 통해 글래스 내비게이션 바의 높이, 너비 및 버튼 간격을 조정합니다. 화면 너비에 맞지 않는 버튼은 숨겨집니다</string>
   <string name="morphe_navigation_bar_glass_size_height">높이</string>
@@ -1379,6 +1385,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_miniplayer_swipe_up_expand_summary">미니 플레이어를 위로 스와이프하면 화면 상단으로 이동하는 대신 플레이어가 펼쳐집니다</string>
   <string name="morphe_miniplayer_docked_title">하단 고정 미니 플레이어</string>
   <string name="morphe_miniplayer_docked_summary">미니 플레이어가 화면 위에 떠 있는 대신 하단바와 화면 양쪽 가장자리에 맞닿도록 고정됩니다</string>
+  <string name="morphe_miniplayer_glass_title">글래스 미니 플레이어</string>
+  <string name="morphe_miniplayer_glass_summary">글래스 하단바와 같이 미니 플레이어를 모서리가 둥근 반투명 글래스 형태로 표시합니다. 글래스 하단바 설정이 필요합니다</string>
   <string name="morphe_miniplayer_type_entry_0">사용 안함</string>
   <string name="morphe_miniplayer_type_entry_1">기본값</string>
   <string name="morphe_miniplayer_type_entry_2">최소화 1</string>
@@ -1815,6 +1823,8 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_niconico_comments_screen_title">Niconico 댓글</string>
   <string name="morphe_niconico_comments_screen_summary">실시간 채팅과 채팅 다시보기를 동영상 위로 흘러가는 댓글로 표시합니다</string>
   <string name="morphe_niconico_comments_summary">동영상 플레이어에 오버레이 버튼을 표시합니다. 버튼을 탭하면 댓글을 표시하거나 숨길 수 있으며, 길게 탭하면 빠른 설정을 열 수 있습니다</string>
+  <string name="morphe_niconico_comments_pip_title">PIP 모드에 표시하기</string>
+  <string name="morphe_niconico_comments_pip_summary">창 크기에 맞춰 댓글 크기가 조정됩니다</string>
   <string name="morphe_niconico_comments_appearance_title">디자인</string>
   <string name="morphe_niconico_comments_portrait_category_title">세로 모드</string>
   <string name="morphe_niconico_comments_video_types_title">동영상 유형</string>

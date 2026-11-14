@@ -522,6 +522,10 @@ Ask የሚለው ቁልፍ ያለው ቪዲዮ አንዴ ከተከፈተ በኋ�
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">የፊድ ታምብነል የላይክ ብዛትን አሳይ</string>
   <string name="morphe_ryd_feed_like_ratio_title">የፊድ ታምብነል የላይክ መቶኛን አሳይ</string>
+  <string name="morphe_ryd_feed_counts_position_title">የፊድ ታምብኔል ላይክ ቦታ</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">ከዕይታ ብዛት ጎን</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">መሃል በቀኝ በኩል</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">ላይ በግራ በኩል</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">አስተያየቶችን ፈልግ</string>
   <string name="morphe_search_comments_summary">የተፈለጉትን ቃላት ሁሉ የያዙትን የተጫኑ አስተያየቶች ብቻ ለማሳየት በአስተያየቶች ውስጥ የፍለጋ ቁልፉን ይጫኑ። ሀረግን ለመፈለግ ቃላቱን በጥቅስ ምልክት ውስጥ ያስቀምጡ</string>
@@ -1038,6 +1042,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_navigation_bar_glass_summary">የአሰሳ አሞሌውን እንደ ተንሳፋፊ፣ ክብ እና ግልጽ ካፕሱል ያሳያል። ከደመቀው የአሰሳ አሞሌ ስታይል ጋር አይሰራም</string>
   <string name="morphe_navigation_bar_glass_opacity_title">የብርጭቆ ግልጽነት</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">የብርጭቆ አሰሳ አሞሌውን የግልጽነት ደረጃ ያስተካክሉ (0 ግልጽ ነው፣ 100 ድፍን ነው)</string>
+  <string name="morphe_navigation_bar_glass_round_title">ክብ የብርጭቆ የናቪጌሽን ባር</string>
+  <string name="morphe_navigation_bar_glass_round_summary">እንደ ብርጭቆው ሚኒ ፕሌየር ዓይነት ማዕዘኖች ከመሆን ይልቅ የብርጭቆ የናቪጌሽን ባር እንዲያበኩ ያደርጋል</string>
   <string name="morphe_navigation_bar_glass_size_title">የብርጭቆ ናቪጌሽን ባር መጠን</string>
   <string name="morphe_navigation_bar_glass_size_summary">የብርጭቆ ናቪጌሽን ባርን ቁመት፣ ስፋት እና የቁልፎች ክፍተት በቅድመ እይታ ያስተካክሉ። በስክሪኑ ስፋት ውስጥ የማይገቡ ቁልፎች ይደበቃሉ</string>
   <string name="morphe_navigation_bar_glass_size_height">ቁመት</string>
@@ -1378,6 +1384,8 @@ OpenRouter.aiን ለመክፈት እዚህ ይጫኑ"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">ሚኒ ፕሌየሩን ወደ ላይ ማንሸራተት፣ ሚኒ ፕሌየሩን ወደ ስክሪኑ አናት ከማንቀሳቀስ ይልቅ ፕሌየሩን ያስፋፋዋል</string>
   <string name="morphe_miniplayer_docked_title">የተያያዘ ሚኒ ፕሌየር</string>
   <string name="morphe_miniplayer_docked_summary">ሚኒ ፕሌየሩ ከናቪጌሽን ባሩ እና ከስክሪኑ ጎኖች በላይ ተንሳፋፊ ከመሆን ይልቅ ከእነሱ ጋር እንዲያያዝ ያደርጋል</string>
+  <string name="morphe_miniplayer_glass_title">የብርጭቆ ሚኒ ፕሌየር</string>
+  <string name="morphe_miniplayer_glass_summary">ልክ እንደ ብርጭቆ የናቪጌሽን ባር ሁሉ ሚኒ ፕሌየሩን በክብ ማዕዘኖች ከታች የሚታይ ብርጭቆ አድርጎ ያሳያል። የብርጭቆ የናቪጌሽን ባር ያስፈልገዋል</string>
   <string name="morphe_miniplayer_type_entry_0">ተዘግቷል</string>
   <string name="morphe_miniplayer_type_entry_1">መደበኛ</string>
   <string name="morphe_miniplayer_type_entry_2">ሚኒማሊስት</string>
@@ -1814,6 +1822,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">የNiconico አስተያየቶች</string>
   <string name="morphe_niconico_comments_screen_summary">የቀጥታ ውይይት እና የውይይት መልሶ ማጫወቻዎችን በቪዲዮው ላይ ተንሸራታች አስተያየቶች አድርጎ ያሳያል</string>
   <string name="morphe_niconico_comments_summary">በቪዲዮ ማጫወቻው ላይ የተደራራቢ ቁልፍ ያሳያል። አስተያየቶቹን ለማሳየት ወይም ለመደበቅ ይጫኑ፣ ለፈጣን ቅንብሮች ደግሞ ተጭነው ይያዙ</string>
+  <string name="morphe_niconico_comments_pip_title">በስዕል በስዕል ውስጥ አሳይ</string>
+  <string name="morphe_niconico_comments_pip_summary">ትያቄዎች ከዊንዶው ጋር እንዲመጣጠኑ ተደርገው ይቀንሳሉ</string>
   <string name="morphe_niconico_comments_appearance_title">ገጽታ</string>
   <string name="morphe_niconico_comments_portrait_category_title">ቁመት</string>
   <string name="morphe_niconico_comments_video_types_title">የቪዲዮ አይነቶች</string>

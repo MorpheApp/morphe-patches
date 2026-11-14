@@ -167,6 +167,28 @@ Untuk log masuk, tekan teruskan di bawah"</string>
 • Tetapan Morphe anda tidak akan mengimport/mengeksport pengesahan Android VR
 • Jika aplikasi ini tidak digunakan selama 6 bulan, Google akan membuang pengesahan ini
 • Anda perlu log masuk semula jika anda menukar kata laluan Google anda atau menyahdaftar peranti ini daripada tetapan Google anda"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Log masuk Web Mudah Alih</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Pilihan: log masuk ke laman web YouTube untuk memainkan video dengan akaun anda. Ketik di sini untuk meneruskan</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kini log masuk ke Web Mudah Alih</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Untuk menggunakan ciri ini, tukar \'Klien lalai\' kepada Web Mudah Alih</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Log masuk ke Web Mudah Alih</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web Mudah Alih memainkan video tanpa log masuk, atau log masuk ke laman web YouTube
+
+• Jika log masuk, video yang memerlukan akaun boleh dimainkan, seperti video yang dihadkan umur
+• Halaman log masuk Google dibuka dalam apl ini
+• Log masuk digunakan hanya untuk mendapatkan video yang anda mainkan
+• Log masuk hanya disimpan pada peranti ini
+
+Untuk log masuk, tekan teruskan di bawah"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Log masuk disimpan
+
+• Tetapan Morphe anda tidak akan mengimport/mengeksport log masuk Web Mudah Alih
+• Jika Google menamatkan log masuk, video dimainkan tanpa log masuk sehingga anda log masuk semula
+• Log keluar juga akan mengeluarkan peranti ini daripada laman web YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Log masuk Web Mudah Alih telah tamat tempoh, cuba log masuk ke Web Mudah Alih sekali lagi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Log keluar daripada Web Mudah Alih</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView tidak tersedia. Pasang atau dayakannya untuk log masuk</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 tidak tersedia buat sementara waktu (API tamat masa)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Log masuk VR Android telah tamat tempoh, cuba log masuk ke VR sekali lagi</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 tidak tersedia buat sementara waktu (status %s)</string>

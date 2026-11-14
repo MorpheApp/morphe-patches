@@ -167,6 +167,28 @@ Tryck på Fortsätt nedan för att logga in"</string>
 • Dina Morphe-inställningar importerar och exporterar inte Android VR-autentiseringen
 • Om den här appen inte används på 6 månader tar Google bort den här autentiseringen
 • Du måste logga in igen om du ändrar ditt Google-lösenord eller avregistrerar den här enheten i dina Google-inställningar"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logga in via mobilwebb</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valfritt: logga in på YouTubes webbplats för att spela upp videor med ditt konto. Tryck här för att fortsätta</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">För närvarande inloggad i mobilwebb</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Om du vill använda den här funktionen ändrar du \"Standardklient\" till Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logga in på Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobilwebben spelar upp videor när du är utloggad eller inloggad på YouTubes webbplats
+
+• Om du är inloggad kan videor som kräver ett konto spelas upp, till exempel åldersbegränsade videor
+• Googles inloggningssida öppnas i den här appen
+• Inloggningen används endast för att hämta videorna du spelar upp
+• Inloggningen sparas endast på den här enheten
+
+För att logga in trycker du på fortsätt nedan"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Inloggning sparad
+
+• Dina Morphe-inställningar kommer inte att importera/exportera inloggningen för mobilwebben
+• Om Google avslutar inloggningen spelas videor upp utan inloggning tills du loggar in igen
+• Utloggning loggar även ut den här enheten från YouTubes webbplats"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Inloggningen för mobilwebben har gått ut. Försök logga in på mobilwebben igen</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Utloggad från mobilwebben</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView är inte tillgänglig. Installera eller aktivera den för att logga in</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 är för tillfället inte tillgängligt (API-tidsgräns nådd)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR-inloggningen har gått ut. Försök logga in i VR igen</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 är för tillfället inte tillgängligt (status %s)</string>

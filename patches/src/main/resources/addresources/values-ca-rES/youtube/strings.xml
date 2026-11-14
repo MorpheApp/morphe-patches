@@ -522,6 +522,10 @@ Un cop s'ha obert un vídeo amb el botó Ask, la funció funciona amb tots els v
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Mostrar el recompte de m\'agrada de la miniatura del feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Mostrar el percentatge de m\'agrada de la miniatura del feed</string>
+  <string name="morphe_ryd_feed_counts_position_title">Posició del like de la miniatura del feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Al costat del recompte de visualitzacions</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Centre dreta</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Superior esquerra</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Cercar comentaris</string>
   <string name="morphe_search_comments_summary">Toqueu el botó de cerca dels comentaris per mostrar només els comentaris carregats que contenguin totes les paraules cercades. Poseu les paraules entre cometes per cercar una frase</string>
@@ -1037,6 +1041,8 @@ Per accedir a la Configuració, activeu el botó de Configuració a través de G
   <string name="morphe_navigation_bar_glass_summary">Mostra la barra de navegació com una càpsula flotant, arrodonida i translúcida. No està disponible amb l\'estil de barra de navegació opaca</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacitat del vidre</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Ajusta el nivell de transparència de la barra de navegació de vidre (0 és transparent, 100 és opac)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Barra de navegació de vid arrodonida</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Dona a la barra de navegació de vid extrems arrodonits, en lloc de cantonades com el miniplayer de vid</string>
   <string name="morphe_navigation_bar_glass_size_title">Mida de la barra de navegació de vidre</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajusta l\'alçada, l\'amplada i l\'espaiat dels botons de la barra de navegació de vidre, amb una vista prèvia. Els botons que no caben a l\'amplada de la pantalla es solen ocultar</string>
   <string name="morphe_navigation_bar_glass_size_height">Alçada</string>
@@ -1377,6 +1383,8 @@ Disseny d'automoció
   <string name="morphe_miniplayer_swipe_up_expand_summary">Desllisar el mini-reproductor cap amunt expandeix el reproductor, en lloc de moure el mini-reproductor a la part superior de la pantalla</string>
   <string name="morphe_miniplayer_docked_title">Mini-reproductor fixat</string>
   <string name="morphe_miniplayer_docked_summary">Fixa el mini-reproductor a la barra de navegació i als costats de la pantalla, en lloc de flotar per sobre d\'ells</string>
+  <string name="morphe_miniplayer_glass_title">Miniplayer de vid</string>
+  <string name="morphe_miniplayer_glass_summary">Mostra el miniplayer com a vid translúcid amb cantonades arrodonides, com la barra de navegació de vid. Requereix la barra de navegació de vid</string>
   <string name="morphe_miniplayer_type_entry_0">Desactivat</string>
   <string name="morphe_miniplayer_type_entry_1">Per defecte</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalista</string>
@@ -1813,6 +1821,8 @@ El registre automàtic és opcional. S'atura en mode incògnit o quan canvia el 
   <string name="morphe_niconico_comments_screen_title">Comentaris de Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Mostra el xat en directe i la repetició del xat com a comentaris que desllisen per sobre del vídeo</string>
   <string name="morphe_niconico_comments_summary">Mostra un botó superposat al reproductor de vídeo. Toqueu per mostrar o ocultar els comentaris, mantingueu premut per a la configuració ràpida</string>
+  <string name="morphe_niconico_comments_pip_title">Mostrar en el mode picture-in-picture</string>
+  <string name="morphe_niconico_comments_pip_summary">Els comentaris s\'estaleixen per encaixar a la finestra</string>
   <string name="morphe_niconico_comments_appearance_title">Aparienció</string>
   <string name="morphe_niconico_comments_portrait_category_title">Retrat</string>
   <string name="morphe_niconico_comments_video_types_title">Tipus de vídeo</string>

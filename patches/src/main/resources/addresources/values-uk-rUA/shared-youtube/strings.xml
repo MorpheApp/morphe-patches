@@ -127,12 +127,12 @@ Second \"item\" text"</string>
 
 Для відтворення відео потрібен Android System WebView. Увімкніть його та оновіть до останньої версії.
 
-Натисніть ОК, щоб відкрити Android System WebView."</string>
-  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Версія Android System WebView застаріла (версія %s).
+Натисніть OK, щоб відкрити Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView застарів (версія %s).
 
-Відтворення відео може бути недоступним, доки Android System WebView не буде оновлено до останньої версії.
+Відтворення відео може не працювати, доки Android System WebView не буде оновлено до останньої версії.
 
-Натисніть ОК, щоб відкрити Android System WebView."</string>
+Натисніть OK, щоб відкрити Android System WebView."</string>
   <string name="morphe_spoof_video_streams_webview_dialog_ignore">Більше не показувати</string>
   <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView не встановлено. Встановіть його, щоб виправити відтворення відео</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
@@ -167,6 +167,28 @@ Second \"item\" text"</string>
 • Налаштування Morphe не імпортують/експортують автентифікацію Android VR
 • Якщо застосунок не використовується 6 місяців, Google видалить цю автентифікацію
 • Вам потрібно буде увійти знову, якщо ви зміните пароль Google або скасуєте реєстрацію цього пристрою в налаштуваннях Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Вхід через мобільну версію вебсайту</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Необовково: увійдіть у вебсайт YouTube, щоб відтворювати відео за допомогою свого облікового запису. Натисніть тут, щоб продовжити</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Наразі ви ввійшли в Mobile Web</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Щоб використовувати цю функцію, змініть \"Типовий клієнт\" на Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Увійдіть у Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web відтворює відео без авторизації або після входу на вебсайт YouTube
+
+• Після входу можна відтворювати відео, що потребують облікового запису, наприклад, відео з віковими обмеженнями
+• Сторінка входу в Google відкривається в цій програмі
+• Авторизація використовується лише для отримання відео, які ви відтворюєте
+• Дані про вхід зберігаються лише на цьому пристрої
+
+Щоб увійти, натисніть \"Продовжити\" нижче"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Вхід збережено
+
+• Ваші налаштування Morphe не будуть імпортувати/експортувати вхід у мобільну вебверсію
+• Якщо Google завершить сеанс входу, відео відтворюватимуться без авторизації, доки ви не увійдете знову
+• Вихід із системи також вийде з облікового запису на вебсайті YouTube на цьому пристрої"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Термін дії входу в мобільну вебверсію закінчився. Спробуйте ввійти в мобільну вебверсію ще раз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Вихід із мобільної вебверсії</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView недоступний. Встановіть або увімкніть його, щоб увійти в систему</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 тимчасово недоступний (тайм-аут API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Термін дії входу в Android VR закінчився. Спробуйте ввійти у VR ще раз</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 тимчасово недоступний (статус %s)</string>
@@ -235,7 +257,7 @@ Second \"item\" text"</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Авто</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Запам’ятовувати якість відео</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Запам\'ятовувати якість відео</string>
   <string name="morphe_remember_video_quality_last_selected_summary">Застосовує вибраний рівень якості до всіх наступних відео</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">Сповіщення про зміну якості</string>
   <string name="morphe_remember_video_quality_last_selected_toast_summary">Показує сповіщення при збереженні нової типової якості</string>
@@ -248,14 +270,14 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary">Відкриває системне меню поширення замість вбудованого при поширенні контенту</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Журнал Litho</string>
-  <string name="morphe_debug_litho_entry_disabled">Вимкнена</string>
+  <string name="morphe_debug_litho_entry_disabled">Вимкнено</string>
   <string name="morphe_debug_litho_entry_path">Шлях</string>
   <string name="morphe_debug_litho_entry_path_and_buffer">Шлях і буфер</string>
-  <string name="morphe_debug_litho_user_dialog_message">"Журналювання Litho реєструє компоненти макета програми, включно з текстом на екрані для деяких компонентів інтерфейсу.
+  <string name="morphe_debug_litho_user_dialog_message">"Журналювання Litho записує компоненти макета застосунку, зокрема текст на екрані для деяких компонентів інтерфейсу.
 
-Це може допомогти визначити компоненти при створенні власних фільтрів.
+Це може допомогти визначити компоненти під час створення власних фільтрів.
 
-Однак це також призведе до реєстрації деяких даних користувача, наприклад вашої IP-адреси"</string>
+Однак також буде записано деякі дані користувача, наприклад вашу IP-адресу"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">Власний фільтр</string>
   <string name="morphe_custom_filter_screen_summary">Налаштуйте власні фільтри для приховування будь-яких елементів</string>

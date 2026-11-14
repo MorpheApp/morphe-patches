@@ -167,6 +167,28 @@ Second \"item\" text"</string>
 • თქვენი Morphe-ის პარამეტრები არ მოახდენს Android VR ავთენტიფიკაციის იმპორტს/ექსპორტს
 • თუ ეს აპლიკაცია 6 თვის განმავლობაში არ იქნება გამოყენებული, Google წაშლის ამ ავთენტიფიკაციას
 • დაგჭირდებათ ხელახლა ავტორიზაცია, თუ შეცვლით Google-ის პაროლს ან წაშლით ამ მოწყობილობას თქვენი Google-ის პარამეტრებიდან"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">შესვლა მობილური ვებგვერდიდან</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">სურვილისამებრ: შედით YouTube-ის ვებგვერდზე, რათა ვიდეოები თქვენი ანგარიშით ჩართოთ. გასაგრძელებლად დააჭირეთ აქ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ამჟამად შესული ხართ მობილურ ვებგვერდზე</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">ამ ფუნქციის გამოსაყენებლად, შეცვალეთ \'ნაგულისხმევი კლიენტი\' Mobile Web-ით</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">შესვლა Mobile Web-ში</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web ეთამაშება ვიდეოებს სისტემიდან გამოსვლილ მდგომარეობაში, ან YouTube-ის ვებგვერდზე შესვლის შემდეგ
+
+• შესვლის შემთხვევაში, შესაძლებელია იმ ვიდეოების გაშვება, რომლებიც ანგარიშს საჭიროებენ, მაგალითად, ასაკობრივი შეზღუდვის მქონე ვიდეოები
+• Google-ის ავტორიზაციის გვერდი იხსნება ამ აპლიკაციაში
+• ავტორიზაცია გამოიყენება მხოლოდ თქვენ მიერ გაშვებული ვიდეოების მისაღებად
+• ავტორიზაცია ინახება მხოლოდ ამ მოწყობილობაზე
+
+შესასვლელად, დააჭირეთ ქვემოთ მოცემულ ღილაკს 'გაგრძელება'"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ავტორიზაცია შენახულია
+
+• თქვენი Morphe-ის პარამეტრები არ განახორციელებს Mobile Web-ის ავტორიზაციის იმპორტს/ექსპორტს
+• თუ Google გააწყვეტინებს სესიას, ვიდეოები ჩაირთვება სისტემიდან გამოსვლილ მდგომარეობაში, სანამ ხელახლა არ შეხვალთ
+• სისტემიდან გამოსვლა ასევე გათიშავს ამ მოწყობილობის ავტორიზაციას YouTube-ის ვებგვერდზე"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">მობილური ვებგვერდის ავტორიზაციის ვადა ი หมดრუნდა, სცადეთ ხელახლა შესვლა მობილურ ვებგვერდზე</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">გადმოხვედით მობილური ვებგვერდიდან</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView недоступен. ავტორიზაციისთვის დააინსტალირეთ ან ჩართეთ იგი</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 დროებით მიუწვდომელია (API-ს დრო დასრულდა)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR-ის ავტორიზაციის ვადა ამოიწურა, სცადეთ VR-ში ხელახლა შესვლა</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 დროებით მიუწვდომელია (სტატუსი %s)</string>

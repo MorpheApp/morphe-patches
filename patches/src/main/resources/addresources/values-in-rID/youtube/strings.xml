@@ -522,6 +522,10 @@ Setelah video dengan tombol Tanya dibuka satu kali, fitur ini berfungsi untuk se
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Tampilkan jumlah suka pada thumbnail feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Tampilkan persentase suka pada thumbnail feed</string>
+  <string name="morphe_ryd_feed_counts_position_title">Posisi suka thumbnail feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Di samping jumlah penayangan</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Tengah kanan</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Kiri atas</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Cari komentar</string>
   <string name="morphe_search_comments_summary">Ketuk tombol cari di komentar untuk menampilkan hanya komentar yang dimuat yang mengandung semua kata yang dicari. Gunakan tanda kutip pada kata untuk mencari frasa</string>
@@ -1038,6 +1042,8 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_navigation_bar_glass_summary">Menampilkan bilah navigasi sebagai kapsul transparan, bulat, dan mengambang. Tidak tersedia dengan gaya bilah navigasi Buram</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opasitas kaca</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Sesuaikan level transparansi bilah navigasi kaca (0 adalah transparan, 100 adalah solid)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Bilah navigasi kaca bulat</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Memberikan ujung bulat pada bilah navigasi kaca, bukan sudut seperti miniplayer kaca</string>
   <string name="morphe_navigation_bar_glass_size_title">Ukuran bilah navigasi kaca</string>
   <string name="morphe_navigation_bar_glass_size_summary">Sesuaikan tinggi, lebar, dan jarak tombol bilah navigasi kaca, lengkap dengan pratinjau. Tombol yang tidak muat dalam lebar layar akan disembunyikan</string>
   <string name="morphe_navigation_bar_glass_size_height">Tinggi</string>
@@ -1377,6 +1383,8 @@ Tata letak Otomotif
   <string name="morphe_miniplayer_swipe_up_expand_summary">Mengusap miniplayer ke atas akan memperluas pemutar, alih-alih memindahkan miniplayer ke bagian atas layar</string>
   <string name="morphe_miniplayer_docked_title">Miniplayer tertambat</string>
   <string name="morphe_miniplayer_docked_summary">Menempelkan miniplayer ke bilah navigasi dan sisi layar, alih-alih mengapung di atasnya</string>
+  <string name="morphe_miniplayer_glass_title">Miniplayer kaca</string>
+  <string name="morphe_miniplayer_glass_summary">Menampilkan miniplayer sebagai kaca transparan dengan sudut bulat, seperti bilah navigasi kaca. Memerlukan bilah navigasi kaca</string>
   <string name="morphe_miniplayer_type_entry_0">Dinonaktifkan</string>
   <string name="morphe_miniplayer_type_entry_1">Bawaan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1813,6 +1821,8 @@ Pencatatan otomatis bersifat opsional. Pencatatan berhenti dalam mode penyamaran
   <string name="morphe_niconico_comments_screen_title">Komentar Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Tampilkan live chat dan putar ulang chat sebagai komentar yang bergulir di sepanjang video</string>
   <string name="morphe_niconico_comments_summary">Menampilkan tombol hamparan di pemutar video. Ketuk untuk menampilkan atau menyembunyikan komentar, ketuk dan tahan untuk setelan cepat</string>
+  <string name="morphe_niconico_comments_pip_title">Tampilkan dalam gambar-dalam-gambar</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentar diperkecil agar pas dengan jendela</string>
   <string name="morphe_niconico_comments_appearance_title">Tampilan</string>
   <string name="morphe_niconico_comments_portrait_category_title">Potret</string>
   <string name="morphe_niconico_comments_video_types_title">Tipe video</string>

@@ -167,6 +167,28 @@ A bejelentkezéshez nyomd meg lent a folytatást"</string>
 • A Morphe-beállítások exportálása és importálása nem tartalmazza az Android VR-hitelesítést
 • Ha ez az alkalmazás 6 hónapig nem használatos, a Google eltávolítja a hitelesítést
 • Újra be kell jelentkeznie, ha megváltoztatja a Google-jelszavát, vagy eltávolítja ezt az eszközt a Google-beállításaiból"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Bejelentkezés mobilweben</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcionális: jelentkezz be a YouTube weboldalára, hogy a fiókoddal játszass videókat. Koppints ide a folytatáshoz</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Jelenleg mobilweben bejelentkezve</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ennek a funkciónak a használatához állítsa az \"Alapértelmezett kliens\" beállítást Mobil webre</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Jelentkezzen be a Mobil webbe</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"A Mobil web kijelentkezett állapotban, vagy a YouTube weboldalra bejelentkezve játszítja le a videókat
+
+• Bejelentkezve lejtszathatók a fiókot igénylő videók, például a korlátozott korhatárú videók
+• A Google bejelentkezési oldala ebben az alkalmazásban nyílik meg
+• A bejelentkezést csak a lejátszott videók lekérézésére használják
+• A bejelentkezési adatok csak ezen a készüléken lesznek mentve
+
+A bejelentkezéshez nyomja meg alul a folytatás gombot"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Bejelentkezés mentve
+
+• A Morphe beállításai nem importálják/exportálják a mobil webes bejelentkezést
+• Ha a Google befejezi a bejelentkezést, a videók kijelentkezett állapotban futnak, amíg újra be nem jelentkezesz
+• A kijelentkezés ezt az eszközt kijelentkezteti a YouTube weboldaláról is"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">A mobil webes bejelentkezés lejárt, próbáld meg újra bejelentkezni a mobil webes felületre</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Kijelentkezés a mobil webes felületről</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Az Android System WebView nem érhető el. Telepítsd vagy engedélyezd a bejelentkezéshez</string>
   <string name="morphe_oauth2_connection_failure_timeout">Az OAuth2 átmenetileg nem elérhető (az API időtúllépés miatt)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Az Android VR-bejelentkezés lejárt, próbáld meg újra bejelentkezni a VR-ba</string>
   <string name="morphe_oauth2_connection_failure_status">Az OAuth2 átmenetileg nem érhető el (státusz: %s)</string>

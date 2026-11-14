@@ -522,6 +522,10 @@ Kerran kun video \"Kysy\"-painikkeella avataan, ominaisuus toimii kaikkien video
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Näytä syötteen pikkukuvan tykkäysmäärä</string>
   <string name="morphe_ryd_feed_like_ratio_title">Näytä syötteen pikkukuvan tykkäysprosentti</string>
+  <string name="morphe_ryd_feed_counts_position_title">Syötteen pikkukuvan tykkäyspainikkeen sijainti</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Katselukertojen vieressä</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Keskellä oikealla</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Ylhäällä vasemmalla</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Hae kommenteista</string>
   <string name="morphe_search_comments_summary">Napauta kommenttien hakupainiketta näyttääksesi vain ladatut kommentit, jotka sisältävät kaikki hakusanat. Laita sanat lainausmerkkeihin hakeaksesi tiettyä fraasia</string>
@@ -1037,6 +1041,8 @@ Päästäksesi Asetuksiin, ota Asetukset-painike käyttöön kohdasta Yleiset �
   <string name="morphe_navigation_bar_glass_summary">Näyttää navigointipalkin kelluvana, pyöristettynä ja läpinäkyvänä kapselina. Ei käytettävissä läpinäkymättömän navigointipalkin tyylin kanssa</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Lasin läpinäkymättömyys</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Säädä lasimaisen navigointipalkin läpinäkyvyystasoa (0 on läpinäkyvä, 100 on läpinäkymätön)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Pyöristetty lasinen navigointipalkki</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Antaa lasiselle navigointipalkille pyöristetyt päät lasisen minisoittimen kulmien sijaan</string>
   <string name="morphe_navigation_bar_glass_size_title">Lasisen navigointipalkin koko</string>
   <string name="morphe_navigation_bar_glass_size_summary">Säädä lasisen navigointipalkin korkeutta, leveyttä ja painikkeiden välistä etäisyyttä esikatselun avulla. Painikkeet, jotka eivät mahdu näytön leveyteen, piilotetaan</string>
   <string name="morphe_navigation_bar_glass_size_height">Korkeus</string>
@@ -1377,6 +1383,8 @@ Auton asettelu
   <string name="morphe_miniplayer_swipe_up_expand_summary">Minisoittimen pyyhkäiseminen ylöspäin laajentaa soittimen sen sijaan, että minisoitin siirtyisi näytön yläreunaan</string>
   <string name="morphe_miniplayer_docked_title">Kiinnitetty minisoitin</string>
   <string name="morphe_miniplayer_docked_summary">Kiinnittää minisoittimen navigointipalkkiin ja näytön reunojen viereen sen sijaan, että se leijuisi niiden päällä</string>
+  <string name="morphe_miniplayer_glass_title">Lasinen minisoitin</string>
+  <string name="morphe_miniplayer_glass_summary">Näyttää minisoittimen läpinäkyvänä lasina pyöristetyillä kulmilla, kuten lasinen navigointipalkki. Vaatii lasisen navigointipalkin</string>
   <string name="morphe_miniplayer_type_entry_0">Pois käytöstä</string>
   <string name="morphe_miniplayer_type_entry_1">Oletus</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaalinen</string>
@@ -1813,6 +1821,8 @@ Automaattinen tallennus on valinnaista. Se pysähtyy Incognito-tilassa tai tilin
   <string name="morphe_niconico_comments_screen_title">Niconico-kommentit</string>
   <string name="morphe_niconico_comments_screen_summary">Näytä live-chat ja chatin toisto kommenteina, jotka rullaavat videon yli</string>
   <string name="morphe_niconico_comments_summary">Näyttää peittopainikkeen videosoittimessa. Napauta näyttääksesi tai piilottaaksesi kommentit, napauta ja pidä painettuna pika-asetuksia varten</string>
+  <string name="morphe_niconico_comments_pip_title">Näytä kuva kuvassa -tilassa</string>
+  <string name="morphe_niconico_comments_pip_summary">Kommentit skaalataan ikkunan kokoon</string>
   <string name="morphe_niconico_comments_appearance_title">Ulkoasu</string>
   <string name="morphe_niconico_comments_portrait_category_title">Pysty</string>
   <string name="morphe_niconico_comments_video_types_title">Videotyypit</string>

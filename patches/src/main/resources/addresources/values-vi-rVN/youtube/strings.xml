@@ -522,6 +522,10 @@ Sau khi mở một video có nút Ask một lần, tính năng này hoạt độ
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Hiển thị số lượng thích của ảnh bìa nguồn cấp</string>
   <string name="morphe_ryd_feed_like_ratio_title">Hiển thị tỷ lệ phần trăm thích của ảnh bìa nguồn cấp</string>
+  <string name="morphe_ryd_feed_counts_position_title">Vị trí lượt thích hình thu nhỏ của nguồn cấp dữ liệu</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Cạnh số lượt xem</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Giữa bên phải</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Trên cùng bên trái</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Tìm kiếm bình luận</string>
   <string name="morphe_search_comments_summary">Nhấn nút tìm kiếm trong phần bình luận để chỉ hiển thị các bình luận đã tải có chứa tất cả các từ tìm kiếm. Đặt các từ trong dấu ngoặc kép để tìm kiếm một cụm từ</string>
@@ -1038,6 +1042,8 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_navigation_bar_glass_summary">Hiển thị thanh điều hướng dưới dạng một viên nang mờ, bo góc và nổi. Không khả dụng với kiểu thanh điều hướng Đục</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Độ mờ của kính</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Điều chỉnh mức độ trong suốt của thanh điều hướng dạng kính (0 là trong suốt, 100 là mờ)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Thanh điều hướng kính bo tròn</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Tạo các đầu bo tròn cho thanh điều hướng kính, thay vì các góc như trình phát thu nhỏ dạng kính</string>
   <string name="morphe_navigation_bar_glass_size_title">Kích thước thanh điều hướng dạng kính</string>
   <string name="morphe_navigation_bar_glass_size_summary">Điều chỉnh chiều cao, chiều rộng và khoảng cách nút của thanh điều hướng dạng kính, kèm theo bản xem trước. Các nút không vừa với chiều rộng của màn hình sẽ bị ẩn</string>
   <string name="morphe_navigation_bar_glass_size_height">Chiều cao</string>
@@ -1378,6 +1384,8 @@ Giao diện ô tô
   <string name="morphe_miniplayer_swipe_up_expand_summary">Vuốt trình phát thu nhỏ lên sẽ mở rộng trình phát, thay vì di chuyển trình phát thu nhỏ lên trên cùng của màn hình</string>
   <string name="morphe_miniplayer_docked_title">Trình phát thu nhỏ cố định</string>
   <string name="morphe_miniplayer_docked_summary">Gắn trình phát thu nhỏ vào thanh điều hướng và các cạnh của màn hình, thay vì trôi lơ lửng phía trên chúng</string>
+  <string name="morphe_miniplayer_glass_title">Trình phát thu nhỏ dạng kính</string>
+  <string name="morphe_miniplayer_glass_summary">Hiển thị trình phát thu nhỏ dưới dạng kính mờ với các góc bo tròn, giống như thanh điều hướng kính. Yêu cầu thanh điều hướng kính</string>
   <string name="morphe_miniplayer_type_entry_0">Tắt</string>
   <string name="morphe_miniplayer_type_entry_1">Mặc định</string>
   <string name="morphe_miniplayer_type_entry_2">Tối giản</string>
@@ -1814,6 +1822,8 @@ Tự động ghi là tùy chọn. Nó dừng lại khi ở chế độ ẩn danh
   <string name="morphe_niconico_comments_screen_title">Bình luận Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Hiển thị trò chuyện trực tiếp và phát lại trò chuyện dưới dạng các bình luận chạy ngang qua video</string>
   <string name="morphe_niconico_comments_summary">Hiển thị một nút lớp phủ trong trình phát video. Nhấn để hiện hoặc ẩn bình luận, nhấn và giữ để mở cài đặt nhanh</string>
+  <string name="morphe_niconico_comments_pip_title">Hiển thị trong chế độ hình trong hình</string>
+  <string name="morphe_niconico_comments_pip_summary">Các bình luận được thu nhỏ để vừa với cửa sổ</string>
   <string name="morphe_niconico_comments_appearance_title">Giao diện</string>
   <string name="morphe_niconico_comments_portrait_category_title">Chế độ dọc</string>
   <string name="morphe_niconico_comments_video_types_title">Loại video</string>

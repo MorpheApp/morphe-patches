@@ -522,6 +522,10 @@ Kui video, millel on nupp Küsige, on üks kord avatud, töötab see funktsioon 
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Kuva voo minipildil meeldimiste arv</string>
   <string name="morphe_ryd_feed_like_ratio_title">Kuva voo minipildil meeldimiste protsent</string>
+  <string name="morphe_ryd_feed_counts_position_title">Voo minipildi meeldimise asukoht</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Vaatamiste arvu kõrval</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Keskelt paremale</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Ülal vasakule</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Otsi kommentaaridest</string>
   <string name="morphe_search_comments_summary">Puudutage kommentaaride alas olevat otsingunuppu, et kuvada ainult need laaditud kommentaarid, mis sisaldavad kõiki otsitud sõnu. Fraasi otsimiseks pange sõnad jutumärkidesse</string>
@@ -1038,6 +1042,8 @@ Seadetele ligipääsemiseks luba seadete nupp menüüs: Üldine → Tööriistar
   <string name="morphe_navigation_bar_glass_summary">Kuvab navigeerimisriba ujuva, ümarate nurkadega ja poolläbipaistva kapslina. Ei ole saadaval, kui navigeerimisriba stiliks on valitud läbipaistmatu</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Klaasi läbipaistmatus</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Reguleeri klaasist navigeerimisriba läbipaistvust (0 on läbipaistev, 100 on läbipaistmatu)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Ümar klaasist navigeerimisriba</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Annab klaasist navigeerimisribale ümarad otsad, mitte nurgad nagu klaasist minipleieril</string>
   <string name="morphe_navigation_bar_glass_size_title">Klaasise navigeerimisriba suurus</string>
   <string name="morphe_navigation_bar_glass_size_summary">Reguleerige klaasise navigeerimisriba kõrgust, laialgust ja nuppude vahemaad koos eelvaatega. Nupud, mis ei mahu ekraani laialgusse, on peidetud</string>
   <string name="morphe_navigation_bar_glass_size_height">Kõrgus</string>
@@ -1378,6 +1384,8 @@ Auto paigutus
   <string name="morphe_miniplayer_swipe_up_expand_summary">Minipleier üles tõmbamine laiendab pleierit selle asemel, et liigutada minipleierit ekraani ülaosasse</string>
   <string name="morphe_miniplayer_docked_title">Kinnitatud minipleier</string>
   <string name="morphe_miniplayer_docked_summary">Kinnitab minipleieri navigatsiooniribale ja ekraani külgedele selle asemel, et see nende kohal hõljuks</string>
+  <string name="morphe_miniplayer_glass_title">Klaasist minipleier</string>
+  <string name="morphe_miniplayer_glass_summary">Kuvab minipleieri kui poolläbipaistva klaasi ümarate nurkadega, sarnaselt klaasist navigeerimisribaga. Järequires klaasist navigeerimisriba</string>
   <string name="morphe_miniplayer_type_entry_0">Välja lülitatud</string>
   <string name="morphe_miniplayer_type_entry_1">Vaikimisi</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalistlik</string>
@@ -1814,6 +1822,8 @@ Automaatne salvestamine on valikuline. See peatub inkognito režiimis või konto
   <string name="morphe_niconico_comments_screen_title">Niconico kommentaarid</string>
   <string name="morphe_niconico_comments_screen_summary">Kuva otsevestlust ja vestluse taasesitust videol liikuvate kommentaaridena</string>
   <string name="morphe_niconico_comments_summary">Kuvab videopleieris katendinupp. Puuduta kommentaaride kuvamiseks või peitmiseks, kiirseadete avamiseks vajuta ja hoia all</string>
+  <string name="morphe_niconico_comments_pip_title">Kuva pildis pildis</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentaaride suurus on vähendatud, et need mahuksid akna suurusse</string>
   <string name="morphe_niconico_comments_appearance_title">Välimus</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portree</string>
   <string name="morphe_niconico_comments_video_types_title">Videotüübid</string>

@@ -259,7 +259,7 @@ Lecture SABR (Falsifier les flux vidéo désactivés)"</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Changer la hauteur du son avec la vitesse</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">Désactiver les sous-titres automatiques</string>
-  <string name="morphe_music_disable_auto_captions_summary">Les sous-titres ne sont pas activés automatiquement au démarrage d\'une vidéo, y compris les sous-titres activés par défaut par la vidéo</string>
+  <string name="morphe_music_disable_auto_captions_summary">Les sous-titres ne sont pas activés automatiquement au démarrage d\'une vidéo, y compris ceux que la vidéo active par défaut</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Désactiver l\'atténuation audio</string>
   <string name="morphe_music_disable_audio_ducking_summary">Le volume n\'est pas réduit lorsqu\'une autre application émet un son bref, comme une notification</string>
@@ -870,8 +870,8 @@ Les paroles proviennent de services tiers qui ne sont ni affiliés, ni sponsoris
   <string name="morphe_music_lyrics_ai_config_reasoning_effort">Effort de raisonnement</string>
   <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Par défaut</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Clé d\'authentification (Gratuit ou Pro)</string>
-  <string name="morphe_music_lyrics_ai_section_failed">L\'IA n\'a pas pu détecter les sections pour cette piste</string>
-  <string name="morphe_music_lyrics_ai_section_detecting">Détection en cours</string>
+  <string name="morphe_music_lyrics_ai_section_failed">L\'IA n\'a pas détecté les différentes sections de ce morceau</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Détection</string>
   <string name="morphe_music_lyrics_ai_section_apply">Appliquer les sections</string>
   <string name="morphe_music_lyrics_ai_section_cancelled">Détection annulée</string>
   <string name="morphe_music_lyrics_ai_section_no_text">Aucune parole pour détecter les sections</string>

@@ -167,6 +167,28 @@ Android System WebView қолданбасын ашу үшін OK түймесі�
 • Morphe баптаулары Android VR аутентификациясын импорттамайды/экспорттамайды
 • Егер бұл қолданба 6 ай бойы пайдаланылмаса, Google бұл аутентификацияны жояды
 • Егер Google құпия сөзіңізді өзгертсеңіз немесе бұл құрылғыны Google баптауларынан тіркеуден шығарсаңыз, қайта кіруіңіз қажет болады"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Мобильді веб-нұсқада кіру</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Міндетсіз: бейнелерді өз аккаунтыңызбен қосып ойнату үшін YouTube веб-сайтына кіріңіз. Жалғастыру үшін осында түртіңіз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Қазір Мобильді веб-нұсқаға кірген</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Бұл мүмкіндікті пайдалану үшін \"Әдепкі клиентті\" Mobile Web-ке өзгертіңіз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-ке кіріңіз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web жүйеге кірмеген күйде немесе YouTube веб-сайтына кіріп тұрғанда бейнелерді ойнатады
+
+• Жүйеге кіргенде, жас шектеуі бар бейнелер сияқты аккаунтты қажет ететін бейнелерді ойнатуға болады
+• Google-ге кіру беті осы қолданбада ашылады
+• Кіру тек сіз ойнататын бейнелерді алу үшін қолданылады
+• Кіру мәліметтері тек осы құрылғыда сақталады
+
+Кіру үшін төмендегі \"Жалғастыру\" түймесін басыңыз"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Кіру мәліметтері сақталды
+
+• Morphe параметрлері Mobile Web кіру мәліметтерін импорттамайды/экспорттамайды
+• Егер Google сессияны аяқтаса, қайта кіргенге дейін бейнелер жүйеге кірмеген күйде ойнатылады
+• Жүйеден шығу кезінде бұл құрылғы YouTube веб-сайтынан да шығады"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Мобильді веб-нұсқадағы сеанс аяқталды, қайта кіруге тырысыңыз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Мобильді веб-нұсқадан шығылды</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView қолжетімді емес. Кіру үшін оны орнатыңыз немесе қосыңыз</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 уақытша қолжетімді емес (API уақыты бітті)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR кіру мерзімі аяқталды, VR-ге қайта кіріп көріңіз</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 уақытша қолжетімсіз (күйі %s)</string>

@@ -167,6 +167,28 @@ Trykk på Fortsett nedenfor for å logge på"</string>
 • Dine Morphe-innstillinger vil ikke importere/eksportere Android VR-autentisering
 • Hvis denne appen ikke brukes på 6 måneder, vil Google fjerne denne autentiseringen
 • Du må logge inn igjen hvis du endrer Google-passordet ditt eller avregistrerer denne enheten fra Google-innstillingene dine"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logg inn på mobilnett</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Valgfritt: Logg på YouTube-nettstedet for å spille av videoer med kontoen din. Trykk her for å fortsette</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Logget inn på mobilnettsted for øyeblikket</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">For å bruke denne funksjonen, endre \"Standardklient\" til mobilweb</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logg på mobilweb</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobilweb speler av videoer uten pålogging, eller pålogget på YouTube-nettstedet
+
+• Når du er pålogget, kan videoer som krever en konto spilles av, som for eksempel aldersbegrensede videoer
+• Google-påloggingssiden åpnes i denne appen
+• Påloggingen brukes kun til å hente videoene du speler av
+• Påloggingen lagres kun på denne enheten
+
+For å logge på, trykk fortsett nedenfor"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Pålogging lagret
+
+• Morphe-innstillingene dine vil ikke importere/eksportere pålogging for mobilweb
+• Hvis Google avslutter påloggingen, spilles videoer av uten pålogging frem til du logger på igjen
+• Utlogging logger også denne enheten ut av YouTube-nettstedet"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Pålogging for mobilnett utløpt, prøv å logge inn på mobilnett igjen</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Logget ut av mobilnett</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView er ikke tilgjengelig. Installer eller aktiver den for å logge inn</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er midlertidig ikke tilgjengelig (API-tidsavbrudd)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR-påloggingen har utløpt, prøv å logge inn på VR igjen</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 er midlertidig utilgjengelig (status %s)</string>

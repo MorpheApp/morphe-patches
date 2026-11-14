@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Фидийн миниатюрын лайк тоог харуулах</string>
   <string name="morphe_ryd_feed_like_ratio_title">Фидийн миниатюрын лайк хувийг харуулах</string>
+  <string name="morphe_ryd_feed_counts_position_title">Фидийн miniature-ийн лайк байршил</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Хандалтын тооны хажууд</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Гол баруун</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Дээд зүүн</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Сэтгэгдлээс хайх</string>
   <string name="morphe_search_comments_summary">Сэтгэгдлүүд дотроос хайх товчийг дарж, хайсан бүх үг бүхий ачаалагдсан сэтгэгдлүүдийг л харуулна. Хэллэгийг хайхын тулд үгсийг хашилтанд хийгээрэй</string>
@@ -1038,6 +1042,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_navigation_bar_glass_summary">Навигацийн панелийг хөвж буй, дугуйрсан, хагас тунгалаг капсул хэлбэрээр харуулна. Opaque навигацийн панелийн загвартай үед ашиглах боломжгүй</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Шилэн бүрхүүл</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Шилэн навигацийн панелийн тунгалаг байдлыг тохируулна (0 нь тунгалаг, 100 нь бүрхэг)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Шилэн навигацийн барын тойрог хэлбэр</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Шилэн мини-тоглуулагчийн булангаас ялгаатай нь шилэн навигацийн барын үзүүрийг тойрог болгоно</string>
   <string name="morphe_navigation_bar_glass_size_title">Шилэн навигацийн панелийн хэмжээ</string>
   <string name="morphe_navigation_bar_glass_size_summary">Шилэн навигацийн панелийн өндөр, өргөн болон товчнуудын зайг урьдчилан харах боломжтойгоор тохируулна. Дэлгэцийн өргөнд багтахгүй байгаа товчнууд нуугдана</string>
   <string name="morphe_navigation_bar_glass_size_height">Өндөр</string>
@@ -1378,6 +1384,8 @@ OpenRouter.ai сайтыг нээхээр энд дарна уу"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">Мини тоглуулагчийг дээшлүүлэн гүйлгэхэд мини тоглуулагчийг дэлгэцийн дээд хэсэгт шилжүүлэхгүйгээр тоглуулагчийг томруулна</string>
   <string name="morphe_miniplayer_docked_title">Бэхлэгдсэн мини тоглуулагч</string>
   <string name="morphe_miniplayer_docked_summary">Мини тоглуулагчийг дэлгэцийн дээр хөвөхийн оронд навигацийн хэсэг болон дэлгэцийн хажуу талд бэхлэнэ</string>
+  <string name="morphe_miniplayer_glass_title">Шилэн мини-тоглуулагч</string>
+  <string name="morphe_miniplayer_glass_summary">Мини-тоглуулагчийг шилэн навигацийн барын адил булан нь тойрогтой, хагас тунгалаг шилэн хэлбэрээр харуулна. Үүнд шилэн навигацийн бар шаардлагатай</string>
   <string name="morphe_miniplayer_type_entry_0">Идэвхгүй болгосон</string>
   <string name="morphe_miniplayer_type_entry_1">Үндсэн</string>
   <string name="morphe_miniplayer_type_entry_2">Минималист</string>
@@ -1813,6 +1821,8 @@ AV1-тэй видеог тоглуулах үед гацалт үүсэх эсв
   <string name="morphe_niconico_comments_screen_title">Niconico сэтгэгдэл</string>
   <string name="morphe_niconico_comments_screen_summary">Шууд чат болон чатын давталтыг видео дээр гүйдэг сэтгэгдэл хэлбэрээр харуулах</string>
   <string name="morphe_niconico_comments_summary">Видео тоглуулагч дээр давхарлуулсан товчлуур харуулна. Сэтгэгдлийг харуулах эсвэл нуухын тулд товшилно, хурдан тохиргоо руу орохын тулд татаж барьна</string>
+  <string name="morphe_niconico_comments_pip_title">Picture-in-picture горимд харуулах</string>
+  <string name="morphe_niconico_comments_pip_summary">Сэтгэгдлүүдийг цонхны хэмжээнд тааруулж жижигсгэсэн болно</string>
   <string name="morphe_niconico_comments_appearance_title">Гадаад төрх</string>
   <string name="morphe_niconico_comments_portrait_category_title">Босоо</string>
   <string name="morphe_niconico_comments_video_types_title">Видео төрлүүд</string>

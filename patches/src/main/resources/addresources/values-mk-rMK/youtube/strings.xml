@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Прикажи број на лајкови на сликата во фидот</string>
   <string name="morphe_ryd_feed_like_ratio_title">Прикажи ја сликата на фидот како процент на лајкови</string>
+  <string name="morphe_ryd_feed_counts_position_title">Позиција на лајкот во сликите на фидот</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">До бројот на прегледи</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Средина десно</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Горе лево</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Пребарај коментари</string>
   <string name="morphe_search_comments_summary">Допрете го копчето за пребарување во коментарите за да ги прикажете само вчитаните коментари што ги содржат сите пребарувани зборови. Ставете ги зборовите во наводници за да пребарувате фраза</string>
@@ -1038,6 +1042,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">Ја прикажува лентата за навигација како лебдечка, заоблена, полупроѕирна капсула. Не е достапно со стилот на непроѕирна лента за навигација</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Непроѕирност на стаклото</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Прилагодете го нивото на проѕирност на стаклената лента за навигација (0 е проѕирно, 100 е непроѕирно)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Заоблен стаклен навигациски панел</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Му дава заоблени краишта на стаклениот навигациски панел, наместо агли како кај стаклениот мини-плеер</string>
   <string name="morphe_navigation_bar_glass_size_title">Големина на стаклена лента за навигација</string>
   <string name="morphe_navigation_bar_glass_size_summary">Прилагодете ја висината, ширината и растојанието помеѓу копчињата на стаклената лента за навигација, со преглед. Копчињата што не се сместаат во ширината на екранот се кријат</string>
   <string name="morphe_navigation_bar_glass_size_height">Висина</string>
@@ -1378,6 +1384,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">Повлекувањето на мини-плејерот нагоре го проширува плејерот, наместо да го помести мини-плејерот на врвот на екранот</string>
   <string name="morphe_miniplayer_docked_title">Прицврстен мини-плејер</string>
   <string name="morphe_miniplayer_docked_summary">Го прицврстува мини-плејерот за навигациската лента и страниците на екранот, наместо да лебди над нив</string>
+  <string name="morphe_miniplayer_glass_title">Стаклен мини-плеер</string>
+  <string name="morphe_miniplayer_glass_summary">Го прикажува мини-плеерот како полупроѕрачно стакло со заоблени агли, како стаклениот навигациски панел. Потребен е стаклен навигациски панел</string>
   <string name="morphe_miniplayer_type_entry_0">Оневозможено</string>
   <string name="morphe_miniplayer_type_entry_1">Поставено како стандардно</string>
   <string name="morphe_miniplayer_type_entry_2">Минималистички</string>
@@ -1814,6 +1822,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Niconico коментари</string>
   <string name="morphe_niconico_comments_screen_summary">Прикажи го живиот чет и повторувањето на четтото како коментари што се движат низ видеото</string>
   <string name="morphe_niconico_comments_summary">Прикажува копче прекривање во видео плеерот. Допрете за да ги прикажете или сокриете коментарите, допрете и задржете за брзи поставки</string>
+  <string name="morphe_niconico_comments_pip_title">Прикажи во слика-во-слика</string>
+  <string name="morphe_niconico_comments_pip_summary">Коментарите се намалени за да се вклопат во прозорецот</string>
   <string name="morphe_niconico_comments_appearance_title">Изглед</string>
   <string name="morphe_niconico_comments_portrait_category_title">Портрет</string>
   <string name="morphe_niconico_comments_video_types_title">Типови видеа</string>

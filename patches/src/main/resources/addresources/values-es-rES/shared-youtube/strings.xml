@@ -167,6 +167,28 @@ Para iniciar sesión, pulsa en Continuar"</string>
 • Tus ajustes de Morphe no importarán ni exportarán la autenticación de Android VR
 • Si esta aplicación no se utiliza durante 6 meses, Google eliminará esta autenticación
 • Tendrás que iniciar sesión de nuevo si cambias tu contraseña de Google o cancelas el registro de este dispositivo en tus ajustes de Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Iniciar sesión en la web móvil</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcional: inicia sesión en el sitio web de YouTube para reproducir videos con tu cuenta. Toca aquí para continuar</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Actualmente conectado a la web móvil</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Para usar esta función, cambia \'Cliente predeterminado\' a Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Iniciar sesión en Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web reproduce videos sin iniciar sesión o con la sesión iniciada en el sitio web de YouTube
+
+• Con la sesión iniciada, se pueden reproducir videos que requieren una cuenta, como los videos con restricción de edad
+• La página de inicio de sesión de Google se abre en esta aplicación
+• El inicio de sesión se utiliza únicamente para obtener los videos que reproduces
+• El inicio de sesión se guarda solo en este dispositivo
+
+Para iniciar sesión, presiona continuar a continuación"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Inicio de sesión guardado
+
+• La configuración de Morphe no importará/exportará el inicio de sesión de la web móvil
+• Si Google finaliza la sesión, los videos se reproducirán sin iniciar sesión hasta que vuelvas a acceder
+• Cerrar la sesión también cierra la sesión de este dispositivo en el sitio web de YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">El inicio de sesión de la web móvil ha expirado, intenta iniciar sesión en la web móvil de nuevo</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Sesión de la web móvil cerrada</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView no está disponible. Instálalo o actívalo para iniciar sesión</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 no está disponible temporalmente (la API no responde)</string>
   <string name="morphe_oauth2_connection_failure_status_400">El inicio de sesión de Android VR ha expirado, intenta iniciar sesión en VR de nuevo</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 no está disponible temporalmente (estado %s)</string>

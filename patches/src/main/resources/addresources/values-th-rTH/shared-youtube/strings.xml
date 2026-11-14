@@ -167,6 +167,28 @@ Second \"item\" text"</string>
 • การตั้งค่า Morphe ของคุณจะไม่นำเข้า/ส่งออกการตรวจสอบสิทธิ์ Android VR
 • หากไม่มีการใช้แอปนี้เป็นเวลา 6 เดือน Google จะลบการตรวจสอบสิทธิ์นี้
 • คุณจะต้องลงชื่อเข้าใช้อีกครั้งหากคุณเปลี่ยนรหัสผ่าน Google หรือยกเลิกการลงทะเบียนอุปกรณ์นี้จากการตั้งค่า Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ลงชื่อเข้าใช้ผ่านเว็บบนมือถือ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ไม่บังคับ: ลงชื่อเข้าใช้เว็บไซต์ YouTube เพื่อเล่นวิดีโอด้วยบัญชีของคุณ แตะที่นี่เพื่อดำเนินการต่อ</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">ลงชื่อเข้าใช้ผ่านเว็บบนมือถืออยู่ในขณะนี้</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">เปลี่ยน \'ไคลเอ็นต์เริ่มต้น\' เป็น Mobile Web เพื่อใช้งานคุณสมบัตินี้</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ลงชื่อเข้าใช้ Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web จะเล่นวิดีโอในขณะที่ไม่ได้ลงชื่อเข้าใช้ หรือลงชื่อเข้าใช้ในเว็บไซต์ YouTube
+
+• เมื่อลงชื่อเข้าใช้ จะสามารถเล่นวิดีโอที่ต้องใช้บัญชีได้ เช่น วิดีโอที่จำกัดอายุ
+• หน้าลงชื่อเข้าใช้ Google จะเปิดขึ้นในแอปนี้
+• การลงชื่อเข้าใช้จะใช้เพื่อรับวิดีโอที่คุณเล่นเท่านั้น
+• การลงชื่อเข้าใช้จะถูกบันทึกไว้ในอุปกรณ์นี้เท่านั้น
+
+หากต้องการลงชื่อเข้าใช้ ให้กดดำเนินการต่อด้านล่าง"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"บันทึกการลงชื่อเข้าใช้แล้ว
+
+• การตั้งค่า Morphe ของคุณจะไม่นำเข้า/ส่งออกการลงชื่อเข้าใช้ Mobile Web
+• หาก Google สิ้นสุดการลงชื่อเข้าใช้ วิดีโอจะถูกเล่นในสถานะไม่ได้ลงชื่อเข้าใช้จนกว่าคุณจะลงชื่อเข้าใช้อีกครั้ง
+• การลงชื่อออกจะทำให้ดีไวซ์นี้ลงชื่อออกจากเว็บไซต์ YouTube ด้วย"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">การลงชื่อเข้าใช้ Mobile Web หมดอายุ โปรดลองลงชื่อเข้าใช้ Mobile Web อีกครั้ง</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">ลงชื่อออกจาก Mobile Web แล้ว</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">ไม่พบ Android System WebView โปรดติดตั้งหรือเปิดใช้งานเพื่อลงชื่อเข้าใช้</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ไม่สามารถใช้งานได้ชั่วคราว (API หมดเวลา)</string>
   <string name="morphe_oauth2_connection_failure_status_400">การลงชื่อเข้าใช้ Android VR หมดอายุแล้ว กรุณาลงชื่อเข้าใช้ VR อีกครั้ง</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 ไม่สามารถใช้งานได้ชั่วคราว (รหัสสถานะ %s)</string>

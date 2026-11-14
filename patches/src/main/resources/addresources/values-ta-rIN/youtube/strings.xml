@@ -145,6 +145,10 @@ Second \"item\" text"</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the Ask button under a video. -->
   <!-- layout.feedviews.feedViewCountPatch -->
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+  <string name="morphe_ryd_feed_counts_position_title">ஃபீட் தம்ப்நைல் லைக் பொசிஷன்</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">வியூ கவுண்டிற்கு அருகில்</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">நடுவலதுபுறம்</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">மேல் இடதுபுறம்</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_summary">தேடப்பட்ட அனைத்து வார்த்தைகளையும் கொண்ட ஏற்றப்பட்ட கருத்துகளை மட்டும் காண்பிக்க, கருத்துகளில் உள்ள தேடல் பொத்தானைத் தட்டவும். ஒரு சொற்றொடரைத் தேட வார்த்தைகளை மேற்கோள் குறிக்குள் இடவும்</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -302,6 +306,8 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_navigation_bar_glass_summary">நேவிகேஷன் பாரை மிதக்கும், வட்ட வடிவ, ஒளிபுகும் கேப்சூல் போலக் காட்டும். Opaque நேவிகேஷன் பார் ஸ்டைலில் இது கிடைக்காது</string>
   <string name="morphe_navigation_bar_glass_opacity_title">கிளாஸ் ஒளிபுகும் தன்மை</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">கிளாஸ் நேவிகேஷன் பாரின் வெளிப்படைத்தன்மை அளவை சரிசெய்யவும் (0 என்பது வெளிப்படையானது, 100 என்பது ஒளிபுகாவானது)</string>
+  <string name="morphe_navigation_bar_glass_round_title">வட்ட வடிவ கண்ணாடி வழிசெலுத்தல் பட்டை</string>
+  <string name="morphe_navigation_bar_glass_round_summary">கண்ணாடி மினி பிளேயரைப் போன்ற மூலைகளுக்குப் பதிலாக, கண்ணாடி வழிசெலுத்தல் பட்டையின் முனைகளை வட்டமாக்குகிறது</string>
   <string name="morphe_navigation_bar_glass_size_title">கண்ணாடி நேவிகேஷன் பார் அளவு</string>
   <string name="morphe_navigation_bar_glass_size_summary">கண்ணாடி நேவிகேஷன் பாரின் உயரம், அகலம் மற்றும் பொத்தான் இடைவெளியை முன்னோட்டத்துடன் சரிசெய்யவும். திரையின் அகலத்திற்குள் பொருந்தாத பொத்தான்கள் மறைக்கப்படும்</string>
   <string name="morphe_navigation_bar_glass_size_height">உயரம்</string>
@@ -406,6 +412,8 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_miniplayer_swipe_up_expand_summary">மினி பிளேயரை மேலே ஸ்வைப் செய்வது, அதைத் திரையின் மேலே நகர்த்துவதற்குப் பதிலாக, பிளேயரை விரிவுபடுத்துகிறது</string>
   <string name="morphe_miniplayer_docked_title">டாக் செய்யப்பட்ட மினிபிளேயர்</string>
   <string name="morphe_miniplayer_docked_summary">மினிபிளேயரை அதன் மேல் மிதப்பதற்குப் பதிலாக, நேவிகேஷன் பார் மற்றும் திரையின் பக்கங்களுடன் இணைக்கிறது</string>
+  <string name="morphe_miniplayer_glass_title">கண்ணாடி மினி பிளேயர்</string>
+  <string name="morphe_miniplayer_glass_summary">கண்ணாடி வழிசெலுத்தல் பட்டையைப் போல, மினி பிளேயரை வட்ட வடிவ மூலைகளுடன் கூடிய ஒளிபுகும் கண்ணாடியாகக் காட்டுகிறது. இதற்கு கண்ணாடி வழிசெலுத்தல் பட்டை அவசியம்</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.animations.forceAnimationsPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
@@ -475,6 +483,8 @@ Settings-ஐ அணுக, General → Toolbar → Show Settings button மூ�
   <string name="morphe_series_tracker_backup_restored">%s தொடர்கள் மீட்டெடுக்கப்பட்டன</string>
   <string name="morphe_series_tracker_continue_series">%s தொடரவும்</string>
   <!-- layout.niconicocomments.niconicoCommentsPatch -->
+  <string name="morphe_niconico_comments_pip_title">பிக்சர்-இன்-பிக்சரில் காட்டவும்</string>
+  <string name="morphe_niconico_comments_pip_summary">விண்டோவிற்கு ஏற்றவாறு கமெண்ட்கள் அளவிடப்படுகின்றன</string>
   <string name="morphe_niconico_comments_appearance_title">தோற்றம்</string>
   <string name="morphe_niconico_comments_portrait_category_title">போர்ட்ரெய்ட்</string>
   <string name="morphe_niconico_comments_video_types_title">வீடியோ வகைகள்</string>

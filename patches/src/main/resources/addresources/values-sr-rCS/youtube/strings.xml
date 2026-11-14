@@ -522,6 +522,10 @@ Posle prvog otvaranja videa sa dugmetom Ask, funkcija radi sa svim videima, čak
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Prikaži broj lajkova na smanjenoj slici feed-a</string>
   <string name="morphe_ryd_feed_like_ratio_title">Prikaži procenat lajkova na smanjenoj slici feed-a</string>
+  <string name="morphe_ryd_feed_counts_position_title">Pozicija lajka na sličici feed-a</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Pored broja pregleda</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Sredina desno</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Gore levo</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Pretraži komentare</string>
   <string name="morphe_search_comments_summary">Dodirnite dugme za pretragu u komentarima da biste prikazali samo učitane komentare koji sadrže sve pretražene reči. Stavite reči pod navodnike da biste pretražili frazu</string>
@@ -1037,6 +1041,8 @@ Da biste pristupili Podešavanjima, omogućite dugme Podešavanja putem Opšte �
   <string name="morphe_navigation_bar_glass_summary">Prikazuje navigacionu traku kao plutajuću, zaobljenu, polutransparentnu kapsulu. Nije dostupno uz stil neprozirne navigacione trake</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Neprozirnost stakla</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Prilagodi nivo transparentnosti staklene navigacione trake (0 je transparentno, 100 je neprozirno)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Staklena traka za navigaciju sa zaobljenim krajevima</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Daje staklenoj traci za navigaciju zaobljene krajeve, umesto uglova kao kod staklenog mini-plejera</string>
   <string name="morphe_navigation_bar_glass_size_title">Veličina staklene trake za navigaciju</string>
   <string name="morphe_navigation_bar_glass_size_summary">Podesite visinu, širinu i razmak između dugmića staklene trake za navigaciju, uz pregled. Dugmići koji ne stanu u širinu ekrana su sakriveni</string>
   <string name="morphe_navigation_bar_glass_size_height">Visina</string>
@@ -1377,6 +1383,8 @@ Automotive raspored
   <string name="morphe_miniplayer_swipe_up_expand_summary">Prevlačenjem minimajzlera nagore proširuje se plejer, umesto da se minimajzler pomeri na vrh ekrana</string>
   <string name="morphe_miniplayer_docked_title">Usidren minimajzler</string>
   <string name="morphe_miniplayer_docked_summary">Pridružuje minimajzler navigacionoj traci i stranama ekrana, umesto da lebdi iznad njih</string>
+  <string name="morphe_miniplayer_glass_title">Stakleni mini-plejer</string>
+  <string name="morphe_miniplayer_glass_summary">Prikazuje mini-plejer kao polutransparentno staklo sa zaobljenim uglovima, kao staklena traka za navigaciju. Zahteva staklenu traku za navigaciju</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućen</string>
   <string name="morphe_miniplayer_type_entry_1">Podrazumevan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalan</string>
@@ -1813,6 +1821,8 @@ Automatsko snimanje je opciono. Zaustavlja se u privatnom modu ili kada se nalog
   <string name="morphe_niconico_comments_screen_title">Niconico komentari</string>
   <string name="morphe_niconico_comments_screen_summary">Prikaži live chat i ponovnice chata kao komentare koji klize preko videa</string>
   <string name="morphe_niconico_comments_summary">Prikazuje overlay dugme u video plejeru. Dodirnite da prikažete ili sakrijete komentare, zadržite dodir za brza podešavanja</string>
+  <string name="morphe_niconico_comments_pip_title">Prikaži u režimu slika-u-slici</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentari su smanjeni kako bi odgovarali prozoru</string>
   <string name="morphe_niconico_comments_appearance_title">Izgled</string>
   <string name="morphe_niconico_comments_portrait_category_title">Uspravno</string>
   <string name="morphe_niconico_comments_video_types_title">Tipovi videa</string>

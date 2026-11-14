@@ -167,6 +167,28 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
 • Ní dhéanfaidh do shocruithe Morphe fíordheimhniú Android VR a allmhairiú/a onnmhairiú
 • Mura n-úsáidtear an aip seo ar feadh 6 mhí, bainfidh Google an fíordheimhniú seo
 • Beidh ort síniú isteach arís má athraíonn tú do phasfhocal Google nó má dhíchláraíonn tú an gléas seo ó do shocruithe Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Logáil isteach i mWeb</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Rogha optional: logáil isteach i suíomh Gréasáin YouTube chun físeáin a sheinn le do chuntas. Tapáil anseo chun leanúint ar aghaidh</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Sínithe isteach i mWeb faoi láthair</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Chun an ghné seo a úsáid, athraigh \'Cliant réamhshocraithe\' go Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Log in go Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Seinnann Mobile Web físeáin nuair a bhíonn tú log out, nó log in go suíomh gréasáin YouTube
+
+• Nuair a bhíonn tú log in, is féidir físeáin a sheinnadh a theastaíonn cuntas uige, mar shampla físeáin a bhfuil teorainn aois orthu
+• Osclaíonn leathanach log in Google sa h-app seo
+• Úsáidtear an log in chun na físeáin a fháil a sheinnann tú amháin
+• Sábháiltear an log in ar an nghreasán seo amháin
+
+Chun log in, brúigh leanaigh thíos"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sábháiltear síniú isteach
+
+• Ní iompórtóirfidh/esporntóirfidh do shocruithe Morphe an síniú isteach i Mobile Web
+• Má thrígheann Google an síniú isteach, seinntear físeáin gan a bheith síniúite isteach go dtí go ndéanann tú síniú isteach arís
+• Trí síniú amach, déantar síniú amach ó an suíomh Gréasra YouTube ar an gléas seo freisin"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Tá síniú isteach i Mobile Web imithe in éag, déan iarracht síniú isteach i Mobile Web arís</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Sínithe amach ó Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Níl Android System WebView ar fáil. Suiteáil nó cumasáil é chun síniú isteach</string>
   <string name="morphe_oauth2_connection_failure_timeout">Níl OAuth2 ar fáil go sealadach (tá an t-am caite ag an API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Tá an síniú isteach i Android VR imithe in éag, déan iarracht síniú isteach i VR arís</string>
   <string name="morphe_oauth2_connection_failure_status">Níl OAuth2 ar fáil go sealadach (stádas %s)</string>

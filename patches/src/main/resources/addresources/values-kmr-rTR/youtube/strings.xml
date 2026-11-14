@@ -522,6 +522,10 @@ Piştî ku vîdyoyeke bi bişkoja Ask carekê hate vekirin, ev taybetmendî bi h
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Hejmara like-an a thumbnailên feedê nîşan bide</string>
   <string name="morphe_ryd_feed_like_ratio_title">Rêjeya like-ên thumbnailên feedê nîşan bide</string>
+  <string name="morphe_ryd_feed_counts_position_title">Pozîsyona like-ên thumbnailên feedê</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Li kêleka hejmara dîtinan</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Navenda rast</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Serê çepê</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Li şîroveyan bigere</string>
   <string name="morphe_search_comments_summary">Li bişkokeya lêgeran a di şîroveyan de bitikîne da ku tenê şîroveyên barkirî yên ku hemû peyvên lêgeran tê de hene nîşan bidin. Peyvan di nav qotikan de bixe da ku ji bo hevokekê bigere</string>
@@ -1038,6 +1042,8 @@ Ji bo gihîştina Settings, bişkokeya Settings bi rêya General → Toolbar →
   <string name="morphe_navigation_bar_glass_summary">Şirîta navîgasyonê wekî kapsuleke şefaf, borî û şîn nîşan dide. Bi şêwaza şirîta navîgasyonê ya qetîm re nayê bikaranîn</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opasîteya şûşeyê</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Asta şefafiya şirîta navîgasyonê ya şûşeyî rênike (0 şefaf e, 100 qetim e)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Barê navîgasyonê yê şûşeya dor</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Li şûna goşeyên mîna miniplayerê yê şûşeyê, sirêyên barê navîgasyonê yê şûşeyê dike</string>
   <string name="morphe_navigation_bar_glass_size_title">Mezinahiya şirîta navîgasyonê ya şûşê</string>
   <string name="morphe_navigation_bar_glass_size_summary">Bilindî, berfirehî û spacinga butonên şirîta navîgasyonê ya şûşê bi pêşnêrînekê rês bike. Butonên ku di berfirehiya ekrânê de nayên girtin tên veşartin</string>
   <string name="morphe_navigation_bar_glass_size_height">Bilindî</string>
@@ -1378,6 +1384,8 @@ Layouta otomotîvê
   <string name="morphe_miniplayer_swipe_up_expand_summary">Kişandina miniplayerê ber bi jor ve playerê fireh dike, li şûma ku miniplayerê biçe serê ekranê</string>
   <string name="morphe_miniplayer_docked_title">Miniplayerê girêdayî</string>
   <string name="morphe_miniplayer_docked_summary">Miniplayerê girê dide şirîta navberê û aliyên ekranê, li şûma ku li ser wan bimeşe</string>
+  <string name="morphe_miniplayer_glass_title">Miniplayerê şûşeyê</string>
+  <string name="morphe_miniplayer_glass_summary">Miniplayerê wekî şûşeyeke şefaf bi goşeyên borî nîşan dide, mîna barê navîgasyonê yê şûşeyê. Barê navîgasyonê yê şûşeyê pêwîst e</string>
   <string name="morphe_miniplayer_type_entry_0">Vemirandî</string>
   <string name="morphe_miniplayer_type_entry_1">Bixweber</string>
   <string name="morphe_miniplayer_type_entry_2">Kêm</string>
@@ -1814,6 +1822,8 @@ Tomarkirina otomatîk bijarte ye. Di incognito de an dema hesab diguhere rawest�
   <string name="morphe_niconico_comments_screen_title">Şîroveyên Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Chata zindî û replay-a chatê wekî şîroveyên ku li ser vîdyoyê diherikin nîşan bide</string>
   <string name="morphe_niconico_comments_summary">Bişkojekê di lîstikvanê vîdyoyê de nîşan dide. Ji bo nîşandan an veşartina şîroveyan bitikîne, ji bo mîhengên bilez bitikîne û bigire</string>
+  <string name="morphe_niconico_comments_pip_title">Di picture-in-picture de nîşan bide</string>
+  <string name="morphe_niconico_comments_pip_summary">Koment hatin biçûk kirin da ku li gorî pencereyê bin</string>
   <string name="morphe_niconico_comments_appearance_title">Dexîyarên xuya bûnê</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portre</string>
   <string name="morphe_niconico_comments_video_types_title">Tîpên vîdyoyê</string>

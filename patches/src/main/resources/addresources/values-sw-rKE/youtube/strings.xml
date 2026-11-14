@@ -522,6 +522,10 @@ Baada ya video yenye kitufe cha Ask kufunguliwa mara moja, kipengele hiki hufany
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Onyesha idadi ya like za thumbnail ya feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Onyesha asilimia ya like za thumbnail ya feed</string>
+  <string name="morphe_ryd_feed_counts_position_title">Nafasi ya alama ya picha ya feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Kando ya idadi ya utazamaji</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Katikati kulia</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Juu kushoto</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Tafuta maoni</string>
   <string name="morphe_search_comments_summary">Gusa kitufe cha utafutaji katika maoni ili kuonyesha tu maoni yaliyopakia yanayojumuisha maneno yote yaliyotafutwa. Weka maneno kwenye alama za nukuu ili kutafuta fungu la maneno</string>
@@ -1038,6 +1042,8 @@ Ili kufikia Mipangilio, wezesha kitufe cha Mipangilio kupitia General → Toolba
   <string name="morphe_navigation_bar_glass_summary">Inaonyesha bar ya urambazaji kama kapsuli inayoelea, yenye pembe zilizoviringishwa na inayopitisha mwanga. Haipatikani ikiwa mtindo wa bar ya urambazaji isiyopitisha mwanga umetumiwa</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Uwazi wa kioo</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Rekebisha kiwango cha uwazi cha bar ya urambazaji ya kioo (0 ni wazi, 100 isiyopitisha mwanga)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Upau wa urambazaji wa kioo wa duara</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Hutoa upau wa urambazaji wa kioo ncha za duara, badala ya pembe kama kicheza kidogo cha kioo</string>
   <string name="morphe_navigation_bar_glass_size_title">Ukubwa wa baa ya urambazaji ya kioo</string>
   <string name="morphe_navigation_bar_glass_size_summary">Rekebisha urefu, upana na nafasi ya vitufe ya baa ya urambazaji ya kioo, pamoja na onyesho la kukagua. Vitufe visivyoendana na upana wa skrini hufichwa</string>
   <string name="morphe_navigation_bar_glass_size_height">Urefu</string>
@@ -1378,6 +1384,8 @@ Mpangilio wa Automotive
   <string name="morphe_miniplayer_swipe_up_expand_summary">Kupapasa kicheza kidogo juu kunapanua kicheza, badala ya kusogeza kicheza kidogo juu ya skrini</string>
   <string name="morphe_miniplayer_docked_title">Kicheza kidogo kilichoshikiliwa</string>
   <string name="morphe_miniplayer_docked_summary">Hukiunganisha kicheza kidogo kwenye baa ya urambazaji na pande za skrini, badala ya kuelea juu yake</string>
+  <string name="morphe_miniplayer_glass_title">Kicheza kidogo cha kioo</string>
+  <string name="morphe_miniplayer_glass_summary">Huonyesha kicheza kidogo kama kioo kinachopitisha mwanga chenye pembe za duara, kama upau wa urambazaji wa kioo. Inahitaji upau wa urambazaji wa kioo</string>
   <string name="morphe_miniplayer_type_entry_0">Imezimwa</string>
   <string name="morphe_miniplayer_type_entry_1">Chaguo-msingi</string>
   <string name="morphe_miniplayer_type_entry_2">Kiwize</string>
@@ -1814,6 +1822,8 @@ Kurekodi kiotomatiki ni hiari. Inasimama katika hali ya siri au wakati akaunti i
   <string name="morphe_niconico_comments_screen_title">Maoni ya Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Onyesha soga ya moja kwa moja na marudio ya soga kama maoni yanayopita kwenye video</string>
   <string name="morphe_niconico_comments_summary">Inaonyesha kitufe cha juu katika kicheza video. Gusa ili kuonyesha au kuficha maoni, gusa na ushikilie kwa mipangilio ya haraka</string>
+  <string name="morphe_niconico_comments_pip_title">Onyesha katika picha-ndani-ya-picha</string>
+  <string name="morphe_niconico_comments_pip_summary">Maoni yanapunguzwa ukubwa ili kutoshea dirishani</string>
   <string name="morphe_niconico_comments_appearance_title">Muonekano</string>
   <string name="morphe_niconico_comments_portrait_category_title">Wima</string>
   <string name="morphe_niconico_comments_video_types_title">Aina za video</string>

@@ -522,6 +522,10 @@ Después de abrir por primera vez un vídeo con el botón «Preguntar», la func
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Mostrar miniatura del feed como recuento</string>
   <string name="morphe_ryd_feed_like_ratio_title">Mostrar miniatura del feed como porcentaje</string>
+  <string name="morphe_ryd_feed_counts_position_title">Posición de los \"me gusta\" en la miniatura del feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Al lado del recuento de visualizaciones</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Centro derecha</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Arriba a la izquierda</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Buscar comentarios</string>
   <string name="morphe_search_comments_summary">Pulsa el botón de búsqueda en los comentarios para mostrar solo los comentarios cargados que contengan todas las palabras buscadas. Pon las palabras entre comillas para buscar una frase</string>
@@ -1038,6 +1042,8 @@ Para acceder a los ajustes, activa el botón de ajustes a través de General →
   <string name="morphe_navigation_bar_glass_summary">Muestra la barra de navegación como una cápsula translúcida, redondeada y flotante. No disponible con el estilo de barra de navegación opaca</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacidad del cristal</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Ajusta el nivel de transparencia de la barra de navegación de cristal (0 es transparente, 100 es opaco)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Barra de navegación de cristal redondeada</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Le da extremos redondeados a la barra de navegación de cristal, en lugar de esquinas como el minirreproductor de cristal</string>
   <string name="morphe_navigation_bar_glass_size_title">Tamaño de barra de navegación de cristal</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajusta la altura, el ancho y el espacio de los botones de la barra de navegación de cristal, con una vista previa. Los botones que no caben en el ancho de la pantalla se ocultan.</string>
   <string name="morphe_navigation_bar_glass_size_height">Altura</string>
@@ -1224,6 +1230,7 @@ Configuración → Reproducción (o Reproducción automática) → Reproducción
   <string name="morphe_autoplay_mode_entry_3">Desactivado</string>
   <string name="morphe_autoplay_mix_stop_after_title">Duración del Mix</string>
   <string name="morphe_autoplay_mix_stop_after_summary">En modo Automático, un Mix se detiene después de esta cantidad de videos. 0 = sin límite</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s vídeos</string>
   <string name="morphe_autoplay_mix_no_limit">Mix: sin límite</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Mensaje «¿Seguir viendo?»</string>
@@ -1377,6 +1384,8 @@ Diseño para automóviles
   <string name="morphe_miniplayer_swipe_up_expand_summary">Al deslizar el minirreproductor hacia arriba se expande el reproductor, en lugar de mover el minirreproductor a la parte superior de la pantalla</string>
   <string name="morphe_miniplayer_docked_title">Mini-reproductor anclado</string>
   <string name="morphe_miniplayer_docked_summary">Ancla el minirreproductor a la barra de navegación y a los lados de la pantalla, en lugar de flotar sobre ellos</string>
+  <string name="morphe_miniplayer_glass_title">Minirreproductor de cristal</string>
+  <string name="morphe_miniplayer_glass_summary">Muestra el minirreproductor como cristal translúcido con esquinas redondeadas, como la barra de navegación de cristal. Requiere la barra de navegación de cristal</string>
   <string name="morphe_miniplayer_type_entry_0">Desactivado</string>
   <string name="morphe_miniplayer_type_entry_1">Predeterminado</string>
   <string name="morphe_miniplayer_type_entry_2">Mínimo</string>
@@ -1813,6 +1822,8 @@ La grabación automática es opcional. Se detiene en modo incógnito o cuando ca
   <string name="morphe_niconico_comments_screen_title">Comentarios de Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Muestra el chat en directo y la reproducción del chat como comentarios que se desplazan por el vídeo</string>
   <string name="morphe_niconico_comments_summary">Muestra un botón superpuesto en el reproductor de vídeo. Púlsalo para mostrar u ocultar los comentarios; mantenlo pulsado para acceder a los ajustes rápidos</string>
+  <string name="morphe_niconico_comments_pip_title">Mostrar en «imagen en imagen»</string>
+  <string name="morphe_niconico_comments_pip_summary">Los comentarios se reducen para ajustarse a la ventana</string>
   <string name="morphe_niconico_comments_appearance_title">Apariencia</string>
   <string name="morphe_niconico_comments_portrait_category_title">Vertical</string>
   <string name="morphe_niconico_comments_video_types_title">Tipos de vídeo</string>

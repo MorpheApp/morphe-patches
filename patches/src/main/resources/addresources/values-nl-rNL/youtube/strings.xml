@@ -522,6 +522,10 @@ Nadat een video met de Ask-knop eenmaal is geopend, werkt de functie voor alle v
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Aantal likes van feed-miniatuur weergeven</string>
   <string name="morphe_ryd_feed_like_ratio_title">Percentage likes van feed-miniatuur weergeven</string>
+  <string name="morphe_ryd_feed_counts_position_title">Positie likes van feed-miniatuur</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Naast aantal weergaven</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Midden rechts</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Links boven</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Reacties zoeken</string>
   <string name="morphe_search_comments_summary">Tik op de zoekknop in de reacties om alleen de geladen reacties te tonen die alle gezochte woorden bevatten. Zet woorden tussen aanhalingstekens om op een zin te zoeken</string>
@@ -1037,6 +1041,8 @@ Om toegang te krijgen tot Instellingen, schakel de Instellingen-knop in via Alge
   <string name="morphe_navigation_bar_glass_summary">Toont de navigatiebalk als een zwevende, afgeronde, doorschijnende capsule. Niet beschikbaar bij de ondoorzichtige stijl van de navigatiebalk</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Dekking van het glas</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Pas het transparantieniveau van de glazen navigatiebalk aan (0 is transparant, 100 is ondoorzichtig)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Ronde glazen navigatiebalk</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Geeft de glazen navigatiebalk ronde uiteinden, in plaats van hoeken zoals bij de glazen minispeler</string>
   <string name="morphe_navigation_bar_glass_size_title">Grootte glazen navigatiebalk</string>
   <string name="morphe_navigation_bar_glass_size_summary">Pas de hoogte, breedte en knopafstand van de glazen navigatiebalk aan, inclusief een voorbeeld. Knoppen die niet in de breedte van het scherm passen, worden verborgen</string>
   <string name="morphe_navigation_bar_glass_size_height">Hoogte</string>
@@ -1377,6 +1383,8 @@ Auto-indeling
   <string name="morphe_miniplayer_swipe_up_expand_summary">Door de minispeler omhoog te vegen, wordt de speler uitgevouwen in plaats van de minispeler naar de bovenkant van het scherm te verplaatsen</string>
   <string name="morphe_miniplayer_docked_title">Gekoppelde minispeler</string>
   <string name="morphe_miniplayer_docked_summary">Koppelt de geminiaturiseerde speler aan de navigatiebalk en de zijkanten van het scherm, in plaats van eroverheen te zweven</string>
+  <string name="morphe_miniplayer_glass_title">Glazen minispeler</string>
+  <string name="morphe_miniplayer_glass_summary">Toont de minispeler als doorschijnend glas met afgeronde hoeken, net als de glazen navigatiebalk. Vereist de glazen navigatiebalk</string>
   <string name="morphe_miniplayer_type_entry_0">Uitgeschakeld</string>
   <string name="morphe_miniplayer_type_entry_1">Standaard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaal</string>
@@ -1811,6 +1819,8 @@ Automatische registratie is optioneel. Deze stopt in incognito-modus of bij een 
   <string name="morphe_niconico_comments_screen_title">Niconico-reacties</string>
   <string name="morphe_niconico_comments_screen_summary">Toon livechat en chat-replays als reacties die over de video scrollen</string>
   <string name="morphe_niconico_comments_summary">Toont een overlay-knop in de videospeler. Tik om de reacties te tonen of te verbergen, houd ingedrukt voor snelle instellingen</string>
+  <string name="morphe_niconico_comments_pip_title">Tonen in beeld-in-beeld</string>
+  <string name="morphe_niconico_comments_pip_summary">Reacties worden verkleind om in het venster te passen</string>
   <string name="morphe_niconico_comments_appearance_title">Uiterlijk</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portret</string>
   <string name="morphe_niconico_comments_video_types_title">Videotypen</string>
