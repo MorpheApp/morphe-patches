@@ -276,6 +276,12 @@ public final class WordReadingTable implements AutoCloseable {
 
             try (RandomAccessFile handle = new RandomAccessFile(file.toFile(), "rw")) {
                 handle.setLength(recordsOffset + recordsLength);
+            } catch (IOException ex) {
+                // On Windows host JVM, setLength fails if the MappedByteBuffer has not been unmapped.
+                String msg = ex.getMessage();
+                if (msg == null || !msg.contains("user-mapped section")) {
+                    throw ex;
+                }
             }
         }
     }
