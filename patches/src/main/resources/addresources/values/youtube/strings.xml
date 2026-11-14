@@ -1640,7 +1640,7 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_dearrow_error">DeArrow is temporarily not available (status code: %s)</string>
     <string name="morphe_dearrow_error_generic">DeArrow is temporarily not available</string>
     <string name="morphe_dearrow_vote_button_title">Show DeArrow button</string>
-    <string name="morphe_dearrow_vote_button_summary">Adds a button to the top of the video player to vote on DeArrow titles and thumbnails, or submit new ones. Uses the same user ID as SponsorBlock</string>
+    <string name="morphe_dearrow_vote_button_summary">Adds a button to the top of the video player to vote on DeArrow titles and thumbnails, or submit new ones</string>
     <string name="morphe_dearrow_guidelines_title">Guidelines</string>
     <string name="morphe_dearrow_guidelines_summary">Guidelines contain rules and tips for submitting and voting on titles and thumbnails</string>
     <string name="morphe_dearrow_guidelines_popup_title">Follow the guidelines</string>
@@ -1667,7 +1667,9 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_dearrow_vote_new_title">New title</string>
     <string name="morphe_dearrow_vote_new_title_hint">Type a title</string>
     <string name="morphe_dearrow_vote_submit">Submit</string>
-    <string name="morphe_dearrow_vote_current_frame">Current frame</string>
+    <string name="morphe_dearrow_vote_new_thumbnail">New thumbnail</string>
+    <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+    <string name="morphe_dearrow_vote_frame_step">%s s</string>
     <!-- %s is a time of the video, such as 10:14.19 -->
     <string name="morphe_dearrow_vote_current_frame_content">Submit the frame at %s as a thumbnail?</string>
     <string name="morphe_dearrow_vote_current_frame_playing">The video is playing. To submit the frame you see, pause the video first</string>
@@ -1679,7 +1681,10 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_dearrow_vote_failed_rate_limit">A vote for this video is still in progress. Try again in a moment</string>
     <string name="morphe_dearrow_vote_failed_code">Could not submit the vote (status code: %s)</string>
     <string name="morphe_dearrow_vote_failed_connection">Could not submit the vote. Check your connection and try again</string>
-    <string name="morphe_dearrow_account_title">Account</string>
+    <string name="morphe_dearrow_submitting_title">Submitting titles and thumbnails</string>
+    <string name="morphe_dearrow_vote_time_step_title">Time adjustment step</string>
+    <string name="morphe_dearrow_vote_time_step_summary">Seek amount of the fine time adjustment buttons when submitting a thumbnail (in milliseconds)</string>
+    <string name="morphe_dearrow_vote_time_step_invalid">Value must be a positive number</string>
     <string name="morphe_dearrow_private_user_id_title">Your private user ID</string>
     <string name="morphe_dearrow_private_user_id_summary">The same user ID as SponsorBlock. This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you</string>
     <string name="morphe_dearrow_private_user_id_invalid">Private user ID must be at least 30 characters long</string>

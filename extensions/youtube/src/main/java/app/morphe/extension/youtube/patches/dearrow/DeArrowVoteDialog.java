@@ -38,9 +38,12 @@ import androidx.annotation.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -58,6 +61,7 @@ import app.morphe.extension.youtube.patches.dearrow.DeArrowVoteRequest.Branding;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowVoteRequest.ThumbnailSubmission;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowVoteRequest.TitleSubmission;
 import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
@@ -98,6 +102,48 @@ final class DeArrowVoteDialog {
      * Number of layouts above the player button that are searched for the video surface.
      */
     private static final int MAX_PLAYER_ANCESTORS = 8;
+
+    /**
+     * Step of the outer buttons that move the video to a nearby frame to submit.
+     * The inner buttons use the step of the setting.
+     */
+    private static final long FRAME_STEP_LARGE_MILLISECONDS = 1000;
+
+    /**
+     * Time after a step before the frame is copied, so the player shows the new frame.
+     */
+    private static final long FRAME_STEP_COPY_DELAY_MILLISECONDS = 400;
+
+    /**
+     * The frame chosen in the new thumbnail dialog. Only used on the main thread.
+     */
+    private static final class ChosenFrame {
+        long videoTime;
+        @Nullable
+        Bitmap image;
+        /**
+         * Increased on each step, so the copy of an earlier step is not shown.
+         */
+        int stepNumber;
+    }
+
+    /**
+     * Number of frames submitted by the user that are kept to show in the sheet.
+     */
+    private static final int MAX_SUBMITTED_FRAMES = 4;
+
+    /**
+     * Frames the user submitted, by video ID and time. The thumbnail cache can take a long time
+     * to make the image of a new thumbnail when it is busy, and until then has no image of it.
+     */
+    private static final Map<SubmittedFrame, Bitmap> submittedFrames = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(MAX_SUBMITTED_FRAMES));
+
+    /**
+     * @param timestamp Time of the frame in seconds, exactly as submitted.
+     */
+    private record SubmittedFrame(String videoId, double timestamp) {
+    }
 
     /**
      * Score of a new title of a user who is not yet verified, which is shown as unverified.
@@ -185,9 +231,9 @@ final class DeArrowVoteDialog {
                 str("morphe_dearrow_vote_new_title"),
                 () -> showNewTitleDialog(context, dialog, videoId, originalTitle[0], videoLength),
                 true, false);
-        Button currentFrameButton = CustomDialog.createButton(context, null,
-                str("morphe_dearrow_vote_current_frame"),
-                () -> showCurrentFrameDialog(context, dialog, playerButton, videoId, videoLength),
+        Button newThumbnailButton = CustomDialog.createButton(context, null,
+                str("morphe_dearrow_vote_new_thumbnail"),
+                () -> showNewThumbnailDialog(context, dialog, playerButton, videoId, videoLength),
                 false, false);
 
         LinearLayout buttonsLayout = new LinearLayout(context);
@@ -195,7 +241,7 @@ final class DeArrowVoteDialog {
         LinearLayout.LayoutParams newTitleParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
         newTitleParams.setMarginEnd(Dim.dp8);
         buttonsLayout.addView(newTitleButton, newTitleParams);
-        buttonsLayout.addView(currentFrameButton, new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f));
+        buttonsLayout.addView(newThumbnailButton, new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f));
 
         LinearLayout.LayoutParams buttonsParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -349,10 +395,17 @@ final class DeArrowVoteDialog {
         imageView.setBackgroundColor(foregroundColor);
         imageView.getBackground().setAlpha(0x20);
         imageView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
-        String imageUrl = thumbnail.original()
-                ? "https://i.ytimg.com/vi/" + videoId + "/mqdefault.jpg"
-                : DeArrowPatch.getSubmittedThumbnailURL(videoId, thumbnail.timestamp());
-        loadImage(imageView, imageUrl);
+        Bitmap submittedFrame = thumbnail.original()
+                ? null
+                : submittedFrames.get(new SubmittedFrame(videoId, thumbnail.timestamp()));
+        if (submittedFrame != null) {
+            imageView.setImageBitmap(submittedFrame);
+        } else {
+            String imageUrl = thumbnail.original()
+                    ? "https://i.ytimg.com/vi/" + videoId + "/mqdefault.jpg"
+                    : DeArrowPatch.getSubmittedThumbnailURL(videoId, thumbnail.timestamp());
+            loadImage(imageView, imageUrl);
+        }
 
         String text = thumbnail.original()
                 ? str("morphe_dearrow_vote_original_thumbnail")
@@ -550,8 +603,9 @@ final class DeArrowVoteDialog {
     /**
      * Submits the time of the frame shown in the player as a new thumbnail.
      * The time is read when the button is tapped, so a playing video is submitted at that moment.
+     * The step buttons of the dialog move the video to a nearby frame.
      */
-    private static void showCurrentFrameDialog(Context context, SheetBottomDialog.SlideDialog sheet,
+    private static void showNewThumbnailDialog(Context context, SheetBottomDialog.SlideDialog sheet,
                                                View playerButton, String videoId, long videoLength) {
         try {
             final long videoTime = VideoInformation.getVideoTime();
@@ -559,51 +613,144 @@ final class DeArrowVoteDialog {
                 Logger.printDebug(() -> "Video time is not available");
                 return;
             }
-            final double timestamp = videoTime / 1000.0;
-            final boolean playing = VideoState.getCurrent() == VideoState.PLAYING;
 
-            captureCurrentFrame(playerButton, frame -> {
+            captureCurrentFrame(playerButton, image -> {
                 try {
-                    String message = str("morphe_dearrow_vote_current_frame_content", formatTime(timestamp));
-                    if (playing) {
-                        message += "\n\n" + str("morphe_dearrow_vote_current_frame_playing");
-                    }
+                    ChosenFrame chosen = new ChosenFrame();
+                    chosen.videoTime = videoTime;
+                    chosen.image = image;
 
                     var dialogPair = CustomDialog.create(context,
-                            str("morphe_dearrow_vote_current_frame"),
-                            message,
+                            str("morphe_dearrow_vote_new_thumbnail"),
+                            null,
                             null,
                             str("morphe_dearrow_vote_submit"),
-                            () -> vote(context, sheet, videoId, false, () -> DeArrowVoteRequest.voteThumbnail(
-                                    videoId, false, timestamp, false, videoLength)),
+                            () -> submitFrame(context, sheet, videoId, videoLength, chosen.videoTime, chosen.image),
                             () -> {},
                             null,
                             null,
                             false
                     );
 
-                    if (frame != null) {
-                        ImageView imageView = new ImageView(context);
-                        imageView.setImageBitmap(frame);
-                        imageView.setAdjustViewBounds(true);
-                        imageView.setMaxHeight(FRAME_PREVIEW_MAX_HEIGHT);
-                        imageView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
-                        LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(
-                                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                        imageParams.setMargins(0, Dim.dp16, 0, 0);
-                        // Below the message and above the buttons.
-                        LinearLayout mainLayout = dialogPair.second;
-                        mainLayout.addView(imageView, mainLayout.getChildCount() - 1, imageParams);
+                    TextView messageView = new TextView(context);
+                    messageView.setTextSize(16);
+                    messageView.setTextColor(ThemeUtils.getDialogTextColor());
+
+                    ImageView imageView = new ImageView(context);
+                    imageView.setAdjustViewBounds(true);
+                    imageView.setMaxHeight(FRAME_PREVIEW_MAX_HEIGHT);
+                    imageView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+                    LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    imageParams.setMargins(0, Dim.dp16, 0, 0);
+
+                    Runnable updateViews = () -> {
+                        String message = str("morphe_dearrow_vote_current_frame_content",
+                                formatTime(chosen.videoTime / 1000.0));
+                        if (VideoState.getCurrent() == VideoState.PLAYING) {
+                            message += "\n\n" + str("morphe_dearrow_vote_current_frame_playing");
+                        }
+                        messageView.setText(message);
+                        imageView.setImageBitmap(chosen.image);
+                        imageView.setVisibility(chosen.image == null ? View.GONE : View.VISIBLE);
+                    };
+                    updateViews.run();
+
+                    final long fineStep = Settings.DEARROW_VOTE_TIME_STEP.get();
+                    final long[] steps = {-FRAME_STEP_LARGE_MILLISECONDS, -fineStep,
+                            fineStep, FRAME_STEP_LARGE_MILLISECONDS};
+                    LinearLayout stepRow = new LinearLayout(context);
+                    stepRow.setOrientation(LinearLayout.HORIZONTAL);
+                    for (int i = 0, count = steps.length; i < count; i++) {
+                        final long step = steps[i];
+                        Button button = CustomDialog.createButton(context, null, formatFrameStep(step),
+                                () -> stepFrame(playerButton, chosen, step, videoLength, updateViews),
+                                false, false);
+                        LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+                        buttonParams.setMargins(i == 0 ? 0 : Dim.dp4, 0, i == count - 1 ? 0 : Dim.dp4, 0);
+                        stepRow.addView(button, buttonParams);
                     }
+                    LinearLayout.LayoutParams stepRowParams = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    // Extra space below, so a step tap does not hit Cancel or Submit by mistake.
+                    stepRowParams.setMargins(0, Dim.dp16, 0, Dim.dp32);
+
+                    LinearLayout contentLayout = new LinearLayout(context);
+                    contentLayout.setOrientation(LinearLayout.VERTICAL);
+                    contentLayout.addView(messageView);
+                    contentLayout.addView(imageView, imageParams);
+                    contentLayout.addView(stepRow, stepRowParams);
+
+                    // Scrolls if the dialog does not fit on screen, as the content of other dialogs does.
+                    ScrollView scrollView = new ScrollView(context);
+                    scrollView.setVerticalScrollBarEnabled(false);
+                    scrollView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+                    scrollView.addView(contentLayout);
+
+                    // Below the title and above the buttons.
+                    LinearLayout mainLayout = dialogPair.second;
+                    mainLayout.addView(scrollView, mainLayout.getChildCount() - 1,
+                            new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1.0f));
 
                     dialogPair.first.show();
                 } catch (Exception ex) {
-                    Logger.printException(() -> "showCurrentFrameDialog result failure", ex);
+                    Logger.printException(() -> "showNewThumbnailDialog result failure", ex);
                 }
             });
         } catch (Exception ex) {
-            Logger.printException(() -> "showCurrentFrameDialog failure", ex);
+            Logger.printException(() -> "showNewThumbnailDialog failure", ex);
         }
+    }
+
+    /**
+     * Moves the video by a step and copies the frame it then shows.
+     *
+     * @param onChanged Called when the time changes, and again when the frame is copied.
+     */
+    private static void stepFrame(View playerButton, ChosenFrame chosen, long stepMilliseconds,
+                                  long videoLength, Runnable onChanged) {
+        long time = Math.max(0, chosen.videoTime + stepMilliseconds);
+        if (videoLength > 0) {
+            time = Math.min(time, videoLength - 1);
+        }
+        if (time == chosen.videoTime) {
+            return;
+        }
+        if (!VideoInformation.seekTo(time)) {
+            Logger.printDebug(() -> "Could not seek to the next frame");
+            return;
+        }
+
+        chosen.videoTime = time;
+        final int stepNumber = ++chosen.stepNumber;
+        onChanged.run();
+
+        Utils.runOnMainThreadDelayed(() -> captureCurrentFrame(playerButton, image -> {
+            // A newer step is shown instead.
+            if (stepNumber != chosen.stepNumber) return;
+            chosen.image = image;
+            onChanged.run();
+        }), FRAME_STEP_COPY_DELAY_MILLISECONDS);
+    }
+
+    private static void submitFrame(Context context, SheetBottomDialog.SlideDialog sheet, String videoId,
+                                    long videoLength, long videoTime, @Nullable Bitmap image) {
+        final double timestamp = videoTime / 1000.0;
+        vote(context, sheet, videoId, false, () -> {
+            String error = DeArrowVoteRequest.voteThumbnail(videoId, false, timestamp, false, videoLength);
+            if (error == null && image != null) {
+                submittedFrames.put(new SubmittedFrame(videoId, timestamp), image);
+            }
+            return error;
+        });
+    }
+
+    /**
+     * @return The step as signed seconds, such as -1 s or +0.1 s.
+     */
+    private static String formatFrameStep(long stepMilliseconds) {
+        DecimalFormat format = new DecimalFormat("+0.###;-0.###");
+        return str("morphe_dearrow_vote_frame_step", format.format(stepMilliseconds / 1000.0));
     }
 
     /**

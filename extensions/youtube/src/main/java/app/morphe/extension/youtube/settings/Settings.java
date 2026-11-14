@@ -245,6 +245,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DEARROW_TITLES_ICON = new BooleanSetting("morphe_dearrow_titles_icon", TRUE, true, new DeArrowTitlesAvailability());
     public static final BooleanSetting DEARROW_CASUAL_MODE = new BooleanSetting("morphe_dearrow_casual_mode", FALSE, true, new DeArrowTitlesAvailability());
     public static final BooleanSetting DEARROW_VOTE_BUTTON = new BooleanSetting("morphe_dearrow_vote_button", FALSE, true);
+    public static final IntegerSetting DEARROW_VOTE_TIME_STEP = new IntegerSetting("morphe_dearrow_vote_time_step", 100, parent(DEARROW_VOTE_BUTTON));
     public static final BooleanSetting DEARROW_SEEN_GUIDELINES = new BooleanSetting("morphe_dearrow_seen_guidelines", FALSE, false, false);
     public static final IntegerSetting DEARROW_CASUAL_MODE_MIN_VOTES =new IntegerSetting("morphe_dearrow_casual_mode_min_votes", 2, true, parentsAll(new DeArrowTitlesAvailability(), parent(DEARROW_CASUAL_MODE)));
     public static final EnumSetting<ThumbnailOption> DEARROW_THUMBNAIL_HOME = new EnumSetting<>("morphe_dearrow_thumbnail_home", ThumbnailOption.ORIGINAL);
