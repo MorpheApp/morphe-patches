@@ -10,6 +10,9 @@ package app.morphe.extension.youtube.patches.dearrow;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -25,27 +28,37 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.function.Supplier;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowVoteRequest.Branding;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowVoteRequest.ThumbnailSubmission;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowVoteRequest.TitleSubmission;
 import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
+import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
 /**
- * Sheet of the DeArrow titles of the video in the player, to vote on them or submit a new title.
+ * Sheet of the DeArrow titles and thumbnails of the video in the player, to vote on them
+ * or submit a new title or the current frame as a thumbnail.
  * <p>
- * The original title is listed first, as done by the DeArrow extension. It is the title as set
- * by the uploader, since YouTube can show a translated title instead.
+ * The original title and thumbnail are listed first, as done by the DeArrow extension.
+ * The original title is the title as set by the uploader, since YouTube can show a translated title instead.
  */
 final class DeArrowVoteDialog {
 
@@ -63,6 +76,17 @@ final class DeArrowVoteDialog {
     private static final int NEW_TITLE_MAX_LINES = 4;
 
     /**
+     * Share of the screen height of the list. Less than the default, since the sheet
+     * also has a title and buttons.
+     */
+    private static final int LIST_MAX_HEIGHT_PERCENT = 55;
+
+    private static final int THUMBNAIL_WIDTH = Dim.dp(112);
+    private static final int THUMBNAIL_HEIGHT = Dim.dp(63);
+
+    private static final int THUMBNAIL_TIMEOUT_MILLISECONDS = 10_000;
+
+    /**
      * A title listed in the sheet.
      *
      * @param title     The title as submitted, or the original title if no one submitted it.
@@ -75,6 +99,18 @@ final class DeArrowVoteDialog {
         String shownTitle() {
             return DeArrowBrandingRequest.formatTitle(title);
         }
+    }
+
+    /**
+     * A thumbnail listed in the sheet.
+     *
+     * @param timestamp Time of the frame in seconds, as submitted. Not used for the original thumbnail.
+     * @param original  If the thumbnail is the original thumbnail.
+     * @param submitted If the thumbnail was submitted, so it can be downvoted.
+     * @param votes     The votes of the thumbnail, if submitted.
+     * @param locked    If a VIP locked the thumbnail.
+     */
+    private record ListedThumbnail(double timestamp, boolean original, boolean submitted, int votes, boolean locked) {
     }
 
     private DeArrowVoteDialog() {
@@ -99,13 +135,13 @@ final class DeArrowVoteDialog {
         contentLayout.addView(SheetBottomDialog.createTitle(context,
                 str("morphe_dearrow_vote_title"), foregroundColor));
 
-        LinearLayout titlesLayout = new LinearLayout(context);
-        titlesLayout.setOrientation(LinearLayout.VERTICAL);
-        titlesLayout.addView(createMessage(context, str("morphe_dearrow_vote_loading"), foregroundColor));
+        LinearLayout listLayout = new LinearLayout(context);
+        listLayout.setOrientation(LinearLayout.VERTICAL);
+        listLayout.addView(createMessage(context, str("morphe_dearrow_vote_loading"), foregroundColor));
 
-        // Capped so the buttons stay reachable in landscape, where height is limited.
-        ScrollView scrollView = SheetBottomDialog.createCappedScrollView(context);
-        scrollView.addView(titlesLayout);
+        // Capped so the buttons below the list stay on screen, including in landscape.
+        ScrollView scrollView = SheetBottomDialog.createCappedScrollView(context, LIST_MAX_HEIGHT_PERCENT);
+        scrollView.addView(listLayout);
         contentLayout.addView(scrollView);
         mainLayout.addView(contentLayout);
 
@@ -119,22 +155,34 @@ final class DeArrowVoteDialog {
                 str("morphe_dearrow_vote_new_title"),
                 () -> showNewTitleDialog(context, dialog, videoId, originalTitle[0], videoLength),
                 true, false);
-        LinearLayout.LayoutParams newTitleParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp36);
-        newTitleParams.setMargins(0, Dim.dp16, 0, 0);
-        contentLayout.addView(newTitleButton, newTitleParams);
+        Button currentFrameButton = CustomDialog.createButton(context, null,
+                str("morphe_dearrow_vote_current_frame"),
+                () -> showCurrentFrameDialog(context, dialog, videoId, videoLength),
+                false, false);
+
+        LinearLayout buttonsLayout = new LinearLayout(context);
+        buttonsLayout.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout.LayoutParams newTitleParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+        newTitleParams.setMarginEnd(Dim.dp8);
+        buttonsLayout.addView(newTitleButton, newTitleParams);
+        buttonsLayout.addView(currentFrameButton, new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f));
+
+        LinearLayout.LayoutParams buttonsParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        buttonsParams.setMargins(0, Dim.dp16, 0, 0);
+        contentLayout.addView(buttonsLayout, buttonsParams);
 
         dialog.show();
 
         Utils.runOnBackgroundThread(() -> {
-            List<TitleSubmission> submissions;
+            Branding branding;
             try {
-                submissions = DeArrowVoteRequest.fetchTitles(videoId);
+                branding = DeArrowVoteRequest.fetchBranding(videoId);
             } catch (Exception ex) {
-                Logger.printInfo(() -> "Could not fetch DeArrow titles of: " + videoId, ex);
+                Logger.printInfo(() -> "Could not fetch DeArrow submissions of: " + videoId, ex);
                 Utils.runOnMainThread(() -> {
-                    titlesLayout.removeAllViews();
-                    titlesLayout.addView(createMessage(context,
+                    listLayout.removeAllViews();
+                    listLayout.addView(createMessage(context,
                             str("morphe_dearrow_vote_fetch_failed"), foregroundColor));
                 });
                 return;
@@ -147,18 +195,26 @@ final class DeArrowVoteDialog {
                 Logger.printException(() -> "Could not fetch original title of: " + videoId, ex);
             }
 
-            List<ListedTitle> titles = listTitles(submissions, original);
+            List<ListedTitle> titles = listTitles(branding.titles(), original);
+            List<ListedThumbnail> thumbnails = listThumbnails(branding.thumbnails());
             String fetchedOriginal = original;
             Utils.runOnMainThread(() -> {
                 originalTitle[0] = fetchedOriginal;
-                titlesLayout.removeAllViews();
+                listLayout.removeAllViews();
+
+                listLayout.addView(createSectionHeader(context, str("morphe_dearrow_vote_titles"), foregroundColor));
                 if (titles.isEmpty()) {
-                    titlesLayout.addView(createMessage(context,
+                    listLayout.addView(createMessage(context,
                             str("morphe_dearrow_vote_no_titles"), foregroundColor));
-                    return;
                 }
                 for (ListedTitle title : titles) {
-                    titlesLayout.addView(createTitleRow(context, dialog, videoId, title,
+                    listLayout.addView(createTitleRow(context, dialog, videoId, title,
+                            videoLength, foregroundColor));
+                }
+
+                listLayout.addView(createSectionHeader(context, str("morphe_dearrow_vote_thumbnails"), foregroundColor));
+                for (ListedThumbnail thumbnail : thumbnails) {
+                    listLayout.addView(createThumbnailRow(context, dialog, videoId, thumbnail,
                             videoLength, foregroundColor));
                 }
             });
@@ -190,6 +246,40 @@ final class DeArrowVoteDialog {
         return titles;
     }
 
+    /**
+     * @return The original thumbnail first, then the submitted thumbnails in the order of the server.
+     */
+    private static List<ListedThumbnail> listThumbnails(List<ThumbnailSubmission> submissions) {
+        List<ListedThumbnail> thumbnails = new ArrayList<>(submissions.size() + 1);
+        ListedThumbnail original = null;
+        for (ThumbnailSubmission submission : submissions) {
+            ListedThumbnail thumbnail = new ListedThumbnail(submission.timestamp(), submission.original(),
+                    true, submission.votes(), submission.locked());
+            if (submission.original() && original == null) {
+                original = thumbnail;
+            } else {
+                thumbnails.add(thumbnail);
+            }
+        }
+        // The original thumbnail can always be voted for.
+        if (original == null) {
+            original = new ListedThumbnail(0, true, false, 0, false);
+        }
+        thumbnails.add(0, original);
+        return thumbnails;
+    }
+
+    private static TextView createSectionHeader(Context context, String text, int foregroundColor) {
+        TextView view = new TextView(context);
+        view.setText(text);
+        view.setTextSize(14);
+        view.setTypeface(Typeface.DEFAULT_BOLD);
+        view.setTextColor(foregroundColor);
+        view.setAlpha(DETAILS_ALPHA);
+        view.setPadding(0, Dim.dp16, 0, Dim.dp4);
+        return view;
+    }
+
     private static TextView createMessage(Context context, String message, int foregroundColor) {
         TextView view = new TextView(context);
         view.setText(message);
@@ -202,31 +292,82 @@ final class DeArrowVoteDialog {
 
     private static View createTitleRow(Context context, SheetBottomDialog.SlideDialog dialog, String videoId,
                                        ListedTitle title, long videoLength, int foregroundColor) {
+        List<String> details = new ArrayList<>(3);
+        if (title.original()) {
+            details.add(str("morphe_dearrow_vote_original_title"));
+        }
+        addVoteDetails(details, title.submitted(), title.votes(), title.locked());
+
+        return createRow(context, null, title.shownTitle(), details, title.submitted(), foregroundColor,
+                downvote -> vote(context, dialog, videoId, downvote, () -> DeArrowVoteRequest.voteTitle(
+                        videoId, title.title(), title.original(), downvote, videoLength)));
+    }
+
+    private static View createThumbnailRow(Context context, SheetBottomDialog.SlideDialog dialog, String videoId,
+                                           ListedThumbnail thumbnail, long videoLength, int foregroundColor) {
+        ImageView imageView = new ImageView(context);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        // Shown until the image loads, and if the thumbnail cache has no image of the frame yet.
+        imageView.setBackgroundColor(foregroundColor);
+        imageView.getBackground().setAlpha(0x20);
+        imageView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+        String imageUrl = thumbnail.original()
+                ? "https://i.ytimg.com/vi/" + videoId + "/mqdefault.jpg"
+                : DeArrowPatch.getSubmittedThumbnailURL(videoId, thumbnail.timestamp());
+        loadImage(imageView, imageUrl);
+
+        String text = thumbnail.original()
+                ? str("morphe_dearrow_vote_original_thumbnail")
+                : str("morphe_dearrow_vote_thumbnail_time", formatTime(thumbnail.timestamp()));
+        List<String> details = new ArrayList<>(2);
+        addVoteDetails(details, thumbnail.submitted(), thumbnail.votes(), thumbnail.locked());
+
+        return createRow(context, imageView, text, details, thumbnail.submitted(), foregroundColor,
+                downvote -> vote(context, dialog, videoId, downvote, () -> DeArrowVoteRequest.voteThumbnail(
+                        videoId, thumbnail.original(), thumbnail.timestamp(), downvote, videoLength)));
+    }
+
+    private static void addVoteDetails(List<String> details, boolean submitted, int votes, boolean locked) {
+        if (submitted) {
+            details.add(str("morphe_dearrow_vote_votes", votes));
+        }
+        if (locked) {
+            details.add(str("morphe_dearrow_vote_locked"));
+        }
+    }
+
+    private interface VoteAction {
+        void vote(boolean downvote);
+    }
+
+    /**
+     * @param image       Image shown at the start of the row, or null for none.
+     * @param details     Shown under the text.
+     * @param canDownvote If the row has a downvote button, which only submitted titles and thumbnails have.
+     */
+    private static View createRow(Context context, @Nullable View image, String text, List<String> details,
+                                  boolean canDownvote, int foregroundColor, VoteAction voteAction) {
         LinearLayout row = new LinearLayout(context);
         row.setOrientation(LinearLayout.HORIZONTAL);
         row.setGravity(Gravity.CENTER_VERTICAL);
         row.setPadding(0, Dim.dp8, 0, Dim.dp8);
 
+        if (image != null) {
+            LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
+            imageParams.setMarginEnd(Dim.dp12);
+            row.addView(image, imageParams);
+        }
+
         LinearLayout textLayout = new LinearLayout(context);
         textLayout.setOrientation(LinearLayout.VERTICAL);
         row.addView(textLayout, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f));
 
-        TextView titleView = new TextView(context);
-        titleView.setText(title.shownTitle());
-        titleView.setTextSize(16);
-        titleView.setTextColor(foregroundColor);
-        textLayout.addView(titleView);
+        TextView textView = new TextView(context);
+        textView.setText(text);
+        textView.setTextSize(16);
+        textView.setTextColor(foregroundColor);
+        textLayout.addView(textView);
 
-        List<String> details = new ArrayList<>(3);
-        if (title.original()) {
-            details.add(str("morphe_dearrow_vote_original_title"));
-        }
-        if (title.submitted()) {
-            details.add(str("morphe_dearrow_vote_votes", title.votes()));
-        }
-        if (title.locked()) {
-            details.add(str("morphe_dearrow_vote_locked"));
-        }
         if (!details.isEmpty()) {
             TextView detailsView = new TextView(context);
             detailsView.setText(TextUtils.join(" · ", details));
@@ -237,13 +378,61 @@ final class DeArrowVoteDialog {
         }
 
         row.addView(createVoteButton(context, UPVOTE_ICON, str("morphe_dearrow_vote_upvote"), foregroundColor,
-                () -> vote(context, dialog, videoId, title.title(), title.original(), false, videoLength)));
-        // Only submitted titles can be downvoted.
-        if (title.submitted()) {
+                () -> voteAction.vote(false)));
+        if (canDownvote) {
             row.addView(createVoteButton(context, DOWNVOTE_ICON, str("morphe_dearrow_vote_downvote"), foregroundColor,
-                    () -> vote(context, dialog, videoId, title.title(), title.original(), true, videoLength)));
+                    () -> voteAction.vote(true)));
         }
         return row;
+    }
+
+    /**
+     * Loads the image on a background thread. Nothing is shown if the server has no image.
+     */
+    private static void loadImage(ImageView imageView, String url) {
+        Utils.runOnBackgroundThread(() -> {
+            try {
+                HttpURLConnection connection = Requester.openConnection(url);
+                connection.setConnectTimeout(THUMBNAIL_TIMEOUT_MILLISECONDS);
+                connection.setReadTimeout(THUMBNAIL_TIMEOUT_MILLISECONDS);
+                final int responseCode = connection.getResponseCode();
+                if (responseCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                    // The thumbnail cache has not yet generated the image of the frame.
+                    Logger.printDebug(() -> "No thumbnail image (status code: " + responseCode + "): " + url);
+                    connection.disconnect();
+                    return;
+                }
+                Bitmap bitmap;
+                try (InputStream input = connection.getInputStream()) {
+                    bitmap = BitmapFactory.decodeStream(input);
+                }
+                connection.disconnect();
+                if (bitmap == null) {
+                    Logger.printDebug(() -> "Could not decode thumbnail image: " + url);
+                    return;
+                }
+                Utils.runOnMainThread(() -> imageView.setImageBitmap(bitmap));
+            } catch (IOException ex) {
+                Logger.printInfo(() -> "Could not load thumbnail image: " + url, ex);
+            } catch (Exception ex) {
+                Logger.printException(() -> "loadImage failure", ex);
+            }
+        });
+    }
+
+    /**
+     * @return The time as minutes and seconds with hundredths, and hours if needed,
+     *         since frames close to each other are different thumbnails.
+     */
+    private static String formatTime(double seconds) {
+        final long wholeSeconds = (long) seconds;
+        final long hours = wholeSeconds / 3600;
+        final long minutes = (wholeSeconds % 3600) / 60;
+        final double secondsOfMinute = seconds - hours * 3600 - minutes * 60;
+        if (hours > 0) {
+            return String.format(Locale.US, "%d:%02d:%05.2f", hours, minutes, secondsOfMinute);
+        }
+        return String.format(Locale.US, "%d:%05.2f", minutes, secondsOfMinute);
     }
 
     private static ImageView createVoteButton(Context context, int icon, String description,
@@ -292,7 +481,9 @@ final class DeArrowVoteDialog {
                         if (title.isEmpty()) {
                             return;
                         }
-                        vote(context, sheet, videoId, title, title.equals(originalTitle), false, videoLength);
+                        final boolean original = title.equals(originalTitle);
+                        vote(context, sheet, videoId, false, () -> DeArrowVoteRequest.voteTitle(
+                                videoId, title, original, false, videoLength));
                     },
                     () -> {},
                     null,
@@ -304,13 +495,52 @@ final class DeArrowVoteDialog {
         }
     }
 
-    private static void vote(Context context, SheetBottomDialog.SlideDialog sheet, String videoId, String title,
-                             boolean original, boolean downvote, long videoLength) {
+    /**
+     * Submits the time of the frame shown in the player as a new thumbnail.
+     * The time is read when the button is tapped, so a playing video is submitted at that moment.
+     */
+    private static void showCurrentFrameDialog(Context context, SheetBottomDialog.SlideDialog sheet,
+                                               String videoId, long videoLength) {
+        try {
+            final long videoTime = VideoInformation.getVideoTime();
+            if (videoTime < 0) {
+                Logger.printDebug(() -> "Video time is not available");
+                return;
+            }
+            final double timestamp = videoTime / 1000.0;
+
+            String message = str("morphe_dearrow_vote_current_frame_content", formatTime(timestamp));
+            if (VideoState.getCurrent() == VideoState.PLAYING) {
+                message += "\n\n" + str("morphe_dearrow_vote_current_frame_playing");
+            }
+
+            CustomDialog.create(context,
+                    str("morphe_dearrow_vote_current_frame"),
+                    message,
+                    null,
+                    str("morphe_dearrow_vote_submit"),
+                    () -> vote(context, sheet, videoId, false, () -> DeArrowVoteRequest.voteThumbnail(
+                            videoId, false, timestamp, false, videoLength)),
+                    () -> {},
+                    null,
+                    null,
+                    false
+            ).first.show();
+        } catch (Exception ex) {
+            Logger.printException(() -> "showCurrentFrameDialog failure", ex);
+        }
+    }
+
+    /**
+     * @param request Sends the vote, and returns the error to show or null if the vote was saved.
+     */
+    private static void vote(Context context, SheetBottomDialog.SlideDialog sheet, String videoId,
+                             boolean downvote, Supplier<String> request) {
         // The sheet is closed first, so a vote is not sent twice.
         sheet.dismiss();
 
         Utils.runOnBackgroundThread(() -> {
-            String error = DeArrowVoteRequest.vote(videoId, title, original, downvote, videoLength);
+            String error = request.get();
             if (error == null) {
                 Utils.showSnackbarShort(str(downvote
                         ? "morphe_dearrow_vote_downvoted"
