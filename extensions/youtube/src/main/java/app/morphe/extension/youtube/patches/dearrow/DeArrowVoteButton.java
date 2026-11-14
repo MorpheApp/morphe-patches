@@ -57,7 +57,7 @@ public final class DeArrowVoteButton {
 
     private static void showDialog(View view) {
         try {
-            DeArrowVoteDialog.show(view.getContext());
+            DeArrowVoteDialog.show(view);
         } catch (Exception ex) {
             Logger.printException(() -> "showDialog failure", ex);
         }

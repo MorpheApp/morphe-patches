@@ -14,11 +14,18 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.PixelCopy;
+import android.view.SurfaceView;
+import android.view.TextureView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,6 +41,7 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import app.morphe.extension.shared.Logger;
@@ -44,6 +52,7 @@ import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.youtube.ambientlight.LightSurface;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowVoteRequest.Branding;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowVoteRequest.ThumbnailSubmission;
@@ -79,6 +88,16 @@ final class DeArrowVoteDialog {
     private static final int THUMBNAIL_HEIGHT = Dim.dp(63);
 
     private static final int THUMBNAIL_TIMEOUT_MILLISECONDS = 10_000;
+
+    /**
+     * Width the current frame is copied at, which is enough for the dialog.
+     */
+    private static final int FRAME_PREVIEW_MAX_WIDTH = 640;
+    private static final int FRAME_PREVIEW_MAX_HEIGHT = Dim.dp(180);
+    /**
+     * Number of layouts above the player button that are searched for the video surface.
+     */
+    private static final int MAX_PLAYER_ANCESTORS = 8;
 
     /**
      * Score of a new title of a user who is not yet verified, which is shown as unverified.
@@ -120,8 +139,13 @@ final class DeArrowVoteDialog {
     private DeArrowVoteDialog() {
     }
 
-    static void show(Context context) {
+    /**
+     * @param playerButton The player button that opened the sheet, used to find the video surface.
+     */
+    static void show(View playerButton) {
         Utils.verifyOnMainThread();
+
+        Context context = playerButton.getContext();
 
         String videoId = VideoInformation.getVideoId();
         if (videoId.isEmpty()) {
@@ -163,7 +187,7 @@ final class DeArrowVoteDialog {
                 true, false);
         Button currentFrameButton = CustomDialog.createButton(context, null,
                 str("morphe_dearrow_vote_current_frame"),
-                () -> showCurrentFrameDialog(context, dialog, videoId, videoLength),
+                () -> showCurrentFrameDialog(context, dialog, playerButton, videoId, videoLength),
                 false, false);
 
         LinearLayout buttonsLayout = new LinearLayout(context);
@@ -528,7 +552,7 @@ final class DeArrowVoteDialog {
      * The time is read when the button is tapped, so a playing video is submitted at that moment.
      */
     private static void showCurrentFrameDialog(Context context, SheetBottomDialog.SlideDialog sheet,
-                                               String videoId, long videoLength) {
+                                               View playerButton, String videoId, long videoLength) {
         try {
             final long videoTime = VideoInformation.getVideoTime();
             if (videoTime < 0) {
@@ -536,27 +560,135 @@ final class DeArrowVoteDialog {
                 return;
             }
             final double timestamp = videoTime / 1000.0;
+            final boolean playing = VideoState.getCurrent() == VideoState.PLAYING;
 
-            String message = str("morphe_dearrow_vote_current_frame_content", formatTime(timestamp));
-            if (VideoState.getCurrent() == VideoState.PLAYING) {
-                message += "\n\n" + str("morphe_dearrow_vote_current_frame_playing");
-            }
+            captureCurrentFrame(playerButton, frame -> {
+                try {
+                    String message = str("morphe_dearrow_vote_current_frame_content", formatTime(timestamp));
+                    if (playing) {
+                        message += "\n\n" + str("morphe_dearrow_vote_current_frame_playing");
+                    }
 
-            CustomDialog.create(context,
-                    str("morphe_dearrow_vote_current_frame"),
-                    message,
-                    null,
-                    str("morphe_dearrow_vote_submit"),
-                    () -> vote(context, sheet, videoId, false, () -> DeArrowVoteRequest.voteThumbnail(
-                            videoId, false, timestamp, false, videoLength)),
-                    () -> {},
-                    null,
-                    null,
-                    false
-            ).first.show();
+                    var dialogPair = CustomDialog.create(context,
+                            str("morphe_dearrow_vote_current_frame"),
+                            message,
+                            null,
+                            str("morphe_dearrow_vote_submit"),
+                            () -> vote(context, sheet, videoId, false, () -> DeArrowVoteRequest.voteThumbnail(
+                                    videoId, false, timestamp, false, videoLength)),
+                            () -> {},
+                            null,
+                            null,
+                            false
+                    );
+
+                    if (frame != null) {
+                        ImageView imageView = new ImageView(context);
+                        imageView.setImageBitmap(frame);
+                        imageView.setAdjustViewBounds(true);
+                        imageView.setMaxHeight(FRAME_PREVIEW_MAX_HEIGHT);
+                        imageView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+                        LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        imageParams.setMargins(0, Dim.dp16, 0, 0);
+                        // Below the message and above the buttons.
+                        LinearLayout mainLayout = dialogPair.second;
+                        mainLayout.addView(imageView, mainLayout.getChildCount() - 1, imageParams);
+                    }
+
+                    dialogPair.first.show();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "showCurrentFrameDialog result failure", ex);
+                }
+            });
         } catch (Exception ex) {
             Logger.printException(() -> "showCurrentFrameDialog failure", ex);
         }
+    }
+
+    /**
+     * Copies the frame shown in the player. The thumbnail cache is not used, since it only has
+     * images of submitted frames, and asking it for another frame makes and keeps an image of it.
+     *
+     * @param onCaptured Called on the main thread with the frame, or with null if it could not be copied.
+     */
+    private static void captureCurrentFrame(View playerButton, Consumer<Bitmap> onCaptured) {
+        View video = findVideoSurface(playerButton);
+        if (video == null) {
+            Logger.printDebug(() -> "Video surface not found");
+            onCaptured.accept(null);
+            return;
+        }
+
+        final float scale = Math.min(1, (float) FRAME_PREVIEW_MAX_WIDTH / video.getWidth());
+        Bitmap bitmap = Bitmap.createBitmap(
+                Math.max(1, Math.round(video.getWidth() * scale)),
+                Math.max(1, Math.round(video.getHeight() * scale)),
+                Bitmap.Config.ARGB_8888);
+
+        if (video instanceof TextureView textureView) {
+            textureView.getBitmap(bitmap);
+            onCaptured.accept(bitmap);
+            return;
+        }
+
+        SurfaceView surfaceView = (SurfaceView) video;
+        if (!surfaceView.getHolder().getSurface().isValid()) {
+            Logger.printDebug(() -> "Video surface is not valid");
+            onCaptured.accept(null);
+            return;
+        }
+        try {
+            PixelCopy.request(surfaceView, bitmap, result -> {
+                if (result == PixelCopy.SUCCESS) {
+                    onCaptured.accept(bitmap);
+                } else {
+                    Logger.printDebug(() -> "Could not copy the video frame: " + result);
+                    onCaptured.accept(null);
+                }
+            }, new Handler(Looper.getMainLooper()));
+        } catch (IllegalArgumentException ex) {
+            Logger.printInfo(() -> "Video surface went away during the copy", ex);
+            onCaptured.accept(null);
+        }
+    }
+
+    /**
+     * @return The largest shown video surface in the closest player layout above the button,
+     *         or null if none is found.
+     */
+    @Nullable
+    private static View findVideoSurface(View playerButton) {
+        ViewParent parent = playerButton.getParent();
+        for (int i = 0; i < MAX_PLAYER_ANCESTORS && parent instanceof ViewGroup group;
+             i++, parent = parent.getParent()) {
+            View surface = findLargestSurface(group, null);
+            if (surface != null) {
+                return surface;
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    private static View findLargestSurface(View view, @Nullable View best) {
+        // YouTube can hide a video surface that is being replaced by setting its alpha to 0.
+        if (view.getVisibility() != View.VISIBLE || view.getAlpha() == 0) {
+            return best;
+        }
+        // Ambient light draws on surfaces around the video.
+        if ((view instanceof SurfaceView && !(view instanceof LightSurface)) || view instanceof TextureView) {
+            final long area = (long) view.getWidth() * view.getHeight();
+            if (area > 0 && (best == null || area > (long) best.getWidth() * best.getHeight())) {
+                best = view;
+            }
+        }
+        if (view instanceof ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                best = findLargestSurface(group.getChildAt(i), best);
+            }
+        }
+        return best;
     }
 
     /**
