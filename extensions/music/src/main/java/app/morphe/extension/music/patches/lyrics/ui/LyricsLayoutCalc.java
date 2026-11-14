@@ -32,14 +32,18 @@ final class LyricsLayoutCalc {
 
     /**
      * {@return which lines sit on the right: those in a right-to-left script, swapped for the
-     * second singer of a duet}
+     * second singer of a duet when Opposite-side duet alignment is enabled and Always Center Lyrics is off}
      */
     static boolean[] rightAlignedLines(List<LyricsLine> lines, boolean[] isSecFlags) {
+        final boolean forceCenter = Settings.LYRICS_FORCE_CENTER.get();
+        final boolean duetOppositeEnabled = Settings.LYRICS_DUET_OPPOSITE_SIDE.get() && !forceCenter;
         boolean isDuetSong = false;
-        for (LyricsLine l : lines) {
-            if (l.isDuet()) {
-                isDuetSong = true;
-                break;
+        if (duetOppositeEnabled) {
+            for (LyricsLine l : lines) {
+                if (l.isDuet()) {
+                    isDuetSong = true;
+                    break;
+                }
             }
         }
         boolean[] rightAligned = new boolean[lines.size()];
@@ -49,6 +53,13 @@ final class LyricsLayoutCalc {
                 parentIdx = i;
             }
             LyricsLine l = lines.get(i);
+            final boolean isCenteredLine = forceCenter
+                    || l.isCentered()
+                    || (isSecFlags[i] && parentIdx >= 0 && lines.get(parentIdx).isCentered());
+            if (isCenteredLine) {
+                rightAligned[i] = false;
+                continue;
+            }
             final boolean lineRtl = ScriptDetector.isLineRtl(l.text());
             // A background vocal sits on its lead line's side.
             final boolean isDuetLine = l.isDuet()

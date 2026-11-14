@@ -148,7 +148,7 @@ public final class LyricsSpanBuilder {
                         && start < blockSplitOffset && nextOffset >= blockSplitOffset;
                 clearance = (nextSmall && !crossBlock) ? spacing.smallClear() : spacing.boundaryClear();
             } else {
-                clearance = nextSmall ? -Math.round(from * 0.40f) : spacing.mainClear();
+                clearance = nextSmall ? spacing.boundaryClear() : spacing.mainClear();
             }
             baseDescent = Math.max(baseDescent, from);
             lastWritten = from + clearance;
@@ -192,7 +192,7 @@ public final class LyricsSpanBuilder {
         final int lineHeight = baseFm.descent - baseFm.ascent;
         final int mainClear = Math.max(0, (int) (lineHeight * MAIN_LINE_SPACING + 0.5f) - lineHeight);
         final int smallClear = Math.max(0, (int) (lineHeight * TRANSLATION_RELATIVE_SIZE * 0.18f + 0.5f));
-        final int boundaryClear = Math.max(Dim.dp(1), Math.round(lineHeight * 0.08f));
+        final int boundaryClear = Math.max(Dim.dp(6), Math.round(lineHeight * 0.16f));
         Spacing spacing = new Spacing(mainClear, smallClear, boundaryClear);
 
         String translation = translationAt(line, index, translatedLines);

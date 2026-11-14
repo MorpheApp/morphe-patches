@@ -179,6 +179,7 @@ public final class LyricsPanelInstaller {
                 panelView.applyTextSize();
                 panelView.applyLineScale();
             } else if (formatting || Settings.LYRICS_FORCE_CENTER.key.equals(key)
+                    || Settings.LYRICS_DUET_OPPOSITE_SIDE.key.equals(key)
                     || Settings.LYRICS_SWAP_TRANS_ROMA.key.equals(key)
                     || Settings.LYRICS_TAP_TO_SEEK.key.equals(key)) {
                 // These are read while the line is laid out, so the lines need rebuilding.

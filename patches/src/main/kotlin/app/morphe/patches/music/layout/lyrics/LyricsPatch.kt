@@ -180,7 +180,8 @@ val lyricsPatch = patch(
                     SwitchPreference("morphe_music_lyrics_strip_trailing_punctuation", summary = true),
                     SwitchPreference("morphe_music_lyrics_han_form", summary = true),
                     SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true),
-                    SwitchPreference("morphe_music_lyrics_force_center", summary = true)
+                    SwitchPreference("morphe_music_lyrics_force_center", summary = true),
+                    SwitchPreference("morphe_music_lyrics_duet_opposite_side", summary = true)
                 )
             ),
             PreferenceCategory(

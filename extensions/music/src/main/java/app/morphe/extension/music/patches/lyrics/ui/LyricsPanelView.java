@@ -1720,15 +1720,17 @@ public final class LyricsPanelView extends FrameLayout
             isSecFlags = LyricsSectionTags.secondaryLineFlags(newLyrics.lines());
             lineRightAligned = LyricsLayoutCalc.rightAlignedLines(newLyrics.lines(), isSecFlags);
             boolean duet = false;
-            for (LyricsLine l : newLyrics.lines()) {
-                if (l.isDuet()) {
-                    duet = true;
-                    break;
+            if (Settings.LYRICS_DUET_OPPOSITE_SIDE.get() && !Settings.LYRICS_FORCE_CENTER.get()) {
+                for (LyricsLine l : newLyrics.lines()) {
+                    if (l.isDuet()) {
+                        duet = true;
+                        break;
+                    }
                 }
             }
             isDuetSong = duet;
-            duetSideInset = Math.max(Dim.dp(24),
-                    (int) (context.getResources().getDisplayMetrics().widthPixels * 0.09f));
+            duetSideInset = Math.max(Dim.dp(36),
+                    (int) (context.getResources().getDisplayMetrics().widthPixels * 0.18f));
         }
 
         /** Adds the view of a line, to a row of its own or to its lead line's row. */
