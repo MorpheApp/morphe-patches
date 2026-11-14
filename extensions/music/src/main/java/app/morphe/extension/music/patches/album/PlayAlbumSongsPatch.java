@@ -73,6 +73,14 @@ public class PlayAlbumSongsPatch {
     private static final Map<String, AlbumTrack> albumTracks
             = Utils.createSizeRestrictedMap(NUMBER_OF_LAST_VIDEO_IDS_TO_TRACK);
 
+    /**
+     * Whether an album queue is the playback the player is currently in. Tracked separately from
+     * {@link #albumTracks}, whose entries also cover videos that are no longer played from the
+     * album queue.
+     */
+    @GuardedBy("albumTracks")
+    private static boolean albumIsPlaying;
+
     private static final Collection<SubstitutionListener> substitutionListeners =
             new CopyOnWriteArrayList<>();
 
@@ -99,6 +107,7 @@ public class PlayAlbumSongsPatch {
     public static void newPlayerResponse(String videoId, String playlistId, int playlistIndex) {
         try {
             if (!isEnabled()) return;
+
             if (playlistIndex < 0 || !playlistId.startsWith(YOUTUBE_MUSIC_ALBUM_PREFIX)) {
                 forgetSubstitution(videoId, playlistId);
                 return;
@@ -106,6 +115,7 @@ public class PlayAlbumSongsPatch {
 
             AlbumTrack track = new AlbumTrack(playlistId, playlistIndex);
             synchronized (albumTracks) {
+                albumIsPlaying = true;
                 if (track.equals(albumTracks.get(videoId))) {
                     return;
                 }
@@ -136,18 +146,44 @@ public class PlayAlbumSongsPatch {
      *
      * <p>The built-in 'Don't play music videos' setting reloads the player to drop the video track
      * of the same recording, which fights this patch and leaves playback restarting every few
-     * seconds. While this patch is on it plays the song version anyway, so the built-in setting is
-     * reported as off to everything that reads it, including the settings screen showing it.
+     * seconds. While an album is playing this patch plays the song version anyway, so the built-in
+     * setting is reported as off to the reads of the player, to prevent that fight.
+     *
+     * <p>The settings screen reads are left seeing the real stored value, and outside of album
+     * playback the setting is left working as the user configured it (its only effect there was
+     * being silently disabled).
      *
      * @return Whether to ignore the setting the app is reading.
      */
     public static boolean ignoreDontPlayMusicVideoSetting(String key) {
         try {
-            return DONT_PLAY_VIDEO_SETTING_KEY.equals(key) && isEnabled();
+            boolean isAlbumPlaying;
+            synchronized (albumTracks) {
+                isAlbumPlaying = albumIsPlaying;
+            }
+            return DONT_PLAY_VIDEO_SETTING_KEY.equals(key)
+                    && isEnabled()
+                    && isAlbumPlaying
+                    && !isSettingsScreenRead();
         } catch (Exception ex) {
             Logger.printException(() -> "ignoreDontPlayMusicVideoSetting failure", ex);
             return false;
         }
+    }
+
+    /**
+     * The settings screen reads the same preference wrapper as playback, so without this the
+     * toggle displays the forced-off value while an album is playing. Playback reads carry the
+     * player in their call stack, settings reads carry a settings fragment.
+     */
+    private static boolean isSettingsScreenRead() {
+        for (StackTraceElement frame : new Throwable().getStackTrace()) {
+            String cls = frame.getClassName();
+            if (cls.contains("SettingsFragment") || cls.contains("PreferenceFragment")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @GuardedBy("albumTracks")
@@ -162,17 +198,42 @@ public class PlayAlbumSongsPatch {
 
     /**
      * Stops serving the song of an album to a video that is now played outside of that album,
-     * which otherwise keeps the music video replaced until the app is restarted.
+     * which otherwise keeps the music video replaced until the app is restarted, and gives the
+     * built-in 'Don't play music videos' setting back to the app when the playback leaves the
+     * album queue.
      */
     private static void forgetSubstitution(String videoId, String playlistId) {
         synchronized (albumTracks) {
             AlbumTrack track = albumTracks.get(videoId);
             // The same album can build the player parameter again without a position,
             // and that is still the album playing rather than the music video itself.
-            if (track == null || track.playlistId().equals(playlistId)) return;
+            if (track == null) {
+                if (playlistId != null && playlistId.startsWith(YOUTUBE_MUSIC_ALBUM_PREFIX)) {
+                    albumIsPlaying = true;
+                    return;
+                }
+                // A play of another playlist is the user leaving the album queue, so the built-in
+                // 'Don't play music videos' setting is given back to the app. Plays without a
+                // playlist id are not counted, because search results and prefetches of the queue
+                // the player is building arrive that way while the album is still playing.
+                if (playlistId != null && !playlistId.isEmpty()) {
+                    albumIsPlaying = false;
+                    Logger.printDebug(() -> "No longer playing an album: " + videoId);
+                }
+                return;
+            }
+            if (track.playlistId().equals(playlistId)) {
+                return;
+            }
             albumTracks.remove(videoId);
             // Otherwise the length, scrobbles and segments of the song are still used for the music video.
             songs.remove(videoId);
+            // Plays without a playlist id are not counted, same as above: the app also builds the
+            // upcoming tracks of a replayed album without one, while the album is still playing.
+            if (playlistId != null && !playlistId.isEmpty()) {
+                // The video is now played outside of its album.
+                albumIsPlaying = false;
+            }
         }
         Logger.printDebug(() -> "No longer playing the song version of: " + videoId);
     }
@@ -238,6 +299,8 @@ public class PlayAlbumSongsPatch {
             return videoId;
         }
 
+        Logger.printDebug(() -> "Playing song version " + song.videoId()
+                + " (" + song.durationSeconds() + "s) of music video: " + videoId);
         songs.put(videoId, song);
         return song.videoId();
     }
