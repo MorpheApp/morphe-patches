@@ -8,14 +8,18 @@
 package app.morphe.patches.youtube.interaction.feedactions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.feedcards.feedVideoCardsHookPatch
+import app.morphe.patches.youtube.misc.navigation.browseIdHookPatch
+import app.morphe.patches.youtube.misc.navigation.browsePageBinding
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -23,6 +27,50 @@ import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FeedVideoActionsPatch;"
+
+/** Shared by thumbnail actions without selecting either feature's settings. */
+internal val feedVideoActionsHookPatch = patch(
+    description = "Hooks thumbnail actions on Litho video cards.",
+) {
+    dependsOn(sharedExtensionPatch, feedVideoCardsHookPatch, browseIdHookPatch)
+
+    execute {
+        val (endpoint, browseIdReader) = browsePageBinding
+        mutableClassDefBy(endpoint.definingClass).apply {
+            interfaces.add(EXTENSION_CLASS.dropLast(1) + $$"$BrowsePage;")
+            addBridge(
+                "patch_getBrowseId",
+                emptyList(),
+                "Ljava/lang/String;",
+                1,
+                """
+                    iget-object v0, p0, $endpoint
+                    if-eqz v0, :empty
+                    invoke-static { v0 }, $browseIdReader
+                    move-result-object v0
+                    return-object v0
+                    :empty
+                    const/4 v0, 0x0
+                    return-object v0
+                """
+            )
+        }
+
+        // The touches of the root host decide the long press and the Watch later button.
+        // When the extension handles the touch, it is not given to the children.
+        FeedComponentHostTouchFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostTouch(Lcom/facebook/litho/ComponentHost;Landroid/view/MotionEvent;)Z
+                move-result v0
+                if-eqz v0, :original
+                return v0
+                :original
+                nop
+            """
+        )
+    }
+}
 
 val feedVideoActionsPatch = patch(
     name = "Feed video actions",
@@ -36,7 +84,7 @@ val feedVideoActionsPatch = patch(
         // Finds the video id of the menu, to learn the description of the menu button.
         flyoutPatch,
         // Finds the video of each card, to hide the button while it plays in the feed.
-        feedVideoCardsHookPatch,
+        feedVideoActionsHookPatch,
         // Runs the commands of the Watch later button.
         commandRouterHookPatch,
         // Loads the videos of the Watch later playlist, to show if the video is saved.
@@ -54,20 +102,6 @@ val feedVideoActionsPatch = patch(
         // The root host of each video is found by the layout hook of feedVideoCardsHookPatch,
         // which gives every laid out card to the extension with FeedVideoCardsPatch.onCardLaidOut,
         // so no layout hook of this patch is needed.
-
-        // The touches of the root host decide the long press and the Watch later button.
-        // When the extension handles the touch, it is not given to the children.
-        FeedComponentHostTouchFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostTouch(Lcom/facebook/litho/ComponentHost;Landroid/view/MotionEvent;)Z
-                move-result v0
-                if-eqz v0, :original
-                return v0
-                :original
-                nop
-            """
-        )
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }

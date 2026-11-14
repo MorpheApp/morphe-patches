@@ -76,6 +76,7 @@ public final class FeedVideoCardsPatch {
             // FeedVideoActionsPatch is given every card, so its long press also works
             // when its own features are the only ones on.
             || Settings.FEED_LONG_PRESS_MENU.get()
+            || FeedVideoActionsPatch.QUEUE_BUTTON_ENABLED
             || PostImageDownloadPatch.ENABLED
             || PostTranslatePatch.ENABLED;
 
@@ -89,7 +90,8 @@ public final class FeedVideoCardsPatch {
             && (FeedEngagementCountsPatch.ENABLED
             || FeedViewCountPatch.ENABLED
             || Settings.FEED_WATCH_LATER_BUTTON.get()
-            || Settings.FEED_LONG_PRESS_MENU.get());
+            || Settings.FEED_LONG_PRESS_MENU.get()
+            || FeedVideoActionsPatch.QUEUE_BUTTON_ENABLED);
 
     /**
      * A card must be as wide as a card of a grid of up to three columns, such as the feed in landscape.
