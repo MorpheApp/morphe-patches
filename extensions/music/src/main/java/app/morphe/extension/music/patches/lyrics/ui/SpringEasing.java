@@ -10,6 +10,8 @@ package app.morphe.extension.music.patches.lyrics.ui;
 import android.view.animation.Interpolator;
 import android.view.animation.PathInterpolator;
 
+import androidx.annotation.NonNull;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,14 +21,15 @@ final class SpringEasing {
     static final Interpolator SPRING_SCROLL_EASING =
             new PathInterpolator(0.41f, 0f, 0.12f, 0.99f);
 
-    private static final float DEFAULT_ZETA = 0.78f;
+    static final float DEFAULT_ZETA = 0.78f;
+    static final float RELAX_ZETA = 0.80f;
     /** Damping between lines that follow closely, so a quick run of lines does not bounce. */
-    private static final float ZETA_TIGHT = 0.85f;
+    static final float ZETA_TIGHT = 0.85f;
     /** Damping between lines with a pause of {@link #MAX_DYNAMIC_GAP_MS} or more. */
-    private static final float ZETA_WIDE = 0.73f;
-    private static final float MAX_DYNAMIC_GAP_MS = 2500f;
+    static final float ZETA_WIDE = 0.73f;
+    static final float MAX_DYNAMIC_GAP_MS = 2500f;
     /** How long the settle after the overshoot takes, relative to the rise. */
-    private static final float SETTLE_RATIO = 1.5f;
+    static final float SETTLE_RATIO = 1.5f;
     private static final int SPRING_CACHE_SIZE = 128;
 
     /** Only used on the main thread. */
@@ -40,24 +43,51 @@ final class SpringEasing {
      * this pause}
      */
     static float computeZeta(long timeGapMs) {
-        if (timeGapMs <= 0) {
-            return DEFAULT_ZETA;
+        return computeZeta(timeGapMs, false);
+    }
+
+    /**
+     * Computes dynamic damping ratio (zeta) based on line intervals:
+     * - Tighter damping (0.85) for short inter-line gaps so rapid lines don't bounce excessively
+     * - Wider damping (0.73) for longer inter-line gaps up to 2500ms
+     * - Adds +0.05 damping (clamped to 0.95) in Relax Scrolling mode
+     */
+    static float computeZeta(long timeGapMs, boolean isRelaxMode) {
+        float zeta = isRelaxMode ? RELAX_ZETA : DEFAULT_ZETA;
+        if (timeGapMs > 0L) {
+            final float t = Math.max(0f, Math.min(1f, (float) timeGapMs / MAX_DYNAMIC_GAP_MS));
+            zeta = ZETA_TIGHT - t * (ZETA_TIGHT - ZETA_WIDE);
+            if (isRelaxMode) {
+                zeta = Math.min(0.95f, zeta + 0.05f);
+            }
         }
-        final float t = Math.min(1f, timeGapMs / MAX_DYNAMIC_GAP_MS);
-        return ZETA_TIGHT - t * (ZETA_TIGHT - ZETA_WIDE);
+        return zeta;
     }
 
     /** {@return a spring that rises in about this time, cached as most scrolls share one} */
+    @NonNull
     static LyricsSpring springFor(long durationMs, long timeGapMs) {
-        final int durationKey = Math.max(10, (int) ((Math.max(1L, durationMs) + 5L) / 10L * 10L));
-        final int zetaKey = Math.round(computeZeta(timeGapMs) * 1000f);
-        final long key = ((long) durationKey << 16) | zetaKey;
+        return springFor(durationMs, timeGapMs, false);
+    }
+
+    /** {@return a spring that rises in about this time with optional Relax Scrolling damping} */
+    @NonNull
+    static LyricsSpring springFor(long durationMs, long timeGapMs, boolean isRelaxMode) {
+        return springFor(durationMs, computeZeta(timeGapMs, isRelaxMode), SETTLE_RATIO);
+    }
+
+    @NonNull
+    static LyricsSpring springFor(long durationMs, float zeta, float settleRatio) {
+        final int durationKey = Math.max(10, (int) (((Math.max(1L, durationMs) + 5L) / 10L) * 10L));
+        final int zetaKey = Math.round(zeta * 1000f);
+        final int ratioKey = Math.round(settleRatio * 100f);
+        final long key = ((long) durationKey << 32) | ((long) (zetaKey & 0xFFFF) << 16) | (ratioKey & 0xFFFF);
         LyricsSpring spring = SPRING_CACHE.get(key);
         if (spring == null) {
             if (SPRING_CACHE.size() >= SPRING_CACHE_SIZE) {
                 SPRING_CACHE.clear();
             }
-            spring = new LyricsSpring(durationKey, zetaKey / 1000f);
+            spring = new LyricsSpring((float) durationKey, zetaKey / 1000f, ratioKey / 100f);
             SPRING_CACHE.put(key, spring);
         }
         return spring;
@@ -68,22 +98,33 @@ final class SpringEasing {
      * settles back to 1.
      */
     static final class LyricsSpring {
-        private final float peakMs;
-        private final float tailMs;
-        private final float peakValue;
+        final float peakMs;
+        final float zeta;
+        final float settleRatio;
+        final float tailMs;
         final float totalMs;
+        final float peakValue;
 
         LyricsSpring(float peakMs) {
-            this(peakMs, DEFAULT_ZETA);
+            this(peakMs, DEFAULT_ZETA, SETTLE_RATIO);
         }
 
         LyricsSpring(float peakMs, float zeta) {
+            this(peakMs, zeta, SETTLE_RATIO);
+        }
+
+        LyricsSpring(float peakMs, float zeta, float settleRatio) {
             this.peakMs = Math.max(1f, peakMs);
-            this.tailMs = this.peakMs * SETTLE_RATIO;
+            this.zeta = Math.max(0.01f, Math.min(0.99f, zeta));
+            this.settleRatio = Math.max(0.1f, settleRatio);
+            this.tailMs = this.peakMs * this.settleRatio;
             this.totalMs = this.peakMs + this.tailMs;
-            final double z = Math.max(0.01f, Math.min(0.99f, zeta));
-            // The overshoot of an underdamped spring, which depends on the damping alone.
-            this.peakValue = (float) (1.0 + Math.exp(-Math.PI * z / Math.sqrt(1.0 - z * z)));
+
+            final double peakS = this.peakMs / 1000.0;
+            final double omegaD = Math.PI / peakS;
+            final double omega0 = omegaD / Math.sqrt(1.0 - this.zeta * this.zeta);
+            final double decayRate = this.zeta * omega0;
+            this.peakValue = (float) (1.0 + Math.exp(-decayRate * peakS));
         }
 
         float value(float tMs) {
@@ -108,29 +149,45 @@ final class SpringEasing {
     static final class LyricsScrollStagger {
         static final int MAX_STAGGER_STEPS = 12;
 
-        private final boolean scrollingDown;
-        private final int referenceIndex;
-        private final int staggerAfterIndex;
+        final boolean scrollingDown;
+        final int referenceIndex;
+        final int staggerAfterIndex;
         final long durationMs;
         final float delayIncrementMs;
+        final boolean isRelaxMode;
         /** Lyric lines among the rows before each row index, one entry longer than the rows. */
         private final int[] linesBefore;
+
+        LyricsScrollStagger(boolean scrollingDown, int referenceIndex, int staggerAfterIndex,
+                            long durationMs, float delayIncrementMs, int[] linesBefore) {
+            this(scrollingDown, referenceIndex, staggerAfterIndex, durationMs, delayIncrementMs, false, linesBefore);
+        }
 
         /**
          * @param staggerAfterIndex The last row that moves without delay when scrolling down,
          *                          such as the end of a group of lines sung together.
          */
         LyricsScrollStagger(boolean scrollingDown, int referenceIndex, int staggerAfterIndex,
-                            long durationMs, float delayIncrementMs, int[] linesBefore) {
+                            long durationMs, float delayIncrementMs, boolean isRelaxMode,
+                            int[] linesBefore) {
             this.scrollingDown = scrollingDown;
             this.referenceIndex = referenceIndex;
             this.staggerAfterIndex = Math.max(referenceIndex, staggerAfterIndex);
             this.durationMs = durationMs;
-            this.delayIncrementMs = delayIncrementMs;
+            // When scrolling up in Relax Scrolling, delay is halved.
+            this.delayIncrementMs = (!scrollingDown && isRelaxMode)
+                    ? (delayIncrementMs * 0.5f)
+                    : delayIncrementMs;
+            this.isRelaxMode = isRelaxMode;
             this.linesBefore = linesBefore;
         }
 
         int steps(int index) {
+            if (linesBefore.length == 0) {
+                int ref = scrollingDown ? staggerAfterIndex : referenceIndex;
+                int raw = scrollingDown ? (index - ref) : (ref - index);
+                return Math.max(0, Math.min(MAX_STAGGER_STEPS, raw));
+            }
             final int last = linesBefore.length - 1;
             if (last < 0) {
                 return 0;

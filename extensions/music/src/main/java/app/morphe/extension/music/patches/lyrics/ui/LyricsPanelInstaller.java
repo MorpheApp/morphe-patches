@@ -186,11 +186,15 @@ public final class LyricsPanelInstaller {
                 panelView.applyLyricLayoutSettings();
             } else if (Settings.LYRICS_WORD_SYNC.key.equals(key)) {
                 panelView.applyWordSyncSetting();
-            } else if (Settings.LYRICS_SPRING_SCROLL.key.equals(key)) {
+            } else if (Settings.LYRICS_WORD_SMOOTH_SWEEP.key.equals(key)) {
+                panelView.applyWordAnimationSettings();
+            } else if (Settings.LYRICS_SPRING_SCROLL.key.equals(key)
+                    || Settings.LYRICS_RELAX_SCROLL.key.equals(key)) {
                 panelView.applySpringScrollSetting();
             } else if (Settings.LYRICS_GAP_DOTS.key.equals(key)) {
                 panelView.applyGapDotsSetting();
-            } else if (Settings.LYRICS_FOCUS_SPOTLIGHT.key.equals(key)) {
+            } else if (Settings.LYRICS_FOCUS_SPOTLIGHT.key.equals(key)
+                    || Settings.LYRICS_BLUR_INACTIVE.key.equals(key)) {
                 panelView.applyFocusSpotlightSetting();
             } else if (Settings.LYRICS_HIDE_INFO.key.equals(key)) {
                 panelView.applyHideInfo();
