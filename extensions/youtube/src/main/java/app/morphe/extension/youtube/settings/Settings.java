@@ -823,6 +823,7 @@ public class Settings extends SharedYouTubeSettings {
     // Niconico comments
     public static final BooleanSetting NICONICO_COMMENTS = new BooleanSetting("morphe_niconico_comments", FALSE, true);
     public static final BooleanSetting NICONICO_COMMENTS_SHOWN = new BooleanSetting("morphe_niconico_comments_shown", TRUE);
+    public static final BooleanSetting NICONICO_COMMENTS_PIP = new BooleanSetting("morphe_niconico_comments_pip", TRUE, parent(NICONICO_COMMENTS));
     public static final IntegerSetting NICONICO_COMMENTS_FONT_SIZE = new IntegerSetting("morphe_niconico_comments_font_size", 20, parent(NICONICO_COMMENTS));
     public static final IntegerSetting NICONICO_COMMENTS_OPACITY = new IntegerSetting("morphe_niconico_comments_opacity", 100, parent(NICONICO_COMMENTS));
     public static final IntegerSetting NICONICO_COMMENTS_TRAVEL_DURATION = new IntegerSetting("morphe_niconico_comments_travel_duration", 7, parent(NICONICO_COMMENTS));
