@@ -87,6 +87,8 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class FeedVideoActionsPatch {
 
+    private static final String PLAYLIST_BROWSE_ID_PREFIX = "VL";
+
     private static final boolean LONG_PRESS_MENU = isPatchIncluded() && Settings.FEED_LONG_PRESS_MENU.get();
     private static final boolean WATCH_LATER_BUTTON = isPatchIncluded() && Settings.FEED_WATCH_LATER_BUTTON.get();
     /** The shared card provider captures metadata only when this thumbnail consumer is included. */
@@ -227,6 +229,25 @@ public final class FeedVideoActionsPatch {
         return false; // Modified during patching.
     }
 
+    /** Implemented on the native browse fragment, which Android tags on its root view. */
+    public interface BrowsePage {
+        @Nullable
+        String patch_getBrowseId();
+    }
+
+    private static boolean isOnPlaylistPage(View view) {
+        final int fragmentTag = ResourceUtils.getIdIdentifier("fragment_container_view_tag");
+        for (View current = view; current != null;
+             current = current.getParent() instanceof View parent ? parent : null) {
+            if (current.getTag(fragmentTag) instanceof BrowsePage page) {
+                String browseId = page.patch_getBrowseId();
+                // Playlist browse endpoints use VL followed by the playlist id.
+                return browseId != null && browseId.startsWith(PLAYLIST_BROWSE_ID_PREFIX);
+            }
+        }
+        return false;
+    }
+
     private static final class VideoCard {
         WeakReference<View> menuButtonRef = new WeakReference<>(null);
         final ThumbnailButtonContainer buttons = new ThumbnailButtonContainer();
@@ -260,6 +281,10 @@ public final class FeedVideoActionsPatch {
         }
 
         void place(ComponentHost host, @Nullable View side, int thumbnailTop) {
+            if (isOnPlaylistPage(host)) {
+                remove();
+                return;
+            }
             final int size = dp(host, BADGE_SIZE_DP);
             int top = thumbnailTop + dp(host, BADGE_MARGIN_DP);
             int right = host.getWidth() - dp(host, BADGE_RIGHT_MARGIN_DP);
@@ -979,7 +1004,7 @@ public final class FeedVideoActionsPatch {
                     card.buttons.videoId = videoId;
                     card.buttons.invalidateSelf();
                 }
-                if (WATCH_LATER_BUTTON) {
+                if (WATCH_LATER_BUTTON && card.buttons.added) {
                     fetchSavedVideosIfNeeded();
                 }
             } else {

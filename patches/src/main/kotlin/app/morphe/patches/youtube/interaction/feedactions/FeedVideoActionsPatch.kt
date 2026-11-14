@@ -8,14 +8,18 @@
 package app.morphe.patches.youtube.interaction.feedactions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.feedcards.feedVideoCardsHookPatch
+import app.morphe.patches.youtube.misc.navigation.browseIdHookPatch
+import app.morphe.patches.youtube.misc.navigation.browsePageBinding
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -28,9 +32,30 @@ private const val EXTENSION_CLASS =
 internal val feedVideoActionsHookPatch = patch(
     description = "Hooks thumbnail actions on Litho video cards.",
 ) {
-    dependsOn(sharedExtensionPatch, feedVideoCardsHookPatch)
+    dependsOn(sharedExtensionPatch, feedVideoCardsHookPatch, browseIdHookPatch)
 
     execute {
+        val (endpoint, browseIdReader) = browsePageBinding
+        mutableClassDefBy(endpoint.definingClass).apply {
+            interfaces.add(EXTENSION_CLASS.dropLast(1) + $$"$BrowsePage;")
+            addBridge(
+                "patch_getBrowseId",
+                emptyList(),
+                "Ljava/lang/String;",
+                1,
+                """
+                    iget-object v0, p0, $endpoint
+                    if-eqz v0, :empty
+                    invoke-static { v0 }, $browseIdReader
+                    move-result-object v0
+                    return-object v0
+                    :empty
+                    const/4 v0, 0x0
+                    return-object v0
+                """
+            )
+        }
+
         // The touches of the root host decide the long press and the Watch later button.
         // When the extension handles the touch, it is not given to the children.
         FeedComponentHostTouchFingerprint.method.addInstructionsWithLabels(
