@@ -41,7 +41,7 @@ import app.morphe.extension.shared.settings.Setting;
  * without restarting the app.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public final class PauseOnMutePatch {
+public final class PauseWhenMutedPatch {
 
     /**
      * Sent by the audio service right after the volume of a stream changes, and when a stream is
@@ -87,7 +87,7 @@ public final class PauseOnMutePatch {
                 }
             };
 
-    private PauseOnMutePatch() {
+    private PauseWhenMutedPatch() {
     }
 
     /**
@@ -102,7 +102,7 @@ public final class PauseOnMutePatch {
             Context context = activity.getApplicationContext();
             AudioManager manager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
             if (manager == null) {
-                Logger.printException(() -> "Pause on mute: audio manager is not available");
+                Logger.printException(() -> "Pause when muted: audio manager is not available");
                 return;
             }
 
@@ -112,10 +112,10 @@ public final class PauseOnMutePatch {
             // Follows the setting, so enabling or disabling it only starts or stops the
             // background listeners that the patch needs.
             SharedPreferences.OnSharedPreferenceChangeListener listener = (preferences, key) -> {
-                if (Settings.PAUSE_ON_MUTE.key.equals(key)) {
+                if (Settings.PAUSE_WHEN_MUTED.key.equals(key)) {
                     // Posted, because the settings screen may only update the setting values in
                     // its own listener, which can be called after this one.
-                    Utils.runOnMainThread(PauseOnMutePatch::applySetting);
+                    Utils.runOnMainThread(PauseWhenMutedPatch::applySetting);
                 }
             };
             Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(listener);
@@ -124,7 +124,7 @@ public final class PauseOnMutePatch {
             initialized = true;
             applySetting();
         } catch (Exception ex) {
-            Logger.printException(() -> "Pause on mute: initialization failure", ex);
+            Logger.printException(() -> "Pause when muted: initialization failure", ex);
         }
     }
 
@@ -148,26 +148,26 @@ public final class PauseOnMutePatch {
                     try {
                         previous.unregisterCallback(playbackCallback);
                     } catch (Exception ex) {
-                        Logger.printException(() -> "Pause on mute: media session callback removal failure", ex);
+                        Logger.printException(() -> "Pause when muted: media session callback removal failure", ex);
                     }
                 }
                 controller.registerCallback(playbackCallback);
                 mediaController = controller;
             } catch (Exception ex) {
-                Logger.printException(() -> "Pause on mute: media session capture failure", ex);
+                Logger.printException(() -> "Pause when muted: media session capture failure", ex);
             }
         });
     }
 
     private static void applySetting() {
         try {
-            if (Settings.PAUSE_ON_MUTE.get()) {
+            if (Settings.PAUSE_WHEN_MUTED.get()) {
                 startListening();
             } else {
                 stopListening();
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "Pause on mute: setting application failure", ex);
+            Logger.printException(() -> "Pause when muted: setting application failure", ex);
         }
     }
 
@@ -181,7 +181,7 @@ public final class PauseOnMutePatch {
             return;
         }
 
-        HandlerThread thread = new HandlerThread("MorphePauseOnMute");
+        HandlerThread thread = new HandlerThread("MorphePauseWhenMuted");
         thread.start();
         Handler backgroundHandler = new Handler(thread.getLooper());
         handlerThread = thread;
@@ -238,7 +238,7 @@ public final class PauseOnMutePatch {
 
             listening = true;
         } catch (Exception ex) {
-            Logger.printException(() -> "Pause on mute: listener registration failure", ex);
+            Logger.printException(() -> "Pause when muted: listener registration failure", ex);
             releaseListeners();
         }
     }
@@ -261,7 +261,7 @@ public final class PauseOnMutePatch {
             try {
                 context.unregisterReceiver(receiver);
             } catch (Exception ex) {
-                Logger.printException(() -> "Pause on mute: receiver removal failure", ex);
+                Logger.printException(() -> "Pause when muted: receiver removal failure", ex);
             }
         }
 
@@ -271,7 +271,7 @@ public final class PauseOnMutePatch {
             try {
                 context.getContentResolver().unregisterContentObserver(observer);
             } catch (Exception ex) {
-                Logger.printException(() -> "Pause on mute: observer removal failure", ex);
+                Logger.printException(() -> "Pause when muted: observer removal failure", ex);
             }
         }
 
@@ -311,7 +311,7 @@ public final class PauseOnMutePatch {
                 resumePlayback();
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "Pause on mute: volume change failure", ex);
+            Logger.printException(() -> "Pause when muted: volume change failure", ex);
         }
     }
 
@@ -333,7 +333,7 @@ public final class PauseOnMutePatch {
             pausedByMute = true;
             controller.getTransportControls().pause();
         } catch (Exception ex) {
-            Logger.printException(() -> "Pause on mute: pause failure", ex);
+            Logger.printException(() -> "Pause when muted: pause failure", ex);
         }
     }
 
@@ -355,7 +355,7 @@ public final class PauseOnMutePatch {
             }
             controller.getTransportControls().play();
         } catch (Exception ex) {
-            Logger.printException(() -> "Pause on mute: resume failure", ex);
+            Logger.printException(() -> "Pause when muted: resume failure", ex);
         }
     }
 }

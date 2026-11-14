@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.patches.music.interaction.pauseonmute
+package app.morphe.patches.music.interaction.pausewhenmuted
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.patch
@@ -18,11 +18,11 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/PauseOnMutePatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/PauseWhenMutedPatch;"
 
 @Suppress("unused")
-val pauseOnMutePatch = patch(
-    name = "Pause on mute",
+val pauseWhenMutedPatch = patch(
+    name = "Pause when muted",
     description = "Adds an option to pause playback when the system volume is muted, " +
             "and to resume it when the volume is raised."
 ) {
@@ -36,7 +36,7 @@ val pauseOnMutePatch = patch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_music_pause_on_mute", summary = true)
+            SwitchPreference("morphe_music_pause_when_muted", summary = true)
         )
 
         // Registers the volume listener before any playback starts.
