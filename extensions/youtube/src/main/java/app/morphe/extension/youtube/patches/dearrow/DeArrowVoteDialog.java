@@ -62,8 +62,8 @@ import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
  */
 final class DeArrowVoteDialog {
 
-    private static final int UPVOTE_ICON = ResourceUtils.getDrawableIdentifier("yt_outline_thumb_up_black_24");
-    private static final int DOWNVOTE_ICON = ResourceUtils.getDrawableIdentifier("yt_outline_thumb_down_black_24");
+    private static final int UPVOTE_ICON = getVoteIcon("thumb_up");
+    private static final int DOWNVOTE_ICON = getVoteIcon("thumb_down");
 
     /**
      * Opacity of the line under each title, which shows its score.
@@ -85,6 +85,16 @@ final class DeArrowVoteDialog {
     private static final int THUMBNAIL_HEIGHT = Dim.dp(63);
 
     private static final int THUMBNAIL_TIMEOUT_MILLISECONDS = 10_000;
+
+    /**
+     * Score of a new title of a user who is not yet verified, which is shown as unverified.
+     */
+    private static final int UNVERIFIED_TITLE_SCORE = -1;
+
+    /**
+     * Titles with this score or lower are not shown, except the original title.
+     */
+    private static final int HIDDEN_TITLE_MAX_SCORE = -2;
 
     /**
      * A title listed in the sheet.
@@ -224,6 +234,7 @@ final class DeArrowVoteDialog {
     /**
      * @param originalTitle The original title, or null if it failed to fetch.
      * @return The original title first, then the submitted titles in the order of the server.
+     *         Titles that were downvoted below the unverified score are left out.
      */
     private static List<ListedTitle> listTitles(List<TitleSubmission> submissions, @Nullable String originalTitle) {
         List<ListedTitle> titles = new ArrayList<>(submissions.size() + 1);
@@ -233,7 +244,8 @@ final class DeArrowVoteDialog {
                     true, submission.score(), submission.locked());
             if (submission.original() && original == null) {
                 original = title;
-            } else {
+            } else if (submission.original() || submission.locked()
+                    || submission.score() > HIDDEN_TITLE_MAX_SCORE) {
                 titles.add(title);
             }
         }
@@ -296,7 +308,13 @@ final class DeArrowVoteDialog {
         if (title.original()) {
             details.add(str("morphe_dearrow_vote_original_title"));
         }
-        addVoteDetails(details, title.submitted(), title.score(), title.locked());
+        if (title.submitted() && title.score() == UNVERIFIED_TITLE_SCORE) {
+            // Not a downvote, so the score is not shown.
+            details.add(str("morphe_dearrow_vote_unverified"));
+            addVoteDetails(details, false, 0, title.locked());
+        } else {
+            addVoteDetails(details, title.submitted(), title.score(), title.locked());
+        }
 
         return createRow(context, null, title.shownTitle(), details, title.submitted(), foregroundColor,
                 downvote -> vote(context, dialog, videoId, downvote, () -> DeArrowVoteRequest.voteTitle(
@@ -433,6 +451,20 @@ final class DeArrowVoteDialog {
             return String.format(Locale.US, "%d:%02d:%05.2f", hours, minutes, secondsOfMinute);
         }
         return String.format(Locale.US, "%d:%05.2f", minutes, secondsOfMinute);
+    }
+
+    /**
+     * @param name "thumb_up" or "thumb_down".
+     * @return The bold icon if the app uses bold icons and has it, otherwise the regular icon.
+     */
+    private static int getVoteIcon(String name) {
+        if (Utils.appIsUsingBoldIcons()) {
+            final int boldIcon = ResourceUtils.getDrawableIdentifier("yt_outline_experimental_" + name + "_black_24");
+            if (boldIcon != 0) {
+                return boldIcon;
+            }
+        }
+        return ResourceUtils.getDrawableIdentifier("yt_outline_" + name + "_black_24");
     }
 
     private static ImageView createVoteButton(Context context, int icon, String description,

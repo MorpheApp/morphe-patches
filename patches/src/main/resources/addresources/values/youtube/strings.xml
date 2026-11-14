@@ -1657,8 +1657,10 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_dearrow_vote_original_thumbnail">Original thumbnail</string>
     <!-- %s is a time of the video, such as 10:14.19 -->
     <string name="morphe_dearrow_vote_thumbnail_time">Frame at %s</string>
-    <!-- %s is the upvotes minus the downvotes, and can be negative. A new title of a new user starts at -1. -->
+    <!-- %s is the upvotes minus the downvotes, and can be negative. -->
     <string name="morphe_dearrow_vote_score">Score: %s</string>
+    <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+    <string name="morphe_dearrow_vote_unverified">Unverified</string>
     <string name="morphe_dearrow_vote_locked">Locked</string>
     <string name="morphe_dearrow_vote_upvote">Upvote</string>
     <string name="morphe_dearrow_vote_downvote">Downvote</string>
