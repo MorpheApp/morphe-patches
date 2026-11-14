@@ -48,6 +48,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
@@ -128,21 +129,34 @@ final class DeArrowVoteDialog {
     }
 
     /**
-     * Number of frames submitted by the user that are kept to show in the sheet.
+     * Time after the video is moved to the frame of a missing thumbnail before the frame is copied.
+     * Longer than after a step, since the frame can be outside the part of the video that is loaded.
      */
-    private static final int MAX_SUBMITTED_FRAMES = 4;
+    private static final long MISSING_FRAME_COPY_DELAY_MILLISECONDS = 1000;
 
     /**
-     * Frames the user submitted, by video ID and time. The thumbnail cache can take a long time
+     * Longest time to wait for the video to pause, before the missing frames are copied.
+     */
+    private static final long PAUSE_TIMEOUT_MILLISECONDS = 1000;
+    private static final long PAUSE_CHECK_INTERVAL_MILLISECONDS = 50;
+
+    /**
+     * Number of frames copied from the player that are kept to show in the sheet.
+     */
+    private static final int MAX_LOCAL_FRAMES = 8;
+
+    /**
+     * Frames copied from the player, by video ID and time: frames the user submitted, and frames
+     * of thumbnails the thumbnail cache has no image of. The thumbnail cache can take a long time
      * to make the image of a new thumbnail when it is busy, and until then has no image of it.
      */
-    private static final Map<SubmittedFrame, Bitmap> submittedFrames = Collections.synchronizedMap(
-            Utils.createSizeRestrictedMap(MAX_SUBMITTED_FRAMES));
+    private static final Map<LocalFrame, Bitmap> localFrames = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(MAX_LOCAL_FRAMES));
 
     /**
      * @param timestamp Time of the frame in seconds, exactly as submitted.
      */
-    private record SubmittedFrame(String videoId, double timestamp) {
+    private record LocalFrame(String videoId, double timestamp) {
     }
 
     /**
@@ -223,7 +237,9 @@ final class DeArrowVoteDialog {
 
         SheetBottomDialog.SlideDialog dialog = SheetBottomDialog.createSlideDialog(
                 context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
-        PipDismissHelper.dismissOnPip(dialog);
+        MissingFrames missingFrames = new MissingFrames(playerButton, videoId, videoLength);
+        // Voting also closes the sheet, which moves the video back.
+        PipDismissHelper.dismissOnPip(dialog, missingFrames::cancel);
 
         // The original title is filled in when fetched.
         final String[] originalTitle = {null};
@@ -235,6 +251,8 @@ final class DeArrowVoteDialog {
                 str("morphe_dearrow_vote_new_thumbnail"),
                 () -> showNewThumbnailDialog(context, dialog, playerButton, videoId, videoLength),
                 false, false);
+        // The new thumbnail dialog shows the frame in the player, which is elsewhere while missing frames are copied.
+        missingFrames.setDisabledWhileCopying(newThumbnailButton);
 
         LinearLayout buttonsLayout = new LinearLayout(context);
         buttonsLayout.setOrientation(LinearLayout.HORIZONTAL);
@@ -291,8 +309,9 @@ final class DeArrowVoteDialog {
                 listLayout.addView(createSectionHeader(context, str("morphe_dearrow_vote_thumbnails"), foregroundColor));
                 for (ListedThumbnail thumbnail : thumbnails) {
                     listLayout.addView(createThumbnailRow(context, dialog, videoId, thumbnail,
-                            videoLength, foregroundColor));
+                            videoLength, foregroundColor, missingFrames));
                 }
+                missingFrames.allRowsAdded();
             });
         });
     }
@@ -388,23 +407,25 @@ final class DeArrowVoteDialog {
     }
 
     private static View createThumbnailRow(Context context, SheetBottomDialog.SlideDialog dialog, String videoId,
-                                           ListedThumbnail thumbnail, long videoLength, int foregroundColor) {
+                                           ListedThumbnail thumbnail, long videoLength, int foregroundColor,
+                                           MissingFrames missingFrames) {
         ImageView imageView = new ImageView(context);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         // Shown until the image loads, and if the thumbnail cache has no image of the frame yet.
         imageView.setBackgroundColor(foregroundColor);
         imageView.getBackground().setAlpha(0x20);
         imageView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
-        Bitmap submittedFrame = thumbnail.original()
-                ? null
-                : submittedFrames.get(new SubmittedFrame(videoId, thumbnail.timestamp()));
-        if (submittedFrame != null) {
-            imageView.setImageBitmap(submittedFrame);
+        if (thumbnail.original()) {
+            loadImage(imageView, "https://i.ytimg.com/vi/" + videoId + "/mqdefault.jpg", null);
         } else {
-            String imageUrl = thumbnail.original()
-                    ? "https://i.ytimg.com/vi/" + videoId + "/mqdefault.jpg"
-                    : DeArrowPatch.getSubmittedThumbnailURL(videoId, thumbnail.timestamp());
-            loadImage(imageView, imageUrl);
+            Bitmap localFrame = localFrames.get(new LocalFrame(videoId, thumbnail.timestamp()));
+            if (localFrame != null) {
+                imageView.setImageBitmap(localFrame);
+            } else {
+                missingFrames.loadStarted();
+                loadImage(imageView, DeArrowPatch.getSubmittedThumbnailURL(videoId, thumbnail.timestamp()),
+                        loaded -> missingFrames.loadFinished(thumbnail.timestamp(), imageView, loaded));
+            }
         }
 
         String text = thumbnail.original()
@@ -479,9 +500,12 @@ final class DeArrowVoteDialog {
 
     /**
      * Loads the image on a background thread. Nothing is shown if the server has no image.
+     *
+     * @param onFinished Called on the main thread with true if the image was shown, or null.
      */
-    private static void loadImage(ImageView imageView, String url) {
+    private static void loadImage(ImageView imageView, String url, @Nullable Consumer<Boolean> onFinished) {
         Utils.runOnBackgroundThread(() -> {
+            boolean loaded = false;
             try {
                 HttpURLConnection connection = Requester.openConnection(url);
                 connection.setConnectTimeout(THUMBNAIL_TIMEOUT_MILLISECONDS);
@@ -502,11 +526,17 @@ final class DeArrowVoteDialog {
                     Logger.printDebug(() -> "Could not decode thumbnail image: " + url);
                     return;
                 }
+                loaded = true;
                 Utils.runOnMainThread(() -> imageView.setImageBitmap(bitmap));
             } catch (IOException ex) {
                 Logger.printInfo(() -> "Could not load thumbnail image: " + url, ex);
             } catch (Exception ex) {
                 Logger.printException(() -> "loadImage failure", ex);
+            } finally {
+                if (onFinished != null) {
+                    final boolean result = loaded;
+                    Utils.runOnMainThread(() -> onFinished.accept(result));
+                }
             }
         });
     }
@@ -739,7 +769,7 @@ final class DeArrowVoteDialog {
         vote(context, sheet, videoId, false, () -> {
             String error = DeArrowVoteRequest.voteThumbnail(videoId, false, timestamp, false, videoLength);
             if (error == null && image != null) {
-                submittedFrames.put(new SubmittedFrame(videoId, timestamp), image);
+                localFrames.put(new LocalFrame(videoId, timestamp), image);
             }
             return error;
         });
@@ -865,5 +895,204 @@ final class DeArrowVoteDialog {
                 }
             });
         });
+    }
+
+    /**
+     * Copies the frames of the thumbnails the thumbnail cache has no image of, by moving the video
+     * to each frame. A playing video is paused while this is done. When done, or when the sheet closes,
+     * the video is moved back and played again.
+     * Only used on the main thread.
+     */
+    private static final class MissingFrames {
+        private record Missing(double timestamp, ImageView imageView) {
+        }
+
+        private final View playerButton;
+        private final String videoId;
+        private final long videoLength;
+        private final List<Missing> missing = new ArrayList<>();
+        @Nullable
+        private View disabledWhileCopying;
+
+        private int loadsInProgress;
+        private boolean allRowsAdded;
+        private boolean started;
+        private boolean finished;
+        private long originalVideoTime;
+        /**
+         * If the video was paused to copy the frames, and is played again when done.
+         */
+        private boolean playWhenDone;
+
+        MissingFrames(View playerButton, String videoId, long videoLength) {
+            this.playerButton = playerButton;
+            this.videoId = videoId;
+            this.videoLength = videoLength;
+        }
+
+        void setDisabledWhileCopying(View view) {
+            disabledWhileCopying = view;
+        }
+
+        void loadStarted() {
+            loadsInProgress++;
+        }
+
+        void loadFinished(double timestamp, ImageView imageView, boolean loaded) {
+            loadsInProgress--;
+            if (!loaded) {
+                missing.add(new Missing(timestamp, imageView));
+            }
+            startIfReady();
+        }
+
+        /**
+         * Called after all thumbnail rows are added, so the video is moved only once
+         * all missing images are known.
+         */
+        void allRowsAdded() {
+            allRowsAdded = true;
+            startIfReady();
+        }
+
+        /**
+         * Stops copying and moves the video back, if copying.
+         */
+        void cancel() {
+            finish();
+        }
+
+        private void startIfReady() {
+            try {
+                if (!allRowsAdded || loadsInProgress > 0 || started || finished || missing.isEmpty()) {
+                    return;
+                }
+                started = true;
+                if (!isSameVideo()) {
+                    Logger.printDebug(() -> "Not copying missing frames, the video changed");
+                    finished = true;
+                    return;
+                }
+                originalVideoTime = VideoInformation.getVideoTime();
+                if (originalVideoTime < 0) {
+                    Logger.printDebug(() -> "Not copying missing frames, video time is not available");
+                    finished = true;
+                    return;
+                }
+                Logger.printDebug(() -> "Copying " + missing.size() + " missing thumbnail frames");
+                setDisabledViewEnabled(false);
+
+                if (VideoState.getCurrent() == VideoState.PLAYING) {
+                    // Frames of a playing video would be copied later than their time.
+                    playWhenDone = clickPlayPauseButton();
+                    waitForPause(System.currentTimeMillis() + PAUSE_TIMEOUT_MILLISECONDS);
+                } else {
+                    copyFrame(0);
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "startIfReady failure", ex);
+                finish();
+            }
+        }
+
+        private void waitForPause(long timeoutTime) {
+            if (finished) return;
+            if (VideoState.getCurrent() == VideoState.PLAYING && System.currentTimeMillis() < timeoutTime) {
+                Utils.runOnMainThreadDelayed(() -> waitForPause(timeoutTime), PAUSE_CHECK_INTERVAL_MILLISECONDS);
+                return;
+            }
+            if (VideoState.getCurrent() == VideoState.PLAYING) {
+                Logger.printDebug(() -> "Video did not pause, copied frames can be later than their time");
+            }
+            copyFrame(0);
+        }
+
+        private void copyFrame(int index) {
+            try {
+                if (finished) return;
+                if (index >= missing.size() || !isSameVideo()) {
+                    finish();
+                    return;
+                }
+
+                Missing frame = missing.get(index);
+                final long time = Math.round(frame.timestamp() * 1000);
+                // Seeking clamps a time in the last second of the video, so it would show another frame.
+                if (time < 0 || (videoLength > 0 && time > videoLength - 1000) || !VideoInformation.seekTo(time)) {
+                    Logger.printDebug(() -> "Could not move the video to missing frame at: " + time);
+                    copyFrame(index + 1);
+                    return;
+                }
+
+                Utils.runOnMainThreadDelayed(() -> {
+                    if (finished) return;
+                    captureCurrentFrame(playerButton, image -> {
+                        if (finished) return;
+                        if (image != null) {
+                            localFrames.put(new LocalFrame(videoId, frame.timestamp()), image);
+                            frame.imageView().setImageBitmap(image);
+                        }
+                        copyFrame(index + 1);
+                    });
+                }, MISSING_FRAME_COPY_DELAY_MILLISECONDS);
+            } catch (Exception ex) {
+                Logger.printException(() -> "copyFrame failure", ex);
+                finish();
+            }
+        }
+
+        private void finish() {
+            if (finished) return;
+            finished = true;
+            if (!started) return;
+            try {
+                Logger.printDebug(() -> "Done copying missing frames, moving the video back to: " + originalVideoTime);
+                if (isSameVideo()) {
+                    VideoInformation.seekTo(originalVideoTime);
+                    if (playWhenDone) {
+                        clickPlayPauseButton();
+                    }
+                }
+                setDisabledViewEnabled(true);
+            } catch (Exception ex) {
+                Logger.printException(() -> "finish failure", ex);
+            }
+        }
+
+        private boolean isSameVideo() {
+            return videoId.equals(VideoInformation.getVideoId());
+        }
+
+        private void setDisabledViewEnabled(boolean enabled) {
+            if (disabledWhileCopying != null) {
+                disabledWhileCopying.setEnabled(enabled);
+                disabledWhileCopying.setAlpha(enabled ? 1 : DETAILS_ALPHA);
+            }
+        }
+
+        /**
+         * Clicks the play button of the player, which works while the player controls are hidden.
+         *
+         * @return If the button was found.
+         */
+        private boolean clickPlayPauseButton() {
+            Context context = playerButton.getContext();
+            final int id = ResourceUtils.getIdentifier(context, ResourceType.ID,
+                    "player_control_play_pause_replay_button");
+            // The player can have more than one view with the id of the play button.
+            View root = playerButton.getRootView();
+            View group = root.findViewById(ResourceUtils.getIdentifier(context, ResourceType.ID,
+                    "controls_button_group_layout"));
+            View button = group != null ? group.findViewById(id) : null;
+            if (button == null) {
+                button = root.findViewById(id);
+            }
+            if (button == null) {
+                Logger.printDebug(() -> "Play button not found");
+                return false;
+            }
+            button.performClick();
+            return true;
+        }
     }
 }
