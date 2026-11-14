@@ -1218,6 +1218,8 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_disable_fullscreen_ambient_mode_title">Disable Ambient mode in fullscreen</string>
     <string name="morphe_enhanced_ambient_mode_title">Enhanced Ambient mode</string>
     <string name="morphe_enhanced_ambient_mode_summary">Lights the whole watch page and black bars with the video, in place of Ambient mode</string>
+    <string name="morphe_enhanced_ambient_mode_strength_title">Light strength</string>
+    <string name="morphe_enhanced_ambient_mode_strength_summary">How strong the light is on the watch page and the black bars</string>
     <string name="morphe_enhanced_ambient_mode_readable_text_title">Keep text readable</string>
     <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dims the light on bright videos so the text on the page stays readable</string>
     <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Dim while scrolling</string>

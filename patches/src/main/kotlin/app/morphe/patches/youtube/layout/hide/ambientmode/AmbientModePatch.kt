@@ -111,6 +111,11 @@ val ambientModePatch = patch(
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_enhanced_ambient_mode", summary = true),
+                    NonInteractivePreference(
+                        key = "morphe_enhanced_ambient_mode_strength",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true
+                    ),
                     SwitchPreference("morphe_enhanced_ambient_mode_readable_text", summary = true),
                     SwitchPreference("morphe_enhanced_ambient_mode_dim_while_scrolling", summary = true),
                     NonInteractivePreference(

@@ -1174,8 +1174,8 @@ public final class AmbientLightController {
         final int under = onPage || AmbientLightMath.luma(pageColor) < 128 ? pageColor : Color.BLACK;
         // The surfaces get the color, then the light at its strength, then the cover of the page.
         // That comes to the color with this much of the light over it.
-        final float shown = strength / (float) FULL_STRENGTH;
-        final int share = !lit ? 0 : Math.round(255 * (onPage ? shown * (1f - cover * shown) : shown));
+        final float shown = shownStrength() / (float) FULL_STRENGTH;
+        final int share = !lit ? 0 : Math.round(255 * (onPage ? shown * (1f - shownCover(shown)) : shown));
 
         view.getLocationInWindow(drawLocation);
         Paint paint = windowColorPaint;
@@ -1275,10 +1275,11 @@ public final class AmbientLightController {
     private static boolean present(Layout current) {
         if (veiled) mainHandler.post(windowLightRunnable);
         final int buffers = surfaceBuffers;
-        lightPaint.setAlpha(Math.min(255, strength * 255 / FULL_STRENGTH));
+        final int shown = shownStrength();
+        lightPaint.setAlpha(Math.min(255, shown * 255 / FULL_STRENGTH));
         final float scaleX = current.windowWidth() / (float) LIGHT_COLUMNS;
         final float scaleY = current.windowHeight() / (float) current.gridHeight();
-        final int coverAlpha = Math.round(cover * strength * 255 / FULL_STRENGTH);
+        final int coverAlpha = Math.round(255 * shownCover(shown / (float) FULL_STRENGTH));
         final int coverColor = coverAlpha << 24 | (pageColor & 0xFFFFFF);
         // A dimmed light shows what is under it. The bars of the player are not white on a light page.
         final int barColor = AmbientLightMath.luma(pageColor) < 128 ? pageColor : Color.BLACK;
@@ -1294,6 +1295,33 @@ public final class AmbientLightController {
             mainHandler.post(unveilRunnable);
         }
         return drawn;
+    }
+
+    /**
+     * @return The strength set by the user, which the light has at rest.
+     */
+    private static int restStrength() {
+        return FULL_STRENGTH * SeekBarPreference.clampToRange(Settings.ENHANCED_AMBIENT_MODE_STRENGTH) / 100;
+    }
+
+    /**
+     * @return The strength the light is shown with: the strength set by the user at rest, and on
+     *         the way from there to the dimmed light while the light fades.
+     */
+    private static int shownStrength() {
+        final int rest = restStrength();
+        final int low = Math.min(DIMMED_STRENGTH, rest);
+        return low + (rest - low) * (strength - DIMMED_STRENGTH) / (FULL_STRENGTH - DIMMED_STRENGTH);
+    }
+
+    /**
+     * @param shown The share of the light that is shown, from 0 to 1.
+     * @return How much of the page color covers the light so that the text stays readable, from
+     *         0 to 1: what the light needs at the strength set by the user, fading with the light.
+     */
+    private static float shownCover(float shown) {
+        final float rest = restStrength() / (float) FULL_STRENGTH;
+        return AmbientLightMath.coverAtStrength(cover, rest) * shown / rest;
     }
 
     /**

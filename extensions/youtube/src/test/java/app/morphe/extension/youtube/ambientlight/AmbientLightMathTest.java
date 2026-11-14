@@ -222,6 +222,16 @@ public class AmbientLightMathTest {
     }
 
     @Test
+    public void aWeakerLightNeedsLessCover() {
+        assertEquals(0.5f, AmbientLightMath.coverAtStrength(0.5f, 1f), 0f);
+        // As much of the light is left as at full strength: 0.75 * (1 - 1/3) = 0.5.
+        assertEquals(1f / 3f, AmbientLightMath.coverAtStrength(0.5f, 0.75f), 0.001f);
+        assertEquals(0f, AmbientLightMath.coverAtStrength(0.5f, 0.5f), 0f);
+        assertEquals(0f, AmbientLightMath.coverAtStrength(0.5f, 0.25f), 0f);
+        assertEquals(0f, AmbientLightMath.coverAtStrength(0f, 0.75f), 0f);
+    }
+
+    @Test
     public void onlyTheRowsBelowThePictureCount() {
         float[] light = flatLight(10, 10, 0.3f);
         Arrays.fill(light, 0, 3 * 10 * 5, 1f);
