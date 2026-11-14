@@ -14,8 +14,9 @@ import java.lang.ref.WeakReference;
 import app.morphe.extension.shared.Logger;
 
 /**
- * All players share one media session. The player that starts the session is its owner,
- * and a session stop from another player is ignored (what YouTube 21.42+ does with an A/B flag).
+ * All players share one media session and one background playback. The player that starts the session
+ * is its owner, and a session stop or a background playback stop from another player is ignored
+ * (YouTube 21.42+ does it for the session stop with an A/B flag).
  */
 @SuppressWarnings("unused")
 public final class FixMediaSessionStopPatch {
@@ -27,6 +28,12 @@ public final class FixMediaSessionStopPatch {
      */
     @Nullable
     private static Object stoppingPlayer;
+
+    /**
+     * Player that is calling the background playback stop, or null if the stop is not made by a player.
+     */
+    @Nullable
+    private static Object backgroundStoppingPlayer;
 
     /**
      * Injection point.
@@ -47,26 +54,54 @@ public final class FixMediaSessionStopPatch {
 
     /**
      * Injection point.
-     *
-     * @return If the media session can be stopped.
      */
-    public static boolean isMediaSessionStopAllowed(boolean playbackDestroyed) {
-        Object player = stoppingPlayer;
-        stoppingPlayer = null;
+    public static void setBackgroundPlaybackStoppingPlayer(Object player) {
+        backgroundStoppingPlayer = player;
+    }
+
+    /**
+     * @return False if the stop is made by a player that is not the owner of the session.
+     */
+    private static boolean isOwnerOrUnknown(@Nullable Object player, String stop) {
         if (player == null) {
             return true;
         }
 
         Object owner = ownerRef.get();
         if (owner != null && owner != player) {
-            Logger.printDebug(() -> "Ignoring media session stop of player: " + player
+            Logger.printDebug(() -> "Ignoring " + stop + " of player: " + player
                     + " that is not the owner: " + owner);
             return false;
         }
+        return true;
+    }
 
-        if (playbackDestroyed) {
+    /**
+     * Injection point.
+     *
+     * @return If the media session can be stopped.
+     */
+    public static boolean isMediaSessionStopAllowed(boolean playbackDestroyed) {
+        Object player = stoppingPlayer;
+        stoppingPlayer = null;
+        if (!isOwnerOrUnknown(player, "media session stop")) {
+            return false;
+        }
+
+        if (player != null && playbackDestroyed) {
             ownerRef = new WeakReference<>(null);
         }
         return true;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @return If the background playback can be stopped (media notification and background player service).
+     */
+    public static boolean isBackgroundPlaybackStopAllowed() {
+        Object player = backgroundStoppingPlayer;
+        backgroundStoppingPlayer = null;
+        return isOwnerOrUnknown(player, "background playback stop");
     }
 }
