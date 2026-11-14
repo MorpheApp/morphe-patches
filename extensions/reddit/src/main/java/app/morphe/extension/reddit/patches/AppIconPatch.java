@@ -316,7 +316,7 @@ public class AppIconPatch {
 
             ImageView checkIcon = new ImageView(context);
             checkIcon.setImageResource(CustomDialogListPreference.DRAWABLE_CHECKMARK);
-            checkIcon.setColorFilter(ThemeUtils.getAppForegroundColor());
+            checkIcon.setColorFilter(ThemeUtils.getDialogTextColor());
 
             LinearLayout.LayoutParams checkParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -355,7 +355,7 @@ public class AppIconPatch {
             TextView title = new TextView(context);
             if (redditIcon != null) title.setText(redditIcon.label);
             title.setTextSize(15f);
-            title.setTextColor(ThemeUtils.getAppForegroundColor());
+            title.setTextColor(ThemeUtils.getDialogTextColor());
             col.addView(title);
             row.addView(col);
 

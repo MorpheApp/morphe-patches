@@ -405,6 +405,18 @@
         <item>ENFORCED</item>
     </string-array>
 
+    <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
+    <string-array name="morphe_ryd_feed_counts_position_entries">
+        <item>@string/morphe_ryd_feed_counts_position_entry_1</item>
+        <item>@string/morphe_ryd_feed_counts_position_entry_2</item>
+        <item>@string/morphe_ryd_feed_counts_position_entry_3</item>
+    </string-array>
+    <string-array name="morphe_ryd_feed_counts_position_entry_values">
+        <item>NEXT_TO_VIEW_COUNT</item>
+        <item>MIDDLE_RIGHT</item>
+        <item>TOP_LEFT</item>
+    </string-array>
+
     <!-- layout.feedcards.feedCardLayoutPatch -->
     <string-array name="morphe_feed_card_layout_entries">
         <item>@string/morphe_video_action_bar_layout_entry_1</item>

@@ -41,13 +41,8 @@ public final class CustomFontTogglePreference extends BooleanSettingPreference {
             }
 
             if (Settings.FORCE_SYSTEM_FONT.get()) {
-                // Keep modes mutually exclusive without triggering nested listener side effects.
-                AbstractPreferenceFragment.settingImportInProgress = true;
-                try {
-                    Settings.FORCE_SYSTEM_FONT.save(false);
-                } finally {
-                    AbstractPreferenceFragment.settingImportInProgress = false;
-                }
+                // Keep modes mutually exclusive.
+                Settings.FORCE_SYSTEM_FONT.save(false);
             }
 
             AbstractPreferenceFragment.setRestartNeeded();

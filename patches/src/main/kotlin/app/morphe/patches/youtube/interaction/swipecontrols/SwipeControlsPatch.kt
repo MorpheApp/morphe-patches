@@ -22,6 +22,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.interaction.onthego.onTheGoStateHookPatch
 import app.morphe.patches.youtube.interaction.seekbar.SeekbarUpdatePointFingerprint
 import app.morphe.patches.youtube.interaction.seekbar.SlideSeekbarGetViewControllerFingerprint
 import app.morphe.patches.youtube.interaction.seekbar.SlideSeekbarHandlerConstructorFingerprint
@@ -182,6 +183,8 @@ val swipeControlsPatch = patch(
         playerTypeHookPatch,
         swipeControlsResourcePatch,
         videoInformationPatch,
+        // Swipes are ignored while an On-the-go panel covers the player.
+        onTheGoStateHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

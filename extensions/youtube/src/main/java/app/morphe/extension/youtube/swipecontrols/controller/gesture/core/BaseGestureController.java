@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.youtube.patches.onthego.OnTheGoPatch;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity;
@@ -122,6 +123,12 @@ public abstract class BaseGestureController extends GestureDetector.SimpleOnGest
 
         // Ignore if status bar is visible (unless the screen is shared with another app).
         if (controller.isStatusBarVisible() && !controller.isInSplitScreenMode()) {
+            return false;
+        }
+
+        // Ignore if the On-the-go panel is open. It covers the fullscreen player,
+        // so the swipes on its controls would change the volume or brightness.
+        if (OnTheGoPatch.isOnTheGoActive()) {
             return false;
         }
 

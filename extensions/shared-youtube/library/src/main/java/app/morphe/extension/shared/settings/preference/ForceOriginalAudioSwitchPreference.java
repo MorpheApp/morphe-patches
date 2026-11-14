@@ -1,9 +1,18 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3447
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
-import android.preference.SwitchPreference;
 import android.util.AttributeSet;
 
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
@@ -11,7 +20,7 @@ import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 @SuppressWarnings({"deprecation", "unused"})
-public class ForceOriginalAudioSwitchPreference extends SwitchPreference {
+public class ForceOriginalAudioSwitchPreference extends BooleanSettingPreference {
 
     // Spoof stream patch is not included, or is not spoofing to a client with multiple audio streams.
     private static final boolean available = !SpoofVideoStreamsPatch.isPatchIncluded()

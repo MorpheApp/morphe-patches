@@ -1591,9 +1591,13 @@ public final class FeedVideoCardsPatch {
             duration = new Rect(0, 0, durationView.getWidth(), durationView.getHeight());
             ((ViewGroup) thumbnail).offsetDescendantRectToMyCoords(durationView, duration);
         }
+        final Rect frame = new Rect(0, 0, thumbnail.getWidth(), thumbnail.getHeight());
+        if (duration == null) {
+            // The duration is not found, so where it is is estimated, and the badge does not overlap it.
+            duration = FeedViewCountPatch.estimateDurationBadge(thumbnail, frame, null);
+        }
         FeedEngagementCountsPatch.onCardLaidOut(thumbnail, compactVideoIds.get(thumbnail),
-                new FeedViewCountPatch.ThumbnailFrame(duration,
-                        new Rect(0, 0, thumbnail.getWidth(), thumbnail.getHeight()), false));
+                new FeedViewCountPatch.ThumbnailFrame(duration, frame, false));
     }
 
     /**

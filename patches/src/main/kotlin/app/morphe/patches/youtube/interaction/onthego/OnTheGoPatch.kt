@@ -44,6 +44,84 @@ private const val EXTENSION_STATE_INTERFACE =
 private const val EXTENSION_SEEK_LENGTH_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/onthego/OnTheGoPatch$SeekLength;"
 
+/**
+ * Hooks the On-the-go state of the app, which is active while the On-the-go panel of the app or of Morphe is open.
+ * While it is active, the media controls of the lock screen and notification have seek back and seek forward buttons.
+ */
+internal val onTheGoStateHookPatch = patch {
+    dependsOn(
+        sharedExtensionPatch,
+        versionCheckPatch,
+    )
+
+    execute {
+        if (!is_21_05_or_greater) {
+            // Older versions have no On-the-go media session actions.
+            return@execute
+        }
+
+        val stateClass = OnTheGoSkipToNextActionConstructorFingerprint.method.parameterTypes.first().toString()
+
+        getOnTheGoStateConstructorFingerprint(stateClass).let {
+            it.method.addInstruction(
+                it.instructionMatches.first().index + 1,
+                "invoke-static { p0 }, $EXTENSION_CLASS->setOnTheGoState($EXTENSION_STATE_INTERFACE)V"
+            )
+        }
+
+        val stateGetter = getOnTheGoStateGetterFingerprint(stateClass).method
+
+        getOnTheGoStateSetterFingerprint(stateClass).let {
+            it.classDef.apply {
+                interfaces.add(EXTENSION_STATE_INTERFACE)
+
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_setOnTheGoActive",
+                        listOf(ImmutableMethodParameter("Z", null, null)),
+                        "V",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(2),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                invoke-virtual { p0, p1 }, ${it.method}
+                                return-void
+                            """
+                        )
+                    }
+                )
+
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_isOnTheGoActive",
+                        listOf(),
+                        "Z",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(2),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                invoke-virtual { p0 }, $stateGetter
+                                move-result v0
+                                return v0
+                            """
+                        )
+                    }
+                )
+            }
+        }
+    }
+}
+
 val onTheGoPatch = patch(
     name = "On-the-go player",
     description = "Adds an option to open a panel with large playback controls " +
@@ -59,6 +137,7 @@ val onTheGoPatch = patch(
         playerTypeHookPatch,
         lithoFilterPatch,
         flyoutPatch,
+        onTheGoStateHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -93,44 +172,6 @@ val onTheGoPatch = patch(
         if (!is_21_05_or_greater) {
             // Older versions have no On-the-go media session actions.
             return@execute
-        }
-
-        // While On-the-go is active, the media controls of the lock screen and notification
-        // have seek back and seek forward buttons. The Morphe panel turns this on while it is open.
-        val stateClass = OnTheGoSkipToNextActionConstructorFingerprint.method.parameterTypes.first().toString()
-
-        getOnTheGoStateConstructorFingerprint(stateClass).let {
-            it.method.addInstruction(
-                it.instructionMatches.first().index + 1,
-                "invoke-static { p0 }, $EXTENSION_CLASS->setOnTheGoState($EXTENSION_STATE_INTERFACE)V"
-            )
-        }
-
-        getOnTheGoStateSetterFingerprint(stateClass).let {
-            it.classDef.apply {
-                interfaces.add(EXTENSION_STATE_INTERFACE)
-
-                methods.add(
-                    ImmutableMethod(
-                        type,
-                        "patch_setOnTheGoActive",
-                        listOf(ImmutableMethodParameter("Z", null, null)),
-                        "V",
-                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                        null,
-                        null,
-                        MutableMethodImplementation(2),
-                    ).toMutable().apply {
-                        addInstructions(
-                            0,
-                            """
-                                invoke-virtual { p0, p1 }, ${it.method}
-                                return-void
-                            """
-                        )
-                    }
-                )
-            }
         }
 
         // The seek buttons of the panel use the double tap to seek length of the app settings.

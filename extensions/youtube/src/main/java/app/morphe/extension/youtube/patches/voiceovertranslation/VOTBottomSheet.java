@@ -79,9 +79,9 @@ public final class VOTBottomSheet {
 
         final int fg = ThemeUtils.getAppForegroundColor();
 
-        String[] langEntries = context.getResources().getStringArray(ResourceUtils
+        String[] langEntries = ResourceUtils.getStringArray(ResourceUtils
                 .getIdentifierOrThrow(ResourceType.ARRAY, "morphe_vot_caption_language_entries"));
-        String[] langValues = context.getResources().getStringArray(ResourceUtils
+        String[] langValues = ResourceUtils.getStringArray(ResourceUtils
                 .getIdentifierOrThrow(ResourceType.ARRAY, "morphe_vot_caption_language_entry_values"));
 
         if (langEntries.length > 1) {

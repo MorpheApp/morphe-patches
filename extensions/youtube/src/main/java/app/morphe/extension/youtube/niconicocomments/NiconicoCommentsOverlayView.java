@@ -20,6 +20,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.view.Display;
@@ -48,6 +49,10 @@ import app.morphe.extension.youtube.settings.Settings;
  */
 final class NiconicoCommentsOverlayView extends View {
     private static final long IDLE_FRAME_DELAY_MS = 250;
+    /**
+     * Comments in picture-in-picture are not scaled down below this font size.
+     */
+    private static final int PIP_MIN_FONT_SIZE_SP = 10;
     private static final int MEMBERSHIP_COLOR = Color.rgb(43, 166, 64);
     private static final long EMOJI_PREFETCH_MS = 1_000;
     private static final int EMOJI_CONNECT_TIMEOUT_MS = 5_000;
@@ -73,6 +78,16 @@ final class NiconicoCommentsOverlayView extends View {
     private String videoId = "";
     private boolean overlayActive;
     private boolean videoPlaying;
+    private boolean pictureInPicture;
+    /**
+     * Size of a layout pixel in view pixels. Comments are measured and placed in layout pixels.
+     */
+    private float layoutScale = 1;
+    /**
+     * Layout width and lane count the comments were last placed with.
+     */
+    private float placedWidth;
+    private int placedLaneCount;
     @Nullable
     private Window activityWindow;
     /**
@@ -139,6 +154,17 @@ final class NiconicoCommentsOverlayView extends View {
         }
         videoPlaying = playing;
         requestNextFrame();
+    }
+
+    void setPictureInPicture(boolean nextPictureInPicture) {
+        if (pictureInPicture == nextPictureInPicture) {
+            return;
+        }
+        pictureInPicture = nextPictureInPicture;
+        if (getHeight() > 0) {
+            updateLayout();
+        }
+        invalidate();
     }
 
     void setCommentFontSizeSp(int nextFontSizeSp) {
@@ -231,19 +257,64 @@ final class NiconicoCommentsOverlayView extends View {
     protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
         super.onSizeChanged(width, height, oldWidth, oldHeight);
         if (height > 0 && (height != oldHeight || width != oldWidth)) {
-            redistributeLanes();
+            updateLayout();
             requestNextFrame();
         }
     }
 
     /**
-     * Places the comments again with the current sizes. A new size always comes through here.
+     * Sets the scale for the current size, and places the comments again if the size they are laid out in
+     * changed by more than rounding. A resized picture-in-picture window mostly changes only the scale,
+     * and the comments keep their lanes then.
+     */
+    private void updateLayout() {
+        layoutScale = getLayoutScale();
+        if (getLaneCount() != placedLaneCount || Math.abs(getLayoutWidth() - placedWidth) > placedWidth / 100) {
+            redistributeLanes();
+        }
+    }
+
+    /**
+     * Places the comments again with the current sizes.
      */
     private void redistributeLanes() {
+        layoutScale = getLayoutScale();
         // Half the font size between comments, and at least room for the backgrounds of paid messages.
         float minGap = Math.max(fillPaint.getTextSize() / 2, 2 * backgroundPadding + strokePaint.getStrokeWidth());
-        schedule.setLayout(getWidth(), minGap, this::measureCommentWidth);
-        schedule.redistributeLanes(getLaneCount());
+        placedWidth = getLayoutWidth();
+        placedLaneCount = getLaneCount();
+        schedule.setLayout(placedWidth, minGap, this::measureCommentWidth);
+        schedule.redistributeLanes(placedLaneCount);
+    }
+
+    @SuppressWarnings("deprecation")
+    private float getLayoutScale() {
+        Display display = getDisplay();
+        if (!pictureInPicture || display == null) {
+            return 1;
+        }
+        // The size of the display and not of the window. The maximum window metrics need Android 11.
+        Point displaySize = new Point();
+        display.getRealSize(displaySize);
+        return getPictureInPictureScale(Math.max(getWidth(), getHeight()),
+                Math.min(displaySize.x, displaySize.y), fontSizeSp);
+    }
+
+    /**
+     * Comments in picture-in-picture are laid out for a player as wide as the shorter side of the display,
+     * which the player in portrait is, and are scaled down to the window. So the window shows as many
+     * comments as that player, and the comments grow and shrink with the window.
+     *
+     * @param windowSize  Length of the longer side of the window.
+     * @param displaySize Length of the shorter side of the display.
+     * @return The scale, which keeps the comments at {@link #PIP_MIN_FONT_SIZE_SP} or larger.
+     */
+    static float getPictureInPictureScale(int windowSize, int displaySize, int fontSizeSp) {
+        if (displaySize <= 0) {
+            return 1;
+        }
+        final float minScale = (float) PIP_MIN_FONT_SIZE_SP / fontSizeSp;
+        return Math.min(1, Math.max(minScale, (float) windowSize / displaySize));
     }
 
     @Override
@@ -265,6 +336,8 @@ final class NiconicoCommentsOverlayView extends View {
 
         schedule.removeExpired(videoTimeMs);
         updateEmojiDemand(videoTimeMs);
+        canvas.scale(layoutScale, layoutScale);
+        final float width = getLayoutWidth();
         int laneCount = getLaneCount();
         boolean hasActiveOrUpcomingComment = false;
         boolean hasVisibleComment = false;
@@ -280,7 +353,7 @@ final class NiconicoCommentsOverlayView extends View {
             NiconicoComment comment = scheduled.comment();
             float commentWidth = measureCommentWidth(comment);
             float progress = (float) elapsedMs / schedule.getCommentDurationMs();
-            float x = getWidth() - (progress * (getWidth() + commentWidth));
+            float x = width - (progress * (width + commentWidth));
             float y = firstBaseline + (Math.floorMod(scheduled.lane(), laneCount) * laneHeight);
 
             if (comment.backgroundColor() != Color.TRANSPARENT) {
@@ -378,6 +451,8 @@ final class NiconicoCommentsOverlayView extends View {
             context = ((ContextWrapper) context).getBaseContext();
         }
         activityWindow = context instanceof Activity activity ? activity.getWindow() : null;
+        // Configuration changes are not reported while detached.
+        NiconicoCommentsController.onConfigurationChanged(getResources().getConfiguration());
     }
 
     @Override
@@ -396,11 +471,15 @@ final class NiconicoCommentsOverlayView extends View {
         firstBaseline = -fontMetrics.ascent + (12 * density);
     }
 
+    private float getLayoutWidth() {
+        return getWidth() / layoutScale;
+    }
+
     /**
      * @return The number of lanes that fit in the display area, which starts at the top of the player.
      */
     private int getLaneCount() {
-        float height = getHeight() * displayAreaPercent / 100f;
+        float height = getHeight() / layoutScale * displayAreaPercent / 100f;
         return Math.max(1, (int) ((height - firstBaseline) / laneHeight) + 1);
     }
 

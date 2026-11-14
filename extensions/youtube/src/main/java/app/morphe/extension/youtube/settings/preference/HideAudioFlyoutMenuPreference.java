@@ -1,15 +1,25 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3447
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
-import android.preference.SwitchPreference;
 import android.util.AttributeSet;
 
+import app.morphe.extension.shared.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 @SuppressWarnings({"deprecation", "unused"})
-public class HideAudioFlyoutMenuPreference extends SwitchPreference {
+public class HideAudioFlyoutMenuPreference extends BooleanSettingPreference {
 
     {
         // Audio menu is not available if spoofing to most client types.

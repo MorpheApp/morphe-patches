@@ -10,22 +10,20 @@ package app.morphe.extension.reddit.settings.preference;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
-import android.preference.SwitchPreference;
 
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 
 @SuppressWarnings("deprecation")
-public class BooleanSettingPreference extends SwitchPreference {
+public class BooleanSettingPreference
+        extends app.morphe.extension.shared.settings.preference.BooleanSettingPreference {
 
     public BooleanSettingPreference(Context context, BooleanSetting setting) {
-        super(context);
+        super(context, setting);
         this.setTitle(str(setting.key + "_title"));
         String summaryKey = setting.key + "_summary";
         if (ResourceUtils.getStringIdentifier(summaryKey) != 0) {
             this.setSummary(str(summaryKey));
         }
-        this.setKey(setting.key);
-        this.setChecked(setting.get());
     }
 }

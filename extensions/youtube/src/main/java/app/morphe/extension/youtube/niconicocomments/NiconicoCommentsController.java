@@ -11,6 +11,7 @@
 
 package app.morphe.extension.youtube.niconicocomments;
 
+import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.SystemClock;
 import android.view.View;
@@ -23,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
@@ -39,11 +42,18 @@ public final class NiconicoCommentsController {
     private static final long SEEK_THRESHOLD_MS = 12_000;
     private static final Object SOURCE_LOCK = new Object();
     private static final Object VIDEO_CLOCK_LOCK = new Object();
+    /**
+     * Layout that YouTube keeps above the player overlays. Unlike the controls overlay,
+     * it stays in the player while in picture-in-picture.
+     */
+    private static final int PIP_OVERLAY_ROOT_ID =
+            ResourceUtils.getIdentifier(ResourceType.ID, "player_overlays_custom_views_container");
 
+    private static WeakReference<ViewGroup> overlayRootRef = new WeakReference<>(null);
     private static WeakReference<NiconicoCommentsOverlayView> overlayViewRef = new WeakReference<>(null);
 
     private static volatile String currentVideoId = "";
-    private static volatile boolean playerVisible;
+    private static volatile PlayerType playerType = PlayerType.NONE;
     private static volatile boolean portrait;
     private static volatile boolean videoPlaying;
     // Main thread only.
@@ -139,6 +149,7 @@ public final class NiconicoCommentsController {
             view.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
             overlayRoot.addView(view, 0, new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            overlayRootRef = new WeakReference<>(overlayRoot);
             overlayViewRef = new WeakReference<>(view);
 
             setPlayerType(PlayerType.getCurrent());
@@ -243,10 +254,15 @@ public final class NiconicoCommentsController {
     }
 
     /**
-     * @return If the full size player is open and comments are shown in the current orientation.
+     * @return If the player is in picture-in-picture and comments are shown there, or the full size
+     *         player is open and comments are shown in the current orientation.
      */
     private static boolean isPlayerShowingComments() {
-        return playerVisible && (!portrait || Settings.NICONICO_COMMENTS_PORTRAIT.get());
+        final PlayerType type = playerType;
+        if (type == PlayerType.WATCH_WHILE_PICTURE_IN_PICTURE) {
+            return Settings.NICONICO_COMMENTS_PIP.get();
+        }
+        return type.isMaximizedOrFullscreen() && (!portrait || Settings.NICONICO_COMMENTS_PORTRAIT.get());
     }
 
     /**
@@ -275,7 +291,7 @@ public final class NiconicoCommentsController {
     }
 
     private static void setPlayerType(PlayerType type) {
-        playerVisible = type.isMaximizedOrFullscreen();
+        playerType = type;
         updateViewState();
         maybeStartChatSource();
     }
@@ -380,6 +396,10 @@ public final class NiconicoCommentsController {
     }
 
     private static void applyViewState(NiconicoCommentsOverlayView view) {
+        final boolean pictureInPicture = playerType == PlayerType.WATCH_WHILE_PICTURE_IN_PICTURE
+                && Settings.NICONICO_COMMENTS_PIP.get();
+        moveOverlay(view, pictureInPicture);
+        view.setPictureInPicture(pictureInPicture);
         view.setCommentFontSizeSp(SeekBarPreference.clampToRange(getFontSizeSetting()));
         view.setCommentOpacityPercent(SeekBarPreference.clampToRange(Settings.NICONICO_COMMENTS_OPACITY));
         view.setTravelDurationSeconds(SeekBarPreference.clampToRange(getTravelDurationSetting()));
@@ -392,7 +412,29 @@ public final class NiconicoCommentsController {
     }
 
     /**
-     * Starts loading the chat of the current video, if it is shown in the full size player.
+     * YouTube removes the controls overlay, which holds the comments, from the player while in
+     * picture-in-picture. The comments move to a layout that stays in the player, and back afterward.
+     */
+    private static void moveOverlay(NiconicoCommentsOverlayView view, boolean pictureInPicture) {
+        ViewGroup parent = pictureInPicture ? findPictureInPictureOverlayRoot() : overlayRootRef.get();
+        if (parent == null || parent == view.getParent()) {
+            return;
+        }
+        if (view.getParent() instanceof ViewGroup currentParent) {
+            currentParent.removeView(view);
+        }
+        parent.addView(view, 0, new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+    }
+
+    @Nullable
+    private static ViewGroup findPictureInPictureOverlayRoot() {
+        Activity activity = Utils.getActivity();
+        return activity == null ? null : activity.findViewById(PIP_OVERLAY_ROOT_ID);
+    }
+
+    /**
+     * Starts loading the chat of the current video, if the player shows comments.
      */
     private static void maybeStartChatSource() {
         final String videoId = currentVideoId;

@@ -52,6 +52,8 @@ public class SearchHistoryManager {
             ResourceType.ID, "empty_history_summary");
     private static final int ID_SEARCH_HISTORY_HEADER = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "search_history_header");
+    private static final int ID_SEARCH_TIPS_TITLE = ResourceUtils.getIdentifierOrThrow(
+            ResourceType.ID, "morphe_settings_search_tips_title");
     private static final int ID_SEARCH_TIPS_SUMMARY = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_settings_search_tips_summary");
     private static final int LAYOUT_MORPHE_PREFERENCE_SEARCH_HISTORY_SCREEN = ResourceUtils.getIdentifierOrThrow(
@@ -134,13 +136,19 @@ public class SearchHistoryManager {
 
         // Set up clear history button.
         TextView clearHistoryButton = searchHistoryContainer.findViewById(ID_CLEAR_HISTORY_BUTTON);
+        clearHistoryButton.setText(str("morphe_settings_search_clear_history"));
         clearHistoryButton.setOnClickListener(v -> createAndShowDialog(
                 str("morphe_settings_search_clear_history"),
                 str("morphe_settings_search_clear_history_message"),
                 this::clearAllSearchHistory
         ));
 
-        // Set up search tips summary.
+        TextView historyHeader = searchHistoryContainer.findViewById(ID_SEARCH_HISTORY_HEADER);
+        historyHeader.setText(str("morphe_settings_search_recent_searches"));
+
+        // Set up search tips.
+        TextView tipsTitle = historyView.findViewById(ID_SEARCH_TIPS_TITLE);
+        tipsTitle.setText(str("morphe_settings_search_tips_title"));
         CharSequence text = BulletPointPreference.formatIntoBulletPoints(
                 str("morphe_settings_search_tips_summary"));
         TextView tipsSummary = historyView.findViewById(ID_SEARCH_TIPS_SUMMARY);

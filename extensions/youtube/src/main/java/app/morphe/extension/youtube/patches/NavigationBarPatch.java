@@ -285,6 +285,20 @@ public final class NavigationBarPatch {
     private static volatile Boolean accountFeedBehindNavigationBar;
 
     /**
+     * Value of the blurred, translucent background flag first read by the app with
+     * {@link NavigationBarStyle#DEFAULT}, or null if not read yet.
+     */
+    @Nullable
+    private static volatile Boolean accountTranslucentBackground;
+
+    /**
+     * Value of the translucent navigation bar style flag first read by the app with
+     * {@link NavigationBarStyle#DEFAULT}, or null if not read yet.
+     */
+    @Nullable
+    private static volatile Boolean accountTranslucentStyle;
+
+    /**
      * The translucent navigation bar comes from feature flags that not every account gets, so they
      * are turned on to make the bar look the same on every account. With the navigation bar covering
      * the system navigation buttons and the feed laid out behind it, the navigation bar and the pages
@@ -394,11 +408,32 @@ public final class NavigationBarPatch {
             accountFeedBehindNavigationBar = accountValue;
         }
 
-        final boolean feedBehind = PAGES_BEHIND_GLASS_NAVIGATION_BAR || isNavigationBarBehindSystemButtons(accountValue);
+        final boolean feedBehind = PAGES_BEHIND_GLASS_NAVIGATION_BAR
+                || (isNavigationBarBehindSystemButtons(accountValue) && canPagesBeBehindDefaultNavigationBar());
         if (firstRead) {
-            Logger.printDebug(() -> "Feed behind navigation bar: " + feedBehind + " (account: " + original + ")");
+            Logger.printDebug(() -> "Feed behind navigation bar: " + feedBehind + " (account: " + original
+                    + ", translucent background: " + accountTranslucentBackground
+                    + ", translucent style: " + accountTranslucentStyle + ")");
         }
         return feedBehind;
+    }
+
+    /**
+     * The pages are laid out behind the navigation bar only if the bar tells them they can be seen
+     * through it: from Android 12 with its blurred background, otherwise with the translucent style.
+     * With the feed behind the navigation bar flag, the lists get the navigation bar height as bottom
+     * padding, so without them the pages end above the navigation bar and the padding is an empty band
+     * above it (<a href="https://github.com/MorpheApp/morphe-patches/issues/4797">...</a>).
+     * The account can get the feed behind flag without them, such as with the feature flags
+     * of an older app version (Spoof app version).
+     * The other navigation bar styles turn on the background or the style themselves.
+     *
+     * @return False only if the account got neither the blurred background nor the translucent style.
+     */
+    private static boolean canPagesBeBehindDefaultNavigationBar() {
+        return NAVIGATION_BAR_STYLE != NavigationBarStyle.DEFAULT
+                || accountTranslucentBackground != Boolean.FALSE
+                || accountTranslucentStyle != Boolean.FALSE;
     }
 
     /**
@@ -442,7 +477,15 @@ public final class NavigationBarPatch {
      */
     public static boolean useTranslucentNavigationBarBackground(boolean original) {
         if (NAVIGATION_BAR_STYLE == NavigationBarStyle.DEFAULT) {
-            return original;
+            // The value first read is kept, as for the other flags of the navigation bar,
+            // so the pages are laid out the same way if the account value changes while the app runs.
+            Boolean accountValue = accountTranslucentBackground;
+            if (accountValue == null) {
+                accountValue = original;
+                accountTranslucentBackground = accountValue;
+                Logger.printDebug(() -> "Navigation bar translucent background (account): " + original);
+            }
+            return accountValue;
         }
 
         final boolean translucent;
@@ -469,6 +512,16 @@ public final class NavigationBarPatch {
      * and this flag would replace the blurred background with a translucent color, so it is left to the account.
      */
     public static boolean useTranslucentNavigationBarStyle(boolean original) {
+        if (NAVIGATION_BAR_STYLE == NavigationBarStyle.DEFAULT) {
+            // The value first read is kept, see useTranslucentNavigationBarBackground.
+            Boolean accountValue = accountTranslucentStyle;
+            if (accountValue == null) {
+                accountValue = original;
+                accountTranslucentStyle = accountValue;
+                Logger.printDebug(() -> "Navigation bar translucent style (account): " + original);
+            }
+            return accountValue;
+        }
         if (!original && PAGES_BEHIND_GLASS_NAVIGATION_BAR && Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
             Logger.printVerbose(() -> "useTranslucentNavigationBarStyle turned on");
             return true;
