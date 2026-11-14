@@ -75,6 +75,11 @@ final class SeeThroughPage {
     @Nullable
     private static Drawable hostBackground;
     private static WeakReference<ViewGroup> stickyHeaderContainerRef = new WeakReference<>(null);
+    /** The headers and the items of the list that are shown, and those of the frame before. */
+    private static List<View> listItems = new ArrayList<>();
+    private static List<View> listItemsBefore = new ArrayList<>();
+    /** The color the page was last cleared for. */
+    private static int pageColor;
     private static WeakReference<View> pageContentRef = new WeakReference<>(null);
     @Nullable
     private static Drawable pageContentBackground;
@@ -103,6 +108,7 @@ final class SeeThroughPage {
             page.setBackground(new LightDrawable(page));
         }
         cleared.keySet().removeIf(view -> !view.isAttachedToWindow());
+        SeeThroughPage.pageColor = pageColor;
         clearBackgrounds(page, player, page.getWidth() / 3, pageColor, 0);
         lightPageContent(page);
         lightPageBackdrop(page, player);
@@ -327,10 +333,9 @@ final class SeeThroughPage {
             return contentAppeared;
         }
 
-        View list = null;
+        RecyclerView list = null;
         for (int i = 0; i < container.getChildCount(); i++) {
-            View child = container.getChildAt(i);
-            if (child instanceof RecyclerView) {
+            if (container.getChildAt(i) instanceof RecyclerView child) {
                 list = child;
                 break;
             }
@@ -340,11 +345,23 @@ final class SeeThroughPage {
             return contentAppeared;
         }
 
+        // YouTube shows the filter chips as an item of the list first and then as a header that
+        // sticks, each with the color of the page as its background. What shows up in the list is
+        // cleared before it is drawn, and not only when the page is cleared again.
+        List<View> before = listItems;
+        listItems = listItemsBefore;
+        listItemsBefore = before;
+        listItems.clear();
+        for (int i = 0; i < list.getChildCount(); i++) {
+            clearIfNew(list.getChildAt(i));
+        }
+
         final float listTop = list.getY();
         float headersBottom = listTop;
         for (int i = 0; i < container.getChildCount(); i++) {
             View header = container.getChildAt(i);
             if (header == list || header.getVisibility() != View.VISIBLE || header.getHeight() == 0) continue;
+            clearIfNew(header);
             final float top = header.getY();
             // Only a header that sticks to the top covers the list. A header that scrolls
             // with the list is drawn over its own empty item.
@@ -354,6 +371,16 @@ final class SeeThroughPage {
         }
         setListClip(list, (int) (headersBottom - listTop));
         return contentAppeared;
+    }
+
+    private static void clearIfNew(View item) {
+        if (item.getVisibility() != View.VISIBLE) return;
+
+        listItems.add(item);
+        View page = hostRef.get();
+        if (page != null && !listItemsBefore.contains(item)) {
+            clearBackgrounds(item, null, page.getWidth() / 3, pageColor, 0);
+        }
     }
 
     /**
@@ -391,6 +418,8 @@ final class SeeThroughPage {
         restorePageBackdrop();
         setListClip(null, 0);
         stickyHeaderContainerRef = new WeakReference<>(null);
+        listItems.clear();
+        listItemsBefore.clear();
         View host = hostRef.get();
         if (host != null) {
             host.setBackground(hostBackground);
