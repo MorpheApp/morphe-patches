@@ -2,6 +2,8 @@ package app.morphe.patches.youtube.misc.debugging
 
 import app.morphe.patches.shared.misc.debugging.enableDebuggingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_41_or_greater
@@ -30,5 +32,18 @@ val enableDebuggingPatch = enableDebuggingPatch(
     hookDoubleFeatureFlag = { !is_20_40_or_greater || is_20_41_or_greater},
     hookHotFeatureFlags = { is_21_35_or_greater },
     preferenceScreen = PreferenceScreen.MISC,
-    additionalDebugPreferences = listOf(ListPreference("morphe_debug_litho"))
+    additionalDebugPreferences = listOf(
+        ListPreference("morphe_debug_litho"),
+        SwitchPreference("morphe_capture_push_notification_payloads", summary = true),
+        NonInteractivePreference(
+            "morphe_export_push_notification_payloads",
+            tag = "app.morphe.extension.youtube.settings.preference.ExportPushNotificationPayloadsPreference",
+            selectable = true
+        ),
+        NonInteractivePreference(
+            "morphe_clear_push_notification_payloads",
+            tag = "app.morphe.extension.youtube.settings.preference.ClearPushNotificationPayloadsPreference",
+            selectable = true
+        )
+    )
 )
