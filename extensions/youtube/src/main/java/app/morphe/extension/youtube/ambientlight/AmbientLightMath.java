@@ -581,6 +581,19 @@ final class AmbientLightMath {
                 : Math.max(0f, 1f - (1f - LIGHT_PAGE_MIN_BRIGHTNESS) / (1f - brightness));
     }
 
+    /**
+     * The cover that keeps the text readable under a weaker light. A weaker light is closer to
+     * the page color already, so it needs less of the cover, and none if the text is readable
+     * without it.
+     *
+     * @param cover    The cover of the full light, from {@link #readabilityCover}.
+     * @param strength The share of the light that is shown, above 0 and up to 1.
+     * @return The opacity of the cover, from 0 to 1.
+     */
+    static float coverAtStrength(float cover, float strength) {
+        return Math.max(0f, 1f - (1f - cover) / strength);
+    }
+
     private static float clamp(float value) {
         return Math.max(0f, Math.min(1f, value));
     }
