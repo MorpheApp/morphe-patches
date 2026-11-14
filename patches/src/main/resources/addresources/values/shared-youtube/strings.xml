@@ -177,6 +177,28 @@ To sign in, press continue below"</string>
 • Your Morphe settings will not import/export Android VR authentication
 • If this app is unused for 6 months then Google will remove this authentication
 • You will need to sign in again if you change your Google password or deregister this device from your Google settings"</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Mobile Web sign in</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Optional: sign in to the YouTube website to play videos with your account. Tap here to continue</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Currently signed into Mobile Web</string>
+    <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+    <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">To use this feature, change \'Default client\' to Mobile Web</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Sign in to Mobile Web</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web plays videos signed out, or signed in to the YouTube website
+
+• Signed in, videos that need an account can be played, such as age-restricted videos
+• The Google sign-in page opens in this app
+• The sign-in is used only to get the videos you play
+• The sign-in is saved only on this device
+
+To sign in, press continue below"</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sign-in saved
+
+• Your Morphe settings will not import/export the Mobile Web sign-in
+• If Google ends the sign-in, videos are played signed out until you sign in again
+• Signing out also signs this device out of the YouTube website"</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web sign in expired, try signing in to Mobile Web again</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Signed out of Mobile Web</string>
+    <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView is not available. Install or enable it to sign in</string>
     <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>
     <string name="morphe_oauth2_connection_failure_status_400">Android VR sign in expired, try signing in to VR again</string>
     <string name="morphe_oauth2_connection_failure_status">OAuth2 is temporarily not available (status %s)</string>

@@ -32,7 +32,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 @SuppressWarnings({"unused", "JavaReflectionMemberAccess"})
 public final class CustomFontPatch {
@@ -207,14 +206,10 @@ public final class CustomFontPatch {
     }
 
     private static void disableCustomFont() {
-        // Do not show the restart dialog for this change.
-        AbstractPreferenceFragment.settingImportInProgress = true;
         try {
             SharedYouTubeSettings.CUSTOM_FONT_TYPE.save(FontType.DEFAULT);
         } catch (Exception ex) {
             Logger.printException(() -> "disableCustomFont failure", ex);
-        } finally {
-            AbstractPreferenceFragment.settingImportInProgress = false;
         }
 
         Utils.showToastLong(str("morphe_custom_font_failed_to_load"));

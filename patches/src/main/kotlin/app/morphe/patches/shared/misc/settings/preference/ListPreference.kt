@@ -1,8 +1,18 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.shared.misc.settings.preference
 
+import app.morphe.patcher.xml.XmlElement
 import app.morphe.patches.util.resource.ArrayResource
 import app.morphe.patches.util.resource.BaseResource
-import app.morphe.patcher.xml.XmlElement
 
 /**
  * List preference.
@@ -45,7 +55,7 @@ class ListPreference(
         key: String? = null,
         titleKey: String = "${key}_title",
         summaryKey: String? = "${key}_summary",
-        tag: String = "ListPreference",
+        tag: String = "app.morphe.extension.shared.settings.preference.CustomDialogListPreference",
         entries: ArrayResource,
         entryValues: ArrayResource
     ) : this(key, titleKey, summaryKey, tag, entries.name, entryValues.name) {

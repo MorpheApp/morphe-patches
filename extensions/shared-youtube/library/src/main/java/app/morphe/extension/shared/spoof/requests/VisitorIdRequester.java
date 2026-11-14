@@ -224,7 +224,7 @@ public final class VisitorIdRequester {
                     connection.setRequestProperty("Authorization", oauth2Authorization);
                 }
             }
-            connection.setRequestProperty("User-Agent", clientType.userAgent);
+            connection.setRequestProperty("User-Agent", clientType.getUserAgent());
             connection.setRequestProperty("X-YouTube-Client-Name", String.valueOf(clientType.id));
             connection.setRequestProperty("X-YouTube-Client-Version", clientType.clientVersion);
             connection.setConnectTimeout(connectionTimeoutMillis);

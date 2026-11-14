@@ -85,6 +85,7 @@ public final class VoiceOverTranslationButton {
                     });
             View legacyButton = Utils.getChildViewByResourceName(controlsView, "morphe_vot_button");
             if (legacyButton != null) {
+                legacyButton.setContentDescription(ResourceUtils.getString("morphe_vot_screen_title"));
                 PlayerOverlayButton.setToggleAccessibilityDelegate(legacyButton, VoiceOverTranslationPatch::isSessionEnabled);
             }
             refreshActivatedState();
