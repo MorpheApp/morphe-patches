@@ -29,6 +29,5 @@ public class StringSettingPreference extends ResettableEditTextPreference {
 
         setKey(setting.key);
         setSetting(setting);
-        setText(setting.get());
     }
 }

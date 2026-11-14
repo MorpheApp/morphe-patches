@@ -11,14 +11,17 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.graphics.Bitmap;
 import android.media.MediaMetadata;
 import android.media.session.MediaController;
 import android.media.session.MediaSession;
 import android.media.session.PlaybackState;
 import android.os.SystemClock;
+import android.util.Base64;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
@@ -200,7 +203,7 @@ public final class JamClock {
         }
     }
 
-    private static android.graphics.Bitmap exportedArtwork;
+    private static Bitmap exportedArtwork;
     private static String exportedArtworkData = "";
     private static String exportedArtworkVideo = "";
 
@@ -212,7 +215,7 @@ public final class JamClock {
         ) return "";
         MediaMetadata metadata = current.getMetadata();
         if (metadata == null) return "";
-        android.graphics.Bitmap bitmap = metadata.getBitmap(
+        Bitmap bitmap = metadata.getBitmap(
                 MediaMetadata.METADATA_KEY_ALBUM_ART
         );
         if (bitmap == null) bitmap = metadata.getBitmap(
@@ -229,21 +232,21 @@ public final class JamClock {
             int width = bitmap.getWidth(),
                     height = bitmap.getHeight();
             float scale = Math.min(1f, 512f / Math.max(width, height));
-            android.graphics.Bitmap sized =
-                    android.graphics.Bitmap.createScaledBitmap(
+            Bitmap sized =
+                    Bitmap.createScaledBitmap(
                             bitmap,
                             Math.max(1, Math.round(width * scale)),
                             Math.max(1, Math.round(height * scale)),
                             true
                     );
-            java.io.ByteArrayOutputStream output =
-                    new java.io.ByteArrayOutputStream();
+            ByteArrayOutputStream output =
+                    new ByteArrayOutputStream();
             try {
                 for (int quality = 85; quality >= 25; quality -= 20) {
                     output.reset();
                     if (
                             !sized.compress(
-                                    android.graphics.Bitmap.CompressFormat.JPEG,
+                                    Bitmap.CompressFormat.JPEG,
                                     quality,
                                     output
                             )
@@ -251,9 +254,9 @@ public final class JamClock {
                     if (output.size() <= 128000) break;
                 }
                 if (output.size() > 128000) return "";
-                exportedArtworkData = android.util.Base64.encodeToString(
+                exportedArtworkData = Base64.encodeToString(
                         output.toByteArray(),
-                        android.util.Base64.NO_WRAP
+                        Base64.NO_WRAP
                 );
                 exportedArtwork = bitmap;
                 exportedArtworkVideo = video;

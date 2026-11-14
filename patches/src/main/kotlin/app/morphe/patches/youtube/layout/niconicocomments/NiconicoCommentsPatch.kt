@@ -56,7 +56,6 @@ private val niconicoCommentsResourcePatch = patch {
     }
 }
 
-@Suppress("unused")
 val niconicoCommentsPatch = patch(
     name = "Niconico comments",
     description = "Adds an option to show live chat and chat replay as comments that scroll across the video."
@@ -85,6 +84,7 @@ val niconicoCommentsPatch = patch(
                         titleKey = "morphe_niconico_comments_screen_title",
                         summary = true
                     ),
+                    SwitchPreference("morphe_niconico_comments_pip", summary = true),
                     PreferenceCategory(
                         key = "morphe_niconico_comments_appearance_category",
                         titleKey = "morphe_niconico_comments_appearance_title",

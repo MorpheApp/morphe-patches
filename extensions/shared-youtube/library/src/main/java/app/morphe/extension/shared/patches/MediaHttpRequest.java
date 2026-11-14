@@ -9,6 +9,10 @@ package app.morphe.extension.shared.patches;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.libraries.youtube.media.interfaces.HttpHeader;
+
+import java.util.ArrayList;
+
 /**
  * Added to the media request class of the app, whose fields are obfuscated.
  * Native code makes these requests, and the app starts them in Java.
@@ -21,8 +25,11 @@ public interface MediaHttpRequest {
     @Nullable
     byte[] patch_getBody();
 
+    @Nullable
+    ArrayList<HttpHeader> patch_getHeaders();
+
     /**
-     * @return A copy of this request with another body.
+     * @return A copy of this request with another body and other headers.
      */
-    MediaHttpRequest patch_withBody(byte[] body);
+    MediaHttpRequest patch_withBodyAndHeaders(byte[] body, @Nullable ArrayList<HttpHeader> headers);
 }

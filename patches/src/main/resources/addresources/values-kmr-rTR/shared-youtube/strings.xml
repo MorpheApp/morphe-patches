@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Nîşandana mîhengên nû</string>
   <string name="morphe_settings_new_indicator_days_summary">Hejmara rojan ku xaleke li kêleka mîheng û vebijardeyên ku bi nûkirinekê hatine zêdekirin tê nîşandan</string>
   <string name="morphe_settings_new_indicator_days_off">Dabe</string>
+  <string name="morphe_settings_new_indicator_clear_title">Hemû mîhengê wek dîtî nîşan bike</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Xala ji hemû mîheng û vebijarkên nû rakirine</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Hemû mîheng wek dîtî nîşan bike?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Xal ji hemû mîheng û vebijarkên nû hat rakirin. Mîhengên ku bi nûkirinên paşerojê tên zêdekirin hîna tên nîşandan.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Dest pê bike ku sazkirinê temam bike</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Bi cih bike ku navê pakêtê rast e û serlêdan sazkirî ye"</string>
   <string name="morphe_external_downloader_empty_warning">Navê pakêtê nikare vala be</string>
+  <string name="morphe_export_download_folder_dialog_title">Peldanka exportê</string>
+  <string name="morphe_export_download_folder_change">Foldera biguherîne</string>
+  <string name="morphe_export_download_folder_changed">Foldera exportê hat guhertin</string>
+  <string name="morphe_export_download_folder_reset">Foldera exportê hat resetkirin</string>
+  <string name="morphe_export_download_folder_missing">Foldsra exportê %s nehat dîtin</string>
+  <string name="morphe_export_download_flyout_title">Export bike ber bi amûrê ve</string>
+  <string name="morphe_export_download_canceled">Export hat betalkirin</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Xwerî</string>
   <string name="morphe_custom_branding_icon_title">Îkonê</string>
@@ -110,6 +121,20 @@ Heke hûn bikarhênerê YouTube Premium bin, dibe ku ev mîheng ne hewce be"</st
 %2$s bike klîyentê default?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Guherîne</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Girtina vê mîhengê dibe ku bibe sedema pirsgirêkan di lîstina vîdyoyan de</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView hati veşartin an nehati sazkirin.
+
+Ji bo lîstkirina vîdyoyê Android System WebView pêwîst e. Wê veke û nû bikeye vêersiyona herî dawî.
+
+Ji bo vekirina Android System WebView li OK bitikîne."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView kevn e (versiyona %s).
+
+Heta Android System WebView neyê nûkirin, dibe ku lîstkirina vîdyoyê bi ser nekeve.
+
+Ji bo vekirina Android System WebView li OK bitikîne."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Dîsa nîşan nede</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView nehati sazkirin. Ji bo çareserkirina lîstkirina vîdyoyê wê sazkirin</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Biceribîne: Sextekirina streamên vîdyoyê > Têketina Android VR</string>
@@ -142,6 +167,28 @@ Ji bo têketinê, li jêr bitikîne 'Berdewam bike'"</string>
 • Mîhengên Morphe rastandina Android VR import/export nakin
 • Heke ev serlêdan 6 mehan neyê bikaranîn, Google dê vê rastandinê rake
 • Heke şîfreya Google-a xwe biguherînî an vê alavê ji mîhengên Google-ê rakî, wê demê divê tu dîsa têkevî"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Têketina Webê ya Mobil</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Hêvîdar: ji bo ku hûn vîdyoyan bi hesabê xwe lêbidin, di malpera YouTube de têketin bikin. Ji bo berdewamkirinê li vir bitikînin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Niha li Webê ya Mobil têketî ye</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ji bo bikaranîna vê taybetmendiyê, \'Klyenta xwerû\' bike Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Di Mobile Web de têkeve</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web vîdyoyan bêyî têketinê, an jî bi têketina malpera YouTube lî dike
+
+• Gava tu têkçûyî bî, vîdyoyên ku hesab pêwîst in dikarin bên lîkirin, wekî vîdyoyên ku sînorê temenê wan heye
+• Rûpela têketina Google di vê aplikasyonê de vedibe
+• Têketin tenê ji bo gihîştina vîdyoyên ku tu lî dikî tê bikaranîn
+• Têketin tenê li ser vê amûrê têne savekirin
+
+Ji bo têketinê, li jêr li ser berdewamkirinê bitikîne"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Têketin hat savekirin
+
+• Mîhengên we yên Morphe dê têketina Mobile Web import/export nekin
+• Ger Google têketinê bidawênîse, vîdyo heta hûn dîsa têkevin wekî ne-têketî tên lîkirin
+• Derketina ji têketinê, vê amûrê jî ji malpera YouTube derdixe"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Têketina Mobile Web qediya, dîsa hewildînin ku hûn li Mobile Web têkevin</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Ji Mobile Web derket</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView bernivîs nayê dîtin. Ji bo têketinê wê install bikin yan jî çalak bikin</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 niha bi demkî ne amade ye (dema API qediya)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Têketina Android VR qediya, dîsa li VR-ê têkevin</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 bi demî neyê gihîştin (statû %s)</string>
@@ -207,6 +254,20 @@ Ji bo têketinê, li jêr bitikîne 'Berdewam bike'"</string>
   <string name="morphe_replace_music_with_youtube_summary">Di lînkên parvekirî de music.youtube.com bi youtube.com biguherîne</string>
   <string name="morphe_replace_links_with_shortener_title">Lînkên parvekirinê biguherîne youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Vîdyoyan neçar dike ku forma URL-ya kurt a youtu.be bikar bînin</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Otomatîk</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Kêşiya vîdyoyê bi bîr bîne</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Hêlbijartina kêşiya we ya destan li hemû vîdyoyên pêşerojêyî biComposable dike</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Agahdariyên guherîna kêşiyê</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Dema kalîteya pêşdebir a nû tê tomarkirin agahdarî nîşan dide</string>
+  <string name="morphe_video_quality_default_wifi_title">Kêşiya vîdyoyê ya pêşdebir li ser torê ya Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Kêşiya vîdyoyê ya pêşdebir li ser torê ya mobaylê</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Kêşiya mobaylê ya pêşdebir hate guhertin bo: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Kêşiya Wi-Fi ya pêşdebir hate guhertin bo: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Panela parvekirinê ya sîstemê veke</string>
+  <string name="morphe_open_system_share_sheet_summary">Dema naverok parve dikî, panela parvekirinê ya sîstemê vedike li şûna ya appê</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Loggingê Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Vemirandî</string>

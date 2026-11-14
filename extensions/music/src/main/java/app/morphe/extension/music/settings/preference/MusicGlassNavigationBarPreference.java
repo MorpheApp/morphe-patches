@@ -18,7 +18,7 @@ import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.preference.GlassNavigationBarSizePreference;
 
 /**
- * Sets the height, the width and the button spacing of the glass navigation bar,
+ * Sets the height, the width, the button spacing, the opacity and the rim brightness of the glass navigation bar,
  * with a preview of the bar that follows the sliders.
  */
 @SuppressWarnings("unused")
@@ -27,26 +27,33 @@ public class MusicGlassNavigationBarPreference extends GlassNavigationBarSizePre
     private static final IntegerSetting[] SETTINGS = {
             Settings.NAVIGATION_BAR_GLASS_HEIGHT,
             Settings.NAVIGATION_BAR_GLASS_WIDTH,
-            Settings.NAVIGATION_BAR_GLASS_BUTTON_SPACING
+            Settings.NAVIGATION_BAR_GLASS_BUTTON_SPACING,
+            Settings.NAVIGATION_BAR_GLASS_OPACITY,
+            Settings.NAVIGATION_BAR_GLASS_RIM
     };
 
     private static final String[] TITLES = {
             "morphe_music_navigation_bar_glass_size_height",
             "morphe_music_navigation_bar_glass_size_width",
-            "morphe_music_navigation_bar_glass_size_button_spacing"
+            "morphe_music_navigation_bar_glass_size_button_spacing",
+            "morphe_music_navigation_bar_glass_opacity_title",
+            "morphe_music_navigation_bar_glass_rim_title"
     };
+
+    private static final int INDEX_OPACITY = 3;
+    private static final int INDEX_RIM = 4;
 
     public MusicGlassNavigationBarPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
-    protected IntegerSetting[] getSizeSettings() {
+    protected IntegerSetting[] getSettings() {
         return SETTINGS;
     }
 
     @Override
-    protected String[] getSizeTitleKeys() {
+    protected String[] getTitleKeys() {
         return TITLES;
     }
 
@@ -58,6 +65,31 @@ public class MusicGlassNavigationBarPreference extends GlassNavigationBarSizePre
     @Override
     protected int getHorizontalMargin() {
         return MusicGlassNavigationBar.MARGIN_HORIZONTAL;
+    }
+
+    @Override
+    protected float getOpacityScale(int[] values) {
+        return values[INDEX_OPACITY] / 50f;
+    }
+
+    @Override
+    protected float getRimScale(int[] values) {
+        return values[INDEX_RIM] / 50f;
+    }
+
+    @Override
+    protected boolean isLightTint() {
+        return Settings.NAVIGATION_BAR_GLASS_LIGHT.get();
+    }
+
+    @Override
+    protected int getTintColor() {
+        return Settings.NAVIGATION_BAR_GLASS_ALBUM_TINT.get() ? MusicGlassNavigationBar.getAlbumColor() : 0;
+    }
+
+    @Override
+    protected boolean isIndicatorShown() {
+        return !Settings.NAVIGATION_BAR_GLASS_HIDE_INDICATOR.get();
     }
 
     @Override

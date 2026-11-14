@@ -93,13 +93,25 @@ internal object NSFWAlertShowDialogFingerprint : Fingerprint(
     classFingerprint = NSFWAlertDialogClassFingerprint,
     returnType = "V",
     filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            returnType = "L",
-            parameters = listOf(
-                "Landroid/content/Context;",
-                $$"Landroid/content/DialogInterface$OnClickListener;",
-                $$"Landroid/content/DialogInterface$OnClickListener;"
+        anyInstruction(
+            methodCall(
+                opcode = Opcode.INVOKE_STATIC,
+                returnType = "L",
+                parameters = listOf(
+                    "Landroid/content/Context;",
+                    $$"Landroid/content/DialogInterface$OnClickListener;",
+                    $$"Landroid/content/DialogInterface$OnClickListener;"
+                )
+            ),
+            methodCall( // 2026.46.0+
+                opcode = Opcode.INVOKE_STATIC,
+                returnType = "L",
+                parameters = listOf(
+                    "Landroid/content/Context;",
+                    $$"Landroid/content/DialogInterface$OnClickListener;",
+                    $$"Landroid/content/DialogInterface$OnClickListener;",
+                    "Lcom/reddit/nsfw/NsfwWarningTarget;"
+                )
             )
         ),
         opcode(

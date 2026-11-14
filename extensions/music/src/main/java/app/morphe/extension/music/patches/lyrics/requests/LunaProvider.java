@@ -7,12 +7,14 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -44,7 +46,7 @@ public final class LunaProvider extends ScoredSongProvider {
     private static final long REQUEST_THROTTLE_MS = 250;
     private static final AtomicLong lastRequestTime = new AtomicLong(0);
 
-    private static String firstArtistName(JSONObject trackObj) {
+    static String firstArtistName(JSONObject trackObj) {
         JSONArray artists = trackObj.optJSONArray("artists");
         if (artists != null && artists.length() > 0) {
             JSONObject first = artists.optJSONObject(0);
@@ -70,7 +72,7 @@ public final class LunaProvider extends ScoredSongProvider {
                 durationMs > 0 ? durationMs / 1000 : 0, track);
     }
 
-    private static boolean isOriginalTrack(JSONObject trackObj) {
+    static boolean isOriginalTrack(JSONObject trackObj) {
         JSONObject label = trackObj.optJSONObject("label_info");
         return label != null && label.optBoolean("is_original", false);
     }
@@ -78,7 +80,7 @@ public final class LunaProvider extends ScoredSongProvider {
     @Nullable
     private static HttpURLConnection openConnection(String url, String userAgent) {
         try {
-            HttpURLConnection connection = (HttpURLConnection) new java.net.URL(url).openConnection();
+            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("User-Agent", userAgent);
             connection.setRequestProperty("Accept", "*/*");
@@ -102,6 +104,7 @@ public final class LunaProvider extends ScoredSongProvider {
         return "Luna";
     }
 
+    @NonNull
     @Override
     protected List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
         List<JSONObject> tracks = searchTracks(track);

@@ -11,19 +11,15 @@
 
 package app.morphe.extension.youtube.niconicocomments;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/** Immutable subset of a YouTube live-chat item needed by the overlay. */
-final class NiconicoComment {
-    final String id;
-    final String text;
-    final List<Segment> segments;
-    final boolean membership;
-    final int backgroundColor;
-    final long videoOffsetMs;
-
+/**
+ * Immutable subset of a YouTube live-chat item needed by the overlay.
+ */
+record NiconicoComment(String id, String text, List<Segment> segments, boolean membership,
+                       int backgroundColor, long videoOffsetMs) {
+    @SuppressWarnings("SameParameterValue")
     NiconicoComment(
             String id,
             String text,
@@ -51,7 +47,7 @@ final class NiconicoComment {
     ) {
         this.id = id;
         this.text = text;
-        this.segments = Collections.unmodifiableList(new ArrayList<>(segments));
+        this.segments = List.copyOf(segments);
         this.membership = membership;
         this.backgroundColor = backgroundColor;
         this.videoOffsetMs = videoOffsetMs;

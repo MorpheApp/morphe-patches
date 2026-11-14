@@ -5,8 +5,6 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
-@file:Suppress("SpellCheckingInspection")
-
 package app.morphe.patches.shared.misc.spans
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction

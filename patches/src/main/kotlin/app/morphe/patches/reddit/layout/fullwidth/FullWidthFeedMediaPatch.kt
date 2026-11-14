@@ -21,6 +21,7 @@ import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_36_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_38_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_43_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_46_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -213,7 +214,13 @@ val fullWidthFeedMediaPatch = patch(
                 """
             )
 
-            postContentLambdaConstructorFingerprint(propsType).method.addInstructions(
+            val postContentLambdaConstructorFingerprint = if (is_2026_46_0_or_greater) {
+                postContentLambdaConstructorFingerprint(propsType)
+            } else {
+                postContentLambdaConstructorLegacyFingerprint(propsType)
+            }
+
+            postContentLambdaConstructorFingerprint.method.addInstructions(
                 0,
                 """
                     invoke-static { p5, p1 }, $EXTENSION_CLASS->isPostContentInset(ZLjava/lang/Object;)Z

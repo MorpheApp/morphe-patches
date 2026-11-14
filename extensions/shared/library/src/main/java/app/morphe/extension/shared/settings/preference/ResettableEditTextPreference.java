@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3447
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -6,6 +16,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
+import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.EditText;
@@ -20,13 +31,18 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings({"unused", "deprecation"})
-public class ResettableEditTextPreference extends EditTextPreference {
+public class ResettableEditTextPreference extends EditTextPreference implements SettingPreference {
 
     /**
-     * Setting to reset.
+     * Setting to show, save and reset.
      */
     @Nullable
     private Setting<?> setting;
+
+    /**
+     * If this preference saves the setting, which it leaves to a subclass that turned off persisting.
+     */
+    private boolean savesSetting;
 
     public ResettableEditTextPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -41,8 +57,49 @@ public class ResettableEditTextPreference extends EditTextPreference {
         super(context);
     }
 
+    /**
+     * For a preference made in code. Set before it is added to the screen.
+     */
     public void setSetting(@Nullable Setting<?> setting) {
         this.setting = setting;
+    }
+
+    @Nullable
+    public Setting<?> getSetting() {
+        return setting;
+    }
+
+    @Override
+    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
+        if (setting == null) {
+            setting = SettingChange.findSetting(this, Setting.class);
+        }
+        savesSetting = setting != null && isPersistent();
+        if (savesSetting) {
+            // Before attaching, which would read the value from the shared preferences.
+            setPersistent(false);
+        }
+
+        super.onAttachedToHierarchy(preferenceManager);
+        updateFromSetting();
+    }
+
+    @Override
+    protected boolean persistString(String value) {
+        if (!savesSetting) {
+            return super.persistString(value);
+        }
+
+        SettingChange.save(this, setting, value);
+        return true;
+    }
+
+    @Override
+    public void updateFromSetting() {
+        if (setting != null) {
+            setText(setting.get().toString());
+            setEnabled(setting.isAvailable());
+        }
     }
 
     @Override
@@ -50,14 +107,6 @@ public class ResettableEditTextPreference extends EditTextPreference {
         try {
             Context context = getContext();
             EditText editText = getEditText();
-
-            // Resolve setting if not already set.
-            if (setting == null) {
-                String key = getKey();
-                if (key != null) {
-                    setting = Setting.getSettingFromPath(key);
-                }
-            }
 
             // Set initial EditText value to the current persisted value or empty string.
             String initialValue = getText() != null ? getText() : "";

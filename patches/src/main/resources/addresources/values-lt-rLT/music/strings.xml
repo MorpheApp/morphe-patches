@@ -124,115 +124,36 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Įgalinti garso / vaizdo perjungimą</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Bandyti perjungti garso takelio versiją ir oficialų muzikinį vaizdo įrašą</string>
+  <string name="morphe_music_auto_song_version_title">Visada groti dainos versiją</string>
+  <string name="morphe_music_auto_song_version_summary">Pakeičia oficialius muzikos vaizdo įrašus eilėje atitinkama daina. Reikia, kad programos nustatymas „Negroti muzikos vaizdo įrašų“ būtų įjungtas. Takeliai be tikslaus sutapimo lieka nepakitinti</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Atsisiųskite muzikos vaizdo įrašus, tinklalaides ar dainas trečiųjų šalių atsisiuntimo programėlėmis</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Naudoti išorinę atsisiuntimo programą meniu „Atsisiųsti“</string>
   <string name="morphe_external_downloader_menu_summary">Meniu parinktis „Atsisiųsti“ atveria jūsų išorinę atsisiuntimo programą vietoje</string>
-  <string name="morphe_music_downloads_screen_title">Atsisiuntimai</string>
-  <string name="morphe_music_downloads_empty">"Atsisiuntimų nėra
-Atsisiųsti kūriniai rodomi čia"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s takelių • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Ieškoti atsisiuntimų</string>
-  <string name="morphe_music_downloads_sort">Rūšiuoti</string>
-  <string name="morphe_music_downloads_sort_artist">Rūšiuoti pagal atlikėją</string>
-  <string name="morphe_music_downloads_sort_title">Rūšiuoti pagal pavadinimą</string>
-  <string name="morphe_music_downloads_sort_size">Rūšiuoti pagal dydį</string>
-  <string name="morphe_music_downloads_delete_all">Ištrinti visus atsisiuntimus</string>
-  <string name="morphe_music_downloads_delete_all_title">Ištrinti visus atsisiuntimus?</string>
-  <string name="morphe_music_downloads_delete_all_message">Visi atsisiųsti kūriniai bus ištrinti iš šio įrenginio</string>
-  <string name="morphe_music_downloads_all_deleted">Atsisiuntimai ištrinti</string>
-  <string name="morphe_music_downloads_nothing_found">Nieko nerasta</string>
-  <string name="morphe_music_downloads_actions_for">Veiksmai su %s</string>
-  <string name="morphe_music_downloads_play">Groti</string>
-  <string name="morphe_music_downloads_play_pause">Groti arba pristabdyti</string>
-  <string name="morphe_music_downloads_previous">Ankstesnis</string>
-  <string name="morphe_music_downloads_next">Kitas</string>
-  <string name="morphe_music_downloads_pause">Pristabdyti</string>
-  <string name="morphe_music_downloads_shuffle">Maišyti</string>
-  <string name="morphe_music_downloads_repeat">Pakartoti</string>
-  <string name="morphe_music_downloads_minimize">Sumažinti</string>
-  <string name="morphe_music_downloads_close">Uždaryti</string>
-  <string name="morphe_music_downloads_delete">Ištrinti</string>
-  <string name="morphe_music_downloads_delete_track">Ištrinti atsisiuntimą</string>
-  <string name="morphe_music_downloads_delete_track_title">Ištrinti atsisiuntimą?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s bus ištrintas iš šio įrenginio</string>
-  <string name="morphe_music_downloads_track_deleted">Atsisiuntimas ištrintas</string>
-  <string name="morphe_music_downloads_track_delete_failed">Nepavyko ištrinti atsisiuntimo</string>
-  <string name="morphe_music_downloads_play_failed">Nepavyko atkurti atsisiuntimo</string>
-  <string name="morphe_music_downloads_playlists">Grojaraščiai</string>
-  <string name="morphe_music_downloads_playlists_section">Sukurti grojarašiai (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Kol kas nėra vietinių grojaraščių</string>
-  <string name="morphe_music_downloads_playlists_hide">Slėpti grojaraščius ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Naujas grojaraštis</string>
-  <string name="morphe_music_downloads_playlist_new_button">Naujas grojaraštis</string>
-  <string name="morphe_music_downloads_playlist_selected">Pasirinkta (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Pirmiausia pasirinkite dainas</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Išvalyti pasirinkimą</string>
-  <string name="morphe_music_downloads_playlist_create">Kurti grojaraštį</string>
-  <string name="morphe_music_downloads_playlist_create_button">Sukurti</string>
-  <string name="morphe_music_downloads_playlist_add">Pridėti į grojaraštį</string>
-  <string name="morphe_music_downloads_playlist_added">Pridėta į %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Grojaraščio pavadinimas</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Grojaraščio pavadinimas negali būti tuščias</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Nepavyko išsaugoti grojaraščio</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 takelis</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Šiame grojaraštyje nėra takelių</string>
-  <string name="morphe_music_downloads_playlist_play">Leisti grojaraštį</string>
-  <string name="morphe_music_downloads_playlist_play_all">Leisti viską</string>
-  <string name="morphe_music_downloads_playlist_rename">Pervardyti</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Pervardyti grojaraštį</string>
-  <string name="morphe_music_downloads_playlist_save">Išsaugoti</string>
-  <string name="morphe_music_downloads_playlist_delete">Ištrinti grojaraštį</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Ištrinti grojaraštį?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s bus ištrintas. Atsisiųstos dainos bus išsaugytos</string>
-  <string name="morphe_music_downloads_playlist_deleted">Grojaraštis ištrintas</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Pašalinti iš grojaraščio</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Nutempkite norint pertvarkyti</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Vilkite rankenelę, kad pakeistumėte tvarką</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Baigta</string>
-  <string name="morphe_music_downloads_notification_channel">Garso atsisiuntimai</string>
-  <string name="morphe_music_downloads_playback_channel">Atkūrimas neprisijungus</string>
-  <string name="morphe_music_downloads_unknown_track">Nepavyko nustatyti, kurį kūrinį atsisiųsti</string>
-  <string name="morphe_music_downloads_already_running">Atsisiuntimas jau vykdomas</string>
-  <string name="morphe_music_downloads_already_saved">Jau atsisiųsta</string>
-  <string name="morphe_music_downloads_started">Atsisiuntimas pradėtas</string>
-  <string name="morphe_music_downloads_starting">Pradedamas atsisiuntimas…</string>
-  <string name="morphe_music_downloads_progress">Atsisiunčiama %s%%</string>
-  <string name="morphe_music_downloads_complete">Atsisiuntimas baigtas</string>
-  <string name="morphe_music_downloads_failed">Atsisiuntimas nepavyko</string>
-  <string name="morphe_music_downloads_playlist_download_title">Grojaraščio atsisiuntimas</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Surašomi takeliai…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s surašyta…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Nepavyko surašyti grojaraščio takelių</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Jau atsisiųsta: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s šiame grojaraštyje, %2$s dar neatsisiųsta.
+  <string name="morphe_export_download_folder_title">Eksportuoti atsisiuntimus</string>
+  <string name="morphe_export_download_folder_summary">"Eksportuokite programėlėje išsaugotas dainas ir vaizdo įrašus į savo įrenginio atmintį naudodamiesi programėlės atsisiuntimų išskleidžiamu meniu. Bakstelėkite, kad pakeistumėte eksportavimo
 
-Jie atsisiunčiami po vieną, todėl tai gali užtrukti ilgai ir reikės apie %3$s laisvos vietos"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Atsisiųsti</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Atsisiunčiamas takelis %1$s iš %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s atsisiųsta</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s atsisiųsta, %2$s nepavyko atsisiųsti</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Grojaraščio atsisiuntimas jau vyksta</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Jūsų paskyros dar neatpažinta. Bandykite dar kartą po akimirkos</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s surašyta, visi jau atsisiųsti</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Tik dalį grojaraščio pavyko surašyti. Vėliau dar kartą bakstelėkite „Atsisiųsti“, kad gautumėte likusią dalį</string>
-  <string name="morphe_music_downloads_playlist_download_started">Fone atsisiunčiamas %s</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Nėra tinklo ryšio</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Laukiama tinklo…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Sustopta po %1$s iš %2$s. Bakstelėkite „Atsisiųsti“ dar kartą, kad tęstumėte</string>
-  <string name="morphe_music_downloads_mark_title">Žymėti atsisiųstas dainas</string>
-  <string name="morphe_music_downloads_mark_summary">Jau atsisiųstų dainų šalia informacijos grosežiuose, albumuose ir paieškos rezultatuose rodoma žyma</string>
+Eksportavimo aplankas: %s"</string>
+  <string name="morphe_export_download_started">Eksportuojamas atsisiuntimas</string>
+  <string name="morphe_export_download_progress">Eksportuojamas atsisiuntimas: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Atsisiuntimų eksportavimas</string>
+  <string name="morphe_export_download_saved">Atsisiuntimas eksportuotas į %s</string>
+  <string name="morphe_export_download_failed">Nepavyko eksportuoti atsisiuntimo</string>
+  <string name="morphe_export_download_all_flyout_title">Eksportuoti viską į įrenginį</string>
+  <string name="morphe_export_download_all_started">Eksportuojami visi atsisiuntimai</string>
+  <string name="morphe_export_download_all_running">Atsisiuntimai jau eksportuojami</string>
+  <string name="morphe_export_download_all_saved">Eksportuota %1$s iš %2$s atsisiuntimų į %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Apie</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Skelbimai</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Tiekimas</string>
-  <string name="morphe_settings_music_screen_3_general_title">Bendras</string>
-  <string name="morphe_settings_music_screen_4_player_title">Grotuvas</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Dainų tekstai</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Kiti nustatymai</string>
+  <string name="morphe_settings_music_screen_00_about_title">Apie</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Skelbimai</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Srautas</string>
+  <string name="morphe_settings_music_screen_03_general_title">Bendra</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Dainos žodžiai</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Kiti nustatymai</string>
+  <string name="morphe_settings_music_screen_06_player_title">Grotuvas</string>
+  <string name="morphe_settings_music_screen_10_video_title">Vaizdo įrašai</string>
   <string name="morphe_music_app_language_title">„YouTube Music“ kalba</string>
   <string name="morphe_music_app_language_summary_default">Sistemos kalba</string>
   <string name="morphe_music_app_language_summary_unsupported">Reikalinga „Android 13“ ar naujesnė versija</string>
@@ -257,6 +178,8 @@ Jie atsisiunčiami po vieną, todėl tai gali užtrukti ilgai ir reikės apie %3
   <string name="morphe_music_hide_repeat_button_title">Slėpti kartojimo mygtuką</string>
   <string name="morphe_music_hide_shuffle_button_title">Slėpti maišymo mygtuką</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Slėpti „Spartusis rinkimas“ lentyną</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Slėpti skyrių „Jums taip pat gali patikti“</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Slėpti „Jūsų atsisiuntinimai“ sekciją</string>
   <string name="morphe_music_comments_screen_title">Komentarai</string>
   <string name="morphe_music_comments_screen_summary">Pasirinkite, kurie elementai rodomi komentarų skiltyje</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Slėpti bendruomenės gaires</string>
@@ -334,9 +257,21 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <string name="morphe_music_playback_speed_title">Atkūrimo greitis</string>
   <string name="morphe_music_playback_speed_summary">Greitis taikomas visiems kūriniams. Esant 100 % naudojamas programėlės greitis, pvz., tinklalaidės atkūrimo greitis</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Keisti garso aukštį kartu su greičiu</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Išjungti automatiniustekstus</string>
+  <string name="morphe_music_disable_auto_captions_summary">Pradėjus grotą vaizdo įrašą, tekstai nebus įjungti automatiškai, įskaitant ir intuos tekstus, kuriuos vaizdo įrašas įjungia pagal nutirstus nustatymus</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Išjungti garso primalėjimą</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Garsas nepamažinamas, kai kita programėlė groja trumpą garsą, pavyzdžiui, pranešimą</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Išjungti „Nepatinka“ peradresavimą</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Neleidžia peršokti prie kito kūrinio paspaudus „Nepatinka“ mygtuką</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">A-B ciklas</string>
+  <string name="morphe_music_ab_loop_summary">Ilgai paspauskite ieškomąją juostą, kad nustatytumėte ciklo pradžią, dar kartą – ciklo pabaigą, o dar kartą – norėdami ciklo ištrinti</string>
+  <string name="morphe_music_ab_loop_toast_start">Ciklo pradžia nustatyta %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Ciklo pabaiga nustatyta %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Loop išvalytas</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Grojaraščio kūrinio bakstelėjimo veiksmas</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Groti grojaraštį</string>
@@ -491,16 +426,42 @@ SABR atkūrimas („Spoofinti vaizdo srautus“ išjungta)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Slėpti naršymo mygtukų etiketes</string>
   <string name="morphe_music_navigation_bar_glass_title">Įjungti stiklo stiliaus navigacijos juostą</string>
   <string name="morphe_music_navigation_bar_glass_summary">Rodo naršymo juostą kaip plauviančią, apvalintą, permatogią kapsulę</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Stiklo opacumas</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Pakoreguokite stiklinės naršymo juostos skaidrumo lygį (0 yra skaidrus, 100 yra nepermatomas)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Šviesus stiklas</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Dažo stiklinę naršymo juostą balta, o ne tamsia, kad stiklas būtų šviesesnis ir skaidresnis</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Stiklinės naršymo juostos dydis</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Su peržiūra pakoreguokite stiklinės naršymo juostos aukštį, plotį ir mygtukų atstumą. Mygtukai, kurie netilpinasi į ekrano plotį, yra paslėpti</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Stiklo navigacijos juostos dydis ir stilius</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Sureguliuokite stiklo navigacijos juostos aukštį, plotį, mygtukų atstumą, skaidrumą ir kraštų ryškumą su peržiūra. Mygtukai, kurie netelpa į ekrano plotį, yra paslėpti</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Aukštis</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Maksimalus plotis</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Mygtukų atstumas</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Rodomi mygtukai: %1$s iš %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Skaidrumas</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Kraštų ryškumas</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Stiklo dulnumas</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Kiek puslapis už stiklo navigacijos juostos yra sudulintas (Android 14 ir vėlesnės versijos). Nustatant 0, puslapis matomas ryškiai, o prieš Android 14 puslapis yra uždengtas</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Šviesus stiklas</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Dažo stiklinę naršymo juostą balta, o ne tamsia, kad stiklas būtų šviesesnis ir skaidresnis</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Albumo viršelio atspalvis</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Stiklo navigacijos juosta įspalvinta grojamais albumo viršelio spalvomis</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Slėpti pasirinkto mygtuko rodiklį</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Slėpia apvalų paryškinimą už pasirinkto stiklo navigacijos juostos mygtuko</string>
+  <string name="morphe_music_miniplayer_screen_title">Mini grotuvas</string>
+  <string name="morphe_music_miniplayer_screen_summary">Keiskite mini grotuvo stilių, mygtukus ir gestus</string>
+  <string name="morphe_music_miniplayer_glass_title">Įjungti stiklo mini grotuvą</string>
+  <string name="morphe_music_miniplayer_glass_summary">Rodo plauriančią mini grotuvą kaip apvalią, pusiau skaidrią stiklo kortelę</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Stiklo mini grotuvo stilius</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Sureguliuokite stiklo mini grotuvo kampų radius, viršelio atstumus, kraštų ryškumą ir skaidrumą su peržiūra</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Kampų radius</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Viršelio atstumai</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Kraštų ryškumas</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Skaidrumas</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Stiklo dulnumas</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Kiek puslapis už stiklo mini grotuvo yra sudulintas (Android 14 ir vėlesnės versijos). Nustatant 0, puslapis matomas ryškiai, o prieš Android 14 puslapis yra uždengtas</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Šviesus stiklas</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Stiklo mini grotuvas įspalvinamas balta, o ne tamsia, kad stiklas būtų šviesesnis ir airesnis</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumo viršelio atspalvis</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Stiklo mini grotuvas įspalvinamas grojamais albumo viršelio spalvomis</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Sukinąsias viršelis</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Padaro stiklo mini grotuvo viršelį apvalų ir sukrinta jį kaip plokštuką dainai groti</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Slėpti eigos juostą</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Slėpia eigos juostą stiklo mini grotuvo apačioje</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Pradžia</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Pavyzdžiai</string>
@@ -610,6 +571,7 @@ Kad scrobbling būtų sinchronizuojamas foninio atkūrimo metu, įsitikinkite, k
 
 Duomenų bazė licencijuota pagal ODC Open Database License (ODbL). Įrašai iš Soul Over AI (aut. xoundbyte) licencijuoti pagal CC BY 4.0. Nėra susieta su SoundProof ar Soul Over AI ir jie to nepatvirtino."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Šiam įrenginio failui dainos žodžiai nepriejengimi.</string>
   <string name="morphe_music_lyrics_enabled_title">Naudoti trečiųjų šalių dainų tekstus</string>
   <string name="morphe_music_lyrics_enabled_summary">Rodo dainų tekstus iš trečiosios šalies paslaugos; o jei neranda, naudoja įtaisytuosius dainų tekstus</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Palikti ekraną įjungtą žiūrint dainų tekstus</string>
@@ -633,7 +595,7 @@ Pirmas stulpelis yra žodis, antras – jo tarimas; papildomi stulpeliai ir eilu
   <string name="morphe_music_lyrics_rime_dict_no_table">Viršutinei kalbai nepažymėtas joks Rime žodžių sąrašas. Bakstelėkite šį pavadinimą, kad pažymėtumėte vieną, arba pasirinkite kalbą, turinčią sąrašą</string>
   <string name="morphe_music_lyrics_rime_dict_add">Pridėti</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Pridėti Rime žodžių sąrašą</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml failas arba zipas laikantis vieno, su eilėmis kaip 字 ham ir 典 din2. Sąrašas gaunamas, kai išrenkate jį ir spustelėkite Išsaugoti, ir licencija yra jūsų tikrinti</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">.dict.yaml failas arba zip archyvas su juo, kuriame yra eiles kaip 字 ham ir 典 din2. Sąrašas gaunamas pažymėjus jį ir paspaudus „Išsaugoti“, o jo licenciją turite patikrinti patys</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Kalbos kodas</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Du ar trys raidės, pvz., hak arba wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Pavadinimas</string>
@@ -721,6 +683,8 @@ Reikalingi slapukai: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_translate_button_summary">Bakstelėkite, kad perjungtumėte vertimą; ilgai paspauskite, kad gautumėte tik vertimą. Naudoja įgalintus vertimo tiekėjus jų nustatytąja tvarka</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Rodyti Transkripcijos arba Transliteravimo mygtuką</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Bakstelėkite, kad perjungtumėte transliteravimą arba transliteraciją; ilgai paspauskite, kad gautumėte tik transliteravimą arba transliteraciją. Naudoja įgalintus transliteravimo tiekėjus jų nustatytąja tvarka</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Rodyti dabartinį mygtuką</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Rodo mygtuką, kuris grąžina prie dainuojamos eilutės, kai dainos žodžiai scrolls rankiniu būdu</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Įjungti transliteravimą</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Leisti ne lotyniškus tarimus iš teksto šaltinio; kai išjungta, paliekamos tik lotyniškos raidės, raidės su diakritiniais ženklais ir tonų skaitmenys</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Skaito kiekvieną laiku suderintą dainų teksto žodį (žodžių sinchronizavimas įjungtas); korėjiečiams atsisiųsti nereikia; keturiolika raštų naudoja vieną bendrą CLDR atsisiuntimą; Han rašmenis skaito Rime žodynas, kai jo žodžių lentelė apima kalbą</string>
@@ -739,11 +703,18 @@ Reikalingi slapukai: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_search_title_hint">Dainos pavadinimas</string>
   <string name="morphe_music_lyrics_search_artist_hint">Atlikėjas</string>
   <string name="morphe_music_lyrics_search_empty">Įveskite dainos pavadinimą ir atlikėją</string>
+  <string name="morphe_music_lyrics_search_google">Ieškoti per „Google“</string>
   <string name="morphe_music_lyrics_search_no_providers">Nė vienas iš įjungtų tiekėjų negali ieškoti kitų dainų</string>
   <string name="morphe_music_lyrics_saved">Išsaugota</string>
   <string name="morphe_music_lyrics_written_by">Parašė: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Paryškinti sinchronizuotus žodžius ar skiemenis</string>
   <string name="morphe_music_lyrics_word_sync_summary">Teikti pirmenybę žodis po žodžio sinchronizuotiems dainų tekstams, kai jie prieinami. Kai dainų tekstai turi žodžių laiką, kiekvienas žodis ar skiemuo paryškinamas pagal muziką</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Naudoti „spring“ ritinimą</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Ritina dainos žodžius naudojant „spring“ fiziką ir kiek paslepia kiekvieną eilutę po viršutinės. Išjunkite, kad sutaupytumėte baterijos lėtesniuose įrenginiuose</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Rodyti instrumentalios pertraukos taškus</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Rodo tris taškus tarp eilučių ilgos instrumentalios pertraukos metu, kurie užsipildoma pertraukai baigiantis</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Labiau priglaistyti tolesnes eilutes</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Labiau priglaistoma kiekviena neaktyvi eilutė, kuo ji toliau nuo dainuojamos eilutės. Išjungus, visos neaktyvios eilutės priglaistomos vienodai</string>
   <string name="morphe_music_lyrics_line_scale_title">Sumažinti neaktyvias eilutes</string>
   <string name="morphe_music_lyrics_line_scale_summary">Kiekviena dabar nedainuojama eilutė piešiama šiek tiek mažesnė, be to, dar ir pritemdoma</string>
   <string name="morphe_music_lyrics_split_background_title">Rodyti foninę vokalinę atskirai</string>
@@ -812,7 +783,6 @@ Taikoma abiems riboms. Nustatant 1,75, keturi pilno pločio simboliai skaičiuoj
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizavo %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romanizavo %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (su %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Romanizavo Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Išversta</string>
   <string name="morphe_music_lyrics_translation_language_title">Vertimo kalba</string>
@@ -833,6 +803,7 @@ Taikoma abiems riboms. Nustatant 1,75, keturi pilno pločio simboliai skaičiuoj
   <string name="morphe_music_lyrics_romanize_only">Tik romanizuota</string>
   <string name="morphe_music_lyrics_dual_only">Dvigubas režimas</string>
   <string name="morphe_music_lyrics_copied">Nukopijuota į iškarpinę</string>
+  <string name="morphe_music_lyrics_current">Šis</string>
   <string name="morphe_music_lyrics_refreshing">Atnaujinama</string>
   <string name="morphe_music_lyrics_refreshed">Atnaujinta</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API raktas</string>
@@ -871,19 +842,15 @@ Dainų tekstai ateina iš trečiųjų paslaugų, kurios nėra susijusios su Morp
   <string name="morphe_music_lyrics_use_ai_section_title">Aptikti sekcijas naudojant dirbtinį intelektą</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Naudojama tik tada, kai tiekėjas neturi jokių sekcijų etikečių, pavyzdžiui, Chorus arba Verse, kurios tada aptinka jūsų OpenAI suderinamas modelis. Eilutės redagavimas taip pat atveria jos promptą</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API pabaigos taško URL (pvz., https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Užklausos šablonas</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholderiai: {task}, {language}, {title}, {artist}, {count}, {lines}. Nežinomi paliekami tokie, kokie buvo įvesti</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Užklausa išsaugota</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Užklausa išsaugota, bet AI galinis taškas dar negalimas naudoti. Pirmiausia jį nustatykite AI nustatymuose</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Užklausa nustatyta iš naujo</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Vertimo &amp; romanizacijos nustatymai išsaugoti</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Nustatymai išsaugoti, tačiau dirbinis dirbtinio intelekto gali endpointas dar neyra naudojamas</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Nustatymai išsaugoti</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Nustatymai grąžinti į standartinius</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Pagrindinis URL turi prasidėti http:// arba https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Nustatymai neišsamūs arba atmesti tiekėjo</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Tikrinamas ryšys…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Prijungta! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Ryšio klaida. Patikrinkite nustatymus.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Pirmiausia įveskite API raktą</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Patikrinti ryšį</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Gaunami modeliai…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Gauti modelius</string>
@@ -900,7 +867,14 @@ Dainų tekstai ateina iš trečiųjų paslaugų, kurios nėra susijusios su Morp
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Papildomi prašymo antraščių parametrai (pasirenkamas JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Rašykite pavadinimus ir reikšmes kabutėse, pvz., {\"api-key\": \"abc\"}. Reikšmė be kabučių, turinti / : arba skaičių, atmetama. Tuščia reikšmė pašalina antraštę.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Rašykite pavadinimus ir reikšmes kabutėse, pvz., {\"temperature\": 0.3}. Reikšmė be kabučių, turinti / arba :, atmetama. Modelio ir žinučių čia nustatyti negalima.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Mąstymo pastangos</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Numatytasis</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Autentifikavimo raktas (nemokamas arba „Pro“)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">DI nepateiko šios dainos skiltelių</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Aptinkama</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Taikyti skilteles</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Aptinkimas atšauktas</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Nėra dainos žodžių, kuriems būtų galima aptinkti skilteles</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 – išjungti paryškintas piktogramas</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 – atkurti grotuvo skirtukus „Toliau“, „Dainų tekstai“ ir „Susiję“</string>

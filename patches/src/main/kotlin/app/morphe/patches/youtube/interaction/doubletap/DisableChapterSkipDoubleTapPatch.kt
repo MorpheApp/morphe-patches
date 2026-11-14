@@ -17,7 +17,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableDoubleTapActionsPatch;"
 
-@Suppress("unused")
 val disableDoubleTapActionsPatch = patch(
     name = "Disable double tap actions",
     description = "Adds an option to disable player double tap gestures.",

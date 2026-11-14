@@ -13,7 +13,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -80,7 +82,7 @@ public final class SpotifyProvider implements LyricsProvider {
                                                           @Nullable String clientToken,
                                                           byte[] bodyBytes) throws IOException {
         final HttpURLConnection connection = (HttpURLConnection)
-                new java.net.URL(PARTNER_GRAPHQL_URL).openConnection();
+                new URL(PARTNER_GRAPHQL_URL).openConnection();
         connection.setRequestMethod("POST");
         connection.setConnectTimeout(5000);
         connection.setReadTimeout(8000);
@@ -98,7 +100,7 @@ public final class SpotifyProvider implements LyricsProvider {
         }
 
         connection.setFixedLengthStreamingMode(bodyBytes.length);
-        try (java.io.OutputStream os = connection.getOutputStream()) {
+        try (OutputStream os = connection.getOutputStream()) {
             os.write(bodyBytes);
         }
         return connection;
@@ -180,7 +182,7 @@ public final class SpotifyProvider implements LyricsProvider {
         return words;
     }
 
-    private static long parseStartTimeMs(JSONObject obj) {
+    static long parseStartTimeMs(JSONObject obj) {
         final String raw = LyricsRequests.optString(obj, "startTimeMs");
         if (raw == null || raw.isEmpty()) {
             return LyricsLine.NO_TIME;
@@ -194,7 +196,7 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     private static HttpURLConnection openServerTimeConnection(String spDc, int readTimeoutMs) throws IOException {
-        HttpURLConnection connection = (HttpURLConnection) new java.net.URL(SERVER_TIME_URL).openConnection();
+        HttpURLConnection connection = (HttpURLConnection) new URL(SERVER_TIME_URL).openConnection();
         connection.setRequestMethod("GET");
         connection.setConnectTimeout(5000);
         connection.setReadTimeout(readTimeoutMs);
@@ -238,7 +240,7 @@ public final class SpotifyProvider implements LyricsProvider {
             HttpURLConnection connection = null;
             try {
                 connection = (HttpURLConnection)
-                        new java.net.URL(SECRETS_URL).openConnection();
+                        new URL(SECRETS_URL).openConnection();
                 connection.setRequestMethod("GET");
                 connection.setConnectTimeout(5000);
                 connection.setReadTimeout(8000);
@@ -266,7 +268,7 @@ public final class SpotifyProvider implements LyricsProvider {
         return null;
     }
 
-    private static String decimalStringFromInts(int[] values) {
+    static String decimalStringFromInts(int[] values) {
         final StringBuilder sb = new StringBuilder(values.length);
         for (int v : values) {
             sb.append(v);
@@ -286,7 +288,7 @@ public final class SpotifyProvider implements LyricsProvider {
                 Logger.printDebug(() -> "Could not parse Retry-After header", ex);
             }
         }
-        return 3000; // default 3 seconds
+        return 3000;
     }
 
     public static void invalidateToken() {
@@ -641,7 +643,7 @@ public final class SpotifyProvider implements LyricsProvider {
                     + "&totpServer=" + totpValue;
 
             connection = (HttpURLConnection)
-                    new java.net.URL(url).openConnection();
+                    new URL(url).openConnection();
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(8000);
@@ -714,7 +716,7 @@ public final class SpotifyProvider implements LyricsProvider {
                     .put("client_data", clientData);
 
             final HttpURLConnection connection = (HttpURLConnection)
-                    new java.net.URL(CLIENT_TOKEN_URL).openConnection();
+                    new URL(CLIENT_TOKEN_URL).openConnection();
             connection.setRequestMethod("POST");
             connection.setConnectTimeout(5000);
             connection.setReadTimeout(8000);
@@ -727,7 +729,7 @@ public final class SpotifyProvider implements LyricsProvider {
 
             final byte[] bodyBytes = requestBody.toString().getBytes(StandardCharsets.UTF_8);
             connection.setFixedLengthStreamingMode(bodyBytes.length);
-            try (java.io.OutputStream os = connection.getOutputStream()) {
+            try (OutputStream os = connection.getOutputStream()) {
                 os.write(bodyBytes);
             }
 

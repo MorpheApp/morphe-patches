@@ -52,7 +52,8 @@ public final class LRCLIBProvider implements LyricsProvider {
      * each group. Word timings rank above line timings.
      */
     static List<Lyrics.ScoredLyrics> syncedFirst(List<Lyrics.ScoredLyrics> scored) {
-        List<Lyrics.ScoredLyrics> ordered = new ArrayList<>(Lyrics.sortScoredByScore(scored));
+        List<Lyrics.ScoredLyrics> ordered = new ArrayList<>(scored);
+        ordered.sort((a, b) -> b.score() - a.score());
         // List.sort is stable, so the score order survives within each timing rank.
         ordered.sort((a, b) -> LyricsRequests.syncRank(b.lyrics()) - LyricsRequests.syncRank(a.lyrics()));
         return ordered;

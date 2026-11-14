@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">ძიების შედეგების დამალვა საკვანძო სიტყვების მიხედვით</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">გამოწერების ვიდეოების დამალვა საკვანძო სიტყვების მიხედვით</string>
   <string name="morphe_hide_keyword_content_phrases_title">საკვანძო სიტყვები დასამალად</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"შეიყვანეთ სას隐藏ო საკვანძო სიტყვები და ფრაზები, რომლებიც განყოფილ იქნება ახალი ხაზებით
+  <string name="morphe_hide_keyword_content_phrases_summary">"შეიყვანეთ ახალ ხაზზე გამოყოფილი საკვანძო სიტყვები და ფრაზები დასამალად
 
-საკვანძო სიტყვები შეიძლება იყოს ნებისმიერი ტექსტი, რომელიც ჩანს ვიდეოს სათაურებში ან არხის სახელებში"</string>
+საკვანძო სიტყვები შეიძლება იყოს ნებისმიერი ტექსტი, რომელიც ჩანს ვიდეოების სათაურებში. @UserName საკვანძო სიტყვა მალავს ყველა კონტენტს კონკრეტული ავტორებისგან"</string>
   <string name="morphe_hide_keyword_content_about_summary">"მთავარი / გამოსწერები / ძებნა / კომენტარები ფილტრდება იმ კონტენტის დასამალად, რომელიც შეესაბამება საკვანძო ფრაზებს
 
 შეზღუდვები:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">საკვანძო სიტყვის/ფრაზის მოყვანა ბრჭყალებში გამორიცხავს ვიდეოს სათაურებისა და არხების სახელების ნაწილობრივ დამთხვევებს&lt;br&gt;&lt;br&gt;მაგალითად,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; დამალავს ვიდეოს: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;მაგრამ არ დამალავს: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">საკვანძო სიტყვას აქვს ურთიერთგამომრიცხავი დეკლარაციები: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">საკვანძო სიტყვა ძალიან მოკლეა და საჭიროებს ბრჭყალებს: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">საკვანძო სიტყვა დამალავს ყველა ვიდეოს: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• მთავარი: %1$s
@@ -523,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">ფიდის მინიატიურის მოწონებების რაოდენობის ჩვენება</string>
   <string name="morphe_ryd_feed_like_ratio_title">ფიდის მინიატურის მოწონებების პროცენტის ჩვენება</string>
+  <string name="morphe_ryd_feed_counts_position_title">ფიდის მინიატურის მოწონებების პოზიცია</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">ნახვების რაოდენობის გვერდით</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">მარჯვნივ, შუაში</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">ზედა მარცხნივ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">კომენტარების ძიება</string>
   <string name="morphe_search_comments_summary">კომენტარებში დააჭირეთ ძიების ღილაკს, რათა გამოჩნდეს მხოლოდ ჩატვირთული კომენტარები, რომლებიც შეიცავს ყველა საძიებო სიტყვას. ფრაზის მოსაძიებლად სიტყვები ჩასვათ ბრჭყალებში</string>
@@ -559,18 +562,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"გადაიტანეთ აპლიკაციაში შენახული ვიდეოები თქვენი მოწყობილობის მეხსიერებაში ჩამოტვირთვის მენიუს გამოყენებით. ექსპორტის საქაღალდის შესაცვლელად შეეხეთ.
 
 ექსპორტის საქაღალდე: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">ექსპორტის საქაღალდე</string>
-  <string name="morphe_export_download_folder_change">საქაღალდის შეცვლა</string>
-  <string name="morphe_export_download_folder_changed">ექსპორტის საქაღალდე შეიცვალა</string>
-  <string name="morphe_export_download_folder_reset">ექსპორტის საქაღალდე ნაგულისხმევზე დაბრუნდა</string>
-  <string name="morphe_export_download_folder_missing">ექსპორტის საქაღალდე %s ვერ მოიძებნა</string>
-  <string name="morphe_export_download_flyout_title">ექსპორტი მოწყობილობაში</string>
   <string name="morphe_export_download_started">ვიდეოს ექსპორტირება</string>
   <string name="morphe_export_download_progress">ვიდეოს ექსპორტირება: %s%%</string>
   <string name="morphe_export_download_notification_channel">ვიდეოების ექსპორტი</string>
   <string name="morphe_export_download_saved">ვიდეო ექსპორტირებულია %s-ში</string>
   <string name="morphe_export_download_failed">ვიდეოს ექსპორტირება ვერ მოხერხდა</string>
-  <string name="morphe_export_download_canceled">ექსპორტი გაუქმებულია</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">ხმოვანი თარგმანი</string>
   <string name="morphe_vot_screen_summary">წაიკითხეთ ვიდეოს სუბტიტრები ხმამაღლა მოწყობილობის ტექსტის მეტყველების ფუნქციით, დაკვრასთან სინქრონულად</string>
@@ -648,6 +644,24 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">გასუფთავება</string>
   <string name="morphe_loop_video_range_toast_on">ციკლური განმეორება %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">დროის არასწორი დიაპაზონი</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">ციკლის რაოდენობა</string>
+  <string name="morphe_loop_count_screen_summary">აირჩიეთ, რამდენჯერ განმეორდეს ვიდეო შემდეგ ვიდეომდე</string>
+  <string name="morphe_loop_count_title">ჩართეთ ციკლის რაოდენობა</string>
+  <string name="morphe_loop_count_summary">პლეერის „მეტი“ მენიუში, „ვიდეოს განმეორების“ გვერდით ჩანს განმეორების რაოდენობა, რათა აირჩიოთ, რამდენჯერ გაირთვას ვიდეო შემდეგ ვიდეომდე</string>
+  <string name="morphe_loop_count_playlists_title">განმეორების რაოდენობის შენახვა ფლეილისტებში</string>
+  <string name="morphe_loop_count_playlists_summary">ფლეილისტის თითოეული ვიდეო ინახავს თქვენ მიერ არჩეულ განმეორების რაოდენობას და „ვიდეოს განმეორება“ ჩირთვება, როდესაც ფლეილისტი მას კვლავ ასვამს. თუ გამორთულია, განმეორების რაოდენობა მხოლოდ ამჟამად გამართული ვიდეოსთვის მოქმედებს</string>
+  <string name="morphe_loop_count_clear_title">შენახული განმეორებების რაოდენობის გასუფთავება</string>
+  <string name="morphe_loop_count_clear_summary">წაშალეთ თქვენს ფლეილისტებში შენახული განმეორებების რაოდენობა. შენახული ვიდეოები: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">შენახული განმეორებების რაოდენობა არ არის</string>
+  <string name="morphe_loop_count_clear_dialog_title">გსურთ შენახული განმეორებების რაოდენობის გასუფთავება?</string>
+  <string name="morphe_loop_count_clear_dialog_message">თქვენი ფლეილისტების ვიდეოები „დაივიწყებენ“ განმეორების რაოდენობას და „ვიდეოს განმეორება“ აღარ ჩირთვება, როდესაც ფლეილისტი მათ ასვამს</string>
+  <string name="morphe_loop_count_clear_done">შენახული განმეორებების რაოდენობა გასუფთავებულია</string>
+  <string name="morphe_loop_count_flyout_name">ციკლის რაოდენობა</string>
+  <string name="morphe_loop_count_dialog_message">რამდენჯერ განათავსებს ვიდეო შემდეგ ვიდეომდე, %1$s-დან %2$s-მდე. დატოვეთ ცარიელი ვიდეოს შეუზღუდავად გასამეორებლად.</string>
+  <string name="morphe_loop_count_no_limit">შეზღუდვის გარეშე</string>
+  <string name="morphe_loop_count_decrease">ნაკლებიჯერ</string>
+  <string name="morphe_loop_count_increase">მეტიჯერ</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">სურათის სურათში ღილაკის ჩვენება</string>
   <string name="morphe_pip_button_flyout_title">სურათის სურათში მენიუს ჩვენება</string>
@@ -685,6 +699,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">მხოლოდ წევრებისთვის განკუთვნილი Shorts</string>
   <string name="morphe_play_all_button_type_entry_12">მხოლოდ წევრებისთვის განკუთვნილი პირდაპირი ჩართვები</string>
   <string name="morphe_play_all_button_not_available_toast">ფლეილისტის გენერირება შეუძლებელია არხის ID-ის შეუსაბამობის გამო</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">ფლეილისტის ღილაკის ჩვენება</string>
+  <string name="morphe_playlist_panel_button_summary">დააჭირეთ ფლეილისტის პანელის გასახსნელად. ჩანს მხოლოდ ფლეილისტის დაკვრისას</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">ვიდეოს გადატვირთვის ღილაკის ჩვენება</string>
   <string name="morphe_dismiss_player_not_available_toast">ვიდეოს ID მიუწვდომელია. გთხოვთ, ხელახლა ჩატვირთოთ ვიდეო</string>
@@ -710,8 +727,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">ნატიური რიგი</string>
   <string name="morphe_queue_type_entry_3">Morphe რიგი</string>
   <string name="morphe_queue_type_entry_4">Morphe რიგი კლიენტის მხარეს</string>
-  <string name="morphe_queue_add_flyout_menu_title">დაამატეთ ფიდის გასაშლელი მენიუს რიგის ელემენტი</string>
-  <string name="morphe_queue_add_flyout_menu_summary">ამატებს დამატებით გასაშლელ მენიუს ელემენტს. ჩართეთ ეს, თუ „რიგში დამატება“ არ ჩანს</string>
   <string name="morphe_local_queue_sheet_title">რიგი</string>
   <string name="morphe_local_queue_open">რიგი (%s)</string>
   <string name="morphe_local_queue_clear">ყველას გასუფთავება</string>
@@ -1026,6 +1041,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">აჩვენებს ნავიგაციის პანელს როგორც მცურავ, მომრგვალებულ, ნახევრად გამჭვირვალე კაფსულას. არ არის ხელმისაწვდომი გაუმჭვირვალე ნავიგაციის პანელის სტილით</string>
   <string name="morphe_navigation_bar_glass_opacity_title">მინის გამჭვირვალობა</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">დაარეგულირეთ მინისებრი ნავიგაციის პანელის გამჭვირვალობის დონე (0 არის გამჭვირვალე, 100 არის გაუმჭვირვალე)</string>
+  <string name="morphe_navigation_bar_glass_round_title">ნავიგაციის პანელის მომრგვალებული შუშის ეფექტი</string>
+  <string name="morphe_navigation_bar_glass_round_summary">ნავიგაციის შუშის პანელს აქვს მომრგვალებული კიდეები, განსხვავებით მინიმალური პლეერის კუთხეებისგან</string>
   <string name="morphe_navigation_bar_glass_size_title">მინისებრი ნავიგაციის პანელის ზომა</string>
   <string name="morphe_navigation_bar_glass_size_summary">დაარეგულირეთ მინისებრი ნავიგაციის პანელის სიმაღლე, სიგანე და ღილაკების დაცილება, წინასწარი ნახვით. ღილაკები, რომლებიც არ ეტევა ეკრანის სიგანეში, იმალება</string>
   <string name="morphe_navigation_bar_glass_size_height">სიმაღლე</string>
@@ -1113,6 +1130,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">Ambient რეჟიმის ნაცვლად, ვიდეოს ფერებში განანათებს მთელ გვერდსა და შავ ზოლებს</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">ტექსტის წაკითხვადი დატოვება</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">აკორრიფებს განათებას კაშკაშა ვიდეოების დროს, რათა გვერდზე ტექსტი წაკითხვადი დარჩეს</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">გაბინდვა სქროლვისას</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">აშინებს განათებას გვერდის სქროლვისას ან შეხებისას</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">გაბინდვის ხანგრძლივობა</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">რა ያ kadar რჩება განათება დაბინდული სქროლვის შეწყვეტის შემდეგ. 0-ის შემთხვევაში, განათება მხოლოდ სქროლვისას ბინდდება და დაუბრუნდება ჩვეულებრივ მდგომარეობას სქროლვის შეწყვეტისთანავე</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">ინფორმაციული ბარათების დამალვა</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1154,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">დამალვა გამოწერების ფიდში</string>
   <string name="morphe_hide_shorts_video_description_title">დამალეთ ვიდეოს აღწერაში</string>
   <string name="morphe_hide_shorts_history_title">დამალეთ ნახვის ისტორიაში</string>
+  <string name="morphe_hide_shorts_notifications_title">დამალეთ push შეტყობინებებში</string>
   <string name="morphe_shorts_player_screen_title">Shorts-ის პლეერი</string>
   <string name="morphe_shorts_player_screen_summary">აირჩიეთ, რომელი კომპონენტები გამოჩნდეს Shorts-ის პლეერში</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">გამოთიშეთ ორჯერ დაჭერით მოწონება</string>
@@ -1191,9 +1213,24 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">მოთამაშის ფანჯრის პანელების გამორთვა</string>
   <string name="morphe_disable_player_popup_panels_summary">გამორთავს პლეილისტისა და პირდაპირი ჩატის პანელების ავტომატურად გახსნას</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">პლეილისტის პანელის ჩვენება სრულად ეკრანზე</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">პლეილისტის პანელი იხსნება სრულად ეკრანზე მუშა პლეერის ზემოთ</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">პლეილისტის პანელი გამოდის სრული ეკრანიდან პლანშეტებზე</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">გამორთეთ პლეილისტის ავტომატური დაკვრა</string>
   <string name="morphe_disable_playlist_autoplay_summary">არ აძლევს პლეილისტებს საშუალებას, ავტომატურად გადავიდნენ შემდეგ ვიდეოზე</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">ავტომატური დაკვრის მართვა</string>
+  <string name="morphe_autoplay_control_summary">ამატებს დაკვრის ღილაკს და წესს შემდეგი ვიდეოსთვის. პლეილისტები და რიგები გრძელდება, მიქსი წყდება ვიდეოების გარკვეული რაოდენობის შემდეგ, რეკომენდებული ვიდეო კი აღარ ისვრება. შეეხლებით ღილაკს შემდეგი რეჟიმისთვის, დააჭირეთ და გეჭიროთ სიისთვის</string>
+  <string name="morphe_autoplay_mode_title">ავტომატური დაკვრის რეჟიმი</string>
+  <string name="morphe_autoplay_mode_entry_1">ავტო</string>
+  <string name="morphe_autoplay_mode_entry_2">ერთი</string>
+  <string name="morphe_autoplay_mode_entry_3">გამორთულია</string>
+  <string name="morphe_autoplay_mix_stop_after_title">მიქსის სიგრძე</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">ავტო რეჟიმში, მიქსი წყდება ამ რაოდენობის ვიდეოს შემდეგ. 0 = შეზღუდვა არ არის</string>
+  <string name="morphe_autoplay_mix_length">მიქსი: %s ვიდეო</string>
+  <string name="morphe_autoplay_mix_no_limit">მიქსი: შეზღუდვა არ არის</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"გაგრძელება ნახვა?\" შეტყობინება</string>
   <string name="morphe_continue_watching_prompt_entry_1">ნაგულისხმები</string>
@@ -1269,9 +1306,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - პლეილისტში შენახვის ძველი ვერსიის აღდგენა</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - სქელი ხატულების გამორთვა</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - აღადგინეთ არხის სახელი ვიდეო პლეერის ქვემოთ</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">სისტემური გაზიარების ფანჯრის გახსნა</string>
-  <string name="morphe_open_system_share_sheet_summary">კონტენტის გაზიარებისას ხსნის სისტემურ გაზიარების პანელს აპლიკაციის შიდა პანელის ნაცვლად</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music-ის ღილაკების ჩანაცვლება</string>
   <string name="morphe_override_youtube_music_buttons_summary">ხსნის თქვენს სასურველ მუსიკალურ აპლიკაციას YouTube Music-ის სტანდარტული აპლიკაციის ნაცვლად</string>
@@ -1349,6 +1383,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">მინი-პლეერის ზემოთ გადაადგილებით ხდება პლეერის გაფართოება, მინი-პლეერის ეკრანის ზედა ნაწილში გადატანის ნაცვლად</string>
   <string name="morphe_miniplayer_docked_title">დამაგრებული მინი-პლეერი</string>
   <string name="morphe_miniplayer_docked_summary">აკავშირებს მინი-პლეერს ნავიგაციის პანელთან და ეკრანის გვერდებთან, მათზე მცურავად განთავსების ნაცვლად</string>
+  <string name="morphe_miniplayer_glass_title">შუშის მინიმალური პლეერი</string>
+  <string name="morphe_miniplayer_glass_summary">აჩვენებს მინიმალურ პლეერს როგორც ნახევრად გამჭვირვალე შუშას მომრგვალებული კუთხეებით, როგორც ნავიგაციის შუშის პანელი. საჭიროებს ნავიგაციის შუშის პანელს</string>
   <string name="morphe_miniplayer_type_entry_0">გამორთულია</string>
   <string name="morphe_miniplayer_type_entry_1">ნაგულისხმები</string>
   <string name="morphe_miniplayer_type_entry_2">მინიმალისტური</string>
@@ -1439,7 +1475,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">პლეიერის ფლეილისტები &amp; რეკომენდაციები</string>
   <string name="morphe_dearrow_titles_search_title">ძებნის შედეგები</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow ხატულის ჩვენება</string>
-  <string name="morphe_dearrow_titles_icon_summary">აჩვენებს DeArrow-ის ხატულას კრაუდსორსინგის ვიდეოების სათაურებზე</string>
+  <string name="morphe_dearrow_titles_icon_summary">აჩვენებს DeArrow-ის ხატულას crowdsourced ვიდეოების სათაურებში. შეეხებით ხატულას სათაურის და მინიატურის ორიგინალის სანახავად</string>
   <string name="morphe_dearrow_casual_mode_title">არაფორმალური რეჟიმი</string>
   <string name="morphe_dearrow_casual_mode_summary">აჩვენებს ორიგინალ სათაურს DeArrow-ის სათაურის ნაცვლად, თუ DeArrow-ის მომხმარებლებმა ხმა მისცეს, რომ ორიგინალი სათაური მოსწონთ</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">არაფორმალური ხმების მინიმუმი ორიგინალი სათაურის საჩვენებლად</string>
@@ -1465,7 +1501,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow დროებით მიუწვდომელია (სტატუსის კოდი: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow დროებით მიუწვდომელია</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">დააბრუნეთ მოთამაშის ღილაკების ძველი სტილი</string>
   <string name="morphe_restore_old_player_buttons_summary">აბრუნებს ვიდეო პლეერის მუქ მართვის ღილაკებს ძველ, უფრო თხელ ვიზუალურ სტილზე</string>
@@ -1505,25 +1540,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">ვიდეოს დაგვიანების მენიუს ჩვენება</string>
   <string name="morphe_video_delay_dialog_input_hint">დაგვიანება მილიწამებში</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">ავტომატური</string>
-  <string name="morphe_remember_video_quality_last_selected_title">ვიდეოს ხარისხის დამახსოვრება</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">თქვენ მიერ ხელით არჩეული ხარისხი გავრცელდება ყველა მომავალ ვიდეოზე</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">შეტყობინებები ხარისხის ცვლილების შესახებ</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">აჩვენებს შეტყობინებას, როდესაც ახალი ნაგულისხმევი ხარისხი შეინახება</string>
-  <string name="morphe_video_quality_default_wifi_title">ვიდეოს ნაგულისხმევი ხარისხი Wi-Fi ქსელში</string>
-  <string name="morphe_video_quality_default_mobile_title">ვიდეოს ნაგულისხმევი ხარისხი მობილურ ქსელში</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Shorts-ის ხარისხის დამახსოვრება</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">თქვენ მიერ ხელით არჩეული ხარისხი გავრცელდება ყველა მომავალ Shorts-ზე</string>
   <string name="morphe_shorts_quality_default_wifi_title">Shorts-ის ნაგულისხმევი ხარისხი Wi-Fi ქსელში</string>
   <string name="morphe_shorts_quality_default_mobile_title">Shorts-ის ნაგულისხმევი ხარისხი მობილურ ქსელში</string>
-  <string name="morphe_remember_video_quality_toast_mobile">მობილური ქსელისთვის ნაგულისხმევი ხარისხი შეცვლილია შემდეგზე: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Wi-Fi-სთვის ნაგულისხმევი ხარისხი შეცვლილია შემდეგზე: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts-ის მობილური ხარისხი შეცვლილია შემდეგზე: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts-ის Wi-Fi ხარისხი შეცვლილია შემდეგზე: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">აჩვენეთ დაკვრის სიჩქარის ღილაკი</string>
   <string name="morphe_playback_speed_dialog_button_summary">დააჭირეთ და გეჭიროთ სიჩქარის ნაგულისხმევ მნიშვნელობაზე დასაბრუნებლად</string>
+  <string name="morphe_playback_speed_button_cycle_title">შეეხლებით დაკვრის სიჩქარის ღილაკს სიჩქარეების შესაცვლებლად</string>
+  <string name="morphe_playback_speed_button_cycle_summary">შეხება გადადის სიის შემდეგ სიჩქარეზე. დაჭერა ხსნის სიჩქარის მენიუს</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">დაკვრის სიჩქარის ღილაკის სიჩქარეები</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">სიჩქარეები, რომლებსაც შეხებით გადაირტყვით, თითო ერთხელ თითო ხაზზე. ბოლო სიჩქარის შემდეგ, შეხება კვლავ პირველზე დაბრუნდება</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">სიჩქარეების ციკლის არასწორი სია, დაბრუნდა დეფოლტზე</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">აჩვენეთ ხარისხის ღილაკი</string>
   <string name="morphe_video_quality_dialog_button_summary">დააჭირეთ და გეჭიროთ ხარისხის ნაგულისხმევ მნიშვნელობაზე დასაბრუნებლად</string>
@@ -1615,6 +1645,9 @@ AV1-ით ვიდეოს დაკვრა შესაძლოა იყ
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• სტაბილური ხმის დონე მიუწვდომელია</string>
   <string name="morphe_spoof_video_streams_about_end_early">• შესაძლოა დაკვრა 1 წამით ადრე დასრულდეს</string>
   <string name="morphe_spoof_video_streams_about_js">• თუ დეობფუსკაცია ჩაიშალა, დაკვრა შესაძლოა ვერ მოხერხდეს</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView გამორთულია ან არ არის დაინსტალირებული. ჩართეთ და განაახლეთ იგი, წინააღმდეგ შემთხვევაში შესაძლოა დაკვრის შეფერხება მოხდეს</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView მოძველებულია. განაახლეთ იგი, წინააღმდეგ შემთხვევაში შესაძლოა დაკვრის შეფერხება მოხდეს</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• \"ორიგინალი აუდიოს იძულება\" მიუწვდომელია</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• საჭიროა Android VR-ში შესვლა</string>
@@ -1788,6 +1821,8 @@ AV1-ით ვიდეოს დაკვრა შესაძლოა იყ
   <string name="morphe_niconico_comments_screen_title">Niconico-ს კომენტარები</string>
   <string name="morphe_niconico_comments_screen_summary">აჩვენეთ პირდაპირი ჩატი და ჩატის ჩანაწერი კომენტარების სახით, რომლებიც ვიდეოზე გადაადგილდება</string>
   <string name="morphe_niconico_comments_summary">ვიდეოპლეერში ჩნდება გადაფარვის ღილაკი. დააჭირეთ კომენტარების გამოსაჩენად ან დასამალად, დააჭირეთ და გეჭიროთ სწრაფი პარამეტრებისთვის</string>
+  <string name="morphe_niconico_comments_pip_title">ჩვენება სურათში სურათის რეჟიმში</string>
+  <string name="morphe_niconico_comments_pip_summary">კომენტარები შემცირებულია ფანჯრის ზომის შესაბამისად</string>
   <string name="morphe_niconico_comments_appearance_title">გარეგნული სახე</string>
   <string name="morphe_niconico_comments_portrait_category_title">პორტრეტული</string>
   <string name="morphe_niconico_comments_video_types_title">ვიდეოს ტიპები</string>

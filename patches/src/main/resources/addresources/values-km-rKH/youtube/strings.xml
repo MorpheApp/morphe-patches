@@ -82,9 +82,11 @@ Second \"item\" text"</string>
   <!-- interaction.playlist.playlistPatch -->
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
+  <!-- interaction.loop.loopCountPatch -->
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <!-- interaction.pictureinpicture.changePipActionsPatch -->
   <!-- interaction.playall.playAllButtonPatch -->
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <!-- 'Play next in queue' should be translated using the same localized wording YouTube displays the feed flyout item. -->
@@ -173,7 +175,9 @@ Second \"item\" text"</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <!-- interaction.autoplay.autoplayControlPatch -->
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_entry_2">បានផ្ដាច់</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
@@ -187,7 +191,6 @@ Second \"item\" text"</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
@@ -212,7 +215,6 @@ Second \"item\" text"</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
@@ -222,7 +224,6 @@ Second \"item\" text"</string>
   <!-- video.buffer.playbackBufferPatch -->
   <!-- video.delay.videoDelayPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
@@ -234,6 +235,7 @@ Second \"item\" text"</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <!-- video.quality.prioritizeVideoQualityPatch -->
   <!-- misc.spoof.spoofVideoStreamsPatch -->
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <!-- Quality refers to video quality -->
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->

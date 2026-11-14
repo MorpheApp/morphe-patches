@@ -24,7 +24,7 @@ import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 /**
  * Music-specific search view controller implementation.
  */
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"unused", "deprecation"})
 public class MusicSearchViewController extends BaseSearchViewController {
 
     public static MusicSearchViewController addSearchViewComponents(Activity activity, Toolbar toolbar,

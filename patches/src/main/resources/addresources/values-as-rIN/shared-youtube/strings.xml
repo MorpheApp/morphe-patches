@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">নতুন ছেটিংছ হাইলাইট কৰক</string>
   <string name="morphe_settings_new_indicator_days_summary">আপডেটৰ দ্বাৰা যোগ কৰা ছেটিংছ আৰু বিকল্পসমূহৰ কাষত কেইদিনলৈ এটা ডট দেখুৱাব</string>
   <string name="morphe_settings_new_indicator_days_off">বন্ধ</string>
+  <string name="morphe_settings_new_indicator_clear_title">সকলো ছেটিংছক দেখা বুলি চিহ্নিত কৰক</string>
+  <string name="morphe_settings_new_indicator_clear_summary">সকলো নতুন ছেটিংছ আৰু বিকল্পৰ পৰা ডটটো আঁতৰ কৰক</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">সকলো ছেটিংছক দেখা বুলি চিহ্নিত কৰিব নেকি?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">সকলো নতুন ছেটিংছ আৰু বিকল্পৰ পৰা ডটটো আঁতৰ কৰা হৈছে। ভৱিষ্যতৰ আপডেটৰ দ্বাৰা যোগ কৰা ছেটিংছসমূহত এতিয়াও হাইলাইট কৰা থাকিব।</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">ছেটআপ সম্পূৰ্ণ কৰিবলৈ পুনৰ আৰম্ভ কৰক</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 পেকেজ নামটো সঠিক আৰু এপ্লিকেচনটো সংস্থাপন কৰা হৈছে নে নাই পৰীক্ষা কৰক"</string>
   <string name="morphe_external_downloader_empty_warning">পেকেজৰ নাম খালী হ\'ব নোৱাৰে</string>
+  <string name="morphe_export_download_folder_dialog_title">এক্সপোর্ট ফোল্ডাৰ</string>
+  <string name="morphe_export_download_folder_change">ফ’ল্ডাৰ সলনি কৰক</string>
+  <string name="morphe_export_download_folder_changed">এক্সপোর্ট ফোল্ডাৰ সলনি কৰা হৈছে</string>
+  <string name="morphe_export_download_folder_reset">এক্সপোর্ট ফোল্ডাৰ ৰিছেট কৰা হৈছে</string>
+  <string name="morphe_export_download_folder_missing">এক্সপোর্ট ফোল্ডাৰ %s বিচাৰি পোৱা নগ\'ল</string>
+  <string name="morphe_export_download_flyout_title">ডিভাইসলৈ এক্সপোর্ট কৰক</string>
+  <string name="morphe_export_download_canceled">এক্সপোর্ট বাতিল কৰা হৈছে</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">কষ্টম</string>
   <string name="morphe_custom_branding_icon_title">এপ আইকন</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 %2$s-ক ডিফল্ট ক্লায়েন্ট হিচাপে নিৰ্ধাৰণ কৰিবনে?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">সুইচ কৰক</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">এই ছেটিংটো বন্ধ কৰিলে প্লেবেকত সমস্যা হ\'ব পাৰে</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView বন্ধ হৈ আছে বা সংস্থাপন কৰা হোৱা নাই।
+
+ভিডিঅ’ প্লেবেকৰ বাবে Android System WebView প্ৰয়োজন। ইয়াক অন কৰক আৰু শেৰিত সংস্কৰণলৈ আপডেট কৰক।
+
+Android System WebView খুলিবলৈ OK টিপক।"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView ৰ সংস্কৰণটো পুৰণি (সংস্কৰণ %s)।
+
+Android System WebView শেৰিত সংস্কৰণলৈ আপডেট নকৰা পৰ্যন্ত ভিডিঅ’ প্লেবেক বিফল হ’ব পাৰে।
+
+Android System WebView খুলিবলৈ OK টিপক।"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">পুনৰ দেখুৱাব নালাগে</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView সংস্থাপন কৰা হোৱা নাই। ভিডিঅ’ প্লেবেক ঠিক কৰিবলৈ ইয়াক সংস্থাপন কৰক</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">এনেদৰে চেষ্টা কৰক: Spoof video streams &gt; Android VR sign in</string>
@@ -142,6 +167,28 @@ Second \"item\" text"</string>
 • আপোনাৰ Morphe ছেটিংছবোৰে Android VR প্ৰমাণীকৰণ আমদানি/ৰপ্তানি নকৰিব
 • যদি এই এপটো ৬ মাহৰ বাবে ব্যৱহাৰ নকৰা হয় তেন্তে Google-এ এই প্ৰমাণীকৰণটো আঁতৰাই দিব
 • যদি আপুনি আপোনাৰ Google পাছৱৰ্ড সলনি কৰে বা আপোনাৰ Google ছেটিংছৰ পৰা এই ডিভাইচটো ডি-ৰেজিষ্টৰ কৰে তেন্তে আপুনি পুনৰ ছাইন ইন কৰিব লাগিব"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ম’বাইল ৱেব ছাইন ইন</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ঐচ্ছিক: আপোনাৰ একাউণ্টৰ সৈতে ভিডিঅ’বোৰ চাবলৈ YouTube ৱেবছাইটত ছাইন ইন কৰক। আগবাঢ়িবলৈ ইয়াত টেপ কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">বৰ্তমান ম’বাইল ৱেবত ছাইন ইন কৰা হৈছে</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">এই বৈশিষ্ট্যটো ব্যৱহাৰ কৰিবলৈ, \'ডিফল্ট ক্লায়েন্ট\'ক Mobile Web-লৈ সলনি কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-ত ছাইন ইন কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web-এ ছাইন আউট কৰি অথবা YouTube ৱেবছাইটত ছাইন ইন কৰি ভিডিঅ'বোৰ প্লে কৰে
+
+• ছাইন ইন কৰিলে, একাউণ্টৰ প্ৰয়োজন হোৱা ভিডিঅ'বোৰ প্লে কৰিব পৰা যাব, যেনে বয়স-সীমিত ভিডিঅ'বোৰ
+• এই এপটোত Google ছাইন-ইন পৃষ্ঠাখন খোল খাই থাকে
+• আপুনি প্লে কৰা ভিডিঅ'বোৰ পাবলৈহে ছাইন-ইন ব্যৱহাৰ কৰা হয়
+• ছাইন-ইন কেৱল এই ডিভাইচটোতহে সংৰক্ষণ কৰা হয়
+
+ছাইন ইন কৰিবলৈ, তলত কন্টিনিউত ক্লিক কৰক"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"চাইন-ইন সংৰক্ষিত হ'ল
+
+• আপোনাৰ Morphe ছেটিংসে Mobile Web চাইন-ইন ইমপোর্ট/এক্সপৰ্ট নকৰিব
+• যদি Google-এ চাইন-ইন শেষ কৰে, তেন্তে আপুনি পুনৰ চাইন-ইন নোহোৱালৈকে ভিডিঅ'বোৰ ছাইন আউট অৱস্থাত চলিব
+• ছাইন আউট কৰিলে এই ডিভাইচটো YouTube ৱেবছাইটৰ পৰাও ছাইন আউট হ'ব"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web চাইন-ইনৰ মেয়াদ শেষ হৈছে, অনুগ্ৰহ কৰি Mobile Web-ত পুনৰ চাইন-ইন কৰিবলৈ চেষ্টা কৰক</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web-ৰ পৰা ছাইন আউট কৰা হৈছে</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView উপলব্ধ নহয়। চাইন-ইন কৰিবলৈ ইয়াক সংস্থাপন বা সক্ৰিয় কৰক</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 সাময়িকভাৱে উপলব্ধ নহয় (API টাইম আউট হৈছে)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR ছাইন ইনৰ মেয়াদ শেষ হৈছে, অনুগ্ৰহ কৰি পুনৰ VR-ত ছাইন ইন কৰক</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 সাময়িকভাৱে উপলব্ধ নহয় (স্থিতি %s)</string>
@@ -207,6 +254,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">শেয়াৰ কৰা লিংকবোৰত music.youtube.com ৰ ঠাইত youtube.com প্ৰতিস্থাপন কৰে</string>
   <string name="morphe_replace_links_with_shortener_title">শেয়াৰ লিংকসমূহ youtu.be লৈ সলনি কৰক</string>
   <string name="morphe_replace_links_with_shortener_summary">ভিডিঅ\'সমূহক চুটি youtu.be URL ফৰ্মেট ব্যৱহাৰ কৰিবলৈ বাধ্য কৰে</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">অটো</string>
+  <string name="morphe_remember_video_quality_last_selected_title">ভিডিঅ\'ৰ গুণগতমান মনত ৰাখক</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">আপুনি হাতেৰে বাছনি কৰা গুণগতমানটো ভৱিষ্যতৰ সকলো ভিডিঅ\'ত প্ৰয়োগ কৰে</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">গুণগতমান পৰিৱৰ্তনৰ জাননী</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">এটা নতুন ডিফল্ট কোৱালিটি সংৰক্ষণ কৰিলে এটা জাননী দেখুৱায়</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi নেটৱৰ্কত ডিফল্ট ভিডিঅ\' কোৱালিটি</string>
+  <string name="morphe_video_quality_default_mobile_title">মবাইল নেটৱৰ্কত ডিফল্ট ভিডিঅ\' কোৱালিটি</string>
+  <string name="morphe_remember_video_quality_toast_mobile">ডিফল্ট মবাইল কোৱালিটিলৈ সলনি কৰা হৈছে: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">ডিফল্ট Wi-Fi কোৱালিটিলৈ সলনি কৰা হৈছে: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">ছিষ্টেম শ্বেয়াৰ শ্বীট খোলক</string>
+  <string name="morphe_open_system_share_sheet_summary">সামগ্ৰী শ্বেয়াৰ কৰাৰ সময়ত ইন-এপৰ পৰিৱৰ্তে ছিষ্টেম শ্বেয়াৰ শ্বীট খোলক</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">লিথো লগিং</string>
   <string name="morphe_debug_litho_entry_disabled">অক্ষম কৰা হৈছে</string>

@@ -22,7 +22,6 @@ import app.morphe.patches.youtube.video.information.addExoPlayerHooks
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/PlaybackSpeedPatch;"
 
-@Suppress("unused")
 val playbackSpeedPatch = patch(
     name = "Playback speed",
     description = "Adds options to change the playback speed and pitch of tracks.",

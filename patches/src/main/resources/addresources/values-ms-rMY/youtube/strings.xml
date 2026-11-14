@@ -321,7 +321,7 @@ Perubahan termasuk:
   <string name="morphe_hide_keyword_content_phrases_title">Kata kunci untuk disorokkan</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"Masukkan kata kunci dan frasa untuk disembunyikan, dipisahkan oleh baris baharu
 
-Kata kunci boleh jadi sebarang teks yang dipaparkan dalam tajuk video atau nama saluran"</string>
+Kata kunci boleh jadi sebarang teks yang dipaparkan dalam tajuk video. Kata kunci @NamaPengguna menyembunyikan semua kandungan daripada pencipta tertentu"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Laman Utama / Langganan / Carian / Komen ditapis untuk menyembunyikan kandungan yang sepadan dengan frasa kata kunci
 
 Had:
@@ -331,7 +331,6 @@ Had:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Mengelilingi kata kunci/frasa dengan tanda petik dua akan mengelakkan padanan separa tajuk video dan nama saluran&lt;br&gt;&lt;br&gt;Sebagai contoh,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; akan menyembunyikan video: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;tetapi tidak akan menyembunyikan: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Kata kunci mempunyai pengisytiharan yang bercanggah: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Kata kunci terlalu pendek dan memerlukan tanda petik: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Kata kunci akan menyembunyikan semua video: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Utama: %1$s
@@ -523,6 +522,10 @@ Selepas video dengan butang Ask dibuka sekali, ciri ini berfungsi dengan semua v
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Tunjukkan jumlah suka pada pengecil feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Tunjukkan peratusan suka pada pengecil feed</string>
+  <string name="morphe_ryd_feed_counts_position_title">Kedudukan suka miniatur feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Sebelah jumlah tontonan</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Tengah kanan</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Atas kiri</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Cari komen</string>
   <string name="morphe_search_comments_summary">Ketik butang carian dalam komen untuk menunjukkan hanya komen yang dimuatkan yang mengandungi semua perkataan yang dicari. Letakkan perkataan dalam tanda petikan untuk mencari frasa</string>
@@ -559,18 +562,11 @@ Selepas video dengan butang Ask dibuka sekali, ciri ini berfungsi dengan semua v
   <string name="morphe_export_download_folder_summary">"Eksport video yang disimpan dalam aplikasi ke storan peranti anda menggunakan menu flyout muat turun dalam aplikasi. Ketik untuk menukar folder eksport
 
 Folder eksport: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Folder eksport</string>
-  <string name="morphe_export_download_folder_change">Tukar folder</string>
-  <string name="morphe_export_download_folder_changed">Folder eksport telah ditukar</string>
-  <string name="morphe_export_download_folder_reset">Tetapkan semula folder eksport</string>
-  <string name="morphe_export_download_folder_missing">Tidak dapat mencari folder eksport %s</string>
-  <string name="morphe_export_download_flyout_title">Eksport ke peranti</string>
   <string name="morphe_export_download_started">Mengeksport video</string>
   <string name="morphe_export_download_progress">Mengeksport video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Eksport video</string>
   <string name="morphe_export_download_saved">Video dieksport ke %s</string>
   <string name="morphe_export_download_failed">Tidak dapat mengeksport video</string>
-  <string name="morphe_export_download_canceled">Eksport dibatalkan</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Terjemahan alihan suara</string>
   <string name="morphe_vot_screen_summary">Baca sari kata video dengan kuat menggunakan teks-ke-ucapan peranti, diselaraskan dengan main balik</string>
@@ -648,6 +644,25 @@ Kunci API anda tidak seharusnya dikongsi. Sesiapa yang mempunyai akses kepadanya
   <string name="morphe_loop_video_range_clear">Kosongkan</string>
   <string name="morphe_loop_video_range_toast_on">Mengulang %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Julat masa tidak sah</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Bilangan gelung</string>
+  <string name="morphe_loop_count_screen_summary">Pilih berapa kali video diulang sebelum video seterusnya</string>
+  <string name="morphe_loop_count_title">Dayakan bilangan gelung</string>
+  <string name="morphe_loop_count_summary">Menu Lebih pada pemain memaparkan Bilangan gelung bersebelahan Gelung video, untuk memilih berapa kali video dimainkan sebelum video seterusnya</string>
+  <string name="morphe_loop_count_playlists_title">Simpan jumlah gelung dalam senarai main</string>
+  <string name="morphe_loop_count_playlists_summary">Setiap video dalam senarai main mengekalkan jumlah gelung yang anda pilih, dan Gelung video dihidupkan apabila senarai main memainkannya semula. Jika dimatikan, jumlah gelung hanya untuk video yang sedang dimainkan sekarang</string>
+  <string name="morphe_loop_count_clear_title">Kosongkan jumlah gelung yang disimpan</string>
+  <string name="morphe_loop_count_clear_summary">Lupakan jumlah gelung yang disimpan dalam senarai main anda. Video yang disimpan: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Tiada jumlah gelung yang disimpan</string>
+  <string name="morphe_loop_count_clear_dialog_title">Kosongkan jumlah gelung yang disimpan?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Video dalam senarai main anda melupakan jumlah gelungnya, dan Gelung video tidak lagi dihidupkan apabila senarai main memainkannya</string>
+  <string name="morphe_loop_count_clear_done">Jumlah gelung yang disimpan telah dikosongkan</string>
+  <string name="morphe_loop_count_flyout_name">Bilangan gelung</string>
+  <string name="morphe_loop_count_dialog_message">Berapa kali video dimainkan sebelum video seterusnya, dari %1$s hingga %2$s. Biarkan kosong untuk mengulang video tanpa had.</string>
+  <string name="morphe_loop_count_times">%s kali</string>
+  <string name="morphe_loop_count_no_limit">Tiada had</string>
+  <string name="morphe_loop_count_decrease">Kurangkan kali</string>
+  <string name="morphe_loop_count_increase">Lebihkan kali</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Tunjukkan butang Gambar dalam Gambar</string>
   <string name="morphe_pip_button_flyout_title">Tunjukkan menu Gambar dalam Gambar</string>
@@ -685,6 +700,9 @@ Info: Mungkin tidak berfungsi pada strim langsung"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts Ahli sahaja</string>
   <string name="morphe_play_all_button_type_entry_12">Penstriman langsung Ahli sahaja</string>
   <string name="morphe_play_all_button_not_available_toast">Tidak dapat menghasilkan senarai main kerana ketidakpadanan ID saluran</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Butang Tunjukkan Senarai Main</string>
+  <string name="morphe_playlist_panel_button_summary">Ketik untuk membuka panel senarai main. Hanya dipaparkan apabila memainkan senarai main</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Tunjukkan butang \'Muat semula video\'</string>
   <string name="morphe_dismiss_player_not_available_toast">ID Video tidak tersedia. Sila muat semula video secara manual</string>
@@ -710,8 +728,6 @@ Info: Mungkin tidak berfungsi pada strim langsung"</string>
   <string name="morphe_queue_type_entry_2">Baris gilir asli</string>
   <string name="morphe_queue_type_entry_3">Baris gilir Morphe</string>
   <string name="morphe_queue_type_entry_4">Baris gilir Morphe sebelah klien</string>
-  <string name="morphe_queue_add_flyout_menu_title">Tambah item menu giliran flyout suapan</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Menambah item flyout tambahan. Dayakan ini jika \"Tambah ke giliran\" tidak dipaparkan</string>
   <string name="morphe_local_queue_sheet_title">Giliran</string>
   <string name="morphe_local_queue_open">Barisan (%s)</string>
   <string name="morphe_local_queue_clear">Kosongkan semua</string>
@@ -1026,6 +1042,8 @@ Untuk mengakses Tetapan, aktifkan butang Tetapan melalui Umum → Bar Alat → T
   <string name="morphe_navigation_bar_glass_summary">Memaparkan bar navigasi sebagai kapsul lut sinar yang terapung dan bulat. Tidak tersedia dengan gaya bar navigasi Legap</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Kelegapan kaca</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Melaraskan tahap kelutsinaran bar navigasi kaca (0 ialah lut sinar, 100 ialah legap)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Bar pandu arah kaca bulat</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Memberikan hujung bulat pada bar pandu arah kaca, berbanding bucu seperti pemain mini kaca</string>
   <string name="morphe_navigation_bar_glass_size_title">Saiz bar pandu arah kaca</string>
   <string name="morphe_navigation_bar_glass_size_summary">Laraskan ketinggian, lebar dan jarak butang bar pandu arah kaca, dengan pratonton. Butang yang tidak muat dalam lebar skrin akan disembunyikan</string>
   <string name="morphe_navigation_bar_glass_size_height">Ketinggian</string>
@@ -1113,6 +1131,10 @@ Untuk memaparkan menu 'Audio Track', tukar 'Spoof video streams' kepada mana-man
   <string name="morphe_enhanced_ambient_mode_summary">Menerangi keseluruhan halaman tontonan dan bar hitam dengan video, bagi menggantikan mod Ambien</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Kekalkan teks boleh dibaca</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Memalapkan cahaya pada video yang terang supaya teks pada halaman tetap boleh dibaca</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Malapkan semasa menatal</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Malapkan lampu semasa halaman ditatal atau disentuh</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Tempoh malap</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Berapa lama lampu kekal malap selepas tatalan berhenti. Dengan 0, hanya tatalan yang malapkan lampu, dan ia akan kembali terang sebaik sahaja tatalan berhenti</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Sorokkan kad info</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Untuk memaparkan menu 'Audio Track', tukar 'Spoof video streams' kepada mana-man
   <string name="morphe_hide_shorts_subscriptions_title">Sorokkan dalam suapan Langganan</string>
   <string name="morphe_hide_shorts_video_description_title">Sorokkan dalam penerangan video</string>
   <string name="morphe_hide_shorts_history_title">Sorokkan dalam sejarah tontonan</string>
+  <string name="morphe_hide_shorts_notifications_title">Sembunyikan dalam pemberitahuan tolak</string>
   <string name="morphe_shorts_player_screen_title">Pemain Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Pilih komponen yang muncul dalam pemain Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Matkan ketik dua kali untuk suka</string>
@@ -1191,9 +1214,24 @@ Tetapan → Main balik (atau Main automatik) → Main automatik video seterusnya
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Nyahdayakan panel timbul pemain</string>
   <string name="morphe_disable_player_popup_panels_summary">Menyahaktifkan panel senarai main dan sembang langsung daripada dibuka secara automatik</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Tunjukkan panel senarai main dalam skrin penuh</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Panel senarai main dibuka di atas pemain skrin penuh</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Panel senarai main keluar dari skrin penuh pada tablet</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Nyahaktifkan putar automatik senarai main</string>
   <string name="morphe_disable_playlist_autoplay_summary">Menghalang senarai main daripada beralih ke video seterusnya secara automatik</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Kawalan Main automatik</string>
+  <string name="morphe_autoplay_control_summary">Menambah butang pemain dan peraturan untuk video seterusnya. Senarai main dan barisan akan diteruskan, Mix akan berhenti selepas beberapa video, video yang dicadangkan tidak akan dimainkan. Ketik butang untuk mod seterusnya, ketik dan tahan untuk senarai</string>
+  <string name="morphe_autoplay_mode_title">Mod Main automatik</string>
+  <string name="morphe_autoplay_mode_entry_1">Automatik</string>
+  <string name="morphe_autoplay_mode_entry_2">Tunggal</string>
+  <string name="morphe_autoplay_mode_entry_3">Matikan</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Panjang Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Dalam mod Auto, Mix akan berhenti selepas jumlah video ini. 0 = tiada had</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s video</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: tiada had</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Gesaan \'Teruskan menonton\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">Lalai</string>
@@ -1269,9 +1307,6 @@ Tata letak automotif
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Pulihkan simpanan lama ke senarai main</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Nyahaktifkan ikon tebal</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Pulihkan nama saluran di bawah pemain video</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Buka helaian kongsi sistem</string>
-  <string name="morphe_open_system_share_sheet_summary">Membuka helaian perkongsian sistem dan bukannya helaian dalam apl apabila berkongsi kandungan</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Atasi butang YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Membuka aplikasi muzik pilihan anda berbanding aplikasi stok YouTube Music</string>
@@ -1349,6 +1384,8 @@ Tata letak automotif
   <string name="morphe_miniplayer_swipe_up_expand_summary">Meleret pemain kecil ke atas akan mengembangkan pemain, bukannya memindahkan pemain kecil ke bahagian atas skrin</string>
   <string name="morphe_miniplayer_docked_title">Pemain kecil didokkan</string>
   <string name="morphe_miniplayer_docked_summary">Melekatkan pemain kecil pada bar navigasi dan bahagian tepi skrin, bukannya terapung di atasnya</string>
+  <string name="morphe_miniplayer_glass_title">Pemain mini kaca</string>
+  <string name="morphe_miniplayer_glass_summary">Memaparkan pemain mini sebagai kaca lut sinar dengan bucu bulat, seperti bar pandu arah kaca. Memerlukan bar pandu arah kaca</string>
   <string name="morphe_miniplayer_type_entry_0">Dilumpuhkan</string>
   <string name="morphe_miniplayer_type_entry_1">Lalai</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalis</string>
@@ -1439,7 +1476,7 @@ Tata letak automotif
   <string name="morphe_dearrow_titles_player_title">Senarai main &amp; syor pemain</string>
   <string name="morphe_dearrow_titles_search_title">Hasil carian</string>
   <string name="morphe_dearrow_titles_icon_title">Tunjukkan ikon DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Menunjukkan ikon DeArrow pada tajuk video crowdsourced</string>
+  <string name="morphe_dearrow_titles_icon_summary">Menunjukkan ikon DeArrow pada tajuk video crowdsourced. Ketik ikon untuk menunjukkan tajuk dan imej kecil asal</string>
   <string name="morphe_dearrow_casual_mode_title">Mod santai</string>
   <string name="morphe_dearrow_casual_mode_summary">Menunjukkan tajuk asal dan bukannya tajuk DeArrow jika pengguna DeArrow mengundi bahawa mereka menyukai tajuk asal</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Undian santai minimum untuk menunjukkan tajuk asal</string>
@@ -1465,7 +1502,6 @@ Video diminta melalui awalan pendek ID video yang dihash, jadi pelayan tidak dap
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow tidak tersedia buat sementara waktu (kod status: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow tidak tersedia buat sementara waktu</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Pulihkan gaya butang pemain lama</string>
   <string name="morphe_restore_old_player_buttons_summary">Mengembalikan kawalan pemain video yang tebal kepada gaya visual lama yang lebih nipis</string>
@@ -1505,25 +1541,20 @@ Video diminta melalui awalan pendek ID video yang dihash, jadi pelayan tidak dap
   <string name="morphe_video_delay_button_flyout_title">Tunjukkan menu kelewatan Video</string>
   <string name="morphe_video_delay_dialog_input_hint">Kelewatan dalam milisaat</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automatik</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Ingat kualiti video</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Menggunakan pilihan kualiti manual anda untuk semua video masa hadapan</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Notifikasi perubahan kualiti</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Menunjukkan pemberitahuan apabila kualiti lalai baharu disimpan</string>
-  <string name="morphe_video_quality_default_wifi_title">Kualiti video lalai pada rangkaian Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Kualiti video lalai pada rangkaian mudah alih</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Ingat kualiti Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Gunakan pilihan kualiti manual anda untuk semua Shorts akan datang</string>
   <string name="morphe_shorts_quality_default_wifi_title">Kualiti Shorts lalai pada rangkaian Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Kualiti Shorts lalai pada rangkaian mudah alih</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Kualiti mudah alih lalai ditukar kepada: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Kualiti Wi-Fi lalai ditukar kepada: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Kualiti mudah alih Shorts ditukar kepada: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Kualiti Wi-Fi Shorts ditukar kepada: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Tunjukkan butang Kelajuan main balik</string>
   <string name="morphe_playback_speed_dialog_button_summary">Ketik dan tahan untuk tetapkan semula kelajuan ke lalai</string>
+  <string name="morphe_playback_speed_button_cycle_title">Ketik butang Kelajuan main balik untuk kitaran kelajuan</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Ketik untuk pergi ke kelajuan seterusnya dalam senarai. Ketik dan tahan untuk membuka menu kelajuan</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Kelajuan butang Kelajuan main balik</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Kelajuan yang dikitar melalui ketikan, satu bagi setiap baris. Selepas kelajuan terakhir, ketikan akan kembali ke yang pertama</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Senarai kitaran kelajuan tidak sah, ditetapkan semula ke lalai</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Tunjukkan butang Kualiti</string>
   <string name="morphe_video_quality_dialog_button_summary">Ketik dan tahan untuk tetapkan semula kualiti ke lalai</string>
@@ -1615,6 +1646,9 @@ Playback video dengan AV1 mungkin tersekat-sekat atau mengalami keguguran bingka
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volum stabil tidak tersedia</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Mainan balik mungkin berakhir 1 saat lebih awal</string>
   <string name="morphe_spoof_video_streams_about_js">• Jika penyahkaburan gagal, mainan balik mungkin gagal</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView dimatikan atau tidak dipasang. Hidupkan dan kemaskinikannya, atau main balik mungkin gagal</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView sudah lapuk. Kemaskinikannya, atau main balik mungkin gagal</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Paksa audio asal tidak tersedia</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Log masuk ke Android VR diperlukan</string>
@@ -1788,6 +1822,8 @@ Rakaman automatik adalah pilihan. Ia terhenti dalam mod inkognito atau apabila a
   <string name="morphe_niconico_comments_screen_title">Komen Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Tunjukkan sembang langsung dan ulangan sembang sebagai komen yang skrol merentasi video</string>
   <string name="morphe_niconico_comments_summary">Menunjukkan butang tindanan dalam pemain video. Ketik untuk menunjukkan atau menyembunyikan komen, ketik dan tahan untuk tetapan pantas</string>
+  <string name="morphe_niconico_comments_pip_title">Tunjukkan dalam gambar-dalam-gambar</string>
+  <string name="morphe_niconico_comments_pip_summary">Komen dikecilkan untuk dimuatkan dalam tetingkap</string>
   <string name="morphe_niconico_comments_appearance_title">Penampilan</string>
   <string name="morphe_niconico_comments_portrait_category_title">Potret</string>
   <string name="morphe_niconico_comments_video_types_title">Jenis video</string>

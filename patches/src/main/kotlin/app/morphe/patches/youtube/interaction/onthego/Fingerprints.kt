@@ -43,12 +43,12 @@ internal object OnTheGoSkipToNextActionConstructorFingerprint : Fingerprint(
 internal object SeekLengthConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
-    parameters = listOf("L", "Lj\$/util/Optional;"),
+    parameters = listOf("L", "Lj$/util/Optional;"),
     filters = listOf(
         literal(10),
         methodCall(name = "ofSeconds", location = MatchAfterWithin(1)),
         methodCall(
-            smali = "Lj\$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;",
+            smali = "Lj$/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;",
             location = MatchAfterWithin(2)
         ),
         fieldAccess(
@@ -66,6 +66,20 @@ internal fun getOnTheGoStateConstructorFingerprint(stateClass: String) = object 
     filters = listOf(
         methodCall(smali = "Ljava/lang/Object;-><init>()V"),
         newInstance("Ljava/util/concurrent/atomic/AtomicBoolean;")
+    )
+) {}
+
+/**
+ * Returns if On-the-go is active.
+ */
+internal fun getOnTheGoStateGetterFingerprint(stateClass: String) = object : Fingerprint(
+    definingClass = stateClass,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        // Older versions keep the state in a field of type Object, as the class is shared with other code.
+        methodCall(smali = "Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z")
     )
 ) {}
 

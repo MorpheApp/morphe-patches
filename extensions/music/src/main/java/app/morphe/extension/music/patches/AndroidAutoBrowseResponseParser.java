@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@SuppressWarnings("unused")
 final class AndroidAutoBrowseResponseParser {
     // Protobuf field numbers for YTM's phone Home, Library, and search responses.
     private static final int BROWSE_CONTENTS = 9;

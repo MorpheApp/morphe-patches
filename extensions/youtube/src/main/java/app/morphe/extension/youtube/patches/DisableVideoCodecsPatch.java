@@ -139,7 +139,8 @@ public class DisableVideoCodecsPatch {
                 ClientType.ANDROID_VR_DASH,
                 ClientType.ANDROID_VR_SABR,
                 ClientType.ANDROID_VR_EXPERIMENTAL,
-                ClientType.VISIONOS_1_02).contains(Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get());
+                ClientType.VISIONOS_1_02,
+                ClientType.VISIONOS_1_06).contains(Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get());
     }
 
     /**

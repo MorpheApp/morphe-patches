@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Serlahkan tetapan baharu</string>
   <string name="morphe_settings_new_indicator_days_summary">Bilangan hari titik dipaparkan bersebelahan tetapan dan pilihan yang ditambah oleh kemas kini</string>
   <string name="morphe_settings_new_indicator_days_off">Mati</string>
+  <string name="morphe_settings_new_indicator_clear_title">Tandakan semua tetapan sebagai dilihat</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Alih keluar titik daripada semua tetapan dan pilihan baharu</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Tandakan semua tetapan sebagai dilihat?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Titik dialih keluar daripada semua tetapan dan pilihan baharu. Tetapan yang ditambah oleh kemas kini masa hadapan masih diserlahkan.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Mulakan semula untuk menghabiskan penyediaan</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Sahkan nama pakej adalah betul dan aplikasi telah dipasang"</string>
   <string name="morphe_external_downloader_empty_warning">Nama pakej tidak boleh kosong</string>
+  <string name="morphe_export_download_folder_dialog_title">Folder eksport</string>
+  <string name="morphe_export_download_folder_change">Tukar folder</string>
+  <string name="morphe_export_download_folder_changed">Folder eksport telah ditukar</string>
+  <string name="morphe_export_download_folder_reset">Folder eksport ditetapkan semula</string>
+  <string name="morphe_export_download_folder_missing">Tidak dapat mencari folder eksport %s</string>
+  <string name="morphe_export_download_flyout_title">Eksport ke peranti</string>
+  <string name="morphe_export_download_canceled">Eksport dibatalkan</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Tersuai</string>
   <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
@@ -110,6 +121,20 @@ Jika anda pengguna YouTube Premium, tetapan ini mungkin tidak diperlukan"</strin
 Jadikan %2$s sebagai klien lalai?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Tukar</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan tetapan ini mungkin menyebabkan masalah main balik</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView dimatikan atau tidak dipasang.
+
+Mainan video memerlukan Android System WebView. Hidupkan dan kemaskinikannya ke versi terkini.
+
+Ketik OK untuk membuka Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView sudah lapuk (versi %s).
+
+Mainan video mungkin gagal sehingga Android System WebView dikemas kini ke versi terkini.
+
+Ketik OK untuk membuka Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Jangan tunjukkan lagi</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView tidak dipasang. Pasang aplikasi ini untuk membetulkan mainan video</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cuba dayakan: Spoof penstriman video &gt; Log masuk VR Android</string>
@@ -142,6 +167,28 @@ Untuk log masuk, tekan teruskan di bawah"</string>
 • Tetapan Morphe anda tidak akan mengimport/mengeksport pengesahan Android VR
 • Jika aplikasi ini tidak digunakan selama 6 bulan, Google akan membuang pengesahan ini
 • Anda perlu log masuk semula jika anda menukar kata laluan Google anda atau menyahdaftar peranti ini daripada tetapan Google anda"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Log masuk Web Mudah Alih</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Pilihan: log masuk ke laman web YouTube untuk memainkan video dengan akaun anda. Ketik di sini untuk meneruskan</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Kini log masuk ke Web Mudah Alih</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Untuk menggunakan ciri ini, tukar \'Klien lalai\' kepada Web Mudah Alih</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Log masuk ke Web Mudah Alih</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web Mudah Alih memainkan video tanpa log masuk, atau log masuk ke laman web YouTube
+
+• Jika log masuk, video yang memerlukan akaun boleh dimainkan, seperti video yang dihadkan umur
+• Halaman log masuk Google dibuka dalam apl ini
+• Log masuk digunakan hanya untuk mendapatkan video yang anda mainkan
+• Log masuk hanya disimpan pada peranti ini
+
+Untuk log masuk, tekan teruskan di bawah"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Log masuk disimpan
+
+• Tetapan Morphe anda tidak akan mengimport/mengeksport log masuk Web Mudah Alih
+• Jika Google menamatkan log masuk, video dimainkan tanpa log masuk sehingga anda log masuk semula
+• Log keluar juga akan mengeluarkan peranti ini daripada laman web YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Log masuk Web Mudah Alih telah tamat tempoh, cuba log masuk ke Web Mudah Alih sekali lagi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Log keluar daripada Web Mudah Alih</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView tidak tersedia. Pasang atau dayakannya untuk log masuk</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 tidak tersedia buat sementara waktu (API tamat masa)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Log masuk VR Android telah tamat tempoh, cuba log masuk ke VR sekali lagi</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 tidak tersedia buat sementara waktu (status %s)</string>
@@ -207,6 +254,20 @@ Untuk log masuk, tekan teruskan di bawah"</string>
   <string name="morphe_replace_music_with_youtube_summary">Menggantikan music.youtube.com kepada youtube.com dalam pautan yang dikongsi</string>
   <string name="morphe_replace_links_with_shortener_title">Tukar pautan kongsi kepada youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Memaksa video menggunakan format URL youtu.be yang dipendekkan</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatik</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Ingat kualiti video</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Gunakan pilihan kualiti manual anda untuk semua video akan datang</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Notifikasi perubahan kualiti</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Paparkan notifikasi apabila kualiti lalai baharu disimpan</string>
+  <string name="morphe_video_quality_default_wifi_title">Kualiti video lalai pada rangkaian Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Kualiti video lalai pada rangkaian mudah alih</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Tukar kualiti mudah alih lalai kepada: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Tukar kualiti Wi-Fi lalai kepada: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Buka helaian perkongsian sistem</string>
+  <string name="morphe_open_system_share_sheet_summary">Membuka helaian perkongsian sistem berbanding helaian dalam aplikasi apabila berkongsi kandungan</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Log Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Dilumpuhkan</string>

@@ -12,6 +12,8 @@ package app.morphe.patches.youtube.interaction.downloads
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
@@ -19,6 +21,7 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.video.information.ChannelInformationFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -36,6 +39,205 @@ internal object YouTubeOfflineVideoEndpointFingerprint : Fingerprint(
             string("Unsupported Offline Video Action: "), // 21.14 and lower
             string("Unsupported Offline Video Action: %s") // 21.15+
         )
+    )
+)
+
+/**
+ * Builds the play command of a Downloads card, which starts at the position saved in Downloads.
+ */
+internal object OfflineDownloadCardCommandFingerprint : Fingerprint(
+    filters = listOf(
+        // Calculates the start time in seconds from the length and the saved position.
+        methodCall(opcode = Opcode.INVOKE_STATIC, parameters = listOf("J", "J"), returnType = "F"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        string(DOWNLOADS_PLAYLIST_ID, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Ljava/lang/String;", "Ljava/lang/String;", "I", "F"),
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+/**
+ * The PlaybackStartDescriptor toString(), which logs the video ID and then the playlist ID.
+ */
+internal object PlaybackStartDescriptorIdsFingerprint : Fingerprint(
+    name = "toString",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        methodCall(smali = "Ljava/util/Locale;->getDefault()Ljava/util/Locale;"),
+        methodCall(returnType = "Ljava/lang/String;", parameters = listOf()), // Video ID.
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        methodCall( // Playlist ID.
+            returnType = "Ljava/lang/String;",
+            parameters = listOf(),
+            location = MatchAfterImmediately()
+        ),
+        string("PlaybackStartDescriptor:", comparison = StringComparisonType.STARTS_WITH)
+    )
+)
+
+/**
+ * 21.46+
+ *
+ * Runnable of the worker that loads the saved player response of a saved video
+ * and returns it to the callback.
+ */
+internal fun offlinePlaybackWorkerRunnableFingerprint(descriptorType: String) = Fingerprint(
+    name = "run",
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = descriptorType),
+        // Returns the Downloads entry of a video ID from the store of the current account.
+        methodCall(parameters = listOf("Ljava/lang/String;"), returnType = "L"),
+        // Callback with the player response, after which the method returns.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+            returnType = "V"
+        ),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately()),
+        string("Unplayable Video")
+    )
+)
+
+/**
+ * 21.46+
+ *
+ * Reads the worker of its Runnable.
+ * Must be matched against the method of [offlinePlaybackWorkerRunnableFingerprint].
+ */
+internal fun offlinePlaybackRunnableWorkerFingerprint(workerType: String) = Fingerprint(
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this", type = workerType)
+    )
+)
+
+/**
+ * 21.45 and older.
+ *
+ * Loads the saved player response of a saved video and returns it to the callback.
+ */
+internal fun offlinePlaybackWorkerLegacyFingerprint(descriptorType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(descriptorType, "L"),
+    filters = listOf(
+        // Callback with the player response, after which the method returns.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+            returnType = "V"
+        ),
+        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately()),
+        string("Unplayable Video")
+    )
+)
+
+/**
+ * 21.45 and older.
+ *
+ * Returns the Downloads entry of a video ID from the store of the current account.
+ */
+internal fun offlinePlaybackEntryLegacyFingerprint(workerType: String) = Fingerprint(
+    definingClass = workerType,
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("Ljava/lang/String;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            smali = "Lcom/google/common/util/concurrent/ListenableFuture;->get(JLjava/util/concurrent/TimeUnit;)Ljava/lang/Object;"
+        )
+    )
+)
+
+/**
+ * Copies the position of a Downloads entry to the playback position record (entity type 76).
+ */
+internal fun offlineDownloadPositionCopyFingerprint(entryType: String) = Fingerprint(
+    returnType = "Lj$/util/Optional;",
+    parameters = listOf(entryType),
+    filters = listOf(
+        literal(76),
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = listOf("Ljava/lang/String;"), returnType = "V"),
+        // Saved position in seconds.
+        fieldAccess(opcode = Opcode.IGET_WIDE, definingClass = entryType, location = MatchAfterImmediately()),
+        methodCall(
+            smali = "Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Length of the video in milliseconds, from the length in seconds.
+ */
+internal fun offlineDownloadDurationFingerprint(playerResponseModelClass: String) = Fingerprint(
+    definingClass = playerResponseModelClass,
+    returnType = "J",
+    parameters = listOf(),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            definingClass = "Ljava/util/concurrent/TimeUnit;",
+            name = "SECONDS"
+        ),
+        methodCall( // Length in seconds.
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "this",
+            returnType = "I",
+            parameters = listOf(),
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.INT_TO_LONG, location = MatchAfterImmediately()),
+        methodCall(
+            smali = "Ljava/util/concurrent/TimeUnit;->toMillis(J)J",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * LocalDirector loadVideo(), which calls the method that loads the player response.
+ */
+internal fun localDirectorLoadFingerprint(playerResponseModelType: String, descriptorType: String) = Fingerprint(
+    classFingerprint = ChannelInformationFingerprint,
+    returnType = "V",
+    parameters = listOf(playerResponseModelType, descriptorType),
+    filters = listOf(
+        methodCall(definingClass = "this", parameters = listOf("L", descriptorType), returnType = "V"),
+        string("loadVideo() called on LocalDirector in wrong state")
+    )
+)
+
+/**
+ * Matched against the method that loads the player response, for the player of the load target.
+ */
+internal fun localDirectorLoadPlayerFingerprint(loadTargetType: String, playerResponseModelType: String) = Fingerprint(
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = loadTargetType),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            returnType = playerResponseModelType,
+            parameters = listOf(),
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
+ * Matched against the method that loads the player response,
+ * for the start time setter and the call that starts playback.
+ */
+internal fun localDirectorStartPlaybackFingerprint(playerType: String) = Fingerprint(
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_STATIC, parameters = listOf(playerType, "J"), returnType = "V"),
+        methodCall(definingClass = "this", parameters = listOf("Z", "I", playerType), returnType = "V")
     )
 )
 
@@ -155,6 +357,91 @@ internal object UpdateOfflineVideoPolicyFingerprint : Fingerprint(
 )
 
 /**
+ * The offline setting category of YouTube Settings > Background & downloads.
+ */
+internal object OfflineSettingCategoryToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    filters = listOf(
+        string("OfflineSettingCategory{isFullHdFormatOptionAvailable=")
+    )
+)
+
+/**
+ * Parameters are in the order of the fields in [OfflineSettingCategoryToStringFingerprint].
+ */
+internal object OfflineSettingCategoryConstructorFingerprint : Fingerprint(
+    classFingerprint = OfflineSettingCategoryToStringFingerprint,
+    name = "<init>",
+    parameters = listOf(
+        "Z", // Full HD format option is available.
+        "Z", // Recommendations are enabled.
+        "Z", // Download quality is enabled.
+        "Z", // Smart downloads are displayed.
+        "L",
+        "L",
+        "L"
+    )
+)
+
+internal object OfflineSettingsFingerprint : Fingerprint(
+    filters = listOf(
+        string("[Offline] Failed to set hasTransfersForOffline.")
+    )
+)
+
+/**
+ * The offline settings keep only the download qualities up to the height of the screen,
+ * which the picker of the download quality and the download quality setting show.
+ */
+internal object OfflineSettingsConstructorFingerprint : Fingerprint(
+    classFingerprint = OfflineSettingsFingerprint,
+    name = "<init>",
+    parameters = listOf(
+        "Landroid/content/SharedPreferences;",
+        "L",
+        "I", // Height of the highest download quality.
+        "L",
+        "L"
+    )
+)
+
+/**
+ * Creates the offline setting category from the setting category of the server.
+ */
+internal fun offlineSettingCategoryFromProtoFingerprint(offlineSettingCategoryType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = offlineSettingCategoryType,
+    parameters = listOf("L")
+)
+
+/**
+ * Creates the setting categories of YouTube Settings from the settings of the server,
+ * for both kinds of settings the settings response has.
+ */
+internal object SettingCategoriesFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "Ljava/util/List;",
+    parameters = listOf("[Ljava/lang/Object;", "L"),
+    filters = listOf(
+        opcode(Opcode.ARRAY_LENGTH),
+        // Setting categories of a setting.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Ljava/lang/Object;"),
+            returnType = "Ljava/lang/Object;"
+        ),
+        checkCast("Ljava/util/Collection;", location = MatchAfterWithin(3)),
+        methodCall(
+            smali = "Ljava/util/List;->addAll(Ljava/util/Collection;)Z",
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.RETURN_OBJECT)
+    )
+)
+
+/**
  * Creates a player response model from the bytes of a player response.
  */
 internal fun playerResponseModelFromBytesFingerprint(playerResponseModel: String) = Fingerprint(
@@ -166,7 +453,9 @@ internal fun playerResponseModelFromBytesFingerprint(playerResponseModel: String
             parameters = listOf("[B", "Lcom/google/protobuf/MessageLite;"),
             returnType = "Lcom/google/protobuf/MessageLite;"
         ),
-        opcode(Opcode.CHECK_CAST) // Player response.
+        // Player response. YT Music 9.45+ has another method with these parameters,
+        // which parses with a fallback and casts another object much later.
+        opcode(Opcode.CHECK_CAST, location = MatchAfterWithin(2))
     )
 )
 

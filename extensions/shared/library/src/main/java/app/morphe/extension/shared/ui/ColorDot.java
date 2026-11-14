@@ -27,7 +27,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 
 import androidx.annotation.ColorInt;
-import app.morphe.extension.shared.theme.ThemeUtils;
 
 public class ColorDot {
     private static final int STROKE_WIDTH = Dim.dp(1.5f);

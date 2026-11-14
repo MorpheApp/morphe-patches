@@ -89,7 +89,6 @@ private val miniplayerButtonsResourcePatch = patch(
     }
 }
 
-@Suppress("unused")
 val miniplayerPreviousNextButtonsPatch = patch(
     name = "Miniplayer previous and next buttons",
     description = "Adds options to show previous and next track buttons in the miniplayer."
@@ -103,7 +102,7 @@ val miniplayerPreviousNextButtonsPatch = patch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
+        PreferenceScreen.addMiniplayerPreferences(
             SwitchPreference("morphe_music_miniplayer_next_button"),
             SwitchPreference("morphe_music_miniplayer_previous_button"),
         )

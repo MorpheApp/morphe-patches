@@ -43,18 +43,23 @@ public class YouTubeGlassNavigationBarPreference extends GlassNavigationBarSizeP
     }
 
     @Override
-    protected IntegerSetting[] getSizeSettings() {
+    protected IntegerSetting[] getSettings() {
         return SETTINGS;
     }
 
     @Override
-    protected String[] getSizeTitleKeys() {
+    protected String[] getTitleKeys() {
         return TITLES;
     }
 
     @Override
     protected String getButtonsShownKey() {
         return "morphe_navigation_bar_glass_size_buttons_shown";
+    }
+
+    @Override
+    protected float getCornerRadiusFraction() {
+        return YouTubeGlassNavigationBar.getCornerRadiusFraction();
     }
 
     @Override

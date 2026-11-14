@@ -19,7 +19,7 @@ import java.util.List;
  * <p>The counters are indexed by {@link Script}, so a new script only needs a line in {@link #classify}.
  *
  * <p>The per-character checks below are the only place these blocks are listed, so another reader
- * of scripts, such as {@link LyricsLanguageDetector}, counts them here rather than repeating them.
+ * of scripts, such as {@link app.morphe.extension.music.patches.lyrics.derive.LyricsLanguageDetector}, counts them here rather than repeating them.
  */
 public final class ScriptDetector {
 
@@ -142,6 +142,13 @@ public final class ScriptDetector {
                 Character.UnicodeScript.KATAKANA, Character.UnicodeScript.HANGUL);
     }
 
+    public static boolean containsUnspaced(@Nullable CharSequence text) {
+        return containsCjk(text)
+                || contains(text, Character.UnicodeScript.THAI, Character.UnicodeScript.LAO,
+                Character.UnicodeScript.MYANMAR, Character.UnicodeScript.KHMER,
+                Character.UnicodeScript.TIBETAN);
+    }
+
     public static boolean containsRtl(@Nullable CharSequence text) {
         return contains(text, Character.UnicodeScript.ARABIC, Character.UnicodeScript.HEBREW);
     }
@@ -192,6 +199,26 @@ public final class ScriptDetector {
     public static boolean isCjkCodePoint(int cp) {
         return cp <= Character.MAX_VALUE
                 && (isHan((char) cp) || isKana((char) cp) || isHangul((char) cp));
+    }
+
+    /**
+     * Han or kana only, since Hangul is written with spaces between its words and so a space
+     * between two Hangul syllables must never be read as display noise.
+     */
+    public static boolean isHanOrKana(int cp) {
+        return cp <= Character.MAX_VALUE && (isHan((char) cp) || isKana((char) cp));
+    }
+
+    /**
+     * A code point of a script written without spaces between words, so a word can end right
+     * before or after it. Thai, Lao, Myanmar, Khmer and Tibetan letters are not syllables of their
+     * own, unlike {@link #isCjkCodePoint}.
+     */
+    public static boolean isUnspacedCodePoint(int cp) {
+        if (isCjkCodePoint(cp)) return true;
+        if (cp > Character.MAX_VALUE) return false;
+        final char c = (char) cp;
+        return isThai(c) || isLao(c) || isMyanmar(c) || isKhmer(c) || isTibetan(c);
     }
 
     /** Hangul syllables, jamo and compatibility jamo, which is every way Korean is spelled. */
@@ -254,6 +281,22 @@ public final class ScriptDetector {
 
     public static boolean isThai(char c) {
         return c >= 0x0E00 && c <= 0x0E7F;
+    }
+
+    public static boolean isLao(char c) {
+        return c >= 0x0E80 && c <= 0x0EFF;
+    }
+
+    public static boolean isMyanmar(char c) {
+        return c >= 0x1000 && c <= 0x109F;
+    }
+
+    public static boolean isKhmer(char c) {
+        return c >= 0x1780 && c <= 0x17FF;
+    }
+
+    public static boolean isTibetan(char c) {
+        return c >= 0x0F00 && c <= 0x0FFF;
     }
 
     public enum Script {

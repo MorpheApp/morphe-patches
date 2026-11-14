@@ -40,7 +40,7 @@ import app.morphe.extension.youtube.settings.search.YouTubeSearchViewController;
  * Hooks {@link GoogleApiActivity} to inject a custom {@link YouTubePreferenceFragment}
  * with a toolbar and search functionality.
  */
-@SuppressWarnings({"deprecation", "RedundantSuppression"})
+@SuppressWarnings({"unused", "deprecation", "RedundantSuppression"})
 public class YouTubeActivityHook extends BaseActivityHook {
 
     /**
@@ -68,7 +68,6 @@ public class YouTubeActivityHook extends BaseActivityHook {
     /**
      * Injection point.
      */
-    @SuppressWarnings("unused")
     public static void initialize(Activity parentActivity) {
         BaseActivityHook.initialize(new YouTubeActivityHook(), parentActivity);
     }
@@ -231,7 +230,7 @@ public class YouTubeActivityHook extends BaseActivityHook {
     /**
      * Injection point.
      */
-    @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted"})
+    @SuppressWarnings({"unused", "SameReturnValue"})
     public static boolean useBoldIcons(boolean original) {
         return USE_BOLD_ICONS;
     }

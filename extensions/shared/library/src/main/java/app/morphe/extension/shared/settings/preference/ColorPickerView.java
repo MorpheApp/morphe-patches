@@ -60,6 +60,7 @@ import app.morphe.extension.shared.ui.Dim;
  * An {@link OnColorChangedListener} can be registered to receive notifications when the selected color changes.
  */
 @SuppressLint("DrawAllocation")
+@SuppressWarnings("unused")
 public class ColorPickerView extends View {
     /**
      * Interface definition for a callback to be invoked when the selected color changes.
@@ -601,7 +602,7 @@ public class ColorPickerView extends View {
             }
         }
 
-        // Must always redraw, otherwise if saturation is pure grey or black
+        // Must always redraw, otherwise if saturation is pure gray or black
         // then the hue slider cannot be changed.
         invalidate();
     }

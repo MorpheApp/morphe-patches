@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Zdôrazniť nové nastavenia</string>
   <string name="morphe_settings_new_indicator_days_summary">Počet dní, počas ktorých sa vedľa nastavení a možností pridaných aktualizáciou zobrazuje bod</string>
   <string name="morphe_settings_new_indicator_days_off">Vypnuté</string>
+  <string name="morphe_settings_new_indicator_clear_title">Označiť všetky nastavenia ako videné</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Odstrániť bod zo všetkých nových nastavení a možností</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Označiť všetky nastavenia ako videné?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Bod je odstránený zo všetkých nových nastavení a možností. Nastavenia pridané v budúciach aktualizáciách zostanú zvýraznené.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reštartujte aplikáciu, aby sa dokončila konfigurácia</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Skontrolujte, či je názov balíka správny a či je aplikácia nainštalovaná"</string>
   <string name="morphe_external_downloader_empty_warning">Názov balíka nemôže byť prázdny</string>
+  <string name="morphe_export_download_folder_dialog_title">Exportný priečinok</string>
+  <string name="morphe_export_download_folder_change">Zmeniť priečinok</string>
+  <string name="morphe_export_download_folder_changed">Exportný priečinok bol zmenený</string>
+  <string name="morphe_export_download_folder_reset">Exportný priečinok bol resetovaný</string>
+  <string name="morphe_export_download_folder_missing">Nepodarilo sa nájsť exportný priečinok %s</string>
+  <string name="morphe_export_download_flyout_title">Exportovať do zariadenia</string>
+  <string name="morphe_export_download_canceled">Export zrušený</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Vlastný</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikácie</string>
@@ -110,6 +121,20 @@ Ak ste používateľ YouTube Premium, toto nastavenie nemusí byť potrebné."</
 Urobiť %2$s predvoleným klientom?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Prepnúť</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Vypnutie tohto nastavenia môže spôsobiť problémy s prehrávaním</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView je vypnutý alebo nie je nainštalovaný.
+
+Pre prehrávanie videa je potrebný Android System WebView. Zapnite ho a aktualizujte na najnovšiu verziu.
+
+Ťuknite na OK, aby ste otvorili Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView je zastaraný (verzia %s).
+
+Prehrávanie videa môže zlyhať, kým nebude Android System WebView aktualizovaný na najnovšiu verziu.
+
+Ťuknite na OK, aby ste otvorili Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Už nezobrazovať</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView nie je nainštalovaný. Nainštalujte ho, aby ste opravili prehrávanie videa</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Skúste povoliť: Falšovanie toku videa &gt; Prihlásenie do Android VR</string>
@@ -142,6 +167,28 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
 • Nastavenia Morphe nebudú importovať/exportovať overenie pre Android VR
 • Po 6 mesiacoch od posledného použitia tejto aplikácie Google odstráni toto overenie
 • Budete sa musieť znova prihlásiť, ak zmeníte svoje heslo Google alebo zrušíte registráciu tohto zariadenia v nastaveniach Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Prihlásenie cez mobilný web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Voliteľné: prihláste sa na webovú stránku YouTube, aby ste mohli prehrávať videá so svojím účtom. Pokračujte Ťuknutím sem</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Aktuálne prihlásené do mobilnej webovej verzie</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Na používanie tejto funkcie zmeňte \'Predvolený klient\' na Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Prihláste sa do Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web prehráva videá bez prihlásenia alebo pri prihlásení na webovú stránku YouTube
+
+• Po prihlásení je možné prehrávať videá, ktoré vyžadujú účet, napríklad videá s obmedzením veku
+• Stránka prihlásenia do Google sa otvorí v tejto aplikácii
+• Prihlásenie slúži len na získanie videí, ktoré prehrávate
+• Prihlásenie sa ukladá len v tomto zariadení
+
+Ak sa chcete prihlásiť, stlačte nižšie tlačidlo pokračovať"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Prihlásenie bolo uložené
+
+• Nastavenia Morphe nebudú importovať/exportovať prihlásenie do mobilného webu
+• Ak Google prihlásenie ukončí, videá sa budú prehrávať bez prihlásenia, kým sa znova prihlásite
+• Odhlásením sa toto zariadenie odhlási aj z webovej stránky YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Vypršala platnosť prihlásenia do mobilného webu, skúste sa do mobilného webu prihlásiť znova</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Odhlásené z mobilného webu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView nie je k dispozícii. Ak sa chcete prihlásiť, nainštalujte ho alebo zapnite</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 je dočasne nedostupné (časový limit API vypršal)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Vypršala platnosť prihlásenia Android VR, skúste sa znova prihlásiť do VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 je dočasne nedostupné (stav %s)</string>
@@ -207,6 +254,20 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
   <string name="morphe_replace_music_with_youtube_summary">Nahrádza music.youtube.com na youtube.com v zdieľaných odkazoch.</string>
   <string name="morphe_replace_links_with_shortener_title">Zmeniť odkazy na zdieľanie na youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Prinúti videá používať skrátený formát URL youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Auto</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Zapamätať kvalitu videa</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Váš manuálny výber kvality sa aplikuje na všetky budúce videá</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Oznamrenia o zmene kvality</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Zobrazí oznámenie, keď sa uloží nová predvolená kvalita</string>
+  <string name="morphe_video_quality_default_wifi_title">Predvolená kvalita videa v Wi-Fi sieti</string>
+  <string name="morphe_video_quality_default_mobile_title">Predvolená kvalita videa v mobilnej sieti</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Predvolená mobilná kvalita bola zmenená na: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Predvolená kvalita Wi-Fi bola zmenená na: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Otvormy systémové menu zdieľania</string>
+  <string name="morphe_open_system_share_sheet_summary">Pri zdieľaní obsahu otvára systémový zdieľací panel namiesto vstavaného</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Zaznamenávanie Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Vypnutý</string>

@@ -22,6 +22,7 @@ import app.morphe.patches.shared.layout.returnyoutubedislike.requestParameterChe
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
@@ -67,6 +68,7 @@ val returnYouTubeDislikePatch = patch(
             SwitchPreference("morphe_ryd_dislike_percentage", summary = true),
             SwitchPreference("morphe_ryd_feed_like_count"),
             SwitchPreference("morphe_ryd_feed_like_ratio"),
+            ListPreference("morphe_ryd_feed_counts_position"),
             SwitchPreference("morphe_ryd_estimated_like", summary = true),
             SwitchPreference("morphe_ryd_toast_on_connection_error", summary = true),
             screenInfoPreferenceCategory(

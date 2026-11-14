@@ -13,14 +13,19 @@ package app.morphe.extension.shared.spoof;
 import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
 
 import android.os.Build;
+import android.webkit.WebSettings;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
-@SuppressWarnings({"ConstantLocale", "deprecation"})
+@SuppressWarnings("ConstantLocale")
 public enum ClientType {
     /**
      * Video not playable: None.
@@ -119,6 +124,7 @@ public enum ClientType {
      * Same as {@code ANDROID_VR_SABR} but uses the latest app version.
      * The server can send another player config to a newer app version,
      * so it is experimental and the version of {@code ANDROID_VR_SABR} is not updated.
+     * AV1 codec not available.
      */
     ANDROID_VR_EXPERIMENTAL(
             ANDROID_VR_SABR.id,
@@ -188,6 +194,31 @@ public enum ClientType {
             false,
             ANDROID_XR_SABR.usePlayerEndpoint,
             "Android XR Downgraded"
+    ),
+    /**
+     * Same as {@code ANDROID_VR_EXPERIMENTAL} but with the device of {@code ANDROID_XR_SABR}.
+     * The server sends AV1 streams only to this device, whatever the app version.
+     */
+    ANDROID_XR_EXPERIMENTAL(
+            ANDROID_XR_SABR.id,
+            ANDROID_XR_SABR.clientName,
+            ANDROID_XR_SABR.packageName,
+            ANDROID_XR_SABR.deviceMake,
+            ANDROID_XR_SABR.deviceModel,
+            ANDROID_XR_SABR.osName,
+            ANDROID_XR_SABR.osVersion,
+            ANDROID_XR_SABR.androidSdkVersion,
+            ANDROID_XR_SABR.buildID,
+            ANDROID_VR_EXPERIMENTAL.clientVersion,
+            ANDROID_XR_SABR.clientPlatform,
+            ANDROID_XR_SABR.canLogin,
+            ANDROID_XR_SABR.requireLogin,
+            ANDROID_XR_SABR.supportsMultiAudioTracks,
+            ANDROID_XR_SABR.supportsOAuth2,
+            ANDROID_XR_SABR.supportsVRImmersiveMode,
+            ANDROID_XR_SABR.requireSABR,
+            ANDROID_XR_SABR.usePlayerEndpoint,
+            "Android XR Experimental"
     ),
     /**
      * Video not playable: Live stream.
@@ -336,6 +367,33 @@ public enum ClientType {
             "TV Simply"
     ),
     /**
+     * Mobile web (m.youtube.com), as the Chrome browser of the device.
+     * The user agent is of the Chrome version of the WebView, which opens the website (see {@link #getUserAgent()}).
+     * Uses the web sign in if there is one (see {@link MwebSignIn}), and is used signed out otherwise.
+     * Its SABR media requests use the PoToken and the streaming session that the website makes for the video
+     * (see {@link MwebStream}), so the player request has no PoToken.
+     */
+    MWEB(
+            2,
+            "MWEB",
+            "Google",
+            "K",
+            "Android",
+            "10",
+            "2.20261110.07.00",
+            "MOBILE",
+            String.format(Locale.ENGLISH, ClientType.WEB_USER_AGENT_FORMAT, ClientType.DEFAULT_CHROME_MAJOR_VERSION),
+            // Uses the cookies of the web sign in, and not the access token of the app.
+            false,
+            false,
+            true,
+            false,
+            true,
+            false,
+            true,
+            "Mobile Web"
+    ),
+    /**
      * Video not playable: Kids, Paid, Movie, Private, Age-restricted.
      * AV1 codec available.
      * May stop working at any time.
@@ -382,6 +440,55 @@ public enum ClientType {
             VISIONOS_1_03.requirePoToken,
             VISIONOS_1_03.requireSABR,
             "visionOS 1.02"
+    ),
+    /**
+     * Same as {@code VISIONOS_1_02} but with app version 1.06 and visionOS 27.2.
+     * The server can send other streams to a newer app version,
+     * so the version of {@code VISIONOS_1_02} is not updated.
+     * AV1 codec not available.
+     */
+    VISIONOS_1_06(
+            VISIONOS_1_02.id,
+            VISIONOS_1_02.clientName,
+            VISIONOS_1_02.deviceMake,
+            VISIONOS_1_02.deviceModel,
+            VISIONOS_1_02.osName,
+            "27.2",
+            "1.06",
+            VISIONOS_1_02.clientPlatform,
+            "com.google.visionosyoutube/1.06 (RealityDevice14,1; U; CPU visionOS 27_2 like Mac OS X; en_US) gzip",
+            VISIONOS_1_02.canLogin,
+            VISIONOS_1_02.requireLogin,
+            VISIONOS_1_02.supportsMultiAudioTracks,
+            VISIONOS_1_02.supportsVRImmersiveMode,
+            VISIONOS_1_02.requireJS,
+            VISIONOS_1_02.requirePoToken,
+            VISIONOS_1_02.requireSABR,
+            "visionOS 1.06"
+    ),
+    /**
+     * Same as {@code VISIONOS_1_06} but with the device model of {@code VISIONOS_1_03}.
+     * The server sends AV1 streams only to this device model, whatever the app version.
+     * AV1 codec available.
+     */
+    VISIONOS_1_06_AV1(
+            VISIONOS_1_06.id,
+            VISIONOS_1_06.clientName,
+            VISIONOS_1_06.deviceMake,
+            VISIONOS_1_03.deviceModel,
+            VISIONOS_1_06.osName,
+            VISIONOS_1_06.osVersion,
+            VISIONOS_1_06.clientVersion,
+            VISIONOS_1_06.clientPlatform,
+            "com.google.visionosyoutube/1.06 (RealityDevice17,1; U; CPU visionOS 27_2 like Mac OS X; en_US) gzip",
+            VISIONOS_1_06.canLogin,
+            VISIONOS_1_06.requireLogin,
+            VISIONOS_1_06.supportsMultiAudioTracks,
+            VISIONOS_1_06.supportsVRImmersiveMode,
+            VISIONOS_1_06.requireJS,
+            VISIONOS_1_06.requirePoToken,
+            VISIONOS_1_06.requireSABR,
+            "visionOS 1.06 AV1"
     );
 
     /**
@@ -425,7 +532,7 @@ public enum ClientType {
     public final String osVersion;
 
     /**
-     * Android SDK version, equivalent to {@link Build.VERSION#SDK} (System property: ro.build.version.sdk)
+     * Android SDK version, equivalent to {@code Build.VERSION.SDK} (System property: ro.build.version.sdk)
      * Field is empty if not applicable.
      */
     @NonNull
@@ -496,6 +603,59 @@ public enum ClientType {
      * Friendly name displayed in stats for nerds.
      */
     public final String friendlyName;
+
+    /**
+     * User agent of Chrome on Android, with the version and the device hidden as Chrome sends it.
+     */
+    private static final String WEB_USER_AGENT_FORMAT = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36"
+            + " (KHTML, like Gecko) Chrome/%s.0.0.0 Mobile Safari/537.36";
+
+    /**
+     * A recent major version of Chrome, used if the version of the WebView is not known.
+     */
+    private static final String DEFAULT_CHROME_MAJOR_VERSION = "142";
+
+    private static final Pattern CHROME_MAJOR_VERSION_PATTERN = Pattern.compile("Chrome/(\\d+)");
+
+    @Nullable
+    private static volatile String webUserAgent;
+
+    /**
+     * The user agent of the client.
+     * <p>
+     * A web client is the Chrome browser of the device, with the Chrome version of the WebView.
+     * The website opens in the WebView, so the requests name the same browser as the website session.
+     */
+    public String getUserAgent() {
+        if (!isWebClient()) {
+            return userAgent;
+        }
+        String agent = webUserAgent;
+        if (agent == null) {
+            String version = DEFAULT_CHROME_MAJOR_VERSION;
+            try {
+                Matcher matcher = CHROME_MAJOR_VERSION_PATTERN
+                        .matcher(WebSettings.getDefaultUserAgent(Utils.getContext()));
+                if (matcher.find()) {
+                    version = matcher.group(1);
+                }
+            } catch (Exception ex) {
+                // WebView is missing or broken.
+                Logger.printInfo(() -> "Could not read the WebView user agent", ex);
+            }
+            agent = String.format(Locale.ENGLISH, WEB_USER_AGENT_FORMAT, version);
+            webUserAgent = agent;
+        }
+        return agent;
+    }
+
+    /**
+     * If the client is a client of the YouTube website. A web client signs in with the cookies of the website
+     * (see {@link MwebSignIn}), and its PoTokens are made by the website (see {@link MwebSiteSession}).
+     */
+    public boolean isWebClient() {
+        return this == MWEB;
+    }
 
     /**
      * Android constructor.

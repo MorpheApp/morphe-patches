@@ -34,9 +34,8 @@ import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/PlaylistPatch;"
 private const val PLAYLIST_EDIT_CALLBACK_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/PlaylistPatch\$PlaylistEditCallback;"
+    $$"Lapp/morphe/extension/youtube/patches/PlaylistPatch$PlaylistEditCallback;"
 
-@Suppress("unused")
 val playlistPatch = patch(
     name = "Playlist improvements",
     description = "Adds options to widen playlist drag handles, reorder videos by long press, " +

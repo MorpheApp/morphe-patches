@@ -261,6 +261,7 @@ val navigationBarPatch = patch(
                 key = "morphe_navigation_bar_glass_opacity",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
+            SwitchPreference("morphe_navigation_bar_glass_round", summary = true),
             // Height, width and button spacing, with a preview.
             NonInteractivePreference(
                 key = "morphe_navigation_bar_glass_height",
@@ -804,7 +805,7 @@ val navigationBarPatch = patch(
             )
         )
 
-        // Some pages have their own toolbar, such as the You tab and the channel pages, which the swap
+        // Some pages have their own toolbar, such as the 'You' tab and the channel pages, which the swap
         // of the create button and the fix of its upload button do not change in the toolbar of the guide.
         // The toolbar buttons of all pages are created with their renderer.
         ToolBarButtonFingerprint.let {

@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">नई सेटिंग्स को हाइलाइट करें</string>
   <string name="morphe_settings_new_indicator_days_summary">दिनों की संख्या जब अपडेट द्वारा जोड़ी गई सेटिंग्स और विकल्पों के बगल में एक डॉट दिखाया जाता है</string>
   <string name="morphe_settings_new_indicator_days_off">बंद</string>
+  <string name="morphe_settings_new_indicator_clear_title">सभी सेटिंग्स को देखा गया चिह्नित करें</string>
+  <string name="morphe_settings_new_indicator_clear_summary">सभी नई सेटिंग्स और विकल्पों से डॉट हटाएँ</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">क्या सभी सेटिंग्स को देखा गया चिह्नित करें?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">सभी नई सेटिंग्स और विकल्पों से डॉट हटा दिया गया है। भविष्य के अपडेट द्वारा जोड़ी गई सेटिंग्स अभी भी हाइलाइट रहेंगी।</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">सेटिंग को पूरा करने के लिए रीस्टार्ट करें</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 पुष्टि करें कि पैकेज नाम सही है और ऐप इंस्टॉल है"</string>
   <string name="morphe_external_downloader_empty_warning">पैकेज का नाम खाली नहीं हो सकता</string>
+  <string name="morphe_export_download_folder_dialog_title">एक्सपोर्ट फ़ोल्डर</string>
+  <string name="morphe_export_download_folder_change">फ़ोल्डर बदलें</string>
+  <string name="morphe_export_download_folder_changed">एक्सपोर्ट फ़ोल्डर बदल दिया गया</string>
+  <string name="morphe_export_download_folder_reset">एक्सपोर्ट फ़ोल्डर रीसेट किया गया</string>
+  <string name="morphe_export_download_folder_missing">एक्सपोर्ट फ़ोल्डर %s नहीं मिल सका</string>
+  <string name="morphe_export_download_flyout_title">डिवाइस पर एक्सपोर्ट करें</string>
+  <string name="morphe_export_download_canceled">एक्सपोर्ट रद्द कर दिया गया</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">कस्टम</string>
   <string name="morphe_custom_branding_icon_title">ऐप आइकन</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 क्या %2$s को डिफ़ॉल्ट क्लाइंट बनाया जाए?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">बदलें</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">इस सेटिंग को बंद करने से प्लेबैक में समस्या उत्पन्न हो सकती है</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView बंद है या इंस्टॉल नहीं है।
+
+वीडियो प्लेबैक के लिए Android System WebView की आवश्यकता है। इसे चालू करें और नवीनतम वर्ज़न में अपडेट करें।
+
+Android System WebView खोलने के लिए OK पर टैप करें।"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView पुराना हो गया है (वर्ज़न %s)।
+
+जब तक Android System WebView को नवीनतम वर्ज़न में अपडेट नहीं किया जाता, तब तक वीडियो प्लेबैक विफल हो सकता है।
+
+Android System WebView खोलने के लिए OK पर टैप करें।"</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">दोबारा न दिखाएँ</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView इंस्टॉल नहीं है। वीडियो प्लेबैक को ठीक करने के लिए इसे इंस्टॉल करें</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">सुझाव: वीडियो स्ट्रीम्स को फर्ज़ करें > एंड्रॉइड वीआर साइन इन करें</string>
@@ -142,6 +167,28 @@ Second \"item\" text"</string>
 • आपकी Morphe सेटिंग्स Android VR प्रमाणीकरण को आयात/निर्यात नहीं करती हैं
 • यदि यह ऐप 6 महीने तक उपयोग में न आए तो Google यह प्रमाणीकरण हटा देगा
 • यदि आप अपना Google पासवर्ड बदलते हैं या अपनी Google सेटिंग्स में इस डिवाइस को हटाते हैं, तो आपको फिर से साइन इन करना होगा"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">मोबाइल वेब साइन इन</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">वैकल्पिक: अपने अकाउंट से वीडियो चलाने के लिए YouTube वेबसाइट पर साइन इन करें। जारी रखने के लिए यहां टैप करें</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">वर्तमान में मोबाइल वेब पर साइन इन है</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">इस फीचर का उपयोग करने के लिए, \'डिफ़ॉल्ट क्लाइंट\' को मोबाइल वेब में बदलें</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">मोबाइल वेब में साइन इन करें</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"मोबाइल वेब वीडियो को साइन आउट होकर, या YouTube वेबसाइट पर साइन इन करके चलाता है
+
+• साइन इन होने पर, उन वीडियो को चलाया जा सकता है जिनके लिए अकाउंट की ज़रूरत होती है, जैसे कि आयु-प्रतिबंधित वीडियो
+• इस ऐप में Google साइन-इन पेज खुलता है
+• साइन-इन का उपयोग केवल आपके द्वारा चलाए जाने वाले वीडियो प्राप्त करने के लिए किया जाता है
+• साइन-इन केवल इस डिवाइस पर सहेजा जाता है
+
+साइन इन करने के लिए, नीचे जारी रखें दबाएं"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"साइन-इन सहेजा गया
+
+• आपकी Morphe सेटिंग्स मोबाइल वेब साइन-इन को इम्पोर्ट/एक्सपोर्ट नहीं करेंगी
+• यदि Google साइन-इन समाप्त कर देता है, तो जब तक आप फिर से साइन इन नहीं करते, वीडियो साइन आउट होकर चलाए जाते हैं
+• साइन आउट करने से यह डिवाइस YouTube वेबसाइट से भी साइन आउट हो जाता है"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">मोबाइल वेब साइन इन की अवधि समाप्त हो गई है, मोबाइल वेब में फिर से साइन इन करने का प्रयास करें</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">मोबाइल वेब से साइन आउट कर दिया गया</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView उपलब्ध नहीं है। साइन इन करने के लिए इसे इंस्टॉल या सक्षम करें</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 अस्थायी रूप से उपलब्ध नहीं है (API टाइमआउट)</string>
   <string name="morphe_oauth2_connection_failure_status_400">एंड्रॉइड VR साइन इन की अवधि समाप्त हो गई है, VR में फिर से साइन इन करें</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 अस्थायी रूप से अनुपलब्ध है (स्थिति %s)</string>
@@ -207,6 +254,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">साझा लिंक में music.youtube.com को youtube.com से बदलता है।</string>
   <string name="morphe_replace_links_with_shortener_title">youtu.be के साथ शेयर लिंक बदलें</string>
   <string name="morphe_replace_links_with_shortener_summary">वीडियो को संक्षिप्त youtu.be URL प्रारूप का उपयोग करने के लिए बाध्य करता है</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">स्वचालित</string>
+  <string name="morphe_remember_video_quality_last_selected_title">वीडियो क्वालिटी याद रखें</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">आपके मैन्युअल क्वालिटी चयन को सभी भविष्य के वीडियो पर लागू करता है</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">क्वालिटी बदलने के नोटिफ़िकेशन</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">जब एक नई डिफ़ॉल्ट क्वालिटी सेव की जाती है तब एक नोटिफ़िकेशन दिखाता है</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi नेटवर्क पर डिफ़ॉल्ट वीडियो क्वालिटी</string>
+  <string name="morphe_video_quality_default_mobile_title">मोबाइल नेटवर्क पर डिफ़ॉल्ट वीडियो क्वालिटी</string>
+  <string name="morphe_remember_video_quality_toast_mobile">डिफ़ॉल्ट मोबाइल क्वालिटी बदलकर %s कर दी गई</string>
+  <string name="morphe_remember_video_quality_toast_wifi">डिफ़ॉल्ट Wi-Fi क्वालिटी बदलकर %s कर दी गई</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">सिस्टम शेयर शीट खोलें</string>
+  <string name="morphe_open_system_share_sheet_summary">कंटेंट शेयर करते समय इन-ऐप शेयर शीट के बजाय सिस्टम शेयर शीट खोलता है</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">लिथो लॉगिंग</string>
   <string name="morphe_debug_litho_entry_disabled">बंद किया गया</string>

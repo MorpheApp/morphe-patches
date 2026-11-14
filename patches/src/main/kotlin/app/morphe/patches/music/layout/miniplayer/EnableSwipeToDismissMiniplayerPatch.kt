@@ -43,7 +43,6 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/EnableSwipeToDismissMiniplayerPatch;"
 private const val CROSSFADE_MANAGER_CLASS = "Lapp/morphe/extension/music/patches/CrossfadePatch;"
 
-@Suppress("unused")
 val enableSwipeToDismissMiniplayerPatch = patch(
     name = "Enable swipe to dismiss miniplayer",
     description = "Adds an option to enable dismissing the miniplayer by swiping down on it."
@@ -57,7 +56,7 @@ val enableSwipeToDismissMiniplayerPatch = patch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
+        PreferenceScreen.addMiniplayerPreferences(
             SwitchPreference("morphe_music_enable_swipe_to_dismiss_miniplayer", summary = true)
         )
 

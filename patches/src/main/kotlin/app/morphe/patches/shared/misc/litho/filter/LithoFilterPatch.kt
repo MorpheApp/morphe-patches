@@ -19,6 +19,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.classDefBy
@@ -116,7 +117,7 @@ fun addLithoFilter(classDescriptor: String) {
  * @param overrideUpbFeatureFlag Whether to override the A/B feature flag that enables Upb-native
  *                               protobuf parsing (only present on older YouTube; absent in Music).
  * @param removeFilteredListItems Whether to remove the items of the lists (such as the feed) whose
- *                                whole element is filtered. Otherwise the grids, such as the feed
+ *                                whole element is filtered. Otherwise, the grids, such as the feed
  *                                of the tablet layout, show an empty cell in their place.
  * @param block Callback to add app-specific dependencies (sharedExtensionPatch, conversionContextPatch,
  *              versionCheckPatch, and any app-specific fixes).
@@ -405,6 +406,13 @@ internal fun sharedLithoFilterPatch(
                         }
                     }
 
+                // The element of an item of a grid, such as a Short of the grid of Shorts of the search results,
+                // has the position of the item in the grid, and the item is laid out for the column of its position.
+                // The items after a removed item move back by one position, also to another column.
+                val (elementItemType, elementBytesField) = ElementItemConstructorFingerprint.let { item ->
+                    item.classDef.type to item.instructionMatches[1].fieldReference
+                }
+
                 it.classDef.apply {
                     interfaces.add(EXTENSION_LIST_SECTION_INTERFACE)
 
@@ -417,19 +425,36 @@ internal fun sharedLithoFilterPatch(
                             AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
                             null,
                             null,
-                            MutableMethodImplementation(4),
+                            MutableMethodImplementation(9),
                         ).toMutable().apply {
                             addInstructionsWithLabels(
                                 0,
                                 """
                                     iget-object v0, p0, $itemsField
-                                    invoke-interface { v0, p1 }, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-                                    move-result v0
-                                    if-eqz v0, :done
+                                    invoke-interface { v0, p1 }, Ljava/util/List;->indexOf(Ljava/lang/Object;)I
+                                    move-result v2
+                                    const/4 v0, 0x0
+                                    if-ltz v2, :done
+                                    const/4 v0, 0x1
                                     invoke-direct { p0 }, $isGridMethod
                                     move-result v1
                                     invoke-virtual { p0, p1 }, $removeItemMethod
                                     if-eqz v1, :done
+                                    iget-object v3, p0, $itemsField
+                                    invoke-interface { v3 }, Ljava/util/List;->size()I
+                                    move-result v4
+                                    :move_back
+                                    if-ge v2, v4, :moved_back
+                                    invoke-interface { v3, v2 }, Ljava/util/List;->get(I)Ljava/lang/Object;
+                                    move-result-object v5
+                                    add-int/lit8 v2, v2, 0x1
+                                    instance-of v6, v5, $elementItemType
+                                    if-eqz v6, :move_back
+                                    check-cast v5, $elementItemType
+                                    iget-object v5, v5, $elementBytesField
+                                    invoke-static { v5 }, $EXTENSION_CLASS->moveGridItemBack([B)V
+                                    goto :move_back
+                                    :moved_back
                                     invoke-direct { p0 }, $isGridMethod
                                     move-result v1
                                     if-nez v1, :done
@@ -552,6 +577,60 @@ internal fun sharedLithoFilterPatch(
                             iget v$positionRegister, v$headerListRegister, $entryPositionField
                             :saved_position
                             nop
+                        """
+                    )
+                }
+            }
+
+            // endregion
+
+            // region Scroll position
+
+            // A list, such as the search results, saves its scroll position when it is left, such as when a video
+            // is opened, and shows it again when the list is loaded again. The position is not saved if an item
+            // before it was removed or changed since the list was loaded, and the list is then shown from the top.
+            // The removed items of the filtered elements are such items. The list is loaded again with them,
+            // so the saved position is moved by the items removed before it.
+            ListSaveScrollPositionFingerprint.let {
+                val observerType = it.instructionMatches[0].fieldReference.type
+
+                val notifyItemsRemoved = observableListRemoveFingerprint(ObservableListConstructorFingerprint.classDef.type)
+                    .matchSingle().instructionMatches.first().methodReference.let { notify ->
+                        if (notify.parameterTypes.size == 2) {
+                            notify
+                        } else {
+                            listNotifyItemRemovedFingerprint(notify.definingClass, notify.name)
+                                .matchSingle().instructionMatches.first().methodReference
+                        }
+                    }
+                val itemsRemovedMethodName = listNotifyItemsRemovedFingerprint(
+                    notifyItemsRemoved.definingClass,
+                    notifyItemsRemoved.name
+                ).matchSingle().instructionMatches.first().methodReference.name
+
+                listObserverItemsRemovedFingerprint(observerType, itemsRemovedMethodName)
+                    .matchSingle().method.addInstruction(
+                        0,
+                        "invoke-static { p0, p1, p2 }, $EXTENSION_CLASS->onListItemsRemoved(Ljava/lang/Object;II)V"
+                    )
+
+                listObserverReloadFingerprint(observerType).matchSingle().method.addInstruction(
+                    0,
+                    "invoke-static { p0 }, $EXTENSION_CLASS->onListReloaded(Ljava/lang/Object;)V"
+                )
+
+                it.method.apply {
+                    val observerIndex = it.instructionMatches[0].index
+                    val observerRegister = getInstruction<TwoRegisterInstruction>(observerIndex).registerA
+                    val notSavedIndex = it.instructionMatches[3].index
+                    val positionRegister = getInstruction<OneRegisterInstruction>(notSavedIndex).registerA
+
+                    replaceInstruction(notSavedIndex, "nop")
+                    addInstructions(
+                        observerIndex + 1,
+                        """
+                            invoke-static { v$observerRegister, v$positionRegister }, $EXTENSION_CLASS->getScrollPosition(Ljava/lang/Object;I)I
+                            move-result v$positionRegister
                         """
                     )
                 }

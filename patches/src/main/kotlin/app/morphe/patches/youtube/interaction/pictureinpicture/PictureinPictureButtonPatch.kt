@@ -37,7 +37,6 @@ private val pictureinPictureButtonResourcePatch = patch {
 private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/PictureinPictureButton;"
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/PictureinPictureButtonPatch;"
 
-@Suppress("unused")
 val pictureinPictureButtonPatch = patch(
     name = "Picture-in-picture button",
     description = "Adds an option to display a picture-in-picture button in the video player."

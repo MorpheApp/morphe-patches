@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Жаңа параметрлерді ерекшелеу</string>
   <string name="morphe_settings_new_indicator_days_summary">Жаңарту арқылы қосылған параметрлер мен опциялардың жанында нүктенің көрсетілетін күндер саны</string>
   <string name="morphe_settings_new_indicator_days_off">Өшіру</string>
+  <string name="morphe_settings_new_indicator_clear_title">Барлық баптауларды көрілді деп белгілеу</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Барлық жаңа параметрлер мен опциялардан нүктені алып тастау</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Барлық параметрлерді көрілген деп белгілеу?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Барлық жаңа параметрлер мен опциялардан нүкте алынып тасталды. Болашақ жаңартулар арқылы қосылған параметрлер әлі де ерекшелеуі мүмкін.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Баптауды аяқтау үшін қайта қосыңыз</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Пакет атауының дұрыстығын және қолданбаның орнатылғанын тексеріңіз"</string>
   <string name="morphe_external_downloader_empty_warning">Пакет атауы бос болмауы керек</string>
+  <string name="morphe_export_download_folder_dialog_title">Экспорттау папкасы</string>
+  <string name="morphe_export_download_folder_change">Папканы өзгерту</string>
+  <string name="morphe_export_download_folder_changed">Экспорттау папкасы өзгертілді</string>
+  <string name="morphe_export_download_folder_reset">Экспорттау папкасы қайта орнатылды</string>
+  <string name="morphe_export_download_folder_missing">Экспорттау папкасы %s табылмады</string>
+  <string name="morphe_export_download_flyout_title">Құрылғыға экспорттау</string>
+  <string name="morphe_export_download_canceled">Экспорттау тоқтатылды</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Жеке</string>
   <string name="morphe_custom_branding_icon_title">Қосымша белгішесі</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 %2$s клиентін әдепкі ету керек пе?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Ауыстыру</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Бұл параметрді өшіру ойнату кезіндегі мәселелерге әкелуі мүмкін</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView өшірілген немесе орнатылмаған.
+
+Бейнеді ойнату үшін Android System WebView қажет. Оны қосып, соңғы нұсқасына дейін жаңартыңыз.
+
+Android System WebView қолданбасын ашу үшін OK түймесін басыңыз."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView нұсқасы ескірген (%s нұсқасы).
+
+Android System WebView соңғы нұсқасына дейін жаңартылмағанша бейнеді ойнату мүмкін емес.
+
+Android System WebView қолданбасын ашу үшін OK түймесін басыңыз."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Қайта көрсетпеу</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView орнатылмаған. Бейнеді ойнатуды түзету үшін оны орнатыңыз</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Мынаны қосып көріңіз: Бейне ағындарын имитациялау &gt; Android VR кіру</string>
@@ -142,6 +167,28 @@ Second \"item\" text"</string>
 • Morphe баптаулары Android VR аутентификациясын импорттамайды/экспорттамайды
 • Егер бұл қолданба 6 ай бойы пайдаланылмаса, Google бұл аутентификацияны жояды
 • Егер Google құпия сөзіңізді өзгертсеңіз немесе бұл құрылғыны Google баптауларынан тіркеуден шығарсаңыз, қайта кіруіңіз қажет болады"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Мобильді веб-нұсқада кіру</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Міндетсіз: бейнелерді өз аккаунтыңызбен қосып ойнату үшін YouTube веб-сайтына кіріңіз. Жалғастыру үшін осында түртіңіз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Қазір Мобильді веб-нұсқаға кірген</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Бұл мүмкіндікті пайдалану үшін \"Әдепкі клиентті\" Mobile Web-ке өзгертіңіз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-ке кіріңіз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web жүйеге кірмеген күйде немесе YouTube веб-сайтына кіріп тұрғанда бейнелерді ойнатады
+
+• Жүйеге кіргенде, жас шектеуі бар бейнелер сияқты аккаунтты қажет ететін бейнелерді ойнатуға болады
+• Google-ге кіру беті осы қолданбада ашылады
+• Кіру тек сіз ойнататын бейнелерді алу үшін қолданылады
+• Кіру мәліметтері тек осы құрылғыда сақталады
+
+Кіру үшін төмендегі \"Жалғастыру\" түймесін басыңыз"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Кіру мәліметтері сақталды
+
+• Morphe параметрлері Mobile Web кіру мәліметтерін импорттамайды/экспорттамайды
+• Егер Google сессияны аяқтаса, қайта кіргенге дейін бейнелер жүйеге кірмеген күйде ойнатылады
+• Жүйеден шығу кезінде бұл құрылғы YouTube веб-сайтынан да шығады"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Мобильді веб-нұсқадағы сеанс аяқталды, қайта кіруге тырысыңыз</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Мобильді веб-нұсқадан шығылды</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView қолжетімді емес. Кіру үшін оны орнатыңыз немесе қосыңыз</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 уақытша қолжетімді емес (API уақыты бітті)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR кіру мерзімі аяқталды, VR-ге қайта кіріп көріңіз</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 уақытша қолжетімсіз (күйі %s)</string>
@@ -207,6 +254,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">Бөлісілген сілтемелерде music.youtube.com мекенжайын youtube.com мекенжайына ауыстырады</string>
   <string name="morphe_replace_links_with_shortener_title">Бөлісу сілтемелерін youtu.be-ге өзгерту</string>
   <string name="morphe_replace_links_with_shortener_summary">Бейнероликтер үшін қысқартылған youtu.be URL форматын қолдануды мәжбүрлейді</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Автоматты</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Видео сапасын есте сақтау</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Сіздің қолмен таңдаған сапаңыз барлық алдағы видеоларға қолданылады</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Сапаның өзгергені туралы хабарламалар</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Жаңа стандартты сапа сақталғанда хабарламаны көрсетеді</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi желісіндегі стандартты видео сапасы</string>
+  <string name="morphe_video_quality_default_mobile_title">Мобильді желідегі стандартты видео сапасы</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Әдепкі мобильді сапа мынаға өзгертілді: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Әдепкі Wi-Fi сапасы мынаға өзгертілді: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Жүйелік бөлісу парағын ашу</string>
+  <string name="morphe_open_system_share_sheet_summary">Мазмұнмен бөліскен кезде қолданбадағының орнына жүйелік бөлісу парағын ашады</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho логгау</string>
   <string name="morphe_debug_litho_entry_disabled">Өшірілген</string>

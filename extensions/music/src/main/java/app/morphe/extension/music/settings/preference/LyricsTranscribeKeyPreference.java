@@ -79,12 +79,12 @@ public class LyricsTranscribeKeyPreference extends Preference {
 
     @Override
     protected void onClick() {
-        showDialog(null);
+        showDialog();
     }
 
     /** Opens the key dialog; {@code onSaved} runs once a key the service accepted was stored. */
-    void showDialog(@Nullable Runnable onSaved) {
-        showKeyDialog(getContext(), onSaved);
+    void showDialog() {
+        showKeyDialog(getContext(), null);
     }
 
     @SuppressWarnings("ConstantValue")

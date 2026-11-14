@@ -142,7 +142,6 @@ public final class FeedVideoActionsPatch {
     private static final Pattern BADGE_PATTERN = Pattern.compile("^\\p{Lu}{2,12}$");
     private static final Pattern NOT_LETTERS_PATTERN = Pattern.compile("[^\\p{L}]+");
     private static final Pattern LETTERS_PATTERN = Pattern.compile("\\p{L}{2,}");
-    private static final Pattern VIDEO_ID_PATTERN = Pattern.compile("^[\\w-]{11}$");
 
     /**
      * The videos saved from this device are known right away, so
@@ -205,6 +204,7 @@ public final class FeedVideoActionsPatch {
      */
     private static final AtomicInteger savedVideosChanges = new AtomicInteger();
 
+    @SuppressWarnings("SameReturnValue")
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
@@ -306,6 +306,7 @@ public final class FeedVideoActionsPatch {
         public void setColorFilter(@Nullable ColorFilter colorFilter) {
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;
@@ -729,13 +730,29 @@ public final class FeedVideoActionsPatch {
      * the top of the list may not be found when it is laid out, and the card may not be laid
      * out again once it is shown.
      *
-     * @param videoId The video of the card, or null if the card is not a known video.
+     * @param videoId    The video of the card, or null if the card is not a known video.
+     * @param textsDrawn If the texts of the card are drawn. Litho mounts only the part of a card that is shown,
+     *                   so a card that enters from the bottom of the list shows its thumbnail before its texts.
      */
-    public static void onCardLaidOut(ComponentHost host, @Nullable String videoId) {
+    public static void onCardLaidOut(ComponentHost host, @Nullable String videoId, boolean textsDrawn) {
         if (!ENABLED) {
             return;
         }
         try {
+            // Litho reuses the host for other content, such as another video or a row of Shorts,
+            // which is known by its description before its texts are drawn.
+            VideoCard card = cards.get(host);
+            if (card != null && card.badgeAdded) {
+                String shownVideoId = FeedVideoCardsPatch.findVideoIdByDescription(host, false);
+                if (shownVideoId != null && !shownVideoId.equals(card.badge.videoId)) {
+                    card.removeBadge(host);
+                    cards.remove(host);
+                }
+            }
+            if (!textsDrawn) {
+                // The button is found once the texts are drawn.
+                return;
+            }
             if (updateCard(host) == null && videoId != null) {
                 FeedVideoCardsPatch.scheduleScrollCheck(host);
             }
@@ -971,9 +988,9 @@ public final class FeedVideoActionsPatch {
     private static String findCardVideoId(ComponentHost host) {
         String cardVideoId = FeedVideoCardsPatch.findVideoId(host);
         // The texts of a card that is not fully shown may not be drawn.
-        return cardVideoId != null && VIDEO_ID_PATTERN.matcher(cardVideoId).matches()
+        return VideoInformation.isVideoId(cardVideoId)
                 ? cardVideoId
-                : FeedVideoCardsPatch.findVideoIdByDescription(host);
+                : FeedVideoCardsPatch.findVideoIdByDescription(host, false);
     }
 
     /**
@@ -1082,7 +1099,7 @@ public final class FeedVideoActionsPatch {
      * Runs the command of the app that its own menu items run, with the video of the card.
      *
      * @param saveToPlaylist If the Save to playlist panel is opened.
-     *                       Otherwise the video is saved to Watch later, or removed if it's saved.
+     *                       Otherwise, the video is saved to Watch later, or removed if it's saved.
      */
     private static void runVideoCommand(ComponentHost host, boolean saveToPlaylist) {
         final String videoId = findCardVideoId(host);

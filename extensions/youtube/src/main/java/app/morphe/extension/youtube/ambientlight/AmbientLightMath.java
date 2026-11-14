@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.ambientlight;
 
 import androidx.annotation.Nullable;
 
+import java.util.Arrays;
+
 /**
  * Pixel work for the ambient light. The picture is small ARGB int arrays. The light is
  * 3 floats per pixel in linear light, because 8 bit values and gamma blending make a smooth
@@ -32,7 +34,7 @@ final class AmbientLightMath {
     // Reused between frames. The light is only computed on one thread.
     private static float[] nearRows = new float[0];
     private static float[] farRows = new float[0];
-    /** Cells of the light this far inside the picture are never shown. */
+    /** Cells of the light this far inside the picture are behind it, and only show while the player moves. */
     private static final float HIDDEN_MARGIN = 2f;
     private static final short HALF_ONE = 0x3C00;
     private static final int SMALLEST_NORMAL_HALF_BITS = 0x38800000;
@@ -40,10 +42,31 @@ final class AmbientLightMath {
     private static final int HALF_ROUNDING = 1 << (HALF_MANTISSA_SHIFT - 1);
     private static final int HALF_EXPONENT_OFFSET = 112 << 10;
 
+    /** The level a converted capture has, for each level of a capture that is not converted. */
+    private static final float[] CONVERTED = new float[256];
+    /** The level without the conversion, for each level of a converted capture. */
+    private static final int[] NOT_CONVERTED = new int[256];
+    /** A conversion changes the mean level by this share of what is expected, more or less. */
+    private static final float MIN_CONVERSION_SHARE = 0.5f;
+    private static final float MAX_CONVERSION_SHARE = 1.6f;
+    /** Mean channel difference (out of 255) that the conversion may leave unexplained. */
+    private static final float MAX_CONVERSION_RESIDUAL = 3f;
+    /** Share of the difference between two captures that the conversion may leave unexplained. */
+    private static final float MAX_CONVERSION_RESIDUAL_SHARE = 0.3f;
+    private static int[] referenceChannel = new int[0];
+    private static int[] pictureChannel = new int[0];
+
     static {
         for (int i = 0; i < LINEAR.length; i++) {
             final float value = i / 255f;
             LINEAR[i] = value * value;
+            // The BT.709 curve of the video to linear light, and that to the sRGB curve.
+            final double light = value < 0.081 ? value / 4.5 : Math.pow((value + 0.099) / 1.099, 1 / 0.45);
+            CONVERTED[i] = (float) (255 * (light <= 0.0031308 ? 12.92 * light : 1.055 * Math.pow(light, 1 / 2.4) - 0.055));
+        }
+        for (int level = 0, plain = 0; level < NOT_CONVERTED.length; level++) {
+            while (plain < 255 && CONVERTED[plain + 1] <= level) plain++;
+            NOT_CONVERTED[level] = plain < 255 && CONVERTED[plain + 1] - level < level - CONVERTED[plain] ? plain + 1 : plain;
         }
     }
 
@@ -156,6 +179,70 @@ final class AmbientLightMath {
                     + Math.abs((a & 0xFF) - (b & 0xFF));
         }
         return (int) (total / (3L * first.length));
+    }
+
+    /**
+     * Some devices convert the BT.709 transfer curve of the video to sRGB in only some of the
+     * captures, about every second one on a reported device. A converted capture is brighter,
+     * mostly in the dark parts, and the light flickers if it follows both kinds.
+     * The channels are compared sorted, so things that moved in the picture do not count.
+     *
+     * @return If {@code picture} is {@code reference} with the conversion.
+     */
+    static boolean isConverted(int[] reference, int[] picture) {
+        final int length = reference.length;
+        long referenceSum = 0;
+        long pictureSum = 0;
+        float convertedSum = 0f;
+        for (int i = 0; i < length; i++) {
+            final int a = reference[i];
+            final int b = picture[i];
+            final int red = (a >> 16) & 0xFF;
+            final int green = (a >> 8) & 0xFF;
+            final int blue = a & 0xFF;
+            referenceSum += red + green + blue;
+            convertedSum += CONVERTED[red] + CONVERTED[green] + CONVERTED[blue];
+            pictureSum += ((b >> 16) & 0xFF) + ((b >> 8) & 0xFF) + (b & 0xFF);
+        }
+        final float expected = (convertedSum - referenceSum) / (3f * length);
+        final float change = (pictureSum - referenceSum) / (3f * length);
+        // Almost every capture stops here, so the sorting below is rare.
+        if (expected < 1f || change < MIN_CONVERSION_SHARE * expected || change > MAX_CONVERSION_SHARE * expected) {
+            return false;
+        }
+
+        if (referenceChannel.length != length) {
+            referenceChannel = new int[length];
+            pictureChannel = new int[length];
+        }
+        float difference = 0f;
+        float residual = 0f;
+        for (int shift = 16; shift >= 0; shift -= 8) {
+            for (int i = 0; i < length; i++) {
+                referenceChannel[i] = (reference[i] >> shift) & 0xFF;
+                pictureChannel[i] = (picture[i] >> shift) & 0xFF;
+            }
+            Arrays.sort(referenceChannel);
+            Arrays.sort(pictureChannel);
+            for (int i = 0; i < length; i++) {
+                difference += Math.abs(pictureChannel[i] - referenceChannel[i]);
+                residual += Math.abs(pictureChannel[i] - CONVERTED[referenceChannel[i]]);
+            }
+        }
+        residual /= 3f * length;
+        difference /= 3f * length;
+        return residual <= MAX_CONVERSION_RESIDUAL && residual <= MAX_CONVERSION_RESIDUAL_SHARE * difference;
+    }
+
+    /**
+     * Takes the conversion out of a capture again, see {@link #isConverted}.
+     */
+    static void undoConversion(int[] picture) {
+        for (int i = 0; i < picture.length; i++) {
+            final int color = picture[i];
+            picture[i] = 0xFF000000 | NOT_CONVERTED[(color >> 16) & 0xFF] << 16
+                    | NOT_CONVERTED[(color >> 8) & 0xFF] << 8 | NOT_CONVERTED[color & 0xFF];
+        }
     }
 
     /**
@@ -416,12 +503,13 @@ final class AmbientLightMath {
     }
 
     /**
-     * Writes the square root of the light into {@code encoded}, for the cells that can be seen.
-     * That is what an extended sRGB bitmap expects.
+     * Writes the square root of the light into {@code encoded}. That is what an extended sRGB
+     * bitmap expects. The cells behind the picture get the colors of the picture: when the
+     * player moves, they are in view until the light is made for the new place.
      *
-     * @return The largest change of any of those cells from {@code presented}.
+     * @return The largest change from {@code presented} of any of the cells that can be seen.
      */
-    static float encodeVisible(float[] light, float[] encoded, float[] presented, int width, int height, float[] picture) {
+    static float encode(float[] light, float[] encoded, float[] presented, int width, int height, float[] picture) {
         final int hiddenFrom = hiddenFrom(picture);
         final int hiddenTo = hiddenTo(picture, width);
         float largestChange = 0f;
@@ -429,15 +517,11 @@ final class AmbientLightMath {
         for (int y = 0; y < height; y++) {
             final boolean hiddenRow = hiddenFrom < hiddenTo && isHiddenRow(y, picture);
             for (int x = 0; x < width; x++) {
-                if (hiddenRow && x == hiddenFrom) {
-                    index += (hiddenTo - hiddenFrom) * 3;
-                    x = hiddenTo - 1;
-                    continue;
-                }
+                final boolean hidden = hiddenRow && x >= hiddenFrom && x < hiddenTo;
                 for (int channel = 0; channel < 3; channel++) {
                     final float value = (float) Math.sqrt(Math.min(1f, light[index]));
                     encoded[index] = value;
-                    largestChange = Math.max(largestChange, Math.abs(value - presented[index]));
+                    if (!hidden) largestChange = Math.max(largestChange, Math.abs(value - presented[index]));
                     index++;
                 }
             }
@@ -446,28 +530,13 @@ final class AmbientLightMath {
     }
 
     /**
-     * Writes the visible cells as half floats. Alpha is left alone: {@link #fillAlpha} sets it once.
+     * Writes the cells as half floats. Alpha is left alone: {@link #fillAlpha} sets it once.
      */
-    static void toHalfFloats(float[] encoded, short[] halfFloats, int width, int height, float[] picture) {
-        final int hiddenFrom = hiddenFrom(picture);
-        final int hiddenTo = hiddenTo(picture, width);
-        int source = 0;
-        int target = 0;
-        for (int y = 0; y < height; y++) {
-            final boolean hiddenRow = hiddenFrom < hiddenTo && isHiddenRow(y, picture);
-            for (int x = 0; x < width; x++) {
-                if (hiddenRow && x == hiddenFrom) {
-                    source += (hiddenTo - hiddenFrom) * 3;
-                    target += (hiddenTo - hiddenFrom) * 4;
-                    x = hiddenTo - 1;
-                    continue;
-                }
-                halfFloats[target] = encodeHalf(encoded[source]);
-                halfFloats[target + 1] = encodeHalf(encoded[source + 1]);
-                halfFloats[target + 2] = encodeHalf(encoded[source + 2]);
-                source += 3;
-                target += 4;
-            }
+    static void toHalfFloats(float[] encoded, short[] halfFloats) {
+        for (int source = 0, target = 0; source < encoded.length; source += 3, target += 4) {
+            halfFloats[target] = encodeHalf(encoded[source]);
+            halfFloats[target + 1] = encodeHalf(encoded[source + 1]);
+            halfFloats[target + 2] = encodeHalf(encoded[source + 2]);
         }
     }
 
@@ -512,6 +581,19 @@ final class AmbientLightMath {
                 : Math.max(0f, 1f - (1f - LIGHT_PAGE_MIN_BRIGHTNESS) / (1f - brightness));
     }
 
+    /**
+     * The cover that keeps the text readable under a weaker light. A weaker light is closer to
+     * the page color already, so it needs less of the cover, and none if the text is readable
+     * without it.
+     *
+     * @param cover    The cover of the full light, from {@link #readabilityCover}.
+     * @param strength The share of the light that is shown, above 0 and up to 1.
+     * @return The opacity of the cover, from 0 to 1.
+     */
+    static float coverAtStrength(float cover, float strength) {
+        return Math.max(0f, 1f - (1f - cover) / strength);
+    }
+
     private static float clamp(float value) {
         return Math.max(0f, Math.min(1f, value));
     }
@@ -540,7 +622,7 @@ final class AmbientLightMath {
 
         final int difference = luma(color) - luma(pageColor);
         final boolean darkPage = luma(pageColor) < 128;
-        // Pure black on a dark grey page and pure white on an off-white page are page too.
+        // Pure black on a dark gray page and pure white on an off-white page are page too.
         if (Math.abs(difference) <= PAGE_LUMA_TOLERANCE || darkPage == (difference < 0)) return 0;
         if (Math.abs(difference) > MAX_RAISED_LUMA_DIFFERENCE) return color;
 

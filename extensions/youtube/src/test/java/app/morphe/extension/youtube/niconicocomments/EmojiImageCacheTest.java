@@ -22,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.RejectedExecutionException;
@@ -34,7 +35,7 @@ public class EmojiImageCacheTest {
         EmojiImageCache<String> cache = new EmojiImageCache<>();
         EmojiImageCache.Entry<String> first = cache.beginLoad("emoji", Set.of("emoji"));
         for (int i = 0; i < 100; i++) assertSame(first, cache.beginLoad("emoji", Set.of("emoji")));
-        assertTrue(first.loading);
+        assertTrue(Objects.requireNonNull(first).loading);
         assertTrue(cache.complete("emoji", first, "bitmap"));
         assertFalse(first.loading);
         assertEquals("bitmap", first.value);
@@ -96,7 +97,7 @@ public class EmojiImageCacheTest {
         EmojiImageCache.Entry<String> current = cache.beginLoad("emoji", Set.of());
         assertFalse(cache.complete("emoji", old, "old bitmap"));
         assertSame(current, cache.get("emoji"));
-        assertNull(current.value);
+        assertNull(Objects.requireNonNull(current).value);
     }
 
     @Test
@@ -104,7 +105,7 @@ public class EmojiImageCacheTest {
         EmojiImageCache<String> cache = new EmojiImageCache<>();
         EmojiImageCache.Entry<String> entry = cache.beginLoad("emoji", Set.of());
         cache.complete("emoji", entry, null);
-        assertTrue(entry.failed);
+        assertTrue(Objects.requireNonNull(entry).failed);
         assertSame(entry, cache.beginLoad("emoji", Set.of("emoji")));
     }
 

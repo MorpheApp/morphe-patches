@@ -25,10 +25,11 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
-  <string name="morphe_music_downloads_playlist_rename">ប្ដូរឈ្មោះ</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">ដោនឡូដ</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_03_general_title">ជាទូទៅ</string>
+  <string name="morphe_settings_music_screen_05_misc_title">ផ្សេងៗទៀត</string>
+  <string name="morphe_settings_music_screen_06_player_title">ការីចាក់</string>
   <!-- ad.hideAdsPatch -->
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <!-- interaction.crossfade.crossfadePatch -->
@@ -36,7 +37,10 @@ Second \"item\" text"</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- video.speed.playbackSpeedPatch -->
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.playlisttags.playlistTagsPatch -->

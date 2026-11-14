@@ -112,14 +112,24 @@ public final class YouTubeGlassNavigationBar {
     public static final int MARGIN_HORIZONTAL = Dim.dp12;
 
     /**
+     * The corner radius of the capsule, in parts of its height: less round by default, with corners like the
+     * glass miniplayer, or with round ends. Also used by the preview in the settings.
+     */
+    public static float getCornerRadiusFraction() {
+        return Settings.NAVIGATION_BAR_GLASS_ROUND.get() ? 0.5f : 0.3f;
+    }
+
+    private static final float CORNER_RADIUS_FRACTION = getCornerRadiusFraction();
+
+    /**
      * The most alpha of the tint the app draws over its blurred background.
      */
     private static final float LIGHT_BLUR_TINT_ALPHA = 0.50f;
     private static final float DARK_BLUR_TINT_ALPHA = 0.40f;
 
     /**
-     * How opaque the glass is, from the opacity slider. The slider is at 50 by default, which
-     * keeps the default alphas, and every alpha is scaled by it: 0 is fully clear, 100 doubles them.
+     * How opaque the glass is, from the opacity slider. Every alpha is scaled by it: 50 keeps the
+     * default alphas, 0 is fully clear and 100 doubles them. The slider is at 20 by default, a clear glass.
      */
     private static final float OPACITY_SCALE = SeekBarPreference.clampToRange(Settings.NAVIGATION_BAR_GLASS_OPACITY) / 50f;
 
@@ -361,6 +371,41 @@ public final class YouTubeGlassNavigationBar {
             Logger.printDebug(() -> "Glass navigation bar blur tint alpha: " + alpha + " -> " + newAlpha);
             tint.setAlpha(newAlpha);
         }
+    }
+
+    private static final int[] capsuleLocation = new int[2];
+
+    /**
+     * Called from {@link MinimalMiniplayerPatch}, which keeps the minimal miniplayer as wide as the capsule
+     * in landscape.
+     *
+     * @param out Set to the left and the right of the capsule in the window.
+     * @return If the navigation bar is drawn as a capsule. It still is while the app slides the bar away.
+     */
+    static boolean getCapsuleSpanInWindow(int[] out) {
+        if (!ENABLED) return false;
+
+        View pivotBar = currentPivotBar.get();
+        if (pivotBar == null || !pivotBar.isAttachedToWindow() || pivotBar.getWidth() <= 0
+                || pivotBar.getVisibility() != View.VISIBLE
+                || !(pivotBar.getBackground() instanceof GlassCapsuleDrawable)) {
+            return false;
+        }
+
+        // The same edges as the capsule host.
+        float left = pivotBar.getPaddingLeft();
+        float right = pivotBar.getWidth() - pivotBar.getPaddingRight();
+        if (pivotBar instanceof ViewGroup bar && bar.getChildCount() > 0
+                && bar.getChildAt(0) instanceof ViewGroup tabs && tabs.getWidth() > 0) {
+            left = Math.max(left, tabs.getLeft() + tabs.getTranslationX());
+            right = Math.min(right, tabs.getRight() + tabs.getTranslationX());
+        }
+        if (right <= left) return false;
+
+        pivotBar.getLocationInWindow(capsuleLocation);
+        out[0] = capsuleLocation[0] + Math.round(left);
+        out[1] = capsuleLocation[0] + Math.round(right);
+        return true;
     }
 
     public static final class GlassAvailability implements Setting.Availability {
@@ -612,6 +657,11 @@ public final class YouTubeGlassNavigationBar {
         public boolean isOverDarkPlayer() {
             // The Shorts player is always dark, whatever the app theme.
             return ShortsPlayerState.isOpen();
+        }
+
+        @Override
+        public float getCornerRadius(RectF capsule) {
+            return capsule.height() * CORNER_RADIUS_FRACTION;
         }
     }
 

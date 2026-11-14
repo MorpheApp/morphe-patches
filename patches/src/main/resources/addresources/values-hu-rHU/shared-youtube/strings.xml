@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Új beállítások kiemelése</string>
   <string name="morphe_settings_new_indicator_days_summary">Napok száma, amelyek alatt egy pont jelenik meg a frissítéssel hozzáadott beállítások és opciók mellett</string>
   <string name="morphe_settings_new_indicator_days_off">Ki</string>
+  <string name="morphe_settings_new_indicator_clear_title">Minden beállítást jelölj meg látottnak</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Távolítsa el a pontot az összes új beállításból és opcióból</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Jelölje az összes beállítást láttaknak?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">A pont eltűnik az összes új beállításból és opcióból. A jövőbeli frissítések által hozzáadott beállítások továbbra is ki lesznek emelve.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Indítsa újra a beállítások befejezéséhez</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."</string>
   <string name="morphe_external_downloader_empty_warning">A csomagnév nem lehet üres</string>
+  <string name="morphe_export_download_folder_dialog_title">Exportációs mappa</string>
+  <string name="morphe_export_download_folder_change">Mappa megváltoztatása</string>
+  <string name="morphe_export_download_folder_changed">Export mappája megváltoztatva</string>
+  <string name="morphe_export_download_folder_reset">Export mappa visszaállítva</string>
+  <string name="morphe_export_download_folder_missing">Nem található az exportmappa: %s</string>
+  <string name="morphe_export_download_flyout_title">Exportálás a készülékre</string>
+  <string name="morphe_export_download_canceled">Exportálás törölve</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Egyéni</string>
   <string name="morphe_custom_branding_icon_title">Alkalmazás ikonja</string>
@@ -110,6 +121,20 @@ Ha YouTube Premium-felhasználó vagy, ez a beállítás nem feltétlenül szük
 Legyen %2$s az alapértelmezett kliens?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Váltás</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ennek a beállításnak a kikapcsolása lejátszási problémákat okozhat</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Az Android System WebView ki van kapcsolva vagy nincs telepítve.
+
+A videólejátszáshoz szükség van az Android System WebView-re. Kapcsolja be és frissítse a legújabb verzióra.
+
+Koppintson az OK gombra az Android System WebView megnyitásához."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Az Android System WebView verziója elavult (%s).
+
+A videólejátszás esetleg nem működik, amíg az Android System WebView nem frissül a legújabb verzióra.
+
+Koppintson az OK gombra az Android System WebView megnyitásához."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ne jelenjen meg többet</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Az Android System WebView nincs telepítve. Telepítse a videólejátszás javításához</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Próbálja meg a következők engedélyezését: Videófolyamok hamisítása &gt; Android VR bejelentkezés</string>
@@ -142,6 +167,28 @@ A bejelentkezéshez nyomd meg lent a folytatást"</string>
 • A Morphe-beállítások exportálása és importálása nem tartalmazza az Android VR-hitelesítést
 • Ha ez az alkalmazás 6 hónapig nem használatos, a Google eltávolítja a hitelesítést
 • Újra be kell jelentkeznie, ha megváltoztatja a Google-jelszavát, vagy eltávolítja ezt az eszközt a Google-beállításaiból"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Bejelentkezés mobilweben</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcionális: jelentkezz be a YouTube weboldalára, hogy a fiókoddal játszass videókat. Koppints ide a folytatáshoz</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Jelenleg mobilweben bejelentkezve</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ennek a funkciónak a használatához állítsa az \"Alapértelmezett kliens\" beállítást Mobil webre</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Jelentkezzen be a Mobil webbe</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"A Mobil web kijelentkezett állapotban, vagy a YouTube weboldalra bejelentkezve játszítja le a videókat
+
+• Bejelentkezve lejtszathatók a fiókot igénylő videók, például a korlátozott korhatárú videók
+• A Google bejelentkezési oldala ebben az alkalmazásban nyílik meg
+• A bejelentkezést csak a lejátszott videók lekérézésére használják
+• A bejelentkezési adatok csak ezen a készüléken lesznek mentve
+
+A bejelentkezéshez nyomja meg alul a folytatás gombot"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Bejelentkezés mentve
+
+• A Morphe beállításai nem importálják/exportálják a mobil webes bejelentkezést
+• Ha a Google befejezi a bejelentkezést, a videók kijelentkezett állapotban futnak, amíg újra be nem jelentkezesz
+• A kijelentkezés ezt az eszközt kijelentkezteti a YouTube weboldaláról is"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">A mobil webes bejelentkezés lejárt, próbáld meg újra bejelentkezni a mobil webes felületre</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Kijelentkezés a mobil webes felületről</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Az Android System WebView nem érhető el. Telepítsd vagy engedélyezd a bejelentkezéshez</string>
   <string name="morphe_oauth2_connection_failure_timeout">Az OAuth2 átmenetileg nem elérhető (az API időtúllépés miatt)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Az Android VR-bejelentkezés lejárt, próbáld meg újra bejelentkezni a VR-ba</string>
   <string name="morphe_oauth2_connection_failure_status">Az OAuth2 átmenetileg nem érhető el (státusz: %s)</string>
@@ -207,6 +254,20 @@ A bejelentkezéshez nyomd meg lent a folytatást"</string>
   <string name="morphe_replace_music_with_youtube_summary">A megosztott linkekben lecseréli a music.youtube.com-ot a youtube.com-ra</string>
   <string name="morphe_replace_links_with_shortener_title">Módosítsa a megosztási linkeket youtu.be-ra</string>
   <string name="morphe_replace_links_with_shortener_summary">Arra kényszeríti a videókat, hogy a rövidített youtu.be URL-formátumot használják</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatikus</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Videóminőség megjegyzése</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Az egyéni minőségválasztást alkalmazza minden jövőbeli videóra</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Minőségváltás értesítései</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Értesítést mutat, amikor egy új alapértelmezett minőség được mentve</string>
+  <string name="morphe_video_quality_default_wifi_title">Alapértelmezett videóminőség Wi-Fi hálózaton</string>
+  <string name="morphe_video_quality_default_mobile_title">Alapértelmezett videóminőség mobilhálózaton</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Alapértelmezett mobil minőség módosítva: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Alapértelmezett Wi-Fi minőség módosítva: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Rendszer megosztási lapjának megnyitása</string>
+  <string name="morphe_open_system_share_sheet_summary">Tartalom megosztásakor a rendszer megosztási lapját nyitja meg az alkalmazásbéli helyett</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho naplózás</string>
   <string name="morphe_debug_litho_entry_disabled">Kikapcsolva</string>

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.youtube.innertube.queue.PlaylistQueueRenderer;
+import app.morphe.extension.youtube.patches.VideoInformation;
 
 /** An authenticated native watch window; advertised totals can include hidden videos. */
 public record PlaylistPage(List<Row> rows, int selectedIndex, int totalCount,
@@ -143,7 +144,7 @@ public record PlaylistPage(List<Row> rows, int selectedIndex, int totalCount,
         } else {
             return null;
         }
-        return list.isEmpty() || !PlaylistQueue.isVideoId(video) || index < 0 ? null
+        return list.isEmpty() || !VideoInformation.isVideoId(video) || index < 0 ? null
                 : new Anchor(list, video, index, entry, params, endpoint.getClickTrackingParams());
     }
 

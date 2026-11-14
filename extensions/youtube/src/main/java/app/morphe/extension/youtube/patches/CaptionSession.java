@@ -112,6 +112,7 @@ final class CaptionSession {
                 changed, failed, () -> System.nanoTime() / 1_000_000L, translatePrimary, translateSecondary);
     }
 
+    @SuppressWarnings("SameParameterValue")
     CaptionSession(List<StableCaptionBlockPolicy.Block> source, String sourceLanguage,
                    String primaryLanguage, @Nullable String secondaryLanguage, Translator translator,
                    Executor worker, Runnable changed, Runnable failed) {
@@ -119,6 +120,7 @@ final class CaptionSession {
                 changed, failed, true, true);
     }
 
+    @SuppressWarnings("SameParameterValue")
     CaptionSession(List<StableCaptionBlockPolicy.Block> source, String sourceLanguage,
                    String primaryLanguage, @Nullable String secondaryLanguage, Translator translator,
                    Executor worker, Runnable changed, Runnable failed, LongSupplier clock) {
@@ -285,6 +287,7 @@ final class CaptionSession {
             if (!failure.retryable) {
                 synchronized (this) {
                     for (int index : batch) {
+                        //noinspection DataFlowIssue
                         String[] values = ready.computeIfAbsent(index, ignored -> new String[SLOT_COUNT]);
                         if (values[slot] == null) values[slot] = FAILED_OUTPUT;
                     }
@@ -302,6 +305,7 @@ final class CaptionSession {
             synchronized (this) {
                 for (int i = 0; i < batch.size(); i++) {
                     if (output.get(i) != null) {
+                        //noinspection DataFlowIssue
                         ready.computeIfAbsent(batch.get(i), ignored -> new String[SLOT_COUNT])[slot] = output.get(i);
                     }
                 }
@@ -356,7 +360,7 @@ final class CaptionSession {
                 retryDelay = Math.max(retryDelay, translateSlot(batch, slot));
                 if (!isActive()) return;
 
-                // One slow target must not hold an already translated language off screen.
+                // One slow target must not hold an already translated language off-screen.
                 changed.run();
                 if (!isActive()) return;
             }
@@ -399,7 +403,7 @@ final class CaptionSession {
             second = output == null ? null : output[SECONDARY_SLOT];
         }
         if (first == null) first = translator.cached(sourceLanguage, primaryLanguage, cue.text);
-        if (second == null && secondaryLanguage != null)
+        if (second == null)
             second = translator.cached(sourceLanguage, secondaryLanguage, cue.text);
         boolean unavailable = translatePrimary && (FAILED_OUTPUT.equals(first) || (first == null && attempts[found] > 0));
         if (translatePrimary && FAILED_OUTPUT.equals(first)) first = null;

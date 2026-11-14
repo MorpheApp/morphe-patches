@@ -74,7 +74,6 @@ private val startupAnimationPatch = patch {
     }
 }
 
-@Suppress("unused")
 val customBrandingPatch = baseCustomBrandingPatch(
     originalLauncherIconName = { "ic_launcher_release" },
     originalNotificationIconName = "music_push_notification_white",

@@ -19,6 +19,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoDrawableColorHook
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.patches.shared.misc.litho.filter.ElementItemConstructorFingerprint
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.commandrouter.commandRouterHookPatch
@@ -84,7 +85,6 @@ private fun MutableClass.hookViewGroupMethod(name: String, parameterType: String
     )
 }
 
-@Suppress("unused")
 val feedCardLayoutPatch = patch(
     name = "Feed card layout",
     description = "Adds an option to show or hide the card layout of feed videos, which YouTube sends as an A/B test."

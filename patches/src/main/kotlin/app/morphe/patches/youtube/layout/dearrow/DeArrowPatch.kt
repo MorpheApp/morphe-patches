@@ -10,7 +10,9 @@
 
 package app.morphe.patches.youtube.layout.dearrow
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.patch
+import app.morphe.patches.shared.misc.glide.GlideRequestBuilderLoadGenericFingerprint
 import app.morphe.patches.shared.misc.litho.relayout.lithoRelayoutPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -35,7 +37,6 @@ import app.morphe.util.setExtensionIsPatchIncluded
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowPatch;"
 
-@Suppress("unused")
 val deArrowPatch = patch(
     name = "DeArrow",
     description = "Adds options to replace video thumbnails and titles using the DeArrow API, " +
@@ -121,5 +122,16 @@ val deArrowPatch = patch(
         addImageURLHook(EXTENSION_CLASS)
         addImageURLSuccessCallbackHook(EXTENSION_CLASS)
         addImageURLErrorCallbackHook(EXTENSION_CLASS)
+
+        // Thumbnails are loaded with Glide, which caches them by the URL before it's replaced.
+        // The original thumbnail of a video whose DeArrow icon was tapped is loaded with another image model,
+        // so the replaced thumbnail cached for the URL is not shown.
+        GlideRequestBuilderLoadGenericFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->getImageModel(Ljava/lang/Object;)Ljava/lang/Object;
+                move-result-object p1
+            """
+        )
     }
 }

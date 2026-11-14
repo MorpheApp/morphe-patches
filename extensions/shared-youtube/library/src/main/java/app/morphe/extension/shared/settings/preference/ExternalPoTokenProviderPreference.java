@@ -14,7 +14,6 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.preference.SwitchPreference;
 import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
@@ -24,7 +23,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings({"deprecation", "unused"})
-public class ExternalPoTokenProviderPreference extends SwitchPreference {
+public class ExternalPoTokenProviderPreference extends BooleanSettingPreference {
 
     /**
      * Callback when the app is resumed. Used to enable preference switch after helper is installed.

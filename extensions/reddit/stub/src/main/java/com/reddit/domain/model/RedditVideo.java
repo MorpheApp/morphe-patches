@@ -1,5 +1,6 @@
 package com.reddit.domain.model;
 
+@SuppressWarnings("unused")
 public final class RedditVideo {
     public String getDashUrl() {
         throw new UnsupportedOperationException("Stub");

@@ -11,10 +11,12 @@ import android.util.Base64;
 
 import androidx.annotation.Nullable;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
@@ -22,6 +24,8 @@ import java.security.KeyPairGenerator;
 import java.security.MessageDigest;
 import java.security.interfaces.ECPublicKey;
 import java.security.spec.ECGenParameterSpec;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -74,7 +78,7 @@ public final class UnisonProvider implements LyricsProvider {
         }
     }
 
-    private static String base64Url(BigInteger value) {
+    static String base64Url(BigInteger value) {
         final byte[] bytes = value.toByteArray();
         final byte[] coordinate = new byte[32];
         int srcPos = 0;
@@ -87,7 +91,7 @@ public final class UnisonProvider implements LyricsProvider {
                 Base64.URL_SAFE | Base64.NO_PADDING | Base64.NO_WRAP);
     }
 
-    private static String toHex(byte[] bytes) {
+    static String toHex(byte[] bytes) {
         final StringBuilder builder = new StringBuilder(bytes.length * 2);
         for (byte b : bytes) {
             builder.append(Character.forDigit((b >> 4) & 0xF, 16));
@@ -96,7 +100,7 @@ public final class UnisonProvider implements LyricsProvider {
         return builder.toString();
     }
 
-    private static String sourceUrl(String videoId) {
+    static String sourceUrl(String videoId) {
         return "https://unison.boidu.dev/song/" + videoId;
     }
 
@@ -109,9 +113,14 @@ public final class UnisonProvider implements LyricsProvider {
         return "Unison";
     }
 
+    @Override
+    public boolean hasCandidates() {
+        return true;
+    }
+
     @Nullable
     @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) {
         final String videoId = VideoInformation.getVideoId();
         if (videoId.isEmpty()) {
             return null;
@@ -127,12 +136,35 @@ public final class UnisonProvider implements LyricsProvider {
         return FetchResult.of(fetchByVideoId(videoId, title, artist, duration, album));
     }
 
+    @Override
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws IOException {
+        final String videoId = VideoInformation.getVideoId();
+        final JSONObject root = videoId.isEmpty() ? null
+                : request(BASE_URL + "/variants/" + LyricsRequests.encode(videoId));
+        final JSONArray data = root == null ? null : root.optJSONArray("data");
+        if (data == null) {
+            return Collections.emptyList();
+        }
+        List<LyricsRequests.VotedLyrics> found = new ArrayList<>();
+        for (int i = 0; i < data.length(); i++) {
+            JSONObject variant = data.optJSONObject(i);
+            if (variant == null || variant.optBoolean("hidden", false)) {
+                continue;
+            }
+            Lyrics lyrics = parseVariant(variant, videoId);
+            if (lyrics != null && !lyrics.isEmpty()) {
+                found.add(new LyricsRequests.VotedLyrics(variant.optInt("voteCount", 0), lyrics));
+            }
+        }
+        return LyricsRequests.videoIdCandidates(found);
+    }
+
     @Nullable
     private Lyrics fetchByVideoId(String videoId, String title, String artist,
                                   int duration, String album) {
-        HttpURLConnection connection = null;
+        final StringBuilder url = new StringBuilder();
         try {
-            final StringBuilder url = new StringBuilder(BASE_URL)
+            url.append(BASE_URL)
                     .append("?v=").append(LyricsRequests.encode(videoId));
             if (!title.isEmpty()) {
                 url.append("&song=").append(LyricsRequests.encode(title));
@@ -146,33 +178,31 @@ public final class UnisonProvider implements LyricsProvider {
             if (album != null && !album.isEmpty()) {
                 url.append("&album=").append(LyricsRequests.encode(album));
             }
+        } catch (UnsupportedEncodingException ex) {
+            Logger.printDebug(() -> name() + " encode failure", ex);
+            return null;
+        }
+        final JSONObject root = request(url.toString());
+        final JSONObject data = root == null ? null : root.optJSONObject("data");
+        return data == null ? null : parseVariant(data, videoId);
+    }
 
-            connection = LyricsRequests.openConnection(url.toString());
+    /** The response of the API, or null when it has nothing for the video. */
+    @Nullable
+    private JSONObject request(String url) {
+        HttpURLConnection connection = null;
+        try {
+            connection = LyricsRequests.openConnection(url);
             connection.setRequestProperty("X-Key-ID", getKeyId());
             final int code = connection.getResponseCode();
             if (code == 404) {
-                connection.disconnect();
                 return null;
             }
             if (code != 200) {
                 LyricsRequests.logFailure(name(), connection);
                 return null;
             }
-            JSONObject root = Requester.parseJSONObject(connection);
-            JSONObject data = root.optJSONObject("data");
-            if (data == null) {
-                return null;
-            }
-            final String format = LyricsRequests.optString(data, "format");
-            final String lyrics = LyricsRequests.optString(data, "lyrics");
-            if (format == null || lyrics == null) {
-                return null;
-            }
-            final JSONObject submitter = data.optJSONObject("submitter");
-            final String submitterName = submitter != null
-                    ? LyricsRequests.optString(submitter, "displayName")
-                    : null;
-            return parseLyrics(format, lyrics, videoId, submitterName);
+            return Requester.parseJSONObject(connection);
         } catch (IOException | JSONException ex) {
             Logger.printDebug(() -> "Could not fetch Unison lyrics", ex);
             return null;
@@ -181,6 +211,21 @@ public final class UnisonProvider implements LyricsProvider {
                 connection.disconnect();
             }
         }
+    }
+
+    /** One submitted lyric, in the format it was submitted in. */
+    @Nullable
+    private Lyrics parseVariant(JSONObject variant, String videoId) {
+        final String format = LyricsRequests.optString(variant, "format");
+        final String lyrics = LyricsRequests.optString(variant, "lyrics");
+        if (format == null || lyrics == null) {
+            return null;
+        }
+        final JSONObject submitter = variant.optJSONObject("submitter");
+        final String submitterName = submitter != null
+                ? LyricsRequests.optString(submitter, "displayName")
+                : null;
+        return parseLyrics(format, lyrics, videoId, submitterName);
     }
 
     @Nullable

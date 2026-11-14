@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Nabarmendu ezarpen berriak</string>
   <string name="morphe_settings_new_indicator_days_summary">Eguneratze batek gehitutako ezarpen eta aukeren ondoan puntua erakusten den egun kopurua</string>
   <string name="morphe_settings_new_indicator_days_off">Desaktibatu</string>
+  <string name="morphe_settings_new_indicator_clear_title">Markatu konfigurazio guztiak ikusitako gisa</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Kendu puntua konfigurazio eta aukera berri guztietatik</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Konfigurazio guztiak ikusitako gisa markatu?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Puntua konfigurazio eta aukera berri guztietatik kendu da. Etorkizuneko eguneratzeekin gehituzko konfigurazioak nabarmenduta egongo dira oraindik.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Berrabiarazi konfigurazioa amaitzeko</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Egiaztatu pakete-izena zuzena dela eta aplikazioa instalatuta dagoela"</string>
   <string name="morphe_external_downloader_empty_warning">Paketearen izena ezin da hutsik egon</string>
+  <string name="morphe_export_download_folder_dialog_title">Exportazio karpeta</string>
+  <string name="morphe_export_download_folder_change">Aldatu karpeta</string>
+  <string name="morphe_export_download_folder_changed">Exportazio karpeta aldatu da</string>
+  <string name="morphe_export_download_folder_reset">Exportazio karpeta berrezarri da</string>
+  <string name="morphe_export_download_folder_missing">Ezin izan da %s esportazio karpeta aurkitu</string>
+  <string name="morphe_export_download_flyout_title">Gailura esportatu</string>
+  <string name="morphe_export_download_canceled">Esportazioa bertan behera utzi da</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pertsonalizatua</string>
   <string name="morphe_custom_branding_icon_title">Aplikazioaren ikonoa</string>
@@ -110,6 +121,20 @@ YouTube Premium erabiltzailea bazara, agian ez da ezarpen hau behar"</string>
 %2$s bezero lehenetsia egin nahi duzu?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Aldatu</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ezarpen hau desaktibatzeak erreprodukzio arazoak eragin ditzake</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView txalrarik dago edo ez dago instalatuta.
+
+Bideoak erreproduziteko Android System WebView behar da. Aktibatu eta eguneratu azken bertsiora.
+
+Sakatu AD to Android System WebView irekitzeko."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView bertsio zaharra da (%s bertsioa).
+
+Bideoak erreproduzitea huts egin dezake Android System WebView azken bertsiora eguneratu arte.
+
+Sakatu AD to Android System WebView irekitzeko."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Ez erakutsi berriz</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView ez dago instalatuta. Instalatu bideoak erreproduziteko arazoa konpontzeko</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Saiatu aktibatzen: Bideo-fluxuak imitatu &gt; Android VR saioa hasi</string>
@@ -142,6 +167,28 @@ Saioa hasteko, sakatu behean jarraitu"</string>
 • Morphe konfigurazioek ez dute Android VR autentifikazioa inportatu/esportatuko
 • Aplikazio hau 6 hilabetez erabili gabe badago, Googlek autentifikazio hau kenduko du
 • Google pasahitza aldatzen baduzu edo gailu hau Google ezarpenetatik kentzen baduzu, berriro saioa hasi beharko duzu"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Web Mobile bidez saioa hasi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Aukeratua: saioa hasi YouTube webgunetan zure kontuarekin bideoaka izateko. Egun hemen jarraitzeko</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Gaur egun Web Mobile bidez saioa hasita dago</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ezaugarri hau erabiltzeko, aldatu \'Bezero lehenetsia\' Mobile Web-era</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Sartu Mobile Web-en</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web-ek bideoak errepasatzen ditu saioa itxituta, edo YouTube webgunean saioa hasituta
+
+• Saioa hasituta, kontu bat behar duten bideoak errepasatu daitezke, adina mugatutako bideoak adibidez
+• Google-en sarrera orria aplikazio honetan irekitzen da
+• Sarrera erabilitzen da errepasatzen dituzun bideoak lortzeko soilik
+• Sarrera gailu honetan soilik gordetzen da
+
+Sartzeko, sakatu beheko jarraitu botoia"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Sarrera gordeta da
+
+• Zure Morphe konfigurazioek ez dute Mobile Web sarrera inportatuko/esportatuko
+• Googlek sarrera amaituen gero, bideoak saioa hasi gabea izango dira berriz saioa hasi arte
+• Saioa amaitzeak gailu hau YouTube webgunean ere amaituko du"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobile Web sarrera iraungi da, saiatu berriro Mobile Web-en saioa hasten</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Mobile Web saioa amaituta</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView ez dago eskuragarri. Instalatu edo aktibatu saioa hasteko</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 une batez ez dago erabilgarri (APIak denbora gehiegi behar izan du)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR saioa iraungi da, saiatu berriro VR-n saioa hasten</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 une batez ez dago erabilgarri (egoera %s)</string>
@@ -207,6 +254,20 @@ Saioa hasteko, sakatu behean jarraitu"</string>
   <string name="morphe_replace_music_with_youtube_summary">Partekatutako esteketan music.youtube.com youtube.com-z ordezkatzen du</string>
   <string name="morphe_replace_links_with_shortener_title">Aldatu partekatze estekak youtu.be-ra</string>
   <string name="morphe_replace_links_with_shortener_summary">Bideoek youtu.be URL formatu laburtua erabiltzera behartzen ditu</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Automatiko</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Gogoratu bideo kalitatea</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Eskuz hautatutako kalitatea etorkizuneko bideo guztietan aplikatzen da</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Kalitate aldaketa jakinarazpenak</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Kalitate lehenetsi berri bat gordetzen denean jakinarazpen bat erakusten du</string>
+  <string name="morphe_video_quality_default_wifi_title">Bideo kalitate lehenetsia Wi-Fi sarean</string>
+  <string name="morphe_video_quality_default_mobile_title">Bideo kalitate lehenetsia sare mugikorrean</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Lehenetsitako mugikorreko kalitatea aldatu da: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Lehenetsitako Wi-Fi kalitatea aldatu da: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Ireki sistemaren partekatze panela</string>
+  <string name="morphe_open_system_share_sheet_summary">Edukia partekatzean, aplikazioaren ordez sistemaren partekatze panela irekitzen du</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho logeatzea</string>
   <string name="morphe_debug_litho_entry_disabled">Desaktibatuta</string>

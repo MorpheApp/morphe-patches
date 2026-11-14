@@ -14,6 +14,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
@@ -80,10 +81,22 @@ internal object MiniplayerPaidPromotionLabelFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Handles the activated triggers of the ad slots, such as the triggers that enter a slot
+ * and the triggers that expire a slot.
+ */
 internal object LoadVideoAdsFingerprint : Fingerprint(
     strings = listOf(
         "TriggerBundle doesn't have the required metadata specified by the trigger ",
         "Ping migration no associated ping bindings for activated trigger: ",
+    ),
+    filters = listOf(
+        // The triggers are handled by their category.
+        fieldAccess(opcode = Opcode.IGET, type = "I"),
+        methodCall(
+            smali = "Landroid/util/SparseArray;->get(I)Ljava/lang/Object;",
+            location = MatchAfterImmediately()
+        )
     )
 )
 
@@ -93,4 +106,15 @@ internal object PlayerBytesAdLayoutFingerprint : Fingerprint(
     strings = listOf(
         "Bootstrapped layout construction resulted in non PlayerBytesLayout. PlayerAds count: ",
     )
+)
+
+/**
+ * Supplies the future the player waits on before it starts a video that has a
+ * player bytes ad slot. The future is completed only once the ad slot is scheduled.
+ */
+internal object PlayerBytesAdSchedulingFingerprint : Fingerprint(
+    classFingerprint = PlayerBytesAdLayoutFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC),
+    returnType = "Lj$/util/Optional;",
+    parameters = listOf("L", "L", "Ljava/lang/String;"),
 )

@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Làm nổi bật các cài đặt mới</string>
   <string name="morphe_settings_new_indicator_days_summary">Số ngày hiển thị dấu chấm bên cạnh các cài đặt và tùy chọn được thêm vào thông qua bản cập nhật</string>
   <string name="morphe_settings_new_indicator_days_off">Tắt</string>
+  <string name="morphe_settings_new_indicator_clear_title">Đánh dấu tất cả cài đặt là đã xem</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Xóa dấu chấm khỏi tất cả các cài đặt và tùy chọn mới</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Đánh dấu tất cả cài đặt là đã xem?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Dấu chấm sẽ được xóa khỏi tất cả các cài đặt và tùy chọn mới. Các cài đặt được thêm vào trong các bản cập nhật tương lai vẫn sẽ được làm nổi bật.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Khởi động lại để hoàn tất thiết lập</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Kiểm tra xem tên gói có chính xác không và ứng dụng đã được cài đặt chưa"</string>
   <string name="morphe_external_downloader_empty_warning">Không được để trống tên gói</string>
+  <string name="morphe_export_download_folder_dialog_title">Thư mục xuất</string>
+  <string name="morphe_export_download_folder_change">Thay đổi thư mục</string>
+  <string name="morphe_export_download_folder_changed">Đã thay đổi thư mục xuất</string>
+  <string name="morphe_export_download_folder_reset">Đã đặt lại thư mục xuất</string>
+  <string name="morphe_export_download_folder_missing">Không tìm thấy thư mục xuất %s</string>
+  <string name="morphe_export_download_flyout_title">Xuất ra thiết bị</string>
+  <string name="morphe_export_download_canceled">Đã hủy xuất</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Tùy chỉnh</string>
   <string name="morphe_custom_branding_icon_title">Biểu tượng ứng dụng</string>
@@ -110,6 +121,20 @@ Nếu bạn đã mua gói Premium, có thể không cần thiết phải bật c
 Đặt %2$s làm máy khách mặc định?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Chuyển</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Tắt cài đặt này có thể gây ra lỗi khi phát</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView đã bị tắt hoặc chưa được cài đặt.
+
+Việc phát video cần có Android System WebView. Hãy bật và cập nhật ứng dụng lên phiên bản mới nhất.
+
+Nhấn OK để mở Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView đã lỗi thời (phiên bản %s).
+
+Việc phát video có thể bị lỗi cho đến khi Android System WebView được cập nhật lên phiên bản mới nhất.
+
+Nhấn OK để mở Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Không hiện lại nữa</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView chưa được cài đặt. Hãy cài đặt ứng dụng để khắc phục lỗi phát video</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Hãy thử bật: Giả mạo luồng phát video &gt; Đăng nhập Android VR</string>
@@ -142,6 +167,28 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
 • Các cài đặt Morphe của bạn sẽ không nhập/xuất xác thực Android VR
 • Nếu ứng dụng này không được sử dụng trong 6 tháng thì Google sẽ xóa xác thực này
 • Nếu bạn thay đổi mật khẩu Google hoặc xóa bỏ cài đặt thiết bị này khỏi cài đặt Google thì cần đăng nhập lại"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Đăng nhập Web di động</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Tùy chọn: đăng nhập vào trang web YouTube để phát video bằng tài khoản của bạn. Nhấn vào đây để tiếp tục</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hiện đang đăng nhập vào Web di động</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Để dùng tính năng này, hãy thay đổi \"Client mặc định\" thành Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Đăng nhập vào Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web phát các video ở chế độ đăng xuất hoặc đã đăng nhập vào trang web YouTube
+
+• Khi đăng nhập, các video yêu cầu tài khoản có thể được phát, chẳng hạn như các video bị giới hạn độ tuổi
+• Trang đăng nhập Google sẽ mở trong ứng dụng này
+• Việc đăng nhập chỉ được dùng để lấy các video bạn phát
+• Thông tin đăng nhập chỉ được lưu trên thiết bị này
+
+Để đăng nhập, hãy nhấn tiếp tục bên dưới"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Đã lưu đăng nhập
+
+• Các cài đặt Morphe của bạn sẽ không nhập/xuất đăng nhập Web Di động
+• Nếu Google kết thúc phiên đăng nhập, các video sẽ được phát ở chế độ đăng xuất cho đến khi bạn đăng nhập lại
+• Đăng xuất cũng sẽ đăng xuất thiết bị này khỏi trang web YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Phiên đăng nhập Web Di động đã hết hạn, hãy thử đăng nhập lại vào Web Di động</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Đã đăng xuất khỏi Web Di động</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView không khả dụng. Hãy cài đặt hoặc bật nó để đăng nhập</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 tạm thời không khả dụng (API đã hết thời gian chờ)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Phiên đăng nhập Android VR đã hết hạn, hãy thử đăng nhập lại vào VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 tạm thời không khả dụng (trạng thái %s)</string>
@@ -207,6 +254,20 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_replace_music_with_youtube_summary">Thay music.youtube.com bằng youtube.com khi chia sẻ liên kết</string>
   <string name="morphe_replace_links_with_shortener_title">Đổi liên kết chia sẻ thành youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Buộc các video dùng định dạng youtu.be</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Tự động</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Nhớ chất lượng video</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Áp dụng chất lượng video mà bạn đã chọn cho tất cả các video trong tương lai</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Thông báo thay đổi chất lượng</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Hiển thị thông báo khi lưu chất lượng video mặc định mới</string>
+  <string name="morphe_video_quality_default_wifi_title">Chất lượng video mặc định trên mạng Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Chất lượng video mặc định trên mạng di động</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Đã thay đổi chất lượng mặc định trên mạng di động thành: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Đã thay đổi chất lượng mặc định trên Wi-Fi thành: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Mở bảng chia sẻ của hệ thống</string>
+  <string name="morphe_open_system_share_sheet_summary">Mở bảng chia sẻ của hệ thống thay vì bảng chia sẻ của ứng dụng khi chia sẻ</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Nhật ký Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Đang tắt</string>

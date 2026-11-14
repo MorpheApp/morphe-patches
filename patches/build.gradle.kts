@@ -60,7 +60,32 @@ dependencies {
     testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
+// The translated strings of addresources, converted to JSON at build time by the converter of
+// addResourcesPatch, so patching only copies them. Each locale and app gets a file of its own.
+val addResourcesJson = tasks.register<JavaExec>("addResourcesJson") {
+    description = "Converts the translated addresources strings to JSON"
+
+    val source = layout.projectDirectory.dir("src/main/resources/addresources")
+    val output = layout.buildDirectory.dir("generated/addresources-json")
+    inputs.dir(source)
+    outputs.dir(output)
+
+    // The compiled patches alone, as the main runtime classpath would need processResources.
+    classpath = files(sourceSets["main"].output.classesDirs, configurations.runtimeClasspath)
+    mainClass.set("app.morphe.patches.all.misc.resources.TranslationsJson")
+    args(source.asFile.path, output.get().asFile.path)
+}
+
+sourceSets.main {
+    resources.srcDir(addResourcesJson)
+}
+
 tasks {
+    processResources {
+        // Patching takes the translated strings from the JSON files.
+        exclude("addresources/values-*/*/strings.xml")
+    }
+
     test {
         useJUnitPlatform()
         dependsOn(":extensions:youtube:generateReleaseProto", ":extensions:youtube:compileReleaseJavaWithJavac")

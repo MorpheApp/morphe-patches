@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">検索結果の動画をキーワードで除外</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">登録チャンネルの動画をキーワードで除外</string>
   <string name="morphe_hide_keyword_content_phrases_title">キーワード</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"非表示にするキーワードやフレーズを、改行で区切って入力してください
+  <string name="morphe_hide_keyword_content_phrases_summary">"非表示にするキーワードやフレーズを改行区切りで入力してください
 
-キーワードは、動画のタイトルやチャンネル名に表示される任意のテキストを指定できます"</string>
+キーワードには動画タイトルに表示される任意のテキストを指定できます。@ユーザー名のキーワードを指定すると、特定のクリエイターによるすべてのコンテンツを非表示にします"</string>
   <string name="morphe_hide_keyword_content_about_summary">"ホーム / 登録チャンネル / 検索 / コメントでは、キーワードに合致するコンテンツを非表示にするようフィルタリングされます
 
 制限事項:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">キーワードを二重引用符で囲むことで、動画のタイトルやチャンネル名に含まれる単語の一部分とキーワードが合致しないようにできます&lt;br&gt;&lt;br&gt;例えば、&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;は、次の動画を除外します: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;しかし、次の動画は除外しません: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">矛盾する宣言があるキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">短すぎて引用符が必要なキーワード: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">全動画を除外するキーワード: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• ホーム: %1$s
@@ -488,7 +487,7 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <!-- interaction.posttranslate.postTranslatePatch -->
   <string name="morphe_post_translate_title">投稿を翻訳</string>
   <string name="morphe_post_translate_summary">コンテンツ クリエイターの投稿を翻訳するためのフライアウト メニュー項目を追加します</string>
-  <string name="morphe_post_translate_language_title">投稿の翻訳言語</string>
+  <string name="morphe_post_translate_language_title">投稿を翻訳する先の言語</string>
   <string name="morphe_post_translate_flyout">翻訳</string>
   <string name="morphe_post_translate_flyout_original">原文を表示</string>
   <string name="morphe_post_translate_started">翻訳中…</string>
@@ -496,11 +495,11 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_post_translate_same_language">投稿はすでに翻訳先の言語で記述されています</string>
   <!-- interaction.onthego.onTheGoPatch -->
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_title">外出先で Morphe を有効にする</string>
+  <string name="morphe_on_the_go_title">Morphe の外出先モードを有効化</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_summary">プレーヤーのフライアウトにある「外出先で」を選択すると、Morphe のカスタムプレーヤーコントロールが開きます</string>
+  <string name="morphe_on_the_go_summary">プレーヤーのフライアウト メニューの「外出先」をタップしたときに、Morphe がカスタマイズした外出先モードのプレーヤー コントロールを開きます</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_on_the_go_panel_title">外出先で</string>
+  <string name="morphe_on_the_go_panel_title">外出先</string>
   <string name="morphe_on_the_go_audio_mode">オーディオモードに切り替える</string>
   <string name="morphe_on_the_go_video_mode">ビデオモードに切り替える</string>
   <string name="morphe_on_the_go_download">ダウンロード</string>
@@ -524,6 +523,10 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">フィードのサムネイルのいいね数を表示</string>
   <string name="morphe_ryd_feed_like_ratio_title">フィードのサムネイルのいいね比率を表示</string>
+  <string name="morphe_ryd_feed_counts_position_title">フィード サムネイルのいいねの位置</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">視聴回数の隣</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">中央右</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">左上</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">コメントを検索</string>
   <string name="morphe_search_comments_summary">コメント欄の検索ボタンをタップして、検索ワードをすべて含む読み込み済みコメントのみを表示します。フレーズで検索する場合は、単語を引用符で囲んでください</string>
@@ -560,18 +563,11 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_export_download_folder_summary">"アプリ内ダウンロードのフライアウトメニューを使用して、アプリ内で保存したビデオをデバイスのストレージにエクスポートします。タップしてエクスポートフォルダを変更してください
 
 エクスポートフォルダ: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">エクスポートフォルダ</string>
-  <string name="morphe_export_download_folder_change">フォルダを変更</string>
-  <string name="morphe_export_download_folder_changed">エクスポートフォルダが変更されました</string>
-  <string name="morphe_export_download_folder_reset">エクスポートフォルダをリセット</string>
-  <string name="morphe_export_download_folder_missing">エクスポートフォルダ %s が見つかりませんでした</string>
-  <string name="morphe_export_download_flyout_title">デバイスにエクスポート</string>
   <string name="morphe_export_download_started">ビデオをエクスポート中</string>
   <string name="morphe_export_download_progress">ビデオを書き出し中: %s%%</string>
   <string name="morphe_export_download_notification_channel">ビデオのエクスポート</string>
   <string name="morphe_export_download_saved">ビデオを %s にエクスポートしました</string>
   <string name="morphe_export_download_failed">ビデオをエクスポートできませんでした</string>
-  <string name="morphe_export_download_canceled">エクスポートをキャンセルしました</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">吹き替え翻訳</string>
   <string name="morphe_vot_screen_summary">動画字幕を翻訳し、デバイス上のテキスト読み上げ機能で字幕の翻訳を字幕に同期しながら読み上げます</string>
@@ -649,6 +645,25 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_loop_video_range_clear">消去</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s をリピートします</string>
   <string name="morphe_loop_video_range_invalid_time">無効なリピート区間です</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">ループ回数</string>
+  <string name="morphe_loop_count_screen_summary">次の動画に移動するまでに、動画を何回ループさせるかを選択してください</string>
+  <string name="morphe_loop_count_title">ループ回数を有効にする</string>
+  <string name="morphe_loop_count_summary">プレーヤーの「詳細」メニューの「動画をループ」の隣に「ループ回数」が表示され、次の動画に移動する前に動画を何回再生するかを選択できます</string>
+  <string name="morphe_loop_count_playlists_title">プレイリストにループ回数を保存</string>
+  <string name="morphe_loop_count_playlists_summary">プレイリストの各動画に選択したループ回数が保持され、プレイリストでその動画が再度再生されるときに「動画をループ」がオンになります。オフにした場合、ループ回数は現在再生中の動画にのみ適用されます</string>
+  <string name="morphe_loop_count_clear_title">保存済みのループ回数を消去</string>
+  <string name="morphe_loop_count_clear_summary">プレイリストに保存されたループ回数を消去します。保存済み動画数: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">保存されたループ回数はありません</string>
+  <string name="morphe_loop_count_clear_dialog_title">保存済みのループ回数を消去しますか？</string>
+  <string name="morphe_loop_count_clear_dialog_message">プレイリストの動画に保存されていたループ回数が消去され、プレイリストで再生されるときに「動画をループ」が自動的にオンにならなくなります</string>
+  <string name="morphe_loop_count_clear_done">保存済みのループ回数を消去しました</string>
+  <string name="morphe_loop_count_flyout_name">ループ回数</string>
+  <string name="morphe_loop_count_dialog_message">次の動画が再生されるまでに動画を何回再生するかを指定します。%1$sから%2$sまで。空欄にすると、制限なく動画をループ再生します</string>
+  <string name="morphe_loop_count_times">%s 回</string>
+  <string name="morphe_loop_count_no_limit">制限なし</string>
+  <string name="morphe_loop_count_decrease">回数を減らす</string>
+  <string name="morphe_loop_count_increase">回数を増やす</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">ピクチャー イン ピクチャー ボタンを表示</string>
   <string name="morphe_pip_button_flyout_title">「ピクチャー イン ピクチャーで再生」を表示</string>
@@ -686,6 +701,9 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_play_all_button_type_entry_11">メンバー限定ショート動画</string>
   <string name="morphe_play_all_button_type_entry_12">メンバー限定ライブ配信</string>
   <string name="morphe_play_all_button_not_available_toast">チャンネル ID が一致しないためプレイリストを生成できません</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">「プレイリストを表示」ボタンを表示</string>
+  <string name="morphe_playlist_panel_button_summary">タップしてプレイリストパネルを開きます。プレイリストを再生しているときのみ表示されます</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">動画の再読み込みボタンを表示</string>
   <string name="morphe_dismiss_player_not_available_toast">動画 ID が利用できません。手動で動画を再度開いてください</string>
@@ -711,8 +729,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_queue_type_entry_2">ネイティブキュー</string>
   <string name="morphe_queue_type_entry_3">Morphe キュー</string>
   <string name="morphe_queue_type_entry_4">Morpheキュー（クライアント側）</string>
-  <string name="morphe_queue_add_flyout_menu_title">フィードのフライアウト メニューにキューの項目を追加</string>
-  <string name="morphe_queue_add_flyout_menu_summary">フィードのフライアウト メニューにキューの項目を追加します。「キューに追加」が表示されない場合に、この機能を有効にしてください</string>
   <string name="morphe_local_queue_sheet_title">キュー</string>
   <string name="morphe_local_queue_open">キュー (%s)</string>
   <string name="morphe_local_queue_clear">すべて消去</string>
@@ -1027,6 +1043,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_navigation_bar_glass_summary">ナビゲーション バーを、フローティングで角が丸い半透明のカプセル状に表示します。不透明なナビゲーション バーのスタイルでは利用できません</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ガラスの不透明度</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ガラス風ナビゲーション バーの透明度を設定します (0 は透明、100 は不透明)</string>
+  <string name="morphe_navigation_bar_glass_round_title">ラウンド ガラス ナビゲーション バー</string>
+  <string name="morphe_navigation_bar_glass_round_summary">ガラス ミニプレイヤーのような角ではなく、ガラス ナビゲーション バーの両端を丸くします</string>
   <string name="morphe_navigation_bar_glass_size_title">グラスナビゲーションバーのサイズ</string>
   <string name="morphe_navigation_bar_glass_size_summary">グラスナビゲーションバーの高さ、幅、ボタンの間隔をプレビューしながら調整します。画面幅に収まらないボタンは非表示になります</string>
   <string name="morphe_navigation_bar_glass_size_height">高さ</string>
@@ -1069,7 +1087,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_loop_video_title">「動画のループ再生」を非表示</string>
   <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_on_the_go_title">「オーディオ」を非表示</string>
+  <string name="morphe_hide_player_flyout_on_the_go_title">「外出先」を非表示</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">「画質」を非表示</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">画質メニューの脚注を非表示</string>
@@ -1114,6 +1132,10 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_enhanced_ambient_mode_summary">アンビエント モードの代わりに、動画に合わせて再生ページ全体と黒いバーを照らします</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">テキストの可読性を維持</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">明るい動画の光を抑え、ページ上のテキストが読みやすい状態を維持します</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">スクロール中に暗くする</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">ページをスクロールまたはタッチしている間、ライトを暗くします</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">暗くする時間</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">スクロールが停止した後、ライトが暗いままになる時間です。0に設定すると、スクロール中のみライトが暗くなり、停止するとすぐに元の明るさに戻ります</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">プレーヤー画面の情報カードを非表示</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1134,6 +1156,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_shorts_subscriptions_title">登録チャンネル フィードで非表示</string>
   <string name="morphe_hide_shorts_video_description_title">動画の概要欄で非表示</string>
   <string name="morphe_hide_shorts_history_title">再生履歴で非表示</string>
+  <string name="morphe_hide_shorts_notifications_title">プッシュ通知で非表示にする</string>
   <string name="morphe_shorts_player_screen_title">ショート プレーヤー</string>
   <string name="morphe_shorts_player_screen_summary">ショート プレーヤーに表示するコンポーネントを設定します</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">ダブルタップによる高評価を無効化</string>
@@ -1192,9 +1215,24 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">プレーヤー ポップアップ パネルを無効化</string>
   <string name="morphe_disable_player_popup_panels_summary">プレイリストやライブ配信のチャット欄の自動表示を無効にします</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">全画面表示でプレイリストパネルを表示</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">全画面プレイヤーの上にプレイリストパネルが開きます</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">タブレットでプレイリストパネルがフルスクリーンを解除します</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">プレイリストの自動再生を無効化</string>
   <string name="morphe_disable_playlist_autoplay_summary">プレイリストの次の動画を自動的に再生する機能を無効にします</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">自動再生コントロール</string>
+  <string name="morphe_autoplay_control_summary">次ビデオの再生ボタンとルールを追加します。プレイリストやキューはそのまま継続され、ミックスは指定した本数のビデオ後に停止し、おすすめのビデオは再生されません。ボタンをタップして次のモードに切り替え、長押しでリストを表示します</string>
+  <string name="morphe_autoplay_mode_title">自動再生モード</string>
+  <string name="morphe_autoplay_mode_entry_1">自動</string>
+  <string name="morphe_autoplay_mode_entry_2">シングル</string>
+  <string name="morphe_autoplay_mode_entry_3">オフ</string>
+  <string name="morphe_autoplay_mix_stop_after_title">ミックスの長さ</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">自動モードでは、ミックスはこの本数のビデオ後に停止します。0 = 無制限</string>
+  <string name="morphe_autoplay_mix_length">ミックス: %s 本のビデオ</string>
+  <string name="morphe_autoplay_mix_no_limit">ミックス: 無制限</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">「続きを視聴しますか？」ポップアップ</string>
   <string name="morphe_continue_watching_prompt_entry_1">デフォルト</string>
@@ -1270,9 +1308,6 @@ Automotive レイアウト
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 -「再生リストに保存」を旧仕様に戻す</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - アイコンの太字表示を無効化</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 動画プレーヤー下のチャンネル名表示を復元</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
-  <string name="morphe_open_system_share_sheet_summary">コンテンツを共有するときにアプリ内の共有メニューではなくシステムの共有メニューを開きます</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music ボタンの動作を上書き</string>
   <string name="morphe_override_youtube_music_buttons_summary">YouTube Music ボタンの呼び出し先を、「純正 YouTube Music アプリ」から「設定した音楽アプリ」に変更します</string>
@@ -1350,6 +1385,8 @@ Automotive レイアウト
   <string name="morphe_miniplayer_swipe_up_expand_summary">ミニプレーヤーを上にスワイプすると、ミニプレーヤーを画面上部に移動させるのではなく、プレーヤーが展開されます</string>
   <string name="morphe_miniplayer_docked_title">ドッキング済みミニプレーヤー</string>
   <string name="morphe_miniplayer_docked_summary">ミニプレーヤーを浮かせるのではなく、ナビゲーションバーや画面の端に固定します</string>
+  <string name="morphe_miniplayer_glass_title">ガラス ミニプレイヤー</string>
+  <string name="morphe_miniplayer_glass_summary">ガラス ナビゲーション バーのように、ミニプレイヤーを角が丸い半透明のガラスとして表示します。ガラス ナビゲーション バーが必要です</string>
   <string name="morphe_miniplayer_type_entry_0">無効</string>
   <string name="morphe_miniplayer_type_entry_1">デフォルト</string>
   <string name="morphe_miniplayer_type_entry_2">横長（旧タイプ）</string>
@@ -1440,7 +1477,7 @@ Automotive レイアウト
   <string name="morphe_dearrow_titles_player_title">プレーヤーのプレイリスト &amp; 関連動画</string>
   <string name="morphe_dearrow_titles_search_title">検索結果</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow アイコンを表示</string>
-  <string name="morphe_dearrow_titles_icon_summary">クラウドソースされた動画タイトルに DeArrow アイコンを表示します</string>
+  <string name="morphe_dearrow_titles_icon_summary">クラウドソースされた動画タイトルにDeArrowアイコンを表示します。アイコンをタップすると、元のタイトルとサムネイルが表示されます</string>
   <string name="morphe_dearrow_casual_mode_title">カジュアル モード</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow ユーザーが元のタイトルを「いいね」と投票した場合、DeArrow のタイトルではなく元のタイトルが表示されます</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">元のタイトルを表示するためのカジュアル投票の最小数</string>
@@ -1466,7 +1503,6 @@ Automotive レイアウト
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow は一時的に利用できません (ステータスコード: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow は一時的に利用できません</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">以前のプレーヤー ボタンのデザインに戻す</string>
   <string name="morphe_restore_old_player_buttons_summary">動画プレーヤーのコントロールのデザインを、現在の太字デザインから以前の細字デザインに戻します</string>
@@ -1506,25 +1542,20 @@ Automotive レイアウト
   <string name="morphe_video_delay_button_flyout_title">ビデオ遅延メニューを表示</string>
   <string name="morphe_video_delay_dialog_input_hint">ミリ秒単位の遅延</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">自動</string>
-  <string name="morphe_remember_video_quality_last_selected_title">画質を保存</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">画質メニューでの画質の変更を、設定の [デフォルトの画質] に反映し、すべての動画に適用します</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">画質変更の通知</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">設定の [デフォルトの画質] または [ショートのデフォルトの画質] に新しい値が保存されたときに通知を表示します</string>
-  <string name="morphe_video_quality_default_wifi_title">デフォルトの画質 (Wi-Fi)</string>
-  <string name="morphe_video_quality_default_mobile_title">デフォルトの画質 (モバイル)</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">ショートの画質を保存</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">画質メニューでの画質の変更を、設定の [ショートのデフォルトの画質] に反映し、すべてのショート動画に適用します</string>
   <string name="morphe_shorts_quality_default_wifi_title">ショートのデフォルトの画質 (Wi-Fi)</string>
   <string name="morphe_shorts_quality_default_mobile_title">ショートのデフォルトの画質 (モバイル)</string>
-  <string name="morphe_remember_video_quality_toast_mobile">デフォルトの画質 (モバイル): %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">デフォルトの画質 (Wi-Fi): %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">ショートの画質 (モバイル): %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">ショートの画質 (Wi-Fi): %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">再生速度ボタンを表示</string>
   <string name="morphe_playback_speed_dialog_button_summary">長押しすると、再生速度をデフォルトの値にリセットします</string>
+  <string name="morphe_playback_speed_button_cycle_title">再生速度ボタンをタップして速度を切り替える</string>
+  <string name="morphe_playback_speed_button_cycle_summary">タップするとリストの次の速度に切り替わります。長押しすると速度メニューが開きます</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">再生速度ボタンの速度設定</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">タップすると、1行につき1つの速度で切り替わります。最後の速度に達した後、タップすると最初の速度に戻ります</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">速度切り替えリストが無効です。デフォルトにリセットします</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">画質ボタンを表示</string>
   <string name="morphe_video_quality_dialog_button_summary">長押しすると、画質をデフォルトの値にリセットします</string>
@@ -1616,6 +1647,9 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_spoof_video_streams_about_no_stable_volume">•「一定音量」が利用できない</string>
   <string name="morphe_spoof_video_streams_about_end_early">• 再生が 1 秒早く終了する場合がある</string>
   <string name="morphe_spoof_video_streams_about_js">• 難読化の解除に失敗した場合、再生に失敗する可能性がある</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView がオフになっているか、インストールされていません。オンにして更新してください。そうしないと、再生に失敗する可能性があります</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView が古くなっています。更新してください。そうしないと、再生に失敗する可能性があります</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• [オリジナルの音声を常に使用] が利用できない</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR にログインする必要がある</string>
@@ -1789,6 +1823,8 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_niconico_comments_screen_title">ニコニコ風のコメント表示</string>
   <string name="morphe_niconico_comments_screen_summary">ライブ配信と配信のアーカイブのチャットを、映像を横切って流れるニコニコ風コメントとして表示します</string>
   <string name="morphe_niconico_comments_summary">プレーヤー オーバーレイにボタンを表示します。タップするとニコニコ風コメントの表示 / 非表示を切り替えます。長押しすると簡易設定メニューを表示します</string>
+  <string name="morphe_niconico_comments_pip_title">ピクチャー イン ピクチャーで表示</string>
+  <string name="morphe_niconico_comments_pip_summary">コメントはウィンドウに収まるように縮小されます</string>
   <string name="morphe_niconico_comments_appearance_title">外観</string>
   <string name="morphe_niconico_comments_portrait_category_title">縦画面</string>
   <string name="morphe_niconico_comments_video_types_title">ビデオタイプ</string>
@@ -1838,9 +1874,9 @@ AV1 での動画再生はカクつくか、フレームが欠落する可能性�
   <string name="morphe_live_chat_translate_exclude_summary">id、en のようにカンマで区切った言語コードを入力してください。これらの言語のメッセージは翻訳されません</string>
   <string name="morphe_live_chat_translate_provider_title">翻訳サービス</string>
   <string name="morphe_live_chat_translate_provider_google">Google 翻訳</string>
-  <string name="morphe_live_chat_translate_provider_deepl">DeepL</string>
-  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL APIキー</string>
-  <string name="morphe_live_chat_translate_deepl_api_key_summary">DeepL APIキー。キーの月間制限に達した場合など、DeepLで失敗した場合はGoogle翻訳が使用されます</string>
+  <string name="morphe_live_chat_translate_provider_deepl">DeepL 翻訳</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_title">DeepL API キー</string>
+  <string name="morphe_live_chat_translate_deepl_api_key_summary">DeepL API キーを入力してください。キーの月間利用制限に達した場合など、DeepL 翻訳が利用できないときは Google 翻訳が使用されます</string>
   <string name="morphe_live_chat_translate_copy_button_title">メッセージのコピーボタンを表示</string>
   <string name="morphe_live_chat_translate_copy_button_summary">すべてのチャットメッセージに小さなコピーボタンを追加します</string>
   <string name="morphe_live_chat_translate_copied">メッセージをクリップボードにコピーしました</string>

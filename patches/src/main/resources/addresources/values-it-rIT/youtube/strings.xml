@@ -319,9 +319,9 @@ Le modifiche includono:
   <string name="morphe_hide_keyword_content_search_title">Nascondi i risultati della ricerca per parole chiave</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Nascondi i video della scheda Iscrizioni in base alle parole chiave</string>
   <string name="morphe_hide_keyword_content_phrases_title">Parole chiave da nascondere</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Inserisci le parole chiave e le frasi da nascondere, separate da nuove righe
+  <string name="morphe_hide_keyword_content_phrases_summary">"Inserisci parole chiave e frasi da nascondere, separate da nuove righe
 
-Le parole chiave possono essere qualsiasi testo visualizzato nei titoli dei video o nei nomi dei canali"</string>
+Le parole chiave possono essere qualsiasi testo visualizzato nei titoli dei video. La parola chiave @NomeUtente nasconde tutti i contenuti di creatori specifici"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Home / Iscrizioni / Ricerca / Commenti sono filtrati per nascondere i contenuti che corrispondono a frasi con parole chiave
 
 Limitazioni:
@@ -331,7 +331,6 @@ Limitazioni:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Racchiudendo una parola chiave o frase tra virgolette doppie si impediranno corrispondenze parziali dei titoli dei video e dei nomi dei canali&lt;br&gt;&lt;br&gt;Ad esempio:&lt;br&gt;&lt;b&gt;\"ia\"&lt;/b&gt; nasconderà il video &lt;b&gt;\"Come funziona la IA?\"&lt;/b&gt;&lt;br&gt;Ma non nasconderà il video &lt;b&gt;\"Cosa significa imparzialità?\"&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">La parola chiave ha dichiarazioni conflittuali: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">La parola chiave è troppo corta e richiede le virgolette: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">La parola chiave nasconderà tutti i video: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %1$s
@@ -523,6 +522,10 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Mostra il conteggio dei mi piace nella miniature del feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Mostra la percentuale di mi piace nella miniature del feed</string>
+  <string name="morphe_ryd_feed_counts_position_title">Posizione del like della miniatura del feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Accanto al numero di visualizzazioni</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Centro destra</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">In alto a sinistra</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Cerca nei commenti</string>
   <string name="morphe_search_comments_summary">Tocca il pulsante di ricerca nei commenti per mostrare solo i commenti caricati che contengono tutte le parole cercate. Metti le parole tra virgolette per cercare una frase</string>
@@ -559,18 +562,11 @@ Dopo aver aperto una volta un video con il pulsante Chiedi, la funzionalità fun
   <string name="morphe_export_download_folder_summary">"Esporta i video salvati nell'app nella memoria del tuo dispositivo utilizzando il menu a comparsa dei download dell'app. Tocca per cambiare la cartella di esportazione
 
 Cartella di esportazione: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Cartella di esportazione</string>
-  <string name="morphe_export_download_folder_change">Cambia cartella</string>
-  <string name="morphe_export_download_folder_changed">Cartella di esportazione modificata</string>
-  <string name="morphe_export_download_folder_reset">Cartella di esportazione ripristinata</string>
-  <string name="morphe_export_download_folder_missing">Impossibile trovare la cartella di esportazione %s</string>
-  <string name="morphe_export_download_flyout_title">Esporta sul dispositivo</string>
   <string name="morphe_export_download_started">Esportazione video in corso</string>
   <string name="morphe_export_download_progress">Esportazione video: %s%%</string>
   <string name="morphe_export_download_notification_channel">Esportazioni video</string>
   <string name="morphe_export_download_saved">Video esportato in %s</string>
   <string name="morphe_export_download_failed">Impossibile esportare il video</string>
-  <string name="morphe_export_download_canceled">Esportazione annullata</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traduzione voice over</string>
   <string name="morphe_vot_screen_summary">Leggi ad alta voce i sottotitoli del video utilizzando la sintesi vocale del dispositivo, sincronizzata con la riproduzione</string>
@@ -648,6 +644,24 @@ La tua chiave API non deve mai essere condivisa. Chiunque vi abbia accesso può 
   <string name="morphe_loop_video_range_clear">Disattiva</string>
   <string name="morphe_loop_video_range_toast_on">Ripetizione impostata da %1$s a %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Intervallo di tempo non valido</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Conteggio ripetizioni</string>
+  <string name="morphe_loop_count_screen_summary">Scegli quante volte un video deve essere ripetuto prima del video successivo</string>
+  <string name="morphe_loop_count_title">Abilita conteggio ripetizioni</string>
+  <string name="morphe_loop_count_summary">Il menu Altro del player mostra il numero di loop accanto a Ripeti video, per scegliere quante volte il video deve essere riprodotto prima del video successivo</string>
+  <string name="morphe_loop_count_playlists_title">Salva il numero di loop nelle playlist</string>
+  <string name="morphe_loop_count_playlists_summary">Ogni video di una playlist mantiene il numero di loop scelto, e Ripeti video si attiva quando la playlist lo riproduce nuovamente. Se disattivato, il numero di loop è valido solo per il video in riproduzione</string>
+  <string name="morphe_loop_count_clear_title">Cancella i numeri di loop salvati</string>
+  <string name="morphe_loop_count_clear_summary">Rimuovi i numeri di loop salvati nelle tue playlist. Video salvati: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Nessun numero di loop salvato</string>
+  <string name="morphe_loop_count_clear_dialog_title">Cancella i numeri di loop salvati?</string>
+  <string name="morphe_loop_count_clear_dialog_message">I video delle tue playlist dimenticheranno il numero di loop e Ripeti video non si attiverà più quando una playlist li riprodurrà</string>
+  <string name="morphe_loop_count_clear_done">Numeri di loop salvati cancellati</string>
+  <string name="morphe_loop_count_flyout_name">Conteggio loop</string>
+  <string name="morphe_loop_count_dialog_message">Quante volte il video viene riprodotto prima del video successivo, da %1$s a %2$s. Lascia vuoto per riprodurre il video in loop senza limiti.</string>
+  <string name="morphe_loop_count_no_limit">Senza limiti</string>
+  <string name="morphe_loop_count_decrease">Meno volte</string>
+  <string name="morphe_loop_count_increase">Più volte</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Mostra il pulsante Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">Mostra il menu Picture-in-Picture</string>
@@ -685,6 +699,9 @@ Avviso: Potrebbe non funzionare sui video in diretta"</string>
   <string name="morphe_play_all_button_type_entry_11">Solo Shorts dei membri</string>
   <string name="morphe_play_all_button_type_entry_12">Solo dirette dei membri</string>
   <string name="morphe_play_all_button_not_available_toast">Impossibile generare la playlist a causa di una mancata corrispondenza dell\'ID del canale</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Mostra pulsante Playlist</string>
+  <string name="morphe_playlist_panel_button_summary">Tocca per aprire il pannello della playlist. Visualizzato solo durante la riproduzione di una playlist</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Mostra pulsante Ricarica video</string>
   <string name="morphe_dismiss_player_not_available_toast">ID video non disponibile. Ricarica manualmente il video</string>
@@ -710,8 +727,6 @@ Avviso: Potrebbe non funzionare sui video in diretta"</string>
   <string name="morphe_queue_type_entry_2">Coda nativa</string>
   <string name="morphe_queue_type_entry_3">Coda Morphe</string>
   <string name="morphe_queue_type_entry_4">Lato client della coda Morphe</string>
-  <string name="morphe_queue_add_flyout_menu_title">Aggiungi voce di menu a comparsa per la coda del feed</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Aggiunge un elemento aggiuntivo al menu a comparsa. Attiva questa opzione se \"Aggiungi alla coda\" non viene mostrato</string>
   <string name="morphe_local_queue_sheet_title">Coda</string>
   <string name="morphe_local_queue_open">Coda (%s)</string>
   <string name="morphe_local_queue_clear">Cancella tutto</string>
@@ -1026,6 +1041,8 @@ Per accedere alle Impostazioni, abilita il pulsante Impostazioni tramite General
   <string name="morphe_navigation_bar_glass_summary">Mostra la barra di navigazione come una capsula traslucida, arrotondata e fluttuante. Non disponibile con lo stile della barra di navigazione Opaca</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacità glass</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Regola il livello di trasparenza della barra di navigazione glass (0 è trasparente, 100 è opaco)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Barra di navigazione in vetro arrotondata</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Rende le estremità della barra di navigazione in vetro arrotondate, invece di angoli come il miniplayer in vetro</string>
   <string name="morphe_navigation_bar_glass_size_title">Dimensioni barra di navigazione glass</string>
   <string name="morphe_navigation_bar_glass_size_summary">Regola l\'altezza, la larghezza e la spaziatura dei pulsanti della barra di navigazione glass, con un\'anteprima. I pulsanti che non rientrano nella larghezza dello schermo vengono nascosti</string>
   <string name="morphe_navigation_bar_glass_size_height">Altezza</string>
@@ -1113,6 +1130,10 @@ Per mostrare il menu 'Audio Track', cambia 'Falsificazione dei flussi video' in 
   <string name="morphe_enhanced_ambient_mode_summary">Illumina l\'intera pagina di riproduzione e le barre nere con il video, al posto della modalità Ambient</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantieni il testo leggibile</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Attenua la luce nei video luminosi affinché il testo sulla pagina rimanga leggibile</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Scurisci durante lo scorrimento</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Scurisce la luce mentre la pagina viene scorsa o toccata</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Durata oscuramento</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Quanto tempo la luce rimane attenuata dopo che lo scorrimento si interrompe. Con 0, solo lo scorrimento attenua la luce, che ritorna non appena lo scorrimento si ferma</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Nascondi schede informative</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1154,7 @@ Per mostrare il menu 'Audio Track', cambia 'Falsificazione dei flussi video' in 
   <string name="morphe_hide_shorts_subscriptions_title">Nascondi nel feed Iscrizioni</string>
   <string name="morphe_hide_shorts_video_description_title">Nascondi nella descrizione del video</string>
   <string name="morphe_hide_shorts_history_title">Nascondi nella cronologia visualizzazioni</string>
+  <string name="morphe_hide_shorts_notifications_title">Nascondi nelle notifiche push</string>
   <string name="morphe_shorts_player_screen_title">Player Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Scegli quali componenti mostrare nel lettore Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Disabilita il doppio tocco per mettere Mi piace</string>
@@ -1191,9 +1213,24 @@ Impostazioni → Riproduzione (o Autoplay) → Riproduci il video successivo aut
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Disabilita i pannelli popup del lettore</string>
   <string name="morphe_disable_player_popup_panels_summary">Disabilita l\'apertura automatica dei pannelli playlist e chat live</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Mostra pannello playlist a schermo intero</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Il pannello della playlist si apre sopra il player a schermo intero</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Il pannello della playlist esce dallo schermo intero sui tablet</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Disattiva la riproduzione automatica delle playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Impedisce alle playlist di avanzare automaticamente al video successivo</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Controllo riproduzione automatica</string>
+  <string name="morphe_autoplay_control_summary">Aggiunge un pulsante al player e una regola per il video successivo. Le playlist e le code continuano, un Mix si ferma dopo un certo numero di video, un video suggerito non viene mai riprodotto. Tocca il pulsante per la modalità successiva, tieni premuto per l\'elenco</string>
+  <string name="morphe_autoplay_mode_title">Modalità riproduzione automatica</string>
+  <string name="morphe_autoplay_mode_entry_1">Automatico</string>
+  <string name="morphe_autoplay_mode_entry_2">Singolo</string>
+  <string name="morphe_autoplay_mode_entry_3">Spento</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Lunghezza Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Nella modalità Auto, un Mix si ferma dopo questo numero di video. 0 = nessun limite</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s video</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: nessun limite</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Prompt \"Continuare la visione\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Predefinita</string>
@@ -1268,9 +1305,6 @@ Layout automotive
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ripristina il vecchio pulsante Salva nella playlist</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Disabilita icone in grassetto</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Ripristina il nome del canale in fondo al lettore video</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Apri il pannello di condivisione di sistema</string>
-  <string name="morphe_open_system_share_sheet_summary">Apre il pannello di condivisione di sistema anziché quello integrato durante la condivisione di un contenuto</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Sovrascrivi i pulsanti di YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Apre l\'app musicale preferita anziché l\'app YouTube Music integrata</string>
@@ -1348,6 +1382,8 @@ Layout automotive
   <string name="morphe_miniplayer_swipe_up_expand_summary">Lo swipe verso l\'alto del miniplayer espande il player, invece di spostare il miniplayer nella parte superiore dello schermo</string>
   <string name="morphe_miniplayer_docked_title">Miniplayer agganciato</string>
   <string name="morphe_miniplayer_docked_summary">Aggancia il miniplayer alla barra di navigazione e ai lati dello schermo, invece di farlo fluttuare sopra di essi</string>
+  <string name="morphe_miniplayer_glass_title">Miniplayer in vetro</string>
+  <string name="morphe_miniplayer_glass_summary">Mostra il miniplayer come vetro traslucido con angoli arrotondati, come la barra di navigazione in vetro. Richiede la barra di navigazione in vetro</string>
   <string name="morphe_miniplayer_type_entry_0">Disattivato</string>
   <string name="morphe_miniplayer_type_entry_1">Predefinito</string>
   <string name="morphe_miniplayer_type_entry_2">Minimale</string>
@@ -1438,7 +1474,7 @@ Layout automotive
   <string name="morphe_dearrow_titles_player_title">Playlist e video consigliati</string>
   <string name="morphe_dearrow_titles_search_title">Risultati della ricerca</string>
   <string name="morphe_dearrow_titles_icon_title">Mostra l\'icona DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">Mostra l\'icona DeArrow sui titoli video in crowdsourcing</string>
+  <string name="morphe_dearrow_titles_icon_summary">Mostra l\'icona di DeArrow nei titoli dei video crowdsourced. Tocca l\'icona per mostrare il titolo e la miniatura originali</string>
   <string name="morphe_dearrow_casual_mode_title">Modalità informale</string>
   <string name="morphe_dearrow_casual_mode_summary">Mostra il titolo originale invece del titolo DeArrow se gli utenti DeArrow hanno votato che preferiscono il titolo originale.</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Voti casuali minimi per mostrare il titolo originale</string>
@@ -1464,7 +1500,6 @@ I video vengono richiesti tramite un breve prefisso dell'ID video con hash, quin
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow non è temporaneamente disponibile (codice di stato: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow non è temporaneamente disponibile</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Ripristina stile precedente dei pulsanti del lettore</string>
   <string name="morphe_restore_old_player_buttons_summary">Ripristina i controlli del lettore video in grassetto in contrapposizione allo stile visivo precedente e più sottile</string>
@@ -1504,25 +1539,20 @@ I video vengono richiesti tramite un breve prefisso dell'ID video con hash, quin
   <string name="morphe_video_delay_button_flyout_title">Mostra menu Ritardo video</string>
   <string name="morphe_video_delay_dialog_input_hint">Ritardo in millisecondi</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automatico</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Ricorda la qualità del video</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Applica la tua selezione manuale della qualità a tutti i video futuri</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Notifiche di modifica della qualità</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Mostra una notifica quando viene salvata una nuova qualità predefinita</string>
-  <string name="morphe_video_quality_default_wifi_title">Qualità video predefinita sulla rete Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">Qualità video predefinita sulla rete mobile</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Ricorda qualità per gli Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Applica la tua selezione manuale della qualità a tutti gli Shorts futuri</string>
   <string name="morphe_shorts_quality_default_wifi_title">Qualità predefinita degli Shorts sulla rete Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">Qualità predefinita degli Shorts sulla rete mobile</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Qualità predefinita mobile modificata in: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Qualità predefinita Wi-Fi modificata in: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Qualità Shorts mobile modificata in: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Qualità Shorts Wi-Fi modificata in: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Mostra il pulsante Velocità di riproduzione</string>
   <string name="morphe_playback_speed_dialog_button_summary">Tocca e tieni premuto per reimpostare la velocità predefinita</string>
+  <string name="morphe_playback_speed_button_cycle_title">Tocca il pulsante della velocità di riproduzione per scorrere le velocità</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Toccando si passa alla velocità successiva nell\'elenco. Tenendo premuto si apre il menu della velocità</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Velocità del pulsante di riproduzione</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Velocità tra cui scorrere con un tocco, una per riga. Dopo l\'ultima velocità, un tocco riporta alla prima</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Elenco ciclo velocità non valido, ripristino dei valori predefiniti</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Mostra il pulsante Qualità</string>
   <string name="morphe_video_quality_dialog_button_summary">Tocca e tieni premuto per reimpostare la qualità predefinita</string>
@@ -1614,6 +1644,9 @@ La riproduzione video con AV1 potrebbe rallentare o perdere fotogrammi"</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Il volume stabile non è disponibile</string>
   <string name="morphe_spoof_video_streams_about_end_early">• La riproduzione potrebbe terminare 1 secondo prima</string>
   <string name="morphe_spoof_video_streams_about_js">• In caso di fallimento della deobfuscazione, la riproduzione potrebbe fallire</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView è disattivato o non è installato. Attivalo e aggiornalo, altrimenti la riproduzione potrebbe fallire</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView non è aggiornato. Aggiornalo, altrimenti la riproduzione potrebbe fallire</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• L\'audio originale forzato non è disponibile</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• È richiesto l\'accesso con Android VR</string>
@@ -1787,6 +1820,8 @@ La registrazione automatica è facoltativa. Si arresta in modalità incognito o 
   <string name="morphe_niconico_comments_screen_title">Commenti Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Mostra la chat dal vivo e il replay della chat come commenti che scorrono attraverso il video</string>
   <string name="morphe_niconico_comments_summary">Mostra un pulsante in sovrapposizione nel lettore video. Tocca per mostrare o nascondere i commenti, tocca e tieni premuto per le impostazioni rapide</string>
+  <string name="morphe_niconico_comments_pip_title">Mostra in Picture-in-Picture</string>
+  <string name="morphe_niconico_comments_pip_summary">I commenti sono ridimensionati per adattarsi alla finestra</string>
   <string name="morphe_niconico_comments_appearance_title">Aspetto</string>
   <string name="morphe_niconico_comments_portrait_category_title">Verticale</string>
   <string name="morphe_niconico_comments_video_types_title">Tipi di video</string>

@@ -44,6 +44,7 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRoutes;
  * the title in another language, such as a search result shown in the language of the search,
  * so the title can also be fetched in the language of a text, or as shown in the search results of a text.
  */
+@SuppressWarnings("unused")
 final class LocalizedTitleRequest {
 
     /**

@@ -21,6 +21,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 /**
  * Mandarin word readings from pinyin-pro, which knows words the {@link UniDictStore} character
@@ -28,6 +29,7 @@ import app.morphe.extension.shared.Logger;
  * store only adds how a word is read. Downloaded, since the patch merges only XML resources and
  * a word list goes stale as the source moves on.
  */
+@SuppressWarnings("unused")
 public final class PinyinDictStore {
 
     public static final String VERSION = "18.0.0";
@@ -74,8 +76,7 @@ public final class PinyinDictStore {
         WORDS.clear();
         File file = WORDS.file();
         if (file != null && file.exists()) {
-            //noinspection ResultOfMethodCallIgnored
-            file.delete();
+            Utils.deleteQuietly(file);
         }
     }
 
@@ -130,7 +131,7 @@ public final class PinyinDictStore {
         File directory = RomanizationDict.directory();
         if (directory == null) throw new IOException("no cache directory");
 
-        WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, PinyinDictStore::addWords, (RomanizationDict.Listener) PinyinDictStore.CHANNEL);
+        WORDS.build(directory, WORDS_URL, WORDS_ARCHIVE, PinyinDictStore::addWords, PinyinDictStore.CHANNEL);
         PinyinDictStore.CHANNEL.onReady(entries());
     }
 

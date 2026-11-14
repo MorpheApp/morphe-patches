@@ -49,6 +49,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -304,6 +305,7 @@ final class LibraryDialog {
             }
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //noinspection SizeReplaceableByIsEmpty
                 clear.setVisibility(s.length() == 0 ? View.GONE : View.VISIBLE);
                 if (selected.isEmpty() && alive()) {
                     scroll.scrollTo(0, 0);
@@ -510,7 +512,7 @@ final class LibraryDialog {
     }
 
     private static String searchKey(String text) {
-        return java.text.Normalizer.normalize(text, java.text.Normalizer.Form.NFD)
+        return Normalizer.normalize(text, Normalizer.Form.NFD)
                 .replaceAll("\\p{M}+", "")
                 .toLowerCase(Locale.ROOT)
                 .trim();

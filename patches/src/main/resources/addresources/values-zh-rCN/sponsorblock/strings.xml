@@ -62,10 +62,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_offline_segments_summary">允许在离线状态下跳过已下载视频的分段</string>
   <string name="morphe_sb_toast_on_connection_error_title">显示连接错误提示</string>
   <string name="morphe_sb_toast_on_connection_error_summary">当 SponsorBlock 服务器不可用时显示通知</string>
-  <string name="morphe_sb_track_skip_count_title">启用跳过次数跟踪</string>
-  <string name="morphe_sb_track_skip_count_summary">将跳过次数发送到 SponsorBlock 排行榜，以跟踪节省的时间</string>
+  <string name="morphe_sb_track_skip_count_title">启用跳过次数统计</string>
+  <string name="morphe_sb_track_skip_count_summary">将跳过次数发送到 SponsorBlock 排行榜，以统计节省的时间</string>
   <string name="morphe_sb_min_segment_duration_title">最短片段时长</string>
-  <string name="morphe_sb_min_segment_duration_summary">小于此值（以秒为单位）的片段将不会显示或跳过</string>
+  <string name="morphe_sb_min_segment_duration_summary">小于此值（以秒为单位）的过短片段将被忽略，不会被显示或跳过</string>
   <string name="morphe_sb_min_segment_duration_invalid">无效的时间长度</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_title">您的私人用户 ID</string>
   <string name="morphe_sb_private_user_id_Do_Not_Share_summary">这应该被保密。这就像一个密码，不应该与他人分享。如果有人拥有它，他们就可以冒充您</string>
@@ -194,7 +194,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_new_segment_start_is_before_end">起始位置须在结束位置前</string>
   <string name="morphe_sb_new_segment_mark_locations_first">首先在时间线上标记一个位置</string>
   <string name="morphe_sb_new_segment_preview_segment_first">预览片段，并确保它可以顺利跳过</string>
-  <string name="morphe_sb_new_segment_edit_by_hand_title">手动编辑线段时间</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">手动编辑片段时间</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">您想要编辑片段开始或结束的时间吗？</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">给定的时间无效</string>
   <string name="morphe_sb_new_segment_highlight_title">提交高亮</string>

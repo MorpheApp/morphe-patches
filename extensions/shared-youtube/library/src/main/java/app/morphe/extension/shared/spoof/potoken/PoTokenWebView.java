@@ -17,9 +17,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.webkit.JavascriptInterface;
+import android.webkit.RenderProcessGoneDetail;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import androidx.annotation.NonNull;
 
@@ -29,6 +31,7 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
@@ -87,6 +90,23 @@ public class PoTokenWebView {
         });
         attachToCurrentActivity();
 
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean onRenderProcessGone(WebView view, RenderProcessGoneDetail detail) {
+                // All WebViews of the app share the renderer, which Android can stop to free memory.
+                // Without this, the app is closed. The generator is made again for the next PoToken.
+                Logger.printInfo(() -> "PoToken WebView renderer is gone, crashed: " + detail.didCrash());
+                expirationMs = 0;
+                PoTokenException.BadWebViewException error =
+                        new PoTokenException.BadWebViewException("The renderer is gone");
+                for (CompletableFuture<String> continuation : poTokenContinuations.values()) {
+                    continuation.completeExceptionally(error);
+                }
+                poTokenContinuations.clear();
+                onInitializationErrorCloseAndCancel(error);
+                return true;
+            }
+        });
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onConsoleMessage(ConsoleMessage m) {

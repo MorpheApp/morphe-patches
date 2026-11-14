@@ -319,9 +319,9 @@ Aldaketen artean daude:
   <string name="morphe_hide_keyword_content_search_title">Ezkutatu bilaketa-emaitzak gako-hitzen arabera</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ezkutatu Harpidetzetako bideoak gako-hitzen arabera</string>
   <string name="morphe_hide_keyword_content_phrases_title">Ezkutatzeko gako-hitzak</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"Sartu ezagutarri nahi dituzun gako-hitzak eta esaldiak, berri linesen bidez bereztuta
+  <string name="morphe_hide_keyword_content_phrases_summary">"Sartu ezkutuko gako-hitzak eta esaldiak, berriztertuerekta bereizita
 
-Gako-hitzak bideo-izenetan edo kanal-izenetan agertzen den edozein testu izan daitezke"</string>
+Gako-hitzak bideo-izenetan agertzen den edozein testu izan daitezke. @Erabiltzaile gako-hitzak sortzaile zehatzetako edukia guztia ezkutzen du"</string>
   <string name="morphe_hide_keyword_content_about_summary">"Home / Subscriptions / Search / Comments filtrazten dira gako-hitz esaldiekin bat datorren edukia ezagutzeko
 
 Mugak:
@@ -331,7 +331,6 @@ Mugak:
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Gako-hitz edo esaldi bat aipuen artean jartzeak bideo eta kanal izenen bat datozen zatiak saihestuko ditu&lt;br&gt;&lt;br&gt;Adibidez,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt;k bideo hau ezkutatuko du: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;baina hau ez: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">Gako-hitzak adierazpen gatazkatsuak ditu: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Gako-hitza laburregia da eta aipua behar du: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Gako-hitzak bideo guztiak ezkutuko ditu: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• Home: %1$s
@@ -523,6 +522,10 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Erakutsi feed-eko miniaturaren gustu kopurua</string>
   <string name="morphe_ryd_feed_like_ratio_title">Erakutsi feed-eko miniaturaren gustu ehunekoa</string>
+  <string name="morphe_ryd_feed_counts_position_title">Feed-eko miniaturaren atsegin-botoiaren kokapena</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Ikustaldien kopuruaren ondoan</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Erdian eskuinean</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Goian eskerrean</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Bilatu iruzkinak</string>
   <string name="morphe_search_comments_summary">Sakatu iruzkinen bilaketa botoia kargatutako iruzkin bakarrik erakusteko, bilatutako hitz guztiak dituztenak. Esaldi bat bilatzeko, jarri hitzak komilla artean</string>
@@ -559,18 +562,11 @@ Ask botoia duen bideo bat behin ireki ondoren, funtzioak bideo guztiekin funtzio
   <string name="morphe_export_download_folder_summary">"Aplikazioan gordetako bideoak zure gailuaren biltegian esportatu aplikazioko deskargen flyout menuaren bidez. Sakatu esportazio karpeta aldatzeko
 
 Esportazio karpeta: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">Exportazio karpeta</string>
-  <string name="morphe_export_download_folder_change">Aldatu karpeta</string>
-  <string name="morphe_export_download_folder_changed">Exportazio karpeta aldatu da</string>
-  <string name="morphe_export_download_folder_reset">Exportazio karpeta berrezarri da</string>
-  <string name="morphe_export_download_folder_missing">Ezin izan da %s esportazio karpeta aurkitu</string>
-  <string name="morphe_export_download_flyout_title">Gailura esportatu</string>
   <string name="morphe_export_download_started">Bideoa esportatzen</string>
   <string name="morphe_export_download_progress">Bideoa esportatzen: %s%%</string>
   <string name="morphe_export_download_notification_channel">Bideo esportazioak</string>
   <string name="morphe_export_download_saved">Bideoa %s-ra esportatu da</string>
   <string name="morphe_export_download_failed">Ezin izan da bideoa esportatu</string>
-  <string name="morphe_export_download_canceled">Esportazioa bertan behera utzi da</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Ahots gainjarritako itzulpena</string>
   <string name="morphe_vot_screen_summary">Irakurri bideo azpitituluak ozen, gailuaren testu-ahots sistemaren bidez, erreprodukzioarekin sinkronizatuta</string>
@@ -648,6 +644,25 @@ Zure API gakoa ez litzateke inoiz partekatu behar. Hura duen edonork zure OpenRo
   <string name="morphe_loop_video_range_clear">Garbitu</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s artean errepikatzen</string>
   <string name="morphe_loop_video_range_invalid_time">Denbora-tarte baliogabea</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">Errepikazio kopurua</string>
+  <string name="morphe_loop_count_screen_summary">Aukeratu bideo bat zenbat gangeran errepikatu behar den hurrengo bideoa hasten den arte</string>
+  <string name="morphe_loop_count_title">Gaitu errepikazio kopurua</string>
+  <string name="morphe_loop_count_summary">Se reproducinglearen Gehiago menuan, Bideoa errepika aukeraren ondoan Errepika kopurua agertzen da, hurrengo bideoa joku aurre bideoa zenbat aldiz jokatuko den aukeratzeko</string>
+  <string name="morphe_loop_count_playlists_title">Gorde errepika kopurua zerrendetan</string>
+  <string name="morphe_loop_count_playlists_summary">Zerrendako bideo bakoitzak aukeratutako errepika kopurua gordetzen du, eta Bideoa errepika aktibatzen da zerrendak berriz jokatzean. Desaktibatuta badago, errepika kopurua orain jokatzen ari den bideoarentzat besterik ez da</string>
+  <string name="morphe_loop_count_clear_title">Garbitu gordetako errepika kopuruak</string>
+  <string name="morphe_loop_count_clear_summary">Ahaztu zerrendetan gordetako errepika kopuruak. Bideo gordetuveak: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">Ez da errepika kopuruik gordetuta</string>
+  <string name="morphe_loop_count_clear_dialog_title">Gordetako errepika kopuruak garbitu?</string>
+  <string name="morphe_loop_count_clear_dialog_message">Zure zerrendetako bideoek beren errepika kopurua ahazten dute, eta Bideoa errepika ez da aktibatuko zerrendak jokatzean</string>
+  <string name="morphe_loop_count_clear_done">Gordetako errepika kopuruak garbituta</string>
+  <string name="morphe_loop_count_flyout_name">Bezkontu kopurua</string>
+  <string name="morphe_loop_count_dialog_message">Hurtrengoko bideoa jokatzeren aurrebizera, zenbatetan jokatzen den bideoa, %1$s-tik %2$s-ra. Utzi hutsik bideoa mugarik gabe bezkontzeko.</string>
+  <string name="morphe_loop_count_times">%s {one,behin,other,behin}}</string>
+  <string name="morphe_loop_count_no_limit">Muga gabe</string>
+  <string name="morphe_loop_count_decrease">Behin gutxiago</string>
+  <string name="morphe_loop_count_increase">Behin gehiago</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">Erakutsi irudian-irudia botoia</string>
   <string name="morphe_pip_button_flyout_title">Erakutsi irudian-irudia menua</string>
@@ -685,6 +700,9 @@ Info: Agian ez da funtzionatuko zuzeneko emankizunetan"</string>
   <string name="morphe_play_all_button_type_entry_11">Kideentzako Shorts soilik</string>
   <string name="morphe_play_all_button_type_entry_12">Kideentzako zuzeneko emisioak soilik</string>
   <string name="morphe_play_all_button_not_available_toast">Ezin izan da playlist-a sortu kanalaren ID bat ez etortzearen ondorioz</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">Erakutsi Playlist botoia</string>
+  <string name="morphe_playlist_panel_button_summary">Sakatu playlist panela irekitzeko. Playlist bat erreproduzitzen denean soilik agertzen da</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Erakutsi \'Bideoa berkargatu\' botoia</string>
   <string name="morphe_dismiss_player_not_available_toast">Bideo ID-a ez dago erabilgarri. Kargatu bideoa berriro eskuz</string>
@@ -710,8 +728,6 @@ Info: Agian ez da funtzionatuko zuzeneko emankizunetan"</string>
   <string name="morphe_queue_type_entry_2">Ilara natiboa</string>
   <string name="morphe_queue_type_entry_3">Morphe ilara</string>
   <string name="morphe_queue_type_entry_4">Morphe ilara, bezeroaren aldetik</string>
-  <string name="morphe_queue_add_flyout_menu_title">Gehitu feed-eko flyout ilara menu elementua</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Flyout elementu gehigarri bat gehitzen du. Aktibatu hau \"Gehitu ilarara\" ez bada ikusten</string>
   <string name="morphe_local_queue_sheet_title">Ilara</string>
   <string name="morphe_local_queue_open">Ilara (%s)</string>
   <string name="morphe_local_queue_clear">Garbitu dena</string>
@@ -1026,6 +1042,8 @@ Konfigurazioa atzitzeko, gaitu Konfigurazio botoia Orokorra → Tresna-barra →
   <string name="morphe_navigation_bar_glass_summary">Nabigazio barra kapsula flotatzaile, biribil eta translucidu gisa erakusten du. Ez dago erabilgarri Nabigazio barra opakua estiloarekin</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Beira opakutasuna</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Doitu beira nabigazio barraren gardentasun maila (0 gardena da, 100 opakua)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Nabigazio barra beirazkoa birbildua</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Nabigazio barra beirazkoari amaierak birbilduen ematen dizkio, beira-miniplayer-aren bezalako gainetak izateko ordez</string>
   <string name="morphe_navigation_bar_glass_size_title">Nabigazio barra beiraren tamaina</string>
   <string name="morphe_navigation_bar_glass_size_summary">Doitu nabigazio barra beiraren altuera, zabalera eta botoien arteko espazioa, aurrebistarekin. Pantailaren zabalerara egokitzen ez diren botoiak ezkutatzen dira</string>
   <string name="morphe_navigation_bar_glass_size_height">Altitudea</string>
@@ -1113,6 +1131,10 @@ Konfigurazioa atzitzeko, gaitu Konfigurazio botoia Orokorra → Tresna-barra →
   <string name="morphe_enhanced_ambient_mode_summary">Ikusi-orrialde osoa eta barra beltzak bideoarekin argitzen ditu, Ambient moduko ordez</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Mantendu testua irakurgarria</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Bideo argi等etan argia gutxitzen du orrialdeko testua irakurgarri izaten jarraitzeko</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Iluntatu scroll egitean</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">Argia iluntatzen du orrialdia scroll egiten denean edo ukitzen denean</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">Iluntze-iraupena</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">Scroll egitea stop egin ondoren argia zenbat denboran geratzen den iluntuta. 0 sailatuta, scroll egiteak bakarrik iluntatzen du argia, eta scroll egitea stop egin bezain cordless itzultzen da</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ezkutatu informazio-txartelak</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Konfigurazioa atzitzeko, gaitu Konfigurazio botoia Orokorra → Tresna-barra →
   <string name="morphe_hide_shorts_subscriptions_title">Ezkutatu Harpidetzen feed-ean</string>
   <string name="morphe_hide_shorts_video_description_title">Ezkutatu bideoaren deskribapenean</string>
   <string name="morphe_hide_shorts_history_title">Ezkutatu ikustaldien historian</string>
+  <string name="morphe_hide_shorts_notifications_title">Ezagutarazi ez push jakinarazpenetan</string>
   <string name="morphe_shorts_player_screen_title">Shorts erreproduktorea</string>
   <string name="morphe_shorts_player_screen_summary">Aukeratu zein osagai agertzen diren Shorts erreproduktorean</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">Desaktibatu bi-sakatzea gustuko izateko</string>
@@ -1191,9 +1214,24 @@ Ezarpenak → Erreprodukzioa (edo Autoplay) → Hurrengo bideoa automatikoki err
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">Desaktibatu erreproduzigailuaren popup panelak</string>
   <string name="morphe_disable_player_popup_panels_summary">Playlist eta txat zuzeneko paneleak automatikoki irekitzea desaktibatzen du</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">Erakutsi playlist-panelua pantaila osoan</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Playlist-panelua pantaila osoko erreproduzitzailearen gainean irekitzen da</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Playlist panelua pantaila osoa uzten du tabletetan</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Desaktibatu playlisten autoerreprodukzioa</string>
   <string name="morphe_disable_playlist_autoplay_summary">Playlisteek hurrengo bideora automatikoki pasatzea saihesten du</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">Erreprodukzio automatikoaren kontrola</string>
+  <string name="morphe_autoplay_control_summary">Kudaketa-botoi bat eta hurrengo bideorako arau bat gehitzen ditu. Playlista eta herramendia jarraitzen dira, Mix bat bideo kopuru baten ondoren gelditzen da, eta bideo suggested bat ez da inoiz erreproduzitakoa. Sakatu botoia hurrengo modura joateko, edo sakatu eta mantendu zerrenda ikusteko</string>
+  <string name="morphe_autoplay_mode_title">Erreprodukzio automatikoaren moda</string>
+  <string name="morphe_autoplay_mode_entry_1">Automatiko</string>
+  <string name="morphe_autoplay_mode_entry_2">Bakarka</string>
+  <string name="morphe_autoplay_mode_entry_3">Itzalita</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Mixren luzera</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">Auto moduan, Mix bat bideo kopuru honen ondoren gelditzen da. 0 = mugaikertzatua</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s bideo</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: mugarik gabe</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">\"Jarraitu ikusten?\" gomendioa</string>
   <string name="morphe_continue_watching_prompt_entry_1">Lehenagoa</string>
@@ -1269,9 +1307,6 @@ Automobilen diseinua
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Berrezarri gorde playlistera zaharra</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Desaktibatu ikono lodiak</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Berrezarri kanalaren izena bideo erreproduktorearen azpian</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">Ireki sistemaren partekatze panela</string>
-  <string name="morphe_open_system_share_sheet_summary">Edukia partekatzean, aplikazioaren ordez sistemaren partekatze panela irekitzen du</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Gainidatzi YouTube Music botoiak</string>
   <string name="morphe_override_youtube_music_buttons_summary">Zure hobetsitako musika aplikazioa irekitzen du YouTube Music aplikazio lehenetsiaren ordez</string>
@@ -1349,6 +1384,8 @@ Automobilen diseinua
   <string name="morphe_miniplayer_swipe_up_expand_summary">Miniplayer-a gora irristatzean, playerra zabaltzen da, miniplayer-a pantailaren goialdera mugitu beharrean</string>
   <string name="morphe_miniplayer_docked_title">Finkatutako miniplayer-a</string>
   <string name="morphe_miniplayer_docked_summary">Miniplayer-a nabigazio barrari eta pantailaren alboei lotzen die, haien gainean flotatu beharrean</string>
+  <string name="morphe_miniplayer_glass_title">Beira-miniplayer-a</string>
+  <string name="morphe_miniplayer_glass_summary">Miniplayer-a beira tranparentzente gisa erakusten du gainetak birbilduarekin, nabigazio barra beirazkoaren bezala. Nabigazio barra beirazkoa behar du</string>
   <string name="morphe_miniplayer_type_entry_0">Desaktibatuta</string>
   <string name="morphe_miniplayer_type_entry_1">Lehenetsia</string>
   <string name="morphe_miniplayer_type_entry_2">Minimoa</string>
@@ -1439,7 +1476,7 @@ Automobilen diseinua
   <string name="morphe_dearrow_titles_player_title">Erreproduzigailuko zerrendak &amp; gomendioak</string>
   <string name="morphe_dearrow_titles_search_title">Bilaketa emaitzak</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow ikona erakutsi</string>
-  <string name="morphe_dearrow_titles_icon_summary">Erakusten du DeArrow ikona komunitateak egindako bideo izenburuetan</string>
+  <string name="morphe_dearrow_titles_icon_summary">Crowdsourcing bidean lortutako bideo-izenetan DeArrow ikonoa erakutsi. Ukitu ikonoa izen jatorrizkoa eta miniaturea ikusteko</string>
   <string name="morphe_dearrow_casual_mode_title">Modu informala</string>
   <string name="morphe_dearrow_casual_mode_summary">DeArrow erabiltzaileek jatorrizko izenburua gustuko dutela bozkatu badute, DeArrow izenburuaren ordez jatorrizko izenburua erakusten du</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">Jatorrizko izenburua erakusteko gutxieneko boto informalak</string>
@@ -1465,7 +1502,6 @@ Bideoak bideo-ID hash-atutako prefixo labur baten bidez eskatzen dira, beraz, ze
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow aldi baterako ez dago erabilgarri (egoera kodea: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow aldi baterako ez dago erabilgarri</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Berrezarri erreproduzigailu botoien estilo zaharra</string>
   <string name="morphe_restore_old_player_buttons_summary">Bideo erreproduktorearen kontrol lodiak lehengo, meheagoko estilo bisualera itzultzen ditu</string>
@@ -1505,25 +1541,20 @@ Bideoak bideo-ID hash-atutako prefixo labur baten bidez eskatzen dira, beraz, ze
   <string name="morphe_video_delay_button_flyout_title">Erakutsi bideo-atzerapen menua</string>
   <string name="morphe_video_delay_dialog_input_hint">Atzerapena milisegundotan</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">Automatikoki</string>
-  <string name="morphe_remember_video_quality_last_selected_title">Gogoratu bideo-kalitatea</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">Eskuz hautatutako kalitatea etorkizuneko bideo guztietan aplikatzen da</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Kalitate aldaketa jakinarazpenak</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Kalitate lehenetsi berri bat gordetzen denean jakinarazpen bat erakusten du</string>
-  <string name="morphe_video_quality_default_wifi_title">Bideo kalitate lehenetsia Wi-Fi sarean</string>
-  <string name="morphe_video_quality_default_mobile_title">Bideo kalitate lehenetsia sare mugikorrean</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Gogoratu Shorts kalitatea</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">Eskuz hautatutako kalitatea etorkizuneko Shorts guztietan aplikatzen da</string>
   <string name="morphe_shorts_quality_default_wifi_title">Shorts kalitate lehenetsia Wi-Fi sarean</string>
   <string name="morphe_shorts_quality_default_mobile_title">Shorts kalitate lehenetsia sare mugikorrean</string>
-  <string name="morphe_remember_video_quality_toast_mobile">Lehenetsitako mugikorreko kalitatea aldatu da: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">Lehenetsitako Wi-Fi kalitatea aldatu da: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">Shorts-en mugikorreko kalitatea aldatu da: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">Shorts-en Wi-Fi kalitatea aldatu da: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Erakutsi erreprodukzio abiadura botoia</string>
   <string name="morphe_playback_speed_dialog_button_summary">Sakatu eta eutsi abiadura lehenetsira berrezartzeko</string>
+  <string name="morphe_playback_speed_button_cycle_title">Sakatu Erreprodukzio-abialetako botoia abialduen artean altxakatzeko</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Sakatu zerrendako hurrengo abialdua lortzeko. Sakatu eta mantendu abialduen menua irekitzeko</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Erreprodukzio-abialetako botoiaren abialduak</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Sakatu baten bidez altxakatzen diren abialduak, bat lerroka. Azken abialduaren ondoren, sakatu baten bidez lehenengoera itzuliko da</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Abialduen zirkulazio-zerrenda baligabea, berreskuratu lehenesteko</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Erakutsi kalitate botoia</string>
   <string name="morphe_video_quality_dialog_button_summary">Sakatu eta eutsi kalitatea lehenetsira berrezartzeko</string>
@@ -1615,6 +1646,9 @@ AV1-ekin bideoaren erreprodukzioak trabak edo fotograma galerak izan ditzake"</s
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Bolumen egonkorra ez dago erabilgarri</string>
   <string name="morphe_spoof_video_streams_about_end_early">• Erreprodukzioa 1 segundu lehenago amaitu daiteke</string>
   <string name="morphe_spoof_video_streams_about_js">• Deobfuskazioak huts egiten badu, erreprodukzioak huts egin dezake</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView tx tắt dago edo ez dago instalatuta. Aktibatu eta eguneratu, bestela erreprodukzioa huts egin dezake</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView zaharkituta dago. Eguneratu, bestela erreprodukzioa huts egin dezake</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Jatorrizko audioa behartzea ez dago erabilgarri</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Android VR-n saioa hasi behar da</string>
@@ -1788,6 +1822,8 @@ Grabaketa automatikoa aukerakoa da. Inkognito moduan edo kontua aldatzean geldit
   <string name="morphe_niconico_comments_screen_title">Niconico komentarioak</string>
   <string name="morphe_niconico_comments_screen_summary">Erakutsi zuzeneko txata eta txat-erreprodukzioa bideoaren gainean zehar mugitzen diren iruzkin gisa</string>
   <string name="morphe_niconico_comments_summary">Erreproduzigailuan gainjartze botoi bat erakusten du. Ukitu iruzkinak erakusteko edo ezkutatzeko, eta sakatu eta eutsi ezarpen azkarrak irekitzeko</string>
+  <string name="morphe_niconico_comments_pip_title">Erakutsi irudian-irudian</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentarioak txikitu dira leihoan egokitzeko</string>
   <string name="morphe_niconico_comments_appearance_title">Itxura</string>
   <string name="morphe_niconico_comments_portrait_category_title">Bertikal</string>
   <string name="morphe_niconico_comments_video_types_title">Bideo motak</string>

@@ -124,116 +124,36 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Включить переключение аудио/видео</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Пытаться переключать версию аудиодорожки и официальное музыкальное видео</string>
+  <string name="morphe_music_auto_song_version_title">Всегда воспроизводить версию песни</string>
+  <string name="morphe_music_auto_song_version_summary">Заменяет официальные музыкальные видео в очереди соответствующей песней. Требуется включенная настройка приложения «Не воспроизводить музыкальные видео». Треки без точного совпадения остаются без изменений</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Скачивайте музыкальные видео, подкасты или песни с помощью сторонних приложений для загрузки</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Использовать внешний загрузчик для меню «Скачать»</string>
   <string name="morphe_external_downloader_menu_summary">Пункт \"Скачать\" в меню открывает ваш внешний загрузчик</string>
-  <string name="morphe_music_downloads_screen_title">Загрузки</string>
-  <string name="morphe_music_downloads_empty">"Нет загрузок
-Загруженные треки появятся здесь"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s МБ</string>
-  <string name="morphe_music_downloads_summary">%1$s треков • %2$s МБ</string>
-  <string name="morphe_music_downloads_search_hint">Искать в загруженных</string>
-  <string name="morphe_music_downloads_sort">Сортировка</string>
-  <string name="morphe_music_downloads_sort_artist">Сортировать по исполнителю</string>
-  <string name="morphe_music_downloads_sort_title">Сортировать по названию</string>
-  <string name="morphe_music_downloads_sort_size">Сортировать по размеру</string>
-  <string name="morphe_music_downloads_delete_all">Удалить все загрузки</string>
-  <string name="morphe_music_downloads_delete_all_title">Удалить все загрузки?</string>
-  <string name="morphe_music_downloads_delete_all_message">Все скачанные треки будут удалены с этого устройства</string>
-  <string name="morphe_music_downloads_all_deleted">Загрузки удалены</string>
-  <string name="morphe_music_downloads_nothing_found">Ничего не найдено</string>
-  <string name="morphe_music_downloads_actions_for">Действия для %s</string>
-  <string name="morphe_music_downloads_play">Воспроизвести</string>
-  <string name="morphe_music_downloads_play_pause">Воспроизведение или пауза</string>
-  <string name="morphe_music_downloads_previous">Предыдущий</string>
-  <string name="morphe_music_downloads_next">Далее</string>
-  <string name="morphe_music_downloads_pause">Пауза</string>
-  <string name="morphe_music_downloads_shuffle">Перемешать</string>
-  <string name="morphe_music_downloads_repeat">Повторить</string>
-  <string name="morphe_music_downloads_minimize">Минимизировать</string>
-  <string name="morphe_music_downloads_close">Закрыть</string>
-  <string name="morphe_music_downloads_delete">Удалить</string>
-  <string name="morphe_music_downloads_delete_track">Удалить загрузку</string>
-  <string name="morphe_music_downloads_delete_track_title">Удалить загрузку?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s будет удалён с этого устройства</string>
-  <string name="morphe_music_downloads_track_deleted">Загрузка удалена</string>
-  <string name="morphe_music_downloads_track_delete_failed">Не удалось удалить загрузку</string>
-  <string name="morphe_music_downloads_play_failed">Не удалось воспроизвести загрузку</string>
-  <string name="morphe_music_downloads_playlists">Плейлисты</string>
-  <string name="morphe_music_downloads_playlists_section">Созданные плейлисты (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Локальных плейлистов пока нет</string>
-  <string name="morphe_music_downloads_playlists_hide">Скрыть плейлисты ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Новый плейлист</string>
-  <string name="morphe_music_downloads_playlist_new_button">Новый плейлист</string>
-  <string name="morphe_music_downloads_playlist_selected">Выбрано (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Сначала выберите песни</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Снять выделение</string>
-  <string name="morphe_music_downloads_playlist_create">Создать плейлист</string>
-  <string name="morphe_music_downloads_playlist_create_button">Создать</string>
-  <string name="morphe_music_downloads_playlist_add">Добавить в плейлист</string>
-  <string name="morphe_music_downloads_playlist_added">Добавлено в %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Название плейлиста</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Название плейлиста не может быть пустым</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Не удалось сохранить плейлист</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s треки</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 трек</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">В этом плейлисте нет треков</string>
-  <string name="morphe_music_downloads_playlist_play">Воспроизвести плейлист</string>
-  <string name="morphe_music_downloads_playlist_play_all">Воспроизвести все</string>
-  <string name="morphe_music_downloads_playlist_rename">Переименовать</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Переименовать плейлист</string>
-  <string name="morphe_music_downloads_playlist_save">Сохранить</string>
-  <string name="morphe_music_downloads_playlist_delete">Удалить плейлист</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Удалить плейлист?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s будет удален. Загруженные песни сохранятся</string>
-  <string name="morphe_music_downloads_playlist_deleted">Плейлист удален</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Удалить из плейлиста</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Перетащите для изменения порядка</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Перетащите за маркер для изменения порядка</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Готово</string>
-  <string name="morphe_music_downloads_notification_channel">Аудиозагрузки</string>
-  <string name="morphe_music_downloads_playback_channel">Офлайн-воспроизведение</string>
-  <string name="morphe_music_downloads_unknown_track">Не удалось определить трек для скачивания</string>
-  <string name="morphe_music_downloads_already_running">Скачивание уже выполняется</string>
-  <string name="morphe_music_downloads_already_saved">Уже скачано</string>
-  <string name="morphe_music_downloads_started">Скачивание началось</string>
-  <string name="morphe_music_downloads_starting">Загрузка началась…</string>
-  <string name="morphe_music_downloads_progress">Загрузка... %s%%</string>
-  <string name="morphe_music_downloads_complete">Загрузка завершена</string>
-  <string name="morphe_music_downloads_failed">Не удалось скачать</string>
-  <string name="morphe_music_downloads_playlist_download_title">Загрузка плейлиста</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Составление списка треков…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s в списке…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Не удалось составить список треков плейлиста</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Уже скачано: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"В этом плейлисте %1$s треков, %2$s еще не скачано.
+  <string name="morphe_export_download_folder_title">Экспорт загрузок</string>
+  <string name="morphe_export_download_folder_summary">"Экспортируйте сохраненные в приложении песни и видео в память вашего устройства с помощью меню загрузок в приложении. Нажмите, чтобы изменить
 
-Они скачиваются по одному, что может занять много времени и потребует около %3$s свободного места"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Скачать</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Загрузка трека %1$s из %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s скачано</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s скачано, %2$s не удалось скачать</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Скачивание плейлиста уже выполняется</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Ваш аккаунт пока не распознан. Попробуйте еще раз через некоторое время</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s в списке, всё уже скачано</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Удалось составить список только части плейлиста. Нажмите «Скачать» позже, чтобы загрузить остальное</string>
-  <string name="morphe_music_downloads_playlist_download_started">Загрузка %s в фоновом режиме</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Нет сетевого подключения</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Ожидание сети…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Остановлено после %1$s из %2$s. Нажмите «Скачать» еще раз, чтобы продолжить</string>
-  <string name="morphe_music_downloads_mark_title">Помечать скачанные песни</string>
-  <string name="morphe_music_downloads_mark_summary">Уже скачанные песни будут отмечены специальным знаком перед их данными в плейлистах, альбомах и результатах поиска</string>
+Папку экспорта: %s"</string>
+  <string name="morphe_export_download_started">Экспорт загрузки</string>
+  <string name="morphe_export_download_progress">Экспорт загрузки: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Экспорт загрузок</string>
+  <string name="morphe_export_download_saved">Загрузка экспортирована в %s</string>
+  <string name="morphe_export_download_failed">Не удалось экспортировать загрузку</string>
+  <string name="morphe_export_download_all_flyout_title">Экспортировать всё на устройство</string>
+  <string name="morphe_export_download_all_started">Экспорт всех загрузок</string>
+  <string name="morphe_export_download_all_running">Загрузки уже экспортируются</string>
+  <string name="morphe_export_download_all_saved">Экспортировано %1$s из %2$s загрузки в %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Информация</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Реклама</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Лента</string>
-  <string name="morphe_settings_music_screen_3_general_title">Общие</string>
-  <string name="morphe_settings_music_screen_4_player_title">Плеер</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Текст песни</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Прочие</string>
+  <string name="morphe_settings_music_screen_00_about_title">Информация</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Реклама</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Лента</string>
+  <string name="morphe_settings_music_screen_03_general_title">Общие</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Текст песни</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Прочие</string>
+  <string name="morphe_settings_music_screen_06_player_title">Плеер</string>
+  <string name="morphe_settings_music_screen_10_video_title">Видео</string>
   <string name="morphe_music_app_language_title">Язык YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Системный язык</string>
   <string name="morphe_music_app_language_summary_unsupported">Требуется Android 13 или более поздняя версия</string>
@@ -258,6 +178,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_repeat_button_title">Скрыть кнопку \"Повтор\"</string>
   <string name="morphe_music_hide_shuffle_button_title">Скрыть кнопку \"Перемешать\"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Скрыть секцию \"Быстрый набор\"</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Скрыть раздел «Вам также может понравиться»</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Скрыть секцию \"Ваши загрузки\"</string>
   <string name="morphe_music_comments_screen_title">Комментарии</string>
   <string name="morphe_music_comments_screen_summary">Выберите, какие компоненты будут отображаться в разделе комментариев</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Скрыть правила сообщества</string>
@@ -335,9 +257,21 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_playback_speed_title">Скорость воспроизведения</string>
   <string name="morphe_music_playback_speed_summary">Скорость, используемая для всех треков. При значении 100 % используется скорость приложения, например скорость воспроизведения подкастов</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Изменять высоту тона вместе со скоростью</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Отключить автоматические субтитры</string>
+  <string name="morphe_music_disable_auto_captions_summary">Субтитры не будут включаться автоматически при запуске видео, включая субтитры, которые в видео включены по умолчанию</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Отключить приглушение звука</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Громкость не будет понижаться, когда другое приложение воспроизводит короткий звук, например, уведомление</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Отключить перенаправление дизлайков</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Предотвращает переход к следующему треку при нажатии кнопки \"Не нравится\"</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">Петля A-B</string>
+  <string name="morphe_music_ab_loop_summary">Удерживайте ползунок, чтобы установить начало петли, еще раз — чтобы установить конец, и еще раз — чтобы сбросить петлю</string>
+  <string name="morphe_music_ab_loop_toast_start">Начало петли установлено на %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Конец петли установлен на %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Цикл очищен</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Действие при нажатии на трек в плейлисте</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Воспроизвести плейлист</string>
@@ -492,16 +426,42 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_hide_navigation_bar_labels_title">Скрыть подписи кнопок навигации</string>
   <string name="morphe_music_navigation_bar_glass_title">Включить стеклянную панель навигации</string>
   <string name="morphe_music_navigation_bar_glass_summary">Отображает панель навигации в виде плавающей закругленной полупрозрачной капсулы</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Прозрачность стекла</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Настройте уровень прозрачности стеклянной панели навигации (0 — прозрачная, 100 — непрозрачная)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Светлое стекло</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Придает стеклянной панели навигации белый оттенок вместо темного для более светлого и чистого вида</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Размер стеклянной панели навигации</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Настройте высоту, ширину и расстояние между кнопками стеклянной панели навигации с предварительным просмотром. Кнопки, которые не помещаются в ширину экрана, скрываются</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Размер и стиль стеклянной панели навигации</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Настройте высоту, ширину, расстояние между кнопками, прозрачность и яркость кромки стеклянной панели навигации с предварительным просмотром. Кнопки, которые не помещаются по ширине экрана, скрываются</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Высота</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Максимальная ширина</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Расстояние между кнопками</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Показанные кнопки: %1$s из %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Непрозрачность</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Яркость кромки</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Размытие стекла</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Степень размытия страницы за стеклянной панелью навигации (Android 14 и новее). При значении 0 страница видна четко, а в версиях до Android 14 страница перекрыта</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Светлое стекло</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Придает стеклянной панели навигации белый оттенок вместо темного для более светлого и чистого вида</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Оттенок обложки альбома</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Окрашивает стеклянную панель навигации в цвет обложки альбома воспроизводимой песни</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Скрыть индикатор выбранной кнопки</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Скрывает скругленное выделение за выбранной кнопкой стеклянной панели навигации</string>
+  <string name="morphe_music_miniplayer_screen_title">Миниплеер</string>
+  <string name="morphe_music_miniplayer_screen_summary">Изменить стиль, кнопки и жесты миниплеера</string>
+  <string name="morphe_music_miniplayer_glass_title">Включить стеклянный миниплеер</string>
+  <string name="morphe_music_miniplayer_glass_summary">Отображает плавающий миниплеер в виде скругленной полупрозрачной стеклянной карточки</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Стиль стеклянного миниплеера</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Настройте радиус углов, отступы обложки, яркость кромки и прозрачность стеклянного миниплеера с предварительным просмотром</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Радиус углов</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Отступы обложки</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Яркость кромки</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Непрозрачность</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Размытие стекла</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Степень размытия страницы за стеклянным миниплеером (Android 14 и новее). При значении 0 страница видна четко, а в версиях до Android 14 страница перекрыта</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Светлое стекло</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Окрашивает стеклянный миниплеер в белый цвет вместо темного для создания более легкого и прозрачного эффекта стекла</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Оттенок обложки альбома</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Окрашивает стеклянный миниплеер в цвет обложки альбома воспроизводимой песни</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Вращающаяся обложка</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Делает обложку стеклянного миниплеера круглой и вращает её, как пластинку, во время воспроизведения песни</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Скрыть полосу прогресса</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Скрывает полосу прогресса в нижней части стеклянного миниплеера</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Главная</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Примеры</string>
@@ -611,6 +571,7 @@ SABR-воспроизведение (подмена видеопотоков о�
 
 База данных лицензирована в соответствии с ODC Open Database License (ODbL). Записи из Soul Over AI от xoundbyte лицензированы по CC BY 4.0. Не аффилировано и не одобрено SoundProof или Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Тексты песен недоступны для этого файла устройства.</string>
   <string name="morphe_music_lyrics_enabled_title">Использовать текст песни из сторонних источников</string>
   <string name="morphe_music_lyrics_enabled_summary">Отображает текст песни из стороннего сервиса, при его отсутствии – встроенный текст песни</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Не выключать экран при просмотре текстов песен</string>
@@ -634,7 +595,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_rime_dict_no_table">Для выбранного выше языка не отмечен ни один список слов Rime. Нажмите на это имя, чтобы отметить нужный список, или выберите язык, для которого есть список</string>
   <string name="morphe_music_lyrics_rime_dict_add">Добавить</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Добавить список слов Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Файл .dict.yaml или zip-архив, содержащий такой файл, со строками вида 字 ham и 典 din2. Список загружается при его отметке и нажатии кнопки Сохранить, а лицензию на него вы можете проверить самостоятельно</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Файл .dict.yaml или zip-архив с таким файлом, содержащий строки вида 字 ham и 典 din2. Список загружается при выборе пункта и нажатии кнопки «Сохранить», а лицензию вы проверяете самостоятельно</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Языковой код</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Две или три буквы, например hak или wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Имя</string>
@@ -722,6 +683,8 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_show_translate_button_summary">Нажмите для включения/выключения перевода; длительное нажатие показывает только перевод. Использует включенных провайдеров перевода в порядке их перечисления</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Показать кнопку романизации или транслитерации</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Нажмите для включения/выключения романизации или транслитерации; длительное нажатие включает только романизацию или только транслитерацию. Использует включенных провайдеров романизации/транслитерации в порядке их перечисления</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Показывать кнопку «Текущая строка»</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">При ручном прокручивании текста песни показывает кнопку, которая возвращает к поющей строке</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Включить транслитерацию</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Разрешить не латинские варианты произношения из источника текста песни; если отключено, оставляются только латинские буквы, буквы с диакритическими знаками и цифры тонов</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Читает каждое слово синхронизированного по времени текста (синхронизация слов включена); корейскому языку загрузка не нужна; четырнадцать письменностей используют одну загрузку CLDR; китайские иероглифы читаются через Rime Wordlist, если его таблица слов охватывает этот язык</string>
@@ -740,11 +703,18 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_search_title_hint">Название песни</string>
   <string name="morphe_music_lyrics_search_artist_hint">Исполнитель</string>
   <string name="morphe_music_lyrics_search_empty">Введите название песни и исполнителя</string>
+  <string name="morphe_music_lyrics_search_google">Поиск в Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Ни один из включённых провайдеров не может искать другие песни</string>
   <string name="morphe_music_lyrics_saved">Сохранено</string>
   <string name="morphe_music_lyrics_written_by">Автор: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Подсвечивать синхронизированные слова или слоги</string>
   <string name="morphe_music_lyrics_word_sync_summary">Отдавать приоритет пословному тексту, когда он доступен. Когда в тексте есть тайминги слов, подсвечивать каждое слово или слог в такт музыке</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Использовать пружинную прокрутку</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Прокручивает текст песни с использованием физики пружины, при этом каждая строка смещается немного относительно предыдущей. Отключите для экономии заряда батареи на медленных устройствах</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Показывать точки инструментального проигрыша</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Показывает три точки между строками во время длительного инструментального проигрыша, которые заполняются по мере завершения перерыва</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Сильнее затемнять удаленные строки</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Затемняет каждую неактивную строку тем сильнее, чем дальше она находится от поющей строки. Если функция выключена, все неактивные строки затемняются одинаково</string>
   <string name="morphe_music_lyrics_line_scale_title">Сжимать неактивные строки</string>
   <string name="morphe_music_lyrics_line_scale_summary">Рисует каждую строку, которая в данный момент не исполняется, чуть меньше, поверх затемнения</string>
   <string name="morphe_music_lyrics_split_background_title">Показывать фоновый вокал отдельно</string>
@@ -813,7 +783,6 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_romanized_by_ai">Транслитерировано с помощью %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Романизировано пользователем %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (с %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Романизировано через Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Перевод</string>
   <string name="morphe_music_lyrics_translation_language_title">Язык перевода</string>
@@ -834,6 +803,7 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_romanize_only">Только романизированный</string>
   <string name="morphe_music_lyrics_dual_only">Двойной режим</string>
   <string name="morphe_music_lyrics_copied">Скопировано в буфер обмена</string>
+  <string name="morphe_music_lyrics_current">Текущая</string>
   <string name="morphe_music_lyrics_refreshing">Обновление</string>
   <string name="morphe_music_lyrics_refreshed">Обновлено</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Ключ API QuickLRC</string>
@@ -872,19 +842,15 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_use_ai_section_title">Обнаруживать секции с помощью ИИ</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Используется только когда у провайдера нет меток секций, таких как Припев или Куплет, которые тогда обнаруживает ваша модель, совместимая с OpenAI. Редактирование строки также открывает её подсказку</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL конечной точки API (например, https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Шаблон промпта</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Плейсхолдеры: {task}, {language}, {title}, {artist}, {count}, {lines}. Неизвестные остаются без изменений</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Промпт сохранен</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Промпт сохранен, но конечная точка ИИ пока не готова к использованию. Сначала настройте её в разделе настроек ИИ</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Промпт сброшен</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Настройки перевода &amp; романизации сохранены</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Настройки сохранены, но конечная точка ИИ пока недоступна</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Настройки сохранены</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Настройки восстановлены до значений по умолчанию</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Базовый URL должен начинаться с http:// или https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Настройки неполны или отклонены провайдером</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Проверка подключения…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Подключено! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Ошибка подключения. Проверьте настройки.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Сначала введите ключ API</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Проверить соединение</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Загрузка моделей…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Получить модели</string>
@@ -901,7 +867,14 @@ SABR-воспроизведение (подмена видеопотоков о�
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Дополнительные заголовки запроса (необязательный JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Заключайте имена и значения в кавычки, например {\"api-key\": \"abc\"}. Значение без кавычек, содержащее / : или число, отклоняется. Пустое значение удаляет заголовок.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Заключайте имена и значения в кавычки, например {\"temperature\": 0.3}. Значение без кавычек, содержащее / или :, отклоняется. Здесь нельзя задать модель и сообщения.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Усилия на рассуждение</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">По умолчанию</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Ключ аутентификации (Free или Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">ИИ не удалось определить разделы для этого трека</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Определение</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Применить разделы</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Определение отменено</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Нет текста песни для определения разделов</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">Выключить жирные иконки</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Восстановить вкладки \"Далее\", \"Текст песни\" и \"Похожее\" в плеере</string>

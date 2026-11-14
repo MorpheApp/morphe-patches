@@ -321,7 +321,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_phrases_title">מילות מפתח להסתרה</string>
   <string name="morphe_hide_keyword_content_phrases_summary">"הזינו מילות מפתח וביטויים להסתרה, מופרדים בשורות חדשות
 
-מילות מפתח יכולות להיות כל טקסט המופיע בכותרות סרטונים או בשמות ערוצים"</string>
+מילות מפתח יכולות להיות כל טקסט המופיע בכותרות של סרטונים. מילת המפתח @UserName מסתירה את כל התוכן של יוצרים ספציפיים"</string>
   <string name="morphe_hide_keyword_content_about_summary">"דף הבית / מינויים / חיפוש / תגובות מסוננים כדי להסתיר תוכן שתואם ביטויי מילות מפתח
 
 מגבלות:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">הקפת מילת מפתח/ביטוי עם מרכאות כפולות תמנע התאמות חלקיות של כותרות סרטונים ושמות ערוצים&lt;br&gt;&lt;br&gt;לדוגמא,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; יסתיר את הסרטון: &lt;b&gt;כיצד פועלת AI?&lt;/b&gt;&lt;br&gt;אבל אינו יסתיר את: &lt;b&gt;איך נשמעות ה-AirPods החדשות?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">למילת מפתח יש הצהרות סותרות: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">מילת מפתח קצרה מדי ודורשת מרכאות: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">מילת מפתח תסתיר את כל הסרטונים: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• דף הבית: %1$s
@@ -523,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">הצג מספר לייקים בתמונה ממוזערת בפיד</string>
   <string name="morphe_ryd_feed_like_ratio_title">הצג אחוז לייקים בתמונה ממוזערת בפיד</string>
+  <string name="morphe_ryd_feed_counts_position_title">מיקום לייקים בתמונה ממוזערת בפיד</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">ליד ספירת הצפיות</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">מרכז ימין</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">למעלה משמאל</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">חיפוש תגובות</string>
   <string name="morphe_search_comments_summary">הקש על כפתור החיפוש בתגובות כדי להציג רק את התגובות שנטענו ומכילות את כל מילות החיפוש. הקף מילים במירכאות כדי לחפש ביטוי</string>
@@ -559,18 +562,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"ייצוא סרטונים שנשמרו באפליקציה לאחסון במכשיר באמצעות תפריט ההורדות באפליקציה. הקש לשינוי תיקיית הייצוא
 
 תיקיית ייצוא: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">תיקיית ייצוא</string>
-  <string name="morphe_export_download_folder_change">שינוי תיקייה</string>
-  <string name="morphe_export_download_folder_changed">תיקיית הייצוא שונתה</string>
-  <string name="morphe_export_download_folder_reset">תיקיית הייצוא אופסה</string>
-  <string name="morphe_export_download_folder_missing">לא ניתן למצוא את תיקיית הייצוא %s</string>
-  <string name="morphe_export_download_flyout_title">ייצוא למכשיר</string>
   <string name="morphe_export_download_started">מייצא סרטון</string>
   <string name="morphe_export_download_progress">ייצוא סרטון: %s%%</string>
   <string name="morphe_export_download_notification_channel">ייצוא סרטונים</string>
   <string name="morphe_export_download_saved">הסרטון נשמר ב-%s</string>
   <string name="morphe_export_download_failed">לא ניתן היה לייצא את הסרטון</string>
-  <string name="morphe_export_download_canceled">הייצוא בוטל</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">תרגום דיבוב</string>
   <string name="morphe_vot_screen_summary">קריאת כתוביות הסרטון בקול רם באמצעות טקסט לדיבור מקומי, בסנכרון עם ההפעלה</string>
@@ -648,6 +644,24 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">נקה</string>
   <string name="morphe_loop_video_range_toast_on">חזרה על %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">ניתן זמן לא חוקי</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">מספר לולאות</string>
+  <string name="morphe_loop_count_screen_summary">בחר כמה פעמים סרטון יחזור בלולאה לפני הסרטון הבא</string>
+  <string name="morphe_loop_count_title">הפעל ספירת לולאות</string>
+  <string name="morphe_loop_count_summary">תפריט \'עוד\' של הנגן מציג את מספר הלולאות לצד \'חזור על סרטון\', כדי לבחור כמה פעמים הסרטון יופעל לפני הסרטון הבא</string>
+  <string name="morphe_loop_count_playlists_title">שמור את מספר הלולאות בפלייליסטים</string>
+  <string name="morphe_loop_count_playlists_summary">כל סרטון בפלייליסט שומר את מספר הלולאות שבחרת, ו\'לולאת וידאו\' נדלקת כאשר הפלייליסט משמיע אותו שוב. אם היא כבויה, מספר הלולאות תקף רק לסרטון שמתנגן כעת</string>
+  <string name="morphe_loop_count_clear_title">נקה מספר לולאות שמור</string>
+  <string name="morphe_loop_count_clear_summary">שכח את מספר הלולאות שנשמרו בפלייליסטים שלך. סרטונים שמורים: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">לא נשמרו מספרי לולאות</string>
+  <string name="morphe_loop_count_clear_dialog_title">לנקות מספרי לולאות שמורים?</string>
+  <string name="morphe_loop_count_clear_dialog_message">הסרטונים בפלייליסטים שלך ישכחו את מספר הלולאות שלהם, ו\'לולאת וידאו\' לא תופעל יותר כאשר פלייליסט משמיע אותם</string>
+  <string name="morphe_loop_count_clear_done">מספרי לולאות שמורים נוקו</string>
+  <string name="morphe_loop_count_flyout_name">מספר לולאות</string>
+  <string name="morphe_loop_count_dialog_message">כמה פעמים הסרטון יתנגן לפני הסרטון הבא, מ-%1$s עד %2$s. השאר ריק כדי להפעיל את הסרטון בלולאה ללא הגבלה.</string>
+  <string name="morphe_loop_count_no_limit">ללא הגבלה</string>
+  <string name="morphe_loop_count_decrease">פחות פעמים</string>
+  <string name="morphe_loop_count_increase">יותר פעמים</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">הצג כפתור תמונה בתוך תמונה</string>
   <string name="morphe_pip_button_flyout_title">הצג תפריט תמונה בתוך תמונה</string>
@@ -685,6 +699,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts של חברים בלבד</string>
   <string name="morphe_play_all_button_type_entry_12">שידורי חיים של חברים בלבד</string>
   <string name="morphe_play_all_button_not_available_toast">לא ניתן ליצור רשימת השמעה עקב אי התאמת מזהה ערוץ</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">הצג לחצן \'רשימת השמעה\'</string>
+  <string name="morphe_playlist_panel_button_summary">הקשה לפתיחת פאנל רשימת ההשמעה. מוצג רק בעת השמעת רשימת השמעה</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">הצג לחצן \'טען מחדש את הסרטון\'</string>
   <string name="morphe_dismiss_player_not_available_toast">מזהה הסרטון אינו זמין. נא לטעון מחדש את הסרטון באופן ידני</string>
@@ -710,8 +727,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">תור מקורי</string>
   <string name="morphe_queue_type_entry_3">תור Morphe</string>
   <string name="morphe_queue_type_entry_4">תור Morphe בצד הלקוח</string>
-  <string name="morphe_queue_add_flyout_menu_title">הוסף פריט תור לתפריט הנשלף בפיד</string>
-  <string name="morphe_queue_add_flyout_menu_summary">מוסיף פריט תפריט מוקפץ נוסף. הפעל זאת אם \'הוסף לתור\' אינו מוצג</string>
   <string name="morphe_local_queue_sheet_title">תור</string>
   <string name="morphe_local_queue_open">תור (%s)</string>
   <string name="morphe_local_queue_clear">נקה הכל</string>
@@ -1026,6 +1041,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">מציגה את שורת הניווט כקפסולה צפה, מעוגלת וחצי שקופה. אינו זמין עם סגנון שורת ניווט אטום</string>
   <string name="morphe_navigation_bar_glass_opacity_title">אטימות הזכוכית</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">כוונן את רמת השקיפות של שורת הניווט מזכוכית (0 הוא שקוף, 100 הוא אטום)</string>
+  <string name="morphe_navigation_bar_glass_round_title">סרגל ניווט זכוכית מעוגל</string>
+  <string name="morphe_navigation_bar_glass_round_summary">מעניק לסרגל ניווט הזכוכית קצוות מעוגלים, במקום פינות כמו במינינגן הזכוכית</string>
   <string name="morphe_navigation_bar_glass_size_title">גודל סרגל ניווט מזכוכית</string>
   <string name="morphe_navigation_bar_glass_size_summary">התאמת הגובה, הרוחב ומרווח הכפתורים של סרגל הניווט מזכוכית, עם תצוגה מקדימה. כפתורים שאינם נכנסים ברוחב המסך מוסתרים</string>
   <string name="morphe_navigation_bar_glass_size_height">גובה</string>
@@ -1113,6 +1130,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">מאיר את כל דף הצפייה ואת הפסים השחורים באמצעות הסרטון, במקום מצב תאורת אווירה</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">שמירה על קריאות הטקסט</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">מעמעם את התאורה בסרטונים בהירים כדי שהטקסט בדף יישאר קריא</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">החשכה בזמן גלילה</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">מחשיך את התאורה כאשר הדף נגלל או ננגע</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">משך ההחשכה</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">כמה זמן התאורה תישאר חשוכה לאחר הפסקת הגלילה. כאשר הערך הוא 0, רק הגלילה תחשיך את התאורה, והיא תחזור מיד עם הפסקת הגלילה</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">הסתר כרטיסי מידע</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1154,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">הסתר בפיד המנויים</string>
   <string name="morphe_hide_shorts_video_description_title">הסתר בתיאור הסרטון</string>
   <string name="morphe_hide_shorts_history_title">הסתר בהיסטוריית הצפייה</string>
+  <string name="morphe_hide_shorts_notifications_title">הסתר בהודעות דחיפה</string>
   <string name="morphe_shorts_player_screen_title">נגן Shorts</string>
   <string name="morphe_shorts_player_screen_summary">בחר אילו רכיבים יופיעו בנגן Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">השבת לייק בהקשה כפולה</string>
@@ -1191,9 +1213,23 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">השבת לוחות קופצים בנגן</string>
   <string name="morphe_disable_player_popup_panels_summary">מונע מפאנלים של פלייליסט וצ\'אט חי להיפתח באופן אוטומטי</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">הצג את פאנל רשימת ההשמעה במסך מלא</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">חלונית רשימת ההשמעה נפתחת מעל נגן המסך המלא</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">חלונית רשימת ההשמעה יוצאת ממסך מלא בטאבלטים</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">השבת הפעלה אוטומטית של רשימת השמעה</string>
   <string name="morphe_disable_playlist_autoplay_summary">מונע מרשימות השמעה להתקדם אוטומטית לווידאו הבא</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">בקרת הפעלה אוטומטית</string>
+  <string name="morphe_autoplay_control_summary">מוסיף כפתור נגן וכלל לסרטון הבא. רשימות השמעה ותורים ממשיכים, Mix נעצר לאחר מספר סרטונים, וסרטון מוצע לא יופעל לעולם. הקשה על הכפתור למצב הבא, לחיצה ארוכה לרשימה</string>
+  <string name="morphe_autoplay_mode_title">מצב הפעלה אוטומטית</string>
+  <string name="morphe_autoplay_mode_entry_1">אוטומטי</string>
+  <string name="morphe_autoplay_mode_entry_2">בודד</string>
+  <string name="morphe_autoplay_mode_entry_3">כבוי</string>
+  <string name="morphe_autoplay_mix_stop_after_title">אורך ה-Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">במצב אוטומטי, Mix נעצר לאחר מספר זה של סרטונים. 0 = ללא הגבלה</string>
+  <string name="morphe_autoplay_mix_no_limit">מיקס: ללא הגבלה</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">הודעת \"המשך לצפות\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">ברירת מחדל</string>
@@ -1269,9 +1305,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - שחזר את התפריט הישן של שמירה לפלייליסט</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - השבת סמלים מודגשים</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - שחזר את שם הערוץ מתחת לנגן הווידאו</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">פתיחת תפריט שיתוף מערכת</string>
-  <string name="morphe_open_system_share_sheet_summary">פותח את גליון השיתוף של המערכת במקום את גליון השיתוף שבתוך האפליקציה בעת שיתוף תוכן</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">עקוף את לחצני YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">פותח את אפליקציית המוזיקה המועדפת עליך במקום אפליקציית YouTube Music הרגילה</string>
@@ -1349,6 +1382,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">החלקה של הנגן הממוזער למעלה מרחיבה את הנגן, במקום להזיז את הנגן הממוזער לחלק העליון של המסך</string>
   <string name="morphe_miniplayer_docked_title">נגן ממוזער מעוגן</string>
   <string name="morphe_miniplayer_docked_summary">מעגן את הנגן הממוזער לסרגל הניווט ולדפנות המסך, במקום שירחף מעליהם</string>
+  <string name="morphe_miniplayer_glass_title">מינינגן זכוכית</string>
+  <string name="morphe_miniplayer_glass_summary">מציג את המינינגן כזכוכית שקופה עם פינות מעוגלות, בדומה לסרגל ניווט הזכוכית. דורש סרגל ניווט זכוכית</string>
   <string name="morphe_miniplayer_type_entry_0">מושבת</string>
   <string name="morphe_miniplayer_type_entry_1">ברירת מחדל</string>
   <string name="morphe_miniplayer_type_entry_2">מינימלי</string>
@@ -1439,7 +1474,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">רשימות השמעה והמלצות בנגן</string>
   <string name="morphe_dearrow_titles_search_title">תוצאות חיפוש</string>
   <string name="morphe_dearrow_titles_icon_title">הצג סמל DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">מציג את סמל DeArrow על כותרות וידאו שמקורן בקהל</string>
+  <string name="morphe_dearrow_titles_icon_summary">מציג את סמל DeArrow בכותרות של סרטונים מבית הקהילה. הקש על הסמל כדי להציג את הכותרת והתמונה המקורית</string>
   <string name="morphe_dearrow_casual_mode_title">מצב קז\'ואל</string>
   <string name="morphe_dearrow_casual_mode_summary">מציג את הכותרת המקורית במקום כותרת DeArrow אם משתמשי DeArrow הצביעו שהם אוהבים את הכותרת המקורית</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">מינימום הצבעות קז\'ואל להצגת הכותרת המקורית</string>
@@ -1465,7 +1500,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">השירות DeArrow אינו זמין באופן זמני (קוד מצב: %s)</string>
   <string name="morphe_dearrow_error_generic">השירות DeArrow אינו זמין באופן זמני</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">שחזר את סגנון כפתורי הנגן הישנים</string>
   <string name="morphe_restore_old_player_buttons_summary">מחזיר את כפתורי הנגן של הסרטון לסגנון הוויזואלי הישן והדק יותר</string>
@@ -1505,25 +1539,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">הצג תפריט עיכוב וידאו</string>
   <string name="morphe_video_delay_dialog_input_hint">עיכוב במילישניות</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">אוטומטי</string>
-  <string name="morphe_remember_video_quality_last_selected_title">זכור איכות וידאו</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">מחילה את בחירת האיכות הידנית שלך על כל הסרטונים העתידיים</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">התראות על שינוי איכות</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">מציג הודעה כאשר נשמרת איכות ברירת מחדל</string>
-  <string name="morphe_video_quality_default_wifi_title">איכות סרטון ברירת מחדל ברשת אלחוטית</string>
-  <string name="morphe_video_quality_default_mobile_title">איכות סרטון ברירת מחדל ברשת סלולרית</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">זכור איכות Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">מחילה את בחירת האיכות הידנית שלך על כל ה-Shorts העתידיים</string>
   <string name="morphe_shorts_quality_default_wifi_title">איכות Shorts ברירת מחדל ברשת אלחוטית</string>
   <string name="morphe_shorts_quality_default_mobile_title">איכות Shorts ברירת מחדל ברשת סלולרית</string>
-  <string name="morphe_remember_video_quality_toast_mobile">איכות ברירת המחדל של נייד שונתה ל: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">איכות ברירת המחדל של Wi-Fi שונתה ל: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">איכות Shorts בנייד שונתה ל: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">איכות Shorts ב-Wi-Fi שונתה ל: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">הצג כפתור מהירות הפעלה</string>
   <string name="morphe_playback_speed_dialog_button_summary">הקש והחזק כדי לאפס למהירות ברירת מחדל</string>
+  <string name="morphe_playback_speed_button_cycle_title">הקישו על כפתור מהירות ההפעלה כדי לעבור בין המהירויות</string>
+  <string name="morphe_playback_speed_button_cycle_summary">הקשה תעביר למהירות הבאה ברשימה. לחיצה ארוכה תפתח את תפריט המהירויות</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">מהירויות של כפתור מהירות ההפעלה</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">מהירויות שמעבר ביניהן מתבצע בהקשה, אחת בכל שורה. לאחר המהירות האחרונה, הקשה תחזיר לראשונה</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">רשימת מחזורי מהירות לא חוקית, איפוס לברירת המחדל</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">הצג כפתור איכות</string>
   <string name="morphe_video_quality_dialog_button_summary">הקש והחזק כדי לאפס לאיכות ברירת מחדל</string>
@@ -1615,6 +1644,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• עוצמת קול יציבה אינה זמינה</string>
   <string name="morphe_spoof_video_streams_about_end_early">• ההשמעה עשויה להסתיים שנייה אחת מוקדם</string>
   <string name="morphe_spoof_video_streams_about_js">• אם ביטול ההסתרה ייכשל, ההשמעה עלולה להיכשל</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView כבוי או שאינו מותקן. הפעל אותו ועדכן אותו, אחרת ייתכן שההפעלה תיכשל</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView אינו מעודכן. עדכן אותו, אחרת ייתכן שההפעלה תיכשל</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• כפיית שמע מקורי אינה זמינה</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• נדרשת כניסה ל-Android VR</string>
@@ -1786,6 +1818,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">תגובות Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">הצגת צ\'אט חי והשמעה חוזרת של צ\'אט כתגובות שגולשות על פני הסרטון</string>
   <string name="morphe_niconico_comments_summary">מציג כפתור שכבה בנגן הווידאו. הקשה להצגה או הסתרה של התגובות, לחיצה ארוכה להגדרות מהירות</string>
+  <string name="morphe_niconico_comments_pip_title">הצג במצב תמונה בתוך תמונה</string>
+  <string name="morphe_niconico_comments_pip_summary">התגובות מוקטנות כדי להתאים לחלון</string>
   <string name="morphe_niconico_comments_appearance_title">מראה</string>
   <string name="morphe_niconico_comments_portrait_category_title">לאורך</string>
   <string name="morphe_niconico_comments_video_types_title">סוגי וידאו</string>

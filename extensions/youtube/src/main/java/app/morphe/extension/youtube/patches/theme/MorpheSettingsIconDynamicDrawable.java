@@ -76,7 +76,7 @@ public class MorpheSettingsIconDynamicDrawable extends Drawable {
         icon.setColorFilter(colorFilter);
     }
 
-    @SuppressWarnings({"deprecation", "RedundantSuppression"})
+    @Deprecated
     @Override
     public int getOpacity() {
         return icon.getOpacity();

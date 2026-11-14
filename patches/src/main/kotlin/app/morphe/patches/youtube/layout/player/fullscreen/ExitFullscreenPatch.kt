@@ -20,7 +20,9 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.playerStatusHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 
-@Suppress("unused")
+private const val EXIT_FULLSCREEN_CLASS =
+    "Lapp/morphe/extension/youtube/patches/ExitFullscreenPatch;"
+
 internal val exitFullscreenPatch = patch(
     name = "Exit fullscreen mode",
     description = "Adds options to automatically exit fullscreen mode when a video reaches the end."
@@ -36,17 +38,11 @@ internal val exitFullscreenPatch = patch(
         videoInformationPatch
     )
 
-    // Cannot declare as top level since this patch is in the same package as
-    // other patches that declare same constant name with internal visibility.
-    @Suppress("LocalVariableName")
-    val EXTENSION_CLASS =
-        "Lapp/morphe/extension/youtube/patches/ExitFullscreenPatch;"
-
     execute {
         PreferenceScreen.PLAYER.addPreferences(
             ListPreference("morphe_exit_fullscreen")
         )
 
-        playerStatusHook(EXTENSION_CLASS, "endOfVideoReached")
+        playerStatusHook(EXIT_FULLSCREEN_CLASS, "endOfVideoReached")
     }
 }

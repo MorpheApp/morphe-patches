@@ -17,8 +17,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -35,6 +37,7 @@ import java.util.zip.ZipInputStream;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 
 /**
  * The word readings for the languages a Rime dictionary knows, taken from Rime word lists,
@@ -50,7 +53,7 @@ import app.morphe.extension.shared.ResourceUtils;
  * it cannot vouch for. Downloaded rather than shipped, because the patch can only merge XML
  * resources and because a word list goes stale as soon as the source moves on.
  */
-@SuppressWarnings("ConstantValue")
+@SuppressWarnings({"unused", "ConstantValue"})
 public final class RimeDictStore {
 
     /** The character table a word table falls back to for the characters a word does not cover. */
@@ -209,12 +212,9 @@ public final class RimeDictStore {
         if (directory == null) {
             return;
         }
-        //noinspection ResultOfMethodCallIgnored
-        new File(directory, lang.tableName).delete();
-        //noinspection ResultOfMethodCallIgnored
-        new File(directory, lang.archive).delete();
-        //noinspection ResultOfMethodCallIgnored
-        new File(directory, lang.archive + ".part").delete();
+        Utils.deleteQuietly(new File(directory, lang.tableName));
+        Utils.deleteQuietly(new File(directory, lang.archive));
+        Utils.deleteQuietly(new File(directory, lang.archive + ".part"));
     }
 
     /** Forgets the cached tables and the parsed settings, so the next read sees a change. */
@@ -454,7 +454,7 @@ public final class RimeDictStore {
     @Nullable
     public static String builtinLabel(String code) {
         for (RimeLang lang : BUILTIN) {
-            if (lang.code.equals(code)) return lang.dictionaryName;
+            if (lang.code.equalsIgnoreCase(code)) return lang.dictionaryName;
         }
         return null;
     }
@@ -463,7 +463,7 @@ public final class RimeDictStore {
     @Nullable
     public static String customLabel(String code) {
         for (RimeLang lang : loaded().stored) {
-            if (lang.code.equals(code)) return lang.dictionaryName;
+            if (lang.code.equalsIgnoreCase(code)) return lang.dictionaryName;
         }
         return null;
     }
@@ -512,7 +512,7 @@ public final class RimeDictStore {
     @Nullable
     private static String repositoryOf(String url) {
         try {
-            java.net.URL parsed = new java.net.URL(url);
+            URL parsed = new URL(url);
             String path = parsed.getPath();
             if (path == null || path.isEmpty()) return null;
             // The owner/repo is the first two non-empty path segments; the file and its
@@ -665,6 +665,7 @@ public final class RimeDictStore {
         return lower.endsWith(".dict.yaml") || lower.endsWith(".dict.yml");
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isWordList(String name) {
         final String lower = name.toLowerCase(Locale.ROOT);
         return isDictFile(lower) || lower.endsWith(".yaml") || lower.endsWith(".yml");
@@ -750,9 +751,9 @@ public final class RimeDictStore {
             if (isShippedLanguage(lang.code)) continue;
             map.putIfAbsent(lang.code, lang);
         }
-        map = java.util.Collections.unmodifiableMap(map);
-        held = new Snapshot(stored, builtinRaw, java.util.Collections.unmodifiableList(parsed),
-                java.util.Collections.unmodifiableSet(builtinOn), map);
+        map = Collections.unmodifiableMap(map);
+        held = new Snapshot(stored, builtinRaw, Collections.unmodifiableList(parsed),
+                Collections.unmodifiableSet(builtinOn), map);
         snapshot = held;
         return held;
     }
@@ -887,6 +888,7 @@ public final class RimeDictStore {
     }
 
     /** One language's word table: where it is fetched from and what it is stored as. */
+    @SuppressWarnings("SameParameterValue")
     private record RimeLang(String code, String url, String archive, String tableName,
                             String dictionaryName, byte[] magic, int slotCount,
                             int charSource, boolean custom) {
@@ -908,8 +910,9 @@ public final class RimeDictStore {
     }
 
     /**
-     * A line reader whose memory is bounded by the line length, not by the stream: {@link
-     * BufferedReader#readLine} would grow a line as long as a decompression bomb says.
+     * A line reader whose memory is bounded by the line length, not by the stream:
+     * {@link java.io.BufferedReader#readLine()} would grow a line as long as a decompression
+     * bomb says.
      */
     private static final class LineReader implements Closeable {
         private final Reader reader;

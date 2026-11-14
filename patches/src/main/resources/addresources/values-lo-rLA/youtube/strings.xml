@@ -319,9 +319,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_search_title">ເຊື່ອງຜົນການຄົ້ນຫາດ້ວຍຄຳຄົ້ນຫາ</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">ເຊື່ອງວິດີໂອໃນການຕິດຕາມດ້ວຍຄຳຄົ້ນຫາ</string>
   <string name="morphe_hide_keyword_content_phrases_title">ຄຳຄົ້ນຫາທີ່ຈະເຊື່ອງ</string>
-  <string name="morphe_hide_keyword_content_phrases_summary">"ປ້ອນຄຳຄົ້ນຫາ ແລະ ວະລີທີ່ຕ້ອງການເຊື່ອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່
+  <string name="morphe_hide_keyword_content_phrases_summary">"ປ້ອນຄຳສັບຫຼັກ ແລະ ວະລີທີ່ຕ້ອງການເຊື່ອງ, ໂດຍແຍກດ້ວຍການຂຶ້ນແຖວໃໝ່
 
-ຄຳຄົ້ນຫາສາມາດເປັນຂໍ້ຄວາມໃດກໍ່ໄດ້ທີ່ສະແດງໃນຊື່ວິດີໂອ ຫຼື ຊື່ຊ່ອງ"</string>
+ຄຳສັບຫຼັກສາມາດເປັນຂໍ້ຄວາມໃດກໍໄດ້ທີ່ສະແດງໃນຫົວຂໍ້ວິດີໂອ. ຄຳສັບຫຼັກ @UserName ຈະເຊື່ອງເນື້ອຫາທັງໝົດຈາກຜູ້ສ້າງທີ່ລະບຸ"</string>
   <string name="morphe_hide_keyword_content_about_summary">"ໜ້າຫຼັກ / ການຕິດຕາມ / ຄົ້ນຫາ / ຄຳຄິດເຫັນ ຈະຖືກກັ່ນຕອງເພື່ອເຊື່ອງເນື້ອຫາທີ່ກົງກັບວະລີຄຳຄົ້ນຫາ
 
 ຂໍ້ຈຳກັດ:
@@ -331,7 +331,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">ການໃສ່ເຄື່ອງໝາຍຄຳເວົ້າຄູ່ລ້ອມຮອບຄຳສັບ/ວະລີ ຈະປ້ອງກັນການຈັບຄູ່ບາງສ່ວນຂອງຊື່ວິດີໂອ ແລະ ຊື່ຊ່ອງ&lt;br&gt;&lt;br&gt;ຕົວຢ່າງ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ຈະເຊື່ອງວິດີໂອ: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;ແຕ່ຈະບໍ່ເຊື່ອງ: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_keyword_toast_invalid_conflicting">ຄຳສັບມີການປະກາດທີ່ຂັດແຍ່ງກັນ: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">ຄຳສັບສັ້ນເກີນໄປ ແລະ ຕ້ອງໃສ່ເຄື່ອງໝາຍຄຳເວົ້າ: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">ຄຳຄົ້ນຫາຈະເຊື່ອງທຸກວິດີໂອ: %s</string>
   <string name="morphe_hide_keyword_content_stats_hidden_breakdown">"• ໜ້າຫຼັກ: %1$s
@@ -523,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">ສະແດງຈຳນວນການຖືກໃຈຂອງຮູບຕົວຢ່າງໃນຟີດ</string>
   <string name="morphe_ryd_feed_like_ratio_title">ສະແດງເປີເຊັນການຖືກໃຈຂອງຮູບຕົວຢ່າງໃນຟີດ</string>
+  <string name="morphe_ryd_feed_counts_position_title">ຕຳແໜ່ງໄລຄ໌ຂອງຮູບຕົວຢ່າງໃນຟີດ</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">ຖັດຈາກຈຳນວນການເບິ່ງ</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">ກາງຂວາ</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">ເທິງຊ້າຍ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">ຄົ້ນຫາຄຳຄິດເຫັນ</string>
   <string name="morphe_search_comments_summary">ແຕະປຸ່ມຄົ້ນຫາໃນຄຳຄິດເຫັນ ເພື່ອສະແດງສະເພາະຄຳຄິດເຫັນທີ່ໂຫຼດແລ້ວ ເຊິ່ງມີຄຳທີ່ຄົ້ນຫາທັງໝົດ. ໃສ່ຄຳສັບໃນເຄື່ອງໝາຍຄຳເວົ້າ ເພື່ອຄົ້ນຫາເປັນວະລີ</string>
@@ -559,18 +562,11 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_summary">"ສົ່ງອອກວິດີໂອທີ່ບັນທຶກໄວ້ໃນແອັບໄປຍັງບ່ອນເກັບຂໍ້ມູນຂອງອຸປະກອນຂອງທ່ານ ໂດຍໃຊ້ເມນູການດາວໂຫຼດໃນແອັບ. ແຕະເພື່ອປ່ຽນໂຟນເດີສົ່ງອອກ
 
 ໂຟນເດີສົ່ງອອກ: %s"</string>
-  <string name="morphe_export_download_folder_dialog_title">ໂຟນເດີສົ່ງອອກ</string>
-  <string name="morphe_export_download_folder_change">ປ່ຽນໂຟນເດີ</string>
-  <string name="morphe_export_download_folder_changed">ປ່ຽນໂຟນເດີສົ່ງອອກແລ້ວ</string>
-  <string name="morphe_export_download_folder_reset">ຣີເຊັດໂຟນເດີສົ່ງອອກ</string>
-  <string name="morphe_export_download_folder_missing">ບໍ່ພົບໂຟນເດີສົ່ງອອກ %s</string>
-  <string name="morphe_export_download_flyout_title">ສົ່ງອອກໄປຍັງອຸປະກອນ</string>
   <string name="morphe_export_download_started">ກຳລັງສົ່ງອອກວິດີໂອ</string>
   <string name="morphe_export_download_progress">ກຳລັງສົ່ງອອກວິດີໂອ: %s%%</string>
   <string name="morphe_export_download_notification_channel">ການສົ່ງອອກວິດີໂອ</string>
   <string name="morphe_export_download_saved">ສົ່ງອອກວິດີໂອໄປຍັງ %s ແລ້ວ</string>
   <string name="morphe_export_download_failed">ບໍ່ສາມາດສົ່ງອອກວິດີໂອໄດ້</string>
-  <string name="morphe_export_download_canceled">ຍົກເລີກການສົ່ງອອກແລ້ວ</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">ການແປແບບພາກສຽງ</string>
   <string name="morphe_vot_screen_summary">ອ່ານຄຳບັນຍາຍວິດີໂອອອກສຽງໂດຍໃຊ້ລະບົບປ່ຽນຂໍ້ຄວາມເປັນສຽງໃນເຄື່ອງ, ເຊິ່ງຈະເຮັດວຽກສອດຄ່ອງກັບການຫຼິ້ນວິດີໂອ</string>
@@ -648,6 +644,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">ລ້າງ</string>
   <string name="morphe_loop_video_range_toast_on">ກຳລັງວົນຊ້ຳ %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">ຊ່ວງເວລາບໍ່ຖືກຕ້ອງ</string>
+  <!-- interaction.loop.loopCountPatch -->
+  <string name="morphe_loop_count_screen_title">ຈຳນວນຮອບການວົນຊ້ຳ</string>
+  <string name="morphe_loop_count_screen_summary">ເລືອກຈຳນວນຄັ້ງທີ່ວິດີໂອຈະວົນຊ້ຳກ່ອນຈະໄປຫາວິດີໂອຖັດໄປ</string>
+  <string name="morphe_loop_count_title">ເປີດໃຊ້ງານຈຳນວນຮອບການວົນຊ້ຳ</string>
+  <string name="morphe_loop_count_summary">ເມນູ More ຂອງຕົວຫຼິ້ນຈະສະແດງ ຈຳນວນການວົນຊ້ຳ ຢູ່ຂ້າງ ວົນຊ້ຳວິດີໂອ, ເພື່ອເລືອກວ່າວິດີໂອຈະຫຼິ້ນຈັກຄັ້ງກ່ອນຈະໄປວິດີໂອຖັດໄປ</string>
+  <string name="morphe_loop_count_playlists_title">ບັນທຶກຈຳນວນການວົນຊ້ຳໃນລາຍການຫຼິ້ນ</string>
+  <string name="morphe_loop_count_playlists_summary">ແຕ່ລະວິດີໂອຂອງລາຍການຫຼິ້ນຈະເກັບຮັກສາຈຳນວນການວົນຊ້ຳທີ່ທ່ານເລືອກ, ແລະ ວົນຊ້ຳວິດີໂອ ຈະຖືກເປີດໃຊ້ເມື່ອລາຍການຫຼິ້ນຫຼິ້ນວິດີໂອນັ້ນອີກຄັ້ງ. ຖ້າປິດໃຊ້, ຈຳນວນການວົນຊ້ຳຈະມີຜົນສະເພາະວິດີໂອທີ່ກຳລັງຫຼິ້ນຢູ່ໃນຕອນນີ້ເທົ່ານັ້ນ</string>
+  <string name="morphe_loop_count_clear_title">ລຶບຈຳນວນການວົນຊ້ຳທີ່ບັນທຶກໄວ້</string>
+  <string name="morphe_loop_count_clear_summary">ລຶບຈຳນວນການວົນຊ້ຳທີ່ບັນທຶກໄວ້ໃນລາຍການຫຼິ້ນຂອງທ່ານ. ວິດີໂອທີ່ບັນທຶກໄວ້: %s</string>
+  <string name="morphe_loop_count_clear_summary_none">ບໍ່ມີຈຳນວນການວົນຊ້ຳທີ່ຖືກບັນທຶກໄວ້</string>
+  <string name="morphe_loop_count_clear_dialog_title">ລຶບຈຳນວນການວົນຊ້ຳທີ່ບັນທຶກໄວ້ຫຼືບໍ່?</string>
+  <string name="morphe_loop_count_clear_dialog_message">ວິດີໂອໃນລາຍການຫຼິ້ນຂອງທ່ານຈະລຶບຈຳນວນການວົນຊ້ຳອອກ, ແລະ ວົນຊ້ຳວິດີໂອ ຈະບໍ່ຖືກເປີດໃຊ້ໂດຍອັດຕະໂນມັດເມື່ອລາຍການຫຼິ້ນຫຼິ້ນວິດີໂອເຫຼົ່ານັ້ນ</string>
+  <string name="morphe_loop_count_clear_done">ລຶບຈຳນວນການວົນຊ້ຳທີ່ບັນທຶກໄວ້ສຳເລັດແລ້ວ</string>
+  <string name="morphe_loop_count_flyout_name">ຈຳນວນການວົນຊ້ຳ</string>
+  <string name="morphe_loop_count_dialog_message">ຈຳນວນຄັ້ງທີ່ວິດີໂອຫຼິ້ນກ່ອນຈະໄປວິດີໂອຖັດໄປ, ຕັ້ງແຕ່ %1$s ຫາ %2$s. ປ່ອຍວ່າງໄວ້ເພື່ອວົນຊ້ຳວິດີໂອໂດຍບໍ່ມີຂີດຈຳກັດ.</string>
+  <string name="morphe_loop_count_times">%s ຄັ້ງ</string>
+  <string name="morphe_loop_count_no_limit">ບໍ່ມີຂີດຈຳກັດ</string>
+  <string name="morphe_loop_count_decrease">ຫຼຸດຈຳນວນຄັ້ງ</string>
+  <string name="morphe_loop_count_increase">ເພີ່ມຈຳນວນຄັ້ງ</string>
   <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <string name="morphe_pip_button_overlay_title">ສະແດງປຸ່ມ Picture-in-Picture</string>
   <string name="morphe_pip_button_flyout_title">ສະແດງເມນູ Picture-in-Picture</string>
@@ -685,6 +700,9 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts ສຳລັບສະມາຊິກເທົ່ານັ້ນ</string>
   <string name="morphe_play_all_button_type_entry_12">ການສະຕຣີມສົດສຳລັບສະມາຊິກເທົ່ານັ້ນ</string>
   <string name="morphe_play_all_button_not_available_toast">ບໍ່ສາມາດສ້າງລາຍການຫຼິ້ນໄດ້ ເນື່ອງຈາກ ID ຊ່ອງບໍ່ກົງກັນ</string>
+  <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
+  <string name="morphe_playlist_panel_button_title">ປຸ່ມສະແດງລາຍການຫຼິ້ນ</string>
+  <string name="morphe_playlist_panel_button_summary">ແຕະເພື່ອເປີດແຜງລາຍການຫຼິ້ນ. ສະແດງສະເພາະເມື່ອຜັນລາຍການຫຼິ້ນເທົ່ານັ້ນ</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">ສະແດງປຸ່ມໂຫຼດວິດີໂອຄືນໃໝ່</string>
   <string name="morphe_dismiss_player_not_available_toast">ບໍ່ພົບ ID ຂອງວິດີໂອ. ກະລຸນາໂຫຼດວິດີໂອຄືນໃໝ່ດ້ວຍຕົນເອງ</string>
@@ -710,8 +728,6 @@ Second \"item\" text"</string>
   <string name="morphe_queue_type_entry_2">ຄິວພື້ນຖານ</string>
   <string name="morphe_queue_type_entry_3">ຄິວ Morphe</string>
   <string name="morphe_queue_type_entry_4">ຄິວ Morphe ຝັ່ງລູກຄ້າ</string>
-  <string name="morphe_queue_add_flyout_menu_title">ເພີ່ມລາຍການເມນູຄິວໃນ flyout ຂອງຟີດ</string>
-  <string name="morphe_queue_add_flyout_menu_summary">ເພີ່ມລາຍການ flyout ເສີມ. ເປີດໃຊ້ສິ່ງນີ້ຖ້າ \"ເພີ່ມໃນຄິວ\" ບໍ່ສະແດງ</string>
   <string name="morphe_local_queue_sheet_title">ຄິວ</string>
   <string name="morphe_local_queue_open">ຄິວ (%s)</string>
   <string name="morphe_local_queue_clear">ລຶບທັງໝົດ</string>
@@ -1026,6 +1042,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">ສະແດງແຖບນຳທາງເປັນແບບແຄບຊູນໂຄ້ງ, ລອຍໄດ້ ແລະ ໂປ່ງໃສ. ບໍ່ສາມາດໃຊ້ໄດ້ກັບຮູບແບບແຖບນຳທາງແບບທຶບ</string>
   <string name="morphe_navigation_bar_glass_opacity_title">ຄວາມທຶບຂອງແກ້ວ</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">ປັບລະດັບຄວາມໂປ່ງໃສຂອງແຖບນຳທາງແບບແກ້ວ (0 ແມ່ນໂປ່ງໃສ, 100 ແມ່ນທຶບ)</string>
+  <string name="morphe_navigation_bar_glass_round_title">ແຖບນຳທາງແບບແກ້ວມົນ</string>
+  <string name="morphe_navigation_bar_glass_round_summary">ເຮັດໃຫ້ປາຍຂອງແຖບນຳທາງແບບແກ້ວມີລັກສະນະມົນ, ແທນທີ່ຈະເປັນມຸມຄືກັບເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍແບບແກ້ວ</string>
   <string name="morphe_navigation_bar_glass_size_title">ຂະໜາດຂອງແຖບນຳທາງແບບແກ້ວ</string>
   <string name="morphe_navigation_bar_glass_size_summary">ປັບຄວາມສູງ, ຄວາມກວ້າງ ແລະ ໄລຍະຫ່າງຂອງປຸ່ມຂອງແຖບນຳທາງແບບແກ້ວ, ພ້ອມກັບການເບິ່ງຕົວຢ່າງ. ປຸ່ມທີ່ບໍ່ພໍກັບຄວາມກວ້າງຂອງໜ້າຈໍຈະຖືກເຊື່ອງໄວ້</string>
   <string name="morphe_navigation_bar_glass_size_height">ຄວາມສູງ</string>
@@ -1113,6 +1131,10 @@ Second \"item\" text"</string>
   <string name="morphe_enhanced_ambient_mode_summary">ເຮັດໃຫ້ໜ້າເບິ່ງວິດີໂອທັງໝົດ ແລະ ແຖບສີດຳມີແສງຕາມວິດີໂອ ເພື່ອໃຊ້ແທນໂໝດ Ambient</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">ຮັກສາໃຫ້ຂໍ້ຄວາມອ່ານໄດ້ງ່າຍ</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">ຫຼຸດແສງໃນວິດີໂອທີ່ມີຄວາມສະຫວ່າງຫຼາຍ ເພື່ອໃຫ້ຂໍ້ຄວາມໃນໜ້າຍັງຄົງອ່ານໄດ້ງ່າຍ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">ຫຼຸດແສງໃນຂະນະທີ່ເລື່ອນ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_summary">ຫຼຸດແສງໄຟໃນຂະນະທີ່ເລື່ອນໜ້າ ຫຼື ສຳຜັດ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_title">ໄລຍະເວລາຫຼຸດແສງ</string>
+  <string name="morphe_enhanced_ambient_mode_dim_duration_summary">ໄລຍະເວລາທີ່ໄຟຍັງຄົງຫຼຸດແສງຫຼັງຈາກຢຸດເລື່ອນ. ຖ້າເປັນ 0 ຈະຫຼຸດແສງສະເພາະໃນຂະນະທີ່ເລື່ອນເທົ່ານັ້ນ ແລະ ຈະກັບມາສະຫວ່າງທັນທີທີ່ຢຸດເລື່ອນ</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">ເຊື່ອງບັດຂໍ້ມູນ</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
@@ -1133,6 +1155,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_subscriptions_title">ເຊື່ອງໃນຟີດການຕິດຕາມ</string>
   <string name="morphe_hide_shorts_video_description_title">ເຊື່ອງໃນຄຳອະທິບາຍວິດີໂອ</string>
   <string name="morphe_hide_shorts_history_title">ເຊື່ອງໃນປະຫວັດການເບິ່ງ</string>
+  <string name="morphe_hide_shorts_notifications_title">ເຊື່ອງໃນການແຈ້ງເຕືອນແບບ push</string>
   <string name="morphe_shorts_player_screen_title">ເຄື່ອງຫຼິ້ນ Shorts</string>
   <string name="morphe_shorts_player_screen_summary">ເລືອກສ່ວນປະກອບທີ່ຈະໃຫ້ສະແດງໃນເຄື່ອງຫຼິ້ນ Shorts</string>
   <string name="morphe_disable_shorts_double_tap_to_like_title">ປິດການໃຊ້ງານການແຕະສອງຄັ້ງເພື່ອຖືກໃຈ</string>
@@ -1191,9 +1214,24 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">ປິດໃຊ້ແຜງປັອບອັບຂອງເຄື່ອງຫຼິ້ນ</string>
   <string name="morphe_disable_player_popup_panels_summary">ປິດການເປີດແຜງລາຍການຫຼິ້ນ ແລະ ແຊັດສົດໂດຍອັດຕະໂນມັດ</string>
+  <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
+  <string name="morphe_fullscreen_playlist_panel_title">ສະແດງແຜງລາຍການຫຼິ້ນໃນໜ້າຈໍເຕັມ</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">ແຜງລາຍການຫຼິ້ນຈະເປີດທັບເຄື່ອງຫຼິ້ນໜ້າຈໍເຕັມ</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">ແຜງລາຍການຫຼິ້ນຈະອອກຈາກໜ້າຈໍເຕັມໃນແທັບເລັດ</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">ປິດການຫຼິ້ນອັດຕະໂນມັດຂອງລາຍການຫຼິ້ນ</string>
   <string name="morphe_disable_playlist_autoplay_summary">ປ້ອງກັນບໍ່ໃຫ້ລາຍການຫຼິ້ນເພງເລື່ອນໄປວິດີໂອຖັດໄປໂດຍອັດຕະໂນມັດ</string>
+  <!-- interaction.autoplay.autoplayControlPatch -->
+  <string name="morphe_autoplay_control_title">ການຄວບຄຸມການຫຼິ້ນອັດຕະໂນມັດ</string>
+  <string name="morphe_autoplay_control_summary">ເພີ່ມປຸ່ມເຄື່ອງຫຼິ້ນ ແລະ ກົດເກນສຳລັບວິດີໂອຖັດໄປ. ຫຼິ້ນລາຍການຫຼິ້ນ ແລະ ຄິວຕໍ່ໄປ, Mix ຈະຢຸດຫຼັງຈາກຈຳນວນວິດີໂອທີ່ກຳນົດ, ວິດີໂອທີ່ແນະນຳຈະບໍ່ຖືກຫຼິ້ນ. ແຕະປຸ່ມເພື່ອປ່ຽນໂໝດຖັດໄປ, ແຕະຄ້າງໄວ້ເພື່ອເບິ່ງລາຍການ</string>
+  <string name="morphe_autoplay_mode_title">ໂໝດການຫຼິ້ນອັດຕະໂນມັດ</string>
+  <string name="morphe_autoplay_mode_entry_1">ອັດຕະໂນມັດ</string>
+  <string name="morphe_autoplay_mode_entry_2">ດ່ຽວ</string>
+  <string name="morphe_autoplay_mode_entry_3">ປິດ</string>
+  <string name="morphe_autoplay_mix_stop_after_title">ຄວາມຍາວຂອງ Mix</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">ໃນໂໝດອັດຕະໂນມັດ, Mix ຈະຢຸດຫຼັງຈາກວິດີໂອຈຳນວນນີ້. 0 = ບໍ່ມີຂີດຈຳກັດ</string>
+  <string name="morphe_autoplay_mix_length">Mix: %s ວິດີໂອ</string>
+  <string name="morphe_autoplay_mix_no_limit">Mix: ບໍ່ມີຂີດຈຳກັດ</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">ຄຳແນະນຳ \'ເບິ່ງຕໍ່ ຫຼື ບໍ່?\'</string>
   <string name="morphe_continue_watching_prompt_entry_1">ຄ່າເລີ່ມຕົ້ນ</string>
@@ -1269,9 +1307,6 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - ກູ້ຄືນການບັນທຶກເກົ່າໄປຍັງລາຍການຫຼິ້ນ</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - ປິດໄອຄອນຕົວໜາ</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - ຄືນຄ່າຊື່ຊ່ອງລຸ່ມເຄື່ອງຫຼິ້ນວິດີໂອ</string>
-  <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <string name="morphe_open_system_share_sheet_title">ເປີດແຜ່ນແບ່ງປັນຂອງລະບົບ</string>
-  <string name="morphe_open_system_share_sheet_summary">ເປີດແຜງແບ່ງປັນຂອງລະບົບ ແທນທີ່ແຜງແບ່ງປັນພາຍໃນແອັບ ເມື່ອແບ່ງປັນເນື້ອຫາ</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">ປັບປ່ຽນປຸ່ມ YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">ເປີດແອັບເພງທີ່ທ່ານມັກ ແທນທີ່ແອັບ YouTube Music ທີ່ຕິດຕັ້ງມາພ້ອມກັບເຄື່ອງ</string>
@@ -1349,6 +1384,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">ການປັດເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍຂຶ້ນເທິງ ຈະຂະຫຍາຍເຄື່ອງຫຼິ້ນ, ແທນທີ່ຈະຍ້າຍເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍໄປໄວ້ທາງເທິງຂອງໜ້າຈໍ</string>
   <string name="morphe_miniplayer_docked_title">ເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍແບບຕິດຄົງທີ່</string>
   <string name="morphe_miniplayer_docked_summary">ຕິດເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍເຂົ້າກັບແຖບນຳທາງ ແລະ ດ້ານຂ້າງຂອງໜ້າຈໍ, ແທນທີ່ຈະລອຍຢູ່ເໜືອສິ່ງເຫຼົ່ານັ້ນ</string>
+  <string name="morphe_miniplayer_glass_title">ເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍແບບແກ້ວ</string>
+  <string name="morphe_miniplayer_glass_summary">ສະແດງເຄື່ອງຫຼິ້ນຂະໜາດນ້ອຍເປັນແກ້ວໂປ່ງໃສທີ່ມີມຸມມົນ, ຄືກັບແຖບນຳທາງແບບແກ້ວ. ຮຽກຮ້ອງໃຫ້ມີແຖບນຳທາງແບບແກ້ວ</string>
   <string name="morphe_miniplayer_type_entry_0">ປິດການໃຊ້ງານ</string>
   <string name="morphe_miniplayer_type_entry_1">ຄ່າເລີ່ມຕົ້ນ</string>
   <string name="morphe_miniplayer_type_entry_2">ແບບລຽບງ່າຍ</string>
@@ -1439,7 +1476,7 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_player_title">ລາຍການວິດີໂອ &amp; ຄຳແນະນຳຂອງເຄື່ອງຫຼິ້ນ</string>
   <string name="morphe_dearrow_titles_search_title">ຜົນການຄົ້ນຫາ</string>
   <string name="morphe_dearrow_titles_icon_title">ສະແດງໄອຄອນ DeArrow</string>
-  <string name="morphe_dearrow_titles_icon_summary">ສະແດງໄອຄອນ DeArrow ໃນຫົວຂໍ້ວິດີໂອທີ່ມາຈາກ crowdsourced</string>
+  <string name="morphe_dearrow_titles_icon_summary">ສະແດງໄອຄອນ DeArrow ຢູ່ໃນຫົວຂໍ້ວິດີໂອທີ່ມາຈາກ crowdsourced. ແຕະທີ່ໄອຄອນເພື່ອສະແດງຫົວຂໍ້ ແລະ ຮູບຕົວຢ່າງຕົ້ນສະບັບ</string>
   <string name="morphe_dearrow_casual_mode_title">ໂໝດແບບບໍ່ເປັນທາງການ</string>
   <string name="morphe_dearrow_casual_mode_summary">ສະແດງຫົວຂໍ້ດັ້ງເດີມ ແທນຫົວຂໍ້ຂອງ DeArrow ຖ້າຜູ້ໃຊ້ DeArrow ໂຫວດວ່າພວກເຂົາມັກຫົວຂໍ້ດັ້ງເດີມ</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">ຈຳນວນໂຫວດແບບບໍ່ເປັນທາງການຂັ້ນຕ່ຳ ເພື່ອສະແດງຫົວຂໍ້ດັ້ງເດີມ</string>
@@ -1465,7 +1502,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ (ລະຫັດສະຖານະ: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ</string>
-  <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">ກູ້ຄືນຮູບແບບປຸ່ມເຄື່ອງຫຼິ້ນແບບເກົ່າ</string>
   <string name="morphe_restore_old_player_buttons_summary">ປ່ຽນປຸ່ມຄວບຄຸມເຄື່ອງຫຼິ້ນວິດີໂອແບບໜາ ໃຫ້ກັບໄປເປັນຮູບແບບທີ່ບາງກວ່າໃນສະບັບກ່ອນ</string>
@@ -1505,25 +1541,20 @@ Second \"item\" text"</string>
   <string name="morphe_video_delay_button_flyout_title">ສະແດງເມນູໜ່ວງວິດີໂອ</string>
   <string name="morphe_video_delay_dialog_input_hint">ການໜ່ວງເປັນມິນລິວິນາທີ</string>
   <!-- video.quality.rememberVideoQualityPatch -->
-  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
-  <string name="morphe_video_quality_default_entry_1">ອັດຕະໂນມັດ</string>
-  <string name="morphe_remember_video_quality_last_selected_title">ຈື່ຄຸນນະພາບວິດີໂອ</string>
-  <string name="morphe_remember_video_quality_last_selected_summary">ນຳໃຊ້ການເລືອກຄຸນນະພາບດ້ວຍຕົນເອງຂອງທ່ານກັບທຸກວິດີໂອໃນອະນາຄົດ</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">ການແຈ້ງເຕືອນການປ່ຽນແປງຄຸນນະພາບ</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">ສະແດງການແຈ້ງເຕືອນເມື່ອມີການບັນທຶກຄຸນນະພາບເລີ່ມຕົ້ນໃໝ່</string>
-  <string name="morphe_video_quality_default_wifi_title">ຄຸນນະພາບວິດີໂອເລີ່ມຕົ້ນໃນເຄືອຂ່າຍ Wi-Fi</string>
-  <string name="morphe_video_quality_default_mobile_title">ຄຸນນະພາບວິດີໂອເລີ່ມຕົ້ນໃນເຄືອຂ່າຍມືຖື</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">ຈື່ຄຸນນະພາບ Shorts</string>
   <string name="morphe_remember_shorts_quality_last_selected_summary">ນຳໃຊ້ການເລືອກຄຸນນະພາບດ້ວຍຕົນເອງຂອງທ່ານກັບທຸກໆ Shorts ໃນອະນາຄົດ</string>
   <string name="morphe_shorts_quality_default_wifi_title">ຄຸນນະພາບ Shorts ເລີ່ມຕົ້ນໃນເຄືອຂ່າຍ Wi-Fi</string>
   <string name="morphe_shorts_quality_default_mobile_title">ຄຸນນະພາບ Shorts ເລີ່ມຕົ້ນໃນເຄືອຂ່າຍມືຖື</string>
-  <string name="morphe_remember_video_quality_toast_mobile">ປ່ຽນຄຸນນະພາບມືຖືເລີ່ມຕົ້ນເປັນ: %s</string>
-  <string name="morphe_remember_video_quality_toast_wifi">ປ່ຽນຄຸນນະພາບ Wi-Fi ເລີ່ມຕົ້ນເປັນ: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_mobile">ປ່ຽນຄຸນນະພາບ Shorts ມືຖືເປັນ: %s</string>
   <string name="morphe_remember_video_quality_toast_shorts_wifi">ປ່ຽນຄຸນນະພາບ Wi-Fi ຂອງ Shorts ເປັນ: %s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">ສະແດງປຸ່ມຄວາມໄວໃນການຫຼິ້ນ</string>
   <string name="morphe_playback_speed_dialog_button_summary">ແຕະຄ້າງໄວ້ເພື່ອຣີເຊັດຄວາມໄວເປັນຄ່າເລີ່ມຕົ້ນ</string>
+  <string name="morphe_playback_speed_button_cycle_title">ແຕະປຸ່ມຄວາມໄວໃນການຫຼິ້ນເພື່ອປ່ຽນຄວາມໄວ</string>
+  <string name="morphe_playback_speed_button_cycle_summary">ການແຕະຈະໄປຫາຄວາມໄວຖັດໄປໃນລາຍການ. ແຕະຄ້າງໄວ້ເພື່ອເປີດເມນູຄວາມໄວ</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">ຄວາມໄວຂອງປຸ່ມຄວາມໄວໃນການຫຼິ້ນ</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">ຄວາມໄວທີ່ການແຕະຈະປ່ຽນໄປ, ຫນຶ່ງຄວາມໄວຕໍ່ໜຶ່ງແຖວ. ຫຼັງຈາກຄວາມໄວສຸດທ້າຍ, ການແຕະຈະກັບໄປທີ່ຄວາມໄວທຳອິດ</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">ລາຍການວົງຈອນຄວາມໄວບໍ່ຖືກຕ້ອງ, ຣີເຊັດເປັນຄ່າເລີ່ມຕົ້ນ</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">ສະແດງປຸ່ມຄຸນນະພາບ</string>
   <string name="morphe_video_quality_dialog_button_summary">ແຕະຄ້າງໄວ້ເພື່ອຣີເຊັດຄຸນນະພາບເປັນຄ່າເລີ່ມຕົ້ນ</string>
@@ -1615,6 +1646,9 @@ AVC (H.264)
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• ບໍ່ມີລະດັບສຽງທີ່ຄົງທີ່</string>
   <string name="morphe_spoof_video_streams_about_end_early">• ການຫຼິ້ນອາດຈະສິ້ນສຸດລົງກ່ອນ 1 ວິນາທີ</string>
   <string name="morphe_spoof_video_streams_about_js">• ຖ້າການຖອດລະຫັດລົ້ມເຫຼວ, ການຫຼິ້ນອາດຈະລົ້ມເຫຼວ</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_about_webview_missing">• Android System WebView ຖືກປິດ ຫຼື ບໍ່ໄດ້ຕິດຕັ້ງ. ໃຫ້ເປີດໃຊ້ງານ ແລະ ອັບເດດມັນ, ບໍ່ດັ່ງນັ້ນ ການຫຼິ້ນອາດຈະລົ້ມເຫຼວ</string>
+  <string name="morphe_spoof_video_streams_about_webview_outdated">• Android System WebView ເກົ່າເກີນໄປ. ໃຫ້ອັບເດດມັນ, ບໍ່ດັ່ງນັ້ນ ການຫຼິ້ນອາດຈະລົ້ມເຫຼວ</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• ບໍ່ມີການບັງຄັບໃຊ້ສຽງດັ້ງເດີມ</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• ຈໍາເປັນຕ້ອງໄດ້ລົງຊື່ເຂົ້າໃຊ້ Android VR</string>
@@ -1788,6 +1822,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">ຄຳຄິດເຫັນແບບ Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">ສະແດງແຊັດສົດ ແລະ ການຫຼິ້ນແຊັດຄືນໃໝ່ເປັນຄຳຄິດເຫັນທີ່ເລື່ອນຜ່ານວິດີໂອ</string>
   <string name="morphe_niconico_comments_summary">ສະແດງປຸ່ມຊ້ອນທັບໃນເຄື່ອງຫຼິ້ນວິດີໂອ. ແຕະເພື່ອສະແດງ ຫຼື ຊ່ອນຄຳຄິດເຫັນ, ແຕະຄ້າງໄວ້ສຳລັບການຕັ້ງຄ່າແບບດ່ວນ</string>
+  <string name="morphe_niconico_comments_pip_title">ສະແດງໃນຮູບແບບ picture-in-picture</string>
+  <string name="morphe_niconico_comments_pip_summary">ຄຳຄິດເຫັນຈະຖືກປັບຂະໜາດລົງເພື່ອໃຫ້ພໍດີກັບໜ້າຕ່າງ</string>
   <string name="morphe_niconico_comments_appearance_title">ຮູບລັກສະນະ</string>
   <string name="morphe_niconico_comments_portrait_category_title">ແນວຕັ້ງ</string>
   <string name="morphe_niconico_comments_video_types_title">ປະເພດວິດີໂອ</string>

@@ -12,6 +12,7 @@ import app.morphe.extension.shared.Logger;
 /**
  * Strips away specific parameters from links.
  */
+@SuppressWarnings("unused")
 public class LinkSanitizer {
 
     private static final Collection<String> parametersToRemove = List.of(

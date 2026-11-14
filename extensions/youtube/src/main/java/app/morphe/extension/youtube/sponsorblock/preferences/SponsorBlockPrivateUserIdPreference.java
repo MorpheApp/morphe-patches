@@ -12,7 +12,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.widget.EditText;
@@ -22,6 +21,7 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.ResettableEditTextPreference;
 import app.morphe.extension.shared.sponsorblock.SponsorBlockHelpers;
 import app.morphe.extension.shared.ui.CustomDialog;
 
@@ -29,7 +29,7 @@ import app.morphe.extension.shared.ui.CustomDialog;
  * EditTextPreference whose dialog adds a Copy action and validates the user ID before saving.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public class SponsorBlockPrivateUserIdPreference extends EditTextPreference {
+public class SponsorBlockPrivateUserIdPreference extends ResettableEditTextPreference {
 
     public SponsorBlockPrivateUserIdPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);

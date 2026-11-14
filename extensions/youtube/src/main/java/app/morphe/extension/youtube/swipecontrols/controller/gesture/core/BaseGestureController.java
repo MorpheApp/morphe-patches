@@ -13,8 +13,10 @@ package app.morphe.extension.youtube.swipecontrols.controller.gesture.core;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.youtube.patches.onthego.OnTheGoPatch;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeZoneAction;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity;
@@ -27,6 +29,7 @@ import app.morphe.extension.youtube.swipecontrols.misc.Point;
  * The common base of all {@link GestureController} classes.
  * Handles most of the boilerplate code needed for gesture detection.
  */
+@SuppressWarnings("unused")
 public abstract class BaseGestureController extends GestureDetector.SimpleOnGestureListener
         implements GestureController {
 
@@ -123,6 +126,12 @@ public abstract class BaseGestureController extends GestureDetector.SimpleOnGest
             return false;
         }
 
+        // Ignore if the On-the-go panel is open. It covers the fullscreen player,
+        // so the swipes on its controls would change the volume or brightness.
+        if (OnTheGoPatch.isOnTheGoActive()) {
+            return false;
+        }
+
         // Ignore if the native lock screen is engaged.
         return !config.shouldIgnoreSwipesWhenLocked() || !SwipeControlsHostActivity.isPlayerLocked();
     }
@@ -140,7 +149,7 @@ public abstract class BaseGestureController extends GestureDetector.SimpleOnGest
     }
 
     @Override
-    public boolean onScroll(@Nullable MotionEvent from, MotionEvent to, float distanceX, float distanceY) {
+    public boolean onScroll(@Nullable MotionEvent from, @NonNull MotionEvent to, float distanceX, float distanceY) {
         if (from == null) {
             return false;
         }

@@ -24,10 +24,21 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">புதிய அமைப்புகளை முன்னிலைப்படுத்து</string>
   <string name="morphe_settings_new_indicator_days_summary">ஒரு புதுப்பிப்பின் மூலம் சேர்க்கப்பட்ட அமைப்புகள் மற்றும் விருப்பங்களுக்கு அருகில் எத்தனை நாட்களுக்கு ஒரு புள்ளி காட்டப்பட வேண்டும்</string>
   <string name="morphe_settings_new_indicator_days_off">ஆஃப்</string>
+  <string name="morphe_settings_new_indicator_clear_title">அனைத்து அமைப்புகளையும் பார்த்ததாகக் குறிக்கவும்</string>
+  <string name="morphe_settings_new_indicator_clear_summary">அனைத்து புதிய அமைப்புகள் மற்றும் விருப்பங்களிலிருந்து புள்ளியை நீக்கவும்</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">அனைத்து அமைப்புகளையும் பார்த்ததாகக் குறிக்க வேண்டுமா?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">அனைத்து புதிய அமைப்புகள் மற்றும் விருப்பங்களிலிருந்து புள்ளி நீக்கப்பட்டது. எதிர்கால புதுப்பிப்புகள் மூலம் சேர்க்கப்படும் அமைப்புகள் இன்னும் முன்னிலைப்படுத்தப்படும்.</string>
   <!-- misc.initialization.initializationPatch -->
   <!-- layout.branding.baseCustomBrandingPatch -->
   <!-- layout.theme.baseThemePatch -->
   <!-- interaction.downloads.downloadsPatch -->
+  <string name="morphe_export_download_folder_dialog_title">ஏற்றுமதி கோப்புறை</string>
+  <string name="morphe_export_download_folder_change">கோப்புறையை மாற்றவும்</string>
+  <string name="morphe_export_download_folder_changed">ஏற்றுமதி கோப்புறை மாற்றப்பட்டது</string>
+  <string name="morphe_export_download_folder_reset">ஏற்றுமதி கோப்புறை மீட்டமைக்கப்பட்டது</string>
+  <string name="morphe_export_download_folder_missing">ஏற்றுமதி கோப்புறை %s-ஐக் கண்டறிய முடியவில்லை</string>
+  <string name="morphe_export_download_flyout_title">சாதனத்திற்கு ஏற்றுமதி செய்யவும்</string>
+  <string name="morphe_export_download_canceled">ஏற்றுமதி ரத்து செய்யப்பட்டது</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
@@ -35,12 +46,48 @@ Second \"item\" text"</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView முடக்கப்பட்டுள்ளது அல்லது நிறுவப்படவில்லை.
+
+வீடியோ பிளேபேக்கிற்கு Android System WebView தேவை. அதை இயக்கி சமீபத்திய பதிப்பிற்குப் புதுப்பிக்கவும்.
+
+Android System WebView-ஐத் திறக்க OK-வைத் தட்டவும்."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Android System WebView காலாவதியானது (பதிப்பு %s).
+
+Android System WebView சமீபத்திய பதிப்பிற்குப் புதுப்பிக்கப்படும் வரை வீடியோ பிளேபேக் தோல்வியடையக்கூடும்.
+
+Android System WebView-ஐத் திறக்க OK-வைத் தட்டவும்."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">மீண்டும் காட்ட வேண்டாம்</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView நிறுவப்படவில்லை. வீடியோ பிளேபேக்கைச் சரிசெய்ய அதை நிறுவவும்</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-க்கு தனி உள்நுழைவு தேவை. தொடர இங்கே தட்டவும்</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">மொபைல் வெப் உள்நுழைவு</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">விருப்பத்தேர்வு: உங்கள் கணக்கைப் பயன்படுத்தி வீடியோக்களை இயக்க YouTube இணையதளத்தில் உள்நுழையவும். தொடர இங்கே தட்டவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">தற்போது மொபைல் வெப்பில் உள்நுழையப்பட்டுள்ளது</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">இந்த அம்சத்தைப் பயன்படுத்த, \'Default client\'-ஐ Mobile Web என மாற்றவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-இல் உள்நுழையவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web உள்நுழையாமல் அல்லது YouTube இணையதளத்தில் உள்நுழைந்து வீடியோக்களை இயக்கும்
+
+• உள்நுழைந்திருந்தால், வயது வரம்பு கட்டுப்படுத்தப்பட்ட வீடியோக்கள் போன்ற கணக்கு தேவைப்படும் வீடியோக்களை இயக்க முடியும்
+• இந்த செயலியில் Google உள்நுழைவு பக்கம் திறக்கும்
+• நீங்கள் இயக்கும் வீடியோக்களைப் பெறுவதற்கு மட்டுமே உள்நுழைவு பயன்படுத்தப்படுகிறது
+• உள்நுழைவு இந்த சாதனத்தில் மட்டுமே சேமிக்கப்படும்
+
+உள்நுழைய, கீழே உள்ள தொடர பொத்தானை அழுத்தவும்"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"உள்நுழைவு சேமிக்கப்பட்டது
+
+• உங்களது Morphe அமைப்புகள் Mobile Web உள்நுழைவை இறக்குமதி/ஏற்றுமதி செய்யாது
+• Google உள்நுழைவை முடித்தால், நீங்கள் மீண்டும் உள்நுழையும் வரை வீடியோக்கள் உள்நுழையாமல் இயக்கப்படும்
+• உள்நுழைவை நீக்குவது இந்த சாதனத்தை YouTube இணையதளத்திலிருந்தும் வெளியேற்றும்"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">மொபைல் வெப் உள்நுழைவு காலாவதி ஆகிவிட்டது, மீண்டும் மொபைல் வெப்பில் உள்நுழைய முயற்சிக்கவும்</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">மொபைல் வெப்பில் இருந்து வெளியேறப்பட்டது</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView கிடைக்கவில்லை. உள்நுழைய அதை நிறுவவும் அல்லது இயக்கவும்</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.quic.disableQUICProtocolPatch -->
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -51,6 +98,20 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
           'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">தானியங்கி</string>
+  <string name="morphe_remember_video_quality_last_selected_title">வீடியோ தரத்தை நினைவில் கொள்க</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">உங்களது கைமுறை தரத் தேர்வை எதிர்கால வீடியோக்கள் அனைத்திற்கும் பயன்படுத்துகிறது</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">தரம் மாற்ற அறிவிப்புகள்</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">புதிய இயல்பான தரம் சேமிக்கப்படும்போது ஒரு அறிவிப்பைக் காட்டுகிறது</string>
+  <string name="morphe_video_quality_default_wifi_title">Wi-Fi நெட்வொர்க்கில் இயல்பான வீடியோ தரம்</string>
+  <string name="morphe_video_quality_default_mobile_title">மொபைல் நெட்வொர்க்கில் இயல்பான வீடியோ தரம்</string>
+  <string name="morphe_remember_video_quality_toast_mobile">இயல்பான மொபைல் தரம் இதாக மாற்றப்பட்டது: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">இயல்பான Wi-Fi தரம் இதாக மாற்றப்பட்டது: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">சிஸ்டம் பகிர்வுத் தாளைத் திற</string>
+  <string name="morphe_open_system_share_sheet_summary">உள்ளடக்கத்தைப் பகிரும் போது, செயலியின் பகிர்வுப் பட்டியலுக்குப் பதிலாக கணினியின் பகிர்வுப் பட்டியலைத் திறக்கும்</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Litho பதிவு செய்தல்</string>
   <string name="morphe_debug_litho_entry_disabled">முடக்கப்பட்டது</string>

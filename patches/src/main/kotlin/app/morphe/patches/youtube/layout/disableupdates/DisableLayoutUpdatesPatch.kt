@@ -18,7 +18,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableLayoutUpdatesPatch;"
 
-@Suppress("unused")
 val disableLayoutUpdatesPatch = patch(
     name = "Disable layout updates",
     description = "Adds an option to disable server side layout updates and use an older UI.",

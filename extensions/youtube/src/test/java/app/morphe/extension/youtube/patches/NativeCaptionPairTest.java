@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.patches;
 
 import org.junit.Test;
 import java.util.List;
+import java.util.Objects;
+
 import static org.junit.Assert.*;
 
 public class NativeCaptionPairTest {
@@ -72,8 +74,8 @@ public class NativeCaptionPairTest {
         assertSame(nativeStyle,nativeCue.text());assertTrue(nativeCue.frame().nativeStyle);
         assertFalse(translated.frame().nativeStyle);assertTrue(translated.frame().secondaryNativeCaption());
         assertNotEquals(nativeCue.id(),translated.id());assertNotEquals(nativeCue.frame(),translated.frame());
-        state.translation.demand(100);var snapshot=state.translation.snapshot(100,true);
-        var text=pair.fallback(snapshot);assertEquals("",text.primary());assertEquals("de:source",text.secondary());
+        Objects.requireNonNull(state.translation).demand(100);var snapshot= Objects.requireNonNull(state.translation).snapshot(100,true);
+        var text=pair.fallback(Objects.requireNonNull(snapshot));assertEquals("",text.primary());assertEquals("de:source",text.secondary());
     }
     @Test public void missingPrimaryUsesPrimaryFallbackAndPreservesNativeSecondary() {
         var second=track(List.of(new Cue(0,"native second",null)),List.of());
@@ -84,7 +86,7 @@ public class NativeCaptionPairTest {
         Cue nativeCue=(Cue)cues.get(0),translated=(Cue)cues.get(1);
         assertTrue(nativeCue.frame().secondaryNativeCaption());assertFalse(translated.frame().secondaryNativeCaption());
         assertFalse(translated.frame().nativeStyle);assertNotEquals(nativeCue.id(),translated.id());
-        state.translation.demand(100);var text=pair.fallback(state.translation.snapshot(100,true));
+        Objects.requireNonNull(state.translation).demand(100);var text=pair.fallback(Objects.requireNonNull(Objects.requireNonNull(state.translation).snapshot(100, true)));
         assertEquals("tr:source",text.primary());assertEquals("",text.secondary());
     }
     @Test public void expiredFallbackOrSourceGapDoesNotRemoveNativeLanguage() {
@@ -92,7 +94,8 @@ public class NativeCaptionPairTest {
         var source=track(List.of(new Cue(0,"source",null)),List.of());
         var pair=new NativeCaptionPair(new UploadedCaptionPair(first,null),source);
         var state=new StableCaptionBlocks.State(false);state.nativePair=pair;state.translation=fallback(false,true);
-        assertEquals(1,pair.at(1500,state).size());state.translation.invalidate();assertEquals(1,pair.at(100,state).size());
+        assertEquals(1,pair.at(1500,state).size());
+        Objects.requireNonNull(state.translation).invalidate();assertEquals(1,pair.at(100,state).size());
     }
     @Test public void persistentTemplateChangesItsFrameAtSourceBlockBoundariesButKeepsWindowId() {
         var first=track(List.of(new Cue(0,"native",null)),List.of(new Cue(0,"native",null)));

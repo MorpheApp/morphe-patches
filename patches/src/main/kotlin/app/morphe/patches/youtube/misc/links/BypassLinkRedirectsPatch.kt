@@ -12,7 +12,6 @@ import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/BypassLinkRedirectsPatch;"
 
-@Suppress("unused")
 val bypassLinkRedirectsPatch = patch(
     name = "Bypass link redirects",
     description = "Adds an option to bypass redirects and open the original link directly.",

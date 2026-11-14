@@ -13,7 +13,6 @@ import app.morphe.patches.youtube.shared.openVideoIntentPatch
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenChannelOfLiveAvatarPatch;"
 
-@Suppress("unused")
 val openChannelOfLiveAvatarPatch = patch(
     name = "Open channel of live avatar",
     description = "Adds an option to prevent a channel's current live video from opening when tapping its avatar."

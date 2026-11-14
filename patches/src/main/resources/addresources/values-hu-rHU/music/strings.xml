@@ -124,116 +124,36 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Hang/videó váltás engedélyezése</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Próbálja meg átváltani az audioverzió és a hivatalos videóklip között</string>
+  <string name="morphe_music_auto_song_version_title">Mindig a dal verzióját játssza le</string>
+  <string name="morphe_music_auto_song_version_summary">A sorban lévő hivatalos videóklipeket a megfelelő dalszámmal cseréli. Ehhez az alkalmazásbeállításban a „Ne játsszon videóklipeket” opciójának be kell swimmerne. Azok a számok, amelyeknek nincs pontos egyezése, változatlanok maradnak</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Töltsön le zenei videókat, podcastokat vagy dalokat külső letöltő alkalmazásokkal</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Külső letöltő használata a Letöltés menüben</string>
   <string name="morphe_external_downloader_menu_summary">A menük Letöltés lehetősége a külső letöltőt nyitja meg</string>
-  <string name="morphe_music_downloads_screen_title">Letöltések</string>
-  <string name="morphe_music_downloads_empty">"Nincs letöltés
-A letöltött számok itt jelennek meg"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s szám • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Letöltések keresése</string>
-  <string name="morphe_music_downloads_sort">Rendezés</string>
-  <string name="morphe_music_downloads_sort_artist">Rendezés előadó szerint</string>
-  <string name="morphe_music_downloads_sort_title">Rendezés cím szerint</string>
-  <string name="morphe_music_downloads_sort_size">Rendezés méret szerint</string>
-  <string name="morphe_music_downloads_delete_all">Összes letöltés törlése</string>
-  <string name="morphe_music_downloads_delete_all_title">Törlöd az összes letöltést?</string>
-  <string name="morphe_music_downloads_delete_all_message">Az összes letöltött szám törlődik erről az eszközről</string>
-  <string name="morphe_music_downloads_all_deleted">Letöltések törölve</string>
-  <string name="morphe_music_downloads_nothing_found">Nincs találat</string>
-  <string name="morphe_music_downloads_actions_for">%s műveletei</string>
-  <string name="morphe_music_downloads_play">Lejátszás</string>
-  <string name="morphe_music_downloads_play_pause">Lejátszás vagy szünet</string>
-  <string name="morphe_music_downloads_previous">Előző</string>
-  <string name="morphe_music_downloads_next">Következő</string>
-  <string name="morphe_music_downloads_pause">Szünet</string>
-  <string name="morphe_music_downloads_shuffle">Véletlenszerű</string>
-  <string name="morphe_music_downloads_repeat">Ismétlés</string>
-  <string name="morphe_music_downloads_minimize">Minimalizálás</string>
-  <string name="morphe_music_downloads_close">Bezárás</string>
-  <string name="morphe_music_downloads_delete">Törlés</string>
-  <string name="morphe_music_downloads_delete_track">Letöltés törlése</string>
-  <string name="morphe_music_downloads_delete_track_title">Törlöd a letöltést?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s törlődik erről az eszközről</string>
-  <string name="morphe_music_downloads_track_deleted">Letöltés törölve</string>
-  <string name="morphe_music_downloads_track_delete_failed">Nem sikerült törölni a letöltést</string>
-  <string name="morphe_music_downloads_play_failed">Nem sikerült lejátszani a letöltést</string>
-  <string name="morphe_music_downloads_playlists">Lejátszási listák</string>
-  <string name="morphe_music_downloads_playlists_section">Létrehozott lejátszási listák (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Még nincsenek helyi lejátszási listák</string>
-  <string name="morphe_music_downloads_playlists_hide">Lejátszási listák elrejtése ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Új lejátszási lista</string>
-  <string name="morphe_music_downloads_playlist_new_button">Új lejátszási lista</string>
-  <string name="morphe_music_downloads_playlist_selected">Kiválasztott (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Válasszon először dalokat</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Kiválasztás törlése</string>
-  <string name="morphe_music_downloads_playlist_create">Lejátszási lista létrehozása</string>
-  <string name="morphe_music_downloads_playlist_create_button">Létrehozás</string>
-  <string name="morphe_music_downloads_playlist_add">Hozzáadás lejátszási listához</string>
-  <string name="morphe_music_downloads_playlist_added">Hozzáadva a(z) %s listához</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Lejátszási lista neve</string>
-  <string name="morphe_music_downloads_playlist_name_empty">A lejátszási lista neve nem lehet üres</string>
-  <string name="morphe_music_downloads_playlist_save_failed">A lejátszási lista nem menthető el</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s szám</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 szám</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Nincsenek számok ebben a lejátszási listában</string>
-  <string name="morphe_music_downloads_playlist_play">Lejátszási lista lejátszása</string>
-  <string name="morphe_music_downloads_playlist_play_all">Összes lejátszása</string>
-  <string name="morphe_music_downloads_playlist_rename">Átnevezés</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Lejátszási lista átnevezése</string>
-  <string name="morphe_music_downloads_playlist_save">Mentés</string>
-  <string name="morphe_music_downloads_playlist_delete">Lejátszási lista törlése</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Töröljük a lejátszási listát?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">A(z) %s törlésre kerül. A letöltött számok megmaradnak</string>
-  <string name="morphe_music_downloads_playlist_deleted">Lejátszási lista törölve</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Eltávolítás a lejátszási listából</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Húzd át a sorrend módosításához</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Húzd a fogantyút a sorrend módosításához</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Kész</string>
-  <string name="morphe_music_downloads_notification_channel">Audió-letöltések</string>
-  <string name="morphe_music_downloads_playback_channel">Offline lejátszás</string>
-  <string name="morphe_music_downloads_unknown_track">Nem sikerült azonosítani a letöltendő számot</string>
-  <string name="morphe_music_downloads_already_running">A letöltés már folyamatban van</string>
-  <string name="morphe_music_downloads_already_saved">Már letöltve</string>
-  <string name="morphe_music_downloads_started">Letöltés elindítva</string>
-  <string name="morphe_music_downloads_starting">Letöltés indítása…</string>
-  <string name="morphe_music_downloads_progress">Letöltés: %s%%</string>
-  <string name="morphe_music_downloads_complete">Letöltés befejezve</string>
-  <string name="morphe_music_downloads_failed">Letöltés sikertelen</string>
-  <string name="morphe_music_downloads_playlist_download_title">Lejátszási lista letöltése</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Számok listázása…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s listázva…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Nem sikerült listázni a lejátszási lista számait</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Már letöltve: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s szám van ebben a lejátszási listában, %2$s még nincs letöltve.
+  <string name="morphe_export_download_folder_title">Letöltések exportálása</string>
+  <string name="morphe_export_download_folder_summary">"Exportálja az alkalmazáson belül mentett dalokat és videókat a készülék tárolójába a letöltések legördülő menüjével. Koppintson a mappa módosításához
 
-Egyenként töltjük le őket, ami hosszú ideig tarthat, és körülbelül %3$s szabad hely szükséges"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Letöltés</string>
-  <string name="morphe_music_downloads_playlist_download_progress">%1$s. szám letöltése %2$s-ból</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s letöltve</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s letöltve, %2$s nem lett letöltve</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">A lejátszási lista letöltése már folyamatban van</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">A fiókod még nem ismert. Próbáld újra egy pillanat múlva</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s listázva, mind letöltve</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">A lejátszási lista csak egy része listázható. Koppints a Letöltésre később a maradékért</string>
-  <string name="morphe_music_downloads_playlist_download_started">%s letöltése a háttérben</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Nincs hálózati kapcsolat</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Hálózatra várva…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">%2$s közül %1$s után megállítva. Koppintson a Letöltésre a folytatáshoz</string>
-  <string name="morphe_music_downloads_mark_title">Letöltött dalok jelölése</string>
-  <string name="morphe_music_downloads_mark_summary">A már letöltött dalok előtt egy jelzés jelenik meg a lejátszási listákban, albumokban és a keresési eredményekben</string>
+Export mappa: %s"</string>
+  <string name="morphe_export_download_started">Letöltés exportálása</string>
+  <string name="morphe_export_download_progress">Letöltés exportálása: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Letöltések exportálása</string>
+  <string name="morphe_export_download_saved">Letöltés exportálva a következőbe: %s</string>
+  <string name="morphe_export_download_failed">Nem sikerült exportálni a letöltést</string>
+  <string name="morphe_export_download_all_flyout_title">Összes letöltés exportálása a készülékre</string>
+  <string name="morphe_export_download_all_started">Összes letöltés exportálása</string>
+  <string name="morphe_export_download_all_running">A letöltések exportálása már folyamatban van</string>
+  <string name="morphe_export_download_all_saved">%2$s letöltésből %1$s exportálva a következőbe: %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Névjegy</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Hirdetések</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
-  <string name="morphe_settings_music_screen_3_general_title">Általános</string>
-  <string name="morphe_settings_music_screen_4_player_title">Lejátszó</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Szövegek</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Egyéb</string>
+  <string name="morphe_settings_music_screen_00_about_title">Névjegy</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Hirdetések</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Feed</string>
+  <string name="morphe_settings_music_screen_03_general_title">Általános</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Szöveg</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Egyéb</string>
+  <string name="morphe_settings_music_screen_06_player_title">Lejátszó</string>
+  <string name="morphe_settings_music_screen_10_video_title">Videó</string>
   <string name="morphe_music_app_language_title">YouTube Music nyelve</string>
   <string name="morphe_music_app_language_summary_default">Rendszer nyelve</string>
   <string name="morphe_music_app_language_summary_unsupported">Android 13 vagy újabb verzió szükséges</string>
@@ -258,6 +178,8 @@ Egyenként töltjük le őket, ami hosszú ideig tarthat, és körülbelül %3$s
   <string name="morphe_music_hide_repeat_button_title">Ismétlés gomb elrejtése</string>
   <string name="morphe_music_hide_shuffle_button_title">Véletlenszerű lejátszás gomb elrejtése</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\"Gyorshívó\" polc elrejtése</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">„Ezek is érdekelhetnek” szakasz elrejtése</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">\"Letöltéseim\" polc elrejtése</string>
   <string name="morphe_music_comments_screen_title">Megjegyzések</string>
   <string name="morphe_music_comments_screen_summary">Válaszd ki, mely elemek jelenjenek meg a megjegyzések szekcióban</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Közösségi irányelvek elrejtése</string>
@@ -335,9 +257,21 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <string name="morphe_music_playback_speed_title">Lejátszási sebesség</string>
   <string name="morphe_music_playback_speed_summary">Az összes számra használt sebesség. 100%-nál az alkalmazás sebessége használatos, például a podcast lejátszási sebessége</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Hangmagasság változtatása a sebességgel</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Automatikus feliratok letiltása</string>
+  <string name="morphe_music_disable_auto_captions_summary">A feliratok nem kapcsolódnak be automatikusan a videó lejátszása kezdetekor, beleértve azokat a feliratokat is, amelyeket a videó alapértelmezettben engedélyezne</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Audio ducking letiltása</string>
+  <string name="morphe_music_disable_audio_ducking_summary">A hangerő nem csökken, amikor egy másik alkalmazás rövid hangot, például értesítést játszik le</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">A nemtetszés-átirányítás letiltása</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Megakadályozza, hogy a nemtetszés gomb megnyomása esetén a következő számra ugorjon</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">A-B ciklus</string>
+  <string name="morphe_music_ab_loop_summary">Hosszan nyomja a keresősávot a loop kezdete beállításához, újra a loop vége beállításához, és még egyszer a loop törléséhez</string>
+  <string name="morphe_music_ab_loop_toast_start">A loop kezdete beállítva: %s</string>
+  <string name="morphe_music_ab_loop_toast_end">A loop vége beállítva: %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Loop törölve</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Lejátszási lista számának koppintási művelete</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Lejátszási lista lejátszása</string>
@@ -492,16 +426,42 @@ SABR lejátszás (a videostreamek spoofolása kikapcsolva)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Navigációs gombok feliratainak elrejtése</string>
   <string name="morphe_music_navigation_bar_glass_title">Üveg navigációs sáv engedélyezése</string>
   <string name="morphe_music_navigation_bar_glass_summary">Úgy jeleníti meg a navigációs sávot, mint egy lebegő, lekerekített, áttetsző kapszulát</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Üveg átlátszósága</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Állítsa be az üveg navigációs sáv átlátszatosságának szintjét (0 átlátszó, 100 teljesen áttetsző)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Világos üveg</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Fehérre színezi az üveg navigációs sávot a sötét helyett, egy világosabb és tisztább üvegérzet érdekében</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Üveg navigációs sáv mérete</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Állítsa be az üveg navigációs sáv magasságát, szélességét és a gombok közötti távolságot, előnézettel. A képernyő szélességébe nem férő gombok rejtve maradnak</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Üveg navigációs sáv mérete és stílusa</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Állítsa be az üveg navigációs sáv magasságát, szélességét, a gombok közötti távolságot, az átlátszóságot és a szegély fényerőjét, előnézettel. A képernyő szélességébe nem férő gombok el lesznek rejtve</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Magasság</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Maximális szélesség</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Gombok közötti távolság</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Megjelenített gombok: %1$s a %2$s-ből</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Áttetszőség</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Szegély fényerője</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Üveg elmosódás</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Mennyire legyen elmosódva az üveg navigációs sáv mögött lévő oldal (Android 14 és újabb verziók). 0 esetén az oldal élesen látszik, Android 14 előtt az oldal takarva marad</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Világos üveg</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Fehérre színezi az üveg navigációs sávot a sötét helyett, egy világosabb és tisztább üvegérzet érdekében</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Albumborító árnyalása</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Az üveg navigációs sávot a lejárzó dal albumborítójának színével árnyalja</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Kijelölt gomb indikátoránakrejtése</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Elrejti a kerekletű kiemelést az üveg navigációs sáv kijelölt gombja mögött</string>
+  <string name="morphe_music_miniplayer_screen_title">Minilejátszó</string>
+  <string name="morphe_music_miniplayer_screen_summary">A minilejátszó stílusának, gombjainak és gesztusainak módosítása</string>
+  <string name="morphe_music_miniplayer_glass_title">Üveg minilejátszó engedélyezése</string>
+  <string name="morphe_music_miniplayer_glass_summary">A lebeglő minilejátszó egy kerekletű, áttetsző üvegkártyaként jelenik meg</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Üveg minilejátszó stílusa</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Állítsa be az üveg minilejátszó sarkainak gömöléset, a borítók paddingjét, a szegély fényerőjét és az átlátszóságot, előnézettel</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Sarkok gömölése</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Borítók paddingje</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Szegély fényerője</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Áttetszőség</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Üveg elmosódás</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Mennyire legyen elmosódva az üveg minilejátszó mögött lévő oldal (Android 14 és újabb verziók). 0 esetén az oldal élesen látszik, Android 14 előtt az oldal takarva marad</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Világos üveg</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Az üveg minilejátsót fehérre árnyalja a sötétszín helyett, egy világosabb és tisztább üveghatás érdekében</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Albumborító árnyalása</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Az üveg minilejáts sót a lejárzó dal albumborítójának színével árnyalja</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Forgó albumborító</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Az üveg minilejátszó borítóját körre teszi, és egy lemez처럼 forgatja a dal lejátszása közben</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Haladási sáv elrejtése</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Elrejti az üveg minilejátszó alján található haladási sávot</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Főoldal</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Minták</string>
@@ -611,6 +571,7 @@ A háttérlejátszás közbeni szinkronizálás biztosításához győződjön m
 
 Az adatbázis az ODC Open Database License (ODbL) licenc alatt áll. Az xoundbyte által készített Soul Over AI bejegyzések CC BY 4.0 licenc alatt vannak. Nem áll kapcsolatban a SoundProof-fal vagy a Soul Over AI-jal, és nem is támogatják őket."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Ehhez az eszközfájlhoz nincsenek elérhető dalszövegek.</string>
   <string name="morphe_music_lyrics_enabled_title">Külső szolgáltató dalszövegeinek használata</string>
   <string name="morphe_music_lyrics_enabled_summary">Szövegeket jelenít meg egy külső szolgáltatótól, ha nincs találat, akkor a beépített szövegeket használja.</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Képernyő bekapcsolva tartása a dalszövegek megtekintése közben</string>
@@ -634,7 +595,7 @@ Az első oszlop a szó, a második a hangzása; a további oszlopok és a tabul�
   <string name="morphe_music_lyrics_rime_dict_no_table">A fenti nyelvhez nincs kijelölve Rime szótárlista. Koppintson erre a névre egy lista kijelöléséhez, vagy válasszon olyan nyelvet, amelyhez rendelkezik listával</string>
   <string name="morphe_music_lyrics_rime_dict_add">Hozzáadás</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Rime szótárlista hozzáadása</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Egy .dict.yaml fájl, vagy egy zip, amely tartalmaz ilyet, olyan sorokkal, mint a 字 ham és a 典 din2. A listát akkor veszi át, amikor kijelöli és megnyomja a Mentést, és a licenc ellenőrzése az Ön dolga</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Egy .dict.yaml fájl, vagy egy ilyen fájlt tartalmazó zip fájl, olyan sorokkal, mint a 字 ham és a 典 din2. A lista akkor kerül betöltésre, amikor bepipálja és megnyomja a Mentés gombot, a licencét pedig önnek kell ellenőriznie</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Nyelvkód</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Két vagy három betű, például hak vagy wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Név</string>
@@ -722,6 +683,8 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_translate_button_summary">Koppintson a fordítás váltásához; hosszú érintés a fordítás kizárólagos megjelenítéséhez. Az engedélyezett fordítószolgáltatókat azok felsorolási sorrendjében használja</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Átirat vagy ábécésítési gomb megjelenítése</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Koppintson az ábécésítés vagy átirat váltásához; hosszú érintés az ábécésítés vagy átirat kizárólagos megjelenítéséhez. Az engedélyezett ábécésítőszolgáltatókat azok felsorolási sorrendjében használja</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Aktuális sor gombjának megjelenítése</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">A dalszöveg kézi görgetése közben megjelenít egy gombot, amely visszaugrat a éppen énekelt sorra</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Átirat engedélyezése</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Engedélyezi a nem Latin ábécés írásjelekkel való kiejtések megjelenítését; kikapcsoláskor csak a Latin betűket, az ékezetes betűket és a hangjegy számokat tartja meg</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Felolvassa a időzített dalszöveg minden szavát (szó szinkron be van kapcsolva); Koreához nem szükséges letöltés; tizennégy írások egyetlen CLDR letöltéssel osztják meg az ábécésítést; Han karaktereket a Rime szótár olvas fel, ha a szótárában szerepel a nyelv</string>
@@ -740,11 +703,18 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_search_title_hint">Dalcím</string>
   <string name="morphe_music_lyrics_search_artist_hint">Előadó</string>
   <string name="morphe_music_lyrics_search_empty">Adja meg a dal címét és az előadót</string>
+  <string name="morphe_music_lyrics_search_google">Keresés a Google-lel</string>
   <string name="morphe_music_lyrics_search_no_providers">Az engedélyezett szolgáltatók egyike sem tud más számokat keresni</string>
   <string name="morphe_music_lyrics_saved">Mentett</string>
   <string name="morphe_music_lyrics_written_by">Szerző: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Szinkronizált szavak vagy szótagok kiemelése</string>
   <string name="morphe_music_lyrics_word_sync_summary">Előnyben részesíti a szavankénti dalszövegeket, ha elérhetők. Ha a dalszöveg szószintű időzítést tartalmaz, a zene ütemére emeli ki az egyes szavakat vagy szótagokat.</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Rugós görgetés használata</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Rugós fizikával görgeti a dalszöveget, és minden sort egy kicsivel eltolja a felette lévővel szemben. Kapcsolja ki a lassabb eszközökön az akkumulátor kímélése érdekében</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Instrumentális szünet pontjainak megjelenítése</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Ház három pontot jelenít meg a sorok között egy hosszú instrumentális szünet során, amelyek töltődnek a szünet végéig</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Távolabb lévő sorok erősebb Затемítése</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Minden inaktív sor csak egyre jobban lesz Затемítve, mintek távolabb kerülnek az éppen énekelt sortól. Ha ki van kapcsolva, minden inaktív sor egyformán lesz Затемítve</string>
   <string name="morphe_music_lyrics_line_scale_title">Tükrözze a nem éneklő sorokat</string>
   <string name="morphe_music_lyrics_line_scale_summary">Minden nem éppen énekelt sort kicsinyebb méretben ábrázol, továbbá halványítja őket</string>
   <string name="morphe_music_lyrics_split_background_title">Háttérénekelt külön jelenjen meg</string>
@@ -813,7 +783,6 @@ Mindkét limitre vonatkozik. 1,75 esetén négy teljes szélességű karakter 7-
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizálta: %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Romanizálta: %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (%2$s-rel)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Ábécésítve a Rime által (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Lefordítva</string>
   <string name="morphe_music_lyrics_translation_language_title">Fordítás nyelve</string>
@@ -834,6 +803,7 @@ Mindkét limitre vonatkozik. 1,75 esetén négy teljes szélességű karakter 7-
   <string name="morphe_music_lyrics_romanize_only">Csak romanizált</string>
   <string name="morphe_music_lyrics_dual_only">Kettős mód</string>
   <string name="morphe_music_lyrics_copied">Másolva a vágólapra</string>
+  <string name="morphe_music_lyrics_current">Aktuális</string>
   <string name="morphe_music_lyrics_refreshing">Frissítés</string>
   <string name="morphe_music_lyrics_refreshed">Frissítve</string>
   <string name="morphe_music_lyrics_transcribe_key_title">QuickLRC API kulcs</string>
@@ -872,19 +842,15 @@ A dalszövegek harmadik fél szolgáltatásaitól származnak, amelyekkel a Morp
   <string name="morphe_music_lyrics_use_ai_section_title">Részek detektálása AI segítségével</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Csak akkor használatos, ha a szolgáltató nem ad részcímkéket, például Refrént vagy Versszakot; ezeket az OpenAI-kompatibilis modell észleli. A sor szerkesztésekor a prompt is megnyílik</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API végpont URL (például https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Prompt sablon</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Helyőrzők: {task}, {language}, {title}, {artist}, {count}, {lines}. Az ismeretlenek úgy maradnak, ahogy be vannak írva</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt mentve</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Bejegyzés elmentve, de az AI végpont még nem használható. Először konfigurálja az AI beállításokban</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt alapértékekre visszaállítva</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">A fordítási &amp; romanizációs beállítások mentve</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">A beállítások mentve, de az AI végpont még nem használható</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Beállítások mentve</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">A beállítások visszaállítva az alapértelmezettre</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">A Base URL-nek http:// vagy https:// előtaggal kell kezdődnie</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">A beállítások hiányosak vagy a szolgáltató elutasította azokat</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Kapcsolat ellenőrzése…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Csatlakoztatva! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: A csatlakozás sikertelen. Ellenőrizze a beállításokat.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Először adja meg az API kulcsot</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Kapcsolat tesztelése</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Modellek lekérése…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Modellek lekérése</string>
@@ -901,7 +867,14 @@ A dalszövegek harmadik fél szolgáltatásaitól származnak, amelyekkel a Morp
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Extra kérelem fejlécek (opcionális JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Idézze a neveket és értékeket, például {\"api-key\": \"abc\"}. Egy idézetlen érték, amely / : vagy számot tartalmaz, elutasításra kerül. Egy üres érték eltávolítja a fejlécet.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Idézze a neveket és értékeket, például {\"temperature\": 0.3}. Egy idézetlen érték, amely / vagy : karaktert tartalmaz, elutasításra kerül. A modellt és az üzeneteket itt nem lehet beállítani.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Gondolkodási erőfeszítés</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Alapértelmezett</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Hitelesítési kulcs (Ingyenes vagy Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">Az AI nem tudott szakzolatokat detektálni ehhez a számhoz</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Detektálás</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Szakzolatok alkalmazása</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Detektálás törölve</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Nincs olyan dalszöveg, amelyhez szakzolatok detektálhatók wären</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Félkövér ikonok letiltása</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - A Lejátszó „Következő”, „Dalszövegek” és „Kapcsolódó” lapok visszaállítása</string>

@@ -124,116 +124,36 @@ Second \"item\" text"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <string name="morphe_music_enable_audio_video_switch_title">Dayakan suis audio/video</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Cuba tukar Versi Trek Audio dan Video Muzik Rasmi</string>
+  <string name="morphe_music_auto_song_version_title">Sentiasa mainkan versi lagu</string>
+  <string name="morphe_music_auto_song_version_summary">Menggantikan video muzik rasmi dalam barisan dengan lagu yang sepadan. Memerlukan tetapan aplikasi \'Jangan mainkan video muzik\' diaktifkan. Trek tanpa padanan tepat tidak akan diubah</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Muat turun video muzik, podcast, atau lagu dengan aplikasi muat turun pihak ketiga</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the menu. -->
   <string name="morphe_external_downloader_menu_title">Gunakan pemuat turun luaran untuk menu Muat turun</string>
   <string name="morphe_external_downloader_menu_summary">Pilihan Muat turun pada menu akan membuka pemuat turun luaran anda</string>
-  <string name="morphe_music_downloads_screen_title">Muat turun</string>
-  <string name="morphe_music_downloads_empty">"Tiada muat turun
-Jejak yang dimuat turun akan muncul di sini"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
-  <string name="morphe_music_downloads_summary">%1$s trek • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Cari muat turun</string>
-  <string name="morphe_music_downloads_sort">Isih</string>
-  <string name="morphe_music_downloads_sort_artist">Isih mengikut artis</string>
-  <string name="morphe_music_downloads_sort_title">Isih mengikut tajuk</string>
-  <string name="morphe_music_downloads_sort_size">Isih mengikut saiz</string>
-  <string name="morphe_music_downloads_delete_all">Padam semua muat turun</string>
-  <string name="morphe_music_downloads_delete_all_title">Padam semua muat turun?</string>
-  <string name="morphe_music_downloads_delete_all_message">Semua trek yang dimuat turun akan dipadamkan daripada peranti ini</string>
-  <string name="morphe_music_downloads_all_deleted">Muat turun dipadamkan</string>
-  <string name="morphe_music_downloads_nothing_found">Tiada apa yang dijumpai</string>
-  <string name="morphe_music_downloads_actions_for">Tindakan untuk %s</string>
-  <string name="morphe_music_downloads_play">Main</string>
-  <string name="morphe_music_downloads_play_pause">Main atau jeda</string>
-  <string name="morphe_music_downloads_previous">Sebelumnya</string>
-  <string name="morphe_music_downloads_next">Seterusnya</string>
-  <string name="morphe_music_downloads_pause">Jeda</string>
-  <string name="morphe_music_downloads_shuffle">Rawak</string>
-  <string name="morphe_music_downloads_repeat">Ulang</string>
-  <string name="morphe_music_downloads_minimize">Minimumkan</string>
-  <string name="morphe_music_downloads_close">Tutup</string>
-  <string name="morphe_music_downloads_delete">Padam</string>
-  <string name="morphe_music_downloads_delete_track">Padam muat turun</string>
-  <string name="morphe_music_downloads_delete_track_title">Padam muat turun?</string>
-  <string name="morphe_music_downloads_delete_track_message">%s akan dipadamkan daripada peranti ini</string>
-  <string name="morphe_music_downloads_track_deleted">Muat turun dipadam</string>
-  <string name="morphe_music_downloads_track_delete_failed">Tidak dapat memadam muat turun</string>
-  <string name="morphe_music_downloads_play_failed">Tidak dapat memainkan muat turun</string>
-  <string name="morphe_music_downloads_playlists">Senarai main</string>
-  <string name="morphe_music_downloads_playlists_section">Senarai main yang dicipta (%s)</string>
-  <string name="morphe_music_downloads_playlists_empty">Tiada senarai main tempatan lagi</string>
-  <string name="morphe_music_downloads_playlists_hide">Sorokkan senarai main ▲</string>
-  <string name="morphe_music_downloads_playlist_new">+ Senarai main baharu</string>
-  <string name="morphe_music_downloads_playlist_new_button">Senarai main baharu</string>
-  <string name="morphe_music_downloads_playlist_selected">Dipilih (%s)</string>
-  <string name="morphe_music_downloads_playlist_select_first">Pilih lagu terlebih dahulu</string>
-  <string name="morphe_music_downloads_playlist_clear_selection">Kosongkan pilihan</string>
-  <string name="morphe_music_downloads_playlist_create">Cipta senarai main</string>
-  <string name="morphe_music_downloads_playlist_create_button">Cipta</string>
-  <string name="morphe_music_downloads_playlist_add">Tambah ke senarai main</string>
-  <string name="morphe_music_downloads_playlist_added">Ditambah ke %s</string>
-  <string name="morphe_music_downloads_playlist_name_hint">Nama senarai main</string>
-  <string name="morphe_music_downloads_playlist_name_empty">Nama senarai main tidak boleh kosong</string>
-  <string name="morphe_music_downloads_playlist_save_failed">Tidak dapat menyimpan senarai main</string>
-  <string name="morphe_music_downloads_playlist_track_count">%s trek</string>
-  <string name="morphe_music_downloads_playlist_track_count_one">1 trek</string>
-  <string name="morphe_music_downloads_playlist_no_tracks">Tiada trek dalam senarai main ini</string>
-  <string name="morphe_music_downloads_playlist_play">Mainkan senarai main</string>
-  <string name="morphe_music_downloads_playlist_play_all">Mainkan semua</string>
-  <string name="morphe_music_downloads_playlist_rename">Namakan semula</string>
-  <string name="morphe_music_downloads_playlist_rename_title">Namakan semula senarai main</string>
-  <string name="morphe_music_downloads_playlist_save">Simpan</string>
-  <string name="morphe_music_downloads_playlist_delete">Padam senarai main</string>
-  <string name="morphe_music_downloads_playlist_delete_title">Padam senarai main?</string>
-  <string name="morphe_music_downloads_playlist_delete_message">%s akan dipadamkan. Lagu yang dimuat turun akan dikekalkan</string>
-  <string name="morphe_music_downloads_playlist_deleted">Senarai main dipadamkan</string>
-  <string name="morphe_music_downloads_playlist_remove_track">Alih keluar daripada senarai main</string>
-  <string name="morphe_music_downloads_playlist_drag_track">Seret untuk susun semula</string>
-  <string name="morphe_music_downloads_playlist_reorder_hint">%s • Seret pemegang untuk susun semula</string>
-  <string name="morphe_music_downloads_playlist_reorder_done">Selesai</string>
-  <string name="morphe_music_downloads_notification_channel">Muat turun audio</string>
-  <string name="morphe_music_downloads_playback_channel">Mainan luar talian</string>
-  <string name="morphe_music_downloads_unknown_track">Tidak dapat mengenal pasti trek untuk dimuat turun</string>
-  <string name="morphe_music_downloads_already_running">Muat turun sudah dalam proses</string>
-  <string name="morphe_music_downloads_already_saved">Sudah dimuat turun</string>
-  <string name="morphe_music_downloads_started">Muat turun bermula</string>
-  <string name="morphe_music_downloads_starting">Memulakan muat turun…</string>
-  <string name="morphe_music_downloads_progress">Memuat turun %s%%</string>
-  <string name="morphe_music_downloads_complete">Muat turun selesai</string>
-  <string name="morphe_music_downloads_failed">Muat turun gagal</string>
-  <string name="morphe_music_downloads_playlist_download_title">Muat turun senarai main</string>
-  <string name="morphe_music_downloads_playlist_download_listing">Menyenaraikan trek…</string>
-  <string name="morphe_music_downloads_playlist_download_listed">%s disenaraikan…</string>
-  <string name="morphe_music_downloads_playlist_download_listing_failed">Tidak dapat menyenaraikan trek senarai main</string>
-  <string name="morphe_music_downloads_playlist_download_all_saved">Sudah dimuat turun: %s</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_message">"%1$s dalam senarai main ini, %2$s belum dimuat turun.
+  <string name="morphe_export_download_folder_title">Eksport muat turun</string>
+  <string name="morphe_export_download_folder_summary">"Eksport lagu dan video yang disimpan dalam aplikasi ke storan peranti anda menggunakan menu flyout muat turun dalam aplikasi. Ketik untuk menukar
 
-Ia dimuat turun satu demi satu, yang mungkin mengambil masa yang lama dan memerlukan sekitar %3$s ruang kosong"</string>
-  <string name="morphe_music_downloads_playlist_download_confirm_button">Muat turun</string>
-  <string name="morphe_music_downloads_playlist_download_progress">Memuat turun trek %1$s daripada %2$s</string>
-  <string name="morphe_music_downloads_playlist_download_complete">%s dimuat turun</string>
-  <string name="morphe_music_downloads_playlist_download_complete_with_failures">%1$s dimuat turun, %2$s tidak dapat dimuat turun</string>
-  <string name="morphe_music_downloads_playlist_download_already_running">Muat turun senarai main sudah dalam proses</string>
-  <string name="morphe_music_downloads_playlist_download_needs_account">Akaun anda belum dikenali. Cuba lagi sebentar lagi</string>
-  <string name="morphe_music_downloads_playlist_download_listed_all_saved">%s disenaraikan, semua sudah dimuat turun</string>
-  <string name="morphe_music_downloads_playlist_download_incomplete">Hanya sebahagian daripada senarai main yang dapat disenaraikan. Ketik Muat Turun lagi kemudian untuk mendapatkan selebihnya</string>
-  <string name="morphe_music_downloads_playlist_download_started">Memuat turun %s di latar belakang</string>
-  <string name="morphe_music_downloads_playlist_download_no_network">Tiada sambungan rangkaian</string>
-  <string name="morphe_music_downloads_playlist_download_waiting_network">Menunggu rangkaian…</string>
-  <string name="morphe_music_downloads_playlist_download_stopped">Berhenti selepas %1$s daripada %2$s. Ketik Muat Turun lagi untuk meneruskan</string>
-  <string name="morphe_music_downloads_mark_title">Tanda lagu yang dimuat turun</string>
-  <string name="morphe_music_downloads_mark_summary">Lagu yang telah dimuat turun akan menunjukkan tanda sebelum butirannya dalam senarai main, album dan hasil carian</string>
+Folder eksport: %s"</string>
+  <string name="morphe_export_download_started">Mengeksport muat turun</string>
+  <string name="morphe_export_download_progress">Mengeksport muat turun: %s%%</string>
+  <string name="morphe_export_download_notification_channel">Eksport muat turun</string>
+  <string name="morphe_export_download_saved">Muat turun dieksport ke %s</string>
+  <string name="morphe_export_download_failed">Tidak dapat mengeksport muat turun</string>
+  <string name="morphe_export_download_all_flyout_title">Eksport semua ke peranti</string>
+  <string name="morphe_export_download_all_started">Mengeksport semua muat turun</string>
+  <string name="morphe_export_download_all_running">Muat turun sedang dieksport</string>
+  <string name="morphe_export_download_all_saved">%1$s daripada %2$s muat turun telah dieksport ke %3$s</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_music_screen_0_about_title">Mengenai</string>
-  <string name="morphe_settings_music_screen_1_ads_title">Iklan</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Suapan</string>
-  <string name="morphe_settings_music_screen_3_general_title">Umum</string>
-  <string name="morphe_settings_music_screen_4_player_title">Pemain</string>
-  <string name="morphe_settings_music_screen_5_lyrics_title">Lirik</string>
-  <string name="morphe_settings_music_screen_9_misc_title">Lain-lain</string>
+  <string name="morphe_settings_music_screen_00_about_title">Mengenai</string>
+  <string name="morphe_settings_music_screen_01_ads_title">Iklan</string>
+  <string name="morphe_settings_music_screen_02_feed_title">Suapan</string>
+  <string name="morphe_settings_music_screen_03_general_title">Umum</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Lirik</string>
+  <string name="morphe_settings_music_screen_05_misc_title">Lain-lain</string>
+  <string name="morphe_settings_music_screen_06_player_title">Pemain</string>
+  <string name="morphe_settings_music_screen_10_video_title">Video</string>
   <string name="morphe_music_app_language_title">Bahasa YouTube Music</string>
   <string name="morphe_music_app_language_summary_default">Bahasa sistem</string>
   <string name="morphe_music_app_language_summary_unsupported">Memerlukan Android 13 atau yang lebih baharu</string>
@@ -258,6 +178,8 @@ Ia dimuat turun satu demi satu, yang mungkin mengambil masa yang lama dan memerl
   <string name="morphe_music_hide_repeat_button_title">Sorokkan butang Ulang</string>
   <string name="morphe_music_hide_shuffle_button_title">Sorokkan butang Rawak</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Sorokkan laci \'Dail pantas\'</string>
+  <string name="morphe_music_hide_you_may_also_like_section_title">Sembunyikan bahagian \'Anda mungkin juga suka\'</string>
+  <string name="morphe_music_hide_your_downloads_shelf_title">Sembunyikan rak \'Muat turun anda\'</string>
   <string name="morphe_music_comments_screen_title">Komen</string>
   <string name="morphe_music_comments_screen_summary">Pilih komponen yang akan muncul dalam bahagian komen</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Sorokkan Garis Panduan Komuniti</string>
@@ -335,9 +257,21 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <string name="morphe_music_playback_speed_title">Kelajuan main balik</string>
   <string name="morphe_music_playback_speed_summary">Kelajuan yang digunakan untuk semua trek. Pada 100%, kelajuan aplikasi digunakan, seperti kelajuan main balik podcast</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Tukar pic dengan kelajuan</string>
+  <!-- layout.captions.disableAutoCaptionsPatch -->
+  <string name="morphe_music_disable_auto_captions_title">Nyahaktifkan sari kata automatik</string>
+  <string name="morphe_music_disable_auto_captions_summary">Sari kata tidak diaktifkan secara automatik apabila video bermula, termasuk sari kata yang diaktifkan oleh video secara lalai</string>
+  <!-- interaction.audioducking.disableAudioDuckingPatch -->
+  <string name="morphe_music_disable_audio_ducking_title">Nyahaktifkan penurunan audio</string>
+  <string name="morphe_music_disable_audio_ducking_summary">Kelantangan tidak dikurangkan apabila aplikasi lain memainkan bunyi singkat, seperti pemberitahuan</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Nyahaktifkan penghalaan tidak suka</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Menghalang peralihan ke trek seterusnya apabila butang tidak suka ditekan</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_music_ab_loop_title">Gelung A-B</string>
+  <string name="morphe_music_ab_loop_summary">Tekan lama seekbar untuk menetapkan permulaan gelung, sekali lagi untuk menetapkan akhir gelung, dan sekali lagi untuk mengosongkan gelung</string>
+  <string name="morphe_music_ab_loop_toast_start">Permulaan gelung ditetapkan kepada %s</string>
+  <string name="morphe_music_ab_loop_toast_end">Akhir gelung ditetapkan kepada %s</string>
+  <string name="morphe_music_ab_loop_toast_cleared">Gelung dikosongkan</string>
   <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
   <string name="morphe_music_playlist_track_tap_action_title">Tindakan ketik trek senarai main</string>
   <string name="morphe_music_playlist_track_tap_action_entry_default">Mainkan senarai main</string>
@@ -492,16 +426,42 @@ Mainan SABR (Aliran video spoof dimatikan)"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Sorokkan label butang pandu arah</string>
   <string name="morphe_music_navigation_bar_glass_title">Dayakan bar navigasi kaca</string>
   <string name="morphe_music_navigation_bar_glass_summary">Menunjukkan bar pandu arah sebagai kapsul lut sinar, bulat dan terapung</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_title">Kelegapan kaca</string>
-  <string name="morphe_music_navigation_bar_glass_opacity_summary">Melaraskan tahap kelutsinaran bar pandu arah kaca (0 ialah lut sinar, 100 ialah legap)</string>
-  <string name="morphe_music_navigation_bar_glass_light_title">Kaca cerah</string>
-  <string name="morphe_music_navigation_bar_glass_light_summary">Mewarnakan bar pandu arah kaca dengan warna putih berbanding gelap, untuk kaca yang lebih cerah dan jelas</string>
-  <string name="morphe_music_navigation_bar_glass_size_title">Saiz bar pandu arah kaca</string>
-  <string name="morphe_music_navigation_bar_glass_size_summary">Melaraskan ketinggian, lebar dan jarak antara butang bar pandu arah kaca, dengan pratonton. Butang yang tidak muat dalam lebar skrin akan disembunyikan</string>
+  <string name="morphe_music_navigation_bar_glass_size_title">Saiz dan gaya bar navigasi kaca</string>
+  <string name="morphe_music_navigation_bar_glass_size_summary">Laraskan ketinggian, lebar, jarak butang, kelegapan dan kecerahan rim bar navigasi kaca, dengan pratonton. Butang yang tidak muat dalam lebar skrin akan disembunyikan</string>
   <string name="morphe_music_navigation_bar_glass_size_height">Ketinggian</string>
   <string name="morphe_music_navigation_bar_glass_size_width">Lebar maksimum</string>
   <string name="morphe_music_navigation_bar_glass_size_button_spacing">Jarak antara butang</string>
   <string name="morphe_music_navigation_bar_glass_size_buttons_shown">Butang dipaparkan: %1$s daripada %2$s</string>
+  <string name="morphe_music_navigation_bar_glass_opacity_title">Kelegapan</string>
+  <string name="morphe_music_navigation_bar_glass_rim_title">Kecerahan rim</string>
+  <string name="morphe_music_navigation_bar_glass_blur_title">Kekaburan kaca</string>
+  <string name="morphe_music_navigation_bar_glass_blur_summary">Tahap kekaburan halaman di belakang bar navigasi kaca (Android 14 dan versi kemudian). Pada 0 halaman dipaparkan dengan tajam, dan sebelum Android 14 halaman tersebut tertutup</string>
+  <string name="morphe_music_navigation_bar_glass_light_title">Kaca cerah</string>
+  <string name="morphe_music_navigation_bar_glass_light_summary">Mewarnakan bar pandu arah kaca dengan warna putih berbanding gelap, untuk kaca yang lebih cerah dan jelas</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_title">Kewarnaan seni album</string>
+  <string name="morphe_music_navigation_bar_glass_album_tint_summary">Mewarnakan bar navigasi kaca dengan warna seni album lagu yang sedang dimainkan</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_title">Sembunyikan penunjuk butang terpilih</string>
+  <string name="morphe_music_navigation_bar_glass_hide_indicator_summary">Menyembunyikan sorotan bulat di belakang butang terpilih pada bar navigasi kaca</string>
+  <string name="morphe_music_miniplayer_screen_title">Pemain mini</string>
+  <string name="morphe_music_miniplayer_screen_summary">Tukar gaya, butang dan gerak isyarat pemain mini</string>
+  <string name="morphe_music_miniplayer_glass_title">Dayakan pemain mini kaca</string>
+  <string name="morphe_music_miniplayer_glass_summary">Menunjukkan pemain mini terapung sebagai kad kaca lutsinar yang bulat</string>
+  <string name="morphe_music_miniplayer_glass_style_title">Gaya pemain mini kaca</string>
+  <string name="morphe_music_miniplayer_glass_style_summary">Laraskan radius bucu, padding karya seni, kecerahan rim dan kelegapan pemain mini kaca, dengan pratonton</string>
+  <string name="morphe_music_miniplayer_glass_corner_radius_title">Radius bucu</string>
+  <string name="morphe_music_miniplayer_glass_artwork_padding_title">Padding karya seni</string>
+  <string name="morphe_music_miniplayer_glass_rim_title">Kecerahan rim</string>
+  <string name="morphe_music_miniplayer_glass_opacity_title">Kelegapan</string>
+  <string name="morphe_music_miniplayer_glass_blur_title">Kekaburan kaca</string>
+  <string name="morphe_music_miniplayer_glass_blur_summary">Tahap kekaburan halaman di belakang pemain mini kaca (Android 14 dan versi kemudian). Pada 0 halaman dipaparkan dengan tajam, dan sebelum Android 14 halaman tersebut tertutup</string>
+  <string name="morphe_music_miniplayer_glass_light_title">Kaca terang</string>
+  <string name="morphe_music_miniplayer_glass_light_summary">Mewarnakan pemain mini kaca dengan warna putih berbanding gelap, untuk kaca yang lebih terang dan jelas</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_title">Kewarnaan seni album</string>
+  <string name="morphe_music_miniplayer_glass_album_tint_summary">Mewarnakan pemain mini kaca dengan warna seni album lagu yang sedang dimainkan</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_title">Karya seni berputar</string>
+  <string name="morphe_music_miniplayer_glass_spinning_artwork_summary">Menjadikan karya seni pemain mini kaca berbentuk bulat, dan memutarkannya seperti piring hitam semasa lagu dimainkan</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_title">Sembunyikan bar kemajuan</string>
+  <string name="morphe_music_miniplayer_glass_hide_progress_bar_summary">Menyembunyikan bar kemajuan di bahagian bawah pemain mini kaca</string>
   <!-- Labels of the preview, shown before the navigation bar was seen. Use the same localized wording YouTube Music displays for the tabs. -->
   <string name="morphe_music_navigation_bar_glass_preview_home">Utama</string>
   <string name="morphe_music_navigation_bar_glass_preview_samples">Sampel</string>
@@ -611,6 +571,7 @@ Untuk memastikan scrobbling disinkronkan semasa memainkan latar belakang, pastik
 
 Pangkalan data ini dilesenkan di bawah Lesen Pangkalan Data Terbuka ODC (ODbL). Entri daripada Soul Over AI oleh xoundbyte dilesenkan di bawah CC BY 4.0. Tidak bergabung dengan atau disahkan oleh SoundProof atau Soul Over AI."</string>
   <!-- layout.lyrics.lyricsPatch -->
+  <string name="morphe_music_lyrics_device_unavailable">Lirik tidak tersedia untuk fail peranti ini.</string>
   <string name="morphe_music_lyrics_enabled_title">Gunakan lirik pihak ketiga</string>
   <string name="morphe_music_lyrics_enabled_summary">Menunjukkan lirik daripada perkhidmatan pihak ketiga, kembali ke lirik terbina dalam apabila tiada yang ditemui</string>
   <string name="morphe_music_lyrics_keep_screen_on_title">Kekalkan skrin aktif semasa melihat lirik</string>
@@ -634,7 +595,7 @@ Lajur pertama adalah perkataan, yang kedua adalah bacaannya; lajur tambahan dan 
   <string name="morphe_music_lyrics_rime_dict_no_table">Tiada senarai perkataan Rime ditanda untuk bahasa di atas. Ketik nama ini untuk menandakan satu, atau pilih bahasa yang mempunyai senarai</string>
   <string name="morphe_music_lyrics_rime_dict_add">Tambah</string>
   <string name="morphe_music_lyrics_rime_dict_add_title">Tambah Senarai Perkataan Rime</string>
-  <string name="morphe_music_lyrics_rime_dict_add_hint">Fail .dict.yaml, atau fail zip yang mengandungi satu fail tersebut, dengan baris seperti 字 ham dan 典 din2. Senarai tersebut diambil apabila anda menandakannya dan mengetik Simpan, dan lesennya adalah untuk anda semak</string>
+  <string name="morphe_music_lyrics_rime_dict_add_hint">Fail .dict.yaml, atau zip yang mengandungi fail tersebut, dengan baris seperti 字 ham dan 典 din2. Senarai tersebut diambil apabila anda menandakannya dan mengetik Simpan, dan lesennya adalah untuk anda semak</string>
   <string name="morphe_music_lyrics_rime_dict_field_code">Kod bahasa</string>
   <string name="morphe_music_lyrics_rime_dict_field_code_hint">Dua atau tiga huruf, seperti dalam hak atau wuu</string>
   <string name="morphe_music_lyrics_rime_dict_field_label">Nama</string>
@@ -722,6 +683,8 @@ Kuki yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_translate_button_summary">Ketik untuk tukar terjemahan; tekan lama untuk terjemahan sahaja. Menggunakan penyedia terjemahan yang didayakan mengikut urutan yang disenaraikan</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Tunjukkan butang Romanize atau Transliterate</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Ketik untuk tukar romanisasi atau transliterasi; tekan lama untuk romanisasi atau transliterasi sahaja. Menggunakan penyedia romanisasi yang didayakan mengikut urutan yang disenaraikan</string>
+  <string name="morphe_music_lyrics_show_current_button_title">Butang Tunjuk Semasa</string>
+  <string name="morphe_music_lyrics_show_current_button_summary">Semasa menatal lirik secara manual, menunjukkan butang yang melompat kembali ke baris yang sedang dinyanyikan</string>
   <string name="morphe_music_lyrics_allow_transliteration_title">Dayakan transliterasi</string>
   <string name="morphe_music_lyrics_allow_transliteration_summary">Benarkan bacaan bukan Latin daripada sumber lirik; apabila dimatikan, hanya kekalkan huruf Latin, huruf beraksen dan digit nada</string>
   <string name="morphe_music_lyrics_local_romanization_summary">Membaca setiap perkataan lirik bermasa (sinkronisasi perkataan dihidupkan); Korea tidak memerlukan muat turun; empat belas skrip berkongsi satu muat turun CLDR; aksara Han dibaca oleh Rime Wordlist apabila jadual perkataannya meliputi bahasa tersebut</string>
@@ -740,11 +703,18 @@ Kuki yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_search_title_hint">Tajuk lagu</string>
   <string name="morphe_music_lyrics_search_artist_hint">Artis</string>
   <string name="morphe_music_lyrics_search_empty">Masukkan tajuk lagu dan artis</string>
+  <string name="morphe_music_lyrics_search_google">Cari dengan Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Tiada penyedia yang didayakan boleh mencari lagu lain</string>
   <string name="morphe_music_lyrics_saved">Disimpan</string>
   <string name="morphe_music_lyrics_written_by">Ditulis oleh: %s</string>
   <string name="morphe_music_lyrics_word_sync_title">Serlahkan perkataan atau suku kata yang disinkronkan</string>
   <string name="morphe_music_lyrics_word_sync_summary">Utamakan lirik perkataan demi perkataan jika tersedia. Apabila lirik membawa pemasaan perkataan, ia akan menyerlahkan setiap perkataan atau suku kata mengikut masa muzik</string>
+  <string name="morphe_music_lyrics_spring_scroll_title">Gunakan tatalan spring</string>
+  <string name="morphe_music_lyrics_spring_scroll_summary">Menatal lirik dengan fizik spring, dan menggerakkan setiap baris sedikit selepas baris di atasnya. Matikan untuk menjimatkan bateri pada peranti yang lebih perlahan</string>
+  <string name="morphe_music_lyrics_gap_dots_title">Tunjukkan titik jeda instrumental</string>
+  <string name="morphe_music_lyrics_gap_dots_summary">Menunjukkan tiga titik di antara baris semasa jeda instrumental yang panjang, yang akan terisi apabila jeda berakhir</string>
+  <string name="morphe_music_lyrics_focus_spotlight_title">Malapkan baris jauh dengan lebih banyak</string>
+  <string name="morphe_music_lyrics_focus_spotlight_summary">Memalapkan setiap baris tidak aktif dengan lebih banyak bergantung kepada sejauh mana ia dari baris yang sedang dinyanyikan. Apabila dimatikan, setiap baris tidak aktif dimalapkan pada tahap yang sama</string>
   <string name="morphe_music_lyrics_line_scale_title">Kecilkan baris tidak aktif</string>
   <string name="morphe_music_lyrics_line_scale_summary">Melukis setiap baris yang tidak sedang dinyanyikan sedikit lebih kecil, selain daripada memalapkannya</string>
   <string name="morphe_music_lyrics_split_background_title">Tunjukkan vokal latar secara berasingan</string>
@@ -813,7 +783,6 @@ Terpakai untuk kedua-dua had. Pada 1.75, empat aksara lebar penuh dikira sebagai
   <string name="morphe_music_lyrics_romanized_by_ai">Diromanisasikan oleh %s</string>
   <string name="morphe_music_lyrics_romanized_by_local">Diromanizasikan oleh %s</string>
   <string name="morphe_music_lyrics_with_ruby_provider">%1$s (dengan %2$s)</string>
-  <string name="morphe_music_lyrics_romanized_by_rime">Diromanisasikan oleh Rime (%s)</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Diterjemah</string>
   <string name="morphe_music_lyrics_translation_language_title">Bahasa terjemahan</string>
@@ -834,6 +803,7 @@ Terpakai untuk kedua-dua had. Pada 1.75, empat aksara lebar penuh dikira sebagai
   <string name="morphe_music_lyrics_romanize_only">Diromankan sahaja</string>
   <string name="morphe_music_lyrics_dual_only">Mod dwi</string>
   <string name="morphe_music_lyrics_copied">Disalin ke papan keratan</string>
+  <string name="morphe_music_lyrics_current">Semasa</string>
   <string name="morphe_music_lyrics_refreshing">Menyegarkan</string>
   <string name="morphe_music_lyrics_refreshed">Disegarkan</string>
   <string name="morphe_music_lyrics_transcribe_key_title">Kunci API QuickLRC</string>
@@ -872,19 +842,15 @@ Lirik datang daripada perkhidmatan pihak ketiga yang tidak bergabung, ditaja, at
   <string name="morphe_music_lyrics_use_ai_section_title">Kesan bahagian dengan AI</string>
   <string name="morphe_music_lyrics_use_ai_section_summary">Hanya digunakan apabila pembekal tidak menghantar label bahagian seperti Chorus atau Verse, yang kemudiannya dikesan oleh model serasi OpenAI anda. Mengedit baris juga akan membuka prompt-nya</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL titik akhir API (cth. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
-  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Templat Prompt</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Placeholder: {task}, {language}, {title}, {artist}, {count}, {lines}. Yang tidak dikenali dibiarkan seperti yang ditaip</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Prompt disimpan</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Gesaan disimpan, tetapi titik akhir AI belum boleh digunakan. Konfigurasikannya di bawah Tetapan AI terlebih dahulu</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Prompt ditetapkan semula</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Tetapan Terjemahan &amp; Romanisasi disimpan</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Tetapan disimpan, tetapi titik akhir AI belum boleh digunakan</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Tetapan disimpan</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Tetapan ditetapkan semula ke lalai</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL asas mesti bermula dengan http:// atau https://</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid">Tetapan tidak lengkap atau ditolak oleh penyedia</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Mengesahkan sambungan…</string>
   <string name="morphe_music_lyrics_ai_config_status_connected">%1$s: Tersambung! (%2$s)</string>
   <string name="morphe_music_lyrics_ai_config_status_failed">%s: Sambungan gagal. Semak tetapan.</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_key">Masukkan kunci API terlebih dahulu</string>
   <string name="morphe_music_lyrics_ai_config_test_connection">Uji sambungan</string>
   <string name="morphe_music_lyrics_ai_config_fetching_models">Mengambil model…</string>
   <string name="morphe_music_lyrics_ai_config_fetch_models">Ambil model</string>
@@ -901,7 +867,14 @@ Lirik datang daripada perkhidmatan pihak ketiga yang tidak bergabung, ditaja, at
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Header permintaan tambahan (JSON pilihan)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Letakkan nama dan nilai dalam tanda petik, contohnya {\"api-key\": \"abc\"}. Nilai tanpa tanda petik yang mengandungi / : atau nombor akan ditolak. Nilai kosong akan mengeluarkan pengepala.</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Letakkan nama dan nilai dalam tanda petik, contohnya {\"temperature\": 0.3}. Nilai tanpa tanda petik yang mengandungi / atau : akan ditolak. Model dan mesej tidak boleh ditetapkan di sini.</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Usaha penaakulan</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Lalai</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Kunci pengesahan (Percuma atau Pro)</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI tidak dapat mengesan bahagian untuk trek ini</string>
+  <string name="morphe_music_lyrics_ai_section_detecting">Mengesan</string>
+  <string name="morphe_music_lyrics_ai_section_apply">Gunakan bahagian</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Pengesanan dibatalkan</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Tiada lirik untuk mengesan bahagian</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Nyahaktifkan ikon tebal</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Pulihkan tab Seterusnya, Lirik, dan Berkaitan Pemain</string>

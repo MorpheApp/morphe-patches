@@ -27,7 +27,6 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/PlaylistTrackTapPatch;"
 private const val EXTENSION_COMMAND_INTERFACE = $$"Lapp/morphe/extension/music/patches/PlaylistTrackTapPatch$Command;"
 
-@Suppress("unused")
 val playlistTrackTapPatch = patch(
     name = "Playlist track tap action",
     description = "Adds an option to play only the tapped track of a playlist or album, " +

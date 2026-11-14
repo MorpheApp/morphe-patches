@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_new_indicator_days_title">Подсвечивать новые настройки</string>
   <string name="morphe_settings_new_indicator_days_summary">Количество дней, в течение которых точка отображается рядом с настройками и опциями, добавленными в обновлении</string>
   <string name="morphe_settings_new_indicator_days_off">Выключено</string>
+  <string name="morphe_settings_new_indicator_clear_title">Отметить все настройки как просмотренные</string>
+  <string name="morphe_settings_new_indicator_clear_summary">Удалить точку из всех новых настроек и опций</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_title">Отметить все настройки как просмотренные?</string>
+  <string name="morphe_settings_new_indicator_clear_dialog_message">Точка будет удалена из всех новых настроек и опций. Настройки, добавленные в будущих обновлениях, все равно будут выделены.</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Перезагрузите для завершения настройки</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -67,6 +71,13 @@ Second \"item\" text"</string>
 
 Убедитесь, что имя пакета указано верно и приложение установлено"</string>
   <string name="morphe_external_downloader_empty_warning">Имя пакета не может быть пустым</string>
+  <string name="morphe_export_download_folder_dialog_title">Папка экспорта</string>
+  <string name="morphe_export_download_folder_change">Изменить папку</string>
+  <string name="morphe_export_download_folder_changed">Папка экспорта изменена</string>
+  <string name="morphe_export_download_folder_reset">Папка экспорта сброшена</string>
+  <string name="morphe_export_download_folder_missing">Не удалось найти папку экспорта %s</string>
+  <string name="morphe_export_download_flyout_title">Экспорт на устройство</string>
+  <string name="morphe_export_download_canceled">Экспорт отменен</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Пользовательское</string>
   <string name="morphe_custom_branding_icon_title">Иконка приложения</string>
@@ -110,6 +121,20 @@ Second \"item\" text"</string>
 Сделать %2$s клиентом по умолчанию?"</string>
   <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Переключить</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Выключение этой настройки может привести к возникновению проблем с воспроизведением</string>
+  <!-- "Android System WebView" is the name of the Android app and should not be translated. -->
+  <string name="morphe_spoof_video_streams_webview_dialog_title">Android System WebView</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_missing">"Android System WebView отключен или не установлен.
+
+Для воспроизведения видео требуется Android System WebView. Включите его и обновите до последней версии.
+
+Нажмите ОК, чтобы открыть Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_message_outdated">"Версия Android System WebView устарела (%s).
+
+Воспроизведение видео может быть недоступно до обновления Android System WebView до последней версии.
+
+Нажмите ОК, чтобы открыть Android System WebView."</string>
+  <string name="morphe_spoof_video_streams_webview_dialog_ignore">Не показывать снова</string>
+  <string name="morphe_spoof_video_streams_webview_toast_not_installed">Android System WebView не установлен. Установите его, чтобы исправить воспроизведение видео</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Попробуйте включить: Поддельные видео потоки &gt; Вход в Android VR</string>
@@ -142,6 +167,28 @@ Second \"item\" text"</string>
 • В настройках Morphe не будет импортироваться/экспортироваться аутентификация Android VR
 • Если это приложение не будет использоваться в течение 6 месяцев, Google удалит эту аутентификацию
 • Вам нужно будет снова войти, если вы измените пароль Google или отмените регистрацию этого устройства в настройках Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Вход через мобильную версию сайта</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Необязательно: войдите в свою учетную запись на сайте YouTube, чтобы воспроизводить видео. Нажмите здесь, чтобы продолжить</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Теперь вы вошли в мобильную версию сайта</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Чтобы использовать эту функцию, измените «Клиент по умолчанию» на Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Войти в Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web воспроизводит видео без авторизации или при входе в аккаунт на сайте YouTube
+
+• При авторизации можно смотреть видео, требующие наличия аккаунта, например, видео с возрастными ограничениями
+• Страница входа в Google открывается в этом приложении
+• Авторизация используется только для получения воспроизводимых видео
+• Данные авторизации сохраняются только на этом устройстве
+
+Чтобы войти, нажмите «Продолжить» ниже"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Вход сохранен
+
+• Настройки Morphe не будут импортировать/экспортировать вход в мобильную веб-версию
+• Если Google завершит сеанс, видео будут воспроизводиться без авторизации, пока вы не войдете снова
+• Выход из системы также приведет к выходу из аккаунта на веб-сайте YouTube на этом устройстве"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Срок действия входа в мобильную веб-версию истек. Попробуйте войти в мобильную веб-версию снова</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Выход из мобильной веб-версии выполнен</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView недоступен. Установите или включите его, чтобы войти в систему</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 временно недоступен (время ожидания API истекло)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Срок действия входа в Android VR истек. Попробуйте войти в VR снова</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 временно недоступен (статус %s)</string>
@@ -207,6 +254,20 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_summary">Заменяет music.youtube.com на youtube.com в общих ссылках.</string>
   <string name="morphe_replace_links_with_shortener_title">Изменить ссылки для обмена на youtu.be</string>
   <string name="morphe_replace_links_with_shortener_summary">Принудительно использует сокращенный формат URL youtu.be для видео</string>
+  <!-- video.quality.rememberVideoQualityPatch -->
+  <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
+  <string name="morphe_video_quality_default_entry_1">Авто</string>
+  <string name="morphe_remember_video_quality_last_selected_title">Запоминать качество видео</string>
+  <string name="morphe_remember_video_quality_last_selected_summary">Применяет выбранное вами качество ко всем последующим видео</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Уведомления об изменении качества</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Показывает уведомление при сохранении нового качества по умолчанию</string>
+  <string name="morphe_video_quality_default_wifi_title">Качество видео по умолчанию в сети Wi-Fi</string>
+  <string name="morphe_video_quality_default_mobile_title">Качество видео по умолчанию в мобильной сети</string>
+  <string name="morphe_remember_video_quality_toast_mobile">Качество в мобильной сети изменено на: %s</string>
+  <string name="morphe_remember_video_quality_toast_wifi">Качество в сети Wi-Fi изменено на: %s</string>
+  <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Открыть системное меню «Поделиться»</string>
+  <string name="morphe_open_system_share_sheet_summary">Открывает системное меню \"Поделиться\" вместо встроенного при отправке контента</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_litho_title">Журналирование Litho</string>
   <string name="morphe_debug_litho_entry_disabled">Выключено</string>

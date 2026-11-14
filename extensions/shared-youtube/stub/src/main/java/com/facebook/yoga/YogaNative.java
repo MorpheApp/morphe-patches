@@ -1,5 +1,6 @@
 package com.facebook.yoga;
 
+@SuppressWarnings("unused")
 public class YogaNative {
     /**
      * @param node  Pointer to the native node.

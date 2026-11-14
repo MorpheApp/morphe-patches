@@ -6,6 +6,7 @@ package app.morphe.extension.shared.checks;
  *
  * @noinspection CanBeFinal
  */
+@SuppressWarnings({"unused", "CanBeFinal"})
 final class PatchInfo {
     static long PATCH_TIME = 0L;
 
