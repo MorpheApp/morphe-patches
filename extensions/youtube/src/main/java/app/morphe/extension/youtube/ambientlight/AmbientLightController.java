@@ -273,6 +273,8 @@ public final class AmbientLightController {
     private static float wantedCover;
     /** Written by the worker thread. */
     private static volatile float cover;
+    /** Where the video was when the cover was last chosen. */
+    private static int[] coverVideo = new int[0];
     private static float[] encodedLight = new float[0];
     private static float[] presentedLight = new float[0];
     private static float[] lightSoft = new float[0];
@@ -1060,13 +1062,7 @@ public final class AmbientLightController {
             float[] gridVideo = {current.video()[0] * toGridX, current.video()[1] * toGridY,
                     current.video()[2] * toGridX, current.video()[3] * toGridY};
             AmbientLightMath.soften(light, lightSoft, lightScratch, width, height, gridVideo, pageLinear);
-            // Without the content of the page, as in fullscreen, there is no text to keep readable.
-            // A cover would show as a darker frame around a fullscreen player that is pulled down.
-            wantedCover = Settings.ENHANCED_AMBIENT_MODE_READABLE_TEXT.get()
-                    ? SeeThroughPage.contentAlpha() * AmbientLightMath.readabilityCover(light, width, height,
-                    current.video()[3] * height / current.windowHeight(), AmbientLightMath.luma(pageColor) < 128)
-                    : 0f;
-            final boolean coverMoved = stepCover();
+            final boolean coverMoved = chooseCover(current, width, height);
 
             if (encodedLight.length != length) {
                 encodedLight = new float[length];
@@ -1317,11 +1313,41 @@ public final class AmbientLightController {
     /**
      * @param shown The share of the light that is shown, from 0 to 1.
      * @return How much of the page color covers the light so that the text stays readable, from
-     *         0 to 1: what the light needs at the strength set by the user, fading with the light.
+     *         0 to 1: what the light needs at the strength set by the user, fading with the light
+     *         and with the content of the page. Without the content, as in fullscreen, there is
+     *         no text to keep readable, and a cover would show as a darker frame around a
+     *         fullscreen player that is pulled down.
      */
     private static float shownCover(float shown) {
         final float rest = restStrength() / (float) FULL_STRENGTH;
-        return AmbientLightMath.coverAtStrength(cover, rest) * shown / rest;
+        return SeeThroughPage.contentAlpha() * AmbientLightMath.coverAtStrength(cover, rest) * shown / rest;
+    }
+
+    /**
+     * Worker thread. Chooses the cover for the light of this capture.
+     *
+     * @return If the cover changed.
+     */
+    private static boolean chooseCover(Layout current, int width, int height) {
+        if (!Settings.ENHANCED_AMBIENT_MODE_READABLE_TEXT.get()) {
+            wantedCover = 0f;
+            return stepCover();
+        }
+        // Without the content of the page there is nothing below the video to choose the cover
+        // for. The cover of before stays, and is chosen again when the content is back.
+        if (SeeThroughPage.contentAlpha() == 0f) return false;
+
+        wantedCover = AmbientLightMath.readabilityCover(light, width, height,
+                current.video()[3] * height / current.windowHeight(), AmbientLightMath.luma(pageColor) < 128);
+        // The cover follows the light of a video that stays in its place with a delay, so that
+        // scene cuts do not pump. A video that has moved, as on its way back from fullscreen or
+        // the miniplayer, has other light below it, and that light has its own cover at once.
+        if (Arrays.equals(current.video(), coverVideo)) return stepCover();
+
+        coverVideo = current.video();
+        if (cover == wantedCover) return false;
+        cover = wantedCover;
+        return true;
     }
 
     /**
