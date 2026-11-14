@@ -70,6 +70,20 @@ internal fun getOnTheGoStateConstructorFingerprint(stateClass: String) = object 
 ) {}
 
 /**
+ * Returns if On-the-go is active.
+ */
+internal fun getOnTheGoStateGetterFingerprint(stateClass: String) = object : Fingerprint(
+    definingClass = stateClass,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        // Older versions keep the state in a field of type Object, as the class is shared with other code.
+        methodCall(smali = "Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z")
+    )
+) {}
+
+/**
  * Sets if On-the-go is active.
  */
 internal fun getOnTheGoStateSetterFingerprint(stateClass: String) = object : Fingerprint(
