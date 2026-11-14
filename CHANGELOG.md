@@ -1,3 +1,13 @@
+## [2.3.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v2.3.0-dev.4...v2.3.0-dev.5) (2026-11-14)
+
+### ✨ New Features
+
+* **Reddit:** Add Morphe settings row without replacing 'Privacy policy' on `2026.30+` ([#4806](https://github.com/MorpheApp/morphe-patches/issues/4806)) ([91d03db](https://github.com/MorpheApp/morphe-patches/commit/91d03db88fccdf9907162d506b1decf8ee7465b8))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Spoof video streams:** Update "Allow AV1" to work with VR and visionOS experimental clients ([e6435cb](https://github.com/MorpheApp/morphe-patches/commit/e6435cb6e9a9dd4fd0de6e12f5e40b33b7ae4040))
+
 ## [2.3.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v2.3.0-dev.3...v2.3.0-dev.4) (2026-11-14)
 
 ### ✨ New Features
