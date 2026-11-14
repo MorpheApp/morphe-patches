@@ -10,6 +10,7 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
@@ -45,6 +46,7 @@ import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationEndpoint;
 import app.morphe.extension.youtube.innertube.PushNotification.PushNotificationSupportedRenderers;
 import app.morphe.extension.youtube.patches.LayoutReloadObserverPatch;
+import app.morphe.extension.youtube.patches.PushNotificationPayloadCapture;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
@@ -914,26 +916,34 @@ public final class ShortsFilter extends Filter {
     /**
      * Injection point.
      *
+     * @param context   Context of the receiver, used to store the payload capture.
      * @param renderers PushNotificationSupportedRenderers of a received push notification.
      * @return If the notification opens a Short and is not shown.
      */
-    public static boolean hideShortsNotification(@Nullable MessageLite renderers) {
-        if (!Settings.HIDE_SHORTS_NOTIFICATIONS.get() || renderers == null) {
-            return false;
-        }
+    public static boolean hideShortsNotification(@Nullable Context context, @Nullable MessageLite renderers) {
+        if (renderers == null) return false;
 
+        boolean filterEnabled = Settings.HIDE_SHORTS_NOTIFICATIONS.get();
+        boolean captureEnabled = Settings.CAPTURE_PUSH_NOTIFICATION_PAYLOADS.get();
+        if (!filterEnabled && !captureEnabled) return false;
+
+        boolean isShorts = false;
         try {
             NavigationEndpoint endpoint = PushNotificationSupportedRenderers.parseFrom(renderers.toByteArray())
                     .getAndroidPushNotificationRenderer()
                     .getNavigationEndpoint();
-            if (endpoint.hasReelWatchEndpoint()) {
-                Logger.printDebug(() -> "Hiding Shorts push notification");
-                return true;
-            }
+            isShorts = endpoint.hasReelWatchEndpoint();
         } catch (Exception ex) {
             Logger.printException(() -> "hideShortsNotification failure", ex);
         }
 
+        if (captureEnabled) {
+            PushNotificationPayloadCapture.capture(context, renderers, filterEnabled, isShorts);
+        }
+        if (filterEnabled && isShorts) {
+            Logger.printDebug(() -> "Hiding Shorts push notification");
+            return true;
+        }
         return false;
     }
 
