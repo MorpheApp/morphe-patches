@@ -142,6 +142,19 @@ public final class RestoreOriginalTitlesPatch {
     private static final String SHORTS_TOP_BAR_IDENTIFIER = "top_bar.eml";
 
     /**
+     * Video of the card layout, such as the feed videos of a newer A/B test.
+     * Its accessibility label is in the renderer context of the view model, two messages below the view model
+     * that includes the title, and not a field of the view model as in the other video components.
+     */
+    private static final String LOCKUP_IDENTIFIER = "lockup.eml";
+
+    /**
+     * Messages between the view model of {@link #LOCKUP_IDENTIFIER} and its accessibility label
+     * (renderer context, then accessibility context).
+     */
+    private static final int LOCKUP_LABEL_DEPTH = 2;
+
+    /**
      * Accessibility id of the link of a Short to a related video, such as the full video of the Short.
      */
     private static final String SHORTS_VIDEO_LINK_ID = "id.reel_multi_format_link";
@@ -1835,7 +1848,7 @@ public final class RestoreOriginalTitlesPatch {
                 () -> {
                     String layoutTitle = videoId.equals(openedVideoId) ? findOpenedVideoTitle(textNodes, texts) : null;
                     return layoutTitle == null && elementVideoId
-                            ? findLabeledCandidateTitle(textNodes, texts)
+                            ? findLabeledCandidateTitle(textNodes, texts, component)
                             : layoutTitle;
                 },
                 () -> findCandidateTitle(textNodes, nodeTexts, texts, videoId, elementVideoId, component),
@@ -1957,7 +1970,7 @@ public final class RestoreOriginalTitlesPatch {
                 return null;
             }
 
-            title = findLabeledCandidateTitle(textNodes, texts);
+            title = findLabeledCandidateTitle(textNodes, texts, component);
             if (title == null) {
                 // The title at the title path learned for the component.
                 List<String> paths = TitleLayouts.fieldPaths(textNodes);
@@ -1983,7 +1996,7 @@ public final class RestoreOriginalTitlesPatch {
      * @return The title that starts the accessibility label of the video, or null if none.
      */
     @Nullable
-    private static String findLabeledCandidateTitle(List<ProtoNode> textNodes, Set<String> texts) {
+    private static String findLabeledCandidateTitle(List<ProtoNode> textNodes, Set<String> texts, String component) {
         String[] labelAndTitle = findLabeledTitle(texts);
         String labeledLabel = labelAndTitle == null ? null : labelAndTitle[0];
         String labeledTitle = labelAndTitle == null ? null : labelAndTitle[1];
@@ -2002,6 +2015,14 @@ public final class RestoreOriginalTitlesPatch {
                 titleNodes.add(node);
             } else if (text.equals(labeledLabel) && node.getParent() != null) {
                 labelMessages.add(node.getParent());
+                if (component.startsWith(LOCKUP_IDENTIFIER)) {
+                    // The label is in the renderer context of the view model that includes the title.
+                    ProtoNode labelMessage = node.getParent();
+                    for (int depth = 0; depth < LOCKUP_LABEL_DEPTH && labelMessage.getParent() != null; depth++) {
+                        labelMessage = labelMessage.getParent();
+                    }
+                    labelMessages.add(labelMessage);
+                }
             }
         }
         boolean labelOfTitle = false;
