@@ -15,7 +15,6 @@ import app.morphe.extension.music.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.music.patches.CrossfadePatch.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadePatch.FadeCurve;
 import app.morphe.extension.music.patches.PlaylistTrackTapPatch.TapAction;
-import app.morphe.extension.music.patches.ReplaceShuffleWithLoopButtonPatch.ReplaceShuffleWithLoopButtonAvailability;
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.patches.lyrics.derive.ProcessingProviders;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
@@ -237,7 +236,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting REMEMBER_REPEAT_STATE = new BooleanSetting("morphe_music_remember_repeat_state", FALSE, true, parentNot(HIDE_REPEAT_BUTTON));
     public static final BooleanSetting REMEMBER_SHUFFLE_STATE = new BooleanSetting("morphe_music_remember_shuffle_state", FALSE, true, parentNot(HIDE_SHUFFLE_BUTTON));
     public static final BooleanSetting SAVED_SHUFFLE_STATE = new BooleanSetting("morphe_music_saved_shuffle_state", FALSE, parent(REMEMBER_SHUFFLE_STATE));
-    public static final BooleanSetting REPLACE_SHUFFLE_WITH_LOOP_BUTTON = new BooleanSetting("morphe_music_replace_shuffle_with_loop_button", FALSE, true, new ReplaceShuffleWithLoopButtonAvailability());
+    public static final BooleanSetting REPLACE_SHUFFLE_WITH_LOOP_BUTTON = new BooleanSetting("morphe_music_replace_shuffle_with_loop_button", FALSE, true, parentNot(HIDE_NOTIFICATION_MEDIA_PREV_NEXT));
 
     // Action buttons
     public static final BooleanSetting HIDE_ACTION_BAR = new BooleanSetting("morphe_music_hide_action_bar", FALSE, true);
