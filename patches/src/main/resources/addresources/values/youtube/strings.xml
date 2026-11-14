@@ -1639,6 +1639,58 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
     <string name="morphe_dearrow_error">DeArrow is temporarily not available (status code: %s)</string>
     <string name="morphe_dearrow_error_generic">DeArrow is temporarily not available</string>
+    <string name="morphe_dearrow_vote_button_title">Show DeArrow button</string>
+    <string name="morphe_dearrow_vote_button_summary">Adds a button to the top of the video player to vote on DeArrow titles and thumbnails, or submit new ones. Uses the same user ID as SponsorBlock</string>
+    <string name="morphe_dearrow_guidelines_title">Guidelines</string>
+    <string name="morphe_dearrow_guidelines_summary">Guidelines contain rules and tips for submitting and voting on titles and thumbnails</string>
+    <string name="morphe_dearrow_guidelines_popup_title">Follow the guidelines</string>
+    <string name="morphe_dearrow_guidelines_popup_content">Read the DeArrow guidelines before submitting or voting on titles and thumbnails</string>
+    <string name="morphe_dearrow_guidelines_popup_already_read">Already read</string>
+    <string name="morphe_dearrow_guidelines_popup_open">Show me</string>
+    <string name="morphe_dearrow_vote_title">DeArrow</string>
+    <string name="morphe_dearrow_vote_loading">Loading…</string>
+    <string name="morphe_dearrow_vote_fetch_failed">Could not load the titles and thumbnails of this video</string>
+    <string name="morphe_dearrow_vote_titles">Titles</string>
+    <string name="morphe_dearrow_vote_thumbnails">Thumbnails</string>
+    <string name="morphe_dearrow_vote_no_titles">No titles yet. Submit a title to be the first</string>
+    <string name="morphe_dearrow_vote_original_title">Original title</string>
+    <string name="morphe_dearrow_vote_original_thumbnail">Original thumbnail</string>
+    <!-- %s is a time of the video, such as 10:14.19 -->
+    <string name="morphe_dearrow_vote_thumbnail_time">Frame at %s</string>
+    <!-- %s is the number of votes, and can be negative. -->
+    <string name="morphe_dearrow_vote_votes">Votes: %s</string>
+    <string name="morphe_dearrow_vote_locked">Locked</string>
+    <string name="morphe_dearrow_vote_upvote">Upvote</string>
+    <string name="morphe_dearrow_vote_downvote">Downvote</string>
+    <string name="morphe_dearrow_vote_new_title">New title</string>
+    <string name="morphe_dearrow_vote_new_title_hint">Type a title</string>
+    <string name="morphe_dearrow_vote_submit">Submit</string>
+    <string name="morphe_dearrow_vote_current_frame">Current frame</string>
+    <!-- %s is a time of the video, such as 10:14.19 -->
+    <string name="morphe_dearrow_vote_current_frame_content">Submit the frame at %s as a thumbnail?</string>
+    <string name="morphe_dearrow_vote_current_frame_playing">The video is playing. To submit the frame you see, pause the video first</string>
+    <string name="morphe_dearrow_vote_upvoted">Vote submitted to DeArrow</string>
+    <string name="morphe_dearrow_vote_downvoted">Downvote submitted to DeArrow</string>
+    <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+    <string name="morphe_dearrow_vote_failed_reason">DeArrow did not accept the vote: %s</string>
+    <string name="morphe_dearrow_vote_failed_locked">This is locked, and can only be downvoted by VIP users</string>
+    <string name="morphe_dearrow_vote_failed_rate_limit">A vote for this video is still in progress. Try again in a moment</string>
+    <string name="morphe_dearrow_vote_failed_code">Could not submit the vote (status code: %s)</string>
+    <string name="morphe_dearrow_vote_failed_connection">Could not submit the vote. Check your connection and try again</string>
+    <string name="morphe_dearrow_account_title">Account</string>
+    <string name="morphe_dearrow_private_user_id_title">Your private user ID</string>
+    <string name="morphe_dearrow_private_user_id_summary">The same user ID as SponsorBlock. This should be kept private. This is like a password and should not be shared with anyone. If someone has this, they can impersonate you</string>
+    <string name="morphe_dearrow_private_user_id_invalid">Private user ID must be at least 30 characters long</string>
+    <string name="morphe_dearrow_account_loading">Loading…</string>
+    <string name="morphe_dearrow_account_connection_failure">Account details are temporarily not available</string>
+    <string name="morphe_dearrow_account_username">Your username: &lt;b>%s&lt;/b></string>
+    <string name="morphe_dearrow_account_username_change">Tap here to change your username. The username is the same as on SponsorBlock</string>
+    <string name="morphe_dearrow_account_username_changed">Username successfully changed</string>
+    <string name="morphe_dearrow_account_username_change_error">Unable to change username: Status: %1$s %2$s</string>
+    <string name="morphe_dearrow_account_titles">You\'ve submitted &lt;b>%s&lt;/b> titles</string>
+    <string name="morphe_dearrow_account_titles_summary">Tap here to view your titles</string>
+    <string name="morphe_dearrow_account_thumbnails">You\'ve submitted &lt;b>%s&lt;/b> thumbnails</string>
+    <string name="morphe_dearrow_account_thumbnails_summary">Tap here to view your thumbnails</string>
 
     <!-- misc.playercontrols.playerControlsPatch -->
     <string name="morphe_restore_old_player_buttons_title">Restore old player button style</string>

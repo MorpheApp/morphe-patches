@@ -7,90 +7,47 @@
 
 package app.morphe.extension.youtube.sponsorblock.preferences;
 
-import static app.morphe.extension.shared.StringRef.str;
-
-import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.util.AttributeSet;
-import android.util.Pair;
-import android.widget.LinearLayout;
 
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.settings.preference.BooleanSettingPreference;
-import app.morphe.extension.shared.ui.CustomDialog;
+import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.settings.preference.GuidelinesSwitchPreference;
 
 /**
- * SwitchPreference that, on its first OFF→ON transition, shows the SponsorBlock submission
- * guidelines popup before persisting the new value. After the user has acknowledged the popup
- * ({@code SB_SEEN_GUIDELINES}) the toggle behaves like a normal SwitchPreference.
+ * Shows the SponsorBlock submission guidelines popup the first time creating new segments is turned on.
  */
-@SuppressWarnings({"unused", "deprecation"})
-public class SponsorBlockCreateSegmentSwitchPreference extends BooleanSettingPreference {
-
-    private static final Uri GUIDELINES_URI = Uri.parse("https://wiki.sponsor.ajay.app/w/Guidelines");
+@SuppressWarnings("unused")
+public class SponsorBlockCreateSegmentSwitchPreference extends GuidelinesSwitchPreference {
 
     public SponsorBlockCreateSegmentSwitchPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        installChangeGate();
     }
 
     public SponsorBlockCreateSegmentSwitchPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        installChangeGate();
     }
 
     public SponsorBlockCreateSegmentSwitchPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        installChangeGate();
     }
 
     public SponsorBlockCreateSegmentSwitchPreference(Context context) {
         super(context);
-        installChangeGate();
     }
 
-    private void installChangeGate() {
-        setOnPreferenceChangeListener((p, newValue) -> {
-            boolean enabling = Boolean.TRUE.equals(newValue);
-            if (enabling && !Settings.SB_SEEN_GUIDELINES.get()) {
-                showGuidelinesPopup(p.getContext());
-            }
-            return true;
-        });
+    @Override
+    protected BooleanSetting getSeenGuidelinesSetting() {
+        return Settings.SB_SEEN_GUIDELINES;
     }
 
-    private void showGuidelinesPopup(Context context) {
-        try {
-            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                    context,
-                    str("morphe_sb_guidelines_popup_title"),
-                    str("morphe_sb_guidelines_popup_content"),
-                    null,
-                    str("morphe_sb_guidelines_popup_open"),
-                    this::openGuidelines,
-                    null,
-                    str("morphe_sb_guidelines_popup_already_read"),
-                    () -> {},
-                    true
-            );
-            dialogPair.first.setCancelable(false);
-            dialogPair.first.setOnDismissListener(d -> Settings.SB_SEEN_GUIDELINES.save(true));
-            dialogPair.first.show();
-        } catch (Exception ex) {
-            Logger.printException(() -> "Show guidelines popup failure", ex);
-        }
+    @Override
+    protected String getGuidelinesUrl() {
+        return "https://wiki.sponsor.ajay.app/w/Guidelines";
     }
 
-    private void openGuidelines() {
-        try {
-            Intent intent = new Intent(Intent.ACTION_VIEW, GUIDELINES_URI);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            getContext().startActivity(intent);
-        } catch (Exception ex) {
-            Logger.printException(() -> "Open guidelines failure", ex);
-        }
+    @Override
+    protected String getPopupStringPrefix() {
+        return "morphe_sb_guidelines_popup";
     }
 }
