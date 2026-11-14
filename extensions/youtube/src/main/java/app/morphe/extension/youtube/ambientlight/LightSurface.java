@@ -21,9 +21,11 @@ import androidx.annotation.NonNull;
 /**
  * A surface underneath the window that shows the light. A light frame only replaces this
  * buffer, so the app window is not redrawn.
+ * <p>
+ * Public so other features that look for the video surface can leave it out.
  */
 @SuppressLint("ViewConstructor")
-final class LightSurface extends SurfaceView implements SurfaceHolder.Callback {
+public final class LightSurface extends SurfaceView implements SurfaceHolder.Callback {
     private final Runnable onReady;
     private volatile boolean ready;
 

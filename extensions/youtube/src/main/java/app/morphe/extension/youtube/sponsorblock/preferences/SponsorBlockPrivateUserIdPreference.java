@@ -55,11 +55,19 @@ public class SponsorBlockPrivateUserIdPreference extends ResettableEditTextPrefe
         setOnPreferenceChangeListener((p, newValue) -> {
             String newUUID = newValue.toString();
             if (!SponsorBlockHelpers.isValidSBUserID(newUUID)) {
-                Utils.showSnackbarLong(str("morphe_sb_private_user_id_Do_Not_Share_invalid"));
+                Utils.showSnackbarLong(getInvalidUserIdMessage());
                 return false;
             }
             return true;
         });
+    }
+
+    protected String getInvalidUserIdMessage() {
+        return str("morphe_sb_private_user_id_Do_Not_Share_invalid");
+    }
+
+    protected String getCopyButtonText() {
+        return str("morphe_sb_settings_copy");
     }
 
     @Override
@@ -85,7 +93,7 @@ public class SponsorBlockPrivateUserIdPreference extends ResettableEditTextPrefe
                         }
                     },
                     () -> {},
-                    str("morphe_sb_settings_copy"),
+                    getCopyButtonText(),
                     () -> {
                         try {
                             Utils.setClipboard(getEditText().getText());

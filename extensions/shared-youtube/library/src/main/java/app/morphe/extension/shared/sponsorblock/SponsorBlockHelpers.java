@@ -47,6 +47,15 @@ public final class SponsorBlockHelpers {
         if (setting == null) {
             throw new IllegalStateException("Host app does not provide privateUserId setting");
         }
+        return getOrGeneratePrivateUserID(setting);
+    }
+
+    /**
+     * DeArrow uses the same user id as SponsorBlock, and calls this without SponsorBlock being configured.
+     *
+     * @return The private user ID saved in the setting, generating and saving one if missing.
+     */
+    public static String getOrGeneratePrivateUserID(StringSetting setting) {
         String uuid = setting.get();
         if (uuid.isEmpty()) {
             uuid = (UUID.randomUUID().toString()

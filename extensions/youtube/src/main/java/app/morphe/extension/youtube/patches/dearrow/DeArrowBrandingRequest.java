@@ -53,7 +53,7 @@ public final class DeArrowBrandingRequest {
         }
     }
 
-    private static final String API_URL = "https://sponsor.ajay.app";
+    static final String API_URL = "https://sponsor.ajay.app";
 
     /**
      * Videos are requested by the start of the SHA-256 hash of the video id,
@@ -146,6 +146,13 @@ public final class DeArrowBrandingRequest {
     @Nullable
     public static String getVideoIdOfTitle(String title) {
         return fetchedTitles.get(title);
+    }
+
+    /**
+     * Removes the fetched branding of the video, so it is fetched again, such as after voting on its titles.
+     */
+    public static void removeFromCache(String videoId) {
+        cache.remove(videoId);
     }
 
     /**
@@ -296,9 +303,17 @@ public final class DeArrowBrandingRequest {
             return null;
         }
 
-        // Words that are not auto formatted by the DeArrow extension start with '>'.
-        String text = FORMATTER_OVERRIDE_PATTERN.matcher(title.optString("title")).replaceAll("$1").trim();
+        String text = formatTitle(title.optString("title"));
         return text.isEmpty() ? null : text;
+    }
+
+    /**
+     * Words that are not auto formatted by the DeArrow extension start with '>'.
+     *
+     * @return The title as shown, without the '>' characters.
+     */
+    static String formatTitle(String submittedTitle) {
+        return FORMATTER_OVERRIDE_PATTERN.matcher(submittedTitle).replaceAll("$1").trim();
     }
 
     /**

@@ -1,0 +1,1098 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4840
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
+package app.morphe.extension.youtube.patches.dearrow;
+
+import static app.morphe.extension.shared.StringRef.str;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.PixelCopy;
+import android.view.SurfaceView;
+import android.view.TextureView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.shared.ui.CustomDialog;
+import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.youtube.ambientlight.LightSurface;
+import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowVoteRequest.Branding;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowVoteRequest.ThumbnailSubmission;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowVoteRequest.TitleSubmission;
+import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
+import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.PipDismissHelper;
+import app.morphe.extension.youtube.shared.VideoState;
+import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
+
+/**
+ * Sheet of the DeArrow titles and thumbnails of the video in the player, to vote on them
+ * or submit a new title or the current frame as a thumbnail.
+ * <p>
+ * The original title and thumbnail are listed first, as done by the DeArrow extension.
+ * The original title is the title as set by the uploader, since YouTube can show a translated title instead.
+ */
+final class DeArrowVoteDialog {
+
+    private static final int UPVOTE_ICON = getVoteIcon("thumb_up");
+    private static final int DOWNVOTE_ICON = getVoteIcon("thumb_down");
+
+    /**
+     * Opacity of the line under each title, which shows its score.
+     */
+    private static final float DETAILS_ALPHA = 0.7f;
+
+    /**
+     * Lines shown of a new title, before the text field scrolls.
+     */
+    private static final int NEW_TITLE_MAX_LINES = 4;
+
+    private static final int THUMBNAIL_WIDTH = Dim.dp(112);
+    private static final int THUMBNAIL_HEIGHT = Dim.dp(63);
+
+    private static final int THUMBNAIL_TIMEOUT_MILLISECONDS = 10_000;
+
+    /**
+     * Width the current frame is copied at, which is enough for the dialog.
+     */
+    private static final int FRAME_PREVIEW_MAX_WIDTH = 640;
+    private static final int FRAME_PREVIEW_MAX_HEIGHT = Dim.dp(180);
+    /**
+     * Number of layouts above the player button that are searched for the video surface.
+     */
+    private static final int MAX_PLAYER_ANCESTORS = 8;
+
+    /**
+     * Step of the outer buttons that move the video to a nearby frame to submit.
+     * The inner buttons use the step of the setting.
+     */
+    private static final long FRAME_STEP_LARGE_MILLISECONDS = 1000;
+
+    /**
+     * Time after a step before the frame is copied, so the player shows the new frame.
+     */
+    private static final long FRAME_STEP_COPY_DELAY_MILLISECONDS = 400;
+
+    /**
+     * The frame chosen in the new thumbnail dialog. Only used on the main thread.
+     */
+    private static final class ChosenFrame {
+        long videoTime;
+        @Nullable
+        Bitmap image;
+        /**
+         * Increased on each step, so the copy of an earlier step is not shown.
+         */
+        int stepNumber;
+    }
+
+    /**
+     * Time after the video is moved to the frame of a missing thumbnail before the frame is copied.
+     * Longer than after a step, since the frame can be outside the part of the video that is loaded.
+     */
+    private static final long MISSING_FRAME_COPY_DELAY_MILLISECONDS = 1000;
+
+    /**
+     * Longest time to wait for the video to pause, before the missing frames are copied.
+     */
+    private static final long PAUSE_TIMEOUT_MILLISECONDS = 1000;
+    private static final long PAUSE_CHECK_INTERVAL_MILLISECONDS = 50;
+
+    /**
+     * Number of frames copied from the player that are kept to show in the sheet.
+     */
+    private static final int MAX_LOCAL_FRAMES = 8;
+
+    /**
+     * Frames copied from the player, by video ID and time: frames the user submitted, and frames
+     * of thumbnails the thumbnail cache has no image of. The thumbnail cache can take a long time
+     * to make the image of a new thumbnail when it is busy, and until then has no image of it.
+     */
+    private static final Map<LocalFrame, Bitmap> localFrames = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(MAX_LOCAL_FRAMES));
+
+    /**
+     * @param timestamp Time of the frame in seconds, exactly as submitted.
+     */
+    private record LocalFrame(String videoId, double timestamp) {
+    }
+
+    /**
+     * Score of a new title of a user who is not yet verified, which is shown as unverified.
+     */
+    private static final int UNVERIFIED_TITLE_SCORE = -1;
+
+    /**
+     * Titles with this score or lower are not shown, except the original title.
+     */
+    private static final int HIDDEN_TITLE_MAX_SCORE = -2;
+
+    /**
+     * A title listed in the sheet.
+     *
+     * @param title     The title as submitted, or the original title if no one submitted it.
+     * @param original  If the title is the original title.
+     * @param submitted If the title was submitted, so it can be downvoted.
+     * @param score     The score of the title, if submitted.
+     * @param locked    If a VIP locked the title.
+     */
+    private record ListedTitle(String title, boolean original, boolean submitted, int score, boolean locked) {
+        String shownTitle() {
+            return DeArrowBrandingRequest.formatTitle(title);
+        }
+    }
+
+    /**
+     * A thumbnail listed in the sheet.
+     *
+     * @param timestamp Time of the frame in seconds, as submitted. Not used for the original thumbnail.
+     * @param original  If the thumbnail is the original thumbnail.
+     * @param submitted If the thumbnail was submitted, so it can be downvoted.
+     * @param score     The score of the thumbnail, if submitted.
+     * @param locked    If a VIP locked the thumbnail.
+     */
+    private record ListedThumbnail(double timestamp, boolean original, boolean submitted, int score, boolean locked) {
+    }
+
+    private DeArrowVoteDialog() {
+    }
+
+    /**
+     * @param playerButton The player button that opened the sheet, used to find the video surface.
+     */
+    static void show(View playerButton) {
+        Utils.verifyOnMainThread();
+
+        Context context = playerButton.getContext();
+
+        String videoId = VideoInformation.getVideoId();
+        if (videoId.isEmpty()) {
+            return;
+        }
+        final long videoLength = VideoInformation.getVideoLength();
+        final int foregroundColor = ThemeUtils.getAppForegroundColor();
+
+        SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog.createMainLayout(
+                context, LegacyPlayerControlButton.getDialogBackgroundColor());
+
+        LinearLayout contentLayout = new LinearLayout(context);
+        contentLayout.setOrientation(LinearLayout.VERTICAL);
+        contentLayout.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
+        contentLayout.addView(SheetBottomDialog.createTitle(context,
+                str("morphe_dearrow_vote_title"), foregroundColor));
+
+        LinearLayout listLayout = new LinearLayout(context);
+        listLayout.setOrientation(LinearLayout.VERTICAL);
+        listLayout.addView(createMessage(context, str("morphe_dearrow_vote_loading"), foregroundColor));
+
+        ScrollView scrollView = SheetBottomDialog.createCappedScrollView(context);
+        scrollView.addView(listLayout);
+        // The weight shrinks the list when the sheet does not fit on screen, such as in landscape,
+        // so the buttons below it stay visible.
+        contentLayout.addView(scrollView, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f));
+        mainLayout.addView(contentLayout);
+
+        SheetBottomDialog.SlideDialog dialog = SheetBottomDialog.createSlideDialog(
+                context, mainLayout, LegacyPlayerControlButton.fadeInDuration);
+        MissingFrames missingFrames = new MissingFrames(playerButton, videoId, videoLength);
+        // Voting also closes the sheet, which moves the video back.
+        PipDismissHelper.dismissOnPip(dialog, missingFrames::cancel);
+
+        // The original title is filled in when fetched.
+        final String[] originalTitle = {null};
+        Button newTitleButton = CustomDialog.createButton(context, null,
+                str("morphe_dearrow_vote_new_title"),
+                () -> showNewTitleDialog(context, dialog, videoId, originalTitle[0], videoLength),
+                true, false);
+        Button newThumbnailButton = CustomDialog.createButton(context, null,
+                str("morphe_dearrow_vote_new_thumbnail"),
+                () -> showNewThumbnailDialog(context, dialog, playerButton, videoId, videoLength),
+                false, false);
+        // The new thumbnail dialog shows the frame in the player, which is elsewhere while missing frames are copied.
+        missingFrames.setDisabledWhileCopying(newThumbnailButton);
+
+        LinearLayout buttonsLayout = new LinearLayout(context);
+        buttonsLayout.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout.LayoutParams newTitleParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+        newTitleParams.setMarginEnd(Dim.dp8);
+        buttonsLayout.addView(newTitleButton, newTitleParams);
+        buttonsLayout.addView(newThumbnailButton, new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f));
+
+        LinearLayout.LayoutParams buttonsParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        buttonsParams.setMargins(0, Dim.dp16, 0, 0);
+        contentLayout.addView(buttonsLayout, buttonsParams);
+
+        dialog.show();
+
+        Utils.runOnBackgroundThread(() -> {
+            Branding branding;
+            try {
+                branding = DeArrowVoteRequest.fetchBranding(videoId);
+            } catch (Exception ex) {
+                Logger.printInfo(() -> "Could not fetch DeArrow submissions of: " + videoId, ex);
+                Utils.runOnMainThread(() -> {
+                    listLayout.removeAllViews();
+                    listLayout.addView(createMessage(context,
+                            str("morphe_dearrow_vote_fetch_failed"), foregroundColor));
+                });
+                return;
+            }
+
+            String original = null;
+            try {
+                original = RestoreOriginalTitlesPatch.fetchOriginalTitle(videoId).join();
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not fetch original title of: " + videoId, ex);
+            }
+
+            List<ListedTitle> titles = listTitles(branding.titles(), original);
+            List<ListedThumbnail> thumbnails = listThumbnails(branding.thumbnails());
+            String fetchedOriginal = original;
+            Utils.runOnMainThread(() -> {
+                originalTitle[0] = fetchedOriginal;
+                listLayout.removeAllViews();
+
+                listLayout.addView(createSectionHeader(context, str("morphe_dearrow_vote_titles"), foregroundColor));
+                if (titles.isEmpty()) {
+                    listLayout.addView(createMessage(context,
+                            str("morphe_dearrow_vote_no_titles"), foregroundColor));
+                }
+                for (ListedTitle title : titles) {
+                    listLayout.addView(createTitleRow(context, dialog, videoId, title,
+                            videoLength, foregroundColor));
+                }
+
+                listLayout.addView(createSectionHeader(context, str("morphe_dearrow_vote_thumbnails"), foregroundColor));
+                for (ListedThumbnail thumbnail : thumbnails) {
+                    listLayout.addView(createThumbnailRow(context, dialog, videoId, thumbnail,
+                            videoLength, foregroundColor, missingFrames));
+                }
+                missingFrames.allRowsAdded();
+            });
+        });
+    }
+
+    /**
+     * @param originalTitle The original title, or null if it failed to fetch.
+     * @return The original title first, then the submitted titles in the order of the server.
+     *         Titles that were downvoted below the unverified score are left out.
+     */
+    private static List<ListedTitle> listTitles(List<TitleSubmission> submissions, @Nullable String originalTitle) {
+        List<ListedTitle> titles = new ArrayList<>(submissions.size() + 1);
+        ListedTitle original = null;
+        for (TitleSubmission submission : submissions) {
+            ListedTitle title = new ListedTitle(submission.title(), submission.original(),
+                    true, submission.score(), submission.locked());
+            if (submission.original() && original == null) {
+                original = title;
+            } else if (submission.original() || submission.locked()
+                    || submission.score() > HIDDEN_TITLE_MAX_SCORE) {
+                titles.add(title);
+            }
+        }
+        if (original == null && originalTitle != null) {
+            original = new ListedTitle(originalTitle, true, false, 0, false);
+        }
+        if (original != null) {
+            titles.add(0, original);
+        }
+        return titles;
+    }
+
+    /**
+     * @return The original thumbnail first, then the submitted thumbnails in the order of the server.
+     */
+    private static List<ListedThumbnail> listThumbnails(List<ThumbnailSubmission> submissions) {
+        List<ListedThumbnail> thumbnails = new ArrayList<>(submissions.size() + 1);
+        ListedThumbnail original = null;
+        for (ThumbnailSubmission submission : submissions) {
+            ListedThumbnail thumbnail = new ListedThumbnail(submission.timestamp(), submission.original(),
+                    true, submission.score(), submission.locked());
+            if (submission.original() && original == null) {
+                original = thumbnail;
+            } else {
+                thumbnails.add(thumbnail);
+            }
+        }
+        // The original thumbnail can always be voted for.
+        if (original == null) {
+            original = new ListedThumbnail(0, true, false, 0, false);
+        }
+        thumbnails.add(0, original);
+        return thumbnails;
+    }
+
+    private static TextView createSectionHeader(Context context, String text, int foregroundColor) {
+        TextView view = new TextView(context);
+        view.setText(text);
+        view.setTextSize(14);
+        view.setTypeface(Typeface.DEFAULT_BOLD);
+        view.setTextColor(foregroundColor);
+        view.setAlpha(DETAILS_ALPHA);
+        view.setPadding(0, Dim.dp16, 0, Dim.dp4);
+        return view;
+    }
+
+    private static TextView createMessage(Context context, String message, int foregroundColor) {
+        TextView view = new TextView(context);
+        view.setText(message);
+        view.setTextSize(14);
+        view.setTextColor(foregroundColor);
+        view.setGravity(Gravity.CENTER);
+        view.setPadding(0, Dim.dp16, 0, Dim.dp16);
+        return view;
+    }
+
+    private static View createTitleRow(Context context, SheetBottomDialog.SlideDialog dialog, String videoId,
+                                       ListedTitle title, long videoLength, int foregroundColor) {
+        List<String> details = new ArrayList<>(3);
+        if (title.original()) {
+            details.add(str("morphe_dearrow_vote_original_title"));
+        }
+        if (title.submitted() && title.score() == UNVERIFIED_TITLE_SCORE) {
+            // Not a downvote, so the score is not shown.
+            details.add(str("morphe_dearrow_vote_unverified"));
+            addVoteDetails(details, false, 0, title.locked());
+        } else {
+            addVoteDetails(details, title.submitted(), title.score(), title.locked());
+        }
+
+        return createRow(context, null, title.shownTitle(), details, title.submitted(), foregroundColor,
+                downvote -> vote(context, dialog, videoId, downvote, () -> DeArrowVoteRequest.voteTitle(
+                        videoId, title.title(), title.original(), downvote, videoLength)));
+    }
+
+    private static View createThumbnailRow(Context context, SheetBottomDialog.SlideDialog dialog, String videoId,
+                                           ListedThumbnail thumbnail, long videoLength, int foregroundColor,
+                                           MissingFrames missingFrames) {
+        ImageView imageView = new ImageView(context);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        // Shown until the image loads, and if the thumbnail cache has no image of the frame yet.
+        imageView.setBackgroundColor(foregroundColor);
+        imageView.getBackground().setAlpha(0x20);
+        imageView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+        if (thumbnail.original()) {
+            loadImage(imageView, "https://i.ytimg.com/vi/" + videoId + "/mqdefault.jpg", null);
+        } else {
+            Bitmap localFrame = localFrames.get(new LocalFrame(videoId, thumbnail.timestamp()));
+            if (localFrame != null) {
+                imageView.setImageBitmap(localFrame);
+            } else {
+                missingFrames.loadStarted();
+                loadImage(imageView, DeArrowPatch.getSubmittedThumbnailURL(videoId, thumbnail.timestamp()),
+                        loaded -> missingFrames.loadFinished(thumbnail.timestamp(), imageView, loaded));
+            }
+        }
+
+        String text = thumbnail.original()
+                ? str("morphe_dearrow_vote_original_thumbnail")
+                : str("morphe_dearrow_vote_thumbnail_time", formatTime(thumbnail.timestamp()));
+        List<String> details = new ArrayList<>(2);
+        addVoteDetails(details, thumbnail.submitted(), thumbnail.score(), thumbnail.locked());
+
+        return createRow(context, imageView, text, details, thumbnail.submitted(), foregroundColor,
+                downvote -> vote(context, dialog, videoId, downvote, () -> DeArrowVoteRequest.voteThumbnail(
+                        videoId, thumbnail.original(), thumbnail.timestamp(), downvote, videoLength)));
+    }
+
+    private static void addVoteDetails(List<String> details, boolean submitted, int score, boolean locked) {
+        if (submitted) {
+            details.add(str("morphe_dearrow_vote_score", score));
+        }
+        if (locked) {
+            details.add(str("morphe_dearrow_vote_locked"));
+        }
+    }
+
+    private interface VoteAction {
+        void vote(boolean downvote);
+    }
+
+    /**
+     * @param image       Image shown at the start of the row, or null for none.
+     * @param details     Shown under the text.
+     * @param canDownvote If the row has a downvote button, which only submitted titles and thumbnails have.
+     */
+    private static View createRow(Context context, @Nullable View image, String text, List<String> details,
+                                  boolean canDownvote, int foregroundColor, VoteAction voteAction) {
+        LinearLayout row = new LinearLayout(context);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        row.setGravity(Gravity.CENTER_VERTICAL);
+        row.setPadding(0, Dim.dp8, 0, Dim.dp8);
+
+        if (image != null) {
+            LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
+            imageParams.setMarginEnd(Dim.dp12);
+            row.addView(image, imageParams);
+        }
+
+        LinearLayout textLayout = new LinearLayout(context);
+        textLayout.setOrientation(LinearLayout.VERTICAL);
+        row.addView(textLayout, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f));
+
+        TextView textView = new TextView(context);
+        textView.setText(text);
+        textView.setTextSize(16);
+        textView.setTextColor(foregroundColor);
+        textLayout.addView(textView);
+
+        if (!details.isEmpty()) {
+            TextView detailsView = new TextView(context);
+            detailsView.setText(TextUtils.join(" · ", details));
+            detailsView.setTextSize(13);
+            detailsView.setTextColor(foregroundColor);
+            detailsView.setAlpha(DETAILS_ALPHA);
+            textLayout.addView(detailsView);
+        }
+
+        row.addView(createVoteButton(context, UPVOTE_ICON, str("morphe_dearrow_vote_upvote"), foregroundColor,
+                () -> voteAction.vote(false)));
+        if (canDownvote) {
+            row.addView(createVoteButton(context, DOWNVOTE_ICON, str("morphe_dearrow_vote_downvote"), foregroundColor,
+                    () -> voteAction.vote(true)));
+        }
+        return row;
+    }
+
+    /**
+     * Loads the image on a background thread. Nothing is shown if the server has no image.
+     *
+     * @param onFinished Called on the main thread with true if the image was shown, or null.
+     */
+    private static void loadImage(ImageView imageView, String url, @Nullable Consumer<Boolean> onFinished) {
+        Utils.runOnBackgroundThread(() -> {
+            boolean loaded = false;
+            try {
+                HttpURLConnection connection = Requester.openConnection(url);
+                connection.setConnectTimeout(THUMBNAIL_TIMEOUT_MILLISECONDS);
+                connection.setReadTimeout(THUMBNAIL_TIMEOUT_MILLISECONDS);
+                final int responseCode = connection.getResponseCode();
+                if (responseCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                    // The thumbnail cache has not yet generated the image of the frame.
+                    Logger.printDebug(() -> "No thumbnail image (status code: " + responseCode + "): " + url);
+                    connection.disconnect();
+                    return;
+                }
+                Bitmap bitmap;
+                try (InputStream input = connection.getInputStream()) {
+                    bitmap = BitmapFactory.decodeStream(input);
+                }
+                connection.disconnect();
+                if (bitmap == null) {
+                    Logger.printDebug(() -> "Could not decode thumbnail image: " + url);
+                    return;
+                }
+                loaded = true;
+                Utils.runOnMainThread(() -> imageView.setImageBitmap(bitmap));
+            } catch (IOException ex) {
+                Logger.printInfo(() -> "Could not load thumbnail image: " + url, ex);
+            } catch (Exception ex) {
+                Logger.printException(() -> "loadImage failure", ex);
+            } finally {
+                if (onFinished != null) {
+                    final boolean result = loaded;
+                    Utils.runOnMainThread(() -> onFinished.accept(result));
+                }
+            }
+        });
+    }
+
+    /**
+     * @return The time as minutes and seconds with hundredths, and hours if needed,
+     *         since frames close to each other are different thumbnails.
+     */
+    private static String formatTime(double seconds) {
+        final long wholeSeconds = (long) seconds;
+        final long hours = wholeSeconds / 3600;
+        final long minutes = (wholeSeconds % 3600) / 60;
+        final double secondsOfMinute = seconds - hours * 3600 - minutes * 60;
+        if (hours > 0) {
+            return String.format(Locale.US, "%d:%02d:%05.2f", hours, minutes, secondsOfMinute);
+        }
+        return String.format(Locale.US, "%d:%05.2f", minutes, secondsOfMinute);
+    }
+
+    /**
+     * @param name "thumb_up" or "thumb_down".
+     * @return The bold icon if the app uses bold icons and has it, otherwise the regular icon.
+     */
+    private static int getVoteIcon(String name) {
+        if (Utils.appIsUsingBoldIcons()) {
+            final int boldIcon = ResourceUtils.getDrawableIdentifier("yt_outline_experimental_" + name + "_black_24");
+            if (boldIcon != 0) {
+                return boldIcon;
+            }
+        }
+        return ResourceUtils.getDrawableIdentifier("yt_outline_" + name + "_black_24");
+    }
+
+    private static ImageView createVoteButton(Context context, int icon, String description,
+                                              int foregroundColor, Runnable onClick) {
+        ImageView button = new ImageView(context);
+        button.setImageResource(icon);
+        Drawable drawable = button.getDrawable();
+        if (drawable != null) {
+            drawable.mutate().setTint(foregroundColor);
+        }
+        button.setContentDescription(description);
+        button.setScaleType(ImageView.ScaleType.CENTER);
+        button.setBackgroundResource(ThemeUtils.getThemeResourceId(context,
+                android.R.attr.selectableItemBackgroundBorderless));
+        button.setOnClickListener(v -> onClick.run());
+        button.setLayoutParams(new LinearLayout.LayoutParams(Dim.dp48, Dim.dp48));
+        return button;
+    }
+
+    /**
+     * @param originalTitle The original title, or null if not yet fetched.
+     */
+    private static void showNewTitleDialog(Context context, SheetBottomDialog.SlideDialog sheet, String videoId,
+                                           @Nullable String originalTitle, long videoLength) {
+        try {
+            EditText editText = new EditText(context);
+            // One line of text that wraps, so a long title is shown entirely.
+            editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+            editText.setHorizontallyScrolling(false);
+            editText.setMaxLines(NEW_TITLE_MAX_LINES);
+            editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DeArrowVoteRequest.MAX_TITLE_LENGTH)});
+            editText.setHint(str("morphe_dearrow_vote_new_title_hint"));
+            // Starting from the original title makes a small change easy.
+            if (originalTitle != null) {
+                editText.setText(originalTitle);
+                editText.setSelection(editText.length());
+            }
+
+            CustomDialog.create(context,
+                    str("morphe_dearrow_vote_new_title"),
+                    null,
+                    editText,
+                    str("morphe_dearrow_vote_submit"),
+                    () -> {
+                        String title = editText.getText().toString().trim();
+                        if (title.isEmpty()) {
+                            return;
+                        }
+                        final boolean original = title.equals(originalTitle);
+                        vote(context, sheet, videoId, false, () -> DeArrowVoteRequest.voteTitle(
+                                videoId, title, original, false, videoLength));
+                    },
+                    () -> {},
+                    null,
+                    null,
+                    false
+            ).first.show();
+        } catch (Exception ex) {
+            Logger.printException(() -> "showNewTitleDialog failure", ex);
+        }
+    }
+
+    /**
+     * Submits the time of the frame shown in the player as a new thumbnail.
+     * The time is read when the button is tapped, so a playing video is submitted at that moment.
+     * The step buttons of the dialog move the video to a nearby frame.
+     */
+    private static void showNewThumbnailDialog(Context context, SheetBottomDialog.SlideDialog sheet,
+                                               View playerButton, String videoId, long videoLength) {
+        try {
+            final long videoTime = VideoInformation.getVideoTime();
+            if (videoTime < 0) {
+                Logger.printDebug(() -> "Video time is not available");
+                return;
+            }
+
+            captureCurrentFrame(playerButton, image -> {
+                try {
+                    ChosenFrame chosen = new ChosenFrame();
+                    chosen.videoTime = videoTime;
+                    chosen.image = image;
+
+                    var dialogPair = CustomDialog.create(context,
+                            str("morphe_dearrow_vote_new_thumbnail"),
+                            null,
+                            null,
+                            str("morphe_dearrow_vote_submit"),
+                            () -> submitFrame(context, sheet, videoId, videoLength, chosen.videoTime, chosen.image),
+                            () -> {},
+                            null,
+                            null,
+                            false
+                    );
+
+                    TextView messageView = new TextView(context);
+                    messageView.setTextSize(16);
+                    messageView.setTextColor(ThemeUtils.getDialogTextColor());
+
+                    ImageView imageView = new ImageView(context);
+                    imageView.setAdjustViewBounds(true);
+                    imageView.setMaxHeight(FRAME_PREVIEW_MAX_HEIGHT);
+                    imageView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+                    LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    imageParams.setMargins(0, Dim.dp16, 0, 0);
+
+                    Runnable updateViews = () -> {
+                        String message = str("morphe_dearrow_vote_current_frame_content",
+                                formatTime(chosen.videoTime / 1000.0));
+                        if (VideoState.getCurrent() == VideoState.PLAYING) {
+                            message += "\n\n" + str("morphe_dearrow_vote_current_frame_playing");
+                        }
+                        messageView.setText(message);
+                        imageView.setImageBitmap(chosen.image);
+                        imageView.setVisibility(chosen.image == null ? View.GONE : View.VISIBLE);
+                    };
+                    updateViews.run();
+
+                    final long fineStep = Settings.DEARROW_VOTE_TIME_STEP.get();
+                    final long[] steps = {-FRAME_STEP_LARGE_MILLISECONDS, -fineStep,
+                            fineStep, FRAME_STEP_LARGE_MILLISECONDS};
+                    LinearLayout stepRow = new LinearLayout(context);
+                    stepRow.setOrientation(LinearLayout.HORIZONTAL);
+                    for (int i = 0, count = steps.length; i < count; i++) {
+                        final long step = steps[i];
+                        Button button = CustomDialog.createButton(context, null, formatFrameStep(step),
+                                () -> stepFrame(playerButton, chosen, step, videoLength, updateViews),
+                                false, false);
+                        LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+                        buttonParams.setMargins(i == 0 ? 0 : Dim.dp4, 0, i == count - 1 ? 0 : Dim.dp4, 0);
+                        stepRow.addView(button, buttonParams);
+                    }
+                    LinearLayout.LayoutParams stepRowParams = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    // Extra space below, so a step tap does not hit Cancel or Submit by mistake.
+                    stepRowParams.setMargins(0, Dim.dp16, 0, Dim.dp32);
+
+                    LinearLayout contentLayout = new LinearLayout(context);
+                    contentLayout.setOrientation(LinearLayout.VERTICAL);
+                    contentLayout.addView(messageView);
+                    contentLayout.addView(imageView, imageParams);
+                    contentLayout.addView(stepRow, stepRowParams);
+
+                    // Scrolls if the dialog does not fit on screen, as the content of other dialogs does.
+                    ScrollView scrollView = new ScrollView(context);
+                    scrollView.setVerticalScrollBarEnabled(false);
+                    scrollView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+                    scrollView.addView(contentLayout);
+
+                    // Below the title and above the buttons.
+                    LinearLayout mainLayout = dialogPair.second;
+                    mainLayout.addView(scrollView, mainLayout.getChildCount() - 1,
+                            new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1.0f));
+
+                    dialogPair.first.show();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "showNewThumbnailDialog result failure", ex);
+                }
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "showNewThumbnailDialog failure", ex);
+        }
+    }
+
+    /**
+     * Moves the video by a step and copies the frame it then shows.
+     *
+     * @param onChanged Called when the time changes, and again when the frame is copied.
+     */
+    private static void stepFrame(View playerButton, ChosenFrame chosen, long stepMilliseconds,
+                                  long videoLength, Runnable onChanged) {
+        long time = Math.max(0, chosen.videoTime + stepMilliseconds);
+        if (videoLength > 0) {
+            time = Math.min(time, videoLength - 1);
+        }
+        if (time == chosen.videoTime) {
+            return;
+        }
+        if (!VideoInformation.seekTo(time)) {
+            Logger.printDebug(() -> "Could not seek to the next frame");
+            return;
+        }
+
+        chosen.videoTime = time;
+        final int stepNumber = ++chosen.stepNumber;
+        onChanged.run();
+
+        Utils.runOnMainThreadDelayed(() -> captureCurrentFrame(playerButton, image -> {
+            // A newer step is shown instead.
+            if (stepNumber != chosen.stepNumber) return;
+            chosen.image = image;
+            onChanged.run();
+        }), FRAME_STEP_COPY_DELAY_MILLISECONDS);
+    }
+
+    private static void submitFrame(Context context, SheetBottomDialog.SlideDialog sheet, String videoId,
+                                    long videoLength, long videoTime, @Nullable Bitmap image) {
+        final double timestamp = videoTime / 1000.0;
+        vote(context, sheet, videoId, false, () -> {
+            String error = DeArrowVoteRequest.voteThumbnail(videoId, false, timestamp, false, videoLength);
+            if (error == null && image != null) {
+                localFrames.put(new LocalFrame(videoId, timestamp), image);
+            }
+            return error;
+        });
+    }
+
+    /**
+     * @return The step as signed seconds, such as -1 s or +0.1 s.
+     */
+    private static String formatFrameStep(long stepMilliseconds) {
+        DecimalFormat format = new DecimalFormat("+0.###;-0.###");
+        return str("morphe_dearrow_vote_frame_step", format.format(stepMilliseconds / 1000.0));
+    }
+
+    /**
+     * Copies the frame shown in the player. The thumbnail cache is not used, since it only has
+     * images of submitted frames, and asking it for another frame makes and keeps an image of it.
+     *
+     * @param onCaptured Called on the main thread with the frame, or with null if it could not be copied.
+     */
+    private static void captureCurrentFrame(View playerButton, Consumer<Bitmap> onCaptured) {
+        View video = findVideoSurface(playerButton);
+        if (video == null) {
+            Logger.printDebug(() -> "Video surface not found");
+            onCaptured.accept(null);
+            return;
+        }
+
+        final float scale = Math.min(1, (float) FRAME_PREVIEW_MAX_WIDTH / video.getWidth());
+        Bitmap bitmap = Bitmap.createBitmap(
+                Math.max(1, Math.round(video.getWidth() * scale)),
+                Math.max(1, Math.round(video.getHeight() * scale)),
+                Bitmap.Config.ARGB_8888);
+
+        if (video instanceof TextureView textureView) {
+            textureView.getBitmap(bitmap);
+            onCaptured.accept(bitmap);
+            return;
+        }
+
+        SurfaceView surfaceView = (SurfaceView) video;
+        if (!surfaceView.getHolder().getSurface().isValid()) {
+            Logger.printDebug(() -> "Video surface is not valid");
+            onCaptured.accept(null);
+            return;
+        }
+        try {
+            PixelCopy.request(surfaceView, bitmap, result -> {
+                if (result == PixelCopy.SUCCESS) {
+                    onCaptured.accept(bitmap);
+                } else {
+                    Logger.printDebug(() -> "Could not copy the video frame: " + result);
+                    onCaptured.accept(null);
+                }
+            }, new Handler(Looper.getMainLooper()));
+        } catch (IllegalArgumentException ex) {
+            Logger.printInfo(() -> "Video surface went away during the copy", ex);
+            onCaptured.accept(null);
+        }
+    }
+
+    /**
+     * @return The largest shown video surface in the closest player layout above the button,
+     *         or null if none is found.
+     */
+    @Nullable
+    private static View findVideoSurface(View playerButton) {
+        ViewParent parent = playerButton.getParent();
+        for (int i = 0; i < MAX_PLAYER_ANCESTORS && parent instanceof ViewGroup group;
+             i++, parent = parent.getParent()) {
+            View surface = findLargestSurface(group, null);
+            if (surface != null) {
+                return surface;
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    private static View findLargestSurface(View view, @Nullable View best) {
+        // YouTube can hide a video surface that is being replaced by setting its alpha to 0.
+        if (view.getVisibility() != View.VISIBLE || view.getAlpha() == 0) {
+            return best;
+        }
+        // Ambient light draws on surfaces around the video.
+        if ((view instanceof SurfaceView && !(view instanceof LightSurface)) || view instanceof TextureView) {
+            final long area = (long) view.getWidth() * view.getHeight();
+            if (area > 0 && (best == null || area > (long) best.getWidth() * best.getHeight())) {
+                best = view;
+            }
+        }
+        if (view instanceof ViewGroup group) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                best = findLargestSurface(group.getChildAt(i), best);
+            }
+        }
+        return best;
+    }
+
+    /**
+     * @param request Sends the vote, and returns the error to show or null if the vote was saved.
+     */
+    private static void vote(Context context, SheetBottomDialog.SlideDialog sheet, String videoId,
+                             boolean downvote, Supplier<String> request) {
+        // The sheet is closed first, so a vote is not sent twice.
+        sheet.dismiss();
+
+        Utils.runOnBackgroundThread(() -> {
+            String error = request.get();
+            if (error == null) {
+                Utils.showSnackbarShort(str(downvote
+                        ? "morphe_dearrow_vote_downvoted"
+                        : "morphe_dearrow_vote_upvoted"));
+                RestoreOriginalTitlesPatch.fetchTitlesAgain(videoId);
+                return;
+            }
+            // The reason can be about the account of the user, and too long for a snackbar.
+            Utils.runOnMainThread(() -> {
+                try {
+                    CustomDialog.create(context, str("morphe_dearrow_vote_title"), error,
+                            null, null, () -> {}, null, null, null, false).first.show();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "vote failure", ex);
+                }
+            });
+        });
+    }
+
+    /**
+     * Copies the frames of the thumbnails the thumbnail cache has no image of, by moving the video
+     * to each frame. A playing video is paused while this is done. When done, or when the sheet closes,
+     * the video is moved back and played again.
+     * Only used on the main thread.
+     */
+    private static final class MissingFrames {
+        private record Missing(double timestamp, ImageView imageView) {
+        }
+
+        private final View playerButton;
+        private final String videoId;
+        private final long videoLength;
+        private final List<Missing> missing = new ArrayList<>();
+        @Nullable
+        private View disabledWhileCopying;
+
+        private int loadsInProgress;
+        private boolean allRowsAdded;
+        private boolean started;
+        private boolean finished;
+        private long originalVideoTime;
+        /**
+         * If the video was paused to copy the frames, and is played again when done.
+         */
+        private boolean playWhenDone;
+
+        MissingFrames(View playerButton, String videoId, long videoLength) {
+            this.playerButton = playerButton;
+            this.videoId = videoId;
+            this.videoLength = videoLength;
+        }
+
+        void setDisabledWhileCopying(View view) {
+            disabledWhileCopying = view;
+        }
+
+        void loadStarted() {
+            loadsInProgress++;
+        }
+
+        void loadFinished(double timestamp, ImageView imageView, boolean loaded) {
+            loadsInProgress--;
+            if (!loaded) {
+                missing.add(new Missing(timestamp, imageView));
+            }
+            startIfReady();
+        }
+
+        /**
+         * Called after all thumbnail rows are added, so the video is moved only once
+         * all missing images are known.
+         */
+        void allRowsAdded() {
+            allRowsAdded = true;
+            startIfReady();
+        }
+
+        /**
+         * Stops copying and moves the video back, if copying.
+         */
+        void cancel() {
+            finish();
+        }
+
+        private void startIfReady() {
+            try {
+                if (!allRowsAdded || loadsInProgress > 0 || started || finished || missing.isEmpty()) {
+                    return;
+                }
+                started = true;
+                if (!isSameVideo()) {
+                    Logger.printDebug(() -> "Not copying missing frames, the video changed");
+                    finished = true;
+                    return;
+                }
+                originalVideoTime = VideoInformation.getVideoTime();
+                if (originalVideoTime < 0) {
+                    Logger.printDebug(() -> "Not copying missing frames, video time is not available");
+                    finished = true;
+                    return;
+                }
+                Logger.printDebug(() -> "Copying " + missing.size() + " missing thumbnail frames");
+                setDisabledViewEnabled(false);
+
+                if (VideoState.getCurrent() == VideoState.PLAYING) {
+                    // Frames of a playing video would be copied later than their time.
+                    playWhenDone = clickPlayPauseButton();
+                    waitForPause(System.currentTimeMillis() + PAUSE_TIMEOUT_MILLISECONDS);
+                } else {
+                    copyFrame(0);
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "startIfReady failure", ex);
+                finish();
+            }
+        }
+
+        private void waitForPause(long timeoutTime) {
+            if (finished) return;
+            if (VideoState.getCurrent() == VideoState.PLAYING && System.currentTimeMillis() < timeoutTime) {
+                Utils.runOnMainThreadDelayed(() -> waitForPause(timeoutTime), PAUSE_CHECK_INTERVAL_MILLISECONDS);
+                return;
+            }
+            if (VideoState.getCurrent() == VideoState.PLAYING) {
+                Logger.printDebug(() -> "Video did not pause, copied frames can be later than their time");
+            }
+            copyFrame(0);
+        }
+
+        private void copyFrame(int index) {
+            try {
+                if (finished) return;
+                if (index >= missing.size() || !isSameVideo()) {
+                    finish();
+                    return;
+                }
+
+                Missing frame = missing.get(index);
+                final long time = Math.round(frame.timestamp() * 1000);
+                // Seeking clamps a time in the last second of the video, so it would show another frame.
+                if (time < 0 || (videoLength > 0 && time > videoLength - 1000) || !VideoInformation.seekTo(time)) {
+                    Logger.printDebug(() -> "Could not move the video to missing frame at: " + time);
+                    copyFrame(index + 1);
+                    return;
+                }
+
+                Utils.runOnMainThreadDelayed(() -> {
+                    if (finished) return;
+                    captureCurrentFrame(playerButton, image -> {
+                        if (finished) return;
+                        if (image != null) {
+                            localFrames.put(new LocalFrame(videoId, frame.timestamp()), image);
+                            frame.imageView().setImageBitmap(image);
+                        }
+                        copyFrame(index + 1);
+                    });
+                }, MISSING_FRAME_COPY_DELAY_MILLISECONDS);
+            } catch (Exception ex) {
+                Logger.printException(() -> "copyFrame failure", ex);
+                finish();
+            }
+        }
+
+        private void finish() {
+            if (finished) return;
+            finished = true;
+            if (!started) return;
+            try {
+                Logger.printDebug(() -> "Done copying missing frames, moving the video back to: " + originalVideoTime);
+                if (isSameVideo()) {
+                    VideoInformation.seekTo(originalVideoTime);
+                    if (playWhenDone) {
+                        clickPlayPauseButton();
+                    }
+                }
+                setDisabledViewEnabled(true);
+            } catch (Exception ex) {
+                Logger.printException(() -> "finish failure", ex);
+            }
+        }
+
+        private boolean isSameVideo() {
+            return videoId.equals(VideoInformation.getVideoId());
+        }
+
+        private void setDisabledViewEnabled(boolean enabled) {
+            if (disabledWhileCopying != null) {
+                disabledWhileCopying.setEnabled(enabled);
+                disabledWhileCopying.setAlpha(enabled ? 1 : DETAILS_ALPHA);
+            }
+        }
+
+        /**
+         * Clicks the play button of the player, which works while the player controls are hidden.
+         *
+         * @return If the button was found.
+         */
+        private boolean clickPlayPauseButton() {
+            Context context = playerButton.getContext();
+            final int id = ResourceUtils.getIdentifier(context, ResourceType.ID,
+                    "player_control_play_pause_replay_button");
+            // The player can have more than one view with the id of the play button.
+            View root = playerButton.getRootView();
+            View group = root.findViewById(ResourceUtils.getIdentifier(context, ResourceType.ID,
+                    "controls_button_group_layout"));
+            View button = group != null ? group.findViewById(id) : null;
+            if (button == null) {
+                button = root.findViewById(id);
+            }
+            if (button == null) {
+                Logger.printDebug(() -> "Play button not found");
+                return false;
+            }
+            button.performClick();
+            return true;
+        }
+    }
+}
