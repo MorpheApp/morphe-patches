@@ -524,8 +524,8 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_ryd_feed_like_ratio_title">Pokaż procent polubień na miniaturkach na liście</string>
   <string name="morphe_ryd_feed_counts_position_title">Pozycja polubień na miniaturkach na liście</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">Obok liczby wyświetleń</string>
-  <string name="morphe_ryd_feed_counts_position_entry_2">Środek po prawej</string>
-  <string name="morphe_ryd_feed_counts_position_entry_3">Góra po lewej</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Pośrodku z prawej</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">U góry z lewej</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Szukaj w komentarzach</string>
   <string name="morphe_search_comments_summary">Dotknij przycisku wyszukiwania w sekcji komentarzy, aby wyświetlić tylko te wczytane komentarze, które zawierają wszystkie szukane słowa. Ujmij słowa w cudzysłów, aby wyszukać dokładną frazę</string>
@@ -1043,7 +1043,7 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_navigation_bar_glass_opacity_title">Krycie szkła</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Dostosuj poziom krycia szklanego paska nawigacji (0 to pełna przezroczystość, 100 to brak przezroczystości)</string>
   <string name="morphe_navigation_bar_glass_round_title">Zaokrąglony szklany pasek nawigacji</string>
-  <string name="morphe_navigation_bar_glass_round_summary">Nadaje szklanemu paskowi nawigacji zaokrąglone końce zamiast narożników, jak w przypadku szklanego miniodtwarzacza</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Nadaje szklanemu paskowi nawigacji zaokrąglone końce zamiast narożników takich jak w szklanym miniodtwarzaczu</string>
   <string name="morphe_navigation_bar_glass_size_title">Rozmiar szklanego paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_size_summary">Dostosuj wysokość, szerokość oraz odstępy między przyciskami szklanego paska nawigacji z podglądem na żywo. Przyciski, które nie mieszczą się na szerokości ekranu, są ukrywane</string>
   <string name="morphe_navigation_bar_glass_size_height">Wysokość</string>
@@ -1384,7 +1384,7 @@ Układ samochodowy
   <string name="morphe_miniplayer_docked_title">Zadokowany miniodtwarzacz</string>
   <string name="morphe_miniplayer_docked_summary">Przyczepia miniodtwarzacz do paska nawigacji oraz krawędzi ekranu, zamiast wyświetlać go jako pływające okienko nad nimi</string>
   <string name="morphe_miniplayer_glass_title">Szklany miniodtwarzacz</string>
-  <string name="morphe_miniplayer_glass_summary">Wyświetla miniodtwarzacz jako półprzezroczyste szkło z zaokrąglonymi narożnikami, podobnie jak szklany pasek nawigacji. Wymaga szklanego paska nawigacji</string>
+  <string name="morphe_miniplayer_glass_summary">Wyświetla miniodtwarzacz jako półprzezroczyste szkło z zaokrąglonymi rogami, podobnie jak szklany pasek nawigacji. Wymaga włączenia szklanego paska nawigacji</string>
   <string name="morphe_miniplayer_type_entry_0">Wyłączony</string>
   <string name="morphe_miniplayer_type_entry_1">Domyślny</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalny</string>
@@ -1821,8 +1821,8 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_niconico_comments_screen_title">Komentarze w stylu Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Pokaż czat na żywo oraz powtórkę czatu jako komentarze przewijające się przez ekran filmu</string>
   <string name="morphe_niconico_comments_summary">Wyświetla przycisk w nakładce odtwarzacza. Dotknij, aby pokazać lub ukryć komentarze. Przytrzymaj, aby otworzyć szybkie ustawienia</string>
-  <string name="morphe_niconico_comments_pip_title">Pokaż komentarze w trybie obrazu w obrazie</string>
-  <string name="morphe_niconico_comments_pip_summary">Komentarze są skalowane, aby dopasować się do okna</string>
+  <string name="morphe_niconico_comments_pip_title">Pokaż w trybie obrazu w obrazie</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentarze są skalowane, aby dopasować je do okna</string>
   <string name="morphe_niconico_comments_appearance_title">Wygląd</string>
   <string name="morphe_niconico_comments_portrait_category_title">Orientacja pionowa</string>
   <string name="morphe_niconico_comments_video_types_title">Rodzaje filmów</string>

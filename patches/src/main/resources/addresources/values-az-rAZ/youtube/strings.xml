@@ -522,6 +522,10 @@ Məhdudiyyətlər:
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Axının miniatürünün bəyənmə sayını göstər</string>
   <string name="morphe_ryd_feed_like_ratio_title">Axının miniatürünün bəyənmə faiz nisbətini göstər</string>
+  <string name="morphe_ryd_feed_counts_position_title">Axın miniatür bəyənmə mövqeyi</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Baxış sayının yanında</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Ortada sağ</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Yuxarı solda</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Şərhləri axtar</string>
   <string name="morphe_search_comments_summary">Yalnız bütün axtarılan sözləri ehtiva edən yüklənilmiş şərhləri göstərmək üçün şərhlərdəki axtarış düyməsinə toxun. İfadəni axtarmaq üçün sözləri dırnaq arasında yaz</string>
@@ -1038,6 +1042,8 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_navigation_bar_glass_summary">Fəaliyyət cərgəsini üzən, dairəvi və yarımşəffaf kapsul şəklində göstərir. Tutqun fəaliyyət cərgəsi üslubu ilə əlçatan deyil</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Şüşə tutqunluğu</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Şüşə fəaliyyət cərgəsinin şəffaflıq dərəcəsini tənzimlə (0 şəffaf, 100 qeyri-şəffaf)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Dəyirmi şüşə fəaliyyət zolağı</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Şüşə fəaliyyət zolağına şüşə kiçik oynadıcıdakı kimi künclər əvəzinə dairəvi kənarlar verir</string>
   <string name="morphe_navigation_bar_glass_size_title">Şüşə fəaliyyət zolağının ölçüsü</string>
   <string name="morphe_navigation_bar_glass_size_summary">Şüşə fəaliyyət zolağının hündürlüyünü, enini və düymə boşluğunu önizləmə ilə tənzimlə. Ekranın eninə uyuşmayan düymələr gizlədilir</string>
   <string name="morphe_navigation_bar_glass_size_height">Hündürlük</string>
@@ -1378,6 +1384,8 @@ Avtomobil tərtibatı
   <string name="morphe_miniplayer_swipe_up_expand_summary">Kiçik oynadıcını yuxarı sürüşdürmə ekranın yuxarısına keçmək əvəzinə oynadıcını genişləndirir</string>
   <string name="morphe_miniplayer_docked_title">Sabitlənmiş kiçik oynadıcı</string>
   <string name="morphe_miniplayer_docked_summary">Kiçik oynadıcını yuxarı üzən rejim əvəzinə, fəaliyyət panelinə və ekranın kənarlarına sabitləyir</string>
+  <string name="morphe_miniplayer_glass_title">Şüşə kiçik oynadıcı</string>
+  <string name="morphe_miniplayer_glass_summary">Kiçik oynadıcını şüşə fəaliyyət zolağı kimi dairəvi künclü yarımşəffaf şüşə olaraq göstərir. Şüşə fəaliyyət zolağını tələb edir</string>
   <string name="morphe_miniplayer_type_entry_0">Qapalıdı</string>
   <string name="morphe_miniplayer_type_entry_1">İlkin</string>
   <string name="morphe_miniplayer_type_entry_2">Ən kiçik</string>
@@ -1814,6 +1822,8 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər"</string>
   <string name="morphe_niconico_comments_screen_title">Niconico şərhləri</string>
   <string name="morphe_niconico_comments_screen_summary">Canlı söhbəti və təkrar oxudulan söhbəti video üzərində axan şərhlər kimi göstər</string>
   <string name="morphe_niconico_comments_summary">Video oynadıcıda örtük düyməsini göstərir. Şərhləri göstərmək və ya gizlətmək üçün toxun, sürətli tənzimləmələr üçün basıb saxla</string>
+  <string name="morphe_niconico_comments_pip_title">Şəkil içində şəkildə göstər</string>
+  <string name="morphe_niconico_comments_pip_summary">Şərhlər pəncərəyə sığması üçün kiçildilir</string>
   <string name="morphe_niconico_comments_appearance_title">Görünüş</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portret</string>
   <string name="morphe_niconico_comments_video_types_title">Video növləri</string>

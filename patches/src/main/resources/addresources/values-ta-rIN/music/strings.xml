@@ -40,6 +40,9 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_started">அனைத்துப் பதிவிறக்கங்களையும் ஏற்றுமதி செய்கிறது</string>
   <string name="morphe_export_download_all_running">பதிவிறக்கங்கள் ஏற்கனவே ஏற்றுமதி செய்யப்படுகின்றன</string>
   <string name="morphe_export_download_all_saved">%2$s பதிவிறக்கங்களில் %1$s பதிவிறக்கங்கள் %3$s-க்கு ஏற்றுமதி செய்யப்பட்டன</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
+  <string name="morphe_music_replace_shuffle_with_loop_button_title">Shuffle பொத்தானுக்குப் பதிலாக Loop பொத்தானை மாற்றவும்</string>
+  <string name="morphe_music_replace_shuffle_with_loop_button_summary">மீடியா அறிவிப்பு மற்றும் லாக் ஸ்கிரீனில் Shuffle பொத்தானுக்குப் பதிலாக Loop பொத்தானைக் காட்டுகிறது</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_00_about_title">Morphe பற்றி</string>
@@ -61,6 +64,9 @@ Second \"item\" text"</string>
   <!-- Empty string because custom preference handles the title itself -->
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
+  <string name="morphe_music_pause_when_muted_title">முடக்கப்படும்போது நிறுத்து</string>
+  <string name="morphe_music_pause_when_muted_summary">சிஸ்டம் வால்யூம் முடக்கப்படும்போது ஒலியீர்ப்பை நிறுத்தும் மற்றும் வால்யூம் உயர்த்தப்படும்போது மீண்டும் தொடங்கும்</string>
   <!-- video.speed.playbackSpeedPatch -->
   <!-- layout.captions.disableAutoCaptionsPatch -->
   <string name="morphe_music_disable_auto_captions_title">தானியங்கி தலைப்புகளை முடக்கவும்</string>

@@ -144,6 +144,9 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_started">Eksportowanie wszystkich pobranych plików</string>
   <string name="morphe_export_download_all_running">Pobrane pliki są już eksportowane</string>
   <string name="morphe_export_download_all_saved">Wyeksportowano pobrane pliki (%1$s z %2$s) do: %3$s</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
+  <string name="morphe_music_replace_shuffle_with_loop_button_title">Zastąp przycisk \"Odtwarzaj losowo\" przyciskiem \"Pętla\"</string>
+  <string name="morphe_music_replace_shuffle_with_loop_button_summary">Wyświetla przycisk \"Pętla\" zamiast przycisku \"Odtwarzaj losowo\" w powiadomieniu o multimediach oraz na ekranie blokady</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_00_about_title">Informacje</string>
@@ -253,6 +256,9 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_remember_repeat_state_title">Zapamiętaj stan powtarzania</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Zapamiętaj stan odtwarzania losowego</string>
+  <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
+  <string name="morphe_music_pause_when_muted_title">Wstrzymaj po wyciszeniu</string>
+  <string name="morphe_music_pause_when_muted_summary">Wstrzymuje odtwarzanie po wyciszeniu głośności systemowej i wznawia je po jej zwiększeniu</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">Prędkość odtwarzania</string>
   <string name="morphe_music_playback_speed_summary">Prędkość stosowana dla wszystkich utworów. Przy 100% używana jest prędkość aplikacji, np. prędkość odtwarzania podcastów</string>

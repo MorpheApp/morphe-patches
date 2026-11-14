@@ -144,6 +144,9 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_all_started">すべてのダウンロードを書き出し中</string>
   <string name="morphe_export_download_all_running">ダウンロードは既に書き出し中です</string>
   <string name="morphe_export_download_all_saved">%2$s件のダウンロードのうち%1$s件を%3$sに書き出しました</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatchMusic -->
+  <string name="morphe_music_replace_shuffle_with_loop_button_title">シャッフルボタンをリピートボタンに置き換える</string>
+  <string name="morphe_music_replace_shuffle_with_loop_button_summary">メディア通知およびロック画面で、シャッフルボタンの代わりにリピートボタンを表示します</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_00_about_title">このフィルタについて</string>
@@ -253,6 +256,9 @@ SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_remember_repeat_state_title">リピート再生の状態を保存</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">シャッフル再生の状態を保存</string>
+  <!-- interaction.pausewhenmuted.pauseWhenMutedPatch -->
+  <string name="morphe_music_pause_when_muted_title">ミュート時に一時停止</string>
+  <string name="morphe_music_pause_when_muted_summary">システムボリュームがミュートになると再生を一時停止し、ボリュームを上げると再開します</string>
   <!-- video.speed.playbackSpeedPatch -->
   <string name="morphe_music_playback_speed_title">再生速度</string>
   <string name="morphe_music_playback_speed_summary">すべてのトラックに使用される速度です。100%の場合、ポッドキャストの再生速度など、アプリの速度が使用されます</string>
