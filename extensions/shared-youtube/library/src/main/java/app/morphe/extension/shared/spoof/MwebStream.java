@@ -88,6 +88,11 @@ public final class MwebStream {
     private final SabrContexts contexts = new SabrContexts();
 
     /**
+     * If the streams were found unplayable, which is reported once.
+     */
+    private volatile boolean failed;
+
+    /**
      * The last stream protection status, or -1 if none was given yet.
      */
     @GuardedBy("this")
@@ -111,6 +116,7 @@ public final class MwebStream {
             MwebStream stream = streams.get(streamId);
             if (stream != null && stream.videoId.equals(videoId)) {
                 stream.session = session;
+                stream.failed = false;
             } else {
                 streams.put(streamId, new MwebStream(videoId, session));
             }
@@ -225,6 +231,10 @@ public final class MwebStream {
     }
 
     private void onFailure(String reason) {
+        if (failed) {
+            return;
+        }
+        failed = true;
         StreamingDataRequest.onWebClientFailed(videoId, reason);
     }
 
