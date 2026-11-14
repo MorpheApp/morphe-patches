@@ -137,9 +137,22 @@ public final class OnTheGoPatch {
     }
 
     /**
+     * If the On-the-go panel is open.
+     */
+    private static volatile boolean onTheGoActive;
+
+    /**
+     * @return If the On-the-go panel is open.
+     */
+    public static boolean isOnTheGoActive() {
+        return onTheGoActive;
+    }
+
+    /**
      * Turns the On-the-go media controls of the app on or off.
      */
     static void setOnTheGoActive(boolean active) {
+        onTheGoActive = active;
         OnTheGoState state = onTheGoState;
         if (state != null) {
             Logger.printDebug(() -> "Setting On-the-go media controls active: " + active);
