@@ -94,12 +94,7 @@ val deArrowPatch = patch(
                         tag = "app.morphe.extension.youtube.settings.preference.DeArrowVoteButtonSwitchPreference"
                     ),
                     SwitchPreference("morphe_dearrow_casual_mode", summary = true),
-                    TextPreference("morphe_dearrow_casual_mode_min_votes", inputType = InputType.NUMBER),
-                    NonInteractivePreference(
-                        key = "morphe_dearrow_guidelines",
-                        tag = "app.morphe.extension.youtube.settings.preference.DeArrowGuidelinesPreference",
-                        selectable = true
-                    )
+                    TextPreference("morphe_dearrow_casual_mode_min_votes", inputType = InputType.NUMBER)
                 )
             ),
             PreferenceCategory(
@@ -126,10 +121,20 @@ val deArrowPatch = patch(
                 )
             ),
             PreferenceCategory(
-                key = "morphe_dearrow_account_category",
-                titleKey = "morphe_dearrow_account_title",
+                key = "morphe_dearrow_submitting_category",
+                titleKey = "morphe_dearrow_submitting_title",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
+                    NonInteractivePreference(
+                        key = "morphe_dearrow_guidelines",
+                        tag = "app.morphe.extension.youtube.settings.preference.DeArrowGuidelinesPreference",
+                        selectable = true
+                    ),
+                    TextPreference(
+                        key = "morphe_dearrow_vote_time_step",
+                        tag = "app.morphe.extension.youtube.settings.preference.DeArrowTimeStepPreference",
+                        inputType = InputType.NUMBER
+                    ),
                     // Same setting as SponsorBlock, since DeArrow uses the same user id.
                     TextPreference(
                         key = "morphe_sb_private_user_id_Do_Not_Share",
