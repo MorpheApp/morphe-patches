@@ -17,8 +17,8 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
 /**
- * Button at the top of the player that opens the DeArrow titles of the video,
- * to vote on them or submit a new title.
+ * Button at the top of the player that opens the DeArrow titles and thumbnails of the video,
+ * to vote on them or submit new ones.
  */
 @SuppressWarnings("unused")
 public final class DeArrowVoteButton {

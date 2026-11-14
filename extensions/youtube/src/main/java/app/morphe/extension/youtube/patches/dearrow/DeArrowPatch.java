@@ -370,6 +370,21 @@ public final class DeArrowPatch {
     }
 
     /**
+     * @param thumbnailTime Time in seconds of a submitted thumbnail.
+     * @return URL of the image of the thumbnail in the thumbnail cache, which has no image
+     *         if the thumbnail is not yet generated.
+     */
+    static String getSubmittedThumbnailURL(String videoId, double thumbnailTime) {
+        return dearrowAPIURI
+                .buildUpon()
+                .appendQueryParameter("videoID", videoId)
+                .appendQueryParameter("time", String.valueOf(thumbnailTime))
+                .appendQueryParameter("officialTime", "true")
+                .build()
+                .toString();
+    }
+
+    /**
      * Build the alternative thumbnail URL using DeArrow thumbnail cache.
      *
      * @param videoId ID of the video to get a thumbnail of.  Can be any video (regular or Short).
