@@ -31,8 +31,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
-import androidx.annotation.Nullable;
-
 import java.lang.reflect.Field;
 import java.util.LinkedHashSet;
 import java.util.Objects;
@@ -59,9 +57,10 @@ public class RedditActivityHook {
             ResourceUtils.getString("privacy_policy_uri"));
 
     /**
-     * Key of the Compose settings row that is cloned as the Morphe settings row.
+     * Keys of the Compose settings rows. The privacy policy row is copied as the Morphe settings row.
      * 2026.30.0+
      */
+    private static final String PRIVACY_POLICY_ROW_KEY = "key_pref_privacy_policy";
     private static final String MORPHE_SETTING_ROW_KEY = "key_pref_morphe";
     private static final String MORPHE_SETTINGS_DIALOG_TAG = "morphe_settings";
     private static final String MORPHE_SETTINGS_ICON_DRAWABLE = "morphe_settings_icon_reddit";
@@ -70,6 +69,19 @@ public class RedditActivityHook {
      * Draws the Morphe icon in the leading icon slot of the Compose settings row.
      */
     private static final Function2<Object, Object, Object> MORPHE_ICON_COMPOSABLE = new MorpheIconComposable();
+
+    /**
+     * Compose settings row of the app. The interface and its methods are added during patching.
+     * 2026.30.0+
+     */
+    public interface ComposeSettingRow {
+        String patch_getKey();
+
+        /**
+         * @return A copy of this row with another key.
+         */
+        Object patch_copyWithKey(String key);
+    }
 
     /**
      * Injection point.
@@ -177,7 +189,7 @@ public class RedditActivityHook {
 
     /**
      * Injection point.
-     * 2026.25.0 - 2026.29.0, and the fallback if the Compose settings row is not found.
+     * 2026.25.0 - 2026.29.0
      */
     public static boolean openMorpheSettings(Activity activity, Uri uri) {
         if (uri != null && PRIVACY_POLICY_URI.equals(uri.toString())) {
@@ -187,51 +199,38 @@ public class RedditActivityHook {
         return false;
     }
 
-    @Nullable
-    private static Object morpheSettingItem;
-    private static boolean isCreatingMorpheItem = false;
-
-    /**
-     * Guard to prevent recursive instantiation during Compose setting item cloning.
-     */
-    public static boolean shouldCreateMorpheItem() {
-        if (morpheSettingItem != null || isCreatingMorpheItem) {
-            return false;
-        }
-        isCreatingMorpheItem = true;
-        return true;
-    }
-
     /**
      * Injection point.
      * 2026.30.0+
+     *
+     * @param rows All Compose settings rows of the app.
+     * @return The rows and the Morphe settings row, a copy of the privacy policy row.
      */
-    public static void setMorpheSettingItem(Object item) {
-        morpheSettingItem = item;
-        isCreatingMorpheItem = false;
-    }
-
-    /**
-     * Injection point.
-     * 2026.30.0+
-     */
-    public static Set<Object> includeMorpheSettingItem(Set<Object> items) {
-        if (items == null || morpheSettingItem == null || items.contains(morpheSettingItem)) {
-            return items;
+    public static Set<Object> addMorpheSettingRow(Set<Object> rows) {
+        try {
+            for (Object row : rows) {
+                if (row instanceof ComposeSettingRow settingRow
+                        && PRIVACY_POLICY_ROW_KEY.equals(settingRow.patch_getKey())) {
+                    Set<Object> newRows = new LinkedHashSet<>(rows);
+                    newRows.add(settingRow.patch_copyWithKey(MORPHE_SETTING_ROW_KEY));
+                    return newRows;
+                }
+            }
+            Logger.printException(() -> "Privacy policy settings row not found");
+        } catch (Exception ex) {
+            Logger.printException(() -> "addMorpheSettingRow failure", ex);
         }
-        Set<Object> newItems = new LinkedHashSet<>(items.size() + 1);
-        newItems.addAll(items);
-        newItems.add(morpheSettingItem);
-        return newItems;
+        return rows;
     }
 
     /**
-     * If true, Morphe hijacked the original Privacy Policy link to open Morphe settings,
-     * so Morphe settings must display a fallback "Reddit privacy policy" link.
-     * When Compose row cloning is active, both rows coexist in stock Settings, so no fallback is needed.
+     * Modified during patching.
+     *
+     * @return If the privacy policy link of the app settings opens the Morphe settings,
+     *         so the Morphe settings must show the privacy policy link instead.
      */
-    public static boolean usePrivacyPolicyFallback() {
-        return true;
+    public static boolean isPrivacyPolicyReplaced() {
+        return false;
     }
 
     /**
