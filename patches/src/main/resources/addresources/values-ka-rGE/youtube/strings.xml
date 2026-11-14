@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">ფიდის მინიატიურის მოწონებების რაოდენობის ჩვენება</string>
   <string name="morphe_ryd_feed_like_ratio_title">ფიდის მინიატურის მოწონებების პროცენტის ჩვენება</string>
+  <string name="morphe_ryd_feed_counts_position_title">ფიდის მინიატურის მოწონებების პოზიცია</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">ნახვების რაოდენობის გვერდით</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">მარჯვნივ, შუაში</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">ზედა მარცხნივ</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">კომენტარების ძიება</string>
   <string name="morphe_search_comments_summary">კომენტარებში დააჭირეთ ძიების ღილაკს, რათა გამოჩნდეს მხოლოდ ჩატვირთული კომენტარები, რომლებიც შეიცავს ყველა საძიებო სიტყვას. ფრაზის მოსაძიებლად სიტყვები ჩასვათ ბრჭყალებში</string>
@@ -1037,6 +1041,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">აჩვენებს ნავიგაციის პანელს როგორც მცურავ, მომრგვალებულ, ნახევრად გამჭვირვალე კაფსულას. არ არის ხელმისაწვდომი გაუმჭვირვალე ნავიგაციის პანელის სტილით</string>
   <string name="morphe_navigation_bar_glass_opacity_title">მინის გამჭვირვალობა</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">დაარეგულირეთ მინისებრი ნავიგაციის პანელის გამჭვირვალობის დონე (0 არის გამჭვირვალე, 100 არის გაუმჭვირვალე)</string>
+  <string name="morphe_navigation_bar_glass_round_title">ნავიგაციის პანელის მომრგვალებული შუშის ეფექტი</string>
+  <string name="morphe_navigation_bar_glass_round_summary">ნავიგაციის შუშის პანელს აქვს მომრგვალებული კიდეები, განსხვავებით მინიმალური პლეერის კუთხეებისგან</string>
   <string name="morphe_navigation_bar_glass_size_title">მინისებრი ნავიგაციის პანელის ზომა</string>
   <string name="morphe_navigation_bar_glass_size_summary">დაარეგულირეთ მინისებრი ნავიგაციის პანელის სიმაღლე, სიგანე და ღილაკების დაცილება, წინასწარი ნახვით. ღილაკები, რომლებიც არ ეტევა ეკრანის სიგანეში, იმალება</string>
   <string name="morphe_navigation_bar_glass_size_height">სიმაღლე</string>
@@ -1377,6 +1383,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">მინი-პლეერის ზემოთ გადაადგილებით ხდება პლეერის გაფართოება, მინი-პლეერის ეკრანის ზედა ნაწილში გადატანის ნაცვლად</string>
   <string name="morphe_miniplayer_docked_title">დამაგრებული მინი-პლეერი</string>
   <string name="morphe_miniplayer_docked_summary">აკავშირებს მინი-პლეერს ნავიგაციის პანელთან და ეკრანის გვერდებთან, მათზე მცურავად განთავსების ნაცვლად</string>
+  <string name="morphe_miniplayer_glass_title">შუშის მინიმალური პლეერი</string>
+  <string name="morphe_miniplayer_glass_summary">აჩვენებს მინიმალურ პლეერს როგორც ნახევრად გამჭვირვალე შუშას მომრგვალებული კუთხეებით, როგორც ნავიგაციის შუშის პანელი. საჭიროებს ნავიგაციის შუშის პანელს</string>
   <string name="morphe_miniplayer_type_entry_0">გამორთულია</string>
   <string name="morphe_miniplayer_type_entry_1">ნაგულისხმები</string>
   <string name="morphe_miniplayer_type_entry_2">მინიმალისტური</string>
@@ -1813,6 +1821,8 @@ AV1-ით ვიდეოს დაკვრა შესაძლოა იყ
   <string name="morphe_niconico_comments_screen_title">Niconico-ს კომენტარები</string>
   <string name="morphe_niconico_comments_screen_summary">აჩვენეთ პირდაპირი ჩატი და ჩატის ჩანაწერი კომენტარების სახით, რომლებიც ვიდეოზე გადაადგილდება</string>
   <string name="morphe_niconico_comments_summary">ვიდეოპლეერში ჩნდება გადაფარვის ღილაკი. დააჭირეთ კომენტარების გამოსაჩენად ან დასამალად, დააჭირეთ და გეჭიროთ სწრაფი პარამეტრებისთვის</string>
+  <string name="morphe_niconico_comments_pip_title">ჩვენება სურათში სურათის რეჟიმში</string>
+  <string name="morphe_niconico_comments_pip_summary">კომენტარები შემცირებულია ფანჯრის ზომის შესაბამისად</string>
   <string name="morphe_niconico_comments_appearance_title">გარეგნული სახე</string>
   <string name="morphe_niconico_comments_portrait_category_title">პორტრეტული</string>
   <string name="morphe_niconico_comments_video_types_title">ვიდეოს ტიპები</string>

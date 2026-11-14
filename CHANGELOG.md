@@ -1,3 +1,24 @@
+## [2.3.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v2.3.0-dev.3...v2.3.0-dev.4) (2026-11-14)
+
+### ✨ New Features
+
+* **Reddit:** Modernize Morphe settings UI and dialog styling for `2026.25+` ([#4803](https://github.com/MorpheApp/morphe-patches/issues/4803)) ([6ac86a8](https://github.com/MorpheApp/morphe-patches/commit/6ac86a89bccda15cc615521f394b3f4e6992d153))
+* **YouTube - Miniplayer:** Glass minimal miniplayer ([#4801](https://github.com/MorpheApp/morphe-patches/issues/4801)) ([79059b0](https://github.com/MorpheApp/morphe-patches/commit/79059b0c8f90bddf89d67927dec01098f5147026))
+* **YouTube - Niconico comments:** Add "Show in picture-in-picture" setting ([#4816](https://github.com/MorpheApp/morphe-patches/issues/4816)) ([924f666](https://github.com/MorpheApp/morphe-patches/commit/924f666441e0e32c7a3b0bac2e54022cc11f81a0))
+* **YouTube - Return YouTube Dislike:** Show feed thumbnail likes next to the view count ([#4776](https://github.com/MorpheApp/morphe-patches/issues/4776)) ([5838bfb](https://github.com/MorpheApp/morphe-patches/commit/5838bfb94173374e29f3f7e6d389e3d1997756f7))
+* **YouTube - Spoof video streams:** Add "Mobile Web" client ([#4764](https://github.com/MorpheApp/morphe-patches/issues/4764)) ([9299ea8](https://github.com/MorpheApp/morphe-patches/commit/9299ea8c8496353002f3878f513a85faebdded06))
+
+### 🐛 Bug Fixes
+
+* **YouTube - Ambient mode:** Enhanced Ambient mode lights the filter chips with a delay ([#4813](https://github.com/MorpheApp/morphe-patches/issues/4813)) ([a3646de](https://github.com/MorpheApp/morphe-patches/commit/a3646de4faf8c6889d3901fd3365a2494998f846))
+* **YouTube - Ambient mode:** Enhanced Ambient mode turns black above the player on its way to the miniplayer ([#4789](https://github.com/MorpheApp/morphe-patches/issues/4789)) ([0b0a558](https://github.com/MorpheApp/morphe-patches/commit/0b0a5580272ce71d2e7af9b75ed8ba1d3bba00a1))
+* **YouTube - Ambient mode:** Enhanced Ambient mode turns black below the player on tablets on its way to the miniplayer ([#4811](https://github.com/MorpheApp/morphe-patches/issues/4811)) ([3ca76c8](https://github.com/MorpheApp/morphe-patches/commit/3ca76c8f663f7a0816834ed584a7bfbf97625d0f))
+* **YouTube - Navigation bar:** Empty band above the navigation bar when the account gets the feed behind flag without the translucent navigation bar ([#4797](https://github.com/MorpheApp/morphe-patches/issues/4797)) ([e204d18](https://github.com/MorpheApp/morphe-patches/commit/e204d187b4f6acdf8b2b8eb9c1ff0094383c4429))
+* **YouTube - Spoof video streams:** Some videos load in a loop with Android VR Experimental ([#4791](https://github.com/MorpheApp/morphe-patches/issues/4791)) ([61dce62](https://github.com/MorpheApp/morphe-patches/commit/61dce6276c94c7976c86652636519c5b391356f6))
+* **YouTube - Swipe controls:** On-the-go panel check only detects the Morphe panel, so swipes on the On-the-go panel of the app still change the volume or brightness ([#4609](https://github.com/MorpheApp/morphe-patches/issues/4609)) ([0810ce1](https://github.com/MorpheApp/morphe-patches/commit/0810ce121e25758184c156d2dc246bc56750edf8))
+* **YouTube - Swipe controls:** Swipes on the On-the-go panel change the volume or brightness ([#4609](https://github.com/MorpheApp/morphe-patches/issues/4609)) ([68cf246](https://github.com/MorpheApp/morphe-patches/commit/68cf246c0a4077ca7f567959eb9fdf2673a4346f))
+* **YouTube:** Media notification and background audio stop after another player stops the media session ([#4762](https://github.com/MorpheApp/morphe-patches/issues/4762)) ([cd89316](https://github.com/MorpheApp/morphe-patches/commit/cd89316b4fd6df5da8ae51220d354e482fa0a504))
+
 ## [2.3.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v2.3.0-dev.2...v2.3.0-dev.3) (2026-11-13)
 
 ### ✨ New Features

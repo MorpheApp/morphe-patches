@@ -84,6 +84,7 @@ val niconicoCommentsPatch = patch(
                         titleKey = "morphe_niconico_comments_screen_title",
                         summary = true
                     ),
+                    SwitchPreference("morphe_niconico_comments_pip", summary = true),
                     PreferenceCategory(
                         key = "morphe_niconico_comments_appearance_category",
                         titleKey = "morphe_niconico_comments_appearance_title",

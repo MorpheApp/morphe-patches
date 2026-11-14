@@ -522,6 +522,10 @@ Egy alkalommal megnyitott, Ask gombbal ellátott videó esetén a funkció minde
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Kedvelésszám megjelenítése a hírfolyam bélyegképein</string>
   <string name="morphe_ryd_feed_like_ratio_title">Kedvelési arány megjelenítése a hírfolyam bélyegképein</string>
+  <string name="morphe_ryd_feed_counts_position_title">Hírfolyam bélyegkép kedvelés pozíciója</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">A megtekintések száma mellett</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Középen rechtsra</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Balra fent</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Hozzászólások keresése</string>
   <string name="morphe_search_comments_summary">Koppintson a kereső gombra a kommentekben, hogy csak a betöltött kommentek közül azok jelenjenek meg, amelyek tartalmazzák az összes keresett szót. A kifejezések kereséséhez tegye a szavakat idézőjelbe</string>
@@ -1037,6 +1041,8 @@ A Beállítások eléréséhez aktiválja a Beállítások gombot az Általános
   <string name="morphe_navigation_bar_glass_summary">A navigációs sáv egy lebegő, lekerekített, áttetsző kapszulaként jelenik meg. Nem érhető el az átlátszatlan navigációs sáv stílussal</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Üveg átlátszósága</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Állítsa be az üveg navigációs sáv átlátszósági szintjét (0 átlátszó, 100 átlátszatlan)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Kerek üveg navigációs sáv</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Kerek végeket ad az üveg navigációs sávnak a miniplayer üveg sarkai helyett</string>
   <string name="morphe_navigation_bar_glass_size_title">Üveg navigációs sáv mérete</string>
   <string name="morphe_navigation_bar_glass_size_summary">Állítsa be az üveg navigációs sáv magasságát, szélességét és a gombok közötti távolságot, előnézettel. A képernyő szélességébe nem férő gombok el lesznek rejtve</string>
   <string name="morphe_navigation_bar_glass_size_height">Magasság</string>
@@ -1377,6 +1383,8 @@ Autós elrendezés
   <string name="morphe_miniplayer_swipe_up_expand_summary">A minimalizált lejátszó felfelé húzása kibontja a lejátszót, nem pedig a képernyő tetejére mozgatja</string>
   <string name="morphe_miniplayer_docked_title">Dokkolt minimizált lejátszó</string>
   <string name="morphe_miniplayer_docked_summary">Rögzíti a minimalizált lejátszót a navigációs sávhoz és a képernyő széleihez, ahelyett hogy felette lebegne</string>
+  <string name="morphe_miniplayer_glass_title">Üveg miniplayer</string>
+  <string name="morphe_miniplayer_glass_summary">Átlátszó üvegként, lekerekített sarkokkal jeleníti meg a miniplayert, hasonlóan az üveg navigációs sávhoz. Ehhez szükség van az üveg navigációs sávra</string>
   <string name="morphe_miniplayer_type_entry_0">Kikapcsolva</string>
   <string name="morphe_miniplayer_type_entry_1">Alapértelmezett</string>
   <string name="morphe_miniplayer_type_entry_2">Minimális</string>
@@ -1813,6 +1821,8 @@ Az automatikus rögzítés opcionális. Inkognitó módban vagy a fiókváltás 
   <string name="morphe_niconico_comments_screen_title">Niconico kommentek</string>
   <string name="morphe_niconico_comments_screen_summary">Mutassa a élő chatet és a chat lejátszást olyan kommentekként, amelyek végiggurulnak a videón</string>
   <string name="morphe_niconico_comments_summary">Egy átfedő gombot jelenít meg a videolejátszóban. Koppintson a kommentek megjelenítéséhez vagy elrejtéséhez, és tartsa nyomva a gyorsbeállításokhoz</string>
+  <string name="morphe_niconico_comments_pip_title">Megjelenítése kép a képben módban</string>
+  <string name="morphe_niconico_comments_pip_summary">A kommentek mérete lekicsinyedik, hogy megfeleljenek az ablaknak</string>
   <string name="morphe_niconico_comments_appearance_title">Megjelenés</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portré</string>
   <string name="morphe_niconico_comments_video_types_title">Videótípusok</string>

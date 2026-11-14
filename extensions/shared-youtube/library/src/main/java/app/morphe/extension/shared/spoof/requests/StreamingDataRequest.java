@@ -809,6 +809,13 @@ public class StreamingDataRequest {
             if (clientType.requireSABR && playerResponse.hasPlayerConfig()) {
                 PlayerConfig.Builder playerConfigBuilder = playerResponse.getPlayerConfig().toBuilder();
 
+                // Newer client versions, such as the Android VR version of ANDROID_VR_EXPERIMENTAL,
+                // turn on how the player handles ads the server inserts into the SABR stream.
+                // Some videos can then load again in a loop and never start, so the config is removed,
+                // as the client versions without it do not send it.
+                // See: https://github.com/MorpheApp/morphe-patches/issues/4791.
+                playerConfigBuilder.clearDaiConfig();
+
                 // If 'androidMedialibConfig' exists in the response, all playerConfigs are compatible.
                 // Override all playerConfigs.
                 hasAndroidMedia = playerConfigBuilder.hasAndroidMedialibConfig();

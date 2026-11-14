@@ -82,6 +82,7 @@ message PlayerConfig {
   optional InlinePlaybackConfig inlinePlaybackConfig = 399288314;
   optional TaskCoordinatorConfig taskCoordinatorConfig = 403990724;
   optional StickyQualitySelectionConfig stickyQualitySelectionConfig = 120481205;
+  optional DaiConfig daiConfig = 182822664;
 }
 
 message AudioConfig {
@@ -129,6 +130,10 @@ message TaskCoordinatorConfig {
 // If the quality selected in the quality menu is used only for the video it was selected for,
 // or also for the next videos, and for how long.
 message StickyQualitySelectionConfig {
+}
+
+// Dynamic ad insertion: ads the server inserts into the SABR stream.
+message DaiConfig {
 }
 
 message PlayerGestureConfig {

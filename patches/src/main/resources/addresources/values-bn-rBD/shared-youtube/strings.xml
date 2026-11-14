@@ -167,6 +167,28 @@ Android System WebView খুলতে OK ট্যাপ করুন।"</stri
 • আপনার Morphe সেটিংস অ্যান্ড্রয়েড ভিআর প্রমাণীকরণ আমদানি / রফতানি করবে না
 • যদি এই অ্যাপটি ৬ মাসের জন্য অব্যবহৃত থাকে তাহলে গুগল এই প্রমাণীকরণ সরিয়ে দেবে
 • যদি আপনি আপনার গুগল পাসওয়ার্ড পরিবর্তন করেন বা আপনার গুগল সেটিংস থেকে এই ডিভাইসের নিবন্ধন বাতিল করেন তাহলে আপনাকে আবার সাইন ইন করতে হবে"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">মোবাইল ওয়েব সাইন ইন</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">ঐচ্ছিক: আপনার অ্যাকাউন্টের মাধ্যমে ভিডিও চালানোর জন্য YouTube ওয়েবসাইটে সাইন ইন করুন। চালিয়ে যেতে এখানে ট্যাপ করুন</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">বর্তমানে মোবাইল ওয়েবে সাইন ইন করা আছে</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">এই ফিচারটি ব্যবহার করতে, \'Default client\'-কে Mobile Web-এ পরিবর্তন করুন</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Mobile Web-এ সাইন ইন করুন</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web সাইন আউট থাকা অবস্থায়, অথবা YouTube ওয়েবসাইটে সাইন ইন থাকা অবস্থায় ভিডিও প্লে করে
+
+• সাইন ইন করা থাকলে, যেসব ভিডিওর জন্য অ্যাকাউন্টের প্রয়োজন হয় সেগুলো প্লে করা যাবে, যেমন বয়স-সীমাবদ্ধ ভিডিও
+• এই অ্যাপেই Google সাইন-ইন পেজটি খোলে
+• সাইন-ইনটি শুধুমাত্র আপনার প্লে করা ভিডিওগুলো পাওয়ার জন্য ব্যবহৃত হয়
+• সাইন-ইনটি শুধুমাত্র এই ডিভাইসে সেভ করা থাকে
+
+সাইন ইন করতে, নিচে কন্টিনিউ চাপুন"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"সাইন-ইন সেভ করা হয়েছে
+
+• আপনার Morphe সেটিংস Mobile Web সাইন-ইন ইম্পোর্ট/এক্সপোর্ট করবে না
+• Google যদি সাইন-ইন শেষ করে দেয়, তবে আপনি পুনরায় সাইন ইন না করা পর্যন্ত ভিডিওগুলো সাইন আউট অবস্থায় প্লে হবে
+• সাইন আউট করলে এই ডিভাইসটি YouTube ওয়েবসাইট থেকেও সাইন আউট হয়ে যাবে"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">মোবাইল ওয়েব সাইন ইন মেয়াদোত্তীর্ণ হয়েছে, মোবাইল ওয়েবে পুনরায় সাইন ইন করার চেষ্টা করুন</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">মোবাইল ওয়েব থেকে সাইন আউট করা হয়েছে</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView উপলব্ধ নেই। সাইন ইন করতে এটি ইনস্টল বা সক্ষম করুন</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 সাময়িকভাবে উপলব্ধ নয় (API সময় শেষ হয়েছে)</string>
   <string name="morphe_oauth2_connection_failure_status_400">অ্যান্ড্রয়েড ভিআর সাইন ইন মেয়াদোত্তীর্ণ, ভিআরতে পুনরায় সাইন ইন করার চেষ্টা করুন</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 সাময়িকভাবে উপলভ্য নয় (অবস্থা %s)</string>

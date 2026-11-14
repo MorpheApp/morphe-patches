@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">顯示動態縮圖的按讚數</string>
   <string name="morphe_ryd_feed_like_ratio_title">顯示動態縮圖的按讚比例</string>
+  <string name="morphe_ryd_feed_counts_position_title">Feed 縮圖按讚位置</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">觀看次數旁邊</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">中右</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">左上</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">搜尋評論</string>
   <string name="morphe_search_comments_summary">點擊評論區的搜尋按鈕，即可僅顯示包含所有搜尋關鍵字的已載入評論。若要搜尋精確短語，請將字詞加上雙引號。</string>
@@ -1036,6 +1040,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">顯示導覽列為浮動、圓角、半透明的膠囊型按鈕。而不透明導覽列樣式則無法使用。</string>
   <string name="morphe_navigation_bar_glass_opacity_title">玻璃效果的不透明度</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">調整玻璃效果導覽列的透明程度 (0 為完全透明，100 為完全不透明)</string>
+  <string name="morphe_navigation_bar_glass_round_title">圓角玻璃效果導覽列</string>
+  <string name="morphe_navigation_bar_glass_round_summary">使玻璃效果導覽列的末端呈圓形，而非像玻璃效果迷你播放器那樣呈圓角</string>
   <string name="morphe_navigation_bar_glass_size_title">玻璃導覽列尺寸</string>
   <string name="morphe_navigation_bar_glass_size_summary">可預覽並調整玻璃導覽列的高度、寬度及按鈕間距。超出螢幕寬度的按鈕將被隱藏</string>
   <string name="morphe_navigation_bar_glass_size_height">高度</string>
@@ -1376,6 +1382,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">向上滑動小型播放器將展開播放器，而非將小型播放器移至螢幕頂端</string>
   <string name="morphe_miniplayer_docked_title">停靠小型播放器</string>
   <string name="morphe_miniplayer_docked_summary">將小型播放器停靠在導覽列和螢幕兩側，而非使其懸浮在上方</string>
+  <string name="morphe_miniplayer_glass_title">玻璃效果迷你播放器</string>
+  <string name="morphe_miniplayer_glass_summary">將迷你播放器顯示為帶有圓角的半透明玻璃效果，如同玻璃效果導覽列。需要先啟用玻璃效果導覽列</string>
   <string name="morphe_miniplayer_type_entry_0">停用</string>
   <string name="morphe_miniplayer_type_entry_1">預設</string>
   <string name="morphe_miniplayer_type_entry_2">極簡</string>
@@ -1811,6 +1819,8 @@ AV1 影片播放可能會卡頓或丟格"</string>
   <string name="morphe_niconico_comments_screen_title">Niconico 評論</string>
   <string name="morphe_niconico_comments_screen_summary">將即時聊天和聊天回放顯示為在影片中滾動的評論</string>
   <string name="morphe_niconico_comments_summary">在影片播放器中顯示疊加按鈕。輕觸可顯示或隱藏評論，長按可開啟快速設定</string>
+  <string name="morphe_niconico_comments_pip_title">在畫中畫模式下顯示評論</string>
+  <string name="morphe_niconico_comments_pip_summary">評論將縮小以適應視窗</string>
   <string name="morphe_niconico_comments_appearance_title">外觀</string>
   <string name="morphe_niconico_comments_portrait_category_title">直立</string>
   <string name="morphe_niconico_comments_video_types_title">影片類型</string>

@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Покажи броя на харесванията към миниатюрата в емисията</string>
   <string name="morphe_ryd_feed_like_ratio_title">Покажи процента харесвания към миниатюрата в емисията</string>
+  <string name="morphe_ryd_feed_counts_position_title">Позиция на харесванията към миниатюрата в емисията</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">До броя гледания</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Среда вдясно</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Горе вляво</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Търсене в коментарите</string>
   <string name="morphe_search_comments_summary">Докоснете бутона за търсене в коментарите, за да покажете само заредените коментари, които съдържат всички търсени думи. Поставете думите в кавички, за да потърсите фраза</string>
@@ -1038,6 +1042,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">Показва навигационната лента като плаваща, заоблена, полупрозрачна капсула. Не е налично при стила \"Непрозрачна\" навигационна лента</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Непрозрачност на стъклото</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Регулирайте нивото на прозрачност на стъклената навигационна лента (0 е прозрачно, 100 е непрозрачно)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Закръглена стъклена навигационна лента</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Придава закръглени краища на стъклената навигационна лента, вместо ъгли като при стъкления миниплейър</string>
   <string name="morphe_navigation_bar_glass_size_title">Размер на стъклената лента за навигация</string>
   <string name="morphe_navigation_bar_glass_size_summary">Регулирайте височината, ширината и разстоянието между бутоните на стъклената лента за навигация с предгледно изображение. Бутоните, които не се побират в ширината на екрана, се скриват</string>
   <string name="morphe_navigation_bar_glass_size_height">Височина</string>
@@ -1378,6 +1384,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">Плъзгането нагоре на миниплъйъра разширява плейъра, вместо да премества миниплъйъра в горната част на екрана</string>
   <string name="morphe_miniplayer_docked_title">Закрепен миниплъйър</string>
   <string name="morphe_miniplayer_docked_summary">Закрепя миниплъйъра към навигационната лента и страните на екрана, вместо той да бъде плаващ над тях</string>
+  <string name="morphe_miniplayer_glass_title">Стъклен миниплейър</string>
+  <string name="morphe_miniplayer_glass_summary">Показва миниплейъра като полупрозрачно стъкло със закръглени ъгли, подобно на стъклената навигационна лента. Изисква стъклена навигационна лента</string>
   <string name="morphe_miniplayer_type_entry_0">Изключен</string>
   <string name="morphe_miniplayer_type_entry_1">По подразбиране</string>
   <string name="morphe_miniplayer_type_entry_2">Минимален</string>
@@ -1814,6 +1822,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Коментари от Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Показване на чата на живо и повтореното възпроизвеждане на чата като коментари, които се движат през видеото</string>
   <string name="morphe_niconico_comments_summary">Показва бутон с припокриване във видеоплейъра. Докоснете, за да покажете или скриете коментарите, докоснете и задръжте за бързи настройки</string>
+  <string name="morphe_niconico_comments_pip_title">Показване в режим „картина в картина“</string>
+  <string name="morphe_niconico_comments_pip_summary">Коментарите са мащабирани, за да се поберат в прозореца</string>
   <string name="morphe_niconico_comments_appearance_title">Външен вид</string>
   <string name="morphe_niconico_comments_portrait_category_title">Портрет</string>
   <string name="morphe_niconico_comments_video_types_title">Видове видео</string>

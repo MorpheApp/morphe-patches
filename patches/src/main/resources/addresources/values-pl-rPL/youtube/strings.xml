@@ -522,6 +522,10 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Pokaż liczbę polubień na miniaturkach na liście</string>
   <string name="morphe_ryd_feed_like_ratio_title">Pokaż procent polubień na miniaturkach na liście</string>
+  <string name="morphe_ryd_feed_counts_position_title">Pozycja polubień na miniaturkach na liście</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Obok liczby wyświetleń</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Środek po prawej</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Góra po lewej</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Szukaj w komentarzach</string>
   <string name="morphe_search_comments_summary">Dotknij przycisku wyszukiwania w sekcji komentarzy, aby wyświetlić tylko te wczytane komentarze, które zawierają wszystkie szukane słowa. Ujmij słowa w cudzysłów, aby wyszukać dokładną frazę</string>
@@ -697,8 +701,8 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_play_all_button_type_entry_12">Transmisje tylko dla wspierających</string>
   <string name="morphe_play_all_button_not_available_toast">Nie można wygenerować playlisty z powodu niezgodności identyfikatora kanału</string>
   <!-- interaction.playlistpanel.playlistPanelButtonPatch -->
-  <string name="morphe_playlist_panel_button_title">Pokaż przycisk Playlisty</string>
-  <string name="morphe_playlist_panel_button_summary">Dotknij, aby otworzyć panel playlisty. Wyświetlane tylko podczas odtwarzania playlisty</string>
+  <string name="morphe_playlist_panel_button_title">Pokaż przycisk Playlista</string>
+  <string name="morphe_playlist_panel_button_summary">Dotknij, aby otworzyć panel playlisty. Wyświetlany tylko podczas odtwarzania playlisty</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Pokaż przycisk Odśwież film</string>
   <string name="morphe_dismiss_player_not_available_toast">Film jest niedostępny. Otwórz film ponownie ręcznie</string>
@@ -1038,6 +1042,8 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_navigation_bar_glass_summary">Wyświetla pasek nawigacji jako pływającą, zaokrągloną, półprzezroczystą kapsułkę. Niedostępne przy nieprzezroczystym stylu paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Krycie szkła</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Dostosuj poziom krycia szklanego paska nawigacji (0 to pełna przezroczystość, 100 to brak przezroczystości)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Zaokrąglony szklany pasek nawigacji</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Nadaje szklanemu paskowi nawigacji zaokrąglone końce zamiast narożników, jak w przypadku szklanego miniodtwarzacza</string>
   <string name="morphe_navigation_bar_glass_size_title">Rozmiar szklanego paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_size_summary">Dostosuj wysokość, szerokość oraz odstępy między przyciskami szklanego paska nawigacji z podglądem na żywo. Przyciski, które nie mieszczą się na szerokości ekranu, są ukrywane</string>
   <string name="morphe_navigation_bar_glass_size_height">Wysokość</string>
@@ -1208,22 +1214,23 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <string name="morphe_disable_player_popup_panels_title">Wyłącz wyskakujące panele w odtwarzaczu</string>
   <string name="morphe_disable_player_popup_panels_summary">Wyłącza automatyczne otwieranie paneli playlisty i czatu na żywo</string>
   <!-- layout.player.playlistpanel.fullscreenPlaylistPanelPatch -->
-  <string name="morphe_fullscreen_playlist_panel_title">Pokaż panel listy odtwarzania w pełnym ekranie</string>
-  <string name="morphe_fullscreen_playlist_panel_summary_on">Panel playlisty otwiera się nad odtwarzaczem w pełnym ekranie</string>
-  <string name="morphe_fullscreen_playlist_panel_summary_off">Panel playlisty wychodzi z pełnego ekranu na tabletach</string>
+  <string name="morphe_fullscreen_playlist_panel_title">Pokaż panel playlisty na pełnym ekranie</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_on">Panel playlisty otwiera się nad odtwarzaczem pełnoekranowym</string>
+  <string name="morphe_fullscreen_playlist_panel_summary_off">Panel playlisty zamyka tryb pełnoekranowy na tabletach</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Wyłącz autoodtwarzanie playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Zapobiega automatycznemu przechodzeniu playlist do następnego filmu</string>
   <!-- interaction.autoplay.autoplayControlPatch -->
   <string name="morphe_autoplay_control_title">Sterowanie autoodtwarzaniem</string>
-  <string name="morphe_autoplay_control_summary">Dodaje przycisk odtwarzacza i regułę dla następnego filmu. Playlisty i kolejki są kontynuowane, Mix zatrzymuje się po określonej liczbie filmów, a sugerowany film nigdy nie jest odtwarzany. Dotknij przycisku, aby zmienić tryb, przytrzymaj go, aby wyświetlić listę</string>
+  <string name="morphe_autoplay_control_summary">Dodaje przycisk w odtwarzaczu oraz regułę dla następnego filmu. Playlisty i kolejki są kontynuowane, składanka zatrzymuje się po określonej liczbie filmów, a proponowany film nigdy nie jest odtwarzany. Dotknij przycisku, aby przełączyć na następny tryb lub przytrzymaj, aby wyświetlić listę</string>
   <string name="morphe_autoplay_mode_title">Tryb autoodtwarzania</string>
-  <string name="morphe_autoplay_mode_entry_1">Auto</string>
+  <string name="morphe_autoplay_mode_entry_1">Automatyczny</string>
   <string name="morphe_autoplay_mode_entry_2">Pojedynczy</string>
-  <string name="morphe_autoplay_mode_entry_3">Wyłączone</string>
-  <string name="morphe_autoplay_mix_stop_after_title">Długość Mixa</string>
-  <string name="morphe_autoplay_mix_stop_after_summary">W trybie Auto Mix zatrzymuje się po takiej liczbie filmów. 0 = brak limitu</string>
-  <string name="morphe_autoplay_mix_no_limit">Mix: bez limitu</string>
+  <string name="morphe_autoplay_mode_entry_3">Wyłączony</string>
+  <string name="morphe_autoplay_mix_stop_after_title">Długość składanki</string>
+  <string name="morphe_autoplay_mix_stop_after_summary">W trybie automatycznym składanka zatrzymuje się po takiej liczbie filmów. 0 = bez limitu</string>
+  <string name="morphe_autoplay_mix_length">Składanka - liczba filmów: %s</string>
+  <string name="morphe_autoplay_mix_no_limit">Składanka: bez limitu</string>
   <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <string name="morphe_continue_watching_prompt_title">Komunikat \"Oglądasz dalej?\"</string>
   <string name="morphe_continue_watching_prompt_entry_1">Domyślny</string>
@@ -1376,6 +1383,8 @@ Układ samochodowy
   <string name="morphe_miniplayer_swipe_up_expand_summary">Przesunięcie miniodtwarzacza w górę rozwija odtwarzacz, zamiast przenosić miniodtwarzacz na górę ekranu</string>
   <string name="morphe_miniplayer_docked_title">Zadokowany miniodtwarzacz</string>
   <string name="morphe_miniplayer_docked_summary">Przyczepia miniodtwarzacz do paska nawigacji oraz krawędzi ekranu, zamiast wyświetlać go jako pływające okienko nad nimi</string>
+  <string name="morphe_miniplayer_glass_title">Szklany miniodtwarzacz</string>
+  <string name="morphe_miniplayer_glass_summary">Wyświetla miniodtwarzacz jako półprzezroczyste szkło z zaokrąglonymi narożnikami, podobnie jak szklany pasek nawigacji. Wymaga szklanego paska nawigacji</string>
   <string name="morphe_miniplayer_type_entry_0">Wyłączony</string>
   <string name="morphe_miniplayer_type_entry_1">Domyślny</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalny</string>
@@ -1540,11 +1549,11 @@ Układ samochodowy
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Pokaż przycisk Prędkość odtwarzania</string>
   <string name="morphe_playback_speed_dialog_button_summary">Przytrzymaj, aby zresetować prędkość do domyślnej</string>
-  <string name="morphe_playback_speed_button_cycle_title">Dotknij przycisku prędkości odtwarzania, aby przełączać prędkości</string>
-  <string name="morphe_playback_speed_button_cycle_summary">Dotknięcie przenosi do następnej prędkości na liście. Przytrzymanie otwiera menu prędkości</string>
-  <string name="morphe_playback_speed_button_cycle_speeds_title">Prędkości przycisku prędkości odtwarzania</string>
-  <string name="morphe_playback_speed_button_cycle_speeds_summary">Prędkości, przez które przełącza dotknięcie, jedna w linii. Po ostatniej prędkości dotknięcie wraca do pierwszej</string>
-  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Nieprawidłowa lista cyklu prędkości, zresetowano do domyślnych</string>
+  <string name="morphe_playback_speed_button_cycle_title">Dotknij przycisku \"Prędkość odtwarzania\", aby przełączać prędkości</string>
+  <string name="morphe_playback_speed_button_cycle_summary">Dotknięcie przełącza na następną prędkość z listy. Przytrzymanie otwiera menu prędkości</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_title">Prędkość przycisku \"Prędkość odtwarzania\"</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_summary">Prędkości przełączane kolejno po dotknięciu, po jednej w wierszu. Po ostatniej prędkości dotknięcie wraca do pierwszej</string>
+  <string name="morphe_playback_speed_button_cycle_speeds_invalid">Nieprawidłowa lista prędkości do przełączania, przywrócono domyślne</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Pokaż przycisk Jakość</string>
   <string name="morphe_video_quality_dialog_button_summary">Przytrzymaj, aby zresetować jakość do domyślnej</string>
@@ -1812,6 +1821,8 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_niconico_comments_screen_title">Komentarze w stylu Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Pokaż czat na żywo oraz powtórkę czatu jako komentarze przewijające się przez ekran filmu</string>
   <string name="morphe_niconico_comments_summary">Wyświetla przycisk w nakładce odtwarzacza. Dotknij, aby pokazać lub ukryć komentarze. Przytrzymaj, aby otworzyć szybkie ustawienia</string>
+  <string name="morphe_niconico_comments_pip_title">Pokaż komentarze w trybie obrazu w obrazie</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentarze są skalowane, aby dopasować się do okna</string>
   <string name="morphe_niconico_comments_appearance_title">Wygląd</string>
   <string name="morphe_niconico_comments_portrait_category_title">Orientacja pionowa</string>
   <string name="morphe_niconico_comments_video_types_title">Rodzaje filmów</string>

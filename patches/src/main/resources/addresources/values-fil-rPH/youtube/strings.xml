@@ -522,6 +522,10 @@ Pagkatapos buksan ang isang video na may Ask button, gagana ang feature sa lahat
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Ipakita ang bilang ng like sa thumbnail ng feed</string>
   <string name="morphe_ryd_feed_like_ratio_title">Ipakita ang porsyento ng like sa thumbnail ng feed</string>
+  <string name="morphe_ryd_feed_counts_position_title">Posisyon ng like sa thumbnail ng feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Katabi ng bilang ng panonood</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Gitna sa kanan</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Itaas sa kaliwa</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Maghanap ng mga komento</string>
   <string name="morphe_search_comments_summary">I-tap ang search button sa mga comment upang ipakita lamang ang mga na-load na comment na naglalaman ng lahat ng mga hinahanap na salita. Maglagay ng mga salita sa loob ng panipi upang maghanap ng isang parirala</string>
@@ -1038,6 +1042,8 @@ Para ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gene
   <string name="morphe_navigation_bar_glass_summary">Ipinapakita ang navigation bar bilang isang floating, rounded, at translucent na capsule. Hindi available sa Opaque navigation bar style</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacity ng glass</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">I-adjust ang transparency level ng glass navigation bar (0 ay transparent, 100 ay opaque)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Round glass navigation bar</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Binibigyan ang glass navigation bar ng mga round end, sa halip na mga kanto gaya ng glass miniplayer</string>
   <string name="morphe_navigation_bar_glass_size_title">Laki ng glass navigation bar</string>
   <string name="morphe_navigation_bar_glass_size_summary">I-adjust ang taas, lapad at button spacing ng glass navigation bar, na may preview. Ang mga button na hindi kasya sa lapad ng screen ay nakatago</string>
   <string name="morphe_navigation_bar_glass_size_height">Taas</string>
@@ -1378,6 +1384,8 @@ Automotive layout
   <string name="morphe_miniplayer_swipe_up_expand_summary">Ang pag-swipe paitaas sa miniplayer ay mag-e-expand sa player, sa halip na ilipat ang miniplayer sa itaas ng screen</string>
   <string name="morphe_miniplayer_docked_title">Docked na miniplayer</string>
   <string name="morphe_miniplayer_docked_summary">Ikinakabit ang miniplayer sa navigation bar at sa mga gilid ng screen, sa halip na lumutang sa ibabaw ng mga ito</string>
+  <string name="morphe_miniplayer_glass_title">Glass miniplayer</string>
+  <string name="morphe_miniplayer_glass_summary">Ipinapakita ang miniplayer bilang translucent glass na may rounded corners, gaya ng glass navigation bar. Nangangailangan ng glass navigation bar</string>
   <string name="morphe_miniplayer_type_entry_0">Na-disable</string>
   <string name="morphe_miniplayer_type_entry_1">Default</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1814,6 +1822,8 @@ Opsyonal ang automatic recording. Humihinto ito sa incognito o kapag nagbago ang
   <string name="morphe_niconico_comments_screen_title">Mga komento ng Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Ipakita ang live chat at chat replay bilang mga komentong gumugulong sa video</string>
   <string name="morphe_niconico_comments_summary">Nagpapakita ng isang overlay button sa video player. I-tap para ipakita o itago ang mga komento, i-tap at i-hold para sa mabilis na settings</string>
+  <string name="morphe_niconico_comments_pip_title">Ipakita sa picture-in-picture</string>
+  <string name="morphe_niconico_comments_pip_summary">Ang mga komento ay pinaliit upang kumasya sa window</string>
   <string name="morphe_niconico_comments_appearance_title">Hitsura</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portrait</string>
   <string name="morphe_niconico_comments_video_types_title">Mga uri ng video</string>

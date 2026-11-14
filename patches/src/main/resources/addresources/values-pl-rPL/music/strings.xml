@@ -134,7 +134,7 @@ Second \"item\" text"</string>
   <string name="morphe_export_download_folder_title">Eksportuj pobrane pliki</string>
   <string name="morphe_export_download_folder_summary">"Eksportuj utwory i filmy zapisane w aplikacji do pamięci urządzenia za pomocą menu w sekcji Pobrane. Dotknij, aby zmienić folder eksportu
 
-Folder eksportu: %s"</string>
+​Folder eksportu: %s"</string>
   <string name="morphe_export_download_started">Eksportowanie pobranego pliku</string>
   <string name="morphe_export_download_progress">Eksportowanie pobranego pliku: %s%%</string>
   <string name="morphe_export_download_notification_channel">Eksport pobranych plików</string>
@@ -150,7 +150,7 @@ Folder eksportu: %s"</string>
   <string name="morphe_settings_music_screen_01_ads_title">Reklamy</string>
   <string name="morphe_settings_music_screen_02_feed_title">Strona główna</string>
   <string name="morphe_settings_music_screen_03_general_title">Ogólne</string>
-  <string name="morphe_settings_music_screen_04_lyrics_title">Teksty piosenek</string>
+  <string name="morphe_settings_music_screen_04_lyrics_title">Tekst utworu</string>
   <string name="morphe_settings_music_screen_05_misc_title">Pozostałe</string>
   <string name="morphe_settings_music_screen_06_player_title">Odtwarzacz</string>
   <string name="morphe_settings_music_screen_10_video_title">Film</string>
@@ -258,13 +258,13 @@ Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekrane
   <string name="morphe_music_playback_speed_summary">Prędkość stosowana dla wszystkich utworów. Przy 100% używana jest prędkość aplikacji, np. prędkość odtwarzania podcastów</string>
   <string name="morphe_music_playback_speed_change_pitch_title">Zmieniaj tonację wraz z prędkością</string>
   <!-- layout.captions.disableAutoCaptionsPatch -->
-  <string name="morphe_music_disable_auto_captions_title">Automatyczne napisy</string>
-  <string name="morphe_music_disable_auto_captions_summary">Napisy nie są włączane automatycznie po rozpoczęciu odtwarzania wideo, w tym napisy, które są domyślnie włączone w samym filmie</string>
+  <string name="morphe_music_disable_auto_captions_title">Wyłącz automatyczne napisy</string>
+  <string name="morphe_music_disable_auto_captions_summary">Napisy nie są włączane automatycznie po rozpoczęciu filmu, w tym również napisy włączane przez film domyślnie</string>
   <!-- interaction.audioducking.disableAudioDuckingPatch -->
   <string name="morphe_music_disable_audio_ducking_title">Wyłącz wyciszanie dźwięku</string>
   <string name="morphe_music_disable_audio_ducking_summary">Głośność nie jest obniżana, gdy inna aplikacja odtwarza krótki dźwięk, na przykład powiadomienie</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
-  <string name="morphe_music_disable_dislike_redirection_title">Wyłącz pomijanie nielubianych piosenek</string>
+  <string name="morphe_music_disable_dislike_redirection_title">Wyłącz pomijanie nielubianych utworów</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Zapobiega przechodzeniu do następnego utworu po naciśnięciu łapki w dół</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_music_ab_loop_title">Pętla A-B</string>
@@ -703,7 +703,7 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_search_title_hint">Tytuł utworu</string>
   <string name="morphe_music_lyrics_search_artist_hint">Wykonawca</string>
   <string name="morphe_music_lyrics_search_empty">Wprowadź tytuł utworu i wykonawcę</string>
-  <string name="morphe_music_lyrics_search_google">Szukaj przez Google</string>
+  <string name="morphe_music_lyrics_search_google">Szukaj w Google</string>
   <string name="morphe_music_lyrics_search_no_providers">Żaden z włączonych dostawców nie obsługuje wyszukiwania innych utworów</string>
   <string name="morphe_music_lyrics_saved">Zapisano</string>
   <string name="morphe_music_lyrics_written_by">Tekst: %s</string>
@@ -770,7 +770,7 @@ Dotyczy obu limitów. Przy wartości 1.75 cztery znaki pełnej szerokości licz�
   <string name="morphe_music_lyrics_text_size_title">Rozmiar tekstu</string>
   <string name="morphe_music_lyrics_text_size_summary">Rozmiar tekstu utworu</string>
   <string name="morphe_music_lyrics_offset_ms_title">Globalne przesunięcie czasowe</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Zsynchronizowane teksty podążają za odtwarzaniem. Jeśli się rozjeżdżają, dostosuj przesunięcie czasowe do przodu lub do tyłu. Użyj wartości dodatniej, jeśli tekst wyprzedza piosenkę</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Zsynchronizowane teksty podążają za odtwarzaniem. Jeśli się rozjeżdżają, dostosuj przesunięcie czasowe do przodu lub do tyłu. Użyj wartości dodatniej, jeśli tekst wyprzedza utwór</string>
   <string name="morphe_music_lyrics_sb_matching_title">Użyj segmentów SponsorBlock do przesunięcia tekstu</string>
   <string name="morphe_music_lyrics_sb_matching_summary">Dopasowuje z pominięciem wyciętych przez SponsorBlock fragmentów i przesuwa tekst do utworu. Wyłączenie tej opcji całkowicie ignoruje SponsorBlock</string>
   <string name="morphe_music_lyrics_sb_no_video">Ten utwór nie ma identyfikatora teledysku do przesłania</string>
@@ -825,7 +825,7 @@ Dotyczy obu limitów. Przy wartości 1.75 cztery znaki pełnej szerokości licz�
   <string name="morphe_music_lyrics_transcribe_out_of_credits">Wyczerpano kredyty QuickLRC dla tego utworu</string>
   <string name="morphe_music_lyrics_about_summary">"Teksty są dopasowywane według tytułu i wykonawcy, nietypowe metadane mogą skutkować brakiem wyników lub pobraniem niewłaściwej wersji. Użyj przycisku odświeżania, aby przełączać wersje. Dostawcy oznaczeni gwiazdką (*) wymagają tokenu. Włączeni dostawcy nie zawsze są odpytywani w ustalonej przez Ciebie kolejności, lecz odpowiadają zależnie od swojej szybkości.
 
-Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, przez niego sponsorowane ani wspierane. Każda z nich jest używana w obecnym kształcie: same teksty, ich dostępność oraz licencje pozostają w gestii tych usług i ich licencjodawców, a korzystanie z nich może podlegać ich warunkom korzystania z usługi. Do włączonej usługi trafia wyłącznie zlecone przez Ciebie zapytanie: tytuł, wykonawca oraz, jeśli dana usługa tego wymaga, identyfikator filmu. Opcjonalny adres AI oraz transkrypcja QuickLRC działają tylko po ich skonfigurowaniu i otrzymują tekst piosenki lub adres filmu z utworem."</string>
+Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, przez niego sponsorowane ani wspierane. Każda z nich jest używana w obecnym kształcie: same teksty, ich dostępność oraz licencje pozostają w gestii tych usług i ich licencjodawców, a korzystanie z nich może podlegać ich warunkom korzystania z usługi. Do włączonej usługi trafia wyłącznie zlecone przez Ciebie zapytanie: tytuł, wykonawca oraz, jeśli dana usługa tego wymaga, identyfikator filmu. Opcjonalny adres AI oraz transkrypcja QuickLRC działają tylko po ich skonfigurowaniu i otrzymują tekst utworu lub adres filmu z utworem."</string>
   <string name="morphe_music_lyrics_source_advice_summary">Włącz tylko tych dostawców, z których korzystasz, lub pozostaw ustawienie domyślne. Ciągłe żądania mogą przeciążyć małe, społecznościowe strony z tekstami</string>
   <string name="morphe_music_lyrics_hide_info_title">Ukryj informacje o twórcach</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ukrywa informacje o twórcach wyświetlane pod tekstem</string>
@@ -843,7 +843,7 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <string name="morphe_music_lyrics_use_ai_section_summary">Używane tylko wtedy, gdy dostawca nie udostępnia oznaczeń sekcji (takich jak Refren czy Zwrotka), wówczas wykrywa je Twój model zgodny z OpenAI. Edycja tego wiersza otwiera również przypisane mu polecenie</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">Adres API (np. https://api.openai.com/v1/chat/completions, https://api.anthropic.com/v1/chat/completions, https://generativelanguage.googleapis.com/v1beta/openai/chat/completions)</string>
   <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Zmienne: {task}, {language}, {title}, {artist}, {count}, {lines}. Nieznane zmienne są pozostawiane bez zmian</string>
-  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Ustawienia zostały zapisane, ale punkt końcowy AI nie jest jeszcze użyteczny</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_endpoint_invalid">Zapisano ustawienia, ale adres AI nie jest jeszcze gotowy do użycia</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Zapisano ustawienia</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Przywrócono ustawienia domyślne</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Bazowy adres musi zaczynać się od http:// lub https://</string>
@@ -867,14 +867,14 @@ Teksty pochodzą z zewnętrznych usług, które nie są powiązane z Morphe, prz
   <string name="morphe_music_lyrics_ai_config_extra_headers_label">Dodatkowe nagłówki żądania (opcjonalny JSON)</string>
   <string name="morphe_music_lyrics_ai_config_extra_headers_hint">Ujmij nazwy i wartości w cudzysłów, np. {\"api-key\": \"abc\"}. Wartość bez cudzysłowu zawierająca znaki /, : lub liczbę zostanie odrzucona. Pusta wartość usuwa nagłówek</string>
   <string name="morphe_music_lyrics_ai_config_extra_body_hint">Ujmij nazwy i wartości w cudzysłów, np. {\"temperature\": 0.3}. Wartość bez cudzysłowu zawierająca znak / lub : zostanie odrzucona. Nie można tu ustawić parametrów model ani messages</string>
-  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Wysiłek rozumowania</string>
-  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Domyślnie</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort">Poziom rozumowania</string>
+  <string name="morphe_music_lyrics_ai_config_reasoning_effort_default">Domyślny</string>
   <string name="morphe_music_lyrics_ai_config_deepl_key_label">Klucz uwierzytelniający (Free lub Pro)</string>
-  <string name="morphe_music_lyrics_ai_section_failed">AI nie mogło wykryć sekcji dla tego utworu</string>
+  <string name="morphe_music_lyrics_ai_section_failed">AI nie udało się wykryć sekcji dla tego utworu</string>
   <string name="morphe_music_lyrics_ai_section_detecting">Wykrywanie</string>
   <string name="morphe_music_lyrics_ai_section_apply">Zastosuj sekcje</string>
-  <string name="morphe_music_lyrics_ai_section_cancelled">Wykrywanie anulowane</string>
-  <string name="morphe_music_lyrics_ai_section_no_text">Brak tekstu piosenki do wykrycia sekcji</string>
+  <string name="morphe_music_lyrics_ai_section_cancelled">Anulowano wykrywanie</string>
+  <string name="morphe_music_lyrics_ai_section_no_text">Brak tekstu utworu do wykrycia sekcji</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Wyłącza pogrubione ikony</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Przywraca zakładki Następne, Tekst i Powiązane w odtwarzaczu</string>

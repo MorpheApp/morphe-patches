@@ -522,6 +522,10 @@ Kartą atvėrus vaizdo įrašą su mygtuku „Ask“, funkcija veikia su visais 
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Rodyti kanalų turinio miniatiūrų like skaičių</string>
   <string name="morphe_ryd_feed_like_ratio_title">Rodyti kanalų turinio miniatiūrų like santykį procentais</string>
+  <string name="morphe_ryd_feed_counts_position_title">Teresios nuotraukos patinkimų pozicija</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Šalia peržiūrų skaičiaus</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Viduryje į dešinę</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Viršuje kairėje</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Ieškoti komentaruose</string>
   <string name="morphe_search_comments_summary">Bakstelėkite paieškos mygtuką komentaruose, kad parodytumėte tik įkeltus komentarus, kuriuose yra visi ieškomi žodžiai. Norėdami ieškoti frazės, įrašykite ją kabutėse</string>
@@ -1037,6 +1041,8 @@ Norėdami pasiekti Nustatymus, įjunkite Nustatymų mygtuką per Bendri → Įra
   <string name="morphe_navigation_bar_glass_summary">Rodo navigacijos juostą kaip plaukiojančią, apvalią, permatomą kapsulę. Nepasiekiama su nepermatomu navigacijos juostos stiliumi</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Stiklo permatumas</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Sureguliuokite stiklinės navigacijos juostos permatumo lygį (0 yra permatu, 100 yra nepermatu)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Apvalgus stiklinės naršymo juostos</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Suteikia stiklinės naršymo juostai apvalius galus, o ne kampus, kaip yra stiklinio miniplayerio</string>
   <string name="morphe_navigation_bar_glass_size_title">Stiklinės naršymo juostos dydis</string>
   <string name="morphe_navigation_bar_glass_size_summary">Su peržiūra nustatykite stiklinės naršymo juostos aukštį, plotį ir mygtukų tarpus. Mygtukai, kurie netelpa į ekrano plotį, yra slėpiami</string>
   <string name="morphe_navigation_bar_glass_size_height">Aukštis</string>
@@ -1377,6 +1383,8 @@ Automobilio išdėstymas
   <string name="morphe_miniplayer_swipe_up_expand_summary">Braukštelėjus mini-pleitokiu į viršų, išplečiamas pleitokas, o ne perkeliama mini-pleitokas į ekrano viršų</string>
   <string name="morphe_miniplayer_docked_title">Pridėtas mini-pleitokas</string>
   <string name="morphe_miniplayer_docked_summary">Prisijungia mini-pleitoką prie navigacijos juostos ir ekrano šonų, vietoj to, kad jis plaukiotų virš jų</string>
+  <string name="morphe_miniplayer_glass_title">Stiklinis miniplayeris</string>
+  <string name="morphe_miniplayer_glass_summary">Rodo miniplayerį kaip pusiau skaidrų stiklą su apvalytais kampais, kaip stiklinę naršymo juostą. Reikalinga stiklinė naršymo juosta</string>
   <string name="morphe_miniplayer_type_entry_0">Išjungta</string>
   <string name="morphe_miniplayer_type_entry_1">Numatyta</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalus</string>
@@ -1813,6 +1821,8 @@ Automatinis įrašymas neprivalomas. Jis sustabdomas slaptajame režime arba pak
   <string name="morphe_niconico_comments_screen_title">Niconico komentarai</string>
   <string name="morphe_niconico_comments_screen_summary">Rodyti gyvą pokalbį ir pokalbių atkūrimą kaip komentarus, kurie rieda per vaizdo įrašą</string>
   <string name="morphe_niconico_comments_summary">Vaizdo įrašo spusteleklio ekrane rodo mygtuką. Bakstelėkite, kad parodytumėte arba paslėptumėte komentarus, arba bakstelėkite ir laikykite greitiesiems nustatymams</string>
+  <string name="morphe_niconico_comments_pip_title">Rodyti vaizdo rajone</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentarai sumažinami, kad tilptų į langą</string>
   <string name="morphe_niconico_comments_appearance_title">Išvaizda</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portretinis režimas</string>
   <string name="morphe_niconico_comments_video_types_title">Vaizdo įrašų tipai</string>

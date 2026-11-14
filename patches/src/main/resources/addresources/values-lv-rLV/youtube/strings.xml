@@ -522,6 +522,10 @@ Kad videoklips ar pogu Uzdot jautājumu ir atvērts vienreiz, šī funkcija darb
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Rādīt plūsmas miniatūru patikšanas skaitu</string>
   <string name="morphe_ryd_feed_like_ratio_title">Rādīt plūsmas miniatūru patikšanas procentu</string>
+  <string name="morphe_ryd_feed_counts_position_title">Plūsmas miniatūras patikšanas pozīcija</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Blakus skatījumu skaitim</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Vidus labajā pusē</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Augšējā kreisajā stūrī</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Meklēt komentāros</string>
   <string name="morphe_search_comments_summary">Nospiediet meklēšanas pogu komentāros, lai rādītu tikai tos ielādētos komentārus, kuros ir visi meklētie vārdi. Ievietojiet vārdus pēdiņās, lai meklētu frāzi</string>
@@ -1037,6 +1041,8 @@ Lai piekļūtu iestatījumiem, iespējojiet iestatījumu pogu sadaļā Vispārē
   <string name="morphe_navigation_bar_glass_summary">Rāda navigācijas joslu kā peldošu, noapaļotu, puscaurspīdīgu kapsulu. Nav pieejams ar necaurspīdīgo navigācijas joslas stilu</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Stikla caurspīdums</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Pielāgojiet stikla navigācijas joslas caurspīdības līmeni (0 ir caurspīdīgs, 100 ir necaurspīdīgs)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Apaļā stikla navigācijas josla</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Piešķir stikla navigācijas joslai apaļus galus, nevis stūrņus, kā tas ir stikla minimspēlierim</string>
   <string name="morphe_navigation_bar_glass_size_title">Stikla navigācijas joslas izmērs</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ar priekšskatījumu pielāgojiet stikla navigācijas joslas augstumu, platumu un pogu attālumu. Pogas, kas neiekļaujas ekrāna platumā, tiek slēptas</string>
   <string name="morphe_navigation_bar_glass_size_height">Augstums</string>
@@ -1377,6 +1383,8 @@ Automašīnas izkārtojums
   <string name="morphe_miniplayer_swipe_up_expand_summary">Velkot miniplayeri uz augšu, atskaņotājs paplašinās, nevis miniplayers tiek pārvietots ekrāna augšā</string>
   <string name="morphe_miniplayer_docked_title">Iestiprināts miniplejeris</string>
   <string name="morphe_miniplayer_docked_summary">Iestiprina miniplejeru pie navigācijas joslas un ekrāna malām, nevis ļauj tam peldēt virs tām</string>
+  <string name="morphe_miniplayer_glass_title">Stikla minimspēlieris</string>
+  <string name="morphe_miniplayer_glass_summary">Rāda minimspēlieri kā puscaurspīdīgu stiklu ar noapaļotiem stūrņiem, līdzīgi kā stikla navigācijas josla. Nepieciešama stikla navigācijas josla</string>
   <string name="morphe_miniplayer_type_entry_0">Atspējots</string>
   <string name="morphe_miniplayer_type_entry_1">Noklusējums</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalistisks</string>
@@ -1812,6 +1820,8 @@ Automātiskā ierakstīšana ir neobligāta. Tā tiek apturēta inkognito režī
   <string name="morphe_niconico_comments_screen_title">Niconico komentāri</string>
   <string name="morphe_niconico_comments_screen_summary">Rādīt tiešo tērzēšanu un tērzēšanas atkārtojumu kā komentārus, kas ritina pāri video</string>
   <string name="morphe_niconico_comments_summary">Rāda pārklājuma pogu video atskaņotājā. Pieskarieties, lai rādītu vai slēptu komentārus, vai turiet, lai atvērtu ātros iestatījumus</string>
+  <string name="morphe_niconico_comments_pip_title">Rādīt attēlā attēlā</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentāri ir samazināti, lai pielāgotos logam</string>
   <string name="morphe_niconico_comments_appearance_title">Izskats</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portrets</string>
   <string name="morphe_niconico_comments_video_types_title">Video veidi</string>

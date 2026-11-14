@@ -523,6 +523,10 @@ Soru düğmesine sahip olan bir video bir kez açıldıktan sonra bu özellik, m
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Akış kapak fotoğrafı beğeni sayısını göster</string>
   <string name="morphe_ryd_feed_like_ratio_title">Akış kapak fotoğrafı beğeni oranını göster</string>
+  <string name="morphe_ryd_feed_counts_position_title">Akış kapak fotoğrafı beğeni konumu</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">İzlenme sayısının yanında</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Orta sağ</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Sol üst</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Yorumları ara</string>
   <string name="morphe_search_comments_summary">Aranan tüm kelimeleri içeren yalnızca yüklü yorumları görüntülemek için yorumlardaki arama düğmesine dokunun. Bir ifadeyi aramak için kelimeleri tırnak içine alın</string>
@@ -1039,6 +1043,8 @@ Ayarlara erişmek için, Ayarlar düğmesini şuradan etkinleştirin: Genel → 
   <string name="morphe_navigation_bar_glass_summary">Gezinme çubuğunu yüzer, yuvarlak, yarı saydam bir kapsül olarak gösterir. Opak gezinme çubuğu stiliyle kullanılamaz</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Cam opaklığı</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Cam gezinme çubuğunun şeffaflık düzeyini ayarlayın (0 şeffaf, 100 opak)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Yuvarlak cam gezinme çubuğu</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Cam mini oynatıcıdaki köşelerin aksine, cam gezinme çubuğuna yuvarlak uçlar sağlar</string>
   <string name="morphe_navigation_bar_glass_size_title">Cam gezinme çubuğu boyutu</string>
   <string name="morphe_navigation_bar_glass_size_summary">Cam gezinme çubuğunun yüksekliğini, genişliğini ve düğme boşluğunu bir önizleme ile ayarlayın. Ekran genişliğine sığmayan düğmeler gizlenir</string>
   <string name="morphe_navigation_bar_glass_size_height">Yükseklik</string>
@@ -1379,6 +1385,8 @@ Otomotiv düzeni
   <string name="morphe_miniplayer_swipe_up_expand_summary">Küçültülmüş oynatıcıyı yukarı kaydırmak, küçültülmüş oynatıcıyı ekranın üst kısmına taşımak yerine oynatıcıyı genişletir</string>
   <string name="morphe_miniplayer_docked_title">Sabitlenmiş küçültülmüş oynatıcı</string>
   <string name="morphe_miniplayer_docked_summary">Küçültülmüş oynatıcıyı üzerlerinde yüzmek yerine navigasyon çubuğuna ve ekranın kenarlarına sabitler</string>
+  <string name="morphe_miniplayer_glass_title">Cam mini oynatıcı</string>
+  <string name="morphe_miniplayer_glass_summary">Mini oynatıcıyı, cam gezinme çubuğunda olduğu gibi yuvarlatılmış köşelere sahip yarı saydam cam olarak gösterir. Cam gezinme çubuğu gereklidir</string>
   <string name="morphe_miniplayer_type_entry_0">Devre dışı</string>
   <string name="morphe_miniplayer_type_entry_1">Varsayılan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1816,6 +1824,8 @@ Otomatik kayıt özelliği isteğe bağlıdır; gizli modda veya hesap değişti
   <string name="morphe_niconico_comments_screen_title">Niconico yorumları</string>
   <string name="morphe_niconico_comments_screen_summary">Canlı sohbeti ve sohbet tekrarını, videonun üzerinden kayan yorumlar olarak göster</string>
   <string name="morphe_niconico_comments_summary">Video oynatıcıda bir katman düğmesi gösterir. Yorumları göstermek veya gizlemek için dokunun, hızlı ayarlar için basılı tutun</string>
+  <string name="morphe_niconico_comments_pip_title">Resim içinde resim modunda göster</string>
+  <string name="morphe_niconico_comments_pip_summary">Yorumlar, pencereye sığacak şekilde küçültülür</string>
   <string name="morphe_niconico_comments_appearance_title">Görünüm</string>
   <string name="morphe_niconico_comments_portrait_category_title">Dikey</string>
   <string name="morphe_niconico_comments_video_types_title">Video türleri</string>

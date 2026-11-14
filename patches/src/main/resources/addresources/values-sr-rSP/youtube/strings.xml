@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Прикажи број лајкова на сличици садржаја</string>
   <string name="morphe_ryd_feed_like_ratio_title">Прикажи проценат лајкова на сличици садржаја</string>
+  <string name="morphe_ryd_feed_counts_position_title">Позиција „свиђай се” на слици фида</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Поред броја прегледа</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Средина десно</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Горњи леви угао</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Претрага коментара</string>
   <string name="morphe_search_comments_summary">Додирните дугме за претрагу у коментарима да бисте приказали само учитане коментаре који садрже све претражене речи. Ставите речи под наводнике да бисте претражили фразу</string>
@@ -1037,6 +1041,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">Приказује навигациону траку као плутајућу, заобљену, полупрозирну капсулу. Није доступно са непрозирним стилом навигационе траке</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Непрозирност стакла</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Прилагодите ниво прозирности стаклене навигационе траке (0 је прозирно, 100 је непрозирно)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Заобљена стаклена навигациона трака</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Даје стакленој навигационој траци заобљење крајеве, уместо углова као код стакленог миниплеера</string>
   <string name="morphe_navigation_bar_glass_size_title">Величина стаклене траке за навигацију</string>
   <string name="morphe_navigation_bar_glass_size_summary">Прилагодите висину, ширину и размак дугмади стаклене траке за навигацију, уз преглед. Дугмад која не стају у ширину екрана су сакривена</string>
   <string name="morphe_navigation_bar_glass_size_height">Висина</string>
@@ -1376,6 +1382,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">Повлачење мини-плејера нагоре проширује плејер, уместо да помера мини-плејер на врх екрана</string>
   <string name="morphe_miniplayer_docked_title">Причвршћен мини-плејер</string>
   <string name="morphe_miniplayer_docked_summary">Причвршћује мини-плејер за навигациону траку и стране екрана, уместо да левитира изнад њих</string>
+  <string name="morphe_miniplayer_glass_title">Стаклени миниплеер</string>
+  <string name="morphe_miniplayer_glass_summary">Приказује миниплеер као полупрозирно стакло са заобљеним угловима, као стаклена навигациона трака. Захтева стаклену навигациону траку</string>
   <string name="morphe_miniplayer_type_entry_0">Онемогућен</string>
   <string name="morphe_miniplayer_type_entry_1">Подразумеван</string>
   <string name="morphe_miniplayer_type_entry_2">Минималан</string>
@@ -1809,6 +1817,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Niconico коментари</string>
   <string name="morphe_niconico_comments_screen_summary">Прикажи разговор уживо и снимак разговора као коментаре који се померају преко видео снимка</string>
   <string name="morphe_niconico_comments_summary">Приказује преклопно дугме у видео плејеру. Додирните да прикажете или сакријете коментаре, додирните и задржите за брза подешавања</string>
+  <string name="morphe_niconico_comments_pip_title">Прикажи у слика-у-слици</string>
+  <string name="morphe_niconico_comments_pip_summary">Коментари су смањени како би одговарали прозору</string>
   <string name="morphe_niconico_comments_appearance_title">Изглед</string>
   <string name="morphe_niconico_comments_portrait_category_title">Усправно</string>
   <string name="morphe_niconico_comments_video_types_title">Типови видео записа</string>

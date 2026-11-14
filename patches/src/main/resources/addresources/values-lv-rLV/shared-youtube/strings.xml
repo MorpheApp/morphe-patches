@@ -167,6 +167,28 @@ Lai pieslēgtos, zemāk nospiediet pogu Turpināt"</string>
 • Jūsu Morphe iestatījumi neimportēs/neeksportēs Android VR autentifikāciju
 • Ja šī lietotne netiek izmantota 6 mēnešus, Google izdzēs šo autentifikāciju
 • Jums būs jāpieslēdzas vēlreiz, ja mainīsiet savu Google paroli vai noņemiet šo ierīci no saviem Google iestatījumiem"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Pieteikšanās mobilajā tīmekļa vietnē</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Nekā Obligāti: pietiecieties YouTube tīmekļa vietnei, lai atskañotu video ar savu kontu. Pieskarieties šeit, lai turpinātu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Šobrīd pieteikts mobilajā tīmekļa vietnē</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Lai izmantotu šo funkciju, mainiet \'Noklusējuma klients\' uz Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Pierakstīties Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web atskaņo video bez pierakstīšanās vai pēc pierakstīšanās YouTube tīmekļa vietnē
+
+• Būvjot pierakstīcies, var atskaņot video, kuriem nepieciešams konts, piemēram, video ar vecuma ierobežojumiem
+• Google pierakstīšanās lapa atveras šajā lietotnē
+• Pierakstīšanās tiek izmantota tikai, lai iegūtu video, kurus atskaņojat
+• Pierakstīšanās tiek saglabāta tikai šajā ierīcē
+
+Lai pierakstītos, nospiediet tālāk zemāk"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Pierakstīšanās saglabāta
+
+• Jūsu Morphe iestatījumos netiks importēta/eksportēta mobilā tīmekļa pierakstīšanās
+• Ja Googlebeidz pierakstīšanos, video tiks atskaņoti bez pierakstīšanās, līdz pierakstīsieties atkārti
+• Izrakstīšanās no šīs ierīces nozīmē arī izrakstīšanos no YouTube tīmekļa vietnes"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Mobilā tīmekļa pierakstīšanās termiņš ir beidzies, mēģiniet pierakstīties mobilajā tīmeklī vēlreiz</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Izrakstīts no mobilā tīmekļa</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView nav pieejams. Lai pierakstītos, instalējiet vai iespējojiet to</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 pagaidām nav pieejams (API laika limits beidzies)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR pieslēgšanās termiņš ir beidzies, mēģinieties pieslēgties VR vēlreiz</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 pagaidām nav pieejams (statuss %s)</string>

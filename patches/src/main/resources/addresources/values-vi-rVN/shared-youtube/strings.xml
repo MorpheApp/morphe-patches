@@ -167,6 +167,28 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
 • Các cài đặt Morphe của bạn sẽ không nhập/xuất xác thực Android VR
 • Nếu ứng dụng này không được sử dụng trong 6 tháng thì Google sẽ xóa xác thực này
 • Nếu bạn thay đổi mật khẩu Google hoặc xóa bỏ cài đặt thiết bị này khỏi cài đặt Google thì cần đăng nhập lại"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Đăng nhập Web di động</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Tùy chọn: đăng nhập vào trang web YouTube để phát video bằng tài khoản của bạn. Nhấn vào đây để tiếp tục</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hiện đang đăng nhập vào Web di động</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Để dùng tính năng này, hãy thay đổi \"Client mặc định\" thành Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Đăng nhập vào Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web phát các video ở chế độ đăng xuất hoặc đã đăng nhập vào trang web YouTube
+
+• Khi đăng nhập, các video yêu cầu tài khoản có thể được phát, chẳng hạn như các video bị giới hạn độ tuổi
+• Trang đăng nhập Google sẽ mở trong ứng dụng này
+• Việc đăng nhập chỉ được dùng để lấy các video bạn phát
+• Thông tin đăng nhập chỉ được lưu trên thiết bị này
+
+Để đăng nhập, hãy nhấn tiếp tục bên dưới"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Đã lưu đăng nhập
+
+• Các cài đặt Morphe của bạn sẽ không nhập/xuất đăng nhập Web Di động
+• Nếu Google kết thúc phiên đăng nhập, các video sẽ được phát ở chế độ đăng xuất cho đến khi bạn đăng nhập lại
+• Đăng xuất cũng sẽ đăng xuất thiết bị này khỏi trang web YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Phiên đăng nhập Web Di động đã hết hạn, hãy thử đăng nhập lại vào Web Di động</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Đã đăng xuất khỏi Web Di động</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView không khả dụng. Hãy cài đặt hoặc bật nó để đăng nhập</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 tạm thời không khả dụng (API đã hết thời gian chờ)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Phiên đăng nhập Android VR đã hết hạn, hãy thử đăng nhập lại vào VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 tạm thời không khả dụng (trạng thái %s)</string>

@@ -522,6 +522,10 @@ Ask বুটাম থকা এটা ভিডিঅ' এবাৰ খোল�
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">ফিড থাম্বনেইলৰ লাইকৰ সংখ্যা দেখুৱাওক</string>
   <string name="morphe_ryd_feed_like_ratio_title">ফিড থাম্বনেইলৰ লাইকৰ শতাংশ দেখুৱাওক</string>
+  <string name="morphe_ryd_feed_counts_position_title">ফিড থাম্বনেইলৰ দৰে স্থান</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">ভিউ কাউণ্টৰ কাষত</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">মাজৰ সোঁফালে</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">ওপৰৰ বাওঁফালে</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">মন্তব্যৰ বাবে সন্ধান কৰক</string>
   <string name="morphe_search_comments_summary">কেৱল লোড হোৱা সেইবোৰ মন্তব্য দেখুৱাবলৈ মন্তব্যৰ অনুসন্ধান বুটামটোত টেপ কৰক যিবোৰত সন্ধান কৰা সকলো শব্দ আছে। এটা শব্দগুচ্ছৰ বাবে সন্ধান কৰিবলৈ শব্দবোৰ উদ্ধৃতি চিহ্নৰ ভিতৰত ৰাখক</string>
@@ -1038,6 +1042,8 @@ OpenRouter.ai খুলিবলৈ ইয়াত টিপক"</string>
   <string name="morphe_navigation_bar_glass_summary">নেভিগেচন বাৰটো এটা ভাসমান, গোলাকৃতি, অৰ্ধ-স্বচ্ছ কেপচুল হিচাপে দেখুৱায়। Opaque নেভিগেচন বাৰ শৈলীৰ সৈতে উপলব্ধ নহয়</string>
   <string name="morphe_navigation_bar_glass_opacity_title">গ্লাছ অপেচিটি</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">গ্লাছ নেভিগেচন বাৰৰ স্বচ্ছতাৰ স্তৰটো সামজৰু কৰক (০ মানে স্বচ্ছ, ১০০ মানে অপেক)</string>
+  <string name="morphe_navigation_bar_glass_round_title">ৰাউণ্ড গ্লাছ নেভিগেচন বাৰ</string>
+  <string name="morphe_navigation_bar_glass_round_summary">গ্লাছ মিনিপ্লেয়াৰৰ দৰে কোণৰ পৰিৱৰ্তে গ্লাছ নেভিগেচন বাৰটোক ৰাউণ্ড শেষৰ অংশ প্ৰদান কৰে</string>
   <string name="morphe_navigation_bar_glass_size_title">গ্লাছ নেভিগেচন বাৰৰ আকাৰ</string>
   <string name="morphe_navigation_bar_glass_size_summary">প্ৰিভিউৰ সৈতে গ্লাছ নেভিগেচন বাৰৰ উচ্চতা, প্ৰস্থ আৰু বুটামৰ ব্যৱধান সামঞ্জস্য কৰক। স্ক্ৰীণৰ প্ৰস্থত খাপ নোখোৱা বুটামবোৰ লুকুৱাই ৰখা হয়</string>
   <string name="morphe_navigation_bar_glass_size_height">উচ্চতা</string>
@@ -1378,6 +1384,8 @@ Settings → Playback (বা Autoplay) → Autoplay next video"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">সৰু প্লেয়াৰটো ওপৰলৈ সোয়াইপ কৰিলে ইয়াক স্ক্ৰীণৰ ওপৰলৈ স্থানান্তৰ কৰাৰ পৰিৱৰ্তে প্লেয়াৰটো সম্প্ৰসাৰিত হয়</string>
   <string name="morphe_miniplayer_docked_title">ডক কৰা সৰু প্লেয়াৰ</string>
   <string name="morphe_miniplayer_docked_summary">সৰু প্লেয়াৰটোক নেভিগেচন বাৰ আৰু স্ক্ৰীণৰ দুই কাষত লগাই ৰাখে, তাৰ ওপৰত ওপঙি থকাৰ পৰিৱৰ্তে</string>
+  <string name="morphe_miniplayer_glass_title">গ্লাছ মিনিপ্লেয়াৰ</string>
+  <string name="morphe_miniplayer_glass_summary">গ্লাছ নেভিগেচন বাৰৰ দৰে মিনিপ্লেয়াৰটোক ৰাউণ্ড কোণ থকা স্বচ্ছ গ্লাছ হিচাপে দেখুৱায়। ইয়াৰ বাবে গ্লাছ নেভিগেচন বাৰৰ প্ৰয়োজন</string>
   <string name="morphe_miniplayer_type_entry_0">অক্ষম কৰা হৈছে</string>
   <string name="morphe_miniplayer_type_entry_1">ডিফল্ট</string>
   <string name="morphe_miniplayer_type_entry_2">মিনিমেল</string>
@@ -1814,6 +1822,8 @@ AV1 ৰ সৈতে ভিডিঅ' প্লেবেকত বাধা আ�
   <string name="morphe_niconico_comments_screen_title">Niconico মন্তব্যসমূহ</string>
   <string name="morphe_niconico_comments_screen_summary">লাইভ চেট আৰু চেট ৰিপ্লেকক ভিডিঅ\'ৰ ওপৰেৰে গৈ থকা মন্তব্য হিচাপে দেখুৱাওক</string>
   <string name="morphe_niconico_comments_summary">ভিডিঅ\' প্লেয়াৰত এটা অভাৰলে বুটাম দেখুৱায়। মন্তব্যসমূহ দেখুৱাবলৈ বা লুকুৱাবলৈ ট্যাপ কৰক, দ্ৰুত ছেটিংছৰ বাবে ট্যাপ কৰি ধৰি ৰাখক</string>
+  <string name="morphe_niconico_comments_pip_title">পিকচাৰ-ইন-পিকচাৰত দেখুওক</string>
+  <string name="morphe_niconico_comments_pip_summary">উইণ্ডোখনত খাপ খোৱাকৈ কমেণ্টসমূহৰ আকাৰ সৰু কৰা হৈছে</string>
   <string name="morphe_niconico_comments_appearance_title">প্ৰকাশ</string>
   <string name="morphe_niconico_comments_portrait_category_title">পোৰ্ট্ৰেইট</string>
   <string name="morphe_niconico_comments_video_types_title">ভিডিঅ\'ৰ প্ৰকাৰ</string>

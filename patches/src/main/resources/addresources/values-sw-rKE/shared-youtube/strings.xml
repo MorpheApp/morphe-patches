@@ -167,6 +167,28 @@ Ili kuingia, bonyeza endelea hapa chini"</string>
 • Mipangilio yako ya Morphe haitaagiza/kuhamisha uthibitisho wa Android VR
 • Ikiwa programu hii haitatumika kwa miezi 6 basi Google itaondoa uthibitisho huu
 • Utahitajika kuingia tena ikiwa utabadilisha nywila yako ya Google au kuondoa kifaa hiki kwenye mipangilio yako ya Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Kuingia kwenye Wavuti ya Simu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Hiari: ingia kwenye tovuti ya YouTube ili ucheze video kwa kutumia akaunti yako. Gusa hapa ili kuendelea</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Hivi sasa umeingia kwenye Wavuti ya Simu</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ili kutumia kipengele hiki, badilisha \'Mteja chaguo-msingi\' kuwa Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Ingia kwenye Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web hucheza video bila kuingia, au ukiwa umeingia kwenye tovuti ya YouTube
+
+• Ukiwa umeingia, video zinazohitaji akaunti zinaweza kuchezwa, kama vile video zenye vizuizi vya umri
+• Ukurasa wa kuingia kwenye Google unafunguliwa katika programu hii
+• Kuingia hutumiwa tu kupata video unazocheza
+• Kuingia huhifadhiwa kwenye kifaa hiki pekee
+
+Ili kuingia, bonyeza endelea hapa chini"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Kuingia kuhifadhiwa
+
+•Mipangilio yako ya Morphe haitaingiza/kutoatoka kuingia kwa Web ya Simu
+•Ikiwa Google itakatisha kuingia, video zitachezwa bila kuingia hadi utakapoingia tena
+•Kujitoka pia kunatoa kifaa hiki kwenye tovuti ya YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Kuingia kwa Web ya Simu kumeisha muda wake, jaribu kuingia kwenye Web ya Simu tena</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Umetoka kwenye Web ya Simu</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView haipatikani. Isakinishe au iwashe ili kuingia</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 haipatikani kwa muda (API imeisha muda)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Muda wa kuingia kwenye Android VR umeisha, jaribu kuingia kwenye VR tena</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 haipatikani kwa muda (hali %s)</string>

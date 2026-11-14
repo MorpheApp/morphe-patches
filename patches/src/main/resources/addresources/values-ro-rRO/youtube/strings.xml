@@ -522,6 +522,10 @@ După ce un videoclip cu butonul Ask este deschis o dată, funcția funcționeaz
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Afișare număr like pentru miniatura feed-ului</string>
   <string name="morphe_ryd_feed_like_ratio_title">Afișare procentaj like pentru miniatura feed-ului</string>
+  <string name="morphe_ryd_feed_counts_position_title">Poziția like-ului de pe miniatură în feed</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Lângă numărul de vizualizări</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Dreapta-mijloc</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Stânga-sus</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Căutare în comentarii</string>
   <string name="morphe_search_comments_summary">Atingeți butonul de căutare din comentarii pentru a afișa doar comentariile încărcate care conțin toate cuvintele căutate. Puneți cuvintele între ghilimele pentru a căuta o frază</string>
@@ -1037,6 +1041,8 @@ Pentru a accesa Setările, activați butonul Setări prin General → Bara de in
   <string name="morphe_navigation_bar_glass_summary">Afișează bara de navigare ca o capsulă plutitoare, rotunjită și translucidă. Nu este disponibil cu stilul de bară de navigare Opacă</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Opacitatea sticlei</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Ajustați nivelul de transparență al barei de navigare din sticlă (0 este transparent, 100 este opac)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Bară de navigare din sticlă rotunjită</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Oferă barei de navigare din sticlă capete rotunjite, în loc de colțuri ca miniplayerul din sticlă</string>
   <string name="morphe_navigation_bar_glass_size_title">Dimensiunea barei de navigare de sticlă</string>
   <string name="morphe_navigation_bar_glass_size_summary">Ajustați înălțimea, lățimea și spațierea butoanelor barei de navigare de sticlă, cu o previzualizare. Butoanele care nu încap în lățimea ecranului sunt ascunse</string>
   <string name="morphe_navigation_bar_glass_size_height">Înălțime</string>
@@ -1377,6 +1383,8 @@ Aspect pentru automotive
   <string name="morphe_miniplayer_swipe_up_expand_summary">Glisarea miniplayerului în sus extinde playerul, în loc să mute miniplayerul în partea superioară a ecranului</string>
   <string name="morphe_miniplayer_docked_title">Miniplayer ancorat</string>
   <string name="morphe_miniplayer_docked_summary">Atașează miniplayerul de bara de navigare și de marginile ecranului, în loc să plutească deasupra acestora</string>
+  <string name="morphe_miniplayer_glass_title">Miniplayer din sticlă</string>
+  <string name="morphe_miniplayer_glass_summary">Afișează miniplayerul ca sticlă translucidă cu colțuri rotunjite, similar cu bara de navigare din sticlă. Necesită bara de navigare din sticlă</string>
   <string name="morphe_miniplayer_type_entry_0">Dezactivat</string>
   <string name="morphe_miniplayer_type_entry_1">Implicit</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1813,6 +1821,8 @@ Această bibliotecă este stocată pe acest dispozitiv și partajată între con
   <string name="morphe_niconico_comments_screen_title">Comentarii Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Afișează chat-ul live și redarea chat-ului sub formă de comentarii care defilează pe ecranul videoclipului</string>
   <string name="morphe_niconico_comments_summary">Afișează un buton de suprapunere în playerul video. Apasă pentru a afișa sau ascunde comentariile, apasă și menține pentru setări rapide</string>
+  <string name="morphe_niconico_comments_pip_title">Afișare în picture-in-picture</string>
+  <string name="morphe_niconico_comments_pip_summary">Comentariile sunt reduse pentru a se potrivi cu fereastra</string>
   <string name="morphe_niconico_comments_appearance_title">Aspect</string>
   <string name="morphe_niconico_comments_portrait_category_title">Portret</string>
   <string name="morphe_niconico_comments_video_types_title">Tipuri de videoclipuri</string>

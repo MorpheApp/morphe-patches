@@ -167,6 +167,28 @@ Ukuze ungene, cindezela qhubeka ngezansi"</string>
 • Izilungiselelo zakho zeMorphe ngeke zingenise/zikhiphe ukuqinisekisa kwe-Android VR
 • Uma lolu hlelo lungasetshenziswa iminyaka eyi-6, i-Google izosusa lokuqinisekisa
 • Kuzodingeka ungene futhi uma ushintsha ipasiwedi lakho loku-Google noma ususa leli kifu ezilungiselelweni zakho ze-Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Ukungena ku-Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Kukhethweka: ngena kuwebhusayithi ye-YouTube ukuze udlale amavidiyo nge-akhawunti yakho. Thinta lapha ukuze uqhubeke</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Njengamanje ungene ku-Mobile Web</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Ukuze usebenzise this feature, shintsha \'Iklayenti elijwayelekile\' kube i-Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Ngena ku-Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"I-Mobile Web idlala amavidiyo ungengenanga, noma ungene kuwebhusayithi ye-YouTube
+
+• Uma ungene, amavidiyo adinga i-akhawunti angadlala, afana namavidiyo anezinqubo zobudala
+• Ikhasi lokungena lika-Google livulwa kule app
+• Ukungena kusetshenziselwa kuphela ukuthola amavidiyo owadlala
+• Ukungena kusindwa kuleli device kuphela
+
+Ukuze ungene, chiza 'continue' ngezansi"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Ukungena kusindile
+
+• Izilungiselelo zakho ze-Morphe ngeke zifake/zikhiphe ukungena kwe-Mobile Web
+• Uma u-Google eqeda ukungena, amavidiyo adlalwa ungengenanga kuze kube uhambe ungene futhi
+• Uma uphuma, leli device liphumayo kuwebhusayithi ye-YouTube"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Ukungena ku-Mobile Web sekuphelelwe yisikhathi, zama ukuvula i-Mobile Web futhi</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Uphumile ku-Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">I-Android System WebView ayitholakali. Ifake noma uyivule ukuze ungene</string>
   <string name="morphe_oauth2_connection_failure_timeout">I-OAuth2 ayitholakali okwesikhashana (i-API iphelelwe isikhathi)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Isikhathi sokungena ku-Android VR siphelile, zama ukungena ku-VR futhi</string>
   <string name="morphe_oauth2_connection_failure_status">I-OAuth2 ayitholakali okwesikhashana (isimo %s)</string>

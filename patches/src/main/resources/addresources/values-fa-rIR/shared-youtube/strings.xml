@@ -167,6 +167,28 @@ Second \"item\" text"</string>
 • تنظیمات Morphe شما احراز هویت Android VR را وارد یا صادر نمی‌کنند
 • اگر این برنامه به مدت ۶ ماه استفاده نشود، Google این احراز هویت را حذف می‌کند
 • اگر گذرواژهٔ Google خود را تغییر دهید یا این دستگاه را از تنظیمات Google لغو ثبت کنید، باید دوباره وارد شوید"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">ورود به وب موبایل</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">اختیاری: برای پخش ویدیوها با حساب کاربری خود، به وب‌سایت YouTube وارد شوید. برای ادامه اینجا را لمس کنید</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">در حال حاضر به وب موبایل وارد شده‌اید</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">برای استفاده از این قابلیت، «کلاینت پیش‌فرض» را به Mobile Web تغییر دهید</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">ورود به Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web ویدیوها را در حالت خارج از حساب یا با ورود به وب‌سایت YouTube پخش می‌کند
+
+• در حالت ورود، ویدیوهایی که نیاز به حساب کاربری دارند، مانند ویدیوهای دارای محدودیت سنی، قابل پخش هستند
+• صفحه ورود گوگل در این برنامه باز می‌شود
+• ورود تنها برای دریافت ویدیوهایی که پخش می‌کنید استفاده می‌شود
+• اطلاعات ورود فقط روی این دستگاه ذخیره می‌شود
+
+برای ورود، دکمه ادامه در پایین را فشار دهید"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"ورود ذخیره شد
+
+• تنظیمات Morphe شما، ورود به Mobile Web را وارد/خارج نخواهد کرد
+• اگر گوگل نشست ورود را پایان دهد، ویدیوها تا زمانی که دوباره وارد شوید، در حالت خارج شده پخش می‌شوند
+• خروج از حساب، این دستگاه را از وب‌سایت YouTube نیز خارج می‌کند"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">ورود به وب موبایل منقضی شده است؛ دوباره سعی کنید به وب موبایل وارد شوید</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">از وب موبایل خارج شد</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView در دسترس نیست. برای ورود، آن را نصب یا فعال کنید</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 موقتاً در دسترس نیست (مهلت API تمام شد)</string>
   <string name="morphe_oauth2_connection_failure_status_400">ورود به Android VR منقضی شده است؛ دوباره به VR وارد شوید</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 موقتاً در دسترس نیست (وضعیت %s)</string>

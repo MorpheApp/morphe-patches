@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">Паказваць колькасць лайкаў на мініятурах стужкі</string>
   <string name="morphe_ryd_feed_like_ratio_title">Паказваць працэнт лайкаў на мініятурах стужкі</string>
+  <string name="morphe_ryd_feed_counts_position_title">Пазіцыя лайка на мініятуры стрычкі</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">Побач з колькасцю праглядаў</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Пасрэдзіна справа</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">Зверху злева</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Пошук па каментарах</string>
   <string name="morphe_search_comments_summary">Націсніце кнопку пошуку ў каментарыях, каб паказаць толькі загружаныя каментарыі, якія ўтрымліваюць усе шуканыя словы. Пастаўце словы ў лапкі, каб шукаць фразу</string>
@@ -1038,6 +1042,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">Паказвае панэль навігацыі ў выглядзе плаваючай закругленай паўпразрачнай капсулы. Не даступна пры выкарыстанні непразрыстага стылю панэлі навігацыі</string>
   <string name="morphe_navigation_bar_glass_opacity_title">Непразрыстасць шкла</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Рэгулюе ўзровень празрыстасці шклянай панэлі навігацыі (0 — празрысты, 100 — непразрысты)</string>
+  <string name="morphe_navigation_bar_glass_round_title">Шкляная панэль навігацыі з закругленнем</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Надае шклянай панэлі навігацыі закругленыя канцы замест кутоў, як у шкляным мініплэеры</string>
   <string name="morphe_navigation_bar_glass_size_title">Памер шклянай панэлі навігацыі</string>
   <string name="morphe_navigation_bar_glass_size_summary">Рэгулюйце вышыню, шырыню і інтэрвал паміж кнопкамі шклянай панэлі навігацыі з папярэднім праглядам. Кнопкі, якія не ўмяшчаюцца ў шырыню экрана, схаваныя</string>
   <string name="morphe_navigation_bar_glass_size_height">Вышыня</string>
@@ -1378,6 +1384,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">Свайп мініплэера ўгору разгарнае прайгравач замест таго, каб перамясціць мініплэер у верхнюю частку экрана</string>
   <string name="morphe_miniplayer_docked_title">Прыклеплены мініплэер</string>
   <string name="morphe_miniplayer_docked_summary">Прыкляпляе мініплэер да панэлі навігацыі і бакоў экрана замест таго, каб ён плаваў над імі</string>
+  <string name="morphe_miniplayer_glass_title">Шкляны мініплэер</string>
+  <string name="morphe_miniplayer_glass_summary">Паказвае мініплэер як празрыстае шкло з закругленымі кутамі, як шкляную панэль навігацыі. Патрабуе шкляную панэль навігацыі</string>
   <string name="morphe_miniplayer_type_entry_0">Адключана</string>
   <string name="morphe_miniplayer_type_entry_1">Звычайны</string>
   <string name="morphe_miniplayer_type_entry_2">Мінімалістычны</string>
@@ -1814,6 +1822,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Каментары Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Паказваць жывы чат і запіс чата ў выглядзе каментароў, якія пракручваюцца па відэа</string>
   <string name="morphe_niconico_comments_summary">Паказвае кнопку паверх відэаплеера. Націсніце, каб паказаць або схаваць каментары, ці націсніце і ўтрымайце для хуткіх налад</string>
+  <string name="morphe_niconico_comments_pip_title">Паказваць у рэжыме карцінка ў карцінцы</string>
+  <string name="morphe_niconico_comments_pip_summary">Каментары маштабуюцца, каб паместиць у акно</string>
   <string name="morphe_niconico_comments_appearance_title">Выгляд</string>
   <string name="morphe_niconico_comments_portrait_category_title">Портратны рэжым</string>
   <string name="morphe_niconico_comments_video_types_title">Тыпы відэа</string>

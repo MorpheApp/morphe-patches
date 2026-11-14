@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">הצג מספר לייקים בתמונה ממוזערת בפיד</string>
   <string name="morphe_ryd_feed_like_ratio_title">הצג אחוז לייקים בתמונה ממוזערת בפיד</string>
+  <string name="morphe_ryd_feed_counts_position_title">מיקום לייקים בתמונה ממוזערת בפיד</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">ליד ספירת הצפיות</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">מרכז ימין</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">למעלה משמאל</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">חיפוש תגובות</string>
   <string name="morphe_search_comments_summary">הקש על כפתור החיפוש בתגובות כדי להציג רק את התגובות שנטענו ומכילות את כל מילות החיפוש. הקף מילים במירכאות כדי לחפש ביטוי</string>
@@ -1037,6 +1041,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_glass_summary">מציגה את שורת הניווט כקפסולה צפה, מעוגלת וחצי שקופה. אינו זמין עם סגנון שורת ניווט אטום</string>
   <string name="morphe_navigation_bar_glass_opacity_title">אטימות הזכוכית</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">כוונן את רמת השקיפות של שורת הניווט מזכוכית (0 הוא שקוף, 100 הוא אטום)</string>
+  <string name="morphe_navigation_bar_glass_round_title">סרגל ניווט זכוכית מעוגל</string>
+  <string name="morphe_navigation_bar_glass_round_summary">מעניק לסרגל ניווט הזכוכית קצוות מעוגלים, במקום פינות כמו במינינגן הזכוכית</string>
   <string name="morphe_navigation_bar_glass_size_title">גודל סרגל ניווט מזכוכית</string>
   <string name="morphe_navigation_bar_glass_size_summary">התאמת הגובה, הרוחב ומרווח הכפתורים של סרגל הניווט מזכוכית, עם תצוגה מקדימה. כפתורים שאינם נכנסים ברוחב המסך מוסתרים</string>
   <string name="morphe_navigation_bar_glass_size_height">גובה</string>
@@ -1376,6 +1382,8 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_swipe_up_expand_summary">החלקה של הנגן הממוזער למעלה מרחיבה את הנגן, במקום להזיז את הנגן הממוזער לחלק העליון של המסך</string>
   <string name="morphe_miniplayer_docked_title">נגן ממוזער מעוגן</string>
   <string name="morphe_miniplayer_docked_summary">מעגן את הנגן הממוזער לסרגל הניווט ולדפנות המסך, במקום שירחף מעליהם</string>
+  <string name="morphe_miniplayer_glass_title">מינינגן זכוכית</string>
+  <string name="morphe_miniplayer_glass_summary">מציג את המינינגן כזכוכית שקופה עם פינות מעוגלות, בדומה לסרגל ניווט הזכוכית. דורש סרגל ניווט זכוכית</string>
   <string name="morphe_miniplayer_type_entry_0">מושבת</string>
   <string name="morphe_miniplayer_type_entry_1">ברירת מחדל</string>
   <string name="morphe_miniplayer_type_entry_2">מינימלי</string>
@@ -1810,6 +1818,8 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">תגובות Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">הצגת צ\'אט חי והשמעה חוזרת של צ\'אט כתגובות שגולשות על פני הסרטון</string>
   <string name="morphe_niconico_comments_summary">מציג כפתור שכבה בנגן הווידאו. הקשה להצגה או הסתרה של התגובות, לחיצה ארוכה להגדרות מהירות</string>
+  <string name="morphe_niconico_comments_pip_title">הצג במצב תמונה בתוך תמונה</string>
+  <string name="morphe_niconico_comments_pip_summary">התגובות מוקטנות כדי להתאים לחלון</string>
   <string name="morphe_niconico_comments_appearance_title">מראה</string>
   <string name="morphe_niconico_comments_portrait_category_title">לאורך</string>
   <string name="morphe_niconico_comments_video_types_title">סוגי וידאו</string>

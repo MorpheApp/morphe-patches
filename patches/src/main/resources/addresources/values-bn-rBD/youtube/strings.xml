@@ -522,6 +522,10 @@ Second \"item\" text"</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <string name="morphe_ryd_feed_like_count_title">ফিড থাম্বনেইলের লাইক কাউন্ট দেখান</string>
   <string name="morphe_ryd_feed_like_ratio_title">ফিড থাম্বনেইলের লাইক শতাংশ দেখান</string>
+  <string name="morphe_ryd_feed_counts_position_title">ফিড থাম্বনেইল লাইক পজিশন</string>
+  <string name="morphe_ryd_feed_counts_position_entry_1">ভিউ কাউন্টের পাশে</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">মাঝখানের ডানদিকে</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">উপরের বামদিকে</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">মন্তব্য অনুসন্ধান করুন</string>
   <string name="morphe_search_comments_summary">শুধুমাত্র লোড হওয়া সেই কমেন্টগুলো দেখাতে কমেন্টের সার্চ বাটনে ট্যাপ করুন যেগুলোতে অনুসন্ধান করা সমস্ত শব্দ রয়েছে। কোনো নির্দিষ্ট শব্দগুচ্ছ বা ফ্রেজ খুঁজতে শব্দগুলোকে উদ্ধৃতি চিহ্নের মধ্যে রাখুন</string>
@@ -1038,6 +1042,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_navigation_bar_glass_summary">নেভিগেশন বারটিকে একটি ভাসমান, গোলাকার, স্বচ্ছ ক্যাপসুল হিসেবে দেখায়। অস্বচ্ছ নেভিগেশন বার স্টাইলের সাথে এটি উপলব্ধ নয়</string>
   <string name="morphe_navigation_bar_glass_opacity_title">গ্লাস অস্বচ্ছতা</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">গ্লাস নেভিগেশন বারের স্বচ্ছতার স্তর সামঞ্জস্য করুন (০ হলো স্বচ্ছ, ১০০ হলো অস্বচ্ছ)</string>
+  <string name="morphe_navigation_bar_glass_round_title">রাউন্ড গ্লাস নেভিগেশন বার</string>
+  <string name="morphe_navigation_bar_glass_round_summary">গ্লাস মিনিপ্লেয়ারের মতো কোণ হওয়ার পরিবর্তে গ্লাস নেভিগেশন বারের প্রান্তগুলোকে গোলাকার করে</string>
   <string name="morphe_navigation_bar_glass_size_title">গ্লাস নেভিগেশন বারের আকার</string>
   <string name="morphe_navigation_bar_glass_size_summary">একটি প্রিভিউ-এর সাথে গ্লাস নেভিগেশন বারের উচ্চতা, প্রস্থ এবং বাটনের স্পেসিং অ্যাডজাস্ট করুন। স্ক্রিনের প্রস্থে ধরে না এমন বাটনগুলো লুকানো থাকে</string>
   <string name="morphe_navigation_bar_glass_size_height">উচ্চতা</string>
@@ -1378,6 +1384,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_miniplayer_swipe_up_expand_summary">মিনিপ্লেয়ারটি উপরের দিকে সোয়াইপ করলে এটি স্ক্রিনের শীর্ষে যাওয়ার পরিবর্তে প্লেয়ারটিকে এক্সপ্যান্ড করে</string>
   <string name="morphe_miniplayer_docked_title">ডক করা মিনিপ্লেয়ার</string>
   <string name="morphe_miniplayer_docked_summary">মিনিপ্লেয়ারটিকে নেভিগেশন বার এবং স্ক্রিনের পাশের সাথে যুক্ত করে, যাতে এটি ভেসে থাকার পরিবর্তে সেগুলোর সাথে লেগে থাকে</string>
+  <string name="morphe_miniplayer_glass_title">গ্লাস মিনিপ্লেয়ার</string>
+  <string name="morphe_miniplayer_glass_summary">গ্লাস নেভিগেশন বারের মতো মিনিপ্লেয়ারটিকে গোলাকার কোণ বিশিষ্ট ট্রান্সলুসেন্ট গ্লাস হিসেবে দেখায়। এর জন্য গ্লাস নেভিগেশন বার প্রয়োজন</string>
   <string name="morphe_miniplayer_type_entry_0">নিষ্ক্রিয়</string>
   <string name="morphe_miniplayer_type_entry_1">ডিফল্ট</string>
   <string name="morphe_miniplayer_type_entry_2">ন্যূনতম</string>
@@ -1814,6 +1822,8 @@ Incognito মোডে, অ্যাকাউন্ট পরিচয় উপ
   <string name="morphe_niconico_comments_screen_title">Niconico মন্তব্য</string>
   <string name="morphe_niconico_comments_screen_summary">লাইভ চ্যাট এবং চ্যাট রিপ্লে-কে ভিডিওর ওপর দিয়ে স্ক্রোল করা মন্তব্য হিসেবে দেখান</string>
   <string name="morphe_niconico_comments_summary">ভিডিও প্লেয়ারে একটি ওভারলে বোতাম দেখায়। মন্তব্য দেখাতে বা লুকাতে ট্যাপ করুন, দ্রুত সেটিংসের জন্য ট্যাপ করে ধরে রাখুন</string>
+  <string name="morphe_niconico_comments_pip_title">পিকচার-ইন-পিকচারে দেখান</string>
+  <string name="morphe_niconico_comments_pip_summary">উইন্ডোর সাথে খাপ খাওয়ানোর জন্য কমেন্টগুলো ছোট করা হয়েছে</string>
   <string name="morphe_niconico_comments_appearance_title">রূপ</string>
   <string name="morphe_niconico_comments_portrait_category_title">লম্বালম্বি রাখুন</string>
   <string name="morphe_niconico_comments_video_types_title">ভিডিওর ধরন</string>

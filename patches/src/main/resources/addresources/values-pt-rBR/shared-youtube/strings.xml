@@ -167,6 +167,30 @@ Para fazer login, pressione continuar abaixo"</string>
 • Suas configurações do Morphe não vão importar/exportar a autenticação do Android VR
 • Se este app não for usado por 6 meses, o Google removerá esta autenticação
 • Você precisará fazer o login novamente se alterar sua senha do Google ou desregistrar este dispositivo das configurações do Google"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Login via Web Mobile</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Opcional: faça o login através do site do YouTube para reproduzir vídeos com sua conta. Toque aqui para continuar </string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Atualmente logado via Web Mobile</string>
+  <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Para usar essa função, altere \"Cliente padrão\" para Web Mobile</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Logar ao Web Mobile </string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Web Mobile reproduz vídeos enquanto não logado, ou faça o login através do site do YouTube 
+
+• Logado, vídeos que precisam de uma conta podem ser reproduzidos, como vídeos com restrição de idade
+• A página de login so YouTube irá abrir no app
+• O login é usado apenas para obter os vídeos a reproduzir 
+• O login é salvo apenas neste dispositivo 
+
+Para logar-se, toque em continuar abaixo
+
+"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Login salvo
+
+• Suas opções do Morphe não serão importadas/exportadas com o login Web Mobile 
+• Se o Google terminar o login, os vídeos serão reproduzidos de forma não logada até o próximo login
+• Terminar o login também desloga este dispositivo do site do YouTube "</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Login Web Mobile expirou, tente logar-se via Web Mobile novamente </string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Deslogar-se do Web Mobile </string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView não disponível. Instale-o ou habilite-o para logar-se </string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 está temporariamente indisponível (API expirou)</string>
   <string name="morphe_oauth2_connection_failure_status_400">O login do Android VR expirou, tente fazer login no VR novamente</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 está temporariamente indisponível (status %s)</string>
