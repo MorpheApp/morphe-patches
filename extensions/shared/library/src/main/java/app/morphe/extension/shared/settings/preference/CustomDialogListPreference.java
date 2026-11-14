@@ -32,6 +32,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.Arrays;
 import java.util.Set;
 import java.util.function.IntConsumer;
 
@@ -115,7 +116,8 @@ public class CustomDialogListPreference extends ListPreference implements Settin
             return entries;
         }
 
-        CharSequence[] marked = entries.clone();
+        // Entries can be a String[], which cannot hold the spans added here.
+        CharSequence[] marked = Arrays.copyOf(entries, entries.length, CharSequence[].class);
         for (int i = 0, length = Math.min(entries.length, entryValues.length); i < length; i++) {
             if (newEntryValues.contains(entryValues[i].toString())) {
                 marked[i] = NewIndicatorSpan.addTo(entries[i], newEntryColor);
