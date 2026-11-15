@@ -20,6 +20,8 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import app.morphe.patches.youtube.video.information.ChannelInformationFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -404,6 +406,57 @@ internal object OfflineSettingsConstructorFingerprint : Fingerprint(
         "I", // Height of the highest download quality.
         "L",
         "L"
+    ),
+    filters = listOf(
+        // Copies the format types into an immutable list.
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Ljava/util/Collection;")
+        )
+    )
+)
+
+/**
+ * Maps the format types to their heights and to the labels of the quality settings.
+ */
+internal object FormatTypeMapsFingerprint : Fingerprint(
+    name = "<clinit>",
+    filters = listOf(
+        resourceLiteral(ResourceType.STRING, "offline_video_quality_1080p")
+    )
+)
+
+/**
+ * Label of a format type in the quality settings, or -1 if it has none.
+ */
+internal object FormatTypeLabelFingerprint : Fingerprint(
+    classFingerprint = FormatTypeMapsFingerprint,
+    returnType = "I",
+    parameters = listOf("L")
+)
+
+/**
+ * Shows the bottom sheet of a ShowActionSheetCommand. If bit 512 of the command is set,
+ * the field read after it tells the sheet to skip the collapsed state and open fully expanded.
+ */
+internal object ShowActionSheetCommandFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("ShowActionSheetCommand needs to provided."),
+        literal(512, opcodes = listOf(Opcode.AND_INT_LIT16)),
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN)
+    )
+)
+
+/**
+ * Creates the ShowActionSheetCommand of the quality picker of a download.
+ */
+internal object DownloadQualityPickerCommandFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    filters = listOf(
+        resourceLiteral(ResourceType.RAW, "download_options_picker_footer_element_android"),
+        // Sets the bit of the footer of the command.
+        fieldAccess(opcode = Opcode.IPUT, type = "I")
     )
 )
 

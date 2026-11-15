@@ -16,14 +16,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerGestureConfig;
-import app.morphe.extension.shared.innertube.SavedVideo.OfflineState;
-import app.morphe.extension.shared.innertube.SavedVideo.OfflineStateAction;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
-import app.morphe.extension.shared.spoof.ClientType;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
-import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 import app.morphe.extension.shared.innertube.Offline.OfflineCaptionTrack;
 import app.morphe.extension.shared.innertube.Offline.OfflineCaptionTracklist;
 import app.morphe.extension.shared.innertube.Offline.OfflineCaptions;
@@ -44,6 +36,14 @@ import app.morphe.extension.shared.innertube.Offline.OfflineVideoAction;
 import app.morphe.extension.shared.innertube.Offline.OfflineVideoEndpoint;
 import app.morphe.extension.shared.innertube.Offline.OfflineabilityContainer;
 import app.morphe.extension.shared.innertube.Offline.OfflineabilityRenderer;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass.PlayerGestureConfig;
+import app.morphe.extension.shared.innertube.SavedVideo.OfflineState;
+import app.morphe.extension.shared.innertube.SavedVideo.OfflineStateAction;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockOfflineStorage;
+import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
+import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
 /**
  * Saves videos and songs with the offline downloads of the app, for both YouTube and YouTube Music.
@@ -403,13 +403,17 @@ public class BaseInAppDownloadsPatch {
     }
 
     /**
-     * @return The formats with the default types added that the server omitted, sorted highest first,
-     * or null if the server already lists every default type.
+     * @param types  Format types to offer, highest first.
+     * @param labels Labels of the format types.
+     * @return The formats with the types added that the server omitted, sorted highest first,
+     * or null if the server already lists every type.
      */
     @Nullable
-    protected static List<OfflineFormat> mergeMissingFormatTypes(List<OfflineFormat> formats) {
+    protected static List<OfflineFormat> mergeMissingFormatTypes(List<OfflineFormat> formats,
+                                                                 OfflineFormatType[] types,
+                                                                 String[] labels) {
         boolean hasMissingType = false;
-        for (OfflineFormatType type : DEFAULT_FORMAT_TYPES) {
+        for (OfflineFormatType type : types) {
             if (indexOfFormatType(formats, type) < 0) {
                 hasMissingType = true;
                 break;
@@ -419,22 +423,22 @@ public class BaseInAppDownloadsPatch {
             return null;
         }
 
-        List<OfflineFormat> merged = new ArrayList<>(formats.size() + DEFAULT_FORMAT_TYPES.length);
+        List<OfflineFormat> merged = new ArrayList<>(formats.size() + types.length);
         List<OfflineFormat> remaining = new ArrayList<>(formats);
-        for (int i = 0; i < DEFAULT_FORMAT_TYPES.length; i++) {
-            OfflineFormatType type = DEFAULT_FORMAT_TYPES[i];
+        for (int i = 0; i < types.length; i++) {
+            OfflineFormatType type = types[i];
             int index = indexOfFormatType(remaining, type);
             if (index >= 0) {
                 merged.add(remaining.remove(index));
             } else {
                 merged.add(OfflineFormat.newBuilder()
-                        .setName(OfflineFormatLabel.newBuilder().setSimpleText(DEFAULT_FORMAT_LABELS[i]))
+                        .setName(OfflineFormatLabel.newBuilder().setSimpleText(labels[i]))
                         .setFormatType(type)
                         .setAvailability(OfflineFormatAvailability.OFFLINE_FORMAT_AVAILABILITY_FREE)
                         .build());
             }
         }
-        // Types the server gives that are not part of the default ladder, such as audio only.
+        // Types the server gives that are not part of the ladder, such as audio only.
         merged.addAll(remaining);
         return merged;
     }

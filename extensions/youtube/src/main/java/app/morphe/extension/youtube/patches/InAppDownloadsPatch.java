@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/3905
+ * https://github.com/MorpheApp/morphe-patches/pull/4890
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -16,11 +17,13 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.MessageLite;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.innertube.Offline.ButtonCommand;
 import app.morphe.extension.shared.innertube.Offline.DownloadButtonColor;
@@ -35,6 +38,7 @@ import app.morphe.extension.shared.innertube.Offline.OfflineCommand;
 import app.morphe.extension.shared.innertube.Offline.OfflineDownloadAction;
 import app.morphe.extension.shared.innertube.Offline.OfflineDownloadActionCommand;
 import app.morphe.extension.shared.innertube.Offline.OfflineFormat;
+import app.morphe.extension.shared.innertube.Offline.OfflineFormatType;
 import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistAction;
 import app.morphe.extension.shared.innertube.Offline.OfflinePlaylistEndpoint;
 import app.morphe.extension.shared.innertube.Offline.OfflineabilityRenderer;
@@ -77,9 +81,47 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     private static final String PLAYLIST_DOWNLOAD_BUTTON_IDENTIFIER = "playlist-download-button";
 
     /**
-     * Height of the 1080p download quality.
+     * Qualities of the quality picker, highest first. Premium offers up to 1080p,
+     * but the app can also save the higher qualities.
      */
-    private static final int FULL_HD_QUALITY_HEIGHT = 1080;
+    private static final OfflineFormatType[] FORMAT_TYPES = {
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_2160,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_1440,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD_1080,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_HD,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_SD_480,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_SD,
+            OfflineFormatType.OFFLINE_FORMAT_TYPE_LD,
+    };
+
+    private static final String[] FORMAT_LABELS = {
+            "2160p", "1440p", "1080p", "720p", "480p", "360p", "144p"
+    };
+
+    /**
+     * Height of the highest download quality.
+     */
+    private static final int HIGHEST_QUALITY_HEIGHT = 2160;
+
+    /**
+     * Prefix of the names of {@link OfflineFormatType}, which the format type enum of the app has
+     * without the prefix.
+     */
+    private static final String FORMAT_TYPE_NAME_PREFIX = "OFFLINE_FORMAT_TYPE_";
+
+    /**
+     * Names of the constants of the format type enum of the app.
+     */
+    private static final String QUAD_HD_FORMAT_TYPE_NAME = "HD_1440";
+    private static final String ULTRA_HD_FORMAT_TYPE_NAME = "HD_2160";
+
+    /**
+     * Labels of the quality setting for the qualities above 1080p, which the app has no labels for.
+     */
+    private static final int QUAD_HD_LABEL_ID = ResourceUtils.getIdentifier(
+            ResourceType.STRING, "morphe_offline_video_quality_1440p");
+    private static final int ULTRA_HD_LABEL_ID = ResourceUtils.getIdentifier(
+            ResourceType.STRING, "morphe_offline_video_quality_2160p");
 
     /**
      * Injection point.
@@ -150,8 +192,8 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     /**
      * Injection point.
      * <p>
-     * Called when the offline setting category is created, for the download quality setting
-     * and its 1080p quality, which the server can turn off.
+     * Called when the offline setting category is created, for the download quality setting,
+     * which the server can turn off.
      *
      * @param original If the server enables the setting.
      */
@@ -162,15 +204,104 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
     /**
      * Injection point.
      * <p>
+     * Called when the offline setting category is created. The 1080p option adds 1080p
+     * in front of the download quality formats, which already have it.
+     *
+     * @param original If the server enables the 1080p option.
+     */
+    public static boolean isFullHdFormatOptionAvailable(boolean original) {
+        return original && !isInAppDownloadMode();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the offline setting category is created, for the entries of the download quality setting.
+     *
+     * @param formatTypes Format types of the server, or an empty list to use the default qualities.
+     * @param formatType  Default format type of the smart downloads quality, a constant of the
+     *                    format type enum of the app.
+     * @return The format types of every quality of the quality picker, highest first.
+     */
+    public static List<?> getDownloadQualityFormatTypes(List<?> formatTypes, @Nullable Object formatType) {
+        try {
+            if (!isInAppDownloadMode()) {
+                return formatTypes;
+            }
+            if (!(formatType instanceof Enum<?> type)) {
+                Logger.printException(() -> "Unknown format type: " + formatType);
+                return formatTypes;
+            }
+
+            Object[] constants = type.getDeclaringClass().getEnumConstants();
+            List<Object> qualities = new ArrayList<>(FORMAT_TYPES.length);
+            for (OfflineFormatType offlineFormatType : FORMAT_TYPES) {
+                qualities.add(appFormatType(constants, offlineFormatType));
+            }
+            return qualities;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getDownloadQualityFormatTypes failure", ex);
+            return formatTypes;
+        }
+    }
+
+    /**
+     * @return The constant of the format type enum of the app, which has the name without the prefix.
+     */
+    private static Object appFormatType(Object[] constants, OfflineFormatType type) {
+        String name = type.name().substring(FORMAT_TYPE_NAME_PREFIX.length());
+        for (Object constant : constants) {
+            if (((Enum<?>) constant).name().equals(name)) {
+                return constant;
+            }
+        }
+        throw new IllegalArgumentException("No format type: " + name);
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * Called once when the offline settings are created. The app hides the download qualities
      * that are taller than the shorter side of the screen, so a 720p screen can only save 720p.
+     * Every screen is offered the qualities up to 2160p.
      *
      * @param maxHeight Height of the highest download quality the app offers.
      */
     public static int getMaxDownloadQualityHeight(int maxHeight) {
         return isInAppDownloadMode()
-                ? Math.max(maxHeight, FULL_HD_QUALITY_HEIGHT)
+                ? Math.max(maxHeight, HIGHEST_QUALITY_HEIGHT)
                 : maxHeight;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called for the label of a download quality, which the app has only up to 1080p.
+     *
+     * @param formatType Format type of the quality.
+     * @return Resource id of the label, or 0 to keep the label of the app.
+     */
+    public static int getDownloadQualityLabel(@Nullable Object formatType) {
+        if (!isInAppDownloadMode() || !(formatType instanceof Enum<?> type)) {
+            return 0;
+        }
+        return switch (type.name()) {
+            case QUAD_HD_FORMAT_TYPE_NAME -> QUAD_HD_LABEL_ID;
+            case ULTRA_HD_FORMAT_TYPE_NAME -> ULTRA_HD_LABEL_ID;
+            default -> 0;
+        };
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called when the quality picker of a download is created. The picker opens collapsed to
+     * 60% of the screen height, which cuts off the lowest qualities of the longer list.
+     *
+     * @return If the picker opens fully expanded.
+     */
+    public static boolean expandDownloadQualityPicker() {
+        return isInAppDownloadMode();
     }
 
     /**
@@ -210,7 +341,8 @@ public final class InAppDownloadsPatch extends BaseInAppDownloadsPatch {
             // entries of the server. The types the server omitted are added as well,
             // so the picker shows every quality.
             OfflineabilityRenderer renderer = OfflineabilityRenderer.parseFrom(source);
-            List<OfflineFormat> merged = mergeMissingFormatTypes(renderer.getFormatsList());
+            List<OfflineFormat> merged = mergeMissingFormatTypes(
+                    renderer.getFormatsList(), FORMAT_TYPES, FORMAT_LABELS);
             if (merged == null) {
                 return unlocked;
             }
