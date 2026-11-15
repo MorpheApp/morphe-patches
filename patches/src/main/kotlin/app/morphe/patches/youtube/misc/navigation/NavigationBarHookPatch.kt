@@ -96,6 +96,10 @@ private var browseIdRegister = -1
 
 private lateinit var searchResultsMethodRef: WeakReference<MutableMethod>
 
+/** Native fragment endpoint and browse-id reader, resolved by [browseIdHookPatch]. */
+internal lateinit var browsePageBinding: Pair<FieldReference, MethodReference>
+    private set
+
 /**
  * Calls the extension method with the browse id of every browse page that is shown, including
  * a page that is returned to and served from cache. Channel pages use the channel id as browse id.
@@ -158,6 +162,8 @@ internal val browseIdHookPatch = patch(description = "Hooks the browse id of the
                         )
                     )
                 ).matchAll(1..2).first().method
+
+                browsePageBinding = endpointField to browseIdMethod
 
                 // The fragment is handed the endpoint of every page it shows, including a page that
                 // is returned to and served from cache, which makes no browse request to read.

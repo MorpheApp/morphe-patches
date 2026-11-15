@@ -207,6 +207,10 @@ class QueueRuntimeBoundaryTest {
     fun `merged playlists share one native footer without changing playable positions`() =
         withFixture("hiddenVideosFooter")
 
+    @Test
+    fun `thumbnail Last starts a queue and subsequent actions preserve insertion direction`() =
+        withFixture("thumbnailQueueActions")
+
     // NativePlaylistQueuePatch depends on Android settings, scheduling and UI classes.
     // Isolate those boundaries while executing its actual compiled coordinator.
     private fun withFixture(scenario: String, fetchOnScroll: Boolean = true) {
@@ -2230,6 +2234,30 @@ class QueueRuntimeBoundaryTest {
                         require(queue != null && queue.currentEntry().videoId().equals(requested)
                                 && controller.playback.attaches == 1 && LoadVideoPatch.activeBlock == 0,
                             "Only accepted playback publishes the queue and releases the feed block");
+                    }
+                    public static void thumbnailQueueActions() throws Exception {
+                        app.morphe.extension.youtube.shared.PlayerType.current =
+                            app.morphe.extension.youtube.shared.PlayerType.INLINE_MINIMAL;
+                        LoadVideoPatch.previewPlaying = true;
+                        Settings.QUEUE_TYPE.value = QueueType.MORPHE;
+                        NativePlaylistQueuePatch.addThumbnailVideo("ZYXWVUTSRQP", true);
+                        Settings.QUEUE_TYPE.value = QueueType.NATIVE;
+                        NativePlaylistQueuePatch.addThumbnailVideo("invalid", true);
+                        require(LoadVideoPatch.opens == 0, "Reject other providers and invalid thumbnail IDs");
+                        NativePlaylistQueuePatch.addThumbnailVideo("ZYXWVUTSRQP", true);
+                        require(LoadVideoPatch.opens == 1 && LoadVideoPatch.activeBlock != 0
+                                && field("pendingQueueStart").get(null) != null,
+                            "A fresh thumbnail Last must start the first queue with preview protection");
+                        acceptPreviewStart();
+                        NativePlaylistQueuePatch.addThumbnailVideo("00000000001", false);
+                        NativePlaylistQueuePatch.addThumbnailVideo("00000000002", true);
+                        NativePlaylistQueuePatch.addThumbnailVideo("00000000003", false);
+                        var queue = (PlaylistQueue) field("queue").get(null);
+                        require(queue.entries().stream().map(PlaylistQueue.Entry::videoId).toList()
+                                .equals(List.of("ZYXWVUTSRQP", "00000000003", "00000000001", "00000000002")),
+                            "Next inserts after current playback and Last appends to the existing queue");
+                        require(LoadVideoPatch.opens == 1 && Logger.errors == 0,
+                            "Queue additions must preserve playback and use the existing coordinator");
                     }
                     public static void videoPreviewStart() throws Exception {
                         beginPreviewStart();
