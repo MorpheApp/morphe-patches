@@ -161,7 +161,7 @@ public final class AmbientLightController {
      * Immutable snapshot of where the video and the light are. Layouts are compared by
      * identity, never with equals.
      */
-    private record Layout(int[] video, int windowWidth, int windowHeight, int gridHeight,
+    private record Layout(int[] video, int[] player, int windowWidth, int windowHeight, int gridHeight,
                           List<Region> regions, boolean hasLight) {
     }
 
@@ -708,8 +708,8 @@ public final class AmbientLightController {
         final boolean hasLight = videoBounds[0] >= MIN_RECT_SIZE || videoBounds[1] >= MIN_RECT_SIZE
                 || root.getWidth() - videoBounds[2] >= MIN_RECT_SIZE || root.getHeight() - videoBounds[3] >= MIN_RECT_SIZE;
         // Without surfaces: the window draws the light until the player rests.
-        layout = new Layout(videoBounds, root.getWidth(), root.getHeight(), gridHeight(root),
-                Collections.emptyList(), hasLight);
+        layout = new Layout(videoBounds, new int[]{left, top, right, bottom}, root.getWidth(), root.getHeight(),
+                gridHeight(root), Collections.emptyList(), hasLight);
         settled = false;
         onMoved();
         // The view draws the light around the video, and the video has moved in the view.
@@ -746,7 +746,7 @@ public final class AmbientLightController {
             for (LightSurface surface : playerSurfaces) surface.setTranslationX(away);
             Layout current = layout;
             if (current != null && !current.regions().isEmpty()) {
-                layout = new Layout(current.video(), current.windowWidth(), current.windowHeight(),
+                layout = new Layout(current.video(), current.player(), current.windowWidth(), current.windowHeight(),
                         current.gridHeight(), Collections.emptyList(), current.hasLight());
                 settled = false;
                 scheduleTick();
@@ -833,8 +833,8 @@ public final class AmbientLightController {
         placeSurfaces(playerSurfaces, player, player.indexOfChild(branch) + 1, true, playerRects, regions);
         surfacesPlaced = true;
         // A new layout, so that the light is drawn on the surfaces also when the picture is still.
-        layout = new Layout(videoBounds, current.windowWidth(), current.windowHeight(), current.gridHeight(),
-                regions, current.hasLight());
+        layout = new Layout(videoBounds, current.player(), current.windowWidth(), current.windowHeight(),
+                current.gridHeight(), regions, current.hasLight());
         settled = false;
         scheduleTick();
     }
@@ -1379,8 +1379,11 @@ public final class AmbientLightController {
         // for. The cover of before stays, and is chosen again when the content is back.
         if (SeeThroughPage.contentAlpha() == 0f) return false;
 
+        int[] player = current.player();
         wantedCover = AmbientLightMath.readabilityCover(light, width, height,
-                current.video()[3] * height / current.windowHeight(), AmbientLightMath.luma(pageColor) < 128);
+                current.video()[3] * height / current.windowHeight(), player[1] * height / current.windowHeight(),
+                player[0] * width / current.windowWidth(), player[2] * width / current.windowWidth(),
+                AmbientLightMath.luma(pageColor) < 128);
         // The cover follows the light of a video that stays in its place with a delay, so that
         // scene cuts do not pump. A video that has moved, as on its way back from fullscreen or
         // the miniplayer, has other light below it, and that light has its own cover at once.
