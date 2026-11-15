@@ -328,26 +328,31 @@ val permanentNsfwPatch = patch(
 
         // Search banners are server-authored. Use their native CTA behavior,
         // independent of translated text, to suppress prompts to change NSFW settings.
-        val searchBannerView = Fingerprint(filters = listOf(string("SearchBannerViewState(id="))).originalClassDef.type
+        val searchBannerClass = Fingerprint(filters = listOf(string("SearchBannerViewState(id="))).originalClassDef
+        val searchBannerView = searchBannerClass.type
+        val dismissedField = searchBannerClass.fields.single { it.type == "Z" }
         val searchBannerBehaviors = Fingerprint(filters = listOf(string("SearchBannerBehaviors(cta="))).originalClassDef
         val ctaField = searchBannerBehaviors.fields.first()
         val adjustNsfw = Fingerprint(filters = listOf(string("SearchAdjustNsfwSettingsBehavior(id="))).originalClassDef.type
         val verifyAge = Fingerprint(filters = listOf(string("SearchAgeVerificationFlowBehavior(id="))).originalClassDef.type
         Fingerprint(definingClass = searchBannerView, name = "<init>", returnType = "V").method.apply {
-            val register = findFreeRegister(1)
-            addInstructionsWithLabels(1, """
+            // All constructor parameters have already been stored here, so p1 can
+            // be reused without growing a register-starved constructor.
+            val index = findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).single()
+            addInstructionsWithLabels(index, """
                 if-eqz p6, :keepBanner
-                iget-object v$register, p6, $ctaField
-                instance-of v$register, v$register, $adjustNsfw
-                if-nez v$register, :checkPermanent
-                iget-object v$register, p6, $ctaField
-                instance-of v$register, v$register, $verifyAge
-                if-eqz v$register, :keepBanner
+                iget-object p1, p6, $ctaField
+                instance-of p1, p1, $adjustNsfw
+                if-nez p1, :checkPermanent
+                iget-object p1, p6, $ctaField
+                instance-of p1, p1, $verifyAge
+                if-eqz p1, :keepBanner
                 :checkPermanent
                 invoke-static {}, $EXTENSION->isEnabled()Z
-                move-result v$register
-                if-eqz v$register, :keepBanner
-                const/4 p8, 0x1
+                move-result p1
+                if-eqz p1, :keepBanner
+                const/4 p1, 0x1
+                iput-boolean p1, p0, $dismissedField
                 :keepBanner
                 nop
             """)
