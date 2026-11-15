@@ -12,6 +12,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
 import app.morphe.patches.shared.misc.bridge.addBridge
+import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.interaction.feedactions.FeedComponentHostLayoutFingerprint
 import app.morphe.patches.youtube.interaction.feedactions.FeedComponentHostTouchFingerprint
@@ -19,6 +20,7 @@ import app.morphe.patches.youtube.interaction.nativeplaylistqueue.QueueSaveEditE
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.parseProtoInstructions
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.queueSaveEditSuccessFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.navigation.addBrowseIdHook
 import app.morphe.patches.youtube.misc.navigation.addSearchResultsHook
 import app.morphe.patches.youtube.misc.navigation.browseIdHookPatch
@@ -40,14 +42,13 @@ private const val PLAYLIST_EDIT_CALLBACK_INTERFACE =
 val playlistPatch = patch(
     name = "Playlist improvements",
     description = "Adds options to widen playlist drag handles, reorder videos by long press, " +
-            "and hide removal confirmations.",
+            "hide removal confirmations, and index WLPro smart tags in playlists and Watch Later.",
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        // Finds if a playlist page is shown.
+        lithoFilterPatch,
         browseIdHookPatch,
-        // Finds if the player covers the playlist.
         playerTypeHookPatch,
         versionCheckPatch,
     )
@@ -60,20 +61,17 @@ val playlistPatch = patch(
             SwitchPreference("morphe_playlist_hide_removal_snackbar", summary = true),
         )
 
+        addLithoFilter(EXTENSION_CLASS)
         addBrowseIdHook("$EXTENSION_CLASS->setBrowseId(Ljava/lang/String;)V")
         addSearchResultsHook("$EXTENSION_CLASS->clearBrowseId()V")
 
         // region Wide drag handles.
 
-        // Drag handles of regular views. The original code reuses the view register.
         DragHandleTouchListenerFingerprint.method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->onDragHandleCreated(Landroid/view/View;)V"
         )
 
-        // Litho sets the size of the drag handle of its rows, so instead
-        // the row host forwards the touches of a wider area to the handle.
-        // Before 21.05, ComponentHost does not override onInterceptTouchEvent().
         if (is_21_05_or_greater) {
             FeedComponentHostLayoutFingerprint.method.apply {
                 findInstructionIndicesReversedOrThrow(Opcode.RETURN_VOID).forEach { index ->
@@ -141,7 +139,6 @@ val playlistPatch = patch(
             """
         )
 
-        // The toasts are removed before the app runs the actions of the response.
         responseMethod.addInstructions(
             0,
             """
