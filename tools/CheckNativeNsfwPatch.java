@@ -99,6 +99,10 @@ public final class CheckNativeNsfwPatch {
             require(calls(method(classes.get(owner), "invokeSuspend"), EXTENSION, "visibleRecentSubreddits"),
                     "A recently visited view still shows old flagged communities: " + owner);
         }
+        require(calls(method(classes.get(
+                        "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel$1;"),
+                        "access$invokeSuspend$handleEvent"), EXTENSION, "returnToPreviousScreen"),
+                "Declining the native warning still forces MainActivity");
         for (String type : classes.keySet()) {
             require(!type.endsWith("/NsfwCommunityGate;") && !type.endsWith("/NsfwJsonFilter;")
                     && !type.endsWith("/RedditNsfwInterceptor;") && !type.endsWith("/BlockedNsfwHosts;"),

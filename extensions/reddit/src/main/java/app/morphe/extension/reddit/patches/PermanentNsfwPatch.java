@@ -1,6 +1,8 @@
 package app.morphe.extension.reddit.patches;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -61,6 +63,18 @@ public final class PermanentNsfwPatch {
             if (!Boolean.TRUE.equals(subreddit.getOver18())) visible.add(subreddit);
         }
         return visible;
+    }
+
+    /** Use the current screen stack when declining a mature-content warning. */
+    @SuppressWarnings("deprecation")
+    public static boolean returnToPreviousScreen(Object context) {
+        if (!isEnabled()) return false;
+        while (context instanceof ContextWrapper && !(context instanceof Activity)) {
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+        if (!(context instanceof Activity)) return false;
+        ((Activity) context).onBackPressed();
+        return true;
     }
 
     /** Called after the existing Morphe settings categories have been built. */
