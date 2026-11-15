@@ -53,56 +53,42 @@ internal fun enableDebuggingPatch(
     description = "Adds options for debugging and exporting Morphe logs to the clipboard.",
 ) {
 
-    dependsOn(
-        patch {
-            execute {
-                copyResources(
-                    "settings",
-                    ResourceGroup("drawable",
-                        // Feature flags manager buttons.
-                        "morphe_settings_bisect.xml",
-                        "morphe_settings_copy_all.xml",
-                        "morphe_settings_deselect_all.xml",
-                        "morphe_settings_import_export.xml",
-                        "morphe_settings_select_all.xml"
-                    )
-                )
-            }
-        }
-    )
-
     block()
 
     execute {
-        executeBlock()
-
-        val preferences = mutableSetOf<BasePreference>(
-            ListPreference("morphe_debug_level"),
-        )
-
-        preferences.addAll(additionalDebugPreferences)
-
-        preferences.addAll(
-            listOf(
-                SwitchPreference("morphe_debug_toast_on_error"),
-                NonInteractivePreference(
-                    "morphe_debug_export_logs",
-                    tag = "app.morphe.extension.shared.settings.preference.ExportLogToClipboardPreference",
-                    selectable = true
-                ),
-                NonInteractivePreference(
-                    "morphe_debug_feature_flags_manager",
-                    tag = "app.morphe.extension.shared.settings.preference.FeatureFlagsManagerPreference",
-                    selectable = true
-                )
+        copyResources(
+            "settings",
+            ResourceGroup("drawable",
+                // Feature flags manager buttons.
+                "morphe_settings_bisect.xml",
+                "morphe_settings_copy_all.xml",
+                "morphe_settings_deselect_all.xml",
+                "morphe_settings_import_export.xml",
+                "morphe_settings_select_all.xml"
             )
         )
+
+        executeBlock()
 
         preferenceScreen.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_debug_screen",
                 sorting = Sorting.UNSORTED,
-                preferences = preferences,
+                preferences = setOf(
+                    ListPreference("morphe_debug_level"),
+                    *additionalDebugPreferences.toTypedArray(),
+                    SwitchPreference("morphe_debug_toast_on_error"),
+                    NonInteractivePreference(
+                        "morphe_debug_export_logs",
+                        tag = "app.morphe.extension.shared.settings.preference.ExportLogToClipboardPreference",
+                        selectable = true
+                    ),
+                    NonInteractivePreference(
+                        "morphe_debug_feature_flags_manager",
+                        tag = "app.morphe.extension.shared.settings.preference.FeatureFlagsManagerPreference",
+                        selectable = true
+                    )
+                )
             )
         )
 

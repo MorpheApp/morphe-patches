@@ -43,6 +43,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.PushNotificationReceivedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -403,7 +404,7 @@ val hideShortsComponentsPatch = patch(
         PushNotificationReceivedFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static { p1, p2 }, $EXTENSION_FILTER->hideShortsNotification(Landroid/content/Context;Lcom/google/protobuf/MessageLite;)Z
+                invoke-static { p2 }, $EXTENSION_FILTER->hideShortsNotification(Lcom/google/protobuf/MessageLite;)Z
                 move-result v0
                 if-eqz v0, :show
                 return-void

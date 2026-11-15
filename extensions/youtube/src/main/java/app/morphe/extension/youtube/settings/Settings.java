@@ -735,7 +735,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SHORTS_NAVIGATION_BAR = new BooleanSetting("morphe_hide_shorts_navigation_bar", FALSE, true, parentNot(HIDE_NAVIGATION_BAR));
     public static final BooleanSetting HIDE_SHORTS_NEW_POSTS_BUTTON = new BooleanSetting("morphe_hide_shorts_new_posts_button", TRUE);
     public static final BooleanSetting HIDE_SHORTS_NOTIFICATIONS = new BooleanSetting("morphe_hide_shorts_notifications", FALSE);
-    public static final BooleanSetting CAPTURE_PUSH_NOTIFICATION_PAYLOADS = new BooleanSetting("morphe_capture_push_notification_payloads", FALSE);
     public static final BooleanSetting HIDE_SHORTS_PAUSED_OVERLAY_BUTTONS = new BooleanSetting("morphe_hide_shorts_paused_overlay_buttons", FALSE);
     public static final BooleanSetting HIDE_SHORTS_PREVIEW_COMMENT = new BooleanSetting("morphe_hide_shorts_preview_comment", TRUE);
     public static final BooleanSetting HIDE_SHORTS_REMIX_BUTTON = new BooleanSetting("morphe_hide_shorts_remix_button", FALSE);
@@ -792,6 +791,7 @@ public class Settings extends SharedYouTubeSettings {
 
     public static final BooleanSetting REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS = new BooleanSetting("morphe_remove_background_playback_restrictions", TRUE, true);
     public static final EnumSetting<AutoPauseOnLockMode> AUTO_PAUSE_ON_LOCK = new EnumSetting<>("morphe_auto_pause_on_screen_lock", AutoPauseOnLockMode.OFF);
+    public static final BooleanSetting DEBUG_SAVE_PUSH_NOTIFICATIONS = new BooleanSetting("morphe_debug_save_push_notifications", FALSE);
     public static final BooleanSetting BYPASS_LINK_REDIRECTS = new BooleanSetting("morphe_bypass_link_redirects", TRUE);
     public static final BooleanSetting EXTERNAL_BROWSER = new BooleanSetting("morphe_external_browser", TRUE, true);
     public static final BooleanSetting SPOOF_DEVICE_DIMENSIONS = new BooleanSetting("morphe_spoof_device_dimensions", FALSE, true,
