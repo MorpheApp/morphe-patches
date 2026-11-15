@@ -9,6 +9,7 @@ package app.morphe.patches.music.interaction.jam
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
@@ -823,6 +824,8 @@ internal fun autoplaySectionRefreshFingerprint(ownerType: String) = Fingerprint(
     returnType = "V",
     filters = listOf(
         methodCall(name = "isEmpty", parameters = emptyList(), returnType = "Z"),
+        // First visibility check, after the constants the rest of the method reads.
+        opcode(Opcode.IF_NEZ, location = MatchAfterWithin(5)),
         methodCall(parameters = listOf("I"), returnType = "V"),
         methodCall(name = "clear", parameters = emptyList(), returnType = "V"),
     )
@@ -860,19 +863,5 @@ internal fun playbackIconStateFingerprint(stateType: String, stateName: String) 
             type = stateType,
             opcode = Opcode.SPUT_OBJECT,
         )
-    )
-)
-
-/** Locate header creation itself; feature-flag branches may precede this block. */
-internal fun autoplayHeaderCreationFingerprint(header: FieldReference) = Fingerprint(
-    filters = listOf(
-        fieldAccess(reference = header, opcode = Opcode.IGET_OBJECT),
-        methodCall(
-            name = "isEmpty",
-            parameters = emptyList(),
-            returnType = "Z",
-            location = MatchAfterImmediately(),
-        ),
-        methodCall(name = "add", parameters = listOf("I", OBJECT), returnType = "V")
     )
 )
