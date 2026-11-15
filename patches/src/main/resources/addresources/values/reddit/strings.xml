@@ -149,8 +149,8 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_app_icon_unknown">Unknown</string>
     <string name="morphe_permanent_nsfw_title">Permanently disable NSFW content (experimental)</string>
     <string name="morphe_permanent_nsfw_confirm_title">Permanently disable NSFW content?</string>
-    <string name="morphe_permanent_nsfw_confirm_message">Once enabled, this setting cannot be turned off in the app. It applies to every account and anonymous browsing. Clearing app data resets it.\n\nThis experimental build has not been verified against all Reddit content paths. Reddit will restart after enabling it.</string>
-    <string name="morphe_permanent_nsfw_enable">Enable permanently</string>
+    <string name="morphe_permanent_nsfw_confirm_message">NSFW content will be permanently disabled for every account and anonymous browsing. You cannot turn NSFW content back on inside the app. Clearing app data resets this setting.\n\nThis experimental build has not been verified against all Reddit content paths. Reddit will restart after confirming.</string>
+    <string name="morphe_permanent_nsfw_disable_button">Permanently disable NSFW</string>
     <string name="morphe_permanent_nsfw_save_failed">Could not save the setting. Please try again.</string>
     <string name="morphe_permanent_nsfw_disabled">NSFW content is permanently disabled</string>
     <string name="morphe_permanent_nsfw_summary">Disable NSFW content forever for all accounts</string>

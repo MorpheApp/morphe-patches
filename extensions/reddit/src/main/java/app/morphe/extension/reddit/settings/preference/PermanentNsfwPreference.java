@@ -24,7 +24,7 @@ public final class PermanentNsfwPreference extends Preference {
                     .setTitle(str("morphe_permanent_nsfw_confirm_title"))
                     .setMessage(str("morphe_permanent_nsfw_confirm_message"))
                     .setNegativeButton(android.R.string.cancel, null)
-                    .setPositiveButton(str("morphe_permanent_nsfw_enable"), (dialog, which) -> {
+                    .setPositiveButton(str("morphe_permanent_nsfw_disable_button"), (dialog, which) -> {
                         if (!PermanentNsfwPatch.getDisabler().enable()) {
                             Toast.makeText(context, str("morphe_permanent_nsfw_save_failed"),
                                     Toast.LENGTH_LONG).show();
