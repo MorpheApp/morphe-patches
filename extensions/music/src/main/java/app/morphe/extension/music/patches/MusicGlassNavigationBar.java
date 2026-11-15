@@ -224,6 +224,12 @@ public final class MusicGlassNavigationBar {
     private static final int FLOATING_ACTION_BUTTON = ResourceUtils.getIdentifier(ResourceType.ID, "floating_action_button");
 
     /**
+     * The floating Play button of some playlists, such as Liked music, that shrinks to a round button
+     * when the list is scrolled.
+     */
+    private static final int EXTENDED_FLOATING_ACTION_BUTTON = ResourceUtils.getIdentifier(ResourceType.ID, "extended_floating_action_button");
+
+    /**
      * The title and the buttons at the bottom of a video of Samples.
      */
     private static final int OVERLAY_ELEMENTS_CONTAINER = ResourceUtils.getIdentifier(ResourceType.ID, "overlay_elements_container");
@@ -425,9 +431,9 @@ public final class MusicGlassNavigationBar {
         if (view.getVisibility() == View.GONE) return;
 
         final int id = view.getId();
-        if (id != View.NO_ID && id == FLOATING_ACTION_BUTTON) {
-            // The floating button at the bottom of the page, such as New in the library,
-            // is laid out above the miniplayer with its bottom margin.
+        if (id != View.NO_ID && (id == FLOATING_ACTION_BUTTON || id == EXTENDED_FLOATING_ACTION_BUTTON)) {
+            // The floating button at the bottom of the page, such as New in the library
+            // or Play in Liked music, is laid out above the miniplayer with its bottom margin.
             setBottomRoom(view, room, true, true);
             return;
         }
