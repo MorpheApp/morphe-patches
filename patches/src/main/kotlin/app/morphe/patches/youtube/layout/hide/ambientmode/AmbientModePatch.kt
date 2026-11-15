@@ -116,6 +116,16 @@ val ambientModePatch = patch(
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
                     ),
+                    NonInteractivePreference(
+                        key = "morphe_enhanced_ambient_mode_smoothing",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_enhanced_ambient_mode_blur",
+                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                        selectable = true
+                    ),
                     SwitchPreference("morphe_enhanced_ambient_mode_readable_text", summary = true),
                     SwitchPreference("morphe_enhanced_ambient_mode_dim_while_scrolling", summary = true),
                     NonInteractivePreference(
