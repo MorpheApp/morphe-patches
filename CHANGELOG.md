@@ -1,3 +1,10 @@
+## [2.3.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v2.3.0-dev.6...v2.3.0-dev.7) (2026-11-15)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Download post images:** Download button is missing when the language of Morphe differs from the language of YouTube ([#4864](https://github.com/MorpheApp/morphe-patches/issues/4864)) ([c742fb2](https://github.com/MorpheApp/morphe-patches/commit/c742fb27838a887aeca349533465ae5a7c14bcae))
+* **YouTube Music - Jam queue sharing:** App crashes on `9.46` when opening the queue ([598d044](https://github.com/MorpheApp/morphe-patches/commit/598d0446060084719012d8808e830ca95b351fee))
+
 ## [2.3.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v2.3.0-dev.5...v2.3.0-dev.6) (2026-11-15)
 
 ### ✨ New Features
