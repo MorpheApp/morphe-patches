@@ -400,6 +400,14 @@ public class AmbientLightMathTest {
     }
 
     @Test
+    public void blackPictureIsFound() {
+        assertTrue(AmbientLightMath.isBlack(filled(0xFF000000, 48 * 27)));
+        assertTrue(AmbientLightMath.isBlack(filled(0xFF101010, 48 * 27)));
+        assertFalse(AmbientLightMath.isBlack(filled(0xFF202020, 48 * 27)));
+        assertFalse(AmbientLightMath.isBlack(scene(0)));
+    }
+
+    @Test
     public void otherColorsAreKept() {
         assertEquals(RED, AmbientLightMath.seeThroughColor(RED, DARK_PAGE));
         assertEquals(LIGHT_PAGE, AmbientLightMath.seeThroughColor(LIGHT_PAGE, DARK_PAGE));

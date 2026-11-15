@@ -173,6 +173,16 @@ final class AmbientLightMath {
     }
 
     /**
+     * @return If the picture is black all over.
+     */
+    static boolean isBlack(int[] picture) {
+        for (int color : picture) {
+            if (luma(color) > BAR_MAX_LUMA) return false;
+        }
+        return true;
+    }
+
+    /**
      * @return The mean absolute difference per color channel.
      */
     static int difference(int[] first, int[] second) {
