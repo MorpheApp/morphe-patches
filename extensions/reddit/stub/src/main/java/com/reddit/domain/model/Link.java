@@ -2,9 +2,6 @@ package com.reddit.domain.model;
 
 @SuppressWarnings("unused")
 public final class Link extends ILink {
-    public String getTitle() { throw new UnsupportedOperationException("Stub"); }
-    public String getBody() { throw new UnsupportedOperationException("Stub"); }
-    public String getSelftext() { throw new UnsupportedOperationException("Stub"); }
     public String getAuthor() {
         throw new UnsupportedOperationException("Stub");
     }

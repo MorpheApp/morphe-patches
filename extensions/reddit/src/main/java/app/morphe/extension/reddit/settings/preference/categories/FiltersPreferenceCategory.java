@@ -1,27 +1,45 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/4868
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.reddit.settings.preference.categories;
 
-import android.content.Context;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceScreen;
-import app.morphe.extension.reddit.patches.ContentFilterPatch;
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.content.Context;
+import android.preference.PreferenceScreen;
+
+import app.morphe.extension.reddit.patches.FlairFiltersPatch;
+import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
+import app.morphe.extension.reddit.settings.preference.FlairFiltersPreference;
+import app.morphe.extension.reddit.settings.preference.SeenFlairsPreference;
+import app.morphe.extension.shared.Utils;
+
 @SuppressWarnings("deprecation")
-public final class FiltersPreferenceCategory extends PreferenceCategory {
+public class FiltersPreferenceCategory extends ConditionalPreferenceCategory {
     public FiltersPreferenceCategory(Context context, PreferenceScreen screen) {
-        super(context);
-        if (ContentFilterPatch.registeredFilters().isEmpty()) return;
-        setTitle(str("morphe_content_filters_title"));
-        screen.addPreference(this);
-        for (ContentFilterPatch.Filter filter : ContentFilterPatch.registeredFilters()) {
-            filter.addPreferences(context, this);
-        }
+        super(context, screen);
+        setTitle(str("morphe_screen_filters_title"));
+    }
+
+    @Override
+    public boolean getSettingsStatus() {
+        return FlairFiltersPatch.isPatchIncluded();
+    }
+
+    @Override
+    public void addPreferences(Context context) {
+        addPreference(new FlairFiltersPreference(context));
+        addPreference(new BooleanSettingPreference(
+                context,
+                Settings.FLAIR_FILTERS_REMEMBER_SEEN
+        ));
+        addPreference(new SeenFlairsPreference(context));
+
+        Utils.setPreferenceTitlesToMultiLine(this);
     }
 }

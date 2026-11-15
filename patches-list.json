@@ -5675,33 +5675,6 @@
       "options": []
     },
     {
-      "name": "Flair filters",
-      "description": "Adds per-community post-flair filters and an observed-flair picker under Morphe > Filters. This patch supports Reddit 2026.45.0.",
-      "default": false,
-      "category": null,
-      "compatiblePackages": [
-        {
-          "packageName": "com.reddit.frontpage",
-          "name": "Reddit",
-          "description": null,
-          "apkFileType": "APKM",
-          "appIconColor": null,
-          "signatures": null,
-          "formFactor": "MOBILE",
-          "targets": [
-            {
-              "version": "2026.45.0",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 32,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
       "name": "Force animations",
       "description": "Adds an option to always turn on or off the app animations that YouTube can turn off, such as the player transitions.",
       "default": true,

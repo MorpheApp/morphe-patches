@@ -43,6 +43,21 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_hide_about_shelf_title">Hide About shelf</string>
     <string name="morphe_hide_resources_shelf_title">Hide Resources shelf</string>
 
+    <string name="morphe_screen_filters_title">Filters</string>
+    <string name="morphe_flair_filters_title">Flair filters</string>
+    <string name="morphe_flair_filters_summary">Hide feed posts with a flair of a community. Matching ignores case</string>
+    <string name="morphe_flair_filters_empty">No flair filters</string>
+    <string name="morphe_flair_filters_add">Add</string>
+    <string name="morphe_flair_filters_remove">Remove</string>
+    <string name="morphe_flair_filters_hint">community::flair</string>
+    <string name="morphe_flair_filters_invalid">Enter a community and a flair, for example gaming::Discussion</string>
+    <string name="morphe_flair_filters_saved">Refresh the feed to apply the changes</string>
+    <string name="morphe_flair_filters_remember_seen_title">Remember seen flairs</string>
+    <string name="morphe_flair_filters_remember_seen_summary">Remember the flairs of feed posts until the app closes, to choose flair filters from them</string>
+    <string name="morphe_flair_filters_seen_title">Choose seen flairs</string>
+    <string name="morphe_flair_filters_seen_summary">Choose flair filters from the flairs of feed posts</string>
+    <string name="morphe_flair_filters_seen_empty">No flairs seen yet. Turn on Remember seen flairs and browse the feed</string>
+
     <string name="morphe_screen_layout_title">Layout</string>
     <string name="morphe_copy_text_title">Copy text</string>
     <string name="morphe_copy_text_summary">Allows selecting and copying text in posts and comments. Disables collapsing comments</string>
@@ -83,16 +98,6 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_remove_nsfw_dialog_summary">Automatically accepts the NSFW content warning when visiting a subreddit</string>
 
     <string name="morphe_screen_miscellaneous_title">Miscellaneous</string>
-    <string name="morphe_flair_filters_title">Flair filters</string>
-    <string name="morphe_flair_filters_summary">Add, edit, or remove community::flair rules, for example gaming::Discussion</string>
-    <string name="morphe_flair_filters_hint">community::flair</string>
-    <string name="morphe_flair_filters_invalid">Use community::flair</string>
-    <string name="morphe_flair_filters_collect_title">Collect flair choices while browsing</string>
-    <string name="morphe_flair_filters_collect_summary">Remember observed flairs for the picker. Turn this off and clear all flair rules to disable flair-filter work.</string>
-    <string name="morphe_flair_filters_observed_title">Choose observed flairs</string>
-    <string name="morphe_flair_filters_observed_summary">Block or unblock observed flairs separately for each community</string>
-    <string name="morphe_flair_filters_observed_empty">Browse posts with flair collection enabled, or add community::flair rules manually</string>
-    <string name="morphe_flair_filters_blocked_title">Blocked flairs</string>
     <string name="morphe_about_title">About</string>
     <string name="morphe_about_summary">Patch version and official links</string>
     <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
@@ -124,7 +129,7 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_download_location_folder_default_short">Default</string>
     <string name="morphe_download_location_subfolder_hint">Subfolder</string>
     <string name="morphe_download_location_subfolder_tree_hint">Add subfolders with / in the file name</string>
-    <string name="morphe_download_location_browse">Browseâ€¦</string>
+    <string name="morphe_download_location_browse">Browse…</string>
     <string name="morphe_download_location_no_picker">No folder picker is available on this device</string>
     <string name="morphe_download_location_pattern_title">File name</string>
     <string name="morphe_download_location_pattern_hint">Reddit\'s file name</string>
@@ -157,11 +162,4 @@ To use an older version, you must &lt;b>uninstall&lt;/b> Reddit and then install
     <string name="morphe_app_icon_choose_title">Choose app icon</string>
     <string name="morphe_app_icon_default">Default</string>
     <string name="morphe_app_icon_unknown">Unknown</string>
-    <string name="morphe_content_filters_title">Filters</string>
-    <string name="morphe_content_filters_edit">Edit</string>
-    <string name="morphe_content_filters_remove">Remove</string>
-    <string name="morphe_content_filters_add">Add</string>
-    <string name="morphe_content_filters_close">Close</string>
-    <string name="morphe_content_filters_empty">Enter a rule</string>
-    <string name="morphe_content_filters_saved">Filters saved. Refresh the feed to apply changes.</string>
 </resources>
