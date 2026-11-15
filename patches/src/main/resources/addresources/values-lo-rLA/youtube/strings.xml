@@ -773,6 +773,10 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">ເປີດຄິວ</string>
   <string name="morphe_queue_manager_save_queue">ບັນທຶກຄິວໄວ້ໃນລາຍການຫຼິ້ນ</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">ສະແດງປຸ່ມລາຍຄິວໃນຮູບຕົວຢ່າງ</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">ປຸ່ມລາຍຄິວຈະຖືກສະແດງໃນຮູບຕົວຢ່າງຂອງວິດີໂອໃນ feed. ການແຕະປຸ່ມນີ້ຈະເພີ່ມວິດີໂອໄປທີ່ທ້າຍຂອງລາຍຄິວ, ແລະ ການແຕະຄ້າງໄວ້ຈະຫຼິ້ນວິດີໂອລຳດັບຖັດໄປ</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">ສະຫຼັບການເຮັດວຽກຂອງລາຍຄິວໃນຮູບຕົວຢ່າງ</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">ການແຕະປຸ່ມລາຍຄິວຈະຫຼິ້ນວິດີໂອລຳດັບຖັດໄປ, ແລະ ການແຕະຄ້າງໄວ້ຈະເພີ່ມວິດີໂອໄປທີ່ທ້າຍຂອງລາຍຄິວ</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">ໂຫຼດໜ້າລໍ列ຄິວໃນຂະນະທີ່ເລື່ອນ</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">ໂຫຼດວິດີໂອໃນລາຍການຫຼິ້ນເພີ່ມເຕີມ ເມື່ອເລື່ອນໄປໃກ້ຈະໝົດຄິວ</string>
   <string name="morphe_native_playlist_queue_saved">ບັນທຶກລາຍການຫຼິ້ນແລ້ວ</string>
@@ -1129,6 +1133,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">ປິດໂໝດ Ambient ໃນໜ້າຈໍເຕັມ</string>
   <string name="morphe_enhanced_ambient_mode_title">ໂໝດ Ambient ທີ່ປັບປຸງໃໝ່</string>
   <string name="morphe_enhanced_ambient_mode_summary">ເຮັດໃຫ້ໜ້າເບິ່ງວິດີໂອທັງໝົດ ແລະ ແຖບສີດຳມີແສງຕາມວິດີໂອ ເພື່ອໃຊ້ແທນໂໝດ Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">ຄວາມເຂັ້ມຂອງແສງ</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">ຄວາມເຂັ້ມຂອງແສງໃນໜ້າໂມງ ແລະ ແຖບສີດຳ</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">ການເຮັດໃຫ້ແສງນຸ້ມນວນ</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">ໄລຍະເວລາທີ່ແສງໃຊ້ເພື່ອຕິດຕາມວິດີໂອ. ຖ້າເປັນ 0 ມັນຈະຕິດຕາມວິດີໂອຢ່າງໃກ້ຊິດ</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">ຄວາມມົວຂອງແສງ</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">ລະດັບຄວາມມົວຂອງແສງທີ່ຢູ່ຂ້າງວິດີໂອ. ຖ້າເປັນ 0 ມັນຈະຮັກສາຮູບຮ່າງຂອງວິດີໂອໄວ້</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">ຮັກສາໃຫ້ຂໍ້ຄວາມອ່ານໄດ້ງ່າຍ</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">ຫຼຸດແສງໃນວິດີໂອທີ່ມີຄວາມສະຫວ່າງຫຼາຍ ເພື່ອໃຫ້ຂໍ້ຄວາມໃນໜ້າຍັງຄົງອ່ານໄດ້ງ່າຍ</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">ຫຼຸດແສງໃນຂະນະທີ່ເລື່ອນ</string>
@@ -1502,6 +1512,65 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ (ລະຫັດສະຖານະ: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow ບໍ່ສາມາດໃຊ້ງານໄດ້ຊົ່ວຄາວ</string>
+  <string name="morphe_dearrow_vote_button_title">ສະແດງປຸ່ມ DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">ເພີ່ມປຸ່ມໄວ້ທາງເທິງຂອງເຄື່ອງຫຼິ້ນວິດີໂອ ເພື່ອລົງຄະແນນສຽງໃຫ້ກັບຫົວຂໍ້ ແລະ ຮູບຕົວຢ່າງຂອງ DeArrow, ຫຼື ສົ່ງອັນໃໝ່</string>
+  <string name="morphe_dearrow_guidelines_title">ຄຳແນະນຳ</string>
+  <string name="morphe_dearrow_guidelines_summary">ຄຳແນະນຳປະກອບມີກົດລະບຽບ ແລະ ເຄັດລັບໃນການສົ່ງ ແລະ ລົງຄະແນນສຽງໃຫ້ກັບຫົວຂໍ້ ແລະ ຮູບຕົວຢ່າງ</string>
+  <string name="morphe_dearrow_guidelines_popup_title">ປະຕິບັດຕາມຄຳແນະນຳ</string>
+  <string name="morphe_dearrow_guidelines_popup_content">ອ່ານຄຳແນະນຳຂອງ DeArrow ກ່ອນຈະສົ່ງ ຫຼື ລົງຄະແນນໃຫ້ຫົວຂໍ້ ແລະ ຮູບຕົວຢ່າງ</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">ອ່ານແລ້ວ</string>
+  <string name="morphe_dearrow_guidelines_popup_open">ສະແດງໃຫ້ຂ້ອຍເບິ່ງ</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">ກຳລັງໂຫຼດ…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">ບໍ່ສາມາດໂຫຼດຫົວຂໍ້ ແລະ ຮູບຕົວຢ່າງຂອງວິດີໂອນີ້ໄດ້</string>
+  <string name="morphe_dearrow_vote_titles">ຫົວຂໍ້</string>
+  <string name="morphe_dearrow_vote_thumbnails">ຮູບຕົວຢ່າງ</string>
+  <string name="morphe_dearrow_vote_no_titles">ຍັງບໍ່ມີຫົວຂໍ້. ສົ່ງຫົວຂໍ້ເພື່ອເປັນຄົນທຳອິດ</string>
+  <string name="morphe_dearrow_vote_original_title">ຫົວຂໍ້ດັ້ງເດີມ</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">ຮູບຕົວຢ່າງດັ້ງເດີມ</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">ເຟຣມທີ່ %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">ຄະແນນ: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">ຍັງບໍ່ໄດ້ຢືນຢັນ</string>
+  <string name="morphe_dearrow_vote_locked">ຖືກລັອກ</string>
+  <string name="morphe_dearrow_vote_upvote">ໂຫວດໃຫ້</string>
+  <string name="morphe_dearrow_vote_downvote">ໂຫວດຕ້ານ</string>
+  <string name="morphe_dearrow_vote_new_title">ຫົວຂໍ້ໃໝ່</string>
+  <string name="morphe_dearrow_vote_new_title_hint">ພິມຫົວຂໍ້</string>
+  <string name="morphe_dearrow_vote_submit">ສົ່ງ</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">ຮູບຕົວຢ່າງໃໝ່</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s ວິນາທີ</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">ສົ່ງເຟຣມທີ່ %s ເປັນຮູບຕົວຢ່າງບໍ?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">ວິດີໂອກໍາລັງຫຼິ້ນຢູ່. ເພື່ອສົ່ງເຟຣມທີ່ທ່ານເຫັນ, ໃຫ້ຢຸດວິດີໂອກ່ອນ</string>
+  <string name="morphe_dearrow_vote_upvoted">ສົ່ງການລົງຄະແນນໃຫ້ DeArrow ແລ້ວ</string>
+  <string name="morphe_dearrow_vote_downvoted">ສົ່ງການໃຫ້ຄະແນນລົບໄປຍັງ DeArrow ແລ້ວ</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow ບໍ່ຍອມຮັບການໃຫ້ຄະແນນ: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">ລາຍການນີ້ຖືກລັອກໄວ້ ແລະ ສາມາດໃຫ້ຄະແນນລົບໄດ້ໂດຍຜູ້ໃຊ້ VIP ເທົ່ານັ້ນ</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">ການໃຫ້ຄະແນນສຳລັບວິດີໂອນີ້ຍັງດຳເນີນການຢູ່. ກະລຸນາລອງໃໝ່ໃນອີກສັກຄາວ</string>
+  <string name="morphe_dearrow_vote_failed_code">ບໍ່ສາມາດສົ່ງການໃຫ້ຄະແນນໄດ້ (ລະຫັດສະຖານະ: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">ບໍ່ສາມາດສົ່ງການໃຫ້ຄະແນນໄດ້. ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ຂອງທ່ານ ແລະ ລອງໃໝ່</string>
+  <string name="morphe_dearrow_submitting_title">ກຳລັງສົ່ງຫົວຂໍ້ ແລະ ຮູບຕົວຢ່າງ</string>
+  <string name="morphe_dearrow_vote_time_step_title">ຂັ້ນຕອນການປັບປຸງເວລາ</string>
+  <string name="morphe_dearrow_vote_time_step_summary">ຈຳນວນການຊອກຫາຂອງປຸ່ມປັບປຸງເວລາລະອຽດ ເມື່ອສົ່ງຮູບຕົວຢ່າງ (ເປັນມິນລິວິນາທີ)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">ຄ່າຕ້ອງເປັນຕົວເລກບວກ</string>
+  <string name="morphe_dearrow_private_user_id_title">ໄອດີຜູ້ໃຊ້ສ່ວນຕົວຂອງທ່ານ</string>
+  <string name="morphe_dearrow_private_user_id_summary">ໄອດີຜູ້ໃຊ້ດຽວກັນກັບ SponsorBlock. ສິ່ງນີ້ຄວນຖືກເກັບເປັນຄວາມລັບ. ມັນຄືກັບລະຫັດຜ່ານ ແລະ ບໍ່ຄວນແບ່ງປັນໃຫ້ໃຜ. ຖ້າມີໃຜມີສິ່ງນີ້, ເຂົາເຈົ້າສາມາດປອມເປັນຕົວທ່ານໄດ້</string>
+  <string name="morphe_dearrow_private_user_id_invalid">ໄອດີຜູ້ໃຊ້ສ່ວນຕົວຕ້ອງມີຄວາມຍາວຢ່າງໜ້ອຍ 30 ຕົວອັກສອນ</string>
+  <string name="morphe_dearrow_account_loading">ກຳລັງໂຫຼດ…</string>
+  <string name="morphe_dearrow_account_connection_failure">ລາຍລະອຽດບັນຊີບໍ່ສາມາດນຳໃຊ້ໄດ້ຊົ່ວຄາວ</string>
+  <string name="morphe_dearrow_account_username">ຊື່ຜູ້ໃຊ້ຂອງທ່ານ: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">ແຕະບ່ອນນີ້ເພື່ອປ່ຽນຊື່ຜູ້ໃຊ້ຂອງທ່ານ. ຊື່ຜູ້ໃຊ້ແມ່ນຊື່ດຽວກັນກັບໃນ SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">ປ່ຽນຊື່ຜູ້ໃຊ້ສຳເລັດແລ້ວ</string>
+  <string name="morphe_dearrow_account_username_change_error">ບໍ່ສາມາດປ່ຽນຊື່ຜູ້ໃຊ້ໄດ້: ສະຖານະ: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">ທ່ານໄດ້ສົ່ງຫົວຂໍ້ &lt;b&gt;%s&lt;/b&gt; ລາຍການ</string>
+  <string name="morphe_dearrow_account_titles_summary">ແຕະບ່ອນນີ້ເພື່ອເບິ່ງຫົວຂໍ້ຂອງທ່ານ</string>
+  <string name="morphe_dearrow_account_thumbnails">ທ່ານໄດ້ສົ່ງຮູບຕົວຢ່າງ &lt;b&gt;%s&lt;/b&gt; ຮູບ</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">ແຕະບ່ອນນີ້ເພື່ອເບິ່ງຮູບຕົວຢ່າງຂອງທ່ານ</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">ກູ້ຄືນຮູບແບບປຸ່ມເຄື່ອງຫຼິ້ນແບບເກົ່າ</string>
   <string name="morphe_restore_old_player_buttons_summary">ປ່ຽນປຸ່ມຄວບຄຸມເຄື່ອງຫຼິ້ນວິດີໂອແບບໜາ ໃຫ້ກັບໄປເປັນຮູບແບບທີ່ບາງກວ່າໃນສະບັບກ່ອນ</string>

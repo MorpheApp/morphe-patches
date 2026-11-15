@@ -31,7 +31,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -432,20 +431,11 @@ public class StreamingDataRequest {
     }
 
     /**
-     * Videos whose streams of the Mobile Web client could not be played, so their next fetch uses the next client.
-     */
-    private static final Set<String> webClientFailedVideos = Collections.synchronizedSet(
-            Collections.newSetFromMap(Utils.createSizeRestrictedMap(100)));
-
-    /**
      * Called when the streams of the Mobile Web client of a video cannot be played.
-     * The fetch of the video is not reused, so the video is played with the next client when it is loaded again.
-     * Only that fetch skips the client: the video uses it again when it is opened later.
+     * The fetch of the video is not reused, so when the video is loaded again, such as when the player is
+     * started again, the Mobile Web client is used again with a new session of the website.
      */
     public static void onWebClientFailed(String videoId, String reason) {
-        if (!webClientFailedVideos.add(videoId)) {
-            return;
-        }
         Logger.printDebug(() -> "Mobile Web cannot play: " + videoId + " reason: " + reason);
         synchronized (cache) {
             StreamingDataRequest request = cache.get(videoId);
@@ -456,18 +446,6 @@ public class StreamingDataRequest {
                 }
             }
         }
-    }
-
-    /**
-     * @return If the Mobile Web client is not used for this fetch of the video,
-     *         since its streams could not be played just before.
-     */
-    private static boolean skipWebClient(ClientType client, String videoId) {
-        if (client.isWebClient() && webClientFailedVideos.remove(videoId)) {
-            Logger.printDebug(() -> "Skipping Mobile Web for this fetch, since it could not play: " + videoId);
-            return true;
-        }
-        return false;
     }
 
     /**
@@ -495,8 +473,33 @@ public class StreamingDataRequest {
             return true;
         }
         final long age = System.currentTimeMillis() - fetchStartTime;
-        return age < MAX_MILLISECONDS_TO_REUSE_FAILED_FETCH
-                || (age < MAX_MILLISECONDS_TO_REUSE_STREAMS && getStream() != null);
+        if (age < MAX_MILLISECONDS_TO_REUSE_FAILED_FETCH) {
+            return true;
+        }
+        StreamData stream = getStream();
+        // The streams of a client used because the Mobile Web client could not play the video are not reused,
+        // so when the video is played again, such as when the player is started again, the Mobile Web client
+        // is used again with a new session of the website.
+        return age < MAX_MILLISECONDS_TO_REUSE_STREAMS && stream != null && !isWebClientFallback(stream.client());
+    }
+
+    /**
+     * @return If the client comes after the Mobile Web client in the order of this fetch,
+     *         so the streams are of the client used because the Mobile Web client could not play the video.
+     */
+    private boolean isWebClientFallback(ClientType client) {
+        if (client.isWebClient()) {
+            return false;
+        }
+        for (ClientType orderClient : clientOrder) {
+            if (orderClient == client) {
+                return false;
+            }
+            if (orderClient.isWebClient() && !skipClient(orderClient)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -616,7 +619,7 @@ public class StreamingDataRequest {
                 }
             }
             // These clients can play videos without the auth header:
-            // TV_SABR, TV_SIMPLY, VISIONOS_1_02 (VISIONOS_1_03), VISIONOS_1_06.
+            // TV_SABR, TV_SIMPLY, VISIONOS_1_02 (VISIONOS_1_03), VISIONOS_1_06 (VISIONOS_1_06_AV1).
             else {
                 Logger.printDebug(() -> "Do not set auth header: " + clientType + ", videoId: " + videoId);
             }
@@ -968,7 +971,7 @@ public class StreamingDataRequest {
         // Retry with different client if empty response body is received.
         int i = 0;
         for (ClientType clientType : clientOrder) {
-            if (skipClient(clientType) || skipWebClient(clientType, videoId)) {
+            if (skipClient(clientType)) {
                 continue;
             }
 

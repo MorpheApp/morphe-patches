@@ -76,6 +76,7 @@ public final class FeedVideoCardsPatch {
             // FeedVideoActionsPatch is given every card, so its long press also works
             // when its own features are the only ones on.
             || Settings.FEED_LONG_PRESS_MENU.get()
+            || FeedVideoActionsPatch.QUEUE_BUTTON_ENABLED
             || PostImageDownloadPatch.ENABLED
             || PostTranslatePatch.ENABLED;
 
@@ -89,7 +90,8 @@ public final class FeedVideoCardsPatch {
             && (FeedEngagementCountsPatch.ENABLED
             || FeedViewCountPatch.ENABLED
             || Settings.FEED_WATCH_LATER_BUTTON.get()
-            || Settings.FEED_LONG_PRESS_MENU.get());
+            || Settings.FEED_LONG_PRESS_MENU.get()
+            || FeedVideoActionsPatch.QUEUE_BUTTON_ENABLED);
 
     /**
      * A card must be as wide as a card of a grid of up to three columns, such as the feed in landscape.
@@ -954,7 +956,7 @@ public final class FeedVideoCardsPatch {
      * Smallest thumbnail beside the texts, such as of the rows of a list on phones,
      * which fits the compact like count at the top of the thumbnail.
      */
-    private static final int MIN_SIDE_THUMBNAIL_WIDTH_DP = 120;
+    public static final int MIN_SIDE_THUMBNAIL_WIDTH_DP = 120;
 
     /** How far the height of a thumbnail beside the texts may differ from 16:9, relative to its height. */
     private static final float SIDE_THUMBNAIL_RATIO_TOLERANCE = 0.1f;

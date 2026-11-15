@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -54,9 +55,18 @@ public final class MwebStream {
     private static final int STATUS_ATTESTATION_REQUIRED = 3;
 
     /**
-     * Streams that are kept. A few, so the streams of the last videos are not lost while their player is still open.
+     * A player can use its stream for as long as the stream url is valid, which is some hours.
+     * For example a video waits in the miniplayer while Shorts are watched, and each Short has its own stream,
+     * so a stream is kept until its url expires, and not only while it is one of the last streams.
+     * This limit only bounds the memory, since a stream takes up to about 12 kilobytes,
+     * and past it the streams not used for the longest time are forgotten.
      */
-    private static final int MAX_STREAMS = 10;
+    private static final int MAX_STREAMS = 300;
+
+    /**
+     * How long a stream is kept if its url has no expiration time.
+     */
+    private static final long DEFAULT_STREAM_LIFETIME_MILLISECONDS = 6 * 60 * 60 * 1000;
 
     /**
      * Headers of the app that name the app, which are replaced with the headers of the website.
@@ -85,7 +95,17 @@ public final class MwebStream {
      */
     private volatile MwebSiteSession.Session session;
 
+    /**
+     * {@link System#currentTimeMillis()} when the url of the stream expires.
+     */
+    private volatile long expireTime;
+
     private final SabrContexts contexts = new SabrContexts();
+
+    /**
+     * If the streams were found unplayable, which is reported once.
+     */
+    private volatile boolean failed;
 
     /**
      * The last stream protection status, or -1 if none was given yet.
@@ -95,7 +115,22 @@ public final class MwebStream {
 
     private MwebStream(String videoId, MwebSiteSession.Session session) {
         this.videoId = videoId;
+        setSession(session);
+    }
+
+    private void setSession(MwebSiteSession.Session session) {
         this.session = session;
+        long expireTime = System.currentTimeMillis() + DEFAULT_STREAM_LIFETIME_MILLISECONDS;
+        try {
+            // Seconds since the epoch.
+            String expire = Uri.parse(session.serverAbrStreamingUrl).getQueryParameter("expire");
+            if (expire != null) {
+                expireTime = Long.parseLong(expire) * 1000;
+            }
+        } catch (NumberFormatException ex) {
+            Logger.printInfo(() -> "Mobile Web stream url has an invalid expiration time", ex);
+        }
+        this.expireTime = expireTime;
     }
 
     /**
@@ -108,9 +143,18 @@ public final class MwebStream {
             return;
         }
         synchronized (streams) {
+            final long now = System.currentTimeMillis();
+            Iterator<MwebStream> iterator = streams.values().iterator();
+            while (iterator.hasNext()) {
+                if (iterator.next().expireTime < now) {
+                    iterator.remove();
+                }
+            }
+
             MwebStream stream = streams.get(streamId);
             if (stream != null && stream.videoId.equals(videoId)) {
-                stream.session = session;
+                stream.setSession(session);
+                stream.failed = false;
             } else {
                 streams.put(streamId, new MwebStream(videoId, session));
             }
@@ -215,14 +259,20 @@ public final class MwebStream {
         }
         if (status == STATUS_ATTESTATION_REQUIRED) {
             onFailure("attestation required");
-        } else if (status == STATUS_ATTESTATION_PENDING && previous < 0) {
+        } else if (status == STATUS_ATTESTATION_PENDING && previous < 0 && !session.coldStart) {
             // The session the website made is accepted from the first response.
             // If it is not, the server stops the stream after some media, so the next client is used sooner.
+            // A session taken at the cold start of the website is pending until the website sends its PoToken,
+            // as in the browser.
             onFailure("attestation pending at the start");
         }
     }
 
     private void onFailure(String reason) {
+        if (failed) {
+            return;
+        }
+        failed = true;
         StreamingDataRequest.onWebClientFailed(videoId, reason);
     }
 

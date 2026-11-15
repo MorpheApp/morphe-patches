@@ -773,6 +773,10 @@ Info: Funktioniert möglicherweise nicht bei Livestreams"</string>
   <string name="morphe_queue_manager_open_queue">Warteschlange öffnen</string>
   <string name="morphe_queue_manager_save_queue">Warteschlange in Wiedergabeliste speichern</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Warteschlangen-Button auf Thumbnails anzeigen</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Auf den Thumbnails von Feed-Videos wird ein Warteschlangen-Button angezeigt. Durch Antippen wird das Video am Ende der Warteschlange hinzugefügt, durch Gedrückthalten wird es als nächstes abgespielt</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Warteschlangenaktionen für Thumbnails tauschen</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Durch Antippen des Warteschlangen-Buttons wird das Video als nächstes abgespielt, durch Gedrückthalten wird es am Ende der Warteschlange hinzugefügt</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Warteschlangenseiten beim Scrollen laden</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Lädt weitere Playlist-Videos, wenn man in der Nähe des Endes der Warteschlange scrollt</string>
   <string name="morphe_native_playlist_queue_saved">Playlist gespeichert</string>
@@ -1129,6 +1133,12 @@ Um das Menü anzuzeigen, ändere \"Video-Streams vortäuschen\" in einen beliebi
   <string name="morphe_disable_fullscreen_ambient_mode_title">Ambient-Modus im Vollbildmodus deaktivieren</string>
   <string name="morphe_enhanced_ambient_mode_title">Erweiterter Ambient-Modus</string>
   <string name="morphe_enhanced_ambient_mode_summary">Beleuchtet die gesamte Wiedergabeseite und die schwarzen Balken mit dem Video anstelle des Ambient-Modus</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Lichtstärke</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Wie stark das Licht auf der Watchface-Seite und den schwarzen Balken ist</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Lichtglättung</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Wie lange das Licht braucht, um dem Video zu folgen. Bei 0 folgt es dem Video eng</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Lichtunschärfe</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Wie stark das Licht neben dem Video weichgezeichnet wird. Bei 0 bleiben die Formen des Videos erhalten</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Text lesbar halten</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dimmt das Licht bei hellen Videos, damit der Text auf der Seite lesbar bleibt</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Beim Scrollen dimmen</string>
@@ -1502,6 +1512,65 @@ Videos werden über ein kurzes Präfix der gehashten Video-ID angefordert, sodas
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow ist vorübergehend nicht verfügbar (Statuscode: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow ist vorübergehend nicht verfügbar</string>
+  <string name="morphe_dearrow_vote_button_title">Schaltfläche „DeArrow“ anzeigen</string>
+  <string name="morphe_dearrow_vote_button_summary">Fügt oben im Videoplayer eine Schaltfläche hinzu, um über DeArrow-Titel und -Vorschaubilder abzustimmen oder neue einzureichen</string>
+  <string name="morphe_dearrow_guidelines_title">Richtlinien</string>
+  <string name="morphe_dearrow_guidelines_summary">Die Richtlinien enthalten Regeln und Tipps zum Einreichen und Abstimmen von Titeln und Vorschaubildern</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Halte dich an die Richtlinien</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Lies die DeArrow-Richtlinien, bevor du Titel und Thumbnails einreichst oder bewertest</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Bereits gelesen</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Anzeigen</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Lädt…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Die Titel und Thumbnails dieses Videos konnten nicht geladen werden</string>
+  <string name="morphe_dearrow_vote_titles">Titel</string>
+  <string name="morphe_dearrow_vote_thumbnails">Vorschaubilder</string>
+  <string name="morphe_dearrow_vote_no_titles">Noch keine Titel vorhanden. Reiche einen Titel ein, um der Erste zu sein</string>
+  <string name="morphe_dearrow_vote_original_title">Originaltitel</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Original-Vorschaubild</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Frame bei %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Punktzahl: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Unbestätigt</string>
+  <string name="morphe_dearrow_vote_locked">Gesperrt</string>
+  <string name="morphe_dearrow_vote_upvote">Gut bewerten</string>
+  <string name="morphe_dearrow_vote_downvote">Schlecht bewerten</string>
+  <string name="morphe_dearrow_vote_new_title">Neuer Titel</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Titel eingeben</string>
+  <string name="morphe_dearrow_vote_submit">Absenden</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Neues Vorschaubild</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Das Frame bei %s als Vorschaubild einreichen?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Das Video wird gerade abgespielt. Um das aktuelle Frame einzureichen, pausieren Sie bitte zuerst das Video</string>
+  <string name="morphe_dearrow_vote_upvoted">Stimme an DeArrow übermittelt</string>
+  <string name="morphe_dearrow_vote_downvoted">Negative Stimme an DeArrow übermittelt</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow hat die Stimme nicht akzeptiert: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Dies ist gesperrt und kann nur von VIP-Benutzern mit einer negativen Stimme bewertet werden</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Eine Abstimmung für dieses Video ist noch im Gange. Versuche es in einem Moment erneut</string>
+  <string name="morphe_dearrow_vote_failed_code">Die Abstimmung konnte nicht übermittelt werden (Statuscode: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Die Abstimmung konnte nicht übermittelt werden. Überprüfe deine Verbindung und versuche es erneut</string>
+  <string name="morphe_dearrow_submitting_title">Titel und Thumbnails werden übermittelt</string>
+  <string name="morphe_dearrow_vote_time_step_title">Zeitschrittweite</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Spulbetrag der Schaltflächen zur Feinabstimmung der Zeit beim Übermitteln eines Thumbnails (in Millisekunden)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Wert muss eine positive Zahl sein</string>
+  <string name="morphe_dearrow_private_user_id_title">Deine private Benutzer-ID</string>
+  <string name="morphe_dearrow_private_user_id_summary">Die gleiche Benutzer-ID wie bei SponsorBlock. Diese sollte vertraulich behandelt werden. Das ist wie ein Passwort und sollte mit niemandem geteilt werden. Wenn jemand das hat, kann er sich für dich ausgeben</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Private Benutzer-ID muss mindestens 30 Zeichen lang sein</string>
+  <string name="morphe_dearrow_account_loading">Lädt…</string>
+  <string name="morphe_dearrow_account_connection_failure">Kontodetails sind vorübergehend nicht verfügbar</string>
+  <string name="morphe_dearrow_account_username">Dein Benutzername: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Tippe hier, um deinen Benutzernamen zu ändern. Der Benutzername ist derselbe wie bei SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Benutzername wurde geändert</string>
+  <string name="morphe_dearrow_account_username_change_error">Benutzername konnte nicht geändert werden; Status: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Du hast &lt;b&gt;%s&lt;/b&gt; Titel eingereicht</string>
+  <string name="morphe_dearrow_account_titles_summary">Tippe hier, um deine Titel anzuzeigen</string>
+  <string name="morphe_dearrow_account_thumbnails">Du hast &lt;b&gt;%s&lt;/b&gt; Thumbnails eingereicht</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Tippe hier, um deine Thumbnails anzuzeigen</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Alten Player-Button-Stil wiederherstellen</string>
   <string name="morphe_restore_old_player_buttons_summary">Stellt die fettgedruckten Videoplayer-Schaltflächen in den älteren, dünneren visuellen Stil zurück</string>
@@ -1780,6 +1849,7 @@ Die automatische Aufzeichnung ist optional. Sie stoppt im Inkognito-Modus oder w
   <string name="morphe_series_tracker_episode_order">Episodensortierung</string>
   <string name="morphe_series_tracker_playlist_order">Playlist-Sortierung</string>
   <string name="morphe_series_tracker_reverse_order">Playlist-Reihenfolge umkehren</string>
+  <string name="morphe_series_tracker_view_count">%s Aufrufe</string>
   <string name="morphe_series_tracker_view_count_one">%s Aufruf</string>
   <string name="morphe_series_tracker_completion_title">Episoden als gesehen markieren</string>
   <string name="morphe_series_tracker_completion_summary">Mindestens %1$s%% angesehen, wobei höchstens noch 90 Sekunden übrig sind, oder %2$s Sekunden Restzeit</string>

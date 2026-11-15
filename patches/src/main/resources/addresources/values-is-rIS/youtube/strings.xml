@@ -772,6 +772,10 @@ Athugið: Virkar ekki alltaf í beinum streymum"</string>
   <string name="morphe_queue_manager_open_queue">Opna biðröð</string>
   <string name="morphe_queue_manager_save_queue">Vista biðröð á spilunarlista</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Sýna hnapp biðröðar á smámyndum</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Hnappur biðröðar birtist á smámyndum myndbanda í feed-inu. Með því að smella á hann bætist myndbandið í lok biðröðarinnar og með því að smella og halda áfram spilar myndbandið næst</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Skipta um aðgerðir biðröðar á smámyndum</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Með því að smella á hnapp biðröðar spilar myndbandið næst og með því að smella og halda áfram bætist myndbandið í lok biðröðarinnar</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Hlaða síðum raðarinnar við skrolling</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Hlaðar fleiri myndböndum í spilunalista þegar skrollað er nálægt enda raðarinnar</string>
   <string name="morphe_native_playlist_queue_saved">Spilunarlisti vistaður</string>
@@ -1128,6 +1132,12 @@ Til að sýna valmyndina 'Hljóðrás', breyttu 'Falsa myndstrauma' í hvaða bi
   <string name="morphe_disable_fullscreen_ambient_mode_title">Slökkva á umhverfisstillingu í fullskjá</string>
   <string name="morphe_enhanced_ambient_mode_title">Uppbætt Ambient-stilling</string>
   <string name="morphe_enhanced_ambient_mode_summary">Lýsir upp allri horfunsíðunni og svörtum ramma með litum myndbandsins í stað Ambient-stillingar</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Styrkur ljóssins</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Hversu sterkt ljósið er á horlofansíðunni og svörtum stöngum</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Sléttun ljóss</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Hversu lengi ljósið tekur að fylgja myndbandinu. Með 0 fylgir það myndbandinu náið</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Óskýrleiki ljóss</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Hversu mikið ljósið við hliðina á myndbandinu er óskýrt. Með 0 varðveitir það lögun myndbandsins</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Halda texta læsilegum</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dimmar ljósið á björtum myndböndum svo textinn á síðunni haldi sér læsilegum</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Dökkva við skrollingu</string>
@@ -1501,6 +1511,65 @@ Myndskeið eru beðin um með stuttu forskeyti af dulkóðuðu myndskeiðsauðke
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow er tímabundið ótiltækt (stöðukóði: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow er tímabundið ótiltækt</string>
+  <string name="morphe_dearrow_vote_button_title">Sýna DeArrow-hnappinn</string>
+  <string name="morphe_dearrow_vote_button_summary">Bætir hnappi efst í myndspilaranum til að greiða fyrir atkvæðagjöf um DeArrow-titla og þumblísteinar, eða senda inn nýja</string>
+  <string name="morphe_dearrow_guidelines_title">Leiðbeiningar</string>
+  <string name="morphe_dearrow_guidelines_summary">Leiðbeiningarnar innihalda reglur og ráð fyrir því að senda inn og greiða fyrir atkvæðagjöf um titla og þumblísteina</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Fylgdu leiðbeiningunum</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Lestu DeArrow leiðbeiningarnar áður en þú sendir inn eða greiðir atkvæði fyrir titla og þumblínur</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Þegar lesið</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Sýndu mér</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Hleð…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Gat ekki hlaðið titlum og þumblínum fyrir þetta myndband</string>
+  <string name="morphe_dearrow_vote_titles">Titlar</string>
+  <string name="morphe_dearrow_vote_thumbnails">Þumblínur</string>
+  <string name="morphe_dearrow_vote_no_titles">Engir titlar enn. Sendu inn titil til að vera fyrstur</string>
+  <string name="morphe_dearrow_vote_original_title">Upprunalegur titill</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Upprunaleg mynd</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Ramma á %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Stig: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Óstaðfest</string>
+  <string name="morphe_dearrow_vote_locked">Lokað</string>
+  <string name="morphe_dearrow_vote_upvote">Atkvæði upp</string>
+  <string name="morphe_dearrow_vote_downvote">Atkvæði niður</string>
+  <string name="morphe_dearrow_vote_new_title">Nýr titill</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Sláðu inn titil</string>
+  <string name="morphe_dearrow_vote_submit">Senda</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Ný mynd</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Senda ramma við %s sem þumbnaill?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Vídeóið er að spila. Til að senda ramma sem þú sérð, þarf aðnema vídeóið fyrst</string>
+  <string name="morphe_dearrow_vote_upvoted">Atkvæði sendt til DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Neikvitt atkvæði sendt til DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow tók ekki við atkvæðinu: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Þetta er læst og aðeins VIP-notendur geta gefið neikveða</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Atkvæðagjöf fyrir þetta myndband er enn í gangi. Reyndu aftur eftir stundu</string>
+  <string name="morphe_dearrow_vote_failed_code">Tókst ekki að senda atkvæði (stöðukóði: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Tókst ekki að senda atkvæði. Athugaðu tenginguna og reyndu aftur</string>
+  <string name="morphe_dearrow_submitting_title">Sendingu titla og þumbna</string>
+  <string name="morphe_dearrow_vote_time_step_title">Skref tímastillingar</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Leitarsvið fínstillingarhnappa fyrir tíma við sendingu á þumbnu (í millisekúndum)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Gildið verður að vera jákvæð tala</string>
+  <string name="morphe_dearrow_private_user_id_title">Persónulegt notendaauðkenni þitt</string>
+  <string name="morphe_dearrow_private_user_id_summary">Sama notandakenni og hjá SponsorBlock. Þetta á að halda leyndu. Þetta er eins og lykilorð og á ekki að deila með neinum. Ef einhver hefur þetta getur hann/hún þóst vera þú</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Persónulegt notendaauðkenni verður að vera að minnsta kosti 30 stafir að lengd</string>
+  <string name="morphe_dearrow_account_loading">Hleð…</string>
+  <string name="morphe_dearrow_account_connection_failure">Upplýsingar um reikning eru tímabundið ekki tiltækar</string>
+  <string name="morphe_dearrow_account_username">Notandanafn þitt: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Ýttu hér til að breyta notandanafninu þínu. Notandanafninu er sama og hjá SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Notandanafn breytt</string>
+  <string name="morphe_dearrow_account_username_change_error">Ekki hægt að breyta notandanafni: Staða: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Þú hefur sent inn &lt;b&gt;%s&lt;/b&gt; titla</string>
+  <string name="morphe_dearrow_account_titles_summary">Snertu hér til að skoða titlana þína</string>
+  <string name="morphe_dearrow_account_thumbnails">Þú hefur sent inn &lt;b&gt;%s&lt;/b&gt; þumblínur</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Snertu hér til að skoða þumblínurnar þínar</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Endurheimta gamlan stíl spilarahnappa</string>
   <string name="morphe_restore_old_player_buttons_summary">Skilar djörfum stjórntækjum spilarans í eldra, grennra útlit</string>

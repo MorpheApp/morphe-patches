@@ -772,6 +772,10 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">פתח תור</string>
   <string name="morphe_queue_manager_save_queue">שמור תור לרשימת השמעה</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">הצג כפתור \'תור\' בתמונות ממוזערות</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">כפתור תור מוצג בתמונות הממוזערות של סרטונים בפיד. הקשה עליו מוסיפה את הסרטון לסוף התור, והקשה והחזקה משמיעה את הסרטון הבא</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">החלף פעולות תור בתמונה ממוזערת</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">הקשה על כפתור התור משמיעה את הסרטון הבא, והקשה והחזקה מוסיפה את הסרטון לסוף התור</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">טעינת דפי תור בגלילה</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">טוען סרטוני פלייליסט נוספים בעת גלילה לקראת סוף התור</string>
   <string name="morphe_native_playlist_queue_saved">רשימת ההשמעה נשמרה</string>
@@ -1128,6 +1132,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">השבת תאורה סביבתית במסך מלא</string>
   <string name="morphe_enhanced_ambient_mode_title">מצב תאורת אווירה משופר</string>
   <string name="morphe_enhanced_ambient_mode_summary">מאיר את כל דף הצפייה ואת הפסים השחורים באמצעות הסרטון, במקום מצב תאורת אווירה</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">עוצמת תאורה</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">מידת עוצמת התאורה בדף השעון ובפסים השחורים</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">החלקה קלה של התאורה</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">כמה זמן ייקח לתאורה לעקוב אחרי הווידאו. בערך 0 היא תעקוב אחרי הווידאו מקרוב</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">טשטוש תאורה</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">עד כמה התאורה לצד הווידאו תהיה מטושטשת. בערך 0 היא תשמור על הצורות של הווידאו</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">שמירה על קריאות הטקסט</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">מעמעם את התאורה בסרטונים בהירים כדי שהטקסט בדף יישאר קריא</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">החשכה בזמן גלילה</string>
@@ -1500,6 +1510,65 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">השירות DeArrow אינו זמין באופן זמני (קוד מצב: %s)</string>
   <string name="morphe_dearrow_error_generic">השירות DeArrow אינו זמין באופן זמני</string>
+  <string name="morphe_dearrow_vote_button_title">הצג לחצן DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">מוסיף לחצן לחלק העליון של נגן הווידאו להצבעה על כותרות ותמונות ממוזערות של DeArrow, או להגשה של כותרות ותמונות חדשות</string>
+  <string name="morphe_dearrow_guidelines_title">הנחיות</string>
+  <string name="morphe_dearrow_guidelines_summary">ההנחיות כוללות כללים וטיפים להגשה והצבעה על כותרות ותמונות ממוזערות</string>
+  <string name="morphe_dearrow_guidelines_popup_title">עקוב אחר ההנחיות</string>
+  <string name="morphe_dearrow_guidelines_popup_content">קראו את הנחיות DeArrow לפני הגשה או הצבעה על כותרות ותמונות ממוזערות</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">כבר קראתי</string>
+  <string name="morphe_dearrow_guidelines_popup_open">תראה לי</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">טוען…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">לא ניתן היה לטעון את הכותרות והתמונות הממוזערות של סרטון זה</string>
+  <string name="morphe_dearrow_vote_titles">כותרות</string>
+  <string name="morphe_dearrow_vote_thumbnails">תמונות ממוזערות</string>
+  <string name="morphe_dearrow_vote_no_titles">אין עדיין כותרות. הגש כותרת כדי להיות הראשון</string>
+  <string name="morphe_dearrow_vote_original_title">כותרת מקורית</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">תמונה ממוזערת מקורית</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">פריים ב-%s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">ניקוד: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">לא מאומת</string>
+  <string name="morphe_dearrow_vote_locked">נעול</string>
+  <string name="morphe_dearrow_vote_upvote">הצבע בעד</string>
+  <string name="morphe_dearrow_vote_downvote">הצבע נגד</string>
+  <string name="morphe_dearrow_vote_new_title">כותרת חדשה</string>
+  <string name="morphe_dearrow_vote_new_title_hint">הקלד כותרת</string>
+  <string name="morphe_dearrow_vote_submit">שלח</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">תמונה ממוזערת חדשה</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s שניות</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">האם לשלוח את הפריים ב-%s כתמונה ממוזערת?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">הסרטון פועל. כדי לשלוח את הפריים שאתה רואה, השהה תחילה את הסרטון</string>
+  <string name="morphe_dearrow_vote_upvoted">ההצבעה נשלחה ל-DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">הורדת הדירוג נשלחה ל-DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow לא קיבלה את ההצבעה: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">זה נעול, וניתן להצביע נגד רק על ידי משתמשי VIP</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">הצבעה עבור סרטון זה עדיין בתהליך. נסה שוב בעוד רגע</string>
+  <string name="morphe_dearrow_vote_failed_code">לא ניתן היה לשלוח את ההצבעה (קוד סטטוס: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">לא ניתן היה לשלוח את ההצבעה. בדוק את החיבור שלך ונסה שוב</string>
+  <string name="morphe_dearrow_submitting_title">שולח כותרות ותמונות ממוזערות</string>
+  <string name="morphe_dearrow_vote_time_step_title">שלב התאמת זמן</string>
+  <string name="morphe_dearrow_vote_time_step_summary">סכום הדילוג של כפתורי התאמת הזמן המדויקת בעת שליחת תמונה ממוזערת (במילישניות)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">ערך חייב להיות מספר חיובי</string>
+  <string name="morphe_dearrow_private_user_id_title">מזהה המשתמש הפרטי שלך</string>
+  <string name="morphe_dearrow_private_user_id_summary">אותו מזהה משתמש כמו ב-SponsorBlock. יש לשמור אותו בסוד. זהו מעין סיסמה ואין לשתף אותו עם אף אחד. אם למישהו יהיה את המזהה הזה, הוא יוכל להתחזות אליך</string>
+  <string name="morphe_dearrow_private_user_id_invalid">מזהה משתמש פרטי חייב להיות באורך של לפחות 30 תווים</string>
+  <string name="morphe_dearrow_account_loading">טוען…</string>
+  <string name="morphe_dearrow_account_connection_failure">פרטי החשבון אינם זמינים באופן זמני</string>
+  <string name="morphe_dearrow_account_username">שם המשתמש שלך: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">הקש כאן כדי לשנות את שם המשתמש שלך. שם המשתמש הוא זהה לזה שב-SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">שם משתמש שונה בהצלחה</string>
+  <string name="morphe_dearrow_account_username_change_error">לא ניתן לשנות את שם המשתמש: סטטוס: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">שלחת &lt;b&gt;%s&lt;/b&gt; כותרות</string>
+  <string name="morphe_dearrow_account_titles_summary">הקש כאן כדי להציג את הכותרות שלך</string>
+  <string name="morphe_dearrow_account_thumbnails">שלחת &lt;b&gt;%s&lt;/b&gt; תמונות ממוזערות</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">הקש כאן כדי להציג את התמונות הממוזערות שלך</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">שחזר את סגנון כפתורי הנגן הישנים</string>
   <string name="morphe_restore_old_player_buttons_summary">מחזיר את כפתורי הנגן של הסרטון לסגנון הוויזואלי הישן והדק יותר</string>

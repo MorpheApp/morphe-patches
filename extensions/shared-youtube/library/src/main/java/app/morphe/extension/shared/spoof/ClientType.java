@@ -124,6 +124,7 @@ public enum ClientType {
      * Same as {@code ANDROID_VR_SABR} but uses the latest app version.
      * The server can send another player config to a newer app version,
      * so it is experimental and the version of {@code ANDROID_VR_SABR} is not updated.
+     * AV1 codec not available.
      */
     ANDROID_VR_EXPERIMENTAL(
             ANDROID_VR_SABR.id,
@@ -193,6 +194,31 @@ public enum ClientType {
             false,
             ANDROID_XR_SABR.usePlayerEndpoint,
             "Android XR Downgraded"
+    ),
+    /**
+     * Same as {@code ANDROID_VR_EXPERIMENTAL} but with the device of {@code ANDROID_XR_SABR}.
+     * The server sends AV1 streams only to this device, whatever the app version.
+     */
+    ANDROID_XR_EXPERIMENTAL(
+            ANDROID_XR_SABR.id,
+            ANDROID_XR_SABR.clientName,
+            ANDROID_XR_SABR.packageName,
+            ANDROID_XR_SABR.deviceMake,
+            ANDROID_XR_SABR.deviceModel,
+            ANDROID_XR_SABR.osName,
+            ANDROID_XR_SABR.osVersion,
+            ANDROID_XR_SABR.androidSdkVersion,
+            ANDROID_XR_SABR.buildID,
+            ANDROID_VR_EXPERIMENTAL.clientVersion,
+            ANDROID_XR_SABR.clientPlatform,
+            ANDROID_XR_SABR.canLogin,
+            ANDROID_XR_SABR.requireLogin,
+            ANDROID_XR_SABR.supportsMultiAudioTracks,
+            ANDROID_XR_SABR.supportsOAuth2,
+            ANDROID_XR_SABR.supportsVRImmersiveMode,
+            ANDROID_XR_SABR.requireSABR,
+            ANDROID_XR_SABR.usePlayerEndpoint,
+            "Android XR Experimental"
     ),
     /**
      * Video not playable: Live stream.
@@ -419,6 +445,7 @@ public enum ClientType {
      * Same as {@code VISIONOS_1_02} but with app version 1.06 and visionOS 27.2.
      * The server can send other streams to a newer app version,
      * so the version of {@code VISIONOS_1_02} is not updated.
+     * AV1 codec not available.
      */
     VISIONOS_1_06(
             VISIONOS_1_02.id,
@@ -438,6 +465,30 @@ public enum ClientType {
             VISIONOS_1_02.requirePoToken,
             VISIONOS_1_02.requireSABR,
             "visionOS 1.06"
+    ),
+    /**
+     * Same as {@code VISIONOS_1_06} but with the device model of {@code VISIONOS_1_03}.
+     * The server sends AV1 streams only to this device model, whatever the app version.
+     * AV1 codec available.
+     */
+    VISIONOS_1_06_AV1(
+            VISIONOS_1_06.id,
+            VISIONOS_1_06.clientName,
+            VISIONOS_1_06.deviceMake,
+            VISIONOS_1_03.deviceModel,
+            VISIONOS_1_06.osName,
+            VISIONOS_1_06.osVersion,
+            VISIONOS_1_06.clientVersion,
+            VISIONOS_1_06.clientPlatform,
+            "com.google.visionosyoutube/1.06 (RealityDevice17,1; U; CPU visionOS 27_2 like Mac OS X; en_US) gzip",
+            VISIONOS_1_06.canLogin,
+            VISIONOS_1_06.requireLogin,
+            VISIONOS_1_06.supportsMultiAudioTracks,
+            VISIONOS_1_06.supportsVRImmersiveMode,
+            VISIONOS_1_06.requireJS,
+            VISIONOS_1_06.requirePoToken,
+            VISIONOS_1_06.requireSABR,
+            "visionOS 1.06 AV1"
     );
 
     /**

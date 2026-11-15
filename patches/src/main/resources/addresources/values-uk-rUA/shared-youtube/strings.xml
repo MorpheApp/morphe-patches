@@ -167,28 +167,28 @@ Second \"item\" text"</string>
 • Налаштування Morphe не імпортують/експортують автентифікацію Android VR
 • Якщо застосунок не використовується 6 місяців, Google видалить цю автентифікацію
 • Вам потрібно буде увійти знову, якщо ви зміните пароль Google або скасуєте реєстрацію цього пристрою в налаштуваннях Google"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Вхід через мобільну версію вебсайту</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Необовково: увійдіть у вебсайт YouTube, щоб відтворювати відео за допомогою свого облікового запису. Натисніть тут, щоб продовжити</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_title">Вхід у Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary">Необов\'язково: увійдіть на вебсайт YouTube, щоб відтворювати відео зі своїм обліковим записом. Натисніть тут, щоб продовжити</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_signed_in">Наразі ви ввійшли в Mobile Web</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_mweb_about_summary_disabled">Щоб використовувати цю функцію, змініть \"Типовий клієнт\" на Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Увійдіть у Mobile Web</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web відтворює відео без авторизації або після входу на вебсайт YouTube
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_title">Вхід у Mobile Web</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_dialog_not_signed_in_message">"Mobile Web відтворює відео без входу в обліковий запис або після входу на вебсайт YouTube
 
-• Після входу можна відтворювати відео, що потребують облікового запису, наприклад, відео з віковими обмеженнями
-• Сторінка входу в Google відкривається в цій програмі
-• Авторизація використовується лише для отримання відео, які ви відтворюєте
-• Дані про вхід зберігаються лише на цьому пристрої
+• Після входу можна відтворювати відео, що потребують облікового запису, наприклад відео з віковими обмеженнями
+• Сторінка входу Google відкривається в цьому застосунку
+• Вхід використовується лише для отримання відео, які ви відтворюєте
+• Вхід зберігається лише на цьому пристрої
 
 Щоб увійти, натисніть \"Продовжити\" нижче"</string>
   <string name="morphe_spoof_video_streams_sign_in_mweb_success_dialog_message">"Вхід збережено
 
-• Ваші налаштування Morphe не будуть імпортувати/експортувати вхід у мобільну вебверсію
-• Якщо Google завершить сеанс входу, відео відтворюватимуться без авторизації, доки ви не увійдете знову
-• Вихід із системи також вийде з облікового запису на вебсайті YouTube на цьому пристрої"</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Термін дії входу в мобільну вебверсію закінчився. Спробуйте ввійти в мобільну вебверсію ще раз</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Вихід із мобільної вебверсії</string>
-  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView недоступний. Встановіть або увімкніть його, щоб увійти в систему</string>
+• Налаштування Morphe не імпортують і не експортують вхід у Mobile Web
+• Якщо Google завершить вхід, відео відтворюватимуться без входу, доки ви не увійдете знову
+• Вихід з облікового запису також виконає вихід із вебсайту YouTube на цьому пристрої"</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_expired">Термін дії входу в Mobile Web минув, спробуйте ввійти в Mobile Web знову</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_signed_out">Вихід із Mobile Web виконано</string>
+  <string name="morphe_spoof_video_streams_sign_in_mweb_toast_webview_missing">Android System WebView недоступний. Встановіть або увімкніть його, щоб увійти</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 тимчасово недоступний (тайм-аут API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Термін дії входу в Android VR закінчився. Спробуйте ввійти у VR ще раз</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 тимчасово недоступний (статус %s)</string>

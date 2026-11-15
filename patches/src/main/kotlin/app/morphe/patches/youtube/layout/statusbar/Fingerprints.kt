@@ -59,6 +59,26 @@ internal object StatusBarBackgroundShowFingerprint : Fingerprint(
 )
 
 /**
+ * Maps the window insets to the insets the player is laid out with.
+ * Reads the stable insets from the window insets.
+ */
+internal object PlayerStableInsetsFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;", "Ljava/lang/Object;"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Landroid/graphics/Rect;",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(name = "isInMultiWindowMode"),
+        methodCall(smali = "Landroid/graphics/Rect;-><init>(IIII)V")
+    )
+)
+
+/**
  * Sends a copy of the system window insets to the views that lay out below the status bar,
  * together with the view the insets are read from.
  */

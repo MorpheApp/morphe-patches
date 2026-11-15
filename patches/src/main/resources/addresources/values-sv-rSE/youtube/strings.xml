@@ -773,6 +773,10 @@ Information: Kanske inte fungerar i livestreamar"</string>
   <string name="morphe_queue_manager_open_queue">Öppna kön</string>
   <string name="morphe_queue_manager_save_queue">Spara kön till spellista</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Visa köknapp på miniatyrbilder</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">En köknapp visas på miniatyrbilderna för videor i flödet. Om du trycker på den läggs videon till i slutet av kön, och om du trycker och håller kvar spelas videon härnäst</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Byt åtgärder för kö i miniatyrbild</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Om du trycker på köknappen spelas videon härnäst, och om du trycker och håller kvar läggs videon till i slutet av kön</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Ladda kösidor vid skrollning</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Laddar fler videor från spellistan när du skrollar nära slutet av kön</string>
   <string name="morphe_native_playlist_queue_saved">Spellista sparad</string>
@@ -1129,6 +1133,12 @@ För att visa menyn 'Ljudspår', ändra 'Förfalska videostreamar' till valfri k
   <string name="morphe_disable_fullscreen_ambient_mode_title">Inaktivera Ambientljus i helskärm</string>
   <string name="morphe_enhanced_ambient_mode_title">Förbättrat Ambientljus</string>
   <string name="morphe_enhanced_ambient_mode_summary">Lyser upp hela visningssidan och svarta fält med videon, istället för Ambientljus</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Ljusstyrka</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Hur starkt ljuset är på urtavlan och de svarta fälten</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Utjämning av ljus</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Hur lång tid det tar för ljuset att följa videon. Med 0 följer det videon tätt</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Suddigt ljus</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Hur mycket ljuset bredvid videon ska suddas ut. Med 0 behålls videons former</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Behåll texten läsbar</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Dämpar ljuset på ljusa videor så att texten på sidan förblir läsbar</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Dämpa vid rullning</string>
@@ -1502,6 +1512,65 @@ Videor begärs med ett kort prefix av den hashade videons ID, så servern kan in
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow är inte tillgängligt just nu (statuskod: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow är inte tillgängligt just nu</string>
+  <string name="morphe_dearrow_vote_button_title">Visa DeArrow-knappen</string>
+  <string name="morphe_dearrow_vote_button_summary">Lägger till en knapp högst upp i videospelaren för att rösta på DeArrow-titlar och miniatyrbilder, eller skicka in nya</string>
+  <string name="morphe_dearrow_guidelines_title">Riktlinjer</string>
+  <string name="morphe_dearrow_guidelines_summary">Riktlinjerna innehåller regler och tips för att skicka in och rösta på titlar och miniatyrbilder</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Följ riktlinjerna</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Läs DeArrow-riktlinjerna innan du skickar in eller röstar på titlar och miniatyrbilder</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Redan läst</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Visa mig</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Läser in …</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Kunde inte ladda titlar och miniatyrbilder för den här videon</string>
+  <string name="morphe_dearrow_vote_titles">Titlar</string>
+  <string name="morphe_dearrow_vote_thumbnails">Miniatyrbilder</string>
+  <string name="morphe_dearrow_vote_no_titles">Inga titlar än. Skicka in en titel för att bli först</string>
+  <string name="morphe_dearrow_vote_original_title">Ursprunglig titel</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Ursprunglig miniatyr</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Ruta vid %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Poäng: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Overifierad</string>
+  <string name="morphe_dearrow_vote_locked">Låst</string>
+  <string name="morphe_dearrow_vote_upvote">Upprösta</string>
+  <string name="morphe_dearrow_vote_downvote">Nedrösta</string>
+  <string name="morphe_dearrow_vote_new_title">Ny titel</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Skriv en titel</string>
+  <string name="morphe_dearrow_vote_submit">Skicka in</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Ny miniatyrbild</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Skicka rutan vid %s som miniatyrbild?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Videon spelas upp. För att skicka rutan du ser måste du först pausa videon</string>
+  <string name="morphe_dearrow_vote_upvoted">Röst har skickats till DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Negativ röst har skickats till DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow accepterade inte rösten: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Denna är låst och kan endast röstas ner av VIP-användare</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">En röstning för den här videon pågår fortfarande. Försök igen om en stund</string>
+  <string name="morphe_dearrow_vote_failed_code">Kunde inte skicka rösten (statuskod: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Kunde inte skicka rösten. Kontrollera anslutningen och försök igen</string>
+  <string name="morphe_dearrow_submitting_title">Skickar titlar och miniatyrbilder</string>
+  <string name="morphe_dearrow_vote_time_step_title">Steg för tidsjustering</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Sök belopp för knapparna för tidsjustering av böter när en miniatyrbild skickas in (i millisekunder)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Värdet måste vara ett positivt tal</string>
+  <string name="morphe_dearrow_private_user_id_title">Ditt privata användar-id</string>
+  <string name="morphe_dearrow_private_user_id_summary">Samma användar-ID som SponsorBlock. Detta bör hållas privat. Det fungerar som ett lösenord och ska inte delas med någon. Om någon får tag på det kan hen utge sig för att vara du</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Privat användar-id måste vara minst 30 tecken långt</string>
+  <string name="morphe_dearrow_account_loading">Läser in …</string>
+  <string name="morphe_dearrow_account_connection_failure">Kontouppgifterna är tillfälligt inte tillgängliga</string>
+  <string name="morphe_dearrow_account_username">Ditt användarnamn: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Tryck här för att ändra ditt användarnamn. Användarnamnet är detsamma som på SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Användarnamnet har ändrats</string>
+  <string name="morphe_dearrow_account_username_change_error">Det gick inte att ändra användarnamn: Status: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Du har skickat in &lt;b&gt;%s&lt;/b&gt; titlar</string>
+  <string name="morphe_dearrow_account_titles_summary">Tryck här för att visa dina titlar</string>
+  <string name="morphe_dearrow_account_thumbnails">Du har skickat in &lt;b&gt;%s&lt;/b&gt; miniatyrbilder</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Tryck här för att visa dina miniatyrbilder</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Återställ gammal knappstil för spelaren</string>
   <string name="morphe_restore_old_player_buttons_summary">Återställer videospelarens fetstilta kontroller till den äldre, tunnare visuella stilen</string>

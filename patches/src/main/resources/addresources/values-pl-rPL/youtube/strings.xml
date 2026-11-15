@@ -524,8 +524,8 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_ryd_feed_like_ratio_title">Pokaż procent polubień na miniaturkach na liście</string>
   <string name="morphe_ryd_feed_counts_position_title">Pozycja polubień na miniaturkach na liście</string>
   <string name="morphe_ryd_feed_counts_position_entry_1">Obok liczby wyświetleń</string>
-  <string name="morphe_ryd_feed_counts_position_entry_2">Środek po prawej</string>
-  <string name="morphe_ryd_feed_counts_position_entry_3">Góra po lewej</string>
+  <string name="morphe_ryd_feed_counts_position_entry_2">Pośrodku z prawej</string>
+  <string name="morphe_ryd_feed_counts_position_entry_3">U góry z lewej</string>
   <!-- interaction.searchcomments.searchCommentsPatch -->
   <string name="morphe_search_comments_title">Szukaj w komentarzach</string>
   <string name="morphe_search_comments_summary">Dotknij przycisku wyszukiwania w sekcji komentarzy, aby wyświetlić tylko te wczytane komentarze, które zawierają wszystkie szukane słowa. Ujmij słowa w cudzysłów, aby wyszukać dokładną frazę</string>
@@ -773,6 +773,10 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_queue_manager_open_queue">Otwórz kolejkę</string>
   <string name="morphe_queue_manager_save_queue">Zapisz kolejkę na playliście</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Pokaż przycisk kolejki na miniaturkach</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Na miniaturkach filmów w kanale wyświetla się przycisk kolejki. Dotknięcie go dodaje film na koniec kolejki, a dotknięcie i przytrzymanie powoduje odtworzenie filmu jako następnego</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Zamień akcje kolejki na miniaturkach</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Dotknięcie przycisku kolejki powoduje odtworzenie filmu jako następnego, a dotknięcie i przytrzymanie dodaje film na koniec kolejki</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Wczytuj strony kolejki podczas przewijania</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Wczytuje więcej filmów z playlisty podczas przewijania w pobliżu końca kolejki</string>
   <string name="morphe_native_playlist_queue_saved">Zapisano playlistę</string>
@@ -1043,7 +1047,7 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_navigation_bar_glass_opacity_title">Krycie szkła</string>
   <string name="morphe_navigation_bar_glass_opacity_summary">Dostosuj poziom krycia szklanego paska nawigacji (0 to pełna przezroczystość, 100 to brak przezroczystości)</string>
   <string name="morphe_navigation_bar_glass_round_title">Zaokrąglony szklany pasek nawigacji</string>
-  <string name="morphe_navigation_bar_glass_round_summary">Nadaje szklanemu paskowi nawigacji zaokrąglone końce zamiast narożników, jak w przypadku szklanego miniodtwarzacza</string>
+  <string name="morphe_navigation_bar_glass_round_summary">Nadaje szklanemu paskowi nawigacji zaokrąglone końce zamiast narożników takich jak w szklanym miniodtwarzaczu</string>
   <string name="morphe_navigation_bar_glass_size_title">Rozmiar szklanego paska nawigacji</string>
   <string name="morphe_navigation_bar_glass_size_summary">Dostosuj wysokość, szerokość oraz odstępy między przyciskami szklanego paska nawigacji z podglądem na żywo. Przyciski, które nie mieszczą się na szerokości ekranu, są ukrywane</string>
   <string name="morphe_navigation_bar_glass_size_height">Wysokość</string>
@@ -1129,6 +1133,12 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_disable_fullscreen_ambient_mode_title">Wyłącz oświetlenie kinowe w trybie pełnoekranowym</string>
   <string name="morphe_enhanced_ambient_mode_title">Ulepszony tryb oświetlenia kinowego</string>
   <string name="morphe_enhanced_ambient_mode_summary">Podświetla całą stronę odtwarzania oraz czarne pasy kolorami z filmu, zastępując standardowy tryb oświetlenia kinowego</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Siła podświetlenia</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Określa, jak mocne jest podświetlenie na stronie odtwarzania oraz na czarnych pasach</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Wygładzanie światła</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Czas, w jakim światło podąża za wideo. Przy wartości 0 podąża za wideo ściśle</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Rozmycie światła</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Stopień rozmycia światła obok wideo. Przy wartości 0 kształty wideo zostają zachowane</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Zachowaj czytelność tekstu</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Przyciemnia podświetlenie przy jasnych filmach, aby tekst na stronie pozostał czytelny</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Przyciemniaj podczas przewijania</string>
@@ -1384,7 +1394,7 @@ Układ samochodowy
   <string name="morphe_miniplayer_docked_title">Zadokowany miniodtwarzacz</string>
   <string name="morphe_miniplayer_docked_summary">Przyczepia miniodtwarzacz do paska nawigacji oraz krawędzi ekranu, zamiast wyświetlać go jako pływające okienko nad nimi</string>
   <string name="morphe_miniplayer_glass_title">Szklany miniodtwarzacz</string>
-  <string name="morphe_miniplayer_glass_summary">Wyświetla miniodtwarzacz jako półprzezroczyste szkło z zaokrąglonymi narożnikami, podobnie jak szklany pasek nawigacji. Wymaga szklanego paska nawigacji</string>
+  <string name="morphe_miniplayer_glass_summary">Wyświetla miniodtwarzacz jako półprzezroczyste szkło z zaokrąglonymi rogami, podobnie jak szklany pasek nawigacji. Wymaga włączenia szklanego paska nawigacji</string>
   <string name="morphe_miniplayer_type_entry_0">Wyłączony</string>
   <string name="morphe_miniplayer_type_entry_1">Domyślny</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalny</string>
@@ -1501,6 +1511,65 @@ Układ samochodowy
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow jest niedostępny (kod statusu: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow jest niedostępny</string>
+  <string name="morphe_dearrow_vote_button_title">Pokaż przycisk DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">Dodaje przycisk do górnej części odtwarzacza wideo, aby głosować na tytuły i miniatury DeArrow lub przesyłać nowe</string>
+  <string name="morphe_dearrow_guidelines_title">Wytyczne</string>
+  <string name="morphe_dearrow_guidelines_summary">Wytyczne zawierają zasady i wskazówki dotyczące przesyłania oraz głosowania na tytuły i miniatury</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Postępuj zgodnie z wytycznymi</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Przeczytaj wytyczne DeArrow przed przesyłaniem lub głosowaniem na tytuły i miniatury</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Przeczytano</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Pokaż mi</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Wczytywanie…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Nie udało się załadować tytułów i miniatur tego filmu</string>
+  <string name="morphe_dearrow_vote_titles">Tytuły</string>
+  <string name="morphe_dearrow_vote_thumbnails">Miniatury</string>
+  <string name="morphe_dearrow_vote_no_titles">Brak tytułów. Prześlij tytuł, aby być pierwszym</string>
+  <string name="morphe_dearrow_vote_original_title">Oryginalny tytuł</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Oryginalna miniaturka</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Klatka w %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Wynik: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Niezweryfikowano</string>
+  <string name="morphe_dearrow_vote_locked">Zablokowane</string>
+  <string name="morphe_dearrow_vote_upvote">Głos za</string>
+  <string name="morphe_dearrow_vote_downvote">Głos przeciw</string>
+  <string name="morphe_dearrow_vote_new_title">Nowy tytuł</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Wpisz tytuł</string>
+  <string name="morphe_dearrow_vote_submit">Wyślij</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Nowa miniaturka</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s s</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Przesłać klatkę z %s jako miniaturkę?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Wideo jest odtwarzane. Aby przesłać widoczną klatkę, najpierw wstrzymaj wideo</string>
+  <string name="morphe_dearrow_vote_upvoted">Głos został przesłany do DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Negatywny głos został przesłany do DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow nie zaakceptowało głosu: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Ten element jest zablokowany i może zostać oceniony negatywnie tylko przez użytkowników VIP</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Głosowanie nad tym filmem wciąż trwa. Spróbuj ponownie za chwilę</string>
+  <string name="morphe_dearrow_vote_failed_code">Nie udało się przesłać głosu (kod statusu: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Nie udało się przesłać głosu. Sprawdź połączenie i spróbuj ponownie</string>
+  <string name="morphe_dearrow_submitting_title">Przesyłanie tytułów i miniatur</string>
+  <string name="morphe_dearrow_vote_time_step_title">Krok regulacji czasu</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Wartość przesunięcia dla przycisków regulacji czasu podczas przesyłania miniatury (w milisekundach)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Wartość musi być liczbą dodatnią</string>
+  <string name="morphe_dearrow_private_user_id_title">Twój prywatny identyfikator użytkownika</string>
+  <string name="morphe_dearrow_private_user_id_summary">Ten sam identyfikator użytkownika co w SponsorBlock. Nie należy go udostępniać, gdyż działa jak hasło. Jeżeli ktoś go posiada, może podszyć się pod Ciebie</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Prywatny identyfikator użytkownika musi mieć co najmniej 30 znaków</string>
+  <string name="morphe_dearrow_account_loading">Wczytywanie…</string>
+  <string name="morphe_dearrow_account_connection_failure">Szczegóły konta są tymczasowo niedostępne</string>
+  <string name="morphe_dearrow_account_username">Twoja nazwa użytkownika: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Dotknij tutaj, aby zmienić swoją nazwę użytkownika. Nazwa użytkownika jest taka sama jak w SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Nazwa użytkownika została zmieniona</string>
+  <string name="morphe_dearrow_account_username_change_error">Nie można zmienić nazwy użytkownika: Status: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Przesłałeś &lt;b&gt;%s&lt;/b&gt; tytułów</string>
+  <string name="morphe_dearrow_account_titles_summary">Dotknij tutaj, aby zobaczyć swoje tytuły</string>
+  <string name="morphe_dearrow_account_thumbnails">Przesłałeś &lt;b&gt;%s&lt;/b&gt; miniatur</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Dotknij tutaj, aby zobaczyć swoje miniatury</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Przywróć stary styl przycisków odtwarzacza</string>
   <string name="morphe_restore_old_player_buttons_summary">Przywraca pogrubione elementy sterujące odtwarzaczem do starszego, cieńszego stylu wizualnego</string>
@@ -1821,8 +1890,8 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_niconico_comments_screen_title">Komentarze w stylu Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Pokaż czat na żywo oraz powtórkę czatu jako komentarze przewijające się przez ekran filmu</string>
   <string name="morphe_niconico_comments_summary">Wyświetla przycisk w nakładce odtwarzacza. Dotknij, aby pokazać lub ukryć komentarze. Przytrzymaj, aby otworzyć szybkie ustawienia</string>
-  <string name="morphe_niconico_comments_pip_title">Pokaż komentarze w trybie obrazu w obrazie</string>
-  <string name="morphe_niconico_comments_pip_summary">Komentarze są skalowane, aby dopasować się do okna</string>
+  <string name="morphe_niconico_comments_pip_title">Pokaż w trybie obrazu w obrazie</string>
+  <string name="morphe_niconico_comments_pip_summary">Komentarze są skalowane, aby dopasować je do okna</string>
   <string name="morphe_niconico_comments_appearance_title">Wygląd</string>
   <string name="morphe_niconico_comments_portrait_category_title">Orientacja pionowa</string>
   <string name="morphe_niconico_comments_video_types_title">Rodzaje filmów</string>

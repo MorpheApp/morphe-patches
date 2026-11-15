@@ -607,6 +607,7 @@ public class SpoofVideoStreamsPatch {
                 return request;
             }
 
+            SabrReadaheadLimit.onRequest(callbacks);
             String urlClient = uri.getQueryParameter("c");
             MediaHttpRequest requestToStart = request;
             byte[] body = request.patch_getBody();
@@ -640,6 +641,7 @@ public class SpoofVideoStreamsPatch {
             return;
         }
         try {
+            SabrReadaheadLimit.onResponseChunk(callbacks, chunk);
             MwebStream.onMediaResponseChunk(callbacks, chunk);
             SabrMediaLogger.onResponseChunk(callbacks, chunk);
         } catch (Exception ex) {

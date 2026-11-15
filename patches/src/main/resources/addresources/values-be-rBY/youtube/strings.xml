@@ -773,6 +773,10 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Адкрыць чаргу</string>
   <string name="morphe_queue_manager_save_queue">Захаваць чаргу ў плейліст</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Паказваць кнопку чаргі на мініятурах</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">На мініятурах відэа ў стужцы паказваецца кнопка чаргі. Націсканне на яе дадае відэа ў канец чаргі, а націсканне і ўтрыманне — запускае відэа наступным</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Памяняць месцамі дзеянні чаргі на мініятурах</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Націсканне на кнопку чаргі запускае відэа наступным, а націсканне і ўтрыманне — дадае відэа ў канец чаргі</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Загружаць старонкі чаргі пры пракручванні</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Загружае больш відэа з плэйліста пры пракручванні да канца чаргі</string>
   <string name="morphe_native_playlist_queue_saved">Плэйліст захаваны</string>
@@ -1129,6 +1133,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Адключаць рэжым Ambient у паўнаэкранным рэжыме</string>
   <string name="morphe_enhanced_ambient_mode_title">Палепшаны рэжым Ambient</string>
   <string name="morphe_enhanced_ambient_mode_summary">Падсвечвае ўсю старонку прагляду і чорныя палосы колерам відэа замест рэжыму Ambient</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Моцнасць святла</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Насколько моцнае святло на старонцы гадзінніка і чорных палос</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Паўняючы святло</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Як доўга святло слідуе за відэа. Пры значэнні 0 яно слідуе за відэа дакладна</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Размыццё святла</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Насколько размытае святло побач з відэа. Пры значэнні 0 захоўваюцца формы відэа</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Забеспечыць чытальнасць тэксту</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Зменшвае яркасць святла на яркіх відэа, каб тэкст на старонцы заставаўся чытальным</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Ціміраванне пры пракручванні</string>
@@ -1502,6 +1512,65 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow часова недаступны (код стану: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow часова недаступны</string>
+  <string name="morphe_dearrow_vote_button_title">Паказваць кнопку DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">Дадае кнопку ў верхнюю частку відэаплэера для галасавання за загалоўкі і мініятуры DeArrow або для падачы новых</string>
+  <string name="morphe_dearrow_guidelines_title">Кіраўніцтва</string>
+  <string name="morphe_dearrow_guidelines_summary">Кіраўніцтва змяшчае правілы і парады па падачы і галасаванні за загалоўкі і мініятуры</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Азнаёмцеся з кіраўніцтвам</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Прачытайце кіраўніцтва DeArrow перад тым, як прапанаваць або прагаласаваць за загалоўкі і мініятуры</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Ужо прачытана</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Паказаць мне</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Загрузка…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Не ўдалося загрузіць загалоўкі і мініятуры гэтага відэа</string>
+  <string name="morphe_dearrow_vote_titles">Загалоўкі</string>
+  <string name="morphe_dearrow_vote_thumbnails">Мініятуры</string>
+  <string name="morphe_dearrow_vote_no_titles">Загаловак пакуль няма. Будзьце першым і прапануйце яго</string>
+  <string name="morphe_dearrow_vote_original_title">Арыгінальны загаловак</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Арыгінальная мініятура</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Кадр на %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Рэйтынг: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Не пацверджана</string>
+  <string name="morphe_dearrow_vote_locked">Заблакавана</string>
+  <string name="morphe_dearrow_vote_upvote">Галасаваць \"за\"</string>
+  <string name="morphe_dearrow_vote_downvote">Галасаваць \"супраць\"</string>
+  <string name="morphe_dearrow_vote_new_title">Новы загаловак</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Увядзіце загаловак</string>
+  <string name="morphe_dearrow_vote_submit">Адправіць</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Новая мініятура</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s с</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Адправіць кадр на %s як мініятуру?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Відэа праграецца. Каб адправіць кадр, які вы бачыце, спачатку паўзайце відэа</string>
+  <string name="morphe_dearrow_vote_upvoted">Голос адпраўлены ў DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Негатыўны голос адпраўлены ў DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow не прыняў галасаванне: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Гэта заблакавана і можа быць толькі негаласаваннем ад VIP-карыстальнікаў</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Галасаванне за гэтае відэа яшчэ працягваецца. Паспрабуйце зноў праз хвіліну</string>
+  <string name="morphe_dearrow_vote_failed_code">Не ўдалося адправіць галас (код стану: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Не ўдалося адправіць галас. Праверце злучэнне і паспрабуйце зноў</string>
+  <string name="morphe_dearrow_submitting_title">Адпраўка загалоўкаў і мініатюр</string>
+  <string name="morphe_dearrow_vote_time_step_title">Крок карэктаўкі часу</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Крок рэгуляцыі часу кнопкамі пры адпраўцы мініятуры (у мілісекундах)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Значэнне павінна быць станоўчым лікам</string>
+  <string name="morphe_dearrow_private_user_id_title">Ваш прыватны ID карыстальніка</string>
+  <string name="morphe_dearrow_private_user_id_summary">Такі ж ID карыстальніка, як у SponsorBlock. Яго трэба трымаць у сакрэце. Гэта падобна да пароля, і яго нельга перадаваць нікаму. Калі хтосьці атрымае яго, ён зможа выдаць сябе за вас</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Прыватны ID карыстальніка павінен быць не менш за 30 сімвалаў</string>
+  <string name="morphe_dearrow_account_loading">Загрузка…</string>
+  <string name="morphe_dearrow_account_connection_failure">Даныя ўліковага запісу часова недаступныя</string>
+  <string name="morphe_dearrow_account_username">Ваша імя карыстальніка: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Націсніце тут, каб змяніць імя карыстальніка. Імя карыстальніка такое ж, як у SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Імя карыстальніка паспяхова зменена</string>
+  <string name="morphe_dearrow_account_username_change_error">Не ўдалося змяніць імя карыстальніка: Статус: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Вы падалі &lt;b&gt;%s&lt;/b&gt; загалоўкаў</string>
+  <string name="morphe_dearrow_account_titles_summary">Націсніце тут, каб паглядзець вашы загалоўкі</string>
+  <string name="morphe_dearrow_account_thumbnails">Вы падалі &lt;b&gt;%s&lt;/b&gt; міняцюр</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Націсніце тут, каб паглядзець вашы міняцюры</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Аднавіць стары стыль кнопак прайгравальніка</string>
   <string name="morphe_restore_old_player_buttons_summary">Павяртае тлустыя элементы кіравання відэаплэерам да старэйшага, больш тонкага візуальнага стылю</string>

@@ -772,6 +772,10 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_queue_manager_open_queue">Кезекти ачуу</string>
   <string name="morphe_queue_manager_save_queue">Кезекти плейлистке сактоо</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Миниатюраларда кезек баскычын көрсөтүү</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Лентадагы видеолордун миниатюраларында кезек баскычы көрсөтүлөт. Аны бассаңыз, видео кезектин аягына кошулат, ал эми басып турсаңыз, видео кийинки болуп ойнотулат</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Миниатюрадагы кезек аракеттерин алмаштыруу</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Кезек баскычын бассаңыз, видео кийинки болуп ойнотулат, ал эми басып турсаңыз, видео кезектин аягына кошулат</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Скролл учурунда кезектин беттерин жүктөө</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Кезектин аягына жакын скролл кылганда плейлисттин видеолорун көбүрөөк жүктөйт</string>
   <string name="morphe_native_playlist_queue_saved">Плейлист сакталды</string>
@@ -1128,6 +1132,12 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <string name="morphe_disable_fullscreen_ambient_mode_title">Толук экранда Ambient режимин өчүрүү</string>
   <string name="morphe_enhanced_ambient_mode_title">Жақшыртылган Ambient режими</string>
   <string name="morphe_enhanced_ambient_mode_summary">Ambient режиминин ордуна бүткүл көрүү бетин жана кара тилкелерди видео менен жарыктандырат</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Жарыктын күчү</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Саат беттинде жана кара тилкелерде жарыктын канчалык күчтүү болорун аныктайт</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Жарыкты тегирдөө</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Жарык видеону канча убакыт бою коштоп жүрөрү. 0 болгондо, ал видеону так коштоп жүрөт</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Жарыкты бүлөңдөө</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Видеонун жанындагы жарыктын канчалык бүлөңдөлөрү. 0 болгондо, ал видеонун формаларын сактайт</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Текстти окула турган кылып сактоо</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Жарык видеолордогу жарыкты азайтып, беттеги тексттин окула турган болушун камсыздайт</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Скроллинг учурунда карартуу</string>
@@ -1501,6 +1511,65 @@ OpenRouter.ai сайтын ачуу үчүн бул жерди басыңыз"</
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow убактылуу жеткиликсиз (статус коду: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow убактылуу жеткиликсиз</string>
+  <string name="morphe_dearrow_vote_button_title">DeArrow баскычын көрсөтүү</string>
+  <string name="morphe_dearrow_vote_button_summary">Видео ойноткучтун жогору жагына DeArrow аталыштарына жана miniature сүрөттөрүнө добуш берүү же жаңыларын жөнөтүү үчүн баскычты кошот</string>
+  <string name="morphe_dearrow_guidelines_title">Нускамалар</string>
+  <string name="morphe_dearrow_guidelines_summary">Нускамалар аталыштарды жана miniature сүрөттөрдү жөнөтүү жана аларга добуш берүү боюнча эрежелерди жана кеңештерди камтыйт</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Эрежелерди аткарыңыз</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Аталыштарды жана чакан сүрөттөрдү жөнөтүүдөн же аларга добуш берүүдөн мурун DeArrow нускамаларын окуңуз</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Окудум</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Көрсөтүү</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Жүктөлүүдө…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Бул видеонун аталыштарын жана чакан сүрөттөрүн жүктөө мүмкүн болбоду</string>
+  <string name="morphe_dearrow_vote_titles">Аталыштар</string>
+  <string name="morphe_dearrow_vote_thumbnails">Чакан сүрөттөр</string>
+  <string name="morphe_dearrow_vote_no_titles">Азырынча аталыштар жок. Биринчи болуп аталышты жөнөтүңүз</string>
+  <string name="morphe_dearrow_vote_original_title">Түп нуска аталышы</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Түп нуска кичинекей сүрөтү</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Кадр %s убакытта</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Бал: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Тастыкталган эмес</string>
+  <string name="morphe_dearrow_vote_locked">Бекитилген</string>
+  <string name="morphe_dearrow_vote_upvote">Жактыруу</string>
+  <string name="morphe_dearrow_vote_downvote">Жактырбоо</string>
+  <string name="morphe_dearrow_vote_new_title">Жаңы аталыш</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Аталышын жазыңыз</string>
+  <string name="morphe_dearrow_vote_submit">Жолдоо</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Жаңы кичи-сүрөт</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s с</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">%s убактысындагы кадрды кичи-сүрөт катары жолдоо керекпи?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Видео ойноп жатат. Сиз көрүп жаткан кадрды жолдоо үчүн, алгач видеону токтотуңуз</string>
+  <string name="morphe_dearrow_vote_upvoted">Добуш DeArrow-го жолдолду</string>
+  <string name="morphe_dearrow_vote_downvoted">DeArrow-га терс добуш жөнөтүлдү</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow добушту кабыл алган жок: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Бул кулпуланган жана аны VIP колдонуучулар гана терс добуштап алышалат</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Бул видео үчүн добуш берүү дагы деле жүрүп жатат. Бир азdan кийин кайра аракет кылыңыз</string>
+  <string name="morphe_dearrow_vote_failed_code">Добушту жөнөтүү мүмкүн болгон жок (статус коду: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Добушту жөнөтүү мүмкүн болгон жок. Байланышты текшерип, кайра аракет кылыңыз</string>
+  <string name="morphe_dearrow_submitting_title">Аталыштар жана кичи сүрөттөр жөнөтүлүүдө</string>
+  <string name="morphe_dearrow_vote_time_step_title">Убакытты жөндөө кадамы</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Миниатюраны жөнөтүүдө убакытты тактоо батмаларынын издеп көрүү өлчөмү (миллисекундаларда)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Маани оң сан болушу керек</string>
+  <string name="morphe_dearrow_private_user_id_title">Сиздин жеке колдонуучу ID\'ңыз</string>
+  <string name="morphe_dearrow_private_user_id_summary">SponsorBlock\'тогу сыяктуу эле колдонуучу ID\'си. Бул купуя сакталышы керек. Бул сырсөзгө окшош жана эч кимге берилбеши керек. Эгерде кимдир бирөө муну алса, алар сиздин атыңыздан иш алып барышы мүмкүн</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Колдонуучунун купуя ID\'си кеминде 30 белгиден турушу керек</string>
+  <string name="morphe_dearrow_account_loading">Жүктөлүүдө…</string>
+  <string name="morphe_dearrow_account_connection_failure">Аккаунттун маалыматтары убактылуу жеткиликсиз</string>
+  <string name="morphe_dearrow_account_username">Сиздин колдонуучу атыңыз: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Колдонуучу атын өзгөртүү үчүн бул жерди басыңыз. Колдонуучу аты SponsorBlock\'тогудай эле болот</string>
+  <string name="morphe_dearrow_account_username_changed">Колдонуучу аты ийгиликтүү өзгөртүлдү</string>
+  <string name="morphe_dearrow_account_username_change_error">Колдонуучу атын өзгөртүү мүмкүн болбоду: Статусу: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Сиз &lt;b&gt;%s&lt;/b&gt; аталышты жөнөттүңүз</string>
+  <string name="morphe_dearrow_account_titles_summary">Аталыштарды көрүү үчүн бул жерди басыңыз</string>
+  <string name="morphe_dearrow_account_thumbnails">Сиз &lt;b&gt;%s&lt;/b&gt; кичи-сүрөттү жөнөттүңүз</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Кичи-сүрөттөрдү көрүү үчүн бул жерди басыңыз</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Плеердин баскычтарынын эски стилин калыбына келтирүү</string>
   <string name="morphe_restore_old_player_buttons_summary">Видео плеердин калың башкаруу баскычтарын мурунку жука визуалдык стилге кайтарат</string>

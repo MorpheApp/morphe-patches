@@ -18,6 +18,7 @@ import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.youtube.interaction.feedactions.feedVideoActionsHookPatch
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.EXTENSION_CLASS as NATIVE_QUEUE_EXTENSION_CLASS
 import app.morphe.patches.youtube.interaction.nativeplaylistqueue.nativePlaylistQueuePatch
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
@@ -59,7 +60,8 @@ val addToQueuePatch = patch(
         authHookPatch,
         loadVideoHookPatch,
         videoInformationPatch,
-        nativePlaylistQueuePatch
+        nativePlaylistQueuePatch,
+        feedVideoActionsHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -77,7 +79,9 @@ val addToQueuePatch = patch(
                         entryValuesKey = "morphe_queue_type_legacy_entry_values"
                     )
                 },
-                SwitchPreference("morphe_native_queue_fetch_on_scroll", summary = true)
+                SwitchPreference("morphe_native_queue_fetch_on_scroll", summary = true),
+                SwitchPreference("morphe_native_queue_thumbnail_button", summary = true),
+                SwitchPreference("morphe_native_queue_thumbnail_swap_actions", summary = true)
             )
         )
 

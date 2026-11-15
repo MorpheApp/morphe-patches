@@ -8,9 +8,11 @@
 package app.morphe.patches.youtube.misc.fix.mediasession
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
+import com.android.tools.smali.dexlib2.AccessFlags
 
 internal const val MEDIA_SESSION_OWNER_FEATURE_FLAG = 45857115L
 
@@ -50,6 +52,19 @@ internal object MediaSessionStopFingerprint : Fingerprint(
 )
 
 /**
+ * Stops the background playback: removes the media notification and stops the background player service.
+ */
+internal object BackgroundPlaybackStopFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        // 21.04+ starts with "%s: ".
+        string("About to stop background service while in a pending state.", StringComparisonType.ENDS_WITH)
+    )
+)
+
+/**
  * Method of the player that starts the media session.
  */
 internal object PlayerMediaSessionStartFingerprint : Fingerprint(
@@ -61,17 +76,17 @@ internal object PlayerMediaSessionStartFingerprint : Fingerprint(
 )
 
 /**
- * Every method that calls a method of the media session.
+ * Every method that calls a method of the media session or of the background playback.
  * Use with [Fingerprint.matchAll].
  */
-internal fun mediaSessionCallFingerprint(
-    sessionClass: String,
+internal fun methodCallFingerprint(
+    definingClass: String,
     methodName: String,
     parameters: List<String>
 ) = Fingerprint(
     filters = listOf(
         methodCall(
-            definingClass = sessionClass,
+            definingClass = definingClass,
             name = methodName,
             parameters = parameters,
             returnType = "V"

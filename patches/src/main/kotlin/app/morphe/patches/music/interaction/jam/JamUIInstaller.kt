@@ -16,8 +16,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.util.addPatchInterface
+import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.getMutableMethod
 import app.morphe.patcher.util.matchAllMethodIndicesForEach
+import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -531,23 +533,23 @@ private fun installAutoplayUi(abi: AutoplayUiAbi) {
     val extension = JAM_MIRROR
     val contract = $$"Lapp/morphe/extension/music/patches/jam/JamMirror$AutoplayUi;"
     val owner = mutableClassDefBy(abi.refresh.definingClass)
-    val refresh = abi.refresh.getMutableMethod()
+    // The method may have no free register at the visibility check.
+    val refresh = abi.refresh.getMutableMethod().cloneParameters()
+    val indexShift = refresh.numberOfParameterRegistersLogical
     val name = refresh.name
     refresh.setName("patch_jamLocalAutoplayUi")
     // Participants need the native boundary even when their local radio mode hides it.
-    // The wrapper below still sets the mirrored suggestion count and clears an empty header.
+    // Skip the local visibility checks and limit, but keep the native header code and the
+    // registers it reads. The wrapper below sets the mirrored suggestion count and clears
+    // an empty header.
     refresh.addInstructionsWithLabels(
-        0,
+        abi.visibilityCheck + indexShift,
         """
           invoke-static {}, $extension->active()Z
-          move-result v0
-          if-eqz v0, :local
-          const/4 v${abi.headerIndexRegister}, 0x0
-          goto :header
-          :local
-          nop
+          move-result p0
+          if-nez p0, :header
         """,
-        ExternalLabel("header", refresh.getInstruction(abi.headerStart)),
+        ExternalLabel("header", refresh.getInstruction(abi.setLimitIndex + indexShift + 1)),
     )
     owner.addBridge(
         name,

@@ -773,6 +773,10 @@ Second \"item\" text"</string>
   <string name="morphe_queue_manager_open_queue">Відкрити чергу</string>
   <string name="morphe_queue_manager_save_queue">Зберегти чергу як список відтворення</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Показувати кнопку \"Додати в чергу\" на мініатюрах</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">На мініатюрах відео зі стрічки відображається кнопка черги. Натискання на неї додає відео в кінець черги, а довге натискання — відтворює відео наступним</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Поміняти місцями дії черги на мініатюрах</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Натискання на кнопку черги відтворює відео наступним, а довге натискання — додає відео в кінець черги</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Завантажувати сторінки черги під час прокручування</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Завантажує більше відео зі списку відтворення, коли ви прокручуєте чергу ближче до кінця</string>
   <string name="morphe_native_playlist_queue_saved">Список відтворення збережено</string>
@@ -1129,6 +1133,12 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Вимкнути \"Кінематографічне освітлення\" для повноекранного режиму</string>
   <string name="morphe_enhanced_ambient_mode_title">Покращене кінематографічне освітлення</string>
   <string name="morphe_enhanced_ambient_mode_summary">Підсвічує всю сторінку перегляду та чорні смуги кольорами відео замість кінематографічного освітлення</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Інтенсивність світла</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Наскільки інтенсивне світло на сторінці перегляду та на чорних смугах</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Згладжування світла</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Час, за який світло підлаштовується під відео. При значенні 0 світло точно слідує за відео</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Розмиття світла</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Ступінь розмиття світла поруч із відео. При значенні 0 зберігаються форми відео</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Зберігати читабельність тексту</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Приглушує підсвічування на яскравих відео, щоб текст на сторінці залишався читабельним</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Приглушувати під час прокручування</string>
@@ -1384,7 +1394,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_docked_title">Закріплений мініплеєр</string>
   <string name="morphe_miniplayer_docked_summary">Закріплює мініплеєр до панелі навігації та країв екрана замість того, щоб він плавав над ними</string>
   <string name="morphe_miniplayer_glass_title">Скляний мініплеєр</string>
-  <string name="morphe_miniplayer_glass_summary">Відображає мініплеєр як напівпрозоре скло із закругленими кутами, як у скляної панелі навігації. Потребує скляної панелі навігації</string>
+  <string name="morphe_miniplayer_glass_summary">Відображає мініплеєр як напівпрозоре скло із закругленими кутами, як скляна панель навігації. Потребує скляної панелі навігації</string>
   <string name="morphe_miniplayer_type_entry_0">Вимкнено</string>
   <string name="morphe_miniplayer_type_entry_1">Стандартний</string>
   <string name="morphe_miniplayer_type_entry_2">Мінімальний</string>
@@ -1501,6 +1511,63 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow тимчасово недоступний (код статусу: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow тимчасово недоступний</string>
+  <string name="morphe_dearrow_vote_button_title">Показувати кнопку DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">Додає кнопку у верхню частину відеоплеєра для голосування за заголовки та мініатюри DeArrow або надсилання нових</string>
+  <string name="morphe_dearrow_guidelines_title">Інструкції</string>
+  <string name="morphe_dearrow_guidelines_summary">Інструкції містять правила та поради щодо надсилання та голосування за заголовки та мініатюри</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Дотримуйтесь інструкцій</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Прочитайте інструкції DeArrow перед тим, як надсилати або голосувати за назви та мініатюри</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Вже прочитано</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Показати</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Завантаження…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Не вдалося завантажити назви та мініатюри цього відео</string>
+  <string name="morphe_dearrow_vote_titles">Назви</string>
+  <string name="morphe_dearrow_vote_thumbnails">Мініатюри</string>
+  <string name="morphe_dearrow_vote_no_titles">Назв ще немає. Надішліть назву, щоб стати першим</string>
+  <string name="morphe_dearrow_vote_original_title">Початкова назва</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Оригінальне прев\'ю</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Кадр на %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Рахунок: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Непідтверджено</string>
+  <string name="morphe_dearrow_vote_locked">Заблоковано</string>
+  <string name="morphe_dearrow_vote_upvote">Голосувати за</string>
+  <string name="morphe_dearrow_vote_downvote">Голосувати проти</string>
+  <string name="morphe_dearrow_vote_new_title">Нова назва</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Введіть назву</string>
+  <string name="morphe_dearrow_vote_submit">Надіслати</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Нове прев\'ю</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s с</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Надіслати кадр на %s як мініатюру?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Відео відтворюється. Щоб надіслати кадр, який ви бачите, спочатку поставте відео на паузу</string>
+  <string name="morphe_dearrow_vote_upvoted">Голос надіслано до DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Негативний голос надіслано до DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow не прийняв голос: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Цей запис заблоковано, і його можуть оцінити негативно лише VIP-користувачі</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Голосування за це відео все ще триває. Спробуйте ще раз за мить</string>
+  <string name="morphe_dearrow_vote_failed_code">Не вдалося надіслати голос (код статусу: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Не вдалося надіслати голос. Перевірте з\'єднання та спробуйте ще раз</string>
+  <string name="morphe_dearrow_submitting_title">Надсилання назв і мініатюр</string>
+  <string name="morphe_dearrow_vote_time_step_title">Крок регулювання часу</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Крок перемотування кнопок регулювання часу при надсиланні мініатюри (в мілісекундах)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Значення має бути додатним числом</string>
+  <string name="morphe_dearrow_private_user_id_title">Ваш особистий ID користувача</string>
+  <string name="morphe_dearrow_private_user_id_summary">Той самий ID користувача, що і в SponsorBlock. Це має бути конфіденційним. Це як пароль і він не повинен передаватися нікому. Якщо хтось отримає його, він зможе видавати себе за вас</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Особистий ID користувача повинен мати довжину не менше 30 символів</string>
+  <string name="morphe_dearrow_account_loading">Завантаження…</string>
+  <string name="morphe_dearrow_account_connection_failure">Дані облікового запису тимчасово недоступні</string>
+  <string name="morphe_dearrow_account_username">Ваше ім\'я користувача: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Натисніть тут, щоб змінити своє ім\'я користувача. Ім\'я користувача таке саме, як і в SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Ім\'я користувача успішно змінено</string>
+  <string name="morphe_dearrow_account_username_change_error">Не вдалося змінити ім\'я користувача: Статус: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles_summary">Натисніть тут для перегляду ваших заголовків</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Натисніть тут для перегляду ваших мініатюр</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Відновити старий стиль кнопок плеєра</string>
   <string name="morphe_restore_old_player_buttons_summary">Повертає жирні елементи керування відеоплеєра до старішого, тоншого стилю</string>
@@ -1821,7 +1888,7 @@ AVC (H.264)
   <string name="morphe_niconico_comments_screen_title">Коментарі Niconico</string>
   <string name="morphe_niconico_comments_screen_summary">Показувати живий чат і повтор чату як коментарі, що прокручуються по відео</string>
   <string name="morphe_niconico_comments_summary">Показує кнопку у відеоплеєрі. Натисніть, щоб показувати або приховувати коментарі, утримуйте для швидких налаштувань</string>
-  <string name="morphe_niconico_comments_pip_title">Показувати коментарі в режимі \"Картинка в картинці\"</string>
+  <string name="morphe_niconico_comments_pip_title">Показувати в режимі \"Картинка в картинці\"</string>
   <string name="morphe_niconico_comments_pip_summary">Коментарі масштабуються, щоб поміститися у вікні</string>
   <string name="morphe_niconico_comments_appearance_title">Вигляд</string>
   <string name="morphe_niconico_comments_portrait_category_title">Портретна орієнтація</string>

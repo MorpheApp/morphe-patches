@@ -773,6 +773,10 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_queue_manager_open_queue">Mở hàng chờ</string>
   <string name="morphe_queue_manager_save_queue">Lưu hàng chờ vào danh sách phát</string>
   <!-- interaction.nativeplaylistqueue.nativePlaylistQueuePatch -->
+  <string name="morphe_native_queue_thumbnail_button_title">Hiển thị nút hàng chờ trên hình thu nhỏ</string>
+  <string name="morphe_native_queue_thumbnail_button_summary">Nút hàng chờ sẽ hiển thị trên hình thu nhỏ của các video trong nguồn cấp dữ liệu. Nhấn nút này để thêm video vào cuối hàng chờ, nhấn và giữ để phát video tiếp theo</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_title">Đổi chỗ các tác vụ hàng chờ trên hình thu nhỏ</string>
+  <string name="morphe_native_queue_thumbnail_swap_actions_summary">Nhấn nút hàng chờ sẽ phát video tiếp theo, nhấn và giữ sẽ thêm video vào cuối hàng chờ</string>
   <string name="morphe_native_queue_fetch_on_scroll_title">Tải các trang trong hàng đợi khi cuộn</string>
   <string name="morphe_native_queue_fetch_on_scroll_summary">Tải thêm các video trong danh sách phát khi cuộn gần đến cuối hàng đợi</string>
   <string name="morphe_native_playlist_queue_saved">Danh sách phát đã lưu</string>
@@ -1129,6 +1133,12 @@ Cần thiết lập \"Cookie phụ đề\""</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Tắt Chế độ môi trường khi toàn màn hình</string>
   <string name="morphe_enhanced_ambient_mode_title">Chế độ môi trường xung quanh nâng cao</string>
   <string name="morphe_enhanced_ambient_mode_summary">Chiếu sáng toàn bộ trang xem và các thanh đen theo video, thay thế cho Chế độ môi trường xung quanh</string>
+  <string name="morphe_enhanced_ambient_mode_strength_title">Cường độ ánh sáng</string>
+  <string name="morphe_enhanced_ambient_mode_strength_summary">Độ mạnh của ánh sáng trên trang đồng hồ và các thanh màu đen</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_title">Làm mượt ánh sáng</string>
+  <string name="morphe_enhanced_ambient_mode_smoothing_summary">Thời gian ánh sáng phản hồi theo video. Với giá trị 0, ánh sáng sẽ bám sát video</string>
+  <string name="morphe_enhanced_ambient_mode_blur_title">Làm mờ ánh sáng</string>
+  <string name="morphe_enhanced_ambient_mode_blur_summary">Mức độ làm mờ của ánh sáng xung quanh video. Với giá trị 0, ánh sáng sẽ giữ nguyên hình khối của video</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_title">Giữ cho văn bản dễ đọc</string>
   <string name="morphe_enhanced_ambient_mode_readable_text_summary">Giảm độ sáng của các video sáng để văn bản trên trang vẫn dễ đọc</string>
   <string name="morphe_enhanced_ambient_mode_dim_while_scrolling_title">Làm mờ khi cuộn</string>
@@ -1502,6 +1512,65 @@ Video được yêu cầu bằng một tiền tố ngắn của ID video đã b�
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_dearrow_error">DeArrow tạm thời không khả dụng (mã trạng thái: %s)</string>
   <string name="morphe_dearrow_error_generic">DeArrow tạm thời không khả dụng</string>
+  <string name="morphe_dearrow_vote_button_title">Hiện nút DeArrow</string>
+  <string name="morphe_dearrow_vote_button_summary">Thêm một nút vào phía trên trình phát video để bình chọn cho tiêu đề và hình thu nhỏ của DeArrow, hoặc gửi những mục mới</string>
+  <string name="morphe_dearrow_guidelines_title">Hướng dẫn</string>
+  <string name="morphe_dearrow_guidelines_summary">Hướng dẫn bao gồm các quy tắc và mẹo để gửi và bình chọn cho tiêu đề và hình thu nhỏ</string>
+  <string name="morphe_dearrow_guidelines_popup_title">Thực hiện theo các hướng dẫn</string>
+  <string name="morphe_dearrow_guidelines_popup_content">Hãy đọc nguyên tắc của DeArrow trước khi gửi hoặc bình chọn cho tiêu đề và hình thu nhỏ</string>
+  <string name="morphe_dearrow_guidelines_popup_already_read">Đã đọc</string>
+  <string name="morphe_dearrow_guidelines_popup_open">Hiện cho tôi</string>
+  <string name="morphe_dearrow_vote_title">DeArrow</string>
+  <string name="morphe_dearrow_vote_loading">Đang tải…</string>
+  <string name="morphe_dearrow_vote_fetch_failed">Không thể tải tiêu đề và hình thu nhỏ của video này</string>
+  <string name="morphe_dearrow_vote_titles">Tiêu đề</string>
+  <string name="morphe_dearrow_vote_thumbnails">Hình thu nhỏ</string>
+  <string name="morphe_dearrow_vote_no_titles">Chưa có tiêu đề nào. Hãy gửi tiêu đề để trở thành người đầu tiên</string>
+  <string name="morphe_dearrow_vote_original_title">Tiêu đề gốc</string>
+  <string name="morphe_dearrow_vote_original_thumbnail">Hình thu nhỏ gốc</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_thumbnail_time">Khung hình tại %s</string>
+  <!-- %s is the upvotes minus the downvotes, and can be negative. -->
+  <string name="morphe_dearrow_vote_score">Điểm: %s</string>
+  <!-- Shown instead of the score of a title submitted by a user who is not yet verified. -->
+  <string name="morphe_dearrow_vote_unverified">Chưa xác minh</string>
+  <string name="morphe_dearrow_vote_locked">Đã khóa</string>
+  <string name="morphe_dearrow_vote_upvote">Ủng hộ</string>
+  <string name="morphe_dearrow_vote_downvote">Phản đối</string>
+  <string name="morphe_dearrow_vote_new_title">Tiêu đề mới</string>
+  <string name="morphe_dearrow_vote_new_title_hint">Nhập tiêu đề</string>
+  <string name="morphe_dearrow_vote_submit">Gửi</string>
+  <string name="morphe_dearrow_vote_new_thumbnail">Hình thu nhỏ mới</string>
+  <!-- Button that moves the video to a nearby frame. %s is a signed number of seconds, such as -1 or +0.1 -->
+  <string name="morphe_dearrow_vote_frame_step">%s giây</string>
+  <!-- %s is a time of the video, such as 10:14.19 -->
+  <string name="morphe_dearrow_vote_current_frame_content">Gửi khung hình tại %s làm hình thu nhỏ?</string>
+  <string name="morphe_dearrow_vote_current_frame_playing">Video đang phát. Để gửi khung hình bạn đang thấy, hãy tạm dừng video trước</string>
+  <string name="morphe_dearrow_vote_upvoted">Đã gửi bình chọn lên DeArrow</string>
+  <string name="morphe_dearrow_vote_downvoted">Đã gửi bình chọn không đồng ý lên DeArrow</string>
+  <!-- %s is the reason sent by the DeArrow server, which is in English. -->
+  <string name="morphe_dearrow_vote_failed_reason">DeArrow không chấp nhận bình chọn: %s</string>
+  <string name="morphe_dearrow_vote_failed_locked">Nội dung này đã bị khóa và chỉ người dùng VIP mới có thể bình chọn không thích</string>
+  <string name="morphe_dearrow_vote_failed_rate_limit">Một lượt bình chọn cho video này vẫn đang được xử lý. Vui lòng thử lại sau giây lát</string>
+  <string name="morphe_dearrow_vote_failed_code">Không thể gửi lượt bình chọn (mã trạng thái: %s)</string>
+  <string name="morphe_dearrow_vote_failed_connection">Không thể gửi lượt bình chọn. Vui lòng kiểm tra kết nối mạng và thử lại</string>
+  <string name="morphe_dearrow_submitting_title">Đang gửi tiêu đề và hình thu nhỏ</string>
+  <string name="morphe_dearrow_vote_time_step_title">Mức tua thời gian</string>
+  <string name="morphe_dearrow_vote_time_step_summary">Mức tua của các nút điều chỉnh thời gian tinh chỉnh khi gửi hình thu nhỏ (tính bằng mili giây)</string>
+  <string name="morphe_dearrow_vote_time_step_invalid">Giá trị phải là một số dương</string>
+  <string name="morphe_dearrow_private_user_id_title">Mã người dùng riêng tư</string>
+  <string name="morphe_dearrow_private_user_id_summary">Cùng ID người dùng với SponsorBlock. Thông tin này nên được giữ bí mật. Nó giống như một mật khẩu và không nên chia sẻ với bất kỳ ai. Nếu ai đó có được mã này, họ có thể mạo danh bạn</string>
+  <string name="morphe_dearrow_private_user_id_invalid">Mã riêng tư phải dài ít nhất 30 ký tự</string>
+  <string name="morphe_dearrow_account_loading">Đang tải…</string>
+  <string name="morphe_dearrow_account_connection_failure">Chi tiết tài khoản tạm thời không khả dụng</string>
+  <string name="morphe_dearrow_account_username">Tên người dùng của bạn: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_dearrow_account_username_change">Nhấn vào đây để thay đổi tên người dùng của bạn. Tên người dùng này giống với tên trên SponsorBlock</string>
+  <string name="morphe_dearrow_account_username_changed">Tên người dùng đã được thay đổi thành công</string>
+  <string name="morphe_dearrow_account_username_change_error">Không thay đổi được tên người dùng: Trạng thái: %1$s %2$s</string>
+  <string name="morphe_dearrow_account_titles">Bạn đã gửi &lt;b&gt;%s&lt;/b&gt; tiêu đề</string>
+  <string name="morphe_dearrow_account_titles_summary">Chạm vào đây để xem các tiêu đề của bạn</string>
+  <string name="morphe_dearrow_account_thumbnails">Bạn đã gửi &lt;b&gt;%s&lt;/b&gt; hình thu nhỏ</string>
+  <string name="morphe_dearrow_account_thumbnails_summary">Chạm vào đây để xem các hình thu nhỏ của bạn</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Khôi phục kiểu nút trình phát cũ</string>
   <string name="morphe_restore_old_player_buttons_summary">Khôi phục giao diện điều khiển trình phát kiểu cũ, mỏng hơn</string>

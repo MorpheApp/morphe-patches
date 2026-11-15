@@ -2821,6 +2821,14 @@ public final class NativePlaylistQueuePatch {
         return AddToQueuePatch.isNativeQueueEnabled() && VideoInformation.isVideoId(videoId);
     }
 
+    /** A thumbnail can start a queue even when Play last is not available in a menu. */
+    public static void addThumbnailVideo(String videoId, boolean playLast) {
+        if (!canQueueFlyoutVideo(videoId)) {
+            return;
+        }
+        addToQueue(videoId, playLast && canShowFlyoutLast(), "");
+    }
+
     /** A playing playlist can become a queue without replacing its current video. */
     public static boolean canShowFlyoutLast() {
         return queue != null || playingPlaylistController() != null;
@@ -2955,6 +2963,12 @@ public final class NativePlaylistQueuePatch {
     }
 
     private static void addToQueue(String videoId, boolean playLast) {
+        String channelName = videoId.equals(FlyoutUtils.getFlyoutVideoId())
+                ? FlyoutUtils.getFlyoutChannelName() : "";
+        addToQueue(videoId, playLast, channelName);
+    }
+
+    private static void addToQueue(String videoId, boolean playLast, String channelName) {
         if (!AddToQueuePatch.isNativeQueueEnabled()) {
             releaseNativeQueue();
             return;
@@ -2967,8 +2981,6 @@ public final class NativePlaylistQueuePatch {
             return;
         }
 
-        String channelName = videoId.equals(FlyoutUtils.getFlyoutVideoId())
-                ? FlyoutUtils.getFlyoutChannelName() : "";
         try {
             if (playlist != null) {
                 convertPlayingPlaylist(() -> {
@@ -2977,7 +2989,7 @@ public final class NativePlaylistQueuePatch {
                         FlyoutUtils.dismissFlyout();
                         Utils.showSnackbarShort(str("morphe_queue_manager_fetch_succeeded_add"));
                     } else {
-                        addToQueue(videoId, playLast);
+                        addToQueue(videoId, playLast, channelName);
                     }
                 });
                 return;
