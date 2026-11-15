@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  packages: read
 
 jobs:
   release:
@@ -26,6 +27,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build Morphe Patches (.mpp)
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           chmod +x gradlew
           ./gradlew build generatePatchesList --no-daemon
