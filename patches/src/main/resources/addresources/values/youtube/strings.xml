@@ -1293,6 +1293,10 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_shorts_share_button_title">Hide Share button</string>
     <string name="morphe_hide_shorts_shop_button_title">Hide Shop button</string>
     <string name="morphe_hide_shorts_sound_button_title">Hide Sound button</string>
+    <string name="morphe_hide_shorts_toolbar_title">Hide toolbar</string>
+    <string name="morphe_hide_shorts_toolbar_summary">Hides the back, messages, search and menu buttons at the top of the Shorts player</string>
+    <string name="morphe_hide_shorts_status_bar_title">Hide status bar</string>
+    <string name="morphe_hide_shorts_status_bar_summary">Hides the system status bar while watching Shorts. Swipe down from the top edge to show it</string>
     <string name="morphe_hide_shorts_sound_metadata_label_title">Hide sound metadata label</string>
     <string name="morphe_hide_shorts_subscribe_button_title">Hide Subscribe button</string>
     <string name="morphe_hide_shorts_super_thanks_button_title">Hide \'Buy Super Thanks\' button</string>

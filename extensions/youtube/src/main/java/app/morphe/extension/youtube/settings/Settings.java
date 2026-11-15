@@ -747,6 +747,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SHORTS_SHARE_BUTTON = new BooleanSetting("morphe_hide_shorts_share_button", FALSE);
     public static final BooleanSetting HIDE_SHORTS_SHOP_BUTTON = new BooleanSetting("morphe_hide_shorts_shop_button", TRUE);
     public static final BooleanSetting HIDE_SHORTS_SOUND_BUTTON = new BooleanSetting("morphe_hide_shorts_sound_button", FALSE);
+    public static final BooleanSetting HIDE_SHORTS_TOOLBAR = new BooleanSetting("morphe_hide_shorts_toolbar", FALSE, true);
+    public static final BooleanSetting HIDE_SHORTS_STATUS_BAR = new BooleanSetting("morphe_hide_shorts_status_bar", FALSE, true, parentNot(HIDE_STATUS_BAR));
     public static final BooleanSetting HIDE_SHORTS_SOUND_METADATA_LABEL = new BooleanSetting("morphe_hide_shorts_sound_metadata_label", FALSE);
     public static final BooleanSetting HIDE_SHORTS_SUBSCRIBE_BUTTON = new BooleanSetting("morphe_hide_shorts_subscribe_button", TRUE);
     public static final BooleanSetting HIDE_SHORTS_SUBSCRIPTIONS = new BooleanSetting("morphe_hide_shorts_subscriptions", FALSE);
