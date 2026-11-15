@@ -104,9 +104,15 @@ public final class RedditNsfwInterceptor implements Interceptor {
         String path = request.url().encodedPath();
         HttpUrl.Builder url = request.url().newBuilder();
         boolean changed = false;
-        for (String key : new String[]{"include_over_18", "include_nsfw"}) {
+        for (String key : new String[]{"include_over_18", "include_nsfw", "pref_allow_nsfw"}) {
             if (request.url().queryParameter(key) != null) {
                 url.setQueryParameter(key, "false");
+                changed = true;
+            }
+        }
+        for (String key : new String[]{"nsfw", "safe_search"}) {
+            if (request.url().queryParameter(key) != null) {
+                url.setQueryParameter(key, key.equals("nsfw") ? "0" : "on");
                 changed = true;
             }
         }

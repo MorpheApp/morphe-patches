@@ -4,6 +4,9 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.util.numberOfParameterRegistersLogical
 import app.morphe.patcher.string
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.p0Register
@@ -58,6 +61,36 @@ val permanentNsfwPatch = patch(
                 )
             }
         }
+
+        // This isolated header contains the show/hide-NSFW control, including incognito.
+        Fingerprint(
+            definingClass = "Lcom/reddit/search/combined/ui/composables/",
+            returnType = "V",
+            filters = listOf(
+                resourceLiteral(ResourceType.STRING, "click_label_search_show_nsfw"),
+                resourceLiteral(ResourceType.STRING, "click_label_search_hide_nsfw")
+            )
+        ).method.cloneParameters().apply {
+            addInstructionsWithLabels(numberOfParameterRegistersLogical, """
+                invoke-static {}, $EXTENSION->isEnabled()Z
+                move-result p0
+                if-eqz p0, :original
+                return-void
+                :original
+                nop
+            """)
+        }
+        Fingerprint(
+            definingClass = "Lcom/reddit/search/domain/model/FilterValues;",
+            name = "<init>", returnType = "V",
+            parameters = listOf("Lcom/reddit/domain/model/search/Query;",
+                "Lcom/reddit/search/domain/model/SearchSortType;",
+                "Lcom/reddit/search/domain/model/SearchSortTimeFrame;", "Z",
+                "Ljava/util/List;", "Ljava/util/List;", "Ljava/lang/String;", "Ljava/util/Map;", "Ljava/util/List;")
+        ).method.addInstructionsWithLabels(0, """
+            invoke-static/range { p4 .. p4 }, $EXTENSION->enforceSafeSearch(Z)Z
+            move-result p4
+        """)
 
         val communityName = Fingerprint(
             definingClass = "Lcom/reddit/screens/pager/v2/SubredditPagerV2Screen;",

@@ -28,6 +28,10 @@ public final class PermanentNsfwPatch {
         return getDisabler().isEnabled();
     }
 
+    public static boolean enforceSafeSearch(boolean safeSearch) {
+        return isEnabled() || safeSearch;
+    }
+
     /** Called after the existing Morphe settings categories have been built. */
     @SuppressWarnings("deprecation")
     public static void installPreference(PreferenceFragment fragment) {
