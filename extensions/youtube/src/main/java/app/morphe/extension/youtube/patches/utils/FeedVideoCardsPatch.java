@@ -956,7 +956,7 @@ public final class FeedVideoCardsPatch {
      * Smallest thumbnail beside the texts, such as of the rows of a list on phones,
      * which fits the compact like count at the top of the thumbnail.
      */
-    private static final int MIN_SIDE_THUMBNAIL_WIDTH_DP = 120;
+    public static final int MIN_SIDE_THUMBNAIL_WIDTH_DP = 120;
 
     /** How far the height of a thumbnail beside the texts may differ from 16:9, relative to its height. */
     private static final float SIDE_THUMBNAIL_RATIO_TOLERANCE = 0.1f;

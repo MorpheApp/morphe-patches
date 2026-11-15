@@ -28,13 +28,18 @@ import app.morphe.util.setExtensionIsPatchIncluded
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FeedVideoActionsPatch;"
 
-/** Shared by thumbnail actions without selecting either feature's settings. */
+/**
+ * Hooks used by both "Feed video actions" and the queue button of "Add to queue",
+ * so either patch can be included without the other.
+ */
 internal val feedVideoActionsHookPatch = patch(
-    description = "Hooks thumbnail actions on Litho video cards.",
+    description = "Hooks the touches and the page of feed video cards.",
 ) {
     dependsOn(sharedExtensionPatch, feedVideoCardsHookPatch, browseIdHookPatch)
 
     execute {
+        // The browse fragment tells the extension the browse id of its page,
+        // to not show the thumbnail buttons on playlist pages.
         val (endpoint, browseIdReader) = browsePageBinding
         mutableClassDefBy(endpoint.definingClass).apply {
             interfaces.add(EXTENSION_CLASS.dropLast(1) + $$"$BrowsePage;")
@@ -42,7 +47,7 @@ internal val feedVideoActionsHookPatch = patch(
                 "patch_getBrowseId",
                 emptyList(),
                 "Ljava/lang/String;",
-                1,
+                2,
                 """
                     iget-object v0, p0, $endpoint
                     if-eqz v0, :empty
@@ -50,6 +55,7 @@ internal val feedVideoActionsHookPatch = patch(
                     move-result-object v0
                     return-object v0
                     :empty
+                    # A separate null constant, as the verifier sees the endpoint type here.
                     const/4 v0, 0x0
                     return-object v0
                 """
