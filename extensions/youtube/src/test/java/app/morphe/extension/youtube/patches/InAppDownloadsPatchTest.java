@@ -11,6 +11,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import com.google.protobuf.UnknownFieldSet;
+
 import org.junit.Test;
 
 import app.morphe.extension.youtube.innertube.Offline.OfflineStreamFormat;
@@ -40,6 +42,29 @@ public class InAppDownloadsPatchTest {
         assertTrue(result.getAdaptiveFormats(2).getOfflineEligible());
         assertFalse(result.getAdaptiveFormats(3).getOfflineEligible());
         assertFalse(result.getAdaptiveFormats(4).getOfflineEligible());
+    }
+
+    @Test
+    public void preservesUnknownAudioTrackMetadata() {
+        UnknownFieldSet.Field trackMetadata = UnknownFieldSet.Field.newBuilder()
+                .addVarint(123)
+                .build();
+        UnknownFieldSet unknownFields = UnknownFieldSet.newBuilder()
+                .addField(1000, trackMetadata)
+                .build();
+
+        OfflineStreamFormat audioTrack = format("audio/mp4")
+                .toBuilder()
+                .setUnknownFields(unknownFields)
+                .build();
+        OfflineStreamingData original = OfflineStreamingData.newBuilder()
+                .addAdaptiveFormats(audioTrack)
+                .build();
+
+        OfflineStreamingData result = InAppDownloadsPatch.savableStreamingData(original);
+
+        assertEquals(trackMetadata, result.getAdaptiveFormats(0).getUnknownFields().getField(1000));
+        assertTrue(result.getAdaptiveFormats(0).getOfflineEligible());
     }
 
     @Test
