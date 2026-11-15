@@ -304,6 +304,19 @@ internal object PowerSaveModeSyntheticFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Draws the background of a view, such as a row of the playlist, and the touch feedback over it.
+ */
+internal object TouchFeedbackDrawableDrawFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/spec/motion/TouchFeedbackDrawable;",
+    name = "draw",
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/Canvas;"),
+    filters = listOf(
+        methodCall(smali = "Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V")
+    )
+)
+
 internal object SetFullScreenBackgroundColorFingerprint : Fingerprint(
     definingClass = "Lcom/google/android/apps/youtube/app/player/YouTubePlayerViewNotForReflection;",
     name = "onLayout",

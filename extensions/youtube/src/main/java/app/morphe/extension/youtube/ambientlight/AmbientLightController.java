@@ -275,6 +275,8 @@ public final class AmbientLightController {
     private static volatile float cover;
     /** Where the video was when the cover was last chosen. */
     private static int[] coverVideo = new int[0];
+    /** If a panel was open over the page when the cover was last chosen. */
+    private static boolean coverPanel;
     private static float[] encodedLight = new float[0];
     private static float[] presentedLight = new float[0];
     private static float[] lightSoft = new float[0];
@@ -400,7 +402,10 @@ public final class AmbientLightController {
             if (host != null && host.getRootView() == rootRef.get()) {
                 pendingDrawables.remove(drawable);
                 seeThroughDrawables.put(drawable, Boolean.TRUE);
-                return replacement;
+                // A drawable keeps the color it has when it is given the color 0. One that was
+                // drawn with its own color before, as a header that has moved out of its list
+                // to stick to the top, would stay opaque.
+                return replacement == 0 ? pageColor & 0x00FFFFFF : replacement;
             }
 
             seeThroughDrawables.remove(drawable);
@@ -410,6 +415,19 @@ public final class AmbientLightController {
             Logger.printException(() -> "getLithoColor failure", ex);
             return color;
         }
+    }
+
+    /**
+     * Injection point. YouTube's drawable for touch feedback draws the background of its view
+     * under the feedback.
+     */
+    public static void drawTouchFeedbackBackground(Drawable background, Canvas canvas, Drawable feedback) {
+        try {
+            if (seeThrough && SeeThroughPage.drawPanelLight(background, canvas, feedback)) return;
+        } catch (Exception ex) {
+            Logger.printException(() -> "drawTouchFeedbackBackground failure", ex);
+        }
+        background.draw(canvas);
     }
 
     /**
@@ -1030,7 +1048,11 @@ public final class AmbientLightController {
             redraw = false;
             if (unchanged && current == drawnLayout) {
                 stillCaptures.incrementAndGet();
-                if (stepCover() || emptySurface) {
+                // A panel that opens or closes over a picture that stays the same changes the cover.
+                final boolean coverMoved = SeeThroughPage.hasPanel() == coverPanel
+                        || light.length != LIGHT_COLUMNS * current.gridHeight() * LIGHT_CHANNELS
+                        ? stepCover() : chooseCover(current, LIGHT_COLUMNS, current.gridHeight());
+                if (coverMoved || emptySurface) {
                     if (!present(current)) redraw = true;
                 } else {
                     settled = true;
@@ -1329,7 +1351,9 @@ public final class AmbientLightController {
      * @return If the cover changed.
      */
     private static boolean chooseCover(Layout current, int width, int height) {
-        if (!Settings.ENHANCED_AMBIENT_MODE_READABLE_TEXT.get()) {
+        // A panel over the page, such as the comments, is there to be read.
+        coverPanel = SeeThroughPage.hasPanel();
+        if (!Settings.ENHANCED_AMBIENT_MODE_READABLE_TEXT.get() && !coverPanel) {
             wantedCover = 0f;
             return stepCover();
         }
@@ -1348,6 +1372,16 @@ public final class AmbientLightController {
         if (cover == wantedCover) return false;
         cover = wantedCover;
         return true;
+    }
+
+    /**
+     * Main thread. A panel has opened over the page or has closed, and the light gets another
+     * cover, also while the video is paused.
+     */
+    static void onPanelChanged() {
+        settled = false;
+        stillCaptures.set(0);
+        scheduleTick();
     }
 
     /**

@@ -135,6 +135,21 @@ val ambientModePatch = patch(
         //
         lithoDrawableColorHook("$EXTENSION_ENHANCED_AMBIENT_MODE_CLASS->getLithoColor(Landroid/graphics/drawable/Drawable;I)I")
         videoTimeHook(EXTENSION_ENHANCED_AMBIENT_MODE_CLASS, "setVideoTime")
+        // Without this the rows of the playlist panel keep their plain background.
+        TouchFeedbackDrawableDrawFingerprint.let {
+            it.methodOrNull?.apply {
+                val index = it.instructionMatches.first().index
+                val instruction = getInstruction<FiveRegisterInstruction>(index)
+
+                replaceInstruction(
+                    index,
+                    "invoke-static { v${instruction.registerC}, v${instruction.registerD}, p0 }, " +
+                            "$EXTENSION_ENHANCED_AMBIENT_MODE_CLASS->drawTouchFeedbackBackground(" +
+                            "Landroid/graphics/drawable/Drawable;Landroid/graphics/Canvas;" +
+                            "Landroid/graphics/drawable/Drawable;)V"
+                )
+            }
+        }
         AmbientModeToggleFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
