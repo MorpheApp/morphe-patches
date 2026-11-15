@@ -26,6 +26,7 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION = "Lapp/morphe/extension/reddit/patches/PermanentNsfwPatch;"
 
@@ -356,6 +357,52 @@ val permanentNsfwPatch = patch(
                 :keepBanner
                 nop
             """)
+        }
+
+        // Reddit's search dropdown can be composed entirely of native SafeSearch
+        // options. The screen already ignores a null mapped item, so omit only
+        // that dropdown while leaving sort and other filters alone.
+        val searchDropdown = Fingerprint(filters = listOf(string("SearchDropdown(id="))).originalClassDef
+        val dropdownOptions = searchDropdown.fields.single { it.type == "Ljava/util/List;" }
+        Fingerprint(
+            definingClass = "Lcom/reddit/search/combined/ui/CombinedSearchResultsViewModel;",
+            name = "O", filters = listOf(methodCall(returnType = "Lcom/reddit/domain/SafeSearch;"))
+        ).apply {
+            method.apply {
+                val parser = getInstruction<ReferenceInstruction>(instructionMatches.first().index).reference as MethodReference
+                val optionType = parser.parameterTypes.single()
+                addInstructionsWithLabels(0, """
+                    move-object/from16 v3, p1
+                    instance-of v2, v3, ${searchDropdown.type}
+                    if-eqz v2, :normalDropdown
+                    check-cast v3, ${searchDropdown.type}
+                    iget-object v3, v3, $dropdownOptions
+                    invoke-interface { v3 }, Ljava/util/List;->iterator()Ljava/util/Iterator;
+                    move-result-object v3
+                    const/4 v5, 0x0
+                    :nextOption
+                    invoke-interface { v3 }, Ljava/util/Iterator;->hasNext()Z
+                    move-result v2
+                    if-eqz v2, :allOptionsChecked
+                    invoke-interface { v3 }, Ljava/util/Iterator;->next()Ljava/lang/Object;
+                    move-result-object v4
+                    check-cast v4, $optionType
+                    invoke-static { v4 }, $parser
+                    move-result-object v4
+                    if-eqz v4, :normalDropdown
+                    const/4 v5, 0x1
+                    goto :nextOption
+                    :allOptionsChecked
+                    if-eqz v5, :normalDropdown
+                    invoke-static {}, $EXTENSION->isEnabled()Z
+                    move-result v2
+                    if-eqz v2, :normalDropdown
+                    const/4 v2, 0x0
+                    return-object v2
+                    :normalDropdown
+                    nop
+                """)
+            }
         }
 
         // A blocked community is already loaded when Reddit records a recent visit.

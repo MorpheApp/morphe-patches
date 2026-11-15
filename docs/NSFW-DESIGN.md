@@ -13,6 +13,7 @@ After confirmation, a private installation-wide preference applies to signed-in 
 - Reddit's native recent-community writer receives a `Subreddit` before storing it. While permanently disabled, it skips communities whose native `over18` field is true. The drawer and full recent-history screen omit such communities already stored before activation. Other community lists are untouched.
 - The shared NSFW sheet's native decline action otherwise launches MainActivity. While permanent disabling is active, it invokes the sheet's existing `navigateBack` callback; its back gesture uses that same callback.
 - Search banners with Reddit's own “adjust NSFW settings” or age-verification action are marked dismissed while permanent disabling is active. Other search banners remain visible. This uses the banner behavior, not English text or a network response rewrite.
+- Search dropdowns composed entirely of Reddit's native SafeSearch options are omitted. Mixed dropdowns retain their other filters; the existing native SafeSearch value remains forced on.
 
 When inactive, native values and controls retain their original behavior. Reddit handles all content decisions through its normal off-state logic; this patch does not mark content as nonexistent or construct replacement responses.
 

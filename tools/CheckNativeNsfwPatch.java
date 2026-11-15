@@ -120,6 +120,10 @@ public final class CheckNativeNsfwPatch {
         }
         require(searchBanner != null && calls(method(searchBanner, "<init>"), EXTENSION, "isEnabled"),
                 "Search banners can still prompt to adjust NSFW settings");
+        require(calls(method(classes.get(
+                        "Lcom/reddit/search/combined/ui/CombinedSearchResultsViewModel;"), "O"),
+                        EXTENSION, "isEnabled"),
+                "The native SafeSearch dropdown is still shown");
         for (String type : classes.keySet()) {
             require(!type.endsWith("/NsfwCommunityGate;") && !type.endsWith("/NsfwJsonFilter;")
                     && !type.endsWith("/RedditNsfwInterceptor;") && !type.endsWith("/BlockedNsfwHosts;"),
