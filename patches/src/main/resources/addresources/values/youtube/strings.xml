@@ -1731,7 +1731,7 @@ Videos are requested by a short prefix of the hashed video ID, so the server can
     <string name="morphe_debug_save_push_notifications_summary">Saves received push notifications to a file in the app data. The file can include private information, such as notification texts and channel names</string>
     <string name="morphe_debug_saved_push_notifications_title">Export saved push notifications</string>
     <string name="morphe_debug_saved_push_notifications_summary">Export or clear the saved push notifications</string>
-    <string name="morphe_debug_saved_push_notifications_count">Saved push notifications: %d</string>
+    <string name="morphe_debug_saved_push_notifications_count">Saved push notifications: %s</string>
     <string name="morphe_debug_saved_push_notifications_none_found">No saved push notifications found</string>
     <string name="morphe_debug_saved_push_notifications_export_success">Push notifications exported successfully</string>
     <string name="morphe_debug_saved_push_notifications_export_failed">Failed to export push notifications</string>
