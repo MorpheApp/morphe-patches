@@ -145,6 +145,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup surveys;
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroup videoLabelsBuffer;
+    private final StringFilterGroup videoMetadataLabels;
     private final StringFilterGroup videoRecommendationLabels;
 
     public enum ExpandableCardStyle {
@@ -501,6 +502,12 @@ public final class LayoutComponentsFilter extends Filter {
                 "badge.e"
         );
 
+        // Labels such as 'Auto-dubbed' or 'Hyped' in the metadata of the feed cards of a newer A/B test.
+        videoMetadataLabels = new StringFilterGroup(
+                Settings.HIDE_VIDEO_LABELS,
+                "content_metadata.e"
+        );
+
         final var videoTitle = new StringFilterGroup(
                 Settings.HIDE_VIDEO_TITLE,
                 "player_overlay_video_heading.e"
@@ -567,6 +574,7 @@ public final class LayoutComponentsFilter extends Filter {
                 timedReactions,
                 videoThumbnail,
                 videoLabels,
+                videoMetadataLabels,
                 videoTitle,
                 videoRecommendationLabels,
                 webLinkPanel
@@ -786,6 +794,11 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == videoLabels) {
             return VersionCheckPatch.IS_20_31_OR_GREATER && videoLabelsBuffer.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == videoMetadataLabels) {
+            // Only the label itself, and not a larger part of the metadata that contains a label.
+            return Utils.startsWith(asciiStrings.getStrings(), "badge.e");
         }
 
         if (matchedGroup == videoRecommendationLabels) {
