@@ -1,4 +1,4 @@
-# NSFW lock: reference behavior and validation boundary
+# Permanently disable NSFW: reference behavior and validation boundary
 
 ## Reference snapshots
 
@@ -29,7 +29,7 @@ The user authorized blocking marked NSFW profiles as a fallback. No keyword, sub
 
 ## Current approach and unresolved coverage
 
-`PermanentNsfwLock` has only read and enable operations. It latches on, checks for activation by another process while still off, and reports write failure without displaying a false success. Its store is outside normal Morphe setting exports.
+`PermanentNsfwDisabler` has only read and enable operations for permanently disabling NSFW. It latches on, checks for activation by another holder of the store while still off, and reports write failure without displaying a false success. Its store is outside normal Morphe setting exports.
 
 The candidate `OkHttpClient(Builder)` hook installs a first application interceptor before the client snapshots its interceptor list. Such an interceptor can see cached responses as well as network responses. It does not cover other transports or already-parsed local models.
 

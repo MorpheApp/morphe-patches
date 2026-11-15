@@ -8,14 +8,14 @@ import android.preference.PreferenceGroup;
 
 import app.morphe.extension.reddit.settings.preference.PermanentNsfwPreference;
 
-import app.morphe.extension.reddit.patches.nsfw.PermanentNsfwLock;
+import app.morphe.extension.reddit.patches.nsfw.PermanentNsfwDisabler;
 import app.morphe.extension.reddit.patches.nsfw.RedditNsfwInterceptor;
 import app.morphe.extension.shared.Utils;
 import okhttp3.OkHttpClient;
 
 /** Runtime entry points injected by the experimental patch. */
 public final class PermanentNsfwPatch {
-    private static PermanentNsfwLock lock;
+    private static PermanentNsfwDisabler disabler;
 
     private PermanentNsfwPatch() {}
 
@@ -24,7 +24,7 @@ public final class PermanentNsfwPatch {
     }
 
     public static boolean isEnabled() {
-        return getLock().isEnabled();
+        return getDisabler().isEnabled();
     }
 
     /** Called after the existing Morphe settings categories have been built. */
@@ -43,11 +43,12 @@ public final class PermanentNsfwPatch {
         }
     }
 
-    public static synchronized PermanentNsfwLock getLock() {
-        if (lock == null) {
+    public static synchronized PermanentNsfwDisabler getDisabler() {
+        if (disabler == null) {
+            // Keep the original private filename so an update never resets NSFW disabling.
             SharedPreferences preferences = Utils.getContext().getSharedPreferences(
                     "reddit_permanent_nsfw_lock", Context.MODE_PRIVATE);
-            lock = new PermanentNsfwLock(new PermanentNsfwLock.Store() {
+            disabler = new PermanentNsfwDisabler(new PermanentNsfwDisabler.Store() {
                 @Override public boolean read() {
                     return preferences.getBoolean("enabled", false);
                 }
@@ -56,7 +57,7 @@ public final class PermanentNsfwPatch {
                 }
             });
         }
-        return lock;
+        return disabler;
     }
 
     /** Must run before OkHttpClient snapshots the builder's application interceptors. */
@@ -65,6 +66,6 @@ public final class PermanentNsfwPatch {
             if (interceptor instanceof RedditNsfwInterceptor) return;
         }
         // First application interceptor sees responses after the others, including cache hits.
-        builder.interceptors().add(0, new RedditNsfwInterceptor(() -> getLock().isEnabled()));
+        builder.interceptors().add(0, new RedditNsfwInterceptor(() -> getDisabler().isEnabled()));
     }
 }

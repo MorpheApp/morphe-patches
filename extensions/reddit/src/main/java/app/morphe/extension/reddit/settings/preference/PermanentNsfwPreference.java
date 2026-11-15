@@ -16,7 +16,7 @@ public final class PermanentNsfwPreference extends Preference {
     public PermanentNsfwPreference(Context context) {
         super(context);
         setPersistent(false);
-        setKey("morphe_permanent_nsfw_lock");
+        setKey("morphe_permanent_disable_nsfw");
         setTitle(str("morphe_permanent_nsfw_title"));
         refresh();
         setOnPreferenceClickListener(preference -> {
@@ -25,7 +25,7 @@ public final class PermanentNsfwPreference extends Preference {
                     .setMessage(str("morphe_permanent_nsfw_confirm_message"))
                     .setNegativeButton(android.R.string.cancel, null)
                     .setPositiveButton(str("morphe_permanent_nsfw_enable"), (dialog, which) -> {
-                        if (!PermanentNsfwPatch.getLock().enable()) {
+                        if (!PermanentNsfwPatch.getDisabler().enable()) {
                             Toast.makeText(context, str("morphe_permanent_nsfw_save_failed"),
                                     Toast.LENGTH_LONG).show();
                             return;
@@ -39,8 +39,8 @@ public final class PermanentNsfwPreference extends Preference {
     }
 
     private void refresh() {
-        boolean locked = PermanentNsfwPatch.getLock().isEnabled();
-        setEnabled(!locked);
-        setSummary(str(locked ? "morphe_permanent_nsfw_locked" : "morphe_permanent_nsfw_summary"));
+        boolean permanentlyDisabled = PermanentNsfwPatch.getDisabler().isEnabled();
+        setEnabled(!permanentlyDisabled);
+        setSummary(str(permanentlyDisabled ? "morphe_permanent_nsfw_disabled" : "morphe_permanent_nsfw_summary"));
     }
 }

@@ -34,8 +34,8 @@ private object AdultBlurItemFingerprint : Fingerprint(
 /** Experimental until the target APK's transports, schemas and native settings are verified. */
 @Suppress("unused")
 val permanentNsfwPatch = patch(
-    name = "Permanently disable NSFW (experimental)",
-    description = "Adds a one-way NSFW lock, removes adult viewing controls after activation, " +
+    name = "Permanently disable NSFW content (experimental)",
+    description = "Adds an irreversible option to disable NSFW content, removes adult viewing controls after activation, " +
         "and filters Reddit JSON responses. Experimental: content coverage requires validation.",
     default = false
 ) {

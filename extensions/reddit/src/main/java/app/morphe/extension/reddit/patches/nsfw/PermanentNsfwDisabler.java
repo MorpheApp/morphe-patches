@@ -1,7 +1,7 @@
 package app.morphe.extension.reddit.patches.nsfw;
 
 /** A one-way, install-wide latch. Kept outside Morphe's import/export settings. */
-public final class PermanentNsfwLock {
+public final class PermanentNsfwDisabler {
     public interface Store {
         boolean read();
         boolean enable();
@@ -10,7 +10,7 @@ public final class PermanentNsfwLock {
     private final Store store;
     private volatile boolean locked;
 
-    public PermanentNsfwLock(Store store) {
+    public PermanentNsfwDisabler(Store store) {
         this.store = store;
         locked = store.read();
     }

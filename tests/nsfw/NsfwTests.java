@@ -38,7 +38,7 @@ public final class NsfwTests {
     }
 
     private static void latch() {
-        class MemoryStore implements PermanentNsfwLock.Store {
+        class MemoryStore implements PermanentNsfwDisabler.Store {
             boolean value;
             boolean writable;
             int writes;
@@ -51,13 +51,13 @@ public final class NsfwTests {
             }
         }
         MemoryStore store = new MemoryStore();
-        PermanentNsfwLock lock = new PermanentNsfwLock(store);
+        PermanentNsfwDisabler lock = new PermanentNsfwDisabler(store);
         require(!lock.isEnabled() && !lock.enable() && !lock.isEnabled());
         store.writable = true;
-        PermanentNsfwLock secondProcess = new PermanentNsfwLock(store);
+        PermanentNsfwDisabler secondProcess = new PermanentNsfwDisabler(store);
         require(lock.enable() && lock.isEnabled());
         require(secondProcess.isEnabled());
-        require(new PermanentNsfwLock(store).isEnabled());
+        require(new PermanentNsfwDisabler(store).isEnabled());
         int writes = store.writes;
         require(lock.enable() && writes == store.writes);
     }
