@@ -15,3 +15,11 @@ No gated no-op is counted as compatibility evidence. No claim is made that 2026.
 Eighteen synthetic host checks pass. Hosted full Gradle tests and Android packaging pass. These results establish build/patching compatibility, not functional device coverage.
 
 Phone testing of releases through `v2.3.0-nsfw.5` found actual content exposure in anonymous browsing, direct community routes and previously enabled content. Native view gating, anonymous search control removal and saved bypass clearing are revisions responding to those failures. They require the same phone regressions to pass before the feature can be considered verified. Full profile/post navigation, alternate transports, persisted models and media-request prevention remain open.
+
+## Final published archive
+
+The downloaded `v2.3.0-nsfw.6` MPP archive also passed `--validate`, patch application and DEX/resource rebuilding on both 2026.40.0 and 2026.45.0. All 25 network API method descriptors used by its runtime match both original APKs exactly. No strict SDK verifier or device pass is claimed.
+
+Archive SHA-256: `aa9cecc8e19ec647507999e91dbd276cf30603b4e313b99f74eb4c40a2ac8c43`.
+
+Its manifest identifies it as `Reddit SFW Patches (PR testing)`. Both Manager channel endpoints resolve to this test release. Functional phone regression testing remains required; no prior device failure is considered closed solely by these host results.
