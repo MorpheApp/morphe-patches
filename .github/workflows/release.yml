@@ -26,28 +26,39 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build Morphe Patches (.mpp)
+      - name: Build Android Morphe Patches (.mpp)
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           chmod +x gradlew
-          ./gradlew build generatePatchesList --no-daemon
+          ./gradlew buildAndroid generatePatchesList --no-daemon
+          rm -f patches/build/libs/*-sources.mpp patches/build/libs/*-javadoc.mpp
+          cp patches/build/libs/patches-*.mpp patches/build/libs/venom-patches.mpp
 
-      - name: Upload .mpp to Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: venom-patches-mpp
-          path: |
-            patches/build/libs/*.mpp
-            patches/build/libs/*.jar
+      - name: Update patches-bundle.json for Source URL
+        run: |
+          rm -f morphe-signing.pub
+          cat <<EOF > patches-bundle.json
+          {
+            "created_at": "$(date -u +"%Y-%m-%dT%H:%M:%S")",
+            "description": "Venom Custom Morphe Patches",
+            "download_url": "https://github.com/${{ github.repository }}/releases/download/v2.2.0-venom.${{ github.run_number }}/venom-patches.mpp",
+            "signature_download_url": "",
+            "version": "2.2.0-venom.${{ github.run_number }}"
+          }
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A patches-bundle.json morphe-signing.pub
+          git diff --staged --quiet || git commit -m "chore: update patches-bundle.json [skip ci]"
+          git push
 
-      - name: Publish GitHub Release
+      - name: Publish Direct .mpp to GitHub Releases
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v2.2.0-venom.${{ github.run_number }}
           name: Venom Patches v2.2.0 (Build ${{ github.run_number }})
-          body: "Custom Morphe Patches with BookMyShow Comment Word Tags and WLPro Smart Playlist Tags."
+          body: "Download venom-patches.mpp below, or paste the repo URL into Morphe Manager Source URL."
           files: |
-            patches/build/libs/*.mpp
-            
+            patches/build/libs/venom-patches.mpp
