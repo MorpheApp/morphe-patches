@@ -1,8 +1,6 @@
 package app.morphe.extension.reddit.patches;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -50,6 +48,10 @@ public final class PermanentNsfwPatch {
         return isEnabled() ? ResourceUtils.getStringIdentifier("morphe_permanent_nsfw_blocked_message") : original;
     }
 
+    public static int goBackLabelResource(int original) {
+        return isEnabled() ? ResourceUtils.getStringIdentifier("action_go_back") : original;
+    }
+
     /** The native recent-visit writer receives community metadata before saving it. */
     public static boolean skipRecentSubreddit(Subreddit subreddit) {
         return isEnabled() && subreddit != null && Boolean.TRUE.equals(subreddit.getOver18());
@@ -63,18 +65,6 @@ public final class PermanentNsfwPatch {
             if (!Boolean.TRUE.equals(subreddit.getOver18())) visible.add(subreddit);
         }
         return visible;
-    }
-
-    /** Use the current screen stack when declining a mature-content warning. */
-    @SuppressWarnings("deprecation")
-    public static boolean returnToPreviousScreen(Object context) {
-        if (!isEnabled()) return false;
-        while (context instanceof ContextWrapper && !(context instanceof Activity)) {
-            context = ((ContextWrapper) context).getBaseContext();
-        }
-        if (!(context instanceof Activity)) return false;
-        ((Activity) context).onBackPressed();
-        return true;
     }
 
     /** Called after the existing Morphe settings categories have been built. */

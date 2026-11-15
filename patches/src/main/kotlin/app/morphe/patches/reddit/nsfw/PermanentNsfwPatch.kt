@@ -25,7 +25,7 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION = "Lapp/morphe/extension/reddit/patches/PermanentNsfwPatch;"
 
@@ -120,6 +120,23 @@ val permanentNsfwPatch = patch(
                     """
                 )
             }
+            // Session eligibility alone does not remove the rows from the anonymous
+            // settings screen. Guard their Compose entry point too.
+            Fingerprint(
+                classFingerprint = item,
+                name = if (is_2026_45_0_or_greater) "d" else "c",
+                returnType = "V"
+            ).method.apply {
+                val register = findFreeRegister(0)
+                addInstructionsWithLabels(0, """
+                    invoke-static {}, $EXTENSION->isEnabled()Z
+                    move-result v$register
+                    if-eqz v$register, :original
+                    return-void
+                    :original
+                    nop
+                """)
+            }
         }
 
         // Override viewing/search preferences at their shared model boundary as well:
@@ -212,7 +229,8 @@ val permanentNsfwPatch = patch(
             "nsfw_dialog_title" to "disabledTitleResource",
             "nsfw_description" to "disabledMessageResource",
             "nsfw_dialog_message" to "disabledMessageResource",
-            "nsfw_dialog_under18_submessage" to "disabledMessageResource"
+            "nsfw_dialog_under18_submessage" to "disabledMessageResource",
+            "nsfw_no_thanks" to "goBackLabelResource"
         ).forEach { (resource, hook) ->
             Fingerprint(filters = listOf(resourceLiteral(ResourceType.STRING, resource)))
                 .matchAll(1..4).forEach { match ->
@@ -250,9 +268,8 @@ val permanentNsfwPatch = patch(
             }
         }
 
-        // Reddit's native "No Thanks" handler launches MainActivity, discarding the
-        // screen from which the blocked profile, community or post was opened.
-        // Resolve that home-navigation helper by its body rather than its obfuscated name.
+        // The sheet supplies its own navigateBack callback. Android Activity back
+        // does not pop this screen, so use that callback for the decline action.
         val navigateHome = Fingerprint(
             returnType = "V",
             filters = listOf(
@@ -268,26 +285,72 @@ val permanentNsfwPatch = patch(
         )
         warningHandler.method.apply {
             val index = warningHandler.instructionMatches.single().index
-            val call = getInstruction<ReferenceInstruction>(index).reference as MethodReference
-            val providerType = call.parameterTypes.single().toString()
-            val providerMethod = Fingerprint(
-                definingClass = providerType, parameters = listOf(), returnType = "Ljava/lang/Object;",
-                filters = listOf(methodCall(smali = "Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;"))
-            ).method
-            val providerRegister = getInstruction<FiveRegisterInstruction>(index).registerD
+            val viewModel = "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel;"
+            val navigateBackField = Fingerprint(definingClass = viewModel, name = "<init>").method
+                .implementation!!.instructions.asSequence()
+                .mapNotNull { (it as? ReferenceInstruction)?.reference as? FieldReference }
+                .first { it.definingClass == viewModel && it.type == "Lkotlin/jvm/functions/Function0;" }
             val register = findFreeRegister(index)
             addInstructionsWithLabels(index, """
                 invoke-static {}, $EXTENSION->isEnabled()Z
                 move-result v$register
                 if-eqz v$register, :nativeDismiss
-                invoke-virtual/range { v$providerRegister .. v$providerRegister }, $providerMethod
-                move-result-object v$register
-                invoke-static/range { v$register .. v$register }, $EXTENSION->returnToPreviousScreen(Ljava/lang/Object;)Z
-                move-result v$register
-                if-nez v$register, :dismissed
+                iget-object v$register, p0, $navigateBackField
+                invoke-interface { v$register }, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+                goto :dismissed
                 :nativeDismiss
                 nop
             """, ExternalLabel("dismissed", getInstruction(index + 1)))
+        }
+
+        // The same sheet installs a disabled no-op BackHandler. While permanent
+        // disabling is active, wire the gesture to its native navigateBack callback.
+        Fingerprint(
+            definingClass = "Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;",
+            filters = listOf(methodCall(definingClass = "Landroidx/activity/compose/b;", name = "a"))
+        ).apply {
+            method.apply {
+                val index = instructionMatches.single().index
+                val call = getInstruction<FiveRegisterInstruction>(index)
+                val callback = call.registerF
+                val enabled = call.registerG
+                addInstructionsWithLabels(index, """
+                    invoke-static {}, $EXTENSION->isEnabled()Z
+                    move-result v$enabled
+                    if-eqz v$enabled, :nativeBackHandler
+                    new-instance v$callback, Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet${'$'}onInitialize${'$'}1${'$'}1;
+                    invoke-direct { v$callback, p0 }, Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet${'$'}onInitialize${'$'}1${'$'}1;-><init>(Ljava/lang/Object;)V
+                    :nativeBackHandler
+                    nop
+                """)
+            }
+        }
+
+        // Search banners are server-authored. Use their native CTA behavior,
+        // independent of translated text, to suppress prompts to change NSFW settings.
+        val searchBannerView = Fingerprint(filters = listOf(string("SearchBannerViewState(id="))).originalClassDef.type
+        val searchBannerBehaviors = Fingerprint(filters = listOf(string("SearchBannerBehaviors(cta="))).originalClassDef
+        val ctaField = searchBannerBehaviors.fields.first()
+        val adjustNsfw = Fingerprint(filters = listOf(string("SearchAdjustNsfwSettingsBehavior(id="))).originalClassDef.type
+        val verifyAge = Fingerprint(filters = listOf(string("SearchAgeVerificationFlowBehavior(id="))).originalClassDef.type
+        Fingerprint(definingClass = searchBannerView, name = "<init>", returnType = "V").method.apply {
+            val register = findFreeRegister(1)
+            addInstructionsWithLabels(1, """
+                if-eqz p6, :keepBanner
+                iget-object v$register, p6, $ctaField
+                instance-of v$register, v$register, $adjustNsfw
+                if-nez v$register, :checkPermanent
+                iget-object v$register, p6, $ctaField
+                instance-of v$register, v$register, $verifyAge
+                if-eqz v$register, :keepBanner
+                :checkPermanent
+                invoke-static {}, $EXTENSION->isEnabled()Z
+                move-result v$register
+                if-eqz v$register, :keepBanner
+                const/4 p8, 0x1
+                :keepBanner
+                nop
+            """)
         }
 
         // A blocked community is already loaded when Reddit records a recent visit.

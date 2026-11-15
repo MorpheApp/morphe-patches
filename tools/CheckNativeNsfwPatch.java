@@ -101,8 +101,25 @@ public final class CheckNativeNsfwPatch {
         }
         require(calls(method(classes.get(
                         "Lcom/reddit/agegating/impl/nsfw/NsfwBottomSheetViewModel$1;"),
-                        "access$invokeSuspend$handleEvent"), EXTENSION, "returnToPreviousScreen"),
-                "Declining the native warning still forces MainActivity");
+                        "access$invokeSuspend$handleEvent"), EXTENSION, "isEnabled"),
+                "Declining the native warning does not use the sheet's back callback");
+        require(calls(method(classes.get(
+                        "Lcom/reddit/agegating/impl/nsfw/composables/NsfwBottomSheet;"),
+                        modernApi ? "V2" : "R2"), EXTENSION, "isEnabled"),
+                "Android back is still disabled on the native warning sheet");
+        ClassDef searchBanner = null;
+        for (ClassDef candidate : classes.values()) {
+            Method toString = null;
+            for (Method method : candidate.getMethods()) {
+                if (method.getName().equals("toString")) toString = method;
+            }
+            if (toString != null && containsString(toString, "SearchBannerViewState(id=")) {
+                searchBanner = candidate;
+                break;
+            }
+        }
+        require(searchBanner != null && calls(method(searchBanner, "<init>"), EXTENSION, "isEnabled"),
+                "Search banners can still prompt to adjust NSFW settings");
         for (String type : classes.keySet()) {
             require(!type.endsWith("/NsfwCommunityGate;") && !type.endsWith("/NsfwJsonFilter;")
                     && !type.endsWith("/RedditNsfwInterceptor;") && !type.endsWith("/BlockedNsfwHosts;"),
@@ -126,6 +143,16 @@ public final class CheckNativeNsfwPatch {
             if (instruction instanceof ReferenceInstruction reference
                     && reference.getReference() instanceof MethodReference call
                     && call.getDefiningClass().equals(type) && call.getName().equals(name)) return true;
+        }
+        return false;
+    }
+
+    private static boolean containsString(Method method, String value) {
+        if (method.getImplementation() == null) return false;
+        for (var instruction : method.getImplementation().getInstructions()) {
+            if (instruction instanceof ReferenceInstruction reference
+                    && reference.getReference() instanceof com.android.tools.smali.dexlib2.iface.reference.StringReference text
+                    && text.getString().equals(value)) return true;
         }
         return false;
     }
