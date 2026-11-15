@@ -945,4 +945,8 @@ Lyrics come from third-party services that are not affiliated with, sponsored, o
     <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disable bold icons</string>
     <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Restore Player Up next, Lyrics, and Related tabs</string>
 
+    <!-- interaction.sonos.sonosCastPatch -->
+    <string name="morphe_music_sonos_cast_title">Sonos Cast</string>
+    <string name="morphe_music_sonos_cast_summary">Cast lossless audio directly to Sonos and UPnP speakers via the Cast button</string>
+
 </resources>
