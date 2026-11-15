@@ -30,6 +30,7 @@ import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,6 +85,12 @@ final class SeeThroughPage {
      * description and the playlist.
      */
     private static final int PANEL_WRAPPER_ID = ResourceUtils.getIdentifier(ResourceType.ID, "engagement_panel_wrapper");
+    /**
+     * Holds the panel that opens next to the video in fullscreen, such as the comments. It is a
+     * part of the player.
+     */
+    private static final int PLAYER_PANEL_HOLDER_ID =
+            ResourceUtils.getIdentifier(ResourceType.ID, "fullscreen_engagement_panel_holder");
     /** The bar at the bottom of the page that opens the playlist. It lies over the list of the page. */
     private static final int PLAYLIST_BAR_ID = ResourceUtils.getIdentifier(ResourceType.ID, "playlist_entry_point_bar");
     /**
@@ -129,6 +136,7 @@ final class SeeThroughPage {
     private static WeakReference<LightDrawable> pageBackdropLightRef = new WeakReference<>(null);
     private static final List<WeakReference<View>> systemBarBackgrounds = new ArrayList<>(2);
     private static WeakReference<ViewGroup> panelWrapperRef = new WeakReference<>(null);
+    private static WeakReference<ViewGroup> playerPanelHolderRef = new WeakReference<>(null);
     /** The views of the panels that show the light in place of their background, with that background. */
     private static final IdentityHashMap<View, Drawable> panelBackgrounds = new IdentityHashMap<>();
     /** The layers of the panels that are drawn in place of what is under them. */
@@ -138,6 +146,7 @@ final class SeeThroughPage {
     /** The colors under the ripples of these rows, with the alpha they had. */
     private static final WeakHashMap<Drawable, Integer> panelRowFills = new WeakHashMap<>();
     private static volatile boolean panelShown;
+    private static volatile boolean playerPanelShown;
     /** If a panel that shows the light lies over the player, as when it is dragged up to fill the screen. */
     private static volatile boolean panelOverPlayer;
     /** The player, or the view of the page that holds it. */
@@ -171,6 +180,11 @@ final class SeeThroughPage {
         ViewGroup panelWrapper = panelWrapperRef.get();
         if (PANEL_WRAPPER_ID != 0 && (panelWrapper == null || !panelWrapper.isAttachedToWindow())) {
             panelWrapperRef = new WeakReference<>(page.findViewById(PANEL_WRAPPER_ID) instanceof ViewGroup found ? found : null);
+        }
+        ViewGroup playerPanelHolder = playerPanelHolderRef.get();
+        if (PLAYER_PANEL_HOLDER_ID != 0 && (playerPanelHolder == null || !playerPanelHolder.isAttachedToWindow())) {
+            playerPanelHolderRef = new WeakReference<>(
+                    player.findViewById(PLAYER_PANEL_HOLDER_ID) instanceof ViewGroup found ? found : null);
         }
         clearBackgrounds(page, player, page.getWidth() / 3, pageColor, 0);
         lightPageContent(page);
@@ -261,8 +275,22 @@ final class SeeThroughPage {
      * @param lists If the items of the lists are looked at too.
      */
     private static void lightPanels(boolean lists) {
-        ViewGroup wrapper = panelWrapperRef.get();
-        View player = playerRef.get();
+        final boolean onPage = lightPanels(panelWrapperRef.get(), false, lists);
+        // The panel of the player lies over the light around the video, and is lit in the same way.
+        final boolean inPlayer = lightPanels(playerPanelHolderRef.get(), true, lists);
+        if ((onPage || inPlayer) != panelShown || inPlayer != playerPanelShown) {
+            panelShown = onPage || inPlayer;
+            playerPanelShown = inPlayer;
+            AmbientLightController.onPanelChanged();
+        }
+    }
+
+    /**
+     * @param inPlayer If the panels are a part of the player. Such a panel lies next to the video.
+     * @return If a panel of the wrapper shows the light.
+     */
+    private static boolean lightPanels(@Nullable ViewGroup wrapper, boolean inPlayer, boolean lists) {
+        View player = inPlayer ? null : playerRef.get();
         boolean shown = false;
         boolean overPlayer = false;
         for (int i = 0; wrapper != null && wrapper.isShown() && i < wrapper.getChildCount(); i++) {
@@ -286,11 +314,8 @@ final class SeeThroughPage {
                 overPlayer |= panelLocation[1] < playerLocation[1] + player.getHeight() - 1;
             }
         }
-        panelOverPlayer = overPlayer;
-        if (shown != panelShown) {
-            panelShown = shown;
-            AmbientLightController.onPanelChanged();
-        }
+        if (!inPlayer) panelOverPlayer = overPlayer;
+        return shown;
     }
 
     /**
@@ -341,6 +366,36 @@ final class SeeThroughPage {
     }
 
     /**
+     * Any thread.
+     *
+     * @return If the panel of the player, as the comments of fullscreen, shows the light.
+     */
+    static boolean hasPlayerPanel() {
+        return playerPanelShown;
+    }
+
+    /**
+     * Main thread.
+     *
+     * @param bounds Gets where the panel of the player is in the window: left, top, right, bottom.
+     * @return If the panel of the player shows the light.
+     */
+    static boolean playerPanel(int[] bounds) {
+        ViewGroup holder = playerPanelHolderRef.get();
+        for (int i = 0; playerPanelShown && holder != null && holder.isShown() && i < holder.getChildCount(); i++) {
+            View panel = holder.getChildAt(i);
+            if (panel.getVisibility() == View.VISIBLE && panel.getBackground() instanceof PanelLight) {
+                panel.getLocationInWindow(bounds);
+                bounds[2] = bounds[0] + panel.getWidth();
+                bounds[3] = bounds[1] + panel.getHeight();
+                return true;
+            }
+        }
+        Arrays.fill(bounds, 0);
+        return false;
+    }
+
+    /**
      * Main thread. The rows of a playlist have the color of the page as their background, inside
      * YouTube's drawable for touch feedback: as a color, or as a ripple over a color. They show
      * the light like the other backgrounds of a panel, and still hide what is under them, as a
@@ -366,8 +421,10 @@ final class SeeThroughPage {
             if (!isOpaquePageColor(color)) return false;
         }
         ViewGroup wrapper = panelWrapperRef.get();
+        ViewGroup playerPanelHolder = playerPanelHolderRef.get();
         View panel = view;
-        for (int depth = 0; panel != null && panel.getParent() != wrapper; depth++) {
+        for (int depth = 0; panel != null && panel.getParent() != wrapper && panel.getParent() != playerPanelHolder;
+             depth++) {
             panel = depth < MAX_DEPTH && panel.getParent() instanceof View parent ? parent : null;
         }
         if (panel == null || !(panel.getBackground() instanceof PanelLight) || view.getWidth() < panel.getWidth() / 3) {
@@ -527,7 +584,9 @@ final class SeeThroughPage {
         panelRowFills.clear();
         panelShown = false;
         panelOverPlayer = false;
+        playerPanelShown = false;
         panelWrapperRef = new WeakReference<>(null);
+        playerPanelHolderRef = new WeakReference<>(null);
         View playlistBar = playlistBarRef.get();
         if (playlistBar != null && playlistBar.getBackground() instanceof RoundLight) {
             playlistBar.setBackground(playlistBarBackground);
@@ -948,7 +1007,7 @@ final class SeeThroughPage {
      * the light itself. The page has it as its background, and so have the content of the page
      * and the panel below the player of a tablet, as YouTube draws black under them while the
      * page changes. The backdrop of the page has it over what it draws. The views of a panel
-     * have it in place of their backgrounds.
+     * have it in place of their backgrounds, also those of the panel of the player.
      */
     private static final class LightDrawable extends Drawable {
         private final View view;
