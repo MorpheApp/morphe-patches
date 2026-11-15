@@ -21,6 +21,12 @@ public final class CheckNativeNsfwPatch {
         for (String entry : apk.getDexEntryNames()) {
             for (var cls : apk.getEntry(entry).getDexFile().getClasses()) classes.put(cls.getType(), cls);
         }
+        boolean included = false;
+        for (var instruction : method(classes.get(EXTENSION), "isPatchIncluded").getImplementation().getInstructions()) {
+            if (instruction instanceof com.android.tools.smali.dexlib2.iface.instruction.NarrowLiteralInstruction literal
+                    && literal.getNarrowLiteral() == 1) included = true;
+        }
+        require(included, "The extension's inclusion marker is not enabled");
         require(calls(method(classes.get(EXTENSION), "isEnabled"), EXTENSION, "getDisabler"),
                 "The permanent preference read was optimized out");
         boolean modernApi = false;
@@ -74,7 +80,8 @@ public final class CheckNativeNsfwPatch {
         }
         require(!calls(method(classes.get("Lcom/reddit/domain/model/Subreddit;"), "getOver18"), EXTENSION, "isEnabled"),
                 "Community adult labels must remain intact for native gating");
-        System.out.println("PASS: modern Disabled policy, legacy guards, native setter guard, intact community labels, no custom filtering/overlay");
+        System.out.println("PASS: " + (modernApi ? "native Disabled enum" : "native legacy-off policy")
+                + ", safe-search on, guarded setter, intact labels, no custom filtering/overlay");
     }
 
     private static Method method(ClassDef cls, String name) {
