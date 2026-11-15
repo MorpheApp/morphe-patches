@@ -641,7 +641,7 @@ public final class InAppDownloadsPatch {
         }
     }
 
-    private static int countSavableFormats(OfflineStreamingData streamingData) {
+    static int countSavableFormats(OfflineStreamingData streamingData) {
         int count = 0;
         for (OfflineStreamFormat format : streamingData.getAdaptiveFormatsList()) {
             if (format.getOfflineEligible()) {
@@ -651,7 +651,7 @@ public final class InAppDownloadsPatch {
         return count;
     }
 
-    private static OfflineStreamingData savableStreamingData(OfflineStreamingData streamingData) {
+    static OfflineStreamingData savableStreamingData(OfflineStreamingData streamingData) {
         OfflineStreamingData.Builder builder = streamingData.toBuilder();
         for (int i = 0, count = builder.getAdaptiveFormatsCount(); i < count; i++) {
             OfflineStreamFormat format = builder.getAdaptiveFormats(i);
