@@ -1,14 +1,15 @@
 /*
  * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/4709
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.lyrics.derive;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
