@@ -259,11 +259,9 @@ public final class MwebStream {
         }
         if (status == STATUS_ATTESTATION_REQUIRED) {
             onFailure("attestation required");
-        } else if (status == STATUS_ATTESTATION_PENDING && previous < 0 && !session.coldStart) {
+        } else if (status == STATUS_ATTESTATION_PENDING && previous < 0) {
             // The session the website made is accepted from the first response.
             // If it is not, the server stops the stream after some media, so the next client is used sooner.
-            // A session taken at the cold start of the website is pending until the website sends its PoToken,
-            // as in the browser.
             onFailure("attestation pending at the start");
         }
     }
