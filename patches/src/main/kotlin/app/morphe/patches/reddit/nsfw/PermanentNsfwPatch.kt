@@ -1,6 +1,10 @@
 package app.morphe.patches.reddit.nsfw
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.util.findFreeRegister
+import app.morphe.patcher.util.smali.ExternalLabel
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.patch
@@ -196,6 +200,50 @@ val permanentNsfwPatch = patch(
                 invoke-static/range { p1 .. p1 }, $EXTENSION->allowNsfw(Z)Z
                 move-result p1
             """)
+        }
+
+        // These native resources are shared by profile, community and post gates.
+        mapOf(
+            "nsfw_title" to "disabledTitleResource",
+            "nsfw_dialog_title" to "disabledTitleResource",
+            "nsfw_description" to "disabledMessageResource",
+            "nsfw_dialog_message" to "disabledMessageResource",
+            "nsfw_dialog_under18_submessage" to "disabledMessageResource"
+        ).forEach { (resource, hook) ->
+            Fingerprint(filters = listOf(resourceLiteral(ResourceType.STRING, resource)))
+                .matchAll(1..4).forEach { match ->
+                    match.method.apply {
+                        val index = match.instructionMatches.single().index
+                        val register = getInstruction<OneRegisterInstruction>(index).registerA
+                        addInstructionsWithLabels(index + 1, """
+                            invoke-static/range { v$register .. v$register }, $EXTENSION->$hook(I)I
+                            move-result v$register
+                        """)
+                    }
+                }
+        }
+        // Omit the primary opt-in button; retain the native dismissal action.
+        val primaryButtons = Fingerprint(
+            returnType = "Ljava/lang/Object;",
+            filters = listOf(
+                resourceLiteral(ResourceType.STRING, "nsfw_description"),
+                methodCall(definingClass = "Lcom/reddit/ui/compose/ds/", returnType = "V"),
+                string("nsfw_button_sheet_cancel")
+            )
+        ).matchAll(1..1).map { it.method to it.instructionMatches[1].index } +
+            Fingerprint(filters = listOf(
+                resourceLiteral(ResourceType.STRING, "nsfw_dialog_title"),
+                methodCall(name = "setPositiveButton", parameters = listOf("I", "Landroid/content/DialogInterface\$OnClickListener;"))
+            )).matchAll(2..2).map { it.method to it.instructionMatches[1].index }
+        primaryButtons.forEach { (method, index) ->
+            method.apply {
+                val register = findFreeRegister(index)
+                addInstructionsWithLabels(index, """
+                    invoke-static {}, $EXTENSION->isEnabled()Z
+                    move-result v$register
+                    if-nez v$register, :skipOptIn
+                """, ExternalLabel("skipOptIn", getInstruction(index + 1)))
+            }
         }
 
         setExtensionIsPatchIncluded(EXTENSION)

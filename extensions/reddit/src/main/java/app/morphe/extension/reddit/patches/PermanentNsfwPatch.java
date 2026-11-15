@@ -12,6 +12,7 @@ import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.patches.nsfw.PermanentNsfwDisabler;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 
 /** Runtime entry points injected by the experimental patch. */
 public final class PermanentNsfwPatch {
@@ -33,6 +34,14 @@ public final class PermanentNsfwPatch {
 
     public static boolean enforceSafeSearch(boolean safeSearch) {
         return isEnabled() || safeSearch;
+    }
+
+    public static int disabledTitleResource(int original) {
+        return isEnabled() ? ResourceUtils.getStringIdentifier("morphe_permanent_nsfw_disabled") : original;
+    }
+
+    public static int disabledMessageResource(int original) {
+        return isEnabled() ? ResourceUtils.getStringIdentifier("morphe_permanent_nsfw_blocked_message") : original;
     }
 
     /** Called after the existing Morphe settings categories have been built. */
