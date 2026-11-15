@@ -23,15 +23,21 @@ public final class CheckNativeNsfwPatch {
         }
         require(calls(method(classes.get(EXTENSION), "isEnabled"), EXTENSION, "getDisabler"),
                 "The permanent preference read was optimized out");
-        Method modern = method(classes.get(PREFS), "getNsfwEnabledPreferenceState");
-        boolean disabled = false;
-        for (var instruction : modern.getImplementation().getInstructions()) {
-            if (instruction instanceof ReferenceInstruction reference
-                    && reference.getReference() instanceof FieldReference field
-                    && field.getDefiningClass().equals(PREFS.substring(0, PREFS.length() - 1) + "$PreferenceState;")
-                    && field.getName().equals("Disabled")) disabled = true;
+        boolean modernApi = false;
+        for (Method candidate : classes.get(PREFS).getMethods()) {
+            if (candidate.getName().equals("getNsfwEnabledPreferenceState")) modernApi = true;
         }
-        require(disabled && calls(modern, EXTENSION, "isEnabled"), "Modern native policy is not forced Disabled");
+        if (modernApi) {
+            Method modern = method(classes.get(PREFS), "getNsfwEnabledPreferenceState");
+            boolean disabled = false;
+            for (var instruction : modern.getImplementation().getInstructions()) {
+                if (instruction instanceof ReferenceInstruction reference
+                        && reference.getReference() instanceof FieldReference field
+                        && field.getDefiningClass().equals(PREFS.substring(0, PREFS.length() - 1) + "$PreferenceState;")
+                        && field.getName().equals("Disabled")) disabled = true;
+            }
+            require(disabled && calls(modern, EXTENSION, "isEnabled"), "Modern native policy is not forced Disabled");
+        }
         for (String name : new String[]{"getOver18", "getSearchIncludeOver18"}) {
             require(calls(method(classes.get(PREFS), name), EXTENSION, "isEnabled"), "Missing legacy preference guard: " + name);
         }
@@ -43,19 +49,24 @@ public final class CheckNativeNsfwPatch {
                     && value.getString().equals("on")) safeValue = true;
         }
         require(safeValue && calls(safeSearch, EXTENSION, "isEnabled"), "Anonymous safe search can still serialize off");
-        ClassDef continuation = classes.get("Lcom/reddit/account/repository/RedditPreferenceRepository$setOver18$1;");
-        MethodReference setter = null;
-        for (var instruction : method(continuation, "invokeSuspend").getImplementation().getInstructions()) {
-            if (instruction instanceof ReferenceInstruction reference
-                    && reference.getReference() instanceof MethodReference call
-                    && call.getParameterTypes().toString().equals("[Z, Z, Lkotlin/coroutines/jvm/internal/ContinuationImpl;]")) setter = call;
+        if (modernApi) {
+            ClassDef continuation = classes.get("Lcom/reddit/account/repository/RedditPreferenceRepository$setOver18$1;");
+            MethodReference setter = null;
+            for (var instruction : method(continuation, "invokeSuspend").getImplementation().getInstructions()) {
+                if (instruction instanceof ReferenceInstruction reference
+                        && reference.getReference() instanceof MethodReference call
+                        && call.getParameterTypes().toString().equals("[Z, Z, Lkotlin/coroutines/jvm/internal/ContinuationImpl;]")) setter = call;
+            }
+            require(setter != null, "Native viewing setter not found");
+            boolean guardedSetter = false;
+            for (Method candidate : classes.get(setter.getDefiningClass()).getMethods()) {
+                if (candidate.toString().equals(setter.toString())) guardedSetter = calls(candidate, EXTENSION, "allowNsfw");
+            }
+            require(guardedSetter, "Native viewing setter can still enable NSFW");
+        } else {
+            require(calls(method(classes.get(PREFS), "setOver18"), EXTENSION, "allowNsfw"),
+                    "Legacy native viewing setter can still enable NSFW");
         }
-        require(setter != null, "Native viewing setter not found");
-        boolean guardedSetter = false;
-        for (Method candidate : classes.get(setter.getDefiningClass()).getMethods()) {
-            if (candidate.toString().equals(setter.toString())) guardedSetter = calls(candidate, EXTENSION, "allowNsfw");
-        }
-        require(guardedSetter, "Native viewing setter can still enable NSFW");
         for (String type : classes.keySet()) {
             require(!type.endsWith("/NsfwCommunityGate;") && !type.endsWith("/NsfwJsonFilter;")
                     && !type.endsWith("/RedditNsfwInterceptor;") && !type.endsWith("/BlockedNsfwHosts;"),

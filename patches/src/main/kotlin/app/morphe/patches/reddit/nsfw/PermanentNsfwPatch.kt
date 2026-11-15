@@ -12,6 +12,8 @@ import app.morphe.patcher.string
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.p0Register
 import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.misc.version.is_2026_45_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -41,7 +43,7 @@ val permanentNsfwPatch = patch(
             it.version.takeUnless { version -> version in setOf("2026.40.0", "2026.45.0") }
         }.toTypedArray()
     ))
-    dependsOn(settingsPatch)
+    dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
         Fingerprint(
@@ -137,22 +139,24 @@ val permanentNsfwPatch = patch(
             }
         }
 
-        // Modern age gating reads this enum instead of the legacy getOver18 boolean.
-        Fingerprint(
-            definingClass = "Lcom/reddit/domain/model/AccountPreferences;",
-            name = "getNsfwEnabledPreferenceState", parameters = listOf(),
-            returnType = "Lcom/reddit/domain/model/AccountPreferences\$PreferenceState;"
-        ).method.cloneParameters().apply {
-            val register = p0Register
-            addInstructionsWithLabels(1, """
-                invoke-static {}, $EXTENSION->isEnabled()Z
-                move-result v$register
-                if-eqz v$register, :original
-                sget-object v$register, Lcom/reddit/domain/model/AccountPreferences${'$'}PreferenceState;->Disabled:Lcom/reddit/domain/model/AccountPreferences${'$'}PreferenceState;
-                return-object v$register
-                :original
-                nop
-            """)
+        if (is_2026_45_0_or_greater) {
+            // Modern age gating reads this enum instead of the legacy getOver18 boolean.
+            Fingerprint(
+                definingClass = "Lcom/reddit/domain/model/AccountPreferences;",
+                name = "getNsfwEnabledPreferenceState", parameters = listOf(),
+                returnType = "Lcom/reddit/domain/model/AccountPreferences\$PreferenceState;"
+            ).method.cloneParameters().apply {
+                val register = p0Register
+                addInstructionsWithLabels(1, """
+                    invoke-static {}, $EXTENSION->isEnabled()Z
+                    move-result v$register
+                    if-eqz v$register, :original
+                    sget-object v$register, Lcom/reddit/domain/model/AccountPreferences${'$'}PreferenceState;->Disabled:Lcom/reddit/domain/model/AccountPreferences${'$'}PreferenceState;
+                    return-object v$register
+                    :original
+                    nop
+                """)
+            }
         }
         // Anonymous sessions also retain an independent safe-search enum.
         Fingerprint(
@@ -170,19 +174,29 @@ val permanentNsfwPatch = patch(
                 nop
             """)
         }
-        // Use the native setter as usual, but refuse attempts to turn viewing back on.
-        Fingerprint(
-            definingClass = "Lcom/reddit/account/repository/RedditPreferenceRepository\$setOver18\$1;",
-            name = "invokeSuspend", parameters = listOf("Ljava/lang/Object;"),
-            returnType = "Ljava/lang/Object;",
-            filters = listOf(methodCall(
-                parameters = listOf("Z", "Z", "Lkotlin/coroutines/jvm/internal/ContinuationImpl;"),
-                returnType = "Ljava/lang/Object;"
-            ))
-        ).instructionMatches.single().getMethodCalled().addInstructionsWithLabels(0, """
-            invoke-static/range { p1 .. p1 }, $EXTENSION->allowNsfw(Z)Z
-            move-result p1
-        """)
+        if (is_2026_45_0_or_greater) {
+            // Use the native setter as usual, but refuse attempts to turn viewing back on.
+            Fingerprint(
+                definingClass = "Lcom/reddit/account/repository/RedditPreferenceRepository\$setOver18\$1;",
+                name = "invokeSuspend", parameters = listOf("Ljava/lang/Object;"),
+                returnType = "Ljava/lang/Object;",
+                filters = listOf(methodCall(
+                    parameters = listOf("Z", "Z", "Lkotlin/coroutines/jvm/internal/ContinuationImpl;"),
+                    returnType = "Ljava/lang/Object;"
+                ))
+            ).instructionMatches.single().getMethodCalled().addInstructionsWithLabels(0, """
+                invoke-static/range { p1 .. p1 }, $EXTENSION->allowNsfw(Z)Z
+                move-result p1
+            """)
+        } else {
+            Fingerprint(
+                definingClass = "Lcom/reddit/domain/model/AccountPreferences;",
+                name = "setOver18", parameters = listOf("Z"), returnType = "V"
+            ).method.addInstructionsWithLabels(0, """
+                invoke-static/range { p1 .. p1 }, $EXTENSION->allowNsfw(Z)Z
+                move-result p1
+            """)
+        }
 
         setExtensionIsPatchIncluded(EXTENSION)
     }
