@@ -68,6 +68,7 @@ private val downloadsResourcePatch = patch {
                 preferences = setOf(
                     ListPreference("morphe_download_mode"),
                     SwitchPreference("morphe_shorts_download_flyout_button", summary = true),
+                    SwitchPreference("morphe_feed_download_flyout_button", summary = true),
                     exportDownloadFolderPreference(),
                     SwitchPreference("morphe_external_downloader_overlay_button", summary = true),
                     TextPreference(

@@ -1552,7 +1552,7 @@ public final class LayoutComponentsFilter extends Filter {
      * and shows its real text only about a second after the menu opens. A filter of the download text
      * therefore also hides the placeholder, otherwise the item is shown and then collapses.
      */
-    private static boolean isFlyoutMenuFiltered(String menuTitle) {
+    public static boolean isFlyoutMenuFiltered(String menuTitle) {
         final boolean isDownloadPlaceholder = menuTitle.equals(ResourceUtils.getString("menu_offline_placeholder"));
 
         for (String filter : flyoutMenuFilterStrings) {
