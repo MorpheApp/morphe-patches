@@ -1,103 +1,49 @@
 name: Release
 
 on:
-  workflow_dispatch:
-    inputs:
-      send_fcm:
-        description: 'Send FCM push notification'
-        type: boolean
-        default: true
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   release:
-    name: Release
-    permissions:
-      contents: write
-      packages: write
-      id-token: write
-      attestations: write
-      actions: write
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-        with:
-          fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup Java
-        uses: actions/setup-java@v6
+        uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
+          distribution: 'zulu'
           java-version: '21'
 
-      - name: Cache Gradle
-        uses: burrunan/gradle-cache-action@v3
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: 'lts/*'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Release
-        uses: cycjimmy/semantic-release-action@v8
-        id: release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MORPHE_SIGNING_KEY: ${{ secrets.MORPHE_SIGNING_KEY }}
-
-      - name: Attest
-        if: steps.release.outputs.new_release_published == 'true'
-        uses: actions/attest-build-provenance@v3
-        with:
-          subject-name: 'Morphe Patches ${{ steps.release.outputs.new_release_git_tag }}'
-          subject-path: patches/build/libs/patches-*.mpp
-
-      - name: Generate website deploy token
-        if: steps.release.outputs.new_release_published == 'true'
-        id: app-token
-        uses: actions/create-github-app-token@v3
-        with:
-          client-id: ${{ vars.MORPHE_AAMATT_APP_ID }}
-          private-key: ${{ secrets.WEBSITE_DISPATCH_TOKEN }}
-          owner: MorpheApp
-
-      - name: Trigger website deploy
-        if: steps.release.outputs.new_release_published == 'true'
-        uses: actions/github-script@v9
-        with:
-          github-token: ${{ steps.app-token.outputs.token }}
-          script: |
-            await github.rest.repos.createDispatchEvent({
-              owner: 'MorpheApp',
-              repo: 'morphe-website',
-              event_type: 'trigger-deploy'
-            })
-
-      - name: Wait before sending FCM
-        if: steps.release.outputs.new_release_published == 'true' && (github.event_name == 'push' || inputs.send_fcm == true)
-        run: sleep 300
-
-      - name: Setup Python for FCM
-        if: steps.release.outputs.new_release_published == 'true' && (github.event_name == 'push' || inputs.send_fcm == true)
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.12'
-
-      - name: Send FCM push notification
-        if: steps.release.outputs.new_release_published == 'true' && (github.event_name == 'push' || inputs.send_fcm == true)
-        env:
-          FCM_PROJECT_ID: ${{ secrets.FCM_PROJECT_ID }}
-          FCM_SERVICE_ACCOUNT_JSON: ${{ secrets.FCM_SERVICE_ACCOUNT_JSON }}
-          FCM_TYPE: bundle_update
-          FCM_VERSION: ${{ steps.release.outputs.new_release_version }}
-          BRANCH: ${{ github.ref_name }}
+      - name: Build Morphe Patches (.mpp)
         run: |
-          pip install cryptography
-          python3 .github/scripts/send_fcm.py
+          chmod +x gradlew
+          ./gradlew build generatePatchesList --no-daemon
+
+      - name: Upload .mpp to Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: venom-patches-mpp
+          path: |
+            patches/build/libs/*.mpp
+            patches/build/libs/*.jar
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v2.2.0-venom.${{ github.run_number }}
+          name: Venom Patches v2.2.0 (Build ${{ github.run_number }})
+          body: "Custom Morphe Patches with BookMyShow Comment Word Tags and WLPro Smart Playlist Tags."
+          files: |
+            patches/build/libs/*.mpp
+            
