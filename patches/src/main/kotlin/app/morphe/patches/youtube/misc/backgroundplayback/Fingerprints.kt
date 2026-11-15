@@ -164,12 +164,8 @@ internal object BackgroundPlaybackSettingFingerprint : Fingerprint(
  * and this is the constructor that takes the setting store and the audio manager the setting method reads.
  * The number of other parameters differs between app versions.
  */
-internal fun backgroundPlaybackSettingConstructorFingerprint(
-    settingClassType: String,
-    settingStoreType: String,
-    audioManagerType: String
-) = Fingerprint(
-    definingClass = settingClassType,
+internal object BackgroundPlaybackSettingConstructorFingerprint : Fingerprint(
+    definingClass = { BackgroundPlaybackSettingFingerprint.originalClassDef.type },
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
         // Super constructor.
@@ -178,8 +174,10 @@ internal fun backgroundPlaybackSettingConstructorFingerprint(
     custom = { method, _ ->
         val parameters = method.parameterTypes
         parameters.size >= 2 &&
-                parameters[0].toString() == settingStoreType &&
-                parameters[1].toString() == audioManagerType
+                parameters[0].toString() == BackgroundPlaybackSettingFingerprint.instructionMatches.first()
+                    .methodReference.definingClass &&
+                parameters[1].toString() == BackgroundPlaybackSettingAllowedFingerprint.originalMethod
+                    .parameterTypes[1].toString()
     }
 )
 

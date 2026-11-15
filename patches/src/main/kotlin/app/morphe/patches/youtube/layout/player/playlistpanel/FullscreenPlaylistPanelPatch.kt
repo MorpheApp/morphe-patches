@@ -59,8 +59,7 @@ val fullscreenPlaylistPanelPatch = bytecodePatch(
 
         // Use the panel overlay over the fullscreen player, which YouTube enables by a server
         // config only on phones. Without it the panel opens in the watch column, which fullscreen hides.
-        val panelModeFingerprint = getPanelModeFingerprint(PanelModeEnumFingerprint.originalClassDef.type)
-        panelModeFingerprint.matchAll().forEach { match ->
+        PanelModeFingerprint.matchAll().forEach { match ->
             match.method.apply {
                 // The read of the server config: the boolean field, or the result of the static call.
                 val configIndex = match.instructionMatches.first().index

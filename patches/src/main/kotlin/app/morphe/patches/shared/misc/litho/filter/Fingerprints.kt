@@ -363,8 +363,8 @@ internal object ListSaveScrollPositionFingerprint : Fingerprint(
 /**
  * Removes an item from an observable list, and notifies the observers of the list.
  */
-internal fun observableListRemoveFingerprint(listType: String) = Fingerprint(
-    definingClass = listType,
+internal object ObservableListRemoveFingerprint : Fingerprint(
+    definingClass = { ObservableListConstructorFingerprint.originalClassDef.type },
     name = "remove",
     returnType = "Ljava/lang/Object;",
     parameters = listOf("I"),

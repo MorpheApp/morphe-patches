@@ -30,15 +30,15 @@ internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
  *
  * @param playbackParametersType The PlaybackParameters type, obtained from [PlaybackParametersToStringFingerprint].
  */
-internal fun getPlaybackParametersSetterFingerprint(playbackParametersType: String) = object : Fingerprint(
+internal object PlaybackParametersSetterFingerprint : Fingerprint(
     interfaces = listOf("Landroidx/media3/exoplayer/ExoPlayer;"),
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(playbackParametersType)
-) {}
+    parameters = { listOf(PlaybackParametersToStringFingerprint.originalClassDef.type) }
+)
 
-internal fun getExoPlayerImplFingerprint(playbackParametersType: String) = object : Fingerprint(
-    classFingerprint = getPlaybackParametersSetterFingerprint(playbackParametersType),
+internal object ExoPlayerImplConstructorFingerprint : Fingerprint(
+    classFingerprint = PlaybackParametersSetterFingerprint,
     name = "<init>",
     filters = listOf(
         methodCall(
@@ -46,7 +46,7 @@ internal fun getExoPlayerImplFingerprint(playbackParametersType: String) = objec
             name = "<init>"
         )
     )
-) {}
+)
 
 /**
  * Matches method {androidx.media3.common.PlaybackParameters}.toString()

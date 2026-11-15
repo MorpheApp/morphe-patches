@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.interaction.nativeplaylistqueue
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.mutableClassDefBy
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.numberOfParameterRegistersLogical
@@ -71,17 +72,10 @@ internal fun installPlaylistPanel() {
         }.sorted() == constructorFields.indices.toList()
     ) { "Native playlist queue: each model parameter must be stored directly" }
 
-    fun addBridge(name: String, parameters: List<String>, returnType: String, locals: Int, body: String) =
-        controller.addBridgeMethod(name, parameters, returnType, locals, body)
-
-    controller.interfaces.add(CONTROLLER_INTERFACE)
     mutableClassDefBy(modelType).apply {
-        interfaces.add(PLAYLIST_MODEL_INTERFACE)
-        addBridgeMethod(
+        addPatchInterface(
+            PLAYLIST_MODEL_INTERFACE,
             "patch_getPlaylistId",
-            emptyList(),
-            "Ljava/lang/String;",
-            1,
             """
                 iget-object v0, p0, $playlistField
                 return-object v0
@@ -91,11 +85,9 @@ internal fun installPlaylistPanel() {
 
     // A watch response can omit its video ID. Use the native stale-response guard's
     // active video instead of treating an optional response field as playback state.
-    addBridge(
+    controller.addPatchInterface(
+        CONTROLLER_INTERFACE,
         "patch_getVideoId",
-        emptyList(),
-        "Ljava/lang/String;",
-        1,
         """
             iget-object v0, p0, $activeVideoField
             if-nez v0, :done
@@ -106,11 +98,9 @@ internal fun installPlaylistPanel() {
         """
     )
 
-    addBridge(
+    controller.addPatchInterface(
+        CONTROLLER_INTERFACE,
         "patch_getPlaylistId",
-        emptyList(),
-        "Ljava/lang/String;",
-        1,
         """
             iget-object v0, p0, $modelField
             if-eqz v0, :empty
@@ -125,22 +115,18 @@ internal fun installPlaylistPanel() {
         """
     )
 
-    addBridge(
+    controller.addPatchInterface(
+        CONTROLLER_INTERFACE,
         "patch_getModel",
-        emptyList(),
-        "Ljava/lang/Object;",
-        1,
         """
             iget-object v0, p0, $modelField
             return-object v0
         """
     )
 
-    addBridge(
+    controller.addPatchInterface(
+        CONTROLLER_INTERFACE,
         "patch_getPanel",
-        emptyList(),
-        "Ljava/lang/Object;",
-        1,
         """
             iget-object v0, p0, $modelField
             if-eqz v0, :done
@@ -151,11 +137,9 @@ internal fun installPlaylistPanel() {
         """
     )
 
-    addBridge(
+    controller.addPatchInterface(
+        CONTROLLER_INTERFACE,
         "patch_isAttached",
-        emptyList(),
-        "Z",
-        1,
         """
             iget-object v0, p0, $collapsedView
             invoke-virtual {v0}, Landroid/view/View;->isAttachedToWindow()Z
@@ -176,11 +160,9 @@ internal fun installPlaylistPanel() {
     }.joinToString("\n")
 
     // The model arguments use v5-v11. With 12 locals, p0 and p1 remain 4-bit registers.
-    addBridge(
+    controller.addPatchInterface(
+        CONTROLLER_INTERFACE,
         "patch_updatePanel",
-        listOf("[B"),
-        "Ljava/lang/Object;",
-        12,
         """
             iget-object v0, p0, $modelField
             if-nez v0, :model_ready
@@ -208,11 +190,9 @@ internal fun installPlaylistPanel() {
         """
     )
 
-    addBridge(
+    controller.addPatchInterface(
+        CONTROLLER_INTERFACE,
         "patch_restorePanel",
-        List(2) { "Ljava/lang/Object;" },
-        "V",
-        1,
         """
             iget-object v0, p0, $modelField
             if-ne v0, p1, :done
@@ -220,12 +200,12 @@ internal fun installPlaylistPanel() {
             const-string v0, ""
             if-eqz p2, :identity_ready
             iget-object v0, p2, $playlistField
-    
+
             :identity_ready
             iput-object v0, p0, $activePlaylistField
             iput-object p2, p0, $modelField
             invoke-virtual/range {p0 .. p0}, ${render.originalMethod}
-    
+
             :done
             return-void
         """

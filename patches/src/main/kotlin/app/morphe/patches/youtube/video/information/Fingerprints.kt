@@ -154,11 +154,11 @@ internal object PlayerStatusEnumFingerprint : Fingerprint(
     )
 )
 
-internal fun getPlayerStatusFingerprint(playerStatusEnumClass: String) = object : Fingerprint(
+internal object PlayerStatusFingerprint : Fingerprint(
     classFingerprint = PlayerInitFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf(playerStatusEnumClass),
+    parameters = { listOf(PlayerStatusEnumFingerprint.originalClassDef.type) },
     filters = listOf(
         // The opcode for the first index of the method is sget-object.
         // Even in sufficiently old versions, such as YT 17.34, the opcode for the first index is sget-object.
@@ -168,7 +168,7 @@ internal fun getPlayerStatusFingerprint(playerStatusEnumClass: String) = object 
             name = "plus"
         )
     )
-) {}
+)
 
 internal object SeekFingerprint : Fingerprint(
     classFingerprint = PlayerInitFingerprint,

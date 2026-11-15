@@ -22,6 +22,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.misc.contexthook.NextEndpointParentFingerprint
 import app.morphe.patches.youtube.misc.loadvideo.MiniAppOpenYtContentCommandEndpointFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -1220,8 +1221,8 @@ internal object NotificationSkipActionsFingerprint : Fingerprint(
 )
 
 /** Publishes the Previous and Next capabilities, returning the changed flags. */
-internal fun notificationCapabilitiesSetterFingerprint(modelType: String) = Fingerprint(
-    definingClass = modelType,
+internal object NotificationCapabilitiesSetterFingerprint : Fingerprint(
+    definingClass = { NotificationSkipActionsFingerprint.instructionMatches.first().fieldReference.type },
     returnType = "I",
     parameters = listOf("Z", "Z")
 )
@@ -1269,8 +1270,8 @@ internal fun notificationPlaybackStateFingerprint(adapterType: String, callback:
 )
 
 /** The generated builder's missing-property diagnostic identifies duration finalization. */
-internal fun queueSnackbarDurationFingerprint(builderType: String) = Fingerprint(
-    definingClass = builderType,
+internal object QueueSnackbarDurationFingerprint : Fingerprint(
+    definingClass = { QueueSnackbarModernFactoryFingerprint.originalMethod.returnType },
     parameters = emptyList(),
     returnType = "L",
     filters = listOf(
@@ -1483,10 +1484,10 @@ internal fun playlistPageIndexFingerprint(requestType: String, serializer: Strin
     )
 )
 
-internal fun playlistPageFactoryFingerprint(requestType: String) = Fingerprint(
+internal object PlaylistPageFactoryFingerprint : Fingerprint(
     parameters = listOf("Ljava/lang/String;"),
-    returnType = requestType,
-    filters = listOf(methodCall(definingClass = requestType, name = "<init>"))
+    returnType = { NextEndpointParentFingerprint.originalClassDef.type },
+    filters = listOf(methodCall(definingClass = { NextEndpointParentFingerprint.originalClassDef.type }, name = "<init>"))
 )
 
 /** Native preparation supplies the per-occurrence entry ID as well as index and params. */
@@ -1639,7 +1640,7 @@ internal fun playlistTapCommandFingerprint(callbackType: String, parameters: Lis
     filters = listOf(methodCall(returnType = ELEMENTS_TAP_COMMAND, parameters = emptyList()))
 )
 
-internal fun playlistNodeStoreFingerprint() = Fingerprint(
+internal object PlaylistNodeStoreFingerprint : Fingerprint(
     classFingerprint = PlaylistNodeInfoFingerprint,
     name = "setTag",
     parameters = listOf("I", "Ljava/lang/Object;"),
@@ -1671,13 +1672,13 @@ internal object PlaylistListConstructorFingerprint : Fingerprint(
 )
 
 /** Observe the actual native near-end branch, before the pager's loaded-size deduplication. */
-internal fun playlistNativeScrollFingerprint(listType: String) = Fingerprint(
+internal object PlaylistNativeScrollFingerprint : Fingerprint(
     parameters = listOf("Landroid/support/v7/widget/RecyclerView;", "I", "I"),
     returnType = "V",
     filters = listOf(
         instanceOf("Landroid/support/v7/widget/LinearLayoutManager;"),
         methodCall(parameters = listOf("Landroid/support/v7/widget/RecyclerView;"), returnType = "Z"),
-        fieldAccess(type = listType, opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(5))
+        fieldAccess(type = { PlaylistListConstructorFingerprint.originalClassDef.type }, opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(5))
     )
 )
 

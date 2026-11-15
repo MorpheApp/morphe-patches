@@ -215,9 +215,9 @@ val fullWidthFeedMediaPatch = patch(
             )
 
             val postContentLambdaConstructorFingerprint = if (is_2026_46_0_or_greater) {
-                postContentLambdaConstructorFingerprint(propsType)
+                PostContentLambdaConstructorFingerprint
             } else {
-                postContentLambdaConstructorLegacyFingerprint(propsType)
+                PostContentLambdaConstructorLegacyFingerprint
             }
 
             postContentLambdaConstructorFingerprint.method.addInstructions(

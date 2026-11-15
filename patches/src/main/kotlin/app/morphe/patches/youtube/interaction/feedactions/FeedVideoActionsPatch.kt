@@ -10,8 +10,8 @@ package app.morphe.patches.youtube.interaction.feedactions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patches.all.misc.resources.addResourcesPatch
-import app.morphe.patches.shared.misc.bridge.addBridge
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
@@ -42,12 +42,9 @@ internal val feedVideoActionsHookPatch = patch(
         // to not show the thumbnail buttons on playlist pages.
         val (endpoint, browseIdReader) = browsePageBinding
         mutableClassDefBy(endpoint.definingClass).apply {
-            interfaces.add(EXTENSION_CLASS.dropLast(1) + $$"$BrowsePage;")
-            addBridge(
+            addPatchInterface(
+                EXTENSION_CLASS.dropLast(1) + $$"$BrowsePage;",
                 "patch_getBrowseId",
-                emptyList(),
-                "Ljava/lang/String;",
-                2,
                 """
                     iget-object v0, p0, $endpoint
                     if-eqz v0, :empty

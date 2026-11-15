@@ -30,7 +30,7 @@ internal fun navigationIntentHook(
 ) {
     val enumType = NavigationIntentEnumFingerprint.originalClassDef.type
 
-    val wrapperClassDef = navigationRequestFingerprint(enumType).originalClassDef
+    val wrapperClassDef = NavigationRequestFingerprint.originalClassDef
     val wrapperType = wrapperClassDef.type
     val enumField = wrapperClassDef.fields.first { it.type == enumType }
 

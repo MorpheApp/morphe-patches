@@ -18,6 +18,7 @@ import app.morphe.patcher.patch.mutableClassDefBy
 import app.morphe.patcher.patch.patch
 import app.morphe.patcher.patch.resourceXml
 import app.morphe.patcher.string
+import app.morphe.patcher.util.addPatchInterface
 import app.morphe.patcher.util.cloneParameters
 import app.morphe.patcher.util.findFreeRegister
 import app.morphe.patcher.util.p0Register
@@ -53,7 +54,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
 internal const val EXTENSION_CLASS =
@@ -343,52 +343,27 @@ private fun addComposeSettingRow() {
     // Interface to read the key of a row and to copy it with another key.
     PrivacyPolicySettingRowConstructorFingerprint.classDef.apply {
         interfaces.add("Ljava/lang/Cloneable;")
-        interfaces.add(EXTENSION_SETTING_ROW_INTERFACE)
 
-        methods.add(
-            ImmutableMethod(
-                type,
-                "patch_getKey",
-                listOf(),
-                "Ljava/lang/String;",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(2)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        iget-object v0, p0, $keyField
-                        return-object v0
-                    """
-                )
-            }
+        addPatchInterface(
+            EXTENSION_SETTING_ROW_INTERFACE,
+            "patch_getKey",
+            """
+                iget-object v0, p0, $keyField
+                return-object v0
+            """
         )
 
         // A shallow copy keeps the section, the order and the content of the original row.
-        methods.add(
-            ImmutableMethod(
-                type,
-                "patch_copyWithKey",
-                listOf(ImmutableMethodParameter("Ljava/lang/String;", null, "key")),
-                "Ljava/lang/Object;",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(3)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        invoke-super { p0 }, $superclass->clone()Ljava/lang/Object;
-                        move-result-object v0
-                        check-cast v0, $type
-                        iput-object p1, v0, $keyField
-                        return-object v0
-                    """
-                )
-            }
+        addPatchInterface(
+            EXTENSION_SETTING_ROW_INTERFACE,
+            "patch_copyWithKey",
+            """
+                invoke-super { p0 }, $superclass->clone()Ljava/lang/Object;
+                move-result-object v0
+                check-cast v0, $type
+                iput-object p1, v0, $keyField
+                return-object v0
+            """
         )
     }
 

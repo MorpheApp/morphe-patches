@@ -417,12 +417,12 @@ internal object DefaultCaptionTrackFingerprint : Fingerprint(
     )
 )
 
-internal fun preferredCaptionsTrackFingerprint() = Fingerprint(
+internal object PreferredCaptionsTrackFingerprint : Fingerprint(
     classFingerprint = DefaultCaptionTrackFingerprint,
     // 21.23+ also has a method without parameters that calls the default track method.
     parameters = listOf("L", "L"),
     filters = listOf(
-        methodCall(reference = DefaultCaptionTrackFingerprint.method),
+        methodCall(reference = { DefaultCaptionTrackFingerprint.originalMethod }),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
     )
 )

@@ -125,9 +125,7 @@ val hideMediaViewerComponentsPatch = patch(
                 }
 
             // Hide the overlay of each newly created chrome state.
-            createFullBleedChromeStateFingerprint(
-                FullBleedChromeStateToStringFingerprint.classDef.type
-            ).method.apply {
+            CreateFullBleedChromeStateFingerprint.method.apply {
                 findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
                     val stateRegister = getInstruction<OneRegisterInstruction>(index).registerA
                     val freeRegister = findFreeRegister(index, stateRegister)
