@@ -55,7 +55,7 @@ public final class NsfwCommunityGate {
         if (!PermanentNsfwPatch.isEnabled() || name == null) return;
         main(() -> {
             // An absent label is not evidence that the content is safe.
-            if (adult != null) LABELS.put(key(name), adult);
+            if (adult != null && !Boolean.TRUE.equals(LABELS.get(key(name)))) LABELS.put(key(name), adult);
             for (Map.Entry<View, State> entry : VIEWS.entrySet()) {
                 if (entry.getValue().name.equals(key(name))) apply(entry.getKey(), entry.getValue());
             }
@@ -65,7 +65,11 @@ public final class NsfwCommunityGate {
     /** Called for a rejected direct community response before throwing its transport error. */
     public static void blockedPath(String path) {
         String[] segments = path.split("/");
-        if (segments.length > 2 && "r".equals(segments[1])) classify(segments[2], true);
+        // A single adult post in an ordinary community must not classify the community.
+        if (segments.length == 4 && "r".equals(segments[1])
+                && ("about".equals(segments[3]) || "about.json".equals(segments[3]))) {
+            classify(segments[2], true);
+        }
     }
 
     private static void apply(View root, State state) {

@@ -145,13 +145,16 @@ public final class NsfwTests {
     private static void transport() throws Exception {
         AtomicReference<Request> sent = new AtomicReference<>();
         try (Response result = response(new RedditNsfwInterceptor(() -> true),
-                "https://oauth.reddit.com/search.json?q=cats&include_over_18=on&include_over_18=on",
+                "https://oauth.reddit.com/search.json?q=cats&include_over_18=on&include_over_18=on&nsfw=1&safe_search=off&pref_allow_nsfw=true",
                 "[{\"id\":1,\"over_18\":true},{\"id\":2,\"over_18\":false}]",
                 "application/json", sent, null)) {
             require(new JSONArray(result.body().string()).length() == 1);
             require(sent.get().url().queryParameterValues("include_over_18").size() == 1);
             require(sent.get().url().queryParameter("include_over_18").equals("off"));
             require(sent.get().url().queryParameter("q").equals("cats"));
+            require(sent.get().url().queryParameter("nsfw").equals("0"));
+            require(sent.get().url().queryParameter("safe_search").equals("on"));
+            require(sent.get().url().queryParameter("pref_allow_nsfw").equals("false"));
             require(result.header("Content-Length") == null && result.header("ETag") == null);
         }
     }
