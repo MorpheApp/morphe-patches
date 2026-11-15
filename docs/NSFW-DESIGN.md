@@ -55,4 +55,6 @@ While permanent disabling is active, the RedGIFs audio and HD preferences are re
 
 ## Version testing status
 
-2026.45.0 is the only APK currently supplied and the only version advertised by this experimental patch. The contributor guide also requires the latest stable target, minimum/maximum recommended targets, and forced testing without a version gate when establishing minimum support. Validation on those versions remains pending; a skipped version gate must never count as a successful compatibility test.
+The supplied 2026.40.0 and 2026.45.0 APKs each resolve all five original-APK anchors exactly once. Forced Desktop `--validate` on 2026.40.0 passes and rebuilds an unsigned APK using the preceding test bundle, so the patch now advertises these two versions. The final published bundle is rechecked separately; see the version matrix.
+
+2026.10.0 was tested with `-f` rather than accepted as a gated no-op. Its existing settings dependency fails uniqueness validation (two matches), and both native-row anchors used by this feature are absent. It remains unsupported. This does not establish 2026.40.0 as the earliest possible compatible version; intermediate versions have not been tested.

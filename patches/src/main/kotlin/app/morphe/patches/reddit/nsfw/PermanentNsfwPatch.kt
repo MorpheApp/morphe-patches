@@ -36,12 +36,12 @@ private object AdultBlurItemFingerprint : Fingerprint(
 val permanentNsfwPatch = patch(
     name = "Permanently disable NSFW content (experimental)",
     description = "Adds an irreversible option to disable NSFW content, removes adult viewing controls after activation, " +
-        "and filters Reddit JSON responses. Experimental: content coverage requires validation.",
+        "and blocks RedGIFs. Works with Reddit 2026.40.0 and 2026.45.0. Experimental: content coverage requires validation.",
     default = false
 ) {
     compatibleWith(COMPATIBILITY_REDDIT.excluding(
         *COMPATIBILITY_REDDIT.targets.mapNotNull {
-            it.version.takeUnless { version -> version == "2026.45.0" }
+            it.version.takeUnless { version -> version in setOf("2026.40.0", "2026.45.0") }
         }.toTypedArray()
     ))
     dependsOn(settingsPatch)
@@ -65,7 +65,7 @@ val permanentNsfwPatch = patch(
             "invoke-static/range { p1 .. p1 }, $EXTENSION->install(Lokhttp3/OkHttpClient\$Builder;)V"
         )
 
-        // The 2026.45.0 settings view model includes a row only when this set contains
+        // The 2026.40.0 and 2026.45.0 settings view models includes a row only when this set contains
         // the active session. Returning an empty set removes the row for every session
         // before its Compose content or click handler is created.
         listOf(AdultViewingItemFingerprint, AdultBlurItemFingerprint).forEach { item ->
